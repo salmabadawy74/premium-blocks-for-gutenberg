@@ -1,0 +1,29 @@
+.wp-block-gfblocks-pa-gfb-title {
+	position: relative;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+.pa-gfb-outer-container {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+    width: 100%;
+	padding: 1rem;
+}
+.wp-block-gfblocks-pa-gfb-title .pa-gfb-inner-container {
+	padding: 10px;
+	box-sizing: border-box;
+}
+.pa-gfb-inner-container .pa-gfb-title{
+    margin: 0;
+}
