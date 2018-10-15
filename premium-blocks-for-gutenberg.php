@@ -45,7 +45,6 @@ if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
             //Enqueue the required files
             add_action('plugins_loaded',array( $this, 'init_files') );
             
-            
         }
         
         /*

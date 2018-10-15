@@ -22,45 +22,71 @@ class Premium_Blocks_Integration {
         add_filter('block_categories', array( $this, 'register_premium_category'), 10, 1 );
     }
     
+    /**
+    * Triggers required functions to register our blocks
+    * @since 1.0.0
+    * @access public
+    * @return void
+    */
     public function register_block(){
         
         $this->register_block_assets();
         
-        $this->register_block_type();
-        
     }
     
+    /**
+    * Registers block required CSS/JS
+    * @since 1.0.0
+    * @access public
+    * @return void
+    */
     public function register_block_assets() {
+        
+        // Gutenberg is not installed or active.
+        if ( ! function_exists('register_block_type') ) {
+            wp_die();
+            return;
+        }
         
         wp_register_script(
             'premium-dheading',
             PREMIUM_BLOCKS_URL . 'blocks/dual-heading/block.js',
             array(
+                'wp-editor',
                 'wp-blocks',
                 'wp-i18n',
-                'wp-element'
+                'wp-element',
+                'underscore'
             ),
-            filemtime( PREMIUM_BLOCKS_URL . 'blocks/dual-heading/blocks.js' )
+            filemtime( PREMIUM_BLOCKS_URL . 'blocks/dual-heading/block.js' )
         );
-        
+
         wp_register_style(
             'premium-dheading-editor',
             PREMIUM_BLOCKS_URL . 'blocks/dual-heading/styles/editor.css',
             array('wp-edit-blocks'),
             filemtime( PREMIUM_BLOCKS_URL . 'blocks/dual-heading/styles/editor.css' )
         );
-        
+
         wp_register_style(
             'premium-dheading-frontend',
             PREMIUM_BLOCKS_URL . 'blocks/dual-heading/styles/style.css',
-            array('wp-edit-blocks'),
+            array(),
             filemtime( PREMIUM_BLOCKS_URL . 'blocks/dual-heading/styles/style.css' )
         );
+
+        $this->register_block_type();
+        
         
     }
     
+    /**
+    * Registers block type
+    * @since 1.0.0
+    * @access public
+    * @return void
+    */
     public function register_block_type() {
-     
         register_block_type(
            'premium/dheading-block',
             array(
@@ -68,6 +94,15 @@ class Premium_Blocks_Integration {
                'editor_style'     =>  'premium-dheading-editor',
                'style'            =>  'premium-dheading-frontend'
             )
+        );
+        
+        wp_add_inline_script(
+            'premium-dheading',
+            sprintf( 
+                'var premium_dheading = { localeData: %s };', 
+                json_encode( gutenberg_get_jed_locale_data( 'premium-gutenberg' ) ) 
+            ),
+            'before'
         );
         
     }

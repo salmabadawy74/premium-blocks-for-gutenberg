@@ -1,10 +1,9 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Oct 14, 2018, 5:43:49 PM
-    Author     : bassem
-*/
-
+/**************** Premium Dual Heading *****************/
+/*******************************************************/
+.wp-block-premium-dheading-block {
+    background: red;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: #fff;
+}
