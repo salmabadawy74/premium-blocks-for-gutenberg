@@ -109,5 +109,3 @@ if ( ! function_exists( 'premium_gutenberg' ) ) {
 	}
 }
 premium_gutenberg();
-
-
