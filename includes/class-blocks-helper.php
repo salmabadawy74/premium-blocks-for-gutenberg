@@ -1,22 +1,23 @@
 <?php
 
-namespace PremiumGutenberg\Includes;
-
 if( ! defined( 'ABSPATH' ) ) exit();
 
 class Premium_Blocks_Integration {
     
     private static $instance = null;
     
+    /**
+    * Class Constructor
+    */
     public function __construct() {
         
         //Enqueue Editor Assets
-//        add_action('enqueue_block_editor_assets', array( $this, 'premium_gutenberg_editor') );
+        add_action('enqueue_block_editor_assets', array( $this, 'premium_gutenberg_editor') );
 //        
 //        //Enqueue Frontend Assets
 //        add_action('enqueue_block_assets',array( $this, 'premium_gutenberg_frontend') );
         
-        add_action('init', array( $this, 'register_block') );
+//        $this->register_block();
         
         //Register Premium Blocks category
         add_filter('block_categories', array( $this, 'register_premium_category'), 10, 1 );
@@ -117,13 +118,13 @@ class Premium_Blocks_Integration {
         
         wp_enqueue_script(
             'pbg-editor',
-            PREMIUM_BLOCKS_URL . 'blocks/blocks.js', 
+            PREMIUM_BLOCKS_URL . 'build/index.build.js', 
             array(
                 'wp-blocks',
                 'wp-i18n',
                 'wp-element'
             ),
-            filemtime( PREMIUM_BLOCKS_URL . 'blocks/blocks.js' )
+            filemtime( PREMIUM_BLOCKS_URL . 'build/index.build.js' )
         );
     
         wp_enqueue_style(

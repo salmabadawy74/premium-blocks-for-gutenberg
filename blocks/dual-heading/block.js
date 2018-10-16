@@ -5,6 +5,7 @@
     var richText = editor.RichText;
     var alignToolBar = editor.AlignmentToolbar;
     var blockControls = editor.BlockControls;
+    var colorPalette = editor.ColorPalette;
     
     i18n.setLocaleData( window.premium_dheading.localeData, 'premium-gutenberg' );
     
@@ -50,15 +51,10 @@
                 
                 return [
                     el(
-                        blockControls,
-                        { key: 'controls' },
-                        el(
-                            alignToolBar,
-                            {
-                                value: align,
-                                onChange: onChangeAlign
-                            }
-                        )
+                        alignToolBar,
+                        {   value: align,
+                            onChange: onChangeAlign
+                        },
                     ),
                     el('div',
                         { 
@@ -66,47 +62,63 @@
                             style: { textAlign: align }
                         },
                         el(
-                            richText,
+                            'h2',
                             {
-                                tagName: 'h2',
-                                placeholder: __('First Heading...', 'premium-gutenberg'),
-                                value: firstHeading,
-                                onChange: onChangeFirst
-                            }
+                                className: 'premium-dheading-wrap'
+                            },
+                            el(
+                                richText,
+                                {
+                                    tagName: 'span',
+                                    placeholder: __('First Heading...', 'premium-gutenberg'),
+                                    value: firstHeading,
+                                    onChange: onChangeFirst
+                                }
+                            ),
+                            el(
+                                richText,
+                                {
+                                    tagName: 'span',
+                                    placeholder: __('Second Heading...', 'premium-gutenberg'),
+                                    value: secondHeading,
+                                    onChange: onChangeSecond
+                                }
+                            )
                         ),
-                        el(
-                            richText,
-                            {
-                                tagName: 'h2',
-                                placeholder: __('Second Heading...', 'premium-gutenberg'),
-                                value: secondHeading,
-                                onChange: onChangeSecond
-                            }
-                        )
                     )
                 ];
-                
-                
                 
             },
             save: function(props){
-                return [
+                return (
                     el('div',
                         {
-                            className: 'premium-dheading-' + props.attributes.containerAlign
+                            className: 'premium-dheading-' + props.attributes.align
                         },
-                        el( richText.Content, {
-                            tagName: 'h2',
-                            className: 'premium-dheading-first',
-                            value: props.attributes.firstHeading
-                        } ),
-                        el( richText.Content, {
-                            tagName: 'h2',
-                            className: 'premium-dheading-second',
-                            value: props.attributes.secondHeading
-                        } )
+                        el(
+                            'h2',
+                            {
+                                className: 'premium-dheading-wrap'
+                            },
+                            el(
+                                richText.Content,
+                                {
+                                    tagName: 'span',
+                                    value: props.attributes.firstHeading,
+                                    className: 'premium-dheading-first'
+                                }
+                            ),
+                            el(
+                                richText.Content,
+                                {
+                                    tagName: 'span',
+                                    value: props.attributes.secondHeading,
+                                    className: 'premium-dheading-second'   
+                                }
+                            )
+                        ),
                     )
-                ];
+                );
             }
         }
     );

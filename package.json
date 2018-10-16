@@ -1,0 +1,32 @@
+{
+  "name": "gutenberg_premium_blocks",
+  "version": "1.0.0",
+  "description": "=== Premium Blocks for Gutenberg === Contributors: leap13 Tags: Gutenberg, blocks, Add-ons Donate link: http://leap13.com Requires at least: 4.5 Tested up to: 4.9.4 Requires PHP: 5.4 License: GPL v3.0 License URI: https://opensource.org/licenses/GPL-3.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://AbanobLeap13@gitlab.com/AbanobLeap13/premium-block-for-gutenberg.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/AbanobLeap13/premium-block-for-gutenberg/issues"
+  },
+  "homepage": "https://gitlab.com/AbanobLeap13/premium-block-for-gutenberg#readme",
+  "dependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0"
+  }
+}
