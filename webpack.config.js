@@ -1,15 +1,14 @@
 // node module that let's us do file system stuffs...
 const path = require('path');
+const webpack = require('webpack');
+
 
 // Webpack expects an exported object with all the configurations, so we export an object here
 module.exports = {
     entry: './src/index.js', // Where to find our main js
     output: {
-        // where we want our built file to go to and be named
-        // I name it index.build.js so I keep index files separate
-        filename: 'index.build.js',
-        // we're going to put our built file in a './build/' folder
-        path: path.resolve(__dirname, 'build')
+        path: path.resolve(__dirname, 'assets/js'),
+		filename: '[name].js'
     }, 
     module: {
         rules: [
@@ -25,4 +24,4 @@ module.exports = {
     },
     // Webpack yells at you if you don't choose a mode...
     mode: 'development'
-}
+};

@@ -13,72 +13,15 @@ class Premium_Blocks_Integration {
         
         //Enqueue Editor Assets
         add_action('enqueue_block_editor_assets', array( $this, 'premium_gutenberg_editor') );
-//        
-//        //Enqueue Frontend Assets
-//        add_action('enqueue_block_assets',array( $this, 'premium_gutenberg_frontend') );
         
-//        $this->register_block();
+        //Enqueue Frontend Styles
+        //add_action('enqueue_block_assets',array( $this, 'premium_gutenberg_frontend') );
+        
+        //Enqueue Frontend Scripts
+        add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
         
         //Register Premium Blocks category
         add_filter('block_categories', array( $this, 'register_premium_category'), 10, 1 );
-    }
-    
-    /**
-    * Triggers required functions to register our blocks
-    * @since 1.0.0
-    * @access public
-    * @return void
-    */
-    public function register_block(){
-        
-        $this->register_block_assets();
-        
-    }
-    
-    /**
-    * Registers block required CSS/JS
-    * @since 1.0.0
-    * @access public
-    * @return void
-    */
-    public function register_block_assets() {
-        
-        // Gutenberg is not installed or active.
-        if ( ! function_exists('register_block_type') ) {
-            wp_die();
-            return;
-        }
-        
-        wp_register_script(
-            'premium-dheading',
-            PREMIUM_BLOCKS_URL . 'blocks/dual-heading/block.js',
-            array(
-                'wp-editor',
-                'wp-blocks',
-                'wp-i18n',
-                'wp-element',
-                'underscore'
-            ),
-            filemtime( PREMIUM_BLOCKS_URL . 'blocks/dual-heading/block.js' )
-        );
-
-        wp_register_style(
-            'premium-dheading-editor',
-            PREMIUM_BLOCKS_URL . 'blocks/dual-heading/styles/editor.css',
-            array('wp-edit-blocks'),
-            filemtime( PREMIUM_BLOCKS_URL . 'blocks/dual-heading/styles/editor.css' )
-        );
-
-        wp_register_style(
-            'premium-dheading-frontend',
-            PREMIUM_BLOCKS_URL . 'blocks/dual-heading/styles/style.css',
-            array(),
-            filemtime( PREMIUM_BLOCKS_URL . 'blocks/dual-heading/styles/style.css' )
-        );
-
-        $this->register_block_type();
-        
-        
     }
     
     /**
@@ -118,7 +61,7 @@ class Premium_Blocks_Integration {
         
         wp_enqueue_script(
             'pbg-editor',
-            PREMIUM_BLOCKS_URL . 'build/index.build.js', 
+            PREMIUM_BLOCKS_URL . 'assets/js/main.js', 
             array(
                 'wp-blocks',
                 'wp-i18n',
