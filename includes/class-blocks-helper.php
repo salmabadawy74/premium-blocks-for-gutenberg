@@ -12,16 +12,16 @@ class Premium_Blocks_Integration {
     public function __construct() {
         
         //Enqueue Editor Assets
-        add_action('enqueue_block_editor_assets', array( $this, 'premium_gutenberg_editor') );
+        add_action( 'enqueue_block_editor_assets', array( $this, 'premium_gutenberg_editor' ) );
         
         //Enqueue Frontend Styles
-        //add_action('enqueue_block_assets',array( $this, 'premium_gutenberg_frontend') );
+        add_action( 'enqueue_block_assets', array( $this, 'premium_gutenberg_frontend' ) );
         
         //Enqueue Frontend Scripts
-        add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
+//        add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
         
         //Register Premium Blocks category
-        add_filter('block_categories', array( $this, 'register_premium_category'), 10, 1 );
+        add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
     }
     
     /**
@@ -67,14 +67,14 @@ class Premium_Blocks_Integration {
                 'wp-i18n',
                 'wp-element'
             ),
-            filemtime( PREMIUM_BLOCKS_URL . 'build/index.build.js' )
+            PREMIUM_BLOCKS_VERSION
         );
     
         wp_enqueue_style(
             'pbg-editor-css',
             PREMIUM_BLOCKS_URL . 'assets/css/editor.css',
-            array('wp-edit-blocks'),
-            filemtime( PREMIUM_BLOCKS_URL . 'assets/css/editor.css' )
+            array( 'wp-edit-blocks' ),
+            PREMIUM_BLOCKS_VERSION
         );
     }
     
@@ -89,7 +89,7 @@ class Premium_Blocks_Integration {
             'pbg-frontend',
             PREMIUM_BLOCKS_URL . 'assets/css/style.css',
             array('wp-blocks'),
-            filemtime( PREMIUM_BLOCKS_URL . 'assets/css/style.css' )
+            PREMIUM_BLOCKS_VERSION
         );
     }
     

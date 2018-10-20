@@ -1,10 +1,53 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Mar 3, 2018, 9:31:08 AM
-    Author     : bassem
-*/
-
+/**************** Premium Dual Heading *****************/
+/*******************************************************/
+.premium-dheading-block__container .premium-dheading-block__title {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
+}
+.premium-dheading-block__container .premium-headingc-true {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+.premium-dheading-block__container .premium-headinga-true {
+    background-size: 300% 300% !important;
+    -webkit-animation: Gradient 10s ease-in-out infinite;
+	-moz-animation: Gradient 10s ease-in-out infinite;
+	animation: Gradient 10s ease-in-out infinite;
+}
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}

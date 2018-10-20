@@ -30,25 +30,25 @@ registerBlockType( 'premium/dheading-block', {
 	icon: 'editor-paragraph',
 	category: 'premium-blocks', 
     attributes: {
-        align: {
+        contentAlign: {
             type: 'string',
             default: 'center'
         },
         firstHeading: {
             type: 'array',
             source: 'children',
-            default: 'Premium '
-//            selector: `.${className}__first`
+            default: 'Premium ',
+            selector: '.premium-dheading-block__first'
         },
         secondHeading: {
             type: 'array',
             source: 'children',
-            default: 'Blocks'
-//            selector: `.${className}__first`
+            default: 'Blocks',
+            selector: '.premium-dheading-block__second'
         },
         titleTag: {
             type: 'string',
-            default: 'h2'
+            default: 'h1'
         },
         display: {
             type: 'string',
@@ -71,7 +71,7 @@ registerBlockType( 'premium/dheading-block', {
         },
         firstBorderWidth: {
             type: 'number',
-            default: '0'
+            default: '1'
         },
         firstBorderRadius: {
             type: 'number',
@@ -92,8 +92,13 @@ registerBlockType( 'premium/dheading-block', {
             type: 'boolean',
             default: false
         },
+        firstAnim: {
+            type: 'boolean',
+            default: false
+        },
         firstClipColor: {
-            type: 'string'
+            type: 'string',
+            default: '#54595f'
         },
         secondColor: {
             type: 'string',
@@ -112,7 +117,7 @@ registerBlockType( 'premium/dheading-block', {
         },
         secondBorderWidth: {
             type: 'number',
-            default: '0'
+            default: '1'
         },
         secondBorderRadius: {
             type: 'number',
@@ -133,14 +138,29 @@ registerBlockType( 'premium/dheading-block', {
             type: 'boolean',
             default: false
         },
-        secondClipColor: {
-            type: 'string'
+        secondAnim: {
+            type: 'boolean',
+            default: false
         },
+        secondClipColor: {
+            type: 'string',
+            default: '#6ec1e4'
+        },
+        link: {
+            type: 'boolean',
+            default: false
+        },
+        target: {
+            type: 'boolean',
+            default: false
+        },
+        headingURL: {
+            type: 'string',
+        }
         
     },
 	
 	edit: (props) => {
-        
         const { setAttributes, isSelected, className } = props;
         const {
             contentAlign,
@@ -158,6 +178,7 @@ registerBlockType( 'premium/dheading-block', {
             firstPadding,
             firstMargin,
             firstClip,
+            firstAnim,
             firstClipColor,
             secondColor,
             secondBackground,
@@ -169,7 +190,11 @@ registerBlockType( 'premium/dheading-block', {
             secondPadding,
             secondMargin,
             secondClip,
+            secondAnim,
             secondClipColor,
+            link,
+            target,
+            headingURL
         } = props.attributes;
         const DISPLAY = [
             {
@@ -207,7 +232,7 @@ registerBlockType( 'premium/dheading-block', {
                 label: "Groove"
             }
         ];
-        
+        let blockClass = className.replace('wp-block-','');
         return [
             isSelected && ( 
                 <BlockControls key="controls">
@@ -235,20 +260,23 @@ registerBlockType( 'premium/dheading-block', {
                         onChange={ ( value ) => setAttributes( { secondHeading: value } ) }
                     />
                     <p>{ __('HTML Tag') }</p>
-                    <Toolbar
-                        controls={ '123456'.split( '' ).map( ( tag ) => ( {
-                            icon: 'heading',
-                            isActive: 'H' + tag === titleTag,
-                            onClick: () => setAttributes( { titleTag: 'H' + tag } ),
-                            subscript: tag,
-                        } ) ) }
-                    />
+                    
                     <SelectControl
                         label={__('Display')}
                         value={display}
                         options={DISPLAY}
                         onChange={ ( value ) => setAttributes( { display: value } ) }           
                     />
+                    <CheckboxControl
+                        label={__('Link')}
+                        checked={link}
+                        onChange={ newValue => setAttributes( { link: newValue } ) }
+                    />
+                    { link && ( <CheckboxControl
+                        label={__('Open link in new tab')}
+                        checked={target}
+                        onChange={ newValue => setAttributes( { target: newValue } ) }
+                    /> ) }
                 </PanelBody>
             
                 <PanelBody
@@ -260,6 +288,11 @@ registerBlockType( 'premium/dheading-block', {
                         checked={firstClip}
                         onChange={ newValue => setAttributes( { firstClip: newValue } ) }
                     />
+                    { firstClip && ( <CheckboxControl
+                        label={__('Animated')}
+                        checked={firstAnim}
+                        onChange={newValue => setAttributes( { firstAnim: newValue } ) }
+                    /> ) }
                     <PanelColor
                         title={__('Color')}
                         colorValue={firstColor}
@@ -269,7 +302,7 @@ registerBlockType( 'premium/dheading-block', {
                             onChange={newColor => setAttributes( { firstColor: newColor } ) }
                         />
                     </PanelColor>
-                    <p>{__('Font Size')}</p>
+                    <p>{__('Font Size (PX)')}</p>
                     <RangeControl
                         value={firstSize}
                         min='10'
@@ -319,14 +352,13 @@ registerBlockType( 'premium/dheading-block', {
                             />
                         </PanelColor>
                     ) }
-                    <p>{ 'none' != firstBorderType && ( __('Border Radius') ) }</p>
-                    { 'none' != firstBorderType && (
+                    <p>{__('Border Radius')}</p>
                     <RangeControl
                         value={firstBorderRadius}
                         min='0'
                         max='150'
                         onChange={newRadius => setAttributes({firstBorderRadius: newRadius } ) }
-                    /> ) }
+                    />
                     <p>{__('Margin')}</p>
                     <RangeControl
                         value={firstMargin}
@@ -341,7 +373,6 @@ registerBlockType( 'premium/dheading-block', {
                         max='100'
                         onChange={newPadding => setAttributes({firstPadding: newPadding } ) }
                     />
-            
                 </PanelBody>
                 <PanelBody
                     title={__('Second Heading')}
@@ -352,6 +383,11 @@ registerBlockType( 'premium/dheading-block', {
                         checked={secondClip}
                         onChange={ newValue => setAttributes( { secondClip: newValue } ) }
                     />
+                    { secondClip && ( <CheckboxControl
+                        label={__('Animated')}
+                        checked={secondAnim}
+                        onChange={ newValue => setAttributes( { secondAnim: newValue } ) }
+                    /> ) }
                     <PanelColor
                         title={__('Color')}
                         colorValue={secondColor}
@@ -361,8 +397,8 @@ registerBlockType( 'premium/dheading-block', {
                             onChange={ newColor => setAttributes( { secondColor: newColor } ) }
                         />
                     </PanelColor>
+                    <p>{__('Font Size (PX)')}</p>
                     <RangeControl
-                        title={__('Font Size')}
                         min='10'
                         max='80'
                         value={secondSize}
@@ -410,15 +446,14 @@ registerBlockType( 'premium/dheading-block', {
                                 onChange={newColor => setAttributes( { secondBorderColor: newColor } ) }
                             />
                         </PanelColor>
-                    )}
-                    <p>{ 'none' != secondBorderType && ( __('Border Radius') )}</p>
-                    { 'none' != secondBorderType && (
+                    ) }
+                    <p>{__('Border Radius')}</p>
                     <RangeControl
                         value={secondBorderRadius}
                         min='0'
                         max='150'
                         onChange={newRadius => setAttributes({secondBorderRadius: newRadius } ) }
-                    /> ) }
+                    />
                     <p>{__('Margin')}</p>
                     <RangeControl
                         value={secondMargin}
@@ -436,19 +471,25 @@ registerBlockType( 'premium/dheading-block', {
                 </PanelBody>
                 </InspectorControls>
             ),
-            ( 
-                
             <div
-                className={`${className}__container`}
+                className={`${blockClass}__container`}
                 style={{textAlign: contentAlign }}
                 >
+            { link && isSelected && (
+                <URLInput
+                    value={headingURL}
+                    onChange={ newUrl => setAttributes( { headingURL: newUrl } ) }
+                /> ) }
                 <h2
-                    className={`${className}__title`} 
+                    className={`${blockClass}__title`} 
                 >
-                    <span className={`${className}__first`} style={{
+                    <span 
+                    className={`${blockClass}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
+                    style={{
                         display: display,
                         color: firstColor,
-                        backgroundColor: firstBackground,
+                        backgroundColor: firstClip ? 'none' : firstBackground,
+                        backgroundImage: firstClip ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})` : 'none',
                         fontSize: firstSize + 'px',
                         border: firstBorderType,
                         borderWidth: firstBorderWidth + 'px',
@@ -456,11 +497,14 @@ registerBlockType( 'premium/dheading-block', {
                         borderColor: firstBorderColor,
                         padding: firstPadding + 'px',
                         margin: firstMargin + 'px'
-                    }}>{ firstHeading }</span>
-                    <span className={`${className}__second`} style={{
+                    }}>{firstHeading}</span>
+                    <span 
+                        className={`${blockClass}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
+                    style={{
                         display: display,
                         color: secondColor,
-                        backgroundColor: secondBackground,
+                        backgroundColor: secondClip ? 'none' : secondBackground,
+                        backgroundImage: secondClip ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})` : 'none',
                         fontSize: secondSize + 'px',
                         border: secondBorderType,
                         borderWidth: secondBorderWidth + 'px',
@@ -468,34 +512,94 @@ registerBlockType( 'premium/dheading-block', {
                         borderColor: secondBorderColor,
                         padding: secondPadding + 'px',
                         margin: secondMargin + 'px'
-                    }}>{ secondHeading }</span>
+                    }}>{secondHeading}</span>
                 </h2>
-                
             </div>
-            )
-            
         ];
-    
     },
-
-	save: (props) => {
+	save: ( props ) => {
         const {
-            align,
-            firstHeading,
-            secondHeading,
-            contentAlign,
-            className
+            className,
+            attributes: {
+                contentAlign,
+                firstHeading,
+                secondHeading,
+                titleTag,
+                display,
+                firstColor,
+                firstBackground,
+                firstSize,
+                firstBorderType,
+                firstBorderWidth,
+                firstBorderRadius,
+                firstBorderColor,
+                firstPadding,
+                firstMargin,
+                firstClip,
+                firstAnim,
+                firstClipColor,
+                secondColor,
+                secondBackground,
+                secondSize,
+                secondBorderType,
+                secondBorderWidth,
+                secondBorderRadius,
+                secondBorderColor,
+                secondPadding,
+                secondMargin,
+                secondClip,
+                secondAnim,
+                secondClipColor,
+                link,
+                target,
+                headingURL
+            }
         } = props;
-        
-        return [
-            <div
-                className={`${className}__container`}
-                
+        let blockClass = 'premium-dheading-block';
+        return (
+            <a
+                className={`${blockClass}__link`} 
+                href={link && headingURL}
+                target={target && '_blank'}
             >
-                <span className={`${className}__first`}>Hello</span>
-                <span className={`${className}__second`}>World</span>
+            <div
+                className={`${blockClass}__container`}
+                style={{
+                    textAlign:contentAlign
+                }}
+            >
+                <h2
+                    className={`${blockClass}__title`} 
+                >
+                    <span className={`${blockClass}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`} style={{
+                        display: display,
+                        color: firstColor,
+                        backgroundColor: firstClip ? 'none' : firstBackground,
+                        backgroundImage: firstClip ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})` : 'none',
+                        fontSize: firstSize + 'px',
+                        border: firstBorderType,
+                        borderWidth: firstBorderWidth + 'px',
+                        borderRadius: firstBorderRadius + 'px',
+                        borderColor: firstBorderColor,
+                        padding: firstPadding + 'px',
+                        margin: firstMargin + 'px'
+                    }}>{firstHeading}</span>
+                    <span className={`${blockClass}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`} style={{
+                        display: display,
+                        color: secondColor,
+                        backgroundColor: secondClip ? 'none' : secondBackground,
+                        backgroundImage: secondClip ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})` : 'none',
+                        fontSize: secondSize + 'px',
+                        border: secondBorderType,
+                        borderWidth: secondBorderWidth + 'px',
+                        borderRadius: secondBorderRadius + 'px',
+                        borderColor: secondBorderColor,
+                        padding: secondPadding + 'px',
+                        margin: secondMargin + 'px'
+                    }}>{secondHeading}</span>
+                </h2>
             </div>
-        ];
-        
+            </a>
+        );
     }
 } );

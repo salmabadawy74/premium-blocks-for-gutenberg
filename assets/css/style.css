@@ -1,29 +1,59 @@
-.wp-block-gfblocks-pa-gfb-title {
-	position: relative;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-direction: row;
-	-ms-flex-direction: row;
-	flex-direction: row;
-	-webkit-flex-wrap: wrap;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
-}
-.pa-gfb-outer-container {
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-direction: column;
-	-ms-flex-direction: column;
-	flex-direction: column;
-    width: 100%;
-	padding: 1rem;
-}
-.wp-block-gfblocks-pa-gfb-title .pa-gfb-inner-container {
-	padding: 10px;
-	box-sizing: border-box;
-}
-.pa-gfb-inner-container .pa-gfb-title{
+/**************** Premium Dual Heading *****************/
+/*******************************************************/
+.premium-dheading-block__container .premium-dheading-block__title {
+    position: relative;
+    padding: 0;
     margin: 0;
+    display: inline-block;
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
+}
+.premium-dheading-block__container .premium-headingc-true {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+.premium-dheading-block__container .premium-headinga-true {
+    background-size: 300% 300% !important;
+    -webkit-animation: Gradient 10s ease-in-out infinite;
+	-moz-animation: Gradient 10s ease-in-out infinite;
+	animation: Gradient 10s ease-in-out infinite;
+}
+a.premium-dheading-block__link:focus,
+a.premium-dheading-block__link:hover {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
 }
