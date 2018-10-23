@@ -31,14 +31,14 @@ class Premium_Blocks_Integration {
     * @return void
     */
     public function register_block_type() {
-        register_block_type(
-           'premium/dheading-block',
-            array(
-               'editor_script'    =>  'premium-dheading',
-               'editor_style'     =>  'premium-dheading-editor',
-               'style'            =>  'premium-dheading-frontend'
-            )
-        );
+//        register_block_type(
+//           'premium/dheading-block',
+//            array(
+//               'editor_script'    =>  'premium-dheading',
+//               'editor_style'     =>  'premium-dheading-editor',
+//               'style'            =>  'premium-dheading-frontend'
+//            )
+//        );
         
         wp_add_inline_script(
             'premium-dheading',

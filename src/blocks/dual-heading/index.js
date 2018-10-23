@@ -20,7 +20,6 @@ const {
 	InspectorControls,
 	AlignmentToolbar,
 	RichText,
-	MediaUpload,
 	ColorPalette,
 	URLInput
 } = wp.editor;
@@ -80,7 +79,11 @@ registerBlockType( 'premium/dheading-block', {
         firstBorderColor: {
             type: 'string'
         },
-        firstMargin: {
+        firstMarginR: {
+            type: 'number',
+            default: '0'
+        },
+        firstMarginL: {
             type: 'number',
             default: '0'
         },
@@ -126,7 +129,11 @@ registerBlockType( 'premium/dheading-block', {
         secondBorderColor: {
             type: 'string'
         },
-        secondMargin: {
+        secondMarginR: {
+            type: 'number',
+            default: '0'
+        },
+        secondMarginL: {
             type: 'number',
             default: '0'
         },
@@ -176,7 +183,8 @@ registerBlockType( 'premium/dheading-block', {
             firstBorderRadius,
             firstBorderColor,
             firstPadding,
-            firstMargin,
+            firstMarginR,
+            firstMarginL,
             firstClip,
             firstAnim,
             firstClipColor,
@@ -188,7 +196,8 @@ registerBlockType( 'premium/dheading-block', {
             secondBorderRadius,
             secondBorderColor,
             secondPadding,
-            secondMargin,
+            secondMarginL,
+            secondMarginR,
             secondClip,
             secondAnim,
             secondClipColor,
@@ -359,12 +368,19 @@ registerBlockType( 'premium/dheading-block', {
                         max='150'
                         onChange={newRadius => setAttributes({firstBorderRadius: newRadius } ) }
                     />
-                    <p>{__('Margin')}</p>
+                    <p>{__('Margin Left')}</p>
                     <RangeControl
-                        value={firstMargin}
+                        value={firstMarginL}
                         min='0'
                         max='100'
-                        onChange={newMargin => setAttributes( { firstMargin: newMargin } ) }
+                        onChange={newMargin => setAttributes( { firstMarginL: newMargin } ) }
+                    />
+                    <p>{__('Margin Right')}</p>
+                    <RangeControl
+                    value={firstMarginR}
+                    min='0'
+                    max='100'
+                    onChange={newMargin => setAttributes( { firstMarginR: newMargin } ) }
                     />
                     <p>{__('Padding')}</p>
                     <RangeControl
@@ -454,12 +470,19 @@ registerBlockType( 'premium/dheading-block', {
                         max='150'
                         onChange={newRadius => setAttributes({secondBorderRadius: newRadius } ) }
                     />
-                    <p>{__('Margin')}</p>
+                    <p>{__('Margin Left')}</p>
                     <RangeControl
-                        value={secondMargin}
+                        value={secondMarginL}
                         min='0'
                         max='100'
-                        onChange={newMargin => setAttributes( { secondMargin: newMargin } ) }
+                        onChange={newMargin => setAttributes( { secondMarginL: newMargin } ) }
+                    />
+                    <p>{__('Margin Right')}</p>
+                    <RangeControl
+                    value={secondMarginR}
+                    min='0'
+                    max='100'
+                    onChange={newMargin => setAttributes( { secondMarginR: newMargin } ) }
                     />
                     <p>{__('Padding')}</p>
                     <RangeControl
@@ -496,7 +519,8 @@ registerBlockType( 'premium/dheading-block', {
                         borderRadius: firstBorderRadius + 'px',
                         borderColor: firstBorderColor,
                         padding: firstPadding + 'px',
-                        margin: firstMargin + 'px'
+                        marginLeft: firstMarginL + 'px',
+                        marginRight: firstMarginR + 'px'
                     }}>{firstHeading}</span>
                     <span 
                         className={`${blockClass}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
@@ -511,7 +535,8 @@ registerBlockType( 'premium/dheading-block', {
                         borderRadius: secondBorderRadius + 'px',
                         borderColor: secondBorderColor,
                         padding: secondPadding + 'px',
-                        margin: secondMargin + 'px'
+                        marginLeft: secondMarginL + 'px',
+                        marginRight: secondMarginR + 'px'
                     }}>{secondHeading}</span>
                 </h2>
             </div>
