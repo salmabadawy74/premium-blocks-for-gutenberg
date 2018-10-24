@@ -51,3 +51,9 @@
 		background-position: 0% 50%
 	}
 }
+/**************** Premium Banner ***********************/
+/*******************************************************/
+.premium-banner .button {
+    margin: 1em auto;
+    display: block;
+}

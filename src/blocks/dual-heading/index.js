@@ -268,7 +268,6 @@ registerBlockType( 'premium/dheading-block', {
                         value={ secondHeading }
                         onChange={ ( value ) => setAttributes( { secondHeading: value } ) }
                     />
-                    <p>{ __('HTML Tag') }</p>
                     
                     <SelectControl
                         label={__('Display')}
