@@ -67,6 +67,10 @@ registerBlockType('premium/banner', {
             hoverEffect: {
                 type: 'string',
                 default: 'none'
+            },
+            height: {
+                type: 'string',
+            default: 'default'
             }
         },
         edit: (props)   => {
@@ -79,7 +83,8 @@ registerBlockType('premium/banner', {
                 desc,
                 contentAlign,
                 effect,
-                hoverEffect
+                hoverEffect,
+                height
             } = props.attributes;
             const EFFECTS = [
                 {
@@ -143,6 +148,16 @@ registerBlockType('premium/banner', {
                 }
                 
             ];
+            const HEIGHT = [
+                {
+                    value: 'default',
+                    label: 'Default'
+                },
+                {
+                    value: 'custom',
+                    label: 'Custom'
+                }
+            ];
             let blockClass = className.replace('wp-block-','');
             return [                
                 isSelected && (
@@ -186,11 +201,18 @@ registerBlockType('premium/banner', {
                                 options={EFFECTS}
                             />
                             <SelectControl
-                                label={__('Hover Effect')}
+                                label={__('Image Hover Effect')}
                                 options={HOVER}
                                 value={hoverEffect}
                                 onChange={newEffect => setAttributes( { hoverEffect: newEffect } ) }
                             />
+                            <SelectControl
+                                label={__('Height')}
+                                options={HEIGHT}
+                                value={height}
+                                onChange={newHeight  => setAttributes( { height: newHeight } ) }
+                            />
+                            
                         </PanelBody>
                         <PanelBody
                             title={__('Title Settings')}
@@ -233,10 +255,10 @@ registerBlockType('premium/banner', {
                 /> ) }
                 { imageURL && (
                     <div
-                        className={`${blockClass}__inner ${blockClass}__min`}
+                        className={`${blockClass}__inner ${blockClass}__min ${blockClass}__${effect} ${blockClass}__${hoverEffect}`}
                     >
                         <div
-                            className={`${blockClass}__img_wrap`}
+                            className={`${blockClass}__img_wrap ${blockClass}__${height}`}
                         >
                             <img
                                 className={`${blockClass}__img`}
