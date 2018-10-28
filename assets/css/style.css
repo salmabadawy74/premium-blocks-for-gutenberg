@@ -86,7 +86,7 @@ a.premium-dheading-block__link:hover {
     z-index: 1;
     overflow: hidden;
     margin: 0 0 35px;
-    background: #3085a3;
+/*    background: #3085a3;*/
     text-align: center;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -109,12 +109,21 @@ a.premium-dheading-block__link:hover {
     box-sizing: border-box;
 }
 .premium-banner .premium-banner__inner .premium-banner__content,
-.premium_addons-banner-ib .premium_addons-banner-ib-link {
+.premium-banner .premium-banner__inner .premium-banner__link {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+}
+.premium-banner .premium-banner__inner .premium-banner__link {
+    display: block;
+    background: 0 0;
+    z-index: 1000;
+    text-indent: 200%;
+    white-space: nowrap;
+    font-size: 0;
+    opacity: 0;
 }
 /**
 * Common Min Height Props
@@ -176,9 +185,9 @@ a.premium-dheading-block__link:hover {
     transition: opacity .2s, transform .35s, -webkit-transform .35s;
 }
 .premium-banner .premium-banner__effect1:hover .premium-banner__desc_wrap,
-.premium-banner .premium-banner__effect1.active .premium-banner__desc_wrap,
+.premium-banner .premium-banner__effect1.hover_true .premium-banner__desc_wrap,
 .premium-banner .premium-banner__effect1:hover .premium-banner-read-more,
-.premium-banner .premium-banner__effect1.active .premium-banner-read-more {
+.premium-banner .premium-banner__effect1.hover_true .premium-banner-read-more {
     opacity: 1;
     -webkit-transition-delay: .05s;
     transition-delay: .05s;
@@ -186,13 +195,13 @@ a.premium-dheading-block__link:hover {
     transition-duration: .35s;
 }
 .premium-banner .premium-banner__effect1:hover .premium-banner__desc_wrap,
-.premium-banner .premium-banner__effect1.active .premium-banner__desc_wrap,
+.premium-banner .premium-banner__effect1.hover_true .premium-banner__desc_wrap,
 .premium-banner .premium-banner__effect1:hover .premium-banner-read-more,
-.premium-banner .premium-banner__effect1.active .premium-banner-read-more,
+.premium-banner .premium-banner__effect1.hover_true .premium-banner-read-more,
 .premium-banner .premium-banner__effect1:hover .premium-banner__title_wrap,
-.premium-banner .premium-banner__effect1.active .premium-banner__title_wrap,
+.premium-banner .premium-banner__effect1.hover_true .premium-banner__title_wrap,
 .premium-banner .premium-banner__effect1:hover .premium-banner__img,
-.premium-banner .premium-banner__effect1.active .premium-banner__img {
+.premium-banner .premium-banner__effect1.hover_true .premium-banner__img {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     -webkit-transition-delay: .05s;
@@ -229,6 +238,7 @@ a.premium-dheading-block__link:hover {
 */
 .premium-banner__effect3.premium-banner__none:hover .premium-banner__img,
 .premium-banner__effect1.premium-banner__none:hover .premium-banner__img,
+.premium-banner__effect5.premium-banner__none:hover .premium-banner__img,
 .premium-banner__effect5.premium-banner__none:hover .premium-banner__img {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -309,20 +319,20 @@ a.premium-dheading-block__link:hover {
     margin: 10px 0;
 }
 .premium-banner .premium-banner__effect2:hover .premium-banner__desc_wrap,
-.premium-banner .premium-banner__effect2.active .premium-banner__desc_wrap,
+.premium-banner .premium-banner__effect2.hover_true .premium-banner__desc_wrap,
 .premium-banner .premium-banner__effect2:hover .premium-banner__desc_wrap *,
-.premium-banner .premium-banner__effect2.active .premium-banner__desc_wrap *{
+.premium-banner .premium-banner__effect2.hover_true .premium-banner__desc_wrap *{
     opacity: 1 !important;
     z-index: 99 !important;
     -webkit-backface-visibility: hidden !important;
     backface-visibility: hidden !important;
 }
 .premium-banner .premium-banner__effect2:hover .premium-banner__content,
-.premium-banner .premium-banner__effect2.active .premium-banner__content,
+.premium-banner .premium-banner__effect2.hover_true .premium-banner__content,
 .premium-banner .premium-banner__effect2:hover .premium-banner__title_wrap,
-.premium-banner .premium-banner__effect2.active .premium-banner__title_wrap,
+.premium-banner .premium-banner__effect2.hover_true .premium-banner__title_wrap,
 .premium_banner_animation5:hover .premium-banner-read-more,
-.premium_banner_animation5.active .premium-banner-read-more {
+.premium_banner_animation5.hover_true .premium-banner-read-more {
     -webkit-transform: translateY(0);
     -ms-transform: translateY(0);
     transform: translateY(0);
@@ -428,7 +438,7 @@ a.premium-dheading-block__link:hover {
     transform: translate3d(-101%, 0, 0);
 }
 .premium-banner .premium-banner__effect3:hover .premium-banner__title_wrap::after,
-.premium-banner .premium-banner__effect3.active .premium-banner__title_wrap::after {
+.premium-banner .premium-banner__effect3.hover_true .premium-banner__title_wrap::after {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
@@ -444,9 +454,9 @@ a.premium-dheading-block__link:hover {
     transform: translate3d(100%, 0, 0);
 }
 .premium-banner .premium-banner__effect3:hover .premium-banner__desc_wrap,
-.premium-banner .premium-banner__effect3.active .premium-banner__desc_wrap,
+.premium-banner .premium-banner__effect3.hover_true .premium-banner__desc_wrap,
 .premium_banner_animation13:hover .premium-banner-read-more,
-.premium_banner_animation13.active .premium-banner-read-more {
+.premium_banner_animation13.hover_true .premium-banner-read-more {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -503,21 +513,21 @@ a.premium-dheading-block__link:hover {
     transform: translate3d(0, 10px, 0);
 }
 .premium-banner .premium-banner__effect4:hover .premium-banner__title_wrap,
-.premium-banner .premium-banner__effect4.active .premium-banner__title_wrap {
+.premium-banner .premium-banner__effect4.hover_true .premium-banner__title_wrap {
     color: #fff;
     -webkit-transform: translate3d(0, -40px, 0);
     transform: translate3d(0, -40px, 0);
 }
 .premium_banner_animation2:hover .premium-banner-read-more,
-.premium_banner_animation2.active .premium-banner-read-more,
+.premium_banner_animation2.hover_true .premium-banner-read-more,
 .premium-banner .premium-banner__effect4:hover .premium-banner__content::before,
-.premium-banner .premium-banner__effect4.active .premium-banner__content::before {
+.premium-banner .premium-banner__effect4.hover_true .premium-banner__content::before {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
 .premium-banner .premium-banner__effect4:hover .premium-banner__desc_wrap,
-.premium-banner .premium-banner__effect4.active .premium-banner__desc_wrap {
+.premium-banner .premium-banner__effect4.hover_true .premium-banner__desc_wrap {
     opacity: 1;
     -webkit-transform: translate3d(0, -30px, 0);
     transform: translate3d(0, -30px, 0);
@@ -604,20 +614,20 @@ a.premium-dheading-block__link:hover {
     transition: opacity .35s, transform .35s, -webkit-transform .35s;
 }
 .premium-banner .premium-banner__effect5:hover .premium-banner__content::after,
-.premium-banner .premium-banner__effect5.active .premium-banner__content::after,
+.premium-banner .premium-banner__effect5.hover_true .premium-banner__content::after,
 .premium-banner .premium-banner__effect5:hover .premium-banner__content::before,
-.premium-banner .premium-banner__effect5.active .premium-banner__content::before {
+.premium-banner .premium-banner__effect5.hover_true .premium-banner__content::before {
     opacity: 1;
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
 }
 .premium-banner .premium-banner__effect5:hover .premium-banner__desc_wrap,
-.premium-banner .premium-banner__effect5.active .premium-banner__desc_wrap,
+.premium-banner .premium-banner__effect5.hover_true .premium-banner__desc_wrap,
 .premium_banner_animation4:hover .premium-banner-read-more,
-.premium_banner_animation4.active .premium-banner-read-more,
+.premium_banner_animation4.hover_true .premium-banner-read-more,
 .premium-banner .premium-banner__effect5:hover .premium-banner__title_wrap,
-.premium-banner .premium-banner__effect5.active .premium-banner__title_wrap {
+.premium-banner .premium-banner__effect5.hover_true .premium-banner__title_wrap {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -669,18 +679,36 @@ a.premium-dheading-block__link:hover {
     margin-top: 10px;
 }
 .premium-banner .premium-banner__effect6:hover .premium-banner__title_wrap,
-.premium-banner .premium-banner__effect6.active .premium-banner__title_wrap {
+.premium-banner .premium-banner__effect6.hover_true .premium-banner__title_wrap {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
 .premium-banner .premium-banner__effect6:hover .premium-banner__desc_wrap,
-.premium-banner .premium-banner__effect6.active .premium-banner__desc_wrap,
+.premium-banner .premium-banner__effect6.hover_true .premium-banner__desc_wrap,
 .premium_banner_animation6:hover .premium-banner-read-more,
-.premium_banner_animation6.active .premium-banner-read-more,
+.premium_banner_animation6.hover_true .premium-banner-read-more,
 .premium-banner .premium-banner__effect6:hover .premium-banner__content::before,
-.premium-banner .premium-banner__effect6.active .premium-banner__content::before {
+.premium-banner .premium-banner__effect6.hover_true .premium-banner__content::before {
     opacity: 1;
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
 }
+/**
+* Responsive
+*/
+@media (max-width: 767px) {
+    .premium-banner__responsive_false .premium-banner__desc_wrap {
+        display: none;
+    }
+}
+/**
+* Global
+*/
+.premium-banner .premium-banner__title,
+.premium-banner .premium-banner__desc {
+    padding: 0;
+    margin: 0;
+}
+/**************** Premium Pricing Table ****************/
+/*******************************************************/
