@@ -92,7 +92,7 @@ registerBlockType('premium/banner', {
             },
             opacity: {
                 type: 'number',
-                default: '10'
+                default: '100'
             },
             borderType: {
                 type: 'string',
@@ -429,7 +429,7 @@ registerBlockType('premium/banner', {
                                 label={__('Opacity')}
                                 value={opacity}
                                 min='1'
-                                max='10'
+                                max='100'
                                 onChange={ newOpacity => setAttributes( { opacity: newOpacity } ) }
                             />
                             <SelectControl
@@ -606,7 +606,7 @@ registerBlockType('premium/banner', {
                                 alt="Banner Image"
                                 src={imageURL}
                                 style={{
-                                    opacity: opacity / 10,
+                                    opacity: opacity / 100,
                                 }}
                             />
                         </div>
@@ -728,7 +728,7 @@ registerBlockType('premium/banner', {
                                 alt="Banner Image"
                                 src={imageURL}
                                 style={{
-                                    opacity: opacity / 10,
+                                    opacity: opacity / 100,
                                 }}
                             />
                         </div>

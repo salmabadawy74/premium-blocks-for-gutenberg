@@ -85,7 +85,7 @@ registerBlockType('premium/pricing-table', {
             titleBack: {
                 type: 'string'
             },
-            titleMargin: {
+            titleMarginB: {
                 type: 'number',
                 default: '0'
             },
@@ -115,7 +115,11 @@ registerBlockType('premium/pricing-table', {
             descBack: {
                 type: 'string'
             },
-            descMargin: {
+            descMarginT: {
+                type: 'number',
+                default: '0'
+            },
+            descMarginB: {
                 type: 'number',
                 default: '0'
             },
@@ -138,7 +142,10 @@ registerBlockType('premium/pricing-table', {
             priceBack: {
                 type: 'string'
             },
-            priceMargin: {
+            priceMarginT: {
+                type: 'number'
+            },
+            priceMarginB: {
                 type: 'number'
             },
             pricePadding: {
@@ -196,6 +203,88 @@ registerBlockType('premium/pricing-table', {
             selectedStyle: {
                 type: 'string',
                 default: 'price'
+            },
+            btnChecked: {
+                type: 'boolean',
+                default: true
+            },
+            btnText: {
+                type: 'string',
+                default: 'Get Started'
+            },
+            btnLink: {
+                type: 'string',
+                source: 'attribute',
+                attribute: 'href',
+                selector: '.premium-pricing__button_link'
+            },
+            btnTarget: {
+                type: 'boolean',
+                default: true
+            },
+            btnColor: {
+                type: 'string',
+                default: '#6ec1e4'
+            },
+            btnWidth: {
+                type: 'number'
+            },
+            btnSize: {
+                type: 'number'
+            },
+            btnLine: {
+                type: 'number',
+            },
+            btnWeight: {
+                type: 'number'
+            },
+            btnBack: {
+                type: 'string'
+            },
+            btnMarginT: {
+                type: 'number',
+                default: '0'
+            },
+            btnMarginB: {
+                type: 'number',
+                default: '0'
+            },
+            btnPadding: {
+                type: 'number',
+                default: '0'
+            },
+            btnBorderType: {
+                type: 'string',
+                default: 'none'
+            },
+            btnBorderWidth: {
+                type: 'number',
+                default: '1'
+            },
+            btnBorderRadius: {
+                type: 'number',
+                default: '0'
+            },
+            btnBorderColor: {
+                type: 'string'
+            },
+            badgeChecked: {
+                type: 'string'
+            },
+            badgePos: {
+                type: 'string',
+                default: 'right'
+            },
+            badgeBack: {
+                type: 'string',
+                default: '#6ec1e4'
+            },
+            badgeSize: {
+                type: 'number'
+            },
+            badgeText: {
+                type: 'string',
+                default: 'popular'
             }
         },
         edit: (props)   => {
@@ -216,7 +305,7 @@ registerBlockType('premium/pricing-table', {
                 titleLine,
                 titleWeight,
                 titleBack,
-                titleMargin,
+                titleMarginB,
                 titlePadding,
                 descChecked,
                 desc,
@@ -225,11 +314,13 @@ registerBlockType('premium/pricing-table', {
                 descLine,
                 descWeight,
                 descBack,
-                descMargin,
+                descMarginT,
+                descMarginB,
                 descPadding,
                 priceChecked,
                 priceBack,
-                priceMargin,
+                priceMarginT,
+                priceMarginB,
                 pricePadding,
                 slashPrice,
                 slashColor,
@@ -246,7 +337,29 @@ registerBlockType('premium/pricing-table', {
                 durPrice,
                 durColor,
                 durSize,
-                selectedStyle
+                selectedStyle,
+                btnChecked,
+                btnText,
+                btnTarget,
+                btnLink,
+                btnColor,
+                btnSize,
+                btnLine,
+                btnWeight,
+                btnBack,
+                btnMarginT,
+                btnMarginB,
+                btnPadding,
+                btnWidth,
+                btnBorderType,
+                btnBorderWidth,
+                btnBorderRadius,
+                btnBorderColor,
+                badgeChecked,
+                badgePos,
+                badgeBack,
+                badgeSize,
+                badgeText,
                 
             } = props.attributes;
             const ALIGNS = [
@@ -353,6 +466,16 @@ registerBlockType('premium/pricing-table', {
                     label: "Groove"
                 }
             ];
+            const POSITION = [
+                {
+                    value: "right",
+                    label: "Right"
+                },
+                {
+                    value: "left",
+                    label: "Left"
+                }
+            ];
             let blockClass = className.replace('wp-block-','');
             
             return [                
@@ -418,11 +541,11 @@ registerBlockType('premium/pricing-table', {
                             />
                         </PanelColor>
                         <RangeControl
-                            label={__('Margin (PX)')}
-                            value={titleMargin}
+                            label={__('Margin Bottom (PX)')}
+                            value={titleMarginB}
                             min='0'
                             max='100'
-                            onChange={ newMargin => setAttributes( { titleMargin: newMargin } ) }
+                            onChange={ newMargin => setAttributes( { titleMarginB: newMargin } ) }
                         />
                         <RangeControl
                             label={__('Padding (PX)')}
@@ -571,11 +694,18 @@ registerBlockType('premium/pricing-table', {
                             />
                         </PanelColor>
                         <RangeControl
-                            label={__('Container Margin (PX)')}
-                            value={priceMargin}
+                            label={__('Container Margin Top (PX)')}
+                            value={priceMarginT}
                             min='0'
                             max='100'
-                            onChange={ newMargin => setAttributes( { priceMargin: newMargin } ) }
+                            onChange={ newMargin => setAttributes( { priceMarginT: newMargin } ) }
+                        />
+                        <RangeControl
+                            label={__('Container Margin Bottom (PX)')}
+                            value={priceMarginB}
+                            min='0'
+                            max='100'
+                            onChange={ newPadding => setAttributes( { priceMarginB: newPadding } ) }
                         />
                         <RangeControl
                             label={__('Container Padding (PX)')}
@@ -626,11 +756,18 @@ registerBlockType('premium/pricing-table', {
                             />
                         </PanelColor>
                         <RangeControl
-                            label={__('Margin (PX)')}
-                            value={descMargin}
+                            label={__('Margin Top (PX)')}
+                            value={descMarginT}
                             min='0'
                             max='100'
-                            onChange={ newMargin => setAttributes( { descMargin: newMargin } ) }
+                            onChange={ newMargin => setAttributes( { descMarginT: newMargin } ) }
+                        />
+                        <RangeControl
+                            label={__('Margin Bottom (PX)')}
+                            value={descMarginB}
+                            min='0'
+                            max='100'
+                            onChange={ newMargin => setAttributes( { descMarginB: newMargin } ) }
                         />
                         <RangeControl
                             label={__('Padding (PX)')}
@@ -640,6 +777,145 @@ registerBlockType('premium/pricing-table', {
                             onChange={ newPadding => setAttributes( { descPadding: newPadding } ) }
                         />
                     </PanelBody> ) }
+                    { btnChecked && (
+                        <PanelBody
+                            title={__('Button')}
+                            initialOpen={false}
+                        >
+                        <TextControl
+                            label={__('Button Text')}
+                            value={btnText}
+                            onChange={ newText => setAttributes( { btnText: newText } ) }
+                        />
+                        <PanelColor
+                            title={__('Text Color')}
+                            colorValue={btnColor}
+                        >
+                            <ColorPalette
+                                value={btnColor}
+                                onChange={ newColor => setAttributes( { btnColor: newColor } ) }
+                            />
+                        </PanelColor>
+                        <RangeControl
+                            label={__('Width (%)')}
+                            value={btnWidth}
+                            onChange={newSize => setAttributes( { btnWidth: newSize } ) }
+                        />
+                        <RangeControl
+                            label={__('Font Size (PX)')}
+                            value={btnSize}
+                            min='10'
+                            max='80'
+                            onChange={newSize => setAttributes( { btnSize: newSize } ) }
+                        />
+                        <SelectControl
+                            label={__('Font Weight')}
+                            options={WEIGHT}
+                            value={btnWeight}
+                            onChange={ newWeight => setAttributes( { btnWeight: newWeight } ) }
+                        />
+                        <PanelColor
+                            title={__('Background Color')}
+                            colorValue={btnBack}
+                        >
+                            <ColorPalette
+                                value={btnBack}
+                                onChange={ newColor => setAttributes( { btnBack: newColor } ) }
+                            />
+                        <SelectControl
+                            label={__('Border Type')}
+                            options={BORDER}
+                            value={btnBorderType}
+                            onChange={newType => setAttributes( { btnBorderType: newType})}
+                        />
+                        { 'none' != btnBorderType && (
+                        <RangeControl
+                            label={__('Border Width')}
+                            value={btnBorderWidth}
+                            min='0'
+                            max='50'
+                            onChange={newWidth => setAttributes( { btnBorderWidth: newWidth } ) }
+                        /> ) }
+                        { 'none' != btnBorderType && (
+                            <PanelColor
+                                title={__('Border Color')}
+                                colorValue={btnBorderColor}
+                            >
+                                <ColorPalette
+                                    value={btnBorderColor}
+                                    onChange={newColor => setAttributes( { btnBorderColor: newColor } ) }
+                                />
+                            </PanelColor>
+                        ) }
+                        <RangeControl
+                            label={__('Border Radius')}
+                            value={btnBorderRadius}
+                            min='0'
+                            max='150'
+                            onChange={newRadius => setAttributes( { btnBorderRadius: newRadius } ) }
+                        />
+                        </PanelColor>
+                        <RangeControl
+                            label={__('Margin Top (PX)')}
+                            value={btnMarginT}
+                            min='0'
+                            max='100'
+                            onChange={ newPadding => setAttributes( { btnMarginT: newPadding } ) }
+                        />
+                        <RangeControl
+                            label={__('Margin Bottom (PX)')}
+                            value={btnMarginB}
+                            min='0'
+                            max='100'
+                            onChange={ newPadding => setAttributes( { btnMarginB: newPadding } ) }
+                        />
+                        <RangeControl
+                            label={__('Padding (PX)')}
+                            value={btnPadding}
+                            min='0'
+                            max='100'
+                            onChange={ newPadding => setAttributes( { btnPadding: newPadding } ) }
+                        />
+                        <CheckboxControl
+                            label={__('Open Link in a new tab')}
+                            checked={btnTarget}
+                            onChange={ newValue => setAttributes( { btnTarget: newValue } ) }
+                        />
+                        </PanelBody>
+                    ) }
+                    { badgeChecked && ( 
+                        <PanelBody
+                            title={__('Badge')}
+                            initialOpen={false}
+                        >
+                            <SelectControl
+                                label={__('Position')}
+                                options={POSITION}
+                                value={badgePos}
+                                onChange={newValue => setAttributes( { badgePos: newValue } ) }
+                            />
+                            <TextControl
+                                label={ __( 'Text' ) }
+                                value={badgeText}
+                                onChange={ ( value ) => setAttributes( { badgeText: value } ) }
+                            />
+                            <RangeControl
+                                label={__('Size')}
+                                value={badgeSize}
+                                max='250'
+                                onChange={newValue => setAttributes( { badgeSize: newValue } ) }
+                            />
+                            <PanelColor
+                                title={__('Background Color')}
+                                colorValue={badgeBack}
+                            >
+                                <ColorPalette
+                                    value={btnBorderColor}
+                                    onChange={newColor => setAttributes( { badgeBack: newColor } ) }
+                                />
+                            </PanelColor>
+                        </PanelBody>
+                    ) }
                     <PanelBody
                         title={__('Display Options')}
                         initialOpen={false}
@@ -658,6 +934,16 @@ registerBlockType('premium/pricing-table', {
                             label={__('Description')}
                             checked={descChecked}
                             onChange={ newValue => setAttributes( { descChecked: newValue } ) }
+                        />
+                        <CheckboxControl
+                            label={__('Button')}
+                            checked={btnChecked}
+                            onChange={ newValue => setAttributes( { btnChecked: newValue } ) }
+                        />
+                        <CheckboxControl
+                            label={__('Badge')}
+                            checked={badgeChecked}
+                            onChange={ newValue => setAttributes( { badgeChecked: newValue } ) }
                         />
                     </PanelBody>
                     <PanelBody
@@ -727,9 +1013,24 @@ registerBlockType('premium/pricing-table', {
                         padding: tablePadding + 'px'
                     }}
                 >
-                    { titleChecked && ( <div
-                        className={`${blockClass}__title_wrap`}
+                    { badgeChecked && ( <div
+                        className={`${blockClass}__badge_wrap ${blockClass}__badge_${badgePos}`}
                     >
+                        <div
+                            className={`${blockClass}__badge`}
+                            style={{
+                                borderRightColor: 'right' === badgePos ? badgeBack : 'transparent',
+                                borderTopColor: 'left' === badgePos ? badgeBack : 'transparent',
+                                borderBottomWidth: badgeSize + 'px',
+                                borderRightWidth: badgeSize + 'px',
+                                borderTopWidth: 'left' === badgePos ? badgeSize + 'px' : 'none',
+                                borderLeftWidth: 'right' === badgePos ? badgeSize + 'px' : 'none',
+                            }}
+                        >
+                            <span>{badgeText}</span>
+                        </div>
+                    </div> ) }
+                    { titleChecked && (
                         <RichText
                             tagName={titleTag.toLowerCase()}
                             className={`${blockClass}__title`}
@@ -743,16 +1044,17 @@ registerBlockType('premium/pricing-table', {
                                 fontSize: titleSize + 'px',
                                 fontWeight: titleWeight,
                                 lineHeight: titleLine + 'px',
-                                margin: titleMargin + 'px',
+                                marginBottom: titleMarginB + 'px',
                                 padding: titlePadding + 'px'
                             }}
                         />
-                    </div> ) }
+                    ) }
                     { priceChecked && ( <div
                         className={`${blockClass}__price_wrap`}
                         style={{
                             background: priceBack,
-                            margin: priceMargin + 'px',
+                            marginTop: priceMarginT + 'px',
+                            marginBottom: priceMarginB + 'px',
                             padding: pricePadding + 'px',
                         }}
                     >
@@ -817,11 +1119,45 @@ registerBlockType('premium/pricing-table', {
                                 fontSize: descSize + 'px',
                                 fontWeight: descWeight,
                                 lineHeight: descLine + 'px',
-                                margin: descMargin + 'px',
+                                marginTop: descMarginT + 'px',
+                                marginBottom: descMarginB + 'px',
                                 padding: descPadding + 'px'
                             }}
                         />
                     </div> ) }
+                    { btnChecked && (
+                        <div
+                            className={`${blockClass}__button`}
+                            style={{
+                                width: btnWidth + '%'
+                            }}
+                        >
+                            <a
+                                class={`${blockClass}__button_link`}
+                                href={btnLink}
+                                target={btnChecked ? '_blank' : ''}
+                                style={{
+                                    color: btnColor,
+                                    background: btnBack,
+                                    fontWeight: btnWeight,
+                                    marginTop: btnMarginT,
+                                    marginBottom: btnMarginB,
+                                    padding: btnPadding,
+                                    fontSize: btnSize + 'px',
+                                    border: btnBorderType,
+                                    borderWidth: btnBorderWidth + 'px',
+                                    borderRadius: btnBorderRadius + 'px',
+                                    borderColor: btnBorderColor,
+                                }}
+                            >
+                                <span>{btnText}</span>
+                            </a>
+                            <URLInput
+                                value={btnLink}
+                                onChange={newLink => setAttributes( { btnLink: newLink } ) }
+                            />
+                        </div>
+                    ) }
                 </div>
                     
             ];
@@ -845,7 +1181,7 @@ registerBlockType('premium/pricing-table', {
                     titleLine,
                     titleWeight,
                     titleBack,
-                    titleMargin,
+                    titleMarginB,
                     titlePadding,
                     descChecked,
                     desc,
@@ -854,11 +1190,13 @@ registerBlockType('premium/pricing-table', {
                     descLine,
                     descWeight,
                     descBack,
-                    descMargin,
+                    descMarginT,
+                    descMarginB,
                     descPadding,
                     priceChecked,
                     priceBack,
-                    priceMargin,
+                    priceMarginT,
+                    priceMarginB,
                     pricePadding,
                     slashPrice,
                     slashColor,
@@ -874,7 +1212,30 @@ registerBlockType('premium/pricing-table', {
                     divSize,
                     durPrice,
                     durColor,
-                    durSize
+                    durSize,
+                    btnChecked,
+                    btnText,
+                    btnLink,
+                    btnTarget,
+                    btnColor,
+                    btnSize,
+                    btnLine,
+                    btnWeight,
+                    btnBack,
+                    btnMarginT,
+                    btnMarginB,
+                    btnPadding,
+                    btnWidth,
+                    btnBorderType,
+                    btnBorderWidth,
+                    btnBorderRadius,
+                    btnBorderColor,
+                    badgeChecked,
+                    badgePos,
+                    badgeBack,
+                    badgeSize,
+                    badgeText,
+                    
                 }
             } = props;
             let blockClass = 'premium-pricing-table';
@@ -891,9 +1252,25 @@ registerBlockType('premium/pricing-table', {
                         padding: tablePadding + 'px'
                     }}
                 >
-                    { titleChecked && ( <div
-                        className={`${blockClass}__title_wrap`}
+                    { badgeChecked && ( <div
+                        className={`${blockClass}__badge_wrap ${blockClass}__badge_${badgePos}`}
                     >
+                        <div
+                            className={`${blockClass}__badge`}
+                            style={{
+                                borderRightColor: 'right' === badgePos ? badgeBack : 'transparent',
+                                borderTopColor: 'left' === badgePos ? badgeBack : 'transparent',
+                                borderBottomWidth: badgeSize + 'px',
+                                borderRightWidth: badgeSize + 'px',
+                                borderTopWidth: 'left' === badgePos ? badgeSize + 'px' : 'none',
+                                borderLeftWidth: 'right' === badgePos ? badgeSize + 'px' : 'none',
+                            }}
+                        >
+                            <span>{badgeText}</span>
+                        </div>
+                    </div> ) }
+                    <div>hello</div>
+                    { titleChecked && ( 
                         <RichText.Content
                             tagName={titleTag.toLowerCase()}
                             className={`${blockClass}__title`}
@@ -907,16 +1284,17 @@ registerBlockType('premium/pricing-table', {
                                 fontSize: titleSize + 'px',
                                 fontWeight: titleWeight,
                                 lineHeight: titleLine + 'px',
-                                margin: titleMargin + 'px',
+                                marginBottom: titleMarginB + 'px',
                                 padding: titlePadding + 'px',
                             }}
                         />
-                    </div> ) }
+                    ) }
                     { priceChecked && ( <div
                         className={`${blockClass}__price_wrap`}
                         style={{
                             background: priceBack,
-                            margin: priceMargin + 'px',
+                            marginTop: priceMarginT + 'px',
+                            marginBottom: priceMarginB + 'px',
                             padding: pricePadding + 'px',
                         }}
                     >
@@ -981,11 +1359,41 @@ registerBlockType('premium/pricing-table', {
                                 fontSize: descSize + 'px',
                                 fontWeight: descWeight,
                                 lineHeight: descLine + 'px',
-                                margin: descMargin + 'px',
+                                marginTop: descMarginT + 'px',
+                                marginBottom: descMarginB + 'px',
                                 padding: descPadding + 'px',
                             }}
                         />
                     </div> ) }
+                    { btnChecked && ( 
+                        <div
+                            className={`${blockClass}__button`}
+                            style={{
+                                width: btnWidth + '%',
+                            }}
+                        >
+                            <a
+                                class={`${blockClass}__button_link`}
+                                href={btnLink}
+                                target={btnChecked ? '_blank' : ''}
+                                style={{
+                                    color: btnColor,
+                                    background: btnBack,
+                                    fontWeight: btnWeight,
+                                    marginTop: btnMarginT,
+                                    marginBottom: btnMarginB,
+                                    padding: btnPadding,
+                                    fontSize: btnSize + 'px',
+                                    border: btnBorderType,
+                                    borderWidth: btnBorderWidth + 'px',
+                                    borderRadius: btnBorderRadius + 'px',
+                                    borderColor: btnBorderColor,
+                                }}
+                            >
+                                <span>{btnText}</span>
+                            </a>
+                        </div>
+                    ) }
                 </div>
             );
         }
