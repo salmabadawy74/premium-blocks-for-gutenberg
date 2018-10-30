@@ -715,6 +715,21 @@ a.premium-dheading-block__link:hover {
 .premium-pricing-table {
     position: relative;
 }
+/**
+* Price
+*/
+.premium-pricing-table .premium-pricing-table__price_wrap {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+}
+.premium-pricing-table .premium-pricing-table__price_wrap span:nth-child(-n+3),
+.premium-pricing-table .premium-pricing-table__price_wrap strike {
+    line-height: 1em;
+}
 .premium-pricing-table .premium-pricing-table__button {
     display: inline-block;
     width: 30%;
@@ -726,6 +741,7 @@ a.premium-dheading-block__link:hover {
 .premium-pricing-table .premium-pricing-table__badge_wrap {
     position: absolute;
     top: 0;
+    z-index: 99;
 }
 .premium-pricing-table .premium-pricing-table__badge_right {
     right: 0;
@@ -776,4 +792,17 @@ a.premium-dheading-block__link:hover {
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
     right: 0;
+}
+/**
+* List Items
+*/
+.premium-pricing-table ul.premium-pricing-table__list {
+    margin: 0 !important;
+    padding: 0;
+    list-style-position: inside;
+}
+/**************** Premium Maps *************************/
+/*******************************************************/
+.premium-maps__wrap {
+    height: 500px;
 }

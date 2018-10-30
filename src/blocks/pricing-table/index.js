@@ -80,14 +80,19 @@ registerBlockType('premium/pricing-table', {
                 type: 'number',
             },
             titleWeight: {
-                type: 'number'
+                type: 'number',
+                default: 500
             },
             titleBack: {
                 type: 'string'
             },
             titleMarginB: {
                 type: 'number',
-                default: '0'
+                default: 20
+            },
+            titleMarginT: {
+                type: 'number',
+                default: 20,  
             },
             titlePadding: {
                 type: 'number',
@@ -133,7 +138,7 @@ registerBlockType('premium/pricing-table', {
             },
             descChecked: {
                 type: 'boolean',
-                default: true
+                default: false
             },
             priceChecked: {
                 type: 'boolean',
@@ -146,7 +151,8 @@ registerBlockType('premium/pricing-table', {
                 type: 'number'
             },
             priceMarginB: {
-                type: 'number'
+                type: 'number',
+                default: 10
             },
             pricePadding: {
                 type: 'number'
@@ -158,7 +164,8 @@ registerBlockType('premium/pricing-table', {
                 type: 'string'
             },
             slashSize: {
-                type: 'number'
+                type: 'number',
+                default: 20
             },
             currPrice: {
                 type: 'string',
@@ -168,7 +175,8 @@ registerBlockType('premium/pricing-table', {
                 type: 'string'
             },
             currSize: {
-                type: 'number'
+                type: 'number',
+                default: 20
             },
             valPrice: {
                 type: 'string',
@@ -178,7 +186,8 @@ registerBlockType('premium/pricing-table', {
                 type: 'string'
             },
             valSize: {
-                type: 'number'
+                type: 'number',
+                default: 50
             },
             divPrice: {
                 type: 'string',
@@ -188,7 +197,8 @@ registerBlockType('premium/pricing-table', {
                 type: 'string'
             },
             divSize: {
-                type: 'number'
+                type: 'number',
+                default: 20
             },
             durPrice: {
                 type: 'string',
@@ -198,7 +208,8 @@ registerBlockType('premium/pricing-table', {
                 type: 'string'
             },
             durSize: {
-                type: 'number'
+                type: 'number',
+                default: 20
             },
             selectedStyle: {
                 type: 'string',
@@ -224,7 +235,7 @@ registerBlockType('premium/pricing-table', {
             },
             btnColor: {
                 type: 'string',
-                default: '#6ec1e4'
+                default: '#fff'
             },
             btnWidth: {
                 type: 'number'
@@ -236,10 +247,12 @@ registerBlockType('premium/pricing-table', {
                 type: 'number',
             },
             btnWeight: {
-                type: 'number'
+                type: 'number',
+                default: 900
             },
             btnBack: {
-                type: 'string'
+                type: 'string',
+                default: '#6ec1e4'
             },
             btnMarginT: {
                 type: 'number',
@@ -251,7 +264,7 @@ registerBlockType('premium/pricing-table', {
             },
             btnPadding: {
                 type: 'number',
-                default: '0'
+                default: 10
             },
             btnBorderType: {
                 type: 'string',
@@ -269,7 +282,8 @@ registerBlockType('premium/pricing-table', {
                 type: 'string'
             },
             badgeChecked: {
-                type: 'string'
+                type: 'boolean',
+                default: true
             },
             badgePos: {
                 type: 'string',
@@ -285,7 +299,64 @@ registerBlockType('premium/pricing-table', {
             badgeText: {
                 type: 'string',
                 default: 'popular'
+            },
+            listChecked: {
+                type: 'boolean',
+                default: true
+            },
+            listColor: {
+                type: 'string',
+            },
+            listSize: {
+                type: 'number',
+            },
+            listWeight: {
+                type: 'number',
+                default: 500
+            },
+            listBack: {
+                type: 'string',
+            },
+            listItems: {
+                type: 'array',
+                source: 'children',
+                selector: '.premium-pricing-table__list',
+            },
+            listMarginB: {
+                type: 'number',
+                default: 20
+            },
+            listMarginT: {
+                type: 'number'
+            },
+            listPadding: {
+                type: 'number',
+            },
+            listStyle: {
+                type: 'string',
+                default: 'disc'
+            },
+            slashV: {
+                type: 'string',
+                default: 'center',
+            },
+            currV: {
+                type: 'string',
+                default: 'center',
+            },
+            valV: {
+                type: 'string',
+                default: 'center',
+            },
+            divV: {
+                type: 'string',
+                default: 'center',
+            },
+            durV: {
+                type: 'string',
+                default: 'center',
             }
+            
         },
         edit: (props)   => {
             const { isSelected, setAttributes, className } = props;
@@ -305,6 +376,7 @@ registerBlockType('premium/pricing-table', {
                 titleLine,
                 titleWeight,
                 titleBack,
+                titleMarginT,
                 titleMarginB,
                 titlePadding,
                 descChecked,
@@ -325,18 +397,23 @@ registerBlockType('premium/pricing-table', {
                 slashPrice,
                 slashColor,
                 slashSize,
+                slashV,
                 currPrice,
                 currColor,
                 currSize,
+                currV,
                 valPrice,
                 valColor,
                 valSize,
+                valV,
                 divPrice,
                 divColor,
                 divSize,
+                divV,
                 durPrice,
                 durColor,
                 durSize,
+                durV,
                 selectedStyle,
                 btnChecked,
                 btnText,
@@ -360,7 +437,16 @@ registerBlockType('premium/pricing-table', {
                 badgeBack,
                 badgeSize,
                 badgeText,
-                
+                listChecked,
+                listColor,
+                listWeight,
+                listSize,
+                listBack,
+                listItems,
+                listMarginT,
+                listMarginB,
+                listPadding,
+                listStyle
             } = props.attributes;
             const ALIGNS = [
                 {
@@ -375,10 +461,6 @@ registerBlockType('premium/pricing-table', {
                     value: 'flex-end',
                     label: 'Bottom'
                 },
-                {
-                    value: 'inherit',
-                    label: 'Full'
-                }
             ];
             const PRICE = [
                 {
@@ -466,6 +548,25 @@ registerBlockType('premium/pricing-table', {
                     label: "Groove"
                 }
             ];
+            const TYPE = [
+                {
+                    value: "none",
+                    label: "None"
+                },
+                {
+                     value: "disc",
+                     label: "Filled Circle"
+                },
+                {
+                    value: "circle",
+                    label: "Outline Circle"
+                },
+                {
+                    value: "square",
+                    label: "Square"
+                }
+                
+            ];
             const POSITION = [
                 {
                     value: "right",
@@ -477,8 +578,7 @@ registerBlockType('premium/pricing-table', {
                 }
             ];
             let blockClass = className.replace('wp-block-','');
-            
-            return [                
+            return [
                 isSelected && (
                 <BlockControls key='controls'>
                     <AlignmentToolbar
@@ -540,6 +640,13 @@ registerBlockType('premium/pricing-table', {
                                 onChange={ newColor => setAttributes( { titleBack: newColor } ) }
                             />
                         </PanelColor>
+                        <RangeControl
+                            label={__('Margin Top (PX)')}
+                            value={titleMarginT}
+                            min='10'
+                            max='80'
+                            onChange={newSize => setAttributes( { titleMarginT: newSize } ) }
+                        />
                         <RangeControl
                             label={__('Margin Bottom (PX)')}
                             value={titleMarginB}
@@ -608,6 +715,14 @@ registerBlockType('premium/pricing-table', {
                             max='80'
                             onChange={newSize => setAttributes( { slashSize: newSize } ) }
                         /> ) }
+                        { 'slash' === selectedStyle && (
+                            <SelectControl
+                                label={__('Vertical Align')}
+                                options={ALIGNS}
+                                value={slashV}
+                                onChange={ newValue => setAttributes( { slashV: newValue } ) }
+                            />
+                        ) }
                         { 'curr' === selectedStyle && (
                             <PanelColor
                             title={__('Text Color')}
@@ -627,6 +742,14 @@ registerBlockType('premium/pricing-table', {
                             max='80'
                             onChange={newSize => setAttributes( { currSize: newSize } ) }
                         /> ) }
+                        { 'curr' === selectedStyle && (
+                            <SelectControl
+                                label={__('Vertical Align')}
+                                options={ALIGNS}
+                                value={currV}
+                                onChange={ newValue => setAttributes( { currV: newValue } ) }
+                            />
+                        ) }
                         { 'price' === selectedStyle && (
                             <PanelColor
                             title={__('Text Color')}
@@ -646,6 +769,14 @@ registerBlockType('premium/pricing-table', {
                             max='80'
                             onChange={newSize => setAttributes( { valSize: newSize } ) }
                         /> ) }
+                        { 'price' === selectedStyle && (
+                            <SelectControl
+                                label={__('Vertical Align')}
+                                options={ALIGNS}
+                                value={valV}
+                                onChange={ newValue => setAttributes( { valV: newValue } ) }
+                            />
+                        ) }
                         { 'divider' === selectedStyle && (
                             <PanelColor
                             title={__('Text Color')}
@@ -665,6 +796,14 @@ registerBlockType('premium/pricing-table', {
                             max='80'
                             onChange={newSize => setAttributes( { divSize: newSize } ) }
                         /> ) }
+                        { 'divider' === selectedStyle && (
+                            <SelectControl
+                                label={__('Vertical Align')}
+                                options={ALIGNS}
+                                value={divV}
+                                onChange={ newValue => setAttributes( { divV: newValue } ) }
+                            />
+                        ) }
                         { 'duration' === selectedStyle && (
                             <PanelColor
                             title={__('Text Color')}
@@ -684,6 +823,14 @@ registerBlockType('premium/pricing-table', {
                             max='80'
                             onChange={newSize => setAttributes( { durSize: newSize } ) }
                         /> ) }
+                        { 'duration' === selectedStyle && (
+                            <SelectControl
+                                label={__('Vertical Align')}
+                                options={ALIGNS}
+                                value={durV}
+                                onChange={ newValue => setAttributes( { durV: newValue } ) }
+                            />
+                        ) }
                         <PanelColor
                             title={__('Container Background Color')}
                             colorValue={priceBack}
@@ -715,11 +862,68 @@ registerBlockType('premium/pricing-table', {
                             onChange={ newPadding => setAttributes( { pricePadding: newPadding } ) }
                         />
                     </PanelBody> ) }
+                    { listChecked && ( <PanelBody
+                        title={__('Features')}
+                        initialOpen={false}
+                    >
+                        <SelectControl
+                            label={__('List Style Type')}
+                            options={TYPE}
+                            value={listStyle}
+                            onChange={ newType => setAttributes( { listStyle: newType } ) }
+                        />
+                        <PanelColor
+                            title={__('List Items Color')}
+                            colorValue={listColor}
+                        >
+                            <ColorPalette
+                                value={listColor}
+                                onChange= { newColor => setAttributes( { listColor: newColor } ) }
+                            />
+                        </PanelColor>
+                        <RangeControl
+                            label={__('Font Size (PX)')}
+                            value={listSize}
+                            min='10'
+                            max='80'
+                            onChange={newSize => setAttributes( { listSize: newSize } ) }
+                        />
+                        <SelectControl
+                            label={__('Font Weight')}
+                            options={WEIGHT}
+                            value={listWeight}
+                            onChange={ newWeight => setAttributes( { listWeight: newWeight } ) }
+                        />
+                        <PanelColor
+                            title={__('Background Color')}
+                            colorValue={listBack}
+                        >
+                            <ColorPalette
+                                value={listBack}
+                                onChange= { newColor => setAttributes( { listBack: newColor } ) }
+                            />
+                        </PanelColor>
+                        <RangeControl
+                            label={__('Margin Top (PX)')}
+                            value={listMarginT}
+                            onChange={newSize => setAttributes( { listMarginT: newSize } ) }
+                        />
+                        <RangeControl
+                            label={__('Margin Bottom (PX)')}
+                            value={listMarginB}
+                            onChange={newSize => setAttributes( { listMarginB: newSize } ) }
+                        />
+                        <RangeControl
+                            label={__('Padding (PX)')}
+                            value={listPadding}
+                            onChange={newSize => setAttributes( { listPadding: newSize } ) }
+                        />
+                    </PanelBody> ) }
                     { descChecked && ( <PanelBody
                         title={__('Description')}
                         initialOpen={false}
                     >
-                        <PanelColor
+                         <PanelColor
                             title={__('Text Color')}
                             colorValue={descColor}
                         >
@@ -931,6 +1135,11 @@ registerBlockType('premium/pricing-table', {
                             onChange={ newValue => setAttributes( { priceChecked: newValue } ) }
                         />
                         <CheckboxControl
+                            label={__('Features')}
+                            checked={listChecked}
+                            onChange={ newValue => setAttributes( { listChecked: newValue } ) }
+                        />
+                        <CheckboxControl
                             label={__('Description')}
                             checked={descChecked}
                             onChange={ newValue => setAttributes( { descChecked: newValue } ) }
@@ -1031,23 +1240,30 @@ registerBlockType('premium/pricing-table', {
                         </div>
                     </div> ) }
                     { titleChecked && (
-                        <RichText
-                            tagName={titleTag.toLowerCase()}
-                            className={`${blockClass}__title`}
-                            onChange={newText => setAttributes( { title: newText } ) }
-                            placeholder={__('Awesome Title')}
-                            value={title}
-                            isSelected={false}
+                        <div
+                            className={`${blockClass}__title_wrap`}
                             style={{
-                                color: titleColor,
-                                background: titleBack,
-                                fontSize: titleSize + 'px',
-                                fontWeight: titleWeight,
-                                lineHeight: titleLine + 'px',
-                                marginBottom: titleMarginB + 'px',
-                                padding: titlePadding + 'px'
+                                paddingTop: titleMarginT + 'px',
+                                paddingBottom: titleMarginB + 'px',
                             }}
-                        />
+                        >
+                            <RichText
+                                tagName={titleTag.toLowerCase()}
+                                className={`${blockClass}__title`}
+                                onChange={newText => setAttributes( { title: newText } ) }
+                                placeholder={__('Awesome Title')}
+                                value={title}
+                                isSelected={false}
+                                style={{
+                                    color: titleColor,
+                                    background: titleBack,
+                                    fontSize: titleSize + 'px',
+                                    fontWeight: titleWeight,
+                                    lineHeight: titleLine + 'px',
+                                    padding: titlePadding + 'px'
+                                }}
+                            />
+                        </div>
                     ) }
                     { priceChecked && ( <div
                         className={`${blockClass}__price_wrap`}
@@ -1056,6 +1272,7 @@ registerBlockType('premium/pricing-table', {
                             marginTop: priceMarginT + 'px',
                             marginBottom: priceMarginB + 'px',
                             padding: pricePadding + 'px',
+                            justifyContent: contentAlign
                         }}
                     >
                         { '' !== slashPrice &&(
@@ -1063,7 +1280,8 @@ registerBlockType('premium/pricing-table', {
                                 className={`${blockClass}__slash`}
                                 style={{
                                     color: slashColor,
-                                    fontSize: slashSize + 'px'
+                                    fontSize: slashSize + 'px',
+                                    alignSelf: slashV
                                 }}
                             >{slashPrice}</strike>
                         )}
@@ -1072,7 +1290,8 @@ registerBlockType('premium/pricing-table', {
                                 className={`${blockClass}__currency`}
                                 style={{
                                     color: currColor,
-                                    fontSize: currSize + 'px'
+                                    fontSize: currSize + 'px',
+                                    alignSelf: currV
                                 }}
                             >{currPrice}</span>
                         )}
@@ -1081,7 +1300,8 @@ registerBlockType('premium/pricing-table', {
                                 className={`${blockClass}__val`}
                                 style={{
                                     color: valColor,
-                                    fontSize: valSize + 'px'
+                                    fontSize: valSize + 'px',
+                                    alignSelf: valV
                                 }}
                             >{valPrice}</span>
                         )}
@@ -1090,7 +1310,8 @@ registerBlockType('premium/pricing-table', {
                                 className={`${blockClass}__divider`}
                                 style={{
                                     color: divColor,
-                                    fontSize: divSize + 'px'
+                                    fontSize: divSize + 'px',
+                                    alignSelf: divV
                                 }}
                             >{divPrice}</span>
                         )}
@@ -1099,10 +1320,37 @@ registerBlockType('premium/pricing-table', {
                                 className={`${blockClass}__dur`}
                                 style={{
                                     color: durColor,
-                                    fontSize: durSize + 'px'
+                                    fontSize: durSize + 'px',
+                                    alignSelf: durV
                                 }}
                             >{durPrice}</span>
                         )}
+                    </div> ) }
+                    { listChecked && ( <div
+                        className={`${blockClass}__list_wrap`}
+                        style={{
+                            marginTop: listMarginT + 'px',
+                            marginBottom: listMarginB + 'px',
+                        }}
+                    >
+                        <RichText
+                            tagName='ul'
+                            className={`${blockClass}__list`}
+                            placeholder={__('List Item #1')}
+                            multiline='li'
+                            onChange={ newText => setAttributes( { listItems: newText } ) }
+                            value={listItems}
+                            isSelected={false}
+                            style={{
+                                color: listColor,
+                                fontSize: listSize + 'px',
+                                background: listBack,
+                                padding: listPadding + 'px',
+                                listStyle: listStyle,
+                                listStylePosition: 'inside',
+                                fontWeight: listWeight
+                            }}
+                        />
                     </div> ) }
                     { descChecked && ( <div
                         className={`${blockClass}__desc_wrap`}
@@ -1134,8 +1382,6 @@ registerBlockType('premium/pricing-table', {
                         >
                             <a
                                 class={`${blockClass}__button_link`}
-                                href={btnLink}
-                                target={btnChecked ? '_blank' : ''}
                                 style={{
                                     color: btnColor,
                                     background: btnBack,
@@ -1147,7 +1393,7 @@ registerBlockType('premium/pricing-table', {
                                     border: btnBorderType,
                                     borderWidth: btnBorderWidth + 'px',
                                     borderRadius: btnBorderRadius + 'px',
-                                    borderColor: btnBorderColor,
+                                    borderColor: btnBorderColor
                                 }}
                             >
                                 <span>{btnText}</span>
@@ -1181,6 +1427,7 @@ registerBlockType('premium/pricing-table', {
                     titleLine,
                     titleWeight,
                     titleBack,
+                    titleMarginT,
                     titleMarginB,
                     titlePadding,
                     descChecked,
@@ -1201,18 +1448,23 @@ registerBlockType('premium/pricing-table', {
                     slashPrice,
                     slashColor,
                     slashSize,
+                    slashV,
                     currPrice,
                     currColor,
                     currSize,
+                    currV,    
                     valPrice,
                     valColor,
                     valSize,
+                    valV,
                     divPrice,
                     divColor,
                     divSize,
+                    divV,
                     durPrice,
                     durColor,
                     durSize,
+                    durV,
                     btnChecked,
                     btnText,
                     btnLink,
@@ -1235,7 +1487,16 @@ registerBlockType('premium/pricing-table', {
                     badgeBack,
                     badgeSize,
                     badgeText,
-                    
+                    listChecked,
+                    listColor,
+                    listWeight,
+                    listSize,
+                    listBack,
+                    listItems,
+                    listMarginB,
+                    listMarginT,
+                    listPadding,
+                    listStyle
                 }
             } = props;
             let blockClass = 'premium-pricing-table';
@@ -1269,25 +1530,29 @@ registerBlockType('premium/pricing-table', {
                             <span>{badgeText}</span>
                         </div>
                     </div> ) }
-                    <div>hello</div>
-                    { titleChecked && ( 
-                        <RichText.Content
-                            tagName={titleTag.toLowerCase()}
-                            className={`${blockClass}__title`}
-                            onChange={newText => setAttributes( { title: newText } ) }
-                            placeholder={__('Awesome Title')}
-                            value={title}
-                            isSelected={false}
+                    { titleChecked && (
+                        <div
+                            className={`${blockClass}__title_wrap`}
                             style={{
-                                color: titleColor,
-                                background: titleBack,
-                                fontSize: titleSize + 'px',
-                                fontWeight: titleWeight,
-                                lineHeight: titleLine + 'px',
-                                marginBottom: titleMarginB + 'px',
-                                padding: titlePadding + 'px',
+                                paddingTop: titleMarginT + 'px',
+                                paddingBottom: titleMarginB + 'px',
                             }}
-                        />
+                        >
+                            <RichText.Content
+                                tagName={titleTag.toLowerCase()}
+                                className={`${blockClass}__title`}
+                                value={title}
+                                style={{
+                                    color: titleColor,
+                                    background: titleBack,
+                                    fontSize: titleSize + 'px',
+                                    fontWeight: titleWeight,
+                                    lineHeight: titleLine + 'px',
+                                    marginBottom: titleMarginB + 'px',
+                                    padding: titlePadding + 'px',
+                                }}
+                            />
+                        </div>
                     ) }
                     { priceChecked && ( <div
                         className={`${blockClass}__price_wrap`}
@@ -1296,6 +1561,7 @@ registerBlockType('premium/pricing-table', {
                             marginTop: priceMarginT + 'px',
                             marginBottom: priceMarginB + 'px',
                             padding: pricePadding + 'px',
+                            justifyContent: contentAlign
                         }}
                     >
                         { '' !== slashPrice &&(
@@ -1303,7 +1569,8 @@ registerBlockType('premium/pricing-table', {
                                 className={`${blockClass}__slash`}
                                 style={{
                                     color: slashColor,
-                                    fontSize: slashSize + 'px'
+                                    fontSize: slashSize + 'px',
+                                    alignSelf: currV
                                 }}
                             >{slashPrice}</strike>
                         )}
@@ -1312,7 +1579,8 @@ registerBlockType('premium/pricing-table', {
                                 className={`${blockClass}__currency`}
                                 style={{
                                     color: currColor,
-                                    fontSize: currSize + 'px'
+                                    fontSize: currSize + 'px',
+                                    alignSelf: currV
                                 }}
                             >{currPrice}</span>
                         )}
@@ -1321,7 +1589,8 @@ registerBlockType('premium/pricing-table', {
                                 className={`${blockClass}__val`}
                                 style={{
                                     color: valColor,
-                                    fontSize: valSize + 'px'
+                                    fontSize: valSize + 'px',
+                                    alignSelf: valV
                                 }}
                             >{valPrice}</span>
                         )}
@@ -1330,7 +1599,8 @@ registerBlockType('premium/pricing-table', {
                                 className={`${blockClass}__divider`}
                                 style={{
                                     color: divColor,
-                                    fontSize: divSize + 'px'
+                                    fontSize: divSize + 'px',
+                                    alignSelf: divV
                                 }}
                             >{divPrice}</span>
                         )}
@@ -1339,10 +1609,33 @@ registerBlockType('premium/pricing-table', {
                                 className={`${blockClass}__dur`}
                                 style={{
                                     color: durColor,
-                                    fontSize: durSize + 'px'
+                                    fontSize: durSize + 'px',
+                                    alignSelf: durV
                                 }}
                             >{durPrice}</span>
                         )}
+                    </div> ) }
+                    { listChecked && ( <div
+                        className={`${blockClass}__list_wrap`}
+                        style={{
+                            marginTop: listMarginT + 'px',
+                            marginBottom: listMarginB + 'px'
+                        }}
+                        >
+                        <ul
+                            className={`${blockClass}__list`}
+                            style={{
+                                color:listColor,
+                                fontSize: listSize + 'px',
+                                background:listBack,
+                                padding: listPadding + 'px',
+                                listStyle: listStyle,
+                                listStylePosition: 'inside',
+                                fontWeight: listWeight
+                            }}
+                        >
+                            {listItems}
+                        </ul>
                     </div> ) }
                     { descChecked && ( <div
                         className={`${blockClass}__desc_wrap`}
@@ -1350,9 +1643,7 @@ registerBlockType('premium/pricing-table', {
                         <RichText.Content
                             tagName='p'
                             className={`${blockClass}__desc`}
-                            onChange={newText => setAttributes( { desc: newText } ) }
                             value={desc}
-                            isSelected={false}
                             style={{
                                 color: descColor,
                                 background: descBack,
@@ -1365,7 +1656,7 @@ registerBlockType('premium/pricing-table', {
                             }}
                         />
                     </div> ) }
-                    { btnChecked && ( 
+                    { btnChecked && (
                         <div
                             className={`${blockClass}__button`}
                             style={{
@@ -1374,8 +1665,6 @@ registerBlockType('premium/pricing-table', {
                         >
                             <a
                                 class={`${blockClass}__button_link`}
-                                href={btnLink}
-                                target={btnChecked ? '_blank' : ''}
                                 style={{
                                     color: btnColor,
                                     background: btnBack,
@@ -1387,7 +1676,7 @@ registerBlockType('premium/pricing-table', {
                                     border: btnBorderType,
                                     borderWidth: btnBorderWidth + 'px',
                                     borderRadius: btnBorderRadius + 'px',
-                                    borderColor: btnBorderColor,
+                                    borderColor: btnBorderColor
                                 }}
                             >
                                 <span>{btnText}</span>
