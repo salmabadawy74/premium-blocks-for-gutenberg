@@ -1,3 +1,5 @@
+const blockClass = 'premium-banner';
+
 const {
     __
 } = wp.i18n;
@@ -340,7 +342,7 @@ registerBlockType('premium/banner', {
                     label: 'Custom'
                 }
             ];
-            let blockClass = className.replace('wp-block-','');
+            
             return [                
                 isSelected && (
                     <BlockControls key='controls'>
@@ -700,7 +702,7 @@ registerBlockType('premium/banner', {
                     target
                 }
             } = props;
-            let blockClass = 'premium-banner';
+            
             return (
                 <div
                     className={`${blockClass} ${blockClass}__responsive_${responsive}`}

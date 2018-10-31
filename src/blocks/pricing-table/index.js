@@ -1,3 +1,5 @@
+const blockClass = 'premium-pricing-table';
+
 const {
     __
 } = wp.i18n;
@@ -577,7 +579,7 @@ registerBlockType('premium/pricing-table', {
                     label: "Left"
                 }
             ];
-            let blockClass = className.replace('wp-block-','');
+            
             return [
                 isSelected && (
                 <BlockControls key='controls'>
@@ -1499,7 +1501,7 @@ registerBlockType('premium/pricing-table', {
                     listStyle
                 }
             } = props;
-            let blockClass = 'premium-pricing-table';
+            
             return (
                 <div
                     className={`${blockClass}`}

@@ -14,14 +14,31 @@ module.exports = {
         rules: [
             { 
                 // basically tells webpack to use babel with the correct presets
-                test: /\.js$/,
+                test: /\.(js|jsx|mjs)$/,
                 loader: 'babel-loader',
-                query: {
-                    presets: ['@babel/preset-env', '@babel/preset-react']
-                }
+//                query: {
+//                    presets: ['@babel/preset-env', '@babel/preset-react']
+//                }
             }
         ]
     },
-    // Webpack yells at you if you don't choose a mode...
-    mode: 'development'
 };
+
+if (process.env.NODE_ENV === 'production') {
+	module.exports.plugins = (module.exports.plugins || []).concat([
+		new webpack.DefinePlugin({
+			'process.env': {
+				NODE_ENV: '"production"'
+			}
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			sourceMap: false,
+			compress: {
+				warnings: false
+			}
+		}),
+		new webpack.LoaderOptionsPlugin({
+			minimize: true
+		})
+	])
+}

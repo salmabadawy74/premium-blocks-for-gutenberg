@@ -95,7 +95,7 @@ class Premium_Blocks_Integration {
         //Enqueue Google Maps API key Script
         wp_enqueue_script(
             'premium-map-block',
-            'https://maps.googleapis.com/maps/api/js?key=AIzaSyBhJeQtbiPhmxP76wrPKEZ8hteGqgkpUm0'
+            'https://maps.googleapis.com/maps/api/js?key=AIzaSyB_OCwutmAnPHdhmmL41ycUzyIgHt8qTX8'
         );
     }
     
