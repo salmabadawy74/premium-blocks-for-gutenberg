@@ -41,10 +41,10 @@ class PremiumMap extends Component {
     constructor() {
         super( ...arguments );
         this.state = {
-            currentAddress: '',
-            currentMap: null,
-            currentMarker: null,
-            currentInfo: null,
+            thisAddress: '',
+            thisMap: null,
+            thisMarker: null,
+            thisInfo: null,
             fetching: false,
         };
 
@@ -55,34 +55,50 @@ class PremiumMap extends Component {
     
     componentDidMount() {
         
-        const { attributes, setAttributes, clientId } = this.props;
-        if (!attributes.mapID) {
+        const {
+            attributes,
+            setAttributes,
+            clientId
+        } = this.props;
+        
+        if ( ! attributes.mapID ) {
             setAttributes( { mapID: 'premium-map-' + clientId } );
-            
         }
         this.initMap();
     }
 
     componentDidUpdate( prevProps, prevState ) {
         
-        const { address: prevAddr, useLatLng: prevUseLatLng } = prevProps.attributes;
-        const { address, useLatLng } = this.props.attributes;
-
+        const {
+            address: prevAddr,
+            useLatLng: prevUseLatLng
+        } = prevProps.attributes;
+        
+        const {
+            address,
+            useLatLng
+        } = this.props.attributes;
+        
 //        if (prevAddr !== address || prevUseLatLng !== useLatLng || prevState !== this.state)
 //            return null;
 
         if (prevProps.attributes !== this.props.attributes) {
             clearTimeout(isMapUpdated);
-            isMapUpdated = setTimeout(this.initMap, 1000);
+            isMapUpdated = setTimeout(this.initMap, 500);
         }
     }
     
     initMap() {
         
-        if(typeof google === 'undefined' || !this.props.attributes.mapID ) return null;
+        if( typeof google === 'undefined' || ! this.props.attributes.mapID ) return null;
         
 //      const DEFAULT_MARKER = 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2.png';
-        const { currentMap, currentMarker, currentInfo } = this.state;
+        const {
+            thisMap,
+            thisMarker,
+            thisInfo
+        } = this.state;
+        
         const { 
             mapID,
             mapStyle,
@@ -93,12 +109,19 @@ class PremiumMap extends Component {
             zoomControl,
             fullscreenControl,
             streetViewControl,
-            scrollwheel 
+            scrollwheel,
+            centerLng,
+            centerLat,
+            markerTitle,
+            markerDesc,
+            mapMarker,
+            markerIconUrl,
+            markerCustom
         } = this.props.attributes;
 //            const location = { lat: parseFloat(lat), lng: parseFloat(lng) };
 //            const that = this;
 //            const formattedDesc = markerDesc.replace(/\n/g, '<br/>');
-            let map = currentMap;
+            let map = thisMap;
 //            let marker = currentMarker;
 //            let infoWindow = currentInfo;
 
@@ -113,18 +136,38 @@ class PremiumMap extends Component {
                 streetViewControl: streetViewControl,
                 scrollwheel: scrollwheel,
                 center: {
-                    lng: 31.31,
-                    lat: 31.31,
+                    lng: parseFloat( centerLng ),
+                    lat: parseFloat( centerLat )
                 },
                 style: mapStyle
             });
-            this.setState( { currentMap: map } );
+            
+            if( mapMarker ) {
+                let latlng = new google.maps.LatLng( parseFloat( centerLat ) , parseFloat( centerLng ) );
+                let marker = new google.maps.Marker({
+                    position	: latlng,
+                    map			: map,
+                    icon        : markerCustom ? markerIconUrl : ''
+                });
+            }
         }
         
-        map.setZoom( zoom );
+        map.setOptions({
+            zoom: zoom,
+            mapTypeId: mapType,
+            mapTypeControl: mapTypeControl,
+            zoomControl: zoomControl,
+            fullscreenControl: fullscreenControl,
+            streetViewControl: streetViewControl,
+            style: mapStyle
+        });
+        map.setCenter({
+            lng: parseFloat( centerLng ),
+            lat: parseFloat( centerLat )
+        });
+        
     }
-    
-    
+  
     render() {
         const { isSelected, setAttributes, clientId } = this.props;
 
@@ -138,7 +181,20 @@ class PremiumMap extends Component {
             zoomControl,
             fullscreenControl,
             streetViewControl,
-            scrollwheel
+            scrollwheel,
+            centerLng,
+            centerLat,
+            markerDesc,
+            markerTitle,
+            mapMarker,
+            markerIconUrl,
+            markerIconId,
+            markerCustom,
+            maxWidth,
+            titleColor,
+            titleSize,
+            descColor,
+            descSize,
         } = this.props.attributes;
 
         const TYPES = [
@@ -162,6 +218,131 @@ class PremiumMap extends Component {
 
         return [
             typeof google !== 'undefined' && isSelected && ( <InspectorControls key='key'>
+                <PanelBody
+                    title={__('Center Location')}
+                    initialOpen={false}
+                >
+                    <TextControl
+                        label={__('Longitude')}
+                        value={centerLng}
+                        help={ [
+                            __('Get your location coordinates from'),
+                            <a href="https://www.latlong.net/" target="_blank">&nbsp;{__('here') }</a> 
+                        ] }
+                        onChange={ newLng => setAttributes( { centerLng: newLng } ) }
+                    />
+                    <TextControl
+                        label={__('Latitude')}
+                        value={centerLat}
+                        onChange={ newLat => setAttributes( { centerLat: newLat } ) }
+                    />
+                </PanelBody>
+                <PanelBody
+                   title={__('Marker')}
+                   initialOpen={false}
+                >
+                    <CheckboxControl
+                        label={__('Enable Marker')}
+                        checked={mapMarker}
+                        onChange={ check => setAttributes( { mapMarker: check } ) }
+                    />
+                    { mapMarker && (
+                        <TextControl
+                            label={__('Marker Title')}
+                            value={markerTitle}
+                            onChange={ newText => setAttributes( { markerTitle: newText } ) }
+                        />
+                    ) }
+                    { mapMarker && (
+                        <TextControl
+                            label={__('Marker Description')}
+                            value={markerDesc}
+                            onChange={ newText => setAttributes( { markerDesc: newText } ) }
+                        />
+                    ) }
+                    { mapMarker && (
+                        <CheckboxControl
+                            label={__('Custom Marker Icon')}
+                            checked={markerCustom}
+                            onChange={ check => setAttributes( { markerCustom: check } ) }
+                        />
+                    ) }
+                    { mapMarker && markerCustom && markerIconUrl &&
+                        <img src={ markerIconUrl } width="100%" height="auto" />
+                    }
+                    { markerCustom && mapMarker && (
+                        <MediaUpload
+                            allowedTypes={ ["image"] }
+                            onSelect={ media => {
+                                setAttributes( {
+                                    markerIconId: media.id,
+                                    markerIconUrl: ( 'undefined' === typeof media.sizes.thumbnail ) ? media.url : media.sizes.thumbnail.url 
+                                } )
+                            } }
+                            type="image"
+                            value={ markerIconId }
+                            render={({ open }) => (
+                                <IconButton
+                                    label={ __( "Change Marker Icon" ) }
+                                    icon="edit"
+                                    onClick={ open }
+                                >{ __("Change Marker Icon") }</IconButton>
+                            )}
+                        />
+                    ) }
+                    { ( '' !== markerDesc || '' !== markerTitle ) && (
+                        <RangeControl
+                            label={__('Description Box Max Width (PX)')}
+                            value={maxWidth}
+                            min='10'
+                            max='500'
+                            onChange={newSize => setAttributes( { maxWidth: newSize } ) }
+                        />
+                        
+                    ) }
+                </PanelBody>
+                { mapMarker && '' !== markerTitle && ( <PanelBody
+                   title={__('Marker Title Style')}
+                   initialOpen={false}
+                >
+                    <PanelColor
+                        label={__('Color')}
+                        colorValue={titleColor}
+                    >
+                        <ColorPalette
+                            value={titleColor}
+                            onChange= { newColor => setAttributes( { titleColor: newColor } ) }
+                        />
+                    </PanelColor>
+                    <RangeControl
+                        label={__('Font Size (PX)')}
+                        value={titleSize}
+                        min='10'
+                        max='80'
+                        onChange={newSize => setAttributes( { titleSize: newSize } ) }
+                    />
+                </PanelBody> ) }
+                { mapMarker && '' !== markerDesc && ( <PanelBody
+                   title={__('Marker Description Style')}
+                   initialOpen={false}
+                >
+                    <PanelColor
+                        label={__('Color')}
+                        colorValue={descColor}
+                    >
+                        <ColorPalette
+                            value={descColor}
+                            onChange= { newColor => setAttributes( { descColor: newColor } ) }
+                        />
+                    </PanelColor>
+                    <RangeControl
+                        label={__('Font Size (PX)')}
+                        value={descSize}
+                        min='10'
+                        max='80'
+                        onChange={newSize => setAttributes( { descSize: newSize } ) }
+                    />
+                </PanelBody> ) }
                 <PanelBody
                    title={__('Controls')}
                    initialOpen={false}
@@ -221,7 +402,10 @@ class PremiumMap extends Component {
                     <TextareaControl
                         label={__('Maps Style')}
                         value={mapStyle}
-                        help={__('Get your custom styling from "https://snazzymaps.com/"')}
+                        help={ [
+                            __('Get your custom styling from'),
+                            <a href="https://snazzymaps.com/" target="_blank">&nbsp;{__('here') }</a> 
+                        ] }
                         onChange={ newStyle => setAttributes( { mapStyle: newStyle } ) }
                     />
                 </PanelBody>
@@ -259,7 +443,7 @@ registerBlockType('premium/maps', {
         },
         zoom: {
             type: 'number',
-            default: 5,  
+            default: 6,
         },
         mapTypeControl: {
             type: 'boolean',
@@ -281,6 +465,55 @@ registerBlockType('premium/maps', {
             type: 'boolean',
             default: false,  
         },
+        centerLat: {
+            type: 'number',
+            default: '40.7569733'
+        },
+        centerLng: {
+            type: 'string',
+            default: ' -73.98878250000001'
+        },
+        markerTitle: {
+            type: 'string',
+            default: __('Awesome Title'),  
+        },
+        markerDesc: {
+            type: 'string',
+            default: __('Cool Description'),  
+        },
+        mapMarker: {
+            type: 'boolean',
+            default: true,  
+        },
+        markerIconUrl: {
+            type: 'string',
+        },
+        markerIconId: {
+            type: 'number',
+            default: '',  
+        },
+        markerCustom: {
+            type: 'boolean',
+            default: false,  
+        },
+        maxWidth: {
+            type: 'number',
+            default: 300,
+        },
+        titleColor: {
+            type: 'string',
+            default: '#6ec1e4',  
+        },
+        titleSize: {
+            type: 'number',
+            default: 18,  
+        },
+        descColor: {
+            type: 'string',
+        },
+        descSize: {
+            type: 'number',
+        },
         
     },
     edit: PremiumMap,
@@ -298,7 +531,20 @@ registerBlockType('premium/maps', {
                 zoomControl,
                 fullscreenControl,
                 streetViewControl,
-                scrollwheel
+                scrollwheel,
+                centerLat,
+                centerLng,
+                mapMarker,
+                markerIconUrl,
+                markerIconId,
+                markerCustom,
+                maxWidth,
+                markerTitle,
+                markerDesc,
+                titleColor,
+                titleSize,
+                descColor,
+                descSize
             }
         } = props;
         
@@ -310,10 +556,42 @@ registerBlockType('premium/maps', {
                     height: height + 'px',
                 }}
             >
+                <div
+                    className={`${blockClass}__marker`}
+                >
+			        <div
+                        className={`${blockClass}__info`}
+                    >
+                        { '' !== markerTitle && (
+                            <p 
+                                className={`${blockClass}__title`}
+                                style={{
+                                    color: titleColor,
+                                    fontSize: titleSize + 'px'
+                                }}
+                            >
+                                {markerTitle}
+                            </p>
+                        ) }
+                        { '' !== markerDesc && (
+                            <div
+                                className={`${blockClass}__desc`}
+                                style={{
+                                    color: descColor,
+                                    fontSize: descSize + 'px'
+                                }}
+                            >
+                                {markerDesc}
+                            </div>
+                        ) }
+                    </div>
+		        </div>
             <script>
                 {`window.addEventListener('load',function(){
                     if( typeof google === 'undefined' ) return;
-                    var map = new google.maps.Map(document.getElementById('${mapID}'), {
+                    let mapElem = document.getElementById('${mapID}');
+                    let pin = mapElem.querySelector('.${blockClass}__marker');
+                    let map = new google.maps.Map(mapElem, {
                         zoom: ${zoom},
                         gestureHandling: 'cooperative',
                         mapTypeId: '${mapType}',
@@ -323,16 +601,34 @@ registerBlockType('premium/maps', {
                         streetViewControl: ${streetViewControl},
                         scrollwheel: ${scrollwheel},
                         center: {
-                            lng: 31.31,
-                            lat: 31.31,
+                            lng: parseFloat( ${centerLng} ),
+                            lat: parseFloat( ${centerLat} )
                         },
                         style: ${mapStyle}
                     });
+                    if( ${mapMarker} ) {
+                        let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
+                        let markerIcon = '${markerIconUrl}';
+                        let marker = new google.maps.Marker({
+                            position	: latlng,
+                            map			: map,
+                            icon        : ${markerCustom} ? markerIcon : ''
+                        });
+                        
+                        let infowindow = new google.maps.InfoWindow({
+                            maxWidth    : ${maxWidth},
+                            content		: pin.innerHTML
+                        });
+                        
+                        google.maps.event.addListener(marker, 'click', function() {
+                            infowindow.open( map, marker );
+                        });
+                    }
+                    
+
                 });`}
             </script>
             </div>
         );
-    }
-    
-    
+    } 
 });
