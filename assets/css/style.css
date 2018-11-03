@@ -806,7 +806,10 @@ a.premium-dheading-block__link:hover {
 .premium-maps__wrap {
     height: 500px;
 }
-.premium-maps__wrap .premium-maps__title {
+#wpwrap .edit-post-visual-editor .premium-maps__wrap h3.premium-maps__title,
+.premium-maps__wrap h3.premium-maps__title {
     margin-bottom: 0.2em;
+    font-weight: 600;
+    margin-top: 0;
     padding: 0;
 }

@@ -91,14 +91,15 @@ class PremiumMap extends Component {
     initMap() {
         
         if( typeof google === 'undefined' || ! this.props.attributes.mapID ) return null;
-        
-//      const DEFAULT_MARKER = 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2.png';
+
         const {
             thisMap,
             thisMarker,
             thisInfo
         } = this.state;
-        
+        const {
+            setAttributes
+        } = this.props;
         const { 
             mapID,
             mapStyle,
@@ -116,17 +117,29 @@ class PremiumMap extends Component {
             markerDesc,
             mapMarker,
             markerIconUrl,
-            markerCustom
+            markerCustom,
+            maxWidth,
+            boxAlign,
+            boxPadding,
+            titleColor,
+            titleSize,
+            descColor,
+            descSize,
+            gapBetween
         } = this.props.attributes;
-//            const location = { lat: parseFloat(lat), lng: parseFloat(lng) };
+        
 //            const that = this;
 //            const formattedDesc = markerDesc.replace(/\n/g, '<br/>');
-            let map = thisMap;
-//            let marker = currentMarker;
-//            let infoWindow = currentInfo;
-
+        
+        let map = thisMap;
+        let marker = thisMarker;
+        let infoWindow = thisInfo;
+        let latlng = new google.maps.LatLng( parseFloat( centerLat ) , parseFloat( centerLng ) );
+        
         if (!map) {
-            map = new google.maps.Map(document.getElementById(mapID), {
+            let mapElem = document.getElementById(mapID);
+            
+            map = new google.maps.Map(mapElem, {
                 zoom: zoom,
                 gestureHandling: 'cooperative',
                 mapTypeId: mapType,
@@ -135,21 +148,11 @@ class PremiumMap extends Component {
                 fullscreenControl: fullscreenControl,
                 streetViewControl: streetViewControl,
                 scrollwheel: scrollwheel,
-                center: {
-                    lng: parseFloat( centerLng ),
-                    lat: parseFloat( centerLat )
-                },
-                style: mapStyle
+                center: latlng,
+                styles: JSON.parse( mapStyle )
             });
+            this.setState( { thisMap: map } );
             
-            if( mapMarker ) {
-                let latlng = new google.maps.LatLng( parseFloat( centerLat ) , parseFloat( centerLng ) );
-                let marker = new google.maps.Marker({
-                    position	: latlng,
-                    map			: map,
-                    icon        : markerCustom ? markerIconUrl : ''
-                });
-            }
         }
         
         map.setOptions({
@@ -159,12 +162,50 @@ class PremiumMap extends Component {
             zoomControl: zoomControl,
             fullscreenControl: fullscreenControl,
             streetViewControl: streetViewControl,
-            style: mapStyle
+            styles: JSON.parse( mapStyle )
         });
-        map.setCenter({
-            lng: parseFloat( centerLng ),
-            lat: parseFloat( centerLat )
-        });
+
+        if( ! infoWindow && mapMarker && '' !== markerTitle && '' !== markerDesc ) {
+            infoWindow = new google.maps.InfoWindow({
+                maxWidth    : maxWidth
+            });
+            this.setState( { thisInfo: infoWindow } );
+        }
+
+        if( mapMarker && '' !== markerTitle && '' !== markerDesc ) {
+            infoWindow.setContent(
+                `<div class="${blockClass}__info" style="text-align:${boxAlign};padding:${boxPadding}px"
+                    >
+                    <h3
+                        class="${blockClass}__title"
+                        style="color:${titleColor};font-size:${titleSize}px;margin-bottom:${gapBetween}px"
+                    >
+                        ${markerTitle}
+                    </h3>
+                    <div
+                        class="${blockClass}__desc"
+                        style="color: ${descColor};font-size: ${descSize}px"
+                    >
+                        ${markerDesc}
+                    </div>
+                </div>`
+            );
+        }
+        
+        map.setCenter( latlng );
+        
+        if( mapMarker ) {
+            
+            let marker = new google.maps.Marker({
+                position	: latlng,
+                map			: map,
+                icon        : markerCustom ? markerIconUrl : ''
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+                infoWindow.open( map, marker );
+            }); 
+        }
         
     }
   
@@ -195,6 +236,9 @@ class PremiumMap extends Component {
             titleSize,
             descColor,
             descSize,
+            boxAlign,
+            boxPadding,
+            gapBetween
         } = this.props.attributes;
 
         const TYPES = [
@@ -215,7 +259,12 @@ class PremiumMap extends Component {
                 label: "Hybrid"
             }
         ];
-
+        
+        const ALIGNS = [
+            'left',
+            'center',
+            'right'
+        ];
         return [
             typeof google !== 'undefined' && isSelected && ( <InspectorControls key='key'>
                 <PanelBody
@@ -254,10 +303,33 @@ class PremiumMap extends Component {
                         />
                     ) }
                     { mapMarker && (
-                        <TextControl
+                        <TextareaControl
                             label={__('Marker Description')}
                             value={markerDesc}
                             onChange={ newText => setAttributes( { markerDesc: newText } ) }
+                        />
+                    ) }
+                    { mapMarker && (
+                        <RangeControl
+                            label={__('Spacing (PX)')}
+                            value={gapBetween}
+                            min='10'
+                            max='80'
+                            onChange={newSize => setAttributes( { gapBetween: newSize } ) }
+                        />
+                    ) }
+                    { mapMarker && (
+                        <Toolbar
+                            controls={
+                                ALIGNS.map( ( align ) => (
+                                    {
+                                        icon: 'editor-align' + align,
+                                        isActive: align === boxAlign,
+                                        onClick: () => setAttributes( { boxAlign: align } ),
+                                    }
+                                    )
+                                )
+                            }
                         />
                     ) }
                     { mapMarker && (
@@ -290,13 +362,22 @@ class PremiumMap extends Component {
                             )}
                         />
                     ) }
-                    { ( '' !== markerDesc || '' !== markerTitle ) && (
+                    { ( mapMarker && '' !== markerDesc || '' !== markerTitle ) && (
                         <RangeControl
                             label={__('Description Box Max Width (PX)')}
                             value={maxWidth}
                             min='10'
                             max='500'
                             onChange={newSize => setAttributes( { maxWidth: newSize } ) }
+                        />
+                    ) }
+                    { mapMarker && (
+                        <RangeControl
+                            label={__('Description Box Padding (PX)')}
+                            value={boxPadding}
+                            min='1'
+                            max='50'
+                            onChange={newSize => setAttributes( { boxPadding: newSize } ) }
                         />
                         
                     ) }
@@ -406,7 +487,7 @@ class PremiumMap extends Component {
                             __('Get your custom styling from'),
                             <a href="https://snazzymaps.com/" target="_blank">&nbsp;{__('here') }</a> 
                         ] }
-                        onChange={ newStyle => setAttributes( { mapStyle: newStyle } ) }
+                        onChange={ newStyle => setAttributes( { mapStyle: '' !== newStyle ? newStyle : '[]' } ) }
                     />
                 </PanelBody>
             </InspectorControls> ),
@@ -431,7 +512,8 @@ registerBlockType('premium/maps', {
             type: 'string'
         },
         mapStyle: {
-            type: 'style'
+            type: 'string',
+            default: '[]'
         },
         mapType: {
             type: 'string',
@@ -506,13 +588,27 @@ registerBlockType('premium/maps', {
         },
         titleSize: {
             type: 'number',
-            default: 18,  
+            default: 20,
         },
         descColor: {
             type: 'string',
+            default: '#000'
         },
         descSize: {
             type: 'number',
+            default: 16,
+        },
+        boxAlign: {
+            type: 'string',
+            default: 'center',
+        },
+        boxPadding: {
+            type: 'number',
+            default: '0',  
+        },
+        gapBetween: {
+            type: 'number',
+            default: 5,
         },
         
     },
@@ -544,7 +640,10 @@ registerBlockType('premium/maps', {
                 titleColor,
                 titleSize,
                 descColor,
-                descSize
+                descSize,
+                boxAlign,
+                boxPadding,
+                gapBetween
             }
         } = props;
         
@@ -561,17 +660,22 @@ registerBlockType('premium/maps', {
                 >
 			        <div
                         className={`${blockClass}__info`}
+                        style={{
+                            textAlign: boxAlign,
+                            padding: boxPadding + 'px',
+                        }}
                     >
                         { '' !== markerTitle && (
-                            <p 
+                            <h3
                                 className={`${blockClass}__title`}
                                 style={{
                                     color: titleColor,
-                                    fontSize: titleSize + 'px'
+                                    fontSize: titleSize + 'px',
+                                    marginBottom: gapBetween + 'px'
                                 }}
                             >
                                 {markerTitle}
-                            </p>
+                            </h3>
                         ) }
                         { '' !== markerDesc && (
                             <div
@@ -591,6 +695,8 @@ registerBlockType('premium/maps', {
                     if( typeof google === 'undefined' ) return;
                     let mapElem = document.getElementById('${mapID}');
                     let pin = mapElem.querySelector('.${blockClass}__marker');
+                    
+                    let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
                     let map = new google.maps.Map(mapElem, {
                         zoom: ${zoom},
                         gestureHandling: 'cooperative',
@@ -600,14 +706,10 @@ registerBlockType('premium/maps', {
                         fullscreenControl: ${fullscreenControl},
                         streetViewControl: ${streetViewControl},
                         scrollwheel: ${scrollwheel},
-                        center: {
-                            lng: parseFloat( ${centerLng} ),
-                            lat: parseFloat( ${centerLat} )
-                        },
-                        style: ${mapStyle}
+                        center: latlng,
+                        styles: ${mapStyle}
                     });
                     if( ${mapMarker} ) {
-                        let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
                         let markerIcon = '${markerIconUrl}';
                         let marker = new google.maps.Marker({
                             position	: latlng,
@@ -625,7 +727,6 @@ registerBlockType('premium/maps', {
                         });
                     }
                     
-
                 });`}
             </script>
             </div>

@@ -1,1 +1,4318 @@
-!function(e){function t(l){if(n[l])return n[l].exports;var r=n[l]={i:l,l:!1,exports:{}};return e[l].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};t.m=e,t.c=n,t.d=function(e,n,l){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:l})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=0)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var l=n(1),r=(n.n(l),n(2)),a=(n.n(r),n(3)),o=(n.n(a),n(4));n.n(o)},function(e,t){var n=wp.i18n.__,l=wp.blocks.registerBlockType,r=wp.components,a=(r.Toolbar,r.PanelBody),o=r.PanelColor,i=r.SelectControl,c=r.TextControl,m=r.RangeControl,u=r.CheckboxControl,p=wp.editor,d=p.BlockControls,s=p.InspectorControls,g=p.AlignmentToolbar,b=(p.RichText,p.ColorPalette),f=p.URLInput;l("premium/dheading-block",{title:n("Dual Heading"),icon:"editor-paragraph",category:"premium-blocks",attributes:{contentAlign:{type:"string",default:"center"},firstHeading:{type:"array",source:"children",default:"Premium ",selector:".premium-dheading-block__first"},secondHeading:{type:"array",source:"children",default:"Blocks",selector:".premium-dheading-block__second"},titleTag:{type:"string",default:"h1"},display:{type:"string",default:"inline"},firstColor:{type:"string",default:"#6ec1e4"},firstSize:{type:"number",default:"20"},firstBackground:{type:"string"},firstBorderType:{type:"string",default:"none"},firstBorderWidth:{type:"number",default:"1"},firstBorderRadius:{type:"number",default:"0"},firstBorderColor:{type:"string"},firstMarginR:{type:"number",default:"0"},firstMarginL:{type:"number",default:"0"},firstPadding:{type:"number",default:"0"},firstClip:{type:"boolean",default:!1},firstAnim:{type:"boolean",default:!1},firstClipColor:{type:"string",default:"#54595f"},secondColor:{type:"string",default:"#54595f"},secondSize:{type:"number",default:"20"},secondBackground:{type:"string"},secondBorderType:{type:"string",default:"none"},secondBorderWidth:{type:"number",default:"1"},secondBorderRadius:{type:"number",default:"0"},secondBorderColor:{type:"string"},secondMarginR:{type:"number",default:"0"},secondMarginL:{type:"number",default:"0"},secondPadding:{type:"number",default:"0"},secondClip:{type:"boolean",default:!1},secondAnim:{type:"boolean",default:!1},secondClipColor:{type:"string",default:"#6ec1e4"},link:{type:"boolean",default:!1},target:{type:"boolean",default:!1},headingURL:{type:"string"}},edit:function(e){var t=e.setAttributes,l=e.isSelected,r=e.className,p=e.attributes,h=p.contentAlign,C=p.firstHeading,w=p.secondHeading,y=(p.titleTag,p.display),v=p.firstColor,E=p.firstBackground,k=p.firstSize,_=p.firstBorderType,x=p.firstBorderWidth,B=p.firstBorderRadius,S=p.firstBorderColor,T=p.firstPadding,P=p.firstMarginR,z=p.firstMarginL,M=p.firstClip,W=p.firstAnim,N=p.firstClipColor,L=p.secondColor,R=p.secondBackground,I=p.secondSize,V=p.secondBorderType,A=p.secondBorderWidth,H=p.secondBorderRadius,D=p.secondBorderColor,O=p.secondPadding,F=p.secondMarginL,X=p.secondMarginR,U=p.secondClip,j=p.secondAnim,G=p.secondClipColor,Z=p.link,q=p.target,$=p.headingURL,J=[{value:"inline",label:"Inline"},{value:"block",label:"Block"}],K=[{value:"none",label:"None"},{value:"solid",label:"Solid"},{value:"double",label:"Double"},{value:"dotted",label:"Dotted"},{value:"dashed",label:"Dashed"},{value:"groove",label:"Groove"}],Q=r.replace("wp-block-","");return[l&&wp.element.createElement(d,{key:"controls"},wp.element.createElement(g,{value:h,onChange:function(e){return t({contentAlign:e})}})),l&&wp.element.createElement(s,{key:"inspector"},wp.element.createElement(a,{title:n("General Settings"),initialOpen:!1},wp.element.createElement(c,{label:n("First Heading"),type:"url",value:C,onChange:function(e){return t({firstHeading:e})}}),wp.element.createElement(c,{label:n("Second Heading"),type:"url",value:w,onChange:function(e){return t({secondHeading:e})}}),wp.element.createElement(i,{label:n("Display"),value:y,options:J,onChange:function(e){return t({display:e})}}),wp.element.createElement(u,{label:n("Link"),checked:Z,onChange:function(e){return t({link:e})}}),Z&&wp.element.createElement(u,{label:n("Open link in new tab"),checked:q,onChange:function(e){return t({target:e})}})),wp.element.createElement(a,{title:n("First Heading"),initialOpen:!1},wp.element.createElement(u,{label:n("Clipped"),checked:M,onChange:function(e){return t({firstClip:e})}}),M&&wp.element.createElement(u,{label:n("Animated"),checked:W,onChange:function(e){return t({firstAnim:e})}}),wp.element.createElement(o,{title:n("Color"),colorValue:v},wp.element.createElement(b,{value:v,onChange:function(e){return t({firstColor:e})}})),wp.element.createElement("p",null,n("Font Size (PX)")),wp.element.createElement(m,{value:k,min:"10",max:"80",onChange:function(e){return t({firstSize:e})}}),!M&&wp.element.createElement(o,{title:n("Background Color"),colorValue:E},wp.element.createElement(b,{value:E,onChange:function(e){return t({firstBackground:e})}})),M&&wp.element.createElement(o,{title:n("Second Color"),colorValue:N},wp.element.createElement(b,{value:N,onChange:function(e){return t({firstClipColor:e})}})),wp.element.createElement(i,{label:n("Border Type"),options:K,value:_,onChange:function(e){return t({firstBorderType:e})}}),wp.element.createElement("p",null,"none"!=_&&n("Border Width")),"none"!=_&&wp.element.createElement(m,{value:x,min:"0",max:"50",onChange:function(e){return t({firstBorderWidth:e})}}),"none"!=_&&wp.element.createElement(o,{title:n("Border Color"),colorValue:S},wp.element.createElement(b,{value:S,onChange:function(e){return t({firstBorderColor:e})}})),wp.element.createElement("p",null,n("Border Radius")),wp.element.createElement(m,{value:B,min:"0",max:"150",onChange:function(e){return t({firstBorderRadius:e})}}),wp.element.createElement("p",null,n("Margin Left")),wp.element.createElement(m,{value:z,min:"0",max:"100",onChange:function(e){return t({firstMarginL:e})}}),wp.element.createElement("p",null,n("Margin Right")),wp.element.createElement(m,{value:P,min:"0",max:"100",onChange:function(e){return t({firstMarginR:e})}}),wp.element.createElement("p",null,n("Padding")),wp.element.createElement(m,{value:T,min:"0",max:"100",onChange:function(e){return t({firstPadding:e})}})),wp.element.createElement(a,{title:n("Second Heading"),initialOpen:!1},wp.element.createElement(u,{label:n("Clipped"),checked:U,onChange:function(e){return t({secondClip:e})}}),U&&wp.element.createElement(u,{label:n("Animated"),checked:j,onChange:function(e){return t({secondAnim:e})}}),wp.element.createElement(o,{title:n("Color"),colorValue:L},wp.element.createElement(b,{value:L,onChange:function(e){return t({secondColor:e})}})),wp.element.createElement("p",null,n("Font Size (PX)")),wp.element.createElement(m,{min:"10",max:"80",value:I,onChange:function(e){return t({secondSize:e})}}),!U&&wp.element.createElement(o,{title:n("Background Color"),colorValue:R},wp.element.createElement(b,{value:R,onChange:function(e){return t({secondBackground:e})}})),U&&wp.element.createElement(o,{title:n("Second Color"),colorValue:G},wp.element.createElement(b,{value:G,onChange:function(e){return t({secondClipColor:e})}})),wp.element.createElement(i,{label:n("Border Type"),options:K,value:V,onChange:function(e){return t({secondBorderType:e})}}),wp.element.createElement("p",null,"none"!=V&&n("Border Width")),"none"!=V&&wp.element.createElement(m,{value:A,min:"0",max:"50",onChange:function(e){return t({secondBorderWidth:e})}}),"none"!=V&&wp.element.createElement(o,{title:n("Border Color"),colorValue:D},wp.element.createElement(b,{value:D,onChange:function(e){return t({secondBorderColor:e})}})),wp.element.createElement("p",null,n("Border Radius")),wp.element.createElement(m,{value:H,min:"0",max:"150",onChange:function(e){return t({secondBorderRadius:e})}}),wp.element.createElement("p",null,n("Margin Left")),wp.element.createElement(m,{value:F,min:"0",max:"100",onChange:function(e){return t({secondMarginL:e})}}),wp.element.createElement("p",null,n("Margin Right")),wp.element.createElement(m,{value:X,min:"0",max:"100",onChange:function(e){return t({secondMarginR:e})}}),wp.element.createElement("p",null,n("Padding")),wp.element.createElement(m,{value:O,min:"0",max:"100",onChange:function(e){return t({secondPadding:e})}}))),wp.element.createElement("div",{className:Q+"__container",style:{textAlign:h}},Z&&l&&wp.element.createElement(f,{value:$,onChange:function(e){return t({headingURL:e})}}),wp.element.createElement("h2",{className:Q+"__title"},wp.element.createElement("span",{className:Q+"__first premium-headingc-"+M+" premium-headinga-"+W,style:{display:y,color:v,backgroundColor:M?"none":E,backgroundImage:M?"linear-gradient(to left, "+v+", "+N+")":"none",fontSize:k+"px",border:_,borderWidth:x+"px",borderRadius:B+"px",borderColor:S,padding:T+"px",marginLeft:z+"px",marginRight:P+"px"}},C),wp.element.createElement("span",{className:Q+"__second premium-headingc-"+U+" premium-headinga-"+j,style:{display:y,color:L,backgroundColor:U?"none":R,backgroundImage:U?"linear-gradient(to left, "+L+", "+G+")":"none",fontSize:I+"px",border:V,borderWidth:A+"px",borderRadius:H+"px",borderColor:D,padding:O+"px",marginLeft:F+"px",marginRight:X+"px"}},w)))]},save:function(e){var t=(e.className,e.attributes),n=t.contentAlign,l=t.firstHeading,r=t.secondHeading,a=(t.titleTag,t.display),o=t.firstColor,i=t.firstBackground,c=t.firstSize,m=t.firstBorderType,u=t.firstBorderWidth,p=t.firstBorderRadius,d=t.firstBorderColor,s=t.firstPadding,g=t.firstMargin,b=t.firstClip,f=t.firstAnim,h=t.firstClipColor,C=t.secondColor,w=t.secondBackground,y=t.secondSize,v=t.secondBorderType,E=t.secondBorderWidth,k=t.secondBorderRadius,_=t.secondBorderColor,x=t.secondPadding,B=t.secondMargin,S=t.secondClip,T=t.secondAnim,P=t.secondClipColor,z=t.link,M=t.target,W=t.headingURL,N="premium-dheading-block";return wp.element.createElement("a",{className:N+"__link",href:z&&W,target:M&&"_blank"},wp.element.createElement("div",{className:N+"__container",style:{textAlign:n}},wp.element.createElement("h2",{className:N+"__title"},wp.element.createElement("span",{className:N+"__first premium-headingc-"+b+" premium-headinga-"+f,style:{display:a,color:o,backgroundColor:b?"none":i,backgroundImage:b?"linear-gradient(to left, "+o+", "+h+")":"none",fontSize:c+"px",border:m,borderWidth:u+"px",borderRadius:p+"px",borderColor:d,padding:s+"px",margin:g+"px"}},l),wp.element.createElement("span",{className:N+"__second premium-headingc-"+S+" premium-headinga-"+T,style:{display:a,color:C,backgroundColor:S?"none":w,backgroundImage:S?"linear-gradient(to left, "+C+", "+P+")":"none",fontSize:y+"px",border:v,borderWidth:E+"px",borderRadius:k+"px",borderColor:_,padding:x+"px",margin:B+"px"}},r))))}})},function(e,t){var n="premium-banner",l=wp.i18n.__,r=wp.blocks.registerBlockType,a=wp.components,o=a.IconButton,i=a.Toolbar,c=a.Button,m=a.PanelBody,u=a.PanelColor,p=a.SelectControl,d=a.RangeControl,s=(a.TextControl,a.CheckboxControl),g=wp.editor,b=g.BlockControls,f=g.InspectorControls,h=g.AlignmentToolbar,C=g.RichText,w=g.MediaUpload,y=g.ColorPalette,v=g.URLInput;r("premium/banner",{title:l("Banner"),icon:"admin-page",category:"premium-blocks",attributes:{imageID:{type:"number"},imageURL:{type:"string",source:"attribute",attribute:"src",selector:".premium-banner__img"},title:{type:"array",source:"children",selector:".premium-banner__title"},titleTag:{type:"string",default:"H3"},desc:{type:"array",source:"children",selector:".premium-banner__desc"},contentAlign:{type:"string",default:"left"},effect:{type:"string",default:"effect1"},hoverEffect:{type:"string",default:"none"},height:{type:"string",default:"default"},minHeight:{type:"number"},verAlign:{type:"string",default:"top"},hovered:{type:"boolean",default:!1},responsive:{type:"boolean",default:!1},background:{type:"string"},opacity:{type:"number",default:"100"},borderType:{type:"string",default:"none"},borderWidth:{type:"number",default:"1"},borderRadius:{type:"number",default:"0"},borderColor:{type:"string"},titleColor:{type:"string",default:"#6ec1e4"},titleSize:{type:"number",default:"20"},titleLine:{type:"number"},titleWeight:{type:"number"},descColor:{type:"string",default:"#000"},descSize:{type:"number",default:"20"},descLine:{type:"number"},descWeight:{type:"number"},urlCheck:{type:"boolean",default:!1},target:{type:"boolean",default:!1},url:{type:"string",source:"attribute",attribute:"href",selector:".premium-banner__link"}},edit:function(e){var t=e.isSelected,r=e.setAttributes,a=(e.className,e.attributes),g=a.imageID,E=a.imageURL,k=a.title,_=a.titleTag,x=a.desc,B=a.contentAlign,S=a.effect,T=a.hoverEffect,P=a.height,z=a.minHeight,M=a.verAlign,W=a.hovered,N=a.responsive,L=a.background,R=a.opacity,I=a.borderType,V=a.borderWidth,A=a.borderRadius,H=a.borderColor,D=a.titleColor,O=a.titleSize,F=a.titleLine,X=a.titleWeight,U=a.descColor,j=a.descSize,G=a.descLine,Z=a.descWeight,q=a.urlCheck,$=a.url,J=a.target,K=[{value:"flex-start",label:"Top"},{value:"center",label:"Middle"},{value:"flex-end",label:"Bottom"},{value:"inherit",label:"Full"}],Q=[{value:"effect1",label:"Effect 1"},{value:"effect2",label:"Effect 2"},{value:"effect3",label:"Effect 3"},{value:"effect4",label:"Effect 4"},{value:"effect5",label:"Effect 5"},{value:"effect6",label:"Effect 6"}],Y=[{value:"100",label:"100"},{value:"200",label:"200"},{value:"300",label:"300"},{value:"400",label:"Normal"},{value:"500",label:"500"},{value:"600",label:"600"},{value:"700",label:"700"},{value:"800",label:"800"},{value:"900",label:"Bold"}],ee=[{value:"none",label:"None"},{value:"zoomin",label:"Zoom In"},{value:"zoomout",label:"Zoom Out"},{value:"scale",label:"Scale"},{value:"gray",label:"Gray Scale"},{value:"blur",label:"Blur"},{value:"bright",label:"Bright"},{value:"sepia",label:"Sepia"}],te=[{value:"none",label:"None"},{value:"solid",label:"Solid"},{value:"double",label:"Double"},{value:"dotted",label:"Dotted"},{value:"dashed",label:"Dashed"},{value:"groove",label:"Groove"}],ne=[{value:"default",label:"Default"},{value:"custom",label:"Custom"}];return[t&&wp.element.createElement(b,{key:"controls"},wp.element.createElement(h,{value:B,onChange:function(e){return r({contentAlign:e})}}),wp.element.createElement(i,null,wp.element.createElement(w,{onSelect:function(e){return r({imageURL:e.url,imageID:e.id})},value:g,type:"image",render:function(e){var t=e.open;return wp.element.createElement(o,{className:"components-toolbar__control",label:l("Edit Image"),icon:"edit",onClick:t})}}))),t&&E&&wp.element.createElement(f,{key:"inspector"},wp.element.createElement(m,{title:l("General Settings"),initialOpen:!1},wp.element.createElement(p,{label:l("Effect"),value:S,onChange:function(e){return r({effect:e})},options:Q}),wp.element.createElement(p,{label:l("Image Hover Effect"),options:ee,value:T,onChange:function(e){return r({hoverEffect:e})}}),wp.element.createElement(s,{label:l("Always Hovered"),checked:W,onChange:function(e){return r({hovered:e})}}),wp.element.createElement(p,{label:l("Height"),options:ne,value:P,onChange:function(e){return r({height:e})}}),wp.element.createElement("p",null,"custom"===P&&l("Min Height (PX)")),"custom"===P&&wp.element.createElement(d,{value:z,min:"10",max:"500",onChange:function(e){return r({minHeight:e})}}),"custom"===P&&wp.element.createElement(p,{label:l("Vertical Align"),options:K,value:M,onChange:function(e){return r({verAlign:e})}}),wp.element.createElement(u,{title:l("Background Color"),colorValue:L},wp.element.createElement(y,{value:L,onChange:function(e){return r({background:e})}})),wp.element.createElement(d,{label:l("Opacity"),value:R,min:"1",max:"100",onChange:function(e){return r({opacity:e})}}),wp.element.createElement(p,{label:l("Border Type"),options:te,value:I,onChange:function(e){return r({borderType:e})}}),"none"!=I&&wp.element.createElement(d,{label:l("Border  Width"),value:V,min:"0",max:"50",onChange:function(e){return r({borderWidth:e})}}),"none"!=I&&wp.element.createElement(u,{title:l("Border Color"),colorValue:H},wp.element.createElement(y,{value:H,onChange:function(e){return r({borderColor:e})}})),wp.element.createElement(d,{label:l("Border Radius"),value:A,min:"0",max:"150",onChange:function(e){return r({borderRadius:e})}}),wp.element.createElement(s,{label:l("Link"),checked:q,onChange:function(e){return r({urlCheck:e})}}),q&&wp.element.createElement(s,{label:l("Open link in new tab"),checked:J,onChange:function(e){return r({target:e})}}),wp.element.createElement(s,{label:l("Hide Description on Mobiles"),checked:N,onChange:function(e){return r({responsive:e})}})),wp.element.createElement(m,{title:l("Title Settings"),initialOpen:!1},wp.element.createElement("p",null,l("HTML Tag")),wp.element.createElement(i,{controls:"123456".split("").map(function(e){return{icon:"heading",isActive:"H"+e===_,onClick:function(){return r({titleTag:"H"+e})},subscript:e}})}),wp.element.createElement(u,{title:l("Color"),colorValue:D},wp.element.createElement(y,{value:D,onChange:function(e){return r({titleColor:e})}})),wp.element.createElement(d,{label:l("Font Size (PX)"),value:O,min:"10",max:"80",onChange:function(e){return r({titleSize:e})}}),wp.element.createElement(p,{label:l("Font Weight"),options:Y,value:X,onChange:function(e){return r({titleWeight:e})}}),wp.element.createElement(d,{label:l("Line Height (PX)"),value:F,onChange:function(e){return r({titleLine:e})}})),wp.element.createElement(m,{title:l("Description Settings"),initialOpen:!1},wp.element.createElement(u,{title:l("Color"),colorValue:U},wp.element.createElement(y,{value:U,onChange:function(e){return r({descColor:e})}})),wp.element.createElement(d,{label:l("Font Size (PX)"),value:j,min:"10",max:"80",onChange:function(e){return r({descSize:e})}}),wp.element.createElement(p,{label:l("Font Weight"),options:Y,value:Z,onChange:function(e){return r({descWeight:e})}}),wp.element.createElement(d,{label:l("Line Height (PX)"),value:G,onChange:function(e){return r({descLine:e})}}))),wp.element.createElement("div",{className:n+" "+n+"__responsive_"+N},!E&&wp.element.createElement(w,{onSelect:function(e){return r({imageURL:e.url,imageID:e.id})},type:"image",value:g,render:function(e){var t=e.open;return wp.element.createElement(c,{className:"button",onClick:t},l("Upload Banner Image"))}}),E&&wp.element.createElement("div",{className:n+"__inner "+n+"__min "+n+"__"+S+" "+n+"__"+T+" hover_"+W,style:{backgroundColor:L,border:I,borderWidth:V+"px",borderRadius:A+"px",borderColor:H}},q&&wp.element.createElement(v,{value:$,onChange:function(e){return r({url:e})}}),wp.element.createElement("div",{className:n+"__img_wrap "+n+"__"+P,style:{minHeight:z,alignItems:M}},wp.element.createElement("img",{className:n+"__img",alt:"Banner Image",src:E,style:{opacity:R/100}})),wp.element.createElement("div",{className:n+"__content"},wp.element.createElement("div",{className:n+"__title_wrap",style:{textAlign:B}},wp.element.createElement(C,{tagName:_.toLowerCase(),className:n+"__title",placeholder:l("Awesome Title!!"),value:k,isSelected:!1,onChange:function(e){return r({title:e})},style:{color:D,fontSize:O+"px",fontWeight:X,lineHeight:F+"px"}})),wp.element.createElement("div",{className:n+"__desc_wrap",style:{textAlign:B}},wp.element.createElement(C,{tagName:"p",className:n+"__desc",placeholder:l("Cool Description!!"),value:x,isSelected:!1,onChange:function(e){return r({desc:e})},style:{color:U,fontSize:j+"px",fontWeight:Z,lineHeight:G+"px"}})))))]},save:function(e){var t=(e.className,e.attributes),r=(t.imageID,t.imageURL),a=t.title,o=t.titleTag,i=t.desc,c=t.contentAlign,m=t.effect,u=t.hoverEffect,p=t.height,d=t.minHeight,s=t.verAlign,g=t.hovered,b=t.responsive,f=t.background,h=t.opacity,w=t.borderType,y=t.borderWidth,v=t.borderRadius,E=t.borderColor,k=t.titleColor,_=t.titleSize,x=t.titleWeight,B=t.titleLine,S=t.descColor,T=t.descSize,P=t.descWeight,z=t.descLine,M=t.urlCheck,W=t.url,N=t.target;return wp.element.createElement("div",{className:n+" "+n+"__responsive_"+b},wp.element.createElement("div",{className:n+"__inner "+n+"__min "+n+"__"+m+" "+n+"__"+u+" hover_"+g,style:{backgroundColor:f,border:w,borderWidth:y+"px",borderRadius:v+"px",borderColor:E}},wp.element.createElement("div",{className:n+"__img_wrap "+n+"__"+p,style:{minHeight:d,alignItems:s}},wp.element.createElement("img",{className:n+"__img",alt:"Banner Image",src:r,style:{opacity:h/100}})),wp.element.createElement("div",{className:n+"__content"},wp.element.createElement("div",{className:n+"__title_wrap",style:{textAlign:c}},wp.element.createElement(C.Content,{tagName:o.toLowerCase(),className:n+"__title",placeholder:l("Awesome Title!!"),value:a,isSelected:!1,onChange:function(e){return setAttributes({title:e})},style:{color:k,fontSize:_+"px",fontWeight:x,lineHeight:B+"px"}})),wp.element.createElement("div",{className:n+"__desc_wrap",style:{textAlign:c}},wp.element.createElement(C.Content,{tagName:"p",className:n+"__desc",placeholder:l("Cool Description!!"),value:i,isSelected:!1,onChange:function(e){return setAttributes({desc:e})},style:{color:S,fontSize:T+"px",fontWeight:P,lineHeight:z+"px"}}))),M&&""!==W&&wp.element.createElement("a",{className:n+"__link",href:W,target:N&&"_blank"})))}})},function(e,t){var n="premium-pricing-table",l=wp.i18n.__,r=wp.blocks.registerBlockType,a=wp.components,o=(a.IconButton,a.Toolbar),i=(a.Button,a.PanelBody),c=a.PanelColor,m=a.SelectControl,u=a.RangeControl,p=a.TextControl,d=a.CheckboxControl,s=wp.editor,g=s.BlockControls,b=s.InspectorControls,f=s.AlignmentToolbar,h=s.RichText,C=(s.MediaUpload,s.ColorPalette),w=s.URLInput;r("premium/pricing-table",{title:l("Pricing Table"),icon:"editor-table",category:"premium-blocks",attributes:{contentAlign:{type:"string",default:"center"},tableBack:{type:"string"},borderType:{type:"string",default:"none"},borderWidth:{type:"number",default:"1"},borderRadius:{type:"number",default:"0"},borderColor:{type:"string"},tablePadding:{type:"number",default:"0"},title:{type:"array",source:"children",selector:".premium-pricing-table__title",default:"Pricing Table"},titleTag:{type:"string",default:"H2"},titleColor:{type:"string",default:"#6ec1e4"},titleSize:{type:"number"},titleLine:{type:"number"},titleWeight:{type:"number",default:500},titleBack:{type:"string"},titleMarginB:{type:"number",default:20},titleMarginT:{type:"number",default:20},titlePadding:{type:"number",default:"0"},desc:{type:"array",source:"children",selector:".premium-pricing-table__desc",default:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"},descColor:{type:"string",default:"#000"},descSize:{type:"number"},descLine:{type:"number"},descWeight:{type:"number"},descBack:{type:"string"},descMarginT:{type:"number",default:"0"},descMarginB:{type:"number",default:"0"},descPadding:{type:"number",default:"0"},titleChecked:{type:"boolean",default:!0},descChecked:{type:"boolean",default:!1},priceChecked:{type:"boolean",default:!0},priceBack:{type:"string"},priceMarginT:{type:"number"},priceMarginB:{type:"number",default:10},pricePadding:{type:"number"},slashPrice:{type:"string"},slashColor:{type:"string"},slashSize:{type:"number",default:20},currPrice:{type:"string",default:"$"},currColor:{type:"string"},currSize:{type:"number",default:20},valPrice:{type:"string",default:"25"},valColor:{type:"string"},valSize:{type:"number",default:50},divPrice:{type:"string",default:"/"},divColor:{type:"string"},divSize:{type:"number",default:20},durPrice:{type:"string",default:"m"},durColor:{type:"string"},durSize:{type:"number",default:20},selectedStyle:{type:"string",default:"price"},btnChecked:{type:"boolean",default:!0},btnText:{type:"string",default:"Get Started"},btnLink:{type:"string",source:"attribute",attribute:"href",selector:".premium-pricing__button_link"},btnTarget:{type:"boolean",default:!0},btnColor:{type:"string",default:"#fff"},btnWidth:{type:"number"},btnSize:{type:"number"},btnLine:{type:"number"},btnWeight:{type:"number",default:900},btnBack:{type:"string",default:"#6ec1e4"},btnMarginT:{type:"number",default:"0"},btnMarginB:{type:"number",default:"0"},btnPadding:{type:"number",default:10},btnBorderType:{type:"string",default:"none"},btnBorderWidth:{type:"number",default:"1"},btnBorderRadius:{type:"number",default:"0"},btnBorderColor:{type:"string"},badgeChecked:{type:"boolean",default:!0},badgePos:{type:"string",default:"right"},badgeBack:{type:"string",default:"#6ec1e4"},badgeSize:{type:"number"},badgeText:{type:"string",default:"popular"},listChecked:{type:"boolean",default:!0},listColor:{type:"string"},listSize:{type:"number"},listWeight:{type:"number",default:500},listBack:{type:"string"},listItems:{type:"array",source:"children",selector:".premium-pricing-table__list"},listMarginB:{type:"number",default:20},listMarginT:{type:"number"},listPadding:{type:"number"},listStyle:{type:"string",default:"disc"},slashV:{type:"string",default:"center"},currV:{type:"string",default:"center"},valV:{type:"string",default:"center"},divV:{type:"string",default:"center"},durV:{type:"string",default:"center"}},edit:function(e){var t=e.isSelected,r=e.setAttributes,a=(e.className,e.attributes),s=a.contentAlign,y=a.tableBack,v=a.borderType,E=a.borderWidth,k=a.borderRadius,_=a.borderColor,x=a.tablePadding,B=a.titleChecked,S=a.title,T=a.titleTag,P=a.titleColor,z=a.titleSize,M=a.titleLine,W=a.titleWeight,N=a.titleBack,L=a.titleMarginT,R=a.titleMarginB,I=a.titlePadding,V=a.descChecked,A=a.desc,H=a.descColor,D=a.descSize,O=a.descLine,F=a.descWeight,X=a.descBack,U=a.descMarginT,j=a.descMarginB,G=a.descPadding,Z=a.priceChecked,q=a.priceBack,$=a.priceMarginT,J=a.priceMarginB,K=a.pricePadding,Q=a.slashPrice,Y=a.slashColor,ee=a.slashSize,te=a.slashV,ne=a.currPrice,le=a.currColor,re=a.currSize,ae=a.currV,oe=a.valPrice,ie=a.valColor,ce=a.valSize,me=a.valV,ue=a.divPrice,pe=a.divColor,de=a.divSize,se=a.divV,ge=a.durPrice,be=a.durColor,fe=a.durSize,he=a.durV,Ce=a.selectedStyle,we=a.btnChecked,ye=a.btnText,ve=a.btnTarget,Ee=a.btnLink,ke=a.btnColor,_e=a.btnSize,xe=(a.btnLine,a.btnWeight),Be=a.btnBack,Se=a.btnMarginT,Te=a.btnMarginB,Pe=a.btnPadding,ze=a.btnWidth,Me=a.btnBorderType,We=a.btnBorderWidth,Ne=a.btnBorderRadius,Le=a.btnBorderColor,Re=a.badgeChecked,Ie=a.badgePos,Ve=a.badgeBack,Ae=a.badgeSize,He=a.badgeText,De=a.listChecked,Oe=a.listColor,Fe=a.listWeight,Xe=a.listSize,Ue=a.listBack,je=a.listItems,Ge=a.listMarginT,Ze=a.listMarginB,qe=a.listPadding,$e=a.listStyle,Je=[{value:"flex-start",label:"Top"},{value:"center",label:"Middle"},{value:"flex-end",label:"Bottom"}],Ke=[{value:"slash",label:"Slashed Price"},{value:"curr",label:"Currency"},{value:"price",label:"Price"},{value:"divider",label:"Divider"},{value:"duration",label:"Duration"}],Qe=[{value:"100",label:"100"},{value:"200",label:"200"},{value:"300",label:"300"},{value:"400",label:"Normal"},{value:"500",label:"500"},{value:"600",label:"600"},{value:"700",label:"700"},{value:"800",label:"800"},{value:"900",label:"Bold"}],Ye=[{value:"none",label:"None"},{value:"solid",label:"Solid"},{value:"double",label:"Double"},{value:"dotted",label:"Dotted"},{value:"dashed",label:"Dashed"},{value:"groove",label:"Groove"}],et=[{value:"none",label:"None"},{value:"disc",label:"Filled Circle"},{value:"circle",label:"Outline Circle"},{value:"square",label:"Square"}],tt=[{value:"right",label:"Right"},{value:"left",label:"Left"}];return[t&&wp.element.createElement(g,{key:"controls"},wp.element.createElement(f,{value:s,onChange:function(e){return r({contentAlign:e})}})),t&&wp.element.createElement(b,{key:"inspector"},B&&wp.element.createElement(i,{title:l("Title"),initialOpen:!1},wp.element.createElement(o,{controls:"123456".split("").map(function(e){return{icon:"heading",isActive:"H"+e===T,onClick:function(){return r({titleTag:"H"+e})},subscript:e}})}),wp.element.createElement(c,{title:l("Text Color"),colorValue:P},wp.element.createElement(C,{value:P,onChange:function(e){return r({titleColor:e})}})),wp.element.createElement(u,{label:l("Font Size (PX)"),value:z,min:"10",max:"80",onChange:function(e){return r({titleSize:e})}}),wp.element.createElement(m,{label:l("Font Weight"),options:Qe,value:W,onChange:function(e){return r({titleWeight:e})}}),wp.element.createElement(u,{label:l("Line Height (PX)"),value:M,onChange:function(e){return r({titleLine:e})}}),wp.element.createElement(c,{title:l("Background Color"),colorValue:N},wp.element.createElement(C,{value:N,onChange:function(e){return r({titleBack:e})}})),wp.element.createElement(u,{label:l("Margin Top (PX)"),value:L,min:"10",max:"80",onChange:function(e){return r({titleMarginT:e})}}),wp.element.createElement(u,{label:l("Margin Bottom (PX)"),value:R,min:"0",max:"100",onChange:function(e){return r({titleMarginB:e})}}),wp.element.createElement(u,{label:l("Padding (PX)"),value:I,min:"0",max:"100",onChange:function(e){return r({titlePadding:e})}})),Z&&wp.element.createElement(i,{title:l("Price"),initialOpen:!1},wp.element.createElement(p,{label:l("Slashed Price"),value:Q,onChange:function(e){return r({slashPrice:e})}}),wp.element.createElement(p,{label:l("Currency"),value:ne,onChange:function(e){return r({currPrice:e})}}),wp.element.createElement(p,{label:l("Price"),value:oe,onChange:function(e){return r({valPrice:e})}}),wp.element.createElement(p,{label:l("Divider"),value:ue,onChange:function(e){return r({divPrice:e})}}),wp.element.createElement(p,{label:l("Duration"),value:ge,onChange:function(e){return r({durPrice:e})}}),wp.element.createElement(m,{label:l("Element to Style"),options:Ke,value:Ce,onChange:function(e){return r({selectedStyle:e})}}),"slash"===Ce&&wp.element.createElement(c,{title:l("Text Color"),colorValue:Y},wp.element.createElement(C,{value:Y,onChange:function(e){return r({slashColor:e})}})),"slash"===Ce&&wp.element.createElement(u,{label:l("Font Size (PX)"),value:ee,min:"10",max:"80",onChange:function(e){return r({slashSize:e})}}),"slash"===Ce&&wp.element.createElement(m,{label:l("Vertical Align"),options:Je,value:te,onChange:function(e){return r({slashV:e})}}),"curr"===Ce&&wp.element.createElement(c,{title:l("Text Color"),colorValue:le},wp.element.createElement(C,{value:le,onChange:function(e){return r({currColor:e})}})),"curr"===Ce&&wp.element.createElement(u,{label:l("Font Size (PX)"),value:re,min:"10",max:"80",onChange:function(e){return r({currSize:e})}}),"curr"===Ce&&wp.element.createElement(m,{label:l("Vertical Align"),options:Je,value:ae,onChange:function(e){return r({currV:e})}}),"price"===Ce&&wp.element.createElement(c,{title:l("Text Color"),colorValue:ie},wp.element.createElement(C,{value:ie,onChange:function(e){return r({valColor:e})}})),"price"===Ce&&wp.element.createElement(u,{label:l("Font Size (PX)"),value:ce,min:"10",max:"80",onChange:function(e){return r({valSize:e})}}),"price"===Ce&&wp.element.createElement(m,{label:l("Vertical Align"),options:Je,value:me,onChange:function(e){return r({valV:e})}}),"divider"===Ce&&wp.element.createElement(c,{title:l("Text Color"),colorValue:pe},wp.element.createElement(C,{value:pe,onChange:function(e){return r({divColor:e})}})),"divider"===Ce&&wp.element.createElement(u,{label:l("Font Size (PX)"),value:de,min:"10",max:"80",onChange:function(e){return r({divSize:e})}}),"divider"===Ce&&wp.element.createElement(m,{label:l("Vertical Align"),options:Je,value:se,onChange:function(e){return r({divV:e})}}),"duration"===Ce&&wp.element.createElement(c,{title:l("Text Color"),colorValue:be},wp.element.createElement(C,{value:be,onChange:function(e){return r({durColor:e})}})),"duration"===Ce&&wp.element.createElement(u,{label:l("Font Size (PX)"),value:fe,min:"10",max:"80",onChange:function(e){return r({durSize:e})}}),"duration"===Ce&&wp.element.createElement(m,{label:l("Vertical Align"),options:Je,value:he,onChange:function(e){return r({durV:e})}}),wp.element.createElement(c,{title:l("Container Background Color"),colorValue:q},wp.element.createElement(C,{value:q,onChange:function(e){return r({priceBack:e})}})),wp.element.createElement(u,{label:l("Container Margin Top (PX)"),value:$,min:"0",max:"100",onChange:function(e){return r({priceMarginT:e})}}),wp.element.createElement(u,{label:l("Container Margin Bottom (PX)"),value:J,min:"0",max:"100",onChange:function(e){return r({priceMarginB:e})}}),wp.element.createElement(u,{label:l("Container Padding (PX)"),value:K,min:"0",max:"100",onChange:function(e){return r({pricePadding:e})}})),De&&wp.element.createElement(i,{title:l("Features"),initialOpen:!1},wp.element.createElement(m,{label:l("List Style Type"),options:et,value:$e,onChange:function(e){return r({listStyle:e})}}),wp.element.createElement(c,{title:l("List Items Color"),colorValue:Oe},wp.element.createElement(C,{value:Oe,onChange:function(e){return r({listColor:e})}})),wp.element.createElement(u,{label:l("Font Size (PX)"),value:Xe,min:"10",max:"80",onChange:function(e){return r({listSize:e})}}),wp.element.createElement(m,{label:l("Font Weight"),options:Qe,value:Fe,onChange:function(e){return r({listWeight:e})}}),wp.element.createElement(c,{title:l("Background Color"),colorValue:Ue},wp.element.createElement(C,{value:Ue,onChange:function(e){return r({listBack:e})}})),wp.element.createElement(u,{label:l("Margin Top (PX)"),value:Ge,onChange:function(e){return r({listMarginT:e})}}),wp.element.createElement(u,{label:l("Margin Bottom (PX)"),value:Ze,onChange:function(e){return r({listMarginB:e})}}),wp.element.createElement(u,{label:l("Padding (PX)"),value:qe,onChange:function(e){return r({listPadding:e})}})),V&&wp.element.createElement(i,{title:l("Description"),initialOpen:!1},wp.element.createElement(c,{title:l("Text Color"),colorValue:H},wp.element.createElement(C,{value:H,onChange:function(e){return r({descColor:e})}})),wp.element.createElement(u,{label:l("Font Size (PX)"),value:D,min:"10",max:"80",onChange:function(e){return r({descSize:e})}}),wp.element.createElement(m,{label:l("Font Weight"),options:Qe,value:F,onChange:function(e){return r({descWeight:e})}}),wp.element.createElement(u,{label:l("Line Height (PX)"),value:O,onChange:function(e){return r({descLine:e})}}),wp.element.createElement(c,{title:l("Background Color"),colorValue:X},wp.element.createElement(C,{value:N,onChange:function(e){return r({descBack:e})}})),wp.element.createElement(u,{label:l("Margin Top (PX)"),value:U,min:"0",max:"100",onChange:function(e){return r({descMarginT:e})}}),wp.element.createElement(u,{label:l("Margin Bottom (PX)"),value:j,min:"0",max:"100",onChange:function(e){return r({descMarginB:e})}}),wp.element.createElement(u,{label:l("Padding (PX)"),value:G,min:"0",max:"100",onChange:function(e){return r({descPadding:e})}})),we&&wp.element.createElement(i,{title:l("Button"),initialOpen:!1},wp.element.createElement(p,{label:l("Button Text"),value:ye,onChange:function(e){return r({btnText:e})}}),wp.element.createElement(c,{title:l("Text Color"),colorValue:ke},wp.element.createElement(C,{value:ke,onChange:function(e){return r({btnColor:e})}})),wp.element.createElement(u,{label:l("Width (%)"),value:ze,onChange:function(e){return r({btnWidth:e})}}),wp.element.createElement(u,{label:l("Font Size (PX)"),value:_e,min:"10",max:"80",onChange:function(e){return r({btnSize:e})}}),wp.element.createElement(m,{label:l("Font Weight"),options:Qe,value:xe,onChange:function(e){return r({btnWeight:e})}}),wp.element.createElement(c,{title:l("Background Color"),colorValue:Be},wp.element.createElement(C,{value:Be,onChange:function(e){return r({btnBack:e})}}),wp.element.createElement(m,{label:l("Border Type"),options:Ye,value:Me,onChange:function(e){return r({btnBorderType:e})}}),"none"!=Me&&wp.element.createElement(u,{label:l("Border Width"),value:We,min:"0",max:"50",onChange:function(e){return r({btnBorderWidth:e})}}),"none"!=Me&&wp.element.createElement(c,{title:l("Border Color"),colorValue:Le},wp.element.createElement(C,{value:Le,onChange:function(e){return r({btnBorderColor:e})}})),wp.element.createElement(u,{label:l("Border Radius"),value:Ne,min:"0",max:"150",onChange:function(e){return r({btnBorderRadius:e})}})),wp.element.createElement(u,{label:l("Margin Top (PX)"),value:Se,min:"0",max:"100",onChange:function(e){return r({btnMarginT:e})}}),wp.element.createElement(u,{label:l("Margin Bottom (PX)"),value:Te,min:"0",max:"100",onChange:function(e){return r({btnMarginB:e})}}),wp.element.createElement(u,{label:l("Padding (PX)"),value:Pe,min:"0",max:"100",onChange:function(e){return r({btnPadding:e})}}),wp.element.createElement(d,{label:l("Open Link in a new tab"),checked:ve,onChange:function(e){return r({btnTarget:e})}})),Re&&wp.element.createElement(i,{title:l("Badge"),initialOpen:!1},wp.element.createElement(m,{label:l("Position"),options:tt,value:Ie,onChange:function(e){return r({badgePos:e})}}),wp.element.createElement(p,{label:l("Text"),value:He,onChange:function(e){return r({badgeText:e})}}),wp.element.createElement(u,{label:l("Size"),value:Ae,max:"250",onChange:function(e){return r({badgeSize:e})}}),wp.element.createElement(c,{title:l("Background Color"),colorValue:Ve},wp.element.createElement(C,{value:Le,onChange:function(e){return r({badgeBack:e})}}))),wp.element.createElement(i,{title:l("Display Options"),initialOpen:!1},wp.element.createElement(d,{label:l("Title"),checked:B,onChange:function(e){return r({titleChecked:e})}}),wp.element.createElement(d,{label:l("Price"),checked:Z,onChange:function(e){return r({priceChecked:e})}}),wp.element.createElement(d,{label:l("Features"),checked:De,onChange:function(e){return r({listChecked:e})}}),wp.element.createElement(d,{label:l("Description"),checked:V,onChange:function(e){return r({descChecked:e})}}),wp.element.createElement(d,{label:l("Button"),checked:we,onChange:function(e){return r({btnChecked:e})}}),wp.element.createElement(d,{label:l("Badge"),checked:Re,onChange:function(e){return r({badgeChecked:e})}})),wp.element.createElement(i,{title:l("Table"),initialOpen:!1},wp.element.createElement(c,{title:l("Background Color"),colorValue:y},wp.element.createElement(C,{value:y,onChange:function(e){return r({tableBack:e})}})),wp.element.createElement(m,{label:l("Border Type"),options:Ye,value:v,onChange:function(e){return r({borderType:e})}}),"none"!=v&&wp.element.createElement(u,{label:l("Border Width"),value:E,min:"0",max:"50",onChange:function(e){return r({borderWidth:e})}}),"none"!=v&&wp.element.createElement(c,{title:l("Border Color"),colorValue:_},wp.element.createElement(C,{value:_,onChange:function(e){return r({borderColor:e})}})),wp.element.createElement(u,{label:l("Border Radius"),value:k,min:"0",max:"150",onChange:function(e){return r({borderRadius:e})}}),wp.element.createElement(u,{label:l("Padding"),value:x,min:"0",max:"50",onChange:function(e){return r({tablePadding:e})}}))),wp.element.createElement("div",{className:""+n,style:{textAlign:s,background:y,border:v,borderWidth:E+"px",borderRadius:k+"px",borderColor:_,padding:x+"px"}},Re&&wp.element.createElement("div",{className:n+"__badge_wrap "+n+"__badge_"+Ie},wp.element.createElement("div",{className:n+"__badge",style:{borderRightColor:"right"===Ie?Ve:"transparent",borderTopColor:"left"===Ie?Ve:"transparent",borderBottomWidth:Ae+"px",borderRightWidth:Ae+"px",borderTopWidth:"left"===Ie?Ae+"px":"none",borderLeftWidth:"right"===Ie?Ae+"px":"none"}},wp.element.createElement("span",null,He))),B&&wp.element.createElement("div",{className:n+"__title_wrap",style:{paddingTop:L+"px",paddingBottom:R+"px"}},wp.element.createElement(h,{tagName:T.toLowerCase(),className:n+"__title",onChange:function(e){return r({title:e})},placeholder:l("Awesome Title"),value:S,isSelected:!1,style:{color:P,background:N,fontSize:z+"px",fontWeight:W,lineHeight:M+"px",padding:I+"px"}})),Z&&wp.element.createElement("div",{className:n+"__price_wrap",style:{background:q,marginTop:$+"px",marginBottom:J+"px",padding:K+"px",justifyContent:s}},""!==Q&&wp.element.createElement("strike",{className:n+"__slash",style:{color:Y,fontSize:ee+"px",alignSelf:te}},Q),""!==ne&&wp.element.createElement("span",{className:n+"__currency",style:{color:le,fontSize:re+"px",alignSelf:ae}},ne),""!==oe&&wp.element.createElement("span",{className:n+"__val",style:{color:ie,fontSize:ce+"px",alignSelf:me}},oe),""!==ue&&wp.element.createElement("span",{className:n+"__divider",style:{color:pe,fontSize:de+"px",alignSelf:se}},ue),""!==ge&&wp.element.createElement("span",{className:n+"__dur",style:{color:be,fontSize:fe+"px",alignSelf:he}},ge)),De&&wp.element.createElement("div",{className:n+"__list_wrap",style:{marginTop:Ge+"px",marginBottom:Ze+"px"}},wp.element.createElement(h,{tagName:"ul",className:n+"__list",placeholder:l("List Item #1"),multiline:"li",onChange:function(e){return r({listItems:e})},value:je,isSelected:!1,style:{color:Oe,fontSize:Xe+"px",background:Ue,padding:qe+"px",listStyle:$e,listStylePosition:"inside",fontWeight:Fe}})),V&&wp.element.createElement("div",{className:n+"__desc_wrap"},wp.element.createElement(h,{tagName:"p",className:n+"__desc",onChange:function(e){return r({desc:e})},value:A,isSelected:!1,style:{color:H,background:X,fontSize:D+"px",fontWeight:F,lineHeight:O+"px",marginTop:U+"px",marginBottom:j+"px",padding:G+"px"}})),we&&wp.element.createElement("div",{className:n+"__button",style:{width:ze+"%"}},wp.element.createElement("a",{class:n+"__button_link",style:{color:ke,background:Be,fontWeight:xe,marginTop:Se,marginBottom:Te,padding:Pe,fontSize:_e+"px",border:Me,borderWidth:We+"px",borderRadius:Ne+"px",borderColor:Le}},wp.element.createElement("span",null,ye)),wp.element.createElement(w,{value:Ee,onChange:function(e){return r({btnLink:e})}})))]},save:function(e){var t=(e.className,e.attributes),l=t.contentAlign,r=t.tableBack,a=t.borderType,o=t.borderWidth,i=t.borderRadius,c=t.borderColor,m=t.tablePadding,u=t.titleChecked,p=t.title,d=t.titleTag,s=t.titleColor,g=t.titleSize,b=t.titleLine,f=t.titleWeight,C=t.titleBack,w=t.titleMarginT,y=t.titleMarginB,v=t.titlePadding,E=t.descChecked,k=t.desc,_=t.descColor,x=t.descSize,B=t.descLine,S=t.descWeight,T=t.descBack,P=t.descMarginT,z=t.descMarginB,M=t.descPadding,W=t.priceChecked,N=t.priceBack,L=t.priceMarginT,R=t.priceMarginB,I=t.pricePadding,V=t.slashPrice,A=t.slashColor,H=t.slashSize,D=(t.slashV,t.currPrice),O=t.currColor,F=t.currSize,X=t.currV,U=t.valPrice,j=t.valColor,G=t.valSize,Z=t.valV,q=t.divPrice,$=t.divColor,J=t.divSize,K=t.divV,Q=t.durPrice,Y=t.durColor,ee=t.durSize,te=t.durV,ne=t.btnChecked,le=t.btnText,re=(t.btnLink,t.btnTarget,t.btnColor),ae=t.btnSize,oe=(t.btnLine,t.btnWeight),ie=t.btnBack,ce=t.btnMarginT,me=t.btnMarginB,ue=t.btnPadding,pe=t.btnWidth,de=t.btnBorderType,se=t.btnBorderWidth,ge=t.btnBorderRadius,be=t.btnBorderColor,fe=t.badgeChecked,he=t.badgePos,Ce=t.badgeBack,we=t.badgeSize,ye=t.badgeText,ve=t.listChecked,Ee=t.listColor,ke=t.listWeight,_e=t.listSize,xe=t.listBack,Be=t.listItems,Se=t.listMarginB,Te=t.listMarginT,Pe=t.listPadding,ze=t.listStyle;return wp.element.createElement("div",{className:""+n,style:{textAlign:l,background:r,border:a,borderWidth:o+"px",borderRadius:i+"px",borderColor:c,padding:m+"px"}},fe&&wp.element.createElement("div",{className:n+"__badge_wrap "+n+"__badge_"+he},wp.element.createElement("div",{className:n+"__badge",style:{borderRightColor:"right"===he?Ce:"transparent",borderTopColor:"left"===he?Ce:"transparent",borderBottomWidth:we+"px",borderRightWidth:we+"px",borderTopWidth:"left"===he?we+"px":"none",borderLeftWidth:"right"===he?we+"px":"none"}},wp.element.createElement("span",null,ye))),u&&wp.element.createElement("div",{className:n+"__title_wrap",style:{paddingTop:w+"px",paddingBottom:y+"px"}},wp.element.createElement(h.Content,{tagName:d.toLowerCase(),className:n+"__title",value:p,style:{color:s,background:C,fontSize:g+"px",fontWeight:f,lineHeight:b+"px",marginBottom:y+"px",padding:v+"px"}})),W&&wp.element.createElement("div",{className:n+"__price_wrap",style:{background:N,marginTop:L+"px",marginBottom:R+"px",padding:I+"px",justifyContent:l}},""!==V&&wp.element.createElement("strike",{className:n+"__slash",style:{color:A,fontSize:H+"px",alignSelf:X}},V),""!==D&&wp.element.createElement("span",{className:n+"__currency",style:{color:O,fontSize:F+"px",alignSelf:X}},D),""!==U&&wp.element.createElement("span",{className:n+"__val",style:{color:j,fontSize:G+"px",alignSelf:Z}},U),""!==q&&wp.element.createElement("span",{className:n+"__divider",style:{color:$,fontSize:J+"px",alignSelf:K}},q),""!==Q&&wp.element.createElement("span",{className:n+"__dur",style:{color:Y,fontSize:ee+"px",alignSelf:te}},Q)),ve&&wp.element.createElement("div",{className:n+"__list_wrap",style:{marginTop:Te+"px",marginBottom:Se+"px"}},wp.element.createElement("ul",{className:n+"__list",style:{color:Ee,fontSize:_e+"px",background:xe,padding:Pe+"px",listStyle:ze,listStylePosition:"inside",fontWeight:ke}},Be)),E&&wp.element.createElement("div",{className:n+"__desc_wrap"},wp.element.createElement(h.Content,{tagName:"p",className:n+"__desc",value:k,style:{color:_,background:T,fontSize:x+"px",fontWeight:S,lineHeight:B+"px",marginTop:P+"px",marginBottom:z+"px",padding:M+"px"}})),ne&&wp.element.createElement("div",{className:n+"__button",style:{width:pe+"%"}},wp.element.createElement("a",{class:n+"__button_link",style:{color:re,background:ie,fontWeight:oe,marginTop:ce,marginBottom:me,padding:ue,fontSize:ae+"px",border:de,borderWidth:se+"px",borderRadius:ge+"px",borderColor:be}},wp.element.createElement("span",null,le))))}})},function(e,t){function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function l(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function r(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var l=t[n];l.enumerable=l.enumerable||!1,l.configurable=!0,"value"in l&&(l.writable=!0),Object.defineProperty(e,l.key,l)}}return function(t,n,l){return n&&e(t.prototype,n),l&&e(t,l),t}}(),o="premium-maps",i=wp.i18n.__,c=wp.blocks.registerBlockType,m=wp.components,u=m.IconButton,p=(m.Toolbar,m.Button,m.PanelBody),d=m.PanelColor,s=m.SelectControl,g=m.RangeControl,b=m.TextControl,f=m.TextareaControl,h=m.CheckboxControl,C=wp.editor,w=(C.BlockControls,C.InspectorControls),y=(C.AlignmentToolbar,C.RichText,C.MediaUpload),v=C.ColorPalette,E=(C.URLInput,wp.element.Component),k=null,_=function(e){function t(){n(this,t);var e=l(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments));return e.state={thisAddress:"",thisMap:null,thisMarker:null,thisInfo:null,fetching:!1},e.initMap=e.initMap.bind(e),e}return r(t,e),a(t,[{key:"componentDidMount",value:function(){var e=this.props,t=e.attributes,n=e.setAttributes,l=e.clientId;t.mapID||n({mapID:"premium-map-"+l}),this.initMap()}},{key:"componentDidUpdate",value:function(e,t){var n=e.attributes,l=(n.address,n.useLatLng,this.props.attributes);l.address,l.useLatLng;e.attributes!==this.props.attributes&&(clearTimeout(k),k=setTimeout(this.initMap,500))}},{key:"initMap",value:function(){if("undefined"==typeof google||!this.props.attributes.mapID)return null;var e=this.state,t=e.thisMap,n=(e.thisMarker,e.thisInfo,this.props.attributes),l=n.mapID,r=n.mapStyle,a=n.mapType,o=(n.height,n.zoom),i=n.mapTypeControl,c=n.zoomControl,m=n.fullscreenControl,u=n.streetViewControl,p=n.scrollwheel,d=n.centerLng,s=n.centerLat,g=(n.markerTitle,n.markerDesc,n.mapMarker),b=n.markerIconUrl,f=n.markerCustom,h=t;if(!h&&(h=new google.maps.Map(document.getElementById(l),{zoom:o,gestureHandling:"cooperative",mapTypeId:a,mapTypeControl:i,zoomControl:c,fullscreenControl:m,streetViewControl:u,scrollwheel:p,center:{lng:parseFloat(d),lat:parseFloat(s)},style:r}),g)){var C=new google.maps.LatLng(parseFloat(s),parseFloat(d));new google.maps.Marker({position:C,map:h,icon:f?b:""})}h.setOptions({zoom:o,mapTypeId:a,mapTypeControl:i,zoomControl:c,fullscreenControl:m,streetViewControl:u,style:r}),h.setCenter({lng:parseFloat(d),lat:parseFloat(s)})}},{key:"render",value:function(){var e=this.props,t=e.isSelected,n=e.setAttributes,l=(e.clientId,this.props.attributes),r=l.mapID,a=l.mapStyle,c=l.mapType,m=l.height,C=l.zoom,E=l.mapTypeControl,k=l.zoomControl,_=l.fullscreenControl,x=l.streetViewControl,B=l.scrollwheel,S=l.centerLng,T=l.centerLat,P=l.markerDesc,z=l.markerTitle,M=l.mapMarker,W=l.markerIconUrl,N=l.markerIconId,L=l.markerCustom,R=l.maxWidth,I=l.titleColor,V=l.titleSize,A=l.descColor,H=l.descSize,D=[{value:"roadmap",label:"Road Map"},{value:"satellite",label:"Satellite"},{value:"terrain",label:"Terrain"},{value:"hybrid",label:"Hybrid"}];return["undefined"!=typeof google&&t&&wp.element.createElement(w,{key:"key"},wp.element.createElement(p,{title:i("Center Location"),initialOpen:!1},wp.element.createElement(b,{label:i("Longitude"),value:S,help:[i("Get your location coordinates from"),wp.element.createElement("a",{href:"https://www.latlong.net/",target:"_blank"}," ",i("here"))],onChange:function(e){return n({centerLng:e})}}),wp.element.createElement(b,{label:i("Latitude"),value:T,onChange:function(e){return n({centerLat:e})}})),wp.element.createElement(p,{title:i("Marker"),initialOpen:!1},wp.element.createElement(h,{label:i("Enable Marker"),checked:M,onChange:function(e){return n({mapMarker:e})}}),M&&wp.element.createElement(b,{label:i("Marker Title"),value:z,onChange:function(e){return n({markerTitle:e})}}),M&&wp.element.createElement(b,{label:i("Marker Description"),value:P,onChange:function(e){return n({markerDesc:e})}}),M&&wp.element.createElement(h,{label:i("Custom Marker Icon"),checked:L,onChange:function(e){return n({markerCustom:e})}}),M&&L&&W&&wp.element.createElement("img",{src:W,width:"100%",height:"auto"}),L&&M&&wp.element.createElement(y,{allowedTypes:["image"],onSelect:function(e){n({markerIconId:e.id,markerIconUrl:void 0===e.sizes.thumbnail?e.url:e.sizes.thumbnail.url})},type:"image",value:N,render:function(e){var t=e.open;return wp.element.createElement(u,{label:i("Change Marker Icon"),icon:"edit",onClick:t},i("Change Marker Icon"))}}),(""!==P||""!==z)&&wp.element.createElement(g,{label:i("Description Box Max Width (PX)"),value:R,min:"10",max:"500",onChange:function(e){return n({maxWidth:e})}})),M&&""!==z&&wp.element.createElement(p,{title:i("Marker Title Style"),initialOpen:!1},wp.element.createElement(d,{label:i("Color"),colorValue:I},wp.element.createElement(v,{value:I,onChange:function(e){return n({titleColor:e})}})),wp.element.createElement(g,{label:i("Font Size (PX)"),value:V,min:"10",max:"80",onChange:function(e){return n({titleSize:e})}})),M&&""!==P&&wp.element.createElement(p,{title:i("Marker Description Style"),initialOpen:!1},wp.element.createElement(d,{label:i("Color"),colorValue:A},wp.element.createElement(v,{value:A,onChange:function(e){return n({descColor:e})}})),wp.element.createElement(g,{label:i("Font Size (PX)"),value:H,min:"10",max:"80",onChange:function(e){return n({descSize:e})}})),wp.element.createElement(p,{title:i("Controls"),initialOpen:!1},wp.element.createElement(s,{label:i("Map Type"),options:D,value:c,onChange:function(e){return n({mapType:e})}}),wp.element.createElement(g,{label:i("Map Height (PX)"),value:m,min:"10",max:"800",onChange:function(e){return n({height:e})}}),wp.element.createElement(g,{label:i("Zoom"),value:C,min:"1",max:"14",onChange:function(e){return n({zoom:e})}}),wp.element.createElement(h,{label:i("Map Type Controls"),checked:E,onChange:function(e){return n({mapTypeControl:e})}}),wp.element.createElement(h,{label:i("Zoom Controls"),checked:k,onChange:function(e){return n({zoomControl:e})}}),wp.element.createElement(h,{label:i("Street View Control"),checked:x,onChange:function(e){return n({streetViewControl:e})}}),wp.element.createElement(h,{label:i("Full Screen Control"),checked:_,onChange:function(e){return n({fullscreenControl:e})}}),wp.element.createElement(h,{label:i("Scroll Wheel Zoom"),checked:B,onChange:function(e){return n({scrollwheel:e})}})),wp.element.createElement(p,{title:i("Map Style"),initialOpen:!1},wp.element.createElement(f,{label:i("Maps Style"),value:a,help:[i("Get your custom styling from"),wp.element.createElement("a",{href:"https://snazzymaps.com/",target:"_blank"}," ",i("here"))],onChange:function(e){return n({mapStyle:e})}}))),wp.element.createElement("div",{className:o+"__wrap",id:r,style:{height:m+"px"}})]}}]),t}(E);c("premium/maps",{title:i("Premium Maps"),icon:"location",category:"premium-blocks",attributes:{mapID:{type:"string"},mapStyle:{type:"style"},mapType:{type:"string",default:"roadmap"},height:{type:"number",default:500},zoom:{type:"number",default:6},mapTypeControl:{type:"boolean",default:!0},zoomControl:{type:"boolean",default:!0},fullscreenControl:{type:"boolean",default:!0},streetViewControl:{type:"boolean",default:!1},scrollwheel:{type:"boolean",default:!1},centerLat:{type:"number",default:"40.7569733"},centerLng:{type:"string",default:" -73.98878250000001"},markerTitle:{type:"string",default:i("Awesome Title")},markerDesc:{type:"string",default:i("Cool Description")},mapMarker:{type:"boolean",default:!0},markerIconUrl:{type:"string"},markerIconId:{type:"number",default:""},markerCustom:{type:"boolean",default:!1},maxWidth:{type:"number",default:300},titleColor:{type:"string",default:"#6ec1e4"},titleSize:{type:"number",default:18},descColor:{type:"string"},descSize:{type:"number"}},edit:_,save:function(e){var t=(e.className,e.clientId,e.attributes),n=t.mapID,l=t.height,r=t.mapStyle,a=t.mapType,i=t.zoom,c=t.mapTypeControl,m=t.zoomControl,u=t.fullscreenControl,p=t.streetViewControl,d=t.scrollwheel,s=t.centerLat,g=t.centerLng,b=t.mapMarker,f=t.markerIconUrl,h=(t.markerIconId,t.markerCustom),C=t.maxWidth,w=t.markerTitle,y=t.markerDesc,v=t.titleColor,E=t.titleSize,k=t.descColor,_=t.descSize;return wp.element.createElement("div",{className:o+"__wrap",id:n,style:{height:l+"px"}},wp.element.createElement("div",{className:o+"__marker"},wp.element.createElement("div",{className:o+"__info"},""!==w&&wp.element.createElement("p",{className:o+"__title",style:{color:v,fontSize:E+"px"}},w),""!==y&&wp.element.createElement("div",{className:o+"__desc",style:{color:k,fontSize:_+"px"}},y))),wp.element.createElement("script",null,"window.addEventListener('load',function(){\n                    if( typeof google === 'undefined' ) return;\n                    let mapElem = document.getElementById('"+n+"');\n                    let pin = mapElem.querySelector('."+o+"__marker');\n                    let map = new google.maps.Map(mapElem, {\n                        zoom: "+i+",\n                        gestureHandling: 'cooperative',\n                        mapTypeId: '"+a+"',\n                        mapTypeControl: "+c+",\n                        zoomControl: "+m+",\n                        fullscreenControl: "+u+",\n                        streetViewControl: "+p+",\n                        scrollwheel: "+d+",\n                        center: {\n                            lng: parseFloat( "+g+" ),\n                            lat: parseFloat( "+s+" )\n                        },\n                        style: "+r+"\n                    });\n                    if( "+b+" ) {\n                        let latlng = new google.maps.LatLng( parseFloat( "+s+" ) , parseFloat( "+g+" ) );\n                        let markerIcon = '"+f+"';\n                        let marker = new google.maps.Marker({\n                            position\t: latlng,\n                            map\t\t\t: map,\n                            icon        : "+h+" ? markerIcon : ''\n                        });\n                        \n                        let infowindow = new google.maps.InfoWindow({\n                            maxWidth    : "+C+",\n                            content\t\t: pin.innerHTML\n                        });\n                        \n                        google.maps.event.addListener(marker, 'click', function() {\n                            infowindow.open( map, marker );\n                        });\n                    }\n                    \n\n                });"))}})}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_dual_heading__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_dual_heading___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__blocks_dual_heading__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__blocks_banner__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_pricing_table__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_pricing_table___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__blocks_pricing_table__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_maps__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__blocks_maps__);
+
+
+
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var _wp$components = wp.components,
+    Toolbar = _wp$components.Toolbar,
+    PanelBody = _wp$components.PanelBody,
+    PanelColor = _wp$components.PanelColor,
+    SelectControl = _wp$components.SelectControl,
+    TextControl = _wp$components.TextControl,
+    RangeControl = _wp$components.RangeControl,
+    CheckboxControl = _wp$components.CheckboxControl;
+var _wp$editor = wp.editor,
+    BlockControls = _wp$editor.BlockControls,
+    InspectorControls = _wp$editor.InspectorControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    RichText = _wp$editor.RichText,
+    ColorPalette = _wp$editor.ColorPalette,
+    URLInput = _wp$editor.URLInput;
+
+
+registerBlockType('premium/dheading-block', {
+    title: __('Dual Heading'),
+    icon: 'editor-paragraph',
+    category: 'premium-blocks',
+    attributes: {
+        contentAlign: {
+            type: 'string',
+            default: 'center'
+        },
+        firstHeading: {
+            type: 'array',
+            source: 'children',
+            default: 'Premium ',
+            selector: '.premium-dheading-block__first'
+        },
+        secondHeading: {
+            type: 'array',
+            source: 'children',
+            default: 'Blocks',
+            selector: '.premium-dheading-block__second'
+        },
+        titleTag: {
+            type: 'string',
+            default: 'h1'
+        },
+        display: {
+            type: 'string',
+            default: 'inline'
+        },
+        firstColor: {
+            type: 'string',
+            default: '#6ec1e4'
+        },
+        firstSize: {
+            type: 'number',
+            default: '20'
+        },
+        firstBackground: {
+            type: 'string'
+        },
+        firstBorderType: {
+            type: 'string',
+            default: 'none'
+        },
+        firstBorderWidth: {
+            type: 'number',
+            default: '1'
+        },
+        firstBorderRadius: {
+            type: 'number',
+            default: '0'
+        },
+        firstBorderColor: {
+            type: 'string'
+        },
+        firstMarginR: {
+            type: 'number',
+            default: '0'
+        },
+        firstMarginL: {
+            type: 'number',
+            default: '0'
+        },
+        firstPadding: {
+            type: 'number',
+            default: '0'
+        },
+        firstClip: {
+            type: 'boolean',
+            default: false
+        },
+        firstAnim: {
+            type: 'boolean',
+            default: false
+        },
+        firstClipColor: {
+            type: 'string',
+            default: '#54595f'
+        },
+        secondColor: {
+            type: 'string',
+            default: '#54595f'
+        },
+        secondSize: {
+            type: 'number',
+            default: '20'
+        },
+        secondBackground: {
+            type: 'string'
+        },
+        secondBorderType: {
+            type: 'string',
+            default: 'none'
+        },
+        secondBorderWidth: {
+            type: 'number',
+            default: '1'
+        },
+        secondBorderRadius: {
+            type: 'number',
+            default: '0'
+        },
+        secondBorderColor: {
+            type: 'string'
+        },
+        secondMarginR: {
+            type: 'number',
+            default: '0'
+        },
+        secondMarginL: {
+            type: 'number',
+            default: '0'
+        },
+        secondPadding: {
+            type: 'number',
+            default: '0'
+        },
+        secondClip: {
+            type: 'boolean',
+            default: false
+        },
+        secondAnim: {
+            type: 'boolean',
+            default: false
+        },
+        secondClipColor: {
+            type: 'string',
+            default: '#6ec1e4'
+        },
+        link: {
+            type: 'boolean',
+            default: false
+        },
+        target: {
+            type: 'boolean',
+            default: false
+        },
+        headingURL: {
+            type: 'string'
+        }
+
+    },
+
+    edit: function edit(props) {
+        var setAttributes = props.setAttributes,
+            isSelected = props.isSelected,
+            className = props.className;
+        var _props$attributes = props.attributes,
+            contentAlign = _props$attributes.contentAlign,
+            firstHeading = _props$attributes.firstHeading,
+            secondHeading = _props$attributes.secondHeading,
+            titleTag = _props$attributes.titleTag,
+            display = _props$attributes.display,
+            firstColor = _props$attributes.firstColor,
+            firstBackground = _props$attributes.firstBackground,
+            firstSize = _props$attributes.firstSize,
+            firstBorderType = _props$attributes.firstBorderType,
+            firstBorderWidth = _props$attributes.firstBorderWidth,
+            firstBorderRadius = _props$attributes.firstBorderRadius,
+            firstBorderColor = _props$attributes.firstBorderColor,
+            firstPadding = _props$attributes.firstPadding,
+            firstMarginR = _props$attributes.firstMarginR,
+            firstMarginL = _props$attributes.firstMarginL,
+            firstClip = _props$attributes.firstClip,
+            firstAnim = _props$attributes.firstAnim,
+            firstClipColor = _props$attributes.firstClipColor,
+            secondColor = _props$attributes.secondColor,
+            secondBackground = _props$attributes.secondBackground,
+            secondSize = _props$attributes.secondSize,
+            secondBorderType = _props$attributes.secondBorderType,
+            secondBorderWidth = _props$attributes.secondBorderWidth,
+            secondBorderRadius = _props$attributes.secondBorderRadius,
+            secondBorderColor = _props$attributes.secondBorderColor,
+            secondPadding = _props$attributes.secondPadding,
+            secondMarginL = _props$attributes.secondMarginL,
+            secondMarginR = _props$attributes.secondMarginR,
+            secondClip = _props$attributes.secondClip,
+            secondAnim = _props$attributes.secondAnim,
+            secondClipColor = _props$attributes.secondClipColor,
+            link = _props$attributes.link,
+            target = _props$attributes.target,
+            headingURL = _props$attributes.headingURL;
+
+        var DISPLAY = [{
+            value: "inline",
+            label: "Inline"
+        }, {
+            value: "block",
+            label: "Block"
+        }];
+        var BORDER = [{
+            value: "none",
+            label: "None"
+        }, {
+            value: "solid",
+            label: "Solid"
+        }, {
+            value: "double",
+            label: "Double"
+        }, {
+            value: "dotted",
+            label: "Dotted"
+        }, {
+            value: "dashed",
+            label: "Dashed"
+        }, {
+            value: "groove",
+            label: "Groove"
+        }];
+        var blockClass = className.replace('wp-block-', '');
+        return [isSelected && wp.element.createElement(
+            BlockControls,
+            { key: 'controls' },
+            wp.element.createElement(AlignmentToolbar, {
+                value: contentAlign,
+                onChange: function onChange(newAlign) {
+                    return setAttributes({ contentAlign: newAlign });
+                }
+            })
+        ), isSelected && wp.element.createElement(
+            InspectorControls,
+            { key: "inspector" },
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __("General Settings"),
+                    initialOpen: false
+                },
+                wp.element.createElement(TextControl, {
+                    label: __('First Heading'),
+                    type: 'url',
+                    value: firstHeading,
+                    onChange: function onChange(value) {
+                        return setAttributes({ firstHeading: value });
+                    }
+                }),
+                wp.element.createElement(TextControl, {
+                    label: __('Second Heading'),
+                    type: 'url',
+                    value: secondHeading,
+                    onChange: function onChange(value) {
+                        return setAttributes({ secondHeading: value });
+                    }
+                }),
+                wp.element.createElement(SelectControl, {
+                    label: __('Display'),
+                    value: display,
+                    options: DISPLAY,
+                    onChange: function onChange(value) {
+                        return setAttributes({ display: value });
+                    }
+                }),
+                wp.element.createElement(CheckboxControl, {
+                    label: __('Link'),
+                    checked: link,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ link: newValue });
+                    }
+                }),
+                link && wp.element.createElement(CheckboxControl, {
+                    label: __('Open link in new tab'),
+                    checked: target,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ target: newValue });
+                    }
+                })
+            ),
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('First Heading'),
+                    initialOpen: false
+                },
+                wp.element.createElement(CheckboxControl, {
+                    label: __('Clipped'),
+                    checked: firstClip,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ firstClip: newValue });
+                    }
+                }),
+                firstClip && wp.element.createElement(CheckboxControl, {
+                    label: __('Animated'),
+                    checked: firstAnim,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ firstAnim: newValue });
+                    }
+                }),
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Color'),
+                        colorValue: firstColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: firstColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ firstColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    'p',
+                    null,
+                    __('Font Size (PX)')
+                ),
+                wp.element.createElement(RangeControl, {
+                    value: firstSize,
+                    min: '10',
+                    max: '80',
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ firstSize: newSize });
+                    }
+                }),
+                !firstClip && wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Background Color'),
+                        colorValue: firstBackground
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: firstBackground,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ firstBackground: newColor });
+                        }
+                    })
+                ),
+                firstClip && wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Second Color'),
+                        colorValue: firstClipColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: firstClipColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ firstClipColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(SelectControl, {
+                    label: __('Border Type'),
+                    options: BORDER,
+                    value: firstBorderType,
+                    onChange: function onChange(newType) {
+                        return setAttributes({ firstBorderType: newType });
+                    }
+                }),
+                wp.element.createElement(
+                    'p',
+                    null,
+                    'none' != firstBorderType && __('Border Width')
+                ),
+                'none' != firstBorderType && wp.element.createElement(RangeControl, {
+                    value: firstBorderWidth,
+                    min: '0',
+                    max: '50',
+                    onChange: function onChange(newWidth) {
+                        return setAttributes({ firstBorderWidth: newWidth });
+                    }
+                }),
+                'none' != firstBorderType && wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Border Color'),
+                        colorValue: firstBorderColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: firstBorderColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ firstBorderColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    'p',
+                    null,
+                    __('Border Radius')
+                ),
+                wp.element.createElement(RangeControl, {
+                    value: firstBorderRadius,
+                    min: '0',
+                    max: '150',
+                    onChange: function onChange(newRadius) {
+                        return setAttributes({ firstBorderRadius: newRadius });
+                    }
+                }),
+                wp.element.createElement(
+                    'p',
+                    null,
+                    __('Margin Left')
+                ),
+                wp.element.createElement(RangeControl, {
+                    value: firstMarginL,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newMargin) {
+                        return setAttributes({ firstMarginL: newMargin });
+                    }
+                }),
+                wp.element.createElement(
+                    'p',
+                    null,
+                    __('Margin Right')
+                ),
+                wp.element.createElement(RangeControl, {
+                    value: firstMarginR,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newMargin) {
+                        return setAttributes({ firstMarginR: newMargin });
+                    }
+                }),
+                wp.element.createElement(
+                    'p',
+                    null,
+                    __('Padding')
+                ),
+                wp.element.createElement(RangeControl, {
+                    value: firstPadding,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newPadding) {
+                        return setAttributes({ firstPadding: newPadding });
+                    }
+                })
+            ),
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Second Heading'),
+                    initialOpen: false
+                },
+                wp.element.createElement(CheckboxControl, {
+                    label: __('Clipped'),
+                    checked: secondClip,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ secondClip: newValue });
+                    }
+                }),
+                secondClip && wp.element.createElement(CheckboxControl, {
+                    label: __('Animated'),
+                    checked: secondAnim,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ secondAnim: newValue });
+                    }
+                }),
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Color'),
+                        colorValue: secondColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: secondColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ secondColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    'p',
+                    null,
+                    __('Font Size (PX)')
+                ),
+                wp.element.createElement(RangeControl, {
+                    min: '10',
+                    max: '80',
+                    value: secondSize,
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ secondSize: newSize });
+                    }
+                }),
+                !secondClip && wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Background Color'),
+                        colorValue: secondBackground
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: secondBackground,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ secondBackground: newColor });
+                        }
+                    })
+                ),
+                secondClip && wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Second Color'),
+                        colorValue: secondClipColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: secondClipColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ secondClipColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(SelectControl, {
+                    label: __('Border Type'),
+                    options: BORDER,
+                    value: secondBorderType,
+                    onChange: function onChange(newType) {
+                        return setAttributes({ secondBorderType: newType });
+                    }
+                }),
+                wp.element.createElement(
+                    'p',
+                    null,
+                    'none' != secondBorderType && __('Border Width')
+                ),
+                'none' != secondBorderType && wp.element.createElement(RangeControl, {
+                    value: secondBorderWidth,
+                    min: '0',
+                    max: '50',
+                    onChange: function onChange(newWidth) {
+                        return setAttributes({ secondBorderWidth: newWidth });
+                    }
+                }),
+                'none' != secondBorderType && wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Border Color'),
+                        colorValue: secondBorderColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: secondBorderColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ secondBorderColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    'p',
+                    null,
+                    __('Border Radius')
+                ),
+                wp.element.createElement(RangeControl, {
+                    value: secondBorderRadius,
+                    min: '0',
+                    max: '150',
+                    onChange: function onChange(newRadius) {
+                        return setAttributes({ secondBorderRadius: newRadius });
+                    }
+                }),
+                wp.element.createElement(
+                    'p',
+                    null,
+                    __('Margin Left')
+                ),
+                wp.element.createElement(RangeControl, {
+                    value: secondMarginL,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newMargin) {
+                        return setAttributes({ secondMarginL: newMargin });
+                    }
+                }),
+                wp.element.createElement(
+                    'p',
+                    null,
+                    __('Margin Right')
+                ),
+                wp.element.createElement(RangeControl, {
+                    value: secondMarginR,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newMargin) {
+                        return setAttributes({ secondMarginR: newMargin });
+                    }
+                }),
+                wp.element.createElement(
+                    'p',
+                    null,
+                    __('Padding')
+                ),
+                wp.element.createElement(RangeControl, {
+                    value: secondPadding,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newPadding) {
+                        return setAttributes({ secondPadding: newPadding });
+                    }
+                })
+            )
+        ), wp.element.createElement(
+            'div',
+            {
+                className: blockClass + '__container',
+                style: { textAlign: contentAlign }
+            },
+            link && isSelected && wp.element.createElement(URLInput, {
+                value: headingURL,
+                onChange: function onChange(newUrl) {
+                    return setAttributes({ headingURL: newUrl });
+                }
+            }),
+            wp.element.createElement(
+                'h2',
+                {
+                    className: blockClass + '__title'
+                },
+                wp.element.createElement(
+                    'span',
+                    {
+                        className: blockClass + '__first premium-headingc-' + firstClip + ' premium-headinga-' + firstAnim,
+                        style: {
+                            display: display,
+                            color: firstColor,
+                            backgroundColor: firstClip ? 'none' : firstBackground,
+                            backgroundImage: firstClip ? 'linear-gradient(to left, ' + firstColor + ', ' + firstClipColor + ')' : 'none',
+                            fontSize: firstSize + 'px',
+                            border: firstBorderType,
+                            borderWidth: firstBorderWidth + 'px',
+                            borderRadius: firstBorderRadius + 'px',
+                            borderColor: firstBorderColor,
+                            padding: firstPadding + 'px',
+                            marginLeft: firstMarginL + 'px',
+                            marginRight: firstMarginR + 'px'
+                        } },
+                    firstHeading
+                ),
+                wp.element.createElement(
+                    'span',
+                    {
+                        className: blockClass + '__second premium-headingc-' + secondClip + ' premium-headinga-' + secondAnim,
+                        style: {
+                            display: display,
+                            color: secondColor,
+                            backgroundColor: secondClip ? 'none' : secondBackground,
+                            backgroundImage: secondClip ? 'linear-gradient(to left, ' + secondColor + ', ' + secondClipColor + ')' : 'none',
+                            fontSize: secondSize + 'px',
+                            border: secondBorderType,
+                            borderWidth: secondBorderWidth + 'px',
+                            borderRadius: secondBorderRadius + 'px',
+                            borderColor: secondBorderColor,
+                            padding: secondPadding + 'px',
+                            marginLeft: secondMarginL + 'px',
+                            marginRight: secondMarginR + 'px'
+                        } },
+                    secondHeading
+                )
+            )
+        )];
+    },
+    save: function save(props) {
+        var className = props.className,
+            _props$attributes2 = props.attributes,
+            contentAlign = _props$attributes2.contentAlign,
+            firstHeading = _props$attributes2.firstHeading,
+            secondHeading = _props$attributes2.secondHeading,
+            titleTag = _props$attributes2.titleTag,
+            display = _props$attributes2.display,
+            firstColor = _props$attributes2.firstColor,
+            firstBackground = _props$attributes2.firstBackground,
+            firstSize = _props$attributes2.firstSize,
+            firstBorderType = _props$attributes2.firstBorderType,
+            firstBorderWidth = _props$attributes2.firstBorderWidth,
+            firstBorderRadius = _props$attributes2.firstBorderRadius,
+            firstBorderColor = _props$attributes2.firstBorderColor,
+            firstPadding = _props$attributes2.firstPadding,
+            firstMargin = _props$attributes2.firstMargin,
+            firstClip = _props$attributes2.firstClip,
+            firstAnim = _props$attributes2.firstAnim,
+            firstClipColor = _props$attributes2.firstClipColor,
+            secondColor = _props$attributes2.secondColor,
+            secondBackground = _props$attributes2.secondBackground,
+            secondSize = _props$attributes2.secondSize,
+            secondBorderType = _props$attributes2.secondBorderType,
+            secondBorderWidth = _props$attributes2.secondBorderWidth,
+            secondBorderRadius = _props$attributes2.secondBorderRadius,
+            secondBorderColor = _props$attributes2.secondBorderColor,
+            secondPadding = _props$attributes2.secondPadding,
+            secondMargin = _props$attributes2.secondMargin,
+            secondClip = _props$attributes2.secondClip,
+            secondAnim = _props$attributes2.secondAnim,
+            secondClipColor = _props$attributes2.secondClipColor,
+            link = _props$attributes2.link,
+            target = _props$attributes2.target,
+            headingURL = _props$attributes2.headingURL;
+
+        var blockClass = 'premium-dheading-block';
+        return wp.element.createElement(
+            'a',
+            {
+                className: blockClass + '__link',
+                href: link && headingURL,
+                target: target && '_blank'
+            },
+            wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__container',
+                    style: {
+                        textAlign: contentAlign
+                    }
+                },
+                wp.element.createElement(
+                    'h2',
+                    {
+                        className: blockClass + '__title'
+                    },
+                    wp.element.createElement(
+                        'span',
+                        { className: blockClass + '__first premium-headingc-' + firstClip + ' premium-headinga-' + firstAnim, style: {
+                                display: display,
+                                color: firstColor,
+                                backgroundColor: firstClip ? 'none' : firstBackground,
+                                backgroundImage: firstClip ? 'linear-gradient(to left, ' + firstColor + ', ' + firstClipColor + ')' : 'none',
+                                fontSize: firstSize + 'px',
+                                border: firstBorderType,
+                                borderWidth: firstBorderWidth + 'px',
+                                borderRadius: firstBorderRadius + 'px',
+                                borderColor: firstBorderColor,
+                                padding: firstPadding + 'px',
+                                margin: firstMargin + 'px'
+                            } },
+                        firstHeading
+                    ),
+                    wp.element.createElement(
+                        'span',
+                        { className: blockClass + '__second premium-headingc-' + secondClip + ' premium-headinga-' + secondAnim, style: {
+                                display: display,
+                                color: secondColor,
+                                backgroundColor: secondClip ? 'none' : secondBackground,
+                                backgroundImage: secondClip ? 'linear-gradient(to left, ' + secondColor + ', ' + secondClipColor + ')' : 'none',
+                                fontSize: secondSize + 'px',
+                                border: secondBorderType,
+                                borderWidth: secondBorderWidth + 'px',
+                                borderRadius: secondBorderRadius + 'px',
+                                borderColor: secondBorderColor,
+                                padding: secondPadding + 'px',
+                                margin: secondMargin + 'px'
+                            } },
+                        secondHeading
+                    )
+                )
+            )
+        );
+    }
+});
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+var blockClass = 'premium-banner';
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var _wp$components = wp.components,
+    IconButton = _wp$components.IconButton,
+    Toolbar = _wp$components.Toolbar,
+    Button = _wp$components.Button,
+    PanelBody = _wp$components.PanelBody,
+    PanelColor = _wp$components.PanelColor,
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl,
+    TextControl = _wp$components.TextControl,
+    CheckboxControl = _wp$components.CheckboxControl;
+var _wp$editor = wp.editor,
+    BlockControls = _wp$editor.BlockControls,
+    InspectorControls = _wp$editor.InspectorControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    RichText = _wp$editor.RichText,
+    MediaUpload = _wp$editor.MediaUpload,
+    ColorPalette = _wp$editor.ColorPalette,
+    URLInput = _wp$editor.URLInput;
+
+
+registerBlockType('premium/banner', {
+    title: __('Banner'),
+    icon: 'admin-page',
+    category: 'premium-blocks',
+    attributes: {
+        imageID: {
+            type: 'number'
+        },
+        imageURL: {
+            type: 'string',
+            source: 'attribute',
+            attribute: 'src',
+            selector: '.premium-banner__img'
+        },
+        title: {
+            type: 'array',
+            source: 'children',
+            selector: '.premium-banner__title'
+        },
+        titleTag: {
+            type: 'string',
+            default: 'H3'
+        },
+        desc: {
+            type: 'array',
+            source: 'children',
+            selector: '.premium-banner__desc'
+        },
+        contentAlign: {
+            type: 'string',
+            default: 'left'
+        },
+        effect: {
+            type: 'string',
+            default: 'effect1'
+        },
+        hoverEffect: {
+            type: 'string',
+            default: 'none'
+        },
+        height: {
+            type: 'string',
+            default: 'default'
+        },
+        minHeight: {
+            type: 'number'
+        },
+        verAlign: {
+            type: 'string',
+            default: 'top'
+        },
+        hovered: {
+            type: 'boolean',
+            default: false
+        },
+        responsive: {
+            type: 'boolean',
+            default: false
+        },
+        background: {
+            type: 'string'
+        },
+        opacity: {
+            type: 'number',
+            default: '100'
+        },
+        borderType: {
+            type: 'string',
+            default: 'none'
+        },
+        borderWidth: {
+            type: 'number',
+            default: '1'
+        },
+        borderRadius: {
+            type: 'number',
+            default: '0'
+        },
+        borderColor: {
+            type: 'string'
+        },
+        titleColor: {
+            type: 'string',
+            default: '#6ec1e4'
+        },
+        titleSize: {
+            type: 'number',
+            default: '20'
+        },
+        titleLine: {
+            type: 'number'
+        },
+        titleWeight: {
+            type: 'number'
+        },
+        descColor: {
+            type: 'string',
+            default: '#000'
+        },
+        descSize: {
+            type: 'number',
+            default: '20'
+        },
+        descLine: {
+            type: 'number'
+        },
+        descWeight: {
+            type: 'number'
+        },
+        urlCheck: {
+            type: 'boolean',
+            default: false
+        },
+        target: {
+            type: 'boolean',
+            default: false
+        },
+        url: {
+            type: 'string',
+            source: 'attribute',
+            attribute: 'href',
+            selector: '.premium-banner__link'
+        }
+    },
+    edit: function edit(props) {
+        var isSelected = props.isSelected,
+            setAttributes = props.setAttributes,
+            className = props.className;
+        var _props$attributes = props.attributes,
+            imageID = _props$attributes.imageID,
+            imageURL = _props$attributes.imageURL,
+            title = _props$attributes.title,
+            titleTag = _props$attributes.titleTag,
+            desc = _props$attributes.desc,
+            contentAlign = _props$attributes.contentAlign,
+            effect = _props$attributes.effect,
+            hoverEffect = _props$attributes.hoverEffect,
+            height = _props$attributes.height,
+            minHeight = _props$attributes.minHeight,
+            verAlign = _props$attributes.verAlign,
+            hovered = _props$attributes.hovered,
+            responsive = _props$attributes.responsive,
+            background = _props$attributes.background,
+            opacity = _props$attributes.opacity,
+            borderType = _props$attributes.borderType,
+            borderWidth = _props$attributes.borderWidth,
+            borderRadius = _props$attributes.borderRadius,
+            borderColor = _props$attributes.borderColor,
+            titleColor = _props$attributes.titleColor,
+            titleSize = _props$attributes.titleSize,
+            titleLine = _props$attributes.titleLine,
+            titleWeight = _props$attributes.titleWeight,
+            descColor = _props$attributes.descColor,
+            descSize = _props$attributes.descSize,
+            descLine = _props$attributes.descLine,
+            descWeight = _props$attributes.descWeight,
+            urlCheck = _props$attributes.urlCheck,
+            url = _props$attributes.url,
+            target = _props$attributes.target;
+
+        var ALIGNS = [{
+            value: 'flex-start',
+            label: 'Top'
+        }, {
+            value: 'center',
+            label: 'Middle'
+        }, {
+            value: 'flex-end',
+            label: 'Bottom'
+        }, {
+            value: 'inherit',
+            label: 'Full'
+        }];
+        var EFFECTS = [{
+            value: 'effect1',
+            label: 'Effect 1'
+        }, {
+            value: 'effect2',
+            label: 'Effect 2'
+        }, {
+            value: 'effect3',
+            label: 'Effect 3'
+        }, {
+            value: 'effect4',
+            label: 'Effect 4'
+        }, {
+            value: 'effect5',
+            label: 'Effect 5'
+        }, {
+            value: 'effect6',
+            label: 'Effect 6'
+        }];
+        var WEIGHT = [{
+            value: '100',
+            label: '100'
+        }, {
+            value: '200',
+            label: '200'
+        }, {
+            value: '300',
+            label: '300'
+        }, {
+            value: '400',
+            label: 'Normal'
+        }, {
+            value: '500',
+            label: '500'
+        }, {
+            value: '600',
+            label: '600'
+        }, {
+            value: '700',
+            label: '700'
+        }, {
+            value: '800',
+            label: '800'
+        }, {
+            value: '900',
+            label: 'Bold'
+        }];
+        var HOVER = [{
+            value: 'none',
+            label: 'None'
+        }, {
+            value: 'zoomin',
+            label: 'Zoom In'
+        }, {
+            value: 'zoomout',
+            label: 'Zoom Out'
+        }, {
+            value: 'scale',
+            label: 'Scale'
+        }, {
+            value: 'gray',
+            label: 'Gray Scale'
+        }, {
+            value: 'blur',
+            label: 'Blur'
+        }, {
+            value: 'bright',
+            label: 'Bright'
+        }, {
+            value: 'sepia',
+            label: 'Sepia'
+        }];
+        var BORDER = [{
+            value: "none",
+            label: "None"
+        }, {
+            value: "solid",
+            label: "Solid"
+        }, {
+            value: "double",
+            label: "Double"
+        }, {
+            value: "dotted",
+            label: "Dotted"
+        }, {
+            value: "dashed",
+            label: "Dashed"
+        }, {
+            value: "groove",
+            label: "Groove"
+        }];
+        var HEIGHT = [{
+            value: 'default',
+            label: 'Default'
+        }, {
+            value: 'custom',
+            label: 'Custom'
+        }];
+
+        return [isSelected && wp.element.createElement(
+            BlockControls,
+            { key: 'controls' },
+            wp.element.createElement(AlignmentToolbar, {
+                value: contentAlign,
+                onChange: function onChange(newAlign) {
+                    return setAttributes({ contentAlign: newAlign });
+                }
+            }),
+            wp.element.createElement(
+                Toolbar,
+                null,
+                wp.element.createElement(MediaUpload, {
+                    onSelect: function onSelect(media) {
+                        return setAttributes({
+                            imageURL: media.url,
+                            imageID: media.id
+                        });
+                    },
+                    value: imageID,
+                    type: 'image',
+                    render: function render(_ref) {
+                        var open = _ref.open;
+                        return wp.element.createElement(IconButton, {
+                            className: 'components-toolbar__control',
+                            label: __('Edit Image'),
+                            icon: 'edit',
+                            onClick: open
+                        });
+                    }
+                })
+            )
+        ), isSelected && imageURL && wp.element.createElement(
+            InspectorControls,
+            { key: "inspector"
+            },
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('General Settings'),
+                    initialOpen: false
+                },
+                wp.element.createElement(SelectControl, {
+                    label: __('Effect'),
+                    value: effect,
+                    onChange: function onChange(newEffect) {
+                        return setAttributes({ effect: newEffect });
+                    },
+                    options: EFFECTS
+                }),
+                wp.element.createElement(SelectControl, {
+                    label: __('Image Hover Effect'),
+                    options: HOVER,
+                    value: hoverEffect,
+                    onChange: function onChange(newEffect) {
+                        return setAttributes({ hoverEffect: newEffect });
+                    }
+                }),
+                wp.element.createElement(CheckboxControl, {
+                    label: __('Always Hovered'),
+                    checked: hovered,
+                    onChange: function onChange(check) {
+                        return setAttributes({ hovered: check });
+                    }
+                }),
+                wp.element.createElement(SelectControl, {
+                    label: __('Height'),
+                    options: HEIGHT,
+                    value: height,
+                    onChange: function onChange(newHeight) {
+                        return setAttributes({ height: newHeight });
+                    }
+                }),
+                wp.element.createElement(
+                    'p',
+                    null,
+                    'custom' === height && __('Min Height (PX)')
+                ),
+                'custom' === height && wp.element.createElement(RangeControl, {
+                    value: minHeight,
+                    min: '10',
+                    max: '500',
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ minHeight: newSize });
+                    }
+                }),
+                'custom' === height && wp.element.createElement(SelectControl, {
+                    label: __('Vertical Align'),
+                    options: ALIGNS,
+                    value: verAlign,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ verAlign: newValue });
+                    }
+                }),
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Background Color'),
+                        colorValue: background
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: background,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ background: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Opacity'),
+                    value: opacity,
+                    min: '1',
+                    max: '100',
+                    onChange: function onChange(newOpacity) {
+                        return setAttributes({ opacity: newOpacity });
+                    }
+                }),
+                wp.element.createElement(SelectControl, {
+                    label: __('Border Type'),
+                    options: BORDER,
+                    value: borderType,
+                    onChange: function onChange(newType) {
+                        return setAttributes({ borderType: newType });
+                    }
+                }),
+                'none' != borderType && wp.element.createElement(RangeControl, {
+                    label: __('Border  Width'),
+                    value: borderWidth,
+                    min: '0',
+                    max: '50',
+                    onChange: function onChange(newWidth) {
+                        return setAttributes({ borderWidth: newWidth });
+                    }
+                }),
+                'none' != borderType && wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Border Color'),
+                        colorValue: borderColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: borderColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ borderColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Border Radius'),
+                    value: borderRadius,
+                    min: '0',
+                    max: '150',
+                    onChange: function onChange(newRadius) {
+                        return setAttributes({ borderRadius: newRadius });
+                    }
+                }),
+                wp.element.createElement(CheckboxControl, {
+                    label: __('Link'),
+                    checked: urlCheck,
+                    onChange: function onChange(newCheck) {
+                        return setAttributes({ urlCheck: newCheck });
+                    }
+                }),
+                urlCheck && wp.element.createElement(CheckboxControl, {
+                    label: __('Open link in new tab'),
+                    checked: target,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ target: newValue });
+                    }
+                }),
+                wp.element.createElement(CheckboxControl, {
+                    label: __('Hide Description on Mobiles'),
+                    checked: responsive,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ responsive: newValue });
+                    }
+                })
+            ),
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Title Settings'),
+                    initialOpen: false
+                },
+                wp.element.createElement(
+                    'p',
+                    null,
+                    __('HTML Tag')
+                ),
+                wp.element.createElement(Toolbar, {
+                    controls: '123456'.split('').map(function (tag) {
+                        return {
+                            icon: 'heading',
+                            isActive: 'H' + tag === titleTag,
+                            onClick: function onClick() {
+                                return setAttributes({ titleTag: 'H' + tag });
+                            },
+                            subscript: tag
+                        };
+                    })
+                }),
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Color'),
+                        colorValue: titleColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: titleColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ titleColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Font Size (PX)'),
+                    value: titleSize,
+                    min: '10',
+                    max: '80',
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ titleSize: newSize });
+                    }
+                }),
+                wp.element.createElement(SelectControl, {
+                    label: __('Font Weight'),
+                    options: WEIGHT,
+                    value: titleWeight,
+                    onChange: function onChange(newWeight) {
+                        return setAttributes({ titleWeight: newWeight });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Line Height (PX)'),
+                    value: titleLine,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ titleLine: newValue });
+                    }
+                })
+            ),
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Description Settings'),
+                    initialOpen: false
+                },
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Color'),
+                        colorValue: descColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: descColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ descColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Font Size (PX)'),
+                    value: descSize,
+                    min: '10',
+                    max: '80',
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ descSize: newSize });
+                    }
+                }),
+                wp.element.createElement(SelectControl, {
+                    label: __('Font Weight'),
+                    options: WEIGHT,
+                    value: descWeight,
+                    onChange: function onChange(newWeight) {
+                        return setAttributes({ descWeight: newWeight });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Line Height (PX)'),
+                    value: descLine,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ descLine: newValue });
+                    }
+                })
+            )
+        ), wp.element.createElement(
+            'div',
+            {
+                className: blockClass + ' ' + blockClass + '__responsive_' + responsive
+            },
+            !imageURL && wp.element.createElement(MediaUpload, {
+                onSelect: function onSelect(media) {
+                    return setAttributes({
+                        imageURL: media.url,
+                        imageID: media.id
+                    });
+                },
+                type: 'image',
+                value: imageID,
+                render: function render(_ref2) {
+                    var open = _ref2.open;
+                    return wp.element.createElement(
+                        Button,
+                        {
+                            className: 'button',
+                            onClick: open
+                        },
+                        __('Upload Banner Image')
+                    );
+                }
+            }),
+            imageURL && wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__inner ' + blockClass + '__min ' + blockClass + '__' + effect + ' ' + blockClass + '__' + hoverEffect + ' hover_' + hovered,
+                    style: {
+                        backgroundColor: background,
+                        border: borderType,
+                        borderWidth: borderWidth + 'px',
+                        borderRadius: borderRadius + 'px',
+                        borderColor: borderColor
+                    }
+                },
+                urlCheck && wp.element.createElement(URLInput, {
+                    value: url,
+                    onChange: function onChange(newURL) {
+                        return setAttributes({ url: newURL });
+                    }
+                }),
+                wp.element.createElement(
+                    'div',
+                    {
+                        className: blockClass + '__img_wrap ' + blockClass + '__' + height,
+                        style: {
+                            minHeight: minHeight,
+                            alignItems: verAlign
+                        }
+                    },
+                    wp.element.createElement('img', {
+                        className: blockClass + '__img',
+                        alt: 'Banner Image',
+                        src: imageURL,
+                        style: {
+                            opacity: opacity / 100
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    'div',
+                    {
+                        className: blockClass + '__content'
+                    },
+                    wp.element.createElement(
+                        'div',
+                        {
+                            className: blockClass + '__title_wrap',
+                            style: {
+                                textAlign: contentAlign
+                            }
+                        },
+                        wp.element.createElement(RichText, {
+                            tagName: titleTag.toLowerCase(),
+                            className: blockClass + '__title',
+                            placeholder: __('Awesome Title!!'),
+                            value: title,
+                            isSelected: false,
+                            onChange: function onChange(newText) {
+                                return setAttributes({ title: newText });
+                            },
+                            style: {
+                                color: titleColor,
+                                fontSize: titleSize + 'px',
+                                fontWeight: titleWeight,
+                                lineHeight: titleLine + 'px'
+                            }
+                        })
+                    ),
+                    wp.element.createElement(
+                        'div',
+                        {
+                            className: blockClass + '__desc_wrap',
+                            style: {
+                                textAlign: contentAlign
+                            }
+                        },
+                        wp.element.createElement(RichText, {
+                            tagName: 'p',
+                            className: blockClass + '__desc',
+                            placeholder: __('Cool Description!!'),
+                            value: desc,
+                            isSelected: false,
+                            onChange: function onChange(newText) {
+                                return setAttributes({ desc: newText });
+                            },
+                            style: {
+                                color: descColor,
+                                fontSize: descSize + 'px',
+                                fontWeight: descWeight,
+                                lineHeight: descLine + 'px'
+                            }
+                        })
+                    )
+                )
+            )
+        )];
+    },
+    save: function save(props) {
+        var className = props.className,
+            _props$attributes2 = props.attributes,
+            imageID = _props$attributes2.imageID,
+            imageURL = _props$attributes2.imageURL,
+            title = _props$attributes2.title,
+            titleTag = _props$attributes2.titleTag,
+            desc = _props$attributes2.desc,
+            contentAlign = _props$attributes2.contentAlign,
+            effect = _props$attributes2.effect,
+            hoverEffect = _props$attributes2.hoverEffect,
+            height = _props$attributes2.height,
+            minHeight = _props$attributes2.minHeight,
+            verAlign = _props$attributes2.verAlign,
+            hovered = _props$attributes2.hovered,
+            responsive = _props$attributes2.responsive,
+            background = _props$attributes2.background,
+            opacity = _props$attributes2.opacity,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            titleColor = _props$attributes2.titleColor,
+            titleSize = _props$attributes2.titleSize,
+            titleWeight = _props$attributes2.titleWeight,
+            titleLine = _props$attributes2.titleLine,
+            descColor = _props$attributes2.descColor,
+            descSize = _props$attributes2.descSize,
+            descWeight = _props$attributes2.descWeight,
+            descLine = _props$attributes2.descLine,
+            urlCheck = _props$attributes2.urlCheck,
+            url = _props$attributes2.url,
+            target = _props$attributes2.target;
+
+
+        return wp.element.createElement(
+            'div',
+            {
+                className: blockClass + ' ' + blockClass + '__responsive_' + responsive
+            },
+            wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__inner ' + blockClass + '__min ' + blockClass + '__' + effect + ' ' + blockClass + '__' + hoverEffect + ' hover_' + hovered,
+                    style: {
+                        backgroundColor: background,
+                        border: borderType,
+                        borderWidth: borderWidth + 'px',
+                        borderRadius: borderRadius + 'px',
+                        borderColor: borderColor
+                    }
+                },
+                wp.element.createElement(
+                    'div',
+                    {
+                        className: blockClass + '__img_wrap ' + blockClass + '__' + height,
+                        style: {
+                            minHeight: minHeight,
+                            alignItems: verAlign
+                        }
+                    },
+                    wp.element.createElement('img', {
+                        className: blockClass + '__img',
+                        alt: 'Banner Image',
+                        src: imageURL,
+                        style: {
+                            opacity: opacity / 100
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    'div',
+                    {
+                        className: blockClass + '__content'
+                    },
+                    wp.element.createElement(
+                        'div',
+                        {
+                            className: blockClass + '__title_wrap',
+                            style: {
+                                textAlign: contentAlign
+                            }
+                        },
+                        wp.element.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: blockClass + '__title',
+                            placeholder: __('Awesome Title!!'),
+                            value: title,
+                            isSelected: false,
+                            onChange: function onChange(newText) {
+                                return setAttributes({ title: newText });
+                            },
+                            style: {
+                                color: titleColor,
+                                fontSize: titleSize + 'px',
+                                fontWeight: titleWeight,
+                                lineHeight: titleLine + 'px'
+                            }
+                        })
+                    ),
+                    wp.element.createElement(
+                        'div',
+                        {
+                            className: blockClass + '__desc_wrap',
+                            style: {
+                                textAlign: contentAlign
+                            }
+                        },
+                        wp.element.createElement(RichText.Content, {
+                            tagName: 'p',
+                            className: blockClass + '__desc',
+                            placeholder: __('Cool Description!!'),
+                            value: desc,
+                            isSelected: false,
+                            onChange: function onChange(newText) {
+                                return setAttributes({ desc: newText });
+                            },
+                            style: {
+                                color: descColor,
+                                fontSize: descSize + 'px',
+                                fontWeight: descWeight,
+                                lineHeight: descLine + 'px'
+                            }
+                        })
+                    )
+                ),
+                urlCheck && '' !== url && wp.element.createElement('a', {
+                    className: blockClass + '__link',
+                    href: url,
+                    target: target && '_blank'
+                })
+            )
+        );
+    }
+});
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+var blockClass = 'premium-pricing-table';
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var _wp$components = wp.components,
+    IconButton = _wp$components.IconButton,
+    Toolbar = _wp$components.Toolbar,
+    Button = _wp$components.Button,
+    PanelBody = _wp$components.PanelBody,
+    PanelColor = _wp$components.PanelColor,
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl,
+    TextControl = _wp$components.TextControl,
+    CheckboxControl = _wp$components.CheckboxControl;
+var _wp$editor = wp.editor,
+    BlockControls = _wp$editor.BlockControls,
+    InspectorControls = _wp$editor.InspectorControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    RichText = _wp$editor.RichText,
+    MediaUpload = _wp$editor.MediaUpload,
+    ColorPalette = _wp$editor.ColorPalette,
+    URLInput = _wp$editor.URLInput;
+
+
+registerBlockType('premium/pricing-table', {
+    title: __('Pricing Table'),
+    icon: 'editor-table',
+    category: 'premium-blocks',
+    attributes: {
+        contentAlign: {
+            type: 'string',
+            default: 'center'
+        },
+        tableBack: {
+            type: 'string'
+        },
+        borderType: {
+            type: 'string',
+            default: 'none'
+        },
+        borderWidth: {
+            type: 'number',
+            default: '1'
+        },
+        borderRadius: {
+            type: 'number',
+            default: '0'
+        },
+        borderColor: {
+            type: 'string'
+        },
+        tablePadding: {
+            type: 'number',
+            default: '0'
+        },
+        title: {
+            type: 'array',
+            source: 'children',
+            selector: '.premium-pricing-table__title',
+            default: 'Pricing Table'
+        },
+        titleTag: {
+            type: 'string',
+            default: 'H2'
+        },
+        titleColor: {
+            type: 'string',
+            default: '#6ec1e4'
+        },
+        titleSize: {
+            type: 'number'
+        },
+        titleLine: {
+            type: 'number'
+        },
+        titleWeight: {
+            type: 'number',
+            default: 500
+        },
+        titleBack: {
+            type: 'string'
+        },
+        titleMarginB: {
+            type: 'number',
+            default: 20
+        },
+        titleMarginT: {
+            type: 'number',
+            default: 20
+        },
+        titlePadding: {
+            type: 'number',
+            default: '0'
+        },
+        desc: {
+            type: 'array',
+            source: 'children',
+            selector: '.premium-pricing-table__desc',
+            default: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+        },
+        descColor: {
+            type: 'string',
+            default: '#000'
+        },
+        descSize: {
+            type: 'number'
+        },
+        descLine: {
+            type: 'number'
+        },
+        descWeight: {
+            type: 'number'
+        },
+        descBack: {
+            type: 'string'
+        },
+        descMarginT: {
+            type: 'number',
+            default: '0'
+        },
+        descMarginB: {
+            type: 'number',
+            default: '0'
+        },
+        descPadding: {
+            type: 'number',
+            default: '0'
+        },
+        titleChecked: {
+            type: 'boolean',
+            default: true
+        },
+        descChecked: {
+            type: 'boolean',
+            default: false
+        },
+        priceChecked: {
+            type: 'boolean',
+            default: true
+        },
+        priceBack: {
+            type: 'string'
+        },
+        priceMarginT: {
+            type: 'number'
+        },
+        priceMarginB: {
+            type: 'number',
+            default: 10
+        },
+        pricePadding: {
+            type: 'number'
+        },
+        slashPrice: {
+            type: 'string'
+        },
+        slashColor: {
+            type: 'string'
+        },
+        slashSize: {
+            type: 'number',
+            default: 20
+        },
+        currPrice: {
+            type: 'string',
+            default: '$'
+        },
+        currColor: {
+            type: 'string'
+        },
+        currSize: {
+            type: 'number',
+            default: 20
+        },
+        valPrice: {
+            type: 'string',
+            default: '25'
+        },
+        valColor: {
+            type: 'string'
+        },
+        valSize: {
+            type: 'number',
+            default: 50
+        },
+        divPrice: {
+            type: 'string',
+            default: '/'
+        },
+        divColor: {
+            type: 'string'
+        },
+        divSize: {
+            type: 'number',
+            default: 20
+        },
+        durPrice: {
+            type: 'string',
+            default: 'm'
+        },
+        durColor: {
+            type: 'string'
+        },
+        durSize: {
+            type: 'number',
+            default: 20
+        },
+        selectedStyle: {
+            type: 'string',
+            default: 'price'
+        },
+        btnChecked: {
+            type: 'boolean',
+            default: true
+        },
+        btnText: {
+            type: 'string',
+            default: 'Get Started'
+        },
+        btnLink: {
+            type: 'string',
+            source: 'attribute',
+            attribute: 'href',
+            selector: '.premium-pricing__button_link'
+        },
+        btnTarget: {
+            type: 'boolean',
+            default: true
+        },
+        btnColor: {
+            type: 'string',
+            default: '#fff'
+        },
+        btnWidth: {
+            type: 'number'
+        },
+        btnSize: {
+            type: 'number'
+        },
+        btnLine: {
+            type: 'number'
+        },
+        btnWeight: {
+            type: 'number',
+            default: 900
+        },
+        btnBack: {
+            type: 'string',
+            default: '#6ec1e4'
+        },
+        btnMarginT: {
+            type: 'number',
+            default: '0'
+        },
+        btnMarginB: {
+            type: 'number',
+            default: '0'
+        },
+        btnPadding: {
+            type: 'number',
+            default: 10
+        },
+        btnBorderType: {
+            type: 'string',
+            default: 'none'
+        },
+        btnBorderWidth: {
+            type: 'number',
+            default: '1'
+        },
+        btnBorderRadius: {
+            type: 'number',
+            default: '0'
+        },
+        btnBorderColor: {
+            type: 'string'
+        },
+        badgeChecked: {
+            type: 'boolean',
+            default: true
+        },
+        badgePos: {
+            type: 'string',
+            default: 'right'
+        },
+        badgeBack: {
+            type: 'string',
+            default: '#6ec1e4'
+        },
+        badgeSize: {
+            type: 'number'
+        },
+        badgeText: {
+            type: 'string',
+            default: 'popular'
+        },
+        listChecked: {
+            type: 'boolean',
+            default: true
+        },
+        listColor: {
+            type: 'string'
+        },
+        listSize: {
+            type: 'number'
+        },
+        listWeight: {
+            type: 'number',
+            default: 500
+        },
+        listBack: {
+            type: 'string'
+        },
+        listItems: {
+            type: 'array',
+            source: 'children',
+            selector: '.premium-pricing-table__list'
+        },
+        listMarginB: {
+            type: 'number',
+            default: 20
+        },
+        listMarginT: {
+            type: 'number'
+        },
+        listPadding: {
+            type: 'number'
+        },
+        listStyle: {
+            type: 'string',
+            default: 'disc'
+        },
+        slashV: {
+            type: 'string',
+            default: 'center'
+        },
+        currV: {
+            type: 'string',
+            default: 'center'
+        },
+        valV: {
+            type: 'string',
+            default: 'center'
+        },
+        divV: {
+            type: 'string',
+            default: 'center'
+        },
+        durV: {
+            type: 'string',
+            default: 'center'
+        }
+
+    },
+    edit: function edit(props) {
+        var isSelected = props.isSelected,
+            setAttributes = props.setAttributes,
+            className = props.className;
+        var _props$attributes = props.attributes,
+            contentAlign = _props$attributes.contentAlign,
+            tableBack = _props$attributes.tableBack,
+            borderType = _props$attributes.borderType,
+            borderWidth = _props$attributes.borderWidth,
+            borderRadius = _props$attributes.borderRadius,
+            borderColor = _props$attributes.borderColor,
+            tablePadding = _props$attributes.tablePadding,
+            titleChecked = _props$attributes.titleChecked,
+            title = _props$attributes.title,
+            titleTag = _props$attributes.titleTag,
+            titleColor = _props$attributes.titleColor,
+            titleSize = _props$attributes.titleSize,
+            titleLine = _props$attributes.titleLine,
+            titleWeight = _props$attributes.titleWeight,
+            titleBack = _props$attributes.titleBack,
+            titleMarginT = _props$attributes.titleMarginT,
+            titleMarginB = _props$attributes.titleMarginB,
+            titlePadding = _props$attributes.titlePadding,
+            descChecked = _props$attributes.descChecked,
+            desc = _props$attributes.desc,
+            descColor = _props$attributes.descColor,
+            descSize = _props$attributes.descSize,
+            descLine = _props$attributes.descLine,
+            descWeight = _props$attributes.descWeight,
+            descBack = _props$attributes.descBack,
+            descMarginT = _props$attributes.descMarginT,
+            descMarginB = _props$attributes.descMarginB,
+            descPadding = _props$attributes.descPadding,
+            priceChecked = _props$attributes.priceChecked,
+            priceBack = _props$attributes.priceBack,
+            priceMarginT = _props$attributes.priceMarginT,
+            priceMarginB = _props$attributes.priceMarginB,
+            pricePadding = _props$attributes.pricePadding,
+            slashPrice = _props$attributes.slashPrice,
+            slashColor = _props$attributes.slashColor,
+            slashSize = _props$attributes.slashSize,
+            slashV = _props$attributes.slashV,
+            currPrice = _props$attributes.currPrice,
+            currColor = _props$attributes.currColor,
+            currSize = _props$attributes.currSize,
+            currV = _props$attributes.currV,
+            valPrice = _props$attributes.valPrice,
+            valColor = _props$attributes.valColor,
+            valSize = _props$attributes.valSize,
+            valV = _props$attributes.valV,
+            divPrice = _props$attributes.divPrice,
+            divColor = _props$attributes.divColor,
+            divSize = _props$attributes.divSize,
+            divV = _props$attributes.divV,
+            durPrice = _props$attributes.durPrice,
+            durColor = _props$attributes.durColor,
+            durSize = _props$attributes.durSize,
+            durV = _props$attributes.durV,
+            selectedStyle = _props$attributes.selectedStyle,
+            btnChecked = _props$attributes.btnChecked,
+            btnText = _props$attributes.btnText,
+            btnTarget = _props$attributes.btnTarget,
+            btnLink = _props$attributes.btnLink,
+            btnColor = _props$attributes.btnColor,
+            btnSize = _props$attributes.btnSize,
+            btnLine = _props$attributes.btnLine,
+            btnWeight = _props$attributes.btnWeight,
+            btnBack = _props$attributes.btnBack,
+            btnMarginT = _props$attributes.btnMarginT,
+            btnMarginB = _props$attributes.btnMarginB,
+            btnPadding = _props$attributes.btnPadding,
+            btnWidth = _props$attributes.btnWidth,
+            btnBorderType = _props$attributes.btnBorderType,
+            btnBorderWidth = _props$attributes.btnBorderWidth,
+            btnBorderRadius = _props$attributes.btnBorderRadius,
+            btnBorderColor = _props$attributes.btnBorderColor,
+            badgeChecked = _props$attributes.badgeChecked,
+            badgePos = _props$attributes.badgePos,
+            badgeBack = _props$attributes.badgeBack,
+            badgeSize = _props$attributes.badgeSize,
+            badgeText = _props$attributes.badgeText,
+            listChecked = _props$attributes.listChecked,
+            listColor = _props$attributes.listColor,
+            listWeight = _props$attributes.listWeight,
+            listSize = _props$attributes.listSize,
+            listBack = _props$attributes.listBack,
+            listItems = _props$attributes.listItems,
+            listMarginT = _props$attributes.listMarginT,
+            listMarginB = _props$attributes.listMarginB,
+            listPadding = _props$attributes.listPadding,
+            listStyle = _props$attributes.listStyle;
+
+        var ALIGNS = [{
+            value: 'flex-start',
+            label: 'Top'
+        }, {
+            value: 'center',
+            label: 'Middle'
+        }, {
+            value: 'flex-end',
+            label: 'Bottom'
+        }];
+        var PRICE = [{
+            value: 'slash',
+            label: 'Slashed Price'
+        }, {
+            value: 'curr',
+            label: 'Currency'
+        }, {
+            value: 'price',
+            label: 'Price'
+        }, {
+            value: 'divider',
+            label: 'Divider'
+        }, {
+            value: 'duration',
+            label: 'Duration'
+        }];
+        var WEIGHT = [{
+            value: '100',
+            label: '100'
+        }, {
+            value: '200',
+            label: '200'
+        }, {
+            value: '300',
+            label: '300'
+        }, {
+            value: '400',
+            label: 'Normal'
+        }, {
+            value: '500',
+            label: '500'
+        }, {
+            value: '600',
+            label: '600'
+        }, {
+            value: '700',
+            label: '700'
+        }, {
+            value: '800',
+            label: '800'
+        }, {
+            value: '900',
+            label: 'Bold'
+        }];
+        var BORDER = [{
+            value: "none",
+            label: "None"
+        }, {
+            value: "solid",
+            label: "Solid"
+        }, {
+            value: "double",
+            label: "Double"
+        }, {
+            value: "dotted",
+            label: "Dotted"
+        }, {
+            value: "dashed",
+            label: "Dashed"
+        }, {
+            value: "groove",
+            label: "Groove"
+        }];
+        var TYPE = [{
+            value: "none",
+            label: "None"
+        }, {
+            value: "disc",
+            label: "Filled Circle"
+        }, {
+            value: "circle",
+            label: "Outline Circle"
+        }, {
+            value: "square",
+            label: "Square"
+        }];
+        var POSITION = [{
+            value: "right",
+            label: "Right"
+        }, {
+            value: "left",
+            label: "Left"
+        }];
+
+        return [isSelected && wp.element.createElement(
+            BlockControls,
+            { key: 'controls' },
+            wp.element.createElement(AlignmentToolbar, {
+                value: contentAlign,
+                onChange: function onChange(newAlign) {
+                    return setAttributes({ contentAlign: newAlign });
+                }
+            })
+        ), isSelected && wp.element.createElement(
+            InspectorControls,
+            { key: 'inspector' },
+            titleChecked && wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Title'),
+                    initialOpen: false
+                },
+                wp.element.createElement(Toolbar, {
+                    controls: '123456'.split('').map(function (tag) {
+                        return {
+                            icon: 'heading',
+                            isActive: 'H' + tag === titleTag,
+                            onClick: function onClick() {
+                                return setAttributes({ titleTag: 'H' + tag });
+                            },
+                            subscript: tag
+                        };
+                    })
+                }),
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Text Color'),
+                        colorValue: titleColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: titleColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ titleColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Font Size (PX)'),
+                    value: titleSize,
+                    min: '10',
+                    max: '80',
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ titleSize: newSize });
+                    }
+                }),
+                wp.element.createElement(SelectControl, {
+                    label: __('Font Weight'),
+                    options: WEIGHT,
+                    value: titleWeight,
+                    onChange: function onChange(newWeight) {
+                        return setAttributes({ titleWeight: newWeight });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Line Height (PX)'),
+                    value: titleLine,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ titleLine: newValue });
+                    }
+                }),
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Background Color'),
+                        colorValue: titleBack
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: titleBack,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ titleBack: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Margin Top (PX)'),
+                    value: titleMarginT,
+                    min: '10',
+                    max: '80',
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ titleMarginT: newSize });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Margin Bottom (PX)'),
+                    value: titleMarginB,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newMargin) {
+                        return setAttributes({ titleMarginB: newMargin });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Padding (PX)'),
+                    value: titlePadding,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newPadding) {
+                        return setAttributes({ titlePadding: newPadding });
+                    }
+                })
+            ),
+            priceChecked && wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Price'),
+                    initialOpen: false
+                },
+                wp.element.createElement(TextControl, {
+                    label: __('Slashed Price'),
+                    value: slashPrice,
+                    onChange: function onChange(value) {
+                        return setAttributes({ slashPrice: value });
+                    }
+                }),
+                wp.element.createElement(TextControl, {
+                    label: __('Currency'),
+                    value: currPrice,
+                    onChange: function onChange(value) {
+                        return setAttributes({ currPrice: value });
+                    }
+                }),
+                wp.element.createElement(TextControl, {
+                    label: __('Price'),
+                    value: valPrice,
+                    onChange: function onChange(value) {
+                        return setAttributes({ valPrice: value });
+                    }
+                }),
+                wp.element.createElement(TextControl, {
+                    label: __('Divider'),
+                    value: divPrice,
+                    onChange: function onChange(value) {
+                        return setAttributes({ divPrice: value });
+                    }
+                }),
+                wp.element.createElement(TextControl, {
+                    label: __('Duration'),
+                    value: durPrice,
+                    onChange: function onChange(value) {
+                        return setAttributes({ durPrice: value });
+                    }
+                }),
+                wp.element.createElement(SelectControl, {
+                    label: __('Element to Style'),
+                    options: PRICE,
+                    value: selectedStyle,
+                    onChange: function onChange(newElem) {
+                        return setAttributes({ selectedStyle: newElem });
+                    }
+                }),
+                'slash' === selectedStyle && wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Text Color'),
+                        colorValue: slashColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: slashColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ slashColor: newColor });
+                        }
+                    })
+                ),
+                'slash' === selectedStyle && wp.element.createElement(RangeControl, {
+                    label: __('Font Size (PX)'),
+                    value: slashSize,
+                    min: '10',
+                    max: '80',
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ slashSize: newSize });
+                    }
+                }),
+                'slash' === selectedStyle && wp.element.createElement(SelectControl, {
+                    label: __('Vertical Align'),
+                    options: ALIGNS,
+                    value: slashV,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ slashV: newValue });
+                    }
+                }),
+                'curr' === selectedStyle && wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Text Color'),
+                        colorValue: currColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: currColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ currColor: newColor });
+                        }
+                    })
+                ),
+                'curr' === selectedStyle && wp.element.createElement(RangeControl, {
+                    label: __('Font Size (PX)'),
+                    value: currSize,
+                    min: '10',
+                    max: '80',
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ currSize: newSize });
+                    }
+                }),
+                'curr' === selectedStyle && wp.element.createElement(SelectControl, {
+                    label: __('Vertical Align'),
+                    options: ALIGNS,
+                    value: currV,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ currV: newValue });
+                    }
+                }),
+                'price' === selectedStyle && wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Text Color'),
+                        colorValue: valColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: valColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ valColor: newColor });
+                        }
+                    })
+                ),
+                'price' === selectedStyle && wp.element.createElement(RangeControl, {
+                    label: __('Font Size (PX)'),
+                    value: valSize,
+                    min: '10',
+                    max: '80',
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ valSize: newSize });
+                    }
+                }),
+                'price' === selectedStyle && wp.element.createElement(SelectControl, {
+                    label: __('Vertical Align'),
+                    options: ALIGNS,
+                    value: valV,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ valV: newValue });
+                    }
+                }),
+                'divider' === selectedStyle && wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Text Color'),
+                        colorValue: divColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: divColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ divColor: newColor });
+                        }
+                    })
+                ),
+                'divider' === selectedStyle && wp.element.createElement(RangeControl, {
+                    label: __('Font Size (PX)'),
+                    value: divSize,
+                    min: '10',
+                    max: '80',
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ divSize: newSize });
+                    }
+                }),
+                'divider' === selectedStyle && wp.element.createElement(SelectControl, {
+                    label: __('Vertical Align'),
+                    options: ALIGNS,
+                    value: divV,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ divV: newValue });
+                    }
+                }),
+                'duration' === selectedStyle && wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Text Color'),
+                        colorValue: durColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: durColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ durColor: newColor });
+                        }
+                    })
+                ),
+                'duration' === selectedStyle && wp.element.createElement(RangeControl, {
+                    label: __('Font Size (PX)'),
+                    value: durSize,
+                    min: '10',
+                    max: '80',
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ durSize: newSize });
+                    }
+                }),
+                'duration' === selectedStyle && wp.element.createElement(SelectControl, {
+                    label: __('Vertical Align'),
+                    options: ALIGNS,
+                    value: durV,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ durV: newValue });
+                    }
+                }),
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Container Background Color'),
+                        colorValue: priceBack
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: priceBack,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ priceBack: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Container Margin Top (PX)'),
+                    value: priceMarginT,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newMargin) {
+                        return setAttributes({ priceMarginT: newMargin });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Container Margin Bottom (PX)'),
+                    value: priceMarginB,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newPadding) {
+                        return setAttributes({ priceMarginB: newPadding });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Container Padding (PX)'),
+                    value: pricePadding,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newPadding) {
+                        return setAttributes({ pricePadding: newPadding });
+                    }
+                })
+            ),
+            listChecked && wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Features'),
+                    initialOpen: false
+                },
+                wp.element.createElement(SelectControl, {
+                    label: __('List Style Type'),
+                    options: TYPE,
+                    value: listStyle,
+                    onChange: function onChange(newType) {
+                        return setAttributes({ listStyle: newType });
+                    }
+                }),
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('List Items Color'),
+                        colorValue: listColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: listColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ listColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Font Size (PX)'),
+                    value: listSize,
+                    min: '10',
+                    max: '80',
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ listSize: newSize });
+                    }
+                }),
+                wp.element.createElement(SelectControl, {
+                    label: __('Font Weight'),
+                    options: WEIGHT,
+                    value: listWeight,
+                    onChange: function onChange(newWeight) {
+                        return setAttributes({ listWeight: newWeight });
+                    }
+                }),
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Background Color'),
+                        colorValue: listBack
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: listBack,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ listBack: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Margin Top (PX)'),
+                    value: listMarginT,
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ listMarginT: newSize });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Margin Bottom (PX)'),
+                    value: listMarginB,
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ listMarginB: newSize });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Padding (PX)'),
+                    value: listPadding,
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ listPadding: newSize });
+                    }
+                })
+            ),
+            descChecked && wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Description'),
+                    initialOpen: false
+                },
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Text Color'),
+                        colorValue: descColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: descColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ descColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Font Size (PX)'),
+                    value: descSize,
+                    min: '10',
+                    max: '80',
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ descSize: newSize });
+                    }
+                }),
+                wp.element.createElement(SelectControl, {
+                    label: __('Font Weight'),
+                    options: WEIGHT,
+                    value: descWeight,
+                    onChange: function onChange(newWeight) {
+                        return setAttributes({ descWeight: newWeight });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Line Height (PX)'),
+                    value: descLine,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ descLine: newValue });
+                    }
+                }),
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Background Color'),
+                        colorValue: descBack
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: titleBack,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ descBack: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Margin Top (PX)'),
+                    value: descMarginT,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newMargin) {
+                        return setAttributes({ descMarginT: newMargin });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Margin Bottom (PX)'),
+                    value: descMarginB,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newMargin) {
+                        return setAttributes({ descMarginB: newMargin });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Padding (PX)'),
+                    value: descPadding,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newPadding) {
+                        return setAttributes({ descPadding: newPadding });
+                    }
+                })
+            ),
+            btnChecked && wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Button'),
+                    initialOpen: false
+                },
+                wp.element.createElement(TextControl, {
+                    label: __('Button Text'),
+                    value: btnText,
+                    onChange: function onChange(newText) {
+                        return setAttributes({ btnText: newText });
+                    }
+                }),
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Text Color'),
+                        colorValue: btnColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: btnColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ btnColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Width (%)'),
+                    value: btnWidth,
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ btnWidth: newSize });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Font Size (PX)'),
+                    value: btnSize,
+                    min: '10',
+                    max: '80',
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ btnSize: newSize });
+                    }
+                }),
+                wp.element.createElement(SelectControl, {
+                    label: __('Font Weight'),
+                    options: WEIGHT,
+                    value: btnWeight,
+                    onChange: function onChange(newWeight) {
+                        return setAttributes({ btnWeight: newWeight });
+                    }
+                }),
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Background Color'),
+                        colorValue: btnBack
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: btnBack,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ btnBack: newColor });
+                        }
+                    }),
+                    wp.element.createElement(SelectControl, {
+                        label: __('Border Type'),
+                        options: BORDER,
+                        value: btnBorderType,
+                        onChange: function onChange(newType) {
+                            return setAttributes({ btnBorderType: newType });
+                        }
+                    }),
+                    'none' != btnBorderType && wp.element.createElement(RangeControl, {
+                        label: __('Border Width'),
+                        value: btnBorderWidth,
+                        min: '0',
+                        max: '50',
+                        onChange: function onChange(newWidth) {
+                            return setAttributes({ btnBorderWidth: newWidth });
+                        }
+                    }),
+                    'none' != btnBorderType && wp.element.createElement(
+                        PanelColor,
+                        {
+                            title: __('Border Color'),
+                            colorValue: btnBorderColor
+                        },
+                        wp.element.createElement(ColorPalette, {
+                            value: btnBorderColor,
+                            onChange: function onChange(newColor) {
+                                return setAttributes({ btnBorderColor: newColor });
+                            }
+                        })
+                    ),
+                    wp.element.createElement(RangeControl, {
+                        label: __('Border Radius'),
+                        value: btnBorderRadius,
+                        min: '0',
+                        max: '150',
+                        onChange: function onChange(newRadius) {
+                            return setAttributes({ btnBorderRadius: newRadius });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Margin Top (PX)'),
+                    value: btnMarginT,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newPadding) {
+                        return setAttributes({ btnMarginT: newPadding });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Margin Bottom (PX)'),
+                    value: btnMarginB,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newPadding) {
+                        return setAttributes({ btnMarginB: newPadding });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Padding (PX)'),
+                    value: btnPadding,
+                    min: '0',
+                    max: '100',
+                    onChange: function onChange(newPadding) {
+                        return setAttributes({ btnPadding: newPadding });
+                    }
+                }),
+                wp.element.createElement(CheckboxControl, {
+                    label: __('Open Link in a new tab'),
+                    checked: btnTarget,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ btnTarget: newValue });
+                    }
+                })
+            ),
+            badgeChecked && wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Badge'),
+                    initialOpen: false
+                },
+                wp.element.createElement(SelectControl, {
+                    label: __('Position'),
+                    options: POSITION,
+                    value: badgePos,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ badgePos: newValue });
+                    }
+                }),
+                wp.element.createElement(TextControl, {
+                    label: __('Text'),
+                    value: badgeText,
+                    onChange: function onChange(value) {
+                        return setAttributes({ badgeText: value });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Size'),
+                    value: badgeSize,
+                    max: '250',
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ badgeSize: newValue });
+                    }
+                }),
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Background Color'),
+                        colorValue: badgeBack
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: btnBorderColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ badgeBack: newColor });
+                        }
+                    })
+                )
+            ),
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Display Options'),
+                    initialOpen: false
+                },
+                wp.element.createElement(CheckboxControl, {
+                    label: __('Title'),
+                    checked: titleChecked,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ titleChecked: newValue });
+                    }
+                }),
+                wp.element.createElement(CheckboxControl, {
+                    label: __('Price'),
+                    checked: priceChecked,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ priceChecked: newValue });
+                    }
+                }),
+                wp.element.createElement(CheckboxControl, {
+                    label: __('Features'),
+                    checked: listChecked,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ listChecked: newValue });
+                    }
+                }),
+                wp.element.createElement(CheckboxControl, {
+                    label: __('Description'),
+                    checked: descChecked,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ descChecked: newValue });
+                    }
+                }),
+                wp.element.createElement(CheckboxControl, {
+                    label: __('Button'),
+                    checked: btnChecked,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ btnChecked: newValue });
+                    }
+                }),
+                wp.element.createElement(CheckboxControl, {
+                    label: __('Badge'),
+                    checked: badgeChecked,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ badgeChecked: newValue });
+                    }
+                })
+            ),
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Table'),
+                    initialOpen: false
+                },
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Background Color'),
+                        colorValue: tableBack
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: tableBack,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ tableBack: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(SelectControl, {
+                    label: __('Border Type'),
+                    options: BORDER,
+                    value: borderType,
+                    onChange: function onChange(newType) {
+                        return setAttributes({ borderType: newType });
+                    }
+                }),
+                'none' != borderType && wp.element.createElement(RangeControl, {
+                    label: __('Border Width'),
+                    value: borderWidth,
+                    min: '0',
+                    max: '50',
+                    onChange: function onChange(newWidth) {
+                        return setAttributes({ borderWidth: newWidth });
+                    }
+                }),
+                'none' != borderType && wp.element.createElement(
+                    PanelColor,
+                    {
+                        title: __('Border Color'),
+                        colorValue: borderColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: borderColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ borderColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Border Radius'),
+                    value: borderRadius,
+                    min: '0',
+                    max: '150',
+                    onChange: function onChange(newRadius) {
+                        return setAttributes({ borderRadius: newRadius });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Padding'),
+                    value: tablePadding,
+                    min: '0',
+                    max: '50',
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ tablePadding: newValue });
+                    }
+                })
+            )
+        ), wp.element.createElement(
+            'div',
+            {
+                className: '' + blockClass,
+                style: {
+                    textAlign: contentAlign,
+                    background: tableBack,
+                    border: borderType,
+                    borderWidth: borderWidth + 'px',
+                    borderRadius: borderRadius + 'px',
+                    borderColor: borderColor,
+                    padding: tablePadding + 'px'
+                }
+            },
+            badgeChecked && wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__badge_wrap ' + blockClass + '__badge_' + badgePos
+                },
+                wp.element.createElement(
+                    'div',
+                    {
+                        className: blockClass + '__badge',
+                        style: {
+                            borderRightColor: 'right' === badgePos ? badgeBack : 'transparent',
+                            borderTopColor: 'left' === badgePos ? badgeBack : 'transparent',
+                            borderBottomWidth: badgeSize + 'px',
+                            borderRightWidth: badgeSize + 'px',
+                            borderTopWidth: 'left' === badgePos ? badgeSize + 'px' : 'none',
+                            borderLeftWidth: 'right' === badgePos ? badgeSize + 'px' : 'none'
+                        }
+                    },
+                    wp.element.createElement(
+                        'span',
+                        null,
+                        badgeText
+                    )
+                )
+            ),
+            titleChecked && wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__title_wrap',
+                    style: {
+                        paddingTop: titleMarginT + 'px',
+                        paddingBottom: titleMarginB + 'px'
+                    }
+                },
+                wp.element.createElement(RichText, {
+                    tagName: titleTag.toLowerCase(),
+                    className: blockClass + '__title',
+                    onChange: function onChange(newText) {
+                        return setAttributes({ title: newText });
+                    },
+                    placeholder: __('Awesome Title'),
+                    value: title,
+                    isSelected: false,
+                    style: {
+                        color: titleColor,
+                        background: titleBack,
+                        fontSize: titleSize + 'px',
+                        fontWeight: titleWeight,
+                        lineHeight: titleLine + 'px',
+                        padding: titlePadding + 'px'
+                    }
+                })
+            ),
+            priceChecked && wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__price_wrap',
+                    style: {
+                        background: priceBack,
+                        marginTop: priceMarginT + 'px',
+                        marginBottom: priceMarginB + 'px',
+                        padding: pricePadding + 'px',
+                        justifyContent: contentAlign
+                    }
+                },
+                '' !== slashPrice && wp.element.createElement(
+                    'strike',
+                    {
+                        className: blockClass + '__slash',
+                        style: {
+                            color: slashColor,
+                            fontSize: slashSize + 'px',
+                            alignSelf: slashV
+                        }
+                    },
+                    slashPrice
+                ),
+                '' !== currPrice && wp.element.createElement(
+                    'span',
+                    {
+                        className: blockClass + '__currency',
+                        style: {
+                            color: currColor,
+                            fontSize: currSize + 'px',
+                            alignSelf: currV
+                        }
+                    },
+                    currPrice
+                ),
+                '' !== valPrice && wp.element.createElement(
+                    'span',
+                    {
+                        className: blockClass + '__val',
+                        style: {
+                            color: valColor,
+                            fontSize: valSize + 'px',
+                            alignSelf: valV
+                        }
+                    },
+                    valPrice
+                ),
+                '' !== divPrice && wp.element.createElement(
+                    'span',
+                    {
+                        className: blockClass + '__divider',
+                        style: {
+                            color: divColor,
+                            fontSize: divSize + 'px',
+                            alignSelf: divV
+                        }
+                    },
+                    divPrice
+                ),
+                '' !== durPrice && wp.element.createElement(
+                    'span',
+                    {
+                        className: blockClass + '__dur',
+                        style: {
+                            color: durColor,
+                            fontSize: durSize + 'px',
+                            alignSelf: durV
+                        }
+                    },
+                    durPrice
+                )
+            ),
+            listChecked && wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__list_wrap',
+                    style: {
+                        marginTop: listMarginT + 'px',
+                        marginBottom: listMarginB + 'px'
+                    }
+                },
+                wp.element.createElement(RichText, {
+                    tagName: 'ul',
+                    className: blockClass + '__list',
+                    placeholder: __('List Item #1'),
+                    multiline: 'li',
+                    onChange: function onChange(newText) {
+                        return setAttributes({ listItems: newText });
+                    },
+                    value: listItems,
+                    isSelected: false,
+                    style: {
+                        color: listColor,
+                        fontSize: listSize + 'px',
+                        background: listBack,
+                        padding: listPadding + 'px',
+                        listStyle: listStyle,
+                        listStylePosition: 'inside',
+                        fontWeight: listWeight
+                    }
+                })
+            ),
+            descChecked && wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__desc_wrap'
+                },
+                wp.element.createElement(RichText, {
+                    tagName: 'p',
+                    className: blockClass + '__desc',
+                    onChange: function onChange(newText) {
+                        return setAttributes({ desc: newText });
+                    },
+                    value: desc,
+                    isSelected: false,
+                    style: {
+                        color: descColor,
+                        background: descBack,
+                        fontSize: descSize + 'px',
+                        fontWeight: descWeight,
+                        lineHeight: descLine + 'px',
+                        marginTop: descMarginT + 'px',
+                        marginBottom: descMarginB + 'px',
+                        padding: descPadding + 'px'
+                    }
+                })
+            ),
+            btnChecked && wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__button',
+                    style: {
+                        width: btnWidth + '%'
+                    }
+                },
+                wp.element.createElement(
+                    'a',
+                    {
+                        'class': blockClass + '__button_link',
+                        style: {
+                            color: btnColor,
+                            background: btnBack,
+                            fontWeight: btnWeight,
+                            marginTop: btnMarginT,
+                            marginBottom: btnMarginB,
+                            padding: btnPadding,
+                            fontSize: btnSize + 'px',
+                            border: btnBorderType,
+                            borderWidth: btnBorderWidth + 'px',
+                            borderRadius: btnBorderRadius + 'px',
+                            borderColor: btnBorderColor
+                        }
+                    },
+                    wp.element.createElement(
+                        'span',
+                        null,
+                        btnText
+                    )
+                ),
+                wp.element.createElement(URLInput, {
+                    value: btnLink,
+                    onChange: function onChange(newLink) {
+                        return setAttributes({ btnLink: newLink });
+                    }
+                })
+            )
+        )];
+    },
+    save: function save(props) {
+        var className = props.className,
+            _props$attributes2 = props.attributes,
+            contentAlign = _props$attributes2.contentAlign,
+            tableBack = _props$attributes2.tableBack,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            tablePadding = _props$attributes2.tablePadding,
+            titleChecked = _props$attributes2.titleChecked,
+            title = _props$attributes2.title,
+            titleTag = _props$attributes2.titleTag,
+            titleColor = _props$attributes2.titleColor,
+            titleSize = _props$attributes2.titleSize,
+            titleLine = _props$attributes2.titleLine,
+            titleWeight = _props$attributes2.titleWeight,
+            titleBack = _props$attributes2.titleBack,
+            titleMarginT = _props$attributes2.titleMarginT,
+            titleMarginB = _props$attributes2.titleMarginB,
+            titlePadding = _props$attributes2.titlePadding,
+            descChecked = _props$attributes2.descChecked,
+            desc = _props$attributes2.desc,
+            descColor = _props$attributes2.descColor,
+            descSize = _props$attributes2.descSize,
+            descLine = _props$attributes2.descLine,
+            descWeight = _props$attributes2.descWeight,
+            descBack = _props$attributes2.descBack,
+            descMarginT = _props$attributes2.descMarginT,
+            descMarginB = _props$attributes2.descMarginB,
+            descPadding = _props$attributes2.descPadding,
+            priceChecked = _props$attributes2.priceChecked,
+            priceBack = _props$attributes2.priceBack,
+            priceMarginT = _props$attributes2.priceMarginT,
+            priceMarginB = _props$attributes2.priceMarginB,
+            pricePadding = _props$attributes2.pricePadding,
+            slashPrice = _props$attributes2.slashPrice,
+            slashColor = _props$attributes2.slashColor,
+            slashSize = _props$attributes2.slashSize,
+            slashV = _props$attributes2.slashV,
+            currPrice = _props$attributes2.currPrice,
+            currColor = _props$attributes2.currColor,
+            currSize = _props$attributes2.currSize,
+            currV = _props$attributes2.currV,
+            valPrice = _props$attributes2.valPrice,
+            valColor = _props$attributes2.valColor,
+            valSize = _props$attributes2.valSize,
+            valV = _props$attributes2.valV,
+            divPrice = _props$attributes2.divPrice,
+            divColor = _props$attributes2.divColor,
+            divSize = _props$attributes2.divSize,
+            divV = _props$attributes2.divV,
+            durPrice = _props$attributes2.durPrice,
+            durColor = _props$attributes2.durColor,
+            durSize = _props$attributes2.durSize,
+            durV = _props$attributes2.durV,
+            btnChecked = _props$attributes2.btnChecked,
+            btnText = _props$attributes2.btnText,
+            btnLink = _props$attributes2.btnLink,
+            btnTarget = _props$attributes2.btnTarget,
+            btnColor = _props$attributes2.btnColor,
+            btnSize = _props$attributes2.btnSize,
+            btnLine = _props$attributes2.btnLine,
+            btnWeight = _props$attributes2.btnWeight,
+            btnBack = _props$attributes2.btnBack,
+            btnMarginT = _props$attributes2.btnMarginT,
+            btnMarginB = _props$attributes2.btnMarginB,
+            btnPadding = _props$attributes2.btnPadding,
+            btnWidth = _props$attributes2.btnWidth,
+            btnBorderType = _props$attributes2.btnBorderType,
+            btnBorderWidth = _props$attributes2.btnBorderWidth,
+            btnBorderRadius = _props$attributes2.btnBorderRadius,
+            btnBorderColor = _props$attributes2.btnBorderColor,
+            badgeChecked = _props$attributes2.badgeChecked,
+            badgePos = _props$attributes2.badgePos,
+            badgeBack = _props$attributes2.badgeBack,
+            badgeSize = _props$attributes2.badgeSize,
+            badgeText = _props$attributes2.badgeText,
+            listChecked = _props$attributes2.listChecked,
+            listColor = _props$attributes2.listColor,
+            listWeight = _props$attributes2.listWeight,
+            listSize = _props$attributes2.listSize,
+            listBack = _props$attributes2.listBack,
+            listItems = _props$attributes2.listItems,
+            listMarginB = _props$attributes2.listMarginB,
+            listMarginT = _props$attributes2.listMarginT,
+            listPadding = _props$attributes2.listPadding,
+            listStyle = _props$attributes2.listStyle;
+
+
+        return wp.element.createElement(
+            'div',
+            {
+                className: '' + blockClass,
+                style: {
+                    textAlign: contentAlign,
+                    background: tableBack,
+                    border: borderType,
+                    borderWidth: borderWidth + 'px',
+                    borderRadius: borderRadius + 'px',
+                    borderColor: borderColor,
+                    padding: tablePadding + 'px'
+                }
+            },
+            badgeChecked && wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__badge_wrap ' + blockClass + '__badge_' + badgePos
+                },
+                wp.element.createElement(
+                    'div',
+                    {
+                        className: blockClass + '__badge',
+                        style: {
+                            borderRightColor: 'right' === badgePos ? badgeBack : 'transparent',
+                            borderTopColor: 'left' === badgePos ? badgeBack : 'transparent',
+                            borderBottomWidth: badgeSize + 'px',
+                            borderRightWidth: badgeSize + 'px',
+                            borderTopWidth: 'left' === badgePos ? badgeSize + 'px' : 'none',
+                            borderLeftWidth: 'right' === badgePos ? badgeSize + 'px' : 'none'
+                        }
+                    },
+                    wp.element.createElement(
+                        'span',
+                        null,
+                        badgeText
+                    )
+                )
+            ),
+            titleChecked && wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__title_wrap',
+                    style: {
+                        paddingTop: titleMarginT + 'px',
+                        paddingBottom: titleMarginB + 'px'
+                    }
+                },
+                wp.element.createElement(RichText.Content, {
+                    tagName: titleTag.toLowerCase(),
+                    className: blockClass + '__title',
+                    value: title,
+                    style: {
+                        color: titleColor,
+                        background: titleBack,
+                        fontSize: titleSize + 'px',
+                        fontWeight: titleWeight,
+                        lineHeight: titleLine + 'px',
+                        marginBottom: titleMarginB + 'px',
+                        padding: titlePadding + 'px'
+                    }
+                })
+            ),
+            priceChecked && wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__price_wrap',
+                    style: {
+                        background: priceBack,
+                        marginTop: priceMarginT + 'px',
+                        marginBottom: priceMarginB + 'px',
+                        padding: pricePadding + 'px',
+                        justifyContent: contentAlign
+                    }
+                },
+                '' !== slashPrice && wp.element.createElement(
+                    'strike',
+                    {
+                        className: blockClass + '__slash',
+                        style: {
+                            color: slashColor,
+                            fontSize: slashSize + 'px',
+                            alignSelf: currV
+                        }
+                    },
+                    slashPrice
+                ),
+                '' !== currPrice && wp.element.createElement(
+                    'span',
+                    {
+                        className: blockClass + '__currency',
+                        style: {
+                            color: currColor,
+                            fontSize: currSize + 'px',
+                            alignSelf: currV
+                        }
+                    },
+                    currPrice
+                ),
+                '' !== valPrice && wp.element.createElement(
+                    'span',
+                    {
+                        className: blockClass + '__val',
+                        style: {
+                            color: valColor,
+                            fontSize: valSize + 'px',
+                            alignSelf: valV
+                        }
+                    },
+                    valPrice
+                ),
+                '' !== divPrice && wp.element.createElement(
+                    'span',
+                    {
+                        className: blockClass + '__divider',
+                        style: {
+                            color: divColor,
+                            fontSize: divSize + 'px',
+                            alignSelf: divV
+                        }
+                    },
+                    divPrice
+                ),
+                '' !== durPrice && wp.element.createElement(
+                    'span',
+                    {
+                        className: blockClass + '__dur',
+                        style: {
+                            color: durColor,
+                            fontSize: durSize + 'px',
+                            alignSelf: durV
+                        }
+                    },
+                    durPrice
+                )
+            ),
+            listChecked && wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__list_wrap',
+                    style: {
+                        marginTop: listMarginT + 'px',
+                        marginBottom: listMarginB + 'px'
+                    }
+                },
+                wp.element.createElement(
+                    'ul',
+                    {
+                        className: blockClass + '__list',
+                        style: {
+                            color: listColor,
+                            fontSize: listSize + 'px',
+                            background: listBack,
+                            padding: listPadding + 'px',
+                            listStyle: listStyle,
+                            listStylePosition: 'inside',
+                            fontWeight: listWeight
+                        }
+                    },
+                    listItems
+                )
+            ),
+            descChecked && wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__desc_wrap'
+                },
+                wp.element.createElement(RichText.Content, {
+                    tagName: 'p',
+                    className: blockClass + '__desc',
+                    value: desc,
+                    style: {
+                        color: descColor,
+                        background: descBack,
+                        fontSize: descSize + 'px',
+                        fontWeight: descWeight,
+                        lineHeight: descLine + 'px',
+                        marginTop: descMarginT + 'px',
+                        marginBottom: descMarginB + 'px',
+                        padding: descPadding + 'px'
+                    }
+                })
+            ),
+            btnChecked && wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__button',
+                    style: {
+                        width: btnWidth + '%'
+                    }
+                },
+                wp.element.createElement(
+                    'a',
+                    {
+                        'class': blockClass + '__button_link',
+                        style: {
+                            color: btnColor,
+                            background: btnBack,
+                            fontWeight: btnWeight,
+                            marginTop: btnMarginT,
+                            marginBottom: btnMarginB,
+                            padding: btnPadding,
+                            fontSize: btnSize + 'px',
+                            border: btnBorderType,
+                            borderWidth: btnBorderWidth + 'px',
+                            borderRadius: btnBorderRadius + 'px',
+                            borderColor: btnBorderColor
+                        }
+                    },
+                    wp.element.createElement(
+                        'span',
+                        null,
+                        btnText
+                    )
+                )
+            )
+        );
+    }
+});
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var blockClass = 'premium-maps';
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var _wp$components = wp.components,
+    IconButton = _wp$components.IconButton,
+    Toolbar = _wp$components.Toolbar,
+    Button = _wp$components.Button,
+    PanelBody = _wp$components.PanelBody,
+    PanelColor = _wp$components.PanelColor,
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl,
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl,
+    CheckboxControl = _wp$components.CheckboxControl;
+var _wp$editor = wp.editor,
+    BlockControls = _wp$editor.BlockControls,
+    InspectorControls = _wp$editor.InspectorControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    RichText = _wp$editor.RichText,
+    MediaUpload = _wp$editor.MediaUpload,
+    ColorPalette = _wp$editor.ColorPalette,
+    URLInput = _wp$editor.URLInput;
+var Component = wp.element.Component;
+
+
+var isMapUpdated = null;
+
+var PremiumMap = function (_Component) {
+    _inherits(PremiumMap, _Component);
+
+    function PremiumMap() {
+        _classCallCheck(this, PremiumMap);
+
+        var _this = _possibleConstructorReturn(this, (PremiumMap.__proto__ || Object.getPrototypeOf(PremiumMap)).apply(this, arguments));
+
+        _this.state = {
+            thisAddress: '',
+            thisMap: null,
+            thisMarker: null,
+            thisInfo: null,
+            fetching: false
+        };
+
+        _this.initMap = _this.initMap.bind(_this);
+        //        this.fetchLocation = this.fetchLocation.bind(this);
+
+        return _this;
+    }
+
+    _createClass(PremiumMap, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _props = this.props,
+                attributes = _props.attributes,
+                setAttributes = _props.setAttributes,
+                clientId = _props.clientId;
+
+
+            if (!attributes.mapID) {
+                setAttributes({ mapID: 'premium-map-' + clientId });
+            }
+            this.initMap();
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            var _prevProps$attributes = prevProps.attributes,
+                prevAddr = _prevProps$attributes.address,
+                prevUseLatLng = _prevProps$attributes.useLatLng;
+            var _props$attributes = this.props.attributes,
+                address = _props$attributes.address,
+                useLatLng = _props$attributes.useLatLng;
+
+            //        if (prevAddr !== address || prevUseLatLng !== useLatLng || prevState !== this.state)
+            //            return null;
+
+            if (prevProps.attributes !== this.props.attributes) {
+                clearTimeout(isMapUpdated);
+                isMapUpdated = setTimeout(this.initMap, 500);
+            }
+        }
+    }, {
+        key: 'initMap',
+        value: function initMap() {
+
+            if (typeof google === 'undefined' || !this.props.attributes.mapID) return null;
+
+            var _state = this.state,
+                thisMap = _state.thisMap,
+                thisMarker = _state.thisMarker,
+                thisInfo = _state.thisInfo;
+            var setAttributes = this.props.setAttributes;
+            var _props$attributes2 = this.props.attributes,
+                mapID = _props$attributes2.mapID,
+                mapStyle = _props$attributes2.mapStyle,
+                mapType = _props$attributes2.mapType,
+                height = _props$attributes2.height,
+                zoom = _props$attributes2.zoom,
+                mapTypeControl = _props$attributes2.mapTypeControl,
+                zoomControl = _props$attributes2.zoomControl,
+                fullscreenControl = _props$attributes2.fullscreenControl,
+                streetViewControl = _props$attributes2.streetViewControl,
+                scrollwheel = _props$attributes2.scrollwheel,
+                centerLng = _props$attributes2.centerLng,
+                centerLat = _props$attributes2.centerLat,
+                markerTitle = _props$attributes2.markerTitle,
+                markerDesc = _props$attributes2.markerDesc,
+                mapMarker = _props$attributes2.mapMarker,
+                markerIconUrl = _props$attributes2.markerIconUrl,
+                markerCustom = _props$attributes2.markerCustom,
+                maxWidth = _props$attributes2.maxWidth,
+                boxAlign = _props$attributes2.boxAlign,
+                boxPadding = _props$attributes2.boxPadding,
+                titleColor = _props$attributes2.titleColor,
+                titleSize = _props$attributes2.titleSize,
+                descColor = _props$attributes2.descColor,
+                descSize = _props$attributes2.descSize,
+                gapBetween = _props$attributes2.gapBetween;
+
+            //            const that = this;
+            //            const formattedDesc = markerDesc.replace(/\n/g, '<br/>');
+
+            var map = thisMap;
+            var marker = thisMarker;
+            var infoWindow = thisInfo;
+            var latlng = new google.maps.LatLng(parseFloat(centerLat), parseFloat(centerLng));
+
+            if (!map) {
+                var mapElem = document.getElementById(mapID);
+
+                map = new google.maps.Map(mapElem, {
+                    zoom: zoom,
+                    gestureHandling: 'cooperative',
+                    mapTypeId: mapType,
+                    mapTypeControl: mapTypeControl,
+                    zoomControl: zoomControl,
+                    fullscreenControl: fullscreenControl,
+                    streetViewControl: streetViewControl,
+                    scrollwheel: scrollwheel,
+                    center: latlng,
+                    styles: JSON.parse(mapStyle)
+                });
+                this.setState({ thisMap: map });
+            }
+
+            map.setOptions({
+                zoom: zoom,
+                mapTypeId: mapType,
+                mapTypeControl: mapTypeControl,
+                zoomControl: zoomControl,
+                fullscreenControl: fullscreenControl,
+                streetViewControl: streetViewControl,
+                styles: JSON.parse(mapStyle)
+            });
+
+            if (!infoWindow && mapMarker && '' !== markerTitle && '' !== markerDesc) {
+                infoWindow = new google.maps.InfoWindow({
+                    maxWidth: maxWidth
+                });
+                this.setState({ thisInfo: infoWindow });
+            }
+
+            if (mapMarker && '' !== markerTitle && '' !== markerDesc) {
+                infoWindow.setContent('<div class="' + blockClass + '__info" style="text-align:' + boxAlign + ';padding:' + boxPadding + 'px"\n                    >\n                    <h3\n                        class="' + blockClass + '__title"\n                        style="color:' + titleColor + ';font-size:' + titleSize + 'px;margin-bottom:' + gapBetween + 'px"\n                    >\n                        ' + markerTitle + '\n                    </h3>\n                    <div\n                        class="' + blockClass + '__desc"\n                        style="color: ' + descColor + ';font-size: ' + descSize + 'px"\n                    >\n                        ' + markerDesc + '\n                    </div>\n                </div>');
+            }
+
+            map.setCenter(latlng);
+
+            if (mapMarker) {
+
+                var _marker = new google.maps.Marker({
+                    position: latlng,
+                    map: map,
+                    icon: markerCustom ? markerIconUrl : ''
+                });
+
+                google.maps.event.addListener(_marker, 'click', function () {
+                    infoWindow.open(map, _marker);
+                });
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _props2 = this.props,
+                isSelected = _props2.isSelected,
+                setAttributes = _props2.setAttributes,
+                clientId = _props2.clientId;
+            var _props$attributes3 = this.props.attributes,
+                mapID = _props$attributes3.mapID,
+                mapStyle = _props$attributes3.mapStyle,
+                mapType = _props$attributes3.mapType,
+                height = _props$attributes3.height,
+                zoom = _props$attributes3.zoom,
+                mapTypeControl = _props$attributes3.mapTypeControl,
+                zoomControl = _props$attributes3.zoomControl,
+                fullscreenControl = _props$attributes3.fullscreenControl,
+                streetViewControl = _props$attributes3.streetViewControl,
+                scrollwheel = _props$attributes3.scrollwheel,
+                centerLng = _props$attributes3.centerLng,
+                centerLat = _props$attributes3.centerLat,
+                markerDesc = _props$attributes3.markerDesc,
+                markerTitle = _props$attributes3.markerTitle,
+                mapMarker = _props$attributes3.mapMarker,
+                markerIconUrl = _props$attributes3.markerIconUrl,
+                markerIconId = _props$attributes3.markerIconId,
+                markerCustom = _props$attributes3.markerCustom,
+                maxWidth = _props$attributes3.maxWidth,
+                titleColor = _props$attributes3.titleColor,
+                titleSize = _props$attributes3.titleSize,
+                descColor = _props$attributes3.descColor,
+                descSize = _props$attributes3.descSize,
+                boxAlign = _props$attributes3.boxAlign,
+                boxPadding = _props$attributes3.boxPadding,
+                gapBetween = _props$attributes3.gapBetween;
+
+
+            var TYPES = [{
+                value: "roadmap",
+                label: "Road Map"
+            }, {
+                value: "satellite",
+                label: "Satellite"
+            }, {
+                value: "terrain",
+                label: "Terrain"
+            }, {
+                value: "hybrid",
+                label: "Hybrid"
+            }];
+
+            var ALIGNS = ['left', 'center', 'right'];
+            return [typeof google !== 'undefined' && isSelected && wp.element.createElement(
+                InspectorControls,
+                { key: 'key' },
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __('Center Location'),
+                        initialOpen: false
+                    },
+                    wp.element.createElement(TextControl, {
+                        label: __('Longitude'),
+                        value: centerLng,
+                        help: [__('Get your location coordinates from'), wp.element.createElement(
+                            'a',
+                            { href: 'https://www.latlong.net/', target: '_blank' },
+                            '\xA0',
+                            __('here')
+                        )],
+                        onChange: function onChange(newLng) {
+                            return setAttributes({ centerLng: newLng });
+                        }
+                    }),
+                    wp.element.createElement(TextControl, {
+                        label: __('Latitude'),
+                        value: centerLat,
+                        onChange: function onChange(newLat) {
+                            return setAttributes({ centerLat: newLat });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __('Marker'),
+                        initialOpen: false
+                    },
+                    wp.element.createElement(CheckboxControl, {
+                        label: __('Enable Marker'),
+                        checked: mapMarker,
+                        onChange: function onChange(check) {
+                            return setAttributes({ mapMarker: check });
+                        }
+                    }),
+                    mapMarker && wp.element.createElement(TextControl, {
+                        label: __('Marker Title'),
+                        value: markerTitle,
+                        onChange: function onChange(newText) {
+                            return setAttributes({ markerTitle: newText });
+                        }
+                    }),
+                    mapMarker && wp.element.createElement(TextareaControl, {
+                        label: __('Marker Description'),
+                        value: markerDesc,
+                        onChange: function onChange(newText) {
+                            return setAttributes({ markerDesc: newText });
+                        }
+                    }),
+                    mapMarker && wp.element.createElement(RangeControl, {
+                        label: __('Spacing (PX)'),
+                        value: gapBetween,
+                        min: '10',
+                        max: '80',
+                        onChange: function onChange(newSize) {
+                            return setAttributes({ gapBetween: newSize });
+                        }
+                    }),
+                    mapMarker && wp.element.createElement(Toolbar, {
+                        controls: ALIGNS.map(function (align) {
+                            return {
+                                icon: 'editor-align' + align,
+                                isActive: align === boxAlign,
+                                onClick: function onClick() {
+                                    return setAttributes({ boxAlign: align });
+                                }
+                            };
+                        })
+                    }),
+                    mapMarker && wp.element.createElement(CheckboxControl, {
+                        label: __('Custom Marker Icon'),
+                        checked: markerCustom,
+                        onChange: function onChange(check) {
+                            return setAttributes({ markerCustom: check });
+                        }
+                    }),
+                    mapMarker && markerCustom && markerIconUrl && wp.element.createElement('img', { src: markerIconUrl, width: '100%', height: 'auto' }),
+                    markerCustom && mapMarker && wp.element.createElement(MediaUpload, {
+                        allowedTypes: ["image"],
+                        onSelect: function onSelect(media) {
+                            setAttributes({
+                                markerIconId: media.id,
+                                markerIconUrl: 'undefined' === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url
+                            });
+                        },
+                        type: 'image',
+                        value: markerIconId,
+                        render: function render(_ref) {
+                            var open = _ref.open;
+                            return wp.element.createElement(
+                                IconButton,
+                                {
+                                    label: __("Change Marker Icon"),
+                                    icon: 'edit',
+                                    onClick: open
+                                },
+                                __("Change Marker Icon")
+                            );
+                        }
+                    }),
+                    (mapMarker && '' !== markerDesc || '' !== markerTitle) && wp.element.createElement(RangeControl, {
+                        label: __('Description Box Max Width (PX)'),
+                        value: maxWidth,
+                        min: '10',
+                        max: '500',
+                        onChange: function onChange(newSize) {
+                            return setAttributes({ maxWidth: newSize });
+                        }
+                    }),
+                    mapMarker && wp.element.createElement(RangeControl, {
+                        label: __('Description Box Padding (PX)'),
+                        value: boxPadding,
+                        min: '1',
+                        max: '50',
+                        onChange: function onChange(newSize) {
+                            return setAttributes({ boxPadding: newSize });
+                        }
+                    })
+                ),
+                mapMarker && '' !== markerTitle && wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __('Marker Title Style'),
+                        initialOpen: false
+                    },
+                    wp.element.createElement(
+                        PanelColor,
+                        {
+                            label: __('Color'),
+                            colorValue: titleColor
+                        },
+                        wp.element.createElement(ColorPalette, {
+                            value: titleColor,
+                            onChange: function onChange(newColor) {
+                                return setAttributes({ titleColor: newColor });
+                            }
+                        })
+                    ),
+                    wp.element.createElement(RangeControl, {
+                        label: __('Font Size (PX)'),
+                        value: titleSize,
+                        min: '10',
+                        max: '80',
+                        onChange: function onChange(newSize) {
+                            return setAttributes({ titleSize: newSize });
+                        }
+                    })
+                ),
+                mapMarker && '' !== markerDesc && wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __('Marker Description Style'),
+                        initialOpen: false
+                    },
+                    wp.element.createElement(
+                        PanelColor,
+                        {
+                            label: __('Color'),
+                            colorValue: descColor
+                        },
+                        wp.element.createElement(ColorPalette, {
+                            value: descColor,
+                            onChange: function onChange(newColor) {
+                                return setAttributes({ descColor: newColor });
+                            }
+                        })
+                    ),
+                    wp.element.createElement(RangeControl, {
+                        label: __('Font Size (PX)'),
+                        value: descSize,
+                        min: '10',
+                        max: '80',
+                        onChange: function onChange(newSize) {
+                            return setAttributes({ descSize: newSize });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __('Controls'),
+                        initialOpen: false
+                    },
+                    wp.element.createElement(SelectControl, {
+                        label: __('Map Type'),
+                        options: TYPES,
+                        value: mapType,
+                        onChange: function onChange(newType) {
+                            return setAttributes({ mapType: newType });
+                        }
+                    }),
+                    wp.element.createElement(RangeControl, {
+                        label: __('Map Height (PX)'),
+                        value: height,
+                        min: '10',
+                        max: '800',
+                        onChange: function onChange(newSize) {
+                            return setAttributes({ height: newSize });
+                        }
+                    }),
+                    wp.element.createElement(RangeControl, {
+                        label: __('Zoom'),
+                        value: zoom,
+                        min: '1',
+                        max: '14',
+                        onChange: function onChange(newSize) {
+                            return setAttributes({ zoom: newSize });
+                        }
+                    }),
+                    wp.element.createElement(CheckboxControl, {
+                        label: __('Map Type Controls'),
+                        checked: mapTypeControl,
+                        onChange: function onChange(check) {
+                            return setAttributes({ mapTypeControl: check });
+                        }
+                    }),
+                    wp.element.createElement(CheckboxControl, {
+                        label: __('Zoom Controls'),
+                        checked: zoomControl,
+                        onChange: function onChange(check) {
+                            return setAttributes({ zoomControl: check });
+                        }
+                    }),
+                    wp.element.createElement(CheckboxControl, {
+                        label: __('Street View Control'),
+                        checked: streetViewControl,
+                        onChange: function onChange(check) {
+                            return setAttributes({ streetViewControl: check });
+                        }
+                    }),
+                    wp.element.createElement(CheckboxControl, {
+                        label: __('Full Screen Control'),
+                        checked: fullscreenControl,
+                        onChange: function onChange(check) {
+                            return setAttributes({ fullscreenControl: check });
+                        }
+                    }),
+                    wp.element.createElement(CheckboxControl, {
+                        label: __('Scroll Wheel Zoom'),
+                        checked: scrollwheel,
+                        onChange: function onChange(check) {
+                            return setAttributes({ scrollwheel: check });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __('Map Style'),
+                        initialOpen: false
+                    },
+                    wp.element.createElement(TextareaControl, {
+                        label: __('Maps Style'),
+                        value: mapStyle,
+                        help: [__('Get your custom styling from'), wp.element.createElement(
+                            'a',
+                            { href: 'https://snazzymaps.com/', target: '_blank' },
+                            '\xA0',
+                            __('here')
+                        )],
+                        onChange: function onChange(newStyle) {
+                            return setAttributes({ mapStyle: '' !== newStyle ? newStyle : '[]' });
+                        }
+                    })
+                )
+            ), wp.element.createElement('div', {
+                className: blockClass + '__wrap',
+                id: mapID,
+                style: {
+                    height: height + 'px'
+                }
+            })];
+        }
+    }]);
+
+    return PremiumMap;
+}(Component);
+
+registerBlockType('premium/maps', {
+    title: __('Premium Maps'),
+    icon: 'location',
+    category: 'premium-blocks',
+    attributes: {
+        mapID: {
+            type: 'string'
+        },
+        mapStyle: {
+            type: 'string',
+            default: '[]'
+        },
+        mapType: {
+            type: 'string',
+            default: 'roadmap'
+        },
+        height: {
+            type: 'number',
+            default: 500
+        },
+        zoom: {
+            type: 'number',
+            default: 6
+        },
+        mapTypeControl: {
+            type: 'boolean',
+            default: true
+        },
+        zoomControl: {
+            type: 'boolean',
+            default: true
+        },
+        fullscreenControl: {
+            type: 'boolean',
+            default: true
+        },
+        streetViewControl: {
+            type: 'boolean',
+            default: false
+        },
+        scrollwheel: {
+            type: 'boolean',
+            default: false
+        },
+        centerLat: {
+            type: 'number',
+            default: '40.7569733'
+        },
+        centerLng: {
+            type: 'string',
+            default: ' -73.98878250000001'
+        },
+        markerTitle: {
+            type: 'string',
+            default: __('Awesome Title')
+        },
+        markerDesc: {
+            type: 'string',
+            default: __('Cool Description')
+        },
+        mapMarker: {
+            type: 'boolean',
+            default: true
+        },
+        markerIconUrl: {
+            type: 'string'
+        },
+        markerIconId: {
+            type: 'number',
+            default: ''
+        },
+        markerCustom: {
+            type: 'boolean',
+            default: false
+        },
+        maxWidth: {
+            type: 'number',
+            default: 300
+        },
+        titleColor: {
+            type: 'string',
+            default: '#6ec1e4'
+        },
+        titleSize: {
+            type: 'number',
+            default: 20
+        },
+        descColor: {
+            type: 'string',
+            default: '#000'
+        },
+        descSize: {
+            type: 'number',
+            default: 16
+        },
+        boxAlign: {
+            type: 'string',
+            default: 'center'
+        },
+        boxPadding: {
+            type: 'number',
+            default: '0'
+        },
+        gapBetween: {
+            type: 'number',
+            default: 5
+        }
+
+    },
+    edit: PremiumMap,
+    save: function save(props) {
+        var className = props.className,
+            clientId = props.clientId,
+            _props$attributes4 = props.attributes,
+            mapID = _props$attributes4.mapID,
+            height = _props$attributes4.height,
+            mapStyle = _props$attributes4.mapStyle,
+            mapType = _props$attributes4.mapType,
+            zoom = _props$attributes4.zoom,
+            mapTypeControl = _props$attributes4.mapTypeControl,
+            zoomControl = _props$attributes4.zoomControl,
+            fullscreenControl = _props$attributes4.fullscreenControl,
+            streetViewControl = _props$attributes4.streetViewControl,
+            scrollwheel = _props$attributes4.scrollwheel,
+            centerLat = _props$attributes4.centerLat,
+            centerLng = _props$attributes4.centerLng,
+            mapMarker = _props$attributes4.mapMarker,
+            markerIconUrl = _props$attributes4.markerIconUrl,
+            markerIconId = _props$attributes4.markerIconId,
+            markerCustom = _props$attributes4.markerCustom,
+            maxWidth = _props$attributes4.maxWidth,
+            markerTitle = _props$attributes4.markerTitle,
+            markerDesc = _props$attributes4.markerDesc,
+            titleColor = _props$attributes4.titleColor,
+            titleSize = _props$attributes4.titleSize,
+            descColor = _props$attributes4.descColor,
+            descSize = _props$attributes4.descSize,
+            boxAlign = _props$attributes4.boxAlign,
+            boxPadding = _props$attributes4.boxPadding,
+            gapBetween = _props$attributes4.gapBetween;
+
+
+        return wp.element.createElement(
+            'div',
+            {
+                className: blockClass + '__wrap',
+                id: mapID,
+                style: {
+                    height: height + 'px'
+                }
+            },
+            wp.element.createElement(
+                'div',
+                {
+                    className: blockClass + '__marker'
+                },
+                wp.element.createElement(
+                    'div',
+                    {
+                        className: blockClass + '__info',
+                        style: {
+                            textAlign: boxAlign,
+                            padding: boxPadding + 'px'
+                        }
+                    },
+                    '' !== markerTitle && wp.element.createElement(
+                        'h3',
+                        {
+                            className: blockClass + '__title',
+                            style: {
+                                color: titleColor,
+                                fontSize: titleSize + 'px',
+                                marginBottom: gapBetween + 'px'
+                            }
+                        },
+                        markerTitle
+                    ),
+                    '' !== markerDesc && wp.element.createElement(
+                        'div',
+                        {
+                            className: blockClass + '__desc',
+                            style: {
+                                color: descColor,
+                                fontSize: descSize + 'px'
+                            }
+                        },
+                        markerDesc
+                    )
+                )
+            ),
+            wp.element.createElement(
+                'script',
+                null,
+                'window.addEventListener(\'load\',function(){\n                    if( typeof google === \'undefined\' ) return;\n                    let mapElem = document.getElementById(\'' + mapID + '\');\n                    let pin = mapElem.querySelector(\'.' + blockClass + '__marker\');\n                    \n                    let latlng = new google.maps.LatLng( parseFloat( ' + centerLat + ' ) , parseFloat( ' + centerLng + ' ) );\n                    let map = new google.maps.Map(mapElem, {\n                        zoom: ' + zoom + ',\n                        gestureHandling: \'cooperative\',\n                        mapTypeId: \'' + mapType + '\',\n                        mapTypeControl: ' + mapTypeControl + ',\n                        zoomControl: ' + zoomControl + ',\n                        fullscreenControl: ' + fullscreenControl + ',\n                        streetViewControl: ' + streetViewControl + ',\n                        scrollwheel: ' + scrollwheel + ',\n                        center: latlng,\n                        styles: ' + mapStyle + '\n                    });\n                    if( ' + mapMarker + ' ) {\n                        let markerIcon = \'' + markerIconUrl + '\';\n                        let marker = new google.maps.Marker({\n                            position\t: latlng,\n                            map\t\t\t: map,\n                            icon        : ' + markerCustom + ' ? markerIcon : \'\'\n                        });\n                        \n                        let infowindow = new google.maps.InfoWindow({\n                            maxWidth    : ' + maxWidth + ',\n                            content\t\t: pin.innerHTML\n                        });\n                        \n                        google.maps.event.addListener(marker, \'click\', function() {\n                            infowindow.open( map, marker );\n                        });\n                    }\n                    \n                });'
+            )
+        );
+    }
+});
+
+/***/ })
+/******/ ]);
