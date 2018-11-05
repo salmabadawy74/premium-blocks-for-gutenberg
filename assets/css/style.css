@@ -813,3 +813,48 @@ a.premium-dheading-block__link:hover {
     margin-top: 0;
     padding: 0;
 }
+/**************** Premium Testimonials *****************/
+/*******************************************************/
+.premium-testimonial__wrap {
+    width: 100%;
+    background: transparent;
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.premium-testimonial__container {
+    position: relative;
+}
+.premium-testimonial__content {
+    padding: 20px;
+}
+.premium-testimonial__content .premium-testimonial__img {
+    border-style: solid;
+}
+.premium-testimonial__content .premium-testimonial__text_wrap {
+    margin: 1em 0;
+}
+.premium-testimonial__wrap .premium-testimonial__author,
+.premium-testimonial__wrap .premium-testimonial__author_comp {
+    display: inline;
+}
+.premium-testimonial__container .premium-testimonial__upper,
+.premium-testimonial__container .premium-testimonial__lower {
+    position: absolute;
+    z-index: 1;
+}
+.premium-testimonial__container .premium-testimonial__upper {
+    top: 40px;
+    left: 12px;
+}
+.premium-testimonial__container .premium-testimonial__lower {
+    right: 12px;
+    bottom: 3px;
+}
+.premium-testimonial__upper svg,
+.premium-testimonial__lower svg {
+    width: 5em;
+}

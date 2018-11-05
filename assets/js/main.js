@@ -77,6 +77,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_pricing_table___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__blocks_pricing_table__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_maps__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__blocks_maps__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_testimonials__ = __webpack_require__(5);
+
 
 
 
@@ -2042,7 +2044,6 @@ registerBlockType('premium/pricing-table', {
             type: 'string',
             default: 'center'
         }
-
     },
     edit: function edit(props) {
         var isSelected = props.isSelected,
@@ -4313,6 +4314,746 @@ registerBlockType('premium/maps', {
         );
     }
 });
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(8);
+
+
+
+
+var className = 'premium-testimonial';
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var _wp$components = wp.components,
+    IconButton = _wp$components.IconButton,
+    Toolbar = _wp$components.Toolbar,
+    Button = _wp$components.Button,
+    PanelBody = _wp$components.PanelBody,
+    PanelColor = _wp$components.PanelColor,
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl,
+    TextControl = _wp$components.TextControl,
+    CheckboxControl = _wp$components.CheckboxControl;
+var _wp$editor = wp.editor,
+    BlockControls = _wp$editor.BlockControls,
+    InspectorControls = _wp$editor.InspectorControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    RichText = _wp$editor.RichText,
+    MediaUpload = _wp$editor.MediaUpload,
+    ColorPalette = _wp$editor.ColorPalette,
+    URLInput = _wp$editor.URLInput;
+
+
+registerBlockType('premium/testimonial', {
+    title: __('Premium Testimonial'),
+    icon: 'format-quote',
+    category: 'premium-blocks',
+    attributes: {
+        align: {
+            type: 'string',
+            default: 'center'
+        },
+        authorImgId: {
+            type: 'string'
+        },
+        authorImgUrl: {
+            type: 'string'
+        },
+        imgRadius: {
+            type: 'string',
+            default: '50%'
+        },
+        imgSize: {
+            type: 'number'
+        },
+        imgBorder: {
+            type: 'number',
+            default: '1'
+        },
+        imgBorderColor: {
+            type: 'string'
+        },
+        text: {
+            source: 'array',
+            selector: '.premium-testimonial__text'
+        },
+        titleTag: {
+            type: 'string',
+            default: 'H3'
+        },
+        title: {
+            type: 'array',
+            selector: '.premium-testimonial__author'
+        },
+        authorComTag: {
+            type: 'string',
+            default: 'H4'
+        },
+        authorCom: {
+            type: 'array',
+            selector: '.premium-testimonial__author_comp'
+        },
+        quotSize: {
+            type: 'number'
+        },
+        quotColor: {
+            type: 'string',
+            default: 'rgba(110,193,228,0.2)'
+        },
+        bodyColor: {
+            type: 'string'
+        },
+        bodySize: {
+            type: 'number'
+        },
+        bodyLine: {
+            type: 'number'
+        },
+        bodyTop: {
+            type: 'number'
+        },
+        bodyBottom: {
+            type: 'number'
+        }
+    },
+
+    edit: function edit(props) {
+        var isSelected = props.isSelected,
+            setAttributes = props.setAttributes;
+        var _props$attributes = props.attributes,
+            align = _props$attributes.align,
+            authorImgId = _props$attributes.authorImgId,
+            authorImgUrl = _props$attributes.authorImgUrl,
+            imgRadius = _props$attributes.imgRadius,
+            imgSize = _props$attributes.imgSize,
+            imgBorder = _props$attributes.imgBorder,
+            imgBorderColor = _props$attributes.imgBorderColor,
+            text = _props$attributes.text,
+            titleTag = _props$attributes.titleTag,
+            title = _props$attributes.title,
+            authorComTag = _props$attributes.authorComTag,
+            authorCom = _props$attributes.authorCom,
+            quotSize = _props$attributes.quotSize,
+            quotColor = _props$attributes.quotColor,
+            bodyColor = _props$attributes.bodyColor,
+            bodySize = _props$attributes.bodySize,
+            bodyLine = _props$attributes.bodyLine,
+            bodyTop = _props$attributes.bodyTop,
+            bodyBottom = _props$attributes.bodyBottom;
+
+        var ALIGNS = [{
+            value: 'left',
+            label: 'Left'
+        }, {
+            value: 'center',
+            label: 'Center'
+        }, {
+            value: 'right',
+            label: 'Right'
+        }];
+        var RADIUS = [{
+            value: "0",
+            label: "Square"
+        }, {
+            value: "50%",
+            label: "Circle"
+        }, {
+            value: "15px",
+            label: "Rounded"
+        }];
+
+        return [isSelected && wp.element.createElement(
+            BlockControls,
+            { key: "controls" },
+            wp.element.createElement(AlignmentToolbar, {
+                value: align,
+                onChange: function onChange(newAlign) {
+                    return setAttributes({ align: newAlign });
+                }
+            })
+        ), isSelected && wp.element.createElement(
+            InspectorControls,
+            {
+                key: "inspector"
+            },
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Content'),
+                    initialOpen: false
+                },
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        label: __('Color'),
+                        colorValue: bodyColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: bodyColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ bodyColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(RangeControl, {
+                    label: __('Font Size (PX)'),
+                    value: bodySize,
+                    min: "10",
+                    max: "80",
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ bodySize: newSize });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Line Height (PX)'),
+                    value: bodyLine,
+                    min: "10",
+                    max: "50",
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ bodyLine: newSize });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Margin Top (PX)'),
+                    value: bodyTop,
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ bodyTop: newSize });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __('Margin Bottom (PX)'),
+                    value: bodyBottom,
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ bodyBottom: newSize });
+                    }
+                })
+            ),
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Author'),
+                    initialOpen: true
+                },
+                authorImgUrl && wp.element.createElement("img", { src: authorImgUrl, width: "100%", height: "auto" }),
+                wp.element.createElement(MediaUpload, {
+                    allowedTypes: ["image"],
+                    onSelect: function onSelect(media) {
+                        setAttributes({
+                            authorImgId: media.id,
+                            authorImgUrl: 'undefined' === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url
+                        });
+                    },
+                    type: "image",
+                    value: authorImgId,
+                    render: function render(_ref) {
+                        var open = _ref.open;
+                        return wp.element.createElement(
+                            IconButton,
+                            {
+                                label: __("Change Author Image"),
+                                icon: "edit",
+                                onClick: open
+                            },
+                            __("Change Author Image")
+                        );
+                    }
+                }),
+                authorImgUrl && wp.element.createElement(SelectControl, {
+                    label: __('Image Style'),
+                    options: RADIUS,
+                    value: imgRadius,
+                    onChange: function onChange(newWeight) {
+                        return setAttributes({ imgRadius: newWeight });
+                    }
+                }),
+                authorImgUrl && wp.element.createElement(RangeControl, {
+                    label: __('Size'),
+                    max: "200",
+                    value: imgSize,
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ imgSize: newSize });
+                    }
+                }),
+                authorImgUrl && wp.element.createElement(RangeControl, {
+                    label: __('Border Width (PX)'),
+                    value: imgBorder,
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ imgBorder: newSize });
+                    }
+                }),
+                authorImgUrl && wp.element.createElement(
+                    PanelColor,
+                    {
+                        label: __('Border Color'),
+                        colorValue: imgBorderColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: imgBorderColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ imgBorderColor: newColor });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "p",
+                    null,
+                    __('Author HTML Tag')
+                ),
+                wp.element.createElement(Toolbar, {
+                    controls: '123456'.split('').map(function (tag) {
+                        return {
+                            icon: 'heading',
+                            isActive: 'H' + tag === titleTag,
+                            onClick: function onClick() {
+                                return setAttributes({ titleTag: 'H' + tag });
+                            },
+                            subscript: tag
+                        };
+                    })
+                })
+            ),
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Company'),
+                    initialOpen: false
+                },
+                wp.element.createElement(Toolbar, {
+                    controls: '123456'.split('').map(function (tag) {
+                        return {
+                            icon: 'heading',
+                            isActive: 'H' + tag === authorComTag,
+                            onClick: function onClick() {
+                                return setAttributes({ authorComTag: 'H' + tag });
+                            },
+                            subscript: tag
+                        };
+                    })
+                })
+            ),
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __('Quotations'),
+                    initialOpen: false
+                },
+                wp.element.createElement(RangeControl, {
+                    label: __('Size (EM)'),
+                    value: quotSize,
+                    min: "1",
+                    max: "12",
+                    onChange: function onChange(newSize) {
+                        return setAttributes({ quotSize: newSize });
+                    }
+                }),
+                wp.element.createElement(
+                    PanelColor,
+                    {
+                        label: __('Color'),
+                        colorValue: quotColor
+                    },
+                    wp.element.createElement(ColorPalette, {
+                        value: quotColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ quotColor: newColor });
+                        }
+                    })
+                )
+            )
+        ), wp.element.createElement(
+            "div",
+            {
+                className: className + "__wrap"
+            },
+            wp.element.createElement(
+                "div",
+                {
+                    className: className + "__container"
+                },
+                wp.element.createElement(
+                    "span",
+                    {
+                        className: className + "__upper"
+                    },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__["a" /* default */], {
+                        size: quotSize,
+                        color: quotColor
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    {
+                        className: className + "__content",
+                        style: {
+                            textAlign: align
+                        }
+                    },
+                    wp.element.createElement(
+                        "div",
+                        {
+                            className: className + "__img_wrap"
+                        },
+                        authorImgUrl && wp.element.createElement("img", {
+                            className: className + "__img",
+                            src: "" + authorImgUrl,
+                            alt: "Author",
+                            style: {
+                                borderWidth: imgBorder + 'px',
+                                borderRadius: imgRadius,
+                                borderColor: imgBorderColor,
+                                width: imgSize + 'px',
+                                height: imgSize + 'px'
+                            }
+                        })
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        {
+                            className: className + "__text_wrap"
+                        },
+                        wp.element.createElement(
+                            "div",
+                            null,
+                            wp.element.createElement(RichText, {
+                                tagName: 'p',
+                                className: className + "__text",
+                                onChange: function onChange(newText) {
+                                    return setAttributes({ text: newText });
+                                },
+                                value: text,
+                                placeholder: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
+                                style: {
+                                    color: bodyColor,
+                                    fontSize: bodySize + 'px',
+                                    lineHeight: bodyLine + 'px',
+                                    marginTop: bodyTop + 'px',
+                                    marginBottom: bodyBottom + 'px'
+                                },
+                                isSelected: isSelected,
+                                keepPlaceholderOnFocus: true
+                            })
+                        )
+                    ),
+                    wp.element.createElement(
+                        "span",
+                        {
+                            className: className + "__info"
+                        },
+                        wp.element.createElement(RichText, {
+                            tagName: titleTag.toLowerCase(),
+                            className: className + "__author",
+                            onChange: function onChange(newText) {
+                                return setAttributes({ title: newText });
+                            },
+                            placeholder: __('John Doe'),
+                            value: title,
+                            isSelected: false,
+                            keepPlaceholderOnFocus: true
+                        }),
+                        wp.element.createElement(
+                            "span",
+                            { className: className + "__sep" },
+                            " - "
+                        ),
+                        wp.element.createElement(RichText, {
+                            tagName: authorComTag.toLowerCase(),
+                            className: className + "__author_comp",
+                            onChange: function onChange(newText) {
+                                return setAttributes({ authorCom: newText });
+                            },
+                            placeholder: __('Company Name'),
+                            value: authorCom,
+                            isSelected: false,
+                            keepPlaceholderOnFocus: true
+                        })
+                    )
+                ),
+                wp.element.createElement(
+                    "span",
+                    {
+                        className: className + "__lower"
+                    },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__["a" /* default */], {
+                        size: quotSize,
+                        color: quotColor
+                    })
+                )
+            )
+        )];
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            align = _props$attributes2.align,
+            authorImgId = _props$attributes2.authorImgId,
+            authorImgUrl = _props$attributes2.authorImgUrl,
+            imgRadius = _props$attributes2.imgRadius,
+            imgBorder = _props$attributes2.imgBorder,
+            imgBorderColor = _props$attributes2.imgBorderColor,
+            imgSize = _props$attributes2.imgSize,
+            text = _props$attributes2.text,
+            titleTag = _props$attributes2.titleTag,
+            title = _props$attributes2.title,
+            authorComTag = _props$attributes2.authorComTag,
+            authorCom = _props$attributes2.authorCom,
+            quotSize = _props$attributes2.quotSize,
+            quotColor = _props$attributes2.quotColor,
+            bodyColor = _props$attributes2.bodyColor,
+            bodySize = _props$attributes2.bodySize,
+            bodyLine = _props$attributes2.bodyLine,
+            bodyTop = _props$attributes2.bodyTop,
+            bodyBottom = _props$attributes2.bodyBottom;
+
+        return [wp.element.createElement(
+            "div",
+            {
+                className: className + "__wrap"
+            },
+            wp.element.createElement(
+                "div",
+                {
+                    className: className + "__container"
+                },
+                wp.element.createElement(
+                    "span",
+                    {
+                        className: className + "__upper"
+                    },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__["a" /* default */], {
+                        size: quotSize,
+                        color: quotColor
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    {
+                        className: className + "__content",
+                        style: {
+                            textAlign: align
+                        }
+                    },
+                    wp.element.createElement(
+                        "div",
+                        {
+                            className: className + "__img_wrap"
+                        },
+                        authorImgUrl && wp.element.createElement("img", {
+                            className: className + "__img",
+                            src: "" + authorImgUrl,
+                            alt: "Author",
+                            style: {
+                                borderWidth: imgBorder + 'px',
+                                borderRadius: imgRadius,
+                                borderColor: imgBorderColor,
+                                width: imgSize + 'px',
+                                height: imgSize + 'px'
+                            }
+                        })
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        {
+                            className: className + "__text_wrap"
+                        },
+                        wp.element.createElement(
+                            "div",
+                            null,
+                            wp.element.createElement(RichText.Content, {
+                                tagName: 'p',
+                                className: className + "__text",
+                                value: text,
+                                style: {
+                                    color: bodyColor,
+                                    fontSize: bodySize + 'px',
+                                    lineHeight: bodyLine + 'px',
+                                    marginTop: bodyTop + 'px',
+                                    marginBottom: bodyBottom + 'px'
+                                }
+                            })
+                        )
+                    ),
+                    wp.element.createElement(
+                        "span",
+                        {
+                            className: className + "__info"
+                        },
+                        wp.element.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: className + "__author",
+                            value: title
+                        }),
+                        wp.element.createElement(
+                            "span",
+                            { className: className + "__sep" },
+                            " - "
+                        ),
+                        wp.element.createElement(RichText.Content, {
+                            tagName: authorComTag.toLowerCase(),
+                            className: className + "__author_comp",
+                            value: authorCom
+                        })
+                    )
+                ),
+                wp.element.createElement(
+                    "span",
+                    {
+                        className: className + "__lower"
+                    },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__["a" /* default */], {
+                        color: quotColor,
+                        size: quotSize
+                    })
+                )
+            )
+        )];
+    }
+});
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var defaultImageURL = '../assets/img/author.jpg';
+
+var Component = wp.element.Component;
+
+var DefaultImage = function (_Component) {
+    _inherits(DefaultImage, _Component);
+
+    function DefaultImage() {
+        _classCallCheck(this, DefaultImage);
+
+        return _possibleConstructorReturn(this, (DefaultImage.__proto__ || Object.getPrototypeOf(DefaultImage)).apply(this, arguments));
+    }
+
+    _createClass(DefaultImage, [{
+        key: 'render',
+        value: function render() {
+            console.log(defaultImageURL);
+            var blockClass = this.props.attributes;
+
+            return wp.element.createElement('img', { src: defaultImageURL });
+        }
+    }]);
+
+    return DefaultImage;
+}(Component);
+
+/* unused harmony default export */ var _unused_webpack_default_export = (DefaultImage);
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = wp.element.Component;
+
+var PremiumLowerQuote = function (_Component) {
+    _inherits(PremiumLowerQuote, _Component);
+
+    function PremiumLowerQuote() {
+        _classCallCheck(this, PremiumLowerQuote);
+
+        return _possibleConstructorReturn(this, (PremiumLowerQuote.__proto__ || Object.getPrototypeOf(PremiumLowerQuote)).apply(this, arguments));
+    }
+
+    _createClass(PremiumLowerQuote, [{
+        key: "shouldComponentUpdate",
+        value: function shouldComponentUpdate(nextProps) {
+            return this.props.size !== nextProps.size || this.props.color !== nextProps.color;
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                size = _props.size,
+                color = _props.color;
+
+            return wp.element.createElement(
+                "svg",
+                { style: { width: size + 'em' }, "aria-hidden": "true", "data-prefix": "fas", "data-icon": "quote-left", "class": "svg-inline--fa fa-quote-left fa-w-16", role: "img", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 512 512" },
+                wp.element.createElement("path", { fill: "" + color, d: "M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z" })
+            );
+        }
+    }]);
+
+    return PremiumLowerQuote;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = wp.element.Component;
+
+var PremiumUpperQuote = function (_Component) {
+    _inherits(PremiumUpperQuote, _Component);
+
+    function PremiumUpperQuote() {
+        _classCallCheck(this, PremiumUpperQuote);
+
+        return _possibleConstructorReturn(this, (PremiumUpperQuote.__proto__ || Object.getPrototypeOf(PremiumUpperQuote)).apply(this, arguments));
+    }
+
+    _createClass(PremiumUpperQuote, [{
+        key: "shouldComponentUpdate",
+        value: function shouldComponentUpdate(nextProps) {
+            return this.props.size !== nextProps.size || this.props.color !== nextProps.color;
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                size = _props.size,
+                color = _props.color;
+
+
+            return wp.element.createElement(
+                "svg",
+                { style: { width: size + 'em' }, "aria-hidden": "true", "data-prefix": "fas", "data-icon": "quote-right", "class": "svg-inline--fa fa-quote-right fa-w-16", role: "img", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 512 512" },
+                wp.element.createElement("path", { fill: "" + color, d: "M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z" })
+            );
+        }
+    }]);
+
+    return PremiumUpperQuote;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
 
 /***/ })
 /******/ ]);

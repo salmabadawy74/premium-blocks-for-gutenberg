@@ -358,7 +358,6 @@ registerBlockType('premium/pricing-table', {
                 type: 'string',
                 default: 'center',
             }
-            
         },
         edit: (props)   => {
             const { isSelected, setAttributes, className } = props;
