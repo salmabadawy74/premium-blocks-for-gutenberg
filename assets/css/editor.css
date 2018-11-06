@@ -57,3 +57,14 @@
     margin: 1em auto;
     display: block;
 }
+/**************** Premium Testimonials *****************/
+/*******************************************************/
+.premium-testimonial__wrap .premium-testimonial__info {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}

@@ -76,6 +76,14 @@ class Premium_Blocks_Integration {
             array( 'wp-edit-blocks' ),
             PREMIUM_BLOCKS_VERSION
         );
+        
+        wp_localize_script(
+            'pbg-editor',
+            'PremiumBlocksSettings',
+            array(
+				'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/author.jpg'
+			)
+        );
     }
     
     /**

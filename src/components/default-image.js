@@ -1,4 +1,4 @@
-const defaultImageURL = '../assets/img/author.jpg';
+const imgURL = PremiumBlocksSettings.defaultAuthImg;
 
 const {
     Component
@@ -7,11 +7,14 @@ const {
 export default class DefaultImage extends Component {
     
     render() {
-        console.log(defaultImageURL);
-        let blockClass = this.props.attributes;
+        const {
+            className
+        } = this.props;
         
         return (
-            <img src={defaultImageURL}/>
+            
+            <img src={imgURL}/>
+
         );
     }
    
