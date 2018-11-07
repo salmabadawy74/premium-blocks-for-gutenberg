@@ -731,6 +731,7 @@ a.premium-dheading-block__link:hover {
     line-height: 1em;
 }
 .premium-pricing-table .premium-pricing-table__button {
+    cursor: pointer;
     display: inline-block;
     width: 30%;
     margin: 0 auto;

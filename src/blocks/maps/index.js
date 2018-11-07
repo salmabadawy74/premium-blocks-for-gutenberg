@@ -1,4 +1,4 @@
-const blockClass = "premium-maps";
+const className = "premium-maps";
 
 const { __ } = wp.i18n;
 
@@ -43,7 +43,6 @@ class PremiumMap extends Component {
     };
 
     this.initMap = this.initMap.bind(this);
-    //        this.fetchLocation = this.fetchLocation.bind(this);
   }
 
   componentDidMount() {
@@ -56,20 +55,10 @@ class PremiumMap extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const {
-      address: prevAddr,
-      useLatLng: prevUseLatLng
-    } = prevProps.attributes;
-
-    const { address, useLatLng } = this.props.attributes;
-
-    //        if (prevAddr !== address || prevUseLatLng !== useLatLng || prevState !== this.state)
-    //            return null;
-
-    if (prevProps.attributes !== this.props.attributes) {
-      clearTimeout(isMapUpdated);
-      isMapUpdated = setTimeout(this.initMap, 500);
-    }
+    //if (prevProps.attributes !== this.props.attributes) {
+    clearTimeout(isMapUpdated);
+    isMapUpdated = setTimeout(this.initMap, 500);
+    //}
   }
 
   initMap() {
@@ -77,12 +66,10 @@ class PremiumMap extends Component {
       return null;
 
     const { thisMap, thisMarker, thisInfo } = this.state;
-    const { setAttributes } = this.props;
     const {
       mapID,
       mapStyle,
       mapType,
-      height,
       zoom,
       mapTypeControl,
       zoomControl,
@@ -106,11 +93,7 @@ class PremiumMap extends Component {
       gapBetween
     } = this.props.attributes;
 
-    //            const that = this;
-    //            const formattedDesc = markerDesc.replace(/\n/g, '<br/>');
-
     let map = thisMap;
-    let marker = thisMarker;
     let infoWindow = thisInfo;
     let latlng = new google.maps.LatLng(
       parseFloat(centerLat),
@@ -154,21 +137,21 @@ class PremiumMap extends Component {
 
     if (mapMarker && "" !== markerTitle && "" !== markerDesc) {
       infoWindow.setContent(
-        `<div class="${blockClass}__info" style="text-align:${boxAlign};padding:${boxPadding}px"
-                    >
-                    <h3
-                        class="${blockClass}__title"
-                        style="color:${titleColor};font-size:${titleSize}px;margin-bottom:${gapBetween}px"
-                    >
-                        ${markerTitle}
-                    </h3>
-                    <div
-                        class="${blockClass}__desc"
-                        style="color: ${descColor};font-size: ${descSize}px"
-                    >
-                        ${markerDesc}
-                    </div>
-                </div>`
+        `<div class="${className}__info" style="text-align:${boxAlign};padding:${boxPadding}px"
+            >
+            <h3
+                class="${className}__title"
+                style="color:${titleColor};font-size:${titleSize}px;margin-bottom:${gapBetween}px"
+            >
+                ${markerTitle}
+            </h3>
+            <div
+                class="${className}__desc"
+                style="color: ${descColor};font-size: ${descSize}px"
+            >
+                ${markerDesc}
+            </div>
+        </div>`
       );
     }
 
@@ -338,7 +321,7 @@ class PremiumMap extends Component {
                     )}
                   />
                 )}
-              {((mapMarker && "" !== markerDesc) || "" !== markerTitle) && (
+              {mapMarker && (
                 <RangeControl
                   label={__("Description Box Max Width (PX)")}
                   value={maxWidth}
@@ -468,7 +451,7 @@ class PremiumMap extends Component {
           </InspectorControls>
         ),
       <div
-        className={`${blockClass}__wrap`}
+        className={`${className}__wrap`}
         id={mapID}
         style={{
           height: height + "px"
@@ -589,49 +572,44 @@ registerBlockType("premium/maps", {
   edit: PremiumMap,
   save: props => {
     const {
-      className,
-      clientId,
-      attributes: {
-        mapID,
-        height,
-        mapStyle,
-        mapType,
-        zoom,
-        mapTypeControl,
-        zoomControl,
-        fullscreenControl,
-        streetViewControl,
-        scrollwheel,
-        centerLat,
-        centerLng,
-        mapMarker,
-        markerIconUrl,
-        markerIconId,
-        markerCustom,
-        maxWidth,
-        markerTitle,
-        markerDesc,
-        titleColor,
-        titleSize,
-        descColor,
-        descSize,
-        boxAlign,
-        boxPadding,
-        gapBetween
-      }
-    } = props;
+      mapID,
+      height,
+      mapStyle,
+      mapType,
+      zoom,
+      mapTypeControl,
+      zoomControl,
+      fullscreenControl,
+      streetViewControl,
+      scrollwheel,
+      centerLat,
+      centerLng,
+      mapMarker,
+      markerIconUrl,
+      markerCustom,
+      maxWidth,
+      markerTitle,
+      markerDesc,
+      titleColor,
+      titleSize,
+      descColor,
+      descSize,
+      boxAlign,
+      boxPadding,
+      gapBetween
+    } = props.attributes;
 
     return (
       <div
-        className={`${blockClass}__wrap`}
+        className={`${className}__wrap`}
         id={mapID}
         style={{
           height: height + "px"
         }}
       >
-        <div className={`${blockClass}__marker`}>
+        <div className={`${className}__marker`}>
           <div
-            className={`${blockClass}__info`}
+            className={`${className}__info`}
             style={{
               textAlign: boxAlign,
               padding: boxPadding + "px"
@@ -639,7 +617,7 @@ registerBlockType("premium/maps", {
           >
             {"" !== markerTitle && (
               <h3
-                className={`${blockClass}__title`}
+                className={`${className}__title`}
                 style={{
                   color: titleColor,
                   fontSize: titleSize + "px",
@@ -651,7 +629,7 @@ registerBlockType("premium/maps", {
             )}
             {"" !== markerDesc && (
               <div
-                className={`${blockClass}__desc`}
+                className={`${className}__desc`}
                 style={{
                   color: descColor,
                   fontSize: descSize + "px"
@@ -666,7 +644,7 @@ registerBlockType("premium/maps", {
           {`window.addEventListener('load',function(){
                     if( typeof google === 'undefined' ) return;
                     let mapElem = document.getElementById('${mapID}');
-                    let pin = mapElem.querySelector('.${blockClass}__marker');
+                    let pin = mapElem.querySelector('.${className}__marker');
                     
                     let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
                     let map = new google.maps.Map(mapElem, {

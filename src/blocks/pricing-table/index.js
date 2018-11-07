@@ -9,7 +9,6 @@ const {
   Toolbar,
   Button,
   PanelBody,
-  PanelColor,
   SelectControl,
   RangeControl,
   TextControl,
@@ -22,7 +21,7 @@ const {
   AlignmentToolbar,
   RichText,
   MediaUpload,
-  ColorPalette,
+  PanelColorSettings,
   URLInput
 } = wp.editor;
 
@@ -99,8 +98,7 @@ registerBlockType("premium/pricing-table", {
     desc: {
       type: "array",
       source: "children",
-      selector: ".premium-pricing-table__desc",
-      default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      selector: ".premium-pricing-table__desc"
     },
     descColor: {
       type: "string",
@@ -124,7 +122,7 @@ registerBlockType("premium/pricing-table", {
     },
     descMarginB: {
       type: "number",
-      default: "0"
+      default: "30"
     },
     descPadding: {
       type: "number",
@@ -591,12 +589,16 @@ registerBlockType("premium/pricing-table", {
                   subscript: tag
                 }))}
               />
-              <PanelColor title={__("Text Color")} colorValue={titleColor}>
-                <ColorPalette
-                  value={titleColor}
-                  onChange={newColor => setAttributes({ titleColor: newColor })}
-                />
-              </PanelColor>
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: titleColor,
+                    onChange: newColor =>
+                      setAttributes({ titleColor: newColor }),
+                    label: __("Text Color")
+                  }
+                ]}
+              />
               <RangeControl
                 label={__("Font Size (PX)")}
                 value={titleSize}
@@ -617,12 +619,16 @@ registerBlockType("premium/pricing-table", {
                 value={titleLine}
                 onChange={newValue => setAttributes({ titleLine: newValue })}
               />
-              <PanelColor title={__("Background Color")} colorValue={titleBack}>
-                <ColorPalette
-                  value={titleBack}
-                  onChange={newColor => setAttributes({ titleBack: newColor })}
-                />
-              </PanelColor>
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: titleBack,
+                    onChange: newColor =>
+                      setAttributes({ titleBack: newColor }),
+                    label: __("Background Color")
+                  }
+                ]}
+              />
               <RangeControl
                 label={__("Margin Top (PX)")}
                 value={titleMarginT}
@@ -684,14 +690,16 @@ registerBlockType("premium/pricing-table", {
                 onChange={newElem => setAttributes({ selectedStyle: newElem })}
               />
               {"slash" === selectedStyle && (
-                <PanelColor title={__("Text Color")} colorValue={slashColor}>
-                  <ColorPalette
-                    value={slashColor}
-                    onChange={newColor =>
-                      setAttributes({ slashColor: newColor })
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: slashColor,
+                      onChange: newColor =>
+                        setAttributes({ slashColor: newColor }),
+                      label: __("Text Color")
                     }
-                  />
-                </PanelColor>
+                  ]}
+                />
               )}
               {"slash" === selectedStyle && (
                 <RangeControl
@@ -711,14 +719,16 @@ registerBlockType("premium/pricing-table", {
                 />
               )}
               {"curr" === selectedStyle && (
-                <PanelColor title={__("Text Color")} colorValue={currColor}>
-                  <ColorPalette
-                    value={currColor}
-                    onChange={newColor =>
-                      setAttributes({ currColor: newColor })
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: currColor,
+                      onChange: newColor =>
+                        setAttributes({ currColor: newColor }),
+                      label: __("Text Color")
                     }
-                  />
-                </PanelColor>
+                  ]}
+                />
               )}
               {"curr" === selectedStyle && (
                 <RangeControl
@@ -738,12 +748,16 @@ registerBlockType("premium/pricing-table", {
                 />
               )}
               {"price" === selectedStyle && (
-                <PanelColor title={__("Text Color")} colorValue={valColor}>
-                  <ColorPalette
-                    value={valColor}
-                    onChange={newColor => setAttributes({ valColor: newColor })}
-                  />
-                </PanelColor>
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: valColor,
+                      onChange: newColor =>
+                        setAttributes({ valColor: newColor }),
+                      label: __("Text Color")
+                    }
+                  ]}
+                />
               )}
               {"price" === selectedStyle && (
                 <RangeControl
@@ -763,12 +777,16 @@ registerBlockType("premium/pricing-table", {
                 />
               )}
               {"divider" === selectedStyle && (
-                <PanelColor title={__("Text Color")} colorValue={divColor}>
-                  <ColorPalette
-                    value={divColor}
-                    onChange={newColor => setAttributes({ divColor: newColor })}
-                  />
-                </PanelColor>
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: divColor,
+                      onChange: newColor =>
+                        setAttributes({ divColor: newColor }),
+                      label: __("Text Color")
+                    }
+                  ]}
+                />
               )}
               {"divider" === selectedStyle && (
                 <RangeControl
@@ -788,12 +806,16 @@ registerBlockType("premium/pricing-table", {
                 />
               )}
               {"duration" === selectedStyle && (
-                <PanelColor title={__("Text Color")} colorValue={durColor}>
-                  <ColorPalette
-                    value={durColor}
-                    onChange={newColor => setAttributes({ durColor: newColor })}
-                  />
-                </PanelColor>
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: durColor,
+                      onChange: newColor =>
+                        setAttributes({ durColor: newColor }),
+                      label: __("Text Color")
+                    }
+                  ]}
+                />
               )}
               {"duration" === selectedStyle && (
                 <RangeControl
@@ -812,15 +834,16 @@ registerBlockType("premium/pricing-table", {
                   onChange={newValue => setAttributes({ durV: newValue })}
                 />
               )}
-              <PanelColor
-                title={__("Container Background Color")}
-                colorValue={priceBack}
-              >
-                <ColorPalette
-                  value={priceBack}
-                  onChange={newColor => setAttributes({ priceBack: newColor })}
-                />
-              </PanelColor>
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: priceBack,
+                    onChange: newColor =>
+                      setAttributes({ priceBack: newColor }),
+                    label: __("Container Background Color")
+                  }
+                ]}
+              />
               <RangeControl
                 label={__("Container Margin Top (PX)")}
                 value={priceMarginT}
@@ -858,12 +881,16 @@ registerBlockType("premium/pricing-table", {
                 value={listStyle}
                 onChange={newType => setAttributes({ listStyle: newType })}
               />
-              <PanelColor title={__("List Items Color")} colorValue={listColor}>
-                <ColorPalette
-                  value={listColor}
-                  onChange={newColor => setAttributes({ listColor: newColor })}
-                />
-              </PanelColor>
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: listColor,
+                    onChange: newColor =>
+                      setAttributes({ listColor: newColor }),
+                    label: __("List Items Color")
+                  }
+                ]}
+              />
               <RangeControl
                 label={__("Font Size (PX)")}
                 value={listSize}
@@ -877,12 +904,15 @@ registerBlockType("premium/pricing-table", {
                 value={listWeight}
                 onChange={newWeight => setAttributes({ listWeight: newWeight })}
               />
-              <PanelColor title={__("Background Color")} colorValue={listBack}>
-                <ColorPalette
-                  value={listBack}
-                  onChange={newColor => setAttributes({ listBack: newColor })}
-                />
-              </PanelColor>
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: listBack,
+                    onChange: newColor => setAttributes({ listBack: newColor }),
+                    label: __("Background Color")
+                  }
+                ]}
+              />
               <RangeControl
                 label={__("Margin Top (PX)")}
                 value={listMarginT}
@@ -902,12 +932,16 @@ registerBlockType("premium/pricing-table", {
           )}
           {descChecked && (
             <PanelBody title={__("Description")} initialOpen={false}>
-              <PanelColor title={__("Text Color")} colorValue={descColor}>
-                <ColorPalette
-                  value={descColor}
-                  onChange={newColor => setAttributes({ descColor: newColor })}
-                />
-              </PanelColor>
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: descColor,
+                    onChange: newColor =>
+                      setAttributes({ descColor: newColor }),
+                    label: __("Text Color")
+                  }
+                ]}
+              />
               <RangeControl
                 label={__("Font Size (PX)")}
                 value={descSize}
@@ -926,12 +960,15 @@ registerBlockType("premium/pricing-table", {
                 value={descLine}
                 onChange={newValue => setAttributes({ descLine: newValue })}
               />
-              <PanelColor title={__("Background Color")} colorValue={descBack}>
-                <ColorPalette
-                  value={titleBack}
-                  onChange={newColor => setAttributes({ descBack: newColor })}
-                />
-              </PanelColor>
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: descBack,
+                    onChange: newColor => setAttributes({ descBack: newColor }),
+                    label: __("Background Color")
+                  }
+                ]}
+              />
               <RangeControl
                 label={__("Margin Top (PX)")}
                 value={descMarginT}
@@ -968,12 +1005,15 @@ registerBlockType("premium/pricing-table", {
                 value={btnText}
                 onChange={newText => setAttributes({ btnText: newText })}
               />
-              <PanelColor title={__("Text Color")} colorValue={btnColor}>
-                <ColorPalette
-                  value={btnColor}
-                  onChange={newColor => setAttributes({ btnColor: newColor })}
-                />
-              </PanelColor>
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: btnColor,
+                    onChange: newColor => setAttributes({ btnColor: newColor }),
+                    label: __("Text Color")
+                  }
+                ]}
+              />
               <RangeControl
                 label={__("Width (%)")}
                 value={btnWidth}
@@ -992,53 +1032,53 @@ registerBlockType("premium/pricing-table", {
                 value={btnWeight}
                 onChange={newWeight => setAttributes({ btnWeight: newWeight })}
               />
-              <PanelColor title={__("Background Color")} colorValue={btnBack}>
-                <ColorPalette
-                  value={btnBack}
-                  onChange={newColor => setAttributes({ btnBack: newColor })}
-                />
-                <SelectControl
-                  label={__("Border Type")}
-                  options={BORDER}
-                  value={btnBorderType}
-                  onChange={newType =>
-                    setAttributes({ btnBorderType: newType })
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: btnBack,
+                    onChange: newColor => setAttributes({ btnBack: newColor }),
+                    label: __("Text Color")
                   }
-                />
-                {"none" != btnBorderType && (
-                  <RangeControl
-                    label={__("Border Width")}
-                    value={btnBorderWidth}
-                    min="0"
-                    max="50"
-                    onChange={newWidth =>
-                      setAttributes({ btnBorderWidth: newWidth })
-                    }
-                  />
-                )}
-                {"none" != btnBorderType && (
-                  <PanelColor
-                    title={__("Border Color")}
-                    colorValue={btnBorderColor}
-                  >
-                    <ColorPalette
-                      value={btnBorderColor}
-                      onChange={newColor =>
-                        setAttributes({ btnBorderColor: newColor })
-                      }
-                    />
-                  </PanelColor>
-                )}
+                ]}
+              />
+              <SelectControl
+                label={__("Border Type")}
+                options={BORDER}
+                value={btnBorderType}
+                onChange={newType => setAttributes({ btnBorderType: newType })}
+              />
+              {"none" != btnBorderType && (
                 <RangeControl
-                  label={__("Border Radius")}
-                  value={btnBorderRadius}
+                  label={__("Border Width")}
+                  value={btnBorderWidth}
                   min="0"
-                  max="150"
-                  onChange={newRadius =>
-                    setAttributes({ btnBorderRadius: newRadius })
+                  max="50"
+                  onChange={newWidth =>
+                    setAttributes({ btnBorderWidth: newWidth })
                   }
                 />
-              </PanelColor>
+              )}
+              {"none" != btnBorderType && (
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: btnBorderColor,
+                      onChange: newColor =>
+                        setAttributes({ btnBorderColor: newColor }),
+                      label: __("Border Color")
+                    }
+                  ]}
+                />
+              )}
+              <RangeControl
+                label={__("Border Radius")}
+                value={btnBorderRadius}
+                min="0"
+                max="150"
+                onChange={newRadius =>
+                  setAttributes({ btnBorderRadius: newRadius })
+                }
+              />
               <RangeControl
                 label={__("Margin Top (PX)")}
                 value={btnMarginT}
@@ -1092,12 +1132,16 @@ registerBlockType("premium/pricing-table", {
                 max="250"
                 onChange={newValue => setAttributes({ badgeSize: newValue })}
               />
-              <PanelColor title={__("Background Color")} colorValue={badgeBack}>
-                <ColorPalette
-                  value={btnBorderColor}
-                  onChange={newColor => setAttributes({ badgeBack: newColor })}
-                />
-              </PanelColor>
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: badgeBack,
+                    onChange: newColor =>
+                      setAttributes({ badgeBack: newColor }),
+                    label: __("Background Color")
+                  }
+                ]}
+              />
             </PanelBody>
           )}
           <PanelBody title={__("Display Options")} initialOpen={false}>
@@ -1133,12 +1177,15 @@ registerBlockType("premium/pricing-table", {
             />
           </PanelBody>
           <PanelBody title={__("Table")} initialOpen={false}>
-            <PanelColor title={__("Background Color")} colorValue={tableBack}>
-              <ColorPalette
-                value={tableBack}
-                onChange={newColor => setAttributes({ tableBack: newColor })}
-              />
-            </PanelColor>
+            <PanelColorSettings
+              colorSettings={[
+                {
+                  value: tableBack,
+                  onChange: newColor => setAttributes({ tableBack: newColor }),
+                  label: __("Background Color")
+                }
+              ]}
+            />
             <SelectControl
               label={__("Border Type")}
               options={BORDER}
@@ -1155,14 +1202,16 @@ registerBlockType("premium/pricing-table", {
               />
             )}
             {"none" != borderType && (
-              <PanelColor title={__("Border Color")} colorValue={borderColor}>
-                <ColorPalette
-                  value={borderColor}
-                  onChange={newColor =>
-                    setAttributes({ borderColor: newColor })
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: borderColor,
+                    onChange: newColor =>
+                      setAttributes({ borderColor: newColor }),
+                    label: __("Border Color")
                   }
-                />
-              </PanelColor>
+                ]}
+              />
             )}
             <RangeControl
               label={__("Border Radius")}
@@ -1339,6 +1388,7 @@ registerBlockType("premium/pricing-table", {
                 listStylePosition: "inside",
                 fontWeight: listWeight
               }}
+              keepPlaceholderOnFocus
             />
           </div>
         )}
@@ -1348,6 +1398,7 @@ registerBlockType("premium/pricing-table", {
               tagName="p"
               className={`${blockClass}__desc`}
               onChange={newText => setAttributes({ desc: newText })}
+              placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
               value={desc}
               isSelected={false}
               style={{

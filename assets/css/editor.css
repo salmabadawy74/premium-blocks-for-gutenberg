@@ -1,70 +1,70 @@
 /**************** Premium Dual Heading *****************/
 /*******************************************************/
 .premium-dheading-block__container .premium-dheading-block__title {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    display: inline-block;
-    -webkit-transform: translate(0,0);
-    transform: translate(0,0);
+  position: relative;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
 }
 .premium-dheading-block__container .premium-headingc-true {
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 .premium-dheading-block__container .premium-headinga-true {
-    background-size: 300% 300% !important;
-    -webkit-animation: Gradient 10s ease-in-out infinite;
-	-moz-animation: Gradient 10s ease-in-out infinite;
-	animation: Gradient 10s ease-in-out infinite;
+  background-size: 300% 300% !important;
+  -webkit-animation: Gradient 10s ease-in-out infinite;
+  -moz-animation: Gradient 10s ease-in-out infinite;
+  animation: Gradient 10s ease-in-out infinite;
 }
 @-webkit-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 @-moz-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 @keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 /**************** Premium Banner ***********************/
 /*******************************************************/
 .premium-banner .button {
-    margin: 1em auto;
-    display: block;
+  margin: 1em auto;
+  display: block;
 }
 /**************** Premium Testimonials *****************/
 /*******************************************************/
 .premium-testimonial__wrap .premium-testimonial__info {
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
 }

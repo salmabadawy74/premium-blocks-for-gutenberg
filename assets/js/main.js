@@ -88,12 +88,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 1 */
 /***/ (function(module, exports) {
 
+var className = "premium-dheading-block";
+
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 var _wp$components = wp.components,
     Toolbar = _wp$components.Toolbar,
     PanelBody = _wp$components.PanelBody,
-    PanelColor = _wp$components.PanelColor,
     SelectControl = _wp$components.SelectControl,
     TextControl = _wp$components.TextControl,
     RangeControl = _wp$components.RangeControl,
@@ -102,8 +103,7 @@ var _wp$editor = wp.editor,
     BlockControls = _wp$editor.BlockControls,
     InspectorControls = _wp$editor.InspectorControls,
     AlignmentToolbar = _wp$editor.AlignmentToolbar,
-    RichText = _wp$editor.RichText,
-    ColorPalette = _wp$editor.ColorPalette,
+    PanelColorSettings = _wp$editor.PanelColorSettings,
     URLInput = _wp$editor.URLInput;
 
 
@@ -251,8 +251,7 @@ registerBlockType("premium/dheading-block", {
 
   edit: function edit(props) {
     var setAttributes = props.setAttributes,
-        isSelected = props.isSelected,
-        className = props.className;
+        isSelected = props.isSelected;
     var _props$attributes = props.attributes,
         contentAlign = _props$attributes.contentAlign,
         firstHeading = _props$attributes.firstHeading,
@@ -315,7 +314,6 @@ registerBlockType("premium/dheading-block", {
       value: "groove",
       label: "Groove"
     }];
-    var blockClass = className.replace("wp-block-", "");
     return [isSelected && wp.element.createElement(
       BlockControls,
       { key: "controls" },
@@ -387,16 +385,15 @@ registerBlockType("premium/dheading-block", {
             return setAttributes({ firstAnim: newValue });
           }
         }),
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Color"), colorValue: firstColor },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: firstColor,
-            onChange: function onChange(newColor) {
-              return setAttributes({ firstColor: newColor });
-            }
-          })
-        ),
+            onChange: function onChange(colorValue) {
+              return setAttributes({ firstColor: colorValue });
+            },
+            label: __("Color")
+          }]
+        }),
         wp.element.createElement(
           "p",
           null,
@@ -410,32 +407,24 @@ registerBlockType("premium/dheading-block", {
             return setAttributes({ firstSize: newSize });
           }
         }),
-        !firstClip && wp.element.createElement(
-          PanelColor,
-          {
-            title: __("Background Color"),
-            colorValue: firstBackground
-          },
-          wp.element.createElement(ColorPalette, {
+        !firstClip && wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: firstBackground,
-            onChange: function onChange(newColor) {
-              return setAttributes({ firstBackground: newColor });
-            }
-          })
-        ),
-        firstClip && wp.element.createElement(
-          PanelColor,
-          {
-            title: __("Second Color"),
-            colorValue: firstClipColor
-          },
-          wp.element.createElement(ColorPalette, {
+            onChange: function onChange(colorValue) {
+              return setAttributes({ firstBackground: colorValue });
+            },
+            label: __("Background Color")
+          }]
+        }),
+        firstClip && wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: firstClipColor,
-            onChange: function onChange(newColor) {
-              return setAttributes({ firstClipColor: newColor });
-            }
-          })
-        ),
+            onChange: function onChange(colorValue) {
+              return setAttributes({ firstClipColor: colorValue });
+            },
+            label: __("Second Color")
+          }]
+        }),
         wp.element.createElement(SelectControl, {
           label: __("Border Type"),
           options: BORDER,
@@ -457,19 +446,15 @@ registerBlockType("premium/dheading-block", {
             return setAttributes({ firstBorderWidth: newWidth });
           }
         }),
-        "none" != firstBorderType && wp.element.createElement(
-          PanelColor,
-          {
-            title: __("Border Color"),
-            colorValue: firstBorderColor
-          },
-          wp.element.createElement(ColorPalette, {
+        "none" != firstBorderType && wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: firstBorderColor,
-            onChange: function onChange(newColor) {
-              return setAttributes({ firstBorderColor: newColor });
-            }
-          })
-        ),
+            onChange: function onChange(colorValue) {
+              return setAttributes({ firstBorderColor: colorValue });
+            },
+            label: __("Border Color")
+          }]
+        }),
         wp.element.createElement(
           "p",
           null,
@@ -540,16 +525,15 @@ registerBlockType("premium/dheading-block", {
             return setAttributes({ secondAnim: newValue });
           }
         }),
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Color"), colorValue: secondColor },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: secondColor,
-            onChange: function onChange(newColor) {
-              return setAttributes({ secondColor: newColor });
-            }
-          })
-        ),
+            onChange: function onChange(colorValue) {
+              return setAttributes({ secondColor: colorValue });
+            },
+            label: __("Color")
+          }]
+        }),
         wp.element.createElement(
           "p",
           null,
@@ -563,32 +547,24 @@ registerBlockType("premium/dheading-block", {
             return setAttributes({ secondSize: newSize });
           }
         }),
-        !secondClip && wp.element.createElement(
-          PanelColor,
-          {
-            title: __("Background Color"),
-            colorValue: secondBackground
-          },
-          wp.element.createElement(ColorPalette, {
+        !secondClip && wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: secondBackground,
-            onChange: function onChange(newColor) {
-              return setAttributes({ secondBackground: newColor });
-            }
-          })
-        ),
-        secondClip && wp.element.createElement(
-          PanelColor,
-          {
-            title: __("Second Color"),
-            colorValue: secondClipColor
-          },
-          wp.element.createElement(ColorPalette, {
+            onChange: function onChange(colorValue) {
+              return setAttributes({ secondBackground: colorValue });
+            },
+            label: __("Background Color")
+          }]
+        }),
+        secondClip && wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: secondClipColor,
-            onChange: function onChange(newColor) {
-              return setAttributes({ secondClipColor: newColor });
-            }
-          })
-        ),
+            onChange: function onChange(colorValue) {
+              return setAttributes({ secondClipColor: colorValue });
+            },
+            label: __("Second Color")
+          }]
+        }),
         wp.element.createElement(SelectControl, {
           label: __("Border Type"),
           options: BORDER,
@@ -610,19 +586,15 @@ registerBlockType("premium/dheading-block", {
             return setAttributes({ secondBorderWidth: newWidth });
           }
         }),
-        "none" != secondBorderType && wp.element.createElement(
-          PanelColor,
-          {
-            title: __("Border Color"),
-            colorValue: secondBorderColor
-          },
-          wp.element.createElement(ColorPalette, {
+        "none" != secondBorderType && wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: secondBorderColor,
-            onChange: function onChange(newColor) {
-              return setAttributes({ secondBorderColor: newColor });
-            }
-          })
-        ),
+            onChange: function onChange(colorValue) {
+              return setAttributes({ secondBorderColor: colorValue });
+            },
+            label: __("Border Color")
+          }]
+        }),
         wp.element.createElement(
           "p",
           null,
@@ -679,7 +651,7 @@ registerBlockType("premium/dheading-block", {
     ), wp.element.createElement(
       "div",
       {
-        className: blockClass + "__container",
+        className: className + "__container",
         style: { textAlign: contentAlign }
       },
       link && isSelected && wp.element.createElement(URLInput, {
@@ -690,11 +662,11 @@ registerBlockType("premium/dheading-block", {
       }),
       wp.element.createElement(
         "h2",
-        { className: blockClass + "__title" },
+        { className: className + "__title" },
         wp.element.createElement(
           "span",
           {
-            className: blockClass + "__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
+            className: className + "__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
             style: {
               display: display,
               color: firstColor,
@@ -715,7 +687,7 @@ registerBlockType("premium/dheading-block", {
         wp.element.createElement(
           "span",
           {
-            className: blockClass + "__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
+            className: className + "__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
             style: {
               display: display,
               color: secondColor,
@@ -737,12 +709,10 @@ registerBlockType("premium/dheading-block", {
     )];
   },
   save: function save(props) {
-    var className = props.className,
-        _props$attributes2 = props.attributes,
+    var _props$attributes2 = props.attributes,
         contentAlign = _props$attributes2.contentAlign,
         firstHeading = _props$attributes2.firstHeading,
         secondHeading = _props$attributes2.secondHeading,
-        titleTag = _props$attributes2.titleTag,
         display = _props$attributes2.display,
         firstColor = _props$attributes2.firstColor,
         firstBackground = _props$attributes2.firstBackground,
@@ -772,29 +742,29 @@ registerBlockType("premium/dheading-block", {
         target = _props$attributes2.target,
         headingURL = _props$attributes2.headingURL;
 
-    var blockClass = "premium-dheading-block";
+
     return wp.element.createElement(
       "a",
       {
-        className: blockClass + "__link",
+        className: className + "__link",
         href: link && headingURL,
         target: target && "_blank"
       },
       wp.element.createElement(
         "div",
         {
-          className: blockClass + "__container",
+          className: className + "__container",
           style: {
             textAlign: contentAlign
           }
         },
         wp.element.createElement(
           "h2",
-          { className: blockClass + "__title" },
+          { className: className + "__title" },
           wp.element.createElement(
             "span",
             {
-              className: blockClass + "__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
+              className: className + "__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
               style: {
                 display: display,
                 color: firstColor,
@@ -814,7 +784,7 @@ registerBlockType("premium/dheading-block", {
           wp.element.createElement(
             "span",
             {
-              className: blockClass + "__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
+              className: className + "__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
               style: {
                 display: display,
                 color: secondColor,
@@ -841,7 +811,7 @@ registerBlockType("premium/dheading-block", {
 /* 2 */
 /***/ (function(module, exports) {
 
-var blockClass = "premium-banner";
+var className = "premium-banner";
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
@@ -861,8 +831,7 @@ var _wp$editor = wp.editor,
     AlignmentToolbar = _wp$editor.AlignmentToolbar,
     RichText = _wp$editor.RichText,
     MediaUpload = _wp$editor.MediaUpload,
-    ColorPalette = _wp$editor.ColorPalette,
-    URLInput = _wp$editor.URLInput;
+    ColorPalette = _wp$editor.ColorPalette;
 
 
 registerBlockType("premium/banner", {
@@ -882,7 +851,8 @@ registerBlockType("premium/banner", {
     title: {
       type: "array",
       source: "children",
-      selector: ".premium-banner__title"
+      selector: ".premium-banner__title",
+      default: __("Awesome Title")
     },
     titleTag: {
       type: "string",
@@ -891,7 +861,8 @@ registerBlockType("premium/banner", {
     desc: {
       type: "array",
       source: "children",
-      selector: ".premium-banner__desc"
+      selector: ".premium-banner__desc",
+      default: __("Cool Description!!")
     },
     contentAlign: {
       type: "string",
@@ -947,8 +918,7 @@ registerBlockType("premium/banner", {
       type: "string"
     },
     titleColor: {
-      type: "string",
-      default: "#6ec1e4"
+      type: "string"
     },
     titleSize: {
       type: "number",
@@ -991,8 +961,7 @@ registerBlockType("premium/banner", {
   },
   edit: function edit(props) {
     var isSelected = props.isSelected,
-        setAttributes = props.setAttributes,
-        className = props.className;
+        setAttributes = props.setAttributes;
     var _props$attributes = props.attributes,
         imageID = _props$attributes.imageID,
         imageURL = _props$attributes.imageURL,
@@ -1292,6 +1261,12 @@ registerBlockType("premium/banner", {
             return setAttributes({ urlCheck: newCheck });
           }
         }),
+        urlCheck && wp.element.createElement(TextControl, {
+          value: url,
+          onChange: function onChange(newURL) {
+            return setAttributes({ url: newURL });
+          }
+        }),
         urlCheck && wp.element.createElement(CheckboxControl, {
           label: __("Open link in new tab"),
           checked: target,
@@ -1402,7 +1377,7 @@ registerBlockType("premium/banner", {
       )
     ), wp.element.createElement(
       "div",
-      { className: blockClass + " " + blockClass + "__responsive_" + responsive },
+      { className: className + " " + className + "__responsive_" + responsive },
       !imageURL && wp.element.createElement(MediaUpload, {
         onSelect: function onSelect(media) {
           return setAttributes({
@@ -1424,7 +1399,7 @@ registerBlockType("premium/banner", {
       imageURL && wp.element.createElement(
         "div",
         {
-          className: blockClass + "__inner " + blockClass + "__min " + blockClass + "__" + effect + " " + blockClass + "__" + hoverEffect + " hover_" + hovered,
+          className: className + "__inner " + className + "__min " + className + "__" + effect + " " + className + "__" + hoverEffect + " hover_" + hovered,
           style: {
             backgroundColor: background,
             border: borderType,
@@ -1433,23 +1408,17 @@ registerBlockType("premium/banner", {
             borderColor: borderColor
           }
         },
-        urlCheck && wp.element.createElement(URLInput, {
-          value: url,
-          onChange: function onChange(newURL) {
-            return setAttributes({ url: newURL });
-          }
-        }),
         wp.element.createElement(
           "div",
           {
-            className: blockClass + "__img_wrap " + blockClass + "__" + height,
+            className: className + "__img_wrap " + className + "__" + height,
             style: {
               minHeight: minHeight,
               alignItems: verAlign
             }
           },
           wp.element.createElement("img", {
-            className: blockClass + "__img",
+            className: className + "__img",
             alt: "Banner Image",
             src: imageURL,
             style: {
@@ -1459,19 +1428,18 @@ registerBlockType("premium/banner", {
         ),
         wp.element.createElement(
           "div",
-          { className: blockClass + "__content" },
+          { className: className + "__content" },
           wp.element.createElement(
             "div",
             {
-              className: blockClass + "__title_wrap",
+              className: className + "__title_wrap",
               style: {
                 textAlign: contentAlign
               }
             },
             wp.element.createElement(RichText, {
               tagName: titleTag.toLowerCase(),
-              className: blockClass + "__title",
-              placeholder: __("Awesome Title!!"),
+              className: className + "__title",
               value: title,
               isSelected: false,
               onChange: function onChange(newText) {
@@ -1488,15 +1456,14 @@ registerBlockType("premium/banner", {
           wp.element.createElement(
             "div",
             {
-              className: blockClass + "__desc_wrap",
+              className: className + "__desc_wrap",
               style: {
                 textAlign: contentAlign
               }
             },
             wp.element.createElement(RichText, {
               tagName: "p",
-              className: blockClass + "__desc",
-              placeholder: __("Cool Description!!"),
+              className: className + "__desc",
               value: desc,
               isSelected: false,
               onChange: function onChange(newText) {
@@ -1515,9 +1482,7 @@ registerBlockType("premium/banner", {
     )];
   },
   save: function save(props) {
-    var className = props.className,
-        _props$attributes2 = props.attributes,
-        imageID = _props$attributes2.imageID,
+    var _props$attributes2 = props.attributes,
         imageURL = _props$attributes2.imageURL,
         title = _props$attributes2.title,
         titleTag = _props$attributes2.titleTag,
@@ -1551,11 +1516,11 @@ registerBlockType("premium/banner", {
 
     return wp.element.createElement(
       "div",
-      { className: blockClass + " " + blockClass + "__responsive_" + responsive },
+      { className: className + " " + className + "__responsive_" + responsive },
       wp.element.createElement(
         "div",
         {
-          className: blockClass + "__inner " + blockClass + "__min " + blockClass + "__" + effect + " " + blockClass + "__" + hoverEffect + " hover_" + hovered,
+          className: className + "__inner " + className + "__min " + className + "__" + effect + " " + className + "__" + hoverEffect + " hover_" + hovered,
           style: {
             backgroundColor: background,
             border: borderType,
@@ -1567,14 +1532,14 @@ registerBlockType("premium/banner", {
         wp.element.createElement(
           "div",
           {
-            className: blockClass + "__img_wrap " + blockClass + "__" + height,
+            className: className + "__img_wrap " + className + "__" + height,
             style: {
               minHeight: minHeight,
               alignItems: verAlign
             }
           },
           wp.element.createElement("img", {
-            className: blockClass + "__img",
+            className: className + "__img",
             alt: "Banner Image",
             src: imageURL,
             style: {
@@ -1584,24 +1549,19 @@ registerBlockType("premium/banner", {
         ),
         wp.element.createElement(
           "div",
-          { className: blockClass + "__content" },
+          { className: className + "__content" },
           wp.element.createElement(
             "div",
             {
-              className: blockClass + "__title_wrap",
+              className: className + "__title_wrap",
               style: {
                 textAlign: contentAlign
               }
             },
             wp.element.createElement(RichText.Content, {
               tagName: titleTag.toLowerCase(),
-              className: blockClass + "__title",
-              placeholder: __("Awesome Title!!"),
+              className: className + "__title",
               value: title,
-              isSelected: false,
-              onChange: function onChange(newText) {
-                return setAttributes({ title: newText });
-              },
               style: {
                 color: titleColor,
                 fontSize: titleSize + "px",
@@ -1613,20 +1573,15 @@ registerBlockType("premium/banner", {
           wp.element.createElement(
             "div",
             {
-              className: blockClass + "__desc_wrap",
+              className: className + "__desc_wrap",
               style: {
                 textAlign: contentAlign
               }
             },
             wp.element.createElement(RichText.Content, {
               tagName: "p",
-              className: blockClass + "__desc",
-              placeholder: __("Cool Description!!"),
+              className: className + "__desc",
               value: desc,
-              isSelected: false,
-              onChange: function onChange(newText) {
-                return setAttributes({ desc: newText });
-              },
               style: {
                 color: descColor,
                 fontSize: descSize + "px",
@@ -1637,7 +1592,7 @@ registerBlockType("premium/banner", {
           )
         ),
         urlCheck && "" !== url && wp.element.createElement("a", {
-          className: blockClass + "__link",
+          className: className + "__link",
           href: url,
           target: target && "_blank"
         })
@@ -1659,7 +1614,6 @@ var _wp$components = wp.components,
     Toolbar = _wp$components.Toolbar,
     Button = _wp$components.Button,
     PanelBody = _wp$components.PanelBody,
-    PanelColor = _wp$components.PanelColor,
     SelectControl = _wp$components.SelectControl,
     RangeControl = _wp$components.RangeControl,
     TextControl = _wp$components.TextControl,
@@ -1670,7 +1624,7 @@ var _wp$editor = wp.editor,
     AlignmentToolbar = _wp$editor.AlignmentToolbar,
     RichText = _wp$editor.RichText,
     MediaUpload = _wp$editor.MediaUpload,
-    ColorPalette = _wp$editor.ColorPalette,
+    PanelColorSettings = _wp$editor.PanelColorSettings,
     URLInput = _wp$editor.URLInput;
 
 
@@ -1747,8 +1701,7 @@ registerBlockType("premium/pricing-table", {
     desc: {
       type: "array",
       source: "children",
-      selector: ".premium-pricing-table__desc",
-      default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      selector: ".premium-pricing-table__desc"
     },
     descColor: {
       type: "string",
@@ -1772,7 +1725,7 @@ registerBlockType("premium/pricing-table", {
     },
     descMarginB: {
       type: "number",
-      default: "0"
+      default: "30"
     },
     descPadding: {
       type: "number",
@@ -2212,16 +2165,15 @@ registerBlockType("premium/pricing-table", {
             };
           })
         }),
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Text Color"), colorValue: titleColor },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: titleColor,
             onChange: function onChange(newColor) {
               return setAttributes({ titleColor: newColor });
-            }
-          })
-        ),
+            },
+            label: __("Text Color")
+          }]
+        }),
         wp.element.createElement(RangeControl, {
           label: __("Font Size (PX)"),
           value: titleSize,
@@ -2246,16 +2198,15 @@ registerBlockType("premium/pricing-table", {
             return setAttributes({ titleLine: newValue });
           }
         }),
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Background Color"), colorValue: titleBack },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: titleBack,
             onChange: function onChange(newColor) {
               return setAttributes({ titleBack: newColor });
-            }
-          })
-        ),
+            },
+            label: __("Background Color")
+          }]
+        }),
         wp.element.createElement(RangeControl, {
           label: __("Margin Top (PX)"),
           value: titleMarginT,
@@ -2330,16 +2281,15 @@ registerBlockType("premium/pricing-table", {
             return setAttributes({ selectedStyle: newElem });
           }
         }),
-        "slash" === selectedStyle && wp.element.createElement(
-          PanelColor,
-          { title: __("Text Color"), colorValue: slashColor },
-          wp.element.createElement(ColorPalette, {
+        "slash" === selectedStyle && wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: slashColor,
             onChange: function onChange(newColor) {
               return setAttributes({ slashColor: newColor });
-            }
-          })
-        ),
+            },
+            label: __("Text Color")
+          }]
+        }),
         "slash" === selectedStyle && wp.element.createElement(RangeControl, {
           label: __("Font Size (PX)"),
           value: slashSize,
@@ -2357,16 +2307,15 @@ registerBlockType("premium/pricing-table", {
             return setAttributes({ slashV: newValue });
           }
         }),
-        "curr" === selectedStyle && wp.element.createElement(
-          PanelColor,
-          { title: __("Text Color"), colorValue: currColor },
-          wp.element.createElement(ColorPalette, {
+        "curr" === selectedStyle && wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: currColor,
             onChange: function onChange(newColor) {
               return setAttributes({ currColor: newColor });
-            }
-          })
-        ),
+            },
+            label: __("Text Color")
+          }]
+        }),
         "curr" === selectedStyle && wp.element.createElement(RangeControl, {
           label: __("Font Size (PX)"),
           value: currSize,
@@ -2384,16 +2333,15 @@ registerBlockType("premium/pricing-table", {
             return setAttributes({ currV: newValue });
           }
         }),
-        "price" === selectedStyle && wp.element.createElement(
-          PanelColor,
-          { title: __("Text Color"), colorValue: valColor },
-          wp.element.createElement(ColorPalette, {
+        "price" === selectedStyle && wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: valColor,
             onChange: function onChange(newColor) {
               return setAttributes({ valColor: newColor });
-            }
-          })
-        ),
+            },
+            label: __("Text Color")
+          }]
+        }),
         "price" === selectedStyle && wp.element.createElement(RangeControl, {
           label: __("Font Size (PX)"),
           value: valSize,
@@ -2411,16 +2359,15 @@ registerBlockType("premium/pricing-table", {
             return setAttributes({ valV: newValue });
           }
         }),
-        "divider" === selectedStyle && wp.element.createElement(
-          PanelColor,
-          { title: __("Text Color"), colorValue: divColor },
-          wp.element.createElement(ColorPalette, {
+        "divider" === selectedStyle && wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: divColor,
             onChange: function onChange(newColor) {
               return setAttributes({ divColor: newColor });
-            }
-          })
-        ),
+            },
+            label: __("Text Color")
+          }]
+        }),
         "divider" === selectedStyle && wp.element.createElement(RangeControl, {
           label: __("Font Size (PX)"),
           value: divSize,
@@ -2438,16 +2385,15 @@ registerBlockType("premium/pricing-table", {
             return setAttributes({ divV: newValue });
           }
         }),
-        "duration" === selectedStyle && wp.element.createElement(
-          PanelColor,
-          { title: __("Text Color"), colorValue: durColor },
-          wp.element.createElement(ColorPalette, {
+        "duration" === selectedStyle && wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: durColor,
             onChange: function onChange(newColor) {
               return setAttributes({ durColor: newColor });
-            }
-          })
-        ),
+            },
+            label: __("Text Color")
+          }]
+        }),
         "duration" === selectedStyle && wp.element.createElement(RangeControl, {
           label: __("Font Size (PX)"),
           value: durSize,
@@ -2465,19 +2411,15 @@ registerBlockType("premium/pricing-table", {
             return setAttributes({ durV: newValue });
           }
         }),
-        wp.element.createElement(
-          PanelColor,
-          {
-            title: __("Container Background Color"),
-            colorValue: priceBack
-          },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: priceBack,
             onChange: function onChange(newColor) {
               return setAttributes({ priceBack: newColor });
-            }
-          })
-        ),
+            },
+            label: __("Container Background Color")
+          }]
+        }),
         wp.element.createElement(RangeControl, {
           label: __("Container Margin Top (PX)"),
           value: priceMarginT,
@@ -2517,16 +2459,15 @@ registerBlockType("premium/pricing-table", {
             return setAttributes({ listStyle: newType });
           }
         }),
-        wp.element.createElement(
-          PanelColor,
-          { title: __("List Items Color"), colorValue: listColor },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: listColor,
             onChange: function onChange(newColor) {
               return setAttributes({ listColor: newColor });
-            }
-          })
-        ),
+            },
+            label: __("List Items Color")
+          }]
+        }),
         wp.element.createElement(RangeControl, {
           label: __("Font Size (PX)"),
           value: listSize,
@@ -2544,16 +2485,15 @@ registerBlockType("premium/pricing-table", {
             return setAttributes({ listWeight: newWeight });
           }
         }),
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Background Color"), colorValue: listBack },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: listBack,
             onChange: function onChange(newColor) {
               return setAttributes({ listBack: newColor });
-            }
-          })
-        ),
+            },
+            label: __("Background Color")
+          }]
+        }),
         wp.element.createElement(RangeControl, {
           label: __("Margin Top (PX)"),
           value: listMarginT,
@@ -2579,16 +2519,15 @@ registerBlockType("premium/pricing-table", {
       descChecked && wp.element.createElement(
         PanelBody,
         { title: __("Description"), initialOpen: false },
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Text Color"), colorValue: descColor },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: descColor,
             onChange: function onChange(newColor) {
               return setAttributes({ descColor: newColor });
-            }
-          })
-        ),
+            },
+            label: __("Text Color")
+          }]
+        }),
         wp.element.createElement(RangeControl, {
           label: __("Font Size (PX)"),
           value: descSize,
@@ -2613,16 +2552,15 @@ registerBlockType("premium/pricing-table", {
             return setAttributes({ descLine: newValue });
           }
         }),
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Background Color"), colorValue: descBack },
-          wp.element.createElement(ColorPalette, {
-            value: titleBack,
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
+            value: descBack,
             onChange: function onChange(newColor) {
               return setAttributes({ descBack: newColor });
-            }
-          })
-        ),
+            },
+            label: __("Background Color")
+          }]
+        }),
         wp.element.createElement(RangeControl, {
           label: __("Margin Top (PX)"),
           value: descMarginT,
@@ -2661,16 +2599,15 @@ registerBlockType("premium/pricing-table", {
             return setAttributes({ btnText: newText });
           }
         }),
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Text Color"), colorValue: btnColor },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: btnColor,
             onChange: function onChange(newColor) {
               return setAttributes({ btnColor: newColor });
-            }
-          })
-        ),
+            },
+            label: __("Text Color")
+          }]
+        }),
         wp.element.createElement(RangeControl, {
           label: __("Width (%)"),
           value: btnWidth,
@@ -2695,55 +2632,50 @@ registerBlockType("premium/pricing-table", {
             return setAttributes({ btnWeight: newWeight });
           }
         }),
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Background Color"), colorValue: btnBack },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: btnBack,
             onChange: function onChange(newColor) {
               return setAttributes({ btnBack: newColor });
-            }
-          }),
-          wp.element.createElement(SelectControl, {
-            label: __("Border Type"),
-            options: BORDER,
-            value: btnBorderType,
-            onChange: function onChange(newType) {
-              return setAttributes({ btnBorderType: newType });
-            }
-          }),
-          "none" != btnBorderType && wp.element.createElement(RangeControl, {
-            label: __("Border Width"),
-            value: btnBorderWidth,
-            min: "0",
-            max: "50",
-            onChange: function onChange(newWidth) {
-              return setAttributes({ btnBorderWidth: newWidth });
-            }
-          }),
-          "none" != btnBorderType && wp.element.createElement(
-            PanelColor,
-            {
-              title: __("Border Color"),
-              colorValue: btnBorderColor
             },
-            wp.element.createElement(ColorPalette, {
-              value: btnBorderColor,
-              onChange: function onChange(newColor) {
-                return setAttributes({ btnBorderColor: newColor });
-              }
-            })
-          ),
-          wp.element.createElement(RangeControl, {
-            label: __("Border Radius"),
-            value: btnBorderRadius,
-            min: "0",
-            max: "150",
-            onChange: function onChange(newRadius) {
-              return setAttributes({ btnBorderRadius: newRadius });
-            }
-          })
-        ),
+            label: __("Text Color")
+          }]
+        }),
+        wp.element.createElement(SelectControl, {
+          label: __("Border Type"),
+          options: BORDER,
+          value: btnBorderType,
+          onChange: function onChange(newType) {
+            return setAttributes({ btnBorderType: newType });
+          }
+        }),
+        "none" != btnBorderType && wp.element.createElement(RangeControl, {
+          label: __("Border Width"),
+          value: btnBorderWidth,
+          min: "0",
+          max: "50",
+          onChange: function onChange(newWidth) {
+            return setAttributes({ btnBorderWidth: newWidth });
+          }
+        }),
+        "none" != btnBorderType && wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
+            value: btnBorderColor,
+            onChange: function onChange(newColor) {
+              return setAttributes({ btnBorderColor: newColor });
+            },
+            label: __("Border Color")
+          }]
+        }),
+        wp.element.createElement(RangeControl, {
+          label: __("Border Radius"),
+          value: btnBorderRadius,
+          min: "0",
+          max: "150",
+          onChange: function onChange(newRadius) {
+            return setAttributes({ btnBorderRadius: newRadius });
+          }
+        }),
         wp.element.createElement(RangeControl, {
           label: __("Margin Top (PX)"),
           value: btnMarginT,
@@ -2805,16 +2737,15 @@ registerBlockType("premium/pricing-table", {
             return setAttributes({ badgeSize: newValue });
           }
         }),
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Background Color"), colorValue: badgeBack },
-          wp.element.createElement(ColorPalette, {
-            value: btnBorderColor,
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
+            value: badgeBack,
             onChange: function onChange(newColor) {
               return setAttributes({ badgeBack: newColor });
-            }
-          })
-        )
+            },
+            label: __("Background Color")
+          }]
+        })
       ),
       wp.element.createElement(
         PanelBody,
@@ -2865,16 +2796,15 @@ registerBlockType("premium/pricing-table", {
       wp.element.createElement(
         PanelBody,
         { title: __("Table"), initialOpen: false },
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Background Color"), colorValue: tableBack },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: tableBack,
             onChange: function onChange(newColor) {
               return setAttributes({ tableBack: newColor });
-            }
-          })
-        ),
+            },
+            label: __("Background Color")
+          }]
+        }),
         wp.element.createElement(SelectControl, {
           label: __("Border Type"),
           options: BORDER,
@@ -2892,16 +2822,15 @@ registerBlockType("premium/pricing-table", {
             return setAttributes({ borderWidth: newWidth });
           }
         }),
-        "none" != borderType && wp.element.createElement(
-          PanelColor,
-          { title: __("Border Color"), colorValue: borderColor },
-          wp.element.createElement(ColorPalette, {
+        "none" != borderType && wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: borderColor,
             onChange: function onChange(newColor) {
               return setAttributes({ borderColor: newColor });
-            }
-          })
-        ),
+            },
+            label: __("Border Color")
+          }]
+        }),
         wp.element.createElement(RangeControl, {
           label: __("Border Radius"),
           value: borderRadius,
@@ -3088,7 +3017,8 @@ registerBlockType("premium/pricing-table", {
             listStyle: listStyle,
             listStylePosition: "inside",
             fontWeight: listWeight
-          }
+          },
+          keepPlaceholderOnFocus: true
         })
       ),
       descChecked && wp.element.createElement(
@@ -3100,6 +3030,7 @@ registerBlockType("premium/pricing-table", {
           onChange: function onChange(newText) {
             return setAttributes({ desc: newText });
           },
+          placeholder: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
           value: desc,
           isSelected: false,
           style: {
@@ -3476,7 +3407,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var blockClass = "premium-maps";
+var className = "premium-maps";
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
@@ -3521,7 +3452,6 @@ var PremiumMap = function (_Component) {
     };
 
     _this.initMap = _this.initMap.bind(_this);
-    //        this.fetchLocation = this.fetchLocation.bind(this);
     return _this;
   }
 
@@ -3542,20 +3472,10 @@ var PremiumMap = function (_Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
-      var _prevProps$attributes = prevProps.attributes,
-          prevAddr = _prevProps$attributes.address,
-          prevUseLatLng = _prevProps$attributes.useLatLng;
-      var _props$attributes = this.props.attributes,
-          address = _props$attributes.address,
-          useLatLng = _props$attributes.useLatLng;
-
-      //        if (prevAddr !== address || prevUseLatLng !== useLatLng || prevState !== this.state)
-      //            return null;
-
-      if (prevProps.attributes !== this.props.attributes) {
-        clearTimeout(isMapUpdated);
-        isMapUpdated = setTimeout(this.initMap, 500);
-      }
+      //if (prevProps.attributes !== this.props.attributes) {
+      clearTimeout(isMapUpdated);
+      isMapUpdated = setTimeout(this.initMap, 500);
+      //}
     }
   }, {
     key: "initMap",
@@ -3566,39 +3486,34 @@ var PremiumMap = function (_Component) {
           thisMap = _state.thisMap,
           thisMarker = _state.thisMarker,
           thisInfo = _state.thisInfo;
-      var setAttributes = this.props.setAttributes;
-      var _props$attributes2 = this.props.attributes,
-          mapID = _props$attributes2.mapID,
-          mapStyle = _props$attributes2.mapStyle,
-          mapType = _props$attributes2.mapType,
-          height = _props$attributes2.height,
-          zoom = _props$attributes2.zoom,
-          mapTypeControl = _props$attributes2.mapTypeControl,
-          zoomControl = _props$attributes2.zoomControl,
-          fullscreenControl = _props$attributes2.fullscreenControl,
-          streetViewControl = _props$attributes2.streetViewControl,
-          scrollwheel = _props$attributes2.scrollwheel,
-          centerLng = _props$attributes2.centerLng,
-          centerLat = _props$attributes2.centerLat,
-          markerTitle = _props$attributes2.markerTitle,
-          markerDesc = _props$attributes2.markerDesc,
-          mapMarker = _props$attributes2.mapMarker,
-          markerIconUrl = _props$attributes2.markerIconUrl,
-          markerCustom = _props$attributes2.markerCustom,
-          maxWidth = _props$attributes2.maxWidth,
-          boxAlign = _props$attributes2.boxAlign,
-          boxPadding = _props$attributes2.boxPadding,
-          titleColor = _props$attributes2.titleColor,
-          titleSize = _props$attributes2.titleSize,
-          descColor = _props$attributes2.descColor,
-          descSize = _props$attributes2.descSize,
-          gapBetween = _props$attributes2.gapBetween;
+      var _props$attributes = this.props.attributes,
+          mapID = _props$attributes.mapID,
+          mapStyle = _props$attributes.mapStyle,
+          mapType = _props$attributes.mapType,
+          zoom = _props$attributes.zoom,
+          mapTypeControl = _props$attributes.mapTypeControl,
+          zoomControl = _props$attributes.zoomControl,
+          fullscreenControl = _props$attributes.fullscreenControl,
+          streetViewControl = _props$attributes.streetViewControl,
+          scrollwheel = _props$attributes.scrollwheel,
+          centerLng = _props$attributes.centerLng,
+          centerLat = _props$attributes.centerLat,
+          markerTitle = _props$attributes.markerTitle,
+          markerDesc = _props$attributes.markerDesc,
+          mapMarker = _props$attributes.mapMarker,
+          markerIconUrl = _props$attributes.markerIconUrl,
+          markerCustom = _props$attributes.markerCustom,
+          maxWidth = _props$attributes.maxWidth,
+          boxAlign = _props$attributes.boxAlign,
+          boxPadding = _props$attributes.boxPadding,
+          titleColor = _props$attributes.titleColor,
+          titleSize = _props$attributes.titleSize,
+          descColor = _props$attributes.descColor,
+          descSize = _props$attributes.descSize,
+          gapBetween = _props$attributes.gapBetween;
 
-      //            const that = this;
-      //            const formattedDesc = markerDesc.replace(/\n/g, '<br/>');
 
       var map = thisMap;
-      var marker = thisMarker;
       var infoWindow = thisInfo;
       var latlng = new google.maps.LatLng(parseFloat(centerLat), parseFloat(centerLng));
 
@@ -3638,20 +3553,20 @@ var PremiumMap = function (_Component) {
       }
 
       if (mapMarker && "" !== markerTitle && "" !== markerDesc) {
-        infoWindow.setContent("<div class=\"" + blockClass + "__info\" style=\"text-align:" + boxAlign + ";padding:" + boxPadding + "px\"\n                    >\n                    <h3\n                        class=\"" + blockClass + "__title\"\n                        style=\"color:" + titleColor + ";font-size:" + titleSize + "px;margin-bottom:" + gapBetween + "px\"\n                    >\n                        " + markerTitle + "\n                    </h3>\n                    <div\n                        class=\"" + blockClass + "__desc\"\n                        style=\"color: " + descColor + ";font-size: " + descSize + "px\"\n                    >\n                        " + markerDesc + "\n                    </div>\n                </div>");
+        infoWindow.setContent("<div class=\"" + className + "__info\" style=\"text-align:" + boxAlign + ";padding:" + boxPadding + "px\"\n            >\n            <h3\n                class=\"" + className + "__title\"\n                style=\"color:" + titleColor + ";font-size:" + titleSize + "px;margin-bottom:" + gapBetween + "px\"\n            >\n                " + markerTitle + "\n            </h3>\n            <div\n                class=\"" + className + "__desc\"\n                style=\"color: " + descColor + ";font-size: " + descSize + "px\"\n            >\n                " + markerDesc + "\n            </div>\n        </div>");
       }
 
       map.setCenter(latlng);
 
       if (mapMarker) {
-        var _marker = new google.maps.Marker({
+        var marker = new google.maps.Marker({
           position: latlng,
           map: map,
           icon: markerCustom ? markerIconUrl : ""
         });
 
-        google.maps.event.addListener(_marker, "click", function () {
-          infoWindow.open(map, _marker);
+        google.maps.event.addListener(marker, "click", function () {
+          infoWindow.open(map, marker);
         });
       }
     }
@@ -3662,33 +3577,33 @@ var PremiumMap = function (_Component) {
           isSelected = _props2.isSelected,
           setAttributes = _props2.setAttributes,
           clientId = _props2.clientId;
-      var _props$attributes3 = this.props.attributes,
-          mapID = _props$attributes3.mapID,
-          mapStyle = _props$attributes3.mapStyle,
-          mapType = _props$attributes3.mapType,
-          height = _props$attributes3.height,
-          zoom = _props$attributes3.zoom,
-          mapTypeControl = _props$attributes3.mapTypeControl,
-          zoomControl = _props$attributes3.zoomControl,
-          fullscreenControl = _props$attributes3.fullscreenControl,
-          streetViewControl = _props$attributes3.streetViewControl,
-          scrollwheel = _props$attributes3.scrollwheel,
-          centerLng = _props$attributes3.centerLng,
-          centerLat = _props$attributes3.centerLat,
-          markerDesc = _props$attributes3.markerDesc,
-          markerTitle = _props$attributes3.markerTitle,
-          mapMarker = _props$attributes3.mapMarker,
-          markerIconUrl = _props$attributes3.markerIconUrl,
-          markerIconId = _props$attributes3.markerIconId,
-          markerCustom = _props$attributes3.markerCustom,
-          maxWidth = _props$attributes3.maxWidth,
-          titleColor = _props$attributes3.titleColor,
-          titleSize = _props$attributes3.titleSize,
-          descColor = _props$attributes3.descColor,
-          descSize = _props$attributes3.descSize,
-          boxAlign = _props$attributes3.boxAlign,
-          boxPadding = _props$attributes3.boxPadding,
-          gapBetween = _props$attributes3.gapBetween;
+      var _props$attributes2 = this.props.attributes,
+          mapID = _props$attributes2.mapID,
+          mapStyle = _props$attributes2.mapStyle,
+          mapType = _props$attributes2.mapType,
+          height = _props$attributes2.height,
+          zoom = _props$attributes2.zoom,
+          mapTypeControl = _props$attributes2.mapTypeControl,
+          zoomControl = _props$attributes2.zoomControl,
+          fullscreenControl = _props$attributes2.fullscreenControl,
+          streetViewControl = _props$attributes2.streetViewControl,
+          scrollwheel = _props$attributes2.scrollwheel,
+          centerLng = _props$attributes2.centerLng,
+          centerLat = _props$attributes2.centerLat,
+          markerDesc = _props$attributes2.markerDesc,
+          markerTitle = _props$attributes2.markerTitle,
+          mapMarker = _props$attributes2.mapMarker,
+          markerIconUrl = _props$attributes2.markerIconUrl,
+          markerIconId = _props$attributes2.markerIconId,
+          markerCustom = _props$attributes2.markerCustom,
+          maxWidth = _props$attributes2.maxWidth,
+          titleColor = _props$attributes2.titleColor,
+          titleSize = _props$attributes2.titleSize,
+          descColor = _props$attributes2.descColor,
+          descSize = _props$attributes2.descSize,
+          boxAlign = _props$attributes2.boxAlign,
+          boxPadding = _props$attributes2.boxPadding,
+          gapBetween = _props$attributes2.gapBetween;
 
 
       var TYPES = [{
@@ -3808,7 +3723,7 @@ var PremiumMap = function (_Component) {
               );
             }
           }),
-          (mapMarker && "" !== markerDesc || "" !== markerTitle) && wp.element.createElement(RangeControl, {
+          mapMarker && wp.element.createElement(RangeControl, {
             label: __("Description Box Max Width (PX)"),
             value: maxWidth,
             min: "10",
@@ -3959,7 +3874,7 @@ var PremiumMap = function (_Component) {
           })
         )
       ), wp.element.createElement("div", {
-        className: blockClass + "__wrap",
+        className: className + "__wrap",
         id: mapID,
         style: {
           height: height + "px"
@@ -4081,41 +3996,38 @@ registerBlockType("premium/maps", {
   },
   edit: PremiumMap,
   save: function save(props) {
-    var className = props.className,
-        clientId = props.clientId,
-        _props$attributes4 = props.attributes,
-        mapID = _props$attributes4.mapID,
-        height = _props$attributes4.height,
-        mapStyle = _props$attributes4.mapStyle,
-        mapType = _props$attributes4.mapType,
-        zoom = _props$attributes4.zoom,
-        mapTypeControl = _props$attributes4.mapTypeControl,
-        zoomControl = _props$attributes4.zoomControl,
-        fullscreenControl = _props$attributes4.fullscreenControl,
-        streetViewControl = _props$attributes4.streetViewControl,
-        scrollwheel = _props$attributes4.scrollwheel,
-        centerLat = _props$attributes4.centerLat,
-        centerLng = _props$attributes4.centerLng,
-        mapMarker = _props$attributes4.mapMarker,
-        markerIconUrl = _props$attributes4.markerIconUrl,
-        markerIconId = _props$attributes4.markerIconId,
-        markerCustom = _props$attributes4.markerCustom,
-        maxWidth = _props$attributes4.maxWidth,
-        markerTitle = _props$attributes4.markerTitle,
-        markerDesc = _props$attributes4.markerDesc,
-        titleColor = _props$attributes4.titleColor,
-        titleSize = _props$attributes4.titleSize,
-        descColor = _props$attributes4.descColor,
-        descSize = _props$attributes4.descSize,
-        boxAlign = _props$attributes4.boxAlign,
-        boxPadding = _props$attributes4.boxPadding,
-        gapBetween = _props$attributes4.gapBetween;
+    var _props$attributes3 = props.attributes,
+        mapID = _props$attributes3.mapID,
+        height = _props$attributes3.height,
+        mapStyle = _props$attributes3.mapStyle,
+        mapType = _props$attributes3.mapType,
+        zoom = _props$attributes3.zoom,
+        mapTypeControl = _props$attributes3.mapTypeControl,
+        zoomControl = _props$attributes3.zoomControl,
+        fullscreenControl = _props$attributes3.fullscreenControl,
+        streetViewControl = _props$attributes3.streetViewControl,
+        scrollwheel = _props$attributes3.scrollwheel,
+        centerLat = _props$attributes3.centerLat,
+        centerLng = _props$attributes3.centerLng,
+        mapMarker = _props$attributes3.mapMarker,
+        markerIconUrl = _props$attributes3.markerIconUrl,
+        markerCustom = _props$attributes3.markerCustom,
+        maxWidth = _props$attributes3.maxWidth,
+        markerTitle = _props$attributes3.markerTitle,
+        markerDesc = _props$attributes3.markerDesc,
+        titleColor = _props$attributes3.titleColor,
+        titleSize = _props$attributes3.titleSize,
+        descColor = _props$attributes3.descColor,
+        descSize = _props$attributes3.descSize,
+        boxAlign = _props$attributes3.boxAlign,
+        boxPadding = _props$attributes3.boxPadding,
+        gapBetween = _props$attributes3.gapBetween;
 
 
     return wp.element.createElement(
       "div",
       {
-        className: blockClass + "__wrap",
+        className: className + "__wrap",
         id: mapID,
         style: {
           height: height + "px"
@@ -4123,11 +4035,11 @@ registerBlockType("premium/maps", {
       },
       wp.element.createElement(
         "div",
-        { className: blockClass + "__marker" },
+        { className: className + "__marker" },
         wp.element.createElement(
           "div",
           {
-            className: blockClass + "__info",
+            className: className + "__info",
             style: {
               textAlign: boxAlign,
               padding: boxPadding + "px"
@@ -4136,7 +4048,7 @@ registerBlockType("premium/maps", {
           "" !== markerTitle && wp.element.createElement(
             "h3",
             {
-              className: blockClass + "__title",
+              className: className + "__title",
               style: {
                 color: titleColor,
                 fontSize: titleSize + "px",
@@ -4148,7 +4060,7 @@ registerBlockType("premium/maps", {
           "" !== markerDesc && wp.element.createElement(
             "div",
             {
-              className: blockClass + "__desc",
+              className: className + "__desc",
               style: {
                 color: descColor,
                 fontSize: descSize + "px"
@@ -4161,7 +4073,7 @@ registerBlockType("premium/maps", {
       wp.element.createElement(
         "script",
         null,
-        "window.addEventListener('load',function(){\n                    if( typeof google === 'undefined' ) return;\n                    let mapElem = document.getElementById('" + mapID + "');\n                    let pin = mapElem.querySelector('." + blockClass + "__marker');\n                    \n                    let latlng = new google.maps.LatLng( parseFloat( " + centerLat + " ) , parseFloat( " + centerLng + " ) );\n                    let map = new google.maps.Map(mapElem, {\n                        zoom: " + zoom + ",\n                        gestureHandling: 'cooperative',\n                        mapTypeId: '" + mapType + "',\n                        mapTypeControl: " + mapTypeControl + ",\n                        zoomControl: " + zoomControl + ",\n                        fullscreenControl: " + fullscreenControl + ",\n                        streetViewControl: " + streetViewControl + ",\n                        scrollwheel: " + scrollwheel + ",\n                        center: latlng,\n                        styles: " + mapStyle + "\n                    });\n                    if( " + mapMarker + " ) {\n                        let markerIcon = '" + markerIconUrl + "';\n                        let marker = new google.maps.Marker({\n                            position\t: latlng,\n                            map\t\t\t: map,\n                            icon        : " + markerCustom + " ? markerIcon : ''\n                        });\n                        \n                        let infowindow = new google.maps.InfoWindow({\n                            maxWidth    : " + maxWidth + ",\n                            content\t\t: pin.innerHTML\n                        });\n                        \n                        google.maps.event.addListener(marker, 'click', function() {\n                            infowindow.open( map, marker );\n                        });\n                    }\n                    \n                });"
+        "window.addEventListener('load',function(){\n                    if( typeof google === 'undefined' ) return;\n                    let mapElem = document.getElementById('" + mapID + "');\n                    let pin = mapElem.querySelector('." + className + "__marker');\n                    \n                    let latlng = new google.maps.LatLng( parseFloat( " + centerLat + " ) , parseFloat( " + centerLng + " ) );\n                    let map = new google.maps.Map(mapElem, {\n                        zoom: " + zoom + ",\n                        gestureHandling: 'cooperative',\n                        mapTypeId: '" + mapType + "',\n                        mapTypeControl: " + mapTypeControl + ",\n                        zoomControl: " + zoomControl + ",\n                        fullscreenControl: " + fullscreenControl + ",\n                        streetViewControl: " + streetViewControl + ",\n                        scrollwheel: " + scrollwheel + ",\n                        center: latlng,\n                        styles: " + mapStyle + "\n                    });\n                    if( " + mapMarker + " ) {\n                        let markerIcon = '" + markerIconUrl + "';\n                        let marker = new google.maps.Marker({\n                            position\t: latlng,\n                            map\t\t\t: map,\n                            icon        : " + markerCustom + " ? markerIcon : ''\n                        });\n                        \n                        let infowindow = new google.maps.InfoWindow({\n                            maxWidth    : " + maxWidth + ",\n                            content\t\t: pin.innerHTML\n                        });\n                        \n                        google.maps.event.addListener(marker, 'click', function() {\n                            infowindow.open( map, marker );\n                        });\n                    }\n                    \n                });"
       )
     );
   }
@@ -4201,7 +4113,7 @@ var _wp$editor = wp.editor,
     AlignmentToolbar = _wp$editor.AlignmentToolbar,
     RichText = _wp$editor.RichText,
     MediaUpload = _wp$editor.MediaUpload,
-    ColorPalette = _wp$editor.ColorPalette;
+    PanelColorSettings = _wp$editor.PanelColorSettings;
 
 
 registerBlockType("premium/testimonial", {
@@ -4287,6 +4199,9 @@ registerBlockType("premium/testimonial", {
       type: "string",
       default: "rgba(110,193,228,0.2)"
     },
+    quotOpacity: {
+      type: "number"
+    },
     bodyColor: {
       type: "string"
     },
@@ -4308,8 +4223,6 @@ registerBlockType("premium/testimonial", {
   },
 
   edit: function edit(props) {
-    var _wp$element$createEle;
-
     var isSelected = props.isSelected,
         setAttributes = props.setAttributes;
     var _props$attributes = props.attributes,
@@ -4334,6 +4247,7 @@ registerBlockType("premium/testimonial", {
         urlTarget = _props$attributes.urlTarget,
         quotSize = _props$attributes.quotSize,
         quotColor = _props$attributes.quotColor,
+        quotOpacity = _props$attributes.quotOpacity,
         bodyColor = _props$attributes.bodyColor,
         bodySize = _props$attributes.bodySize,
         bodyLine = _props$attributes.bodyLine,
@@ -4376,53 +4290,12 @@ registerBlockType("premium/testimonial", {
       { key: "inspector" },
       wp.element.createElement(
         PanelBody,
-        { title: __("Content"), initialOpen: false },
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Color"), colorValue: bodyColor },
-          wp.element.createElement(ColorPalette, {
-            value: bodyColor,
-            onChange: function onChange(newColor) {
-              return setAttributes({ bodyColor: newColor });
-            }
-          })
-        ),
-        wp.element.createElement(RangeControl, {
-          label: __("Font Size (PX)"),
-          value: bodySize,
-          min: "10",
-          max: "80",
-          onChange: function onChange(newSize) {
-            return setAttributes({ bodySize: newSize });
-          }
-        }),
-        wp.element.createElement(RangeControl, {
-          label: __("Line Height (PX)"),
-          value: bodyLine,
-          min: "10",
-          max: "50",
-          onChange: function onChange(newSize) {
-            return setAttributes({ bodyLine: newSize });
-          }
-        }),
-        wp.element.createElement(RangeControl, {
-          label: __("Margin Top (PX)"),
-          value: bodyTop,
-          onChange: function onChange(newSize) {
-            return setAttributes({ bodyTop: newSize });
-          }
-        }),
-        wp.element.createElement(RangeControl, {
-          label: __("Margin Bottom (PX)"),
-          value: bodyBottom,
-          onChange: function onChange(newSize) {
-            return setAttributes({ bodyBottom: newSize });
-          }
-        })
-      ),
-      wp.element.createElement(
-        PanelBody,
         { title: __("Author"), initialOpen: true },
+        wp.element.createElement(
+          "p",
+          null,
+          __("Author Image")
+        ),
         authorImgUrl && wp.element.createElement("img", { src: authorImgUrl, width: "100%", height: "auto" }),
         !authorImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_default_image__["a" /* default */], null),
         wp.element.createElement(MediaUpload, {
@@ -4471,19 +4344,15 @@ registerBlockType("premium/testimonial", {
             return setAttributes({ imgBorder: newSize });
           }
         }),
-        authorImgUrl && wp.element.createElement(
-          PanelColor,
-          {
-            title: __("Border Color"),
-            colorValue: imgBorderColor
-          },
-          wp.element.createElement(ColorPalette, {
+        authorImgUrl && wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: imgBorderColor,
-            onChange: function onChange(newColor) {
-              return setAttributes({ imgBorderColor: newColor });
-            }
-          })
-        ),
+            onChange: function onChange(colorValue) {
+              return setAttributes({ imgBorderColor: colorValue });
+            },
+            label: __("Border Color")
+          }]
+        }),
         wp.element.createElement(
           "p",
           null,
@@ -4501,16 +4370,15 @@ registerBlockType("premium/testimonial", {
             };
           })
         }),
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Color"), colorValue: authorColor },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: authorColor,
-            onChange: function onChange(newColor) {
-              return setAttributes({ authorColor: newColor });
-            }
-          })
-        ),
+            onChange: function onChange(colorValue) {
+              return setAttributes({ authorColor: colorValue });
+            },
+            label: __("Color")
+          }]
+        }),
         wp.element.createElement(RangeControl, {
           label: __("Font Size (PX)"),
           value: authorSize,
@@ -4518,6 +4386,51 @@ registerBlockType("premium/testimonial", {
           max: "80",
           onChange: function onChange(newSize) {
             return setAttributes({ authorSize: newSize });
+          }
+        })
+      ),
+      wp.element.createElement(
+        PanelBody,
+        { title: __("Content"), initialOpen: false },
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
+            value: bodyColor,
+            onChange: function onChange(colorValue) {
+              return setAttributes({ bodyColor: colorValue });
+            },
+            label: __("Color")
+          }]
+        }),
+        wp.element.createElement(RangeControl, {
+          label: __("Font Size (PX)"),
+          value: bodySize,
+          min: "10",
+          max: "80",
+          onChange: function onChange(newSize) {
+            return setAttributes({ bodySize: newSize });
+          }
+        }),
+        wp.element.createElement(RangeControl, {
+          label: __("Line Height (PX)"),
+          value: bodyLine,
+          min: "10",
+          max: "50",
+          onChange: function onChange(newSize) {
+            return setAttributes({ bodyLine: newSize });
+          }
+        }),
+        wp.element.createElement(RangeControl, {
+          label: __("Margin Top (PX)"),
+          value: bodyTop,
+          onChange: function onChange(newSize) {
+            return setAttributes({ bodyTop: newSize });
+          }
+        }),
+        wp.element.createElement(RangeControl, {
+          label: __("Margin Bottom (PX)"),
+          value: bodyBottom,
+          onChange: function onChange(newSize) {
+            return setAttributes({ bodyBottom: newSize });
           }
         })
       ),
@@ -4541,16 +4454,15 @@ registerBlockType("premium/testimonial", {
             };
           })
         }),
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Color"), colorValue: authorComColor },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: authorComColor,
-            onChange: function onChange(newColor) {
-              return setAttributes({ authorComColor: newColor });
-            }
-          })
-        ),
+            onChange: function onChange(colorValue) {
+              return setAttributes({ authorComColor: colorValue });
+            },
+            label: __("Color")
+          }]
+        }),
         wp.element.createElement(RangeControl, {
           label: __("Font Size (PX"),
           value: authorComSize,
@@ -4558,16 +4470,15 @@ registerBlockType("premium/testimonial", {
             return setAttributes({ authorComSize: newSize });
           }
         }),
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Dash Color"), colorValue: dashColor },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: dashColor,
-            onChange: function onChange(newColor) {
-              return setAttributes({ dashColor: newColor });
-            }
-          })
-        ),
+            onChange: function onChange(colorValue) {
+              return setAttributes({ dashColor: colorValue });
+            },
+            label: __("Dash Color")
+          }]
+        }),
         wp.element.createElement(CheckboxControl, {
           label: __("URL"),
           checked: urlCheck,
@@ -4602,16 +4513,24 @@ registerBlockType("premium/testimonial", {
             return setAttributes({ quotSize: newSize });
           }
         }),
-        wp.element.createElement(
-          PanelColor,
-          { title: __("Color"), colorValue: quotColor },
-          wp.element.createElement(ColorPalette, {
+        wp.element.createElement(PanelColorSettings, {
+          colorSettings: [{
             value: quotColor,
-            onChange: function onChange(newColor) {
-              return setAttributes({ quotColor: newColor });
-            }
-          })
-        )
+            onChange: function onChange(colorValue) {
+              return setAttributes({ quotColor: colorValue });
+            },
+            label: __("Color")
+          }]
+        }),
+        wp.element.createElement(RangeControl, {
+          label: __("Opacity"),
+          min: "0",
+          max: "100",
+          value: quotOpacity,
+          onChange: function onChange(newValue) {
+            return setAttributes({ quotOpacity: newValue });
+          }
+        })
       )
     ), wp.element.createElement(
       "div",
@@ -4622,7 +4541,11 @@ registerBlockType("premium/testimonial", {
         wp.element.createElement(
           "span",
           { className: className + "__upper" },
-          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__["a" /* default */], { size: quotSize, color: quotColor })
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__["a" /* default */], {
+            size: quotSize,
+            color: quotColor,
+            opacity: quotOpacity
+          })
         ),
         wp.element.createElement(
           "div",
@@ -4655,7 +4578,7 @@ registerBlockType("premium/testimonial", {
             wp.element.createElement(
               "div",
               null,
-              wp.element.createElement(RichText, (_wp$element$createEle = {
+              wp.element.createElement(RichText, {
                 tagName: "p",
                 className: className + "__text",
                 onChange: function onChange(newText) {
@@ -4670,8 +4593,9 @@ registerBlockType("premium/testimonial", {
                   lineHeight: bodyLine + "px",
                   marginTop: bodyTop + "px",
                   marginBottom: bodyBottom + "px"
-                }
-              }, _defineProperty(_wp$element$createEle, "isSelected", isSelected), _defineProperty(_wp$element$createEle, "keepPlaceholderOnFocus", true), _wp$element$createEle))
+                },
+                keepPlaceholderOnFocus: true
+              })
             )
           ),
           wp.element.createElement(
@@ -4721,7 +4645,11 @@ registerBlockType("premium/testimonial", {
         wp.element.createElement(
           "span",
           { className: className + "__lower" },
-          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__["a" /* default */], { size: quotSize, color: quotColor })
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__["a" /* default */], {
+            size: quotSize,
+            color: quotColor,
+            opacity: quotOpacity
+          })
         )
       )
     )];
@@ -4745,6 +4673,7 @@ registerBlockType("premium/testimonial", {
         authorCom = _props$attributes2.authorCom,
         quotSize = _props$attributes2.quotSize,
         quotColor = _props$attributes2.quotColor,
+        quotOpacity = _props$attributes2.quotOpacity,
         bodyColor = _props$attributes2.bodyColor,
         bodySize = _props$attributes2.bodySize,
         bodyLine = _props$attributes2.bodyLine,
@@ -4765,7 +4694,11 @@ registerBlockType("premium/testimonial", {
         wp.element.createElement(
           "span",
           { className: className + "__upper" },
-          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__["a" /* default */], { size: quotSize, color: quotColor })
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__["a" /* default */], {
+            size: quotSize,
+            color: quotColor,
+            opacity: quotOpacity
+          })
         ),
         wp.element.createElement(
           "div",
@@ -4853,7 +4786,11 @@ registerBlockType("premium/testimonial", {
         wp.element.createElement(
           "span",
           { className: className + "__lower" },
-          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__["a" /* default */], { color: quotColor, size: quotSize })
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__["a" /* default */], {
+            color: quotColor,
+            size: quotSize,
+            opacity: quotOpacity
+          })
         )
       )
     );
@@ -4917,35 +4854,48 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Component = wp.element.Component;
 
 var PremiumLowerQuote = function (_Component) {
-    _inherits(PremiumLowerQuote, _Component);
+  _inherits(PremiumLowerQuote, _Component);
 
-    function PremiumLowerQuote() {
-        _classCallCheck(this, PremiumLowerQuote);
+  function PremiumLowerQuote() {
+    _classCallCheck(this, PremiumLowerQuote);
 
-        return _possibleConstructorReturn(this, (PremiumLowerQuote.__proto__ || Object.getPrototypeOf(PremiumLowerQuote)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (PremiumLowerQuote.__proto__ || Object.getPrototypeOf(PremiumLowerQuote)).apply(this, arguments));
+  }
+
+  _createClass(PremiumLowerQuote, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
     }
+  }, {
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          size = _props.size,
+          color = _props.color,
+          opacity = _props.opacity;
 
-    _createClass(PremiumLowerQuote, [{
-        key: "shouldComponentUpdate",
-        value: function shouldComponentUpdate(nextProps) {
-            return this.props.size !== nextProps.size || this.props.color !== nextProps.color;
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _props = this.props,
-                size = _props.size,
-                color = _props.color;
+      return wp.element.createElement(
+        "svg",
+        {
+          style: { width: size + "em", opacity: opacity / 100 },
+          "aria-hidden": "true",
+          "data-prefix": "fas",
+          "data-icon": "quote-left",
+          "class": "svg-inline--fa fa-quote-left fa-w-16",
+          role: "img",
+          xmlns: "http://www.w3.org/2000/svg",
+          viewBox: "0 0 512 512"
+        },
+        wp.element.createElement("path", {
+          fill: "" + color,
+          d: "M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
+        })
+      );
+    }
+  }]);
 
-            return wp.element.createElement(
-                "svg",
-                { style: { width: size + 'em' }, "aria-hidden": "true", "data-prefix": "fas", "data-icon": "quote-left", "class": "svg-inline--fa fa-quote-left fa-w-16", role: "img", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 512 512" },
-                wp.element.createElement("path", { fill: "" + color, d: "M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z" })
-            );
-        }
-    }]);
-
-    return PremiumLowerQuote;
+  return PremiumLowerQuote;
 }(Component);
 
 /* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
@@ -4966,36 +4916,49 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Component = wp.element.Component;
 
 var PremiumUpperQuote = function (_Component) {
-    _inherits(PremiumUpperQuote, _Component);
+  _inherits(PremiumUpperQuote, _Component);
 
-    function PremiumUpperQuote() {
-        _classCallCheck(this, PremiumUpperQuote);
+  function PremiumUpperQuote() {
+    _classCallCheck(this, PremiumUpperQuote);
 
-        return _possibleConstructorReturn(this, (PremiumUpperQuote.__proto__ || Object.getPrototypeOf(PremiumUpperQuote)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (PremiumUpperQuote.__proto__ || Object.getPrototypeOf(PremiumUpperQuote)).apply(this, arguments));
+  }
+
+  _createClass(PremiumUpperQuote, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
     }
-
-    _createClass(PremiumUpperQuote, [{
-        key: "shouldComponentUpdate",
-        value: function shouldComponentUpdate(nextProps) {
-            return this.props.size !== nextProps.size || this.props.color !== nextProps.color;
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _props = this.props,
-                size = _props.size,
-                color = _props.color;
+  }, {
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          size = _props.size,
+          color = _props.color,
+          opacity = _props.opacity;
 
 
-            return wp.element.createElement(
-                "svg",
-                { style: { width: size + 'em' }, "aria-hidden": "true", "data-prefix": "fas", "data-icon": "quote-right", "class": "svg-inline--fa fa-quote-right fa-w-16", role: "img", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 512 512" },
-                wp.element.createElement("path", { fill: "" + color, d: "M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z" })
-            );
-        }
-    }]);
+      return wp.element.createElement(
+        "svg",
+        {
+          style: { width: size + "em", opacity: opacity / 100 },
+          "aria-hidden": "true",
+          "data-prefix": "fas",
+          "data-icon": "quote-right",
+          "class": "svg-inline--fa fa-quote-right fa-w-16",
+          role: "img",
+          xmlns: "http://www.w3.org/2000/svg",
+          viewBox: "0 0 512 512"
+        },
+        wp.element.createElement("path", {
+          fill: "" + color,
+          d: "M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z"
+        })
+      );
+    }
+  }]);
 
-    return PremiumUpperQuote;
+  return PremiumUpperQuote;
 }(Component);
 
 /* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);

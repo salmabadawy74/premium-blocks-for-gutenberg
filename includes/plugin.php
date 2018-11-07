@@ -53,6 +53,8 @@ if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
          */
         public function init_files() {
             
+            require_once ( PREMIUM_BLOCKS_PATH . 'admin/settings/elements.php' );
+            
             require_once ( PREMIUM_BLOCKS_PATH . 'includes/class-blocks-helper.php' );
         }
         

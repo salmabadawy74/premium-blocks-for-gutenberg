@@ -69,6 +69,14 @@ class Premium_Blocks_Integration {
             ),
             PREMIUM_BLOCKS_VERSION
         );
+        
+//        wp_localize_script(
+//            'pbg-editor',
+//            'BlocksSettings',
+//            array(
+//                'PremiumBanner' => 'Hello'
+//            )
+//        );
     
         wp_enqueue_style(
             'pbg-editor-css',

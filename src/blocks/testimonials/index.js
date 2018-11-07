@@ -27,7 +27,7 @@ const {
   AlignmentToolbar,
   RichText,
   MediaUpload,
-  ColorPalette
+  PanelColorSettings
 } = wp.editor;
 
 registerBlockType("premium/testimonial", {
@@ -113,6 +113,9 @@ registerBlockType("premium/testimonial", {
       type: "string",
       default: "rgba(110,193,228,0.2)"
     },
+    quotOpacity: {
+      type: "number"
+    },
     bodyColor: {
       type: "string"
     },
@@ -157,6 +160,7 @@ registerBlockType("premium/testimonial", {
       urlTarget,
       quotSize,
       quotColor,
+      quotOpacity,
       bodyColor,
       bodySize,
       bodyLine,
@@ -204,40 +208,8 @@ registerBlockType("premium/testimonial", {
       ),
       isSelected && (
         <InspectorControls key={"inspector"}>
-          <PanelBody title={__("Content")} initialOpen={false}>
-            <PanelColor title={__("Color")} colorValue={bodyColor}>
-              <ColorPalette
-                value={bodyColor}
-                onChange={newColor => setAttributes({ bodyColor: newColor })}
-              />
-            </PanelColor>
-            <RangeControl
-              label={__("Font Size (PX)")}
-              value={bodySize}
-              min="10"
-              max="80"
-              onChange={newSize => setAttributes({ bodySize: newSize })}
-            />
-            <RangeControl
-              label={__("Line Height (PX)")}
-              value={bodyLine}
-              min="10"
-              max="50"
-              onChange={newSize => setAttributes({ bodyLine: newSize })}
-            />
-            <RangeControl
-              label={__("Margin Top (PX)")}
-              value={bodyTop}
-              onChange={newSize => setAttributes({ bodyTop: newSize })}
-            />
-            <RangeControl
-              label={__("Margin Bottom (PX)")}
-              value={bodyBottom}
-              onChange={newSize => setAttributes({ bodyBottom: newSize })}
-            />
-          </PanelBody>
-
           <PanelBody title={__("Author")} initialOpen={true}>
+            <p>{__("Author Image")}</p>
             {authorImgUrl && (
               <img src={authorImgUrl} width="100%" height="auto" />
             )}
@@ -289,17 +261,16 @@ registerBlockType("premium/testimonial", {
               />
             )}
             {authorImgUrl && (
-              <PanelColor
-                title={__("Border Color")}
-                colorValue={imgBorderColor}
-              >
-                <ColorPalette
-                  value={imgBorderColor}
-                  onChange={newColor =>
-                    setAttributes({ imgBorderColor: newColor })
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: imgBorderColor,
+                    onChange: colorValue =>
+                      setAttributes({ imgBorderColor: colorValue }),
+                    label: __("Border Color")
                   }
-                />
-              </PanelColor>
+                ]}
+              />
             )}
             <p>{__("Author HTML Tag")}</p>
             <Toolbar
@@ -310,18 +281,58 @@ registerBlockType("premium/testimonial", {
                 subscript: tag
               }))}
             />
-            <PanelColor title={__("Color")} colorValue={authorColor}>
-              <ColorPalette
-                value={authorColor}
-                onChange={newColor => setAttributes({ authorColor: newColor })}
-              />
-            </PanelColor>
+            <PanelColorSettings
+              colorSettings={[
+                {
+                  value: authorColor,
+                  onChange: colorValue =>
+                    setAttributes({ authorColor: colorValue }),
+                  label: __("Color")
+                }
+              ]}
+            />
             <RangeControl
               label={__("Font Size (PX)")}
               value={authorSize}
               min="10"
               max="80"
               onChange={newSize => setAttributes({ authorSize: newSize })}
+            />
+          </PanelBody>
+          <PanelBody title={__("Content")} initialOpen={false}>
+            <PanelColorSettings
+              colorSettings={[
+                {
+                  value: bodyColor,
+                  onChange: colorValue =>
+                    setAttributes({ bodyColor: colorValue }),
+                  label: __("Color")
+                }
+              ]}
+            />
+            <RangeControl
+              label={__("Font Size (PX)")}
+              value={bodySize}
+              min="10"
+              max="80"
+              onChange={newSize => setAttributes({ bodySize: newSize })}
+            />
+            <RangeControl
+              label={__("Line Height (PX)")}
+              value={bodyLine}
+              min="10"
+              max="50"
+              onChange={newSize => setAttributes({ bodyLine: newSize })}
+            />
+            <RangeControl
+              label={__("Margin Top (PX)")}
+              value={bodyTop}
+              onChange={newSize => setAttributes({ bodyTop: newSize })}
+            />
+            <RangeControl
+              label={__("Margin Bottom (PX)")}
+              value={bodyBottom}
+              onChange={newSize => setAttributes({ bodyBottom: newSize })}
             />
           </PanelBody>
           <PanelBody title={__("Company")} initialOpen={false}>
@@ -334,25 +345,31 @@ registerBlockType("premium/testimonial", {
                 subscript: tag
               }))}
             />
-            <PanelColor title={__("Color")} colorValue={authorComColor}>
-              <ColorPalette
-                value={authorComColor}
-                onChange={newColor =>
-                  setAttributes({ authorComColor: newColor })
+            <PanelColorSettings
+              colorSettings={[
+                {
+                  value: authorComColor,
+                  onChange: colorValue =>
+                    setAttributes({ authorComColor: colorValue }),
+                  label: __("Color")
                 }
-              />
-            </PanelColor>
+              ]}
+            />
             <RangeControl
               label={__("Font Size (PX")}
               value={authorComSize}
               onChange={newSize => setAttributes({ authorComSize: newSize })}
             />
-            <PanelColor title={__("Dash Color")} colorValue={dashColor}>
-              <ColorPalette
-                value={dashColor}
-                onChange={newColor => setAttributes({ dashColor: newColor })}
-              />
-            </PanelColor>
+            <PanelColorSettings
+              colorSettings={[
+                {
+                  value: dashColor,
+                  onChange: colorValue =>
+                    setAttributes({ dashColor: colorValue }),
+                  label: __("Dash Color")
+                }
+              ]}
+            />
             <CheckboxControl
               label={__("URL")}
               checked={urlCheck}
@@ -381,19 +398,34 @@ registerBlockType("premium/testimonial", {
               max="12"
               onChange={newSize => setAttributes({ quotSize: newSize })}
             />
-            <PanelColor title={__("Color")} colorValue={quotColor}>
-              <ColorPalette
-                value={quotColor}
-                onChange={newColor => setAttributes({ quotColor: newColor })}
-              />
-            </PanelColor>
+            <PanelColorSettings
+              colorSettings={[
+                {
+                  value: quotColor,
+                  onChange: colorValue =>
+                    setAttributes({ quotColor: colorValue }),
+                  label: __("Color")
+                }
+              ]}
+            />
+            <RangeControl
+              label={__("Opacity")}
+              min="0"
+              max="100"
+              value={quotOpacity}
+              onChange={newValue => setAttributes({ quotOpacity: newValue })}
+            />
           </PanelBody>
         </InspectorControls>
       ),
       <div className={`${className}__wrap`}>
         <div className={`${className}__container`}>
           <span className={`${className}__upper`}>
-            <PremiumUpperQuote size={quotSize} color={quotColor} />
+            <PremiumUpperQuote
+              size={quotSize}
+              color={quotColor}
+              opacity={quotOpacity}
+            />
           </span>
           <div
             className={`${className}__content`}
@@ -434,7 +466,6 @@ registerBlockType("premium/testimonial", {
                     marginTop: bodyTop + "px",
                     marginBottom: bodyBottom + "px"
                   }}
-                  isSelected={isSelected}
                   keepPlaceholderOnFocus
                 />
               </div>
@@ -477,7 +508,11 @@ registerBlockType("premium/testimonial", {
             </div>
           </div>
           <span className={`${className}__lower`}>
-            <PremiumLowerQuote size={quotSize} color={quotColor} />
+            <PremiumLowerQuote
+              size={quotSize}
+              color={quotColor}
+              opacity={quotOpacity}
+            />
           </span>
         </div>
       </div>
@@ -502,6 +537,7 @@ registerBlockType("premium/testimonial", {
       authorCom,
       quotSize,
       quotColor,
+      quotOpacity,
       bodyColor,
       bodySize,
       bodyLine,
@@ -517,7 +553,11 @@ registerBlockType("premium/testimonial", {
       <div className={`${className}__wrap`}>
         <div className={`${className}__container`}>
           <span className={`${className}__upper`}>
-            <PremiumUpperQuote size={quotSize} color={quotColor} />
+            <PremiumUpperQuote
+              size={quotSize}
+              color={quotColor}
+              opacity={quotOpacity}
+            />
           </span>
           <div
             className={`${className}__content`}
@@ -593,7 +633,11 @@ registerBlockType("premium/testimonial", {
             </div>
           </div>
           <span className={`${className}__lower`}>
-            <PremiumLowerQuote color={quotColor} size={quotSize} />
+            <PremiumLowerQuote
+              color={quotColor}
+              size={quotSize}
+              opacity={quotOpacity}
+            />
           </span>
         </div>
       </div>

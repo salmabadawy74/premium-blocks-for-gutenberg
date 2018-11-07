@@ -1,11 +1,8 @@
-// node module that let's us do file system stuffs...
 const path = require('path');
 const webpack = require('webpack');
 
-
-// Webpack expects an exported object with all the configurations, so we export an object here
 module.exports = {
-    entry: './src/index.js', // Where to find our main js
+    entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'assets/js'),
 		filename: '[name].js'
@@ -13,7 +10,6 @@ module.exports = {
     module: {
         rules: [
             { 
-                // basically tells webpack to use babel with the correct presets
                 test: /\.(js|jsx|mjs)$/,
                 loader: 'babel-loader',
 //                query: {

@@ -1,0 +1,253 @@
+<?php
+
+// Exit if accessed directly
+if( ! defined( 'ABSPATH' ) ) exit();
+
+//Declare `Premium_Guten_Blocks` if not declared yet.
+if ( ! class_exists('Premium_Guten_Blocks') ) {
+    
+    class Premium_Guten_Admin {
+    
+        private static $instance = null;
+
+        protected $slug = 'premium-gutenberg';
+
+        public static $pbg_blocks = ['dual-heading','banner','pricing-table','maps','testimonials'];
+
+        private $pbg_default;
+
+        private $pbg_settings;
+
+        private $pbg_get_settings;
+
+        public function __construct() {
+            
+            add_action( 'admin_menu', array( $this,'pbg_admin') );
+
+            add_action('admin_enqueue_scripts', array( $this, 'pa_admin_page_scripts' ) );
+
+            add_action( 'wp_ajax_pbg_settings', array( $this, 'pbg_settings' ) );
+        }
+
+        public function pa_admin_page_scripts () {
+            
+            $current_screen = get_current_screen();
+            
+            if( strpos( $current_screen->id, $this->slug ) !== false){
+                
+                wp_enqueue_style(
+                    'pbg-admin',
+                    PREMIUM_BLOCKS_URL . 'admin/assets/admin.css',
+                    array(),
+                    PREMIUM_BLOCKS_VERSION,
+                    'all'
+                );
+                
+                wp_enqueue_style(
+                    'swal-style',
+                    PREMIUM_BLOCKS_URL . 'admin/assets/js/sweetalert2/css/sweetalert2.min.css'
+                );
+                
+                wp_enqueue_script(
+                    'swal-core',
+                    PREMIUM_BLOCKS_URL . 'admin/assets/js/sweetalert2/js/core.js',
+                    array( 'jquery' ),
+                    PREMIUM_BLOCKS_VERSION,
+                    true
+                );
+            
+                wp_enqueue_script(
+                    'swal',
+                    PREMIUM_BLOCKS_URL . 'admin/assets/js/sweetalert2/js/sweetalert2.min.js',
+                    array( 'jquery', 'swal-core' ),
+                    PREMIUM_BLOCKS_VERSION,
+                    true
+                );
+                
+                wp_enqueue_script(
+                    'pbg-admin-js',
+                    PREMIUM_BLOCKS_URL . 'admin/assets/admin.js',
+                    array( 'jquery' ),
+                    PREMIUM_BLOCKS_VERSION, 
+                    true
+                );
+            }
+        }
+
+        public function pbg_admin() {
+            add_menu_page(
+                __('Premium Blocks for Gutenberg'),
+                __('Premium Blocks for Gutenberg'),
+                'manage_options',
+                'premium-gutenberg',
+                array( $this , 'pbg_blocks_page' ),
+                '' ,
+                100
+            );
+        }
+
+        public function pbg_blocks_page(){
+            
+            $js_info = array(
+                'ajaxurl' => admin_url( 'admin-ajax.php' )
+            );
+
+            wp_localize_script(
+                'pbg-admin-js',
+                'settings',
+                $js_info
+            );
+            
+            $this->pbg_default = $this->get_default_keys();
+
+            $this->pbg_get_settings = $this->get_enabled_keys();
+
+            $pbg_new_settings = array_diff_key( $this->pa_pro_default_settings, $this->pa_pro_get_settings );
+
+            if( ! empty( $pbg_new_settings ) ) {
+
+                $pbg_updated_settings = array_merge( $this->pbg_get_settings, $pbg_new_settings );
+
+                update_option( 'pbg_settings', $pbg_updated_settings );
+
+            }
+
+            $this->pbg_get_settings = get_option( 'pbg_settings', $this->pbg_default );
+      
+        ?>
+
+        <div class="wrap">
+            <div class="response-wrap"></div>
+            <form action="" method="POST" id="pbg-settings" name="pbg-settings">
+                <div class="pb-header-wrapper">
+                    <div class="pb-title-left">
+                        <h1 class="pb-title-main"><?php echo __('Premium Blocks for Gutenberg','premium-gutenberg'); ?></h1>
+                        <h3 class="pb-title-sub"><?php echo __('Thank you for using Premium Blocks for Gutenberg. This plugin has been developed by Leap13 and we hope you enjoy using it.','premium-gutenberg'); ?></h3>
+                    </div>
+                    
+                    <div class="pb-title-right">
+                        <img class="pb-logo" src="<?php echo PREMIUM_PRO_ADDONS_URL . 'admin/images/premium-addons-logo.png';?>">
+                    </div>
+                    
+                </div>
+                <div class="pb-settings-tabs">
+                    <div id="pb-modules" class="pb-settings-tab">
+                        <div>
+                            <br>
+                                <input type="checkbox" class="pb-checkbox" checked="checked">
+                                <label>Enable/Disable All</label>
+                            </div>
+                            <table class="pb-elements-table">
+                                <tbody>
+                                    <tr>
+                                        <th><?php echo __('Premium Banner', 'premium-gutenberg'); ?></th>
+                                        <td>
+                                            <label class="switch">
+                                                <input type="checkbox" id="banner" name="banner" <?php checked(1, $this->pbg_get_settings['banner'], true) ?>>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </td>
+                                        <th><?php echo __('Premium Dual Heading', 'premium-gutenberg'); ?></th>
+                                        <td>
+                                            <label class="switch">
+                                                <input type="checkbox" id="dual-heading" name="dual-heading" <?php checked(1, $this->pbg_get_settings['dual-heading'], true) ?>>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><?php echo __('Premium Maps', 'premium-gutenberg'); ?></th>
+                                        <td>
+                                            <label class="switch">
+                                                <input type="checkbox" id="maps" name="maps" <?php checked(1, $this->pbg_get_settings['maps'], true) ?>>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </td>
+                                        <th><?php echo __('Premium Pricing Table', 'premium-gutenberg'); ?></th>
+                                        <td>
+                                            <label class="switch">
+                                                <input type="checkbox" id="pricing-table" name="pricing-table" <?php checked(1, $this->pbg_get_settings['pricing-table'], true) ?>>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><?php echo __('Premium Testimonials', 'premium-gutenberg'); ?></th>
+                                        <td>
+                                            <label class="switch">
+                                                <input type="checkbox" id="testimonials" name="testimonials" <?php checked(1, $this->pbg_get_settings['testimonials'], true) ?>>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
+                        </div>
+                        <div>
+                            <p><?php echo __('Did you like Premium Blocks for Gutenberg Plugin? Please', 'premium-gutenberg') ?> <a href="https://wordpress.org/support/plugin/premium-addons-for-elementor/reviews/#new-post" target="_blank"><?php echo __('Click Here to Rate it ★★★★★', 'premium-gutenberg') ?></a></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        <?php
+        }
+        
+        public static function get_enabled_keys() {
+        
+            $enabled_keys = get_option( 'pbg_settings', self::get_default_keys() );
+        
+            return $enabled_keys;
+        }
+        
+        public static function get_default_keys() {
+            
+            $default_keys = array_fill_keys( self::$pbg_blocks, true );
+        
+            return $default_keys;
+        }
+
+        public function pbg_settings() {
+
+            if( isset( $_POST['fields'] ) ) {
+
+                parse_str( $_POST['fields'], $settings );
+
+            } else {
+
+                return;
+            }
+            
+            $this->pbg_settings = array(
+                'dual-heading'  => intval( $settings['dual-heading'] ? 1 : 0 ),
+                'banner'        => intval( $settings['banner'] ? 1 : 0 ),
+                'maps'          => intval( $settings['maps'] ? 1 : 0 ),
+                'pricing-table' => intval( $settings['pricing-table'] ? 1 : 0 ),
+                'testimonials'  => intval( $settings['testimonials'] ? 1 : 0 ),
+            );
+
+            update_option( 'pbg_settings', $this->pbg_settings );
+
+            return true;
+
+            die();    
+        }
+        
+        public static function get_instance(){
+            if( self::$instance == null ) {
+                self::$instance = new self;
+            }
+            return self::$instance;
+        }
+    
+    }
+}
+
+if( ! function_exists('premium_gutenberg') ) {
+    
+    function premium_gutenberg() {
+        return Premium_Guten_Admin::get_instance();
+    }
+    
+}
+premium_gutenberg();

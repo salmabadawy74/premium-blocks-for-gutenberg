@@ -1,3 +1,5 @@
+const className = "premium-dheading-block";
+
 const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
@@ -5,7 +7,6 @@ const { registerBlockType } = wp.blocks;
 const {
   Toolbar,
   PanelBody,
-  PanelColor,
   SelectControl,
   TextControl,
   RangeControl,
@@ -15,8 +16,7 @@ const {
   BlockControls,
   InspectorControls,
   AlignmentToolbar,
-  RichText,
-  ColorPalette,
+  PanelColorSettings,
   URLInput
 } = wp.editor;
 
@@ -163,7 +163,7 @@ registerBlockType("premium/dheading-block", {
   },
 
   edit: props => {
-    const { setAttributes, isSelected, className } = props;
+    const { setAttributes, isSelected } = props;
     const {
       contentAlign,
       firstHeading,
@@ -236,7 +236,6 @@ registerBlockType("premium/dheading-block", {
         label: "Groove"
       }
     ];
-    let blockClass = className.replace("wp-block-", "");
     return [
       isSelected && (
         <BlockControls key="controls">
@@ -295,12 +294,16 @@ registerBlockType("premium/dheading-block", {
                 onChange={newValue => setAttributes({ firstAnim: newValue })}
               />
             )}
-            <PanelColor title={__("Color")} colorValue={firstColor}>
-              <ColorPalette
-                value={firstColor}
-                onChange={newColor => setAttributes({ firstColor: newColor })}
-              />
-            </PanelColor>
+            <PanelColorSettings
+              colorSettings={[
+                {
+                  value: firstColor,
+                  onChange: colorValue =>
+                    setAttributes({ firstColor: colorValue }),
+                  label: __("Color")
+                }
+              ]}
+            />
             <p>{__("Font Size (PX)")}</p>
             <RangeControl
               value={firstSize}
@@ -309,30 +312,28 @@ registerBlockType("premium/dheading-block", {
               onChange={newSize => setAttributes({ firstSize: newSize })}
             />
             {!firstClip && (
-              <PanelColor
-                title={__("Background Color")}
-                colorValue={firstBackground}
-              >
-                <ColorPalette
-                  value={firstBackground}
-                  onChange={newColor =>
-                    setAttributes({ firstBackground: newColor })
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: firstBackground,
+                    onChange: colorValue =>
+                      setAttributes({ firstBackground: colorValue }),
+                    label: __("Background Color")
                   }
-                />
-              </PanelColor>
+                ]}
+              />
             )}
             {firstClip && (
-              <PanelColor
-                title={__("Second Color")}
-                colorValue={firstClipColor}
-              >
-                <ColorPalette
-                  value={firstClipColor}
-                  onChange={newColor =>
-                    setAttributes({ firstClipColor: newColor })
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: firstClipColor,
+                    onChange: colorValue =>
+                      setAttributes({ firstClipColor: colorValue }),
+                    label: __("Second Color")
                   }
-                />
-              </PanelColor>
+                ]}
+              />
             )}
             <SelectControl
               label={__("Border Type")}
@@ -352,17 +353,16 @@ registerBlockType("premium/dheading-block", {
               />
             )}
             {"none" != firstBorderType && (
-              <PanelColor
-                title={__("Border Color")}
-                colorValue={firstBorderColor}
-              >
-                <ColorPalette
-                  value={firstBorderColor}
-                  onChange={newColor =>
-                    setAttributes({ firstBorderColor: newColor })
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: firstBorderColor,
+                    onChange: colorValue =>
+                      setAttributes({ firstBorderColor: colorValue }),
+                    label: __("Border Color")
                   }
-                />
-              </PanelColor>
+                ]}
+              />
             )}
             <p>{__("Border Radius")}</p>
             <RangeControl
@@ -410,12 +410,16 @@ registerBlockType("premium/dheading-block", {
                 onChange={newValue => setAttributes({ secondAnim: newValue })}
               />
             )}
-            <PanelColor title={__("Color")} colorValue={secondColor}>
-              <ColorPalette
-                value={secondColor}
-                onChange={newColor => setAttributes({ secondColor: newColor })}
-              />
-            </PanelColor>
+            <PanelColorSettings
+              colorSettings={[
+                {
+                  value: secondColor,
+                  onChange: colorValue =>
+                    setAttributes({ secondColor: colorValue }),
+                  label: __("Color")
+                }
+              ]}
+            />
             <p>{__("Font Size (PX)")}</p>
             <RangeControl
               min="10"
@@ -424,30 +428,28 @@ registerBlockType("premium/dheading-block", {
               onChange={newSize => setAttributes({ secondSize: newSize })}
             />
             {!secondClip && (
-              <PanelColor
-                title={__("Background Color")}
-                colorValue={secondBackground}
-              >
-                <ColorPalette
-                  value={secondBackground}
-                  onChange={newColor =>
-                    setAttributes({ secondBackground: newColor })
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: secondBackground,
+                    onChange: colorValue =>
+                      setAttributes({ secondBackground: colorValue }),
+                    label: __("Background Color")
                   }
-                />
-              </PanelColor>
+                ]}
+              />
             )}
             {secondClip && (
-              <PanelColor
-                title={__("Second Color")}
-                colorValue={secondClipColor}
-              >
-                <ColorPalette
-                  value={secondClipColor}
-                  onChange={newColor =>
-                    setAttributes({ secondClipColor: newColor })
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: secondClipColor,
+                    onChange: colorValue =>
+                      setAttributes({ secondClipColor: colorValue }),
+                    label: __("Second Color")
                   }
-                />
-              </PanelColor>
+                ]}
+              />
             )}
             <SelectControl
               label={__("Border Type")}
@@ -467,17 +469,16 @@ registerBlockType("premium/dheading-block", {
               />
             )}
             {"none" != secondBorderType && (
-              <PanelColor
-                title={__("Border Color")}
-                colorValue={secondBorderColor}
-              >
-                <ColorPalette
-                  value={secondBorderColor}
-                  onChange={newColor =>
-                    setAttributes({ secondBorderColor: newColor })
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: secondBorderColor,
+                    onChange: colorValue =>
+                      setAttributes({ secondBorderColor: colorValue }),
+                    label: __("Border Color")
                   }
-                />
-              </PanelColor>
+                ]}
+              />
             )}
             <p>{__("Border Radius")}</p>
             <RangeControl
@@ -519,7 +520,7 @@ registerBlockType("premium/dheading-block", {
         </InspectorControls>
       ),
       <div
-        className={`${blockClass}__container`}
+        className={`${className}__container`}
         style={{ textAlign: contentAlign }}
       >
         {link &&
@@ -529,9 +530,9 @@ registerBlockType("premium/dheading-block", {
               onChange={newUrl => setAttributes({ headingURL: newUrl })}
             />
           )}
-        <h2 className={`${blockClass}__title`}>
+        <h2 className={`${className}__title`}>
           <span
-            className={`${blockClass}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
+            className={`${className}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
             style={{
               display: display,
               color: firstColor,
@@ -552,7 +553,7 @@ registerBlockType("premium/dheading-block", {
             {firstHeading}
           </span>
           <span
-            className={`${blockClass}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
+            className={`${className}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
             style={{
               display: display,
               color: secondColor,
@@ -578,58 +579,54 @@ registerBlockType("premium/dheading-block", {
   },
   save: props => {
     const {
-      className,
-      attributes: {
-        contentAlign,
-        firstHeading,
-        secondHeading,
-        titleTag,
-        display,
-        firstColor,
-        firstBackground,
-        firstSize,
-        firstBorderType,
-        firstBorderWidth,
-        firstBorderRadius,
-        firstBorderColor,
-        firstPadding,
-        firstMargin,
-        firstClip,
-        firstAnim,
-        firstClipColor,
-        secondColor,
-        secondBackground,
-        secondSize,
-        secondBorderType,
-        secondBorderWidth,
-        secondBorderRadius,
-        secondBorderColor,
-        secondPadding,
-        secondMargin,
-        secondClip,
-        secondAnim,
-        secondClipColor,
-        link,
-        target,
-        headingURL
-      }
-    } = props;
-    let blockClass = "premium-dheading-block";
+      contentAlign,
+      firstHeading,
+      secondHeading,
+      display,
+      firstColor,
+      firstBackground,
+      firstSize,
+      firstBorderType,
+      firstBorderWidth,
+      firstBorderRadius,
+      firstBorderColor,
+      firstPadding,
+      firstMargin,
+      firstClip,
+      firstAnim,
+      firstClipColor,
+      secondColor,
+      secondBackground,
+      secondSize,
+      secondBorderType,
+      secondBorderWidth,
+      secondBorderRadius,
+      secondBorderColor,
+      secondPadding,
+      secondMargin,
+      secondClip,
+      secondAnim,
+      secondClipColor,
+      link,
+      target,
+      headingURL
+    } = props.attributes;
+
     return (
       <a
-        className={`${blockClass}__link`}
+        className={`${className}__link`}
         href={link && headingURL}
         target={target && "_blank"}
       >
         <div
-          className={`${blockClass}__container`}
+          className={`${className}__container`}
           style={{
             textAlign: contentAlign
           }}
         >
-          <h2 className={`${blockClass}__title`}>
+          <h2 className={`${className}__title`}>
             <span
-              className={`${blockClass}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
+              className={`${className}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
               style={{
                 display: display,
                 color: firstColor,
@@ -649,7 +646,7 @@ registerBlockType("premium/dheading-block", {
               {firstHeading}
             </span>
             <span
-              className={`${blockClass}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
+              className={`${className}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
               style={{
                 display: display,
                 color: secondColor,

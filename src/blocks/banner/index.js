@@ -1,4 +1,4 @@
-const blockClass = "premium-banner";
+const className = "premium-banner";
 
 const { __ } = wp.i18n;
 
@@ -22,8 +22,7 @@ const {
   AlignmentToolbar,
   RichText,
   MediaUpload,
-  ColorPalette,
-  URLInput
+  ColorPalette
 } = wp.editor;
 
 registerBlockType("premium/banner", {
@@ -43,7 +42,8 @@ registerBlockType("premium/banner", {
     title: {
       type: "array",
       source: "children",
-      selector: ".premium-banner__title"
+      selector: ".premium-banner__title",
+      default: __("Awesome Title")
     },
     titleTag: {
       type: "string",
@@ -52,7 +52,8 @@ registerBlockType("premium/banner", {
     desc: {
       type: "array",
       source: "children",
-      selector: ".premium-banner__desc"
+      selector: ".premium-banner__desc",
+      default: __("Cool Description!!")
     },
     contentAlign: {
       type: "string",
@@ -108,8 +109,7 @@ registerBlockType("premium/banner", {
       type: "string"
     },
     titleColor: {
-      type: "string",
-      default: "#6ec1e4"
+      type: "string"
     },
     titleSize: {
       type: "number",
@@ -151,7 +151,7 @@ registerBlockType("premium/banner", {
     }
   },
   edit: props => {
-    const { isSelected, setAttributes, className } = props;
+    const { isSelected, setAttributes } = props;
     const {
       imageID,
       imageURL,
@@ -470,6 +470,12 @@ registerBlockType("premium/banner", {
                 onChange={newCheck => setAttributes({ urlCheck: newCheck })}
               />
               {urlCheck && (
+                <TextControl
+                  value={url}
+                  onChange={newURL => setAttributes({ url: newURL })}
+                />
+              )}
+              {urlCheck && (
                 <CheckboxControl
                   label={__("Open link in new tab")}
                   checked={target}
@@ -547,7 +553,7 @@ registerBlockType("premium/banner", {
             </PanelBody>
           </InspectorControls>
         ),
-      <div className={`${blockClass} ${blockClass}__responsive_${responsive}`}>
+      <div className={`${className} ${className}__responsive_${responsive}`}>
         {!imageURL && (
           <MediaUpload
             onSelect={media =>
@@ -567,7 +573,7 @@ registerBlockType("premium/banner", {
         )}
         {imageURL && (
           <div
-            className={`${blockClass}__inner ${blockClass}__min ${blockClass}__${effect} ${blockClass}__${hoverEffect} hover_${hovered}`}
+            className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
             style={{
               backgroundColor: background,
               border: borderType,
@@ -576,21 +582,15 @@ registerBlockType("premium/banner", {
               borderColor: borderColor
             }}
           >
-            {urlCheck && (
-              <URLInput
-                value={url}
-                onChange={newURL => setAttributes({ url: newURL })}
-              />
-            )}
             <div
-              className={`${blockClass}__img_wrap ${blockClass}__${height}`}
+              className={`${className}__img_wrap ${className}__${height}`}
               style={{
                 minHeight: minHeight,
                 alignItems: verAlign
               }}
             >
               <img
-                className={`${blockClass}__img`}
+                className={`${className}__img`}
                 alt="Banner Image"
                 src={imageURL}
                 style={{
@@ -599,17 +599,16 @@ registerBlockType("premium/banner", {
               />
             </div>
 
-            <div className={`${blockClass}__content`}>
+            <div className={`${className}__content`}>
               <div
-                className={`${blockClass}__title_wrap`}
+                className={`${className}__title_wrap`}
                 style={{
                   textAlign: contentAlign
                 }}
               >
                 <RichText
                   tagName={titleTag.toLowerCase()}
-                  className={`${blockClass}__title`}
-                  placeholder={__("Awesome Title!!")}
+                  className={`${className}__title`}
                   value={title}
                   isSelected={false}
                   onChange={newText => setAttributes({ title: newText })}
@@ -622,15 +621,14 @@ registerBlockType("premium/banner", {
                 />
               </div>
               <div
-                className={`${blockClass}__desc_wrap`}
+                className={`${className}__desc_wrap`}
                 style={{
                   textAlign: contentAlign
                 }}
               >
                 <RichText
                   tagName="p"
-                  className={`${blockClass}__desc`}
-                  placeholder={__("Cool Description!!")}
+                  className={`${className}__desc`}
                   value={desc}
                   isSelected={false}
                   onChange={newText => setAttributes({ desc: newText })}
@@ -650,45 +648,41 @@ registerBlockType("premium/banner", {
   },
   save: props => {
     const {
-      className,
-      attributes: {
-        imageID,
-        imageURL,
-        title,
-        titleTag,
-        desc,
-        contentAlign,
-        effect,
-        hoverEffect,
-        height,
-        minHeight,
-        verAlign,
-        hovered,
-        responsive,
-        background,
-        opacity,
-        borderType,
-        borderWidth,
-        borderRadius,
-        borderColor,
-        titleColor,
-        titleSize,
-        titleWeight,
-        titleLine,
-        descColor,
-        descSize,
-        descWeight,
-        descLine,
-        urlCheck,
-        url,
-        target
-      }
-    } = props;
+      imageURL,
+      title,
+      titleTag,
+      desc,
+      contentAlign,
+      effect,
+      hoverEffect,
+      height,
+      minHeight,
+      verAlign,
+      hovered,
+      responsive,
+      background,
+      opacity,
+      borderType,
+      borderWidth,
+      borderRadius,
+      borderColor,
+      titleColor,
+      titleSize,
+      titleWeight,
+      titleLine,
+      descColor,
+      descSize,
+      descWeight,
+      descLine,
+      urlCheck,
+      url,
+      target
+    } = props.attributes;
 
     return (
-      <div className={`${blockClass} ${blockClass}__responsive_${responsive}`}>
+      <div className={`${className} ${className}__responsive_${responsive}`}>
         <div
-          className={`${blockClass}__inner ${blockClass}__min ${blockClass}__${effect} ${blockClass}__${hoverEffect} hover_${hovered}`}
+          className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
           style={{
             backgroundColor: background,
             border: borderType,
@@ -698,14 +692,14 @@ registerBlockType("premium/banner", {
           }}
         >
           <div
-            className={`${blockClass}__img_wrap ${blockClass}__${height}`}
+            className={`${className}__img_wrap ${className}__${height}`}
             style={{
               minHeight: minHeight,
               alignItems: verAlign
             }}
           >
             <img
-              className={`${blockClass}__img`}
+              className={`${className}__img`}
               alt="Banner Image"
               src={imageURL}
               style={{
@@ -714,20 +708,17 @@ registerBlockType("premium/banner", {
             />
           </div>
 
-          <div className={`${blockClass}__content`}>
+          <div className={`${className}__content`}>
             <div
-              className={`${blockClass}__title_wrap`}
+              className={`${className}__title_wrap`}
               style={{
                 textAlign: contentAlign
               }}
             >
               <RichText.Content
                 tagName={titleTag.toLowerCase()}
-                className={`${blockClass}__title`}
-                placeholder={__("Awesome Title!!")}
+                className={`${className}__title`}
                 value={title}
-                isSelected={false}
-                onChange={newText => setAttributes({ title: newText })}
                 style={{
                   color: titleColor,
                   fontSize: titleSize + "px",
@@ -737,18 +728,15 @@ registerBlockType("premium/banner", {
               />
             </div>
             <div
-              className={`${blockClass}__desc_wrap`}
+              className={`${className}__desc_wrap`}
               style={{
                 textAlign: contentAlign
               }}
             >
               <RichText.Content
                 tagName="p"
-                className={`${blockClass}__desc`}
-                placeholder={__("Cool Description!!")}
+                className={`${className}__desc`}
                 value={desc}
-                isSelected={false}
-                onChange={newText => setAttributes({ desc: newText })}
                 style={{
                   color: descColor,
                   fontSize: descSize + "px",
@@ -761,7 +749,7 @@ registerBlockType("premium/banner", {
           {urlCheck &&
             "" !== url && (
               <a
-                className={`${blockClass}__link`}
+                className={`${className}__link`}
                 href={url}
                 target={target && "_blank"}
               />
