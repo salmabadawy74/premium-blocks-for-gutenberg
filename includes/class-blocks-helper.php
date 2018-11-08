@@ -25,33 +25,6 @@ class Premium_Blocks_Integration {
     }
     
     /**
-    * Registers block type
-    * @since 1.0.0
-    * @access public
-    * @return void
-    */
-    public function register_block_type() {
-//        register_block_type(
-//           'premium/dheading-block',
-//            array(
-//               'editor_script'    =>  'premium-dheading',
-//               'editor_style'     =>  'premium-dheading-editor',
-//               'style'            =>  'premium-dheading-frontend'
-//            )
-//        );
-        
-        wp_add_inline_script(
-            'premium-dheading',
-            sprintf( 
-                'var premium_dheading = { localeData: %s };', 
-                json_encode( gutenberg_get_jed_locale_data( 'premium-gutenberg' ) ) 
-            ),
-            'before'
-        );
-        
-    }
-    
-    /**
     * Enqueue Editor CSS/JS for Premium Blocks
     * @since 1.0.0
     * @access public
@@ -59,9 +32,11 @@ class Premium_Blocks_Integration {
     */
     public function premium_gutenberg_editor() {
         
+        $enabled_blocks = Premium_Guten_Admin::get_enabled_keys();
+        
         wp_enqueue_script(
             'pbg-editor',
-            PREMIUM_BLOCKS_URL . 'assets/js/main.js', 
+            PREMIUM_BLOCKS_URL . 'assets/js/build.js', 
             array(
                 'wp-blocks',
                 'wp-i18n',
@@ -89,7 +64,8 @@ class Premium_Blocks_Integration {
             'pbg-editor',
             'PremiumBlocksSettings',
             array(
-				'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/author.jpg'
+				'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/author.jpg',
+                'activeBlocks'      => $enabled_blocks
 			)
         );
     }
@@ -108,11 +84,22 @@ class Premium_Blocks_Integration {
             PREMIUM_BLOCKS_VERSION
         );
         
+        $map_config = Premium_Guten_Maps::get_enabled_keys();
+        
+        $is_enabled = isset( $map_config['premium-map-api'] ) ? $map_config['premium-map-api'] : true;
+        
+        $api_key = isset( $map_config['premium-map-key'] ) ? $map_config['premium-map-key'] : '';
+        
+        $is_block_enabled = Premium_Guten_Admin::get_enabled_keys()['maps'];
+        
         //Enqueue Google Maps API key Script
-        wp_enqueue_script(
-            'premium-map-block',
-            'https://maps.googleapis.com/maps/api/js?key=AIzaSyB_OCwutmAnPHdhmmL41ycUzyIgHt8qTX8'
-        );
+        if( $is_block_enabled && $is_enabled && ! empty( $api_key ) ) {
+            wp_enqueue_script(
+                'premium-map-block',
+                'https://maps.googleapis.com/maps/api/js?key=' . $api_key
+            );
+        }
+        
     }
     
     

@@ -35,5 +35,31 @@
 
 	} );
     
+    $( 'form#pb-maps' ).on( 'submit', function(e) {
+		e.preventDefault();
+		$.ajax( {
+			url: settings.ajaxurl,
+			type: 'post',
+			data: {
+				action: 'pb_maps',
+				fields: $( 'form#pb-maps' ).serialize(),
+			},
+            success: function( response ) {
+				swal(
+				  'Settings Saved!',
+				  'Click OK to continue',
+				  'success'
+				);
+			},
+			error: function() {
+				swal(
+				  'Oops...',
+				  'Something Wrong!',
+				);
+			}
+		} );
+
+	} );
+    
     
 } )(jQuery);

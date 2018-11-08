@@ -12,7 +12,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
 
         protected $slug = 'premium-gutenberg';
 
-        public static $pbg_blocks = ['dual-heading','banner','pricing-table','maps','testimonials'];
+        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial'];
 
         private $pbg_default;
 
@@ -23,7 +23,9 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
         public function __construct() {
             
             add_action( 'admin_menu', array( $this,'pbg_admin') );
-
+            
+            add_action( 'admin_menu', array( $this,'change_pbg_admin_name'), 999 );
+            
             add_action('admin_enqueue_scripts', array( $this, 'pa_admin_page_scripts' ) );
 
             add_action( 'wp_ajax_pbg_settings', array( $this, 'pbg_settings' ) );
@@ -75,15 +77,27 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
         }
 
         public function pbg_admin() {
+            
             add_menu_page(
-                __('Premium Blocks for Gutenberg'),
-                __('Premium Blocks for Gutenberg'),
+                __('Premium Blocks for Gutenberg','premium-gutenberg'),
+                __('Premium Blocks for Gutenberg','premium-gutenberg'),
                 'manage_options',
                 'premium-gutenberg',
                 array( $this , 'pbg_blocks_page' ),
                 '' ,
                 100
             );
+            
+            
+        }
+        
+        public function change_pbg_admin_name() {
+            global $submenu;
+            
+            if( isset( $submenu['premium-gutenberg'] ) ){
+                $submenu['premium-gutenberg'][0][0] = __( 'Blocks Settings', 'premium-gutenberg' );
+            }
+            
         }
 
         public function pbg_blocks_page(){
@@ -126,7 +140,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                     </div>
                     
                     <div class="pb-title-right">
-                        <img class="pb-logo" src="<?php echo PREMIUM_PRO_ADDONS_URL . 'admin/images/premium-addons-logo.png';?>">
+                        <img class="pb-logo" src="<?php echo PREMIUM_BLOCKS_URL . 'admin/images/premium-addons-logo.png';?>">
                     </div>
                     
                 </div>
@@ -134,62 +148,62 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                     <div id="pb-modules" class="pb-settings-tab">
                         <div>
                             <br>
-                                <input type="checkbox" class="pb-checkbox" checked="checked">
-                                <label>Enable/Disable All</label>
-                            </div>
-                            <table class="pb-elements-table">
-                                <tbody>
-                                    <tr>
-                                        <th><?php echo __('Premium Banner', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="banner" name="banner" <?php checked(1, $this->pbg_get_settings['banner'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                        <th><?php echo __('Premium Dual Heading', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="dual-heading" name="dual-heading" <?php checked(1, $this->pbg_get_settings['dual-heading'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th><?php echo __('Premium Maps', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="maps" name="maps" <?php checked(1, $this->pbg_get_settings['maps'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                        <th><?php echo __('Premium Pricing Table', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="pricing-table" name="pricing-table" <?php checked(1, $this->pbg_get_settings['pricing-table'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th><?php echo __('Premium Testimonials', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="testimonials" name="testimonials" <?php checked(1, $this->pbg_get_settings['testimonials'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
+                            <input type="checkbox" class="pb-checkbox" checked="checked">
+                            <label>Enable/Disable All</label>
                         </div>
-                        <div>
-                            <p><?php echo __('Did you like Premium Blocks for Gutenberg Plugin? Please', 'premium-gutenberg') ?> <a href="https://wordpress.org/support/plugin/premium-addons-for-elementor/reviews/#new-post" target="_blank"><?php echo __('Click Here to Rate it ★★★★★', 'premium-gutenberg') ?></a></p>
-                        </div>
+                        <table class="pb-elements-table">
+                            <tbody>
+                                <tr>
+                                    <th><?php echo __('Premium Banner', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="banner" name="banner" <?php checked(1, $this->pbg_get_settings['banner'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                    <th><?php echo __('Premium Dual Heading', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="dualheading" name="dualHeading" <?php checked(1, $this->pbg_get_settings['dualHeading'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th><?php echo __('Premium Maps', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="maps" name="maps" <?php checked(1, $this->pbg_get_settings['maps'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                    <th><?php echo __('Premium Pricing Table', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="pricingTable" name="pricingTable" <?php checked(1, $this->pbg_get_settings['pricingTable'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th><?php echo __('Premium Testimonials', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="testimonial" name="testimonial" <?php checked(1, $this->pbg_get_settings['testimonial'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
                     </div>
-                </form>
-            </div>
+                    <div>
+                        <p><?php echo __('Did you like Premium Blocks for Gutenberg Plugin? Please', 'premium-gutenberg') ?> <a href="https://wordpress.org/support/plugin/premium-addons-for-elementor/reviews/#new-post" target="_blank"><?php echo __('Click Here to Rate it ★★★★★', 'premium-gutenberg') ?></a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
         <?php
         }
         
@@ -219,11 +233,11 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
             }
             
             $this->pbg_settings = array(
-                'dual-heading'  => intval( $settings['dual-heading'] ? 1 : 0 ),
+                'dualHeading'  => intval( $settings['dualHeading'] ? 1 : 0 ),
                 'banner'        => intval( $settings['banner'] ? 1 : 0 ),
                 'maps'          => intval( $settings['maps'] ? 1 : 0 ),
-                'pricing-table' => intval( $settings['pricing-table'] ? 1 : 0 ),
-                'testimonials'  => intval( $settings['testimonials'] ? 1 : 0 ),
+                'pricingTable'  => intval( $settings['pricingTable'] ? 1 : 0 ),
+                'testimonial'   => intval( $settings['testimonial'] ? 1 : 0 ),
             );
 
             update_option( 'pbg_settings', $this->pbg_settings );
@@ -233,7 +247,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
             die();    
         }
         
-        public static function get_instance(){
+        public static function get_instance() {
             if( self::$instance == null ) {
                 self::$instance = new self;
             }

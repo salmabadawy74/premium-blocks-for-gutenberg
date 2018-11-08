@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Plugin Name: Premium Blocks for Gutenberg
  * Description: Premium Blocks for Gutenberg is a brand new blocks collection plugin which we are currently developing to be fully ready with Gutenberg stable version release.

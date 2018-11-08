@@ -181,23 +181,25 @@ input:checked + .slider:before{
 .slider.round:before,.pro-slider.round:before{
     border-radius:50%
 }
-.pa-maps-table{
+.pb-maps-table{
     text-align:left
 }
-.pa-api-title{
+.pb-api-title{
     display:inline-block;
     margin:0
 }
-.pa-api-disable-title label,.pa-is-beta label{
+.pb-api-disable-title label,
+.pb-is-beta label{
     margin-right:15px
 }
-.pa-api-disable-title span,.pa-is-beta span{
+.pb-api-disable-title span,
+.pb-is-beta span{
     font-weight:400
 }
-.pa-maps-api-notice{
+.pb-maps-api-notice{
     margin:10px 0 0
 }
-.pa-api-title input{
+.pb-api-title input{
     margin-top:10px;
     font-size:normal;
     font-weight:400;
@@ -269,17 +271,17 @@ input:checked + .slider:before{
     font-style:italic;
     margin-top:4px
 }*/
-/*.pa-sys-info-tab{
+.pb-sys-info-tab{
     background:#f7f7f7;
     margin:8px;
     border:2px solid #ddd;
     border-radius:3px;
     padding:0
-}*/
-/*.pa-system-info-container{
+}
+.pb-system-info-container{
     padding:10px
 }
-.pa-sys-info-tab .pa-sys-info-title{
+.pb-sys-info-tab .pb-sys-info-title{
     margin:0;
     margin-bottom:0;
     padding:10px;
@@ -287,4 +289,4 @@ input:checked + .slider:before{
     background:#fff;
     margin-bottom:10px;
     font-weight:500
-}*/
+}

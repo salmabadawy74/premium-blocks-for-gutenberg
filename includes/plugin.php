@@ -46,7 +46,7 @@ if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
         }
         
         /*
-         * Initialize blocks helper file
+         * Load necessary files
          * @since 1.0.0
          * @access public
          * @return void
@@ -54,6 +54,12 @@ if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
         public function init_files() {
             
             require_once ( PREMIUM_BLOCKS_PATH . 'admin/settings/elements.php' );
+            require_once ( PREMIUM_BLOCKS_PATH . 'admin/settings/api.php');
+            
+            if( is_admin() ) {
+                require_once ( PREMIUM_BLOCKS_PATH . 'admin/reports/deps/data.php' );
+                require_once ( PREMIUM_BLOCKS_PATH . 'admin/reports/system-info.php' );
+            }
             
             require_once ( PREMIUM_BLOCKS_PATH . 'includes/class-blocks-helper.php' );
         }

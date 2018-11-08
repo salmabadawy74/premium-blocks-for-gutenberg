@@ -1,373 +1,375 @@
-const className = "premium-banner";
+import { banner } from "../settings";
 
-const { __ } = wp.i18n;
+if (banner) {
+  const className = "premium-banner";
 
-const { registerBlockType } = wp.blocks;
+  const { __ } = wp.i18n;
 
-const {
-  IconButton,
-  Toolbar,
-  Button,
-  PanelBody,
-  PanelColor,
-  SelectControl,
-  RangeControl,
-  TextControl,
-  CheckboxControl
-} = wp.components;
+  const { registerBlockType } = wp.blocks;
 
-const {
-  BlockControls,
-  InspectorControls,
-  AlignmentToolbar,
-  RichText,
-  MediaUpload,
-  ColorPalette
-} = wp.editor;
+  const {
+    IconButton,
+    Toolbar,
+    Button,
+    PanelBody,
+    PanelColor,
+    SelectControl,
+    RangeControl,
+    TextControl,
+    CheckboxControl
+  } = wp.components;
 
-registerBlockType("premium/banner", {
-  title: __("Banner"),
-  icon: "admin-page",
-  category: "premium-blocks",
-  attributes: {
-    imageID: {
-      type: "number"
-    },
-    imageURL: {
-      type: "string",
-      source: "attribute",
-      attribute: "src",
-      selector: ".premium-banner__img"
-    },
-    title: {
-      type: "array",
-      source: "children",
-      selector: ".premium-banner__title",
-      default: __("Awesome Title")
-    },
-    titleTag: {
-      type: "string",
-      default: "H3"
-    },
-    desc: {
-      type: "array",
-      source: "children",
-      selector: ".premium-banner__desc",
-      default: __("Cool Description!!")
-    },
-    contentAlign: {
-      type: "string",
-      default: "left"
-    },
-    effect: {
-      type: "string",
-      default: "effect1"
-    },
-    hoverEffect: {
-      type: "string",
-      default: "none"
-    },
-    height: {
-      type: "string",
-      default: "default"
-    },
-    minHeight: {
-      type: "number"
-    },
-    verAlign: {
-      type: "string",
-      default: "top"
-    },
-    hovered: {
-      type: "boolean",
-      default: false
-    },
-    responsive: {
-      type: "boolean",
-      default: false
-    },
-    background: {
-      type: "string"
-    },
-    opacity: {
-      type: "number",
-      default: "100"
-    },
-    borderType: {
-      type: "string",
-      default: "none"
-    },
-    borderWidth: {
-      type: "number",
-      default: "1"
-    },
-    borderRadius: {
-      type: "number",
-      default: "0"
-    },
-    borderColor: {
-      type: "string"
-    },
-    titleColor: {
-      type: "string"
-    },
-    titleSize: {
-      type: "number",
-      default: "20"
-    },
-    titleLine: {
-      type: "number"
-    },
-    titleWeight: {
-      type: "number"
-    },
-    descColor: {
-      type: "string",
-      default: "#000"
-    },
-    descSize: {
-      type: "number",
-      default: "20"
-    },
-    descLine: {
-      type: "number"
-    },
-    descWeight: {
-      type: "number"
-    },
-    urlCheck: {
-      type: "boolean",
-      default: false
-    },
-    target: {
-      type: "boolean",
-      default: false
-    },
-    url: {
-      type: "string",
-      source: "attribute",
-      attribute: "href",
-      selector: ".premium-banner__link"
-    }
-  },
-  edit: props => {
-    const { isSelected, setAttributes } = props;
-    const {
-      imageID,
-      imageURL,
-      title,
-      titleTag,
-      desc,
-      contentAlign,
-      effect,
-      hoverEffect,
-      height,
-      minHeight,
-      verAlign,
-      hovered,
-      responsive,
-      background,
-      opacity,
-      borderType,
-      borderWidth,
-      borderRadius,
-      borderColor,
-      titleColor,
-      titleSize,
-      titleLine,
-      titleWeight,
-      descColor,
-      descSize,
-      descLine,
-      descWeight,
-      urlCheck,
-      url,
-      target
-    } = props.attributes;
-    const ALIGNS = [
-      {
-        value: "flex-start",
-        label: "Top"
-      },
-      {
-        value: "center",
-        label: "Middle"
-      },
-      {
-        value: "flex-end",
-        label: "Bottom"
-      },
-      {
-        value: "inherit",
-        label: "Full"
-      }
-    ];
-    const EFFECTS = [
-      {
-        value: "effect1",
-        label: "Effect 1"
-      },
-      {
-        value: "effect2",
-        label: "Effect 2"
-      },
-      {
-        value: "effect3",
-        label: "Effect 3"
-      },
-      {
-        value: "effect4",
-        label: "Effect 4"
-      },
-      {
-        value: "effect5",
-        label: "Effect 5"
-      },
-      {
-        value: "effect6",
-        label: "Effect 6"
-      }
-    ];
-    const WEIGHT = [
-      {
-        value: "100",
-        label: "100"
-      },
-      {
-        value: "200",
-        label: "200"
-      },
-      {
-        value: "300",
-        label: "300"
-      },
-      {
-        value: "400",
-        label: "Normal"
-      },
-      {
-        value: "500",
-        label: "500"
-      },
-      {
-        value: "600",
-        label: "600"
-      },
-      {
-        value: "700",
-        label: "700"
-      },
-      {
-        value: "800",
-        label: "800"
-      },
-      {
-        value: "900",
-        label: "Bold"
-      }
-    ];
-    const HOVER = [
-      {
-        value: "none",
-        label: "None"
-      },
-      {
-        value: "zoomin",
-        label: "Zoom In"
-      },
-      {
-        value: "zoomout",
-        label: "Zoom Out"
-      },
-      {
-        value: "scale",
-        label: "Scale"
-      },
-      {
-        value: "gray",
-        label: "Gray Scale"
-      },
-      {
-        value: "blur",
-        label: "Blur"
-      },
-      {
-        value: "bright",
-        label: "Bright"
-      },
-      {
-        value: "sepia",
-        label: "Sepia"
-      }
-    ];
-    const BORDER = [
-      {
-        value: "none",
-        label: "None"
-      },
-      {
-        value: "solid",
-        label: "Solid"
-      },
-      {
-        value: "double",
-        label: "Double"
-      },
-      {
-        value: "dotted",
-        label: "Dotted"
-      },
-      {
-        value: "dashed",
-        label: "Dashed"
-      },
-      {
-        value: "groove",
-        label: "Groove"
-      }
-    ];
-    const HEIGHT = [
-      {
-        value: "default",
-        label: "Default"
-      },
-      {
-        value: "custom",
-        label: "Custom"
-      }
-    ];
+  const {
+    BlockControls,
+    InspectorControls,
+    AlignmentToolbar,
+    RichText,
+    MediaUpload,
+    ColorPalette
+  } = wp.editor;
 
-    return [
-      isSelected && (
-        <BlockControls key="controls">
-          <AlignmentToolbar
-            value={contentAlign}
-            onChange={newAlign => setAttributes({ contentAlign: newAlign })}
-          />
-          <Toolbar>
-            <MediaUpload
-              onSelect={media =>
-                setAttributes({
-                  imageURL: media.url,
-                  imageID: media.id
-                })
-              }
-              value={imageID}
-              type="image"
-              render={({ open }) => (
-                <IconButton
-                  className="components-toolbar__control"
-                  label={__("Edit Image")}
-                  icon="edit"
-                  onClick={open}
-                />
-              )}
+  registerBlockType("premium/banner", {
+    title: __("Banner"),
+    icon: "admin-page",
+    category: "premium-blocks",
+    attributes: {
+      imageID: {
+        type: "number"
+      },
+      imageURL: {
+        type: "string",
+        source: "attribute",
+        attribute: "src",
+        selector: ".premium-banner__img"
+      },
+      title: {
+        type: "array",
+        source: "children",
+        selector: ".premium-banner__title",
+        default: __("Awesome Title")
+      },
+      titleTag: {
+        type: "string",
+        default: "H3"
+      },
+      desc: {
+        type: "array",
+        source: "children",
+        selector: ".premium-banner__desc",
+        default: __("Cool Description!!")
+      },
+      contentAlign: {
+        type: "string",
+        default: "left"
+      },
+      effect: {
+        type: "string",
+        default: "effect1"
+      },
+      hoverEffect: {
+        type: "string",
+        default: "none"
+      },
+      height: {
+        type: "string",
+        default: "default"
+      },
+      minHeight: {
+        type: "number"
+      },
+      verAlign: {
+        type: "string",
+        default: "top"
+      },
+      hovered: {
+        type: "boolean",
+        default: false
+      },
+      responsive: {
+        type: "boolean",
+        default: false
+      },
+      background: {
+        type: "string"
+      },
+      opacity: {
+        type: "number",
+        default: "100"
+      },
+      borderType: {
+        type: "string",
+        default: "none"
+      },
+      borderWidth: {
+        type: "number",
+        default: "1"
+      },
+      borderRadius: {
+        type: "number",
+        default: "0"
+      },
+      borderColor: {
+        type: "string"
+      },
+      titleColor: {
+        type: "string"
+      },
+      titleSize: {
+        type: "number",
+        default: "20"
+      },
+      titleLine: {
+        type: "number"
+      },
+      titleWeight: {
+        type: "number"
+      },
+      descColor: {
+        type: "string",
+        default: "#000"
+      },
+      descSize: {
+        type: "number",
+        default: "20"
+      },
+      descLine: {
+        type: "number"
+      },
+      descWeight: {
+        type: "number"
+      },
+      urlCheck: {
+        type: "boolean",
+        default: false
+      },
+      target: {
+        type: "boolean",
+        default: false
+      },
+      url: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-banner__link"
+      }
+    },
+    edit: props => {
+      const { isSelected, setAttributes } = props;
+      const {
+        imageID,
+        imageURL,
+        title,
+        titleTag,
+        desc,
+        contentAlign,
+        effect,
+        hoverEffect,
+        height,
+        minHeight,
+        verAlign,
+        hovered,
+        responsive,
+        background,
+        opacity,
+        borderType,
+        borderWidth,
+        borderRadius,
+        borderColor,
+        titleColor,
+        titleSize,
+        titleLine,
+        titleWeight,
+        descColor,
+        descSize,
+        descLine,
+        descWeight,
+        urlCheck,
+        url,
+        target
+      } = props.attributes;
+      const ALIGNS = [
+        {
+          value: "flex-start",
+          label: "Top"
+        },
+        {
+          value: "center",
+          label: "Middle"
+        },
+        {
+          value: "flex-end",
+          label: "Bottom"
+        },
+        {
+          value: "inherit",
+          label: "Full"
+        }
+      ];
+      const EFFECTS = [
+        {
+          value: "effect1",
+          label: "Effect 1"
+        },
+        {
+          value: "effect2",
+          label: "Effect 2"
+        },
+        {
+          value: "effect3",
+          label: "Effect 3"
+        },
+        {
+          value: "effect4",
+          label: "Effect 4"
+        },
+        {
+          value: "effect5",
+          label: "Effect 5"
+        },
+        {
+          value: "effect6",
+          label: "Effect 6"
+        }
+      ];
+      const WEIGHT = [
+        {
+          value: "100",
+          label: "100"
+        },
+        {
+          value: "200",
+          label: "200"
+        },
+        {
+          value: "300",
+          label: "300"
+        },
+        {
+          value: "400",
+          label: "Normal"
+        },
+        {
+          value: "500",
+          label: "500"
+        },
+        {
+          value: "600",
+          label: "600"
+        },
+        {
+          value: "700",
+          label: "700"
+        },
+        {
+          value: "800",
+          label: "800"
+        },
+        {
+          value: "900",
+          label: "Bold"
+        }
+      ];
+      const HOVER = [
+        {
+          value: "none",
+          label: "None"
+        },
+        {
+          value: "zoomin",
+          label: "Zoom In"
+        },
+        {
+          value: "zoomout",
+          label: "Zoom Out"
+        },
+        {
+          value: "scale",
+          label: "Scale"
+        },
+        {
+          value: "gray",
+          label: "Gray Scale"
+        },
+        {
+          value: "blur",
+          label: "Blur"
+        },
+        {
+          value: "bright",
+          label: "Bright"
+        },
+        {
+          value: "sepia",
+          label: "Sepia"
+        }
+      ];
+      const BORDER = [
+        {
+          value: "none",
+          label: "None"
+        },
+        {
+          value: "solid",
+          label: "Solid"
+        },
+        {
+          value: "double",
+          label: "Double"
+        },
+        {
+          value: "dotted",
+          label: "Dotted"
+        },
+        {
+          value: "dashed",
+          label: "Dashed"
+        },
+        {
+          value: "groove",
+          label: "Groove"
+        }
+      ];
+      const HEIGHT = [
+        {
+          value: "default",
+          label: "Default"
+        },
+        {
+          value: "custom",
+          label: "Custom"
+        }
+      ];
+
+      return [
+        isSelected && (
+          <BlockControls key="controls">
+            <AlignmentToolbar
+              value={contentAlign}
+              onChange={newAlign => setAttributes({ contentAlign: newAlign })}
             />
-          </Toolbar>
-        </BlockControls>
-      ),
-      isSelected &&
-        imageURL && (
+            <Toolbar>
+              <MediaUpload
+                onSelect={media =>
+                  setAttributes({
+                    imageURL: media.url,
+                    imageID: media.id
+                  })
+                }
+                value={imageID}
+                type="image"
+                render={({ open }) => (
+                  <IconButton
+                    className="components-toolbar__control"
+                    label={__("Edit Image")}
+                    icon="edit"
+                    onClick={open}
+                  />
+                )}
+              />
+            </Toolbar>
+          </BlockControls>
+        ),
+        isSelected && imageURL && (
           <InspectorControls key={"inspector"}>
             <PanelBody title={__("General Settings")} initialOpen={false}>
               <SelectControl
@@ -553,25 +555,134 @@ registerBlockType("premium/banner", {
             </PanelBody>
           </InspectorControls>
         ),
-      <div className={`${className} ${className}__responsive_${responsive}`}>
-        {!imageURL && (
-          <MediaUpload
-            onSelect={media =>
-              setAttributes({
-                imageURL: media.url,
-                imageID: media.id
-              })
-            }
-            type="image"
-            value={imageID}
-            render={({ open }) => (
-              <Button className="button" onClick={open}>
-                {__("Upload Banner Image")}
-              </Button>
-            )}
-          />
-        )}
-        {imageURL && (
+        <div className={`${className} ${className}__responsive_${responsive}`}>
+          {!imageURL && (
+            <MediaUpload
+              onSelect={media =>
+                setAttributes({
+                  imageURL: media.url,
+                  imageID: media.id
+                })
+              }
+              type="image"
+              value={imageID}
+              render={({ open }) => (
+                <Button className="button" onClick={open}>
+                  {__("Upload Banner Image")}
+                </Button>
+              )}
+            />
+          )}
+          {imageURL && (
+            <div
+              className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
+              style={{
+                backgroundColor: background,
+                border: borderType,
+                borderWidth: borderWidth + "px",
+                borderRadius: borderRadius + "px",
+                borderColor: borderColor
+              }}
+            >
+              <div
+                className={`${className}__img_wrap ${className}__${height}`}
+                style={{
+                  minHeight: minHeight,
+                  alignItems: verAlign
+                }}
+              >
+                <img
+                  className={`${className}__img`}
+                  alt="Banner Image"
+                  src={imageURL}
+                  style={{
+                    opacity: opacity / 100
+                  }}
+                />
+              </div>
+
+              <div className={`${className}__content`}>
+                <div
+                  className={`${className}__title_wrap`}
+                  style={{
+                    textAlign: contentAlign
+                  }}
+                >
+                  <RichText
+                    tagName={titleTag.toLowerCase()}
+                    className={`${className}__title`}
+                    value={title}
+                    isSelected={false}
+                    onChange={newText => setAttributes({ title: newText })}
+                    style={{
+                      color: titleColor,
+                      fontSize: titleSize + "px",
+                      fontWeight: titleWeight,
+                      lineHeight: titleLine + "px"
+                    }}
+                  />
+                </div>
+                <div
+                  className={`${className}__desc_wrap`}
+                  style={{
+                    textAlign: contentAlign
+                  }}
+                >
+                  <RichText
+                    tagName="p"
+                    className={`${className}__desc`}
+                    value={desc}
+                    isSelected={false}
+                    onChange={newText => setAttributes({ desc: newText })}
+                    style={{
+                      color: descColor,
+                      fontSize: descSize + "px",
+                      fontWeight: descWeight,
+                      lineHeight: descLine + "px"
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      ];
+    },
+    save: props => {
+      const {
+        imageURL,
+        title,
+        titleTag,
+        desc,
+        contentAlign,
+        effect,
+        hoverEffect,
+        height,
+        minHeight,
+        verAlign,
+        hovered,
+        responsive,
+        background,
+        opacity,
+        borderType,
+        borderWidth,
+        borderRadius,
+        borderColor,
+        titleColor,
+        titleSize,
+        titleWeight,
+        titleLine,
+        descColor,
+        descSize,
+        descWeight,
+        descLine,
+        urlCheck,
+        url,
+        target
+      } = props.attributes;
+
+      return (
+        <div className={`${className} ${className}__responsive_${responsive}`}>
           <div
             className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
             style={{
@@ -606,12 +717,10 @@ registerBlockType("premium/banner", {
                   textAlign: contentAlign
                 }}
               >
-                <RichText
+                <RichText.Content
                   tagName={titleTag.toLowerCase()}
                   className={`${className}__title`}
                   value={title}
-                  isSelected={false}
-                  onChange={newText => setAttributes({ title: newText })}
                   style={{
                     color: titleColor,
                     fontSize: titleSize + "px",
@@ -626,12 +735,10 @@ registerBlockType("premium/banner", {
                   textAlign: contentAlign
                 }}
               >
-                <RichText
+                <RichText.Content
                   tagName="p"
                   className={`${className}__desc`}
                   value={desc}
-                  isSelected={false}
-                  onChange={newText => setAttributes({ desc: newText })}
                   style={{
                     color: descColor,
                     fontSize: descSize + "px",
@@ -641,121 +748,16 @@ registerBlockType("premium/banner", {
                 />
               </div>
             </div>
-          </div>
-        )}
-      </div>
-    ];
-  },
-  save: props => {
-    const {
-      imageURL,
-      title,
-      titleTag,
-      desc,
-      contentAlign,
-      effect,
-      hoverEffect,
-      height,
-      minHeight,
-      verAlign,
-      hovered,
-      responsive,
-      background,
-      opacity,
-      borderType,
-      borderWidth,
-      borderRadius,
-      borderColor,
-      titleColor,
-      titleSize,
-      titleWeight,
-      titleLine,
-      descColor,
-      descSize,
-      descWeight,
-      descLine,
-      urlCheck,
-      url,
-      target
-    } = props.attributes;
-
-    return (
-      <div className={`${className} ${className}__responsive_${responsive}`}>
-        <div
-          className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
-          style={{
-            backgroundColor: background,
-            border: borderType,
-            borderWidth: borderWidth + "px",
-            borderRadius: borderRadius + "px",
-            borderColor: borderColor
-          }}
-        >
-          <div
-            className={`${className}__img_wrap ${className}__${height}`}
-            style={{
-              minHeight: minHeight,
-              alignItems: verAlign
-            }}
-          >
-            <img
-              className={`${className}__img`}
-              alt="Banner Image"
-              src={imageURL}
-              style={{
-                opacity: opacity / 100
-              }}
-            />
-          </div>
-
-          <div className={`${className}__content`}>
-            <div
-              className={`${className}__title_wrap`}
-              style={{
-                textAlign: contentAlign
-              }}
-            >
-              <RichText.Content
-                tagName={titleTag.toLowerCase()}
-                className={`${className}__title`}
-                value={title}
-                style={{
-                  color: titleColor,
-                  fontSize: titleSize + "px",
-                  fontWeight: titleWeight,
-                  lineHeight: titleLine + "px"
-                }}
-              />
-            </div>
-            <div
-              className={`${className}__desc_wrap`}
-              style={{
-                textAlign: contentAlign
-              }}
-            >
-              <RichText.Content
-                tagName="p"
-                className={`${className}__desc`}
-                value={desc}
-                style={{
-                  color: descColor,
-                  fontSize: descSize + "px",
-                  fontWeight: descWeight,
-                  lineHeight: descLine + "px"
-                }}
-              />
-            </div>
-          </div>
-          {urlCheck &&
-            "" !== url && (
+            {urlCheck && "" !== url && (
               <a
                 className={`${className}__link`}
                 href={url}
                 target={target && "_blank"}
               />
             )}
+          </div>
         </div>
-      </div>
-    );
-  }
-});
+      );
+    }
+  });
+}
