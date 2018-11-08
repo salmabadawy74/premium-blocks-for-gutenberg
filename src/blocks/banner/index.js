@@ -347,31 +347,32 @@ if (banner) {
               value={contentAlign}
               onChange={newAlign => setAttributes({ contentAlign: newAlign })}
             />
-            <Toolbar>
+          </BlockControls>
+        ),
+        isSelected && (
+          <InspectorControls key={"inspector"}>
+            <PanelBody title={__("General Settings")} initialOpen={true}>
+              {imageURL && <img src={imageURL} width="100%" height="auto" />}
               <MediaUpload
-                onSelect={media =>
+                allowedTypes={["image"]}
+                onSelect={media => {
                   setAttributes({
                     imageURL: media.url,
                     imageID: media.id
-                  })
-                }
-                value={imageID}
+                  });
+                }}
                 type="image"
+                value={imageID}
                 render={({ open }) => (
                   <IconButton
-                    className="components-toolbar__control"
-                    label={__("Edit Image")}
+                    label={__("Change Image")}
                     icon="edit"
                     onClick={open}
-                  />
+                  >
+                    {__("Change Image")}
+                  </IconButton>
                 )}
               />
-            </Toolbar>
-          </BlockControls>
-        ),
-        isSelected && imageURL && (
-          <InspectorControls key={"inspector"}>
-            <PanelBody title={__("General Settings")} initialOpen={false}>
               <SelectControl
                 label={__("Effect")}
                 value={effect}
@@ -402,7 +403,7 @@ if (banner) {
                 <RangeControl
                   value={minHeight}
                   min="10"
-                  max="500"
+                  max="800"
                   onChange={newSize => setAttributes({ minHeight: newSize })}
                 />
               )}
@@ -556,23 +557,6 @@ if (banner) {
           </InspectorControls>
         ),
         <div className={`${className} ${className}__responsive_${responsive}`}>
-          {!imageURL && (
-            <MediaUpload
-              onSelect={media =>
-                setAttributes({
-                  imageURL: media.url,
-                  imageID: media.id
-                })
-              }
-              type="image"
-              value={imageID}
-              render={({ open }) => (
-                <Button className="button" onClick={open}>
-                  {__("Upload Banner Image")}
-                </Button>
-              )}
-            />
-          )}
           {imageURL && (
             <div
               className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
