@@ -1,13 +1,17 @@
 <?php
 
+//Exit if accessed directly
 if( ! defined( 'ABSPATH' ) ) exit();
 
+/**
+* Define Premium_Blocks_Integration class
+*/
 class Premium_Blocks_Integration {
     
     private static $instance = null;
     
     /**
-    * Class Constructor
+    * Constructor for the class
     */
     public function __construct() {
         

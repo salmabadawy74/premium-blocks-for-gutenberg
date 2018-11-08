@@ -1,16 +1,26 @@
 <?php
 
+//Exit if accessed directly
 if( ! defined('ABSPATH') ) exit;
 
+// Define class 'Premium_Guten_System' if not Exists
 if( ! class_exists( 'Premium_Guten_System' ) ) {
+    
+    /**
+    * Define Premium_Guten_System class
+    */
     class Premium_Guten_System {
 
         private static $instance = null;
 
+        /**
+        * Constructor for the class
+        */
         public function __construct() {
             add_action( 'admin_menu', array ( $this,'create_sys_info_menu' ), 100 );
         }
 
+        //Create System Info submenu
         public function create_sys_info_menu() {
             add_submenu_page(
                 'premium-gutenberg',
@@ -22,6 +32,7 @@ if( ! class_exists( 'Premium_Guten_System' ) ) {
             );
         }
 
+        //Creates HTML layout for System Info submenu
         public function get_system_info_layout(){
         ?>
             <div class="wrap">
@@ -50,6 +61,12 @@ if( ! class_exists( 'Premium_Guten_System' ) ) {
             </div>
         <?php }
         
+        /**
+        * Returns the instance.
+        *
+        * @since  1.0.0
+        * @return object
+        */
         public static function get_instance(){
             if( self::$instance == null ) {
                 self::$instance = new self;

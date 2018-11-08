@@ -6,6 +6,9 @@ if( ! defined( 'ABSPATH' ) ) exit();
 //Declare `Premium_Guten_Blocks` if not declared yet.
 if ( ! class_exists('Premium_Guten_Blocks') ) {
     
+    /**
+    * Define Premium_Guten_Admin class
+    */
     class Premium_Guten_Admin {
     
         private static $instance = null;
@@ -20,6 +23,9 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
 
         private $pbg_get_settings;
 
+        /*
+         * Constructor for the class
+         */
         public function __construct() {
             
             add_action( 'admin_menu', array( $this,'pbg_admin') );
@@ -31,6 +37,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
             add_action( 'wp_ajax_pbg_settings', array( $this, 'pbg_settings' ) );
         }
 
+        //Enqueue dashboard menu required assets
         public function pa_admin_page_scripts () {
             
             $current_screen = get_current_screen();
@@ -76,6 +83,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
             }
         }
 
+        //Create Premium Blocks for Gutenberg menu page
         public function pbg_admin() {
             
             add_menu_page(
@@ -88,9 +96,9 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                 100
             );
             
-            
         }
         
+        //Replace first submenu name
         public function change_pbg_admin_name() {
             global $submenu;
             
@@ -100,6 +108,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
             
         }
 
+        //Update options and Create HTML layout for Blocks Settings submenu
         public function pbg_blocks_page(){
             
             $js_info = array(
@@ -207,20 +216,28 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
         <?php
         }
         
-        public static function get_enabled_keys() {
-        
-            $enabled_keys = get_option( 'pbg_settings', self::get_default_keys() );
-        
-            return $enabled_keys;
-        }
-        
+        //Get Default Keys
         public static function get_default_keys() {
             
             $default_keys = array_fill_keys( self::$pbg_blocks, true );
         
             return $default_keys;
         }
+        
+        //Get Default Configuration
+        public static function get_enabled_keys() {
+        
+            $enabled_keys = get_option( 'pbg_settings', self::get_default_keys() );
+        
+            return $enabled_keys;
+        }
 
+        /**
+        * Save blocks configuration settings
+        *
+        * @since  1.0.0
+        * @return object
+        */
         public function pbg_settings() {
 
             if( isset( $_POST['fields'] ) ) {

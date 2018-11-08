@@ -6,14 +6,16 @@ if( ! defined('ABSPATH') ) exit;
 // Define class 'Premium_Blocks_Gutenberg' if not Exists
 if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
     
+    /**
+    * Define Premium_Blocks_Gutenberg class
+    */
     class Premium_Blocks_Gutenberg {
         
         private static $instance = null;
         
         /**
-         * Class Constructor
-         * Triggers plugin setup function
-        */
+		 * Constructor for the class
+		 */
         public function __construct() {
             
             //Enqueue the required files

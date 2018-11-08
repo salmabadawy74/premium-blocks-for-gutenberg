@@ -1,8 +1,14 @@
 <?php
 
+//Exit if accessed directly
 if( ! defined('ABSPATH') ) exit;
 
+// Define class 'Premium_Guten_Maps' if not Exists
 if( ! class_exists('Premium_Guten_Maps') ) {
+    
+    /**
+    * Define Premium_Guten_Maps class
+    */
     class Premium_Guten_Maps {
 
         private static $instance = null;
@@ -15,6 +21,9 @@ if( ! class_exists('Premium_Guten_Maps') ) {
 
         private $pb_maps_get;
 
+        /**
+		 * Constructor for the class
+		 */
         public function __construct() {
 
             add_action( 'admin_menu', array ( $this,'premium_gutenberg_maps' ), 100 );
@@ -23,6 +32,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
 
         }
 
+        //Create Google Maps API submenu
         public function premium_gutenberg_maps() {
             add_submenu_page(
                 'premium-gutenberg',
@@ -34,6 +44,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
             );
         }
 
+        //Update options and Create HTML layout for System Info submenu
         public function pb_maps_page() {
             $js_info = array(
                 'ajaxurl' => admin_url( 'admin-ajax.php' )
@@ -101,6 +112,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
             </div>
         <?php }
 
+        //Get Default Keys
         public static function get_default_keys() {
 
             $default_keys = array_fill_keys( self::$pb_maps_keys, true );
@@ -108,6 +120,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
             return $default_keys;
         }
 
+        //Get Default Configuration
         public static function get_enabled_keys() {
 
             $enabled_keys = get_option( 'pbg_maps_settings', self::get_default_keys() );
@@ -115,6 +128,12 @@ if( ! class_exists('Premium_Guten_Maps') ) {
             return $enabled_keys;
         }
 
+        /**
+        * Save map block configuration settings
+        *
+        * @since  1.0.0
+        * @return object
+        */
         public function pb_save_maps_settings() {
 
             if( isset( $_POST['fields'] ) ) {
@@ -134,6 +153,12 @@ if( ! class_exists('Premium_Guten_Maps') ) {
             die();
         }
 
+        /**
+        * Returns the instance.
+        *
+        * @since  1.0.0
+        * @return object
+        */
         public static function get_instance() {
             if( self::$instance == null ) {
                 self::$instance = new self;
