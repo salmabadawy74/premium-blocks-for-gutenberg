@@ -69,17 +69,19 @@
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return banner; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return dualHeading; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return pricingTable; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return maps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return testimonial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return dualHeading; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return pricingTable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return maps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return testimonial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return countUp; });
 //Blocks Keys
 var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
     banner = _PremiumBlocksSetting.banner,
     dualHeading = _PremiumBlocksSetting.dualHeading,
     pricingTable = _PremiumBlocksSetting.pricingTable,
     maps = _PremiumBlocksSetting.maps,
-    testimonial = _PremiumBlocksSetting.testimonial;
+    testimonial = _PremiumBlocksSetting.testimonial,
+    countUp = _PremiumBlocksSetting.countUp;
 
 
 /***/ }),
@@ -93,6 +95,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_pricing_table__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_maps__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_testimonials__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_count_up__ = __webpack_require__(10);
+
 
 
 
@@ -107,7 +111,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* dualHeading */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* dualHeading */]) {
   var className = "premium-dheading-block";
 
   var __ = wp.i18n.__;
@@ -1618,7 +1622,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["a" /* banner */]) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* pricingTable */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* pricingTable */]) {
   var blockClass = "premium-pricing-table";
 
   var __ = wp.i18n.__;
@@ -3422,7 +3426,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* maps */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* maps */]) {
   var className = "premium-maps";
 
   var __ = wp.i18n.__;
@@ -4108,7 +4112,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_3__settings__["e" /* testimonial */]) {
+if (__WEBPACK_IMPORTED_MODULE_3__settings__["f" /* testimonial */]) {
   var className = "premium-testimonial";
 
   var __ = wp.i18n.__;
@@ -4977,6 +4981,611 @@ var PremiumUpperQuote = function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
+
+
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* countUp */]) {
+  var className = "premium-countup";
+
+  var __ = wp.i18n.__;
+  var registerBlockType = wp.blocks.registerBlockType;
+  var _wp$components = wp.components,
+      PanelBody = _wp$components.PanelBody,
+      SelectControl = _wp$components.SelectControl,
+      TextControl = _wp$components.TextControl,
+      RangeControl = _wp$components.RangeControl,
+      CheckboxControl = _wp$components.CheckboxControl,
+      IconButton = _wp$components.IconButton;
+  var _wp$editor = wp.editor,
+      BlockControls = _wp$editor.BlockControls,
+      InspectorControls = _wp$editor.InspectorControls,
+      AlignmentToolbar = _wp$editor.AlignmentToolbar,
+      PanelColorSettings = _wp$editor.PanelColorSettings,
+      MediaUpload = _wp$editor.MediaUpload;
+
+
+  registerBlockType("premium/countup", {
+    title: __("CountUp"),
+    icon: "clock",
+    category: "premium-blocks",
+    attributes: {
+      increment: {
+        type: "string",
+        default: 500
+      },
+      time: {
+        type: "number",
+        default: 1000
+      },
+      delay: {
+        type: "number",
+        default: 10
+      },
+      align: {
+        type: "string",
+        default: "center"
+      },
+      flexDir: {
+        type: "string",
+        default: "column"
+      },
+      numberSize: {
+        type: "number",
+        default: 30
+      },
+      numberColor: {
+        type: "string",
+        default: "#6ec1e4"
+      },
+      numberWeight: {
+        type: "number",
+        default: 900
+      },
+      prefix: {
+        type: "boolean",
+        default: true
+      },
+      prefixTxt: {
+        type: "string",
+        default: "Premium"
+      },
+      prefixSize: {
+        type: "number",
+        default: 20
+      },
+      prefixColor: {
+        type: "string"
+      },
+      prefixWeight: {
+        type: "number"
+      },
+      prefixGap: {
+        type: "number",
+        default: 2
+      },
+      suffix: {
+        type: "boolean",
+        default: true
+      },
+      suffixTxt: {
+        type: "string",
+        default: "Count Up"
+      },
+      suffixSize: {
+        type: "number",
+        default: 20
+      },
+      suffixColor: {
+        type: "string"
+      },
+      suffixWeight: {
+        type: "number"
+      },
+      suffixGap: {
+        type: "number",
+        default: 2
+      },
+      icon: {
+        type: "string",
+        default: "icon"
+      },
+      imageID: {
+        type: "string"
+      },
+      imageURL: {
+        type: "string"
+      },
+      iconCheck: {
+        type: "boolean",
+        default: true
+      },
+      iconSize: {
+        type: "number",
+        default: 40
+      },
+      iconColor: {
+        type: "string",
+        default: "#6ec1e4"
+      }
+    },
+    edit: function edit(props) {
+      var isSelected = props.isSelected,
+          setAttributes = props.setAttributes;
+      var _props$attributes = props.attributes,
+          increment = _props$attributes.increment,
+          time = _props$attributes.time,
+          delay = _props$attributes.delay,
+          align = _props$attributes.align,
+          flexDir = _props$attributes.flexDir,
+          numberSize = _props$attributes.numberSize,
+          numberColor = _props$attributes.numberColor,
+          numberWeight = _props$attributes.numberWeight,
+          icon = _props$attributes.icon,
+          imageID = _props$attributes.imageID,
+          imageURL = _props$attributes.imageURL,
+          iconCheck = _props$attributes.iconCheck,
+          prefix = _props$attributes.prefix,
+          prefixTxt = _props$attributes.prefixTxt,
+          prefixSize = _props$attributes.prefixSize,
+          prefixColor = _props$attributes.prefixColor,
+          prefixWeight = _props$attributes.prefixWeight,
+          prefixGap = _props$attributes.prefixGap,
+          suffix = _props$attributes.suffix,
+          suffixTxt = _props$attributes.suffixTxt,
+          suffixSize = _props$attributes.suffixSize,
+          suffixColor = _props$attributes.suffixColor,
+          suffixWeight = _props$attributes.suffixWeight,
+          suffixGap = _props$attributes.suffixGap,
+          iconSize = _props$attributes.iconSize,
+          iconColor = _props$attributes.iconColor;
+
+      var WEIGHT = [{
+        value: "100",
+        label: "100"
+      }, {
+        value: "200",
+        label: "200"
+      }, {
+        value: "300",
+        label: "300"
+      }, {
+        value: "400",
+        label: "Normal"
+      }, {
+        value: "500",
+        label: "500"
+      }, {
+        value: "600",
+        label: "600"
+      }, {
+        value: "700",
+        label: "700"
+      }, {
+        value: "800",
+        label: "800"
+      }, {
+        value: "900",
+        label: "Bold"
+      }];
+      var ICONS = [{
+        value: "icon",
+        label: "Clock Icon"
+      }, {
+        value: "img",
+        label: "Image"
+      }];
+      var DIRECTION = [{
+        value: "row",
+        label: "Row"
+      }, {
+        value: "row-reverse",
+        label: "Reversed Row"
+      }, {
+        value: "column",
+        label: "Column"
+      }, {
+        value: "column-reverse",
+        label: "Reversed Column"
+      }];
+      return [isSelected && wp.element.createElement(
+        BlockControls,
+        { key: "controls" },
+        wp.element.createElement(AlignmentToolbar, {
+          value: align,
+          onChange: function onChange(newAlign) {
+            return setAttributes({ align: newAlign });
+          }
+        })
+      ), isSelected && wp.element.createElement(
+        InspectorControls,
+        { key: "inspector" },
+        wp.element.createElement(
+          PanelBody,
+          { title: __("Counter"), initialOpen: true },
+          wp.element.createElement(TextControl, {
+            label: __("Increment"),
+            value: increment,
+            onChange: function onChange(value) {
+              return setAttributes({ increment: value });
+            }
+          }),
+          wp.element.createElement(TextControl, {
+            label: __("Rolling Time"),
+            value: time,
+            onChange: function onChange(value) {
+              return setAttributes({ time: value });
+            },
+            help: __("Set counting time in milliseconds, for example: 1000")
+          }),
+          wp.element.createElement(TextControl, {
+            label: __("Delay"),
+            value: delay,
+            onChange: function onChange(value) {
+              return setAttributes({ delay: value });
+            },
+            help: __("Set delay in milliseconds, for example: 10")
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Font Size(PX)"),
+            value: numberSize,
+            onChange: function onChange(newValue) {
+              return setAttributes({ numberSize: newValue });
+            }
+          }),
+          wp.element.createElement(PanelColorSettings, {
+            colorSettings: [{
+              value: numberColor,
+              onChange: function onChange(colorValue) {
+                return setAttributes({ numberColor: colorValue });
+              },
+              label: __("Number Color")
+            }]
+          }),
+          wp.element.createElement(SelectControl, {
+            label: __("Font Weight"),
+            options: WEIGHT,
+            value: numberWeight,
+            onChange: function onChange(newWeight) {
+              return setAttributes({ numberWeight: newWeight });
+            }
+          }),
+          wp.element.createElement(CheckboxControl, {
+            label: __("Icon"),
+            checked: iconCheck,
+            onChange: function onChange(check) {
+              return setAttributes({ iconCheck: check });
+            }
+          }),
+          wp.element.createElement(CheckboxControl, {
+            label: __("Prefix"),
+            checked: prefix,
+            onChange: function onChange(check) {
+              return setAttributes({ prefix: check });
+            }
+          }),
+          wp.element.createElement(CheckboxControl, {
+            label: __("Suffix"),
+            checked: suffix,
+            onChange: function onChange(check) {
+              return setAttributes({ suffix: check });
+            }
+          })
+        ),
+        prefix && wp.element.createElement(
+          PanelBody,
+          { title: __("Prefix"), initialOpen: false },
+          wp.element.createElement(TextControl, {
+            label: __("Prefix"),
+            value: prefixTxt,
+            onChange: function onChange(value) {
+              return setAttributes({ prefixTxt: value });
+            }
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Font Size(PX)"),
+            value: prefixSize,
+            onChange: function onChange(newValue) {
+              return setAttributes({ prefixSize: newValue });
+            }
+          }),
+          wp.element.createElement(PanelColorSettings, {
+            colorSettings: [{
+              value: prefixColor,
+              onChange: function onChange(colorValue) {
+                return setAttributes({ prefixColor: colorValue });
+              },
+              label: __("Color")
+            }]
+          }),
+          wp.element.createElement(SelectControl, {
+            label: __("Font Weight"),
+            options: WEIGHT,
+            value: prefixWeight,
+            onChange: function onChange(newWeight) {
+              return setAttributes({ prefixWeight: newWeight });
+            }
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Gap After (PX)"),
+            value: prefixGap,
+            onChange: function onChange(newValue) {
+              return setAttributes({ prefixGap: newValue });
+            }
+          })
+        ),
+        suffix && wp.element.createElement(
+          PanelBody,
+          { title: __("Suffix"), initialOpen: false },
+          wp.element.createElement(TextControl, {
+            label: __("Suffix"),
+            value: suffixTxt,
+            onChange: function onChange(value) {
+              return setAttributes({ suffixTxt: value });
+            }
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Font Size(PX)"),
+            value: suffixSize,
+            onChange: function onChange(newValue) {
+              return setAttributes({ suffixSize: newValue });
+            }
+          }),
+          wp.element.createElement(PanelColorSettings, {
+            colorSettings: [{
+              value: suffixColor,
+              onChange: function onChange(colorValue) {
+                return setAttributes({ suffixColor: colorValue });
+              },
+              label: __("Color")
+            }]
+          }),
+          wp.element.createElement(SelectControl, {
+            label: __("Font Weight"),
+            options: WEIGHT,
+            value: suffixWeight,
+            onChange: function onChange(newWeight) {
+              return setAttributes({ suffixWeight: newWeight });
+            }
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Gap Before (PX)"),
+            value: suffixGap,
+            onChange: function onChange(newValue) {
+              return setAttributes({ suffixGap: newValue });
+            }
+          })
+        ),
+        iconCheck && wp.element.createElement(
+          PanelBody,
+          { title: __("Icon"), initialOpen: false },
+          wp.element.createElement(SelectControl, {
+            label: __("Icon Type"),
+            options: ICONS,
+            value: icon,
+            onChange: function onChange(newType) {
+              return setAttributes({ icon: newType });
+            }
+          }),
+          "icon" === icon && imageURL && wp.element.createElement("img", { src: imageURL, width: "100%", height: "auto" }),
+          "icon" === icon && wp.element.createElement(MediaUpload, {
+            allowedTypes: ["image"],
+            onSelect: function onSelect(media) {
+              setAttributes({
+                imageID: media.id,
+                imageURL: "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url
+              });
+            },
+            type: "image",
+            value: imageID,
+            render: function render(_ref) {
+              var open = _ref.open;
+              return wp.element.createElement(
+                IconButton,
+                {
+                  label: __("Change Image"),
+                  icon: "edit",
+                  onClick: open
+                },
+                __("Change Image")
+              );
+            }
+          }),
+          wp.element.createElement(SelectControl, {
+            label: __("Direction"),
+            options: DIRECTION,
+            value: flexDir,
+            onChange: function onChange(newDir) {
+              return setAttributes({ flexDir: newDir });
+            }
+          }),
+          "icon" === icon && wp.element.createElement(PanelColorSettings, {
+            colorSettings: [{
+              value: iconColor,
+              onChange: function onChange(colorValue) {
+                return setAttributes({ iconColor: colorValue });
+              },
+              label: __("Color")
+            }]
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Size (PX)"),
+            value: iconSize,
+            onChange: function onChange(newValue) {
+              return setAttributes({ iconSize: newValue });
+            }
+          })
+        )
+      ), wp.element.createElement(
+        "div",
+        {
+          className: className + "__wrap",
+          style: {
+            justifyContent: align,
+            flexDirection: flexDir
+          }
+        },
+        iconCheck && wp.element.createElement(
+          "div",
+          { className: className + "__icon_wrap" },
+          "icon" === icon && wp.element.createElement("span", {
+            className: className + "__icon dashicons dashicons-clock",
+            style: {
+              fontSize: iconSize + "px",
+              color: iconColor
+            }
+          }),
+          "img" === icon && imageURL && wp.element.createElement("img", { src: imageURL })
+        ),
+        wp.element.createElement(
+          "div",
+          {
+            className: className + "__container",
+            style: {
+              textAlign: align
+            }
+          },
+          prefix && "" !== prefixTxt && wp.element.createElement(
+            "p",
+            {
+              style: {
+                fontSize: prefixSize + "px",
+                color: prefixColor,
+                fontWeight: prefixWeight,
+                marginRight: prefixGap + "px"
+              }
+            },
+            prefixTxt
+          ),
+          wp.element.createElement(
+            "p",
+            {
+              className: className + "__increment",
+              "data-interval": time,
+              "data-delay": delay,
+              style: {
+                fontSize: numberSize + "px",
+                color: numberColor,
+                fontWeight: numberWeight
+              }
+            },
+            increment
+          ),
+          suffix && "" !== suffixTxt && wp.element.createElement(
+            "p",
+            {
+              style: {
+                fontSize: suffixSize + "px",
+                color: suffixColor,
+                fontWeight: suffixWeight,
+                marginLeft: suffixGap + "px"
+              }
+            },
+            suffixTxt
+          )
+        )
+      )];
+    },
+    save: function save(props) {
+      var _props$attributes2 = props.attributes,
+          increment = _props$attributes2.increment,
+          time = _props$attributes2.time,
+          delay = _props$attributes2.delay,
+          align = _props$attributes2.align,
+          flexDir = _props$attributes2.flexDir,
+          numberSize = _props$attributes2.numberSize,
+          numberColor = _props$attributes2.numberColor,
+          numberWeight = _props$attributes2.numberWeight,
+          prefix = _props$attributes2.prefix,
+          prefixTxt = _props$attributes2.prefixTxt,
+          prefixSize = _props$attributes2.prefixSize,
+          prefixColor = _props$attributes2.prefixColor,
+          prefixWeight = _props$attributes2.prefixWeight,
+          prefixGap = _props$attributes2.prefixGap,
+          suffix = _props$attributes2.suffix,
+          suffixTxt = _props$attributes2.suffixTxt,
+          suffixSize = _props$attributes2.suffixSize,
+          suffixColor = _props$attributes2.suffixColor,
+          suffixWeight = _props$attributes2.suffixWeight,
+          suffixGap = _props$attributes2.suffixGap,
+          iconCheck = _props$attributes2.iconCheck,
+          icon = _props$attributes2.icon,
+          imageURL = _props$attributes2.imageURL,
+          iconSize = _props$attributes2.iconSize,
+          iconColor = _props$attributes2.iconColor;
+
+      return wp.element.createElement(
+        "div",
+        {
+          className: className + "__wrap",
+          style: {
+            justifyContent: align,
+            flexDirection: flexDir
+          }
+        },
+        iconCheck && wp.element.createElement(
+          "div",
+          { className: className + "__icon" },
+          "icon" === icon && wp.element.createElement("span", {
+            className: className + "__icon dashicons dashicons-clock",
+            style: {
+              fontSize: iconSize + "px",
+              color: iconColor
+            }
+          }),
+          "img" === icon && imageURL && wp.element.createElement("img", { src: imageURL })
+        ),
+        wp.element.createElement(
+          "div",
+          { className: className + "__container" },
+          prefix && "" !== prefixTxt && wp.element.createElement(
+            "p",
+            {
+              style: {
+                fontSize: prefixSize + "px",
+                color: prefixColor,
+                fontWeight: prefixWeight,
+                marginRight: prefixGap + "px"
+              }
+            },
+            prefixTxt
+          ),
+          wp.element.createElement(
+            "p",
+            {
+              className: className + "__increment",
+              "data-interval": time,
+              "data-delay": delay,
+              style: {
+                fontSize: numberSize + "px",
+                color: numberColor,
+                fontWeight: numberWeight
+              }
+            },
+            increment
+          ),
+          suffix && "" !== suffixTxt && wp.element.createElement(
+            "p",
+            {
+              style: {
+                fontSize: suffixSize + "px",
+                color: suffixColor,
+                fontWeight: suffixWeight,
+                marginLeft: suffixGap + "px"
+              }
+            },
+            suffixTxt
+          )
+        )
+      );
+    }
+  });
+}
 
 /***/ })
 /******/ ]);

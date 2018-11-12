@@ -4,5 +4,6 @@ export const {
   dualHeading,
   pricingTable,
   maps,
-  testimonial
+  testimonial,
+  countUp
 } = PremiumBlocksSettings.activeBlocks;

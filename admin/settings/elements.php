@@ -15,7 +15,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
 
         protected $slug = 'premium-gutenberg';
 
-        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial'];
+        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp'];
 
         private $pbg_default;
 
@@ -179,6 +179,13 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                     </td>
                                 </tr>
                                 <tr>
+                                    <th><?php echo __('Premium Count Up', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="maps" name="countUp" <?php checked(1, $this->pbg_get_settings['countUp'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
                                     <th><?php echo __('Premium Maps', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -186,6 +193,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                </tr>
+                                <tr>
                                     <th><?php echo __('Premium Pricing Table', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -193,8 +202,6 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-                                </tr>
-                                <tr>
                                     <th><?php echo __('Premium Testimonials', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -250,11 +257,12 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
             }
             
             $this->pbg_settings = array(
-                'dualHeading'  => intval( $settings['dualHeading'] ? 1 : 0 ),
+                'dualHeading'   => intval( $settings['dualHeading'] ? 1 : 0 ),
                 'banner'        => intval( $settings['banner'] ? 1 : 0 ),
                 'maps'          => intval( $settings['maps'] ? 1 : 0 ),
                 'pricingTable'  => intval( $settings['pricingTable'] ? 1 : 0 ),
                 'testimonial'   => intval( $settings['testimonial'] ? 1 : 0 ),
+                'countUp'       => intval( $settings['countUp'] ? 1 : 0 ),
             );
 
             update_option( 'pbg_settings', $this->pbg_settings );

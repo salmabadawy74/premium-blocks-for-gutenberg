@@ -1,0 +1,592 @@
+import { countUp } from "../settings";
+
+if (countUp) {
+  const className = "premium-countup";
+
+  const { __ } = wp.i18n;
+
+  const { registerBlockType } = wp.blocks;
+
+  const {
+    PanelBody,
+    SelectControl,
+    TextControl,
+    RangeControl,
+    CheckboxControl,
+    IconButton
+  } = wp.components;
+  const {
+    BlockControls,
+    InspectorControls,
+    AlignmentToolbar,
+    PanelColorSettings,
+    MediaUpload
+  } = wp.editor;
+
+  registerBlockType("premium/countup", {
+    title: __("CountUp"),
+    icon: "clock",
+    category: "premium-blocks",
+    attributes: {
+      increment: {
+        type: "string",
+        default: 500
+      },
+      time: {
+        type: "number",
+        default: 1000
+      },
+      delay: {
+        type: "number",
+        default: 10
+      },
+      align: {
+        type: "string",
+        default: "center"
+      },
+      flexDir: {
+        type: "string",
+        default: "column"
+      },
+      numberSize: {
+        type: "number",
+        default: 30
+      },
+      numberColor: {
+        type: "string",
+        default: "#6ec1e4"
+      },
+      numberWeight: {
+        type: "number",
+        default: 900
+      },
+      prefix: {
+        type: "boolean",
+        default: true
+      },
+      prefixTxt: {
+        type: "string",
+        default: "Premium"
+      },
+      prefixSize: {
+        type: "number",
+        default: 20
+      },
+      prefixColor: {
+        type: "string"
+      },
+      prefixWeight: {
+        type: "number"
+      },
+      prefixGap: {
+        type: "number",
+        default: 2
+      },
+      suffix: {
+        type: "boolean",
+        default: true
+      },
+      suffixTxt: {
+        type: "string",
+        default: "Count Up"
+      },
+      suffixSize: {
+        type: "number",
+        default: 20
+      },
+      suffixColor: {
+        type: "string"
+      },
+      suffixWeight: {
+        type: "number"
+      },
+      suffixGap: {
+        type: "number",
+        default: 2
+      },
+      icon: {
+        type: "string",
+        default: "icon"
+      },
+      imageID: {
+        type: "string"
+      },
+      imageURL: {
+        type: "string"
+      },
+      iconCheck: {
+        type: "boolean",
+        default: true
+      },
+      iconSize: {
+        type: "number",
+        default: 40
+      },
+      iconColor: {
+        type: "string",
+        default: "#6ec1e4"
+      }
+    },
+    edit: props => {
+      const { isSelected, setAttributes } = props;
+      const {
+        increment,
+        time,
+        delay,
+        align,
+        flexDir,
+        numberSize,
+        numberColor,
+        numberWeight,
+        icon,
+        imageID,
+        imageURL,
+        iconCheck,
+        prefix,
+        prefixTxt,
+        prefixSize,
+        prefixColor,
+        prefixWeight,
+        prefixGap,
+        suffix,
+        suffixTxt,
+        suffixSize,
+        suffixColor,
+        suffixWeight,
+        suffixGap,
+        iconSize,
+        iconColor
+      } = props.attributes;
+      const WEIGHT = [
+        {
+          value: "100",
+          label: "100"
+        },
+        {
+          value: "200",
+          label: "200"
+        },
+        {
+          value: "300",
+          label: "300"
+        },
+        {
+          value: "400",
+          label: "Normal"
+        },
+        {
+          value: "500",
+          label: "500"
+        },
+        {
+          value: "600",
+          label: "600"
+        },
+        {
+          value: "700",
+          label: "700"
+        },
+        {
+          value: "800",
+          label: "800"
+        },
+        {
+          value: "900",
+          label: "Bold"
+        }
+      ];
+      const ICONS = [
+        {
+          value: "icon",
+          label: "Clock Icon"
+        },
+        {
+          value: "img",
+          label: "Image"
+        }
+      ];
+      const DIRECTION = [
+        {
+          value: "row",
+          label: "Row"
+        },
+        {
+          value: "row-reverse",
+          label: "Reversed Row"
+        },
+        {
+          value: "column",
+          label: "Column"
+        },
+        {
+          value: "column-reverse",
+          label: "Reversed Column"
+        }
+      ];
+      return [
+        isSelected && (
+          <BlockControls key="controls">
+            <AlignmentToolbar
+              value={align}
+              onChange={newAlign => setAttributes({ align: newAlign })}
+            />
+          </BlockControls>
+        ),
+        isSelected && (
+          <InspectorControls key={"inspector"}>
+            <PanelBody title={__("Counter")} initialOpen={true}>
+              <TextControl
+                label={__("Increment")}
+                value={increment}
+                onChange={value => setAttributes({ increment: value })}
+              />
+              <TextControl
+                label={__("Rolling Time")}
+                value={time}
+                onChange={value => setAttributes({ time: value })}
+                help={__(
+                  "Set counting time in milliseconds, for example: 1000"
+                )}
+              />
+              <TextControl
+                label={__("Delay")}
+                value={delay}
+                onChange={value => setAttributes({ delay: value })}
+                help={__("Set delay in milliseconds, for example: 10")}
+              />
+              <RangeControl
+                label={__("Font Size(PX)")}
+                value={numberSize}
+                onChange={newValue => setAttributes({ numberSize: newValue })}
+              />
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: numberColor,
+                    onChange: colorValue =>
+                      setAttributes({ numberColor: colorValue }),
+                    label: __("Number Color")
+                  }
+                ]}
+              />
+              <SelectControl
+                label={__("Font Weight")}
+                options={WEIGHT}
+                value={numberWeight}
+                onChange={newWeight =>
+                  setAttributes({ numberWeight: newWeight })
+                }
+              />
+              <CheckboxControl
+                label={__("Icon")}
+                checked={iconCheck}
+                onChange={check => setAttributes({ iconCheck: check })}
+              />
+              <CheckboxControl
+                label={__("Prefix")}
+                checked={prefix}
+                onChange={check => setAttributes({ prefix: check })}
+              />
+              <CheckboxControl
+                label={__("Suffix")}
+                checked={suffix}
+                onChange={check => setAttributes({ suffix: check })}
+              />
+            </PanelBody>
+            {prefix && (
+              <PanelBody title={__("Prefix")} initialOpen={false}>
+                <TextControl
+                  label={__("Prefix")}
+                  value={prefixTxt}
+                  onChange={value => setAttributes({ prefixTxt: value })}
+                />
+                <RangeControl
+                  label={__("Font Size(PX)")}
+                  value={prefixSize}
+                  onChange={newValue => setAttributes({ prefixSize: newValue })}
+                />
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: prefixColor,
+                      onChange: colorValue =>
+                        setAttributes({ prefixColor: colorValue }),
+                      label: __("Color")
+                    }
+                  ]}
+                />
+                <SelectControl
+                  label={__("Font Weight")}
+                  options={WEIGHT}
+                  value={prefixWeight}
+                  onChange={newWeight =>
+                    setAttributes({ prefixWeight: newWeight })
+                  }
+                />
+                <RangeControl
+                  label={__("Gap After (PX)")}
+                  value={prefixGap}
+                  onChange={newValue => setAttributes({ prefixGap: newValue })}
+                />
+              </PanelBody>
+            )}
+            {suffix && (
+              <PanelBody title={__("Suffix")} initialOpen={false}>
+                <TextControl
+                  label={__("Suffix")}
+                  value={suffixTxt}
+                  onChange={value => setAttributes({ suffixTxt: value })}
+                />
+                <RangeControl
+                  label={__("Font Size(PX)")}
+                  value={suffixSize}
+                  onChange={newValue => setAttributes({ suffixSize: newValue })}
+                />
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: suffixColor,
+                      onChange: colorValue =>
+                        setAttributes({ suffixColor: colorValue }),
+                      label: __("Color")
+                    }
+                  ]}
+                />
+                <SelectControl
+                  label={__("Font Weight")}
+                  options={WEIGHT}
+                  value={suffixWeight}
+                  onChange={newWeight =>
+                    setAttributes({ suffixWeight: newWeight })
+                  }
+                />
+                <RangeControl
+                  label={__("Gap Before (PX)")}
+                  value={suffixGap}
+                  onChange={newValue => setAttributes({ suffixGap: newValue })}
+                />
+              </PanelBody>
+            )}
+            {iconCheck && (
+              <PanelBody title={__("Icon")} initialOpen={false}>
+                <SelectControl
+                  label={__("Icon Type")}
+                  options={ICONS}
+                  value={icon}
+                  onChange={newType => setAttributes({ icon: newType })}
+                />
+                {"icon" === icon && imageURL && (
+                  <img src={imageURL} width="100%" height="auto" />
+                )}
+                {"icon" === icon && (
+                  <MediaUpload
+                    allowedTypes={["image"]}
+                    onSelect={media => {
+                      setAttributes({
+                        imageID: media.id,
+                        imageURL:
+                          "undefined" === typeof media.sizes.thumbnail
+                            ? media.url
+                            : media.sizes.thumbnail.url
+                      });
+                    }}
+                    type="image"
+                    value={imageID}
+                    render={({ open }) => (
+                      <IconButton
+                        label={__("Change Image")}
+                        icon="edit"
+                        onClick={open}
+                      >
+                        {__("Change Image")}
+                      </IconButton>
+                    )}
+                  />
+                )}
+                <SelectControl
+                  label={__("Direction")}
+                  options={DIRECTION}
+                  value={flexDir}
+                  onChange={newDir => setAttributes({ flexDir: newDir })}
+                />
+                {"icon" === icon && (
+                  <PanelColorSettings
+                    colorSettings={[
+                      {
+                        value: iconColor,
+                        onChange: colorValue =>
+                          setAttributes({ iconColor: colorValue }),
+                        label: __("Color")
+                      }
+                    ]}
+                  />
+                )}
+                <RangeControl
+                  label={__("Size (PX)")}
+                  value={iconSize}
+                  onChange={newValue => setAttributes({ iconSize: newValue })}
+                />
+              </PanelBody>
+            )}
+          </InspectorControls>
+        ),
+        <div
+          className={`${className}__wrap`}
+          style={{
+            justifyContent: align,
+            flexDirection: flexDir
+          }}
+        >
+          {iconCheck && (
+            <div className={`${className}__icon_wrap`}>
+              {"icon" === icon && (
+                <span
+                  className={`${className}__icon dashicons dashicons-clock`}
+                  style={{
+                    fontSize: iconSize + "px",
+                    color: iconColor
+                  }}
+                />
+              )}
+              {"img" === icon && imageURL && <img src={imageURL} />}
+            </div>
+          )}
+          <div
+            className={`${className}__container`}
+            style={{
+              textAlign: align
+            }}
+          >
+            {prefix && "" !== prefixTxt && (
+              <p
+                style={{
+                  fontSize: prefixSize + "px",
+                  color: prefixColor,
+                  fontWeight: prefixWeight,
+                  marginRight: prefixGap + "px"
+                }}
+              >
+                {prefixTxt}
+              </p>
+            )}
+            <p
+              className={`${className}__increment`}
+              data-interval={time}
+              data-delay={delay}
+              style={{
+                fontSize: numberSize + "px",
+                color: numberColor,
+                fontWeight: numberWeight
+              }}
+            >
+              {increment}
+            </p>
+            {suffix && "" !== suffixTxt && (
+              <p
+                style={{
+                  fontSize: suffixSize + "px",
+                  color: suffixColor,
+                  fontWeight: suffixWeight,
+                  marginLeft: suffixGap + "px"
+                }}
+              >
+                {suffixTxt}
+              </p>
+            )}
+          </div>
+        </div>
+      ];
+    },
+    save: props => {
+      const {
+        increment,
+        time,
+        delay,
+        align,
+        flexDir,
+        numberSize,
+        numberColor,
+        numberWeight,
+        prefix,
+        prefixTxt,
+        prefixSize,
+        prefixColor,
+        prefixWeight,
+        prefixGap,
+        suffix,
+        suffixTxt,
+        suffixSize,
+        suffixColor,
+        suffixWeight,
+        suffixGap,
+        iconCheck,
+        icon,
+        imageURL,
+        iconSize,
+        iconColor
+      } = props.attributes;
+      return (
+        <div
+          className={`${className}__wrap`}
+          style={{
+            justifyContent: align,
+            flexDirection: flexDir
+          }}
+        >
+          {iconCheck && (
+            <div className={`${className}__icon`}>
+              {"icon" === icon && (
+                <span
+                  className={`${className}__icon dashicons dashicons-clock`}
+                  style={{
+                    fontSize: iconSize + "px",
+                    color: iconColor
+                  }}
+                />
+              )}
+              {"img" === icon && imageURL && <img src={imageURL} />}
+            </div>
+          )}
+          <div className={`${className}__container`}>
+            {prefix && "" !== prefixTxt && (
+              <p
+                style={{
+                  fontSize: prefixSize + "px",
+                  color: prefixColor,
+                  fontWeight: prefixWeight,
+                  marginRight: prefixGap + "px"
+                }}
+              >
+                {prefixTxt}
+              </p>
+            )}
+            <p
+              className={`${className}__increment`}
+              data-interval={time}
+              data-delay={delay}
+              style={{
+                fontSize: numberSize + "px",
+                color: numberColor,
+                fontWeight: numberWeight
+              }}
+            >
+              {increment}
+            </p>
+            {suffix && "" !== suffixTxt && (
+              <p
+                style={{
+                  fontSize: suffixSize + "px",
+                  color: suffixColor,
+                  fontWeight: suffixWeight,
+                  marginLeft: suffixGap + "px"
+                }}
+              >
+                {suffixTxt}
+              </p>
+            )}
+          </div>
+        </div>
+      );
+    }
+  });
+}

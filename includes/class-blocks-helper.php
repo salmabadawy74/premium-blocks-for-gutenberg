@@ -26,6 +26,8 @@ class Premium_Blocks_Integration {
         
         //Register Premium Blocks category
         add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
+        
+//        add_filter('the_content', array( $this, 'check_used_blocks'));
     }
     
     /**
@@ -96,6 +98,27 @@ class Premium_Blocks_Integration {
         
         $is_block_enabled = Premium_Guten_Admin::get_enabled_keys()['maps'];
         
+        wp_enqueue_script(
+            'waypoints_lib',
+            PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/lib/jquery.waypoints.js',
+            array('jquery'),
+            PREMIUM_BLOCKS_VERSION
+        );
+        
+        wp_enqueue_script(
+            'counter_lib',
+            PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/lib/countUpmin.js',
+            array('jquery'),
+            PREMIUM_BLOCKS_VERSION
+        );
+        
+        wp_enqueue_script(
+            'countup-js',
+            PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/countup.js',
+            array('jquery'),
+            PREMIUM_BLOCKS_VERSION
+        );
+        
         //Enqueue Google Maps API key Script
         if( $is_block_enabled && $is_enabled && ! empty( $api_key ) ) {
             wp_enqueue_script(
@@ -103,6 +126,10 @@ class Premium_Blocks_Integration {
                 'https://maps.googleapis.com/maps/api/js?key=' . $api_key
             );
         }
+        
+    }
+    
+    public function check_used_blocks($content) {
         
     }
     

@@ -68,3 +68,17 @@
   align-items: baseline;
   justify-content: center;
 }
+/**************** Premium Maps *************************/
+/*******************************************************/
+#wpwrap .edit-post-visual-editor .premium-maps__wrap h3.premium-maps__title {
+  margin-bottom: 0.2em;
+  font-weight: 600;
+  margin-top: 0;
+  padding: 0;
+}
+/**************** Premium Maps *************************/
+/*******************************************************/
+#wpwrap .edit-post-visual-editor .premium-countup__container p {
+  margin: 0;
+  padding: 0;
+}
