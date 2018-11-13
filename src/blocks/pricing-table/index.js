@@ -13,7 +13,7 @@ if (pricingTable) {
     SelectControl,
     RangeControl,
     TextControl,
-    CheckboxControl
+    ToggleControl
   } = wp.components;
 
   const {
@@ -1120,7 +1120,7 @@ if (pricingTable) {
                     setAttributes({ btnPadding: newPadding })
                   }
                 />
-                <CheckboxControl
+                <ToggleControl
                   label={__("Open Link in a new tab")}
                   checked={btnTarget}
                   onChange={newValue => setAttributes({ btnTarget: newValue })}
@@ -1159,32 +1159,32 @@ if (pricingTable) {
               </PanelBody>
             )}
             <PanelBody title={__("Display Options")} initialOpen={false}>
-              <CheckboxControl
+              <ToggleControl
                 label={__("Title")}
                 checked={titleChecked}
                 onChange={newValue => setAttributes({ titleChecked: newValue })}
               />
-              <CheckboxControl
+              <ToggleControl
                 label={__("Price")}
                 checked={priceChecked}
                 onChange={newValue => setAttributes({ priceChecked: newValue })}
               />
-              <CheckboxControl
+              <ToggleControl
                 label={__("Features")}
                 checked={listChecked}
                 onChange={newValue => setAttributes({ listChecked: newValue })}
               />
-              <CheckboxControl
+              <ToggleControl
                 label={__("Description")}
                 checked={descChecked}
                 onChange={newValue => setAttributes({ descChecked: newValue })}
               />
-              <CheckboxControl
+              <ToggleControl
                 label={__("Button")}
                 checked={btnChecked}
                 onChange={newValue => setAttributes({ btnChecked: newValue })}
               />
-              <CheckboxControl
+              <ToggleControl
                 label={__("Badge")}
                 checked={badgeChecked}
                 onChange={newValue => setAttributes({ badgeChecked: newValue })}

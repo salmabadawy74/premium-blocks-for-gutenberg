@@ -84,6 +84,12 @@ class Premium_Blocks_Integration {
     */
     public function premium_gutenberg_frontend() {
         wp_enqueue_style(
+            'pbg-fontawesome',
+            'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+        );
+        
+        
+        wp_enqueue_style(
             'pbg-frontend',
             PREMIUM_BLOCKS_URL . 'assets/css/style.css',
             array('wp-blocks'),

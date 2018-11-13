@@ -10,22 +10,20 @@ if (banner) {
   const {
     IconButton,
     Toolbar,
-    Button,
     PanelBody,
-    PanelColor,
     SelectControl,
     RangeControl,
     TextControl,
-    CheckboxControl
+    ToggleControl
   } = wp.components;
 
   const {
     BlockControls,
     InspectorControls,
     AlignmentToolbar,
+    PanelColorSettings,
     RichText,
-    MediaUpload,
-    ColorPalette
+    MediaUpload
   } = wp.editor;
 
   registerBlockType("premium/banner", {
@@ -387,7 +385,7 @@ if (banner) {
                   setAttributes({ hoverEffect: newEffect })
                 }
               />
-              <CheckboxControl
+              <ToggleControl
                 label={__("Always Hovered")}
                 checked={hovered}
                 onChange={check => setAttributes({ hovered: check })}
@@ -415,15 +413,16 @@ if (banner) {
                   onChange={newValue => setAttributes({ verAlign: newValue })}
                 />
               )}
-              <PanelColor
-                title={__("Background Color")}
-                colorValue={background}
-              >
-                <ColorPalette
-                  value={background}
-                  onChange={newColor => setAttributes({ background: newColor })}
-                />
-              </PanelColor>
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: background,
+                    onChange: colorValue =>
+                      setAttributes({ background: colorValue }),
+                    label: __("Background Color")
+                  }
+                ]}
+              />
               <RangeControl
                 label={__("Opacity")}
                 value={opacity}
@@ -449,14 +448,16 @@ if (banner) {
                 />
               )}
               {"none" != borderType && (
-                <PanelColor title={__("Border Color")} colorValue={borderColor}>
-                  <ColorPalette
-                    value={borderColor}
-                    onChange={newColor =>
-                      setAttributes({ borderColor: newColor })
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: borderColor,
+                      onChange: colorValue =>
+                        setAttributes({ borderColor: colorValue }),
+                      label: __("Border Color")
                     }
-                  />
-                </PanelColor>
+                  ]}
+                />
               )}
               <RangeControl
                 label={__("Border Radius")}
@@ -467,7 +468,7 @@ if (banner) {
                   setAttributes({ borderRadius: newRadius })
                 }
               />
-              <CheckboxControl
+              <ToggleControl
                 label={__("Link")}
                 checked={urlCheck}
                 onChange={newCheck => setAttributes({ urlCheck: newCheck })}
@@ -479,13 +480,13 @@ if (banner) {
                 />
               )}
               {urlCheck && (
-                <CheckboxControl
+                <ToggleControl
                   label={__("Open link in new tab")}
                   checked={target}
                   onChange={newValue => setAttributes({ target: newValue })}
                 />
               )}
-              <CheckboxControl
+              <ToggleControl
                 label={__("Hide Description on Mobiles")}
                 checked={responsive}
                 onChange={newValue => setAttributes({ responsive: newValue })}
@@ -501,12 +502,16 @@ if (banner) {
                   subscript: tag
                 }))}
               />
-              <PanelColor title={__("Color")} colorValue={titleColor}>
-                <ColorPalette
-                  value={titleColor}
-                  onChange={newColor => setAttributes({ titleColor: newColor })}
-                />
-              </PanelColor>
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: titleColor,
+                    onChange: colorValue =>
+                      setAttributes({ titleColor: colorValue }),
+                    label: __("Color")
+                  }
+                ]}
+              />
               <RangeControl
                 label={__("Font Size (PX)")}
                 value={titleSize}
@@ -529,12 +534,16 @@ if (banner) {
               />
             </PanelBody>
             <PanelBody title={__("Description Settings")} initialOpen={false}>
-              <PanelColor title={__("Color")} colorValue={descColor}>
-                <ColorPalette
-                  value={descColor}
-                  onChange={newColor => setAttributes({ descColor: newColor })}
-                />
-              </PanelColor>
+              <PanelColorSettings
+                colorSettings={[
+                  {
+                    value: descColor,
+                    onChange: colorValue =>
+                      setAttributes({ descColor: colorValue }),
+                    label: __("Color")
+                  }
+                ]}
+              />
               <RangeControl
                 label={__("Font Size (PX)")}
                 value={descSize}

@@ -1,4 +1,5 @@
 import { countUp } from "../settings";
+import FontAwesome, { faIcons } from "../../components/font-awesome";
 
 if (countUp) {
   const className = "premium-countup";
@@ -9,19 +10,14 @@ if (countUp) {
 
   const {
     PanelBody,
+    Toolbar,
     SelectControl,
     TextControl,
     RangeControl,
-    CheckboxControl,
+    ToggleControl,
     IconButton
   } = wp.components;
-  const {
-    BlockControls,
-    InspectorControls,
-    AlignmentToolbar,
-    PanelColorSettings,
-    MediaUpload
-  } = wp.editor;
+  const { InspectorControls, PanelColorSettings, MediaUpload } = wp.editor;
 
   registerBlockType("premium/countup", {
     title: __("CountUp"),
@@ -65,8 +61,7 @@ if (countUp) {
         default: true
       },
       prefixTxt: {
-        type: "string",
-        default: "Premium"
+        type: "string"
       },
       prefixSize: {
         type: "number",
@@ -87,8 +82,7 @@ if (countUp) {
         default: true
       },
       suffixTxt: {
-        type: "string",
-        default: "Count Up"
+        type: "string"
       },
       suffixSize: {
         type: "number",
@@ -125,6 +119,40 @@ if (countUp) {
       iconColor: {
         type: "string",
         default: "#6ec1e4"
+      },
+      selfAlign: {
+        type: "string",
+        default: "center"
+      },
+      titleCheck: {
+        type: "boolean",
+        default: true
+      },
+      titleTxt: {
+        type: "string",
+        default: "Premium Count Up"
+      },
+      titleSize: {
+        type: "number",
+        default: 20
+      },
+      titleT: {
+        type: "number",
+        default: 1
+      },
+      titleB: {
+        type: "number",
+        default: 1
+      },
+      titleColor: {
+        type: "string"
+      },
+      titleWeight: {
+        type: "number",
+        default: 500
+      },
+      faIcon: {
+        type: "string"
       }
     },
     edit: props => {
@@ -139,6 +167,15 @@ if (countUp) {
         numberColor,
         numberWeight,
         icon,
+        iconSize,
+        iconColor,
+        titleCheck,
+        titleTxt,
+        titleColor,
+        titleSize,
+        titleT,
+        titleB,
+        titleWeight,
         imageID,
         imageURL,
         iconCheck,
@@ -154,8 +191,8 @@ if (countUp) {
         suffixColor,
         suffixWeight,
         suffixGap,
-        iconSize,
-        iconColor
+        selfAlign,
+        faIcon
       } = props.attributes;
       const WEIGHT = [
         {
@@ -223,15 +260,20 @@ if (countUp) {
           label: "Reversed Column"
         }
       ];
+      const ALIGNS = ["left", "center", "right"];
+      const REVALIGNS = ["right", "center", "left"];
+      switch (align) {
+        case "left":
+          setAttributes({ selfAlign: "flex-start" });
+          break;
+        case "center":
+          setAttributes({ selfAlign: "center" });
+          break;
+        case "right":
+          setAttributes({ selfAlign: "flex-end" });
+          break;
+      }
       return [
-        isSelected && (
-          <BlockControls key="controls">
-            <AlignmentToolbar
-              value={align}
-              onChange={newAlign => setAttributes({ align: newAlign })}
-            />
-          </BlockControls>
-        ),
         isSelected && (
           <InspectorControls key={"inspector"}>
             <PanelBody title={__("Counter")} initialOpen={true}>
@@ -254,8 +296,51 @@ if (countUp) {
                 onChange={value => setAttributes({ delay: value })}
                 help={__("Set delay in milliseconds, for example: 10")}
               />
+              <p>{__("Align")}</p>
+              {"row-reverse" !== flexDir && (
+                <Toolbar
+                  controls={ALIGNS.map(contentAlign => ({
+                    icon: "editor-align" + contentAlign,
+                    isActive: contentAlign === align,
+                    onClick: () => setAttributes({ align: contentAlign })
+                  }))}
+                />
+              )}
+              <p>{__("Align")}</p>
+              {"row-reverse" === flexDir && (
+                <Toolbar
+                  label={__("Align")}
+                  controls={REVALIGNS.map(contentAlign => ({
+                    icon: "editor-align" + contentAlign,
+                    isActive: contentAlign === align,
+                    onClick: () => setAttributes({ align: contentAlign })
+                  }))}
+                />
+              )}
+              <ToggleControl
+                label={__("Icon")}
+                checked={iconCheck}
+                onChange={check => setAttributes({ iconCheck: check })}
+              />
+              <ToggleControl
+                label={__("Title")}
+                checked={titleCheck}
+                onChange={check => setAttributes({ titleCheck: check })}
+              />
+              <ToggleControl
+                label={__("Prefix")}
+                checked={prefix}
+                onChange={check => setAttributes({ prefix: check })}
+              />
+              <ToggleControl
+                label={__("Suffix")}
+                checked={suffix}
+                onChange={check => setAttributes({ suffix: check })}
+              />
+            </PanelBody>
+            <PanelBody title={__("Number")} initialOpen={false}>
               <RangeControl
-                label={__("Font Size(PX)")}
+                label={__("Font Size (PX)")}
                 value={numberSize}
                 onChange={newValue => setAttributes({ numberSize: newValue })}
               />
@@ -277,22 +362,50 @@ if (countUp) {
                   setAttributes({ numberWeight: newWeight })
                 }
               />
-              <CheckboxControl
-                label={__("Icon")}
-                checked={iconCheck}
-                onChange={check => setAttributes({ iconCheck: check })}
-              />
-              <CheckboxControl
-                label={__("Prefix")}
-                checked={prefix}
-                onChange={check => setAttributes({ prefix: check })}
-              />
-              <CheckboxControl
-                label={__("Suffix")}
-                checked={suffix}
-                onChange={check => setAttributes({ suffix: check })}
-              />
             </PanelBody>
+            {titleCheck && (
+              <PanelBody title={__("Title")} initialOpen={false}>
+                <TextControl
+                  label={__("Title Text")}
+                  value={titleTxt}
+                  onChange={value => setAttributes({ titleTxt: value })}
+                />
+                <RangeControl
+                  label={__("Font Size (PX)")}
+                  value={titleSize}
+                  onChange={newValue => setAttributes({ titleSize: newValue })}
+                />
+                <SelectControl
+                  label={__("Font Weight")}
+                  options={WEIGHT}
+                  value={titleWeight}
+                  onChange={newWeight =>
+                    setAttributes({ titleWeight: newWeight })
+                  }
+                />
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: titleColor,
+                      onChange: colorValue =>
+                        setAttributes({ titleColor: colorValue }),
+                      label: __("Color")
+                    }
+                  ]}
+                />
+                <RangeControl
+                  label={__("Margin Top (PX)")}
+                  value={titleT}
+                  onChange={newValue => setAttributes({ titleT: newValue })}
+                />
+                <RangeControl
+                  label={__("Margin Bottom (PX)")}
+                  value={titleB}
+                  onChange={newValue => setAttributes({ titleB: newValue })}
+                />
+              </PanelBody>
+            )}
+
             {prefix && (
               <PanelBody title={__("Prefix")} initialOpen={false}>
                 <TextControl
@@ -301,7 +414,7 @@ if (countUp) {
                   onChange={value => setAttributes({ prefixTxt: value })}
                 />
                 <RangeControl
-                  label={__("Font Size(PX)")}
+                  label={__("Font Size (PX)")}
                   value={prefixSize}
                   onChange={newValue => setAttributes({ prefixSize: newValue })}
                 />
@@ -338,7 +451,7 @@ if (countUp) {
                   onChange={value => setAttributes({ suffixTxt: value })}
                 />
                 <RangeControl
-                  label={__("Font Size(PX)")}
+                  label={__("Font Size (PX)")}
                   value={suffixSize}
                   onChange={newValue => setAttributes({ suffixSize: newValue })}
                 />
@@ -375,10 +488,16 @@ if (countUp) {
                   value={icon}
                   onChange={newType => setAttributes({ icon: newType })}
                 />
-                {"icon" === icon && imageURL && (
+                {"icon" === icon && (
+                  <FontAwesome
+                    icon={faIcon}
+                    onChangeIcon={newIcon => setAttributes({ faIcon: newIcon })}
+                  />
+                )}
+                {"img" === icon && imageURL && (
                   <img src={imageURL} width="100%" height="auto" />
                 )}
-                {"icon" === icon && (
+                {"img" === icon && (
                   <MediaUpload
                     allowedTypes={["image"]}
                     onSelect={media => {
@@ -403,11 +522,11 @@ if (countUp) {
                     )}
                   />
                 )}
-                <SelectControl
-                  label={__("Direction")}
-                  options={DIRECTION}
-                  value={flexDir}
-                  onChange={newDir => setAttributes({ flexDir: newDir })}
+                <RangeControl
+                  label={__("Size (PX)")}
+                  max="200"
+                  value={iconSize}
+                  onChange={newValue => setAttributes({ iconSize: newValue })}
                 />
                 {"icon" === icon && (
                   <PanelColorSettings
@@ -421,10 +540,11 @@ if (countUp) {
                     ]}
                   />
                 )}
-                <RangeControl
-                  label={__("Size (PX)")}
-                  value={iconSize}
-                  onChange={newValue => setAttributes({ iconSize: newValue })}
+                <SelectControl
+                  label={__("Direction")}
+                  options={DIRECTION}
+                  value={flexDir}
+                  onChange={newDir => setAttributes({ flexDir: newDir })}
                 />
               </PanelBody>
             )}
@@ -438,61 +558,101 @@ if (countUp) {
           }}
         >
           {iconCheck && (
-            <div className={`${className}__icon_wrap`}>
+            <div
+              className={`${className}__icon_wrap`}
+              style={{
+                alignSelf:
+                  "row-reverse" === flexDir || "row" === flexDir
+                    ? "center"
+                    : selfAlign
+              }}
+            >
               {"icon" === icon && (
                 <span
-                  className={`${className}__icon dashicons dashicons-clock`}
+                  className={`${className}__icon ${faIcon}`}
                   style={{
                     fontSize: iconSize + "px",
                     color: iconColor
                   }}
                 />
               )}
-              {"img" === icon && imageURL && <img src={imageURL} />}
+              {"img" === icon && imageURL && (
+                <img
+                  src={imageURL}
+                  style={{
+                    width: iconSize + "px",
+                    height: iconSize + "px"
+                  }}
+                />
+              )}
             </div>
           )}
           <div
-            className={`${className}__container`}
+            className={`${className}__info`}
             style={{
-              textAlign: align
+              alignSelf:
+                "row-reverse" === flexDir || "row" === flexDir
+                  ? "center"
+                  : selfAlign
             }}
           >
-            {prefix && "" !== prefixTxt && (
-              <p
+            {titleCheck && (
+              <h3
+                className={`${className}__title`}
                 style={{
-                  fontSize: prefixSize + "px",
-                  color: prefixColor,
-                  fontWeight: prefixWeight,
-                  marginRight: prefixGap + "px"
+                  fontSize: titleSize + "px",
+                  marginTop: titleT + "px",
+                  marginBottom: titleB + "px",
+                  color: titleColor,
+                  fontWeight: titleWeight
                 }}
               >
-                {prefixTxt}
-              </p>
+                {titleTxt}
+              </h3>
             )}
-            <p
-              className={`${className}__increment`}
-              data-interval={time}
-              data-delay={delay}
+            <div
+              className={`${className}__desc`}
               style={{
-                fontSize: numberSize + "px",
-                color: numberColor,
-                fontWeight: numberWeight
+                justifyContent: align
               }}
             >
-              {increment}
-            </p>
-            {suffix && "" !== suffixTxt && (
+              {prefix && (
+                <p
+                  style={{
+                    fontSize: prefixSize + "px",
+                    color: prefixColor,
+                    fontWeight: prefixWeight,
+                    marginRight: prefixGap + "px"
+                  }}
+                >
+                  {prefixTxt}
+                </p>
+              )}
               <p
+                className={`${className}__increment`}
+                data-interval={time}
+                data-delay={delay}
                 style={{
-                  fontSize: suffixSize + "px",
-                  color: suffixColor,
-                  fontWeight: suffixWeight,
-                  marginLeft: suffixGap + "px"
+                  fontSize: numberSize + "px",
+                  color: numberColor,
+                  fontWeight: numberWeight
                 }}
               >
-                {suffixTxt}
+                {increment}
               </p>
-            )}
+              {suffix && (
+                <p
+                  style={{
+                    fontSize: suffixSize + "px",
+                    color: suffixColor,
+                    fontWeight: suffixWeight,
+                    marginLeft: suffixGap + "px"
+                  }}
+                >
+                  {suffixTxt}
+                </p>
+              )}
+            </div>
           </div>
         </div>
       ];
@@ -523,7 +683,16 @@ if (countUp) {
         icon,
         imageURL,
         iconSize,
-        iconColor
+        iconColor,
+        selfAlign,
+        titleCheck,
+        titleTxt,
+        titleColor,
+        titleSize,
+        titleT,
+        titleB,
+        titleWeight,
+        faIcon
       } = props.attributes;
       return (
         <div
@@ -534,56 +703,101 @@ if (countUp) {
           }}
         >
           {iconCheck && (
-            <div className={`${className}__icon`}>
+            <div
+              className={`${className}__icon`}
+              style={{
+                alignSelf:
+                  "row-reverse" === flexDir || "row" === flexDir
+                    ? "center"
+                    : selfAlign
+              }}
+            >
               {"icon" === icon && (
                 <span
-                  className={`${className}__icon dashicons dashicons-clock`}
+                  className={`${className}__icon ${faIcon}`}
                   style={{
                     fontSize: iconSize + "px",
                     color: iconColor
                   }}
                 />
               )}
-              {"img" === icon && imageURL && <img src={imageURL} />}
+              {"img" === icon && imageURL && (
+                <img
+                  src={imageURL}
+                  style={{
+                    width: iconSize + "px",
+                    height: iconSize + "px"
+                  }}
+                />
+              )}
             </div>
           )}
-          <div className={`${className}__container`}>
-            {prefix && "" !== prefixTxt && (
-              <p
+          <div
+            className={`${className}__info`}
+            style={{
+              alignSelf:
+                "row-reverse" === flexDir || "row" === flexDir
+                  ? "center"
+                  : selfAlign
+            }}
+          >
+            {titleCheck && (
+              <h3
+                className={`${className}__title`}
                 style={{
-                  fontSize: prefixSize + "px",
-                  color: prefixColor,
-                  fontWeight: prefixWeight,
-                  marginRight: prefixGap + "px"
+                  fontSize: titleSize + "px",
+                  marginTop: titleT + "px",
+                  marginBottom: titleB + "px",
+                  color: titleColor,
+                  fontWeight: titleWeight
                 }}
               >
-                {prefixTxt}
-              </p>
+                {titleTxt}
+              </h3>
             )}
-            <p
-              className={`${className}__increment`}
-              data-interval={time}
-              data-delay={delay}
+            <div
+              className={`${className}__desc`}
               style={{
-                fontSize: numberSize + "px",
-                color: numberColor,
-                fontWeight: numberWeight
+                justifyContent: align
               }}
             >
-              {increment}
-            </p>
-            {suffix && "" !== suffixTxt && (
+              {prefix && (
+                <p
+                  style={{
+                    fontSize: prefixSize + "px",
+                    color: prefixColor,
+                    fontWeight: prefixWeight,
+                    marginRight: prefixGap + "px"
+                  }}
+                >
+                  {prefixTxt}
+                </p>
+              )}
               <p
+                className={`${className}__increment`}
+                data-interval={time}
+                data-delay={delay}
                 style={{
-                  fontSize: suffixSize + "px",
-                  color: suffixColor,
-                  fontWeight: suffixWeight,
-                  marginLeft: suffixGap + "px"
+                  fontSize: numberSize + "px",
+                  color: numberColor,
+                  fontWeight: numberWeight
                 }}
               >
-                {suffixTxt}
+                {increment}
               </p>
-            )}
+              {suffix && (
+                <p
+                  style={{
+                    fontSize: suffixSize + "px",
+                    color: suffixColor,
+                    fontWeight: suffixWeight,
+                    marginLeft: suffixGap + "px"
+                  }}
+                >
+                  {suffixTxt}
+                </p>
+              )}
+            </div>
           </div>
         </div>
       );

@@ -17,7 +17,7 @@ if (testimonial) {
     SelectControl,
     RangeControl,
     TextControl,
-    CheckboxControl
+    ToggleControl
   } = wp.components;
 
   const {
@@ -371,7 +371,7 @@ if (testimonial) {
                   }
                 ]}
               />
-              <CheckboxControl
+              <ToggleControl
                 label={__("URL")}
                 checked={urlCheck}
                 onChange={newCheck => setAttributes({ urlCheck: newCheck })}
@@ -384,7 +384,7 @@ if (testimonial) {
                 />
               )}
               {urlCheck && (
-                <CheckboxControl
+                <ToggleControl
                   label={__("Open Link in a New Tab")}
                   checked={urlTarget}
                   onChange={newCheck => setAttributes({ urlTarget: newCheck })}

@@ -904,7 +904,7 @@ a.premium-dheading-block__link:hover {
 /**************** Premium Count Up *********************/
 /*******************************************************/
 .premium-countup__wrap,
-.premium-countup__container {
+.premium-countup__desc {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: -moz-flex;
@@ -912,10 +912,14 @@ a.premium-dheading-block__link:hover {
   display: flex;
   align-items: baseline;
 }
+.premium-countup__wrap .premium-countup__title {
+  margin: 0;
+  padding: 0;
+}
 .premium-countup__wrap {
   align-items: center;
 }
-.premium-countup__container p {
+.premium-countup__desc p {
   margin: 0;
   padding: 0;
 }

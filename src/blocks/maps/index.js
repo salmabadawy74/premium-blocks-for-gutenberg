@@ -10,7 +10,6 @@ if (maps) {
     IconButton,
     Toolbar,
     PanelBody,
-    PanelColor,
     SelectControl,
     RangeControl,
     TextControl,
@@ -18,7 +17,7 @@ if (maps) {
     CheckboxControl
   } = wp.components;
 
-  const { InspectorControls, MediaUpload, ColorPalette } = wp.editor;
+  const { InspectorControls, MediaUpload, PanelColorSettings } = wp.editor;
 
   const { Component } = wp.element;
 
@@ -242,7 +241,7 @@ if (maps) {
                 label={__("Enable Marker")}
                 checked={mapMarker}
                 onChange={check => setAttributes({ mapMarker: check })}
-                help={__('Disable marker is applied on page reload')}
+                help={__("Disable marker is applied on page reload")}
               />
               {mapMarker && (
                 <TextControl
@@ -332,14 +331,16 @@ if (maps) {
             </PanelBody>
             {mapMarker && "" !== markerTitle && (
               <PanelBody title={__("Marker Title Style")} initialOpen={false}>
-                <PanelColor title={__("Color")} colorValue={titleColor}>
-                  <ColorPalette
-                    value={titleColor}
-                    onChange={newColor =>
-                      setAttributes({ titleColor: newColor })
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: titleColor,
+                      onChange: colorValue =>
+                        setAttributes({ titleColor: colorValue }),
+                      label: __("Color")
                     }
-                  />
-                </PanelColor>
+                  ]}
+                />
                 <RangeControl
                   label={__("Font Size (PX)")}
                   value={titleSize}
@@ -354,14 +355,16 @@ if (maps) {
                 title={__("Marker Description Style")}
                 initialOpen={false}
               >
-                <PanelColor title={__("Color")} colorValue={descColor}>
-                  <ColorPalette
-                    value={descColor}
-                    onChange={newColor =>
-                      setAttributes({ descColor: newColor })
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: descColor,
+                      onChange: colorValue =>
+                        setAttributes({ descColor: colorValue }),
+                      label: __("Color")
                     }
-                  />
-                </PanelColor>
+                  ]}
+                />
                 <RangeControl
                   label={__("Font Size (PX)")}
                   value={descSize}
