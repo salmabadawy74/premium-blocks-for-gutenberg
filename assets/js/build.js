@@ -5630,12 +5630,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* countUp */]) {
           ),
           wp.element.createElement(
             "div",
-            {
-              className: className + "__desc",
-              style: {
-                justifyContent: align
-              }
-            },
+            { className: className + "__desc" },
             prefix && wp.element.createElement(
               "p",
               {
@@ -5786,12 +5781,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* countUp */]) {
           ),
           wp.element.createElement(
             "div",
-            {
-              className: className + "__desc",
-              style: {
-                justifyContent: align
-              }
-            },
+            { className: className + "__desc" },
             prefix && wp.element.createElement(
               "p",
               {
@@ -5858,614 +5848,1636 @@ function PremiumIcon(props) {
     value: "",
     label: "none"
   }, {
-    value: " dashicons dashicons-menu",
-    label: "menu"
-  }, {
-    value: " dashicons dashicons-dashboard",
-    label: "dashboard"
-  }, {
-    value: " dashicons dashicons-admin-site",
-    label: "admin-site"
-  }, {
-    value: " dashicons dashicons-admin-media",
-    label: "admin-media"
-  }, {
-    value: " dashicons dashicons-admin-page",
-    label: "admin-page"
-  }, {
-    value: " dashicons dashicons-admin-comments",
-    label: "admin-comments"
-  }, {
-    value: " dashicons dashicons-admin-appearance",
-    label: "admin-appearance"
-  }, {
-    value: " dashicons dashicons-admin-plugins",
-    label: "admin-plugins"
-  }, {
-    value: " dashicons dashicons-admin-users",
-    label: "admin-users"
-  }, {
-    value: " dashicons dashicons-admin-tools",
-    label: "admin-tools"
-  }, {
-    value: " dashicons dashicons-admin-settings",
-    label: "admin-settings"
-  }, {
-    value: " dashicons dashicons-admin-network",
-    label: "admin-network"
-  }, {
-    value: " dashicons dashicons-admin-generic",
-    label: "admin-generic"
-  }, {
-    value: " dashicons dashicons-admin-home",
-    label: "admin-home"
-  }, {
-    value: " dashicons dashicons-admin-collapse",
-    label: "admin-collapse"
-  }, {
-    value: " dashicons dashicons-admin-links",
-    label: "admin-links"
-  }, {
-    value: " dashicons dashicons-admin-post",
-    label: "admin-post"
-  }, {
-    value: " dashicons dashicons-format-standard",
-    label: "format-standard"
-  }, {
-    value: " dashicons dashicons-format-image",
-    label: "format-image"
-  }, {
-    value: " dashicons dashicons-format-gallery",
-    label: "format-gallery"
-  }, {
-    value: " dashicons dashicons-format-audio",
-    label: "format-audio"
-  }, {
-    value: " dashicons dashicons-format-video",
-    label: "format-video"
-  }, {
-    value: " dashicons dashicons-format-links",
-    label: "format-links"
-  }, {
-    value: " dashicons dashicons-format-chat",
-    label: "format-chat"
-  }, {
-    value: " dashicons dashicons-format-status",
-    label: "format-status"
-  }, {
-    value: " dashicons dashicons-format-aside",
-    label: "format-aside"
-  }, {
-    value: " dashicons dashicons-format-quote",
-    label: "format-quote"
-  }, {
-    value: " dashicons dashicons-welcome-write-blog",
-    label: "welcome-write-blog"
-  }, {
-    value: " dashicons dashicons-welcome-edit-page",
-    label: "welcome-edit-page"
-  }, {
-    value: " dashicons dashicons-welcome-add-page",
-    label: "welcome-add-page"
-  }, {
-    value: " dashicons dashicons-welcome-view-site",
-    label: "welcome-view-site"
-  }, {
-    value: " dashicons dashicons-welcome-widgets-menus",
-    label: "welcome-widgets-menus"
-  }, {
-    value: " dashicons dashicons-welcome-comments",
-    label: "welcome-comments"
-  }, {
-    value: " dashicons dashicons-welcome-learn-more",
-    label: "welcome-learn-more"
-  }, {
-    value: " dashicons dashicons-image-crop",
-    label: "image-crop"
-  }, {
-    value: " dashicons dashicons-image-rotate-left",
-    label: "image-rotate-left"
-  }, {
-    value: " dashicons dashicons-image-rotate-right",
-    label: "image-rotate-right"
-  }, {
-    value: " dashicons dashicons-image-flip-vertical",
-    label: "image-flip-vertical"
-  }, {
-    value: " dashicons dashicons-image-flip-horizontal",
-    label: "image-flip-horizontal"
-  }, {
-    value: " dashicons dashicons-undo",
-    label: "undo"
-  }, {
-    value: " dashicons dashicons-redo",
-    label: "redo"
-  }, {
-    value: " dashicons dashicons-editor-bold",
-    label: "editor-bold"
-  }, {
-    value: " dashicons dashicons-editor-italic",
-    label: "editor-italic"
-  }, {
-    value: " dashicons dashicons-editor-ul",
-    label: "editor-ul"
-  }, {
-    value: " dashicons dashicons-editor-ol",
-    label: "editor-ol"
-  }, {
-    value: " dashicons dashicons-editor-quote",
-    label: "editor-quote"
-  }, {
-    value: " dashicons dashicons-editor-alignleft",
-    label: "editor-alignleft"
-  }, {
-    value: " dashicons dashicons-editor-aligncenter",
-    label: "editor-aligncenter"
-  }, {
-    value: " dashicons dashicons-editor-alignright",
-    label: "editor-alignright"
-  }, {
-    value: " dashicons dashicons-editor-insertmore",
-    label: "editor-insertmore"
-  }, {
-    value: " dashicons dashicons-editor-spellcheck",
-    label: "editor-spellcheck"
-  }, {
-    value: " dashicons dashicons-editor-distractionfree",
-    label: "editor-distractionfree"
-  }, {
-    value: " dashicons dashicons-editor-expand",
-    label: "editor-expand"
-  }, {
-    value: " dashicons dashicons-editor-contract",
-    label: "editor-contract"
-  }, {
-    value: " dashicons dashicons-editor-kitchensink",
-    label: "editor-kitchensink"
-  }, {
-    value: " dashicons dashicons-editor-underline",
-    label: "editor-underline"
-  }, {
-    value: " dashicons dashicons-editor-justify",
-    label: "editor-justify"
-  }, {
-    value: " dashicons dashicons-editor-textcolor",
-    label: "editor-textcolor"
-  }, {
-    value: " dashicons dashicons-editor-paste-word",
-    label: "editor-paste-word"
-  }, {
-    value: " dashicons dashicons-editor-paste-text",
-    label: "editor-paste-text"
-  }, {
-    value: " dashicons dashicons-editor-removeformatting",
-    label: "editor-removeformatting"
-  }, {
-    value: " dashicons dashicons-editor-video",
-    label: "editor-video"
-  }, {
-    value: " dashicons dashicons-editor-customchar",
-    label: "editor-customchar"
-  }, {
-    value: " dashicons dashicons-editor-outdent",
-    label: "editor-outdent"
-  }, {
-    value: " dashicons dashicons-editor-indent",
-    label: "editor-indent"
-  }, {
-    value: " dashicons dashicons-editor-help",
-    label: "editor-help"
-  }, {
-    value: " dashicons dashicons-editor-strikethrough",
-    label: "editor-strikethrough"
-  }, {
-    value: " dashicons dashicons-editor-unlink",
-    label: "editor-unlink"
-  }, {
-    value: " dashicons dashicons-editor-rtl",
-    label: "editor-rtl"
-  }, {
-    value: " dashicons dashicons-editor-break",
-    label: "editor-break"
-  }, {
-    value: " dashicons dashicons-editor-code",
-    label: "editor-code"
-  }, {
-    value: " dashicons dashicons-editor-paragraph",
-    label: "editor-paragraph"
-  }, {
-    value: " dashicons dashicons-align-left",
-    label: "align-left"
-  }, {
-    value: " dashicons dashicons-align-right",
-    label: "align-right"
-  }, {
-    value: " dashicons dashicons-align-center",
-    label: "align-center"
-  }, {
-    value: " dashicons dashicons-align-none",
-    label: "align-none"
-  }, {
-    value: " dashicons dashicons-lock",
-    label: "lock"
-  }, {
-    value: " dashicons dashicons-calendar",
-    label: "calendar"
-  }, {
-    value: " dashicons dashicons-visibility",
-    label: "visibility"
-  }, {
-    value: " dashicons dashicons-post-status",
-    label: "post-status"
-  }, {
-    value: " dashicons dashicons-edit",
-    label: "edit"
-  }, {
-    value: " dashicons dashicons-post-trash",
-    label: "post-trash"
-  }, {
-    value: " dashicons dashicons-trash",
-    label: "trash"
-  }, {
-    value: " dashicons dashicons-external",
-    label: "external"
-  }, {
-    value: " dashicons dashicons-arrow-up",
-    label: "arrow-up"
-  }, {
-    value: " dashicons dashicons-arrow-down",
-    label: "arrow-down"
-  }, {
-    value: " dashicons dashicons-arrow-left",
-    label: "arrow-left"
-  }, {
-    value: " dashicons dashicons-arrow-right",
-    label: "arrow-right"
-  }, {
-    value: " dashicons dashicons-arrow-up-alt",
-    label: "arrow-up-alt"
-  }, {
-    value: " dashicons dashicons-arrow-down-alt",
-    label: "arrow-down-alt"
-  }, {
-    value: " dashicons dashicons-arrow-left-alt",
-    label: "arrow-left-alt"
-  }, {
-    value: " dashicons dashicons-arrow-right-alt",
-    label: "arrow-right-alt"
-  }, {
-    value: " dashicons dashicons-arrow-up-alt2",
-    label: "arrow-up-alt2"
-  }, {
-    value: " dashicons dashicons-arrow-down-alt2",
-    label: "arrow-down-alt2"
-  }, {
-    value: " dashicons dashicons-arrow-left-alt2",
-    label: "arrow-left-alt2"
-  }, {
-    value: " dashicons dashicons-arrow-right-alt2",
-    label: "arrow-right-alt2"
-  }, {
-    value: " dashicons dashicons-leftright",
-    label: "leftright"
-  }, {
-    value: " dashicons dashicons-sort",
-    label: "sort"
-  }, {
-    value: " dashicons dashicons-randomize",
-    label: "randomize"
-  }, {
-    value: " dashicons dashicons-list-view",
-    label: "list-view"
-  }, {
-    value: " dashicons dashicons-exerpt-view",
-    label: "exerpt-view"
-  }, {
-    value: " dashicons dashicons-hammer",
-    label: "hammer"
-  }, {
-    value: " dashicons dashicons-art",
-    label: "art"
-  }, {
-    value: " dashicons dashicons-migrate",
-    label: "migrate"
-  }, {
-    value: " dashicons dashicons-performance",
-    label: "performance"
-  }, {
-    value: " dashicons dashicons-universal-access",
-    label: "universal-access"
-  }, {
-    value: " dashicons dashicons-universal-access-alt",
-    label: "universal-access-alt"
-  }, {
-    value: " dashicons dashicons-tickets",
-    label: "tickets"
-  }, {
-    value: " dashicons dashicons-nametag",
-    label: "nametag"
-  }, {
-    value: " dashicons dashicons-clipboard",
-    label: "clipboard"
-  }, {
-    value: " dashicons dashicons-heart",
-    label: "heart"
-  }, {
-    value: " dashicons dashicons-megaphone",
-    label: "megaphone"
-  }, {
-    value: " dashicons dashicons-schedule",
-    label: "schedule"
-  }, {
-    value: " dashicons dashicons-wordpress",
-    label: "wordpress"
-  }, {
-    value: " dashicons dashicons-wordpress-alt",
-    label: "wordpress-alt"
-  }, {
-    value: " dashicons dashicons-pressthis,",
-    label: "pressthis,"
-  }, {
-    value: " dashicons dashicons-update,",
-    label: "update,"
-  }, {
-    value: " dashicons dashicons-screenoptions",
-    label: "screenoptions"
-  }, {
-    value: " dashicons dashicons-info",
-    label: "info"
-  }, {
-    value: " dashicons dashicons-cart",
-    label: "cart"
-  }, {
-    value: " dashicons dashicons-feedback",
-    label: "feedback"
-  }, {
-    value: " dashicons dashicons-cloud",
-    label: "cloud"
-  }, {
-    value: " dashicons dashicons-translation",
-    label: "translation"
-  }, {
-    value: " dashicons dashicons-tag",
-    label: "tag"
-  }, {
-    value: " dashicons dashicons-category",
-    label: "category"
-  }, {
-    value: " dashicons dashicons-archive",
-    label: "archive"
-  }, {
-    value: " dashicons dashicons-tagcloud",
-    label: "tagcloud"
-  }, {
-    value: " dashicons dashicons-text",
-    label: "text"
-  }, {
-    value: " dashicons dashicons-media-archive",
-    label: "media-archive"
-  }, {
-    value: " dashicons dashicons-media-audio",
-    label: "media-audio"
-  }, {
-    value: " dashicons dashicons-media-code",
-    label: "media-code"
-  }, {
-    value: " dashicons dashicons-media-default",
-    label: "media-default"
-  }, {
-    value: " dashicons dashicons-media-document",
-    label: "media-document"
-  }, {
-    value: " dashicons dashicons-media-interactive",
-    label: "media-interactive"
-  }, {
-    value: " dashicons dashicons-media-spreadsheet",
-    label: "media-spreadsheet"
-  }, {
-    value: " dashicons dashicons-media-text",
-    label: "media-text"
-  }, {
-    value: " dashicons dashicons-media-video",
-    label: "media-video"
-  }, {
-    value: " dashicons dashicons-playlist-audio",
-    label: "playlist-audio"
-  }, {
-    value: " dashicons dashicons-playlist-video",
-    label: "playlist-video"
-  }, {
-    value: " dashicons dashicons-yes",
-    label: "yes"
-  }, {
-    value: " dashicons dashicons-no",
-    label: "no"
-  }, {
-    value: " dashicons dashicons-no-alt",
-    label: "no-alt"
-  }, {
-    value: " dashicons dashicons-plus",
-    label: "plus"
-  }, {
-    value: " dashicons dashicons-plus-alt",
-    label: "plus-alt"
-  }, {
-    value: " dashicons dashicons-minus",
-    label: "minus"
-  }, {
-    value: " dashicons dashicons-dismiss",
-    label: "dismiss"
-  }, {
-    value: " dashicons dashicons-marker",
-    label: "marker"
-  }, {
-    value: " dashicons dashicons-star-filled",
-    label: "star-filled"
-  }, {
-    value: " dashicons dashicons-star-half",
-    label: "star-half"
-  }, {
-    value: " dashicons dashicons-star-empty",
-    label: "star-empty"
-  }, {
-    value: " dashicons dashicons-flag",
-    label: "flag"
-  }, {
-    value: " dashicons dashicons-share",
-    label: "share"
-  }, {
-    value: " dashicons dashicons-share1",
-    label: "share1"
-  }, {
-    value: " dashicons dashicons-share-alt",
-    label: "share-alt"
-  }, {
-    value: " dashicons dashicons-share-alt2",
-    label: "share-alt2"
-  }, {
-    value: " dashicons dashicons-twitter",
-    label: "twitter"
-  }, {
-    value: " dashicons dashicons-rss",
-    label: "rss"
-  }, {
-    value: " dashicons dashicons-email",
-    label: "email"
-  }, {
-    value: " dashicons dashicons-email-alt",
-    label: "email-alt"
-  }, {
-    value: " dashicons dashicons-facebook",
-    label: "facebook"
-  }, {
-    value: " dashicons dashicons-facebook-alt",
-    label: "facebook-alt"
-  }, {
-    value: " dashicons dashicons-networking",
-    label: "networking"
-  }, {
-    value: " dashicons dashicons-googleplus",
-    label: "googleplus"
-  }, {
-    value: " dashicons dashicons-location",
-    label: "location"
-  }, {
-    value: " dashicons dashicons-location-alt",
-    label: "location-alt"
-  }, {
-    value: " dashicons dashicons-camera",
-    label: "camera"
-  }, {
-    value: " dashicons dashicons-images-alt",
-    label: "images-alt"
-  }, {
-    value: " dashicons dashicons-images-alt2",
-    label: "images-alt2"
-  }, {
-    value: " dashicons dashicons-video-alt",
-    label: "video-alt"
-  }, {
-    value: " dashicons dashicons-video-alt2",
-    label: "video-alt2"
-  }, {
-    value: " dashicons dashicons-video-alt3",
-    label: "video-alt3"
-  }, {
-    value: " dashicons dashicons-vault",
-    label: "vault"
-  }, {
-    value: " dashicons dashicons-shield",
-    label: "shield"
-  }, {
-    value: " dashicons dashicons-shield-alt",
-    label: "shield-alt"
-  }, {
-    value: " dashicons dashicons-sos",
-    label: "sos"
-  }, {
-    value: " dashicons dashicons-search",
-    label: "search"
-  }, {
-    value: " dashicons dashicons-slides",
-    label: "slides"
-  }, {
-    value: " dashicons dashicons-analytics",
-    label: "analytics"
-  }, {
-    value: " dashicons dashicons-chart-pie",
-    label: "chart-pie"
-  }, {
-    value: " dashicons dashicons-chart-bar",
-    label: "chart-bar"
-  }, {
-    value: " dashicons dashicons-chart-line",
-    label: "chart-line"
-  }, {
-    value: " dashicons dashicons-chart-area",
-    label: "chart-area"
-  }, {
-    value: " dashicons dashicons-groups",
-    label: "groups"
-  }, {
-    value: " dashicons dashicons-businessman",
-    label: "businessman"
-  }, {
-    value: " dashicons dashicons-id",
-    label: "id"
-  }, {
-    value: " dashicons dashicons-id-alt",
-    label: "id-alt"
-  }, {
-    value: " dashicons dashicons-products",
-    label: "products"
-  }, {
-    value: " dashicons dashicons-awards",
-    label: "awards"
-  }, {
-    value: " dashicons dashicons-forms",
-    label: "forms"
-  }, {
-    value: " dashicons dashicons-testimonial",
-    label: "testimonial"
-  }, {
-    value: " dashicons dashicons-portfolio",
-    label: "portfolio"
-  }, {
-    value: " dashicons dashicons-book",
-    label: "book"
-  }, {
-    value: " dashicons dashicons-book-alt",
-    label: "book-alt"
-  }, {
-    value: " dashicons dashicons-download",
-    label: "download"
-  }, {
-    value: " dashicons dashicons-upload",
-    label: "upload"
-  }, {
-    value: " dashicons dashicons-backup",
-    label: "backup"
-  }, {
-    value: " dashicons dashicons-clock",
-    label: "clock"
-  }, {
-    value: " dashicons dashicons-lightbulb",
-    label: "lightbulb"
-  }, {
-    value: " dashicons dashicons-microphone",
-    label: "microphone"
-  }, {
-    value: " dashicons dashicons-desktop",
-    label: "desktop"
-  }, {
-    value: " dashicons dashicons-tablet",
-    label: "tablet"
-  }, {
-    value: " dashicons dashicons-smartphone",
-    label: "smartphone"
-  }, {
-    value: " dashicons dashicons-smiley",
-    label: "smiley"
+    value: "dashicons dashicons-menu",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF333 dashicons-menu"
+    )
+  }, {
+    value: "dashicons dashicons-admin-site",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF319 dashicons-admin-site"
+    )
+  }, {
+    value: "dashicons dashicons-dashboard",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF226 dashicons-dashboard"
+    )
+  }, {
+    value: "dashicons dashicons-admin-post",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF109 dashicons-admin-post"
+    )
+  }, {
+    value: "dashicons dashicons-admin-media",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF104 dashicons-admin-media"
+    )
+  }, {
+    value: "dashicons dashicons-admin-links",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF103 dashicons-admin-links"
+    )
+  }, {
+    value: "dashicons dashicons-admin-page",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF105 dashicons-admin-page"
+    )
+  }, {
+    value: "dashicons dashicons-admin-comments",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF101 dashicons-admin-comments"
+    )
+  }, {
+    value: "dashicons dashicons-admin-appearance",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF100 dashicons-admin-appearance"
+    )
+  }, {
+    value: "dashicons dashicons-admin-plugins",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF106 dashicons-admin-plugins"
+    )
+  }, {
+    value: "dashicons dashicons-admin-users",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF110 dashicons-admin-users"
+    )
+  }, {
+    value: "dashicons dashicons-admin-tools",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF107 dashicons-admin-tools"
+    )
+  }, {
+    value: "dashicons dashicons-admin-settings",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF108 dashicons-admin-settings"
+    )
+  }, {
+    value: "dashicons dashicons-admin-network",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF112 dashicons-admin-network"
+    )
+  }, {
+    value: "dashicons dashicons-admin-home",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF102 dashicons-admin-home"
+    )
+  }, {
+    value: "dashicons dashicons-admin-generic",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF111 dashicons-admin-generic"
+    )
+  }, {
+    value: "dashicons dashicons-admin-collapse",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF148 dashicons-admin-collapse"
+    )
+  }, {
+    value: "dashicons dashicons-filter",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF536 dashicons-filter"
+    )
+  }, {
+    value: "dashicons dashicons-admin-customizer",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF540 dashicons-admin-customizer"
+    )
+  }, {
+    value: "dashicons dashicons-admin-multisite",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF541 dashicons-admin-multisite"
+    )
+  }, {
+    value: "dashicons dashicons-welcome-write-blog",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF119 dashicons-welcome-write-blog"
+    )
+  }, {
+    value: "dashicons dashicons-welcome-add-page",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF133 dashicons-welcome-add-page"
+    )
+  }, {
+    value: "dashicons dashicons-welcome-view-site",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF115 dashicons-welcome-view-site"
+    )
+  }, {
+    value: "dashicons dashicons-welcome-widgets-menus",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF116 dashicons-welcome-widgets-menus"
+    )
+  }, {
+    value: "dashicons dashicons-welcome-comments",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF117 dashicons-welcome-comments"
+    )
+  }, {
+    value: "dashicons dashicons-welcome-learn-more",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF118 dashicons-welcome-learn-more"
+    )
+  }, {
+    value: "dashicons dashicons-format-aside",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF123 dashicons-format-aside"
+    )
+  }, {
+    value: "dashicons dashicons-format-image",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF128 dashicons-format-image"
+    )
+  }, {
+    value: "dashicons dashicons-format-gallery",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF161 dashicons-format-gallery"
+    )
+  }, {
+    value: "dashicons dashicons-format-video",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF126 dashicons-format-video"
+    )
+  }, {
+    value: "dashicons dashicons-format-status",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF130 dashicons-format-status"
+    )
+  }, {
+    value: "dashicons dashicons-format-quote",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF122 dashicons-format-quote"
+    )
+  }, {
+    value: "dashicons dashicons-format-chat",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF125 dashicons-format-chat"
+    )
+  }, {
+    value: "dashicons dashicons-format-audio",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF127 dashicons-format-audio"
+    )
+  }, {
+    value: "dashicons dashicons-camera",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF306 dashicons-camera"
+    )
+  }, {
+    value: "dashicons dashicons-images-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF232 dashicons-images-alt"
+    )
+  }, {
+    value: "dashicons dashicons-images-alt2",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF233 dashicons-images-alt2"
+    )
+  }, {
+    value: "dashicons dashicons-video-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF234 dashicons-video-alt"
+    )
+  }, {
+    value: "dashicons dashicons-video-alt2",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF235 dashicons-video-alt2"
+    )
+  }, {
+    value: "dashicons dashicons-video-alt3",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF236 dashicons-video-alt3"
+    )
+  }, {
+    value: "dashicons dashicons-media-archive",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF501 dashicons-media-archive"
+    )
+  }, {
+    value: "dashicons dashicons-media-audio",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF500 dashicons-media-audio"
+    )
+  }, {
+    value: "dashicons dashicons-media-code",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF499 dashicons-media-code"
+    )
+  }, {
+    value: "dashicons dashicons-media-default",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF498 dashicons-media-default"
+    )
+  }, {
+    value: "dashicons dashicons-media-document",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF497 dashicons-media-document"
+    )
+  }, {
+    value: "dashicons dashicons-media-interactive",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF496 dashicons-media-interactive"
+    )
+  }, {
+    value: "dashicons dashicons-media-spreadsheet",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF495 dashicons-media-spreadsheet"
+    )
+  }, {
+    value: "dashicons dashicons-media-text",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF491 dashicons-media-text"
+    )
+  }, {
+    value: "dashicons dashicons-media-video",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF490 dashicons-media-video"
+    )
+  }, {
+    value: "dashicons dashicons-playlist-audio",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF492 dashicons-playlist-audio"
+    )
+  }, {
+    value: "dashicons dashicons-playlist-video",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF493 dashicons-playlist-video"
+    )
+  }, {
+    value: "dashicons dashicons-controls-play",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF522 dashicons-controls-play"
+    )
+  }, {
+    value: "dashicons dashicons-controls-pause",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF523 dashicons-controls-pause"
+    )
+  }, {
+    value: "dashicons dashicons-controls-forward",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF519 dashicons-controls-forward"
+    )
+  }, {
+    value: "dashicons dashicons-controls-skipforward",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF517 dashicons-controls-skipforward"
+    )
+  }, {
+    value: "dashicons dashicons-controls-back",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF518 dashicons-controls-back"
+    )
+  }, {
+    value: "dashicons dashicons-controls-skipback",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF516 dashicons-controls-skipback"
+    )
+  }, {
+    value: "dashicons dashicons-controls-repeat",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF515 dashicons-controls-repeat"
+    )
+  }, {
+    value: "dashicons dashicons-controls-volumeon",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF521 dashicons-controls-volumeon"
+    )
+  }, {
+    value: "dashicons dashicons-controls-volumeoff",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF520 dashicons-controls-volumeoff"
+    )
+  }, {
+    value: "dashicons dashicons-image-crop",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF165 dashicons-image-crop"
+    )
+  }, {
+    value: "dashicons dashicons-image-rotate",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF531 dashicons-image-rotate"
+    )
+  }, {
+    value: "dashicons dashicons-image-rotate-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF166 dashicons-image-rotate-left"
+    )
+  }, {
+    value: "dashicons dashicons-image-rotate-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF167 dashicons-image-rotate-right"
+    )
+  }, {
+    value: "dashicons dashicons-image-flip-vertical",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF168 dashicons-image-flip-vertical"
+    )
+  }, {
+    value: "dashicons dashicons-image-flip-horizontal",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF169 dashicons-image-flip-horizontal"
+    )
+  }, {
+    value: "dashicons dashicons-image-filter",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF533 dashicons-image-filter"
+    )
+  }, {
+    value: "dashicons dashicons-undo",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF171 dashicons-undo"
+    )
+  }, {
+    value: "dashicons dashicons-redo",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF172 dashicons-redo"
+    )
+  }, {
+    value: "dashicons dashicons-editor-bold",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF200 dashicons-editor-bold"
+    )
+  }, {
+    value: "dashicons dashicons-editor-italic",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF201 dashicons-editor-italic"
+    )
+  }, {
+    value: "dashicons dashicons-editor-ul",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF203 dashicons-editor-ul"
+    )
+  }, {
+    value: "dashicons dashicons-editor-ol",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF204 dashicons-editor-ol"
+    )
+  }, {
+    value: "dashicons dashicons-editor-quote",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF205 dashicons-editor-quote"
+    )
+  }, {
+    value: "dashicons dashicons-editor-alignleft",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF206 dashicons-editor-alignleft"
+    )
+  }, {
+    value: "dashicons dashicons-editor-aligncenter",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF207 dashicons-editor-aligncenter"
+    )
+  }, {
+    value: "dashicons dashicons-editor-alignright",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF208 dashicons-editor-alignright"
+    )
+  }, {
+    value: "dashicons dashicons-editor-insertmore",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF209 dashicons-editor-insertmore"
+    )
+  }, {
+    value: "dashicons dashicons-editor-spellcheck",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF210 dashicons-editor-spellcheck"
+    )
+  }, {
+    value: "dashicons dashicons-editor-expand",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF211 dashicons-editor-expand"
+    )
+  }, {
+    value: "dashicons dashicons-editor-contract",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF506 dashicons-editor-contract"
+    )
+  }, {
+    value: "dashicons dashicons-editor-kitchensink",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF212 dashicons-editor-kitchensink"
+    )
+  }, {
+    value: "dashicons dashicons-editor-underline",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF213 dashicons-editor-underline"
+    )
+  }, {
+    value: "dashicons dashicons-editor-justify",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF214 dashicons-editor-justify"
+    )
+  }, {
+    value: "dashicons dashicons-editor-textcolor",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF215 dashicons-editor-textcolor"
+    )
+  }, {
+    value: "dashicons dashicons-editor-paste-word",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF216 dashicons-editor-paste-word"
+    )
+  }, {
+    value: "dashicons dashicons-editor-paste-text",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF217 dashicons-editor-paste-text"
+    )
+  }, {
+    value: "dashicons dashicons-editor-removeformatting",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF218 dashicons-editor-removeformatting"
+    )
+  }, {
+    value: "dashicons dashicons-editor-video",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF219 dashicons-editor-video"
+    )
+  }, {
+    value: "dashicons dashicons-editor-customchar",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF220 dashicons-editor-customchar"
+    )
+  }, {
+    value: "dashicons dashicons-editor-outdent",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF221 dashicons-editor-outdent"
+    )
+  }, {
+    value: "dashicons dashicons-editor-indent",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF222 dashicons-editor-indent"
+    )
+  }, {
+    value: "dashicons dashicons-editor-help",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF223 dashicons-editor-help"
+    )
+  }, {
+    value: "dashicons dashicons-editor-strikethrough",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF224 dashicons-editor-strikethrough"
+    )
+  }, {
+    value: "dashicons dashicons-editor-unlink",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF225 dashicons-editor-unlink"
+    )
+  }, {
+    value: "dashicons dashicons-editor-rtl",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF320 dashicons-editor-rtl"
+    )
+  }, {
+    value: "dashicons dashicons-editor-break",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF474 dashicons-editor-break"
+    )
+  }, {
+    value: "dashicons dashicons-editor-code",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF475 dashicons-editor-code"
+    )
+  }, {
+    value: "dashicons dashicons-editor-paragraph",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF476 dashicons-editor-paragraph"
+    )
+  }, {
+    value: "dashicons dashicons-editor-table",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF535 dashicons-editor-table"
+    )
+  }, {
+    value: "dashicons dashicons-align-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF135 dashicons-align-left"
+    )
+  }, {
+    value: "dashicons dashicons-align-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF136 dashicons-align-right"
+    )
+  }, {
+    value: "dashicons dashicons-align-center",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF134 dashicons-align-center"
+    )
+  }, {
+    value: "dashicons dashicons-align-none",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF138 dashicons-align-none"
+    )
+  }, {
+    value: "dashicons dashicons-lock",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF160 dashicons-lock"
+    )
+  }, {
+    value: "dashicons dashicons-unlock",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF528 dashicons-unlock"
+    )
+  }, {
+    value: "dashicons dashicons-calendar",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF145 dashicons-calendar"
+    )
+  }, {
+    value: "dashicons dashicons-calendar-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF508 dashicons-calendar-alt"
+    )
+  }, {
+    value: "dashicons dashicons-visibility",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF177 dashicons-visibility"
+    )
+  }, {
+    value: "dashicons dashicons-hidden",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF530 dashicons-hidden"
+    )
+  }, {
+    value: "dashicons dashicons-post-status",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF173 dashicons-post-status"
+    )
+  }, {
+    value: "dashicons dashicons-edit",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF464 dashicons-edit"
+    )
+  }, {
+    value: "dashicons dashicons-trash",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF182 dashicons-trash"
+    )
+  }, {
+    value: "dashicons dashicons-sticky",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF537 dashicons-sticky"
+    )
+  }, {
+    value: "dashicons dashicons-external",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF504 dashicons-external"
+    )
+  }, {
+    value: "dashicons dashicons-arrow-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF142 dashicons-arrow-up"
+    )
+  }, {
+    value: "dashicons dashicons-arrow-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF140 dashicons-arrow-down"
+    )
+  }, {
+    value: "dashicons dashicons-arrow-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF139 dashicons-arrow-right"
+    )
+  }, {
+    value: "dashicons dashicons-arrow-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF141 dashicons-arrow-left"
+    )
+  }, {
+    value: "dashicons dashicons-arrow-up-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF342 dashicons-arrow-up-alt"
+    )
+  }, {
+    value: "dashicons dashicons-arrow-down-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF346 dashicons-arrow-down-alt"
+    )
+  }, {
+    value: "dashicons dashicons-arrow-right-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF344 dashicons-arrow-right-alt"
+    )
+  }, {
+    value: "dashicons dashicons-arrow-left-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF340 dashicons-arrow-left-alt"
+    )
+  }, {
+    value: "dashicons dashicons-arrow-up-alt2",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF343 dashicons-arrow-up-alt2"
+    )
+  }, {
+    value: "dashicons dashicons-arrow-down-alt2",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF347 dashicons-arrow-down-alt2"
+    )
+  }, {
+    value: "dashicons dashicons-arrow-right-alt2",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF345 dashicons-arrow-right-alt2"
+    )
+  }, {
+    value: "dashicons dashicons-arrow-left-alt2",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF341 dashicons-arrow-left-alt2"
+    )
+  }, {
+    value: "dashicons dashicons-sort",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF156 dashicons-sort"
+    )
+  }, {
+    value: "dashicons dashicons-leftright",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF229 dashicons-leftright"
+    )
+  }, {
+    value: "dashicons dashicons-randomize",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF503 dashicons-randomize"
+    )
+  }, {
+    value: "dashicons dashicons-list-view",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF163 dashicons-list-view"
+    )
+  }, {
+    value: "dashicons dashicons-exerpt-view",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF164 dashicons-exerpt-view"
+    )
+  }, {
+    value: "dashicons dashicons-grid-view",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF509 dashicons-grid-view"
+    )
+  }, {
+    value: "dashicons dashicons-move",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF545 dashicons-move"
+    )
+  }, {
+    value: "dashicons dashicons-share",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF237 dashicons-share"
+    )
+  }, {
+    value: "dashicons dashicons-share-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF240 dashicons-share-alt"
+    )
+  }, {
+    value: "dashicons dashicons-share-alt2",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF242 dashicons-share-alt2"
+    )
+  }, {
+    value: "dashicons dashicons-twitter",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF301 dashicons-twitter"
+    )
+  }, {
+    value: "dashicons dashicons-rss",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF303 dashicons-rss"
+    )
+  }, {
+    value: "dashicons dashicons-email",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF465 dashicons-email"
+    )
+  }, {
+    value: "dashicons dashicons-email-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF466 dashicons-email-alt"
+    )
+  }, {
+    value: "dashicons dashicons-facebook",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF304 dashicons-facebook"
+    )
+  }, {
+    value: "dashicons dashicons-facebook-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF305 dashicons-facebook-alt"
+    )
+  }, {
+    value: "dashicons dashicons-googleplus",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF462 dashicons-googleplus"
+    )
+  }, {
+    value: "dashicons dashicons-networking",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF325 dashicons-networking"
+    )
+  }, {
+    value: "dashicons dashicons-hammer",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF308 dashicons-hammer"
+    )
+  }, {
+    value: "dashicons dashicons-art",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF309 dashicons-art"
+    )
+  }, {
+    value: "dashicons dashicons-migrate",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF310 dashicons-migrate"
+    )
+  }, {
+    value: "dashicons dashicons-performance",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF311 dashicons-performance"
+    )
+  }, {
+    value: "dashicons dashicons-universal-access",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF483 dashicons-universal-access"
+    )
+  }, {
+    value: "dashicons dashicons-universal-access-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF507 dashicons-universal-access-alt"
+    )
+  }, {
+    value: "dashicons dashicons-tickets",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF486 dashicons-tickets"
+    )
+  }, {
+    value: "dashicons dashicons-nametag",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF484 dashicons-nametag"
+    )
+  }, {
+    value: "dashicons dashicons-clipboard",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF481 dashicons-clipboard"
+    )
+  }, {
+    value: "dashicons dashicons-heart",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF487 dashicons-heart"
+    )
+  }, {
+    value: "dashicons dashicons-megaphone",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF488 dashicons-megaphone"
+    )
+  }, {
+    value: "dashicons dashicons-schedule",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF489 dashicons-schedule"
+    )
+  }, {
+    value: "dashicons dashicons-wordpress",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF120 dashicons-wordpress"
+    )
+  }, {
+    value: "dashicons dashicons-wordpress-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF324 dashicons-wordpress-alt"
+    )
+  }, {
+    value: "dashicons dashicons-pressthis",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF157 dashicons-pressthis"
+    )
+  }, {
+    value: "dashicons dashicons-update",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF463 dashicons-update"
+    )
+  }, {
+    value: "dashicons dashicons-screenoptions",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF180 dashicons-screenoptions"
+    )
+  }, {
+    value: "dashicons dashicons-info",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF348 dashicons-info"
+    )
+  }, {
+    value: "dashicons dashicons-cart",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF174 dashicons-cart"
+    )
+  }, {
+    value: "dashicons dashicons-feedback",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF175 dashicons-feedback"
+    )
+  }, {
+    value: "dashicons dashicons-cloud",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF176 dashicons-cloud"
+    )
+  }, {
+    value: "dashicons dashicons-translation",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF326 dashicons-translation"
+    )
+  }, {
+    value: "dashicons dashicons-tag",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF323 dashicons-tag"
+    )
+  }, {
+    value: "dashicons dashicons-category",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF318 dashicons-category"
+    )
+  }, {
+    value: "dashicons dashicons-archive",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF480 dashicons-archive"
+    )
+  }, {
+    value: "dashicons dashicons-tagcloud",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF479 dashicons-tagcloud"
+    )
+  }, {
+    value: "dashicons dashicons-text",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF478 dashicons-text"
+    )
+  }, {
+    value: "dashicons dashicons-yes",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF147 dashicons-yes"
+    )
+  }, {
+    value: "dashicons dashicons-no",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF158 dashicons-no"
+    )
+  }, {
+    value: "dashicons dashicons-no-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF335 dashicons-no-alt"
+    )
+  }, {
+    value: "dashicons dashicons-plus",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF132 dashicons-plus"
+    )
+  }, {
+    value: "dashicons dashicons-plus-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF502 dashicons-plus-alt"
+    )
+  }, {
+    value: "dashicons dashicons-minus",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF460 dashicons-minus"
+    )
+  }, {
+    value: "dashicons dashicons-dismiss",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF153 dashicons-dismiss"
+    )
+  }, {
+    value: "dashicons dashicons-marker",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF159 dashicons-marker"
+    )
+  }, {
+    value: "dashicons dashicons-star-filled",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF155 dashicons-star-filled"
+    )
+  }, {
+    value: "dashicons dashicons-star-half",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF459 dashicons-star-half"
+    )
+  }, {
+    value: "dashicons dashicons-star-empty",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF154 dashicons-star-empty"
+    )
+  }, {
+    value: "dashicons dashicons-flag",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF227 dashicons-flag"
+    )
+  }, {
+    value: "dashicons dashicons-warning",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF534 dashicons-warning"
+    )
+  }, {
+    value: "dashicons dashicons-location",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF230 dashicons-location"
+    )
+  }, {
+    value: "dashicons dashicons-location-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF231 dashicons-location-alt"
+    )
+  }, {
+    value: "dashicons dashicons-vault",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF178 dashicons-vault"
+    )
+  }, {
+    value: "dashicons dashicons-shield",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF332 dashicons-shield"
+    )
+  }, {
+    value: "dashicons dashicons-shield-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF334 dashicons-shield-alt"
+    )
+  }, {
+    value: "dashicons dashicons-sos",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF468 dashicons-sos"
+    )
+  }, {
+    value: "dashicons dashicons-search",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF179 dashicons-search"
+    )
+  }, {
+    value: "dashicons dashicons-slides",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF181 dashicons-slides"
+    )
+  }, {
+    value: "dashicons dashicons-analytics",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF183 dashicons-analytics"
+    )
+  }, {
+    value: "dashicons dashicons-chart-pie",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF184 dashicons-chart-pie"
+    )
+  }, {
+    value: "dashicons dashicons-chart-bar",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF185 dashicons-chart-bar"
+    )
+  }, {
+    value: "dashicons dashicons-chart-line",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF238 dashicons-chart-line"
+    )
+  }, {
+    value: "dashicons dashicons-chart-area",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF239 dashicons-chart-area"
+    )
+  }, {
+    value: "dashicons dashicons-groups",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF307 dashicons-groups"
+    )
+  }, {
+    value: "dashicons dashicons-businessman",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF338 dashicons-businessman"
+    )
+  }, {
+    value: "dashicons dashicons-id",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF336 dashicons-id"
+    )
+  }, {
+    value: "dashicons dashicons-id-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF337 dashicons-id-alt"
+    )
+  }, {
+    value: "dashicons dashicons-products",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF312 dashicons-products"
+    )
+  }, {
+    value: "dashicons dashicons-awards",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF313 dashicons-awards"
+    )
+  }, {
+    value: "dashicons dashicons-forms",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF314 dashicons-forms"
+    )
+  }, {
+    value: "dashicons dashicons-testimonial",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF473 dashicons-testimonial"
+    )
+  }, {
+    value: "dashicons dashicons-portfolio",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF322 dashicons-portfolio"
+    )
+  }, {
+    value: "dashicons dashicons-book",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF330 dashicons-book"
+    )
+  }, {
+    value: "dashicons dashicons-book-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF331 dashicons-book-alt"
+    )
+  }, {
+    value: "dashicons dashicons-download",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF316 dashicons-download"
+    )
+  }, {
+    value: "dashicons dashicons-upload",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF317 dashicons-upload"
+    )
+  }, {
+    value: "dashicons dashicons-backup",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF321 dashicons-backup"
+    )
+  }, {
+    value: "dashicons dashicons-clock",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF469 dashicons-clock"
+    )
+  }, {
+    value: "dashicons dashicons-lightbulb",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF339 dashicons-lightbulb"
+    )
+  }, {
+    value: "dashicons dashicons-microphone",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF482 dashicons-microphone"
+    )
+  }, {
+    value: "dashicons dashicons-desktop",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF472 dashicons-desktop"
+    )
+  }, {
+    value: "dashicons dashicons-laptop",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF547 dashicons-laptop"
+    )
+  }, {
+    value: "dashicons dashicons-tablet",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF471 dashicons-tablet"
+    )
+  }, {
+    value: "dashicons dashicons-smartphone",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF470 dashicons-smartphone"
+    )
+  }, {
+    value: "dashicons dashicons-phone",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF525 dashicons-phone"
+    )
+  }, {
+    value: "dashicons dashicons-index-card",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF510 dashicons-index-card"
+    )
+  }, {
+    value: "dashicons dashicons-carrot",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF511 dashicons-carrot"
+    )
+  }, {
+    value: "dashicons dashicons-building",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF512 dashicons-building"
+    )
+  }, {
+    value: "dashicons dashicons-store",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF513 dashicons-store"
+    )
+  }, {
+    value: "dashicons dashicons-album",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF514 dashicons-album"
+    )
+  }, {
+    value: "dashicons dashicons-palmtree",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF527 dashicons-palmtree"
+    )
+  }, {
+    value: "dashicons dashicons-tickets-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF524 dashicons-tickets-alt"
+    )
+  }, {
+    value: "dashicons dashicons-money",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF526 dashicons-money"
+    )
+  }, {
+    value: "dashicons dashicons-smiley",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF328 dashicons-smiley"
+    )
+  }, {
+    value: "dashicons dashicons-thumbs-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF529 dashicons-thumbs-up"
+    )
+  }, {
+    value: "dashicons dashicons-thumbs-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF542 dashicons-thumbs-down"
+    )
+  }, {
+    value: "dashicons dashicons-layout",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF538 dashicons-layout"
+    )
+  }, {
+    value: "dashicons dashicons-paperclip",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF546 dashicons-paperclip"
+    )
   }];
 
   //Font Awesome Icons
@@ -6473,2369 +7485,4443 @@ function PremiumIcon(props) {
     value: "",
     label: "none"
   }, {
-    value: "fa fa-500px",
-    label: "500px"
-  }, {
-    value: "fa fa-address-book",
-    label: "address-book"
-  }, {
-    value: "fa fa-address-book-o",
-    label: "address-book-o"
-  }, {
-    value: "fa fa-address-card",
-    label: "address-card"
-  }, {
-    value: "fa fa-address-card-o",
-    label: "address-card-o"
-  }, {
-    value: "fa fa-adjust",
-    label: "adjust"
-  }, {
-    value: "fa fa-adn",
-    label: "adn"
-  }, {
-    value: "fa fa-align-center",
-    label: "align-center"
-  }, {
-    value: "fa fa-align-justify",
-    label: "align-justify"
-  }, {
-    value: "fa fa-align-left",
-    label: "align-left"
-  }, {
-    value: "fa fa-align-right",
-    label: "align-right"
-  }, {
-    value: "fa fa-amazon",
-    label: "amazon"
-  }, {
-    value: "fa fa-ambulance",
-    label: "ambulance"
-  }, {
-    value: "fa fa-american-sign-language-interpreting",
-    label: "american-sign-language-interpreting"
-  }, {
-    value: "fa fa-anchor",
-    label: "anchor"
-  }, {
-    value: "fa fa-android",
-    label: "android"
-  }, {
-    value: "fa fa-angellist",
-    label: "angellist"
-  }, {
-    value: "fa fa-angle-double-down",
-    label: "angle-double-down"
-  }, {
-    value: "fa fa-angle-double-left",
-    label: "angle-double-left"
-  }, {
-    value: "fa fa-angle-double-right",
-    label: "angle-double-right"
-  }, {
-    value: "fa fa-angle-double-up",
-    label: "angle-double-up"
-  }, {
-    value: "fa fa-angle-down",
-    label: "angle-down"
-  }, {
-    value: "fa fa-angle-left",
-    label: "angle-left"
-  }, {
-    value: "fa fa-angle-right",
-    label: "angle-right"
-  }, {
-    value: "fa fa-angle-up",
-    label: "angle-up"
-  }, {
-    value: "fa fa-apple",
-    label: "apple"
-  }, {
-    value: "fa fa-archive",
-    label: "archive"
-  }, {
-    value: "fa fa-area-chart",
-    label: "area-chart"
-  }, {
-    value: "fa fa-arrow-circle-down",
-    label: "arrow-circle-down"
-  }, {
-    value: "fa fa-arrow-circle-left",
-    label: "arrow-circle-left"
-  }, {
-    value: "fa fa-arrow-circle-o-down",
-    label: "arrow-circle-o-down"
-  }, {
-    value: "fa fa-arrow-circle-o-left",
-    label: "arrow-circle-o-left"
-  }, {
-    value: "fa fa-arrow-circle-o-right",
-    label: "arrow-circle-o-right"
-  }, {
-    value: "fa fa-arrow-circle-o-up",
-    label: "arrow-circle-o-up"
-  }, {
-    value: "fa fa-arrow-circle-right",
-    label: "arrow-circle-right"
-  }, {
-    value: "fa fa-arrow-circle-up",
-    label: "arrow-circle-up"
-  }, {
-    value: "fa fa-arrow-down",
-    label: "arrow-down"
-  }, {
-    value: "fa fa-arrow-left",
-    label: "arrow-left"
-  }, {
-    value: "fa fa-arrow-right",
-    label: "arrow-right"
-  }, {
-    value: "fa fa-arrow-up",
-    label: "arrow-up"
-  }, {
-    value: "fa fa-arrows",
-    label: "arrows"
-  }, {
-    value: "fa fa-arrows-alt",
-    label: "arrows-alt"
-  }, {
-    value: "fa fa-arrows-h",
-    label: "arrows-h"
-  }, {
-    value: "fa fa-arrows-v",
-    label: "arrows-v"
-  }, {
-    value: "fa fa-asl-interpreting",
-    label: "asl-interpreting"
-  }, {
-    value: "fa fa-assistive-listening-systems",
-    label: "assistive-listening-systems"
-  }, {
-    value: "fa fa-asterisk",
-    label: "asterisk"
-  }, {
-    value: "fa fa-at",
-    label: "at"
-  }, {
-    value: "fa fa-audio-description",
-    label: "audio-description"
-  }, {
-    value: "fa fa-automobile",
-    label: "automobile"
-  }, {
-    value: "fa fa-backward",
-    label: "backward"
-  }, {
-    value: "fa fa-balance-scale",
-    label: "balance-scale"
-  }, {
-    value: "fa fa-ban",
-    label: "ban"
-  }, {
-    value: "fa fa-bandcamp",
-    label: "bandcamp"
-  }, {
-    value: "fa fa-bank",
-    label: "bank"
-  }, {
-    value: "fa fa-bar-chart",
-    label: "bar-chart"
-  }, {
-    value: "fa fa-bar-chart-o",
-    label: "bar-chart-o"
-  }, {
-    value: "fa fa-barcode",
-    label: "barcode"
-  }, {
-    value: "fa fa-bars",
-    label: "bars"
-  }, {
-    value: "fa fa-bath",
-    label: "bath"
-  }, {
-    value: "fa fa-bathtub",
-    label: "bathtub"
-  }, {
-    value: "fa fa-battery",
-    label: "battery"
-  }, {
-    value: "fa fa-battery-0",
-    label: "battery-0"
-  }, {
-    value: "fa fa-battery-1",
-    label: "battery-1"
-  }, {
-    value: "fa fa-battery-2",
-    label: "battery-2"
-  }, {
-    value: "fa fa-battery-3",
-    label: "battery-3"
-  }, {
-    value: "fa fa-battery-4",
-    label: "battery-4"
-  }, {
-    value: "fa fa-battery-empty",
-    label: "battery-empty"
-  }, {
-    value: "fa fa-battery-full",
-    label: "battery-full"
-  }, {
-    value: "fa fa-battery-half",
-    label: "battery-half"
-  }, {
-    value: "fa fa-battery-quarter",
-    label: "battery-quarter"
-  }, {
-    value: "fa fa-battery-three-quarters",
-    label: "battery-three-quarters"
-  }, {
-    value: "fa fa-bed",
-    label: "bed"
-  }, {
-    value: "fa fa-beer",
-    label: "beer"
-  }, {
-    value: "fa fa-behance",
-    label: "behance"
-  }, {
-    value: "fa fa-behance-square",
-    label: "behance-square"
-  }, {
-    value: "fa fa-bell",
-    label: "bell"
-  }, {
-    value: "fa fa-bell-o",
-    label: "bell-o"
-  }, {
-    value: "fa fa-bell-slash",
-    label: "bell-slash"
-  }, {
-    value: "fa fa-bell-slash-o",
-    label: "bell-slash-o"
-  }, {
-    value: "fa fa-bicycle",
-    label: "bicycle"
-  }, {
-    value: "fa fa-binoculars",
-    label: "binoculars"
-  }, {
-    value: "fa fa-birthday-cake",
-    label: "birthday-cake"
-  }, {
-    value: "fa fa-bitbucket",
-    label: "bitbucket"
-  }, {
-    value: "fa fa-bitbucket-square",
-    label: "bitbucket-square"
-  }, {
-    value: "fa fa-bitcoin",
-    label: "bitcoin"
-  }, {
-    value: "fa fa-black-tie",
-    label: "black-tie"
-  }, {
-    value: "fa fa-blind",
-    label: "blind"
-  }, {
-    value: "fa fa-bluetooth",
-    label: "bluetooth"
-  }, {
-    value: "fa fa-bluetooth-b",
-    label: "bluetooth-b"
-  }, {
-    value: "fa fa-bold",
-    label: "bold"
-  }, {
-    value: "fa fa-bolt",
-    label: "bolt"
-  }, {
-    value: "fa fa-bomb",
-    label: "bomb"
-  }, {
-    value: "fa fa-book",
-    label: "book"
-  }, {
-    value: "fa fa-bookmark",
-    label: "bookmark"
-  }, {
-    value: "fa fa-bookmark-o",
-    label: "bookmark-o"
-  }, {
-    value: "fa fa-braille",
-    label: "braille"
-  }, {
-    value: "fa fa-briefcase",
-    label: "briefcase"
-  }, {
-    value: "fa fa-btc",
-    label: "btc"
-  }, {
-    value: "fa fa-bug",
-    label: "bug"
-  }, {
-    value: "fa fa-building",
-    label: "building"
-  }, {
-    value: "fa fa-building-o",
-    label: "building-o"
-  }, {
-    value: "fa fa-bullhorn",
-    label: "bullhorn"
-  }, {
-    value: "fa fa-bullseye",
-    label: "bullseye"
-  }, {
-    value: "fa fa-bus",
-    label: "bus"
-  }, {
-    value: "fa fa-buysellads",
-    label: "buysellads"
-  }, {
-    value: "fa fa-cab",
-    label: "cab"
-  }, {
-    value: "fa fa-calculator",
-    label: "calculator"
-  }, {
-    value: "fa fa-calendar",
-    label: "calendar"
-  }, {
-    value: "fa fa-calendar-check-o",
-    label: "calendar-check-o"
-  }, {
-    value: "fa fa-calendar-minus-o",
-    label: "calendar-minus-o"
-  }, {
-    value: "fa fa-calendar-o",
-    label: "calendar-o"
-  }, {
-    value: "fa fa-calendar-plus-o",
-    label: "calendar-plus-o"
-  }, {
-    value: "fa fa-calendar-times-o",
-    label: "calendar-times-o"
-  }, {
-    value: "fa fa-camera",
-    label: "camera"
-  }, {
-    value: "fa fa-camera-retro",
-    label: "camera-retro"
-  }, {
-    value: "fa fa-car",
-    label: "car"
-  }, {
-    value: "fa fa-caret-down",
-    label: "caret-down"
-  }, {
-    value: "fa fa-caret-left",
-    label: "caret-left"
-  }, {
-    value: "fa fa-caret-right",
-    label: "caret-right"
-  }, {
-    value: "fa fa-caret-square-o-down",
-    label: "caret-square-o-down"
-  }, {
-    value: "fa fa-caret-square-o-left",
-    label: "caret-square-o-left"
-  }, {
-    value: "fa fa-caret-square-o-right",
-    label: "caret-square-o-right"
-  }, {
-    value: "fa fa-caret-square-o-up",
-    label: "caret-square-o-up"
-  }, {
-    value: "fa fa-caret-up",
-    label: "caret-up"
-  }, {
-    value: "fa fa-cart-arrow-down",
-    label: "cart-arrow-down"
-  }, {
-    value: "fa fa-cart-plus",
-    label: "cart-plus"
-  }, {
-    value: "fa fa-cc",
-    label: "cc"
-  }, {
-    value: "fa fa-cc-amex",
-    label: "cc-amex"
-  }, {
-    value: "fa fa-cc-diners-club",
-    label: "cc-diners-club"
-  }, {
-    value: "fa fa-cc-discover",
-    label: "cc-discover"
-  }, {
-    value: "fa fa-cc-jcb",
-    label: "cc-jcb"
-  }, {
-    value: "fa fa-cc-mastercard",
-    label: "cc-mastercard"
-  }, {
-    value: "fa fa-cc-paypal",
-    label: "cc-paypal"
-  }, {
-    value: "fa fa-cc-stripe",
-    label: "cc-stripe"
-  }, {
-    value: "fa fa-cc-visa",
-    label: "cc-visa"
-  }, {
-    value: "fa fa-certificate",
-    label: "certificate"
-  }, {
-    value: "fa fa-chain",
-    label: "chain"
-  }, {
-    value: "fa fa-chain-broken",
-    label: "chain-broken"
-  }, {
-    value: "fa fa-check",
-    label: "check"
-  }, {
-    value: "fa fa-check-circle",
-    label: "check-circle"
-  }, {
-    value: "fa fa-check-circle-o",
-    label: "check-circle-o"
-  }, {
-    value: "fa fa-check-square",
-    label: "check-square"
-  }, {
-    value: "fa fa-check-square-o",
-    label: "check-square-o"
-  }, {
-    value: "fa fa-chevron-circle-down",
-    label: "chevron-circle-down"
-  }, {
-    value: "fa fa-chevron-circle-left",
-    label: "chevron-circle-left"
-  }, {
-    value: "fa fa-chevron-circle-right",
-    label: "chevron-circle-right"
-  }, {
-    value: "fa fa-chevron-circle-up",
-    label: "chevron-circle-up"
-  }, {
-    value: "fa fa-chevron-down",
-    label: "chevron-down"
-  }, {
-    value: "fa fa-chevron-left",
-    label: "chevron-left"
-  }, {
-    value: "fa fa-chevron-right",
-    label: "chevron-right"
-  }, {
-    value: "fa fa-chevron-up",
-    label: "chevron-up"
-  }, {
-    value: "fa fa-child",
-    label: "child"
-  }, {
-    value: "fa fa-chrome",
-    label: "chrome"
-  }, {
-    value: "fa fa-circle",
-    label: "circle"
-  }, {
-    value: "fa fa-circle-o",
-    label: "circle-o"
-  }, {
-    value: "fa fa-circle-o-notch",
-    label: "circle-o-notch"
-  }, {
-    value: "fa fa-circle-thin",
-    label: "circle-thin"
-  }, {
-    value: "fa fa-clipboard",
-    label: "clipboard"
-  }, {
-    value: "fa fa-clock-o",
-    label: "clock-o"
-  }, {
-    value: "fa fa-clone",
-    label: "clone"
-  }, {
-    value: "fa fa-close",
-    label: "close"
-  }, {
-    value: "fa fa-cloud",
-    label: "cloud"
-  }, {
-    value: "fa fa-cloud-download",
-    label: "cloud-download"
-  }, {
-    value: "fa fa-cloud-upload",
-    label: "cloud-upload"
-  }, {
-    value: "fa fa-cny",
-    label: "cny"
-  }, {
-    value: "fa fa-code",
-    label: "code"
-  }, {
-    value: "fa fa-code-fork",
-    label: "code-fork"
-  }, {
-    value: "fa fa-codepen",
-    label: "codepen"
-  }, {
-    value: "fa fa-codiepie",
-    label: "codiepie"
-  }, {
-    value: "fa fa-coffee",
-    label: "coffee"
-  }, {
-    value: "fa fa-cog",
-    label: "cog"
-  }, {
-    value: "fa fa-cogs",
-    label: "cogs"
-  }, {
-    value: "fa fa-columns",
-    label: "columns"
-  }, {
-    value: "fa fa-comment",
-    label: "comment"
-  }, {
-    value: "fa fa-comment-o",
-    label: "comment-o"
-  }, {
-    value: "fa fa-commenting",
-    label: "commenting"
-  }, {
-    value: "fa fa-commenting-o",
-    label: "commenting-o"
-  }, {
-    value: "fa fa-comments",
-    label: "comments"
-  }, {
-    value: "fa fa-comments-o",
-    label: "comments-o"
-  }, {
-    value: "fa fa-compass",
-    label: "compass"
-  }, {
-    value: "fa fa-compress",
-    label: "compress"
-  }, {
-    value: "fa fa-connectdevelop",
-    label: "connectdevelop"
-  }, {
-    value: "fa fa-contao",
-    label: "contao"
-  }, {
-    value: "fa fa-copy",
-    label: "copy"
-  }, {
-    value: "fa fa-copyright",
-    label: "copyright"
-  }, {
-    value: "fa fa-creative-commons",
-    label: "creative-commons"
-  }, {
-    value: "fa fa-credit-card",
-    label: "credit-card"
-  }, {
-    value: "fa fa-credit-card-alt",
-    label: "credit-card-alt"
-  }, {
-    value: "fa fa-crop",
-    label: "crop"
-  }, {
-    value: "fa fa-crosshairs",
-    label: "crosshairs"
-  }, {
-    value: "fa fa-css3",
-    label: "css3"
-  }, {
-    value: "fa fa-cube",
-    label: "cube"
-  }, {
-    value: "fa fa-cubes",
-    label: "cubes"
-  }, {
-    value: "fa fa-cut",
-    label: "cut"
-  }, {
-    value: "fa fa-cutlery",
-    label: "cutlery"
-  }, {
-    value: "fa fa-dashboard",
-    label: "dashboard"
-  }, {
-    value: "fa fa-dashcube",
-    label: "dashcube"
-  }, {
-    value: "fa fa-database",
-    label: "database"
-  }, {
-    value: "fa fa-deaf",
-    label: "deaf"
-  }, {
-    value: "fa fa-deafness",
-    label: "deafness"
-  }, {
-    value: "fa fa-dedent",
-    label: "dedent"
-  }, {
-    value: "fa fa-delicious",
-    label: "delicious"
-  }, {
-    value: "fa fa-desktop",
-    label: "desktop"
-  }, {
-    value: "fa fa-deviantart",
-    label: "deviantart"
-  }, {
-    value: "fa fa-diamond",
-    label: "diamond"
-  }, {
-    value: "fa fa-digg",
-    label: "digg"
-  }, {
-    value: "fa fa-dollar",
-    label: "dollar"
-  }, {
-    value: "fa fa-dot-circle-o",
-    label: "dot-circle-o"
-  }, {
-    value: "fa fa-download",
-    label: "download"
-  }, {
-    value: "fa fa-dribbble",
-    label: "dribbble"
-  }, {
-    value: "fa fa-drivers-license",
-    label: "drivers-license"
-  }, {
-    value: "fa fa-drivers-license-o",
-    label: "drivers-license-o"
-  }, {
-    value: "fa fa-dropbox",
-    label: "dropbox"
-  }, {
-    value: "fa fa-drupal",
-    label: "drupal"
-  }, {
-    value: "fa fa-edge",
-    label: "edge"
-  }, {
-    value: "fa fa-edit",
-    label: "edit"
-  }, {
-    value: "fa fa-eercast",
-    label: "eercast"
-  }, {
-    value: "fa fa-eject",
-    label: "eject"
-  }, {
-    value: "fa fa-ellipsis-h",
-    label: "ellipsis-h"
-  }, {
-    value: "fa fa-ellipsis-v",
-    label: "ellipsis-v"
-  }, {
-    value: "fa fa-empire",
-    label: "empire"
-  }, {
-    value: "fa fa-envelope",
-    label: "envelope"
-  }, {
-    value: "fa fa-envelope-o",
-    label: "envelope-o"
-  }, {
-    value: "fa fa-envelope-open",
-    label: "envelope-open"
-  }, {
-    value: "fa fa-envelope-open-o",
-    label: "envelope-open-o"
-  }, {
-    value: "fa fa-envelope-square",
-    label: "envelope-square"
-  }, {
-    value: "fa fa-envira",
-    label: "envira"
-  }, {
-    value: "fa fa-eraser",
-    label: "eraser"
-  }, {
-    value: "fa fa-etsy",
-    label: "etsy"
-  }, {
-    value: "fa fa-eur",
-    label: "eur"
-  }, {
-    value: "fa fa-euro",
-    label: "euro"
-  }, {
-    value: "fa fa-exchange",
-    label: "exchange"
-  }, {
-    value: "fa fa-exclamation",
-    label: "exclamation"
-  }, {
-    value: "fa fa-exclamation-circle",
-    label: "exclamation-circle"
-  }, {
-    value: "fa fa-exclamation-triangle",
-    label: "exclamation-triangle"
-  }, {
-    value: "fa fa-expand",
-    label: "expand"
-  }, {
-    value: "fa fa-expeditedssl",
-    label: "expeditedssl"
-  }, {
-    value: "fa fa-external-link",
-    label: "external-link"
-  }, {
-    value: "fa fa-external-link-square",
-    label: "external-link-square"
-  }, {
-    value: "fa fa-eye",
-    label: "eye"
-  }, {
-    value: "fa fa-eye-slash",
-    label: "eye-slash"
-  }, {
-    value: "fa fa-eyedropper",
-    label: "eyedropper"
-  }, {
-    value: "fa fa-fa",
-    label: "fa"
-  }, {
-    value: "fa fa-facebook",
-    label: "facebook"
-  }, {
-    value: "fa fa-facebook-f",
-    label: "facebook-f"
-  }, {
-    value: "fa fa-facebook-official",
-    label: "facebook-official"
-  }, {
-    value: "fa fa-facebook-square",
-    label: "facebook-square"
-  }, {
-    value: "fa fa-fast-backward",
-    label: "fast-backward"
-  }, {
-    value: "fa fa-fast-forward",
-    label: "fast-forward"
-  }, {
-    value: "fa fa-fax",
-    label: "fax"
-  }, {
-    value: "fa fa-feed",
-    label: "feed"
-  }, {
-    value: "fa fa-female",
-    label: "female"
-  }, {
-    value: "fa fa-fighter-jet",
-    label: "fighter-jet"
-  }, {
-    value: "fa fa-file",
-    label: "file"
-  }, {
-    value: "fa fa-file-archive-o",
-    label: "file-archive-o"
-  }, {
-    value: "fa fa-file-audio-o",
-    label: "file-audio-o"
-  }, {
-    value: "fa fa-file-code-o",
-    label: "file-code-o"
-  }, {
-    value: "fa fa-file-excel-o",
-    label: "file-excel-o"
-  }, {
-    value: "fa fa-file-image-o",
-    label: "file-image-o"
-  }, {
-    value: "fa fa-file-movie-o",
-    label: "file-movie-o"
-  }, {
-    value: "fa fa-file-o",
-    label: "file-o"
-  }, {
-    value: "fa fa-file-pdf-o",
-    label: "file-pdf-o"
-  }, {
-    value: "fa fa-file-photo-o",
-    label: "file-photo-o"
-  }, {
-    value: "fa fa-file-picture-o",
-    label: "file-picture-o"
-  }, {
-    value: "fa fa-file-powerpoint-o",
-    label: "file-powerpoint-o"
-  }, {
-    value: "fa fa-file-sound-o",
-    label: "file-sound-o"
-  }, {
-    value: "fa fa-file-text",
-    label: "file-text"
-  }, {
-    value: "fa fa-file-text-o",
-    label: "file-text-o"
-  }, {
-    value: "fa fa-file-video-o",
-    label: "file-video-o"
-  }, {
-    value: "fa fa-file-word-o",
-    label: "file-word-o"
-  }, {
-    value: "fa fa-file-zip-o",
-    label: "file-zip-o"
-  }, {
-    value: "fa fa-files-o",
-    label: "files-o"
-  }, {
-    value: "fa fa-film",
-    label: "film"
-  }, {
-    value: "fa fa-filter",
-    label: "filter"
-  }, {
-    value: "fa fa-fire",
-    label: "fire"
-  }, {
-    value: "fa fa-fire-extinguisher",
-    label: "fire-extinguisher"
-  }, {
-    value: "fa fa-firefox",
-    label: "firefox"
-  }, {
-    value: "fa fa-first-order",
-    label: "first-order"
-  }, {
-    value: "fa fa-flag",
-    label: "flag"
-  }, {
-    value: "fa fa-flag-checkered",
-    label: "flag-checkered"
-  }, {
-    value: "fa fa-flag-o",
-    label: "flag-o"
-  }, {
-    value: "fa fa-flash",
-    label: "flash"
-  }, {
-    value: "fa fa-flask",
-    label: "flask"
-  }, {
-    value: "fa fa-flickr",
-    label: "flickr"
-  }, {
-    value: "fa fa-floppy-o",
-    label: "floppy-o"
-  }, {
-    value: "fa fa-folder",
-    label: "folder"
-  }, {
-    value: "fa fa-folder-o",
-    label: "folder-o"
-  }, {
-    value: "fa fa-folder-open",
-    label: "folder-open"
-  }, {
-    value: "fa fa-folder-open-o",
-    label: "folder-open-o"
-  }, {
-    value: "fa fa-font",
-    label: "font"
-  }, {
-    value: "fa fa-font-awesome",
-    label: "font-awesome"
-  }, {
-    value: "fa fa-fonticons",
-    label: "fonticons"
-  }, {
-    value: "fa fa-fort-awesome",
-    label: "fort-awesome"
-  }, {
-    value: "fa fa-forumbee",
-    label: "forumbee"
-  }, {
-    value: "fa fa-forward",
-    label: "forward"
-  }, {
-    value: "fa fa-foursquare",
-    label: "foursquare"
-  }, {
-    value: "fa fa-free-code-camp",
-    label: "free-code-camp"
-  }, {
-    value: "fa fa-frown-o",
-    label: "frown-o"
-  }, {
-    value: "fa fa-futbol-o",
-    label: "futbol-o"
-  }, {
-    value: "fa fa-gamepad",
-    label: "gamepad"
-  }, {
-    value: "fa fa-gavel",
-    label: "gavel"
-  }, {
-    value: "fa fa-gbp",
-    label: "gbp"
-  }, {
-    value: "fa fa-ge",
-    label: "ge"
-  }, {
-    value: "fa fa-gear",
-    label: "gear"
-  }, {
-    value: "fa fa-gears",
-    label: "gears"
-  }, {
-    value: "fa fa-genderless",
-    label: "genderless"
-  }, {
-    value: "fa fa-get-pocket",
-    label: "get-pocket"
-  }, {
-    value: "fa fa-gg",
-    label: "gg"
-  }, {
-    value: "fa fa-gg-circle",
-    label: "gg-circle"
-  }, {
-    value: "fa fa-gift",
-    label: "gift"
-  }, {
-    value: "fa fa-git",
-    label: "git"
-  }, {
-    value: "fa fa-git-square",
-    label: "git-square"
-  }, {
-    value: "fa fa-github",
-    label: "github"
-  }, {
-    value: "fa fa-github-alt",
-    label: "github-alt"
-  }, {
-    value: "fa fa-github-square",
-    label: "github-square"
-  }, {
-    value: "fa fa-gitlab",
-    label: "gitlab"
-  }, {
-    value: "fa fa-gittip",
-    label: "gittip"
-  }, {
     value: "fa fa-glass",
-    label: "glass"
-  }, {
-    value: "fa fa-glide",
-    label: "glide"
-  }, {
-    value: "fa fa-glide-g",
-    label: "glide-g"
-  }, {
-    value: "fa fa-globe",
-    label: "globe"
-  }, {
-    value: "fa fa-google",
-    label: "google"
-  }, {
-    value: "fa fa-google-plus",
-    label: "google-plus"
-  }, {
-    value: "fa fa-google-plus-circle",
-    label: "google-plus-circle"
-  }, {
-    value: "fa fa-google-plus-official",
-    label: "google-plus-official"
-  }, {
-    value: "fa fa-google-plus-square",
-    label: "google-plus-square"
-  }, {
-    value: "fa fa-google-wallet",
-    label: "google-wallet"
-  }, {
-    value: "fa fa-graduation-cap",
-    label: "graduation-cap"
-  }, {
-    value: "fa fa-gratipay",
-    label: "gratipay"
-  }, {
-    value: "fa fa-grav",
-    label: "grav"
-  }, {
-    value: "fa fa-group",
-    label: "group"
-  }, {
-    value: "fa fa-h-square",
-    label: "h-square"
-  }, {
-    value: "fa fa-hacker-news",
-    label: "hacker-news"
-  }, {
-    value: "fa fa-hand-grab-o",
-    label: "hand-grab-o"
-  }, {
-    value: "fa fa-hand-lizard-o",
-    label: "hand-lizard-o"
-  }, {
-    value: "fa fa-hand-o-down",
-    label: "hand-o-down"
-  }, {
-    value: "fa fa-hand-o-left",
-    label: "hand-o-left"
-  }, {
-    value: "fa fa-hand-o-right",
-    label: "hand-o-right"
-  }, {
-    value: "fa fa-hand-o-up",
-    label: "hand-o-up"
-  }, {
-    value: "fa fa-hand-paper-o",
-    label: "hand-paper-o"
-  }, {
-    value: "fa fa-hand-peace-o",
-    label: "hand-peace-o"
-  }, {
-    value: "fa fa-hand-pointer-o",
-    label: "hand-pointer-o"
-  }, {
-    value: "fa fa-hand-rock-o",
-    label: "hand-rock-o"
-  }, {
-    value: "fa fa-hand-scissors-o",
-    label: "hand-scissors-o"
-  }, {
-    value: "fa fa-hand-spock-o",
-    label: "hand-spock-o"
-  }, {
-    value: "fa fa-hand-stop-o",
-    label: "hand-stop-o"
-  }, {
-    value: "fa fa-handshake-o",
-    label: "handshake-o"
-  }, {
-    value: "fa fa-hard-of-hearing",
-    label: "hard-of-hearing"
-  }, {
-    value: "fa fa-hashtag",
-    label: "hashtag"
-  }, {
-    value: "fa fa-hdd-o",
-    label: "hdd-o"
-  }, {
-    value: "fa fa-header",
-    label: "header"
-  }, {
-    value: "fa fa-headphones",
-    label: "headphones"
-  }, {
-    value: "fa fa-heart",
-    label: "heart"
-  }, {
-    value: "fa fa-heart-o",
-    label: "heart-o"
-  }, {
-    value: "fa fa-heartbeat",
-    label: "heartbeat"
-  }, {
-    value: "fa fa-history",
-    label: "history"
-  }, {
-    value: "fa fa-home",
-    label: "home"
-  }, {
-    value: "fa fa-hospital-o",
-    label: "hospital-o"
-  }, {
-    value: "fa fa-hotel",
-    label: "hotel"
-  }, {
-    value: "fa fa-hourglass",
-    label: "hourglass"
-  }, {
-    value: "fa fa-hourglass-1",
-    label: "hourglass-1"
-  }, {
-    value: "fa fa-hourglass-2",
-    label: "hourglass-2"
-  }, {
-    value: "fa fa-hourglass-3",
-    label: "hourglass-3"
-  }, {
-    value: "fa fa-hourglass-end",
-    label: "hourglass-end"
-  }, {
-    value: "fa fa-hourglass-half",
-    label: "hourglass-half"
-  }, {
-    value: "fa fa-hourglass-o",
-    label: "hourglass-o"
-  }, {
-    value: "fa fa-hourglass-start",
-    label: "hourglass-start"
-  }, {
-    value: "fa fa-houzz",
-    label: "houzz"
-  }, {
-    value: "fa fa-html5",
-    label: "html5"
-  }, {
-    value: "fa fa-i-cursor",
-    label: "i-cursor"
-  }, {
-    value: "fa fa-id-badge",
-    label: "id-badge"
-  }, {
-    value: "fa fa-id-card",
-    label: "id-card"
-  }, {
-    value: "fa fa-id-card-o",
-    label: "id-card-o"
-  }, {
-    value: "fa fa-ils",
-    label: "ils"
-  }, {
-    value: "fa fa-image",
-    label: "image"
-  }, {
-    value: "fa fa-imdb",
-    label: "imdb"
-  }, {
-    value: "fa fa-inbox",
-    label: "inbox"
-  }, {
-    value: "fa fa-indent",
-    label: "indent"
-  }, {
-    value: "fa fa-industry",
-    label: "industry"
-  }, {
-    value: "fa fa-info",
-    label: "info"
-  }, {
-    value: "fa fa-info-circle",
-    label: "info-circle"
-  }, {
-    value: "fa fa-inr",
-    label: "inr"
-  }, {
-    value: "fa fa-instagram",
-    label: "instagram"
-  }, {
-    value: "fa fa-institution",
-    label: "institution"
-  }, {
-    value: "fa fa-internet-explorer",
-    label: "internet-explorer"
-  }, {
-    value: "fa fa-intersex",
-    label: "intersex"
-  }, {
-    value: "fa fa-ioxhost",
-    label: "ioxhost"
-  }, {
-    value: "fa fa-italic",
-    label: "italic"
-  }, {
-    value: "fa fa-joomla",
-    label: "joomla"
-  }, {
-    value: "fa fa-jpy",
-    label: "jpy"
-  }, {
-    value: "fa fa-jsfiddle",
-    label: "jsfiddle"
-  }, {
-    value: "fa fa-key",
-    label: "key"
-  }, {
-    value: "fa fa-keyboard-o",
-    label: "keyboard-o"
-  }, {
-    value: "fa fa-krw",
-    label: "krw"
-  }, {
-    value: "fa fa-language",
-    label: "language"
-  }, {
-    value: "fa fa-laptop",
-    label: "laptop"
-  }, {
-    value: "fa fa-lastfm",
-    label: "lastfm"
-  }, {
-    value: "fa fa-lastfm-square",
-    label: "lastfm-square"
-  }, {
-    value: "fa fa-leaf",
-    label: "leaf"
-  }, {
-    value: "fa fa-leanpub",
-    label: "leanpub"
-  }, {
-    value: "fa fa-legal",
-    label: "legal"
-  }, {
-    value: "fa fa-lemon-o",
-    label: "lemon-o"
-  }, {
-    value: "fa fa-level-down",
-    label: "level-down"
-  }, {
-    value: "fa fa-level-up",
-    label: "level-up"
-  }, {
-    value: "fa fa-life-bouy",
-    label: "life-bouy"
-  }, {
-    value: "fa fa-life-buoy",
-    label: "life-buoy"
-  }, {
-    value: "fa fa-life-ring",
-    label: "life-ring"
-  }, {
-    value: "fa fa-life-saver",
-    label: "life-saver"
-  }, {
-    value: "fa fa-lightbulb-o",
-    label: "lightbulb-o"
-  }, {
-    value: "fa fa-line-chart",
-    label: "line-chart"
-  }, {
-    value: "fa fa-link",
-    label: "link"
-  }, {
-    value: "fa fa-linkedin",
-    label: "linkedin"
-  }, {
-    value: "fa fa-linkedin-square",
-    label: "linkedin-square"
-  }, {
-    value: "fa fa-linode",
-    label: "linode"
-  }, {
-    value: "fa fa-linux",
-    label: "linux"
-  }, {
-    value: "fa fa-list",
-    label: "list"
-  }, {
-    value: "fa fa-list-alt",
-    label: "list-alt"
-  }, {
-    value: "fa fa-list-ol",
-    label: "list-ol"
-  }, {
-    value: "fa fa-list-ul",
-    label: "list-ul"
-  }, {
-    value: "fa fa-location-arrow",
-    label: "location-arrow"
-  }, {
-    value: "fa fa-lock",
-    label: "lock"
-  }, {
-    value: "fa fa-long-arrow-down",
-    label: "long-arrow-down"
-  }, {
-    value: "fa fa-long-arrow-left",
-    label: "long-arrow-left"
-  }, {
-    value: "fa fa-long-arrow-right",
-    label: "long-arrow-right"
-  }, {
-    value: "fa fa-long-arrow-up",
-    label: "long-arrow-up"
-  }, {
-    value: "fa fa-low-vision",
-    label: "low-vision"
-  }, {
-    value: "fa fa-magic",
-    label: "magic"
-  }, {
-    value: "fa fa-magnet",
-    label: "magnet"
-  }, {
-    value: "fa fa-mail-forward",
-    label: "mail-forward"
-  }, {
-    value: "fa fa-mail-reply",
-    label: "mail-reply"
-  }, {
-    value: "fa fa-mail-reply-all",
-    label: "mail-reply-all"
-  }, {
-    value: "fa fa-male",
-    label: "male"
-  }, {
-    value: "fa fa-map",
-    label: "map"
-  }, {
-    value: "fa fa-map-marker",
-    label: "map-marker"
-  }, {
-    value: "fa fa-map-o",
-    label: "map-o"
-  }, {
-    value: "fa fa-map-pin",
-    label: "map-pin"
-  }, {
-    value: "fa fa-map-signs",
-    label: "map-signs"
-  }, {
-    value: "fa fa-mars",
-    label: "mars"
-  }, {
-    value: "fa fa-mars-double",
-    label: "mars-double"
-  }, {
-    value: "fa fa-mars-stroke",
-    label: "mars-stroke"
-  }, {
-    value: "fa fa-mars-stroke-h",
-    label: "mars-stroke-h"
-  }, {
-    value: "fa fa-mars-stroke-v",
-    label: "mars-stroke-v"
-  }, {
-    value: "fa fa-maxcdn",
-    label: "maxcdn"
-  }, {
-    value: "fa fa-meanpath",
-    label: "meanpath"
-  }, {
-    value: "fa fa-medium",
-    label: "medium"
-  }, {
-    value: "fa fa-medkit",
-    label: "medkit"
-  }, {
-    value: "fa fa-meetup",
-    label: "meetup"
-  }, {
-    value: "fa fa-meh-o",
-    label: "meh-o"
-  }, {
-    value: "fa fa-mercury",
-    label: "mercury"
-  }, {
-    value: "fa fa-microchip",
-    label: "microchip"
-  }, {
-    value: "fa fa-microphone",
-    label: "microphone"
-  }, {
-    value: "fa fa-microphone-slash",
-    label: "microphone-slash"
-  }, {
-    value: "fa fa-minus",
-    label: "minus"
-  }, {
-    value: "fa fa-minus-circle",
-    label: "minus-circle"
-  }, {
-    value: "fa fa-minus-square",
-    label: "minus-square"
-  }, {
-    value: "fa fa-minus-square-o",
-    label: "minus-square-o"
-  }, {
-    value: "fa fa-mixcloud",
-    label: "mixcloud"
-  }, {
-    value: "fa fa-mobile",
-    label: "mobile"
-  }, {
-    value: "fa fa-mobile-phone",
-    label: "mobile-phone"
-  }, {
-    value: "fa fa-modx",
-    label: "modx"
-  }, {
-    value: "fa fa-money",
-    label: "money"
-  }, {
-    value: "fa fa-moon-o",
-    label: "moon-o"
-  }, {
-    value: "fa fa-mortar-board",
-    label: "mortar-board"
-  }, {
-    value: "fa fa-motorcycle",
-    label: "motorcycle"
-  }, {
-    value: "fa fa-mouse-pointer",
-    label: "mouse-pointer"
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF000 fa-glass"
+    )
   }, {
     value: "fa fa-music",
-    label: "music"
-  }, {
-    value: "fa fa-navicon",
-    label: "navicon"
-  }, {
-    value: "fa fa-neuter",
-    label: "neuter"
-  }, {
-    value: "fa fa-newspaper-o",
-    label: "newspaper-o"
-  }, {
-    value: "fa fa-object-group",
-    label: "object-group"
-  }, {
-    value: "fa fa-object-ungroup",
-    label: "object-ungroup"
-  }, {
-    value: "fa fa-odnoklassniki",
-    label: "odnoklassniki"
-  }, {
-    value: "fa fa-odnoklassniki-square",
-    label: "odnoklassniki-square"
-  }, {
-    value: "fa fa-opencart",
-    label: "opencart"
-  }, {
-    value: "fa fa-openid",
-    label: "openid"
-  }, {
-    value: "fa fa-opera",
-    label: "opera"
-  }, {
-    value: "fa fa-optin-monster",
-    label: "optin-monster"
-  }, {
-    value: "fa fa-outdent",
-    label: "outdent"
-  }, {
-    value: "fa fa-pagelines",
-    label: "pagelines"
-  }, {
-    value: "fa fa-paint-brush",
-    label: "paint-brush"
-  }, {
-    value: "fa fa-paper-plane",
-    label: "paper-plane"
-  }, {
-    value: "fa fa-paper-plane-o",
-    label: "paper-plane-o"
-  }, {
-    value: "fa fa-paperclip",
-    label: "paperclip"
-  }, {
-    value: "fa fa-paragraph",
-    label: "paragraph"
-  }, {
-    value: "fa fa-paste",
-    label: "paste"
-  }, {
-    value: "fa fa-pause",
-    label: "pause"
-  }, {
-    value: "fa fa-pause-circle",
-    label: "pause-circle"
-  }, {
-    value: "fa fa-pause-circle-o",
-    label: "pause-circle-o"
-  }, {
-    value: "fa fa-paw",
-    label: "paw"
-  }, {
-    value: "fa fa-paypal",
-    label: "paypal"
-  }, {
-    value: "fa fa-pencil",
-    label: "pencil"
-  }, {
-    value: "fa fa-pencil-square",
-    label: "pencil-square"
-  }, {
-    value: "fa fa-pencil-square-o",
-    label: "pencil-square-o"
-  }, {
-    value: "fa fa-percent",
-    label: "percent"
-  }, {
-    value: "fa fa-phone",
-    label: "phone"
-  }, {
-    value: "fa fa-phone-square",
-    label: "phone-square"
-  }, {
-    value: "fa fa-photo",
-    label: "photo"
-  }, {
-    value: "fa fa-picture-o",
-    label: "picture-o"
-  }, {
-    value: "fa fa-pie-chart",
-    label: "pie-chart"
-  }, {
-    value: "fa fa-pied-piper",
-    label: "pied-piper"
-  }, {
-    value: "fa fa-pied-piper-alt",
-    label: "pied-piper-alt"
-  }, {
-    value: "fa fa-pied-piper-pp",
-    label: "pied-piper-pp"
-  }, {
-    value: "fa fa-pinterest",
-    label: "pinterest"
-  }, {
-    value: "fa fa-pinterest-p",
-    label: "pinterest-p"
-  }, {
-    value: "fa fa-pinterest-square",
-    label: "pinterest-square"
-  }, {
-    value: "fa fa-plane",
-    label: "plane"
-  }, {
-    value: "fa fa-play",
-    label: "play"
-  }, {
-    value: "fa fa-play-circle",
-    label: "play-circle"
-  }, {
-    value: "fa fa-play-circle-o",
-    label: "play-circle-o"
-  }, {
-    value: "fa fa-plug",
-    label: "plug"
-  }, {
-    value: "fa fa-plus",
-    label: "plus"
-  }, {
-    value: "fa fa-plus-circle",
-    label: "plus-circle"
-  }, {
-    value: "fa fa-plus-square",
-    label: "plus-square"
-  }, {
-    value: "fa fa-plus-square-o",
-    label: "plus-square-o"
-  }, {
-    value: "fa fa-podcast",
-    label: "podcast"
-  }, {
-    value: "fa fa-power-off",
-    label: "power-off"
-  }, {
-    value: "fa fa-print",
-    label: "print"
-  }, {
-    value: "fa fa-product-hunt",
-    label: "product-hunt"
-  }, {
-    value: "fa fa-pull-left",
-    label: "pull-left"
-  }, {
-    value: "fa fa-pull-right",
-    label: "pull-right"
-  }, {
-    value: "fa fa-puzzle-piece",
-    label: "puzzle-piece"
-  }, {
-    value: "fa fa-qq",
-    label: "qq"
-  }, {
-    value: "fa fa-qrcode",
-    label: "qrcode"
-  }, {
-    value: "fa fa-question",
-    label: "question"
-  }, {
-    value: "fa fa-question-circle",
-    label: "question-circle"
-  }, {
-    value: "fa fa-question-circle-o",
-    label: "question-circle-o"
-  }, {
-    value: "fa fa-quora",
-    label: "quora"
-  }, {
-    value: "fa fa-quote-left",
-    label: "quote-left"
-  }, {
-    value: "fa fa-quote-right",
-    label: "quote-right"
-  }, {
-    value: "fa fa-ra",
-    label: "ra"
-  }, {
-    value: "fa fa-random",
-    label: "random"
-  }, {
-    value: "fa fa-ravelry",
-    label: "ravelry"
-  }, {
-    value: "fa fa-rebel",
-    label: "rebel"
-  }, {
-    value: "fa fa-recycle",
-    label: "recycle"
-  }, {
-    value: "fa fa-reddit",
-    label: "reddit"
-  }, {
-    value: "fa fa-reddit-alien",
-    label: "reddit-alien"
-  }, {
-    value: "fa fa-reddit-square",
-    label: "reddit-square"
-  }, {
-    value: "fa fa-refresh",
-    label: "refresh"
-  }, {
-    value: "fa fa-registered",
-    label: "registered"
-  }, {
-    value: "fa fa-remove",
-    label: "remove"
-  }, {
-    value: "fa fa-renren",
-    label: "renren"
-  }, {
-    value: "fa fa-reorder",
-    label: "reorder"
-  }, {
-    value: "fa fa-repeat",
-    label: "repeat"
-  }, {
-    value: "fa fa-reply",
-    label: "reply"
-  }, {
-    value: "fa fa-reply-all",
-    label: "reply-all"
-  }, {
-    value: "fa fa-resistance",
-    label: "resistance"
-  }, {
-    value: "fa fa-retweet",
-    label: "retweet"
-  }, {
-    value: "fa fa-rmb",
-    label: "rmb"
-  }, {
-    value: "fa fa-road",
-    label: "road"
-  }, {
-    value: "fa fa-rocket",
-    label: "rocket"
-  }, {
-    value: "fa fa-rotate-left",
-    label: "rotate-left"
-  }, {
-    value: "fa fa-rotate-right",
-    label: "rotate-right"
-  }, {
-    value: "fa fa-rouble",
-    label: "rouble"
-  }, {
-    value: "fa fa-rss",
-    label: "rss"
-  }, {
-    value: "fa fa-rss-square",
-    label: "rss-square"
-  }, {
-    value: "fa fa-rub",
-    label: "rub"
-  }, {
-    value: "fa fa-ruble",
-    label: "ruble"
-  }, {
-    value: "fa fa-rupee",
-    label: "rupee"
-  }, {
-    value: "fa fa-s15",
-    label: "s15"
-  }, {
-    value: "fa fa-safari",
-    label: "safari"
-  }, {
-    value: "fa fa-save",
-    label: "save"
-  }, {
-    value: "fa fa-scissors",
-    label: "scissors"
-  }, {
-    value: "fa fa-scribd",
-    label: "scribd"
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF001 fa-music"
+    )
   }, {
     value: "fa fa-search",
-    label: "search"
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF002 fa-search"
+    )
   }, {
-    value: "fa fa-search-minus",
-    label: "search-minus"
+    value: "fa fa-envelope-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF003 fa-envelope-o"
+    )
   }, {
-    value: "fa fa-search-plus",
-    label: "search-plus"
-  }, {
-    value: "fa fa-sellsy",
-    label: "sellsy"
-  }, {
-    value: "fa fa-send",
-    label: "send"
-  }, {
-    value: "fa fa-send-o",
-    label: "send-o"
-  }, {
-    value: "fa fa-server",
-    label: "server"
-  }, {
-    value: "fa fa-share",
-    label: "share"
-  }, {
-    value: "fa fa-share-alt",
-    label: "share-alt"
-  }, {
-    value: "fa fa-share-alt-square",
-    label: "share-alt-square"
-  }, {
-    value: "fa fa-share-square",
-    label: "share-square"
-  }, {
-    value: "fa fa-share-square-o",
-    label: "share-square-o"
-  }, {
-    value: "fa fa-shekel",
-    label: "shekel"
-  }, {
-    value: "fa fa-sheqel",
-    label: "sheqel"
-  }, {
-    value: "fa fa-shield",
-    label: "shield"
-  }, {
-    value: "fa fa-ship",
-    label: "ship"
-  }, {
-    value: "fa fa-shirtsinbulk",
-    label: "shirtsinbulk"
-  }, {
-    value: "fa fa-shopping-bag",
-    label: "shopping-bag"
-  }, {
-    value: "fa fa-shopping-basket",
-    label: "shopping-basket"
-  }, {
-    value: "fa fa-shopping-cart",
-    label: "shopping-cart"
-  }, {
-    value: "fa fa-shower",
-    label: "shower"
-  }, {
-    value: "fa fa-sign-in",
-    label: "sign-in"
-  }, {
-    value: "fa fa-sign-language",
-    label: "sign-language"
-  }, {
-    value: "fa fa-sign-out",
-    label: "sign-out"
-  }, {
-    value: "fa fa-signal",
-    label: "signal"
-  }, {
-    value: "fa fa-signing",
-    label: "signing"
-  }, {
-    value: "fa fa-simplybuilt",
-    label: "simplybuilt"
-  }, {
-    value: "fa fa-sitemap",
-    label: "sitemap"
-  }, {
-    value: "fa fa-skyatlas",
-    label: "skyatlas"
-  }, {
-    value: "fa fa-skype",
-    label: "skype"
-  }, {
-    value: "fa fa-slack",
-    label: "slack"
-  }, {
-    value: "fa fa-sliders",
-    label: "sliders"
-  }, {
-    value: "fa fa-slideshare",
-    label: "slideshare"
-  }, {
-    value: "fa fa-smile-o",
-    label: "smile-o"
-  }, {
-    value: "fa fa-snapchat",
-    label: "snapchat"
-  }, {
-    value: "fa fa-snapchat-ghost",
-    label: "snapchat-ghost"
-  }, {
-    value: "fa fa-snapchat-square",
-    label: "snapchat-square"
-  }, {
-    value: "fa fa-snowflake-o",
-    label: "snowflake-o"
-  }, {
-    value: "fa fa-soccer-ball-o",
-    label: "soccer-ball-o"
-  }, {
-    value: "fa fa-sort",
-    label: "sort"
-  }, {
-    value: "fa fa-sort-alpha-asc",
-    label: "sort-alpha-asc"
-  }, {
-    value: "fa fa-sort-alpha-desc",
-    label: "sort-alpha-desc"
-  }, {
-    value: "fa fa-sort-amount-asc",
-    label: "sort-amount-asc"
-  }, {
-    value: "fa fa-sort-amount-desc",
-    label: "sort-amount-desc"
-  }, {
-    value: "fa fa-sort-asc",
-    label: "sort-asc"
-  }, {
-    value: "fa fa-sort-desc",
-    label: "sort-desc"
-  }, {
-    value: "fa fa-sort-down",
-    label: "sort-down"
-  }, {
-    value: "fa fa-sort-numeric-asc",
-    label: "sort-numeric-asc"
-  }, {
-    value: "fa fa-sort-numeric-desc",
-    label: "sort-numeric-desc"
-  }, {
-    value: "fa fa-sort-up",
-    label: "sort-up"
-  }, {
-    value: "fa fa-soundcloud",
-    label: "soundcloud"
-  }, {
-    value: "fa fa-space-shuttle",
-    label: "space-shuttle"
-  }, {
-    value: "fa fa-spinner",
-    label: "spinner"
-  }, {
-    value: "fa fa-spoon",
-    label: "spoon"
-  }, {
-    value: "fa fa-spotify",
-    label: "spotify"
-  }, {
-    value: "fa fa-square",
-    label: "square"
-  }, {
-    value: "fa fa-square-o",
-    label: "square-o"
-  }, {
-    value: "fa fa-stack-exchange",
-    label: "stack-exchange"
-  }, {
-    value: "fa fa-stack-overflow",
-    label: "stack-overflow"
+    value: "fa fa-heart",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF004 fa-heart"
+    )
   }, {
     value: "fa fa-star",
-    label: "star"
-  }, {
-    value: "fa fa-star-half",
-    label: "star-half"
-  }, {
-    value: "fa fa-star-half-empty",
-    label: "star-half-empty"
-  }, {
-    value: "fa fa-star-half-full",
-    label: "star-half-full"
-  }, {
-    value: "fa fa-star-half-o",
-    label: "star-half-o"
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF005 fa-star"
+    )
   }, {
     value: "fa fa-star-o",
-    label: "star-o"
-  }, {
-    value: "fa fa-steam",
-    label: "steam"
-  }, {
-    value: "fa fa-steam-square",
-    label: "steam-square"
-  }, {
-    value: "fa fa-step-backward",
-    label: "step-backward"
-  }, {
-    value: "fa fa-step-forward",
-    label: "step-forward"
-  }, {
-    value: "fa fa-stethoscope",
-    label: "stethoscope"
-  }, {
-    value: "fa fa-sticky-note",
-    label: "sticky-note"
-  }, {
-    value: "fa fa-sticky-note-o",
-    label: "sticky-note-o"
-  }, {
-    value: "fa fa-stop",
-    label: "stop"
-  }, {
-    value: "fa fa-stop-circle",
-    label: "stop-circle"
-  }, {
-    value: "fa fa-stop-circle-o",
-    label: "stop-circle-o"
-  }, {
-    value: "fa fa-street-view",
-    label: "street-view"
-  }, {
-    value: "fa fa-strikethrough",
-    label: "strikethrough"
-  }, {
-    value: "fa fa-stumbleupon",
-    label: "stumbleupon"
-  }, {
-    value: "fa fa-stumbleupon-circle",
-    label: "stumbleupon-circle"
-  }, {
-    value: "fa fa-subscript",
-    label: "subscript"
-  }, {
-    value: "fa fa-subway",
-    label: "subway"
-  }, {
-    value: "fa fa-suitcase",
-    label: "suitcase"
-  }, {
-    value: "fa fa-sun-o",
-    label: "sun-o"
-  }, {
-    value: "fa fa-superpowers",
-    label: "superpowers"
-  }, {
-    value: "fa fa-superscript",
-    label: "superscript"
-  }, {
-    value: "fa fa-support",
-    label: "support"
-  }, {
-    value: "fa fa-table",
-    label: "table"
-  }, {
-    value: "fa fa-tablet",
-    label: "tablet"
-  }, {
-    value: "fa fa-tachometer",
-    label: "tachometer"
-  }, {
-    value: "fa fa-tag",
-    label: "tag"
-  }, {
-    value: "fa fa-tags",
-    label: "tags"
-  }, {
-    value: "fa fa-tasks",
-    label: "tasks"
-  }, {
-    value: "fa fa-taxi",
-    label: "taxi"
-  }, {
-    value: "fa fa-telegram",
-    label: "telegram"
-  }, {
-    value: "fa fa-television",
-    label: "television"
-  }, {
-    value: "fa fa-tencent-weibo",
-    label: "tencent-weibo"
-  }, {
-    value: "fa fa-terminal",
-    label: "terminal"
-  }, {
-    value: "fa fa-text-height",
-    label: "text-height"
-  }, {
-    value: "fa fa-text-width",
-    label: "text-width"
-  }, {
-    value: "fa fa-th",
-    label: "th"
-  }, {
-    value: "fa fa-th-large",
-    label: "th-large"
-  }, {
-    value: "fa fa-th-list",
-    label: "th-list"
-  }, {
-    value: "fa fa-themeisle",
-    label: "themeisle"
-  }, {
-    value: "fa fa-thermometer",
-    label: "thermometer"
-  }, {
-    value: "fa fa-thermometer-0",
-    label: "thermometer-0"
-  }, {
-    value: "fa fa-thermometer-1",
-    label: "thermometer-1"
-  }, {
-    value: "fa fa-thermometer-2",
-    label: "thermometer-2"
-  }, {
-    value: "fa fa-thermometer-3",
-    label: "thermometer-3"
-  }, {
-    value: "fa fa-thermometer-4",
-    label: "thermometer-4"
-  }, {
-    value: "fa fa-thermometer-empty",
-    label: "thermometer-empty"
-  }, {
-    value: "fa fa-thermometer-full",
-    label: "thermometer-full"
-  }, {
-    value: "fa fa-thermometer-half",
-    label: "thermometer-half"
-  }, {
-    value: "fa fa-thermometer-quarter",
-    label: "thermometer-quarter"
-  }, {
-    value: "fa fa-thermometer-three-quarters",
-    label: "thermometer-three-quarters"
-  }, {
-    value: "fa fa-thumb-tack",
-    label: "thumb-tack"
-  }, {
-    value: "fa fa-thumbs-down",
-    label: "thumbs-down"
-  }, {
-    value: "fa fa-thumbs-o-down",
-    label: "thumbs-o-down"
-  }, {
-    value: "fa fa-thumbs-o-up",
-    label: "thumbs-o-up"
-  }, {
-    value: "fa fa-thumbs-up",
-    label: "thumbs-up"
-  }, {
-    value: "fa fa-ticket",
-    label: "ticket"
-  }, {
-    value: "fa fa-times",
-    label: "times"
-  }, {
-    value: "fa fa-times-circle",
-    label: "times-circle"
-  }, {
-    value: "fa fa-times-circle-o",
-    label: "times-circle-o"
-  }, {
-    value: "fa fa-times-rectangle",
-    label: "times-rectangle"
-  }, {
-    value: "fa fa-times-rectangle-o",
-    label: "times-rectangle-o"
-  }, {
-    value: "fa fa-tint",
-    label: "tint"
-  }, {
-    value: "fa fa-toggle-down",
-    label: "toggle-down"
-  }, {
-    value: "fa fa-toggle-left",
-    label: "toggle-left"
-  }, {
-    value: "fa fa-toggle-off",
-    label: "toggle-off"
-  }, {
-    value: "fa fa-toggle-on",
-    label: "toggle-on"
-  }, {
-    value: "fa fa-toggle-right",
-    label: "toggle-right"
-  }, {
-    value: "fa fa-toggle-up",
-    label: "toggle-up"
-  }, {
-    value: "fa fa-trademark",
-    label: "trademark"
-  }, {
-    value: "fa fa-train",
-    label: "train"
-  }, {
-    value: "fa fa-transgender",
-    label: "transgender"
-  }, {
-    value: "fa fa-transgender-alt",
-    label: "transgender-alt"
-  }, {
-    value: "fa fa-trash",
-    label: "trash"
-  }, {
-    value: "fa fa-trash-o",
-    label: "trash-o"
-  }, {
-    value: "fa fa-tree",
-    label: "tree"
-  }, {
-    value: "fa fa-trello",
-    label: "trello"
-  }, {
-    value: "fa fa-tripadvisor",
-    label: "tripadvisor"
-  }, {
-    value: "fa fa-trophy",
-    label: "trophy"
-  }, {
-    value: "fa fa-truck",
-    label: "truck"
-  }, {
-    value: "fa fa-try",
-    label: "try"
-  }, {
-    value: "fa fa-tty",
-    label: "tty"
-  }, {
-    value: "fa fa-tumblr",
-    label: "tumblr"
-  }, {
-    value: "fa fa-tumblr-square",
-    label: "tumblr-square"
-  }, {
-    value: "fa fa-turkish-lira",
-    label: "turkish-lira"
-  }, {
-    value: "fa fa-tv",
-    label: "tv"
-  }, {
-    value: "fa fa-twitch",
-    label: "twitch"
-  }, {
-    value: "fa fa-twitter",
-    label: "twitter"
-  }, {
-    value: "fa fa-twitter-square",
-    label: "twitter-square"
-  }, {
-    value: "fa fa-umbrella",
-    label: "umbrella"
-  }, {
-    value: "fa fa-underline",
-    label: "underline"
-  }, {
-    value: "fa fa-undo",
-    label: "undo"
-  }, {
-    value: "fa fa-universal-access",
-    label: "universal-access"
-  }, {
-    value: "fa fa-university",
-    label: "university"
-  }, {
-    value: "fa fa-unlink",
-    label: "unlink"
-  }, {
-    value: "fa fa-unlock",
-    label: "unlock"
-  }, {
-    value: "fa fa-unlock-alt",
-    label: "unlock-alt"
-  }, {
-    value: "fa fa-unsorted",
-    label: "unsorted"
-  }, {
-    value: "fa fa-upload",
-    label: "upload"
-  }, {
-    value: "fa fa-usb",
-    label: "usb"
-  }, {
-    value: "fa fa-usd",
-    label: "usd"
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF006 fa-star-o"
+    )
   }, {
     value: "fa fa-user",
-    label: "user"
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF007 fa-user"
+    )
   }, {
-    value: "fa fa-user-circle",
-    label: "user-circle"
+    value: "fa fa-film",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF008 fa-film"
+    )
   }, {
-    value: "fa fa-user-circle-o",
-    label: "user-circle-o"
+    value: "fa fa-th-large",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF009 fa-th-large"
+    )
   }, {
-    value: "fa fa-user-md",
-    label: "user-md"
+    value: "fa fa-th",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF00A fa-th"
+    )
   }, {
-    value: "fa fa-user-o",
-    label: "user-o"
+    value: "fa fa-th-list",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF00B fa-th-list"
+    )
   }, {
-    value: "fa fa-user-plus",
-    label: "user-plus"
+    value: "fa fa-check",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF00C fa-check"
+    )
   }, {
-    value: "fa fa-user-secret",
-    label: "user-secret"
+    value: "fa fa-times",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF00D fa-times"
+    )
   }, {
-    value: "fa fa-user-times",
-    label: "user-times"
+    value: "fa fa-search-plus",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF00E fa-search-plus"
+    )
   }, {
-    value: "fa fa-users",
-    label: "users"
+    value: "fa fa-search-minus",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF010 fa-search-minus"
+    )
   }, {
-    value: "fa fa-vcard",
-    label: "vcard"
+    value: "fa fa-power-off",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF011 fa-power-off"
+    )
   }, {
-    value: "fa fa-vcard-o",
-    label: "vcard-o"
+    value: "fa fa-signal",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF012 fa-signal"
+    )
   }, {
-    value: "fa fa-venus",
-    label: "venus"
+    value: "fa fa-cog",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF013 fa-cog"
+    )
   }, {
-    value: "fa fa-venus-double",
-    label: "venus-double"
+    value: "fa fa-trash-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF014 fa-trash-o"
+    )
   }, {
-    value: "fa fa-venus-mars",
-    label: "venus-mars"
+    value: "fa fa-home",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF015 fa-home"
+    )
   }, {
-    value: "fa fa-viacoin",
-    label: "viacoin"
+    value: "fa fa-file-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF016 fa-file-o"
+    )
   }, {
-    value: "fa fa-viadeo",
-    label: "viadeo"
+    value: "fa fa-clock-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF017 fa-clock-o"
+    )
   }, {
-    value: "fa fa-viadeo-square",
-    label: "viadeo-square"
+    value: "fa fa-road",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF018 fa-road"
+    )
   }, {
-    value: "fa fa-video-camera",
-    label: "video-camera"
+    value: "fa fa-download",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF019 fa-download"
+    )
   }, {
-    value: "fa fa-vimeo",
-    label: "vimeo"
+    value: "fa fa-arrow-circle-o-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF01A fa-arrow-circle-o-down"
+    )
   }, {
-    value: "fa fa-vimeo-square",
-    label: "vimeo-square"
+    value: "fa fa-arrow-circle-o-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF01B fa-arrow-circle-o-up"
+    )
   }, {
-    value: "fa fa-vine",
-    label: "vine"
+    value: "fa fa-inbox",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF01C fa-inbox"
+    )
   }, {
-    value: "fa fa-vk",
-    label: "vk"
+    value: "fa fa-play-circle-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF01D fa-play-circle-o"
+    )
   }, {
-    value: "fa fa-volume-control-phone",
-    label: "volume-control-phone"
+    value: "fa fa-repeat",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF01E fa-repeat"
+    )
   }, {
-    value: "fa fa-volume-down",
-    label: "volume-down"
+    value: "fa fa-refresh",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF021 fa-refresh"
+    )
+  }, {
+    value: "fa fa-list-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF022 fa-list-alt"
+    )
+  }, {
+    value: "fa fa-lock",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF023 fa-lock"
+    )
+  }, {
+    value: "fa fa-flag",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF024 fa-flag"
+    )
+  }, {
+    value: "fa fa-headphones",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF025 fa-headphones"
+    )
   }, {
     value: "fa fa-volume-off",
-    label: "volume-off"
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF026 fa-volume-off"
+    )
+  }, {
+    value: "fa fa-volume-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF027 fa-volume-down"
+    )
   }, {
     value: "fa fa-volume-up",
-    label: "volume-up"
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF028 fa-volume-up"
+    )
   }, {
-    value: "fa fa-warning",
-    label: "warning"
+    value: "fa fa-qrcode",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF029 fa-qrcode"
+    )
   }, {
-    value: "fa fa-wechat",
-    label: "wechat"
+    value: "fa fa-barcode",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF02A fa-barcode"
+    )
   }, {
-    value: "fa fa-weibo",
-    label: "weibo"
+    value: "fa fa-tag",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF02B fa-tag"
+    )
   }, {
-    value: "fa fa-weixin",
-    label: "weixin"
+    value: "fa fa-tags",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF02C fa-tags"
+    )
   }, {
-    value: "fa fa-whatsapp",
-    label: "whatsapp"
+    value: "fa fa-book",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF02D fa-book"
+    )
   }, {
-    value: "fa fa-wheelchair",
-    label: "wheelchair"
+    value: "fa fa-bookmark",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF02E fa-bookmark"
+    )
   }, {
-    value: "fa fa-wheelchair-alt",
-    label: "wheelchair-alt"
+    value: "fa fa-print",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF02F fa-print"
+    )
   }, {
-    value: "fa fa-wifi",
-    label: "wifi"
+    value: "fa fa-camera",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF030 fa-camera"
+    )
   }, {
-    value: "fa fa-wikipedia-w",
-    label: "wikipedia-w"
+    value: "fa fa-font",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF031 fa-font"
+    )
   }, {
-    value: "fa fa-window-close",
-    label: "window-close"
+    value: "fa fa-bold",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF032 fa-bold"
+    )
   }, {
-    value: "fa fa-window-close-o",
-    label: "window-close-o"
+    value: "fa fa-italic",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF033 fa-italic"
+    )
   }, {
-    value: "fa fa-window-maximize",
-    label: "window-maximize"
+    value: "fa fa-text-height",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF034 fa-text-height"
+    )
   }, {
-    value: "fa fa-window-minimize",
-    label: "window-minimize"
+    value: "fa fa-text-width",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF035 fa-text-width"
+    )
   }, {
-    value: "fa fa-window-restore",
-    label: "window-restore"
+    value: "fa fa-align-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF036 fa-align-left"
+    )
   }, {
-    value: "fa fa-windows",
-    label: "windows"
+    value: "fa fa-align-center",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF037 fa-align-center"
+    )
   }, {
-    value: "fa fa-won",
-    label: "won"
+    value: "fa fa-align-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF038 fa-align-right"
+    )
   }, {
-    value: "fa fa-wordpress",
-    label: "wordpress"
+    value: "fa fa-align-justify",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF039 fa-align-justify"
+    )
   }, {
-    value: "fa fa-wpbeginner",
-    label: "wpbeginner"
+    value: "fa fa-list",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF03A fa-list"
+    )
   }, {
-    value: "fa fa-wpexplorer",
-    label: "wpexplorer"
+    value: "fa fa-outdent",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF03B fa-outdent"
+    )
   }, {
-    value: "fa fa-wpforms",
-    label: "wpforms"
+    value: "fa fa-indent",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF03C fa-indent"
+    )
+  }, {
+    value: "fa fa-video-camera",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF03D fa-video-camera"
+    )
+  }, {
+    value: "fa fa-picture-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF03E fa-picture-o"
+    )
+  }, {
+    value: "fa fa-pencil",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF040 fa-pencil"
+    )
+  }, {
+    value: "fa fa-map-marker",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF041 fa-map-marker"
+    )
+  }, {
+    value: "fa fa-adjust",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF042 fa-adjust"
+    )
+  }, {
+    value: "fa fa-tint",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF043 fa-tint"
+    )
+  }, {
+    value: "fa fa-pencil-square-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF044 fa-pencil-square-o"
+    )
+  }, {
+    value: "fa fa-share-square-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF045 fa-share-square-o"
+    )
+  }, {
+    value: "fa fa-check-square-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF046 fa-check-square-o"
+    )
+  }, {
+    value: "fa fa-arrows",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF047 fa-arrows"
+    )
+  }, {
+    value: "fa fa-step-backward",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF048 fa-step-backward"
+    )
+  }, {
+    value: "fa fa-fast-backward",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF049 fa-fast-backward"
+    )
+  }, {
+    value: "fa fa-backward",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF04A fa-backward"
+    )
+  }, {
+    value: "fa fa-play",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF04B fa-play"
+    )
+  }, {
+    value: "fa fa-pause",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF04C fa-pause"
+    )
+  }, {
+    value: "fa fa-stop",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF04D fa-stop"
+    )
+  }, {
+    value: "fa fa-forward",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF04E fa-forward"
+    )
+  }, {
+    value: "fa fa-fast-forward",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF050 fa-fast-forward"
+    )
+  }, {
+    value: "fa fa-step-forward",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF051 fa-step-forward"
+    )
+  }, {
+    value: "fa fa-eject",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF052 fa-eject"
+    )
+  }, {
+    value: "fa fa-chevron-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF053 fa-chevron-left"
+    )
+  }, {
+    value: "fa fa-chevron-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF054 fa-chevron-right"
+    )
+  }, {
+    value: "fa fa-plus-circle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF055 fa-plus-circle"
+    )
+  }, {
+    value: "fa fa-minus-circle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF056 fa-minus-circle"
+    )
+  }, {
+    value: "fa fa-times-circle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF057 fa-times-circle"
+    )
+  }, {
+    value: "fa fa-check-circle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF058 fa-check-circle"
+    )
+  }, {
+    value: "fa fa-question-circle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF059 fa-question-circle"
+    )
+  }, {
+    value: "fa fa-info-circle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF05A fa-info-circle"
+    )
+  }, {
+    value: "fa fa-crosshairs",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF05B fa-crosshairs"
+    )
+  }, {
+    value: "fa fa-times-circle-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF05C fa-times-circle-o"
+    )
+  }, {
+    value: "fa fa-check-circle-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF05D fa-check-circle-o"
+    )
+  }, {
+    value: "fa fa-ban",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF05E fa-ban"
+    )
+  }, {
+    value: "fa fa-arrow-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF060 fa-arrow-left"
+    )
+  }, {
+    value: "fa fa-arrow-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF061 fa-arrow-right"
+    )
+  }, {
+    value: "fa fa-arrow-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF062 fa-arrow-up"
+    )
+  }, {
+    value: "fa fa-arrow-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF063 fa-arrow-down"
+    )
+  }, {
+    value: "fa fa-share",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF064 fa-share"
+    )
+  }, {
+    value: "fa fa-expand",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF065 fa-expand"
+    )
+  }, {
+    value: "fa fa-compress",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF066 fa-compress"
+    )
+  }, {
+    value: "fa fa-plus",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF067 fa-plus"
+    )
+  }, {
+    value: "fa fa-minus",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF068 fa-minus"
+    )
+  }, {
+    value: "fa fa-asterisk",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF069 fa-asterisk"
+    )
+  }, {
+    value: "fa fa-exclamation-circle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF06A fa-exclamation-circle"
+    )
+  }, {
+    value: "fa fa-gift",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF06B fa-gift"
+    )
+  }, {
+    value: "fa fa-leaf",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF06C fa-leaf"
+    )
+  }, {
+    value: "fa fa-fire",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF06D fa-fire"
+    )
+  }, {
+    value: "fa fa-eye",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF06E fa-eye"
+    )
+  }, {
+    value: "fa fa-eye-slash",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF070 fa-eye-slash"
+    )
+  }, {
+    value: "fa fa-exclamation-triangle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF071 fa-exclamation-triangle"
+    )
+  }, {
+    value: "fa fa-plane",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF072 fa-plane"
+    )
+  }, {
+    value: "fa fa-calendar",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF073 fa-calendar"
+    )
+  }, {
+    value: "fa fa-random",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF074 fa-random"
+    )
+  }, {
+    value: "fa fa-comment",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF075 fa-comment"
+    )
+  }, {
+    value: "fa fa-magnet",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF076 fa-magnet"
+    )
+  }, {
+    value: "fa fa-chevron-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF077 fa-chevron-up"
+    )
+  }, {
+    value: "fa fa-chevron-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF078 fa-chevron-down"
+    )
+  }, {
+    value: "fa fa-retweet",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF079 fa-retweet"
+    )
+  }, {
+    value: "fa fa-shopping-cart",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF07A fa-shopping-cart"
+    )
+  }, {
+    value: "fa fa-folder",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF07B fa-folder"
+    )
+  }, {
+    value: "fa fa-folder-open",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF07C fa-folder-open"
+    )
+  }, {
+    value: "fa fa-arrows-v",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF07D fa-arrows-v"
+    )
+  }, {
+    value: "fa fa-arrows-h",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF07E fa-arrows-h"
+    )
+  }, {
+    value: "fa fa-bar-chart",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF080 fa-bar-chart"
+    )
+  }, {
+    value: "fa fa-twitter-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF081 fa-twitter-square"
+    )
+  }, {
+    value: "fa fa-facebook-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF082 fa-facebook-square"
+    )
+  }, {
+    value: "fa fa-camera-retro",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF083 fa-camera-retro"
+    )
+  }, {
+    value: "fa fa-key",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF084 fa-key"
+    )
+  }, {
+    value: "fa fa-cogs",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF085 fa-cogs"
+    )
+  }, {
+    value: "fa fa-comments",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF086 fa-comments"
+    )
+  }, {
+    value: "fa fa-thumbs-o-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF087 fa-thumbs-o-up"
+    )
+  }, {
+    value: "fa fa-thumbs-o-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF088 fa-thumbs-o-down"
+    )
+  }, {
+    value: "fa fa-star-half",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF089 fa-star-half"
+    )
+  }, {
+    value: "fa fa-heart-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF08A fa-heart-o"
+    )
+  }, {
+    value: "fa fa-sign-out",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF08B fa-sign-out"
+    )
+  }, {
+    value: "fa fa-linkedin-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF08C fa-linkedin-square"
+    )
+  }, {
+    value: "fa fa-thumb-tack",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF08D fa-thumb-tack"
+    )
+  }, {
+    value: "fa fa-external-link",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF08E fa-external-link"
+    )
+  }, {
+    value: "fa fa-sign-in",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF090 fa-sign-in"
+    )
+  }, {
+    value: "fa fa-trophy",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF091 fa-trophy"
+    )
+  }, {
+    value: "fa fa-github-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF092 fa-github-square"
+    )
+  }, {
+    value: "fa fa-upload",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF093 fa-upload"
+    )
+  }, {
+    value: "fa fa-lemon-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF094 fa-lemon-o"
+    )
+  }, {
+    value: "fa fa-phone",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF095 fa-phone"
+    )
+  }, {
+    value: "fa fa-square-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF096 fa-square-o"
+    )
+  }, {
+    value: "fa fa-bookmark-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF097 fa-bookmark-o"
+    )
+  }, {
+    value: "fa fa-phone-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF098 fa-phone-square"
+    )
+  }, {
+    value: "fa fa-twitter",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF099 fa-twitter"
+    )
+  }, {
+    value: "fa fa-facebook",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF09A fa-facebook"
+    )
+  }, {
+    value: "fa fa-github",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF09B fa-github"
+    )
+  }, {
+    value: "fa fa-unlock",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF09C fa-unlock"
+    )
+  }, {
+    value: "fa fa-credit-card",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF09D fa-credit-card"
+    )
+  }, {
+    value: "fa fa-rss",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF09E fa-rss"
+    )
+  }, {
+    value: "fa fa-hdd-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0A0 fa-hdd-o"
+    )
+  }, {
+    value: "fa fa-bullhorn",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0A1 fa-bullhorn"
+    )
+  }, {
+    value: "fa fa-bell",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0F3 fa-bell"
+    )
+  }, {
+    value: "fa fa-certificate",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0A3 fa-certificate"
+    )
+  }, {
+    value: "fa fa-hand-o-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0A4 fa-hand-o-right"
+    )
+  }, {
+    value: "fa fa-hand-o-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0A5 fa-hand-o-left"
+    )
+  }, {
+    value: "fa fa-hand-o-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0A6 fa-hand-o-up"
+    )
+  }, {
+    value: "fa fa-hand-o-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0A7 fa-hand-o-down"
+    )
+  }, {
+    value: "fa fa-arrow-circle-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0A8 fa-arrow-circle-left"
+    )
+  }, {
+    value: "fa fa-arrow-circle-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0A9 fa-arrow-circle-right"
+    )
+  }, {
+    value: "fa fa-arrow-circle-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0AA fa-arrow-circle-up"
+    )
+  }, {
+    value: "fa fa-arrow-circle-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0AB fa-arrow-circle-down"
+    )
+  }, {
+    value: "fa fa-globe",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0AC fa-globe"
+    )
   }, {
     value: "fa fa-wrench",
-    label: "wrench"
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0AD fa-wrench"
+    )
   }, {
-    value: "fa fa-xing",
-    label: "xing"
+    value: "fa fa-tasks",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0AE fa-tasks"
+    )
   }, {
-    value: "fa fa-xing-square",
-    label: "xing-square"
+    value: "fa fa-filter",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0B0 fa-filter"
+    )
   }, {
-    value: "fa fa-y-combinator",
-    label: "y-combinator"
+    value: "fa fa-briefcase",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0B1 fa-briefcase"
+    )
   }, {
-    value: "fa fa-y-combinator-square",
-    label: "y-combinator-square"
+    value: "fa fa-arrows-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0B2 fa-arrows-alt"
+    )
   }, {
-    value: "fa fa-yahoo",
-    label: "yahoo"
+    value: "fa fa-users",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0C0 fa-users"
+    )
   }, {
-    value: "fa fa-yc",
-    label: "yc"
+    value: "fa fa-link",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0C1 fa-link"
+    )
   }, {
-    value: "fa fa-yc-square",
-    label: "yc-square"
+    value: "fa fa-cloud",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0C2 fa-cloud"
+    )
   }, {
-    value: "fa fa-yelp",
-    label: "yelp"
+    value: "fa fa-flask",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0C3 fa-flask"
+    )
   }, {
-    value: "fa fa-yen",
-    label: "yen"
+    value: "fa fa-scissors",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0C4 fa-scissors"
+    )
   }, {
-    value: "fa fa-yoast",
-    label: "yoast"
+    value: "fa fa-files-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0C5 fa-files-o"
+    )
   }, {
-    value: "fa fa-youtube",
-    label: "youtube"
+    value: "fa fa-paperclip",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0C6 fa-paperclip"
+    )
   }, {
-    value: "fa fa-youtube-play",
-    label: "youtube-play"
+    value: "fa fa-floppy-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0C7 fa-floppy-o"
+    )
+  }, {
+    value: "fa fa-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0C8 fa-square"
+    )
+  }, {
+    value: "fa fa-bars",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0C9 fa-bars"
+    )
+  }, {
+    value: "fa fa-list-ul",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0CA fa-list-ul"
+    )
+  }, {
+    value: "fa fa-list-ol",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0CB fa-list-ol"
+    )
+  }, {
+    value: "fa fa-strikethrough",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0CC fa-strikethrough"
+    )
+  }, {
+    value: "fa fa-underline",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0CD fa-underline"
+    )
+  }, {
+    value: "fa fa-table",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0CE fa-table"
+    )
+  }, {
+    value: "fa fa-magic",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0D0 fa-magic"
+    )
+  }, {
+    value: "fa fa-truck",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0D1 fa-truck"
+    )
+  }, {
+    value: "fa fa-pinterest",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0D2 fa-pinterest"
+    )
+  }, {
+    value: "fa fa-pinterest-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0D3 fa-pinterest-square"
+    )
+  }, {
+    value: "fa fa-google-plus-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0D4 fa-google-plus-square"
+    )
+  }, {
+    value: "fa fa-google-plus",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0D5 fa-google-plus"
+    )
+  }, {
+    value: "fa fa-money",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0D6 fa-money"
+    )
+  }, {
+    value: "fa fa-caret-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0D7 fa-caret-down"
+    )
+  }, {
+    value: "fa fa-caret-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0D8 fa-caret-up"
+    )
+  }, {
+    value: "fa fa-caret-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0D9 fa-caret-left"
+    )
+  }, {
+    value: "fa fa-caret-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0DA fa-caret-right"
+    )
+  }, {
+    value: "fa fa-columns",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0DB fa-columns"
+    )
+  }, {
+    value: "fa fa-sort",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0DC fa-sort"
+    )
+  }, {
+    value: "fa fa-sort-desc",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0DD fa-sort-desc"
+    )
+  }, {
+    value: "fa fa-sort-asc",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0DE fa-sort-asc"
+    )
+  }, {
+    value: "fa fa-envelope",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0E0 fa-envelope"
+    )
+  }, {
+    value: "fa fa-linkedin",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0E1 fa-linkedin"
+    )
+  }, {
+    value: "fa fa-undo",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0E2 fa-undo"
+    )
+  }, {
+    value: "fa fa-gavel",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0E3 fa-gavel"
+    )
+  }, {
+    value: "fa fa-tachometer",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0E4 fa-tachometer"
+    )
+  }, {
+    value: "fa fa-comment-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0E5 fa-comment-o"
+    )
+  }, {
+    value: "fa fa-comments-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0E6 fa-comments-o"
+    )
+  }, {
+    value: "fa fa-bolt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0E7 fa-bolt"
+    )
+  }, {
+    value: "fa fa-sitemap",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0E8 fa-sitemap"
+    )
+  }, {
+    value: "fa fa-umbrella",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0E9 fa-umbrella"
+    )
+  }, {
+    value: "fa fa-clipboard",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0EA fa-clipboard"
+    )
+  }, {
+    value: "fa fa-lightbulb-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0EB fa-lightbulb-o"
+    )
+  }, {
+    value: "fa fa-exchange",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0EC fa-exchange"
+    )
+  }, {
+    value: "fa fa-cloud-download",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0ED fa-cloud-download"
+    )
+  }, {
+    value: "fa fa-cloud-upload",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0EE fa-cloud-upload"
+    )
+  }, {
+    value: "fa fa-user-md",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0F0 fa-user-md"
+    )
+  }, {
+    value: "fa fa-stethoscope",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0F1 fa-stethoscope"
+    )
+  }, {
+    value: "fa fa-suitcase",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0F2 fa-suitcase"
+    )
+  }, {
+    value: "fa fa-bell-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0A2 fa-bell-o"
+    )
+  }, {
+    value: "fa fa-coffee",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0F4 fa-coffee"
+    )
+  }, {
+    value: "fa fa-cutlery",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0F5 fa-cutlery"
+    )
+  }, {
+    value: "fa fa-file-text-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0F6 fa-file-text-o"
+    )
+  }, {
+    value: "fa fa-building-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0F7 fa-building-o"
+    )
+  }, {
+    value: "fa fa-hospital-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0F8 fa-hospital-o"
+    )
+  }, {
+    value: "fa fa-ambulance",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0F9 fa-ambulance"
+    )
+  }, {
+    value: "fa fa-medkit",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0FA fa-medkit"
+    )
+  }, {
+    value: "fa fa-fighter-jet",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0FB fa-fighter-jet"
+    )
+  }, {
+    value: "fa fa-beer",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0FC fa-beer"
+    )
+  }, {
+    value: "fa fa-h-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0FD fa-h-square"
+    )
+  }, {
+    value: "fa fa-plus-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF0FE fa-plus-square"
+    )
+  }, {
+    value: "fa fa-angle-double-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF100 fa-angle-double-left"
+    )
+  }, {
+    value: "fa fa-angle-double-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF101 fa-angle-double-right"
+    )
+  }, {
+    value: "fa fa-angle-double-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF102 fa-angle-double-up"
+    )
+  }, {
+    value: "fa fa-angle-double-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF103 fa-angle-double-down"
+    )
+  }, {
+    value: "fa fa-angle-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF104 fa-angle-left"
+    )
+  }, {
+    value: "fa fa-angle-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF105 fa-angle-right"
+    )
+  }, {
+    value: "fa fa-angle-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF106 fa-angle-up"
+    )
+  }, {
+    value: "fa fa-angle-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF107 fa-angle-down"
+    )
+  }, {
+    value: "fa fa-desktop",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF108 fa-desktop"
+    )
+  }, {
+    value: "fa fa-laptop",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF109 fa-laptop"
+    )
+  }, {
+    value: "fa fa-tablet",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF10A fa-tablet"
+    )
+  }, {
+    value: "fa fa-mobile",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF10B fa-mobile"
+    )
+  }, {
+    value: "fa fa-circle-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF10C fa-circle-o"
+    )
+  }, {
+    value: "fa fa-quote-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF10D fa-quote-left"
+    )
+  }, {
+    value: "fa fa-quote-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF10E fa-quote-right"
+    )
+  }, {
+    value: "fa fa-spinner",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF110 fa-spinner"
+    )
+  }, {
+    value: "fa fa-circle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF111 fa-circle"
+    )
+  }, {
+    value: "fa fa-reply",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF112 fa-reply"
+    )
+  }, {
+    value: "fa fa-github-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF113 fa-github-alt"
+    )
+  }, {
+    value: "fa fa-folder-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF114 fa-folder-o"
+    )
+  }, {
+    value: "fa fa-folder-open-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF115 fa-folder-open-o"
+    )
+  }, {
+    value: "fa fa-smile-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF118 fa-smile-o"
+    )
+  }, {
+    value: "fa fa-frown-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF119 fa-frown-o"
+    )
+  }, {
+    value: "fa fa-meh-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF11A fa-meh-o"
+    )
+  }, {
+    value: "fa fa-gamepad",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF11B fa-gamepad"
+    )
+  }, {
+    value: "fa fa-keyboard-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF11C fa-keyboard-o"
+    )
+  }, {
+    value: "fa fa-flag-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF11D fa-flag-o"
+    )
+  }, {
+    value: "fa fa-flag-checkered",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF11E fa-flag-checkered"
+    )
+  }, {
+    value: "fa fa-terminal",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF120 fa-terminal"
+    )
+  }, {
+    value: "fa fa-code",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF121 fa-code"
+    )
+  }, {
+    value: "fa fa-reply-all",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF122 fa-reply-all"
+    )
+  }, {
+    value: "fa fa-star-half-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF123 fa-star-half-o"
+    )
+  }, {
+    value: "fa fa-location-arrow",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF124 fa-location-arrow"
+    )
+  }, {
+    value: "fa fa-crop",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF125 fa-crop"
+    )
+  }, {
+    value: "fa fa-code-fork",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF126 fa-code-fork"
+    )
+  }, {
+    value: "fa fa-chain-broken",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF127 fa-chain-broken"
+    )
+  }, {
+    value: "fa fa-question",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF128 fa-question"
+    )
+  }, {
+    value: "fa fa-info",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF129 fa-info"
+    )
+  }, {
+    value: "fa fa-exclamation",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF12A fa-exclamation"
+    )
+  }, {
+    value: "fa fa-superscript",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF12B fa-superscript"
+    )
+  }, {
+    value: "fa fa-subscript",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF12C fa-subscript"
+    )
+  }, {
+    value: "fa fa-eraser",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF12D fa-eraser"
+    )
+  }, {
+    value: "fa fa-puzzle-piece",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF12E fa-puzzle-piece"
+    )
+  }, {
+    value: "fa fa-microphone",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF130 fa-microphone"
+    )
+  }, {
+    value: "fa fa-microphone-slash",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF131 fa-microphone-slash"
+    )
+  }, {
+    value: "fa fa-shield",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF132 fa-shield"
+    )
+  }, {
+    value: "fa fa-calendar-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF133 fa-calendar-o"
+    )
+  }, {
+    value: "fa fa-fire-extinguisher",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF134 fa-fire-extinguisher"
+    )
+  }, {
+    value: "fa fa-rocket",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF135 fa-rocket"
+    )
+  }, {
+    value: "fa fa-maxcdn",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF136 fa-maxcdn"
+    )
+  }, {
+    value: "fa fa-chevron-circle-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF137 fa-chevron-circle-left"
+    )
+  }, {
+    value: "fa fa-chevron-circle-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF138 fa-chevron-circle-right"
+    )
+  }, {
+    value: "fa fa-chevron-circle-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF139 fa-chevron-circle-up"
+    )
+  }, {
+    value: "fa fa-chevron-circle-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF13A fa-chevron-circle-down"
+    )
+  }, {
+    value: "fa fa-html5",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF13B fa-html5"
+    )
+  }, {
+    value: "fa fa-css3",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF13C fa-css3"
+    )
+  }, {
+    value: "fa fa-anchor",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF13D fa-anchor"
+    )
+  }, {
+    value: "fa fa-unlock-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF13E fa-unlock-alt"
+    )
+  }, {
+    value: "fa fa-bullseye",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF140 fa-bullseye"
+    )
+  }, {
+    value: "fa fa-ellipsis-h",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF141 fa-ellipsis-h"
+    )
+  }, {
+    value: "fa fa-ellipsis-v",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF142 fa-ellipsis-v"
+    )
+  }, {
+    value: "fa fa-rss-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF143 fa-rss-square"
+    )
+  }, {
+    value: "fa fa-play-circle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF144 fa-play-circle"
+    )
+  }, {
+    value: "fa fa-ticket",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF145 fa-ticket"
+    )
+  }, {
+    value: "fa fa-minus-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF146 fa-minus-square"
+    )
+  }, {
+    value: "fa fa-minus-square-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF147 fa-minus-square-o"
+    )
+  }, {
+    value: "fa fa-level-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF148 fa-level-up"
+    )
+  }, {
+    value: "fa fa-level-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF149 fa-level-down"
+    )
+  }, {
+    value: "fa fa-check-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF14A fa-check-square"
+    )
+  }, {
+    value: "fa fa-pencil-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF14B fa-pencil-square"
+    )
+  }, {
+    value: "fa fa-external-link-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF14C fa-external-link-square"
+    )
+  }, {
+    value: "fa fa-share-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF14D fa-share-square"
+    )
+  }, {
+    value: "fa fa-compass",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF14E fa-compass"
+    )
+  }, {
+    value: "fa fa-caret-square-o-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF150 fa-caret-square-o-down"
+    )
+  }, {
+    value: "fa fa-caret-square-o-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF151 fa-caret-square-o-up"
+    )
+  }, {
+    value: "fa fa-caret-square-o-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF152 fa-caret-square-o-right"
+    )
+  }, {
+    value: "fa fa-eur",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF153 fa-eur"
+    )
+  }, {
+    value: "fa fa-gbp",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF154 fa-gbp"
+    )
+  }, {
+    value: "fa fa-usd",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF155 fa-usd"
+    )
+  }, {
+    value: "fa fa-inr",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF156 fa-inr"
+    )
+  }, {
+    value: "fa fa-jpy",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF157 fa-jpy"
+    )
+  }, {
+    value: "fa fa-rub",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF158 fa-rub"
+    )
+  }, {
+    value: "fa fa-krw",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF159 fa-krw"
+    )
+  }, {
+    value: "fa fa-btc",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF15A fa-btc"
+    )
+  }, {
+    value: "fa fa-file",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF15B fa-file"
+    )
+  }, {
+    value: "fa fa-file-text",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF15C fa-file-text"
+    )
+  }, {
+    value: "fa fa-sort-alpha-asc",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF15D fa-sort-alpha-asc"
+    )
+  }, {
+    value: "fa fa-sort-alpha-desc",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF15E fa-sort-alpha-desc"
+    )
+  }, {
+    value: "fa fa-sort-amount-asc",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF160 fa-sort-amount-asc"
+    )
+  }, {
+    value: "fa fa-sort-amount-desc",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF161 fa-sort-amount-desc"
+    )
+  }, {
+    value: "fa fa-sort-numeric-asc",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF162 fa-sort-numeric-asc"
+    )
+  }, {
+    value: "fa fa-sort-numeric-desc",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF163 fa-sort-numeric-desc"
+    )
+  }, {
+    value: "fa fa-thumbs-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF164 fa-thumbs-up"
+    )
+  }, {
+    value: "fa fa-thumbs-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF165 fa-thumbs-down"
+    )
   }, {
     value: "fa fa-youtube-square",
-    label: "youtube-square"
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF166 fa-youtube-square"
+    )
+  }, {
+    value: "fa fa-youtube",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF167 fa-youtube"
+    )
+  }, {
+    value: "fa fa-xing",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF168 fa-xing"
+    )
+  }, {
+    value: "fa fa-xing-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF169 fa-xing-square"
+    )
+  }, {
+    value: "fa fa-youtube-play",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF16A fa-youtube-play"
+    )
+  }, {
+    value: "fa fa-dropbox",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF16B fa-dropbox"
+    )
+  }, {
+    value: "fa fa-stack-overflow",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF16C fa-stack-overflow"
+    )
+  }, {
+    value: "fa fa-instagram",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF16D fa-instagram"
+    )
+  }, {
+    value: "fa fa-flickr",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF16E fa-flickr"
+    )
+  }, {
+    value: "fa fa-adn",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF170 fa-adn"
+    )
+  }, {
+    value: "fa fa-bitbucket",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF171 fa-bitbucket"
+    )
+  }, {
+    value: "fa fa-bitbucket-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF172 fa-bitbucket-square"
+    )
+  }, {
+    value: "fa fa-tumblr",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF173 fa-tumblr"
+    )
+  }, {
+    value: "fa fa-tumblr-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF174 fa-tumblr-square"
+    )
+  }, {
+    value: "fa fa-long-arrow-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF175 fa-long-arrow-down"
+    )
+  }, {
+    value: "fa fa-long-arrow-up",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF176 fa-long-arrow-up"
+    )
+  }, {
+    value: "fa fa-long-arrow-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF177 fa-long-arrow-left"
+    )
+  }, {
+    value: "fa fa-long-arrow-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF178 fa-long-arrow-right"
+    )
+  }, {
+    value: "fa fa-apple",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF179 fa-apple"
+    )
+  }, {
+    value: "fa fa-windows",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF17A fa-windows"
+    )
+  }, {
+    value: "fa fa-android",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF17B fa-android"
+    )
+  }, {
+    value: "fa fa-linux",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF17C fa-linux"
+    )
+  }, {
+    value: "fa fa-dribbble",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF17D fa-dribbble"
+    )
+  }, {
+    value: "fa fa-skype",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF17E fa-skype"
+    )
+  }, {
+    value: "fa fa-foursquare",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF180 fa-foursquare"
+    )
+  }, {
+    value: "fa fa-trello",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF181 fa-trello"
+    )
+  }, {
+    value: "fa fa-female",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF182 fa-female"
+    )
+  }, {
+    value: "fa fa-male",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF183 fa-male"
+    )
+  }, {
+    value: "fa fa-gratipay",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF184 fa-gratipay"
+    )
+  }, {
+    value: "fa fa-sun-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF185 fa-sun-o"
+    )
+  }, {
+    value: "fa fa-moon-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF186 fa-moon-o"
+    )
+  }, {
+    value: "fa fa-archive",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF187 fa-archive"
+    )
+  }, {
+    value: "fa fa-bug",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF188 fa-bug"
+    )
+  }, {
+    value: "fa fa-vk",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF189 fa-vk"
+    )
+  }, {
+    value: "fa fa-weibo",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF18A fa-weibo"
+    )
+  }, {
+    value: "fa fa-renren",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF18B fa-renren"
+    )
+  }, {
+    value: "fa fa-pagelines",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF18C fa-pagelines"
+    )
+  }, {
+    value: "fa fa-stack-exchange",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF18D fa-stack-exchange"
+    )
+  }, {
+    value: "fa fa-arrow-circle-o-right",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF18E fa-arrow-circle-o-right"
+    )
+  }, {
+    value: "fa fa-arrow-circle-o-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF190 fa-arrow-circle-o-left"
+    )
+  }, {
+    value: "fa fa-caret-square-o-left",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF191 fa-caret-square-o-left"
+    )
+  }, {
+    value: "fa fa-dot-circle-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF192 fa-dot-circle-o"
+    )
+  }, {
+    value: "fa fa-wheelchair",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF193 fa-wheelchair"
+    )
+  }, {
+    value: "fa fa-vimeo-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF194 fa-vimeo-square"
+    )
+  }, {
+    value: "fa fa-try",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF195 fa-try"
+    )
+  }, {
+    value: "fa fa-plus-square-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF196 fa-plus-square-o"
+    )
+  }, {
+    value: "fa fa-space-shuttle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF197 fa-space-shuttle"
+    )
+  }, {
+    value: "fa fa-slack",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF198 fa-slack"
+    )
+  }, {
+    value: "fa fa-envelope-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF199 fa-envelope-square"
+    )
+  }, {
+    value: "fa fa-wordpress",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF19A fa-wordpress"
+    )
+  }, {
+    value: "fa fa-openid",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF19B fa-openid"
+    )
+  }, {
+    value: "fa fa-university",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF19C fa-university"
+    )
+  }, {
+    value: "fa fa-graduation-cap",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF19D fa-graduation-cap"
+    )
+  }, {
+    value: "fa fa-yahoo",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF19E fa-yahoo"
+    )
+  }, {
+    value: "fa fa-google",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1A0 fa-google"
+    )
+  }, {
+    value: "fa fa-reddit",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1A1 fa-reddit"
+    )
+  }, {
+    value: "fa fa-reddit-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1A2 fa-reddit-square"
+    )
+  }, {
+    value: "fa fa-stumbleupon-circle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1A3 fa-stumbleupon-circle"
+    )
+  }, {
+    value: "fa fa-stumbleupon",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1A4 fa-stumbleupon"
+    )
+  }, {
+    value: "fa fa-delicious",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1A5 fa-delicious"
+    )
+  }, {
+    value: "fa fa-digg",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1A6 fa-digg"
+    )
+  }, {
+    value: "fa fa-pied-piper-pp",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1A7 fa-pied-piper-pp"
+    )
+  }, {
+    value: "fa fa-pied-piper-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1A8 fa-pied-piper-alt"
+    )
+  }, {
+    value: "fa fa-drupal",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1A9 fa-drupal"
+    )
+  }, {
+    value: "fa fa-joomla",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1AA fa-joomla"
+    )
+  }, {
+    value: "fa fa-language",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1AB fa-language"
+    )
+  }, {
+    value: "fa fa-fax",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1AC fa-fax"
+    )
+  }, {
+    value: "fa fa-building",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1AD fa-building"
+    )
+  }, {
+    value: "fa fa-child",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1AE fa-child"
+    )
+  }, {
+    value: "fa fa-paw",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1B0 fa-paw"
+    )
+  }, {
+    value: "fa fa-spoon",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1B1 fa-spoon"
+    )
+  }, {
+    value: "fa fa-cube",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1B2 fa-cube"
+    )
+  }, {
+    value: "fa fa-cubes",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1B3 fa-cubes"
+    )
+  }, {
+    value: "fa fa-behance",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1B4 fa-behance"
+    )
+  }, {
+    value: "fa fa-behance-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1B5 fa-behance-square"
+    )
+  }, {
+    value: "fa fa-steam",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1B6 fa-steam"
+    )
+  }, {
+    value: "fa fa-steam-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1B7 fa-steam-square"
+    )
+  }, {
+    value: "fa fa-recycle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1B8 fa-recycle"
+    )
+  }, {
+    value: "fa fa-car",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1B9 fa-car"
+    )
+  }, {
+    value: "fa fa-taxi",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1BA fa-taxi"
+    )
+  }, {
+    value: "fa fa-tree",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1BB fa-tree"
+    )
+  }, {
+    value: "fa fa-spotify",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1BC fa-spotify"
+    )
+  }, {
+    value: "fa fa-deviantart",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1BD fa-deviantart"
+    )
+  }, {
+    value: "fa fa-soundcloud",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1BE fa-soundcloud"
+    )
+  }, {
+    value: "fa fa-database",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1C0 fa-database"
+    )
+  }, {
+    value: "fa fa-file-pdf-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1C1 fa-file-pdf-o"
+    )
+  }, {
+    value: "fa fa-file-word-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1C2 fa-file-word-o"
+    )
+  }, {
+    value: "fa fa-file-excel-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1C3 fa-file-excel-o"
+    )
+  }, {
+    value: "fa fa-file-powerpoint-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1C4 fa-file-powerpoint-o"
+    )
+  }, {
+    value: "fa fa-file-image-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1C5 fa-file-image-o"
+    )
+  }, {
+    value: "fa fa-file-archive-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1C6 fa-file-archive-o"
+    )
+  }, {
+    value: "fa fa-file-audio-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1C7 fa-file-audio-o"
+    )
+  }, {
+    value: "fa fa-file-video-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1C8 fa-file-video-o"
+    )
+  }, {
+    value: "fa fa-file-code-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1C9 fa-file-code-o"
+    )
+  }, {
+    value: "fa fa-vine",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1CA fa-vine"
+    )
+  }, {
+    value: "fa fa-codepen",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1CB fa-codepen"
+    )
+  }, {
+    value: "fa fa-jsfiddle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1CC fa-jsfiddle"
+    )
+  }, {
+    value: "fa fa-life-ring",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1CD fa-life-ring"
+    )
+  }, {
+    value: "fa fa-circle-o-notch",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1CE fa-circle-o-notch"
+    )
+  }, {
+    value: "fa fa-rebel",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1D0 fa-rebel"
+    )
+  }, {
+    value: "fa fa-empire",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1D1 fa-empire"
+    )
+  }, {
+    value: "fa fa-git-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1D2 fa-git-square"
+    )
+  }, {
+    value: "fa fa-git",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1D3 fa-git"
+    )
+  }, {
+    value: "fa fa-hacker-news",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1D4 fa-hacker-news"
+    )
+  }, {
+    value: "fa fa-tencent-weibo",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1D5 fa-tencent-weibo"
+    )
+  }, {
+    value: "fa fa-qq",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1D6 fa-qq"
+    )
+  }, {
+    value: "fa fa-weixin",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1D7 fa-weixin"
+    )
+  }, {
+    value: "fa fa-paper-plane",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1D8 fa-paper-plane"
+    )
+  }, {
+    value: "fa fa-paper-plane-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1D9 fa-paper-plane-o"
+    )
+  }, {
+    value: "fa fa-history",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1DA fa-history"
+    )
+  }, {
+    value: "fa fa-circle-thin",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1DB fa-circle-thin"
+    )
+  }, {
+    value: "fa fa-header",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1DC fa-header"
+    )
+  }, {
+    value: "fa fa-paragraph",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1DD fa-paragraph"
+    )
+  }, {
+    value: "fa fa-sliders",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1DE fa-sliders"
+    )
+  }, {
+    value: "fa fa-share-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1E0 fa-share-alt"
+    )
+  }, {
+    value: "fa fa-share-alt-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1E1 fa-share-alt-square"
+    )
+  }, {
+    value: "fa fa-bomb",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1E2 fa-bomb"
+    )
+  }, {
+    value: "fa fa-futbol-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1E3 fa-futbol-o"
+    )
+  }, {
+    value: "fa fa-tty",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1E4 fa-tty"
+    )
+  }, {
+    value: "fa fa-binoculars",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1E5 fa-binoculars"
+    )
+  }, {
+    value: "fa fa-plug",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1E6 fa-plug"
+    )
+  }, {
+    value: "fa fa-slideshare",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1E7 fa-slideshare"
+    )
+  }, {
+    value: "fa fa-twitch",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1E8 fa-twitch"
+    )
+  }, {
+    value: "fa fa-yelp",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1E9 fa-yelp"
+    )
+  }, {
+    value: "fa fa-newspaper-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1EA fa-newspaper-o"
+    )
+  }, {
+    value: "fa fa-wifi",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1EB fa-wifi"
+    )
+  }, {
+    value: "fa fa-calculator",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1EC fa-calculator"
+    )
+  }, {
+    value: "fa fa-paypal",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1ED fa-paypal"
+    )
+  }, {
+    value: "fa fa-google-wallet",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1EE fa-google-wallet"
+    )
+  }, {
+    value: "fa fa-cc-visa",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1F0 fa-cc-visa"
+    )
+  }, {
+    value: "fa fa-cc-mastercard",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1F1 fa-cc-mastercard"
+    )
+  }, {
+    value: "fa fa-cc-discover",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1F2 fa-cc-discover"
+    )
+  }, {
+    value: "fa fa-cc-amex",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1F3 fa-cc-amex"
+    )
+  }, {
+    value: "fa fa-cc-paypal",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1F4 fa-cc-paypal"
+    )
+  }, {
+    value: "fa fa-cc-stripe",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1F5 fa-cc-stripe"
+    )
+  }, {
+    value: "fa fa-bell-slash",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1F6 fa-bell-slash"
+    )
+  }, {
+    value: "fa fa-bell-slash-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1F7 fa-bell-slash-o"
+    )
+  }, {
+    value: "fa fa-trash",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1F8 fa-trash"
+    )
+  }, {
+    value: "fa fa-copyright",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1F9 fa-copyright"
+    )
+  }, {
+    value: "fa fa-at",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1FA fa-at"
+    )
+  }, {
+    value: "fa fa-eyedropper",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1FB fa-eyedropper"
+    )
+  }, {
+    value: "fa fa-paint-brush",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1FC fa-paint-brush"
+    )
+  }, {
+    value: "fa fa-birthday-cake",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1FD fa-birthday-cake"
+    )
+  }, {
+    value: "fa fa-area-chart",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF1FE fa-area-chart"
+    )
+  }, {
+    value: "fa fa-pie-chart",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF200 fa-pie-chart"
+    )
+  }, {
+    value: "fa fa-line-chart",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF201 fa-line-chart"
+    )
+  }, {
+    value: "fa fa-lastfm",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF202 fa-lastfm"
+    )
+  }, {
+    value: "fa fa-lastfm-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF203 fa-lastfm-square"
+    )
+  }, {
+    value: "fa fa-toggle-off",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF204 fa-toggle-off"
+    )
+  }, {
+    value: "fa fa-toggle-on",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF205 fa-toggle-on"
+    )
+  }, {
+    value: "fa fa-bicycle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF206 fa-bicycle"
+    )
+  }, {
+    value: "fa fa-bus",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF207 fa-bus"
+    )
+  }, {
+    value: "fa fa-ioxhost",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF208 fa-ioxhost"
+    )
+  }, {
+    value: "fa fa-angellist",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF209 fa-angellist"
+    )
+  }, {
+    value: "fa fa-cc",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF20A fa-cc"
+    )
+  }, {
+    value: "fa fa-ils",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF20B fa-ils"
+    )
+  }, {
+    value: "fa fa-meanpath",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF20C fa-meanpath"
+    )
+  }, {
+    value: "fa fa-buysellads",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF20D fa-buysellads"
+    )
+  }, {
+    value: "fa fa-connectdevelop",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF20E fa-connectdevelop"
+    )
+  }, {
+    value: "fa fa-dashcube",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF210 fa-dashcube"
+    )
+  }, {
+    value: "fa fa-forumbee",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF211 fa-forumbee"
+    )
+  }, {
+    value: "fa fa-leanpub",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF212 fa-leanpub"
+    )
+  }, {
+    value: "fa fa-sellsy",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF213 fa-sellsy"
+    )
+  }, {
+    value: "fa fa-shirtsinbulk",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF214 fa-shirtsinbulk"
+    )
+  }, {
+    value: "fa fa-simplybuilt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF215 fa-simplybuilt"
+    )
+  }, {
+    value: "fa fa-skyatlas",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF216 fa-skyatlas"
+    )
+  }, {
+    value: "fa fa-cart-plus",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF217 fa-cart-plus"
+    )
+  }, {
+    value: "fa fa-cart-arrow-down",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF218 fa-cart-arrow-down"
+    )
+  }, {
+    value: "fa fa-diamond",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF219 fa-diamond"
+    )
+  }, {
+    value: "fa fa-ship",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF21A fa-ship"
+    )
+  }, {
+    value: "fa fa-user-secret",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF21B fa-user-secret"
+    )
+  }, {
+    value: "fa fa-motorcycle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF21C fa-motorcycle"
+    )
+  }, {
+    value: "fa fa-street-view",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF21D fa-street-view"
+    )
+  }, {
+    value: "fa fa-heartbeat",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF21E fa-heartbeat"
+    )
+  }, {
+    value: "fa fa-venus",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF221 fa-venus"
+    )
+  }, {
+    value: "fa fa-mars",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF222 fa-mars"
+    )
+  }, {
+    value: "fa fa-mercury",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF223 fa-mercury"
+    )
+  }, {
+    value: "fa fa-transgender",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF224 fa-transgender"
+    )
+  }, {
+    value: "fa fa-transgender-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF225 fa-transgender-alt"
+    )
+  }, {
+    value: "fa fa-venus-double",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF226 fa-venus-double"
+    )
+  }, {
+    value: "fa fa-mars-double",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF227 fa-mars-double"
+    )
+  }, {
+    value: "fa fa-venus-mars",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF228 fa-venus-mars"
+    )
+  }, {
+    value: "fa fa-mars-stroke",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF229 fa-mars-stroke"
+    )
+  }, {
+    value: "fa fa-mars-stroke-v",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF22A fa-mars-stroke-v"
+    )
+  }, {
+    value: "fa fa-mars-stroke-h",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF22B fa-mars-stroke-h"
+    )
+  }, {
+    value: "fa fa-neuter",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF22C fa-neuter"
+    )
+  }, {
+    value: "fa fa-genderless",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF22D fa-genderless"
+    )
+  }, {
+    value: "fa fa-facebook-official",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF230 fa-facebook-official"
+    )
+  }, {
+    value: "fa fa-pinterest-p",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF231 fa-pinterest-p"
+    )
+  }, {
+    value: "fa fa-whatsapp",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF232 fa-whatsapp"
+    )
+  }, {
+    value: "fa fa-server",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF233 fa-server"
+    )
+  }, {
+    value: "fa fa-user-plus",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF234 fa-user-plus"
+    )
+  }, {
+    value: "fa fa-user-times",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF235 fa-user-times"
+    )
+  }, {
+    value: "fa fa-bed",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF236 fa-bed"
+    )
+  }, {
+    value: "fa fa-viacoin",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF237 fa-viacoin"
+    )
+  }, {
+    value: "fa fa-train",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF238 fa-train"
+    )
+  }, {
+    value: "fa fa-subway",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF239 fa-subway"
+    )
+  }, {
+    value: "fa fa-medium",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF23A fa-medium"
+    )
+  }, {
+    value: "fa fa-y-combinator",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF23B fa-y-combinator"
+    )
+  }, {
+    value: "fa fa-optin-monster",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF23C fa-optin-monster"
+    )
+  }, {
+    value: "fa fa-opencart",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF23D fa-opencart"
+    )
+  }, {
+    value: "fa fa-expeditedssl",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF23E fa-expeditedssl"
+    )
+  }, {
+    value: "fa fa-battery-full",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF240 fa-battery-full"
+    )
+  }, {
+    value: "fa fa-battery-three-quarters",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF241 fa-battery-three-quarters"
+    )
+  }, {
+    value: "fa fa-battery-half",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF242 fa-battery-half"
+    )
+  }, {
+    value: "fa fa-battery-quarter",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF243 fa-battery-quarter"
+    )
+  }, {
+    value: "fa fa-battery-empty",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF244 fa-battery-empty"
+    )
+  }, {
+    value: "fa fa-mouse-pointer",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF245 fa-mouse-pointer"
+    )
+  }, {
+    value: "fa fa-i-cursor",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF246 fa-i-cursor"
+    )
+  }, {
+    value: "fa fa-object-group",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF247 fa-object-group"
+    )
+  }, {
+    value: "fa fa-object-ungroup",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF248 fa-object-ungroup"
+    )
+  }, {
+    value: "fa fa-sticky-note",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF249 fa-sticky-note"
+    )
+  }, {
+    value: "fa fa-sticky-note-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF24A fa-sticky-note-o"
+    )
+  }, {
+    value: "fa fa-cc-jcb",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF24B fa-cc-jcb"
+    )
+  }, {
+    value: "fa fa-cc-diners-club",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF24C fa-cc-diners-club"
+    )
+  }, {
+    value: "fa fa-clone",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF24D fa-clone"
+    )
+  }, {
+    value: "fa fa-balance-scale",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF24E fa-balance-scale"
+    )
+  }, {
+    value: "fa fa-hourglass-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF250 fa-hourglass-o"
+    )
+  }, {
+    value: "fa fa-hourglass-start",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF251 fa-hourglass-start"
+    )
+  }, {
+    value: "fa fa-hourglass-half",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF252 fa-hourglass-half"
+    )
+  }, {
+    value: "fa fa-hourglass-end",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF253 fa-hourglass-end"
+    )
+  }, {
+    value: "fa fa-hourglass",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF254 fa-hourglass"
+    )
+  }, {
+    value: "fa fa-hand-rock-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF255 fa-hand-rock-o"
+    )
+  }, {
+    value: "fa fa-hand-paper-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF256 fa-hand-paper-o"
+    )
+  }, {
+    value: "fa fa-hand-scissors-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF257 fa-hand-scissors-o"
+    )
+  }, {
+    value: "fa fa-hand-lizard-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF258 fa-hand-lizard-o"
+    )
+  }, {
+    value: "fa fa-hand-spock-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF259 fa-hand-spock-o"
+    )
+  }, {
+    value: "fa fa-hand-pointer-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF25A fa-hand-pointer-o"
+    )
+  }, {
+    value: "fa fa-hand-peace-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF25B fa-hand-peace-o"
+    )
+  }, {
+    value: "fa fa-trademark",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF25C fa-trademark"
+    )
+  }, {
+    value: "fa fa-registered",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF25D fa-registered"
+    )
+  }, {
+    value: "fa fa-creative-commons",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF25E fa-creative-commons"
+    )
+  }, {
+    value: "fa fa-gg",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF260 fa-gg"
+    )
+  }, {
+    value: "fa fa-gg-circle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF261 fa-gg-circle"
+    )
+  }, {
+    value: "fa fa-tripadvisor",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF262 fa-tripadvisor"
+    )
+  }, {
+    value: "fa fa-odnoklassniki",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF263 fa-odnoklassniki"
+    )
+  }, {
+    value: "fa fa-odnoklassniki-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF264 fa-odnoklassniki-square"
+    )
+  }, {
+    value: "fa fa-get-pocket",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF265 fa-get-pocket"
+    )
+  }, {
+    value: "fa fa-wikipedia-w",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF266 fa-wikipedia-w"
+    )
+  }, {
+    value: "fa fa-safari",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF267 fa-safari"
+    )
+  }, {
+    value: "fa fa-chrome",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF268 fa-chrome"
+    )
+  }, {
+    value: "fa fa-firefox",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF269 fa-firefox"
+    )
+  }, {
+    value: "fa fa-opera",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF26A fa-opera"
+    )
+  }, {
+    value: "fa fa-internet-explorer",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF26B fa-internet-explorer"
+    )
+  }, {
+    value: "fa fa-television",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF26C fa-television"
+    )
+  }, {
+    value: "fa fa-contao",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF26D fa-contao"
+    )
+  }, {
+    value: "fa fa-500px",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF26E fa-500px"
+    )
+  }, {
+    value: "fa fa-amazon",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF270 fa-amazon"
+    )
+  }, {
+    value: "fa fa-calendar-plus-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF271 fa-calendar-plus-o"
+    )
+  }, {
+    value: "fa fa-calendar-minus-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF272 fa-calendar-minus-o"
+    )
+  }, {
+    value: "fa fa-calendar-times-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF273 fa-calendar-times-o"
+    )
+  }, {
+    value: "fa fa-calendar-check-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF274 fa-calendar-check-o"
+    )
+  }, {
+    value: "fa fa-industry",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF275 fa-industry"
+    )
+  }, {
+    value: "fa fa-map-pin",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF276 fa-map-pin"
+    )
+  }, {
+    value: "fa fa-map-signs",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF277 fa-map-signs"
+    )
+  }, {
+    value: "fa fa-map-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF278 fa-map-o"
+    )
+  }, {
+    value: "fa fa-map",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF279 fa-map"
+    )
+  }, {
+    value: "fa fa-commenting",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF27A fa-commenting"
+    )
+  }, {
+    value: "fa fa-commenting-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF27B fa-commenting-o"
+    )
+  }, {
+    value: "fa fa-houzz",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF27C fa-houzz"
+    )
+  }, {
+    value: "fa fa-vimeo",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF27D fa-vimeo"
+    )
+  }, {
+    value: "fa fa-black-tie",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF27E fa-black-tie"
+    )
+  }, {
+    value: "fa fa-fonticons",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF280 fa-fonticons"
+    )
+  }, {
+    value: "fa fa-reddit-alien",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF281 fa-reddit-alien"
+    )
+  }, {
+    value: "fa fa-edge",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF282 fa-edge"
+    )
+  }, {
+    value: "fa fa-credit-card-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF283 fa-credit-card-alt"
+    )
+  }, {
+    value: "fa fa-codiepie",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF284 fa-codiepie"
+    )
+  }, {
+    value: "fa fa-modx",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF285 fa-modx"
+    )
+  }, {
+    value: "fa fa-fort-awesome",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF286 fa-fort-awesome"
+    )
+  }, {
+    value: "fa fa-usb",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF287 fa-usb"
+    )
+  }, {
+    value: "fa fa-product-hunt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF288 fa-product-hunt"
+    )
+  }, {
+    value: "fa fa-mixcloud",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF289 fa-mixcloud"
+    )
+  }, {
+    value: "fa fa-scribd",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF28A fa-scribd"
+    )
+  }, {
+    value: "fa fa-pause-circle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF28B fa-pause-circle"
+    )
+  }, {
+    value: "fa fa-pause-circle-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF28C fa-pause-circle-o"
+    )
+  }, {
+    value: "fa fa-stop-circle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF28D fa-stop-circle"
+    )
+  }, {
+    value: "fa fa-stop-circle-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF28E fa-stop-circle-o"
+    )
+  }, {
+    value: "fa fa-shopping-bag",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF290 fa-shopping-bag"
+    )
+  }, {
+    value: "fa fa-shopping-basket",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF291 fa-shopping-basket"
+    )
+  }, {
+    value: "fa fa-hashtag",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF292 fa-hashtag"
+    )
+  }, {
+    value: "fa fa-bluetooth",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF293 fa-bluetooth"
+    )
+  }, {
+    value: "fa fa-bluetooth-b",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF294 fa-bluetooth-b"
+    )
+  }, {
+    value: "fa fa-percent",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF295 fa-percent"
+    )
+  }, {
+    value: "fa fa-gitlab",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF296 fa-gitlab"
+    )
+  }, {
+    value: "fa fa-wpbeginner",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF297 fa-wpbeginner"
+    )
+  }, {
+    value: "fa fa-wpforms",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF298 fa-wpforms"
+    )
+  }, {
+    value: "fa fa-envira",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF299 fa-envira"
+    )
+  }, {
+    value: "fa fa-universal-access",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF29A fa-universal-access"
+    )
+  }, {
+    value: "fa fa-wheelchair-alt",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF29B fa-wheelchair-alt"
+    )
+  }, {
+    value: "fa fa-question-circle-o",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF29C fa-question-circle-o"
+    )
+  }, {
+    value: "fa fa-blind",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF29D fa-blind"
+    )
+  }, {
+    value: "fa fa-audio-description",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF29E fa-audio-description"
+    )
+  }, {
+    value: "fa fa-volume-control-phone",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2A0 fa-volume-control-phone"
+    )
+  }, {
+    value: "fa fa-braille",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2A1 fa-braille"
+    )
+  }, {
+    value: "fa fa-assistive-listening-systems",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2A2 fa-assistive-listening-systems"
+    )
+  }, {
+    value: "fa fa-american-sign-language-interpreting",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2A3 fa-american-sign-language-interpreting"
+    )
+  }, {
+    value: "fa fa-deaf",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2A4 fa-deaf"
+    )
+  }, {
+    value: "fa fa-glide",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2A5 fa-glide"
+    )
+  }, {
+    value: "fa fa-glide-g",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2A6 fa-glide-g"
+    )
+  }, {
+    value: "fa fa-sign-language",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2A7 fa-sign-language"
+    )
+  }, {
+    value: "fa fa-low-vision",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2A8 fa-low-vision"
+    )
+  }, {
+    value: "fa fa-viadeo",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2A9 fa-viadeo"
+    )
+  }, {
+    value: "fa fa-viadeo-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2AA fa-viadeo-square"
+    )
+  }, {
+    value: "fa fa-snapchat",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2AB fa-snapchat"
+    )
+  }, {
+    value: "fa fa-snapchat-ghost",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2AC fa-snapchat-ghost"
+    )
+  }, {
+    value: "fa fa-snapchat-square",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2AD fa-snapchat-square"
+    )
+  }, {
+    value: "fa fa-pied-piper",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2AE fa-pied-piper"
+    )
+  }, {
+    value: "fa fa-first-order",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2B0 fa-first-order"
+    )
+  }, {
+    value: "fa fa-yoast",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2B1 fa-yoast"
+    )
+  }, {
+    value: "fa fa-themeisle",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2B2 fa-themeisle"
+    )
+  }, {
+    value: "fa fa-google-plus-official",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2B3 fa-google-plus-official"
+    )
+  }, {
+    value: "fa fa-font-awesome",
+    label: wp.element.createElement(
+      "p",
+      null,
+      "\uF2B4 fa-font-awesome"
+    )
   }];
   return wp.element.createElement(SelectControl, {
     label: __("Choose Icon"),

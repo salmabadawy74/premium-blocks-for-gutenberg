@@ -151,11 +151,6 @@ class Premium_Blocks_Integration {
         
     }
     
-    public function check_used_blocks($content) {
-        
-    }
-    
-    
     /**
     * Add Premium Blocks category to Blocks Categories
     * @since 1.0.0

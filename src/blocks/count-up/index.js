@@ -627,12 +627,7 @@ if (countUp) {
                 {titleTxt}
               </h3>
             )}
-            <div
-              className={`${className}__desc`}
-              style={{
-                justifyContent: align
-              }}
-            >
+            <div className={`${className}__desc`}>
               {prefix && (
                 <p
                   style={{
@@ -788,12 +783,7 @@ if (countUp) {
                 {titleTxt}
               </h3>
             )}
-            <div
-              className={`${className}__desc`}
-              style={{
-                justifyContent: align
-              }}
-            >
+            <div className={`${className}__desc`}>
               {prefix && (
                 <p
                   style={{

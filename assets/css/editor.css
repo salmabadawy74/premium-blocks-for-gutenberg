@@ -1,3 +1,6 @@
+.components-base-control__field .components-select-control__input {
+  font-family: "FontAwesome", "Dashicons";
+}
 /**************** Premium Dual Heading *****************/
 /*******************************************************/
 .premium-dheading-block__container .premium-dheading-block__title {
