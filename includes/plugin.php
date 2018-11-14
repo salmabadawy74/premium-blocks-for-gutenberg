@@ -56,7 +56,7 @@ if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
         public function init_files() {
             
             require_once ( PREMIUM_BLOCKS_PATH . 'admin/settings/elements.php' );
-            require_once ( PREMIUM_BLOCKS_PATH . 'admin/settings/api.php');
+            require_once ( PREMIUM_BLOCKS_PATH . 'admin/settings/assets.php');
             
             if( is_admin() ) {
                 require_once ( PREMIUM_BLOCKS_PATH . 'admin/reports/deps/data.php' );

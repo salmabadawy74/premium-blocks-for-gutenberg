@@ -13,7 +13,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
 
         private static $instance = null;
 
-        public static $pb_maps_keys = [ 'premium-map-key', 'premium-map-api' ];
+        public static $pb_maps_keys = [ 'premium-map-key', 'premium-map-api', 'premium-fa-css' ];
 
         private $pb_maps_default;
 
@@ -37,7 +37,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
             add_submenu_page(
                 'premium-gutenberg',
                 '',
-                __('Google Maps API','premium-gutenberg'),
+                __('Settings','premium-gutenberg'),
                 'manage_options',
                 'premium-gutenberg-maps',
                 [ $this, 'pb_maps_page']
@@ -100,6 +100,11 @@ if( ! class_exists('Premium_Guten_Maps') ) {
                                             <h4 class="pb-api-disable-title"><label><?php echo __('Enable Maps API JS File:','premium-gutenberg'); ?></label><input name="premium-map-api" id="premium-map-api" type="checkbox" <?php checked( 1, $this->pb_maps_get['premium-map-api'], true) ?>><span><?php echo __('This will Enable the API JS file if it\'s not included by another theme or plugin','premium-gutenberg');?></span></h4>
                                         </th>
                                     </tr>
+                                    <tr>
+                                        <th>
+                                            <h4 class="pb-api-disable-title"><label><?php echo __('Enable Font Awesome Icons:','premium-gutenberg'); ?></label><input name="premium-fa-css" id="premium-fa-css" type="checkbox" <?php checked( 1, $this->pb_maps_get['premium-fa-css'], true) ?>><span><?php echo __('This will Enqueue Font Awesome CSS to be used within Premium Blocks','premium-gutenberg');?></span></h4>
+                                        </th>
+                                    </tr>
                                 </table>
                                 <input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
                                 <div>
@@ -145,6 +150,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
             $this->pb_maps_settings = array(
                 'premium-map-key'           => $settings['premium-map-key'],
                 'premium-map-api'           => intval( $settings['premium-map-api'] ? 1 : 0),
+                'premium-fa-css'            => intval( $settings['premium-fa-css'] ? 1 : 0),
             );
 
             update_option( 'pbg_maps_settings', $this->pb_maps_settings );

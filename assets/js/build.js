@@ -68,12 +68,13 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return banner; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return dualHeading; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return pricingTable; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return maps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return testimonial; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return countUp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return banner; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return dualHeading; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return pricingTable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return maps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return testimonial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return countUp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FontAwesomeEnabled; });
 //Blocks Keys
 var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
     banner = _PremiumBlocksSetting.banner,
@@ -82,6 +83,12 @@ var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
     maps = _PremiumBlocksSetting.maps,
     testimonial = _PremiumBlocksSetting.testimonial,
     countUp = _PremiumBlocksSetting.countUp;
+
+//Plugin Config Keys
+
+
+var _FontAwesomeConfig = FontAwesomeConfig,
+    FontAwesomeEnabled = _FontAwesomeConfig.FontAwesomeEnabled;
 
 
 /***/ }),
@@ -111,7 +118,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* dualHeading */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* dualHeading */]) {
   var className = "premium-dheading-block";
 
   var __ = wp.i18n.__;
@@ -839,7 +846,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* dualHeading */]) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["a" /* banner */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
   var className = "premium-banner";
 
   var __ = wp.i18n.__;
@@ -1613,7 +1620,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["a" /* banner */]) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* pricingTable */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* pricingTable */]) {
   var blockClass = "premium-pricing-table";
 
   var __ = wp.i18n.__;
@@ -3417,7 +3424,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* maps */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* maps */]) {
   var className = "premium-maps";
 
   var __ = wp.i18n.__;
@@ -4100,7 +4107,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_3__settings__["f" /* testimonial */]) {
+if (__WEBPACK_IMPORTED_MODULE_3__settings__["g" /* testimonial */]) {
   var className = "premium-testimonial";
 
   var __ = wp.i18n.__;
@@ -4976,11 +4983,11 @@ var PremiumUpperQuote = function (_Component) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_font_awesome__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_icon__ = __webpack_require__(11);
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* countUp */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* countUp */]) {
   var className = "premium-countup";
 
   var __ = wp.i18n.__;
@@ -5041,7 +5048,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* countUp */]) {
         default: true
       },
       prefixTxt: {
-        type: "string"
+        type: "string",
+        default: "Prefix"
       },
       prefixSize: {
         type: "number",
@@ -5062,7 +5070,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* countUp */]) {
         default: true
       },
       suffixTxt: {
-        type: "string"
+        type: "string",
+        default: "Prefix"
       },
       suffixSize: {
         type: "number",
@@ -5205,7 +5214,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* countUp */]) {
       }];
       var ICONS = [{
         value: "icon",
-        label: "Clock Icon"
+        label: "Icon"
       }, {
         value: "img",
         label: "Image"
@@ -5281,11 +5290,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* countUp */]) {
               };
             })
           }),
-          wp.element.createElement(
-            "p",
-            null,
-            __("Align")
-          ),
           "row-reverse" === flexDir && wp.element.createElement(Toolbar, {
             label: __("Align"),
             controls: REVALIGNS.map(function (contentAlign) {
@@ -5297,6 +5301,14 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* countUp */]) {
                 }
               };
             })
+          }),
+          wp.element.createElement(SelectControl, {
+            label: __("Direction"),
+            options: DIRECTION,
+            value: flexDir,
+            onChange: function onChange(newDir) {
+              return setAttributes({ flexDir: newDir });
+            }
           }),
           wp.element.createElement(ToggleControl, {
             label: __("Icon"),
@@ -5499,7 +5511,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* countUp */]) {
               return setAttributes({ icon: newType });
             }
           }),
-          "icon" === icon && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_font_awesome__["a" /* default */], {
+          "icon" === icon && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_icon__["a" /* default */], {
             icon: faIcon,
             onChangeIcon: function onChangeIcon(newIcon) {
               return setAttributes({ faIcon: newIcon });
@@ -5545,14 +5557,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* countUp */]) {
               },
               label: __("Color")
             }]
-          }),
-          wp.element.createElement(SelectControl, {
-            label: __("Direction"),
-            options: DIRECTION,
-            value: flexDir,
-            onChange: function onChange(newDir) {
-              return setAttributes({ flexDir: newDir });
-            }
           })
         )
       ), wp.element.createElement(
@@ -5587,6 +5591,21 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* countUp */]) {
             }
           })
         ),
+        titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && wp.element.createElement(
+          "h3",
+          {
+            className: className + "__title",
+            style: {
+              fontSize: titleSize + "px",
+              marginTop: titleT + "px",
+              marginBottom: titleB + "px",
+              color: titleColor,
+              fontWeight: titleWeight,
+              alignSelf: selfAlign
+            }
+          },
+          titleTxt
+        ),
         wp.element.createElement(
           "div",
           {
@@ -5595,7 +5614,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* countUp */]) {
               alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
             }
           },
-          titleCheck && wp.element.createElement(
+          titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && wp.element.createElement(
             "h3",
             {
               className: className + "__title",
@@ -5728,6 +5747,21 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* countUp */]) {
             }
           })
         ),
+        titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && wp.element.createElement(
+          "h3",
+          {
+            className: className + "__title",
+            style: {
+              fontSize: titleSize + "px",
+              marginTop: titleT + "px",
+              marginBottom: titleB + "px",
+              color: titleColor,
+              fontWeight: titleWeight,
+              alignSelf: selfAlign
+            }
+          },
+          titleTxt
+        ),
         wp.element.createElement(
           "div",
           {
@@ -5736,7 +5770,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* countUp */]) {
               alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
             }
           },
-          titleCheck && wp.element.createElement(
+          titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && wp.element.createElement(
             "h3",
             {
               className: className + "__title",
@@ -5808,16 +5842,637 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* countUp */]) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = FontAwesome;
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumIcon;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_settings__ = __webpack_require__(0);
 var __ = wp.i18n.__;
 var SelectControl = wp.components.SelectControl;
 
-function FontAwesome(props) {
+
+function PremiumIcon(props) {
   var icon = props.icon,
       _props$onChangeIcon = props.onChangeIcon,
       onChangeIcon = _props$onChangeIcon === undefined ? function () {} : _props$onChangeIcon;
+  //Dashicons
 
+  var DASHICONS = [{
+    value: "",
+    label: "none"
+  }, {
+    value: " dashicons dashicons-menu",
+    label: "menu"
+  }, {
+    value: " dashicons dashicons-dashboard",
+    label: "dashboard"
+  }, {
+    value: " dashicons dashicons-admin-site",
+    label: "admin-site"
+  }, {
+    value: " dashicons dashicons-admin-media",
+    label: "admin-media"
+  }, {
+    value: " dashicons dashicons-admin-page",
+    label: "admin-page"
+  }, {
+    value: " dashicons dashicons-admin-comments",
+    label: "admin-comments"
+  }, {
+    value: " dashicons dashicons-admin-appearance",
+    label: "admin-appearance"
+  }, {
+    value: " dashicons dashicons-admin-plugins",
+    label: "admin-plugins"
+  }, {
+    value: " dashicons dashicons-admin-users",
+    label: "admin-users"
+  }, {
+    value: " dashicons dashicons-admin-tools",
+    label: "admin-tools"
+  }, {
+    value: " dashicons dashicons-admin-settings",
+    label: "admin-settings"
+  }, {
+    value: " dashicons dashicons-admin-network",
+    label: "admin-network"
+  }, {
+    value: " dashicons dashicons-admin-generic",
+    label: "admin-generic"
+  }, {
+    value: " dashicons dashicons-admin-home",
+    label: "admin-home"
+  }, {
+    value: " dashicons dashicons-admin-collapse",
+    label: "admin-collapse"
+  }, {
+    value: " dashicons dashicons-admin-links",
+    label: "admin-links"
+  }, {
+    value: " dashicons dashicons-admin-post",
+    label: "admin-post"
+  }, {
+    value: " dashicons dashicons-format-standard",
+    label: "format-standard"
+  }, {
+    value: " dashicons dashicons-format-image",
+    label: "format-image"
+  }, {
+    value: " dashicons dashicons-format-gallery",
+    label: "format-gallery"
+  }, {
+    value: " dashicons dashicons-format-audio",
+    label: "format-audio"
+  }, {
+    value: " dashicons dashicons-format-video",
+    label: "format-video"
+  }, {
+    value: " dashicons dashicons-format-links",
+    label: "format-links"
+  }, {
+    value: " dashicons dashicons-format-chat",
+    label: "format-chat"
+  }, {
+    value: " dashicons dashicons-format-status",
+    label: "format-status"
+  }, {
+    value: " dashicons dashicons-format-aside",
+    label: "format-aside"
+  }, {
+    value: " dashicons dashicons-format-quote",
+    label: "format-quote"
+  }, {
+    value: " dashicons dashicons-welcome-write-blog",
+    label: "welcome-write-blog"
+  }, {
+    value: " dashicons dashicons-welcome-edit-page",
+    label: "welcome-edit-page"
+  }, {
+    value: " dashicons dashicons-welcome-add-page",
+    label: "welcome-add-page"
+  }, {
+    value: " dashicons dashicons-welcome-view-site",
+    label: "welcome-view-site"
+  }, {
+    value: " dashicons dashicons-welcome-widgets-menus",
+    label: "welcome-widgets-menus"
+  }, {
+    value: " dashicons dashicons-welcome-comments",
+    label: "welcome-comments"
+  }, {
+    value: " dashicons dashicons-welcome-learn-more",
+    label: "welcome-learn-more"
+  }, {
+    value: " dashicons dashicons-image-crop",
+    label: "image-crop"
+  }, {
+    value: " dashicons dashicons-image-rotate-left",
+    label: "image-rotate-left"
+  }, {
+    value: " dashicons dashicons-image-rotate-right",
+    label: "image-rotate-right"
+  }, {
+    value: " dashicons dashicons-image-flip-vertical",
+    label: "image-flip-vertical"
+  }, {
+    value: " dashicons dashicons-image-flip-horizontal",
+    label: "image-flip-horizontal"
+  }, {
+    value: " dashicons dashicons-undo",
+    label: "undo"
+  }, {
+    value: " dashicons dashicons-redo",
+    label: "redo"
+  }, {
+    value: " dashicons dashicons-editor-bold",
+    label: "editor-bold"
+  }, {
+    value: " dashicons dashicons-editor-italic",
+    label: "editor-italic"
+  }, {
+    value: " dashicons dashicons-editor-ul",
+    label: "editor-ul"
+  }, {
+    value: " dashicons dashicons-editor-ol",
+    label: "editor-ol"
+  }, {
+    value: " dashicons dashicons-editor-quote",
+    label: "editor-quote"
+  }, {
+    value: " dashicons dashicons-editor-alignleft",
+    label: "editor-alignleft"
+  }, {
+    value: " dashicons dashicons-editor-aligncenter",
+    label: "editor-aligncenter"
+  }, {
+    value: " dashicons dashicons-editor-alignright",
+    label: "editor-alignright"
+  }, {
+    value: " dashicons dashicons-editor-insertmore",
+    label: "editor-insertmore"
+  }, {
+    value: " dashicons dashicons-editor-spellcheck",
+    label: "editor-spellcheck"
+  }, {
+    value: " dashicons dashicons-editor-distractionfree",
+    label: "editor-distractionfree"
+  }, {
+    value: " dashicons dashicons-editor-expand",
+    label: "editor-expand"
+  }, {
+    value: " dashicons dashicons-editor-contract",
+    label: "editor-contract"
+  }, {
+    value: " dashicons dashicons-editor-kitchensink",
+    label: "editor-kitchensink"
+  }, {
+    value: " dashicons dashicons-editor-underline",
+    label: "editor-underline"
+  }, {
+    value: " dashicons dashicons-editor-justify",
+    label: "editor-justify"
+  }, {
+    value: " dashicons dashicons-editor-textcolor",
+    label: "editor-textcolor"
+  }, {
+    value: " dashicons dashicons-editor-paste-word",
+    label: "editor-paste-word"
+  }, {
+    value: " dashicons dashicons-editor-paste-text",
+    label: "editor-paste-text"
+  }, {
+    value: " dashicons dashicons-editor-removeformatting",
+    label: "editor-removeformatting"
+  }, {
+    value: " dashicons dashicons-editor-video",
+    label: "editor-video"
+  }, {
+    value: " dashicons dashicons-editor-customchar",
+    label: "editor-customchar"
+  }, {
+    value: " dashicons dashicons-editor-outdent",
+    label: "editor-outdent"
+  }, {
+    value: " dashicons dashicons-editor-indent",
+    label: "editor-indent"
+  }, {
+    value: " dashicons dashicons-editor-help",
+    label: "editor-help"
+  }, {
+    value: " dashicons dashicons-editor-strikethrough",
+    label: "editor-strikethrough"
+  }, {
+    value: " dashicons dashicons-editor-unlink",
+    label: "editor-unlink"
+  }, {
+    value: " dashicons dashicons-editor-rtl",
+    label: "editor-rtl"
+  }, {
+    value: " dashicons dashicons-editor-break",
+    label: "editor-break"
+  }, {
+    value: " dashicons dashicons-editor-code",
+    label: "editor-code"
+  }, {
+    value: " dashicons dashicons-editor-paragraph",
+    label: "editor-paragraph"
+  }, {
+    value: " dashicons dashicons-align-left",
+    label: "align-left"
+  }, {
+    value: " dashicons dashicons-align-right",
+    label: "align-right"
+  }, {
+    value: " dashicons dashicons-align-center",
+    label: "align-center"
+  }, {
+    value: " dashicons dashicons-align-none",
+    label: "align-none"
+  }, {
+    value: " dashicons dashicons-lock",
+    label: "lock"
+  }, {
+    value: " dashicons dashicons-calendar",
+    label: "calendar"
+  }, {
+    value: " dashicons dashicons-visibility",
+    label: "visibility"
+  }, {
+    value: " dashicons dashicons-post-status",
+    label: "post-status"
+  }, {
+    value: " dashicons dashicons-edit",
+    label: "edit"
+  }, {
+    value: " dashicons dashicons-post-trash",
+    label: "post-trash"
+  }, {
+    value: " dashicons dashicons-trash",
+    label: "trash"
+  }, {
+    value: " dashicons dashicons-external",
+    label: "external"
+  }, {
+    value: " dashicons dashicons-arrow-up",
+    label: "arrow-up"
+  }, {
+    value: " dashicons dashicons-arrow-down",
+    label: "arrow-down"
+  }, {
+    value: " dashicons dashicons-arrow-left",
+    label: "arrow-left"
+  }, {
+    value: " dashicons dashicons-arrow-right",
+    label: "arrow-right"
+  }, {
+    value: " dashicons dashicons-arrow-up-alt",
+    label: "arrow-up-alt"
+  }, {
+    value: " dashicons dashicons-arrow-down-alt",
+    label: "arrow-down-alt"
+  }, {
+    value: " dashicons dashicons-arrow-left-alt",
+    label: "arrow-left-alt"
+  }, {
+    value: " dashicons dashicons-arrow-right-alt",
+    label: "arrow-right-alt"
+  }, {
+    value: " dashicons dashicons-arrow-up-alt2",
+    label: "arrow-up-alt2"
+  }, {
+    value: " dashicons dashicons-arrow-down-alt2",
+    label: "arrow-down-alt2"
+  }, {
+    value: " dashicons dashicons-arrow-left-alt2",
+    label: "arrow-left-alt2"
+  }, {
+    value: " dashicons dashicons-arrow-right-alt2",
+    label: "arrow-right-alt2"
+  }, {
+    value: " dashicons dashicons-leftright",
+    label: "leftright"
+  }, {
+    value: " dashicons dashicons-sort",
+    label: "sort"
+  }, {
+    value: " dashicons dashicons-randomize",
+    label: "randomize"
+  }, {
+    value: " dashicons dashicons-list-view",
+    label: "list-view"
+  }, {
+    value: " dashicons dashicons-exerpt-view",
+    label: "exerpt-view"
+  }, {
+    value: " dashicons dashicons-hammer",
+    label: "hammer"
+  }, {
+    value: " dashicons dashicons-art",
+    label: "art"
+  }, {
+    value: " dashicons dashicons-migrate",
+    label: "migrate"
+  }, {
+    value: " dashicons dashicons-performance",
+    label: "performance"
+  }, {
+    value: " dashicons dashicons-universal-access",
+    label: "universal-access"
+  }, {
+    value: " dashicons dashicons-universal-access-alt",
+    label: "universal-access-alt"
+  }, {
+    value: " dashicons dashicons-tickets",
+    label: "tickets"
+  }, {
+    value: " dashicons dashicons-nametag",
+    label: "nametag"
+  }, {
+    value: " dashicons dashicons-clipboard",
+    label: "clipboard"
+  }, {
+    value: " dashicons dashicons-heart",
+    label: "heart"
+  }, {
+    value: " dashicons dashicons-megaphone",
+    label: "megaphone"
+  }, {
+    value: " dashicons dashicons-schedule",
+    label: "schedule"
+  }, {
+    value: " dashicons dashicons-wordpress",
+    label: "wordpress"
+  }, {
+    value: " dashicons dashicons-wordpress-alt",
+    label: "wordpress-alt"
+  }, {
+    value: " dashicons dashicons-pressthis,",
+    label: "pressthis,"
+  }, {
+    value: " dashicons dashicons-update,",
+    label: "update,"
+  }, {
+    value: " dashicons dashicons-screenoptions",
+    label: "screenoptions"
+  }, {
+    value: " dashicons dashicons-info",
+    label: "info"
+  }, {
+    value: " dashicons dashicons-cart",
+    label: "cart"
+  }, {
+    value: " dashicons dashicons-feedback",
+    label: "feedback"
+  }, {
+    value: " dashicons dashicons-cloud",
+    label: "cloud"
+  }, {
+    value: " dashicons dashicons-translation",
+    label: "translation"
+  }, {
+    value: " dashicons dashicons-tag",
+    label: "tag"
+  }, {
+    value: " dashicons dashicons-category",
+    label: "category"
+  }, {
+    value: " dashicons dashicons-archive",
+    label: "archive"
+  }, {
+    value: " dashicons dashicons-tagcloud",
+    label: "tagcloud"
+  }, {
+    value: " dashicons dashicons-text",
+    label: "text"
+  }, {
+    value: " dashicons dashicons-media-archive",
+    label: "media-archive"
+  }, {
+    value: " dashicons dashicons-media-audio",
+    label: "media-audio"
+  }, {
+    value: " dashicons dashicons-media-code",
+    label: "media-code"
+  }, {
+    value: " dashicons dashicons-media-default",
+    label: "media-default"
+  }, {
+    value: " dashicons dashicons-media-document",
+    label: "media-document"
+  }, {
+    value: " dashicons dashicons-media-interactive",
+    label: "media-interactive"
+  }, {
+    value: " dashicons dashicons-media-spreadsheet",
+    label: "media-spreadsheet"
+  }, {
+    value: " dashicons dashicons-media-text",
+    label: "media-text"
+  }, {
+    value: " dashicons dashicons-media-video",
+    label: "media-video"
+  }, {
+    value: " dashicons dashicons-playlist-audio",
+    label: "playlist-audio"
+  }, {
+    value: " dashicons dashicons-playlist-video",
+    label: "playlist-video"
+  }, {
+    value: " dashicons dashicons-yes",
+    label: "yes"
+  }, {
+    value: " dashicons dashicons-no",
+    label: "no"
+  }, {
+    value: " dashicons dashicons-no-alt",
+    label: "no-alt"
+  }, {
+    value: " dashicons dashicons-plus",
+    label: "plus"
+  }, {
+    value: " dashicons dashicons-plus-alt",
+    label: "plus-alt"
+  }, {
+    value: " dashicons dashicons-minus",
+    label: "minus"
+  }, {
+    value: " dashicons dashicons-dismiss",
+    label: "dismiss"
+  }, {
+    value: " dashicons dashicons-marker",
+    label: "marker"
+  }, {
+    value: " dashicons dashicons-star-filled",
+    label: "star-filled"
+  }, {
+    value: " dashicons dashicons-star-half",
+    label: "star-half"
+  }, {
+    value: " dashicons dashicons-star-empty",
+    label: "star-empty"
+  }, {
+    value: " dashicons dashicons-flag",
+    label: "flag"
+  }, {
+    value: " dashicons dashicons-share",
+    label: "share"
+  }, {
+    value: " dashicons dashicons-share1",
+    label: "share1"
+  }, {
+    value: " dashicons dashicons-share-alt",
+    label: "share-alt"
+  }, {
+    value: " dashicons dashicons-share-alt2",
+    label: "share-alt2"
+  }, {
+    value: " dashicons dashicons-twitter",
+    label: "twitter"
+  }, {
+    value: " dashicons dashicons-rss",
+    label: "rss"
+  }, {
+    value: " dashicons dashicons-email",
+    label: "email"
+  }, {
+    value: " dashicons dashicons-email-alt",
+    label: "email-alt"
+  }, {
+    value: " dashicons dashicons-facebook",
+    label: "facebook"
+  }, {
+    value: " dashicons dashicons-facebook-alt",
+    label: "facebook-alt"
+  }, {
+    value: " dashicons dashicons-networking",
+    label: "networking"
+  }, {
+    value: " dashicons dashicons-googleplus",
+    label: "googleplus"
+  }, {
+    value: " dashicons dashicons-location",
+    label: "location"
+  }, {
+    value: " dashicons dashicons-location-alt",
+    label: "location-alt"
+  }, {
+    value: " dashicons dashicons-camera",
+    label: "camera"
+  }, {
+    value: " dashicons dashicons-images-alt",
+    label: "images-alt"
+  }, {
+    value: " dashicons dashicons-images-alt2",
+    label: "images-alt2"
+  }, {
+    value: " dashicons dashicons-video-alt",
+    label: "video-alt"
+  }, {
+    value: " dashicons dashicons-video-alt2",
+    label: "video-alt2"
+  }, {
+    value: " dashicons dashicons-video-alt3",
+    label: "video-alt3"
+  }, {
+    value: " dashicons dashicons-vault",
+    label: "vault"
+  }, {
+    value: " dashicons dashicons-shield",
+    label: "shield"
+  }, {
+    value: " dashicons dashicons-shield-alt",
+    label: "shield-alt"
+  }, {
+    value: " dashicons dashicons-sos",
+    label: "sos"
+  }, {
+    value: " dashicons dashicons-search",
+    label: "search"
+  }, {
+    value: " dashicons dashicons-slides",
+    label: "slides"
+  }, {
+    value: " dashicons dashicons-analytics",
+    label: "analytics"
+  }, {
+    value: " dashicons dashicons-chart-pie",
+    label: "chart-pie"
+  }, {
+    value: " dashicons dashicons-chart-bar",
+    label: "chart-bar"
+  }, {
+    value: " dashicons dashicons-chart-line",
+    label: "chart-line"
+  }, {
+    value: " dashicons dashicons-chart-area",
+    label: "chart-area"
+  }, {
+    value: " dashicons dashicons-groups",
+    label: "groups"
+  }, {
+    value: " dashicons dashicons-businessman",
+    label: "businessman"
+  }, {
+    value: " dashicons dashicons-id",
+    label: "id"
+  }, {
+    value: " dashicons dashicons-id-alt",
+    label: "id-alt"
+  }, {
+    value: " dashicons dashicons-products",
+    label: "products"
+  }, {
+    value: " dashicons dashicons-awards",
+    label: "awards"
+  }, {
+    value: " dashicons dashicons-forms",
+    label: "forms"
+  }, {
+    value: " dashicons dashicons-testimonial",
+    label: "testimonial"
+  }, {
+    value: " dashicons dashicons-portfolio",
+    label: "portfolio"
+  }, {
+    value: " dashicons dashicons-book",
+    label: "book"
+  }, {
+    value: " dashicons dashicons-book-alt",
+    label: "book-alt"
+  }, {
+    value: " dashicons dashicons-download",
+    label: "download"
+  }, {
+    value: " dashicons dashicons-upload",
+    label: "upload"
+  }, {
+    value: " dashicons dashicons-backup",
+    label: "backup"
+  }, {
+    value: " dashicons dashicons-clock",
+    label: "clock"
+  }, {
+    value: " dashicons dashicons-lightbulb",
+    label: "lightbulb"
+  }, {
+    value: " dashicons dashicons-microphone",
+    label: "microphone"
+  }, {
+    value: " dashicons dashicons-desktop",
+    label: "desktop"
+  }, {
+    value: " dashicons dashicons-tablet",
+    label: "tablet"
+  }, {
+    value: " dashicons dashicons-smartphone",
+    label: "smartphone"
+  }, {
+    value: " dashicons dashicons-smiley",
+    label: "smiley"
+  }];
+
+  //Font Awesome Icons
   var ICONS = [{
+    value: "",
+    label: "none"
+  }, {
     value: "fa fa-500px",
     label: "500px"
   }, {
@@ -8184,7 +8839,7 @@ function FontAwesome(props) {
   }];
   return wp.element.createElement(SelectControl, {
     label: __("Choose Icon"),
-    options: ICONS,
+    options: 1 == __WEBPACK_IMPORTED_MODULE_0__blocks_settings__["a" /* FontAwesomeEnabled */] ? ICONS : DASHICONS,
     value: icon,
     onChange: onChangeIcon
   });

@@ -9,11 +9,20 @@ if( ! defined( 'ABSPATH' ) ) exit();
 class Premium_Blocks_Integration {
     
     private static $instance = null;
+
+    public static $blocks;
+
+    public static $config;
     
     /**
     * Constructor for the class
     */
     public function __construct() {
+
+        //Gets Active Blocks
+        self::$blocks = Premium_Guten_Admin::get_enabled_keys();
+        //Gets Plugin Admin Settings
+        self::$config = Premium_Guten_Maps::get_enabled_keys();
         
         //Enqueue Editor Assets
         add_action( 'enqueue_block_editor_assets', array( $this, 'premium_gutenberg_editor' ) );
@@ -37,8 +46,8 @@ class Premium_Blocks_Integration {
     * @return void
     */
     public function premium_gutenberg_editor() {
-        
-        $enabled_blocks = Premium_Guten_Admin::get_enabled_keys();
+
+        $is_fa_enabled = isset( self::$config['premium-fa-css'] ) ? self::$config['premium-fa-css'] : true;
         
         wp_enqueue_script(
             'pbg-editor',
@@ -50,14 +59,6 @@ class Premium_Blocks_Integration {
             ),
             PREMIUM_BLOCKS_VERSION
         );
-        
-//        wp_localize_script(
-//            'pbg-editor',
-//            'BlocksSettings',
-//            array(
-//                'PremiumBanner' => 'Hello'
-//            )
-//        );
     
         wp_enqueue_style(
             'pbg-editor-css',
@@ -71,8 +72,16 @@ class Premium_Blocks_Integration {
             'PremiumBlocksSettings',
             array(
 				'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/author.jpg',
-                'activeBlocks'      => $enabled_blocks
+                'activeBlocks'      => self::$blocks
 			)
+        );
+
+        wp_localize_script(
+            'pbg-editor',
+            'FontAwesomeConfig',
+            array(
+                'FontAwesomeEnabled'    => $is_fa_enabled,
+            )
         );
     }
     
@@ -83,12 +92,17 @@ class Premium_Blocks_Integration {
     * @return void
     */
     public function premium_gutenberg_frontend() {
-        wp_enqueue_style(
-            'pbg-fontawesome',
-            'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
-        );
+
+        $is_fa_enabled = isset( self::$config['premium-fa-css'] ) ? self::$config['premium-fa-css'] : true;
+
+        $is_enabled = isset( self::$config['premium-map-api'] ) ? self::$config['premium-map-api'] : true;
         
+        $api_key = isset( self::$config['premium-map-key'] ) ? self::$config['premium-map-key'] : '';
         
+        $is_maps_enabled = self::$blocks['maps'];
+
+        $is_counter_enabled = self::$blocks['counter'];
+
         wp_enqueue_style(
             'pbg-frontend',
             PREMIUM_BLOCKS_URL . 'assets/css/style.css',
@@ -96,37 +110,39 @@ class Premium_Blocks_Integration {
             PREMIUM_BLOCKS_VERSION
         );
         
-        $map_config = Premium_Guten_Maps::get_enabled_keys();
+        if( $is_fa_enabled ) {
+            wp_enqueue_style(
+                'pbg-fontawesome',
+                'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+            );
+        }
         
-        $is_enabled = isset( $map_config['premium-map-api'] ) ? $map_config['premium-map-api'] : true;
+        if( $is_counter_enabled ) {
+            wp_enqueue_script(
+                'waypoints_lib',
+                PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/lib/jquery.waypoints.js',
+                array('jquery'),
+                PREMIUM_BLOCKS_VERSION
+            );
+            
+            wp_enqueue_script(
+                'counter_lib',
+                PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/lib/countUpmin.js',
+                array('jquery'),
+                PREMIUM_BLOCKS_VERSION
+            );
+            
+            wp_enqueue_script(
+                'countup-js',
+                PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/countup.js',
+                array('jquery'),
+                PREMIUM_BLOCKS_VERSION
+            );
+        }
         
-        $api_key = isset( $map_config['premium-map-key'] ) ? $map_config['premium-map-key'] : '';
-        
-        $is_block_enabled = Premium_Guten_Admin::get_enabled_keys()['maps'];
-        
-        wp_enqueue_script(
-            'waypoints_lib',
-            PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/lib/jquery.waypoints.js',
-            array('jquery'),
-            PREMIUM_BLOCKS_VERSION
-        );
-        
-        wp_enqueue_script(
-            'counter_lib',
-            PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/lib/countUpmin.js',
-            array('jquery'),
-            PREMIUM_BLOCKS_VERSION
-        );
-        
-        wp_enqueue_script(
-            'countup-js',
-            PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/countup.js',
-            array('jquery'),
-            PREMIUM_BLOCKS_VERSION
-        );
         
         //Enqueue Google Maps API key Script
-        if( $is_block_enabled && $is_enabled && ! empty( $api_key ) ) {
+        if( $is_maps_enabled && $is_enabled && ! empty( $api_key ) ) {
             wp_enqueue_script(
                 'premium-map-block',
                 'https://maps.googleapis.com/maps/api/js?key=' . $api_key

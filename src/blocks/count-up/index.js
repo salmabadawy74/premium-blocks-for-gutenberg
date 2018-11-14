@@ -1,5 +1,5 @@
 import { countUp } from "../settings";
-import FontAwesome, { faIcons } from "../../components/font-awesome";
+import PremiumIcon from "../../components/premium-icon";
 
 if (countUp) {
   const className = "premium-countup";
@@ -61,7 +61,8 @@ if (countUp) {
         default: true
       },
       prefixTxt: {
-        type: "string"
+        type: "string",
+        default: "Prefix"
       },
       prefixSize: {
         type: "number",
@@ -82,7 +83,8 @@ if (countUp) {
         default: true
       },
       suffixTxt: {
-        type: "string"
+        type: "string",
+        default: "Prefix"
       },
       suffixSize: {
         type: "number",
@@ -235,7 +237,7 @@ if (countUp) {
       const ICONS = [
         {
           value: "icon",
-          label: "Clock Icon"
+          label: "Icon"
         },
         {
           value: "img",
@@ -306,7 +308,6 @@ if (countUp) {
                   }))}
                 />
               )}
-              <p>{__("Align")}</p>
               {"row-reverse" === flexDir && (
                 <Toolbar
                   label={__("Align")}
@@ -317,6 +318,12 @@ if (countUp) {
                   }))}
                 />
               )}
+              <SelectControl
+                label={__("Direction")}
+                options={DIRECTION}
+                value={flexDir}
+                onChange={newDir => setAttributes({ flexDir: newDir })}
+              />
               <ToggleControl
                 label={__("Icon")}
                 checked={iconCheck}
@@ -489,7 +496,7 @@ if (countUp) {
                   onChange={newType => setAttributes({ icon: newType })}
                 />
                 {"icon" === icon && (
-                  <FontAwesome
+                  <PremiumIcon
                     icon={faIcon}
                     onChangeIcon={newIcon => setAttributes({ faIcon: newIcon })}
                   />
@@ -540,12 +547,6 @@ if (countUp) {
                     ]}
                   />
                 )}
-                <SelectControl
-                  label={__("Direction")}
-                  options={DIRECTION}
-                  value={flexDir}
-                  onChange={newDir => setAttributes({ flexDir: newDir })}
-                />
               </PanelBody>
             )}
           </InspectorControls>
@@ -587,6 +588,22 @@ if (countUp) {
               )}
             </div>
           )}
+          {titleCheck &&
+            ("column" === flexDir || "column-reverse" === flexDir) && (
+              <h3
+                className={`${className}__title`}
+                style={{
+                  fontSize: titleSize + "px",
+                  marginTop: titleT + "px",
+                  marginBottom: titleB + "px",
+                  color: titleColor,
+                  fontWeight: titleWeight,
+                  alignSelf: selfAlign
+                }}
+              >
+                {titleTxt}
+              </h3>
+            )}
           <div
             className={`${className}__info`}
             style={{
@@ -596,7 +613,7 @@ if (countUp) {
                   : selfAlign
             }}
           >
-            {titleCheck && (
+            {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
               <h3
                 className={`${className}__title`}
                 style={{
@@ -732,6 +749,22 @@ if (countUp) {
               )}
             </div>
           )}
+          {titleCheck &&
+            ("column" === flexDir || "column-reverse" === flexDir) && (
+              <h3
+                className={`${className}__title`}
+                style={{
+                  fontSize: titleSize + "px",
+                  marginTop: titleT + "px",
+                  marginBottom: titleB + "px",
+                  color: titleColor,
+                  fontWeight: titleWeight,
+                  alignSelf: selfAlign
+                }}
+              >
+                {titleTxt}
+              </h3>
+            )}
           <div
             className={`${className}__info`}
             style={{
@@ -741,7 +774,7 @@ if (countUp) {
                   : selfAlign
             }}
           >
-            {titleCheck && (
+            {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
               <h3
                 className={`${className}__title`}
                 style={{
