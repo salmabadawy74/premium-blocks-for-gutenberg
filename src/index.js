@@ -4,3 +4,4 @@ import "./blocks/pricing-table";
 import "./blocks/maps";
 import "./blocks/testimonials";
 import "./blocks/count-up";
+import "./blocks/icon";

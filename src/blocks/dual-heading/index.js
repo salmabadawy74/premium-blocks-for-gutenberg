@@ -1,4 +1,5 @@
 import { dualHeading } from "../settings";
+import PremiumBorder from "../../components/premium-border";
 
 if (dualHeading) {
   const className = "premium-dheading-block";
@@ -212,32 +213,6 @@ if (dualHeading) {
           label: "Block"
         }
       ];
-      const BORDER = [
-        {
-          value: "none",
-          label: "None"
-        },
-        {
-          value: "solid",
-          label: "Solid"
-        },
-        {
-          value: "double",
-          label: "Double"
-        },
-        {
-          value: "dotted",
-          label: "Dotted"
-        },
-        {
-          value: "dashed",
-          label: "Dashed"
-        },
-        {
-          value: "groove",
-          label: "Groove"
-        }
-      ];
       return [
         isSelected && (
           <BlockControls key="controls">
@@ -337,46 +312,25 @@ if (dualHeading) {
                   ]}
                 />
               )}
-              <SelectControl
-                label={__("Border Type")}
-                options={BORDER}
-                value={firstBorderType}
-                onChange={newType =>
+              <PremiumBorder
+                borderType={firstBorderType}
+                borderWidth={firstBorderWidth}
+                borderColor={firstBorderColor}
+                borderRadius={firstBorderRadius}
+                onChangeType={newType =>
                   setAttributes({ firstBorderType: newType })
                 }
-              />
-              <p>{"none" != firstBorderType && __("Border Width")}</p>
-              {"none" != firstBorderType && (
-                <RangeControl
-                  value={firstBorderWidth}
-                  min="0"
-                  max="50"
-                  onChange={newWidth =>
-                    setAttributes({ firstBorderWidth: newWidth })
-                  }
-                />
-              )}
-              {"none" != firstBorderType && (
-                <PanelColorSettings
-                  colorSettings={[
-                    {
-                      value: firstBorderColor,
-                      onChange: colorValue =>
-                        setAttributes({ firstBorderColor: colorValue }),
-                      label: __("Border Color")
-                    }
-                  ]}
-                />
-              )}
-              <p>{__("Border Radius")}</p>
-              <RangeControl
-                value={firstBorderRadius}
-                min="0"
-                max="150"
-                onChange={newRadius =>
-                  setAttributes({ firstBorderRadius: newRadius })
+                onChangeWidth={newWidth =>
+                  setAttributes({ firstBorderWidth: newWidth })
+                }
+                onChangeColor={colorValue =>
+                  setAttributes({ firstBorderColor: colorValue })
+                }
+                onChangeRadius={newrRadius =>
+                  setAttributes({ firstBorderRadius: newrRadius })
                 }
               />
+
               <p>{__("Margin Left")}</p>
               <RangeControl
                 value={firstMarginL}
@@ -459,44 +413,22 @@ if (dualHeading) {
                   ]}
                 />
               )}
-              <SelectControl
-                label={__("Border Type")}
-                options={BORDER}
-                value={secondBorderType}
-                onChange={newType =>
+              <PremiumBorder
+                borderType={secondBorderType}
+                borderWidth={secondBorderWidth}
+                borderColor={secondBorderColor}
+                borderRadius={secondBorderRadius}
+                onChangeType={newType =>
                   setAttributes({ secondBorderType: newType })
                 }
-              />
-              <p>{"none" != secondBorderType && __("Border Width")}</p>
-              {"none" != secondBorderType && (
-                <RangeControl
-                  value={secondBorderWidth}
-                  min="0"
-                  max="50"
-                  onChange={newWidth =>
-                    setAttributes({ secondBorderWidth: newWidth })
-                  }
-                />
-              )}
-              {"none" != secondBorderType && (
-                <PanelColorSettings
-                  colorSettings={[
-                    {
-                      value: secondBorderColor,
-                      onChange: colorValue =>
-                        setAttributes({ secondBorderColor: colorValue }),
-                      label: __("Border Color")
-                    }
-                  ]}
-                />
-              )}
-              <p>{__("Border Radius")}</p>
-              <RangeControl
-                value={secondBorderRadius}
-                min="0"
-                max="150"
-                onChange={newRadius =>
-                  setAttributes({ secondBorderRadius: newRadius })
+                onChangeWidth={newWidth =>
+                  setAttributes({ secondBorderWidth: newWidth })
+                }
+                onChangeColor={colorValue =>
+                  setAttributes({ secondBorderColor: colorValue })
+                }
+                onChangeRadius={newrRadius =>
+                  setAttributes({ secondBorderRadius: newrRadius })
                 }
               />
               <p>{__("Margin Left")}</p>

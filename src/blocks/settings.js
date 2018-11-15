@@ -5,7 +5,8 @@ export const {
   pricingTable,
   maps,
   testimonial,
-  countUp
+  countUp,
+  icon
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys

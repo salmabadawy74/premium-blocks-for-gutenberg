@@ -1,8 +1,7 @@
 const { __ } = wp.i18n;
 const { SelectControl } = wp.components;
-import { FontAwesomeEnabled } from "../blocks/settings";
 export default function PremiumIcon(props) {
-  const { icon, onChangeIcon = () => {} } = props;
+  const { type, icon, onChangeIcon = () => {} } = props;
   //Dashicons
   const DASHICONS = [
     {
@@ -3489,7 +3488,7 @@ export default function PremiumIcon(props) {
   return (
     <SelectControl
       label={__("Choose Icon")}
-      options={1 == FontAwesomeEnabled ? ICONS : DASHICONS}
+      options={"fa" === type ? ICONS : DASHICONS}
       value={icon}
       onChange={onChangeIcon}
     />

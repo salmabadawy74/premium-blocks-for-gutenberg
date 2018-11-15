@@ -1,4 +1,5 @@
 import { pricingTable } from "../settings";
+import PremiumBorder from "../../components/premium-border";
 
 if (pricingTable) {
   const blockClass = "premium-pricing-table";
@@ -511,32 +512,6 @@ if (pricingTable) {
         {
           value: "900",
           label: "Bold"
-        }
-      ];
-      const BORDER = [
-        {
-          value: "none",
-          label: "None"
-        },
-        {
-          value: "solid",
-          label: "Solid"
-        },
-        {
-          value: "double",
-          label: "Double"
-        },
-        {
-          value: "dotted",
-          label: "Dotted"
-        },
-        {
-          value: "dashed",
-          label: "Dashed"
-        },
-        {
-          value: "groove",
-          label: "Groove"
         }
       ];
       const TYPE = [
@@ -1053,44 +1028,22 @@ if (pricingTable) {
                     }
                   ]}
                 />
-                <SelectControl
-                  label={__("Border Type")}
-                  options={BORDER}
-                  value={btnBorderType}
-                  onChange={newType =>
+                <PremiumBorder
+                  borderType={btnBorderType}
+                  borderWidth={btnBorderWidth}
+                  borderColor={btnBorderColor}
+                  borderRadius={btnBorderRadius}
+                  onChangeType={newType =>
                     setAttributes({ btnBorderType: newType })
                   }
-                />
-                {"none" != btnBorderType && (
-                  <RangeControl
-                    label={__("Border Width")}
-                    value={btnBorderWidth}
-                    min="0"
-                    max="50"
-                    onChange={newWidth =>
-                      setAttributes({ btnBorderWidth: newWidth })
-                    }
-                  />
-                )}
-                {"none" != btnBorderType && (
-                  <PanelColorSettings
-                    colorSettings={[
-                      {
-                        value: btnBorderColor,
-                        onChange: newColor =>
-                          setAttributes({ btnBorderColor: newColor }),
-                        label: __("Border Color")
-                      }
-                    ]}
-                  />
-                )}
-                <RangeControl
-                  label={__("Border Radius")}
-                  value={btnBorderRadius}
-                  min="0"
-                  max="150"
-                  onChange={newRadius =>
-                    setAttributes({ btnBorderRadius: newRadius })
+                  onChangeWidth={newWidth =>
+                    setAttributes({ btnBorderWidth: newWidth })
+                  }
+                  onChangeColor={colorValue =>
+                    setAttributes({ btnBorderColor: colorValue })
+                  }
+                  onChangeRadius={newrRadius =>
+                    setAttributes({ btnBorderRadius: newrRadius })
                   }
                 />
                 <RangeControl
@@ -1201,42 +1154,20 @@ if (pricingTable) {
                   }
                 ]}
               />
-              <SelectControl
-                label={__("Border Type")}
-                options={BORDER}
-                value={borderType}
-                onChange={newType => setAttributes({ borderType: newType })}
-              />
-              {"none" != borderType && (
-                <RangeControl
-                  label={__("Border Width")}
-                  value={borderWidth}
-                  min="0"
-                  max="50"
-                  onChange={newWidth =>
-                    setAttributes({ borderWidth: newWidth })
-                  }
-                />
-              )}
-              {"none" != borderType && (
-                <PanelColorSettings
-                  colorSettings={[
-                    {
-                      value: borderColor,
-                      onChange: newColor =>
-                        setAttributes({ borderColor: newColor }),
-                      label: __("Border Color")
-                    }
-                  ]}
-                />
-              )}
-              <RangeControl
-                label={__("Border Radius")}
-                value={borderRadius}
-                min="0"
-                max="150"
-                onChange={newRadius =>
-                  setAttributes({ borderRadius: newRadius })
+              <PremiumBorder
+                borderType={borderType}
+                borderWidth={borderWidth}
+                borderColor={borderColor}
+                borderRadius={borderRadius}
+                onChangeType={newType => setAttributes({ borderType: newType })}
+                onChangeWidth={newWidth =>
+                  setAttributes({ borderWidth: newWidth })
+                }
+                onChangeColor={colorValue =>
+                  setAttributes({ borderColor: colorValue })
+                }
+                onChangeRadius={newrRadius =>
+                  setAttributes({ borderRadius: newrRadius })
                 }
               />
               <RangeControl

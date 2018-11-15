@@ -1,4 +1,5 @@
 import { banner } from "../settings";
+import PremiumBorder from "../../components/premium-border";
 
 if (banner) {
   const className = "premium-banner";
@@ -430,42 +431,20 @@ if (banner) {
                 max="100"
                 onChange={newOpacity => setAttributes({ opacity: newOpacity })}
               />
-              <SelectControl
-                label={__("Border Type")}
-                options={BORDER}
-                value={borderType}
-                onChange={newType => setAttributes({ borderType: newType })}
-              />
-              {"none" != borderType && (
-                <RangeControl
-                  label={__("Border  Width")}
-                  value={borderWidth}
-                  min="0"
-                  max="50"
-                  onChange={newWidth =>
-                    setAttributes({ borderWidth: newWidth })
-                  }
-                />
-              )}
-              {"none" != borderType && (
-                <PanelColorSettings
-                  colorSettings={[
-                    {
-                      value: borderColor,
-                      onChange: colorValue =>
-                        setAttributes({ borderColor: colorValue }),
-                      label: __("Border Color")
-                    }
-                  ]}
-                />
-              )}
-              <RangeControl
-                label={__("Border Radius")}
-                value={borderRadius}
-                min="0"
-                max="150"
-                onChange={newRadius =>
-                  setAttributes({ borderRadius: newRadius })
+              <PremiumBorder
+                borderType={borderType}
+                borderWidth={borderWidth}
+                borderColor={borderColor}
+                borderRadius={borderRadius}
+                onChangeType={newType => setAttributes({ borderType: newType })}
+                onChangeWidth={newWidth =>
+                  setAttributes({ borderWidth: newWidth })
+                }
+                onChangeColor={colorValue =>
+                  setAttributes({ borderColor: colorValue })
+                }
+                onChangeRadius={newrRadius =>
+                  setAttributes({ borderRadius: newrRadius })
                 }
               />
               <ToggleControl

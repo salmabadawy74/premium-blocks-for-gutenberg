@@ -1,4 +1,5 @@
 import { countUp } from "../settings";
+import { FontAwesomeEnabled } from "../settings";
 import PremiumIcon from "../../components/premium-icon";
 
 if (countUp) {
@@ -497,6 +498,7 @@ if (countUp) {
                 />
                 {"icon" === icon && (
                   <PremiumIcon
+                    type={1 == FontAwesomeEnabled ? "fa" : "dash"}
                     icon={faIcon}
                     onChangeIcon={newIcon => setAttributes({ faIcon: newIcon })}
                   />

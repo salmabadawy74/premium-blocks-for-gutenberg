@@ -102,7 +102,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
                                     </tr>
                                     <tr>
                                         <th>
-                                            <h4 class="pb-api-disable-title"><label><?php echo __('Enable Font Awesome Icons:','premium-gutenberg'); ?></label><input name="premium-fa-css" id="premium-fa-css" type="checkbox" <?php checked( 1, $this->pb_maps_get['premium-fa-css'], true) ?>><span><?php echo __('This will Enqueue Font Awesome CSS to be used within Premium Blocks','premium-gutenberg');?></span></h4>
+                                            <h4 class="pb-api-disable-title"><label><?php echo __('Enable Font Awesome Icons:','premium-gutenberg'); ?></label><input name="premium-fa-css" id="premium-fa-css" type="checkbox" <?php checked( 1, $this->pb_maps_get['premium-fa-css'], true) ?>><span><?php echo __('This will load Font Awesome Icons to be used within Premium Blocks','premium-gutenberg');?></span></h4>
                                         </th>
                                     </tr>
                                 </table>
