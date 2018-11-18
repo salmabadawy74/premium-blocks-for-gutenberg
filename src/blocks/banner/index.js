@@ -232,39 +232,39 @@ if (banner) {
       ];
       const WEIGHT = [
         {
-          value: "100",
+          value: 100,
           label: "100"
         },
         {
-          value: "200",
+          value: 200,
           label: "200"
         },
         {
-          value: "300",
+          value: 300,
           label: "300"
         },
         {
-          value: "400",
+          value: 400,
           label: "Normal"
         },
         {
-          value: "500",
+          value: 500,
           label: "500"
         },
         {
-          value: "600",
+          value: 600,
           label: "600"
         },
         {
-          value: "700",
+          value: 700,
           label: "700"
         },
         {
-          value: "800",
+          value: 800,
           label: "800"
         },
         {
-          value: "900",
+          value: 900,
           label: "Bold"
         }
       ];
@@ -498,8 +498,11 @@ if (banner) {
                 max="80"
                 onChange={newSize => setAttributes({ titleSize: newSize })}
               />
-              <SelectControl
+              <RangeControl
                 label={__("Font Weight")}
+                min="100"
+                max="900"
+                step="100"
                 options={WEIGHT}
                 value={titleWeight}
                 onChange={newWeight =>
@@ -530,8 +533,11 @@ if (banner) {
                 max="80"
                 onChange={newSize => setAttributes({ descSize: newSize })}
               />
-              <SelectControl
+              <RangeControl
                 label={__("Font Weight")}
+                min="100"
+                max="900"
+                step="100"
                 options={WEIGHT}
                 value={descWeight}
                 onChange={newWeight => setAttributes({ descWeight: newWeight })}

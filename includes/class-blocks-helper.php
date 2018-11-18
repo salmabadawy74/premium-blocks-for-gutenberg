@@ -101,7 +101,7 @@ class Premium_Blocks_Integration {
         
         $is_maps_enabled = self::$blocks['maps'];
 
-        $is_counter_enabled = self::$blocks['counter'];
+        $is_counter_enabled = self::$blocks['countUp'];
 
         wp_enqueue_style(
             'pbg-frontend',

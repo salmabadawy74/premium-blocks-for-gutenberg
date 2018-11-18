@@ -125,7 +125,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
 
             $this->pbg_get_settings = $this->get_enabled_keys();
 
-            $pbg_new_settings = array_diff_key( $this->pa_pro_default_settings, $this->pa_pro_get_settings );
+            $pbg_new_settings = array_diff_key( $this->pbg_default, $this->pbg_get_settings );
 
             if( ! empty( $pbg_new_settings ) ) {
 

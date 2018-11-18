@@ -1,13 +1,9 @@
-const { __ } = wp.i18n;
+/*const { __ } = wp.i18n;
 const { SelectControl } = wp.components;
 export default function PremiumIcon(props) {
   const { type, icon, onChangeIcon = () => {} } = props;
   //Dashicons
   const DASHICONS = [
-    {
-      value: "",
-      label: "none"
-    },
     {
       value: "dashicons dashicons-menu",
       label: <p>&#xf333; dashicons-menu</p>
@@ -944,10 +940,6 @@ export default function PremiumIcon(props) {
 
   //Font Awesome Icons
   const ICONS = [
-    {
-      value: "",
-      label: "none"
-    },
     {
       value: "fa fa-glass",
       label: <p>&#xf000; fa-glass</p>
@@ -3485,6 +3477,7 @@ export default function PremiumIcon(props) {
       label: <p>&#xf2b4; fa-font-awesome</p>
     }
   ];
+
   return (
     <SelectControl
       label={__("Choose Icon")}
@@ -3494,3 +3487,4 @@ export default function PremiumIcon(props) {
     />
   );
 }
+*/

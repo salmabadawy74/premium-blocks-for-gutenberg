@@ -1,7 +1,9 @@
 import { icon } from "../settings";
 import { FontAwesomeEnabled } from "../settings";
-import PremiumIcon from "../../components/premium-icon";
+//import PremiumIcon from "../../components/premium-icon";
 import PremiumBorder from "../../components/premium-border";
+import PremiumMargin from "../../components/premium-margin";
+import PremiumPadding from "../../components/premium-padding";
 
 if (icon) {
   const className = "premium-icon";
@@ -10,7 +12,13 @@ if (icon) {
 
   const { registerBlockType } = wp.blocks;
 
-  const { PanelBody, Toolbar, SelectControl, RangeControl } = wp.components;
+  const {
+    PanelBody,
+    Toolbar,
+    SelectControl,
+    RangeControl,
+    TextControl
+  } = wp.components;
   const { InspectorControls, PanelColorSettings } = wp.editor;
 
   registerBlockType("premium/icon", {
@@ -24,7 +32,7 @@ if (icon) {
       },
       selectedIcon: {
         type: "string",
-        default: "dashicons dashicons-admin-customizer"
+        default: "dashicons-admin-site"
       },
       align: {
         type: "string",
@@ -169,12 +177,10 @@ if (icon) {
         iconSize,
         iconColor,
         iconBack,
-        padding,
         paddingT,
         paddingR,
         paddingB,
         paddingL,
-        margin,
         marginT,
         marginR,
         marginB,
@@ -197,6 +203,10 @@ if (icon) {
         wrapMarginB,
         wrapMarginL
       } = props.attributes;
+      let iconClass =
+        "fa" === iconType
+          ? `fa fa-${selectedIcon}`
+          : `dashicons ${selectedIcon}`;
       const EFFECTS = [
         {
           value: "none",
@@ -239,60 +249,7 @@ if (icon) {
       ];
 
       const ALIGNS = ["left", "center", "right"];
-      const DIRECTIONS = ["up", "right", "down", "left"];
 
-      const getValue = (direction, valuesArr) => {
-        let value;
-
-        switch (direction) {
-          case "up":
-            value = valuesArr[0];
-            break;
-          case "right":
-            value = valuesArr[1];
-            break;
-          case "down":
-            value = valuesArr[2];
-            break;
-          case "left":
-            value = valuesArr[3];
-            break;
-        }
-        return value;
-      };
-      const setValue = (value, type, direction) => {
-        if ("padding" === type) {
-          switch (direction) {
-            case "up":
-              setAttributes({ paddingT: value });
-              break;
-            case "right":
-              setAttributes({ paddingR: value });
-              break;
-            case "down":
-              setAttributes({ paddingB: value });
-              break;
-            case "left":
-              setAttributes({ paddingL: value });
-              break;
-          }
-        } else {
-          switch (direction) {
-            case "up":
-              setAttributes({ marginT: value });
-              break;
-            case "right":
-              setAttributes({ marginR: value });
-              break;
-            case "down":
-              setAttributes({ marginB: value });
-              break;
-            case "left":
-              setAttributes({ marginL: value });
-              break;
-          }
-        }
-      };
       return [
         isSelected && (
           <InspectorControls key={"inspector"}>
@@ -303,12 +260,31 @@ if (icon) {
                 options={TYPE}
                 onChange={newType => setAttributes({ iconType: newType })}
               />
-              <PremiumIcon
-                type={FontAwesomeEnabled ? iconType : "dash"}
-                icon={selectedIcon}
-                onChangeIcon={newIcon =>
-                  setAttributes({ selectedIcon: newIcon })
-                }
+              {("" !== selectedIcon || "undefined" !== typeof selectedIcon) && (
+                <div className="premium-icon__sidebar_icon">
+                  <i className={iconClass} />
+                </div>
+              )}
+              <TextControl
+                label={__("Icon Class")}
+                value={selectedIcon}
+                help={[
+                  __("Get icon class from"),
+                  <a
+                    href={
+                      "fa" === iconType
+                        ? "https://fontawesome.com/v4.7.0/icons/"
+                        : "https://developer.wordpress.org/resource/dashicons/"
+                    }
+                    target="_blank"
+                  >
+                    &nbsp;
+                    {__("here")}
+                  </a>,
+                  __(" , for example: "),
+                  "fa" === iconType ? "address-book" : "dashicons-admin-site"
+                ]}
+                onChange={newIcon => setAttributes({ selectedIcon: newIcon })}
               />
               <SelectControl
                 label={__("Hover Effect")}
@@ -353,42 +329,6 @@ if (icon) {
                   }
                 ]}
               />
-              <p>{__("Padding")}</p>
-              <Toolbar
-                controls={DIRECTIONS.map(paddingDir => ({
-                  icon: "arrow-" + paddingDir + "-alt",
-                  isActive: paddingDir === padding,
-                  onClick: () => setAttributes({ padding: paddingDir })
-                }))}
-              />
-              <RangeControl
-                label={
-                  __("Padding ") + padding[0].toUpperCase() + padding.slice(1)
-                }
-                value={getValue(padding, [
-                  paddingT,
-                  paddingR,
-                  paddingB,
-                  paddingL
-                ])}
-                onChange={value => setValue(value, "padding", padding)}
-              />
-              <p>{__("Margin")}</p>
-              <Toolbar
-                title={__("Margin")}
-                controls={DIRECTIONS.map(marginDir => ({
-                  icon: "arrow-" + marginDir + "-alt",
-                  isActive: marginDir === margin,
-                  onClick: () => setAttributes({ margin: marginDir })
-                }))}
-              />
-              <RangeControl
-                label={
-                  __("Margin ") + margin[0].toUpperCase() + margin.slice(1)
-                }
-                value={getValue(margin, [marginT, marginR, marginB, marginL])}
-                onChange={value => setValue(value, "margin", margin)}
-              />
               <PremiumBorder
                 borderType={borderType}
                 borderWidth={borderWidth}
@@ -404,6 +344,26 @@ if (icon) {
                 onChangeRadius={newrRadius =>
                   setAttributes({ borderRadius: newrRadius })
                 }
+              />
+              <PremiumMargin
+                marginTop={marginT}
+                marginRight={marginR}
+                marginBottom={marginB}
+                marginLeft={marginL}
+                onChangeMarTop={value => setAttributes({ marginT: value })}
+                onChangeMarRight={value => setAttributes({ marginR: value })}
+                onChangeMarBottom={value => setAttributes({ marginB: value })}
+                onChangeMarLeft={value => setAttributes({ marginL: value })}
+              />
+              <PremiumPadding
+                marginTop={paddingT}
+                marginRight={paddingR}
+                marginBottom={paddingB}
+                marginLeft={paddingL}
+                onChangePadTop={value => setAttributes({ paddingT: value })}
+                onChangePadRight={value => setAttributes({ paddingR: value })}
+                onChangePadBottom={value => setAttributes({ paddingB: value })}
+                onChangePadLeft={value => setAttributes({ paddingL: value })}
               />
             </PanelBody>
             <PanelBody title={__("Container Style")} initialOpen={true}>
@@ -433,6 +393,36 @@ if (icon) {
                 }
                 onChangeRadius={newrRadius =>
                   setAttributes({ wrapBorderRadius: newrRadius })
+                }
+              />
+              <PremiumMargin
+                marginTop={wrapMarginT}
+                marginRight={wrapMarginR}
+                marginBottom={wrapMarginB}
+                marginLeft={wrapMarginL}
+                onChangeMarTop={value => setAttributes({ wrapMarginT: value })}
+                onChangeMarRight={value =>
+                  setAttributes({ wrapMarginR: value })
+                }
+                onChangeMarBottom={value =>
+                  setAttributes({ wrapMarginB: value })
+                }
+                onChangeMarLeft={value => setAttributes({ wrapMarginL: value })}
+              />
+              <PremiumPadding
+                marginTop={wrapPaddingT}
+                marginRight={wrapPaddingR}
+                marginBottom={wrapPaddingB}
+                marginLeft={wrapPaddingL}
+                onChangePadTop={value => setAttributes({ wrapPaddingT: value })}
+                onChangePadRight={value =>
+                  setAttributes({ wrapPaddingR: value })
+                }
+                onChangePadBottom={value =>
+                  setAttributes({ wrapPaddingB: value })
+                }
+                onChangePadLeft={value =>
+                  setAttributes({ wrapPaddingL: value })
                 }
               />
             </PanelBody>
@@ -465,7 +455,7 @@ if (icon) {
           )}
           {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
             <i
-              className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
+              className={`${className} ${iconClass} ${className}__${hoverEffect}`}
               style={{
                 color: iconColor,
                 backgroundColor: iconBack,
@@ -495,6 +485,7 @@ if (icon) {
         hoverEffect,
         iconSize,
         iconColor,
+        iconType,
         iconBack,
         paddingT,
         paddingR,
@@ -522,6 +513,10 @@ if (icon) {
         wrapMarginB,
         wrapMarginL
       } = props.attributes;
+      let iconClass =
+        "fa" === iconType
+          ? `fa fa-${selectedIcon}`
+          : `dashicons ${selectedIcon}`;
       return (
         <div
           className={`${className}__container`}
@@ -543,7 +538,7 @@ if (icon) {
           }}
         >
           <i
-            className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
+            className={`${className} ${iconClass} ${className}__${hoverEffect}`}
             style={{
               color: iconColor,
               backgroundColor: iconBack,

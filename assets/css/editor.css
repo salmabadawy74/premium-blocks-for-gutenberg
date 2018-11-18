@@ -1,6 +1,7 @@
-.components-base-control__field .components-select-control__input {
+/*.components-base-control__field .premium-components-select-control__input {
   font-family: "FontAwesome", "Dashicons";
-}
+  width: 100%;
+}*/
 /**************** Premium Dual Heading *****************/
 /*******************************************************/
 .premium-dheading-block__container .premium-dheading-block__title {
@@ -89,4 +90,10 @@
 /*******************************************************/
 #wpwrap .edit-post-visual-editor .premium-icon {
   font-style: normal;
+}
+.premium-icon__sidebar_icon {
+  text-align: center;
+}
+.premium-icon__sidebar_icon i {
+  font-size: 35px;
 }

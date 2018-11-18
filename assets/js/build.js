@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -98,6132 +98,3605 @@ var _FontAwesomeConfig = FontAwesomeConfig,
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumIcon;
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumBorder;
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var __ = wp.i18n.__;
-var SelectControl = wp.components.SelectControl;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl;
+var PanelColorSettings = wp.editor.PanelColorSettings;
 
-function PremiumIcon(props) {
-  var type = props.type,
-      icon = props.icon,
-      _props$onChangeIcon = props.onChangeIcon,
-      onChangeIcon = _props$onChangeIcon === undefined ? function () {} : _props$onChangeIcon;
-  //Dashicons
+function PremiumBorder(props) {
+  var borderType = props.borderType,
+      borderWidth = props.borderWidth,
+      borderColor = props.borderColor,
+      borderRadius = props.borderRadius,
+      _props$onChangeType = props.onChangeType,
+      onChangeType = _props$onChangeType === undefined ? function () {} : _props$onChangeType,
+      _props$onChangeWidth = props.onChangeWidth,
+      onChangeWidth = _props$onChangeWidth === undefined ? function () {} : _props$onChangeWidth,
+      _props$onChangeColor = props.onChangeColor,
+      onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
+      _props$onChangeRadius = props.onChangeRadius,
+      onChangeRadius = _props$onChangeRadius === undefined ? function () {} : _props$onChangeRadius;
 
-  var DASHICONS = [{
-    value: "",
-    label: "none"
+  var BORDER = [{
+    value: "none",
+    label: "None"
   }, {
-    value: "dashicons dashicons-menu",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF333 dashicons-menu"
-    )
+    value: "solid",
+    label: "Solid"
   }, {
-    value: "dashicons dashicons-admin-site",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF319 dashicons-admin-site"
-    )
+    value: "double",
+    label: "Double"
   }, {
-    value: "dashicons dashicons-dashboard",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF226 dashicons-dashboard"
-    )
+    value: "dotted",
+    label: "Dotted"
   }, {
-    value: "dashicons dashicons-admin-post",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF109 dashicons-admin-post"
-    )
+    value: "dashed",
+    label: "Dashed"
   }, {
-    value: "dashicons dashicons-admin-media",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF104 dashicons-admin-media"
-    )
-  }, {
-    value: "dashicons dashicons-admin-links",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF103 dashicons-admin-links"
-    )
-  }, {
-    value: "dashicons dashicons-admin-page",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF105 dashicons-admin-page"
-    )
-  }, {
-    value: "dashicons dashicons-admin-comments",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF101 dashicons-admin-comments"
-    )
-  }, {
-    value: "dashicons dashicons-admin-appearance",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF100 dashicons-admin-appearance"
-    )
-  }, {
-    value: "dashicons dashicons-admin-plugins",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF106 dashicons-admin-plugins"
-    )
-  }, {
-    value: "dashicons dashicons-admin-users",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF110 dashicons-admin-users"
-    )
-  }, {
-    value: "dashicons dashicons-admin-tools",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF107 dashicons-admin-tools"
-    )
-  }, {
-    value: "dashicons dashicons-admin-settings",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF108 dashicons-admin-settings"
-    )
-  }, {
-    value: "dashicons dashicons-admin-network",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF112 dashicons-admin-network"
-    )
-  }, {
-    value: "dashicons dashicons-admin-home",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF102 dashicons-admin-home"
-    )
-  }, {
-    value: "dashicons dashicons-admin-generic",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF111 dashicons-admin-generic"
-    )
-  }, {
-    value: "dashicons dashicons-admin-collapse",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF148 dashicons-admin-collapse"
-    )
-  }, {
-    value: "dashicons dashicons-filter",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF536 dashicons-filter"
-    )
-  }, {
-    value: "dashicons dashicons-admin-customizer",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF540 dashicons-admin-customizer"
-    )
-  }, {
-    value: "dashicons dashicons-admin-multisite",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF541 dashicons-admin-multisite"
-    )
-  }, {
-    value: "dashicons dashicons-welcome-write-blog",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF119 dashicons-welcome-write-blog"
-    )
-  }, {
-    value: "dashicons dashicons-welcome-add-page",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF133 dashicons-welcome-add-page"
-    )
-  }, {
-    value: "dashicons dashicons-welcome-view-site",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF115 dashicons-welcome-view-site"
-    )
-  }, {
-    value: "dashicons dashicons-welcome-widgets-menus",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF116 dashicons-welcome-widgets-menus"
-    )
-  }, {
-    value: "dashicons dashicons-welcome-comments",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF117 dashicons-welcome-comments"
-    )
-  }, {
-    value: "dashicons dashicons-welcome-learn-more",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF118 dashicons-welcome-learn-more"
-    )
-  }, {
-    value: "dashicons dashicons-format-aside",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF123 dashicons-format-aside"
-    )
-  }, {
-    value: "dashicons dashicons-format-image",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF128 dashicons-format-image"
-    )
-  }, {
-    value: "dashicons dashicons-format-gallery",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF161 dashicons-format-gallery"
-    )
-  }, {
-    value: "dashicons dashicons-format-video",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF126 dashicons-format-video"
-    )
-  }, {
-    value: "dashicons dashicons-format-status",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF130 dashicons-format-status"
-    )
-  }, {
-    value: "dashicons dashicons-format-quote",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF122 dashicons-format-quote"
-    )
-  }, {
-    value: "dashicons dashicons-format-chat",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF125 dashicons-format-chat"
-    )
-  }, {
-    value: "dashicons dashicons-format-audio",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF127 dashicons-format-audio"
-    )
-  }, {
-    value: "dashicons dashicons-camera",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF306 dashicons-camera"
-    )
-  }, {
-    value: "dashicons dashicons-images-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF232 dashicons-images-alt"
-    )
-  }, {
-    value: "dashicons dashicons-images-alt2",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF233 dashicons-images-alt2"
-    )
-  }, {
-    value: "dashicons dashicons-video-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF234 dashicons-video-alt"
-    )
-  }, {
-    value: "dashicons dashicons-video-alt2",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF235 dashicons-video-alt2"
-    )
-  }, {
-    value: "dashicons dashicons-video-alt3",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF236 dashicons-video-alt3"
-    )
-  }, {
-    value: "dashicons dashicons-media-archive",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF501 dashicons-media-archive"
-    )
-  }, {
-    value: "dashicons dashicons-media-audio",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF500 dashicons-media-audio"
-    )
-  }, {
-    value: "dashicons dashicons-media-code",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF499 dashicons-media-code"
-    )
-  }, {
-    value: "dashicons dashicons-media-default",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF498 dashicons-media-default"
-    )
-  }, {
-    value: "dashicons dashicons-media-document",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF497 dashicons-media-document"
-    )
-  }, {
-    value: "dashicons dashicons-media-interactive",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF496 dashicons-media-interactive"
-    )
-  }, {
-    value: "dashicons dashicons-media-spreadsheet",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF495 dashicons-media-spreadsheet"
-    )
-  }, {
-    value: "dashicons dashicons-media-text",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF491 dashicons-media-text"
-    )
-  }, {
-    value: "dashicons dashicons-media-video",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF490 dashicons-media-video"
-    )
-  }, {
-    value: "dashicons dashicons-playlist-audio",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF492 dashicons-playlist-audio"
-    )
-  }, {
-    value: "dashicons dashicons-playlist-video",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF493 dashicons-playlist-video"
-    )
-  }, {
-    value: "dashicons dashicons-controls-play",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF522 dashicons-controls-play"
-    )
-  }, {
-    value: "dashicons dashicons-controls-pause",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF523 dashicons-controls-pause"
-    )
-  }, {
-    value: "dashicons dashicons-controls-forward",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF519 dashicons-controls-forward"
-    )
-  }, {
-    value: "dashicons dashicons-controls-skipforward",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF517 dashicons-controls-skipforward"
-    )
-  }, {
-    value: "dashicons dashicons-controls-back",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF518 dashicons-controls-back"
-    )
-  }, {
-    value: "dashicons dashicons-controls-skipback",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF516 dashicons-controls-skipback"
-    )
-  }, {
-    value: "dashicons dashicons-controls-repeat",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF515 dashicons-controls-repeat"
-    )
-  }, {
-    value: "dashicons dashicons-controls-volumeon",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF521 dashicons-controls-volumeon"
-    )
-  }, {
-    value: "dashicons dashicons-controls-volumeoff",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF520 dashicons-controls-volumeoff"
-    )
-  }, {
-    value: "dashicons dashicons-image-crop",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF165 dashicons-image-crop"
-    )
-  }, {
-    value: "dashicons dashicons-image-rotate",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF531 dashicons-image-rotate"
-    )
-  }, {
-    value: "dashicons dashicons-image-rotate-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF166 dashicons-image-rotate-left"
-    )
-  }, {
-    value: "dashicons dashicons-image-rotate-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF167 dashicons-image-rotate-right"
-    )
-  }, {
-    value: "dashicons dashicons-image-flip-vertical",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF168 dashicons-image-flip-vertical"
-    )
-  }, {
-    value: "dashicons dashicons-image-flip-horizontal",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF169 dashicons-image-flip-horizontal"
-    )
-  }, {
-    value: "dashicons dashicons-image-filter",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF533 dashicons-image-filter"
-    )
-  }, {
-    value: "dashicons dashicons-undo",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF171 dashicons-undo"
-    )
-  }, {
-    value: "dashicons dashicons-redo",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF172 dashicons-redo"
-    )
-  }, {
-    value: "dashicons dashicons-editor-bold",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF200 dashicons-editor-bold"
-    )
-  }, {
-    value: "dashicons dashicons-editor-italic",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF201 dashicons-editor-italic"
-    )
-  }, {
-    value: "dashicons dashicons-editor-ul",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF203 dashicons-editor-ul"
-    )
-  }, {
-    value: "dashicons dashicons-editor-ol",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF204 dashicons-editor-ol"
-    )
-  }, {
-    value: "dashicons dashicons-editor-quote",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF205 dashicons-editor-quote"
-    )
-  }, {
-    value: "dashicons dashicons-editor-alignleft",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF206 dashicons-editor-alignleft"
-    )
-  }, {
-    value: "dashicons dashicons-editor-aligncenter",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF207 dashicons-editor-aligncenter"
-    )
-  }, {
-    value: "dashicons dashicons-editor-alignright",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF208 dashicons-editor-alignright"
-    )
-  }, {
-    value: "dashicons dashicons-editor-insertmore",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF209 dashicons-editor-insertmore"
-    )
-  }, {
-    value: "dashicons dashicons-editor-spellcheck",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF210 dashicons-editor-spellcheck"
-    )
-  }, {
-    value: "dashicons dashicons-editor-expand",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF211 dashicons-editor-expand"
-    )
-  }, {
-    value: "dashicons dashicons-editor-contract",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF506 dashicons-editor-contract"
-    )
-  }, {
-    value: "dashicons dashicons-editor-kitchensink",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF212 dashicons-editor-kitchensink"
-    )
-  }, {
-    value: "dashicons dashicons-editor-underline",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF213 dashicons-editor-underline"
-    )
-  }, {
-    value: "dashicons dashicons-editor-justify",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF214 dashicons-editor-justify"
-    )
-  }, {
-    value: "dashicons dashicons-editor-textcolor",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF215 dashicons-editor-textcolor"
-    )
-  }, {
-    value: "dashicons dashicons-editor-paste-word",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF216 dashicons-editor-paste-word"
-    )
-  }, {
-    value: "dashicons dashicons-editor-paste-text",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF217 dashicons-editor-paste-text"
-    )
-  }, {
-    value: "dashicons dashicons-editor-removeformatting",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF218 dashicons-editor-removeformatting"
-    )
-  }, {
-    value: "dashicons dashicons-editor-video",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF219 dashicons-editor-video"
-    )
-  }, {
-    value: "dashicons dashicons-editor-customchar",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF220 dashicons-editor-customchar"
-    )
-  }, {
-    value: "dashicons dashicons-editor-outdent",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF221 dashicons-editor-outdent"
-    )
-  }, {
-    value: "dashicons dashicons-editor-indent",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF222 dashicons-editor-indent"
-    )
-  }, {
-    value: "dashicons dashicons-editor-help",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF223 dashicons-editor-help"
-    )
-  }, {
-    value: "dashicons dashicons-editor-strikethrough",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF224 dashicons-editor-strikethrough"
-    )
-  }, {
-    value: "dashicons dashicons-editor-unlink",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF225 dashicons-editor-unlink"
-    )
-  }, {
-    value: "dashicons dashicons-editor-rtl",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF320 dashicons-editor-rtl"
-    )
-  }, {
-    value: "dashicons dashicons-editor-break",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF474 dashicons-editor-break"
-    )
-  }, {
-    value: "dashicons dashicons-editor-code",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF475 dashicons-editor-code"
-    )
-  }, {
-    value: "dashicons dashicons-editor-paragraph",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF476 dashicons-editor-paragraph"
-    )
-  }, {
-    value: "dashicons dashicons-editor-table",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF535 dashicons-editor-table"
-    )
-  }, {
-    value: "dashicons dashicons-align-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF135 dashicons-align-left"
-    )
-  }, {
-    value: "dashicons dashicons-align-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF136 dashicons-align-right"
-    )
-  }, {
-    value: "dashicons dashicons-align-center",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF134 dashicons-align-center"
-    )
-  }, {
-    value: "dashicons dashicons-align-none",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF138 dashicons-align-none"
-    )
-  }, {
-    value: "dashicons dashicons-lock",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF160 dashicons-lock"
-    )
-  }, {
-    value: "dashicons dashicons-unlock",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF528 dashicons-unlock"
-    )
-  }, {
-    value: "dashicons dashicons-calendar",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF145 dashicons-calendar"
-    )
-  }, {
-    value: "dashicons dashicons-calendar-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF508 dashicons-calendar-alt"
-    )
-  }, {
-    value: "dashicons dashicons-visibility",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF177 dashicons-visibility"
-    )
-  }, {
-    value: "dashicons dashicons-hidden",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF530 dashicons-hidden"
-    )
-  }, {
-    value: "dashicons dashicons-post-status",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF173 dashicons-post-status"
-    )
-  }, {
-    value: "dashicons dashicons-edit",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF464 dashicons-edit"
-    )
-  }, {
-    value: "dashicons dashicons-trash",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF182 dashicons-trash"
-    )
-  }, {
-    value: "dashicons dashicons-sticky",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF537 dashicons-sticky"
-    )
-  }, {
-    value: "dashicons dashicons-external",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF504 dashicons-external"
-    )
-  }, {
-    value: "dashicons dashicons-arrow-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF142 dashicons-arrow-up"
-    )
-  }, {
-    value: "dashicons dashicons-arrow-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF140 dashicons-arrow-down"
-    )
-  }, {
-    value: "dashicons dashicons-arrow-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF139 dashicons-arrow-right"
-    )
-  }, {
-    value: "dashicons dashicons-arrow-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF141 dashicons-arrow-left"
-    )
-  }, {
-    value: "dashicons dashicons-arrow-up-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF342 dashicons-arrow-up-alt"
-    )
-  }, {
-    value: "dashicons dashicons-arrow-down-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF346 dashicons-arrow-down-alt"
-    )
-  }, {
-    value: "dashicons dashicons-arrow-right-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF344 dashicons-arrow-right-alt"
-    )
-  }, {
-    value: "dashicons dashicons-arrow-left-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF340 dashicons-arrow-left-alt"
-    )
-  }, {
-    value: "dashicons dashicons-arrow-up-alt2",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF343 dashicons-arrow-up-alt2"
-    )
-  }, {
-    value: "dashicons dashicons-arrow-down-alt2",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF347 dashicons-arrow-down-alt2"
-    )
-  }, {
-    value: "dashicons dashicons-arrow-right-alt2",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF345 dashicons-arrow-right-alt2"
-    )
-  }, {
-    value: "dashicons dashicons-arrow-left-alt2",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF341 dashicons-arrow-left-alt2"
-    )
-  }, {
-    value: "dashicons dashicons-sort",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF156 dashicons-sort"
-    )
-  }, {
-    value: "dashicons dashicons-leftright",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF229 dashicons-leftright"
-    )
-  }, {
-    value: "dashicons dashicons-randomize",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF503 dashicons-randomize"
-    )
-  }, {
-    value: "dashicons dashicons-list-view",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF163 dashicons-list-view"
-    )
-  }, {
-    value: "dashicons dashicons-exerpt-view",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF164 dashicons-exerpt-view"
-    )
-  }, {
-    value: "dashicons dashicons-grid-view",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF509 dashicons-grid-view"
-    )
-  }, {
-    value: "dashicons dashicons-move",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF545 dashicons-move"
-    )
-  }, {
-    value: "dashicons dashicons-share",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF237 dashicons-share"
-    )
-  }, {
-    value: "dashicons dashicons-share-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF240 dashicons-share-alt"
-    )
-  }, {
-    value: "dashicons dashicons-share-alt2",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF242 dashicons-share-alt2"
-    )
-  }, {
-    value: "dashicons dashicons-twitter",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF301 dashicons-twitter"
-    )
-  }, {
-    value: "dashicons dashicons-rss",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF303 dashicons-rss"
-    )
-  }, {
-    value: "dashicons dashicons-email",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF465 dashicons-email"
-    )
-  }, {
-    value: "dashicons dashicons-email-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF466 dashicons-email-alt"
-    )
-  }, {
-    value: "dashicons dashicons-facebook",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF304 dashicons-facebook"
-    )
-  }, {
-    value: "dashicons dashicons-facebook-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF305 dashicons-facebook-alt"
-    )
-  }, {
-    value: "dashicons dashicons-googleplus",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF462 dashicons-googleplus"
-    )
-  }, {
-    value: "dashicons dashicons-networking",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF325 dashicons-networking"
-    )
-  }, {
-    value: "dashicons dashicons-hammer",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF308 dashicons-hammer"
-    )
-  }, {
-    value: "dashicons dashicons-art",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF309 dashicons-art"
-    )
-  }, {
-    value: "dashicons dashicons-migrate",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF310 dashicons-migrate"
-    )
-  }, {
-    value: "dashicons dashicons-performance",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF311 dashicons-performance"
-    )
-  }, {
-    value: "dashicons dashicons-universal-access",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF483 dashicons-universal-access"
-    )
-  }, {
-    value: "dashicons dashicons-universal-access-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF507 dashicons-universal-access-alt"
-    )
-  }, {
-    value: "dashicons dashicons-tickets",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF486 dashicons-tickets"
-    )
-  }, {
-    value: "dashicons dashicons-nametag",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF484 dashicons-nametag"
-    )
-  }, {
-    value: "dashicons dashicons-clipboard",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF481 dashicons-clipboard"
-    )
-  }, {
-    value: "dashicons dashicons-heart",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF487 dashicons-heart"
-    )
-  }, {
-    value: "dashicons dashicons-megaphone",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF488 dashicons-megaphone"
-    )
-  }, {
-    value: "dashicons dashicons-schedule",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF489 dashicons-schedule"
-    )
-  }, {
-    value: "dashicons dashicons-wordpress",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF120 dashicons-wordpress"
-    )
-  }, {
-    value: "dashicons dashicons-wordpress-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF324 dashicons-wordpress-alt"
-    )
-  }, {
-    value: "dashicons dashicons-pressthis",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF157 dashicons-pressthis"
-    )
-  }, {
-    value: "dashicons dashicons-update",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF463 dashicons-update"
-    )
-  }, {
-    value: "dashicons dashicons-screenoptions",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF180 dashicons-screenoptions"
-    )
-  }, {
-    value: "dashicons dashicons-info",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF348 dashicons-info"
-    )
-  }, {
-    value: "dashicons dashicons-cart",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF174 dashicons-cart"
-    )
-  }, {
-    value: "dashicons dashicons-feedback",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF175 dashicons-feedback"
-    )
-  }, {
-    value: "dashicons dashicons-cloud",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF176 dashicons-cloud"
-    )
-  }, {
-    value: "dashicons dashicons-translation",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF326 dashicons-translation"
-    )
-  }, {
-    value: "dashicons dashicons-tag",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF323 dashicons-tag"
-    )
-  }, {
-    value: "dashicons dashicons-category",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF318 dashicons-category"
-    )
-  }, {
-    value: "dashicons dashicons-archive",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF480 dashicons-archive"
-    )
-  }, {
-    value: "dashicons dashicons-tagcloud",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF479 dashicons-tagcloud"
-    )
-  }, {
-    value: "dashicons dashicons-text",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF478 dashicons-text"
-    )
-  }, {
-    value: "dashicons dashicons-yes",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF147 dashicons-yes"
-    )
-  }, {
-    value: "dashicons dashicons-no",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF158 dashicons-no"
-    )
-  }, {
-    value: "dashicons dashicons-no-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF335 dashicons-no-alt"
-    )
-  }, {
-    value: "dashicons dashicons-plus",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF132 dashicons-plus"
-    )
-  }, {
-    value: "dashicons dashicons-plus-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF502 dashicons-plus-alt"
-    )
-  }, {
-    value: "dashicons dashicons-minus",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF460 dashicons-minus"
-    )
-  }, {
-    value: "dashicons dashicons-dismiss",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF153 dashicons-dismiss"
-    )
-  }, {
-    value: "dashicons dashicons-marker",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF159 dashicons-marker"
-    )
-  }, {
-    value: "dashicons dashicons-star-filled",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF155 dashicons-star-filled"
-    )
-  }, {
-    value: "dashicons dashicons-star-half",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF459 dashicons-star-half"
-    )
-  }, {
-    value: "dashicons dashicons-star-empty",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF154 dashicons-star-empty"
-    )
-  }, {
-    value: "dashicons dashicons-flag",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF227 dashicons-flag"
-    )
-  }, {
-    value: "dashicons dashicons-warning",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF534 dashicons-warning"
-    )
-  }, {
-    value: "dashicons dashicons-location",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF230 dashicons-location"
-    )
-  }, {
-    value: "dashicons dashicons-location-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF231 dashicons-location-alt"
-    )
-  }, {
-    value: "dashicons dashicons-vault",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF178 dashicons-vault"
-    )
-  }, {
-    value: "dashicons dashicons-shield",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF332 dashicons-shield"
-    )
-  }, {
-    value: "dashicons dashicons-shield-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF334 dashicons-shield-alt"
-    )
-  }, {
-    value: "dashicons dashicons-sos",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF468 dashicons-sos"
-    )
-  }, {
-    value: "dashicons dashicons-search",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF179 dashicons-search"
-    )
-  }, {
-    value: "dashicons dashicons-slides",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF181 dashicons-slides"
-    )
-  }, {
-    value: "dashicons dashicons-analytics",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF183 dashicons-analytics"
-    )
-  }, {
-    value: "dashicons dashicons-chart-pie",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF184 dashicons-chart-pie"
-    )
-  }, {
-    value: "dashicons dashicons-chart-bar",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF185 dashicons-chart-bar"
-    )
-  }, {
-    value: "dashicons dashicons-chart-line",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF238 dashicons-chart-line"
-    )
-  }, {
-    value: "dashicons dashicons-chart-area",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF239 dashicons-chart-area"
-    )
-  }, {
-    value: "dashicons dashicons-groups",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF307 dashicons-groups"
-    )
-  }, {
-    value: "dashicons dashicons-businessman",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF338 dashicons-businessman"
-    )
-  }, {
-    value: "dashicons dashicons-id",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF336 dashicons-id"
-    )
-  }, {
-    value: "dashicons dashicons-id-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF337 dashicons-id-alt"
-    )
-  }, {
-    value: "dashicons dashicons-products",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF312 dashicons-products"
-    )
-  }, {
-    value: "dashicons dashicons-awards",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF313 dashicons-awards"
-    )
-  }, {
-    value: "dashicons dashicons-forms",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF314 dashicons-forms"
-    )
-  }, {
-    value: "dashicons dashicons-testimonial",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF473 dashicons-testimonial"
-    )
-  }, {
-    value: "dashicons dashicons-portfolio",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF322 dashicons-portfolio"
-    )
-  }, {
-    value: "dashicons dashicons-book",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF330 dashicons-book"
-    )
-  }, {
-    value: "dashicons dashicons-book-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF331 dashicons-book-alt"
-    )
-  }, {
-    value: "dashicons dashicons-download",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF316 dashicons-download"
-    )
-  }, {
-    value: "dashicons dashicons-upload",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF317 dashicons-upload"
-    )
-  }, {
-    value: "dashicons dashicons-backup",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF321 dashicons-backup"
-    )
-  }, {
-    value: "dashicons dashicons-clock",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF469 dashicons-clock"
-    )
-  }, {
-    value: "dashicons dashicons-lightbulb",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF339 dashicons-lightbulb"
-    )
-  }, {
-    value: "dashicons dashicons-microphone",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF482 dashicons-microphone"
-    )
-  }, {
-    value: "dashicons dashicons-desktop",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF472 dashicons-desktop"
-    )
-  }, {
-    value: "dashicons dashicons-laptop",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF547 dashicons-laptop"
-    )
-  }, {
-    value: "dashicons dashicons-tablet",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF471 dashicons-tablet"
-    )
-  }, {
-    value: "dashicons dashicons-smartphone",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF470 dashicons-smartphone"
-    )
-  }, {
-    value: "dashicons dashicons-phone",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF525 dashicons-phone"
-    )
-  }, {
-    value: "dashicons dashicons-index-card",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF510 dashicons-index-card"
-    )
-  }, {
-    value: "dashicons dashicons-carrot",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF511 dashicons-carrot"
-    )
-  }, {
-    value: "dashicons dashicons-building",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF512 dashicons-building"
-    )
-  }, {
-    value: "dashicons dashicons-store",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF513 dashicons-store"
-    )
-  }, {
-    value: "dashicons dashicons-album",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF514 dashicons-album"
-    )
-  }, {
-    value: "dashicons dashicons-palmtree",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF527 dashicons-palmtree"
-    )
-  }, {
-    value: "dashicons dashicons-tickets-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF524 dashicons-tickets-alt"
-    )
-  }, {
-    value: "dashicons dashicons-money",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF526 dashicons-money"
-    )
-  }, {
-    value: "dashicons dashicons-smiley",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF328 dashicons-smiley"
-    )
-  }, {
-    value: "dashicons dashicons-thumbs-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF529 dashicons-thumbs-up"
-    )
-  }, {
-    value: "dashicons dashicons-thumbs-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF542 dashicons-thumbs-down"
-    )
-  }, {
-    value: "dashicons dashicons-layout",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF538 dashicons-layout"
-    )
-  }, {
-    value: "dashicons dashicons-paperclip",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF546 dashicons-paperclip"
-    )
+    value: "groove",
+    label: "Groove"
   }];
-
-  //Font Awesome Icons
-  var ICONS = [{
-    value: "",
-    label: "none"
-  }, {
-    value: "fa fa-glass",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF000 fa-glass"
-    )
-  }, {
-    value: "fa fa-music",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF001 fa-music"
-    )
-  }, {
-    value: "fa fa-search",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF002 fa-search"
-    )
-  }, {
-    value: "fa fa-envelope-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF003 fa-envelope-o"
-    )
-  }, {
-    value: "fa fa-heart",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF004 fa-heart"
-    )
-  }, {
-    value: "fa fa-star",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF005 fa-star"
-    )
-  }, {
-    value: "fa fa-star-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF006 fa-star-o"
-    )
-  }, {
-    value: "fa fa-user",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF007 fa-user"
-    )
-  }, {
-    value: "fa fa-film",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF008 fa-film"
-    )
-  }, {
-    value: "fa fa-th-large",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF009 fa-th-large"
-    )
-  }, {
-    value: "fa fa-th",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF00A fa-th"
-    )
-  }, {
-    value: "fa fa-th-list",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF00B fa-th-list"
-    )
-  }, {
-    value: "fa fa-check",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF00C fa-check"
-    )
-  }, {
-    value: "fa fa-times",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF00D fa-times"
-    )
-  }, {
-    value: "fa fa-search-plus",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF00E fa-search-plus"
-    )
-  }, {
-    value: "fa fa-search-minus",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF010 fa-search-minus"
-    )
-  }, {
-    value: "fa fa-power-off",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF011 fa-power-off"
-    )
-  }, {
-    value: "fa fa-signal",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF012 fa-signal"
-    )
-  }, {
-    value: "fa fa-cog",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF013 fa-cog"
-    )
-  }, {
-    value: "fa fa-trash-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF014 fa-trash-o"
-    )
-  }, {
-    value: "fa fa-home",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF015 fa-home"
-    )
-  }, {
-    value: "fa fa-file-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF016 fa-file-o"
-    )
-  }, {
-    value: "fa fa-clock-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF017 fa-clock-o"
-    )
-  }, {
-    value: "fa fa-road",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF018 fa-road"
-    )
-  }, {
-    value: "fa fa-download",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF019 fa-download"
-    )
-  }, {
-    value: "fa fa-arrow-circle-o-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF01A fa-arrow-circle-o-down"
-    )
-  }, {
-    value: "fa fa-arrow-circle-o-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF01B fa-arrow-circle-o-up"
-    )
-  }, {
-    value: "fa fa-inbox",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF01C fa-inbox"
-    )
-  }, {
-    value: "fa fa-play-circle-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF01D fa-play-circle-o"
-    )
-  }, {
-    value: "fa fa-repeat",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF01E fa-repeat"
-    )
-  }, {
-    value: "fa fa-refresh",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF021 fa-refresh"
-    )
-  }, {
-    value: "fa fa-list-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF022 fa-list-alt"
-    )
-  }, {
-    value: "fa fa-lock",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF023 fa-lock"
-    )
-  }, {
-    value: "fa fa-flag",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF024 fa-flag"
-    )
-  }, {
-    value: "fa fa-headphones",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF025 fa-headphones"
-    )
-  }, {
-    value: "fa fa-volume-off",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF026 fa-volume-off"
-    )
-  }, {
-    value: "fa fa-volume-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF027 fa-volume-down"
-    )
-  }, {
-    value: "fa fa-volume-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF028 fa-volume-up"
-    )
-  }, {
-    value: "fa fa-qrcode",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF029 fa-qrcode"
-    )
-  }, {
-    value: "fa fa-barcode",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF02A fa-barcode"
-    )
-  }, {
-    value: "fa fa-tag",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF02B fa-tag"
-    )
-  }, {
-    value: "fa fa-tags",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF02C fa-tags"
-    )
-  }, {
-    value: "fa fa-book",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF02D fa-book"
-    )
-  }, {
-    value: "fa fa-bookmark",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF02E fa-bookmark"
-    )
-  }, {
-    value: "fa fa-print",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF02F fa-print"
-    )
-  }, {
-    value: "fa fa-camera",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF030 fa-camera"
-    )
-  }, {
-    value: "fa fa-font",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF031 fa-font"
-    )
-  }, {
-    value: "fa fa-bold",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF032 fa-bold"
-    )
-  }, {
-    value: "fa fa-italic",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF033 fa-italic"
-    )
-  }, {
-    value: "fa fa-text-height",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF034 fa-text-height"
-    )
-  }, {
-    value: "fa fa-text-width",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF035 fa-text-width"
-    )
-  }, {
-    value: "fa fa-align-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF036 fa-align-left"
-    )
-  }, {
-    value: "fa fa-align-center",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF037 fa-align-center"
-    )
-  }, {
-    value: "fa fa-align-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF038 fa-align-right"
-    )
-  }, {
-    value: "fa fa-align-justify",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF039 fa-align-justify"
-    )
-  }, {
-    value: "fa fa-list",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF03A fa-list"
-    )
-  }, {
-    value: "fa fa-outdent",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF03B fa-outdent"
-    )
-  }, {
-    value: "fa fa-indent",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF03C fa-indent"
-    )
-  }, {
-    value: "fa fa-video-camera",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF03D fa-video-camera"
-    )
-  }, {
-    value: "fa fa-picture-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF03E fa-picture-o"
-    )
-  }, {
-    value: "fa fa-pencil",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF040 fa-pencil"
-    )
-  }, {
-    value: "fa fa-map-marker",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF041 fa-map-marker"
-    )
-  }, {
-    value: "fa fa-adjust",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF042 fa-adjust"
-    )
-  }, {
-    value: "fa fa-tint",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF043 fa-tint"
-    )
-  }, {
-    value: "fa fa-pencil-square-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF044 fa-pencil-square-o"
-    )
-  }, {
-    value: "fa fa-share-square-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF045 fa-share-square-o"
-    )
-  }, {
-    value: "fa fa-check-square-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF046 fa-check-square-o"
-    )
-  }, {
-    value: "fa fa-arrows",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF047 fa-arrows"
-    )
-  }, {
-    value: "fa fa-step-backward",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF048 fa-step-backward"
-    )
-  }, {
-    value: "fa fa-fast-backward",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF049 fa-fast-backward"
-    )
-  }, {
-    value: "fa fa-backward",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF04A fa-backward"
-    )
-  }, {
-    value: "fa fa-play",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF04B fa-play"
-    )
-  }, {
-    value: "fa fa-pause",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF04C fa-pause"
-    )
-  }, {
-    value: "fa fa-stop",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF04D fa-stop"
-    )
-  }, {
-    value: "fa fa-forward",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF04E fa-forward"
-    )
-  }, {
-    value: "fa fa-fast-forward",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF050 fa-fast-forward"
-    )
-  }, {
-    value: "fa fa-step-forward",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF051 fa-step-forward"
-    )
-  }, {
-    value: "fa fa-eject",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF052 fa-eject"
-    )
-  }, {
-    value: "fa fa-chevron-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF053 fa-chevron-left"
-    )
-  }, {
-    value: "fa fa-chevron-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF054 fa-chevron-right"
-    )
-  }, {
-    value: "fa fa-plus-circle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF055 fa-plus-circle"
-    )
-  }, {
-    value: "fa fa-minus-circle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF056 fa-minus-circle"
-    )
-  }, {
-    value: "fa fa-times-circle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF057 fa-times-circle"
-    )
-  }, {
-    value: "fa fa-check-circle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF058 fa-check-circle"
-    )
-  }, {
-    value: "fa fa-question-circle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF059 fa-question-circle"
-    )
-  }, {
-    value: "fa fa-info-circle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF05A fa-info-circle"
-    )
-  }, {
-    value: "fa fa-crosshairs",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF05B fa-crosshairs"
-    )
-  }, {
-    value: "fa fa-times-circle-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF05C fa-times-circle-o"
-    )
-  }, {
-    value: "fa fa-check-circle-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF05D fa-check-circle-o"
-    )
-  }, {
-    value: "fa fa-ban",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF05E fa-ban"
-    )
-  }, {
-    value: "fa fa-arrow-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF060 fa-arrow-left"
-    )
-  }, {
-    value: "fa fa-arrow-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF061 fa-arrow-right"
-    )
-  }, {
-    value: "fa fa-arrow-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF062 fa-arrow-up"
-    )
-  }, {
-    value: "fa fa-arrow-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF063 fa-arrow-down"
-    )
-  }, {
-    value: "fa fa-share",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF064 fa-share"
-    )
-  }, {
-    value: "fa fa-expand",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF065 fa-expand"
-    )
-  }, {
-    value: "fa fa-compress",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF066 fa-compress"
-    )
-  }, {
-    value: "fa fa-plus",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF067 fa-plus"
-    )
-  }, {
-    value: "fa fa-minus",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF068 fa-minus"
-    )
-  }, {
-    value: "fa fa-asterisk",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF069 fa-asterisk"
-    )
-  }, {
-    value: "fa fa-exclamation-circle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF06A fa-exclamation-circle"
-    )
-  }, {
-    value: "fa fa-gift",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF06B fa-gift"
-    )
-  }, {
-    value: "fa fa-leaf",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF06C fa-leaf"
-    )
-  }, {
-    value: "fa fa-fire",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF06D fa-fire"
-    )
-  }, {
-    value: "fa fa-eye",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF06E fa-eye"
-    )
-  }, {
-    value: "fa fa-eye-slash",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF070 fa-eye-slash"
-    )
-  }, {
-    value: "fa fa-exclamation-triangle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF071 fa-exclamation-triangle"
-    )
-  }, {
-    value: "fa fa-plane",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF072 fa-plane"
-    )
-  }, {
-    value: "fa fa-calendar",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF073 fa-calendar"
-    )
-  }, {
-    value: "fa fa-random",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF074 fa-random"
-    )
-  }, {
-    value: "fa fa-comment",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF075 fa-comment"
-    )
-  }, {
-    value: "fa fa-magnet",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF076 fa-magnet"
-    )
-  }, {
-    value: "fa fa-chevron-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF077 fa-chevron-up"
-    )
-  }, {
-    value: "fa fa-chevron-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF078 fa-chevron-down"
-    )
-  }, {
-    value: "fa fa-retweet",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF079 fa-retweet"
-    )
-  }, {
-    value: "fa fa-shopping-cart",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF07A fa-shopping-cart"
-    )
-  }, {
-    value: "fa fa-folder",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF07B fa-folder"
-    )
-  }, {
-    value: "fa fa-folder-open",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF07C fa-folder-open"
-    )
-  }, {
-    value: "fa fa-arrows-v",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF07D fa-arrows-v"
-    )
-  }, {
-    value: "fa fa-arrows-h",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF07E fa-arrows-h"
-    )
-  }, {
-    value: "fa fa-bar-chart",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF080 fa-bar-chart"
-    )
-  }, {
-    value: "fa fa-twitter-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF081 fa-twitter-square"
-    )
-  }, {
-    value: "fa fa-facebook-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF082 fa-facebook-square"
-    )
-  }, {
-    value: "fa fa-camera-retro",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF083 fa-camera-retro"
-    )
-  }, {
-    value: "fa fa-key",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF084 fa-key"
-    )
-  }, {
-    value: "fa fa-cogs",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF085 fa-cogs"
-    )
-  }, {
-    value: "fa fa-comments",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF086 fa-comments"
-    )
-  }, {
-    value: "fa fa-thumbs-o-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF087 fa-thumbs-o-up"
-    )
-  }, {
-    value: "fa fa-thumbs-o-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF088 fa-thumbs-o-down"
-    )
-  }, {
-    value: "fa fa-star-half",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF089 fa-star-half"
-    )
-  }, {
-    value: "fa fa-heart-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF08A fa-heart-o"
-    )
-  }, {
-    value: "fa fa-sign-out",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF08B fa-sign-out"
-    )
-  }, {
-    value: "fa fa-linkedin-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF08C fa-linkedin-square"
-    )
-  }, {
-    value: "fa fa-thumb-tack",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF08D fa-thumb-tack"
-    )
-  }, {
-    value: "fa fa-external-link",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF08E fa-external-link"
-    )
-  }, {
-    value: "fa fa-sign-in",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF090 fa-sign-in"
-    )
-  }, {
-    value: "fa fa-trophy",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF091 fa-trophy"
-    )
-  }, {
-    value: "fa fa-github-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF092 fa-github-square"
-    )
-  }, {
-    value: "fa fa-upload",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF093 fa-upload"
-    )
-  }, {
-    value: "fa fa-lemon-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF094 fa-lemon-o"
-    )
-  }, {
-    value: "fa fa-phone",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF095 fa-phone"
-    )
-  }, {
-    value: "fa fa-square-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF096 fa-square-o"
-    )
-  }, {
-    value: "fa fa-bookmark-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF097 fa-bookmark-o"
-    )
-  }, {
-    value: "fa fa-phone-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF098 fa-phone-square"
-    )
-  }, {
-    value: "fa fa-twitter",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF099 fa-twitter"
-    )
-  }, {
-    value: "fa fa-facebook",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF09A fa-facebook"
-    )
-  }, {
-    value: "fa fa-github",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF09B fa-github"
-    )
-  }, {
-    value: "fa fa-unlock",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF09C fa-unlock"
-    )
-  }, {
-    value: "fa fa-credit-card",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF09D fa-credit-card"
-    )
-  }, {
-    value: "fa fa-rss",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF09E fa-rss"
-    )
-  }, {
-    value: "fa fa-hdd-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0A0 fa-hdd-o"
-    )
-  }, {
-    value: "fa fa-bullhorn",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0A1 fa-bullhorn"
-    )
-  }, {
-    value: "fa fa-bell",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0F3 fa-bell"
-    )
-  }, {
-    value: "fa fa-certificate",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0A3 fa-certificate"
-    )
-  }, {
-    value: "fa fa-hand-o-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0A4 fa-hand-o-right"
-    )
-  }, {
-    value: "fa fa-hand-o-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0A5 fa-hand-o-left"
-    )
-  }, {
-    value: "fa fa-hand-o-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0A6 fa-hand-o-up"
-    )
-  }, {
-    value: "fa fa-hand-o-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0A7 fa-hand-o-down"
-    )
-  }, {
-    value: "fa fa-arrow-circle-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0A8 fa-arrow-circle-left"
-    )
-  }, {
-    value: "fa fa-arrow-circle-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0A9 fa-arrow-circle-right"
-    )
-  }, {
-    value: "fa fa-arrow-circle-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0AA fa-arrow-circle-up"
-    )
-  }, {
-    value: "fa fa-arrow-circle-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0AB fa-arrow-circle-down"
-    )
-  }, {
-    value: "fa fa-globe",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0AC fa-globe"
-    )
-  }, {
-    value: "fa fa-wrench",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0AD fa-wrench"
-    )
-  }, {
-    value: "fa fa-tasks",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0AE fa-tasks"
-    )
-  }, {
-    value: "fa fa-filter",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0B0 fa-filter"
-    )
-  }, {
-    value: "fa fa-briefcase",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0B1 fa-briefcase"
-    )
-  }, {
-    value: "fa fa-arrows-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0B2 fa-arrows-alt"
-    )
-  }, {
-    value: "fa fa-users",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0C0 fa-users"
-    )
-  }, {
-    value: "fa fa-link",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0C1 fa-link"
-    )
-  }, {
-    value: "fa fa-cloud",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0C2 fa-cloud"
-    )
-  }, {
-    value: "fa fa-flask",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0C3 fa-flask"
-    )
-  }, {
-    value: "fa fa-scissors",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0C4 fa-scissors"
-    )
-  }, {
-    value: "fa fa-files-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0C5 fa-files-o"
-    )
-  }, {
-    value: "fa fa-paperclip",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0C6 fa-paperclip"
-    )
-  }, {
-    value: "fa fa-floppy-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0C7 fa-floppy-o"
-    )
-  }, {
-    value: "fa fa-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0C8 fa-square"
-    )
-  }, {
-    value: "fa fa-bars",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0C9 fa-bars"
-    )
-  }, {
-    value: "fa fa-list-ul",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0CA fa-list-ul"
-    )
-  }, {
-    value: "fa fa-list-ol",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0CB fa-list-ol"
-    )
-  }, {
-    value: "fa fa-strikethrough",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0CC fa-strikethrough"
-    )
-  }, {
-    value: "fa fa-underline",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0CD fa-underline"
-    )
-  }, {
-    value: "fa fa-table",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0CE fa-table"
-    )
-  }, {
-    value: "fa fa-magic",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0D0 fa-magic"
-    )
-  }, {
-    value: "fa fa-truck",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0D1 fa-truck"
-    )
-  }, {
-    value: "fa fa-pinterest",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0D2 fa-pinterest"
-    )
-  }, {
-    value: "fa fa-pinterest-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0D3 fa-pinterest-square"
-    )
-  }, {
-    value: "fa fa-google-plus-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0D4 fa-google-plus-square"
-    )
-  }, {
-    value: "fa fa-google-plus",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0D5 fa-google-plus"
-    )
-  }, {
-    value: "fa fa-money",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0D6 fa-money"
-    )
-  }, {
-    value: "fa fa-caret-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0D7 fa-caret-down"
-    )
-  }, {
-    value: "fa fa-caret-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0D8 fa-caret-up"
-    )
-  }, {
-    value: "fa fa-caret-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0D9 fa-caret-left"
-    )
-  }, {
-    value: "fa fa-caret-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0DA fa-caret-right"
-    )
-  }, {
-    value: "fa fa-columns",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0DB fa-columns"
-    )
-  }, {
-    value: "fa fa-sort",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0DC fa-sort"
-    )
-  }, {
-    value: "fa fa-sort-desc",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0DD fa-sort-desc"
-    )
-  }, {
-    value: "fa fa-sort-asc",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0DE fa-sort-asc"
-    )
-  }, {
-    value: "fa fa-envelope",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0E0 fa-envelope"
-    )
-  }, {
-    value: "fa fa-linkedin",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0E1 fa-linkedin"
-    )
-  }, {
-    value: "fa fa-undo",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0E2 fa-undo"
-    )
-  }, {
-    value: "fa fa-gavel",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0E3 fa-gavel"
-    )
-  }, {
-    value: "fa fa-tachometer",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0E4 fa-tachometer"
-    )
-  }, {
-    value: "fa fa-comment-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0E5 fa-comment-o"
-    )
-  }, {
-    value: "fa fa-comments-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0E6 fa-comments-o"
-    )
-  }, {
-    value: "fa fa-bolt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0E7 fa-bolt"
-    )
-  }, {
-    value: "fa fa-sitemap",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0E8 fa-sitemap"
-    )
-  }, {
-    value: "fa fa-umbrella",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0E9 fa-umbrella"
-    )
-  }, {
-    value: "fa fa-clipboard",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0EA fa-clipboard"
-    )
-  }, {
-    value: "fa fa-lightbulb-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0EB fa-lightbulb-o"
-    )
-  }, {
-    value: "fa fa-exchange",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0EC fa-exchange"
-    )
-  }, {
-    value: "fa fa-cloud-download",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0ED fa-cloud-download"
-    )
-  }, {
-    value: "fa fa-cloud-upload",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0EE fa-cloud-upload"
-    )
-  }, {
-    value: "fa fa-user-md",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0F0 fa-user-md"
-    )
-  }, {
-    value: "fa fa-stethoscope",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0F1 fa-stethoscope"
-    )
-  }, {
-    value: "fa fa-suitcase",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0F2 fa-suitcase"
-    )
-  }, {
-    value: "fa fa-bell-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0A2 fa-bell-o"
-    )
-  }, {
-    value: "fa fa-coffee",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0F4 fa-coffee"
-    )
-  }, {
-    value: "fa fa-cutlery",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0F5 fa-cutlery"
-    )
-  }, {
-    value: "fa fa-file-text-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0F6 fa-file-text-o"
-    )
-  }, {
-    value: "fa fa-building-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0F7 fa-building-o"
-    )
-  }, {
-    value: "fa fa-hospital-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0F8 fa-hospital-o"
-    )
-  }, {
-    value: "fa fa-ambulance",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0F9 fa-ambulance"
-    )
-  }, {
-    value: "fa fa-medkit",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0FA fa-medkit"
-    )
-  }, {
-    value: "fa fa-fighter-jet",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0FB fa-fighter-jet"
-    )
-  }, {
-    value: "fa fa-beer",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0FC fa-beer"
-    )
-  }, {
-    value: "fa fa-h-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0FD fa-h-square"
-    )
-  }, {
-    value: "fa fa-plus-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF0FE fa-plus-square"
-    )
-  }, {
-    value: "fa fa-angle-double-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF100 fa-angle-double-left"
-    )
-  }, {
-    value: "fa fa-angle-double-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF101 fa-angle-double-right"
-    )
-  }, {
-    value: "fa fa-angle-double-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF102 fa-angle-double-up"
-    )
-  }, {
-    value: "fa fa-angle-double-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF103 fa-angle-double-down"
-    )
-  }, {
-    value: "fa fa-angle-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF104 fa-angle-left"
-    )
-  }, {
-    value: "fa fa-angle-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF105 fa-angle-right"
-    )
-  }, {
-    value: "fa fa-angle-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF106 fa-angle-up"
-    )
-  }, {
-    value: "fa fa-angle-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF107 fa-angle-down"
-    )
-  }, {
-    value: "fa fa-desktop",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF108 fa-desktop"
-    )
-  }, {
-    value: "fa fa-laptop",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF109 fa-laptop"
-    )
-  }, {
-    value: "fa fa-tablet",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF10A fa-tablet"
-    )
-  }, {
-    value: "fa fa-mobile",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF10B fa-mobile"
-    )
-  }, {
-    value: "fa fa-circle-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF10C fa-circle-o"
-    )
-  }, {
-    value: "fa fa-quote-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF10D fa-quote-left"
-    )
-  }, {
-    value: "fa fa-quote-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF10E fa-quote-right"
-    )
-  }, {
-    value: "fa fa-spinner",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF110 fa-spinner"
-    )
-  }, {
-    value: "fa fa-circle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF111 fa-circle"
-    )
-  }, {
-    value: "fa fa-reply",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF112 fa-reply"
-    )
-  }, {
-    value: "fa fa-github-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF113 fa-github-alt"
-    )
-  }, {
-    value: "fa fa-folder-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF114 fa-folder-o"
-    )
-  }, {
-    value: "fa fa-folder-open-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF115 fa-folder-open-o"
-    )
-  }, {
-    value: "fa fa-smile-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF118 fa-smile-o"
-    )
-  }, {
-    value: "fa fa-frown-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF119 fa-frown-o"
-    )
-  }, {
-    value: "fa fa-meh-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF11A fa-meh-o"
-    )
-  }, {
-    value: "fa fa-gamepad",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF11B fa-gamepad"
-    )
-  }, {
-    value: "fa fa-keyboard-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF11C fa-keyboard-o"
-    )
-  }, {
-    value: "fa fa-flag-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF11D fa-flag-o"
-    )
-  }, {
-    value: "fa fa-flag-checkered",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF11E fa-flag-checkered"
-    )
-  }, {
-    value: "fa fa-terminal",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF120 fa-terminal"
-    )
-  }, {
-    value: "fa fa-code",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF121 fa-code"
-    )
-  }, {
-    value: "fa fa-reply-all",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF122 fa-reply-all"
-    )
-  }, {
-    value: "fa fa-star-half-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF123 fa-star-half-o"
-    )
-  }, {
-    value: "fa fa-location-arrow",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF124 fa-location-arrow"
-    )
-  }, {
-    value: "fa fa-crop",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF125 fa-crop"
-    )
-  }, {
-    value: "fa fa-code-fork",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF126 fa-code-fork"
-    )
-  }, {
-    value: "fa fa-chain-broken",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF127 fa-chain-broken"
-    )
-  }, {
-    value: "fa fa-question",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF128 fa-question"
-    )
-  }, {
-    value: "fa fa-info",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF129 fa-info"
-    )
-  }, {
-    value: "fa fa-exclamation",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF12A fa-exclamation"
-    )
-  }, {
-    value: "fa fa-superscript",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF12B fa-superscript"
-    )
-  }, {
-    value: "fa fa-subscript",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF12C fa-subscript"
-    )
-  }, {
-    value: "fa fa-eraser",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF12D fa-eraser"
-    )
-  }, {
-    value: "fa fa-puzzle-piece",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF12E fa-puzzle-piece"
-    )
-  }, {
-    value: "fa fa-microphone",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF130 fa-microphone"
-    )
-  }, {
-    value: "fa fa-microphone-slash",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF131 fa-microphone-slash"
-    )
-  }, {
-    value: "fa fa-shield",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF132 fa-shield"
-    )
-  }, {
-    value: "fa fa-calendar-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF133 fa-calendar-o"
-    )
-  }, {
-    value: "fa fa-fire-extinguisher",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF134 fa-fire-extinguisher"
-    )
-  }, {
-    value: "fa fa-rocket",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF135 fa-rocket"
-    )
-  }, {
-    value: "fa fa-maxcdn",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF136 fa-maxcdn"
-    )
-  }, {
-    value: "fa fa-chevron-circle-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF137 fa-chevron-circle-left"
-    )
-  }, {
-    value: "fa fa-chevron-circle-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF138 fa-chevron-circle-right"
-    )
-  }, {
-    value: "fa fa-chevron-circle-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF139 fa-chevron-circle-up"
-    )
-  }, {
-    value: "fa fa-chevron-circle-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF13A fa-chevron-circle-down"
-    )
-  }, {
-    value: "fa fa-html5",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF13B fa-html5"
-    )
-  }, {
-    value: "fa fa-css3",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF13C fa-css3"
-    )
-  }, {
-    value: "fa fa-anchor",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF13D fa-anchor"
-    )
-  }, {
-    value: "fa fa-unlock-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF13E fa-unlock-alt"
-    )
-  }, {
-    value: "fa fa-bullseye",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF140 fa-bullseye"
-    )
-  }, {
-    value: "fa fa-ellipsis-h",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF141 fa-ellipsis-h"
-    )
-  }, {
-    value: "fa fa-ellipsis-v",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF142 fa-ellipsis-v"
-    )
-  }, {
-    value: "fa fa-rss-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF143 fa-rss-square"
-    )
-  }, {
-    value: "fa fa-play-circle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF144 fa-play-circle"
-    )
-  }, {
-    value: "fa fa-ticket",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF145 fa-ticket"
-    )
-  }, {
-    value: "fa fa-minus-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF146 fa-minus-square"
-    )
-  }, {
-    value: "fa fa-minus-square-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF147 fa-minus-square-o"
-    )
-  }, {
-    value: "fa fa-level-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF148 fa-level-up"
-    )
-  }, {
-    value: "fa fa-level-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF149 fa-level-down"
-    )
-  }, {
-    value: "fa fa-check-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF14A fa-check-square"
-    )
-  }, {
-    value: "fa fa-pencil-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF14B fa-pencil-square"
-    )
-  }, {
-    value: "fa fa-external-link-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF14C fa-external-link-square"
-    )
-  }, {
-    value: "fa fa-share-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF14D fa-share-square"
-    )
-  }, {
-    value: "fa fa-compass",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF14E fa-compass"
-    )
-  }, {
-    value: "fa fa-caret-square-o-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF150 fa-caret-square-o-down"
-    )
-  }, {
-    value: "fa fa-caret-square-o-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF151 fa-caret-square-o-up"
-    )
-  }, {
-    value: "fa fa-caret-square-o-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF152 fa-caret-square-o-right"
-    )
-  }, {
-    value: "fa fa-eur",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF153 fa-eur"
-    )
-  }, {
-    value: "fa fa-gbp",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF154 fa-gbp"
-    )
-  }, {
-    value: "fa fa-usd",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF155 fa-usd"
-    )
-  }, {
-    value: "fa fa-inr",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF156 fa-inr"
-    )
-  }, {
-    value: "fa fa-jpy",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF157 fa-jpy"
-    )
-  }, {
-    value: "fa fa-rub",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF158 fa-rub"
-    )
-  }, {
-    value: "fa fa-krw",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF159 fa-krw"
-    )
-  }, {
-    value: "fa fa-btc",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF15A fa-btc"
-    )
-  }, {
-    value: "fa fa-file",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF15B fa-file"
-    )
-  }, {
-    value: "fa fa-file-text",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF15C fa-file-text"
-    )
-  }, {
-    value: "fa fa-sort-alpha-asc",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF15D fa-sort-alpha-asc"
-    )
-  }, {
-    value: "fa fa-sort-alpha-desc",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF15E fa-sort-alpha-desc"
-    )
-  }, {
-    value: "fa fa-sort-amount-asc",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF160 fa-sort-amount-asc"
-    )
-  }, {
-    value: "fa fa-sort-amount-desc",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF161 fa-sort-amount-desc"
-    )
-  }, {
-    value: "fa fa-sort-numeric-asc",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF162 fa-sort-numeric-asc"
-    )
-  }, {
-    value: "fa fa-sort-numeric-desc",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF163 fa-sort-numeric-desc"
-    )
-  }, {
-    value: "fa fa-thumbs-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF164 fa-thumbs-up"
-    )
-  }, {
-    value: "fa fa-thumbs-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF165 fa-thumbs-down"
-    )
-  }, {
-    value: "fa fa-youtube-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF166 fa-youtube-square"
-    )
-  }, {
-    value: "fa fa-youtube",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF167 fa-youtube"
-    )
-  }, {
-    value: "fa fa-xing",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF168 fa-xing"
-    )
-  }, {
-    value: "fa fa-xing-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF169 fa-xing-square"
-    )
-  }, {
-    value: "fa fa-youtube-play",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF16A fa-youtube-play"
-    )
-  }, {
-    value: "fa fa-dropbox",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF16B fa-dropbox"
-    )
-  }, {
-    value: "fa fa-stack-overflow",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF16C fa-stack-overflow"
-    )
-  }, {
-    value: "fa fa-instagram",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF16D fa-instagram"
-    )
-  }, {
-    value: "fa fa-flickr",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF16E fa-flickr"
-    )
-  }, {
-    value: "fa fa-adn",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF170 fa-adn"
-    )
-  }, {
-    value: "fa fa-bitbucket",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF171 fa-bitbucket"
-    )
-  }, {
-    value: "fa fa-bitbucket-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF172 fa-bitbucket-square"
-    )
-  }, {
-    value: "fa fa-tumblr",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF173 fa-tumblr"
-    )
-  }, {
-    value: "fa fa-tumblr-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF174 fa-tumblr-square"
-    )
-  }, {
-    value: "fa fa-long-arrow-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF175 fa-long-arrow-down"
-    )
-  }, {
-    value: "fa fa-long-arrow-up",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF176 fa-long-arrow-up"
-    )
-  }, {
-    value: "fa fa-long-arrow-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF177 fa-long-arrow-left"
-    )
-  }, {
-    value: "fa fa-long-arrow-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF178 fa-long-arrow-right"
-    )
-  }, {
-    value: "fa fa-apple",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF179 fa-apple"
-    )
-  }, {
-    value: "fa fa-windows",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF17A fa-windows"
-    )
-  }, {
-    value: "fa fa-android",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF17B fa-android"
-    )
-  }, {
-    value: "fa fa-linux",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF17C fa-linux"
-    )
-  }, {
-    value: "fa fa-dribbble",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF17D fa-dribbble"
-    )
-  }, {
-    value: "fa fa-skype",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF17E fa-skype"
-    )
-  }, {
-    value: "fa fa-foursquare",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF180 fa-foursquare"
-    )
-  }, {
-    value: "fa fa-trello",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF181 fa-trello"
-    )
-  }, {
-    value: "fa fa-female",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF182 fa-female"
-    )
-  }, {
-    value: "fa fa-male",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF183 fa-male"
-    )
-  }, {
-    value: "fa fa-gratipay",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF184 fa-gratipay"
-    )
-  }, {
-    value: "fa fa-sun-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF185 fa-sun-o"
-    )
-  }, {
-    value: "fa fa-moon-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF186 fa-moon-o"
-    )
-  }, {
-    value: "fa fa-archive",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF187 fa-archive"
-    )
-  }, {
-    value: "fa fa-bug",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF188 fa-bug"
-    )
-  }, {
-    value: "fa fa-vk",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF189 fa-vk"
-    )
-  }, {
-    value: "fa fa-weibo",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF18A fa-weibo"
-    )
-  }, {
-    value: "fa fa-renren",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF18B fa-renren"
-    )
-  }, {
-    value: "fa fa-pagelines",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF18C fa-pagelines"
-    )
-  }, {
-    value: "fa fa-stack-exchange",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF18D fa-stack-exchange"
-    )
-  }, {
-    value: "fa fa-arrow-circle-o-right",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF18E fa-arrow-circle-o-right"
-    )
-  }, {
-    value: "fa fa-arrow-circle-o-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF190 fa-arrow-circle-o-left"
-    )
-  }, {
-    value: "fa fa-caret-square-o-left",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF191 fa-caret-square-o-left"
-    )
-  }, {
-    value: "fa fa-dot-circle-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF192 fa-dot-circle-o"
-    )
-  }, {
-    value: "fa fa-wheelchair",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF193 fa-wheelchair"
-    )
-  }, {
-    value: "fa fa-vimeo-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF194 fa-vimeo-square"
-    )
-  }, {
-    value: "fa fa-try",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF195 fa-try"
-    )
-  }, {
-    value: "fa fa-plus-square-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF196 fa-plus-square-o"
-    )
-  }, {
-    value: "fa fa-space-shuttle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF197 fa-space-shuttle"
-    )
-  }, {
-    value: "fa fa-slack",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF198 fa-slack"
-    )
-  }, {
-    value: "fa fa-envelope-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF199 fa-envelope-square"
-    )
-  }, {
-    value: "fa fa-wordpress",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF19A fa-wordpress"
-    )
-  }, {
-    value: "fa fa-openid",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF19B fa-openid"
-    )
-  }, {
-    value: "fa fa-university",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF19C fa-university"
-    )
-  }, {
-    value: "fa fa-graduation-cap",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF19D fa-graduation-cap"
-    )
-  }, {
-    value: "fa fa-yahoo",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF19E fa-yahoo"
-    )
-  }, {
-    value: "fa fa-google",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1A0 fa-google"
-    )
-  }, {
-    value: "fa fa-reddit",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1A1 fa-reddit"
-    )
-  }, {
-    value: "fa fa-reddit-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1A2 fa-reddit-square"
-    )
-  }, {
-    value: "fa fa-stumbleupon-circle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1A3 fa-stumbleupon-circle"
-    )
-  }, {
-    value: "fa fa-stumbleupon",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1A4 fa-stumbleupon"
-    )
-  }, {
-    value: "fa fa-delicious",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1A5 fa-delicious"
-    )
-  }, {
-    value: "fa fa-digg",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1A6 fa-digg"
-    )
-  }, {
-    value: "fa fa-pied-piper-pp",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1A7 fa-pied-piper-pp"
-    )
-  }, {
-    value: "fa fa-pied-piper-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1A8 fa-pied-piper-alt"
-    )
-  }, {
-    value: "fa fa-drupal",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1A9 fa-drupal"
-    )
-  }, {
-    value: "fa fa-joomla",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1AA fa-joomla"
-    )
-  }, {
-    value: "fa fa-language",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1AB fa-language"
-    )
-  }, {
-    value: "fa fa-fax",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1AC fa-fax"
-    )
-  }, {
-    value: "fa fa-building",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1AD fa-building"
-    )
-  }, {
-    value: "fa fa-child",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1AE fa-child"
-    )
-  }, {
-    value: "fa fa-paw",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1B0 fa-paw"
-    )
-  }, {
-    value: "fa fa-spoon",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1B1 fa-spoon"
-    )
-  }, {
-    value: "fa fa-cube",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1B2 fa-cube"
-    )
-  }, {
-    value: "fa fa-cubes",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1B3 fa-cubes"
-    )
-  }, {
-    value: "fa fa-behance",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1B4 fa-behance"
-    )
-  }, {
-    value: "fa fa-behance-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1B5 fa-behance-square"
-    )
-  }, {
-    value: "fa fa-steam",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1B6 fa-steam"
-    )
-  }, {
-    value: "fa fa-steam-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1B7 fa-steam-square"
-    )
-  }, {
-    value: "fa fa-recycle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1B8 fa-recycle"
-    )
-  }, {
-    value: "fa fa-car",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1B9 fa-car"
-    )
-  }, {
-    value: "fa fa-taxi",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1BA fa-taxi"
-    )
-  }, {
-    value: "fa fa-tree",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1BB fa-tree"
-    )
-  }, {
-    value: "fa fa-spotify",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1BC fa-spotify"
-    )
-  }, {
-    value: "fa fa-deviantart",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1BD fa-deviantart"
-    )
-  }, {
-    value: "fa fa-soundcloud",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1BE fa-soundcloud"
-    )
-  }, {
-    value: "fa fa-database",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1C0 fa-database"
-    )
-  }, {
-    value: "fa fa-file-pdf-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1C1 fa-file-pdf-o"
-    )
-  }, {
-    value: "fa fa-file-word-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1C2 fa-file-word-o"
-    )
-  }, {
-    value: "fa fa-file-excel-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1C3 fa-file-excel-o"
-    )
-  }, {
-    value: "fa fa-file-powerpoint-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1C4 fa-file-powerpoint-o"
-    )
-  }, {
-    value: "fa fa-file-image-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1C5 fa-file-image-o"
-    )
-  }, {
-    value: "fa fa-file-archive-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1C6 fa-file-archive-o"
-    )
-  }, {
-    value: "fa fa-file-audio-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1C7 fa-file-audio-o"
-    )
-  }, {
-    value: "fa fa-file-video-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1C8 fa-file-video-o"
-    )
-  }, {
-    value: "fa fa-file-code-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1C9 fa-file-code-o"
-    )
-  }, {
-    value: "fa fa-vine",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1CA fa-vine"
-    )
-  }, {
-    value: "fa fa-codepen",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1CB fa-codepen"
-    )
-  }, {
-    value: "fa fa-jsfiddle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1CC fa-jsfiddle"
-    )
-  }, {
-    value: "fa fa-life-ring",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1CD fa-life-ring"
-    )
-  }, {
-    value: "fa fa-circle-o-notch",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1CE fa-circle-o-notch"
-    )
-  }, {
-    value: "fa fa-rebel",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1D0 fa-rebel"
-    )
-  }, {
-    value: "fa fa-empire",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1D1 fa-empire"
-    )
-  }, {
-    value: "fa fa-git-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1D2 fa-git-square"
-    )
-  }, {
-    value: "fa fa-git",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1D3 fa-git"
-    )
-  }, {
-    value: "fa fa-hacker-news",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1D4 fa-hacker-news"
-    )
-  }, {
-    value: "fa fa-tencent-weibo",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1D5 fa-tencent-weibo"
-    )
-  }, {
-    value: "fa fa-qq",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1D6 fa-qq"
-    )
-  }, {
-    value: "fa fa-weixin",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1D7 fa-weixin"
-    )
-  }, {
-    value: "fa fa-paper-plane",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1D8 fa-paper-plane"
-    )
-  }, {
-    value: "fa fa-paper-plane-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1D9 fa-paper-plane-o"
-    )
-  }, {
-    value: "fa fa-history",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1DA fa-history"
-    )
-  }, {
-    value: "fa fa-circle-thin",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1DB fa-circle-thin"
-    )
-  }, {
-    value: "fa fa-header",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1DC fa-header"
-    )
-  }, {
-    value: "fa fa-paragraph",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1DD fa-paragraph"
-    )
-  }, {
-    value: "fa fa-sliders",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1DE fa-sliders"
-    )
-  }, {
-    value: "fa fa-share-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1E0 fa-share-alt"
-    )
-  }, {
-    value: "fa fa-share-alt-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1E1 fa-share-alt-square"
-    )
-  }, {
-    value: "fa fa-bomb",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1E2 fa-bomb"
-    )
-  }, {
-    value: "fa fa-futbol-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1E3 fa-futbol-o"
-    )
-  }, {
-    value: "fa fa-tty",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1E4 fa-tty"
-    )
-  }, {
-    value: "fa fa-binoculars",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1E5 fa-binoculars"
-    )
-  }, {
-    value: "fa fa-plug",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1E6 fa-plug"
-    )
-  }, {
-    value: "fa fa-slideshare",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1E7 fa-slideshare"
-    )
-  }, {
-    value: "fa fa-twitch",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1E8 fa-twitch"
-    )
-  }, {
-    value: "fa fa-yelp",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1E9 fa-yelp"
-    )
-  }, {
-    value: "fa fa-newspaper-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1EA fa-newspaper-o"
-    )
-  }, {
-    value: "fa fa-wifi",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1EB fa-wifi"
-    )
-  }, {
-    value: "fa fa-calculator",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1EC fa-calculator"
-    )
-  }, {
-    value: "fa fa-paypal",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1ED fa-paypal"
-    )
-  }, {
-    value: "fa fa-google-wallet",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1EE fa-google-wallet"
-    )
-  }, {
-    value: "fa fa-cc-visa",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1F0 fa-cc-visa"
-    )
-  }, {
-    value: "fa fa-cc-mastercard",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1F1 fa-cc-mastercard"
-    )
-  }, {
-    value: "fa fa-cc-discover",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1F2 fa-cc-discover"
-    )
-  }, {
-    value: "fa fa-cc-amex",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1F3 fa-cc-amex"
-    )
-  }, {
-    value: "fa fa-cc-paypal",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1F4 fa-cc-paypal"
-    )
-  }, {
-    value: "fa fa-cc-stripe",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1F5 fa-cc-stripe"
-    )
-  }, {
-    value: "fa fa-bell-slash",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1F6 fa-bell-slash"
-    )
-  }, {
-    value: "fa fa-bell-slash-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1F7 fa-bell-slash-o"
-    )
-  }, {
-    value: "fa fa-trash",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1F8 fa-trash"
-    )
-  }, {
-    value: "fa fa-copyright",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1F9 fa-copyright"
-    )
-  }, {
-    value: "fa fa-at",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1FA fa-at"
-    )
-  }, {
-    value: "fa fa-eyedropper",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1FB fa-eyedropper"
-    )
-  }, {
-    value: "fa fa-paint-brush",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1FC fa-paint-brush"
-    )
-  }, {
-    value: "fa fa-birthday-cake",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1FD fa-birthday-cake"
-    )
-  }, {
-    value: "fa fa-area-chart",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF1FE fa-area-chart"
-    )
-  }, {
-    value: "fa fa-pie-chart",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF200 fa-pie-chart"
-    )
-  }, {
-    value: "fa fa-line-chart",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF201 fa-line-chart"
-    )
-  }, {
-    value: "fa fa-lastfm",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF202 fa-lastfm"
-    )
-  }, {
-    value: "fa fa-lastfm-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF203 fa-lastfm-square"
-    )
-  }, {
-    value: "fa fa-toggle-off",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF204 fa-toggle-off"
-    )
-  }, {
-    value: "fa fa-toggle-on",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF205 fa-toggle-on"
-    )
-  }, {
-    value: "fa fa-bicycle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF206 fa-bicycle"
-    )
-  }, {
-    value: "fa fa-bus",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF207 fa-bus"
-    )
-  }, {
-    value: "fa fa-ioxhost",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF208 fa-ioxhost"
-    )
-  }, {
-    value: "fa fa-angellist",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF209 fa-angellist"
-    )
-  }, {
-    value: "fa fa-cc",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF20A fa-cc"
-    )
-  }, {
-    value: "fa fa-ils",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF20B fa-ils"
-    )
-  }, {
-    value: "fa fa-meanpath",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF20C fa-meanpath"
-    )
-  }, {
-    value: "fa fa-buysellads",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF20D fa-buysellads"
-    )
-  }, {
-    value: "fa fa-connectdevelop",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF20E fa-connectdevelop"
-    )
-  }, {
-    value: "fa fa-dashcube",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF210 fa-dashcube"
-    )
-  }, {
-    value: "fa fa-forumbee",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF211 fa-forumbee"
-    )
-  }, {
-    value: "fa fa-leanpub",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF212 fa-leanpub"
-    )
-  }, {
-    value: "fa fa-sellsy",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF213 fa-sellsy"
-    )
-  }, {
-    value: "fa fa-shirtsinbulk",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF214 fa-shirtsinbulk"
-    )
-  }, {
-    value: "fa fa-simplybuilt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF215 fa-simplybuilt"
-    )
-  }, {
-    value: "fa fa-skyatlas",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF216 fa-skyatlas"
-    )
-  }, {
-    value: "fa fa-cart-plus",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF217 fa-cart-plus"
-    )
-  }, {
-    value: "fa fa-cart-arrow-down",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF218 fa-cart-arrow-down"
-    )
-  }, {
-    value: "fa fa-diamond",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF219 fa-diamond"
-    )
-  }, {
-    value: "fa fa-ship",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF21A fa-ship"
-    )
-  }, {
-    value: "fa fa-user-secret",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF21B fa-user-secret"
-    )
-  }, {
-    value: "fa fa-motorcycle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF21C fa-motorcycle"
-    )
-  }, {
-    value: "fa fa-street-view",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF21D fa-street-view"
-    )
-  }, {
-    value: "fa fa-heartbeat",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF21E fa-heartbeat"
-    )
-  }, {
-    value: "fa fa-venus",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF221 fa-venus"
-    )
-  }, {
-    value: "fa fa-mars",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF222 fa-mars"
-    )
-  }, {
-    value: "fa fa-mercury",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF223 fa-mercury"
-    )
-  }, {
-    value: "fa fa-transgender",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF224 fa-transgender"
-    )
-  }, {
-    value: "fa fa-transgender-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF225 fa-transgender-alt"
-    )
-  }, {
-    value: "fa fa-venus-double",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF226 fa-venus-double"
-    )
-  }, {
-    value: "fa fa-mars-double",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF227 fa-mars-double"
-    )
-  }, {
-    value: "fa fa-venus-mars",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF228 fa-venus-mars"
-    )
-  }, {
-    value: "fa fa-mars-stroke",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF229 fa-mars-stroke"
-    )
-  }, {
-    value: "fa fa-mars-stroke-v",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF22A fa-mars-stroke-v"
-    )
-  }, {
-    value: "fa fa-mars-stroke-h",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF22B fa-mars-stroke-h"
-    )
-  }, {
-    value: "fa fa-neuter",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF22C fa-neuter"
-    )
-  }, {
-    value: "fa fa-genderless",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF22D fa-genderless"
-    )
-  }, {
-    value: "fa fa-facebook-official",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF230 fa-facebook-official"
-    )
-  }, {
-    value: "fa fa-pinterest-p",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF231 fa-pinterest-p"
-    )
-  }, {
-    value: "fa fa-whatsapp",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF232 fa-whatsapp"
-    )
-  }, {
-    value: "fa fa-server",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF233 fa-server"
-    )
-  }, {
-    value: "fa fa-user-plus",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF234 fa-user-plus"
-    )
-  }, {
-    value: "fa fa-user-times",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF235 fa-user-times"
-    )
-  }, {
-    value: "fa fa-bed",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF236 fa-bed"
-    )
-  }, {
-    value: "fa fa-viacoin",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF237 fa-viacoin"
-    )
-  }, {
-    value: "fa fa-train",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF238 fa-train"
-    )
-  }, {
-    value: "fa fa-subway",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF239 fa-subway"
-    )
-  }, {
-    value: "fa fa-medium",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF23A fa-medium"
-    )
-  }, {
-    value: "fa fa-y-combinator",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF23B fa-y-combinator"
-    )
-  }, {
-    value: "fa fa-optin-monster",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF23C fa-optin-monster"
-    )
-  }, {
-    value: "fa fa-opencart",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF23D fa-opencart"
-    )
-  }, {
-    value: "fa fa-expeditedssl",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF23E fa-expeditedssl"
-    )
-  }, {
-    value: "fa fa-battery-full",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF240 fa-battery-full"
-    )
-  }, {
-    value: "fa fa-battery-three-quarters",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF241 fa-battery-three-quarters"
-    )
-  }, {
-    value: "fa fa-battery-half",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF242 fa-battery-half"
-    )
-  }, {
-    value: "fa fa-battery-quarter",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF243 fa-battery-quarter"
-    )
-  }, {
-    value: "fa fa-battery-empty",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF244 fa-battery-empty"
-    )
-  }, {
-    value: "fa fa-mouse-pointer",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF245 fa-mouse-pointer"
-    )
-  }, {
-    value: "fa fa-i-cursor",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF246 fa-i-cursor"
-    )
-  }, {
-    value: "fa fa-object-group",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF247 fa-object-group"
-    )
-  }, {
-    value: "fa fa-object-ungroup",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF248 fa-object-ungroup"
-    )
-  }, {
-    value: "fa fa-sticky-note",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF249 fa-sticky-note"
-    )
-  }, {
-    value: "fa fa-sticky-note-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF24A fa-sticky-note-o"
-    )
-  }, {
-    value: "fa fa-cc-jcb",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF24B fa-cc-jcb"
-    )
-  }, {
-    value: "fa fa-cc-diners-club",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF24C fa-cc-diners-club"
-    )
-  }, {
-    value: "fa fa-clone",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF24D fa-clone"
-    )
-  }, {
-    value: "fa fa-balance-scale",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF24E fa-balance-scale"
-    )
-  }, {
-    value: "fa fa-hourglass-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF250 fa-hourglass-o"
-    )
-  }, {
-    value: "fa fa-hourglass-start",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF251 fa-hourglass-start"
-    )
-  }, {
-    value: "fa fa-hourglass-half",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF252 fa-hourglass-half"
-    )
-  }, {
-    value: "fa fa-hourglass-end",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF253 fa-hourglass-end"
-    )
-  }, {
-    value: "fa fa-hourglass",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF254 fa-hourglass"
-    )
-  }, {
-    value: "fa fa-hand-rock-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF255 fa-hand-rock-o"
-    )
-  }, {
-    value: "fa fa-hand-paper-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF256 fa-hand-paper-o"
-    )
-  }, {
-    value: "fa fa-hand-scissors-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF257 fa-hand-scissors-o"
-    )
-  }, {
-    value: "fa fa-hand-lizard-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF258 fa-hand-lizard-o"
-    )
-  }, {
-    value: "fa fa-hand-spock-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF259 fa-hand-spock-o"
-    )
-  }, {
-    value: "fa fa-hand-pointer-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF25A fa-hand-pointer-o"
-    )
-  }, {
-    value: "fa fa-hand-peace-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF25B fa-hand-peace-o"
-    )
-  }, {
-    value: "fa fa-trademark",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF25C fa-trademark"
-    )
-  }, {
-    value: "fa fa-registered",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF25D fa-registered"
-    )
-  }, {
-    value: "fa fa-creative-commons",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF25E fa-creative-commons"
-    )
-  }, {
-    value: "fa fa-gg",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF260 fa-gg"
-    )
-  }, {
-    value: "fa fa-gg-circle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF261 fa-gg-circle"
-    )
-  }, {
-    value: "fa fa-tripadvisor",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF262 fa-tripadvisor"
-    )
-  }, {
-    value: "fa fa-odnoklassniki",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF263 fa-odnoklassniki"
-    )
-  }, {
-    value: "fa fa-odnoklassniki-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF264 fa-odnoklassniki-square"
-    )
-  }, {
-    value: "fa fa-get-pocket",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF265 fa-get-pocket"
-    )
-  }, {
-    value: "fa fa-wikipedia-w",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF266 fa-wikipedia-w"
-    )
-  }, {
-    value: "fa fa-safari",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF267 fa-safari"
-    )
-  }, {
-    value: "fa fa-chrome",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF268 fa-chrome"
-    )
-  }, {
-    value: "fa fa-firefox",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF269 fa-firefox"
-    )
-  }, {
-    value: "fa fa-opera",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF26A fa-opera"
-    )
-  }, {
-    value: "fa fa-internet-explorer",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF26B fa-internet-explorer"
-    )
-  }, {
-    value: "fa fa-television",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF26C fa-television"
-    )
-  }, {
-    value: "fa fa-contao",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF26D fa-contao"
-    )
-  }, {
-    value: "fa fa-500px",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF26E fa-500px"
-    )
-  }, {
-    value: "fa fa-amazon",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF270 fa-amazon"
-    )
-  }, {
-    value: "fa fa-calendar-plus-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF271 fa-calendar-plus-o"
-    )
-  }, {
-    value: "fa fa-calendar-minus-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF272 fa-calendar-minus-o"
-    )
-  }, {
-    value: "fa fa-calendar-times-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF273 fa-calendar-times-o"
-    )
-  }, {
-    value: "fa fa-calendar-check-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF274 fa-calendar-check-o"
-    )
-  }, {
-    value: "fa fa-industry",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF275 fa-industry"
-    )
-  }, {
-    value: "fa fa-map-pin",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF276 fa-map-pin"
-    )
-  }, {
-    value: "fa fa-map-signs",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF277 fa-map-signs"
-    )
-  }, {
-    value: "fa fa-map-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF278 fa-map-o"
-    )
-  }, {
-    value: "fa fa-map",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF279 fa-map"
-    )
-  }, {
-    value: "fa fa-commenting",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF27A fa-commenting"
-    )
-  }, {
-    value: "fa fa-commenting-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF27B fa-commenting-o"
-    )
-  }, {
-    value: "fa fa-houzz",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF27C fa-houzz"
-    )
-  }, {
-    value: "fa fa-vimeo",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF27D fa-vimeo"
-    )
-  }, {
-    value: "fa fa-black-tie",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF27E fa-black-tie"
-    )
-  }, {
-    value: "fa fa-fonticons",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF280 fa-fonticons"
-    )
-  }, {
-    value: "fa fa-reddit-alien",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF281 fa-reddit-alien"
-    )
-  }, {
-    value: "fa fa-edge",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF282 fa-edge"
-    )
-  }, {
-    value: "fa fa-credit-card-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF283 fa-credit-card-alt"
-    )
-  }, {
-    value: "fa fa-codiepie",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF284 fa-codiepie"
-    )
-  }, {
-    value: "fa fa-modx",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF285 fa-modx"
-    )
-  }, {
-    value: "fa fa-fort-awesome",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF286 fa-fort-awesome"
-    )
-  }, {
-    value: "fa fa-usb",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF287 fa-usb"
-    )
-  }, {
-    value: "fa fa-product-hunt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF288 fa-product-hunt"
-    )
-  }, {
-    value: "fa fa-mixcloud",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF289 fa-mixcloud"
-    )
-  }, {
-    value: "fa fa-scribd",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF28A fa-scribd"
-    )
-  }, {
-    value: "fa fa-pause-circle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF28B fa-pause-circle"
-    )
-  }, {
-    value: "fa fa-pause-circle-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF28C fa-pause-circle-o"
-    )
-  }, {
-    value: "fa fa-stop-circle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF28D fa-stop-circle"
-    )
-  }, {
-    value: "fa fa-stop-circle-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF28E fa-stop-circle-o"
-    )
-  }, {
-    value: "fa fa-shopping-bag",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF290 fa-shopping-bag"
-    )
-  }, {
-    value: "fa fa-shopping-basket",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF291 fa-shopping-basket"
-    )
-  }, {
-    value: "fa fa-hashtag",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF292 fa-hashtag"
-    )
-  }, {
-    value: "fa fa-bluetooth",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF293 fa-bluetooth"
-    )
-  }, {
-    value: "fa fa-bluetooth-b",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF294 fa-bluetooth-b"
-    )
-  }, {
-    value: "fa fa-percent",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF295 fa-percent"
-    )
-  }, {
-    value: "fa fa-gitlab",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF296 fa-gitlab"
-    )
-  }, {
-    value: "fa fa-wpbeginner",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF297 fa-wpbeginner"
-    )
-  }, {
-    value: "fa fa-wpforms",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF298 fa-wpforms"
-    )
-  }, {
-    value: "fa fa-envira",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF299 fa-envira"
-    )
-  }, {
-    value: "fa fa-universal-access",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF29A fa-universal-access"
-    )
-  }, {
-    value: "fa fa-wheelchair-alt",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF29B fa-wheelchair-alt"
-    )
-  }, {
-    value: "fa fa-question-circle-o",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF29C fa-question-circle-o"
-    )
-  }, {
-    value: "fa fa-blind",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF29D fa-blind"
-    )
-  }, {
-    value: "fa fa-audio-description",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF29E fa-audio-description"
-    )
-  }, {
-    value: "fa fa-volume-control-phone",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2A0 fa-volume-control-phone"
-    )
-  }, {
-    value: "fa fa-braille",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2A1 fa-braille"
-    )
-  }, {
-    value: "fa fa-assistive-listening-systems",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2A2 fa-assistive-listening-systems"
-    )
-  }, {
-    value: "fa fa-american-sign-language-interpreting",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2A3 fa-american-sign-language-interpreting"
-    )
-  }, {
-    value: "fa fa-deaf",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2A4 fa-deaf"
-    )
-  }, {
-    value: "fa fa-glide",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2A5 fa-glide"
-    )
-  }, {
-    value: "fa fa-glide-g",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2A6 fa-glide-g"
-    )
-  }, {
-    value: "fa fa-sign-language",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2A7 fa-sign-language"
-    )
-  }, {
-    value: "fa fa-low-vision",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2A8 fa-low-vision"
-    )
-  }, {
-    value: "fa fa-viadeo",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2A9 fa-viadeo"
-    )
-  }, {
-    value: "fa fa-viadeo-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2AA fa-viadeo-square"
-    )
-  }, {
-    value: "fa fa-snapchat",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2AB fa-snapchat"
-    )
-  }, {
-    value: "fa fa-snapchat-ghost",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2AC fa-snapchat-ghost"
-    )
-  }, {
-    value: "fa fa-snapchat-square",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2AD fa-snapchat-square"
-    )
-  }, {
-    value: "fa fa-pied-piper",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2AE fa-pied-piper"
-    )
-  }, {
-    value: "fa fa-first-order",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2B0 fa-first-order"
-    )
-  }, {
-    value: "fa fa-yoast",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2B1 fa-yoast"
-    )
-  }, {
-    value: "fa fa-themeisle",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2B2 fa-themeisle"
-    )
-  }, {
-    value: "fa fa-google-plus-official",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2B3 fa-google-plus-official"
-    )
-  }, {
-    value: "fa fa-font-awesome",
-    label: wp.element.createElement(
-      "p",
-      null,
-      "\uF2B4 fa-font-awesome"
-    )
-  }];
-  return wp.element.createElement(SelectControl, {
-    label: __("Choose Icon"),
-    options: "fa" === type ? ICONS : DASHICONS,
-    value: icon,
-    onChange: onChangeIcon
-  });
+  return wp.element.createElement(
+    Fragment,
+    null,
+    wp.element.createElement(SelectControl, {
+      label: __("Border Type"),
+      options: BORDER,
+      value: borderType,
+      onChange: onChangeType
+    }),
+    "none" != borderType && wp.element.createElement(RangeControl, {
+      label: __("Border Width"),
+      value: borderWidth,
+      min: "0",
+      max: "50",
+      onChange: onChangeWidth
+    }),
+    "none" != borderType && wp.element.createElement(PanelColorSettings, _extends({
+      colorSettings: [{
+        value: borderColor,
+        onChange: onChangeColor,
+        label: __("Border Color")
+      }]
+    }, props)),
+    wp.element.createElement(RangeControl, {
+      label: __("Border Radius"),
+      value: borderRadius,
+      min: "0",
+      max: "150",
+      onChange: onChangeRadius
+    })
+  );
 }
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_dual_heading__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_pricing_table__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_maps__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_testimonials__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_count_up__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon__ = __webpack_require__(12);
+/*const { __ } = wp.i18n;
+const { SelectControl } = wp.components;
+export default function PremiumIcon(props) {
+  const { type, icon, onChangeIcon = () => {} } = props;
+  //Dashicons
+  const DASHICONS = [
+    {
+      value: "dashicons dashicons-menu",
+      label: <p>&#xf333; dashicons-menu</p>
+    },
+    {
+      value: "dashicons dashicons-admin-site",
+      label: <p>&#xf319; dashicons-admin-site</p>
+    },
+    {
+      value: "dashicons dashicons-dashboard",
+      label: <p>&#xf226; dashicons-dashboard</p>
+    },
+    {
+      value: "dashicons dashicons-admin-post",
+      label: <p>&#xf109; dashicons-admin-post</p>
+    },
+    {
+      value: "dashicons dashicons-admin-media",
+      label: <p>&#xf104; dashicons-admin-media</p>
+    },
+    {
+      value: "dashicons dashicons-admin-links",
+      label: <p>&#xf103; dashicons-admin-links</p>
+    },
+    {
+      value: "dashicons dashicons-admin-page",
+      label: <p>&#xf105; dashicons-admin-page</p>
+    },
+    {
+      value: "dashicons dashicons-admin-comments",
+      label: <p>&#xf101; dashicons-admin-comments</p>
+    },
+    {
+      value: "dashicons dashicons-admin-appearance",
+      label: <p>&#xf100; dashicons-admin-appearance</p>
+    },
+    {
+      value: "dashicons dashicons-admin-plugins",
+      label: <p>&#xf106; dashicons-admin-plugins</p>
+    },
+    {
+      value: "dashicons dashicons-admin-users",
+      label: <p>&#xf110; dashicons-admin-users</p>
+    },
+    {
+      value: "dashicons dashicons-admin-tools",
+      label: <p>&#xf107; dashicons-admin-tools</p>
+    },
+    {
+      value: "dashicons dashicons-admin-settings",
+      label: <p>&#xf108; dashicons-admin-settings</p>
+    },
+    {
+      value: "dashicons dashicons-admin-network",
+      label: <p>&#xf112; dashicons-admin-network</p>
+    },
+    {
+      value: "dashicons dashicons-admin-home",
+      label: <p>&#xf102; dashicons-admin-home</p>
+    },
+    {
+      value: "dashicons dashicons-admin-generic",
+      label: <p>&#xf111; dashicons-admin-generic</p>
+    },
+    {
+      value: "dashicons dashicons-admin-collapse",
+      label: <p>&#xf148; dashicons-admin-collapse</p>
+    },
+    {
+      value: "dashicons dashicons-filter",
+      label: <p>&#xf536; dashicons-filter</p>
+    },
+    {
+      value: "dashicons dashicons-admin-customizer",
+      label: <p>&#xf540; dashicons-admin-customizer</p>
+    },
+    {
+      value: "dashicons dashicons-admin-multisite",
+      label: <p>&#xf541; dashicons-admin-multisite</p>
+    },
+    {
+      value: "dashicons dashicons-welcome-write-blog",
+      label: <p>&#xf119; dashicons-welcome-write-blog</p>
+    },
+    {
+      value: "dashicons dashicons-welcome-add-page",
+      label: <p>&#xf133; dashicons-welcome-add-page</p>
+    },
+    {
+      value: "dashicons dashicons-welcome-view-site",
+      label: <p>&#xf115; dashicons-welcome-view-site</p>
+    },
+    {
+      value: "dashicons dashicons-welcome-widgets-menus",
+      label: <p>&#xf116; dashicons-welcome-widgets-menus</p>
+    },
+    {
+      value: "dashicons dashicons-welcome-comments",
+      label: <p>&#xf117; dashicons-welcome-comments</p>
+    },
+    {
+      value: "dashicons dashicons-welcome-learn-more",
+      label: <p>&#xf118; dashicons-welcome-learn-more</p>
+    },
+    {
+      value: "dashicons dashicons-format-aside",
+      label: <p>&#xf123; dashicons-format-aside</p>
+    },
+    {
+      value: "dashicons dashicons-format-image",
+      label: <p>&#xf128; dashicons-format-image</p>
+    },
+    {
+      value: "dashicons dashicons-format-gallery",
+      label: <p>&#xf161; dashicons-format-gallery</p>
+    },
+    {
+      value: "dashicons dashicons-format-video",
+      label: <p>&#xf126; dashicons-format-video</p>
+    },
+    {
+      value: "dashicons dashicons-format-status",
+      label: <p>&#xf130; dashicons-format-status</p>
+    },
+    {
+      value: "dashicons dashicons-format-quote",
+      label: <p>&#xf122; dashicons-format-quote</p>
+    },
+    {
+      value: "dashicons dashicons-format-chat",
+      label: <p>&#xf125; dashicons-format-chat</p>
+    },
+    {
+      value: "dashicons dashicons-format-audio",
+      label: <p>&#xf127; dashicons-format-audio</p>
+    },
+    {
+      value: "dashicons dashicons-camera",
+      label: <p>&#xf306; dashicons-camera</p>
+    },
+    {
+      value: "dashicons dashicons-images-alt",
+      label: <p>&#xf232; dashicons-images-alt</p>
+    },
+    {
+      value: "dashicons dashicons-images-alt2",
+      label: <p>&#xf233; dashicons-images-alt2</p>
+    },
+    {
+      value: "dashicons dashicons-video-alt",
+      label: <p>&#xf234; dashicons-video-alt</p>
+    },
+    {
+      value: "dashicons dashicons-video-alt2",
+      label: <p>&#xf235; dashicons-video-alt2</p>
+    },
+    {
+      value: "dashicons dashicons-video-alt3",
+      label: <p>&#xf236; dashicons-video-alt3</p>
+    },
+    {
+      value: "dashicons dashicons-media-archive",
+      label: <p>&#xf501; dashicons-media-archive</p>
+    },
+    {
+      value: "dashicons dashicons-media-audio",
+      label: <p>&#xf500; dashicons-media-audio</p>
+    },
+    {
+      value: "dashicons dashicons-media-code",
+      label: <p>&#xf499; dashicons-media-code</p>
+    },
+    {
+      value: "dashicons dashicons-media-default",
+      label: <p>&#xf498; dashicons-media-default</p>
+    },
+    {
+      value: "dashicons dashicons-media-document",
+      label: <p>&#xf497; dashicons-media-document</p>
+    },
+    {
+      value: "dashicons dashicons-media-interactive",
+      label: <p>&#xf496; dashicons-media-interactive</p>
+    },
+    {
+      value: "dashicons dashicons-media-spreadsheet",
+      label: <p>&#xf495; dashicons-media-spreadsheet</p>
+    },
+    {
+      value: "dashicons dashicons-media-text",
+      label: <p>&#xf491; dashicons-media-text</p>
+    },
+    {
+      value: "dashicons dashicons-media-video",
+      label: <p>&#xf490; dashicons-media-video</p>
+    },
+    {
+      value: "dashicons dashicons-playlist-audio",
+      label: <p>&#xf492; dashicons-playlist-audio</p>
+    },
+    {
+      value: "dashicons dashicons-playlist-video",
+      label: <p>&#xf493; dashicons-playlist-video</p>
+    },
+    {
+      value: "dashicons dashicons-controls-play",
+      label: <p>&#xf522; dashicons-controls-play</p>
+    },
+    {
+      value: "dashicons dashicons-controls-pause",
+      label: <p>&#xf523; dashicons-controls-pause</p>
+    },
+    {
+      value: "dashicons dashicons-controls-forward",
+      label: <p>&#xf519; dashicons-controls-forward</p>
+    },
+    {
+      value: "dashicons dashicons-controls-skipforward",
+      label: <p>&#xf517; dashicons-controls-skipforward</p>
+    },
+    {
+      value: "dashicons dashicons-controls-back",
+      label: <p>&#xf518; dashicons-controls-back</p>
+    },
+    {
+      value: "dashicons dashicons-controls-skipback",
+      label: <p>&#xf516; dashicons-controls-skipback</p>
+    },
+    {
+      value: "dashicons dashicons-controls-repeat",
+      label: <p>&#xf515; dashicons-controls-repeat</p>
+    },
+    {
+      value: "dashicons dashicons-controls-volumeon",
+      label: <p>&#xf521; dashicons-controls-volumeon</p>
+    },
+    {
+      value: "dashicons dashicons-controls-volumeoff",
+      label: <p>&#xf520; dashicons-controls-volumeoff</p>
+    },
+    {
+      value: "dashicons dashicons-image-crop",
+      label: <p>&#xf165; dashicons-image-crop</p>
+    },
+    {
+      value: "dashicons dashicons-image-rotate",
+      label: <p>&#xf531; dashicons-image-rotate</p>
+    },
+    {
+      value: "dashicons dashicons-image-rotate-left",
+      label: <p>&#xf166; dashicons-image-rotate-left</p>
+    },
+    {
+      value: "dashicons dashicons-image-rotate-right",
+      label: <p>&#xf167; dashicons-image-rotate-right</p>
+    },
+    {
+      value: "dashicons dashicons-image-flip-vertical",
+      label: <p>&#xf168; dashicons-image-flip-vertical</p>
+    },
+    {
+      value: "dashicons dashicons-image-flip-horizontal",
+      label: <p>&#xf169; dashicons-image-flip-horizontal</p>
+    },
+    {
+      value: "dashicons dashicons-image-filter",
+      label: <p>&#xf533; dashicons-image-filter</p>
+    },
+    {
+      value: "dashicons dashicons-undo",
+      label: <p>&#xf171; dashicons-undo</p>
+    },
+    {
+      value: "dashicons dashicons-redo",
+      label: <p>&#xf172; dashicons-redo</p>
+    },
+    {
+      value: "dashicons dashicons-editor-bold",
+      label: <p>&#xf200; dashicons-editor-bold</p>
+    },
+    {
+      value: "dashicons dashicons-editor-italic",
+      label: <p>&#xf201; dashicons-editor-italic</p>
+    },
+    {
+      value: "dashicons dashicons-editor-ul",
+      label: <p>&#xf203; dashicons-editor-ul</p>
+    },
+    {
+      value: "dashicons dashicons-editor-ol",
+      label: <p>&#xf204; dashicons-editor-ol</p>
+    },
+    {
+      value: "dashicons dashicons-editor-quote",
+      label: <p>&#xf205; dashicons-editor-quote</p>
+    },
+    {
+      value: "dashicons dashicons-editor-alignleft",
+      label: <p>&#xf206; dashicons-editor-alignleft</p>
+    },
+    {
+      value: "dashicons dashicons-editor-aligncenter",
+      label: <p>&#xf207; dashicons-editor-aligncenter</p>
+    },
+    {
+      value: "dashicons dashicons-editor-alignright",
+      label: <p>&#xf208; dashicons-editor-alignright</p>
+    },
+    {
+      value: "dashicons dashicons-editor-insertmore",
+      label: <p>&#xf209; dashicons-editor-insertmore</p>
+    },
+    {
+      value: "dashicons dashicons-editor-spellcheck",
+      label: <p>&#xf210; dashicons-editor-spellcheck</p>
+    },
+    {
+      value: "dashicons dashicons-editor-expand",
+      label: <p>&#xf211; dashicons-editor-expand</p>
+    },
+    {
+      value: "dashicons dashicons-editor-contract",
+      label: <p>&#xf506; dashicons-editor-contract</p>
+    },
+    {
+      value: "dashicons dashicons-editor-kitchensink",
+      label: <p>&#xf212; dashicons-editor-kitchensink</p>
+    },
+    {
+      value: "dashicons dashicons-editor-underline",
+      label: <p>&#xf213; dashicons-editor-underline</p>
+    },
+    {
+      value: "dashicons dashicons-editor-justify",
+      label: <p>&#xf214; dashicons-editor-justify</p>
+    },
+    {
+      value: "dashicons dashicons-editor-textcolor",
+      label: <p>&#xf215; dashicons-editor-textcolor</p>
+    },
+    {
+      value: "dashicons dashicons-editor-paste-word",
+      label: <p>&#xf216; dashicons-editor-paste-word</p>
+    },
+    {
+      value: "dashicons dashicons-editor-paste-text",
+      label: <p>&#xf217; dashicons-editor-paste-text</p>
+    },
+    {
+      value: "dashicons dashicons-editor-removeformatting",
+      label: <p>&#xf218; dashicons-editor-removeformatting</p>
+    },
+    {
+      value: "dashicons dashicons-editor-video",
+      label: <p>&#xf219; dashicons-editor-video</p>
+    },
+    {
+      value: "dashicons dashicons-editor-customchar",
+      label: <p>&#xf220; dashicons-editor-customchar</p>
+    },
+    {
+      value: "dashicons dashicons-editor-outdent",
+      label: <p>&#xf221; dashicons-editor-outdent</p>
+    },
+    {
+      value: "dashicons dashicons-editor-indent",
+      label: <p>&#xf222; dashicons-editor-indent</p>
+    },
+    {
+      value: "dashicons dashicons-editor-help",
+      label: <p>&#xf223; dashicons-editor-help</p>
+    },
+    {
+      value: "dashicons dashicons-editor-strikethrough",
+      label: <p>&#xf224; dashicons-editor-strikethrough</p>
+    },
+    {
+      value: "dashicons dashicons-editor-unlink",
+      label: <p>&#xf225; dashicons-editor-unlink</p>
+    },
+    {
+      value: "dashicons dashicons-editor-rtl",
+      label: <p>&#xf320; dashicons-editor-rtl</p>
+    },
+    {
+      value: "dashicons dashicons-editor-break",
+      label: <p>&#xf474; dashicons-editor-break</p>
+    },
+    {
+      value: "dashicons dashicons-editor-code",
+      label: <p>&#xf475; dashicons-editor-code</p>
+    },
+    {
+      value: "dashicons dashicons-editor-paragraph",
+      label: <p>&#xf476; dashicons-editor-paragraph</p>
+    },
+    {
+      value: "dashicons dashicons-editor-table",
+      label: <p>&#xf535; dashicons-editor-table</p>
+    },
+    {
+      value: "dashicons dashicons-align-left",
+      label: <p>&#xf135; dashicons-align-left</p>
+    },
+    {
+      value: "dashicons dashicons-align-right",
+      label: <p>&#xf136; dashicons-align-right</p>
+    },
+    {
+      value: "dashicons dashicons-align-center",
+      label: <p>&#xf134; dashicons-align-center</p>
+    },
+    {
+      value: "dashicons dashicons-align-none",
+      label: <p>&#xf138; dashicons-align-none</p>
+    },
+    {
+      value: "dashicons dashicons-lock",
+      label: <p>&#xf160; dashicons-lock</p>
+    },
+    {
+      value: "dashicons dashicons-unlock",
+      label: <p>&#xf528; dashicons-unlock</p>
+    },
+    {
+      value: "dashicons dashicons-calendar",
+      label: <p>&#xf145; dashicons-calendar</p>
+    },
+    {
+      value: "dashicons dashicons-calendar-alt",
+      label: <p>&#xf508; dashicons-calendar-alt</p>
+    },
+    {
+      value: "dashicons dashicons-visibility",
+      label: <p>&#xf177; dashicons-visibility</p>
+    },
+    {
+      value: "dashicons dashicons-hidden",
+      label: <p>&#xf530; dashicons-hidden</p>
+    },
+    {
+      value: "dashicons dashicons-post-status",
+      label: <p>&#xf173; dashicons-post-status</p>
+    },
+    {
+      value: "dashicons dashicons-edit",
+      label: <p>&#xf464; dashicons-edit</p>
+    },
+    {
+      value: "dashicons dashicons-trash",
+      label: <p>&#xf182; dashicons-trash</p>
+    },
+    {
+      value: "dashicons dashicons-sticky",
+      label: <p>&#xf537; dashicons-sticky</p>
+    },
+    {
+      value: "dashicons dashicons-external",
+      label: <p>&#xf504; dashicons-external</p>
+    },
+    {
+      value: "dashicons dashicons-arrow-up",
+      label: <p>&#xf142; dashicons-arrow-up</p>
+    },
+    {
+      value: "dashicons dashicons-arrow-down",
+      label: <p>&#xf140; dashicons-arrow-down</p>
+    },
+    {
+      value: "dashicons dashicons-arrow-right",
+      label: <p>&#xf139; dashicons-arrow-right</p>
+    },
+    {
+      value: "dashicons dashicons-arrow-left",
+      label: <p>&#xf141; dashicons-arrow-left</p>
+    },
+    {
+      value: "dashicons dashicons-arrow-up-alt",
+      label: <p>&#xf342; dashicons-arrow-up-alt</p>
+    },
+    {
+      value: "dashicons dashicons-arrow-down-alt",
+      label: <p>&#xf346; dashicons-arrow-down-alt</p>
+    },
+    {
+      value: "dashicons dashicons-arrow-right-alt",
+      label: <p>&#xf344; dashicons-arrow-right-alt</p>
+    },
+    {
+      value: "dashicons dashicons-arrow-left-alt",
+      label: <p>&#xf340; dashicons-arrow-left-alt</p>
+    },
+    {
+      value: "dashicons dashicons-arrow-up-alt2",
+      label: <p>&#xf343; dashicons-arrow-up-alt2</p>
+    },
+    {
+      value: "dashicons dashicons-arrow-down-alt2",
+      label: <p>&#xf347; dashicons-arrow-down-alt2</p>
+    },
+    {
+      value: "dashicons dashicons-arrow-right-alt2",
+      label: <p>&#xf345; dashicons-arrow-right-alt2</p>
+    },
+    {
+      value: "dashicons dashicons-arrow-left-alt2",
+      label: <p>&#xf341; dashicons-arrow-left-alt2</p>
+    },
+    {
+      value: "dashicons dashicons-sort",
+      label: <p>&#xf156; dashicons-sort</p>
+    },
+    {
+      value: "dashicons dashicons-leftright",
+      label: <p>&#xf229; dashicons-leftright</p>
+    },
+    {
+      value: "dashicons dashicons-randomize",
+      label: <p>&#xf503; dashicons-randomize</p>
+    },
+    {
+      value: "dashicons dashicons-list-view",
+      label: <p>&#xf163; dashicons-list-view</p>
+    },
+    {
+      value: "dashicons dashicons-exerpt-view",
+      label: <p>&#xf164; dashicons-exerpt-view</p>
+    },
+    {
+      value: "dashicons dashicons-grid-view",
+      label: <p>&#xf509; dashicons-grid-view</p>
+    },
+    {
+      value: "dashicons dashicons-move",
+      label: <p>&#xf545; dashicons-move</p>
+    },
+    {
+      value: "dashicons dashicons-share",
+      label: <p>&#xf237; dashicons-share</p>
+    },
+    {
+      value: "dashicons dashicons-share-alt",
+      label: <p>&#xf240; dashicons-share-alt</p>
+    },
+    {
+      value: "dashicons dashicons-share-alt2",
+      label: <p>&#xf242; dashicons-share-alt2</p>
+    },
+    {
+      value: "dashicons dashicons-twitter",
+      label: <p>&#xf301; dashicons-twitter</p>
+    },
+    {
+      value: "dashicons dashicons-rss",
+      label: <p>&#xf303; dashicons-rss</p>
+    },
+    {
+      value: "dashicons dashicons-email",
+      label: <p>&#xf465; dashicons-email</p>
+    },
+    {
+      value: "dashicons dashicons-email-alt",
+      label: <p>&#xf466; dashicons-email-alt</p>
+    },
+    {
+      value: "dashicons dashicons-facebook",
+      label: <p>&#xf304; dashicons-facebook</p>
+    },
+    {
+      value: "dashicons dashicons-facebook-alt",
+      label: <p>&#xf305; dashicons-facebook-alt</p>
+    },
+    {
+      value: "dashicons dashicons-googleplus",
+      label: <p>&#xf462; dashicons-googleplus</p>
+    },
+    {
+      value: "dashicons dashicons-networking",
+      label: <p>&#xf325; dashicons-networking</p>
+    },
+    {
+      value: "dashicons dashicons-hammer",
+      label: <p>&#xf308; dashicons-hammer</p>
+    },
+    {
+      value: "dashicons dashicons-art",
+      label: <p>&#xf309; dashicons-art</p>
+    },
+    {
+      value: "dashicons dashicons-migrate",
+      label: <p>&#xf310; dashicons-migrate</p>
+    },
+    {
+      value: "dashicons dashicons-performance",
+      label: <p>&#xf311; dashicons-performance</p>
+    },
+    {
+      value: "dashicons dashicons-universal-access",
+      label: <p>&#xf483; dashicons-universal-access</p>
+    },
+    {
+      value: "dashicons dashicons-universal-access-alt",
+      label: <p>&#xf507; dashicons-universal-access-alt</p>
+    },
+    {
+      value: "dashicons dashicons-tickets",
+      label: <p>&#xf486; dashicons-tickets</p>
+    },
+    {
+      value: "dashicons dashicons-nametag",
+      label: <p>&#xf484; dashicons-nametag</p>
+    },
+    {
+      value: "dashicons dashicons-clipboard",
+      label: <p>&#xf481; dashicons-clipboard</p>
+    },
+    {
+      value: "dashicons dashicons-heart",
+      label: <p>&#xf487; dashicons-heart</p>
+    },
+    {
+      value: "dashicons dashicons-megaphone",
+      label: <p>&#xf488; dashicons-megaphone</p>
+    },
+    {
+      value: "dashicons dashicons-schedule",
+      label: <p>&#xf489; dashicons-schedule</p>
+    },
+    {
+      value: "dashicons dashicons-wordpress",
+      label: <p>&#xf120; dashicons-wordpress</p>
+    },
+    {
+      value: "dashicons dashicons-wordpress-alt",
+      label: <p>&#xf324; dashicons-wordpress-alt</p>
+    },
+    {
+      value: "dashicons dashicons-pressthis",
+      label: <p>&#xf157; dashicons-pressthis</p>
+    },
+    {
+      value: "dashicons dashicons-update",
+      label: <p>&#xf463; dashicons-update</p>
+    },
+    {
+      value: "dashicons dashicons-screenoptions",
+      label: <p>&#xf180; dashicons-screenoptions</p>
+    },
+    {
+      value: "dashicons dashicons-info",
+      label: <p>&#xf348; dashicons-info</p>
+    },
+    {
+      value: "dashicons dashicons-cart",
+      label: <p>&#xf174; dashicons-cart</p>
+    },
+    {
+      value: "dashicons dashicons-feedback",
+      label: <p>&#xf175; dashicons-feedback</p>
+    },
+    {
+      value: "dashicons dashicons-cloud",
+      label: <p>&#xf176; dashicons-cloud</p>
+    },
+    {
+      value: "dashicons dashicons-translation",
+      label: <p>&#xf326; dashicons-translation</p>
+    },
+    {
+      value: "dashicons dashicons-tag",
+      label: <p>&#xf323; dashicons-tag</p>
+    },
+    {
+      value: "dashicons dashicons-category",
+      label: <p>&#xf318; dashicons-category</p>
+    },
+    {
+      value: "dashicons dashicons-archive",
+      label: <p>&#xf480; dashicons-archive</p>
+    },
+    {
+      value: "dashicons dashicons-tagcloud",
+      label: <p>&#xf479; dashicons-tagcloud</p>
+    },
+    {
+      value: "dashicons dashicons-text",
+      label: <p>&#xf478; dashicons-text</p>
+    },
+    {
+      value: "dashicons dashicons-yes",
+      label: <p>&#xf147; dashicons-yes</p>
+    },
+    {
+      value: "dashicons dashicons-no",
+      label: <p>&#xf158; dashicons-no</p>
+    },
+    {
+      value: "dashicons dashicons-no-alt",
+      label: <p>&#xf335; dashicons-no-alt</p>
+    },
+    {
+      value: "dashicons dashicons-plus",
+      label: <p>&#xf132; dashicons-plus</p>
+    },
+    {
+      value: "dashicons dashicons-plus-alt",
+      label: <p>&#xf502; dashicons-plus-alt</p>
+    },
+    {
+      value: "dashicons dashicons-minus",
+      label: <p>&#xf460; dashicons-minus</p>
+    },
+    {
+      value: "dashicons dashicons-dismiss",
+      label: <p>&#xf153; dashicons-dismiss</p>
+    },
+    {
+      value: "dashicons dashicons-marker",
+      label: <p>&#xf159; dashicons-marker</p>
+    },
+    {
+      value: "dashicons dashicons-star-filled",
+      label: <p>&#xf155; dashicons-star-filled</p>
+    },
+    {
+      value: "dashicons dashicons-star-half",
+      label: <p>&#xf459; dashicons-star-half</p>
+    },
+    {
+      value: "dashicons dashicons-star-empty",
+      label: <p>&#xf154; dashicons-star-empty</p>
+    },
+    {
+      value: "dashicons dashicons-flag",
+      label: <p>&#xf227; dashicons-flag</p>
+    },
+    {
+      value: "dashicons dashicons-warning",
+      label: <p>&#xf534; dashicons-warning</p>
+    },
+    {
+      value: "dashicons dashicons-location",
+      label: <p>&#xf230; dashicons-location</p>
+    },
+    {
+      value: "dashicons dashicons-location-alt",
+      label: <p>&#xf231; dashicons-location-alt</p>
+    },
+    {
+      value: "dashicons dashicons-vault",
+      label: <p>&#xf178; dashicons-vault</p>
+    },
+    {
+      value: "dashicons dashicons-shield",
+      label: <p>&#xf332; dashicons-shield</p>
+    },
+    {
+      value: "dashicons dashicons-shield-alt",
+      label: <p>&#xf334; dashicons-shield-alt</p>
+    },
+    {
+      value: "dashicons dashicons-sos",
+      label: <p>&#xf468; dashicons-sos</p>
+    },
+    {
+      value: "dashicons dashicons-search",
+      label: <p>&#xf179; dashicons-search</p>
+    },
+    {
+      value: "dashicons dashicons-slides",
+      label: <p>&#xf181; dashicons-slides</p>
+    },
+    {
+      value: "dashicons dashicons-analytics",
+      label: <p>&#xf183; dashicons-analytics</p>
+    },
+    {
+      value: "dashicons dashicons-chart-pie",
+      label: <p>&#xf184; dashicons-chart-pie</p>
+    },
+    {
+      value: "dashicons dashicons-chart-bar",
+      label: <p>&#xf185; dashicons-chart-bar</p>
+    },
+    {
+      value: "dashicons dashicons-chart-line",
+      label: <p>&#xf238; dashicons-chart-line</p>
+    },
+    {
+      value: "dashicons dashicons-chart-area",
+      label: <p>&#xf239; dashicons-chart-area</p>
+    },
+    {
+      value: "dashicons dashicons-groups",
+      label: <p>&#xf307; dashicons-groups</p>
+    },
+    {
+      value: "dashicons dashicons-businessman",
+      label: <p>&#xf338; dashicons-businessman</p>
+    },
+    {
+      value: "dashicons dashicons-id",
+      label: <p>&#xf336; dashicons-id</p>
+    },
+    {
+      value: "dashicons dashicons-id-alt",
+      label: <p>&#xf337; dashicons-id-alt</p>
+    },
+    {
+      value: "dashicons dashicons-products",
+      label: <p>&#xf312; dashicons-products</p>
+    },
+    {
+      value: "dashicons dashicons-awards",
+      label: <p>&#xf313; dashicons-awards</p>
+    },
+    {
+      value: "dashicons dashicons-forms",
+      label: <p>&#xf314; dashicons-forms</p>
+    },
+    {
+      value: "dashicons dashicons-testimonial",
+      label: <p>&#xf473; dashicons-testimonial</p>
+    },
+    {
+      value: "dashicons dashicons-portfolio",
+      label: <p>&#xf322; dashicons-portfolio</p>
+    },
+    {
+      value: "dashicons dashicons-book",
+      label: <p>&#xf330; dashicons-book</p>
+    },
+    {
+      value: "dashicons dashicons-book-alt",
+      label: <p>&#xf331; dashicons-book-alt</p>
+    },
+    {
+      value: "dashicons dashicons-download",
+      label: <p>&#xf316; dashicons-download</p>
+    },
+    {
+      value: "dashicons dashicons-upload",
+      label: <p>&#xf317; dashicons-upload</p>
+    },
+    {
+      value: "dashicons dashicons-backup",
+      label: <p>&#xf321; dashicons-backup</p>
+    },
+    {
+      value: "dashicons dashicons-clock",
+      label: <p>&#xf469; dashicons-clock</p>
+    },
+    {
+      value: "dashicons dashicons-lightbulb",
+      label: <p>&#xf339; dashicons-lightbulb</p>
+    },
+    {
+      value: "dashicons dashicons-microphone",
+      label: <p>&#xf482; dashicons-microphone</p>
+    },
+    {
+      value: "dashicons dashicons-desktop",
+      label: <p>&#xf472; dashicons-desktop</p>
+    },
+    {
+      value: "dashicons dashicons-laptop",
+      label: <p>&#xf547; dashicons-laptop</p>
+    },
+    {
+      value: "dashicons dashicons-tablet",
+      label: <p>&#xf471; dashicons-tablet</p>
+    },
+    {
+      value: "dashicons dashicons-smartphone",
+      label: <p>&#xf470; dashicons-smartphone</p>
+    },
+    {
+      value: "dashicons dashicons-phone",
+      label: <p>&#xf525; dashicons-phone</p>
+    },
+    {
+      value: "dashicons dashicons-index-card",
+      label: <p>&#xf510; dashicons-index-card</p>
+    },
+    {
+      value: "dashicons dashicons-carrot",
+      label: <p>&#xf511; dashicons-carrot</p>
+    },
+    {
+      value: "dashicons dashicons-building",
+      label: <p>&#xf512; dashicons-building</p>
+    },
+    {
+      value: "dashicons dashicons-store",
+      label: <p>&#xf513; dashicons-store</p>
+    },
+    {
+      value: "dashicons dashicons-album",
+      label: <p>&#xf514; dashicons-album</p>
+    },
+    {
+      value: "dashicons dashicons-palmtree",
+      label: <p>&#xf527; dashicons-palmtree</p>
+    },
+    {
+      value: "dashicons dashicons-tickets-alt",
+      label: <p>&#xf524; dashicons-tickets-alt</p>
+    },
+    {
+      value: "dashicons dashicons-money",
+      label: <p>&#xf526; dashicons-money</p>
+    },
+    {
+      value: "dashicons dashicons-smiley",
+      label: <p>&#xf328; dashicons-smiley</p>
+    },
+    {
+      value: "dashicons dashicons-thumbs-up",
+      label: <p>&#xf529; dashicons-thumbs-up</p>
+    },
+    {
+      value: "dashicons dashicons-thumbs-down",
+      label: <p>&#xf542; dashicons-thumbs-down</p>
+    },
+    {
+      value: "dashicons dashicons-layout",
+      label: <p>&#xf538; dashicons-layout</p>
+    },
+    {
+      value: "dashicons dashicons-paperclip",
+      label: <p>&#xf546; dashicons-paperclip</p>
+    }
+  ];
 
+  //Font Awesome Icons
+  const ICONS = [
+    {
+      value: "fa fa-glass",
+      label: <p>&#xf000; fa-glass</p>
+    },
+    {
+      value: "fa fa-music",
+      label: <p>&#xf001; fa-music</p>
+    },
+    {
+      value: "fa fa-search",
+      label: <p>&#xf002; fa-search</p>
+    },
+    {
+      value: "fa fa-envelope-o",
+      label: <p>&#xf003; fa-envelope-o</p>
+    },
+    {
+      value: "fa fa-heart",
+      label: <p>&#xf004; fa-heart</p>
+    },
+    {
+      value: "fa fa-star",
+      label: <p>&#xf005; fa-star</p>
+    },
+    {
+      value: "fa fa-star-o",
+      label: <p>&#xf006; fa-star-o</p>
+    },
+    {
+      value: "fa fa-user",
+      label: <p>&#xf007; fa-user</p>
+    },
+    {
+      value: "fa fa-film",
+      label: <p>&#xf008; fa-film</p>
+    },
+    {
+      value: "fa fa-th-large",
+      label: <p>&#xf009; fa-th-large</p>
+    },
+    {
+      value: "fa fa-th",
+      label: <p>&#xf00a; fa-th</p>
+    },
+    {
+      value: "fa fa-th-list",
+      label: <p>&#xf00b; fa-th-list</p>
+    },
+    {
+      value: "fa fa-check",
+      label: <p>&#xf00c; fa-check</p>
+    },
+    {
+      value: "fa fa-times",
+      label: <p>&#xf00d; fa-times</p>
+    },
+    {
+      value: "fa fa-search-plus",
+      label: <p>&#xf00e; fa-search-plus</p>
+    },
+    {
+      value: "fa fa-search-minus",
+      label: <p>&#xf010; fa-search-minus</p>
+    },
+    {
+      value: "fa fa-power-off",
+      label: <p>&#xf011; fa-power-off</p>
+    },
+    {
+      value: "fa fa-signal",
+      label: <p>&#xf012; fa-signal</p>
+    },
+    {
+      value: "fa fa-cog",
+      label: <p>&#xf013; fa-cog</p>
+    },
+    {
+      value: "fa fa-trash-o",
+      label: <p>&#xf014; fa-trash-o</p>
+    },
+    {
+      value: "fa fa-home",
+      label: <p>&#xf015; fa-home</p>
+    },
+    {
+      value: "fa fa-file-o",
+      label: <p>&#xf016; fa-file-o</p>
+    },
+    {
+      value: "fa fa-clock-o",
+      label: <p>&#xf017; fa-clock-o</p>
+    },
+    {
+      value: "fa fa-road",
+      label: <p>&#xf018; fa-road</p>
+    },
+    {
+      value: "fa fa-download",
+      label: <p>&#xf019; fa-download</p>
+    },
+    {
+      value: "fa fa-arrow-circle-o-down",
+      label: <p>&#xf01a; fa-arrow-circle-o-down</p>
+    },
+    {
+      value: "fa fa-arrow-circle-o-up",
+      label: <p>&#xf01b; fa-arrow-circle-o-up</p>
+    },
+    {
+      value: "fa fa-inbox",
+      label: <p>&#xf01c; fa-inbox</p>
+    },
+    {
+      value: "fa fa-play-circle-o",
+      label: <p>&#xf01d; fa-play-circle-o</p>
+    },
+    {
+      value: "fa fa-repeat",
+      label: <p>&#xf01e; fa-repeat</p>
+    },
+    {
+      value: "fa fa-refresh",
+      label: <p>&#xf021; fa-refresh</p>
+    },
+    {
+      value: "fa fa-list-alt",
+      label: <p>&#xf022; fa-list-alt</p>
+    },
+    {
+      value: "fa fa-lock",
+      label: <p>&#xf023; fa-lock</p>
+    },
+    {
+      value: "fa fa-flag",
+      label: <p>&#xf024; fa-flag</p>
+    },
+    {
+      value: "fa fa-headphones",
+      label: <p>&#xf025; fa-headphones</p>
+    },
+    {
+      value: "fa fa-volume-off",
+      label: <p>&#xf026; fa-volume-off</p>
+    },
+    {
+      value: "fa fa-volume-down",
+      label: <p>&#xf027; fa-volume-down</p>
+    },
+    {
+      value: "fa fa-volume-up",
+      label: <p>&#xf028; fa-volume-up</p>
+    },
+    {
+      value: "fa fa-qrcode",
+      label: <p>&#xf029; fa-qrcode</p>
+    },
+    {
+      value: "fa fa-barcode",
+      label: <p>&#xf02a; fa-barcode</p>
+    },
+    {
+      value: "fa fa-tag",
+      label: <p>&#xf02b; fa-tag</p>
+    },
+    {
+      value: "fa fa-tags",
+      label: <p>&#xf02c; fa-tags</p>
+    },
+    {
+      value: "fa fa-book",
+      label: <p>&#xf02d; fa-book</p>
+    },
+    {
+      value: "fa fa-bookmark",
+      label: <p>&#xf02e; fa-bookmark</p>
+    },
+    {
+      value: "fa fa-print",
+      label: <p>&#xf02f; fa-print</p>
+    },
+    {
+      value: "fa fa-camera",
+      label: <p>&#xf030; fa-camera</p>
+    },
+    {
+      value: "fa fa-font",
+      label: <p>&#xf031; fa-font</p>
+    },
+    {
+      value: "fa fa-bold",
+      label: <p>&#xf032; fa-bold</p>
+    },
+    {
+      value: "fa fa-italic",
+      label: <p>&#xf033; fa-italic</p>
+    },
+    {
+      value: "fa fa-text-height",
+      label: <p>&#xf034; fa-text-height</p>
+    },
+    {
+      value: "fa fa-text-width",
+      label: <p>&#xf035; fa-text-width</p>
+    },
+    {
+      value: "fa fa-align-left",
+      label: <p>&#xf036; fa-align-left</p>
+    },
+    {
+      value: "fa fa-align-center",
+      label: <p>&#xf037; fa-align-center</p>
+    },
+    {
+      value: "fa fa-align-right",
+      label: <p>&#xf038; fa-align-right</p>
+    },
+    {
+      value: "fa fa-align-justify",
+      label: <p>&#xf039; fa-align-justify</p>
+    },
+    {
+      value: "fa fa-list",
+      label: <p>&#xf03a; fa-list</p>
+    },
+    {
+      value: "fa fa-outdent",
+      label: <p>&#xf03b; fa-outdent</p>
+    },
+    {
+      value: "fa fa-indent",
+      label: <p>&#xf03c; fa-indent</p>
+    },
+    {
+      value: "fa fa-video-camera",
+      label: <p>&#xf03d; fa-video-camera</p>
+    },
+    {
+      value: "fa fa-picture-o",
+      label: <p>&#xf03e; fa-picture-o</p>
+    },
+    {
+      value: "fa fa-pencil",
+      label: <p>&#xf040; fa-pencil</p>
+    },
+    {
+      value: "fa fa-map-marker",
+      label: <p>&#xf041; fa-map-marker</p>
+    },
+    {
+      value: "fa fa-adjust",
+      label: <p>&#xf042; fa-adjust</p>
+    },
+    {
+      value: "fa fa-tint",
+      label: <p>&#xf043; fa-tint</p>
+    },
+    {
+      value: "fa fa-pencil-square-o",
+      label: <p>&#xf044; fa-pencil-square-o</p>
+    },
+    {
+      value: "fa fa-share-square-o",
+      label: <p>&#xf045; fa-share-square-o</p>
+    },
+    {
+      value: "fa fa-check-square-o",
+      label: <p>&#xf046; fa-check-square-o</p>
+    },
+    {
+      value: "fa fa-arrows",
+      label: <p>&#xf047; fa-arrows</p>
+    },
+    {
+      value: "fa fa-step-backward",
+      label: <p>&#xf048; fa-step-backward</p>
+    },
+    {
+      value: "fa fa-fast-backward",
+      label: <p>&#xf049; fa-fast-backward</p>
+    },
+    {
+      value: "fa fa-backward",
+      label: <p>&#xf04a; fa-backward</p>
+    },
+    {
+      value: "fa fa-play",
+      label: <p>&#xf04b; fa-play</p>
+    },
+    {
+      value: "fa fa-pause",
+      label: <p>&#xf04c; fa-pause</p>
+    },
+    {
+      value: "fa fa-stop",
+      label: <p>&#xf04d; fa-stop</p>
+    },
+    {
+      value: "fa fa-forward",
+      label: <p>&#xf04e; fa-forward</p>
+    },
+    {
+      value: "fa fa-fast-forward",
+      label: <p>&#xf050; fa-fast-forward</p>
+    },
+    {
+      value: "fa fa-step-forward",
+      label: <p>&#xf051; fa-step-forward</p>
+    },
+    {
+      value: "fa fa-eject",
+      label: <p>&#xf052; fa-eject</p>
+    },
+    {
+      value: "fa fa-chevron-left",
+      label: <p>&#xf053; fa-chevron-left</p>
+    },
+    {
+      value: "fa fa-chevron-right",
+      label: <p>&#xf054; fa-chevron-right</p>
+    },
+    {
+      value: "fa fa-plus-circle",
+      label: <p>&#xf055; fa-plus-circle</p>
+    },
+    {
+      value: "fa fa-minus-circle",
+      label: <p>&#xf056; fa-minus-circle</p>
+    },
+    {
+      value: "fa fa-times-circle",
+      label: <p>&#xf057; fa-times-circle</p>
+    },
+    {
+      value: "fa fa-check-circle",
+      label: <p>&#xf058; fa-check-circle</p>
+    },
+    {
+      value: "fa fa-question-circle",
+      label: <p>&#xf059; fa-question-circle</p>
+    },
+    {
+      value: "fa fa-info-circle",
+      label: <p>&#xf05a; fa-info-circle</p>
+    },
+    {
+      value: "fa fa-crosshairs",
+      label: <p>&#xf05b; fa-crosshairs</p>
+    },
+    {
+      value: "fa fa-times-circle-o",
+      label: <p>&#xf05c; fa-times-circle-o</p>
+    },
+    {
+      value: "fa fa-check-circle-o",
+      label: <p>&#xf05d; fa-check-circle-o</p>
+    },
+    {
+      value: "fa fa-ban",
+      label: <p>&#xf05e; fa-ban</p>
+    },
+    {
+      value: "fa fa-arrow-left",
+      label: <p>&#xf060; fa-arrow-left</p>
+    },
+    {
+      value: "fa fa-arrow-right",
+      label: <p>&#xf061; fa-arrow-right</p>
+    },
+    {
+      value: "fa fa-arrow-up",
+      label: <p>&#xf062; fa-arrow-up</p>
+    },
+    {
+      value: "fa fa-arrow-down",
+      label: <p>&#xf063; fa-arrow-down</p>
+    },
+    {
+      value: "fa fa-share",
+      label: <p>&#xf064; fa-share</p>
+    },
+    {
+      value: "fa fa-expand",
+      label: <p>&#xf065; fa-expand</p>
+    },
+    {
+      value: "fa fa-compress",
+      label: <p>&#xf066; fa-compress</p>
+    },
+    {
+      value: "fa fa-plus",
+      label: <p>&#xf067; fa-plus</p>
+    },
+    {
+      value: "fa fa-minus",
+      label: <p>&#xf068; fa-minus</p>
+    },
+    {
+      value: "fa fa-asterisk",
+      label: <p>&#xf069; fa-asterisk</p>
+    },
+    {
+      value: "fa fa-exclamation-circle",
+      label: <p>&#xf06a; fa-exclamation-circle</p>
+    },
+    {
+      value: "fa fa-gift",
+      label: <p>&#xf06b; fa-gift</p>
+    },
+    {
+      value: "fa fa-leaf",
+      label: <p>&#xf06c; fa-leaf</p>
+    },
+    {
+      value: "fa fa-fire",
+      label: <p>&#xf06d; fa-fire</p>
+    },
+    {
+      value: "fa fa-eye",
+      label: <p>&#xf06e; fa-eye</p>
+    },
+    {
+      value: "fa fa-eye-slash",
+      label: <p>&#xf070; fa-eye-slash</p>
+    },
+    {
+      value: "fa fa-exclamation-triangle",
+      label: <p>&#xf071; fa-exclamation-triangle</p>
+    },
+    {
+      value: "fa fa-plane",
+      label: <p>&#xf072; fa-plane</p>
+    },
+    {
+      value: "fa fa-calendar",
+      label: <p>&#xf073; fa-calendar</p>
+    },
+    {
+      value: "fa fa-random",
+      label: <p>&#xf074; fa-random</p>
+    },
+    {
+      value: "fa fa-comment",
+      label: <p>&#xf075; fa-comment</p>
+    },
+    {
+      value: "fa fa-magnet",
+      label: <p>&#xf076; fa-magnet</p>
+    },
+    {
+      value: "fa fa-chevron-up",
+      label: <p>&#xf077; fa-chevron-up</p>
+    },
+    {
+      value: "fa fa-chevron-down",
+      label: <p>&#xf078; fa-chevron-down</p>
+    },
+    {
+      value: "fa fa-retweet",
+      label: <p>&#xf079; fa-retweet</p>
+    },
+    {
+      value: "fa fa-shopping-cart",
+      label: <p>&#xf07a; fa-shopping-cart</p>
+    },
+    {
+      value: "fa fa-folder",
+      label: <p>&#xf07b; fa-folder</p>
+    },
+    {
+      value: "fa fa-folder-open",
+      label: <p>&#xf07c; fa-folder-open</p>
+    },
+    {
+      value: "fa fa-arrows-v",
+      label: <p>&#xf07d; fa-arrows-v</p>
+    },
+    {
+      value: "fa fa-arrows-h",
+      label: <p>&#xf07e; fa-arrows-h</p>
+    },
+    {
+      value: "fa fa-bar-chart",
+      label: <p>&#xf080; fa-bar-chart</p>
+    },
+    {
+      value: "fa fa-twitter-square",
+      label: <p>&#xf081; fa-twitter-square</p>
+    },
+    {
+      value: "fa fa-facebook-square",
+      label: <p>&#xf082; fa-facebook-square</p>
+    },
+    {
+      value: "fa fa-camera-retro",
+      label: <p>&#xf083; fa-camera-retro</p>
+    },
+    {
+      value: "fa fa-key",
+      label: <p>&#xf084; fa-key</p>
+    },
+    {
+      value: "fa fa-cogs",
+      label: <p>&#xf085; fa-cogs</p>
+    },
+    {
+      value: "fa fa-comments",
+      label: <p>&#xf086; fa-comments</p>
+    },
+    {
+      value: "fa fa-thumbs-o-up",
+      label: <p>&#xf087; fa-thumbs-o-up</p>
+    },
+    {
+      value: "fa fa-thumbs-o-down",
+      label: <p>&#xf088; fa-thumbs-o-down</p>
+    },
+    {
+      value: "fa fa-star-half",
+      label: <p>&#xf089; fa-star-half</p>
+    },
+    {
+      value: "fa fa-heart-o",
+      label: <p>&#xf08a; fa-heart-o</p>
+    },
+    {
+      value: "fa fa-sign-out",
+      label: <p>&#xf08b; fa-sign-out</p>
+    },
+    {
+      value: "fa fa-linkedin-square",
+      label: <p>&#xf08c; fa-linkedin-square</p>
+    },
+    {
+      value: "fa fa-thumb-tack",
+      label: <p>&#xf08d; fa-thumb-tack</p>
+    },
+    {
+      value: "fa fa-external-link",
+      label: <p>&#xf08e; fa-external-link</p>
+    },
+    {
+      value: "fa fa-sign-in",
+      label: <p>&#xf090; fa-sign-in</p>
+    },
+    {
+      value: "fa fa-trophy",
+      label: <p>&#xf091; fa-trophy</p>
+    },
+    {
+      value: "fa fa-github-square",
+      label: <p>&#xf092; fa-github-square</p>
+    },
+    {
+      value: "fa fa-upload",
+      label: <p>&#xf093; fa-upload</p>
+    },
+    {
+      value: "fa fa-lemon-o",
+      label: <p>&#xf094; fa-lemon-o</p>
+    },
+    {
+      value: "fa fa-phone",
+      label: <p>&#xf095; fa-phone</p>
+    },
+    {
+      value: "fa fa-square-o",
+      label: <p>&#xf096; fa-square-o</p>
+    },
+    {
+      value: "fa fa-bookmark-o",
+      label: <p>&#xf097; fa-bookmark-o</p>
+    },
+    {
+      value: "fa fa-phone-square",
+      label: <p>&#xf098; fa-phone-square</p>
+    },
+    {
+      value: "fa fa-twitter",
+      label: <p>&#xf099; fa-twitter</p>
+    },
+    {
+      value: "fa fa-facebook",
+      label: <p>&#xf09a; fa-facebook</p>
+    },
+    {
+      value: "fa fa-github",
+      label: <p>&#xf09b; fa-github</p>
+    },
+    {
+      value: "fa fa-unlock",
+      label: <p>&#xf09c; fa-unlock</p>
+    },
+    {
+      value: "fa fa-credit-card",
+      label: <p>&#xf09d; fa-credit-card</p>
+    },
+    {
+      value: "fa fa-rss",
+      label: <p>&#xf09e; fa-rss</p>
+    },
+    {
+      value: "fa fa-hdd-o",
+      label: <p>&#xf0a0; fa-hdd-o</p>
+    },
+    {
+      value: "fa fa-bullhorn",
+      label: <p>&#xf0a1; fa-bullhorn</p>
+    },
+    {
+      value: "fa fa-bell",
+      label: <p>&#xf0f3; fa-bell</p>
+    },
+    {
+      value: "fa fa-certificate",
+      label: <p>&#xf0a3; fa-certificate</p>
+    },
+    {
+      value: "fa fa-hand-o-right",
+      label: <p>&#xf0a4; fa-hand-o-right</p>
+    },
+    {
+      value: "fa fa-hand-o-left",
+      label: <p>&#xf0a5; fa-hand-o-left</p>
+    },
+    {
+      value: "fa fa-hand-o-up",
+      label: <p>&#xf0a6; fa-hand-o-up</p>
+    },
+    {
+      value: "fa fa-hand-o-down",
+      label: <p>&#xf0a7; fa-hand-o-down</p>
+    },
+    {
+      value: "fa fa-arrow-circle-left",
+      label: <p>&#xf0a8; fa-arrow-circle-left</p>
+    },
+    {
+      value: "fa fa-arrow-circle-right",
+      label: <p>&#xf0a9; fa-arrow-circle-right</p>
+    },
+    {
+      value: "fa fa-arrow-circle-up",
+      label: <p>&#xf0aa; fa-arrow-circle-up</p>
+    },
+    {
+      value: "fa fa-arrow-circle-down",
+      label: <p>&#xf0ab; fa-arrow-circle-down</p>
+    },
+    {
+      value: "fa fa-globe",
+      label: <p>&#xf0ac; fa-globe</p>
+    },
+    {
+      value: "fa fa-wrench",
+      label: <p>&#xf0ad; fa-wrench</p>
+    },
+    {
+      value: "fa fa-tasks",
+      label: <p>&#xf0ae; fa-tasks</p>
+    },
+    {
+      value: "fa fa-filter",
+      label: <p>&#xf0b0; fa-filter</p>
+    },
+    {
+      value: "fa fa-briefcase",
+      label: <p>&#xf0b1; fa-briefcase</p>
+    },
+    {
+      value: "fa fa-arrows-alt",
+      label: <p>&#xf0b2; fa-arrows-alt</p>
+    },
+    {
+      value: "fa fa-users",
+      label: <p>&#xf0c0; fa-users</p>
+    },
+    {
+      value: "fa fa-link",
+      label: <p>&#xf0c1; fa-link</p>
+    },
+    {
+      value: "fa fa-cloud",
+      label: <p>&#xf0c2; fa-cloud</p>
+    },
+    {
+      value: "fa fa-flask",
+      label: <p>&#xf0c3; fa-flask</p>
+    },
+    {
+      value: "fa fa-scissors",
+      label: <p>&#xf0c4; fa-scissors</p>
+    },
+    {
+      value: "fa fa-files-o",
+      label: <p>&#xf0c5; fa-files-o</p>
+    },
+    {
+      value: "fa fa-paperclip",
+      label: <p>&#xf0c6; fa-paperclip</p>
+    },
+    {
+      value: "fa fa-floppy-o",
+      label: <p>&#xf0c7; fa-floppy-o</p>
+    },
+    {
+      value: "fa fa-square",
+      label: <p>&#xf0c8; fa-square</p>
+    },
+    {
+      value: "fa fa-bars",
+      label: <p>&#xf0c9; fa-bars</p>
+    },
+    {
+      value: "fa fa-list-ul",
+      label: <p>&#xf0ca; fa-list-ul</p>
+    },
+    {
+      value: "fa fa-list-ol",
+      label: <p>&#xf0cb; fa-list-ol</p>
+    },
+    {
+      value: "fa fa-strikethrough",
+      label: <p>&#xf0cc; fa-strikethrough</p>
+    },
+    {
+      value: "fa fa-underline",
+      label: <p>&#xf0cd; fa-underline</p>
+    },
+    {
+      value: "fa fa-table",
+      label: <p>&#xf0ce; fa-table</p>
+    },
+    {
+      value: "fa fa-magic",
+      label: <p>&#xf0d0; fa-magic</p>
+    },
+    {
+      value: "fa fa-truck",
+      label: <p>&#xf0d1; fa-truck</p>
+    },
+    {
+      value: "fa fa-pinterest",
+      label: <p>&#xf0d2; fa-pinterest</p>
+    },
+    {
+      value: "fa fa-pinterest-square",
+      label: <p>&#xf0d3; fa-pinterest-square</p>
+    },
+    {
+      value: "fa fa-google-plus-square",
+      label: <p>&#xf0d4; fa-google-plus-square</p>
+    },
+    {
+      value: "fa fa-google-plus",
+      label: <p>&#xf0d5; fa-google-plus</p>
+    },
+    {
+      value: "fa fa-money",
+      label: <p>&#xf0d6; fa-money</p>
+    },
+    {
+      value: "fa fa-caret-down",
+      label: <p>&#xf0d7; fa-caret-down</p>
+    },
+    {
+      value: "fa fa-caret-up",
+      label: <p>&#xf0d8; fa-caret-up</p>
+    },
+    {
+      value: "fa fa-caret-left",
+      label: <p>&#xf0d9; fa-caret-left</p>
+    },
+    {
+      value: "fa fa-caret-right",
+      label: <p>&#xf0da; fa-caret-right</p>
+    },
+    {
+      value: "fa fa-columns",
+      label: <p>&#xf0db; fa-columns</p>
+    },
+    {
+      value: "fa fa-sort",
+      label: <p>&#xf0dc; fa-sort</p>
+    },
+    {
+      value: "fa fa-sort-desc",
+      label: <p>&#xf0dd; fa-sort-desc</p>
+    },
+    {
+      value: "fa fa-sort-asc",
+      label: <p>&#xf0de; fa-sort-asc</p>
+    },
+    {
+      value: "fa fa-envelope",
+      label: <p>&#xf0e0; fa-envelope</p>
+    },
+    {
+      value: "fa fa-linkedin",
+      label: <p>&#xf0e1; fa-linkedin</p>
+    },
+    {
+      value: "fa fa-undo",
+      label: <p>&#xf0e2; fa-undo</p>
+    },
+    {
+      value: "fa fa-gavel",
+      label: <p>&#xf0e3; fa-gavel</p>
+    },
+    {
+      value: "fa fa-tachometer",
+      label: <p>&#xf0e4; fa-tachometer</p>
+    },
+    {
+      value: "fa fa-comment-o",
+      label: <p>&#xf0e5; fa-comment-o</p>
+    },
+    {
+      value: "fa fa-comments-o",
+      label: <p>&#xf0e6; fa-comments-o</p>
+    },
+    {
+      value: "fa fa-bolt",
+      label: <p>&#xf0e7; fa-bolt</p>
+    },
+    {
+      value: "fa fa-sitemap",
+      label: <p>&#xf0e8; fa-sitemap</p>
+    },
+    {
+      value: "fa fa-umbrella",
+      label: <p>&#xf0e9; fa-umbrella</p>
+    },
+    {
+      value: "fa fa-clipboard",
+      label: <p>&#xf0ea; fa-clipboard</p>
+    },
+    {
+      value: "fa fa-lightbulb-o",
+      label: <p>&#xf0eb; fa-lightbulb-o</p>
+    },
+    {
+      value: "fa fa-exchange",
+      label: <p>&#xf0ec; fa-exchange</p>
+    },
+    {
+      value: "fa fa-cloud-download",
+      label: <p>&#xf0ed; fa-cloud-download</p>
+    },
+    {
+      value: "fa fa-cloud-upload",
+      label: <p>&#xf0ee; fa-cloud-upload</p>
+    },
+    {
+      value: "fa fa-user-md",
+      label: <p>&#xf0f0; fa-user-md</p>
+    },
+    {
+      value: "fa fa-stethoscope",
+      label: <p>&#xf0f1; fa-stethoscope</p>
+    },
+    {
+      value: "fa fa-suitcase",
+      label: <p>&#xf0f2; fa-suitcase</p>
+    },
+    {
+      value: "fa fa-bell-o",
+      label: <p>&#xf0a2; fa-bell-o</p>
+    },
+    {
+      value: "fa fa-coffee",
+      label: <p>&#xf0f4; fa-coffee</p>
+    },
+    {
+      value: "fa fa-cutlery",
+      label: <p>&#xf0f5; fa-cutlery</p>
+    },
+    {
+      value: "fa fa-file-text-o",
+      label: <p>&#xf0f6; fa-file-text-o</p>
+    },
+    {
+      value: "fa fa-building-o",
+      label: <p>&#xf0f7; fa-building-o</p>
+    },
+    {
+      value: "fa fa-hospital-o",
+      label: <p>&#xf0f8; fa-hospital-o</p>
+    },
+    {
+      value: "fa fa-ambulance",
+      label: <p>&#xf0f9; fa-ambulance</p>
+    },
+    {
+      value: "fa fa-medkit",
+      label: <p>&#xf0fa; fa-medkit</p>
+    },
+    {
+      value: "fa fa-fighter-jet",
+      label: <p>&#xf0fb; fa-fighter-jet</p>
+    },
+    {
+      value: "fa fa-beer",
+      label: <p>&#xf0fc; fa-beer</p>
+    },
+    {
+      value: "fa fa-h-square",
+      label: <p>&#xf0fd; fa-h-square</p>
+    },
+    {
+      value: "fa fa-plus-square",
+      label: <p>&#xf0fe; fa-plus-square</p>
+    },
+    {
+      value: "fa fa-angle-double-left",
+      label: <p>&#xf100; fa-angle-double-left</p>
+    },
+    {
+      value: "fa fa-angle-double-right",
+      label: <p>&#xf101; fa-angle-double-right</p>
+    },
+    {
+      value: "fa fa-angle-double-up",
+      label: <p>&#xf102; fa-angle-double-up</p>
+    },
+    {
+      value: "fa fa-angle-double-down",
+      label: <p>&#xf103; fa-angle-double-down</p>
+    },
+    {
+      value: "fa fa-angle-left",
+      label: <p>&#xf104; fa-angle-left</p>
+    },
+    {
+      value: "fa fa-angle-right",
+      label: <p>&#xf105; fa-angle-right</p>
+    },
+    {
+      value: "fa fa-angle-up",
+      label: <p>&#xf106; fa-angle-up</p>
+    },
+    {
+      value: "fa fa-angle-down",
+      label: <p>&#xf107; fa-angle-down</p>
+    },
+    {
+      value: "fa fa-desktop",
+      label: <p>&#xf108; fa-desktop</p>
+    },
+    {
+      value: "fa fa-laptop",
+      label: <p>&#xf109; fa-laptop</p>
+    },
+    {
+      value: "fa fa-tablet",
+      label: <p>&#xf10a; fa-tablet</p>
+    },
+    {
+      value: "fa fa-mobile",
+      label: <p>&#xf10b; fa-mobile</p>
+    },
+    {
+      value: "fa fa-circle-o",
+      label: <p>&#xf10c; fa-circle-o</p>
+    },
+    {
+      value: "fa fa-quote-left",
+      label: <p>&#xf10d; fa-quote-left</p>
+    },
+    {
+      value: "fa fa-quote-right",
+      label: <p>&#xf10e; fa-quote-right</p>
+    },
+    {
+      value: "fa fa-spinner",
+      label: <p>&#xf110; fa-spinner</p>
+    },
+    {
+      value: "fa fa-circle",
+      label: <p>&#xf111; fa-circle</p>
+    },
+    {
+      value: "fa fa-reply",
+      label: <p>&#xf112; fa-reply</p>
+    },
+    {
+      value: "fa fa-github-alt",
+      label: <p>&#xf113; fa-github-alt</p>
+    },
+    {
+      value: "fa fa-folder-o",
+      label: <p>&#xf114; fa-folder-o</p>
+    },
+    {
+      value: "fa fa-folder-open-o",
+      label: <p>&#xf115; fa-folder-open-o</p>
+    },
+    {
+      value: "fa fa-smile-o",
+      label: <p>&#xf118; fa-smile-o</p>
+    },
+    {
+      value: "fa fa-frown-o",
+      label: <p>&#xf119; fa-frown-o</p>
+    },
+    {
+      value: "fa fa-meh-o",
+      label: <p>&#xf11a; fa-meh-o</p>
+    },
+    {
+      value: "fa fa-gamepad",
+      label: <p>&#xf11b; fa-gamepad</p>
+    },
+    {
+      value: "fa fa-keyboard-o",
+      label: <p>&#xf11c; fa-keyboard-o</p>
+    },
+    {
+      value: "fa fa-flag-o",
+      label: <p>&#xf11d; fa-flag-o</p>
+    },
+    {
+      value: "fa fa-flag-checkered",
+      label: <p>&#xf11e; fa-flag-checkered</p>
+    },
+    {
+      value: "fa fa-terminal",
+      label: <p>&#xf120; fa-terminal</p>
+    },
+    {
+      value: "fa fa-code",
+      label: <p>&#xf121; fa-code</p>
+    },
+    {
+      value: "fa fa-reply-all",
+      label: <p>&#xf122; fa-reply-all</p>
+    },
+    {
+      value: "fa fa-star-half-o",
+      label: <p>&#xf123; fa-star-half-o</p>
+    },
+    {
+      value: "fa fa-location-arrow",
+      label: <p>&#xf124; fa-location-arrow</p>
+    },
+    {
+      value: "fa fa-crop",
+      label: <p>&#xf125; fa-crop</p>
+    },
+    {
+      value: "fa fa-code-fork",
+      label: <p>&#xf126; fa-code-fork</p>
+    },
+    {
+      value: "fa fa-chain-broken",
+      label: <p>&#xf127; fa-chain-broken</p>
+    },
+    {
+      value: "fa fa-question",
+      label: <p>&#xf128; fa-question</p>
+    },
+    {
+      value: "fa fa-info",
+      label: <p>&#xf129; fa-info</p>
+    },
+    {
+      value: "fa fa-exclamation",
+      label: <p>&#xf12a; fa-exclamation</p>
+    },
+    {
+      value: "fa fa-superscript",
+      label: <p>&#xf12b; fa-superscript</p>
+    },
+    {
+      value: "fa fa-subscript",
+      label: <p>&#xf12c; fa-subscript</p>
+    },
+    {
+      value: "fa fa-eraser",
+      label: <p>&#xf12d; fa-eraser</p>
+    },
+    {
+      value: "fa fa-puzzle-piece",
+      label: <p>&#xf12e; fa-puzzle-piece</p>
+    },
+    {
+      value: "fa fa-microphone",
+      label: <p>&#xf130; fa-microphone</p>
+    },
+    {
+      value: "fa fa-microphone-slash",
+      label: <p>&#xf131; fa-microphone-slash</p>
+    },
+    {
+      value: "fa fa-shield",
+      label: <p>&#xf132; fa-shield</p>
+    },
+    {
+      value: "fa fa-calendar-o",
+      label: <p>&#xf133; fa-calendar-o</p>
+    },
+    {
+      value: "fa fa-fire-extinguisher",
+      label: <p>&#xf134; fa-fire-extinguisher</p>
+    },
+    {
+      value: "fa fa-rocket",
+      label: <p>&#xf135; fa-rocket</p>
+    },
+    {
+      value: "fa fa-maxcdn",
+      label: <p>&#xf136; fa-maxcdn</p>
+    },
+    {
+      value: "fa fa-chevron-circle-left",
+      label: <p>&#xf137; fa-chevron-circle-left</p>
+    },
+    {
+      value: "fa fa-chevron-circle-right",
+      label: <p>&#xf138; fa-chevron-circle-right</p>
+    },
+    {
+      value: "fa fa-chevron-circle-up",
+      label: <p>&#xf139; fa-chevron-circle-up</p>
+    },
+    {
+      value: "fa fa-chevron-circle-down",
+      label: <p>&#xf13a; fa-chevron-circle-down</p>
+    },
+    {
+      value: "fa fa-html5",
+      label: <p>&#xf13b; fa-html5</p>
+    },
+    {
+      value: "fa fa-css3",
+      label: <p>&#xf13c; fa-css3</p>
+    },
+    {
+      value: "fa fa-anchor",
+      label: <p>&#xf13d; fa-anchor</p>
+    },
+    {
+      value: "fa fa-unlock-alt",
+      label: <p>&#xf13e; fa-unlock-alt</p>
+    },
+    {
+      value: "fa fa-bullseye",
+      label: <p>&#xf140; fa-bullseye</p>
+    },
+    {
+      value: "fa fa-ellipsis-h",
+      label: <p>&#xf141; fa-ellipsis-h</p>
+    },
+    {
+      value: "fa fa-ellipsis-v",
+      label: <p>&#xf142; fa-ellipsis-v</p>
+    },
+    {
+      value: "fa fa-rss-square",
+      label: <p>&#xf143; fa-rss-square</p>
+    },
+    {
+      value: "fa fa-play-circle",
+      label: <p>&#xf144; fa-play-circle</p>
+    },
+    {
+      value: "fa fa-ticket",
+      label: <p>&#xf145; fa-ticket</p>
+    },
+    {
+      value: "fa fa-minus-square",
+      label: <p>&#xf146; fa-minus-square</p>
+    },
+    {
+      value: "fa fa-minus-square-o",
+      label: <p>&#xf147; fa-minus-square-o</p>
+    },
+    {
+      value: "fa fa-level-up",
+      label: <p>&#xf148; fa-level-up</p>
+    },
+    {
+      value: "fa fa-level-down",
+      label: <p>&#xf149; fa-level-down</p>
+    },
+    {
+      value: "fa fa-check-square",
+      label: <p>&#xf14a; fa-check-square</p>
+    },
+    {
+      value: "fa fa-pencil-square",
+      label: <p>&#xf14b; fa-pencil-square</p>
+    },
+    {
+      value: "fa fa-external-link-square",
+      label: <p>&#xf14c; fa-external-link-square</p>
+    },
+    {
+      value: "fa fa-share-square",
+      label: <p>&#xf14d; fa-share-square</p>
+    },
+    {
+      value: "fa fa-compass",
+      label: <p>&#xf14e; fa-compass</p>
+    },
+    {
+      value: "fa fa-caret-square-o-down",
+      label: <p>&#xf150; fa-caret-square-o-down</p>
+    },
+    {
+      value: "fa fa-caret-square-o-up",
+      label: <p>&#xf151; fa-caret-square-o-up</p>
+    },
+    {
+      value: "fa fa-caret-square-o-right",
+      label: <p>&#xf152; fa-caret-square-o-right</p>
+    },
+    {
+      value: "fa fa-eur",
+      label: <p>&#xf153; fa-eur</p>
+    },
+    {
+      value: "fa fa-gbp",
+      label: <p>&#xf154; fa-gbp</p>
+    },
+    {
+      value: "fa fa-usd",
+      label: <p>&#xf155; fa-usd</p>
+    },
+    {
+      value: "fa fa-inr",
+      label: <p>&#xf156; fa-inr</p>
+    },
+    {
+      value: "fa fa-jpy",
+      label: <p>&#xf157; fa-jpy</p>
+    },
+    {
+      value: "fa fa-rub",
+      label: <p>&#xf158; fa-rub</p>
+    },
+    {
+      value: "fa fa-krw",
+      label: <p>&#xf159; fa-krw</p>
+    },
+    {
+      value: "fa fa-btc",
+      label: <p>&#xf15a; fa-btc</p>
+    },
+    {
+      value: "fa fa-file",
+      label: <p>&#xf15b; fa-file</p>
+    },
+    {
+      value: "fa fa-file-text",
+      label: <p>&#xf15c; fa-file-text</p>
+    },
+    {
+      value: "fa fa-sort-alpha-asc",
+      label: <p>&#xf15d; fa-sort-alpha-asc</p>
+    },
+    {
+      value: "fa fa-sort-alpha-desc",
+      label: <p>&#xf15e; fa-sort-alpha-desc</p>
+    },
+    {
+      value: "fa fa-sort-amount-asc",
+      label: <p>&#xf160; fa-sort-amount-asc</p>
+    },
+    {
+      value: "fa fa-sort-amount-desc",
+      label: <p>&#xf161; fa-sort-amount-desc</p>
+    },
+    {
+      value: "fa fa-sort-numeric-asc",
+      label: <p>&#xf162; fa-sort-numeric-asc</p>
+    },
+    {
+      value: "fa fa-sort-numeric-desc",
+      label: <p>&#xf163; fa-sort-numeric-desc</p>
+    },
+    {
+      value: "fa fa-thumbs-up",
+      label: <p>&#xf164; fa-thumbs-up</p>
+    },
+    {
+      value: "fa fa-thumbs-down",
+      label: <p>&#xf165; fa-thumbs-down</p>
+    },
+    {
+      value: "fa fa-youtube-square",
+      label: <p>&#xf166; fa-youtube-square</p>
+    },
+    {
+      value: "fa fa-youtube",
+      label: <p>&#xf167; fa-youtube</p>
+    },
+    {
+      value: "fa fa-xing",
+      label: <p>&#xf168; fa-xing</p>
+    },
+    {
+      value: "fa fa-xing-square",
+      label: <p>&#xf169; fa-xing-square</p>
+    },
+    {
+      value: "fa fa-youtube-play",
+      label: <p>&#xf16a; fa-youtube-play</p>
+    },
+    {
+      value: "fa fa-dropbox",
+      label: <p>&#xf16b; fa-dropbox</p>
+    },
+    {
+      value: "fa fa-stack-overflow",
+      label: <p>&#xf16c; fa-stack-overflow</p>
+    },
+    {
+      value: "fa fa-instagram",
+      label: <p>&#xf16d; fa-instagram</p>
+    },
+    {
+      value: "fa fa-flickr",
+      label: <p>&#xf16e; fa-flickr</p>
+    },
+    {
+      value: "fa fa-adn",
+      label: <p>&#xf170; fa-adn</p>
+    },
+    {
+      value: "fa fa-bitbucket",
+      label: <p>&#xf171; fa-bitbucket</p>
+    },
+    {
+      value: "fa fa-bitbucket-square",
+      label: <p>&#xf172; fa-bitbucket-square</p>
+    },
+    {
+      value: "fa fa-tumblr",
+      label: <p>&#xf173; fa-tumblr</p>
+    },
+    {
+      value: "fa fa-tumblr-square",
+      label: <p>&#xf174; fa-tumblr-square</p>
+    },
+    {
+      value: "fa fa-long-arrow-down",
+      label: <p>&#xf175; fa-long-arrow-down</p>
+    },
+    {
+      value: "fa fa-long-arrow-up",
+      label: <p>&#xf176; fa-long-arrow-up</p>
+    },
+    {
+      value: "fa fa-long-arrow-left",
+      label: <p>&#xf177; fa-long-arrow-left</p>
+    },
+    {
+      value: "fa fa-long-arrow-right",
+      label: <p>&#xf178; fa-long-arrow-right</p>
+    },
+    {
+      value: "fa fa-apple",
+      label: <p>&#xf179; fa-apple</p>
+    },
+    {
+      value: "fa fa-windows",
+      label: <p>&#xf17a; fa-windows</p>
+    },
+    {
+      value: "fa fa-android",
+      label: <p>&#xf17b; fa-android</p>
+    },
+    {
+      value: "fa fa-linux",
+      label: <p>&#xf17c; fa-linux</p>
+    },
+    {
+      value: "fa fa-dribbble",
+      label: <p>&#xf17d; fa-dribbble</p>
+    },
+    {
+      value: "fa fa-skype",
+      label: <p>&#xf17e; fa-skype</p>
+    },
+    {
+      value: "fa fa-foursquare",
+      label: <p>&#xf180; fa-foursquare</p>
+    },
+    {
+      value: "fa fa-trello",
+      label: <p>&#xf181; fa-trello</p>
+    },
+    {
+      value: "fa fa-female",
+      label: <p>&#xf182; fa-female</p>
+    },
+    {
+      value: "fa fa-male",
+      label: <p>&#xf183; fa-male</p>
+    },
+    {
+      value: "fa fa-gratipay",
+      label: <p>&#xf184; fa-gratipay</p>
+    },
+    {
+      value: "fa fa-sun-o",
+      label: <p>&#xf185; fa-sun-o</p>
+    },
+    {
+      value: "fa fa-moon-o",
+      label: <p>&#xf186; fa-moon-o</p>
+    },
+    {
+      value: "fa fa-archive",
+      label: <p>&#xf187; fa-archive</p>
+    },
+    {
+      value: "fa fa-bug",
+      label: <p>&#xf188; fa-bug</p>
+    },
+    {
+      value: "fa fa-vk",
+      label: <p>&#xf189; fa-vk</p>
+    },
+    {
+      value: "fa fa-weibo",
+      label: <p>&#xf18a; fa-weibo</p>
+    },
+    {
+      value: "fa fa-renren",
+      label: <p>&#xf18b; fa-renren</p>
+    },
+    {
+      value: "fa fa-pagelines",
+      label: <p>&#xf18c; fa-pagelines</p>
+    },
+    {
+      value: "fa fa-stack-exchange",
+      label: <p>&#xf18d; fa-stack-exchange</p>
+    },
+    {
+      value: "fa fa-arrow-circle-o-right",
+      label: <p>&#xf18e; fa-arrow-circle-o-right</p>
+    },
+    {
+      value: "fa fa-arrow-circle-o-left",
+      label: <p>&#xf190; fa-arrow-circle-o-left</p>
+    },
+    {
+      value: "fa fa-caret-square-o-left",
+      label: <p>&#xf191; fa-caret-square-o-left</p>
+    },
+    {
+      value: "fa fa-dot-circle-o",
+      label: <p>&#xf192; fa-dot-circle-o</p>
+    },
+    {
+      value: "fa fa-wheelchair",
+      label: <p>&#xf193; fa-wheelchair</p>
+    },
+    {
+      value: "fa fa-vimeo-square",
+      label: <p>&#xf194; fa-vimeo-square</p>
+    },
+    {
+      value: "fa fa-try",
+      label: <p>&#xf195; fa-try</p>
+    },
+    {
+      value: "fa fa-plus-square-o",
+      label: <p>&#xf196; fa-plus-square-o</p>
+    },
+    {
+      value: "fa fa-space-shuttle",
+      label: <p>&#xf197; fa-space-shuttle</p>
+    },
+    {
+      value: "fa fa-slack",
+      label: <p>&#xf198; fa-slack</p>
+    },
+    {
+      value: "fa fa-envelope-square",
+      label: <p>&#xf199; fa-envelope-square</p>
+    },
+    {
+      value: "fa fa-wordpress",
+      label: <p>&#xf19a; fa-wordpress</p>
+    },
+    {
+      value: "fa fa-openid",
+      label: <p>&#xf19b; fa-openid</p>
+    },
+    {
+      value: "fa fa-university",
+      label: <p>&#xf19c; fa-university</p>
+    },
+    {
+      value: "fa fa-graduation-cap",
+      label: <p>&#xf19d; fa-graduation-cap</p>
+    },
+    {
+      value: "fa fa-yahoo",
+      label: <p>&#xf19e; fa-yahoo</p>
+    },
+    {
+      value: "fa fa-google",
+      label: <p>&#xf1a0; fa-google</p>
+    },
+    {
+      value: "fa fa-reddit",
+      label: <p>&#xf1a1; fa-reddit</p>
+    },
+    {
+      value: "fa fa-reddit-square",
+      label: <p>&#xf1a2; fa-reddit-square</p>
+    },
+    {
+      value: "fa fa-stumbleupon-circle",
+      label: <p>&#xf1a3; fa-stumbleupon-circle</p>
+    },
+    {
+      value: "fa fa-stumbleupon",
+      label: <p>&#xf1a4; fa-stumbleupon</p>
+    },
+    {
+      value: "fa fa-delicious",
+      label: <p>&#xf1a5; fa-delicious</p>
+    },
+    {
+      value: "fa fa-digg",
+      label: <p>&#xf1a6; fa-digg</p>
+    },
+    {
+      value: "fa fa-pied-piper-pp",
+      label: <p>&#xf1a7; fa-pied-piper-pp</p>
+    },
+    {
+      value: "fa fa-pied-piper-alt",
+      label: <p>&#xf1a8; fa-pied-piper-alt</p>
+    },
+    {
+      value: "fa fa-drupal",
+      label: <p>&#xf1a9; fa-drupal</p>
+    },
+    {
+      value: "fa fa-joomla",
+      label: <p>&#xf1aa; fa-joomla</p>
+    },
+    {
+      value: "fa fa-language",
+      label: <p>&#xf1ab; fa-language</p>
+    },
+    {
+      value: "fa fa-fax",
+      label: <p>&#xf1ac; fa-fax</p>
+    },
+    {
+      value: "fa fa-building",
+      label: <p>&#xf1ad; fa-building</p>
+    },
+    {
+      value: "fa fa-child",
+      label: <p>&#xf1ae; fa-child</p>
+    },
+    {
+      value: "fa fa-paw",
+      label: <p>&#xf1b0; fa-paw</p>
+    },
+    {
+      value: "fa fa-spoon",
+      label: <p>&#xf1b1; fa-spoon</p>
+    },
+    {
+      value: "fa fa-cube",
+      label: <p>&#xf1b2; fa-cube</p>
+    },
+    {
+      value: "fa fa-cubes",
+      label: <p>&#xf1b3; fa-cubes</p>
+    },
+    {
+      value: "fa fa-behance",
+      label: <p>&#xf1b4; fa-behance</p>
+    },
+    {
+      value: "fa fa-behance-square",
+      label: <p>&#xf1b5; fa-behance-square</p>
+    },
+    {
+      value: "fa fa-steam",
+      label: <p>&#xf1b6; fa-steam</p>
+    },
+    {
+      value: "fa fa-steam-square",
+      label: <p>&#xf1b7; fa-steam-square</p>
+    },
+    {
+      value: "fa fa-recycle",
+      label: <p>&#xf1b8; fa-recycle</p>
+    },
+    {
+      value: "fa fa-car",
+      label: <p>&#xf1b9; fa-car</p>
+    },
+    {
+      value: "fa fa-taxi",
+      label: <p>&#xf1ba; fa-taxi</p>
+    },
+    {
+      value: "fa fa-tree",
+      label: <p>&#xf1bb; fa-tree</p>
+    },
+    {
+      value: "fa fa-spotify",
+      label: <p>&#xf1bc; fa-spotify</p>
+    },
+    {
+      value: "fa fa-deviantart",
+      label: <p>&#xf1bd; fa-deviantart</p>
+    },
+    {
+      value: "fa fa-soundcloud",
+      label: <p>&#xf1be; fa-soundcloud</p>
+    },
+    {
+      value: "fa fa-database",
+      label: <p>&#xf1c0; fa-database</p>
+    },
+    {
+      value: "fa fa-file-pdf-o",
+      label: <p>&#xf1c1; fa-file-pdf-o</p>
+    },
+    {
+      value: "fa fa-file-word-o",
+      label: <p>&#xf1c2; fa-file-word-o</p>
+    },
+    {
+      value: "fa fa-file-excel-o",
+      label: <p>&#xf1c3; fa-file-excel-o</p>
+    },
+    {
+      value: "fa fa-file-powerpoint-o",
+      label: <p>&#xf1c4; fa-file-powerpoint-o</p>
+    },
+    {
+      value: "fa fa-file-image-o",
+      label: <p>&#xf1c5; fa-file-image-o</p>
+    },
+    {
+      value: "fa fa-file-archive-o",
+      label: <p>&#xf1c6; fa-file-archive-o</p>
+    },
+    {
+      value: "fa fa-file-audio-o",
+      label: <p>&#xf1c7; fa-file-audio-o</p>
+    },
+    {
+      value: "fa fa-file-video-o",
+      label: <p>&#xf1c8; fa-file-video-o</p>
+    },
+    {
+      value: "fa fa-file-code-o",
+      label: <p>&#xf1c9; fa-file-code-o</p>
+    },
+    {
+      value: "fa fa-vine",
+      label: <p>&#xf1ca; fa-vine</p>
+    },
+    {
+      value: "fa fa-codepen",
+      label: <p>&#xf1cb; fa-codepen</p>
+    },
+    {
+      value: "fa fa-jsfiddle",
+      label: <p>&#xf1cc; fa-jsfiddle</p>
+    },
+    {
+      value: "fa fa-life-ring",
+      label: <p>&#xf1cd; fa-life-ring</p>
+    },
+    {
+      value: "fa fa-circle-o-notch",
+      label: <p>&#xf1ce; fa-circle-o-notch</p>
+    },
+    {
+      value: "fa fa-rebel",
+      label: <p>&#xf1d0; fa-rebel</p>
+    },
+    {
+      value: "fa fa-empire",
+      label: <p>&#xf1d1; fa-empire</p>
+    },
+    {
+      value: "fa fa-git-square",
+      label: <p>&#xf1d2; fa-git-square</p>
+    },
+    {
+      value: "fa fa-git",
+      label: <p>&#xf1d3; fa-git</p>
+    },
+    {
+      value: "fa fa-hacker-news",
+      label: <p>&#xf1d4; fa-hacker-news</p>
+    },
+    {
+      value: "fa fa-tencent-weibo",
+      label: <p>&#xf1d5; fa-tencent-weibo</p>
+    },
+    {
+      value: "fa fa-qq",
+      label: <p>&#xf1d6; fa-qq</p>
+    },
+    {
+      value: "fa fa-weixin",
+      label: <p>&#xf1d7; fa-weixin</p>
+    },
+    {
+      value: "fa fa-paper-plane",
+      label: <p>&#xf1d8; fa-paper-plane</p>
+    },
+    {
+      value: "fa fa-paper-plane-o",
+      label: <p>&#xf1d9; fa-paper-plane-o</p>
+    },
+    {
+      value: "fa fa-history",
+      label: <p>&#xf1da; fa-history</p>
+    },
+    {
+      value: "fa fa-circle-thin",
+      label: <p>&#xf1db; fa-circle-thin</p>
+    },
+    {
+      value: "fa fa-header",
+      label: <p>&#xf1dc; fa-header</p>
+    },
+    {
+      value: "fa fa-paragraph",
+      label: <p>&#xf1dd; fa-paragraph</p>
+    },
+    {
+      value: "fa fa-sliders",
+      label: <p>&#xf1de; fa-sliders</p>
+    },
+    {
+      value: "fa fa-share-alt",
+      label: <p>&#xf1e0; fa-share-alt</p>
+    },
+    {
+      value: "fa fa-share-alt-square",
+      label: <p>&#xf1e1; fa-share-alt-square</p>
+    },
+    {
+      value: "fa fa-bomb",
+      label: <p>&#xf1e2; fa-bomb</p>
+    },
+    {
+      value: "fa fa-futbol-o",
+      label: <p>&#xf1e3; fa-futbol-o</p>
+    },
+    {
+      value: "fa fa-tty",
+      label: <p>&#xf1e4; fa-tty</p>
+    },
+    {
+      value: "fa fa-binoculars",
+      label: <p>&#xf1e5; fa-binoculars</p>
+    },
+    {
+      value: "fa fa-plug",
+      label: <p>&#xf1e6; fa-plug</p>
+    },
+    {
+      value: "fa fa-slideshare",
+      label: <p>&#xf1e7; fa-slideshare</p>
+    },
+    {
+      value: "fa fa-twitch",
+      label: <p>&#xf1e8; fa-twitch</p>
+    },
+    {
+      value: "fa fa-yelp",
+      label: <p>&#xf1e9; fa-yelp</p>
+    },
+    {
+      value: "fa fa-newspaper-o",
+      label: <p>&#xf1ea; fa-newspaper-o</p>
+    },
+    {
+      value: "fa fa-wifi",
+      label: <p>&#xf1eb; fa-wifi</p>
+    },
+    {
+      value: "fa fa-calculator",
+      label: <p>&#xf1ec; fa-calculator</p>
+    },
+    {
+      value: "fa fa-paypal",
+      label: <p>&#xf1ed; fa-paypal</p>
+    },
+    {
+      value: "fa fa-google-wallet",
+      label: <p>&#xf1ee; fa-google-wallet</p>
+    },
+    {
+      value: "fa fa-cc-visa",
+      label: <p>&#xf1f0; fa-cc-visa</p>
+    },
+    {
+      value: "fa fa-cc-mastercard",
+      label: <p>&#xf1f1; fa-cc-mastercard</p>
+    },
+    {
+      value: "fa fa-cc-discover",
+      label: <p>&#xf1f2; fa-cc-discover</p>
+    },
+    {
+      value: "fa fa-cc-amex",
+      label: <p>&#xf1f3; fa-cc-amex</p>
+    },
+    {
+      value: "fa fa-cc-paypal",
+      label: <p>&#xf1f4; fa-cc-paypal</p>
+    },
+    {
+      value: "fa fa-cc-stripe",
+      label: <p>&#xf1f5; fa-cc-stripe</p>
+    },
+    {
+      value: "fa fa-bell-slash",
+      label: <p>&#xf1f6; fa-bell-slash</p>
+    },
+    {
+      value: "fa fa-bell-slash-o",
+      label: <p>&#xf1f7; fa-bell-slash-o</p>
+    },
+    {
+      value: "fa fa-trash",
+      label: <p>&#xf1f8; fa-trash</p>
+    },
+    {
+      value: "fa fa-copyright",
+      label: <p>&#xf1f9; fa-copyright</p>
+    },
+    {
+      value: "fa fa-at",
+      label: <p>&#xf1fa; fa-at</p>
+    },
+    {
+      value: "fa fa-eyedropper",
+      label: <p>&#xf1fb; fa-eyedropper</p>
+    },
+    {
+      value: "fa fa-paint-brush",
+      label: <p>&#xf1fc; fa-paint-brush</p>
+    },
+    {
+      value: "fa fa-birthday-cake",
+      label: <p>&#xf1fd; fa-birthday-cake</p>
+    },
+    {
+      value: "fa fa-area-chart",
+      label: <p>&#xf1fe; fa-area-chart</p>
+    },
+    {
+      value: "fa fa-pie-chart",
+      label: <p>&#xf200; fa-pie-chart</p>
+    },
+    {
+      value: "fa fa-line-chart",
+      label: <p>&#xf201; fa-line-chart</p>
+    },
+    {
+      value: "fa fa-lastfm",
+      label: <p>&#xf202; fa-lastfm</p>
+    },
+    {
+      value: "fa fa-lastfm-square",
+      label: <p>&#xf203; fa-lastfm-square</p>
+    },
+    {
+      value: "fa fa-toggle-off",
+      label: <p>&#xf204; fa-toggle-off</p>
+    },
+    {
+      value: "fa fa-toggle-on",
+      label: <p>&#xf205; fa-toggle-on</p>
+    },
+    {
+      value: "fa fa-bicycle",
+      label: <p>&#xf206; fa-bicycle</p>
+    },
+    {
+      value: "fa fa-bus",
+      label: <p>&#xf207; fa-bus</p>
+    },
+    {
+      value: "fa fa-ioxhost",
+      label: <p>&#xf208; fa-ioxhost</p>
+    },
+    {
+      value: "fa fa-angellist",
+      label: <p>&#xf209; fa-angellist</p>
+    },
+    {
+      value: "fa fa-cc",
+      label: <p>&#xf20a; fa-cc</p>
+    },
+    {
+      value: "fa fa-ils",
+      label: <p>&#xf20b; fa-ils</p>
+    },
+    {
+      value: "fa fa-meanpath",
+      label: <p>&#xf20c; fa-meanpath</p>
+    },
+    {
+      value: "fa fa-buysellads",
+      label: <p>&#xf20d; fa-buysellads</p>
+    },
+    {
+      value: "fa fa-connectdevelop",
+      label: <p>&#xf20e; fa-connectdevelop</p>
+    },
+    {
+      value: "fa fa-dashcube",
+      label: <p>&#xf210; fa-dashcube</p>
+    },
+    {
+      value: "fa fa-forumbee",
+      label: <p>&#xf211; fa-forumbee</p>
+    },
+    {
+      value: "fa fa-leanpub",
+      label: <p>&#xf212; fa-leanpub</p>
+    },
+    {
+      value: "fa fa-sellsy",
+      label: <p>&#xf213; fa-sellsy</p>
+    },
+    {
+      value: "fa fa-shirtsinbulk",
+      label: <p>&#xf214; fa-shirtsinbulk</p>
+    },
+    {
+      value: "fa fa-simplybuilt",
+      label: <p>&#xf215; fa-simplybuilt</p>
+    },
+    {
+      value: "fa fa-skyatlas",
+      label: <p>&#xf216; fa-skyatlas</p>
+    },
+    {
+      value: "fa fa-cart-plus",
+      label: <p>&#xf217; fa-cart-plus</p>
+    },
+    {
+      value: "fa fa-cart-arrow-down",
+      label: <p>&#xf218; fa-cart-arrow-down</p>
+    },
+    {
+      value: "fa fa-diamond",
+      label: <p>&#xf219; fa-diamond</p>
+    },
+    {
+      value: "fa fa-ship",
+      label: <p>&#xf21a; fa-ship</p>
+    },
+    {
+      value: "fa fa-user-secret",
+      label: <p>&#xf21b; fa-user-secret</p>
+    },
+    {
+      value: "fa fa-motorcycle",
+      label: <p>&#xf21c; fa-motorcycle</p>
+    },
+    {
+      value: "fa fa-street-view",
+      label: <p>&#xf21d; fa-street-view</p>
+    },
+    {
+      value: "fa fa-heartbeat",
+      label: <p>&#xf21e; fa-heartbeat</p>
+    },
+    {
+      value: "fa fa-venus",
+      label: <p>&#xf221; fa-venus</p>
+    },
+    {
+      value: "fa fa-mars",
+      label: <p>&#xf222; fa-mars</p>
+    },
+    {
+      value: "fa fa-mercury",
+      label: <p>&#xf223; fa-mercury</p>
+    },
+    {
+      value: "fa fa-transgender",
+      label: <p>&#xf224; fa-transgender</p>
+    },
+    {
+      value: "fa fa-transgender-alt",
+      label: <p>&#xf225; fa-transgender-alt</p>
+    },
+    {
+      value: "fa fa-venus-double",
+      label: <p>&#xf226; fa-venus-double</p>
+    },
+    {
+      value: "fa fa-mars-double",
+      label: <p>&#xf227; fa-mars-double</p>
+    },
+    {
+      value: "fa fa-venus-mars",
+      label: <p>&#xf228; fa-venus-mars</p>
+    },
+    {
+      value: "fa fa-mars-stroke",
+      label: <p>&#xf229; fa-mars-stroke</p>
+    },
+    {
+      value: "fa fa-mars-stroke-v",
+      label: <p>&#xf22a; fa-mars-stroke-v</p>
+    },
+    {
+      value: "fa fa-mars-stroke-h",
+      label: <p>&#xf22b; fa-mars-stroke-h</p>
+    },
+    {
+      value: "fa fa-neuter",
+      label: <p>&#xf22c; fa-neuter</p>
+    },
+    {
+      value: "fa fa-genderless",
+      label: <p>&#xf22d; fa-genderless</p>
+    },
+    {
+      value: "fa fa-facebook-official",
+      label: <p>&#xf230; fa-facebook-official</p>
+    },
+    {
+      value: "fa fa-pinterest-p",
+      label: <p>&#xf231; fa-pinterest-p</p>
+    },
+    {
+      value: "fa fa-whatsapp",
+      label: <p>&#xf232; fa-whatsapp</p>
+    },
+    {
+      value: "fa fa-server",
+      label: <p>&#xf233; fa-server</p>
+    },
+    {
+      value: "fa fa-user-plus",
+      label: <p>&#xf234; fa-user-plus</p>
+    },
+    {
+      value: "fa fa-user-times",
+      label: <p>&#xf235; fa-user-times</p>
+    },
+    {
+      value: "fa fa-bed",
+      label: <p>&#xf236; fa-bed</p>
+    },
+    {
+      value: "fa fa-viacoin",
+      label: <p>&#xf237; fa-viacoin</p>
+    },
+    {
+      value: "fa fa-train",
+      label: <p>&#xf238; fa-train</p>
+    },
+    {
+      value: "fa fa-subway",
+      label: <p>&#xf239; fa-subway</p>
+    },
+    {
+      value: "fa fa-medium",
+      label: <p>&#xf23a; fa-medium</p>
+    },
+    {
+      value: "fa fa-y-combinator",
+      label: <p>&#xf23b; fa-y-combinator</p>
+    },
+    {
+      value: "fa fa-optin-monster",
+      label: <p>&#xf23c; fa-optin-monster</p>
+    },
+    {
+      value: "fa fa-opencart",
+      label: <p>&#xf23d; fa-opencart</p>
+    },
+    {
+      value: "fa fa-expeditedssl",
+      label: <p>&#xf23e; fa-expeditedssl</p>
+    },
+    {
+      value: "fa fa-battery-full",
+      label: <p>&#xf240; fa-battery-full</p>
+    },
+    {
+      value: "fa fa-battery-three-quarters",
+      label: <p>&#xf241; fa-battery-three-quarters</p>
+    },
+    {
+      value: "fa fa-battery-half",
+      label: <p>&#xf242; fa-battery-half</p>
+    },
+    {
+      value: "fa fa-battery-quarter",
+      label: <p>&#xf243; fa-battery-quarter</p>
+    },
+    {
+      value: "fa fa-battery-empty",
+      label: <p>&#xf244; fa-battery-empty</p>
+    },
+    {
+      value: "fa fa-mouse-pointer",
+      label: <p>&#xf245; fa-mouse-pointer</p>
+    },
+    {
+      value: "fa fa-i-cursor",
+      label: <p>&#xf246; fa-i-cursor</p>
+    },
+    {
+      value: "fa fa-object-group",
+      label: <p>&#xf247; fa-object-group</p>
+    },
+    {
+      value: "fa fa-object-ungroup",
+      label: <p>&#xf248; fa-object-ungroup</p>
+    },
+    {
+      value: "fa fa-sticky-note",
+      label: <p>&#xf249; fa-sticky-note</p>
+    },
+    {
+      value: "fa fa-sticky-note-o",
+      label: <p>&#xf24a; fa-sticky-note-o</p>
+    },
+    {
+      value: "fa fa-cc-jcb",
+      label: <p>&#xf24b; fa-cc-jcb</p>
+    },
+    {
+      value: "fa fa-cc-diners-club",
+      label: <p>&#xf24c; fa-cc-diners-club</p>
+    },
+    {
+      value: "fa fa-clone",
+      label: <p>&#xf24d; fa-clone</p>
+    },
+    {
+      value: "fa fa-balance-scale",
+      label: <p>&#xf24e; fa-balance-scale</p>
+    },
+    {
+      value: "fa fa-hourglass-o",
+      label: <p>&#xf250; fa-hourglass-o</p>
+    },
+    {
+      value: "fa fa-hourglass-start",
+      label: <p>&#xf251; fa-hourglass-start</p>
+    },
+    {
+      value: "fa fa-hourglass-half",
+      label: <p>&#xf252; fa-hourglass-half</p>
+    },
+    {
+      value: "fa fa-hourglass-end",
+      label: <p>&#xf253; fa-hourglass-end</p>
+    },
+    {
+      value: "fa fa-hourglass",
+      label: <p>&#xf254; fa-hourglass</p>
+    },
+    {
+      value: "fa fa-hand-rock-o",
+      label: <p>&#xf255; fa-hand-rock-o</p>
+    },
+    {
+      value: "fa fa-hand-paper-o",
+      label: <p>&#xf256; fa-hand-paper-o</p>
+    },
+    {
+      value: "fa fa-hand-scissors-o",
+      label: <p>&#xf257; fa-hand-scissors-o</p>
+    },
+    {
+      value: "fa fa-hand-lizard-o",
+      label: <p>&#xf258; fa-hand-lizard-o</p>
+    },
+    {
+      value: "fa fa-hand-spock-o",
+      label: <p>&#xf259; fa-hand-spock-o</p>
+    },
+    {
+      value: "fa fa-hand-pointer-o",
+      label: <p>&#xf25a; fa-hand-pointer-o</p>
+    },
+    {
+      value: "fa fa-hand-peace-o",
+      label: <p>&#xf25b; fa-hand-peace-o</p>
+    },
+    {
+      value: "fa fa-trademark",
+      label: <p>&#xf25c; fa-trademark</p>
+    },
+    {
+      value: "fa fa-registered",
+      label: <p>&#xf25d; fa-registered</p>
+    },
+    {
+      value: "fa fa-creative-commons",
+      label: <p>&#xf25e; fa-creative-commons</p>
+    },
+    {
+      value: "fa fa-gg",
+      label: <p>&#xf260; fa-gg</p>
+    },
+    {
+      value: "fa fa-gg-circle",
+      label: <p>&#xf261; fa-gg-circle</p>
+    },
+    {
+      value: "fa fa-tripadvisor",
+      label: <p>&#xf262; fa-tripadvisor</p>
+    },
+    {
+      value: "fa fa-odnoklassniki",
+      label: <p>&#xf263; fa-odnoklassniki</p>
+    },
+    {
+      value: "fa fa-odnoklassniki-square",
+      label: <p>&#xf264; fa-odnoklassniki-square</p>
+    },
+    {
+      value: "fa fa-get-pocket",
+      label: <p>&#xf265; fa-get-pocket</p>
+    },
+    {
+      value: "fa fa-wikipedia-w",
+      label: <p>&#xf266; fa-wikipedia-w</p>
+    },
+    {
+      value: "fa fa-safari",
+      label: <p>&#xf267; fa-safari</p>
+    },
+    {
+      value: "fa fa-chrome",
+      label: <p>&#xf268; fa-chrome</p>
+    },
+    {
+      value: "fa fa-firefox",
+      label: <p>&#xf269; fa-firefox</p>
+    },
+    {
+      value: "fa fa-opera",
+      label: <p>&#xf26a; fa-opera</p>
+    },
+    {
+      value: "fa fa-internet-explorer",
+      label: <p>&#xf26b; fa-internet-explorer</p>
+    },
+    {
+      value: "fa fa-television",
+      label: <p>&#xf26c; fa-television</p>
+    },
+    {
+      value: "fa fa-contao",
+      label: <p>&#xf26d; fa-contao</p>
+    },
+    {
+      value: "fa fa-500px",
+      label: <p>&#xf26e; fa-500px</p>
+    },
+    {
+      value: "fa fa-amazon",
+      label: <p>&#xf270; fa-amazon</p>
+    },
+    {
+      value: "fa fa-calendar-plus-o",
+      label: <p>&#xf271; fa-calendar-plus-o</p>
+    },
+    {
+      value: "fa fa-calendar-minus-o",
+      label: <p>&#xf272; fa-calendar-minus-o</p>
+    },
+    {
+      value: "fa fa-calendar-times-o",
+      label: <p>&#xf273; fa-calendar-times-o</p>
+    },
+    {
+      value: "fa fa-calendar-check-o",
+      label: <p>&#xf274; fa-calendar-check-o</p>
+    },
+    {
+      value: "fa fa-industry",
+      label: <p>&#xf275; fa-industry</p>
+    },
+    {
+      value: "fa fa-map-pin",
+      label: <p>&#xf276; fa-map-pin</p>
+    },
+    {
+      value: "fa fa-map-signs",
+      label: <p>&#xf277; fa-map-signs</p>
+    },
+    {
+      value: "fa fa-map-o",
+      label: <p>&#xf278; fa-map-o</p>
+    },
+    {
+      value: "fa fa-map",
+      label: <p>&#xf279; fa-map</p>
+    },
+    {
+      value: "fa fa-commenting",
+      label: <p>&#xf27a; fa-commenting</p>
+    },
+    {
+      value: "fa fa-commenting-o",
+      label: <p>&#xf27b; fa-commenting-o</p>
+    },
+    {
+      value: "fa fa-houzz",
+      label: <p>&#xf27c; fa-houzz</p>
+    },
+    {
+      value: "fa fa-vimeo",
+      label: <p>&#xf27d; fa-vimeo</p>
+    },
+    {
+      value: "fa fa-black-tie",
+      label: <p>&#xf27e; fa-black-tie</p>
+    },
+    {
+      value: "fa fa-fonticons",
+      label: <p>&#xf280; fa-fonticons</p>
+    },
+    {
+      value: "fa fa-reddit-alien",
+      label: <p>&#xf281; fa-reddit-alien</p>
+    },
+    {
+      value: "fa fa-edge",
+      label: <p>&#xf282; fa-edge</p>
+    },
+    {
+      value: "fa fa-credit-card-alt",
+      label: <p>&#xf283; fa-credit-card-alt</p>
+    },
+    {
+      value: "fa fa-codiepie",
+      label: <p>&#xf284; fa-codiepie</p>
+    },
+    {
+      value: "fa fa-modx",
+      label: <p>&#xf285; fa-modx</p>
+    },
+    {
+      value: "fa fa-fort-awesome",
+      label: <p>&#xf286; fa-fort-awesome</p>
+    },
+    {
+      value: "fa fa-usb",
+      label: <p>&#xf287; fa-usb</p>
+    },
+    {
+      value: "fa fa-product-hunt",
+      label: <p>&#xf288; fa-product-hunt</p>
+    },
+    {
+      value: "fa fa-mixcloud",
+      label: <p>&#xf289; fa-mixcloud</p>
+    },
+    {
+      value: "fa fa-scribd",
+      label: <p>&#xf28a; fa-scribd</p>
+    },
+    {
+      value: "fa fa-pause-circle",
+      label: <p>&#xf28b; fa-pause-circle</p>
+    },
+    {
+      value: "fa fa-pause-circle-o",
+      label: <p>&#xf28c; fa-pause-circle-o</p>
+    },
+    {
+      value: "fa fa-stop-circle",
+      label: <p>&#xf28d; fa-stop-circle</p>
+    },
+    {
+      value: "fa fa-stop-circle-o",
+      label: <p>&#xf28e; fa-stop-circle-o</p>
+    },
+    {
+      value: "fa fa-shopping-bag",
+      label: <p>&#xf290; fa-shopping-bag</p>
+    },
+    {
+      value: "fa fa-shopping-basket",
+      label: <p>&#xf291; fa-shopping-basket</p>
+    },
+    {
+      value: "fa fa-hashtag",
+      label: <p>&#xf292; fa-hashtag</p>
+    },
+    {
+      value: "fa fa-bluetooth",
+      label: <p>&#xf293; fa-bluetooth</p>
+    },
+    {
+      value: "fa fa-bluetooth-b",
+      label: <p>&#xf294; fa-bluetooth-b</p>
+    },
+    {
+      value: "fa fa-percent",
+      label: <p>&#xf295; fa-percent</p>
+    },
+    {
+      value: "fa fa-gitlab",
+      label: <p>&#xf296; fa-gitlab</p>
+    },
+    {
+      value: "fa fa-wpbeginner",
+      label: <p>&#xf297; fa-wpbeginner</p>
+    },
+    {
+      value: "fa fa-wpforms",
+      label: <p>&#xf298; fa-wpforms</p>
+    },
+    {
+      value: "fa fa-envira",
+      label: <p>&#xf299; fa-envira</p>
+    },
+    {
+      value: "fa fa-universal-access",
+      label: <p>&#xf29a; fa-universal-access</p>
+    },
+    {
+      value: "fa fa-wheelchair-alt",
+      label: <p>&#xf29b; fa-wheelchair-alt</p>
+    },
+    {
+      value: "fa fa-question-circle-o",
+      label: <p>&#xf29c; fa-question-circle-o</p>
+    },
+    {
+      value: "fa fa-blind",
+      label: <p>&#xf29d; fa-blind</p>
+    },
+    {
+      value: "fa fa-audio-description",
+      label: <p>&#xf29e; fa-audio-description</p>
+    },
+    {
+      value: "fa fa-volume-control-phone",
+      label: <p>&#xf2a0; fa-volume-control-phone</p>
+    },
+    {
+      value: "fa fa-braille",
+      label: <p>&#xf2a1; fa-braille</p>
+    },
+    {
+      value: "fa fa-assistive-listening-systems",
+      label: <p>&#xf2a2; fa-assistive-listening-systems</p>
+    },
+    {
+      value: "fa fa-american-sign-language-interpreting",
+      label: <p>&#xf2a3; fa-american-sign-language-interpreting</p>
+    },
+    {
+      value: "fa fa-deaf",
+      label: <p>&#xf2a4; fa-deaf</p>
+    },
+    {
+      value: "fa fa-glide",
+      label: <p>&#xf2a5; fa-glide</p>
+    },
+    {
+      value: "fa fa-glide-g",
+      label: <p>&#xf2a6; fa-glide-g</p>
+    },
+    {
+      value: "fa fa-sign-language",
+      label: <p>&#xf2a7; fa-sign-language</p>
+    },
+    {
+      value: "fa fa-low-vision",
+      label: <p>&#xf2a8; fa-low-vision</p>
+    },
+    {
+      value: "fa fa-viadeo",
+      label: <p>&#xf2a9; fa-viadeo</p>
+    },
+    {
+      value: "fa fa-viadeo-square",
+      label: <p>&#xf2aa; fa-viadeo-square</p>
+    },
+    {
+      value: "fa fa-snapchat",
+      label: <p>&#xf2ab; fa-snapchat</p>
+    },
+    {
+      value: "fa fa-snapchat-ghost",
+      label: <p>&#xf2ac; fa-snapchat-ghost</p>
+    },
+    {
+      value: "fa fa-snapchat-square",
+      label: <p>&#xf2ad; fa-snapchat-square</p>
+    },
+    {
+      value: "fa fa-pied-piper",
+      label: <p>&#xf2ae; fa-pied-piper</p>
+    },
+    {
+      value: "fa fa-first-order",
+      label: <p>&#xf2b0; fa-first-order</p>
+    },
+    {
+      value: "fa fa-yoast",
+      label: <p>&#xf2b1; fa-yoast</p>
+    },
+    {
+      value: "fa fa-themeisle",
+      label: <p>&#xf2b2; fa-themeisle</p>
+    },
+    {
+      value: "fa fa-google-plus-official",
+      label: <p>&#xf2b3; fa-google-plus-official</p>
+    },
+    {
+      value: "fa fa-font-awesome",
+      label: <p>&#xf2b4; fa-font-awesome</p>
+    }
+  ];
 
-
-
-
-
-
+  return (
+    <SelectControl
+      label={__("Choose Icon")}
+      options={"fa" === type ? ICONS : DASHICONS}
+      value={icon}
+      onChange={onChangeIcon}
+    />
+  );
+}
+*/
 
 /***/ }),
 /* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_dual_heading__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_pricing_table__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_maps__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_testimonials__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_count_up__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon__ = __webpack_require__(13);
+
+
+
+
+
+
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(1);
 
 
 
@@ -6879,12 +4352,12 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* dualHeading */]) {
 }
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(1);
 
 
 
@@ -7103,31 +4576,31 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
         label: "Effect 6"
       }];
       var WEIGHT = [{
-        value: "100",
+        value: 100,
         label: "100"
       }, {
-        value: "200",
+        value: 200,
         label: "200"
       }, {
-        value: "300",
+        value: 300,
         label: "300"
       }, {
-        value: "400",
+        value: 400,
         label: "Normal"
       }, {
-        value: "500",
+        value: 500,
         label: "500"
       }, {
-        value: "600",
+        value: 600,
         label: "600"
       }, {
-        value: "700",
+        value: 700,
         label: "700"
       }, {
-        value: "800",
+        value: 800,
         label: "800"
       }, {
-        value: "900",
+        value: 900,
         label: "Bold"
       }];
       var HOVER = [{
@@ -7375,8 +4848,11 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
               return setAttributes({ titleSize: newSize });
             }
           }),
-          wp.element.createElement(SelectControl, {
+          wp.element.createElement(RangeControl, {
             label: __("Font Weight"),
+            min: "100",
+            max: "900",
+            step: "100",
             options: WEIGHT,
             value: titleWeight,
             onChange: function onChange(newWeight) {
@@ -7412,8 +4888,11 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
               return setAttributes({ descSize: newSize });
             }
           }),
-          wp.element.createElement(SelectControl, {
+          wp.element.createElement(RangeControl, {
             label: __("Font Weight"),
+            min: "100",
+            max: "900",
+            step: "100",
             options: WEIGHT,
             value: descWeight,
             onChange: function onChange(newWeight) {
@@ -7638,12 +5117,12 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
 }
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(1);
 
 
 
@@ -9384,7 +6863,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
 }
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10066,13 +7545,13 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* maps */]) {
 }
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__settings__ = __webpack_require__(0);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -10786,7 +8265,7 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["h" /* testimonial */]) {
 }
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10814,9 +8293,6 @@ var DefaultImage = function (_Component) {
   _createClass(DefaultImage, [{
     key: "render",
     value: function render() {
-      var className = this.props.className;
-
-
       return wp.element.createElement("img", { src: imgURL });
     }
   }]);
@@ -10827,7 +8303,7 @@ var DefaultImage = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (DefaultImage);
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10889,7 +8365,7 @@ var PremiumLowerQuote = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10952,12 +8428,13 @@ var PremiumUpperQuote = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_icon__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_icon__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_icon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_premium_icon__);
 
 
 
@@ -11486,7 +8963,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* countUp */]) {
               return setAttributes({ icon: newType });
             }
           }),
-          "icon" === icon && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_icon__["a" /* default */], {
+          "icon" === icon && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_icon___default.a, {
             type: 1 == __WEBPACK_IMPORTED_MODULE_0__settings__["a" /* FontAwesomeEnabled */] ? "fa" : "dash",
             icon: faIcon,
             onChangeIcon: function onChangeIcon(newIcon) {
@@ -11804,14 +9281,17 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* countUp */]) {
 }
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_icon__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_margin__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_padding__ = __webpack_require__(15);
 
+
+//import PremiumIcon from "../../components/premium-icon";
 
 
 
@@ -11825,7 +9305,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
       PanelBody = _wp$components.PanelBody,
       Toolbar = _wp$components.Toolbar,
       SelectControl = _wp$components.SelectControl,
-      RangeControl = _wp$components.RangeControl;
+      RangeControl = _wp$components.RangeControl,
+      TextControl = _wp$components.TextControl;
   var _wp$editor = wp.editor,
       InspectorControls = _wp$editor.InspectorControls,
       PanelColorSettings = _wp$editor.PanelColorSettings;
@@ -11842,7 +9323,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
       },
       selectedIcon: {
         type: "string",
-        default: "dashicons dashicons-admin-customizer"
+        default: "dashicons-admin-site"
       },
       align: {
         type: "string",
@@ -11988,12 +9469,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
           iconSize = _props$attributes.iconSize,
           iconColor = _props$attributes.iconColor,
           iconBack = _props$attributes.iconBack,
-          padding = _props$attributes.padding,
           paddingT = _props$attributes.paddingT,
           paddingR = _props$attributes.paddingR,
           paddingB = _props$attributes.paddingB,
           paddingL = _props$attributes.paddingL,
-          margin = _props$attributes.margin,
           marginT = _props$attributes.marginT,
           marginR = _props$attributes.marginR,
           marginB = _props$attributes.marginB,
@@ -12016,6 +9495,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
           wrapMarginB = _props$attributes.wrapMarginB,
           wrapMarginL = _props$attributes.wrapMarginL;
 
+      var iconClass = "fa" === iconType ? "fa fa-" + selectedIcon : "dashicons " + selectedIcon;
       var EFFECTS = [{
         value: "none",
         label: __("None")
@@ -12047,60 +9527,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
       }];
 
       var ALIGNS = ["left", "center", "right"];
-      var DIRECTIONS = ["up", "right", "down", "left"];
 
-      var getValue = function getValue(direction, valuesArr) {
-        var value = void 0;
-
-        switch (direction) {
-          case "up":
-            value = valuesArr[0];
-            break;
-          case "right":
-            value = valuesArr[1];
-            break;
-          case "down":
-            value = valuesArr[2];
-            break;
-          case "left":
-            value = valuesArr[3];
-            break;
-        }
-        return value;
-      };
-      var setValue = function setValue(value, type, direction) {
-        if ("padding" === type) {
-          switch (direction) {
-            case "up":
-              setAttributes({ paddingT: value });
-              break;
-            case "right":
-              setAttributes({ paddingR: value });
-              break;
-            case "down":
-              setAttributes({ paddingB: value });
-              break;
-            case "left":
-              setAttributes({ paddingL: value });
-              break;
-          }
-        } else {
-          switch (direction) {
-            case "up":
-              setAttributes({ marginT: value });
-              break;
-            case "right":
-              setAttributes({ marginR: value });
-              break;
-            case "down":
-              setAttributes({ marginB: value });
-              break;
-            case "left":
-              setAttributes({ marginL: value });
-              break;
-          }
-        }
-      };
       return [isSelected && wp.element.createElement(
         InspectorControls,
         { key: "inspector" },
@@ -12115,10 +9542,24 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
               return setAttributes({ iconType: newType });
             }
           }),
-          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_icon__["a" /* default */], {
-            type: __WEBPACK_IMPORTED_MODULE_0__settings__["a" /* FontAwesomeEnabled */] ? iconType : "dash",
-            icon: selectedIcon,
-            onChangeIcon: function onChangeIcon(newIcon) {
+          ("" !== selectedIcon || "undefined" !== typeof selectedIcon) && wp.element.createElement(
+            "div",
+            { className: "premium-icon__sidebar_icon" },
+            wp.element.createElement("i", { className: iconClass })
+          ),
+          wp.element.createElement(TextControl, {
+            label: __("Icon Class"),
+            value: selectedIcon,
+            help: [__("Get icon class from"), wp.element.createElement(
+              "a",
+              {
+                href: "fa" === iconType ? "https://fontawesome.com/v4.7.0/icons/" : "https://developer.wordpress.org/resource/dashicons/",
+                target: "_blank"
+              },
+              "\xA0",
+              __("here")
+            ), __(" , for example: "), "fa" === iconType ? "address-book" : "dashicons-admin-site"],
+            onChange: function onChange(newIcon) {
               return setAttributes({ selectedIcon: newIcon });
             }
           }),
@@ -12175,54 +9616,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
               label: __("Background Color")
             }]
           }),
-          wp.element.createElement(
-            "p",
-            null,
-            __("Padding")
-          ),
-          wp.element.createElement(Toolbar, {
-            controls: DIRECTIONS.map(function (paddingDir) {
-              return {
-                icon: "arrow-" + paddingDir + "-alt",
-                isActive: paddingDir === padding,
-                onClick: function onClick() {
-                  return setAttributes({ padding: paddingDir });
-                }
-              };
-            })
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Padding ") + padding[0].toUpperCase() + padding.slice(1),
-            value: getValue(padding, [paddingT, paddingR, paddingB, paddingL]),
-            onChange: function onChange(value) {
-              return setValue(value, "padding", padding);
-            }
-          }),
-          wp.element.createElement(
-            "p",
-            null,
-            __("Margin")
-          ),
-          wp.element.createElement(Toolbar, {
-            title: __("Margin"),
-            controls: DIRECTIONS.map(function (marginDir) {
-              return {
-                icon: "arrow-" + marginDir + "-alt",
-                isActive: marginDir === margin,
-                onClick: function onClick() {
-                  return setAttributes({ margin: marginDir });
-                }
-              };
-            })
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Margin ") + margin[0].toUpperCase() + margin.slice(1),
-            value: getValue(margin, [marginT, marginR, marginB, marginL]),
-            onChange: function onChange(value) {
-              return setValue(value, "margin", margin);
-            }
-          }),
-          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_border__["a" /* default */], {
             borderType: borderType,
             borderWidth: borderWidth,
             borderColor: borderColor,
@@ -12239,6 +9633,42 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
             onChangeRadius: function onChangeRadius(newrRadius) {
               return setAttributes({ borderRadius: newrRadius });
             }
+          }),
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_margin__["a" /* default */], {
+            marginTop: marginT,
+            marginRight: marginR,
+            marginBottom: marginB,
+            marginLeft: marginL,
+            onChangeMarTop: function onChangeMarTop(value) {
+              return setAttributes({ marginT: value });
+            },
+            onChangeMarRight: function onChangeMarRight(value) {
+              return setAttributes({ marginR: value });
+            },
+            onChangeMarBottom: function onChangeMarBottom(value) {
+              return setAttributes({ marginB: value });
+            },
+            onChangeMarLeft: function onChangeMarLeft(value) {
+              return setAttributes({ marginL: value });
+            }
+          }),
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_padding__["a" /* default */], {
+            marginTop: paddingT,
+            marginRight: paddingR,
+            marginBottom: paddingB,
+            marginLeft: paddingL,
+            onChangePadTop: function onChangePadTop(value) {
+              return setAttributes({ paddingT: value });
+            },
+            onChangePadRight: function onChangePadRight(value) {
+              return setAttributes({ paddingR: value });
+            },
+            onChangePadBottom: function onChangePadBottom(value) {
+              return setAttributes({ paddingB: value });
+            },
+            onChangePadLeft: function onChangePadLeft(value) {
+              return setAttributes({ paddingL: value });
+            }
           })
         ),
         wp.element.createElement(
@@ -12253,7 +9683,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
               label: __("Background Color")
             }]
           }),
-          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_border__["a" /* default */], {
             borderType: wrapBorderType,
             borderWidth: wrapBorderWidth,
             borderColor: wrapBorderColor,
@@ -12269,6 +9699,42 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
             },
             onChangeRadius: function onChangeRadius(newrRadius) {
               return setAttributes({ wrapBorderRadius: newrRadius });
+            }
+          }),
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_margin__["a" /* default */], {
+            marginTop: wrapMarginT,
+            marginRight: wrapMarginR,
+            marginBottom: wrapMarginB,
+            marginLeft: wrapMarginL,
+            onChangeMarTop: function onChangeMarTop(value) {
+              return setAttributes({ wrapMarginT: value });
+            },
+            onChangeMarRight: function onChangeMarRight(value) {
+              return setAttributes({ wrapMarginR: value });
+            },
+            onChangeMarBottom: function onChangeMarBottom(value) {
+              return setAttributes({ wrapMarginB: value });
+            },
+            onChangeMarLeft: function onChangeMarLeft(value) {
+              return setAttributes({ wrapMarginL: value });
+            }
+          }),
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_padding__["a" /* default */], {
+            marginTop: wrapPaddingT,
+            marginRight: wrapPaddingR,
+            marginBottom: wrapPaddingB,
+            marginLeft: wrapPaddingL,
+            onChangePadTop: function onChangePadTop(value) {
+              return setAttributes({ wrapPaddingT: value });
+            },
+            onChangePadRight: function onChangePadRight(value) {
+              return setAttributes({ wrapPaddingR: value });
+            },
+            onChangePadBottom: function onChangePadBottom(value) {
+              return setAttributes({ wrapPaddingB: value });
+            },
+            onChangePadLeft: function onChangePadLeft(value) {
+              return setAttributes({ wrapPaddingL: value });
             }
           })
         )
@@ -12299,7 +9765,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
           __("Please Enable Font Awesome Icons from Plugin settings")
         ),
         (iconType === "dash" || 1 == __WEBPACK_IMPORTED_MODULE_0__settings__["a" /* FontAwesomeEnabled */]) && wp.element.createElement("i", {
-          className: className + " " + selectedIcon + " " + className + "__" + hoverEffect,
+          className: className + " " + iconClass + " " + className + "__" + hoverEffect,
           style: {
             color: iconColor,
             backgroundColor: iconBack,
@@ -12327,6 +9793,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
           hoverEffect = _props$attributes2.hoverEffect,
           iconSize = _props$attributes2.iconSize,
           iconColor = _props$attributes2.iconColor,
+          iconType = _props$attributes2.iconType,
           iconBack = _props$attributes2.iconBack,
           paddingT = _props$attributes2.paddingT,
           paddingR = _props$attributes2.paddingR,
@@ -12354,6 +9821,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
           wrapMarginB = _props$attributes2.wrapMarginB,
           wrapMarginL = _props$attributes2.wrapMarginL;
 
+      var iconClass = "fa" === iconType ? "fa fa-" + selectedIcon : "dashicons " + selectedIcon;
       return wp.element.createElement(
         "div",
         {
@@ -12376,7 +9844,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
           }
         },
         wp.element.createElement("i", {
-          className: className + " " + selectedIcon + " " + className + "__" + hoverEffect,
+          className: className + " " + iconClass + " " + className + "__" + hoverEffect,
           style: {
             color: iconColor,
             backgroundColor: iconBack,
@@ -12401,82 +9869,118 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
 }
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumBorder;
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumMargin;
 var __ = wp.i18n.__;
 var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    SelectControl = _wp$components.SelectControl,
-    RangeControl = _wp$components.RangeControl;
-var PanelColorSettings = wp.editor.PanelColorSettings;
+var RangeControl = wp.components.RangeControl;
 
-function PremiumBorder(props) {
-  var borderType = props.borderType,
-      borderWidth = props.borderWidth,
-      borderColor = props.borderColor,
-      borderRadius = props.borderRadius,
-      _props$onChangeType = props.onChangeType,
-      onChangeType = _props$onChangeType === undefined ? function () {} : _props$onChangeType,
-      _props$onChangeWidth = props.onChangeWidth,
-      onChangeWidth = _props$onChangeWidth === undefined ? function () {} : _props$onChangeWidth,
-      _props$onChangeColor = props.onChangeColor,
-      onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
-      _props$onChangeRadius = props.onChangeRadius,
-      onChangeRadius = _props$onChangeRadius === undefined ? function () {} : _props$onChangeRadius;
+function PremiumMargin(props) {
+  var marginTop = props.marginTop,
+      marginRight = props.marginRight,
+      marginBottom = props.marginBottom,
+      marginLeft = props.marginLeft,
+      _props$onChangeMarTop = props.onChangeMarTop,
+      onChangeMarTop = _props$onChangeMarTop === undefined ? function () {} : _props$onChangeMarTop,
+      _props$onChangeMarRig = props.onChangeMarRight,
+      onChangeMarRight = _props$onChangeMarRig === undefined ? function () {} : _props$onChangeMarRig,
+      _props$onChangeMarBot = props.onChangeMarBottom,
+      onChangeMarBottom = _props$onChangeMarBot === undefined ? function () {} : _props$onChangeMarBot,
+      _props$onChangeMarLef = props.onChangeMarLeft,
+      onChangeMarLeft = _props$onChangeMarLef === undefined ? function () {} : _props$onChangeMarLef;
 
-  var BORDER = [{
-    value: "none",
-    label: "None"
-  }, {
-    value: "solid",
-    label: "Solid"
-  }, {
-    value: "double",
-    label: "Double"
-  }, {
-    value: "dotted",
-    label: "Dotted"
-  }, {
-    value: "dashed",
-    label: "Dashed"
-  }, {
-    value: "groove",
-    label: "Groove"
-  }];
   return wp.element.createElement(
     Fragment,
     null,
-    wp.element.createElement(SelectControl, {
-      label: __("Border Type"),
-      options: BORDER,
-      value: borderType,
-      onChange: onChangeType
-    }),
-    "none" != borderType && wp.element.createElement(RangeControl, {
-      label: __("Border Width"),
-      value: borderWidth,
-      min: "0",
-      max: "50",
-      onChange: onChangeWidth
-    }),
-    "none" != borderType && wp.element.createElement(PanelColorSettings, _extends({
-      colorSettings: [{
-        value: borderColor,
-        onChange: onChangeColor,
-        label: __("Border Color")
-      }]
-    }, props)),
     wp.element.createElement(RangeControl, {
-      label: __("Border Radius"),
-      value: borderRadius,
+      label: __("Margin Top (PX)"),
+      value: marginTop,
       min: "0",
       max: "150",
-      onChange: onChangeRadius
+      onChange: onChangeMarTop
+    }),
+    wp.element.createElement(RangeControl, {
+      label: __("Margin Right (PX)"),
+      value: marginRight,
+      min: "0",
+      max: "150",
+      onChange: onChangeMarRight
+    }),
+    wp.element.createElement(RangeControl, {
+      label: __("Margin Bottom (PX)"),
+      value: marginBottom,
+      min: "0",
+      max: "150",
+      onChange: onChangeMarBottom
+    }),
+    wp.element.createElement(RangeControl, {
+      label: __("Margin Left (PX)"),
+      value: marginLeft,
+      min: "0",
+      max: "150",
+      onChange: onChangeMarLeft
+    })
+  );
+}
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumPadding;
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var RangeControl = wp.components.RangeControl;
+
+
+function PremiumPadding(props) {
+  var paddingTop = props.paddingTop,
+      paddingRight = props.paddingRight,
+      paddingBottom = props.paddingBottom,
+      paddingLeft = props.paddingLeft,
+      _props$onChangePadTop = props.onChangePadTop,
+      onChangePadTop = _props$onChangePadTop === undefined ? function () {} : _props$onChangePadTop,
+      _props$onChangePadRig = props.onChangePadRight,
+      onChangePadRight = _props$onChangePadRig === undefined ? function () {} : _props$onChangePadRig,
+      _props$onChangePadBot = props.onChangePadBottom,
+      onChangePadBottom = _props$onChangePadBot === undefined ? function () {} : _props$onChangePadBot,
+      _props$onChangePadLef = props.onChangePadLeft,
+      onChangePadLeft = _props$onChangePadLef === undefined ? function () {} : _props$onChangePadLef;
+
+  return wp.element.createElement(
+    Fragment,
+    null,
+    wp.element.createElement(RangeControl, {
+      label: __("Padding Top (PX)"),
+      value: paddingTop,
+      min: "0",
+      max: "150",
+      onChange: onChangePadTop
+    }),
+    wp.element.createElement(RangeControl, {
+      label: __("Padding Right (PX)"),
+      value: paddingRight,
+      min: "0",
+      max: "150",
+      onChange: onChangePadRight
+    }),
+    wp.element.createElement(RangeControl, {
+      label: __("Padding Bottom (PX)"),
+      value: paddingBottom,
+      min: "0",
+      max: "150",
+      onChange: onChangePadBottom
+    }),
+    wp.element.createElement(RangeControl, {
+      label: __("Padding Left (PX)"),
+      value: paddingLeft,
+      min: "0",
+      max: "150",
+      onChange: onChangePadLeft
     })
   );
 }
