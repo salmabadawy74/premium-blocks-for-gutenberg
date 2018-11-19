@@ -4,7 +4,6 @@ jQuery(document).ready(function($) {
     let $counter = $(counter);
     let time = $counter.data("interval");
     let delay = $counter.data("delay");
-    console.log(time, delay);
     $counter.counterUp({
       delay: delay,
       time: time

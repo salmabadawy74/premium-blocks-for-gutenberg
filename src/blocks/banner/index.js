@@ -93,7 +93,7 @@ if (banner) {
       },
       opacity: {
         type: "number",
-        default: "100"
+        default: 50
       },
       borderType: {
         type: "string",
@@ -123,6 +123,9 @@ if (banner) {
       titleWeight: {
         type: "number"
       },
+      titleBack: {
+        type: "string"
+      },
       descColor: {
         type: "string",
         default: "#000"
@@ -150,10 +153,13 @@ if (banner) {
         source: "attribute",
         attribute: "href",
         selector: ".premium-banner__link"
+      },
+      sepColor: {
+        type: "string"
       }
     },
     edit: props => {
-      const { isSelected, setAttributes } = props;
+      const { isSelected, setAttributes, clientId } = props;
       const {
         imageID,
         imageURL,
@@ -178,13 +184,15 @@ if (banner) {
         titleSize,
         titleLine,
         titleWeight,
+        titleBack,
         descColor,
         descSize,
         descLine,
         descWeight,
         urlCheck,
         url,
-        target
+        target,
+        sepColor
       } = props.attributes;
       const ALIGNS = [
         {
@@ -382,12 +390,12 @@ if (banner) {
                     value: background,
                     onChange: colorValue =>
                       setAttributes({ background: colorValue }),
-                    label: __("Background Color")
+                    label: __("Overlay Color")
                   }
                 ]}
               />
               <RangeControl
-                label={__("Opacity")}
+                label={__("Overlay Opacity")}
                 value={opacity}
                 min="1"
                 max="100"
@@ -475,6 +483,30 @@ if (banner) {
                 value={titleLine}
                 onChange={newValue => setAttributes({ titleLine: newValue })}
               />
+              {"effect3" == effect && (
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: sepColor,
+                      onChange: colorValue =>
+                        setAttributes({ sepColor: colorValue }),
+                      label: __("Separator Color")
+                    }
+                  ]}
+                />
+              )}
+              {"effect2" == effect && (
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: titleBack,
+                      onChange: colorValue =>
+                        setAttributes({ titleBack: colorValue }),
+                      label: __("Background Color")
+                    }
+                  ]}
+                />
+              )}
             </PanelBody>
             <PanelBody title={__("Description Settings")} initialOpen={false}>
               <PanelColorSettings
@@ -510,12 +542,29 @@ if (banner) {
             </PanelBody>
           </InspectorControls>
         ),
-        <div className={`${className} ${className}__responsive_${responsive}`}>
+        <div
+          id={`premium-banner-${clientId}`}
+          className={`${className} ${className}__responsive_${responsive}`}
+        >
+          <style
+            dangerouslySetInnerHTML={{
+              __html: [
+                `#premium-banner-${clientId} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                `background: ${sepColor}`,
+                "}",
+                `#premium-banner-${clientId} .premium-banner__inner {`,
+                `background: ${background}`,
+                "}",
+                `#premium-banner-${clientId} .premium-banner__img.premium-banner__active {`,
+                `opacity: ${opacity / 100} `,
+                "}"
+              ].join("\n")
+            }}
+          />
           {imageURL && (
             <div
               className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
               style={{
-                backgroundColor: background,
                 border: borderType,
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius + "px",
@@ -533,13 +582,15 @@ if (banner) {
                   className={`${className}__img`}
                   alt="Banner Image"
                   src={imageURL}
-                  style={{
-                    opacity: opacity / 100
-                  }}
                 />
               </div>
 
-              <div className={`${className}__content`}>
+              <div
+                className={`${className}__content`}
+                style={{
+                  background: "effect2" == effect ? titleBack : "transparent"
+                }}
+              >
                 <div
                   className={`${className}__title_wrap`}
                   style={{
@@ -587,6 +638,7 @@ if (banner) {
       ];
     },
     save: props => {
+      const { clientId } = props;
       const {
         imageURL,
         title,
@@ -607,6 +659,7 @@ if (banner) {
         borderRadius,
         borderColor,
         titleColor,
+        titleBack,
         titleSize,
         titleWeight,
         titleLine,
@@ -616,15 +669,33 @@ if (banner) {
         descLine,
         urlCheck,
         url,
-        target
+        target,
+        sepColor
       } = props.attributes;
 
       return (
-        <div className={`${className} ${className}__responsive_${responsive}`}>
+        <div
+          id={`premium-banner-${clientId}`}
+          className={`${className} ${className}__responsive_${responsive}`}
+        >
+          <style
+            dangerouslySetInnerHTML={{
+              __html: [
+                `#premium-banner-${clientId} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                `background: ${sepColor}`,
+                "}",
+                `#premium-banner-${clientId} .premium-banner__inner {`,
+                `background: ${background}`,
+                "}",
+                `#premium-banner-${clientId} .premium-banner__img:hover {`,
+                `opacity: ${opacity / 100} `,
+                "}"
+              ].join("\n")
+            }}
+          />
           <div
             className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
             style={{
-              backgroundColor: background,
               border: borderType,
               borderWidth: borderWidth + "px",
               borderRadius: borderRadius + "px",
@@ -642,13 +713,15 @@ if (banner) {
                 className={`${className}__img`}
                 alt="Banner Image"
                 src={imageURL}
-                style={{
-                  opacity: opacity / 100
-                }}
               />
             </div>
 
-            <div className={`${className}__content`}>
+            <div
+              className={`${className}__content`}
+              style={{
+                background: "effect2" == effect ? titleBack : "transparent"
+              }}
+            >
               <div
                 className={`${className}__title_wrap`}
                 style={{

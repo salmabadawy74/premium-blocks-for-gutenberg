@@ -102,6 +102,8 @@ class Premium_Blocks_Integration {
         $is_maps_enabled = self::$blocks['maps'];
 
         $is_counter_enabled = self::$blocks['countUp'];
+        
+        $is_banner_enabled = self::$blocks['banner'];
 
         wp_enqueue_style(
             'pbg-frontend',
@@ -114,6 +116,15 @@ class Premium_Blocks_Integration {
             wp_enqueue_style(
                 'pbg-fontawesome',
                 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+            );
+        }
+        
+        if( $is_banner_enabled ) {
+            wp_enqueue_script(
+                'banner-js',
+                PREMIUM_BLOCKS_URL . 'src/blocks/banner/assets/banner.js',
+                array('jquery'),
+                PREMIUM_BLOCKS_VERSION
             );
         }
         

@@ -186,7 +186,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_maps__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_testimonials__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_count_up__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon__ = __webpack_require__(12);
 
 
 
@@ -953,7 +953,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
       },
       opacity: {
         type: "number",
-        default: "100"
+        default: 50
       },
       borderType: {
         type: "string",
@@ -983,6 +983,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
       titleWeight: {
         type: "number"
       },
+      titleBack: {
+        type: "string"
+      },
       descColor: {
         type: "string",
         default: "#000"
@@ -1010,11 +1013,15 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
         source: "attribute",
         attribute: "href",
         selector: ".premium-banner__link"
+      },
+      sepColor: {
+        type: "string"
       }
     },
     edit: function edit(props) {
       var isSelected = props.isSelected,
-          setAttributes = props.setAttributes;
+          setAttributes = props.setAttributes,
+          clientId = props.clientId;
       var _props$attributes = props.attributes,
           imageID = _props$attributes.imageID,
           imageURL = _props$attributes.imageURL,
@@ -1039,13 +1046,15 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
           titleSize = _props$attributes.titleSize,
           titleLine = _props$attributes.titleLine,
           titleWeight = _props$attributes.titleWeight,
+          titleBack = _props$attributes.titleBack,
           descColor = _props$attributes.descColor,
           descSize = _props$attributes.descSize,
           descLine = _props$attributes.descLine,
           descWeight = _props$attributes.descWeight,
           urlCheck = _props$attributes.urlCheck,
           url = _props$attributes.url,
-          target = _props$attributes.target;
+          target = _props$attributes.target,
+          sepColor = _props$attributes.sepColor;
 
       var ALIGNS = [{
         value: "flex-start",
@@ -1228,11 +1237,11 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
               onChange: function onChange(colorValue) {
                 return setAttributes({ background: colorValue });
               },
-              label: __("Background Color")
+              label: __("Overlay Color")
             }]
           }),
           wp.element.createElement(RangeControl, {
-            label: __("Opacity"),
+            label: __("Overlay Opacity"),
             value: opacity,
             min: "1",
             max: "100",
@@ -1340,6 +1349,24 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
             onChange: function onChange(newValue) {
               return setAttributes({ titleLine: newValue });
             }
+          }),
+          "effect3" == effect && wp.element.createElement(PanelColorSettings, {
+            colorSettings: [{
+              value: sepColor,
+              onChange: function onChange(colorValue) {
+                return setAttributes({ sepColor: colorValue });
+              },
+              label: __("Separator Color")
+            }]
+          }),
+          "effect2" == effect && wp.element.createElement(PanelColorSettings, {
+            colorSettings: [{
+              value: titleBack,
+              onChange: function onChange(colorValue) {
+                return setAttributes({ titleBack: colorValue });
+              },
+              label: __("Background Color")
+            }]
           })
         ),
         wp.element.createElement(
@@ -1383,13 +1410,20 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
         )
       ), wp.element.createElement(
         "div",
-        { className: className + " " + className + "__responsive_" + responsive },
+        {
+          id: "premium-banner-" + clientId,
+          className: className + " " + className + "__responsive_" + responsive
+        },
+        wp.element.createElement("style", {
+          dangerouslySetInnerHTML: {
+            __html: ["#premium-banner-" + clientId + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + clientId + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + clientId + " .premium-banner__img.premium-banner__active {", "opacity: " + opacity / 100 + " ", "}"].join("\n")
+          }
+        }),
         imageURL && wp.element.createElement(
           "div",
           {
             className: className + "__inner " + className + "__min " + className + "__" + effect + " " + className + "__" + hoverEffect + " hover_" + hovered,
             style: {
-              backgroundColor: background,
               border: borderType,
               borderWidth: borderWidth + "px",
               borderRadius: borderRadius + "px",
@@ -1408,15 +1442,17 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
             wp.element.createElement("img", {
               className: className + "__img",
               alt: "Banner Image",
-              src: imageURL,
-              style: {
-                opacity: opacity / 100
-              }
+              src: imageURL
             })
           ),
           wp.element.createElement(
             "div",
-            { className: className + "__content" },
+            {
+              className: className + "__content",
+              style: {
+                background: "effect2" == effect ? titleBack : "transparent"
+              }
+            },
             wp.element.createElement(
               "div",
               {
@@ -1470,6 +1506,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
       )];
     },
     save: function save(props) {
+      var clientId = props.clientId;
       var _props$attributes2 = props.attributes,
           imageURL = _props$attributes2.imageURL,
           title = _props$attributes2.title,
@@ -1490,6 +1527,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
           borderRadius = _props$attributes2.borderRadius,
           borderColor = _props$attributes2.borderColor,
           titleColor = _props$attributes2.titleColor,
+          titleBack = _props$attributes2.titleBack,
           titleSize = _props$attributes2.titleSize,
           titleWeight = _props$attributes2.titleWeight,
           titleLine = _props$attributes2.titleLine,
@@ -1499,18 +1537,26 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
           descLine = _props$attributes2.descLine,
           urlCheck = _props$attributes2.urlCheck,
           url = _props$attributes2.url,
-          target = _props$attributes2.target;
+          target = _props$attributes2.target,
+          sepColor = _props$attributes2.sepColor;
 
 
       return wp.element.createElement(
         "div",
-        { className: className + " " + className + "__responsive_" + responsive },
+        {
+          id: "premium-banner-" + clientId,
+          className: className + " " + className + "__responsive_" + responsive
+        },
+        wp.element.createElement("style", {
+          dangerouslySetInnerHTML: {
+            __html: ["#premium-banner-" + clientId + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + clientId + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + clientId + " .premium-banner__img:hover {", "opacity: " + opacity / 100 + " ", "}"].join("\n")
+          }
+        }),
         wp.element.createElement(
           "div",
           {
             className: className + "__inner " + className + "__min " + className + "__" + effect + " " + className + "__" + hoverEffect + " hover_" + hovered,
             style: {
-              backgroundColor: background,
               border: borderType,
               borderWidth: borderWidth + "px",
               borderRadius: borderRadius + "px",
@@ -1529,15 +1575,17 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
             wp.element.createElement("img", {
               className: className + "__img",
               alt: "Banner Image",
-              src: imageURL,
-              style: {
-                opacity: opacity / 100
-              }
+              src: imageURL
             })
           ),
           wp.element.createElement(
             "div",
-            { className: className + "__content" },
+            {
+              className: className + "__content",
+              style: {
+                background: "effect2" == effect ? titleBack : "transparent"
+              }
+            },
             wp.element.createElement(
               "div",
               {
@@ -3365,7 +3413,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* maps */]) {
       _this.state = {
         thisAddress: "",
         thisMap: null,
-        thisMarker: null,
         thisInfo: null,
         fetching: false
       };
@@ -3403,7 +3450,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* maps */]) {
 
         var _state = this.state,
             thisMap = _state.thisMap,
-            thisMarker = _state.thisMarker,
             thisInfo = _state.thisInfo;
         var _props$attributes = this.props.attributes,
             mapID = _props$attributes.mapID,
@@ -5762,15 +5808,14 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* countUp */]) {
 }
 
 /***/ }),
-/* 12 */,
-/* 13 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_margin__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_padding__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_margin__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_padding__ = __webpack_require__(14);
 
 
 
@@ -6350,7 +6395,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
 }
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6408,7 +6453,7 @@ function PremiumMargin(props) {
 }
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

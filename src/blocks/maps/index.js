@@ -29,7 +29,6 @@ if (maps) {
       this.state = {
         thisAddress: "",
         thisMap: null,
-        thisMarker: null,
         thisInfo: null,
         fetching: false
       };
@@ -57,7 +56,7 @@ if (maps) {
       if (typeof google === "undefined" || !this.props.attributes.mapID)
         return null;
 
-      const { thisMap, thisMarker, thisInfo } = this.state;
+      const { thisMap, thisInfo } = this.state;
       const {
         mapID,
         mapStyle,
