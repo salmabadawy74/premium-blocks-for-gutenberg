@@ -1,6 +1,5 @@
 import { countUp } from "../settings";
 import { FontAwesomeEnabled } from "../settings";
-import PremiumIcon from "../../components/premium-icon";
 
 if (countUp) {
   const className = "premium-countup";
@@ -19,6 +18,7 @@ if (countUp) {
     IconButton
   } = wp.components;
   const { InspectorControls, PanelColorSettings, MediaUpload } = wp.editor;
+  const { Fragment } = wp.element;
 
   registerBlockType("premium/countup", {
     title: __("CountUp"),
@@ -30,11 +30,11 @@ if (countUp) {
         default: 500
       },
       time: {
-        type: "number",
+        type: "string",
         default: 1000
       },
       delay: {
-        type: "number",
+        type: "string",
         default: 10
       },
       align: {
@@ -111,6 +111,10 @@ if (countUp) {
       imageURL: {
         type: "string"
       },
+      iconType: {
+        type: "string",
+        default: "dash"
+      },
       iconCheck: {
         type: "boolean",
         default: true
@@ -155,7 +159,8 @@ if (countUp) {
         default: 500
       },
       faIcon: {
-        type: "string"
+        type: "string",
+        default: "dashicons-clock"
       }
     },
     edit: props => {
@@ -181,6 +186,7 @@ if (countUp) {
         titleWeight,
         imageID,
         imageURL,
+        iconType,
         iconCheck,
         prefix,
         prefixTxt,
@@ -197,44 +203,8 @@ if (countUp) {
         selfAlign,
         faIcon
       } = props.attributes;
-      const WEIGHT = [
-        {
-          value: "100",
-          label: "100"
-        },
-        {
-          value: "200",
-          label: "200"
-        },
-        {
-          value: "300",
-          label: "300"
-        },
-        {
-          value: "400",
-          label: "Normal"
-        },
-        {
-          value: "500",
-          label: "500"
-        },
-        {
-          value: "600",
-          label: "600"
-        },
-        {
-          value: "700",
-          label: "700"
-        },
-        {
-          value: "800",
-          label: "800"
-        },
-        {
-          value: "900",
-          label: "Bold"
-        }
-      ];
+      let iconClass =
+        "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
       const ICONS = [
         {
           value: "icon",
@@ -261,6 +231,16 @@ if (countUp) {
         {
           value: "column-reverse",
           label: "Reversed Column"
+        }
+      ];
+      const TYPE = [
+        {
+          value: "fa",
+          label: "Font Awesome Icon"
+        },
+        {
+          value: "dash",
+          label: "Dashicon"
         }
       ];
       const ALIGNS = ["left", "center", "right"];
@@ -362,9 +342,11 @@ if (countUp) {
                   }
                 ]}
               />
-              <SelectControl
+              <RangeControl
                 label={__("Font Weight")}
-                options={WEIGHT}
+                min="100"
+                max="900"
+                step="100"
                 value={numberWeight}
                 onChange={newWeight =>
                   setAttributes({ numberWeight: newWeight })
@@ -383,9 +365,11 @@ if (countUp) {
                   value={titleSize}
                   onChange={newValue => setAttributes({ titleSize: newValue })}
                 />
-                <SelectControl
+                <RangeControl
                   label={__("Font Weight")}
-                  options={WEIGHT}
+                  min="100"
+                  max="900"
+                  step="100"
                   value={titleWeight}
                   onChange={newWeight =>
                     setAttributes({ titleWeight: newWeight })
@@ -436,9 +420,11 @@ if (countUp) {
                     }
                   ]}
                 />
-                <SelectControl
+                <RangeControl
                   label={__("Font Weight")}
-                  options={WEIGHT}
+                  min="100"
+                  max="900"
+                  step="100"
                   value={prefixWeight}
                   onChange={newWeight =>
                     setAttributes({ prefixWeight: newWeight })
@@ -473,9 +459,11 @@ if (countUp) {
                     }
                   ]}
                 />
-                <SelectControl
+                <RangeControl
                   label={__("Font Weight")}
-                  options={WEIGHT}
+                  min="100"
+                  max="900"
+                  step="100"
                   value={suffixWeight}
                   onChange={newWeight =>
                     setAttributes({ suffixWeight: newWeight })
@@ -496,12 +484,44 @@ if (countUp) {
                   value={icon}
                   onChange={newType => setAttributes({ icon: newType })}
                 />
+                {("" !== faIcon || "undefined" !== typeof faIcon) &&
+                  "icon" === icon && (
+                    <div className="premium-icon__sidebar_icon">
+                      <i className={iconClass} />
+                    </div>
+                  )}
                 {"icon" === icon && (
-                  <PremiumIcon
-                    type={1 == FontAwesomeEnabled ? "fa" : "dash"}
-                    icon={faIcon}
-                    onChangeIcon={newIcon => setAttributes({ faIcon: newIcon })}
-                  />
+                  <Fragment>
+                    <SelectControl
+                      label={__("Icon Type")}
+                      value={iconType}
+                      options={TYPE}
+                      onChange={newType => setAttributes({ iconType: newType })}
+                    />
+                    <TextControl
+                      label={__("Icon Class")}
+                      value={faIcon}
+                      help={[
+                        __("Get icon class from"),
+                        <a
+                          href={
+                            "fa" === iconType
+                              ? "https://fontawesome.com/v4.7.0/icons/"
+                              : "https://developer.wordpress.org/resource/dashicons/"
+                          }
+                          target="_blank"
+                        >
+                          &nbsp;
+                          {__("here")}
+                        </a>,
+                        __(" , for example: "),
+                        "fa" === iconType
+                          ? "address-book"
+                          : "dashicons-admin-site"
+                      ]}
+                      onChange={newIcon => setAttributes({ faIcon: newIcon })}
+                    />
+                  </Fragment>
                 )}
                 {"img" === icon && imageURL && (
                   <img src={imageURL} width="100%" height="auto" />
@@ -553,6 +573,13 @@ if (countUp) {
             )}
           </InspectorControls>
         ),
+        <div>
+          {iconType === "fa" && 1 != FontAwesomeEnabled && iconCheck && (
+            <p className={`${className}__alert`}>
+              {__("Please Enable Font Awesome Icons from Plugin settings")}
+            </p>
+          )}
+        </div>,
         <div
           className={`${className}__wrap`}
           style={{
@@ -571,8 +598,8 @@ if (countUp) {
               }}
             >
               {"icon" === icon && (
-                <span
-                  className={`${className}__icon ${faIcon}`}
+                <i
+                  className={`${className}__icon ${iconClass}`}
                   style={{
                     fontSize: iconSize + "px",
                     color: iconColor
@@ -695,6 +722,7 @@ if (countUp) {
         suffixGap,
         iconCheck,
         icon,
+        iconType,
         imageURL,
         iconSize,
         iconColor,
@@ -708,6 +736,8 @@ if (countUp) {
         titleWeight,
         faIcon
       } = props.attributes;
+      let iconClass =
+        "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
       return (
         <div
           className={`${className}__wrap`}
@@ -727,8 +757,8 @@ if (countUp) {
               }}
             >
               {"icon" === icon && (
-                <span
-                  className={`${className}__icon ${faIcon}`}
+                <i
+                  className={`${className}__icon ${iconClass}`}
                   style={{
                     fontSize: iconSize + "px",
                     color: iconColor

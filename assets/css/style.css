@@ -928,7 +928,8 @@ a.premium-dheading-block__link:hover {
 }
 /**************** Premium Icon *************************/
 /*******************************************************/
-.premium-icon__alert {
+.premium-icon__alert,
+.premium-countup__alert {
   padding: 10px;
   color: #b94a48;
   background-color: #f2dede;

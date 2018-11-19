@@ -79,7 +79,8 @@ if (testimonial) {
         default: "H4"
       },
       text: {
-        source: "array",
+        type: "array",
+        source: "children",
         selector: ".premium-testimonial__text"
       },
       authorCom: {
@@ -454,12 +455,12 @@ if (testimonial) {
               <div className={`${className}__text_wrap`}>
                 <div>
                   <RichText
-                    tagName={"p"}
+                    tagName="p"
                     className={`${className}__text`}
-                    onChange={newText => setAttributes({ text: newText })}
                     value={text}
                     isSelected={false}
                     placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
+                    onChange={newText => setAttributes({ text: newText })}
                     style={{
                       color: bodyColor,
                       fontSize: bodySize + "px",
@@ -478,14 +479,13 @@ if (testimonial) {
                 <RichText
                   tagName={authorTag.toLowerCase()}
                   className={`${className}__author`}
-                  onChange={newText => setAttributes({ author: newText })}
                   value={author}
                   isSelected={false}
+                  onChange={newText => setAttributes({ author: newText })}
                   style={{
                     color: authorColor,
                     fontSize: authorSize + "px"
                   }}
-                  isSelected={false}
                 />
                 <span
                   className={`${className}__sep`}
@@ -586,7 +586,7 @@ if (testimonial) {
               <div className={`${className}__text_wrap`}>
                 <div>
                   <RichText.Content
-                    tagName={"p"}
+                    tagName="p"
                     className={`${className}__text`}
                     value={text}
                     style={{

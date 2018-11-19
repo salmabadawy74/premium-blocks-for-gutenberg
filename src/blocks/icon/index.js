@@ -1,6 +1,5 @@
 import { icon } from "../settings";
 import { FontAwesomeEnabled } from "../settings";
-//import PremiumIcon from "../../components/premium-icon";
 import PremiumBorder from "../../components/premium-border";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumPadding from "../../components/premium-padding";

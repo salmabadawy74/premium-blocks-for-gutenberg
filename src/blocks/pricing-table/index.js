@@ -476,44 +476,6 @@ if (pricingTable) {
           label: "Duration"
         }
       ];
-      const WEIGHT = [
-        {
-          value: "100",
-          label: "100"
-        },
-        {
-          value: "200",
-          label: "200"
-        },
-        {
-          value: "300",
-          label: "300"
-        },
-        {
-          value: "400",
-          label: "Normal"
-        },
-        {
-          value: "500",
-          label: "500"
-        },
-        {
-          value: "600",
-          label: "600"
-        },
-        {
-          value: "700",
-          label: "700"
-        },
-        {
-          value: "800",
-          label: "800"
-        },
-        {
-          value: "900",
-          label: "Bold"
-        }
-      ];
       const TYPE = [
         {
           value: "none",
@@ -581,9 +543,11 @@ if (pricingTable) {
                   max="80"
                   onChange={newSize => setAttributes({ titleSize: newSize })}
                 />
-                <SelectControl
+                <RangeControl
                   label={__("Font Weight")}
-                  options={WEIGHT}
+                  min="100"
+                  max="900"
+                  step="100"
                   value={titleWeight}
                   onChange={newWeight =>
                     setAttributes({ titleWeight: newWeight })
@@ -875,9 +839,11 @@ if (pricingTable) {
                   max="80"
                   onChange={newSize => setAttributes({ listSize: newSize })}
                 />
-                <SelectControl
+                <RangeControl
                   label={__("Font Weight")}
-                  options={WEIGHT}
+                  min="100"
+                  max="900"
+                  step="100"
                   value={listWeight}
                   onChange={newWeight =>
                     setAttributes({ listWeight: newWeight })
@@ -929,9 +895,11 @@ if (pricingTable) {
                   max="80"
                   onChange={newSize => setAttributes({ descSize: newSize })}
                 />
-                <SelectControl
+                <RangeControl
                   label={__("Font Weight")}
-                  options={WEIGHT}
+                  min="100"
+                  max="900"
+                  step="100"
                   value={descWeight}
                   onChange={newWeight =>
                     setAttributes({ descWeight: newWeight })
@@ -1010,9 +978,11 @@ if (pricingTable) {
                   max="80"
                   onChange={newSize => setAttributes({ btnSize: newSize })}
                 />
-                <SelectControl
+                <RangeControl
                   label={__("Font Weight")}
-                  options={WEIGHT}
+                  min="100"
+                  max="900"
+                  step="100"
                   value={btnWeight}
                   onChange={newWeight =>
                     setAttributes({ btnWeight: newWeight })
@@ -1024,7 +994,7 @@ if (pricingTable) {
                       value: btnBack,
                       onChange: newColor =>
                         setAttributes({ btnBack: newColor }),
-                      label: __("Text Color")
+                      label: __("Background Color")
                     }
                   ]}
                 />

@@ -171,7 +171,6 @@ if (dualHeading) {
         contentAlign,
         firstHeading,
         secondHeading,
-        titleTag,
         display,
         firstColor,
         firstBackground,

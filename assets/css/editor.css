@@ -86,9 +86,11 @@
   margin: 0;
   padding: 0;
 }
+
 /**************** Premium Icon *************************/
 /*******************************************************/
-#wpwrap .edit-post-visual-editor .premium-icon {
+#wpwrap .edit-post-visual-editor .premium-icon,
+#wpwrap .edit-post-visual-editor .premium-countup__icon {
   font-style: normal;
 }
 .premium-icon__sidebar_icon {

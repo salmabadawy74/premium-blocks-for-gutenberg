@@ -1,9 +1,9 @@
-const imgURL = PremiumBlocksSettings.defaultAuthImg;
+const placeHolder = PremiumBlocksSettings.defaultAuthImg;
 
 const { Component } = wp.element;
 
 export default class DefaultImage extends Component {
   render() {
-    return <img src={imgURL} />;
+    return <img src={placeHolder} />;
   }
 }
