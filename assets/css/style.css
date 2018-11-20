@@ -838,6 +838,9 @@ a.premium-dheading-block__link:hover {
   padding: 0;
   list-style-position: inside;
 }
+.premium-pricing-table .premium-pricing-table__list.list-check li:before {
+  content: "✓";
+}
 /**************** Premium Maps *************************/
 /*******************************************************/
 .premium-maps__wrap {

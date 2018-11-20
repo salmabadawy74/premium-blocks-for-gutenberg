@@ -1,5 +1,6 @@
 import { pricingTable } from "../settings";
 import PremiumBorder from "../../components/premium-border";
+import PremiumTypo from "../../components/premium-typo";
 
 if (pricingTable) {
   const blockClass = "premium-pricing-table";
@@ -7,6 +8,8 @@ if (pricingTable) {
   const { __ } = wp.i18n;
 
   const { registerBlockType } = wp.blocks;
+
+  const { Fragment } = wp.element;
 
   const {
     Toolbar,
@@ -76,6 +79,15 @@ if (pricingTable) {
       },
       titleLine: {
         type: "number"
+      },
+      titleLetter: {
+        type: "number"
+      },
+      titleStyle: {
+        type: "string"
+      },
+      titleUpper: {
+        type: "boolean"
       },
       titleWeight: {
         type: "number",
@@ -164,6 +176,9 @@ if (pricingTable) {
         type: "number",
         default: 20
       },
+      slashWeight: {
+        type: "number"
+      },
       currPrice: {
         type: "string",
         default: "$"
@@ -174,6 +189,9 @@ if (pricingTable) {
       currSize: {
         type: "number",
         default: 20
+      },
+      currWeight: {
+        type: "number"
       },
       valPrice: {
         type: "string",
@@ -186,6 +204,9 @@ if (pricingTable) {
         type: "number",
         default: 50
       },
+      valWeight: {
+        type: "number"
+      },
       divPrice: {
         type: "string",
         default: "/"
@@ -197,6 +218,9 @@ if (pricingTable) {
         type: "number",
         default: 20
       },
+      divWeight: {
+        type: "number"
+      },
       durPrice: {
         type: "string",
         default: "m"
@@ -207,6 +231,9 @@ if (pricingTable) {
       durSize: {
         type: "number",
         default: 20
+      },
+      durWeight: {
+        type: "number"
       },
       selectedStyle: {
         type: "string",
@@ -308,6 +335,18 @@ if (pricingTable) {
         type: "number",
         default: 500
       },
+      listItemsStyle: {
+        type: "string"
+      },
+      listLetter: {
+        type: "number"
+      },
+      listLine: {
+        type: "number"
+      },
+      listUpper: {
+        type: "boolean"
+      },
       listBack: {
         type: "string"
       },
@@ -367,6 +406,9 @@ if (pricingTable) {
         titleColor,
         titleSize,
         titleLine,
+        titleLetter,
+        titleStyle,
+        titleUpper,
         titleWeight,
         titleBack,
         titleMarginT,
@@ -390,22 +432,27 @@ if (pricingTable) {
         slashPrice,
         slashColor,
         slashSize,
+        slashWeight,
         slashV,
         currPrice,
         currColor,
         currSize,
+        currWeight,
         currV,
         valPrice,
         valColor,
         valSize,
+        valWeight,
         valV,
         divPrice,
         divColor,
         divSize,
+        divWeight,
         divV,
         durPrice,
         durColor,
         durSize,
+        durWeight,
         durV,
         selectedStyle,
         btnChecked,
@@ -433,6 +480,10 @@ if (pricingTable) {
         listColor,
         listWeight,
         listSize,
+        listItemsStyle,
+        listLetter,
+        listLine,
+        listUpper,
         listBack,
         listItems,
         listMarginT,
@@ -482,6 +533,10 @@ if (pricingTable) {
           label: "None"
         },
         {
+          value: "check",
+          label: "Check Mark"
+        },
+        {
           value: "disc",
           label: "Filled Circle"
         },
@@ -504,7 +559,16 @@ if (pricingTable) {
           label: "Left"
         }
       ];
-
+      const STYLE = [
+        {
+          value: "normal",
+          label: "Normal"
+        },
+        {
+          value: "italic",
+          label: "Italic"
+        }
+      ];
       return [
         isSelected && (
           <BlockControls key="controls">
@@ -516,83 +580,135 @@ if (pricingTable) {
         ),
         isSelected && (
           <InspectorControls key={"inspector"}>
+            <PanelBody title={__("Display Options")} initialOpen={false}>
+              <ToggleControl
+                label={__("Title")}
+                checked={titleChecked}
+                onChange={newValue => setAttributes({ titleChecked: newValue })}
+              />
+              <ToggleControl
+                label={__("Price")}
+                checked={priceChecked}
+                onChange={newValue => setAttributes({ priceChecked: newValue })}
+              />
+              <ToggleControl
+                label={__("Features")}
+                checked={listChecked}
+                onChange={newValue => setAttributes({ listChecked: newValue })}
+              />
+              <ToggleControl
+                label={__("Description")}
+                checked={descChecked}
+                onChange={newValue => setAttributes({ descChecked: newValue })}
+              />
+              <ToggleControl
+                label={__("Button")}
+                checked={btnChecked}
+                onChange={newValue => setAttributes({ btnChecked: newValue })}
+              />
+              <ToggleControl
+                label={__("Badge")}
+                checked={badgeChecked}
+                onChange={newValue => setAttributes({ badgeChecked: newValue })}
+              />
+            </PanelBody>
             {titleChecked && (
               <PanelBody title={__("Title")} initialOpen={false}>
-                <Toolbar
-                  controls={"123456".split("").map(tag => ({
-                    icon: "heading",
-                    isActive: "H" + tag === titleTag,
-                    onClick: () => setAttributes({ titleTag: "H" + tag }),
-                    subscript: tag
-                  }))}
-                />
-                <PanelColorSettings
-                  colorSettings={[
-                    {
-                      value: titleColor,
-                      onChange: newColor =>
-                        setAttributes({ titleColor: newColor }),
-                      label: __("Text Color")
+                <PanelBody title={__("Font")} initialOpen={false}>
+                  <Toolbar
+                    controls={"123456".split("").map(tag => ({
+                      icon: "heading",
+                      isActive: "H" + tag === titleTag,
+                      onClick: () => setAttributes({ titleTag: "H" + tag }),
+                      subscript: tag
+                    }))}
+                  />
+                  <PremiumTypo
+                    components={[
+                      "size",
+                      "weight",
+                      "style",
+                      "upper",
+                      "spacing",
+                      "line"
+                    ]}
+                    size={titleSize}
+                    weight={titleWeight}
+                    style={titleStyle}
+                    spacing={titleLetter}
+                    line={titleLine}
+                    upper={titleUpper}
+                    onChangeSize={newSize =>
+                      setAttributes({ titleSize: newSize })
                     }
-                  ]}
-                />
-                <RangeControl
-                  label={__("Font Size (PX)")}
-                  value={titleSize}
-                  min="10"
-                  max="80"
-                  onChange={newSize => setAttributes({ titleSize: newSize })}
-                />
-                <RangeControl
-                  label={__("Font Weight")}
-                  min="100"
-                  max="900"
-                  step="100"
-                  value={titleWeight}
-                  onChange={newWeight =>
-                    setAttributes({ titleWeight: newWeight })
-                  }
-                />
-                <RangeControl
-                  label={__("Line Height (PX)")}
-                  value={titleLine}
-                  onChange={newValue => setAttributes({ titleLine: newValue })}
-                />
-                <PanelColorSettings
-                  colorSettings={[
-                    {
-                      value: titleBack,
-                      onChange: newColor =>
-                        setAttributes({ titleBack: newColor }),
-                      label: __("Background Color")
+                    onChangeWeight={newWeight =>
+                      setAttributes({ titleWeight: newWeight })
                     }
-                  ]}
-                />
-                <RangeControl
-                  label={__("Margin Top (PX)")}
-                  value={titleMarginT}
-                  min="10"
-                  max="80"
-                  onChange={newSize => setAttributes({ titleMarginT: newSize })}
-                />
-                <RangeControl
-                  label={__("Margin Bottom (PX)")}
-                  value={titleMarginB}
-                  min="0"
-                  max="100"
-                  onChange={newMargin =>
-                    setAttributes({ titleMarginB: newMargin })
-                  }
-                />
-                <RangeControl
-                  label={__("Padding (PX)")}
-                  value={titlePadding}
-                  min="0"
-                  max="100"
-                  onChange={newPadding =>
-                    setAttributes({ titlePadding: newPadding })
-                  }
-                />
+                    onChangeStyle={newStyle =>
+                      setAttributes({ titleStyle: newStyle })
+                    }
+                    onChangeSpacing={newValue =>
+                      setAttributes({ titleLetter: newValue })
+                    }
+                    onChangeLine={newValue =>
+                      setAttributes({ titleLine: newValue })
+                    }
+                    onChangeUpper={check =>
+                      setAttributes({ titleUpper: check })
+                    }
+                  />
+                </PanelBody>
+                <PanelBody title={__("Colors")} initialOpen={false}>
+                  <PanelColorSettings
+                    colorSettings={[
+                      {
+                        value: titleColor,
+                        onChange: newColor =>
+                          setAttributes({ titleColor: newColor }),
+                        label: __("Text Color")
+                      }
+                    ]}
+                  />
+                  <PanelColorSettings
+                    colorSettings={[
+                      {
+                        value: titleBack,
+                        onChange: newColor =>
+                          setAttributes({ titleBack: newColor }),
+                        label: __("Background Color")
+                      }
+                    ]}
+                  />
+                </PanelBody>
+                <PanelBody title={__("Spacings")} initialOpen={false}>
+                  <RangeControl
+                    label={__("Margin Top (PX)")}
+                    value={titleMarginT}
+                    min="10"
+                    max="80"
+                    onChange={newSize =>
+                      setAttributes({ titleMarginT: newSize })
+                    }
+                  />
+                  <RangeControl
+                    label={__("Margin Bottom (PX)")}
+                    value={titleMarginB}
+                    min="0"
+                    max="100"
+                    onChange={newMargin =>
+                      setAttributes({ titleMarginB: newMargin })
+                    }
+                  />
+                  <RangeControl
+                    label={__("Padding (PX)")}
+                    value={titlePadding}
+                    min="0"
+                    max="100"
+                    onChange={newPadding =>
+                      setAttributes({ titlePadding: newPadding })
+                    }
+                  />
+                </PanelBody>
               </PanelBody>
             )}
             {priceChecked && (
@@ -622,159 +738,175 @@ if (pricingTable) {
                   value={durPrice}
                   onChange={value => setAttributes({ durPrice: value })}
                 />
-                <SelectControl
-                  label={__("Element to Style")}
-                  options={PRICE}
-                  value={selectedStyle}
-                  onChange={newElem =>
-                    setAttributes({ selectedStyle: newElem })
-                  }
-                />
-                {"slash" === selectedStyle && (
-                  <PanelColorSettings
-                    colorSettings={[
-                      {
-                        value: slashColor,
-                        onChange: newColor =>
-                          setAttributes({ slashColor: newColor }),
-                        label: __("Text Color")
-                      }
-                    ]}
-                  />
-                )}
-                {"slash" === selectedStyle && (
-                  <RangeControl
-                    label={__("Font Size (PX)")}
-                    value={slashSize}
-                    min="10"
-                    max="80"
-                    onChange={newSize => setAttributes({ slashSize: newSize })}
-                  />
-                )}
-                {"slash" === selectedStyle && (
+                <PanelBody title={__("Element to Style")} initialOpen={false}>
                   <SelectControl
-                    label={__("Vertical Align")}
-                    options={ALIGNS}
-                    value={slashV}
-                    onChange={newValue => setAttributes({ slashV: newValue })}
+                    label={__("Element to Style")}
+                    options={PRICE}
+                    value={selectedStyle}
+                    onChange={newElem =>
+                      setAttributes({ selectedStyle: newElem })
+                    }
                   />
-                )}
-                {"curr" === selectedStyle && (
-                  <PanelColorSettings
-                    colorSettings={[
-                      {
-                        value: currColor,
-                        onChange: newColor =>
-                          setAttributes({ currColor: newColor }),
-                        label: __("Text Color")
-                      }
-                    ]}
-                  />
-                )}
-                {"curr" === selectedStyle && (
-                  <RangeControl
-                    label={__("Font Size (PX)")}
-                    value={currSize}
-                    min="10"
-                    max="80"
-                    onChange={newSize => setAttributes({ currSize: newSize })}
-                  />
-                )}
-                {"curr" === selectedStyle && (
-                  <SelectControl
-                    label={__("Vertical Align")}
-                    options={ALIGNS}
-                    value={currV}
-                    onChange={newValue => setAttributes({ currV: newValue })}
-                  />
-                )}
-                {"price" === selectedStyle && (
-                  <PanelColorSettings
-                    colorSettings={[
-                      {
-                        value: valColor,
-                        onChange: newColor =>
-                          setAttributes({ valColor: newColor }),
-                        label: __("Text Color")
-                      }
-                    ]}
-                  />
-                )}
-                {"price" === selectedStyle && (
-                  <RangeControl
-                    label={__("Font Size (PX)")}
-                    value={valSize}
-                    min="10"
-                    max="80"
-                    onChange={newSize => setAttributes({ valSize: newSize })}
-                  />
-                )}
-                {"price" === selectedStyle && (
-                  <SelectControl
-                    label={__("Vertical Align")}
-                    options={ALIGNS}
-                    value={valV}
-                    onChange={newValue => setAttributes({ valV: newValue })}
-                  />
-                )}
-                {"divider" === selectedStyle && (
-                  <PanelColorSettings
-                    colorSettings={[
-                      {
-                        value: divColor,
-                        onChange: newColor =>
-                          setAttributes({ divColor: newColor }),
-                        label: __("Text Color")
-                      }
-                    ]}
-                  />
-                )}
-                {"divider" === selectedStyle && (
-                  <RangeControl
-                    label={__("Font Size (PX)")}
-                    value={divSize}
-                    min="10"
-                    max="80"
-                    onChange={newSize => setAttributes({ divSize: newSize })}
-                  />
-                )}
-                {"divider" === selectedStyle && (
-                  <SelectControl
-                    label={__("Vertical Align")}
-                    options={ALIGNS}
-                    value={divV}
-                    onChange={newValue => setAttributes({ divV: newValue })}
-                  />
-                )}
-                {"duration" === selectedStyle && (
-                  <PanelColorSettings
-                    colorSettings={[
-                      {
-                        value: durColor,
-                        onChange: newColor =>
-                          setAttributes({ durColor: newColor }),
-                        label: __("Text Color")
-                      }
-                    ]}
-                  />
-                )}
-                {"duration" === selectedStyle && (
-                  <RangeControl
-                    label={__("Font Size (PX)")}
-                    value={durSize}
-                    min="10"
-                    max="80"
-                    onChange={newSize => setAttributes({ durSize: newSize })}
-                  />
-                )}
-                {"duration" === selectedStyle && (
-                  <SelectControl
-                    label={__("Vertical Align")}
-                    options={ALIGNS}
-                    value={durV}
-                    onChange={newValue => setAttributes({ durV: newValue })}
-                  />
-                )}
+                  {"slash" === selectedStyle && (
+                    <Fragment>
+                      <PanelColorSettings
+                        colorSettings={[
+                          {
+                            value: slashColor,
+                            onChange: newColor =>
+                              setAttributes({ slashColor: newColor }),
+                            label: __("Text Color")
+                          }
+                        ]}
+                      />
+                      <PremiumTypo
+                        components={["size", "weight"]}
+                        size={slashSize}
+                        weight={slashWeight}
+                        onChangeSize={newSize =>
+                          setAttributes({ slashSize: newSize })
+                        }
+                        onChangeWeight={newWeight =>
+                          setAttributes({ slashWeight: newWeight })
+                        }
+                      />
+                      <SelectControl
+                        label={__("Vertical Align")}
+                        options={ALIGNS}
+                        value={slashV}
+                        onChange={newValue =>
+                          setAttributes({ slashV: newValue })
+                        }
+                      />
+                    </Fragment>
+                  )}
+                  {"curr" === selectedStyle && (
+                    <Fragment>
+                      <PanelColorSettings
+                        colorSettings={[
+                          {
+                            value: currColor,
+                            onChange: newColor =>
+                              setAttributes({ currColor: newColor }),
+                            label: __("Text Color")
+                          }
+                        ]}
+                      />
+                      <PremiumTypo
+                        components={["size", "weight"]}
+                        size={currSize}
+                        weight={currWeight}
+                        onChangeSize={newSize =>
+                          setAttributes({ currSize: newSize })
+                        }
+                        onChangeWeight={newWeight =>
+                          setAttributes({ currWeight: newWeight })
+                        }
+                      />
+                      <SelectControl
+                        label={__("Vertical Align")}
+                        options={ALIGNS}
+                        value={currV}
+                        onChange={newValue =>
+                          setAttributes({ currV: newValue })
+                        }
+                      />
+                    </Fragment>
+                  )}
+                  {"price" === selectedStyle && (
+                    <Fragment>
+                      <PanelColorSettings
+                        colorSettings={[
+                          {
+                            value: valColor,
+                            onChange: newColor =>
+                              setAttributes({ valColor: newColor }),
+                            label: __("Text Color")
+                          }
+                        ]}
+                      />
+                      <PremiumTypo
+                        components={["size", "weight"]}
+                        size={valSize}
+                        weight={valWeight}
+                        onChangeSize={newSize =>
+                          setAttributes({ valSize: newSize })
+                        }
+                        onChangeWeight={newWeight =>
+                          setAttributes({ valWeight: newWeight })
+                        }
+                      />
+                      <SelectControl
+                        label={__("Vertical Align")}
+                        options={ALIGNS}
+                        value={valV}
+                        onChange={newValue => setAttributes({ valV: newValue })}
+                      />
+                    </Fragment>
+                  )}
+                  {"divider" === selectedStyle && (
+                    <Fragment>
+                      <PanelColorSettings
+                        colorSettings={[
+                          {
+                            value: divColor,
+                            onChange: newColor =>
+                              setAttributes({ divColor: newColor }),
+                            label: __("Text Color")
+                          }
+                        ]}
+                      />
+                      <PremiumTypo
+                        components={["size", "weight"]}
+                        size={divSize}
+                        weight={divWeight}
+                        onChangeSize={newSize =>
+                          setAttributes({ divSize: newSize })
+                        }
+                        onChangeWeight={newWeight =>
+                          setAttributes({ divWeight: newWeight })
+                        }
+                      />
+                      <SelectControl
+                        label={__("Vertical Align")}
+                        options={ALIGNS}
+                        value={divV}
+                        onChange={newValue => setAttributes({ divV: newValue })}
+                      />
+                    </Fragment>
+                  )}
+                  {"duration" === selectedStyle && (
+                    <Fragment>
+                      <PanelColorSettings
+                        colorSettings={[
+                          {
+                            value: durColor,
+                            onChange: newColor =>
+                              setAttributes({ durColor: newColor }),
+                            label: __("Text Color")
+                          }
+                        ]}
+                      />
+                      <PremiumTypo
+                        components={["size", "weight"]}
+                        size={durSize}
+                        weight={durWeight}
+                        onChangeSize={newSize =>
+                          setAttributes({ durSize: newSize })
+                        }
+                        onChangeWeight={newWeight =>
+                          setAttributes({ durWeight: newWeight })
+                        }
+                      />
+                      <SelectControl
+                        label={__("Vertical Align")}
+                        options={ALIGNS}
+                        value={durV}
+                        onChange={newValue => setAttributes({ durV: newValue })}
+                      />
+                    </Fragment>
+                  )}
+                </PanelBody>
                 <PanelColorSettings
                   colorSettings={[
                     {
@@ -785,42 +917,74 @@ if (pricingTable) {
                     }
                   ]}
                 />
-                <RangeControl
-                  label={__("Container Margin Top (PX)")}
-                  value={priceMarginT}
-                  min="0"
-                  max="100"
-                  onChange={newMargin =>
-                    setAttributes({ priceMarginT: newMargin })
-                  }
-                />
-                <RangeControl
-                  label={__("Container Margin Bottom (PX)")}
-                  value={priceMarginB}
-                  min="0"
-                  max="100"
-                  onChange={newPadding =>
-                    setAttributes({ priceMarginB: newPadding })
-                  }
-                />
-                <RangeControl
-                  label={__("Container Padding (PX)")}
-                  value={pricePadding}
-                  min="0"
-                  max="100"
-                  onChange={newPadding =>
-                    setAttributes({ pricePadding: newPadding })
-                  }
-                />
+                <PanelBody title={__("Spacings")} initialOpen={false}>
+                  <RangeControl
+                    label={__("Container Margin Top (PX)")}
+                    value={priceMarginT}
+                    min="0"
+                    max="100"
+                    onChange={newMargin =>
+                      setAttributes({ priceMarginT: newMargin })
+                    }
+                  />
+                  <RangeControl
+                    label={__("Container Margin Bottom (PX)")}
+                    value={priceMarginB}
+                    min="0"
+                    max="100"
+                    onChange={newPadding =>
+                      setAttributes({ priceMarginB: newPadding })
+                    }
+                  />
+                  <RangeControl
+                    label={__("Container Padding (PX)")}
+                    value={pricePadding}
+                    min="0"
+                    max="100"
+                    onChange={newPadding =>
+                      setAttributes({ pricePadding: newPadding })
+                    }
+                  />
+                </PanelBody>
               </PanelBody>
             )}
             {listChecked && (
               <PanelBody title={__("Features")} initialOpen={false}>
                 <SelectControl
-                  label={__("List Style Type")}
+                  label={__("List Style")}
                   options={TYPE}
                   value={listStyle}
                   onChange={newType => setAttributes({ listStyle: newType })}
+                />
+                <PremiumTypo
+                  components={[
+                    "size",
+                    "weight",
+                    "style",
+                    "upper",
+                    "spacing",
+                    "line"
+                  ]}
+                  size={listSize}
+                  weight={listWeight}
+                  style={listItemsStyle}
+                  spacing={listLetter}
+                  line={listLine}
+                  upper={listUpper}
+                  onChangeSize={newSize => setAttributes({ listSize: newSize })}
+                  onChangeWeight={newWeight =>
+                    setAttributes({ listWeight: newWeight })
+                  }
+                  onChangeStyle={newStyle =>
+                    setAttributes({ listItemsStyle: newStyle })
+                  }
+                  onChangeSpacing={newValue =>
+                    setAttributes({ listLetter: newValue })
+                  }
+                  onChangeLine={newValue =>
+                    setAttributes({ listLine: newValue })
+                  }
+                  onChangeUpper={check => setAttributes({ listUpper: check })}
                 />
                 <PanelColorSettings
                   colorSettings={[
@@ -831,23 +995,6 @@ if (pricingTable) {
                       label: __("List Items Color")
                     }
                   ]}
-                />
-                <RangeControl
-                  label={__("Font Size (PX)")}
-                  value={listSize}
-                  min="10"
-                  max="80"
-                  onChange={newSize => setAttributes({ listSize: newSize })}
-                />
-                <RangeControl
-                  label={__("Font Weight")}
-                  min="100"
-                  max="900"
-                  step="100"
-                  value={listWeight}
-                  onChange={newWeight =>
-                    setAttributes({ listWeight: newWeight })
-                  }
                 />
                 <PanelColorSettings
                   colorSettings={[
@@ -1081,38 +1228,6 @@ if (pricingTable) {
                 />
               </PanelBody>
             )}
-            <PanelBody title={__("Display Options")} initialOpen={false}>
-              <ToggleControl
-                label={__("Title")}
-                checked={titleChecked}
-                onChange={newValue => setAttributes({ titleChecked: newValue })}
-              />
-              <ToggleControl
-                label={__("Price")}
-                checked={priceChecked}
-                onChange={newValue => setAttributes({ priceChecked: newValue })}
-              />
-              <ToggleControl
-                label={__("Features")}
-                checked={listChecked}
-                onChange={newValue => setAttributes({ listChecked: newValue })}
-              />
-              <ToggleControl
-                label={__("Description")}
-                checked={descChecked}
-                onChange={newValue => setAttributes({ descChecked: newValue })}
-              />
-              <ToggleControl
-                label={__("Button")}
-                checked={btnChecked}
-                onChange={newValue => setAttributes({ btnChecked: newValue })}
-              />
-              <ToggleControl
-                label={__("Badge")}
-                checked={badgeChecked}
-                onChange={newValue => setAttributes({ badgeChecked: newValue })}
-              />
-            </PanelBody>
             <PanelBody title={__("Table")} initialOpen={false}>
               <PanelColorSettings
                 colorSettings={[
@@ -1205,6 +1320,9 @@ if (pricingTable) {
                   color: titleColor,
                   background: titleBack,
                   fontSize: titleSize + "px",
+                  letterSpacing: titleLetter + "px",
+                  textTransform: titleUpper ? "uppercase" : "undefined",
+                  fontStyle: titleStyle,
                   fontWeight: titleWeight,
                   lineHeight: titleLine + "px",
                   padding: titlePadding + "px"
@@ -1223,60 +1341,65 @@ if (pricingTable) {
                 justifyContent: contentAlign
               }}
             >
-              {"" !== slashPrice && (
+              {slashPrice && (
                 <strike
                   className={`${blockClass}__slash`}
                   style={{
                     color: slashColor,
                     fontSize: slashSize + "px",
+                    fontWeight: slashWeight,
                     alignSelf: slashV
                   }}
                 >
                   {slashPrice}
                 </strike>
               )}
-              {"" !== currPrice && (
+              {currPrice && (
                 <span
                   className={`${blockClass}__currency`}
                   style={{
                     color: currColor,
                     fontSize: currSize + "px",
+                    fontWeight: currWeight,
                     alignSelf: currV
                   }}
                 >
                   {currPrice}
                 </span>
               )}
-              {"" !== valPrice && (
+              {valPrice && (
                 <span
                   className={`${blockClass}__val`}
                   style={{
                     color: valColor,
                     fontSize: valSize + "px",
+                    fontWeight: valWeight,
                     alignSelf: valV
                   }}
                 >
                   {valPrice}
                 </span>
               )}
-              {"" !== divPrice && (
+              {divPrice && (
                 <span
                   className={`${blockClass}__divider`}
                   style={{
                     color: divColor,
                     fontSize: divSize + "px",
+                    fontWeight: divWeight,
                     alignSelf: divV
                   }}
                 >
                   {divPrice}
                 </span>
               )}
-              {"" !== durPrice && (
+              {durPrice && (
                 <span
                   className={`${blockClass}__dur`}
                   style={{
                     color: durColor,
                     fontSize: durSize + "px",
+                    fontWeight: durWeight,
                     alignSelf: durV
                   }}
                 >
@@ -1295,7 +1418,7 @@ if (pricingTable) {
             >
               <RichText
                 tagName="ul"
-                className={`${blockClass}__list`}
+                className={`${blockClass}__list list-${listStyle}`}
                 placeholder={__("List Item #1")}
                 multiline="li"
                 onChange={newText => setAttributes({ listItems: newText })}
@@ -1306,9 +1429,13 @@ if (pricingTable) {
                   fontSize: listSize + "px",
                   background: listBack,
                   padding: listPadding + "px",
-                  listStyle: listStyle,
+                  listStyle: "check" !== listStyle ? listStyle : "none",
                   listStylePosition: "inside",
-                  fontWeight: listWeight
+                  fontWeight: listWeight,
+                  textTransform: listUpper ? "uppercase" : "undefined",
+                  letterSpacing: listLetter + "px",
+                  fontStyle: listItemsStyle,
+                  lineHeight: listLine + "px"
                 }}
                 keepPlaceholderOnFocus
               />
@@ -1372,7 +1499,6 @@ if (pricingTable) {
     },
     save: props => {
       const {
-        className,
         attributes: {
           contentAlign,
           tableBack,
@@ -1386,6 +1512,9 @@ if (pricingTable) {
           titleTag,
           titleColor,
           titleSize,
+          titleLetter,
+          titleUpper,
+          titleStyle,
           titleLine,
           titleWeight,
           titleBack,
@@ -1410,22 +1539,27 @@ if (pricingTable) {
           slashPrice,
           slashColor,
           slashSize,
+          slashWeight,
           slashV,
           currPrice,
           currColor,
           currSize,
+          currWeight,
           currV,
           valPrice,
           valColor,
           valSize,
+          valWeight,
           valV,
           divPrice,
           divColor,
           divSize,
+          divWeight,
           divV,
           durPrice,
           durColor,
           durSize,
+          durWeight,
           durV,
           btnChecked,
           btnText,
@@ -1452,6 +1586,10 @@ if (pricingTable) {
           listColor,
           listWeight,
           listSize,
+          listItemsStyle,
+          listLine,
+          listUpper,
+          listLetter,
           listBack,
           listItems,
           listMarginB,
@@ -1513,6 +1651,9 @@ if (pricingTable) {
                   color: titleColor,
                   background: titleBack,
                   fontSize: titleSize + "px",
+                  letterSpacing: titleLetter + "px",
+                  textTransform: titleUpper ? "uppercase" : "undefined",
+                  fontStyle: titleStyle,
                   fontWeight: titleWeight,
                   lineHeight: titleLine + "px",
                   marginBottom: titleMarginB + "px",
@@ -1532,60 +1673,65 @@ if (pricingTable) {
                 justifyContent: contentAlign
               }}
             >
-              {"" !== slashPrice && (
+              {slashPrice && (
                 <strike
                   className={`${blockClass}__slash`}
                   style={{
                     color: slashColor,
                     fontSize: slashSize + "px",
+                    fontWeight: slashWeight,
                     alignSelf: slashV
                   }}
                 >
                   {slashPrice}
                 </strike>
               )}
-              {"" !== currPrice && (
+              {currPrice && (
                 <span
                   className={`${blockClass}__currency`}
                   style={{
                     color: currColor,
                     fontSize: currSize + "px",
+                    fontWeight: currWeight,
                     alignSelf: currV
                   }}
                 >
                   {currPrice}
                 </span>
               )}
-              {"" !== valPrice && (
+              {valPrice && (
                 <span
                   className={`${blockClass}__val`}
                   style={{
                     color: valColor,
                     fontSize: valSize + "px",
+                    fontWeight: valWeight,
                     alignSelf: valV
                   }}
                 >
                   {valPrice}
                 </span>
               )}
-              {"" !== divPrice && (
+              {divPrice && (
                 <span
                   className={`${blockClass}__divider`}
                   style={{
                     color: divColor,
                     fontSize: divSize + "px",
+                    fontWeight: divWeight,
                     alignSelf: divV
                   }}
                 >
                   {divPrice}
                 </span>
               )}
-              {"" !== durPrice && (
+              {durPrice && (
                 <span
                   className={`${blockClass}__dur`}
                   style={{
                     color: durColor,
                     fontSize: durSize + "px",
+                    fontWeight: durWeight,
                     alignSelf: durV
                   }}
                 >
@@ -1609,9 +1755,13 @@ if (pricingTable) {
                   fontSize: listSize + "px",
                   background: listBack,
                   padding: listPadding + "px",
-                  listStyle: listStyle,
+                  listStyle: "check" !== listStyle ? listStyle : "none",
                   listStylePosition: "inside",
-                  fontWeight: listWeight
+                  fontWeight: listWeight,
+                  letterSpacing: listLetter + "px",
+                  textTransform: listUpper ? "uppercase" : "undefined",
+                  fontStyle: listItemsStyle,
+                  lineHeight: listLine + "px"
                 }}
               >
                 {listItems}

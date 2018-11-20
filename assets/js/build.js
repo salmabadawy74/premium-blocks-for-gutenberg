@@ -1645,6 +1645,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(15);
+
 
 
 
@@ -1653,6 +1655,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
 
   var __ = wp.i18n.__;
   var registerBlockType = wp.blocks.registerBlockType;
+  var Fragment = wp.element.Fragment;
   var _wp$components = wp.components,
       Toolbar = _wp$components.Toolbar,
       PanelBody = _wp$components.PanelBody,
@@ -1719,6 +1722,15 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
       },
       titleLine: {
         type: "number"
+      },
+      titleLetter: {
+        type: "number"
+      },
+      titleStyle: {
+        type: "string"
+      },
+      titleUpper: {
+        type: "boolean"
       },
       titleWeight: {
         type: "number",
@@ -1807,6 +1819,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
         type: "number",
         default: 20
       },
+      slashWeight: {
+        type: "number"
+      },
       currPrice: {
         type: "string",
         default: "$"
@@ -1817,6 +1832,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
       currSize: {
         type: "number",
         default: 20
+      },
+      currWeight: {
+        type: "number"
       },
       valPrice: {
         type: "string",
@@ -1829,6 +1847,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
         type: "number",
         default: 50
       },
+      valWeight: {
+        type: "number"
+      },
       divPrice: {
         type: "string",
         default: "/"
@@ -1840,6 +1861,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
         type: "number",
         default: 20
       },
+      divWeight: {
+        type: "number"
+      },
       durPrice: {
         type: "string",
         default: "m"
@@ -1850,6 +1874,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
       durSize: {
         type: "number",
         default: 20
+      },
+      durWeight: {
+        type: "number"
       },
       selectedStyle: {
         type: "string",
@@ -1951,6 +1978,18 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
         type: "number",
         default: 500
       },
+      listItemsStyle: {
+        type: "string"
+      },
+      listLetter: {
+        type: "number"
+      },
+      listLine: {
+        type: "number"
+      },
+      listUpper: {
+        type: "boolean"
+      },
       listBack: {
         type: "string"
       },
@@ -2012,6 +2051,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
           titleColor = _props$attributes.titleColor,
           titleSize = _props$attributes.titleSize,
           titleLine = _props$attributes.titleLine,
+          titleLetter = _props$attributes.titleLetter,
+          titleStyle = _props$attributes.titleStyle,
+          titleUpper = _props$attributes.titleUpper,
           titleWeight = _props$attributes.titleWeight,
           titleBack = _props$attributes.titleBack,
           titleMarginT = _props$attributes.titleMarginT,
@@ -2035,22 +2077,27 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
           slashPrice = _props$attributes.slashPrice,
           slashColor = _props$attributes.slashColor,
           slashSize = _props$attributes.slashSize,
+          slashWeight = _props$attributes.slashWeight,
           slashV = _props$attributes.slashV,
           currPrice = _props$attributes.currPrice,
           currColor = _props$attributes.currColor,
           currSize = _props$attributes.currSize,
+          currWeight = _props$attributes.currWeight,
           currV = _props$attributes.currV,
           valPrice = _props$attributes.valPrice,
           valColor = _props$attributes.valColor,
           valSize = _props$attributes.valSize,
+          valWeight = _props$attributes.valWeight,
           valV = _props$attributes.valV,
           divPrice = _props$attributes.divPrice,
           divColor = _props$attributes.divColor,
           divSize = _props$attributes.divSize,
+          divWeight = _props$attributes.divWeight,
           divV = _props$attributes.divV,
           durPrice = _props$attributes.durPrice,
           durColor = _props$attributes.durColor,
           durSize = _props$attributes.durSize,
+          durWeight = _props$attributes.durWeight,
           durV = _props$attributes.durV,
           selectedStyle = _props$attributes.selectedStyle,
           btnChecked = _props$attributes.btnChecked,
@@ -2078,6 +2125,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
           listColor = _props$attributes.listColor,
           listWeight = _props$attributes.listWeight,
           listSize = _props$attributes.listSize,
+          listItemsStyle = _props$attributes.listItemsStyle,
+          listLetter = _props$attributes.listLetter,
+          listLine = _props$attributes.listLine,
+          listUpper = _props$attributes.listUpper,
           listBack = _props$attributes.listBack,
           listItems = _props$attributes.listItems,
           listMarginT = _props$attributes.listMarginT,
@@ -2115,6 +2166,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
         value: "none",
         label: "None"
       }, {
+        value: "check",
+        label: "Check Mark"
+      }, {
         value: "disc",
         label: "Filled Circle"
       }, {
@@ -2131,7 +2185,13 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
         value: "left",
         label: "Left"
       }];
-
+      var STYLE = [{
+        value: "normal",
+        label: "Normal"
+      }, {
+        value: "italic",
+        label: "Italic"
+      }];
       return [isSelected && wp.element.createElement(
         BlockControls,
         { key: "controls" },
@@ -2144,92 +2204,151 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
       ), isSelected && wp.element.createElement(
         InspectorControls,
         { key: "inspector" },
+        wp.element.createElement(
+          PanelBody,
+          { title: __("Display Options"), initialOpen: false },
+          wp.element.createElement(ToggleControl, {
+            label: __("Title"),
+            checked: titleChecked,
+            onChange: function onChange(newValue) {
+              return setAttributes({ titleChecked: newValue });
+            }
+          }),
+          wp.element.createElement(ToggleControl, {
+            label: __("Price"),
+            checked: priceChecked,
+            onChange: function onChange(newValue) {
+              return setAttributes({ priceChecked: newValue });
+            }
+          }),
+          wp.element.createElement(ToggleControl, {
+            label: __("Features"),
+            checked: listChecked,
+            onChange: function onChange(newValue) {
+              return setAttributes({ listChecked: newValue });
+            }
+          }),
+          wp.element.createElement(ToggleControl, {
+            label: __("Description"),
+            checked: descChecked,
+            onChange: function onChange(newValue) {
+              return setAttributes({ descChecked: newValue });
+            }
+          }),
+          wp.element.createElement(ToggleControl, {
+            label: __("Button"),
+            checked: btnChecked,
+            onChange: function onChange(newValue) {
+              return setAttributes({ btnChecked: newValue });
+            }
+          }),
+          wp.element.createElement(ToggleControl, {
+            label: __("Badge"),
+            checked: badgeChecked,
+            onChange: function onChange(newValue) {
+              return setAttributes({ badgeChecked: newValue });
+            }
+          })
+        ),
         titleChecked && wp.element.createElement(
           PanelBody,
           { title: __("Title"), initialOpen: false },
-          wp.element.createElement(Toolbar, {
-            controls: "123456".split("").map(function (tag) {
-              return {
-                icon: "heading",
-                isActive: "H" + tag === titleTag,
-                onClick: function onClick() {
-                  return setAttributes({ titleTag: "H" + tag });
-                },
-                subscript: tag
-              };
+          wp.element.createElement(
+            PanelBody,
+            { title: __("Font"), initialOpen: false },
+            wp.element.createElement(Toolbar, {
+              controls: "123456".split("").map(function (tag) {
+                return {
+                  icon: "heading",
+                  isActive: "H" + tag === titleTag,
+                  onClick: function onClick() {
+                    return setAttributes({ titleTag: "H" + tag });
+                  },
+                  subscript: tag
+                };
+              })
+            }),
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+              components: ["size", "weight", "style", "upper", "spacing", "line"],
+              size: titleSize,
+              weight: titleWeight,
+              style: titleStyle,
+              spacing: titleLetter,
+              line: titleLine,
+              upper: titleUpper,
+              onChangeSize: function onChangeSize(newSize) {
+                return setAttributes({ titleSize: newSize });
+              },
+              onChangeWeight: function onChangeWeight(newWeight) {
+                return setAttributes({ titleWeight: newWeight });
+              },
+              onChangeStyle: function onChangeStyle(newStyle) {
+                return setAttributes({ titleStyle: newStyle });
+              },
+              onChangeSpacing: function onChangeSpacing(newValue) {
+                return setAttributes({ titleLetter: newValue });
+              },
+              onChangeLine: function onChangeLine(newValue) {
+                return setAttributes({ titleLine: newValue });
+              },
+              onChangeUpper: function onChangeUpper(check) {
+                return setAttributes({ titleUpper: check });
+              }
             })
-          }),
-          wp.element.createElement(PanelColorSettings, {
-            colorSettings: [{
-              value: titleColor,
-              onChange: function onChange(newColor) {
-                return setAttributes({ titleColor: newColor });
-              },
-              label: __("Text Color")
-            }]
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Font Size (PX)"),
-            value: titleSize,
-            min: "10",
-            max: "80",
-            onChange: function onChange(newSize) {
-              return setAttributes({ titleSize: newSize });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Font Weight"),
-            min: "100",
-            max: "900",
-            step: "100",
-            value: titleWeight,
-            onChange: function onChange(newWeight) {
-              return setAttributes({ titleWeight: newWeight });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Line Height (PX)"),
-            value: titleLine,
-            onChange: function onChange(newValue) {
-              return setAttributes({ titleLine: newValue });
-            }
-          }),
-          wp.element.createElement(PanelColorSettings, {
-            colorSettings: [{
-              value: titleBack,
-              onChange: function onChange(newColor) {
-                return setAttributes({ titleBack: newColor });
-              },
-              label: __("Background Color")
-            }]
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Margin Top (PX)"),
-            value: titleMarginT,
-            min: "10",
-            max: "80",
-            onChange: function onChange(newSize) {
-              return setAttributes({ titleMarginT: newSize });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Margin Bottom (PX)"),
-            value: titleMarginB,
-            min: "0",
-            max: "100",
-            onChange: function onChange(newMargin) {
-              return setAttributes({ titleMarginB: newMargin });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Padding (PX)"),
-            value: titlePadding,
-            min: "0",
-            max: "100",
-            onChange: function onChange(newPadding) {
-              return setAttributes({ titlePadding: newPadding });
-            }
-          })
+          ),
+          wp.element.createElement(
+            PanelBody,
+            { title: __("Colors"), initialOpen: false },
+            wp.element.createElement(PanelColorSettings, {
+              colorSettings: [{
+                value: titleColor,
+                onChange: function onChange(newColor) {
+                  return setAttributes({ titleColor: newColor });
+                },
+                label: __("Text Color")
+              }]
+            }),
+            wp.element.createElement(PanelColorSettings, {
+              colorSettings: [{
+                value: titleBack,
+                onChange: function onChange(newColor) {
+                  return setAttributes({ titleBack: newColor });
+                },
+                label: __("Background Color")
+              }]
+            })
+          ),
+          wp.element.createElement(
+            PanelBody,
+            { title: __("Spacings"), initialOpen: false },
+            wp.element.createElement(RangeControl, {
+              label: __("Margin Top (PX)"),
+              value: titleMarginT,
+              min: "10",
+              max: "80",
+              onChange: function onChange(newSize) {
+                return setAttributes({ titleMarginT: newSize });
+              }
+            }),
+            wp.element.createElement(RangeControl, {
+              label: __("Margin Bottom (PX)"),
+              value: titleMarginB,
+              min: "0",
+              max: "100",
+              onChange: function onChange(newMargin) {
+                return setAttributes({ titleMarginB: newMargin });
+              }
+            }),
+            wp.element.createElement(RangeControl, {
+              label: __("Padding (PX)"),
+              value: titlePadding,
+              min: "0",
+              max: "100",
+              onChange: function onChange(newPadding) {
+                return setAttributes({ titlePadding: newPadding });
+              }
+            })
+          )
         ),
         priceChecked && wp.element.createElement(
           PanelBody,
@@ -2269,144 +2388,178 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
               return setAttributes({ durPrice: value });
             }
           }),
-          wp.element.createElement(SelectControl, {
-            label: __("Element to Style"),
-            options: PRICE,
-            value: selectedStyle,
-            onChange: function onChange(newElem) {
-              return setAttributes({ selectedStyle: newElem });
-            }
-          }),
-          "slash" === selectedStyle && wp.element.createElement(PanelColorSettings, {
-            colorSettings: [{
-              value: slashColor,
-              onChange: function onChange(newColor) {
-                return setAttributes({ slashColor: newColor });
-              },
-              label: __("Text Color")
-            }]
-          }),
-          "slash" === selectedStyle && wp.element.createElement(RangeControl, {
-            label: __("Font Size (PX)"),
-            value: slashSize,
-            min: "10",
-            max: "80",
-            onChange: function onChange(newSize) {
-              return setAttributes({ slashSize: newSize });
-            }
-          }),
-          "slash" === selectedStyle && wp.element.createElement(SelectControl, {
-            label: __("Vertical Align"),
-            options: ALIGNS,
-            value: slashV,
-            onChange: function onChange(newValue) {
-              return setAttributes({ slashV: newValue });
-            }
-          }),
-          "curr" === selectedStyle && wp.element.createElement(PanelColorSettings, {
-            colorSettings: [{
-              value: currColor,
-              onChange: function onChange(newColor) {
-                return setAttributes({ currColor: newColor });
-              },
-              label: __("Text Color")
-            }]
-          }),
-          "curr" === selectedStyle && wp.element.createElement(RangeControl, {
-            label: __("Font Size (PX)"),
-            value: currSize,
-            min: "10",
-            max: "80",
-            onChange: function onChange(newSize) {
-              return setAttributes({ currSize: newSize });
-            }
-          }),
-          "curr" === selectedStyle && wp.element.createElement(SelectControl, {
-            label: __("Vertical Align"),
-            options: ALIGNS,
-            value: currV,
-            onChange: function onChange(newValue) {
-              return setAttributes({ currV: newValue });
-            }
-          }),
-          "price" === selectedStyle && wp.element.createElement(PanelColorSettings, {
-            colorSettings: [{
-              value: valColor,
-              onChange: function onChange(newColor) {
-                return setAttributes({ valColor: newColor });
-              },
-              label: __("Text Color")
-            }]
-          }),
-          "price" === selectedStyle && wp.element.createElement(RangeControl, {
-            label: __("Font Size (PX)"),
-            value: valSize,
-            min: "10",
-            max: "80",
-            onChange: function onChange(newSize) {
-              return setAttributes({ valSize: newSize });
-            }
-          }),
-          "price" === selectedStyle && wp.element.createElement(SelectControl, {
-            label: __("Vertical Align"),
-            options: ALIGNS,
-            value: valV,
-            onChange: function onChange(newValue) {
-              return setAttributes({ valV: newValue });
-            }
-          }),
-          "divider" === selectedStyle && wp.element.createElement(PanelColorSettings, {
-            colorSettings: [{
-              value: divColor,
-              onChange: function onChange(newColor) {
-                return setAttributes({ divColor: newColor });
-              },
-              label: __("Text Color")
-            }]
-          }),
-          "divider" === selectedStyle && wp.element.createElement(RangeControl, {
-            label: __("Font Size (PX)"),
-            value: divSize,
-            min: "10",
-            max: "80",
-            onChange: function onChange(newSize) {
-              return setAttributes({ divSize: newSize });
-            }
-          }),
-          "divider" === selectedStyle && wp.element.createElement(SelectControl, {
-            label: __("Vertical Align"),
-            options: ALIGNS,
-            value: divV,
-            onChange: function onChange(newValue) {
-              return setAttributes({ divV: newValue });
-            }
-          }),
-          "duration" === selectedStyle && wp.element.createElement(PanelColorSettings, {
-            colorSettings: [{
-              value: durColor,
-              onChange: function onChange(newColor) {
-                return setAttributes({ durColor: newColor });
-              },
-              label: __("Text Color")
-            }]
-          }),
-          "duration" === selectedStyle && wp.element.createElement(RangeControl, {
-            label: __("Font Size (PX)"),
-            value: durSize,
-            min: "10",
-            max: "80",
-            onChange: function onChange(newSize) {
-              return setAttributes({ durSize: newSize });
-            }
-          }),
-          "duration" === selectedStyle && wp.element.createElement(SelectControl, {
-            label: __("Vertical Align"),
-            options: ALIGNS,
-            value: durV,
-            onChange: function onChange(newValue) {
-              return setAttributes({ durV: newValue });
-            }
-          }),
+          wp.element.createElement(
+            PanelBody,
+            { title: __("Element to Style"), initialOpen: false },
+            wp.element.createElement(SelectControl, {
+              label: __("Element to Style"),
+              options: PRICE,
+              value: selectedStyle,
+              onChange: function onChange(newElem) {
+                return setAttributes({ selectedStyle: newElem });
+              }
+            }),
+            "slash" === selectedStyle && wp.element.createElement(
+              Fragment,
+              null,
+              wp.element.createElement(PanelColorSettings, {
+                colorSettings: [{
+                  value: slashColor,
+                  onChange: function onChange(newColor) {
+                    return setAttributes({ slashColor: newColor });
+                  },
+                  label: __("Text Color")
+                }]
+              }),
+              wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+                components: ["size", "weight"],
+                size: slashSize,
+                weight: slashWeight,
+                onChangeSize: function onChangeSize(newSize) {
+                  return setAttributes({ slashSize: newSize });
+                },
+                onChangeWeight: function onChangeWeight(newWeight) {
+                  return setAttributes({ slashWeight: newWeight });
+                }
+              }),
+              wp.element.createElement(SelectControl, {
+                label: __("Vertical Align"),
+                options: ALIGNS,
+                value: slashV,
+                onChange: function onChange(newValue) {
+                  return setAttributes({ slashV: newValue });
+                }
+              })
+            ),
+            "curr" === selectedStyle && wp.element.createElement(
+              Fragment,
+              null,
+              wp.element.createElement(PanelColorSettings, {
+                colorSettings: [{
+                  value: currColor,
+                  onChange: function onChange(newColor) {
+                    return setAttributes({ currColor: newColor });
+                  },
+                  label: __("Text Color")
+                }]
+              }),
+              wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+                components: ["size", "weight"],
+                size: currSize,
+                weight: currWeight,
+                onChangeSize: function onChangeSize(newSize) {
+                  return setAttributes({ currSize: newSize });
+                },
+                onChangeWeight: function onChangeWeight(newWeight) {
+                  return setAttributes({ currWeight: newWeight });
+                }
+              }),
+              wp.element.createElement(SelectControl, {
+                label: __("Vertical Align"),
+                options: ALIGNS,
+                value: currV,
+                onChange: function onChange(newValue) {
+                  return setAttributes({ currV: newValue });
+                }
+              })
+            ),
+            "price" === selectedStyle && wp.element.createElement(
+              Fragment,
+              null,
+              wp.element.createElement(PanelColorSettings, {
+                colorSettings: [{
+                  value: valColor,
+                  onChange: function onChange(newColor) {
+                    return setAttributes({ valColor: newColor });
+                  },
+                  label: __("Text Color")
+                }]
+              }),
+              wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+                components: ["size", "weight"],
+                size: valSize,
+                weight: valWeight,
+                onChangeSize: function onChangeSize(newSize) {
+                  return setAttributes({ valSize: newSize });
+                },
+                onChangeWeight: function onChangeWeight(newWeight) {
+                  return setAttributes({ valWeight: newWeight });
+                }
+              }),
+              wp.element.createElement(SelectControl, {
+                label: __("Vertical Align"),
+                options: ALIGNS,
+                value: valV,
+                onChange: function onChange(newValue) {
+                  return setAttributes({ valV: newValue });
+                }
+              })
+            ),
+            "divider" === selectedStyle && wp.element.createElement(
+              Fragment,
+              null,
+              wp.element.createElement(PanelColorSettings, {
+                colorSettings: [{
+                  value: divColor,
+                  onChange: function onChange(newColor) {
+                    return setAttributes({ divColor: newColor });
+                  },
+                  label: __("Text Color")
+                }]
+              }),
+              wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+                components: ["size", "weight"],
+                size: divSize,
+                weight: divWeight,
+                onChangeSize: function onChangeSize(newSize) {
+                  return setAttributes({ divSize: newSize });
+                },
+                onChangeWeight: function onChangeWeight(newWeight) {
+                  return setAttributes({ divWeight: newWeight });
+                }
+              }),
+              wp.element.createElement(SelectControl, {
+                label: __("Vertical Align"),
+                options: ALIGNS,
+                value: divV,
+                onChange: function onChange(newValue) {
+                  return setAttributes({ divV: newValue });
+                }
+              })
+            ),
+            "duration" === selectedStyle && wp.element.createElement(
+              Fragment,
+              null,
+              wp.element.createElement(PanelColorSettings, {
+                colorSettings: [{
+                  value: durColor,
+                  onChange: function onChange(newColor) {
+                    return setAttributes({ durColor: newColor });
+                  },
+                  label: __("Text Color")
+                }]
+              }),
+              wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+                components: ["size", "weight"],
+                size: durSize,
+                weight: durWeight,
+                onChangeSize: function onChangeSize(newSize) {
+                  return setAttributes({ durSize: newSize });
+                },
+                onChangeWeight: function onChangeWeight(newWeight) {
+                  return setAttributes({ durWeight: newWeight });
+                }
+              }),
+              wp.element.createElement(SelectControl, {
+                label: __("Vertical Align"),
+                options: ALIGNS,
+                value: durV,
+                onChange: function onChange(newValue) {
+                  return setAttributes({ durV: newValue });
+                }
+              })
+            )
+          ),
           wp.element.createElement(PanelColorSettings, {
             colorSettings: [{
               value: priceBack,
@@ -2416,43 +2569,74 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
               label: __("Container Background Color")
             }]
           }),
-          wp.element.createElement(RangeControl, {
-            label: __("Container Margin Top (PX)"),
-            value: priceMarginT,
-            min: "0",
-            max: "100",
-            onChange: function onChange(newMargin) {
-              return setAttributes({ priceMarginT: newMargin });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Container Margin Bottom (PX)"),
-            value: priceMarginB,
-            min: "0",
-            max: "100",
-            onChange: function onChange(newPadding) {
-              return setAttributes({ priceMarginB: newPadding });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Container Padding (PX)"),
-            value: pricePadding,
-            min: "0",
-            max: "100",
-            onChange: function onChange(newPadding) {
-              return setAttributes({ pricePadding: newPadding });
-            }
-          })
+          wp.element.createElement(
+            PanelBody,
+            { title: __("Spacings"), initialOpen: false },
+            wp.element.createElement(RangeControl, {
+              label: __("Container Margin Top (PX)"),
+              value: priceMarginT,
+              min: "0",
+              max: "100",
+              onChange: function onChange(newMargin) {
+                return setAttributes({ priceMarginT: newMargin });
+              }
+            }),
+            wp.element.createElement(RangeControl, {
+              label: __("Container Margin Bottom (PX)"),
+              value: priceMarginB,
+              min: "0",
+              max: "100",
+              onChange: function onChange(newPadding) {
+                return setAttributes({ priceMarginB: newPadding });
+              }
+            }),
+            wp.element.createElement(RangeControl, {
+              label: __("Container Padding (PX)"),
+              value: pricePadding,
+              min: "0",
+              max: "100",
+              onChange: function onChange(newPadding) {
+                return setAttributes({ pricePadding: newPadding });
+              }
+            })
+          )
         ),
         listChecked && wp.element.createElement(
           PanelBody,
           { title: __("Features"), initialOpen: false },
           wp.element.createElement(SelectControl, {
-            label: __("List Style Type"),
+            label: __("List Style"),
             options: TYPE,
             value: listStyle,
             onChange: function onChange(newType) {
               return setAttributes({ listStyle: newType });
+            }
+          }),
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+            components: ["size", "weight", "style", "upper", "spacing", "line"],
+            size: listSize,
+            weight: listWeight,
+            style: listItemsStyle,
+            spacing: listLetter,
+            line: listLine,
+            upper: listUpper,
+            onChangeSize: function onChangeSize(newSize) {
+              return setAttributes({ listSize: newSize });
+            },
+            onChangeWeight: function onChangeWeight(newWeight) {
+              return setAttributes({ listWeight: newWeight });
+            },
+            onChangeStyle: function onChangeStyle(newStyle) {
+              return setAttributes({ listItemsStyle: newStyle });
+            },
+            onChangeSpacing: function onChangeSpacing(newValue) {
+              return setAttributes({ listLetter: newValue });
+            },
+            onChangeLine: function onChangeLine(newValue) {
+              return setAttributes({ listLine: newValue });
+            },
+            onChangeUpper: function onChangeUpper(check) {
+              return setAttributes({ listUpper: check });
             }
           }),
           wp.element.createElement(PanelColorSettings, {
@@ -2463,25 +2647,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
               },
               label: __("List Items Color")
             }]
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Font Size (PX)"),
-            value: listSize,
-            min: "10",
-            max: "80",
-            onChange: function onChange(newSize) {
-              return setAttributes({ listSize: newSize });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Font Weight"),
-            min: "100",
-            max: "900",
-            step: "100",
-            value: listWeight,
-            onChange: function onChange(newWeight) {
-              return setAttributes({ listWeight: newWeight });
-            }
           }),
           wp.element.createElement(PanelColorSettings, {
             colorSettings: [{
@@ -2734,52 +2899,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
         ),
         wp.element.createElement(
           PanelBody,
-          { title: __("Display Options"), initialOpen: false },
-          wp.element.createElement(ToggleControl, {
-            label: __("Title"),
-            checked: titleChecked,
-            onChange: function onChange(newValue) {
-              return setAttributes({ titleChecked: newValue });
-            }
-          }),
-          wp.element.createElement(ToggleControl, {
-            label: __("Price"),
-            checked: priceChecked,
-            onChange: function onChange(newValue) {
-              return setAttributes({ priceChecked: newValue });
-            }
-          }),
-          wp.element.createElement(ToggleControl, {
-            label: __("Features"),
-            checked: listChecked,
-            onChange: function onChange(newValue) {
-              return setAttributes({ listChecked: newValue });
-            }
-          }),
-          wp.element.createElement(ToggleControl, {
-            label: __("Description"),
-            checked: descChecked,
-            onChange: function onChange(newValue) {
-              return setAttributes({ descChecked: newValue });
-            }
-          }),
-          wp.element.createElement(ToggleControl, {
-            label: __("Button"),
-            checked: btnChecked,
-            onChange: function onChange(newValue) {
-              return setAttributes({ btnChecked: newValue });
-            }
-          }),
-          wp.element.createElement(ToggleControl, {
-            label: __("Badge"),
-            checked: badgeChecked,
-            onChange: function onChange(newValue) {
-              return setAttributes({ badgeChecked: newValue });
-            }
-          })
-        ),
-        wp.element.createElement(
-          PanelBody,
           { title: __("Table"), initialOpen: false },
           wp.element.createElement(PanelColorSettings, {
             colorSettings: [{
@@ -2879,6 +2998,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
               color: titleColor,
               background: titleBack,
               fontSize: titleSize + "px",
+              letterSpacing: titleLetter + "px",
+              textTransform: titleUpper ? "uppercase" : "undefined",
+              fontStyle: titleStyle,
               fontWeight: titleWeight,
               lineHeight: titleLine + "px",
               padding: titlePadding + "px"
@@ -2897,61 +3019,66 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
               justifyContent: contentAlign
             }
           },
-          "" !== slashPrice && wp.element.createElement(
+          slashPrice && wp.element.createElement(
             "strike",
             {
               className: blockClass + "__slash",
               style: {
                 color: slashColor,
                 fontSize: slashSize + "px",
+                fontWeight: slashWeight,
                 alignSelf: slashV
               }
             },
             slashPrice
           ),
-          "" !== currPrice && wp.element.createElement(
+          currPrice && wp.element.createElement(
             "span",
             {
               className: blockClass + "__currency",
               style: {
                 color: currColor,
                 fontSize: currSize + "px",
+                fontWeight: currWeight,
                 alignSelf: currV
               }
             },
             currPrice
           ),
-          "" !== valPrice && wp.element.createElement(
+          valPrice && wp.element.createElement(
             "span",
             {
               className: blockClass + "__val",
               style: {
                 color: valColor,
                 fontSize: valSize + "px",
+                fontWeight: valWeight,
                 alignSelf: valV
               }
             },
             valPrice
           ),
-          "" !== divPrice && wp.element.createElement(
+          divPrice && wp.element.createElement(
             "span",
             {
               className: blockClass + "__divider",
               style: {
                 color: divColor,
                 fontSize: divSize + "px",
+                fontWeight: divWeight,
                 alignSelf: divV
               }
             },
             divPrice
           ),
-          "" !== durPrice && wp.element.createElement(
+          durPrice && wp.element.createElement(
             "span",
             {
               className: blockClass + "__dur",
               style: {
                 color: durColor,
                 fontSize: durSize + "px",
+                fontWeight: durWeight,
                 alignSelf: durV
               }
             },
@@ -2969,7 +3096,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
           },
           wp.element.createElement(RichText, {
             tagName: "ul",
-            className: blockClass + "__list",
+            className: blockClass + "__list list-" + listStyle,
             placeholder: __("List Item #1"),
             multiline: "li",
             onChange: function onChange(newText) {
@@ -2982,9 +3109,13 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
               fontSize: listSize + "px",
               background: listBack,
               padding: listPadding + "px",
-              listStyle: listStyle,
+              listStyle: "check" !== listStyle ? listStyle : "none",
               listStylePosition: "inside",
-              fontWeight: listWeight
+              fontWeight: listWeight,
+              textTransform: listUpper ? "uppercase" : "undefined",
+              letterSpacing: listLetter + "px",
+              fontStyle: listItemsStyle,
+              lineHeight: listLine + "px"
             },
             keepPlaceholderOnFocus: true
           })
@@ -3055,8 +3186,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
       )];
     },
     save: function save(props) {
-      var className = props.className,
-          _props$attributes2 = props.attributes,
+      var _props$attributes2 = props.attributes,
           contentAlign = _props$attributes2.contentAlign,
           tableBack = _props$attributes2.tableBack,
           borderType = _props$attributes2.borderType,
@@ -3069,6 +3199,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
           titleTag = _props$attributes2.titleTag,
           titleColor = _props$attributes2.titleColor,
           titleSize = _props$attributes2.titleSize,
+          titleLetter = _props$attributes2.titleLetter,
+          titleUpper = _props$attributes2.titleUpper,
+          titleStyle = _props$attributes2.titleStyle,
           titleLine = _props$attributes2.titleLine,
           titleWeight = _props$attributes2.titleWeight,
           titleBack = _props$attributes2.titleBack,
@@ -3093,22 +3226,27 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
           slashPrice = _props$attributes2.slashPrice,
           slashColor = _props$attributes2.slashColor,
           slashSize = _props$attributes2.slashSize,
+          slashWeight = _props$attributes2.slashWeight,
           slashV = _props$attributes2.slashV,
           currPrice = _props$attributes2.currPrice,
           currColor = _props$attributes2.currColor,
           currSize = _props$attributes2.currSize,
+          currWeight = _props$attributes2.currWeight,
           currV = _props$attributes2.currV,
           valPrice = _props$attributes2.valPrice,
           valColor = _props$attributes2.valColor,
           valSize = _props$attributes2.valSize,
+          valWeight = _props$attributes2.valWeight,
           valV = _props$attributes2.valV,
           divPrice = _props$attributes2.divPrice,
           divColor = _props$attributes2.divColor,
           divSize = _props$attributes2.divSize,
+          divWeight = _props$attributes2.divWeight,
           divV = _props$attributes2.divV,
           durPrice = _props$attributes2.durPrice,
           durColor = _props$attributes2.durColor,
           durSize = _props$attributes2.durSize,
+          durWeight = _props$attributes2.durWeight,
           durV = _props$attributes2.durV,
           btnChecked = _props$attributes2.btnChecked,
           btnText = _props$attributes2.btnText,
@@ -3135,6 +3273,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
           listColor = _props$attributes2.listColor,
           listWeight = _props$attributes2.listWeight,
           listSize = _props$attributes2.listSize,
+          listItemsStyle = _props$attributes2.listItemsStyle,
+          listLine = _props$attributes2.listLine,
+          listUpper = _props$attributes2.listUpper,
+          listLetter = _props$attributes2.listLetter,
           listBack = _props$attributes2.listBack,
           listItems = _props$attributes2.listItems,
           listMarginB = _props$attributes2.listMarginB,
@@ -3199,6 +3341,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
               color: titleColor,
               background: titleBack,
               fontSize: titleSize + "px",
+              letterSpacing: titleLetter + "px",
+              textTransform: titleUpper ? "uppercase" : "undefined",
+              fontStyle: titleStyle,
               fontWeight: titleWeight,
               lineHeight: titleLine + "px",
               marginBottom: titleMarginB + "px",
@@ -3218,61 +3363,66 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
               justifyContent: contentAlign
             }
           },
-          "" !== slashPrice && wp.element.createElement(
+          slashPrice && wp.element.createElement(
             "strike",
             {
               className: blockClass + "__slash",
               style: {
                 color: slashColor,
                 fontSize: slashSize + "px",
+                fontWeight: slashWeight,
                 alignSelf: slashV
               }
             },
             slashPrice
           ),
-          "" !== currPrice && wp.element.createElement(
+          currPrice && wp.element.createElement(
             "span",
             {
               className: blockClass + "__currency",
               style: {
                 color: currColor,
                 fontSize: currSize + "px",
+                fontWeight: currWeight,
                 alignSelf: currV
               }
             },
             currPrice
           ),
-          "" !== valPrice && wp.element.createElement(
+          valPrice && wp.element.createElement(
             "span",
             {
               className: blockClass + "__val",
               style: {
                 color: valColor,
                 fontSize: valSize + "px",
+                fontWeight: valWeight,
                 alignSelf: valV
               }
             },
             valPrice
           ),
-          "" !== divPrice && wp.element.createElement(
+          divPrice && wp.element.createElement(
             "span",
             {
               className: blockClass + "__divider",
               style: {
                 color: divColor,
                 fontSize: divSize + "px",
+                fontWeight: divWeight,
                 alignSelf: divV
               }
             },
             divPrice
           ),
-          "" !== durPrice && wp.element.createElement(
+          durPrice && wp.element.createElement(
             "span",
             {
               className: blockClass + "__dur",
               style: {
                 color: durColor,
                 fontSize: durSize + "px",
+                fontWeight: durWeight,
                 alignSelf: durV
               }
             },
@@ -3297,9 +3447,13 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
                 fontSize: listSize + "px",
                 background: listBack,
                 padding: listPadding + "px",
-                listStyle: listStyle,
+                listStyle: "check" !== listStyle ? listStyle : "none",
                 listStylePosition: "inside",
-                fontWeight: listWeight
+                fontWeight: listWeight,
+                letterSpacing: listLetter + "px",
+                textTransform: listUpper ? "uppercase" : "undefined",
+                fontStyle: listItemsStyle,
+                lineHeight: listLine + "px"
               }
             },
             listItems
@@ -6507,6 +6661,89 @@ function PremiumPadding(props) {
       min: "0",
       max: "150",
       onChange: onChangePadLeft
+    })
+  );
+}
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumTypo;
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl,
+    CheckboxControl = _wp$components.CheckboxControl;
+
+function PremiumTypo(props) {
+  var components = props.components,
+      size = props.size,
+      weight = props.weight,
+      style = props.style,
+      spacing = props.spacing,
+      line = props.line,
+      upper = props.upper,
+      _props$onChangeSize = props.onChangeSize,
+      onChangeSize = _props$onChangeSize === undefined ? function () {} : _props$onChangeSize,
+      _props$onChangeWeight = props.onChangeWeight,
+      onChangeWeight = _props$onChangeWeight === undefined ? function () {} : _props$onChangeWeight,
+      _props$onChangeStyle = props.onChangeStyle,
+      onChangeStyle = _props$onChangeStyle === undefined ? function () {} : _props$onChangeStyle,
+      _props$onChangeSpacin = props.onChangeSpacing,
+      onChangeSpacing = _props$onChangeSpacin === undefined ? function () {} : _props$onChangeSpacin,
+      _props$onChangeLine = props.onChangeLine,
+      onChangeLine = _props$onChangeLine === undefined ? function () {} : _props$onChangeLine,
+      _props$onChangeUpper = props.onChangeUpper,
+      onChangeUpper = _props$onChangeUpper === undefined ? function () {} : _props$onChangeUpper;
+
+  var STYLE = [{
+    value: "normal",
+    label: "Normal"
+  }, {
+    value: "italic",
+    label: "Italic"
+  }];
+  return wp.element.createElement(
+    Fragment,
+    null,
+    components.includes("size") && wp.element.createElement(RangeControl, {
+      label: __("Font Size (PX)"),
+      value: size,
+      min: "10",
+      max: "80",
+      onChange: onChangeSize
+    }),
+    components.includes("weight") && wp.element.createElement(RangeControl, {
+      label: __("Font Weight"),
+      min: "100",
+      max: "900",
+      step: "100",
+      value: weight,
+      onChange: onChangeWeight
+    }),
+    components.includes("style") && wp.element.createElement(SelectControl, {
+      label: __("Style"),
+      options: STYLE,
+      value: style,
+      onChange: onChangeStyle
+    }),
+    components.includes("upper") && wp.element.createElement(CheckboxControl, {
+      label: __("Uppercase"),
+      checked: upper,
+      onChange: onChangeUpper
+    }),
+    components.includes("spacing") && wp.element.createElement(RangeControl, {
+      label: __("Letter Spacing (PX)"),
+      value: spacing,
+      onChange: onChangeSpacing
+    }),
+    components.includes("line") && wp.element.createElement(RangeControl, {
+      label: __("Line Height (PX)"),
+      value: line,
+      onChange: onChangeLine
     })
   );
 }
