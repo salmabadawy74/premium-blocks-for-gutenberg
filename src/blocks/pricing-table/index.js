@@ -3,7 +3,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 
 if (pricingTable) {
-  const blockClass = "premium-pricing-table";
+  const className = "premium-pricing-table";
 
   const { __ } = wp.i18n;
 
@@ -120,10 +120,16 @@ if (pricingTable) {
       descSize: {
         type: "number"
       },
-      descLine: {
+      descWeight: {
         type: "number"
       },
-      descWeight: {
+      descLetter: {
+        type: "number"
+      },
+      descStyle: {
+        type: "string"
+      },
+      descLine: {
         type: "number"
       },
       descBack: {
@@ -261,6 +267,9 @@ if (pricingTable) {
         type: "string",
         default: "#fff"
       },
+      btnHoverColor: {
+        type: "string"
+      },
       btnWidth: {
         type: "number"
       },
@@ -271,9 +280,24 @@ if (pricingTable) {
         type: "number",
         default: 900
       },
+      btnLine: {
+        type: "number"
+      },
+      btnLetter: {
+        type: "number"
+      },
+      btnStyle: {
+        type: "string"
+      },
+      btnUpper: {
+        type: "boolean"
+      },
       btnBack: {
         type: "string",
         default: "#6ec1e4"
+      },
+      btnHoverBack: {
+        type: "string"
       },
       btnMarginT: {
         type: "number",
@@ -303,8 +327,7 @@ if (pricingTable) {
         type: "string"
       },
       badgeChecked: {
-        type: "boolean",
-        default: true
+        type: "boolean"
       },
       badgePos: {
         type: "string",
@@ -314,8 +337,24 @@ if (pricingTable) {
         type: "string",
         default: "#6ec1e4"
       },
+      badgeColor: {
+        type: "string"
+      },
       badgeSize: {
         type: "number"
+      },
+      badgeWeight: {
+        type: "number",
+        default: 900
+      },
+      badgeLetter: {
+        type: "number"
+      },
+      badgeStyle: {
+        type: "string"
+      },
+      badgeUpper: {
+        type: "boolean"
       },
       badgeText: {
         type: "string",
@@ -391,7 +430,7 @@ if (pricingTable) {
       }
     },
     edit: props => {
-      const { isSelected, setAttributes, className } = props;
+      const { isSelected, setAttributes, clientId } = props;
       const {
         contentAlign,
         tableBack,
@@ -415,11 +454,13 @@ if (pricingTable) {
         titleMarginB,
         titlePadding,
         descChecked,
-        desc,
         descColor,
         descSize,
         descLine,
         descWeight,
+        descStyle,
+        descLetter,
+        desc,
         descBack,
         descMarginT,
         descMarginB,
@@ -460,9 +501,15 @@ if (pricingTable) {
         btnTarget,
         btnLink,
         btnColor,
+        btnHoverColor,
         btnSize,
         btnWeight,
+        btnLetter,
+        btnLine,
+        btnUpper,
+        btnStyle,
         btnBack,
+        btnHoverBack,
         btnMarginT,
         btnMarginB,
         btnPadding,
@@ -474,7 +521,12 @@ if (pricingTable) {
         badgeChecked,
         badgePos,
         badgeBack,
+        badgeColor,
         badgeSize,
+        badgeWeight,
+        badgeLetter,
+        badgeStyle,
+        badgeUpper,
         badgeText,
         listChecked,
         listColor,
@@ -491,6 +543,7 @@ if (pricingTable) {
         listPadding,
         listStyle
       } = props.attributes;
+
       const ALIGNS = [
         {
           value: "flex-start",
@@ -580,7 +633,11 @@ if (pricingTable) {
         ),
         isSelected && (
           <InspectorControls key={"inspector"}>
-            <PanelBody title={__("Display Options")} initialOpen={false}>
+            <PanelBody
+              title={__("Display Options")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <ToggleControl
                 label={__("Title")}
                 checked={titleChecked}
@@ -613,8 +670,17 @@ if (pricingTable) {
               />
             </PanelBody>
             {titleChecked && (
-              <PanelBody title={__("Title")} initialOpen={false}>
-                <PanelBody title={__("Font")} initialOpen={false}>
+              <PanelBody
+                title={__("Title")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
+                <PanelBody
+                  title={__("Font")}
+                  className="premium-panel-body premium-panel-body-inner"
+                  initialOpen={false}
+                >
+                  <p>{__("Heading")}</p>
                   <Toolbar
                     controls={"123456".split("").map(tag => ({
                       icon: "heading",
@@ -658,29 +724,29 @@ if (pricingTable) {
                     }
                   />
                 </PanelBody>
-                <PanelBody title={__("Colors")} initialOpen={false}>
-                  <PanelColorSettings
-                    colorSettings={[
-                      {
-                        value: titleColor,
-                        onChange: newColor =>
-                          setAttributes({ titleColor: newColor }),
-                        label: __("Text Color")
-                      }
-                    ]}
-                  />
-                  <PanelColorSettings
-                    colorSettings={[
-                      {
-                        value: titleBack,
-                        onChange: newColor =>
-                          setAttributes({ titleBack: newColor }),
-                        label: __("Background Color")
-                      }
-                    ]}
-                  />
-                </PanelBody>
-                <PanelBody title={__("Spacings")} initialOpen={false}>
+                <PanelColorSettings
+                  title={__("Colors")}
+                  className="premium-panel-body-inner"
+                  colorSettings={[
+                    {
+                      value: titleColor,
+                      onChange: newColor =>
+                        setAttributes({ titleColor: newColor }),
+                      label: __("Text Color")
+                    },
+                    {
+                      value: titleBack,
+                      onChange: newColor =>
+                        setAttributes({ titleBack: newColor }),
+                      label: __("Background Color")
+                    }
+                  ]}
+                />
+                <PanelBody
+                  title={__("Spacings")}
+                  className="premium-panel-body premium-panel-body-inner"
+                  initialOpen={false}
+                >
                   <RangeControl
                     label={__("Margin Top (PX)")}
                     value={titleMarginT}
@@ -712,7 +778,11 @@ if (pricingTable) {
               </PanelBody>
             )}
             {priceChecked && (
-              <PanelBody title={__("Price")} initialOpen={false}>
+              <PanelBody
+                title={__("Price")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
                 <TextControl
                   label={__("Slashed Price")}
                   value={slashPrice}
@@ -738,9 +808,13 @@ if (pricingTable) {
                   value={durPrice}
                   onChange={value => setAttributes({ durPrice: value })}
                 />
-                <PanelBody title={__("Element to Style")} initialOpen={false}>
+                <PanelBody
+                  title={__("Element to Style")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
+                >
                   <SelectControl
-                    label={__("Element to Style")}
+                    label={__("Element")}
                     options={PRICE}
                     value={selectedStyle}
                     onChange={newElem =>
@@ -907,17 +981,11 @@ if (pricingTable) {
                     </Fragment>
                   )}
                 </PanelBody>
-                <PanelColorSettings
-                  colorSettings={[
-                    {
-                      value: priceBack,
-                      onChange: newColor =>
-                        setAttributes({ priceBack: newColor }),
-                      label: __("Container Background Color")
-                    }
-                  ]}
-                />
-                <PanelBody title={__("Spacings")} initialOpen={false}>
+                <PanelBody
+                  title={__("Spacings")}
+                  className="premium-panel-body-inner premium-panel-body"
+                  initialOpen={false}
+                >
                   <RangeControl
                     label={__("Container Margin Top (PX)")}
                     value={priceMarginT}
@@ -946,58 +1014,78 @@ if (pricingTable) {
                     }
                   />
                 </PanelBody>
+                <PanelColorSettings
+                  colorSettings={[
+                    {
+                      value: priceBack,
+                      onChange: newColor =>
+                        setAttributes({ priceBack: newColor }),
+                      label: __("Container Background Color")
+                    }
+                  ]}
+                />
               </PanelBody>
             )}
             {listChecked && (
-              <PanelBody title={__("Features")} initialOpen={false}>
+              <PanelBody
+                title={__("Features")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
                 <SelectControl
                   label={__("List Style")}
                   options={TYPE}
                   value={listStyle}
                   onChange={newType => setAttributes({ listStyle: newType })}
                 />
-                <PremiumTypo
-                  components={[
-                    "size",
-                    "weight",
-                    "style",
-                    "upper",
-                    "spacing",
-                    "line"
-                  ]}
-                  size={listSize}
-                  weight={listWeight}
-                  style={listItemsStyle}
-                  spacing={listLetter}
-                  line={listLine}
-                  upper={listUpper}
-                  onChangeSize={newSize => setAttributes({ listSize: newSize })}
-                  onChangeWeight={newWeight =>
-                    setAttributes({ listWeight: newWeight })
-                  }
-                  onChangeStyle={newStyle =>
-                    setAttributes({ listItemsStyle: newStyle })
-                  }
-                  onChangeSpacing={newValue =>
-                    setAttributes({ listLetter: newValue })
-                  }
-                  onChangeLine={newValue =>
-                    setAttributes({ listLine: newValue })
-                  }
-                  onChangeUpper={check => setAttributes({ listUpper: check })}
-                />
+                <PanelBody
+                  title={__("Font")}
+                  className="premium-panel-body-inner premium-panel-body"
+                  initialOpen={false}
+                >
+                  <PremiumTypo
+                    components={[
+                      "size",
+                      "weight",
+                      "style",
+                      "upper",
+                      "spacing",
+                      "line"
+                    ]}
+                    size={listSize}
+                    weight={listWeight}
+                    style={listItemsStyle}
+                    spacing={listLetter}
+                    line={listLine}
+                    upper={listUpper}
+                    onChangeSize={newSize =>
+                      setAttributes({ listSize: newSize })
+                    }
+                    onChangeWeight={newWeight =>
+                      setAttributes({ listWeight: newWeight })
+                    }
+                    onChangeStyle={newStyle =>
+                      setAttributes({ listItemsStyle: newStyle })
+                    }
+                    onChangeSpacing={newValue =>
+                      setAttributes({ listLetter: newValue })
+                    }
+                    onChangeLine={newValue =>
+                      setAttributes({ listLine: newValue })
+                    }
+                    onChangeUpper={check => setAttributes({ listUpper: check })}
+                  />
+                </PanelBody>
                 <PanelColorSettings
+                  className="premium-panel-body-inner"
+                  title={__("Colors")}
                   colorSettings={[
                     {
                       value: listColor,
                       onChange: newColor =>
                         setAttributes({ listColor: newColor }),
                       label: __("List Items Color")
-                    }
-                  ]}
-                />
-                <PanelColorSettings
-                  colorSettings={[
+                    },
                     {
                       value: listBack,
                       onChange: newColor =>
@@ -1006,59 +1094,80 @@ if (pricingTable) {
                     }
                   ]}
                 />
-                <RangeControl
-                  label={__("Margin Top (PX)")}
-                  value={listMarginT}
-                  onChange={newSize => setAttributes({ listMarginT: newSize })}
-                />
-                <RangeControl
-                  label={__("Margin Bottom (PX)")}
-                  value={listMarginB}
-                  onChange={newSize => setAttributes({ listMarginB: newSize })}
-                />
-                <RangeControl
-                  label={__("Padding (PX)")}
-                  value={listPadding}
-                  onChange={newSize => setAttributes({ listPadding: newSize })}
-                />
+                <PanelBody
+                  title={__("Spacings")}
+                  initialOpen={false}
+                  className="premium-panel-body-inner premium-panel-body"
+                >
+                  <RangeControl
+                    label={__("Margin Top (PX)")}
+                    value={listMarginT}
+                    onChange={newSize =>
+                      setAttributes({ listMarginT: newSize })
+                    }
+                  />
+                  <RangeControl
+                    label={__("Margin Bottom (PX)")}
+                    value={listMarginB}
+                    onChange={newSize =>
+                      setAttributes({ listMarginB: newSize })
+                    }
+                  />
+                  <RangeControl
+                    label={__("Padding (PX)")}
+                    value={listPadding}
+                    onChange={newSize =>
+                      setAttributes({ listPadding: newSize })
+                    }
+                  />
+                </PanelBody>
               </PanelBody>
             )}
             {descChecked && (
-              <PanelBody title={__("Description")} initialOpen={false}>
+              <PanelBody
+                title={__("Description")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
+                <PanelBody
+                  title={__("Font")}
+                  className="premium-panel-body-inner premium-panel-body"
+                  initialOpen={false}
+                >
+                  <PremiumTypo
+                    components={["size", "weight", "style", "spacing", "line"]}
+                    size={descSize}
+                    weight={descWeight}
+                    style={descStyle}
+                    spacing={descLetter}
+                    line={descLine}
+                    onChangeSize={newSize =>
+                      setAttributes({ descSize: newSize })
+                    }
+                    onChangeWeight={newWeight =>
+                      setAttributes({ descWeight: newWeight })
+                    }
+                    onChangeStyle={newStyle =>
+                      setAttributes({ descStyle: newStyle })
+                    }
+                    onChangeSpacing={newValue =>
+                      setAttributes({ descLetter: newValue })
+                    }
+                    onChangeLine={newValue =>
+                      setAttributes({ descLine: newValue })
+                    }
+                  />
+                </PanelBody>
                 <PanelColorSettings
+                  title={__("Colors")}
+                  className="premium-panel-body-inner"
                   colorSettings={[
                     {
                       value: descColor,
                       onChange: newColor =>
                         setAttributes({ descColor: newColor }),
                       label: __("Text Color")
-                    }
-                  ]}
-                />
-                <RangeControl
-                  label={__("Font Size (PX)")}
-                  value={descSize}
-                  min="10"
-                  max="80"
-                  onChange={newSize => setAttributes({ descSize: newSize })}
-                />
-                <RangeControl
-                  label={__("Font Weight")}
-                  min="100"
-                  max="900"
-                  step="100"
-                  value={descWeight}
-                  onChange={newWeight =>
-                    setAttributes({ descWeight: newWeight })
-                  }
-                />
-                <RangeControl
-                  label={__("Line Height (PX)")}
-                  value={descLine}
-                  onChange={newValue => setAttributes({ descLine: newValue })}
-                />
-                <PanelColorSettings
-                  colorSettings={[
+                    },
                     {
                       value: descBack,
                       onChange: newColor =>
@@ -1067,129 +1176,177 @@ if (pricingTable) {
                     }
                   ]}
                 />
-                <RangeControl
-                  label={__("Margin Top (PX)")}
-                  value={descMarginT}
-                  min="0"
-                  max="100"
-                  onChange={newMargin =>
-                    setAttributes({ descMarginT: newMargin })
-                  }
-                />
-                <RangeControl
-                  label={__("Margin Bottom (PX)")}
-                  value={descMarginB}
-                  min="0"
-                  max="100"
-                  onChange={newMargin =>
-                    setAttributes({ descMarginB: newMargin })
-                  }
-                />
-                <RangeControl
-                  label={__("Padding (PX)")}
-                  value={descPadding}
-                  min="0"
-                  max="100"
-                  onChange={newPadding =>
-                    setAttributes({ descPadding: newPadding })
-                  }
-                />
+                <PanelBody
+                  title={__("Spacings")}
+                  className="premium-panel-body-inner premium-panel-body"
+                  initialOpen={false}
+                >
+                  <RangeControl
+                    label={__("Margin Top (PX)")}
+                    value={descMarginT}
+                    min="0"
+                    max="100"
+                    onChange={newMargin =>
+                      setAttributes({ descMarginT: newMargin })
+                    }
+                  />
+                  <RangeControl
+                    label={__("Margin Bottom (PX)")}
+                    value={descMarginB}
+                    min="0"
+                    max="100"
+                    onChange={newMargin =>
+                      setAttributes({ descMarginB: newMargin })
+                    }
+                  />
+                  <RangeControl
+                    label={__("Padding (PX)")}
+                    value={descPadding}
+                    min="0"
+                    max="100"
+                    onChange={newPadding =>
+                      setAttributes({ descPadding: newPadding })
+                    }
+                  />
+                </PanelBody>
               </PanelBody>
             )}
             {btnChecked && (
-              <PanelBody title={__("Button")} initialOpen={false}>
-                <TextControl
-                  label={__("Button Text")}
-                  value={btnText}
-                  onChange={newText => setAttributes({ btnText: newText })}
-                />
+              <PanelBody
+                title={__("Button")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
+                <PanelBody
+                  title={__("Font")}
+                  className="premium-panel-body-inner premium-panel-body"
+                  initialOpen={false}
+                >
+                  <PremiumTypo
+                    components={[
+                      "size",
+                      "weight",
+                      "style",
+                      "upper",
+                      "spacing",
+                      "line"
+                    ]}
+                    size={btnSize}
+                    weight={btnWeight}
+                    style={btnStyle}
+                    spacing={btnLetter}
+                    line={btnLine}
+                    upper={btnUpper}
+                    onChangeSize={newSize =>
+                      setAttributes({ btnSize: newSize })
+                    }
+                    onChangeWeight={newWeight =>
+                      setAttributes({ btnWeight: newWeight })
+                    }
+                    onChangeStyle={newStyle =>
+                      setAttributes({ btnStyle: newStyle })
+                    }
+                    onChangeSpacing={newValue =>
+                      setAttributes({ btnLetter: newValue })
+                    }
+                    onChangeLine={newValue =>
+                      setAttributes({ btnLine: newValue })
+                    }
+                    onChangeUpper={check => setAttributes({ btnUpper: check })}
+                  />
+                </PanelBody>
                 <PanelColorSettings
+                  title={__("Colors")}
+                  className="premium-panel-body-inner"
                   colorSettings={[
                     {
                       value: btnColor,
                       onChange: newColor =>
                         setAttributes({ btnColor: newColor }),
                       label: __("Text Color")
-                    }
-                  ]}
-                />
-                <RangeControl
-                  label={__("Width (%)")}
-                  value={btnWidth}
-                  onChange={newSize => setAttributes({ btnWidth: newSize })}
-                />
-                <RangeControl
-                  label={__("Font Size (PX)")}
-                  value={btnSize}
-                  min="10"
-                  max="80"
-                  onChange={newSize => setAttributes({ btnSize: newSize })}
-                />
-                <RangeControl
-                  label={__("Font Weight")}
-                  min="100"
-                  max="900"
-                  step="100"
-                  value={btnWeight}
-                  onChange={newWeight =>
-                    setAttributes({ btnWeight: newWeight })
-                  }
-                />
-                <PanelColorSettings
-                  colorSettings={[
+                    },
+                    {
+                      value: btnHoverColor,
+                      onChange: newColor =>
+                        setAttributes({ btnHoverColor: newColor }),
+                      label: __("Text Hover Color")
+                    },
                     {
                       value: btnBack,
                       onChange: newColor =>
                         setAttributes({ btnBack: newColor }),
                       label: __("Background Color")
+                    },
+                    {
+                      value: btnHoverBack,
+                      onChange: newColor =>
+                        setAttributes({ btnHoverBack: newColor }),
+                      label: __("Background Hover Color")
                     }
                   ]}
                 />
-                <PremiumBorder
-                  borderType={btnBorderType}
-                  borderWidth={btnBorderWidth}
-                  borderColor={btnBorderColor}
-                  borderRadius={btnBorderRadius}
-                  onChangeType={newType =>
-                    setAttributes({ btnBorderType: newType })
-                  }
-                  onChangeWidth={newWidth =>
-                    setAttributes({ btnBorderWidth: newWidth })
-                  }
-                  onChangeColor={colorValue =>
-                    setAttributes({ btnBorderColor: colorValue })
-                  }
-                  onChangeRadius={newrRadius =>
-                    setAttributes({ btnBorderRadius: newrRadius })
-                  }
-                />
-                <RangeControl
-                  label={__("Margin Top (PX)")}
-                  value={btnMarginT}
-                  min="0"
-                  max="100"
-                  onChange={newPadding =>
-                    setAttributes({ btnMarginT: newPadding })
-                  }
-                />
-                <RangeControl
-                  label={__("Margin Bottom (PX)")}
-                  value={btnMarginB}
-                  min="0"
-                  max="100"
-                  onChange={newPadding =>
-                    setAttributes({ btnMarginB: newPadding })
-                  }
-                />
-                <RangeControl
-                  label={__("Padding (PX)")}
-                  value={btnPadding}
-                  min="0"
-                  max="100"
-                  onChange={newPadding =>
-                    setAttributes({ btnPadding: newPadding })
-                  }
-                />
+                <PanelBody
+                  title={__("Border")}
+                  className="premium-panel-body-inner premium-panel-body"
+                  initialOpen={false}
+                >
+                  <PremiumBorder
+                    borderType={btnBorderType}
+                    borderWidth={btnBorderWidth}
+                    borderColor={btnBorderColor}
+                    borderRadius={btnBorderRadius}
+                    onChangeType={newType =>
+                      setAttributes({ btnBorderType: newType })
+                    }
+                    onChangeWidth={newWidth =>
+                      setAttributes({ btnBorderWidth: newWidth })
+                    }
+                    onChangeColor={colorValue =>
+                      setAttributes({ btnBorderColor: colorValue })
+                    }
+                    onChangeRadius={newrRadius =>
+                      setAttributes({ btnBorderRadius: newrRadius })
+                    }
+                  />
+                </PanelBody>
+                <PanelBody
+                  title={__("Spacings")}
+                  className="premium-panel-body-inner premium-panel-body"
+                  initialOpen={false}
+                >
+                  <RangeControl
+                    label={__("Width (%)")}
+                    value={btnWidth}
+                    onChange={newSize => setAttributes({ btnWidth: newSize })}
+                  />
+                  <RangeControl
+                    label={__("Margin Top (PX)")}
+                    value={btnMarginT}
+                    min="0"
+                    max="100"
+                    onChange={newPadding =>
+                      setAttributes({ btnMarginT: newPadding })
+                    }
+                  />
+                  <RangeControl
+                    label={__("Margin Bottom (PX)")}
+                    value={btnMarginB}
+                    min="0"
+                    max="100"
+                    onChange={newPadding =>
+                      setAttributes({ btnMarginB: newPadding })
+                    }
+                  />
+                  <RangeControl
+                    label={__("Padding (PX)")}
+                    value={btnPadding}
+                    min="0"
+                    max="100"
+                    onChange={newPadding =>
+                      setAttributes({ btnPadding: newPadding })
+                    }
+                  />
+                </PanelBody>
                 <ToggleControl
                   label={__("Open Link in a new tab")}
                   checked={btnTarget}
@@ -1198,26 +1355,57 @@ if (pricingTable) {
               </PanelBody>
             )}
             {badgeChecked && (
-              <PanelBody title={__("Badge")} initialOpen={false}>
+              <PanelBody
+                title={__("Badge")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
+                <TextControl
+                  label={__("Text")}
+                  value={badgeText}
+                  onChange={value => setAttributes({ badgeText: value })}
+                />
                 <SelectControl
                   label={__("Position")}
                   options={POSITION}
                   value={badgePos}
                   onChange={newValue => setAttributes({ badgePos: newValue })}
                 />
-                <TextControl
-                  label={__("Text")}
-                  value={badgeText}
-                  onChange={value => setAttributes({ badgeText: value })}
-                />
-                <RangeControl
-                  label={__("Size")}
-                  value={badgeSize}
-                  max="250"
-                  onChange={newValue => setAttributes({ badgeSize: newValue })}
-                />
+                <PanelBody
+                  title={__("Font")}
+                  className="premium-panel-body-inner premium-panel-body"
+                  initialOpen={false}
+                >
+                  <PremiumTypo
+                    components={["weight", "style", "upper", "spacing"]}
+                    weight={badgeWeight}
+                    style={badgeStyle}
+                    spacing={badgeLetter}
+                    upper={badgeUpper}
+                    onChangeWeight={newWeight =>
+                      setAttributes({ badgeWeight: newWeight })
+                    }
+                    onChangeStyle={newStyle =>
+                      setAttributes({ badgeStyle: newStyle })
+                    }
+                    onChangeSpacing={newValue =>
+                      setAttributes({ badgeLetter: newValue })
+                    }
+                    onChangeUpper={check =>
+                      setAttributes({ badgeUpper: check })
+                    }
+                  />
+                </PanelBody>
                 <PanelColorSettings
+                  title={__("Colors")}
+                  className="premium-panel-body-inner"
                   colorSettings={[
+                    {
+                      value: badgeColor,
+                      onChange: newColor =>
+                        setAttributes({ badgeColor: newColor }),
+                      label: __("Text Color")
+                    },
                     {
                       value: badgeBack,
                       onChange: newColor =>
@@ -1226,10 +1414,21 @@ if (pricingTable) {
                     }
                   ]}
                 />
+                <RangeControl
+                  label={__("Size")}
+                  value={badgeSize}
+                  max="250"
+                  onChange={newValue => setAttributes({ badgeSize: newValue })}
+                />
               </PanelBody>
             )}
-            <PanelBody title={__("Table")} initialOpen={false}>
+            <PanelBody
+              title={__("Table")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <PanelColorSettings
+                title={__("Color Settings")}
                 colorSettings={[
                   {
                     value: tableBack,
@@ -1239,35 +1438,52 @@ if (pricingTable) {
                   }
                 ]}
               />
-              <PremiumBorder
-                borderType={borderType}
-                borderWidth={borderWidth}
-                borderColor={borderColor}
-                borderRadius={borderRadius}
-                onChangeType={newType => setAttributes({ borderType: newType })}
-                onChangeWidth={newWidth =>
-                  setAttributes({ borderWidth: newWidth })
-                }
-                onChangeColor={colorValue =>
-                  setAttributes({ borderColor: colorValue })
-                }
-                onChangeRadius={newrRadius =>
-                  setAttributes({ borderRadius: newrRadius })
-                }
-              />
-              <RangeControl
-                label={__("Padding")}
-                value={tablePadding}
-                min="0"
-                max="50"
-                onChange={newValue => setAttributes({ tablePadding: newValue })}
-              />
+              <PanelBody
+                title={__("Border")}
+                className="premium-panel-body-inner premium-panel-body"
+                initialOpen={false}
+              >
+                <PremiumBorder
+                  borderType={borderType}
+                  borderWidth={borderWidth}
+                  borderColor={borderColor}
+                  borderRadius={borderRadius}
+                  onChangeType={newType =>
+                    setAttributes({ borderType: newType })
+                  }
+                  onChangeWidth={newWidth =>
+                    setAttributes({ borderWidth: newWidth })
+                  }
+                  onChangeColor={colorValue =>
+                    setAttributes({ borderColor: colorValue })
+                  }
+                  onChangeRadius={newrRadius =>
+                    setAttributes({ borderRadius: newrRadius })
+                  }
+                />
+              </PanelBody>
+              <PanelBody
+                title={__("Spacings")}
+                className="premium-panel-body-inner premium-panel-body"
+                initialOpen={false}
+              >
+                <RangeControl
+                  label={__("Padding")}
+                  value={tablePadding}
+                  min="0"
+                  max="50"
+                  onChange={newValue =>
+                    setAttributes({ tablePadding: newValue })
+                  }
+                />
+              </PanelBody>
             </PanelBody>
           </InspectorControls>
         ),
 
         <div
-          className={`${blockClass}`}
+          id={`${className}-${clientId}`}
+          className={`${className}`}
           style={{
             textAlign: contentAlign,
             background: tableBack,
@@ -1280,10 +1496,10 @@ if (pricingTable) {
         >
           {badgeChecked && (
             <div
-              className={`${blockClass}__badge_wrap ${blockClass}__badge_${badgePos}`}
+              className={`${className}__badge_wrap ${className}__badge_${badgePos}`}
             >
               <div
-                className={`${blockClass}__badge`}
+                className={`${className}__badge`}
                 style={{
                   borderRightColor:
                     "right" === badgePos ? badgeBack : "transparent",
@@ -1297,13 +1513,23 @@ if (pricingTable) {
                     "right" === badgePos ? badgeSize + "px" : "none"
                 }}
               >
-                <span>{badgeText}</span>
+                <span
+                  style={{
+                    color: badgeColor,
+                    fontWeight: badgeWeight,
+                    textTransform: badgeUpper ? "uppercase" : "none",
+                    letterSpacing: badgeLetter + "px",
+                    fontStyle: badgeStyle
+                  }}
+                >
+                  {badgeText}
+                </span>
               </div>
             </div>
           )}
           {titleChecked && (
             <div
-              className={`${blockClass}__title_wrap`}
+              className={`${className}__title_wrap`}
               style={{
                 paddingTop: titleMarginT + "px",
                 paddingBottom: titleMarginB + "px"
@@ -1311,17 +1537,16 @@ if (pricingTable) {
             >
               <RichText
                 tagName={titleTag.toLowerCase()}
-                className={`${blockClass}__title`}
+                className={`${className}__title`}
                 onChange={newText => setAttributes({ title: newText })}
                 placeholder={__("Awesome Title")}
                 value={title}
-                isSelected={false}
                 style={{
                   color: titleColor,
                   background: titleBack,
                   fontSize: titleSize + "px",
                   letterSpacing: titleLetter + "px",
-                  textTransform: titleUpper ? "uppercase" : "undefined",
+                  textTransform: titleUpper ? "uppercase" : "none",
                   fontStyle: titleStyle,
                   fontWeight: titleWeight,
                   lineHeight: titleLine + "px",
@@ -1332,7 +1557,7 @@ if (pricingTable) {
           )}
           {priceChecked && (
             <div
-              className={`${blockClass}__price_wrap`}
+              className={`${className}__price_wrap`}
               style={{
                 background: priceBack,
                 marginTop: priceMarginT + "px",
@@ -1343,7 +1568,7 @@ if (pricingTable) {
             >
               {slashPrice && (
                 <strike
-                  className={`${blockClass}__slash`}
+                  className={`${className}__slash`}
                   style={{
                     color: slashColor,
                     fontSize: slashSize + "px",
@@ -1356,7 +1581,7 @@ if (pricingTable) {
               )}
               {currPrice && (
                 <span
-                  className={`${blockClass}__currency`}
+                  className={`${className}__currency`}
                   style={{
                     color: currColor,
                     fontSize: currSize + "px",
@@ -1369,7 +1594,7 @@ if (pricingTable) {
               )}
               {valPrice && (
                 <span
-                  className={`${blockClass}__val`}
+                  className={`${className}__val`}
                   style={{
                     color: valColor,
                     fontSize: valSize + "px",
@@ -1382,7 +1607,7 @@ if (pricingTable) {
               )}
               {divPrice && (
                 <span
-                  className={`${blockClass}__divider`}
+                  className={`${className}__divider`}
                   style={{
                     color: divColor,
                     fontSize: divSize + "px",
@@ -1395,7 +1620,7 @@ if (pricingTable) {
               )}
               {durPrice && (
                 <span
-                  className={`${blockClass}__dur`}
+                  className={`${className}__dur`}
                   style={{
                     color: durColor,
                     fontSize: durSize + "px",
@@ -1410,7 +1635,7 @@ if (pricingTable) {
           )}
           {listChecked && (
             <div
-              className={`${blockClass}__list_wrap`}
+              className={`${className}__list_wrap`}
               style={{
                 marginTop: listMarginT + "px",
                 marginBottom: listMarginB + "px"
@@ -1418,12 +1643,11 @@ if (pricingTable) {
             >
               <RichText
                 tagName="ul"
-                className={`${blockClass}__list list-${listStyle}`}
-                placeholder={__("List Item #1")}
+                className={`${className}__list list-${listStyle}`}
                 multiline="li"
-                onChange={newText => setAttributes({ listItems: newText })}
+                placeholder={__("List Item #1")}
                 value={listItems}
-                isSelected={false}
+                onChange={newText => setAttributes({ listItems: newText })}
                 style={{
                   color: listColor,
                   fontSize: listSize + "px",
@@ -1432,29 +1656,29 @@ if (pricingTable) {
                   listStyle: "check" !== listStyle ? listStyle : "none",
                   listStylePosition: "inside",
                   fontWeight: listWeight,
-                  textTransform: listUpper ? "uppercase" : "undefined",
+                  textTransform: listUpper ? "uppercase" : "none",
                   letterSpacing: listLetter + "px",
                   fontStyle: listItemsStyle,
                   lineHeight: listLine + "px"
                 }}
-                keepPlaceholderOnFocus
               />
             </div>
           )}
           {descChecked && (
-            <div className={`${blockClass}__desc_wrap`}>
+            <div className={`${className}__desc_wrap`}>
               <RichText
                 tagName="p"
-                className={`${blockClass}__desc`}
+                className={`${className}__desc`}
                 onChange={newText => setAttributes({ desc: newText })}
                 placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
                 value={desc}
-                isSelected={false}
                 style={{
                   color: descColor,
                   background: descBack,
                   fontSize: descSize + "px",
                   fontWeight: descWeight,
+                  letterSpacing: descLetter + "px",
+                  fontStyle: descStyle,
                   lineHeight: descLine + "px",
                   marginTop: descMarginT + "px",
                   marginBottom: descMarginB + "px",
@@ -1465,32 +1689,52 @@ if (pricingTable) {
           )}
           {btnChecked && (
             <div
-              className={`${blockClass}__button`}
+              className={`${className}__button`}
               style={{
                 width: btnWidth + "%"
               }}
             >
               <a
-                class={`${blockClass}__button_link`}
+                class={`${className}__button_link`}
                 style={{
                   color: btnColor,
                   background: btnBack,
+                  fontSize: btnSize + "px",
                   fontWeight: btnWeight,
+                  letterSpacing: btnLetter + "px",
+                  fontStyle: btnStyle,
+                  lineHeight: btnLine + "px",
                   marginTop: btnMarginT,
                   marginBottom: btnMarginB,
                   padding: btnPadding,
-                  fontSize: btnSize + "px",
                   border: btnBorderType,
                   borderWidth: btnBorderWidth + "px",
                   borderRadius: btnBorderRadius + "px",
                   borderColor: btnBorderColor
                 }}
               >
-                <span>{btnText}</span>
+                <RichText
+                  tagName="span"
+                  onChange={newText => setAttributes({ btnText: newText })}
+                  value={btnText}
+                  style={{
+                    textTransform: btnUpper ? "uppercase" : "none"
+                  }}
+                />
               </a>
               <URLInput
                 value={btnLink}
                 onChange={newLink => setAttributes({ btnLink: newLink })}
+              />
+              <style
+                dangerouslySetInnerHTML={{
+                  __html: [
+                    `#premium-pricing-table-${clientId} .premium-pricing-table__button_link:hover {`,
+                    `color: ${btnHoverColor} !important;`,
+                    `background: ${btnHoverBack} !important`,
+                    "}"
+                  ].join("\n")
+                }}
               />
             </div>
           )}
@@ -1499,6 +1743,7 @@ if (pricingTable) {
     },
     save: props => {
       const {
+        clientId,
         attributes: {
           contentAlign,
           tableBack,
@@ -1527,6 +1772,8 @@ if (pricingTable) {
           descSize,
           descLine,
           descWeight,
+          descStyle,
+          descLetter,
           descBack,
           descMarginT,
           descMarginB,
@@ -1566,9 +1813,15 @@ if (pricingTable) {
           btnLink,
           btnTarget,
           btnColor,
+          btnHoverColor,
           btnSize,
           btnWeight,
+          btnLine,
+          btnLetter,
+          btnUpper,
+          btnStyle,
           btnBack,
+          btnHoverBack,
           btnMarginT,
           btnMarginB,
           btnPadding,
@@ -1580,7 +1833,12 @@ if (pricingTable) {
           badgeChecked,
           badgePos,
           badgeBack,
+          badgeColor,
           badgeSize,
+          badgeWeight,
+          badgeLetter,
+          badgeStyle,
+          badgeUpper,
           badgeText,
           listChecked,
           listColor,
@@ -1601,7 +1859,8 @@ if (pricingTable) {
 
       return (
         <div
-          className={`${blockClass}`}
+          id={`${className}-${clientId}`}
+          className={`${className}`}
           style={{
             textAlign: contentAlign,
             background: tableBack,
@@ -1614,10 +1873,10 @@ if (pricingTable) {
         >
           {badgeChecked && (
             <div
-              className={`${blockClass}__badge_wrap ${blockClass}__badge_${badgePos}`}
+              className={`${className}__badge_wrap ${className}__badge_${badgePos}`}
             >
               <div
-                className={`${blockClass}__badge`}
+                className={`${className}__badge`}
                 style={{
                   borderRightColor:
                     "right" === badgePos ? badgeBack : "transparent",
@@ -1631,13 +1890,23 @@ if (pricingTable) {
                     "right" === badgePos ? badgeSize + "px" : "none"
                 }}
               >
-                <span>{badgeText}</span>
+                <span
+                  style={{
+                    color: badgeColor,
+                    fontWeight: badgeWeight,
+                    textTransform: badgeUpper ? "uppercase" : "none",
+                    letterSpacing: badgeLetter + "px",
+                    fontStyle: badgeStyle
+                  }}
+                >
+                  {badgeText}
+                </span>
               </div>
             </div>
           )}
           {titleChecked && (
             <div
-              className={`${blockClass}__title_wrap`}
+              className={`${className}__title_wrap`}
               style={{
                 paddingTop: titleMarginT + "px",
                 paddingBottom: titleMarginB + "px"
@@ -1645,14 +1914,14 @@ if (pricingTable) {
             >
               <RichText.Content
                 tagName={titleTag.toLowerCase()}
-                className={`${blockClass}__title`}
+                className={`${className}__title`}
                 value={title}
                 style={{
                   color: titleColor,
                   background: titleBack,
                   fontSize: titleSize + "px",
                   letterSpacing: titleLetter + "px",
-                  textTransform: titleUpper ? "uppercase" : "undefined",
+                  textTransform: titleUpper ? "uppercase" : "none",
                   fontStyle: titleStyle,
                   fontWeight: titleWeight,
                   lineHeight: titleLine + "px",
@@ -1664,7 +1933,7 @@ if (pricingTable) {
           )}
           {priceChecked && (
             <div
-              className={`${blockClass}__price_wrap`}
+              className={`${className}__price_wrap`}
               style={{
                 background: priceBack,
                 marginTop: priceMarginT + "px",
@@ -1675,7 +1944,7 @@ if (pricingTable) {
             >
               {slashPrice && (
                 <strike
-                  className={`${blockClass}__slash`}
+                  className={`${className}__slash`}
                   style={{
                     color: slashColor,
                     fontSize: slashSize + "px",
@@ -1688,7 +1957,7 @@ if (pricingTable) {
               )}
               {currPrice && (
                 <span
-                  className={`${blockClass}__currency`}
+                  className={`${className}__currency`}
                   style={{
                     color: currColor,
                     fontSize: currSize + "px",
@@ -1701,7 +1970,7 @@ if (pricingTable) {
               )}
               {valPrice && (
                 <span
-                  className={`${blockClass}__val`}
+                  className={`${className}__val`}
                   style={{
                     color: valColor,
                     fontSize: valSize + "px",
@@ -1714,7 +1983,7 @@ if (pricingTable) {
               )}
               {divPrice && (
                 <span
-                  className={`${blockClass}__divider`}
+                  className={`${className}__divider`}
                   style={{
                     color: divColor,
                     fontSize: divSize + "px",
@@ -1727,7 +1996,7 @@ if (pricingTable) {
               )}
               {durPrice && (
                 <span
-                  className={`${blockClass}__dur`}
+                  className={`${className}__dur`}
                   style={{
                     color: durColor,
                     fontSize: durSize + "px",
@@ -1742,14 +2011,14 @@ if (pricingTable) {
           )}
           {listChecked && (
             <div
-              className={`${blockClass}__list_wrap`}
+              className={`${className}__list_wrap`}
               style={{
                 marginTop: listMarginT + "px",
                 marginBottom: listMarginB + "px"
               }}
             >
               <ul
-                className={`${blockClass}__list`}
+                className={`${className}__list list-${listStyle}`}
                 style={{
                   color: listColor,
                   fontSize: listSize + "px",
@@ -1759,7 +2028,7 @@ if (pricingTable) {
                   listStylePosition: "inside",
                   fontWeight: listWeight,
                   letterSpacing: listLetter + "px",
-                  textTransform: listUpper ? "uppercase" : "undefined",
+                  textTransform: listUpper ? "uppercase" : "none",
                   fontStyle: listItemsStyle,
                   lineHeight: listLine + "px"
                 }}
@@ -1769,10 +2038,10 @@ if (pricingTable) {
             </div>
           )}
           {descChecked && (
-            <div className={`${blockClass}__desc_wrap`}>
+            <div className={`${className}__desc_wrap`}>
               <RichText.Content
                 tagName="p"
-                className={`${blockClass}__desc`}
+                className={`${className}__desc`}
                 value={desc}
                 style={{
                   color: descColor,
@@ -1780,6 +2049,8 @@ if (pricingTable) {
                   fontSize: descSize + "px",
                   fontWeight: descWeight,
                   lineHeight: descLine + "px",
+                  letterSpacing: descLetter + "px",
+                  fontStyle: descStyle,
                   marginTop: descMarginT + "px",
                   marginBottom: descMarginB + "px",
                   padding: descPadding + "px"
@@ -1789,31 +2060,51 @@ if (pricingTable) {
           )}
           {btnChecked && (
             <div
-              className={`${blockClass}__button`}
+              className={`${className}__button`}
               style={{
                 width: btnWidth + "%"
               }}
             >
               <a
-                class={`${blockClass}__button_link`}
+                class={`${className}__button_link`}
                 href={btnLink}
                 target={btnTarget ? "_target" : ""}
                 style={{
                   color: btnColor,
                   background: btnBack,
+                  fontSize: btnSize + "px",
                   fontWeight: btnWeight,
+                  letterSpacing: btnLetter + "px",
+                  fontStyle: btnStyle,
+                  lineHeight: btnLine + "px",
                   marginTop: btnMarginT,
                   marginBottom: btnMarginB,
                   padding: btnPadding,
-                  fontSize: btnSize + "px",
                   border: btnBorderType,
                   borderWidth: btnBorderWidth + "px",
                   borderRadius: btnBorderRadius + "px",
                   borderColor: btnBorderColor
                 }}
               >
-                <span>{btnText}</span>
+                <RichText.Content
+                  tagName="span"
+                  onChange={newText => setAttributes({ btnText: newText })}
+                  value={btnText}
+                  style={{
+                    textTransform: btnUpper ? "uppercase" : "none"
+                  }}
+                />
               </a>
+              <style
+                dangerouslySetInnerHTML={{
+                  __html: [
+                    `#premium-pricing-table-${clientId} .premium-pricing-table__button_link:hover {`,
+                    `color: ${btnHoverColor} !important;`,
+                    `background: ${btnHoverBack} !important`,
+                    "}"
+                  ].join("\n")
+                }}
+              />
             </div>
           )}
         </div>

@@ -259,7 +259,11 @@ if (countUp) {
       return [
         isSelected && (
           <InspectorControls key={"inspector"}>
-            <PanelBody title={__("Counter")} initialOpen={true}>
+            <PanelBody
+              title={__("Counter")}
+              className="premium-panel-body"
+              initialOpen={true}
+            >
               <TextControl
                 label={__("Increment")}
                 value={increment}
@@ -326,13 +330,18 @@ if (countUp) {
                 onChange={check => setAttributes({ suffix: check })}
               />
             </PanelBody>
-            <PanelBody title={__("Number")} initialOpen={false}>
+            <PanelBody
+              title={__("Number")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <RangeControl
                 label={__("Font Size (PX)")}
                 value={numberSize}
                 onChange={newValue => setAttributes({ numberSize: newValue })}
               />
               <PanelColorSettings
+                title={__("Colors")}
                 colorSettings={[
                   {
                     value: numberColor,
@@ -354,7 +363,11 @@ if (countUp) {
               />
             </PanelBody>
             {titleCheck && (
-              <PanelBody title={__("Title")} initialOpen={false}>
+              <PanelBody
+                title={__("Title")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
                 <TextControl
                   label={__("Title Text")}
                   value={titleTxt}
@@ -376,12 +389,13 @@ if (countUp) {
                   }
                 />
                 <PanelColorSettings
+                  title={__("Colors")}
                   colorSettings={[
                     {
                       value: titleColor,
                       onChange: colorValue =>
                         setAttributes({ titleColor: colorValue }),
-                      label: __("Color")
+                      label: __("Text Color")
                     }
                   ]}
                 />
@@ -399,7 +413,11 @@ if (countUp) {
             )}
 
             {prefix && (
-              <PanelBody title={__("Prefix")} initialOpen={false}>
+              <PanelBody
+                title={__("Prefix")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
                 <TextControl
                   label={__("Prefix")}
                   value={prefixTxt}
@@ -411,12 +429,13 @@ if (countUp) {
                   onChange={newValue => setAttributes({ prefixSize: newValue })}
                 />
                 <PanelColorSettings
+                  title={__("Colors")}
                   colorSettings={[
                     {
                       value: prefixColor,
                       onChange: colorValue =>
                         setAttributes({ prefixColor: colorValue }),
-                      label: __("Color")
+                      label: __("Text Color")
                     }
                   ]}
                 />
@@ -438,7 +457,11 @@ if (countUp) {
               </PanelBody>
             )}
             {suffix && (
-              <PanelBody title={__("Suffix")} initialOpen={false}>
+              <PanelBody
+                title={__("Suffix")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
                 <TextControl
                   label={__("Suffix")}
                   value={suffixTxt}
@@ -450,12 +473,13 @@ if (countUp) {
                   onChange={newValue => setAttributes({ suffixSize: newValue })}
                 />
                 <PanelColorSettings
+                  title={__("Colors")}
                   colorSettings={[
                     {
                       value: suffixColor,
                       onChange: colorValue =>
                         setAttributes({ suffixColor: colorValue }),
-                      label: __("Color")
+                      label: __("Text Color")
                     }
                   ]}
                 />
@@ -477,7 +501,11 @@ if (countUp) {
               </PanelBody>
             )}
             {iconCheck && (
-              <PanelBody title={__("Icon")} initialOpen={false}>
+              <PanelBody
+                title={__("Icon")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
                 <SelectControl
                   label={__("Icon Type")}
                   options={ICONS}
@@ -559,12 +587,13 @@ if (countUp) {
                 />
                 {"icon" === icon && (
                   <PanelColorSettings
+                    title={__("Colors")}
                     colorSettings={[
                       {
                         value: iconColor,
                         onChange: colorValue =>
                           setAttributes({ iconColor: colorValue }),
-                        label: __("Color")
+                        label: __("Icon Color")
                       }
                     ]}
                   />

@@ -320,7 +320,11 @@ if (banner) {
         ),
         isSelected && (
           <InspectorControls key={"inspector"}>
-            <PanelBody title={__("General Settings")} initialOpen={true}>
+            <PanelBody
+              title={__("General Settings")}
+              className="premium-panel-body"
+              initialOpen={true}
+            >
               {imageURL && <img src={imageURL} width="100%" height="auto" />}
               <MediaUpload
                 allowedTypes={["image"]}
@@ -385,6 +389,7 @@ if (banner) {
                 />
               )}
               <PanelColorSettings
+                title={__("Colors")}
                 colorSettings={[
                   {
                     value: background,
@@ -441,7 +446,11 @@ if (banner) {
                 onChange={newValue => setAttributes({ responsive: newValue })}
               />
             </PanelBody>
-            <PanelBody title={__("Title Settings")} initialOpen={false}>
+            <PanelBody
+              title={__("Title Settings")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <p>{__("HTML Tag")}</p>
               <Toolbar
                 controls={"123456".split("").map(tag => ({
@@ -452,12 +461,13 @@ if (banner) {
                 }))}
               />
               <PanelColorSettings
+                title={__("Colors")}
                 colorSettings={[
                   {
                     value: titleColor,
                     onChange: colorValue =>
                       setAttributes({ titleColor: colorValue }),
-                    label: __("Color")
+                    label: __("Text Color")
                   }
                 ]}
               />
@@ -485,37 +495,44 @@ if (banner) {
               />
               {"effect3" == effect && (
                 <PanelColorSettings
+                  title={__("Separator Color")}
                   colorSettings={[
                     {
                       value: sepColor,
                       onChange: colorValue =>
                         setAttributes({ sepColor: colorValue }),
-                      label: __("Separator Color")
+                      label: __("")
                     }
                   ]}
                 />
               )}
               {"effect2" == effect && (
                 <PanelColorSettings
+                  title={__("Background Color")}
                   colorSettings={[
                     {
                       value: titleBack,
                       onChange: colorValue =>
                         setAttributes({ titleBack: colorValue }),
-                      label: __("Background Color")
+                      label: __("")
                     }
                   ]}
                 />
               )}
             </PanelBody>
-            <PanelBody title={__("Description Settings")} initialOpen={false}>
+            <PanelBody
+              title={__("Description Settings")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <PanelColorSettings
+                title={__("Colors")}
                 colorSettings={[
                   {
                     value: descColor,
                     onChange: colorValue =>
                       setAttributes({ descColor: colorValue }),
-                    label: __("Color")
+                    label: __("Text Color")
                   }
                 ]}
               />

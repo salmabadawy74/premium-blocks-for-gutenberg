@@ -771,6 +771,12 @@ a.premium-dheading-block__link:hover {
 .premium-pricing-table .premium-pricing-table__button_link {
   display: block;
 }
+.premium-pricing-table .premium-pricing-table__button_link {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
 .premium-pricing-table .premium-pricing-table__badge_wrap {
   position: absolute;
   top: 0;
@@ -813,17 +819,6 @@ a.premium-dheading-block__link:hover {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
   display: block;
-  text-transform: uppercase;
-}
-.premium-pricing-table .premium-pricing-table__badge_wrap span {
-  position: absolute;
-  top: 35px;
-  width: 100px;
-  text-align: center;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  display: block;
-  text-transform: uppercase;
 }
 .premium-pricing-table .premium-pricing-table__badge_right span {
   -webkit-transform: rotate(45deg);
@@ -840,6 +835,7 @@ a.premium-dheading-block__link:hover {
 }
 .premium-pricing-table .premium-pricing-table__list.list-check li:before {
   content: "✓";
+  margin-right: 8px;
 }
 /**************** Premium Maps *************************/
 /*******************************************************/

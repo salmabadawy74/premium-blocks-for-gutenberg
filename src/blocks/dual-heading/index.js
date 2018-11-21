@@ -223,7 +223,11 @@ if (dualHeading) {
         ),
         isSelected && (
           <InspectorControls key={"inspector"}>
-            <PanelBody title={__("General Settings")} initialOpen={false}>
+            <PanelBody
+              title={__("General Settings")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <TextControl
                 label={__("First Heading")}
                 type="url"
@@ -257,7 +261,11 @@ if (dualHeading) {
               )}
             </PanelBody>
 
-            <PanelBody title={__("First Heading")} initialOpen={false}>
+            <PanelBody
+              title={__("First Heading")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <CheckboxControl
                 label={__("Clipped")}
                 checked={firstClip}
@@ -271,12 +279,13 @@ if (dualHeading) {
                 />
               )}
               <PanelColorSettings
+                title={__("Colors")}
                 colorSettings={[
                   {
                     value: firstColor,
                     onChange: colorValue =>
                       setAttributes({ firstColor: colorValue }),
-                    label: __("Color")
+                    label: __("Text Color")
                   }
                 ]}
               />
@@ -289,6 +298,7 @@ if (dualHeading) {
               />
               {!firstClip && (
                 <PanelColorSettings
+                  title={__("Colors")}
                   colorSettings={[
                     {
                       value: firstBackground,
@@ -301,12 +311,13 @@ if (dualHeading) {
               )}
               {firstClip && (
                 <PanelColorSettings
+                  title={__("Second Color")}
                   colorSettings={[
                     {
                       value: firstClipColor,
                       onChange: colorValue =>
                         setAttributes({ firstClipColor: colorValue }),
-                      label: __("Second Color")
+                      label: __("")
                     }
                   ]}
                 />
@@ -358,7 +369,11 @@ if (dualHeading) {
                 }
               />
             </PanelBody>
-            <PanelBody title={__("Second Heading")} initialOpen={false}>
+            <PanelBody
+              title={__("Second Heading")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <CheckboxControl
                 label={__("Clipped")}
                 checked={secondClip}
@@ -372,12 +387,13 @@ if (dualHeading) {
                 />
               )}
               <PanelColorSettings
+                title={__("Colors")}
                 colorSettings={[
                   {
                     value: secondColor,
                     onChange: colorValue =>
                       setAttributes({ secondColor: colorValue }),
-                    label: __("Color")
+                    label: __("Text Color")
                   }
                 ]}
               />
@@ -390,6 +406,7 @@ if (dualHeading) {
               />
               {!secondClip && (
                 <PanelColorSettings
+                  title={__("Colors")}
                   colorSettings={[
                     {
                       value: secondBackground,
@@ -402,12 +419,13 @@ if (dualHeading) {
               )}
               {secondClip && (
                 <PanelColorSettings
+                  title={__("Second Color")}
                   colorSettings={[
                     {
                       value: secondClipColor,
                       onChange: colorValue =>
                         setAttributes({ secondClipColor: colorValue }),
-                      label: __("Second Color")
+                      label: __("")
                     }
                   ]}
                 />

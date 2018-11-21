@@ -208,7 +208,11 @@ if (testimonial) {
         ),
         isSelected && (
           <InspectorControls key={"inspector"}>
-            <PanelBody title={__("Author")} initialOpen={true}>
+            <PanelBody
+              title={__("Author")}
+              className="premium-panel-body"
+              initialOpen={true}
+            >
               <p>{__("Author Image")}</p>
               {authorImgUrl && (
                 <img src={authorImgUrl} width="100%" height="auto" />
@@ -264,6 +268,7 @@ if (testimonial) {
               )}
               {authorImgUrl && (
                 <PanelColorSettings
+                  title={__("Colors")}
                   colorSettings={[
                     {
                       value: imgBorderColor,
@@ -284,12 +289,13 @@ if (testimonial) {
                 }))}
               />
               <PanelColorSettings
+                title={__("Colors")}
                 colorSettings={[
                   {
                     value: authorColor,
                     onChange: colorValue =>
                       setAttributes({ authorColor: colorValue }),
-                    label: __("Color")
+                    label: __("Text Color")
                   }
                 ]}
               />
@@ -301,14 +307,19 @@ if (testimonial) {
                 onChange={newSize => setAttributes({ authorSize: newSize })}
               />
             </PanelBody>
-            <PanelBody title={__("Content")} initialOpen={false}>
+            <PanelBody
+              title={__("Content")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <PanelColorSettings
+                title={__("Colors")}
                 colorSettings={[
                   {
                     value: bodyColor,
                     onChange: colorValue =>
                       setAttributes({ bodyColor: colorValue }),
-                    label: __("Color")
+                    label: __("Text Color")
                   }
                 ]}
               />
@@ -337,7 +348,11 @@ if (testimonial) {
                 onChange={newSize => setAttributes({ bodyBottom: newSize })}
               />
             </PanelBody>
-            <PanelBody title={__("Company")} initialOpen={false}>
+            <PanelBody
+              title={__("Company")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <p>{__("HTML Tag")}</p>
               <Toolbar
                 controls={"123456".split("").map(tag => ({
@@ -348,12 +363,13 @@ if (testimonial) {
                 }))}
               />
               <PanelColorSettings
+                title={__("Colors")}
                 colorSettings={[
                   {
                     value: authorComColor,
                     onChange: colorValue =>
                       setAttributes({ authorComColor: colorValue }),
-                    label: __("Color")
+                    label: __("Text Color")
                   }
                 ]}
               />
@@ -363,6 +379,7 @@ if (testimonial) {
                 onChange={newSize => setAttributes({ authorComSize: newSize })}
               />
               <PanelColorSettings
+                title={__("Colors")}
                 colorSettings={[
                   {
                     value: dashColor,
@@ -392,7 +409,11 @@ if (testimonial) {
                 />
               )}
             </PanelBody>
-            <PanelBody title={__("Quotations")} initialOpen={false}>
+            <PanelBody
+              title={__("Quotations")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <RangeControl
                 label={__("Size (EM)")}
                 value={quotSize}
@@ -401,12 +422,13 @@ if (testimonial) {
                 onChange={newSize => setAttributes({ quotSize: newSize })}
               />
               <PanelColorSettings
+                title={__("Colors")}
                 colorSettings={[
                   {
                     value: quotColor,
                     onChange: colorValue =>
                       setAttributes({ quotColor: colorValue }),
-                    label: __("Color")
+                    label: __("Quotations Color")
                   }
                 ]}
               />

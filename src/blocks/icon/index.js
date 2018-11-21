@@ -252,14 +252,18 @@ if (icon) {
       return [
         isSelected && (
           <InspectorControls key={"inspector"}>
-            <PanelBody title={__("Icon")} initialOpen={true}>
+            <PanelBody
+              title={__("Icon")}
+              className="premium-panel-body"
+              initialOpen={true}
+            >
               <SelectControl
                 label={__("Icon Type")}
                 value={iconType}
                 options={TYPE}
                 onChange={newType => setAttributes({ iconType: newType })}
               />
-              {("" !== selectedIcon || "undefined" !== typeof selectedIcon) && (
+              {selectedIcon && (
                 <div className="premium-icon__sidebar_icon">
                   <i className={iconClass} />
                 </div>
@@ -302,14 +306,19 @@ if (icon) {
                 }))}
               />
             </PanelBody>
-            <PanelBody title={__("Icon Style")} initialOpen={true}>
+            <PanelBody
+              title={__("Icon Style")}
+              className="premium-panel-body"
+              initialOpen={true}
+            >
               <PanelColorSettings
+                title={__("Colors")}
                 colorSettings={[
                   {
                     value: iconColor,
                     onChange: colorValue =>
                       setAttributes({ iconColor: colorValue }),
-                    label: __("Color")
+                    label: __("Icon Color")
                   }
                 ]}
               />
@@ -319,6 +328,7 @@ if (icon) {
                 onChange={newValue => setAttributes({ iconSize: newValue })}
               />
               <PanelColorSettings
+                title={__("Colors")}
                 colorSettings={[
                   {
                     value: iconBack,
@@ -365,8 +375,13 @@ if (icon) {
                 onChangePadLeft={value => setAttributes({ paddingL: value })}
               />
             </PanelBody>
-            <PanelBody title={__("Container Style")} initialOpen={true}>
+            <PanelBody
+              title={__("Container Style")}
+              className="premium-panel-body"
+              initialOpen={true}
+            >
               <PanelColorSettings
+                title={__("Colors")}
                 colorSettings={[
                   {
                     value: background,

@@ -2,6 +2,42 @@
   font-family: "FontAwesome", "Dashicons";
   width: 100%;
 }*/
+/**
+* Global
+*/
+.components-panel__body .premium-panel-body-inner {
+  padding-left: 10px;
+}
+.components-panel__body
+  .premium-panel-body.is-opened
+  .components-panel__body-title,
+.components-panel__body
+  .premium-panel-body.is-opened
+  .components-panel__body-toggle,
+.components-panel__body
+  .premium-panel-body
+  .premium-panel-body-inner.is-opened
+  .components-panel__body-title,
+.components-panel__body
+  .premium-panel-body
+  .premium-panel-body-inner.is-opened
+  .components-panel__body-toggle {
+  background-color: #f3f4f5;
+}
+.components-panel__body
+  .premium-panel-body
+  .premium-panel-body-inner
+  .components-panel__body-title,
+.components-panel__body
+  .premium-panel-body
+  .premium-panel-body-inner
+  .components-panel__body-toggle {
+  background-color: #fff;
+}
+.components-panel__body .premium-panel-body-inner.is-opened {
+  padding-left: 26px;
+}
+
 /**************** Premium Dual Heading *****************/
 /*******************************************************/
 .premium-dheading-block__container .premium-dheading-block__title {

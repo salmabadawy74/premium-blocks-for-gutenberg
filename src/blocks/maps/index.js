@@ -216,7 +216,11 @@ if (maps) {
       return [
         typeof google !== "undefined" && isSelected && (
           <InspectorControls key="key">
-            <PanelBody title={__("Center Location")} initialOpen={false}>
+            <PanelBody
+              title={__("Center Location")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <TextControl
                 label={__("Longitude")}
                 value={centerLng}
@@ -235,7 +239,11 @@ if (maps) {
                 onChange={newLat => setAttributes({ centerLat: newLat })}
               />
             </PanelBody>
-            <PanelBody title={__("Marker")} initialOpen={false}>
+            <PanelBody
+              title={__("Marker")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <CheckboxControl
                 label={__("Enable Marker")}
                 checked={mapMarker}
@@ -329,14 +337,19 @@ if (maps) {
               )}
             </PanelBody>
             {mapMarker && "" !== markerTitle && (
-              <PanelBody title={__("Marker Title Style")} initialOpen={false}>
+              <PanelBody
+                title={__("Marker Title Style")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
                 <PanelColorSettings
+                  title={__("Colors")}
                   colorSettings={[
                     {
                       value: titleColor,
                       onChange: colorValue =>
                         setAttributes({ titleColor: colorValue }),
-                      label: __("Color")
+                      label: __("Text Color")
                     }
                   ]}
                 />
@@ -352,15 +365,17 @@ if (maps) {
             {mapMarker && "" !== markerDesc && (
               <PanelBody
                 title={__("Marker Description Style")}
+                className="premium-panel-body"
                 initialOpen={false}
               >
                 <PanelColorSettings
+                  title={__("Colors")}
                   colorSettings={[
                     {
                       value: descColor,
                       onChange: colorValue =>
                         setAttributes({ descColor: colorValue }),
-                      label: __("Color")
+                      label: __("Text Color")
                     }
                   ]}
                 />
@@ -373,7 +388,11 @@ if (maps) {
                 />
               </PanelBody>
             )}
-            <PanelBody title={__("Controls")} initialOpen={false}>
+            <PanelBody
+              title={__("Controls")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <SelectControl
                 label={__("Map Type")}
                 options={TYPES}
@@ -422,7 +441,11 @@ if (maps) {
               />
             </PanelBody>
 
-            <PanelBody title={__("Map Style")} initialOpen={false}>
+            <PanelBody
+              title={__("Map Style")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
               <TextareaControl
                 label={__("Maps Style")}
                 value={mapStyle}
