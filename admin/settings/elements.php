@@ -15,7 +15,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
 
         protected $slug = 'premium-gutenberg';
 
-        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon'];
+        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button'];
 
         private $pbg_default;
 
@@ -170,6 +170,15 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                    <th><?php echo __('Premium Button', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="button" name="button" <?php checked(1, $this->pbg_get_settings['button'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <th><?php echo __('Premium Dual Heading', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -177,8 +186,6 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-                                </tr>
-                                <tr>
                                     <th><?php echo __('Premium Count Up', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -186,6 +193,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                </tr>
+                                <tr>
                                     <th><?php echo __('Premium Icon', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -193,8 +202,6 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-                                </tr>
-                                <tr>
                                     <th><?php echo __('Premium Maps', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -202,6 +209,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                </tr>
+                                <tr>
                                     <th><?php echo __('Premium Pricing Table', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -209,8 +218,6 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-                                </tr>
-                                <tr>
                                     <th><?php echo __('Premium Testimonials', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -273,6 +280,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                 'testimonial'   => intval( $settings['testimonial'] ? 1 : 0 ),
                 'countUp'       => intval( $settings['countUp'] ? 1 : 0 ),
                 'icon'          => intval( $settings['icon'] ? 1 : 0 ),
+                'button'        => intval( $settings['button'] ? 1 : 0 ),
             );
 
             update_option( 'pbg_settings', $this->pbg_settings );

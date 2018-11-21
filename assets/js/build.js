@@ -69,12 +69,13 @@
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return banner; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return dualHeading; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return pricingTable; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return maps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return testimonial; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return countUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return icon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return dualHeading; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return pricingTable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return maps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return testimonial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return countUp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return icon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return button; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FontAwesomeEnabled; });
 //Blocks Keys
 var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
@@ -84,7 +85,8 @@ var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
     maps = _PremiumBlocksSetting.maps,
     testimonial = _PremiumBlocksSetting.testimonial,
     countUp = _PremiumBlocksSetting.countUp,
-    icon = _PremiumBlocksSetting.icon;
+    icon = _PremiumBlocksSetting.icon,
+    button = _PremiumBlocksSetting.button;
 
 //Plugin Config Keys
 
@@ -187,6 +189,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_testimonials__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_count_up__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_button__ = __webpack_require__(16);
+
 
 
 
@@ -205,7 +209,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* dualHeading */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* dualHeading */]) {
   var className = "premium-dheading-block";
 
   var __ = wp.i18n.__;
@@ -1685,7 +1689,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* pricingTable */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* pricingTable */]) {
   var className = "premium-pricing-table";
 
   var __ = wp.i18n.__;
@@ -3925,7 +3929,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* maps */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* maps */]) {
   var className = "premium-maps";
 
   var __ = wp.i18n.__;
@@ -4627,7 +4631,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* maps */]) {
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_3__settings__["h" /* testimonial */]) {
+if (__WEBPACK_IMPORTED_MODULE_3__settings__["i" /* testimonial */]) {
   var className = "premium-testimonial";
 
   var __ = wp.i18n.__;
@@ -5526,7 +5530,7 @@ var PremiumUpperQuote = function (_Component) {
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* countUp */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
   var className = "premium-countup";
 
   var __ = wp.i18n.__;
@@ -6442,7 +6446,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* countUp */]) {
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* icon */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* icon */]) {
   var className = "premium-icon";
 
   var __ = wp.i18n.__;
@@ -7144,6 +7148,45 @@ function PremiumPadding(props) {
       onChange: onChangePadLeft
     })
   );
+}
+
+/***/ }),
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
+
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* button */]) {
+  var className = "premium-button";
+
+  var __ = wp.i18n.__;
+  var registerBlockType = wp.blocks.registerBlockType;
+
+
+  registerBlockType("premium/button", {
+    title: __("Button"),
+    icon: "clock",
+    category: "premium-blocks",
+    edit: function edit(props) {
+      var isSelected = props.isSelected,
+          setAttributes = props.setAttributes;
+
+
+      return [wp.element.createElement(
+        "h1",
+        null,
+        "Hello World"
+      )];
+    },
+    save: function save(props) {
+      return wp.element.createElement(
+        "h1",
+        null,
+        "Hello World"
+      );
+    }
+  });
 }
 
 /***/ })
