@@ -7177,7 +7177,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* button */]) {
       AlignmentToolbar = _wp$editor.AlignmentToolbar,
       BlockControls = _wp$editor.BlockControls,
       MediaUpload = _wp$editor.MediaUpload,
-      RichText = _wp$editor.RichText;
+      RichText = _wp$editor.RichText,
+      URLInput = _wp$editor.URLInput;
   var Fragment = wp.element.Fragment;
 
 
@@ -7197,6 +7198,12 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* button */]) {
       btnAlign: {
         type: "string",
         default: "center"
+      },
+      btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-button"
       }
     },
     edit: function edit(props) {
@@ -7205,7 +7212,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* button */]) {
       var _props$attributes = props.attributes,
           btnText = _props$attributes.btnText,
           btnSize = _props$attributes.btnSize,
-          btnAlign = _props$attributes.btnAlign;
+          btnAlign = _props$attributes.btnAlign,
+          btnLink = _props$attributes.btnLink;
 
       var SIZE = [{
         value: "sm",
@@ -7253,7 +7261,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* button */]) {
         { className: className + "__wrap", style: { textAlign: btnAlign } },
         wp.element.createElement(
           "a",
-          { className: className + " " + className + "__" + btnSize },
+          { className: className + " " + className + "__" + btnSize, href: btnLink },
           wp.element.createElement(RichText, {
             tagName: "span",
             className: className + "__text",
@@ -7262,21 +7270,28 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* button */]) {
             },
             value: btnText
           })
-        )
+        ),
+        wp.element.createElement(URLInput, {
+          value: btnLink,
+          onChange: function onChange(newLink) {
+            return setAttributes({ btnLink: newLink });
+          }
+        })
       )];
     },
     save: function save(props) {
       var _props$attributes2 = props.attributes,
           btnText = _props$attributes2.btnText,
           btnSize = _props$attributes2.btnSize,
-          btnAlign = _props$attributes2.btnAlign;
+          btnAlign = _props$attributes2.btnAlign,
+          btnLink = _props$attributes2.btnLink;
 
       return wp.element.createElement(
         "div",
         { className: className + "__wrap", style: { textAlign: btnAlign } },
         wp.element.createElement(
           "a",
-          { className: className + " " + className + "__" + btnSize },
+          { className: className + " " + className + "__" + btnSize, href: btnLink },
           wp.element.createElement(RichText.Content, {
             tagName: "span",
             className: className + "__text",

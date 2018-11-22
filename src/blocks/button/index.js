@@ -21,7 +21,8 @@ if (button) {
     AlignmentToolbar,
     BlockControls,
     MediaUpload,
-    RichText
+    RichText,
+    URLInput
   } = wp.editor;
   const { Fragment } = wp.element;
 
@@ -41,12 +42,18 @@ if (button) {
       btnAlign: {
         type: "string",
         default: "center"
+      },
+      btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-button"
       }
     },
     edit: props => {
       const { isSelected, setAttributes } = props;
 
-      const { btnText, btnSize, btnAlign } = props.attributes;
+      const { btnText, btnSize, btnAlign, btnLink } = props.attributes;
       const SIZE = [
         {
           value: "sm",
@@ -91,7 +98,7 @@ if (button) {
           </InspectorControls>
         ),
         <div className={`${className}__wrap`} style={{ textAlign: btnAlign }}>
-          <a className={`${className} ${className}__${btnSize}`}>
+          <a className={`${className} ${className}__${btnSize}`} href={btnLink}>
             <RichText
               tagName="span"
               className={`${className}__text`}
@@ -99,14 +106,18 @@ if (button) {
               value={btnText}
             />
           </a>
+          <URLInput
+            value={btnLink}
+            onChange={newLink => setAttributes({ btnLink: newLink })}
+          />
         </div>
       ];
     },
     save: props => {
-      const { btnText, btnSize, btnAlign } = props.attributes;
+      const { btnText, btnSize, btnAlign, btnLink } = props.attributes;
       return (
         <div className={`${className}__wrap`} style={{ textAlign: btnAlign }}>
-          <a className={`${className} ${className}__${btnSize}`}>
+          <a className={`${className} ${className}__${btnSize}`} href={btnLink}>
             <RichText.Content
               tagName="span"
               className={`${className}__text`}
