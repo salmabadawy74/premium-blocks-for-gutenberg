@@ -257,7 +257,7 @@ if (pricingTable) {
         type: "string",
         source: "attribute",
         attribute: "href",
-        selector: ".premium-pricing__button_link"
+        selector: ".premium-pricing-table__button_link"
       },
       btnTarget: {
         type: "boolean",
@@ -543,7 +543,6 @@ if (pricingTable) {
         listPadding,
         listStyle
       } = props.attributes;
-
       const ALIGNS = [
         {
           value: "flex-start",
@@ -1696,6 +1695,8 @@ if (pricingTable) {
             >
               <a
                 class={`${className}__button_link`}
+                href="{ attributes.btnUrl }"
+                target={btnTarget ? "_blank" : "_self"}
                 style={{
                   color: btnColor,
                   background: btnBack,
@@ -2068,7 +2069,7 @@ if (pricingTable) {
               <a
                 class={`${className}__button_link`}
                 href={btnLink}
-                target={btnTarget ? "_target" : ""}
+                target={btnTarget ? "_blank" : "_self"}
                 style={{
                   color: btnColor,
                   background: btnBack,

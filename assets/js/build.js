@@ -1939,7 +1939,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* pricingTable */]) {
         type: "string",
         source: "attribute",
         attribute: "href",
-        selector: ".premium-pricing__button_link"
+        selector: ".premium-pricing-table__button_link"
       },
       btnTarget: {
         type: "boolean",
@@ -2226,7 +2226,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* pricingTable */]) {
           listMarginB = _props$attributes.listMarginB,
           listPadding = _props$attributes.listPadding,
           listStyle = _props$attributes.listStyle;
-
 
       var ALIGNS = [{
         value: "flex-start",
@@ -3418,6 +3417,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* pricingTable */]) {
             "a",
             {
               "class": className + "__button_link",
+              href: "{ attributes.btnUrl }",
+              target: btnTarget ? "_blank" : "_self",
               style: {
                 color: btnColor,
                 background: btnBack,
@@ -3791,7 +3792,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* pricingTable */]) {
             {
               "class": className + "__button_link",
               href: btnLink,
-              target: btnTarget ? "_target" : "",
+              target: btnTarget ? "_blank" : "_self",
               style: {
                 color: btnColor,
                 background: btnBack,
@@ -7162,28 +7163,129 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* button */]) {
 
   var __ = wp.i18n.__;
   var registerBlockType = wp.blocks.registerBlockType;
+  var _wp$components = wp.components,
+      PanelBody = _wp$components.PanelBody,
+      Toolbar = _wp$components.Toolbar,
+      SelectControl = _wp$components.SelectControl,
+      TextControl = _wp$components.TextControl,
+      RangeControl = _wp$components.RangeControl,
+      ToggleControl = _wp$components.ToggleControl,
+      IconButton = _wp$components.IconButton;
+  var _wp$editor = wp.editor,
+      InspectorControls = _wp$editor.InspectorControls,
+      PanelColorSettings = _wp$editor.PanelColorSettings,
+      AlignmentToolbar = _wp$editor.AlignmentToolbar,
+      BlockControls = _wp$editor.BlockControls,
+      MediaUpload = _wp$editor.MediaUpload,
+      RichText = _wp$editor.RichText;
+  var Fragment = wp.element.Fragment;
 
 
   registerBlockType("premium/button", {
     title: __("Button"),
     icon: "clock",
     category: "premium-blocks",
+    attributes: {
+      btnText: {
+        type: "string",
+        default: "Premium Button"
+      },
+      btnSize: {
+        type: "string",
+        default: "md"
+      },
+      btnAlign: {
+        type: "string",
+        default: "center"
+      }
+    },
     edit: function edit(props) {
       var isSelected = props.isSelected,
           setAttributes = props.setAttributes;
+      var _props$attributes = props.attributes,
+          btnText = _props$attributes.btnText,
+          btnSize = _props$attributes.btnSize,
+          btnAlign = _props$attributes.btnAlign;
 
-
-      return [wp.element.createElement(
-        "h1",
-        null,
-        "Hello World"
+      var SIZE = [{
+        value: "sm",
+        label: __("Small")
+      }, {
+        value: "md",
+        label: __("Medium")
+      }, {
+        value: "lg",
+        label: __("Large")
+      }, {
+        value: "block",
+        label: __("Block")
+      }];
+      return [isSelected && "block" != btnSize && wp.element.createElement(
+        BlockControls,
+        { key: "controls" },
+        wp.element.createElement(AlignmentToolbar, {
+          value: btnAlign,
+          onChange: function onChange(newAlign) {
+            return setAttributes({ btnAlign: newAlign });
+          }
+        })
+      ), isSelected && wp.element.createElement(
+        InspectorControls,
+        { key: "inspector" },
+        wp.element.createElement(
+          PanelBody,
+          {
+            title: __("General Settings"),
+            className: "premium-panel-body",
+            initialOpen: false
+          },
+          wp.element.createElement(SelectControl, {
+            options: SIZE,
+            label: __("Button Size"),
+            value: btnSize,
+            onChange: function onChange(newSize) {
+              return setAttributes({ btnSize: newSize });
+            }
+          })
+        )
+      ), wp.element.createElement(
+        "div",
+        { className: className + "__wrap", style: { textAlign: btnAlign } },
+        wp.element.createElement(
+          "a",
+          { className: className + " " + className + "__" + btnSize },
+          wp.element.createElement(RichText, {
+            tagName: "span",
+            className: className + "__text",
+            onChange: function onChange(newText) {
+              return setAttributes({ btnText: newText });
+            },
+            value: btnText
+          })
+        )
       )];
     },
     save: function save(props) {
+      var _props$attributes2 = props.attributes,
+          btnText = _props$attributes2.btnText,
+          btnSize = _props$attributes2.btnSize,
+          btnAlign = _props$attributes2.btnAlign;
+
       return wp.element.createElement(
-        "h1",
-        null,
-        "Hello World"
+        "div",
+        { className: className + "__wrap", style: { textAlign: btnAlign } },
+        wp.element.createElement(
+          "a",
+          { className: className + " " + className + "__" + btnSize },
+          wp.element.createElement(RichText.Content, {
+            tagName: "span",
+            className: className + "__text",
+            onChange: function onChange(newText) {
+              return setAttributes({ btnText: newText });
+            },
+            value: btnText
+          })
+        )
       );
     }
   });
