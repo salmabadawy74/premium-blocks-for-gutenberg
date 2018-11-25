@@ -1,5 +1,6 @@
 import { dualHeading } from "../settings";
 import PremiumBorder from "../../components/premium-border";
+import PremiumTypo from "../../components/premium-typo";
 
 if (dualHeading) {
   const className = "premium-dheading-block";
@@ -60,6 +61,19 @@ if (dualHeading) {
         type: "number",
         default: "20"
       },
+      firstLetter: {
+        type: "number"
+      },
+      firstStyle: {
+        type: "string"
+      },
+      firstUpper: {
+        type: "boolean"
+      },
+      firstWeight: {
+        type: "number",
+        default: 500
+      },
       firstBackground: {
         type: "string"
       },
@@ -109,6 +123,19 @@ if (dualHeading) {
       secondSize: {
         type: "number",
         default: "20"
+      },
+      secondLetter: {
+        type: "number"
+      },
+      secondStyle: {
+        type: "string"
+      },
+      secondUpper: {
+        type: "boolean"
+      },
+      secondWeight: {
+        type: "number",
+        default: 500
       },
       secondBackground: {
         type: "string"
@@ -175,6 +202,10 @@ if (dualHeading) {
         firstColor,
         firstBackground,
         firstSize,
+        firstStyle,
+        firstUpper,
+        firstLetter,
+        firstWeight,
         firstBorderType,
         firstBorderWidth,
         firstBorderRadius,
@@ -188,6 +219,10 @@ if (dualHeading) {
         secondColor,
         secondBackground,
         secondSize,
+        secondLetter,
+        secondUpper,
+        secondWeight,
+        secondStyle,
         secondBorderType,
         secondBorderWidth,
         secondBorderRadius,
@@ -289,12 +324,24 @@ if (dualHeading) {
                   }
                 ]}
               />
-              <p>{__("Font Size (PX)")}</p>
-              <RangeControl
-                value={firstSize}
-                min="10"
-                max="80"
-                onChange={newSize => setAttributes({ firstSize: newSize })}
+              <PremiumTypo
+                components={["size", "weight", "style", "upper", "spacing"]}
+                size={firstSize}
+                weight={firstWeight}
+                style={firstStyle}
+                spacing={firstLetter}
+                upper={firstUpper}
+                onChangeSize={newSize => setAttributes({ firstSize: newSize })}
+                onChangeWeight={newWeight =>
+                  setAttributes({ firstWeight: newWeight })
+                }
+                onChangeStyle={newStyle =>
+                  setAttributes({ firstStyle: newStyle })
+                }
+                onChangeSpacing={newValue =>
+                  setAttributes({ firstLetter: newValue })
+                }
+                onChangeUpper={check => setAttributes({ firstUpper: check })}
               />
               {!firstClip && (
                 <PanelColorSettings
@@ -397,12 +444,24 @@ if (dualHeading) {
                   }
                 ]}
               />
-              <p>{__("Font Size (PX)")}</p>
-              <RangeControl
-                min="10"
-                max="80"
-                value={secondSize}
-                onChange={newSize => setAttributes({ secondSize: newSize })}
+              <PremiumTypo
+                components={["size", "weight", "style", "upper", "spacing"]}
+                size={secondSize}
+                weight={secondWeight}
+                style={secondStyle}
+                spacing={secondLetter}
+                upper={secondUpper}
+                onChangeSize={newSize => setAttributes({ secondSize: newSize })}
+                onChangeWeight={newWeight =>
+                  setAttributes({ secondWeight: newWeight })
+                }
+                onChangeStyle={newStyle =>
+                  setAttributes({ secondStyle: newStyle })
+                }
+                onChangeSpacing={newValue =>
+                  setAttributes({ secondLetter: newValue })
+                }
+                onChangeUpper={check => setAttributes({ secondUpper: check })}
               />
               {!secondClip && (
                 <PanelColorSettings
@@ -499,6 +558,10 @@ if (dualHeading) {
                   ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                   : "none",
                 fontSize: firstSize + "px",
+                letterSpacing: firstLetter + "px",
+                textTransform: firstUpper ? "uppercase" : "none",
+                fontStyle: firstStyle,
+                fontWeight: firstWeight,
                 border: firstBorderType,
                 borderWidth: firstBorderWidth + "px",
                 borderRadius: firstBorderRadius + "px",
@@ -520,6 +583,10 @@ if (dualHeading) {
                   ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                   : "none",
                 fontSize: secondSize + "px",
+                letterSpacing: secondLetter + "px",
+                textTransform: secondUpper ? "uppercase" : "none",
+                fontStyle: secondStyle,
+                fontWeight: secondWeight,
                 border: secondBorderType,
                 borderWidth: secondBorderWidth + "px",
                 borderRadius: secondBorderRadius + "px",
@@ -544,6 +611,10 @@ if (dualHeading) {
         firstColor,
         firstBackground,
         firstSize,
+        firstStyle,
+        firstUpper,
+        firstLetter,
+        firstWeight,
         firstBorderType,
         firstBorderWidth,
         firstBorderRadius,
@@ -556,6 +627,10 @@ if (dualHeading) {
         secondColor,
         secondBackground,
         secondSize,
+        secondLetter,
+        secondUpper,
+        secondWeight,
+        secondStyle,
         secondBorderType,
         secondBorderWidth,
         secondBorderRadius,
@@ -593,6 +668,10 @@ if (dualHeading) {
                     ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                     : "none",
                   fontSize: firstSize + "px",
+                  letterSpacing: firstLetter + "px",
+                  textTransform: firstUpper ? "uppercase" : "none",
+                  fontStyle: firstStyle,
+                  fontWeight: firstWeight,
                   border: firstBorderType,
                   borderWidth: firstBorderWidth + "px",
                   borderRadius: firstBorderRadius + "px",
@@ -613,6 +692,10 @@ if (dualHeading) {
                     ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                     : "none",
                   fontSize: secondSize + "px",
+                  letterSpacing: secondLetter + "px",
+                  textTransform: secondUpper ? "uppercase" : "none",
+                  fontStyle: secondStyle,
+                  fontWeight: secondWeight,
                   border: secondBorderType,
                   borderWidth: secondBorderWidth + "px",
                   borderRadius: secondBorderRadius + "px",

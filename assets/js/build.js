@@ -206,6 +206,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(6);
+
 
 
 
@@ -265,6 +267,19 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* dualHeading */]) {
         type: "number",
         default: "20"
       },
+      firstLetter: {
+        type: "number"
+      },
+      firstStyle: {
+        type: "string"
+      },
+      firstUpper: {
+        type: "boolean"
+      },
+      firstWeight: {
+        type: "number",
+        default: 500
+      },
       firstBackground: {
         type: "string"
       },
@@ -314,6 +329,19 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* dualHeading */]) {
       secondSize: {
         type: "number",
         default: "20"
+      },
+      secondLetter: {
+        type: "number"
+      },
+      secondStyle: {
+        type: "string"
+      },
+      secondUpper: {
+        type: "boolean"
+      },
+      secondWeight: {
+        type: "number",
+        default: 500
       },
       secondBackground: {
         type: "string"
@@ -381,6 +409,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* dualHeading */]) {
           firstColor = _props$attributes.firstColor,
           firstBackground = _props$attributes.firstBackground,
           firstSize = _props$attributes.firstSize,
+          firstStyle = _props$attributes.firstStyle,
+          firstUpper = _props$attributes.firstUpper,
+          firstLetter = _props$attributes.firstLetter,
+          firstWeight = _props$attributes.firstWeight,
           firstBorderType = _props$attributes.firstBorderType,
           firstBorderWidth = _props$attributes.firstBorderWidth,
           firstBorderRadius = _props$attributes.firstBorderRadius,
@@ -394,6 +426,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* dualHeading */]) {
           secondColor = _props$attributes.secondColor,
           secondBackground = _props$attributes.secondBackground,
           secondSize = _props$attributes.secondSize,
+          secondLetter = _props$attributes.secondLetter,
+          secondUpper = _props$attributes.secondUpper,
+          secondWeight = _props$attributes.secondWeight,
+          secondStyle = _props$attributes.secondStyle,
           secondBorderType = _props$attributes.secondBorderType,
           secondBorderWidth = _props$attributes.secondBorderWidth,
           secondBorderRadius = _props$attributes.secondBorderRadius,
@@ -504,17 +540,27 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* dualHeading */]) {
               label: __("Text Color")
             }]
           }),
-          wp.element.createElement(
-            "p",
-            null,
-            __("Font Size (PX)")
-          ),
-          wp.element.createElement(RangeControl, {
-            value: firstSize,
-            min: "10",
-            max: "80",
-            onChange: function onChange(newSize) {
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+            components: ["size", "weight", "style", "upper", "spacing"],
+            size: firstSize,
+            weight: firstWeight,
+            style: firstStyle,
+            spacing: firstLetter,
+            upper: firstUpper,
+            onChangeSize: function onChangeSize(newSize) {
               return setAttributes({ firstSize: newSize });
+            },
+            onChangeWeight: function onChangeWeight(newWeight) {
+              return setAttributes({ firstWeight: newWeight });
+            },
+            onChangeStyle: function onChangeStyle(newStyle) {
+              return setAttributes({ firstStyle: newStyle });
+            },
+            onChangeSpacing: function onChangeSpacing(newValue) {
+              return setAttributes({ firstLetter: newValue });
+            },
+            onChangeUpper: function onChangeUpper(check) {
+              return setAttributes({ firstUpper: check });
             }
           }),
           !firstClip && wp.element.createElement(PanelColorSettings, {
@@ -626,17 +672,27 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* dualHeading */]) {
               label: __("Text Color")
             }]
           }),
-          wp.element.createElement(
-            "p",
-            null,
-            __("Font Size (PX)")
-          ),
-          wp.element.createElement(RangeControl, {
-            min: "10",
-            max: "80",
-            value: secondSize,
-            onChange: function onChange(newSize) {
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+            components: ["size", "weight", "style", "upper", "spacing"],
+            size: secondSize,
+            weight: secondWeight,
+            style: secondStyle,
+            spacing: secondLetter,
+            upper: secondUpper,
+            onChangeSize: function onChangeSize(newSize) {
               return setAttributes({ secondSize: newSize });
+            },
+            onChangeWeight: function onChangeWeight(newWeight) {
+              return setAttributes({ secondWeight: newWeight });
+            },
+            onChangeStyle: function onChangeStyle(newStyle) {
+              return setAttributes({ secondStyle: newStyle });
+            },
+            onChangeSpacing: function onChangeSpacing(newValue) {
+              return setAttributes({ secondLetter: newValue });
+            },
+            onChangeUpper: function onChangeUpper(check) {
+              return setAttributes({ secondUpper: check });
             }
           }),
           !secondClip && wp.element.createElement(PanelColorSettings, {
@@ -742,6 +798,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* dualHeading */]) {
                 backgroundColor: firstClip ? "none" : firstBackground,
                 backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
                 fontSize: firstSize + "px",
+                letterSpacing: firstLetter + "px",
+                textTransform: firstUpper ? "uppercase" : "none",
+                fontStyle: firstStyle,
+                fontWeight: firstWeight,
                 border: firstBorderType,
                 borderWidth: firstBorderWidth + "px",
                 borderRadius: firstBorderRadius + "px",
@@ -763,6 +823,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* dualHeading */]) {
                 backgroundColor: secondClip ? "none" : secondBackground,
                 backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
                 fontSize: secondSize + "px",
+                letterSpacing: secondLetter + "px",
+                textTransform: secondUpper ? "uppercase" : "none",
+                fontStyle: secondStyle,
+                fontWeight: secondWeight,
                 border: secondBorderType,
                 borderWidth: secondBorderWidth + "px",
                 borderRadius: secondBorderRadius + "px",
@@ -786,6 +850,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* dualHeading */]) {
           firstColor = _props$attributes2.firstColor,
           firstBackground = _props$attributes2.firstBackground,
           firstSize = _props$attributes2.firstSize,
+          firstStyle = _props$attributes2.firstStyle,
+          firstUpper = _props$attributes2.firstUpper,
+          firstLetter = _props$attributes2.firstLetter,
+          firstWeight = _props$attributes2.firstWeight,
           firstBorderType = _props$attributes2.firstBorderType,
           firstBorderWidth = _props$attributes2.firstBorderWidth,
           firstBorderRadius = _props$attributes2.firstBorderRadius,
@@ -798,6 +866,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* dualHeading */]) {
           secondColor = _props$attributes2.secondColor,
           secondBackground = _props$attributes2.secondBackground,
           secondSize = _props$attributes2.secondSize,
+          secondLetter = _props$attributes2.secondLetter,
+          secondUpper = _props$attributes2.secondUpper,
+          secondWeight = _props$attributes2.secondWeight,
+          secondStyle = _props$attributes2.secondStyle,
           secondBorderType = _props$attributes2.secondBorderType,
           secondBorderWidth = _props$attributes2.secondBorderWidth,
           secondBorderRadius = _props$attributes2.secondBorderRadius,
@@ -840,6 +912,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* dualHeading */]) {
                   backgroundColor: firstClip ? "none" : firstBackground,
                   backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
                   fontSize: firstSize + "px",
+                  letterSpacing: firstLetter + "px",
+                  textTransform: firstUpper ? "uppercase" : "none",
+                  fontStyle: firstStyle,
+                  fontWeight: firstWeight,
                   border: firstBorderType,
                   borderWidth: firstBorderWidth + "px",
                   borderRadius: firstBorderRadius + "px",
@@ -860,6 +936,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* dualHeading */]) {
                   backgroundColor: secondClip ? "none" : secondBackground,
                   backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
                   fontSize: secondSize + "px",
+                  letterSpacing: secondLetter + "px",
+                  textTransform: secondUpper ? "uppercase" : "none",
+                  fontStyle: secondStyle,
+                  fontWeight: secondWeight,
                   border: secondBorderType,
                   borderWidth: secondBorderWidth + "px",
                   borderRadius: secondBorderRadius + "px",
