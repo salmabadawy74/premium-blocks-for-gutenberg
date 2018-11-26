@@ -1,6 +1,7 @@
 import { dualHeading } from "../settings";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
+import PremiumTextShadow from "../../components/premium-text-shadow";
 
 if (dualHeading) {
   const className = "premium-dheading-block";
@@ -116,6 +117,21 @@ if (dualHeading) {
         type: "string",
         default: "#54595f"
       },
+      firstShadowColor: {
+        type: "string"
+      },
+      firstShadowBlur: {
+        type: "number",
+        default: "0"
+      },
+      firstShadowHorizontal: {
+        type: "number",
+        default: "0"
+      },
+      firstShadowVertical: {
+        type: "number",
+        default: "0"
+      },
       secondColor: {
         type: "string",
         default: "#54595f"
@@ -171,6 +187,21 @@ if (dualHeading) {
         type: "boolean",
         default: false
       },
+      secondShadowColor: {
+        type: "string"
+      },
+      secondShadowBlur: {
+        type: "number",
+        default: "0"
+      },
+      secondShadowHorizontal: {
+        type: "number",
+        default: "0"
+      },
+      secondShadowVertical: {
+        type: "number",
+        default: "0"
+      },
       secondAnim: {
         type: "boolean",
         default: false
@@ -216,6 +247,10 @@ if (dualHeading) {
         firstClip,
         firstAnim,
         firstClipColor,
+        firstShadowBlur,
+        firstShadowColor,
+        firstShadowHorizontal,
+        firstShadowVertical,
         secondColor,
         secondBackground,
         secondSize,
@@ -233,6 +268,10 @@ if (dualHeading) {
         secondClip,
         secondAnim,
         secondClipColor,
+        secondShadowBlur,
+        secondShadowColor,
+        secondShadowHorizontal,
+        secondShadowVertical,
         link,
         target,
         headingURL
@@ -313,108 +352,147 @@ if (dualHeading) {
                   onChange={newValue => setAttributes({ firstAnim: newValue })}
                 />
               )}
-              <PanelColorSettings
-                title={__("Colors")}
-                colorSettings={[
-                  {
-                    value: firstColor,
-                    onChange: colorValue =>
-                      setAttributes({ firstColor: colorValue }),
-                    label: __("Text Color")
+              <PanelBody
+                title={__("Font")}
+                className="premium-panel-body premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <PremiumTypo
+                  components={["size", "weight", "style", "upper", "spacing"]}
+                  size={firstSize}
+                  weight={firstWeight}
+                  style={firstStyle}
+                  spacing={firstLetter}
+                  upper={firstUpper}
+                  onChangeSize={newSize =>
+                    setAttributes({ firstSize: newSize })
                   }
-                ]}
-              />
-              <PremiumTypo
-                components={["size", "weight", "style", "upper", "spacing"]}
-                size={firstSize}
-                weight={firstWeight}
-                style={firstStyle}
-                spacing={firstLetter}
-                upper={firstUpper}
-                onChangeSize={newSize => setAttributes({ firstSize: newSize })}
-                onChangeWeight={newWeight =>
-                  setAttributes({ firstWeight: newWeight })
-                }
-                onChangeStyle={newStyle =>
-                  setAttributes({ firstStyle: newStyle })
-                }
-                onChangeSpacing={newValue =>
-                  setAttributes({ firstLetter: newValue })
-                }
-                onChangeUpper={check => setAttributes({ firstUpper: check })}
-              />
+                  onChangeWeight={newWeight =>
+                    setAttributes({ firstWeight: newWeight })
+                  }
+                  onChangeStyle={newStyle =>
+                    setAttributes({ firstStyle: newStyle })
+                  }
+                  onChangeSpacing={newValue =>
+                    setAttributes({ firstLetter: newValue })
+                  }
+                  onChangeUpper={check => setAttributes({ firstUpper: check })}
+                />
+              </PanelBody>
               {!firstClip && (
                 <PanelColorSettings
                   title={__("Colors")}
                   colorSettings={[
                     {
+                      label: __("Text Color"),
+                      value: firstColor,
+                      onChange: colorValue =>
+                        setAttributes({ firstColor: colorValue })
+                    },
+                    {
+                      label: __("Background Color"),
                       value: firstBackground,
                       onChange: colorValue =>
-                        setAttributes({ firstBackground: colorValue }),
-                      label: __("Background Color")
+                        setAttributes({ firstBackground: colorValue })
                     }
                   ]}
                 />
               )}
+
               {firstClip && (
                 <PanelColorSettings
-                  title={__("Second Color")}
+                  title={__("Colors")}
                   colorSettings={[
                     {
+                      label: __("First Color"),
+                      value: firstColor,
+                      onChange: colorValue =>
+                        setAttributes({ firstColor: colorValue })
+                    },
+                    {
+                      label: __("Second Color"),
                       value: firstClipColor,
                       onChange: colorValue =>
-                        setAttributes({ firstClipColor: colorValue }),
-                      label: __("")
+                        setAttributes({ firstClipColor: colorValue })
                     }
                   ]}
                 />
               )}
-              <PremiumBorder
-                borderType={firstBorderType}
-                borderWidth={firstBorderWidth}
-                borderColor={firstBorderColor}
-                borderRadius={firstBorderRadius}
-                onChangeType={newType =>
-                  setAttributes({ firstBorderType: newType })
+              <PanelBody
+                title={__("Border")}
+                className="premium-panel-body premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <PremiumBorder
+                  borderType={firstBorderType}
+                  borderWidth={firstBorderWidth}
+                  borderColor={firstBorderColor}
+                  borderRadius={firstBorderRadius}
+                  onChangeType={newType =>
+                    setAttributes({ firstBorderType: newType })
+                  }
+                  onChangeWidth={newWidth =>
+                    setAttributes({ firstBorderWidth: newWidth })
+                  }
+                  onChangeColor={colorValue =>
+                    setAttributes({ firstBorderColor: colorValue })
+                  }
+                  onChangeRadius={newrRadius =>
+                    setAttributes({ firstBorderRadius: newrRadius })
+                  }
+                />
+              </PanelBody>
+              <PremiumTextShadow
+                color={firstShadowColor}
+                blur={firstShadowBlur}
+                horizontal={firstShadowHorizontal}
+                vertical={firstShadowVertical}
+                onChangeColor={newColor =>
+                  setAttributes({ firstShadowColor: newColor })
                 }
-                onChangeWidth={newWidth =>
-                  setAttributes({ firstBorderWidth: newWidth })
+                onChangeBlur={newBlur =>
+                  setAttributes({ firstShadowBlur: newBlur })
                 }
-                onChangeColor={colorValue =>
-                  setAttributes({ firstBorderColor: colorValue })
+                onChangehHorizontal={newValue =>
+                  setAttributes({ firstShadowHorizontal: newValue })
                 }
-                onChangeRadius={newrRadius =>
-                  setAttributes({ firstBorderRadius: newrRadius })
-                }
-              />
-
-              <p>{__("Margin Left")}</p>
-              <RangeControl
-                value={firstMarginL}
-                min="0"
-                max="100"
-                onChange={newMargin =>
-                  setAttributes({ firstMarginL: newMargin })
-                }
-              />
-              <p>{__("Margin Right")}</p>
-              <RangeControl
-                value={firstMarginR}
-                min="0"
-                max="100"
-                onChange={newMargin =>
-                  setAttributes({ firstMarginR: newMargin })
-                }
-              />
-              <p>{__("Padding")}</p>
-              <RangeControl
-                value={firstPadding}
-                min="0"
-                max="100"
-                onChange={newPadding =>
-                  setAttributes({ firstPadding: newPadding })
+                onChangeVertical={newValue =>
+                  setAttributes({ firstShadowVertical: newValue })
                 }
               />
+              <PanelBody
+                title={__("Spacings")}
+                className="premium-panel-body premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <p>{__("Margin Left")}</p>
+                <RangeControl
+                  value={firstMarginL}
+                  min="0"
+                  max="100"
+                  onChange={newMargin =>
+                    setAttributes({ firstMarginL: newMargin })
+                  }
+                />
+                <p>{__("Margin Right")}</p>
+                <RangeControl
+                  value={firstMarginR}
+                  min="0"
+                  max="100"
+                  onChange={newMargin =>
+                    setAttributes({ firstMarginR: newMargin })
+                  }
+                />
+                <p>{__("Padding")}</p>
+                <RangeControl
+                  value={firstPadding}
+                  min="0"
+                  max="100"
+                  onChange={newPadding =>
+                    setAttributes({ firstPadding: newPadding })
+                  }
+                />
+              </PanelBody>
             </PanelBody>
             <PanelBody
               title={__("Second Heading")}
@@ -433,45 +511,48 @@ if (dualHeading) {
                   onChange={newValue => setAttributes({ secondAnim: newValue })}
                 />
               )}
-              <PanelColorSettings
-                title={__("Colors")}
-                colorSettings={[
-                  {
-                    value: secondColor,
-                    onChange: colorValue =>
-                      setAttributes({ secondColor: colorValue }),
-                    label: __("Text Color")
+              <PanelBody
+                title={__("Font")}
+                className="premium-panel-body premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <PremiumTypo
+                  components={["size", "weight", "style", "upper", "spacing"]}
+                  size={secondSize}
+                  weight={secondWeight}
+                  style={secondStyle}
+                  spacing={secondLetter}
+                  upper={secondUpper}
+                  onChangeSize={newSize =>
+                    setAttributes({ secondSize: newSize })
                   }
-                ]}
-              />
-              <PremiumTypo
-                components={["size", "weight", "style", "upper", "spacing"]}
-                size={secondSize}
-                weight={secondWeight}
-                style={secondStyle}
-                spacing={secondLetter}
-                upper={secondUpper}
-                onChangeSize={newSize => setAttributes({ secondSize: newSize })}
-                onChangeWeight={newWeight =>
-                  setAttributes({ secondWeight: newWeight })
-                }
-                onChangeStyle={newStyle =>
-                  setAttributes({ secondStyle: newStyle })
-                }
-                onChangeSpacing={newValue =>
-                  setAttributes({ secondLetter: newValue })
-                }
-                onChangeUpper={check => setAttributes({ secondUpper: check })}
-              />
+                  onChangeWeight={newWeight =>
+                    setAttributes({ secondWeight: newWeight })
+                  }
+                  onChangeStyle={newStyle =>
+                    setAttributes({ secondStyle: newStyle })
+                  }
+                  onChangeSpacing={newValue =>
+                    setAttributes({ secondLetter: newValue })
+                  }
+                  onChangeUpper={check => setAttributes({ secondUpper: check })}
+                />
+              </PanelBody>
               {!secondClip && (
                 <PanelColorSettings
                   title={__("Colors")}
                   colorSettings={[
                     {
+                      label: __("Text Color"),
+                      value: secondColor,
+                      onChange: colorValue =>
+                        setAttributes({ secondColor: colorValue })
+                    },
+                    {
+                      label: __("Background Color"),
                       value: secondBackground,
                       onChange: colorValue =>
-                        setAttributes({ secondBackground: colorValue }),
-                      label: __("Background Color")
+                        setAttributes({ secondBackground: colorValue })
                     }
                   ]}
                 />
@@ -481,59 +562,95 @@ if (dualHeading) {
                   title={__("Second Color")}
                   colorSettings={[
                     {
+                      label: __("First Color"),
+                      value: secondColor,
+                      onChange: colorValue =>
+                        setAttributes({ secondColor: colorValue })
+                    },
+                    {
                       value: secondClipColor,
                       onChange: colorValue =>
                         setAttributes({ secondClipColor: colorValue }),
-                      label: __("")
+                      label: __("Second Color")
                     }
                   ]}
                 />
               )}
-              <PremiumBorder
-                borderType={secondBorderType}
-                borderWidth={secondBorderWidth}
-                borderColor={secondBorderColor}
-                borderRadius={secondBorderRadius}
-                onChangeType={newType =>
-                  setAttributes({ secondBorderType: newType })
+              <PanelBody
+                title={__("Border")}
+                className="premium-panel-body premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <PremiumBorder
+                  borderType={secondBorderType}
+                  borderWidth={secondBorderWidth}
+                  borderColor={secondBorderColor}
+                  borderRadius={secondBorderRadius}
+                  onChangeType={newType =>
+                    setAttributes({ secondBorderType: newType })
+                  }
+                  onChangeWidth={newWidth =>
+                    setAttributes({ secondBorderWidth: newWidth })
+                  }
+                  onChangeColor={colorValue =>
+                    setAttributes({ secondBorderColor: colorValue })
+                  }
+                  onChangeRadius={newrRadius =>
+                    setAttributes({ secondBorderRadius: newrRadius })
+                  }
+                />
+              </PanelBody>
+              <PremiumTextShadow
+                color={secondShadowColor}
+                blur={secondShadowBlur}
+                horizontal={secondShadowHorizontal}
+                vertical={secondShadowVertical}
+                onChangeColor={newColor =>
+                  setAttributes({ secondShadowColor: newColor })
                 }
-                onChangeWidth={newWidth =>
-                  setAttributes({ secondBorderWidth: newWidth })
+                onChangeBlur={newBlur =>
+                  setAttributes({ secondShadowBlur: newBlur })
                 }
-                onChangeColor={colorValue =>
-                  setAttributes({ secondBorderColor: colorValue })
+                onChangehHorizontal={newValue =>
+                  setAttributes({ secondShadowHorizontal: newValue })
                 }
-                onChangeRadius={newrRadius =>
-                  setAttributes({ secondBorderRadius: newrRadius })
-                }
-              />
-              <p>{__("Margin Left")}</p>
-              <RangeControl
-                value={secondMarginL}
-                min="0"
-                max="100"
-                onChange={newMargin =>
-                  setAttributes({ secondMarginL: newMargin })
-                }
-              />
-              <p>{__("Margin Right")}</p>
-              <RangeControl
-                value={secondMarginR}
-                min="0"
-                max="100"
-                onChange={newMargin =>
-                  setAttributes({ secondMarginR: newMargin })
-                }
-              />
-              <p>{__("Padding")}</p>
-              <RangeControl
-                value={secondPadding}
-                min="0"
-                max="100"
-                onChange={newPadding =>
-                  setAttributes({ secondPadding: newPadding })
+                onChangeVertical={newValue =>
+                  setAttributes({ secondShadowVertical: newValue })
                 }
               />
+              <PanelBody
+                title={__("Spacings")}
+                className="premium-panel-body premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <p>{__("Margin Left")}</p>
+                <RangeControl
+                  value={secondMarginL}
+                  min="0"
+                  max="100"
+                  onChange={newMargin =>
+                    setAttributes({ secondMarginL: newMargin })
+                  }
+                />
+                <p>{__("Margin Right")}</p>
+                <RangeControl
+                  value={secondMarginR}
+                  min="0"
+                  max="100"
+                  onChange={newMargin =>
+                    setAttributes({ secondMarginR: newMargin })
+                  }
+                />
+                <p>{__("Padding")}</p>
+                <RangeControl
+                  value={secondPadding}
+                  min="0"
+                  max="100"
+                  onChange={newPadding =>
+                    setAttributes({ secondPadding: newPadding })
+                  }
+                />
+              </PanelBody>
             </PanelBody>
           </InspectorControls>
         ),
@@ -568,7 +685,8 @@ if (dualHeading) {
                 borderColor: firstBorderColor,
                 padding: firstPadding + "px",
                 marginLeft: firstMarginL + "px",
-                marginRight: firstMarginR + "px"
+                marginRight: firstMarginR + "px",
+                textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
               }}
             >
               {firstHeading}
@@ -593,7 +711,8 @@ if (dualHeading) {
                 borderColor: secondBorderColor,
                 padding: secondPadding + "px",
                 marginLeft: secondMarginL + "px",
-                marginRight: secondMarginR + "px"
+                marginRight: secondMarginR + "px",
+                textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
               }}
             >
               {secondHeading}
@@ -624,6 +743,10 @@ if (dualHeading) {
         firstClip,
         firstAnim,
         firstClipColor,
+        firstShadowBlur,
+        firstShadowColor,
+        firstShadowHorizontal,
+        firstShadowVertical,
         secondColor,
         secondBackground,
         secondSize,
@@ -640,6 +763,10 @@ if (dualHeading) {
         secondClip,
         secondAnim,
         secondClipColor,
+        secondShadowBlur,
+        secondShadowColor,
+        secondShadowHorizontal,
+        secondShadowVertical,
         link,
         target,
         headingURL
@@ -677,7 +804,8 @@ if (dualHeading) {
                   borderRadius: firstBorderRadius + "px",
                   borderColor: firstBorderColor,
                   padding: firstPadding + "px",
-                  margin: firstMargin + "px"
+                  margin: firstMargin + "px",
+                  textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
                 }}
               >
                 {firstHeading}
@@ -701,7 +829,8 @@ if (dualHeading) {
                   borderRadius: secondBorderRadius + "px",
                   borderColor: secondBorderColor,
                   padding: secondPadding + "px",
-                  margin: secondMargin + "px"
+                  margin: secondMargin + "px",
+                  textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
                 }}
               >
                 {secondHeading}
