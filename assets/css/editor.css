@@ -116,14 +116,12 @@
   margin-top: 0;
   padding: 0;
 }
-/**************** Button *******************************/
+/********************** Buttons ************************/
 /*******************************************************/
-.premium-pricing-table .premium-pricing-table__button,
-.premium-button__wrap {
+.premium-pricing-table .premium-pricing-table__button {
   pointer-events: none;
 }
-.premium-pricing-table .premium-pricing-table__button .editor-url-input,
-.premium-button__wrap .editor-url-input {
+.premium-pricing-table .premium-pricing-table__button .editor-url-input {
   pointer-events: auto;
 }
 /**************** Premium Maps *************************/
@@ -132,7 +130,6 @@
   margin: 0;
   padding: 0;
 }
-
 /**************** Premium Icon *************************/
 /*******************************************************/
 #wpwrap .edit-post-visual-editor .premium-icon,

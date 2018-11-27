@@ -519,7 +519,7 @@ if (maps) {
         default: false
       },
       centerLat: {
-        type: "number",
+        type: "string",
         default: "40.7569733"
       },
       centerLng: {
@@ -658,8 +658,8 @@ if (maps) {
                     if( typeof google === 'undefined' ) return;
                     let mapElem = document.getElementById('${mapID}');
                     let pin = mapElem.querySelector('.${className}__marker');
-                    
                     let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
+
                     let map = new google.maps.Map(mapElem, {
                         zoom: ${zoom},
                         gestureHandling: 'cooperative',

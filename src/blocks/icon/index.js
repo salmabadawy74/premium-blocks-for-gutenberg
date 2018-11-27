@@ -58,40 +58,32 @@ if (icon) {
         default: "up"
       },
       paddingT: {
-        type: "number",
-        default: 25
+        type: "number"
       },
       paddingR: {
-        type: "number",
-        default: 25
+        type: "number"
       },
       paddingB: {
-        type: "number",
-        default: 25
+        type: "number"
       },
       paddingL: {
-        type: "number",
-        default: 25
+        type: "number"
       },
       margin: {
         type: "string",
         default: "up"
       },
       marginT: {
-        type: "number",
-        default: 5
+        type: "number"
       },
       marginR: {
-        type: "number",
-        default: 5
+        type: "number"
       },
       marginB: {
-        type: "number",
-        default: 5
+        type: "number"
       },
       marginL: {
-        type: "number",
-        default: 5
+        type: "number"
       },
       borderType: {
         type: "string",
@@ -130,40 +122,32 @@ if (icon) {
         default: "up"
       },
       wrapPaddingT: {
-        type: "number",
-        default: 25
+        type: "number"
       },
       wrapPaddingR: {
-        type: "number",
-        default: 25
+        type: "number"
       },
       wrapPaddingB: {
-        type: "number",
-        default: 25
+        type: "number"
       },
       wrapPaddingL: {
-        type: "number",
-        default: 25
+        type: "number"
       },
       wrapMargin: {
         type: "string",
         default: "up"
       },
       wrapMarginT: {
-        type: "number",
-        default: 5
+        type: "number"
       },
       wrapMarginR: {
-        type: "number",
-        default: 5
+        type: "number"
       },
       wrapMarginB: {
-        type: "number",
-        default: 5
+        type: "number"
       },
       wrapMarginL: {
-        type: "number",
-        default: 5
+        type: "number"
       }
     },
     edit: props => {
@@ -359,20 +343,52 @@ if (icon) {
                 marginRight={marginR}
                 marginBottom={marginB}
                 marginLeft={marginL}
-                onChangeMarTop={value => setAttributes({ marginT: value })}
-                onChangeMarRight={value => setAttributes({ marginR: value })}
-                onChangeMarBottom={value => setAttributes({ marginB: value })}
-                onChangeMarLeft={value => setAttributes({ marginL: value })}
+                onChangeMarTop={value =>
+                  setAttributes({
+                    marginT: value === undefined ? 0 : value
+                  })
+                }
+                onChangeMarRight={value =>
+                  setAttributes({
+                    marginR: value === undefined ? 0 : value
+                  })
+                }
+                onChangeMarBottom={value =>
+                  setAttributes({
+                    marginB: value === undefined ? 0 : value
+                  })
+                }
+                onChangeMarLeft={value =>
+                  setAttributes({
+                    marginL: value === undefined ? 0 : value
+                  })
+                }
               />
               <PremiumPadding
-                marginTop={paddingT}
-                marginRight={paddingR}
-                marginBottom={paddingB}
-                marginLeft={paddingL}
-                onChangePadTop={value => setAttributes({ paddingT: value })}
-                onChangePadRight={value => setAttributes({ paddingR: value })}
-                onChangePadBottom={value => setAttributes({ paddingB: value })}
-                onChangePadLeft={value => setAttributes({ paddingL: value })}
+                paddingTop={paddingT}
+                paddingRight={paddingR}
+                paddingBottom={paddingB}
+                paddingLeft={paddingL}
+                onChangePadTop={value =>
+                  setAttributes({
+                    paddingT: value === undefined ? 0 : value
+                  })
+                }
+                onChangePadRight={value =>
+                  setAttributes({
+                    paddingR: value === undefined ? 0 : value
+                  })
+                }
+                onChangePadBottom={value =>
+                  setAttributes({
+                    paddingB: value === undefined ? 0 : value
+                  })
+                }
+                onChangePadLeft={value =>
+                  setAttributes({
+                    paddingL: value === undefined ? 0 : value
+                  })
+                }
               />
             </PanelBody>
             <PanelBody
@@ -414,29 +430,51 @@ if (icon) {
                 marginRight={wrapMarginR}
                 marginBottom={wrapMarginB}
                 marginLeft={wrapMarginL}
-                onChangeMarTop={value => setAttributes({ wrapMarginT: value })}
+                onChangeMarTop={value =>
+                  setAttributes({
+                    wrapMarginT: value === undefined ? 0 : value
+                  })
+                }
                 onChangeMarRight={value =>
-                  setAttributes({ wrapMarginR: value })
+                  setAttributes({
+                    wrapMarginR: value === undefined ? 0 : value
+                  })
                 }
                 onChangeMarBottom={value =>
-                  setAttributes({ wrapMarginB: value })
+                  setAttributes({
+                    wrapMarginB: value === undefined ? 0 : value
+                  })
                 }
-                onChangeMarLeft={value => setAttributes({ wrapMarginL: value })}
+                onChangeMarLeft={value =>
+                  setAttributes({
+                    wrapMarginL: value === undefined ? 0 : value
+                  })
+                }
               />
               <PremiumPadding
-                marginTop={wrapPaddingT}
-                marginRight={wrapPaddingR}
-                marginBottom={wrapPaddingB}
-                marginLeft={wrapPaddingL}
-                onChangePadTop={value => setAttributes({ wrapPaddingT: value })}
+                paddingTop={wrapPaddingT}
+                paddingRight={wrapPaddingR}
+                paddingBottom={wrapPaddingB}
+                paddingLeft={wrapPaddingL}
+                onChangePadTop={value =>
+                  setAttributes({
+                    wrapPaddingT: value === undefined ? 0 : value
+                  })
+                }
                 onChangePadRight={value =>
-                  setAttributes({ wrapPaddingR: value })
+                  setAttributes({
+                    wrapPaddingR: value === undefined ? 0 : value
+                  })
                 }
                 onChangePadBottom={value =>
-                  setAttributes({ wrapPaddingB: value })
+                  setAttributes({
+                    wrapPaddingB: value === undefined ? 0 : value
+                  })
                 }
                 onChangePadLeft={value =>
-                  setAttributes({ wrapPaddingL: value })
+                  setAttributes({
+                    wrapPaddingL: value === undefined ? 0 : value
+                  })
                 }
               />
             </PanelBody>
