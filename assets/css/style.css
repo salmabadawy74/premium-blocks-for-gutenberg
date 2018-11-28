@@ -1201,9 +1201,11 @@ a.premium-dheading-block__link:hover {
   text-align: center;
 }
 /**
-* Effects
+* Effect 1
 */
-.premium-button__slide .premium-button {
+.premium-button__slide .premium-button,
+.premium-button__shutter .premium-button,
+.premium-button__radial .premium-button {
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
@@ -1215,7 +1217,9 @@ a.premium-dheading-block__link:hover {
   -webkit-transition-duration: 0.15s;
   transition-duration: 0.15s;
 }
-.premium-button__slide .premium-button::before {
+.premium-button__slide .premium-button::before,
+.premium-button__shutter .premium-button::before,
+.premium-button__radial .premium-button::before {
   content: "";
   position: absolute;
   background: #bbb;
@@ -1257,7 +1261,98 @@ a.premium-dheading-block__link:hover {
   transform: scaleY(1);
 }
 .premium-button__slide.premium-button__right .premium-button:hover:before,
-.premium-button__slide.premium-button__left .premium-button:hover:before {
+.premium-button__slide.premium-button__left .premium-button:hover:before,
+.premium-button__shutouthor .premium-button:hover:before,
+.premium-button__shutoutver .premium-button:hover:before {
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
+}
+/**
+* Effect 2
+*/
+.premium-button__shutouthor .premium-button:before,
+.premium-button__scshutoutver .premium-button:before {
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+.premium-button__shutoutver .premium-button:before,
+.premium-button__scshutouthor .premium-button:before {
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+.premium-button__scshutouthor .premium-button:hover:before {
+  -webkit-transform: scaleX(0.9);
+  transform: scaleX(0.9);
+}
+.premium-button__scshutoutver .premium-button:hover:before {
+  -webkit-transform: scaleY(0.8);
+  transform: scaleY(0.8);
+}
+/*Diagonal*/
+.premium-button__dshutinhor .premium-button:before,
+.premium-button__dshutinver .premium-button:before {
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 0%;
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  -webkit-transform-origin: 50%;
+  transform-origin: 50%;
+  -webkit-transition-property: all;
+  transition-property: all;
+}
+.premium-button__dshutinver .premium-button:before {
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+.premium-button__dshutinhor .premium-button:hover:before,
+.premium-button__dshutinver .premium-button:hover:before {
+  height: 220%;
+}
+/**
+* Effect 3
+*/
+.premium-button__radialin .premium-button:before,
+.premium-button__radialout .premium-button:before {
+  -webkit-transform-origin: 50%;
+  transform-origin: 50%;
+  border-radius: 100%;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+.premium-button__radialin .premium-button:before {
+  -webkit-transform: scale(2);
+  transform: scale(2);
+}
+.premium-button__rectin .premium-button:before,
+.premium-button__rectout .premium-button:before {
+  -webkit-transform-origin: 50%;
+  transform-origin: 50%;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.premium-button__rectout .premium-button:before {
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+.premium-button__rectout .premium-button:hover:before {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.premium-button__rectin .premium-button:hover:before {
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+.premium-button__radialout .premium-button:hover:before {
+  -webkit-transform: scale(2);
+  transform: scale(2);
+}
+.premium-button__radialin .premium-button:hover:before {
+  -webkit-transform: scale(0);
+  transform: scale(0);
 }

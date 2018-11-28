@@ -1,5 +1,6 @@
 import { icon } from "../settings";
 import { FontAwesomeEnabled } from "../settings";
+import PremiumIcon from "../../components/premium-icon";
 import PremiumBorder from "../../components/premium-border";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumPadding from "../../components/premium-padding";
@@ -16,9 +17,9 @@ if (icon) {
     Toolbar,
     SelectControl,
     RangeControl,
-    TextControl
+    ToggleControl
   } = wp.components;
-  const { InspectorControls, PanelColorSettings } = wp.editor;
+  const { InspectorControls, PanelColorSettings, URLInput } = wp.editor;
 
   registerBlockType("premium/icon", {
     title: __("Icon"),
@@ -50,8 +51,7 @@ if (icon) {
         default: "#6ec1e4"
       },
       iconBack: {
-        type: "string",
-        default: "#54595f"
+        type: "string"
       },
       padding: {
         type: "string",
@@ -148,6 +148,15 @@ if (icon) {
       },
       wrapMarginL: {
         type: "number"
+      },
+      urlCheck: {
+        type: "boolean"
+      },
+      link: {
+        type: "string"
+      },
+      target: {
+        type: "boolean"
       }
     },
     edit: props => {
@@ -184,7 +193,10 @@ if (icon) {
         wrapMarginT,
         wrapMarginR,
         wrapMarginB,
-        wrapMarginL
+        wrapMarginL,
+        urlCheck,
+        link,
+        target
       } = props.attributes;
       let iconClass =
         "fa" === iconType
@@ -220,16 +232,6 @@ if (icon) {
           label: __("Wobble")
         }
       ];
-      const TYPE = [
-        {
-          value: "fa",
-          label: "Font Awesome Icon"
-        },
-        {
-          value: "dash",
-          label: "Dashicon"
-        }
-      ];
 
       const ALIGNS = ["left", "center", "right"];
 
@@ -241,37 +243,13 @@ if (icon) {
               className="premium-panel-body"
               initialOpen={true}
             >
-              <SelectControl
-                label={__("Icon Type")}
-                value={iconType}
-                options={TYPE}
-                onChange={newType => setAttributes({ iconType: newType })}
-              />
-              {selectedIcon && (
-                <div className="premium-icon__sidebar_icon">
-                  <i className={iconClass} />
-                </div>
-              )}
-              <TextControl
-                label={__("Icon Class")}
-                value={selectedIcon}
-                help={[
-                  __("Get icon class from"),
-                  <a
-                    href={
-                      "fa" === iconType
-                        ? "https://fontawesome.com/v4.7.0/icons/"
-                        : "https://developer.wordpress.org/resource/dashicons/"
-                    }
-                    target="_blank"
-                  >
-                    &nbsp;
-                    {__("here")}
-                  </a>,
-                  __(" , for example: "),
-                  "fa" === iconType ? "address-book" : "dashicons-admin-site"
-                ]}
-                onChange={newIcon => setAttributes({ selectedIcon: newIcon })}
+              <PremiumIcon
+                iconType={iconType}
+                selectedIcon={selectedIcon}
+                onChangeType={newType => setAttributes({ iconType: newType })}
+                onChangeIcon={newIcon =>
+                  setAttributes({ selectedIcon: newIcon })
+                }
               />
               <SelectControl
                 label={__("Hover Effect")}
@@ -289,6 +267,18 @@ if (icon) {
                   onClick: () => setAttributes({ align: iconAlign })
                 }))}
               />
+              <ToggleControl
+                label={__("Link")}
+                checked={urlCheck}
+                onChange={newValue => setAttributes({ urlCheck: newValue })}
+              />
+              {urlCheck && (
+                <ToggleControl
+                  label={__("Open link in new tab")}
+                  checked={target}
+                  onChange={newValue => setAttributes({ target: newValue })}
+                />
+              )}
             </PanelBody>
             <PanelBody
               title={__("Icon Style")}
@@ -527,6 +517,12 @@ if (icon) {
               }}
             />
           )}
+          {urlCheck && isSelected && (
+            <URLInput
+              value={link}
+              onChange={newUrl => setAttributes({ link: newUrl })}
+            />
+          )}
         </div>
       ];
     },
@@ -563,7 +559,10 @@ if (icon) {
         wrapMarginT,
         wrapMarginR,
         wrapMarginB,
-        wrapMarginL
+        wrapMarginL,
+        urlCheck,
+        link,
+        target
       } = props.attributes;
       let iconClass =
         "fa" === iconType
@@ -589,26 +588,32 @@ if (icon) {
             marginLeft: wrapMarginL
           }}
         >
-          <i
-            className={`${className} ${iconClass} ${className}__${hoverEffect}`}
-            style={{
-              color: iconColor,
-              backgroundColor: iconBack,
-              fontSize: iconSize,
-              paddingTop: paddingT,
-              paddingRight: paddingR,
-              paddingBottom: paddingB,
-              paddingLeft: paddingL,
-              marginTop: marginT,
-              marginRight: marginR,
-              marginBottom: marginB,
-              marginLeft: marginL,
-              border: borderType,
-              borderWidth: borderWidth + "px",
-              borderRadius: borderRadius + "px",
-              borderColor: borderColor
-            }}
-          />
+          <a
+            className={`${className}__link`}
+            href={urlCheck && link}
+            target={target ? "_blank" : "_self"}
+          >
+            <i
+              className={`${className} ${iconClass} ${className}__${hoverEffect}`}
+              style={{
+                color: iconColor,
+                backgroundColor: iconBack,
+                fontSize: iconSize,
+                paddingTop: paddingT,
+                paddingRight: paddingR,
+                paddingBottom: paddingB,
+                paddingLeft: paddingL,
+                marginTop: marginT,
+                marginRight: marginR,
+                marginBottom: marginB,
+                marginLeft: marginL,
+                border: borderType,
+                borderWidth: borderWidth + "px",
+                borderRadius: borderRadius + "px",
+                borderColor: borderColor
+              }}
+            />
+          </a>
         </div>
       );
     }

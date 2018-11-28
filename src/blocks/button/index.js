@@ -1,5 +1,8 @@
 import { button } from "../settings";
 import PremiumTypo from "../../components/premium-typo";
+import PremiumBorder from "../../components/premium-border";
+//import PremiumIcon from "../../components/premium-icon";
+import PremiumTextShadow from "../../components/premium-text-shadow";
 if (button) {
   const className = "premium-button";
 
@@ -9,20 +12,15 @@ if (button) {
 
   const {
     PanelBody,
-    CheckboxControl,
-    Toolbar,
     SelectControl,
-    TextControl,
     RangeControl,
-    ToggleControl,
-    IconButton
+    ToggleControl
   } = wp.components;
   const {
     InspectorControls,
     PanelColorSettings,
     AlignmentToolbar,
     BlockControls,
-    MediaUpload,
     RichText,
     URLInput
   } = wp.editor;
@@ -69,6 +67,15 @@ if (button) {
       textHoverColor: {
         type: "string"
       },
+      backColor: {
+        type: "string"
+      },
+      backHoverColor: {
+        type: "string"
+      },
+      slideColor: {
+        type: "string"
+      },
       textSize: {
         type: "number"
       },
@@ -87,6 +94,53 @@ if (button) {
       },
       textLine: {
         type: "number"
+      },
+      iconCheck: {
+        type: "boolean"
+      },
+      iconType: {
+        type: "string",
+        default: "dash"
+      },
+      selectedIcon: {
+        type: "string",
+        default: "dashicons-admin-site"
+      },
+      iconSize: {
+        type: "number",
+        default: 50
+      },
+      borderType: {
+        type: "string",
+        default: "none"
+      },
+      borderWidth: {
+        type: "number",
+        default: "1"
+      },
+      borderRadius: {
+        type: "number"
+      },
+      borderColor: {
+        type: "string"
+      },
+      padding: {
+        type: "number"
+      },
+      shadowColor: {
+        type: "string"
+      },
+      shadowBlur: {
+        type: "number",
+        default: "0"
+      },
+      shadowHorizontal: {
+        type: "number",
+        default: "0"
+      },
+      shadowVertical: {
+        type: "number",
+        default: "0"
       }
     },
     edit: props => {
@@ -102,13 +156,32 @@ if (button) {
         effectDir,
         textColor,
         textHoverColor,
+        backColor,
+        backHoverColor,
+        slideColor,
         textSize,
         textWeight,
         textLetter,
         textUpper,
         textLine,
-        textStyle
+        textStyle,
+        borderType,
+        borderWidth,
+        borderRadius,
+        borderColor,
+        shadowBlur,
+        shadowColor,
+        shadowHorizontal,
+        shadowVertical,
+        padding,
+        iconType,
+        selectedIcon
       } = props.attributes;
+      let iconClass =
+        "fa" === iconType
+          ? `fa fa-${selectedIcon}`
+          : `dashicons ${selectedIcon}`;
+
       const SIZE = [
         {
           value: "sm",
@@ -145,6 +218,50 @@ if (button) {
           label: __("Right to Left")
         }
       ];
+      const SHUTTER = [
+        {
+          value: "shutouthor",
+          label: __("Shutter out Horizontal")
+        },
+        {
+          value: "shutoutver",
+          label: __("Shutter out Vertical")
+        },
+        {
+          value: "scshutoutver",
+          label: __("Scaled Shutter Vertical")
+        },
+        {
+          value: "scshutouthor",
+          label: __("Scaled Shutter Horizontal")
+        },
+        {
+          value: "dshutinver",
+          label: __("Tilted Left")
+        },
+        {
+          value: "dshutinhor",
+          label: __("Tilted Right")
+        }
+      ];
+      const RADIAL = [
+        {
+          value: "radialin",
+          label: __("Radial In")
+        },
+        {
+          value: "radialout",
+          label: __("Radial Out")
+        },
+        {
+          value: "rectin",
+          label: __("Rectangle In")
+        },
+        {
+          value: "rectout",
+          label: __("Rectangle Out")
+        }
+      ];
       const EFFECTS = [
         {
           value: "none",
@@ -153,6 +270,14 @@ if (button) {
         {
           value: "slide",
           label: __("Slide")
+        },
+        {
+          value: "shutter",
+          label: __("Shutter")
+        },
+        {
+          value: "radial",
+          label: __("Radial")
         }
       ];
       return [
@@ -177,10 +302,26 @@ if (button) {
                 value={effect}
                 onChange={newSize => setAttributes({ effect: newSize })}
               />
-              {"none" !== effect && (
+              {"slide" === effect && (
                 <SelectControl
                   options={DIRECTION}
                   label={__("Direction")}
+                  value={effectDir}
+                  onChange={newSize => setAttributes({ effectDir: newSize })}
+                />
+              )}
+              {"shutter" === effect && (
+                <SelectControl
+                  options={SHUTTER}
+                  label={__("Shutter Direction")}
+                  value={effectDir}
+                  onChange={newSize => setAttributes({ effectDir: newSize })}
+                />
+              )}
+              {"radial" === effect && (
+                <SelectControl
+                  options={RADIAL}
+                  label={__("Style")}
                   value={effectDir}
                   onChange={newSize => setAttributes({ effectDir: newSize })}
                 />
@@ -191,7 +332,7 @@ if (button) {
                 value={btnSize}
                 onChange={newSize => setAttributes({ btnSize: newSize })}
               />
-              <CheckboxControl
+              <ToggleControl
                 label={__("Open link in new tab")}
                 checked={btnTarget}
                 onChange={newValue => setAttributes({ btnTarget: newValue })}
@@ -256,6 +397,83 @@ if (button) {
                   onChangeUpper={check => setAttributes({ textUpper: check })}
                 />
               </PanelBody>
+              <PremiumTextShadow
+                color={shadowColor}
+                blur={shadowBlur}
+                horizontal={shadowHorizontal}
+                vertical={shadowVertical}
+                onChangeColor={newColor =>
+                  setAttributes({ shadowColor: newColor })
+                }
+                onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
+                onChangehHorizontal={newValue =>
+                  setAttributes({ shadowHorizontal: newValue })
+                }
+                onChangeVertical={newValue =>
+                  setAttributes({ shadowVertical: newValue })
+                }
+              />
+            </PanelBody>
+            <PanelBody
+              title={__("Button Style")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
+              <PanelColorSettings
+                title={__("Colors")}
+                colorSettings={[
+                  {
+                    label: __("Background Color"),
+                    value: backColor,
+                    onChange: colorValue =>
+                      setAttributes({ backColor: colorValue })
+                  },
+                  {
+                    label: __("Background Hover Color"),
+                    value: backHoverColor,
+                    onChange: colorValue =>
+                      setAttributes({
+                        backHoverColor: colorValue,
+                        slideColor: colorValue
+                      })
+                  }
+                ]}
+              />
+              <PanelBody
+                title={__("Border")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <PremiumBorder
+                  borderType={borderType}
+                  borderWidth={borderWidth}
+                  borderColor={borderColor}
+                  borderRadius={borderRadius}
+                  onChangeType={newType =>
+                    setAttributes({ borderType: newType })
+                  }
+                  onChangeWidth={newWidth =>
+                    setAttributes({ borderWidth: newWidth })
+                  }
+                  onChangeColor={colorValue =>
+                    setAttributes({ borderColor: colorValue })
+                  }
+                  onChangeRadius={newrRadius =>
+                    setAttributes({ borderRadius: newrRadius })
+                  }
+                />
+              </PanelBody>
+              <PanelBody
+                title={__("Spacings")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <RangeControl
+                  label={__("Padding (PX)")}
+                  value={padding}
+                  onChange={newValue => setAttributes({ padding: newValue })}
+                />
+              </PanelBody>
             </PanelBody>
           </InspectorControls>
         ),
@@ -269,6 +487,14 @@ if (button) {
               __html: [
                 `#premium-button-wrap-${clientId} .premium-button:hover {`,
                 `color: ${textHoverColor} !important;`,
+                "}",
+                `#premium-button-wrap-${clientId}.premium-button__none .premium-button:hover {`,
+                `background-color: ${backHoverColor} !important;`,
+                "}",
+                `#premium-button-wrap-${clientId}.premium-button__slide .premium-button::before,`,
+                `#premium-button-wrap-${clientId}.premium-button__shutter .premium-button::before,`,
+                `#premium-button-wrap-${clientId}.premium-button__radial .premium-button::before {`,
+                `background-color: ${slideColor}`,
                 "}"
               ].join("\n")
             }}
@@ -279,12 +505,19 @@ if (button) {
             onChange={value => setAttributes({ btnText: value })}
             style={{
               color: textColor,
+              backgroundColor: backColor,
               fontSize: textSize + "px",
               letterSpacing: textLetter + "px",
               textTransform: textUpper ? "uppercase" : "none",
               fontStyle: textStyle,
               lineHeight: textLine + "px",
-              fontWeight: textWeight
+              fontWeight: textWeight,
+              textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+              padding: padding + "px",
+              border: borderType,
+              borderWidth: borderWidth + "px",
+              borderRadius: borderRadius + "px",
+              borderColor: borderColor
             }}
             keepPlaceholderOnFocus
           />
@@ -306,13 +539,25 @@ if (button) {
         effect,
         effectDir,
         textColor,
-        textSize,
         textHoverColor,
+        backColor,
+        backHoverColor,
+        slideColor,
+        textSize,
         textWeight,
         textLine,
         textLetter,
         textStyle,
-        textUpper
+        textUpper,
+        borderType,
+        borderWidth,
+        borderRadius,
+        borderColor,
+        padding,
+        shadowBlur,
+        shadowColor,
+        shadowHorizontal,
+        shadowVertical
       } = props.attributes;
       return (
         <div
@@ -325,6 +570,14 @@ if (button) {
               __html: [
                 `#premium-button-wrap-${clientId} .premium-button:hover {`,
                 `color: ${textHoverColor} !important;`,
+                "}",
+                `#premium-button-wrap-${clientId}.premium-button__none .premium-button:hover {`,
+                `background-color: ${backHoverColor} !important;`,
+                "}",
+                `#premium-button-wrap-${clientId}.premium-button__slide .premium-button::before,`,
+                `#premium-button-wrap-${clientId}.premium-button__shutter .premium-button::before,`,
+                `#premium-button-wrap-${clientId}.premium-button__radial .premium-button::before {`,
+                `background-color: ${slideColor}`,
                 "}"
               ].join("\n")
             }}
@@ -337,12 +590,19 @@ if (button) {
             target={btnTarget ? "_blank" : "_self"}
             style={{
               color: textColor,
+              backgroundColor: backColor,
               fontSize: textSize + "px",
               letterSpacing: textLetter + "px",
               textTransform: textUpper ? "uppercase" : "none",
               fontStyle: textStyle,
               lineHeight: textLine + "px",
-              fontWeight: textWeight
+              fontWeight: textWeight,
+              textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+              padding: padding + "px",
+              border: borderType,
+              borderWidth: borderWidth + "px",
+              borderRadius: borderRadius + "px",
+              borderColor: borderColor
             }}
           />
         </div>

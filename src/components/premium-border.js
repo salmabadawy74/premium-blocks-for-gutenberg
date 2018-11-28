@@ -58,6 +58,7 @@ export default function PremiumBorder(props) {
       )}
       {"none" != borderType && (
         <PanelColorSettings
+          title={__("Colors")}
           colorSettings={[
             {
               value: borderColor,
