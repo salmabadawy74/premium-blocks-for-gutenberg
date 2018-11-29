@@ -343,23 +343,6 @@ if (button) {
               className="premium-panel-body"
               initialOpen={false}
             >
-              <PanelColorSettings
-                title={__("Colors")}
-                colorSettings={[
-                  {
-                    label: __("Text Color"),
-                    value: textColor,
-                    onChange: colorValue =>
-                      setAttributes({ textColor: colorValue })
-                  },
-                  {
-                    label: __("Text Hover Color"),
-                    value: textHoverColor,
-                    onChange: colorValue =>
-                      setAttributes({ textHoverColor: colorValue })
-                  }
-                ]}
-              />
               <PanelBody
                 title={__("Font")}
                 className="premium-panel-body-inner"
@@ -397,6 +380,23 @@ if (button) {
                   onChangeUpper={check => setAttributes({ textUpper: check })}
                 />
               </PanelBody>
+              <PanelColorSettings
+                title={__("Colors")}
+                colorSettings={[
+                  {
+                    label: __("Text Color"),
+                    value: textColor,
+                    onChange: colorValue =>
+                      setAttributes({ textColor: colorValue })
+                  },
+                  {
+                    label: __("Text Hover Color"),
+                    value: textHoverColor,
+                    onChange: colorValue =>
+                      setAttributes({ textHoverColor: colorValue })
+                  }
+                ]}
+              />
               <PremiumTextShadow
                 color={shadowColor}
                 blur={shadowBlur}

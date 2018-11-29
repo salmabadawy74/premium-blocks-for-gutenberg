@@ -7891,22 +7891,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* button */]) {
             className: "premium-panel-body",
             initialOpen: false
           },
-          wp.element.createElement(PanelColorSettings, {
-            title: __("Colors"),
-            colorSettings: [{
-              label: __("Text Color"),
-              value: textColor,
-              onChange: function onChange(colorValue) {
-                return setAttributes({ textColor: colorValue });
-              }
-            }, {
-              label: __("Text Hover Color"),
-              value: textHoverColor,
-              onChange: function onChange(colorValue) {
-                return setAttributes({ textHoverColor: colorValue });
-              }
-            }]
-          }),
           wp.element.createElement(
             PanelBody,
             {
@@ -7941,6 +7925,22 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* button */]) {
               return setAttributes({ textUpper: check });
             }), _wp$element$createEle))
           ),
+          wp.element.createElement(PanelColorSettings, {
+            title: __("Colors"),
+            colorSettings: [{
+              label: __("Text Color"),
+              value: textColor,
+              onChange: function onChange(colorValue) {
+                return setAttributes({ textColor: colorValue });
+              }
+            }, {
+              label: __("Text Hover Color"),
+              value: textHoverColor,
+              onChange: function onChange(colorValue) {
+                return setAttributes({ textHoverColor: colorValue });
+              }
+            }]
+          }),
           wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__["a" /* default */], {
             color: shadowColor,
             blur: shadowBlur,
