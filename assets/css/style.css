@@ -93,7 +93,6 @@ a.premium-dheading-block__link:hover {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-
 .premium-banner .premium-banner__inner *,
 .premium-banner .premium-banner__inner .premium-banner__content {
   -webkit-box-sizing: border-box;
@@ -728,7 +727,7 @@ a.premium-dheading-block__link:hover {
 * Responsive
 */
 @media (max-width: 767px) {
-  .premium-banner__responsive_false .premium-banner__desc_wrap {
+  .premium-banner__responsive_true .premium-banner__desc_wrap {
     display: none;
   }
 }

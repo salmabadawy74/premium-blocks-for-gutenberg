@@ -85,7 +85,7 @@ if (countUp) {
       },
       suffixTxt: {
         type: "string",
-        default: "Prefix"
+        default: "Suffix"
       },
       suffixSize: {
         type: "number",
@@ -104,6 +104,10 @@ if (countUp) {
       icon: {
         type: "string",
         default: "icon"
+      },
+      iconSpacing: {
+        type: "number",
+        default: 10
       },
       imageID: {
         type: "string"
@@ -175,6 +179,7 @@ if (countUp) {
         numberColor,
         numberWeight,
         icon,
+        iconSpacing,
         iconSize,
         iconColor,
         titleCheck,
@@ -309,15 +314,19 @@ if (countUp) {
                 value={flexDir}
                 onChange={newDir => setAttributes({ flexDir: newDir })}
               />
+              {("row" === flexDir || "row-reverse" === flexDir) && (
+                <RangeControl
+                  label={__("Spacing (PX)")}
+                  value={iconSpacing}
+                  onChange={newValue =>
+                    setAttributes({ iconSpacing: newValue })
+                  }
+                />
+              )}
               <ToggleControl
                 label={__("Icon")}
                 checked={iconCheck}
                 onChange={check => setAttributes({ iconCheck: check })}
-              />
-              <ToggleControl
-                label={__("Title")}
-                checked={titleCheck}
-                onChange={check => setAttributes({ titleCheck: check })}
               />
               <ToggleControl
                 label={__("Prefix")}
@@ -329,177 +338,12 @@ if (countUp) {
                 checked={suffix}
                 onChange={check => setAttributes({ suffix: check })}
               />
-            </PanelBody>
-            <PanelBody
-              title={__("Number")}
-              className="premium-panel-body"
-              initialOpen={false}
-            >
-              <RangeControl
-                label={__("Font Size (PX)")}
-                value={numberSize}
-                onChange={newValue => setAttributes({ numberSize: newValue })}
-              />
-              <PanelColorSettings
-                title={__("Colors")}
-                colorSettings={[
-                  {
-                    value: numberColor,
-                    onChange: colorValue =>
-                      setAttributes({ numberColor: colorValue }),
-                    label: __("Number Color")
-                  }
-                ]}
-              />
-              <RangeControl
-                label={__("Font Weight")}
-                min="100"
-                max="900"
-                step="100"
-                value={numberWeight}
-                onChange={newWeight =>
-                  setAttributes({ numberWeight: newWeight })
-                }
+              <ToggleControl
+                label={__("Title")}
+                checked={titleCheck}
+                onChange={check => setAttributes({ titleCheck: check })}
               />
             </PanelBody>
-            {titleCheck && (
-              <PanelBody
-                title={__("Title")}
-                className="premium-panel-body"
-                initialOpen={false}
-              >
-                <TextControl
-                  label={__("Title Text")}
-                  value={titleTxt}
-                  onChange={value => setAttributes({ titleTxt: value })}
-                />
-                <RangeControl
-                  label={__("Font Size (PX)")}
-                  value={titleSize}
-                  onChange={newValue => setAttributes({ titleSize: newValue })}
-                />
-                <RangeControl
-                  label={__("Font Weight")}
-                  min="100"
-                  max="900"
-                  step="100"
-                  value={titleWeight}
-                  onChange={newWeight =>
-                    setAttributes({ titleWeight: newWeight })
-                  }
-                />
-                <PanelColorSettings
-                  title={__("Colors")}
-                  colorSettings={[
-                    {
-                      value: titleColor,
-                      onChange: colorValue =>
-                        setAttributes({ titleColor: colorValue }),
-                      label: __("Text Color")
-                    }
-                  ]}
-                />
-                <RangeControl
-                  label={__("Margin Top (PX)")}
-                  value={titleT}
-                  onChange={newValue => setAttributes({ titleT: newValue })}
-                />
-                <RangeControl
-                  label={__("Margin Bottom (PX)")}
-                  value={titleB}
-                  onChange={newValue => setAttributes({ titleB: newValue })}
-                />
-              </PanelBody>
-            )}
-
-            {prefix && (
-              <PanelBody
-                title={__("Prefix")}
-                className="premium-panel-body"
-                initialOpen={false}
-              >
-                <TextControl
-                  label={__("Prefix")}
-                  value={prefixTxt}
-                  onChange={value => setAttributes({ prefixTxt: value })}
-                />
-                <RangeControl
-                  label={__("Font Size (PX)")}
-                  value={prefixSize}
-                  onChange={newValue => setAttributes({ prefixSize: newValue })}
-                />
-                <PanelColorSettings
-                  title={__("Colors")}
-                  colorSettings={[
-                    {
-                      value: prefixColor,
-                      onChange: colorValue =>
-                        setAttributes({ prefixColor: colorValue }),
-                      label: __("Text Color")
-                    }
-                  ]}
-                />
-                <RangeControl
-                  label={__("Font Weight")}
-                  min="100"
-                  max="900"
-                  step="100"
-                  value={prefixWeight}
-                  onChange={newWeight =>
-                    setAttributes({ prefixWeight: newWeight })
-                  }
-                />
-                <RangeControl
-                  label={__("Gap After (PX)")}
-                  value={prefixGap}
-                  onChange={newValue => setAttributes({ prefixGap: newValue })}
-                />
-              </PanelBody>
-            )}
-            {suffix && (
-              <PanelBody
-                title={__("Suffix")}
-                className="premium-panel-body"
-                initialOpen={false}
-              >
-                <TextControl
-                  label={__("Suffix")}
-                  value={suffixTxt}
-                  onChange={value => setAttributes({ suffixTxt: value })}
-                />
-                <RangeControl
-                  label={__("Font Size (PX)")}
-                  value={suffixSize}
-                  onChange={newValue => setAttributes({ suffixSize: newValue })}
-                />
-                <PanelColorSettings
-                  title={__("Colors")}
-                  colorSettings={[
-                    {
-                      value: suffixColor,
-                      onChange: colorValue =>
-                        setAttributes({ suffixColor: colorValue }),
-                      label: __("Text Color")
-                    }
-                  ]}
-                />
-                <RangeControl
-                  label={__("Font Weight")}
-                  min="100"
-                  max="900"
-                  step="100"
-                  value={suffixWeight}
-                  onChange={newWeight =>
-                    setAttributes({ suffixWeight: newWeight })
-                  }
-                />
-                <RangeControl
-                  label={__("Gap Before (PX)")}
-                  value={suffixGap}
-                  onChange={newValue => setAttributes({ suffixGap: newValue })}
-                />
-              </PanelBody>
-            )}
             {iconCheck && (
               <PanelBody
                 title={__("Icon")}
@@ -600,6 +444,175 @@ if (countUp) {
                 )}
               </PanelBody>
             )}
+            <PanelBody
+              title={__("Number")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
+              <RangeControl
+                label={__("Font Size (PX)")}
+                value={numberSize}
+                onChange={newValue => setAttributes({ numberSize: newValue })}
+              />
+              <PanelColorSettings
+                title={__("Colors")}
+                colorSettings={[
+                  {
+                    value: numberColor,
+                    onChange: colorValue =>
+                      setAttributes({ numberColor: colorValue }),
+                    label: __("Number Color")
+                  }
+                ]}
+              />
+              <RangeControl
+                label={__("Font Weight")}
+                min="100"
+                max="900"
+                step="100"
+                value={numberWeight}
+                onChange={newWeight =>
+                  setAttributes({ numberWeight: newWeight })
+                }
+              />
+            </PanelBody>
+            {prefix && (
+              <PanelBody
+                title={__("Prefix")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
+                <TextControl
+                  label={__("Prefix")}
+                  value={prefixTxt}
+                  onChange={value => setAttributes({ prefixTxt: value })}
+                />
+                <RangeControl
+                  label={__("Font Size (PX)")}
+                  value={prefixSize}
+                  onChange={newValue => setAttributes({ prefixSize: newValue })}
+                />
+                <PanelColorSettings
+                  title={__("Colors")}
+                  colorSettings={[
+                    {
+                      value: prefixColor,
+                      onChange: colorValue =>
+                        setAttributes({ prefixColor: colorValue }),
+                      label: __("Text Color")
+                    }
+                  ]}
+                />
+                <RangeControl
+                  label={__("Font Weight")}
+                  min="100"
+                  max="900"
+                  step="100"
+                  value={prefixWeight}
+                  onChange={newWeight =>
+                    setAttributes({ prefixWeight: newWeight })
+                  }
+                />
+                <RangeControl
+                  label={__("Gap After (PX)")}
+                  value={prefixGap}
+                  onChange={newValue => setAttributes({ prefixGap: newValue })}
+                />
+              </PanelBody>
+            )}
+            {suffix && (
+              <PanelBody
+                title={__("Suffix")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
+                <TextControl
+                  label={__("Suffix")}
+                  value={suffixTxt}
+                  onChange={value => setAttributes({ suffixTxt: value })}
+                />
+                <RangeControl
+                  label={__("Font Size (PX)")}
+                  value={suffixSize}
+                  onChange={newValue => setAttributes({ suffixSize: newValue })}
+                />
+                <PanelColorSettings
+                  title={__("Colors")}
+                  colorSettings={[
+                    {
+                      value: suffixColor,
+                      onChange: colorValue =>
+                        setAttributes({ suffixColor: colorValue }),
+                      label: __("Text Color")
+                    }
+                  ]}
+                />
+                <RangeControl
+                  label={__("Font Weight")}
+                  min="100"
+                  max="900"
+                  step="100"
+                  value={suffixWeight}
+                  onChange={newWeight =>
+                    setAttributes({ suffixWeight: newWeight })
+                  }
+                />
+                <RangeControl
+                  label={__("Gap Before (PX)")}
+                  value={suffixGap}
+                  onChange={newValue => setAttributes({ suffixGap: newValue })}
+                />
+              </PanelBody>
+            )}
+            {titleCheck && (
+              <PanelBody
+                title={__("Title")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
+                <TextControl
+                  label={__("Title Text")}
+                  value={titleTxt}
+                  onChange={value => setAttributes({ titleTxt: value })}
+                />
+                <RangeControl
+                  label={__("Font Size (PX)")}
+                  value={titleSize}
+                  onChange={newValue => setAttributes({ titleSize: newValue })}
+                />
+                <RangeControl
+                  label={__("Font Weight")}
+                  min="100"
+                  max="900"
+                  step="100"
+                  value={titleWeight}
+                  onChange={newWeight =>
+                    setAttributes({ titleWeight: newWeight })
+                  }
+                />
+                <PanelColorSettings
+                  title={__("Colors")}
+                  colorSettings={[
+                    {
+                      value: titleColor,
+                      onChange: colorValue =>
+                        setAttributes({ titleColor: colorValue }),
+                      label: __("Text Color")
+                    }
+                  ]}
+                />
+                <RangeControl
+                  label={__("Margin Top (PX)")}
+                  value={titleT}
+                  onChange={newValue => setAttributes({ titleT: newValue })}
+                />
+                <RangeControl
+                  label={__("Margin Bottom (PX)")}
+                  value={titleB}
+                  onChange={newValue => setAttributes({ titleB: newValue })}
+                />
+              </PanelBody>
+            )}
           </InspectorControls>
         ),
         <div>
@@ -620,6 +633,14 @@ if (countUp) {
             <div
               className={`${className}__icon_wrap`}
               style={{
+                marginRight:
+                  "row" === flexDir || "row-reverse" === flexDir
+                    ? iconSpacing + "px"
+                    : "0",
+                marginLeft:
+                  "row" === flexDir || "row-reverse" === flexDir
+                    ? iconSpacing + "px"
+                    : "0",
                 alignSelf:
                   "row-reverse" === flexDir || "row" === flexDir
                     ? "center"
@@ -646,22 +667,6 @@ if (countUp) {
               )}
             </div>
           )}
-          {titleCheck &&
-            ("column" === flexDir || "column-reverse" === flexDir) && (
-              <h3
-                className={`${className}__title`}
-                style={{
-                  fontSize: titleSize + "px",
-                  marginTop: titleT + "px",
-                  marginBottom: titleB + "px",
-                  color: titleColor,
-                  fontWeight: titleWeight,
-                  alignSelf: selfAlign
-                }}
-              >
-                {titleTxt}
-              </h3>
-            )}
           <div
             className={`${className}__info`}
             style={{
@@ -671,20 +676,6 @@ if (countUp) {
                   : selfAlign
             }}
           >
-            {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
-              <h3
-                className={`${className}__title`}
-                style={{
-                  fontSize: titleSize + "px",
-                  marginTop: titleT + "px",
-                  marginBottom: titleB + "px",
-                  color: titleColor,
-                  fontWeight: titleWeight
-                }}
-              >
-                {titleTxt}
-              </h3>
-            )}
             <div className={`${className}__desc`}>
               {prefix && (
                 <p
@@ -723,7 +714,37 @@ if (countUp) {
                 </p>
               )}
             </div>
+            {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
+              <h3
+                className={`${className}__title`}
+                style={{
+                  fontSize: titleSize + "px",
+                  marginTop: titleT + "px",
+                  marginBottom: titleB + "px",
+                  color: titleColor,
+                  fontWeight: titleWeight
+                }}
+              >
+                {titleTxt}
+              </h3>
+            )}
           </div>
+          {titleCheck &&
+            ("column" === flexDir || "column-reverse" === flexDir) && (
+              <h3
+                className={`${className}__title`}
+                style={{
+                  fontSize: titleSize + "px",
+                  marginTop: titleT + "px",
+                  marginBottom: titleB + "px",
+                  color: titleColor,
+                  fontWeight: titleWeight,
+                  alignSelf: selfAlign
+                }}
+              >
+                {titleTxt}
+              </h3>
+            )}
         </div>
       ];
     },
@@ -751,6 +772,7 @@ if (countUp) {
         suffixGap,
         iconCheck,
         icon,
+        iconSpacing,
         iconType,
         imageURL,
         iconSize,
@@ -777,8 +799,16 @@ if (countUp) {
         >
           {iconCheck && (
             <div
-              className={`${className}__icon`}
+              className={`${className}__icon_wrap`}
               style={{
+                marginRight:
+                  "row" === flexDir || "row-reverse" === flexDir
+                    ? iconSpacing + "px"
+                    : "0",
+                marginLeft:
+                  "row" === flexDir || "row-reverse" === flexDir
+                    ? iconSpacing + "px"
+                    : "0",
                 alignSelf:
                   "row-reverse" === flexDir || "row" === flexDir
                     ? "center"
@@ -805,22 +835,7 @@ if (countUp) {
               )}
             </div>
           )}
-          {titleCheck &&
-            ("column" === flexDir || "column-reverse" === flexDir) && (
-              <h3
-                className={`${className}__title`}
-                style={{
-                  fontSize: titleSize + "px",
-                  marginTop: titleT + "px",
-                  marginBottom: titleB + "px",
-                  color: titleColor,
-                  fontWeight: titleWeight,
-                  alignSelf: selfAlign
-                }}
-              >
-                {titleTxt}
-              </h3>
-            )}
+
           <div
             className={`${className}__info`}
             style={{
@@ -830,20 +845,6 @@ if (countUp) {
                   : selfAlign
             }}
           >
-            {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
-              <h3
-                className={`${className}__title`}
-                style={{
-                  fontSize: titleSize + "px",
-                  marginTop: titleT + "px",
-                  marginBottom: titleB + "px",
-                  color: titleColor,
-                  fontWeight: titleWeight
-                }}
-              >
-                {titleTxt}
-              </h3>
-            )}
             <div className={`${className}__desc`}>
               {prefix && (
                 <p
@@ -882,7 +883,37 @@ if (countUp) {
                 </p>
               )}
             </div>
+            {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
+              <h3
+                className={`${className}__title`}
+                style={{
+                  fontSize: titleSize + "px",
+                  marginTop: titleT + "px",
+                  marginBottom: titleB + "px",
+                  color: titleColor,
+                  fontWeight: titleWeight
+                }}
+              >
+                {titleTxt}
+              </h3>
+            )}
           </div>
+          {titleCheck &&
+            ("column" === flexDir || "column-reverse" === flexDir) && (
+              <h3
+                className={`${className}__title`}
+                style={{
+                  fontSize: titleSize + "px",
+                  marginTop: titleT + "px",
+                  marginBottom: titleB + "px",
+                  color: titleColor,
+                  fontWeight: titleWeight,
+                  alignSelf: selfAlign
+                }}
+              >
+                {titleTxt}
+              </h3>
+            )}
         </div>
       );
     }

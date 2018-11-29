@@ -156,11 +156,15 @@ if (banner) {
       },
       sepColor: {
         type: "string"
+      },
+      id: {
+        type: "string"
       }
     },
     edit: props => {
-      const { isSelected, setAttributes, clientId } = props;
+      const { isSelected, setAttributes, clientId: blockID } = props;
       const {
+        id,
         imageID,
         imageURL,
         title,
@@ -308,10 +312,20 @@ if (banner) {
           label: "Custom"
         }
       ];
-
+      setAttributes({ id: blockID });
       return [
         isSelected && (
           <BlockControls key="controls">
+            <Toolbar>
+              <IconButton
+                label={__(
+                  "Refresh this button when it conflict with other buttons styles"
+                )}
+                icon="update"
+                className="components-toolbar__control"
+                onClick={() => setAttributes({ id: blockID })}
+              />
+            </Toolbar>
             <AlignmentToolbar
               value={contentAlign}
               onChange={newAlign => setAttributes({ contentAlign: newAlign })}
@@ -560,19 +574,19 @@ if (banner) {
           </InspectorControls>
         ),
         <div
-          id={`premium-banner-${clientId}`}
+          id={`premium-banner-${id}`}
           className={`${className} ${className}__responsive_${responsive}`}
         >
           <style
             dangerouslySetInnerHTML={{
               __html: [
-                `#premium-banner-${clientId} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                `#premium-banner-${id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
                 `background: ${sepColor}`,
                 "}",
-                `#premium-banner-${clientId} .premium-banner__inner {`,
+                `#premium-banner-${id} .premium-banner__inner {`,
                 `background: ${background}`,
                 "}",
-                `#premium-banner-${clientId} .premium-banner__img.premium-banner__active {`,
+                `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
                 `opacity: ${opacity / 100} `,
                 "}"
               ].join("\n")
@@ -655,8 +669,8 @@ if (banner) {
       ];
     },
     save: props => {
-      const { clientId } = props;
       const {
+        id,
         imageURL,
         title,
         titleTag,
@@ -689,22 +703,21 @@ if (banner) {
         target,
         sepColor
       } = props.attributes;
-
       return (
         <div
-          id={`premium-banner-${clientId}`}
+          id={`premium-banner-${id}`}
           className={`${className} ${className}__responsive_${responsive}`}
         >
           <style
             dangerouslySetInnerHTML={{
               __html: [
-                `#premium-banner-${clientId} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                `#premium-banner-${id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
                 `background: ${sepColor}`,
                 "}",
-                `#premium-banner-${clientId} .premium-banner__inner {`,
+                `#premium-banner-${id} .premium-banner__inner {`,
                 `background: ${background}`,
                 "}",
-                `#premium-banner-${clientId} .premium-banner__img:hover {`,
+                `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
                 `opacity: ${opacity / 100} `,
                 "}"
               ].join("\n")

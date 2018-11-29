@@ -97,6 +97,10 @@
   margin: 1em auto;
   display: block;
 }
+.premium-banner .premium-banner__effect5 .premium-banner__title_wrap,
+.premium-banner .premium-banner__effect5 .premium-banner__desc_wrap {
+  z-index: 999;
+}
 /**************** Premium Testimonials *****************/
 /*******************************************************/
 .premium-testimonial__wrap .premium-testimonial__info {

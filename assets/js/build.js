@@ -1398,13 +1398,17 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
       },
       sepColor: {
         type: "string"
+      },
+      id: {
+        type: "string"
       }
     },
     edit: function edit(props) {
       var isSelected = props.isSelected,
           setAttributes = props.setAttributes,
-          clientId = props.clientId;
+          blockID = props.clientId;
       var _props$attributes = props.attributes,
+          id = _props$attributes.id,
           imageID = _props$attributes.imageID,
           imageURL = _props$attributes.imageURL,
           title = _props$attributes.title,
@@ -1521,10 +1525,22 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
         value: "custom",
         label: "Custom"
       }];
-
+      setAttributes({ id: blockID });
       return [isSelected && wp.element.createElement(
         BlockControls,
         { key: "controls" },
+        wp.element.createElement(
+          Toolbar,
+          null,
+          wp.element.createElement(IconButton, {
+            label: __("Refresh this button when it conflict with other buttons styles"),
+            icon: "update",
+            className: "components-toolbar__control",
+            onClick: function onClick() {
+              return setAttributes({ id: blockID });
+            }
+          })
+        ),
         wp.element.createElement(AlignmentToolbar, {
           value: contentAlign,
           onChange: function onChange(newAlign) {
@@ -1810,12 +1826,12 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
       ), wp.element.createElement(
         "div",
         {
-          id: "premium-banner-" + clientId,
+          id: "premium-banner-" + id,
           className: className + " " + className + "__responsive_" + responsive
         },
         wp.element.createElement("style", {
           dangerouslySetInnerHTML: {
-            __html: ["#premium-banner-" + clientId + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + clientId + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + clientId + " .premium-banner__img.premium-banner__active {", "opacity: " + opacity / 100 + " ", "}"].join("\n")
+            __html: ["#premium-banner-" + id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + id + " .premium-banner__img.premium-banner__active {", "opacity: " + opacity / 100 + " ", "}"].join("\n")
           }
         }),
         imageURL && wp.element.createElement(
@@ -1905,8 +1921,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
       )];
     },
     save: function save(props) {
-      var clientId = props.clientId;
       var _props$attributes2 = props.attributes,
+          id = _props$attributes2.id,
           imageURL = _props$attributes2.imageURL,
           title = _props$attributes2.title,
           titleTag = _props$attributes2.titleTag,
@@ -1939,16 +1955,15 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
           target = _props$attributes2.target,
           sepColor = _props$attributes2.sepColor;
 
-
       return wp.element.createElement(
         "div",
         {
-          id: "premium-banner-" + clientId,
+          id: "premium-banner-" + id,
           className: className + " " + className + "__responsive_" + responsive
         },
         wp.element.createElement("style", {
           dangerouslySetInnerHTML: {
-            __html: ["#premium-banner-" + clientId + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + clientId + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + clientId + " .premium-banner__img:hover {", "opacity: " + opacity / 100 + " ", "}"].join("\n")
+            __html: ["#premium-banner-" + id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + id + " .premium-banner__img.premium-banner__active {", "opacity: " + opacity / 100 + " ", "}"].join("\n")
           }
         }),
         wp.element.createElement(
@@ -5893,7 +5908,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
       },
       suffixTxt: {
         type: "string",
-        default: "Prefix"
+        default: "Suffix"
       },
       suffixSize: {
         type: "number",
@@ -5912,6 +5927,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
       icon: {
         type: "string",
         default: "icon"
+      },
+      iconSpacing: {
+        type: "number",
+        default: 10
       },
       imageID: {
         type: "string"
@@ -5984,6 +6003,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
           numberColor = _props$attributes.numberColor,
           numberWeight = _props$attributes.numberWeight,
           icon = _props$attributes.icon,
+          iconSpacing = _props$attributes.iconSpacing,
           iconSize = _props$attributes.iconSize,
           iconColor = _props$attributes.iconColor,
           titleCheck = _props$attributes.titleCheck,
@@ -6122,18 +6142,18 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
               return setAttributes({ flexDir: newDir });
             }
           }),
+          ("row" === flexDir || "row-reverse" === flexDir) && wp.element.createElement(RangeControl, {
+            label: __("Spacing (PX)"),
+            value: iconSpacing,
+            onChange: function onChange(newValue) {
+              return setAttributes({ iconSpacing: newValue });
+            }
+          }),
           wp.element.createElement(ToggleControl, {
             label: __("Icon"),
             checked: iconCheck,
             onChange: function onChange(check) {
               return setAttributes({ iconCheck: check });
-            }
-          }),
-          wp.element.createElement(ToggleControl, {
-            label: __("Title"),
-            checked: titleCheck,
-            onChange: function onChange(check) {
-              return setAttributes({ titleCheck: check });
             }
           }),
           wp.element.createElement(ToggleControl, {
@@ -6149,6 +6169,104 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
             onChange: function onChange(check) {
               return setAttributes({ suffix: check });
             }
+          }),
+          wp.element.createElement(ToggleControl, {
+            label: __("Title"),
+            checked: titleCheck,
+            onChange: function onChange(check) {
+              return setAttributes({ titleCheck: check });
+            }
+          })
+        ),
+        iconCheck && wp.element.createElement(
+          PanelBody,
+          {
+            title: __("Icon"),
+            className: "premium-panel-body",
+            initialOpen: false
+          },
+          wp.element.createElement(SelectControl, {
+            label: __("Icon Type"),
+            options: ICONS,
+            value: icon,
+            onChange: function onChange(newType) {
+              return setAttributes({ icon: newType });
+            }
+          }),
+          ("" !== faIcon || "undefined" !== typeof faIcon) && "icon" === icon && wp.element.createElement(
+            "div",
+            { className: "premium-icon__sidebar_icon" },
+            wp.element.createElement("i", { className: iconClass })
+          ),
+          "icon" === icon && wp.element.createElement(
+            Fragment,
+            null,
+            wp.element.createElement(SelectControl, {
+              label: __("Icon Type"),
+              value: iconType,
+              options: TYPE,
+              onChange: function onChange(newType) {
+                return setAttributes({ iconType: newType });
+              }
+            }),
+            wp.element.createElement(TextControl, {
+              label: __("Icon Class"),
+              value: faIcon,
+              help: [__("Get icon class from"), wp.element.createElement(
+                "a",
+                {
+                  href: "fa" === iconType ? "https://fontawesome.com/v4.7.0/icons/" : "https://developer.wordpress.org/resource/dashicons/",
+                  target: "_blank"
+                },
+                "\xA0",
+                __("here")
+              ), __(" , for example: "), "fa" === iconType ? "address-book" : "dashicons-admin-site"],
+              onChange: function onChange(newIcon) {
+                return setAttributes({ faIcon: newIcon });
+              }
+            })
+          ),
+          "img" === icon && imageURL && wp.element.createElement("img", { src: imageURL, width: "100%", height: "auto" }),
+          "img" === icon && wp.element.createElement(MediaUpload, {
+            allowedTypes: ["image"],
+            onSelect: function onSelect(media) {
+              setAttributes({
+                imageID: media.id,
+                imageURL: "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url
+              });
+            },
+            type: "image",
+            value: imageID,
+            render: function render(_ref) {
+              var open = _ref.open;
+              return wp.element.createElement(
+                IconButton,
+                {
+                  label: __("Change Image"),
+                  icon: "edit",
+                  onClick: open
+                },
+                __("Change Image")
+              );
+            }
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Size (PX)"),
+            max: "200",
+            value: iconSize,
+            onChange: function onChange(newValue) {
+              return setAttributes({ iconSize: newValue });
+            }
+          }),
+          "icon" === icon && wp.element.createElement(PanelColorSettings, {
+            title: __("Colors"),
+            colorSettings: [{
+              value: iconColor,
+              onChange: function onChange(colorValue) {
+                return setAttributes({ iconColor: colorValue });
+              },
+              label: __("Icon Color")
+            }]
           })
         ),
         wp.element.createElement(
@@ -6183,62 +6301,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
             value: numberWeight,
             onChange: function onChange(newWeight) {
               return setAttributes({ numberWeight: newWeight });
-            }
-          })
-        ),
-        titleCheck && wp.element.createElement(
-          PanelBody,
-          {
-            title: __("Title"),
-            className: "premium-panel-body",
-            initialOpen: false
-          },
-          wp.element.createElement(TextControl, {
-            label: __("Title Text"),
-            value: titleTxt,
-            onChange: function onChange(value) {
-              return setAttributes({ titleTxt: value });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Font Size (PX)"),
-            value: titleSize,
-            onChange: function onChange(newValue) {
-              return setAttributes({ titleSize: newValue });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Font Weight"),
-            min: "100",
-            max: "900",
-            step: "100",
-            value: titleWeight,
-            onChange: function onChange(newWeight) {
-              return setAttributes({ titleWeight: newWeight });
-            }
-          }),
-          wp.element.createElement(PanelColorSettings, {
-            title: __("Colors"),
-            colorSettings: [{
-              value: titleColor,
-              onChange: function onChange(colorValue) {
-                return setAttributes({ titleColor: colorValue });
-              },
-              label: __("Text Color")
-            }]
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Margin Top (PX)"),
-            value: titleT,
-            onChange: function onChange(newValue) {
-              return setAttributes({ titleT: newValue });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Margin Bottom (PX)"),
-            value: titleB,
-            onChange: function onChange(newValue) {
-              return setAttributes({ titleB: newValue });
             }
           })
         ),
@@ -6340,95 +6402,60 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
             }
           })
         ),
-        iconCheck && wp.element.createElement(
+        titleCheck && wp.element.createElement(
           PanelBody,
           {
-            title: __("Icon"),
+            title: __("Title"),
             className: "premium-panel-body",
             initialOpen: false
           },
-          wp.element.createElement(SelectControl, {
-            label: __("Icon Type"),
-            options: ICONS,
-            value: icon,
-            onChange: function onChange(newType) {
-              return setAttributes({ icon: newType });
-            }
-          }),
-          ("" !== faIcon || "undefined" !== typeof faIcon) && "icon" === icon && wp.element.createElement(
-            "div",
-            { className: "premium-icon__sidebar_icon" },
-            wp.element.createElement("i", { className: iconClass })
-          ),
-          "icon" === icon && wp.element.createElement(
-            Fragment,
-            null,
-            wp.element.createElement(SelectControl, {
-              label: __("Icon Type"),
-              value: iconType,
-              options: TYPE,
-              onChange: function onChange(newType) {
-                return setAttributes({ iconType: newType });
-              }
-            }),
-            wp.element.createElement(TextControl, {
-              label: __("Icon Class"),
-              value: faIcon,
-              help: [__("Get icon class from"), wp.element.createElement(
-                "a",
-                {
-                  href: "fa" === iconType ? "https://fontawesome.com/v4.7.0/icons/" : "https://developer.wordpress.org/resource/dashicons/",
-                  target: "_blank"
-                },
-                "\xA0",
-                __("here")
-              ), __(" , for example: "), "fa" === iconType ? "address-book" : "dashicons-admin-site"],
-              onChange: function onChange(newIcon) {
-                return setAttributes({ faIcon: newIcon });
-              }
-            })
-          ),
-          "img" === icon && imageURL && wp.element.createElement("img", { src: imageURL, width: "100%", height: "auto" }),
-          "img" === icon && wp.element.createElement(MediaUpload, {
-            allowedTypes: ["image"],
-            onSelect: function onSelect(media) {
-              setAttributes({
-                imageID: media.id,
-                imageURL: "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url
-              });
-            },
-            type: "image",
-            value: imageID,
-            render: function render(_ref) {
-              var open = _ref.open;
-              return wp.element.createElement(
-                IconButton,
-                {
-                  label: __("Change Image"),
-                  icon: "edit",
-                  onClick: open
-                },
-                __("Change Image")
-              );
+          wp.element.createElement(TextControl, {
+            label: __("Title Text"),
+            value: titleTxt,
+            onChange: function onChange(value) {
+              return setAttributes({ titleTxt: value });
             }
           }),
           wp.element.createElement(RangeControl, {
-            label: __("Size (PX)"),
-            max: "200",
-            value: iconSize,
+            label: __("Font Size (PX)"),
+            value: titleSize,
             onChange: function onChange(newValue) {
-              return setAttributes({ iconSize: newValue });
+              return setAttributes({ titleSize: newValue });
             }
           }),
-          "icon" === icon && wp.element.createElement(PanelColorSettings, {
+          wp.element.createElement(RangeControl, {
+            label: __("Font Weight"),
+            min: "100",
+            max: "900",
+            step: "100",
+            value: titleWeight,
+            onChange: function onChange(newWeight) {
+              return setAttributes({ titleWeight: newWeight });
+            }
+          }),
+          wp.element.createElement(PanelColorSettings, {
             title: __("Colors"),
             colorSettings: [{
-              value: iconColor,
+              value: titleColor,
               onChange: function onChange(colorValue) {
-                return setAttributes({ iconColor: colorValue });
+                return setAttributes({ titleColor: colorValue });
               },
-              label: __("Icon Color")
+              label: __("Text Color")
             }]
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Margin Top (PX)"),
+            value: titleT,
+            onChange: function onChange(newValue) {
+              return setAttributes({ titleT: newValue });
+            }
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Margin Bottom (PX)"),
+            value: titleB,
+            onChange: function onChange(newValue) {
+              return setAttributes({ titleB: newValue });
+            }
           })
         )
       ), wp.element.createElement(
@@ -6453,6 +6480,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
           {
             className: className + "__icon_wrap",
             style: {
+              marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
+              marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
               alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
             }
           },
@@ -6471,21 +6500,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
             }
           })
         ),
-        titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && wp.element.createElement(
-          "h3",
-          {
-            className: className + "__title",
-            style: {
-              fontSize: titleSize + "px",
-              marginTop: titleT + "px",
-              marginBottom: titleB + "px",
-              color: titleColor,
-              fontWeight: titleWeight,
-              alignSelf: selfAlign
-            }
-          },
-          titleTxt
-        ),
         wp.element.createElement(
           "div",
           {
@@ -6494,20 +6508,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
               alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
             }
           },
-          titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && wp.element.createElement(
-            "h3",
-            {
-              className: className + "__title",
-              style: {
-                fontSize: titleSize + "px",
-                marginTop: titleT + "px",
-                marginBottom: titleB + "px",
-                color: titleColor,
-                fontWeight: titleWeight
-              }
-            },
-            titleTxt
-          ),
           wp.element.createElement(
             "div",
             { className: className + "__desc" },
@@ -6549,7 +6549,36 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
               },
               suffixTxt
             )
+          ),
+          titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && wp.element.createElement(
+            "h3",
+            {
+              className: className + "__title",
+              style: {
+                fontSize: titleSize + "px",
+                marginTop: titleT + "px",
+                marginBottom: titleB + "px",
+                color: titleColor,
+                fontWeight: titleWeight
+              }
+            },
+            titleTxt
           )
+        ),
+        titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && wp.element.createElement(
+          "h3",
+          {
+            className: className + "__title",
+            style: {
+              fontSize: titleSize + "px",
+              marginTop: titleT + "px",
+              marginBottom: titleB + "px",
+              color: titleColor,
+              fontWeight: titleWeight,
+              alignSelf: selfAlign
+            }
+          },
+          titleTxt
         )
       )];
     },
@@ -6577,6 +6606,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
           suffixGap = _props$attributes2.suffixGap,
           iconCheck = _props$attributes2.iconCheck,
           icon = _props$attributes2.icon,
+          iconSpacing = _props$attributes2.iconSpacing,
           iconType = _props$attributes2.iconType,
           imageURL = _props$attributes2.imageURL,
           iconSize = _props$attributes2.iconSize,
@@ -6604,8 +6634,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
         iconCheck && wp.element.createElement(
           "div",
           {
-            className: className + "__icon",
+            className: className + "__icon_wrap",
             style: {
+              marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
+              marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
               alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
             }
           },
@@ -6624,21 +6656,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
             }
           })
         ),
-        titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && wp.element.createElement(
-          "h3",
-          {
-            className: className + "__title",
-            style: {
-              fontSize: titleSize + "px",
-              marginTop: titleT + "px",
-              marginBottom: titleB + "px",
-              color: titleColor,
-              fontWeight: titleWeight,
-              alignSelf: selfAlign
-            }
-          },
-          titleTxt
-        ),
         wp.element.createElement(
           "div",
           {
@@ -6647,20 +6664,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
               alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
             }
           },
-          titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && wp.element.createElement(
-            "h3",
-            {
-              className: className + "__title",
-              style: {
-                fontSize: titleSize + "px",
-                marginTop: titleT + "px",
-                marginBottom: titleB + "px",
-                color: titleColor,
-                fontWeight: titleWeight
-              }
-            },
-            titleTxt
-          ),
           wp.element.createElement(
             "div",
             { className: className + "__desc" },
@@ -6702,7 +6705,36 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* countUp */]) {
               },
               suffixTxt
             )
+          ),
+          titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && wp.element.createElement(
+            "h3",
+            {
+              className: className + "__title",
+              style: {
+                fontSize: titleSize + "px",
+                marginTop: titleT + "px",
+                marginBottom: titleB + "px",
+                color: titleColor,
+                fontWeight: titleWeight
+              }
+            },
+            titleTxt
           )
+        ),
+        titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && wp.element.createElement(
+          "h3",
+          {
+            className: className + "__title",
+            style: {
+              fontSize: titleSize + "px",
+              marginTop: titleT + "px",
+              marginBottom: titleB + "px",
+              color: titleColor,
+              fontWeight: titleWeight,
+              alignSelf: selfAlign
+            }
+          },
+          titleTxt
         )
       );
     }
