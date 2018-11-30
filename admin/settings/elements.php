@@ -15,7 +15,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
 
         protected $slug = 'premium-gutenberg';
 
-        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button'];
+        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button', 'container'];
 
         private $pbg_default;
 
@@ -179,10 +179,10 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th><?php echo __('Premium Dual Heading', 'premium-gutenberg'); ?></th>
+                                    <th><?php echo __('Premium Container', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
-                                            <input type="checkbox" id="dualheading" name="dualHeading" <?php checked(1, $this->pbg_get_settings['dualHeading'], true) ?>>
+                                            <input type="checkbox" id="maps" name="container" <?php checked(1, $this->pbg_get_settings['container'], true) ?>>
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
@@ -195,6 +195,13 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                     </td>
                                 </tr>
                                 <tr>
+                                    <th><?php echo __('Premium Dual Heading', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="dualheading" name="dualHeading" <?php checked(1, $this->pbg_get_settings['dualHeading'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
                                     <th><?php echo __('Premium Icon', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -202,6 +209,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                </tr>
+                                <tr>
                                     <th><?php echo __('Premium Maps', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -209,8 +218,6 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-                                </tr>
-                                <tr>
                                     <th><?php echo __('Premium Pricing Table', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -218,6 +225,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                </tr>
+                                <tr>
                                     <th><?php echo __('Premium Testimonials', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -281,6 +290,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                 'countUp'       => intval( $settings['countUp'] ? 1 : 0 ),
                 'icon'          => intval( $settings['icon'] ? 1 : 0 ),
                 'button'        => intval( $settings['button'] ? 1 : 0 ),
+                'container'     => intval( $settings['container'] ? 1 : 0 ),
+                
             );
 
             update_option( 'pbg_settings', $this->pbg_settings );

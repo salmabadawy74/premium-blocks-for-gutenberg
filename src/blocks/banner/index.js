@@ -201,55 +201,55 @@ if (banner) {
       const ALIGNS = [
         {
           value: "flex-start",
-          label: "Top"
+          label: __("Top")
         },
         {
           value: "center",
-          label: "Middle"
+          label: __("Middle")
         },
         {
           value: "flex-end",
-          label: "Bottom"
+          label: __("Bottom")
         },
         {
           value: "inherit",
-          label: "Full"
+          label: __("Full")
         }
       ];
       const EFFECTS = [
         {
           value: "effect1",
-          label: "Effect 1"
+          label: __("Effect 1")
         },
         {
           value: "effect2",
-          label: "Effect 2"
+          label: __("Effect 2")
         },
         {
           value: "effect3",
-          label: "Effect 3"
+          label: __("Effect 3")
         },
         {
           value: "effect4",
-          label: "Effect 4"
+          label: __("Effect 4")
         },
         {
           value: "effect5",
-          label: "Effect 5"
+          label: __("Effect 5")
         },
         {
           value: "effect6",
-          label: "Effect 6"
+          label: __("Effect 6")
         }
       ];
       const HOVER = [
         {
           value: "none",
-          label: "None"
+          label: __("None")
         },
         {
           value: "zoomin",
-          label: "Zoom In"
+          label: __("Zoom In")
         },
         {
           value: "zoomout",
@@ -257,59 +257,33 @@ if (banner) {
         },
         {
           value: "scale",
-          label: "Scale"
+          label: __("Scale")
         },
         {
           value: "gray",
-          label: "Gray Scale"
+          label: __("Gray Scale")
         },
         {
           value: "blur",
-          label: "Blur"
+          label: __("Blur")
         },
         {
           value: "bright",
-          label: "Bright"
+          label: __("Bright")
         },
         {
           value: "sepia",
-          label: "Sepia"
-        }
-      ];
-      const BORDER = [
-        {
-          value: "none",
-          label: "None"
-        },
-        {
-          value: "solid",
-          label: "Solid"
-        },
-        {
-          value: "double",
-          label: "Double"
-        },
-        {
-          value: "dotted",
-          label: "Dotted"
-        },
-        {
-          value: "dashed",
-          label: "Dashed"
-        },
-        {
-          value: "groove",
-          label: "Groove"
+          label: __("Sepia")
         }
       ];
       const HEIGHT = [
         {
           value: "default",
-          label: "Default"
+          label: __("Default")
         },
         {
           value: "custom",
-          label: "Custom"
+          label: __("Custom")
         }
       ];
       setAttributes({ id: blockID });

@@ -7,7 +7,8 @@ export const {
   testimonial,
   countUp,
   icon,
-  button
+  button,
+  container
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys

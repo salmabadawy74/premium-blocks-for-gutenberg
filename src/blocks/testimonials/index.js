@@ -171,29 +171,29 @@ if (testimonial) {
       const ALIGNS = [
         {
           value: "left",
-          label: "Left"
+          label: __("Left")
         },
         {
           value: "center",
-          label: "Center"
+          label: __("Center")
         },
         {
           value: "right",
-          label: "Right"
+          label: __("Right")
         }
       ];
       const RADIUS = [
         {
           value: "0",
-          label: "Square"
+          label: __("Square")
         },
         {
           value: "50%",
-          label: "Circle"
+          label: __("Circle")
         },
         {
           value: "15px",
-          label: "Rounded"
+          label: __("Rounded")
         }
       ];
 

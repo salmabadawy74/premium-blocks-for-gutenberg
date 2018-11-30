@@ -196,19 +196,19 @@ if (maps) {
       const TYPES = [
         {
           value: "roadmap",
-          label: "Road Map"
+          label: __("Road Map")
         },
         {
           value: "satellite",
-          label: "Satellite"
+          label: __("Satellite")
         },
         {
           value: "terrain",
-          label: "Terrain"
+          label: __("Terrain")
         },
         {
           value: "hybrid",
-          label: "Hybrid"
+          label: __("Hybrid")
         }
       ];
 

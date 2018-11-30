@@ -279,11 +279,11 @@ if (dualHeading) {
       const DISPLAY = [
         {
           value: "inline",
-          label: "Inline"
+          label: __("Inline")
         },
         {
           value: "block",
-          label: "Block"
+          label: __("Block")
         }
       ];
       return [

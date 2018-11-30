@@ -6,3 +6,4 @@ import "./blocks/testimonials";
 import "./blocks/count-up";
 import "./blocks/icon";
 import "./blocks/button";
+import "./blocks/container";

@@ -546,81 +546,72 @@ if (pricingTable) {
       const ALIGNS = [
         {
           value: "flex-start",
-          label: "Top"
+          label: __("Top")
         },
         {
           value: "center",
-          label: "Middle"
+          label: __("Middle")
         },
         {
           value: "flex-end",
-          label: "Bottom"
+          label: __("Bottom")
         }
       ];
       const PRICE = [
         {
           value: "slash",
-          label: "Slashed Price"
+          label: __("Slashed Price")
         },
         {
           value: "curr",
-          label: "Currency"
+          label: __("Currency")
         },
         {
           value: "price",
-          label: "Price"
+          label: __("Price")
         },
         {
           value: "divider",
-          label: "Divider"
+          label: __("Divider")
         },
         {
           value: "duration",
-          label: "Duration"
+          label: __("Duration")
         }
       ];
       const TYPE = [
         {
           value: "none",
-          label: "None"
+          label: __("None")
         },
         {
           value: "check",
-          label: "Check Mark"
+          label: __("Check Mark")
         },
         {
           value: "disc",
-          label: "Filled Circle"
+          label: __("Filled Circle")
         },
         {
           value: "circle",
-          label: "Outline Circle"
+          label: __("Outline Circle")
         },
         {
           value: "square",
-          label: "Square"
+          label: __("Square")
         }
       ];
       const POSITION = [
         {
           value: "right",
-          label: "Right"
+          label: __("Right")
         },
         {
           value: "left",
-          label: "Left"
+          label: __("Left")
         }
       ];
-      const STYLE = [
-        {
-          value: "normal",
-          label: "Normal"
-        },
-        {
-          value: "italic",
-          label: "Italic"
-        }
-      ];
+
       return [
         isSelected && (
           <BlockControls key="controls">

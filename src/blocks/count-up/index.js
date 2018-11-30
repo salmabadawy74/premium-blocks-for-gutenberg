@@ -213,29 +213,29 @@ if (countUp) {
       const ICONS = [
         {
           value: "icon",
-          label: "Icon"
+          label: __("Icon")
         },
         {
           value: "img",
-          label: "Image"
+          label: __("Image")
         }
       ];
       const DIRECTION = [
         {
           value: "row",
-          label: "Row"
+          label: __("Row")
         },
         {
           value: "row-reverse",
-          label: "Reversed Row"
+          label: __("Reversed Row")
         },
         {
           value: "column",
-          label: "Column"
+          label: __("Column")
         },
         {
           value: "column-reverse",
-          label: "Reversed Column"
+          label: __("Reversed Column")
         }
       ];
       const TYPE = [
