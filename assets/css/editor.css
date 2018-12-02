@@ -146,3 +146,8 @@
 .premium-icon__sidebar_icon i {
   font-size: 35px;
 }
+/**************** Premium Container ********************/
+/*******************************************************/
+.premium-container__content_wrap .editor-inner-blocks {
+  width: 100%;
+}

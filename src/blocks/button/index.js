@@ -16,6 +16,7 @@ if (button) {
     RangeControl,
     ToggleControl
   } = wp.components;
+
   const {
     InspectorControls,
     PanelColorSettings,
@@ -24,7 +25,6 @@ if (button) {
     RichText,
     URLInput
   } = wp.editor;
-  const { Fragment } = wp.element;
 
   registerBlockType("premium/button", {
     title: __("Button"),
@@ -95,21 +95,6 @@ if (button) {
       textLine: {
         type: "number"
       },
-      iconCheck: {
-        type: "boolean"
-      },
-      iconType: {
-        type: "string",
-        default: "dash"
-      },
-      selectedIcon: {
-        type: "string",
-        default: "dashicons-admin-site"
-      },
-      iconSize: {
-        type: "number",
-        default: 50
-      },
       borderType: {
         type: "string",
         default: "none"
@@ -141,12 +126,16 @@ if (button) {
       shadowVertical: {
         type: "number",
         default: "0"
+      },
+      id: {
+        type: "string"
       }
     },
     edit: props => {
-      const { isSelected, setAttributes, clientId } = props;
+      const { isSelected, setAttributes, clientId: blockId } = props;
 
       const {
+        id,
         btnText,
         btnSize,
         btnAlign,
@@ -173,14 +162,8 @@ if (button) {
         shadowColor,
         shadowHorizontal,
         shadowVertical,
-        padding,
-        iconType,
-        selectedIcon
+        padding
       } = props.attributes;
-      let iconClass =
-        "fa" === iconType
-          ? `fa fa-${selectedIcon}`
-          : `dashicons ${selectedIcon}`;
 
       const SIZE = [
         {
@@ -280,6 +263,21 @@ if (button) {
           label: __("Radial")
         }
       ];
+      const onChangeHover = newValue => {
+        props.setAttributes({ effect: newValue });
+        switch (newValue) {
+          case "slide":
+            props.setAttributes({ effectDir: "top" });
+            break;
+          case "shutter":
+            props.setAttributes({ effectDir: "shutouthor" });
+            break;
+          case "radial":
+            props.setAttributes({ effectDir: "radialin" });
+            break;
+        }
+      };
+      setAttributes({ id: blockId });
       return [
         isSelected && "block" != btnSize && (
           <BlockControls key="controls">
@@ -300,14 +298,14 @@ if (button) {
                 options={EFFECTS}
                 label={__("Hover Effect")}
                 value={effect}
-                onChange={newSize => setAttributes({ effect: newSize })}
+                onChange={onChangeHover}
               />
               {"slide" === effect && (
                 <SelectControl
                   options={DIRECTION}
                   label={__("Direction")}
                   value={effectDir}
-                  onChange={newSize => setAttributes({ effectDir: newSize })}
+                  onChange={newValue => setAttributes({ effectDir: newValue })}
                 />
               )}
               {"shutter" === effect && (
@@ -315,7 +313,7 @@ if (button) {
                   options={SHUTTER}
                   label={__("Shutter Direction")}
                   value={effectDir}
-                  onChange={newSize => setAttributes({ effectDir: newSize })}
+                  onChange={newValue => setAttributes({ effectDir: newValue })}
                 />
               )}
               {"radial" === effect && (
@@ -323,7 +321,7 @@ if (button) {
                   options={RADIAL}
                   label={__("Style")}
                   value={effectDir}
-                  onChange={newSize => setAttributes({ effectDir: newSize })}
+                  onChange={newValue => setAttributes({ effectDir: newValue })}
                 />
               )}
               <SelectControl
@@ -478,22 +476,22 @@ if (button) {
           </InspectorControls>
         ),
         <div
-          id={`${className}-wrap-${clientId}`}
+          id={`${className}-wrap-${id}`}
           className={`${className}__wrap ${className}__${effect} ${className}__${effectDir}`}
           style={{ textAlign: btnAlign }}
         >
           <style
             dangerouslySetInnerHTML={{
               __html: [
-                `#premium-button-wrap-${clientId} .premium-button:hover {`,
+                `#premium-button-wrap-${id} .premium-button:hover {`,
                 `color: ${textHoverColor} !important;`,
                 "}",
-                `#premium-button-wrap-${clientId}.premium-button__none .premium-button:hover {`,
+                `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
                 `background-color: ${backHoverColor} !important;`,
                 "}",
-                `#premium-button-wrap-${clientId}.premium-button__slide .premium-button::before,`,
-                `#premium-button-wrap-${clientId}.premium-button__shutter .premium-button::before,`,
-                `#premium-button-wrap-${clientId}.premium-button__radial .premium-button::before {`,
+                `#premium-button-wrap-${id}.premium-button__slide .premium-button::before,`,
+                `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
+                `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
                 `background-color: ${slideColor}`,
                 "}"
               ].join("\n")
@@ -529,8 +527,8 @@ if (button) {
       ];
     },
     save: props => {
-      const { clientId } = props;
       const {
+        id,
         btnText,
         btnSize,
         btnAlign,
@@ -561,22 +559,22 @@ if (button) {
       } = props.attributes;
       return (
         <div
-          id={`${className}-wrap-${clientId}`}
+          id={`${className}-wrap-${id}`}
           className={`${className}__wrap ${className}__${effect} ${className}__${effectDir}`}
           style={{ textAlign: btnAlign }}
         >
           <style
             dangerouslySetInnerHTML={{
               __html: [
-                `#premium-button-wrap-${clientId} .premium-button:hover {`,
+                `#premium-button-wrap-${id} .premium-button:hover {`,
                 `color: ${textHoverColor} !important;`,
                 "}",
-                `#premium-button-wrap-${clientId}.premium-button__none .premium-button:hover {`,
+                `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
                 `background-color: ${backHoverColor} !important;`,
                 "}",
-                `#premium-button-wrap-${clientId}.premium-button__slide .premium-button::before,`,
-                `#premium-button-wrap-${clientId}.premium-button__shutter .premium-button::before,`,
-                `#premium-button-wrap-${clientId}.premium-button__radial .premium-button::before {`,
+                `#premium-button-wrap-${id}.premium-button__slide .premium-button::before,`,
+                `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
+                `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
                 `background-color: ${slideColor}`,
                 "}"
               ].join("\n")

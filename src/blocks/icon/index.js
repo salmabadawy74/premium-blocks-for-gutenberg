@@ -200,7 +200,9 @@ if (icon) {
       } = props.attributes;
       let iconClass =
         "fa" === iconType
-          ? `fa fa-${selectedIcon}`
+          ? `${selectedIcon}`.startsWith("fa-")
+            ? `fa ${selectedIcon}`
+            : `fa fa-${selectedIcon}`
           : `dashicons ${selectedIcon}`;
       const EFFECTS = [
         {

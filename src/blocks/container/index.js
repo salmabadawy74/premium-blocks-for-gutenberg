@@ -1,6 +1,8 @@
 import { container } from "../settings";
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
+import PremiumMargin from "../../components/premium-margin";
+import PremiumBoxShadow from "../../components/premium-box-shadow";
 
 if (container) {
   const className = "premium-container";
@@ -42,9 +44,20 @@ if (container) {
         type: "string",
         default: "center"
       },
+      height: {
+        type: "string",
+        default: "min"
+      },
       innerWidth: {
         type: "number",
         default: 100
+      },
+      minHeight: {
+        type: "number"
+      },
+      vPos: {
+        type: "string",
+        default: "top"
       },
       color: {
         type: "string"
@@ -91,6 +104,12 @@ if (container) {
       marginBottom: {
         type: "number"
       },
+      marginLeft: {
+        type: "number"
+      },
+      marginRight: {
+        type: "number"
+      },
       paddingTop: {
         type: "number"
       },
@@ -102,6 +121,25 @@ if (container) {
       },
       paddingLeft: {
         type: "number"
+      },
+      shadowColor: {
+        type: "string"
+      },
+      shadowBlur: {
+        type: "number",
+        default: "0"
+      },
+      shadowHorizontal: {
+        type: "number",
+        default: "0"
+      },
+      shadowVertical: {
+        type: "number",
+        default: "0"
+      },
+      shadowPosition: {
+        type: "string",
+        default: ""
       }
     },
     supports: {
@@ -114,6 +152,9 @@ if (container) {
       const {
         horAlign,
         innerWidth,
+        minHeight,
+        vPos,
+        height,
         color,
         imageID,
         imageURL,
@@ -127,11 +168,28 @@ if (container) {
         borderRadius,
         marginTop,
         marginBottom,
+        marginLeft,
+        marginRight,
         paddingTop,
         paddingRight,
         paddingBottom,
-        paddingLeft
+        paddingLeft,
+        shadowBlur,
+        shadowColor,
+        shadowHorizontal,
+        shadowVertical,
+        shadowPosition
       } = props.attributes;
+      const HEIGHT = [
+        {
+          value: "fit",
+          label: __("Fit to Screen")
+        },
+        {
+          value: "min",
+          label: __("Min Height")
+        }
+      ];
       const POSITION = [
         {
           value: "top left",
@@ -202,6 +260,20 @@ if (container) {
           label: __("Contain")
         }
       ];
+      const VPOSITION = [
+        {
+          value: "top",
+          label: __("Top")
+        },
+        {
+          value: "middle",
+          label: __("Middle")
+        },
+        {
+          value: "bottom",
+          label: __("Bottom")
+        }
+      ];
       return [
         isSelected && (
           <BlockControls key="controls">
@@ -222,6 +294,27 @@ if (container) {
                 label={__("Content Width (%)")}
                 value={innerWidth}
                 onChange={newValue => setAttributes({ innerWidth: newValue })}
+              />
+              <SelectControl
+                label={__("Height")}
+                options={HEIGHT}
+                value={height}
+                onChange={newValue => setAttributes({ height: newValue })}
+              />
+              {"min" === height && (
+                <RangeControl
+                  label={__("Min Height (PX)")}
+                  value={minHeight}
+                  min="1"
+                  max="800"
+                  onChange={newValue => setAttributes({ minHeight: newValue })}
+                />
+              )}
+              <SelectControl
+                label={__("Content Position")}
+                options={VPOSITION}
+                value={vPos}
+                onChange={newValue => setAttributes({ vPos: newValue })}
               />
             </PanelBody>
             <PanelBody
@@ -335,42 +428,94 @@ if (container) {
                 }
               />
             </PanelBody>
+            <PremiumBoxShadow
+              color={shadowColor}
+              blur={shadowBlur}
+              horizontal={shadowHorizontal}
+              vertical={shadowVertical}
+              position={shadowPosition}
+              onChangeColor={newColor =>
+                setAttributes({
+                  shadowColor: newColor === undefined ? "transparent" : newColor
+                })
+              }
+              onChangeBlur={newBlur =>
+                setAttributes({
+                  shadowBlur: newBlur === undefined ? 0 : newBlur
+                })
+              }
+              onChangehHorizontal={newValue =>
+                setAttributes({
+                  shadowHorizontal: newValue === undefined ? 0 : newValue
+                })
+              }
+              onChangeVertical={newValue =>
+                setAttributes({
+                  shadowVertical: newValue === undefined ? 0 : newValue
+                })
+              }
+              onChangePosition={newValue =>
+                setAttributes({
+                  shadowPosition: newValue === undefined ? 0 : newValue
+                })
+              }
+            />
             <PanelBody
               title={__("Spacings")}
               className="premium-panel-body"
               initialOpen={false}
             >
-              <RangeControl
-                label={__("Margin Top (PX)")}
-                value={marginTop}
-                onChange={newValue => setAttributes({ marginTop: newValue })}
-              />
-              <RangeControl
-                label={__("Margin Bottom (PX)")}
-                value={marginBottom}
-                onChange={newValue => setAttributes({ marginBottom: newValue })}
-              />
-              <RangeControl
-                label={__("Padding Top (PX)")}
-                value={paddingTop}
-                onChange={newValue => setAttributes({ paddingTop: newValue })}
-              />
-              <RangeControl
-                label={__("Padding Right (PX)")}
-                value={paddingRight}
-                onChange={newValue => setAttributes({ paddingRight: newValue })}
-              />
-              <RangeControl
-                label={__("Padding Bottom (PX)")}
-                value={paddingBottom}
-                onChange={newValue =>
-                  setAttributes({ paddingBottom: newValue })
+              <PremiumMargin
+                marginTop={marginTop}
+                marginRight={marginRight}
+                marginBottom={marginBottom}
+                marginLeft={marginLeft}
+                onChangeMarTop={value =>
+                  setAttributes({
+                    marginTop: value === undefined ? 0 : value
+                  })
+                }
+                onChangeMarRight={value =>
+                  setAttributes({
+                    marginRight: value === undefined ? 0 : value
+                  })
+                }
+                onChangeMarBottom={value =>
+                  setAttributes({
+                    marginBottom: value === undefined ? 0 : value
+                  })
+                }
+                onChangeMarLeft={value =>
+                  setAttributes({
+                    marginLeft: value === undefined ? 0 : value
+                  })
                 }
               />
-              <RangeControl
-                label={__("Padding Left (PX)")}
-                value={paddingLeft}
-                onChange={newValue => setAttributes({ paddingLeft: newValue })}
+              <PremiumPadding
+                paddingTop={paddingTop}
+                paddingRight={paddingRight}
+                paddingBottom={paddingBottom}
+                paddingLeft={paddingLeft}
+                onChangePadTop={value =>
+                  setAttributes({
+                    paddingTop: value === undefined ? 0 : value
+                  })
+                }
+                onChangePadRight={value =>
+                  setAttributes({
+                    paddingRight: value === undefined ? 0 : value
+                  })
+                }
+                onChangePadBottom={value =>
+                  setAttributes({
+                    paddingBottom: value === undefined ? 0 : value
+                  })
+                }
+                onChangePadLeft={value =>
+                  setAttributes({
+                    paddingLeft: value === undefined ? 0 : value
+                  })
+                }
               />
             </PanelBody>
           </InspectorControls>
@@ -379,6 +524,7 @@ if (container) {
           className={className}
           style={{
             textAlign: horAlign,
+            height: "fit" === height ? "100vh" : minHeight,
             backgroundColor: color,
             border: borderType,
             borderWidth: borderWidth + "px",
@@ -391,14 +537,17 @@ if (container) {
             backgroundAttachment: fixed ? "fixed" : "unset",
             marginTop: marginTop + "px",
             marginBottom: marginBottom + "px",
+            marginLeft: marginLeft + "px",
+            marginRight: marginRight + "px",
             paddingTop: paddingTop + "px",
             paddingBottom: paddingBottom + "px",
             paddingLeft: paddingLeft + "px",
-            paddingRight: paddingRight + "px"
+            paddingRight: paddingRight + "px",
+            boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
           }}
         >
           <div
-            className={`${className}__content_wrap`}
+            className={`${className}__content_wrap ${className}__${vPos}`}
             style={{ width: innerWidth + "%" }}
           >
             <InnerBlocks template={CONTENT} />
@@ -410,6 +559,9 @@ if (container) {
       const {
         horAlign,
         innerWidth,
+        height,
+        vPos,
+        minHeight,
         color,
         imageURL,
         fixed,
@@ -422,16 +574,24 @@ if (container) {
         borderRadius,
         marginTop,
         marginBottom,
+        marginLeft,
+        marginRight,
         paddingTop,
         paddingRight,
         paddingBottom,
-        paddingLeft
+        paddingLeft,
+        shadowBlur,
+        shadowColor,
+        shadowHorizontal,
+        shadowVertical,
+        shadowPosition
       } = props.attributes;
       return (
         <div
           className={className}
           style={{
             textAlign: horAlign,
+            height: "fit" === height ? "100vh" : minHeight,
             backgroundColor: color,
             border: borderType,
             borderWidth: borderWidth + "px",
@@ -445,13 +605,16 @@ if (container) {
             marginTop: marginTop + "px",
             marginBottom: marginBottom + "px",
             paddingTop: paddingTop + "px",
+            marginLeft: marginLeft + "px",
+            marginRight: marginRight + "px",
             paddingBottom: paddingBottom + "px",
             paddingLeft: paddingLeft + "px",
-            paddingRight: paddingRight + "px"
+            paddingRight: paddingRight + "px",
+            boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
           }}
         >
           <div
-            className={`${className}__content_wrap`}
+            className={`${className}__content_wrap ${className}__${vPos}`}
             style={{ width: innerWidth + "%" }}
           >
             <InnerBlocks.Content />
