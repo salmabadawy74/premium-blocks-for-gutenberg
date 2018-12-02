@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -323,14 +323,73 @@ function PremiumTextShadow(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumPadding;
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var RangeControl = wp.components.RangeControl;
+
+
+function PremiumPadding(props) {
+  var paddingTop = props.paddingTop,
+      paddingRight = props.paddingRight,
+      paddingBottom = props.paddingBottom,
+      paddingLeft = props.paddingLeft,
+      _props$onChangePadTop = props.onChangePadTop,
+      onChangePadTop = _props$onChangePadTop === undefined ? function () {} : _props$onChangePadTop,
+      _props$onChangePadRig = props.onChangePadRight,
+      onChangePadRight = _props$onChangePadRig === undefined ? function () {} : _props$onChangePadRig,
+      _props$onChangePadBot = props.onChangePadBottom,
+      onChangePadBottom = _props$onChangePadBot === undefined ? function () {} : _props$onChangePadBot,
+      _props$onChangePadLef = props.onChangePadLeft,
+      onChangePadLeft = _props$onChangePadLef === undefined ? function () {} : _props$onChangePadLef;
+
+  return wp.element.createElement(
+    Fragment,
+    null,
+    wp.element.createElement(RangeControl, {
+      label: __("Padding Top (PX)"),
+      value: paddingTop,
+      min: "0",
+      max: "150",
+      onChange: onChangePadTop
+    }),
+    wp.element.createElement(RangeControl, {
+      label: __("Padding Right (PX)"),
+      value: paddingRight,
+      min: "0",
+      max: "150",
+      onChange: onChangePadRight
+    }),
+    wp.element.createElement(RangeControl, {
+      label: __("Padding Bottom (PX)"),
+      value: paddingBottom,
+      min: "0",
+      max: "150",
+      onChange: onChangePadBottom
+    }),
+    wp.element.createElement(RangeControl, {
+      label: __("Padding Left (PX)"),
+      value: paddingLeft,
+      min: "0",
+      max: "150",
+      onChange: onChangePadLeft
+    })
+  );
+}
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_dual_heading__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_pricing_table__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_maps__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_testimonials__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_count_up__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_dual_heading__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_pricing_table__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_maps__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_testimonials__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_count_up__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_button__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_container__ = __webpack_require__(19);
 
@@ -344,7 +403,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1242,7 +1301,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* dualHeading */]) {
 }
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2038,7 +2097,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
 }
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4187,7 +4246,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
 }
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4214,12 +4273,15 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* maps */]) {
       RangeControl = _wp$components.RangeControl,
       TextControl = _wp$components.TextControl,
       TextareaControl = _wp$components.TextareaControl,
-      CheckboxControl = _wp$components.CheckboxControl;
+      CheckboxControl = _wp$components.CheckboxControl,
+      ToggleControl = _wp$components.ToggleControl;
   var _wp$editor = wp.editor,
       InspectorControls = _wp$editor.InspectorControls,
       MediaUpload = _wp$editor.MediaUpload,
       PanelColorSettings = _wp$editor.PanelColorSettings;
-  var Component = wp.element.Component;
+  var _wp$element = wp.element,
+      Component = _wp$element.Component,
+      Fragment = _wp$element.Fragment;
 
 
   var isMapUpdated = null;
@@ -4286,6 +4348,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* maps */]) {
             centerLng = _props$attributes.centerLng,
             centerLat = _props$attributes.centerLat,
             markerTitle = _props$attributes.markerTitle,
+            markerOpen = _props$attributes.markerOpen,
             markerDesc = _props$attributes.markerDesc,
             mapMarker = _props$attributes.mapMarker,
             markerIconUrl = _props$attributes.markerIconUrl,
@@ -4352,6 +4415,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* maps */]) {
             icon: markerCustom ? markerIconUrl : ""
           });
 
+          if (markerOpen) {
+            infoWindow.open(map, marker);
+          }
+
           google.maps.event.addListener(marker, "click", function () {
             infoWindow.open(map, marker);
           });
@@ -4379,6 +4446,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* maps */]) {
             centerLat = _props$attributes2.centerLat,
             markerDesc = _props$attributes2.markerDesc,
             markerTitle = _props$attributes2.markerTitle,
+            markerOpen = _props$attributes2.markerOpen,
             mapMarker = _props$attributes2.mapMarker,
             markerIconUrl = _props$attributes2.markerIconUrl,
             markerIconId = _props$attributes2.markerIconId,
@@ -4454,91 +4522,102 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* maps */]) {
               },
               help: __("Disable marker is applied on page reload")
             }),
-            mapMarker && wp.element.createElement(TextControl, {
-              label: __("Marker Title"),
-              value: markerTitle,
-              onChange: function onChange(newText) {
-                return setAttributes({ markerTitle: newText });
-              }
-            }),
-            mapMarker && wp.element.createElement(TextareaControl, {
-              label: __("Marker Description"),
-              value: markerDesc,
-              onChange: function onChange(newText) {
-                return setAttributes({ markerDesc: newText });
-              }
-            }),
-            mapMarker && wp.element.createElement(RangeControl, {
-              label: __("Spacing (PX)"),
-              value: gapBetween,
-              min: "10",
-              max: "80",
-              onChange: function onChange(newSize) {
-                return setAttributes({ gapBetween: newSize });
-              }
-            }),
-            mapMarker && wp.element.createElement(Toolbar, {
-              controls: ALIGNS.map(function (align) {
-                return {
-                  icon: "editor-align" + align,
-                  isActive: align === boxAlign,
-                  onClick: function onClick() {
-                    return setAttributes({ boxAlign: align });
-                  }
-                };
+            mapMarker && wp.element.createElement(
+              Fragment,
+              null,
+              wp.element.createElement(TextControl, {
+                label: __("Marker Title"),
+                value: markerTitle,
+                onChange: function onChange(newText) {
+                  return setAttributes({ markerTitle: newText });
+                }
+              }),
+              wp.element.createElement(TextareaControl, {
+                label: __("Marker Description"),
+                value: markerDesc,
+                onChange: function onChange(newText) {
+                  return setAttributes({ markerDesc: newText });
+                }
+              }),
+              wp.element.createElement(RangeControl, {
+                label: __("Spacing (PX)"),
+                value: gapBetween,
+                min: "10",
+                max: "80",
+                onChange: function onChange(newSize) {
+                  return setAttributes({ gapBetween: newSize });
+                }
+              }),
+              wp.element.createElement(ToggleControl, {
+                label: __("Description opened by default"),
+                checked: markerOpen,
+                onChange: function onChange(newValue) {
+                  return setAttributes({ markerOpen: newValue });
+                }
+              }),
+              wp.element.createElement(Toolbar, {
+                controls: ALIGNS.map(function (align) {
+                  return {
+                    icon: "editor-align" + align,
+                    isActive: align === boxAlign,
+                    onClick: function onClick() {
+                      return setAttributes({ boxAlign: align });
+                    }
+                  };
+                })
+              }),
+              wp.element.createElement(CheckboxControl, {
+                label: __("Custom Marker Icon"),
+                checked: markerCustom,
+                onChange: function onChange(check) {
+                  return setAttributes({ markerCustom: check });
+                }
+              }),
+              markerCustom && markerIconUrl && wp.element.createElement("img", { src: markerIconUrl, width: "100%", height: "auto" }),
+              markerCustom && wp.element.createElement(MediaUpload, {
+                allowedTypes: ["image"],
+                onSelect: function onSelect(media) {
+                  setAttributes({
+                    markerIconId: media.id,
+                    markerIconUrl: "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url
+                  });
+                },
+                type: "image",
+                value: markerIconId,
+                render: function render(_ref) {
+                  var open = _ref.open;
+                  return wp.element.createElement(
+                    IconButton,
+                    {
+                      label: __("Change Marker Icon"),
+                      icon: "edit",
+                      onClick: open
+                    },
+                    __("Change Marker Icon")
+                  );
+                }
+              }),
+              wp.element.createElement(RangeControl, {
+                label: __("Description Box Max Width (PX)"),
+                value: maxWidth,
+                min: "10",
+                max: "500",
+                onChange: function onChange(newSize) {
+                  return setAttributes({ maxWidth: newSize });
+                }
+              }),
+              wp.element.createElement(RangeControl, {
+                label: __("Description Box Padding (PX)"),
+                value: boxPadding,
+                min: "1",
+                max: "50",
+                onChange: function onChange(newSize) {
+                  return setAttributes({ boxPadding: newSize });
+                }
               })
-            }),
-            mapMarker && wp.element.createElement(CheckboxControl, {
-              label: __("Custom Marker Icon"),
-              checked: markerCustom,
-              onChange: function onChange(check) {
-                return setAttributes({ markerCustom: check });
-              }
-            }),
-            mapMarker && markerCustom && markerIconUrl && wp.element.createElement("img", { src: markerIconUrl, width: "100%", height: "auto" }),
-            markerCustom && mapMarker && wp.element.createElement(MediaUpload, {
-              allowedTypes: ["image"],
-              onSelect: function onSelect(media) {
-                setAttributes({
-                  markerIconId: media.id,
-                  markerIconUrl: "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url
-                });
-              },
-              type: "image",
-              value: markerIconId,
-              render: function render(_ref) {
-                var open = _ref.open;
-                return wp.element.createElement(
-                  IconButton,
-                  {
-                    label: __("Change Marker Icon"),
-                    icon: "edit",
-                    onClick: open
-                  },
-                  __("Change Marker Icon")
-                );
-              }
-            }),
-            mapMarker && wp.element.createElement(RangeControl, {
-              label: __("Description Box Max Width (PX)"),
-              value: maxWidth,
-              min: "10",
-              max: "500",
-              onChange: function onChange(newSize) {
-                return setAttributes({ maxWidth: newSize });
-              }
-            }),
-            mapMarker && wp.element.createElement(RangeControl, {
-              label: __("Description Box Padding (PX)"),
-              value: boxPadding,
-              min: "1",
-              max: "50",
-              onChange: function onChange(newSize) {
-                return setAttributes({ boxPadding: newSize });
-              }
-            })
+            )
           ),
-          mapMarker && "" !== markerTitle && wp.element.createElement(
+          mapMarker && markerTitle && wp.element.createElement(
             PanelBody,
             {
               title: __("Marker Title Style"),
@@ -4565,7 +4644,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* maps */]) {
               }
             })
           ),
-          mapMarker && "" !== markerDesc && wp.element.createElement(
+          mapMarker && markerDesc && wp.element.createElement(
             PanelBody,
             {
               title: __("Marker Description Style"),
@@ -4747,6 +4826,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* maps */]) {
         type: "string",
         default: " -73.98878250000001"
       },
+      markerOpen: {
+        type: "boolean",
+        default: false
+      },
       markerTitle: {
         type: "string",
         default: __("Awesome Title")
@@ -4819,6 +4902,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* maps */]) {
           centerLat = _props$attributes3.centerLat,
           centerLng = _props$attributes3.centerLng,
           mapMarker = _props$attributes3.mapMarker,
+          markerOpen = _props$attributes3.markerOpen,
           markerIconUrl = _props$attributes3.markerIconUrl,
           markerCustom = _props$attributes3.markerCustom,
           maxWidth = _props$attributes3.maxWidth,
@@ -4854,7 +4938,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* maps */]) {
                 padding: boxPadding + "px"
               }
             },
-            "" !== markerTitle && wp.element.createElement(
+            markerTitle && wp.element.createElement(
               "h3",
               {
                 className: className + "__title",
@@ -4866,7 +4950,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* maps */]) {
               },
               markerTitle
             ),
-            "" !== markerDesc && wp.element.createElement(
+            markerDesc && wp.element.createElement(
               "div",
               {
                 className: className + "__desc",
@@ -4882,7 +4966,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* maps */]) {
         wp.element.createElement(
           "script",
           null,
-          "window.addEventListener('load',function(){\n                    if( typeof google === 'undefined' ) return;\n                    let mapElem = document.getElementById('" + mapID + "');\n                    let pin = mapElem.querySelector('." + className + "__marker');\n                    let latlng = new google.maps.LatLng( parseFloat( " + centerLat + " ) , parseFloat( " + centerLng + " ) );\n\n                    let map = new google.maps.Map(mapElem, {\n                        zoom: " + zoom + ",\n                        gestureHandling: 'cooperative',\n                        mapTypeId: '" + mapType + "',\n                        mapTypeControl: " + mapTypeControl + ",\n                        zoomControl: " + zoomControl + ",\n                        fullscreenControl: " + fullscreenControl + ",\n                        streetViewControl: " + streetViewControl + ",\n                        scrollwheel: " + scrollwheel + ",\n                        center: latlng,\n                        styles: " + mapStyle + "\n                    });\n                    if( " + mapMarker + " ) {\n                        let markerIcon = '" + markerIconUrl + "';\n                        let marker = new google.maps.Marker({\n                            position\t: latlng,\n                            map\t\t\t: map,\n                            icon        : " + markerCustom + " ? markerIcon : ''\n                        });\n                        \n                        let infowindow = new google.maps.InfoWindow({\n                            maxWidth    : " + maxWidth + ",\n                            content\t\t: pin.innerHTML\n                        });\n                        \n                        google.maps.event.addListener(marker, 'click', function() {\n                            infowindow.open( map, marker );\n                        });\n                    }\n                    \n                });"
+          "window.addEventListener('load',function(){\n                    if( typeof google === 'undefined' ) return;\n                    let mapElem = document.getElementById('" + mapID + "');\n                    let pin = mapElem.querySelector('." + className + "__marker');\n                    let latlng = new google.maps.LatLng( parseFloat( " + centerLat + " ) , parseFloat( " + centerLng + " ) );\n\n                    let map = new google.maps.Map(mapElem, {\n                        zoom: " + zoom + ",\n                        gestureHandling: 'cooperative',\n                        mapTypeId: '" + mapType + "',\n                        mapTypeControl: " + mapTypeControl + ",\n                        zoomControl: " + zoomControl + ",\n                        fullscreenControl: " + fullscreenControl + ",\n                        streetViewControl: " + streetViewControl + ",\n                        scrollwheel: " + scrollwheel + ",\n                        center: latlng,\n                        styles: " + mapStyle + "\n                    });\n                    if( " + mapMarker + " ) {\n                        let markerIcon = '" + markerIconUrl + "';\n                        let marker = new google.maps.Marker({\n                            position\t: latlng,\n                            map\t\t\t: map,\n                            icon        : " + markerCustom + " ? markerIcon : ''\n                        });\n                        \n                        let infowindow = new google.maps.InfoWindow({\n                            maxWidth    : " + maxWidth + ",\n                            content\t\t: pin.innerHTML\n                        });\n                        if (" + markerOpen + ") {\n                          infowindow.open( map, marker );\n                        }\n                        google.maps.event.addListener(marker, 'click', function() {\n                            infowindow.open( map, marker );\n                        });\n                    }\n                    \n                });"
         )
       );
     }
@@ -4890,13 +4974,13 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* maps */]) {
 }
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__settings__ = __webpack_require__(0);
 
 
@@ -5631,7 +5715,7 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["j" /* testimonial */]) {
 }
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5669,7 +5753,7 @@ var DefaultImage = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (DefaultImage);
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5731,7 +5815,7 @@ var PremiumLowerQuote = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5794,7 +5878,7 @@ var PremiumUpperQuote = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6721,15 +6805,15 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* countUp */]) {
 }
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_icon__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_icon__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_padding__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_padding__ = __webpack_require__(4);
 
 
 
@@ -7358,7 +7442,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* icon */]) {
 }
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7417,7 +7501,7 @@ function PremiumIcon(props) {
 }
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7470,65 +7554,6 @@ function PremiumMargin(props) {
       min: "0",
       max: "150",
       onChange: onChangeMarLeft
-    })
-  );
-}
-
-/***/ }),
-/* 17 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumPadding;
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var RangeControl = wp.components.RangeControl;
-
-
-function PremiumPadding(props) {
-  var paddingTop = props.paddingTop,
-      paddingRight = props.paddingRight,
-      paddingBottom = props.paddingBottom,
-      paddingLeft = props.paddingLeft,
-      _props$onChangePadTop = props.onChangePadTop,
-      onChangePadTop = _props$onChangePadTop === undefined ? function () {} : _props$onChangePadTop,
-      _props$onChangePadRig = props.onChangePadRight,
-      onChangePadRight = _props$onChangePadRig === undefined ? function () {} : _props$onChangePadRig,
-      _props$onChangePadBot = props.onChangePadBottom,
-      onChangePadBottom = _props$onChangePadBot === undefined ? function () {} : _props$onChangePadBot,
-      _props$onChangePadLef = props.onChangePadLeft,
-      onChangePadLeft = _props$onChangePadLef === undefined ? function () {} : _props$onChangePadLef;
-
-  return wp.element.createElement(
-    Fragment,
-    null,
-    wp.element.createElement(RangeControl, {
-      label: __("Padding Top (PX)"),
-      value: paddingTop,
-      min: "0",
-      max: "150",
-      onChange: onChangePadTop
-    }),
-    wp.element.createElement(RangeControl, {
-      label: __("Padding Right (PX)"),
-      value: paddingRight,
-      min: "0",
-      max: "150",
-      onChange: onChangePadRight
-    }),
-    wp.element.createElement(RangeControl, {
-      label: __("Padding Bottom (PX)"),
-      value: paddingBottom,
-      min: "0",
-      max: "150",
-      onChange: onChangePadBottom
-    }),
-    wp.element.createElement(RangeControl, {
-      label: __("Padding Left (PX)"),
-      value: paddingLeft,
-      min: "0",
-      max: "150",
-      onChange: onChangePadLeft
     })
   );
 }
@@ -8129,7 +8154,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* button */]) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(4);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 

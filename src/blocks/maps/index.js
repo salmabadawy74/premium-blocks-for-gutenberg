@@ -14,12 +14,13 @@ if (maps) {
     RangeControl,
     TextControl,
     TextareaControl,
-    CheckboxControl
+    CheckboxControl,
+    ToggleControl
   } = wp.components;
 
   const { InspectorControls, MediaUpload, PanelColorSettings } = wp.editor;
 
-  const { Component } = wp.element;
+  const { Component, Fragment } = wp.element;
 
   let isMapUpdated = null;
 
@@ -70,6 +71,7 @@ if (maps) {
         centerLng,
         centerLat,
         markerTitle,
+        markerOpen,
         markerDesc,
         mapMarker,
         markerIconUrl,
@@ -155,6 +157,10 @@ if (maps) {
           icon: markerCustom ? markerIconUrl : ""
         });
 
+        if (markerOpen) {
+          infoWindow.open(map, marker);
+        }
+
         google.maps.event.addListener(marker, "click", function() {
           infoWindow.open(map, marker);
         });
@@ -179,6 +185,7 @@ if (maps) {
         centerLat,
         markerDesc,
         markerTitle,
+        markerOpen,
         mapMarker,
         markerIconUrl,
         markerIconId,
@@ -251,92 +258,91 @@ if (maps) {
                 help={__("Disable marker is applied on page reload")}
               />
               {mapMarker && (
-                <TextControl
-                  label={__("Marker Title")}
-                  value={markerTitle}
-                  onChange={newText => setAttributes({ markerTitle: newText })}
-                />
-              )}
-              {mapMarker && (
-                <TextareaControl
-                  label={__("Marker Description")}
-                  value={markerDesc}
-                  onChange={newText => setAttributes({ markerDesc: newText })}
-                />
-              )}
-              {mapMarker && (
-                <RangeControl
-                  label={__("Spacing (PX)")}
-                  value={gapBetween}
-                  min="10"
-                  max="80"
-                  onChange={newSize => setAttributes({ gapBetween: newSize })}
-                />
-              )}
-              {mapMarker && (
-                <Toolbar
-                  controls={ALIGNS.map(align => ({
-                    icon: "editor-align" + align,
-                    isActive: align === boxAlign,
-                    onClick: () => setAttributes({ boxAlign: align })
-                  }))}
-                />
-              )}
-              {mapMarker && (
-                <CheckboxControl
-                  label={__("Custom Marker Icon")}
-                  checked={markerCustom}
-                  onChange={check => setAttributes({ markerCustom: check })}
-                />
-              )}
-              {mapMarker && markerCustom && markerIconUrl && (
-                <img src={markerIconUrl} width="100%" height="auto" />
-              )}
-              {markerCustom && mapMarker && (
-                <MediaUpload
-                  allowedTypes={["image"]}
-                  onSelect={media => {
-                    setAttributes({
-                      markerIconId: media.id,
-                      markerIconUrl:
-                        "undefined" === typeof media.sizes.thumbnail
-                          ? media.url
-                          : media.sizes.thumbnail.url
-                    });
-                  }}
-                  type="image"
-                  value={markerIconId}
-                  render={({ open }) => (
-                    <IconButton
-                      label={__("Change Marker Icon")}
-                      icon="edit"
-                      onClick={open}
-                    >
-                      {__("Change Marker Icon")}
-                    </IconButton>
+                <Fragment>
+                  <TextControl
+                    label={__("Marker Title")}
+                    value={markerTitle}
+                    onChange={newText =>
+                      setAttributes({ markerTitle: newText })
+                    }
+                  />
+                  <TextareaControl
+                    label={__("Marker Description")}
+                    value={markerDesc}
+                    onChange={newText => setAttributes({ markerDesc: newText })}
+                  />
+                  <RangeControl
+                    label={__("Spacing (PX)")}
+                    value={gapBetween}
+                    min="10"
+                    max="80"
+                    onChange={newSize => setAttributes({ gapBetween: newSize })}
+                  />
+                  <ToggleControl
+                    label={__("Description opened by default")}
+                    checked={markerOpen}
+                    onChange={newValue =>
+                      setAttributes({ markerOpen: newValue })
+                    }
+                  />
+                  <Toolbar
+                    controls={ALIGNS.map(align => ({
+                      icon: "editor-align" + align,
+                      isActive: align === boxAlign,
+                      onClick: () => setAttributes({ boxAlign: align })
+                    }))}
+                  />
+                  <CheckboxControl
+                    label={__("Custom Marker Icon")}
+                    checked={markerCustom}
+                    onChange={check => setAttributes({ markerCustom: check })}
+                  />
+                  {markerCustom && markerIconUrl && (
+                    <img src={markerIconUrl} width="100%" height="auto" />
                   )}
-                />
-              )}
-              {mapMarker && (
-                <RangeControl
-                  label={__("Description Box Max Width (PX)")}
-                  value={maxWidth}
-                  min="10"
-                  max="500"
-                  onChange={newSize => setAttributes({ maxWidth: newSize })}
-                />
-              )}
-              {mapMarker && (
-                <RangeControl
-                  label={__("Description Box Padding (PX)")}
-                  value={boxPadding}
-                  min="1"
-                  max="50"
-                  onChange={newSize => setAttributes({ boxPadding: newSize })}
-                />
+                  {markerCustom && (
+                    <MediaUpload
+                      allowedTypes={["image"]}
+                      onSelect={media => {
+                        setAttributes({
+                          markerIconId: media.id,
+                          markerIconUrl:
+                            "undefined" === typeof media.sizes.thumbnail
+                              ? media.url
+                              : media.sizes.thumbnail.url
+                        });
+                      }}
+                      type="image"
+                      value={markerIconId}
+                      render={({ open }) => (
+                        <IconButton
+                          label={__("Change Marker Icon")}
+                          icon="edit"
+                          onClick={open}
+                        >
+                          {__("Change Marker Icon")}
+                        </IconButton>
+                      )}
+                    />
+                  )}
+                  <RangeControl
+                    label={__("Description Box Max Width (PX)")}
+                    value={maxWidth}
+                    min="10"
+                    max="500"
+                    onChange={newSize => setAttributes({ maxWidth: newSize })}
+                  />
+                  <RangeControl
+                    label={__("Description Box Padding (PX)")}
+                    value={boxPadding}
+                    min="1"
+                    max="50"
+                    onChange={newSize => setAttributes({ boxPadding: newSize })}
+                  />
+                </Fragment>
               )}
             </PanelBody>
-            {mapMarker && "" !== markerTitle && (
+            {mapMarker && markerTitle && (
               <PanelBody
                 title={__("Marker Title Style")}
                 className="premium-panel-body"
@@ -362,7 +368,7 @@ if (maps) {
                 />
               </PanelBody>
             )}
-            {mapMarker && "" !== markerDesc && (
+            {mapMarker && markerDesc && (
               <PanelBody
                 title={__("Marker Description Style")}
                 className="premium-panel-body"
@@ -440,7 +446,6 @@ if (maps) {
                 onChange={check => setAttributes({ scrollwheel: check })}
               />
             </PanelBody>
-
             <PanelBody
               title={__("Map Style")}
               className="premium-panel-body"
@@ -526,6 +531,10 @@ if (maps) {
         type: "string",
         default: " -73.98878250000001"
       },
+      markerOpen: {
+        type: "boolean",
+        default: false
+      },
       markerTitle: {
         type: "string",
         default: __("Awesome Title")
@@ -598,6 +607,7 @@ if (maps) {
         centerLat,
         centerLng,
         mapMarker,
+        markerOpen,
         markerIconUrl,
         markerCustom,
         maxWidth,
@@ -628,7 +638,7 @@ if (maps) {
                 padding: boxPadding + "px"
               }}
             >
-              {"" !== markerTitle && (
+              {markerTitle && (
                 <h3
                   className={`${className}__title`}
                   style={{
@@ -640,7 +650,7 @@ if (maps) {
                   {markerTitle}
                 </h3>
               )}
-              {"" !== markerDesc && (
+              {markerDesc && (
                 <div
                   className={`${className}__desc`}
                   style={{
@@ -684,7 +694,9 @@ if (maps) {
                             maxWidth    : ${maxWidth},
                             content		: pin.innerHTML
                         });
-                        
+                        if (${markerOpen}) {
+                          infowindow.open( map, marker );
+                        }
                         google.maps.event.addListener(marker, 'click', function() {
                             infowindow.open( map, marker );
                         });
