@@ -1374,6 +1374,9 @@ a.premium-dheading-block__link:hover {
   height: 100%;
   margin: 0 auto;
 }
+.premium-container__content_inner {
+  width: 100%;
+}
 .premium-container__content_wrap.premium-container__top {
   -webkit-box-align: start;
   -webkit-align-items: flex-start;

@@ -2502,6 +2502,15 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
       badgeSize: {
         type: "number"
       },
+      badgeTop: {
+        type: "number"
+      },
+      badgeHorizontal: {
+        type: "number"
+      },
+      badgeWidth: {
+        type: "number"
+      },
       badgeWeight: {
         type: "number",
         default: 900
@@ -2517,7 +2526,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
       },
       badgeText: {
         type: "string",
-        default: "popular"
+        default: __("Popular")
       },
       listChecked: {
         type: "boolean",
@@ -2586,12 +2595,15 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
       durV: {
         type: "string",
         default: "center"
+      },
+      id: {
+        type: "string"
       }
     },
     edit: function edit(props) {
       var isSelected = props.isSelected,
           setAttributes = props.setAttributes,
-          clientId = props.clientId;
+          blockId = props.clientId;
       var _props$attributes = props.attributes,
           contentAlign = _props$attributes.contentAlign,
           tableBack = _props$attributes.tableBack,
@@ -2684,6 +2696,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
           badgeBack = _props$attributes.badgeBack,
           badgeColor = _props$attributes.badgeColor,
           badgeSize = _props$attributes.badgeSize,
+          badgeTop = _props$attributes.badgeTop,
+          badgeHorizontal = _props$attributes.badgeHorizontal,
+          badgeWidth = _props$attributes.badgeWidth,
           badgeWeight = _props$attributes.badgeWeight,
           badgeLetter = _props$attributes.badgeLetter,
           badgeStyle = _props$attributes.badgeStyle,
@@ -2702,9 +2717,20 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
           listMarginT = _props$attributes.listMarginT,
           listMarginB = _props$attributes.listMarginB,
           listPadding = _props$attributes.listPadding,
-          listStyle = _props$attributes.listStyle;
+          listStyle = _props$attributes.listStyle,
+          id = _props$attributes.id;
 
       var ALIGNS = [{
+        value: "flex-start",
+        label: __("Top")
+      }, {
+        value: "center",
+        label: __("Middle")
+      }, {
+        value: "flex-end",
+        label: __("Bottom")
+      }];
+      var SIZES = [{
         value: "flex-start",
         label: __("Top")
       }, {
@@ -2753,7 +2779,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
         value: "left",
         label: __("Left")
       }];
-
+      setAttributes({ id: blockId });
       return [isSelected && wp.element.createElement(
         BlockControls,
         { key: "controls" },
@@ -3593,11 +3619,36 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
             }]
           }),
           wp.element.createElement(RangeControl, {
-            label: __("Size"),
+            label: __("Vertical Offset"),
+            value: badgeTop,
+            onChange: function onChange(newValue) {
+              return setAttributes({ badgeTop: newValue });
+            }
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Horizontal Offset"),
+            value: badgeHorizontal,
+            min: "1",
+            max: "150",
+            onChange: function onChange(newValue) {
+              return setAttributes({ badgeHorizontal: newValue });
+            }
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Badge Size"),
             value: badgeSize,
             max: "250",
             onChange: function onChange(newValue) {
               return setAttributes({ badgeSize: newValue });
+            }
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Text Width"),
+            min: "1",
+            max: "200",
+            value: badgeWidth,
+            onChange: function onChange(newValue) {
+              return setAttributes({ badgeWidth: newValue });
             }
           })
         ),
@@ -3665,7 +3716,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
       ), wp.element.createElement(
         "div",
         {
-          id: className + "-" + clientId,
+          id: className + "-" + id,
           className: "" + className,
           style: {
             textAlign: contentAlign,
@@ -3703,7 +3754,11 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
                   fontWeight: badgeWeight,
                   textTransform: badgeUpper ? "uppercase" : "none",
                   letterSpacing: badgeLetter + "px",
-                  fontStyle: badgeStyle
+                  fontStyle: badgeStyle,
+                  width: badgeWidth + "px",
+                  top: badgeTop + "px",
+                  left: "left" === badgePos ? badgeHorizontal + "px" : "auto",
+                  right: "right" === badgePos ? badgeHorizontal + "px" : "auto"
                 }
               },
               badgeText
@@ -3892,7 +3947,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
               target: btnTarget ? "_blank" : "_self",
               style: {
                 color: btnColor,
-                background: btnBack,
+                background: btnBack ? btnBack : "transparent",
                 fontSize: btnSize + "px",
                 fontWeight: btnWeight,
                 letterSpacing: btnLetter + "px",
@@ -3926,15 +3981,14 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
           }),
           wp.element.createElement("style", {
             dangerouslySetInnerHTML: {
-              __html: ["#premium-pricing-table-" + clientId + " .premium-pricing-table__button_link:hover {", "color: " + btnHoverColor + " !important;", "background: " + btnHoverBack + " !important", "}"].join("\n")
+              __html: ["#premium-pricing-table-" + id + " .premium-pricing-table__button_link:hover {", "color: " + btnHoverColor + " !important;", "background: " + btnHoverBack + " !important", "}"].join("\n")
             }
           })
         )
       )];
     },
     save: function save(props) {
-      var clientId = props.clientId,
-          _props$attributes2 = props.attributes,
+      var _props$attributes2 = props.attributes,
           contentAlign = _props$attributes2.contentAlign,
           tableBack = _props$attributes2.tableBack,
           borderType = _props$attributes2.borderType,
@@ -4024,6 +4078,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
           badgePos = _props$attributes2.badgePos,
           badgeBack = _props$attributes2.badgeBack,
           badgeColor = _props$attributes2.badgeColor,
+          badgeTop = _props$attributes2.badgeTop,
+          badgeHorizontal = _props$attributes2.badgeHorizontal,
+          badgeWidth = _props$attributes2.badgeWidth,
           badgeSize = _props$attributes2.badgeSize,
           badgeWeight = _props$attributes2.badgeWeight,
           badgeLetter = _props$attributes2.badgeLetter,
@@ -4043,13 +4100,13 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
           listMarginB = _props$attributes2.listMarginB,
           listMarginT = _props$attributes2.listMarginT,
           listPadding = _props$attributes2.listPadding,
-          listStyle = _props$attributes2.listStyle;
-
+          listStyle = _props$attributes2.listStyle,
+          id = _props$attributes2.id;
 
       return wp.element.createElement(
         "div",
         {
-          id: className + "-" + clientId,
+          id: className + "-" + id,
           className: "" + className,
           style: {
             textAlign: contentAlign,
@@ -4087,7 +4144,11 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
                   fontWeight: badgeWeight,
                   textTransform: badgeUpper ? "uppercase" : "none",
                   letterSpacing: badgeLetter + "px",
-                  fontStyle: badgeStyle
+                  fontStyle: badgeStyle,
+                  width: badgeWidth + "px",
+                  top: badgeTop + "px",
+                  left: "left" === badgePos ? badgeHorizontal + "px" : "auto",
+                  right: "right" === badgePos ? badgeHorizontal + "px" : "auto"
                 }
               },
               badgeText
@@ -4266,7 +4327,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
               target: btnTarget ? "_blank" : "_self",
               style: {
                 color: btnColor,
-                background: btnBack,
+                background: btnBack ? btnBack : "transparent",
                 fontSize: btnSize + "px",
                 fontWeight: btnWeight,
                 letterSpacing: btnLetter + "px",
@@ -4294,7 +4355,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
           ),
           wp.element.createElement("style", {
             dangerouslySetInnerHTML: {
-              __html: ["#premium-pricing-table-" + clientId + " .premium-pricing-table__button_link:hover {", "color: " + btnHoverColor + " !important;", "background: " + btnHoverBack + " !important", "}"].join("\n")
+              __html: ["#premium-pricing-table-" + id + " .premium-pricing-table__button_link:hover {", "color: " + btnHoverColor + " !important;", "background: " + btnHoverBack + " !important", "}"].join("\n")
             }
           })
         )
@@ -8221,11 +8282,11 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* container */]) {
       },
       backgroundRepeat: {
         type: "string",
-        default: "repeat"
+        default: "no-repeat"
       },
       backgroundPosition: {
         type: "string",
-        default: "center center"
+        default: "top center"
       },
       backgroundSize: {
         type: "string",
@@ -8473,7 +8534,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* container */]) {
             onSelect: function onSelect(media) {
               setAttributes({
                 imageID: media.id,
-                imageURL: "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url
+                imageURL: media.url
               });
             },
             type: "image",
@@ -8694,7 +8755,11 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* container */]) {
             className: className + "__content_wrap " + className + "__" + vPos,
             style: { width: innerWidth + "%" }
           },
-          wp.element.createElement(InnerBlocks, { template: CONTENT })
+          wp.element.createElement(
+            "div",
+            { className: className + "__content_inner" },
+            wp.element.createElement(InnerBlocks, { template: CONTENT })
+          )
         )
       )];
     },
@@ -8763,7 +8828,11 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* container */]) {
             className: className + "__content_wrap " + className + "__" + vPos,
             style: { width: innerWidth + "%" }
           },
-          wp.element.createElement(InnerBlocks.Content, null)
+          wp.element.createElement(
+            "div",
+            { className: className + "__content_inner" },
+            wp.element.createElement(InnerBlocks.Content, null)
+          )
         )
       );
     }

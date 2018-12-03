@@ -122,12 +122,12 @@
 }
 /********************** Buttons ************************/
 /*******************************************************/
-.premium-pricing-table .premium-pricing-table__button {
+/*.premium-pricing-table .premium-pricing-table__button {
   pointer-events: none;
 }
 .premium-pricing-table .premium-pricing-table__button .editor-url-input {
   pointer-events: auto;
-}
+}*/
 /**************** Premium Maps *************************/
 /*******************************************************/
 #wpwrap .edit-post-visual-editor .premium-countup__desc p {

@@ -343,6 +343,15 @@ if (pricingTable) {
       badgeSize: {
         type: "number"
       },
+      badgeTop: {
+        type: "number"
+      },
+      badgeHorizontal: {
+        type: "number"
+      },
+      badgeWidth: {
+        type: "number"
+      },
       badgeWeight: {
         type: "number",
         default: 900
@@ -358,7 +367,7 @@ if (pricingTable) {
       },
       badgeText: {
         type: "string",
-        default: "popular"
+        default: __("Popular")
       },
       listChecked: {
         type: "boolean",
@@ -427,10 +436,13 @@ if (pricingTable) {
       durV: {
         type: "string",
         default: "center"
+      },
+      id: {
+        type: "string"
       }
     },
     edit: props => {
-      const { isSelected, setAttributes, clientId } = props;
+      const { isSelected, setAttributes, clientId: blockId } = props;
       const {
         contentAlign,
         tableBack,
@@ -523,6 +535,9 @@ if (pricingTable) {
         badgeBack,
         badgeColor,
         badgeSize,
+        badgeTop,
+        badgeHorizontal,
+        badgeWidth,
         badgeWeight,
         badgeLetter,
         badgeStyle,
@@ -541,9 +556,24 @@ if (pricingTable) {
         listMarginT,
         listMarginB,
         listPadding,
-        listStyle
+        listStyle,
+        id
       } = props.attributes;
       const ALIGNS = [
+        {
+          value: "flex-start",
+          label: __("Top")
+        },
+        {
+          value: "center",
+          label: __("Middle")
+        },
+        {
+          value: "flex-end",
+          label: __("Bottom")
+        }
+      ];
+      const SIZES = [
         {
           value: "flex-start",
           label: __("Top")
@@ -611,7 +641,7 @@ if (pricingTable) {
           label: __("Left")
         }
       ];
-
+      setAttributes({ id: blockId });
       return [
         isSelected && (
           <BlockControls key="controls">
@@ -1405,10 +1435,31 @@ if (pricingTable) {
                   ]}
                 />
                 <RangeControl
-                  label={__("Size")}
+                  label={__("Vertical Offset")}
+                  value={badgeTop}
+                  onChange={newValue => setAttributes({ badgeTop: newValue })}
+                />
+                <RangeControl
+                  label={__("Horizontal Offset")}
+                  value={badgeHorizontal}
+                  min="1"
+                  max="150"
+                  onChange={newValue =>
+                    setAttributes({ badgeHorizontal: newValue })
+                  }
+                />
+                <RangeControl
+                  label={__("Badge Size")}
                   value={badgeSize}
                   max="250"
                   onChange={newValue => setAttributes({ badgeSize: newValue })}
+                />
+                <RangeControl
+                  label={__("Text Width")}
+                  min="1"
+                  max="200"
+                  value={badgeWidth}
+                  onChange={newValue => setAttributes({ badgeWidth: newValue })}
                 />
               </PanelBody>
             )}
@@ -1470,9 +1521,8 @@ if (pricingTable) {
             </PanelBody>
           </InspectorControls>
         ),
-
         <div
-          id={`${className}-${clientId}`}
+          id={`${className}-${id}`}
           className={`${className}`}
           style={{
             textAlign: contentAlign,
@@ -1509,7 +1559,12 @@ if (pricingTable) {
                     fontWeight: badgeWeight,
                     textTransform: badgeUpper ? "uppercase" : "none",
                     letterSpacing: badgeLetter + "px",
-                    fontStyle: badgeStyle
+                    fontStyle: badgeStyle,
+                    width: badgeWidth + "px",
+                    top: badgeTop + "px",
+                    left: "left" === badgePos ? badgeHorizontal + "px" : "auto",
+                    right:
+                      "right" === badgePos ? badgeHorizontal + "px" : "auto"
                   }}
                 >
                   {badgeText}
@@ -1690,7 +1745,7 @@ if (pricingTable) {
                 target={btnTarget ? "_blank" : "_self"}
                 style={{
                   color: btnColor,
-                  background: btnBack,
+                  background: btnBack ? btnBack : "transparent",
                   fontSize: btnSize + "px",
                   fontWeight: btnWeight,
                   letterSpacing: btnLetter + "px",
@@ -1721,7 +1776,7 @@ if (pricingTable) {
               <style
                 dangerouslySetInnerHTML={{
                   __html: [
-                    `#premium-pricing-table-${clientId} .premium-pricing-table__button_link:hover {`,
+                    `#premium-pricing-table-${id} .premium-pricing-table__button_link:hover {`,
                     `color: ${btnHoverColor} !important;`,
                     `background: ${btnHoverBack} !important`,
                     "}"
@@ -1735,123 +1790,123 @@ if (pricingTable) {
     },
     save: props => {
       const {
-        clientId,
-        attributes: {
-          contentAlign,
-          tableBack,
-          borderType,
-          borderWidth,
-          borderRadius,
-          borderColor,
-          tablePadding,
-          titleChecked,
-          title,
-          titleTag,
-          titleColor,
-          titleSize,
-          titleLetter,
-          titleUpper,
-          titleStyle,
-          titleLine,
-          titleWeight,
-          titleBack,
-          titleMarginT,
-          titleMarginB,
-          titlePadding,
-          descChecked,
-          desc,
-          descColor,
-          descSize,
-          descLine,
-          descWeight,
-          descStyle,
-          descLetter,
-          descBack,
-          descMarginT,
-          descMarginB,
-          descPadding,
-          priceChecked,
-          priceBack,
-          priceMarginT,
-          priceMarginB,
-          pricePadding,
-          slashPrice,
-          slashColor,
-          slashSize,
-          slashWeight,
-          slashV,
-          currPrice,
-          currColor,
-          currSize,
-          currWeight,
-          currV,
-          valPrice,
-          valColor,
-          valSize,
-          valWeight,
-          valV,
-          divPrice,
-          divColor,
-          divSize,
-          divWeight,
-          divV,
-          durPrice,
-          durColor,
-          durSize,
-          durWeight,
-          durV,
-          btnChecked,
-          btnText,
-          btnLink,
-          btnTarget,
-          btnColor,
-          btnHoverColor,
-          btnSize,
-          btnWeight,
-          btnLine,
-          btnLetter,
-          btnUpper,
-          btnStyle,
-          btnBack,
-          btnHoverBack,
-          btnMarginT,
-          btnMarginB,
-          btnPadding,
-          btnWidth,
-          btnBorderType,
-          btnBorderWidth,
-          btnBorderRadius,
-          btnBorderColor,
-          badgeChecked,
-          badgePos,
-          badgeBack,
-          badgeColor,
-          badgeSize,
-          badgeWeight,
-          badgeLetter,
-          badgeStyle,
-          badgeUpper,
-          badgeText,
-          listChecked,
-          listColor,
-          listWeight,
-          listSize,
-          listItemsStyle,
-          listLine,
-          listUpper,
-          listLetter,
-          listBack,
-          listItems,
-          listMarginB,
-          listMarginT,
-          listPadding,
-          listStyle
-        }
-      } = props;
-
+        contentAlign,
+        tableBack,
+        borderType,
+        borderWidth,
+        borderRadius,
+        borderColor,
+        tablePadding,
+        titleChecked,
+        title,
+        titleTag,
+        titleColor,
+        titleSize,
+        titleLetter,
+        titleUpper,
+        titleStyle,
+        titleLine,
+        titleWeight,
+        titleBack,
+        titleMarginT,
+        titleMarginB,
+        titlePadding,
+        descChecked,
+        desc,
+        descColor,
+        descSize,
+        descLine,
+        descWeight,
+        descStyle,
+        descLetter,
+        descBack,
+        descMarginT,
+        descMarginB,
+        descPadding,
+        priceChecked,
+        priceBack,
+        priceMarginT,
+        priceMarginB,
+        pricePadding,
+        slashPrice,
+        slashColor,
+        slashSize,
+        slashWeight,
+        slashV,
+        currPrice,
+        currColor,
+        currSize,
+        currWeight,
+        currV,
+        valPrice,
+        valColor,
+        valSize,
+        valWeight,
+        valV,
+        divPrice,
+        divColor,
+        divSize,
+        divWeight,
+        divV,
+        durPrice,
+        durColor,
+        durSize,
+        durWeight,
+        durV,
+        btnChecked,
+        btnText,
+        btnLink,
+        btnTarget,
+        btnColor,
+        btnHoverColor,
+        btnSize,
+        btnWeight,
+        btnLine,
+        btnLetter,
+        btnUpper,
+        btnStyle,
+        btnBack,
+        btnHoverBack,
+        btnMarginT,
+        btnMarginB,
+        btnPadding,
+        btnWidth,
+        btnBorderType,
+        btnBorderWidth,
+        btnBorderRadius,
+        btnBorderColor,
+        badgeChecked,
+        badgePos,
+        badgeBack,
+        badgeColor,
+        badgeTop,
+        badgeHorizontal,
+        badgeWidth,
+        badgeSize,
+        badgeWeight,
+        badgeLetter,
+        badgeStyle,
+        badgeUpper,
+        badgeText,
+        listChecked,
+        listColor,
+        listWeight,
+        listSize,
+        listItemsStyle,
+        listLine,
+        listUpper,
+        listLetter,
+        listBack,
+        listItems,
+        listMarginB,
+        listMarginT,
+        listPadding,
+        listStyle,
+        id
+      } = props.attributes;
       return (
         <div
-          id={`${className}-${clientId}`}
+          id={`${className}-${id}`}
           className={`${className}`}
           style={{
             textAlign: contentAlign,
@@ -1888,7 +1943,12 @@ if (pricingTable) {
                     fontWeight: badgeWeight,
                     textTransform: badgeUpper ? "uppercase" : "none",
                     letterSpacing: badgeLetter + "px",
-                    fontStyle: badgeStyle
+                    fontStyle: badgeStyle,
+                    width: badgeWidth + "px",
+                    top: badgeTop + "px",
+                    left: "left" === badgePos ? badgeHorizontal + "px" : "auto",
+                    right:
+                      "right" === badgePos ? badgeHorizontal + "px" : "auto"
                   }}
                 >
                   {badgeText}
@@ -2063,7 +2123,7 @@ if (pricingTable) {
                 target={btnTarget ? "_blank" : "_self"}
                 style={{
                   color: btnColor,
-                  background: btnBack,
+                  background: btnBack ? btnBack : "transparent",
                   fontSize: btnSize + "px",
                   fontWeight: btnWeight,
                   letterSpacing: btnLetter + "px",
@@ -2090,7 +2150,7 @@ if (pricingTable) {
               <style
                 dangerouslySetInnerHTML={{
                   __html: [
-                    `#premium-pricing-table-${clientId} .premium-pricing-table__button_link:hover {`,
+                    `#premium-pricing-table-${id} .premium-pricing-table__button_link:hover {`,
                     `color: ${btnHoverColor} !important;`,
                     `background: ${btnHoverBack} !important`,
                     "}"

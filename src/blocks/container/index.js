@@ -70,11 +70,11 @@ if (container) {
       },
       backgroundRepeat: {
         type: "string",
-        default: "repeat"
+        default: "no-repeat"
       },
       backgroundPosition: {
         type: "string",
-        default: "center center"
+        default: "top center"
       },
       backgroundSize: {
         type: "string",
@@ -339,10 +339,7 @@ if (container) {
                 onSelect={media => {
                   setAttributes({
                     imageID: media.id,
-                    imageURL:
-                      "undefined" === typeof media.sizes.thumbnail
-                        ? media.url
-                        : media.sizes.thumbnail.url
+                    imageURL: media.url
                   });
                 }}
                 type="image"
@@ -550,7 +547,9 @@ if (container) {
             className={`${className}__content_wrap ${className}__${vPos}`}
             style={{ width: innerWidth + "%" }}
           >
-            <InnerBlocks template={CONTENT} />
+            <div className={`${className}__content_inner`}>
+              <InnerBlocks template={CONTENT} />
+            </div>
           </div>
         </div>
       ];
@@ -617,7 +616,9 @@ if (container) {
             className={`${className}__content_wrap ${className}__${vPos}`}
             style={{ width: innerWidth + "%" }}
           >
-            <InnerBlocks.Content />
+            <div className={`${className}__content_inner`}>
+              <InnerBlocks.Content />
+            </div>
           </div>
         </div>
       );
