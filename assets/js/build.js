@@ -68,15 +68,16 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return banner; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return dualHeading; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return pricingTable; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return maps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return testimonial; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return countUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return icon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return button; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return container; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return banner; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return dualHeading; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return pricingTable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return maps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return testimonial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return countUp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return icon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return button; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return container; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return accordion; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FontAwesomeEnabled; });
 //Blocks Keys
 var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
@@ -88,7 +89,8 @@ var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
     countUp = _PremiumBlocksSetting.countUp,
     icon = _PremiumBlocksSetting.icon,
     button = _PremiumBlocksSetting.button,
-    container = _PremiumBlocksSetting.container;
+    container = _PremiumBlocksSetting.container,
+    accordion = _PremiumBlocksSetting.accordion;
 
 //Plugin Config Keys
 
@@ -450,6 +452,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_button__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_container__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_accordion__ = __webpack_require__(21);
+
 
 
 
@@ -474,7 +478,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* dualHeading */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* dualHeading */]) {
   var className = "premium-dheading-block";
 
   var __ = wp.i18n.__;
@@ -1368,7 +1372,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* dualHeading */]) {
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
   var className = "premium-banner";
 
   var __ = wp.i18n.__;
@@ -2166,7 +2170,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* banner */]) {
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* pricingTable */]) {
   var className = "premium-pricing-table";
 
   var __ = wp.i18n.__;
@@ -2721,16 +2725,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* pricingTable */]) {
           id = _props$attributes.id;
 
       var ALIGNS = [{
-        value: "flex-start",
-        label: __("Top")
-      }, {
-        value: "center",
-        label: __("Middle")
-      }, {
-        value: "flex-end",
-        label: __("Bottom")
-      }];
-      var SIZES = [{
         value: "flex-start",
         label: __("Top")
       }, {
@@ -4379,7 +4373,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* maps */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* maps */]) {
   var className = "premium-maps";
 
   var __ = wp.i18n.__;
@@ -5106,7 +5100,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* maps */]) {
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_3__settings__["j" /* testimonial */]) {
+if (__WEBPACK_IMPORTED_MODULE_3__settings__["k" /* testimonial */]) {
   var className = "premium-testimonial";
 
   var __ = wp.i18n.__;
@@ -6005,7 +5999,7 @@ var PremiumUpperQuote = function (_Component) {
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* countUp */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* countUp */]) {
   var className = "premium-countup";
 
   var __ = wp.i18n.__;
@@ -6940,7 +6934,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* countUp */]) {
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* icon */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* icon */]) {
   var className = "premium-icon";
 
   var __ = wp.i18n.__;
@@ -7635,7 +7629,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 //import PremiumIcon from "../../components/premium-icon";
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* button */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* button */]) {
   var className = "premium-button";
 
   var __ = wp.i18n.__;
@@ -8224,7 +8218,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* container */]) {
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* container */]) {
   var className = "premium-container";
 
   var __ = wp.i18n.__;
@@ -8910,6 +8904,208 @@ function PremiumTextShadow(props) {
       onChange: onChangePosition
     })
   );
+}
+
+/***/ }),
+/* 21 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(4);
+
+
+
+
+
+if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
+  var className = "premium-accordion";
+
+  var __ = wp.i18n.__;
+  var registerBlockType = wp.blocks.registerBlockType;
+  var Fragment = wp.element.Fragment;
+  var _wp$components = wp.components,
+      Toolbar = _wp$components.Toolbar,
+      PanelBody = _wp$components.PanelBody,
+      SelectControl = _wp$components.SelectControl,
+      RangeControl = _wp$components.RangeControl,
+      TextControl = _wp$components.TextControl,
+      ToggleControl = _wp$components.ToggleControl;
+  var _wp$editor = wp.editor,
+      BlockControls = _wp$editor.BlockControls,
+      InspectorControls = _wp$editor.InspectorControls,
+      AlignmentToolbar = _wp$editor.AlignmentToolbar,
+      RichText = _wp$editor.RichText,
+      PanelColorSettings = _wp$editor.PanelColorSettings,
+      URLInput = _wp$editor.URLInput;
+
+
+  registerBlockType("premium/accordion", {
+    title: __("Accordion"),
+    icon: "share-alt2",
+    category: "premium-blocks",
+    attributes: {
+      titleText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-accordion__title_text",
+        default: __("Awesome Title")
+      },
+      titleTag: {
+        type: "string",
+        default: "H4"
+      },
+      descText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-accordion__desc",
+        default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      }
+    },
+    edit: function edit(props) {
+      var isSelected = props.isSelected,
+          setAttributes = props.setAttributes,
+          clientId = props.clientId;
+      var _props$attributes = props.attributes,
+          titleText = _props$attributes.titleText,
+          titleTag = _props$attributes.titleTag,
+          descText = _props$attributes.descText;
+
+      return [isSelected && wp.element.createElement(
+        InspectorControls,
+        { key: "inspector" },
+        wp.element.createElement(
+          PanelBody,
+          {
+            title: __("Title"),
+            className: "premium-panel-body",
+            initialOpen: false
+          },
+          wp.element.createElement(Toolbar, {
+            controls: "123456".split("").map(function (tag) {
+              return {
+                icon: "heading",
+                isActive: "H" + tag === titleTag,
+                onClick: function onClick() {
+                  return setAttributes({ titleTag: "H" + tag });
+                },
+                subscript: tag
+              };
+            })
+          })
+        )
+      ), wp.element.createElement(
+        "div",
+        { className: "" + className },
+        wp.element.createElement(
+          "div",
+          { className: className + "__content_wrap" },
+          wp.element.createElement(
+            "div",
+            { className: className + "__title_wrap" },
+            wp.element.createElement(
+              "div",
+              { className: className + "__title" },
+              wp.element.createElement(RichText, {
+                tagName: titleTag.toLowerCase(),
+                className: className + "__title_text",
+                onChange: function onChange(newText) {
+                  return setAttributes({ titleText: newText });
+                },
+                placeholder: __("Awesome Title"),
+                value: titleText
+              })
+            ),
+            wp.element.createElement(
+              "div",
+              { className: className + "__icon_wrap" },
+              wp.element.createElement(
+                "svg",
+                {
+                  className: className + "__icon",
+                  role: "img",
+                  focusable: "false",
+                  xmlns: "http://www.w3.org/2000/svg",
+                  width: "20",
+                  height: "20",
+                  viewBox: "0 0 20 20"
+                },
+                wp.element.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
+              )
+            )
+          ),
+          wp.element.createElement(
+            "div",
+            { className: className + "__desc_wrap" },
+            wp.element.createElement(RichText, {
+              tagName: "p",
+              className: className + "__desc",
+              onChange: function onChange(newText) {
+                return setAttributes({ descText: newText });
+              },
+              value: descText
+            })
+          )
+        )
+      )];
+    },
+    save: function save(props) {
+      var _props$attributes2 = props.attributes,
+          titleText = _props$attributes2.titleText,
+          titleTag = _props$attributes2.titleTag,
+          descText = _props$attributes2.descText;
+
+      return wp.element.createElement(
+        "div",
+        { className: "" + className },
+        wp.element.createElement(
+          "div",
+          { className: className + "__content_wrap" },
+          wp.element.createElement(
+            "div",
+            { className: className + "__title_wrap" },
+            wp.element.createElement(
+              "div",
+              { className: className + "__title" },
+              wp.element.createElement(RichText.Content, {
+                tagName: titleTag.toLowerCase(),
+                className: className + "__title_text",
+                value: titleText
+              })
+            ),
+            wp.element.createElement(
+              "div",
+              { className: className + "__icon_wrap" },
+              wp.element.createElement(
+                "svg",
+                {
+                  className: className + "__icon",
+                  role: "img",
+                  focusable: "false",
+                  xmlns: "http://www.w3.org/2000/svg",
+                  width: "20",
+                  height: "20",
+                  viewBox: "0 0 20 20"
+                },
+                wp.element.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
+              )
+            )
+          ),
+          wp.element.createElement(
+            "div",
+            { className: className + "__desc_wrap" },
+            wp.element.createElement(RichText.Content, {
+              tagName: "p",
+              className: className + "__desc",
+              value: descText
+            })
+          )
+        )
+      );
+    }
+  });
 }
 
 /***/ })

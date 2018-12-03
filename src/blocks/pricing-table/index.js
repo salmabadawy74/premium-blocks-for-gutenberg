@@ -573,20 +573,6 @@ if (pricingTable) {
           label: __("Bottom")
         }
       ];
-      const SIZES = [
-        {
-          value: "flex-start",
-          label: __("Top")
-        },
-        {
-          value: "center",
-          label: __("Middle")
-        },
-        {
-          value: "flex-end",
-          label: __("Bottom")
-        }
-      ];
       const PRICE = [
         {
           value: "slash",
