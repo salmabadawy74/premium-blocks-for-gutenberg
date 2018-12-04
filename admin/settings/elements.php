@@ -40,6 +40,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
         //Enqueue dashboard menu required assets
         public function pa_admin_page_scripts () {
             
+            wp_enqueue_style( 'pbg-icon', PREMIUM_BLOCKS_URL .'admin/assets/pbg-font/css/pbg-font.css' );
+            
             $current_screen = get_current_screen();
             
             if( strpos( $current_screen->id, $this->slug ) !== false){

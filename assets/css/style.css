@@ -1415,6 +1415,10 @@ a.premium-dheading-block__link:hover {
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
+.premium-accordion__title_wrap.premium-accordion__rtl {
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
 .premium-accordion .premium-accordion__title_text {
   cursor: pointer;
 }
