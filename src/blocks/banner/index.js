@@ -829,10 +829,6 @@ if (banner) {
             titleSize,
             titleWeight,
             titleLine,
-            shadowBlur,
-            shadowColor,
-            shadowHorizontal,
-            shadowVertical,
             descColor,
             descSize,
             descWeight,
@@ -857,7 +853,7 @@ if (banner) {
                     `background: ${background}`,
                     "}",
                     `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
-                    `opacity: ${background ? 1 - opacity / 100 : 0} `,
+                    `opacity: ${opacity / 100} `,
                     "}"
                   ].join("\n")
                 }}
@@ -905,8 +901,7 @@ if (banner) {
                         color: titleColor,
                         fontSize: titleSize + "px",
                         fontWeight: titleWeight,
-                        lineHeight: titleLine + "px",
-                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
+                        lineHeight: titleLine + "px"
                       }}
                     />
                   </div>

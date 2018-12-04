@@ -269,6 +269,62 @@ function PremiumTypo(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumTextShadow;
+var __ = wp.i18n.__;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    RangeControl = _wp$components.RangeControl;
+var PanelColorSettings = wp.editor.PanelColorSettings;
+
+function PremiumTextShadow(props) {
+  var color = props.color,
+      blur = props.blur,
+      horizontal = props.horizontal,
+      vertical = props.vertical,
+      _props$onChangeColor = props.onChangeColor,
+      onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
+      _props$onChangeBlur = props.onChangeBlur,
+      onChangeBlur = _props$onChangeBlur === undefined ? function () {} : _props$onChangeBlur,
+      _props$onChangehHoriz = props.onChangehHorizontal,
+      onChangehHorizontal = _props$onChangehHoriz === undefined ? function () {} : _props$onChangehHoriz,
+      _props$onChangeVertic = props.onChangeVertical,
+      onChangeVertical = _props$onChangeVertic === undefined ? function () {} : _props$onChangeVertic;
+
+
+  return wp.element.createElement(
+    PanelBody,
+    {
+      title: __("Text Shadow"),
+      className: "premium-panel-body premium-panel-body-inner",
+      initialOpen: false
+    },
+    wp.element.createElement(PanelColorSettings, {
+      title: __("Colors"),
+      colorSettings: [{
+        label: __("Shadow Color"),
+        value: color,
+        onChange: onChangeColor
+      }]
+    }),
+    wp.element.createElement(RangeControl, { label: __("Blur"), value: blur, onChange: onChangeBlur }),
+    wp.element.createElement(RangeControl, {
+      label: __("Horizontal"),
+      value: horizontal,
+      onChange: onChangehHorizontal
+    }),
+    wp.element.createElement(RangeControl, {
+      label: __("Vertical"),
+      value: vertical,
+      onChange: onChangeVertical
+    })
+  );
+}
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumMargin;
 var __ = wp.i18n.__;
 var Fragment = wp.element.Fragment;
@@ -323,7 +379,7 @@ function PremiumMargin(props) {
 }
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -382,62 +438,6 @@ function PremiumPadding(props) {
 }
 
 /***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumTextShadow;
-var __ = wp.i18n.__;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    RangeControl = _wp$components.RangeControl;
-var PanelColorSettings = wp.editor.PanelColorSettings;
-
-function PremiumTextShadow(props) {
-  var color = props.color,
-      blur = props.blur,
-      horizontal = props.horizontal,
-      vertical = props.vertical,
-      _props$onChangeColor = props.onChangeColor,
-      onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
-      _props$onChangeBlur = props.onChangeBlur,
-      onChangeBlur = _props$onChangeBlur === undefined ? function () {} : _props$onChangeBlur,
-      _props$onChangehHoriz = props.onChangehHorizontal,
-      onChangehHorizontal = _props$onChangehHoriz === undefined ? function () {} : _props$onChangehHoriz,
-      _props$onChangeVertic = props.onChangeVertical,
-      onChangeVertical = _props$onChangeVertic === undefined ? function () {} : _props$onChangeVertic;
-
-
-  return wp.element.createElement(
-    PanelBody,
-    {
-      title: __("Text Shadow"),
-      className: "premium-panel-body premium-panel-body-inner",
-      initialOpen: false
-    },
-    wp.element.createElement(PanelColorSettings, {
-      title: __("Colors"),
-      colorSettings: [{
-        label: __("Shadow Color"),
-        value: color,
-        onChange: onChangeColor
-      }]
-    }),
-    wp.element.createElement(RangeControl, { label: __("Blur"), value: blur, onChange: onChangeBlur }),
-    wp.element.createElement(RangeControl, {
-      label: __("Horizontal"),
-      value: horizontal,
-      onChange: onChangehHorizontal
-    }),
-    wp.element.createElement(RangeControl, {
-      label: __("Vertical"),
-      value: vertical,
-      onChange: onChangeVertical
-    })
-  );
-}
-
-/***/ }),
 /* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -472,7 +472,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(3);
 
 
 
@@ -1496,7 +1496,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* dualHeading */]) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(3);
 
 
 
@@ -2335,10 +2335,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
             titleSize = _props$attributes3.titleSize,
             titleWeight = _props$attributes3.titleWeight,
             titleLine = _props$attributes3.titleLine,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
             descColor = _props$attributes3.descColor,
             descSize = _props$attributes3.descSize,
             descWeight = _props$attributes3.descWeight,
@@ -2356,7 +2352,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
           },
           wp.element.createElement("style", {
             dangerouslySetInnerHTML: {
-              __html: ["#premium-banner-" + id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 0) + " ", "}"].join("\n")
+              __html: ["#premium-banner-" + id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + id + " .premium-banner__img.premium-banner__active {", "opacity: " + opacity / 100 + " ", "}"].join("\n")
             }
           }),
           wp.element.createElement(
@@ -2409,8 +2405,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
                     color: titleColor,
                     fontSize: titleSize + "px",
                     fontWeight: titleWeight,
-                    lineHeight: titleLine + "px",
-                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
+                    lineHeight: titleLine + "px"
                   }
                 })
               ),
@@ -7604,8 +7599,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* countUp */]) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_icon__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_padding__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_padding__ = __webpack_require__(5);
 
 
 
@@ -8300,7 +8295,7 @@ function PremiumIcon(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(3);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -8886,8 +8881,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* button */]) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(20);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -8920,113 +8915,114 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* container */]) {
 
   var CONTENT = [["core/paragraph", { content: __("Insert Your Content Here") }], ["core/paragraph", { content: __("Insert Your Content Here") }]];
 
+  var containerAttrs = {
+    horAlign: {
+      type: "string",
+      default: "center"
+    },
+    height: {
+      type: "string",
+      default: "min"
+    },
+    innerWidth: {
+      type: "number",
+      default: 100
+    },
+    minHeight: {
+      type: "number"
+    },
+    vPos: {
+      type: "string",
+      default: "top"
+    },
+    color: {
+      type: "string"
+    },
+    imageID: {
+      type: "string"
+    },
+    imageURL: {
+      type: "string"
+    },
+    backgroundRepeat: {
+      type: "string",
+      default: "no-repeat"
+    },
+    backgroundPosition: {
+      type: "string",
+      default: "top center"
+    },
+    backgroundSize: {
+      type: "string",
+      default: "auto"
+    },
+    fixed: {
+      type: "boolean",
+      default: false
+    },
+    borderType: {
+      type: "string",
+      default: "none"
+    },
+    borderWidth: {
+      type: "number",
+      default: "1"
+    },
+    borderRadius: {
+      type: "number"
+    },
+    borderColor: {
+      type: "string"
+    },
+    marginTop: {
+      type: "number"
+    },
+    marginBottom: {
+      type: "number"
+    },
+    marginLeft: {
+      type: "number"
+    },
+    marginRight: {
+      type: "number"
+    },
+    paddingTop: {
+      type: "number"
+    },
+    paddingRight: {
+      type: "number"
+    },
+    paddingBottom: {
+      type: "number"
+    },
+    paddingLeft: {
+      type: "number"
+    },
+    shadowColor: {
+      type: "string"
+    },
+    shadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    shadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    shadowVertical: {
+      type: "number",
+      default: "0"
+    },
+    shadowPosition: {
+      type: "string",
+      default: ""
+    }
+  };
   registerBlockType("premium/container", {
-    title: __("Container"),
+    title: __("Section"),
     icon: "share-alt2",
     category: "premium-blocks",
-    attributes: {
-      horAlign: {
-        type: "string",
-        default: "center"
-      },
-      height: {
-        type: "string",
-        default: "min"
-      },
-      innerWidth: {
-        type: "number",
-        default: 100
-      },
-      minHeight: {
-        type: "number"
-      },
-      vPos: {
-        type: "string",
-        default: "top"
-      },
-      color: {
-        type: "string"
-      },
-      imageID: {
-        type: "string"
-      },
-      imageURL: {
-        type: "string"
-      },
-      backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-      },
-      backgroundPosition: {
-        type: "string",
-        default: "top center"
-      },
-      backgroundSize: {
-        type: "string",
-        default: "auto"
-      },
-      fixed: {
-        type: "boolean",
-        default: false
-      },
-      borderType: {
-        type: "string",
-        default: "none"
-      },
-      borderWidth: {
-        type: "number",
-        default: "1"
-      },
-      borderRadius: {
-        type: "number"
-      },
-      borderColor: {
-        type: "string"
-      },
-      marginTop: {
-        type: "number"
-      },
-      marginBottom: {
-        type: "number"
-      },
-      marginLeft: {
-        type: "number"
-      },
-      marginRight: {
-        type: "number"
-      },
-      paddingTop: {
-        type: "number"
-      },
-      paddingRight: {
-        type: "number"
-      },
-      paddingBottom: {
-        type: "number"
-      },
-      paddingLeft: {
-        type: "number"
-      },
-      shadowColor: {
-        type: "string"
-      },
-      shadowBlur: {
-        type: "number",
-        default: "0"
-      },
-      shadowHorizontal: {
-        type: "number",
-        default: "0"
-      },
-      shadowVertical: {
-        type: "number",
-        default: "0"
-      },
-      shadowPosition: {
-        type: "string",
-        default: ""
-      }
-    },
+    attributes: containerAttrs,
     supports: _defineProperty({
       align: true
     }, "align", ["center", "wide", "full"]),
@@ -9508,7 +9504,83 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* container */]) {
           )
         )
       );
-    }
+    },
+    deprecated: [{
+      attributes: containerAttrs,
+      save: function save(props) {
+        var _props$attributes3 = props.attributes,
+            horAlign = _props$attributes3.horAlign,
+            innerWidth = _props$attributes3.innerWidth,
+            height = _props$attributes3.height,
+            vPos = _props$attributes3.vPos,
+            minHeight = _props$attributes3.minHeight,
+            color = _props$attributes3.color,
+            imageURL = _props$attributes3.imageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderColor = _props$attributes3.borderColor,
+            borderRadius = _props$attributes3.borderRadius,
+            marginTop = _props$attributes3.marginTop,
+            marginBottom = _props$attributes3.marginBottom,
+            marginLeft = _props$attributes3.marginLeft,
+            marginRight = _props$attributes3.marginRight,
+            paddingTop = _props$attributes3.paddingTop,
+            paddingRight = _props$attributes3.paddingRight,
+            paddingBottom = _props$attributes3.paddingBottom,
+            paddingLeft = _props$attributes3.paddingLeft,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            shadowPosition = _props$attributes3.shadowPosition;
+
+        return wp.element.createElement(
+          "div",
+          {
+            className: className,
+            style: {
+              textAlign: horAlign,
+              height: "fit" === height ? "100vh" : minHeight,
+              backgroundColor: color,
+              border: borderType,
+              borderWidth: borderWidth + "px",
+              borderRadius: borderRadius + "px",
+              borderColor: borderColor,
+              backgroundImage: "url('" + imageURL + "')",
+              backgroundRepeat: backgroundRepeat,
+              backgroundPosition: backgroundPosition,
+              backgroundSize: backgroundSize,
+              backgroundAttachment: fixed ? "fixed" : "unset",
+              marginTop: marginTop + "px",
+              marginBottom: marginBottom + "px",
+              paddingTop: paddingTop + "px",
+              marginLeft: marginLeft + "px",
+              marginRight: marginRight + "px",
+              paddingBottom: paddingBottom + "px",
+              paddingLeft: paddingLeft + "px",
+              paddingRight: paddingRight + "px",
+              boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
+            }
+          },
+          wp.element.createElement(
+            "div",
+            {
+              className: className + "__content_wrap " + className + "__" + vPos,
+              style: { width: innerWidth + "%" }
+            },
+            wp.element.createElement(
+              "div",
+              { className: className + "__content_inner" },
+              wp.element.createElement(InnerBlocks.Content, null)
+            )
+          )
+        );
+      }
+    }]
   });
 }
 
@@ -9592,8 +9664,8 @@ function PremiumTextShadow(props) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_typo__ = __webpack_require__(2);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 

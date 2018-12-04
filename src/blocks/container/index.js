@@ -35,113 +35,114 @@ if (container) {
     ["core/paragraph", { content: __("Insert Your Content Here") }]
   ];
 
+  const containerAttrs = {
+    horAlign: {
+      type: "string",
+      default: "center"
+    },
+    height: {
+      type: "string",
+      default: "min"
+    },
+    innerWidth: {
+      type: "number",
+      default: 100
+    },
+    minHeight: {
+      type: "number"
+    },
+    vPos: {
+      type: "string",
+      default: "top"
+    },
+    color: {
+      type: "string"
+    },
+    imageID: {
+      type: "string"
+    },
+    imageURL: {
+      type: "string"
+    },
+    backgroundRepeat: {
+      type: "string",
+      default: "no-repeat"
+    },
+    backgroundPosition: {
+      type: "string",
+      default: "top center"
+    },
+    backgroundSize: {
+      type: "string",
+      default: "auto"
+    },
+    fixed: {
+      type: "boolean",
+      default: false
+    },
+    borderType: {
+      type: "string",
+      default: "none"
+    },
+    borderWidth: {
+      type: "number",
+      default: "1"
+    },
+    borderRadius: {
+      type: "number"
+    },
+    borderColor: {
+      type: "string"
+    },
+    marginTop: {
+      type: "number"
+    },
+    marginBottom: {
+      type: "number"
+    },
+    marginLeft: {
+      type: "number"
+    },
+    marginRight: {
+      type: "number"
+    },
+    paddingTop: {
+      type: "number"
+    },
+    paddingRight: {
+      type: "number"
+    },
+    paddingBottom: {
+      type: "number"
+    },
+    paddingLeft: {
+      type: "number"
+    },
+    shadowColor: {
+      type: "string"
+    },
+    shadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    shadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    shadowVertical: {
+      type: "number",
+      default: "0"
+    },
+    shadowPosition: {
+      type: "string",
+      default: ""
+    }
+  };
   registerBlockType("premium/container", {
-    title: __("Container"),
+    title: __("Section"),
     icon: "share-alt2",
     category: "premium-blocks",
-    attributes: {
-      horAlign: {
-        type: "string",
-        default: "center"
-      },
-      height: {
-        type: "string",
-        default: "min"
-      },
-      innerWidth: {
-        type: "number",
-        default: 100
-      },
-      minHeight: {
-        type: "number"
-      },
-      vPos: {
-        type: "string",
-        default: "top"
-      },
-      color: {
-        type: "string"
-      },
-      imageID: {
-        type: "string"
-      },
-      imageURL: {
-        type: "string"
-      },
-      backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-      },
-      backgroundPosition: {
-        type: "string",
-        default: "top center"
-      },
-      backgroundSize: {
-        type: "string",
-        default: "auto"
-      },
-      fixed: {
-        type: "boolean",
-        default: false
-      },
-      borderType: {
-        type: "string",
-        default: "none"
-      },
-      borderWidth: {
-        type: "number",
-        default: "1"
-      },
-      borderRadius: {
-        type: "number"
-      },
-      borderColor: {
-        type: "string"
-      },
-      marginTop: {
-        type: "number"
-      },
-      marginBottom: {
-        type: "number"
-      },
-      marginLeft: {
-        type: "number"
-      },
-      marginRight: {
-        type: "number"
-      },
-      paddingTop: {
-        type: "number"
-      },
-      paddingRight: {
-        type: "number"
-      },
-      paddingBottom: {
-        type: "number"
-      },
-      paddingLeft: {
-        type: "number"
-      },
-      shadowColor: {
-        type: "string"
-      },
-      shadowBlur: {
-        type: "number",
-        default: "0"
-      },
-      shadowHorizontal: {
-        type: "number",
-        default: "0"
-      },
-      shadowVertical: {
-        type: "number",
-        default: "0"
-      },
-      shadowPosition: {
-        type: "string",
-        default: ""
-      }
-    },
+    attributes: containerAttrs,
     supports: {
       align: true,
       align: ["center", "wide", "full"]
@@ -622,6 +623,80 @@ if (container) {
           </div>
         </div>
       );
-    }
+    },
+    deprecated: [
+      {
+        attributes: containerAttrs,
+        save: props => {
+          const {
+            horAlign,
+            innerWidth,
+            height,
+            vPos,
+            minHeight,
+            color,
+            imageURL,
+            fixed,
+            backgroundRepeat,
+            backgroundPosition,
+            backgroundSize,
+            borderType,
+            borderWidth,
+            borderColor,
+            borderRadius,
+            marginTop,
+            marginBottom,
+            marginLeft,
+            marginRight,
+            paddingTop,
+            paddingRight,
+            paddingBottom,
+            paddingLeft,
+            shadowBlur,
+            shadowColor,
+            shadowHorizontal,
+            shadowVertical,
+            shadowPosition
+          } = props.attributes;
+          return (
+            <div
+              className={className}
+              style={{
+                textAlign: horAlign,
+                height: "fit" === height ? "100vh" : minHeight,
+                backgroundColor: color,
+                border: borderType,
+                borderWidth: borderWidth + "px",
+                borderRadius: borderRadius + "px",
+                borderColor: borderColor,
+                backgroundImage: `url('${imageURL}')`,
+                backgroundRepeat: backgroundRepeat,
+                backgroundPosition: backgroundPosition,
+                backgroundSize: backgroundSize,
+                backgroundAttachment: fixed ? "fixed" : "unset",
+                marginTop: marginTop + "px",
+                marginBottom: marginBottom + "px",
+                paddingTop: paddingTop + "px",
+                marginLeft: marginLeft + "px",
+                marginRight: marginRight + "px",
+                paddingBottom: paddingBottom + "px",
+                paddingLeft: paddingLeft + "px",
+                paddingRight: paddingRight + "px",
+                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+              }}
+            >
+              <div
+                className={`${className}__content_wrap ${className}__${vPos}`}
+                style={{ width: innerWidth + "%" }}
+              >
+                <div className={`${className}__content_inner`}>
+                  <InnerBlocks.Content />
+                </div>
+              </div>
+            </div>
+          );
+        }
+      }
+    ]
   });
 }
