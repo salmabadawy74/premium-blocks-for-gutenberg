@@ -1,5 +1,7 @@
 import { banner } from "../settings";
 import PremiumBorder from "../../components/premium-border";
+import PremiumTypo from "../../components/premium-typo";
+import PremiumTextShadow from "../../components/premium-text-shadow";
 
 if (banner) {
   const className = "premium-banner";
@@ -27,140 +29,156 @@ if (banner) {
     MediaUpload
   } = wp.editor;
 
+  const bannerAttrs = {
+    imageID: {
+      type: "number"
+    },
+    imageURL: {
+      type: "string",
+      source: "attribute",
+      attribute: "src",
+      selector: ".premium-banner__img"
+    },
+    title: {
+      type: "array",
+      source: "children",
+      selector: ".premium-banner__title",
+      default: __("Awesome Title")
+    },
+    titleTag: {
+      type: "string",
+      default: "H3"
+    },
+    desc: {
+      type: "array",
+      source: "children",
+      selector: ".premium-banner__desc",
+      default: __("Cool Description!!")
+    },
+    contentAlign: {
+      type: "string",
+      default: "left"
+    },
+    effect: {
+      type: "string",
+      default: "effect1"
+    },
+    hoverEffect: {
+      type: "string",
+      default: "none"
+    },
+    height: {
+      type: "string",
+      default: "default"
+    },
+    minHeight: {
+      type: "number"
+    },
+    verAlign: {
+      type: "string",
+      default: "top"
+    },
+    hovered: {
+      type: "boolean",
+      default: false
+    },
+    responsive: {
+      type: "boolean",
+      default: false
+    },
+    background: {
+      type: "string"
+    },
+    opacity: {
+      type: "number",
+      default: 50
+    },
+    borderType: {
+      type: "string",
+      default: "none"
+    },
+    borderWidth: {
+      type: "number",
+      default: "1"
+    },
+    borderRadius: {
+      type: "number",
+      default: "0"
+    },
+    borderColor: {
+      type: "string"
+    },
+    titleColor: {
+      type: "string"
+    },
+    titleSize: {
+      type: "number",
+      default: "20"
+    },
+    titleLine: {
+      type: "number"
+    },
+    titleWeight: {
+      type: "number"
+    },
+    titleBack: {
+      type: "string"
+    },
+    shadowColor: {
+      type: "string"
+    },
+    shadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    shadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    shadowVertical: {
+      type: "number",
+      default: "0"
+    },
+    descColor: {
+      type: "string",
+      default: "#000"
+    },
+    descSize: {
+      type: "number",
+      default: "20"
+    },
+    descLine: {
+      type: "number"
+    },
+    descWeight: {
+      type: "number"
+    },
+    urlCheck: {
+      type: "boolean",
+      default: false
+    },
+    target: {
+      type: "boolean",
+      default: false
+    },
+    url: {
+      type: "string",
+      source: "attribute",
+      attribute: "href",
+      selector: ".premium-banner__link"
+    },
+    sepColor: {
+      type: "string"
+    },
+    id: {
+      type: "string"
+    }
+  };
   registerBlockType("premium/banner", {
     title: __("Banner"),
     icon: "admin-page",
     category: "premium-blocks",
-    attributes: {
-      imageID: {
-        type: "number"
-      },
-      imageURL: {
-        type: "string",
-        source: "attribute",
-        attribute: "src",
-        selector: ".premium-banner__img"
-      },
-      title: {
-        type: "array",
-        source: "children",
-        selector: ".premium-banner__title",
-        default: __("Awesome Title")
-      },
-      titleTag: {
-        type: "string",
-        default: "H3"
-      },
-      desc: {
-        type: "array",
-        source: "children",
-        selector: ".premium-banner__desc",
-        default: __("Cool Description!!")
-      },
-      contentAlign: {
-        type: "string",
-        default: "left"
-      },
-      effect: {
-        type: "string",
-        default: "effect1"
-      },
-      hoverEffect: {
-        type: "string",
-        default: "none"
-      },
-      height: {
-        type: "string",
-        default: "default"
-      },
-      minHeight: {
-        type: "number"
-      },
-      verAlign: {
-        type: "string",
-        default: "top"
-      },
-      hovered: {
-        type: "boolean",
-        default: false
-      },
-      responsive: {
-        type: "boolean",
-        default: false
-      },
-      background: {
-        type: "string"
-      },
-      opacity: {
-        type: "number",
-        default: 50
-      },
-      borderType: {
-        type: "string",
-        default: "none"
-      },
-      borderWidth: {
-        type: "number",
-        default: "1"
-      },
-      borderRadius: {
-        type: "number",
-        default: "0"
-      },
-      borderColor: {
-        type: "string"
-      },
-      titleColor: {
-        type: "string"
-      },
-      titleSize: {
-        type: "number",
-        default: "20"
-      },
-      titleLine: {
-        type: "number"
-      },
-      titleWeight: {
-        type: "number"
-      },
-      titleBack: {
-        type: "string"
-      },
-      descColor: {
-        type: "string",
-        default: "#000"
-      },
-      descSize: {
-        type: "number",
-        default: "20"
-      },
-      descLine: {
-        type: "number"
-      },
-      descWeight: {
-        type: "number"
-      },
-      urlCheck: {
-        type: "boolean",
-        default: false
-      },
-      target: {
-        type: "boolean",
-        default: false
-      },
-      url: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-banner__link"
-      },
-      sepColor: {
-        type: "string"
-      },
-      id: {
-        type: "string"
-      }
-    },
+    attributes: bannerAttrs,
     edit: props => {
       const { isSelected, setAttributes, clientId: blockID } = props;
       const {
@@ -189,6 +207,10 @@ if (banner) {
         titleLine,
         titleWeight,
         titleBack,
+        shadowBlur,
+        shadowColor,
+        shadowHorizontal,
+        shadowVertical,
         descColor,
         descSize,
         descLine,
@@ -459,27 +481,18 @@ if (banner) {
                   }
                 ]}
               />
-              <RangeControl
-                label={__("Font Size (PX)")}
-                value={titleSize}
-                min="10"
-                max="80"
-                onChange={newSize => setAttributes({ titleSize: newSize })}
-              />
-              <RangeControl
-                label={__("Font Weight")}
-                min="100"
-                max="900"
-                step="100"
-                value={titleWeight}
-                onChange={newWeight =>
+              <PremiumTypo
+                components={["size", "weight", "line"]}
+                size={titleSize}
+                weight={titleWeight}
+                line={titleLine}
+                onChangeSize={newSize => setAttributes({ titleSize: newSize })}
+                onChangeWeight={newWeight =>
                   setAttributes({ titleWeight: newWeight })
                 }
-              />
-              <RangeControl
-                label={__("Line Height (PX)")}
-                value={titleLine}
-                onChange={newValue => setAttributes({ titleLine: newValue })}
+                onChangeLine={newValue =>
+                  setAttributes({ titleLine: newValue })
+                }
               />
               {"effect3" == effect && (
                 <PanelColorSettings
@@ -507,6 +520,22 @@ if (banner) {
                   ]}
                 />
               )}
+              <PremiumTextShadow
+                color={shadowColor}
+                blur={shadowBlur}
+                horizontal={shadowHorizontal}
+                vertical={shadowVertical}
+                onChangeColor={newColor =>
+                  setAttributes({ shadowColor: newColor })
+                }
+                onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
+                onChangehHorizontal={newValue =>
+                  setAttributes({ shadowHorizontal: newValue })
+                }
+                onChangeVertical={newValue =>
+                  setAttributes({ shadowVertical: newValue })
+                }
+              />
             </PanelBody>
             <PanelBody
               title={__("Description Settings")}
@@ -524,25 +553,16 @@ if (banner) {
                   }
                 ]}
               />
-              <RangeControl
-                label={__("Font Size (PX)")}
-                value={descSize}
-                min="10"
-                max="80"
-                onChange={newSize => setAttributes({ descSize: newSize })}
-              />
-              <RangeControl
-                label={__("Font Weight")}
-                min="100"
-                max="900"
-                step="100"
-                value={descWeight}
-                onChange={newWeight => setAttributes({ descWeight: newWeight })}
-              />
-              <RangeControl
-                label={__("Line Height (PX)")}
-                value={descLine}
-                onChange={newValue => setAttributes({ descLine: newValue })}
+              <PremiumTypo
+                components={["size", "weight", "line"]}
+                size={descSize}
+                weight={descWeight}
+                line={descLine}
+                onChangeSize={newSize => setAttributes({ descSize: newSize })}
+                onChangeWeight={newWeight =>
+                  setAttributes({ descWeight: newWeight })
+                }
+                onChangeLine={newValue => setAttributes({ descLine: newValue })}
               />
             </PanelBody>
           </InspectorControls>
@@ -561,7 +581,7 @@ if (banner) {
                 `background: ${background}`,
                 "}",
                 `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
-                `opacity: ${opacity / 100} `,
+                `opacity: ${background ? 1 - opacity / 100 : 1} `,
                 "}"
               ].join("\n")
             }}
@@ -612,7 +632,8 @@ if (banner) {
                       color: titleColor,
                       fontSize: titleSize + "px",
                       fontWeight: titleWeight,
-                      lineHeight: titleLine + "px"
+                      lineHeight: titleLine + "px",
+                      textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
                     }}
                   />
                 </div>
@@ -668,6 +689,10 @@ if (banner) {
         titleSize,
         titleWeight,
         titleLine,
+        shadowBlur,
+        shadowColor,
+        shadowHorizontal,
+        shadowVertical,
         descColor,
         descSize,
         descWeight,
@@ -692,7 +717,7 @@ if (banner) {
                 `background: ${background}`,
                 "}",
                 `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
-                `opacity: ${opacity / 100} `,
+                `opacity: ${background ? 1 - opacity / 100 : 1} `,
                 "}"
               ].join("\n")
             }}
@@ -740,7 +765,8 @@ if (banner) {
                     color: titleColor,
                     fontSize: titleSize + "px",
                     fontWeight: titleWeight,
-                    lineHeight: titleLine + "px"
+                    lineHeight: titleLine + "px",
+                    textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
                   }}
                 />
               </div>
@@ -773,6 +799,148 @@ if (banner) {
           </div>
         </div>
       );
-    }
+    },
+    deprecated: [
+      {
+        attributes: bannerAttrs,
+        save: props => {
+          const {
+            id,
+            imageURL,
+            title,
+            titleTag,
+            desc,
+            contentAlign,
+            effect,
+            hoverEffect,
+            height,
+            minHeight,
+            verAlign,
+            hovered,
+            responsive,
+            background,
+            opacity,
+            borderType,
+            borderWidth,
+            borderRadius,
+            borderColor,
+            titleColor,
+            titleBack,
+            titleSize,
+            titleWeight,
+            titleLine,
+            shadowBlur,
+            shadowColor,
+            shadowHorizontal,
+            shadowVertical,
+            descColor,
+            descSize,
+            descWeight,
+            descLine,
+            urlCheck,
+            url,
+            target,
+            sepColor
+          } = props.attributes;
+          return (
+            <div
+              id={`premium-banner-${id}`}
+              className={`${className} ${className}__responsive_${responsive}`}
+            >
+              <style
+                dangerouslySetInnerHTML={{
+                  __html: [
+                    `#premium-banner-${id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                    `background: ${sepColor}`,
+                    "}",
+                    `#premium-banner-${id} .premium-banner__inner {`,
+                    `background: ${background}`,
+                    "}",
+                    `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
+                    `opacity: ${background ? 1 - opacity / 100 : 0} `,
+                    "}"
+                  ].join("\n")
+                }}
+              />
+              <div
+                className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
+                style={{
+                  border: borderType,
+                  borderWidth: borderWidth + "px",
+                  borderRadius: borderRadius + "px",
+                  borderColor: borderColor
+                }}
+              >
+                <div
+                  className={`${className}__img_wrap ${className}__${height}`}
+                  style={{
+                    minHeight: minHeight,
+                    alignItems: verAlign
+                  }}
+                >
+                  <img
+                    className={`${className}__img`}
+                    alt="Banner Image"
+                    src={imageURL}
+                  />
+                </div>
+
+                <div
+                  className={`${className}__content`}
+                  style={{
+                    background: "effect2" == effect ? titleBack : "transparent"
+                  }}
+                >
+                  <div
+                    className={`${className}__title_wrap`}
+                    style={{
+                      textAlign: contentAlign
+                    }}
+                  >
+                    <RichText.Content
+                      tagName={titleTag.toLowerCase()}
+                      className={`${className}__title`}
+                      value={title}
+                      style={{
+                        color: titleColor,
+                        fontSize: titleSize + "px",
+                        fontWeight: titleWeight,
+                        lineHeight: titleLine + "px",
+                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
+                      }}
+                    />
+                  </div>
+                  <div
+                    className={`${className}__desc_wrap`}
+                    style={{
+                      textAlign: contentAlign
+                    }}
+                  >
+                    <RichText.Content
+                      tagName="p"
+                      className={`${className}__desc`}
+                      value={desc}
+                      style={{
+                        color: descColor,
+                        fontSize: descSize + "px",
+                        fontWeight: descWeight,
+                        lineHeight: descLine + "px"
+                      }}
+                    />
+                  </div>
+                </div>
+                {urlCheck && "" !== url && (
+                  <a
+                    className={`${className}__link`}
+                    href={url}
+                    target={target && "_blank"}
+                  />
+                )}
+              </div>
+            </div>
+          );
+        }
+      }
+    ]
   });
 }

@@ -497,204 +497,204 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* dualHeading */]) {
       URLInput = _wp$editor.URLInput;
 
 
+  var dualHeadingAttrs = {
+    contentAlign: {
+      type: "string",
+      default: "center"
+    },
+    firstHeading: {
+      type: "array",
+      source: "children",
+      default: "Premium ",
+      selector: ".premium-dheading-block__first"
+    },
+    secondHeading: {
+      type: "array",
+      source: "children",
+      default: "Blocks",
+      selector: ".premium-dheading-block__second"
+    },
+    titleTag: {
+      type: "string",
+      default: "h1"
+    },
+    display: {
+      type: "string",
+      default: "inline"
+    },
+    firstColor: {
+      type: "string",
+      default: "#6ec1e4"
+    },
+    firstSize: {
+      type: "number",
+      default: "20"
+    },
+    firstLetter: {
+      type: "number"
+    },
+    firstStyle: {
+      type: "string"
+    },
+    firstUpper: {
+      type: "boolean"
+    },
+    firstWeight: {
+      type: "number",
+      default: 500
+    },
+    firstBackground: {
+      type: "string"
+    },
+    firstBorderType: {
+      type: "string",
+      default: "none"
+    },
+    firstBorderWidth: {
+      type: "number",
+      default: "1"
+    },
+    firstBorderRadius: {
+      type: "number",
+      default: "0"
+    },
+    firstBorderColor: {
+      type: "string"
+    },
+    firstMarginR: {
+      type: "number",
+      default: "0"
+    },
+    firstMarginL: {
+      type: "number",
+      default: "0"
+    },
+    firstPadding: {
+      type: "number",
+      default: "0"
+    },
+    firstClip: {
+      type: "boolean",
+      default: false
+    },
+    firstAnim: {
+      type: "boolean",
+      default: false
+    },
+    firstClipColor: {
+      type: "string",
+      default: "#54595f"
+    },
+    firstShadowColor: {
+      type: "string"
+    },
+    firstShadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    firstShadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    firstShadowVertical: {
+      type: "number",
+      default: "0"
+    },
+    secondColor: {
+      type: "string",
+      default: "#54595f"
+    },
+    secondSize: {
+      type: "number",
+      default: "20"
+    },
+    secondLetter: {
+      type: "number"
+    },
+    secondStyle: {
+      type: "string"
+    },
+    secondUpper: {
+      type: "boolean"
+    },
+    secondWeight: {
+      type: "number",
+      default: 500
+    },
+    secondBackground: {
+      type: "string"
+    },
+    secondBorderType: {
+      type: "string",
+      default: "none"
+    },
+    secondBorderWidth: {
+      type: "number",
+      default: "1"
+    },
+    secondBorderRadius: {
+      type: "number",
+      default: "0"
+    },
+    secondBorderColor: {
+      type: "string"
+    },
+    secondMarginR: {
+      type: "number",
+      default: "0"
+    },
+    secondMarginL: {
+      type: "number",
+      default: "0"
+    },
+    secondPadding: {
+      type: "number",
+      default: "0"
+    },
+    secondClip: {
+      type: "boolean",
+      default: false
+    },
+    secondShadowColor: {
+      type: "string"
+    },
+    secondShadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    secondShadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    secondShadowVertical: {
+      type: "number",
+      default: "0"
+    },
+    secondAnim: {
+      type: "boolean",
+      default: false
+    },
+    secondClipColor: {
+      type: "string",
+      default: "#6ec1e4"
+    },
+    link: {
+      type: "boolean",
+      default: false
+    },
+    target: {
+      type: "boolean",
+      default: false
+    },
+    headingURL: {
+      type: "string"
+    }
+  };
   registerBlockType("premium/dheading-block", {
     title: __("Dual Heading"),
     icon: "editor-paragraph",
     category: "premium-blocks",
-    attributes: {
-      contentAlign: {
-        type: "string",
-        default: "center"
-      },
-      firstHeading: {
-        type: "array",
-        source: "children",
-        default: "Premium ",
-        selector: ".premium-dheading-block__first"
-      },
-      secondHeading: {
-        type: "array",
-        source: "children",
-        default: "Blocks",
-        selector: ".premium-dheading-block__second"
-      },
-      titleTag: {
-        type: "string",
-        default: "h1"
-      },
-      display: {
-        type: "string",
-        default: "inline"
-      },
-      firstColor: {
-        type: "string",
-        default: "#6ec1e4"
-      },
-      firstSize: {
-        type: "number",
-        default: "20"
-      },
-      firstLetter: {
-        type: "number"
-      },
-      firstStyle: {
-        type: "string"
-      },
-      firstUpper: {
-        type: "boolean"
-      },
-      firstWeight: {
-        type: "number",
-        default: 500
-      },
-      firstBackground: {
-        type: "string"
-      },
-      firstBorderType: {
-        type: "string",
-        default: "none"
-      },
-      firstBorderWidth: {
-        type: "number",
-        default: "1"
-      },
-      firstBorderRadius: {
-        type: "number",
-        default: "0"
-      },
-      firstBorderColor: {
-        type: "string"
-      },
-      firstMarginR: {
-        type: "number",
-        default: "0"
-      },
-      firstMarginL: {
-        type: "number",
-        default: "0"
-      },
-      firstPadding: {
-        type: "number",
-        default: "0"
-      },
-      firstClip: {
-        type: "boolean",
-        default: false
-      },
-      firstAnim: {
-        type: "boolean",
-        default: false
-      },
-      firstClipColor: {
-        type: "string",
-        default: "#54595f"
-      },
-      firstShadowColor: {
-        type: "string"
-      },
-      firstShadowBlur: {
-        type: "number",
-        default: "0"
-      },
-      firstShadowHorizontal: {
-        type: "number",
-        default: "0"
-      },
-      firstShadowVertical: {
-        type: "number",
-        default: "0"
-      },
-      secondColor: {
-        type: "string",
-        default: "#54595f"
-      },
-      secondSize: {
-        type: "number",
-        default: "20"
-      },
-      secondLetter: {
-        type: "number"
-      },
-      secondStyle: {
-        type: "string"
-      },
-      secondUpper: {
-        type: "boolean"
-      },
-      secondWeight: {
-        type: "number",
-        default: 500
-      },
-      secondBackground: {
-        type: "string"
-      },
-      secondBorderType: {
-        type: "string",
-        default: "none"
-      },
-      secondBorderWidth: {
-        type: "number",
-        default: "1"
-      },
-      secondBorderRadius: {
-        type: "number",
-        default: "0"
-      },
-      secondBorderColor: {
-        type: "string"
-      },
-      secondMarginR: {
-        type: "number",
-        default: "0"
-      },
-      secondMarginL: {
-        type: "number",
-        default: "0"
-      },
-      secondPadding: {
-        type: "number",
-        default: "0"
-      },
-      secondClip: {
-        type: "boolean",
-        default: false
-      },
-      secondShadowColor: {
-        type: "string"
-      },
-      secondShadowBlur: {
-        type: "number",
-        default: "0"
-      },
-      secondShadowHorizontal: {
-        type: "number",
-        default: "0"
-      },
-      secondShadowVertical: {
-        type: "number",
-        default: "0"
-      },
-      secondAnim: {
-        type: "boolean",
-        default: false
-      },
-      secondClipColor: {
-        type: "string",
-        default: "#6ec1e4"
-      },
-      link: {
-        type: "boolean",
-        default: false
-      },
-      target: {
-        type: "boolean",
-        default: false
-      },
-      headingURL: {
-        type: "string"
-      }
-    },
-
+    attributes: dualHeadingAttrs,
     edit: function edit(props) {
       var setAttributes = props.setAttributes,
           isSelected = props.isSelected;
@@ -1358,7 +1358,133 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* dualHeading */]) {
           )
         )
       );
-    }
+    },
+    deprecated: [{
+      attributes: dualHeadingAttrs,
+      save: function save(props) {
+        var _props$attributes3 = props.attributes,
+            contentAlign = _props$attributes3.contentAlign,
+            firstHeading = _props$attributes3.firstHeading,
+            secondHeading = _props$attributes3.secondHeading,
+            display = _props$attributes3.display,
+            firstColor = _props$attributes3.firstColor,
+            firstBackground = _props$attributes3.firstBackground,
+            firstSize = _props$attributes3.firstSize,
+            firstStyle = _props$attributes3.firstStyle,
+            firstUpper = _props$attributes3.firstUpper,
+            firstLetter = _props$attributes3.firstLetter,
+            firstWeight = _props$attributes3.firstWeight,
+            firstBorderType = _props$attributes3.firstBorderType,
+            firstBorderWidth = _props$attributes3.firstBorderWidth,
+            firstBorderRadius = _props$attributes3.firstBorderRadius,
+            firstBorderColor = _props$attributes3.firstBorderColor,
+            firstPadding = _props$attributes3.firstPadding,
+            firstMargin = _props$attributes3.firstMargin,
+            firstClip = _props$attributes3.firstClip,
+            firstAnim = _props$attributes3.firstAnim,
+            firstClipColor = _props$attributes3.firstClipColor,
+            firstShadowBlur = _props$attributes3.firstShadowBlur,
+            firstShadowColor = _props$attributes3.firstShadowColor,
+            firstShadowHorizontal = _props$attributes3.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes3.firstShadowVertical,
+            secondColor = _props$attributes3.secondColor,
+            secondBackground = _props$attributes3.secondBackground,
+            secondSize = _props$attributes3.secondSize,
+            secondLetter = _props$attributes3.secondLetter,
+            secondUpper = _props$attributes3.secondUpper,
+            secondWeight = _props$attributes3.secondWeight,
+            secondStyle = _props$attributes3.secondStyle,
+            secondBorderType = _props$attributes3.secondBorderType,
+            secondBorderWidth = _props$attributes3.secondBorderWidth,
+            secondBorderRadius = _props$attributes3.secondBorderRadius,
+            secondBorderColor = _props$attributes3.secondBorderColor,
+            secondPadding = _props$attributes3.secondPadding,
+            secondMargin = _props$attributes3.secondMargin,
+            secondClip = _props$attributes3.secondClip,
+            secondAnim = _props$attributes3.secondAnim,
+            secondClipColor = _props$attributes3.secondClipColor,
+            secondShadowBlur = _props$attributes3.secondShadowBlur,
+            secondShadowColor = _props$attributes3.secondShadowColor,
+            secondShadowHorizontal = _props$attributes3.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes3.secondShadowVertical,
+            link = _props$attributes3.link,
+            target = _props$attributes3.target,
+            headingURL = _props$attributes3.headingURL;
+
+
+        return wp.element.createElement(
+          "a",
+          {
+            className: className + "__link",
+            href: link && headingURL,
+            target: target && "_blank"
+          },
+          wp.element.createElement(
+            "div",
+            {
+              className: className + "__container",
+              style: {
+                textAlign: contentAlign
+              }
+            },
+            wp.element.createElement(
+              "h2",
+              { className: className + "__title" },
+              wp.element.createElement(
+                "span",
+                {
+                  className: className + "__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
+                  style: {
+                    display: display,
+                    color: firstColor,
+                    backgroundColor: firstClip ? "none" : firstBackground,
+                    backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
+                    fontSize: firstSize + "px",
+                    letterSpacing: firstLetter + "px",
+                    textTransform: firstUpper ? "uppercase" : "none",
+                    fontStyle: firstStyle,
+                    fontWeight: firstWeight,
+                    border: firstBorderType,
+                    borderWidth: firstBorderWidth + "px",
+                    borderRadius: firstBorderRadius + "px",
+                    borderColor: firstBorderColor,
+                    padding: firstPadding + "px",
+                    margin: firstMargin + "px",
+                    textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
+                  }
+                },
+                firstHeading
+              ),
+              wp.element.createElement(
+                "span",
+                {
+                  className: className + "__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
+                  style: {
+                    display: display,
+                    color: secondColor,
+                    backgroundColor: secondClip ? "none" : secondBackground,
+                    backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
+                    fontSize: secondSize + "px",
+                    letterSpacing: secondLetter + "px",
+                    textTransform: secondUpper ? "uppercase" : "none",
+                    fontStyle: secondStyle,
+                    fontWeight: secondWeight,
+                    border: secondBorderType,
+                    borderWidth: secondBorderWidth + "px",
+                    borderRadius: secondBorderRadius + "px",
+                    borderColor: secondBorderColor,
+                    padding: secondPadding + "px",
+                    margin: secondMargin + "px",
+                    textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
+                  }
+                },
+                secondHeading
+              )
+            )
+          )
+        );
+      }
+    }]
   });
 }
 
@@ -1369,6 +1495,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* dualHeading */]) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(5);
+
+
 
 
 
@@ -1394,140 +1524,156 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
       MediaUpload = _wp$editor.MediaUpload;
 
 
+  var bannerAttrs = {
+    imageID: {
+      type: "number"
+    },
+    imageURL: {
+      type: "string",
+      source: "attribute",
+      attribute: "src",
+      selector: ".premium-banner__img"
+    },
+    title: {
+      type: "array",
+      source: "children",
+      selector: ".premium-banner__title",
+      default: __("Awesome Title")
+    },
+    titleTag: {
+      type: "string",
+      default: "H3"
+    },
+    desc: {
+      type: "array",
+      source: "children",
+      selector: ".premium-banner__desc",
+      default: __("Cool Description!!")
+    },
+    contentAlign: {
+      type: "string",
+      default: "left"
+    },
+    effect: {
+      type: "string",
+      default: "effect1"
+    },
+    hoverEffect: {
+      type: "string",
+      default: "none"
+    },
+    height: {
+      type: "string",
+      default: "default"
+    },
+    minHeight: {
+      type: "number"
+    },
+    verAlign: {
+      type: "string",
+      default: "top"
+    },
+    hovered: {
+      type: "boolean",
+      default: false
+    },
+    responsive: {
+      type: "boolean",
+      default: false
+    },
+    background: {
+      type: "string"
+    },
+    opacity: {
+      type: "number",
+      default: 50
+    },
+    borderType: {
+      type: "string",
+      default: "none"
+    },
+    borderWidth: {
+      type: "number",
+      default: "1"
+    },
+    borderRadius: {
+      type: "number",
+      default: "0"
+    },
+    borderColor: {
+      type: "string"
+    },
+    titleColor: {
+      type: "string"
+    },
+    titleSize: {
+      type: "number",
+      default: "20"
+    },
+    titleLine: {
+      type: "number"
+    },
+    titleWeight: {
+      type: "number"
+    },
+    titleBack: {
+      type: "string"
+    },
+    shadowColor: {
+      type: "string"
+    },
+    shadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    shadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    shadowVertical: {
+      type: "number",
+      default: "0"
+    },
+    descColor: {
+      type: "string",
+      default: "#000"
+    },
+    descSize: {
+      type: "number",
+      default: "20"
+    },
+    descLine: {
+      type: "number"
+    },
+    descWeight: {
+      type: "number"
+    },
+    urlCheck: {
+      type: "boolean",
+      default: false
+    },
+    target: {
+      type: "boolean",
+      default: false
+    },
+    url: {
+      type: "string",
+      source: "attribute",
+      attribute: "href",
+      selector: ".premium-banner__link"
+    },
+    sepColor: {
+      type: "string"
+    },
+    id: {
+      type: "string"
+    }
+  };
   registerBlockType("premium/banner", {
     title: __("Banner"),
     icon: "admin-page",
     category: "premium-blocks",
-    attributes: {
-      imageID: {
-        type: "number"
-      },
-      imageURL: {
-        type: "string",
-        source: "attribute",
-        attribute: "src",
-        selector: ".premium-banner__img"
-      },
-      title: {
-        type: "array",
-        source: "children",
-        selector: ".premium-banner__title",
-        default: __("Awesome Title")
-      },
-      titleTag: {
-        type: "string",
-        default: "H3"
-      },
-      desc: {
-        type: "array",
-        source: "children",
-        selector: ".premium-banner__desc",
-        default: __("Cool Description!!")
-      },
-      contentAlign: {
-        type: "string",
-        default: "left"
-      },
-      effect: {
-        type: "string",
-        default: "effect1"
-      },
-      hoverEffect: {
-        type: "string",
-        default: "none"
-      },
-      height: {
-        type: "string",
-        default: "default"
-      },
-      minHeight: {
-        type: "number"
-      },
-      verAlign: {
-        type: "string",
-        default: "top"
-      },
-      hovered: {
-        type: "boolean",
-        default: false
-      },
-      responsive: {
-        type: "boolean",
-        default: false
-      },
-      background: {
-        type: "string"
-      },
-      opacity: {
-        type: "number",
-        default: 50
-      },
-      borderType: {
-        type: "string",
-        default: "none"
-      },
-      borderWidth: {
-        type: "number",
-        default: "1"
-      },
-      borderRadius: {
-        type: "number",
-        default: "0"
-      },
-      borderColor: {
-        type: "string"
-      },
-      titleColor: {
-        type: "string"
-      },
-      titleSize: {
-        type: "number",
-        default: "20"
-      },
-      titleLine: {
-        type: "number"
-      },
-      titleWeight: {
-        type: "number"
-      },
-      titleBack: {
-        type: "string"
-      },
-      descColor: {
-        type: "string",
-        default: "#000"
-      },
-      descSize: {
-        type: "number",
-        default: "20"
-      },
-      descLine: {
-        type: "number"
-      },
-      descWeight: {
-        type: "number"
-      },
-      urlCheck: {
-        type: "boolean",
-        default: false
-      },
-      target: {
-        type: "boolean",
-        default: false
-      },
-      url: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-banner__link"
-      },
-      sepColor: {
-        type: "string"
-      },
-      id: {
-        type: "string"
-      }
-    },
+    attributes: bannerAttrs,
     edit: function edit(props) {
       var isSelected = props.isSelected,
           setAttributes = props.setAttributes,
@@ -1558,6 +1704,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
           titleLine = _props$attributes.titleLine,
           titleWeight = _props$attributes.titleWeight,
           titleBack = _props$attributes.titleBack,
+          shadowBlur = _props$attributes.shadowBlur,
+          shadowColor = _props$attributes.shadowColor,
+          shadowHorizontal = _props$attributes.shadowHorizontal,
+          shadowVertical = _props$attributes.shadowVertical,
           descColor = _props$attributes.descColor,
           descSize = _props$attributes.descSize,
           descLine = _props$attributes.descLine,
@@ -1838,29 +1988,18 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
               label: __("Text Color")
             }]
           }),
-          wp.element.createElement(RangeControl, {
-            label: __("Font Size (PX)"),
-            value: titleSize,
-            min: "10",
-            max: "80",
-            onChange: function onChange(newSize) {
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+            components: ["size", "weight", "line"],
+            size: titleSize,
+            weight: titleWeight,
+            line: titleLine,
+            onChangeSize: function onChangeSize(newSize) {
               return setAttributes({ titleSize: newSize });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Font Weight"),
-            min: "100",
-            max: "900",
-            step: "100",
-            value: titleWeight,
-            onChange: function onChange(newWeight) {
+            },
+            onChangeWeight: function onChangeWeight(newWeight) {
               return setAttributes({ titleWeight: newWeight });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Line Height (PX)"),
-            value: titleLine,
-            onChange: function onChange(newValue) {
+            },
+            onChangeLine: function onChangeLine(newValue) {
               return setAttributes({ titleLine: newValue });
             }
           }),
@@ -1883,6 +2022,24 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
               },
               label: __("")
             }]
+          }),
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__["a" /* default */], {
+            color: shadowColor,
+            blur: shadowBlur,
+            horizontal: shadowHorizontal,
+            vertical: shadowVertical,
+            onChangeColor: function onChangeColor(newColor) {
+              return setAttributes({ shadowColor: newColor });
+            },
+            onChangeBlur: function onChangeBlur(newBlur) {
+              return setAttributes({ shadowBlur: newBlur });
+            },
+            onChangehHorizontal: function onChangehHorizontal(newValue) {
+              return setAttributes({ shadowHorizontal: newValue });
+            },
+            onChangeVertical: function onChangeVertical(newValue) {
+              return setAttributes({ shadowVertical: newValue });
+            }
           })
         ),
         wp.element.createElement(
@@ -1902,29 +2059,18 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
               label: __("Text Color")
             }]
           }),
-          wp.element.createElement(RangeControl, {
-            label: __("Font Size (PX)"),
-            value: descSize,
-            min: "10",
-            max: "80",
-            onChange: function onChange(newSize) {
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+            components: ["size", "weight", "line"],
+            size: descSize,
+            weight: descWeight,
+            line: descLine,
+            onChangeSize: function onChangeSize(newSize) {
               return setAttributes({ descSize: newSize });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Font Weight"),
-            min: "100",
-            max: "900",
-            step: "100",
-            value: descWeight,
-            onChange: function onChange(newWeight) {
+            },
+            onChangeWeight: function onChangeWeight(newWeight) {
               return setAttributes({ descWeight: newWeight });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Line Height (PX)"),
-            value: descLine,
-            onChange: function onChange(newValue) {
+            },
+            onChangeLine: function onChangeLine(newValue) {
               return setAttributes({ descLine: newValue });
             }
           })
@@ -1937,7 +2083,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
         },
         wp.element.createElement("style", {
           dangerouslySetInnerHTML: {
-            __html: ["#premium-banner-" + id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + id + " .premium-banner__img.premium-banner__active {", "opacity: " + opacity / 100 + " ", "}"].join("\n")
+            __html: ["#premium-banner-" + id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 1) + " ", "}"].join("\n")
           }
         }),
         imageURL && wp.element.createElement(
@@ -1994,7 +2140,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
                   color: titleColor,
                   fontSize: titleSize + "px",
                   fontWeight: titleWeight,
-                  lineHeight: titleLine + "px"
+                  lineHeight: titleLine + "px",
+                  textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
                 }
               })
             ),
@@ -2052,6 +2199,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
           titleSize = _props$attributes2.titleSize,
           titleWeight = _props$attributes2.titleWeight,
           titleLine = _props$attributes2.titleLine,
+          shadowBlur = _props$attributes2.shadowBlur,
+          shadowColor = _props$attributes2.shadowColor,
+          shadowHorizontal = _props$attributes2.shadowHorizontal,
+          shadowVertical = _props$attributes2.shadowVertical,
           descColor = _props$attributes2.descColor,
           descSize = _props$attributes2.descSize,
           descWeight = _props$attributes2.descWeight,
@@ -2069,7 +2220,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
         },
         wp.element.createElement("style", {
           dangerouslySetInnerHTML: {
-            __html: ["#premium-banner-" + id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + id + " .premium-banner__img.premium-banner__active {", "opacity: " + opacity / 100 + " ", "}"].join("\n")
+            __html: ["#premium-banner-" + id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 1) + " ", "}"].join("\n")
           }
         }),
         wp.element.createElement(
@@ -2122,7 +2273,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
                   color: titleColor,
                   fontSize: titleSize + "px",
                   fontWeight: titleWeight,
-                  lineHeight: titleLine + "px"
+                  lineHeight: titleLine + "px",
+                  textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
                 }
               })
             ),
@@ -2154,7 +2306,144 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
           })
         )
       );
-    }
+    },
+    deprecated: [{
+      attributes: bannerAttrs,
+      save: function save(props) {
+        var _props$attributes3 = props.attributes,
+            id = _props$attributes3.id,
+            imageURL = _props$attributes3.imageURL,
+            title = _props$attributes3.title,
+            titleTag = _props$attributes3.titleTag,
+            desc = _props$attributes3.desc,
+            contentAlign = _props$attributes3.contentAlign,
+            effect = _props$attributes3.effect,
+            hoverEffect = _props$attributes3.hoverEffect,
+            height = _props$attributes3.height,
+            minHeight = _props$attributes3.minHeight,
+            verAlign = _props$attributes3.verAlign,
+            hovered = _props$attributes3.hovered,
+            responsive = _props$attributes3.responsive,
+            background = _props$attributes3.background,
+            opacity = _props$attributes3.opacity,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            titleColor = _props$attributes3.titleColor,
+            titleBack = _props$attributes3.titleBack,
+            titleSize = _props$attributes3.titleSize,
+            titleWeight = _props$attributes3.titleWeight,
+            titleLine = _props$attributes3.titleLine,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            descColor = _props$attributes3.descColor,
+            descSize = _props$attributes3.descSize,
+            descWeight = _props$attributes3.descWeight,
+            descLine = _props$attributes3.descLine,
+            urlCheck = _props$attributes3.urlCheck,
+            url = _props$attributes3.url,
+            target = _props$attributes3.target,
+            sepColor = _props$attributes3.sepColor;
+
+        return wp.element.createElement(
+          "div",
+          {
+            id: "premium-banner-" + id,
+            className: className + " " + className + "__responsive_" + responsive
+          },
+          wp.element.createElement("style", {
+            dangerouslySetInnerHTML: {
+              __html: ["#premium-banner-" + id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 0) + " ", "}"].join("\n")
+            }
+          }),
+          wp.element.createElement(
+            "div",
+            {
+              className: className + "__inner " + className + "__min " + className + "__" + effect + " " + className + "__" + hoverEffect + " hover_" + hovered,
+              style: {
+                border: borderType,
+                borderWidth: borderWidth + "px",
+                borderRadius: borderRadius + "px",
+                borderColor: borderColor
+              }
+            },
+            wp.element.createElement(
+              "div",
+              {
+                className: className + "__img_wrap " + className + "__" + height,
+                style: {
+                  minHeight: minHeight,
+                  alignItems: verAlign
+                }
+              },
+              wp.element.createElement("img", {
+                className: className + "__img",
+                alt: "Banner Image",
+                src: imageURL
+              })
+            ),
+            wp.element.createElement(
+              "div",
+              {
+                className: className + "__content",
+                style: {
+                  background: "effect2" == effect ? titleBack : "transparent"
+                }
+              },
+              wp.element.createElement(
+                "div",
+                {
+                  className: className + "__title_wrap",
+                  style: {
+                    textAlign: contentAlign
+                  }
+                },
+                wp.element.createElement(RichText.Content, {
+                  tagName: titleTag.toLowerCase(),
+                  className: className + "__title",
+                  value: title,
+                  style: {
+                    color: titleColor,
+                    fontSize: titleSize + "px",
+                    fontWeight: titleWeight,
+                    lineHeight: titleLine + "px",
+                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
+                  }
+                })
+              ),
+              wp.element.createElement(
+                "div",
+                {
+                  className: className + "__desc_wrap",
+                  style: {
+                    textAlign: contentAlign
+                  }
+                },
+                wp.element.createElement(RichText.Content, {
+                  tagName: "p",
+                  className: className + "__desc",
+                  value: desc,
+                  style: {
+                    color: descColor,
+                    fontSize: descSize + "px",
+                    fontWeight: descWeight,
+                    lineHeight: descLine + "px"
+                  }
+                })
+              )
+            ),
+            urlCheck && "" !== url && wp.element.createElement("a", {
+              className: className + "__link",
+              href: url,
+              target: target && "_blank"
+            })
+          )
+        );
+      }
+    }]
   });
 }
 
@@ -2192,418 +2481,423 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* pricingTable */]) {
       URLInput = _wp$editor.URLInput;
 
 
+  var pricingAttrs = {
+    contentAlign: {
+      type: "string",
+      default: "center"
+    },
+    tableBack: {
+      type: "string"
+    },
+    borderType: {
+      type: "string",
+      default: "none"
+    },
+    borderWidth: {
+      type: "number",
+      default: "1"
+    },
+    borderRadius: {
+      type: "number",
+      default: "0"
+    },
+    borderColor: {
+      type: "string"
+    },
+    tablePadding: {
+      type: "number",
+      default: "0"
+    },
+    title: {
+      type: "array",
+      source: "children",
+      selector: ".premium-pricing-table__title",
+      default: "Pricing Table"
+    },
+    titleTag: {
+      type: "string",
+      default: "H2"
+    },
+    titleColor: {
+      type: "string",
+      default: "#6ec1e4"
+    },
+    titleSize: {
+      type: "number"
+    },
+    titleLine: {
+      type: "number"
+    },
+    titleLetter: {
+      type: "number"
+    },
+    titleStyle: {
+      type: "string"
+    },
+    titleUpper: {
+      type: "boolean"
+    },
+    titleWeight: {
+      type: "number",
+      default: 500
+    },
+    titleBack: {
+      type: "string"
+    },
+    titleMarginB: {
+      type: "number",
+      default: 20
+    },
+    titleMarginT: {
+      type: "number",
+      default: 20
+    },
+    titlePadding: {
+      type: "number",
+      default: "0"
+    },
+    desc: {
+      type: "array",
+      source: "children",
+      selector: ".premium-pricing-table__desc"
+    },
+    descColor: {
+      type: "string",
+      default: "#000"
+    },
+    descSize: {
+      type: "number"
+    },
+    descWeight: {
+      type: "number"
+    },
+    descLetter: {
+      type: "number"
+    },
+    descStyle: {
+      type: "string"
+    },
+    descLine: {
+      type: "number"
+    },
+    descBack: {
+      type: "string"
+    },
+    descMarginT: {
+      type: "number",
+      default: "0"
+    },
+    descMarginB: {
+      type: "number",
+      default: "30"
+    },
+    descPadding: {
+      type: "number",
+      default: "0"
+    },
+    titleChecked: {
+      type: "boolean",
+      default: true
+    },
+    descChecked: {
+      type: "boolean",
+      default: false
+    },
+    priceChecked: {
+      type: "boolean",
+      default: true
+    },
+    priceBack: {
+      type: "string"
+    },
+    priceMarginT: {
+      type: "number"
+    },
+    priceMarginB: {
+      type: "number",
+      default: 10
+    },
+    pricePadding: {
+      type: "number"
+    },
+    slashPrice: {
+      type: "string"
+    },
+    slashColor: {
+      type: "string"
+    },
+    slashSize: {
+      type: "number",
+      default: 20
+    },
+    slashWeight: {
+      type: "number"
+    },
+    currPrice: {
+      type: "string",
+      default: "$"
+    },
+    currColor: {
+      type: "string"
+    },
+    currSize: {
+      type: "number",
+      default: 20
+    },
+    currWeight: {
+      type: "number"
+    },
+    valPrice: {
+      type: "string",
+      default: "25"
+    },
+    valColor: {
+      type: "string"
+    },
+    valSize: {
+      type: "number",
+      default: 50
+    },
+    valWeight: {
+      type: "number"
+    },
+    divPrice: {
+      type: "string",
+      default: "/"
+    },
+    divColor: {
+      type: "string"
+    },
+    divSize: {
+      type: "number",
+      default: 20
+    },
+    divWeight: {
+      type: "number"
+    },
+    durPrice: {
+      type: "string",
+      default: "m"
+    },
+    durColor: {
+      type: "string"
+    },
+    durSize: {
+      type: "number",
+      default: 20
+    },
+    durWeight: {
+      type: "number"
+    },
+    selectedStyle: {
+      type: "string",
+      default: "price"
+    },
+    btnChecked: {
+      type: "boolean",
+      default: true
+    },
+    btnText: {
+      type: "string",
+      default: "Get Started"
+    },
+    btnLink: {
+      type: "string",
+      source: "attribute",
+      attribute: "href",
+      selector: ".premium-pricing-table__button_link"
+    },
+    btnTarget: {
+      type: "boolean",
+      default: true
+    },
+    btnColor: {
+      type: "string",
+      default: "#fff"
+    },
+    btnHoverColor: {
+      type: "string"
+    },
+    btnWidth: {
+      type: "number"
+    },
+    btnSize: {
+      type: "number"
+    },
+    btnWeight: {
+      type: "number",
+      default: 900
+    },
+    btnLine: {
+      type: "number"
+    },
+    btnLetter: {
+      type: "number"
+    },
+    btnStyle: {
+      type: "string"
+    },
+    btnUpper: {
+      type: "boolean"
+    },
+    btnBack: {
+      type: "string",
+      default: "#6ec1e4"
+    },
+    btnHoverBack: {
+      type: "string"
+    },
+    btnMarginT: {
+      type: "number",
+      default: "0"
+    },
+    btnMarginB: {
+      type: "number",
+      default: "0"
+    },
+    btnPadding: {
+      type: "number",
+      default: 10
+    },
+    btnBorderType: {
+      type: "string",
+      default: "none"
+    },
+    btnBorderWidth: {
+      type: "number",
+      default: "1"
+    },
+    btnBorderRadius: {
+      type: "number",
+      default: "0"
+    },
+    btnBorderColor: {
+      type: "string"
+    },
+    badgeChecked: {
+      type: "boolean"
+    },
+    badgePos: {
+      type: "string",
+      default: "right"
+    },
+    badgeBack: {
+      type: "string",
+      default: "#6ec1e4"
+    },
+    badgeColor: {
+      type: "string"
+    },
+    badgeTextSize: {
+      type: "number"
+    },
+    badgeSize: {
+      type: "number"
+    },
+    badgeTop: {
+      type: "number"
+    },
+    badgeHorizontal: {
+      type: "number"
+    },
+    badgeWidth: {
+      type: "number"
+    },
+    badgeWeight: {
+      type: "number",
+      default: 900
+    },
+    badgeLetter: {
+      type: "number"
+    },
+    badgeStyle: {
+      type: "string"
+    },
+    badgeUpper: {
+      type: "boolean"
+    },
+    badgeText: {
+      type: "string",
+      default: __("Popular")
+    },
+    listChecked: {
+      type: "boolean",
+      default: true
+    },
+    listColor: {
+      type: "string"
+    },
+    listSize: {
+      type: "number"
+    },
+    listWeight: {
+      type: "number",
+      default: 500
+    },
+    listItemsStyle: {
+      type: "string"
+    },
+    listLetter: {
+      type: "number"
+    },
+    listLine: {
+      type: "number"
+    },
+    listUpper: {
+      type: "boolean"
+    },
+    listBack: {
+      type: "string"
+    },
+    listItems: {
+      type: "array",
+      source: "children",
+      selector: ".premium-pricing-table__list"
+    },
+    listMarginB: {
+      type: "number",
+      default: 20
+    },
+    listMarginT: {
+      type: "number"
+    },
+    listPadding: {
+      type: "number"
+    },
+    listStyle: {
+      type: "string",
+      default: "disc"
+    },
+    slashV: {
+      type: "string",
+      default: "center"
+    },
+    currV: {
+      type: "string",
+      default: "center"
+    },
+    valV: {
+      type: "string",
+      default: "center"
+    },
+    divV: {
+      type: "string",
+      default: "center"
+    },
+    durV: {
+      type: "string",
+      default: "center"
+    },
+    id: {
+      type: "string"
+    }
+  };
+
   registerBlockType("premium/pricing-table", {
     title: __("Pricing Table"),
     icon: "editor-table",
     category: "premium-blocks",
-    attributes: {
-      contentAlign: {
-        type: "string",
-        default: "center"
-      },
-      tableBack: {
-        type: "string"
-      },
-      borderType: {
-        type: "string",
-        default: "none"
-      },
-      borderWidth: {
-        type: "number",
-        default: "1"
-      },
-      borderRadius: {
-        type: "number",
-        default: "0"
-      },
-      borderColor: {
-        type: "string"
-      },
-      tablePadding: {
-        type: "number",
-        default: "0"
-      },
-      title: {
-        type: "array",
-        source: "children",
-        selector: ".premium-pricing-table__title",
-        default: "Pricing Table"
-      },
-      titleTag: {
-        type: "string",
-        default: "H2"
-      },
-      titleColor: {
-        type: "string",
-        default: "#6ec1e4"
-      },
-      titleSize: {
-        type: "number"
-      },
-      titleLine: {
-        type: "number"
-      },
-      titleLetter: {
-        type: "number"
-      },
-      titleStyle: {
-        type: "string"
-      },
-      titleUpper: {
-        type: "boolean"
-      },
-      titleWeight: {
-        type: "number",
-        default: 500
-      },
-      titleBack: {
-        type: "string"
-      },
-      titleMarginB: {
-        type: "number",
-        default: 20
-      },
-      titleMarginT: {
-        type: "number",
-        default: 20
-      },
-      titlePadding: {
-        type: "number",
-        default: "0"
-      },
-      desc: {
-        type: "array",
-        source: "children",
-        selector: ".premium-pricing-table__desc"
-      },
-      descColor: {
-        type: "string",
-        default: "#000"
-      },
-      descSize: {
-        type: "number"
-      },
-      descWeight: {
-        type: "number"
-      },
-      descLetter: {
-        type: "number"
-      },
-      descStyle: {
-        type: "string"
-      },
-      descLine: {
-        type: "number"
-      },
-      descBack: {
-        type: "string"
-      },
-      descMarginT: {
-        type: "number",
-        default: "0"
-      },
-      descMarginB: {
-        type: "number",
-        default: "30"
-      },
-      descPadding: {
-        type: "number",
-        default: "0"
-      },
-      titleChecked: {
-        type: "boolean",
-        default: true
-      },
-      descChecked: {
-        type: "boolean",
-        default: false
-      },
-      priceChecked: {
-        type: "boolean",
-        default: true
-      },
-      priceBack: {
-        type: "string"
-      },
-      priceMarginT: {
-        type: "number"
-      },
-      priceMarginB: {
-        type: "number",
-        default: 10
-      },
-      pricePadding: {
-        type: "number"
-      },
-      slashPrice: {
-        type: "string"
-      },
-      slashColor: {
-        type: "string"
-      },
-      slashSize: {
-        type: "number",
-        default: 20
-      },
-      slashWeight: {
-        type: "number"
-      },
-      currPrice: {
-        type: "string",
-        default: "$"
-      },
-      currColor: {
-        type: "string"
-      },
-      currSize: {
-        type: "number",
-        default: 20
-      },
-      currWeight: {
-        type: "number"
-      },
-      valPrice: {
-        type: "string",
-        default: "25"
-      },
-      valColor: {
-        type: "string"
-      },
-      valSize: {
-        type: "number",
-        default: 50
-      },
-      valWeight: {
-        type: "number"
-      },
-      divPrice: {
-        type: "string",
-        default: "/"
-      },
-      divColor: {
-        type: "string"
-      },
-      divSize: {
-        type: "number",
-        default: 20
-      },
-      divWeight: {
-        type: "number"
-      },
-      durPrice: {
-        type: "string",
-        default: "m"
-      },
-      durColor: {
-        type: "string"
-      },
-      durSize: {
-        type: "number",
-        default: 20
-      },
-      durWeight: {
-        type: "number"
-      },
-      selectedStyle: {
-        type: "string",
-        default: "price"
-      },
-      btnChecked: {
-        type: "boolean",
-        default: true
-      },
-      btnText: {
-        type: "string",
-        default: "Get Started"
-      },
-      btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-pricing-table__button_link"
-      },
-      btnTarget: {
-        type: "boolean",
-        default: true
-      },
-      btnColor: {
-        type: "string",
-        default: "#fff"
-      },
-      btnHoverColor: {
-        type: "string"
-      },
-      btnWidth: {
-        type: "number"
-      },
-      btnSize: {
-        type: "number"
-      },
-      btnWeight: {
-        type: "number",
-        default: 900
-      },
-      btnLine: {
-        type: "number"
-      },
-      btnLetter: {
-        type: "number"
-      },
-      btnStyle: {
-        type: "string"
-      },
-      btnUpper: {
-        type: "boolean"
-      },
-      btnBack: {
-        type: "string",
-        default: "#6ec1e4"
-      },
-      btnHoverBack: {
-        type: "string"
-      },
-      btnMarginT: {
-        type: "number",
-        default: "0"
-      },
-      btnMarginB: {
-        type: "number",
-        default: "0"
-      },
-      btnPadding: {
-        type: "number",
-        default: 10
-      },
-      btnBorderType: {
-        type: "string",
-        default: "none"
-      },
-      btnBorderWidth: {
-        type: "number",
-        default: "1"
-      },
-      btnBorderRadius: {
-        type: "number",
-        default: "0"
-      },
-      btnBorderColor: {
-        type: "string"
-      },
-      badgeChecked: {
-        type: "boolean"
-      },
-      badgePos: {
-        type: "string",
-        default: "right"
-      },
-      badgeBack: {
-        type: "string",
-        default: "#6ec1e4"
-      },
-      badgeColor: {
-        type: "string"
-      },
-      badgeSize: {
-        type: "number"
-      },
-      badgeTop: {
-        type: "number"
-      },
-      badgeHorizontal: {
-        type: "number"
-      },
-      badgeWidth: {
-        type: "number"
-      },
-      badgeWeight: {
-        type: "number",
-        default: 900
-      },
-      badgeLetter: {
-        type: "number"
-      },
-      badgeStyle: {
-        type: "string"
-      },
-      badgeUpper: {
-        type: "boolean"
-      },
-      badgeText: {
-        type: "string",
-        default: __("Popular")
-      },
-      listChecked: {
-        type: "boolean",
-        default: true
-      },
-      listColor: {
-        type: "string"
-      },
-      listSize: {
-        type: "number"
-      },
-      listWeight: {
-        type: "number",
-        default: 500
-      },
-      listItemsStyle: {
-        type: "string"
-      },
-      listLetter: {
-        type: "number"
-      },
-      listLine: {
-        type: "number"
-      },
-      listUpper: {
-        type: "boolean"
-      },
-      listBack: {
-        type: "string"
-      },
-      listItems: {
-        type: "array",
-        source: "children",
-        selector: ".premium-pricing-table__list"
-      },
-      listMarginB: {
-        type: "number",
-        default: 20
-      },
-      listMarginT: {
-        type: "number"
-      },
-      listPadding: {
-        type: "number"
-      },
-      listStyle: {
-        type: "string",
-        default: "disc"
-      },
-      slashV: {
-        type: "string",
-        default: "center"
-      },
-      currV: {
-        type: "string",
-        default: "center"
-      },
-      valV: {
-        type: "string",
-        default: "center"
-      },
-      divV: {
-        type: "string",
-        default: "center"
-      },
-      durV: {
-        type: "string",
-        default: "center"
-      },
-      id: {
-        type: "string"
-      }
-    },
+    attributes: pricingAttrs,
     edit: function edit(props) {
       var isSelected = props.isSelected,
           setAttributes = props.setAttributes,
@@ -2700,6 +2994,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* pricingTable */]) {
           badgeBack = _props$attributes.badgeBack,
           badgeColor = _props$attributes.badgeColor,
           badgeSize = _props$attributes.badgeSize,
+          badgeTextSize = _props$attributes.badgeTextSize,
           badgeTop = _props$attributes.badgeTop,
           badgeHorizontal = _props$attributes.badgeHorizontal,
           badgeWidth = _props$attributes.badgeWidth,
@@ -3576,11 +3871,15 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* pricingTable */]) {
               initialOpen: false
             },
             wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-              components: ["weight", "style", "upper", "spacing"],
+              components: ["size", "weight", "style", "upper", "spacing"],
+              size: badgeTextSize,
               weight: badgeWeight,
               style: badgeStyle,
               spacing: badgeLetter,
               upper: badgeUpper,
+              onChangeSize: function onChangeSize(newSize) {
+                return setAttributes({ badgeTextSize: newSize });
+              },
               onChangeWeight: function onChangeWeight(newWeight) {
                 return setAttributes({ badgeWeight: newWeight });
               },
@@ -3745,6 +4044,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* pricingTable */]) {
               {
                 style: {
                   color: badgeColor,
+                  fontSize: badgeTextSize + "px",
                   fontWeight: badgeWeight,
                   textTransform: badgeUpper ? "uppercase" : "none",
                   letterSpacing: badgeLetter + "px",
@@ -4076,6 +4376,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* pricingTable */]) {
           badgeHorizontal = _props$attributes2.badgeHorizontal,
           badgeWidth = _props$attributes2.badgeWidth,
           badgeSize = _props$attributes2.badgeSize,
+          badgeTextSize = _props$attributes2.badgeTextSize,
           badgeWeight = _props$attributes2.badgeWeight,
           badgeLetter = _props$attributes2.badgeLetter,
           badgeStyle = _props$attributes2.badgeStyle,
@@ -4134,6 +4435,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* pricingTable */]) {
               "span",
               {
                 style: {
+                  fontSize: badgeTextSize + "px",
                   color: badgeColor,
                   fontWeight: badgeWeight,
                   textTransform: badgeUpper ? "uppercase" : "none",
@@ -4354,7 +4656,384 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* pricingTable */]) {
           })
         )
       );
-    }
+    },
+    deprecated: [{
+      attributes: pricingAttrs,
+      save: function save(props) {
+        var _props$attributes3 = props.attributes,
+            contentAlign = _props$attributes3.contentAlign,
+            tableBack = _props$attributes3.tableBack,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            tablePadding = _props$attributes3.tablePadding,
+            titleChecked = _props$attributes3.titleChecked,
+            title = _props$attributes3.title,
+            titleTag = _props$attributes3.titleTag,
+            titleColor = _props$attributes3.titleColor,
+            titleSize = _props$attributes3.titleSize,
+            titleLetter = _props$attributes3.titleLetter,
+            titleUpper = _props$attributes3.titleUpper,
+            titleStyle = _props$attributes3.titleStyle,
+            titleLine = _props$attributes3.titleLine,
+            titleWeight = _props$attributes3.titleWeight,
+            titleBack = _props$attributes3.titleBack,
+            titleMarginT = _props$attributes3.titleMarginT,
+            titleMarginB = _props$attributes3.titleMarginB,
+            titlePadding = _props$attributes3.titlePadding,
+            descChecked = _props$attributes3.descChecked,
+            desc = _props$attributes3.desc,
+            descColor = _props$attributes3.descColor,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descWeight = _props$attributes3.descWeight,
+            descStyle = _props$attributes3.descStyle,
+            descLetter = _props$attributes3.descLetter,
+            descBack = _props$attributes3.descBack,
+            descMarginT = _props$attributes3.descMarginT,
+            descMarginB = _props$attributes3.descMarginB,
+            descPadding = _props$attributes3.descPadding,
+            priceChecked = _props$attributes3.priceChecked,
+            priceBack = _props$attributes3.priceBack,
+            priceMarginT = _props$attributes3.priceMarginT,
+            priceMarginB = _props$attributes3.priceMarginB,
+            pricePadding = _props$attributes3.pricePadding,
+            slashPrice = _props$attributes3.slashPrice,
+            slashColor = _props$attributes3.slashColor,
+            slashSize = _props$attributes3.slashSize,
+            slashWeight = _props$attributes3.slashWeight,
+            slashV = _props$attributes3.slashV,
+            currPrice = _props$attributes3.currPrice,
+            currColor = _props$attributes3.currColor,
+            currSize = _props$attributes3.currSize,
+            currWeight = _props$attributes3.currWeight,
+            currV = _props$attributes3.currV,
+            valPrice = _props$attributes3.valPrice,
+            valColor = _props$attributes3.valColor,
+            valSize = _props$attributes3.valSize,
+            valWeight = _props$attributes3.valWeight,
+            valV = _props$attributes3.valV,
+            divPrice = _props$attributes3.divPrice,
+            divColor = _props$attributes3.divColor,
+            divSize = _props$attributes3.divSize,
+            divWeight = _props$attributes3.divWeight,
+            divV = _props$attributes3.divV,
+            durPrice = _props$attributes3.durPrice,
+            durColor = _props$attributes3.durColor,
+            durSize = _props$attributes3.durSize,
+            durWeight = _props$attributes3.durWeight,
+            durV = _props$attributes3.durV,
+            btnChecked = _props$attributes3.btnChecked,
+            btnText = _props$attributes3.btnText,
+            btnLink = _props$attributes3.btnLink,
+            btnTarget = _props$attributes3.btnTarget,
+            btnColor = _props$attributes3.btnColor,
+            btnHoverColor = _props$attributes3.btnHoverColor,
+            btnSize = _props$attributes3.btnSize,
+            btnWeight = _props$attributes3.btnWeight,
+            btnLine = _props$attributes3.btnLine,
+            btnLetter = _props$attributes3.btnLetter,
+            btnUpper = _props$attributes3.btnUpper,
+            btnStyle = _props$attributes3.btnStyle,
+            btnBack = _props$attributes3.btnBack,
+            btnHoverBack = _props$attributes3.btnHoverBack,
+            btnMarginT = _props$attributes3.btnMarginT,
+            btnMarginB = _props$attributes3.btnMarginB,
+            btnPadding = _props$attributes3.btnPadding,
+            btnWidth = _props$attributes3.btnWidth,
+            btnBorderType = _props$attributes3.btnBorderType,
+            btnBorderWidth = _props$attributes3.btnBorderWidth,
+            btnBorderRadius = _props$attributes3.btnBorderRadius,
+            btnBorderColor = _props$attributes3.btnBorderColor,
+            badgeChecked = _props$attributes3.badgeChecked,
+            badgePos = _props$attributes3.badgePos,
+            badgeBack = _props$attributes3.badgeBack,
+            badgeColor = _props$attributes3.badgeColor,
+            badgeTop = _props$attributes3.badgeTop,
+            badgeHorizontal = _props$attributes3.badgeHorizontal,
+            badgeWidth = _props$attributes3.badgeWidth,
+            badgeSize = _props$attributes3.badgeSize,
+            badgeWeight = _props$attributes3.badgeWeight,
+            badgeLetter = _props$attributes3.badgeLetter,
+            badgeStyle = _props$attributes3.badgeStyle,
+            badgeUpper = _props$attributes3.badgeUpper,
+            badgeText = _props$attributes3.badgeText,
+            listChecked = _props$attributes3.listChecked,
+            listColor = _props$attributes3.listColor,
+            listWeight = _props$attributes3.listWeight,
+            listSize = _props$attributes3.listSize,
+            listItemsStyle = _props$attributes3.listItemsStyle,
+            listLine = _props$attributes3.listLine,
+            listUpper = _props$attributes3.listUpper,
+            listLetter = _props$attributes3.listLetter,
+            listBack = _props$attributes3.listBack,
+            listItems = _props$attributes3.listItems,
+            listMarginB = _props$attributes3.listMarginB,
+            listMarginT = _props$attributes3.listMarginT,
+            listPadding = _props$attributes3.listPadding,
+            listStyle = _props$attributes3.listStyle,
+            id = _props$attributes3.id;
+
+        return wp.element.createElement(
+          "div",
+          {
+            id: className + "-" + id,
+            className: "" + className,
+            style: {
+              textAlign: contentAlign,
+              background: tableBack,
+              border: borderType,
+              borderWidth: borderWidth + "px",
+              borderRadius: borderRadius + "px",
+              borderColor: borderColor,
+              padding: tablePadding + "px"
+            }
+          },
+          badgeChecked && wp.element.createElement(
+            "div",
+            {
+              className: className + "__badge_wrap " + className + "__badge_" + badgePos
+            },
+            wp.element.createElement(
+              "div",
+              {
+                className: className + "__badge",
+                style: {
+                  borderRightColor: "right" === badgePos ? badgeBack : "transparent",
+                  borderTopColor: "left" === badgePos ? badgeBack : "transparent",
+                  borderBottomWidth: badgeSize + "px",
+                  borderRightWidth: badgeSize + "px",
+                  borderTopWidth: "left" === badgePos ? badgeSize + "px" : "none",
+                  borderLeftWidth: "right" === badgePos ? badgeSize + "px" : "none"
+                }
+              },
+              wp.element.createElement(
+                "span",
+                {
+                  style: {
+                    color: badgeColor,
+                    fontWeight: badgeWeight,
+                    textTransform: badgeUpper ? "uppercase" : "none",
+                    letterSpacing: badgeLetter + "px",
+                    fontStyle: badgeStyle,
+                    width: badgeWidth + "px",
+                    top: badgeTop + "px",
+                    left: "left" === badgePos ? badgeHorizontal + "px" : "auto",
+                    right: "right" === badgePos ? badgeHorizontal + "px" : "auto"
+                  }
+                },
+                badgeText
+              )
+            )
+          ),
+          titleChecked && wp.element.createElement(
+            "div",
+            {
+              className: className + "__title_wrap",
+              style: {
+                paddingTop: titleMarginT + "px",
+                paddingBottom: titleMarginB + "px"
+              }
+            },
+            wp.element.createElement(RichText.Content, {
+              tagName: titleTag.toLowerCase(),
+              className: className + "__title",
+              value: title,
+              style: {
+                color: titleColor,
+                background: titleBack,
+                fontSize: titleSize + "px",
+                letterSpacing: titleLetter + "px",
+                textTransform: titleUpper ? "uppercase" : "none",
+                fontStyle: titleStyle,
+                fontWeight: titleWeight,
+                lineHeight: titleLine + "px",
+                marginBottom: titleMarginB + "px",
+                padding: titlePadding + "px"
+              }
+            })
+          ),
+          priceChecked && wp.element.createElement(
+            "div",
+            {
+              className: className + "__price_wrap",
+              style: {
+                background: priceBack,
+                marginTop: priceMarginT + "px",
+                marginBottom: priceMarginB + "px",
+                padding: pricePadding + "px",
+                justifyContent: contentAlign
+              }
+            },
+            slashPrice && wp.element.createElement(
+              "strike",
+              {
+                className: className + "__slash",
+                style: {
+                  color: slashColor,
+                  fontSize: slashSize + "px",
+                  fontWeight: slashWeight,
+                  alignSelf: slashV
+                }
+              },
+              slashPrice
+            ),
+            currPrice && wp.element.createElement(
+              "span",
+              {
+                className: className + "__currency",
+                style: {
+                  color: currColor,
+                  fontSize: currSize + "px",
+                  fontWeight: currWeight,
+                  alignSelf: currV
+                }
+              },
+              currPrice
+            ),
+            valPrice && wp.element.createElement(
+              "span",
+              {
+                className: className + "__val",
+                style: {
+                  color: valColor,
+                  fontSize: valSize + "px",
+                  fontWeight: valWeight,
+                  alignSelf: valV
+                }
+              },
+              valPrice
+            ),
+            divPrice && wp.element.createElement(
+              "span",
+              {
+                className: className + "__divider",
+                style: {
+                  color: divColor,
+                  fontSize: divSize + "px",
+                  fontWeight: divWeight,
+                  alignSelf: divV
+                }
+              },
+              divPrice
+            ),
+            durPrice && wp.element.createElement(
+              "span",
+              {
+                className: className + "__dur",
+                style: {
+                  color: durColor,
+                  fontSize: durSize + "px",
+                  fontWeight: durWeight,
+                  alignSelf: durV
+                }
+              },
+              durPrice
+            )
+          ),
+          listChecked && wp.element.createElement(
+            "div",
+            {
+              className: className + "__list_wrap",
+              style: {
+                marginTop: listMarginT + "px",
+                marginBottom: listMarginB + "px"
+              }
+            },
+            wp.element.createElement(
+              "ul",
+              {
+                className: className + "__list list-" + listStyle,
+                style: {
+                  color: listColor,
+                  fontSize: listSize + "px",
+                  background: listBack,
+                  padding: listPadding + "px",
+                  listStyle: "check" !== listStyle ? listStyle : "none",
+                  listStylePosition: "inside",
+                  fontWeight: listWeight,
+                  letterSpacing: listLetter + "px",
+                  textTransform: listUpper ? "uppercase" : "none",
+                  fontStyle: listItemsStyle,
+                  lineHeight: listLine + "px"
+                }
+              },
+              listItems
+            )
+          ),
+          descChecked && wp.element.createElement(
+            "div",
+            { className: className + "__desc_wrap" },
+            wp.element.createElement(RichText.Content, {
+              tagName: "p",
+              className: className + "__desc",
+              value: desc,
+              style: {
+                color: descColor,
+                background: descBack,
+                fontSize: descSize + "px",
+                fontWeight: descWeight,
+                lineHeight: descLine + "px",
+                letterSpacing: descLetter + "px",
+                fontStyle: descStyle,
+                marginTop: descMarginT + "px",
+                marginBottom: descMarginB + "px",
+                padding: descPadding + "px"
+              }
+            })
+          ),
+          btnChecked && wp.element.createElement(
+            "div",
+            {
+              className: className + "__button",
+              style: {
+                width: btnWidth + "%"
+              }
+            },
+            wp.element.createElement(
+              "a",
+              {
+                "class": className + "__button_link",
+                href: btnLink,
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                  color: btnColor,
+                  background: btnBack ? btnBack : "transparent",
+                  fontSize: btnSize + "px",
+                  fontWeight: btnWeight,
+                  letterSpacing: btnLetter + "px",
+                  fontStyle: btnStyle,
+                  lineHeight: btnLine + "px",
+                  marginTop: btnMarginT,
+                  marginBottom: btnMarginB,
+                  padding: btnPadding,
+                  border: btnBorderType,
+                  borderWidth: btnBorderWidth + "px",
+                  borderRadius: btnBorderRadius + "px",
+                  borderColor: btnBorderColor
+                }
+              },
+              wp.element.createElement(RichText.Content, {
+                tagName: "span",
+                onChange: function onChange(newText) {
+                  return setAttributes({ btnText: newText });
+                },
+                value: btnText,
+                style: {
+                  textTransform: btnUpper ? "uppercase" : "none"
+                }
+              })
+            ),
+            wp.element.createElement("style", {
+              dangerouslySetInnerHTML: {
+                __html: ["#premium-pricing-table-" + id + " .premium-pricing-table__button_link:hover {", "color: " + btnHoverColor + " !important;", "background: " + btnHoverBack + " !important", "}"].join("\n")
+              }
+            })
+          )
+        );
+      }
+    }]
   });
 }
 

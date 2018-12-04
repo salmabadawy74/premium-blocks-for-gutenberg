@@ -743,6 +743,7 @@ a.premium-dheading-block__link:hover {
 /*******************************************************/
 .premium-pricing-table {
   position: relative;
+  overflow: hidden;
 }
 /**
 * Price
