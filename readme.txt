@@ -44,7 +44,7 @@ Kindly note that the plugin is on it’s early stages and Gutenberg itself is st
 == Frequently Asked Questions ==
 = Is this a standalone Plugin? =
 
-No. You cannot use Premium Blocks without Gutenberg as it\'s a blocks plugin for Gutenberg.
+No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for Gutenberg.
 
 = Does it work with any WordPress theme? =
 

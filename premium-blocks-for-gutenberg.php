@@ -18,7 +18,7 @@
 if( ! defined( 'ABSPATH' ) ) exit;
 
 //Define plugin constants
-define( 'PREMIUM_BLOCKS_VERSION', '1.1.0');
+define( 'PREMIUM_BLOCKS_VERSION', '1.0.0');
 define( 'PREMIUM_BLOCKS_URL', plugins_url('/', __FILE__) );
 define( 'PREMIUM_BLOCKS_PATH', plugin_dir_path(__FILE__) );
 define( 'PREMIUM_BLOCKS_FILE', __FILE__);
