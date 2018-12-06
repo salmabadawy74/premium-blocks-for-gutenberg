@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'pbg-elements';
+  src:  url('../fonts/pbg-elements.eot?7u7vxm');
+  src:  url('../fonts/pbg-elements.eot?7u7vxm#iefix') format('embedded-opentype'),
+    url('../fonts/pbg-elements.ttf?7u7vxm') format('truetype'),
+    url('../fonts/pbg-elements.woff?7u7vxm') format('woff'),
+    url('../fonts/pbg-elements.svg?7u7vxm#pbg-elements') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="pbg-"], [class*=" pbg-"] {
+    font-family: 'pbg-elements' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: darkgrey;
+    font-size: 25px;
+    margin-left: -0.3em;
+}
+
+.pbg-testimonials-block:before {
+  content: "\e900";
+}
+.pbg-section-block:before {
+  content: "\e901";
+}
+.pbg-pricing-table-block:before {
+  content: "\e902";
+}
+.pbg-maps-block:before {
+  content: "\e903";
+}
+.pbg-icon-block:before {
+  content: "\e904";
+}
+.pbg-dual-heading-block:before {
+  content: "\e905";
+}
+.pbg-counter-block:before {
+  content: "\e906";
+}
+.pbg-button-block:before {
+  content: "\e907";
+}
+.pbg-banner-block:before {
+  content: "\e908";
+}
