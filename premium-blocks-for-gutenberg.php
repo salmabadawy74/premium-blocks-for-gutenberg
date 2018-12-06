@@ -1,12 +1,13 @@
 <?php
 /*
  * Plugin Name: Premium Blocks for Gutenberg
- * Description: Premium Blocks for Gutenberg is a brand new blocks collection plugin which we are currently developing to be fully ready with Gutenberg stable version release.
- * Plugin URI: https://premiumaddons.com
+ * Description: Gutenberg blocks that will help you build amazing pages with the new WordPress Gutenberg editor.
+ * Plugin URI: https://premiumblocks.io/
  * Author: Leap13
- * Author URI: http://leap13.com/
+ * Author URI: https://leap13.com/
  * Version: 1.0.0
  * Text Domain: premium-gutenberg
+ * Domain Path: /languages
  * License: GNU General Public License v3.0
  * @package gutenberg_premium_blocks
  */

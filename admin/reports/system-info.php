@@ -43,7 +43,7 @@ if( ! class_exists( 'Premium_Guten_System' ) ) {
                         <h3 class="pb-title-sub"><?php echo __('Thank you for using Premium Blocks for Gutenberg. This plugin has been developed by Leap13 and we hope you enjoy using it.','premium-gutenberg'); ?></h3>
                     </div>
                     <div class="pb-title-right">
-                        <img class="pb-logo" src="<?php echo PREMIUM_BLOCKS_URL . 'admin/images/premium-addons-logo.png';?>">
+                        <img class="pb-logo" src="<?php echo PREMIUM_BLOCKS_URL . 'admin/images/premium-blocks-logo.png';?>">
                     </div>
                 </div>
                 <div class="pb-settings-tabs pb-sys-info-tab">
@@ -52,7 +52,7 @@ if( ! class_exists( 'Premium_Guten_System' ) ) {
                             <h3 class="pb-sys-info-title"><?php echo __('System setup information useful for debugging purposes.','premium-gutenberg');?></h3>
                             <div class="pb-system-info-container">
                                 <?php  echo nl2br( premium_gutenberg_get_sysinfo() ); ?>
-                                <p><?php echo __('Did you like Premium Addons for Elementor Plugin? Please ','premium-gutenberg');?><a href="https://wordpress.org/support/plugin/premium-addons-for-elementor/reviews/#new-post" target="_blank"><?php echo __('Click Here to Rate it ★★★★★','premium-gutenberg'); ?></a></p>
+                                <p><?php echo __('Did you like Premium Blocks for Gutenberg Plugin? Please ','premium-gutenberg');?><a href="https://wordpress.org/support/plugin/premium-blocks-for-gutenberg/reviews/?filter=5" target="_blank"><?php echo __('Click Here to Rate it ★★★★★','premium-gutenberg'); ?></a></p>
                             </div>
                         </div>
                     </div>

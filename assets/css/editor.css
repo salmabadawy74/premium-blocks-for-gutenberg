@@ -151,3 +151,6 @@
 .premium-container__content_wrap .editor-inner-blocks {
   width: 100%;
 }
+#wpwrap .premium-container__full .editor-block-list__layout {
+  padding: 0;
+}

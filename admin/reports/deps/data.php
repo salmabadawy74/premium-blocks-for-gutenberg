@@ -18,7 +18,7 @@ function premium_gutenberg_get_sysinfo() {
     $return .= 'Multisite:                ' . (is_multisite() ? 'Yes' : 'No') . "\n";
 
     // Theme info
-    $plugin = get_plugin_data(PREMIUM_ADDONS_FILE);
+    $plugin = get_plugin_data(PREMIUM_BLOCKS_FILE);
 
 
     // Plugin configuration

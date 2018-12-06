@@ -3,6 +3,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
+import PbgIcon from "../icons";
 
 if (container) {
   const className = "premium-container";
@@ -36,6 +37,14 @@ if (container) {
   ];
 
   const containerAttrs = {
+    stretchSection: {
+      type: "boolean",
+      default: false
+    },
+    innerWidthType: {
+      type: "string",
+      default: "boxed"
+    },
     horAlign: {
       type: "string",
       default: "center"
@@ -45,8 +54,7 @@ if (container) {
       default: "min"
     },
     innerWidth: {
-      type: "number",
-      default: 100
+      type: "number"
     },
     minHeight: {
       type: "number"
@@ -140,7 +148,7 @@ if (container) {
   };
   registerBlockType("premium/container", {
     title: __("Section"),
-    icon: "share-alt2",
+    icon: <PbgIcon icon="section" />,
     category: "premium-blocks",
     attributes: containerAttrs,
     supports: {
@@ -148,10 +156,12 @@ if (container) {
       align: ["center", "wide", "full"]
     },
     edit: props => {
-      const { isSelected, setAttributes } = props;
+      const { isSelected, setAttributes, clientId } = props;
 
       const {
+        stretchSection,
         horAlign,
+        innerWidthType,
         innerWidth,
         minHeight,
         vPos,
@@ -181,6 +191,16 @@ if (container) {
         shadowVertical,
         shadowPosition
       } = props.attributes;
+      const WIDTH = [
+        {
+          value: "boxed",
+          label: __("Boxed")
+        },
+        {
+          value: "full",
+          label: __("Full Width")
+        }
+      ];
       const HEIGHT = [
         {
           value: "fit",
@@ -288,14 +308,36 @@ if (container) {
           <InspectorControls key="inspector">
             <PanelBody
               title={__("General Settings")}
-              className="premium-panel-body"
-              initialOpen={false}
+              className={`premium-panel-body premium-stretch-section`}
+              initialOpen={true}
             >
-              <RangeControl
-                label={__("Content Width (%)")}
-                value={innerWidth}
-                onChange={newValue => setAttributes({ innerWidth: newValue })}
+              <ToggleControl
+                label={__("Stretch Section")}
+                checked={stretchSection}
+                onChange={check => setAttributes({ stretchSection: check })}
+                help={__(
+                  "This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time."
+                )}
               />
+              {stretchSection && (
+                <SelectControl
+                  label={__("Content Width")}
+                  options={WIDTH}
+                  value={innerWidthType}
+                  onChange={newValue =>
+                    setAttributes({ innerWidthType: newValue })
+                  }
+                />
+              )}
+              {"boxed" === innerWidthType && stretchSection && (
+                <RangeControl
+                  label={__("Max Width (%)")}
+                  min="1"
+                  max="1600"
+                  value={innerWidth}
+                  onChange={newValue => setAttributes({ innerWidth: newValue })}
+                />
+              )}
               <SelectControl
                 label={__("Height")}
                 options={HEIGHT}
@@ -325,6 +367,8 @@ if (container) {
             >
               <PanelColorSettings
                 title={__("Colors")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
                   {
                     value: color,
@@ -519,7 +563,7 @@ if (container) {
           </InspectorControls>
         ),
         <div
-          className={className}
+          className={`${className} ${className}__stretch_${stretchSection} ${className}__${innerWidthType}`}
           style={{
             textAlign: horAlign,
             height: "fit" === height ? "100vh" : minHeight,
@@ -546,7 +590,14 @@ if (container) {
         >
           <div
             className={`${className}__content_wrap ${className}__${vPos}`}
-            style={{ width: innerWidth + "%" }}
+            style={{
+              maxWidth:
+                "boxed" == innerWidthType && stretchSection
+                  ? innerWidth
+                    ? innerWidth + "px"
+                    : "1140px"
+                  : "100%"
+            }}
           >
             <div className={`${className}__content_inner`}>
               <InnerBlocks template={CONTENT} />
@@ -557,7 +608,9 @@ if (container) {
     },
     save: props => {
       const {
+        stretchSection,
         horAlign,
+        innerWidthType,
         innerWidth,
         height,
         vPos,
@@ -588,7 +641,7 @@ if (container) {
       } = props.attributes;
       return (
         <div
-          className={className}
+          className={`${className} ${className}__stretch_${stretchSection} ${className}__${innerWidthType}`}
           style={{
             textAlign: horAlign,
             height: "fit" === height ? "100vh" : minHeight,
@@ -615,7 +668,14 @@ if (container) {
         >
           <div
             className={`${className}__content_wrap ${className}__${vPos}`}
-            style={{ width: innerWidth + "%" }}
+            style={{
+              maxWidth:
+                "boxed" == innerWidthType && stretchSection
+                  ? innerWidth
+                    ? innerWidth + "px"
+                    : "1140px"
+                  : "100%"
+            }}
           >
             <div className={`${className}__content_inner`}>
               <InnerBlocks.Content />
@@ -631,6 +691,8 @@ if (container) {
           const {
             horAlign,
             innerWidth,
+            innerWidthType,
+            stretchSection,
             height,
             vPos,
             minHeight,
@@ -687,7 +749,7 @@ if (container) {
             >
               <div
                 className={`${className}__content_wrap ${className}__${vPos}`}
-                style={{ width: innerWidth + "%" }}
+                style={{ width: innerWidth ? innerWidth + "%" : "100%"}}
               >
                 <div className={`${className}__content_inner`}>
                   <InnerBlocks.Content />

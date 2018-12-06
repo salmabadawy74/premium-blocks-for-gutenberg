@@ -8,8 +8,7 @@ export const {
   countUp,
   icon,
   button,
-  container,
-  accordion
+  container
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys

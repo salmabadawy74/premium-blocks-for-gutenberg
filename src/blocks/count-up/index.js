@@ -1,5 +1,7 @@
 import { countUp } from "../settings";
 import { FontAwesomeEnabled } from "../settings";
+import PremiumTypo from "../../components/premium-typo";
+import PbgIcon from "../icons";
 
 if (countUp) {
   const className = "premium-countup";
@@ -20,153 +22,155 @@ if (countUp) {
   const { InspectorControls, PanelColorSettings, MediaUpload } = wp.editor;
   const { Fragment } = wp.element;
 
+  const counterAttrs = {
+    increment: {
+      type: "string",
+      default: 500
+    },
+    time: {
+      type: "string",
+      default: 1000
+    },
+    delay: {
+      type: "string",
+      default: 10
+    },
+    align: {
+      type: "string",
+      default: "center"
+    },
+    flexDir: {
+      type: "string",
+      default: "column"
+    },
+    numberSize: {
+      type: "number",
+      default: 30
+    },
+    numberColor: {
+      type: "string",
+      default: "#6ec1e4"
+    },
+    numberWeight: {
+      type: "number",
+      default: 900
+    },
+    prefix: {
+      type: "boolean",
+      default: true
+    },
+    prefixTxt: {
+      type: "string",
+      default: "Prefix"
+    },
+    prefixSize: {
+      type: "number",
+      default: 20
+    },
+    prefixColor: {
+      type: "string"
+    },
+    prefixWeight: {
+      type: "number"
+    },
+    prefixGap: {
+      type: "number",
+      default: 2
+    },
+    suffix: {
+      type: "boolean",
+      default: true
+    },
+    suffixTxt: {
+      type: "string",
+      default: "Suffix"
+    },
+    suffixSize: {
+      type: "number",
+      default: 20
+    },
+    suffixColor: {
+      type: "string"
+    },
+    suffixWeight: {
+      type: "number"
+    },
+    suffixGap: {
+      type: "number",
+      default: 2
+    },
+    icon: {
+      type: "string",
+      default: "icon"
+    },
+    iconSpacing: {
+      type: "number",
+      default: 10
+    },
+    imageID: {
+      type: "string"
+    },
+    imageURL: {
+      type: "string"
+    },
+    iconType: {
+      type: "string",
+      default: "dash"
+    },
+    iconCheck: {
+      type: "boolean",
+      default: true
+    },
+    iconSize: {
+      type: "number",
+      default: 40
+    },
+    iconColor: {
+      type: "string",
+      default: "#6ec1e4"
+    },
+    selfAlign: {
+      type: "string",
+      default: "center"
+    },
+    titleCheck: {
+      type: "boolean",
+      default: true
+    },
+    titleTxt: {
+      type: "string",
+      default: "Premium Count Up"
+    },
+    titleSize: {
+      type: "number",
+      default: 20
+    },
+    titleT: {
+      type: "number",
+      default: 1
+    },
+    titleB: {
+      type: "number",
+      default: 1
+    },
+    titleColor: {
+      type: "string"
+    },
+    titleWeight: {
+      type: "number",
+      default: 500
+    },
+    faIcon: {
+      type: "string",
+      default: "dashicons-clock"
+    }
+  };
+
   registerBlockType("premium/countup", {
     title: __("CountUp"),
-    icon: "clock",
+    icon: <PbgIcon icon="counter" />,
     category: "premium-blocks",
-    attributes: {
-      increment: {
-        type: "string",
-        default: 500
-      },
-      time: {
-        type: "string",
-        default: 1000
-      },
-      delay: {
-        type: "string",
-        default: 10
-      },
-      align: {
-        type: "string",
-        default: "center"
-      },
-      flexDir: {
-        type: "string",
-        default: "column"
-      },
-      numberSize: {
-        type: "number",
-        default: 30
-      },
-      numberColor: {
-        type: "string",
-        default: "#6ec1e4"
-      },
-      numberWeight: {
-        type: "number",
-        default: 900
-      },
-      prefix: {
-        type: "boolean",
-        default: true
-      },
-      prefixTxt: {
-        type: "string",
-        default: "Prefix"
-      },
-      prefixSize: {
-        type: "number",
-        default: 20
-      },
-      prefixColor: {
-        type: "string"
-      },
-      prefixWeight: {
-        type: "number"
-      },
-      prefixGap: {
-        type: "number",
-        default: 2
-      },
-      suffix: {
-        type: "boolean",
-        default: true
-      },
-      suffixTxt: {
-        type: "string",
-        default: "Suffix"
-      },
-      suffixSize: {
-        type: "number",
-        default: 20
-      },
-      suffixColor: {
-        type: "string"
-      },
-      suffixWeight: {
-        type: "number"
-      },
-      suffixGap: {
-        type: "number",
-        default: 2
-      },
-      icon: {
-        type: "string",
-        default: "icon"
-      },
-      iconSpacing: {
-        type: "number",
-        default: 10
-      },
-      imageID: {
-        type: "string"
-      },
-      imageURL: {
-        type: "string"
-      },
-      iconType: {
-        type: "string",
-        default: "dash"
-      },
-      iconCheck: {
-        type: "boolean",
-        default: true
-      },
-      iconSize: {
-        type: "number",
-        default: 40
-      },
-      iconColor: {
-        type: "string",
-        default: "#6ec1e4"
-      },
-      selfAlign: {
-        type: "string",
-        default: "center"
-      },
-      titleCheck: {
-        type: "boolean",
-        default: true
-      },
-      titleTxt: {
-        type: "string",
-        default: "Premium Count Up"
-      },
-      titleSize: {
-        type: "number",
-        default: 20
-      },
-      titleT: {
-        type: "number",
-        default: 1
-      },
-      titleB: {
-        type: "number",
-        default: 1
-      },
-      titleColor: {
-        type: "string"
-      },
-      titleWeight: {
-        type: "number",
-        default: 500
-      },
-      faIcon: {
-        type: "string",
-        default: "dashicons-clock"
-      }
-    },
+    attributes: counterAttrs,
     edit: props => {
       const { isSelected, setAttributes } = props;
       const {
@@ -267,7 +271,7 @@ if (countUp) {
             <PanelBody
               title={__("Counter")}
               className="premium-panel-body"
-              initialOpen={true}
+              initialOpen={false}
             >
               <TextControl
                 label={__("Increment")}
@@ -432,6 +436,8 @@ if (countUp) {
                 {"icon" === icon && (
                   <PanelColorSettings
                     title={__("Colors")}
+                    className="premium-panel-body-inner"
+                    initialOpen={false}
                     colorSettings={[
                       {
                         value: iconColor,
@@ -449,13 +455,27 @@ if (countUp) {
               className="premium-panel-body"
               initialOpen={false}
             >
-              <RangeControl
-                label={__("Font Size (PX)")}
-                value={numberSize}
-                onChange={newValue => setAttributes({ numberSize: newValue })}
-              />
+              <PanelBody
+                title={__("Font")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <PremiumTypo
+                  components={["size", "weight"]}
+                  size={numberSize}
+                  weight={numberWeight}
+                  onChangeSize={newSize =>
+                    setAttributes({ numberSize: newSize })
+                  }
+                  onChangeWeight={newWeight =>
+                    setAttributes({ numberWeight: newWeight })
+                  }
+                />
+              </PanelBody>
               <PanelColorSettings
                 title={__("Colors")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
                   {
                     value: numberColor,
@@ -464,16 +484,6 @@ if (countUp) {
                     label: __("Number Color")
                   }
                 ]}
-              />
-              <RangeControl
-                label={__("Font Weight")}
-                min="100"
-                max="900"
-                step="100"
-                value={numberWeight}
-                onChange={newWeight =>
-                  setAttributes({ numberWeight: newWeight })
-                }
               />
             </PanelBody>
             {prefix && (
@@ -487,13 +497,27 @@ if (countUp) {
                   value={prefixTxt}
                   onChange={value => setAttributes({ prefixTxt: value })}
                 />
-                <RangeControl
-                  label={__("Font Size (PX)")}
-                  value={prefixSize}
-                  onChange={newValue => setAttributes({ prefixSize: newValue })}
-                />
+                <PanelBody
+                  title={__("Font")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
+                >
+                  <PremiumTypo
+                    components={["size", "weight"]}
+                    size={prefixSize}
+                    weight={prefixWeight}
+                    onChangeSize={newSize =>
+                      setAttributes({ prefixSize: newSize })
+                    }
+                    onChangeWeight={newWeight =>
+                      setAttributes({ prefixWeight: newWeight })
+                    }
+                  />
+                </PanelBody>
                 <PanelColorSettings
                   title={__("Colors")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       value: prefixColor,
@@ -502,16 +526,6 @@ if (countUp) {
                       label: __("Text Color")
                     }
                   ]}
-                />
-                <RangeControl
-                  label={__("Font Weight")}
-                  min="100"
-                  max="900"
-                  step="100"
-                  value={prefixWeight}
-                  onChange={newWeight =>
-                    setAttributes({ prefixWeight: newWeight })
-                  }
                 />
                 <RangeControl
                   label={__("Gap After (PX)")}
@@ -531,13 +545,27 @@ if (countUp) {
                   value={suffixTxt}
                   onChange={value => setAttributes({ suffixTxt: value })}
                 />
-                <RangeControl
-                  label={__("Font Size (PX)")}
-                  value={suffixSize}
-                  onChange={newValue => setAttributes({ suffixSize: newValue })}
-                />
+                <PanelBody
+                  title={__("Font")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
+                >
+                  <PremiumTypo
+                    components={["size", "weight"]}
+                    size={suffixSize}
+                    weight={suffixWeight}
+                    onChangeSize={newSize =>
+                      setAttributes({ suffixSize: newSize })
+                    }
+                    onChangeWeight={newWeight =>
+                      setAttributes({ suffixWeight: newWeight })
+                    }
+                  />
+                </PanelBody>
                 <PanelColorSettings
                   title={__("Colors")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       value: suffixColor,
@@ -546,16 +574,6 @@ if (countUp) {
                       label: __("Text Color")
                     }
                   ]}
-                />
-                <RangeControl
-                  label={__("Font Weight")}
-                  min="100"
-                  max="900"
-                  step="100"
-                  value={suffixWeight}
-                  onChange={newWeight =>
-                    setAttributes({ suffixWeight: newWeight })
-                  }
                 />
                 <RangeControl
                   label={__("Gap Before (PX)")}
@@ -575,23 +593,27 @@ if (countUp) {
                   value={titleTxt}
                   onChange={value => setAttributes({ titleTxt: value })}
                 />
-                <RangeControl
-                  label={__("Font Size (PX)")}
-                  value={titleSize}
-                  onChange={newValue => setAttributes({ titleSize: newValue })}
-                />
-                <RangeControl
-                  label={__("Font Weight")}
-                  min="100"
-                  max="900"
-                  step="100"
-                  value={titleWeight}
-                  onChange={newWeight =>
-                    setAttributes({ titleWeight: newWeight })
-                  }
-                />
+                <PanelBody
+                  title={__("Font")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
+                >
+                  <PremiumTypo
+                    components={["size", "weight"]}
+                    size={titleSize}
+                    weight={titleWeight}
+                    onChangeSize={newSize =>
+                      setAttributes({ titleSize: newSize })
+                    }
+                    onChangeWeight={newWeight =>
+                      setAttributes({ titleWeight: newWeight })
+                    }
+                  />
+                </PanelBody>
                 <PanelColorSettings
                   title={__("Colors")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       value: titleColor,
@@ -601,16 +623,22 @@ if (countUp) {
                     }
                   ]}
                 />
-                <RangeControl
-                  label={__("Margin Top (PX)")}
-                  value={titleT}
-                  onChange={newValue => setAttributes({ titleT: newValue })}
-                />
-                <RangeControl
-                  label={__("Margin Bottom (PX)")}
-                  value={titleB}
-                  onChange={newValue => setAttributes({ titleB: newValue })}
-                />
+                <PanelBody
+                  title={__("Spacings")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
+                >
+                  <RangeControl
+                    label={__("Margin Top (PX)")}
+                    value={titleT}
+                    onChange={newValue => setAttributes({ titleT: newValue })}
+                  />
+                  <RangeControl
+                    label={__("Margin Bottom (PX)")}
+                    value={titleB}
+                    onChange={newValue => setAttributes({ titleB: newValue })}
+                  />
+                </PanelBody>
               </PanelBody>
             )}
           </InspectorControls>
@@ -916,6 +944,181 @@ if (countUp) {
             )}
         </div>
       );
-    }
+    },
+    deprecated: [
+      {
+        attributes: counterAttrs,
+        save: props => {
+          const {
+            increment,
+            time,
+            delay,
+            align,
+            flexDir,
+            numberSize,
+            numberColor,
+            numberWeight,
+            prefix,
+            prefixTxt,
+            prefixSize,
+            prefixColor,
+            prefixWeight,
+            prefixGap,
+            suffix,
+            suffixTxt,
+            suffixSize,
+            suffixColor,
+            suffixWeight,
+            suffixGap,
+            iconCheck,
+            icon,
+            iconSpacing,
+            iconType,
+            imageURL,
+            iconSize,
+            iconColor,
+            selfAlign,
+            titleCheck,
+            titleTxt,
+            titleColor,
+            titleSize,
+            titleT,
+            titleB,
+            titleWeight,
+            faIcon
+          } = props.attributes;
+          let iconClass =
+            "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
+          return (
+            <div
+              className={`${className}__wrap`}
+              style={{
+                justifyContent: align,
+                flexDirection: flexDir
+              }}
+            >
+              {iconCheck && (
+                <div
+                  className={`${className}__icon_wrap`}
+                  style={{
+                    marginRight:
+                      "row" === flexDir || "row-reverse" === flexDir
+                        ? iconSpacing + "px"
+                        : "0",
+                    marginLeft:
+                      "row" === flexDir || "row-reverse" === flexDir
+                        ? iconSpacing + "px"
+                        : "0",
+                    alignSelf:
+                      "row-reverse" === flexDir || "row" === flexDir
+                        ? "center"
+                        : selfAlign
+                  }}
+                >
+                  {"icon" === icon && (
+                    <i
+                      className={`${className}__icon ${iconClass}`}
+                      style={{
+                        fontSize: iconSize + "px",
+                        color: iconColor
+                      }}
+                    />
+                  )}
+                  {"img" === icon && imageURL && (
+                    <img
+                      src={imageURL}
+                      style={{
+                        width: iconSize + "px",
+                        height: iconSize + "px"
+                      }}
+                    />
+                  )}
+                </div>
+              )}
+
+              <div
+                className={`${className}__info`}
+                style={{
+                  alignSelf:
+                    "row-reverse" === flexDir || "row" === flexDir
+                      ? "center"
+                      : selfAlign
+                }}
+              >
+                <div className={`${className}__desc`}>
+                  {prefix && (
+                    <p
+                      style={{
+                        fontSize: prefixSize + "px",
+                        color: prefixColor,
+                        fontWeight: prefixWeight,
+                        marginRight: prefixGap + "px"
+                      }}
+                    >
+                      {prefixTxt}
+                    </p>
+                  )}
+                  <p
+                    className={`${className}__increment`}
+                    data-interval={time}
+                    data-delay={delay}
+                    style={{
+                      fontSize: numberSize + "px",
+                      color: numberColor,
+                      fontWeight: numberWeight
+                    }}
+                  >
+                    {increment}
+                  </p>
+                  {suffix && (
+                    <p
+                      style={{
+                        fontSize: suffixSize + "px",
+                        color: suffixColor,
+                        fontWeight: suffixWeight,
+                        marginLeft: suffixGap + "px"
+                      }}
+                    >
+                      {suffixTxt}
+                    </p>
+                  )}
+                </div>
+                {titleCheck &&
+                  ("row" === flexDir || "row-reverse" === flexDir) && (
+                    <h3
+                      className={`${className}__title`}
+                      style={{
+                        fontSize: titleSize + "px",
+                        marginTop: titleT + "px",
+                        marginBottom: titleB + "px",
+                        color: titleColor,
+                        fontWeight: titleWeight
+                      }}
+                    >
+                      {titleTxt}
+                    </h3>
+                  )}
+              </div>
+              {titleCheck &&
+                ("column" === flexDir || "column-reverse" === flexDir) && (
+                  <h3
+                    className={`${className}__title`}
+                    style={{
+                      fontSize: titleSize + "px",
+                      marginTop: titleT + "px",
+                      marginBottom: titleB + "px",
+                      color: titleColor,
+                      fontWeight: titleWeight,
+                      alignSelf: selfAlign
+                    }}
+                  >
+                    {titleTxt}
+                  </h3>
+                )}
+            </div>
+          );
+        }
+      }
+    ]
   });
 }

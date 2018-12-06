@@ -3,6 +3,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 //import PremiumIcon from "../../components/premium-icon";
 import PremiumTextShadow from "../../components/premium-text-shadow";
+import PbgIcon from "../icons";
 if (button) {
   const className = "premium-button";
 
@@ -26,111 +27,113 @@ if (button) {
     URLInput
   } = wp.editor;
 
+  const buttonAttrs = {
+    btnText: {
+      type: "string",
+      default: __("Premium Button")
+    },
+    btnSize: {
+      type: "string",
+      default: "md"
+    },
+    btnAlign: {
+      type: "string",
+      default: "center"
+    },
+    btnLink: {
+      type: "string",
+      source: "attribute",
+      attribute: "href",
+      selector: ".premium-button"
+    },
+    btnTarget: {
+      type: "boolean",
+      default: false
+    },
+    effect: {
+      type: "string",
+      default: "none"
+    },
+    effectDir: {
+      type: "string",
+      default: "top"
+    },
+    textColor: {
+      type: "string"
+    },
+    textHoverColor: {
+      type: "string"
+    },
+    backColor: {
+      type: "string"
+    },
+    backHoverColor: {
+      type: "string"
+    },
+    slideColor: {
+      type: "string"
+    },
+    textSize: {
+      type: "number"
+    },
+    textLetter: {
+      type: "number"
+    },
+    textStyle: {
+      type: "string"
+    },
+    textUpper: {
+      type: "boolean"
+    },
+    textWeight: {
+      type: "number",
+      default: 500
+    },
+    textLine: {
+      type: "number"
+    },
+    borderType: {
+      type: "string",
+      default: "none"
+    },
+    borderWidth: {
+      type: "number",
+      default: "1"
+    },
+    borderRadius: {
+      type: "number"
+    },
+    borderColor: {
+      type: "string"
+    },
+    padding: {
+      type: "number"
+    },
+    shadowColor: {
+      type: "string"
+    },
+    shadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    shadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    shadowVertical: {
+      type: "number",
+      default: "0"
+    },
+    id: {
+      type: "string"
+    }
+  };
+
   registerBlockType("premium/button", {
     title: __("Button"),
-    icon: "clock",
+    icon: <PbgIcon icon="button" />,
     category: "premium-blocks",
-    attributes: {
-      btnText: {
-        type: "string",
-        default: __("Premium Button")
-      },
-      btnSize: {
-        type: "string",
-        default: "md"
-      },
-      btnAlign: {
-        type: "string",
-        default: "center"
-      },
-      btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-button"
-      },
-      btnTarget: {
-        type: "boolean",
-        default: false
-      },
-      effect: {
-        type: "string",
-        default: "none"
-      },
-      effectDir: {
-        type: "string",
-        default: "top"
-      },
-      textColor: {
-        type: "string"
-      },
-      textHoverColor: {
-        type: "string"
-      },
-      backColor: {
-        type: "string"
-      },
-      backHoverColor: {
-        type: "string"
-      },
-      slideColor: {
-        type: "string"
-      },
-      textSize: {
-        type: "number"
-      },
-      textLetter: {
-        type: "number"
-      },
-      textStyle: {
-        type: "string"
-      },
-      textUpper: {
-        type: "boolean"
-      },
-      textWeight: {
-        type: "number",
-        default: 500
-      },
-      textLine: {
-        type: "number"
-      },
-      borderType: {
-        type: "string",
-        default: "none"
-      },
-      borderWidth: {
-        type: "number",
-        default: "1"
-      },
-      borderRadius: {
-        type: "number"
-      },
-      borderColor: {
-        type: "string"
-      },
-      padding: {
-        type: "number"
-      },
-      shadowColor: {
-        type: "string"
-      },
-      shadowBlur: {
-        type: "number",
-        default: "0"
-      },
-      shadowHorizontal: {
-        type: "number",
-        default: "0"
-      },
-      shadowVertical: {
-        type: "number",
-        default: "0"
-      },
-      id: {
-        type: "string"
-      }
-    },
+    attributes: buttonAttrs,
     edit: props => {
       const { isSelected, setAttributes, clientId: blockId } = props;
 
@@ -380,6 +383,8 @@ if (button) {
               </PanelBody>
               <PanelColorSettings
                 title={__("Colors")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
                   {
                     label: __("Text Color"),
@@ -419,15 +424,23 @@ if (button) {
             >
               <PanelColorSettings
                 title={__("Colors")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
                   {
-                    label: __("Background Color"),
+                    label:
+                      "radial" !== effect
+                        ? __("Background Color")
+                        : __("Background Hover Color"),
                     value: backColor,
                     onChange: colorValue =>
                       setAttributes({ backColor: colorValue })
                   },
                   {
-                    label: __("Background Hover Color"),
+                    label:
+                      "radial" !== effect
+                        ? __("Background Hover Color")
+                        : __("Background Color"),
                     value: backHoverColor,
                     onChange: colorValue =>
                       setAttributes({
@@ -605,6 +618,91 @@ if (button) {
           />
         </div>
       );
-    }
+    },
+    deprecated: [
+      {
+        attributes: buttonAttrs,
+        save: props => {
+          const {
+            id,
+            btnText,
+            btnSize,
+            btnAlign,
+            btnLink,
+            btnTarget,
+            effect,
+            effectDir,
+            textColor,
+            textHoverColor,
+            backColor,
+            backHoverColor,
+            slideColor,
+            textSize,
+            textWeight,
+            textLine,
+            textLetter,
+            textStyle,
+            textUpper,
+            borderType,
+            borderWidth,
+            borderRadius,
+            borderColor,
+            padding,
+            shadowBlur,
+            shadowColor,
+            shadowHorizontal,
+            shadowVertical
+          } = props.attributes;
+          return (
+            <div
+              id={`${className}-wrap-${id}`}
+              className={`${className}__wrap ${className}__${effect} ${className}__${effectDir}`}
+              style={{ textAlign: btnAlign }}
+            >
+              <style
+                dangerouslySetInnerHTML={{
+                  __html: [
+                    `#premium-button-wrap-${id} .premium-button:hover {`,
+                    `color: ${textHoverColor} !important;`,
+                    "}",
+                    `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
+                    `background-color: ${backHoverColor} !important;`,
+                    "}",
+                    `#premium-button-wrap-${id}.premium-button__slide .premium-button::before,`,
+                    `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
+                    `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
+                    `background-color: ${slideColor}`,
+                    "}"
+                  ].join("\n")
+                }}
+              />
+              <RichText.Content
+                tagName="a"
+                value={btnText}
+                className={`${className} ${className}__${btnSize}`}
+                href={btnLink}
+                target={btnTarget ? "_blank" : "_self"}
+                style={{
+                  color: textColor,
+                  backgroundColor: backColor,
+                  fontSize: textSize + "px",
+                  letterSpacing: textLetter + "px",
+                  textTransform: textUpper ? "uppercase" : "none",
+                  fontStyle: textStyle,
+                  lineHeight: textLine + "px",
+                  fontWeight: textWeight,
+                  textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+                  padding: padding + "px",
+                  border: borderType,
+                  borderWidth: borderWidth + "px",
+                  borderRadius: borderRadius + "px",
+                  borderColor: borderColor
+                }}
+              />
+            </div>
+          );
+        }
+      }
+    ]
   });
 }

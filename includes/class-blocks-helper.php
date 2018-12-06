@@ -107,6 +107,8 @@ class Premium_Blocks_Integration {
         $is_banner_enabled = self::$blocks['banner'];
         
         $is_accordion_enabled = self::$blocks['accordion'];
+        
+        $is_section_enabled = self::$blocks['container'];
 
         wp_enqueue_style(
             'pbg-frontend',
@@ -162,6 +164,26 @@ class Premium_Blocks_Integration {
                 PREMIUM_BLOCKS_VERSION
             );
         }
+        
+        if( $is_section_enabled ) {
+            wp_enqueue_script(
+                'section-js',
+                PREMIUM_BLOCKS_URL . 'src/blocks/section/assets/section.js',
+                array('jquery'),
+                PREMIUM_BLOCKS_VERSION
+            );
+            
+            $is_rtl = is_rtl() ? true : false;
+            
+            wp_localize_script(
+                'section-js',
+                'siteDirection',
+                array(
+                    'isRTL'    => $is_rtl,
+                )
+            );
+        }
+        
             
         
         //Enqueue Google Maps API key Script
@@ -201,12 +223,12 @@ class Premium_Blocks_Integration {
     * @access public
     * return object
     */
-   public static function get_instance(){
-       if( self::$instance == null ) {
-           self::$instance = new self;
-       }
-       return self::$instance;
-   }
+    public static function get_instance() {
+        if( self::$instance == null ) {
+            self::$instance = new self;
+        }
+        return self::$instance;
+    }
 }
     
 

@@ -2,6 +2,7 @@ import { dualHeading } from "../settings";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
+import PbgIcon from "../icons";
 
 if (dualHeading) {
   const className = "premium-dheading-block";
@@ -220,7 +221,7 @@ if (dualHeading) {
   };
   registerBlockType("premium/dheading-block", {
     title: __("Dual Heading"),
-    icon: "editor-paragraph",
+    icon: <PbgIcon icon="dual-heading" />,
     category: "premium-blocks",
     attributes: dualHeadingAttrs,
     edit: props => {
@@ -336,7 +337,7 @@ if (dualHeading) {
             </PanelBody>
 
             <PanelBody
-              title={__("First Heading")}
+              title={__("First Heading Style")}
               className="premium-panel-body"
               initialOpen={false}
             >
@@ -382,6 +383,8 @@ if (dualHeading) {
               {!firstClip && (
                 <PanelColorSettings
                   title={__("Colors")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       label: __("Text Color"),
@@ -402,6 +405,8 @@ if (dualHeading) {
               {firstClip && (
                 <PanelColorSettings
                   title={__("Colors")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       label: __("First Color"),
@@ -495,7 +500,7 @@ if (dualHeading) {
               </PanelBody>
             </PanelBody>
             <PanelBody
-              title={__("Second Heading")}
+              title={__("Second Heading Style")}
               className="premium-panel-body"
               initialOpen={false}
             >
@@ -541,6 +546,8 @@ if (dualHeading) {
               {!secondClip && (
                 <PanelColorSettings
                   title={__("Colors")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       label: __("Text Color"),
@@ -560,6 +567,8 @@ if (dualHeading) {
               {secondClip && (
                 <PanelColorSettings
                   title={__("Second Color")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       label: __("First Color"),

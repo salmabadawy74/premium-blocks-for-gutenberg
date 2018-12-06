@@ -1,6 +1,7 @@
 import { pricingTable } from "../settings";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
+import PbgIcon from "../icons";
 
 if (pricingTable) {
   const className = "premium-pricing-table";
@@ -443,7 +444,7 @@ if (pricingTable) {
 
   registerBlockType("premium/pricing-table", {
     title: __("Pricing Table"),
-    icon: "editor-table",
+    icon: <PbgIcon icon="pricing-table" />,
     category: "premium-blocks",
     attributes: pricingAttrs,
     edit: props => {
@@ -739,6 +740,7 @@ if (pricingTable) {
                 <PanelColorSettings
                   title={__("Colors")}
                   className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       value: titleColor,
@@ -835,16 +837,6 @@ if (pricingTable) {
                   />
                   {"slash" === selectedStyle && (
                     <Fragment>
-                      <PanelColorSettings
-                        colorSettings={[
-                          {
-                            value: slashColor,
-                            onChange: newColor =>
-                              setAttributes({ slashColor: newColor }),
-                            label: __("Text Color")
-                          }
-                        ]}
-                      />
                       <PremiumTypo
                         components={["size", "weight"]}
                         size={slashSize}
@@ -864,20 +856,23 @@ if (pricingTable) {
                           setAttributes({ slashV: newValue })
                         }
                       />
-                    </Fragment>
-                  )}
-                  {"curr" === selectedStyle && (
-                    <Fragment>
                       <PanelColorSettings
+                        title={__("Colors")}
+                        className="premium-panel-body-inner"
+                        initialOpen={false}
                         colorSettings={[
                           {
-                            value: currColor,
+                            value: slashColor,
                             onChange: newColor =>
-                              setAttributes({ currColor: newColor }),
+                              setAttributes({ slashColor: newColor }),
                             label: __("Text Color")
                           }
                         ]}
                       />
+                    </Fragment>
+                  )}
+                  {"curr" === selectedStyle && (
+                    <Fragment>
                       <PremiumTypo
                         components={["size", "weight"]}
                         size={currSize}
@@ -897,20 +892,23 @@ if (pricingTable) {
                           setAttributes({ currV: newValue })
                         }
                       />
-                    </Fragment>
-                  )}
-                  {"price" === selectedStyle && (
-                    <Fragment>
                       <PanelColorSettings
+                        title={__("Colors")}
+                        className="premium-panel-body-inner"
+                        initialOpen={false}
                         colorSettings={[
                           {
-                            value: valColor,
+                            value: currColor,
                             onChange: newColor =>
-                              setAttributes({ valColor: newColor }),
+                              setAttributes({ currColor: newColor }),
                             label: __("Text Color")
                           }
                         ]}
                       />
+                    </Fragment>
+                  )}
+                  {"price" === selectedStyle && (
+                    <Fragment>
                       <PremiumTypo
                         components={["size", "weight"]}
                         size={valSize}
@@ -928,20 +926,23 @@ if (pricingTable) {
                         value={valV}
                         onChange={newValue => setAttributes({ valV: newValue })}
                       />
-                    </Fragment>
-                  )}
-                  {"divider" === selectedStyle && (
-                    <Fragment>
                       <PanelColorSettings
+                        title={__("Colors")}
+                        className="premium-panel-body-inner"
+                        initialOpen={false}
                         colorSettings={[
                           {
-                            value: divColor,
+                            value: valColor,
                             onChange: newColor =>
-                              setAttributes({ divColor: newColor }),
+                              setAttributes({ valColor: newColor }),
                             label: __("Text Color")
                           }
                         ]}
                       />
+                    </Fragment>
+                  )}
+                  {"divider" === selectedStyle && (
+                    <Fragment>
                       <PremiumTypo
                         components={["size", "weight"]}
                         size={divSize}
@@ -959,20 +960,23 @@ if (pricingTable) {
                         value={divV}
                         onChange={newValue => setAttributes({ divV: newValue })}
                       />
-                    </Fragment>
-                  )}
-                  {"duration" === selectedStyle && (
-                    <Fragment>
                       <PanelColorSettings
+                        title={__("Colors")}
+                        className="premium-panel-body-inner"
+                        initialOpen={false}
                         colorSettings={[
                           {
-                            value: durColor,
+                            value: divColor,
                             onChange: newColor =>
-                              setAttributes({ durColor: newColor }),
+                              setAttributes({ divColor: newColor }),
                             label: __("Text Color")
                           }
                         ]}
                       />
+                    </Fragment>
+                  )}
+                  {"duration" === selectedStyle && (
+                    <Fragment>
                       <PremiumTypo
                         components={["size", "weight"]}
                         size={durSize}
@@ -989,6 +993,19 @@ if (pricingTable) {
                         options={ALIGNS}
                         value={durV}
                         onChange={newValue => setAttributes({ durV: newValue })}
+                      />
+                      <PanelColorSettings
+                        title={__("Colors")}
+                        className="premium-panel-body-inner"
+                        initialOpen={false}
+                        colorSettings={[
+                          {
+                            value: durColor,
+                            onChange: newColor =>
+                              setAttributes({ durColor: newColor }),
+                            label: __("Text Color")
+                          }
+                        ]}
                       />
                     </Fragment>
                   )}
@@ -1027,6 +1044,9 @@ if (pricingTable) {
                   />
                 </PanelBody>
                 <PanelColorSettings
+                  title={__("Colors")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       value: priceBack,
@@ -1089,8 +1109,9 @@ if (pricingTable) {
                   />
                 </PanelBody>
                 <PanelColorSettings
-                  className="premium-panel-body-inner"
                   title={__("Colors")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       value: listColor,
@@ -1173,6 +1194,7 @@ if (pricingTable) {
                 <PanelColorSettings
                   title={__("Colors")}
                   className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       value: descColor,
@@ -1270,6 +1292,7 @@ if (pricingTable) {
                 <PanelColorSettings
                   title={__("Colors")}
                   className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       value: btnColor,
@@ -1415,6 +1438,7 @@ if (pricingTable) {
                 <PanelColorSettings
                   title={__("Colors")}
                   className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       value: badgeColor,
@@ -1465,7 +1489,9 @@ if (pricingTable) {
               initialOpen={false}
             >
               <PanelColorSettings
-                title={__("Color Settings")}
+                title={__("Colors")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
                   {
                     value: tableBack,

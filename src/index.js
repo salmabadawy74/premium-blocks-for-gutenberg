@@ -6,5 +6,5 @@ import "./blocks/testimonials";
 import "./blocks/count-up";
 import "./blocks/icon";
 import "./blocks/button";
-import "./blocks/container";
-import "./blocks/accordion";
+import "./blocks/section";
+//import "./blocks/accordion";

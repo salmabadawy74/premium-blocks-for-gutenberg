@@ -42,6 +42,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
             
             wp_enqueue_style( 'pbg-icon', PREMIUM_BLOCKS_URL .'admin/assets/pbg-font/css/pbg-font.css' );
             
+            wp_enqueue_style( 'pbg-blocks-icons', PREMIUM_BLOCKS_URL .'admin/assets/pbg-font/css/pbg-elements.css' );
+            
             $current_screen = get_current_screen();
             
             if( strpos( $current_screen->id, $this->slug ) !== false){
@@ -151,7 +153,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                     </div>
                     
                     <div class="pb-title-right">
-                        <img class="pb-logo" src="<?php echo PREMIUM_BLOCKS_URL . 'admin/images/premium-addons-logo.png';?>">
+                        <img class="pb-logo" src="<?php echo PREMIUM_BLOCKS_URL . 'admin/images/premium-blocks-logo.png';?>">
                     </div>
                     
                 </div>
@@ -165,13 +167,13 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                         <table class="pb-elements-table">
                             <tbody>
                                 <tr>
-                                    <th><?php echo __('Premium Accordion', 'premium-gutenberg'); ?></th>
+<!--                                    <th><?php echo __('Premium Accordion', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
                                             <input type="checkbox" id="accordion" name="accordion" <?php checked(1, $this->pbg_get_settings['accordion'], true) ?>>
                                             <span class="slider round"></span>
                                         </label>
-                                    </td>
+                                    </td>-->
                                     <th><?php echo __('Premium Banner', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -179,19 +181,10 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-                                </tr>
-                                <tr>
                                     <th><?php echo __('Premium Button', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
                                             <input type="checkbox" id="button" name="button" <?php checked(1, $this->pbg_get_settings['button'], true) ?>>
-                                            <span class="slider round"></span>
-                                        </label>
-                                    </td>
-                                    <th><?php echo __('Premium Section', 'premium-gutenberg'); ?></th>
-                                    <td>
-                                        <label class="switch">
-                                            <input type="checkbox" id="maps" name="container" <?php checked(1, $this->pbg_get_settings['container'], true) ?>>
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
@@ -211,6 +204,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                    
                                 </tr>
                                 <tr>
                                     <th><?php echo __('Premium Icon', 'premium-gutenberg'); ?></th>
@@ -236,6 +230,16 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                    <th><?php echo __('Premium Section', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="maps" name="container" <?php checked(1, $this->pbg_get_settings['container'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
                                     <th><?php echo __('Premium Testimonials', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -249,7 +253,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                         <input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
                     </div>
                     <div>
-                        <p><?php echo __('Did you like Premium Blocks for Gutenberg Plugin? Please', 'premium-gutenberg') ?> <a href="https://wordpress.org/support/plugin/premium-addons-for-elementor/reviews/#new-post" target="_blank"><?php echo __('Click Here to Rate it ★★★★★', 'premium-gutenberg') ?></a></p>
+                        <p><?php echo __('Did you like Premium Blocks for Gutenberg Plugin? Please', 'premium-gutenberg') ?> <a href="https://wordpress.org/support/plugin/premium-blocks-for-gutenberg/reviews/?filter=5" target="_blank"><?php echo __('Click Here to Rate it ★★★★★', 'premium-gutenberg') ?></a></p>
                     </div>
                 </div>
             </form>
@@ -300,7 +304,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                 'icon'          => intval( $settings['icon'] ? 1 : 0 ),
                 'button'        => intval( $settings['button'] ? 1 : 0 ),
                 'container'     => intval( $settings['container'] ? 1 : 0 ),
-                'accordion'     => intval( $settings['accordion'] ? 1 : 0 ),
+                'accordion'     => 0,
                 
                 
             );

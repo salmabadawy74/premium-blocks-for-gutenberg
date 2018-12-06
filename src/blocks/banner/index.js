@@ -2,6 +2,7 @@ import { banner } from "../settings";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
+import PbgIcon from "../icons";
 
 if (banner) {
   const className = "premium-banner";
@@ -176,7 +177,7 @@ if (banner) {
   };
   registerBlockType("premium/banner", {
     title: __("Banner"),
-    icon: "admin-page",
+    icon: <PbgIcon icon="banner" />,
     category: "premium-blocks",
     attributes: bannerAttrs,
     edit: props => {
@@ -399,7 +400,9 @@ if (banner) {
                 />
               )}
               <PanelColorSettings
-                title={__("Colors")}
+                title={__("Overlay")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
                   {
                     value: background,
@@ -414,7 +417,11 @@ if (banner) {
                 value={opacity}
                 min="1"
                 max="100"
-                onChange={newOpacity => setAttributes({ opacity: newOpacity })}
+                onChange={newOpacity =>
+                  setAttributes({
+                    opacity: newOpacity === undefined ? 50 : newOpacity
+                  })
+                }
               />
               <PremiumBorder
                 borderType={borderType}
@@ -423,13 +430,20 @@ if (banner) {
                 borderRadius={borderRadius}
                 onChangeType={newType => setAttributes({ borderType: newType })}
                 onChangeWidth={newWidth =>
-                  setAttributes({ borderWidth: newWidth })
+                  setAttributes({
+                    borderWidth: newWidth === undefined ? 0 : newWidth
+                  })
                 }
                 onChangeColor={colorValue =>
-                  setAttributes({ borderColor: colorValue })
+                  setAttributes({
+                    borderColor:
+                      colorValue === undefined ? "transparent" : colorValue
+                  })
                 }
-                onChangeRadius={newrRadius =>
-                  setAttributes({ borderRadius: newrRadius })
+                onChangeRadius={newRadius =>
+                  setAttributes({
+                    borderRadius: newRadius === undefined ? 0 : newRadius
+                  })
                 }
               />
               <ToggleControl
@@ -461,47 +475,71 @@ if (banner) {
               className="premium-panel-body"
               initialOpen={false}
             >
-              <p>{__("HTML Tag")}</p>
-              <Toolbar
-                controls={"123456".split("").map(tag => ({
-                  icon: "heading",
-                  isActive: "H" + tag === titleTag,
-                  onClick: () => setAttributes({ titleTag: "H" + tag }),
-                  subscript: tag
-                }))}
-              />
+              <PanelBody
+                title={__("Font")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <p>{__("HTML Tag")}</p>
+                <Toolbar
+                  controls={"123456".split("").map(tag => ({
+                    icon: "heading",
+                    isActive: "H" + tag === titleTag,
+                    onClick: () => setAttributes({ titleTag: "H" + tag }),
+                    subscript: tag
+                  }))}
+                />
+                <PremiumTypo
+                  components={["size", "weight", "line"]}
+                  size={titleSize}
+                  weight={titleWeight}
+                  line={titleLine}
+                  onChangeSize={newSize =>
+                    setAttributes({ titleSize: newSize })
+                  }
+                  onChangeWeight={newWeight =>
+                    setAttributes({
+                      titleWeight: newWeight === undefined ? 500 : newWeight
+                    })
+                  }
+                  onChangeLine={newValue =>
+                    setAttributes({
+                      titleLine: newValue === undefined ? 10 : newValue
+                    })
+                  }
+                />
+              </PanelBody>
               <PanelColorSettings
                 title={__("Colors")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
                   {
                     value: titleColor,
                     onChange: colorValue =>
-                      setAttributes({ titleColor: colorValue }),
+                      setAttributes({
+                        titleColor:
+                          colorValue === undefined ? "transparent" : colorValue
+                      }),
                     label: __("Text Color")
                   }
                 ]}
               />
-              <PremiumTypo
-                components={["size", "weight", "line"]}
-                size={titleSize}
-                weight={titleWeight}
-                line={titleLine}
-                onChangeSize={newSize => setAttributes({ titleSize: newSize })}
-                onChangeWeight={newWeight =>
-                  setAttributes({ titleWeight: newWeight })
-                }
-                onChangeLine={newValue =>
-                  setAttributes({ titleLine: newValue })
-                }
-              />
               {"effect3" == effect && (
                 <PanelColorSettings
                   title={__("Separator Color")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       value: sepColor,
                       onChange: colorValue =>
-                        setAttributes({ sepColor: colorValue }),
+                        setAttributes({
+                          sepColor:
+                            colorValue === undefined
+                              ? "transparent"
+                              : colorValue
+                        }),
                       label: __("")
                     }
                   ]}
@@ -510,11 +548,18 @@ if (banner) {
               {"effect2" == effect && (
                 <PanelColorSettings
                   title={__("Background Color")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
                   colorSettings={[
                     {
                       value: titleBack,
                       onChange: colorValue =>
-                        setAttributes({ titleBack: colorValue }),
+                        setAttributes({
+                          titleBack:
+                            colorValue === undefined
+                              ? "transparent"
+                              : colorValue
+                        }),
                       label: __("")
                     }
                   ]}
@@ -526,14 +571,25 @@ if (banner) {
                 horizontal={shadowHorizontal}
                 vertical={shadowVertical}
                 onChangeColor={newColor =>
-                  setAttributes({ shadowColor: newColor })
+                  setAttributes({
+                    shadowColor:
+                      newColor === undefined ? "transparent" : newColor
+                  })
                 }
-                onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
+                onChangeBlur={newBlur =>
+                  setAttributes({
+                    shadowBlur: newBlur === undefined ? 0 : newBlur
+                  })
+                }
                 onChangehHorizontal={newValue =>
-                  setAttributes({ shadowHorizontal: newValue })
+                  setAttributes({
+                    shadowHorizontal: newValue === undefined ? 0 : newValue
+                  })
                 }
                 onChangeVertical={newValue =>
-                  setAttributes({ shadowVertical: newValue })
+                  setAttributes({
+                    shadowVertical: newValue === undefined ? 0 : newValue
+                  })
                 }
               />
             </PanelBody>
@@ -542,27 +598,44 @@ if (banner) {
               className="premium-panel-body"
               initialOpen={false}
             >
+              <PanelBody
+                title={__("Font")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <PremiumTypo
+                  components={["size", "weight", "line"]}
+                  size={descSize}
+                  weight={descWeight}
+                  line={descLine}
+                  onChangeSize={newSize => setAttributes({ descSize: newSize })}
+                  onChangeWeight={newWeight =>
+                    setAttributes({
+                      descWeight: newWeight === undefined ? 500 : newWeight
+                    })
+                  }
+                  onChangeLine={newValue =>
+                    setAttributes({
+                      descLine: newValue === undefined ? 10 : newValue
+                    })
+                  }
+                />
+              </PanelBody>
               <PanelColorSettings
                 title={__("Colors")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
                   {
                     value: descColor,
                     onChange: colorValue =>
-                      setAttributes({ descColor: colorValue }),
+                      setAttributes({
+                        descColor:
+                          colorValue === undefined ? "transparent" : colorValue
+                      }),
                     label: __("Text Color")
                   }
                 ]}
-              />
-              <PremiumTypo
-                components={["size", "weight", "line"]}
-                size={descSize}
-                weight={descWeight}
-                line={descLine}
-                onChangeSize={newSize => setAttributes({ descSize: newSize })}
-                onChangeWeight={newWeight =>
-                  setAttributes({ descWeight: newWeight })
-                }
-                onChangeLine={newValue => setAttributes({ descLine: newValue })}
               />
             </PanelBody>
           </InspectorControls>

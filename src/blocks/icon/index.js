@@ -4,6 +4,8 @@ import PremiumIcon from "../../components/premium-icon";
 import PremiumBorder from "../../components/premium-border";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumPadding from "../../components/premium-padding";
+import PremiumTextShadow from "../../components/premium-text-shadow";
+import PbgIcon from "../icons";
 
 if (icon) {
   const className = "premium-icon";
@@ -21,144 +23,161 @@ if (icon) {
   } = wp.components;
   const { InspectorControls, PanelColorSettings, URLInput } = wp.editor;
 
+  const iconAttrs = {
+    iconType: {
+      type: "string",
+      default: "dash"
+    },
+    selectedIcon: {
+      type: "string",
+      default: "dashicons-admin-site"
+    },
+    align: {
+      type: "string",
+      default: "center"
+    },
+    hoverEffect: {
+      type: "string",
+      default: "none"
+    },
+    iconSize: {
+      type: "number",
+      default: 50
+    },
+    iconColor: {
+      type: "string",
+      default: "#6ec1e4"
+    },
+    iconBack: {
+      type: "string"
+    },
+    padding: {
+      type: "string",
+      default: "up"
+    },
+    shadowColor: {
+      type: "string"
+    },
+    shadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    shadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    shadowVertical: {
+      type: "number",
+      default: "0"
+    },
+    paddingT: {
+      type: "number"
+    },
+    paddingR: {
+      type: "number"
+    },
+    paddingB: {
+      type: "number"
+    },
+    paddingL: {
+      type: "number"
+    },
+    margin: {
+      type: "string",
+      default: "up"
+    },
+    marginT: {
+      type: "number"
+    },
+    marginR: {
+      type: "number"
+    },
+    marginB: {
+      type: "number"
+    },
+    marginL: {
+      type: "number"
+    },
+    borderType: {
+      type: "string",
+      default: "none"
+    },
+    borderWidth: {
+      type: "number",
+      default: "1"
+    },
+    borderRadius: {
+      type: "number",
+      default: 100
+    },
+    borderColor: {
+      type: "string"
+    },
+    background: {
+      type: "string"
+    },
+    wrapBorderType: {
+      type: "string",
+      default: "none"
+    },
+    wrapBorderWidth: {
+      type: "number",
+      default: "1"
+    },
+    wrapBorderRadius: {
+      type: "number"
+    },
+    wrapBorderColor: {
+      type: "string"
+    },
+    wrapPadding: {
+      type: "string",
+      default: "up"
+    },
+    wrapPaddingT: {
+      type: "number"
+    },
+    wrapPaddingR: {
+      type: "number"
+    },
+    wrapPaddingB: {
+      type: "number"
+    },
+    wrapPaddingL: {
+      type: "number"
+    },
+    wrapMargin: {
+      type: "string",
+      default: "up"
+    },
+    wrapMarginT: {
+      type: "number"
+    },
+    wrapMarginR: {
+      type: "number"
+    },
+    wrapMarginB: {
+      type: "number"
+    },
+    wrapMarginL: {
+      type: "number"
+    },
+    urlCheck: {
+      type: "boolean"
+    },
+    link: {
+      type: "string"
+    },
+    target: {
+      type: "boolean"
+    }
+  };
+
   registerBlockType("premium/icon", {
     title: __("Icon"),
-    icon: "admin-customizer",
+    icon: <PbgIcon icon="icon" />,
     category: "premium-blocks",
-    attributes: {
-      iconType: {
-        type: "string",
-        default: "dash"
-      },
-      selectedIcon: {
-        type: "string",
-        default: "dashicons-admin-site"
-      },
-      align: {
-        type: "string",
-        default: "center"
-      },
-      hoverEffect: {
-        type: "string",
-        default: "none"
-      },
-      iconSize: {
-        type: "number",
-        default: 50
-      },
-      iconColor: {
-        type: "string",
-        default: "#6ec1e4"
-      },
-      iconBack: {
-        type: "string"
-      },
-      padding: {
-        type: "string",
-        default: "up"
-      },
-      paddingT: {
-        type: "number"
-      },
-      paddingR: {
-        type: "number"
-      },
-      paddingB: {
-        type: "number"
-      },
-      paddingL: {
-        type: "number"
-      },
-      margin: {
-        type: "string",
-        default: "up"
-      },
-      marginT: {
-        type: "number"
-      },
-      marginR: {
-        type: "number"
-      },
-      marginB: {
-        type: "number"
-      },
-      marginL: {
-        type: "number"
-      },
-      borderType: {
-        type: "string",
-        default: "none"
-      },
-      borderWidth: {
-        type: "number",
-        default: "1"
-      },
-      borderRadius: {
-        type: "number",
-        default: 100
-      },
-      borderColor: {
-        type: "string"
-      },
-      background: {
-        type: "string"
-      },
-      wrapBorderType: {
-        type: "string",
-        default: "none"
-      },
-      wrapBorderWidth: {
-        type: "number",
-        default: "1"
-      },
-      wrapBorderRadius: {
-        type: "number"
-      },
-      wrapBorderColor: {
-        type: "string"
-      },
-      wrapPadding: {
-        type: "string",
-        default: "up"
-      },
-      wrapPaddingT: {
-        type: "number"
-      },
-      wrapPaddingR: {
-        type: "number"
-      },
-      wrapPaddingB: {
-        type: "number"
-      },
-      wrapPaddingL: {
-        type: "number"
-      },
-      wrapMargin: {
-        type: "string",
-        default: "up"
-      },
-      wrapMarginT: {
-        type: "number"
-      },
-      wrapMarginR: {
-        type: "number"
-      },
-      wrapMarginB: {
-        type: "number"
-      },
-      wrapMarginL: {
-        type: "number"
-      },
-      urlCheck: {
-        type: "boolean"
-      },
-      link: {
-        type: "string"
-      },
-      target: {
-        type: "boolean"
-      }
-    },
+    attributes: iconAttrs,
     edit: props => {
       const { isSelected, setAttributes } = props;
       const {
@@ -169,6 +188,10 @@ if (icon) {
         iconSize,
         iconColor,
         iconBack,
+        shadowBlur,
+        shadowColor,
+        shadowHorizontal,
+        shadowVertical,
         paddingT,
         paddingR,
         paddingB,
@@ -243,7 +266,7 @@ if (icon) {
             <PanelBody
               title={__("Icon")}
               className="premium-panel-body"
-              initialOpen={true}
+              initialOpen={false}
             >
               <PremiumIcon
                 iconType={iconType}
@@ -285,19 +308,8 @@ if (icon) {
             <PanelBody
               title={__("Icon Style")}
               className="premium-panel-body"
-              initialOpen={true}
+              initialOpen={false}
             >
-              <PanelColorSettings
-                title={__("Colors")}
-                colorSettings={[
-                  {
-                    value: iconColor,
-                    onChange: colorValue =>
-                      setAttributes({ iconColor: colorValue }),
-                    label: __("Icon Color")
-                  }
-                ]}
-              />
               <RangeControl
                 label={__("Size (PX)")}
                 value={iconSize}
@@ -305,7 +317,15 @@ if (icon) {
               />
               <PanelColorSettings
                 title={__("Colors")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
+                  {
+                    value: iconColor,
+                    onChange: colorValue =>
+                      setAttributes({ iconColor: colorValue }),
+                    label: __("Icon Color")
+                  },
                   {
                     value: iconBack,
                     onChange: colorValue =>
@@ -314,82 +334,114 @@ if (icon) {
                   }
                 ]}
               />
-              <PremiumBorder
-                borderType={borderType}
-                borderWidth={borderWidth}
-                borderColor={borderColor}
-                borderRadius={borderRadius}
-                onChangeType={newType => setAttributes({ borderType: newType })}
-                onChangeWidth={newWidth =>
-                  setAttributes({ borderWidth: newWidth })
+              <PanelBody
+                title={__("Border")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <PremiumBorder
+                  borderType={borderType}
+                  borderWidth={borderWidth}
+                  borderColor={borderColor}
+                  borderRadius={borderRadius}
+                  onChangeType={newType =>
+                    setAttributes({ borderType: newType })
+                  }
+                  onChangeWidth={newWidth =>
+                    setAttributes({ borderWidth: newWidth })
+                  }
+                  onChangeColor={colorValue =>
+                    setAttributes({ borderColor: colorValue })
+                  }
+                  onChangeRadius={newrRadius =>
+                    setAttributes({ borderRadius: newrRadius })
+                  }
+                />
+              </PanelBody>
+              <PremiumTextShadow
+                color={shadowColor}
+                blur={shadowBlur}
+                horizontal={shadowHorizontal}
+                vertical={shadowVertical}
+                onChangeColor={newColor =>
+                  setAttributes({ shadowColor: newColor })
                 }
-                onChangeColor={colorValue =>
-                  setAttributes({ borderColor: colorValue })
+                onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
+                onChangehHorizontal={newValue =>
+                  setAttributes({ shadowHorizontal: newValue })
                 }
-                onChangeRadius={newrRadius =>
-                  setAttributes({ borderRadius: newrRadius })
-                }
-              />
-              <PremiumMargin
-                marginTop={marginT}
-                marginRight={marginR}
-                marginBottom={marginB}
-                marginLeft={marginL}
-                onChangeMarTop={value =>
-                  setAttributes({
-                    marginT: value === undefined ? 0 : value
-                  })
-                }
-                onChangeMarRight={value =>
-                  setAttributes({
-                    marginR: value === undefined ? 0 : value
-                  })
-                }
-                onChangeMarBottom={value =>
-                  setAttributes({
-                    marginB: value === undefined ? 0 : value
-                  })
-                }
-                onChangeMarLeft={value =>
-                  setAttributes({
-                    marginL: value === undefined ? 0 : value
-                  })
+                onChangeVertical={newValue =>
+                  setAttributes({ shadowVertical: newValue })
                 }
               />
-              <PremiumPadding
-                paddingTop={paddingT}
-                paddingRight={paddingR}
-                paddingBottom={paddingB}
-                paddingLeft={paddingL}
-                onChangePadTop={value =>
-                  setAttributes({
-                    paddingT: value === undefined ? 0 : value
-                  })
-                }
-                onChangePadRight={value =>
-                  setAttributes({
-                    paddingR: value === undefined ? 0 : value
-                  })
-                }
-                onChangePadBottom={value =>
-                  setAttributes({
-                    paddingB: value === undefined ? 0 : value
-                  })
-                }
-                onChangePadLeft={value =>
-                  setAttributes({
-                    paddingL: value === undefined ? 0 : value
-                  })
-                }
-              />
+              <PanelBody
+                title={__("Spacings")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <PremiumMargin
+                  marginTop={marginT}
+                  marginRight={marginR}
+                  marginBottom={marginB}
+                  marginLeft={marginL}
+                  onChangeMarTop={value =>
+                    setAttributes({
+                      marginT: value === undefined ? 0 : value
+                    })
+                  }
+                  onChangeMarRight={value =>
+                    setAttributes({
+                      marginR: value === undefined ? 0 : value
+                    })
+                  }
+                  onChangeMarBottom={value =>
+                    setAttributes({
+                      marginB: value === undefined ? 0 : value
+                    })
+                  }
+                  onChangeMarLeft={value =>
+                    setAttributes({
+                      marginL: value === undefined ? 0 : value
+                    })
+                  }
+                />
+                <PremiumPadding
+                  paddingTop={paddingT}
+                  paddingRight={paddingR}
+                  paddingBottom={paddingB}
+                  paddingLeft={paddingL}
+                  onChangePadTop={value =>
+                    setAttributes({
+                      paddingT: value === undefined ? 0 : value
+                    })
+                  }
+                  onChangePadRight={value =>
+                    setAttributes({
+                      paddingR: value === undefined ? 0 : value
+                    })
+                  }
+                  onChangePadBottom={value =>
+                    setAttributes({
+                      paddingB: value === undefined ? 0 : value
+                    })
+                  }
+                  onChangePadLeft={value =>
+                    setAttributes({
+                      paddingL: value === undefined ? 0 : value
+                    })
+                  }
+                />
+              </PanelBody>
             </PanelBody>
             <PanelBody
               title={__("Container Style")}
               className="premium-panel-body"
-              initialOpen={true}
+              initialOpen={false}
             >
               <PanelColorSettings
                 title={__("Colors")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
                   {
                     value: background,
@@ -399,76 +451,88 @@ if (icon) {
                   }
                 ]}
               />
-              <PremiumBorder
-                borderType={wrapBorderType}
-                borderWidth={wrapBorderWidth}
-                borderColor={wrapBorderColor}
-                borderRadius={wrapBorderRadius}
-                onChangeType={newType =>
-                  setAttributes({ wrapBorderType: newType })
-                }
-                onChangeWidth={newWidth =>
-                  setAttributes({ wrapBorderWidth: newWidth })
-                }
-                onChangeColor={colorValue =>
-                  setAttributes({ wrapBorderColor: colorValue })
-                }
-                onChangeRadius={newrRadius =>
-                  setAttributes({ wrapBorderRadius: newrRadius })
-                }
-              />
-              <PremiumMargin
-                marginTop={wrapMarginT}
-                marginRight={wrapMarginR}
-                marginBottom={wrapMarginB}
-                marginLeft={wrapMarginL}
-                onChangeMarTop={value =>
-                  setAttributes({
-                    wrapMarginT: value === undefined ? 0 : value
-                  })
-                }
-                onChangeMarRight={value =>
-                  setAttributes({
-                    wrapMarginR: value === undefined ? 0 : value
-                  })
-                }
-                onChangeMarBottom={value =>
-                  setAttributes({
-                    wrapMarginB: value === undefined ? 0 : value
-                  })
-                }
-                onChangeMarLeft={value =>
-                  setAttributes({
-                    wrapMarginL: value === undefined ? 0 : value
-                  })
-                }
-              />
-              <PremiumPadding
-                paddingTop={wrapPaddingT}
-                paddingRight={wrapPaddingR}
-                paddingBottom={wrapPaddingB}
-                paddingLeft={wrapPaddingL}
-                onChangePadTop={value =>
-                  setAttributes({
-                    wrapPaddingT: value === undefined ? 0 : value
-                  })
-                }
-                onChangePadRight={value =>
-                  setAttributes({
-                    wrapPaddingR: value === undefined ? 0 : value
-                  })
-                }
-                onChangePadBottom={value =>
-                  setAttributes({
-                    wrapPaddingB: value === undefined ? 0 : value
-                  })
-                }
-                onChangePadLeft={value =>
-                  setAttributes({
-                    wrapPaddingL: value === undefined ? 0 : value
-                  })
-                }
-              />
+              <PanelBody
+                title={__("Border")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <PremiumBorder
+                  borderType={wrapBorderType}
+                  borderWidth={wrapBorderWidth}
+                  borderColor={wrapBorderColor}
+                  borderRadius={wrapBorderRadius}
+                  onChangeType={newType =>
+                    setAttributes({ wrapBorderType: newType })
+                  }
+                  onChangeWidth={newWidth =>
+                    setAttributes({ wrapBorderWidth: newWidth })
+                  }
+                  onChangeColor={colorValue =>
+                    setAttributes({ wrapBorderColor: colorValue })
+                  }
+                  onChangeRadius={newrRadius =>
+                    setAttributes({ wrapBorderRadius: newrRadius })
+                  }
+                />
+              </PanelBody>
+              <PanelBody
+                title={__("Spacings")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <PremiumMargin
+                  marginTop={wrapMarginT}
+                  marginRight={wrapMarginR}
+                  marginBottom={wrapMarginB}
+                  marginLeft={wrapMarginL}
+                  onChangeMarTop={value =>
+                    setAttributes({
+                      wrapMarginT: value === undefined ? 0 : value
+                    })
+                  }
+                  onChangeMarRight={value =>
+                    setAttributes({
+                      wrapMarginR: value === undefined ? 0 : value
+                    })
+                  }
+                  onChangeMarBottom={value =>
+                    setAttributes({
+                      wrapMarginB: value === undefined ? 0 : value
+                    })
+                  }
+                  onChangeMarLeft={value =>
+                    setAttributes({
+                      wrapMarginL: value === undefined ? 0 : value
+                    })
+                  }
+                />
+                <PremiumPadding
+                  paddingTop={wrapPaddingT}
+                  paddingRight={wrapPaddingR}
+                  paddingBottom={wrapPaddingB}
+                  paddingLeft={wrapPaddingL}
+                  onChangePadTop={value =>
+                    setAttributes({
+                      wrapPaddingT: value === undefined ? 0 : value
+                    })
+                  }
+                  onChangePadRight={value =>
+                    setAttributes({
+                      wrapPaddingR: value === undefined ? 0 : value
+                    })
+                  }
+                  onChangePadBottom={value =>
+                    setAttributes({
+                      wrapPaddingB: value === undefined ? 0 : value
+                    })
+                  }
+                  onChangePadLeft={value =>
+                    setAttributes({
+                      wrapPaddingL: value === undefined ? 0 : value
+                    })
+                  }
+                />
+              </PanelBody>
             </PanelBody>
           </InspectorControls>
         ),
@@ -515,7 +579,8 @@ if (icon) {
                 border: borderType,
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius + "px",
-                borderColor: borderColor
+                borderColor: borderColor,
+                textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
               }}
             />
           )}
@@ -537,6 +602,10 @@ if (icon) {
         iconColor,
         iconType,
         iconBack,
+        shadowBlur,
+        shadowColor,
+        shadowHorizontal,
+        shadowVertical,
         paddingT,
         paddingR,
         paddingB,
@@ -612,12 +681,109 @@ if (icon) {
                 border: borderType,
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius + "px",
-                borderColor: borderColor
+                borderColor: borderColor,
+                textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
               }}
             />
           </a>
         </div>
       );
-    }
+    },
+    deprecated: [
+      {
+        attributes: iconAttrs,
+        save: props => {
+          const {
+            selectedIcon,
+            align,
+            hoverEffect,
+            iconSize,
+            iconColor,
+            iconType,
+            iconBack,
+            paddingT,
+            paddingR,
+            paddingB,
+            paddingL,
+            marginT,
+            marginR,
+            marginB,
+            marginL,
+            borderType,
+            borderWidth,
+            borderRadius,
+            borderColor,
+            background,
+            wrapBorderType,
+            wrapBorderWidth,
+            wrapBorderRadius,
+            wrapBorderColor,
+            wrapPaddingT,
+            wrapPaddingR,
+            wrapPaddingB,
+            wrapPaddingL,
+            wrapMarginT,
+            wrapMarginR,
+            wrapMarginB,
+            wrapMarginL,
+            urlCheck,
+            link,
+            target
+          } = props.attributes;
+          let iconClass =
+            "fa" === iconType
+              ? `fa fa-${selectedIcon}`
+              : `dashicons ${selectedIcon}`;
+          return (
+            <div
+              className={`${className}__container`}
+              style={{
+                textAlign: align,
+                backgroundColor: background,
+                border: wrapBorderType,
+                borderWidth: wrapBorderWidth + "px",
+                borderRadius: wrapBorderRadius + "px",
+                borderColor: wrapBorderColor,
+                paddingTop: wrapPaddingT,
+                paddingRight: wrapPaddingR,
+                paddingBottom: wrapPaddingB,
+                paddingLeft: wrapPaddingL,
+                marginTop: wrapMarginT,
+                marginRight: wrapMarginR,
+                marginBottom: wrapMarginB,
+                marginLeft: wrapMarginL
+              }}
+            >
+              <a
+                className={`${className}__link`}
+                href={urlCheck && link}
+                target={target ? "_blank" : "_self"}
+              >
+                <i
+                  className={`${className} ${iconClass} ${className}__${hoverEffect}`}
+                  style={{
+                    color: iconColor,
+                    backgroundColor: iconBack,
+                    fontSize: iconSize,
+                    paddingTop: paddingT,
+                    paddingRight: paddingR,
+                    paddingBottom: paddingB,
+                    paddingLeft: paddingL,
+                    marginTop: marginT,
+                    marginRight: marginR,
+                    marginBottom: marginB,
+                    marginLeft: marginL,
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                  }}
+                />
+              </a>
+            </div>
+          );
+        }
+      }
+    ]
   });
 }
