@@ -93,7 +93,7 @@ class Premium_Blocks_Integration {
     * @return void
     */
     public function premium_gutenberg_frontend() {
-
+       
         $is_fa_enabled = isset( self::$config['premium-fa-css'] ) ? self::$config['premium-fa-css'] : true;
 
         $is_enabled = isset( self::$config['premium-map-api'] ) ? self::$config['premium-map-api'] : true;
@@ -110,10 +110,11 @@ class Premium_Blocks_Integration {
         
         $is_section_enabled = self::$blocks['container'];
 
+        
         wp_enqueue_style(
             'pbg-frontend',
             PREMIUM_BLOCKS_URL . 'assets/css/style.css',
-            array('wp-blocks'),
+            array(),
             PREMIUM_BLOCKS_VERSION
         );
         
