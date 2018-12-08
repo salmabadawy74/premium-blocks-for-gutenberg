@@ -3,6 +3,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 //import PremiumIcon from "../../components/premium-icon";
 import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PbgIcon from "../icons";
 if (button) {
   const className = "premium-button";
@@ -124,6 +125,22 @@ if (button) {
       type: "number",
       default: "0"
     },
+    btnShadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    btnShadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    btnShadowVertical: {
+      type: "number",
+      default: "0"
+    },
+    btnShadowPosition: {
+      type: "string",
+      default: ""
+    },
     id: {
       type: "string"
     }
@@ -165,7 +182,12 @@ if (button) {
         shadowColor,
         shadowHorizontal,
         shadowVertical,
-        padding
+        padding,
+        btnShadowBlur,
+        btnShadowColor,
+        btnShadowHorizontal,
+        btnShadowVertical,
+        btnShadowPosition
       } = props.attributes;
 
       const SIZE = [
@@ -474,6 +496,40 @@ if (button) {
                   }
                 />
               </PanelBody>
+              <PremiumBoxShadow
+                label="Shadow"
+                color={btnShadowColor}
+                blur={btnShadowBlur}
+                horizontal={btnShadowHorizontal}
+                vertical={btnShadowVertical}
+                position={btnShadowPosition}
+                onChangeColor={newColor =>
+                  setAttributes({
+                    btnShadowColor:
+                      newColor === undefined ? "transparent" : newColor
+                  })
+                }
+                onChangeBlur={newBlur =>
+                  setAttributes({
+                    btnShadowBlur: newBlur === undefined ? 0 : newBlur
+                  })
+                }
+                onChangehHorizontal={newValue =>
+                  setAttributes({
+                    btnShadowHorizontal: newValue === undefined ? 0 : newValue
+                  })
+                }
+                onChangeVertical={newValue =>
+                  setAttributes({
+                    btnShadowVertical: newValue === undefined ? 0 : newValue
+                  })
+                }
+                onChangePosition={newValue =>
+                  setAttributes({
+                    btnShadowPosition: newValue === undefined ? 0 : newValue
+                  })
+                }
+              />
               <PanelBody
                 title={__("Spacings")}
                 className="premium-panel-body-inner"
@@ -524,6 +580,7 @@ if (button) {
               lineHeight: textLine + "px",
               fontWeight: textWeight,
               textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+              boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
               padding: padding + "px",
               border: borderType,
               borderWidth: borderWidth + "px",
@@ -568,7 +625,12 @@ if (button) {
         shadowBlur,
         shadowColor,
         shadowHorizontal,
-        shadowVertical
+        shadowVertical,
+        btnShadowBlur,
+        btnShadowColor,
+        btnShadowHorizontal,
+        btnShadowVertical,
+        btnShadowPosition
       } = props.attributes;
       return (
         <div
@@ -609,6 +671,7 @@ if (button) {
               lineHeight: textLine + "px",
               fontWeight: textWeight,
               textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+              boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
               padding: padding + "px",
               border: borderType,
               borderWidth: borderWidth + "px",

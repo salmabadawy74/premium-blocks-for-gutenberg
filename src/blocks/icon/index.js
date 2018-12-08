@@ -359,6 +359,7 @@ if (icon) {
                 />
               </PanelBody>
               <PremiumTextShadow
+                label="Shadow"
                 color={shadowColor}
                 blur={shadowBlur}
                 horizontal={shadowHorizontal}

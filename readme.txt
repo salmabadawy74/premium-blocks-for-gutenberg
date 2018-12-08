@@ -5,6 +5,7 @@ Donate link: http://leap13.com
 Requires at least: 4.5
 Tested up to: 5.0.0
 Requires PHP: 5.4
+Stable tag: 1.0.1
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -44,13 +45,18 @@ Kindly note that the plugin is on it’s early stages and Gutenberg itself is st
 == Frequently Asked Questions ==
 = Is this a standalone Plugin? =
 
-No. You cannot use Premium Blocks without Gutenberg as it\'s a blocks plugin for Gutenberg.
+No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for Gutenberg.
 
 = Does it work with any WordPress theme? =
 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+
+= 1.0.1 =
+
+- Tweak: Compatibility with WordPress 5.0.0.
+- Tweak: Added Box Shadow option to Premium Button Block.
 
 = 1.0.0 =
 
