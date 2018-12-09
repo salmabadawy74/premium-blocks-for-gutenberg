@@ -6,7 +6,6 @@ export default class PbgIcon extends wp.element.Component {
   render() {
     const { icon } = this.props;
 
-    console.log(icon);
     return <i className={`pbg-${icon}-block`} aria-hidden="true" />;
   }
 }

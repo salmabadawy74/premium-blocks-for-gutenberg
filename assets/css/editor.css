@@ -154,3 +154,18 @@
 #wpwrap .premium-container__full .editor-block-list__layout {
   padding: 0;
 }
+/**************** Premium Accordion ********************/
+/*******************************************************/
+#wpwrap .edit-post-visual-editor .premium-repeater {
+  text-align: center;
+}
+#wpwrap .edit-post-visual-editor .premium-repeater-btn {
+  cursor: pointer;
+}
+#wpwrap .edit-post-visual-editor .premium-repeater-icon {
+  font-style: normal;
+  margin-right: 0.2em;
+}
+#wpwrap .edit-post-visual-editor .premium-accordion__desc {
+  margin-bottom: 0;
+}

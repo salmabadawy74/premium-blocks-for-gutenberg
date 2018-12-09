@@ -5,13 +5,23 @@ jQuery(document).ready(function($) {
       let $accordion = $(accordion),
         $title = $accordion.find(".premium-accordion__title_wrap");
       $title.on("click", function() {
-        $(this)
+        let self = $(this);
+        self
           .find(".premium-accordion__icon")
           .toggleClass("premium-accordion__closed");
-        $(this)
-          .siblings()
-          .toggleClass("premium-accordion__desc_close");
+        self.siblings().toggleClass("premium-accordion__desc_close");
+
+        $title.not($(this)).map((index, otherTitle) => {
+          $otherTitle = $(otherTitle);
+          $otherTitleIcon = $otherTitle.find(".premium-accordion__icon");
+          $otherTitleSiblings = $otherTitle.siblings();
+
+          !$otherTitleIcon.hasClass("premium-accordion__closed") &&
+            $otherTitleIcon.toggleClass("premium-accordion__closed");
+          !$otherTitleSiblings.hasClass("premium-accordion__desc_close") &&
+            $otherTitleSiblings.toggleClass("premium-accordion__desc_close");
+        });
       });
     });
-  }, 1500);
+  }, 500);
 });
