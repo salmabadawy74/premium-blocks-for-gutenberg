@@ -3,6 +3,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
+import PremiumBackgroud from "../../components/premium-background";
 import PbgIcon from "../icons";
 
 if (container) {
@@ -379,74 +380,33 @@ if (container) {
                 ]}
               />
               {imageURL && <img src={imageURL} width="100%" height="auto" />}
-              <MediaUpload
-                allowedTypes={["image"]}
-                onSelect={media => {
+              <PremiumBackgroud
+                imageID={imageID}
+                imageURL={imageURL}
+                backgroundPosition={backgroundPosition}
+                backgroundRepeat={backgroundRepeat}
+                backgroundSize={backgroundSize}
+                fixed={fixed}
+                onSelectMedia={media => {
                   setAttributes({
                     imageID: media.id,
                     imageURL: media.url
                   });
                 }}
-                type="image"
-                value={imageID}
-                render={({ open }) => (
-                  <Fragment>
-                    {!imageURL && (
-                      <IconButton
-                        label={__("Change Image")}
-                        icon="edit"
-                        onClick={open}
-                      >
-                        {__("Change Image")}
-                      </IconButton>
-                    )}
-                    {imageURL && (
-                      <IconButton
-                        label={__("Remove Image")}
-                        icon="no"
-                        onClick={value =>
-                          setAttributes({ imageURL: "", imageID: "" })
-                        }
-                      >
-                        {__("Remove Image")}
-                      </IconButton>
-                    )}
-                  </Fragment>
-                )}
+                onRemoveImage={value =>
+                  setAttributes({ imageURL: "", imageID: "" })
+                }
+                onChangeBackPos={newValue =>
+                  setAttributes({ backgroundPosition: newValue })
+                }
+                onchangeBackRepeat={newValue =>
+                  setAttributes({ backgroundRepeat: newValue })
+                }
+                onChangeBackSize={newValue =>
+                  setAttributes({ backgroundSize: newValue })
+                }
+                onChangeFixed={check => setAttributes({ fixed: check })}
               />
-              {imageURL && (
-                <Fragment>
-                  <SelectControl
-                    label={__("Position")}
-                    options={POSITION}
-                    value={backgroundPosition}
-                    onChange={newValue =>
-                      setAttributes({ backgroundPosition: newValue })
-                    }
-                  />
-                  <SelectControl
-                    label={__("Repeat")}
-                    options={REPEAT}
-                    value={backgroundRepeat}
-                    onChange={newValue =>
-                      setAttributes({ backgroundRepeat: newValue })
-                    }
-                  />
-                  <SelectControl
-                    label={__("Size")}
-                    options={SIZE}
-                    value={backgroundSize}
-                    onChange={newValue =>
-                      setAttributes({ backgroundSize: newValue })
-                    }
-                  />
-                  <ToggleControl
-                    label={__("Fixed Background")}
-                    checked={fixed}
-                    onChange={check => setAttributes({ fixed: check })}
-                  />
-                </Fragment>
-              )}
             </PanelBody>
             <PanelBody
               title={__("Border")}
@@ -471,6 +431,7 @@ if (container) {
               />
             </PanelBody>
             <PremiumBoxShadow
+              inner={false}
               color={shadowColor}
               blur={shadowBlur}
               horizontal={shadowHorizontal}
@@ -508,6 +469,7 @@ if (container) {
               initialOpen={false}
             >
               <PremiumMargin
+                directions={["all"]}
                 marginTop={marginTop}
                 marginRight={marginRight}
                 marginBottom={marginBottom}
@@ -749,7 +711,7 @@ if (container) {
             >
               <div
                 className={`${className}__content_wrap ${className}__${vPos}`}
-                style={{ width: innerWidth ? innerWidth + "%" : "100%"}}
+                style={{ width: innerWidth ? innerWidth + "%" : "100%" }}
               >
                 <div className={`${className}__content_inner`}>
                   <InnerBlocks.Content />

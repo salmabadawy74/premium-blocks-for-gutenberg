@@ -3,6 +3,7 @@ const { PanelBody, RangeControl, SelectControl } = wp.components;
 const { PanelColorSettings } = wp.editor;
 export default function PremiumTextShadow(props) {
   const {
+    inner,
     label,
     color,
     blur,
@@ -26,10 +27,11 @@ export default function PremiumTextShadow(props) {
       label: __("Outline")
     }
   ];
+
   return (
     <PanelBody
       title={__(label || "Box Shadow")}
-      className="premium-panel-body premium-panel-body-inner"
+      className={`premium-panel-body premium-panel-body-${inner && "inner"}`}
       initialOpen={false}
     >
       <PanelColorSettings
