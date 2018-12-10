@@ -6,7 +6,7 @@
  * Author: Leap13
  * Author URI: https://leap13.com/
  * Version: 1.0.3
- * Text Domain: premium-gutenberg
+ * Text Domain: premium-blocks-for-gutenberg
  * Domain Path: /languages
  * License: GNU General Public License v3.0
  * @package gutenberg_premium_blocks
