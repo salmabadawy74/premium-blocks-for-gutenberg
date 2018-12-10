@@ -12,7 +12,7 @@
 .toplevel_page_premium-gutenberg > div.wp-menu-image::before {
     position: relative;
     top: 5px;
-    content: "\e909";
+    content: "\e90a";
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'pbg-elements' !important;
     speak: none;

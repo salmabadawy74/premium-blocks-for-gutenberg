@@ -44,7 +44,7 @@ if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
          * @return void
          */
         public function load_domain() {
-            load_plugin_textdomain( 'premium-gutenberg', false, dirname( plugin_basename ( __FILE__ ) ) . '/languages/' );
+            load_plugin_textdomain( 'premium-gutenberg', false, dirname( PREMIUM_BLOCKS_BASENAME ) . '/languages/' );
         }
         
         /*

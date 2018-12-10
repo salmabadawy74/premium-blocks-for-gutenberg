@@ -7,4 +7,4 @@ import "./blocks/count-up";
 import "./blocks/icon";
 import "./blocks/button";
 import "./blocks/section";
-//import "./blocks/accordion";
+import "./blocks/accordion";

@@ -167,13 +167,13 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                         <table class="pb-elements-table">
                             <tbody>
                                 <tr>
-<!--                                    <th><?php echo __('Premium Accordion', 'premium-gutenberg'); ?></th>
+                                    <th><?php echo __('Premium Accordion', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
                                             <input type="checkbox" id="accordion" name="accordion" <?php checked(1, $this->pbg_get_settings['accordion'], true) ?>>
                                             <span class="slider round"></span>
                                         </label>
-                                    </td>-->
+                                    </td>
                                     <th><?php echo __('Premium Banner', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -181,6 +181,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                </tr>
+                                <tr>
                                     <th><?php echo __('Premium Button', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -188,8 +190,6 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-                                </tr>
-                                <tr>
                                     <th><?php echo __('Premium Count Up', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -197,6 +197,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                </tr>
+                                <tr>
                                     <th><?php echo __('Premium Dual Heading', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -204,9 +206,6 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-                                    
-                                </tr>
-                                <tr>
                                     <th><?php echo __('Premium Icon', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -214,6 +213,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                </tr>
+                                <tr>
                                     <th><?php echo __('Premium Maps', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -221,8 +222,6 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-                                </tr>
-                                <tr>
                                     <th><?php echo __('Premium Pricing Table', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -230,6 +229,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                </tr>
+                                <tr>
                                     <th><?php echo __('Premium Section', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -237,9 +238,6 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-                                    
-                                </tr>
-                                <tr>
                                     <th><?php echo __('Premium Testimonials', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -304,7 +302,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                 'icon'          => intval( $settings['icon'] ? 1 : 0 ),
                 'button'        => intval( $settings['button'] ? 1 : 0 ),
                 'container'     => intval( $settings['container'] ? 1 : 0 ),
-                'accordion'     => 0,
+                'accordion'     => intval( $settings['accordion'] ? 1 : 0 ),
                 
                 
             );

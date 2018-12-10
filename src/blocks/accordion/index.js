@@ -1,8 +1,8 @@
 import { accordion } from "../settings";
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
-import PremiumMargin from "../../components/premium-margin";
 import PremiumTypo from "../../components/premium-typo";
+import PbgIcon from "../icons";
 
 if (accordion) {
   const className = "premium-accordion";
@@ -13,37 +13,27 @@ if (accordion) {
 
   const { Component, Fragment } = wp.element;
 
-  const {
-    Toolbar,
-    PanelBody,
-    SelectControl,
-    RangeControl,
-    TextControl,
-    ToggleControl
-  } = wp.components;
+  const { Toolbar, PanelBody, SelectControl, RangeControl } = wp.components;
 
-  const {
-    BlockControls,
-    InspectorControls,
-    AlignmentToolbar,
-    RichText,
-    PanelColorSettings,
-    URLInput
-  } = wp.editor;
+  const { InspectorControls, RichText, PanelColorSettings } = wp.editor;
 
   const accordionAttrs = {
     accordionId: {
       type: "string"
     },
+    repeaterItems: {
+      type: "array",
+      default: [
+        {
+          titleText: __("Awesome Title"),
+          descText:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }
+      ]
+    },
     direction: {
       type: "string",
       default: "ltr"
-    },
-    titleText: {
-      type: "array",
-      source: "children",
-      selector: ".premium-accordion__title_text",
-      default: __("Awesome Title")
     },
     titleTag: {
       type: "string",
@@ -119,14 +109,7 @@ if (accordion) {
     },
     descAlign: {
       type: "string",
-      default: "center"
-    },
-    descText: {
-      type: "array",
-      source: "children",
-      selector: ".premium-accordion__desc",
-      default:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      default: "left"
     },
     descColor: {
       type: "string"
@@ -178,7 +161,8 @@ if (accordion) {
       type: "number"
     },
     descPaddingL: {
-      type: "number"
+      type: "number",
+      default: 10
     }
   };
 
@@ -222,8 +206,8 @@ if (accordion) {
       const { isSelected, setAttributes, clientId } = this.props;
       const {
         accordionId,
+        repeaterItems,
         direction,
-        titleText,
         titleTag,
         titleColor,
         titleSize,
@@ -246,7 +230,6 @@ if (accordion) {
         arrowPadding,
         arrowRadius,
         arrowSize,
-        descText,
         descAlign,
         descColor,
         descBack,
@@ -277,6 +260,123 @@ if (accordion) {
         }
       ];
       const ALIGNS = ["left", "center", "right"];
+
+      const onAccordionChange = (attr, value, index) => {
+        const items = repeaterItems;
+
+        return items.map(function(item, currIndex) {
+          if (index == currIndex) {
+            item[attr] = value;
+          }
+
+          return item;
+        });
+      };
+
+      const accordionItems = repeaterItems.map((item, index) => {
+        return (
+          <div
+            id={`${className}__layer${index}`}
+            className={`${className}__content_wrap`}
+          >
+            <div
+              className={`${className}__title_wrap ${className}__${direction}`}
+              style={{
+                backgroundColor: titleBack,
+                border: titleBorder,
+                borderWidth: titleBorderWidth + "px",
+                borderRadius: titleBorderRadius + "px",
+                borderColor: titleBorderColor,
+                paddingTop: titlePaddingT,
+                paddingRight: titlePaddingR,
+                paddingBottom: titlePaddingB,
+                paddingLeft: titlePaddingL
+              }}
+            >
+              <div className={`${className}__title`}>
+                <RichText
+                  tagName={titleTag.toLowerCase()}
+                  className={`${className}__title_text`}
+                  onChange={newText =>
+                    setAttributes({
+                      repeaterItems: onAccordionChange(
+                        "titleText",
+                        newText,
+                        index
+                      )
+                    })
+                  }
+                  placeholder={__("Awesome Title")}
+                  value={item.titleText}
+                  style={{
+                    color: titleColor,
+                    fontSize: titleSize + "px",
+                    letterSpacing: titleLetter + "px",
+                    textTransform: titleUpper ? "uppercase" : "none",
+                    fontStyle: titleStyle,
+                    fontWeight: titleWeight,
+                    lineHeight: titleLine + "px"
+                  }}
+                />
+              </div>
+              <div className={`${className}__icon_wrap`}>
+                <svg
+                  className={`${className}__icon`}
+                  role="img"
+                  focusable="false"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={arrowSize}
+                  height={arrowSize}
+                  viewBox="0 0 20 20"
+                  style={{
+                    fill: arrowColor,
+                    backgroundColor: arrowBack,
+                    padding: arrowPadding + "px",
+                    borderRadius: arrowRadius + "px"
+                  }}
+                >
+                  <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
+                </svg>
+              </div>
+            </div>
+            <div
+              className={`${className}__desc_wrap`}
+              style={{
+                textAlign: descAlign,
+                backgroundColor: descBack,
+                border: descBorder,
+                borderWidth: descBorderWidth + "px",
+                borderRadius: descBorderRadius + "px",
+                borderColor: descBorderColor,
+                paddingTop: descPaddingT,
+                paddingRight: descPaddingR,
+                paddingBottom: descPaddingB,
+                paddingLeft: descPaddingL
+              }}
+            >
+              <RichText
+                tagName="p"
+                className={`${className}__desc`}
+                onChange={newText =>
+                  setAttributes({
+                    repeaterItems: onAccordionChange("descText", newText, index)
+                  })
+                }
+                value={item.descText}
+                style={{
+                  color: descColor,
+                  fontSize: descSize + "px",
+                  letterSpacing: descLetter + "px",
+                  textTransform: descUpper ? "uppercase" : "none",
+                  fontStyle: descStyle,
+                  fontWeight: descWeight,
+                  lineHeight: descLine + "px"
+                }}
+              />
+            </div>
+          </div>
+        );
+      });
       return [
         isSelected && (
           <InspectorControls key="inspector">
@@ -584,108 +684,45 @@ if (accordion) {
             </PanelBody>
           </InspectorControls>
         ),
-        <div id={accordionId} className={`${className}`}>
-          <div className={`${className}__content_wrap`}>
-            <div
-              className={`${className}__title_wrap ${className}__${direction}`}
-              style={{
-                backgroundColor: titleBack,
-                border: titleBorder,
-                borderWidth: titleBorderWidth + "px",
-                borderRadius: titleBorderRadius + "px",
-                borderColor: titleBorderColor,
-                paddingTop: titlePaddingT,
-                paddingRight: titlePaddingR,
-                paddingBottom: titlePaddingB,
-                paddingLeft: titlePaddingL
-              }}
-            >
-              <div className={`${className}__title`}>
-                <RichText
-                  tagName={titleTag.toLowerCase()}
-                  className={`${className}__title_text`}
-                  onChange={newText => setAttributes({ titleText: newText })}
-                  placeholder={__("Awesome Title")}
-                  value={titleText}
-                  style={{
-                    color: titleColor,
-                    fontSize: titleSize + "px",
-                    letterSpacing: titleLetter + "px",
-                    textTransform: titleUpper ? "uppercase" : "none",
-                    fontStyle: titleStyle,
-                    fontWeight: titleWeight,
-                    lineHeight: titleLine + "px"
-                  }}
-                />
-              </div>
-              <div className={`${className}__icon_wrap`}>
-                <svg
-                  className={`${className}__icon`}
-                  role="img"
-                  focusable="false"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={arrowSize}
-                  height={arrowSize}
-                  viewBox="0 0 20 20"
-                  style={{
-                    fill: arrowColor,
-                    backgroundColor: arrowBack,
-                    padding: arrowPadding + "px",
-                    borderRadius: arrowRadius + "px"
-                  }}
-                >
-                  <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
-                </svg>
-              </div>
-            </div>
-            <div
-              className={`${className}__desc_wrap`}
-              style={{
-                textAlign: descAlign,
-                backgroundColor: descBack,
-                border: descBorder,
-                borderWidth: descBorderWidth + "px",
-                borderRadius: descBorderRadius + "px",
-                borderColor: descBorderColor,
-                paddingTop: descPaddingT,
-                paddingRight: descPaddingR,
-                paddingBottom: descPaddingB,
-                paddingLeft: descPaddingL
-              }}
-            >
-              <RichText
-                tagName="p"
-                className={`${className}__desc`}
-                onChange={newText => setAttributes({ descText: newText })}
-                value={descText}
-                style={{
-                  color: descColor,
-                  fontSize: descSize + "px",
-                  letterSpacing: descLetter + "px",
-                  textTransform: descUpper ? "uppercase" : "none",
-                  fontStyle: descStyle,
-                  fontWeight: descWeight,
-                  lineHeight: descLine + "px"
-                }}
-              />
-            </div>
+        <Fragment>
+          <div id={accordionId} className={`${className}`}>
+            {accordionItems}
           </div>
-        </div>
+          <div className={"premium-repeater"}>
+            <button
+              className={"premium-repeater-btn"}
+              onClick={() => {
+                return setAttributes({
+                  repeaterItems: repeaterItems.concat([
+                    {
+                      titleText: __("Awesome Title"),
+                      descText: __("Cool Description")
+                    }
+                  ])
+                });
+              }}
+            >
+              <i className="dashicons dashicons-plus premium-repeater-icon" />
+              {__("Add New Item")}
+            </button>
+            <p>{__("Add the items you need then reload the page")}</p>
+          </div>
+        </Fragment>
       ];
     }
   }
 
   registerBlockType("premium/accordion", {
     title: __("Accordion"),
-    icon: "share-alt2",
+    icon: <PbgIcon icon="accordion" />,
     category: "premium-blocks",
     attributes: accordionAttrs,
     edit: PremiumAccordion,
     save: props => {
       const {
         accordionId,
+        repeaterItems,
         direction,
-        titleText,
         titleTag,
         titleSize,
         titleLine,
@@ -708,7 +745,6 @@ if (accordion) {
         arrowPadding,
         arrowSize,
         arrowRadius,
-        descText,
         descAlign,
         descSize,
         descLine,
@@ -727,9 +763,13 @@ if (accordion) {
         descPaddingB,
         descPaddingL
       } = props.attributes;
-      return (
-        <div id={accordionId} className={`${className}`}>
-          <div className={`${className}__content_wrap`}>
+
+      const accordionItems = repeaterItems.map((item, index) => {
+        return (
+          <div
+            id={`${className}__layer${index}`}
+            className={`${className}__content_wrap`}
+          >
             <div
               className={`${className}__title_wrap ${className}__${direction}`}
               style={{
@@ -748,7 +788,7 @@ if (accordion) {
                 <RichText.Content
                   tagName={titleTag.toLowerCase()}
                   className={`${className}__title_text`}
-                  value={titleText}
+                  value={item.titleText}
                   style={{
                     color: titleColor,
                     fontSize: titleSize + "px",
@@ -762,7 +802,7 @@ if (accordion) {
               </div>
               <div className={`${className}__icon_wrap`}>
                 <svg
-                  className={`${className}__icon`}
+                  className={`${className}__icon premium-accordion__closed`}
                   role="img"
                   focusable="false"
                   xmlns="http://www.w3.org/2000/svg"
@@ -781,7 +821,7 @@ if (accordion) {
               </div>
             </div>
             <div
-              className={`${className}__desc_wrap`}
+              className={`${className}__desc_wrap premium-accordion__desc_close`}
               style={{
                 textAlign: descAlign,
                 backgroundColor: descBack,
@@ -798,7 +838,7 @@ if (accordion) {
               <RichText.Content
                 tagName="p"
                 className={`${className}__desc`}
-                value={descText}
+                value={item.descText}
                 style={{
                   color: descColor,
                   fontSize: descSize + "px",
@@ -811,6 +851,11 @@ if (accordion) {
               />
             </div>
           </div>
+        );
+      });
+      return (
+        <div id={accordionId} className={`${className}`}>
+          {accordionItems}
         </div>
       );
     },

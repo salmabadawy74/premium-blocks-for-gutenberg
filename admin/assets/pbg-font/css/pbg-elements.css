@@ -28,29 +28,32 @@
 }
 
 .pbg-testimonials-block:before {
-  content: "\e900";
-}
-.pbg-section-block:before {
-  content: "\e901";
-}
-.pbg-pricing-table-block:before {
-  content: "\e902";
-}
-.pbg-maps-block:before {
-  content: "\e903";
-}
-.pbg-icon-block:before {
-  content: "\e904";
-}
-.pbg-dual-heading-block:before {
-  content: "\e905";
-}
-.pbg-counter-block:before {
   content: "\e906";
 }
-.pbg-button-block:before {
+.pbg-section-block:before {
+  content: "\e908";
+}
+.pbg-pricing-table-block:before {
+  content: "\e904";
+}
+.pbg-maps-block:before {
+  content: "\e905";
+}
+.pbg-icon-block:before {
+  content: "\e903";
+}
+.pbg-dual-heading-block:before {
   content: "\e907";
 }
+.pbg-counter-block:before {
+  content: "\e901";
+}
+.pbg-button-block:before {
+  content: "\e902";
+}
 .pbg-banner-block:before {
-  content: "\e908";
+  content: "\e909";
+}
+.pbg-accordion-block:before {
+  content: "\e900";
 }
