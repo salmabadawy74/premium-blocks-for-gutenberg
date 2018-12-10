@@ -498,6 +498,7 @@ if (button) {
               </PanelBody>
               <PremiumBoxShadow
                 label="Shadow"
+                inner={true}
                 color={btnShadowColor}
                 blur={btnShadowBlur}
                 horizontal={btnShadowHorizontal}

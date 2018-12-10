@@ -381,6 +381,7 @@ if (icon) {
                 initialOpen={false}
               >
                 <PremiumMargin
+                  directions={["all"]}
                   marginTop={marginT}
                   marginRight={marginR}
                   marginBottom={marginB}
@@ -482,6 +483,7 @@ if (icon) {
                 initialOpen={false}
               >
                 <PremiumMargin
+                  directions={["all"]}
                   marginTop={wrapMarginT}
                   marginRight={wrapMarginR}
                   marginBottom={wrapMarginB}
