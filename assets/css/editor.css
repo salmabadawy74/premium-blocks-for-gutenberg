@@ -128,16 +128,19 @@
 .premium-pricing-table .premium-pricing-table__button .editor-url-input {
   pointer-events: auto;
 }*/
-/**************** Premium Maps *************************/
+/**************** Premium counUp ***********************/
 /*******************************************************/
-#wpwrap .edit-post-visual-editor .premium-countup__desc p {
+#wpwrap .edit-post-visual-editor .premium-countup__desc p,
+#wpwrap .edit-post-visual-editor .premium-icon-box__title,
+#wpwrap .edit-post-visual-editor .premium-icon-box__desc {
   margin: 0;
   padding: 0;
 }
 /**************** Premium Icon *************************/
 /*******************************************************/
 #wpwrap .edit-post-visual-editor .premium-icon,
-#wpwrap .edit-post-visual-editor .premium-countup__icon {
+#wpwrap .edit-post-visual-editor .premium-countup__icon,
+#wpwrap .edit-post-visual-editor .premium-icon-box__icon {
   font-style: normal;
 }
 .premium-icon__sidebar_icon {

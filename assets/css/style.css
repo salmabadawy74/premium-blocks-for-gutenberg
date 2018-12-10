@@ -935,6 +935,7 @@ a.premium-dheading-block__link:hover {
 /**************** Premium Icon *************************/
 /*******************************************************/
 .premium-icon__alert,
+.premium-icon-box__alert,
 .premium-countup__alert {
   padding: 10px;
   color: #b94a48;
@@ -943,7 +944,9 @@ a.premium-dheading-block__link:hover {
   text-align: center;
 }
 .premium-icon__container .premium-icon.dashicons,
-.premium-icon__container .premium-icon.dashicons::before {
+.premium-icon__container .premium-icon.dashicons::before,
+.premium-icon-box .premium-icon-box__icon.dashicons,
+.premium-icon-box .premium-icon-box__icon.dashicons::before {
   display: inline-block;
   width: auto;
   height: auto;
@@ -1487,4 +1490,14 @@ a.premium-dheading-block__link:hover {
 }
 .premium-accordion .premium-accordion__desc_wrap .premium-accordion__desc {
   margin: 0;
+}
+/**************** Premium Icon Box *********************/
+/*******************************************************/
+.premium-icon-box {
+  padding: 20px;
+}
+.premium-icon-box .premium-icon-box__title,
+.premium-icon-box .premium-icon-box__desc {
+  margin: 0;
+  padding: 0;
 }

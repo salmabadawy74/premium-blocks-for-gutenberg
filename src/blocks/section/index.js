@@ -508,6 +508,7 @@ if (container) {
               initialOpen={false}
             >
               <PremiumMargin
+                directions={["all"]}
                 marginTop={marginTop}
                 marginRight={marginRight}
                 marginBottom={marginBottom}
@@ -749,7 +750,7 @@ if (container) {
             >
               <div
                 className={`${className}__content_wrap ${className}__${vPos}`}
-                style={{ width: innerWidth ? innerWidth + "%" : "100%"}}
+                style={{ width: innerWidth ? innerWidth + "%" : "100%" }}
               >
                 <div className={`${className}__content_inner`}>
                   <InnerBlocks.Content />

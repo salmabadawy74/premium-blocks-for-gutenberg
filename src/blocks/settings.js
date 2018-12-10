@@ -9,7 +9,8 @@ export const {
   icon,
   button,
   container,
-  accordion
+  accordion,
+  iconBox
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys
