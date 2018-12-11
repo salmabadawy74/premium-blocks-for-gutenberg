@@ -37,7 +37,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
             add_submenu_page(
                 'premium-gutenberg',
                 '',
-                __('Settings','premium-gutenberg'),
+                __('Settings','premium-blocks-for-gutenberg'),
                 'manage_options',
                 'premium-gutenberg-maps',
                 [ $this, 'pb_maps_page']
@@ -74,8 +74,8 @@ if( ! class_exists('Premium_Guten_Maps') ) {
                 <form action="" method="POST" id="pb-maps" name="pb-maps">
                     <div class="pb-header-wrapper">
                         <div class="pb-title-left">
-                            <h1 class="pb-title-main"><?php echo __('Premium Blocks for Gutenberg','premium-gutenberg'); ?></h1>
-                            <h3 class="pb-title-sub"><?php echo __('Thank you for using Premium Blocks for Gutenberg. This plugin has been developed by Leap13 and we hope you enjoy using it.','premium-gutenberg'); ?></h3>
+                            <h1 class="pb-title-main"><?php echo __('Premium Blocks for Gutenberg','premium-blocks-for-gutenberg'); ?></h1>
+                            <h3 class="pb-title-sub"><?php echo __('Thank you for using Premium Blocks for Gutenberg. This plugin has been developed by Leap13 and we hope you enjoy using it.','premium-blocks-for-gutenberg'); ?></h3>
                         </div>
                         <div class="pb-title-right">
                             <img class="pb-logo" src="<?php echo PREMIUM_BLOCKS_URL . 'admin/images/premium-blocks-logo.png';?>">
@@ -87,7 +87,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
                                 <table class="pb-maps-table">
                                     <tr>
                                         <p class="pb-maps-api-notice">
-                                            <?php echo sprintf(__('Premium Maps Block requires Google API key to be entered below. If you don’t have one, Click <a href="%s" target="_blank"> Here</a> to get your key.','premium-gutenberg'), 'https://developers.google.com/maps/documentation/javascript/get-api-key'); ?>
+                                            <?php echo sprintf(__('Premium Maps Block requires Google API key to be entered below. If you don’t have one, Click <a href="%s" target="_blank"> Here</a> to get your key.','premium-blocks-for-gutenberg'), 'https://developers.google.com/maps/documentation/javascript/get-api-key'); ?>
                                         </p>
                                     </tr>
                                     <tr>
@@ -97,18 +97,18 @@ if( ! class_exists('Premium_Guten_Maps') ) {
                                     </tr>
                                     <tr>
                                         <th>
-                                            <h4 class="pb-api-disable-title"><label><?php echo __('Enable Maps API JS File:','premium-gutenberg'); ?></label><input name="premium-map-api" id="premium-map-api" type="checkbox" <?php checked( 1, $this->pb_maps_get['premium-map-api'], true) ?>><span><?php echo __('This will Enable the API JS file if it\'s not included by another theme or plugin','premium-gutenberg');?></span></h4>
+                                            <h4 class="pb-api-disable-title"><label><?php echo __('Enable Maps API JS File:','premium-blocks-for-gutenberg'); ?></label><input name="premium-map-api" id="premium-map-api" type="checkbox" <?php checked( 1, $this->pb_maps_get['premium-map-api'], true) ?>><span><?php echo __('This will Enable the API JS file if it\'s not included by another theme or plugin','premium-blocks-for-gutenberg');?></span></h4>
                                         </th>
                                     </tr>
                                     <tr>
                                         <th>
-                                            <h4 class="pb-api-disable-title"><label><?php echo __('Enable Font Awesome Icons:','premium-gutenberg'); ?></label><input name="premium-fa-css" id="premium-fa-css" type="checkbox" <?php checked( 1, $this->pb_maps_get['premium-fa-css'], true) ?>><span><?php echo __('This will load Font Awesome Icons to be used within Premium Blocks','premium-gutenberg');?></span></h4>
+                                            <h4 class="pb-api-disable-title"><label><?php echo __('Enable Font Awesome Icons:','premium-blocks-for-gutenberg'); ?></label><input name="premium-fa-css" id="premium-fa-css" type="checkbox" <?php checked( 1, $this->pb_maps_get['premium-fa-css'], true) ?>><span><?php echo __('This will load Font Awesome Icons to be used within Premium Blocks','premium-blocks-for-gutenberg');?></span></h4>
                                         </th>
                                     </tr>
                                 </table>
                                 <input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
                                 <div>
-                                    <p><?php echo __('Did you like Premium Blocks for Gutenberg Plugin? Please', 'premium-gutenberg') ?> <a href="https://wordpress.org/support/plugin/premium-blocks-for-gutenberg/reviews/?filter=5" target="_blank"><?php echo __('Click Here to Rate it ★★★★★', 'premium-gutenberg') ?></a></p>
+                                    <p><?php echo __('Did you like Premium Blocks for Gutenberg Plugin? Please', 'premium-blocks-for-gutenberg') ?> <a href="https://wordpress.org/support/plugin/premium-blocks-for-gutenberg/reviews/?filter=5" target="_blank"><?php echo __('Click Here to Rate it ★★★★★', 'premium-blocks-for-gutenberg') ?></a></p>
                                 </div>
                             </div>
                         </div>

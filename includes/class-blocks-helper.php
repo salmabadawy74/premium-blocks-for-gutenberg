@@ -210,7 +210,7 @@ class Premium_Blocks_Integration {
             array(
                 array(
                     'slug'  => 'premium-blocks',
-                    'title' => __('Premium Blocks', 'premium-gutenberg')
+                    'title' => __('Premium Blocks', 'premium-blocks-for-gutenberg')
                 )
             )
         );

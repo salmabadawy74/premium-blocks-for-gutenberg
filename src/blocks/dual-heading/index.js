@@ -16,7 +16,7 @@ if (dualHeading) {
     SelectControl,
     TextControl,
     RangeControl,
-    CheckboxControl
+    ToggleControl
   } = wp.components;
   const {
     BlockControls,
@@ -322,13 +322,13 @@ if (dualHeading) {
                 options={DISPLAY}
                 onChange={value => setAttributes({ display: value })}
               />
-              <CheckboxControl
+              <ToggleControl
                 label={__("Link")}
                 checked={link}
                 onChange={newValue => setAttributes({ link: newValue })}
               />
               {link && (
-                <CheckboxControl
+                <ToggleControl
                   label={__("Open link in new tab")}
                   checked={target}
                   onChange={newValue => setAttributes({ target: newValue })}
@@ -341,13 +341,13 @@ if (dualHeading) {
               className="premium-panel-body"
               initialOpen={false}
             >
-              <CheckboxControl
+              <ToggleControl
                 label={__("Clipped")}
                 checked={firstClip}
                 onChange={newValue => setAttributes({ firstClip: newValue })}
               />
               {firstClip && (
-                <CheckboxControl
+                <ToggleControl
                   label={__("Animated")}
                   checked={firstAnim}
                   onChange={newValue => setAttributes({ firstAnim: newValue })}
@@ -504,13 +504,13 @@ if (dualHeading) {
               className="premium-panel-body"
               initialOpen={false}
             >
-              <CheckboxControl
+              <ToggleControl
                 label={__("Clipped")}
                 checked={secondClip}
                 onChange={newValue => setAttributes({ secondClip: newValue })}
               />
               {secondClip && (
-                <CheckboxControl
+                <ToggleControl
                   label={__("Animated")}
                   checked={secondAnim}
                   onChange={newValue => setAttributes({ secondAnim: newValue })}
@@ -667,12 +667,6 @@ if (dualHeading) {
           className={`${className}__container`}
           style={{ textAlign: contentAlign }}
         >
-          {link && isSelected && (
-            <URLInput
-              value={headingURL}
-              onChange={newUrl => setAttributes({ headingURL: newUrl })}
-            />
-          )}
           <h2 className={`${className}__title`}>
             <span
               className={`${className}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
@@ -727,6 +721,12 @@ if (dualHeading) {
               {secondHeading}
             </span>
           </h2>
+          {link && isSelected && (
+            <URLInput
+              value={headingURL}
+              onChange={newUrl => setAttributes({ headingURL: newUrl })}
+            />
+          )}
         </div>
       ];
     },
