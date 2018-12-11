@@ -1501,3 +1501,18 @@ a.premium-dheading-block__link:hover {
   margin: 0;
   padding: 0;
 }
+.premium-icon-box .premium-icon-box__btn,
+.premium-icon-box .premium-icon-box__btn:hover,
+.premium-icon-box .premium-icon-box__btn:focus {
+  box-shadow: none;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+.premium-icon-box .premium-icon-box__btn {
+  display: inline-block;
+  -webkit-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}

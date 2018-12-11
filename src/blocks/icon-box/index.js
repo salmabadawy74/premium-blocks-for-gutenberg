@@ -31,6 +31,9 @@ if (iconBox) {
   } = wp.editor;
 
   const iconBoxAttrs = {
+    id: {
+      type: "string"
+    },
     align: {
       type: "string",
       default: "center"
@@ -127,6 +130,102 @@ if (iconBox) {
     },
     descMarginB: {
       type: "number"
+    },
+
+    btnChecked: {
+      type: "boolean",
+      default: true
+    },
+    btnTarget: {
+      type: "boolean",
+      default: false
+    },
+    btnText: {
+      type: "array",
+      source: "children",
+      selector: ".premium-icon-box__btn",
+      default: __("Click Here")
+    },
+    btnLink: {
+      type: "string",
+      source: "attribute",
+      attribute: "href",
+      selector: ".premium-icon-box__btn"
+    },
+    btnColor: {
+      type: "string",
+      default: "#6ec1e4"
+    },
+    btnHoverColor: {
+      type: "string",
+      default: "#6ec1e4"
+    },
+    btnBack: {
+      type: "string"
+    },
+    btnHoverBack: {
+      type: "string"
+    },
+    btnSize: {
+      type: "number"
+    },
+    btnLine: {
+      type: "number"
+    },
+    btnLetter: {
+      type: "number"
+    },
+    btnStyle: {
+      type: "string"
+    },
+    btnUpper: {
+      type: "boolean"
+    },
+    btnWeight: {
+      type: "number",
+      default: 500
+    },
+    btnBorderType: {
+      type: "string",
+      default: "none"
+    },
+    btnBorderWidth: {
+      type: "number",
+      default: "1"
+    },
+    btnBorderRadius: {
+      type: "number"
+    },
+    btnBorderColor: {
+      type: "string"
+    },
+    btnPadding: {
+      type: "number"
+    },
+    btnMarginT: {
+      type: "number"
+    },
+    btnMarginB: {
+      type: "number"
+    },
+    btnShadowColor: {
+      type: "string"
+    },
+    btnShadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    btnShadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    btnShadowVertical: {
+      type: "number",
+      default: "0"
+    },
+    btnShadowPosition: {
+      type: "string",
+      default: ""
     },
     imageID: {
       type: "string"
@@ -228,8 +327,9 @@ if (iconBox) {
     category: "premium-blocks",
     attributes: iconBoxAttrs,
     edit: props => {
-      const { isSelected, setAttributes } = props;
+      const { isSelected, setAttributes, clientId: blockId } = props;
       const {
+        id,
         align,
         iconChecked,
         iconType,
@@ -248,6 +348,7 @@ if (iconBox) {
         titleWeight,
         titleMarginT,
         titleMarginB,
+
         descChecked,
         descText,
         descColor,
@@ -256,6 +357,31 @@ if (iconBox) {
         descWeight,
         descMarginT,
         descMarginB,
+        btnChecked,
+        btnTarget,
+        btnText,
+        btnLink,
+        btnSize,
+        btnUpper,
+        btnWeight,
+        btnLetter,
+        btnColor,
+        btnStyle,
+        btnHoverColor,
+        btnBack,
+        btnHoverBack,
+        btnBorderColor,
+        btnBorderWidth,
+        btnBorderRadius,
+        btnBorderType,
+        btnPadding,
+        btnMarginT,
+        btnMarginB,
+        btnShadowBlur,
+        btnShadowColor,
+        btnShadowHorizontal,
+        btnShadowVertical,
+        btnShadowPosition,
         imageID,
         imageURL,
         fixed,
@@ -282,6 +408,7 @@ if (iconBox) {
         shadowPosition
       } = props.attributes;
 
+      setAttributes({ id: blockId });
       let iconClass = getIconClass(selectedIcon, iconType);
 
       const ALIGNS = ["left", "center", "right"];
@@ -308,6 +435,11 @@ if (iconBox) {
                 label={__("Description")}
                 checked={descChecked}
                 onChange={newValue => setAttributes({ descChecked: newValue })}
+              />
+              <ToggleControl
+                label={__("Button")}
+                checked={btnChecked}
+                onChange={newValue => setAttributes({ btnChecked: newValue })}
               />
             </PanelBody>
             {iconChecked && (
@@ -435,8 +567,7 @@ if (iconBox) {
                 </PanelBody>
               </PanelBody>
             )}
-
-            {titleChecked && (
+            {descChecked && (
               <PanelBody
                 title={__("Description")}
                 className="premium-panel-body"
@@ -499,6 +630,164 @@ if (iconBox) {
                 </PanelBody>
               </PanelBody>
             )}
+
+            {btnChecked && (
+              <PanelBody
+                title={__("Button")}
+                className="premium-panel-body"
+                initialOpen={false}
+              >
+                <ToggleControl
+                  label={__("Open link in new tab")}
+                  checked={btnTarget}
+                  onChange={newValue => setAttributes({ btnTarget: newValue })}
+                />
+                <PanelBody
+                  title={__("Font")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
+                >
+                  <PremiumTypo
+                    components={["size", "weight", "style", "upper", "spacing"]}
+                    size={btnSize}
+                    weight={btnWeight}
+                    style={btnStyle}
+                    spacing={btnLetter}
+                    upper={btnUpper}
+                    onChangeSize={newSize =>
+                      setAttributes({ btnSize: newSize })
+                    }
+                    onChangeWeight={newWeight =>
+                      setAttributes({ btnWeight: newWeight })
+                    }
+                    onChangeStyle={newStyle =>
+                      setAttributes({ btnStyle: newStyle })
+                    }
+                    onChangeSpacing={newValue =>
+                      setAttributes({ btnLetter: newValue })
+                    }
+                    onChangeUpper={check => setAttributes({ btnUpper: check })}
+                  />
+                </PanelBody>
+                <PanelColorSettings
+                  title={__("Colors")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
+                  colorSettings={[
+                    {
+                      value: btnColor,
+                      onChange: newColor =>
+                        setAttributes({ btnColor: newColor }),
+                      label: __("Text Color")
+                    },
+                    {
+                      value: btnHoverColor,
+                      onChange: newColor =>
+                        setAttributes({ btnHoverColor: newColor }),
+                      label: __("Text Hover Color")
+                    },
+                    {
+                      value: btnBack,
+                      onChange: newColor =>
+                        setAttributes({ btnBack: newColor }),
+                      label: __("Background Color")
+                    },
+                    {
+                      value: btnHoverBack,
+                      onChange: newColor =>
+                        setAttributes({ btnHoverBack: newColor }),
+                      label: __("Background Hover Color")
+                    }
+                  ]}
+                />
+                <PanelBody
+                  title={__("Border")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
+                >
+                  <PremiumBorder
+                    borderType={btnBorderType}
+                    borderWidth={btnBorderWidth}
+                    borderColor={btnBorderColor}
+                    borderRadius={btnBorderRadius}
+                    onChangeType={newType =>
+                      setAttributes({ btnBorderType: newType })
+                    }
+                    onChangeWidth={newWidth =>
+                      setAttributes({ btnBorderWidth: newWidth })
+                    }
+                    onChangeColor={colorValue =>
+                      setAttributes({ btnBorderColor: colorValue })
+                    }
+                    onChangeRadius={newrRadius =>
+                      setAttributes({ btnBorderRadius: newrRadius })
+                    }
+                  />
+                </PanelBody>
+                <PremiumBoxShadow
+                  color={btnShadowColor}
+                  blur={btnShadowBlur}
+                  horizontal={btnShadowHorizontal}
+                  vertical={btnShadowVertical}
+                  position={btnShadowPosition}
+                  onChangeColor={newColor =>
+                    setAttributes({
+                      btnShadowColor:
+                        newColor === undefined ? "transparent" : newColor
+                    })
+                  }
+                  onChangeBlur={newBlur =>
+                    setAttributes({
+                      btnShadowBlur: newBlur === undefined ? 0 : newBlur
+                    })
+                  }
+                  onChangehHorizontal={newValue =>
+                    setAttributes({
+                      btnShadowHorizontal: newValue === undefined ? 0 : newValue
+                    })
+                  }
+                  onChangeVertical={newValue =>
+                    setAttributes({
+                      btnShadowVertical: newValue === undefined ? 0 : newValue
+                    })
+                  }
+                  onChangePosition={newValue =>
+                    setAttributes({
+                      btnShadowPosition: newValue === undefined ? 0 : newValue
+                    })
+                  }
+                />
+                <PanelBody
+                  title={__("Spacings")}
+                  className="premium-panel-body-inner"
+                  initialOpen={false}
+                >
+                  <RangeControl
+                    label={__("Padding (PX)")}
+                    value={btnPadding}
+                    onChange={newValue =>
+                      setAttributes({ btnPadding: newValue })
+                    }
+                  />
+                  <PremiumMargin
+                    directions={["top", "bottom"]}
+                    marginTop={btnMarginT}
+                    marginBottom={btnMarginB}
+                    onChangeMarTop={value =>
+                      setAttributes({
+                        btnMarginT: value === undefined ? 0 : value
+                      })
+                    }
+                    onChangeMarBottom={value =>
+                      setAttributes({
+                        btnMarginB: value === undefined ? 0 : value
+                      })
+                    }
+                  />
+                </PanelBody>
+              </PanelBody>
+            )}
+
             <PanelBody
               title={__("Container")}
               className="premium-panel-body"
@@ -679,6 +968,7 @@ if (iconBox) {
           </InspectorControls>
         ),
         <div
+          id={`${className}-${id}`}
           className={`${className}`}
           style={{
             textAlign: align,
@@ -703,6 +993,18 @@ if (iconBox) {
             backgroundAttachment: fixed ? "fixed" : "unset"
           }}
         >
+          {btnChecked && btnText && (
+            <style
+              dangerouslySetInnerHTML={{
+                __html: [
+                  `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
+                  `color: ${btnHoverColor} !important;`,
+                  `background-color: ${btnHoverBack} !important;`,
+                  "}"
+                ].join("\n")
+              }}
+            />
+          )}
           {iconChecked && iconClass && (
             <div className={`${className}__icon_wrap`}>
               {iconType === "fa" && 1 != FontAwesomeEnabled && (
@@ -773,11 +1075,51 @@ if (iconBox) {
               />
             </div>
           )}
+          {btnChecked && btnText && (
+            <div
+              className={`${className}__btn_wrap`}
+              style={{
+                marginTop: btnMarginT,
+                marginBottom: btnMarginB
+              }}
+            >
+              <RichText
+                tagName="a"
+                className={`${className}__btn`}
+                onChange={newText => setAttributes({ btnText: newText })}
+                placeholder={__("Click Here")}
+                value={btnText}
+                style={{
+                  color: btnColor,
+                  backgroundColor: btnBack,
+                  fontSize: btnSize + "px",
+                  letterSpacing: btnLetter + "px",
+                  textTransform: btnUpper ? "uppercase" : "none",
+                  fontStyle: btnStyle,
+                  fontWeight: btnWeight,
+                  border: btnBorderType,
+                  borderWidth: btnBorderWidth + "px",
+                  borderRadius: btnBorderRadius + "px",
+                  borderColor: btnBorderColor,
+                  padding: btnPadding + "px",
+                  boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
+                }}
+                keepPlaceholderOnFocus
+              />
+              {isSelected && (
+                <URLInput
+                  value={btnLink}
+                  onChange={newLink => setAttributes({ btnLink: newLink })}
+                />
+              )}
+            </div>
+          )}
         </div>
       ];
     },
     save: props => {
       const {
+        id,
         align,
         iconType,
         selectedIcon,
@@ -804,6 +1146,32 @@ if (iconBox) {
         descWeight,
         descMarginT,
         descMarginB,
+
+        btnChecked,
+        btnText,
+        btnTarget,
+        btnLink,
+        btnSize,
+        btnStyle,
+        btnUpper,
+        btnWeight,
+        btnLetter,
+        btnColor,
+        btnHoverColor,
+        btnBack,
+        btnHoverBack,
+        btnBorderWidth,
+        btnBorderRadius,
+        btnBorderColor,
+        btnBorderType,
+        btnPadding,
+        btnMarginT,
+        btnMarginB,
+        btnShadowBlur,
+        btnShadowColor,
+        btnShadowHorizontal,
+        btnShadowVertical,
+        btnShadowPosition,
         backColor,
         imageURL,
         fixed,
@@ -833,6 +1201,7 @@ if (iconBox) {
 
       return (
         <div
+          id={`${className}-${id}`}
           className={`${className}`}
           style={{
             textAlign: align,
@@ -857,6 +1226,18 @@ if (iconBox) {
             backgroundAttachment: fixed ? "fixed" : "unset"
           }}
         >
+          {btnChecked && btnText && (
+            <style
+              dangerouslySetInnerHTML={{
+                __html: [
+                  `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
+                  `color: ${btnHoverColor} !important;`,
+                  `background-color: ${btnHoverBack} !important;`,
+                  "}"
+                ].join("\n")
+              }}
+            />
+          )}
           {iconChecked && iconClass && (
             <div className={`${className}__icon_wrap`}>
               <i
@@ -913,6 +1294,38 @@ if (iconBox) {
               />
             </div>
           )}
+          {btnChecked && btnText && (
+            <div
+              className={`${className}__btn_wrap`}
+              style={{
+                marginTop: btnMarginT,
+                marginBottom: btnMarginB
+              }}
+            >
+              <RichText.Content
+                tagName="a"
+                className={`${className}__btn`}
+                href={btnLink}
+                target={btnTarget ? "_blank" : "_self"}
+                value={btnText}
+                style={{
+                  color: btnColor,
+                  backgroundColor: btnBack,
+                  fontSize: btnSize + "px",
+                  letterSpacing: btnLetter + "px",
+                  textTransform: btnUpper ? "uppercase" : "none",
+                  fontStyle: btnStyle,
+                  fontWeight: btnWeight,
+                  border: btnBorderType,
+                  borderWidth: btnBorderWidth + "px",
+                  borderRadius: btnBorderRadius + "px",
+                  borderColor: btnBorderColor,
+                  padding: btnPadding + "px",
+                  boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
+                }}
+              />
+            </div>
+          )}
         </div>
       );
     },
@@ -920,7 +1333,216 @@ if (iconBox) {
       {
         attributes: iconBoxAttrs,
         save: props => {
-          const { selectedIcon } = props.attributes;
+          const {
+            id,
+            align,
+            iconType,
+            selectedIcon,
+            iconChecked,
+            iconSize,
+            iconColor,
+            titleChecked,
+            titleText,
+            titleTag,
+            titleColor,
+            titleSize,
+            titleLine,
+            titleLetter,
+            titleStyle,
+            titleUpper,
+            titleWeight,
+            titleMarginT,
+            titleMarginB,
+            descChecked,
+            descText,
+            descColor,
+            descSize,
+            descLine,
+            descWeight,
+            descMarginT,
+            descMarginB,
+
+            btnChecked,
+            btnText,
+            btnTarget,
+            btnLink,
+            btnSize,
+            btnStyle,
+            btnUpper,
+            btnWeight,
+            btnLetter,
+            btnColor,
+            btnHoverColor,
+            btnBack,
+            btnHoverBack,
+            btnBorderWidth,
+            btnBorderRadius,
+            btnBorderColor,
+            btnBorderType,
+            btnPadding,
+            btnMarginT,
+            btnMarginB,
+            btnShadowBlur,
+            btnShadowColor,
+            btnShadowHorizontal,
+            btnShadowVertical,
+            btnShadowPosition,
+            backColor,
+            imageURL,
+            fixed,
+            backgroundRepeat,
+            backgroundPosition,
+            backgroundSize,
+            borderType,
+            borderWidth,
+            borderRadius,
+            borderColor,
+            marginT,
+            marginR,
+            marginB,
+            marginL,
+            paddingT,
+            paddingR,
+            paddingB,
+            paddingL,
+            shadowBlur,
+            shadowColor,
+            shadowHorizontal,
+            shadowVertical,
+            shadowPosition
+          } = props.attributes;
+
+          let iconClass = getIconClass(selectedIcon, iconType);
+
+          return (
+            <div
+              id={`${className}-${id}`}
+              className={`${className}`}
+              style={{
+                textAlign: align,
+                border: borderType,
+                borderWidth: borderWidth + "px",
+                borderRadius: borderRadius + "px",
+                borderColor: borderColor,
+                marginTop: marginT,
+                marginRight: marginR,
+                marginBottom: marginB,
+                marginLeft: marginL,
+                paddingTop: paddingT,
+                paddingRight: paddingR,
+                paddingBottom: paddingB,
+                paddingLeft: paddingL,
+                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                backgroundColor: backColor,
+                backgroundImage: `url('${imageURL}')`,
+                backgroundRepeat: backgroundRepeat,
+                backgroundPosition: backgroundPosition,
+                backgroundSize: backgroundSize,
+                backgroundAttachment: fixed ? "fixed" : "unset"
+              }}
+            >
+              {btnChecked && btnText && (
+                <style
+                  dangerouslySetInnerHTML={{
+                    __html: [
+                      `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
+                      `color: ${btnHoverColor} !important;`,
+                      `background-color: ${btnHoverBack} !important;`,
+                      "}"
+                    ].join("\n")
+                  }}
+                />
+              )}
+              {iconChecked && iconClass && (
+                <div className={`${className}__icon_wrap`}>
+                  <i
+                    className={`${iconClass} ${className}__icon`}
+                    style={{
+                      color: iconColor,
+                      fontSize: iconSize
+                    }}
+                  />
+                </div>
+              )}
+              {titleChecked && titleText && (
+                <div
+                  className={`${className}__title_wrap`}
+                  style={{
+                    marginTop: titleMarginT,
+                    marginBottom: titleMarginB
+                  }}
+                >
+                  <RichText.Content
+                    tagName={titleTag.toLowerCase()}
+                    className={`${className}__title`}
+                    value={titleText}
+                    style={{
+                      color: titleColor,
+                      fontSize: titleSize + "px",
+                      letterSpacing: titleLetter + "px",
+                      textTransform: titleUpper ? "uppercase" : "none",
+                      fontStyle: titleStyle,
+                      fontWeight: titleWeight,
+                      lineHeight: titleLine + "px"
+                    }}
+                  />
+                </div>
+              )}
+              {descChecked && descText && (
+                <div
+                  className={`${className}__desc_wrap`}
+                  style={{
+                    marginTop: descMarginT,
+                    marginBottom: descMarginB
+                  }}
+                >
+                  <RichText.Content
+                    tagName="p"
+                    className={`${className}__desc`}
+                    value={descText}
+                    style={{
+                      color: descColor,
+                      fontSize: descSize + "px",
+                      lineHeight: descLine + "px",
+                      fontWeight: descWeight
+                    }}
+                  />
+                </div>
+              )}
+              {btnChecked && btnText && (
+                <div
+                  className={`${className}__btn_wrap`}
+                  style={{
+                    marginTop: btnMarginT,
+                    marginBottom: btnMarginB
+                  }}
+                >
+                  <RichText.Content
+                    tagName="a"
+                    className={`${className}__btn`}
+                    href={btnLink}
+                    target={btnTarget ? "_blank" : "_self"}
+                    value={btnText}
+                    style={{
+                      color: btnColor,
+                      backgroundColor: btnBack,
+                      fontSize: btnSize + "px",
+                      letterSpacing: btnLetter + "px",
+                      textTransform: btnUpper ? "uppercase" : "none",
+                      fontStyle: btnStyle,
+                      fontWeight: btnWeight,
+                      border: btnBorderType,
+                      borderWidth: btnBorderWidth + "px",
+                      borderRadius: btnBorderRadius + "px",
+                      borderColor: btnBorderColor,
+                      padding: btnPadding + "px",
+                      boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          );
         }
       }
     ]
