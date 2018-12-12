@@ -164,16 +164,16 @@ h1.pb-title-main {
   box-shadow: 0 2.5px 5px #b8b8b9;
 }
 input:checked + .slider {
-  background-color: #18a4fd;
-  box-shadow: 0 0 2px 1px #149afd inset;
-  border: 1px solid #149afd;
+  background-color: #41cd52;
+  box-shadow: 0 0 2px 1px #3DC352 inset;
+  border: 1px solid #3DC352;
 }
 input:focus + .slider {
   box-shadow: 0 0 1px #18a4fd;
 }
 input:checked + .slider:before {
-  box-shadow: 0 2.5px 5px #0d6fbd;
-  border: 1px solid #0d6fbd;
+  box-shadow: 0 2.5px 5px #3DC352;
+  border: 1px solid #3DC352;
   -webkit-transform: translateX(40px);
   -ms-transform: translateX(40px);
   transform: translateX(40px);
