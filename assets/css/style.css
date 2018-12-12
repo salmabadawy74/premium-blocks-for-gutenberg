@@ -1494,6 +1494,7 @@ a.premium-dheading-block__link:hover {
 /*******************************************************/
 .premium-icon-box {
   padding: 20px;
+  margin-bottom: 40px;
 }
 .premium-icon-box .premium-icon-box__title,
 .premium-icon-box .premium-icon-box__desc {
