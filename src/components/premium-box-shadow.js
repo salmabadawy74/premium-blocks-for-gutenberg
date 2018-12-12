@@ -1,7 +1,7 @@
 const { __ } = wp.i18n;
 const { PanelBody, RangeControl, SelectControl } = wp.components;
 const { PanelColorSettings } = wp.editor;
-export default function PremiumTextShadow(props) {
+export default function PremiumBoxShadow(props) {
   const {
     inner,
     label,

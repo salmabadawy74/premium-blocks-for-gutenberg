@@ -728,7 +728,7 @@ if (testimonial) {
                 <span className={`${className}__upper`}>
                   <PremiumUpperQuote
                     size={quotSize}
-                    color={quotColor}
+                    color="rgba(110,193,228,0.2)"
                     opacity={quotOpacity}
                   />
                 </span>
@@ -807,7 +807,7 @@ if (testimonial) {
                 </div>
                 <span className={`${className}__lower`}>
                   <PremiumLowerQuote
-                    color={quotColor}
+                    color="rgba(110,193,228,0.2)"
                     size={quotSize}
                     opacity={quotOpacity}
                   />
