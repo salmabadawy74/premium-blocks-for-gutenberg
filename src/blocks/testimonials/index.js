@@ -108,8 +108,7 @@ if (testimonial) {
       type: "number"
     },
     quotColor: {
-      type: "string",
-      default: "rgba(110,193,228,0.2)"
+      type: "string"
     },
     quotOpacity: {
       type: "number"
