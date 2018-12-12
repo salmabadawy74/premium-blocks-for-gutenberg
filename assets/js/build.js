@@ -6249,8 +6249,7 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["l" /* testimonial */]) {
       type: "number"
     },
     quotColor: {
-      type: "string",
-      default: "rgba(110,193,228,0.2)"
+      type: "string"
     },
     quotOpacity: {
       type: "number"
@@ -6947,7 +6946,7 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["l" /* testimonial */]) {
               { className: className + "__upper" },
               wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__["a" /* default */], {
                 size: quotSize,
-                color: quotColor,
+                color: "rgba(110,193,228,0.2)",
                 opacity: quotOpacity
               })
             ),
@@ -7038,7 +7037,7 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["l" /* testimonial */]) {
               "span",
               { className: className + "__lower" },
               wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__["a" /* default */], {
-                color: quotColor,
+                color: "rgba(110,193,228,0.2)",
                 size: quotSize,
                 opacity: quotOpacity
               })
