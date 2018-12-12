@@ -7,6 +7,7 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
+import PbgIcon from "../icons";
 
 if (iconBox) {
   const className = "premium-icon-box";
@@ -336,7 +337,7 @@ if (iconBox) {
 
   registerBlockType("premium/icon-box", {
     title: __("Icon Box"),
-    icon: "plus",
+    icon: <PbgIcon icon="icon-box" />,
     category: "premium-blocks",
     attributes: iconBoxAttrs,
     edit: props => {
