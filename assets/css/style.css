@@ -943,7 +943,9 @@ a.premium-dheading-block__link:hover {
   text-align: center;
 }
 .premium-icon__container .premium-icon.dashicons,
-.premium-icon__container .premium-icon.dashicons::before {
+.premium-icon__container .premium-icon.dashicons::before,
+.premium-icon-box .premium-icon-box__icon.dashicons,
+.premium-icon-box .premium-icon-box__icon.dashicons::before {
   display: inline-block;
   width: auto;
   height: auto;
@@ -1487,4 +1489,33 @@ a.premium-dheading-block__link:hover {
 }
 .premium-accordion .premium-accordion__desc_wrap .premium-accordion__desc {
   margin: 0;
+}
+/**************** Premium Icon Box *********************/
+/*******************************************************/
+.premium-icon-box {
+  padding: 20px;
+  margin-bottom: 40px;
+}
+.premium-icon-box .premium-icon-box__title,
+.premium-icon-box .premium-icon-box__desc {
+  margin: 0;
+  padding: 0;
+}
+.premium-icon-box .premium-icon-box__btn {
+  color: #000;
+}
+.premium-icon-box .premium-icon-box__btn,
+.premium-icon-box .premium-icon-box__btn:hover,
+.premium-icon-box .premium-icon-box__btn:focus {
+  box-shadow: none;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+.premium-icon-box .premium-icon-box__btn {
+  display: inline-block;
+  -webkit-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }

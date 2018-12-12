@@ -5,7 +5,7 @@ Donate link: http://leap13.com
 Requires at least: 4.5
 Tested up to: 5.0.0
 Requires PHP: 5.4
-Stable tag: 1.0.3
+Stable tag: 1.0.5
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -27,6 +27,8 @@ Kindly note that the plugin is on it’s early stages and Gutenberg itself is st
 7. [Gutenberg Pricing Table Block](https://premiumblocks.io/index.php/gutenberg-blocks/pricing-table-block/)
 8. [Gutenberg Section Block](https://premiumblocks.io/index.php/gutenberg-blocks/section-block/)
 9. [Gutenberg Testimonials Block](https://premiumblocks.io/index.php/gutenberg-blocks/testimonials-block/)
+10. [Gutenberg Accordion Block](https://premiumblocks.io/index.php/gutenberg-blocks/accordion-block/)
+11. [Gutenberg Icon Box Block]
 
 == Installation ==
 
@@ -52,6 +54,15 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+
+= 1.0.5 =
+
+- New: Added Premium Icon Box block.
+
+= 1.0.4 =
+
+- Tweak: Changed all check box control into toggle control to enhance user experience.
+- Tweak: Added text domain to all strings.
 
 = 1.0.3 =
 

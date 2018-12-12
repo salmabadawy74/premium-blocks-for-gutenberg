@@ -130,14 +130,17 @@
 }*/
 /**************** Premium Counter **********************/
 /*******************************************************/
-#wpwrap .edit-post-visual-editor .premium-countup__desc p {
+#wpwrap .edit-post-visual-editor .premium-countup__desc p,
+#wpwrap .edit-post-visual-editor .premium-icon-box__title,
+#wpwrap .edit-post-visual-editor .premium-icon-box__desc {
   margin: 0;
   padding: 0;
 }
 /**************** Premium Icon *************************/
 /*******************************************************/
 #wpwrap .edit-post-visual-editor .premium-icon,
-#wpwrap .edit-post-visual-editor .premium-countup__icon {
+#wpwrap .edit-post-visual-editor .premium-countup__icon,
+#wpwrap .edit-post-visual-editor .premium-icon-box__icon {
   font-style: normal;
 }
 .premium-icon__sidebar_icon {
@@ -168,4 +171,9 @@
 }
 #wpwrap .edit-post-visual-editor .premium-accordion__desc {
   margin-bottom: 0;
+}
+/**************** Premium Icon Box *********************/
+/*******************************************************/
+#wpwrap .edit-post-visual-editor .premium-icon-box__btn {
+  color: #000;
 }

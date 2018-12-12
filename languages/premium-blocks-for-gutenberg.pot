@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Premium Blocks for Gutenberg\n"
-"POT-Creation-Date: 2018-12-06 20:19+0200\n"
+"POT-Creation-Date: 2018-12-11 16:39+0200\n"
 "PO-Revision-Date: 2018-02-15 10:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: Leap13\n"
@@ -18,164 +18,27 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: assets/js\n"
 "X-Poedit-SearchPathExcluded-1: admin/assets/js\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
 
-#: node_modules/webpack/node_modules/yargs-parser/index.js:306
-#: node_modules/yargs-parser/index.js:329
-#, javascript-format
-msgid "Not enough arguments following: %s"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs-parser/index.js:454
-#: node_modules/yargs-parser/index.js:492
-#, javascript-format
-msgid "Invalid JSON config file: %s"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/usage.js:169
-#: node_modules/yargs/lib/usage.js:208
-msgid "Commands:"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/usage.js:177
-#: node_modules/webpack/node_modules/yargs/lib/usage.js:407
-#: node_modules/yargs/lib/usage.js:224 node_modules/yargs/lib/usage.js:453
-msgid "default:"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/usage.js:179
-#: node_modules/yargs/lib/usage.js:226
-msgid "aliases:"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/usage.js:241
-#: node_modules/yargs/lib/usage.js:287
-msgid "boolean"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/usage.js:242
-#: node_modules/yargs/lib/usage.js:288
-msgid "count"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/usage.js:243
-#: node_modules/webpack/node_modules/yargs/lib/usage.js:244
-#: node_modules/yargs/lib/usage.js:289 node_modules/yargs/lib/usage.js:290
-msgid "string"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/usage.js:245
-#: node_modules/yargs/lib/usage.js:291
-msgid "array"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/usage.js:246
-#: node_modules/yargs/lib/usage.js:292
-msgid "number"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/usage.js:250
-#: node_modules/yargs/lib/usage.js:296
-msgid "required"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/usage.js:251
-#: node_modules/yargs/lib/usage.js:297
-msgid "choices:"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/usage.js:270
-#: node_modules/yargs/lib/usage.js:316
-msgid "Examples:"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/usage.js:385
-#: node_modules/yargs/lib/usage.js:431
-msgid "generated-value"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/validation.js:27
-#: node_modules/webpack/node_modules/yargs/lib/validation.js:50
-#: node_modules/yargs/lib/validation.js:29
-#: node_modules/yargs/lib/validation.js:52
-#, javascript-format
-msgid "Not enough non-option arguments: got %s, need at least %s"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/validation.js:38
-#: node_modules/yargs/lib/validation.js:40
-#, javascript-format
-msgid "Too many non-option arguments: got %s, maximum of %s"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/validation.js:186
-#: node_modules/yargs/lib/validation.js:147
-msgid "Invalid values:"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/validation.js:189
-#: node_modules/yargs/lib/validation.js:150
-#, javascript-format
-msgid "Argument: %s, Given: %s, Choices: %s"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/validation.js:219
-#: node_modules/yargs/lib/validation.js:180
-#, javascript-format
-msgid "Argument check failed: %s"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/validation.js:284
-#: node_modules/yargs/lib/validation.js:256
-msgid "Implications failed:"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/validation.js:314
-#: node_modules/yargs/lib/validation.js:295
-#, javascript-format
-msgid "Arguments %s and %s are mutually exclusive"
-msgstr ""
-
-#: node_modules/webpack/node_modules/yargs/lib/validation.js:333
-#: node_modules/yargs/lib/validation.js:316
-#, javascript-format
-msgid "Did you mean %s?"
-msgstr ""
-
-#: node_modules/yargs/lib/usage.js:91
-msgid "Positionals:"
-msgstr ""
-
-#: node_modules/yargs/lib/usage.js:197 node_modules/yargs/lib/usage.js:199
-msgid "command"
-msgstr ""
-
-#: src/blocks/accordion/index.js:46 src/blocks/accordion/index.js:608
-#: src/blocks/banner/index.js:47 src/blocks/maps/index.js:82
-#: src/blocks/pricing-table/index.js:1610
+#: src/blocks/accordion/index.js:28 src/blocks/accordion/index.js:309
+#: src/blocks/accordion/index.js:698 src/blocks/banner/index.js:47
+#: src/blocks/maps/index.js:82 src/blocks/pricing-table/index.js:1610
 msgid "Awesome Title"
 msgstr ""
 
-#: src/blocks/accordion/index.js:272
-msgid "LTR"
-msgstr ""
-
-#: src/blocks/accordion/index.js:276
-msgid "RTL"
-msgstr ""
-
-#: src/blocks/accordion/index.js:284 src/blocks/count-up/index.js:346
+#: src/blocks/accordion/index.js:384 src/blocks/count-up/index.js:346
 #: src/blocks/count-up/index.js:587 src/blocks/pricing-table/index.js:687
 msgid "Title"
 msgstr ""
 
-#: src/blocks/accordion/index.js:297 src/blocks/button/index.js:309
+#: src/blocks/accordion/index.js:397 src/blocks/button/index.js:331
 #: src/blocks/count-up/index.js:316
 msgid "Direction"
 msgstr ""
 
-#: src/blocks/accordion/index.js:303 src/blocks/accordion/index.js:475
+#: src/blocks/accordion/index.js:403 src/blocks/accordion/index.js:575
 #: src/blocks/banner/index.js:479 src/blocks/banner/index.js:602
-#: src/blocks/button/index.js:348 src/blocks/count-up/index.js:459
+#: src/blocks/button/index.js:370 src/blocks/count-up/index.js:459
 #: src/blocks/count-up/index.js:501 src/blocks/count-up/index.js:549
 #: src/blocks/count-up/index.js:597 src/blocks/dual-heading/index.js:357
 #: src/blocks/dual-heading/index.js:520 src/blocks/pricing-table/index.js:692
@@ -187,10 +50,10 @@ msgstr ""
 msgid "Font"
 msgstr ""
 
-#: src/blocks/accordion/index.js:341 src/blocks/accordion/index.js:426
-#: src/blocks/accordion/index.js:511 src/blocks/banner/index.js:513
-#: src/blocks/banner/index.js:625 src/blocks/button/index.js:385
-#: src/blocks/button/index.js:426 src/blocks/count-up/index.js:438
+#: src/blocks/accordion/index.js:441 src/blocks/accordion/index.js:526
+#: src/blocks/accordion/index.js:611 src/blocks/banner/index.js:513
+#: src/blocks/banner/index.js:625 src/blocks/button/index.js:407
+#: src/blocks/button/index.js:448 src/blocks/count-up/index.js:438
 #: src/blocks/count-up/index.js:476 src/blocks/count-up/index.js:518
 #: src/blocks/count-up/index.js:566 src/blocks/count-up/index.js:614
 #: src/blocks/dual-heading/index.js:385 src/blocks/dual-heading/index.js:407
@@ -203,17 +66,17 @@ msgstr ""
 #: src/blocks/pricing-table/index.js:1195
 #: src/blocks/pricing-table/index.js:1293
 #: src/blocks/pricing-table/index.js:1439
-#: src/blocks/pricing-table/index.js:1492 src/blocks/section/index.js:369
+#: src/blocks/pricing-table/index.js:1492 src/blocks/section/index.js:298
 #: src/blocks/testimonials/index.js:304 src/blocks/testimonials/index.js:338
 #: src/blocks/testimonials/index.js:395 src/blocks/testimonials/index.js:446
-#: src/components/premium-border.js:61 src/components/premium-box-shadow.js:35
-#: src/components/premium-text-shadow.js:23
+#: src/components/premium-border.js:61 src/components/premium-box-shadow.js:38
+#: src/components/premium-text-shadow.js:24
 msgid "Colors"
 msgstr ""
 
-#: src/blocks/accordion/index.js:345 src/blocks/accordion/index.js:515
+#: src/blocks/accordion/index.js:445 src/blocks/accordion/index.js:615
 #: src/blocks/banner/index.js:524 src/blocks/banner/index.js:636
-#: src/blocks/button/index.js:390 src/blocks/count-up/index.js:526
+#: src/blocks/button/index.js:412 src/blocks/count-up/index.js:526
 #: src/blocks/count-up/index.js:574 src/blocks/count-up/index.js:622
 #: src/blocks/dual-heading/index.js:390 src/blocks/dual-heading/index.js:553
 #: src/blocks/maps/index.js:477 src/blocks/maps/index.js:505
@@ -227,61 +90,73 @@ msgstr ""
 msgid "Text Color"
 msgstr ""
 
-#: src/blocks/accordion/index.js:351 src/blocks/accordion/index.js:436
-#: src/blocks/accordion/index.js:521 src/blocks/banner/index.js:550
-#: src/blocks/button/index.js:433 src/blocks/button/index.js:443
+#: src/blocks/accordion/index.js:451 src/blocks/accordion/index.js:536
+#: src/blocks/accordion/index.js:621 src/blocks/banner/index.js:550
+#: src/blocks/button/index.js:455 src/blocks/button/index.js:465
 #: src/blocks/dual-heading/index.js:396 src/blocks/dual-heading/index.js:559
 #: src/blocks/pricing-table/index.js:755 src/blocks/pricing-table/index.js:1126
 #: src/blocks/pricing-table/index.js:1209
 #: src/blocks/pricing-table/index.js:1313
 #: src/blocks/pricing-table/index.js:1453
-#: src/blocks/pricing-table/index.js:1500 src/blocks/section/index.js:377
+#: src/blocks/pricing-table/index.js:1500 src/blocks/section/index.js:306
 msgid "Background Color"
 msgstr ""
 
-#: src/blocks/accordion/index.js:359 src/blocks/accordion/index.js:529
-#: src/blocks/button/index.js:454 src/blocks/dual-heading/index.js:427
+#: src/blocks/accordion/index.js:459 src/blocks/accordion/index.js:629
+#: src/blocks/button/index.js:476 src/blocks/dual-heading/index.js:427
 #: src/blocks/dual-heading/index.js:589 src/blocks/icon/index.js:338
-#: src/blocks/icon/index.js:455 src/blocks/pricing-table/index.js:1324
-#: src/blocks/pricing-table/index.js:1505 src/blocks/section/index.js:452
+#: src/blocks/icon/index.js:457 src/blocks/pricing-table/index.js:1324
+#: src/blocks/pricing-table/index.js:1505 src/blocks/section/index.js:340
 msgid "Border"
 msgstr ""
 
-#: src/blocks/accordion/index.js:383 src/blocks/accordion/index.js:553
+#: src/blocks/accordion/index.js:483 src/blocks/accordion/index.js:653
 #: src/blocks/dual-heading/index.js:491 src/blocks/dual-heading/index.js:653
 #: src/blocks/pricing-table/index.js:1534
 msgid "Padding"
 msgstr ""
 
-#: src/blocks/accordion/index.js:416
+#: src/blocks/accordion/index.js:516
 msgid "Arrow"
 msgstr ""
 
-#: src/blocks/accordion/index.js:421
+#: src/blocks/accordion/index.js:521
 msgid "Size "
 msgstr ""
 
-#: src/blocks/accordion/index.js:430
+#: src/blocks/accordion/index.js:530
 msgid "Arrow Color"
 msgstr ""
 
-#: src/blocks/accordion/index.js:444
+#: src/blocks/accordion/index.js:544
 msgid "Border Radius (PX)"
 msgstr ""
 
-#: src/blocks/accordion/index.js:453 src/blocks/button/index.js:483
+#: src/blocks/accordion/index.js:553 src/blocks/button/index.js:540
 #: src/blocks/pricing-table/index.js:783 src/blocks/pricing-table/index.js:1150
 #: src/blocks/pricing-table/index.js:1237
 #: src/blocks/pricing-table/index.js:1376
 msgid "Padding (PX)"
 msgstr ""
 
-#: src/blocks/accordion/index.js:463 src/blocks/pricing-table/index.js:670
+#: src/blocks/accordion/index.js:563 src/blocks/pricing-table/index.js:670
 #: src/blocks/pricing-table/index.js:1161
 msgid "Description"
 msgstr ""
 
-#: src/blocks/accordion/index.js:679
+#: src/blocks/accordion/index.js:699 src/blocks/maps/index.js:86
+msgid "Cool Description"
+msgstr ""
+
+#: src/blocks/accordion/index.js:706
+msgid "Add New Item"
+msgstr ""
+
+#: src/blocks/accordion/index.js:708
+msgid "Add the items you need then reload the page"
+msgstr ""
+
+#: src/blocks/accordion/index.js:716
 msgid "Accordion"
 msgstr ""
 
@@ -295,7 +170,8 @@ msgstr ""
 
 #: src/blocks/banner/index.js:352 src/blocks/banner/index.js:356
 #: src/blocks/count-up/index.js:421 src/blocks/count-up/index.js:425
-#: src/blocks/section/index.js:396 src/blocks/section/index.js:400
+#: src/components/premium-background.js:102
+#: src/components/premium-background.js:103
 msgid "Change Image"
 msgstr ""
 
@@ -303,7 +179,7 @@ msgstr ""
 msgid "Image Hover Effect"
 msgstr ""
 
-#: src/blocks/banner/index.js:380 src/blocks/section/index.js:342
+#: src/blocks/banner/index.js:380 src/blocks/section/index.js:271
 msgid "Height"
 msgstr ""
 
@@ -329,7 +205,7 @@ msgstr ""
 msgid "Link"
 msgstr ""
 
-#: src/blocks/banner/index.js:462 src/blocks/button/index.js:337
+#: src/blocks/banner/index.js:462 src/blocks/button/index.js:359
 #: src/blocks/icon/index.js:302
 msgid "Open link in new tab"
 msgstr ""
@@ -354,51 +230,51 @@ msgstr ""
 msgid "Description Settings"
 msgstr ""
 
-#: src/blocks/button/index.js:33 admin/settings/elements.php:184
+#: src/blocks/button/index.js:34 admin/settings/elements.php:186
 msgid "Premium Button"
 msgstr ""
 
-#: src/blocks/button/index.js:133 src/blocks/pricing-table/index.js:1250
+#: src/blocks/button/index.js:150 src/blocks/pricing-table/index.js:1250
 msgid "Button"
 msgstr ""
 
-#: src/blocks/button/index.js:317
+#: src/blocks/button/index.js:339
 msgid "Shutter Direction"
 msgstr ""
 
-#: src/blocks/button/index.js:325 src/components/premium-typo.js:53
+#: src/blocks/button/index.js:347 src/components/premium-typo.js:53
 msgid "Style"
 msgstr ""
 
-#: src/blocks/button/index.js:332
+#: src/blocks/button/index.js:354
 msgid "Button Size"
 msgstr ""
 
-#: src/blocks/button/index.js:343
+#: src/blocks/button/index.js:365
 msgid "Text Style"
 msgstr ""
 
-#: src/blocks/button/index.js:396 src/blocks/pricing-table/index.js:1307
+#: src/blocks/button/index.js:418 src/blocks/pricing-table/index.js:1307
 msgid "Text Hover Color"
 msgstr ""
 
-#: src/blocks/button/index.js:421
+#: src/blocks/button/index.js:443
 msgid "Button Style"
 msgstr ""
 
-#: src/blocks/button/index.js:434 src/blocks/button/index.js:442
+#: src/blocks/button/index.js:456 src/blocks/button/index.js:464
 #: src/blocks/pricing-table/index.js:1319
 msgid "Background Hover Color"
 msgstr ""
 
-#: src/blocks/button/index.js:478 src/blocks/count-up/index.js:627
+#: src/blocks/button/index.js:535 src/blocks/count-up/index.js:627
 #: src/blocks/dual-heading/index.js:469 src/blocks/dual-heading/index.js:631
-#: src/blocks/icon/index.js:479 src/blocks/pricing-table/index.js:760
+#: src/blocks/icon/index.js:481 src/blocks/pricing-table/index.js:760
 #: src/blocks/pricing-table/index.js:1014
 #: src/blocks/pricing-table/index.js:1131
 #: src/blocks/pricing-table/index.js:1214
 #: src/blocks/pricing-table/index.js:1348
-#: src/blocks/pricing-table/index.js:1529 src/blocks/section/index.js:506
+#: src/blocks/pricing-table/index.js:1529 src/blocks/section/index.js:395
 #: src/blocks/testimonials/index.js:351
 msgid "Spacings"
 msgstr ""
@@ -492,7 +368,7 @@ msgstr ""
 #: src/blocks/pricing-table/index.js:1136
 #: src/blocks/pricing-table/index.js:1219
 #: src/blocks/pricing-table/index.js:1358 src/blocks/testimonials/index.js:356
-#: src/components/premium-margin.js:18
+#: src/components/premium-margin.js:20
 msgid "Margin Top (PX)"
 msgstr ""
 
@@ -500,7 +376,7 @@ msgstr ""
 #: src/blocks/pricing-table/index.js:1143
 #: src/blocks/pricing-table/index.js:1228
 #: src/blocks/pricing-table/index.js:1367 src/blocks/testimonials/index.js:361
-#: src/components/premium-margin.js:32
+#: src/components/premium-margin.js:38
 msgid "Margin Bottom (PX)"
 msgstr ""
 
@@ -551,10 +427,6 @@ msgstr ""
 
 #: src/blocks/icon/index.js:309
 msgid "Icon Style"
-msgstr ""
-
-#: src/blocks/maps/index.js:86
-msgid "Cool Description"
 msgstr ""
 
 #: src/blocks/maps/index.js:354
@@ -747,8 +619,9 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: src/blocks/pricing-table/index.js:1404 src/blocks/section/index.js:420
-#: src/components/premium-box-shadow.js:56
+#: src/blocks/pricing-table/index.js:1404
+#: src/components/premium-background.js:121
+#: src/components/premium-box-shadow.js:59
 msgid "Position"
 msgstr ""
 
@@ -776,48 +649,32 @@ msgstr ""
 msgid "List Item #1"
 msgstr ""
 
-#: src/blocks/section/index.js:35 src/blocks/section/index.js:36
+#: src/blocks/section/index.js:34 src/blocks/section/index.js:35
 msgid "Insert Your Content Here"
 msgstr ""
 
-#: src/blocks/section/index.js:150
+#: src/blocks/section/index.js:149
 msgid "Section"
 msgstr ""
 
-#: src/blocks/section/index.js:324
+#: src/blocks/section/index.js:253
 msgid "Content Width"
 msgstr ""
 
-#: src/blocks/section/index.js:334
+#: src/blocks/section/index.js:263
 msgid "Max Width (%)"
 msgstr ""
 
-#: src/blocks/section/index.js:349
+#: src/blocks/section/index.js:278
 msgid "Min Height (PX)"
 msgstr ""
 
-#: src/blocks/section/index.js:357
+#: src/blocks/section/index.js:286
 msgid "Content Position"
 msgstr ""
 
-#: src/blocks/section/index.js:364
+#: src/blocks/section/index.js:293
 msgid "Background"
-msgstr ""
-
-#: src/blocks/section/index.js:405 src/blocks/section/index.js:411
-msgid "Remove Image"
-msgstr ""
-
-#: src/blocks/section/index.js:428
-msgid "Repeat"
-msgstr ""
-
-#: src/blocks/section/index.js:436 src/blocks/testimonials/index.js:251
-msgid "Size"
-msgstr ""
-
-#: src/blocks/section/index.js:444
-msgid "Fixed Background"
 msgstr ""
 
 #: src/blocks/testimonials/index.js:138
@@ -832,6 +689,11 @@ msgstr ""
 msgid "Image Style"
 msgstr ""
 
+#: src/blocks/testimonials/index.js:251
+#: src/components/premium-background.js:133
+msgid "Size"
+msgstr ""
+
 #: src/blocks/testimonials/index.js:259
 msgid "Border Width (PX)"
 msgstr ""
@@ -840,7 +702,7 @@ msgstr ""
 msgid "Border Color"
 msgstr ""
 
-#: src/blocks/testimonials/index.js:274 src/components/premium-box-shadow.js:38
+#: src/blocks/testimonials/index.js:274 src/components/premium-box-shadow.js:41
 msgid "Color"
 msgstr ""
 
@@ -884,6 +746,80 @@ msgstr ""
 msgid "Opacity"
 msgstr ""
 
+#: src/components/premium-background.js:25
+msgid "Top Left"
+msgstr ""
+
+#: src/components/premium-background.js:29
+msgid "Top Center"
+msgstr ""
+
+#: src/components/premium-background.js:33
+msgid "Top Right"
+msgstr ""
+
+#: src/components/premium-background.js:37
+msgid "Center Left"
+msgstr ""
+
+#: src/components/premium-background.js:41
+msgid "Center Center"
+msgstr ""
+
+#: src/components/premium-background.js:45
+msgid "Center Right"
+msgstr ""
+
+#: src/components/premium-background.js:49
+msgid "Bottom Left"
+msgstr ""
+
+#: src/components/premium-background.js:53
+msgid "Bottom Center"
+msgstr ""
+
+#: src/components/premium-background.js:57
+msgid "Bottom Right"
+msgstr ""
+
+#: src/components/premium-background.js:63
+msgid "No Repeat"
+msgstr ""
+
+#: src/components/premium-background.js:67
+#: src/components/premium-background.js:127
+msgid "Repeat"
+msgstr ""
+
+#: src/components/premium-background.js:71
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: src/components/premium-background.js:75
+msgid "Repeat Vertically"
+msgstr ""
+
+#: src/components/premium-background.js:81
+msgid "Auto"
+msgstr ""
+
+#: src/components/premium-background.js:85
+msgid "Cover"
+msgstr ""
+
+#: src/components/premium-background.js:89
+msgid "Contain"
+msgstr ""
+
+#: src/components/premium-background.js:108
+#: src/components/premium-background.js:112
+msgid "Remove Image"
+msgstr ""
+
+#: src/components/premium-background.js:139
+msgid "Fixed Background"
+msgstr ""
+
 #: src/components/premium-border.js:45
 msgid "Border Type"
 msgstr ""
@@ -896,38 +832,38 @@ msgstr ""
 msgid "Border Radius"
 msgstr ""
 
-#: src/components/premium-box-shadow.js:21
+#: src/components/premium-box-shadow.js:23
 msgid "Inset"
 msgstr ""
 
-#: src/components/premium-box-shadow.js:25
+#: src/components/premium-box-shadow.js:27
 msgid "Outline"
 msgstr ""
 
-#: src/components/premium-box-shadow.js:30
+#: src/components/premium-box-shadow.js:33
 msgid "Box Shadow"
 msgstr ""
 
-#: src/components/premium-box-shadow.js:45
-#: src/components/premium-text-shadow.js:34
+#: src/components/premium-box-shadow.js:48
+#: src/components/premium-text-shadow.js:35
 msgid "Horizontal"
 msgstr ""
 
-#: src/components/premium-box-shadow.js:50
-#: src/components/premium-text-shadow.js:39
+#: src/components/premium-box-shadow.js:53
+#: src/components/premium-text-shadow.js:40
 msgid "Vertical"
 msgstr ""
 
-#: src/components/premium-box-shadow.js:54
-#: src/components/premium-text-shadow.js:32
+#: src/components/premium-box-shadow.js:57
+#: src/components/premium-text-shadow.js:33
 msgid "Blur"
 msgstr ""
 
-#: src/components/premium-margin.js:25
+#: src/components/premium-margin.js:29
 msgid "Margin Right (PX)"
 msgstr ""
 
-#: src/components/premium-margin.js:39
+#: src/components/premium-margin.js:47
 msgid "Margin Left (PX)"
 msgstr ""
 
@@ -947,11 +883,11 @@ msgstr ""
 msgid "Padding Left (PX)"
 msgstr ""
 
-#: src/components/premium-text-shadow.js:18
+#: src/components/premium-text-shadow.js:19
 msgid "Text Shadow"
 msgstr ""
 
-#: src/components/premium-text-shadow.js:26
+#: src/components/premium-text-shadow.js:27
 msgid "Shadow Color"
 msgstr ""
 
@@ -997,7 +933,7 @@ msgid "Did you like Premium Blocks for Gutenberg Plugin? Please "
 msgstr ""
 
 #: admin/reports/system-info.php:55 admin/settings/assets.php:111
-#: admin/settings/elements.php:256
+#: admin/settings/elements.php:254
 msgid "Click Here to Rate it ★★★★★"
 msgstr ""
 
@@ -1030,7 +966,7 @@ msgstr ""
 msgid "This will load Font Awesome Icons to be used within Premium Blocks"
 msgstr ""
 
-#: admin/settings/assets.php:111 admin/settings/elements.php:256
+#: admin/settings/assets.php:111 admin/settings/elements.php:254
 msgid "Did you like Premium Blocks for Gutenberg Plugin? Please"
 msgstr ""
 
@@ -1050,30 +986,30 @@ msgstr ""
 msgid "Premium Count Up"
 msgstr ""
 
-#: admin/settings/elements.php:200
+#: admin/settings/elements.php:202
 msgid "Premium Dual Heading"
 msgstr ""
 
-#: admin/settings/elements.php:210
+#: admin/settings/elements.php:209
 msgid "Premium Icon"
 msgstr ""
 
-#: admin/settings/elements.php:217
+#: admin/settings/elements.php:218
 msgid "Premium Maps"
 msgstr ""
 
-#: admin/settings/elements.php:226
+#: admin/settings/elements.php:225
 msgid "Premium Pricing Table"
 msgstr ""
 
-#: admin/settings/elements.php:233
+#: admin/settings/elements.php:234
 msgid "Premium Section"
 msgstr ""
 
-#: admin/settings/elements.php:243
+#: admin/settings/elements.php:241
 msgid "Premium Testimonials"
 msgstr ""
 
-#: includes/class-blocks-helper.php:212
+#: includes/class-blocks-helper.php:213
 msgid "Premium Blocks"
 msgstr ""

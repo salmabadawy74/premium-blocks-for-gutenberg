@@ -15,7 +15,6 @@ if (maps) {
     RangeControl,
     TextControl,
     TextareaControl,
-    CheckboxControl,
     ToggleControl
   } = wp.components;
 
@@ -361,7 +360,7 @@ if (maps) {
               className="premium-panel-body"
               initialOpen={false}
             >
-              <CheckboxControl
+              <ToggleControl
                 label={__("Enable Marker")}
                 checked={mapMarker}
                 onChange={check => setAttributes({ mapMarker: check })}
@@ -402,7 +401,7 @@ if (maps) {
                       onClick: () => setAttributes({ boxAlign: align })
                     }))}
                   />
-                  <CheckboxControl
+                  <ToggleControl
                     label={__("Custom Marker Icon")}
                     checked={markerCustom}
                     onChange={check => setAttributes({ markerCustom: check })}
@@ -533,28 +532,28 @@ if (maps) {
                 max="14"
                 onChange={newSize => setAttributes({ zoom: newSize })}
               />
-              <CheckboxControl
+              <ToggleControl
                 label={__("Map Type Controls")}
                 checked={mapTypeControl}
                 onChange={check => setAttributes({ mapTypeControl: check })}
               />
-              <CheckboxControl
+              <ToggleControl
                 label={__("Zoom Controls")}
                 checked={zoomControl}
                 onChange={check => setAttributes({ zoomControl: check })}
               />
-              <CheckboxControl
+              <ToggleControl
                 label={__("Street View Control")}
                 checked={streetViewControl}
                 onChange={check => setAttributes({ streetViewControl: check })}
               />
 
-              <CheckboxControl
+              <ToggleControl
                 label={__("Full Screen Control")}
                 checked={fullscreenControl}
                 onChange={check => setAttributes({ fullscreenControl: check })}
               />
-              <CheckboxControl
+              <ToggleControl
                 label={__("Scroll Wheel Zoom")}
                 checked={scrollwheel}
                 onChange={check => setAttributes({ scrollwheel: check })}

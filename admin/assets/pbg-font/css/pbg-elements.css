@@ -26,34 +26,41 @@
     font-size: 25px;
     margin-left: -0.3em;
 }
-
-.pbg-testimonials-block:before {
-  content: "\e906";
+.pbg-accordion-block:before {
+  content: "\e900";
 }
-.pbg-section-block:before {
-  content: "\e908";
-}
-.pbg-pricing-table-block:before {
-  content: "\e904";
-}
-.pbg-maps-block:before {
-  content: "\e905";
-}
-.pbg-icon-block:before {
-  content: "\e903";
-}
-.pbg-dual-heading-block:before {
-  content: "\e907";
-}
-.pbg-counter-block:before {
+.pbg-banner-block:before {
   content: "\e901";
 }
 .pbg-button-block:before {
   content: "\e902";
 }
-.pbg-banner-block:before {
+.pbg-counter-block:before {
+  content: "\e903";
+}
+.pbg-dual-heading-block:before {
+  content: "\e904";
+}
+.pbg-icon-block:before {
+  content: "\e905";
+}
+.pbg-icon-box-block:before {
+  content: "\e910";
+  font-weight: bold;
+}
+.pbg-maps-block:before {
+  content: "\e906";
+}
+.pbg-pricing-table-block:before {
   content: "\e909";
 }
-.pbg-accordion-block:before {
-  content: "\e900";
+.pbg-section-block:before {
+  content: "\e90a";
 }
+.pbg-testimonials-block:before {
+  content: "\e90b";
+}
+
+
+
+

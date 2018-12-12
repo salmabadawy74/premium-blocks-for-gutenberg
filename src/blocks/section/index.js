@@ -19,8 +19,7 @@ if (container) {
     PanelBody,
     ToggleControl,
     RangeControl,
-    SelectControl,
-    IconButton
+    SelectControl
   } = wp.components;
 
   const {
@@ -28,8 +27,7 @@ if (container) {
     AlignmentToolbar,
     InnerBlocks,
     InspectorControls,
-    PanelColorSettings,
-    MediaUpload
+    PanelColorSettings
   } = wp.editor;
 
   const CONTENT = [
@@ -210,76 +208,6 @@ if (container) {
         {
           value: "min",
           label: __("Min Height")
-        }
-      ];
-      const POSITION = [
-        {
-          value: "top left",
-          label: __("Top Left")
-        },
-        {
-          value: "top center",
-          label: __("Top Center")
-        },
-        {
-          value: "top right",
-          label: __("Top Right")
-        },
-        {
-          value: "center left",
-          label: __("Center Left")
-        },
-        {
-          value: "center center",
-          label: __("Center Center")
-        },
-        {
-          value: "center right",
-          label: __("Center Right")
-        },
-        {
-          value: "bottom left",
-          label: __("Bottom Left")
-        },
-        {
-          value: "bottom center",
-          label: __("Bottom Center")
-        },
-        {
-          value: "bottom right",
-          label: __("Bottom Right")
-        }
-      ];
-      const REPEAT = [
-        {
-          value: "no-repeat",
-          label: __("No Repeat")
-        },
-        {
-          value: "repeat",
-          label: __("Repeat")
-        },
-        {
-          value: "repeat-x",
-          label: __("Repeat Horizontally")
-        },
-        {
-          value: "repeat-y",
-          label: __("Repeat Vertically")
-        }
-      ];
-      const SIZE = [
-        {
-          value: "auto",
-          label: __("Auto")
-        },
-        {
-          value: "cover",
-          label: __("Cover")
-        },
-        {
-          value: "contain",
-          label: __("Contain")
         }
       ];
       const VPOSITION = [
