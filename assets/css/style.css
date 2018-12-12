@@ -1501,6 +1501,9 @@ a.premium-dheading-block__link:hover {
   margin: 0;
   padding: 0;
 }
+.premium-icon-box .premium-icon-box__btn {
+  color: #000;
+}
 .premium-icon-box .premium-icon-box__btn,
 .premium-icon-box .premium-icon-box__btn:hover,
 .premium-icon-box .premium-icon-box__btn:focus {

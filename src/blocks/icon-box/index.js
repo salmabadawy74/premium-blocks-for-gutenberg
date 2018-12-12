@@ -17,16 +17,20 @@ if (iconBox) {
 
   const {
     PanelBody,
+    IconButton,
     Toolbar,
-    SelectControl,
     RangeControl,
+    SelectControl,
     ToggleControl
   } = wp.components;
+
+  const { Fragment } = wp.element;
 
   const {
     InspectorControls,
     RichText,
     PanelColorSettings,
+    MediaUpload,
     URLInput
   } = wp.editor;
 
@@ -38,6 +42,16 @@ if (iconBox) {
       type: "string",
       default: "center"
     },
+    iconImage: {
+      type: "string",
+      default: "icon"
+    },
+    iconImgId: {
+      type: "string"
+    },
+    iconImgUrl: {
+      type: "string"
+    },
     iconChecked: {
       type: "boolean",
       default: true
@@ -46,9 +60,11 @@ if (iconBox) {
       type: "number",
       default: 50
     },
+    iconRadius: {
+      type: "number"
+    },
     iconColor: {
-      type: "string",
-      default: "#6ec1e4"
+      type: "string"
     },
     iconType: {
       type: "string",
@@ -73,8 +89,7 @@ if (iconBox) {
       default: "H2"
     },
     titleColor: {
-      type: "string",
-      default: "#6ec1e4"
+      type: "string"
     },
     titleSize: {
       type: "number"
@@ -153,12 +168,10 @@ if (iconBox) {
       selector: ".premium-icon-box__btn"
     },
     btnColor: {
-      type: "string",
-      default: "#6ec1e4"
+      type: "string"
     },
     btnHoverColor: {
-      type: "string",
-      default: "#6ec1e4"
+      type: "string"
     },
     btnBack: {
       type: "string"
@@ -332,9 +345,13 @@ if (iconBox) {
         id,
         align,
         iconChecked,
+        iconImage,
+        iconImgId,
+        iconImgUrl,
         iconType,
         selectedIcon,
         iconSize,
+        iconRadius,
         iconColor,
         titleChecked,
         titleText,
@@ -348,7 +365,6 @@ if (iconBox) {
         titleWeight,
         titleMarginT,
         titleMarginB,
-
         descChecked,
         descText,
         descColor,
@@ -409,6 +425,18 @@ if (iconBox) {
       } = props.attributes;
 
       setAttributes({ id: blockId });
+
+      const imgIcon = [
+        {
+          label: __("Icon"),
+          value: "icon"
+        },
+        {
+          label: __("Image"),
+          value: "image"
+        }
+      ];
+
       let iconClass = getIconClass(selectedIcon, iconType);
 
       const ALIGNS = ["left", "center", "right"];
@@ -448,31 +476,82 @@ if (iconBox) {
                 className="premium-panel-body"
                 initialOpen={false}
               >
-                <PremiumIcon
-                  iconType={iconType}
-                  selectedIcon={selectedIcon}
-                  onChangeType={newType => setAttributes({ iconType: newType })}
-                  onChangeIcon={newIcon =>
-                    setAttributes({ selectedIcon: newIcon })
-                  }
+                <SelectControl
+                  label={__("Icon Type")}
+                  options={imgIcon}
+                  value={iconImage}
+                  onChange={newType => setAttributes({ iconImage: newType })}
                 />
+                {"icon" === iconImage && (
+                  <Fragment>
+                    <PremiumIcon
+                      iconType={iconType}
+                      selectedIcon={selectedIcon}
+                      onChangeType={newType =>
+                        setAttributes({ iconType: newType })
+                      }
+                      onChangeIcon={newIcon =>
+                        setAttributes({ selectedIcon: newIcon })
+                      }
+                    />
+                    <PanelColorSettings
+                      title={__("Colors")}
+                      className="premium-panel-body-inner"
+                      initialOpen={false}
+                      colorSettings={[
+                        {
+                          value: iconColor,
+                          onChange: colorValue =>
+                            setAttributes({ iconColor: colorValue }),
+                          label: __("Icon Color")
+                        }
+                      ]}
+                    />
+                  </Fragment>
+                )}
+                {"image" === iconImage && (
+                  <Fragment>
+                    {iconImgUrl && (
+                      <img src={iconImgUrl} width="100%" height="auto" />
+                    )}
+                    <MediaUpload
+                      allowedTypes={["image"]}
+                      onSelect={media => {
+                        setAttributes({
+                          iconImgId: media.id,
+                          iconImgUrl:
+                            "undefined" === typeof media.sizes.thumbnail
+                              ? media.url
+                              : media.sizes.thumbnail.url
+                        });
+                      }}
+                      type="image"
+                      value={iconImgId}
+                      render={({ open }) => (
+                        <IconButton
+                          label={__("Change Image")}
+                          icon="edit"
+                          onClick={open}
+                        >
+                          {__("Change Image")}
+                        </IconButton>
+                      )}
+                    />
+                    <RangeControl
+                      label={__("Border Radius (PX)")}
+                      value={iconRadius}
+                      onChange={newValue =>
+                        setAttributes({ iconRadius: newValue })
+                      }
+                    />
+                  </Fragment>
+                )}
                 <RangeControl
                   label={__("Size (PX)")}
                   value={iconSize}
+                  min="1"
+                  max="200"
                   onChange={newValue => setAttributes({ iconSize: newValue })}
-                />
-                <PanelColorSettings
-                  title={__("Colors")}
-                  className="premium-panel-body-inner"
-                  initialOpen={false}
-                  colorSettings={[
-                    {
-                      value: iconColor,
-                      onChange: colorValue =>
-                        setAttributes({ iconColor: colorValue }),
-                      label: __("Icon Color")
-                    }
-                  ]}
                 />
               </PanelBody>
             )}
@@ -1005,19 +1084,37 @@ if (iconBox) {
               }}
             />
           )}
-          {iconChecked && iconClass && (
+          {iconChecked && (
             <div className={`${className}__icon_wrap`}>
-              {iconType === "fa" && 1 != FontAwesomeEnabled && (
-                <p className={`${className}__alert`}>
-                  {__("Please Enable Font Awesome Icons from Plugin settings")}
-                </p>
+              {"icon" === iconImage && (
+                <Fragment>
+                  {iconType === "fa" && 1 != FontAwesomeEnabled && (
+                    <p className={`${className}__alert`}>
+                      {__(
+                        "Please Enable Font Awesome Icons from Plugin settings"
+                      )}
+                    </p>
+                  )}
+                  {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
+                    <i
+                      className={`${iconClass} ${className}__icon`}
+                      style={{
+                        color: iconColor,
+                        fontSize: iconSize
+                      }}
+                    />
+                  )}
+                </Fragment>
               )}
-              {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
-                <i
-                  className={`${iconClass} ${className}__icon`}
+              {"image" === iconImage && iconImgUrl && (
+                <img
+                  className={`${className}__icon`}
+                  src={`${iconImgUrl}`}
+                  alt="Image Icon"
                   style={{
-                    color: iconColor,
-                    fontSize: iconSize
+                    width: iconSize + "px",
+                    height: iconSize + "px",
+                    borderRadius: iconRadius + "px"
                   }}
                 />
               )}
@@ -1122,6 +1219,9 @@ if (iconBox) {
         id,
         align,
         iconType,
+        iconImage,
+        iconImgUrl,
+        iconRadius,
         selectedIcon,
         iconChecked,
         iconSize,
@@ -1146,7 +1246,6 @@ if (iconBox) {
         descWeight,
         descMarginT,
         descMarginB,
-
         btnChecked,
         btnText,
         btnTarget,
@@ -1238,15 +1337,29 @@ if (iconBox) {
               }}
             />
           )}
-          {iconChecked && iconClass && (
+          {iconChecked && (
             <div className={`${className}__icon_wrap`}>
-              <i
-                className={`${iconClass} ${className}__icon`}
-                style={{
-                  color: iconColor,
-                  fontSize: iconSize
-                }}
-              />
+              {"icon" === iconImage && iconClass && (
+                <i
+                  className={`${iconClass} ${className}__icon`}
+                  style={{
+                    color: iconColor,
+                    fontSize: iconSize
+                  }}
+                />
+              )}
+              {"image" === iconImage && iconImgUrl && (
+                <img
+                  className={`${className}__icon`}
+                  src={`${iconImgUrl}`}
+                  alt="Image Icon"
+                  style={{
+                    width: iconSize + "px",
+                    height: iconSize + "px",
+                    borderRadius: iconRadius + "px"
+                  }}
+                />
+              )}
             </div>
           )}
           {titleChecked && titleText && (
@@ -1458,7 +1571,6 @@ if (iconBox) {
                   <i
                     className={`${iconClass} ${className}__icon`}
                     style={{
-                      color: iconColor,
                       fontSize: iconSize
                     }}
                   />
