@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Premium Blocks for Gutenberg\n"
-"POT-Creation-Date: 2018-12-13 11:46+0200\n"
+"POT-Creation-Date: 2018-12-13 18:14+0200\n"
 "PO-Revision-Date: 2018-02-15 10:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: Leap13\n"
@@ -20,26 +20,38 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: admin/assets/js\n"
 "X-Poedit-SearchPathExcluded-2: node_modules\n"
 
-#: src/blocks/accordion/index.js:28 src/blocks/accordion/index.js:309
-#: src/blocks/accordion/index.js:698 src/blocks/banner/index.js:47
+#: src/blocks/accordion/index.js:28 src/blocks/accordion/index.js:326
+#: src/blocks/accordion/index.js:723 src/blocks/banner/index.js:47
 #: src/blocks/icon-box/index.js:86 src/blocks/icon-box/index.js:1138
 #: src/blocks/maps/index.js:81 src/blocks/pricing-table/index.js:1610
 msgid "Awesome Title"
 msgstr ""
 
-#: src/blocks/accordion/index.js:384 src/blocks/count-up/index.js:346
+#: src/blocks/accordion/index.js:271
+msgid "In"
+msgstr ""
+
+#: src/blocks/accordion/index.js:275
+msgid "Out"
+msgstr ""
+
+#: src/blocks/accordion/index.js:401 src/blocks/count-up/index.js:346
 #: src/blocks/count-up/index.js:587 src/blocks/icon-box/index.js:459
 #: src/blocks/icon-box/index.js:561 src/blocks/icon-box/index.js:570
 #: src/blocks/pricing-table/index.js:687
 msgid "Title"
 msgstr ""
 
-#: src/blocks/accordion/index.js:397 src/blocks/button/index.js:331
+#: src/blocks/accordion/index.js:405
+msgid "Title Tag"
+msgstr ""
+
+#: src/blocks/accordion/index.js:415 src/blocks/button/index.js:331
 #: src/blocks/count-up/index.js:316
 msgid "Direction"
 msgstr ""
 
-#: src/blocks/accordion/index.js:403 src/blocks/accordion/index.js:575
+#: src/blocks/accordion/index.js:421 src/blocks/accordion/index.js:600
 #: src/blocks/banner/index.js:479 src/blocks/banner/index.js:602
 #: src/blocks/button/index.js:370 src/blocks/count-up/index.js:459
 #: src/blocks/count-up/index.js:501 src/blocks/count-up/index.js:549
@@ -54,8 +66,8 @@ msgstr ""
 msgid "Font"
 msgstr ""
 
-#: src/blocks/accordion/index.js:441 src/blocks/accordion/index.js:526
-#: src/blocks/accordion/index.js:611 src/blocks/banner/index.js:513
+#: src/blocks/accordion/index.js:459 src/blocks/accordion/index.js:550
+#: src/blocks/accordion/index.js:636 src/blocks/banner/index.js:513
 #: src/blocks/banner/index.js:625 src/blocks/button/index.js:407
 #: src/blocks/button/index.js:448 src/blocks/count-up/index.js:438
 #: src/blocks/count-up/index.js:476 src/blocks/count-up/index.js:518
@@ -81,7 +93,7 @@ msgstr ""
 msgid "Colors"
 msgstr ""
 
-#: src/blocks/accordion/index.js:445 src/blocks/accordion/index.js:615
+#: src/blocks/accordion/index.js:463 src/blocks/accordion/index.js:640
 #: src/blocks/banner/index.js:524 src/blocks/banner/index.js:636
 #: src/blocks/button/index.js:412 src/blocks/count-up/index.js:526
 #: src/blocks/count-up/index.js:574 src/blocks/count-up/index.js:622
@@ -99,8 +111,8 @@ msgstr ""
 msgid "Text Color"
 msgstr ""
 
-#: src/blocks/accordion/index.js:451 src/blocks/accordion/index.js:536
-#: src/blocks/accordion/index.js:621 src/blocks/banner/index.js:550
+#: src/blocks/accordion/index.js:469 src/blocks/accordion/index.js:560
+#: src/blocks/accordion/index.js:646 src/blocks/banner/index.js:550
 #: src/blocks/button/index.js:455 src/blocks/button/index.js:465
 #: src/blocks/dual-heading/index.js:396 src/blocks/dual-heading/index.js:559
 #: src/blocks/icon-box/index.js:773 src/blocks/icon-box/index.js:899
@@ -112,7 +124,7 @@ msgstr ""
 msgid "Background Color"
 msgstr ""
 
-#: src/blocks/accordion/index.js:459 src/blocks/accordion/index.js:629
+#: src/blocks/accordion/index.js:477 src/blocks/accordion/index.js:654
 #: src/blocks/button/index.js:476 src/blocks/dual-heading/index.js:427
 #: src/blocks/dual-heading/index.js:589 src/blocks/icon-box/index.js:784
 #: src/blocks/icon-box/index.js:933 src/blocks/icon/index.js:338
@@ -121,29 +133,35 @@ msgstr ""
 msgid "Border"
 msgstr ""
 
-#: src/blocks/accordion/index.js:483 src/blocks/accordion/index.js:653
+#: src/blocks/accordion/index.js:501 src/blocks/accordion/index.js:678
 #: src/blocks/dual-heading/index.js:491 src/blocks/dual-heading/index.js:653
 #: src/blocks/pricing-table/index.js:1534
 msgid "Padding"
 msgstr ""
 
-#: src/blocks/accordion/index.js:516
+#: src/blocks/accordion/index.js:534
 msgid "Arrow"
 msgstr ""
 
-#: src/blocks/accordion/index.js:521
+#: src/blocks/accordion/index.js:539 src/blocks/pricing-table/index.js:1404
+#: src/components/premium-background.js:121
+#: src/components/premium-box-shadow.js:59
+msgid "Position"
+msgstr ""
+
+#: src/blocks/accordion/index.js:545
 msgid "Size "
 msgstr ""
 
-#: src/blocks/accordion/index.js:530
+#: src/blocks/accordion/index.js:554
 msgid "Arrow Color"
 msgstr ""
 
-#: src/blocks/accordion/index.js:544 src/blocks/icon-box/index.js:542
+#: src/blocks/accordion/index.js:568 src/blocks/icon-box/index.js:542
 msgid "Border Radius (PX)"
 msgstr ""
 
-#: src/blocks/accordion/index.js:553 src/blocks/button/index.js:540
+#: src/blocks/accordion/index.js:577 src/blocks/button/index.js:540
 #: src/blocks/icon-box/index.js:847 src/blocks/pricing-table/index.js:783
 #: src/blocks/pricing-table/index.js:1150
 #: src/blocks/pricing-table/index.js:1237
@@ -151,24 +169,28 @@ msgstr ""
 msgid "Padding (PX)"
 msgstr ""
 
-#: src/blocks/accordion/index.js:563 src/blocks/icon-box/index.js:652
+#: src/blocks/accordion/index.js:587 src/blocks/icon-box/index.js:652
 #: src/blocks/pricing-table/index.js:670 src/blocks/pricing-table/index.js:1161
 msgid "Description"
 msgstr ""
 
-#: src/blocks/accordion/index.js:699 src/blocks/maps/index.js:85
+#: src/blocks/accordion/index.js:591
+msgid "Description Align"
+msgstr ""
+
+#: src/blocks/accordion/index.js:724 src/blocks/maps/index.js:85
 msgid "Cool Description"
 msgstr ""
 
-#: src/blocks/accordion/index.js:706
+#: src/blocks/accordion/index.js:731
 msgid "Add New Item"
 msgstr ""
 
-#: src/blocks/accordion/index.js:708
+#: src/blocks/accordion/index.js:733
 msgid "Add the items you need then reload the page"
 msgstr ""
 
-#: src/blocks/accordion/index.js:716
+#: src/blocks/accordion/index.js:741
 msgid "Accordion"
 msgstr ""
 
@@ -652,12 +674,6 @@ msgstr ""
 
 #: src/blocks/pricing-table/index.js:1399
 msgid "Text"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1404
-#: src/components/premium-background.js:121
-#: src/components/premium-box-shadow.js:59
-msgid "Position"
 msgstr ""
 
 #: src/blocks/pricing-table/index.js:1458

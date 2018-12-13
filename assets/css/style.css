@@ -1405,6 +1405,7 @@ a.premium-dheading-block__link:hover {
 /**************** Premium Accordion ********************/
 /*******************************************************/
 .premium-accordion .premium-accordion__title_wrap {
+  text-align: left;
   cursor: pointer;
   background-color: #f3f4f5;
   overflow: hidden;
@@ -1425,6 +1426,22 @@ a.premium-dheading-block__link:hover {
 .premium-accordion__title_wrap.premium-accordion__rtl {
   -webkit-flex-direction: row-reverse;
   flex-direction: row-reverse;
+}
+.premium-accordion__ltr.premium-accordion__in {
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  justify-content: left;
+}
+.premium-accordion__rtl.premium-accordion__in {
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  justify-content: right;
+}
+.premium-accordion__ltr.premium-accordion__in .premium-accordion__icon_wrap {
+  margin-right: 0.4em;
+}
+.premium-accordion__rtl.premium-accordion__in .premium-accordion__icon_wrap {
+  margin-left: 0.4em;
 }
 .premium-accordion .premium-accordion__title_text {
   cursor: pointer;
@@ -1470,6 +1487,7 @@ a.premium-dheading-block__link:hover {
   display: -ms-flex;
   display: flex;
   align-items: center;
+  margin-top: 0.1em;
 }
 .premium-accordion .premium-accordion__icon {
   -webkit-transform: rotate(180deg);
