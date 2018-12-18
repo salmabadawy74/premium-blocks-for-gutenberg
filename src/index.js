@@ -9,3 +9,4 @@ import "./blocks/button";
 import "./blocks/section";
 import "./blocks/accordion";
 import "./blocks/icon-box";
+import "./blocks/video-box";
