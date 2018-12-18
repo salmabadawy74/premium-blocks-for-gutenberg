@@ -97,6 +97,10 @@ if (accordion) {
     arrowBack: {
       type: "string"
     },
+    arrowPos: {
+      type: "string",
+      default: "out"
+    },
     arrowPadding: {
       type: "number"
     },
@@ -225,6 +229,7 @@ if (accordion) {
         titlePaddingR,
         titlePaddingB,
         titlePaddingL,
+        arrowPos,
         arrowColor,
         arrowBack,
         arrowPadding,
@@ -259,6 +264,18 @@ if (accordion) {
           label: "RTL"
         }
       ];
+
+      const ARROW = [
+        {
+          value: "in",
+          label: __("In")
+        },
+        {
+          value: "out",
+          label: __("Out")
+        }
+      ];
+
       const ALIGNS = ["left", "center", "right"];
 
       const onAccordionChange = (attr, value, index) => {
@@ -280,7 +297,7 @@ if (accordion) {
             className={`${className}__content_wrap`}
           >
             <div
-              className={`${className}__title_wrap ${className}__${direction}`}
+              className={`${className}__title_wrap ${className}__${direction} ${className}__${arrowPos}`}
               style={{
                 backgroundColor: titleBack,
                 border: titleBorder,
@@ -385,6 +402,7 @@ if (accordion) {
               className="premium-panel-body"
               initialOpen={false}
             >
+              <p>{__("Title Tag")}</p>
               <Toolbar
                 controls={"123456".split("").map(tag => ({
                   icon: "heading",
@@ -517,6 +535,12 @@ if (accordion) {
               className="premium-panel-body"
               initialOpen={false}
             >
+              <SelectControl
+                label={__("Position")}
+                options={ARROW}
+                value={arrowPos}
+                onChange={newEffect => setAttributes({ arrowPos: newEffect })}
+              />
               <RangeControl
                 label={__("Size ")}
                 value={arrowSize}
@@ -564,6 +588,7 @@ if (accordion) {
               className="premium-panel-body"
               initialOpen={false}
             >
+              <p>{__("Description Align")}</p>
               <Toolbar
                 controls={ALIGNS.map(align => ({
                   icon: "editor-align" + align,
@@ -740,6 +765,7 @@ if (accordion) {
         titlePaddingR,
         titlePaddingB,
         titlePaddingL,
+        arrowPos,
         arrowColor,
         arrowBack,
         arrowPadding,
@@ -771,7 +797,7 @@ if (accordion) {
             className={`${className}__content_wrap`}
           >
             <div
-              className={`${className}__title_wrap ${className}__${direction}`}
+              className={`${className}__title_wrap ${className}__${direction} ${className}__${arrowPos}`}
               style={{
                 backgroundColor: titleBack,
                 border: titleBorder,
@@ -864,20 +890,21 @@ if (accordion) {
         attributes: accordionAttrs,
         save: props => {
           const {
+            accordionId,
+            repeaterItems,
             direction,
-            titleText,
             titleTag,
+            titleSize,
+            titleLine,
+            titleLetter,
+            titleStyle,
+            titleUpper,
+            titleWeight,
             titleColor,
             titleBorder,
             titleBorderColor,
             titleBorderWidth,
             titleBorderRadius,
-            titleSize,
-            titleLetter,
-            titleUpper,
-            titleStyle,
-            titleWeight,
-            titleLine,
             titleBack,
             titlePaddingT,
             titlePaddingR,
@@ -896,7 +923,6 @@ if (accordion) {
             descUpper,
             descWeight,
             descColor,
-            descText,
             descBack,
             descBorder,
             descBorderColor,
@@ -907,9 +933,13 @@ if (accordion) {
             descPaddingB,
             descPaddingL
           } = props.attributes;
-          return (
-            <div className={`${className}`}>
-              <div className={`${className}__content_wrap`}>
+
+          const accordionItems = repeaterItems.map((item, index) => {
+            return (
+              <div
+                id={`${className}__layer${index}`}
+                className={`${className}__content_wrap`}
+              >
                 <div
                   className={`${className}__title_wrap ${className}__${direction}`}
                   style={{
@@ -928,7 +958,7 @@ if (accordion) {
                     <RichText.Content
                       tagName={titleTag.toLowerCase()}
                       className={`${className}__title_text`}
-                      value={titleText}
+                      value={item.titleText}
                       style={{
                         color: titleColor,
                         fontSize: titleSize + "px",
@@ -942,7 +972,7 @@ if (accordion) {
                   </div>
                   <div className={`${className}__icon_wrap`}>
                     <svg
-                      className={`${className}__icon`}
+                      className={`${className}__icon premium-accordion__closed`}
                       role="img"
                       focusable="false"
                       xmlns="http://www.w3.org/2000/svg"
@@ -961,7 +991,7 @@ if (accordion) {
                   </div>
                 </div>
                 <div
-                  className={`${className}__desc_wrap`}
+                  className={`${className}__desc_wrap premium-accordion__desc_close`}
                   style={{
                     textAlign: descAlign,
                     backgroundColor: descBack,
@@ -978,7 +1008,7 @@ if (accordion) {
                   <RichText.Content
                     tagName="p"
                     className={`${className}__desc`}
-                    value={descText}
+                    value={item.descText}
                     style={{
                       color: descColor,
                       fontSize: descSize + "px",
@@ -991,6 +1021,11 @@ if (accordion) {
                   />
                 </div>
               </div>
+            );
+          });
+          return (
+            <div id={accordionId} className={`${className}`}>
+              {accordionItems}
             </div>
           );
         }
