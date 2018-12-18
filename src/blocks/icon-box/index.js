@@ -180,6 +180,9 @@ if (iconBox) {
     btnHoverBack: {
       type: "string"
     },
+    btnHoverBorder: {
+      type: "string"
+    },
     btnSize: {
       type: "number"
     },
@@ -387,6 +390,7 @@ if (iconBox) {
         btnHoverColor,
         btnBack,
         btnHoverBack,
+        btnHoverBorder,
         btnBorderColor,
         btnBorderWidth,
         btnBorderRadius,
@@ -777,6 +781,12 @@ if (iconBox) {
                       onChange: newColor =>
                         setAttributes({ btnHoverBack: newColor }),
                       label: __("Background Hover Color")
+                    },
+                    {
+                      value: btnHoverBorder,
+                      onChange: newColor =>
+                        setAttributes({ btnHoverBorder: newColor }),
+                      label: __("Border Hover Color")
                     }
                   ]}
                 />
@@ -1082,6 +1092,7 @@ if (iconBox) {
                   `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
                   `color: ${btnHoverColor} !important;`,
                   `background-color: ${btnHoverBack} !important;`,
+                  `border-color: ${btnHoverBorder} !important;`,
                   "}"
                 ].join("\n")
               }}
@@ -1260,6 +1271,7 @@ if (iconBox) {
         btnLetter,
         btnColor,
         btnHoverColor,
+        btnHoverBorder,
         btnBack,
         btnHoverBack,
         btnBorderWidth,
@@ -1335,6 +1347,7 @@ if (iconBox) {
                   `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
                   `color: ${btnHoverColor} !important;`,
                   `background-color: ${btnHoverBack} !important;`,
+                  `border-color: ${btnHoverBorder} !important;`,
                   "}"
                 ].join("\n")
               }}
@@ -1453,6 +1466,9 @@ if (iconBox) {
             id,
             align,
             iconType,
+            iconImage,
+            iconImgUrl,
+            iconRadius,
             selectedIcon,
             iconChecked,
             iconSize,
@@ -1477,7 +1493,6 @@ if (iconBox) {
             descWeight,
             descMarginT,
             descMarginB,
-
             btnChecked,
             btnText,
             btnTarget,
@@ -1569,14 +1584,29 @@ if (iconBox) {
                   }}
                 />
               )}
-              {iconChecked && iconClass && (
+              {iconChecked && (
                 <div className={`${className}__icon_wrap`}>
-                  <i
-                    className={`${iconClass} ${className}__icon`}
-                    style={{
-                      fontSize: iconSize
-                    }}
-                  />
+                  {"icon" === iconImage && iconClass && (
+                    <i
+                      className={`${iconClass} ${className}__icon`}
+                      style={{
+                        color: iconColor,
+                        fontSize: iconSize
+                      }}
+                    />
+                  )}
+                  {"image" === iconImage && iconImgUrl && (
+                    <img
+                      className={`${className}__icon`}
+                      src={`${iconImgUrl}`}
+                      alt="Image Icon"
+                      style={{
+                        width: iconSize + "px",
+                        height: iconSize + "px",
+                        borderRadius: iconRadius + "px"
+                      }}
+                    />
+                  )}
                 </div>
               )}
               {titleChecked && titleText && (
