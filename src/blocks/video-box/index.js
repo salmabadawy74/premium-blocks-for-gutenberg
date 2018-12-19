@@ -34,6 +34,9 @@ if (videoBox) {
   } = wp.editor;
 
   const videoBoxAttrs = {
+    videoBoxId: {
+      type: "string"
+    },
     videoType: {
       type: "string",
       default: "youtube"
@@ -56,6 +59,35 @@ if (videoBox) {
     mute: {
       type: "boolean",
       default: false
+    },
+    overlay: {
+      type: "boolean",
+      default: false
+    },
+    overlayImgID: {
+      type: "string"
+    },
+    overlayImgURL: {
+      type: "string"
+    },
+    blur: {
+      type: "number",
+      default: 0
+    },
+    bright: {
+      type: "number",
+      default: 0
+    },
+    contrast: {
+      type: "number",
+      default: 0
+    },
+    saturation: {
+      type: "number",
+      default: 0
+    },
+    hue: {
+      type: "number"
     }
   };
 
@@ -98,6 +130,7 @@ if (videoBox) {
 
     componentDidMount() {
       const { attributes, setAttributes, clientId } = this.props;
+
       if (!attributes.videoBoxId) {
         setAttributes({ videoBoxId: "premium-video-box-" + clientId });
       }
@@ -112,17 +145,36 @@ if (videoBox) {
     initVideoBox() {
       const { videoBoxId } = this.props.attributes;
       if (!videoBoxId) return null;
+      let videoBox = document.getElementById(videoBoxId);
+      //videoBox.classList.remove("video-overlay-false");
+      videoBox.addEventListener("click", () => {
+        videoBox.classList.add("video-overlay-false");
+        let video = videoBox.getElementsByTagName("iframe")[0],
+          src = video.getAttribute("src");
+        setTimeout(() => {
+          video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
+        }, 300);
+      });
     }
 
     render() {
       const { isSelected, setAttributes } = this.props;
       const {
+        videoBoxId,
         videoType,
         videoURL,
         videoID,
         autoPlay,
         loop,
-        mute
+        mute,
+        overlay,
+        overlayImgID,
+        overlayImgURL,
+        blur,
+        bright,
+        contrast,
+        saturation,
+        hue
       } = this.props.attributes;
 
       const TYPE = [
@@ -174,6 +226,7 @@ if (videoBox) {
             );
         }
       };
+
       return [
         isSelected && (
           <InspectorControls key={"inspector"}>
@@ -207,7 +260,7 @@ if (videoBox) {
                     });
                   }}
                   type="video"
-                  value={videoURL}
+                  value={videoID}
                   render={({ open }) => (
                     <IconButton
                       label={__("Change Video")}
@@ -219,11 +272,13 @@ if (videoBox) {
                   )}
                 />
               )}
+
               <ToggleControl
                 label={__("Autoplay")}
                 checked={autoPlay}
                 onChange={newCheck => setAttributes({ autoPlay: newCheck })}
               />
+
               {"daily" !== videoType && (
                 <ToggleControl
                   label={__("Loop")}
@@ -236,17 +291,111 @@ if (videoBox) {
                 checked={mute}
                 onChange={newCheck => setAttributes({ mute: newCheck })}
               />
+
+              <ToggleControl
+                label={__("Overlay Image")}
+                checked={overlay}
+                onChange={newCheck => setAttributes({ overlay: newCheck })}
+              />
             </PanelBody>
+            {overlay && (
+              <PanelBody
+                title={__("Overlay")}
+                className="premium-panel-body"
+                initialOpen={true}
+              >
+                {overlayImgURL && (
+                  <img src={overlayImgURL} width="100%" height="auto" />
+                )}
+                <MediaUpload
+                  allowedTypes={["image"]}
+                  onSelect={media => {
+                    setAttributes({
+                      overlayImgID: media.id,
+                      overlayImgURL: media.url
+                    });
+                  }}
+                  type="image"
+                  value={overlayImgID}
+                  render={({ open }) => (
+                    <IconButton
+                      label={__("Change Image")}
+                      icon="edit"
+                      onClick={open}
+                    >
+                      {__("Change Image")}
+                    </IconButton>
+                  )}
+                />
+                <RangeControl
+                  label={__("Blur")}
+                  min="1"
+                  max="10"
+                  value={blur}
+                  onChange={newValue =>
+                    setAttributes({
+                      blur: newValue === undefined ? 0 : newValue
+                    })
+                  }
+                />
+                <RangeControl
+                  label={__("Brightness")}
+                  min="1"
+                  max="200"
+                  value={bright}
+                  onChange={newValue =>
+                    setAttributes({
+                      bright: newValue === undefined ? 0 : newValue
+                    })
+                  }
+                />
+                <RangeControl
+                  label={__("Contrast")}
+                  min="1"
+                  max="200"
+                  value={contrast}
+                  onChange={newValue =>
+                    setAttributes({
+                      contrast: newValue === undefined ? 0 : newValue
+                    })
+                  }
+                />
+                <RangeControl
+                  label={__("Saturation")}
+                  min="1"
+                  max="200"
+                  value={saturation}
+                  onChange={newValue =>
+                    setAttributes({
+                      saturation: newValue === undefined ? 0 : newValue
+                    })
+                  }
+                />
+                <RangeControl
+                  label={__("Hue")}
+                  min="1"
+                  max="360"
+                  value={hue}
+                  onChange={newValue =>
+                    setAttributes({
+                      hue: newValue === undefined ? 0 : newValue
+                    })
+                  }
+                />
+              </PanelBody>
+            )}
           </InspectorControls>
         ),
-        <div className={`${className}`}>
+        <div
+          id={videoBoxId}
+          className={`${className} video-overlay-${overlay}`}
+        >
           <div className={`${className}__container`}>
             {"self" !== videoType && (
               <iframe
-                src={`${onChangeVideoURL(
-                  videoType,
-                  videoURL
-                )}?autoplay=${autoPlay}&loop=${loopVideo()}&mute${
+                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${
+                  overlay ? 0 : autoPlay
+                }&loop=${loopVideo()}&mute${
                   "vimeo" == videoType ? "d" : ""
                 }=${mute}`}
                 frameborder="0"
@@ -257,6 +406,15 @@ if (videoBox) {
             )}
             {"self" === videoType && <video src={videoURL} />}
           </div>
+          {overlay && overlayImgURL && (
+            <div
+              className={`${className}__overlay`}
+              style={{
+                backgroundImage: `url('${overlayImgURL}')`,
+                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+              }}
+            />
+          )}
         </div>
       ];
     }
@@ -269,7 +427,21 @@ if (videoBox) {
     attributes: videoBoxAttrs,
     edit: PremiumVideoBox,
     save: props => {
-      const { videoType, videoURL, autoPlay, loop, mute } = props.attributes;
+      const {
+        videoBoxId,
+        videoType,
+        videoURL,
+        autoPlay,
+        loop,
+        mute,
+        overlay,
+        overlayImgURL,
+        blur,
+        contrast,
+        saturation,
+        hue,
+        bright
+      } = props.attributes;
       const loopVideo = () => {
         if ("youtube" === videoType) {
           if (videoURL.startsWith("http")) {
@@ -286,14 +458,16 @@ if (videoBox) {
         }
       };
       return (
-        <div className={`${className}`}>
+        <div
+          id={videoBoxId}
+          className={`${className} video-overlay-${overlay}`}
+        >
           <div className={`${className}__container`}>
             {"self" !== videoType && (
               <iframe
-                src={`${onChangeVideoURL(
-                  videoType,
-                  videoURL
-                )}?autoplay=${autoPlay}&loop=${loopVideo()}&mute${
+                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${
+                  overlay ? 0 : autoPlay
+                }&loop=${loopVideo()}&mute${
                   "vimeo" == videoType ? "d" : ""
                 }=${mute}`}
                 frameborder="0"
@@ -304,6 +478,15 @@ if (videoBox) {
             )}
             {"self" === videoType && <video src={videoURL} />}
           </div>
+          {overlay && overlayImgURL && (
+            <div
+              className={`${className}__overlay`}
+              style={{
+                backgroundImage: `url('${overlayImgURL}')`,
+                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+              }}
+            />
+          )}
         </div>
       );
     }

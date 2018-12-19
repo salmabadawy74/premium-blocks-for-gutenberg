@@ -110,6 +110,7 @@ class Premium_Blocks_Integration {
         
         $is_section_enabled = self::$blocks['container'];
 
+        $is_video_enabled = self::$blocks['videoBox'];
         
         wp_enqueue_style(
             'pbg-frontend',
@@ -185,7 +186,14 @@ class Premium_Blocks_Integration {
             );
         }
         
-            
+        if( $is_video_enabled ) {
+            wp_enqueue_script(
+                'video-box-js',
+                PREMIUM_BLOCKS_URL . 'src/blocks/video-box/assets/video-box.js',
+                array('jquery'),
+                PREMIUM_BLOCKS_VERSION
+            );
+        }
         
         //Enqueue Google Maps API key Script
         if( $is_maps_enabled && $is_enabled && ! empty( $api_key ) ) {
