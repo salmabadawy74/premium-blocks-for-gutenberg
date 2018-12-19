@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { SelectControl, RangeControl, CheckboxControl } = wp.components;
+const { SelectControl, RangeControl, ToggleControl } = wp.components;
 export default function PremiumTypo(props) {
   const {
     components,
@@ -57,7 +57,7 @@ export default function PremiumTypo(props) {
         />
       )}
       {components.includes("upper") && (
-        <CheckboxControl
+        <ToggleControl
           label={__("Uppercase")}
           checked={upper}
           onChange={onChangeUpper}

@@ -145,6 +145,15 @@ if (countUp) {
       type: "number",
       default: 20
     },
+    titleSpacing: {
+      type: "number"
+    },
+    titleStyle: {
+      type: "string"
+    },
+    titleUpper: {
+      type: "boolean"
+    },
     titleT: {
       type: "number",
       default: 1
@@ -190,6 +199,9 @@ if (countUp) {
         titleTxt,
         titleColor,
         titleSize,
+        titleSpacing,
+        titleStyle,
+        titleUpper,
         titleT,
         titleB,
         titleWeight,
@@ -599,14 +611,26 @@ if (countUp) {
                   initialOpen={false}
                 >
                   <PremiumTypo
-                    components={["size", "weight"]}
+                    components={["size", "weight", "spacing", "style", "upper"]}
                     size={titleSize}
                     weight={titleWeight}
+                    style={titleStyle}
+                    spacing={titleSpacing}
+                    upper={titleUpper}
                     onChangeSize={newSize =>
                       setAttributes({ titleSize: newSize })
                     }
                     onChangeWeight={newWeight =>
                       setAttributes({ titleWeight: newWeight })
+                    }
+                    onChangeStyle={newStyle =>
+                      setAttributes({ titleStyle: newStyle })
+                    }
+                    onChangeSpacing={newValue =>
+                      setAttributes({ titleSpacing: newValue })
+                    }
+                    onChangeUpper={check =>
+                      setAttributes({ titleUpper: check })
                     }
                   />
                 </PanelBody>
@@ -750,7 +774,10 @@ if (countUp) {
                   marginTop: titleT + "px",
                   marginBottom: titleB + "px",
                   color: titleColor,
-                  fontWeight: titleWeight
+                  letterSpacing: titleSpacing + "px",
+                  fontWeight: titleWeight,
+                  textTransform: titleUpper ? "uppercase" : "none",
+                  fontStyle: titleStyle
                 }}
               >
                 {titleTxt}
@@ -766,7 +793,10 @@ if (countUp) {
                   marginTop: titleT + "px",
                   marginBottom: titleB + "px",
                   color: titleColor,
+                  letterSpacing: titleSpacing + "px",
                   fontWeight: titleWeight,
+                  textTransform: titleUpper ? "uppercase" : "none",
+                  fontStyle: titleStyle,
                   alignSelf: selfAlign
                 }}
               >
@@ -810,6 +840,9 @@ if (countUp) {
         titleTxt,
         titleColor,
         titleSize,
+        titleSpacing,
+        titleStyle,
+        titleUpper,
         titleT,
         titleB,
         titleWeight,
@@ -919,6 +952,9 @@ if (countUp) {
                   marginTop: titleT + "px",
                   marginBottom: titleB + "px",
                   color: titleColor,
+                  letterSpacing: titleSpacing + "px",
+                  textTransform: titleUpper ? "uppercase" : "none",
+                  fontStyle: titleStyle,
                   fontWeight: titleWeight
                 }}
               >
@@ -935,7 +971,10 @@ if (countUp) {
                   marginTop: titleT + "px",
                   marginBottom: titleB + "px",
                   color: titleColor,
+                  letterSpacing: titleSpacing + "px",
                   fontWeight: titleWeight,
+                  textTransform: titleUpper ? "uppercase" : "none",
+                  fontStyle: titleStyle,
                   alignSelf: selfAlign
                 }}
               >
