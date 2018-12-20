@@ -140,7 +140,8 @@
 /*******************************************************/
 #wpwrap .edit-post-visual-editor .premium-icon,
 #wpwrap .edit-post-visual-editor .premium-countup__icon,
-#wpwrap .edit-post-visual-editor .premium-icon-box__icon {
+#wpwrap .edit-post-visual-editor .premium-icon-box__icon,
+#wpwrap .edit-post-visual-editor .premium-video-box__play_icon {
   font-style: normal;
 }
 .premium-icon__sidebar_icon {
@@ -177,3 +178,5 @@
 #wpwrap .edit-post-visual-editor .premium-icon-box__btn {
   color: #000;
 }
+/**************** Premium Video Box ********************/
+/*******************************************************/

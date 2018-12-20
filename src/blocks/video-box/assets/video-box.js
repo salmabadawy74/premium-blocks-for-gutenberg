@@ -1,13 +1,21 @@
 jQuery(document).ready(function($) {
   const $videoBoxes = $(".premium-video-box");
   $videoBoxes.map((index, videoBox) => {
-    let $videoBox = $(videoBox);
+    let $videoBox = $(videoBox),
+      type = $videoBox.data("type");
+    console.log(type);
     $videoBox.on("click", () => {
       $videoBox.toggleClass("video-overlay-false");
-      let $video = $videoBox.find("iframe"),
+      let $video = $videoBox.find("iframe, video"),
         src = $video.attr("src");
       setTimeout(() => {
-        $video.attr("src", src.replace("autoplay=0", "autoplay=1"));
+        if ("self" === type) {
+          $($video)
+            .get(0)
+            .play();
+        } else {
+          $video.attr("src", src.replace("autoplay=0", "autoplay=1"));
+        }
       }, 300);
     });
   });

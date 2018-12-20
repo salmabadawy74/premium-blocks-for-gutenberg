@@ -13550,12 +13550,10 @@ function PremiumBackground(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__icons__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_typo__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(1);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -13569,28 +13567,24 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
-
-if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
+if (__WEBPACK_IMPORTED_MODULE_2__settings__["m" /* videoBox */]) {
   var className = "premium-video-box";
 
   var __ = wp.i18n.__;
   var registerBlockType = wp.blocks.registerBlockType;
   var _wp$components = wp.components,
       IconButton = _wp$components.IconButton,
-      Toolbar = _wp$components.Toolbar,
       PanelBody = _wp$components.PanelBody,
       SelectControl = _wp$components.SelectControl,
       RangeControl = _wp$components.RangeControl,
       TextControl = _wp$components.TextControl,
+      TextareaControl = _wp$components.TextareaControl,
       ToggleControl = _wp$components.ToggleControl;
   var _wp$element = wp.element,
       Component = _wp$element.Component,
       Fragment = _wp$element.Fragment;
   var _wp$editor = wp.editor,
-      BlockControls = _wp$editor.BlockControls,
       InspectorControls = _wp$editor.InspectorControls,
-      AlignmentToolbar = _wp$editor.AlignmentToolbar,
       RichText = _wp$editor.RichText,
       MediaUpload = _wp$editor.MediaUpload,
       PanelColorSettings = _wp$editor.PanelColorSettings;
@@ -13606,7 +13600,7 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
     },
     videoURL: {
       type: "string",
-      default: "z1hQgVpfTKU"
+      default: "07d2dXHYb94"
     },
     videoID: {
       type: "string"
@@ -13618,6 +13612,10 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
     loop: {
       type: "boolean",
       default: false
+    },
+    controls: {
+      type: "boolean",
+      default: true
     },
     mute: {
       type: "boolean",
@@ -13639,17 +13637,90 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
     },
     bright: {
       type: "number",
-      default: 0
+      default: 100
     },
     contrast: {
       type: "number",
-      default: 0
+      default: 100
     },
     saturation: {
       type: "number",
-      default: 0
+      default: 100
     },
     hue: {
+      type: "number",
+      default: 0
+    },
+    playLeft: {
+      type: "number"
+    },
+    playTop: {
+      type: "number"
+    },
+    playIcon: {
+      type: "boolean",
+      default: true
+    },
+    playSize: {
+      type: "number"
+    },
+    playColor: {
+      type: "string"
+    },
+    playBack: {
+      type: "string"
+    },
+    playHoverColor: {
+      type: "string"
+    },
+    playHoverBackColor: {
+      type: "string"
+    },
+    playPadding: {
+      type: "number"
+    },
+    playBorderType: {
+      type: "string",
+      default: "none"
+    },
+    playBorderWidth: {
+      type: "number",
+      default: "1"
+    },
+    playBorderRadius: {
+      type: "number"
+    },
+    playBorderColor: {
+      type: "string"
+    },
+    videoDescText: {
+      type: "string"
+    },
+    videoDesc: {
+      type: "boolean"
+    },
+    descLeft: {
+      type: "number"
+    },
+    descTop: {
+      type: "number"
+    },
+    videoDescSize: {
+      type: "number"
+    },
+    videoDescWeight: {
+      type: "number"
+    },
+    videoDescColor: {
+      type: "string"
+    },
+    videoDescBack: {
+      type: "string"
+    },
+    videoDescPadding: {
+      type: "number"
+    },
+    videoDescBorderRadius: {
       type: "number"
     }
   };
@@ -13723,13 +13794,25 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
 
         if (!videoBoxId) return null;
         var videoBox = document.getElementById(videoBoxId);
+        var video = void 0,
+            src = void 0;
         //videoBox.classList.remove("video-overlay-false");
         videoBox.addEventListener("click", function () {
           videoBox.classList.add("video-overlay-false");
-          var video = videoBox.getElementsByTagName("iframe")[0],
-              src = video.getAttribute("src");
+          var type = videoBox.getAttribute("data-type");
+          if ("self" !== type) {
+            video = videoBox.getElementsByTagName("iframe")[0];
+            src = video.getAttribute("src");
+          } else {
+            video = videoBox.getElementsByTagName("video")[0];
+          }
+
           setTimeout(function () {
-            video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
+            if ("self" !== type) {
+              video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
+            } else {
+              video.play();
+            }
           }, 300);
         });
       }
@@ -13746,6 +13829,7 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
             videoID = _props$attributes.videoID,
             autoPlay = _props$attributes.autoPlay,
             loop = _props$attributes.loop,
+            controls = _props$attributes.controls,
             mute = _props$attributes.mute,
             overlay = _props$attributes.overlay,
             overlayImgID = _props$attributes.overlayImgID,
@@ -13754,7 +13838,30 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
             bright = _props$attributes.bright,
             contrast = _props$attributes.contrast,
             saturation = _props$attributes.saturation,
-            hue = _props$attributes.hue;
+            hue = _props$attributes.hue,
+            playLeft = _props$attributes.playLeft,
+            playTop = _props$attributes.playTop,
+            playIcon = _props$attributes.playIcon,
+            playColor = _props$attributes.playColor,
+            playHoverColor = _props$attributes.playHoverColor,
+            playHoverBackColor = _props$attributes.playHoverBackColor,
+            playSize = _props$attributes.playSize,
+            playPadding = _props$attributes.playPadding,
+            playBack = _props$attributes.playBack,
+            playBorderColor = _props$attributes.playBorderColor,
+            playBorderWidth = _props$attributes.playBorderWidth,
+            playBorderRadius = _props$attributes.playBorderRadius,
+            playBorderType = _props$attributes.playBorderType,
+            videoDesc = _props$attributes.videoDesc,
+            descTop = _props$attributes.descTop,
+            descLeft = _props$attributes.descLeft,
+            videoDescText = _props$attributes.videoDescText,
+            videoDescColor = _props$attributes.videoDescColor,
+            videoDescBack = _props$attributes.videoDescBack,
+            videoDescPadding = _props$attributes.videoDescPadding,
+            videoDescSize = _props$attributes.videoDescSize,
+            videoDescWeight = _props$attributes.videoDescWeight,
+            videoDescBorderRadius = _props$attributes.videoDescBorderRadius;
 
 
         var TYPE = [{
@@ -13773,9 +13880,9 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
         var loopVideo = function loopVideo() {
           if ("youtube" === videoType) {
             if (videoURL.startsWith("http")) {
-              return (loop ? "1" : "0") + "&playlist=" + videoURL.replace("https://www.youtube.com/embed/", "");
+              return loop ? "1&playlist=" + videoURL.replace("https://www.youtube.com/embed/", "") : "0";
             } else {
-              return (loop ? "1" : "0") + "&playlist=" + videoURL;
+              return loop ? "1&playlist=" + videoURL : "0";
             }
           } else {
             return loop ? "1" : "0";
@@ -13784,7 +13891,7 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
         var getHelp = function getHelp(Type) {
           switch (Type) {
             case "youtube":
-              return __("Enter video ID, for example: z1hQgVpfTKU or Embed URL, for example: https://www.youtube.com/embed/z1hQgVpfTKU");
+              return __("Enter video ID, for example: z1hQgVpfTKU or Embed URL, for example: https://www.youtube.com/embed/07d2dXHYb94");
             case "vimeo":
               return __("Enter video ID, for example: 243244233 or Embed URL, for example: https://player.vimeo.com/video/243244233");
             case "daily":
@@ -13847,7 +13954,8 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
               checked: autoPlay,
               onChange: function onChange(newCheck) {
                 return setAttributes({ autoPlay: newCheck });
-              }
+              },
+              help: __("This option has an effect when Overlay Image option is disabled")
             }),
             "daily" !== videoType && wp.element.createElement(ToggleControl, {
               label: __("Loop"),
@@ -13863,6 +13971,13 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
                 return setAttributes({ mute: newCheck });
               }
             }),
+            "vimeo" !== videoType && wp.element.createElement(ToggleControl, {
+              label: __("Player Controls"),
+              checked: controls,
+              onChange: function onChange(newCheck) {
+                return setAttributes({ controls: newCheck });
+              }
+            }),
             wp.element.createElement(ToggleControl, {
               label: __("Overlay Image"),
               checked: overlay,
@@ -13876,7 +13991,7 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
             {
               title: __("Overlay"),
               className: "premium-panel-body",
-              initialOpen: true
+              initialOpen: false
             },
             overlayImgURL && wp.element.createElement("img", { src: overlayImgURL, width: "100%", height: "auto" }),
             wp.element.createElement(MediaUpload, {
@@ -13903,7 +14018,7 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
               }
             }),
             wp.element.createElement(RangeControl, {
-              label: __("Blur"),
+              label: __("Blur (px)"),
               min: "1",
               max: "10",
               value: blur,
@@ -13914,40 +14029,40 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
               }
             }),
             wp.element.createElement(RangeControl, {
-              label: __("Brightness"),
+              label: __("Brightness (%)"),
               min: "1",
               max: "200",
               value: bright,
               onChange: function onChange(newValue) {
                 return setAttributes({
-                  bright: newValue === undefined ? 0 : newValue
+                  bright: newValue === undefined ? 100 : newValue
                 });
               }
             }),
             wp.element.createElement(RangeControl, {
-              label: __("Contrast"),
+              label: __("Contrast (%)"),
               min: "1",
               max: "200",
               value: contrast,
               onChange: function onChange(newValue) {
                 return setAttributes({
-                  contrast: newValue === undefined ? 0 : newValue
+                  contrast: newValue === undefined ? 100 : newValue
                 });
               }
             }),
             wp.element.createElement(RangeControl, {
-              label: __("Saturation"),
+              label: __("Saturation (%)"),
               min: "1",
               max: "200",
               value: saturation,
               onChange: function onChange(newValue) {
                 return setAttributes({
-                  saturation: newValue === undefined ? 0 : newValue
+                  saturation: newValue === undefined ? 100 : newValue
                 });
               }
             }),
             wp.element.createElement(RangeControl, {
-              label: __("Hue"),
+              label: __("Hue (Deg)"),
               min: "1",
               max: "360",
               value: hue,
@@ -13957,24 +14072,234 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
                 });
               }
             })
+          ),
+          overlay && wp.element.createElement(
+            Fragment,
+            null,
+            wp.element.createElement(
+              PanelBody,
+              {
+                title: __("Play Icon"),
+                className: "premium-panel-body",
+                initialOpen: false
+              },
+              wp.element.createElement(ToggleControl, {
+                label: __("Enable Play Icon"),
+                checked: playIcon,
+                onChange: function onChange(newCheck) {
+                  return setAttributes({ playIcon: newCheck });
+                }
+              }),
+              playIcon && wp.element.createElement(
+                Fragment,
+                null,
+                wp.element.createElement(RangeControl, {
+                  label: __("Horizontal Offset (%)"),
+                  value: playLeft,
+                  onChange: function onChange(newValue) {
+                    return setAttributes({
+                      playLeft: newValue === undefined ? 50 : newValue
+                    });
+                  }
+                }),
+                wp.element.createElement(RangeControl, {
+                  label: __("Vertical Offset (%)"),
+                  value: playTop,
+                  onChange: function onChange(newValue) {
+                    return setAttributes({
+                      playTop: newValue === undefined ? 50 : newValue
+                    });
+                  }
+                }),
+                wp.element.createElement(RangeControl, {
+                  label: __("Size (PX)"),
+                  value: playSize,
+                  onChange: function onChange(newValue) {
+                    return setAttributes({
+                      playSize: newValue === undefined ? 20 : newValue
+                    });
+                  }
+                }),
+                wp.element.createElement(PanelColorSettings, {
+                  title: __("Colors"),
+                  className: "premium-panel-body-inner",
+                  initialOpen: false,
+                  colorSettings: [{
+                    label: __("Icon Color"),
+                    value: playColor,
+                    onChange: function onChange(colorValue) {
+                      return setAttributes({ playColor: colorValue });
+                    }
+                  }, {
+                    label: __("Icon Background Color"),
+                    value: playBack,
+                    onChange: function onChange(colorValue) {
+                      return setAttributes({ playBack: colorValue });
+                    }
+                  }, {
+                    label: __("Icon Hover Color"),
+                    value: playHoverColor,
+                    onChange: function onChange(colorValue) {
+                      return setAttributes({ playHoverColor: colorValue });
+                    }
+                  }, {
+                    label: __("Icon Hover Background Color"),
+                    value: playHoverBackColor,
+                    onChange: function onChange(colorValue) {
+                      return setAttributes({ playHoverBackColor: colorValue });
+                    }
+                  }]
+                }),
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_border__["a" /* default */], {
+                  borderType: playBorderType,
+                  borderWidth: playBorderWidth,
+                  borderColor: playBorderColor,
+                  borderRadius: playBorderRadius,
+                  onChangeType: function onChangeType(newType) {
+                    return setAttributes({ playBorderType: newType });
+                  },
+                  onChangeWidth: function onChangeWidth(newWidth) {
+                    return setAttributes({ playBorderWidth: newWidth });
+                  },
+                  onChangeColor: function onChangeColor(colorValue) {
+                    return setAttributes({ playBorderColor: colorValue });
+                  },
+                  onChangeRadius: function onChangeRadius(newrRadius) {
+                    return setAttributes({ playBorderRadius: newrRadius });
+                  }
+                }),
+                wp.element.createElement(RangeControl, {
+                  label: __("Padding (PX)"),
+                  value: playPadding,
+                  onChange: function onChange(newValue) {
+                    return setAttributes({
+                      playPadding: newValue === undefined ? 20 : newValue
+                    });
+                  }
+                })
+              )
+            ),
+            wp.element.createElement(
+              PanelBody,
+              {
+                title: __("Video Description"),
+                className: "premium-panel-body",
+                initialOpen: false
+              },
+              wp.element.createElement(ToggleControl, {
+                label: __("Enable Video Description"),
+                checked: videoDesc,
+                onChange: function onChange(newCheck) {
+                  return setAttributes({ videoDesc: newCheck });
+                }
+              }),
+              videoDesc && wp.element.createElement(
+                Fragment,
+                null,
+                wp.element.createElement(TextareaControl, {
+                  label: __("Description Text"),
+                  value: videoDescText,
+                  onChange: function onChange(newText) {
+                    return setAttributes({ videoDescText: newText });
+                  }
+                }),
+                wp.element.createElement(RangeControl, {
+                  label: __("Horizontal Offset (%)"),
+                  value: descLeft,
+                  onChange: function onChange(newValue) {
+                    return setAttributes({
+                      descLeft: newValue === undefined ? 50 : newValue
+                    });
+                  }
+                }),
+                wp.element.createElement(RangeControl, {
+                  label: __("Vertical Offset (%)"),
+                  value: descTop,
+                  onChange: function onChange(newValue) {
+                    return setAttributes({
+                      descTop: newValue === undefined ? 50 : newValue
+                    });
+                  }
+                }),
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_premium_typo__["a" /* default */], {
+                  components: ["size", "weight"],
+                  size: videoDescSize,
+                  weight: videoDescWeight,
+                  onChangeSize: function onChangeSize(newSize) {
+                    return setAttributes({ videoDescSize: newSize });
+                  },
+                  onChangeWeight: function onChangeWeight(newWeight) {
+                    return setAttributes({ videoDescWeight: newWeight });
+                  }
+                }),
+                wp.element.createElement(PanelColorSettings, {
+                  title: __("Colors"),
+                  className: "premium-panel-body-inner",
+                  initialOpen: false,
+                  colorSettings: [{
+                    label: __("Text Color"),
+                    value: videoDescColor,
+                    onChange: function onChange(colorValue) {
+                      return setAttributes({ videoDescColor: colorValue });
+                    }
+                  }, {
+                    label: __("Text Background Color"),
+                    value: videoDescBack,
+                    onChange: function onChange(colorValue) {
+                      return setAttributes({ videoDescBack: colorValue });
+                    }
+                  }]
+                }),
+                wp.element.createElement(RangeControl, {
+                  label: __("Border Radius (px)"),
+                  value: videoDescBorderRadius,
+                  onChange: function onChange(newValue) {
+                    return setAttributes({
+                      videoDescBorderRadius: newValue === undefined ? 0 : newValue
+                    });
+                  }
+                }),
+                wp.element.createElement(RangeControl, {
+                  label: __("Padding (PX)"),
+                  value: videoDescPadding,
+                  onChange: function onChange(newValue) {
+                    return setAttributes({
+                      videoDescPadding: newValue === undefined ? 20 : newValue
+                    });
+                  }
+                })
+              )
+            )
           )
         ), wp.element.createElement(
           "div",
           {
             id: videoBoxId,
+            "data-type": videoType,
             className: className + " video-overlay-" + overlay
           },
+          wp.element.createElement("style", {
+            dangerouslySetInnerHTML: {
+              __html: ["#" + videoBoxId + " ." + className + "__play:hover {", "color: " + playHoverColor + " !important;", "background-color: " + playHoverBackColor + " !important;", "}"].join("\n")
+            }
+          }),
           wp.element.createElement(
             "div",
             { className: className + "__container" },
             "self" !== videoType && wp.element.createElement("iframe", {
-              src: onChangeVideoURL(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute,
+              src: onChangeVideoURL(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&controls=" + (controls ? "1" : "0"),
               frameborder: "0",
               gesture: "media",
               allow: "encrypted-media",
               allowfullscreen: true
             }),
-            "self" === videoType && wp.element.createElement("video", { src: videoURL })
+            "self" === videoType && wp.element.createElement("video", {
+              src: videoURL,
+              loop: loop ? true : false,
+              muted: mute ? true : false,
+              autoplay: overlay ? false : autoPlay,
+              controls: controls ? true : false
+            })
           ),
           overlay && overlayImgURL && wp.element.createElement("div", {
             className: className + "__overlay",
@@ -13982,7 +14307,59 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
               backgroundImage: "url('" + overlayImgURL + "')",
               filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
             }
-          })
+          }),
+          overlay && playIcon && wp.element.createElement(
+            "div",
+            {
+              className: className + "__play",
+              style: {
+                top: playTop + "%",
+                left: playLeft + "%",
+                color: playColor,
+                backgroundColor: playBack,
+                border: playBorderType,
+                borderWidth: playBorderWidth + "px",
+                borderRadius: playBorderRadius + "px",
+                borderColor: playBorderColor,
+                padding: playPadding + "px"
+              }
+            },
+            wp.element.createElement("i", {
+              className: className + "__play_icon dashicons dashicons-controls-play",
+              style: {
+                fontSize: playSize + "px"
+              }
+            })
+          ),
+          overlay && videoDesc && wp.element.createElement(
+            "div",
+            {
+              className: className + "__desc",
+              style: {
+                color: videoDescColor,
+                backgroundColor: videoDescBack,
+                padding: videoDescPadding,
+                borderRadius: videoDescBorderRadius,
+                top: descTop + "%",
+                left: descLeft + "%"
+              }
+            },
+            wp.element.createElement(
+              "p",
+              {
+                className: className + "__desc_text",
+                style: {
+                  fontSize: videoDescSize + "px",
+                  fontWeight: videoDescWeight
+                }
+              },
+              wp.element.createElement(
+                "span",
+                null,
+                videoDescText
+              )
+            )
+          )
         )];
       }
     }]);
@@ -14004,13 +14381,37 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
           autoPlay = _props$attributes2.autoPlay,
           loop = _props$attributes2.loop,
           mute = _props$attributes2.mute,
+          controls = _props$attributes2.controls,
           overlay = _props$attributes2.overlay,
           overlayImgURL = _props$attributes2.overlayImgURL,
           blur = _props$attributes2.blur,
           contrast = _props$attributes2.contrast,
           saturation = _props$attributes2.saturation,
+          bright = _props$attributes2.bright,
           hue = _props$attributes2.hue,
-          bright = _props$attributes2.bright;
+          playTop = _props$attributes2.playTop,
+          playLeft = _props$attributes2.playLeft,
+          playIcon = _props$attributes2.playIcon,
+          playColor = _props$attributes2.playColor,
+          playHoverColor = _props$attributes2.playHoverColor,
+          playHoverBackColor = _props$attributes2.playHoverBackColor,
+          playSize = _props$attributes2.playSize,
+          playPadding = _props$attributes2.playPadding,
+          playBack = _props$attributes2.playBack,
+          playBorderColor = _props$attributes2.playBorderColor,
+          playBorderWidth = _props$attributes2.playBorderWidth,
+          playBorderRadius = _props$attributes2.playBorderRadius,
+          playBorderType = _props$attributes2.playBorderType,
+          videoDesc = _props$attributes2.videoDesc,
+          descTop = _props$attributes2.descTop,
+          descLeft = _props$attributes2.descLeft,
+          videoDescText = _props$attributes2.videoDescText,
+          videoDescColor = _props$attributes2.videoDescColor,
+          videoDescBack = _props$attributes2.videoDescBack,
+          videoDescPadding = _props$attributes2.videoDescPadding,
+          videoDescSize = _props$attributes2.videoDescSize,
+          videoDescWeight = _props$attributes2.videoDescWeight,
+          videoDescBorderRadius = _props$attributes2.videoDescBorderRadius;
 
       var loopVideo = function loopVideo() {
         if ("youtube" === videoType) {
@@ -14027,19 +14428,31 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
         "div",
         {
           id: videoBoxId,
+          "data-type": videoType,
           className: className + " video-overlay-" + overlay
         },
+        wp.element.createElement("style", {
+          dangerouslySetInnerHTML: {
+            __html: ["#" + videoBoxId + " ." + className + "__play:hover {", "color: " + playHoverColor + " !important;", "background-color: " + playHoverBackColor + " !important;", "}"].join("\n")
+          }
+        }),
         wp.element.createElement(
           "div",
           { className: className + "__container" },
           "self" !== videoType && wp.element.createElement("iframe", {
-            src: onChangeVideoURL(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute,
+            src: onChangeVideoURL(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&controls=" + (controls ? "1" : "0"),
             frameborder: "0",
             gesture: "media",
             allow: "encrypted-media",
             allowfullscreen: true
           }),
-          "self" === videoType && wp.element.createElement("video", { src: videoURL })
+          "self" === videoType && wp.element.createElement("video", {
+            src: videoURL,
+            loop: loop ? true : false,
+            muted: mute ? true : false,
+            controls: controls ? true : false,
+            autoplay: overlay ? false : autoPlay
+          })
         ),
         overlay && overlayImgURL && wp.element.createElement("div", {
           className: className + "__overlay",
@@ -14047,7 +14460,59 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* videoBox */]) {
             backgroundImage: "url('" + overlayImgURL + "')",
             filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
           }
-        })
+        }),
+        overlay && playIcon && wp.element.createElement(
+          "div",
+          {
+            className: className + "__play",
+            style: {
+              top: playTop + "%",
+              left: playLeft + "%",
+              color: playColor,
+              backgroundColor: playBack,
+              border: playBorderType,
+              borderWidth: playBorderWidth + "px",
+              borderRadius: playBorderRadius + "px",
+              borderColor: playBorderColor,
+              padding: playPadding + "px"
+            }
+          },
+          wp.element.createElement("i", {
+            className: className + "__play_icon dashicons dashicons-controls-play",
+            style: {
+              fontSize: playSize + "px"
+            }
+          })
+        ),
+        overlay && videoDesc && wp.element.createElement(
+          "div",
+          {
+            className: className + "__desc",
+            style: {
+              color: videoDescColor,
+              backgroundColor: videoDescBack,
+              padding: videoDescPadding,
+              borderRadius: videoDescBorderRadius,
+              top: descTop + "%",
+              left: descLeft + "%"
+            }
+          },
+          wp.element.createElement(
+            "p",
+            {
+              className: className + "__desc_text",
+              style: {
+                fontSize: videoDescSize + "px",
+                fontWeight: videoDescWeight
+              }
+            },
+            wp.element.createElement(
+              "span",
+              null,
+              videoDescText
+            )
+          )
+        )
       );
     }
   });
