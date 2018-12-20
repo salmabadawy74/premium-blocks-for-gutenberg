@@ -1,6 +1,7 @@
 import { pricingTable } from "../settings";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
+import PremiumTextShadow from "../../components/premium-text-shadow";
 import PbgIcon from "../icons";
 
 if (pricingTable) {
@@ -89,6 +90,21 @@ if (pricingTable) {
     titleWeight: {
       type: "number",
       default: 500
+    },
+    titleShadowColor: {
+      type: "string"
+    },
+    titleShadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    titleShadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    titleShadowVertical: {
+      type: "number",
+      default: "0"
     },
     titleBack: {
       type: "string"
@@ -468,6 +484,10 @@ if (pricingTable) {
         titleUpper,
         titleWeight,
         titleBack,
+        titleShadowBlur,
+        titleShadowColor,
+        titleShadowHorizontal,
+        titleShadowVertical,
         titleMarginT,
         titleMarginB,
         titlePadding,
@@ -755,6 +775,24 @@ if (pricingTable) {
                       label: __("Background Color")
                     }
                   ]}
+                />
+                <PremiumTextShadow
+                  color={titleShadowColor}
+                  blur={titleShadowBlur}
+                  horizontal={titleShadowHorizontal}
+                  vertical={titleShadowVertical}
+                  onChangeColor={newColor =>
+                    setAttributes({ titleShadowColor: newColor })
+                  }
+                  onChangeBlur={newBlur =>
+                    setAttributes({ titleShadowBlur: newBlur })
+                  }
+                  onChangehHorizontal={newValue =>
+                    setAttributes({ titleShadowHorizontal: newValue })
+                  }
+                  onChangeVertical={newValue =>
+                    setAttributes({ titleShadowVertical: newValue })
+                  }
                 />
                 <PanelBody
                   title={__("Spacings")}
@@ -1618,7 +1656,8 @@ if (pricingTable) {
                   fontStyle: titleStyle,
                   fontWeight: titleWeight,
                   lineHeight: titleLine + "px",
-                  padding: titlePadding + "px"
+                  padding: titlePadding + "px",
+                  textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`
                 }}
               />
             </div>
@@ -1831,6 +1870,10 @@ if (pricingTable) {
         titleLine,
         titleWeight,
         titleBack,
+        titleShadowBlur,
+        titleShadowColor,
+        titleShadowHorizontal,
+        titleShadowVertical,
         titleMarginT,
         titleMarginB,
         titlePadding,
@@ -2003,7 +2046,8 @@ if (pricingTable) {
                   fontWeight: titleWeight,
                   lineHeight: titleLine + "px",
                   marginBottom: titleMarginB + "px",
-                  padding: titlePadding + "px"
+                  padding: titlePadding + "px",
+                  textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`
                 }}
               />
             </div>
