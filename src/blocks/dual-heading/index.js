@@ -217,6 +217,9 @@ if (dualHeading) {
     },
     headingURL: {
       type: "string"
+    },
+    containerBack: {
+      type: "string"
     }
   };
   registerBlockType("premium/dheading-block", {
@@ -275,7 +278,8 @@ if (dualHeading) {
         secondShadowVertical,
         link,
         target,
-        headingURL
+        headingURL,
+        containerBack
       } = props.attributes;
       const DISPLAY = [
         {
@@ -587,7 +591,7 @@ if (dualHeading) {
               )}
               <PanelBody
                 title={__("Border")}
-                className="premium-panel-body premium-panel-body-inner"
+                className="premium-panel-body-inner"
                 initialOpen={false}
               >
                 <PremiumBorder
@@ -661,11 +665,33 @@ if (dualHeading) {
                 />
               </PanelBody>
             </PanelBody>
+            <PanelBody
+              title={__("Container Style")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
+              <PanelColorSettings
+                title={__("Colors")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
+                colorSettings={[
+                  {
+                    label: __("Background Color"),
+                    value: containerBack,
+                    onChange: colorValue =>
+                      setAttributes({ containerBack: colorValue })
+                  }
+                ]}
+              />
+            </PanelBody>
           </InspectorControls>
         ),
         <div
           className={`${className}__container`}
-          style={{ textAlign: contentAlign }}
+          style={{
+            textAlign: contentAlign,
+            backgroundColor: containerBack
+          }}
         >
           <h2 className={`${className}__title`}>
             <span
@@ -778,7 +804,8 @@ if (dualHeading) {
         secondShadowVertical,
         link,
         target,
-        headingURL
+        headingURL,
+        containerBack
       } = props.attributes;
 
       return (
@@ -790,7 +817,8 @@ if (dualHeading) {
           <div
             className={`${className}__container`}
             style={{
-              textAlign: contentAlign
+              textAlign: contentAlign,
+              backgroundColor: containerBack
             }}
           >
             <h2 className={`${className}__title`}>
