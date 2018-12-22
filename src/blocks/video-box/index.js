@@ -1,5 +1,6 @@
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
+import PremiumBoxShadow from "../../components/premium-box-shadow";
 import { videoBox } from "../settings";
 import PbgIcon from "../icons";
 
@@ -22,12 +23,7 @@ if (videoBox) {
 
   const { Component, Fragment } = wp.element;
 
-  const {
-    InspectorControls,
-    RichText,
-    MediaUpload,
-    PanelColorSettings
-  } = wp.editor;
+  const { InspectorControls, MediaUpload, PanelColorSettings } = wp.editor;
 
   const videoBoxAttrs = {
     videoBoxId: {
@@ -161,6 +157,39 @@ if (videoBox) {
     },
     videoDescBorderRadius: {
       type: "number"
+    },
+    boxBorderType: {
+      type: "string",
+      default: "none"
+    },
+    boxBorderWidth: {
+      type: "number",
+      default: "1"
+    },
+    boxBorderRadius: {
+      type: "number"
+    },
+    boxBorderColor: {
+      type: "string"
+    },
+    shadowColor: {
+      type: "string"
+    },
+    shadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    shadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    shadowVertical: {
+      type: "number",
+      default: "0"
+    },
+    shadowPosition: {
+      type: "string",
+      default: ""
     }
   };
 
@@ -282,7 +311,16 @@ if (videoBox) {
         videoDescPadding,
         videoDescSize,
         videoDescWeight,
-        videoDescBorderRadius
+        videoDescBorderRadius,
+        boxBorderColor,
+        boxBorderWidth,
+        boxBorderRadius,
+        boxBorderType,
+        shadowBlur,
+        shadowColor,
+        shadowHorizontal,
+        shadowVertical,
+        shadowPosition
       } = this.props.attributes;
 
       const TYPE = [
@@ -386,7 +424,7 @@ if (videoBox) {
                 checked={autoPlay}
                 onChange={newCheck => setAttributes({ autoPlay: newCheck })}
                 help={__(
-                  "This option has an effect when Overlay Image option is disabled"
+                  "This option effect works when Overlay Image option is disabled"
                 )}
               />
               {"daily" !== videoType && (
@@ -696,12 +734,82 @@ if (videoBox) {
                 </PanelBody>
               </Fragment>
             )}
+            <PanelBody
+              title={__("Box Style")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
+              <PanelBody
+                title={__("Border")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
+              >
+                <PremiumBorder
+                  borderType={boxBorderType}
+                  borderWidth={boxBorderWidth}
+                  borderColor={boxBorderColor}
+                  borderRadius={boxBorderRadius}
+                  onChangeType={newType =>
+                    setAttributes({ boxBorderType: newType })
+                  }
+                  onChangeWidth={newWidth =>
+                    setAttributes({ boxBorderWidth: newWidth })
+                  }
+                  onChangeColor={colorValue =>
+                    setAttributes({ boxBorderColor: colorValue })
+                  }
+                  onChangeRadius={newrRadius =>
+                    setAttributes({ boxBorderRadius: newrRadius })
+                  }
+                />
+              </PanelBody>
+              <PremiumBoxShadow
+                color={shadowColor}
+                blur={shadowBlur}
+                horizontal={shadowHorizontal}
+                vertical={shadowVertical}
+                position={shadowPosition}
+                onChangeColor={newColor =>
+                  setAttributes({
+                    shadowColor:
+                      newColor === undefined ? "transparent" : newColor
+                  })
+                }
+                onChangeBlur={newBlur =>
+                  setAttributes({
+                    shadowBlur: newBlur === undefined ? 0 : newBlur
+                  })
+                }
+                onChangehHorizontal={newValue =>
+                  setAttributes({
+                    shadowHorizontal: newValue === undefined ? 0 : newValue
+                  })
+                }
+                onChangeVertical={newValue =>
+                  setAttributes({
+                    shadowVertical: newValue === undefined ? 0 : newValue
+                  })
+                }
+                onChangePosition={newValue =>
+                  setAttributes({
+                    shadowPosition: newValue === undefined ? 0 : newValue
+                  })
+                }
+              />
+            </PanelBody>
           </InspectorControls>
         ),
         <div
           id={videoBoxId}
-          data-type={videoType}
           className={`${className} video-overlay-${overlay}`}
+          data-type={videoType}
+          style={{
+            border: boxBorderType,
+            borderWidth: boxBorderWidth + "px",
+            borderRadius: boxBorderRadius + "px",
+            borderColor: boxBorderColor,
+            boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+          }}
         >
           <style
             dangerouslySetInnerHTML={{
@@ -841,7 +949,16 @@ if (videoBox) {
         videoDescPadding,
         videoDescSize,
         videoDescWeight,
-        videoDescBorderRadius
+        videoDescBorderRadius,
+        boxBorderColor,
+        boxBorderWidth,
+        boxBorderRadius,
+        boxBorderType,
+        shadowBlur,
+        shadowColor,
+        shadowHorizontal,
+        shadowVertical,
+        shadowPosition
       } = props.attributes;
       const loopVideo = () => {
         if ("youtube" === videoType) {
@@ -861,8 +978,15 @@ if (videoBox) {
       return (
         <div
           id={videoBoxId}
-          data-type={videoType}
           className={`${className} video-overlay-${overlay}`}
+          data-type={videoType}
+          style={{
+            border: boxBorderType,
+            borderWidth: boxBorderWidth + "px",
+            borderRadius: boxBorderRadius + "px",
+            borderColor: boxBorderColor,
+            boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+          }}
         >
           <style
             dangerouslySetInnerHTML={{
@@ -955,6 +1079,180 @@ if (videoBox) {
           )}
         </div>
       );
-    }
+    },
+    deprecated: [
+      {
+        attributes: videoBoxAttrs,
+        save: props => {
+          const {
+            videoBoxId,
+            videoType,
+            videoURL,
+            autoPlay,
+            loop,
+            mute,
+            controls,
+            overlay,
+            overlayImgURL,
+            blur,
+            contrast,
+            saturation,
+            bright,
+            hue,
+            playTop,
+            playLeft,
+            playIcon,
+            playColor,
+            playHoverColor,
+            playHoverBackColor,
+            playSize,
+            playPadding,
+            playBack,
+            playBorderColor,
+            playBorderWidth,
+            playBorderRadius,
+            playBorderType,
+            videoDesc,
+            descTop,
+            descLeft,
+            videoDescText,
+            videoDescColor,
+            videoDescBack,
+            videoDescPadding,
+            videoDescSize,
+            videoDescWeight,
+            videoDescBorderRadius,
+            boxBorderColor,
+            boxBorderWidth,
+            boxBorderRadius,
+            boxBorderType,
+            shadowBlur,
+            shadowColor,
+            shadowHorizontal,
+            shadowVertical,
+            shadowPosition
+          } = props.attributes;
+          const loopVideo = () => {
+            if ("youtube" === videoType) {
+              if (videoURL.startsWith("http")) {
+                return (
+                  (loop ? "1" : "0") +
+                  "&playlist=" +
+                  videoURL.replace("https://www.youtube.com/embed/", "")
+                );
+              } else {
+                return (loop ? "1" : "0") + "&playlist=" + videoURL;
+              }
+            } else {
+              return loop ? "1" : "0";
+            }
+          };
+          return (
+            <div
+              id={videoBoxId}
+              className={`${className} video-overlay-${overlay}`}
+              data-type={videoType}
+              style={{
+                border: boxBorderType,
+                borderWidth: boxBorderWidth + "px",
+                borderRadius: boxBorderRadius + "px",
+                borderColor: boxBorderColor,
+                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+              }}
+            >
+              <style
+                dangerouslySetInnerHTML={{
+                  __html: [
+                    `#${videoBoxId} .${className}__play:hover {`,
+                    `color: ${playHoverColor} !important;`,
+                    `background-color: ${playHoverBackColor} !important;`,
+                    "}"
+                  ].join("\n")
+                }}
+              />
+              <div className={`${className}__container`}>
+                {"self" !== videoType && (
+                  <iframe
+                    src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${
+                      overlay ? 0 : autoPlay
+                    }&loop=${loopVideo()}&mute${
+                      "vimeo" == videoType ? "d" : ""
+                    }=${mute}&controls=${controls ? "1" : "0"}`}
+                    frameborder="0"
+                    gesture="media"
+                    allow="encrypted-media"
+                    allowfullscreen
+                  />
+                )}
+                {"self" === videoType && (
+                  <video
+                    src={videoURL}
+                    loop={loop ? true : false}
+                    muted={mute ? true : false}
+                    controls={controls ? true : false}
+                    autoplay={overlay ? false : autoPlay}
+                  />
+                )}
+              </div>
+              {overlay && overlayImgURL && (
+                <div
+                  className={`${className}__overlay`}
+                  style={{
+                    backgroundImage: `url('${overlayImgURL}')`,
+                    filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                  }}
+                />
+              )}
+              {overlay && playIcon && (
+                <div
+                  className={`${className}__play`}
+                  style={{
+                    top: playTop + "%",
+                    left: playLeft + "%",
+                    color: playColor,
+                    backgroundColor: playBack,
+                    border: playBorderType,
+                    borderWidth: playBorderWidth + "px",
+                    borderRadius: playBorderRadius + "px",
+                    borderColor: playBorderColor,
+                    padding: playPadding + "px"
+                  }}
+                >
+                  <i
+                    className={`${className}__play_icon dashicons dashicons-controls-play`}
+                    style={{
+                      fontSize: playSize + "px"
+                    }}
+                  />
+                </div>
+              )}
+              {overlay && videoDesc && (
+                <div
+                  className={`${className}__desc`}
+                  style={{
+                    color: videoDescColor,
+                    backgroundColor: videoDescBack,
+                    padding: videoDescPadding,
+                    borderRadius: videoDescBorderRadius,
+                    top: descTop + "%",
+                    left: descLeft + "%"
+                  }}
+                >
+                  <p
+                    className={`${className}__desc_text`}
+                    style={{
+                      fontSize: videoDescSize + "px",
+                      fontWeight: videoDescWeight
+                    }}
+                  >
+                    <span>{videoDescText}</span>
+                  </p>
+                </div>
+              )}
+            </div>
+          );
+        }
+      }
+    ]
   });
 }

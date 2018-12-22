@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
   $videoBoxes.map((index, videoBox) => {
     let $videoBox = $(videoBox),
       type = $videoBox.data("type");
-    console.log(type);
+
     $videoBox.on("click", () => {
       $videoBox.toggleClass("video-overlay-false");
       let $video = $videoBox.find("iframe, video"),

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -150,6 +150,88 @@ var PbgIcon = function (_wp$element$Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumBorder;
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl;
+var PanelColorSettings = wp.editor.PanelColorSettings;
+
+function PremiumBorder(props) {
+  var borderType = props.borderType,
+      borderWidth = props.borderWidth,
+      borderColor = props.borderColor,
+      borderRadius = props.borderRadius,
+      _props$onChangeType = props.onChangeType,
+      onChangeType = _props$onChangeType === undefined ? function () {} : _props$onChangeType,
+      _props$onChangeWidth = props.onChangeWidth,
+      onChangeWidth = _props$onChangeWidth === undefined ? function () {} : _props$onChangeWidth,
+      _props$onChangeColor = props.onChangeColor,
+      onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
+      _props$onChangeRadius = props.onChangeRadius,
+      onChangeRadius = _props$onChangeRadius === undefined ? function () {} : _props$onChangeRadius;
+
+  var BORDER = [{
+    value: "none",
+    label: "None"
+  }, {
+    value: "solid",
+    label: "Solid"
+  }, {
+    value: "double",
+    label: "Double"
+  }, {
+    value: "dotted",
+    label: "Dotted"
+  }, {
+    value: "dashed",
+    label: "Dashed"
+  }, {
+    value: "groove",
+    label: "Groove"
+  }];
+  return wp.element.createElement(
+    Fragment,
+    null,
+    wp.element.createElement(SelectControl, {
+      label: __("Border Type"),
+      options: BORDER,
+      value: borderType,
+      onChange: onChangeType
+    }),
+    "none" != borderType && wp.element.createElement(RangeControl, {
+      label: __("Border Width"),
+      value: borderWidth,
+      min: "0",
+      max: "50",
+      onChange: onChangeWidth
+    }),
+    "none" != borderType && wp.element.createElement(PanelColorSettings, _extends({
+      title: __("Colors"),
+      colorSettings: [{
+        value: borderColor,
+        onChange: onChangeColor,
+        label: __("Border Color")
+      }]
+    }, props)),
+    wp.element.createElement(RangeControl, {
+      label: __("Border Radius"),
+      value: borderRadius,
+      min: "0",
+      max: "150",
+      onChange: onChangeRadius
+    })
+  );
+}
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumTypo;
 var __ = wp.i18n.__;
 var Fragment = wp.element.Fragment;
@@ -224,88 +306,6 @@ function PremiumTypo(props) {
       label: __("Line Height (PX)"),
       value: line,
       onChange: onChangeLine
-    })
-  );
-}
-
-/***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumBorder;
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    SelectControl = _wp$components.SelectControl,
-    RangeControl = _wp$components.RangeControl;
-var PanelColorSettings = wp.editor.PanelColorSettings;
-
-function PremiumBorder(props) {
-  var borderType = props.borderType,
-      borderWidth = props.borderWidth,
-      borderColor = props.borderColor,
-      borderRadius = props.borderRadius,
-      _props$onChangeType = props.onChangeType,
-      onChangeType = _props$onChangeType === undefined ? function () {} : _props$onChangeType,
-      _props$onChangeWidth = props.onChangeWidth,
-      onChangeWidth = _props$onChangeWidth === undefined ? function () {} : _props$onChangeWidth,
-      _props$onChangeColor = props.onChangeColor,
-      onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
-      _props$onChangeRadius = props.onChangeRadius,
-      onChangeRadius = _props$onChangeRadius === undefined ? function () {} : _props$onChangeRadius;
-
-  var BORDER = [{
-    value: "none",
-    label: "None"
-  }, {
-    value: "solid",
-    label: "Solid"
-  }, {
-    value: "double",
-    label: "Double"
-  }, {
-    value: "dotted",
-    label: "Dotted"
-  }, {
-    value: "dashed",
-    label: "Dashed"
-  }, {
-    value: "groove",
-    label: "Groove"
-  }];
-  return wp.element.createElement(
-    Fragment,
-    null,
-    wp.element.createElement(SelectControl, {
-      label: __("Border Type"),
-      options: BORDER,
-      value: borderType,
-      onChange: onChangeType
-    }),
-    "none" != borderType && wp.element.createElement(RangeControl, {
-      label: __("Border Width"),
-      value: borderWidth,
-      min: "0",
-      max: "50",
-      onChange: onChangeWidth
-    }),
-    "none" != borderType && wp.element.createElement(PanelColorSettings, _extends({
-      title: __("Colors"),
-      colorSettings: [{
-        value: borderColor,
-        onChange: onChangeColor,
-        label: __("Border Color")
-      }]
-    }, props)),
-    wp.element.createElement(RangeControl, {
-      label: __("Border Radius"),
-      value: borderRadius,
-      min: "0",
-      max: "150",
-      onChange: onChangeRadius
     })
   );
 }
@@ -564,169 +564,6 @@ function PremiumTextShadow(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var placeHolder = PremiumBlocksSettings.defaultAuthImg;
-
-var Component = wp.element.Component;
-
-var DefaultImage = function (_Component) {
-  _inherits(DefaultImage, _Component);
-
-  function DefaultImage() {
-    _classCallCheck(this, DefaultImage);
-
-    return _possibleConstructorReturn(this, (DefaultImage.__proto__ || Object.getPrototypeOf(DefaultImage)).apply(this, arguments));
-  }
-
-  _createClass(DefaultImage, [{
-    key: "render",
-    value: function render() {
-      return wp.element.createElement("img", { src: placeHolder });
-    }
-  }]);
-
-  return DefaultImage;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["a"] = (DefaultImage);
-
-/***/ }),
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Component = wp.element.Component;
-
-var PremiumLowerQuote = function (_Component) {
-  _inherits(PremiumLowerQuote, _Component);
-
-  function PremiumLowerQuote() {
-    _classCallCheck(this, PremiumLowerQuote);
-
-    return _possibleConstructorReturn(this, (PremiumLowerQuote.__proto__ || Object.getPrototypeOf(PremiumLowerQuote)).apply(this, arguments));
-  }
-
-  _createClass(PremiumLowerQuote, [{
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps) {
-      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _props = this.props,
-          size = _props.size,
-          color = _props.color,
-          opacity = _props.opacity;
-
-      return wp.element.createElement(
-        "svg",
-        {
-          style: { width: size + "em", opacity: opacity / 100 },
-          "aria-hidden": "true",
-          "data-prefix": "fas",
-          "data-icon": "quote-left",
-          "class": "svg-inline--fa fa-quote-left fa-w-16",
-          role: "img",
-          xmlns: "http://www.w3.org/2000/svg",
-          viewBox: "0 0 512 512"
-        },
-        wp.element.createElement("path", {
-          fill: "" + color,
-          d: "M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
-        })
-      );
-    }
-  }]);
-
-  return PremiumLowerQuote;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
-
-/***/ }),
-/* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Component = wp.element.Component;
-
-var PremiumUpperQuote = function (_Component) {
-  _inherits(PremiumUpperQuote, _Component);
-
-  function PremiumUpperQuote() {
-    _classCallCheck(this, PremiumUpperQuote);
-
-    return _possibleConstructorReturn(this, (PremiumUpperQuote.__proto__ || Object.getPrototypeOf(PremiumUpperQuote)).apply(this, arguments));
-  }
-
-  _createClass(PremiumUpperQuote, [{
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps) {
-      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _props = this.props,
-          size = _props.size,
-          color = _props.color,
-          opacity = _props.opacity;
-
-
-      return wp.element.createElement(
-        "svg",
-        {
-          style: { width: size + "em", opacity: opacity / 100 },
-          "aria-hidden": "true",
-          "data-prefix": "fas",
-          "data-icon": "quote-right",
-          "class": "svg-inline--fa fa-quote-right fa-w-16",
-          role: "img",
-          xmlns: "http://www.w3.org/2000/svg",
-          viewBox: "0 0 512 512"
-        },
-        wp.element.createElement("path", {
-          fill: "" + color,
-          d: "M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z"
-        })
-      );
-    }
-  }]);
-
-  return PremiumUpperQuote;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
-
-/***/ }),
-/* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumIcon;
 var __ = wp.i18n.__;
 var Fragment = wp.element.Fragment;
@@ -782,16 +619,16 @@ function PremiumIcon(props) {
 }
 
 /***/ }),
-/* 12 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_dual_heading__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_pricing_table__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_maps__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_testimonials__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_dual_heading__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_pricing_table__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_maps__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_testimonials__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_count_up__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_button__ = __webpack_require__(20);
@@ -813,13 +650,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 13 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(1);
 
@@ -1847,13 +1684,13 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* dualHeading */]) {
 }
 
 /***/ }),
-/* 14 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(1);
 
@@ -2861,13 +2698,13 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
 }
 
 /***/ }),
-/* 15 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(1);
 
 
@@ -5478,7 +5315,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["k" /* pricingTable */]) {
 }
 
 /***/ }),
-/* 16 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6300,14 +6137,14 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* maps */]) {
 }
 
 /***/ }),
-/* 17 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__icons__ = __webpack_require__(1);
 
@@ -7217,12 +7054,175 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["l" /* testimonial */]) {
 }
 
 /***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var placeHolder = PremiumBlocksSettings.defaultAuthImg;
+
+var Component = wp.element.Component;
+
+var DefaultImage = function (_Component) {
+  _inherits(DefaultImage, _Component);
+
+  function DefaultImage() {
+    _classCallCheck(this, DefaultImage);
+
+    return _possibleConstructorReturn(this, (DefaultImage.__proto__ || Object.getPrototypeOf(DefaultImage)).apply(this, arguments));
+  }
+
+  _createClass(DefaultImage, [{
+    key: "render",
+    value: function render() {
+      return wp.element.createElement("img", { src: placeHolder });
+    }
+  }]);
+
+  return DefaultImage;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (DefaultImage);
+
+/***/ }),
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = wp.element.Component;
+
+var PremiumLowerQuote = function (_Component) {
+  _inherits(PremiumLowerQuote, _Component);
+
+  function PremiumLowerQuote() {
+    _classCallCheck(this, PremiumLowerQuote);
+
+    return _possibleConstructorReturn(this, (PremiumLowerQuote.__proto__ || Object.getPrototypeOf(PremiumLowerQuote)).apply(this, arguments));
+  }
+
+  _createClass(PremiumLowerQuote, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          size = _props.size,
+          color = _props.color,
+          opacity = _props.opacity;
+
+      return wp.element.createElement(
+        "svg",
+        {
+          style: { width: size + "em", opacity: opacity / 100 },
+          "aria-hidden": "true",
+          "data-prefix": "fas",
+          "data-icon": "quote-left",
+          "class": "svg-inline--fa fa-quote-left fa-w-16",
+          role: "img",
+          xmlns: "http://www.w3.org/2000/svg",
+          viewBox: "0 0 512 512"
+        },
+        wp.element.createElement("path", {
+          fill: "" + color,
+          d: "M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
+        })
+      );
+    }
+  }]);
+
+  return PremiumLowerQuote;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
+
+/***/ }),
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = wp.element.Component;
+
+var PremiumUpperQuote = function (_Component) {
+  _inherits(PremiumUpperQuote, _Component);
+
+  function PremiumUpperQuote() {
+    _classCallCheck(this, PremiumUpperQuote);
+
+    return _possibleConstructorReturn(this, (PremiumUpperQuote.__proto__ || Object.getPrototypeOf(PremiumUpperQuote)).apply(this, arguments));
+  }
+
+  _createClass(PremiumUpperQuote, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          size = _props.size,
+          color = _props.color,
+          opacity = _props.opacity;
+
+
+      return wp.element.createElement(
+        "svg",
+        {
+          style: { width: size + "em", opacity: opacity / 100 },
+          "aria-hidden": "true",
+          "data-prefix": "fas",
+          "data-icon": "quote-right",
+          "class": "svg-inline--fa fa-quote-right fa-w-16",
+          role: "img",
+          xmlns: "http://www.w3.org/2000/svg",
+          viewBox: "0 0 512 512"
+        },
+        wp.element.createElement("path", {
+          fill: "" + color,
+          d: "M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z"
+        })
+      );
+    }
+  }]);
+
+  return PremiumUpperQuote;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
+
+/***/ }),
 /* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__icons__ = __webpack_require__(1);
 
 
@@ -8340,8 +8340,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* countUp */]) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_icon__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_icon__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_padding__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_text_shadow__ = __webpack_require__(4);
@@ -9154,8 +9154,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* icon */]) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__icons__ = __webpack_require__(1);
@@ -9883,7 +9883,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* button */]) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
@@ -10641,9 +10641,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* container */]) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(1);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -11729,9 +11729,9 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_icon__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_icon__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_padding__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_margin__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(7);
@@ -13550,10 +13550,11 @@ function PremiumBackground(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_typo__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_typo__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__settings__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(1);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -13567,7 +13568,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_2__settings__["m" /* videoBox */]) {
+
+if (__WEBPACK_IMPORTED_MODULE_3__settings__["m" /* videoBox */]) {
   var className = "premium-video-box";
 
   var __ = wp.i18n.__;
@@ -13585,7 +13587,6 @@ if (__WEBPACK_IMPORTED_MODULE_2__settings__["m" /* videoBox */]) {
       Fragment = _wp$element.Fragment;
   var _wp$editor = wp.editor,
       InspectorControls = _wp$editor.InspectorControls,
-      RichText = _wp$editor.RichText,
       MediaUpload = _wp$editor.MediaUpload,
       PanelColorSettings = _wp$editor.PanelColorSettings;
 
@@ -13722,6 +13723,39 @@ if (__WEBPACK_IMPORTED_MODULE_2__settings__["m" /* videoBox */]) {
     },
     videoDescBorderRadius: {
       type: "number"
+    },
+    boxBorderType: {
+      type: "string",
+      default: "none"
+    },
+    boxBorderWidth: {
+      type: "number",
+      default: "1"
+    },
+    boxBorderRadius: {
+      type: "number"
+    },
+    boxBorderColor: {
+      type: "string"
+    },
+    shadowColor: {
+      type: "string"
+    },
+    shadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    shadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    shadowVertical: {
+      type: "number",
+      default: "0"
+    },
+    shadowPosition: {
+      type: "string",
+      default: ""
     }
   };
 
@@ -13861,7 +13895,16 @@ if (__WEBPACK_IMPORTED_MODULE_2__settings__["m" /* videoBox */]) {
             videoDescPadding = _props$attributes.videoDescPadding,
             videoDescSize = _props$attributes.videoDescSize,
             videoDescWeight = _props$attributes.videoDescWeight,
-            videoDescBorderRadius = _props$attributes.videoDescBorderRadius;
+            videoDescBorderRadius = _props$attributes.videoDescBorderRadius,
+            boxBorderColor = _props$attributes.boxBorderColor,
+            boxBorderWidth = _props$attributes.boxBorderWidth,
+            boxBorderRadius = _props$attributes.boxBorderRadius,
+            boxBorderType = _props$attributes.boxBorderType,
+            shadowBlur = _props$attributes.shadowBlur,
+            shadowColor = _props$attributes.shadowColor,
+            shadowHorizontal = _props$attributes.shadowHorizontal,
+            shadowVertical = _props$attributes.shadowVertical,
+            shadowPosition = _props$attributes.shadowPosition;
 
 
         var TYPE = [{
@@ -13955,7 +13998,7 @@ if (__WEBPACK_IMPORTED_MODULE_2__settings__["m" /* videoBox */]) {
               onChange: function onChange(newCheck) {
                 return setAttributes({ autoPlay: newCheck });
               },
-              help: __("This option has an effect when Overlay Image option is disabled")
+              help: __("This option effect works when Overlay Image option is disabled")
             }),
             "daily" !== videoType && wp.element.createElement(ToggleControl, {
               label: __("Loop"),
@@ -14270,13 +14313,86 @@ if (__WEBPACK_IMPORTED_MODULE_2__settings__["m" /* videoBox */]) {
                 })
               )
             )
+          ),
+          wp.element.createElement(
+            PanelBody,
+            {
+              title: __("Box Style"),
+              className: "premium-panel-body",
+              initialOpen: false
+            },
+            wp.element.createElement(
+              PanelBody,
+              {
+                title: __("Border"),
+                className: "premium-panel-body-inner",
+                initialOpen: false
+              },
+              wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_border__["a" /* default */], {
+                borderType: boxBorderType,
+                borderWidth: boxBorderWidth,
+                borderColor: boxBorderColor,
+                borderRadius: boxBorderRadius,
+                onChangeType: function onChangeType(newType) {
+                  return setAttributes({ boxBorderType: newType });
+                },
+                onChangeWidth: function onChangeWidth(newWidth) {
+                  return setAttributes({ boxBorderWidth: newWidth });
+                },
+                onChangeColor: function onChangeColor(colorValue) {
+                  return setAttributes({ boxBorderColor: colorValue });
+                },
+                onChangeRadius: function onChangeRadius(newrRadius) {
+                  return setAttributes({ boxBorderRadius: newrRadius });
+                }
+              })
+            ),
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_box_shadow__["a" /* default */], {
+              color: shadowColor,
+              blur: shadowBlur,
+              horizontal: shadowHorizontal,
+              vertical: shadowVertical,
+              position: shadowPosition,
+              onChangeColor: function onChangeColor(newColor) {
+                return setAttributes({
+                  shadowColor: newColor === undefined ? "transparent" : newColor
+                });
+              },
+              onChangeBlur: function onChangeBlur(newBlur) {
+                return setAttributes({
+                  shadowBlur: newBlur === undefined ? 0 : newBlur
+                });
+              },
+              onChangehHorizontal: function onChangehHorizontal(newValue) {
+                return setAttributes({
+                  shadowHorizontal: newValue === undefined ? 0 : newValue
+                });
+              },
+              onChangeVertical: function onChangeVertical(newValue) {
+                return setAttributes({
+                  shadowVertical: newValue === undefined ? 0 : newValue
+                });
+              },
+              onChangePosition: function onChangePosition(newValue) {
+                return setAttributes({
+                  shadowPosition: newValue === undefined ? 0 : newValue
+                });
+              }
+            })
           )
         ), wp.element.createElement(
           "div",
           {
             id: videoBoxId,
+            className: className + " video-overlay-" + overlay,
             "data-type": videoType,
-            className: className + " video-overlay-" + overlay
+            style: {
+              border: boxBorderType,
+              borderWidth: boxBorderWidth + "px",
+              borderRadius: boxBorderRadius + "px",
+              borderColor: boxBorderColor,
+              boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
+            }
           },
           wp.element.createElement("style", {
             dangerouslySetInnerHTML: {
@@ -14411,7 +14527,16 @@ if (__WEBPACK_IMPORTED_MODULE_2__settings__["m" /* videoBox */]) {
           videoDescPadding = _props$attributes2.videoDescPadding,
           videoDescSize = _props$attributes2.videoDescSize,
           videoDescWeight = _props$attributes2.videoDescWeight,
-          videoDescBorderRadius = _props$attributes2.videoDescBorderRadius;
+          videoDescBorderRadius = _props$attributes2.videoDescBorderRadius,
+          boxBorderColor = _props$attributes2.boxBorderColor,
+          boxBorderWidth = _props$attributes2.boxBorderWidth,
+          boxBorderRadius = _props$attributes2.boxBorderRadius,
+          boxBorderType = _props$attributes2.boxBorderType,
+          shadowBlur = _props$attributes2.shadowBlur,
+          shadowColor = _props$attributes2.shadowColor,
+          shadowHorizontal = _props$attributes2.shadowHorizontal,
+          shadowVertical = _props$attributes2.shadowVertical,
+          shadowPosition = _props$attributes2.shadowPosition;
 
       var loopVideo = function loopVideo() {
         if ("youtube" === videoType) {
@@ -14428,8 +14553,15 @@ if (__WEBPACK_IMPORTED_MODULE_2__settings__["m" /* videoBox */]) {
         "div",
         {
           id: videoBoxId,
+          className: className + " video-overlay-" + overlay,
           "data-type": videoType,
-          className: className + " video-overlay-" + overlay
+          style: {
+            border: boxBorderType,
+            borderWidth: boxBorderWidth + "px",
+            borderRadius: boxBorderRadius + "px",
+            borderColor: boxBorderColor,
+            boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
+          }
         },
         wp.element.createElement("style", {
           dangerouslySetInnerHTML: {
@@ -14514,7 +14646,168 @@ if (__WEBPACK_IMPORTED_MODULE_2__settings__["m" /* videoBox */]) {
           )
         )
       );
-    }
+    },
+    deprecated: [{
+      attributes: videoBoxAttrs,
+      save: function save(props) {
+        var _props$attributes3 = props.attributes,
+            videoBoxId = _props$attributes3.videoBoxId,
+            videoType = _props$attributes3.videoType,
+            videoURL = _props$attributes3.videoURL,
+            autoPlay = _props$attributes3.autoPlay,
+            loop = _props$attributes3.loop,
+            mute = _props$attributes3.mute,
+            controls = _props$attributes3.controls,
+            overlay = _props$attributes3.overlay,
+            overlayImgURL = _props$attributes3.overlayImgURL,
+            blur = _props$attributes3.blur,
+            contrast = _props$attributes3.contrast,
+            saturation = _props$attributes3.saturation,
+            bright = _props$attributes3.bright,
+            hue = _props$attributes3.hue,
+            playTop = _props$attributes3.playTop,
+            playLeft = _props$attributes3.playLeft,
+            playIcon = _props$attributes3.playIcon,
+            playColor = _props$attributes3.playColor,
+            playHoverColor = _props$attributes3.playHoverColor,
+            playHoverBackColor = _props$attributes3.playHoverBackColor,
+            playSize = _props$attributes3.playSize,
+            playPadding = _props$attributes3.playPadding,
+            playBack = _props$attributes3.playBack,
+            playBorderColor = _props$attributes3.playBorderColor,
+            playBorderWidth = _props$attributes3.playBorderWidth,
+            playBorderRadius = _props$attributes3.playBorderRadius,
+            playBorderType = _props$attributes3.playBorderType,
+            videoDesc = _props$attributes3.videoDesc,
+            descTop = _props$attributes3.descTop,
+            descLeft = _props$attributes3.descLeft,
+            videoDescText = _props$attributes3.videoDescText,
+            videoDescColor = _props$attributes3.videoDescColor,
+            videoDescBack = _props$attributes3.videoDescBack,
+            videoDescPadding = _props$attributes3.videoDescPadding,
+            videoDescSize = _props$attributes3.videoDescSize,
+            videoDescWeight = _props$attributes3.videoDescWeight,
+            videoDescBorderRadius = _props$attributes3.videoDescBorderRadius,
+            boxBorderColor = _props$attributes3.boxBorderColor,
+            boxBorderWidth = _props$attributes3.boxBorderWidth,
+            boxBorderRadius = _props$attributes3.boxBorderRadius,
+            boxBorderType = _props$attributes3.boxBorderType,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            shadowPosition = _props$attributes3.shadowPosition;
+
+        var loopVideo = function loopVideo() {
+          if ("youtube" === videoType) {
+            if (videoURL.startsWith("http")) {
+              return (loop ? "1" : "0") + "&playlist=" + videoURL.replace("https://www.youtube.com/embed/", "");
+            } else {
+              return (loop ? "1" : "0") + "&playlist=" + videoURL;
+            }
+          } else {
+            return loop ? "1" : "0";
+          }
+        };
+        return wp.element.createElement(
+          "div",
+          {
+            id: videoBoxId,
+            className: className + " video-overlay-" + overlay,
+            "data-type": videoType,
+            style: {
+              border: boxBorderType,
+              borderWidth: boxBorderWidth + "px",
+              borderRadius: boxBorderRadius + "px",
+              borderColor: boxBorderColor,
+              boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
+            }
+          },
+          wp.element.createElement("style", {
+            dangerouslySetInnerHTML: {
+              __html: ["#" + videoBoxId + " ." + className + "__play:hover {", "color: " + playHoverColor + " !important;", "background-color: " + playHoverBackColor + " !important;", "}"].join("\n")
+            }
+          }),
+          wp.element.createElement(
+            "div",
+            { className: className + "__container" },
+            "self" !== videoType && wp.element.createElement("iframe", {
+              src: onChangeVideoURL(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&controls=" + (controls ? "1" : "0"),
+              frameborder: "0",
+              gesture: "media",
+              allow: "encrypted-media",
+              allowfullscreen: true
+            }),
+            "self" === videoType && wp.element.createElement("video", {
+              src: videoURL,
+              loop: loop ? true : false,
+              muted: mute ? true : false,
+              controls: controls ? true : false,
+              autoplay: overlay ? false : autoPlay
+            })
+          ),
+          overlay && overlayImgURL && wp.element.createElement("div", {
+            className: className + "__overlay",
+            style: {
+              backgroundImage: "url('" + overlayImgURL + "')",
+              filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+            }
+          }),
+          overlay && playIcon && wp.element.createElement(
+            "div",
+            {
+              className: className + "__play",
+              style: {
+                top: playTop + "%",
+                left: playLeft + "%",
+                color: playColor,
+                backgroundColor: playBack,
+                border: playBorderType,
+                borderWidth: playBorderWidth + "px",
+                borderRadius: playBorderRadius + "px",
+                borderColor: playBorderColor,
+                padding: playPadding + "px"
+              }
+            },
+            wp.element.createElement("i", {
+              className: className + "__play_icon dashicons dashicons-controls-play",
+              style: {
+                fontSize: playSize + "px"
+              }
+            })
+          ),
+          overlay && videoDesc && wp.element.createElement(
+            "div",
+            {
+              className: className + "__desc",
+              style: {
+                color: videoDescColor,
+                backgroundColor: videoDescBack,
+                padding: videoDescPadding,
+                borderRadius: videoDescBorderRadius,
+                top: descTop + "%",
+                left: descLeft + "%"
+              }
+            },
+            wp.element.createElement(
+              "p",
+              {
+                className: className + "__desc_text",
+                style: {
+                  fontSize: videoDescSize + "px",
+                  fontWeight: videoDescWeight
+                }
+              },
+              wp.element.createElement(
+                "span",
+                null,
+                videoDescText
+              )
+            )
+          )
+        );
+      }
+    }]
   });
 }
 

@@ -1527,6 +1527,7 @@ a.premium-dheading-block__link:hover {
   position: relative;
   height: 0;
   padding-bottom: 56.25%;
+  overflow: hidden;
 }
 .premium-video-box .premium-video-box__container {
   position: absolute;
