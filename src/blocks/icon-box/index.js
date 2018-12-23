@@ -5,6 +5,7 @@ import PremiumIcon from "../../components/premium-icon";
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
+import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import PbgIcon from "../icons";
@@ -111,6 +112,21 @@ if (iconBox) {
       type: "number",
       default: 500
     },
+    titleShadowColor: {
+      type: "string"
+    },
+    titleShadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    titleShadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    titleShadowVertical: {
+      type: "number",
+      default: "0"
+    },
     titleMarginT: {
       type: "number"
     },
@@ -147,7 +163,6 @@ if (iconBox) {
     descMarginB: {
       type: "number"
     },
-
     btnChecked: {
       type: "boolean",
       default: true
@@ -367,6 +382,10 @@ if (iconBox) {
         titleStyle,
         titleUpper,
         titleWeight,
+        titleShadowBlur,
+        titleShadowColor,
+        titleShadowHorizontal,
+        titleShadowVertical,
         titleMarginT,
         titleMarginB,
         descChecked,
@@ -627,6 +646,24 @@ if (iconBox) {
                       label: __("Text Color")
                     }
                   ]}
+                />
+                <PremiumTextShadow
+                  color={titleShadowColor}
+                  blur={titleShadowBlur}
+                  horizontal={titleShadowHorizontal}
+                  vertical={titleShadowVertical}
+                  onChangeColor={newColor =>
+                    setAttributes({ titleShadowColor: newColor })
+                  }
+                  onChangeBlur={newBlur =>
+                    setAttributes({ titleShadowBlur: newBlur })
+                  }
+                  onChangehHorizontal={newValue =>
+                    setAttributes({ titleShadowHorizontal: newValue })
+                  }
+                  onChangeVertical={newValue =>
+                    setAttributes({ titleShadowVertical: newValue })
+                  }
                 />
                 <PanelBody
                   title={__("Spacings")}
@@ -1155,6 +1192,7 @@ if (iconBox) {
                   textTransform: titleUpper ? "uppercase" : "none",
                   fontStyle: titleStyle,
                   fontWeight: titleWeight,
+                  textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                   lineHeight: titleLine + "px"
                 }}
                 keepPlaceholderOnFocus
@@ -1250,6 +1288,10 @@ if (iconBox) {
         titleStyle,
         titleUpper,
         titleWeight,
+        titleShadowBlur,
+        titleShadowColor,
+        titleShadowHorizontal,
+        titleShadowVertical,
         titleMarginT,
         titleMarginB,
         descChecked,
@@ -1397,6 +1439,7 @@ if (iconBox) {
                   textTransform: titleUpper ? "uppercase" : "none",
                   fontStyle: titleStyle,
                   fontWeight: titleWeight,
+                  textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                   lineHeight: titleLine + "px"
                 }}
               />
@@ -1504,6 +1547,7 @@ if (iconBox) {
             btnLetter,
             btnColor,
             btnHoverColor,
+            btnHoverBorder,
             btnBack,
             btnHoverBack,
             btnBorderWidth,
@@ -1579,6 +1623,7 @@ if (iconBox) {
                       `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
                       `color: ${btnHoverColor} !important;`,
                       `background-color: ${btnHoverBack} !important;`,
+                      `border-color: ${btnHoverBorder} !important;`,
                       "}"
                     ].join("\n")
                   }}
