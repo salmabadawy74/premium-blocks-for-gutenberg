@@ -11,8 +11,6 @@ if (container) {
 
   const { __ } = wp.i18n;
 
-  const { Fragment } = wp.element;
-
   const { registerBlockType } = wp.blocks;
 
   const {
