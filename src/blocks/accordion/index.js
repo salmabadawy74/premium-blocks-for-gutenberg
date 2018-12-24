@@ -2,6 +2,7 @@ import { accordion } from "../settings";
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
+import PremiumTextShadow from "../../components/premium-text-shadow";
 import PbgIcon from "../icons";
 
 if (accordion) {
@@ -78,6 +79,21 @@ if (accordion) {
     },
     titleBack: {
       type: "string"
+    },
+    titleShadowColor: {
+      type: "string"
+    },
+    titleShadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    titleShadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    titleShadowVertical: {
+      type: "number",
+      default: "0"
     },
     titlePaddingT: {
       type: "number"
@@ -225,6 +241,10 @@ if (accordion) {
         titleBorderColor,
         titleBorderRadius,
         titleBack,
+        titleShadowBlur,
+        titleShadowColor,
+        titleShadowHorizontal,
+        titleShadowVertical,
         titlePaddingT,
         titlePaddingR,
         titlePaddingB,
@@ -332,6 +352,7 @@ if (accordion) {
                     textTransform: titleUpper ? "uppercase" : "none",
                     fontStyle: titleStyle,
                     fontWeight: titleWeight,
+                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                     lineHeight: titleLine + "px"
                   }}
                 />
@@ -458,6 +479,7 @@ if (accordion) {
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
                   {
                     label: __("Text Color"),
@@ -497,6 +519,24 @@ if (accordion) {
                   }
                 />
               </PanelBody>
+              <PremiumTextShadow
+                color={titleShadowColor}
+                blur={titleShadowBlur}
+                horizontal={titleShadowHorizontal}
+                vertical={titleShadowVertical}
+                onChangeColor={newColor =>
+                  setAttributes({ titleShadowColor: newColor })
+                }
+                onChangeBlur={newBlur =>
+                  setAttributes({ titleShadowBlur: newBlur })
+                }
+                onChangehHorizontal={newValue =>
+                  setAttributes({ titleShadowHorizontal: newValue })
+                }
+                onChangeVertical={newValue =>
+                  setAttributes({ titleShadowVertical: newValue })
+                }
+              />
               <PanelBody
                 title={__("Padding")}
                 className="premium-panel-body-inner"
@@ -549,6 +589,7 @@ if (accordion) {
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
                   {
                     label: __("Arrow Color"),
@@ -635,6 +676,7 @@ if (accordion) {
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
                   {
                     label: __("Text Color"),
@@ -761,6 +803,10 @@ if (accordion) {
         titleBorderWidth,
         titleBorderRadius,
         titleBack,
+        titleShadowBlur,
+        titleShadowColor,
+        titleShadowHorizontal,
+        titleShadowVertical,
         titlePaddingT,
         titlePaddingR,
         titlePaddingB,
@@ -822,6 +868,7 @@ if (accordion) {
                     textTransform: titleUpper ? "uppercase" : "none",
                     fontStyle: titleStyle,
                     fontWeight: titleWeight,
+                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                     lineHeight: titleLine + "px"
                   }}
                 />
