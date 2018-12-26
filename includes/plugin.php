@@ -20,7 +20,6 @@ if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
             
             //Enqueue the required files
             $this->premium_gutenberg_setup();
-            
         }
         
         /*
@@ -60,6 +59,8 @@ if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
             
             if( is_admin() ) {
                 require_once ( PREMIUM_BLOCKS_PATH . 'admin/reports/deps/data.php' );
+                require_once ( PREMIUM_BLOCKS_PATH . 'admin/includes/rollback.php');
+                require_once ( PREMIUM_BLOCKS_PATH  . 'admin/includes/version-control.php');
                 require_once ( PREMIUM_BLOCKS_PATH . 'admin/reports/system-info.php' );
                 require_once ( PREMIUM_BLOCKS_PATH . 'admin/reports/about.php' );
             }

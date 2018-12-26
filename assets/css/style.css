@@ -1460,15 +1460,15 @@ a.premium-dheading-block__link:hover {
 }
 .premium-accordion .premium-accordion__desc_wrap {
   position: relative;
-  max-height: 800px;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-  -webkit-transform: translateY(0);
+  max-height: 5000px;
+  -webkit-transition: all 0.4s cubic-bezier(0.865, 0.14, 0.095, 0.87);
+  -moz-transition: all 0.4s cubic-bezier(0.865, 0.14, 0.095, 0.87);
+  -ms-transition: all 0.4s cubic-bezier(0.865, 0.14, 0.095, 0.87);
+  -o-transition: all 0.4s cubic-bezier(0.865, 0.14, 0.095, 0.87);
+  transition: all 0.4s cubic-bezier(0.865, 0.14, 0.095, 0.87);
+  /*  -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
-  transform: translateY(0);
+  transform: translateY(0);*/
   opacity: 1;
   visibility: visible;
   margin-bottom: 1em;
@@ -1498,9 +1498,9 @@ a.premium-dheading-block__link:hover {
 }
 .premium-accordion .premium-accordion__desc_close {
   max-height: 0;
-  -webkit-transform: translateY(25px);
+  /*  -webkit-transform: translateY(25px);
   -ms-transform: translateY(25px);
-  transform: translateY(25px);
+  transform: translateY(25px);*/
   opacity: 0;
   /*padding: 0 !important;*/
   visibility: hidden;
