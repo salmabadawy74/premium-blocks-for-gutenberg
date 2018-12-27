@@ -16,7 +16,16 @@ if (accordion) {
 
   const { Toolbar, PanelBody, SelectControl, RangeControl } = wp.components;
 
-  const { InspectorControls, RichText, PanelColorSettings } = wp.editor;
+  const {
+    InspectorControls,
+    RichText,
+    InnerBlocks,
+    PanelColorSettings
+  } = wp.editor;
+
+  const CONTENT = [
+    ["core/paragraph", { content: __("Insert Your Content Here") }]
+  ];
 
   const accordionAttrs = {
     accordionId: {
@@ -126,6 +135,10 @@ if (accordion) {
     arrowSize: {
       type: "number",
       default: 20
+    },
+    contentType: {
+      type: "string",
+      default: "text"
     },
     descAlign: {
       type: "string",
@@ -249,12 +262,13 @@ if (accordion) {
         titlePaddingR,
         titlePaddingB,
         titlePaddingL,
-        arrowPos,
         arrowColor,
         arrowBack,
+        arrowPos,
         arrowPadding,
         arrowRadius,
         arrowSize,
+        contentType,
         descAlign,
         descColor,
         descBack,
@@ -293,6 +307,17 @@ if (accordion) {
         {
           value: "out",
           label: __("Out")
+        }
+      ];
+
+      const TYPE = [
+        {
+          value: "text",
+          label: __("Text")
+        },
+        {
+          value: "block",
+          label: __("Gutenberg Block")
         }
       ];
 
@@ -392,25 +417,32 @@ if (accordion) {
                 paddingLeft: descPaddingL
               }}
             >
-              <RichText
-                tagName="p"
-                className={`${className}__desc`}
-                onChange={newText =>
-                  setAttributes({
-                    repeaterItems: onAccordionChange("descText", newText, index)
-                  })
-                }
-                value={item.descText}
-                style={{
-                  color: descColor,
-                  fontSize: descSize + "px",
-                  letterSpacing: descLetter + "px",
-                  textTransform: descUpper ? "uppercase" : "none",
-                  fontStyle: descStyle,
-                  fontWeight: descWeight,
-                  lineHeight: descLine + "px"
-                }}
-              />
+              {"text" === contentType && (
+                <RichText
+                  tagName="p"
+                  className={`${className}__desc`}
+                  onChange={newText =>
+                    setAttributes({
+                      repeaterItems: onAccordionChange(
+                        "descText",
+                        newText,
+                        index
+                      )
+                    })
+                  }
+                  value={item.descText}
+                  style={{
+                    color: descColor,
+                    fontSize: descSize + "px",
+                    letterSpacing: descLetter + "px",
+                    textTransform: descUpper ? "uppercase" : "none",
+                    fontStyle: descStyle,
+                    fontWeight: descWeight,
+                    lineHeight: descLine + "px"
+                  }}
+                />
+              )}
+              {"block" === contentType && <InnerBlocks template={CONTENT} />}
             </div>
           </div>
         );
@@ -537,6 +569,7 @@ if (accordion) {
                   setAttributes({ titleShadowVertical: newValue })
                 }
               />
+
               <PanelBody
                 title={__("Padding")}
                 className="premium-panel-body-inner"
@@ -625,11 +658,19 @@ if (accordion) {
               />
             </PanelBody>
             <PanelBody
-              title={__("Description")}
+              title={__("Content")}
               className="premium-panel-body"
               initialOpen={false}
             >
-              <p>{__("Description Align")}</p>
+              <SelectControl
+                label={__("Type")}
+                options={TYPE}
+                value={contentType}
+                onChange={newType => setAttributes({ contentType: newType })}
+                help={__(
+                  "Gutenberg Block works only with single accordion item"
+                )}
+              />
               <Toolbar
                 controls={ALIGNS.map(align => ({
                   icon: "editor-align" + align,
@@ -637,61 +678,71 @@ if (accordion) {
                   onClick: () => setAttributes({ descAlign: align })
                 }))}
               />
-              <PanelBody
-                title={__("Font")}
-                className="premium-panel-body-inner"
-                initialOpen={false}
-              >
-                <PremiumTypo
-                  components={[
-                    "size",
-                    "weight",
-                    "style",
-                    "upper",
-                    "spacing",
-                    "line"
-                  ]}
-                  size={descSize}
-                  weight={descWeight}
-                  style={descStyle}
-                  spacing={descLetter}
-                  line={descLine}
-                  upper={descUpper}
-                  onChangeSize={newSize => setAttributes({ descSize: newSize })}
-                  onChangeWeight={newWeight =>
-                    setAttributes({ descWeight: newWeight })
-                  }
-                  onChangeStyle={newStyle =>
-                    setAttributes({ descStyle: newStyle })
-                  }
-                  onChangeSpacing={newValue =>
-                    setAttributes({ descLetter: newValue })
-                  }
-                  onChangeLine={newValue =>
-                    setAttributes({ descLine: newValue })
-                  }
-                  onChangeUpper={check => setAttributes({ descUpper: check })}
-                />
-              </PanelBody>
-              <PanelColorSettings
-                title={__("Colors")}
-                className="premium-panel-body-inner"
-                initialOpen={false}
-                colorSettings={[
-                  {
-                    label: __("Text Color"),
-                    value: descColor,
-                    onChange: colorValue =>
-                      setAttributes({ descColor: colorValue })
-                  },
-                  {
-                    label: __("Background Color"),
-                    value: descBack,
-                    onChange: colorValue =>
-                      setAttributes({ descBack: colorValue })
-                  }
-                ]}
-              />
+
+              {"text" === contentType && (
+                <Fragment>
+                  <PanelBody
+                    title={__("Font")}
+                    className="premium-panel-body-inner"
+                    initialOpen={false}
+                  >
+                    <PremiumTypo
+                      components={[
+                        "size",
+                        "weight",
+                        "style",
+                        "upper",
+                        "spacing",
+                        "line"
+                      ]}
+                      size={descSize}
+                      weight={descWeight}
+                      style={descStyle}
+                      spacing={descLetter}
+                      line={descLine}
+                      upper={descUpper}
+                      onChangeSize={newSize =>
+                        setAttributes({ descSize: newSize })
+                      }
+                      onChangeWeight={newWeight =>
+                        setAttributes({ descWeight: newWeight })
+                      }
+                      onChangeStyle={newStyle =>
+                        setAttributes({ descStyle: newStyle })
+                      }
+                      onChangeSpacing={newValue =>
+                        setAttributes({ descLetter: newValue })
+                      }
+                      onChangeLine={newValue =>
+                        setAttributes({ descLine: newValue })
+                      }
+                      onChangeUpper={check =>
+                        setAttributes({ descUpper: check })
+                      }
+                    />
+                  </PanelBody>
+
+                  <PanelColorSettings
+                    title={__("Colors")}
+                    className="premium-panel-body-inner"
+                    initialOpen={false}
+                    colorSettings={[
+                      {
+                        label: __("Text Color"),
+                        value: descColor,
+                        onChange: colorValue =>
+                          setAttributes({ descColor: colorValue })
+                      },
+                      {
+                        label: __("Background Color"),
+                        value: descBack,
+                        onChange: colorValue =>
+                          setAttributes({ descBack: colorValue })
+                      }
+                    ]}
+                  />
+                </Fragment>
+              )}
               <PanelBody
                 title={__("Border")}
                 className="premium-panel-body-inner"
@@ -811,12 +862,13 @@ if (accordion) {
         titlePaddingR,
         titlePaddingB,
         titlePaddingL,
-        arrowPos,
         arrowColor,
         arrowBack,
+        arrowPos,
         arrowPadding,
         arrowSize,
         arrowRadius,
+        contentType,
         descAlign,
         descSize,
         descLine,
@@ -908,20 +960,23 @@ if (accordion) {
                 paddingLeft: descPaddingL
               }}
             >
-              <RichText.Content
-                tagName="p"
-                className={`${className}__desc`}
-                value={item.descText}
-                style={{
-                  color: descColor,
-                  fontSize: descSize + "px",
-                  letterSpacing: descLetter + "px",
-                  textTransform: descUpper ? "uppercase" : "none",
-                  fontStyle: descStyle,
-                  fontWeight: descWeight,
-                  lineHeight: descLine + "px"
-                }}
-              />
+              {"text" === contentType && (
+                <RichText.Content
+                  tagName="p"
+                  className={`${className}__desc`}
+                  value={item.descText}
+                  style={{
+                    color: descColor,
+                    fontSize: descSize + "px",
+                    letterSpacing: descLetter + "px",
+                    textTransform: descUpper ? "uppercase" : "none",
+                    fontStyle: descStyle,
+                    fontWeight: descWeight,
+                    lineHeight: descLine + "px"
+                  }}
+                />
+              )}
+              {"block" === contentType && <InnerBlocks.Content />}
             </div>
           </div>
         );
