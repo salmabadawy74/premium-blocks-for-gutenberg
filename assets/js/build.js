@@ -80,6 +80,7 @@
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return accordion; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return iconBox; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return videoBox; });
+/* unused harmony export iconList */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FontAwesomeEnabled; });
 //Blocks Keys
 var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
@@ -94,7 +95,8 @@ var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
     container = _PremiumBlocksSetting.container,
     accordion = _PremiumBlocksSetting.accordion,
     iconBox = _PremiumBlocksSetting.iconBox,
-    videoBox = _PremiumBlocksSetting.videoBox;
+    videoBox = _PremiumBlocksSetting.videoBox,
+    iconList = _PremiumBlocksSetting.iconList;
 
 //Plugin Config Keys
 
@@ -636,6 +638,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_accordion__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_icon_box__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_icon_list__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_icon_list___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__blocks_icon_list__);
+
 
 
 
@@ -14850,6 +14855,12 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["m" /* videoBox */]) {
     }]
   });
 }
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports) {
+
+
 
 /***/ })
 /******/ ]);

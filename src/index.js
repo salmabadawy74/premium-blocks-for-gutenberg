@@ -10,3 +10,4 @@ import "./blocks/section";
 import "./blocks/accordion";
 import "./blocks/icon-box";
 import "./blocks/video-box";
+import "./blocks/icon-list";

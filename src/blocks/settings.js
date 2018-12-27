@@ -11,7 +11,8 @@ export const {
   container,
   accordion,
   iconBox,
-  videoBox
+  videoBox,
+  iconList
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys
