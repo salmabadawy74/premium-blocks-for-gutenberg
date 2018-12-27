@@ -291,11 +291,11 @@ if (accordion) {
       const DIRECTION = [
         {
           value: "ltr",
-          label: __("LTR")
+          label: "LTR"
         },
         {
           value: "rtl",
-          label: __("RTL")
+          label: "RTL"
         }
       ];
 
