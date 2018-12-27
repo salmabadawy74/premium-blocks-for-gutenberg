@@ -431,65 +431,6 @@ function PremiumPadding(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumMargin;
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var RangeControl = wp.components.RangeControl;
-
-function PremiumMargin(props) {
-  var directions = props.directions,
-      marginTop = props.marginTop,
-      marginRight = props.marginRight,
-      marginBottom = props.marginBottom,
-      marginLeft = props.marginLeft,
-      _props$onChangeMarTop = props.onChangeMarTop,
-      onChangeMarTop = _props$onChangeMarTop === undefined ? function () {} : _props$onChangeMarTop,
-      _props$onChangeMarRig = props.onChangeMarRight,
-      onChangeMarRight = _props$onChangeMarRig === undefined ? function () {} : _props$onChangeMarRig,
-      _props$onChangeMarBot = props.onChangeMarBottom,
-      onChangeMarBottom = _props$onChangeMarBot === undefined ? function () {} : _props$onChangeMarBot,
-      _props$onChangeMarLef = props.onChangeMarLeft,
-      onChangeMarLeft = _props$onChangeMarLef === undefined ? function () {} : _props$onChangeMarLef;
-
-  return wp.element.createElement(
-    Fragment,
-    null,
-    (directions.includes("all") || directions.includes("top")) && wp.element.createElement(RangeControl, {
-      label: __("Margin Top (PX)"),
-      value: marginTop,
-      min: "0",
-      max: "150",
-      onChange: onChangeMarTop
-    }),
-    (directions.includes("all") || directions.includes("right")) && wp.element.createElement(RangeControl, {
-      label: __("Margin Right (PX)"),
-      value: marginRight,
-      min: "0",
-      max: "150",
-      onChange: onChangeMarRight
-    }),
-    (directions.includes("all") || directions.includes("bottom")) && wp.element.createElement(RangeControl, {
-      label: __("Margin Bottom (PX)"),
-      value: marginBottom,
-      min: "0",
-      max: "150",
-      onChange: onChangeMarBottom
-    }),
-    (directions.includes("all") || directions.includes("left")) && wp.element.createElement(RangeControl, {
-      label: __("Margin Left (PX)"),
-      value: marginLeft,
-      min: "0",
-      max: "150",
-      onChange: onChangeMarLeft
-    })
-  );
-}
-
-/***/ }),
-/* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumTextShadow;
 var __ = wp.i18n.__;
 var _wp$components = wp.components,
@@ -555,6 +496,65 @@ function PremiumTextShadow(props) {
       options: POSITION,
       value: position,
       onChange: onChangePosition
+    })
+  );
+}
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumMargin;
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var RangeControl = wp.components.RangeControl;
+
+function PremiumMargin(props) {
+  var directions = props.directions,
+      marginTop = props.marginTop,
+      marginRight = props.marginRight,
+      marginBottom = props.marginBottom,
+      marginLeft = props.marginLeft,
+      _props$onChangeMarTop = props.onChangeMarTop,
+      onChangeMarTop = _props$onChangeMarTop === undefined ? function () {} : _props$onChangeMarTop,
+      _props$onChangeMarRig = props.onChangeMarRight,
+      onChangeMarRight = _props$onChangeMarRig === undefined ? function () {} : _props$onChangeMarRig,
+      _props$onChangeMarBot = props.onChangeMarBottom,
+      onChangeMarBottom = _props$onChangeMarBot === undefined ? function () {} : _props$onChangeMarBot,
+      _props$onChangeMarLef = props.onChangeMarLeft,
+      onChangeMarLeft = _props$onChangeMarLef === undefined ? function () {} : _props$onChangeMarLef;
+
+  return wp.element.createElement(
+    Fragment,
+    null,
+    (directions.includes("all") || directions.includes("top")) && wp.element.createElement(RangeControl, {
+      label: __("Margin Top (PX)"),
+      value: marginTop,
+      min: "0",
+      max: "150",
+      onChange: onChangeMarTop
+    }),
+    (directions.includes("all") || directions.includes("right")) && wp.element.createElement(RangeControl, {
+      label: __("Margin Right (PX)"),
+      value: marginRight,
+      min: "0",
+      max: "150",
+      onChange: onChangeMarRight
+    }),
+    (directions.includes("all") || directions.includes("bottom")) && wp.element.createElement(RangeControl, {
+      label: __("Margin Bottom (PX)"),
+      value: marginBottom,
+      min: "0",
+      max: "150",
+      onChange: onChangeMarBottom
+    }),
+    (directions.includes("all") || directions.includes("left")) && wp.element.createElement(RangeControl, {
+      label: __("Margin Left (PX)"),
+      value: marginLeft,
+      min: "0",
+      max: "150",
+      onChange: onChangeMarLeft
     })
   );
 }
@@ -8342,7 +8342,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* countUp */]) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_icon__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_padding__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_text_shadow__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__icons__ = __webpack_require__(1);
@@ -9157,7 +9157,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* icon */]) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__icons__ = __webpack_require__(1);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -9885,8 +9885,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* button */]) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__icons__ = __webpack_require__(1);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -10675,8 +10675,11 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
   var _wp$editor = wp.editor,
       InspectorControls = _wp$editor.InspectorControls,
       RichText = _wp$editor.RichText,
+      InnerBlocks = _wp$editor.InnerBlocks,
       PanelColorSettings = _wp$editor.PanelColorSettings;
 
+
+  var CONTENT = [["core/paragraph", { content: __("Insert Your Content Here") }]];
 
   var accordionAttrs = {
     accordionId: {
@@ -10764,6 +10767,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
     arrowSize: {
       type: "number",
       default: 20
+    },
+    contentType: {
+      type: "string",
+      default: "text"
     },
     descAlign: {
       type: "string",
@@ -10902,6 +10909,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
             arrowPadding = _props$attributes.arrowPadding,
             arrowRadius = _props$attributes.arrowRadius,
             arrowSize = _props$attributes.arrowSize,
+            contentType = _props$attributes.contentType,
             descAlign = _props$attributes.descAlign,
             descColor = _props$attributes.descColor,
             descBack = _props$attributes.descBack,
@@ -10928,6 +10936,15 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
           value: "rtl",
           label: __("RTL")
         }];
+
+        var TYPE = [{
+          value: "text",
+          label: __("Text")
+        }, {
+          value: "block",
+          label: __("Gutenberg Block")
+        }];
+
         var ALIGNS = ["left", "center", "right"];
 
         var onAccordionChange = function onAccordionChange(attr, value, index) {
@@ -11030,7 +11047,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
                   paddingLeft: descPaddingL
                 }
               },
-              wp.element.createElement(RichText, {
+              "text" === contentType && wp.element.createElement(RichText, {
                 tagName: "p",
                 className: className + "__desc",
                 onChange: function onChange(newText) {
@@ -11048,7 +11065,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
                   fontWeight: descWeight,
                   lineHeight: descLine + "px"
                 }
-              })
+              }),
+              "block" === contentType && wp.element.createElement(InnerBlocks, { template: CONTENT })
             )
           );
         });
@@ -11248,10 +11266,18 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
           wp.element.createElement(
             PanelBody,
             {
-              title: __("Description"),
+              title: __("Content"),
               className: "premium-panel-body",
               initialOpen: false
             },
+            wp.element.createElement(SelectControl, {
+              label: __("Type"),
+              options: TYPE,
+              value: contentType,
+              onChange: function onChange(newType) {
+                return setAttributes({ contentType: newType });
+              }
+            }),
             wp.element.createElement(Toolbar, {
               controls: ALIGNS.map(function (align) {
                 return {
@@ -11263,58 +11289,62 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
                 };
               })
             }),
-            wp.element.createElement(
-              PanelBody,
-              {
-                title: __("Font"),
+            "text" === contentType && wp.element.createElement(
+              Fragment,
+              null,
+              wp.element.createElement(
+                PanelBody,
+                {
+                  title: __("Font"),
+                  className: "premium-panel-body-inner",
+                  initialOpen: false
+                },
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
+                  components: ["size", "weight", "style", "upper", "spacing", "line"],
+                  size: descSize,
+                  weight: descWeight,
+                  style: descStyle,
+                  spacing: descLetter,
+                  line: descLine,
+                  upper: descUpper,
+                  onChangeSize: function onChangeSize(newSize) {
+                    return setAttributes({ descSize: newSize });
+                  },
+                  onChangeWeight: function onChangeWeight(newWeight) {
+                    return setAttributes({ descWeight: newWeight });
+                  },
+                  onChangeStyle: function onChangeStyle(newStyle) {
+                    return setAttributes({ descStyle: newStyle });
+                  },
+                  onChangeSpacing: function onChangeSpacing(newValue) {
+                    return setAttributes({ descLetter: newValue });
+                  },
+                  onChangeLine: function onChangeLine(newValue) {
+                    return setAttributes({ descLine: newValue });
+                  },
+                  onChangeUpper: function onChangeUpper(check) {
+                    return setAttributes({ descUpper: check });
+                  }
+                })
+              ),
+              wp.element.createElement(PanelColorSettings, {
+                title: __("Colors"),
                 className: "premium-panel-body-inner",
-                initialOpen: false
-              },
-              wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
-                components: ["size", "weight", "style", "upper", "spacing", "line"],
-                size: descSize,
-                weight: descWeight,
-                style: descStyle,
-                spacing: descLetter,
-                line: descLine,
-                upper: descUpper,
-                onChangeSize: function onChangeSize(newSize) {
-                  return setAttributes({ descSize: newSize });
-                },
-                onChangeWeight: function onChangeWeight(newWeight) {
-                  return setAttributes({ descWeight: newWeight });
-                },
-                onChangeStyle: function onChangeStyle(newStyle) {
-                  return setAttributes({ descStyle: newStyle });
-                },
-                onChangeSpacing: function onChangeSpacing(newValue) {
-                  return setAttributes({ descLetter: newValue });
-                },
-                onChangeLine: function onChangeLine(newValue) {
-                  return setAttributes({ descLine: newValue });
-                },
-                onChangeUpper: function onChangeUpper(check) {
-                  return setAttributes({ descUpper: check });
-                }
+                colorSettings: [{
+                  label: __("Text Color"),
+                  value: descColor,
+                  onChange: function onChange(colorValue) {
+                    return setAttributes({ descColor: colorValue });
+                  }
+                }, {
+                  label: __("Background Color"),
+                  value: descBack,
+                  onChange: function onChange(colorValue) {
+                    return setAttributes({ descBack: colorValue });
+                  }
+                }]
               })
             ),
-            wp.element.createElement(PanelColorSettings, {
-              title: __("Colors"),
-              className: "premium-panel-body-inner",
-              colorSettings: [{
-                label: __("Text Color"),
-                value: descColor,
-                onChange: function onChange(colorValue) {
-                  return setAttributes({ descColor: colorValue });
-                }
-              }, {
-                label: __("Background Color"),
-                value: descBack,
-                onChange: function onChange(colorValue) {
-                  return setAttributes({ descBack: colorValue });
-                }
-              }]
-            }),
             wp.element.createElement(
               PanelBody,
               {
@@ -11449,6 +11479,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
           arrowPadding = _props$attributes2.arrowPadding,
           arrowSize = _props$attributes2.arrowSize,
           arrowRadius = _props$attributes2.arrowRadius,
+          contentType = _props$attributes2.contentType,
           descAlign = _props$attributes2.descAlign,
           descSize = _props$attributes2.descSize,
           descLine = _props$attributes2.descLine,
@@ -11550,7 +11581,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
                 paddingLeft: descPaddingL
               }
             },
-            wp.element.createElement(RichText.Content, {
+            "text" === contentType && wp.element.createElement(RichText.Content, {
               tagName: "p",
               className: className + "__desc",
               value: item.descText,
@@ -11563,7 +11594,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
                 fontWeight: descWeight,
                 lineHeight: descLine + "px"
               }
-            })
+            }),
+            "block" === contentType && wp.element.createElement(InnerBlocks.Content, null)
           )
         );
       });
@@ -11577,20 +11609,21 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
       attributes: accordionAttrs,
       save: function save(props) {
         var _props$attributes3 = props.attributes,
+            accordionId = _props$attributes3.accordionId,
+            repeaterItems = _props$attributes3.repeaterItems,
             direction = _props$attributes3.direction,
-            titleText = _props$attributes3.titleText,
             titleTag = _props$attributes3.titleTag,
+            titleSize = _props$attributes3.titleSize,
+            titleLine = _props$attributes3.titleLine,
+            titleLetter = _props$attributes3.titleLetter,
+            titleStyle = _props$attributes3.titleStyle,
+            titleUpper = _props$attributes3.titleUpper,
+            titleWeight = _props$attributes3.titleWeight,
             titleColor = _props$attributes3.titleColor,
             titleBorder = _props$attributes3.titleBorder,
             titleBorderColor = _props$attributes3.titleBorderColor,
             titleBorderWidth = _props$attributes3.titleBorderWidth,
             titleBorderRadius = _props$attributes3.titleBorderRadius,
-            titleSize = _props$attributes3.titleSize,
-            titleLetter = _props$attributes3.titleLetter,
-            titleUpper = _props$attributes3.titleUpper,
-            titleStyle = _props$attributes3.titleStyle,
-            titleWeight = _props$attributes3.titleWeight,
-            titleLine = _props$attributes3.titleLine,
             titleBack = _props$attributes3.titleBack,
             titlePaddingT = _props$attributes3.titlePaddingT,
             titlePaddingR = _props$attributes3.titlePaddingR,
@@ -11601,6 +11634,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
             arrowPadding = _props$attributes3.arrowPadding,
             arrowSize = _props$attributes3.arrowSize,
             arrowRadius = _props$attributes3.arrowRadius,
+            contentType = _props$attributes3.contentType,
             descAlign = _props$attributes3.descAlign,
             descSize = _props$attributes3.descSize,
             descLine = _props$attributes3.descLine,
@@ -11609,7 +11643,6 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
             descUpper = _props$attributes3.descUpper,
             descWeight = _props$attributes3.descWeight,
             descColor = _props$attributes3.descColor,
-            descText = _props$attributes3.descText,
             descBack = _props$attributes3.descBack,
             descBorder = _props$attributes3.descBorder,
             descBorderColor = _props$attributes3.descBorderColor,
@@ -11620,12 +11653,14 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
             descPaddingB = _props$attributes3.descPaddingB,
             descPaddingL = _props$attributes3.descPaddingL;
 
-        return wp.element.createElement(
-          "div",
-          { className: "" + className },
-          wp.element.createElement(
+
+        var accordionItems = repeaterItems.map(function (item, index) {
+          return wp.element.createElement(
             "div",
-            { className: className + "__content_wrap" },
+            {
+              id: className + "__layer" + index,
+              className: className + "__content_wrap"
+            },
             wp.element.createElement(
               "div",
               {
@@ -11648,7 +11683,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
                 wp.element.createElement(RichText.Content, {
                   tagName: titleTag.toLowerCase(),
                   className: className + "__title_text",
-                  value: titleText,
+                  value: item.titleText,
                   style: {
                     color: titleColor,
                     fontSize: titleSize + "px",
@@ -11666,7 +11701,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
                 wp.element.createElement(
                   "svg",
                   {
-                    className: className + "__icon",
+                    className: className + "__icon premium-accordion__closed",
                     role: "img",
                     focusable: "false",
                     xmlns: "http://www.w3.org/2000/svg",
@@ -11687,7 +11722,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
             wp.element.createElement(
               "div",
               {
-                className: className + "__desc_wrap",
+                className: className + "__desc_wrap premium-accordion__desc_close",
                 style: {
                   textAlign: descAlign,
                   backgroundColor: descBack,
@@ -11704,7 +11739,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
               wp.element.createElement(RichText.Content, {
                 tagName: "p",
                 className: className + "__desc",
-                value: descText,
+                value: item.descText,
                 style: {
                   color: descColor,
                   fontSize: descSize + "px",
@@ -11716,7 +11751,12 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
                 }
               })
             )
-          )
+          );
+        });
+        return wp.element.createElement(
+          "div",
+          { id: accordionId, className: "" + className },
+          accordionItems
         );
       }
     }]
@@ -11733,8 +11773,8 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_icon__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_padding__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_margin__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_margin__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_background__ = __webpack_require__(24);
 
 
@@ -13552,7 +13592,7 @@ function PremiumBackground(props) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_typo__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_box_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(1);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
