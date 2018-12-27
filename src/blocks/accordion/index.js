@@ -2,6 +2,7 @@ import { accordion } from "../settings";
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
+import PremiumTextShadow from "../../components/premium-text-shadow";
 import PbgIcon from "../icons";
 
 if (accordion) {
@@ -88,6 +89,21 @@ if (accordion) {
     titleBack: {
       type: "string"
     },
+    titleShadowColor: {
+      type: "string"
+    },
+    titleShadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    titleShadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    titleShadowVertical: {
+      type: "number",
+      default: "0"
+    },
     titlePaddingT: {
       type: "number"
     },
@@ -105,6 +121,10 @@ if (accordion) {
     },
     arrowBack: {
       type: "string"
+    },
+    arrowPos: {
+      type: "string",
+      default: "out"
     },
     arrowPadding: {
       type: "number"
@@ -234,12 +254,17 @@ if (accordion) {
         titleBorderColor,
         titleBorderRadius,
         titleBack,
+        titleShadowBlur,
+        titleShadowColor,
+        titleShadowHorizontal,
+        titleShadowVertical,
         titlePaddingT,
         titlePaddingR,
         titlePaddingB,
         titlePaddingL,
         arrowColor,
         arrowBack,
+        arrowPos,
         arrowPadding,
         arrowRadius,
         arrowSize,
@@ -271,6 +296,17 @@ if (accordion) {
         {
           value: "rtl",
           label: __("RTL")
+        }
+      ];
+
+      const ARROW = [
+        {
+          value: "in",
+          label: __("In")
+        },
+        {
+          value: "out",
+          label: __("Out")
         }
       ];
 
@@ -306,7 +342,7 @@ if (accordion) {
             className={`${className}__content_wrap`}
           >
             <div
-              className={`${className}__title_wrap ${className}__${direction}`}
+              className={`${className}__title_wrap ${className}__${direction} ${className}__${arrowPos}`}
               style={{
                 backgroundColor: titleBack,
                 border: titleBorder,
@@ -341,6 +377,7 @@ if (accordion) {
                     textTransform: titleUpper ? "uppercase" : "none",
                     fontStyle: titleStyle,
                     fontWeight: titleWeight,
+                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                     lineHeight: titleLine + "px"
                   }}
                 />
@@ -418,6 +455,7 @@ if (accordion) {
               className="premium-panel-body"
               initialOpen={false}
             >
+              <p>{__("Title Tag")}</p>
               <Toolbar
                 controls={"123456".split("").map(tag => ({
                   icon: "heading",
@@ -473,6 +511,7 @@ if (accordion) {
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
                   {
                     label: __("Text Color"),
@@ -512,6 +551,25 @@ if (accordion) {
                   }
                 />
               </PanelBody>
+              <PremiumTextShadow
+                color={titleShadowColor}
+                blur={titleShadowBlur}
+                horizontal={titleShadowHorizontal}
+                vertical={titleShadowVertical}
+                onChangeColor={newColor =>
+                  setAttributes({ titleShadowColor: newColor })
+                }
+                onChangeBlur={newBlur =>
+                  setAttributes({ titleShadowBlur: newBlur })
+                }
+                onChangehHorizontal={newValue =>
+                  setAttributes({ titleShadowHorizontal: newValue })
+                }
+                onChangeVertical={newValue =>
+                  setAttributes({ titleShadowVertical: newValue })
+                }
+              />
+
               <PanelBody
                 title={__("Padding")}
                 className="premium-panel-body-inner"
@@ -550,6 +608,12 @@ if (accordion) {
               className="premium-panel-body"
               initialOpen={false}
             >
+              <SelectControl
+                label={__("Position")}
+                options={ARROW}
+                value={arrowPos}
+                onChange={newEffect => setAttributes({ arrowPos: newEffect })}
+              />
               <RangeControl
                 label={__("Size ")}
                 value={arrowSize}
@@ -558,6 +622,7 @@ if (accordion) {
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
+                initialOpen={false}
                 colorSettings={[
                   {
                     label: __("Arrow Color"),
@@ -660,6 +725,7 @@ if (accordion) {
                   <PanelColorSettings
                     title={__("Colors")}
                     className="premium-panel-body-inner"
+                    initialOpen={false}
                     colorSettings={[
                       {
                         label: __("Text Color"),
@@ -788,12 +854,17 @@ if (accordion) {
         titleBorderWidth,
         titleBorderRadius,
         titleBack,
+        titleShadowBlur,
+        titleShadowColor,
+        titleShadowHorizontal,
+        titleShadowVertical,
         titlePaddingT,
         titlePaddingR,
         titlePaddingB,
         titlePaddingL,
         arrowColor,
         arrowBack,
+        arrowPos,
         arrowPadding,
         arrowSize,
         arrowRadius,
@@ -824,7 +895,7 @@ if (accordion) {
             className={`${className}__content_wrap`}
           >
             <div
-              className={`${className}__title_wrap ${className}__${direction}`}
+              className={`${className}__title_wrap ${className}__${direction} ${className}__${arrowPos}`}
               style={{
                 backgroundColor: titleBack,
                 border: titleBorder,
@@ -849,6 +920,7 @@ if (accordion) {
                     textTransform: titleUpper ? "uppercase" : "none",
                     fontStyle: titleStyle,
                     fontWeight: titleWeight,
+                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                     lineHeight: titleLine + "px"
                   }}
                 />
