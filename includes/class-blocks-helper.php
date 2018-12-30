@@ -60,10 +60,17 @@ class Premium_Blocks_Integration {
             ),
             PREMIUM_BLOCKS_VERSION
         );
+        
+        wp_enqueue_style(
+            'pbg-editorpanel-css',
+            PREMIUM_BLOCKS_URL . 'assets/css/editorpanel.css',
+            array( 'wp-edit-blocks' ),
+            PREMIUM_BLOCKS_VERSION
+        );
     
         wp_enqueue_style(
             'pbg-editor-css',
-            PREMIUM_BLOCKS_URL . 'assets/css/editor.css',
+            PREMIUM_BLOCKS_URL . 'assets/css/blockseditor.css',
             array( 'wp-edit-blocks' ),
             PREMIUM_BLOCKS_VERSION
         );

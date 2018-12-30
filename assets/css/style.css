@@ -948,7 +948,9 @@ a.premium-dheading-block__link:hover {
 .premium-icon-box .premium-icon-box__icon.dashicons,
 .premium-icon-box .premium-icon-box__icon.dashicons::before,
 .premium-video-box .premium-video-box__play_icon.dashicons,
-.premium-video-box .premium-video-box__play_icon.dashicons::before {
+.premium-video-box .premium-video-box__play_icon.dashicons::before,
+.premium-video-box .premium-icon-list__icon.dashicons,
+.premium-video-box .premium-icon-list__icon.dashicons::before {
   display: inline-block;
   width: auto;
   height: auto;
@@ -1610,4 +1612,13 @@ a.premium-dheading-block__link:hover {
 }
 .premium-video-box .premium-video-box__desc_text {
   margin: 0 !important;
+}
+/**************** Premium Icon List ********************/
+/*******************************************************/
+.premium-icon-list__container .premium-icon-list__icon {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
