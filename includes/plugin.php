@@ -60,9 +60,10 @@ if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
             if( is_admin() ) {
                 require_once ( PREMIUM_BLOCKS_PATH . 'admin/reports/deps/data.php' );
                 require_once ( PREMIUM_BLOCKS_PATH . 'admin/includes/rollback.php');
-                require_once ( PREMIUM_BLOCKS_PATH  . 'admin/includes/version-control.php');
+                require_once ( PREMIUM_BLOCKS_PATH . 'admin/includes/version-control.php');
                 require_once ( PREMIUM_BLOCKS_PATH . 'admin/reports/system-info.php' );
                 require_once ( PREMIUM_BLOCKS_PATH . 'admin/reports/about.php' );
+                require_once ( PREMIUM_BLOCKS_PATH . 'admin/includes/notices.php' );
             }
             
             require_once ( PREMIUM_BLOCKS_PATH . 'includes/class-blocks-helper.php' );

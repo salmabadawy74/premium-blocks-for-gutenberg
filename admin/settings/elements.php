@@ -43,6 +43,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
             wp_enqueue_style( 'pbg-icon', PREMIUM_BLOCKS_URL .'admin/assets/pbg-font/css/pbg-font.css' );
             
             wp_enqueue_style( 'pbg-blocks-icons', PREMIUM_BLOCKS_URL .'admin/assets/pbg-font/css/pbg-elements.css' );
+
+            wp_enqueue_style( 'pbg-notices', PREMIUM_BLOCKS_URL .'admin/assets/notice.css' );
             
             $current_screen = get_current_screen();
             
