@@ -1,10 +1,4 @@
 import { iconList } from "../settings";
-import { FontAwesomeEnabled } from "../settings";
-import PremiumIcon from "../../components/premium-icon";
-import PremiumBorder from "../../components/premium-border";
-import PremiumMargin from "../../components/premium-margin";
-import PremiumPadding from "../../components/premium-padding";
-import PremiumTextShadow from "../../components/premium-text-shadow";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconsList from "../../components/icon-list";
 import PbgIcon from "../icons";
@@ -16,8 +10,6 @@ if (iconList) {
 
   const { registerBlockType } = wp.blocks;
 
-  const { Component, Fragment } = wp.element;
-
   const {
     PanelBody,
     SelectControl,
@@ -25,11 +17,20 @@ if (iconList) {
     TextControl,
     ToggleControl
   } = wp.components;
-  const { InspectorControls, PanelColorSettings, URLInput } = wp.editor;
+  const {
+    InspectorControls,
+    AlignmentToolbar,
+    PanelColorSettings,
+    BlockControls
+  } = wp.editor;
 
   const iconListAttrs = {
     id: {
       type: "string"
+    },
+    contentAlign: {
+      type: "string",
+      default: "center"
     },
     iconsNumber: {
       type: "number",
@@ -118,6 +119,7 @@ if (iconList) {
       const { isSelected, setAttributes, clientId: blockId } = props;
       const {
         id,
+        contentAlign,
         iconsNumber,
         iconsArr,
         selectedIcons,
@@ -559,6 +561,14 @@ if (iconList) {
       setAttributes({ id: blockId });
       return [
         isSelected && (
+          <BlockControls key="controls">
+            <AlignmentToolbar
+              value={contentAlign}
+              onChange={newAlign => setAttributes({ contentAlign: newAlign })}
+            />
+          </BlockControls>
+        ),
+        isSelected && (
           <InspectorControls key="inspector">
             <PanelBody
               className="premium-panel-body"
@@ -584,13 +594,21 @@ if (iconList) {
         ),
 
         <div id={`${className}-${id}`} className={`${className}`}>
-          <div className={`${className}__list_wrap`}>{iconListItems}</div>
+          <div
+            className={`${className}__list_wrap`}
+            style={{
+              justifyContent: contentAlign
+            }}
+          >
+            {iconListItems}
+          </div>
         </div>
       ];
     },
     save: props => {
       const {
         id,
+        contentAlign,
         iconsNumber,
         iconsArr,
         selectedIcons,
@@ -672,7 +690,14 @@ if (iconList) {
 
       return (
         <div id={`${className}-${id}`} className={`${className}`}>
-          <div className={`${className}__list_wrap`}>{iconListItems}</div>
+          <div
+            className={`${className}__list_wrap`}
+            style={{
+              justifyContent: contentAlign
+            }}
+          >
+            {iconListItems}
+          </div>
         </div>
       );
     }
