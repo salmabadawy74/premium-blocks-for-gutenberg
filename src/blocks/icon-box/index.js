@@ -1,7 +1,8 @@
 import { iconBox } from "../settings";
 import { FontAwesomeEnabled } from "../settings";
 import PremiumTypo from "../../components/premium-typo";
-import PremiumIcon from "../../components/premium-icon";
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import iconsList from "../../components/premium-icons-list";
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
@@ -74,7 +75,7 @@ if (iconBox) {
     },
     selectedIcon: {
       type: "string",
-      default: "dashicons-admin-site"
+      default: "dashicons dashicons-admin-site"
     },
     titleChecked: {
       type: "boolean",
@@ -343,16 +344,6 @@ if (iconBox) {
     }
   };
 
-  const getIconClass = (input, type) => {
-    let iconClass =
-      "fa" === type
-        ? `${input}`.startsWith("fa-")
-          ? `fa ${input}`
-          : `fa fa-${input}`
-        : `dashicons ${input}`;
-    return iconClass;
-  };
-
   registerBlockType("premium/icon-box", {
     title: __("Icon Box"),
     icon: <PbgIcon icon="icon-box" />,
@@ -461,8 +452,6 @@ if (iconBox) {
         }
       ];
 
-      let iconClass = getIconClass(selectedIcon, iconType);
-
       const ALIGNS = ["left", "center", "right"];
 
       return [
@@ -508,15 +497,18 @@ if (iconBox) {
                 />
                 {"icon" === iconImage && (
                   <Fragment>
-                    <PremiumIcon
-                      iconType={iconType}
-                      selectedIcon={selectedIcon}
-                      onChangeType={newType =>
-                        setAttributes({ iconType: newType })
-                      }
-                      onChangeIcon={newIcon =>
+                    <p className="premium-editor-paragraph">
+                      {__("Select Icon")}
+                    </p>
+                    <FontIconPicker
+                      icons={iconsList}
+                      onChange={newIcon =>
                         setAttributes({ selectedIcon: newIcon })
                       }
+                      value={selectedIcon}
+                      isMulti={false}
+                      appendTo="body"
+                      noSelectedPlaceholder={__("Select Icon")}
                     />
                     <PanelColorSettings
                       title={__("Colors")}
@@ -1148,7 +1140,7 @@ if (iconBox) {
                   )}
                   {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
                     <i
-                      className={`${iconClass} ${className}__icon`}
+                      className={`${selectedIcon} ${className}__icon`}
                       style={{
                         color: iconColor,
                         fontSize: iconSize
@@ -1353,8 +1345,6 @@ if (iconBox) {
         shadowPosition
       } = props.attributes;
 
-      let iconClass = getIconClass(selectedIcon, iconType);
-
       return (
         <div
           id={`${className}-${id}`}
@@ -1397,9 +1387,9 @@ if (iconBox) {
           )}
           {iconChecked && (
             <div className={`${className}__icon_wrap`}>
-              {"icon" === iconImage && iconClass && (
+              {"icon" === iconImage && selectedIcon && (
                 <i
-                  className={`${iconClass} ${className}__icon`}
+                  className={`${selectedIcon} ${className}__icon`}
                   style={{
                     color: iconColor,
                     fontSize: iconSize
@@ -1587,8 +1577,6 @@ if (iconBox) {
             shadowPosition
           } = props.attributes;
 
-          let iconClass = getIconClass(selectedIcon, iconType);
-
           return (
             <div
               id={`${className}-${id}`}
@@ -1631,9 +1619,9 @@ if (iconBox) {
               )}
               {iconChecked && (
                 <div className={`${className}__icon_wrap`}>
-                  {"icon" === iconImage && iconClass && (
+                  {"icon" === iconImage && selectedIcon && (
                     <i
-                      className={`${iconClass} ${className}__icon`}
+                      className={`${selectedIcon} ${className}__icon`}
                       style={{
                         color: iconColor,
                         fontSize: iconSize
