@@ -179,5 +179,8 @@
 #wpwrap .edit-post-visual-editor .premium-icon-box__btn {
   color: #000;
 }
-/**************** Premium Video Box ********************/
+/**************** Premium Icon List ********************/
 /*******************************************************/
+#wpwrap .edit-post-visual-editor .premium-icon-list__text {
+  margin-bottom: 0;
+}
