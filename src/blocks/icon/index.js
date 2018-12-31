@@ -1,6 +1,7 @@
 import { icon } from "../settings";
 import { FontAwesomeEnabled } from "../settings";
-import PremiumIcon from "../../components/premium-icon";
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import iconsList from "../../components/premium-icons-list";
 import PremiumBorder from "../../components/premium-border";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumPadding from "../../components/premium-padding";
@@ -30,7 +31,7 @@ if (icon) {
     },
     selectedIcon: {
       type: "string",
-      default: "dashicons-admin-site"
+      default: "dashicons dashicons-admin-site"
     },
     align: {
       type: "string",
@@ -221,12 +222,7 @@ if (icon) {
         link,
         target
       } = props.attributes;
-      let iconClass =
-        "fa" === iconType
-          ? `${selectedIcon}`.startsWith("fa-")
-            ? `fa ${selectedIcon}`
-            : `fa fa-${selectedIcon}`
-          : `dashicons ${selectedIcon}`;
+
       const EFFECTS = [
         {
           value: "none",
@@ -268,13 +264,14 @@ if (icon) {
               className="premium-panel-body"
               initialOpen={false}
             >
-              <PremiumIcon
-                iconType={iconType}
-                selectedIcon={selectedIcon}
-                onChangeType={newType => setAttributes({ iconType: newType })}
-                onChangeIcon={newIcon =>
-                  setAttributes({ selectedIcon: newIcon })
-                }
+              <p className="premium-editor-paragraph">{__("Select Icon")}</p>
+              <FontIconPicker
+                icons={iconsList}
+                onChange={newIcon => setAttributes({ selectedIcon: newIcon })}
+                value={selectedIcon}
+                isMulti={false}
+                appendTo="body"
+                noSelectedPlaceholder={__("Select Icon")}
               />
               <SelectControl
                 label={__("Hover Effect")}
@@ -566,7 +563,7 @@ if (icon) {
           )}
           {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
             <i
-              className={`${className} ${iconClass} ${className}__${hoverEffect}`}
+              className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
               style={{
                 color: iconColor,
                 backgroundColor: iconBack,
@@ -638,10 +635,7 @@ if (icon) {
         link,
         target
       } = props.attributes;
-      let iconClass =
-        "fa" === iconType
-          ? `fa fa-${selectedIcon}`
-          : `dashicons ${selectedIcon}`;
+
       return (
         <div
           className={`${className}__container`}
@@ -668,7 +662,7 @@ if (icon) {
             target={target ? "_blank" : "_self"}
           >
             <i
-              className={`${className} ${iconClass} ${className}__${hoverEffect}`}
+              className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
               style={{
                 color: iconColor,
                 backgroundColor: iconBack,
@@ -733,10 +727,7 @@ if (icon) {
             link,
             target
           } = props.attributes;
-          let iconClass =
-            "fa" === iconType
-              ? `fa fa-${selectedIcon}`
-              : `dashicons ${selectedIcon}`;
+
           return (
             <div
               className={`${className}__container`}
@@ -763,7 +754,7 @@ if (icon) {
                 target={target ? "_blank" : "_self"}
               >
                 <i
-                  className={`${className} ${iconClass} ${className}__${hoverEffect}`}
+                  className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
                   style={{
                     color: iconColor,
                     backgroundColor: iconBack,
