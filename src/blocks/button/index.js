@@ -125,6 +125,9 @@ if (button) {
       type: "number",
       default: "0"
     },
+    btnShadowColor: {
+      type: "string"
+    },
     btnShadowBlur: {
       type: "number",
       default: "0"

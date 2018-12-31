@@ -52,7 +52,7 @@ class Premium_Guten_Version_Control {
                      <tr class="pb-roll-row">
                         <th>Rollback Version</th>
                         <td>
-                           <div><?php echo sprintf( '<a href="%s" target="_blank" class="button pb-btn pb-rollback-button elementor-button-spinner">Reinstall Version 1.1.8</a>', wp_nonce_url( admin_url( 'admin-post.php?action=premium_gutenberg_rollback' ), 'premium_gutenberg_rollback' ) ); ?> </div>
+                           <div><?php echo sprintf( '<a href="%s" target="_blank" class="button pb-btn pb-rollback-button elementor-button-spinner">Reinstall Version 1.1.9</a>', wp_nonce_url( admin_url( 'admin-post.php?action=premium_gutenberg_rollback' ), 'premium_gutenberg_rollback' ) ); ?> </div>
                            <p class="pb-roll-desc"><span>Warning: Please backup your database before making the rollback.</span></p>
                         </td>
                      </tr>

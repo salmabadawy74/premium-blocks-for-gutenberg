@@ -5,6 +5,7 @@ import iconsList from "../../components/premium-icons-list";
 import PremiumBorder from "../../components/premium-border";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumPadding from "../../components/premium-padding";
+import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PbgIcon from "../icons";
 
@@ -135,6 +136,25 @@ if (icon) {
       type: "string",
       default: "up"
     },
+    wrapShadowColor: {
+      type: "string"
+    },
+    wrapShadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    wrapShadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    wrapShadowVertical: {
+      type: "number",
+      default: "0"
+    },
+    wrapShadowPosition: {
+      type: "string",
+      default: ""
+    },
     wrapPaddingT: {
       type: "number"
     },
@@ -210,6 +230,11 @@ if (icon) {
         wrapBorderWidth,
         wrapBorderRadius,
         wrapBorderColor,
+        wrapShadowBlur,
+        wrapShadowColor,
+        wrapShadowHorizontal,
+        wrapShadowVertical,
+        wrapShadowPosition,
         wrapPaddingT,
         wrapPaddingR,
         wrapPaddingB,
@@ -474,6 +499,40 @@ if (icon) {
                   }
                 />
               </PanelBody>
+              <PremiumBoxShadow
+                inner={true}
+                color={wrapShadowColor}
+                blur={wrapShadowBlur}
+                horizontal={wrapShadowHorizontal}
+                vertical={wrapShadowVertical}
+                position={wrapShadowPosition}
+                onChangeColor={newColor =>
+                  setAttributes({
+                    wrapShadowColor:
+                      newColor === undefined ? "transparent" : newColor
+                  })
+                }
+                onChangeBlur={newBlur =>
+                  setAttributes({
+                    wrapShadowBlur: newBlur === undefined ? 0 : newBlur
+                  })
+                }
+                onChangehHorizontal={newValue =>
+                  setAttributes({
+                    wrapShadowHorizontal: newValue === undefined ? 0 : newValue
+                  })
+                }
+                onChangeVertical={newValue =>
+                  setAttributes({
+                    wrapShadowVertical: newValue === undefined ? 0 : newValue
+                  })
+                }
+                onChangePosition={newValue =>
+                  setAttributes({
+                    wrapShadowPosition: newValue === undefined ? 0 : newValue
+                  })
+                }
+              />
               <PanelBody
                 title={__("Spacings")}
                 className="premium-panel-body-inner"
@@ -546,6 +605,7 @@ if (icon) {
             borderWidth: wrapBorderWidth + "px",
             borderRadius: wrapBorderRadius + "px",
             borderColor: wrapBorderColor,
+            boxShadow: `${wrapShadowHorizontal}px ${wrapShadowVertical}px ${wrapShadowBlur}px ${wrapShadowColor} ${wrapShadowPosition}`,
             paddingTop: wrapPaddingT,
             paddingRight: wrapPaddingR,
             paddingBottom: wrapPaddingB,
@@ -623,6 +683,11 @@ if (icon) {
         wrapBorderWidth,
         wrapBorderRadius,
         wrapBorderColor,
+        wrapShadowBlur,
+        wrapShadowColor,
+        wrapShadowHorizontal,
+        wrapShadowVertical,
+        wrapShadowPosition,
         wrapPaddingT,
         wrapPaddingR,
         wrapPaddingB,
@@ -646,6 +711,7 @@ if (icon) {
             borderWidth: wrapBorderWidth + "px",
             borderRadius: wrapBorderRadius + "px",
             borderColor: wrapBorderColor,
+            boxShadow: `${wrapShadowHorizontal}px ${wrapShadowVertical}px ${wrapShadowBlur}px ${wrapShadowColor} ${wrapShadowPosition}`,
             paddingTop: wrapPaddingT,
             paddingRight: wrapPaddingR,
             paddingBottom: wrapPaddingB,
@@ -698,6 +764,10 @@ if (icon) {
             iconColor,
             iconType,
             iconBack,
+            shadowBlur,
+            shadowColor,
+            shadowHorizontal,
+            shadowVertical,
             paddingT,
             paddingR,
             paddingB,
@@ -770,7 +840,8 @@ if (icon) {
                     border: borderType,
                     borderWidth: borderWidth + "px",
                     borderRadius: borderRadius + "px",
-                    borderColor: borderColor
+                    borderColor: borderColor,
+                    textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
                   }}
                 />
               </a>
