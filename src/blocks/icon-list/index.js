@@ -346,7 +346,6 @@ if (iconList) {
           iconsTabs[6],
           iconsTabs[7]
         ];
-
       const panelComponents = iconsArr.map((element, index) => {
         return (
           <PanelBody
@@ -401,7 +400,7 @@ if (iconList) {
               label={__("Icon/Label Size (PX)")}
               value={iconsSizes[index]}
               onChange={newValue => {
-                sizes[index] = newValue === undefined ? 20 : newValue;
+                sizes[index] = newValue;
                 setAttributes({ iconsSizes: sizes });
               }}
             />
@@ -506,42 +505,76 @@ if (iconList) {
         return (
           <div
             id={`${className}__icon_wrap-${index}`}
-            className={`${className}__icon_wrap list-${labelsPositions[index]}`}
+            className={`${className}__icon_wrap list-${
+              labelsPositions[index] === undefined
+                ? "column"
+                : labelsPositions[index]
+            }`}
             style={{
-              color: iconsColors[index],
-              backgroundColor: iconsBackColors[index],
-              flexBasis: iconsWidths[index] + "%",
-              borderRadius: iconsRadius[index] + "%",
-              padding: iconsPaddings[index]
+              color:
+                iconsColors[index] === undefined ? "#000" : iconsColors[index],
+              backgroundColor:
+                iconsBackColors[index] === undefined
+                  ? "#fff"
+                  : iconsBackColors[index],
+              flexBasis:
+                iconsWidths[index] === undefined
+                  ? 15
+                  : iconsWidths[index] + "%",
+              borderRadius:
+                iconsRadius[index] === undefined ? 0 : iconsRadius[index] + "%",
+              padding:
+                iconsPaddings[index] === undefined
+                  ? 0
+                  : iconsRadius[index] + "%"
             }}
           >
             <style
               dangerouslySetInnerHTML={{
                 __html: [
                   `#premium-icon-list-${id} #premium-icon-list__icon_wrap-${index}:hover {`,
-                  `color: ${iconsHoverColors[index]} !important;`,
-                  `background-color: ${iconsHoverBack[index]} !important;`,
+                  `color: ${
+                    iconsHoverColors[index] === undefined
+                      ? "#000"
+                      : iconsHoverColors[index]
+                  } !important;`,
+                  `background-color: ${
+                    iconsHoverBack[index] === undefined
+                      ? "#fff"
+                      : iconsHoverBack[index]
+                  } !important;`,
                   "}",
                   `#premium-icon-list-${id} #premium-icon-list__icon_wrap-${index}:hover .premium-icon-list__text {`,
-                  `color: ${labelsHoverColors[index]} !important;`,
+                  `color: ${
+                    labelsHoverColors[index] === undefined
+                      ? "#000"
+                      : labelsHoverColors[index]
+                  } !important;`,
                   "}"
                 ].join("\n")
               }}
             />
             <i
               className={`${className}__icon ${
-                selectedIcons[index]
-              } ${className}__${iconsEffects[index]}`}
+                selectedIcons[index] === undefined ? "" : selectedIcons[index]
+              } ${className}__${
+                iconsEffects[index] === undefined ? "none" : iconsEffects[index]
+              }`}
               style={{
-                fontSize: iconsSizes[index]
+                fontSize:
+                  iconsSizes[index] === undefined ? 20 : iconsSizes[index]
               }}
             />
             {iconsLabels[index] && (
               <p
                 className={`${className}__text`}
                 style={{
-                  color: labelsColors[index],
-                  fontSize: iconsSizes[index]
+                  color:
+                    labelsColors[index] === undefined
+                      ? "#000"
+                      : labelsColors[index],
+                  fontSize:
+                    iconsSizes[index] === undefined ? 20 : iconsSizes[index]
                 }}
               >
                 {iconsLabels[index]}
@@ -564,7 +597,11 @@ if (iconList) {
           <BlockControls key="controls">
             <AlignmentToolbar
               value={contentAlign}
-              onChange={newAlign => setAttributes({ contentAlign: newAlign })}
+              onChange={newAlign =>
+                setAttributes({
+                  contentAlign: newAlign === undefined ? "left" : newAlign
+                })
+              }
             />
           </BlockControls>
         ),
@@ -636,42 +673,76 @@ if (iconList) {
         return (
           <div
             id={`${className}__icon_wrap-${index}`}
-            className={`${className}__icon_wrap list-${labelsPositions[index]}`}
+            className={`${className}__icon_wrap list-${
+              labelsPositions[index] === undefined
+                ? "column"
+                : labelsPositions[index]
+            }`}
             style={{
-              color: iconsColors[index],
-              backgroundColor: iconsBackColors[index],
-              flexBasis: iconsWidths[index] + "%",
-              borderRadius: iconsRadius[index] + "%",
-              padding: iconsPaddings[index]
+              color:
+                iconsColors[index] === undefined ? "#000" : iconsColors[index],
+              backgroundColor:
+                iconsBackColors[index] === undefined
+                  ? "#fff"
+                  : iconsBackColors[index],
+              flexBasis:
+                iconsWidths[index] === undefined
+                  ? 15
+                  : iconsWidths[index] + "%",
+              borderRadius:
+                iconsRadius[index] === undefined ? 0 : iconsRadius[index] + "%",
+              padding:
+                iconsPaddings[index] === undefined
+                  ? 0
+                  : iconsRadius[index] + "%"
             }}
           >
             <style
               dangerouslySetInnerHTML={{
                 __html: [
                   `#premium-icon-list-${id} #premium-icon-list__icon_wrap-${index}:hover {`,
-                  `color: ${iconsHoverColors[index]} !important;`,
-                  `background-color: ${iconsHoverBack[index]} !important;`,
+                  `color: ${
+                    iconsHoverColors[index] === undefined
+                      ? "#000"
+                      : iconsHoverColors[index]
+                  } !important;`,
+                  `background-color: ${
+                    iconsHoverBack[index] === undefined
+                      ? "#fff"
+                      : iconsHoverBack[index]
+                  } !important;`,
                   "}",
                   `#premium-icon-list-${id} #premium-icon-list__icon_wrap-${index}:hover .premium-icon-list__text {`,
-                  `color: ${labelsHoverColors[index]} !important;`,
+                  `color: ${
+                    labelsHoverColors[index] === undefined
+                      ? "#000"
+                      : labelsHoverColors[index]
+                  } !important;`,
                   "}"
                 ].join("\n")
               }}
             />
             <i
               className={`${className}__icon ${
-                selectedIcons[index]
-              } ${className}__${iconsEffects[index]}`}
+                selectedIcons[index] === undefined ? "" : selectedIcons[index]
+              } ${className}__${
+                iconsEffects[index] === undefined ? "none" : iconsEffects[index]
+              }`}
               style={{
-                fontSize: iconsSizes[index]
+                fontSize:
+                  iconsSizes[index] === undefined ? 20 : iconsSizes[index]
               }}
             />
             {iconsLabels[index] && (
               <p
                 className={`${className}__text`}
                 style={{
-                  color: labelsColors[index],
-                  fontSize: iconsSizes[index]
+                  color:
+                    labelsColors[index] === undefined
+                      ? "#000"
+                      : labelsColors[index],
+                  fontSize:
+                    iconsSizes[index] === undefined ? 20 : iconsSizes[index]
                 }}
               >
                 {iconsLabels[index]}
