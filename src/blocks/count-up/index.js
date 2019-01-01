@@ -172,6 +172,9 @@ if (countUp) {
     faIcon: {
       type: "string",
       default: "dashicons-clock"
+    },
+    containerBack: {
+      type: "string"
     }
   };
 
@@ -222,7 +225,8 @@ if (countUp) {
         suffixWeight,
         suffixGap,
         selfAlign,
-        faIcon
+        faIcon,
+        containerBack
       } = props.attributes;
       let iconClass =
         "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
@@ -665,6 +669,25 @@ if (countUp) {
                 </PanelBody>
               </PanelBody>
             )}
+            <PanelBody
+              title={__("Container")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
+              <PanelColorSettings
+                title={__("Colors")}
+                className="premium-panel-body-inner"
+                initialOpen={false}
+                colorSettings={[
+                  {
+                    value: containerBack,
+                    onChange: colorValue =>
+                      setAttributes({ containerBack: colorValue }),
+                    label: __("Background Color")
+                  }
+                ]}
+              />
+            </PanelBody>
           </InspectorControls>
         ),
         <div>
@@ -678,7 +701,8 @@ if (countUp) {
           className={`${className}__wrap`}
           style={{
             justifyContent: align,
-            flexDirection: flexDir
+            flexDirection: flexDir,
+            backgroundColor: containerBack
           }}
         >
           {iconCheck && (
@@ -846,7 +870,8 @@ if (countUp) {
         titleT,
         titleB,
         titleWeight,
-        faIcon
+        faIcon,
+        containerBack
       } = props.attributes;
       let iconClass =
         "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
@@ -855,7 +880,8 @@ if (countUp) {
           className={`${className}__wrap`}
           style={{
             justifyContent: align,
-            flexDirection: flexDir
+            flexDirection: flexDir,
+            backgroundColor: containerBack
           }}
         >
           {iconCheck && (
@@ -1021,6 +1047,9 @@ if (countUp) {
             titleTxt,
             titleColor,
             titleSize,
+            titleSpacing,
+            titleStyle,
+            titleUpper,
             titleT,
             titleB,
             titleWeight,
@@ -1131,6 +1160,9 @@ if (countUp) {
                         marginTop: titleT + "px",
                         marginBottom: titleB + "px",
                         color: titleColor,
+                        letterSpacing: titleSpacing + "px",
+                        textTransform: titleUpper ? "uppercase" : "none",
+                        fontStyle: titleStyle,
                         fontWeight: titleWeight
                       }}
                     >
@@ -1147,7 +1179,10 @@ if (countUp) {
                       marginTop: titleT + "px",
                       marginBottom: titleB + "px",
                       color: titleColor,
+                      letterSpacing: titleSpacing + "px",
                       fontWeight: titleWeight,
+                      textTransform: titleUpper ? "uppercase" : "none",
+                      fontStyle: titleStyle,
                       alignSelf: selfAlign
                     }}
                   >
