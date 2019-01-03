@@ -1,6 +1,7 @@
 import { pricingTable } from "../settings";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
+import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PbgIcon from "../icons";
 
@@ -57,6 +58,25 @@ if (pricingTable) {
     tablePadding: {
       type: "number",
       default: "0"
+    },
+    tableShadowColor: {
+      type: "string"
+    },
+    tableShadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    tableShadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    tableShadowVertical: {
+      type: "number",
+      default: "0"
+    },
+    tableShadowPosition: {
+      type: "string",
+      default: ""
     },
     title: {
       type: "array",
@@ -474,6 +494,11 @@ if (pricingTable) {
         borderColor,
         tablePadding,
         titleChecked,
+        tableShadowBlur,
+        tableShadowColor,
+        tableShadowHorizontal,
+        tableShadowVertical,
+        tableShadowPosition,
         title,
         titleTag,
         titleColor,
@@ -1563,6 +1588,40 @@ if (pricingTable) {
                   }
                 />
               </PanelBody>
+              <PremiumBoxShadow
+                inner={true}
+                color={tableShadowColor}
+                blur={tableShadowBlur}
+                horizontal={tableShadowHorizontal}
+                vertical={tableShadowVertical}
+                position={tableShadowPosition}
+                onChangeColor={newColor =>
+                  setAttributes({
+                    tableShadowColor:
+                      newColor === undefined ? "transparent" : newColor
+                  })
+                }
+                onChangeBlur={newBlur =>
+                  setAttributes({
+                    tableShadowBlur: newBlur === undefined ? 0 : newBlur
+                  })
+                }
+                onChangehHorizontal={newValue =>
+                  setAttributes({
+                    tableShadowHorizontal: newValue === undefined ? 0 : newValue
+                  })
+                }
+                onChangeVertical={newValue =>
+                  setAttributes({
+                    tableShadowVertical: newValue === undefined ? 0 : newValue
+                  })
+                }
+                onChangePosition={newValue =>
+                  setAttributes({
+                    tableShadowPosition: newValue === undefined ? 0 : newValue
+                  })
+                }
+              />
               <PanelBody
                 title={__("Spacings")}
                 className="premium-panel-body-inner premium-panel-body"
@@ -1591,7 +1650,8 @@ if (pricingTable) {
             borderWidth: borderWidth + "px",
             borderRadius: borderRadius + "px",
             borderColor: borderColor,
-            padding: tablePadding + "px"
+            padding: tablePadding + "px",
+            boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`
           }}
         >
           {badgeChecked && (
@@ -1859,6 +1919,11 @@ if (pricingTable) {
         borderRadius,
         borderColor,
         tablePadding,
+        tableShadowBlur,
+        tableShadowColor,
+        tableShadowHorizontal,
+        tableShadowVertical,
+        tableShadowPosition,
         titleChecked,
         title,
         titleTag,
@@ -1982,7 +2047,8 @@ if (pricingTable) {
             borderWidth: borderWidth + "px",
             borderRadius: borderRadius + "px",
             borderColor: borderColor,
-            padding: tablePadding + "px"
+            padding: tablePadding + "px",
+            boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`
           }}
         >
           {badgeChecked && (
@@ -2254,6 +2320,10 @@ if (pricingTable) {
             titleLine,
             titleWeight,
             titleBack,
+            titleShadowBlur,
+            titleShadowColor,
+            titleShadowHorizontal,
+            titleShadowVertical,
             titleMarginT,
             titleMarginB,
             titlePadding,
@@ -2329,6 +2399,7 @@ if (pricingTable) {
             badgeHorizontal,
             badgeWidth,
             badgeSize,
+            badgeTextSize,
             badgeWeight,
             badgeLetter,
             badgeStyle,
@@ -2385,6 +2456,7 @@ if (pricingTable) {
                   >
                     <span
                       style={{
+                        fontSize: badgeTextSize + "px",
                         color: badgeColor,
                         fontWeight: badgeWeight,
                         textTransform: badgeUpper ? "uppercase" : "none",
@@ -2425,7 +2497,8 @@ if (pricingTable) {
                       fontWeight: titleWeight,
                       lineHeight: titleLine + "px",
                       marginBottom: titleMarginB + "px",
-                      padding: titlePadding + "px"
+                      padding: titlePadding + "px",
+                      textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`
                     }}
                   />
                 </div>
