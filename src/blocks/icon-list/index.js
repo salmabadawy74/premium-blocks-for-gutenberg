@@ -203,7 +203,7 @@ if (iconList) {
       }
 
       icons[index] = iconsCopy;
-      console.log(...icons);
+
       setAttributes({ icons });
 
       this.forceUpdate();
