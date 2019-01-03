@@ -12,20 +12,17 @@ const { registerBlockType } = wp.blocks;
 const { PanelBody, RangeControl } = wp.components;
 const { InspectorControls } = wp.editor;
 
-let defaultArr = [
-  {
-    selectedIcon: "fa fa-facebook",
-    iconColor: "#000"
-  }
-];
-
+let defaultObj = {
+  selectedIcon: "fa fa-facebook",
+  iconColor: "#000"
+};
 const iconListAttrs = {
   id: {
     type: "string"
   },
   iconsNumber: {
     type: "number",
-    default: 3
+    default: 1
   },
   selectedIcon: {
     type: "string"
@@ -35,7 +32,16 @@ const iconListAttrs = {
   },
   icons: {
     type: "array",
-    default: defaultArr
+    default: [
+      defaultObj,
+      defaultObj,
+      defaultObj,
+      defaultObj,
+      defaultObj,
+      defaultObj,
+      defaultObj,
+      defaultObj
+    ]
   }
 };
 
@@ -52,24 +58,31 @@ class PremiumIconList extends Component {
   }
 
   saveChanges(propertyIndex, value, index) {
-    var n = this.props,
-      a = n.attributes;
-    let property = "";
-    switch (propertyIndex) {
-      case "1":
-        property = "selectedIcon";
-        break;
+    const { setAttributes } = this.props;
+    const { icons } = this.props.attributes;
+    let thisIcon = icons[index];
 
-      case "2":
-        property = "iconColor";
-        break;
+    let iconsCopy = Object.assign({}, thisIcon);
+    iconsCopy.selectedIcon = value;
+    icons[index] = iconsCopy;
+    setAttributes({ icons });
+    this.forceUpdate();
+  }
+
+  updateIcons(nextValue) {
+    const { setAttributes } = this.props;
+    const { icons, iconsNumber } = this.props.attributes;
+
+    if (iconsNumber < nextValue) {
+      let difference = Math.abs(iconsNumber - nextValue);
+
+      for (let i = 0; i < difference; i++) {
+        icons.push(defaultObj);
+      }
+
+      setAttributes({ iconsNumber: nextValue });
+      this.forceUpdate();
     }
-    n.setAttributes({
-      icons: a.icons.map(function(icon, iconIndex) {
-        console.log(typeof icon);
-        return index === iconIndex && (icon.selectedIcon = value);
-      })
-    });
   }
 
   render() {
@@ -96,12 +109,14 @@ class PremiumIconList extends Component {
 
     const iconListItems = icons.map((element, index) => {
       return (
-        <div
-          id={`${className}__icon_wrap-${index}`}
-          className={`${className}__icon_wrap`}
-        >
-          <i className={`${className}__icon ${icons[index].selectedIcon} `} />
-        </div>
+        iconsNumber > index && (
+          <div
+            id={`${className}__icon_wrap-${index}`}
+            className={`${className}__icon_wrap`}
+          >
+            <i className={`${className}__icon ${icons[index].selectedIcon} `} />
+          </div>
+        )
       );
     });
 
@@ -118,7 +133,7 @@ class PremiumIconList extends Component {
               value={iconsNumber}
               min="1"
               max="8"
-              onChange={newValue => this.save(newValue)}
+              onChange={newValue => setAttributes({ iconsNumber: newValue })}
             />
           </PanelBody>
           {panelComponents}

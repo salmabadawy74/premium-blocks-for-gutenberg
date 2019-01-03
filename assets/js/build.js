@@ -17113,6 +17113,16 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_icon_list__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(2);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -17129,13 +17139,31 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* iconList */]) {
       RangeControl = _wp$components.RangeControl,
       TextControl = _wp$components.TextControl,
       ToggleControl = _wp$components.ToggleControl;
+  var Component = wp.element.Component;
   var _wp$editor = wp.editor,
       InspectorControls = _wp$editor.InspectorControls,
       AlignmentToolbar = _wp$editor.AlignmentToolbar,
       PanelColorSettings = _wp$editor.PanelColorSettings,
       BlockControls = _wp$editor.BlockControls;
 
-
+  var defaultObj = {
+    selectedIcon: "fa fa-facebook",
+    iconColor: "#000",
+    iconBackColor: "#fff",
+    iconHoverColor: "#000",
+    iconHoverBack: "#fff",
+    iconWidth: 15,
+    iconSize: 20,
+    iconRadius: 0,
+    iconPadding: 0,
+    iconLabel: "Icon Label",
+    labelPosition: "column",
+    labelColor: "#000",
+    labelHoverColor: "#000",
+    iconUrl: "#",
+    iconTab: false,
+    iconEffect: "none"
+  };
   var iconListAttrs = {
     id: {
       type: "string"
@@ -17146,465 +17174,491 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* iconList */]) {
     },
     iconsNumber: {
       type: "number",
-      default: 3
+      default: 1
     },
-    iconsArr: {
-      type: "array",
-      default: [0, 0, 0]
+    selectedIcon: {
+      type: "string"
     },
-    selectedIcons: {
-      type: "array",
-      default: ["dashicons dashicons-admin-site", "dashicons dashicons-admin-site", "dashicons dashicons-admin-site"]
+    iconColor: {
+      type: "string"
     },
-    iconsColors: {
-      type: "array",
-      default: ["#000", "#000", "#000"]
+    iconEffect: {
+      type: "string",
+      default: "none"
     },
-    iconsEffects: {
-      type: "array",
-      default: ["none", "none", "none"]
+    iconBackColor: {
+      type: "string",
+      default: "#fff"
     },
-    iconsBackColors: {
-      type: "array",
-      default: ["#fff", "#fff", "#fff"]
+    iconHoverColor: {
+      type: "string",
+      default: "#000"
     },
-    iconsHoverColors: {
-      type: "array",
-      default: ["#000", "#000", "#000"]
+    iconHoverBack: {
+      type: "string",
+      default: "#fff"
     },
-    iconsHoverBack: {
-      type: "array",
-      default: ["#fff", "#fff", "#fff"]
+    iconWidth: {
+      type: "number",
+      default: 25
     },
-    iconsWidths: {
-      type: "array",
-      default: [15, 15, 15]
+    iconSize: {
+      type: "number",
+      default: 20
     },
-    iconsSizes: {
-      type: "array",
-      default: [20, 20, 20]
+    iconRadius: {
+      type: "number",
+      default: "0"
     },
-    iconsRadius: {
-      type: "array",
-      default: [0, 0, 0]
+    iconPadding: {
+      type: "number",
+      default: "0"
     },
-    iconsPaddings: {
-      type: "array",
-      default: [0, 0, 0]
-    },
-    iconsLabels: {
-      type: "array",
-      default: ["Icon #1", "Icon #2", "Icon #3"]
+    iconLabel: {
+      type: "string",
+      default: "Icon Label"
     },
     labelsPositions: {
-      type: "array",
-      default: ["column", "column", "column"]
+      type: "string",
+      default: "column"
     },
     labelsColors: {
-      type: "array",
-      default: ["#000", "#000", "#000"]
+      type: "string",
+      default: "#000"
     },
     labelsHoverColors: {
-      type: "array",
-      default: ["#000", "#000", "#000"]
+      type: "string",
+      default: "#000"
     },
-    iconsUrls: {
-      type: "array",
-      default: [null, null, null]
+    iconUrl: {
+      type: "string",
+      default: "#"
     },
-    iconsTabs: {
+    iconTab: {
+      type: "boolean",
+      default: false
+    },
+    icons: {
       type: "array",
-      default: [false, false, false]
+      default: [defaultObj, defaultObj, defaultObj, defaultObj, defaultObj, defaultObj, defaultObj, defaultObj]
     }
   };
+
+  var PremiumIconList = function (_Component) {
+    _inherits(PremiumIconList, _Component);
+
+    function PremiumIconList() {
+      _classCallCheck(this, PremiumIconList);
+
+      return _possibleConstructorReturn(this, (PremiumIconList.__proto__ || Object.getPrototypeOf(PremiumIconList)).apply(this, arguments));
+    }
+
+    _createClass(PremiumIconList, [{
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        var _props = this.props,
+            attributes = _props.attributes,
+            setAttributes = _props.setAttributes,
+            clientId = _props.clientId;
+
+        if (!attributes.id) {
+          setAttributes({ id: clientId });
+        }
+      }
+    }, {
+      key: "saveChanges",
+      value: function saveChanges(propertyIndex, value, index) {
+        var _console;
+
+        var setAttributes = this.props.setAttributes;
+        var icons = this.props.attributes.icons;
+
+        var thisIcon = icons[index];
+
+        var iconsCopy = Object.assign({}, thisIcon);
+
+        switch (propertyIndex) {
+          case "1":
+            iconsCopy.selectedIcon = value;
+            break;
+          case "2":
+            iconsCopy.iconLabel = value;
+            break;
+          case "3":
+            iconsCopy.iconUrl = value;
+            break;
+          case "4":
+            iconsCopy.iconTab = value;
+            break;
+          case "5":
+            iconsCopy.labelPosition = value;
+            break;
+          case "6":
+            iconsCopy.iconSize = value;
+            break;
+          case "7":
+            iconsCopy.iconWidth = value;
+            break;
+          case "8":
+            iconsCopy.iconEffect = value;
+            break;
+          case "9":
+            iconsCopy.labelColor = value;
+            break;
+          case "10":
+            iconsCopy.iconColor = value;
+            break;
+          case "11":
+            iconsCopy.iconBackColor = value;
+            break;
+          case "12":
+            iconsCopy.labelHoverColor = value;
+            break;
+          case "13":
+            iconsCopy.iconHoverColor = value;
+            break;
+          case "14":
+            iconsCopy.iconHoverBack = value;
+            break;
+          case "15":
+            iconsCopy.iconRadius = value;
+            break;
+          case "16":
+            iconsCopy.iconPadding = value;
+            break;
+        }
+
+        icons[index] = iconsCopy;
+        (_console = console).log.apply(_console, _toConsumableArray(icons));
+        setAttributes({ icons: icons });
+
+        this.forceUpdate();
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        var _props2 = this.props,
+            isSelected = _props2.isSelected,
+            setAttributes = _props2.setAttributes;
+        var _props$attributes = this.props.attributes,
+            id = _props$attributes.id,
+            contentAlign = _props$attributes.contentAlign,
+            iconsNumber = _props$attributes.iconsNumber,
+            icons = _props$attributes.icons;
+
+        console.log(icons);
+        var EFFECTS = [{
+          value: "none",
+          label: __("None")
+        }, {
+          value: "pulse",
+          label: __("Pulse")
+        }, {
+          value: "rotate",
+          label: __("Rotate")
+        }, {
+          value: "drotate",
+          label: __("3D Rotate")
+        }, {
+          value: "buzz",
+          label: __("Buzz")
+        }, {
+          value: "drop",
+          label: __("Drop Shadow")
+        }, {
+          value: "wobble",
+          label: __("Wobble")
+        }];
+
+        var POSITIONS = [{
+          value: "column",
+          label: __("Below")
+        }, {
+          value: "row",
+          label: __("Right")
+        }, {
+          value: "row-reverse",
+          label: __("Left")
+        }];
+
+        var panelComponents = icons.map(function (element, index) {
+          return iconsNumber > index && wp.element.createElement(
+            PanelBody,
+            {
+              className: "premium-panel-body",
+              title: __("Icon #" + (index + 1) + " Style"),
+              initialOpen: false
+            },
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__fonticonpicker_react_fonticonpicker___default.a, {
+              icons: __WEBPACK_IMPORTED_MODULE_2__components_icon_list__["a" /* default */],
+              value: icons[index].selectedIcon,
+              isMulti: false,
+              noSelectedPlaceholder: __("Select Icon"),
+              onChange: function onChange(newValue) {
+                return _this2.saveChanges("1", newValue, index);
+              }
+            }),
+            wp.element.createElement(TextControl, {
+              label: __("Label"),
+              value: icons[index].iconLabel,
+              onChange: function onChange(newValue) {
+                return _this2.saveChanges("2", newValue, index);
+              }
+            }),
+            wp.element.createElement(TextControl, {
+              label: __("URL"),
+              value: icons[index].iconUrl,
+              onChange: function onChange(newValue) {
+                return _this2.saveChanges("3", newValue, index);
+              }
+            }),
+            wp.element.createElement(ToggleControl, {
+              label: __("Open link in new tab"),
+              value: icons[index].iconTab,
+              onChange: function onChange(newValue) {
+                return _this2.saveChanges("4", newValue, index);
+              }
+            }),
+            wp.element.createElement(SelectControl, {
+              label: __("Label Position"),
+              options: POSITIONS,
+              value: icons[index].labelPosition,
+              onChange: function onChange(newValue) {
+                return _this2.saveChanges("5", newValue, index);
+              }
+            }),
+            wp.element.createElement(RangeControl, {
+              label: __("Icon/Label Size (PX)"),
+              value: icons[index].iconSize,
+              onChange: function onChange(newValue) {
+                return _this2.saveChanges("6", newValue, index);
+              }
+            }),
+            wp.element.createElement(RangeControl, {
+              label: __("Width (%)"),
+              value: icons[index].iconWidth,
+              onChange: function onChange(newValue) {
+                return _this2.saveChanges("7", newValue, index);
+              }
+            }),
+            wp.element.createElement(SelectControl, {
+              label: __("Hover Effect"),
+              options: EFFECTS,
+              value: icons[index].iconEffect,
+              onChange: function onChange(newValue) {
+                return _this2.saveChanges("8", newValue, index);
+              }
+            }),
+            wp.element.createElement(PanelColorSettings, {
+              title: __("Colors"),
+              className: "premium-panel-body-inner",
+              colorSettings: [{
+                value: icons[index].labelColor,
+                onChange: function onChange(newValue) {
+                  return _this2.saveChanges("9", newValue, index);
+                },
+                label: __("Label Color")
+              }, {
+                value: icons[index].iconColor,
+                onChange: function onChange(newValue) {
+                  return _this2.saveChanges("10", newValue, index);
+                },
+                label: __("Icon Color")
+              }, {
+                value: icons[index].iconBackColor,
+                onChange: function onChange(newValue) {
+                  return _this2.saveChanges("11", newValue, index);
+                },
+                label: __("Background Color")
+              }, {
+                value: icons[index].labelHoverColor,
+                onChange: function onChange(newValue) {
+                  return _this2.saveChanges("12", newValue, index);
+                },
+                label: __("Label Hover Color")
+              }, {
+                value: icons[index].iconHoverColor,
+                onChange: function onChange(newValue) {
+                  return _this2.saveChanges("13", newValue, index);
+                },
+                label: __("Icon Hover Color")
+              }, {
+                value: icons[index].iconHoverBack,
+                onChange: function onChange(newValue) {
+                  return _this2.saveChanges("14", newValue, index);
+                },
+                label: __("Background Hover Color")
+              }]
+            }),
+            wp.element.createElement(RangeControl, {
+              label: __("Border Radius (%)"),
+              value: icons[index].iconRadius,
+              onChange: function onChange(newValue) {
+                return _this2.saveChanges("15", newValue, index);
+              }
+            }),
+            wp.element.createElement(RangeControl, {
+              label: __("Padding (PX)"),
+              value: icons[index].iconPadding,
+              onChange: function onChange(newValue) {
+                return _this2.saveChanges("16", newValue, index);
+              }
+            })
+          );
+        });
+
+        var iconListItems = icons.map(function (element, index) {
+          return iconsNumber > index && wp.element.createElement(
+            "div",
+            {
+              id: className + "__icon_wrap-" + index,
+              className: className + "__icon_wrap list-" + icons[index].labelPosition,
+              style: {
+                color: icons[index].iconColor,
+                backgroundColor: icons[index].iconBackColor,
+                flexBasis: icons[index].iconWidth + "%",
+                borderRadius: icons[index].iconRadius,
+                padding: icons[index].iconPadding
+              }
+            },
+            wp.element.createElement("style", {
+              dangerouslySetInnerHTML: {
+                __html: ["#premium-icon-list-" + id + " #premium-icon-list__icon_wrap-" + index + ":hover {", "color: " + icons[index].iconHoverColor + " !important;", "background-color: " + icons[index].iconHoverBack + " !important;", "}", "#premium-icon-list-" + id + " #premium-icon-list__icon_wrap-" + index + ":hover .premium-icon-list__text {", "color: " + icons[index].labelHoverColor + " !important;", "}"].join("\n")
+              }
+            }),
+            wp.element.createElement("i", {
+              className: className + "__icon " + icons[index].selectedIcon + " " + className + "__" + icons[index].iconEffect,
+              style: {
+                fontSize: icons[index].iconSize
+              }
+            }),
+            icons[index].iconLabel && wp.element.createElement(
+              "p",
+              {
+                className: className + "__text",
+                style: {
+                  color: icons[index].labelColor,
+                  fontSize: icons[index].iconSize
+                }
+              },
+              icons[index].iconLabel
+            ),
+            icons[index].iconUrl && wp.element.createElement("a", {
+              className: className + "__link",
+              href: icons[index].iconUrl,
+              target: icons[index].iconTab && "_blank"
+            })
+          );
+        });
+
+        return [isSelected && wp.element.createElement(
+          BlockControls,
+          { key: "controls" },
+          wp.element.createElement(AlignmentToolbar, {
+            value: contentAlign,
+            onChange: function onChange(newAlign) {
+              return setAttributes({
+                contentAlign: newAlign === undefined ? "left" : newAlign
+              });
+            }
+          })
+        ), isSelected && wp.element.createElement(
+          InspectorControls,
+          { key: "inspector" },
+          wp.element.createElement(
+            PanelBody,
+            {
+              className: "premium-panel-body",
+              title: __("Number of Icons"),
+              initialOpen: false
+            },
+            wp.element.createElement(RangeControl, {
+              label: __("Set Number of Icons"),
+              value: iconsNumber,
+              min: "1",
+              max: "8",
+              onChange: function onChange(newValue) {
+                return setAttributes({ iconsNumber: newValue });
+              }
+            })
+          ),
+          panelComponents
+        ), wp.element.createElement(
+          "div",
+          { id: className + "-" + id, className: "" + className },
+          wp.element.createElement(
+            "div",
+            {
+              className: className + "__list_wrap",
+              style: {
+                justifyContent: contentAlign
+              }
+            },
+            iconListItems
+          )
+        )];
+      }
+    }]);
+
+    return PremiumIconList;
+  }(Component);
 
   registerBlockType("premium/icon-list", {
     title: __("Icon List"),
     icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__icons__["a" /* default */], { icon: "icon" }),
     category: "premium-blocks",
     attributes: iconListAttrs,
-    edit: function edit(props) {
-      var isSelected = props.isSelected,
-          setAttributes = props.setAttributes,
-          blockId = props.clientId;
-      var _props$attributes = props.attributes,
-          id = _props$attributes.id,
-          contentAlign = _props$attributes.contentAlign,
-          iconsNumber = _props$attributes.iconsNumber,
-          iconsArr = _props$attributes.iconsArr,
-          selectedIcons = _props$attributes.selectedIcons,
-          iconsColors = _props$attributes.iconsColors,
-          iconsEffects = _props$attributes.iconsEffects,
-          iconsWidths = _props$attributes.iconsWidths,
-          iconsBackColors = _props$attributes.iconsBackColors,
-          iconsHoverColors = _props$attributes.iconsHoverColors,
-          iconsHoverBack = _props$attributes.iconsHoverBack,
-          iconsSizes = _props$attributes.iconsSizes,
-          iconsRadius = _props$attributes.iconsRadius,
-          iconsPaddings = _props$attributes.iconsPaddings,
-          iconsLabels = _props$attributes.iconsLabels,
-          labelsPositions = _props$attributes.labelsPositions,
-          labelsColors = _props$attributes.labelsColors,
-          labelsHoverColors = _props$attributes.labelsHoverColors,
-          iconsUrls = _props$attributes.iconsUrls,
-          iconsTabs = _props$attributes.iconsTabs;
-
-
-      var EFFECTS = [{
-        value: "none",
-        label: __("None")
-      }, {
-        value: "pulse",
-        label: __("Pulse")
-      }, {
-        value: "rotate",
-        label: __("Rotate")
-      }, {
-        value: "drotate",
-        label: __("3D Rotate")
-      }, {
-        value: "buzz",
-        label: __("Buzz")
-      }, {
-        value: "drop",
-        label: __("Drop Shadow")
-      }, {
-        value: "wobble",
-        label: __("Wobble")
-      }];
-
-      var POSITIONS = [{
-        value: "column",
-        label: __("Below")
-      }, {
-        value: "row",
-        label: __("Right")
-      }, {
-        value: "row-reverse",
-        label: __("Left")
-      }];
-
-      var icons = [selectedIcons[0], selectedIcons[1], selectedIcons[2], selectedIcons[3], selectedIcons[4], selectedIcons[5], selectedIcons[6], selectedIcons[7]],
-          sizes = [iconsSizes[0], iconsSizes[1], iconsSizes[2], iconsSizes[3], iconsSizes[4], iconsSizes[5], iconsSizes[6], iconsSizes[7]],
-          widths = [iconsWidths[0], iconsWidths[1], iconsWidths[2], iconsWidths[3], iconsWidths[4], iconsWidths[5], iconsWidths[6], iconsWidths[7]],
-          colors = [iconsColors[0], iconsColors[1], iconsColors[2], iconsColors[3], iconsColors[4], iconsColors[5], iconsColors[6], iconsColors[7]],
-          effects = [iconsEffects[0], iconsEffects[1], iconsEffects[2], iconsEffects[3], iconsEffects[4], iconsEffects[5], iconsEffects[6], iconsEffects[7]],
-          backColors = [iconsBackColors[0], iconsBackColors[1], iconsBackColors[2], iconsBackColors[3], iconsBackColors[4], iconsBackColors[5], iconsBackColors[6], iconsBackColors[7]],
-          hoverColors = [iconsHoverColors[0], iconsHoverColors[1], iconsHoverColors[2], iconsHoverColors[3], iconsHoverColors[4], iconsHoverColors[5], iconsHoverColors[6], iconsHoverColors[7]],
-          hoverBackColors = [iconsHoverBack[0], iconsHoverBack[1], iconsHoverBack[2], iconsHoverBack[3], iconsHoverBack[4], iconsHoverBack[5], iconsHoverBack[6], iconsHoverBack[7]],
-          borders = [iconsRadius[0], iconsRadius[1], iconsRadius[2], iconsRadius[3], iconsRadius[4], iconsRadius[5], iconsRadius[6], iconsRadius[7]],
-          paddings = [iconsPaddings[0], iconsPaddings[1], iconsPaddings[2], iconsPaddings[3], iconsPaddings[4], iconsPaddings[5], iconsPaddings[6], iconsPaddings[7]],
-          labels = [iconsLabels[0], iconsLabels[1], iconsLabels[2], iconsLabels[3], iconsLabels[4], iconsLabels[5], iconsLabels[6], iconsLabels[7]],
-          positions = [labelsPositions[0], labelsPositions[1], labelsPositions[2], labelsPositions[3], labelsPositions[4], labelsPositions[5], labelsPositions[6], labelsPositions[7]],
-          labelsCols = [labelsColors[0], labelsColors[1], labelsColors[2], labelsColors[3], labelsColors[4], labelsColors[5], labelsColors[6], labelsColors[7]],
-          labelsHoverCols = [labelsHoverColors[0], labelsHoverColors[1], labelsHoverColors[2], labelsHoverColors[3], labelsHoverColors[4], labelsHoverColors[5], labelsHoverColors[6], labelsHoverColors[7]],
-          urls = [iconsUrls[0], iconsUrls[1], iconsUrls[2], iconsUrls[3], iconsUrls[4], iconsUrls[5], iconsUrls[6], iconsUrls[7]],
-          tabs = [iconsTabs[0], iconsTabs[1], iconsTabs[2], iconsTabs[3], iconsTabs[4], iconsTabs[5], iconsTabs[6], iconsTabs[7]];
-      var panelComponents = iconsArr.map(function (element, index) {
-        return wp.element.createElement(
-          PanelBody,
-          {
-            className: "premium-panel-body",
-            title: __("Icon #" + (index + 1) + " Style"),
-            initialOpen: false
-          },
-          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__fonticonpicker_react_fonticonpicker___default.a, {
-            icons: __WEBPACK_IMPORTED_MODULE_2__components_icon_list__["a" /* default */],
-            value: selectedIcons[index],
-            isMulti: false,
-            noSelectedPlaceholder: __("Select Icon"),
-            onChange: function onChange(newValue) {
-              icons[index] = newValue;
-              setAttributes({ selectedIcons: icons });
-            }
-          }),
-          wp.element.createElement(TextControl, {
-            label: __("Label"),
-            value: iconsLabels[index],
-            onChange: function onChange(newText) {
-              labels[index] = newText === undefined ? "" : newText;
-              setAttributes({ iconsLabels: labels });
-            }
-          }),
-          wp.element.createElement(TextControl, {
-            label: __("URL"),
-            value: iconsUrls[index],
-            onChange: function onChange(newText) {
-              urls[index] = newText === undefined ? null : newText;
-              setAttributes({ iconsUrls: urls });
-            }
-          }),
-          wp.element.createElement(ToggleControl, {
-            label: __("Open link in new tab"),
-            checked: iconsTabs[index],
-            onChange: function onChange(newValue) {
-              tabs[index] = newValue === undefined ? false : newValue;
-              setAttributes({ iconsTabs: tabs });
-            }
-          }),
-          wp.element.createElement(SelectControl, {
-            label: __("Label Position"),
-            options: POSITIONS,
-            value: labelsPositions[index],
-            onChange: function onChange(newValue) {
-              positions[index] = newValue === undefined ? "column" : newValue;
-              setAttributes({ labelsPositions: positions });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Icon/Label Size (PX)"),
-            value: iconsSizes[index],
-            onChange: function onChange(newValue) {
-              sizes[index] = newValue;
-              setAttributes({ iconsSizes: sizes });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Width (%)"),
-            value: iconsWidths[index],
-            onChange: function onChange(newValue) {
-              widths[index] = newValue === undefined ? 15 : newValue;
-              setAttributes({ iconsWidths: widths });
-            }
-          }),
-          wp.element.createElement(SelectControl, {
-            label: __("Hover Effect"),
-            options: EFFECTS,
-            value: iconsEffects[index],
-            onChange: function onChange(newValue) {
-              effects[index] = newValue;
-              setAttributes({ iconsEffects: effects });
-            }
-          }),
-          wp.element.createElement(PanelColorSettings, {
-            title: __("Colors"),
-            className: "premium-panel-body-inner",
-            colorSettings: [{
-              value: labelsColors[index],
-              onChange: function onChange(colorValue) {
-                labelsCols[index] = colorValue === undefined ? "#000" : colorValue;
-                setAttributes({ labelsColors: labelsCols });
-              },
-              label: __("Label Color")
-            }, {
-              value: iconsColors[index],
-              onChange: function onChange(colorValue) {
-                colors[index] = colorValue === undefined ? "#000" : colorValue;
-                setAttributes({ iconsColors: colors });
-              },
-              label: __("Icon Color")
-            }, {
-              value: iconsBackColors[index],
-              onChange: function onChange(colorValue) {
-                backColors[index] = colorValue === undefined ? "#fff" : colorValue;
-                setAttributes({ iconsBackColors: backColors });
-              },
-              label: __("Background Color")
-            }, {
-              value: labelsHoverColors[index],
-              onChange: function onChange(colorValue) {
-                labelsHoverCols[index] = colorValue === undefined ? "#000" : colorValue;
-                setAttributes({ labelsHoverColors: labelsHoverCols });
-              },
-              label: __("Label Hover Color")
-            }, {
-              value: iconsHoverColors[index],
-              onChange: function onChange(colorValue) {
-                hoverColors[index] = colorValue === undefined ? "#000" : colorValue;
-                setAttributes({ iconsHoverColors: hoverColors });
-              },
-              label: __("Icon Hover Color")
-            }, {
-              value: iconsHoverBack[index],
-              onChange: function onChange(colorValue) {
-                hoverBackColors[index] = colorValue === undefined ? "#fff" : colorValue;
-                setAttributes({ iconsHoverBack: hoverBackColors });
-              },
-              label: __("Background Hover Color")
-            }]
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Border Radius (%)"),
-            value: iconsRadius[index],
-            onChange: function onChange(newValue) {
-              borders[index] = newValue === undefined ? 0 : newValue;
-              setAttributes({ iconsRadius: borders });
-            }
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Padding (PX)"),
-            value: iconsPaddings[index],
-            onChange: function onChange(newValue) {
-              paddings[index] = newValue === undefined ? 0 : newValue;
-              setAttributes({ iconsPaddings: paddings });
-            }
-          })
-        );
-      });
-
-      var iconListItems = iconsArr.map(function (element, index) {
-        return wp.element.createElement(
-          "div",
-          {
-            id: className + "__icon_wrap-" + index,
-            className: className + "__icon_wrap list-" + (labelsPositions[index] === undefined ? "column" : labelsPositions[index]),
-            style: {
-              color: iconsColors[index] === undefined ? "#000" : iconsColors[index],
-              backgroundColor: iconsBackColors[index] === undefined ? "#fff" : iconsBackColors[index],
-              flexBasis: iconsWidths[index] === undefined ? 15 : iconsWidths[index] + "%",
-              borderRadius: iconsRadius[index] === undefined ? 0 : iconsRadius[index] + "%",
-              padding: iconsPaddings[index] === undefined ? 0 : iconsRadius[index] + "%"
-            }
-          },
-          wp.element.createElement("style", {
-            dangerouslySetInnerHTML: {
-              __html: ["#premium-icon-list-" + id + " #premium-icon-list__icon_wrap-" + index + ":hover {", "color: " + (iconsHoverColors[index] === undefined ? "#000" : iconsHoverColors[index]) + " !important;", "background-color: " + (iconsHoverBack[index] === undefined ? "#fff" : iconsHoverBack[index]) + " !important;", "}", "#premium-icon-list-" + id + " #premium-icon-list__icon_wrap-" + index + ":hover .premium-icon-list__text {", "color: " + (labelsHoverColors[index] === undefined ? "#000" : labelsHoverColors[index]) + " !important;", "}"].join("\n")
-            }
-          }),
-          wp.element.createElement("i", {
-            className: className + "__icon " + (selectedIcons[index] === undefined ? "" : selectedIcons[index]) + " " + className + "__" + (iconsEffects[index] === undefined ? "none" : iconsEffects[index]),
-            style: {
-              fontSize: iconsSizes[index] === undefined ? 20 : iconsSizes[index]
-            }
-          }),
-          iconsLabels[index] && wp.element.createElement(
-            "p",
-            {
-              className: className + "__text",
-              style: {
-                color: labelsColors[index] === undefined ? "#000" : labelsColors[index],
-                fontSize: iconsSizes[index] === undefined ? 20 : iconsSizes[index]
-              }
-            },
-            iconsLabels[index]
-          ),
-          iconsUrls[index] && wp.element.createElement("a", {
-            className: className + "__link",
-            href: iconsUrls[index],
-            target: iconsTabs[index] && "_blank"
-          })
-        );
-      });
-
-      setAttributes({ id: blockId });
-      return [isSelected && wp.element.createElement(
-        BlockControls,
-        { key: "controls" },
-        wp.element.createElement(AlignmentToolbar, {
-          value: contentAlign,
-          onChange: function onChange(newAlign) {
-            return setAttributes({
-              contentAlign: newAlign === undefined ? "left" : newAlign
-            });
-          }
-        })
-      ), isSelected && wp.element.createElement(
-        InspectorControls,
-        { key: "inspector" },
-        wp.element.createElement(
-          PanelBody,
-          {
-            className: "premium-panel-body",
-            title: __("Number of Icons"),
-            initialOpen: false
-          },
-          wp.element.createElement(RangeControl, {
-            label: __("Set Number of Icons"),
-            value: iconsNumber,
-            min: "1",
-            max: "8",
-            onChange: function onChange(newValue) {
-              iconsArr.length = newValue;
-              setAttributes({
-                iconsNumber: newValue,
-                iconsArr: iconsArr.fill(0)
-              });
-            }
-          })
-        ),
-        panelComponents
-      ), wp.element.createElement(
-        "div",
-        { id: className + "-" + id, className: "" + className },
-        wp.element.createElement(
-          "div",
-          {
-            className: className + "__list_wrap",
-            style: {
-              justifyContent: contentAlign
-            }
-          },
-          iconListItems
-        )
-      )];
-    },
+    edit: PremiumIconList,
     save: function save(props) {
       var _props$attributes2 = props.attributes,
           id = _props$attributes2.id,
           contentAlign = _props$attributes2.contentAlign,
           iconsNumber = _props$attributes2.iconsNumber,
-          iconsArr = _props$attributes2.iconsArr,
-          selectedIcons = _props$attributes2.selectedIcons,
-          iconsColors = _props$attributes2.iconsColors,
-          iconsEffects = _props$attributes2.iconsEffects,
-          iconsBackColors = _props$attributes2.iconsBackColors,
-          iconsHoverColors = _props$attributes2.iconsHoverColors,
-          iconsHoverBack = _props$attributes2.iconsHoverBack,
-          iconsWidths = _props$attributes2.iconsWidths,
-          iconsSizes = _props$attributes2.iconsSizes,
-          iconsRadius = _props$attributes2.iconsRadius,
-          iconsPaddings = _props$attributes2.iconsPaddings,
-          iconsLabels = _props$attributes2.iconsLabels,
-          labelsPositions = _props$attributes2.labelsPositions,
-          labelsColors = _props$attributes2.labelsColors,
-          labelsHoverColors = _props$attributes2.labelsHoverColors,
-          iconsUrls = _props$attributes2.iconsUrls,
-          iconsTabs = _props$attributes2.iconsTabs;
+          icons = _props$attributes2.icons;
 
 
-      iconsArr.length = iconsNumber;
-      iconsArr.fill(0);
-
-      var iconListItems = iconsArr.map(function (element, index) {
-        return wp.element.createElement(
+      var iconListItems = icons.map(function (element, index) {
+        return iconsNumber > index && wp.element.createElement(
           "div",
           {
             id: className + "__icon_wrap-" + index,
-            className: className + "__icon_wrap list-" + (labelsPositions[index] === undefined ? "column" : labelsPositions[index]),
+            className: className + "__icon_wrap list-" + icons[index].labelPosition,
             style: {
-              color: iconsColors[index] === undefined ? "#000" : iconsColors[index],
-              backgroundColor: iconsBackColors[index] === undefined ? "#fff" : iconsBackColors[index],
-              flexBasis: iconsWidths[index] === undefined ? 15 : iconsWidths[index] + "%",
-              borderRadius: iconsRadius[index] === undefined ? 0 : iconsRadius[index] + "%",
-              padding: iconsPaddings[index] === undefined ? 0 : iconsRadius[index] + "%"
+              color: icons[index].iconColor,
+              backgroundColor: icons[index].iconBackColor,
+              flexBasis: icons[index].iconWidth + "%",
+              borderRadius: icons[index].iconRadius,
+              padding: icons[index].iconPadding
             }
           },
           wp.element.createElement("style", {
             dangerouslySetInnerHTML: {
-              __html: ["#premium-icon-list-" + id + " #premium-icon-list__icon_wrap-" + index + ":hover {", "color: " + (iconsHoverColors[index] === undefined ? "#000" : iconsHoverColors[index]) + " !important;", "background-color: " + (iconsHoverBack[index] === undefined ? "#fff" : iconsHoverBack[index]) + " !important;", "}", "#premium-icon-list-" + id + " #premium-icon-list__icon_wrap-" + index + ":hover .premium-icon-list__text {", "color: " + (labelsHoverColors[index] === undefined ? "#000" : labelsHoverColors[index]) + " !important;", "}"].join("\n")
+              __html: ["#premium-icon-list-" + id + " #premium-icon-list__icon_wrap-" + index + ":hover {", "color: " + icons[index].iconHoverColor + " !important;", "background-color: " + icons[index].iconHoverBack + " !important;", "}", "#premium-icon-list-" + id + " #premium-icon-list__icon_wrap-" + index + ":hover .premium-icon-list__text {", "color: " + icons[index].labelHoverColor + " !important;", "}"].join("\n")
             }
           }),
           wp.element.createElement("i", {
-            className: className + "__icon " + (selectedIcons[index] === undefined ? "" : selectedIcons[index]) + " " + className + "__" + (iconsEffects[index] === undefined ? "none" : iconsEffects[index]),
+            className: className + "__icon " + icons[index].selectedIcon + " " + className + "__" + icons[index].iconEffect,
             style: {
-              fontSize: iconsSizes[index] === undefined ? 20 : iconsSizes[index]
+              fontSize: icons[index].iconSize
             }
           }),
-          iconsLabels[index] && wp.element.createElement(
+          icons[index].iconLabel && wp.element.createElement(
             "p",
             {
               className: className + "__text",
               style: {
-                color: labelsColors[index] === undefined ? "#000" : labelsColors[index],
-                fontSize: iconsSizes[index] === undefined ? 20 : iconsSizes[index]
+                color: icons[index].labelColor,
+                fontSize: icons[index].iconSize
               }
             },
-            iconsLabels[index]
+            icons[index].iconLabel
           ),
-          iconsUrls[index] && wp.element.createElement("a", {
+          icons[index].iconUrl && wp.element.createElement("a", {
             className: className + "__link",
-            href: iconsUrls[index],
-            target: iconsTabs[index] && "_blank"
+            href: icons[index].iconUrl,
+            target: icons[index].iconTab && "_blank"
           })
         );
       });
@@ -28331,8 +28385,6 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fonticonpicker_react_fonticonpicker__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_icon_list__ = __webpack_require__(26);
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28355,18 +28407,17 @@ var _wp$components = wp.components,
 var InspectorControls = wp.editor.InspectorControls;
 
 
-var defaultArr = [{
+var defaultObj = {
   selectedIcon: "fa fa-facebook",
   iconColor: "#000"
-}];
-
+};
 var iconListAttrs = {
   id: {
     type: "string"
   },
   iconsNumber: {
     type: "number",
-    default: 3
+    default: 1
   },
   selectedIcon: {
     type: "string"
@@ -28376,7 +28427,7 @@ var iconListAttrs = {
   },
   icons: {
     type: "array",
-    default: defaultArr
+    default: [defaultObj, defaultObj, defaultObj, defaultObj, defaultObj, defaultObj, defaultObj, defaultObj]
   }
 };
 
@@ -28404,24 +28455,36 @@ var PremiumIconList = function (_Component) {
   }, {
     key: "saveChanges",
     value: function saveChanges(propertyIndex, value, index) {
-      var n = this.props,
-          a = n.attributes;
-      var property = "";
-      switch (propertyIndex) {
-        case "1":
-          property = "selectedIcon";
-          break;
+      var setAttributes = this.props.setAttributes;
+      var icons = this.props.attributes.icons;
 
-        case "2":
-          property = "iconColor";
-          break;
+      var thisIcon = icons[index];
+
+      var iconsCopy = Object.assign({}, thisIcon);
+      iconsCopy.selectedIcon = value;
+      icons[index] = iconsCopy;
+      setAttributes({ icons: icons });
+      this.forceUpdate();
+    }
+  }, {
+    key: "updateIcons",
+    value: function updateIcons(nextValue) {
+      var setAttributes = this.props.setAttributes;
+      var _props$attributes = this.props.attributes,
+          icons = _props$attributes.icons,
+          iconsNumber = _props$attributes.iconsNumber;
+
+
+      if (iconsNumber < nextValue) {
+        var difference = Math.abs(iconsNumber - nextValue);
+
+        for (var i = 0; i < difference; i++) {
+          icons.push(defaultObj);
+        }
+
+        setAttributes({ iconsNumber: nextValue });
+        this.forceUpdate();
       }
-      n.setAttributes({
-        icons: a.icons.map(function (icon, iconIndex) {
-          console.log(typeof icon === "undefined" ? "undefined" : _typeof(icon));
-          return index === iconIndex && (icon.selectedIcon = value);
-        })
-      });
     }
   }, {
     key: "render",
@@ -28431,10 +28494,10 @@ var PremiumIconList = function (_Component) {
       var _props2 = this.props,
           isSelected = _props2.isSelected,
           setAttributes = _props2.setAttributes;
-      var _props$attributes = this.props.attributes,
-          id = _props$attributes.id,
-          iconsNumber = _props$attributes.iconsNumber,
-          icons = _props$attributes.icons;
+      var _props$attributes2 = this.props.attributes,
+          id = _props$attributes2.id,
+          iconsNumber = _props$attributes2.iconsNumber,
+          icons = _props$attributes2.icons;
 
 
       var panelComponents = icons.map(function (element, index) {
@@ -28458,7 +28521,7 @@ var PremiumIconList = function (_Component) {
       });
 
       var iconListItems = icons.map(function (element, index) {
-        return wp.element.createElement(
+        return iconsNumber > index && wp.element.createElement(
           "div",
           {
             id: className + "__icon_wrap-" + index,
@@ -28484,7 +28547,7 @@ var PremiumIconList = function (_Component) {
             min: "1",
             max: "8",
             onChange: function onChange(newValue) {
-              return _this2.save(newValue);
+              return setAttributes({ iconsNumber: newValue });
             }
           })
         ),
@@ -28511,10 +28574,10 @@ registerBlockType("premium/test", {
   attributes: iconListAttrs,
   edit: PremiumIconList,
   save: function save(props) {
-    var _props$attributes2 = props.attributes,
-        id = _props$attributes2.id,
-        iconsNumber = _props$attributes2.iconsNumber,
-        icons = _props$attributes2.icons;
+    var _props$attributes3 = props.attributes,
+        id = _props$attributes3.id,
+        iconsNumber = _props$attributes3.iconsNumber,
+        icons = _props$attributes3.icons;
 
     var iconListItems = icons.map(function (element, index) {
       return wp.element.createElement(

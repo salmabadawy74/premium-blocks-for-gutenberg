@@ -17,13 +17,32 @@ if (iconList) {
     TextControl,
     ToggleControl
   } = wp.components;
+
+  const { Component } = wp.element;
   const {
     InspectorControls,
     AlignmentToolbar,
     PanelColorSettings,
     BlockControls
   } = wp.editor;
-
+  let defaultObj = {
+    selectedIcon: "fa fa-facebook",
+    iconColor: "#000",
+    iconBackColor: "#fff",
+    iconHoverColor: "#000",
+    iconHoverBack: "#fff",
+    iconWidth: 15,
+    iconSize: 20,
+    iconRadius: 0,
+    iconPadding: 0,
+    iconLabel: "Icon Label",
+    labelPosition: "column",
+    labelColor: "#000",
+    labelHoverColor: "#000",
+    iconUrl: "#",
+    iconTab: false,
+    iconEffect: "none"
+  };
   const iconListAttrs = {
     id: {
       type: "string"
@@ -34,112 +53,166 @@ if (iconList) {
     },
     iconsNumber: {
       type: "number",
-      default: 3
+      default: 1
     },
-    iconsArr: {
-      type: "array",
-      default: [0, 0, 0]
+    selectedIcon: {
+      type: "string"
     },
-    selectedIcons: {
-      type: "array",
-      default: [
-        "dashicons dashicons-admin-site",
-        "dashicons dashicons-admin-site",
-        "dashicons dashicons-admin-site"
-      ]
+    iconColor: {
+      type: "string"
     },
-    iconsColors: {
-      type: "array",
-      default: ["#000", "#000", "#000"]
+    iconEffect: {
+      type: "string",
+      default: "none"
     },
-    iconsEffects: {
-      type: "array",
-      default: ["none", "none", "none"]
+    iconBackColor: {
+      type: "string",
+      default: "#fff"
     },
-    iconsBackColors: {
-      type: "array",
-      default: ["#fff", "#fff", "#fff"]
+    iconHoverColor: {
+      type: "string",
+      default: "#000"
     },
-    iconsHoverColors: {
-      type: "array",
-      default: ["#000", "#000", "#000"]
+    iconHoverBack: {
+      type: "string",
+      default: "#fff"
     },
-    iconsHoverBack: {
-      type: "array",
-      default: ["#fff", "#fff", "#fff"]
+    iconWidth: {
+      type: "number",
+      default: 25
     },
-    iconsWidths: {
-      type: "array",
-      default: [15, 15, 15]
+    iconSize: {
+      type: "number",
+      default: 20
     },
-    iconsSizes: {
-      type: "array",
-      default: [20, 20, 20]
+    iconRadius: {
+      type: "number",
+      default: "0"
     },
-    iconsRadius: {
-      type: "array",
-      default: [0, 0, 0]
+    iconPadding: {
+      type: "number",
+      default: "0"
     },
-    iconsPaddings: {
-      type: "array",
-      default: [0, 0, 0]
-    },
-    iconsLabels: {
-      type: "array",
-      default: ["Icon #1", "Icon #2", "Icon #3"]
+    iconLabel: {
+      type: "string",
+      default: "Icon Label"
     },
     labelsPositions: {
-      type: "array",
-      default: ["column", "column", "column"]
+      type: "string",
+      default: "column"
     },
     labelsColors: {
-      type: "array",
-      default: ["#000", "#000", "#000"]
+      type: "string",
+      default: "#000"
     },
     labelsHoverColors: {
-      type: "array",
-      default: ["#000", "#000", "#000"]
+      type: "string",
+      default: "#000"
     },
-    iconsUrls: {
-      type: "array",
-      default: [null, null, null]
+    iconUrl: {
+      type: "string",
+      default: "#"
     },
-    iconsTabs: {
+    iconTab: {
+      type: "boolean",
+      default: false
+    },
+    icons: {
       type: "array",
-      default: [false, false, false]
+      default: [
+        defaultObj,
+        defaultObj,
+        defaultObj,
+        defaultObj,
+        defaultObj,
+        defaultObj,
+        defaultObj,
+        defaultObj
+      ]
     }
   };
 
-  registerBlockType("premium/icon-list", {
-    title: __("Icon List"),
-    icon: <PbgIcon icon="icon" />,
-    category: "premium-blocks",
-    attributes: iconListAttrs,
-    edit: props => {
-      const { isSelected, setAttributes, clientId: blockId } = props;
-      const {
-        id,
-        contentAlign,
-        iconsNumber,
-        iconsArr,
-        selectedIcons,
-        iconsColors,
-        iconsEffects,
-        iconsWidths,
-        iconsBackColors,
-        iconsHoverColors,
-        iconsHoverBack,
-        iconsSizes,
-        iconsRadius,
-        iconsPaddings,
-        iconsLabels,
-        labelsPositions,
-        labelsColors,
-        labelsHoverColors,
-        iconsUrls,
-        iconsTabs
-      } = props.attributes;
+  class PremiumIconList extends Component {
+    constructor() {
+      super(...arguments);
+    }
 
+    componentDidMount() {
+      const { attributes, setAttributes, clientId } = this.props;
+      if (!attributes.id) {
+        setAttributes({ id: clientId });
+      }
+    }
+
+    saveChanges(propertyIndex, value, index) {
+      const { setAttributes } = this.props;
+      const { icons } = this.props.attributes;
+      let thisIcon = icons[index];
+
+      let iconsCopy = Object.assign({}, thisIcon);
+
+      switch (propertyIndex) {
+        case "1":
+          iconsCopy.selectedIcon = value;
+          break;
+        case "2":
+          iconsCopy.iconLabel = value;
+          break;
+        case "3":
+          iconsCopy.iconUrl = value;
+          break;
+        case "4":
+          iconsCopy.iconTab = value;
+          break;
+        case "5":
+          iconsCopy.labelPosition = value;
+          break;
+        case "6":
+          iconsCopy.iconSize = value;
+          break;
+        case "7":
+          iconsCopy.iconWidth = value;
+          break;
+        case "8":
+          iconsCopy.iconEffect = value;
+          break;
+        case "9":
+          iconsCopy.labelColor = value;
+          break;
+        case "10":
+          iconsCopy.iconColor = value;
+          break;
+        case "11":
+          iconsCopy.iconBackColor = value;
+          break;
+        case "12":
+          iconsCopy.labelHoverColor = value;
+          break;
+        case "13":
+          iconsCopy.iconHoverColor = value;
+          break;
+        case "14":
+          iconsCopy.iconHoverBack = value;
+          break;
+        case "15":
+          iconsCopy.iconRadius = value;
+          break;
+        case "16":
+          iconsCopy.iconPadding = value;
+          break;
+      }
+
+      icons[index] = iconsCopy;
+      console.log(...icons);
+      setAttributes({ icons });
+
+      this.forceUpdate();
+    }
+
+    render() {
+      const { isSelected, setAttributes } = this.props;
+      const { id, contentAlign, iconsNumber, icons } = this.props.attributes;
+      console.log(icons);
       const EFFECTS = [
         {
           value: "none",
@@ -186,412 +259,177 @@ if (iconList) {
         }
       ];
 
-      let icons = [
-          selectedIcons[0],
-          selectedIcons[1],
-          selectedIcons[2],
-          selectedIcons[3],
-          selectedIcons[4],
-          selectedIcons[5],
-          selectedIcons[6],
-          selectedIcons[7]
-        ],
-        sizes = [
-          iconsSizes[0],
-          iconsSizes[1],
-          iconsSizes[2],
-          iconsSizes[3],
-          iconsSizes[4],
-          iconsSizes[5],
-          iconsSizes[6],
-          iconsSizes[7]
-        ],
-        widths = [
-          iconsWidths[0],
-          iconsWidths[1],
-          iconsWidths[2],
-          iconsWidths[3],
-          iconsWidths[4],
-          iconsWidths[5],
-          iconsWidths[6],
-          iconsWidths[7]
-        ],
-        colors = [
-          iconsColors[0],
-          iconsColors[1],
-          iconsColors[2],
-          iconsColors[3],
-          iconsColors[4],
-          iconsColors[5],
-          iconsColors[6],
-          iconsColors[7]
-        ],
-        effects = [
-          iconsEffects[0],
-          iconsEffects[1],
-          iconsEffects[2],
-          iconsEffects[3],
-          iconsEffects[4],
-          iconsEffects[5],
-          iconsEffects[6],
-          iconsEffects[7]
-        ],
-        backColors = [
-          iconsBackColors[0],
-          iconsBackColors[1],
-          iconsBackColors[2],
-          iconsBackColors[3],
-          iconsBackColors[4],
-          iconsBackColors[5],
-          iconsBackColors[6],
-          iconsBackColors[7]
-        ],
-        hoverColors = [
-          iconsHoverColors[0],
-          iconsHoverColors[1],
-          iconsHoverColors[2],
-          iconsHoverColors[3],
-          iconsHoverColors[4],
-          iconsHoverColors[5],
-          iconsHoverColors[6],
-          iconsHoverColors[7]
-        ],
-        hoverBackColors = [
-          iconsHoverBack[0],
-          iconsHoverBack[1],
-          iconsHoverBack[2],
-          iconsHoverBack[3],
-          iconsHoverBack[4],
-          iconsHoverBack[5],
-          iconsHoverBack[6],
-          iconsHoverBack[7]
-        ],
-        borders = [
-          iconsRadius[0],
-          iconsRadius[1],
-          iconsRadius[2],
-          iconsRadius[3],
-          iconsRadius[4],
-          iconsRadius[5],
-          iconsRadius[6],
-          iconsRadius[7]
-        ],
-        paddings = [
-          iconsPaddings[0],
-          iconsPaddings[1],
-          iconsPaddings[2],
-          iconsPaddings[3],
-          iconsPaddings[4],
-          iconsPaddings[5],
-          iconsPaddings[6],
-          iconsPaddings[7]
-        ],
-        labels = [
-          iconsLabels[0],
-          iconsLabels[1],
-          iconsLabels[2],
-          iconsLabels[3],
-          iconsLabels[4],
-          iconsLabels[5],
-          iconsLabels[6],
-          iconsLabels[7]
-        ],
-        positions = [
-          labelsPositions[0],
-          labelsPositions[1],
-          labelsPositions[2],
-          labelsPositions[3],
-          labelsPositions[4],
-          labelsPositions[5],
-          labelsPositions[6],
-          labelsPositions[7]
-        ],
-        labelsCols = [
-          labelsColors[0],
-          labelsColors[1],
-          labelsColors[2],
-          labelsColors[3],
-          labelsColors[4],
-          labelsColors[5],
-          labelsColors[6],
-          labelsColors[7]
-        ],
-        labelsHoverCols = [
-          labelsHoverColors[0],
-          labelsHoverColors[1],
-          labelsHoverColors[2],
-          labelsHoverColors[3],
-          labelsHoverColors[4],
-          labelsHoverColors[5],
-          labelsHoverColors[6],
-          labelsHoverColors[7]
-        ],
-        urls = [
-          iconsUrls[0],
-          iconsUrls[1],
-          iconsUrls[2],
-          iconsUrls[3],
-          iconsUrls[4],
-          iconsUrls[5],
-          iconsUrls[6],
-          iconsUrls[7]
-        ],
-        tabs = [
-          iconsTabs[0],
-          iconsTabs[1],
-          iconsTabs[2],
-          iconsTabs[3],
-          iconsTabs[4],
-          iconsTabs[5],
-          iconsTabs[6],
-          iconsTabs[7]
-        ];
-      const panelComponents = iconsArr.map((element, index) => {
+      const panelComponents = icons.map((element, index) => {
         return (
-          <PanelBody
-            className="premium-panel-body"
-            title={__(`Icon #${index + 1} Style`)}
-            initialOpen={false}
-          >
-            <FontIconPicker
-              icons={iconsList}
-              value={selectedIcons[index]}
-              isMulti={false}
-              noSelectedPlaceholder={__("Select Icon")}
-              onChange={newValue => {
-                icons[index] = newValue;
-                setAttributes({ selectedIcons: icons });
-              }}
-            />
-            <TextControl
-              label={__("Label")}
-              value={iconsLabels[index]}
-              onChange={newText => {
-                labels[index] = newText === undefined ? "" : newText;
-                setAttributes({ iconsLabels: labels });
-              }}
-            />
-            <TextControl
-              label={__("URL")}
-              value={iconsUrls[index]}
-              onChange={newText => {
-                urls[index] = newText === undefined ? null : newText;
-                setAttributes({ iconsUrls: urls });
-              }}
-            />
-            <ToggleControl
-              label={__("Open link in new tab")}
-              checked={iconsTabs[index]}
-              onChange={newValue => {
-                tabs[index] = newValue === undefined ? false : newValue;
-                setAttributes({ iconsTabs: tabs });
-              }}
-            />
-            <SelectControl
-              label={__("Label Position")}
-              options={POSITIONS}
-              value={labelsPositions[index]}
-              onChange={newValue => {
-                positions[index] = newValue === undefined ? "column" : newValue;
-                setAttributes({ labelsPositions: positions });
-              }}
-            />
-            <RangeControl
-              label={__("Icon/Label Size (PX)")}
-              value={iconsSizes[index]}
-              onChange={newValue => {
-                sizes[index] = newValue;
-                setAttributes({ iconsSizes: sizes });
-              }}
-            />
-            <RangeControl
-              label={__("Width (%)")}
-              value={iconsWidths[index]}
-              onChange={newValue => {
-                widths[index] = newValue === undefined ? 15 : newValue;
-                setAttributes({ iconsWidths: widths });
-              }}
-            />
-            <SelectControl
-              label={__("Hover Effect")}
-              options={EFFECTS}
-              value={iconsEffects[index]}
-              onChange={newValue => {
-                effects[index] = newValue;
-                setAttributes({ iconsEffects: effects });
-              }}
-            />
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              colorSettings={[
-                {
-                  value: labelsColors[index],
-                  onChange: colorValue => {
-                    labelsCols[index] =
-                      colorValue === undefined ? "#000" : colorValue;
-                    setAttributes({ labelsColors: labelsCols });
+          iconsNumber > index && (
+            <PanelBody
+              className="premium-panel-body"
+              title={__(`Icon #${index + 1} Style`)}
+              initialOpen={false}
+            >
+              <FontIconPicker
+                icons={iconsList}
+                value={icons[index].selectedIcon}
+                isMulti={false}
+                noSelectedPlaceholder={__("Select Icon")}
+                onChange={newValue => this.saveChanges("1", newValue, index)}
+              />
+              <TextControl
+                label={__("Label")}
+                value={icons[index].iconLabel}
+                onChange={newValue => this.saveChanges("2", newValue, index)}
+              />
+              <TextControl
+                label={__("URL")}
+                value={icons[index].iconUrl}
+                onChange={newValue => this.saveChanges("3", newValue, index)}
+              />
+              <ToggleControl
+                label={__("Open link in new tab")}
+                value={icons[index].iconTab}
+                onChange={newValue => this.saveChanges("4", newValue, index)}
+              />
+              <SelectControl
+                label={__("Label Position")}
+                options={POSITIONS}
+                value={icons[index].labelPosition}
+                onChange={newValue => this.saveChanges("5", newValue, index)}
+              />
+              <RangeControl
+                label={__("Icon/Label Size (PX)")}
+                value={icons[index].iconSize}
+                onChange={newValue => this.saveChanges("6", newValue, index)}
+              />
+              <RangeControl
+                label={__("Width (%)")}
+                value={icons[index].iconWidth}
+                onChange={newValue => this.saveChanges("7", newValue, index)}
+              />
+              <SelectControl
+                label={__("Hover Effect")}
+                options={EFFECTS}
+                value={icons[index].iconEffect}
+                onChange={newValue => this.saveChanges("8", newValue, index)}
+              />
+              <PanelColorSettings
+                title={__("Colors")}
+                className="premium-panel-body-inner"
+                colorSettings={[
+                  {
+                    value: icons[index].labelColor,
+                    onChange: newValue =>
+                      this.saveChanges("9", newValue, index),
+                    label: __("Label Color")
                   },
-                  label: __("Label Color")
-                },
-                {
-                  value: iconsColors[index],
-                  onChange: colorValue => {
-                    colors[index] =
-                      colorValue === undefined ? "#000" : colorValue;
-                    setAttributes({ iconsColors: colors });
+                  {
+                    value: icons[index].iconColor,
+                    onChange: newValue =>
+                      this.saveChanges("10", newValue, index),
+                    label: __("Icon Color")
                   },
-                  label: __("Icon Color")
-                },
-                {
-                  value: iconsBackColors[index],
-                  onChange: colorValue => {
-                    backColors[index] =
-                      colorValue === undefined ? "#fff" : colorValue;
-                    setAttributes({ iconsBackColors: backColors });
+                  {
+                    value: icons[index].iconBackColor,
+                    onChange: newValue =>
+                      this.saveChanges("11", newValue, index),
+                    label: __("Background Color")
                   },
-                  label: __("Background Color")
-                },
-                {
-                  value: labelsHoverColors[index],
-                  onChange: colorValue => {
-                    labelsHoverCols[index] =
-                      colorValue === undefined ? "#000" : colorValue;
-                    setAttributes({ labelsHoverColors: labelsHoverCols });
+                  {
+                    value: icons[index].labelHoverColor,
+                    onChange: newValue =>
+                      this.saveChanges("12", newValue, index),
+                    label: __("Label Hover Color")
                   },
-                  label: __("Label Hover Color")
-                },
-                {
-                  value: iconsHoverColors[index],
-                  onChange: colorValue => {
-                    hoverColors[index] =
-                      colorValue === undefined ? "#000" : colorValue;
-                    setAttributes({ iconsHoverColors: hoverColors });
+                  {
+                    value: icons[index].iconHoverColor,
+                    onChange: newValue =>
+                      this.saveChanges("13", newValue, index),
+                    label: __("Icon Hover Color")
                   },
-                  label: __("Icon Hover Color")
-                },
-                {
-                  value: iconsHoverBack[index],
-                  onChange: colorValue => {
-                    hoverBackColors[index] =
-                      colorValue === undefined ? "#fff" : colorValue;
-                    setAttributes({ iconsHoverBack: hoverBackColors });
-                  },
-                  label: __("Background Hover Color")
-                }
-              ]}
-            />
-            <RangeControl
-              label={__("Border Radius (%)")}
-              value={iconsRadius[index]}
-              onChange={newValue => {
-                borders[index] = newValue === undefined ? 0 : newValue;
-                setAttributes({ iconsRadius: borders });
-              }}
-            />
-            <RangeControl
-              label={__("Padding (PX)")}
-              value={iconsPaddings[index]}
-              onChange={newValue => {
-                paddings[index] = newValue === undefined ? 0 : newValue;
-                setAttributes({ iconsPaddings: paddings });
-              }}
-            />
-          </PanelBody>
+                  {
+                    value: icons[index].iconHoverBack,
+                    onChange: newValue =>
+                      this.saveChanges("14", newValue, index),
+                    label: __("Background Hover Color")
+                  }
+                ]}
+              />
+              <RangeControl
+                label={__("Border Radius (%)")}
+                value={icons[index].iconRadius}
+                onChange={newValue => this.saveChanges("15", newValue, index)}
+              />
+              <RangeControl
+                label={__("Padding (PX)")}
+                value={icons[index].iconPadding}
+                onChange={newValue => this.saveChanges("16", newValue, index)}
+              />
+            </PanelBody>
+          )
         );
       });
 
-      const iconListItems = iconsArr.map((element, index) => {
+      const iconListItems = icons.map((element, index) => {
         return (
-          <div
-            id={`${className}__icon_wrap-${index}`}
-            className={`${className}__icon_wrap list-${
-              labelsPositions[index] === undefined
-                ? "column"
-                : labelsPositions[index]
-            }`}
-            style={{
-              color:
-                iconsColors[index] === undefined ? "#000" : iconsColors[index],
-              backgroundColor:
-                iconsBackColors[index] === undefined
-                  ? "#fff"
-                  : iconsBackColors[index],
-              flexBasis:
-                iconsWidths[index] === undefined
-                  ? 15
-                  : iconsWidths[index] + "%",
-              borderRadius:
-                iconsRadius[index] === undefined ? 0 : iconsRadius[index] + "%",
-              padding:
-                iconsPaddings[index] === undefined
-                  ? 0
-                  : iconsRadius[index] + "%"
-            }}
-          >
-            <style
-              dangerouslySetInnerHTML={{
-                __html: [
-                  `#premium-icon-list-${id} #premium-icon-list__icon_wrap-${index}:hover {`,
-                  `color: ${
-                    iconsHoverColors[index] === undefined
-                      ? "#000"
-                      : iconsHoverColors[index]
-                  } !important;`,
-                  `background-color: ${
-                    iconsHoverBack[index] === undefined
-                      ? "#fff"
-                      : iconsHoverBack[index]
-                  } !important;`,
-                  "}",
-                  `#premium-icon-list-${id} #premium-icon-list__icon_wrap-${index}:hover .premium-icon-list__text {`,
-                  `color: ${
-                    labelsHoverColors[index] === undefined
-                      ? "#000"
-                      : labelsHoverColors[index]
-                  } !important;`,
-                  "}"
-                ].join("\n")
-              }}
-            />
-            <i
-              className={`${className}__icon ${
-                selectedIcons[index] === undefined ? "" : selectedIcons[index]
-              } ${className}__${
-                iconsEffects[index] === undefined ? "none" : iconsEffects[index]
+          iconsNumber > index && (
+            <div
+              id={`${className}__icon_wrap-${index}`}
+              className={`${className}__icon_wrap list-${
+                icons[index].labelPosition
               }`}
               style={{
-                fontSize:
-                  iconsSizes[index] === undefined ? 20 : iconsSizes[index]
+                color: icons[index].iconColor,
+                backgroundColor: icons[index].iconBackColor,
+                flexBasis: icons[index].iconWidth + "%",
+                borderRadius: icons[index].iconRadius,
+                padding: icons[index].iconPadding
               }}
-            />
-            {iconsLabels[index] && (
-              <p
-                className={`${className}__text`}
-                style={{
-                  color:
-                    labelsColors[index] === undefined
-                      ? "#000"
-                      : labelsColors[index],
-                  fontSize:
-                    iconsSizes[index] === undefined ? 20 : iconsSizes[index]
+            >
+              <style
+                dangerouslySetInnerHTML={{
+                  __html: [
+                    `#premium-icon-list-${id} #premium-icon-list__icon_wrap-${index}:hover {`,
+                    `color: ${icons[index].iconHoverColor} !important;`,
+                    `background-color: ${
+                      icons[index].iconHoverBack
+                    } !important;`,
+                    "}",
+                    `#premium-icon-list-${id} #premium-icon-list__icon_wrap-${index}:hover .premium-icon-list__text {`,
+                    `color: ${icons[index].labelHoverColor} !important;`,
+                    "}"
+                  ].join("\n")
                 }}
-              >
-                {iconsLabels[index]}
-              </p>
-            )}
-            {iconsUrls[index] && (
-              <a
-                className={`${className}__link`}
-                href={iconsUrls[index]}
-                target={iconsTabs[index] && "_blank"}
               />
-            )}
-          </div>
+              <i
+                className={`${className}__icon ${
+                  icons[index].selectedIcon
+                } ${className}__${icons[index].iconEffect}`}
+                style={{
+                  fontSize: icons[index].iconSize
+                }}
+              />
+              {icons[index].iconLabel && (
+                <p
+                  className={`${className}__text`}
+                  style={{
+                    color: icons[index].labelColor,
+                    fontSize: icons[index].iconSize
+                  }}
+                >
+                  {icons[index].iconLabel}
+                </p>
+              )}
+              {icons[index].iconUrl && (
+                <a
+                  className={`${className}__link`}
+                  href={icons[index].iconUrl}
+                  target={icons[index].iconTab && "_blank"}
+                />
+              )}
+            </div>
+          )
         );
       });
 
-      setAttributes({ id: blockId });
       return [
         isSelected && (
           <BlockControls key="controls">
@@ -617,13 +455,7 @@ if (iconList) {
                 value={iconsNumber}
                 min="1"
                 max="8"
-                onChange={newValue => {
-                  iconsArr.length = newValue;
-                  setAttributes({
-                    iconsNumber: newValue,
-                    iconsArr: iconsArr.fill(0)
-                  });
-                }}
+                onChange={newValue => setAttributes({ iconsNumber: newValue })}
               />
             </PanelBody>
             {panelComponents}
@@ -641,121 +473,77 @@ if (iconList) {
           </div>
         </div>
       ];
-    },
+    }
+  }
+
+  registerBlockType("premium/icon-list", {
+    title: __("Icon List"),
+    icon: <PbgIcon icon="icon" />,
+    category: "premium-blocks",
+    attributes: iconListAttrs,
+    edit: PremiumIconList,
     save: props => {
-      const {
-        id,
-        contentAlign,
-        iconsNumber,
-        iconsArr,
-        selectedIcons,
-        iconsColors,
-        iconsEffects,
-        iconsBackColors,
-        iconsHoverColors,
-        iconsHoverBack,
-        iconsWidths,
-        iconsSizes,
-        iconsRadius,
-        iconsPaddings,
-        iconsLabels,
-        labelsPositions,
-        labelsColors,
-        labelsHoverColors,
-        iconsUrls,
-        iconsTabs
-      } = props.attributes;
+      const { id, contentAlign, iconsNumber, icons } = props.attributes;
 
-      iconsArr.length = iconsNumber;
-      iconsArr.fill(0);
-
-      const iconListItems = iconsArr.map((element, index) => {
+      const iconListItems = icons.map((element, index) => {
         return (
-          <div
-            id={`${className}__icon_wrap-${index}`}
-            className={`${className}__icon_wrap list-${
-              labelsPositions[index] === undefined
-                ? "column"
-                : labelsPositions[index]
-            }`}
-            style={{
-              color:
-                iconsColors[index] === undefined ? "#000" : iconsColors[index],
-              backgroundColor:
-                iconsBackColors[index] === undefined
-                  ? "#fff"
-                  : iconsBackColors[index],
-              flexBasis:
-                iconsWidths[index] === undefined
-                  ? 15
-                  : iconsWidths[index] + "%",
-              borderRadius:
-                iconsRadius[index] === undefined ? 0 : iconsRadius[index] + "%",
-              padding:
-                iconsPaddings[index] === undefined
-                  ? 0
-                  : iconsRadius[index] + "%"
-            }}
-          >
-            <style
-              dangerouslySetInnerHTML={{
-                __html: [
-                  `#premium-icon-list-${id} #premium-icon-list__icon_wrap-${index}:hover {`,
-                  `color: ${
-                    iconsHoverColors[index] === undefined
-                      ? "#000"
-                      : iconsHoverColors[index]
-                  } !important;`,
-                  `background-color: ${
-                    iconsHoverBack[index] === undefined
-                      ? "#fff"
-                      : iconsHoverBack[index]
-                  } !important;`,
-                  "}",
-                  `#premium-icon-list-${id} #premium-icon-list__icon_wrap-${index}:hover .premium-icon-list__text {`,
-                  `color: ${
-                    labelsHoverColors[index] === undefined
-                      ? "#000"
-                      : labelsHoverColors[index]
-                  } !important;`,
-                  "}"
-                ].join("\n")
-              }}
-            />
-            <i
-              className={`${className}__icon ${
-                selectedIcons[index] === undefined ? "" : selectedIcons[index]
-              } ${className}__${
-                iconsEffects[index] === undefined ? "none" : iconsEffects[index]
+          iconsNumber > index && (
+            <div
+              id={`${className}__icon_wrap-${index}`}
+              className={`${className}__icon_wrap list-${
+                icons[index].labelPosition
               }`}
               style={{
-                fontSize:
-                  iconsSizes[index] === undefined ? 20 : iconsSizes[index]
+                color: icons[index].iconColor,
+                backgroundColor: icons[index].iconBackColor,
+                flexBasis: icons[index].iconWidth + "%",
+                borderRadius: icons[index].iconRadius,
+                padding: icons[index].iconPadding
               }}
-            />
-            {iconsLabels[index] && (
-              <p
-                className={`${className}__text`}
-                style={{
-                  color:
-                    labelsColors[index] === undefined
-                      ? "#000"
-                      : labelsColors[index],
-                  fontSize:
-                    iconsSizes[index] === undefined ? 20 : iconsSizes[index]
+            >
+              <style
+                dangerouslySetInnerHTML={{
+                  __html: [
+                    `#premium-icon-list-${id} #premium-icon-list__icon_wrap-${index}:hover {`,
+                    `color: ${icons[index].iconHoverColor} !important;`,
+                    `background-color: ${
+                      icons[index].iconHoverBack
+                    } !important;`,
+                    "}",
+                    `#premium-icon-list-${id} #premium-icon-list__icon_wrap-${index}:hover .premium-icon-list__text {`,
+                    `color: ${icons[index].labelHoverColor} !important;`,
+                    "}"
+                  ].join("\n")
                 }}
-              >
-                {iconsLabels[index]}
-              </p>
-            )}
-            {iconsUrls[index] && (
-              <a
-                className={`${className}__link`}
-                href={iconsUrls[index]}
-                target={iconsTabs[index] && "_blank"}
               />
-            )}
-          </div>
+              <i
+                className={`${className}__icon ${
+                  icons[index].selectedIcon
+                } ${className}__${icons[index].iconEffect}`}
+                style={{
+                  fontSize: icons[index].iconSize
+                }}
+              />
+              {icons[index].iconLabel && (
+                <p
+                  className={`${className}__text`}
+                  style={{
+                    color: icons[index].labelColor,
+                    fontSize: icons[index].iconSize
+                  }}
+                >
+                  {icons[index].iconLabel}
+                </p>
+              )}
+              {icons[index].iconUrl && (
+                <a
+                  className={`${className}__link`}
+                  href={icons[index].iconUrl}
+                  target={icons[index].iconTab && "_blank"}
+                />
+              )}
+            </div>
+          )
         );
       });
 
