@@ -31,11 +31,12 @@ if (iconList) {
     iconBackColor: "#fff",
     iconHoverColor: "#000",
     iconHoverBack: "#fff",
-    iconWidth: 15,
+    iconWidth: 25,
     iconSize: 20,
     iconRadius: 0,
     iconPadding: 0,
     iconLabel: "Icon Label",
+    labelSpacing: 10,
     labelPosition: "column",
     labelColor: "#000",
     labelHoverColor: "#000",
@@ -62,60 +63,49 @@ if (iconList) {
       type: "string"
     },
     iconEffect: {
-      type: "string",
-      default: "none"
+      type: "string"
     },
     iconBackColor: {
-      type: "string",
-      default: "#fff"
+      type: "string"
     },
     iconHoverColor: {
-      type: "string",
-      default: "#000"
+      type: "string"
     },
     iconHoverBack: {
-      type: "string",
-      default: "#fff"
+      type: "string"
     },
     iconWidth: {
-      type: "number",
-      default: 25
+      type: "number"
     },
     iconSize: {
-      type: "number",
-      default: 20
+      type: "number"
     },
     iconRadius: {
-      type: "number",
-      default: "0"
+      type: "number"
     },
     iconPadding: {
-      type: "number",
-      default: "0"
+      type: "number"
     },
     iconLabel: {
-      type: "string",
-      default: "Icon Label"
+      type: "string"
     },
     labelsPositions: {
-      type: "string",
-      default: "column"
+      type: "string"
+    },
+    labelSpacing: {
+      type: "number"
     },
     labelsColors: {
-      type: "string",
-      default: "#000"
+      type: "string"
     },
     labelsHoverColors: {
-      type: "string",
-      default: "#000"
+      type: "string"
     },
     iconUrl: {
-      type: "string",
-      default: "#"
+      type: "string"
     },
     iconTab: {
-      type: "boolean",
-      default: false
+      type: "boolean"
     },
     icons: {
       type: "array",
@@ -144,69 +134,23 @@ if (iconList) {
       }
     }
 
-    saveChanges(propertyIndex, value, index) {
-      const { setAttributes } = this.props;
-      const { icons } = this.props.attributes;
-      let thisIcon = icons[index];
+    mergeObjects(source, object1, object2) {
+      const merged = Object.assign(source, object1, object2);
+      return merged;
+    }
 
-      let iconsCopy = Object.assign({}, thisIcon);
+    saveChanges(value, repeaterIndex) {
+      const { attributes, setAttributes } = this.props;
 
-      switch (propertyIndex) {
-        case "1":
-          iconsCopy.selectedIcon = value;
-          break;
-        case "2":
-          iconsCopy.iconLabel = value;
-          break;
-        case "3":
-          iconsCopy.iconUrl = value;
-          break;
-        case "4":
-          iconsCopy.iconTab = value;
-          break;
-        case "5":
-          iconsCopy.labelPosition = value;
-          break;
-        case "6":
-          iconsCopy.iconSize = value;
-          break;
-        case "7":
-          iconsCopy.iconWidth = value;
-          break;
-        case "8":
-          iconsCopy.iconEffect = value;
-          break;
-        case "9":
-          iconsCopy.labelColor = value;
-          break;
-        case "10":
-          iconsCopy.iconColor = value;
-          break;
-        case "11":
-          iconsCopy.iconBackColor = value;
-          break;
-        case "12":
-          iconsCopy.labelHoverColor = value;
-          break;
-        case "13":
-          iconsCopy.iconHoverColor = value;
-          break;
-        case "14":
-          iconsCopy.iconHoverBack = value;
-          break;
-        case "15":
-          iconsCopy.iconRadius = value;
-          break;
-        case "16":
-          iconsCopy.iconPadding = value;
-          break;
-      }
-
-      icons[index] = iconsCopy;
-
-      setAttributes({ icons });
-
-      this.forceUpdate();
+      setAttributes({
+        icons: attributes.icons.map((icon, index) => {
+          return (
+            repeaterIndex === index &&
+              (icon = this.mergeObjects({}, icon, value)),
+            icon
+          );
+        })
+      });
     }
 
     render() {
@@ -272,83 +216,108 @@ if (iconList) {
                 value={icons[index].selectedIcon}
                 isMulti={false}
                 noSelectedPlaceholder={__("Select Icon")}
-                onChange={newValue => this.saveChanges("1", newValue, index)}
+                onChange={newValue =>
+                  this.saveChanges({ selectedIcon: newValue }, index)
+                }
               />
               <TextControl
                 label={__("Label")}
                 value={icons[index].iconLabel}
-                onChange={newValue => this.saveChanges("2", newValue, index)}
+                onChange={newValue =>
+                  this.saveChanges({ iconLabel: newValue }, index)
+                }
               />
               <TextControl
                 label={__("URL")}
                 value={icons[index].iconUrl}
-                onChange={newValue => this.saveChanges("3", newValue, index)}
+                onChange={newValue =>
+                  this.saveChanges({ iconUrl: newValue }, index)
+                }
               />
               <ToggleControl
                 label={__("Open link in new tab")}
-                value={icons[index].iconTab}
-                onChange={newValue => this.saveChanges("4", newValue, index)}
+                checked={icons[index].iconTab}
+                onChange={newValue =>
+                  this.saveChanges({ iconTab: newValue }, index)
+                }
               />
               <SelectControl
                 label={__("Label Position")}
                 options={POSITIONS}
                 value={icons[index].labelPosition}
-                onChange={newValue => this.saveChanges("5", newValue, index)}
+                onChange={newValue =>
+                  this.saveChanges({ labelPosition: newValue }, index)
+                }
               />
               <RangeControl
                 label={__("Icon/Label Size (PX)")}
                 value={icons[index].iconSize}
-                onChange={newValue => this.saveChanges("6", newValue, index)}
+                onChange={newValue =>
+                  this.saveChanges({ iconSize: newValue }, index)
+                }
               />
+              {icons[index].iconLabel && (
+                <RangeControl
+                  label={__("Spacing (PX)")}
+                  value={icons[index].labelSpacing}
+                  onChange={newValue =>
+                    this.saveChanges({ labelSpacing: newValue }, index)
+                  }
+                />
+              )}
               <RangeControl
                 label={__("Width (%)")}
                 value={icons[index].iconWidth}
-                onChange={newValue => this.saveChanges("7", newValue, index)}
+                onChange={newValue =>
+                  this.saveChanges({ iconWidth: newValue }, index)
+                }
               />
               <SelectControl
                 label={__("Hover Effect")}
                 options={EFFECTS}
                 value={icons[index].iconEffect}
-                onChange={newValue => this.saveChanges("8", newValue, index)}
+                onChange={newValue =>
+                  this.saveChanges({ iconEffect: newValue }, index)
+                }
               />
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
                 colorSettings={[
                   {
-                    value: icons[index].labelColor,
-                    onChange: newValue =>
-                      this.saveChanges("9", newValue, index),
-                    label: __("Label Color")
-                  },
-                  {
                     value: icons[index].iconColor,
                     onChange: newValue =>
-                      this.saveChanges("10", newValue, index),
+                      this.saveChanges({ iconColor: newValue }, index),
                     label: __("Icon Color")
+                  },
+                  {
+                    value: icons[index].labelColor,
+                    onChange: newValue =>
+                      this.saveChanges({ labelColor: newValue }, index),
+                    label: __("Label Color")
                   },
                   {
                     value: icons[index].iconBackColor,
                     onChange: newValue =>
-                      this.saveChanges("11", newValue, index),
+                      this.saveChanges({ iconBackColor: newValue }, index),
                     label: __("Background Color")
-                  },
-                  {
-                    value: icons[index].labelHoverColor,
-                    onChange: newValue =>
-                      this.saveChanges("12", newValue, index),
-                    label: __("Label Hover Color")
                   },
                   {
                     value: icons[index].iconHoverColor,
                     onChange: newValue =>
-                      this.saveChanges("13", newValue, index),
+                      this.saveChanges({ iconHoverColor: newValue }, index),
                     label: __("Icon Hover Color")
+                  },
+                  {
+                    value: icons[index].labelHoverColor,
+                    onChange: newValue =>
+                      this.saveChanges({ labelHoverColor: newValue }, index),
+                    label: __("Label Hover Color")
                   },
                   {
                     value: icons[index].iconHoverBack,
                     onChange: newValue =>
-                      this.saveChanges("14", newValue, index),
+                      this.saveChanges({ iconHoverBack: newValue }, index),
                     label: __("Background Hover Color")
                   }
                 ]}
@@ -356,12 +325,16 @@ if (iconList) {
               <RangeControl
                 label={__("Border Radius (%)")}
                 value={icons[index].iconRadius}
-                onChange={newValue => this.saveChanges("15", newValue, index)}
+                onChange={newValue =>
+                  this.saveChanges({ iconRadius: newValue }, index)
+                }
               />
               <RangeControl
                 label={__("Padding (PX)")}
                 value={icons[index].iconPadding}
-                onChange={newValue => this.saveChanges("16", newValue, index)}
+                onChange={newValue =>
+                  this.saveChanges({ iconPadding: newValue }, index)
+                }
               />
             </PanelBody>
           )
@@ -412,7 +385,19 @@ if (iconList) {
                   className={`${className}__text`}
                   style={{
                     color: icons[index].labelColor,
-                    fontSize: icons[index].iconSize
+                    fontSize: icons[index].iconSize,
+                    marginTop:
+                      "column" === icons[index].labelPosition
+                        ? icons[index].labelSpacing
+                        : 0,
+                    marginRight:
+                      "row-reverse" === icons[index].labelPosition
+                        ? icons[index].labelSpacing
+                        : 0,
+                    marginLeft:
+                      "row" === icons[index].labelPosition
+                        ? icons[index].labelSpacing
+                        : 0
                   }}
                 >
                   {icons[index].iconLabel}
@@ -421,8 +406,8 @@ if (iconList) {
               {icons[index].iconUrl && (
                 <a
                   className={`${className}__link`}
-                  href={icons[index].iconUrl}
-                  target={icons[index].iconTab && "_blank"}
+                  href="javascript:void(0)"
+                  target="_self"
                 />
               )}
             </div>
@@ -529,7 +514,19 @@ if (iconList) {
                   className={`${className}__text`}
                   style={{
                     color: icons[index].labelColor,
-                    fontSize: icons[index].iconSize
+                    fontSize: icons[index].iconSize,
+                    marginTop:
+                      "column" === icons[index].labelPosition
+                        ? icons[index].labelSpacing
+                        : 0,
+                    marginRight:
+                      "row-reverse" === icons[index].labelPosition
+                        ? icons[index].labelSpacing
+                        : 0,
+                    marginLeft:
+                      "row" === icons[index].labelPosition
+                        ? icons[index].labelSpacing
+                        : 0
                   }}
                 >
                   {icons[index].iconLabel}

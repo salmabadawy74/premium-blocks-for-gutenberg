@@ -2885,8 +2885,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_icon_box__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_icon_list__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__blocks_test__ = __webpack_require__(64);
-
 
 
 
@@ -17150,11 +17148,12 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* iconList */]) {
     iconBackColor: "#fff",
     iconHoverColor: "#000",
     iconHoverBack: "#fff",
-    iconWidth: 15,
+    iconWidth: 25,
     iconSize: 20,
     iconRadius: 0,
     iconPadding: 0,
     iconLabel: "Icon Label",
+    labelSpacing: 10,
     labelPosition: "column",
     labelColor: "#000",
     labelHoverColor: "#000",
@@ -17181,60 +17180,49 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* iconList */]) {
       type: "string"
     },
     iconEffect: {
-      type: "string",
-      default: "none"
+      type: "string"
     },
     iconBackColor: {
-      type: "string",
-      default: "#fff"
+      type: "string"
     },
     iconHoverColor: {
-      type: "string",
-      default: "#000"
+      type: "string"
     },
     iconHoverBack: {
-      type: "string",
-      default: "#fff"
+      type: "string"
     },
     iconWidth: {
-      type: "number",
-      default: 25
+      type: "number"
     },
     iconSize: {
-      type: "number",
-      default: 20
+      type: "number"
     },
     iconRadius: {
-      type: "number",
-      default: "0"
+      type: "number"
     },
     iconPadding: {
-      type: "number",
-      default: "0"
+      type: "number"
     },
     iconLabel: {
-      type: "string",
-      default: "Icon Label"
+      type: "string"
     },
     labelsPositions: {
-      type: "string",
-      default: "column"
+      type: "string"
+    },
+    labelSpacing: {
+      type: "number"
     },
     labelsColors: {
-      type: "string",
-      default: "#000"
+      type: "string"
     },
     labelsHoverColors: {
-      type: "string",
-      default: "#000"
+      type: "string"
     },
     iconUrl: {
-      type: "string",
-      default: "#"
+      type: "string"
     },
     iconTab: {
-      type: "boolean",
-      default: false
+      type: "boolean"
     },
     icons: {
       type: "array",
@@ -17264,80 +17252,35 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* iconList */]) {
         }
       }
     }, {
+      key: "mergeObjects",
+      value: function mergeObjects(source, object1, object2) {
+        var merged = Object.assign(source, object1, object2);
+        return merged;
+      }
+    }, {
       key: "saveChanges",
-      value: function saveChanges(propertyIndex, value, index) {
-        var setAttributes = this.props.setAttributes;
-        var icons = this.props.attributes.icons;
+      value: function saveChanges(value, repeaterIndex) {
+        var _this2 = this;
 
-        var thisIcon = icons[index];
+        var _props2 = this.props,
+            attributes = _props2.attributes,
+            setAttributes = _props2.setAttributes;
 
-        var iconsCopy = Object.assign({}, thisIcon);
 
-        switch (propertyIndex) {
-          case "1":
-            iconsCopy.selectedIcon = value;
-            break;
-          case "2":
-            iconsCopy.iconLabel = value;
-            break;
-          case "3":
-            iconsCopy.iconUrl = value;
-            break;
-          case "4":
-            iconsCopy.iconTab = value;
-            break;
-          case "5":
-            iconsCopy.labelPosition = value;
-            break;
-          case "6":
-            iconsCopy.iconSize = value;
-            break;
-          case "7":
-            iconsCopy.iconWidth = value;
-            break;
-          case "8":
-            iconsCopy.iconEffect = value;
-            break;
-          case "9":
-            iconsCopy.labelColor = value;
-            break;
-          case "10":
-            iconsCopy.iconColor = value;
-            break;
-          case "11":
-            iconsCopy.iconBackColor = value;
-            break;
-          case "12":
-            iconsCopy.labelHoverColor = value;
-            break;
-          case "13":
-            iconsCopy.iconHoverColor = value;
-            break;
-          case "14":
-            iconsCopy.iconHoverBack = value;
-            break;
-          case "15":
-            iconsCopy.iconRadius = value;
-            break;
-          case "16":
-            iconsCopy.iconPadding = value;
-            break;
-        }
-
-        icons[index] = iconsCopy;
-
-        setAttributes({ icons: icons });
-
-        this.forceUpdate();
+        setAttributes({
+          icons: attributes.icons.map(function (icon, index) {
+            return repeaterIndex === index && (icon = _this2.mergeObjects({}, icon, value)), icon;
+          })
+        });
       }
     }, {
       key: "render",
       value: function render() {
-        var _this2 = this;
+        var _this3 = this;
 
-        var _props2 = this.props,
-            isSelected = _props2.isSelected,
-            setAttributes = _props2.setAttributes;
+        var _props3 = this.props,
+            isSelected = _props3.isSelected,
+            setAttributes = _props3.setAttributes;
         var _props$attributes = this.props.attributes,
             id = _props$attributes.id,
             contentAlign = _props$attributes.contentAlign,
@@ -17393,28 +17336,28 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* iconList */]) {
               isMulti: false,
               noSelectedPlaceholder: __("Select Icon"),
               onChange: function onChange(newValue) {
-                return _this2.saveChanges("1", newValue, index);
+                return _this3.saveChanges({ selectedIcon: newValue }, index);
               }
             }),
             wp.element.createElement(TextControl, {
               label: __("Label"),
               value: icons[index].iconLabel,
               onChange: function onChange(newValue) {
-                return _this2.saveChanges("2", newValue, index);
+                return _this3.saveChanges({ iconLabel: newValue }, index);
               }
             }),
             wp.element.createElement(TextControl, {
               label: __("URL"),
               value: icons[index].iconUrl,
               onChange: function onChange(newValue) {
-                return _this2.saveChanges("3", newValue, index);
+                return _this3.saveChanges({ iconUrl: newValue }, index);
               }
             }),
             wp.element.createElement(ToggleControl, {
               label: __("Open link in new tab"),
-              value: icons[index].iconTab,
+              checked: icons[index].iconTab,
               onChange: function onChange(newValue) {
-                return _this2.saveChanges("4", newValue, index);
+                return _this3.saveChanges({ iconTab: newValue }, index);
               }
             }),
             wp.element.createElement(SelectControl, {
@@ -17422,21 +17365,28 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* iconList */]) {
               options: POSITIONS,
               value: icons[index].labelPosition,
               onChange: function onChange(newValue) {
-                return _this2.saveChanges("5", newValue, index);
+                return _this3.saveChanges({ labelPosition: newValue }, index);
               }
             }),
             wp.element.createElement(RangeControl, {
               label: __("Icon/Label Size (PX)"),
               value: icons[index].iconSize,
               onChange: function onChange(newValue) {
-                return _this2.saveChanges("6", newValue, index);
+                return _this3.saveChanges({ iconSize: newValue }, index);
+              }
+            }),
+            icons[index].iconLabel && wp.element.createElement(RangeControl, {
+              label: __("Spacing (PX)"),
+              value: icons[index].labelSpacing,
+              onChange: function onChange(newValue) {
+                return _this3.saveChanges({ labelSpacing: newValue }, index);
               }
             }),
             wp.element.createElement(RangeControl, {
               label: __("Width (%)"),
               value: icons[index].iconWidth,
               onChange: function onChange(newValue) {
-                return _this2.saveChanges("7", newValue, index);
+                return _this3.saveChanges({ iconWidth: newValue }, index);
               }
             }),
             wp.element.createElement(SelectControl, {
@@ -17444,46 +17394,46 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* iconList */]) {
               options: EFFECTS,
               value: icons[index].iconEffect,
               onChange: function onChange(newValue) {
-                return _this2.saveChanges("8", newValue, index);
+                return _this3.saveChanges({ iconEffect: newValue }, index);
               }
             }),
             wp.element.createElement(PanelColorSettings, {
               title: __("Colors"),
               className: "premium-panel-body-inner",
               colorSettings: [{
-                value: icons[index].labelColor,
-                onChange: function onChange(newValue) {
-                  return _this2.saveChanges("9", newValue, index);
-                },
-                label: __("Label Color")
-              }, {
                 value: icons[index].iconColor,
                 onChange: function onChange(newValue) {
-                  return _this2.saveChanges("10", newValue, index);
+                  return _this3.saveChanges({ iconColor: newValue }, index);
                 },
                 label: __("Icon Color")
               }, {
+                value: icons[index].labelColor,
+                onChange: function onChange(newValue) {
+                  return _this3.saveChanges({ labelColor: newValue }, index);
+                },
+                label: __("Label Color")
+              }, {
                 value: icons[index].iconBackColor,
                 onChange: function onChange(newValue) {
-                  return _this2.saveChanges("11", newValue, index);
+                  return _this3.saveChanges({ iconBackColor: newValue }, index);
                 },
                 label: __("Background Color")
               }, {
-                value: icons[index].labelHoverColor,
-                onChange: function onChange(newValue) {
-                  return _this2.saveChanges("12", newValue, index);
-                },
-                label: __("Label Hover Color")
-              }, {
                 value: icons[index].iconHoverColor,
                 onChange: function onChange(newValue) {
-                  return _this2.saveChanges("13", newValue, index);
+                  return _this3.saveChanges({ iconHoverColor: newValue }, index);
                 },
                 label: __("Icon Hover Color")
               }, {
+                value: icons[index].labelHoverColor,
+                onChange: function onChange(newValue) {
+                  return _this3.saveChanges({ labelHoverColor: newValue }, index);
+                },
+                label: __("Label Hover Color")
+              }, {
                 value: icons[index].iconHoverBack,
                 onChange: function onChange(newValue) {
-                  return _this2.saveChanges("14", newValue, index);
+                  return _this3.saveChanges({ iconHoverBack: newValue }, index);
                 },
                 label: __("Background Hover Color")
               }]
@@ -17492,14 +17442,14 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* iconList */]) {
               label: __("Border Radius (%)"),
               value: icons[index].iconRadius,
               onChange: function onChange(newValue) {
-                return _this2.saveChanges("15", newValue, index);
+                return _this3.saveChanges({ iconRadius: newValue }, index);
               }
             }),
             wp.element.createElement(RangeControl, {
               label: __("Padding (PX)"),
               value: icons[index].iconPadding,
               onChange: function onChange(newValue) {
-                return _this2.saveChanges("16", newValue, index);
+                return _this3.saveChanges({ iconPadding: newValue }, index);
               }
             })
           );
@@ -17536,15 +17486,18 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* iconList */]) {
                 className: className + "__text",
                 style: {
                   color: icons[index].labelColor,
-                  fontSize: icons[index].iconSize
+                  fontSize: icons[index].iconSize,
+                  marginTop: "column" === icons[index].labelPosition ? icons[index].labelSpacing : 0,
+                  marginRight: "row-reverse" === icons[index].labelPosition ? icons[index].labelSpacing : 0,
+                  marginLeft: "row" === icons[index].labelPosition ? icons[index].labelSpacing : 0
                 }
               },
               icons[index].iconLabel
             ),
             icons[index].iconUrl && wp.element.createElement("a", {
               className: className + "__link",
-              href: icons[index].iconUrl,
-              target: icons[index].iconTab && "_blank"
+              href: "javascript:void(0)",
+              target: "_self"
             })
           );
         });
@@ -17646,7 +17599,10 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* iconList */]) {
               className: className + "__text",
               style: {
                 color: icons[index].labelColor,
-                fontSize: icons[index].iconSize
+                fontSize: icons[index].iconSize,
+                marginTop: "column" === icons[index].labelPosition ? icons[index].labelSpacing : 0,
+                marginRight: "row-reverse" === icons[index].labelPosition ? icons[index].labelSpacing : 0,
+                marginLeft: "row" === icons[index].labelPosition ? icons[index].labelSpacing : 0
               }
             },
             icons[index].iconLabel
@@ -28372,231 +28328,6 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
   });
   return children;
 }
-
-/***/ }),
-/* 64 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fonticonpicker_react_fonticonpicker__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_icon_list__ = __webpack_require__(26);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-var className = "premium-icon-list";
-
-var __ = wp.i18n.__;
-var Component = wp.element.Component;
-var registerBlockType = wp.blocks.registerBlockType;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    RangeControl = _wp$components.RangeControl;
-var InspectorControls = wp.editor.InspectorControls;
-
-
-var defaultObj = {
-  selectedIcon: "fa fa-facebook",
-  iconColor: "#000"
-};
-var iconListAttrs = {
-  id: {
-    type: "string"
-  },
-  iconsNumber: {
-    type: "number",
-    default: 1
-  },
-  selectedIcon: {
-    type: "string"
-  },
-  iconColor: {
-    type: "string"
-  },
-  icons: {
-    type: "array",
-    default: [defaultObj, defaultObj, defaultObj, defaultObj, defaultObj, defaultObj, defaultObj, defaultObj]
-  }
-};
-
-var PremiumIconList = function (_Component) {
-  _inherits(PremiumIconList, _Component);
-
-  function PremiumIconList() {
-    _classCallCheck(this, PremiumIconList);
-
-    return _possibleConstructorReturn(this, (PremiumIconList.__proto__ || Object.getPrototypeOf(PremiumIconList)).apply(this, arguments));
-  }
-
-  _createClass(PremiumIconList, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _props = this.props,
-          attributes = _props.attributes,
-          setAttributes = _props.setAttributes,
-          clientId = _props.clientId;
-
-      if (!attributes.id) {
-        setAttributes({ id: clientId });
-      }
-    }
-  }, {
-    key: "saveChanges",
-    value: function saveChanges(propertyIndex, value, index) {
-      var setAttributes = this.props.setAttributes;
-      var icons = this.props.attributes.icons;
-
-      var thisIcon = icons[index];
-
-      var iconsCopy = Object.assign({}, thisIcon);
-      iconsCopy.selectedIcon = value;
-      icons[index] = iconsCopy;
-      setAttributes({ icons: icons });
-      this.forceUpdate();
-    }
-  }, {
-    key: "updateIcons",
-    value: function updateIcons(nextValue) {
-      var setAttributes = this.props.setAttributes;
-      var _props$attributes = this.props.attributes,
-          icons = _props$attributes.icons,
-          iconsNumber = _props$attributes.iconsNumber;
-
-
-      if (iconsNumber < nextValue) {
-        var difference = Math.abs(iconsNumber - nextValue);
-
-        for (var i = 0; i < difference; i++) {
-          icons.push(defaultObj);
-        }
-
-        setAttributes({ iconsNumber: nextValue });
-        this.forceUpdate();
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var _props2 = this.props,
-          isSelected = _props2.isSelected,
-          setAttributes = _props2.setAttributes;
-      var _props$attributes2 = this.props.attributes,
-          id = _props$attributes2.id,
-          iconsNumber = _props$attributes2.iconsNumber,
-          icons = _props$attributes2.icons;
-
-
-      var panelComponents = icons.map(function (element, index) {
-        return wp.element.createElement(
-          PanelBody,
-          {
-            className: "premium-panel-body",
-            title: __("Icon #" + (index + 1) + " Style"),
-            initialOpen: false
-          },
-          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__fonticonpicker_react_fonticonpicker___default.a, {
-            icons: __WEBPACK_IMPORTED_MODULE_1__components_icon_list__["a" /* default */],
-            value: icons[index].selectedIcon,
-            isMulti: false,
-            noSelectedPlaceholder: __("Select Icon"),
-            onChange: function onChange(newValue) {
-              return _this2.saveChanges("1", newValue, index);
-            }
-          })
-        );
-      });
-
-      var iconListItems = icons.map(function (element, index) {
-        return iconsNumber > index && wp.element.createElement(
-          "div",
-          {
-            id: className + "__icon_wrap-" + index,
-            className: className + "__icon_wrap"
-          },
-          wp.element.createElement("i", { className: className + "__icon " + icons[index].selectedIcon + " " })
-        );
-      });
-
-      return [isSelected && wp.element.createElement(
-        InspectorControls,
-        { key: "inspector" },
-        wp.element.createElement(
-          PanelBody,
-          {
-            className: "premium-panel-body",
-            title: __("Number of Icons"),
-            initialOpen: false
-          },
-          wp.element.createElement(RangeControl, {
-            label: __("Set Number of Icons"),
-            value: iconsNumber,
-            min: "1",
-            max: "8",
-            onChange: function onChange(newValue) {
-              return setAttributes({ iconsNumber: newValue });
-            }
-          })
-        ),
-        panelComponents
-      ), wp.element.createElement(
-        "div",
-        { id: className + "-" + id, className: "" + className },
-        wp.element.createElement(
-          "div",
-          { className: className + "__list_wrap" },
-          iconListItems
-        )
-      )];
-    }
-  }]);
-
-  return PremiumIconList;
-}(Component);
-
-registerBlockType("premium/test", {
-  title: __("Test"),
-  icon: "admin-site",
-  category: "premium-blocks",
-  attributes: iconListAttrs,
-  edit: PremiumIconList,
-  save: function save(props) {
-    var _props$attributes3 = props.attributes,
-        id = _props$attributes3.id,
-        iconsNumber = _props$attributes3.iconsNumber,
-        icons = _props$attributes3.icons;
-
-    var iconListItems = icons.map(function (element, index) {
-      return wp.element.createElement(
-        "div",
-        {
-          id: className + "__icon_wrap-" + index,
-          className: className + "__icon_wrap}"
-        },
-        wp.element.createElement("i", { className: className + "__icon " + icons[index].selectedIcon + " " })
-      );
-    });
-
-    return wp.element.createElement(
-      "div",
-      { id: className + "-" + id, className: "" + className },
-      wp.element.createElement(
-        "div",
-        { className: className + "__list_wrap" },
-        iconListItems
-      )
-    );
-  }
-});
 
 /***/ })
 /******/ ]);
