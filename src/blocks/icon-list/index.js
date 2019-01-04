@@ -156,7 +156,7 @@ if (iconList) {
     render() {
       const { isSelected, setAttributes } = this.props;
       const { id, contentAlign, iconsNumber, icons } = this.props.attributes;
-      console.log(icons);
+
       const EFFECTS = [
         {
           value: "none",
@@ -556,6 +556,101 @@ if (iconList) {
           </div>
         </div>
       );
-    }
+    },
+    deprecated: [
+      {
+        attributes: iconListAttrs,
+        save: props => {
+          const { id, contentAlign, iconsNumber, icons } = props.attributes;
+
+          const iconListItems = icons.map((element, index) => {
+            return (
+              iconsNumber > index && (
+                <div
+                  id={`${className}__icon_wrap-${index}`}
+                  className={`${className}__icon_wrap list-${
+                    icons[index].labelPosition
+                  }`}
+                  style={{
+                    color: icons[index].iconColor,
+                    backgroundColor: icons[index].iconBackColor,
+                    flexBasis: icons[index].iconWidth + "%",
+                    borderRadius: icons[index].iconRadius,
+                    padding: icons[index].iconPadding
+                  }}
+                >
+                  <style
+                    dangerouslySetInnerHTML={{
+                      __html: [
+                        `#premium-icon-list-${id} #premium-icon-list__icon_wrap-${index}:hover {`,
+                        `color: ${icons[index].iconHoverColor} !important;`,
+                        `background-color: ${
+                          icons[index].iconHoverBack
+                        } !important;`,
+                        "}",
+                        `#premium-icon-list-${id} #premium-icon-list__icon_wrap-${index}:hover .premium-icon-list__text {`,
+                        `color: ${icons[index].labelHoverColor} !important;`,
+                        "}"
+                      ].join("\n")
+                    }}
+                  />
+                  <i
+                    className={`${className}__icon ${
+                      icons[index].selectedIcon
+                    } ${className}__${icons[index].iconEffect}`}
+                    style={{
+                      fontSize: icons[index].iconSize
+                    }}
+                  />
+                  {icons[index].iconLabel && (
+                    <p
+                      className={`${className}__text`}
+                      style={{
+                        color: icons[index].labelColor,
+                        fontSize: icons[index].iconSize,
+                        marginTop:
+                          "column" === icons[index].labelPosition
+                            ? icons[index].labelSpacing
+                            : 0,
+                        marginRight:
+                          "row-reverse" === icons[index].labelPosition
+                            ? icons[index].labelSpacing
+                            : 0,
+                        marginLeft:
+                          "row" === icons[index].labelPosition
+                            ? icons[index].labelSpacing
+                            : 0
+                      }}
+                    >
+                      {icons[index].iconLabel}
+                    </p>
+                  )}
+                  {icons[index].iconUrl && (
+                    <a
+                      className={`${className}__link`}
+                      href={icons[index].iconUrl}
+                      target={icons[index].iconTab && "_blank"}
+                    />
+                  )}
+                </div>
+              )
+            );
+          });
+
+          return (
+            <div id={`${className}-${id}`} className={`${className}`}>
+              <div
+                className={`${className}__list_wrap`}
+                style={{
+                  justifyContent: contentAlign
+                }}
+              >
+                {iconListItems}
+              </div>
+            </div>
+          );
+        }
+      }
+    ]
   });
 }

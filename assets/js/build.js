@@ -2885,6 +2885,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_icon_box__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_icon_list__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_icon_list___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__blocks_icon_list__);
 
 
 
@@ -17287,7 +17288,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* iconList */]) {
             iconsNumber = _props$attributes.iconsNumber,
             icons = _props$attributes.icons;
 
-        console.log(icons);
+
         var EFFECTS = [{
           value: "none",
           label: __("None")
@@ -17629,7 +17630,80 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* iconList */]) {
           iconListItems
         )
       );
-    }
+    },
+    deprecated: [{
+      attributes: iconListAttrs,
+      save: function save(props) {
+        var _props$attributes3 = props.attributes,
+            id = _props$attributes3.id,
+            contentAlign = _props$attributes3.contentAlign,
+            iconsNumber = _props$attributes3.iconsNumber,
+            icons = _props$attributes3.icons;
+
+
+        var iconListItems = icons.map(function (element, index) {
+          return iconsNumber > index && wp.element.createElement(
+            "div",
+            {
+              id: className + "__icon_wrap-" + index,
+              className: className + "__icon_wrap list-" + icons[index].labelPosition,
+              style: {
+                color: icons[index].iconColor,
+                backgroundColor: icons[index].iconBackColor,
+                flexBasis: icons[index].iconWidth + "%",
+                borderRadius: icons[index].iconRadius,
+                padding: icons[index].iconPadding
+              }
+            },
+            wp.element.createElement("style", {
+              dangerouslySetInnerHTML: {
+                __html: ["#premium-icon-list-" + id + " #premium-icon-list__icon_wrap-" + index + ":hover {", "color: " + icons[index].iconHoverColor + " !important;", "background-color: " + icons[index].iconHoverBack + " !important;", "}", "#premium-icon-list-" + id + " #premium-icon-list__icon_wrap-" + index + ":hover .premium-icon-list__text {", "color: " + icons[index].labelHoverColor + " !important;", "}"].join("\n")
+              }
+            }),
+            wp.element.createElement("i", {
+              className: className + "__icon " + icons[index].selectedIcon + " " + className + "__" + icons[index].iconEffect,
+              style: {
+                fontSize: icons[index].iconSize
+              }
+            }),
+            icons[index].iconLabel && wp.element.createElement(
+              "p",
+              {
+                className: className + "__text",
+                style: {
+                  color: icons[index].labelColor,
+                  fontSize: icons[index].iconSize,
+                  marginTop: "column" === icons[index].labelPosition ? icons[index].labelSpacing : 0,
+                  marginRight: "row-reverse" === icons[index].labelPosition ? icons[index].labelSpacing : 0,
+                  marginLeft: "row" === icons[index].labelPosition ? icons[index].labelSpacing : 0
+                }
+              },
+              icons[index].iconLabel
+            ),
+            icons[index].iconUrl && wp.element.createElement("a", {
+              className: className + "__link",
+              href: icons[index].iconUrl,
+              target: icons[index].iconTab && "_blank"
+            })
+          );
+        });
+
+        return wp.element.createElement(
+          "div",
+          { id: className + "-" + id, className: "" + className },
+          wp.element.createElement(
+            "div",
+            {
+              className: className + "__list_wrap",
+              style: {
+                justifyContent: contentAlign
+              }
+            },
+            iconListItems
+          )
+        );
+      }
+    }]
   });
 }
 
