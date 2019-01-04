@@ -184,6 +184,21 @@ if (accordion) {
       type: "number",
       default: 500
     },
+    textShadowColor: {
+      type: "string"
+    },
+    textShadowBlur: {
+      type: "number",
+      default: "0"
+    },
+    textShadowHorizontal: {
+      type: "number",
+      default: "0"
+    },
+    textShadowVertical: {
+      type: "number",
+      default: "0"
+    },
     descPaddingT: {
       type: "number"
     },
@@ -282,6 +297,10 @@ if (accordion) {
         descStyle,
         descUpper,
         descWeight,
+        textShadowBlur,
+        textShadowColor,
+        textShadowHorizontal,
+        textShadowVertical,
         descPaddingT,
         descPaddingR,
         descPaddingB,
@@ -436,6 +455,7 @@ if (accordion) {
                     fontSize: descSize + "px",
                     letterSpacing: descLetter + "px",
                     textTransform: descUpper ? "uppercase" : "none",
+                    textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
                     fontStyle: descStyle,
                     fontWeight: descWeight,
                     lineHeight: descLine + "px"
@@ -678,7 +698,6 @@ if (accordion) {
                   onClick: () => setAttributes({ descAlign: align })
                 }))}
               />
-
               {"text" === contentType && (
                 <Fragment>
                   <PanelBody
@@ -721,7 +740,6 @@ if (accordion) {
                       }
                     />
                   </PanelBody>
-
                   <PanelColorSettings
                     title={__("Colors")}
                     className="premium-panel-body-inner"
@@ -767,6 +785,36 @@ if (accordion) {
                   }
                 />
               </PanelBody>
+              {"text" === contentType && (
+                <PremiumTextShadow
+                  color={textShadowColor}
+                  blur={textShadowBlur}
+                  horizontal={textShadowHorizontal}
+                  vertical={textShadowVertical}
+                  onChangeColor={newColor =>
+                    setAttributes({
+                      textShadowColor:
+                        newColor === undefined ? "transparent" : newColor
+                    })
+                  }
+                  onChangeBlur={newBlur =>
+                    setAttributes({
+                      textShadowBlur: newBlur === undefined ? 0 : newBlur
+                    })
+                  }
+                  onChangehHorizontal={newValue =>
+                    setAttributes({
+                      textShadowHorizontal:
+                        newValue === undefined ? 0 : newValue
+                    })
+                  }
+                  onChangeVertical={newValue =>
+                    setAttributes({
+                      textShadowVertical: newValue === undefined ? 0 : newValue
+                    })
+                  }
+                />
+              )}
               <PanelBody
                 title={__("Padding")}
                 className="premium-panel-body-inner"
@@ -882,6 +930,10 @@ if (accordion) {
         descBorderColor,
         descBorderRadius,
         descBorderWidth,
+        textShadowBlur,
+        textShadowColor,
+        textShadowHorizontal,
+        textShadowVertical,
         descPaddingT,
         descPaddingR,
         descPaddingB,
@@ -970,6 +1022,7 @@ if (accordion) {
                     fontSize: descSize + "px",
                     letterSpacing: descLetter + "px",
                     textTransform: descUpper ? "uppercase" : "none",
+                    textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
                     fontStyle: descStyle,
                     fontWeight: descWeight,
                     lineHeight: descLine + "px"
@@ -1008,15 +1061,21 @@ if (accordion) {
             titleBorderWidth,
             titleBorderRadius,
             titleBack,
+            titleShadowBlur,
+            titleShadowColor,
+            titleShadowHorizontal,
+            titleShadowVertical,
             titlePaddingT,
             titlePaddingR,
             titlePaddingB,
             titlePaddingL,
             arrowColor,
             arrowBack,
+            arrowPos,
             arrowPadding,
             arrowSize,
             arrowRadius,
+            contentType,
             descAlign,
             descSize,
             descLine,
@@ -1043,7 +1102,7 @@ if (accordion) {
                 className={`${className}__content_wrap`}
               >
                 <div
-                  className={`${className}__title_wrap ${className}__${direction}`}
+                  className={`${className}__title_wrap ${className}__${direction} ${className}__${arrowPos}`}
                   style={{
                     backgroundColor: titleBack,
                     border: titleBorder,
@@ -1068,6 +1127,7 @@ if (accordion) {
                         textTransform: titleUpper ? "uppercase" : "none",
                         fontStyle: titleStyle,
                         fontWeight: titleWeight,
+                        textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                         lineHeight: titleLine + "px"
                       }}
                     />
@@ -1107,20 +1167,23 @@ if (accordion) {
                     paddingLeft: descPaddingL
                   }}
                 >
-                  <RichText.Content
-                    tagName="p"
-                    className={`${className}__desc`}
-                    value={item.descText}
-                    style={{
-                      color: descColor,
-                      fontSize: descSize + "px",
-                      letterSpacing: descLetter + "px",
-                      textTransform: descUpper ? "uppercase" : "none",
-                      fontStyle: descStyle,
-                      fontWeight: descWeight,
-                      lineHeight: descLine + "px"
-                    }}
-                  />
+                  {"text" === contentType && (
+                    <RichText.Content
+                      tagName="p"
+                      className={`${className}__desc`}
+                      value={item.descText}
+                      style={{
+                        color: descColor,
+                        fontSize: descSize + "px",
+                        letterSpacing: descLetter + "px",
+                        textTransform: descUpper ? "uppercase" : "none",
+                        fontStyle: descStyle,
+                        fontWeight: descWeight,
+                        lineHeight: descLine + "px"
+                      }}
+                    />
+                  )}
+                  {"block" === contentType && <InnerBlocks.Content />}
                 </div>
               </div>
             );
