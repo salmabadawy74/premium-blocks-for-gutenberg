@@ -37,7 +37,9 @@
 .components-panel__body .premium-panel-body-inner.is-opened {
   padding-left: 26px;
 }
-
+.premium-text-control .components-base-control__help {
+  word-break: break-word;
+}
 /**************** Premium Dual Heading *****************/
 /*******************************************************/
 .premium-dheading-block__container .premium-dheading-block__title {
@@ -140,7 +142,8 @@
 /*******************************************************/
 #wpwrap .edit-post-visual-editor .premium-icon,
 #wpwrap .edit-post-visual-editor .premium-countup__icon,
-#wpwrap .edit-post-visual-editor .premium-icon-box__icon {
+#wpwrap .edit-post-visual-editor .premium-icon-box__icon,
+#wpwrap .edit-post-visual-editor .premium-video-box__play_icon {
   font-style: normal;
 }
 .premium-icon__sidebar_icon {

@@ -1,6 +1,7 @@
 const { __ } = wp.i18n;
 const { PanelBody, RangeControl, SelectControl } = wp.components;
-const { PanelColorSettings } = wp.editor;
+const { Fragment } = wp.element;
+const { ColorPalette } = wp.editor;
 export default function PremiumBoxShadow(props) {
   const {
     inner,
@@ -34,16 +35,14 @@ export default function PremiumBoxShadow(props) {
       className={`premium-panel-body premium-panel-body-${inner && "inner"}`}
       initialOpen={false}
     >
-      <PanelColorSettings
-        title={__("Colors")}
-        colorSettings={[
-          {
-            label: __("Color"),
-            value: color,
-            onChange: onChangeColor
-          }
-        ]}
-      />
+      <Fragment>
+        <p>{__("Shadow Color")}</p>
+        <ColorPalette
+          value={color}
+          onChange={onChangeColor}
+          allowReset={true}
+        />
+      </Fragment>
       <RangeControl
         label={__("Horizontal")}
         value={horizontal}

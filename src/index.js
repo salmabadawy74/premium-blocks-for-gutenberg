@@ -9,3 +9,4 @@ import "./blocks/maps";
 import "./blocks/pricing-table";
 import "./blocks/section";
 import "./blocks/testimonials";
+import "./blocks/video-box";

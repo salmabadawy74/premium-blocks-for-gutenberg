@@ -1,7 +1,7 @@
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { SelectControl, RangeControl } = wp.components;
-const { PanelColorSettings } = wp.editor;
+const { ColorPalette } = wp.editor;
 export default function PremiumBorder(props) {
   const {
     borderType,
@@ -57,17 +57,14 @@ export default function PremiumBorder(props) {
         />
       )}
       {"none" != borderType && (
-        <PanelColorSettings
-          title={__("Colors")}
-          colorSettings={[
-            {
-              value: borderColor,
-              onChange: onChangeColor,
-              label: __("Border Color")
-            }
-          ]}
-          {...props}
-        />
+        <Fragment>
+          <p>{__("Border Color")}</p>
+          <ColorPalette
+            value={borderColor}
+            onChange={onChangeColor}
+            allowReset={true}
+          />
+        </Fragment>
       )}
       <RangeControl
         label={__("Border Radius")}
