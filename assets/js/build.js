@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 27);
+/******/ 	return __webpack_require__(__webpack_require__.s = 25);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -343,14 +343,12 @@ var PbgIcon = function (_wp$element$Component) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumBorder;
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var __ = wp.i18n.__;
 var Fragment = wp.element.Fragment;
 var _wp$components = wp.components,
     SelectControl = _wp$components.SelectControl,
     RangeControl = _wp$components.RangeControl;
-var PanelColorSettings = wp.editor.PanelColorSettings;
+var ColorPalette = wp.editor.ColorPalette;
 
 function PremiumBorder(props) {
   var borderType = props.borderType,
@@ -401,14 +399,20 @@ function PremiumBorder(props) {
       max: "50",
       onChange: onChangeWidth
     }),
-    "none" != borderType && wp.element.createElement(PanelColorSettings, _extends({
-      title: __("Colors"),
-      colorSettings: [{
+    "none" != borderType && wp.element.createElement(
+      Fragment,
+      null,
+      wp.element.createElement(
+        "p",
+        null,
+        __("Border Color")
+      ),
+      wp.element.createElement(ColorPalette, {
         value: borderColor,
         onChange: onChangeColor,
-        label: __("Border Color")
-      }]
-    }, props)),
+        allowReset: true
+      })
+    ),
     wp.element.createElement(RangeControl, {
       label: __("Border Radius"),
       value: borderRadius,
@@ -510,9 +514,9 @@ function PremiumTypo(props) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(48);
+  module.exports = __webpack_require__(47);
 } else {
-  module.exports = __webpack_require__(49);
+  module.exports = __webpack_require__(48);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -539,11 +543,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(46)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(45)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(47)();
+  module.exports = __webpack_require__(46)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -653,7 +657,8 @@ var __ = wp.i18n.__;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     RangeControl = _wp$components.RangeControl;
-var PanelColorSettings = wp.editor.PanelColorSettings;
+var Fragment = wp.element.Fragment;
+var ColorPalette = wp.editor.ColorPalette;
 
 function PremiumTextShadow(props) {
   var label = props.label,
@@ -678,14 +683,20 @@ function PremiumTextShadow(props) {
       className: "premium-panel-body premium-panel-body-inner",
       initialOpen: false
     },
-    wp.element.createElement(PanelColorSettings, {
-      title: __("Colors"),
-      colorSettings: [{
-        label: __("Shadow Color"),
+    wp.element.createElement(
+      Fragment,
+      null,
+      wp.element.createElement(
+        "p",
+        null,
+        __("Shadow Color")
+      ),
+      wp.element.createElement(ColorPalette, {
         value: color,
-        onChange: onChangeColor
-      }]
-    }),
+        onChange: onChangeColor,
+        allowReset: true
+      })
+    ),
     wp.element.createElement(RangeControl, { label: __("Blur"), value: blur, onChange: onChangeBlur }),
     wp.element.createElement(RangeControl, {
       label: __("Horizontal"),
@@ -770,7 +781,8 @@ var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     RangeControl = _wp$components.RangeControl,
     SelectControl = _wp$components.SelectControl;
-var PanelColorSettings = wp.editor.PanelColorSettings;
+var Fragment = wp.element.Fragment;
+var ColorPalette = wp.editor.ColorPalette;
 
 function PremiumTextShadow(props) {
   var label = props.label,
@@ -805,14 +817,20 @@ function PremiumTextShadow(props) {
       className: "premium-panel-body premium-panel-body-inner",
       initialOpen: false
     },
-    wp.element.createElement(PanelColorSettings, {
-      title: __("Colors"),
-      colorSettings: [{
-        label: __("Color"),
+    wp.element.createElement(
+      Fragment,
+      null,
+      wp.element.createElement(
+        "p",
+        null,
+        __("Color")
+      ),
+      wp.element.createElement(ColorPalette, {
         value: color,
-        onChange: onChangeColor
-      }]
-    }),
+        onChange: onChangeColor,
+        allowReset: true
+      })
+    ),
     wp.element.createElement(RangeControl, {
       label: __("Horizontal"),
       value: horizontal,
@@ -869,9 +887,9 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(50);
+  module.exports = __webpack_require__(49);
 } else {
-  module.exports = __webpack_require__(53);
+  module.exports = __webpack_require__(52);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -1102,573 +1120,6 @@ function PremiumIcon(props) {
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/*!
- * 
- * React FontIconPicker
- * 
- * React Component to show a picker element to pick font-icons & svg
- * 
- * @author Swashata Ghosh <swashata@wpquark.com>
- * @version 1.2.0
- * @link https://github.com/fontIconPicker/react-fonticonpicker
- * @license MIT
- * 
- * Copyright (c) 2018 Swashata Ghosh <swashata@wpquark.com>
- * 
- * This software is released under the MIT License.
- * https://opensource.org/licenses/MIT
- * 
- */
-!function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(6), __webpack_require__(5), __webpack_require__(17), __webpack_require__(11), __webpack_require__(21)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(6), __webpack_require__(5), __webpack_require__(17), __webpack_require__(11), __webpack_require__(21)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
-}(window, function (e, t, r, n, a) {
-  return function (e) {
-    var t = {};function r(n) {
-      if (t[n]) return t[n].exports;var a = t[n] = { i: n, l: !1, exports: {} };return e[n].call(a.exports, a, a.exports, r), a.l = !0, a.exports;
-    }return r.m = e, r.c = t, r.d = function (e, t, n) {
-      r.o(e, t) || Object.defineProperty(e, t, { configurable: !1, enumerable: !0, get: n });
-    }, r.r = function (e) {
-      Object.defineProperty(e, "__esModule", { value: !0 });
-    }, r.n = function (e) {
-      var t = e && e.__esModule ? function () {
-        return e.default;
-      } : function () {
-        return e;
-      };return r.d(t, "a", t), t;
-    }, r.o = function (e, t) {
-      return Object.prototype.hasOwnProperty.call(e, t);
-    }, r.p = "", r(r.s = 15);
-  }([function (t, r) {
-    t.exports = e;
-  }, function (e, r) {
-    e.exports = t;
-  }, function (e, t, r) {
-    "use strict";
-    function n(e) {
-      return (n = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
-        return typeof e === "undefined" ? "undefined" : _typeof(e);
-      } : function (e) {
-        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
-      })(e);
-    }function a(e, t, r) {
-      return t in e ? Object.defineProperty(e, t, { value: r, enumerable: !0, configurable: !0, writable: !0 }) : e[t] = r, e;
-    }function o(e) {
-      return function (e) {
-        if (Array.isArray(e)) {
-          for (var t = 0, r = new Array(e.length); t < e.length; t++) {
-            r[t] = e[t];
-          }return r;
-        }
-      }(e) || function (e) {
-        if (Symbol.iterator in Object(e) || "[object Arguments]" === Object.prototype.toString.call(e)) return Array.from(e);
-      }(e) || function () {
-        throw new TypeError("Invalid attempt to spread non-iterable instance");
-      }();
-    }Object.defineProperty(t, "__esModule", { value: !0 }), t.flattenPossiblyCategorizedSource = function (e) {
-      var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null;if (Array.isArray(e)) return o(e);if (null !== t) return void 0 !== e[t] ? o(e[t]) : [];var r = [],
-          n = function (e) {
-        for (var t = 1; t < arguments.length; t++) {
-          var r = null != arguments[t] ? arguments[t] : {},
-              n = Object.keys(r);"function" == typeof Object.getOwnPropertySymbols && (n = n.concat(Object.getOwnPropertySymbols(r).filter(function (e) {
-            return Object.getOwnPropertyDescriptor(r, e).enumerable;
-          }))), n.forEach(function (t) {
-            a(e, t, r[t]);
-          });
-        }return e;
-      }({}, e);return Object.keys(n).forEach(function (e) {
-        r = o(r).concat(o(n[e]));
-      }), r;
-    }, t.getPossibleCategories = function (e) {
-      return Array.isArray(e) ? null : Object.keys(e);
-    }, t.convertToHex = function (e) {
-      return String.fromCodePoint(parseInt(e, 10));
-    }, t.isArrayEqual = function (e, t) {
-      if (!Array.isArray(e) || !Array.isArray(t)) return !1;var r = o(e);r.sort();var n = o(t);return n.sort(), JSON.stringify(r) === JSON.stringify(n);
-    }, t.getOffset = function (e) {
-      var t = e.getBoundingClientRect(),
-          r = window.pageXOffset || document.documentElement.scrollLeft,
-          n = window.pageYOffset || document.documentElement.scrollTop;return { top: t.top + n, left: t.left + r };
-    }, t.getSourceType = function (e) {
-      return null === e ? "null" : "object" !== n(e) || Array.isArray(e) ? Array.isArray(e) ? "array" : n(e) : "object";
-    }, t.InvalidSourceException = function (e, t) {
-      this.givenType = e, this.requiredType = t, this.message = "Expected of type: ".concat(this.requiredType, ", found: ").concat(this.givenType), this.toString = function () {
-        return "Invalid Source Exception: ".concat(this.message);
-      };
-    }, t.fuzzySearch = function (e, t) {
-      e = e.toLowerCase();var r = (t = t.toLowerCase()).length,
-          n = e.length;if (n > r) return !1;if (n === r) return e === t;e: for (var a = 0, o = 0; a < n; a++) {
-        for (var l = e.codePointAt(a); o < r;) {
-          if (t.codePointAt(o++) === l) continue e;
-        }return !1;
-      }return !0;
-    }, t.debounce = void 0, t.debounce = function (e, t) {
-      var r;return function () {
-        var n = this,
-            a = arguments;clearTimeout(r), r = setTimeout(function () {
-          return e.apply(n, a);
-        }, t);
-      };
-    };
-  }, function (e, t) {
-    e.exports = r;
-  },,, function (e, t) {
-    e.exports = n;
-  }, function (e, t, r) {
-    "use strict";
-    Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var n = u(r(1)),
-        a = r(6),
-        o = u(r(0)),
-        l = u(r(3)),
-        i = r(2);function u(e) {
-      return e && e.__esModule ? e : { default: e };
-    }function c(e) {
-      return (c = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
-        return typeof e === "undefined" ? "undefined" : _typeof(e);
-      } : function (e) {
-        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
-      })(e);
-    }function s(e, t) {
-      for (var r = 0; r < t.length; r++) {
-        var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
-      }
-    }function f(e, t, r) {
-      return t && s(e.prototype, t), r && s(e, r), e;
-    }function d(e) {
-      if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e;
-    }var p = function (e) {
-      function t(e) {
-        var r, n;return function (e, t) {
-          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-        }(this, t), this, n = (t.__proto__ || Object.getPrototypeOf(t)).call(this, e), r = !n || "object" !== c(n) && "function" != typeof n ? d(this) : n, Object.defineProperty(d(r), "syncPortalPosition", { configurable: !0, enumerable: !0, writable: !0, value: function value() {
-            r.resetPortalPosition(), r.fixWindowOverflow();
-          } }), Object.defineProperty(d(r), "fixWindowOverflow", { configurable: !0, enumerable: !0, writable: !0, value: function value() {
-            var e = r.props.domRef.current.offsetWidth,
-                t = r.props.domRef.current.offsetHeight,
-                n = window,
-                a = n.innerWidth,
-                o = n.pageYOffset,
-                l = document.documentElement.clientHeight,
-                u = (0, i.getOffset)(r.props.domRef.current),
-                c = u.left,
-                s = u.top,
-                f = "self" === r.state.appendRoot ? r.props.domRef.current : r.state.appendRoot,
-                d = (0, i.getOffset)(f),
-                p = r.props.btnRef.current,
-                h = r.props.domRef.current,
-                y = (0, i.getOffset)(p),
-                b = getComputedStyle(p),
-                g = (parseInt(b.borderTop, 10) || 0) + (parseInt(b.borderBottom, 10) || 0);if (c + e > a - 20) {
-              var m = y.left + r.props.btnRef.current.offsetWidth - (e + d.left);m + d.left < 0 && (m = 10 - d.left), h.style.left = "".concat(m, "px");
-            }t + s - o > l && y.top - t > 0 && ("self" === r.state.appendRoot ? h.style.top = "-".concat(t - g, "px") : h.style.top = "".concat(y.top + g - t, "px"));
-          } }), r.state = {}, r.debouncedSyncPortalPosition = (0, i.debounce)(r.syncPortalPosition, 250), r;
-      }return function (e, t) {
-        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-      }(t, n.default.PureComponent), f(t, null, [{ key: "getDerivedStateFromProps", value: function value(e) {
-          var r = t.calculateAppendAndClass(e.appendRoot);return { appendRoot: r.appendRoot, portalClasses: r.portalClasses };
-        } }, { key: "calculateAppendAndClass", value: function value(e) {
-          var t = "self",
-              r = (0, l.default)({ "rfipdropdown--portal": !1 !== e });return !1 !== e && (t = document.querySelector(e)), { portalClasses: r, appendRoot: t };
-        } }]), f(t, [{ key: "componentDidMount", value: function value() {
-          window.addEventListener("resize", this.debouncedSyncPortalPosition), window.addEventListener("scroll", this.debouncedSyncPortalPosition), this.syncPortalPosition();
-        } }, { key: "componentDidUpdate", value: function value() {
-          this.syncPortalPosition();
-        } }, { key: "componentWillUnmount", value: function value() {
-          window.removeEventListener("resize", this.debouncedSyncPortalPosition), window.removeEventListener("scroll", this.debouncedSyncPortalPosition);
-        } }, { key: "positionPortal", value: function value() {
-          var e = this.props.domRef.current.style.display;this.props.domRef.current.style.display = "none";var t = this.props.btnRef.current,
-              r = (0, i.getOffset)(t),
-              n = (0, i.getOffset)(this.state.appendRoot),
-              a = t.offsetHeight;this.props.domRef.current.style.left = "".concat(r.left - n.left, "px"), this.props.domRef.current.style.top = "".concat(r.top + a, "px"), this.props.domRef.current.style.display = e;
-        } }, { key: "resetPortalPosition", value: function value() {
-          var e = this.props.domRef.current;"self" === this.state.appendRoot ? e.style.top = "" : this.positionPortal();
-        } }, { key: "render", value: function value() {
-          var e = (0, l.default)(this.props.className, this.state.portalClasses),
-              t = n.default.createElement("div", { className: e, ref: this.props.domRef }, this.props.children);return "self" === this.state.appendRoot ? t : (0, a.createPortal)(t, this.state.appendRoot);
-        } }]), t;
-    }();Object.defineProperty(p, "propTypes", { configurable: !0, enumerable: !0, writable: !0, value: { appendRoot: o.default.oneOfType([o.default.bool, o.default.string]), children: o.default.node.isRequired, domRef: o.default.object.isRequired, btnRef: o.default.object.isRequired, className: o.default.string.isRequired } }), Object.defineProperty(p, "defaultProps", { configurable: !0, enumerable: !0, writable: !0, value: { appendRoot: !1 } });var h = p;t.default = h;
-  }, function (e, t, r) {
-    "use strict";
-    Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var n = i(r(1)),
-        a = i(r(0)),
-        o = i(r(3)),
-        l = r(2);function i(e) {
-      return e && e.__esModule ? e : { default: e };
-    }function u(e) {
-      return (u = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
-        return typeof e === "undefined" ? "undefined" : _typeof(e);
-      } : function (e) {
-        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
-      })(e);
-    }function c(e) {
-      return function (e) {
-        if (Array.isArray(e)) {
-          for (var t = 0, r = new Array(e.length); t < e.length; t++) {
-            r[t] = e[t];
-          }return r;
-        }
-      }(e) || function (e) {
-        if (Symbol.iterator in Object(e) || "[object Arguments]" === Object.prototype.toString.call(e)) return Array.from(e);
-      }(e) || function () {
-        throw new TypeError("Invalid attempt to spread non-iterable instance");
-      }();
-    }function s(e, t) {
-      for (var r = 0; r < t.length; r++) {
-        var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
-      }
-    }function f(e, t, r) {
-      return t && s(e.prototype, t), r && s(e, r), e;
-    }function d(e) {
-      if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e;
-    }var p = function (e) {
-      function t(e) {
-        var r, n;return function (e, t) {
-          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-        }(this, t), this, n = (t.__proto__ || Object.getPrototypeOf(t)).call(this, e), r = !n || "object" !== u(n) && "function" != typeof n ? d(this) : n, Object.defineProperty(d(r), "handleChangePage", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            var t,
-                n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null,
-                a = r.props.currentPage,
-                o = r.state.totalPage;null !== n ? "next" === n ? a += 1 : a -= 1 : a = parseInt(e.target.value, 10) - 1, a < 0 && (a = 0), a > o - 1 && (a = o - 1), t = a + 1, null === n && Number.isNaN(a) && (a = 0, t = ""), r.setState({ viewPage: t }), r.props.handleChangePage(a);
-          } }), Object.defineProperty(d(r), "handlePageKeyBoard", { configurable: !0, enumerable: !0, writable: !0, value: function value(e, t) {
-            13 !== e.keyCode && 32 !== e.keyCode || r.handleChangePage({}, t);
-          } }), Object.defineProperty(d(r), "handleChangeValue", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            r.props.handleChangeValue(e);
-          } }), Object.defineProperty(d(r), "handleValueKeyboard", { configurable: !0, enumerable: !0, writable: !0, value: function value(e, t) {
-            13 !== e.keyCode && 32 !== e.keyCode || r.handleChangeValue(t);
-          } }), r.state = { viewPage: r.props.currentPage + 1 }, r;
-      }return function (e, t) {
-        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-      }(t, n.default.PureComponent), f(t, null, [{ key: "getDerivedStateFromProps", value: function value(e, r) {
-          var n = t.getCategoryFilteredState(e.currentCategory, e.categories, e.icons),
-              a = t.getCategoryFilteredState(e.currentCategory, e.categories, null === e.search ? e.icons : e.search),
-              o = t.getActiveIcons(n, a, e.currentSearch),
-              l = o.activeIcons,
-              i = o.activeTitles,
-              u = e.currentPage,
-              c = e.iconsPerPage,
-              s = { iconView: t.getCurrentViewIcons(l, c, u), titleView: t.getCurrentViewIcons(i, c, u), totalPage: Math.ceil(l.length / c) };return "" !== r.viewPage && (s.viewPage = e.currentPage + 1), s;
-        } }, { key: "getActiveIcons", value: function value(e, t, r) {
-          var n = c(e),
-              a = c(t);if ("" === r || null === r) return { activeIcons: n, activeTitles: a };var o = [],
-              i = [];return n.forEach(function (e, n) {
-            (0, l.fuzzySearch)(r, t[n]) && (o.push(e), i.push(t[n]));
-          }), { activeIcons: o, activeTitles: i };
-        } }, { key: "getCategoryFilteredState", value: function value(e, t, r) {
-          var n = null,
-              a = (0, l.getSourceType)(r);if (Array.isArray(t)) {
-            if ("object" !== a) throw new l.InvalidSourceException(a, "object");
-          } else if ("array" !== a) throw new l.InvalidSourceException(a, "array");return 0 !== e && Array.isArray(t) && (n = t[e] || null), (0, l.flattenPossiblyCategorizedSource)(r, n);
-        } }, { key: "getCurrentViewIcons", value: function value(e, t, r) {
-          var n = r * t,
-              a = (r + 1) * t;return e.slice(n, a);
-        } }]), f(t, [{ key: "renderPager", value: function value() {
-          var e = this;if (this.state.totalPage < 1) return null;var t = this.props.currentPage > 0 ? n.default.createElement("span", { className: "rfipicons__left", role: "button", tabIndex: 0, onKeyDown: function onKeyDown(t) {
-              return e.handlePageKeyBoard(t, "prev");
-            }, onClick: function onClick(t) {
-              return e.handleChangePage(t, "prev");
-            } }, n.default.createElement("span", { role: "presentation", className: "rfipicons__label", "aria-label": "Left" }, n.default.createElement("i", { className: "fipicon-angle-left" }))) : null,
-              r = this.props.currentPage < this.state.totalPage - 1 ? n.default.createElement("span", { className: "rfipicons__right", role: "button", tabIndex: 0, onKeyDown: function onKeyDown(t) {
-              return e.handlePageKeyBoard(t, "next");
-            }, onClick: function onClick(t) {
-              return e.handleChangePage(t, "next");
-            } }, n.default.createElement("span", { role: "presentation", className: "rfipicons__label", "aria-label": "Right" }, n.default.createElement("i", { className: "fipicon-angle-right" }))) : null;return n.default.createElement("div", { className: "rfipicons__pager" }, n.default.createElement("div", { className: "rfipicons__num" }, n.default.createElement("input", { value: this.state.viewPage, onChange: this.handleChangePage, className: "rfipicons__cp", type: "tel", min: 1 }), n.default.createElement("span", { className: "rfipicons__sp" }, "/"), n.default.createElement("span", { className: "rfipicons__tp" }, this.state.totalPage)), n.default.createElement("div", { className: "rfipicons__arrow" }, t, r));
-        } }, { key: "renderIconView", value: function value() {
-          var e = this;return this.state.totalPage > 0 ? this.state.iconView.map(function (t, r) {
-            var a = (0, o.default)("rfipicons__icon", { "rfipicons__icon--selected": e.props.value === t || Array.isArray(e.props.value) && e.props.value.includes(t) });return n.default.createElement("span", { className: a, key: t, title: e.state.titleView[r] }, n.default.createElement("span", { className: "rfipicons__ibox", tabIndex: 0, role: "button", onClick: function onClick() {
-                return e.handleChangeValue(t);
-              }, onKeyDown: function onKeyDown(r) {
-                return e.handleValueKeyboard(r, t);
-              } }, e.props.renderIcon(t)));
-          }) : n.default.createElement("span", { className: "rfipicons__icon--error" }, n.default.createElement("span", { className: "rfipicons__ibox--error" }, this.props.noIconPlaceholder));
-        } }, { key: "render", value: function value() {
-          return n.default.createElement("div", { className: "rfipicons" }, this.renderPager(), n.default.createElement("div", { className: "rfipicons__selector" }, this.renderIconView()));
-        } }]), t;
-    }();Object.defineProperty(p, "propTypes", { configurable: !0, enumerable: !0, writable: !0, value: { categories: a.default.arrayOf(a.default.string), currentCategory: a.default.number, isMulti: a.default.bool.isRequired, icons: a.default.oneOfType([a.default.arrayOf(a.default.string), a.default.arrayOf(a.default.number), a.default.objectOf(a.default.oneOfType([a.default.arrayOf(a.default.number), a.default.arrayOf(a.default.string)]))]).isRequired, search: a.default.oneOfType([a.default.objectOf(a.default.arrayOf(a.default.string)), a.default.arrayOf(a.default.string)]), value: a.default.oneOfType([a.default.number, a.default.string, a.default.arrayOf(a.default.oneOfType([a.default.number, a.default.string]))]).isRequired, currentSearch: a.default.string.isRequired, handleChangeValue: a.default.func.isRequired, currentPage: a.default.number.isRequired, iconsPerPage: a.default.number.isRequired, handleChangePage: a.default.func.isRequired, renderIcon: a.default.func.isRequired, noIconPlaceholder: a.default.string.isRequired } }), Object.defineProperty(p, "defaultProps", { configurable: !0, enumerable: !0, writable: !0, value: { categories: null, currentCategory: null, search: null } });var h = p;t.default = h;
-  }, function (e, t, r) {
-    "use strict";
-    Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var n = o(r(1)),
-        a = o(r(0));function o(e) {
-      return e && e.__esModule ? e : { default: e };
-    }var l = function l(e) {
-      return n.default.createElement("div", { className: "rfipsearch" }, n.default.createElement("input", { type: "text", className: "rfipsearch__input", value: e.value, onChange: e.handleSearch, placeholder: e.placeholder }));
-    };l.propTypes = { handleSearch: a.default.func.isRequired, value: a.default.string.isRequired, placeholder: a.default.string.isRequired };var i = l;t.default = i;
-  }, function (e, t, r) {
-    "use strict";
-    Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var n = o(r(1)),
-        a = o(r(0));function o(e) {
-      return e && e.__esModule ? e : { default: e };
-    }function l(e) {
-      return (l = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
-        return typeof e === "undefined" ? "undefined" : _typeof(e);
-      } : function (e) {
-        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
-      })(e);
-    }function i(e, t) {
-      for (var r = 0; r < t.length; r++) {
-        var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
-      }
-    }var u = function (e) {
-      function t() {
-        return function (e, t) {
-          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-        }(this, t), function (e, t) {
-          return !t || "object" !== l(t) && "function" != typeof t ? function (e) {
-            if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e;
-          }(e) : t;
-        }(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments));
-      }var r, a;return function (e, t) {
-        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-      }(t, n.default.PureComponent), r = t, (a = [{ key: "render", value: function value() {
-          return n.default.createElement("div", { className: "rfipcategory" }, n.default.createElement("select", { className: "rfipcategory__select", onChange: this.props.handleCategory, value: this.props.value }, this.props.categories.map(function (e, t) {
-            return n.default.createElement("option", { className: "rfipcategory__select__option", key: e, value: t }, e);
-          })), n.default.createElement("i", { className: "fipicon-angle-down", role: "presentation", "aria-label": "Open" }));
-        } }]) && i(r.prototype, a), t;
-    }();Object.defineProperty(u, "propTypes", { configurable: !0, enumerable: !0, writable: !0, value: { handleCategory: a.default.func.isRequired, value: a.default.number.isRequired, categories: a.default.arrayOf(a.default.string).isRequired } });var c = u;t.default = c;
-  }, function (e, t, r) {
-    "use strict";
-    Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var n = c(r(1)),
-        a = c(r(0)),
-        o = c(r(10)),
-        l = c(r(9)),
-        i = c(r(8)),
-        u = r(2);function c(e) {
-      return e && e.__esModule ? e : { default: e };
-    }function s(e) {
-      return (s = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
-        return typeof e === "undefined" ? "undefined" : _typeof(e);
-      } : function (e) {
-        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
-      })(e);
-    }function f(e, t) {
-      for (var r = 0; r < t.length; r++) {
-        var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
-      }
-    }function d(e, t, r) {
-      return t && f(e.prototype, t), r && f(e, r), e;
-    }function p(e) {
-      if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e;
-    }var h = function (e) {
-      function t(e) {
-        var r, n;return function (e, t) {
-          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-        }(this, t), this, n = (t.__proto__ || Object.getPrototypeOf(t)).call(this, e), r = !n || "object" !== s(n) && "function" != typeof n ? p(this) : n, Object.defineProperty(p(r), "handleCategory", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            var t = parseInt(e.target.value, 10);Number.isNaN(t) && (t = 0), r.props.handleChangeCategory(t), r.props.handleChangePage(0);
-          } }), Object.defineProperty(p(r), "handleSearch", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            var t = e.target.value;r.props.handleChangeSearch(t);
-          } }), r.state = {}, r;
-      }return function (e, t) {
-        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-      }(t, n.default.PureComponent), d(t, null, [{ key: "getDerivedStateFromProps", value: function value(e) {
-          var t = (0, u.getPossibleCategories)(e.icons);return null !== t && (t = [e.allCatPlaceholder].concat(function (e) {
-            return function (e) {
-              if (Array.isArray(e)) {
-                for (var t = 0, r = new Array(e.length); t < e.length; t++) {
-                  r[t] = e[t];
-                }return r;
-              }
-            }(e) || function (e) {
-              if (Symbol.iterator in Object(e) || "[object Arguments]" === Object.prototype.toString.call(e)) return Array.from(e);
-            }(e) || function () {
-              throw new TypeError("Invalid attempt to spread non-iterable instance");
-            }();
-          }(t))), { categories: t, searchString: e.currentSearch };
-        } }]), d(t, [{ key: "render", value: function value() {
-          return n.default.createElement("div", { className: "rfipdropdown__selector" }, this.props.showSearch ? n.default.createElement(l.default, { handleSearch: this.handleSearch, value: this.state.searchString, placeholder: this.props.searchPlaceholder }) : null, this.props.showCategory && this.state.categories && this.state.categories.length ? n.default.createElement(o.default, { handleCategory: this.handleCategory, value: this.props.currentCategory, categories: this.state.categories }) : null, n.default.createElement(i.default, { categories: this.state.categories, currentCategory: this.props.currentCategory, isMulti: this.props.isMulti, icons: this.props.icons, search: this.props.search, value: this.props.value, currentSearch: this.props.currentSearch, handleChangeValue: this.props.handleChangeValue, currentPage: this.props.currentPage, iconsPerPage: this.props.iconsPerPage, handleChangePage: this.props.handleChangePage, renderIcon: this.props.renderIcon, noIconPlaceholder: this.props.noIconPlaceholder }));
-        } }]), t;
-    }();Object.defineProperty(h, "propTypes", { configurable: !0, enumerable: !0, writable: !0, value: { isMulti: a.default.bool.isRequired, value: a.default.oneOfType([a.default.number, a.default.string, a.default.arrayOf(a.default.any)]).isRequired, currentCategory: a.default.number.isRequired, currentPage: a.default.number.isRequired, currentSearch: a.default.string.isRequired, icons: a.default.oneOfType([a.default.arrayOf(a.default.number), a.default.arrayOf(a.default.string), a.default.objectOf(a.default.oneOfType([a.default.arrayOf(a.default.number), a.default.arrayOf(a.default.string)]))]).isRequired, search: a.default.oneOfType([a.default.object, a.default.arrayOf(a.default.string)]), showCategory: a.default.bool.isRequired, showSearch: a.default.bool.isRequired, iconsPerPage: a.default.number.isRequired, allCatPlaceholder: a.default.string.isRequired, searchPlaceholder: a.default.string.isRequired, noIconPlaceholder: a.default.string.isRequired, renderIcon: a.default.func.isRequired, handleChangeValue: a.default.func.isRequired, handleChangeCategory: a.default.func.isRequired, handleChangePage: a.default.func.isRequired, handleChangeSearch: a.default.func.isRequired } }), Object.defineProperty(h, "defaultProps", { configurable: !0, enumerable: !0, writable: !0, value: { search: null } });var y = h;t.default = y;
-  }, function (e, t, r) {
-    "use strict";
-    Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var n = l(r(1)),
-        a = l(r(0)),
-        o = l(r(3));function l(e) {
-      return e && e.__esModule ? e : { default: e };
-    }function i(e) {
-      return (i = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
-        return typeof e === "undefined" ? "undefined" : _typeof(e);
-      } : function (e) {
-        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
-      })(e);
-    }function u() {
-      return (u = Object.assign || function (e) {
-        for (var t = 1; t < arguments.length; t++) {
-          var r = arguments[t];for (var n in r) {
-            Object.prototype.hasOwnProperty.call(r, n) && (e[n] = r[n]);
-          }
-        }return e;
-      }).apply(this, arguments);
-    }function c(e, t) {
-      for (var r = 0; r < t.length; r++) {
-        var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
-      }
-    }function s(e, t) {
-      return !t || "object" !== i(t) && "function" != typeof t ? f(e) : t;
-    }function f(e) {
-      if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e;
-    }var d = function (e) {
-      function t() {
-        var e, r, a;!function (e, t) {
-          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-        }(this, t);for (var o = arguments.length, l = new Array(o), i = 0; i < o; i++) {
-          l[i] = arguments[i];
-        }return s(a, (r = a = s(this, (e = t.__proto__ || Object.getPrototypeOf(t)).call.apply(e, [this].concat(l))), Object.defineProperty(f(a), "handleClick", { configurable: !0, enumerable: !0, writable: !0, value: function value() {
-            a.props.onClick();
-          } }), Object.defineProperty(f(a), "handleKeyDown", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            32 !== e.keyCode && 13 !== e.keyCode || a.props.onClick();
-          } }), Object.defineProperty(f(a), "handleDelete", { configurable: !0, enumerable: !0, writable: !0, value: function value(e, t) {
-            e.stopPropagation(), a.props.handleDeleteValue(t);
-          } }), Object.defineProperty(f(a), "handleDeleteKeyboard", { configurable: !0, enumerable: !0, writable: !0, value: function value(e, t) {
-            32 !== e.keyCode && 13 !== e.keyCode || a.props.handleDeleteValue(t);
-          } }), Object.defineProperty(f(a), "renderEmptyIcon", { configurable: !0, enumerable: !0, writable: !0, value: function value() {
-            return n.default.createElement("span", { className: "rfipbtn__icon--empty" }, a.props.noSelectedPlaceholder);
-          } }), r));
-      }var r, a;return function (e, t) {
-        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-      }(t, n.default.PureComponent), r = t, (a = [{ key: "renderIcon", value: function value(e) {
-          var t = this;return "" === e || null === e || void 0 === e ? this.renderEmptyIcon() : n.default.createElement("span", { className: "rfipbtn__icon", key: e }, n.default.createElement("span", { className: "rfipbtn__elm" }, this.props.renderIcon(e)), n.default.createElement("span", { className: "rfipbtn__del", onClick: function onClick(r) {
-              return t.handleDelete(r, e);
-            }, onKeyDown: function onKeyDown(r) {
-              return t.handleDeleteKeyboard(r, e);
-            }, tabIndex: 0, role: "button" }, "×"));
-        } }, { key: "renderCurrentIcons", value: function value() {
-          var e = this;return this.props.isMulti ? this.props.value.length ? this.props.value.map(function (t) {
-            return e.renderIcon(t);
-          }) : this.renderEmptyIcon() : this.renderIcon(this.props.value);
-        } }, { key: "render", value: function value() {
-          var e = { onClick: this.handleClick, onKeyDown: this.handleKeyDown, onFocus: this.handleFocus, onBlur: this.handleBlur, tabIndex: 0 },
-              t = (0, o.default)("rfipbtn__button", "rfipbtn__button--".concat(this.props.isOpen ? "open" : "close")),
-              r = (0, o.default)(this.props.className);return n.default.createElement("div", u({ className: r, ref: this.props.domRef }, e), n.default.createElement("div", { className: "rfipbtn__current" }, this.renderCurrentIcons()), n.default.createElement("div", { className: t }, n.default.createElement("i", { className: "fipicon-angle-down", role: "presentation", "aria-label": "Open" })));
-        } }]) && c(r.prototype, a), t;
-    }();Object.defineProperty(d, "propTypes", { configurable: !0, enumerable: !0, writable: !0, value: { className: a.default.string.isRequired, isOpen: a.default.bool.isRequired, onClick: a.default.func.isRequired, domRef: a.default.object.isRequired, isMulti: a.default.bool.isRequired, value: a.default.oneOfType([a.default.number, a.default.string, a.default.arrayOf(a.default.oneOfType([a.default.number, a.default.string]))]).isRequired, renderIcon: a.default.func.isRequired, handleDeleteValue: a.default.func.isRequired, noSelectedPlaceholder: a.default.string.isRequired } });var p = d;t.default = p;
-  }, function (e, t) {
-    e.exports = a;
-  }, function (e, t, r) {
-    "use strict";
-    Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var n = f(r(1)),
-        a = f(r(0)),
-        o = f(r(3)),
-        l = r(13),
-        i = f(r(12)),
-        u = f(r(11)),
-        c = f(r(7)),
-        s = r(2);function f(e) {
-      return e && e.__esModule ? e : { default: e };
-    }function d(e) {
-      return (d = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
-        return typeof e === "undefined" ? "undefined" : _typeof(e);
-      } : function (e) {
-        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
-      })(e);
-    }function p(e) {
-      return function (e) {
-        if (Array.isArray(e)) {
-          for (var t = 0, r = new Array(e.length); t < e.length; t++) {
-            r[t] = e[t];
-          }return r;
-        }
-      }(e) || function (e) {
-        if (Symbol.iterator in Object(e) || "[object Arguments]" === Object.prototype.toString.call(e)) return Array.from(e);
-      }(e) || function () {
-        throw new TypeError("Invalid attempt to spread non-iterable instance");
-      }();
-    }function h(e, t, r) {
-      return t in e ? Object.defineProperty(e, t, { value: r, enumerable: !0, configurable: !0, writable: !0 }) : e[t] = r, e;
-    }function y(e, t) {
-      for (var r = 0; r < t.length; r++) {
-        var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
-      }
-    }function b(e, t, r) {
-      return t && y(e.prototype, t), r && y(e, r), e;
-    }function g(e) {
-      if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e;
-    }var m = [],
-        v = "",
-        P = function (e) {
-      function t(e) {
-        var r, a;return function (e, t) {
-          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-        }(this, t), this, a = (t.__proto__ || Object.getPrototypeOf(t)).call(this, e), r = !a || "object" !== d(a) && "function" != typeof a ? g(this) : a, Object.defineProperty(g(r), "handleOuterClick", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            var t = e.target;r.isClickWithin(t) || r.closeDropdown();
-          } }), Object.defineProperty(g(r), "handleEscapeKeyboard", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            27 === e.keyCode && r.closeDropdown();
-          } }), Object.defineProperty(g(r), "isClickWithin", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            return r.fipButtonRef.current.contains(e) || r.fipDropDownRef.current && r.fipDropDownRef.current.contains(e);
-          } }), Object.defineProperty(g(r), "handleToggle", { configurable: !0, enumerable: !0, writable: !0, value: function value() {
-            r.setState(function (e) {
-              return r.handleDropDown(!e.isOpen, !1);
-            });
-          } }), Object.defineProperty(g(r), "closeDropdown", { configurable: !0, enumerable: !0, writable: !0, value: function value() {
-            r.handleDropDown(!1);
-          } }), Object.defineProperty(g(r), "handleDropDown", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            var n = !(arguments.length > 1 && void 0 !== arguments[1]) || arguments[1],
-                a = { isOpen: e };return a.elemClass = t.getDerivedClassName("rfip", r.props.theme, r.props.isMulti, e), a.btnClass = t.getDerivedClassName("rfipbtn", r.props.theme, r.props.isMulti, e), a.ddClass = t.getDerivedClassName("rfipdropdown", r.props.theme, r.props.isMulti, e), n && r.setState(a), a;
-          } }), Object.defineProperty(g(r), "handleChangeValue", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            var t;r.props.isMulti ? (t = p(r.state.value)).includes(e) ? (t = t.filter(function (t) {
-              return t !== e;
-            })).length || (t = m) : t.push(e) : t = e === r.state.value ? v : e, r.setState({ value: t, isOpen: !r.props.closeOnSelect }), r.props.onChange(t);
-          } }), Object.defineProperty(g(r), "handleDeleteValue", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            var n;n = r.props.isMulti ? r.state.value.filter(function (t) {
-              return t !== e;
-            }) : t.getDerivedValue(n, r.props.isMulti), r.setState({ value: n }), r.props.onChange(n);
-          } }), Object.defineProperty(g(r), "handleChangePage", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            r.setState({ currentPage: e });
-          } }), Object.defineProperty(g(r), "handleChangeCategory", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            r.setState({ currentCategory: e, currentPage: 0 });
-          } }), Object.defineProperty(g(r), "handleChangeSearch", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            r.setState({ currentSearch: e, currentPage: 0 });
-          } }), Object.defineProperty(g(r), "resetPortalStyle", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            ["maxHeight", "paddingTop", "paddingBottom"].forEach(function (t) {
-              e.style[t] = null;
-            });
-          } }), Object.defineProperty(g(r), "handlePortalEnter", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            var t = e.childNodes[0];r.resetPortalStyle(t);var n = getComputedStyle(t);r.fipPortalComputedStyle = { height: n.height, paddingTop: n.paddingTop, paddingBottom: n.paddingBottom }, ["maxHeight", "paddingTop", "paddingBottom"].forEach(function (e) {
-              t.style[e] = "0px";
-            });
-          } }), Object.defineProperty(g(r), "handlePortalEntering", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            var t = e.childNodes[0];t.style.maxHeight = r.fipPortalComputedStyle.height, t.style.paddingTop = r.fipPortalComputedStyle.paddingTop, t.style.paddingBottom = r.fipPortalComputedStyle.paddingBottom;
-          } }), Object.defineProperty(g(r), "handlePortalEntered", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            var t = e.childNodes[0];r.resetPortalStyle(t), r.props.showSearch && void 0 === window.orientation && -1 === navigator.userAgent.indexOf("IEMobile") && t.querySelector(".rfipsearch__input").focus();
-          } }), Object.defineProperty(g(r), "handlePortalExit", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            var t = e.childNodes[0];r.resetPortalStyle(t);var n = getComputedStyle(t).height;t.style.maxHeight = n;
-          } }), Object.defineProperty(g(r), "handlePortalExiting", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            var t = e.childNodes[0];t.style.maxHeight = "0px", t.style.paddingTop = "0px", t.style.paddingBottom = "0px";
-          } }), Object.defineProperty(g(r), "renderIcon", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
-            if ("function" == typeof r.props.renderFunc) return r.props.renderFunc(e);if ("class" === r.props.renderUsing) return n.default.createElement("i", { className: e });var t = h({}, r.props.renderUsing, r.props.convertHex ? (0, s.convertToHex)(e) : e);return n.default.createElement("i", t);
-          } }), r.fipButtonRef = n.default.createRef(), r.fipDropDownRef = n.default.createRef(), r.state = { currentCategory: 0, currentPage: 0, isOpen: !1, currentSearch: "" }, r.fipPortalComputedStyle = null, r;
-      }return function (e, t) {
-        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-      }(t, n.default.PureComponent), b(t, null, [{ key: "getDerivedStateFromProps", value: function value(e, r) {
-          var n = {};return n.elemClass = t.getDerivedClassName("rfip", e.theme, e.isMulti, r.isOpen), n.btnClass = t.getDerivedClassName("rfipbtn", e.theme, e.isMulti, r.isOpen), n.ddClass = t.getDerivedClassName("rfipdropdown", e.theme, e.isMulti, r.isOpen), n.value = t.getDerivedValue(e.value, e.isMulti), e.showCategory || (n.currentCategory = 0, n.currentPage = 0), e.showSearch || (n.currentSearch = "", n.currentPage = 0), n;
-        } }, { key: "getDerivedClassName", value: function value(e, t, r, n) {
-          return (0, o.default)(e, "".concat(e, "--").concat(t), h({}, "".concat(e, "--multi"), r), "".concat(e, "--").concat(n ? "open" : "close"));
-        } }, { key: "getDerivedValue", value: function value(e, t) {
-          var r = e;return t ? r = Array.isArray(e) ? p(e) : m : "number" != typeof e && "string" != typeof e && (r = v), r;
-        } }]), b(t, [{ key: "componentDidMount", value: function value() {
-          var e = this;["click"].forEach(function (t) {
-            document.addEventListener(t, e.handleOuterClick, !1);
-          }), document.addEventListener("keydown", this.handleEscapeKeyboard, !1), this.props.onChange(this.state.value);
-        } }, { key: "componentWillUnmount", value: function value() {
-          var e = this;["click"].forEach(function (t) {
-            document.removeEventListener(t, e.handleOuterClick, !1);
-          }), document.removeEventListener("keydown", this.handleEscapeKeyboard, !1);
-        } }, { key: "render", value: function value() {
-          var e = { currentCategory: this.state.currentCategory, currentPage: this.state.currentPage, currentSearch: this.state.currentSearch, value: this.state.value, isMulti: this.props.isMulti, icons: this.props.icons, search: this.props.search, showCategory: this.props.showCategory, showSearch: this.props.showSearch, iconsPerPage: this.props.iconsPerPage, allCatPlaceholder: this.props.allCatPlaceholder, searchPlaceholder: this.props.searchPlaceholder, noIconPlaceholder: this.props.noIconPlaceholder, renderIcon: this.renderIcon, handleChangeValue: this.handleChangeValue, handleChangeCategory: this.handleChangeCategory, handleChangePage: this.handleChangePage, handleChangeSearch: this.handleChangeSearch };return n.default.createElement("div", { className: this.state.elemClass, ref: this.fipRef }, n.default.createElement(i.default, { className: this.state.btnClass, isOpen: this.state.isOpen, onClick: this.handleToggle, domRef: this.fipButtonRef, isMulti: this.props.isMulti, value: this.state.value, renderIcon: this.renderIcon, handleDeleteValue: this.handleDeleteValue, noSelectedPlaceholder: this.props.noSelectedPlaceholder }), n.default.createElement(l.CSSTransition, { classNames: "fipappear", timeout: 300, in: this.state.isOpen, unmountOnExit: !0, onEnter: this.handlePortalEnter, onEntering: this.handlePortalEntering, onEntered: this.handlePortalEntered, onExit: this.handlePortalExit, onExiting: this.handlePortalExiting }, n.default.createElement(c.default, { appendRoot: this.props.appendTo, domRef: this.fipDropDownRef, btnRef: this.fipButtonRef, className: this.state.ddClass }, n.default.createElement(u.default, e))));
-        } }]), t;
-    }();Object.defineProperty(P, "propTypes", { configurable: !0, enumerable: !0, writable: !0, value: { icons: a.default.oneOfType([a.default.arrayOf(a.default.string), a.default.arrayOf(a.default.number), a.default.objectOf(a.default.oneOfType([a.default.arrayOf(a.default.number), a.default.arrayOf(a.default.string)]))]).isRequired, search: a.default.oneOfType([a.default.objectOf(a.default.arrayOf(a.default.string)), a.default.arrayOf(a.default.string)]), iconsPerPage: a.default.number, theme: a.default.string, onChange: a.default.func.isRequired, showCategory: a.default.bool, showSearch: a.default.bool, value: a.default.oneOfType([a.default.arrayOf(a.default.string), a.default.arrayOf(a.default.number), a.default.number, a.default.string]), isMulti: a.default.bool, renderUsing: a.default.string, convertHex: a.default.bool, renderFunc: a.default.func, appendTo: a.default.oneOfType([a.default.bool, a.default.string]), allCatPlaceholder: a.default.string, searchPlaceholder: a.default.string, noIconPlaceholder: a.default.string, noSelectedPlaceholder: a.default.string, closeOnSelect: a.default.bool } }), Object.defineProperty(P, "defaultProps", { configurable: !0, enumerable: !0, writable: !0, value: { search: null, iconsPerPage: 20, theme: "default", showCategory: !0, showSearch: !0, value: null, isMulti: !1, renderUsing: "class", convertHex: !0, renderFunc: null, appendTo: !1, allCatPlaceholder: "Show from all", searchPlaceholder: "Search Icons", noIconPlaceholder: "No icons found", noSelectedPlaceholder: "Select icon", closeOnSelect: !1 } }), Object.defineProperty(P, "displayName", { configurable: !0, enumerable: !0, writable: !0, value: "FontIconPicker" });var O = P;t.default = O;
-  }, function (e, t, r) {
-    "use strict";
-    var n;Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var a = ((n = r(14)) && n.__esModule ? n : { default: n }).default;t.default = a;
-  }]).default;
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(45)(module)))
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /*!
@@ -1714,7 +1165,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = ty
 	if (typeof module !== 'undefined' && module.exports) {
 		classNames.default = classNames;
 		module.exports = classNames;
-	} else if ("function" === 'function' && _typeof(__webpack_require__(18)) === 'object' && __webpack_require__(18)) {
+	} else if ("function" === 'function' && _typeof(__webpack_require__(17)) === 'object' && __webpack_require__(17)) {
 		// register as 'classnames', consistent with npm package name
 		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return classNames;
@@ -1726,7 +1177,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = ty
 })();
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -1735,21 +1186,21 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(51);
+  module.exports = __webpack_require__(50);
 } else {
-  module.exports = __webpack_require__(52);
+  module.exports = __webpack_require__(51);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -1776,19 +1227,19 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _CSSTransition = _interopRequireDefault(__webpack_require__(57));
+var _CSSTransition = _interopRequireDefault(__webpack_require__(56));
 
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(62));
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(61));
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(25));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(24));
 
-var _Transition = _interopRequireDefault(__webpack_require__(22));
+var _Transition = _interopRequireDefault(__webpack_require__(21));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -1802,7 +1253,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1817,9 +1268,9 @@ var _react = _interopRequireDefault(__webpack_require__(5));
 
 var _reactDom = _interopRequireDefault(__webpack_require__(11));
 
-var _reactLifecyclesCompat = __webpack_require__(23);
+var _reactLifecyclesCompat = __webpack_require__(22);
 
-var _PropTypes = __webpack_require__(24);
+var _PropTypes = __webpack_require__(23);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -2435,7 +1886,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2567,7 +2018,7 @@ function polyfill(Component) {
 
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2624,7 +2075,7 @@ var classNamesShape = _propTypes.default.oneOfType([_propTypes.default.string, _
 exports.classNamesShape = classNamesShape;
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2637,9 +2088,9 @@ var _propTypes = _interopRequireDefault(__webpack_require__(6));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
-var _reactLifecyclesCompat = __webpack_require__(23);
+var _reactLifecyclesCompat = __webpack_require__(22);
 
-var _ChildMapping = __webpack_require__(63);
+var _ChildMapping = __webpack_require__(62);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -2855,37 +2306,24 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 26 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var iconsList = {
-  Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
-  "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (iconsList);
-
-/***/ }),
-/* 27 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_dual_heading__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_pricing_table__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_maps__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_testimonials__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_count_up__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_button__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_section__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_accordion__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_icon_box__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_icon_list__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_icon_list___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__blocks_icon_list__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_dual_heading__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_pricing_table__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_maps__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_testimonials__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_count_up__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_button__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_section__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_accordion__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_icon_box__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_icon_list__ = __webpack_require__(42);
 
 
 
@@ -2901,7 +2339,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 28 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3935,7 +3373,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["g" /* dualHeading */]) {
 }
 
 /***/ }),
-/* 29 */
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4949,7 +4387,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["c" /* banner */]) {
 }
 
 /***/ }),
-/* 30 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7566,7 +7004,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["l" /* pricingTable */]) {
 }
 
 /***/ }),
-/* 31 */
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8388,14 +7826,14 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["k" /* maps */]) {
 }
 
 /***/ }),
-/* 32 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__settings__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__icons__ = __webpack_require__(2);
 
@@ -9305,7 +8743,7 @@ if (__WEBPACK_IMPORTED_MODULE_4__settings__["m" /* testimonial */]) {
 }
 
 /***/ }),
-/* 33 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9343,7 +8781,7 @@ var DefaultImage = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (DefaultImage);
 
 /***/ }),
-/* 34 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9405,7 +8843,7 @@ var PremiumLowerQuote = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
 
 /***/ }),
-/* 35 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9468,7 +8906,7 @@ var PremiumUpperQuote = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
 
 /***/ }),
-/* 36 */
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10586,7 +10024,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["f" /* countUp */]) {
 }
 
 /***/ }),
-/* 37 */
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11400,7 +10838,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["h" /* icon */]) {
 }
 
 /***/ }),
-/* 38 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12129,7 +11567,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["d" /* button */]) {
 }
 
 /***/ }),
-/* 39 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12887,7 +12325,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["e" /* container */]) {
 }
 
 /***/ }),
-/* 40 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14015,7 +13453,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
 }
 
 /***/ }),
-/* 41 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14026,7 +13464,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["b" /* accordion */]) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_padding__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_margin__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_background__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_background__ = __webpack_require__(40);
 
 
 
@@ -15690,7 +15128,7 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["i" /* iconBox */]) {
 }
 
 /***/ }),
-/* 42 */
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15837,7 +15275,7 @@ function PremiumBackground(props) {
 }
 
 /***/ }),
-/* 43 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15908,6 +15346,10 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
     controls: {
       type: "boolean",
       default: true
+    },
+    relatedVideos: {
+      type: "boolean",
+      default: false
     },
     mute: {
       type: "boolean",
@@ -16002,6 +15444,15 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
     },
     videoDescWeight: {
       type: "number"
+    },
+    videoDescLetter: {
+      type: "number"
+    },
+    videoDescStyle: {
+      type: "string"
+    },
+    videoDescUpper: {
+      type: "boolean"
     },
     videoDescColor: {
       type: "string"
@@ -16155,6 +15606,7 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
             autoPlay = _props$attributes.autoPlay,
             loop = _props$attributes.loop,
             controls = _props$attributes.controls,
+            relatedVideos = _props$attributes.relatedVideos,
             mute = _props$attributes.mute,
             overlay = _props$attributes.overlay,
             overlayImgID = _props$attributes.overlayImgID,
@@ -16186,6 +15638,9 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
             videoDescPadding = _props$attributes.videoDescPadding,
             videoDescSize = _props$attributes.videoDescSize,
             videoDescWeight = _props$attributes.videoDescWeight,
+            videoDescLetter = _props$attributes.videoDescLetter,
+            videoDescStyle = _props$attributes.videoDescStyle,
+            videoDescUpper = _props$attributes.videoDescUpper,
             videoDescBorderRadius = _props$attributes.videoDescBorderRadius,
             boxBorderColor = _props$attributes.boxBorderColor,
             boxBorderWidth = _props$attributes.boxBorderWidth,
@@ -16252,6 +15707,7 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
               }
             }),
             "self" !== videoType && wp.element.createElement(TextControl, {
+              className: "premium-text-control",
               label: __("Video URL"),
               value: videoURL,
               placeholder: __("Enter Video ID, Embed URL or Video URL"),
@@ -16310,6 +15766,13 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
               checked: controls,
               onChange: function onChange(newCheck) {
                 return setAttributes({ controls: newCheck });
+              }
+            }),
+            "youtube" === videoType && wp.element.createElement(ToggleControl, {
+              label: __("Show Related Videos"),
+              checked: relatedVideos,
+              onChange: function onChange(newCheck) {
+                return setAttributes({ relatedVideos: newCheck });
               }
             }),
             wp.element.createElement(ToggleControl, {
@@ -16428,6 +15891,15 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
                 Fragment,
                 null,
                 wp.element.createElement(RangeControl, {
+                  label: __("Size (PX)"),
+                  value: playSize,
+                  onChange: function onChange(newValue) {
+                    return setAttributes({
+                      playSize: newValue === undefined ? 20 : newValue
+                    });
+                  }
+                }),
+                wp.element.createElement(RangeControl, {
                   label: __("Horizontal Offset (%)"),
                   value: playLeft,
                   onChange: function onChange(newValue) {
@@ -16442,15 +15914,6 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
                   onChange: function onChange(newValue) {
                     return setAttributes({
                       playTop: newValue === undefined ? 50 : newValue
-                    });
-                  }
-                }),
-                wp.element.createElement(RangeControl, {
-                  label: __("Size (PX)"),
-                  value: playSize,
-                  onChange: function onChange(newValue) {
-                    return setAttributes({
-                      playSize: newValue === undefined ? 20 : newValue
                     });
                   }
                 }),
@@ -16537,6 +16000,29 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
                     return setAttributes({ videoDescText: newText });
                   }
                 }),
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_premium_typo__["a" /* default */], {
+                  components: ["size", "weight", "style", "upper", "spacing"],
+                  size: videoDescSize,
+                  weight: videoDescWeight,
+                  onChangeSize: function onChangeSize(newSize) {
+                    return setAttributes({ videoDescSize: newSize });
+                  },
+                  onChangeWeight: function onChangeWeight(newWeight) {
+                    return setAttributes({ videoDescWeight: newWeight });
+                  },
+                  style: videoDescStyle,
+                  spacing: videoDescLetter,
+                  upper: videoDescUpper,
+                  onChangeStyle: function onChangeStyle(newStyle) {
+                    return setAttributes({ videoDescStyle: newStyle });
+                  },
+                  onChangeSpacing: function onChangeSpacing(newValue) {
+                    return setAttributes({ videoDescLetter: newValue });
+                  },
+                  onChangeUpper: function onChangeUpper(check) {
+                    return setAttributes({ videoDescUpper: check });
+                  }
+                }),
                 wp.element.createElement(RangeControl, {
                   label: __("Horizontal Offset (%)"),
                   value: descLeft,
@@ -16553,17 +16039,6 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
                     return setAttributes({
                       descTop: newValue === undefined ? 50 : newValue
                     });
-                  }
-                }),
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_premium_typo__["a" /* default */], {
-                  components: ["size", "weight"],
-                  size: videoDescSize,
-                  weight: videoDescWeight,
-                  onChangeSize: function onChangeSize(newSize) {
-                    return setAttributes({ videoDescSize: newSize });
-                  },
-                  onChangeWeight: function onChangeWeight(newWeight) {
-                    return setAttributes({ videoDescWeight: newWeight });
                   }
                 }),
                 wp.element.createElement(PanelColorSettings, {
@@ -16694,7 +16169,7 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
             "div",
             { className: className + "__container" },
             "self" !== videoType && wp.element.createElement("iframe", {
-              src: onChangeVideoURL(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&controls=" + (controls ? "1" : "0"),
+              src: onChangeVideoURL(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&rel=" + (relatedVideos ? "1" : "0") + "&controls=" + (controls ? "1" : "0"),
               frameborder: "0",
               gesture: "media",
               allow: "encrypted-media",
@@ -16757,7 +16232,10 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
                 className: className + "__desc_text",
                 style: {
                   fontSize: videoDescSize + "px",
-                  fontWeight: videoDescWeight
+                  fontWeight: videoDescWeight,
+                  letterSpacing: videoDescLetter + "px",
+                  textTransform: videoDescUpper ? "uppercase" : "none",
+                  fontStyle: videoDescStyle
                 }
               },
               wp.element.createElement(
@@ -16788,6 +16266,7 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
           autoPlay = _props$attributes2.autoPlay,
           loop = _props$attributes2.loop,
           mute = _props$attributes2.mute,
+          relatedVideos = _props$attributes2.relatedVideos,
           controls = _props$attributes2.controls,
           overlay = _props$attributes2.overlay,
           overlayImgURL = _props$attributes2.overlayImgURL,
@@ -16818,6 +16297,9 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
           videoDescPadding = _props$attributes2.videoDescPadding,
           videoDescSize = _props$attributes2.videoDescSize,
           videoDescWeight = _props$attributes2.videoDescWeight,
+          videoDescLetter = _props$attributes2.videoDescLetter,
+          videoDescStyle = _props$attributes2.videoDescStyle,
+          videoDescUpper = _props$attributes2.videoDescUpper,
           videoDescBorderRadius = _props$attributes2.videoDescBorderRadius,
           boxBorderColor = _props$attributes2.boxBorderColor,
           boxBorderWidth = _props$attributes2.boxBorderWidth,
@@ -16832,9 +16314,9 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
       var loopVideo = function loopVideo() {
         if ("youtube" === videoType) {
           if (videoURL.startsWith("http")) {
-            return (loop ? "1" : "0") + "&playlist=" + videoURL.replace("https://www.youtube.com/embed/", "");
+            return loop ? "1&playlist=" + videoURL.replace("https://www.youtube.com/embed/", "") : "0";
           } else {
-            return (loop ? "1" : "0") + "&playlist=" + videoURL;
+            return loop ? "1&playlist=" + videoURL : "0";
           }
         } else {
           return loop ? "1" : "0";
@@ -16863,7 +16345,7 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
           "div",
           { className: className + "__container" },
           "self" !== videoType && wp.element.createElement("iframe", {
-            src: onChangeVideoURL(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&controls=" + (controls ? "1" : "0"),
+            src: onChangeVideoURL(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&rel=" + (relatedVideos ? "1" : "0") + "&controls=" + (controls ? "1" : "0"),
             frameborder: "0",
             gesture: "media",
             allow: "encrypted-media",
@@ -16926,7 +16408,10 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
               className: className + "__desc_text",
               style: {
                 fontSize: videoDescSize + "px",
-                fontWeight: videoDescWeight
+                fontWeight: videoDescWeight,
+                letterSpacing: videoDescLetter + "px",
+                textTransform: videoDescUpper ? "uppercase" : "none",
+                fontStyle: videoDescStyle
               }
             },
             wp.element.createElement(
@@ -16978,6 +16463,9 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
             videoDescPadding = _props$attributes3.videoDescPadding,
             videoDescSize = _props$attributes3.videoDescSize,
             videoDescWeight = _props$attributes3.videoDescWeight,
+            videoDescLetter = _props$attributes3.videoDescLetter,
+            videoDescStyle = _props$attributes3.videoDescStyle,
+            videoDescUpper = _props$attributes3.videoDescUpper,
             videoDescBorderRadius = _props$attributes3.videoDescBorderRadius,
             boxBorderColor = _props$attributes3.boxBorderColor,
             boxBorderWidth = _props$attributes3.boxBorderWidth,
@@ -16992,9 +16480,9 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
         var loopVideo = function loopVideo() {
           if ("youtube" === videoType) {
             if (videoURL.startsWith("http")) {
-              return (loop ? "1" : "0") + "&playlist=" + videoURL.replace("https://www.youtube.com/embed/", "");
+              return loop ? "1&playlist=" + videoURL.replace("https://www.youtube.com/embed/", "") : "0";
             } else {
-              return (loop ? "1" : "0") + "&playlist=" + videoURL;
+              return loop ? "1&playlist=" + videoURL : "0";
             }
           } else {
             return loop ? "1" : "0";
@@ -17086,7 +16574,10 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
                 className: className + "__desc_text",
                 style: {
                   fontSize: videoDescSize + "px",
-                  fontWeight: videoDescWeight
+                  fontWeight: videoDescWeight,
+                  letterSpacing: videoDescLetter + "px",
+                  textTransform: videoDescUpper ? "uppercase" : "none",
+                  fontStyle: videoDescStyle
                 }
               },
               wp.element.createElement(
@@ -17103,14 +16594,14 @@ if (__WEBPACK_IMPORTED_MODULE_3__settings__["n" /* videoBox */]) {
 }
 
 /***/ }),
-/* 44 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fonticonpicker_react_fonticonpicker__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fonticonpicker_react_fonticonpicker__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_icon_list__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_icon_list__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(2);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -17708,7 +17199,574 @@ if (__WEBPACK_IMPORTED_MODULE_0__settings__["j" /* iconList */]) {
 }
 
 /***/ }),
-/* 45 */
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/*!
+ * 
+ * React FontIconPicker
+ * 
+ * React Component to show a picker element to pick font-icons & svg
+ * 
+ * @author Swashata Ghosh <swashata@wpquark.com>
+ * @version 1.2.0
+ * @link https://github.com/fontIconPicker/react-fonticonpicker
+ * @license MIT
+ * 
+ * Copyright (c) 2018 Swashata Ghosh <swashata@wpquark.com>
+ * 
+ * This software is released under the MIT License.
+ * https://opensource.org/licenses/MIT
+ * 
+ */
+!function (e, t) {
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(6), __webpack_require__(5), __webpack_require__(16), __webpack_require__(11), __webpack_require__(20)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(6), __webpack_require__(5), __webpack_require__(16), __webpack_require__(11), __webpack_require__(20)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
+}(window, function (e, t, r, n, a) {
+  return function (e) {
+    var t = {};function r(n) {
+      if (t[n]) return t[n].exports;var a = t[n] = { i: n, l: !1, exports: {} };return e[n].call(a.exports, a, a.exports, r), a.l = !0, a.exports;
+    }return r.m = e, r.c = t, r.d = function (e, t, n) {
+      r.o(e, t) || Object.defineProperty(e, t, { configurable: !1, enumerable: !0, get: n });
+    }, r.r = function (e) {
+      Object.defineProperty(e, "__esModule", { value: !0 });
+    }, r.n = function (e) {
+      var t = e && e.__esModule ? function () {
+        return e.default;
+      } : function () {
+        return e;
+      };return r.d(t, "a", t), t;
+    }, r.o = function (e, t) {
+      return Object.prototype.hasOwnProperty.call(e, t);
+    }, r.p = "", r(r.s = 15);
+  }([function (t, r) {
+    t.exports = e;
+  }, function (e, r) {
+    e.exports = t;
+  }, function (e, t, r) {
+    "use strict";
+    function n(e) {
+      return (n = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
+        return typeof e === "undefined" ? "undefined" : _typeof(e);
+      } : function (e) {
+        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
+      })(e);
+    }function a(e, t, r) {
+      return t in e ? Object.defineProperty(e, t, { value: r, enumerable: !0, configurable: !0, writable: !0 }) : e[t] = r, e;
+    }function o(e) {
+      return function (e) {
+        if (Array.isArray(e)) {
+          for (var t = 0, r = new Array(e.length); t < e.length; t++) {
+            r[t] = e[t];
+          }return r;
+        }
+      }(e) || function (e) {
+        if (Symbol.iterator in Object(e) || "[object Arguments]" === Object.prototype.toString.call(e)) return Array.from(e);
+      }(e) || function () {
+        throw new TypeError("Invalid attempt to spread non-iterable instance");
+      }();
+    }Object.defineProperty(t, "__esModule", { value: !0 }), t.flattenPossiblyCategorizedSource = function (e) {
+      var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null;if (Array.isArray(e)) return o(e);if (null !== t) return void 0 !== e[t] ? o(e[t]) : [];var r = [],
+          n = function (e) {
+        for (var t = 1; t < arguments.length; t++) {
+          var r = null != arguments[t] ? arguments[t] : {},
+              n = Object.keys(r);"function" == typeof Object.getOwnPropertySymbols && (n = n.concat(Object.getOwnPropertySymbols(r).filter(function (e) {
+            return Object.getOwnPropertyDescriptor(r, e).enumerable;
+          }))), n.forEach(function (t) {
+            a(e, t, r[t]);
+          });
+        }return e;
+      }({}, e);return Object.keys(n).forEach(function (e) {
+        r = o(r).concat(o(n[e]));
+      }), r;
+    }, t.getPossibleCategories = function (e) {
+      return Array.isArray(e) ? null : Object.keys(e);
+    }, t.convertToHex = function (e) {
+      return String.fromCodePoint(parseInt(e, 10));
+    }, t.isArrayEqual = function (e, t) {
+      if (!Array.isArray(e) || !Array.isArray(t)) return !1;var r = o(e);r.sort();var n = o(t);return n.sort(), JSON.stringify(r) === JSON.stringify(n);
+    }, t.getOffset = function (e) {
+      var t = e.getBoundingClientRect(),
+          r = window.pageXOffset || document.documentElement.scrollLeft,
+          n = window.pageYOffset || document.documentElement.scrollTop;return { top: t.top + n, left: t.left + r };
+    }, t.getSourceType = function (e) {
+      return null === e ? "null" : "object" !== n(e) || Array.isArray(e) ? Array.isArray(e) ? "array" : n(e) : "object";
+    }, t.InvalidSourceException = function (e, t) {
+      this.givenType = e, this.requiredType = t, this.message = "Expected of type: ".concat(this.requiredType, ", found: ").concat(this.givenType), this.toString = function () {
+        return "Invalid Source Exception: ".concat(this.message);
+      };
+    }, t.fuzzySearch = function (e, t) {
+      e = e.toLowerCase();var r = (t = t.toLowerCase()).length,
+          n = e.length;if (n > r) return !1;if (n === r) return e === t;e: for (var a = 0, o = 0; a < n; a++) {
+        for (var l = e.codePointAt(a); o < r;) {
+          if (t.codePointAt(o++) === l) continue e;
+        }return !1;
+      }return !0;
+    }, t.debounce = void 0, t.debounce = function (e, t) {
+      var r;return function () {
+        var n = this,
+            a = arguments;clearTimeout(r), r = setTimeout(function () {
+          return e.apply(n, a);
+        }, t);
+      };
+    };
+  }, function (e, t) {
+    e.exports = r;
+  },,, function (e, t) {
+    e.exports = n;
+  }, function (e, t, r) {
+    "use strict";
+    Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var n = u(r(1)),
+        a = r(6),
+        o = u(r(0)),
+        l = u(r(3)),
+        i = r(2);function u(e) {
+      return e && e.__esModule ? e : { default: e };
+    }function c(e) {
+      return (c = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
+        return typeof e === "undefined" ? "undefined" : _typeof(e);
+      } : function (e) {
+        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
+      })(e);
+    }function s(e, t) {
+      for (var r = 0; r < t.length; r++) {
+        var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+      }
+    }function f(e, t, r) {
+      return t && s(e.prototype, t), r && s(e, r), e;
+    }function d(e) {
+      if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e;
+    }var p = function (e) {
+      function t(e) {
+        var r, n;return function (e, t) {
+          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+        }(this, t), this, n = (t.__proto__ || Object.getPrototypeOf(t)).call(this, e), r = !n || "object" !== c(n) && "function" != typeof n ? d(this) : n, Object.defineProperty(d(r), "syncPortalPosition", { configurable: !0, enumerable: !0, writable: !0, value: function value() {
+            r.resetPortalPosition(), r.fixWindowOverflow();
+          } }), Object.defineProperty(d(r), "fixWindowOverflow", { configurable: !0, enumerable: !0, writable: !0, value: function value() {
+            var e = r.props.domRef.current.offsetWidth,
+                t = r.props.domRef.current.offsetHeight,
+                n = window,
+                a = n.innerWidth,
+                o = n.pageYOffset,
+                l = document.documentElement.clientHeight,
+                u = (0, i.getOffset)(r.props.domRef.current),
+                c = u.left,
+                s = u.top,
+                f = "self" === r.state.appendRoot ? r.props.domRef.current : r.state.appendRoot,
+                d = (0, i.getOffset)(f),
+                p = r.props.btnRef.current,
+                h = r.props.domRef.current,
+                y = (0, i.getOffset)(p),
+                b = getComputedStyle(p),
+                g = (parseInt(b.borderTop, 10) || 0) + (parseInt(b.borderBottom, 10) || 0);if (c + e > a - 20) {
+              var m = y.left + r.props.btnRef.current.offsetWidth - (e + d.left);m + d.left < 0 && (m = 10 - d.left), h.style.left = "".concat(m, "px");
+            }t + s - o > l && y.top - t > 0 && ("self" === r.state.appendRoot ? h.style.top = "-".concat(t - g, "px") : h.style.top = "".concat(y.top + g - t, "px"));
+          } }), r.state = {}, r.debouncedSyncPortalPosition = (0, i.debounce)(r.syncPortalPosition, 250), r;
+      }return function (e, t) {
+        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+      }(t, n.default.PureComponent), f(t, null, [{ key: "getDerivedStateFromProps", value: function value(e) {
+          var r = t.calculateAppendAndClass(e.appendRoot);return { appendRoot: r.appendRoot, portalClasses: r.portalClasses };
+        } }, { key: "calculateAppendAndClass", value: function value(e) {
+          var t = "self",
+              r = (0, l.default)({ "rfipdropdown--portal": !1 !== e });return !1 !== e && (t = document.querySelector(e)), { portalClasses: r, appendRoot: t };
+        } }]), f(t, [{ key: "componentDidMount", value: function value() {
+          window.addEventListener("resize", this.debouncedSyncPortalPosition), window.addEventListener("scroll", this.debouncedSyncPortalPosition), this.syncPortalPosition();
+        } }, { key: "componentDidUpdate", value: function value() {
+          this.syncPortalPosition();
+        } }, { key: "componentWillUnmount", value: function value() {
+          window.removeEventListener("resize", this.debouncedSyncPortalPosition), window.removeEventListener("scroll", this.debouncedSyncPortalPosition);
+        } }, { key: "positionPortal", value: function value() {
+          var e = this.props.domRef.current.style.display;this.props.domRef.current.style.display = "none";var t = this.props.btnRef.current,
+              r = (0, i.getOffset)(t),
+              n = (0, i.getOffset)(this.state.appendRoot),
+              a = t.offsetHeight;this.props.domRef.current.style.left = "".concat(r.left - n.left, "px"), this.props.domRef.current.style.top = "".concat(r.top + a, "px"), this.props.domRef.current.style.display = e;
+        } }, { key: "resetPortalPosition", value: function value() {
+          var e = this.props.domRef.current;"self" === this.state.appendRoot ? e.style.top = "" : this.positionPortal();
+        } }, { key: "render", value: function value() {
+          var e = (0, l.default)(this.props.className, this.state.portalClasses),
+              t = n.default.createElement("div", { className: e, ref: this.props.domRef }, this.props.children);return "self" === this.state.appendRoot ? t : (0, a.createPortal)(t, this.state.appendRoot);
+        } }]), t;
+    }();Object.defineProperty(p, "propTypes", { configurable: !0, enumerable: !0, writable: !0, value: { appendRoot: o.default.oneOfType([o.default.bool, o.default.string]), children: o.default.node.isRequired, domRef: o.default.object.isRequired, btnRef: o.default.object.isRequired, className: o.default.string.isRequired } }), Object.defineProperty(p, "defaultProps", { configurable: !0, enumerable: !0, writable: !0, value: { appendRoot: !1 } });var h = p;t.default = h;
+  }, function (e, t, r) {
+    "use strict";
+    Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var n = i(r(1)),
+        a = i(r(0)),
+        o = i(r(3)),
+        l = r(2);function i(e) {
+      return e && e.__esModule ? e : { default: e };
+    }function u(e) {
+      return (u = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
+        return typeof e === "undefined" ? "undefined" : _typeof(e);
+      } : function (e) {
+        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
+      })(e);
+    }function c(e) {
+      return function (e) {
+        if (Array.isArray(e)) {
+          for (var t = 0, r = new Array(e.length); t < e.length; t++) {
+            r[t] = e[t];
+          }return r;
+        }
+      }(e) || function (e) {
+        if (Symbol.iterator in Object(e) || "[object Arguments]" === Object.prototype.toString.call(e)) return Array.from(e);
+      }(e) || function () {
+        throw new TypeError("Invalid attempt to spread non-iterable instance");
+      }();
+    }function s(e, t) {
+      for (var r = 0; r < t.length; r++) {
+        var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+      }
+    }function f(e, t, r) {
+      return t && s(e.prototype, t), r && s(e, r), e;
+    }function d(e) {
+      if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e;
+    }var p = function (e) {
+      function t(e) {
+        var r, n;return function (e, t) {
+          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+        }(this, t), this, n = (t.__proto__ || Object.getPrototypeOf(t)).call(this, e), r = !n || "object" !== u(n) && "function" != typeof n ? d(this) : n, Object.defineProperty(d(r), "handleChangePage", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            var t,
+                n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null,
+                a = r.props.currentPage,
+                o = r.state.totalPage;null !== n ? "next" === n ? a += 1 : a -= 1 : a = parseInt(e.target.value, 10) - 1, a < 0 && (a = 0), a > o - 1 && (a = o - 1), t = a + 1, null === n && Number.isNaN(a) && (a = 0, t = ""), r.setState({ viewPage: t }), r.props.handleChangePage(a);
+          } }), Object.defineProperty(d(r), "handlePageKeyBoard", { configurable: !0, enumerable: !0, writable: !0, value: function value(e, t) {
+            13 !== e.keyCode && 32 !== e.keyCode || r.handleChangePage({}, t);
+          } }), Object.defineProperty(d(r), "handleChangeValue", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            r.props.handleChangeValue(e);
+          } }), Object.defineProperty(d(r), "handleValueKeyboard", { configurable: !0, enumerable: !0, writable: !0, value: function value(e, t) {
+            13 !== e.keyCode && 32 !== e.keyCode || r.handleChangeValue(t);
+          } }), r.state = { viewPage: r.props.currentPage + 1 }, r;
+      }return function (e, t) {
+        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+      }(t, n.default.PureComponent), f(t, null, [{ key: "getDerivedStateFromProps", value: function value(e, r) {
+          var n = t.getCategoryFilteredState(e.currentCategory, e.categories, e.icons),
+              a = t.getCategoryFilteredState(e.currentCategory, e.categories, null === e.search ? e.icons : e.search),
+              o = t.getActiveIcons(n, a, e.currentSearch),
+              l = o.activeIcons,
+              i = o.activeTitles,
+              u = e.currentPage,
+              c = e.iconsPerPage,
+              s = { iconView: t.getCurrentViewIcons(l, c, u), titleView: t.getCurrentViewIcons(i, c, u), totalPage: Math.ceil(l.length / c) };return "" !== r.viewPage && (s.viewPage = e.currentPage + 1), s;
+        } }, { key: "getActiveIcons", value: function value(e, t, r) {
+          var n = c(e),
+              a = c(t);if ("" === r || null === r) return { activeIcons: n, activeTitles: a };var o = [],
+              i = [];return n.forEach(function (e, n) {
+            (0, l.fuzzySearch)(r, t[n]) && (o.push(e), i.push(t[n]));
+          }), { activeIcons: o, activeTitles: i };
+        } }, { key: "getCategoryFilteredState", value: function value(e, t, r) {
+          var n = null,
+              a = (0, l.getSourceType)(r);if (Array.isArray(t)) {
+            if ("object" !== a) throw new l.InvalidSourceException(a, "object");
+          } else if ("array" !== a) throw new l.InvalidSourceException(a, "array");return 0 !== e && Array.isArray(t) && (n = t[e] || null), (0, l.flattenPossiblyCategorizedSource)(r, n);
+        } }, { key: "getCurrentViewIcons", value: function value(e, t, r) {
+          var n = r * t,
+              a = (r + 1) * t;return e.slice(n, a);
+        } }]), f(t, [{ key: "renderPager", value: function value() {
+          var e = this;if (this.state.totalPage < 1) return null;var t = this.props.currentPage > 0 ? n.default.createElement("span", { className: "rfipicons__left", role: "button", tabIndex: 0, onKeyDown: function onKeyDown(t) {
+              return e.handlePageKeyBoard(t, "prev");
+            }, onClick: function onClick(t) {
+              return e.handleChangePage(t, "prev");
+            } }, n.default.createElement("span", { role: "presentation", className: "rfipicons__label", "aria-label": "Left" }, n.default.createElement("i", { className: "fipicon-angle-left" }))) : null,
+              r = this.props.currentPage < this.state.totalPage - 1 ? n.default.createElement("span", { className: "rfipicons__right", role: "button", tabIndex: 0, onKeyDown: function onKeyDown(t) {
+              return e.handlePageKeyBoard(t, "next");
+            }, onClick: function onClick(t) {
+              return e.handleChangePage(t, "next");
+            } }, n.default.createElement("span", { role: "presentation", className: "rfipicons__label", "aria-label": "Right" }, n.default.createElement("i", { className: "fipicon-angle-right" }))) : null;return n.default.createElement("div", { className: "rfipicons__pager" }, n.default.createElement("div", { className: "rfipicons__num" }, n.default.createElement("input", { value: this.state.viewPage, onChange: this.handleChangePage, className: "rfipicons__cp", type: "tel", min: 1 }), n.default.createElement("span", { className: "rfipicons__sp" }, "/"), n.default.createElement("span", { className: "rfipicons__tp" }, this.state.totalPage)), n.default.createElement("div", { className: "rfipicons__arrow" }, t, r));
+        } }, { key: "renderIconView", value: function value() {
+          var e = this;return this.state.totalPage > 0 ? this.state.iconView.map(function (t, r) {
+            var a = (0, o.default)("rfipicons__icon", { "rfipicons__icon--selected": e.props.value === t || Array.isArray(e.props.value) && e.props.value.includes(t) });return n.default.createElement("span", { className: a, key: t, title: e.state.titleView[r] }, n.default.createElement("span", { className: "rfipicons__ibox", tabIndex: 0, role: "button", onClick: function onClick() {
+                return e.handleChangeValue(t);
+              }, onKeyDown: function onKeyDown(r) {
+                return e.handleValueKeyboard(r, t);
+              } }, e.props.renderIcon(t)));
+          }) : n.default.createElement("span", { className: "rfipicons__icon--error" }, n.default.createElement("span", { className: "rfipicons__ibox--error" }, this.props.noIconPlaceholder));
+        } }, { key: "render", value: function value() {
+          return n.default.createElement("div", { className: "rfipicons" }, this.renderPager(), n.default.createElement("div", { className: "rfipicons__selector" }, this.renderIconView()));
+        } }]), t;
+    }();Object.defineProperty(p, "propTypes", { configurable: !0, enumerable: !0, writable: !0, value: { categories: a.default.arrayOf(a.default.string), currentCategory: a.default.number, isMulti: a.default.bool.isRequired, icons: a.default.oneOfType([a.default.arrayOf(a.default.string), a.default.arrayOf(a.default.number), a.default.objectOf(a.default.oneOfType([a.default.arrayOf(a.default.number), a.default.arrayOf(a.default.string)]))]).isRequired, search: a.default.oneOfType([a.default.objectOf(a.default.arrayOf(a.default.string)), a.default.arrayOf(a.default.string)]), value: a.default.oneOfType([a.default.number, a.default.string, a.default.arrayOf(a.default.oneOfType([a.default.number, a.default.string]))]).isRequired, currentSearch: a.default.string.isRequired, handleChangeValue: a.default.func.isRequired, currentPage: a.default.number.isRequired, iconsPerPage: a.default.number.isRequired, handleChangePage: a.default.func.isRequired, renderIcon: a.default.func.isRequired, noIconPlaceholder: a.default.string.isRequired } }), Object.defineProperty(p, "defaultProps", { configurable: !0, enumerable: !0, writable: !0, value: { categories: null, currentCategory: null, search: null } });var h = p;t.default = h;
+  }, function (e, t, r) {
+    "use strict";
+    Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var n = o(r(1)),
+        a = o(r(0));function o(e) {
+      return e && e.__esModule ? e : { default: e };
+    }var l = function l(e) {
+      return n.default.createElement("div", { className: "rfipsearch" }, n.default.createElement("input", { type: "text", className: "rfipsearch__input", value: e.value, onChange: e.handleSearch, placeholder: e.placeholder }));
+    };l.propTypes = { handleSearch: a.default.func.isRequired, value: a.default.string.isRequired, placeholder: a.default.string.isRequired };var i = l;t.default = i;
+  }, function (e, t, r) {
+    "use strict";
+    Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var n = o(r(1)),
+        a = o(r(0));function o(e) {
+      return e && e.__esModule ? e : { default: e };
+    }function l(e) {
+      return (l = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
+        return typeof e === "undefined" ? "undefined" : _typeof(e);
+      } : function (e) {
+        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
+      })(e);
+    }function i(e, t) {
+      for (var r = 0; r < t.length; r++) {
+        var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+      }
+    }var u = function (e) {
+      function t() {
+        return function (e, t) {
+          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+        }(this, t), function (e, t) {
+          return !t || "object" !== l(t) && "function" != typeof t ? function (e) {
+            if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e;
+          }(e) : t;
+        }(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments));
+      }var r, a;return function (e, t) {
+        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+      }(t, n.default.PureComponent), r = t, (a = [{ key: "render", value: function value() {
+          return n.default.createElement("div", { className: "rfipcategory" }, n.default.createElement("select", { className: "rfipcategory__select", onChange: this.props.handleCategory, value: this.props.value }, this.props.categories.map(function (e, t) {
+            return n.default.createElement("option", { className: "rfipcategory__select__option", key: e, value: t }, e);
+          })), n.default.createElement("i", { className: "fipicon-angle-down", role: "presentation", "aria-label": "Open" }));
+        } }]) && i(r.prototype, a), t;
+    }();Object.defineProperty(u, "propTypes", { configurable: !0, enumerable: !0, writable: !0, value: { handleCategory: a.default.func.isRequired, value: a.default.number.isRequired, categories: a.default.arrayOf(a.default.string).isRequired } });var c = u;t.default = c;
+  }, function (e, t, r) {
+    "use strict";
+    Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var n = c(r(1)),
+        a = c(r(0)),
+        o = c(r(10)),
+        l = c(r(9)),
+        i = c(r(8)),
+        u = r(2);function c(e) {
+      return e && e.__esModule ? e : { default: e };
+    }function s(e) {
+      return (s = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
+        return typeof e === "undefined" ? "undefined" : _typeof(e);
+      } : function (e) {
+        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
+      })(e);
+    }function f(e, t) {
+      for (var r = 0; r < t.length; r++) {
+        var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+      }
+    }function d(e, t, r) {
+      return t && f(e.prototype, t), r && f(e, r), e;
+    }function p(e) {
+      if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e;
+    }var h = function (e) {
+      function t(e) {
+        var r, n;return function (e, t) {
+          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+        }(this, t), this, n = (t.__proto__ || Object.getPrototypeOf(t)).call(this, e), r = !n || "object" !== s(n) && "function" != typeof n ? p(this) : n, Object.defineProperty(p(r), "handleCategory", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            var t = parseInt(e.target.value, 10);Number.isNaN(t) && (t = 0), r.props.handleChangeCategory(t), r.props.handleChangePage(0);
+          } }), Object.defineProperty(p(r), "handleSearch", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            var t = e.target.value;r.props.handleChangeSearch(t);
+          } }), r.state = {}, r;
+      }return function (e, t) {
+        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+      }(t, n.default.PureComponent), d(t, null, [{ key: "getDerivedStateFromProps", value: function value(e) {
+          var t = (0, u.getPossibleCategories)(e.icons);return null !== t && (t = [e.allCatPlaceholder].concat(function (e) {
+            return function (e) {
+              if (Array.isArray(e)) {
+                for (var t = 0, r = new Array(e.length); t < e.length; t++) {
+                  r[t] = e[t];
+                }return r;
+              }
+            }(e) || function (e) {
+              if (Symbol.iterator in Object(e) || "[object Arguments]" === Object.prototype.toString.call(e)) return Array.from(e);
+            }(e) || function () {
+              throw new TypeError("Invalid attempt to spread non-iterable instance");
+            }();
+          }(t))), { categories: t, searchString: e.currentSearch };
+        } }]), d(t, [{ key: "render", value: function value() {
+          return n.default.createElement("div", { className: "rfipdropdown__selector" }, this.props.showSearch ? n.default.createElement(l.default, { handleSearch: this.handleSearch, value: this.state.searchString, placeholder: this.props.searchPlaceholder }) : null, this.props.showCategory && this.state.categories && this.state.categories.length ? n.default.createElement(o.default, { handleCategory: this.handleCategory, value: this.props.currentCategory, categories: this.state.categories }) : null, n.default.createElement(i.default, { categories: this.state.categories, currentCategory: this.props.currentCategory, isMulti: this.props.isMulti, icons: this.props.icons, search: this.props.search, value: this.props.value, currentSearch: this.props.currentSearch, handleChangeValue: this.props.handleChangeValue, currentPage: this.props.currentPage, iconsPerPage: this.props.iconsPerPage, handleChangePage: this.props.handleChangePage, renderIcon: this.props.renderIcon, noIconPlaceholder: this.props.noIconPlaceholder }));
+        } }]), t;
+    }();Object.defineProperty(h, "propTypes", { configurable: !0, enumerable: !0, writable: !0, value: { isMulti: a.default.bool.isRequired, value: a.default.oneOfType([a.default.number, a.default.string, a.default.arrayOf(a.default.any)]).isRequired, currentCategory: a.default.number.isRequired, currentPage: a.default.number.isRequired, currentSearch: a.default.string.isRequired, icons: a.default.oneOfType([a.default.arrayOf(a.default.number), a.default.arrayOf(a.default.string), a.default.objectOf(a.default.oneOfType([a.default.arrayOf(a.default.number), a.default.arrayOf(a.default.string)]))]).isRequired, search: a.default.oneOfType([a.default.object, a.default.arrayOf(a.default.string)]), showCategory: a.default.bool.isRequired, showSearch: a.default.bool.isRequired, iconsPerPage: a.default.number.isRequired, allCatPlaceholder: a.default.string.isRequired, searchPlaceholder: a.default.string.isRequired, noIconPlaceholder: a.default.string.isRequired, renderIcon: a.default.func.isRequired, handleChangeValue: a.default.func.isRequired, handleChangeCategory: a.default.func.isRequired, handleChangePage: a.default.func.isRequired, handleChangeSearch: a.default.func.isRequired } }), Object.defineProperty(h, "defaultProps", { configurable: !0, enumerable: !0, writable: !0, value: { search: null } });var y = h;t.default = y;
+  }, function (e, t, r) {
+    "use strict";
+    Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var n = l(r(1)),
+        a = l(r(0)),
+        o = l(r(3));function l(e) {
+      return e && e.__esModule ? e : { default: e };
+    }function i(e) {
+      return (i = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
+        return typeof e === "undefined" ? "undefined" : _typeof(e);
+      } : function (e) {
+        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
+      })(e);
+    }function u() {
+      return (u = Object.assign || function (e) {
+        for (var t = 1; t < arguments.length; t++) {
+          var r = arguments[t];for (var n in r) {
+            Object.prototype.hasOwnProperty.call(r, n) && (e[n] = r[n]);
+          }
+        }return e;
+      }).apply(this, arguments);
+    }function c(e, t) {
+      for (var r = 0; r < t.length; r++) {
+        var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+      }
+    }function s(e, t) {
+      return !t || "object" !== i(t) && "function" != typeof t ? f(e) : t;
+    }function f(e) {
+      if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e;
+    }var d = function (e) {
+      function t() {
+        var e, r, a;!function (e, t) {
+          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+        }(this, t);for (var o = arguments.length, l = new Array(o), i = 0; i < o; i++) {
+          l[i] = arguments[i];
+        }return s(a, (r = a = s(this, (e = t.__proto__ || Object.getPrototypeOf(t)).call.apply(e, [this].concat(l))), Object.defineProperty(f(a), "handleClick", { configurable: !0, enumerable: !0, writable: !0, value: function value() {
+            a.props.onClick();
+          } }), Object.defineProperty(f(a), "handleKeyDown", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            32 !== e.keyCode && 13 !== e.keyCode || a.props.onClick();
+          } }), Object.defineProperty(f(a), "handleDelete", { configurable: !0, enumerable: !0, writable: !0, value: function value(e, t) {
+            e.stopPropagation(), a.props.handleDeleteValue(t);
+          } }), Object.defineProperty(f(a), "handleDeleteKeyboard", { configurable: !0, enumerable: !0, writable: !0, value: function value(e, t) {
+            32 !== e.keyCode && 13 !== e.keyCode || a.props.handleDeleteValue(t);
+          } }), Object.defineProperty(f(a), "renderEmptyIcon", { configurable: !0, enumerable: !0, writable: !0, value: function value() {
+            return n.default.createElement("span", { className: "rfipbtn__icon--empty" }, a.props.noSelectedPlaceholder);
+          } }), r));
+      }var r, a;return function (e, t) {
+        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+      }(t, n.default.PureComponent), r = t, (a = [{ key: "renderIcon", value: function value(e) {
+          var t = this;return "" === e || null === e || void 0 === e ? this.renderEmptyIcon() : n.default.createElement("span", { className: "rfipbtn__icon", key: e }, n.default.createElement("span", { className: "rfipbtn__elm" }, this.props.renderIcon(e)), n.default.createElement("span", { className: "rfipbtn__del", onClick: function onClick(r) {
+              return t.handleDelete(r, e);
+            }, onKeyDown: function onKeyDown(r) {
+              return t.handleDeleteKeyboard(r, e);
+            }, tabIndex: 0, role: "button" }, "×"));
+        } }, { key: "renderCurrentIcons", value: function value() {
+          var e = this;return this.props.isMulti ? this.props.value.length ? this.props.value.map(function (t) {
+            return e.renderIcon(t);
+          }) : this.renderEmptyIcon() : this.renderIcon(this.props.value);
+        } }, { key: "render", value: function value() {
+          var e = { onClick: this.handleClick, onKeyDown: this.handleKeyDown, onFocus: this.handleFocus, onBlur: this.handleBlur, tabIndex: 0 },
+              t = (0, o.default)("rfipbtn__button", "rfipbtn__button--".concat(this.props.isOpen ? "open" : "close")),
+              r = (0, o.default)(this.props.className);return n.default.createElement("div", u({ className: r, ref: this.props.domRef }, e), n.default.createElement("div", { className: "rfipbtn__current" }, this.renderCurrentIcons()), n.default.createElement("div", { className: t }, n.default.createElement("i", { className: "fipicon-angle-down", role: "presentation", "aria-label": "Open" })));
+        } }]) && c(r.prototype, a), t;
+    }();Object.defineProperty(d, "propTypes", { configurable: !0, enumerable: !0, writable: !0, value: { className: a.default.string.isRequired, isOpen: a.default.bool.isRequired, onClick: a.default.func.isRequired, domRef: a.default.object.isRequired, isMulti: a.default.bool.isRequired, value: a.default.oneOfType([a.default.number, a.default.string, a.default.arrayOf(a.default.oneOfType([a.default.number, a.default.string]))]).isRequired, renderIcon: a.default.func.isRequired, handleDeleteValue: a.default.func.isRequired, noSelectedPlaceholder: a.default.string.isRequired } });var p = d;t.default = p;
+  }, function (e, t) {
+    e.exports = a;
+  }, function (e, t, r) {
+    "use strict";
+    Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var n = f(r(1)),
+        a = f(r(0)),
+        o = f(r(3)),
+        l = r(13),
+        i = f(r(12)),
+        u = f(r(11)),
+        c = f(r(7)),
+        s = r(2);function f(e) {
+      return e && e.__esModule ? e : { default: e };
+    }function d(e) {
+      return (d = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
+        return typeof e === "undefined" ? "undefined" : _typeof(e);
+      } : function (e) {
+        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
+      })(e);
+    }function p(e) {
+      return function (e) {
+        if (Array.isArray(e)) {
+          for (var t = 0, r = new Array(e.length); t < e.length; t++) {
+            r[t] = e[t];
+          }return r;
+        }
+      }(e) || function (e) {
+        if (Symbol.iterator in Object(e) || "[object Arguments]" === Object.prototype.toString.call(e)) return Array.from(e);
+      }(e) || function () {
+        throw new TypeError("Invalid attempt to spread non-iterable instance");
+      }();
+    }function h(e, t, r) {
+      return t in e ? Object.defineProperty(e, t, { value: r, enumerable: !0, configurable: !0, writable: !0 }) : e[t] = r, e;
+    }function y(e, t) {
+      for (var r = 0; r < t.length; r++) {
+        var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+      }
+    }function b(e, t, r) {
+      return t && y(e.prototype, t), r && y(e, r), e;
+    }function g(e) {
+      if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e;
+    }var m = [],
+        v = "",
+        P = function (e) {
+      function t(e) {
+        var r, a;return function (e, t) {
+          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+        }(this, t), this, a = (t.__proto__ || Object.getPrototypeOf(t)).call(this, e), r = !a || "object" !== d(a) && "function" != typeof a ? g(this) : a, Object.defineProperty(g(r), "handleOuterClick", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            var t = e.target;r.isClickWithin(t) || r.closeDropdown();
+          } }), Object.defineProperty(g(r), "handleEscapeKeyboard", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            27 === e.keyCode && r.closeDropdown();
+          } }), Object.defineProperty(g(r), "isClickWithin", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            return r.fipButtonRef.current.contains(e) || r.fipDropDownRef.current && r.fipDropDownRef.current.contains(e);
+          } }), Object.defineProperty(g(r), "handleToggle", { configurable: !0, enumerable: !0, writable: !0, value: function value() {
+            r.setState(function (e) {
+              return r.handleDropDown(!e.isOpen, !1);
+            });
+          } }), Object.defineProperty(g(r), "closeDropdown", { configurable: !0, enumerable: !0, writable: !0, value: function value() {
+            r.handleDropDown(!1);
+          } }), Object.defineProperty(g(r), "handleDropDown", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            var n = !(arguments.length > 1 && void 0 !== arguments[1]) || arguments[1],
+                a = { isOpen: e };return a.elemClass = t.getDerivedClassName("rfip", r.props.theme, r.props.isMulti, e), a.btnClass = t.getDerivedClassName("rfipbtn", r.props.theme, r.props.isMulti, e), a.ddClass = t.getDerivedClassName("rfipdropdown", r.props.theme, r.props.isMulti, e), n && r.setState(a), a;
+          } }), Object.defineProperty(g(r), "handleChangeValue", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            var t;r.props.isMulti ? (t = p(r.state.value)).includes(e) ? (t = t.filter(function (t) {
+              return t !== e;
+            })).length || (t = m) : t.push(e) : t = e === r.state.value ? v : e, r.setState({ value: t, isOpen: !r.props.closeOnSelect }), r.props.onChange(t);
+          } }), Object.defineProperty(g(r), "handleDeleteValue", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            var n;n = r.props.isMulti ? r.state.value.filter(function (t) {
+              return t !== e;
+            }) : t.getDerivedValue(n, r.props.isMulti), r.setState({ value: n }), r.props.onChange(n);
+          } }), Object.defineProperty(g(r), "handleChangePage", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            r.setState({ currentPage: e });
+          } }), Object.defineProperty(g(r), "handleChangeCategory", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            r.setState({ currentCategory: e, currentPage: 0 });
+          } }), Object.defineProperty(g(r), "handleChangeSearch", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            r.setState({ currentSearch: e, currentPage: 0 });
+          } }), Object.defineProperty(g(r), "resetPortalStyle", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            ["maxHeight", "paddingTop", "paddingBottom"].forEach(function (t) {
+              e.style[t] = null;
+            });
+          } }), Object.defineProperty(g(r), "handlePortalEnter", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            var t = e.childNodes[0];r.resetPortalStyle(t);var n = getComputedStyle(t);r.fipPortalComputedStyle = { height: n.height, paddingTop: n.paddingTop, paddingBottom: n.paddingBottom }, ["maxHeight", "paddingTop", "paddingBottom"].forEach(function (e) {
+              t.style[e] = "0px";
+            });
+          } }), Object.defineProperty(g(r), "handlePortalEntering", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            var t = e.childNodes[0];t.style.maxHeight = r.fipPortalComputedStyle.height, t.style.paddingTop = r.fipPortalComputedStyle.paddingTop, t.style.paddingBottom = r.fipPortalComputedStyle.paddingBottom;
+          } }), Object.defineProperty(g(r), "handlePortalEntered", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            var t = e.childNodes[0];r.resetPortalStyle(t), r.props.showSearch && void 0 === window.orientation && -1 === navigator.userAgent.indexOf("IEMobile") && t.querySelector(".rfipsearch__input").focus();
+          } }), Object.defineProperty(g(r), "handlePortalExit", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            var t = e.childNodes[0];r.resetPortalStyle(t);var n = getComputedStyle(t).height;t.style.maxHeight = n;
+          } }), Object.defineProperty(g(r), "handlePortalExiting", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            var t = e.childNodes[0];t.style.maxHeight = "0px", t.style.paddingTop = "0px", t.style.paddingBottom = "0px";
+          } }), Object.defineProperty(g(r), "renderIcon", { configurable: !0, enumerable: !0, writable: !0, value: function value(e) {
+            if ("function" == typeof r.props.renderFunc) return r.props.renderFunc(e);if ("class" === r.props.renderUsing) return n.default.createElement("i", { className: e });var t = h({}, r.props.renderUsing, r.props.convertHex ? (0, s.convertToHex)(e) : e);return n.default.createElement("i", t);
+          } }), r.fipButtonRef = n.default.createRef(), r.fipDropDownRef = n.default.createRef(), r.state = { currentCategory: 0, currentPage: 0, isOpen: !1, currentSearch: "" }, r.fipPortalComputedStyle = null, r;
+      }return function (e, t) {
+        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+      }(t, n.default.PureComponent), b(t, null, [{ key: "getDerivedStateFromProps", value: function value(e, r) {
+          var n = {};return n.elemClass = t.getDerivedClassName("rfip", e.theme, e.isMulti, r.isOpen), n.btnClass = t.getDerivedClassName("rfipbtn", e.theme, e.isMulti, r.isOpen), n.ddClass = t.getDerivedClassName("rfipdropdown", e.theme, e.isMulti, r.isOpen), n.value = t.getDerivedValue(e.value, e.isMulti), e.showCategory || (n.currentCategory = 0, n.currentPage = 0), e.showSearch || (n.currentSearch = "", n.currentPage = 0), n;
+        } }, { key: "getDerivedClassName", value: function value(e, t, r, n) {
+          return (0, o.default)(e, "".concat(e, "--").concat(t), h({}, "".concat(e, "--multi"), r), "".concat(e, "--").concat(n ? "open" : "close"));
+        } }, { key: "getDerivedValue", value: function value(e, t) {
+          var r = e;return t ? r = Array.isArray(e) ? p(e) : m : "number" != typeof e && "string" != typeof e && (r = v), r;
+        } }]), b(t, [{ key: "componentDidMount", value: function value() {
+          var e = this;["click"].forEach(function (t) {
+            document.addEventListener(t, e.handleOuterClick, !1);
+          }), document.addEventListener("keydown", this.handleEscapeKeyboard, !1), this.props.onChange(this.state.value);
+        } }, { key: "componentWillUnmount", value: function value() {
+          var e = this;["click"].forEach(function (t) {
+            document.removeEventListener(t, e.handleOuterClick, !1);
+          }), document.removeEventListener("keydown", this.handleEscapeKeyboard, !1);
+        } }, { key: "render", value: function value() {
+          var e = { currentCategory: this.state.currentCategory, currentPage: this.state.currentPage, currentSearch: this.state.currentSearch, value: this.state.value, isMulti: this.props.isMulti, icons: this.props.icons, search: this.props.search, showCategory: this.props.showCategory, showSearch: this.props.showSearch, iconsPerPage: this.props.iconsPerPage, allCatPlaceholder: this.props.allCatPlaceholder, searchPlaceholder: this.props.searchPlaceholder, noIconPlaceholder: this.props.noIconPlaceholder, renderIcon: this.renderIcon, handleChangeValue: this.handleChangeValue, handleChangeCategory: this.handleChangeCategory, handleChangePage: this.handleChangePage, handleChangeSearch: this.handleChangeSearch };return n.default.createElement("div", { className: this.state.elemClass, ref: this.fipRef }, n.default.createElement(i.default, { className: this.state.btnClass, isOpen: this.state.isOpen, onClick: this.handleToggle, domRef: this.fipButtonRef, isMulti: this.props.isMulti, value: this.state.value, renderIcon: this.renderIcon, handleDeleteValue: this.handleDeleteValue, noSelectedPlaceholder: this.props.noSelectedPlaceholder }), n.default.createElement(l.CSSTransition, { classNames: "fipappear", timeout: 300, in: this.state.isOpen, unmountOnExit: !0, onEnter: this.handlePortalEnter, onEntering: this.handlePortalEntering, onEntered: this.handlePortalEntered, onExit: this.handlePortalExit, onExiting: this.handlePortalExiting }, n.default.createElement(c.default, { appendRoot: this.props.appendTo, domRef: this.fipDropDownRef, btnRef: this.fipButtonRef, className: this.state.ddClass }, n.default.createElement(u.default, e))));
+        } }]), t;
+    }();Object.defineProperty(P, "propTypes", { configurable: !0, enumerable: !0, writable: !0, value: { icons: a.default.oneOfType([a.default.arrayOf(a.default.string), a.default.arrayOf(a.default.number), a.default.objectOf(a.default.oneOfType([a.default.arrayOf(a.default.number), a.default.arrayOf(a.default.string)]))]).isRequired, search: a.default.oneOfType([a.default.objectOf(a.default.arrayOf(a.default.string)), a.default.arrayOf(a.default.string)]), iconsPerPage: a.default.number, theme: a.default.string, onChange: a.default.func.isRequired, showCategory: a.default.bool, showSearch: a.default.bool, value: a.default.oneOfType([a.default.arrayOf(a.default.string), a.default.arrayOf(a.default.number), a.default.number, a.default.string]), isMulti: a.default.bool, renderUsing: a.default.string, convertHex: a.default.bool, renderFunc: a.default.func, appendTo: a.default.oneOfType([a.default.bool, a.default.string]), allCatPlaceholder: a.default.string, searchPlaceholder: a.default.string, noIconPlaceholder: a.default.string, noSelectedPlaceholder: a.default.string, closeOnSelect: a.default.bool } }), Object.defineProperty(P, "defaultProps", { configurable: !0, enumerable: !0, writable: !0, value: { search: null, iconsPerPage: 20, theme: "default", showCategory: !0, showSearch: !0, value: null, isMulti: !1, renderUsing: "class", convertHex: !0, renderFunc: null, appendTo: !1, allCatPlaceholder: "Show from all", searchPlaceholder: "Search Icons", noIconPlaceholder: "No icons found", noSelectedPlaceholder: "Select icon", closeOnSelect: !1 } }), Object.defineProperty(P, "displayName", { configurable: !0, enumerable: !0, writable: !0, value: "FontIconPicker" });var O = P;t.default = O;
+  }, function (e, t, r) {
+    "use strict";
+    var n;Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var a = ((n = r(14)) && n.__esModule ? n : { default: n }).default;t.default = a;
+  }]).default;
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44)(module)))
+
+/***/ }),
+/* 44 */
 /***/ (function(module, exports) {
 
 module.exports = function (module) {
@@ -17735,7 +17793,7 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18280,7 +18338,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18341,7 +18399,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18505,7 +18563,7 @@ var X = { Children: { map: function map(a, b, e) {
     Z = Y && X || Y;module.exports = Z.default || Z;
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20390,7 +20448,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20412,7 +20470,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var aa = __webpack_require__(5),
     n = __webpack_require__(7),
-    ba = __webpack_require__(19);function ca(a, b, c, d, e, f, g, h) {
+    ba = __webpack_require__(18);function ca(a, b, c, d, e, f, g, h) {
   if (!a) {
     a = void 0;if (void 0 === b) a = Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else {
       var k = [c, d, e, f, g, h],
@@ -22527,7 +22585,7 @@ var li = { default: ki },
     mi = li && ki || li;module.exports = mi.default || mi;
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22721,10 +22779,10 @@ exports.unstable_shouldYield = function () {
 };exports.unstable_pauseExecution = function () {};exports.unstable_getFirstCallbackNode = function () {
   return c;
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)))
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23431,10 +23489,10 @@ if (process.env.NODE_ENV !== "production") {
     exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
   })();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(20)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(19)))
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23445,7 +23503,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(5);var _assign=__webpack_require__(7);var checkPropTypes=__webpack_require__(14);var scheduler=__webpack_require__(19);var tracing=__webpack_require__(54);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(5);var _assign=__webpack_require__(7);var checkPropTypes=__webpack_require__(14);var scheduler=__webpack_require__(18);var tracing=__webpack_require__(53);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -27216,21 +27274,21 @@ var reactDom=ReactDOM$3.default||ReactDOM$3;module.exports=reactDom;})();}
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(55);
+  module.exports = __webpack_require__(54);
 } else {
-  module.exports = __webpack_require__(56);
+  module.exports = __webpack_require__(55);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27257,7 +27315,7 @@ Object.defineProperty(exports, "__esModule", { value: !0 });var b = 0;exports.__
 };exports.unstable_subscribe = function () {};exports.unstable_unsubscribe = function () {};
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27685,7 +27743,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27696,15 +27754,15 @@ exports.default = void 0;
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(6));
 
-var _addClass = _interopRequireDefault(__webpack_require__(58));
+var _addClass = _interopRequireDefault(__webpack_require__(57));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(61));
+var _removeClass = _interopRequireDefault(__webpack_require__(60));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
-var _Transition = _interopRequireDefault(__webpack_require__(22));
+var _Transition = _interopRequireDefault(__webpack_require__(21));
 
-var _PropTypes = __webpack_require__(24);
+var _PropTypes = __webpack_require__(23);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -28019,18 +28077,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(59);
+var _interopRequireDefault = __webpack_require__(58);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(60));
+var _hasClass = _interopRequireDefault(__webpack_require__(59));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -28039,7 +28097,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, exports) {
 
 function _interopRequireDefault(obj) {
@@ -28051,7 +28109,7 @@ function _interopRequireDefault(obj) {
 module.exports = _interopRequireDefault;
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28067,7 +28125,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 61 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28082,7 +28140,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 62 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28097,7 +28155,7 @@ var _react = _interopRequireDefault(__webpack_require__(5));
 
 var _reactDom = __webpack_require__(11);
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(25));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(24));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -28249,7 +28307,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 63 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28402,6 +28460,18 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
   });
   return children;
 }
+
+/***/ }),
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var iconsList = {
+  Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
+  "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (iconsList);
 
 /***/ })
 /******/ ]);

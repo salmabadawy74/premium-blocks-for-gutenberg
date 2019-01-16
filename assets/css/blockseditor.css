@@ -37,7 +37,9 @@
 .components-panel__body .premium-panel-body-inner.is-opened {
   padding-left: 26px;
 }
-
+.premium-text-control .components-base-control__help {
+  word-break: break-word;
+}
 /**************** Premium Dual Heading *****************/
 /*******************************************************/
 .premium-dheading-block__container .premium-dheading-block__title {

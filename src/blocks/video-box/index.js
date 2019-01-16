@@ -52,6 +52,10 @@ if (videoBox) {
       type: "boolean",
       default: true
     },
+    relatedVideos: {
+      type: "boolean",
+      default: false
+    },
     mute: {
       type: "boolean",
       default: false
@@ -145,6 +149,15 @@ if (videoBox) {
     },
     videoDescWeight: {
       type: "number"
+    },
+    videoDescLetter: {
+      type: "number"
+    },
+    videoDescStyle: {
+      type: "string"
+    },
+    videoDescUpper: {
+      type: "boolean"
     },
     videoDescColor: {
       type: "string"
@@ -280,6 +293,7 @@ if (videoBox) {
         autoPlay,
         loop,
         controls,
+        relatedVideos,
         mute,
         overlay,
         overlayImgID,
@@ -311,6 +325,9 @@ if (videoBox) {
         videoDescPadding,
         videoDescSize,
         videoDescWeight,
+        videoDescLetter,
+        videoDescStyle,
+        videoDescUpper,
         videoDescBorderRadius,
         boxBorderColor,
         boxBorderWidth,
@@ -390,6 +407,7 @@ if (videoBox) {
               />
               {"self" !== videoType && (
                 <TextControl
+                  className="premium-text-control"
                   label={__("Video URL")}
                   value={videoURL}
                   placeholder={__("Enter Video ID, Embed URL or Video URL")}
@@ -444,6 +462,15 @@ if (videoBox) {
                   label={__("Player Controls")}
                   checked={controls}
                   onChange={newCheck => setAttributes({ controls: newCheck })}
+                />
+              )}
+              {"youtube" === videoType && (
+                <ToggleControl
+                  label={__("Show Related Videos")}
+                  checked={relatedVideos}
+                  onChange={newCheck =>
+                    setAttributes({ relatedVideos: newCheck })
+                  }
                 />
               )}
               <ToggleControl
@@ -553,6 +580,15 @@ if (videoBox) {
                   {playIcon && (
                     <Fragment>
                       <RangeControl
+                        label={__("Size (PX)")}
+                        value={playSize}
+                        onChange={newValue =>
+                          setAttributes({
+                            playSize: newValue === undefined ? 20 : newValue
+                          })
+                        }
+                      />
+                      <RangeControl
                         label={__("Horizontal Offset (%)")}
                         value={playLeft}
                         onChange={newValue =>
@@ -567,15 +603,6 @@ if (videoBox) {
                         onChange={newValue =>
                           setAttributes({
                             playTop: newValue === undefined ? 50 : newValue
-                          })
-                        }
-                      />
-                      <RangeControl
-                        label={__("Size (PX)")}
-                        value={playSize}
-                        onChange={newValue =>
-                          setAttributes({
-                            playSize: newValue === undefined ? 20 : newValue
                           })
                         }
                       />
@@ -661,6 +688,35 @@ if (videoBox) {
                           setAttributes({ videoDescText: newText })
                         }
                       />
+                      <PremiumTypo
+                        components={[
+                          "size",
+                          "weight",
+                          "style",
+                          "upper",
+                          "spacing"
+                        ]}
+                        size={videoDescSize}
+                        weight={videoDescWeight}
+                        onChangeSize={newSize =>
+                          setAttributes({ videoDescSize: newSize })
+                        }
+                        onChangeWeight={newWeight =>
+                          setAttributes({ videoDescWeight: newWeight })
+                        }
+                        style={videoDescStyle}
+                        spacing={videoDescLetter}
+                        upper={videoDescUpper}
+                        onChangeStyle={newStyle =>
+                          setAttributes({ videoDescStyle: newStyle })
+                        }
+                        onChangeSpacing={newValue =>
+                          setAttributes({ videoDescLetter: newValue })
+                        }
+                        onChangeUpper={check =>
+                          setAttributes({ videoDescUpper: check })
+                        }
+                      />
                       <RangeControl
                         label={__("Horizontal Offset (%)")}
                         value={descLeft}
@@ -677,17 +733,6 @@ if (videoBox) {
                           setAttributes({
                             descTop: newValue === undefined ? 50 : newValue
                           })
-                        }
-                      />
-                      <PremiumTypo
-                        components={["size", "weight"]}
-                        size={videoDescSize}
-                        weight={videoDescWeight}
-                        onChangeSize={newSize =>
-                          setAttributes({ videoDescSize: newSize })
-                        }
-                        onChangeWeight={newWeight =>
-                          setAttributes({ videoDescWeight: newWeight })
                         }
                       />
                       <PanelColorSettings
@@ -828,7 +873,9 @@ if (videoBox) {
                   overlay ? 0 : autoPlay
                 }&loop=${loopVideo()}&mute${
                   "vimeo" == videoType ? "d" : ""
-                }=${mute}&controls=${controls ? "1" : "0"}`}
+                }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${
+                  controls ? "1" : "0"
+                }`}
                 frameborder="0"
                 gesture="media"
                 allow="encrypted-media"
@@ -893,7 +940,10 @@ if (videoBox) {
                 className={`${className}__desc_text`}
                 style={{
                   fontSize: videoDescSize + "px",
-                  fontWeight: videoDescWeight
+                  fontWeight: videoDescWeight,
+                  letterSpacing: videoDescLetter + "px",
+                  textTransform: videoDescUpper ? "uppercase" : "none",
+                  fontStyle: videoDescStyle
                 }}
               >
                 <span>{videoDescText}</span>
@@ -919,6 +969,7 @@ if (videoBox) {
         autoPlay,
         loop,
         mute,
+        relatedVideos,
         controls,
         overlay,
         overlayImgURL,
@@ -949,6 +1000,9 @@ if (videoBox) {
         videoDescPadding,
         videoDescSize,
         videoDescWeight,
+        videoDescLetter,
+        videoDescStyle,
+        videoDescUpper,
         videoDescBorderRadius,
         boxBorderColor,
         boxBorderWidth,
@@ -963,13 +1017,14 @@ if (videoBox) {
       const loopVideo = () => {
         if ("youtube" === videoType) {
           if (videoURL.startsWith("http")) {
-            return (
-              (loop ? "1" : "0") +
-              "&playlist=" +
-              videoURL.replace("https://www.youtube.com/embed/", "")
-            );
+            return loop
+              ? `1&playlist=${videoURL.replace(
+                  "https://www.youtube.com/embed/",
+                  ""
+                )}`
+              : "0";
           } else {
-            return (loop ? "1" : "0") + "&playlist=" + videoURL;
+            return loop ? `1&playlist=${videoURL}` : "0";
           }
         } else {
           return loop ? "1" : "0";
@@ -1005,7 +1060,9 @@ if (videoBox) {
                   overlay ? 0 : autoPlay
                 }&loop=${loopVideo()}&mute${
                   "vimeo" == videoType ? "d" : ""
-                }=${mute}&controls=${controls ? "1" : "0"}`}
+                }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${
+                  controls ? "1" : "0"
+                }`}
                 frameborder="0"
                 gesture="media"
                 allow="encrypted-media"
@@ -1070,7 +1127,10 @@ if (videoBox) {
                 className={`${className}__desc_text`}
                 style={{
                   fontSize: videoDescSize + "px",
-                  fontWeight: videoDescWeight
+                  fontWeight: videoDescWeight,
+                  letterSpacing: videoDescLetter + "px",
+                  textTransform: videoDescUpper ? "uppercase" : "none",
+                  fontStyle: videoDescStyle
                 }}
               >
                 <span>{videoDescText}</span>
@@ -1121,6 +1181,9 @@ if (videoBox) {
             videoDescPadding,
             videoDescSize,
             videoDescWeight,
+            videoDescLetter,
+            videoDescStyle,
+            videoDescUpper,
             videoDescBorderRadius,
             boxBorderColor,
             boxBorderWidth,
@@ -1135,13 +1198,14 @@ if (videoBox) {
           const loopVideo = () => {
             if ("youtube" === videoType) {
               if (videoURL.startsWith("http")) {
-                return (
-                  (loop ? "1" : "0") +
-                  "&playlist=" +
-                  videoURL.replace("https://www.youtube.com/embed/", "")
-                );
+                return loop
+                  ? `1&playlist=${videoURL.replace(
+                      "https://www.youtube.com/embed/",
+                      ""
+                    )}`
+                  : "0";
               } else {
-                return (loop ? "1" : "0") + "&playlist=" + videoURL;
+                return loop ? `1&playlist=${videoURL}` : "0";
               }
             } else {
               return loop ? "1" : "0";
@@ -1242,7 +1306,10 @@ if (videoBox) {
                     className={`${className}__desc_text`}
                     style={{
                       fontSize: videoDescSize + "px",
-                      fontWeight: videoDescWeight
+                      fontWeight: videoDescWeight,
+                      letterSpacing: videoDescLetter + "px",
+                      textTransform: videoDescUpper ? "uppercase" : "none",
+                      fontStyle: videoDescStyle
                     }}
                   >
                     <span>{videoDescText}</span>
