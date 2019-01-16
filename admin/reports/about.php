@@ -17,7 +17,7 @@ if( ! class_exists( 'Premium_Guten_About' ) ) {
           add_submenu_page(
             'premium-gutenberg',
             '',
-            esc_html__('About','premium-blocks-for-gutenberg'),
+            __('About','premium-blocks-for-gutenberg'),
             'manage_options',
             'premium-gutenberg-about',
             [ $this, 'pbg_about_page' ]

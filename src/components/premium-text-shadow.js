@@ -1,6 +1,7 @@
 const { __ } = wp.i18n;
 const { PanelBody, RangeControl } = wp.components;
-const { PanelColorSettings } = wp.editor;
+const { Fragment } = wp.element;
+const { ColorPalette } = wp.editor;
 export default function PremiumTextShadow(props) {
   const {
     label,
@@ -20,16 +21,14 @@ export default function PremiumTextShadow(props) {
       className="premium-panel-body premium-panel-body-inner"
       initialOpen={false}
     >
-      <PanelColorSettings
-        title={__("Colors")}
-        colorSettings={[
-          {
-            label: __("Shadow Color"),
-            value: color,
-            onChange: onChangeColor
-          }
-        ]}
-      />
+      <Fragment>
+        <p>{__("Shadow Color")}</p>
+        <ColorPalette
+          value={color}
+          onChange={onChangeColor}
+          allowReset={true}
+        />
+      </Fragment>
       <RangeControl label={__("Blur")} value={blur} onChange={onChangeBlur} />
       <RangeControl
         label={__("Horizontal")}
