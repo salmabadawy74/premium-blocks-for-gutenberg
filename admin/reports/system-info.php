@@ -25,7 +25,7 @@ if( ! class_exists( 'Premium_Guten_System' ) ) {
             add_submenu_page(
                 'premium-gutenberg',
                 '',
-                esc_html__('System Info','premium-blocks-for-gutenberg'),
+                __('System Info','premium-blocks-for-gutenberg'),
                 'manage_options',
                 'premium-gutenberg-system',
                 [$this, 'get_system_info_layout']

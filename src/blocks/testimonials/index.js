@@ -72,6 +72,19 @@ if (testimonial) {
     authorSize: {
       type: "number"
     },
+    authorLetter: {
+      type: "number"
+    },
+    authorStyle: {
+      type: "string"
+    },
+    authorUpper: {
+      type: "boolean"
+    },
+    authorWeight: {
+      type: "number",
+      default: 500
+    },
     authorComTag: {
       type: "string",
       default: "H4"
@@ -152,6 +165,10 @@ if (testimonial) {
         authorTag,
         authorColor,
         authorSize,
+        authorLetter,
+        authorStyle,
+        authorUpper,
+        authorWeight,
         author,
         authorComTag,
         authorCom,
@@ -292,11 +309,25 @@ if (testimonial) {
                 />
 
                 <PremiumTypo
-                  components={["size"]}
+                  components={["size", "weight", "style", "upper", "spacing"]}
                   size={authorSize}
                   onChangeSize={newSize =>
                     setAttributes({ authorSize: newSize })
                   }
+                  weight={authorWeight}
+                  style={authorStyle}
+                  spacing={authorLetter}
+                  upper={authorUpper}
+                  onChangeWeight={newWeight =>
+                    setAttributes({ authorWeight: newWeight })
+                  }
+                  onChangeStyle={newStyle =>
+                    setAttributes({ authorStyle: newStyle })
+                  }
+                  onChangeSpacing={newValue =>
+                    setAttributes({ authorLetter: newValue })
+                  }
+                  onChangeUpper={check => setAttributes({ authorUpper: check })}
                 />
               </PanelBody>
               <PanelColorSettings
@@ -528,7 +559,11 @@ if (testimonial) {
                   onChange={newText => setAttributes({ author: newText })}
                   style={{
                     color: authorColor,
-                    fontSize: authorSize + "px"
+                    fontSize: authorSize + "px",
+                    letterSpacing: authorLetter + "px",
+                    textTransform: authorUpper ? "uppercase" : "none",
+                    fontStyle: authorStyle,
+                    fontWeight: authorWeight
                   }}
                 />
                 <span
@@ -575,6 +610,10 @@ if (testimonial) {
         authorTag,
         authorColor,
         authorSize,
+        authorLetter,
+        authorStyle,
+        authorUpper,
+        authorWeight,
         author,
         authorComTag,
         authorComColor,
@@ -650,7 +689,11 @@ if (testimonial) {
                   value={author}
                   style={{
                     color: authorColor,
-                    fontSize: authorSize + "px"
+                    fontSize: authorSize + "px",
+                    letterSpacing: authorLetter + "px",
+                    textTransform: authorUpper ? "uppercase" : "none",
+                    fontStyle: authorStyle,
+                    fontWeight: authorWeight
                   }}
                 />
                 <span
@@ -728,7 +771,7 @@ if (testimonial) {
                 <span className={`${className}__upper`}>
                   <PremiumUpperQuote
                     size={quotSize}
-                    color="rgba(110,193,228,0.2)"
+                    color={quotColor}
                     opacity={quotOpacity}
                   />
                 </span>
@@ -807,7 +850,7 @@ if (testimonial) {
                 </div>
                 <span className={`${className}__lower`}>
                   <PremiumLowerQuote
-                    color="rgba(110,193,228,0.2)"
+                    color={quotColor}
                     size={quotSize}
                     opacity={quotOpacity}
                   />
