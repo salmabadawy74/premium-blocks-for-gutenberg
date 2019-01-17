@@ -958,7 +958,7 @@ if (videoBox) {
 
   registerBlockType("premium/video-box", {
     title: __("Video Box"),
-    icon: "format-video",
+    icon: <PbgIcon icon="video" />,
     category: "premium-blocks",
     attributes: videoBoxAttrs,
     edit: PremiumVideoBox,
