@@ -28,7 +28,7 @@ Kindly note that the plugin is on it’s early stages and Gutenberg itself is st
 8. [Gutenberg Section Block](https://premiumblocks.io/index.php/gutenberg-blocks/section-block/)
 9. [Gutenberg Testimonials Block](https://premiumblocks.io/index.php/gutenberg-blocks/testimonials-block/)
 10. [Gutenberg Accordion Block](https://premiumblocks.io/index.php/gutenberg-blocks/accordion-block/)
-11. [Gutenberg Icon Box Block]
+11. [Gutenberg Icon Box Block](https://premiumblocks.io/gutenberg-blocks/icon-box-block/)
 
 == Installation ==
 
