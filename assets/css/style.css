@@ -966,19 +966,21 @@ a.premium-dheading-block__link:hover {
 /*
 * Hover Effects
 */
-.premium-icon.premium-icon__pulse:hover {
+.premium-icon__pulse:hover,
+.premium-icon-box:hover .premium-icon__pulse {
   animation: pa-hvr-pulse 0.3s ease-in-out alternate infinite;
   -webkit-animation: pa-hvr-pulse 0.3s ease-in-out alternate infinite;
   -moz-animation: pa-hvr-pulse 0.3s ease-in-out alternate infinite;
   -ms-animation: pa-hvr-pulse 0.3s ease-in-out alternate infinite;
 }
-.premium-icon.premium-icon__buzz:hover {
+.premium-icon__buzz:hover,
+.premium-icon-box:hover .premium-icon__buzz {
   -webkit-animation: pa-hvr-buzz 0.3s ease-out infinite;
   -moz-animation: pa-hvr-buzz 0.3s ease-out infinite;
   -ms-animation: pa-hvr-buzz 0.3s ease-out infinite;
   animation: pa-hvr-buzz 0.3s ease-out infinite;
 }
-.premium-icon__rotate {
+.premium-icon-box .premium-icon__rotate {
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
   -ms-transition: all 0.5s ease-out;
@@ -990,14 +992,14 @@ a.premium-dheading-block__link:hover {
   -o-transform: rotate(0deg);
   transform: rotate(0deg);
 }
-.premium-icon.premium-icon__rotate:hover {
+.premium-icon-box:hover .premium-icon__rotate {
   -webkit-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
   -ms-transform: rotate(360deg);
   -o-transform: rotate(360deg);
   transform: rotate(360deg);
 }
-.premium-icon__drotate {
+.premium-icon-box .premium-icon__drotate {
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
   -ms-transition: all 0.5s ease-out;
@@ -1009,7 +1011,7 @@ a.premium-dheading-block__link:hover {
   -o-transform: rotateY(0deg);
   transform: rotateY(0deg);
 }
-.premium-icon.premium-icon__drotate:hover {
+.premium-icon-box:hover:hover .premium-icon__drotate {
   -webkit-transform: rotateY(360deg);
   -moz-transform: rotateY(360deg);
   -ms-transform: rotateY(360deg);
@@ -1017,7 +1019,7 @@ a.premium-dheading-block__link:hover {
   transform: rotateY(360deg);
 }
 /* Drop Shadow */
-.premium-icon__drop {
+.premium-icon-box .premium-icon__drop {
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: translateZ(0);
@@ -1032,7 +1034,7 @@ a.premium-dheading-block__link:hover {
   -webkit-transition-property: transform;
   transition-property: transform;
 }
-.premium-icon__drop::after {
+.premium-icon-box .premium-icon__drop::after {
   pointer-events: none;
   position: absolute;
   z-index: -1;
@@ -1059,16 +1061,16 @@ a.premium-dheading-block__link:hover {
   -webkit-transition-property: transform, opacity;
   transition-property: transform, opacity;
 }
-.premium-icon.premium-icon__drop:hover {
+.premium-icon-box:hover .premium-icon__drop {
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
 }
-.premium-icon.premium-icon__drop:hover:after {
+.premium-icon-box:hover .premium-icon__drop:after {
   opacity: 1;
   -webkit-transform: translateY(5px);
   transform: translateY(5px);
 }
-.premium-icon.premium-icon__wobble {
+.premium-icon-box .premium-icon__wobble {
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: translateZ(0);
@@ -1078,7 +1080,7 @@ a.premium-dheading-block__link:hover {
   backface-visibility: hidden;
   -moz-osx-font-smoothing: grayscale;
 }
-.premium-icon.premium-icon__wobble:hover {
+.premium-icon-box:hover .premium-icon__wobble {
   -webkit-animation-name: pa-hvr-wobble;
   animation-name: pa-hvr-wobble;
   -webkit-animation-duration: 1s;
