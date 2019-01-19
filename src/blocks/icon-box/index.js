@@ -55,6 +55,10 @@ if (iconBox) {
     iconImgUrl: {
       type: "string"
     },
+    hoverEffect: {
+      type: "string",
+      default: "none"
+    },
     iconChecked: {
       type: "boolean",
       default: true
@@ -360,6 +364,7 @@ if (iconBox) {
         iconImgUrl,
         iconType,
         selectedIcon,
+        hoverEffect,
         iconSize,
         iconRadius,
         iconColor,
@@ -453,6 +458,37 @@ if (iconBox) {
       ];
 
       const ALIGNS = ["left", "center", "right"];
+
+      const EFFECTS = [
+        {
+          value: "none",
+          label: __("None")
+        },
+        {
+          value: "pulse",
+          label: __("Pulse")
+        },
+        {
+          value: "rotate",
+          label: __("Rotate")
+        },
+        {
+          value: "drotate",
+          label: __("3D Rotate")
+        },
+        {
+          value: "buzz",
+          label: __("Buzz")
+        },
+        {
+          value: "drop",
+          label: __("Drop Shadow")
+        },
+        {
+          value: "wobble",
+          label: __("Wobble")
+        }
+      ];
 
       return [
         isSelected && (
@@ -562,6 +598,14 @@ if (iconBox) {
                     />
                   </Fragment>
                 )}
+                <SelectControl
+                  label={__("Hover Effect")}
+                  options={EFFECTS}
+                  value={hoverEffect}
+                  onChange={newEffect =>
+                    setAttributes({ hoverEffect: newEffect })
+                  }
+                />
                 <RangeControl
                   label={__("Size (PX)")}
                   value={iconSize}
@@ -1140,7 +1184,7 @@ if (iconBox) {
                   )}
                   {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
                     <i
-                      className={`${selectedIcon} ${className}__icon`}
+                      className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
                       style={{
                         color: iconColor,
                         fontSize: iconSize
@@ -1151,7 +1195,7 @@ if (iconBox) {
               )}
               {"image" === iconImage && iconImgUrl && (
                 <img
-                  className={`${className}__icon`}
+                  className={`${className}__icon premium-icon__${hoverEffect}`}
                   src={`${iconImgUrl}`}
                   alt="Image Icon"
                   style={{
@@ -1268,6 +1312,7 @@ if (iconBox) {
         iconRadius,
         selectedIcon,
         iconChecked,
+        hoverEffect,
         iconSize,
         iconColor,
         titleChecked,
@@ -1389,7 +1434,7 @@ if (iconBox) {
             <div className={`${className}__icon_wrap`}>
               {"icon" === iconImage && selectedIcon && (
                 <i
-                  className={`${selectedIcon} ${className}__icon`}
+                  className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
                   style={{
                     color: iconColor,
                     fontSize: iconSize
@@ -1398,7 +1443,7 @@ if (iconBox) {
               )}
               {"image" === iconImage && iconImgUrl && (
                 <img
-                  className={`${className}__icon`}
+                  className={`${className}__icon premium-icon__${hoverEffect}`}
                   src={`${iconImgUrl}`}
                   alt="Image Icon"
                   style={{
@@ -1516,6 +1561,10 @@ if (iconBox) {
             titleStyle,
             titleUpper,
             titleWeight,
+            titleShadowBlur,
+            titleShadowColor,
+            titleShadowHorizontal,
+            titleShadowVertical,
             titleMarginT,
             titleMarginB,
             descChecked,
@@ -1661,6 +1710,7 @@ if (iconBox) {
                       textTransform: titleUpper ? "uppercase" : "none",
                       fontStyle: titleStyle,
                       fontWeight: titleWeight,
+                      textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                       lineHeight: titleLine + "px"
                     }}
                   />

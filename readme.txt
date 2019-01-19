@@ -5,7 +5,7 @@ Donate link: http://leap13.com
 Requires at least: 4.5
 Tested up to: 5.0.3
 Requires PHP: 5.4
-Stable tag: 1.2.7
+Stable tag: 1.2.8
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -28,7 +28,7 @@ Kindly note that the plugin is on it’s early stages and Gutenberg itself is st
 8. [Gutenberg Section Block](https://premiumblocks.io/index.php/gutenberg-blocks/section-block/)
 9. [Gutenberg Testimonials Block](https://premiumblocks.io/index.php/gutenberg-blocks/testimonials-block/)
 10. [Gutenberg Accordion Block](https://premiumblocks.io/index.php/gutenberg-blocks/accordion-block/)
-11. [Gutenberg Icon Box Block]
+11. [Gutenberg Icon Box Block](https://premiumblocks.io/gutenberg-blocks/icon-box-block/)
 
 == Installation ==
 
@@ -54,6 +54,10 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+
+= 1.2.8 =
+
+- Tweak: Added `Hover Effect` option for icon in Icon Box block.
 
 = 1.2.7 =
 
