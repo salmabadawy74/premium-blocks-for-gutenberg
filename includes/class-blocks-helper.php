@@ -121,7 +121,7 @@ class Premium_Blocks_Integration {
         wp_enqueue_style(
             'pbg-frontend',
             PREMIUM_BLOCKS_URL . 'assets/css/style.css',
-            array(),
+            array('dashicons'),
             PREMIUM_BLOCKS_VERSION
         );
         
