@@ -18,7 +18,8 @@ const {
   ToggleControl,
   IconButton
 } = wp.components;
-const { InspectorControls, PanelColorSettings, MediaUpload } = wp.editor;
+const { InspectorControls, ColorPalette, MediaUpload } = wp.editor;
+
 const { Fragment } = wp.element;
 
 const counterAttrs = {
@@ -448,19 +449,19 @@ registerBlockType("premium/countup", {
                 onChange={newValue => setAttributes({ iconSize: newValue })}
               />
               {"icon" === icon && (
-                <PanelColorSettings
-                  title={__("Colors")}
-                  className="premium-panel-body-inner"
-                  initialOpen={false}
-                  colorSettings={[
-                    {
-                      value: iconColor,
-                      onChange: colorValue =>
-                        setAttributes({ iconColor: colorValue }),
-                      label: __("Icon Color")
+                <Fragment>
+                  <p>{__("Icon Color")}</p>
+                  <ColorPalette
+                    value={iconColor}
+                    onChange={newValue =>
+                      setAttributes({
+                        iconColor:
+                          newValue === undefined ? "transparent" : newValue
+                      })
                     }
-                  ]}
-                />
+                    allowReset={true}
+                  />
+                </Fragment>
               )}
             </PanelBody>
           )}
@@ -484,19 +485,19 @@ registerBlockType("premium/countup", {
                 }
               />
             </PanelBody>
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  value: numberColor,
-                  onChange: colorValue =>
-                    setAttributes({ numberColor: colorValue }),
-                  label: __("Number Color")
+            <Fragment>
+              <p>{__("Number Color")}</p>
+              <ColorPalette
+                value={numberColor}
+                onChange={newValue =>
+                  setAttributes({
+                    numberColor:
+                      newValue === undefined ? "transparent" : newValue
+                  })
                 }
-              ]}
-            />
+                allowReset={true}
+              />
+            </Fragment>
           </PanelBody>
           {prefix && (
             <PanelBody
@@ -526,19 +527,19 @@ registerBlockType("premium/countup", {
                   }
                 />
               </PanelBody>
-              <PanelColorSettings
-                title={__("Colors")}
-                className="premium-panel-body-inner"
-                initialOpen={false}
-                colorSettings={[
-                  {
-                    value: prefixColor,
-                    onChange: colorValue =>
-                      setAttributes({ prefixColor: colorValue }),
-                    label: __("Text Color")
+              <Fragment>
+                <p>{__("Text Color")}</p>
+                <ColorPalette
+                  value={prefixColor}
+                  onChange={newValue =>
+                    setAttributes({
+                      prefixColor:
+                        newValue === undefined ? "transparent" : newValue
+                    })
                   }
-                ]}
-              />
+                  allowReset={true}
+                />
+              </Fragment>
               <RangeControl
                 label={__("Gap After (PX)")}
                 value={prefixGap}
@@ -574,19 +575,19 @@ registerBlockType("premium/countup", {
                   }
                 />
               </PanelBody>
-              <PanelColorSettings
-                title={__("Colors")}
-                className="premium-panel-body-inner"
-                initialOpen={false}
-                colorSettings={[
-                  {
-                    value: suffixColor,
-                    onChange: colorValue =>
-                      setAttributes({ suffixColor: colorValue }),
-                    label: __("Text Color")
+              <Fragment>
+                <p>{__("Text Color")}</p>
+                <ColorPalette
+                  value={suffixColor}
+                  onChange={newValue =>
+                    setAttributes({
+                      suffixColor:
+                        newValue === undefined ? "transparent" : newValue
+                    })
                   }
-                ]}
-              />
+                  allowReset={true}
+                />
+              </Fragment>
               <RangeControl
                 label={__("Gap Before (PX)")}
                 value={suffixGap}
@@ -632,19 +633,19 @@ registerBlockType("premium/countup", {
                   onChangeUpper={check => setAttributes({ titleUpper: check })}
                 />
               </PanelBody>
-              <PanelColorSettings
-                title={__("Colors")}
-                className="premium-panel-body-inner"
-                initialOpen={false}
-                colorSettings={[
-                  {
-                    value: titleColor,
-                    onChange: colorValue =>
-                      setAttributes({ titleColor: colorValue }),
-                    label: __("Text Color")
+              <Fragment>
+                <p>{__("Text Color")}</p>
+                <ColorPalette
+                  value={titleColor}
+                  onChange={newValue =>
+                    setAttributes({
+                      titleColor:
+                        newValue === undefined ? "transparent" : newValue
+                    })
                   }
-                ]}
-              />
+                  allowReset={true}
+                />
+              </Fragment>
               <PanelBody
                 title={__("Spacings")}
                 className="premium-panel-body-inner"
@@ -668,19 +669,19 @@ registerBlockType("premium/countup", {
             className="premium-panel-body"
             initialOpen={false}
           >
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  value: containerBack,
-                  onChange: colorValue =>
-                    setAttributes({ containerBack: colorValue }),
-                  label: __("Background Color")
+            <Fragment>
+              <p>{__("Background Color")}</p>
+              <ColorPalette
+                value={containerBack}
+                onChange={newValue =>
+                  setAttributes({
+                    containerBack:
+                      newValue === undefined ? "transparent" : newValue
+                  })
                 }
-              ]}
-            />
+                allowReset={true}
+              />
+            </Fragment>
           </PanelBody>
         </InspectorControls>
       ),

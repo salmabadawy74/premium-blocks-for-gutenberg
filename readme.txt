@@ -5,7 +5,7 @@ Donate link: http://leap13.com
 Requires at least: 4.5
 Tested up to: 5.0.3
 Requires PHP: 5.4
-Stable tag: 1.2.9
+Stable tag: 1.3.0
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -55,7 +55,11 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 == Changelog ==
 
-= 1.2.8 =
+= 1.3.0 =
+
+- Tweak: Changed `PanelColorSettings` to `ColorPalette` for Banner, Icon, Icon Box, Maps, Pricing Table blocks.
+
+= 1.2.9 =
 
 - Tweak: Added `Slide` hover effect option for button in Icon Box block.
 - Tweak: `supports.inserter` is now used to disable blocks.

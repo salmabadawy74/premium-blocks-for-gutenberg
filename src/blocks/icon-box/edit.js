@@ -13,8 +13,6 @@ const className = "premium-icon-box";
 
 const { __ } = wp.i18n;
 
-const { registerBlockType } = wp.blocks;
-
 const {
   PanelBody,
   IconButton,
@@ -30,6 +28,7 @@ const {
   InspectorControls,
   RichText,
   PanelColorSettings,
+  ColorPalette,
   MediaUpload,
   URLInput
 } = wp.editor;
@@ -255,19 +254,19 @@ const edit = props => {
                   appendTo="body"
                   noSelectedPlaceholder={__("Select Icon")}
                 />
-                <PanelColorSettings
-                  title={__("Colors")}
-                  className="premium-panel-body-inner"
-                  initialOpen={false}
-                  colorSettings={[
-                    {
-                      value: iconColor,
-                      onChange: colorValue =>
-                        setAttributes({ iconColor: colorValue }),
-                      label: __("Icon Color")
+                <Fragment>
+                  <p>{__("Icon Color")}</p>
+                  <ColorPalette
+                    value={iconColor}
+                    onChange={newValue =>
+                      setAttributes({
+                        iconColor:
+                          newValue === undefined ? "transparent" : newValue
+                      })
                     }
-                  ]}
-                />
+                    allowReset={true}
+                  />
+                </Fragment>
               </Fragment>
             )}
             {"image" === iconImage && (
@@ -371,18 +370,19 @@ const edit = props => {
                 onChangeUpper={check => setAttributes({ titleUpper: check })}
               />
             </PanelBody>
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  value: titleColor,
-                  onChange: newColor => setAttributes({ titleColor: newColor }),
-                  label: __("Text Color")
+            <Fragment>
+              <p>{__("Text Color")}</p>
+              <ColorPalette
+                value={titleColor}
+                onChange={newValue =>
+                  setAttributes({
+                    titleColor:
+                      newValue === undefined ? "transparent" : newValue
+                  })
                 }
-              ]}
-            />
+                allowReset={true}
+              />
+            </Fragment>
             <PremiumTextShadow
               color={titleShadowColor}
               blur={titleShadowBlur}
@@ -447,18 +447,18 @@ const edit = props => {
                 onChangeLine={newValue => setAttributes({ descLine: newValue })}
               />
             </PanelBody>
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  value: descColor,
-                  onChange: newColor => setAttributes({ descColor: newColor }),
-                  label: __("Text Color")
+            <Fragment>
+              <p>{__("Text Color")}</p>
+              <ColorPalette
+                value={descColor}
+                onChange={newValue =>
+                  setAttributes({
+                    descColor: newValue === undefined ? "transparent" : newValue
+                  })
                 }
-              ]}
-            />
+                allowReset={true}
+              />
+            </Fragment>
             <PanelBody
               title={__("Spacings")}
               className="premium-panel-body-inner"
@@ -673,19 +673,19 @@ const edit = props => {
             className="premium-panel-body-inner"
             initialOpen={false}
           >
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  value: backColor,
-                  onChange: colorValue =>
-                    setAttributes({ backColor: colorValue }),
-                  label: __("Background Color")
+            <Fragment>
+              <p>{__("Background Color")}</p>
+              <ColorPalette
+                value={backColor}
+                onChange={newValue =>
+                  setAttributes({
+                    backColor: newValue === undefined ? "transparent" : newValue
+                  })
                 }
-              ]}
-            />
+                allowReset={true}
+              />
+            </Fragment>
+
             {imageURL && <img src={imageURL} width="100%" height="auto" />}
             <PremiumBackgroud
               imageID={imageID}

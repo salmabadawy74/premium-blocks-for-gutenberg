@@ -28,6 +28,7 @@ const {
   AlignmentToolbar,
   RichText,
   PanelColorSettings,
+  ColorPalette,
   URLInput
 } = wp.editor;
 
@@ -915,19 +916,19 @@ registerBlockType("premium/pricing-table", {
                       value={slashV}
                       onChange={newValue => setAttributes({ slashV: newValue })}
                     />
-                    <PanelColorSettings
-                      title={__("Colors")}
-                      className="premium-panel-body-inner"
-                      initialOpen={false}
-                      colorSettings={[
-                        {
-                          value: slashColor,
-                          onChange: newColor =>
-                            setAttributes({ slashColor: newColor }),
-                          label: __("Text Color")
+                    <Fragment>
+                      <p>{__("Text Color")}</p>
+                      <ColorPalette
+                        value={slashColor}
+                        onChange={newValue =>
+                          setAttributes({
+                            slashColor:
+                              newValue === undefined ? "transparent" : newValue
+                          })
                         }
-                      ]}
-                    />
+                        allowReset={true}
+                      />
+                    </Fragment>
                   </Fragment>
                 )}
                 {"curr" === selectedStyle && (
@@ -949,19 +950,19 @@ registerBlockType("premium/pricing-table", {
                       value={currV}
                       onChange={newValue => setAttributes({ currV: newValue })}
                     />
-                    <PanelColorSettings
-                      title={__("Colors")}
-                      className="premium-panel-body-inner"
-                      initialOpen={false}
-                      colorSettings={[
-                        {
-                          value: currColor,
-                          onChange: newColor =>
-                            setAttributes({ currColor: newColor }),
-                          label: __("Text Color")
+                    <Fragment>
+                      <p>{__("Text Color")}</p>
+                      <ColorPalette
+                        value={currColor}
+                        onChange={newValue =>
+                          setAttributes({
+                            currColor:
+                              newValue === undefined ? "transparent" : newValue
+                          })
                         }
-                      ]}
-                    />
+                        allowReset={true}
+                      />
+                    </Fragment>
                   </Fragment>
                 )}
                 {"price" === selectedStyle && (
@@ -983,19 +984,19 @@ registerBlockType("premium/pricing-table", {
                       value={valV}
                       onChange={newValue => setAttributes({ valV: newValue })}
                     />
-                    <PanelColorSettings
-                      title={__("Colors")}
-                      className="premium-panel-body-inner"
-                      initialOpen={false}
-                      colorSettings={[
-                        {
-                          value: valColor,
-                          onChange: newColor =>
-                            setAttributes({ valColor: newColor }),
-                          label: __("Text Color")
+                    <Fragment>
+                      <p>{__("Text Color")}</p>
+                      <ColorPalette
+                        value={valColor}
+                        onChange={newValue =>
+                          setAttributes({
+                            valColor:
+                              newValue === undefined ? "transparent" : newValue
+                          })
                         }
-                      ]}
-                    />
+                        allowReset={true}
+                      />
+                    </Fragment>
                   </Fragment>
                 )}
                 {"divider" === selectedStyle && (
@@ -1017,19 +1018,19 @@ registerBlockType("premium/pricing-table", {
                       value={divV}
                       onChange={newValue => setAttributes({ divV: newValue })}
                     />
-                    <PanelColorSettings
-                      title={__("Colors")}
-                      className="premium-panel-body-inner"
-                      initialOpen={false}
-                      colorSettings={[
-                        {
-                          value: divColor,
-                          onChange: newColor =>
-                            setAttributes({ divColor: newColor }),
-                          label: __("Text Color")
+                    <Fragment>
+                      <p>{__("Text Color")}</p>
+                      <ColorPalette
+                        value={divColor}
+                        onChange={newValue =>
+                          setAttributes({
+                            divColor:
+                              newValue === undefined ? "transparent" : newValue
+                          })
                         }
-                      ]}
-                    />
+                        allowReset={true}
+                      />
+                    </Fragment>
                   </Fragment>
                 )}
                 {"duration" === selectedStyle && (
@@ -1051,19 +1052,19 @@ registerBlockType("premium/pricing-table", {
                       value={durV}
                       onChange={newValue => setAttributes({ durV: newValue })}
                     />
-                    <PanelColorSettings
-                      title={__("Colors")}
-                      className="premium-panel-body-inner"
-                      initialOpen={false}
-                      colorSettings={[
-                        {
-                          value: durColor,
-                          onChange: newColor =>
-                            setAttributes({ durColor: newColor }),
-                          label: __("Text Color")
+                    <Fragment>
+                      <p>{__("Text Color")}</p>
+                      <ColorPalette
+                        value={durColor}
+                        onChange={newValue =>
+                          setAttributes({
+                            durColor:
+                              newValue === undefined ? "transparent" : newValue
+                          })
                         }
-                      ]}
-                    />
+                        allowReset={true}
+                      />
+                    </Fragment>
                   </Fragment>
                 )}
               </PanelBody>
@@ -1100,19 +1101,19 @@ registerBlockType("premium/pricing-table", {
                   }
                 />
               </PanelBody>
-              <PanelColorSettings
-                title={__("Colors")}
-                className="premium-panel-body-inner"
-                initialOpen={false}
-                colorSettings={[
-                  {
-                    value: priceBack,
-                    onChange: newColor =>
-                      setAttributes({ priceBack: newColor }),
-                    label: __("Container Background Color")
+              <Fragment>
+                <p>{__("Container Background Color")}</p>
+                <ColorPalette
+                  value={priceBack}
+                  onChange={newValue =>
+                    setAttributes({
+                      priceBack:
+                        newValue === undefined ? "transparent" : newValue
+                    })
                   }
-                ]}
-              />
+                  allowReset={true}
+                />
+              </Fragment>
             </PanelBody>
           )}
           {listChecked && (
@@ -1527,18 +1528,18 @@ registerBlockType("premium/pricing-table", {
             className="premium-panel-body"
             initialOpen={false}
           >
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  value: tableBack,
-                  onChange: newColor => setAttributes({ tableBack: newColor }),
-                  label: __("Background Color")
+            <Fragment>
+              <p>{__("Background Color")}</p>
+              <ColorPalette
+                value={tableBack}
+                onChange={newValue =>
+                  setAttributes({
+                    tableBack: newValue === undefined ? "transparent" : newValue
+                  })
                 }
-              ]}
-            />
+                allowReset={true}
+              />
+            </Fragment>
             <PanelBody
               title={__("Border")}
               className="premium-panel-body-inner premium-panel-body"

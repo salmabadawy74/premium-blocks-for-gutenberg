@@ -18,7 +18,7 @@ const {
   ToggleControl
 } = wp.components;
 
-const { InspectorControls, MediaUpload, PanelColorSettings } = wp.editor;
+const { InspectorControls, MediaUpload, ColorPalette } = wp.editor;
 
 const { Component, Fragment } = wp.element;
 
@@ -201,10 +201,8 @@ class PremiumMap extends Component {
       parseFloat(centerLat),
       parseFloat(centerLng)
     );
-
     if (!map) {
       let mapElem = document.getElementById(mapID);
-
       map = new google.maps.Map(mapElem, {
         zoom: zoom,
         gestureHandling: "cooperative",
@@ -460,19 +458,19 @@ class PremiumMap extends Component {
                 max="80"
                 onChange={newSize => setAttributes({ titleSize: newSize })}
               />
-              <PanelColorSettings
-                title={__("Colors")}
-                className="premium-panel-body-inner"
-                initialOpen={false}
-                colorSettings={[
-                  {
-                    value: titleColor,
-                    onChange: colorValue =>
-                      setAttributes({ titleColor: colorValue }),
-                    label: __("Text Color")
+              <Fragment>
+                <p>{__("Text Color")}</p>
+                <ColorPalette
+                  value={titleColor}
+                  onChange={newValue =>
+                    setAttributes({
+                      titleColor:
+                        newValue === undefined ? "transparent" : newValue
+                    })
                   }
-                ]}
-              />
+                  allowReset={true}
+                />
+              </Fragment>
             </PanelBody>
           )}
           {mapMarker && markerDesc && (
@@ -488,19 +486,19 @@ class PremiumMap extends Component {
                 max="80"
                 onChange={newSize => setAttributes({ descSize: newSize })}
               />
-              <PanelColorSettings
-                title={__("Colors")}
-                className="premium-panel-body-inner"
-                initialOpen={false}
-                colorSettings={[
-                  {
-                    value: descColor,
-                    onChange: colorValue =>
-                      setAttributes({ descColor: colorValue }),
-                    label: __("Text Color")
+              <Fragment>
+                <p>{__("Text Color")}</p>
+                <ColorPalette
+                  value={descColor}
+                  onChange={newValue =>
+                    setAttributes({
+                      descColor:
+                        newValue === undefined ? "transparent" : newValue
+                    })
                   }
-                ]}
-              />
+                  allowReset={true}
+                />
+              </Fragment>
             </PanelBody>
           )}
           <PanelBody

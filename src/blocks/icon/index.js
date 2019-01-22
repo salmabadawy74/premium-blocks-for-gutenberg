@@ -22,7 +22,14 @@ const {
   RangeControl,
   ToggleControl
 } = wp.components;
-const { InspectorControls, PanelColorSettings, URLInput } = wp.editor;
+const {
+  InspectorControls,
+  PanelColorSettings,
+  ColorPalette,
+  URLInput
+} = wp.editor;
+
+const { Fragment } = wp.element;
 
 const iconAttrs = {
   iconType: {
@@ -460,19 +467,19 @@ registerBlockType("premium/icon", {
             className="premium-panel-body"
             initialOpen={false}
           >
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  value: background,
-                  onChange: colorValue =>
-                    setAttributes({ background: colorValue }),
-                  label: __("Background Color")
+            <Fragment>
+              <p>{__("Background Color")}</p>
+              <ColorPalette
+                value={background}
+                onChange={newValue =>
+                  setAttributes({
+                    background:
+                      newValue === undefined ? "transparent" : newValue
+                  })
                 }
-              ]}
-            />
+                allowReset={true}
+              />
+            </Fragment>
             <PanelBody
               title={__("Border")}
               className="premium-panel-body-inner"
