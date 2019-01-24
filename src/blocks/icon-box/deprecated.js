@@ -2,7 +2,9 @@ const className = "premium-icon-box";
 
 const { __ } = wp.i18n;
 
-const deprecated_attributes = {
+const { RichText } = wp.editor;
+
+const deprecated_attributes_1_3_0 = {
   id: {
     type: "string"
   },
@@ -323,7 +325,12 @@ const deprecated_attributes = {
 
 const deprecatedContent = [
   {
-    attributes: deprecated_attributes,
+    attributes: deprecated_attributes_1_3_0,
+    migrate: attributes => {
+      return {
+        iconSize: attributes.iconSize
+      };
+    },
     save: props => {
       const {
         id,

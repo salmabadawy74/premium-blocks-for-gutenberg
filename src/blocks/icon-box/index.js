@@ -35,8 +35,7 @@ const iconBoxAttrs = {
     default: true
   },
   iconSize: {
-    type: "number",
-    default: 50
+    type: "number"
   },
   iconRadius: {
     type: "number"

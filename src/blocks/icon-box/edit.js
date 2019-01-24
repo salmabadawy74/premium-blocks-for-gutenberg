@@ -260,8 +260,7 @@ const edit = props => {
                     value={iconColor}
                     onChange={newValue =>
                       setAttributes({
-                        iconColor:
-                          newValue === undefined ? "transparent" : newValue
+                        iconColor: newValue || "transparent"
                       })
                     }
                     allowReset={true}
@@ -300,7 +299,9 @@ const edit = props => {
                 <RangeControl
                   label={__("Border Radius (PX)")}
                   value={iconRadius}
-                  onChange={newValue => setAttributes({ iconRadius: newValue })}
+                  onChange={newValue =>
+                    setAttributes({ iconRadius: newValue || "0" })
+                  }
                 />
               </Fragment>
             )}
@@ -315,7 +316,9 @@ const edit = props => {
               value={iconSize}
               min="1"
               max="200"
-              onChange={newValue => setAttributes({ iconSize: newValue })}
+              onChange={newValue =>
+                setAttributes({ iconSize: newValue || "30" })
+              }
             />
           </PanelBody>
         )}
@@ -356,7 +359,7 @@ const edit = props => {
                 upper={titleUpper}
                 onChangeSize={newSize => setAttributes({ titleSize: newSize })}
                 onChangeWeight={newWeight =>
-                  setAttributes({ titleWeight: newWeight })
+                  setAttributes({ titleWeight: newWeight || 500 })
                 }
                 onChangeStyle={newStyle =>
                   setAttributes({ titleStyle: newStyle })
@@ -376,8 +379,7 @@ const edit = props => {
                 value={titleColor}
                 onChange={newValue =>
                   setAttributes({
-                    titleColor:
-                      newValue === undefined ? "transparent" : newValue
+                    titleColor: newValue || "transparent"
                   })
                 }
                 allowReset={true}
@@ -389,16 +391,16 @@ const edit = props => {
               horizontal={titleShadowHorizontal}
               vertical={titleShadowVertical}
               onChangeColor={newColor =>
-                setAttributes({ titleShadowColor: newColor })
+                setAttributes({ titleShadowColor: newColor || "transparent" })
               }
               onChangeBlur={newBlur =>
-                setAttributes({ titleShadowBlur: newBlur })
+                setAttributes({ titleShadowBlur: newBlur || "0" })
               }
               onChangehHorizontal={newValue =>
-                setAttributes({ titleShadowHorizontal: newValue })
+                setAttributes({ titleShadowHorizontal: newValue || "0" })
               }
               onChangeVertical={newValue =>
-                setAttributes({ titleShadowVertical: newValue })
+                setAttributes({ titleShadowVertical: newValue || "0" })
               }
             />
             <PanelBody
@@ -412,12 +414,12 @@ const edit = props => {
                 marginBottom={titleMarginB}
                 onChangeMarTop={value =>
                   setAttributes({
-                    titleMarginT: value === undefined ? 0 : value
+                    titleMarginT: value || "0"
                   })
                 }
                 onChangeMarBottom={value =>
                   setAttributes({
-                    titleMarginB: value === undefined ? 0 : value
+                    titleMarginB: value || "0"
                   })
                 }
               />
@@ -440,9 +442,11 @@ const edit = props => {
                 size={descSize}
                 weight={descWeight}
                 line={descLine}
-                onChangeSize={newSize => setAttributes({ descSize: newSize })}
+                onChangeSize={newSize =>
+                  setAttributes({ descSize: newSize || 20 })
+                }
                 onChangeWeight={newWeight =>
-                  setAttributes({ descWeight: newWeight })
+                  setAttributes({ descWeight: newWeight || 500 })
                 }
                 onChangeLine={newValue => setAttributes({ descLine: newValue })}
               />
@@ -453,7 +457,7 @@ const edit = props => {
                 value={descColor}
                 onChange={newValue =>
                   setAttributes({
-                    descColor: newValue === undefined ? "transparent" : newValue
+                    descColor: newValue || "transparent"
                   })
                 }
                 allowReset={true}
@@ -470,12 +474,12 @@ const edit = props => {
                 marginBottom={descMarginB}
                 onChangeMarTop={value =>
                   setAttributes({
-                    descMarginT: value === undefined ? 0 : value
+                    descMarginT: value || 0
                   })
                 }
                 onChangeMarBottom={value =>
                   setAttributes({
-                    descMarginB: value === undefined ? 0 : value
+                    descMarginB: value || 0
                   })
                 }
               />
@@ -520,9 +524,11 @@ const edit = props => {
                 style={btnStyle}
                 spacing={btnLetter}
                 upper={btnUpper}
-                onChangeSize={newSize => setAttributes({ btnSize: newSize })}
+                onChangeSize={newSize =>
+                  setAttributes({ btnSize: newSize || 20 })
+                }
                 onChangeWeight={newWeight =>
-                  setAttributes({ btnWeight: newWeight })
+                  setAttributes({ btnWeight: newWeight || 500 })
                 }
                 onChangeStyle={newStyle =>
                   setAttributes({ btnStyle: newStyle })
@@ -540,18 +546,20 @@ const edit = props => {
               colorSettings={[
                 {
                   value: btnColor,
-                  onChange: newColor => setAttributes({ btnColor: newColor }),
+                  onChange: newColor =>
+                    setAttributes({ btnColor: newColor || "#000" }),
                   label: __("Text Color")
                 },
                 {
                   value: btnHoverColor,
                   onChange: newColor =>
-                    setAttributes({ btnHoverColor: newColor }),
+                    setAttributes({ btnHoverColor: newColor || "#000" }),
                   label: __("Text Hover Color")
                 },
                 {
                   value: btnBack,
-                  onChange: newColor => setAttributes({ btnBack: newColor }),
+                  onChange: newColor =>
+                    setAttributes({ btnBack: newColor || "transparent" }),
                   label: __("Background Color")
                 },
                 {
@@ -563,7 +571,9 @@ const edit = props => {
                 {
                   value: btnHoverBorder,
                   onChange: newColor =>
-                    setAttributes({ btnHoverBorder: newColor }),
+                    setAttributes({
+                      btnHoverBorder: newColor || "transparent"
+                    }),
                   label: __("Border Hover Color")
                 }
               ]}
@@ -601,28 +611,27 @@ const edit = props => {
               position={btnShadowPosition}
               onChangeColor={newColor =>
                 setAttributes({
-                  btnShadowColor:
-                    newColor === undefined ? "transparent" : newColor
+                  btnShadowColor: newColor || "transparent"
                 })
               }
               onChangeBlur={newBlur =>
                 setAttributes({
-                  btnShadowBlur: newBlur === undefined ? 0 : newBlur
+                  btnShadowBlur: newBlur || 0
                 })
               }
               onChangehHorizontal={newValue =>
                 setAttributes({
-                  btnShadowHorizontal: newValue === undefined ? 0 : newValue
+                  btnShadowHorizontal: newValue || 0
                 })
               }
               onChangeVertical={newValue =>
                 setAttributes({
-                  btnShadowVertical: newValue === undefined ? 0 : newValue
+                  btnShadowVertical: newValue || 0
                 })
               }
               onChangePosition={newValue =>
                 setAttributes({
-                  btnShadowPosition: newValue === undefined ? 0 : newValue
+                  btnShadowPosition: newValue || 0
                 })
               }
             />
@@ -642,12 +651,12 @@ const edit = props => {
                 marginBottom={btnMarginB}
                 onChangeMarTop={value =>
                   setAttributes({
-                    btnMarginT: value === undefined ? 0 : value
+                    btnMarginT: value || 0
                   })
                 }
                 onChangeMarBottom={value =>
                   setAttributes({
-                    btnMarginB: value === undefined ? 0 : value
+                    btnMarginB: value || 0
                   })
                 }
               />
@@ -679,7 +688,7 @@ const edit = props => {
                 value={backColor}
                 onChange={newValue =>
                   setAttributes({
-                    backColor: newValue === undefined ? "transparent" : newValue
+                    backColor: newValue || "transparent"
                   })
                 }
                 allowReset={true}
@@ -746,27 +755,27 @@ const edit = props => {
             position={shadowPosition}
             onChangeColor={newColor =>
               setAttributes({
-                shadowColor: newColor === undefined ? "transparent" : newColor
+                shadowColor: newColor || "transparent"
               })
             }
             onChangeBlur={newBlur =>
               setAttributes({
-                shadowBlur: newBlur === undefined ? 0 : newBlur
+                shadowBlur: newBlur || 0
               })
             }
             onChangehHorizontal={newValue =>
               setAttributes({
-                shadowHorizontal: newValue === undefined ? 0 : newValue
+                shadowHorizontal: newValue || 0
               })
             }
             onChangeVertical={newValue =>
               setAttributes({
-                shadowVertical: newValue === undefined ? 0 : newValue
+                shadowVertical: newValue || 0
               })
             }
             onChangePosition={newValue =>
               setAttributes({
-                shadowPosition: newValue === undefined ? 0 : newValue
+                shadowPosition: newValue || 0
               })
             }
           />
@@ -783,22 +792,22 @@ const edit = props => {
               marginLeft={marginL}
               onChangeMarTop={value =>
                 setAttributes({
-                  marginT: value === undefined ? 0 : value
+                  marginT: value || 0
                 })
               }
               onChangeMarRight={value =>
                 setAttributes({
-                  marginR: value === undefined ? 0 : value
+                  marginR: value || 0
                 })
               }
               onChangeMarBottom={value =>
                 setAttributes({
-                  marginB: value === undefined ? 0 : value
+                  marginB: value || 0
                 })
               }
               onChangeMarLeft={value =>
                 setAttributes({
-                  marginL: value === undefined ? 0 : value
+                  marginL: value || 0
                 })
               }
             />
@@ -809,22 +818,22 @@ const edit = props => {
               paddingLeft={paddingL}
               onChangePadTop={value =>
                 setAttributes({
-                  paddingT: value === undefined ? 0 : value
+                  paddingT: value || 0
                 })
               }
               onChangePadRight={value =>
                 setAttributes({
-                  paddingR: value === undefined ? 0 : value
+                  paddingR: value || 0
                 })
               }
               onChangePadBottom={value =>
                 setAttributes({
-                  paddingB: value === undefined ? 0 : value
+                  paddingB: value || 0
                 })
               }
               onChangePadLeft={value =>
                 setAttributes({
-                  paddingL: value === undefined ? 0 : value
+                  paddingL: value || 0
                 })
               }
             />
