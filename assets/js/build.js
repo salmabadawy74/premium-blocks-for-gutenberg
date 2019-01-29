@@ -65,46 +65,6 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return banner; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return dualHeading; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return pricingTable; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return maps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return testimonial; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return countUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return icon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return button; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return container; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return accordion; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return iconBox; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return videoBox; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FontAwesomeEnabled; });
-//Blocks Keys
-var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
-    banner = _PremiumBlocksSetting.banner,
-    dualHeading = _PremiumBlocksSetting.dualHeading,
-    pricingTable = _PremiumBlocksSetting.pricingTable,
-    maps = _PremiumBlocksSetting.maps,
-    testimonial = _PremiumBlocksSetting.testimonial,
-    countUp = _PremiumBlocksSetting.countUp,
-    icon = _PremiumBlocksSetting.icon,
-    button = _PremiumBlocksSetting.button,
-    container = _PremiumBlocksSetting.container,
-    accordion = _PremiumBlocksSetting.accordion,
-    iconBox = _PremiumBlocksSetting.iconBox,
-    videoBox = _PremiumBlocksSetting.videoBox;
-
-//Plugin Config Keys
-
-
-var _FontAwesomeConfig = FontAwesomeConfig,
-    FontAwesomeEnabled = _FontAwesomeConfig.FontAwesomeEnabled;
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -294,6 +254,46 @@ process.umask = function () {
 };
 
 /***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return banner; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return dualHeading; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return pricingTable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return maps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return testimonial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return countUp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return icon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return button; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return container; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return accordion; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return iconBox; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return videoBox; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FontAwesomeEnabled; });
+//Blocks Keys
+var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
+    banner = _PremiumBlocksSetting.banner,
+    dualHeading = _PremiumBlocksSetting.dualHeading,
+    pricingTable = _PremiumBlocksSetting.pricingTable,
+    maps = _PremiumBlocksSetting.maps,
+    testimonial = _PremiumBlocksSetting.testimonial,
+    countUp = _PremiumBlocksSetting.countUp,
+    icon = _PremiumBlocksSetting.icon,
+    button = _PremiumBlocksSetting.button,
+    container = _PremiumBlocksSetting.container,
+    accordion = _PremiumBlocksSetting.accordion,
+    iconBox = _PremiumBlocksSetting.iconBox,
+    videoBox = _PremiumBlocksSetting.videoBox;
+
+//Plugin Config Keys
+
+
+var _FontAwesomeConfig = FontAwesomeConfig,
+    FontAwesomeEnabled = _FontAwesomeConfig.FontAwesomeEnabled;
+
+
+/***/ }),
 /* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -337,6 +337,20 @@ var PbgIcon = function (_wp$element$Component) {
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(47);
+} else {
+  module.exports = __webpack_require__(48);
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -422,7 +436,7 @@ function PremiumBorder(props) {
 }
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -503,20 +517,6 @@ function PremiumTypo(props) {
     })
   );
 }
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(47);
-} else {
-  module.exports = __webpack_require__(48);
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 6 */
@@ -611,7 +611,7 @@ if (process.env.NODE_ENV !== 'production') {
   // http://fb.me/prop-types-in-prod
   module.exports = __webpack_require__(46)();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 8 */
@@ -891,7 +891,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   module.exports = __webpack_require__(52);
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 12 */
@@ -996,7 +996,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 }
 
 module.exports = checkPropTypes;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 14 */
@@ -1081,7 +1081,7 @@ function PremiumMargin(props) {
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(7), __webpack_require__(5), __webpack_require__(16), __webpack_require__(11), __webpack_require__(20)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(7), __webpack_require__(5), __webpack_require__(16), __webpack_require__(11), __webpack_require__(20)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(7), __webpack_require__(3), __webpack_require__(16), __webpack_require__(11), __webpack_require__(20)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(7), __webpack_require__(3), __webpack_require__(16), __webpack_require__(11), __webpack_require__(20)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -1705,7 +1705,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   module.exports = __webpack_require__(51);
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 19 */
@@ -1772,7 +1772,7 @@ exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(7));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(3));
 
 var _reactDom = _interopRequireDefault(__webpack_require__(11));
 
@@ -2391,7 +2391,7 @@ Transition.EXITING = 4;
 var _default = (0, _reactLifecyclesCompat.polyfill)(Transition);
 
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 22 */
@@ -2594,7 +2594,7 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(7));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(3));
 
 var _reactLifecyclesCompat = __webpack_require__(22);
 
@@ -2811,7 +2811,7 @@ var _default = (0, _reactLifecyclesCompat.polyfill)(TransitionGroup);
 
 exports.default = _default;
 module.exports = exports["default"];
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 25 */
@@ -3009,7 +3009,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(30);
@@ -3232,9 +3232,9 @@ registerBlockType("premium/accordion", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_border__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_padding__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -4510,7 +4510,7 @@ var deprecated = [{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(34);
@@ -4689,8 +4689,8 @@ registerBlockType("premium/banner", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_border__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_border__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_text_shadow__ = __webpack_require__(6);
 
 
@@ -5735,9 +5735,9 @@ var deprecatedContent = [{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__icons__ = __webpack_require__(2);
@@ -6470,8 +6470,8 @@ registerBlockType("premium/button", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__icons__ = __webpack_require__(2);
 
 
@@ -7700,7 +7700,7 @@ registerBlockType("premium/countup", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(40);
@@ -7929,8 +7929,8 @@ registerBlockType("premium/dheading-block", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_border__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_border__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_text_shadow__ = __webpack_require__(6);
 
 
@@ -9018,7 +9018,7 @@ var deprecatedContent = [{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(63);
@@ -9220,11 +9220,11 @@ registerBlockType("premium/icon", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fonticonpicker_react_fonticonpicker__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_icons_list__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_margin__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_padding__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(8);
@@ -10309,7 +10309,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
   return ReactPropTypes;
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 46 */
@@ -12419,7 +12419,7 @@ if (process.env.NODE_ENV !== "production") {
     module.exports = react;
   })();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 49 */
@@ -12442,7 +12442,7 @@ if (process.env.NODE_ENV !== "production") {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var aa = __webpack_require__(5),
+var aa = __webpack_require__(3),
     n = __webpack_require__(9),
     ba = __webpack_require__(18);function ca(a, b, c, d, e, f, g, h) {
   if (!a) {
@@ -15463,7 +15463,7 @@ if (process.env.NODE_ENV !== "production") {
     exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
   })();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(19)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(19)))
 
 /***/ }),
 /* 52 */
@@ -15477,7 +15477,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(5);var _assign=__webpack_require__(9);var checkPropTypes=__webpack_require__(13);var scheduler=__webpack_require__(18);var tracing=__webpack_require__(53);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(3);var _assign=__webpack_require__(9);var checkPropTypes=__webpack_require__(13);var scheduler=__webpack_require__(18);var tracing=__webpack_require__(53);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -19245,7 +19245,7 @@ if(navigator.userAgent.indexOf('Chrome')>-1&&navigator.userAgent.indexOf('Edge')
 if(/^(https?|file):$/.test(protocol)){console.info('%cDownload the React DevTools '+'for a better development experience: '+'https://fb.me/react-devtools'+(protocol==='file:'?'\nYou might need to use a local HTTP server (instead of file://): '+'https://fb.me/react-devtools-faq':''),'font-weight:bold');}}}}var ReactDOM$2=Object.freeze({default:ReactDOM});var ReactDOM$3=ReactDOM$2&&ReactDOM||ReactDOM$2;// TODO: decide on the top-level export form.
 // This is hacky but makes it work with both Rollup and Jest.
 var reactDom=ReactDOM$3.default||ReactDOM$3;module.exports=reactDom;})();}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 53 */
@@ -19259,7 +19259,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   module.exports = __webpack_require__(55);
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 54 */
@@ -19714,7 +19714,7 @@ if (process.env.NODE_ENV !== "production") {
     exports.unstable_unsubscribe = unstable_unsubscribe;
   })();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 56 */
@@ -19732,7 +19732,7 @@ var _addClass = _interopRequireDefault(__webpack_require__(57));
 
 var _removeClass = _interopRequireDefault(__webpack_require__(60));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(3));
 
 var _Transition = _interopRequireDefault(__webpack_require__(21));
 
@@ -20048,7 +20048,7 @@ CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? propTypes : {}
 var _default = CSSTransition;
 exports.default = _default;
 module.exports = exports["default"];
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 57 */
@@ -20125,7 +20125,7 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(7));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(3));
 
 var _reactDom = __webpack_require__(11);
 
@@ -20278,7 +20278,7 @@ ReplaceTransition.propTypes = process.env.NODE_ENV !== "production" ? propTypes 
 var _default = ReplaceTransition;
 exports.default = _default;
 module.exports = exports["default"];
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 62 */
@@ -20293,7 +20293,7 @@ exports.mergeChildMappings = mergeChildMappings;
 exports.getInitialChildMapping = getInitialChildMapping;
 exports.getNextChildMapping = getNextChildMapping;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(3);
 
 /**
  * Given `this.props.children`, return an object mapping key to child.
@@ -20828,7 +20828,7 @@ var deprecatedContent = [{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(67);
@@ -21174,12 +21174,12 @@ registerBlockType("premium/icon-box", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_border__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_padding__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_text_shadow__ = __webpack_require__(6);
@@ -23061,7 +23061,7 @@ var deprecatedContent = [{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(2);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -23894,9 +23894,9 @@ registerBlockType("premium/maps", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__icons__ = __webpack_require__(2);
@@ -26673,8 +26673,8 @@ registerBlockType("premium/pricing-table", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
@@ -27335,9 +27335,9 @@ registerBlockType("premium/container", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__icons__ = __webpack_require__(2);
@@ -28461,44 +28461,19 @@ var PremiumUpperQuote = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(2);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__settings__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(79);
 
 
 
 
 
-
-
-var className = "premium-video-box";
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
-var _wp$components = wp.components,
-    IconButton = _wp$components.IconButton,
-    PanelBody = _wp$components.PanelBody,
-    SelectControl = _wp$components.SelectControl,
-    RangeControl = _wp$components.RangeControl,
-    TextControl = _wp$components.TextControl,
-    TextareaControl = _wp$components.TextareaControl,
-    ToggleControl = _wp$components.ToggleControl;
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
-var _wp$editor = wp.editor,
-    InspectorControls = _wp$editor.InspectorControls,
-    MediaUpload = _wp$editor.MediaUpload,
-    PanelColorSettings = _wp$editor.PanelColorSettings;
 
 
 var videoBoxAttrs = {
@@ -28565,9 +28540,6 @@ var videoBoxAttrs = {
   hue: {
     type: "number",
     default: 0
-  },
-  playLeft: {
-    type: "number"
   },
   playTop: {
     type: "number"
@@ -28679,10 +28651,13 @@ var videoBoxAttrs = {
   shadowPosition: {
     type: "string",
     default: ""
+  },
+
+  // Old props
+  playLeft: {
+    type: "number"
   }
 };
-
-var isBoxUpdated = null;
 
 var onChangeVideoURL = function onChangeVideoURL(type, URL) {
   var videoUrl = void 0;
@@ -28712,19 +28687,80 @@ var onChangeVideoURL = function onChangeVideoURL(type, URL) {
   return videoUrl;
 };
 
-var PremiumVideoBox = function (_Component) {
-  _inherits(PremiumVideoBox, _Component);
+/* harmony default export */ __webpack_exports__["a"] = (onChangeVideoURL);
 
-  function PremiumVideoBox() {
-    _classCallCheck(this, PremiumVideoBox);
+registerBlockType("premium/video-box", {
+  title: __("Video Box"),
+  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "video" }),
+  category: "premium-blocks",
+  attributes: videoBoxAttrs,
+  supports: {
+    inserter: __WEBPACK_IMPORTED_MODULE_0__settings__["m" /* videoBox */]
+  },
+  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+  save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
+  deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
+});
 
-    var _this = _possibleConstructorReturn(this, (PremiumVideoBox.__proto__ || Object.getPrototypeOf(PremiumVideoBox)).apply(this, arguments));
+/***/ }),
+/* 77 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_typo__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__index__ = __webpack_require__(76);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+var _wp$components = wp.components,
+    IconButton = _wp$components.IconButton,
+    PanelBody = _wp$components.PanelBody,
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl,
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl,
+    ToggleControl = _wp$components.ToggleControl;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    MediaUpload = _wp$editor.MediaUpload,
+    PanelColorSettings = _wp$editor.PanelColorSettings;
+
+
+var className = "premium-video-box";
+
+var __ = wp.i18n.__;
+
+
+var isBoxUpdated = null;
+
+var edit = function (_Component) {
+  _inherits(edit, _Component);
+
+  function edit() {
+    _classCallCheck(this, edit);
+
+    var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
 
     _this.initVideoBox = _this.initVideoBox.bind(_this);
     return _this;
   }
 
-  _createClass(PremiumVideoBox, [{
+  _createClass(edit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _props = this.props,
@@ -28740,7 +28776,7 @@ var PremiumVideoBox = function (_Component) {
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps, prevState) {
+    value: function componentDidUpdate() {
       clearTimeout(isBoxUpdated);
       isBoxUpdated = setTimeout(this.initVideoBox, 500);
     }
@@ -29128,7 +29164,7 @@ var PremiumVideoBox = function (_Component) {
                   }
                 }]
               }),
-              wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
+              wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_border__["a" /* default */], {
                 borderType: playBorderType,
                 borderWidth: playBorderWidth,
                 borderColor: playBorderColor,
@@ -29181,7 +29217,7 @@ var PremiumVideoBox = function (_Component) {
                   return setAttributes({ videoDescText: newText });
                 }
               }),
-              wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
+              wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_premium_typo__["a" /* default */], {
                 components: ["size", "weight", "style", "upper", "spacing"],
                 size: videoDescSize,
                 weight: videoDescWeight,
@@ -29275,7 +29311,7 @@ var PremiumVideoBox = function (_Component) {
               className: "premium-panel-body-inner",
               initialOpen: false
             },
-            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_border__["a" /* default */], {
               borderType: boxBorderType,
               borderWidth: boxBorderWidth,
               borderColor: boxBorderColor,
@@ -29294,7 +29330,7 @@ var PremiumVideoBox = function (_Component) {
               }
             })
           ),
-          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__["a" /* default */], {
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_box_shadow__["a" /* default */], {
             inner: true,
             color: shadowColor,
             blur: shadowBlur,
@@ -29351,7 +29387,7 @@ var PremiumVideoBox = function (_Component) {
           "div",
           { className: className + "__container" },
           "self" !== videoType && wp.element.createElement("iframe", {
-            src: onChangeVideoURL(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&rel=" + (relatedVideos ? "1" : "0") + "&controls=" + (controls ? "1" : "0"),
+            src: Object(__WEBPACK_IMPORTED_MODULE_3__index__["a" /* default */])(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&rel=" + (relatedVideos ? "1" : "0") + "&controls=" + (controls ? "1" : "0"),
             frameborder: "0",
             gesture: "media",
             allow: "encrypted-media",
@@ -29431,70 +29467,434 @@ var PremiumVideoBox = function (_Component) {
     }
   }]);
 
-  return PremiumVideoBox;
+  return edit;
 }(Component);
 
-registerBlockType("premium/video-box", {
-  title: __("Video Box"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__icons__["a" /* default */], { icon: "video" }),
-  category: "premium-blocks",
-  attributes: videoBoxAttrs,
-  supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__settings__["m" /* videoBox */]
+/* harmony default export */ __webpack_exports__["a"] = (edit);
+
+/***/ }),
+/* 78 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(76);
+
+var className = "premium-video-box";
+
+var save = function save(props) {
+  var _props$attributes = props.attributes,
+      videoBoxId = _props$attributes.videoBoxId,
+      videoType = _props$attributes.videoType,
+      videoURL = _props$attributes.videoURL,
+      autoPlay = _props$attributes.autoPlay,
+      loop = _props$attributes.loop,
+      mute = _props$attributes.mute,
+      relatedVideos = _props$attributes.relatedVideos,
+      controls = _props$attributes.controls,
+      overlay = _props$attributes.overlay,
+      overlayImgURL = _props$attributes.overlayImgURL,
+      blur = _props$attributes.blur,
+      contrast = _props$attributes.contrast,
+      saturation = _props$attributes.saturation,
+      bright = _props$attributes.bright,
+      hue = _props$attributes.hue,
+      playTop = _props$attributes.playTop,
+      playLeft = _props$attributes.playLeft,
+      playIcon = _props$attributes.playIcon,
+      playColor = _props$attributes.playColor,
+      playHoverColor = _props$attributes.playHoverColor,
+      playHoverBackColor = _props$attributes.playHoverBackColor,
+      playSize = _props$attributes.playSize,
+      playPadding = _props$attributes.playPadding,
+      playBack = _props$attributes.playBack,
+      playBorderColor = _props$attributes.playBorderColor,
+      playBorderWidth = _props$attributes.playBorderWidth,
+      playBorderRadius = _props$attributes.playBorderRadius,
+      playBorderType = _props$attributes.playBorderType,
+      videoDesc = _props$attributes.videoDesc,
+      descTop = _props$attributes.descTop,
+      descLeft = _props$attributes.descLeft,
+      videoDescText = _props$attributes.videoDescText,
+      videoDescColor = _props$attributes.videoDescColor,
+      videoDescBack = _props$attributes.videoDescBack,
+      videoDescPadding = _props$attributes.videoDescPadding,
+      videoDescSize = _props$attributes.videoDescSize,
+      videoDescWeight = _props$attributes.videoDescWeight,
+      videoDescLetter = _props$attributes.videoDescLetter,
+      videoDescStyle = _props$attributes.videoDescStyle,
+      videoDescUpper = _props$attributes.videoDescUpper,
+      videoDescBorderRadius = _props$attributes.videoDescBorderRadius,
+      boxBorderColor = _props$attributes.boxBorderColor,
+      boxBorderWidth = _props$attributes.boxBorderWidth,
+      boxBorderRadius = _props$attributes.boxBorderRadius,
+      boxBorderType = _props$attributes.boxBorderType,
+      shadowBlur = _props$attributes.shadowBlur,
+      shadowColor = _props$attributes.shadowColor,
+      shadowHorizontal = _props$attributes.shadowHorizontal,
+      shadowVertical = _props$attributes.shadowVertical,
+      shadowPosition = _props$attributes.shadowPosition;
+
+  var loopVideo = function loopVideo() {
+    if ("youtube" === videoType) {
+      if (videoURL.startsWith("http")) {
+        return loop ? "1&playlist=" + videoURL.replace("https://www.youtube.com/embed/", "") : "0";
+      } else {
+        return loop ? "1&playlist=" + videoURL : "0";
+      }
+    } else {
+      return loop ? "1" : "0";
+    }
+  };
+  return wp.element.createElement(
+    "div",
+    {
+      id: videoBoxId,
+      className: className + " video-overlay-" + overlay,
+      "data-type": videoType,
+      style: {
+        border: boxBorderType,
+        borderWidth: boxBorderWidth + "px",
+        borderRadius: boxBorderRadius + "px",
+        borderColor: boxBorderColor,
+        boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
+      }
+    },
+    wp.element.createElement("style", {
+      dangerouslySetInnerHTML: {
+        __html: ["#" + videoBoxId + " ." + className + "__play:hover {", "color: " + playHoverColor + " !important;", "background-color: " + playHoverBackColor + " !important;", "}"].join("\n")
+      }
+    }),
+    wp.element.createElement(
+      "div",
+      { className: className + "__container" },
+      "self" !== videoType && wp.element.createElement("iframe", {
+        src: Object(__WEBPACK_IMPORTED_MODULE_0__index__["a" /* default */])(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&rel=" + (relatedVideos ? "1" : "0") + "&controls=" + (controls ? "1" : "0"),
+        frameborder: "0",
+        gesture: "media",
+        allow: "encrypted-media",
+        allowfullscreen: true
+      }),
+      "self" === videoType && wp.element.createElement("video", {
+        src: videoURL,
+        loop: loop ? true : false,
+        muted: mute ? true : false,
+        controls: controls ? true : false,
+        autoplay: overlay ? false : autoPlay
+      })
+    ),
+    overlay && overlayImgURL && wp.element.createElement("div", {
+      className: className + "__overlay",
+      style: {
+        backgroundImage: "url('" + overlayImgURL + "')",
+        filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+      }
+    }),
+    overlay && playIcon && wp.element.createElement(
+      "div",
+      {
+        className: className + "__play",
+        style: {
+          top: playTop + "%",
+          left: playLeft + "%",
+          color: playColor,
+          backgroundColor: playBack,
+          border: playBorderType,
+          borderWidth: playBorderWidth + "px",
+          borderRadius: playBorderRadius + "px",
+          borderColor: playBorderColor,
+          padding: playPadding + "px"
+        }
+      },
+      wp.element.createElement("i", {
+        className: className + "__play_icon dashicons dashicons-controls-play",
+        style: {
+          fontSize: playSize + "px"
+        }
+      })
+    ),
+    overlay && videoDesc && wp.element.createElement(
+      "div",
+      {
+        className: className + "__desc",
+        style: {
+          color: videoDescColor,
+          backgroundColor: videoDescBack,
+          padding: videoDescPadding,
+          borderRadius: videoDescBorderRadius,
+          top: descTop + "%",
+          left: descLeft + "%"
+        }
+      },
+      wp.element.createElement(
+        "p",
+        {
+          className: className + "__desc_text",
+          style: {
+            fontSize: videoDescSize + "px",
+            fontWeight: videoDescWeight,
+            letterSpacing: videoDescLetter + "px",
+            textTransform: videoDescUpper ? "uppercase" : "none",
+            fontStyle: videoDescStyle
+          }
+        },
+        wp.element.createElement(
+          "span",
+          null,
+          videoDescText
+        )
+      )
+    )
+  );
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (save);
+
+/***/ }),
+/* 79 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(76);
+
+
+var className = "premium-video-box";
+
+var videoBoxAttrs_1_2_7 = {
+  videoBoxId: {
+    type: "string"
   },
-  edit: PremiumVideoBox,
+  videoType: {
+    type: "string",
+    default: "youtube"
+  },
+  videoURL: {
+    type: "string",
+    default: "07d2dXHYb94"
+  },
+  videoID: {
+    type: "string"
+  },
+  autoPlay: {
+    type: "boolean",
+    default: false
+  },
+  loop: {
+    type: "boolean",
+    default: false
+  },
+  controls: {
+    type: "boolean",
+    default: true
+  },
+  relatedVideos: {
+    type: "boolean",
+    default: false
+  },
+  mute: {
+    type: "boolean",
+    default: false
+  },
+  overlay: {
+    type: "boolean",
+    default: false
+  },
+  overlayImgID: {
+    type: "string"
+  },
+  overlayImgURL: {
+    type: "string"
+  },
+  blur: {
+    type: "number",
+    default: 0
+  },
+  bright: {
+    type: "number",
+    default: 100
+  },
+  contrast: {
+    type: "number",
+    default: 100
+  },
+  saturation: {
+    type: "number",
+    default: 100
+  },
+  hue: {
+    type: "number",
+    default: 0
+  },
+  playTop: {
+    type: "number"
+  },
+  playIcon: {
+    type: "boolean",
+    default: true
+  },
+  playSize: {
+    type: "number"
+  },
+  playColor: {
+    type: "string"
+  },
+  playBack: {
+    type: "string"
+  },
+  playHoverColor: {
+    type: "string"
+  },
+  playHoverBackColor: {
+    type: "string"
+  },
+  playPadding: {
+    type: "number"
+  },
+  playBorderType: {
+    type: "string",
+    default: "none"
+  },
+  playBorderWidth: {
+    type: "number",
+    default: "1"
+  },
+  playBorderRadius: {
+    type: "number"
+  },
+  playBorderColor: {
+    type: "string"
+  },
+  videoDescText: {
+    type: "string"
+  },
+  videoDesc: {
+    type: "boolean"
+  },
+  descLeft: {
+    type: "number"
+  },
+  descTop: {
+    type: "number"
+  },
+  videoDescSize: {
+    type: "number"
+  },
+  videoDescWeight: {
+    type: "number"
+  },
+  videoDescLetter: {
+    type: "number"
+  },
+  videoDescStyle: {
+    type: "string"
+  },
+  videoDescUpper: {
+    type: "boolean"
+  },
+  videoDescColor: {
+    type: "string"
+  },
+  videoDescBack: {
+    type: "string"
+  },
+  videoDescPadding: {
+    type: "number"
+  },
+  videoDescBorderRadius: {
+    type: "number"
+  },
+  boxBorderType: {
+    type: "string",
+    default: "none"
+  },
+  boxBorderWidth: {
+    type: "number",
+    default: "1"
+  },
+  boxBorderRadius: {
+    type: "number"
+  },
+  boxBorderColor: {
+    type: "string"
+  },
+  shadowColor: {
+    type: "string"
+  },
+  shadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  shadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  shadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  shadowPosition: {
+    type: "string",
+    default: ""
+  },
+
+  // Old props
+  playLeft: {
+    type: "number"
+  }
+};
+
+var deprecatedContent = [{
+  attributes: videoBoxAttrs_1_2_7,
   save: function save(props) {
-    var _props$attributes2 = props.attributes,
-        videoBoxId = _props$attributes2.videoBoxId,
-        videoType = _props$attributes2.videoType,
-        videoURL = _props$attributes2.videoURL,
-        autoPlay = _props$attributes2.autoPlay,
-        loop = _props$attributes2.loop,
-        mute = _props$attributes2.mute,
-        relatedVideos = _props$attributes2.relatedVideos,
-        controls = _props$attributes2.controls,
-        overlay = _props$attributes2.overlay,
-        overlayImgURL = _props$attributes2.overlayImgURL,
-        blur = _props$attributes2.blur,
-        contrast = _props$attributes2.contrast,
-        saturation = _props$attributes2.saturation,
-        bright = _props$attributes2.bright,
-        hue = _props$attributes2.hue,
-        playTop = _props$attributes2.playTop,
-        playLeft = _props$attributes2.playLeft,
-        playIcon = _props$attributes2.playIcon,
-        playColor = _props$attributes2.playColor,
-        playHoverColor = _props$attributes2.playHoverColor,
-        playHoverBackColor = _props$attributes2.playHoverBackColor,
-        playSize = _props$attributes2.playSize,
-        playPadding = _props$attributes2.playPadding,
-        playBack = _props$attributes2.playBack,
-        playBorderColor = _props$attributes2.playBorderColor,
-        playBorderWidth = _props$attributes2.playBorderWidth,
-        playBorderRadius = _props$attributes2.playBorderRadius,
-        playBorderType = _props$attributes2.playBorderType,
-        videoDesc = _props$attributes2.videoDesc,
-        descTop = _props$attributes2.descTop,
-        descLeft = _props$attributes2.descLeft,
-        videoDescText = _props$attributes2.videoDescText,
-        videoDescColor = _props$attributes2.videoDescColor,
-        videoDescBack = _props$attributes2.videoDescBack,
-        videoDescPadding = _props$attributes2.videoDescPadding,
-        videoDescSize = _props$attributes2.videoDescSize,
-        videoDescWeight = _props$attributes2.videoDescWeight,
-        videoDescLetter = _props$attributes2.videoDescLetter,
-        videoDescStyle = _props$attributes2.videoDescStyle,
-        videoDescUpper = _props$attributes2.videoDescUpper,
-        videoDescBorderRadius = _props$attributes2.videoDescBorderRadius,
-        boxBorderColor = _props$attributes2.boxBorderColor,
-        boxBorderWidth = _props$attributes2.boxBorderWidth,
-        boxBorderRadius = _props$attributes2.boxBorderRadius,
-        boxBorderType = _props$attributes2.boxBorderType,
-        shadowBlur = _props$attributes2.shadowBlur,
-        shadowColor = _props$attributes2.shadowColor,
-        shadowHorizontal = _props$attributes2.shadowHorizontal,
-        shadowVertical = _props$attributes2.shadowVertical,
-        shadowPosition = _props$attributes2.shadowPosition;
+    var _props$attributes = props.attributes,
+        videoBoxId = _props$attributes.videoBoxId,
+        videoType = _props$attributes.videoType,
+        videoURL = _props$attributes.videoURL,
+        autoPlay = _props$attributes.autoPlay,
+        loop = _props$attributes.loop,
+        mute = _props$attributes.mute,
+        controls = _props$attributes.controls,
+        overlay = _props$attributes.overlay,
+        overlayImgURL = _props$attributes.overlayImgURL,
+        blur = _props$attributes.blur,
+        contrast = _props$attributes.contrast,
+        saturation = _props$attributes.saturation,
+        bright = _props$attributes.bright,
+        hue = _props$attributes.hue,
+        playTop = _props$attributes.playTop,
+        playLeft = _props$attributes.playLeft,
+        playIcon = _props$attributes.playIcon,
+        playColor = _props$attributes.playColor,
+        playHoverColor = _props$attributes.playHoverColor,
+        playHoverBackColor = _props$attributes.playHoverBackColor,
+        playSize = _props$attributes.playSize,
+        playPadding = _props$attributes.playPadding,
+        playBack = _props$attributes.playBack,
+        playBorderColor = _props$attributes.playBorderColor,
+        playBorderWidth = _props$attributes.playBorderWidth,
+        playBorderRadius = _props$attributes.playBorderRadius,
+        playBorderType = _props$attributes.playBorderType,
+        videoDesc = _props$attributes.videoDesc,
+        descTop = _props$attributes.descTop,
+        descLeft = _props$attributes.descLeft,
+        videoDescText = _props$attributes.videoDescText,
+        videoDescColor = _props$attributes.videoDescColor,
+        videoDescBack = _props$attributes.videoDescBack,
+        videoDescPadding = _props$attributes.videoDescPadding,
+        videoDescSize = _props$attributes.videoDescSize,
+        videoDescWeight = _props$attributes.videoDescWeight,
+        videoDescLetter = _props$attributes.videoDescLetter,
+        videoDescStyle = _props$attributes.videoDescStyle,
+        videoDescUpper = _props$attributes.videoDescUpper,
+        videoDescBorderRadius = _props$attributes.videoDescBorderRadius,
+        boxBorderColor = _props$attributes.boxBorderColor,
+        boxBorderWidth = _props$attributes.boxBorderWidth,
+        boxBorderRadius = _props$attributes.boxBorderRadius,
+        boxBorderType = _props$attributes.boxBorderType,
+        shadowBlur = _props$attributes.shadowBlur,
+        shadowColor = _props$attributes.shadowColor,
+        shadowHorizontal = _props$attributes.shadowHorizontal,
+        shadowVertical = _props$attributes.shadowVertical,
+        shadowPosition = _props$attributes.shadowPosition;
 
     var loopVideo = function loopVideo() {
       if ("youtube" === videoType) {
@@ -29530,7 +29930,7 @@ registerBlockType("premium/video-box", {
         "div",
         { className: className + "__container" },
         "self" !== videoType && wp.element.createElement("iframe", {
-          src: onChangeVideoURL(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&rel=" + (relatedVideos ? "1" : "0") + "&controls=" + (controls ? "1" : "0"),
+          src: Object(__WEBPACK_IMPORTED_MODULE_0__index__["a" /* default */])(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&controls=" + (controls ? "1" : "0"),
           frameborder: "0",
           gesture: "media",
           allow: "encrypted-media",
@@ -29607,175 +30007,10 @@ registerBlockType("premium/video-box", {
         )
       )
     );
-  },
-  deprecated: [{
-    attributes: videoBoxAttrs,
-    save: function save(props) {
-      var _props$attributes3 = props.attributes,
-          videoBoxId = _props$attributes3.videoBoxId,
-          videoType = _props$attributes3.videoType,
-          videoURL = _props$attributes3.videoURL,
-          autoPlay = _props$attributes3.autoPlay,
-          loop = _props$attributes3.loop,
-          mute = _props$attributes3.mute,
-          controls = _props$attributes3.controls,
-          overlay = _props$attributes3.overlay,
-          overlayImgURL = _props$attributes3.overlayImgURL,
-          blur = _props$attributes3.blur,
-          contrast = _props$attributes3.contrast,
-          saturation = _props$attributes3.saturation,
-          bright = _props$attributes3.bright,
-          hue = _props$attributes3.hue,
-          playTop = _props$attributes3.playTop,
-          playLeft = _props$attributes3.playLeft,
-          playIcon = _props$attributes3.playIcon,
-          playColor = _props$attributes3.playColor,
-          playHoverColor = _props$attributes3.playHoverColor,
-          playHoverBackColor = _props$attributes3.playHoverBackColor,
-          playSize = _props$attributes3.playSize,
-          playPadding = _props$attributes3.playPadding,
-          playBack = _props$attributes3.playBack,
-          playBorderColor = _props$attributes3.playBorderColor,
-          playBorderWidth = _props$attributes3.playBorderWidth,
-          playBorderRadius = _props$attributes3.playBorderRadius,
-          playBorderType = _props$attributes3.playBorderType,
-          videoDesc = _props$attributes3.videoDesc,
-          descTop = _props$attributes3.descTop,
-          descLeft = _props$attributes3.descLeft,
-          videoDescText = _props$attributes3.videoDescText,
-          videoDescColor = _props$attributes3.videoDescColor,
-          videoDescBack = _props$attributes3.videoDescBack,
-          videoDescPadding = _props$attributes3.videoDescPadding,
-          videoDescSize = _props$attributes3.videoDescSize,
-          videoDescWeight = _props$attributes3.videoDescWeight,
-          videoDescLetter = _props$attributes3.videoDescLetter,
-          videoDescStyle = _props$attributes3.videoDescStyle,
-          videoDescUpper = _props$attributes3.videoDescUpper,
-          videoDescBorderRadius = _props$attributes3.videoDescBorderRadius,
-          boxBorderColor = _props$attributes3.boxBorderColor,
-          boxBorderWidth = _props$attributes3.boxBorderWidth,
-          boxBorderRadius = _props$attributes3.boxBorderRadius,
-          boxBorderType = _props$attributes3.boxBorderType,
-          shadowBlur = _props$attributes3.shadowBlur,
-          shadowColor = _props$attributes3.shadowColor,
-          shadowHorizontal = _props$attributes3.shadowHorizontal,
-          shadowVertical = _props$attributes3.shadowVertical,
-          shadowPosition = _props$attributes3.shadowPosition;
+  }
+}];
 
-      var loopVideo = function loopVideo() {
-        if ("youtube" === videoType) {
-          if (videoURL.startsWith("http")) {
-            return loop ? "1&playlist=" + videoURL.replace("https://www.youtube.com/embed/", "") : "0";
-          } else {
-            return loop ? "1&playlist=" + videoURL : "0";
-          }
-        } else {
-          return loop ? "1" : "0";
-        }
-      };
-      return wp.element.createElement(
-        "div",
-        {
-          id: videoBoxId,
-          className: className + " video-overlay-" + overlay,
-          "data-type": videoType,
-          style: {
-            border: boxBorderType,
-            borderWidth: boxBorderWidth + "px",
-            borderRadius: boxBorderRadius + "px",
-            borderColor: boxBorderColor,
-            boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
-          }
-        },
-        wp.element.createElement("style", {
-          dangerouslySetInnerHTML: {
-            __html: ["#" + videoBoxId + " ." + className + "__play:hover {", "color: " + playHoverColor + " !important;", "background-color: " + playHoverBackColor + " !important;", "}"].join("\n")
-          }
-        }),
-        wp.element.createElement(
-          "div",
-          { className: className + "__container" },
-          "self" !== videoType && wp.element.createElement("iframe", {
-            src: onChangeVideoURL(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&controls=" + (controls ? "1" : "0"),
-            frameborder: "0",
-            gesture: "media",
-            allow: "encrypted-media",
-            allowfullscreen: true
-          }),
-          "self" === videoType && wp.element.createElement("video", {
-            src: videoURL,
-            loop: loop ? true : false,
-            muted: mute ? true : false,
-            controls: controls ? true : false,
-            autoplay: overlay ? false : autoPlay
-          })
-        ),
-        overlay && overlayImgURL && wp.element.createElement("div", {
-          className: className + "__overlay",
-          style: {
-            backgroundImage: "url('" + overlayImgURL + "')",
-            filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
-          }
-        }),
-        overlay && playIcon && wp.element.createElement(
-          "div",
-          {
-            className: className + "__play",
-            style: {
-              top: playTop + "%",
-              left: playLeft + "%",
-              color: playColor,
-              backgroundColor: playBack,
-              border: playBorderType,
-              borderWidth: playBorderWidth + "px",
-              borderRadius: playBorderRadius + "px",
-              borderColor: playBorderColor,
-              padding: playPadding + "px"
-            }
-          },
-          wp.element.createElement("i", {
-            className: className + "__play_icon dashicons dashicons-controls-play",
-            style: {
-              fontSize: playSize + "px"
-            }
-          })
-        ),
-        overlay && videoDesc && wp.element.createElement(
-          "div",
-          {
-            className: className + "__desc",
-            style: {
-              color: videoDescColor,
-              backgroundColor: videoDescBack,
-              padding: videoDescPadding,
-              borderRadius: videoDescBorderRadius,
-              top: descTop + "%",
-              left: descLeft + "%"
-            }
-          },
-          wp.element.createElement(
-            "p",
-            {
-              className: className + "__desc_text",
-              style: {
-                fontSize: videoDescSize + "px",
-                fontWeight: videoDescWeight,
-                letterSpacing: videoDescLetter + "px",
-                textTransform: videoDescUpper ? "uppercase" : "none",
-                fontStyle: videoDescStyle
-              }
-            },
-            wp.element.createElement(
-              "span",
-              null,
-              videoDescText
-            )
-          )
-        )
-      );
-    }
-  }]
-});
+/* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ })
 /******/ ]);

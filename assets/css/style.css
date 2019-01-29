@@ -1639,6 +1639,7 @@ a.premium-dheading-block__link:hover {
   position: absolute;
   z-index: 1;
   cursor: pointer;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   top: 65%;
   left: 50%;
@@ -1650,4 +1651,15 @@ a.premium-dheading-block__link:hover {
 }
 .premium-video-box .premium-video-box__desc_text {
   margin: 0 !important;
+}
+@media ( max-width: 500px ) {
+    .premium-video-box div.premium-video-box__desc {
+        top: auto !important;
+        bottom: 12%;
+        left: 1% !important;
+        max-width: 240px;
+        padding: 0 !important;
+        -webkit-transform: translate(0);
+        transform: translate(0);
+    }
 }
