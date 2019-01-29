@@ -135,7 +135,7 @@ class Premium_Blocks_Integration {
         if( $is_banner_enabled ) {
             wp_enqueue_script(
                 'banner-js',
-                PREMIUM_BLOCKS_URL . 'src/blocks/banner/assets/banner.js',
+                PREMIUM_BLOCKS_URL . 'assets/js/banner.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
@@ -144,21 +144,21 @@ class Premium_Blocks_Integration {
         if( $is_counter_enabled ) {
             wp_enqueue_script(
                 'waypoints_lib',
-                PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/lib/jquery.waypoints.js',
+                PREMIUM_BLOCKS_URL . 'assets/js/lib/jquery.waypoints.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
             
             wp_enqueue_script(
                 'counter_lib',
-                PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/lib/countUpmin.js',
+                PREMIUM_BLOCKS_URL . 'assets/js/lib/countUpmin.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
             
             wp_enqueue_script(
                 'countup-js',
-                PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/countup.js',
+                PREMIUM_BLOCKS_URL . 'assets/js/countup.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
@@ -167,7 +167,7 @@ class Premium_Blocks_Integration {
         if( $is_accordion_enabled ) {
             wp_enqueue_script(
                 'accordion-js',
-                PREMIUM_BLOCKS_URL . 'src/blocks/accordion/assets/accordion.js',
+                PREMIUM_BLOCKS_URL . 'assets/js/accordion.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
@@ -176,7 +176,7 @@ class Premium_Blocks_Integration {
         if( $is_section_enabled ) {
             wp_enqueue_script(
                 'section-js',
-                PREMIUM_BLOCKS_URL . 'src/blocks/section/assets/section.js',
+                PREMIUM_BLOCKS_URL . 'assets/js/section.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );

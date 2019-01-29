@@ -1,0 +1,480 @@
+import { FontAwesomeEnabled } from "../settings";
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import iconsList from "../../components/premium-icons-list";
+import PremiumBorder from "../../components/premium-border";
+import PremiumMargin from "../../components/premium-margin";
+import PremiumPadding from "../../components/premium-padding";
+import PremiumBoxShadow from "../../components/premium-box-shadow";
+import PremiumTextShadow from "../../components/premium-text-shadow";
+const className = "premium-icon";
+
+const { __ } = wp.i18n;
+
+const {
+  PanelBody,
+  Toolbar,
+  SelectControl,
+  RangeControl,
+  ToggleControl
+} = wp.components;
+const {
+  InspectorControls,
+  PanelColorSettings,
+  ColorPalette,
+  URLInput
+} = wp.editor;
+
+const { Fragment } = wp.element;
+
+const edit = props => {
+  const { isSelected, setAttributes } = props;
+  const {
+    iconType,
+    selectedIcon,
+    align,
+    hoverEffect,
+    iconSize,
+    iconColor,
+    iconBack,
+    shadowBlur,
+    shadowColor,
+    shadowHorizontal,
+    shadowVertical,
+    paddingT,
+    paddingR,
+    paddingB,
+    paddingL,
+    marginT,
+    marginR,
+    marginB,
+    marginL,
+    borderType,
+    borderWidth,
+    borderRadius,
+    borderColor,
+    background,
+    wrapBorderType,
+    wrapBorderWidth,
+    wrapBorderRadius,
+    wrapBorderColor,
+    wrapShadowBlur,
+    wrapShadowColor,
+    wrapShadowHorizontal,
+    wrapShadowVertical,
+    wrapShadowPosition,
+    wrapPaddingT,
+    wrapPaddingR,
+    wrapPaddingB,
+    wrapPaddingL,
+    wrapMarginT,
+    wrapMarginR,
+    wrapMarginB,
+    wrapMarginL,
+    urlCheck,
+    link,
+    target
+  } = props.attributes;
+
+  const EFFECTS = [
+    {
+      value: "none",
+      label: __("None")
+    },
+    {
+      value: "pulse",
+      label: __("Pulse")
+    },
+    {
+      value: "rotate",
+      label: __("Rotate")
+    },
+    {
+      value: "drotate",
+      label: __("3D Rotate")
+    },
+    {
+      value: "buzz",
+      label: __("Buzz")
+    },
+    {
+      value: "drop",
+      label: __("Drop Shadow")
+    },
+    {
+      value: "wobble",
+      label: __("Wobble")
+    }
+  ];
+
+  const ALIGNS = ["left", "center", "right"];
+
+  return [
+    isSelected && (
+      <InspectorControls key={"inspector"}>
+        <PanelBody
+          title={__("Icon")}
+          className="premium-panel-body"
+          initialOpen={false}
+        >
+          <p className="premium-editor-paragraph">{__("Select Icon")}</p>
+          <FontIconPicker
+            icons={iconsList}
+            onChange={newIcon => setAttributes({ selectedIcon: newIcon })}
+            value={selectedIcon}
+            isMulti={false}
+            appendTo="body"
+            noSelectedPlaceholder={__("Select Icon")}
+          />
+          <SelectControl
+            label={__("Hover Effect")}
+            options={EFFECTS}
+            value={hoverEffect}
+            onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
+          />
+          <p>{__("Align")}</p>
+          <Toolbar
+            controls={ALIGNS.map(iconAlign => ({
+              icon: "editor-align" + iconAlign,
+              isActive: iconAlign === align,
+              onClick: () => setAttributes({ align: iconAlign })
+            }))}
+          />
+          <ToggleControl
+            label={__("Link")}
+            checked={urlCheck}
+            onChange={newValue => setAttributes({ urlCheck: newValue })}
+          />
+          {urlCheck && (
+            <ToggleControl
+              label={__("Open link in new tab")}
+              checked={target}
+              onChange={newValue => setAttributes({ target: newValue })}
+            />
+          )}
+        </PanelBody>
+        <PanelBody
+          title={__("Icon Style")}
+          className="premium-panel-body"
+          initialOpen={false}
+        >
+          <RangeControl
+            label={__("Size (PX)")}
+            value={iconSize}
+            onChange={newValue => setAttributes({ iconSize: newValue })}
+            initialPosition={50}
+            allowReset={true}
+          />
+          <PanelColorSettings
+            title={__("Colors")}
+            className="premium-panel-body-inner"
+            initialOpen={false}
+            colorSettings={[
+              {
+                value: iconColor,
+                onChange: colorValue =>
+                  setAttributes({ iconColor: colorValue }),
+                label: __("Icon Color")
+              },
+              {
+                value: iconBack,
+                onChange: colorValue => setAttributes({ iconBack: colorValue }),
+                label: __("Background Color")
+              }
+            ]}
+          />
+          <PanelBody
+            title={__("Border")}
+            className="premium-panel-body-inner"
+            initialOpen={false}
+          >
+            <PremiumBorder
+              borderType={borderType}
+              borderWidth={borderWidth}
+              borderColor={borderColor}
+              borderRadius={borderRadius}
+              onChangeType={newType => setAttributes({ borderType: newType })}
+              onChangeWidth={newWidth =>
+                setAttributes({ borderWidth: newWidth })
+              }
+              onChangeColor={colorValue =>
+                setAttributes({ borderColor: colorValue })
+              }
+              onChangeRadius={newrRadius =>
+                setAttributes({ borderRadius: newrRadius })
+              }
+            />
+          </PanelBody>
+          <PremiumTextShadow
+            label="Shadow"
+            color={shadowColor}
+            blur={shadowBlur}
+            horizontal={shadowHorizontal}
+            vertical={shadowVertical}
+            onChangeColor={newColor => setAttributes({ shadowColor: newColor })}
+            onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
+            onChangehHorizontal={newValue =>
+              setAttributes({ shadowHorizontal: newValue })
+            }
+            onChangeVertical={newValue =>
+              setAttributes({ shadowVertical: newValue })
+            }
+          />
+          <PanelBody
+            title={__("Spacings")}
+            className="premium-panel-body-inner"
+            initialOpen={false}
+          >
+            <PremiumMargin
+              directions={["all"]}
+              marginTop={marginT}
+              marginRight={marginR}
+              marginBottom={marginB}
+              marginLeft={marginL}
+              onChangeMarTop={value =>
+                setAttributes({
+                  marginT: value
+                })
+              }
+              onChangeMarRight={value =>
+                setAttributes({
+                  marginR: value
+                })
+              }
+              onChangeMarBottom={value =>
+                setAttributes({
+                  marginB: value
+                })
+              }
+              onChangeMarLeft={value =>
+                setAttributes({
+                  marginL: value
+                })
+              }
+            />
+            <PremiumPadding
+              paddingTop={paddingT}
+              paddingRight={paddingR}
+              paddingBottom={paddingB}
+              paddingLeft={paddingL}
+              onChangePadTop={value =>
+                setAttributes({
+                  paddingT: value
+                })
+              }
+              onChangePadRight={value =>
+                setAttributes({
+                  paddingR: value
+                })
+              }
+              onChangePadBottom={value =>
+                setAttributes({
+                  paddingB: value
+                })
+              }
+              onChangePadLeft={value =>
+                setAttributes({
+                  paddingL: value
+                })
+              }
+            />
+          </PanelBody>
+        </PanelBody>
+        <PanelBody
+          title={__("Container Style")}
+          className="premium-panel-body"
+          initialOpen={false}
+        >
+          <Fragment>
+            <p>{__("Background Color")}</p>
+            <ColorPalette
+              value={background}
+              onChange={newValue =>
+                setAttributes({
+                  background: newValue
+                })
+              }
+              allowReset={true}
+            />
+          </Fragment>
+          <PanelBody
+            title={__("Border")}
+            className="premium-panel-body-inner"
+            initialOpen={false}
+          >
+            <PremiumBorder
+              borderType={wrapBorderType}
+              borderWidth={wrapBorderWidth}
+              borderColor={wrapBorderColor}
+              borderRadius={wrapBorderRadius}
+              onChangeType={newType =>
+                setAttributes({ wrapBorderType: newType })
+              }
+              onChangeWidth={newWidth =>
+                setAttributes({ wrapBorderWidth: newWidth })
+              }
+              onChangeColor={colorValue =>
+                setAttributes({ wrapBorderColor: colorValue })
+              }
+              onChangeRadius={newrRadius =>
+                setAttributes({ wrapBorderRadius: newrRadius })
+              }
+            />
+          </PanelBody>
+          <PremiumBoxShadow
+            inner={true}
+            color={wrapShadowColor}
+            blur={wrapShadowBlur}
+            horizontal={wrapShadowHorizontal}
+            vertical={wrapShadowVertical}
+            position={wrapShadowPosition}
+            onChangeColor={newColor =>
+              setAttributes({
+                wrapShadowColor: newColor
+              })
+            }
+            onChangeBlur={newBlur =>
+              setAttributes({
+                wrapShadowBlur: newBlur
+              })
+            }
+            onChangehHorizontal={newValue =>
+              setAttributes({
+                wrapShadowHorizontal: newValue
+              })
+            }
+            onChangeVertical={newValue =>
+              setAttributes({
+                wrapShadowVertical: newValue
+              })
+            }
+            onChangePosition={newValue =>
+              setAttributes({
+                wrapShadowPosition: newValue
+              })
+            }
+          />
+          <PanelBody
+            title={__("Spacings")}
+            className="premium-panel-body-inner"
+            initialOpen={false}
+          >
+            <PremiumMargin
+              directions={["all"]}
+              marginTop={wrapMarginT}
+              marginRight={wrapMarginR}
+              marginBottom={wrapMarginB}
+              marginLeft={wrapMarginL}
+              onChangeMarTop={value =>
+                setAttributes({
+                  wrapMarginT: value
+                })
+              }
+              onChangeMarRight={value =>
+                setAttributes({
+                  wrapMarginR: value
+                })
+              }
+              onChangeMarBottom={value =>
+                setAttributes({
+                  wrapMarginB: value
+                })
+              }
+              onChangeMarLeft={value =>
+                setAttributes({
+                  wrapMarginL: value
+                })
+              }
+            />
+            <PremiumPadding
+              paddingTop={wrapPaddingT}
+              paddingRight={wrapPaddingR}
+              paddingBottom={wrapPaddingB}
+              paddingLeft={wrapPaddingL}
+              onChangePadTop={value =>
+                setAttributes({
+                  wrapPaddingT: value
+                })
+              }
+              onChangePadRight={value =>
+                setAttributes({
+                  wrapPaddingR: value
+                })
+              }
+              onChangePadBottom={value =>
+                setAttributes({
+                  wrapPaddingB: value
+                })
+              }
+              onChangePadLeft={value =>
+                setAttributes({
+                  wrapPaddingL: value
+                })
+              }
+            />
+          </PanelBody>
+        </PanelBody>
+      </InspectorControls>
+    ),
+
+    <div
+      className={`${className}__container`}
+      style={{
+        textAlign: align,
+        backgroundColor: background,
+        border: wrapBorderType,
+        borderWidth: wrapBorderWidth + "px",
+        borderRadius: wrapBorderRadius + "px",
+        borderColor: wrapBorderColor,
+        boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
+          0}px ${wrapShadowBlur ||
+          0}px ${wrapShadowColor} ${wrapShadowPosition}`,
+        paddingTop: wrapPaddingT,
+        paddingRight: wrapPaddingR,
+        paddingBottom: wrapPaddingB,
+        paddingLeft: wrapPaddingL,
+        marginTop: wrapMarginT,
+        marginRight: wrapMarginR,
+        marginBottom: wrapMarginB,
+        marginLeft: wrapMarginL
+      }}
+    >
+      {iconType === "fa" && 1 != FontAwesomeEnabled && (
+        <p className={`${className}__alert`}>
+          {__("Please Enable Font Awesome Icons from Plugin settings")}
+        </p>
+      )}
+      {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
+        <i
+          className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
+          style={{
+            color: iconColor || "#6ec1e4",
+            backgroundColor: iconBack,
+            fontSize: iconSize || 50,
+            paddingTop: paddingT,
+            paddingRight: paddingR,
+            paddingBottom: paddingB,
+            paddingLeft: paddingL,
+            marginTop: marginT,
+            marginRight: marginR,
+            marginBottom: marginB,
+            marginLeft: marginL,
+            border: borderType,
+            borderWidth: borderWidth + "px",
+            borderRadius: borderRadius || 100 + "px",
+            borderColor: borderColor,
+            textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
+              0}px ${shadowBlur || 0}px ${shadowColor}`
+          }}
+        />
+      )}
+      {urlCheck && isSelected && (
+        <URLInput
+          value={link}
+          onChange={newUrl => setAttributes({ link: newUrl })}
+        />
+      )}
+    </div>
+  ];
+};
+
+export default edit;
