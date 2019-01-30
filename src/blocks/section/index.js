@@ -19,7 +19,7 @@ const {
   AlignmentToolbar,
   InnerBlocks,
   InspectorControls,
-  PanelColorSettings
+  ColorPalette
 } = wp.editor;
 
 const CONTENT = [
@@ -277,6 +277,9 @@ registerBlockType("premium/container", {
             )}
             <SelectControl
               label={__("Content Position")}
+              help={__(
+                "If you have two or more inner columns then this option will work only on the preview page"
+              )}
               options={VPOSITION}
               value={vPos}
               onChange={newValue => setAttributes({ vPos: newValue })}
@@ -287,17 +290,15 @@ registerBlockType("premium/container", {
             className="premium-panel-body"
             initialOpen={false}
           >
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  value: color,
-                  onChange: colorValue => setAttributes({ color: colorValue }),
-                  label: __("Background Color")
-                }
-              ]}
+            <p>{__("Background Color")}</p>
+            <ColorPalette
+              value={color}
+              onChange={newValue =>
+                setAttributes({
+                  color: newValue
+                })
+              }
+              allowReset={true}
             />
             {imageURL && <img src={imageURL} width="100%" height="auto" />}
             <PremiumBackgroud

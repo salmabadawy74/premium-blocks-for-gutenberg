@@ -10,6 +10,7 @@ jQuery(document).ready(function($) {
         src = $video.attr("src");
       setTimeout(() => {
         if ("self" === type) {
+          $videoBox.find(".premium-video-box__overlay").remove();
           $($video)
             .get(0)
             .play();

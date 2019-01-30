@@ -64,6 +64,9 @@ class edit extends Component {
         if ("self" !== type) {
           video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
         } else {
+          videoBox
+            .getElementsByClassName("premium-video-box__overlay")[0]
+            .remove();
           video.play();
         }
       }, 300);
@@ -375,15 +378,7 @@ class edit extends Component {
                         })
                       }
                     />
-                    <RangeControl
-                      label={__("Horizontal Offset (%)")}
-                      value={playLeft}
-                      onChange={newValue =>
-                        setAttributes({
-                          playLeft: newValue === undefined ? 50 : newValue
-                        })
-                      }
-                    />
+
                     <RangeControl
                       label={__("Vertical Offset (%)")}
                       value={playTop}
@@ -500,15 +495,6 @@ class edit extends Component {
                       }
                       onChangeUpper={check =>
                         setAttributes({ videoDescUpper: check })
-                      }
-                    />
-                    <RangeControl
-                      label={__("Horizontal Offset (%)")}
-                      value={descLeft}
-                      onChange={newValue =>
-                        setAttributes({
-                          descLeft: newValue === undefined ? 50 : newValue
-                        })
                       }
                     />
                     <RangeControl
