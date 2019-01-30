@@ -29,7 +29,7 @@ Kindly note that the plugin is on it’s early stages and Gutenberg itself is st
 9. [Gutenberg Testimonials Block](https://premiumblocks.io/index.php/gutenberg-blocks/testimonials-block/)
 10. [Gutenberg Accordion Block](https://premiumblocks.io/index.php/gutenberg-blocks/accordion-block/)
 11. [Gutenberg Icon Box Block](https://premiumblocks.io/gutenberg-blocks/icon-box-block/)
-11. [Gutenberg Video Box Block](https://premiumblocks.io/gutenberg-blocks/video-box-block/)
+12. [Gutenberg Video Box Block](https://premiumblocks.io/gutenberg-blocks/video-box-block/)
 
 == Installation ==
 
@@ -59,7 +59,7 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 = 1.3.3 =
 
 - Fixed: Failed to load blocks` JS files since last update.
-- Fixed: Video box does not work when overlay option is enabled.
+- Fixed: Video box does not work when image overlay option is enabled.
 - Fixed: Content position does not work when two or more inner columns added in Section Block.
 
 = 1.3.2 =
