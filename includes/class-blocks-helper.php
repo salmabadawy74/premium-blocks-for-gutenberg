@@ -117,11 +117,12 @@ class Premium_Blocks_Integration {
         
         $is_section_enabled = self::$blocks['container'];
 
+        $is_video_enabled = self::$blocks['videoBox'];
         
         wp_enqueue_style(
             'pbg-frontend',
             PREMIUM_BLOCKS_URL . 'assets/css/style.css',
-            array(),
+            array('dashicons'),
             PREMIUM_BLOCKS_VERSION
         );
         
@@ -135,7 +136,7 @@ class Premium_Blocks_Integration {
         if( $is_banner_enabled ) {
             wp_enqueue_script(
                 'banner-js',
-                PREMIUM_BLOCKS_URL . 'src/blocks/banner/assets/banner.js',
+                PREMIUM_BLOCKS_URL . 'assets/js/banner.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
@@ -144,21 +145,21 @@ class Premium_Blocks_Integration {
         if( $is_counter_enabled ) {
             wp_enqueue_script(
                 'waypoints_lib',
-                PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/lib/jquery.waypoints.js',
+                PREMIUM_BLOCKS_URL . 'assets/js/lib/jquery.waypoints.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
             
             wp_enqueue_script(
                 'counter_lib',
-                PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/lib/countUpmin.js',
+                PREMIUM_BLOCKS_URL . 'assets/js/lib/countUpmin.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
             
             wp_enqueue_script(
                 'countup-js',
-                PREMIUM_BLOCKS_URL . 'src/blocks/count-up/assets/countup.js',
+                PREMIUM_BLOCKS_URL . 'assets/js/countup.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
@@ -167,7 +168,7 @@ class Premium_Blocks_Integration {
         if( $is_accordion_enabled ) {
             wp_enqueue_script(
                 'accordion-js',
-                PREMIUM_BLOCKS_URL . 'src/blocks/accordion/assets/accordion.js',
+                PREMIUM_BLOCKS_URL . 'assets/js/accordion.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
@@ -176,7 +177,7 @@ class Premium_Blocks_Integration {
         if( $is_section_enabled ) {
             wp_enqueue_script(
                 'section-js',
-                PREMIUM_BLOCKS_URL . 'src/blocks/section/assets/section.js',
+                PREMIUM_BLOCKS_URL . 'assets/js/section.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
@@ -192,8 +193,15 @@ class Premium_Blocks_Integration {
             );
         }
         
-            
-        
+        if( $is_video_enabled ) {
+            wp_enqueue_script(
+                'video-box-js',
+                PREMIUM_BLOCKS_URL . 'assets/js/video-box.js',
+                array('jquery'),
+                PREMIUM_BLOCKS_VERSION
+            );
+        }
+
         //Enqueue Google Maps API key Script
         if( $is_maps_enabled && $is_enabled && ! empty( $api_key ) ) {
             wp_enqueue_script(

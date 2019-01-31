@@ -5,7 +5,7 @@ Donate link: http://leap13.com
 Requires at least: 4.5
 Tested up to: 5.0.3
 Requires PHP: 5.4
-Stable tag: 1.2.8
+Stable tag: 1.3.4
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -29,6 +29,7 @@ Kindly note that the plugin is on it’s early stages and Gutenberg itself is st
 9. [Gutenberg Testimonials Block](https://premiumblocks.io/index.php/gutenberg-blocks/testimonials-block/)
 10. [Gutenberg Accordion Block](https://premiumblocks.io/index.php/gutenberg-blocks/accordion-block/)
 11. [Gutenberg Icon Box Block](https://premiumblocks.io/gutenberg-blocks/icon-box-block/)
+12. [Gutenberg Video Box Block](https://premiumblocks.io/gutenberg-blocks/video-box-block/)
 
 == Installation ==
 
@@ -54,6 +55,35 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+
+= 1.3.4 =
+
+- Tweak: Added `Border Hover Color` option for Button block.
+
+= 1.3.3 =
+
+- Fixed: Failed to load blocks` JS files since last update.
+- Fixed: Video box does not work when image overlay option is enabled.
+- Fixed: Content position does not work when two or more inner columns added in Section Block.
+
+= 1.3.2 =
+
+- Tweak: Unnecessary files removed to decrease plugin size.
+- Fixed: `This block contains unexpected or invalid content` when fields are empty in Icon block.
+- Fixed: Icon hover effect do not work in Icon Block.
+
+= 1.3.1 =
+
+- Fixed: `This block contains unexpected or invalid content` when fields are empty in Dual Heading and Icon Box block.
+
+= 1.3.0 =
+
+- Tweak: Changed `PanelColorSettings` to `ColorPalette` for Banner, Icon, Icon Box, Maps, Pricing Table blocks.
+
+= 1.2.9 =
+
+- Tweak: Added `Slide` hover effect option for button in Icon Box block.
+- Tweak: `supports.inserter` is now used to disable blocks.
 
 = 1.2.8 =
 
