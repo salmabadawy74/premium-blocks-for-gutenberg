@@ -5,7 +5,7 @@
  * Plugin URI: https://premiumblocks.io/
  * Author: Leap13
  * Author URI: https://leap13.com/
- * Version: 1.3.4
+ * Version: 1.3.5
  * Text Domain: premium-blocks-for-gutenberg
  * Domain Path: /languages
  * License: GNU General Public License v3.0
@@ -18,7 +18,7 @@
 if( ! defined( 'ABSPATH' ) ) exit;
 
 //Define plugin constants
-define( 'PREMIUM_BLOCKS_VERSION', '1.3.4');
+define( 'PREMIUM_BLOCKS_VERSION', '1.3.5');
 define( 'PREMIUM_BLOCKS_URL', plugins_url('/', __FILE__) );
 define( 'PREMIUM_BLOCKS_PATH', plugin_dir_path(__FILE__) );
 define( 'PREMIUM_BLOCKS_FILE', __FILE__);

@@ -88,7 +88,12 @@ const save = props => {
     shadowColor,
     shadowHorizontal,
     shadowVertical,
-    shadowPosition
+    shadowPosition,
+    hoverShadowBlur,
+    hoverShadowColor,
+    hoverShadowHorizontal,
+    hoverShadowVertical,
+    hoverShadowPosition
   } = props.attributes;
 
   return (
@@ -122,6 +127,9 @@ const save = props => {
         <style
           dangerouslySetInnerHTML={{
             __html: [
+              `#premium-icon-box-${id}:hover {`,
+              `box-shadow: ${hoverShadowHorizontal}px ${hoverShadowVertical}px ${hoverShadowBlur}px ${hoverShadowColor} ${hoverShadowPosition} !important`,
+              "}",
               `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
               `color: ${btnHoverColor} !important;`,
               `border-color: ${btnHoverBorder} !important;`,

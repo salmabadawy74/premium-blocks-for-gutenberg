@@ -123,7 +123,12 @@ const edit = props => {
     shadowColor,
     shadowHorizontal,
     shadowVertical,
-    shadowPosition
+    shadowPosition,
+    hoverShadowBlur,
+    hoverShadowColor,
+    hoverShadowHorizontal,
+    hoverShadowVertical,
+    hoverShadowPosition
   } = props.attributes;
 
   setAttributes({ id: blockId });
@@ -779,6 +784,40 @@ const edit = props => {
               })
             }
           />
+          <PremiumBoxShadow
+            inner={true}
+            label={__("Hover Box Shadow")}
+            color={hoverShadowColor}
+            blur={hoverShadowBlur}
+            horizontal={hoverShadowHorizontal}
+            vertical={hoverShadowVertical}
+            position={hoverShadowPosition}
+            onChangeColor={newColor =>
+              setAttributes({
+                hoverShadowColor: newColor
+              })
+            }
+            onChangeBlur={newBlur =>
+              setAttributes({
+                hoverShadowBlur: newBlur
+              })
+            }
+            onChangehHorizontal={newValue =>
+              setAttributes({
+                hoverShadowHorizontal: newValue
+              })
+            }
+            onChangeVertical={newValue =>
+              setAttributes({
+                hoverShadowVertical: newValue
+              })
+            }
+            onChangePosition={newValue =>
+              setAttributes({
+                hoverShadowPosition: newValue
+              })
+            }
+          />
           <PanelBody
             title={__("Spacings")}
             className="premium-panel-body-inner"
@@ -871,6 +910,9 @@ const edit = props => {
         <style
           dangerouslySetInnerHTML={{
             __html: [
+              `#premium-icon-box-${id}:hover {`,
+              `box-shadow: ${hoverShadowHorizontal}px ${hoverShadowVertical}px ${hoverShadowBlur}px ${hoverShadowColor} ${hoverShadowPosition} !important`,
+              "}",
               `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
               `color: ${btnHoverColor} !important;`,
               `border-color: ${btnHoverBorder} !important;`,

@@ -54,12 +54,14 @@ class Premium_Blocks_Integration {
             PREMIUM_BLOCKS_URL . 'assets/js/build.js', 
             array( 'wp-blocks',
                 'wp-i18n',
+                'wp-components',
                 'wp-element',
                 'wp-data', 
                 'wp-editor'
             ),
             PREMIUM_BLOCKS_VERSION
         );
+        
     
         wp_enqueue_style(
             'pbg-editor-css',
