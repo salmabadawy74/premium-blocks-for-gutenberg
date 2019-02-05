@@ -1,4 +1,4 @@
-import { merge, omit } from "lodash";
+//import { merge } from "lodash";
 
 const className = "premium-button";
 
@@ -236,7 +236,7 @@ const deprecatedContent = [
   {
     attributes: buttonAttrs_1_0_1,
     migrate: attributes => {
-      return merge(attributes, { borderHoverColor: "" });
+      return Object.assign(attributes, { borderHoverColor: "" });
     },
     save: props => {
       const {

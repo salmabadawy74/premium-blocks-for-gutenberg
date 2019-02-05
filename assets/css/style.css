@@ -1550,6 +1550,10 @@ a.premium-dheading-block__link:hover {
 .premium-icon-box {
   padding: 20px;
   margin-bottom: 40px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .premium-icon-box .premium-icon-box__title,
 .premium-icon-box .premium-icon-box__desc {

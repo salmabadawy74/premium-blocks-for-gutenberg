@@ -319,6 +319,21 @@ const iconBoxAttrs = {
   shadowPosition: {
     type: "string",
     default: ""
+  },
+  hoverShadowColor: {
+    type: "string"
+  },
+  hoverShadowBlur: {
+    type: "number"
+  },
+  hoverShadowHorizontal: {
+    type: "number"
+  },
+  hoverShadowVertical: {
+    type: "number"
+  },
+  hoverShadowPosition: {
+    type: "string"
   }
 };
 
