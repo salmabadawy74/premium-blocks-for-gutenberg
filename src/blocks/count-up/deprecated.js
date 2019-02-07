@@ -362,7 +362,8 @@ const deprecatedContent = [
         titleT,
         titleB,
         titleWeight,
-        faIcon
+        faIcon,
+        containerBack
       } = props.attributes;
       let iconClass =
         "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
@@ -371,7 +372,8 @@ const deprecatedContent = [
           className={`${className}__wrap`}
           style={{
             justifyContent: align,
-            flexDirection: flexDir
+            flexDirection: flexDir,
+            backgroundColor: containerBack
           }}
         >
           {iconCheck && (
