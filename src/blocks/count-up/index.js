@@ -180,6 +180,28 @@ const counterAttrs = {
   shadowPosition: {
     type: "string",
     default: ""
+  },
+  backgroundImageID: {
+    type: "string"
+  },
+  backgroundImageURL: {
+    type: "string"
+  },
+  backgroundRepeat: {
+    type: "string",
+    default: "no-repeat"
+  },
+  backgroundPosition: {
+    type: "string",
+    default: "top center"
+  },
+  backgroundSize: {
+    type: "string",
+    default: "auto"
+  },
+  fixed: {
+    type: "boolean",
+    default: false
   }
 };
 
