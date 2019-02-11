@@ -1,6 +1,7 @@
 import { FontAwesomeEnabled } from "../settings";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
+import PremiumBackgroud from "../../components/premium-background";
 
 const className = "premium-countup";
 
@@ -67,7 +68,13 @@ const edit = props => {
     shadowColor,
     shadowHorizontal,
     shadowVertical,
-    shadowPosition
+    shadowPosition,
+    backgroundImageID,
+    backgroundImageURL,
+    fixed,
+    backgroundRepeat,
+    backgroundPosition,
+    backgroundSize
   } = props.attributes;
   let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
   const ICONS = [
@@ -510,6 +517,39 @@ const edit = props => {
               allowReset={true}
             />
           </Fragment>
+          {backgroundImageURL && (
+            <img src={backgroundImageURL} width="100%" height="auto" />
+          )}
+          <PremiumBackgroud
+            imageID={backgroundImageID}
+            imageURL={backgroundImageURL}
+            backgroundPosition={backgroundPosition}
+            backgroundRepeat={backgroundRepeat}
+            backgroundSize={backgroundSize}
+            fixed={fixed}
+            onSelectMedia={media => {
+              setAttributes({
+                backgroundImageID: media.id,
+                backgroundImageURL: media.url
+              });
+            }}
+            onRemoveImage={value =>
+              setAttributes({
+                backgroundImageURL: "",
+                backgroundImageID: ""
+              })
+            }
+            onChangeBackPos={newValue =>
+              setAttributes({ backgroundPosition: newValue })
+            }
+            onchangeBackRepeat={newValue =>
+              setAttributes({ backgroundRepeat: newValue })
+            }
+            onChangeBackSize={newValue =>
+              setAttributes({ backgroundSize: newValue })
+            }
+            onChangeFixed={check => setAttributes({ fixed: check })}
+          />
           <PremiumBoxShadow
             inner={true}
             color={shadowColor}
@@ -559,7 +599,12 @@ const edit = props => {
         justifyContent: align,
         flexDirection: flexDir,
         backgroundColor: containerBack,
-        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+        backgroundImage: `url('${backgroundImageURL}')`,
+        backgroundRepeat: backgroundRepeat,
+        backgroundPosition: backgroundPosition,
+        backgroundSize: backgroundSize,
+        backgroundAttachment: fixed ? "fixed" : "unset"
       }}
     >
       {iconCheck && (

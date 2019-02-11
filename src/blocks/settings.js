@@ -1,3 +1,6 @@
+/*import premiumLogo from "./logo";
+wp.blocks.updateCategory("premium-blocks", { icon: premiumLogo });*/
+
 //Blocks Keys
 export const {
   banner,

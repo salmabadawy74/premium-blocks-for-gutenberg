@@ -46,7 +46,12 @@ const save = props => {
     shadowColor,
     shadowHorizontal,
     shadowVertical,
-    shadowPosition
+    shadowPosition,
+    backgroundImageURL,
+    fixed,
+    backgroundRepeat,
+    backgroundPosition,
+    backgroundSize
   } = props.attributes;
   let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
   return (
@@ -56,7 +61,12 @@ const save = props => {
         justifyContent: align,
         flexDirection: flexDir,
         backgroundColor: containerBack,
-        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+        backgroundImage: `url('${backgroundImageURL}')`,
+        backgroundRepeat: backgroundRepeat,
+        backgroundPosition: backgroundPosition,
+        backgroundSize: backgroundSize,
+        backgroundAttachment: fixed ? "fixed" : "unset"
       }}
     >
       {iconCheck && (
