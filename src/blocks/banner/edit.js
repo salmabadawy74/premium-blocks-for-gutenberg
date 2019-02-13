@@ -1,6 +1,7 @@
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumFilters from "../../components/premium-filters";
 
 const className = "premium-banner";
 
@@ -66,7 +67,12 @@ const edit = props => {
     urlCheck,
     url,
     target,
-    sepColor
+    sepColor,
+    blur,
+    bright,
+    contrast,
+    saturation,
+    hue
   } = props.attributes;
   const ALIGNS = [
     {
@@ -308,6 +314,24 @@ const edit = props => {
           />
         </PanelBody>
         <PanelBody
+          title={__("Image Filters")}
+          className="premium-panel-body"
+          initialOpen={false}
+        >
+          <PremiumFilters
+            blur={blur}
+            bright={bright}
+            contrast={contrast}
+            saturation={saturation}
+            hue={hue}
+            onChangeBlur={value => setAttributes({ blur: value })}
+            onChangeBright={value => setAttributes({ bright: value })}
+            onChangeContrast={value => setAttributes({ contrast: value })}
+            onChangeSat={value => setAttributes({ saturation: value })}
+            onChangeHue={value => setAttributes({ hue: value })}
+          />
+        </PanelBody>
+        <PanelBody
           title={__("Title Settings")}
           className="premium-panel-body"
           initialOpen={false}
@@ -494,6 +518,9 @@ const edit = props => {
               className={`${className}__img`}
               alt="Banner Image"
               src={imageURL}
+              style={{
+                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+              }}
             />
           </div>
 

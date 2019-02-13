@@ -1,6 +1,7 @@
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
+import PremiumFilters from "../../components/premium-filters";
 import onChangeVideoURL from "./index";
 
 const {
@@ -298,59 +299,32 @@ class edit extends Component {
                   </IconButton>
                 )}
               />
-              <RangeControl
-                label={__("Blur (px)")}
-                min="1"
-                max="10"
-                value={blur}
-                onChange={newValue =>
+              <PremiumFilters
+                blur={blur}
+                bright={bright}
+                contrast={contrast}
+                saturation={saturation}
+                hue={hue}
+                onChangeBlur={value =>
+                  setAttributes({ blur: value === undefined ? 0 : newValue })
+                }
+                onChangeBright={value =>
                   setAttributes({
-                    blur: newValue === undefined ? 0 : newValue
+                    bright: value === undefined ? 100 : newValue
                   })
                 }
-              />
-              <RangeControl
-                label={__("Brightness (%)")}
-                min="1"
-                max="200"
-                value={bright}
-                onChange={newValue =>
+                onChangeContrast={value =>
                   setAttributes({
-                    bright: newValue === undefined ? 100 : newValue
+                    contrast: value === undefined ? 100 : newValue
                   })
                 }
-              />
-              <RangeControl
-                label={__("Contrast (%)")}
-                min="1"
-                max="200"
-                value={contrast}
-                onChange={newValue =>
+                onChangeSat={value =>
                   setAttributes({
-                    contrast: newValue === undefined ? 100 : newValue
+                    saturation: value === undefined ? 100 : newValue
                   })
                 }
-              />
-              <RangeControl
-                label={__("Saturation (%)")}
-                min="1"
-                max="200"
-                value={saturation}
-                onChange={newValue =>
-                  setAttributes({
-                    saturation: newValue === undefined ? 100 : newValue
-                  })
-                }
-              />
-              <RangeControl
-                label={__("Hue (Deg)")}
-                min="1"
-                max="360"
-                value={hue}
-                onChange={newValue =>
-                  setAttributes({
-                    hue: newValue === undefined ? 0 : newValue
-                  })
+                onChangeHue={value =>
+                  setAttributes({ hue: value === undefined ? 100 : newValue })
                 }
               />
             </PanelBody>

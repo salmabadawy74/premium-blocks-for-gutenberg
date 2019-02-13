@@ -49,7 +49,12 @@ const save = props => {
     link,
     target,
     headingURL,
-    containerBack
+    containerBack,
+    imageURL,
+    fixed,
+    backgroundRepeat,
+    backgroundPosition,
+    backgroundSize
   } = props.attributes;
 
   return (
@@ -57,7 +62,12 @@ const save = props => {
       className={`${className}__container`}
       style={{
         textAlign: contentAlign,
-        backgroundColor: containerBack
+        backgroundColor: containerBack,
+        backgroundImage: `url('${imageURL}')`,
+        backgroundRepeat: backgroundRepeat,
+        backgroundPosition: backgroundPosition,
+        backgroundSize: backgroundSize,
+        backgroundAttachment: fixed ? "fixed" : "unset"
       }}
     >
       <div className={`${className}__wrap`}>

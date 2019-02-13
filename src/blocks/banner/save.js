@@ -39,7 +39,12 @@ const save = props => {
     urlCheck,
     url,
     target,
-    sepColor
+    sepColor,
+    blur,
+    bright,
+    contrast,
+    saturation,
+    hue
   } = props.attributes;
   return (
     <div
@@ -81,6 +86,9 @@ const save = props => {
             className={`${className}__img`}
             alt="Banner Image"
             src={imageURL}
+            style={{
+              filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+            }}
           />
         </div>
 

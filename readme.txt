@@ -5,7 +5,7 @@ Donate link: http://leap13.com
 Requires at least: 4.5
 Tested up to: 5.0.3
 Requires PHP: 5.4
-Stable tag: 1.3.8
+Stable tag: 1.3.9
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -55,6 +55,12 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+
+= 1.3.9 =
+
+- Tweak: Added `Image Filters` options group to Banner block image.
+- Tweak: Added `Image Background` options group to `Container Style` in Dual Heading block.
+- Fixed: Spacing issue above strings in Dual Heading block.
 
 = 1.3.8 =
 
