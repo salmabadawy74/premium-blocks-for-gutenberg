@@ -152,6 +152,26 @@ const bannerAttrs = {
   },
   id: {
     type: "string"
+  },
+  blur: {
+    type: "number",
+    default: "0"
+  },
+  bright: {
+    type: "number",
+    default: "100"
+  },
+  contrast: {
+    type: "number",
+    default: "100"
+  },
+  saturation: {
+    type: "number",
+    default: "100"
+  },
+  hue: {
+    type: "number",
+    default: "0"
   }
 };
 registerBlockType("premium/banner", {

@@ -1,6 +1,7 @@
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumBackgroud from "../../components/premium-background";
 
 const className = "premium-dheading-block";
 
@@ -74,7 +75,13 @@ const edit = props => {
     link,
     target,
     headingURL,
-    containerBack
+    containerBack,
+    imageID,
+    imageURL,
+    fixed,
+    backgroundRepeat,
+    backgroundPosition,
+    backgroundSize
   } = props.attributes;
   const DISPLAY = [
     {
@@ -481,6 +488,34 @@ const edit = props => {
             }
             allowReset={true}
           />
+          {imageURL && <img src={imageURL} width="100%" height="auto" />}
+          <PremiumBackgroud
+            imageID={imageID}
+            imageURL={imageURL}
+            backgroundPosition={backgroundPosition}
+            backgroundRepeat={backgroundRepeat}
+            backgroundSize={backgroundSize}
+            fixed={fixed}
+            onSelectMedia={media => {
+              setAttributes({
+                imageID: media.id,
+                imageURL: media.url
+              });
+            }}
+            onRemoveImage={value =>
+              setAttributes({ imageURL: "", imageID: "" })
+            }
+            onChangeBackPos={newValue =>
+              setAttributes({ backgroundPosition: newValue })
+            }
+            onchangeBackRepeat={newValue =>
+              setAttributes({ backgroundRepeat: newValue })
+            }
+            onChangeBackSize={newValue =>
+              setAttributes({ backgroundSize: newValue })
+            }
+            onChangeFixed={check => setAttributes({ fixed: check })}
+          />
         </PanelBody>
       </InspectorControls>
     ),
@@ -488,7 +523,12 @@ const edit = props => {
       className={`${className}__container`}
       style={{
         textAlign: contentAlign,
-        backgroundColor: containerBack
+        backgroundColor: containerBack,
+        backgroundImage: `url('${imageURL}')`,
+        backgroundRepeat: backgroundRepeat,
+        backgroundPosition: backgroundPosition,
+        backgroundSize: backgroundSize,
+        backgroundAttachment: fixed ? "fixed" : "unset"
       }}
     >
       <div className={`${className}__wrap`}>
