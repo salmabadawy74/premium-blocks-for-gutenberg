@@ -98,8 +98,33 @@ const iconAttrs = {
   borderColor: {
     type: "string"
   },
+  backgroundColor: {
+    type: "string"
+  },
   background: {
     type: "string"
+  },
+  imageID: {
+    type: "string"
+  },
+  imageURL: {
+    type: "string"
+  },
+  backgroundRepeat: {
+    type: "string",
+    default: "no-repeat"
+  },
+  backgroundPosition: {
+    type: "string",
+    default: "top center"
+  },
+  backgroundSize: {
+    type: "string",
+    default: "auto"
+  },
+  fixed: {
+    type: "boolean",
+    default: false
   },
   wrapBorderType: {
     type: "string",

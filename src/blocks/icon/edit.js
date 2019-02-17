@@ -6,6 +6,7 @@ import PremiumMargin from "../../components/premium-margin";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumBackgroud from "../../components/premium-background";
 const className = "premium-icon";
 
 const { __ } = wp.i18n;
@@ -52,7 +53,13 @@ const edit = props => {
     borderWidth,
     borderRadius,
     borderColor,
-    background,
+    backgroundColor,
+    imageID,
+    imageURL,
+    fixed,
+    backgroundRepeat,
+    backgroundPosition,
+    backgroundSize,
     wrapBorderType,
     wrapBorderWidth,
     wrapBorderRadius,
@@ -287,13 +294,41 @@ const edit = props => {
           <Fragment>
             <p>{__("Background Color")}</p>
             <ColorPalette
-              value={background}
+              value={backgroundColor}
               onChange={newValue =>
                 setAttributes({
-                  background: newValue
+                  backgroundColor: newValue
                 })
               }
               allowReset={true}
+            />
+            {imageURL && <img src={imageURL} width="100%" height="auto" />}
+            <PremiumBackgroud
+              imageID={imageID}
+              imageURL={imageURL}
+              backgroundPosition={backgroundPosition}
+              backgroundRepeat={backgroundRepeat}
+              backgroundSize={backgroundSize}
+              fixed={fixed}
+              onSelectMedia={media => {
+                setAttributes({
+                  imageID: media.id,
+                  imageURL: media.url
+                });
+              }}
+              onRemoveImage={value =>
+                setAttributes({ imageURL: "", imageID: "" })
+              }
+              onChangeBackPos={newValue =>
+                setAttributes({ backgroundPosition: newValue })
+              }
+              onchangeBackRepeat={newValue =>
+                setAttributes({ backgroundRepeat: newValue })
+              }
+              onChangeBackSize={newValue =>
+                setAttributes({ backgroundSize: newValue })
+              }
+              onChangeFixed={check => setAttributes({ fixed: check })}
             />
           </Fragment>
           <PanelBody
@@ -420,7 +455,12 @@ const edit = props => {
       className={`${className}__container`}
       style={{
         textAlign: align,
-        backgroundColor: background,
+        backgroundColor: backgroundColor,
+        backgroundImage: `url('${imageURL}')`,
+        backgroundRepeat: backgroundRepeat,
+        backgroundPosition: backgroundPosition,
+        backgroundSize: backgroundSize,
+        backgroundAttachment: fixed ? "fixed" : "unset",
         border: wrapBorderType,
         borderWidth: wrapBorderWidth + "px",
         borderRadius: wrapBorderRadius + "px",

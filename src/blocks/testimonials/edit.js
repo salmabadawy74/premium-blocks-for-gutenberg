@@ -3,6 +3,7 @@ import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
+import PremiumBackgroud from "../../components/premium-background";
 
 const { __ } = wp.i18n;
 
@@ -22,8 +23,11 @@ const {
   AlignmentToolbar,
   RichText,
   MediaUpload,
-  PanelColorSettings
+  PanelColorSettings,
+  ColorPalette
 } = wp.editor;
+
+const { Fragment } = wp.element;
 
 const className = "premium-testimonial";
 
@@ -66,7 +70,14 @@ const edit = props => {
     shadowColor,
     shadowHorizontal,
     shadowVertical,
-    shadowPosition
+    shadowPosition,
+    backColor,
+    imageID,
+    imageURL,
+    fixed,
+    backgroundRepeat,
+    backgroundPosition,
+    backgroundSize
   } = props.attributes;
 
   const RADIUS = [
@@ -157,19 +168,18 @@ const edit = props => {
               />
             )}
             {authorImgUrl && (
-              <PanelColorSettings
-                title={__("Border Color")}
-                className="premium-panel-body-inner"
-                initialOpen={false}
-                colorSettings={[
-                  {
-                    value: imgBorderColor,
-                    onChange: colorValue =>
-                      setAttributes({ imgBorderColor: colorValue }),
-                    label: __("Color")
+              <Fragment>
+                <p>{__("Border Color")}</p>
+                <ColorPalette
+                  value={imgBorderColor}
+                  onChange={newValue =>
+                    setAttributes({
+                      imgBorderColor: newValue
+                    })
                   }
-                ]}
-              />
+                  allowReset={true}
+                />
+              </Fragment>
             )}
           </PanelBody>
           <PanelBody
@@ -186,7 +196,16 @@ const edit = props => {
                 subscript: tag
               }))}
             />
-
+            <p>{__("Color")}</p>
+            <ColorPalette
+              value={authorColor}
+              onChange={newValue =>
+                setAttributes({
+                  authorColor: newValue
+                })
+              }
+              allowReset={true}
+            />
             <PremiumTypo
               components={["size", "weight", "style", "upper", "spacing"]}
               size={authorSize}
@@ -207,19 +226,6 @@ const edit = props => {
               onChangeUpper={check => setAttributes({ authorUpper: check })}
             />
           </PanelBody>
-          <PanelColorSettings
-            title={__("Colors")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-            colorSettings={[
-              {
-                value: authorColor,
-                onChange: colorValue =>
-                  setAttributes({ authorColor: colorValue }),
-                label: __("Text Color")
-              }
-            ]}
-          />
         </PanelBody>
         <PanelBody
           title={__("Content")}
@@ -238,20 +244,17 @@ const edit = props => {
               onChangeSize={newSize => setAttributes({ bodySize: newSize })}
               onChangeLine={newWeight => setAttributes({ bodyLine: newWeight })}
             />
-          </PanelBody>
-          <PanelColorSettings
-            title={__("Colors")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-            colorSettings={[
-              {
-                value: bodyColor,
-                onChange: colorValue =>
-                  setAttributes({ bodyColor: colorValue }),
-                label: __("Text Color")
+            <p>{__("Color")}</p>
+            <ColorPalette
+              value={bodyColor}
+              onChange={newValue =>
+                setAttributes({
+                  bodyColor: newValue
+                })
               }
-            ]}
-          />
+              allowReset={true}
+            />
+          </PanelBody>
           <PanelBody
             title={__("Spacings")}
             className="premium-panel-body-inner"
@@ -347,19 +350,18 @@ const edit = props => {
             max="12"
             onChange={newSize => setAttributes({ quotSize: newSize })}
           />
-          <PanelColorSettings
-            title={__("Colors")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-            colorSettings={[
-              {
-                value: quotColor,
-                onChange: colorValue =>
-                  setAttributes({ quotColor: colorValue }),
-                label: __("Quotations Color")
+          <Fragment>
+            <p>{__("Quotations Color")}</p>
+            <ColorPalette
+              value={quotColor}
+              onChange={newValue =>
+                setAttributes({
+                  quotColor: newValue
+                })
               }
-            ]}
-          />
+              allowReset={true}
+            />
+          </Fragment>
           <RangeControl
             label={__("Opacity")}
             min="0"
@@ -373,6 +375,46 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
+          <Fragment>
+            <p>{__("Background Color")}</p>
+            <ColorPalette
+              value={backColor}
+              onChange={newValue =>
+                setAttributes({
+                  backColor: newValue
+                })
+              }
+              allowReset={true}
+            />
+            {imageURL && <img src={imageURL} width="100%" height="auto" />}
+            <PremiumBackgroud
+              imageID={imageID}
+              imageURL={imageURL}
+              backgroundPosition={backgroundPosition}
+              backgroundRepeat={backgroundRepeat}
+              backgroundSize={backgroundSize}
+              fixed={fixed}
+              onSelectMedia={media => {
+                setAttributes({
+                  imageID: media.id,
+                  imageURL: media.url
+                });
+              }}
+              onRemoveImage={value =>
+                setAttributes({ imageURL: "", imageID: "" })
+              }
+              onChangeBackPos={newValue =>
+                setAttributes({ backgroundPosition: newValue })
+              }
+              onchangeBackRepeat={newValue =>
+                setAttributes({ backgroundRepeat: newValue })
+              }
+              onChangeBackSize={newValue =>
+                setAttributes({ backgroundSize: newValue })
+              }
+              onChangeFixed={check => setAttributes({ fixed: check })}
+            />
+          </Fragment>
           <PremiumBoxShadow
             inner={true}
             color={shadowColor}
@@ -412,7 +454,13 @@ const edit = props => {
     <div
       className={`${className}__wrap`}
       style={{
-        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+        backgroundColor: backColor,
+        backgroundImage: `url('${imageURL}')`,
+        backgroundRepeat: backgroundRepeat,
+        backgroundPosition: backgroundPosition,
+        backgroundSize: backgroundSize,
+        backgroundAttachment: fixed ? "fixed" : "unset"
       }}
     >
       <div className={`${className}__container`}>
