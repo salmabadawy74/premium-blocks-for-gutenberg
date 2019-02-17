@@ -5,7 +5,7 @@ Donate link: http://leap13.com
 Requires at least: 4.5
 Tested up to: 5.0.3
 Requires PHP: 5.4
-Stable tag: 1.3.9
+Stable tag: 1.4.0
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -55,6 +55,12 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+
+= 1.4.0 =
+
+- Tweak: Added `Background Image` options group for container in Icon block. 
+- Tweak: Added `Background Color/Image` option for container in Testimonial block.
+- Tweak: Code refactored to minimize size.
 
 = 1.3.9 =
 
