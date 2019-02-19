@@ -9,6 +9,7 @@ const save = props => {
     firstColor,
     firstBackground,
     firstSize,
+    firstFamily,
     firstStyle,
     firstUpper,
     firstLetter,
@@ -29,6 +30,7 @@ const save = props => {
     secondColor,
     secondBackground,
     secondSize,
+    secondFamily,
     secondLetter,
     secondUpper,
     secondWeight,
@@ -82,6 +84,7 @@ const save = props => {
                 ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                 : "none",
               fontSize: firstSize + "px",
+              fontFamily: firstFamily,
               letterSpacing: firstLetter + "px",
               textTransform: firstUpper ? "uppercase" : "none",
               fontStyle: firstStyle,
@@ -107,6 +110,7 @@ const save = props => {
                 ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                 : "none",
               fontSize: secondSize + "px",
+              fontFamily: secondFamily,
               letterSpacing: secondLetter + "px",
               textTransform: secondUpper ? "uppercase" : "none",
               fontStyle: secondStyle,
