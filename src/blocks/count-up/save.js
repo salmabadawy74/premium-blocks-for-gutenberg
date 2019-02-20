@@ -51,7 +51,11 @@ const save = props => {
     fixed,
     backgroundRepeat,
     backgroundPosition,
-    backgroundSize
+    backgroundSize,
+    titleFamily,
+    counterFamily,
+    prefixFamily,
+    suffixFamily
   } = props.attributes;
   let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
   return (
@@ -120,8 +124,10 @@ const save = props => {
         <div className={`${className}__desc`}>
           {prefix && (
             <p
+              className={`${className}__prefix`}
               style={{
                 fontSize: prefixSize + "px",
+                fontFamily: prefixFamily,
                 color: prefixColor,
                 fontWeight: prefixWeight,
                 marginRight: prefixGap + "px"
@@ -136,6 +142,7 @@ const save = props => {
             data-delay={delay}
             style={{
               fontSize: numberSize + "px",
+              fontFamily: counterFamily,
               color: numberColor,
               fontWeight: numberWeight
             }}
@@ -144,8 +151,10 @@ const save = props => {
           </p>
           {suffix && (
             <p
+              className={`${className}__suffix`}
               style={{
                 fontSize: suffixSize + "px",
+                fontFamily: suffixFamily,
                 color: suffixColor,
                 fontWeight: suffixWeight,
                 marginLeft: suffixGap + "px"
@@ -160,6 +169,7 @@ const save = props => {
             className={`${className}__title`}
             style={{
               fontSize: titleSize + "px",
+              fontFamily: titleFamily,
               marginTop: titleT + "px",
               marginBottom: titleB + "px",
               color: titleColor,
@@ -178,6 +188,7 @@ const save = props => {
           className={`${className}__title`}
           style={{
             fontSize: titleSize + "px",
+            fontFamily: titleFamily,
             marginTop: titleT + "px",
             marginBottom: titleB + "px",
             color: titleColor,

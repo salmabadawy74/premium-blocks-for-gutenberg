@@ -202,6 +202,18 @@ const counterAttrs = {
   fixed: {
     type: "boolean",
     default: false
+  },
+  titleFamily: {
+    type: "string"
+  },
+  counterFamily: {
+    type: "string"
+  },
+  prefixFamily: {
+    type: "string"
+  },
+  suffixFamily: {
+    type: "string"
   }
 };
 
