@@ -41,6 +41,9 @@ const dualHeadingAttrs = {
     type: "number",
     default: "20"
   },
+  firstFamily: {
+    type: "string"
+  },
   firstLetter: {
     type: "number"
   },
@@ -118,6 +121,9 @@ const dualHeadingAttrs = {
   secondSize: {
     type: "number",
     default: "20"
+  },
+  secondFamily: {
+    type: "string"
   },
   secondLetter: {
     type: "number"

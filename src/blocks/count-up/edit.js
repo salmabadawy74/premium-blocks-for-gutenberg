@@ -2,6 +2,7 @@ import { FontAwesomeEnabled } from "../settings";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
+import FONTS from "../../components/premium-fonts";
 
 const className = "premium-countup";
 
@@ -74,7 +75,11 @@ const edit = props => {
     fixed,
     backgroundRepeat,
     backgroundPosition,
-    backgroundSize
+    backgroundSize,
+    titleFamily,
+    counterFamily,
+    prefixFamily,
+    suffixFamily
   } = props.attributes;
   let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
   const ICONS = [
@@ -128,6 +133,56 @@ const edit = props => {
       setAttributes({ selfAlign: "flex-end" });
       break;
   }
+
+  const addFontToHead = fontFamily => {
+    const head = document.head;
+    const link = document.createElement("link");
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.href =
+      "https://fonts.googleapis.com/css?family=" +
+      fontFamily.replace(/\s+/g, "+") +
+      ":" +
+      "regular";
+    head.appendChild(link);
+  };
+
+  const onChangeTitleFamily = fontFamily => {
+    setAttributes({ titleFamily: fontFamily });
+    if (!fontFamily) {
+      return;
+    }
+
+    addFontToHead(fontFamily);
+  };
+
+  const onChangePrefixFamily = fontFamily => {
+    setAttributes({ prefixFamily: fontFamily });
+    if (!fontFamily) {
+      return;
+    }
+
+    addFontToHead(fontFamily);
+  };
+
+  const onChangeCounterFamily = fontFamily => {
+    setAttributes({ counterFamily: fontFamily });
+    if (!fontFamily) {
+      return;
+    }
+
+    addFontToHead(fontFamily);
+  };
+
+  const onChangeSuffixFamily = fontFamily => {
+    setAttributes({ suffixFamily: fontFamily });
+    if (!fontFamily) {
+      return;
+    }
+
+    addFontToHead(fontFamily);
+  };
+
   return [
     isSelected && (
       <InspectorControls key={"inspector"}>
@@ -317,6 +372,12 @@ const edit = props => {
             className="premium-panel-body-inner"
             initialOpen={false}
           >
+            <SelectControl
+              label={__("Font Family")}
+              value={counterFamily}
+              options={FONTS}
+              onChange={onChangeCounterFamily}
+            />
             <PremiumTypo
               components={["size", "weight"]}
               size={numberSize}
@@ -356,6 +417,12 @@ const edit = props => {
               className="premium-panel-body-inner"
               initialOpen={false}
             >
+              <SelectControl
+                label={__("Font Family")}
+                value={prefixFamily}
+                options={FONTS}
+                onChange={onChangePrefixFamily}
+              />
               <PremiumTypo
                 components={["size", "weight"]}
                 size={prefixSize}
@@ -402,6 +469,12 @@ const edit = props => {
               className="premium-panel-body-inner"
               initialOpen={false}
             >
+              <SelectControl
+                label={__("Font Family")}
+                value={suffixFamily}
+                options={FONTS}
+                onChange={onChangeSuffixFamily}
+              />
               <PremiumTypo
                 components={["size", "weight"]}
                 size={suffixSize}
@@ -448,6 +521,12 @@ const edit = props => {
               className="premium-panel-body-inner"
               initialOpen={false}
             >
+              <SelectControl
+                label={__("Font Family")}
+                value={titleFamily}
+                options={FONTS}
+                onChange={onChangeTitleFamily}
+              />
               <PremiumTypo
                 components={["size", "weight", "spacing", "style", "upper"]}
                 size={titleSize}
@@ -657,8 +736,10 @@ const edit = props => {
         <div className={`${className}__desc`}>
           {prefix && (
             <p
+              className={`${className}__prefix`}
               style={{
                 fontSize: prefixSize + "px",
+                fontFamily: prefixFamily,
                 color: prefixColor,
                 fontWeight: prefixWeight,
                 marginRight: prefixGap + "px"
@@ -673,6 +754,7 @@ const edit = props => {
             data-delay={delay}
             style={{
               fontSize: numberSize + "px",
+              fontFamily: counterFamily,
               color: numberColor,
               fontWeight: numberWeight
             }}
@@ -681,8 +763,10 @@ const edit = props => {
           </p>
           {suffix && (
             <p
+              className={`${className}__suffix`}
               style={{
                 fontSize: suffixSize + "px",
+                fontFamily: suffixFamily,
                 color: suffixColor,
                 fontWeight: suffixWeight,
                 marginLeft: suffixGap + "px"
@@ -697,6 +781,7 @@ const edit = props => {
             className={`${className}__title`}
             style={{
               fontSize: titleSize + "px",
+              fontFamily: titleFamily,
               marginTop: titleT + "px",
               marginBottom: titleB + "px",
               color: titleColor,
@@ -715,6 +800,7 @@ const edit = props => {
           className={`${className}__title`}
           style={{
             fontSize: titleSize + "px",
+            fontFamily: titleFamily,
             marginTop: titleT + "px",
             marginBottom: titleB + "px",
             color: titleColor,

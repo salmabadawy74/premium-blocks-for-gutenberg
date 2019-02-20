@@ -121,6 +121,8 @@ class Premium_Blocks_Integration {
 
         $is_video_enabled = self::$blocks['videoBox'];
         
+        $is_dual_enabled = self::$blocks['dualHeading'];
+        
         wp_enqueue_style(
             'pbg-frontend',
             PREMIUM_BLOCKS_URL . 'assets/css/style.css',
@@ -139,6 +141,15 @@ class Premium_Blocks_Integration {
             wp_enqueue_script(
                 'banner-js',
                 PREMIUM_BLOCKS_URL . 'assets/js/banner.js',
+                array('jquery'),
+                PREMIUM_BLOCKS_VERSION
+            );
+        }
+        
+        if( $is_dual_enabled ) {
+            wp_enqueue_script(
+                'dual-heading-js',
+                PREMIUM_BLOCKS_URL . 'assets/js/dual-heading.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );

@@ -2,6 +2,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackgroud from "../../components/premium-background";
+import FONTS from "../../components/premium-fonts";
 
 const className = "premium-dheading-block";
 
@@ -33,6 +34,7 @@ const edit = props => {
     firstColor,
     firstBackground,
     firstSize,
+    firstFamily,
     firstStyle,
     firstUpper,
     firstLetter,
@@ -54,6 +56,7 @@ const edit = props => {
     secondColor,
     secondBackground,
     secondSize,
+    secondFamily,
     secondLetter,
     secondUpper,
     secondWeight,
@@ -93,6 +96,38 @@ const edit = props => {
       label: __("Block")
     }
   ];
+
+  const addFontToHead = fontFamily => {
+    const head = document.head;
+    const link = document.createElement("link");
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.href =
+      "https://fonts.googleapis.com/css?family=" +
+      fontFamily.replace(/\s+/g, "+") +
+      ":" +
+      "regular";
+    head.appendChild(link);
+  };
+
+  const onChangeFirstFamily = fontFamily => {
+    setAttributes({ firstFamily: fontFamily });
+    if (!fontFamily) {
+      return;
+    }
+
+    addFontToHead(fontFamily);
+  };
+
+  const onChangeSecondFamily = fontFamily => {
+    setAttributes({ secondFamily: fontFamily });
+    if (!fontFamily) {
+      return;
+    }
+
+    addFontToHead(fontFamily);
+  };
+
   return [
     isSelected && (
       <BlockControls key="controls">
@@ -141,7 +176,6 @@ const edit = props => {
             />
           )}
         </PanelBody>
-
         <PanelBody
           title={__("First Heading Style")}
           className="premium-panel-body"
@@ -164,6 +198,12 @@ const edit = props => {
             className="premium-panel-body premium-panel-body-inner"
             initialOpen={false}
           >
+            <SelectControl
+              label={__("Font Family")}
+              value={firstFamily}
+              options={FONTS}
+              onChange={onChangeFirstFamily}
+            />
             <PremiumTypo
               components={["size", "weight", "style", "upper", "spacing"]}
               size={firstSize}
@@ -327,6 +367,12 @@ const edit = props => {
             className="premium-panel-body premium-panel-body-inner"
             initialOpen={false}
           >
+            <SelectControl
+              label={__("Font Family")}
+              value={secondFamily}
+              options={FONTS}
+              onChange={onChangeSecondFamily}
+            />
             <PremiumTypo
               components={["size", "weight", "style", "upper", "spacing"]}
               size={secondSize}
@@ -519,6 +565,7 @@ const edit = props => {
         </PanelBody>
       </InspectorControls>
     ),
+
     <div
       className={`${className}__container`}
       style={{
@@ -543,6 +590,7 @@ const edit = props => {
                 ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                 : "none",
               fontSize: firstSize + "px",
+              fontFamily: firstFamily,
               letterSpacing: firstLetter + "px",
               textTransform: firstUpper ? "uppercase" : "none",
               fontStyle: firstStyle,
@@ -569,6 +617,7 @@ const edit = props => {
                 ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                 : "none",
               fontSize: secondSize + "px",
+              fontFamily: secondFamily,
               letterSpacing: secondLetter + "px",
               textTransform: secondUpper ? "uppercase" : "none",
               fontStyle: secondStyle,
