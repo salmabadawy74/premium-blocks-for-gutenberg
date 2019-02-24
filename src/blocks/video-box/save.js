@@ -39,6 +39,7 @@ const save = props => {
     videoDescBack,
     videoDescPadding,
     videoDescSize,
+    videoDescFamily,
     videoDescWeight,
     videoDescLetter,
     videoDescStyle,
@@ -167,6 +168,7 @@ const save = props => {
             className={`${className}__desc_text`}
             style={{
               fontSize: videoDescSize + "px",
+              fontFamily: videoDescFamily,
               fontWeight: videoDescWeight,
               letterSpacing: videoDescLetter + "px",
               textTransform: videoDescUpper ? "uppercase" : "none",

@@ -127,6 +127,9 @@ const videoBoxAttrs = {
   videoDescSize: {
     type: "number"
   },
+  videoDescFamily: {
+    type: "string"
+  },
   videoDescWeight: {
     type: "number"
   },
