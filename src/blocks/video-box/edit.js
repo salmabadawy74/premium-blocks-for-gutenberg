@@ -3,6 +3,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import onChangeVideoURL from "./index";
+import FONTS from "../../components/premium-fonts";
 
 const {
   IconButton,
@@ -115,6 +116,7 @@ class edit extends Component {
       videoDescBack,
       videoDescPadding,
       videoDescSize,
+      videoDescFamily,
       videoDescWeight,
       videoDescLetter,
       videoDescStyle,
@@ -180,6 +182,28 @@ class edit extends Component {
             "Enter video ID, for example: x5gifqg or Embed URL, for example: https://dailymotion.com/embed/video/x5gifqg"
           );
       }
+    };
+
+    const addFontToHead = fontFamily => {
+      const head = document.head;
+      const link = document.createElement("link");
+      link.type = "text/css";
+      link.rel = "stylesheet";
+      link.href =
+        "https://fonts.googleapis.com/css?family=" +
+        fontFamily.replace(/\s+/g, "+") +
+        ":" +
+        "regular";
+      head.appendChild(link);
+    };
+
+    const onChangeDescFamily = fontFamily => {
+      setAttributes({ videoDescFamily: fontFamily });
+      if (!fontFamily) {
+        return;
+      }
+
+      addFontToHead(fontFamily);
     };
 
     return [
@@ -306,25 +330,25 @@ class edit extends Component {
                 saturation={saturation}
                 hue={hue}
                 onChangeBlur={value =>
-                  setAttributes({ blur: value === undefined ? 0 : newValue })
+                  setAttributes({ blur: value === undefined ? 0 : value })
                 }
                 onChangeBright={value =>
                   setAttributes({
-                    bright: value === undefined ? 100 : newValue
+                    bright: value === undefined ? 100 : value
                   })
                 }
                 onChangeContrast={value =>
                   setAttributes({
-                    contrast: value === undefined ? 100 : newValue
+                    contrast: value === undefined ? 100 : value
                   })
                 }
                 onChangeSat={value =>
                   setAttributes({
-                    saturation: value === undefined ? 100 : newValue
+                    saturation: value === undefined ? 100 : value
                   })
                 }
                 onChangeHue={value =>
-                  setAttributes({ hue: value === undefined ? 100 : newValue })
+                  setAttributes({ hue: value === undefined ? 100 : value })
                 }
               />
             </PanelBody>
@@ -442,6 +466,12 @@ class edit extends Component {
                         setAttributes({ videoDescText: newText })
                       }
                     />
+                    <SelectControl
+                      label={__("Font Family")}
+                      value={videoDescFamily}
+                      options={FONTS}
+                      onChange={onChangeDescFamily}
+                    />
                     <PremiumTypo
                       components={[
                         "size",
@@ -529,11 +559,6 @@ class edit extends Component {
             className="premium-panel-body"
             initialOpen={false}
           >
-            <PanelBody
-              title={__("Border")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
               <PremiumBorder
                 borderType={boxBorderType}
                 borderWidth={boxBorderWidth}
@@ -552,7 +577,6 @@ class edit extends Component {
                   setAttributes({ boxBorderRadius: newrRadius })
                 }
               />
-            </PanelBody>
             <PremiumBoxShadow
               inner={true}
               color={shadowColor}
@@ -685,6 +709,7 @@ class edit extends Component {
               className={`${className}__desc_text`}
               style={{
                 fontSize: videoDescSize + "px",
+                fontFamily: videoDescFamily,
                 fontWeight: videoDescWeight,
                 letterSpacing: videoDescLetter + "px",
                 textTransform: videoDescUpper ? "uppercase" : "none",

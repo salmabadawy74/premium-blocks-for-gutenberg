@@ -333,11 +333,6 @@ const edit = props => {
             className="premium-panel-body"
             initialOpen={false}
           >
-            <PanelBody
-              title={__("Font")}
-              className="premium-panel-body premium-panel-body-inner"
-              initialOpen={false}
-            >
               <p>{__("Title")}</p>
               <Toolbar
                 controls={"123456".split("").map(tag => ({
@@ -377,7 +372,6 @@ const edit = props => {
                 }
                 onChangeUpper={check => setAttributes({ titleUpper: check })}
               />
-            </PanelBody>
             <Fragment>
               <p>{__("Text Color")}</p>
               <ColorPalette
@@ -408,11 +402,6 @@ const edit = props => {
                 setAttributes({ titleShadowVertical: newValue || "0" })
               }
             />
-            <PanelBody
-              title={__("Spacings")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
               <PremiumMargin
                 directions={["top", "bottom"]}
                 marginTop={titleMarginT}
@@ -428,7 +417,6 @@ const edit = props => {
                   })
                 }
               />
-            </PanelBody>
           </PanelBody>
         )}
         {descChecked && (
@@ -437,11 +425,6 @@ const edit = props => {
             className="premium-panel-body"
             initialOpen={false}
           >
-            <PanelBody
-              title={__("Font")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
               <PremiumTypo
                 components={["size", "weight", "line"]}
                 size={descSize}
@@ -455,7 +438,6 @@ const edit = props => {
                 }
                 onChangeLine={newValue => setAttributes({ descLine: newValue })}
               />
-            </PanelBody>
             <Fragment>
               <p>{__("Text Color")}</p>
               <ColorPalette
@@ -468,11 +450,6 @@ const edit = props => {
                 allowReset={true}
               />
             </Fragment>
-            <PanelBody
-              title={__("Spacings")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
               <PremiumMargin
                 directions={["top", "bottom"]}
                 marginTop={descMarginT}
@@ -488,7 +465,6 @@ const edit = props => {
                   })
                 }
               />
-            </PanelBody>
           </PanelBody>
         )}
 
@@ -517,11 +493,6 @@ const edit = props => {
               checked={btnTarget}
               onChange={newValue => setAttributes({ btnTarget: newValue })}
             />
-            <PanelBody
-              title={__("Font")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
               <PremiumTypo
                 components={["size", "weight", "style", "upper", "spacing"]}
                 size={btnSize}
@@ -543,7 +514,6 @@ const edit = props => {
                 }
                 onChangeUpper={check => setAttributes({ btnUpper: check })}
               />
-            </PanelBody>
             <PanelColorSettings
               title={__("Colors")}
               className="premium-panel-body-inner"
@@ -583,11 +553,6 @@ const edit = props => {
                 }
               ]}
             />
-            <PanelBody
-              title={__("Border")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
               <PremiumBorder
                 borderType={btnBorderType}
                 borderWidth={btnBorderWidth}
@@ -606,7 +571,6 @@ const edit = props => {
                   setAttributes({ btnBorderRadius: newrRadius })
                 }
               />
-            </PanelBody>
             <PremiumBoxShadow
               inner={true}
               color={btnShadowColor}
@@ -640,11 +604,6 @@ const edit = props => {
                 })
               }
             />
-            <PanelBody
-              title={__("Spacings")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
               <RangeControl
                 label={__("Padding (PX)")}
                 value={btnPadding}
@@ -665,7 +624,6 @@ const edit = props => {
                   })
                 }
               />
-            </PanelBody>
           </PanelBody>
         )}
 
@@ -729,11 +687,6 @@ const edit = props => {
               onChangeFixed={check => setAttributes({ fixed: check })}
             />
           </PanelBody>
-          <PanelBody
-            title={__("Border")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
             <PremiumBorder
               borderType={borderType}
               borderWidth={borderWidth}
@@ -750,7 +703,6 @@ const edit = props => {
                 setAttributes({ borderRadius: newrRadius })
               }
             />
-          </PanelBody>
           <PremiumBoxShadow
             inner={true}
             color={shadowColor}
@@ -818,11 +770,6 @@ const edit = props => {
               })
             }
           />
-          <PanelBody
-            title={__("Spacings")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
             <PremiumMargin
               directions={["all"]}
               marginTop={marginT}
@@ -876,7 +823,6 @@ const edit = props => {
                 })
               }
             />
-          </PanelBody>
         </PanelBody>
       </InspectorControls>
     ),

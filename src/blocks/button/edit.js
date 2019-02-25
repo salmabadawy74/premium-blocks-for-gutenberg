@@ -237,39 +237,27 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
-          <PanelBody
-            title={__("Font")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
-            <PremiumTypo
-              components={[
-                "size",
-                "weight",
-                "line",
-                "style",
-                "upper",
-                "spacing"
-              ]}
-              size={textSize}
-              weight={textWeight}
-              style={textStyle}
-              spacing={textLetter}
-              upper={textUpper}
-              line={textLine}
-              onChangeSize={newSize => setAttributes({ textSize: newSize })}
-              onChangeWeight={newWeight =>
-                setAttributes({ textWeight: newWeight })
-              }
-              onChangeLine={newValue => setAttributes({ textLine: newValue })}
-              onChangeSize={newSize => setAttributes({ textSize: newSize })}
-              onChangeStyle={newStyle => setAttributes({ textStyle: newStyle })}
-              onChangeSpacing={newValue =>
-                setAttributes({ textLetter: newValue })
-              }
-              onChangeUpper={check => setAttributes({ textUpper: check })}
-            />
-          </PanelBody>
+          <PremiumTypo
+            components={["size", "weight", "line", "style", "upper", "spacing"]}
+            size={textSize}
+            weight={textWeight}
+            style={textStyle}
+            spacing={textLetter}
+            upper={textUpper}
+            line={textLine}
+            onChangeSize={newSize => setAttributes({ textSize: newSize })}
+            onChangeWeight={newWeight =>
+              setAttributes({ textWeight: newWeight })
+            }
+            onChangeLine={newValue => setAttributes({ textLine: newValue })}
+            onChangeSize={newSize => setAttributes({ textSize: newSize })}
+            onChangeStyle={newStyle => setAttributes({ textStyle: newStyle })}
+            onChangeSpacing={newValue =>
+              setAttributes({ textLetter: newValue })
+            }
+            onChangeUpper={check => setAttributes({ textUpper: check })}
+          />
+
           <PanelColorSettings
             title={__("Colors")}
             className="premium-panel-body-inner"
@@ -335,42 +323,36 @@ const edit = props => {
               }
             ]}
           />
-          <PanelBody
-            title={__("Border")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
-            <PremiumBorder
-              borderType={borderType}
-              borderWidth={borderWidth}
-              borderColor={borderColor}
-              borderRadius={borderRadius}
-              onChangeType={newType => setAttributes({ borderType: newType })}
-              onChangeWidth={newWidth =>
-                setAttributes({ borderWidth: newWidth })
-              }
-              onChangeColor={colorValue =>
-                setAttributes({ borderColor: colorValue })
-              }
-              onChangeRadius={newrRadius =>
-                setAttributes({ borderRadius: newrRadius })
-              }
-            />
-            {"none" !== borderType && (
-              <Fragment>
-                <p>{__("Border Hover Color")}</p>
-                <ColorPalette
-                  value={borderHoverColor}
-                  onChange={newValue =>
-                    setAttributes({
-                      borderHoverColor: newValue
-                    })
-                  }
-                  allowReset={true}
-                />
-              </Fragment>
-            )}
-          </PanelBody>
+
+          <PremiumBorder
+            borderType={borderType}
+            borderWidth={borderWidth}
+            borderColor={borderColor}
+            borderRadius={borderRadius}
+            onChangeType={newType => setAttributes({ borderType: newType })}
+            onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
+            onChangeColor={colorValue =>
+              setAttributes({ borderColor: colorValue })
+            }
+            onChangeRadius={newrRadius =>
+              setAttributes({ borderRadius: newrRadius })
+            }
+          />
+          {"none" !== borderType && (
+            <Fragment>
+              <p>{__("Border Hover Color")}</p>
+              <ColorPalette
+                value={borderHoverColor}
+                onChange={newValue =>
+                  setAttributes({
+                    borderHoverColor: newValue
+                  })
+                }
+                allowReset={true}
+              />
+            </Fragment>
+          )}
+
           <PremiumBoxShadow
             label="Shadow"
             inner={true}

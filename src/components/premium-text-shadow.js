@@ -1,5 +1,5 @@
 const { __ } = wp.i18n;
-const { PanelBody, RangeControl } = wp.components;
+const { RangeControl, Dropdown, Button } = wp.components;
 const { Fragment } = wp.element;
 const { ColorPalette } = wp.editor;
 export default function PremiumTextShadow(props) {
@@ -16,30 +16,45 @@ export default function PremiumTextShadow(props) {
   } = props;
 
   return (
-    <PanelBody
-      title={__(label || "Text Shadow")}
-      className="premium-panel-body premium-panel-body-inner"
-      initialOpen={false}
-    >
-      <Fragment>
-        <p>{__("Shadow Color")}</p>
-        <ColorPalette
-          value={color}
-          onChange={onChangeColor}
-          allowReset={true}
-        />
-      </Fragment>
-      <RangeControl label={__("Blur")} value={blur} onChange={onChangeBlur} />
-      <RangeControl
-        label={__("Horizontal")}
-        value={horizontal}
-        onChange={onChangehHorizontal}
+    <div className="premium-control-toggle">
+      <strong>{__(label || "Text Shadow")}</strong>
+      <Dropdown
+        className="premium-control-toggle-btn"
+        contentClassName="premium-control-toggle-content"
+        position="bottom right"
+        renderToggle={({ isOpen, onToggle }) => (
+          <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+            <i className="dashicons dashicons-edit" />
+          </Button>
+        )}
+        renderContent={() => (
+          <Fragment>
+            <Fragment>
+              <p>{__("Shadow Color")}</p>
+              <ColorPalette
+                value={color}
+                onChange={onChangeColor}
+                allowReset={true}
+              />
+            </Fragment>
+            <RangeControl
+              label={__("Blur")}
+              value={blur}
+              onChange={onChangeBlur}
+            />
+            <RangeControl
+              label={__("Horizontal")}
+              value={horizontal}
+              onChange={onChangehHorizontal}
+            />
+            <RangeControl
+              label={__("Vertical")}
+              value={vertical}
+              onChange={onChangeVertical}
+            />
+          </Fragment>
+        )}
       />
-      <RangeControl
-        label={__("Vertical")}
-        value={vertical}
-        onChange={onChangeVertical}
-      />
-    </PanelBody>
+    </div>
   );
 }

@@ -294,42 +294,36 @@ class PremiumAccordion extends Component {
               value={direction}
               onChange={newEffect => setAttributes({ direction: newEffect })}
             />
-            <PanelBody
-              title={__("Font")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
-              <PremiumTypo
-                components={[
-                  "size",
-                  "weight",
-                  "style",
-                  "upper",
-                  "spacing",
-                  "line"
-                ]}
-                size={titleSize}
-                weight={titleWeight}
-                style={titleStyle}
-                spacing={titleLetter}
-                line={titleLine}
-                upper={titleUpper}
-                onChangeSize={newSize => setAttributes({ titleSize: newSize })}
-                onChangeWeight={newWeight =>
-                  setAttributes({ titleWeight: newWeight })
-                }
-                onChangeStyle={newStyle =>
-                  setAttributes({ titleStyle: newStyle })
-                }
-                onChangeSpacing={newValue =>
-                  setAttributes({ titleLetter: newValue })
-                }
-                onChangeLine={newValue =>
-                  setAttributes({ titleLine: newValue })
-                }
-                onChangeUpper={check => setAttributes({ titleUpper: check })}
-              />
-            </PanelBody>
+
+            <PremiumTypo
+              components={[
+                "size",
+                "weight",
+                "style",
+                "upper",
+                "spacing",
+                "line"
+              ]}
+              size={titleSize}
+              weight={titleWeight}
+              style={titleStyle}
+              spacing={titleLetter}
+              line={titleLine}
+              upper={titleUpper}
+              onChangeSize={newSize => setAttributes({ titleSize: newSize })}
+              onChangeWeight={newWeight =>
+                setAttributes({ titleWeight: newWeight })
+              }
+              onChangeStyle={newStyle =>
+                setAttributes({ titleStyle: newStyle })
+              }
+              onChangeSpacing={newValue =>
+                setAttributes({ titleLetter: newValue })
+              }
+              onChangeLine={newValue => setAttributes({ titleLine: newValue })}
+              onChangeUpper={check => setAttributes({ titleUpper: check })}
+            />
+
             <PanelColorSettings
               title={__("Colors")}
               className="premium-panel-body-inner"
@@ -349,30 +343,22 @@ class PremiumAccordion extends Component {
                 }
               ]}
             />
-            <PanelBody
-              title={__("Border")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
-              <PremiumBorder
-                borderType={titleBorder}
-                borderWidth={titleBorderWidth}
-                borderColor={titleBorderColor}
-                borderRadius={titleBorderRadius}
-                onChangeType={newType =>
-                  setAttributes({ titleBorder: newType })
-                }
-                onChangeWidth={newWidth =>
-                  setAttributes({ titleBorderWidth: newWidth })
-                }
-                onChangeColor={colorValue =>
-                  setAttributes({ titleBorderColor: colorValue })
-                }
-                onChangeRadius={newrRadius =>
-                  setAttributes({ titleBorderRadius: newrRadius })
-                }
-              />
-            </PanelBody>
+            <PremiumBorder
+              borderType={titleBorder}
+              borderWidth={titleBorderWidth}
+              borderColor={titleBorderColor}
+              borderRadius={titleBorderRadius}
+              onChangeType={newType => setAttributes({ titleBorder: newType })}
+              onChangeWidth={newWidth =>
+                setAttributes({ titleBorderWidth: newWidth })
+              }
+              onChangeColor={colorValue =>
+                setAttributes({ titleBorderColor: colorValue })
+              }
+              onChangeRadius={newrRadius =>
+                setAttributes({ titleBorderRadius: newrRadius })
+              }
+            />
             <PremiumTextShadow
               color={titleShadowColor}
               blur={titleShadowBlur}
@@ -500,44 +486,37 @@ class PremiumAccordion extends Component {
             />
             {"text" === contentType && (
               <Fragment>
-                <PanelBody
-                  title={__("Font")}
-                  className="premium-panel-body-inner"
-                  initialOpen={false}
-                >
-                  <PremiumTypo
-                    components={[
-                      "size",
-                      "weight",
-                      "style",
-                      "upper",
-                      "spacing",
-                      "line"
-                    ]}
-                    size={descSize}
-                    weight={descWeight}
-                    style={descStyle}
-                    spacing={descLetter}
-                    line={descLine}
-                    upper={descUpper}
-                    onChangeSize={newSize =>
-                      setAttributes({ descSize: newSize })
-                    }
-                    onChangeWeight={newWeight =>
-                      setAttributes({ descWeight: newWeight })
-                    }
-                    onChangeStyle={newStyle =>
-                      setAttributes({ descStyle: newStyle })
-                    }
-                    onChangeSpacing={newValue =>
-                      setAttributes({ descLetter: newValue })
-                    }
-                    onChangeLine={newValue =>
-                      setAttributes({ descLine: newValue })
-                    }
-                    onChangeUpper={check => setAttributes({ descUpper: check })}
-                  />
-                </PanelBody>
+                <PremiumTypo
+                  components={[
+                    "size",
+                    "weight",
+                    "style",
+                    "upper",
+                    "spacing",
+                    "line"
+                  ]}
+                  size={descSize}
+                  weight={descWeight}
+                  style={descStyle}
+                  spacing={descLetter}
+                  line={descLine}
+                  upper={descUpper}
+                  onChangeSize={newSize => setAttributes({ descSize: newSize })}
+                  onChangeWeight={newWeight =>
+                    setAttributes({ descWeight: newWeight })
+                  }
+                  onChangeStyle={newStyle =>
+                    setAttributes({ descStyle: newStyle })
+                  }
+                  onChangeSpacing={newValue =>
+                    setAttributes({ descLetter: newValue })
+                  }
+                  onChangeLine={newValue =>
+                    setAttributes({ descLine: newValue })
+                  }
+                  onChangeUpper={check => setAttributes({ descUpper: check })}
+                />
+
                 <PanelColorSettings
                   title={__("Colors")}
                   className="premium-panel-body-inner"
@@ -559,28 +538,24 @@ class PremiumAccordion extends Component {
                 />
               </Fragment>
             )}
-            <PanelBody
-              title={__("Border")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
-              <PremiumBorder
-                borderType={descBorder}
-                borderWidth={descBorderWidth}
-                borderColor={descBorderColor}
-                borderRadius={descBorderRadius}
-                onChangeType={newType => setAttributes({ descBorder: newType })}
-                onChangeWidth={newWidth =>
-                  setAttributes({ descBorderWidth: newWidth })
-                }
-                onChangeColor={colorValue =>
-                  setAttributes({ descBorderColor: colorValue })
-                }
-                onChangeRadius={newrRadius =>
-                  setAttributes({ descBorderRadius: newrRadius })
-                }
-              />
-            </PanelBody>
+
+            <PremiumBorder
+              borderType={descBorder}
+              borderWidth={descBorderWidth}
+              borderColor={descBorderColor}
+              borderRadius={descBorderRadius}
+              onChangeType={newType => setAttributes({ descBorder: newType })}
+              onChangeWidth={newWidth =>
+                setAttributes({ descBorderWidth: newWidth })
+              }
+              onChangeColor={colorValue =>
+                setAttributes({ descBorderColor: colorValue })
+              }
+              onChangeRadius={newrRadius =>
+                setAttributes({ descBorderRadius: newrRadius })
+              }
+            />
+
             {"text" === contentType && (
               <PremiumTextShadow
                 color={textShadowColor}

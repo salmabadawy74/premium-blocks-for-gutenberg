@@ -1,9 +1,24 @@
 jQuery(document).ready(function($) {
+  const addFontToHead = fontFamily => {
+    const head = document.head;
+    const link = document.createElement("link");
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.href =
+      "https://fonts.googleapis.com/css?family=" +
+      fontFamily.replace(/\s+/g, "+") +
+      ":" +
+      "regular";
+    head.appendChild(link);
+  };
   const $videoBoxes = $(".premium-video-box");
   $videoBoxes.map((index, videoBox) => {
     let $videoBox = $(videoBox),
       type = $videoBox.data("type");
-
+    let descFont = $videoBox
+      .find(".premium-video-box__desc_text")
+      .css("font-family");
+    addFontToHead(descFont);
     $videoBox.on("click", () => {
       $videoBox.toggleClass("video-overlay-false");
       let $video = $videoBox.find("iframe, video"),

@@ -203,11 +203,6 @@ const edit = props => {
             onChangeFixed={check => setAttributes({ fixed: check })}
           />
         </PanelBody>
-        <PanelBody
-          title={__("Border")}
-          className="premium-panel-body"
-          initialOpen={false}
-        >
           <PremiumBorder
             borderType={borderType}
             borderWidth={borderWidth}
@@ -222,7 +217,6 @@ const edit = props => {
               setAttributes({ borderRadius: newrRadius })
             }
           />
-        </PanelBody>
         <PremiumBoxShadow
           inner={false}
           color={shadowColor}
@@ -256,11 +250,6 @@ const edit = props => {
             })
           }
         />
-        <PanelBody
-          title={__("Spacings")}
-          className="premium-panel-body"
-          initialOpen={false}
-        >
           <PremiumMargin
             directions={["all"]}
             marginTop={marginTop}
@@ -314,7 +303,6 @@ const edit = props => {
               })
             }
           />
-        </PanelBody>
       </InspectorControls>
     ),
     <div
