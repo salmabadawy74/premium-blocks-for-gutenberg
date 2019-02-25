@@ -189,11 +189,7 @@ const edit = props => {
               }
             ]}
           />
-          <PanelBody
-            title={__("Border")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
+          
             <PremiumBorder
               borderType={borderType}
               borderWidth={borderWidth}
@@ -210,7 +206,7 @@ const edit = props => {
                 setAttributes({ borderRadius: newrRadius })
               }
             />
-          </PanelBody>
+          
           <PremiumTextShadow
             label="Shadow"
             color={shadowColor}
@@ -226,11 +222,7 @@ const edit = props => {
               setAttributes({ shadowVertical: newValue })
             }
           />
-          <PanelBody
-            title={__("Spacings")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
+
             <PremiumMargin
               directions={["all"]}
               marginTop={marginT}
@@ -284,7 +276,7 @@ const edit = props => {
                 })
               }
             />
-          </PanelBody>
+          
         </PanelBody>
         <PanelBody
           title={__("Container Style")}
@@ -331,11 +323,7 @@ const edit = props => {
               onChangeFixed={check => setAttributes({ fixed: check })}
             />
           </Fragment>
-          <PanelBody
-            title={__("Border")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
+          
             <PremiumBorder
               borderType={wrapBorderType}
               borderWidth={wrapBorderWidth}
@@ -354,7 +342,7 @@ const edit = props => {
                 setAttributes({ wrapBorderRadius: newrRadius })
               }
             />
-          </PanelBody>
+          
           <PremiumBoxShadow
             inner={true}
             color={wrapShadowColor}
@@ -388,11 +376,7 @@ const edit = props => {
               })
             }
           />
-          <PanelBody
-            title={__("Spacings")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
+          
             <PremiumMargin
               directions={["all"]}
               marginTop={wrapMarginT}
@@ -446,7 +430,7 @@ const edit = props => {
                 })
               }
             />
-          </PanelBody>
+          
         </PanelBody>
       </InspectorControls>
     ),

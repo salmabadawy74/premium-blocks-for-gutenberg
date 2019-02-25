@@ -330,25 +330,25 @@ class edit extends Component {
                 saturation={saturation}
                 hue={hue}
                 onChangeBlur={value =>
-                  setAttributes({ blur: value === undefined ? 0 : newValue })
+                  setAttributes({ blur: value === undefined ? 0 : value })
                 }
                 onChangeBright={value =>
                   setAttributes({
-                    bright: value === undefined ? 100 : newValue
+                    bright: value === undefined ? 100 : value
                   })
                 }
                 onChangeContrast={value =>
                   setAttributes({
-                    contrast: value === undefined ? 100 : newValue
+                    contrast: value === undefined ? 100 : value
                   })
                 }
                 onChangeSat={value =>
                   setAttributes({
-                    saturation: value === undefined ? 100 : newValue
+                    saturation: value === undefined ? 100 : value
                   })
                 }
                 onChangeHue={value =>
-                  setAttributes({ hue: value === undefined ? 100 : newValue })
+                  setAttributes({ hue: value === undefined ? 100 : value })
                 }
               />
             </PanelBody>
@@ -559,11 +559,6 @@ class edit extends Component {
             className="premium-panel-body"
             initialOpen={false}
           >
-            <PanelBody
-              title={__("Border")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
               <PremiumBorder
                 borderType={boxBorderType}
                 borderWidth={boxBorderWidth}
@@ -582,7 +577,6 @@ class edit extends Component {
                   setAttributes({ boxBorderRadius: newrRadius })
                 }
               />
-            </PanelBody>
             <PremiumBoxShadow
               inner={true}
               color={shadowColor}

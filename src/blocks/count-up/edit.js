@@ -367,27 +367,22 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
-          <PanelBody
-            title={__("Font")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
-            <SelectControl
-              label={__("Font Family")}
-              value={counterFamily}
-              options={FONTS}
-              onChange={onChangeCounterFamily}
-            />
-            <PremiumTypo
-              components={["size", "weight"]}
-              size={numberSize}
-              weight={numberWeight}
-              onChangeSize={newSize => setAttributes({ numberSize: newSize })}
-              onChangeWeight={newWeight =>
-                setAttributes({ numberWeight: newWeight })
-              }
-            />
-          </PanelBody>
+          
+        <SelectControl
+          label={__("Font Family")}
+          value={counterFamily}
+          options={FONTS}
+          onChange={onChangeCounterFamily}
+        />
+        <PremiumTypo
+          components={["size", "weight"]}
+          size={numberSize}
+          weight={numberWeight}
+          onChangeSize={newSize => setAttributes({ numberSize: newSize })}
+          onChangeWeight={newWeight =>
+            setAttributes({ numberWeight: newWeight })
+          }
+        />
           <Fragment>
             <p>{__("Number Color")}</p>
             <ColorPalette
@@ -412,27 +407,23 @@ const edit = props => {
               value={prefixTxt}
               onChange={value => setAttributes({ prefixTxt: value })}
             />
-            <PanelBody
-              title={__("Font")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
-              <SelectControl
-                label={__("Font Family")}
-                value={prefixFamily}
-                options={FONTS}
-                onChange={onChangePrefixFamily}
-              />
-              <PremiumTypo
-                components={["size", "weight"]}
-                size={prefixSize}
-                weight={prefixWeight}
-                onChangeSize={newSize => setAttributes({ prefixSize: newSize })}
-                onChangeWeight={newWeight =>
-                  setAttributes({ prefixWeight: newWeight })
-                }
-              />
-            </PanelBody>
+            
+            <SelectControl
+              label={__("Font Family")}
+              value={prefixFamily}
+              options={FONTS}
+              onChange={onChangePrefixFamily}
+            />
+            <PremiumTypo
+              components={["size", "weight"]}
+              size={prefixSize}
+              weight={prefixWeight}
+              onChangeSize={newSize => setAttributes({ prefixSize: newSize })}
+              onChangeWeight={newWeight =>
+                setAttributes({ prefixWeight: newWeight })
+              }
+            />
+            
             <Fragment>
               <p>{__("Text Color")}</p>
               <ColorPalette
@@ -464,27 +455,21 @@ const edit = props => {
               value={suffixTxt}
               onChange={value => setAttributes({ suffixTxt: value })}
             />
-            <PanelBody
-              title={__("Font")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
-              <SelectControl
-                label={__("Font Family")}
-                value={suffixFamily}
-                options={FONTS}
-                onChange={onChangeSuffixFamily}
-              />
-              <PremiumTypo
-                components={["size", "weight"]}
-                size={suffixSize}
-                weight={suffixWeight}
-                onChangeSize={newSize => setAttributes({ suffixSize: newSize })}
-                onChangeWeight={newWeight =>
-                  setAttributes({ suffixWeight: newWeight })
-                }
-              />
-            </PanelBody>
+            <SelectControl
+              label={__("Font Family")}
+              value={suffixFamily}
+              options={FONTS}
+              onChange={onChangeSuffixFamily}
+            />
+            <PremiumTypo
+              components={["size", "weight"]}
+              size={suffixSize}
+              weight={suffixWeight}
+              onChangeSize={newSize => setAttributes({ suffixSize: newSize })}
+              onChangeWeight={newWeight =>
+                setAttributes({ suffixWeight: newWeight })
+              }
+            />
             <Fragment>
               <p>{__("Text Color")}</p>
               <ColorPalette
@@ -516,37 +501,31 @@ const edit = props => {
               value={titleTxt}
               onChange={value => setAttributes({ titleTxt: value })}
             />
-            <PanelBody
-              title={__("Font")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
-              <SelectControl
-                label={__("Font Family")}
-                value={titleFamily}
-                options={FONTS}
-                onChange={onChangeTitleFamily}
-              />
-              <PremiumTypo
-                components={["size", "weight", "spacing", "style", "upper"]}
-                size={titleSize}
-                weight={titleWeight}
-                style={titleStyle}
-                spacing={titleSpacing}
-                upper={titleUpper}
-                onChangeSize={newSize => setAttributes({ titleSize: newSize })}
-                onChangeWeight={newWeight =>
-                  setAttributes({ titleWeight: newWeight })
-                }
-                onChangeStyle={newStyle =>
-                  setAttributes({ titleStyle: newStyle })
-                }
-                onChangeSpacing={newValue =>
-                  setAttributes({ titleSpacing: newValue })
-                }
-                onChangeUpper={check => setAttributes({ titleUpper: check })}
-              />
-            </PanelBody>
+            <SelectControl
+              label={__("Font Family")}
+              value={titleFamily}
+              options={FONTS}
+              onChange={onChangeTitleFamily}
+            />
+            <PremiumTypo
+              components={["size", "weight", "spacing", "style", "upper"]}
+              size={titleSize}
+              weight={titleWeight}
+              style={titleStyle}
+              spacing={titleSpacing}
+              upper={titleUpper}
+              onChangeSize={newSize => setAttributes({ titleSize: newSize })}
+              onChangeWeight={newWeight =>
+                setAttributes({ titleWeight: newWeight })
+              }
+              onChangeStyle={newStyle =>
+                setAttributes({ titleStyle: newStyle })
+              }
+              onChangeSpacing={newValue =>
+                setAttributes({ titleSpacing: newValue })
+              }
+              onChangeUpper={check => setAttributes({ titleUpper: check })}
+            />
             <Fragment>
               <p>{__("Text Color")}</p>
               <ColorPalette

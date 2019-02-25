@@ -193,39 +193,32 @@ const edit = props => {
               onChange={newValue => setAttributes({ firstAnim: newValue })}
             />
           )}
-          <PanelBody
-            title={__("Font")}
-            className="premium-panel-body premium-panel-body-inner"
-            initialOpen={false}
-          >
-            <SelectControl
-              label={__("Font Family")}
-              value={firstFamily}
-              options={FONTS}
-              onChange={onChangeFirstFamily}
-            />
-            <PremiumTypo
-              components={["size", "weight", "style", "upper", "spacing"]}
-              size={firstSize}
-              weight={firstWeight}
-              style={firstStyle}
-              spacing={firstLetter}
-              upper={firstUpper}
-              onChangeSize={newSize =>
-                setAttributes({ firstSize: newSize || 20 })
-              }
-              onChangeWeight={newWeight =>
-                setAttributes({ firstWeight: newWeight || 500 })
-              }
-              onChangeStyle={newStyle =>
-                setAttributes({ firstStyle: newStyle })
-              }
-              onChangeSpacing={newValue =>
-                setAttributes({ firstLetter: newValue })
-              }
-              onChangeUpper={check => setAttributes({ firstUpper: check })}
-            />
-          </PanelBody>
+          <SelectControl
+            label={__("Font Family")}
+            value={firstFamily}
+            options={FONTS}
+            onChange={onChangeFirstFamily}
+          />
+          <PremiumTypo
+            components={["size", "weight", "style", "upper", "spacing"]}
+            size={firstSize}
+            weight={firstWeight}
+            style={firstStyle}
+            spacing={firstLetter}
+            upper={firstUpper}
+            onChangeSize={newSize =>
+              setAttributes({ firstSize: newSize || 20 })
+            }
+            onChangeWeight={newWeight =>
+              setAttributes({ firstWeight: newWeight || 500 })
+            }
+            onChangeStyle={newStyle => setAttributes({ firstStyle: newStyle })}
+            onChangeSpacing={newValue =>
+              setAttributes({ firstLetter: newValue })
+            }
+            onChangeUpper={check => setAttributes({ firstUpper: check })}
+          />
+
           {!firstClip && (
             <PanelColorSettings
               title={__("Colors")}
@@ -269,30 +262,26 @@ const edit = props => {
               ]}
             />
           )}
-          <PanelBody
-            title={__("Border")}
-            className="premium-panel-body premium-panel-body-inner"
-            initialOpen={false}
-          >
-            <PremiumBorder
-              borderType={firstBorderType}
-              borderWidth={firstBorderWidth}
-              borderColor={firstBorderColor}
-              borderRadius={firstBorderRadius}
-              onChangeType={newType =>
-                setAttributes({ firstBorderType: newType })
-              }
-              onChangeWidth={newWidth =>
-                setAttributes({ firstBorderWidth: newWidth || "0" })
-              }
-              onChangeColor={colorValue =>
-                setAttributes({ firstBorderColor: colorValue || "transparent" })
-              }
-              onChangeRadius={newrRadius =>
-                setAttributes({ firstBorderRadius: newrRadius || "0" })
-              }
-            />
-          </PanelBody>
+
+          <PremiumBorder
+            borderType={firstBorderType}
+            borderWidth={firstBorderWidth}
+            borderColor={firstBorderColor}
+            borderRadius={firstBorderRadius}
+            onChangeType={newType =>
+              setAttributes({ firstBorderType: newType })
+            }
+            onChangeWidth={newWidth =>
+              setAttributes({ firstBorderWidth: newWidth || "0" })
+            }
+            onChangeColor={colorValue =>
+              setAttributes({ firstBorderColor: colorValue || "transparent" })
+            }
+            onChangeRadius={newrRadius =>
+              setAttributes({ firstBorderRadius: newrRadius || "0" })
+            }
+          />
+
           <PremiumTextShadow
             color={firstShadowColor}
             blur={firstShadowBlur}
@@ -362,39 +351,32 @@ const edit = props => {
               onChange={newValue => setAttributes({ secondAnim: newValue })}
             />
           )}
-          <PanelBody
-            title={__("Font")}
-            className="premium-panel-body premium-panel-body-inner"
-            initialOpen={false}
-          >
-            <SelectControl
-              label={__("Font Family")}
-              value={secondFamily}
-              options={FONTS}
-              onChange={onChangeSecondFamily}
-            />
-            <PremiumTypo
-              components={["size", "weight", "style", "upper", "spacing"]}
-              size={secondSize}
-              weight={secondWeight}
-              style={secondStyle}
-              spacing={secondLetter}
-              upper={secondUpper}
-              onChangeSize={newSize =>
-                setAttributes({ secondSize: newSize || 20 })
-              }
-              onChangeWeight={newWeight =>
-                setAttributes({ secondWeight: newWeight || 500 })
-              }
-              onChangeStyle={newStyle =>
-                setAttributes({ secondStyle: newStyle })
-              }
-              onChangeSpacing={newValue =>
-                setAttributes({ secondLetter: newValue })
-              }
-              onChangeUpper={check => setAttributes({ secondUpper: check })}
-            />
-          </PanelBody>
+          <SelectControl
+            label={__("Font Family")}
+            value={secondFamily}
+            options={FONTS}
+            onChange={onChangeSecondFamily}
+          />
+          <PremiumTypo
+            components={["size", "weight", "style", "upper", "spacing"]}
+            size={secondSize}
+            weight={secondWeight}
+            style={secondStyle}
+            spacing={secondLetter}
+            upper={secondUpper}
+            onChangeSize={newSize =>
+              setAttributes({ secondSize: newSize || 20 })
+            }
+            onChangeWeight={newWeight =>
+              setAttributes({ secondWeight: newWeight || 500 })
+            }
+            onChangeStyle={newStyle => setAttributes({ secondStyle: newStyle })}
+            onChangeSpacing={newValue =>
+              setAttributes({ secondLetter: newValue })
+            }
+            onChangeUpper={check => setAttributes({ secondUpper: check })}
+          />
+
           {!secondClip && (
             <PanelColorSettings
               title={__("Colors")}
@@ -441,32 +423,28 @@ const edit = props => {
               ]}
             />
           )}
-          <PanelBody
-            title={__("Border")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
-            <PremiumBorder
-              borderType={secondBorderType}
-              borderWidth={secondBorderWidth}
-              borderColor={secondBorderColor}
-              borderRadius={secondBorderRadius}
-              onChangeType={newType =>
-                setAttributes({ secondBorderType: newType })
-              }
-              onChangeWidth={newWidth =>
-                setAttributes({ secondBorderWidth: newWidth })
-              }
-              onChangeColor={colorValue =>
-                setAttributes({
-                  secondBorderColor: colorValue || "transparent"
-                })
-              }
-              onChangeRadius={newrRadius =>
-                setAttributes({ secondBorderRadius: newrRadius || "0" })
-              }
-            />
-          </PanelBody>
+
+          <PremiumBorder
+            borderType={secondBorderType}
+            borderWidth={secondBorderWidth}
+            borderColor={secondBorderColor}
+            borderRadius={secondBorderRadius}
+            onChangeType={newType =>
+              setAttributes({ secondBorderType: newType })
+            }
+            onChangeWidth={newWidth =>
+              setAttributes({ secondBorderWidth: newWidth })
+            }
+            onChangeColor={colorValue =>
+              setAttributes({
+                secondBorderColor: colorValue || "transparent"
+              })
+            }
+            onChangeRadius={newrRadius =>
+              setAttributes({ secondBorderRadius: newrRadius || "0" })
+            }
+          />
+
           <PremiumTextShadow
             color={secondShadowColor}
             blur={secondShadowBlur}

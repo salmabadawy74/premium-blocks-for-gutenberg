@@ -203,6 +203,18 @@ const edit = props => {
               </IconButton>
             )}
           />
+          <PremiumFilters
+            blur={blur}
+            bright={bright}
+            contrast={contrast}
+            saturation={saturation}
+            hue={hue}
+            onChangeBlur={value => setAttributes({ blur: value })}
+            onChangeBright={value => setAttributes({ bright: value })}
+            onChangeContrast={value => setAttributes({ contrast: value })}
+            onChangeSat={value => setAttributes({ saturation: value })}
+            onChangeHue={value => setAttributes({ hue: value })}
+          />
           <SelectControl
             label={__("Effect")}
             value={effect}
@@ -314,60 +326,37 @@ const edit = props => {
           />
         </PanelBody>
         <PanelBody
-          title={__("Image Filters")}
-          className="premium-panel-body"
-          initialOpen={false}
-        >
-          <PremiumFilters
-            blur={blur}
-            bright={bright}
-            contrast={contrast}
-            saturation={saturation}
-            hue={hue}
-            onChangeBlur={value => setAttributes({ blur: value })}
-            onChangeBright={value => setAttributes({ bright: value })}
-            onChangeContrast={value => setAttributes({ contrast: value })}
-            onChangeSat={value => setAttributes({ saturation: value })}
-            onChangeHue={value => setAttributes({ hue: value })}
-          />
-        </PanelBody>
-        <PanelBody
           title={__("Title Settings")}
           className="premium-panel-body"
           initialOpen={false}
         >
-          <PanelBody
-            title={__("Font")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
-            <p>{__("HTML Tag")}</p>
-            <Toolbar
-              controls={"123456".split("").map(tag => ({
-                icon: "heading",
-                isActive: "H" + tag === titleTag,
-                onClick: () => setAttributes({ titleTag: "H" + tag }),
-                subscript: tag
-              }))}
-            />
-            <PremiumTypo
-              components={["size", "weight", "line"]}
-              size={titleSize}
-              weight={titleWeight}
-              line={titleLine}
-              onChangeSize={newSize => setAttributes({ titleSize: newSize })}
-              onChangeWeight={newWeight =>
-                setAttributes({
-                  titleWeight: newWeight === undefined ? 500 : newWeight
-                })
-              }
-              onChangeLine={newValue =>
-                setAttributes({
-                  titleLine: newValue === undefined ? 10 : newValue
-                })
-              }
-            />
-          </PanelBody>
+          <p>{__("HTML Tag")}</p>
+          <Toolbar
+            controls={"123456".split("").map(tag => ({
+              icon: "heading",
+              isActive: "H" + tag === titleTag,
+              onClick: () => setAttributes({ titleTag: "H" + tag }),
+              subscript: tag
+            }))}
+          />
+          <PremiumTypo
+            components={["size", "weight", "line"]}
+            size={titleSize}
+            weight={titleWeight}
+            line={titleLine}
+            onChangeSize={newSize => setAttributes({ titleSize: newSize })}
+            onChangeWeight={newWeight =>
+              setAttributes({
+                titleWeight: newWeight === undefined ? 500 : newWeight
+              })
+            }
+            onChangeLine={newValue =>
+              setAttributes({
+                titleLine: newValue === undefined ? 10 : newValue
+              })
+            }
+          />
+
           <Fragment>
             <p>{__("Text Color")}</p>
             <ColorPalette
@@ -440,29 +429,23 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
-          <PanelBody
-            title={__("Font")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
-            <PremiumTypo
-              components={["size", "weight", "line"]}
-              size={descSize}
-              weight={descWeight}
-              line={descLine}
-              onChangeSize={newSize => setAttributes({ descSize: newSize })}
-              onChangeWeight={newWeight =>
-                setAttributes({
-                  descWeight: newWeight === undefined ? 500 : newWeight
-                })
-              }
-              onChangeLine={newValue =>
-                setAttributes({
-                  descLine: newValue === undefined ? 10 : newValue
-                })
-              }
-            />
-          </PanelBody>
+          <PremiumTypo
+            components={["size", "weight", "line"]}
+            size={descSize}
+            weight={descWeight}
+            line={descLine}
+            onChangeSize={newSize => setAttributes({ descSize: newSize })}
+            onChangeWeight={newWeight =>
+              setAttributes({
+                descWeight: newWeight === undefined ? 500 : newWeight
+              })
+            }
+            onChangeLine={newValue =>
+              setAttributes({
+                descLine: newValue === undefined ? 10 : newValue
+              })
+            }
+          />
           <Fragment>
             <p>{__("Text Color")}</p>
             <ColorPalette

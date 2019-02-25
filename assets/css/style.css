@@ -11,6 +11,7 @@
   display: flex;
   -webkit-transform: translate(0, 0);
   transform: translate(0, 0);
+  align-items: center;
 }
 .premium-dheading-block__wrap {
   position: relative;

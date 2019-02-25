@@ -182,11 +182,6 @@ const edit = props => {
               </Fragment>
             )}
           </PanelBody>
-          <PanelBody
-            title={__("Font")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
             <p>{__("Author HTML Tag")}</p>
             <Toolbar
               controls={"123456".split("").map(tag => ({
@@ -195,16 +190,6 @@ const edit = props => {
                 onClick: () => setAttributes({ authorTag: "H" + tag }),
                 subscript: tag
               }))}
-            />
-            <p>{__("Color")}</p>
-            <ColorPalette
-              value={authorColor}
-              onChange={newValue =>
-                setAttributes({
-                  authorColor: newValue
-                })
-              }
-              allowReset={true}
             />
             <PremiumTypo
               components={["size", "weight", "style", "upper", "spacing"]}
@@ -225,18 +210,22 @@ const edit = props => {
               }
               onChangeUpper={check => setAttributes({ authorUpper: check })}
             />
-          </PanelBody>
+            <p>{__("Color")}</p>
+            <ColorPalette
+              value={authorColor}
+              onChange={newValue =>
+                setAttributes({
+                  authorColor: newValue
+                })
+              }
+              allowReset={true}
+            />
         </PanelBody>
         <PanelBody
           title={__("Content")}
           className="premium-panel-body"
           initialOpen={false}
         >
-          <PanelBody
-            title={__("Font")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
             <PremiumTypo
               components={["size", "line"]}
               size={bodySize}
@@ -254,7 +243,6 @@ const edit = props => {
               }
               allowReset={true}
             />
-          </PanelBody>
           <PanelBody
             title={__("Spacings")}
             className="premium-panel-body-inner"
@@ -277,11 +265,6 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
-          <PanelBody
-            title={__("Font")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
             <p>{__("HTML Tag")}</p>
             <Toolbar
               controls={"123456".split("").map(tag => ({
@@ -298,7 +281,6 @@ const edit = props => {
                 setAttributes({ authorComSize: newSize })
               }
             />
-          </PanelBody>
           <PanelColorSettings
             title={__("Colors")}
             className="premium-panel-body-inner"

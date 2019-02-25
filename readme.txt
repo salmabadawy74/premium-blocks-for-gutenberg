@@ -5,7 +5,7 @@ Donate link: http://leap13.com
 Requires at least: 4.5
 Tested up to: 5.1
 Requires PHP: 5.4
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -56,9 +56,14 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 == Changelog ==
 
+= 1.4.4 =
+
+- Tweak: Change `Box Shadow`, `Text Shadow`, `Typography`, `Border` and `CSS Filters` to dropdown to enhance editing.
+- Fixed: `CSS Filters` don't work for overlay image in Video Box block.
+
 = 1.4.3 =
 
-- Tweak: Added `Font Family` option for Description Text in Video Box block. 
+- Tweak: Added `Font Family` option for Description Text in Video Box block.
 
 = 1.4.2 =
 

@@ -2,6 +2,20 @@
   margin-bottom: 0;
 }
 /*
+* Dropdown Toggle Control
+*/
+.premium-control-toggle {
+  overflow: hidden;
+  padding: 10px 0;
+}
+.premium-control-toggle .premium-control-toggle-btn {
+  float: right;
+}
+.premium-control-toggle-content .components-popover__content {
+  padding: 10px;
+  border-radius: 3px;
+}
+/*
 * FontIconPicker CSS
 */
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done,

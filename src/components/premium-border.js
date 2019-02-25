@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { SelectControl, RangeControl } = wp.components;
+const { SelectControl, RangeControl, Dropdown, Button } = wp.components;
 const { ColorPalette } = wp.editor;
 export default function PremiumBorder(props) {
   const {
@@ -40,39 +40,54 @@ export default function PremiumBorder(props) {
     }
   ];
   return (
-    <Fragment>
-      <SelectControl
-        label={__("Border Type")}
-        options={BORDER}
-        value={borderType}
-        onChange={onChangeType}
+    <div className="premium-control-toggle">
+      <strong>{__("Border")}</strong>
+      <Dropdown
+        className="premium-control-toggle-btn"
+        contentClassName="premium-control-toggle-content"
+        position="bottom right"
+        renderToggle={({ isOpen, onToggle }) => (
+          <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+            <i className="dashicons dashicons-edit" />
+          </Button>
+        )}
+        renderContent={() => (
+          <Fragment>
+            <SelectControl
+              label={__("Border Type")}
+              options={BORDER}
+              value={borderType}
+              onChange={onChangeType}
+            />
+            {"none" != borderType && (
+              <RangeControl
+                label={__("Border Width")}
+                value={borderWidth}
+                min="0"
+                max="50"
+                onChange={onChangeWidth}
+              />
+            )}
+            {"none" != borderType && (
+              <Fragment>
+                <p>{__("Border Color")}</p>
+                <ColorPalette
+                  value={borderColor}
+                  onChange={onChangeColor}
+                  allowReset={true}
+                />
+              </Fragment>
+            )}
+            <RangeControl
+              label={__("Border Radius")}
+              value={borderRadius}
+              min="0"
+              max="150"
+              onChange={onChangeRadius}
+            />
+          </Fragment>
+        )}
       />
-      {"none" != borderType && (
-        <RangeControl
-          label={__("Border Width")}
-          value={borderWidth}
-          min="0"
-          max="50"
-          onChange={onChangeWidth}
-        />
-      )}
-      {"none" != borderType && (
-        <Fragment>
-          <p>{__("Border Color")}</p>
-          <ColorPalette
-            value={borderColor}
-            onChange={onChangeColor}
-            allowReset={true}
-          />
-        </Fragment>
-      )}
-      <RangeControl
-        label={__("Border Radius")}
-        value={borderRadius}
-        min="0"
-        max="150"
-        onChange={onChangeRadius}
-      />
-    </Fragment>
+    </div>
   );
 }

@@ -736,11 +736,6 @@ registerBlockType("premium/pricing-table", {
               className="premium-panel-body"
               initialOpen={false}
             >
-              <PanelBody
-                title={__("Font")}
-                className="premium-panel-body premium-panel-body-inner"
-                initialOpen={false}
-              >
                 <p>{__("Heading")}</p>
                 <Toolbar
                   controls={"123456".split("").map(tag => ({
@@ -782,7 +777,6 @@ registerBlockType("premium/pricing-table", {
                   }
                   onChangeUpper={check => setAttributes({ titleUpper: check })}
                 />
-              </PanelBody>
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
@@ -1128,11 +1122,6 @@ registerBlockType("premium/pricing-table", {
                 value={listStyle}
                 onChange={newType => setAttributes({ listStyle: newType })}
               />
-              <PanelBody
-                title={__("Font")}
-                className="premium-panel-body-inner premium-panel-body"
-                initialOpen={false}
-              >
                 <PremiumTypo
                   components={[
                     "size",
@@ -1163,7 +1152,6 @@ registerBlockType("premium/pricing-table", {
                   }
                   onChangeUpper={check => setAttributes({ listUpper: check })}
                 />
-              </PanelBody>
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
@@ -1211,11 +1199,6 @@ registerBlockType("premium/pricing-table", {
               className="premium-panel-body"
               initialOpen={false}
             >
-              <PanelBody
-                title={__("Font")}
-                className="premium-panel-body-inner premium-panel-body"
-                initialOpen={false}
-              >
                 <PremiumTypo
                   components={["size", "weight", "style", "spacing", "line"]}
                   size={descSize}
@@ -1237,7 +1220,6 @@ registerBlockType("premium/pricing-table", {
                     setAttributes({ descLine: newValue })
                   }
                 />
-              </PanelBody>
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
@@ -1297,11 +1279,6 @@ registerBlockType("premium/pricing-table", {
               className="premium-panel-body"
               initialOpen={false}
             >
-              <PanelBody
-                title={__("Font")}
-                className="premium-panel-body-inner premium-panel-body"
-                initialOpen={false}
-              >
                 <PremiumTypo
                   components={[
                     "size",
@@ -1332,7 +1309,6 @@ registerBlockType("premium/pricing-table", {
                   }
                   onChangeUpper={check => setAttributes({ btnUpper: check })}
                 />
-              </PanelBody>
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
@@ -1362,11 +1338,6 @@ registerBlockType("premium/pricing-table", {
                   }
                 ]}
               />
-              <PanelBody
-                title={__("Border")}
-                className="premium-panel-body-inner premium-panel-body"
-                initialOpen={false}
-              >
                 <PremiumBorder
                   borderType={btnBorderType}
                   borderWidth={btnBorderWidth}
@@ -1385,7 +1356,6 @@ registerBlockType("premium/pricing-table", {
                     setAttributes({ btnBorderRadius: newrRadius })
                   }
                 />
-              </PanelBody>
               <PanelBody
                 title={__("Spacings")}
                 className="premium-panel-body-inner premium-panel-body"
@@ -1448,11 +1418,6 @@ registerBlockType("premium/pricing-table", {
                 value={badgePos}
                 onChange={newValue => setAttributes({ badgePos: newValue })}
               />
-              <PanelBody
-                title={__("Font")}
-                className="premium-panel-body-inner premium-panel-body"
-                initialOpen={false}
-              >
                 <PremiumTypo
                   components={["size", "weight", "style", "upper", "spacing"]}
                   size={badgeTextSize}
@@ -1474,7 +1439,6 @@ registerBlockType("premium/pricing-table", {
                   }
                   onChangeUpper={check => setAttributes({ badgeUpper: check })}
                 />
-              </PanelBody>
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
@@ -1540,11 +1504,6 @@ registerBlockType("premium/pricing-table", {
                 allowReset={true}
               />
             </Fragment>
-            <PanelBody
-              title={__("Border")}
-              className="premium-panel-body-inner premium-panel-body"
-              initialOpen={false}
-            >
               <PremiumBorder
                 borderType={borderType}
                 borderWidth={borderWidth}
@@ -1561,7 +1520,6 @@ registerBlockType("premium/pricing-table", {
                   setAttributes({ borderRadius: newrRadius })
                 }
               />
-            </PanelBody>
             <PremiumBoxShadow
               inner={true}
               color={tableShadowColor}
