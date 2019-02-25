@@ -60,6 +60,7 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 - Tweak: Change `Box Shadow`, `Text Shadow`, `Typography`, `Border` and `CSS Filters` to dropdown to enhance editing.
 - Fixed: `CSS Filters` don't work for overlay image in Video Box block.
+- Fixed: Dual Headings are not vertically aligned when `Font Size` is changed.
 
 = 1.4.3 =
 
