@@ -16,14 +16,12 @@ const {
   Toolbar,
   SelectControl,
   RangeControl,
-  ToggleControl
+  ToggleControl,
+  Dropdown,
+  Button
 } = wp.components;
-const {
-  InspectorControls,
-  PanelColorSettings,
-  ColorPalette,
-  URLInput
-} = wp.editor;
+
+const { InspectorControls, ColorPalette, URLInput } = wp.editor;
 
 const { Fragment } = wp.element;
 
@@ -171,42 +169,58 @@ const edit = props => {
             initialPosition={50}
             allowReset={true}
           />
-          <PanelColorSettings
-            title={__("Colors")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-            colorSettings={[
-              {
-                value: iconColor,
-                onChange: colorValue =>
-                  setAttributes({ iconColor: colorValue }),
-                label: __("Icon Color")
-              },
-              {
-                value: iconBack,
-                onChange: colorValue => setAttributes({ iconBack: colorValue }),
-                label: __("Background Color")
-              }
-            ]}
-          />
-          
-            <PremiumBorder
-              borderType={borderType}
-              borderWidth={borderWidth}
-              borderColor={borderColor}
-              borderRadius={borderRadius}
-              onChangeType={newType => setAttributes({ borderType: newType })}
-              onChangeWidth={newWidth =>
-                setAttributes({ borderWidth: newWidth })
-              }
-              onChangeColor={colorValue =>
-                setAttributes({ borderColor: colorValue })
-              }
-              onChangeRadius={newrRadius =>
-                setAttributes({ borderRadius: newrRadius })
-              }
+          <div className="premium-control-toggle">
+            <strong>{__("Colors")}</strong>
+            <Dropdown
+              className="premium-control-toggle-btn"
+              contentClassName="premium-control-toggle-content"
+              position="bottom right"
+              renderToggle={({ isOpen, onToggle }) => (
+                <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+                  <i className="dashicons dashicons-edit" />
+                </Button>
+              )}
+              renderContent={() => (
+                <Fragment>
+                  <p>{__("Icon Color")}</p>
+                  <ColorPalette
+                    value={iconColor}
+                    onChange={newValue =>
+                      setAttributes({
+                        iconColor: newValue
+                      })
+                    }
+                    allowReset={true}
+                  />
+                  <p>{__("Background Color")}</p>
+                  <ColorPalette
+                    value={iconBack}
+                    onChange={newValue =>
+                      setAttributes({
+                        iconBack: newValue
+                      })
+                    }
+                    allowReset={true}
+                  />
+                </Fragment>
+              )}
             />
-          
+          </div>
+          <PremiumBorder
+            borderType={borderType}
+            borderWidth={borderWidth}
+            borderColor={borderColor}
+            borderRadius={borderRadius}
+            onChangeType={newType => setAttributes({ borderType: newType })}
+            onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
+            onChangeColor={colorValue =>
+              setAttributes({ borderColor: colorValue })
+            }
+            onChangeRadius={newrRadius =>
+              setAttributes({ borderRadius: newrRadius })
+            }
+          />
+
           <PremiumTextShadow
             label="Shadow"
             color={shadowColor}
@@ -223,60 +237,59 @@ const edit = props => {
             }
           />
 
-            <PremiumMargin
-              directions={["all"]}
-              marginTop={marginT}
-              marginRight={marginR}
-              marginBottom={marginB}
-              marginLeft={marginL}
-              onChangeMarTop={value =>
-                setAttributes({
-                  marginT: value
-                })
-              }
-              onChangeMarRight={value =>
-                setAttributes({
-                  marginR: value
-                })
-              }
-              onChangeMarBottom={value =>
-                setAttributes({
-                  marginB: value
-                })
-              }
-              onChangeMarLeft={value =>
-                setAttributes({
-                  marginL: value
-                })
-              }
-            />
-            <PremiumPadding
-              paddingTop={paddingT}
-              paddingRight={paddingR}
-              paddingBottom={paddingB}
-              paddingLeft={paddingL}
-              onChangePadTop={value =>
-                setAttributes({
-                  paddingT: value
-                })
-              }
-              onChangePadRight={value =>
-                setAttributes({
-                  paddingR: value
-                })
-              }
-              onChangePadBottom={value =>
-                setAttributes({
-                  paddingB: value
-                })
-              }
-              onChangePadLeft={value =>
-                setAttributes({
-                  paddingL: value
-                })
-              }
-            />
-          
+          <PremiumMargin
+            directions={["all"]}
+            marginTop={marginT}
+            marginRight={marginR}
+            marginBottom={marginB}
+            marginLeft={marginL}
+            onChangeMarTop={value =>
+              setAttributes({
+                marginT: value
+              })
+            }
+            onChangeMarRight={value =>
+              setAttributes({
+                marginR: value
+              })
+            }
+            onChangeMarBottom={value =>
+              setAttributes({
+                marginB: value
+              })
+            }
+            onChangeMarLeft={value =>
+              setAttributes({
+                marginL: value
+              })
+            }
+          />
+          <PremiumPadding
+            paddingTop={paddingT}
+            paddingRight={paddingR}
+            paddingBottom={paddingB}
+            paddingLeft={paddingL}
+            onChangePadTop={value =>
+              setAttributes({
+                paddingT: value
+              })
+            }
+            onChangePadRight={value =>
+              setAttributes({
+                paddingR: value
+              })
+            }
+            onChangePadBottom={value =>
+              setAttributes({
+                paddingB: value
+              })
+            }
+            onChangePadLeft={value =>
+              setAttributes({
+                paddingL: value
+              })
+            }
+          />
         </PanelBody>
         <PanelBody
           title={__("Container Style")}
@@ -323,26 +336,24 @@ const edit = props => {
               onChangeFixed={check => setAttributes({ fixed: check })}
             />
           </Fragment>
-          
-            <PremiumBorder
-              borderType={wrapBorderType}
-              borderWidth={wrapBorderWidth}
-              borderColor={wrapBorderColor}
-              borderRadius={wrapBorderRadius}
-              onChangeType={newType =>
-                setAttributes({ wrapBorderType: newType })
-              }
-              onChangeWidth={newWidth =>
-                setAttributes({ wrapBorderWidth: newWidth })
-              }
-              onChangeColor={colorValue =>
-                setAttributes({ wrapBorderColor: colorValue })
-              }
-              onChangeRadius={newrRadius =>
-                setAttributes({ wrapBorderRadius: newrRadius })
-              }
-            />
-          
+
+          <PremiumBorder
+            borderType={wrapBorderType}
+            borderWidth={wrapBorderWidth}
+            borderColor={wrapBorderColor}
+            borderRadius={wrapBorderRadius}
+            onChangeType={newType => setAttributes({ wrapBorderType: newType })}
+            onChangeWidth={newWidth =>
+              setAttributes({ wrapBorderWidth: newWidth })
+            }
+            onChangeColor={colorValue =>
+              setAttributes({ wrapBorderColor: colorValue })
+            }
+            onChangeRadius={newrRadius =>
+              setAttributes({ wrapBorderRadius: newrRadius })
+            }
+          />
+
           <PremiumBoxShadow
             inner={true}
             color={wrapShadowColor}
@@ -376,61 +387,60 @@ const edit = props => {
               })
             }
           />
-          
-            <PremiumMargin
-              directions={["all"]}
-              marginTop={wrapMarginT}
-              marginRight={wrapMarginR}
-              marginBottom={wrapMarginB}
-              marginLeft={wrapMarginL}
-              onChangeMarTop={value =>
-                setAttributes({
-                  wrapMarginT: value
-                })
-              }
-              onChangeMarRight={value =>
-                setAttributes({
-                  wrapMarginR: value
-                })
-              }
-              onChangeMarBottom={value =>
-                setAttributes({
-                  wrapMarginB: value
-                })
-              }
-              onChangeMarLeft={value =>
-                setAttributes({
-                  wrapMarginL: value
-                })
-              }
-            />
-            <PremiumPadding
-              paddingTop={wrapPaddingT}
-              paddingRight={wrapPaddingR}
-              paddingBottom={wrapPaddingB}
-              paddingLeft={wrapPaddingL}
-              onChangePadTop={value =>
-                setAttributes({
-                  wrapPaddingT: value
-                })
-              }
-              onChangePadRight={value =>
-                setAttributes({
-                  wrapPaddingR: value
-                })
-              }
-              onChangePadBottom={value =>
-                setAttributes({
-                  wrapPaddingB: value
-                })
-              }
-              onChangePadLeft={value =>
-                setAttributes({
-                  wrapPaddingL: value
-                })
-              }
-            />
-          
+
+          <PremiumMargin
+            directions={["all"]}
+            marginTop={wrapMarginT}
+            marginRight={wrapMarginR}
+            marginBottom={wrapMarginB}
+            marginLeft={wrapMarginL}
+            onChangeMarTop={value =>
+              setAttributes({
+                wrapMarginT: value
+              })
+            }
+            onChangeMarRight={value =>
+              setAttributes({
+                wrapMarginR: value
+              })
+            }
+            onChangeMarBottom={value =>
+              setAttributes({
+                wrapMarginB: value
+              })
+            }
+            onChangeMarLeft={value =>
+              setAttributes({
+                wrapMarginL: value
+              })
+            }
+          />
+          <PremiumPadding
+            paddingTop={wrapPaddingT}
+            paddingRight={wrapPaddingR}
+            paddingBottom={wrapPaddingB}
+            paddingLeft={wrapPaddingL}
+            onChangePadTop={value =>
+              setAttributes({
+                wrapPaddingT: value
+              })
+            }
+            onChangePadRight={value =>
+              setAttributes({
+                wrapPaddingR: value
+              })
+            }
+            onChangePadBottom={value =>
+              setAttributes({
+                wrapPaddingB: value
+              })
+            }
+            onChangePadLeft={value =>
+              setAttributes({
+                wrapPaddingL: value
+              })
+            }
+          />
         </PanelBody>
       </InspectorControls>
     ),

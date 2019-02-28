@@ -34,8 +34,12 @@ const save = props => {
     shadowVertical,
     descColor,
     descSize,
-    descWeight,
     descLine,
+    descWeight,
+    descShadowBlur,
+    descShadowColor,
+    descShadowHorizontal,
+    descShadowVertical,
     urlCheck,
     url,
     target,
@@ -131,7 +135,8 @@ const save = props => {
                 color: descColor,
                 fontSize: descSize + "px",
                 fontWeight: descWeight,
-                lineHeight: descLine + "px"
+                lineHeight: descLine + "px",
+                textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`
               }}
             />
           </div>

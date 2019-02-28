@@ -14,7 +14,9 @@ const {
   SelectControl,
   RangeControl,
   TextControl,
-  ToggleControl
+  ToggleControl,
+  Dropdown,
+  Button
 } = wp.components;
 
 const {
@@ -23,7 +25,6 @@ const {
   AlignmentToolbar,
   RichText,
   MediaUpload,
-  PanelColorSettings,
   ColorPalette
 } = wp.editor;
 
@@ -182,124 +183,132 @@ const edit = props => {
               </Fragment>
             )}
           </PanelBody>
-            <p>{__("Author HTML Tag")}</p>
-            <Toolbar
-              controls={"123456".split("").map(tag => ({
-                icon: "heading",
-                isActive: "H" + tag === authorTag,
-                onClick: () => setAttributes({ authorTag: "H" + tag }),
-                subscript: tag
-              }))}
-            />
-            <PremiumTypo
-              components={["size", "weight", "style", "upper", "spacing"]}
-              size={authorSize}
-              onChangeSize={newSize => setAttributes({ authorSize: newSize })}
-              weight={authorWeight}
-              style={authorStyle}
-              spacing={authorLetter}
-              upper={authorUpper}
-              onChangeWeight={newWeight =>
-                setAttributes({ authorWeight: newWeight })
-              }
-              onChangeStyle={newStyle =>
-                setAttributes({ authorStyle: newStyle })
-              }
-              onChangeSpacing={newValue =>
-                setAttributes({ authorLetter: newValue })
-              }
-              onChangeUpper={check => setAttributes({ authorUpper: check })}
-            />
-            <p>{__("Color")}</p>
-            <ColorPalette
-              value={authorColor}
-              onChange={newValue =>
-                setAttributes({
-                  authorColor: newValue
-                })
-              }
-              allowReset={true}
-            />
+          <p>{__("Author HTML Tag")}</p>
+          <Toolbar
+            controls={"123456".split("").map(tag => ({
+              icon: "heading",
+              isActive: "H" + tag === authorTag,
+              onClick: () => setAttributes({ authorTag: "H" + tag }),
+              subscript: tag
+            }))}
+          />
+          <PremiumTypo
+            components={["size", "weight", "style", "upper", "spacing"]}
+            size={authorSize}
+            onChangeSize={newSize => setAttributes({ authorSize: newSize })}
+            weight={authorWeight}
+            style={authorStyle}
+            spacing={authorLetter}
+            upper={authorUpper}
+            onChangeWeight={newWeight =>
+              setAttributes({ authorWeight: newWeight })
+            }
+            onChangeStyle={newStyle => setAttributes({ authorStyle: newStyle })}
+            onChangeSpacing={newValue =>
+              setAttributes({ authorLetter: newValue })
+            }
+            onChangeUpper={check => setAttributes({ authorUpper: check })}
+          />
+          <p>{__("Color")}</p>
+          <ColorPalette
+            value={authorColor}
+            onChange={newValue =>
+              setAttributes({
+                authorColor: newValue
+              })
+            }
+            allowReset={true}
+          />
         </PanelBody>
         <PanelBody
           title={__("Content")}
           className="premium-panel-body"
           initialOpen={false}
         >
-            <PremiumTypo
-              components={["size", "line"]}
-              size={bodySize}
-              line={bodyLine}
-              onChangeSize={newSize => setAttributes({ bodySize: newSize })}
-              onChangeLine={newWeight => setAttributes({ bodyLine: newWeight })}
-            />
-            <p>{__("Color")}</p>
-            <ColorPalette
-              value={bodyColor}
-              onChange={newValue =>
-                setAttributes({
-                  bodyColor: newValue
-                })
-              }
-              allowReset={true}
-            />
-          <PanelBody
-            title={__("Spacings")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
-            <RangeControl
-              label={__("Margin Top (PX)")}
-              value={bodyTop}
-              onChange={newSize => setAttributes({ bodyTop: newSize })}
-            />
-            <RangeControl
-              label={__("Margin Bottom (PX)")}
-              value={bodyBottom}
-              onChange={newSize => setAttributes({ bodyBottom: newSize })}
-            />
-          </PanelBody>
+          <PremiumTypo
+            components={["size", "line"]}
+            size={bodySize}
+            line={bodyLine}
+            onChangeSize={newSize => setAttributes({ bodySize: newSize })}
+            onChangeLine={newWeight => setAttributes({ bodyLine: newWeight })}
+          />
+          <p>{__("Color")}</p>
+          <ColorPalette
+            value={bodyColor}
+            onChange={newValue =>
+              setAttributes({
+                bodyColor: newValue
+              })
+            }
+            allowReset={true}
+          />
+          <RangeControl
+            label={__("Margin Top (PX)")}
+            value={bodyTop}
+            onChange={newSize => setAttributes({ bodyTop: newSize })}
+          />
+          <RangeControl
+            label={__("Margin Bottom (PX)")}
+            value={bodyBottom}
+            onChange={newSize => setAttributes({ bodyBottom: newSize })}
+          />
         </PanelBody>
         <PanelBody
           title={__("Company")}
           className="premium-panel-body"
           initialOpen={false}
         >
-            <p>{__("HTML Tag")}</p>
-            <Toolbar
-              controls={"123456".split("").map(tag => ({
-                icon: "heading",
-                isActive: "H" + tag === authorComTag,
-                onClick: () => setAttributes({ authorComTag: "H" + tag }),
-                subscript: tag
-              }))}
-            />
-            <PremiumTypo
-              components={["size"]}
-              size={authorComSize}
-              onChangeSize={newSize =>
-                setAttributes({ authorComSize: newSize })
-              }
-            />
-          <PanelColorSettings
-            title={__("Colors")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-            colorSettings={[
-              {
-                value: authorComColor,
-                onChange: colorValue =>
-                  setAttributes({ authorComColor: colorValue }),
-                label: __("Text Color")
-              },
-              {
-                value: dashColor,
-                onChange: colorValue =>
-                  setAttributes({ dashColor: colorValue }),
-                label: __("Dash Color")
-              }
-            ]}
+          <p>{__("HTML Tag")}</p>
+          <Toolbar
+            controls={"123456".split("").map(tag => ({
+              icon: "heading",
+              isActive: "H" + tag === authorComTag,
+              onClick: () => setAttributes({ authorComTag: "H" + tag }),
+              subscript: tag
+            }))}
           />
+          <PremiumTypo
+            components={["size"]}
+            size={authorComSize}
+            onChangeSize={newSize => setAttributes({ authorComSize: newSize })}
+          />
+          <div className="premium-control-toggle">
+            <strong>{__("Colors")}</strong>
+            <Dropdown
+              className="premium-control-toggle-btn"
+              contentClassName="premium-control-toggle-content"
+              position="bottom right"
+              renderToggle={({ isOpen, onToggle }) => (
+                <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+                  <i className="dashicons dashicons-edit" />
+                </Button>
+              )}
+              renderContent={() => (
+                <Fragment>
+                  <p>{__("Text Color")}</p>
+                  <ColorPalette
+                    value={authorComColor}
+                    onChange={newValue =>
+                      setAttributes({
+                        authorComColor: newValue
+                      })
+                    }
+                    allowReset={true}
+                  />
+                  <p>{__("Dash Color")}</p>
+                  <ColorPalette
+                    value={dashColor}
+                    onChange={newValue =>
+                      setAttributes({
+                        dashColor: newValue
+                      })
+                    }
+                    allowReset={true}
+                  />
+                </Fragment>
+              )}
+            />
+          </div>
           <ToggleControl
             label={__("URL")}
             checked={urlCheck}

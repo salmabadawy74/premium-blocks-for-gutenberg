@@ -12,12 +12,14 @@ const {
   RangeControl,
   TextControl,
   TextareaControl,
-  ToggleControl
+  ToggleControl,
+  Dropdown,
+  Button
 } = wp.components;
 
 const { Component, Fragment } = wp.element;
 
-const { InspectorControls, MediaUpload, PanelColorSettings } = wp.editor;
+const { InspectorControls, MediaUpload, ColorPalette } = wp.editor;
 
 const className = "premium-video-box";
 
@@ -386,37 +388,68 @@ class edit extends Component {
                         })
                       }
                     />
-                    <PanelColorSettings
-                      title={__("Colors")}
-                      className="premium-panel-body-inner"
-                      initialOpen={false}
-                      colorSettings={[
-                        {
-                          label: __("Icon Color"),
-                          value: playColor,
-                          onChange: colorValue =>
-                            setAttributes({ playColor: colorValue })
-                        },
-                        {
-                          label: __("Icon Background Color"),
-                          value: playBack,
-                          onChange: colorValue =>
-                            setAttributes({ playBack: colorValue })
-                        },
-                        {
-                          label: __("Icon Hover Color"),
-                          value: playHoverColor,
-                          onChange: colorValue =>
-                            setAttributes({ playHoverColor: colorValue })
-                        },
-                        {
-                          label: __("Icon Hover Background Color"),
-                          value: playHoverBackColor,
-                          onChange: colorValue =>
-                            setAttributes({ playHoverBackColor: colorValue })
-                        }
-                      ]}
-                    />
+                    <div className="premium-control-toggle">
+                      <strong>{__("Colors")}</strong>
+                      <Dropdown
+                        className="premium-control-toggle-btn"
+                        contentClassName="premium-control-toggle-content"
+                        position="bottom right"
+                        renderToggle={({ isOpen, onToggle }) => (
+                          <Button
+                            isSmall
+                            onClick={onToggle}
+                            aria-expanded={isOpen}
+                          >
+                            <i className="dashicons dashicons-edit" />
+                          </Button>
+                        )}
+                        renderContent={() => (
+                          <Fragment>
+                            <p>{__("Icon Color")}</p>
+                            <ColorPalette
+                              value={playColor}
+                              onChange={newValue =>
+                                setAttributes({
+                                  playColor: newValue
+                                })
+                              }
+                              allowReset={true}
+                            />
+                            <p>{__("Icon Background Color")}</p>
+                            <ColorPalette
+                              value={playBack}
+                              onChange={newValue =>
+                                setAttributes({
+                                  playBack: newValue
+                                })
+                              }
+                              allowReset={true}
+                            />
+                            <p>{__("Icon Hover Color")}</p>
+                            <ColorPalette
+                              value={playHoverColor}
+                              onChange={newValue =>
+                                setAttributes({
+                                  playHoverColor: newValue
+                                })
+                              }
+                              allowReset={true}
+                            />
+                            <p>{__("Icon Hover Background Color")}</p>
+                            <ColorPalette
+                              value={playHoverBackColor}
+                              onChange={newValue =>
+                                setAttributes({
+                                  playHoverBackColor: newValue
+                                })
+                              }
+                              allowReset={true}
+                            />
+                          </Fragment>
+                        )}
+                      />
+                    </div>
+
                     <PremiumBorder
                       borderType={playBorderType}
                       borderWidth={playBorderWidth}
@@ -510,25 +543,47 @@ class edit extends Component {
                         })
                       }
                     />
-                    <PanelColorSettings
-                      title={__("Colors")}
-                      className="premium-panel-body-inner"
-                      initialOpen={false}
-                      colorSettings={[
-                        {
-                          label: __("Text Color"),
-                          value: videoDescColor,
-                          onChange: colorValue =>
-                            setAttributes({ videoDescColor: colorValue })
-                        },
-                        {
-                          label: __("Text Background Color"),
-                          value: videoDescBack,
-                          onChange: colorValue =>
-                            setAttributes({ videoDescBack: colorValue })
-                        }
-                      ]}
-                    />
+                    <div className="premium-control-toggle">
+                      <strong>{__("Colors")}</strong>
+                      <Dropdown
+                        className="premium-control-toggle-btn"
+                        contentClassName="premium-control-toggle-content"
+                        position="bottom right"
+                        renderToggle={({ isOpen, onToggle }) => (
+                          <Button
+                            isSmall
+                            onClick={onToggle}
+                            aria-expanded={isOpen}
+                          >
+                            <i className="dashicons dashicons-edit" />
+                          </Button>
+                        )}
+                        renderContent={() => (
+                          <Fragment>
+                            <p>{__("Text Color")}</p>
+                            <ColorPalette
+                              value={videoDescColor}
+                              onChange={newValue =>
+                                setAttributes({
+                                  videoDescColor: newValue
+                                })
+                              }
+                              allowReset={true}
+                            />
+                            <p>{__("Text Background Color")}</p>
+                            <ColorPalette
+                              value={videoDescBack}
+                              onChange={newValue =>
+                                setAttributes({
+                                  videoDescBack: newValue
+                                })
+                              }
+                              allowReset={true}
+                            />
+                          </Fragment>
+                        )}
+                      />
+                    </div>
                     <RangeControl
                       label={__("Border Radius (px)")}
                       value={videoDescBorderRadius}
@@ -559,24 +614,24 @@ class edit extends Component {
             className="premium-panel-body"
             initialOpen={false}
           >
-              <PremiumBorder
-                borderType={boxBorderType}
-                borderWidth={boxBorderWidth}
-                borderColor={boxBorderColor}
-                borderRadius={boxBorderRadius}
-                onChangeType={newType =>
-                  setAttributes({ boxBorderType: newType })
-                }
-                onChangeWidth={newWidth =>
-                  setAttributes({ boxBorderWidth: newWidth })
-                }
-                onChangeColor={colorValue =>
-                  setAttributes({ boxBorderColor: colorValue })
-                }
-                onChangeRadius={newrRadius =>
-                  setAttributes({ boxBorderRadius: newrRadius })
-                }
-              />
+            <PremiumBorder
+              borderType={boxBorderType}
+              borderWidth={boxBorderWidth}
+              borderColor={boxBorderColor}
+              borderRadius={boxBorderRadius}
+              onChangeType={newType =>
+                setAttributes({ boxBorderType: newType })
+              }
+              onChangeWidth={newWidth =>
+                setAttributes({ boxBorderWidth: newWidth })
+              }
+              onChangeColor={colorValue =>
+                setAttributes({ boxBorderColor: colorValue })
+              }
+              onChangeRadius={newrRadius =>
+                setAttributes({ boxBorderRadius: newrRadius })
+              }
+            />
             <PremiumBoxShadow
               inner={true}
               color={shadowColor}

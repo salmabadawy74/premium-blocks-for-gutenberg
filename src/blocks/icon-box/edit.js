@@ -19,7 +19,9 @@ const {
   Toolbar,
   RangeControl,
   SelectControl,
-  ToggleControl
+  ToggleControl,
+  Dropdown,
+  Button
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -27,7 +29,6 @@ const { Fragment } = wp.element;
 const {
   InspectorControls,
   RichText,
-  PanelColorSettings,
   ColorPalette,
   MediaUpload,
   URLInput
@@ -333,45 +334,43 @@ const edit = props => {
             className="premium-panel-body"
             initialOpen={false}
           >
-              <p>{__("Title")}</p>
-              <Toolbar
-                controls={"123456".split("").map(tag => ({
-                  icon: "heading",
-                  isActive: "H" + tag === titleTag,
-                  onClick: () => setAttributes({ titleTag: "H" + tag }),
-                  subscript: tag
-                }))}
-              />
-              <PremiumTypo
-                components={[
-                  "size",
-                  "weight",
-                  "style",
-                  "upper",
-                  "spacing",
-                  "line"
-                ]}
-                size={titleSize}
-                weight={titleWeight}
-                style={titleStyle}
-                spacing={titleLetter}
-                line={titleLine}
-                upper={titleUpper}
-                onChangeSize={newSize => setAttributes({ titleSize: newSize })}
-                onChangeWeight={newWeight =>
-                  setAttributes({ titleWeight: newWeight || 500 })
-                }
-                onChangeStyle={newStyle =>
-                  setAttributes({ titleStyle: newStyle })
-                }
-                onChangeSpacing={newValue =>
-                  setAttributes({ titleLetter: newValue })
-                }
-                onChangeLine={newValue =>
-                  setAttributes({ titleLine: newValue })
-                }
-                onChangeUpper={check => setAttributes({ titleUpper: check })}
-              />
+            <p>{__("Title")}</p>
+            <Toolbar
+              controls={"123456".split("").map(tag => ({
+                icon: "heading",
+                isActive: "H" + tag === titleTag,
+                onClick: () => setAttributes({ titleTag: "H" + tag }),
+                subscript: tag
+              }))}
+            />
+            <PremiumTypo
+              components={[
+                "size",
+                "weight",
+                "style",
+                "upper",
+                "spacing",
+                "line"
+              ]}
+              size={titleSize}
+              weight={titleWeight}
+              style={titleStyle}
+              spacing={titleLetter}
+              line={titleLine}
+              upper={titleUpper}
+              onChangeSize={newSize => setAttributes({ titleSize: newSize })}
+              onChangeWeight={newWeight =>
+                setAttributes({ titleWeight: newWeight || 500 })
+              }
+              onChangeStyle={newStyle =>
+                setAttributes({ titleStyle: newStyle })
+              }
+              onChangeSpacing={newValue =>
+                setAttributes({ titleLetter: newValue })
+              }
+              onChangeLine={newValue => setAttributes({ titleLine: newValue })}
+              onChangeUpper={check => setAttributes({ titleUpper: check })}
+            />
             <Fragment>
               <p>{__("Text Color")}</p>
               <ColorPalette
@@ -402,21 +401,21 @@ const edit = props => {
                 setAttributes({ titleShadowVertical: newValue || "0" })
               }
             />
-              <PremiumMargin
-                directions={["top", "bottom"]}
-                marginTop={titleMarginT}
-                marginBottom={titleMarginB}
-                onChangeMarTop={value =>
-                  setAttributes({
-                    titleMarginT: value || "0"
-                  })
-                }
-                onChangeMarBottom={value =>
-                  setAttributes({
-                    titleMarginB: value || "0"
-                  })
-                }
-              />
+            <PremiumMargin
+              directions={["top", "bottom"]}
+              marginTop={titleMarginT}
+              marginBottom={titleMarginB}
+              onChangeMarTop={value =>
+                setAttributes({
+                  titleMarginT: value || "0"
+                })
+              }
+              onChangeMarBottom={value =>
+                setAttributes({
+                  titleMarginB: value || "0"
+                })
+              }
+            />
           </PanelBody>
         )}
         {descChecked && (
@@ -425,19 +424,19 @@ const edit = props => {
             className="premium-panel-body"
             initialOpen={false}
           >
-              <PremiumTypo
-                components={["size", "weight", "line"]}
-                size={descSize}
-                weight={descWeight}
-                line={descLine}
-                onChangeSize={newSize =>
-                  setAttributes({ descSize: newSize || 20 })
-                }
-                onChangeWeight={newWeight =>
-                  setAttributes({ descWeight: newWeight || 500 })
-                }
-                onChangeLine={newValue => setAttributes({ descLine: newValue })}
-              />
+            <PremiumTypo
+              components={["size", "weight", "line"]}
+              size={descSize}
+              weight={descWeight}
+              line={descLine}
+              onChangeSize={newSize =>
+                setAttributes({ descSize: newSize || 20 })
+              }
+              onChangeWeight={newWeight =>
+                setAttributes({ descWeight: newWeight || 500 })
+              }
+              onChangeLine={newValue => setAttributes({ descLine: newValue })}
+            />
             <Fragment>
               <p>{__("Text Color")}</p>
               <ColorPalette
@@ -450,21 +449,21 @@ const edit = props => {
                 allowReset={true}
               />
             </Fragment>
-              <PremiumMargin
-                directions={["top", "bottom"]}
-                marginTop={descMarginT}
-                marginBottom={descMarginB}
-                onChangeMarTop={value =>
-                  setAttributes({
-                    descMarginT: value || 0
-                  })
-                }
-                onChangeMarBottom={value =>
-                  setAttributes({
-                    descMarginB: value || 0
-                  })
-                }
-              />
+            <PremiumMargin
+              directions={["top", "bottom"]}
+              marginTop={descMarginT}
+              marginBottom={descMarginB}
+              onChangeMarTop={value =>
+                setAttributes({
+                  descMarginT: value || 0
+                })
+              }
+              onChangeMarBottom={value =>
+                setAttributes({
+                  descMarginB: value || 0
+                })
+              }
+            />
           </PanelBody>
         )}
 
@@ -493,84 +492,111 @@ const edit = props => {
               checked={btnTarget}
               onChange={newValue => setAttributes({ btnTarget: newValue })}
             />
-              <PremiumTypo
-                components={["size", "weight", "style", "upper", "spacing"]}
-                size={btnSize}
-                weight={btnWeight}
-                style={btnStyle}
-                spacing={btnLetter}
-                upper={btnUpper}
-                onChangeSize={newSize =>
-                  setAttributes({ btnSize: newSize || 20 })
-                }
-                onChangeWeight={newWeight =>
-                  setAttributes({ btnWeight: newWeight || 500 })
-                }
-                onChangeStyle={newStyle =>
-                  setAttributes({ btnStyle: newStyle })
-                }
-                onChangeSpacing={newValue =>
-                  setAttributes({ btnLetter: newValue })
-                }
-                onChangeUpper={check => setAttributes({ btnUpper: check })}
-              />
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  value: btnColor,
-                  onChange: newColor =>
-                    setAttributes({ btnColor: newColor || "#000" }),
-                  label: __("Text Color")
-                },
-                {
-                  value: btnHoverColor,
-                  onChange: newColor =>
-                    setAttributes({ btnHoverColor: newColor || "#000" }),
-                  label: __("Text Hover Color")
-                },
-                {
-                  value: btnBack,
-                  onChange: newColor =>
-                    setAttributes({ btnBack: newColor || "transparent" }),
-                  label: __("Background Color")
-                },
-                {
-                  value: btnHoverBack,
-                  onChange: newColor =>
-                    setAttributes({ btnHoverBack: newColor }),
-                  label: __("Background Hover Color")
-                },
-                {
-                  value: btnHoverBorder,
-                  onChange: newColor =>
-                    setAttributes({
-                      btnHoverBorder: newColor || "transparent"
-                    }),
-                  label: __("Border Hover Color")
-                }
-              ]}
+            <PremiumTypo
+              components={["size", "weight", "style", "upper", "spacing"]}
+              size={btnSize}
+              weight={btnWeight}
+              style={btnStyle}
+              spacing={btnLetter}
+              upper={btnUpper}
+              onChangeSize={newSize =>
+                setAttributes({ btnSize: newSize || 20 })
+              }
+              onChangeWeight={newWeight =>
+                setAttributes({ btnWeight: newWeight || 500 })
+              }
+              onChangeStyle={newStyle => setAttributes({ btnStyle: newStyle })}
+              onChangeSpacing={newValue =>
+                setAttributes({ btnLetter: newValue })
+              }
+              onChangeUpper={check => setAttributes({ btnUpper: check })}
             />
-              <PremiumBorder
-                borderType={btnBorderType}
-                borderWidth={btnBorderWidth}
-                borderColor={btnBorderColor}
-                borderRadius={btnBorderRadius}
-                onChangeType={newType =>
-                  setAttributes({ btnBorderType: newType })
-                }
-                onChangeWidth={newWidth =>
-                  setAttributes({ btnBorderWidth: newWidth })
-                }
-                onChangeColor={colorValue =>
-                  setAttributes({ btnBorderColor: colorValue })
-                }
-                onChangeRadius={newrRadius =>
-                  setAttributes({ btnBorderRadius: newrRadius })
-                }
+            <div className="premium-control-toggle">
+              <strong>{__("Colors")}</strong>
+              <Dropdown
+                className="premium-control-toggle-btn"
+                contentClassName="premium-control-toggle-content"
+                position="bottom right"
+                renderToggle={({ isOpen, onToggle }) => (
+                  <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+                    <i className="dashicons dashicons-edit" />
+                  </Button>
+                )}
+                renderContent={() => (
+                  <Fragment>
+                    <p>{__("Text Color")}</p>
+                    <ColorPalette
+                      value={btnColor}
+                      onChange={newValue =>
+                        setAttributes({
+                          btnColor: newValue || "000"
+                        })
+                      }
+                      allowReset={true}
+                    />
+                    <p>{__("Text Hover Color")}</p>
+                    <ColorPalette
+                      value={btnHoverColor}
+                      onChange={newValue =>
+                        setAttributes({
+                          btnHoverColor: newValue || "#000"
+                        })
+                      }
+                      allowReset={true}
+                    />
+                    <p>{__("Background Color")}</p>
+                    <ColorPalette
+                      value={btnBack}
+                      onChange={newValue =>
+                        setAttributes({
+                          btnBack: newValue || "transparent"
+                        })
+                      }
+                      allowReset={true}
+                    />
+                    <p>{__("Background Hover Color")}</p>
+                    <ColorPalette
+                      value={btnHoverBack}
+                      onChange={newValue =>
+                        setAttributes({
+                          btnHoverBack: newValue
+                        })
+                      }
+                      allowReset={true}
+                    />
+                    <p>{__("Border Hover Color")}</p>
+                    <ColorPalette
+                      value={btnHoverBorder}
+                      onChange={newValue =>
+                        setAttributes({
+                          btnHoverBorder: newValue || "transparent"
+                        })
+                      }
+                      allowReset={true}
+                    />
+                  </Fragment>
+                )}
               />
+            </div>
+
+            <PremiumBorder
+              borderType={btnBorderType}
+              borderWidth={btnBorderWidth}
+              borderColor={btnBorderColor}
+              borderRadius={btnBorderRadius}
+              onChangeType={newType =>
+                setAttributes({ btnBorderType: newType })
+              }
+              onChangeWidth={newWidth =>
+                setAttributes({ btnBorderWidth: newWidth })
+              }
+              onChangeColor={colorValue =>
+                setAttributes({ btnBorderColor: colorValue })
+              }
+              onChangeRadius={newrRadius =>
+                setAttributes({ btnBorderRadius: newrRadius })
+              }
+            />
             <PremiumBoxShadow
               inner={true}
               color={btnShadowColor}
@@ -604,26 +630,26 @@ const edit = props => {
                 })
               }
             />
-              <RangeControl
-                label={__("Padding (PX)")}
-                value={btnPadding}
-                onChange={newValue => setAttributes({ btnPadding: newValue })}
-              />
-              <PremiumMargin
-                directions={["top", "bottom"]}
-                marginTop={btnMarginT}
-                marginBottom={btnMarginB}
-                onChangeMarTop={value =>
-                  setAttributes({
-                    btnMarginT: value || 0
-                  })
-                }
-                onChangeMarBottom={value =>
-                  setAttributes({
-                    btnMarginB: value || 0
-                  })
-                }
-              />
+            <RangeControl
+              label={__("Padding (PX)")}
+              value={btnPadding}
+              onChange={newValue => setAttributes({ btnPadding: newValue })}
+            />
+            <PremiumMargin
+              directions={["top", "bottom"]}
+              marginTop={btnMarginT}
+              marginBottom={btnMarginB}
+              onChangeMarTop={value =>
+                setAttributes({
+                  btnMarginT: value || 0
+                })
+              }
+              onChangeMarBottom={value =>
+                setAttributes({
+                  btnMarginB: value || 0
+                })
+              }
+            />
           </PanelBody>
         )}
 
@@ -640,69 +666,61 @@ const edit = props => {
               onClick: () => setAttributes({ align: contentAlign })
             }))}
           />
-          <PanelBody
-            title={__("Background")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
-            <Fragment>
-              <p>{__("Background Color")}</p>
-              <ColorPalette
-                value={backColor}
-                onChange={newValue =>
-                  setAttributes({
-                    backColor: newValue || "transparent"
-                  })
-                }
-                allowReset={true}
-              />
-            </Fragment>
-
-            {imageURL && <img src={imageURL} width="100%" height="auto" />}
-            <PremiumBackgroud
-              imageID={imageID}
-              imageURL={imageURL}
-              backgroundPosition={backgroundPosition}
-              backgroundRepeat={backgroundRepeat}
-              backgroundSize={backgroundSize}
-              fixed={fixed}
-              onSelectMedia={media => {
+          <Fragment>
+            <p>{__("Background Color")}</p>
+            <ColorPalette
+              value={backColor}
+              onChange={newValue =>
                 setAttributes({
-                  imageID: media.id,
-                  imageURL: media.url
-                });
-              }}
-              onRemoveImage={value =>
-                setAttributes({ imageURL: "", imageID: "" })
+                  backColor: newValue || "transparent"
+                })
               }
-              onChangeBackPos={newValue =>
-                setAttributes({ backgroundPosition: newValue })
-              }
-              onchangeBackRepeat={newValue =>
-                setAttributes({ backgroundRepeat: newValue })
-              }
-              onChangeBackSize={newValue =>
-                setAttributes({ backgroundSize: newValue })
-              }
-              onChangeFixed={check => setAttributes({ fixed: check })}
+              allowReset={true}
             />
-          </PanelBody>
-            <PremiumBorder
-              borderType={borderType}
-              borderWidth={borderWidth}
-              borderColor={borderColor}
-              borderRadius={borderRadius}
-              onChangeType={newType => setAttributes({ borderType: newType })}
-              onChangeWidth={newWidth =>
-                setAttributes({ borderWidth: newWidth })
-              }
-              onChangeColor={colorValue =>
-                setAttributes({ borderColor: colorValue })
-              }
-              onChangeRadius={newrRadius =>
-                setAttributes({ borderRadius: newrRadius })
-              }
-            />
+          </Fragment>
+
+          {imageURL && <img src={imageURL} width="100%" height="auto" />}
+          <PremiumBackgroud
+            imageID={imageID}
+            imageURL={imageURL}
+            backgroundPosition={backgroundPosition}
+            backgroundRepeat={backgroundRepeat}
+            backgroundSize={backgroundSize}
+            fixed={fixed}
+            onSelectMedia={media => {
+              setAttributes({
+                imageID: media.id,
+                imageURL: media.url
+              });
+            }}
+            onRemoveImage={value =>
+              setAttributes({ imageURL: "", imageID: "" })
+            }
+            onChangeBackPos={newValue =>
+              setAttributes({ backgroundPosition: newValue })
+            }
+            onchangeBackRepeat={newValue =>
+              setAttributes({ backgroundRepeat: newValue })
+            }
+            onChangeBackSize={newValue =>
+              setAttributes({ backgroundSize: newValue })
+            }
+            onChangeFixed={check => setAttributes({ fixed: check })}
+          />
+          <PremiumBorder
+            borderType={borderType}
+            borderWidth={borderWidth}
+            borderColor={borderColor}
+            borderRadius={borderRadius}
+            onChangeType={newType => setAttributes({ borderType: newType })}
+            onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
+            onChangeColor={colorValue =>
+              setAttributes({ borderColor: colorValue })
+            }
+            onChangeRadius={newrRadius =>
+              setAttributes({ borderRadius: newrRadius })
+            }
+          />
           <PremiumBoxShadow
             inner={true}
             color={shadowColor}
@@ -770,59 +788,59 @@ const edit = props => {
               })
             }
           />
-            <PremiumMargin
-              directions={["all"]}
-              marginTop={marginT}
-              marginRight={marginR}
-              marginBottom={marginB}
-              marginLeft={marginL}
-              onChangeMarTop={value =>
-                setAttributes({
-                  marginT: value || 0
-                })
-              }
-              onChangeMarRight={value =>
-                setAttributes({
-                  marginR: value || 0
-                })
-              }
-              onChangeMarBottom={value =>
-                setAttributes({
-                  marginB: value || 0
-                })
-              }
-              onChangeMarLeft={value =>
-                setAttributes({
-                  marginL: value || 0
-                })
-              }
-            />
-            <PremiumPadding
-              paddingTop={paddingT}
-              paddingRight={paddingR}
-              paddingBottom={paddingB}
-              paddingLeft={paddingL}
-              onChangePadTop={value =>
-                setAttributes({
-                  paddingT: value || 0
-                })
-              }
-              onChangePadRight={value =>
-                setAttributes({
-                  paddingR: value || 0
-                })
-              }
-              onChangePadBottom={value =>
-                setAttributes({
-                  paddingB: value || 0
-                })
-              }
-              onChangePadLeft={value =>
-                setAttributes({
-                  paddingL: value || 0
-                })
-              }
-            />
+          <PremiumMargin
+            directions={["all"]}
+            marginTop={marginT}
+            marginRight={marginR}
+            marginBottom={marginB}
+            marginLeft={marginL}
+            onChangeMarTop={value =>
+              setAttributes({
+                marginT: value || 0
+              })
+            }
+            onChangeMarRight={value =>
+              setAttributes({
+                marginR: value || 0
+              })
+            }
+            onChangeMarBottom={value =>
+              setAttributes({
+                marginB: value || 0
+              })
+            }
+            onChangeMarLeft={value =>
+              setAttributes({
+                marginL: value || 0
+              })
+            }
+          />
+          <PremiumPadding
+            paddingTop={paddingT}
+            paddingRight={paddingR}
+            paddingBottom={paddingB}
+            paddingLeft={paddingL}
+            onChangePadTop={value =>
+              setAttributes({
+                paddingT: value || 0
+              })
+            }
+            onChangePadRight={value =>
+              setAttributes({
+                paddingR: value || 0
+              })
+            }
+            onChangePadBottom={value =>
+              setAttributes({
+                paddingB: value || 0
+              })
+            }
+            onChangePadLeft={value =>
+              setAttributes({
+                paddingL: value || 0
+              })
+            }
+          />
         </PanelBody>
       </InspectorControls>
     ),
