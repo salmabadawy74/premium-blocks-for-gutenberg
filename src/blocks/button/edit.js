@@ -5,13 +5,19 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 
 const { __ } = wp.i18n;
 
-const { PanelBody, SelectControl, RangeControl, ToggleControl } = wp.components;
+const {
+  PanelBody,
+  SelectControl,
+  RangeControl,
+  ToggleControl,
+  Dropdown,
+  Button
+} = wp.components;
 
 const { Fragment } = wp.element;
 
 const {
   InspectorControls,
-  PanelColorSettings,
   ColorPalette,
   AlignmentToolbar,
   BlockControls,
@@ -257,25 +263,43 @@ const edit = props => {
             }
             onChangeUpper={check => setAttributes({ textUpper: check })}
           />
-
-          <PanelColorSettings
-            title={__("Colors")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-            colorSettings={[
-              {
-                label: __("Text Color"),
-                value: textColor,
-                onChange: colorValue => setAttributes({ textColor: colorValue })
-              },
-              {
-                label: __("Text Hover Color"),
-                value: textHoverColor,
-                onChange: colorValue =>
-                  setAttributes({ textHoverColor: colorValue })
-              }
-            ]}
-          />
+          <div className="premium-control-toggle">
+            <strong>{__("Colors")}</strong>
+            <Dropdown
+              className="premium-control-toggle-btn"
+              contentClassName="premium-control-toggle-content"
+              position="bottom right"
+              renderToggle={({ isOpen, onToggle }) => (
+                <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+                  <i className="dashicons dashicons-edit" />
+                </Button>
+              )}
+              renderContent={() => (
+                <Fragment>
+                  <p>{__("Text Color")}</p>
+                  <ColorPalette
+                    value={textColor}
+                    onChange={newValue =>
+                      setAttributes({
+                        textColor: newValue
+                      })
+                    }
+                    allowReset={true}
+                  />
+                  <p>{__("Text Hover Color")}</p>
+                  <ColorPalette
+                    value={textHoverColor}
+                    onChange={newValue =>
+                      setAttributes({
+                        textHoverColor: newValue
+                      })
+                    }
+                    allowReset={true}
+                  />
+                </Fragment>
+              )}
+            />
+          </div>
           <PremiumTextShadow
             color={shadowColor}
             blur={shadowBlur}
@@ -296,34 +320,52 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
-          <PanelColorSettings
-            title={__("Colors")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-            colorSettings={[
-              {
-                label:
-                  "radial" !== effect
-                    ? __("Background Color")
-                    : __("Background Hover Color"),
-                value: backColor,
-                onChange: colorValue => setAttributes({ backColor: colorValue })
-              },
-              {
-                label:
-                  "radial" !== effect
-                    ? __("Background Hover Color")
-                    : __("Background Color"),
-                value: backHoverColor,
-                onChange: colorValue =>
-                  setAttributes({
-                    backHoverColor: colorValue,
-                    slideColor: colorValue
-                  })
-              }
-            ]}
-          />
-
+          <div className="premium-control-toggle">
+            <strong>{__("Colors")}</strong>
+            <Dropdown
+              className="premium-control-toggle-btn"
+              contentClassName="premium-control-toggle-content"
+              position="bottom right"
+              renderToggle={({ isOpen, onToggle }) => (
+                <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+                  <i className="dashicons dashicons-edit" />
+                </Button>
+              )}
+              renderContent={() => (
+                <Fragment>
+                  <p>
+                    {"radial" !== effect
+                      ? __("Background Color")
+                      : __("Background Hover Color")}
+                  </p>
+                  <ColorPalette
+                    value={backColor}
+                    onChange={newValue =>
+                      setAttributes({
+                        backColor: newValue
+                      })
+                    }
+                    allowReset={true}
+                  />
+                  <p>
+                    {"radial" !== effect
+                      ? __("Background Hover Color")
+                      : __("Background Color")}
+                  </p>
+                  <ColorPalette
+                    value={backHoverColor}
+                    onChange={newValue =>
+                      setAttributes({
+                        backHoverColor: newValue,
+                        slideColor: newValue
+                      })
+                    }
+                    allowReset={true}
+                  />
+                </Fragment>
+              )}
+            />
+          </div>
           <PremiumBorder
             borderType={borderType}
             borderWidth={borderWidth}
@@ -388,17 +430,11 @@ const edit = props => {
               })
             }
           />
-          <PanelBody
-            title={__("Spacings")}
-            className="premium-panel-body-inner"
-            initialOpen={false}
-          >
-            <RangeControl
-              label={__("Padding (PX)")}
-              value={padding}
-              onChange={newValue => setAttributes({ padding: newValue })}
-            />
-          </PanelBody>
+          <RangeControl
+            label={__("Padding (PX)")}
+            value={padding}
+            onChange={newValue => setAttributes({ padding: newValue })}
+          />
         </PanelBody>
       </InspectorControls>
     ),

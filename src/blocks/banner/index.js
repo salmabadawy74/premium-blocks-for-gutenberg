@@ -133,6 +133,21 @@ const bannerAttrs = {
   descWeight: {
     type: "number"
   },
+  descShadowColor: {
+    type: "string"
+  },
+  descShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  descShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  descShadowVertical: {
+    type: "number",
+    default: "0"
+  },
   urlCheck: {
     type: "boolean",
     default: false

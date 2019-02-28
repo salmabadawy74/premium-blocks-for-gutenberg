@@ -75,7 +75,7 @@ if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
          * @access public
          * return object
          */
-        public static function get_instance(){
+        public static function get_instance() {
             if( self::$instance == null ) {
                 self::$instance = new self;
             }

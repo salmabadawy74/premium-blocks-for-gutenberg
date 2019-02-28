@@ -64,6 +64,10 @@ const edit = props => {
     descSize,
     descLine,
     descWeight,
+    descShadowBlur,
+    descShadowColor,
+    descShadowHorizontal,
+    descShadowVertical,
     urlCheck,
     url,
     target,
@@ -458,6 +462,33 @@ const edit = props => {
               allowReset={true}
             />
           </Fragment>
+          <PremiumTextShadow
+            color={descShadowColor}
+            blur={descShadowBlur}
+            horizontal={descShadowHorizontal}
+            vertical={descShadowVertical}
+            onChangeColor={newColor =>
+              setAttributes({
+                descShadowColor:
+                  newColor === undefined ? "transparent" : newColor
+              })
+            }
+            onChangeBlur={newBlur =>
+              setAttributes({
+                descShadowBlur: newBlur === undefined ? 0 : newBlur
+              })
+            }
+            onChangehHorizontal={newValue =>
+              setAttributes({
+                descShadowHorizontal: newValue === undefined ? 0 : newValue
+              })
+            }
+            onChangeVertical={newValue =>
+              setAttributes({
+                descShadowVertical: newValue === undefined ? 0 : newValue
+              })
+            }
+          />
         </PanelBody>
       </InspectorControls>
     ),
@@ -550,7 +581,8 @@ const edit = props => {
                   color: descColor,
                   fontSize: descSize + "px",
                   fontWeight: descWeight,
-                  lineHeight: descLine + "px"
+                  lineHeight: descLine + "px",
+                  textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`
                 }}
               />
             </div>

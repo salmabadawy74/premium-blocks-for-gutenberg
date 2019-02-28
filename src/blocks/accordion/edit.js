@@ -9,14 +9,16 @@ const { Component, Fragment } = wp.element;
 
 const { __ } = wp.i18n;
 
-const { Toolbar, PanelBody, SelectControl, RangeControl } = wp.components;
-
 const {
-  InspectorControls,
-  RichText,
-  InnerBlocks,
-  PanelColorSettings
-} = wp.editor;
+  Toolbar,
+  PanelBody,
+  SelectControl,
+  RangeControl,
+  Dropdown,
+  Button
+} = wp.components;
+
+const { InspectorControls, RichText, InnerBlocks, ColorPalette } = wp.editor;
 
 const CONTENT = [
   ["core/paragraph", { content: __("Insert Your Content Here") }]
@@ -323,26 +325,43 @@ class PremiumAccordion extends Component {
               onChangeLine={newValue => setAttributes({ titleLine: newValue })}
               onChangeUpper={check => setAttributes({ titleUpper: check })}
             />
-
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  label: __("Text Color"),
-                  value: titleColor,
-                  onChange: colorValue =>
-                    setAttributes({ titleColor: colorValue })
-                },
-                {
-                  label: __("Background Color"),
-                  value: titleBack,
-                  onChange: colorValue =>
-                    setAttributes({ titleBack: colorValue })
-                }
-              ]}
-            />
+            <div className="premium-control-toggle">
+              <strong>{__("Colors")}</strong>
+              <Dropdown
+                className="premium-control-toggle-btn"
+                contentClassName="premium-control-toggle-content"
+                position="bottom right"
+                renderToggle={({ isOpen, onToggle }) => (
+                  <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+                    <i className="dashicons dashicons-edit" />
+                  </Button>
+                )}
+                renderContent={() => (
+                  <Fragment>
+                    <p>{__("Text Color")}</p>
+                    <ColorPalette
+                      value={titleColor}
+                      onChange={newValue =>
+                        setAttributes({
+                          titleColor: newValue
+                        })
+                      }
+                      allowReset={true}
+                    />
+                    <p>{__("Background Color")}</p>
+                    <ColorPalette
+                      value={titleBack}
+                      onChange={newValue =>
+                        setAttributes({
+                          titleBack: newValue
+                        })
+                      }
+                      allowReset={true}
+                    />
+                  </Fragment>
+                )}
+              />
+            </div>
             <PremiumBorder
               borderType={titleBorder}
               borderWidth={titleBorderWidth}
@@ -378,38 +397,32 @@ class PremiumAccordion extends Component {
               }
             />
 
-            <PanelBody
-              title={__("Padding")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
-              <PremiumPadding
-                paddingTop={titlePaddingT}
-                paddingRight={titlePaddingR}
-                paddingBottom={titlePaddingB}
-                paddingLeft={titlePaddingL}
-                onChangePadTop={value =>
-                  setAttributes({
-                    titlePaddingT: value === undefined ? 0 : value
-                  })
-                }
-                onChangePadRight={value =>
-                  setAttributes({
-                    titlePaddingR: value === undefined ? 0 : value
-                  })
-                }
-                onChangePadBottom={value =>
-                  setAttributes({
-                    titlePaddingB: value === undefined ? 0 : value
-                  })
-                }
-                onChangePadLeft={value =>
-                  setAttributes({
-                    titlePaddingL: value === undefined ? 0 : value
-                  })
-                }
-              />
-            </PanelBody>
+            <PremiumPadding
+              paddingTop={titlePaddingT}
+              paddingRight={titlePaddingR}
+              paddingBottom={titlePaddingB}
+              paddingLeft={titlePaddingL}
+              onChangePadTop={value =>
+                setAttributes({
+                  titlePaddingT: value === undefined ? 0 : value
+                })
+              }
+              onChangePadRight={value =>
+                setAttributes({
+                  titlePaddingR: value === undefined ? 0 : value
+                })
+              }
+              onChangePadBottom={value =>
+                setAttributes({
+                  titlePaddingB: value === undefined ? 0 : value
+                })
+              }
+              onChangePadLeft={value =>
+                setAttributes({
+                  titlePaddingL: value === undefined ? 0 : value
+                })
+              }
+            />
           </PanelBody>
           <PanelBody
             title={__("Arrow")}
@@ -427,25 +440,43 @@ class PremiumAccordion extends Component {
               value={arrowSize}
               onChange={newValue => setAttributes({ arrowSize: newValue })}
             />
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  label: __("Arrow Color"),
-                  value: arrowColor,
-                  onChange: colorValue =>
-                    setAttributes({ arrowColor: colorValue })
-                },
-                {
-                  label: __("Background Color"),
-                  value: arrowBack,
-                  onChange: colorValue =>
-                    setAttributes({ arrowBack: colorValue })
-                }
-              ]}
-            />
+            <div className="premium-control-toggle">
+              <strong>{__("Colors")}</strong>
+              <Dropdown
+                className="premium-control-toggle-btn"
+                contentClassName="premium-control-toggle-content"
+                position="bottom right"
+                renderToggle={({ isOpen, onToggle }) => (
+                  <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+                    <i className="dashicons dashicons-edit" />
+                  </Button>
+                )}
+                renderContent={() => (
+                  <Fragment>
+                    <p>{__("Arrow Color")}</p>
+                    <ColorPalette
+                      value={arrowColor}
+                      onChange={newValue =>
+                        setAttributes({
+                          arrowColor: newValue
+                        })
+                      }
+                      allowReset={true}
+                    />
+                    <p>{__("Background Color")}</p>
+                    <ColorPalette
+                      value={arrowBack}
+                      onChange={newValue =>
+                        setAttributes({
+                          arrowBack: newValue
+                        })
+                      }
+                      allowReset={true}
+                    />
+                  </Fragment>
+                )}
+              />
+            </div>
             <RangeControl
               label={__("Border Radius (PX)")}
               value={arrowRadius}
@@ -516,26 +547,43 @@ class PremiumAccordion extends Component {
                   }
                   onChangeUpper={check => setAttributes({ descUpper: check })}
                 />
-
-                <PanelColorSettings
-                  title={__("Colors")}
-                  className="premium-panel-body-inner"
-                  initialOpen={false}
-                  colorSettings={[
-                    {
-                      label: __("Text Color"),
-                      value: descColor,
-                      onChange: colorValue =>
-                        setAttributes({ descColor: colorValue })
-                    },
-                    {
-                      label: __("Background Color"),
-                      value: descBack,
-                      onChange: colorValue =>
-                        setAttributes({ descBack: colorValue })
-                    }
-                  ]}
-                />
+                <div className="premium-control-toggle">
+                  <strong>{__("Colors")}</strong>
+                  <Dropdown
+                    className="premium-control-toggle-btn"
+                    contentClassName="premium-control-toggle-content"
+                    position="bottom right"
+                    renderToggle={({ isOpen, onToggle }) => (
+                      <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+                        <i className="dashicons dashicons-edit" />
+                      </Button>
+                    )}
+                    renderContent={() => (
+                      <Fragment>
+                        <p>{__("Text Color")}</p>
+                        <ColorPalette
+                          value={descColor}
+                          onChange={newValue =>
+                            setAttributes({
+                              descColor: newValue
+                            })
+                          }
+                          allowReset={true}
+                        />
+                        <p>{__("Background Color")}</p>
+                        <ColorPalette
+                          value={descBack}
+                          onChange={newValue =>
+                            setAttributes({
+                              descBack: newValue
+                            })
+                          }
+                          allowReset={true}
+                        />
+                      </Fragment>
+                    )}
+                  />
+                </div>
               </Fragment>
             )}
 
@@ -585,38 +633,32 @@ class PremiumAccordion extends Component {
                 }
               />
             )}
-            <PanelBody
-              title={__("Padding")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-            >
-              <PremiumPadding
-                paddingTop={descPaddingT}
-                paddingRight={descPaddingR}
-                paddingBottom={descPaddingB}
-                paddingLeft={descPaddingL}
-                onChangePadTop={value =>
-                  setAttributes({
-                    descPaddingT: value === undefined ? 0 : value
-                  })
-                }
-                onChangePadRight={value =>
-                  setAttributes({
-                    descPaddingR: value === undefined ? 0 : value
-                  })
-                }
-                onChangePadBottom={value =>
-                  setAttributes({
-                    descPaddingB: value === undefined ? 0 : value
-                  })
-                }
-                onChangePadLeft={value =>
-                  setAttributes({
-                    descPaddingL: value === undefined ? 0 : value
-                  })
-                }
-              />
-            </PanelBody>
+            <PremiumPadding
+              paddingTop={descPaddingT}
+              paddingRight={descPaddingR}
+              paddingBottom={descPaddingB}
+              paddingLeft={descPaddingL}
+              onChangePadTop={value =>
+                setAttributes({
+                  descPaddingT: value === undefined ? 0 : value
+                })
+              }
+              onChangePadRight={value =>
+                setAttributes({
+                  descPaddingR: value === undefined ? 0 : value
+                })
+              }
+              onChangePadBottom={value =>
+                setAttributes({
+                  descPaddingB: value === undefined ? 0 : value
+                })
+              }
+              onChangePadLeft={value =>
+                setAttributes({
+                  descPaddingL: value === undefined ? 0 : value
+                })
+              }
+            />
           </PanelBody>
         </InspectorControls>
       ),

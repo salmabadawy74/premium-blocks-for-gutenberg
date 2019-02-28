@@ -8,19 +8,22 @@ const className = "premium-dheading-block";
 
 const { __ } = wp.i18n;
 
+const { Fragment } = wp.element;
+
 const {
   PanelBody,
   SelectControl,
   TextControl,
   RangeControl,
-  ToggleControl
+  ToggleControl,
+  Dropdown,
+  Button
 } = wp.components;
 const {
   BlockControls,
   InspectorControls,
   AlignmentToolbar,
   ColorPalette,
-  PanelColorSettings,
   URLInput
 } = wp.editor;
 
@@ -220,47 +223,83 @@ const edit = props => {
           />
 
           {!firstClip && (
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  label: __("Text Color"),
-                  value: firstColor,
-                  onChange: colorValue =>
-                    setAttributes({ firstColor: colorValue })
-                },
-                {
-                  label: __("Background Color"),
-                  value: firstBackground,
-                  onChange: colorValue =>
-                    setAttributes({ firstBackground: colorValue })
-                }
-              ]}
-            />
+            <div className="premium-control-toggle">
+              <strong>{__("Colors")}</strong>
+              <Dropdown
+                className="premium-control-toggle-btn"
+                contentClassName="premium-control-toggle-content"
+                position="bottom right"
+                renderToggle={({ isOpen, onToggle }) => (
+                  <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+                    <i className="dashicons dashicons-edit" />
+                  </Button>
+                )}
+                renderContent={() => (
+                  <Fragment>
+                    <p>{__("Text Color")}</p>
+                    <ColorPalette
+                      value={firstColor}
+                      onChange={newValue =>
+                        setAttributes({
+                          firstColor: newValue
+                        })
+                      }
+                      allowReset={true}
+                    />
+                    <p>{__("Background Color")}</p>
+                    <ColorPalette
+                      value={firstBackground}
+                      onChange={newValue =>
+                        setAttributes({
+                          firstBackground: newValue
+                        })
+                      }
+                      allowReset={true}
+                    />
+                  </Fragment>
+                )}
+              />
+            </div>
           )}
 
           {firstClip && (
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  label: __("First Color"),
-                  value: firstColor,
-                  onChange: colorValue =>
-                    setAttributes({ firstColor: colorValue })
-                },
-                {
-                  label: __("Second Color"),
-                  value: firstClipColor,
-                  onChange: colorValue =>
-                    setAttributes({ firstClipColor: colorValue })
-                }
-              ]}
-            />
+            <div className="premium-control-toggle">
+              <strong>{__("Colors")}</strong>
+              <Dropdown
+                className="premium-control-toggle-btn"
+                contentClassName="premium-control-toggle-content"
+                position="bottom right"
+                renderToggle={({ isOpen, onToggle }) => (
+                  <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+                    <i className="dashicons dashicons-edit" />
+                  </Button>
+                )}
+                renderContent={() => (
+                  <Fragment>
+                    <p>{__("First Color")}</p>
+                    <ColorPalette
+                      value={firstColor}
+                      onChange={newValue =>
+                        setAttributes({
+                          firstColor: newValue
+                        })
+                      }
+                      allowReset={true}
+                    />
+                    <p>{__("Second Color")}</p>
+                    <ColorPalette
+                      value={firstClipColor}
+                      onChange={newValue =>
+                        setAttributes({
+                          firstClipColor: newValue
+                        })
+                      }
+                      allowReset={true}
+                    />
+                  </Fragment>
+                )}
+              />
+            </div>
           )}
 
           <PremiumBorder
@@ -300,39 +339,34 @@ const edit = props => {
               setAttributes({ firstShadowVertical: newValue || "0" })
             }
           />
-          <PanelBody
-            title={__("Spacings")}
-            className="premium-panel-body premium-panel-body-inner"
-            initialOpen={false}
-          >
-            <p>{__("Margin Left")}</p>
-            <RangeControl
-              value={firstMarginL}
-              min="0"
-              max="100"
-              onChange={newMargin =>
-                setAttributes({ firstMarginL: newMargin || "0" })
-              }
-            />
-            <p>{__("Margin Right")}</p>
-            <RangeControl
-              value={firstMarginR}
-              min="0"
-              max="100"
-              onChange={newMargin =>
-                setAttributes({ firstMarginR: newMargin || "0" })
-              }
-            />
-            <p>{__("Padding")}</p>
-            <RangeControl
-              value={firstPadding}
-              min="0"
-              max="100"
-              onChange={newPadding =>
-                setAttributes({ firstPadding: newPadding || "0" })
-              }
-            />
-          </PanelBody>
+
+          <p>{__("Margin Left")}</p>
+          <RangeControl
+            value={firstMarginL}
+            min="0"
+            max="100"
+            onChange={newMargin =>
+              setAttributes({ firstMarginL: newMargin || "0" })
+            }
+          />
+          <p>{__("Margin Right")}</p>
+          <RangeControl
+            value={firstMarginR}
+            min="0"
+            max="100"
+            onChange={newMargin =>
+              setAttributes({ firstMarginR: newMargin || "0" })
+            }
+          />
+          <p>{__("Padding")}</p>
+          <RangeControl
+            value={firstPadding}
+            min="0"
+            max="100"
+            onChange={newPadding =>
+              setAttributes({ firstPadding: newPadding || "0" })
+            }
+          />
         </PanelBody>
         <PanelBody
           title={__("Second Heading Style")}
@@ -378,50 +412,82 @@ const edit = props => {
           />
 
           {!secondClip && (
-            <PanelColorSettings
-              title={__("Colors")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  label: __("Text Color"),
-                  value: secondColor,
-                  onChange: colorValue =>
-                    setAttributes({ secondColor: colorValue || "transparent" })
-                },
-                {
-                  label: __("Background Color"),
-                  value: secondBackground,
-                  onChange: colorValue =>
-                    setAttributes({
-                      secondBackground: colorValue || "transparent"
-                    })
-                }
-              ]}
-            />
+            <div className="premium-control-toggle">
+              <strong>{__("Colors")}</strong>
+              <Dropdown
+                className="premium-control-toggle-btn"
+                contentClassName="premium-control-toggle-content"
+                position="bottom right"
+                renderToggle={({ isOpen, onToggle }) => (
+                  <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+                    <i className="dashicons dashicons-edit" />
+                  </Button>
+                )}
+                renderContent={() => (
+                  <Fragment>
+                    <p>{__("Text Color")}</p>
+                    <ColorPalette
+                      value={secondColor}
+                      onChange={newValue =>
+                        setAttributes({
+                          secondColor: newValue || "transparent"
+                        })
+                      }
+                      allowReset={true}
+                    />
+                    <p>{__("Background Color")}</p>
+                    <ColorPalette
+                      value={secondBackground}
+                      onChange={newValue =>
+                        setAttributes({
+                          secondBackground: newValue
+                        })
+                      }
+                      allowReset={true}
+                    />
+                  </Fragment>
+                )}
+              />
+            </div>
           )}
           {secondClip && (
-            <PanelColorSettings
-              title={__("Second Color")}
-              className="premium-panel-body-inner"
-              initialOpen={false}
-              colorSettings={[
-                {
-                  label: __("First Color"),
-                  value: secondColor,
-                  onChange: colorValue =>
-                    setAttributes({ secondColor: colorValue || "transparent" })
-                },
-                {
-                  value: secondClipColor,
-                  onChange: colorValue =>
-                    setAttributes({
-                      secondClipColor: colorValue || "transparent"
-                    }),
-                  label: __("Second Color")
-                }
-              ]}
-            />
+            <div className="premium-control-toggle">
+              <strong>{__("Colors")}</strong>
+              <Dropdown
+                className="premium-control-toggle-btn"
+                contentClassName="premium-control-toggle-content"
+                position="bottom right"
+                renderToggle={({ isOpen, onToggle }) => (
+                  <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+                    <i className="dashicons dashicons-edit" />
+                  </Button>
+                )}
+                renderContent={() => (
+                  <Fragment>
+                    <p>{__("First Color")}</p>
+                    <ColorPalette
+                      value={secondColor}
+                      onChange={newValue =>
+                        setAttributes({
+                          secondColor: newValue || "transparent"
+                        })
+                      }
+                      allowReset={true}
+                    />
+                    <p>{__("Second Color")}</p>
+                    <ColorPalette
+                      value={secondClipColor}
+                      onChange={newValue =>
+                        setAttributes({
+                          secondClipColor: newValue || "transparent"
+                        })
+                      }
+                      allowReset={true}
+                    />
+                  </Fragment>
+                )}
+              />
+            </div>
           )}
 
           <PremiumBorder
@@ -463,39 +529,33 @@ const edit = props => {
               setAttributes({ secondShadowVertical: newValue || "0" })
             }
           />
-          <PanelBody
-            title={__("Spacings")}
-            className="premium-panel-body premium-panel-body-inner"
-            initialOpen={false}
-          >
-            <p>{__("Margin Left")}</p>
-            <RangeControl
-              value={secondMarginL}
-              min="0"
-              max="100"
-              onChange={newMargin =>
-                setAttributes({ secondMarginL: newMargin || "0" })
-              }
-            />
-            <p>{__("Margin Right")}</p>
-            <RangeControl
-              value={secondMarginR}
-              min="0"
-              max="100"
-              onChange={newMargin =>
-                setAttributes({ secondMarginR: newMargin || "0" })
-              }
-            />
-            <p>{__("Padding")}</p>
-            <RangeControl
-              value={secondPadding}
-              min="0"
-              max="100"
-              onChange={newPadding =>
-                setAttributes({ secondPadding: newPadding || "0" })
-              }
-            />
-          </PanelBody>
+          <p>{__("Margin Left")}</p>
+          <RangeControl
+            value={secondMarginL}
+            min="0"
+            max="100"
+            onChange={newMargin =>
+              setAttributes({ secondMarginL: newMargin || "0" })
+            }
+          />
+          <p>{__("Margin Right")}</p>
+          <RangeControl
+            value={secondMarginR}
+            min="0"
+            max="100"
+            onChange={newMargin =>
+              setAttributes({ secondMarginR: newMargin || "0" })
+            }
+          />
+          <p>{__("Padding")}</p>
+          <RangeControl
+            value={secondPadding}
+            min="0"
+            max="100"
+            onChange={newPadding =>
+              setAttributes({ secondPadding: newPadding || "0" })
+            }
+          />
         </PanelBody>
         <PanelBody
           title={__("Container Style")}
