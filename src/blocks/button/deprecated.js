@@ -189,8 +189,7 @@ const deprecatedContent = [
               __html: [
                 `#premium-button-wrap-${id} .premium-button:hover {`,
                 `color: ${textHoverColor} !important;`,
-                `border-color: ${borderHoverColor ||
-                  "transparent"} !important;`,
+                `border-color: ${borderHoverColor} !important;`,
                 "}",
                 `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
                 `background-color: ${backHoverColor} !important;`,

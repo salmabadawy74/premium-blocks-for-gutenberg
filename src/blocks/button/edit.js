@@ -411,21 +411,18 @@ const edit = props => {
               setAttributes({ borderRadius: newrRadius })
             }
           />
-          {"none" !== borderType && (
-            <Fragment>
-              <p>{__("Border Hover Color")}</p>
-              <ColorPalette
-                value={borderHoverColor}
-                onChange={newValue =>
-                  setAttributes({
-                    borderHoverColor: newValue
-                  })
-                }
-                allowReset={true}
-              />
-            </Fragment>
-          )}
-
+          <Fragment>
+            <p>{__("Border Hover Color")}</p>
+            <ColorPalette
+              value={borderHoverColor}
+              onChange={newValue =>
+                setAttributes({
+                  borderHoverColor: newValue
+                })
+              }
+              allowReset={true}
+            />
+          </Fragment>
           <PremiumBoxShadow
             label="Shadow"
             inner={true}
@@ -479,7 +476,7 @@ const edit = props => {
           __html: [
             `#premium-button-wrap-${id} .premium-button:hover {`,
             `color: ${textHoverColor} !important;`,
-            `border-color: ${borderHoverColor || "transparent"} !important;`,
+            `border-color: ${borderHoverColor} !important;`,
             "}",
             `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
             `background-color: ${backHoverColor} !important;`,

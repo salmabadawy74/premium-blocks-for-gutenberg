@@ -40,7 +40,7 @@ const save = props => {
       className={`${className} ${className}__stretch_${stretchSection} ${className}__${innerWidthType}`}
       style={{
         textAlign: horAlign,
-        height: "fit" === height ? "100vh" : minHeight,
+        minHeight: "fit" === height ? "100vh" : minHeight,
         backgroundColor: color,
         border: borderType,
         borderWidth: borderWidth + "px",
