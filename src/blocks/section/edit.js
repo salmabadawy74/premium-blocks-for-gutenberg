@@ -203,20 +203,20 @@ const edit = props => {
             onChangeFixed={check => setAttributes({ fixed: check })}
           />
         </PanelBody>
-          <PremiumBorder
-            borderType={borderType}
-            borderWidth={borderWidth}
-            borderColor={borderColor}
-            borderRadius={borderRadius}
-            onChangeType={newType => setAttributes({ borderType: newType })}
-            onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
-            onChangeColor={colorValue =>
-              setAttributes({ borderColor: colorValue })
-            }
-            onChangeRadius={newrRadius =>
-              setAttributes({ borderRadius: newrRadius })
-            }
-          />
+        <PremiumBorder
+          borderType={borderType}
+          borderWidth={borderWidth}
+          borderColor={borderColor}
+          borderRadius={borderRadius}
+          onChangeType={newType => setAttributes({ borderType: newType })}
+          onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
+          onChangeColor={colorValue =>
+            setAttributes({ borderColor: colorValue })
+          }
+          onChangeRadius={newrRadius =>
+            setAttributes({ borderRadius: newrRadius })
+          }
+        />
         <PremiumBoxShadow
           inner={false}
           color={shadowColor}
@@ -250,66 +250,66 @@ const edit = props => {
             })
           }
         />
-          <PremiumMargin
-            directions={["all"]}
-            marginTop={marginTop}
-            marginRight={marginRight}
-            marginBottom={marginBottom}
-            marginLeft={marginLeft}
-            onChangeMarTop={value =>
-              setAttributes({
-                marginTop: value === undefined ? 0 : value
-              })
-            }
-            onChangeMarRight={value =>
-              setAttributes({
-                marginRight: value === undefined ? 0 : value
-              })
-            }
-            onChangeMarBottom={value =>
-              setAttributes({
-                marginBottom: value === undefined ? 0 : value
-              })
-            }
-            onChangeMarLeft={value =>
-              setAttributes({
-                marginLeft: value === undefined ? 0 : value
-              })
-            }
-          />
-          <PremiumPadding
-            paddingTop={paddingTop}
-            paddingRight={paddingRight}
-            paddingBottom={paddingBottom}
-            paddingLeft={paddingLeft}
-            onChangePadTop={value =>
-              setAttributes({
-                paddingTop: value === undefined ? 0 : value
-              })
-            }
-            onChangePadRight={value =>
-              setAttributes({
-                paddingRight: value === undefined ? 0 : value
-              })
-            }
-            onChangePadBottom={value =>
-              setAttributes({
-                paddingBottom: value === undefined ? 0 : value
-              })
-            }
-            onChangePadLeft={value =>
-              setAttributes({
-                paddingLeft: value === undefined ? 0 : value
-              })
-            }
-          />
+        <PremiumMargin
+          directions={["all"]}
+          marginTop={marginTop}
+          marginRight={marginRight}
+          marginBottom={marginBottom}
+          marginLeft={marginLeft}
+          onChangeMarTop={value =>
+            setAttributes({
+              marginTop: value === undefined ? 0 : value
+            })
+          }
+          onChangeMarRight={value =>
+            setAttributes({
+              marginRight: value === undefined ? 0 : value
+            })
+          }
+          onChangeMarBottom={value =>
+            setAttributes({
+              marginBottom: value === undefined ? 0 : value
+            })
+          }
+          onChangeMarLeft={value =>
+            setAttributes({
+              marginLeft: value === undefined ? 0 : value
+            })
+          }
+        />
+        <PremiumPadding
+          paddingTop={paddingTop}
+          paddingRight={paddingRight}
+          paddingBottom={paddingBottom}
+          paddingLeft={paddingLeft}
+          onChangePadTop={value =>
+            setAttributes({
+              paddingTop: value === undefined ? 0 : value
+            })
+          }
+          onChangePadRight={value =>
+            setAttributes({
+              paddingRight: value === undefined ? 0 : value
+            })
+          }
+          onChangePadBottom={value =>
+            setAttributes({
+              paddingBottom: value === undefined ? 0 : value
+            })
+          }
+          onChangePadLeft={value =>
+            setAttributes({
+              paddingLeft: value === undefined ? 0 : value
+            })
+          }
+        />
       </InspectorControls>
     ),
     <div
       className={`${className} ${className}__stretch_${stretchSection} ${className}__${innerWidthType}`}
       style={{
         textAlign: horAlign,
-        height: "fit" === height ? "100vh" : minHeight,
+        minHeight: "fit" === height ? "100vh" : minHeight,
         backgroundColor: color,
         border: borderType,
         borderWidth: borderWidth + "px",

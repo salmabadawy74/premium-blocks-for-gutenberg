@@ -99,27 +99,27 @@ const edit = props => {
   const EFFECTS = [
     {
       value: "effect1",
-      label: __("Effect 1")
+      label: __("Style 1")
     },
     {
       value: "effect2",
-      label: __("Effect 2")
+      label: __("Style 2")
     },
     {
       value: "effect3",
-      label: __("Effect 3")
+      label: __("Style 3")
     },
     {
       value: "effect4",
-      label: __("Effect 4")
+      label: __("Style 4")
     },
     {
       value: "effect5",
-      label: __("Effect 5")
+      label: __("Style 5")
     },
     {
       value: "effect6",
-      label: __("Effect 6")
+      label: __("Style 6")
     }
   ];
   const HOVER = [
@@ -220,7 +220,7 @@ const edit = props => {
             onChangeHue={value => setAttributes({ hue: value })}
           />
           <SelectControl
-            label={__("Effect")}
+            label={__("Banner Style")}
             value={effect}
             onChange={newEffect => setAttributes({ effect: newEffect })}
             options={EFFECTS}

@@ -2,6 +2,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
+import FONTS from "../../components/premium-fonts";
 
 const { __ } = wp.i18n;
 
@@ -45,6 +46,7 @@ const edit = props => {
     backHoverColor,
     slideColor,
     textSize,
+    textFontFamily,
     textWeight,
     textLetter,
     textUpper,
@@ -180,6 +182,29 @@ const edit = props => {
     }
   };
   setAttributes({ id: blockId });
+
+  const addFontToHead = fontFamily => {
+    const head = document.head;
+    const link = document.createElement("link");
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.href =
+      "https://fonts.googleapis.com/css?family=" +
+      fontFamily.replace(/\s+/g, "+") +
+      ":" +
+      "regular";
+    head.appendChild(link);
+  };
+
+  const onChangeTextFamily = fontFamily => {
+    setAttributes({ textFontFamily: fontFamily });
+    if (!fontFamily) {
+      return;
+    }
+
+    addFontToHead(fontFamily);
+  };
+
   return [
     isSelected && "block" != btnSize && (
       <BlockControls key="controls">
@@ -243,6 +268,12 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
+          <SelectControl
+            label={__("Font Family")}
+            value={textFontFamily}
+            options={FONTS}
+            onChange={onChangeTextFamily}
+          />
           <PremiumTypo
             components={["size", "weight", "line", "style", "upper", "spacing"]}
             size={textSize}
@@ -380,21 +411,18 @@ const edit = props => {
               setAttributes({ borderRadius: newrRadius })
             }
           />
-          {"none" !== borderType && (
-            <Fragment>
-              <p>{__("Border Hover Color")}</p>
-              <ColorPalette
-                value={borderHoverColor}
-                onChange={newValue =>
-                  setAttributes({
-                    borderHoverColor: newValue
-                  })
-                }
-                allowReset={true}
-              />
-            </Fragment>
-          )}
-
+          <Fragment>
+            <p>{__("Border Hover Color")}</p>
+            <ColorPalette
+              value={borderHoverColor}
+              onChange={newValue =>
+                setAttributes({
+                  borderHoverColor: newValue
+                })
+              }
+              allowReset={true}
+            />
+          </Fragment>
           <PremiumBoxShadow
             label="Shadow"
             inner={true}
@@ -448,7 +476,7 @@ const edit = props => {
           __html: [
             `#premium-button-wrap-${id} .premium-button:hover {`,
             `color: ${textHoverColor} !important;`,
-            `border-color: ${borderHoverColor || "transparent"} !important;`,
+            `border-color: ${borderHoverColor} !important;`,
             "}",
             `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
             `background-color: ${backHoverColor} !important;`,
@@ -469,6 +497,7 @@ const edit = props => {
           color: textColor,
           backgroundColor: backColor,
           fontSize: textSize + "px",
+          fontFamily: textFontFamily,
           letterSpacing: textLetter + "px",
           textTransform: textUpper ? "uppercase" : "none",
           fontStyle: textStyle,

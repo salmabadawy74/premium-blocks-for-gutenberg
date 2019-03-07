@@ -57,6 +57,9 @@ const buttonAttrs = {
   textSize: {
     type: "number"
   },
+  textFontFamily: {
+    type: "string"
+  },
   textLetter: {
     type: "number"
   },

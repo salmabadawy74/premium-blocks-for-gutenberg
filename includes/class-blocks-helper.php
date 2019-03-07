@@ -115,6 +115,8 @@ class Premium_Blocks_Integration {
         
         $is_banner_enabled = self::$blocks['banner'];
         
+        $is_button_enabled = self::$blocks['button'];
+        
         $is_accordion_enabled = self::$blocks['accordion'];
         
         $is_section_enabled = self::$blocks['container'];
@@ -141,6 +143,15 @@ class Premium_Blocks_Integration {
             wp_enqueue_script(
                 'banner-js',
                 PREMIUM_BLOCKS_URL . 'assets/js/banner.js',
+                array('jquery'),
+                PREMIUM_BLOCKS_VERSION
+            );
+        }
+        
+        if( $is_button_enabled ) {
+            wp_enqueue_script(
+                'button-js',
+                PREMIUM_BLOCKS_URL . 'assets/js/button.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
