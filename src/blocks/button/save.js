@@ -69,6 +69,7 @@ const save = props => {
         value={btnText}
         className={`${className} ${className}__${btnSize}`}
         href={btnLink}
+        rel="noopener noreferrer"
         target={btnTarget ? "_blank" : "_self"}
         style={{
           color: textColor,
