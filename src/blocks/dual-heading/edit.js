@@ -87,7 +87,11 @@ const edit = props => {
     fixed,
     backgroundRepeat,
     backgroundPosition,
-    backgroundSize
+    backgroundSize,
+    containerBorderType,
+    containerBorderWidth,
+    containerBorderRadius,
+    containerBorderColor
   } = props.attributes;
   const DISPLAY = [
     {
@@ -600,6 +604,27 @@ const edit = props => {
             }
             onChangeFixed={check => setAttributes({ fixed: check })}
           />
+
+          <PremiumBorder
+            borderType={containerBorderType}
+            borderWidth={containerBorderWidth}
+            borderColor={containerBorderColor}
+            borderRadius={containerBorderRadius}
+            onChangeType={newType =>
+              setAttributes({ containerBorderType: newType })
+            }
+            onChangeWidth={newWidth =>
+              setAttributes({ containerBorderWidth: newWidth })
+            }
+            onChangeColor={colorValue =>
+              setAttributes({
+                containerBorderColor: colorValue
+              })
+            }
+            onChangeRadius={newrRadius =>
+              setAttributes({ containerBorderRadius: newrRadius })
+            }
+          />
         </PanelBody>
       </InspectorControls>
     ),
@@ -613,7 +638,11 @@ const edit = props => {
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
         backgroundSize: backgroundSize,
-        backgroundAttachment: fixed ? "fixed" : "unset"
+        backgroundAttachment: fixed ? "fixed" : "unset",
+        border: containerBorderType,
+        borderWidth: containerBorderWidth + "px",
+        borderRadius: containerBorderRadius + "px",
+        borderColor: containerBorderColor
       }}
     >
       <div className={`${className}__wrap`}>

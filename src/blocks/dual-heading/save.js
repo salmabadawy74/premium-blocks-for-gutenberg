@@ -56,7 +56,11 @@ const save = props => {
     fixed,
     backgroundRepeat,
     backgroundPosition,
-    backgroundSize
+    backgroundSize,
+    containerBorderType,
+    containerBorderWidth,
+    containerBorderRadius,
+    containerBorderColor
   } = props.attributes;
 
   return (
@@ -69,7 +73,11 @@ const save = props => {
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
         backgroundSize: backgroundSize,
-        backgroundAttachment: fixed ? "fixed" : "unset"
+        backgroundAttachment: fixed ? "fixed" : "unset",
+        border: containerBorderType,
+        borderWidth: containerBorderWidth + "px",
+        borderRadius: containerBorderRadius + "px",
+        borderColor: containerBorderColor
       }}
     >
       <div className={`${className}__wrap`}>
