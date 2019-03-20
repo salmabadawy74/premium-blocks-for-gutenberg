@@ -49,6 +49,7 @@ const edit = props => {
     iconSize,
     iconRadius,
     iconColor,
+    iconBackColor,
     titleChecked,
     titleText,
     titleTag,
@@ -267,6 +268,16 @@ const edit = props => {
                     onChange={newValue =>
                       setAttributes({
                         iconColor: newValue || "transparent"
+                      })
+                    }
+                    allowReset={true}
+                  />
+                  <p>{__("Background Color")}</p>
+                  <ColorPalette
+                    value={iconBackColor}
+                    onChange={newValue =>
+                      setAttributes({
+                        iconBackColor: newValue
                       })
                     }
                     allowReset={true}
@@ -905,6 +916,7 @@ const edit = props => {
                   className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
                   style={{
                     color: iconColor,
+                    backgroundColor: iconBackColor,
                     fontSize: iconSize
                   }}
                 />

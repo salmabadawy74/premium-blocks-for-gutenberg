@@ -14,6 +14,7 @@ const save = props => {
     hoverEffect,
     iconSize,
     iconColor,
+    iconBackColor,
     titleChecked,
     titleText,
     titleTag,
@@ -151,6 +152,7 @@ const save = props => {
               className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
               style={{
                 color: iconColor,
+                backgroundColor: iconBackColor,
                 fontSize: iconSize
               }}
             />
@@ -227,6 +229,7 @@ const save = props => {
             tagName="a"
             className={`${className}__btn premium-button`}
             href={btnLink}
+            rel="noopener noreferrer"
             target={btnTarget ? "_blank" : "_self"}
             value={btnText}
             style={{

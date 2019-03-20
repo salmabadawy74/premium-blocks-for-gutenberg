@@ -43,6 +43,9 @@ const iconBoxAttrs = {
   iconColor: {
     type: "string"
   },
+  iconBackColor: {
+    type: "string"
+  },
   selectedIcon: {
     type: "string",
     default: "dashicons dashicons-admin-site"
