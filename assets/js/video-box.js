@@ -18,7 +18,10 @@ jQuery(document).ready(function($) {
     let descFont = $videoBox
       .find(".premium-video-box__desc_text")
       .css("font-family");
-    addFontToHead(descFont);
+    if (undefined != descFont) {
+      addFontToHead(descFont);
+    }
+
     $videoBox.on("click", () => {
       $videoBox.toggleClass("video-overlay-false");
       let $video = $videoBox.find("iframe, video"),
