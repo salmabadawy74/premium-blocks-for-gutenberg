@@ -8,6 +8,7 @@ import PremiumMargin from "../../components/premium-margin";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
+import FONTS from "../../components/premium-fonts";
 
 const className = "premium-icon-box";
 
@@ -54,6 +55,7 @@ const edit = props => {
     titleText,
     titleTag,
     titleColor,
+    titleFont,
     titleSize,
     titleLine,
     titleLetter,
@@ -69,6 +71,7 @@ const edit = props => {
     descChecked,
     descText,
     descColor,
+    descFont,
     descSize,
     descLine,
     descWeight,
@@ -208,6 +211,37 @@ const edit = props => {
       label: __("Right to Left")
     }
   ];
+
+  const addFontToHead = fontFamily => {
+    const head = document.head;
+    const link = document.createElement("link");
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.href =
+      "https://fonts.googleapis.com/css?family=" +
+      fontFamily.replace(/\s+/g, "+") +
+      ":" +
+      "regular";
+    head.appendChild(link);
+  };
+
+  const onChangeTitleFamily = fontFamily => {
+    setAttributes({ titleFont: fontFamily });
+    if (!fontFamily) {
+      return;
+    }
+
+    addFontToHead(fontFamily);
+  };
+
+  const onChangeDescFamily = fontFamily => {
+    setAttributes({ descFont: fontFamily });
+    if (!fontFamily) {
+      return;
+    }
+
+    addFontToHead(fontFamily);
+  };
 
   return [
     isSelected && (
@@ -354,6 +388,12 @@ const edit = props => {
                 subscript: tag
               }))}
             />
+            <SelectControl
+              label={__("Font Family")}
+              value={titleFont}
+              options={FONTS}
+              onChange={onChangeTitleFamily}
+            />
             <PremiumTypo
               components={[
                 "size",
@@ -435,6 +475,12 @@ const edit = props => {
             className="premium-panel-body"
             initialOpen={false}
           >
+            <SelectControl
+              label={__("Font Family")}
+              value={descFont}
+              options={FONTS}
+              onChange={onChangeDescFamily}
+            />
             <PremiumTypo
               components={["size", "weight", "line"]}
               size={descSize}
@@ -954,6 +1000,7 @@ const edit = props => {
             style={{
               color: titleColor,
               fontSize: titleSize + "px",
+              fontFamily: titleFont,
               letterSpacing: titleLetter + "px",
               textTransform: titleUpper ? "uppercase" : "none",
               fontStyle: titleStyle,
@@ -983,6 +1030,7 @@ const edit = props => {
             style={{
               color: descColor,
               fontSize: descSize + "px",
+              fontFamily: descFont,
               lineHeight: descLine + "px",
               fontWeight: descWeight
             }}

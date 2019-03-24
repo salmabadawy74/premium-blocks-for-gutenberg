@@ -64,6 +64,9 @@ const iconBoxAttrs = {
     type: "string",
     default: "H2"
   },
+  titleFont: {
+    type: "string"
+  },
   titleColor: {
     type: "string"
   },
@@ -117,6 +120,9 @@ const iconBoxAttrs = {
   descChecked: {
     type: "boolean",
     default: true
+  },
+  descFont: {
+    type: "string"
   },
   descColor: {
     type: "string"

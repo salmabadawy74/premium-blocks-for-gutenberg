@@ -19,6 +19,7 @@ const save = props => {
     titleText,
     titleTag,
     titleColor,
+    titleFont,
     titleSize,
     titleLine,
     titleLetter,
@@ -34,6 +35,7 @@ const save = props => {
     descChecked,
     descText,
     descColor,
+    descFont,
     descSize,
     descLine,
     descWeight,
@@ -186,6 +188,7 @@ const save = props => {
             style={{
               color: titleColor,
               fontSize: titleSize + "px",
+              fontFamily: titleFont,
               letterSpacing: titleLetter + "px",
               textTransform: titleUpper ? "uppercase" : "none",
               fontStyle: titleStyle,
@@ -211,6 +214,7 @@ const save = props => {
             style={{
               color: descColor,
               fontSize: descSize + "px",
+              fontFamily: descFont,
               lineHeight: descLine + "px",
               fontWeight: descWeight
             }}

@@ -83,6 +83,7 @@ const save = props => {
       <a
         className={`${className}__link`}
         href={urlCheck && link}
+        rel="noopener noreferrer"
         target={target ? "_blank" : "_self"}
       >
         <i
