@@ -736,47 +736,45 @@ registerBlockType("premium/pricing-table", {
               className="premium-panel-body"
               initialOpen={false}
             >
-                <p>{__("Heading")}</p>
-                <Toolbar
-                  controls={"123456".split("").map(tag => ({
-                    icon: "heading",
-                    isActive: "H" + tag === titleTag,
-                    onClick: () => setAttributes({ titleTag: "H" + tag }),
-                    subscript: tag
-                  }))}
-                />
-                <PremiumTypo
-                  components={[
-                    "size",
-                    "weight",
-                    "style",
-                    "upper",
-                    "spacing",
-                    "line"
-                  ]}
-                  size={titleSize}
-                  weight={titleWeight}
-                  style={titleStyle}
-                  spacing={titleLetter}
-                  line={titleLine}
-                  upper={titleUpper}
-                  onChangeSize={newSize =>
-                    setAttributes({ titleSize: newSize })
-                  }
-                  onChangeWeight={newWeight =>
-                    setAttributes({ titleWeight: newWeight })
-                  }
-                  onChangeStyle={newStyle =>
-                    setAttributes({ titleStyle: newStyle })
-                  }
-                  onChangeSpacing={newValue =>
-                    setAttributes({ titleLetter: newValue })
-                  }
-                  onChangeLine={newValue =>
-                    setAttributes({ titleLine: newValue })
-                  }
-                  onChangeUpper={check => setAttributes({ titleUpper: check })}
-                />
+              <p>{__("Heading")}</p>
+              <Toolbar
+                controls={"123456".split("").map(tag => ({
+                  icon: "heading",
+                  isActive: "H" + tag === titleTag,
+                  onClick: () => setAttributes({ titleTag: "H" + tag }),
+                  subscript: tag
+                }))}
+              />
+              <PremiumTypo
+                components={[
+                  "size",
+                  "weight",
+                  "style",
+                  "upper",
+                  "spacing",
+                  "line"
+                ]}
+                size={titleSize}
+                weight={titleWeight}
+                style={titleStyle}
+                spacing={titleLetter}
+                line={titleLine}
+                upper={titleUpper}
+                onChangeSize={newSize => setAttributes({ titleSize: newSize })}
+                onChangeWeight={newWeight =>
+                  setAttributes({ titleWeight: newWeight })
+                }
+                onChangeStyle={newStyle =>
+                  setAttributes({ titleStyle: newStyle })
+                }
+                onChangeSpacing={newValue =>
+                  setAttributes({ titleLetter: newValue })
+                }
+                onChangeLine={newValue =>
+                  setAttributes({ titleLine: newValue })
+                }
+                onChangeUpper={check => setAttributes({ titleUpper: check })}
+              />
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
@@ -1122,36 +1120,34 @@ registerBlockType("premium/pricing-table", {
                 value={listStyle}
                 onChange={newType => setAttributes({ listStyle: newType })}
               />
-                <PremiumTypo
-                  components={[
-                    "size",
-                    "weight",
-                    "style",
-                    "upper",
-                    "spacing",
-                    "line"
-                  ]}
-                  size={listSize}
-                  weight={listWeight}
-                  style={listItemsStyle}
-                  spacing={listLetter}
-                  line={listLine}
-                  upper={listUpper}
-                  onChangeSize={newSize => setAttributes({ listSize: newSize })}
-                  onChangeWeight={newWeight =>
-                    setAttributes({ listWeight: newWeight })
-                  }
-                  onChangeStyle={newStyle =>
-                    setAttributes({ listItemsStyle: newStyle })
-                  }
-                  onChangeSpacing={newValue =>
-                    setAttributes({ listLetter: newValue })
-                  }
-                  onChangeLine={newValue =>
-                    setAttributes({ listLine: newValue })
-                  }
-                  onChangeUpper={check => setAttributes({ listUpper: check })}
-                />
+              <PremiumTypo
+                components={[
+                  "size",
+                  "weight",
+                  "style",
+                  "upper",
+                  "spacing",
+                  "line"
+                ]}
+                size={listSize}
+                weight={listWeight}
+                style={listItemsStyle}
+                spacing={listLetter}
+                line={listLine}
+                upper={listUpper}
+                onChangeSize={newSize => setAttributes({ listSize: newSize })}
+                onChangeWeight={newWeight =>
+                  setAttributes({ listWeight: newWeight })
+                }
+                onChangeStyle={newStyle =>
+                  setAttributes({ listItemsStyle: newStyle })
+                }
+                onChangeSpacing={newValue =>
+                  setAttributes({ listLetter: newValue })
+                }
+                onChangeLine={newValue => setAttributes({ listLine: newValue })}
+                onChangeUpper={check => setAttributes({ listUpper: check })}
+              />
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
@@ -1199,27 +1195,25 @@ registerBlockType("premium/pricing-table", {
               className="premium-panel-body"
               initialOpen={false}
             >
-                <PremiumTypo
-                  components={["size", "weight", "style", "spacing", "line"]}
-                  size={descSize}
-                  weight={descWeight}
-                  style={descStyle}
-                  spacing={descLetter}
-                  line={descLine}
-                  onChangeSize={newSize => setAttributes({ descSize: newSize })}
-                  onChangeWeight={newWeight =>
-                    setAttributes({ descWeight: newWeight })
-                  }
-                  onChangeStyle={newStyle =>
-                    setAttributes({ descStyle: newStyle })
-                  }
-                  onChangeSpacing={newValue =>
-                    setAttributes({ descLetter: newValue })
-                  }
-                  onChangeLine={newValue =>
-                    setAttributes({ descLine: newValue })
-                  }
-                />
+              <PremiumTypo
+                components={["size", "weight", "style", "spacing", "line"]}
+                size={descSize}
+                weight={descWeight}
+                style={descStyle}
+                spacing={descLetter}
+                line={descLine}
+                onChangeSize={newSize => setAttributes({ descSize: newSize })}
+                onChangeWeight={newWeight =>
+                  setAttributes({ descWeight: newWeight })
+                }
+                onChangeStyle={newStyle =>
+                  setAttributes({ descStyle: newStyle })
+                }
+                onChangeSpacing={newValue =>
+                  setAttributes({ descLetter: newValue })
+                }
+                onChangeLine={newValue => setAttributes({ descLine: newValue })}
+              />
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
@@ -1279,36 +1273,34 @@ registerBlockType("premium/pricing-table", {
               className="premium-panel-body"
               initialOpen={false}
             >
-                <PremiumTypo
-                  components={[
-                    "size",
-                    "weight",
-                    "style",
-                    "upper",
-                    "spacing",
-                    "line"
-                  ]}
-                  size={btnSize}
-                  weight={btnWeight}
-                  style={btnStyle}
-                  spacing={btnLetter}
-                  line={btnLine}
-                  upper={btnUpper}
-                  onChangeSize={newSize => setAttributes({ btnSize: newSize })}
-                  onChangeWeight={newWeight =>
-                    setAttributes({ btnWeight: newWeight })
-                  }
-                  onChangeStyle={newStyle =>
-                    setAttributes({ btnStyle: newStyle })
-                  }
-                  onChangeSpacing={newValue =>
-                    setAttributes({ btnLetter: newValue })
-                  }
-                  onChangeLine={newValue =>
-                    setAttributes({ btnLine: newValue })
-                  }
-                  onChangeUpper={check => setAttributes({ btnUpper: check })}
-                />
+              <PremiumTypo
+                components={[
+                  "size",
+                  "weight",
+                  "style",
+                  "upper",
+                  "spacing",
+                  "line"
+                ]}
+                size={btnSize}
+                weight={btnWeight}
+                style={btnStyle}
+                spacing={btnLetter}
+                line={btnLine}
+                upper={btnUpper}
+                onChangeSize={newSize => setAttributes({ btnSize: newSize })}
+                onChangeWeight={newWeight =>
+                  setAttributes({ btnWeight: newWeight })
+                }
+                onChangeStyle={newStyle =>
+                  setAttributes({ btnStyle: newStyle })
+                }
+                onChangeSpacing={newValue =>
+                  setAttributes({ btnLetter: newValue })
+                }
+                onChangeLine={newValue => setAttributes({ btnLine: newValue })}
+                onChangeUpper={check => setAttributes({ btnUpper: check })}
+              />
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
@@ -1338,24 +1330,24 @@ registerBlockType("premium/pricing-table", {
                   }
                 ]}
               />
-                <PremiumBorder
-                  borderType={btnBorderType}
-                  borderWidth={btnBorderWidth}
-                  borderColor={btnBorderColor}
-                  borderRadius={btnBorderRadius}
-                  onChangeType={newType =>
-                    setAttributes({ btnBorderType: newType })
-                  }
-                  onChangeWidth={newWidth =>
-                    setAttributes({ btnBorderWidth: newWidth })
-                  }
-                  onChangeColor={colorValue =>
-                    setAttributes({ btnBorderColor: colorValue })
-                  }
-                  onChangeRadius={newrRadius =>
-                    setAttributes({ btnBorderRadius: newrRadius })
-                  }
-                />
+              <PremiumBorder
+                borderType={btnBorderType}
+                borderWidth={btnBorderWidth}
+                borderColor={btnBorderColor}
+                borderRadius={btnBorderRadius}
+                onChangeType={newType =>
+                  setAttributes({ btnBorderType: newType })
+                }
+                onChangeWidth={newWidth =>
+                  setAttributes({ btnBorderWidth: newWidth })
+                }
+                onChangeColor={colorValue =>
+                  setAttributes({ btnBorderColor: colorValue })
+                }
+                onChangeRadius={newrRadius =>
+                  setAttributes({ btnBorderRadius: newrRadius })
+                }
+              />
               <PanelBody
                 title={__("Spacings")}
                 className="premium-panel-body-inner premium-panel-body"
@@ -1418,27 +1410,27 @@ registerBlockType("premium/pricing-table", {
                 value={badgePos}
                 onChange={newValue => setAttributes({ badgePos: newValue })}
               />
-                <PremiumTypo
-                  components={["size", "weight", "style", "upper", "spacing"]}
-                  size={badgeTextSize}
-                  weight={badgeWeight}
-                  style={badgeStyle}
-                  spacing={badgeLetter}
-                  upper={badgeUpper}
-                  onChangeSize={newSize =>
-                    setAttributes({ badgeTextSize: newSize })
-                  }
-                  onChangeWeight={newWeight =>
-                    setAttributes({ badgeWeight: newWeight })
-                  }
-                  onChangeStyle={newStyle =>
-                    setAttributes({ badgeStyle: newStyle })
-                  }
-                  onChangeSpacing={newValue =>
-                    setAttributes({ badgeLetter: newValue })
-                  }
-                  onChangeUpper={check => setAttributes({ badgeUpper: check })}
-                />
+              <PremiumTypo
+                components={["size", "weight", "style", "upper", "spacing"]}
+                size={badgeTextSize}
+                weight={badgeWeight}
+                style={badgeStyle}
+                spacing={badgeLetter}
+                upper={badgeUpper}
+                onChangeSize={newSize =>
+                  setAttributes({ badgeTextSize: newSize })
+                }
+                onChangeWeight={newWeight =>
+                  setAttributes({ badgeWeight: newWeight })
+                }
+                onChangeStyle={newStyle =>
+                  setAttributes({ badgeStyle: newStyle })
+                }
+                onChangeSpacing={newValue =>
+                  setAttributes({ badgeLetter: newValue })
+                }
+                onChangeUpper={check => setAttributes({ badgeUpper: check })}
+              />
               <PanelColorSettings
                 title={__("Colors")}
                 className="premium-panel-body-inner"
@@ -1504,22 +1496,22 @@ registerBlockType("premium/pricing-table", {
                 allowReset={true}
               />
             </Fragment>
-              <PremiumBorder
-                borderType={borderType}
-                borderWidth={borderWidth}
-                borderColor={borderColor}
-                borderRadius={borderRadius}
-                onChangeType={newType => setAttributes({ borderType: newType })}
-                onChangeWidth={newWidth =>
-                  setAttributes({ borderWidth: newWidth })
-                }
-                onChangeColor={colorValue =>
-                  setAttributes({ borderColor: colorValue })
-                }
-                onChangeRadius={newrRadius =>
-                  setAttributes({ borderRadius: newrRadius })
-                }
-              />
+            <PremiumBorder
+              borderType={borderType}
+              borderWidth={borderWidth}
+              borderColor={borderColor}
+              borderRadius={borderRadius}
+              onChangeType={newType => setAttributes({ borderType: newType })}
+              onChangeWidth={newWidth =>
+                setAttributes({ borderWidth: newWidth })
+              }
+              onChangeColor={colorValue =>
+                setAttributes({ borderColor: colorValue })
+              }
+              onChangeRadius={newrRadius =>
+                setAttributes({ borderRadius: newrRadius })
+              }
+            />
             <PremiumBoxShadow
               inner={true}
               color={tableShadowColor}
@@ -2180,6 +2172,7 @@ registerBlockType("premium/pricing-table", {
               class={`${className}__button_link`}
               href={btnLink}
               target={btnTarget ? "_blank" : "_self"}
+              rel="noopener noreferrer"
               style={{
                 color: btnColor,
                 background: btnBack ? btnBack : "transparent",

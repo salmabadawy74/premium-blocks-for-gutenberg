@@ -145,7 +145,11 @@ const save = props => {
                 }}
               />
               {urlCheck && (
-                <a href={urlText} target={urlTarget ? "_blank" : ""} />
+                <a
+                  rel="noopener noreferrer"
+                  href={urlText}
+                  target={urlTarget ? "_blank" : ""}
+                />
               )}
             </div>
           </div>
