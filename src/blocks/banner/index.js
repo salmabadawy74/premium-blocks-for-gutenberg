@@ -187,6 +187,25 @@ const bannerAttrs = {
   hue: {
     type: "number",
     default: "0"
+  },
+  containerShadowColor: {
+    type: "string"
+  },
+  containerShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  containerShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  containerShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  containerShadowPosition: {
+    type: "string",
+    default: ""
   }
 };
 registerBlockType("premium/banner", {

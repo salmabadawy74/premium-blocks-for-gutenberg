@@ -1,6 +1,7 @@
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 
 const className = "premium-banner";
@@ -76,7 +77,12 @@ const edit = props => {
     bright,
     contrast,
     saturation,
-    hue
+    hue,
+    containerShadowBlur,
+    containerShadowColor,
+    containerShadowHorizontal,
+    containerShadowVertical,
+    containerShadowPosition
   } = props.attributes;
   const ALIGNS = [
     {
@@ -490,11 +496,53 @@ const edit = props => {
             }
           />
         </PanelBody>
+        <PanelBody
+          title={__("Container Style")}
+          className="premium-panel-body"
+          initialOpen={false}
+        >
+          <PremiumBoxShadow
+            inner={true}
+            color={containerShadowColor}
+            blur={containerShadowBlur}
+            horizontal={containerShadowHorizontal}
+            vertical={containerShadowVertical}
+            position={containerShadowPosition}
+            onChangeColor={newColor =>
+              setAttributes({
+                containerShadowColor: newColor
+              })
+            }
+            onChangeBlur={newBlur =>
+              setAttributes({
+                containerShadowBlur: newBlur
+              })
+            }
+            onChangehHorizontal={newValue =>
+              setAttributes({
+                containerShadowHorizontal: newValue
+              })
+            }
+            onChangeVertical={newValue =>
+              setAttributes({
+                containerShadowVertical: newValue
+              })
+            }
+            onChangePosition={newValue =>
+              setAttributes({
+                containerShadowPosition: newValue
+              })
+            }
+          />
+        </PanelBody>
       </InspectorControls>
     ),
     <div
       id={`premium-banner-${id}`}
       className={`${className} ${className}__responsive_${responsive}`}
+      style={{
+        boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
+      }}
     >
       <style
         dangerouslySetInnerHTML={{
