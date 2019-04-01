@@ -1,5 +1,6 @@
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
+import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import onChangeVideoURL from "./index";
@@ -124,6 +125,10 @@ class edit extends Component {
       videoDescStyle,
       videoDescUpper,
       videoDescBorderRadius,
+      descShadowBlur,
+      descShadowColor,
+      descShadowHorizontal,
+      descShadowVertical,
       boxBorderColor,
       boxBorderWidth,
       boxBorderRadius,
@@ -594,6 +599,28 @@ class edit extends Component {
                         })
                       }
                     />
+                    <PremiumTextShadow
+                      color={descShadowColor}
+                      blur={descShadowBlur}
+                      horizontal={descShadowHorizontal}
+                      vertical={descShadowVertical}
+                      onChangeColor={newColor =>
+                        setAttributes({
+                          descShadowColor: newColor || "transparent"
+                        })
+                      }
+                      onChangeBlur={newBlur =>
+                        setAttributes({ descShadowBlur: newBlur || "0" })
+                      }
+                      onChangehHorizontal={newValue =>
+                        setAttributes({
+                          descShadowHorizontal: newValue || "0"
+                        })
+                      }
+                      onChangeVertical={newValue =>
+                        setAttributes({ descShadowVertical: newValue || "0" })
+                      }
+                    />
                     <RangeControl
                       label={__("Padding (PX)")}
                       value={videoDescPadding}
@@ -768,6 +795,7 @@ class edit extends Component {
                 fontWeight: videoDescWeight,
                 letterSpacing: videoDescLetter + "px",
                 textTransform: videoDescUpper ? "uppercase" : "none",
+                textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
                 fontStyle: videoDescStyle
               }}
             >
