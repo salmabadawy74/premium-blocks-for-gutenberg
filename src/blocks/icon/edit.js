@@ -18,7 +18,8 @@ const {
   RangeControl,
   ToggleControl,
   Dropdown,
-  Button
+  Button,
+  ButtonGroup
 } = wp.components;
 
 const { InspectorControls, ColorPalette, URLInput } = wp.editor;
@@ -33,6 +34,7 @@ const edit = props => {
     align,
     hoverEffect,
     iconSize,
+    iconSizeUnit,
     iconColor,
     iconBack,
     shadowBlur,
@@ -162,8 +164,20 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
+          <ButtonGroup className="premium-unit-control">
+            {["px", "em", "%"].map((unit, index) => (
+              <Button
+                isSmall
+                isDefault
+                className="premium-unit-control-btn"
+                onClick={() => setAttributes({ iconSizeUnit: unit })}
+              >
+                {unit}
+              </Button>
+            ))}
+          </ButtonGroup>
           <RangeControl
-            label={__("Size (PX)")}
+            label={__("Size")}
             value={iconSize}
             onChange={newValue => setAttributes({ iconSize: newValue })}
             initialPosition={50}
@@ -483,7 +497,7 @@ const edit = props => {
           style={{
             color: iconColor || "#6ec1e4",
             backgroundColor: iconBack,
-            fontSize: iconSize || 50,
+            fontSize: (iconSize || 50) + iconSizeUnit,
             paddingTop: paddingT,
             paddingRight: paddingR,
             paddingBottom: paddingB,

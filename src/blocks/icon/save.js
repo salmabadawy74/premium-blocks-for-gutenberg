@@ -6,6 +6,7 @@ const save = props => {
     align,
     hoverEffect,
     iconSize,
+    iconSizeUnit,
     iconColor,
     iconBack,
     shadowBlur,
@@ -91,7 +92,7 @@ const save = props => {
           style={{
             color: iconColor || "#6ec1e4",
             backgroundColor: iconBack,
-            fontSize: iconSize || 50,
+            fontSize: (iconSize || 50) + iconSizeUnit,
             paddingTop: paddingT,
             paddingRight: paddingR,
             paddingBottom: paddingB,

@@ -29,6 +29,10 @@ const iconAttrs = {
   iconSize: {
     type: "number"
   },
+  iconSizeUnit: {
+    type: "string",
+    default: "px"
+  },
   iconColor: {
     type: "string",
     default: "#6ec1e4"
