@@ -71,6 +71,10 @@ const iconAttrs = {
   paddingL: {
     type: "number"
   },
+  paddingU: {
+    type: "string",
+    default: "px"
+  },
   margin: {
     type: "string",
     default: "up"

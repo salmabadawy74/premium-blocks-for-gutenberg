@@ -1,6 +1,7 @@
 import { FontAwesomeEnabled } from "../settings";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconsList from "../../components/premium-icons-list";
+import PremiumSizeUnits from "../../components/premium-size-units";
 import PremiumBorder from "../../components/premium-border";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumPadding from "../../components/premium-padding";
@@ -18,8 +19,7 @@ const {
   RangeControl,
   ToggleControl,
   Dropdown,
-  Button,
-  ButtonGroup
+  Button
 } = wp.components;
 
 const { InspectorControls, ColorPalette, URLInput } = wp.editor;
@@ -45,6 +45,7 @@ const edit = props => {
     paddingR,
     paddingB,
     paddingL,
+    paddingU,
     marginT,
     marginR,
     marginB,
@@ -164,18 +165,11 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
-          <ButtonGroup className="premium-unit-control">
-            {["px", "em", "%"].map((unit, index) => (
-              <Button
-                isSmall
-                isDefault
-                className="premium-unit-control-btn"
-                onClick={() => setAttributes({ iconSizeUnit: unit })}
-              >
-                {unit}
-              </Button>
-            ))}
-          </ButtonGroup>
+          <PremiumSizeUnits
+            onChangeSizeUnit={newValue =>
+              setAttributes({ iconSizeUnit: newValue })
+            }
+          />
           <RangeControl
             label={__("Size")}
             value={iconSize}
@@ -302,6 +296,10 @@ const edit = props => {
               setAttributes({
                 paddingL: value
               })
+            }
+            showUnits={true}
+            onChangePadSizeUnit={newvalue =>
+              setAttributes({ paddingU: newvalue })
             }
           />
         </PanelBody>
@@ -498,10 +496,10 @@ const edit = props => {
             color: iconColor || "#6ec1e4",
             backgroundColor: iconBack,
             fontSize: (iconSize || 50) + iconSizeUnit,
-            paddingTop: paddingT,
-            paddingRight: paddingR,
-            paddingBottom: paddingB,
-            paddingLeft: paddingL,
+            paddingTop: paddingT + paddingU,
+            paddingRight: paddingR + paddingU,
+            paddingBottom: paddingB + paddingU,
+            paddingLeft: paddingL + paddingU,
             marginTop: marginT,
             marginRight: marginR,
             marginBottom: marginB,

@@ -19,6 +19,9 @@
 /*
 * Unit Group Button
 */
+.components-base-control .components-base-control__label {
+	margin-right: 100px;
+}
 .premium-unit-control {
   margin: 0px 0px -20px 0px;
   text-align: right;
