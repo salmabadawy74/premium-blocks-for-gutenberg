@@ -8,6 +8,7 @@ import PremiumMargin from "../../components/premium-margin";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
+import PremiumSizeUnits from "../../components/premium-size-units";
 import FONTS from "../../components/premium-fonts";
 
 const className = "premium-icon-box";
@@ -98,6 +99,7 @@ const edit = props => {
     btnBorderRadius,
     btnBorderType,
     btnPadding,
+    btnPaddingU,
     btnMarginT,
     btnMarginB,
     btnShadowBlur,
@@ -124,6 +126,7 @@ const edit = props => {
     paddingR,
     paddingB,
     paddingL,
+    paddingU,
     shadowBlur,
     shadowColor,
     shadowHorizontal,
@@ -687,8 +690,13 @@ const edit = props => {
                 })
               }
             />
+            <PremiumSizeUnits
+              onChangeSizeUnit={newValue =>
+                setAttributes({ btnPaddingU: newValue })
+              }
+            />
             <RangeControl
-              label={__("Padding (PX)")}
+              label={__("Padding")}
               value={btnPadding}
               onChange={newValue => setAttributes({ btnPadding: newValue })}
             />
@@ -877,6 +885,7 @@ const edit = props => {
             paddingRight={paddingR}
             paddingBottom={paddingB}
             paddingLeft={paddingL}
+            showUnits={true}
             onChangePadTop={value =>
               setAttributes({
                 paddingT: value || 0
@@ -897,6 +906,9 @@ const edit = props => {
                 paddingL: value || 0
               })
             }
+            onChangePadSizeUnit={newvalue =>
+              setAttributes({ paddingU: newvalue })
+            }
           />
         </PanelBody>
       </InspectorControls>
@@ -914,10 +926,10 @@ const edit = props => {
         marginRight: marginR,
         marginBottom: marginB,
         marginLeft: marginL,
-        paddingTop: paddingT,
-        paddingRight: paddingR,
-        paddingBottom: paddingB,
-        paddingLeft: paddingL,
+        paddingTop: paddingT + paddingU,
+        paddingRight: paddingR + paddingU,
+        paddingBottom: paddingB + paddingU,
+        paddingLeft: paddingL + paddingU,
         boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
         backgroundColor: backColor,
         backgroundImage: `url('${imageURL}')`,
@@ -1064,7 +1076,7 @@ const edit = props => {
               borderWidth: btnBorderWidth + "px",
               borderRadius: btnBorderRadius + "px",
               borderColor: btnBorderColor,
-              padding: btnPadding + "px",
+              padding: btnPadding + btnPaddingU,
               boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
             }}
             keepPlaceholderOnFocus

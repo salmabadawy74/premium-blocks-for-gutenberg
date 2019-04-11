@@ -222,6 +222,9 @@ const iconBoxAttrs = {
   btnPadding: {
     type: "number"
   },
+  btnPaddingU: {
+    type: "string"
+  },
   btnMarginT: {
     type: "number"
   },
@@ -309,6 +312,9 @@ const iconBoxAttrs = {
   },
   paddingL: {
     type: "number"
+  },
+  paddingU: {
+    type: "string"
   },
   shadowColor: {
     type: "string"
