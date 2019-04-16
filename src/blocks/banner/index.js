@@ -1,4 +1,4 @@
-import { banner } from "../settings";
+import { banner } from "../../../assets/js/settings";
 
 import PbgIcon from "../icons";
 import edit from "./edit";
