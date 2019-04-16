@@ -1,4 +1,4 @@
-import { FontAwesomeEnabled } from "../settings";
+import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconsList from "../../components/premium-icons-list";
 import PremiumSizeUnits from "../../components/premium-size-units";
