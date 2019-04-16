@@ -45,6 +45,9 @@ Kindly note that the plugin is on it’s early stages and Gutenberg itself is st
 - Download the plugin then Upload it to the plugin folder: /wp-content/plugins/ or install it through the WordPress plugins screen directly.
 - Activate the plugin through the ‘Plugins’ screen in WordPress
 
+= Now, you can be a contributor =
+If you want to contribute, go to our [Premium Blocks for Gutenberg GitHub Repository](https://github.com/Leap13/premium-blocks-for-gutenberg) and see where you can help.
+
 == Frequently Asked Questions ==
 = Is this a standalone Plugin? =
 
