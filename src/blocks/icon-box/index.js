@@ -43,6 +43,9 @@ const iconBoxAttrs = {
   iconColor: {
     type: "string"
   },
+  iconBackColor: {
+    type: "string"
+  },
   selectedIcon: {
     type: "string",
     default: "dashicons dashicons-admin-site"
@@ -60,6 +63,9 @@ const iconBoxAttrs = {
   titleTag: {
     type: "string",
     default: "H2"
+  },
+  titleFont: {
+    type: "string"
   },
   titleColor: {
     type: "string"
@@ -114,6 +120,9 @@ const iconBoxAttrs = {
   descChecked: {
     type: "boolean",
     default: true
+  },
+  descFont: {
+    type: "string"
   },
   descColor: {
     type: "string"
@@ -213,6 +222,9 @@ const iconBoxAttrs = {
   btnPadding: {
     type: "number"
   },
+  btnPaddingU: {
+    type: "string"
+  },
   btnMarginT: {
     type: "number"
   },
@@ -300,6 +312,9 @@ const iconBoxAttrs = {
   },
   paddingL: {
     type: "number"
+  },
+  paddingU: {
+    type: "string"
   },
   shadowColor: {
     type: "string"

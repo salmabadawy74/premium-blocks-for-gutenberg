@@ -30,10 +30,21 @@ jQuery(document).ready(function($) {
       .find(".premium-countup__suffix")
       .css("font-family");
 
-    addFontToHead(titleFont);
-    addFontToHead(prefixFont);
-    addFontToHead(suffixFont);
-    addFontToHead(counterFont);
+    if (undefined != titleFont) {
+      addFontToHead(titleFont);
+    }
+
+    if (undefined != prefixFont) {
+      addFontToHead(prefixFont);
+    }
+
+    if (undefined != suffixFont) {
+      addFontToHead(suffixFont);
+    }
+
+    if (undefined != counterFont) {
+      addFontToHead(counterFont);
+    }
 
     $counter.counterUp({
       delay: delay,

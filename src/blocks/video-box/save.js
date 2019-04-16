@@ -45,6 +45,10 @@ const save = props => {
     videoDescStyle,
     videoDescUpper,
     videoDescBorderRadius,
+    descShadowBlur,
+    descShadowColor,
+    descShadowHorizontal,
+    descShadowVertical,
     boxBorderColor,
     boxBorderWidth,
     boxBorderRadius,
@@ -171,6 +175,7 @@ const save = props => {
               fontFamily: videoDescFamily,
               fontWeight: videoDescWeight,
               letterSpacing: videoDescLetter + "px",
+              textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
               textTransform: videoDescUpper ? "uppercase" : "none",
               fontStyle: videoDescStyle
             }}

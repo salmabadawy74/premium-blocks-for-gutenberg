@@ -14,10 +14,12 @@ const save = props => {
     hoverEffect,
     iconSize,
     iconColor,
+    iconBackColor,
     titleChecked,
     titleText,
     titleTag,
     titleColor,
+    titleFont,
     titleSize,
     titleLine,
     titleLetter,
@@ -33,6 +35,7 @@ const save = props => {
     descChecked,
     descText,
     descColor,
+    descFont,
     descSize,
     descLine,
     descWeight,
@@ -59,6 +62,7 @@ const save = props => {
     btnBorderColor,
     btnBorderType,
     btnPadding,
+    btnPaddingU,
     btnMarginT,
     btnMarginB,
     btnShadowBlur,
@@ -84,6 +88,7 @@ const save = props => {
     paddingR,
     paddingB,
     paddingL,
+    paddingU,
     shadowBlur,
     shadowColor,
     shadowHorizontal,
@@ -110,10 +115,10 @@ const save = props => {
         marginRight: marginR,
         marginBottom: marginB,
         marginLeft: marginL,
-        paddingTop: paddingT,
-        paddingRight: paddingR,
-        paddingBottom: paddingB,
-        paddingLeft: paddingL,
+        paddingTop: paddingT + paddingU,
+        paddingRight: paddingR + paddingU,
+        paddingBottom: paddingB + paddingU,
+        paddingLeft: paddingL + paddingU,
         boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
         backgroundColor: backColor,
         backgroundImage: `url('${imageURL}')`,
@@ -151,6 +156,7 @@ const save = props => {
               className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
               style={{
                 color: iconColor,
+                backgroundColor: iconBackColor,
                 fontSize: iconSize
               }}
             />
@@ -184,6 +190,7 @@ const save = props => {
             style={{
               color: titleColor,
               fontSize: titleSize + "px",
+              fontFamily: titleFont,
               letterSpacing: titleLetter + "px",
               textTransform: titleUpper ? "uppercase" : "none",
               fontStyle: titleStyle,
@@ -209,6 +216,7 @@ const save = props => {
             style={{
               color: descColor,
               fontSize: descSize + "px",
+              fontFamily: descFont,
               lineHeight: descLine + "px",
               fontWeight: descWeight
             }}
@@ -227,6 +235,7 @@ const save = props => {
             tagName="a"
             className={`${className}__btn premium-button`}
             href={btnLink}
+            rel="noopener noreferrer"
             target={btnTarget ? "_blank" : "_self"}
             value={btnText}
             style={{
@@ -241,7 +250,7 @@ const save = props => {
               borderWidth: btnBorderWidth + "px",
               borderRadius: btnBorderRadius + "px",
               borderColor: btnBorderColor,
-              padding: btnPadding + "px",
+              padding: btnPadding + btnPaddingU,
               boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
             }}
           />

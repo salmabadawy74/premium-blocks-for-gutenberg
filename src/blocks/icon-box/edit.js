@@ -8,6 +8,8 @@ import PremiumMargin from "../../components/premium-margin";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
+import PremiumSizeUnits from "../../components/premium-size-units";
+import FONTS from "../../components/premium-fonts";
 
 const className = "premium-icon-box";
 
@@ -49,10 +51,12 @@ const edit = props => {
     iconSize,
     iconRadius,
     iconColor,
+    iconBackColor,
     titleChecked,
     titleText,
     titleTag,
     titleColor,
+    titleFont,
     titleSize,
     titleLine,
     titleLetter,
@@ -68,6 +72,7 @@ const edit = props => {
     descChecked,
     descText,
     descColor,
+    descFont,
     descSize,
     descLine,
     descWeight,
@@ -94,6 +99,7 @@ const edit = props => {
     btnBorderRadius,
     btnBorderType,
     btnPadding,
+    btnPaddingU,
     btnMarginT,
     btnMarginB,
     btnShadowBlur,
@@ -120,6 +126,7 @@ const edit = props => {
     paddingR,
     paddingB,
     paddingL,
+    paddingU,
     shadowBlur,
     shadowColor,
     shadowHorizontal,
@@ -208,6 +215,37 @@ const edit = props => {
     }
   ];
 
+  const addFontToHead = fontFamily => {
+    const head = document.head;
+    const link = document.createElement("link");
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.href =
+      "https://fonts.googleapis.com/css?family=" +
+      fontFamily.replace(/\s+/g, "+") +
+      ":" +
+      "regular";
+    head.appendChild(link);
+  };
+
+  const onChangeTitleFamily = fontFamily => {
+    setAttributes({ titleFont: fontFamily });
+    if (!fontFamily) {
+      return;
+    }
+
+    addFontToHead(fontFamily);
+  };
+
+  const onChangeDescFamily = fontFamily => {
+    setAttributes({ descFont: fontFamily });
+    if (!fontFamily) {
+      return;
+    }
+
+    addFontToHead(fontFamily);
+  };
+
   return [
     isSelected && (
       <InspectorControls key={"inspector"}>
@@ -267,6 +305,16 @@ const edit = props => {
                     onChange={newValue =>
                       setAttributes({
                         iconColor: newValue || "transparent"
+                      })
+                    }
+                    allowReset={true}
+                  />
+                  <p>{__("Background Color")}</p>
+                  <ColorPalette
+                    value={iconBackColor}
+                    onChange={newValue =>
+                      setAttributes({
+                        iconBackColor: newValue
                       })
                     }
                     allowReset={true}
@@ -342,6 +390,12 @@ const edit = props => {
                 onClick: () => setAttributes({ titleTag: "H" + tag }),
                 subscript: tag
               }))}
+            />
+            <SelectControl
+              label={__("Font Family")}
+              value={titleFont}
+              options={FONTS}
+              onChange={onChangeTitleFamily}
             />
             <PremiumTypo
               components={[
@@ -424,6 +478,12 @@ const edit = props => {
             className="premium-panel-body"
             initialOpen={false}
           >
+            <SelectControl
+              label={__("Font Family")}
+              value={descFont}
+              options={FONTS}
+              onChange={onChangeDescFamily}
+            />
             <PremiumTypo
               components={["size", "weight", "line"]}
               size={descSize}
@@ -630,8 +690,13 @@ const edit = props => {
                 })
               }
             />
+            <PremiumSizeUnits
+              onChangeSizeUnit={newValue =>
+                setAttributes({ btnPaddingU: newValue })
+              }
+            />
             <RangeControl
-              label={__("Padding (PX)")}
+              label={__("Padding")}
               value={btnPadding}
               onChange={newValue => setAttributes({ btnPadding: newValue })}
             />
@@ -820,6 +885,7 @@ const edit = props => {
             paddingRight={paddingR}
             paddingBottom={paddingB}
             paddingLeft={paddingL}
+            showUnits={true}
             onChangePadTop={value =>
               setAttributes({
                 paddingT: value || 0
@@ -840,6 +906,9 @@ const edit = props => {
                 paddingL: value || 0
               })
             }
+            onChangePadSizeUnit={newvalue =>
+              setAttributes({ paddingU: newvalue })
+            }
           />
         </PanelBody>
       </InspectorControls>
@@ -857,10 +926,10 @@ const edit = props => {
         marginRight: marginR,
         marginBottom: marginB,
         marginLeft: marginL,
-        paddingTop: paddingT,
-        paddingRight: paddingR,
-        paddingBottom: paddingB,
-        paddingLeft: paddingL,
+        paddingTop: paddingT + paddingU,
+        paddingRight: paddingR + paddingU,
+        paddingBottom: paddingB + paddingU,
+        paddingLeft: paddingL + paddingU,
         boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
         backgroundColor: backColor,
         backgroundImage: `url('${imageURL}')`,
@@ -905,6 +974,7 @@ const edit = props => {
                   className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
                   style={{
                     color: iconColor,
+                    backgroundColor: iconBackColor,
                     fontSize: iconSize
                   }}
                 />
@@ -942,6 +1012,7 @@ const edit = props => {
             style={{
               color: titleColor,
               fontSize: titleSize + "px",
+              fontFamily: titleFont,
               letterSpacing: titleLetter + "px",
               textTransform: titleUpper ? "uppercase" : "none",
               fontStyle: titleStyle,
@@ -971,6 +1042,7 @@ const edit = props => {
             style={{
               color: descColor,
               fontSize: descSize + "px",
+              fontFamily: descFont,
               lineHeight: descLine + "px",
               fontWeight: descWeight
             }}
@@ -1004,7 +1076,7 @@ const edit = props => {
               borderWidth: btnBorderWidth + "px",
               borderRadius: btnBorderRadius + "px",
               borderColor: btnBorderColor,
-              padding: btnPadding + "px",
+              padding: btnPadding + btnPaddingU,
               boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
             }}
             keepPlaceholderOnFocus

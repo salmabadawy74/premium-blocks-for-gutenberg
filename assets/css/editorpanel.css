@@ -17,6 +17,31 @@
   background-color: #f3f4f5;
 }
 /*
+* Unit Group Button
+*/
+.components-base-control .components-base-control__label {
+	margin-right: 100px;
+}
+.premium-unit-control {
+  margin: 0px 0px -20px 0px;
+  text-align: right;
+  display: block;
+}
+.premium-unit-control button.premium-unit-control-btn {
+  text-shadow: none;
+  text-decoration: none;
+  box-shadow: none !important;
+  border: none;
+  outline: none;
+}
+.premium-unit-control button.premium-unit-control-btn:focus {
+  background: #f3f4f5 !important;
+}
+.premium-unit-control button.premium-unit-control-active-btn {
+  color: #0084bc !important;
+  font-weight: bold;
+}
+/*
 * FontIconPicker CSS
 */
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done,

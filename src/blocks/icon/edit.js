@@ -1,6 +1,7 @@
 import { FontAwesomeEnabled } from "../settings";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconsList from "../../components/premium-icons-list";
+import PremiumSizeUnits from "../../components/premium-size-units";
 import PremiumBorder from "../../components/premium-border";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumPadding from "../../components/premium-padding";
@@ -33,6 +34,7 @@ const edit = props => {
     align,
     hoverEffect,
     iconSize,
+    iconSizeUnit,
     iconColor,
     iconBack,
     shadowBlur,
@@ -43,6 +45,7 @@ const edit = props => {
     paddingR,
     paddingB,
     paddingL,
+    paddingU,
     marginT,
     marginR,
     marginB,
@@ -162,8 +165,13 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
+          <PremiumSizeUnits
+            onChangeSizeUnit={newValue =>
+              setAttributes({ iconSizeUnit: newValue })
+            }
+          />
           <RangeControl
-            label={__("Size (PX)")}
+            label={__("Size")}
             value={iconSize}
             onChange={newValue => setAttributes({ iconSize: newValue })}
             initialPosition={50}
@@ -288,6 +296,10 @@ const edit = props => {
               setAttributes({
                 paddingL: value
               })
+            }
+            showUnits={true}
+            onChangePadSizeUnit={newvalue =>
+              setAttributes({ paddingU: newvalue })
             }
           />
         </PanelBody>
@@ -483,11 +495,11 @@ const edit = props => {
           style={{
             color: iconColor || "#6ec1e4",
             backgroundColor: iconBack,
-            fontSize: iconSize || 50,
-            paddingTop: paddingT,
-            paddingRight: paddingR,
-            paddingBottom: paddingB,
-            paddingLeft: paddingL,
+            fontSize: (iconSize || 50) + iconSizeUnit,
+            paddingTop: paddingT + paddingU,
+            paddingRight: paddingR + paddingU,
+            paddingBottom: paddingB + paddingU,
+            paddingLeft: paddingL + paddingU,
             marginTop: marginT,
             marginRight: marginR,
             marginBottom: marginB,

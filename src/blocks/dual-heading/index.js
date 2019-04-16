@@ -230,6 +230,21 @@ const dualHeadingAttrs = {
   fixed: {
     type: "boolean",
     default: false
+  },
+  containerBorderType: {
+    type: "string",
+    default: "none"
+  },
+  containerBorderWidth: {
+    type: "number",
+    default: "1"
+  },
+  containerBorderRadius: {
+    type: "number",
+    default: "0"
+  },
+  containerBorderColor: {
+    type: "string"
   }
 };
 registerBlockType("premium/dheading-block", {

@@ -6,6 +6,7 @@ const save = props => {
     align,
     hoverEffect,
     iconSize,
+    iconSizeUnit,
     iconColor,
     iconBack,
     shadowBlur,
@@ -16,6 +17,7 @@ const save = props => {
     paddingR,
     paddingB,
     paddingL,
+    paddingU,
     marginT,
     marginR,
     marginB,
@@ -83,6 +85,7 @@ const save = props => {
       <a
         className={`${className}__link`}
         href={urlCheck && link}
+        rel="noopener noreferrer"
         target={target ? "_blank" : "_self"}
       >
         <i
@@ -90,11 +93,11 @@ const save = props => {
           style={{
             color: iconColor || "#6ec1e4",
             backgroundColor: iconBack,
-            fontSize: iconSize || 50,
-            paddingTop: paddingT,
-            paddingRight: paddingR,
-            paddingBottom: paddingB,
-            paddingLeft: paddingL,
+            fontSize: (iconSize || 50) + iconSizeUnit,
+            paddingTop: paddingT + paddingU,
+            paddingRight: paddingR + paddingU,
+            paddingBottom: paddingB + paddingU,
+            paddingLeft: paddingL + paddingU,
             marginTop: marginT,
             marginRight: marginR,
             marginBottom: marginB,

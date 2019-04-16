@@ -48,12 +48,20 @@ const save = props => {
     bright,
     contrast,
     saturation,
-    hue
+    hue,
+    containerShadowBlur,
+    containerShadowColor,
+    containerShadowHorizontal,
+    containerShadowVertical,
+    containerShadowPosition
   } = props.attributes;
   return (
     <div
       id={`premium-banner-${id}`}
       className={`${className} ${className}__responsive_${responsive}`}
+      style={{
+        boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
+      }}
     >
       <style
         dangerouslySetInnerHTML={{

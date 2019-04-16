@@ -1,9 +1,12 @@
+import PremiumSizeUnits from "./premium-size-units";
+
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { RangeControl, Dropdown, Button } = wp.components;
 
 export default function PremiumPadding(props) {
   const {
+    showUnits,
     paddingTop,
     paddingRight,
     paddingBottom,
@@ -11,7 +14,8 @@ export default function PremiumPadding(props) {
     onChangePadTop = () => {},
     onChangePadRight = () => {},
     onChangePadBottom = () => {},
-    onChangePadLeft = () => {}
+    onChangePadLeft = () => {},
+    onChangePadSizeUnit = () => {}
   } = props;
   return (
     <div className="premium-control-toggle">
@@ -27,29 +31,32 @@ export default function PremiumPadding(props) {
         )}
         renderContent={() => (
           <Fragment>
+            {showUnits && (
+              <PremiumSizeUnits onChangeSizeUnit={onChangePadSizeUnit} />
+            )}
             <RangeControl
-              label={__("Padding Top (PX)")}
+              label={__("Padding Top")}
               value={paddingTop}
               min="0"
               max="150"
               onChange={onChangePadTop}
             />
             <RangeControl
-              label={__("Padding Right (PX)")}
+              label={__("Padding Right")}
               value={paddingRight}
               min="0"
               max="150"
               onChange={onChangePadRight}
             />
             <RangeControl
-              label={__("Padding Bottom (PX)")}
+              label={__("Padding Bottom")}
               value={paddingBottom}
               min="0"
               max="150"
               onChange={onChangePadBottom}
             />
             <RangeControl
-              label={__("Padding Left (PX)")}
+              label={__("Padding Left")}
               value={paddingLeft}
               min="0"
               max="150"

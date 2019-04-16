@@ -1,12 +1,12 @@
 /**************** Premium Dual Heading *****************/
 /*******************************************************/
 .premium-dheading-block__container .premium-dheading-block__title {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    display: inline-block;
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
+  position: relative;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
 }
 .premium-dheading-block__wrap {
   position: relative;
@@ -1554,6 +1554,9 @@ a.premium-dheading-block__link:hover {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+}
+.premium-icon-box__icon_wrap i {
+  border-radius: 10px;
 }
 .premium-icon-box .premium-icon-box__title,
 .premium-icon-box .premium-icon-box__desc {

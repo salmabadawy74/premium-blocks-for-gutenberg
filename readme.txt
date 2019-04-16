@@ -3,9 +3,9 @@ Contributors: leap13
 Tags: gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks
 Donate link: http://leap13.com
 Requires at least: 4.5
-Tested up to: 5.1
+Tested up to: 5.1.1
 Requires PHP: 5.4
-Stable tag: 1.4.7
+Stable tag: 1.5.8
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -55,6 +55,51 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+
+= 1.5.8 =
+
+- Tweak: Added `Size Units (px, em, %)` for Button and Container Padding options in Icon Box Block.
+
+= 1.5.7 =
+
+- Tweak: Added `Size Units (px, em, %)` for Icon Padding in Icon Block.
+
+= 1.5.6 =
+
+- Tweak: Added `Size Units (px, em, %)` for Icon size in Icon Block.
+
+= 1.5.5 =
+
+- Tweak: Added `Text Shadow` options group control for Description in Video Box block.
+
+= 1.5.4 =
+
+- Tweak: Added `Box Shadow` options group control for Container in Banner block.
+
+= 1.5.3 =
+
+- Fixed: Editor issue `This block contains unexpected or invalid content` for Banner and Pricing Table blocks.
+
+= 1.5.2 =
+
+- Tweak: Added `Font Family` option for Title/Description in Icon Box block.
+- Fixed: Editor issue `This block contains unexpected or invalid content` for Icon block.
+
+= 1.5.1 =
+
+- Fixed: console error `fontFamily is undefined ` with Counter and Video Box blocks.
+
+= 1.5.0 =
+
+- Tweak: Added `Background Color` option for icon in Icon Box block.
+
+= 1.4.9 =
+
+- Tweak: Added `Border` options group control for container in Dual Heading block.
+
+= 1.4.8 =
+
+- Fixed: `This block contains unexpected or invalid content` Button block error.
 
 = 1.4.7 =
 

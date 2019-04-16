@@ -109,9 +109,6 @@ const buttonAttrs_1_0_0 = {
 };
 
 const newAttributes_1_0_1 = {
-  borderHoverColor: {
-    type: "string"
-  },
   btnShadowColor: {
     type: "string"
   },
@@ -135,9 +132,118 @@ const newAttributes_1_0_1 = {
 
 const buttonAttrs_1_0_1 = Object.assign(buttonAttrs_1_0_0, newAttributes_1_0_1);
 
+const newAttributes_1_3_4 = {
+  borderHoverColor: {
+    type: "string"
+  }
+};
+
+const buttonAttrs_1_3_4 = Object.assign(buttonAttrs_1_0_1, newAttributes_1_3_4);
+
+const newAttributes_1_4_7 = {
+  textFontFamily: {
+    type: "string"
+  }
+};
+
+const buttonAttrs_1_4_7 = Object.assign(buttonAttrs_1_3_4, newAttributes_1_4_7);
+
 const deprecatedContent = [
   {
-    attributes: buttonAttrs_1_0_1,
+    attributes: buttonAttrs_1_4_7,
+    save: props => {
+      const {
+        id,
+        btnText,
+        btnSize,
+        btnAlign,
+        btnLink,
+        btnTarget,
+        effect,
+        effectDir,
+        textColor,
+        textHoverColor,
+        backColor,
+        backHoverColor,
+        slideColor,
+        textSize,
+        textFontFamily,
+        textWeight,
+        textLine,
+        textLetter,
+        textStyle,
+        textUpper,
+        borderType,
+        borderWidth,
+        borderRadius,
+        borderColor,
+        borderHoverColor,
+        padding,
+        shadowBlur,
+        shadowColor,
+        shadowHorizontal,
+        shadowVertical,
+        btnShadowBlur,
+        btnShadowColor,
+        btnShadowHorizontal,
+        btnShadowVertical,
+        btnShadowPosition
+      } = props.attributes;
+      return (
+        <div
+          id={`${className}-wrap-${id}`}
+          className={`${className}__wrap ${className}__${effect} ${className}__${effectDir}`}
+          style={{ textAlign: btnAlign }}
+        >
+          <style
+            dangerouslySetInnerHTML={{
+              __html: [
+                `#premium-button-wrap-${id} .premium-button:hover {`,
+                `color: ${textHoverColor} !important;`,
+                `border-color: ${borderHoverColor} !important;`,
+                "}",
+                `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
+                `background-color: ${backHoverColor} !important;`,
+                "}",
+                `#premium-button-wrap-${id}.premium-button__slide .premium-button::before,`,
+                `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
+                `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
+                `background-color: ${slideColor}`,
+                "}"
+              ].join("\n")
+            }}
+          />
+          <RichText.Content
+            tagName="a"
+            value={btnText}
+            className={`${className} ${className}__${btnSize}`}
+            href={btnLink}
+            target={btnTarget ? "_blank" : "_self"}
+            style={{
+              color: textColor,
+              backgroundColor: backColor,
+              fontSize: textSize + "px",
+              fontFamily: textFontFamily,
+              letterSpacing: textLetter + "px",
+              textTransform: textUpper ? "uppercase" : "none",
+              fontStyle: textStyle,
+              lineHeight: textLine + "px",
+              fontWeight: textWeight,
+              textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+              boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
+              padding: padding + "px",
+              border: borderType,
+              borderWidth: borderWidth + "px",
+              borderRadius: borderRadius + "px",
+              borderColor: borderColor
+            }}
+          />
+        </div>
+      );
+    }
+  },
+  {
+    attributes: buttonAttrs_1_3_4,
     migrate: attributes => {
       return Object.assign(attributes, { textFontFamily: "" });
     },
@@ -282,7 +388,6 @@ const deprecatedContent = [
               __html: [
                 `#premium-button-wrap-${id} .premium-button:hover {`,
                 `color: ${textHoverColor} !important;`,
-
                 "}",
                 `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
                 `background-color: ${backHoverColor} !important;`,
@@ -325,6 +430,16 @@ const deprecatedContent = [
   },
   {
     attributes: buttonAttrs_1_0_0,
+    migrate: attributes => {
+      let newAttributes = {
+        btnShadowColor: "",
+        btnShadowBlur: "0",
+        btnShadowHorizontal: "0",
+        btnShadowVertical: "0",
+        btnShadowPosition: ""
+      };
+      return Object.assign(attributes, newAttributes);
+    },
     save: props => {
       const {
         id,
