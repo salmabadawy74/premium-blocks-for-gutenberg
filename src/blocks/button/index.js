@@ -97,6 +97,9 @@ const buttonAttrs = {
   padding: {
     type: "number"
   },
+  paddingU: {
+    type: "string"
+  },
   shadowColor: {
     type: "string"
   },
