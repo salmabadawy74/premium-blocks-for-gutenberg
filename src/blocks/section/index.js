@@ -1,4 +1,4 @@
-import { container } from "../settings";
+import { container } from "../../../assets/js/settings";
 
 import edit from "./edit";
 import save from "./save";

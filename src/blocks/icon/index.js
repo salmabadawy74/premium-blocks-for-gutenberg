@@ -1,5 +1,4 @@
-import { icon } from "../settings";
-
+import { icon } from "../../../assets/js/settings";
 import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";

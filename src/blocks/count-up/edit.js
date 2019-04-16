@@ -1,4 +1,4 @@
-import { FontAwesomeEnabled } from "../settings";
+import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
@@ -367,22 +367,21 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
-          
-        <SelectControl
-          label={__("Font Family")}
-          value={counterFamily}
-          options={FONTS}
-          onChange={onChangeCounterFamily}
-        />
-        <PremiumTypo
-          components={["size", "weight"]}
-          size={numberSize}
-          weight={numberWeight}
-          onChangeSize={newSize => setAttributes({ numberSize: newSize })}
-          onChangeWeight={newWeight =>
-            setAttributes({ numberWeight: newWeight })
-          }
-        />
+          <SelectControl
+            label={__("Font Family")}
+            value={counterFamily}
+            options={FONTS}
+            onChange={onChangeCounterFamily}
+          />
+          <PremiumTypo
+            components={["size", "weight"]}
+            size={numberSize}
+            weight={numberWeight}
+            onChangeSize={newSize => setAttributes({ numberSize: newSize })}
+            onChangeWeight={newWeight =>
+              setAttributes({ numberWeight: newWeight })
+            }
+          />
           <Fragment>
             <p>{__("Number Color")}</p>
             <ColorPalette
@@ -407,7 +406,7 @@ const edit = props => {
               value={prefixTxt}
               onChange={value => setAttributes({ prefixTxt: value })}
             />
-            
+
             <SelectControl
               label={__("Font Family")}
               value={prefixFamily}
@@ -423,7 +422,7 @@ const edit = props => {
                 setAttributes({ prefixWeight: newWeight })
               }
             />
-            
+
             <Fragment>
               <p>{__("Text Color")}</p>
               <ColorPalette
