@@ -2,6 +2,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
+import PremiumSizeUnits from "../../components/premium-size-units";
 import FONTS from "../../components/premium-fonts";
 
 const { __ } = wp.i18n;
@@ -62,6 +63,7 @@ const edit = props => {
     shadowHorizontal,
     shadowVertical,
     padding,
+    paddingU,
     btnShadowBlur,
     btnShadowColor,
     btnShadowHorizontal,
@@ -458,8 +460,11 @@ const edit = props => {
               })
             }
           />
+          <PremiumSizeUnits
+            onChangeSizeUnit={newValue => setAttributes({ paddingU: newValue })}
+          />
           <RangeControl
-            label={__("Padding (PX)")}
+            label={__("Padding")}
             value={padding}
             onChange={newValue => setAttributes({ padding: newValue })}
           />
@@ -505,7 +510,7 @@ const edit = props => {
           fontWeight: textWeight,
           textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
           boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
-          padding: padding + "px",
+          padding: padding + paddingU,
           border: borderType,
           borderWidth: borderWidth + "px",
           borderRadius: borderRadius + "px",
