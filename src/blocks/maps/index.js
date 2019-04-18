@@ -1,4 +1,4 @@
-import { maps } from "../settings";
+import { maps } from "../../../assets/js/settings";
 import PbgIcon from "../icons";
 
 const className = "premium-maps";

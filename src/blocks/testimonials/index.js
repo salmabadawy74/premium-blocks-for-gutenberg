@@ -1,4 +1,4 @@
-import { testimonial } from "../settings";
+import { testimonial } from "../../../assets/js/settings";
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
