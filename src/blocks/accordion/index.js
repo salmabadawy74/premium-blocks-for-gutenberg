@@ -1,17 +1,13 @@
-import { accordion } from "../settings";
+import { accordion } from "../../../assets/js/settings";
 
 import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import deprecated from "./deprecated";
 
-const className = "premium-accordion";
-
 const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
-
-const { RichText, InnerBlocks } = wp.editor;
 
 const accordionAttrs = {
   accordionId: {

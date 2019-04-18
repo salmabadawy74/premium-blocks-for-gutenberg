@@ -1,4 +1,4 @@
-import { pricingTable } from "../settings";
+import { pricingTable } from "../../../assets/js/settings";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
