@@ -148,7 +148,6 @@ const deprecatedContent = [
   {
     attributes: testimonialsAttrs_1_3_9,
     migrate: attributes => {
-      console.log(testimonialsAttrs_1_3_9);
       let newAttributes = {
         backColor: "",
         imageID: "",
