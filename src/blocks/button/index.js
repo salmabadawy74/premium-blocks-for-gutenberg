@@ -1,4 +1,5 @@
-import { button } from "../settings";
+import { button } from "../../../assets/js/settings";
+
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
@@ -95,6 +96,9 @@ const buttonAttrs = {
   },
   padding: {
     type: "number"
+  },
+  paddingU: {
+    type: "string"
   },
   shadowColor: {
     type: "string"
