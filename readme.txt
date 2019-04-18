@@ -5,7 +5,7 @@ Donate link: http://leap13.com
 Requires at least: 4.5
 Tested up to: 5.1.1
 Requires PHP: 5.4
-Stable tag: 1.5.8
+Stable tag: 1.5.9
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -45,6 +45,9 @@ Kindly note that the plugin is on it’s early stages and Gutenberg itself is st
 - Download the plugin then Upload it to the plugin folder: /wp-content/plugins/ or install it through the WordPress plugins screen directly.
 - Activate the plugin through the ‘Plugins’ screen in WordPress
 
+= Now, you can be a contributor =
+If you want to contribute, go to our [Premium Blocks for Gutenberg GitHub Repository](https://github.com/Leap13/premium-blocks-for-gutenberg) and see where you can help.
+
 == Frequently Asked Questions ==
 = Is this a standalone Plugin? =
 
@@ -55,6 +58,10 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+
+= 1.5.9 =
+
+- Tweak: Added `Size Units (px, em, %)` for Padding option in Button Block.
 
 = 1.5.8 =
 

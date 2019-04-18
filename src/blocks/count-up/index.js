@@ -1,4 +1,4 @@
-import { countUp } from "../settings";
+import { countUp } from "../../../assets/js/settings";
 import edit from "./edit";
 import save from "./save";
 import PbgIcon from "../icons";
