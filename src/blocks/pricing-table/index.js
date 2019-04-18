@@ -3,6 +3,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumSizeUnits from "../../components/premium-size-units";
 import PbgIcon from "../icons";
 
 const className = "premium-pricing-table";
@@ -344,6 +345,9 @@ const pricingAttrs = {
     type: "number",
     default: 10
   },
+  btnPaddingU: {
+    type: "string"
+  },
   btnBorderType: {
     type: "string",
     default: "none"
@@ -579,6 +583,7 @@ registerBlockType("premium/pricing-table", {
       btnMarginT,
       btnMarginB,
       btnPadding,
+      btnPaddingU,
       btnWidth,
       btnBorderType,
       btnBorderWidth,
@@ -1376,8 +1381,13 @@ registerBlockType("premium/pricing-table", {
                     setAttributes({ btnMarginB: newPadding })
                   }
                 />
+                <PremiumSizeUnits
+                  onChangeSizeUnit={newValue =>
+                    setAttributes({ btnPaddingU: newValue })
+                  }
+                />
                 <RangeControl
-                  label={__("Padding (PX)")}
+                  label={__("Padding")}
                   value={btnPadding}
                   min="0"
                   max="100"
@@ -1794,7 +1804,7 @@ registerBlockType("premium/pricing-table", {
                 lineHeight: btnLine + "px",
                 marginTop: btnMarginT,
                 marginBottom: btnMarginB,
-                padding: btnPadding,
+                padding: btnPadding + btnPaddingU,
                 border: btnBorderType,
                 borderWidth: btnBorderWidth + "px",
                 borderRadius: btnBorderRadius + "px",
@@ -1920,6 +1930,7 @@ registerBlockType("premium/pricing-table", {
       btnMarginT,
       btnMarginB,
       btnPadding,
+      btnPaddingU,
       btnWidth,
       btnBorderType,
       btnBorderWidth,
@@ -2183,7 +2194,7 @@ registerBlockType("premium/pricing-table", {
                 lineHeight: btnLine + "px",
                 marginTop: btnMarginT,
                 marginBottom: btnMarginB,
-                padding: btnPadding,
+                padding: btnPadding + btnPaddingU,
                 border: btnBorderType,
                 borderWidth: btnBorderWidth + "px",
                 borderRadius: btnBorderRadius + "px",
@@ -2217,6 +2228,9 @@ registerBlockType("premium/pricing-table", {
   deprecated: [
     {
       attributes: pricingAttrs,
+      migrate: attributes => {
+        return Object.assign(attributes, { btnPaddingU: "" });
+      },
       save: props => {
         const {
           contentAlign,
