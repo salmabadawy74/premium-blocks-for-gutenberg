@@ -53,6 +53,7 @@ const edit = props => {
     paddingRight,
     paddingBottom,
     paddingLeft,
+    paddingUnit,
     shadowBlur,
     shadowColor,
     shadowHorizontal,
@@ -302,6 +303,10 @@ const edit = props => {
               paddingLeft: value === undefined ? 0 : value
             })
           }
+          showUnits={true}
+          onChangePadSizeUnit={newvalue =>
+            setAttributes({ paddingUnit: newvalue })
+          }
         />
       </InspectorControls>
     ),
@@ -324,10 +329,10 @@ const edit = props => {
         marginBottom: marginBottom + "px",
         marginLeft: marginLeft + "px",
         marginRight: marginRight + "px",
-        paddingTop: paddingTop + "px",
-        paddingBottom: paddingBottom + "px",
-        paddingLeft: paddingLeft + "px",
-        paddingRight: paddingRight + "px",
+        paddingTop: paddingTop + paddingUnit,
+        paddingBottom: paddingBottom + paddingUnit,
+        paddingLeft: paddingLeft + paddingUnit,
+        paddingRight: paddingRight + paddingUnit,
         boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
       }}
     >
