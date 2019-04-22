@@ -65,6 +65,9 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 ## Changelog ##
 
+### 1.6.0 ###
+* Tweak: Added `Size Units (px, em, %)` for Padding option in Button Block.
+
 ### 1.5.9 ###
 * Tweak: Added `Size Units (px, em, %)` for Padding option in Button Block.
 
