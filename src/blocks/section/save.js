@@ -29,6 +29,7 @@ const save = props => {
     paddingRight,
     paddingBottom,
     paddingLeft,
+    paddingUnit,
     shadowBlur,
     shadowColor,
     shadowHorizontal,
@@ -53,12 +54,12 @@ const save = props => {
         backgroundAttachment: fixed ? "fixed" : "unset",
         marginTop: marginTop + "px",
         marginBottom: marginBottom + "px",
-        paddingTop: paddingTop + "px",
         marginLeft: marginLeft + "px",
         marginRight: marginRight + "px",
-        paddingBottom: paddingBottom + "px",
-        paddingLeft: paddingLeft + "px",
-        paddingRight: paddingRight + "px",
+        paddingTop: paddingTop + paddingUnit,
+        paddingBottom: paddingBottom + paddingUnit,
+        paddingLeft: paddingLeft + paddingUnit,
+        paddingRight: paddingRight + paddingUnit,
         boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
       }}
     >
