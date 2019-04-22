@@ -99,6 +99,9 @@ const containerAttrs = {
   paddingLeft: {
     type: "number"
   },
+  paddingUnit: {
+    type: "string"
+  },
   shadowColor: {
     type: "string"
   },
