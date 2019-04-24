@@ -49,6 +49,7 @@ const edit = props => {
     marginBottom,
     marginLeft,
     marginRight,
+    marginUnit,
     paddingTop,
     paddingRight,
     paddingBottom,
@@ -277,6 +278,10 @@ const edit = props => {
               marginLeft: value === undefined ? 0 : value
             })
           }
+          showUnits={true}
+          onChangeMarSizeUnit={newvalue =>
+            setAttributes({ marginUnit: newvalue })
+          }
         />
         <PremiumPadding
           paddingTop={paddingTop}
@@ -325,10 +330,10 @@ const edit = props => {
         backgroundPosition: backgroundPosition,
         backgroundSize: backgroundSize,
         backgroundAttachment: fixed ? "fixed" : "unset",
-        marginTop: marginTop + "px",
-        marginBottom: marginBottom + "px",
-        marginLeft: marginLeft + "px",
-        marginRight: marginRight + "px",
+        marginTop: marginTop + marginUnit,
+        marginBottom: marginBottom + marginUnit,
+        marginLeft: marginLeft + marginUnit,
+        marginRight: marginRight + marginUnit,
         paddingTop: paddingTop + paddingUnit,
         paddingBottom: paddingBottom + paddingUnit,
         paddingLeft: paddingLeft + paddingUnit,
