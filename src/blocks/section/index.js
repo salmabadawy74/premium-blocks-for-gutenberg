@@ -87,6 +87,9 @@ const containerAttrs = {
   marginRight: {
     type: "number"
   },
+  marginUnit: {
+    type: "string"
+  },
   paddingTop: {
     type: "number"
   },
