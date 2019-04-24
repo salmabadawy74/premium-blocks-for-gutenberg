@@ -1,9 +1,13 @@
+import PremiumSizeUnits from "./premium-size-units";
+
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { RangeControl, Dropdown, Button } = wp.components;
+
 export default function PremiumMargin(props) {
   const {
     directions,
+    showUnits,
     marginTop,
     marginRight,
     marginBottom,
@@ -11,7 +15,8 @@ export default function PremiumMargin(props) {
     onChangeMarTop = () => {},
     onChangeMarRight = () => {},
     onChangeMarBottom = () => {},
-    onChangeMarLeft = () => {}
+    onChangeMarLeft = () => {},
+    onChangeMarSizeUnit = () => {}
   } = props;
   return (
     <div className="premium-control-toggle">
@@ -27,6 +32,9 @@ export default function PremiumMargin(props) {
         )}
         renderContent={() => (
           <Fragment>
+            {showUnits && (
+              <PremiumSizeUnits onChangeSizeUnit={onChangeMarSizeUnit} />
+            )}
             {(directions.includes("all") || directions.includes("top")) && (
               <RangeControl
                 label={__("Margin Top (PX)")}

@@ -113,7 +113,106 @@ const containerAttrs_1_0_1 = {
   }
 };
 
+const newAttributes_1_6_1 = {
+  paddingUnit: {
+    type: "string"
+  }
+};
+
+const deprecated_attributes_1_6_1 = Object.assign(
+  containerAttrs_1_0_1,
+  newAttributes_1_6_1
+);
+
 const deprecatedContent = [
+  {
+    attributes: deprecated_attributes_1_6_1,
+    migrate: attributes => {
+      let newAttributes = {
+        marginUnit: ""
+      };
+      return Object.assign(attributes, newAttributes);
+    },
+    save: props => {
+      const {
+        stretchSection,
+        horAlign,
+        innerWidthType,
+        innerWidth,
+        height,
+        vPos,
+        minHeight,
+        color,
+        imageURL,
+        fixed,
+        backgroundRepeat,
+        backgroundPosition,
+        backgroundSize,
+        borderType,
+        borderWidth,
+        borderColor,
+        borderRadius,
+        marginTop,
+        marginBottom,
+        marginLeft,
+        marginRight,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
+        paddingLeft,
+        paddingUnit,
+        shadowBlur,
+        shadowColor,
+        shadowHorizontal,
+        shadowVertical,
+        shadowPosition
+      } = props.attributes;
+      return (
+        <div
+          className={`${className} ${className}__stretch_${stretchSection} ${className}__${innerWidthType}`}
+          style={{
+            textAlign: horAlign,
+            minHeight: "fit" === height ? "100vh" : minHeight,
+            backgroundColor: color,
+            border: borderType,
+            borderWidth: borderWidth + "px",
+            borderRadius: borderRadius + "px",
+            borderColor: borderColor,
+            backgroundImage: `url('${imageURL}')`,
+            backgroundRepeat: backgroundRepeat,
+            backgroundPosition: backgroundPosition,
+            backgroundSize: backgroundSize,
+            backgroundAttachment: fixed ? "fixed" : "unset",
+            marginTop: marginTop + "px",
+            marginBottom: marginBottom + "px",
+            marginLeft: marginLeft + "px",
+            marginRight: marginRight + "px",
+            paddingTop: paddingTop + paddingUnit,
+            paddingBottom: paddingBottom + paddingUnit,
+            paddingLeft: paddingLeft + paddingUnit,
+            paddingRight: paddingRight + paddingUnit,
+            boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+          }}
+        >
+          <div
+            className={`${className}__content_wrap ${className}__${vPos}`}
+            style={{
+              maxWidth:
+                "boxed" == innerWidthType && stretchSection
+                  ? innerWidth
+                    ? innerWidth + "px"
+                    : "1140px"
+                  : "100%"
+            }}
+          >
+            <div className={`${className}__content_inner`}>
+              <InnerBlocks.Content />
+            </div>
+          </div>
+        </div>
+      );
+    }
+  },
   {
     attributes: containerAttrs_1_0_1,
     migrate: attributes => {
