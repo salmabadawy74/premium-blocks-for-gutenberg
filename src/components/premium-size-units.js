@@ -1,10 +1,17 @@
 const { ButtonGroup, Button } = wp.components;
 
 export default function PremiumSizeUnits(props) {
-  const { onChangeSizeUnit = unit => {} } = props;
+  const { units, onChangeSizeUnit = unit => {} } = props;
+
+  let sizeUnits = ["px", "em", "%"];
+
+  if (undefined !== units) {
+    sizeUnits = units;
+  }
+
   return (
     <ButtonGroup className="premium-unit-control">
-      {["px", "em", "%"].map((unit, index) => (
+      {sizeUnits.map((unit, index) => (
         <Button
           isSmall
           isDefault
