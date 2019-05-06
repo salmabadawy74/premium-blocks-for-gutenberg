@@ -3,10 +3,13 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
+import PremiumSizeUnits from "../../components/premium-size-units";
 
 const { __ } = wp.i18n;
 
 const { PanelBody, ToggleControl, RangeControl, SelectControl } = wp.components;
+
+const { Fragment } = wp.element;
 
 const {
   BlockControls,
@@ -32,6 +35,7 @@ const edit = props => {
     innerWidthType,
     innerWidth,
     minHeight,
+    minHeightUnit,
     vPos,
     height,
     color,
@@ -143,13 +147,21 @@ const edit = props => {
             onChange={newValue => setAttributes({ height: newValue })}
           />
           {"min" === height && (
-            <RangeControl
-              label={__("Min Height (PX)")}
-              value={minHeight}
-              min="1"
-              max="800"
-              onChange={newValue => setAttributes({ minHeight: newValue })}
-            />
+            <Fragment>
+              <PremiumSizeUnits
+                units={["px", "vh", "vw"]}
+                onChangeSizeUnit={newValue =>
+                  setAttributes({ minHeightUnit: newValue })
+                }
+              />
+              <RangeControl
+                label={__("Min Height")}
+                value={minHeight}
+                min="1"
+                max="800"
+                onChange={newValue => setAttributes({ minHeight: newValue })}
+              />
+            </Fragment>
           )}
           <SelectControl
             label={__("Content Position")}
@@ -319,7 +331,7 @@ const edit = props => {
       className={`${className} ${className}__stretch_${stretchSection} ${className}__${innerWidthType}`}
       style={{
         textAlign: horAlign,
-        minHeight: "fit" === height ? "100vh" : minHeight,
+        minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
         backgroundColor: color,
         border: borderType,
         borderWidth: borderWidth + "px",

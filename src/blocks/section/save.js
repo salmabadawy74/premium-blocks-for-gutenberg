@@ -11,6 +11,7 @@ const save = props => {
     height,
     vPos,
     minHeight,
+    minHeightUnit,
     color,
     imageURL,
     fixed,
@@ -42,7 +43,7 @@ const save = props => {
       className={`${className} ${className}__stretch_${stretchSection} ${className}__${innerWidthType}`}
       style={{
         textAlign: horAlign,
-        minHeight: "fit" === height ? "100vh" : minHeight,
+        minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
         backgroundColor: color,
         border: borderType,
         borderWidth: borderWidth + "px",
