@@ -32,6 +32,9 @@ const containerAttrs = {
   minHeight: {
     type: "number"
   },
+  minHeightUnit: {
+    type: "string"
+  },
   vPos: {
     type: "string",
     default: "top"
