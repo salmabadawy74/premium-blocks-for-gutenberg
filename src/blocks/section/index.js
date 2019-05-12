@@ -32,6 +32,9 @@ const containerAttrs = {
   minHeight: {
     type: "number"
   },
+  minHeightUnit: {
+    type: "string"
+  },
   vPos: {
     type: "string",
     default: "top"
@@ -86,6 +89,9 @@ const containerAttrs = {
   },
   marginRight: {
     type: "number"
+  },
+  marginUnit: {
+    type: "string"
   },
   paddingTop: {
     type: "number"
