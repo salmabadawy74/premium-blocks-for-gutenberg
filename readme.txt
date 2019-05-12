@@ -3,9 +3,9 @@ Contributors: leap13
 Tags: gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks
 Donate link: http://leap13.com
 Requires at least: 4.5
-Tested up to: 5.1.1
+Tested up to: 5.2
 Requires PHP: 5.4
-Stable tag: 1.6.3
+Stable tag: 1.6.4
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -58,6 +58,11 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+
+= 1.6.4 =
+
+- Tweak: Added `Align` option for Features List in Pricing Table block.
+- Tweak: Changed `Spacings` from tab to dropdown in Pricing Table block to enhance editing experience.
 
 = 1.6.3 =
 
@@ -135,7 +140,7 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 = 1.4.5 =
 
-- Tweak: Change `Colors` submenu to dropdown to enhance editing experince.
+- Tweak: Change `Colors` submenu to dropdown to enhance editing experience.
 - Tweak: Added `Text Shadow` option for Description Text in Banner block.
 
 = 1.4.4 =
