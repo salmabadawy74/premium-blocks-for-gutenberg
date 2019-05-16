@@ -2,6 +2,7 @@ import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
+import PremiumBorder from "../../components/premium-border";
 import FONTS from "../../components/premium-fonts";
 
 const className = "premium-countup";
@@ -76,6 +77,10 @@ const edit = props => {
     backgroundRepeat,
     backgroundPosition,
     backgroundSize,
+    borderType,
+    borderColor,
+    borderRadius,
+    borderWidth,
     titleFamily,
     counterFamily,
     prefixFamily,
@@ -607,6 +612,20 @@ const edit = props => {
             }
             onChangeFixed={check => setAttributes({ fixed: check })}
           />
+          <PremiumBorder
+            borderType={borderType}
+            borderWidth={borderWidth}
+            borderColor={borderColor}
+            borderRadius={borderRadius}
+            onChangeType={newType => setAttributes({ borderType: newType })}
+            onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
+            onChangeColor={colorValue =>
+              setAttributes({ borderColor: colorValue })
+            }
+            onChangeRadius={newRadius =>
+              setAttributes({ borderRadius: newRadius })
+            }
+          />
           <PremiumBoxShadow
             inner={true}
             color={shadowColor}
@@ -661,7 +680,11 @@ const edit = props => {
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
         backgroundSize: backgroundSize,
-        backgroundAttachment: fixed ? "fixed" : "unset"
+        backgroundAttachment: fixed ? "fixed" : "unset",
+        border: borderType,
+        borderWidth: borderWidth + "px",
+        borderRadius: borderRadius + "px",
+        borderColor: borderColor
       }}
     >
       {iconCheck && (
