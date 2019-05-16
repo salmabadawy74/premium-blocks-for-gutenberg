@@ -52,6 +52,10 @@ const save = props => {
     backgroundRepeat,
     backgroundPosition,
     backgroundSize,
+    borderType,
+    borderColor,
+    borderRadius,
+    borderWidth,
     titleFamily,
     counterFamily,
     prefixFamily,
@@ -70,7 +74,11 @@ const save = props => {
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
         backgroundSize: backgroundSize,
-        backgroundAttachment: fixed ? "fixed" : "unset"
+        backgroundAttachment: fixed ? "fixed" : "unset",
+        border: borderType,
+        borderWidth: borderWidth + "px",
+        borderRadius: borderRadius + "px",
+        borderColor: borderColor
       }}
     >
       {iconCheck && (
