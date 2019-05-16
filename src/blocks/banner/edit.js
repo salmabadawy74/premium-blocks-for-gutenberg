@@ -288,29 +288,6 @@ const edit = props => {
               })
             }
           />
-          <PremiumBorder
-            borderType={borderType}
-            borderWidth={borderWidth}
-            borderColor={borderColor}
-            borderRadius={borderRadius}
-            onChangeType={newType => setAttributes({ borderType: newType })}
-            onChangeWidth={newWidth =>
-              setAttributes({
-                borderWidth: newWidth === undefined ? 0 : newWidth
-              })
-            }
-            onChangeColor={colorValue =>
-              setAttributes({
-                borderColor:
-                  colorValue === undefined ? "transparent" : colorValue
-              })
-            }
-            onChangeRadius={newRadius =>
-              setAttributes({
-                borderRadius: newRadius === undefined ? 0 : newRadius
-              })
-            }
-          />
           <ToggleControl
             label={__("Link")}
             checked={urlCheck}
@@ -501,6 +478,29 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
+          <PremiumBorder
+            borderType={borderType}
+            borderWidth={borderWidth}
+            borderColor={borderColor}
+            borderRadius={borderRadius}
+            onChangeType={newType => setAttributes({ borderType: newType })}
+            onChangeWidth={newWidth =>
+              setAttributes({
+                borderWidth: newWidth === undefined ? 0 : newWidth
+              })
+            }
+            onChangeColor={colorValue =>
+              setAttributes({
+                borderColor:
+                  colorValue === undefined ? "transparent" : colorValue
+              })
+            }
+            onChangeRadius={newRadius =>
+              setAttributes({
+                borderRadius: newRadius === undefined ? 0 : newRadius
+              })
+            }
+          />
           <PremiumBoxShadow
             inner={true}
             color={containerShadowColor}
