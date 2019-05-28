@@ -160,6 +160,22 @@ const testimonialsAttrs = {
   fixed: {
     type: "boolean",
     default: false
+  },
+  paddingTop: {
+    type: "number"
+  },
+  paddingRight: {
+    type: "number"
+  },
+  paddingBottom: {
+    type: "number"
+  },
+  paddingLeft: {
+    type: "number"
+  },
+  paddingUnit: {
+    type: "string",
+    default: "px"
   }
 };
 

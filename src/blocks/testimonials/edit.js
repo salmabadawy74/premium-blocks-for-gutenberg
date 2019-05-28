@@ -4,6 +4,7 @@ import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
+import PremiumPadding from "../../components/premium-padding";
 
 const { __ } = wp.i18n;
 
@@ -78,7 +79,12 @@ const edit = props => {
     fixed,
     backgroundRepeat,
     backgroundPosition,
-    backgroundSize
+    backgroundSize,
+    paddingTop,
+    paddingRight,
+    paddingBottom,
+    paddingLeft,
+    paddingUnit
   } = props.attributes;
 
   const RADIUS = [
@@ -439,6 +445,36 @@ const edit = props => {
               })
             }
           />
+          <PremiumPadding
+            paddingTop={paddingTop}
+            paddingRight={paddingRight}
+            paddingBottom={paddingBottom}
+            paddingLeft={paddingLeft}
+            onChangePadTop={value =>
+              setAttributes({
+                paddingTop: value
+              })
+            }
+            onChangePadRight={value =>
+              setAttributes({
+                paddingRight: value
+              })
+            }
+            onChangePadBottom={value =>
+              setAttributes({
+                paddingBottom: value
+              })
+            }
+            onChangePadLeft={value =>
+              setAttributes({
+                paddingLeft: value
+              })
+            }
+            showUnits={true}
+            onChangePadSizeUnit={newvalue =>
+              setAttributes({ paddingUnit: newvalue })
+            }
+          />
         </PanelBody>
       </InspectorControls>
     ),
@@ -451,7 +487,11 @@ const edit = props => {
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
         backgroundSize: backgroundSize,
-        backgroundAttachment: fixed ? "fixed" : "unset"
+        backgroundAttachment: fixed ? "fixed" : "unset",
+        paddingTop: paddingTop + paddingUnit,
+        paddingBottom: paddingBottom + paddingUnit,
+        paddingLeft: paddingLeft + paddingUnit,
+        paddingRight: paddingRight + paddingUnit
       }}
     >
       <div className={`${className}__container`}>

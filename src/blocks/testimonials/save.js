@@ -49,7 +49,12 @@ const save = props => {
     fixed,
     backgroundRepeat,
     backgroundPosition,
-    backgroundSize
+    backgroundSize,
+    paddingTop,
+    paddingRight,
+    paddingBottom,
+    paddingLeft,
+    paddingUnit
   } = props.attributes;
 
   return (
@@ -62,7 +67,11 @@ const save = props => {
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
         backgroundSize: backgroundSize,
-        backgroundAttachment: fixed ? "fixed" : "unset"
+        backgroundAttachment: fixed ? "fixed" : "unset",
+        paddingTop: paddingTop + paddingUnit,
+        paddingBottom: paddingBottom + paddingUnit,
+        paddingLeft: paddingLeft + paddingUnit,
+        paddingRight: paddingRight + paddingUnit
       }}
     >
       <div className={`${className}__container`}>
