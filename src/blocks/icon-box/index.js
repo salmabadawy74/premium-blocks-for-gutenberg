@@ -34,6 +34,18 @@ const iconBoxAttrs = {
     type: "boolean",
     default: true
   },
+  iconPos: {
+    type: "string",
+    default: "block"
+  },
+  iconHPos: {
+    type: "string",
+    default: "before"
+  },
+  iconVPos: {
+    type: "string",
+    default: "center"
+  },
   iconSize: {
     type: "number"
   },

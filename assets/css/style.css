@@ -1555,6 +1555,29 @@ a.premium-dheading-block__link:hover {
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+.premium-icon-box-inline {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+}
+.premium-icon-box-inline .premium-icon-box__icon_wrap {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+}
+.premium-icon-box-inline .premium-icon-box__icon_center {
+  align-items: center;
+}
+.premium-icon-box-inline .premium-icon-box__icon_bottom {
+  align-items: flex-end;
+}
+.premium-icon-box-after .premium-icon-box__icon_wrap {
+  order: 2;
+}
 .premium-icon-box__icon_wrap i {
   border-radius: 10px;
 }
