@@ -48,6 +48,9 @@ const edit = props => {
     iconType,
     selectedIcon,
     hoverEffect,
+    iconPos,
+    iconHPos,
+    iconVPos,
     iconSize,
     iconRadius,
     iconColor,
@@ -215,6 +218,43 @@ const edit = props => {
     }
   ];
 
+  const ICON_POS = [
+    {
+      label: __("Inline"),
+      value: "inline"
+    },
+    {
+      label: __("Block"),
+      value: "block"
+    }
+  ];
+
+  const ICON_HPOS = [
+    {
+      label: __("Before"),
+      value: "before"
+    },
+    {
+      label: __("After"),
+      value: "after"
+    }
+  ];
+
+  const ICON_VPOS = [
+    {
+      label: __("Top"),
+      value: "top"
+    },
+    {
+      label: __("Center"),
+      value: "center"
+    },
+    {
+      label: __("Bottom"),
+      value: "bottom"
+    }
+  ];
+
   const addFontToHead = fontFamily => {
     const head = document.head;
     const link = document.createElement("link");
@@ -281,6 +321,28 @@ const edit = props => {
             className="premium-panel-body"
             initialOpen={false}
           >
+            <SelectControl
+              label={__("Icon Position")}
+              options={ICON_POS}
+              value={iconPos}
+              onChange={newValue => setAttributes({ iconPos: newValue })}
+            />
+            {"inline" === iconPos && (
+              <Fragment>
+                <SelectControl
+                  label={__("Horizontal Position")}
+                  options={ICON_HPOS}
+                  value={iconHPos}
+                  onChange={newValue => setAttributes({ iconHPos: newValue })}
+                />
+                <SelectControl
+                  label={__("Vertical Position")}
+                  options={ICON_VPOS}
+                  value={iconVPos}
+                  onChange={newValue => setAttributes({ iconVPos: newValue })}
+                />
+              </Fragment>
+            )}
             <SelectControl
               label={__("Icon Type")}
               options={imgIcon}
@@ -915,7 +977,7 @@ const edit = props => {
     ),
     <div
       id={`${className}-${id}`}
-      className={`${className}`}
+      className={`${className} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
       style={{
         textAlign: align,
         border: borderType,
@@ -961,7 +1023,9 @@ const edit = props => {
         />
       )}
       {iconChecked && (
-        <div className={`${className}__icon_wrap`}>
+        <div
+          className={`${className}__icon_wrap ${className}__icon_${iconVPos}`}
+        >
           {"icon" === iconImage && (
             <Fragment>
               {iconType === "fa" && 1 != FontAwesomeEnabled && (
@@ -995,100 +1059,102 @@ const edit = props => {
           )}
         </div>
       )}
-      {titleChecked && titleText && (
-        <div
-          className={`${className}__title_wrap`}
-          style={{
-            marginTop: titleMarginT,
-            marginBottom: titleMarginB
-          }}
-        >
-          <RichText
-            tagName={titleTag.toLowerCase()}
-            className={`${className}__title`}
-            onChange={newText => setAttributes({ titleText: newText })}
-            placeholder={__("Awesome Title")}
-            value={titleText}
+      <div className={`${className}__content_wrap`}>
+        {titleChecked && titleText && (
+          <div
+            className={`${className}__title_wrap`}
             style={{
-              color: titleColor,
-              fontSize: titleSize + "px",
-              fontFamily: titleFont,
-              letterSpacing: titleLetter + "px",
-              textTransform: titleUpper ? "uppercase" : "none",
-              fontStyle: titleStyle,
-              fontWeight: titleWeight,
-              textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-              lineHeight: titleLine + "px"
+              marginTop: titleMarginT,
+              marginBottom: titleMarginB
             }}
-            keepPlaceholderOnFocus
-          />
-        </div>
-      )}
-      {descChecked && descText && (
-        <div
-          className={`${className}__desc_wrap`}
-          style={{
-            marginTop: descMarginT,
-            marginBottom: descMarginB
-          }}
-        >
-          <RichText
-            tagName="p"
-            className={`${className}__desc`}
-            value={descText}
-            isSelected={false}
-            placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
-            onChange={newText => setAttributes({ descText: newText })}
-            style={{
-              color: descColor,
-              fontSize: descSize + "px",
-              fontFamily: descFont,
-              lineHeight: descLine + "px",
-              fontWeight: descWeight
-            }}
-            keepPlaceholderOnFocus
-          />
-        </div>
-      )}
-      {btnChecked && btnText && (
-        <div
-          className={`${className}__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
-          style={{
-            marginTop: btnMarginT,
-            marginBottom: btnMarginB
-          }}
-        >
-          <RichText
-            tagName="a"
-            className={`${className}__btn premium-button`}
-            onChange={newText => setAttributes({ btnText: newText })}
-            placeholder={__("Click Here")}
-            value={btnText}
-            style={{
-              color: btnColor,
-              backgroundColor: btnBack,
-              fontSize: btnSize + "px",
-              letterSpacing: btnLetter + "px",
-              textTransform: btnUpper ? "uppercase" : "none",
-              fontStyle: btnStyle,
-              fontWeight: btnWeight,
-              border: btnBorderType,
-              borderWidth: btnBorderWidth + "px",
-              borderRadius: btnBorderRadius + "px",
-              borderColor: btnBorderColor,
-              padding: btnPadding + btnPaddingU,
-              boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
-            }}
-            keepPlaceholderOnFocus
-          />
-          {isSelected && (
-            <URLInput
-              value={btnLink}
-              onChange={newLink => setAttributes({ btnLink: newLink })}
+          >
+            <RichText
+              tagName={titleTag.toLowerCase()}
+              className={`${className}__title`}
+              onChange={newText => setAttributes({ titleText: newText })}
+              placeholder={__("Awesome Title")}
+              value={titleText}
+              style={{
+                color: titleColor,
+                fontSize: titleSize + "px",
+                fontFamily: titleFont,
+                letterSpacing: titleLetter + "px",
+                textTransform: titleUpper ? "uppercase" : "none",
+                fontStyle: titleStyle,
+                fontWeight: titleWeight,
+                textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
+                lineHeight: titleLine + "px"
+              }}
+              keepPlaceholderOnFocus
             />
-          )}
-        </div>
-      )}
+          </div>
+        )}
+        {descChecked && descText && (
+          <div
+            className={`${className}__desc_wrap`}
+            style={{
+              marginTop: descMarginT,
+              marginBottom: descMarginB
+            }}
+          >
+            <RichText
+              tagName="p"
+              className={`${className}__desc`}
+              value={descText}
+              isSelected={false}
+              placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
+              onChange={newText => setAttributes({ descText: newText })}
+              style={{
+                color: descColor,
+                fontSize: descSize + "px",
+                fontFamily: descFont,
+                lineHeight: descLine + "px",
+                fontWeight: descWeight
+              }}
+              keepPlaceholderOnFocus
+            />
+          </div>
+        )}
+        {btnChecked && btnText && (
+          <div
+            className={`${className}__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
+            style={{
+              marginTop: btnMarginT,
+              marginBottom: btnMarginB
+            }}
+          >
+            <RichText
+              tagName="a"
+              className={`${className}__btn premium-button`}
+              onChange={newText => setAttributes({ btnText: newText })}
+              placeholder={__("Click Here")}
+              value={btnText}
+              style={{
+                color: btnColor,
+                backgroundColor: btnBack,
+                fontSize: btnSize + "px",
+                letterSpacing: btnLetter + "px",
+                textTransform: btnUpper ? "uppercase" : "none",
+                fontStyle: btnStyle,
+                fontWeight: btnWeight,
+                border: btnBorderType,
+                borderWidth: btnBorderWidth + "px",
+                borderRadius: btnBorderRadius + "px",
+                borderColor: btnBorderColor,
+                padding: btnPadding + btnPaddingU,
+                boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
+              }}
+              keepPlaceholderOnFocus
+            />
+            {isSelected && (
+              <URLInput
+                value={btnLink}
+                onChange={newLink => setAttributes({ btnLink: newLink })}
+              />
+            )}
+          </div>
+        )}
+      </div>
     </div>
   ];
 };
