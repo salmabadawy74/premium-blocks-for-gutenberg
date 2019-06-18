@@ -246,7 +246,7 @@ const edit = props => {
       value: "top"
     },
     {
-      label: __("Center"),
+      label: __("Middle"),
       value: "center"
     },
     {
@@ -416,7 +416,7 @@ const edit = props => {
                   label={__("Border Radius (PX)")}
                   value={iconRadius}
                   onChange={newValue =>
-                    setAttributes({ iconRadius: newValue || "0" })
+                    setAttributes({ iconRadius: newValue || 0 })
                   }
                 />
               </Fragment>
@@ -432,9 +432,7 @@ const edit = props => {
               value={iconSize}
               min="1"
               max="200"
-              onChange={newValue =>
-                setAttributes({ iconSize: newValue || "30" })
-              }
+              onChange={newValue => setAttributes({ iconSize: newValue || 30 })}
             />
           </PanelBody>
         )}
@@ -651,7 +649,7 @@ const edit = props => {
                       value={btnColor}
                       onChange={newValue =>
                         setAttributes({
-                          btnColor: newValue || "000"
+                          btnColor: newValue || "#000"
                         })
                       }
                       allowReset={true}
