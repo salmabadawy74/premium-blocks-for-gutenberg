@@ -3,6 +3,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
+import PremiumPadding from "../../components/premium-padding";
 
 const className = "premium-banner";
 
@@ -82,7 +83,12 @@ const edit = props => {
     containerShadowColor,
     containerShadowHorizontal,
     containerShadowVertical,
-    containerShadowPosition
+    containerShadowPosition,
+    paddingB,
+    paddingT,
+    paddingR,
+    paddingL,
+    paddingU
   } = props.attributes;
   const ALIGNS = [
     {
@@ -534,6 +540,36 @@ const edit = props => {
               })
             }
           />
+          <PremiumPadding
+            paddingTop={paddingT}
+            paddingRight={paddingR}
+            paddingBottom={paddingB}
+            paddingLeft={paddingL}
+            showUnits={true}
+            onChangePadTop={value =>
+              setAttributes({
+                paddingT: value
+              })
+            }
+            onChangePadRight={value =>
+              setAttributes({
+                paddingR: value
+              })
+            }
+            onChangePadBottom={value =>
+              setAttributes({
+                paddingB: value
+              })
+            }
+            onChangePadLeft={value =>
+              setAttributes({
+                paddingL: value
+              })
+            }
+            onChangePadSizeUnit={newvalue =>
+              setAttributes({ paddingU: newvalue })
+            }
+          />
         </PanelBody>
       </InspectorControls>
     ),
@@ -541,7 +577,11 @@ const edit = props => {
       id={`premium-banner-${id}`}
       className={`${className} ${className}__responsive_${responsive}`}
       style={{
-        boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
+        boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
+        paddingTop: paddingT + paddingU,
+        paddingRight: paddingR + paddingU,
+        paddingBottom: paddingB + paddingU,
+        paddingLeft: paddingL + paddingU
       }}
     >
       <style
