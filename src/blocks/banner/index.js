@@ -206,6 +206,21 @@ const bannerAttrs = {
   containerShadowPosition: {
     type: "string",
     default: ""
+  },
+  paddingT: {
+    type: "number"
+  },
+  paddingR: {
+    type: "number"
+  },
+  paddingB: {
+    type: "number"
+  },
+  paddingL: {
+    type: "number"
+  },
+  paddingU: {
+    type: "string"
   }
 };
 registerBlockType("premium/banner", {
