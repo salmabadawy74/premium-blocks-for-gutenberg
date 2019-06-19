@@ -63,6 +63,11 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 ## Changelog
 
+### 1.6.9
+
+- Tweak: WPML Compitablity for all blocks.
+- Fixed: Error `This block contains unexpected or invalid content` in Icon Box block.
+
 ### 1.6.8
 
 - Tweak: Added `Padding` option for container in Banner block.

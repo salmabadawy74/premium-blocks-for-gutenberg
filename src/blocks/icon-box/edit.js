@@ -246,7 +246,7 @@ const edit = props => {
       value: "top"
     },
     {
-      label: __("Center"),
+      label: __("Middle"),
       value: "center"
     },
     {
@@ -416,7 +416,7 @@ const edit = props => {
                   label={__("Border Radius (PX)")}
                   value={iconRadius}
                   onChange={newValue =>
-                    setAttributes({ iconRadius: newValue || "0" })
+                    setAttributes({ iconRadius: newValue || 0 })
                   }
                 />
               </Fragment>
@@ -432,9 +432,7 @@ const edit = props => {
               value={iconSize}
               min="1"
               max="200"
-              onChange={newValue =>
-                setAttributes({ iconSize: newValue || "30" })
-              }
+              onChange={newValue => setAttributes({ iconSize: newValue || 30 })}
             />
           </PanelBody>
         )}
@@ -508,13 +506,13 @@ const edit = props => {
                 setAttributes({ titleShadowColor: newColor || "transparent" })
               }
               onChangeBlur={newBlur =>
-                setAttributes({ titleShadowBlur: newBlur || "0" })
+                setAttributes({ titleShadowBlur: newBlur || 0 })
               }
               onChangehHorizontal={newValue =>
-                setAttributes({ titleShadowHorizontal: newValue || "0" })
+                setAttributes({ titleShadowHorizontal: newValue || 0 })
               }
               onChangeVertical={newValue =>
-                setAttributes({ titleShadowVertical: newValue || "0" })
+                setAttributes({ titleShadowVertical: newValue || 0 })
               }
             />
             <PremiumMargin
@@ -523,12 +521,12 @@ const edit = props => {
               marginBottom={titleMarginB}
               onChangeMarTop={value =>
                 setAttributes({
-                  titleMarginT: value || "0"
+                  titleMarginT: value || 0
                 })
               }
               onChangeMarBottom={value =>
                 setAttributes({
-                  titleMarginB: value || "0"
+                  titleMarginB: value || 0
                 })
               }
             />
@@ -651,7 +649,7 @@ const edit = props => {
                       value={btnColor}
                       onChange={newValue =>
                         setAttributes({
-                          btnColor: newValue || "000"
+                          btnColor: newValue || "#000"
                         })
                       }
                       allowReset={true}
