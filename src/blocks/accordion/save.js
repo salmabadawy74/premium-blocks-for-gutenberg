@@ -1,8 +1,11 @@
-const className = "premium-accordion";
+import classnames from 'classnames'
 
 const { RichText, InnerBlocks } = wp.editor;
 
 const save = props => {
+  
+  const { className } = props;
+  
   const {
     accordionId,
     repeaterItems,
@@ -57,15 +60,17 @@ const save = props => {
     descPaddingB,
     descPaddingL
   } = props.attributes;
+  
+  const mainClasses = classnames ( className, 'premium-accordion' );
 
   const accordionItems = repeaterItems.map((item, index) => {
     return (
       <div
-        id={`${className}__layer${index}`}
-        className={`${className}__content_wrap`}
+        id={`premium-accordion__layer${index}`}
+        className={`premium-accordion__content_wrap`}
       >
         <div
-          className={`${className}__title_wrap ${className}__${direction} ${className}__${arrowPos}`}
+          className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
           style={{
             backgroundColor: titleBack,
             border: titleBorder,
@@ -78,10 +83,10 @@ const save = props => {
             paddingLeft: titlePaddingL
           }}
         >
-          <div className={`${className}__title`}>
+          <div className={`premium-accordion__title`}>
             <RichText.Content
               tagName={titleTag.toLowerCase()}
-              className={`${className}__title_text`}
+              className={`premium-accordion__title_text`}
               value={item.titleText}
               style={{
                 color: titleColor,
@@ -95,9 +100,9 @@ const save = props => {
               }}
             />
           </div>
-          <div className={`${className}__icon_wrap`}>
+          <div className={`premium-accordion__icon_wrap`}>
             <svg
-              className={`${className}__icon premium-accordion__closed`}
+              className={`premium-accordion__icon premium-accordion__closed`}
               role="img"
               focusable="false"
               xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +121,7 @@ const save = props => {
           </div>
         </div>
         <div
-          className={`${className}__desc_wrap premium-accordion__desc_close`}
+          className={`premium-accordion__desc_wrap premium-accordion__desc_close`}
           style={{
             textAlign: descAlign,
             backgroundColor: descBack,
@@ -133,7 +138,7 @@ const save = props => {
           {"text" === contentType && (
             <RichText.Content
               tagName="p"
-              className={`${className}__desc`}
+              className={`premium-accordion__desc`}
               value={item.descText}
               style={{
                 color: descColor,
@@ -153,7 +158,7 @@ const save = props => {
     );
   });
   return (
-    <div id={accordionId} className={`${className}`}>
+    <div id={accordionId} className={`${mainClasses}`}>
       {accordionItems}
     </div>
   );

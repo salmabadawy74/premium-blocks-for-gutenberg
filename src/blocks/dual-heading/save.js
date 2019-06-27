@@ -1,6 +1,9 @@
-const className = "premium-dheading-block";
+import classnames from 'classnames'
 
 const save = props => {
+    
+  const { className } = props;
+  
   const {
     contentAlign,
     firstHeading,
@@ -62,10 +65,12 @@ const save = props => {
     containerBorderRadius,
     containerBorderColor
   } = props.attributes;
+  
+  const mainClasses = classnames ( className, 'premium-dheading-block__container' );
 
   return (
     <div
-      className={`${className}__container`}
+      className={`${mainClasses}`}
       style={{
         textAlign: contentAlign,
         backgroundColor: containerBack,
@@ -80,10 +85,10 @@ const save = props => {
         borderColor: containerBorderColor
       }}
     >
-      <div className={`${className}__wrap`}>
-        <h2 className={`${className}__title`}>
+      <div className={`premium-dheading-block__wrap`}>
+        <h2 className={`premium-dheading-block__title`}>
           <span
-            className={`${className}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
+            className={`premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
             style={{
               display: display,
               color: firstColor,
@@ -109,7 +114,7 @@ const save = props => {
             {firstHeading}
           </span>
           <span
-            className={`${className}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
+            className={`premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
             style={{
               display: display,
               color: secondColor,
@@ -137,7 +142,7 @@ const save = props => {
         </h2>
         {link && headingURL && (
           <a
-            className={`${className}__link`}
+            className={`premium-dheading-block__link`}
             href={link && headingURL}
             target={target && "_blank"}
           />

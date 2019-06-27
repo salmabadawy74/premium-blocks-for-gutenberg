@@ -1,3 +1,4 @@
+import classnames from 'classnames'
 import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import PremiumTypo from "../../components/premium-typo";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
@@ -10,8 +11,6 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import PremiumSizeUnits from "../../components/premium-size-units";
 import FONTS from "../../components/premium-fonts";
-
-const className = "premium-icon-box";
 
 const { __ } = wp.i18n;
 
@@ -37,7 +36,7 @@ const {
 } = wp.editor;
 
 const edit = props => {
-  const { isSelected, setAttributes, clientId: blockId } = props;
+  const { isSelected, setAttributes, className, clientId: blockId } = props;
   const {
     id,
     align,
@@ -285,6 +284,8 @@ const edit = props => {
 
     addFontToHead(fontFamily);
   };
+
+    const mainClasses = classnames ( className, 'premium-icon-box' );
 
   return [
     isSelected && (
@@ -974,8 +975,8 @@ const edit = props => {
       </InspectorControls>
     ),
     <div
-      id={`${className}-${id}`}
-      className={`${className} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
+      id={`${mainClasses}-${id}`}
+      className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
       style={{
         textAlign: align,
         border: borderType,
@@ -1022,18 +1023,18 @@ const edit = props => {
       )}
       {iconChecked && (
         <div
-          className={`${className}__icon_wrap ${className}__icon_${iconVPos}`}
+          className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}
         >
           {"icon" === iconImage && (
             <Fragment>
               {iconType === "fa" && 1 != FontAwesomeEnabled && (
-                <p className={`${className}__alert`}>
+                <p className={`premium-icon-box__alert`}>
                   {__("Please Enable Font Awesome Icons from Plugin settings")}
                 </p>
               )}
               {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
                 <i
-                  className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
+                  className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
                   style={{
                     color: iconColor,
                     backgroundColor: iconBackColor,
@@ -1045,7 +1046,7 @@ const edit = props => {
           )}
           {"image" === iconImage && iconImgUrl && (
             <img
-              className={`${className}__icon premium-icon__${hoverEffect}`}
+              className={`premium-icon-box__icon premium-icon__${hoverEffect}`}
               src={`${iconImgUrl}`}
               alt="Image Icon"
               style={{
@@ -1057,10 +1058,10 @@ const edit = props => {
           )}
         </div>
       )}
-      <div className={`${className}__content_wrap`}>
+      <div className={`premium-icon-box__content_wrap`}>
         {titleChecked && titleText && (
           <div
-            className={`${className}__title_wrap`}
+            className={`premium-icon-box__title_wrap`}
             style={{
               marginTop: titleMarginT,
               marginBottom: titleMarginB
@@ -1068,7 +1069,7 @@ const edit = props => {
           >
             <RichText
               tagName={titleTag.toLowerCase()}
-              className={`${className}__title`}
+              className={`premium-icon-box__title`}
               onChange={newText => setAttributes({ titleText: newText })}
               placeholder={__("Awesome Title")}
               value={titleText}
@@ -1089,7 +1090,7 @@ const edit = props => {
         )}
         {descChecked && descText && (
           <div
-            className={`${className}__desc_wrap`}
+            className={`premium-icon-box__desc_wrap`}
             style={{
               marginTop: descMarginT,
               marginBottom: descMarginB
@@ -1097,7 +1098,7 @@ const edit = props => {
           >
             <RichText
               tagName="p"
-              className={`${className}__desc`}
+              className={`premium-icon-box__desc`}
               value={descText}
               isSelected={false}
               placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
@@ -1115,7 +1116,7 @@ const edit = props => {
         )}
         {btnChecked && btnText && (
           <div
-            className={`${className}__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
+            className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
             style={{
               marginTop: btnMarginT,
               marginBottom: btnMarginB
@@ -1123,7 +1124,7 @@ const edit = props => {
           >
             <RichText
               tagName="a"
-              className={`${className}__btn premium-button`}
+              className={`premium-icon-box__btn premium-button`}
               onChange={newText => setAttributes({ btnText: newText })}
               placeholder={__("Click Here")}
               value={btnText}

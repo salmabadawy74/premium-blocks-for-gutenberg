@@ -1,3 +1,4 @@
+import classnames from 'classnames'
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTextShadow from "../../components/premium-text-shadow";
@@ -27,10 +28,9 @@ const {
   URLInput
 } = wp.editor;
 
-const className = "premium-button";
 
 const edit = props => {
-  const { isSelected, setAttributes, clientId: blockId } = props;
+  const { isSelected, setAttributes, className, clientId: blockId } = props;
 
   const {
     id,
@@ -206,6 +206,8 @@ const edit = props => {
 
     addFontToHead(fontFamily);
   };
+
+   const mainClasses = classnames ( className, 'premium-button' );
 
   return [
     isSelected && "block" != btnSize && (
@@ -472,8 +474,8 @@ const edit = props => {
       </InspectorControls>
     ),
     <div
-      id={`${className}-wrap-${id}`}
-      className={`${className}__wrap ${className}__${effect} ${className}__${effectDir}`}
+      id={`${mainClasses}-wrap-${id}`}
+      className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir}`}
       style={{ textAlign: btnAlign }}
     >
       <style
@@ -495,7 +497,7 @@ const edit = props => {
         }}
       />
       <RichText
-        className={`${className} ${className}__${btnSize}`}
+        className={`premium-button premium-button__${btnSize}`}
         value={btnText}
         onChange={value => setAttributes({ btnText: value })}
         style={{

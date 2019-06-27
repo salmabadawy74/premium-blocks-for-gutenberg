@@ -1,8 +1,11 @@
-const className = "premium-icon-box";
+import classnames from 'classnames'
 
 const { RichText } = wp.editor;
 
 const save = props => {
+  
+  const { className } = props;
+  
   const {
     id,
     align,
@@ -103,11 +106,13 @@ const save = props => {
     hoverShadowVertical,
     hoverShadowPosition
   } = props.attributes;
+  
+  const mainClasses = classnames ( className, 'premium-icon-box' );
 
   return (
     <div
-      id={`${className}-${id}`}
-      className={`${className} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
+      id={`premium-icon-box-${id}`}
+      className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
       style={{
         textAlign: align,
         border: borderType,
@@ -154,11 +159,11 @@ const save = props => {
       )}
       {iconChecked && (
         <div
-          className={`${className}__icon_wrap ${className}__icon_${iconVPos}`}
+          className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}
         >
           {"icon" === iconImage && selectedIcon && (
             <i
-              className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
+              className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
               style={{
                 color: iconColor,
                 backgroundColor: iconBackColor,
@@ -168,7 +173,7 @@ const save = props => {
           )}
           {"image" === iconImage && iconImgUrl && (
             <img
-              className={`${className}__icon premium-icon__${hoverEffect}`}
+              className={`premium-icon-box__icon premium-icon__${hoverEffect}`}
               src={`${iconImgUrl}`}
               alt="Image Icon"
               style={{
@@ -180,10 +185,10 @@ const save = props => {
           )}
         </div>
       )}
-      <div className={`${className}__content_wrap`}>
+      <div className={`premium-icon-box__content_wrap`}>
         {titleChecked && titleText && (
           <div
-            className={`${className}__title_wrap`}
+            className={`premium-icon-box__title_wrap`}
             style={{
               marginTop: titleMarginT,
               marginBottom: titleMarginB
@@ -191,7 +196,7 @@ const save = props => {
           >
             <RichText.Content
               tagName={titleTag.toLowerCase()}
-              className={`${className}__title`}
+              className={`premium-icon-box__title`}
               value={titleText}
               style={{
                 color: titleColor,
@@ -209,7 +214,7 @@ const save = props => {
         )}
         {descChecked && descText && (
           <div
-            className={`${className}__desc_wrap`}
+            className={`premium-icon-box__desc_wrap`}
             style={{
               marginTop: descMarginT,
               marginBottom: descMarginB
@@ -217,7 +222,7 @@ const save = props => {
           >
             <RichText.Content
               tagName="p"
-              className={`${className}__desc`}
+              className={`premium-icon-box__desc`}
               value={descText}
               style={{
                 color: descColor,
@@ -231,7 +236,7 @@ const save = props => {
         )}
         {btnChecked && btnText && (
           <div
-            className={`${className}__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
+            className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
             style={{
               marginTop: btnMarginT,
               marginBottom: btnMarginB
@@ -239,7 +244,7 @@ const save = props => {
           >
             <RichText.Content
               tagName="a"
-              className={`${className}__btn premium-button`}
+              className={`premium-icon-box__btn premium-button`}
               href={btnLink}
               rel="noopener noreferrer"
               target={btnTarget ? "_blank" : "_self"}

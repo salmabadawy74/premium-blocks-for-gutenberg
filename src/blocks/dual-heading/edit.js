@@ -1,10 +1,9 @@
+import classnames from 'classnames'
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import FONTS from "../../components/premium-fonts";
-
-const className = "premium-dheading-block";
 
 const { __ } = wp.i18n;
 
@@ -28,7 +27,7 @@ const {
 } = wp.editor;
 
 const edit = props => {
-  const { setAttributes, isSelected } = props;
+  const { setAttributes, isSelected, className } = props;
   const {
     contentAlign,
     firstHeading,
@@ -134,6 +133,8 @@ const edit = props => {
 
     addFontToHead(fontFamily);
   };
+  
+  const mainClasses = classnames ( className, 'premium-dheading-block__container' );
 
   return [
     isSelected && (
@@ -630,7 +631,7 @@ const edit = props => {
     ),
 
     <div
-      className={`${className}__container`}
+      className={`${mainClasses}`}
       style={{
         textAlign: contentAlign,
         backgroundColor: containerBack,
@@ -645,10 +646,10 @@ const edit = props => {
         borderColor: containerBorderColor
       }}
     >
-      <div className={`${className}__wrap`}>
-        <h2 className={`${className}__title`}>
+      <div className={`premium-dheading-block__wrap`}>
+        <h2 className={`premium-dheading-block__title`}>
           <span
-            className={`${className}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
+            className={`premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
             style={{
               display: display,
               color: firstColor,
@@ -675,7 +676,7 @@ const edit = props => {
             {firstHeading}
           </span>
           <span
-            className={`${className}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
+            className={`premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
             style={{
               display: display,
               color: secondColor,
