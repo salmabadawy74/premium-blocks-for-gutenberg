@@ -1,12 +1,14 @@
+import classnames from 'classnames'
 import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 
-const className = "premium-testimonial";
-
 const { RichText } = wp.editor;
 
 const save = props => {
+   
+  const { className } = props;
+    
   const {
     align,
     authorImgUrl,
@@ -56,10 +58,12 @@ const save = props => {
     paddingLeft,
     paddingUnit
   } = props.attributes;
+  
+  const mainClasses = classnames ( className, 'premium-testimonial' );
 
   return (
     <div
-      className={`${className}__wrap`}
+      className={`${mainClasses}__wrap`}
       style={{
         boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
         backgroundColor: backColor,
@@ -74,8 +78,8 @@ const save = props => {
         paddingRight: paddingRight + paddingUnit
       }}
     >
-      <div className={`${className}__container`}>
-        <span className={`${className}__upper`}>
+      <div className={`premium-testimonial__container`}>
+        <span className={`premium-testimonial__upper`}>
           <PremiumUpperQuote
             size={quotSize}
             color={quotColor}
@@ -83,15 +87,15 @@ const save = props => {
           />
         </span>
         <div
-          className={`${className}__content`}
+          className={`premium-testimonial__content`}
           style={{
             textAlign: align
           }}
         >
-          <div className={`${className}__img_wrap`}>
+          <div className={`premium-testimonial__img_wrap`}>
             {authorImgUrl && (
               <img
-                className={`${className}__img`}
+                className={`premium-testimonial__img`}
                 src={`${authorImgUrl}`}
                 alt="Author"
                 style={{
@@ -105,11 +109,11 @@ const save = props => {
             )}
             {!authorImgUrl && <DefaultImage className={className} />}
           </div>
-          <div className={`${className}__text_wrap`}>
+          <div className={`premium-testimonial__text_wrap`}>
             <div>
               <RichText.Content
                 tagName="p"
-                className={`${className}__text`}
+                className={`premium-testimonial__text`}
                 value={text}
                 style={{
                   color: bodyColor,
@@ -121,10 +125,10 @@ const save = props => {
               />
             </div>
           </div>
-          <div className={`${className}__info`}>
+          <div className={`premium-testimonial__info`}>
             <RichText.Content
               tagName={authorTag.toLowerCase()}
-              className={`${className}__author`}
+              className={`premium-testimonial__author`}
               value={author}
               style={{
                 color: authorColor,
@@ -136,17 +140,17 @@ const save = props => {
               }}
             />
             <span
-              className={`${className}__sep`}
+              className={`premium-testimonial__sep`}
               style={{
                 color: dashColor
               }}
             >
               &nbsp;-&nbsp;
             </span>
-            <div className={`${className}__link_wrap`}>
+            <div className={`premium-testimonial__link_wrap`}>
               <RichText.Content
                 tagName={authorComTag.toLowerCase()}
-                className={`${className}__author_comp`}
+                className={`premium-testimonial__author_comp`}
                 value={authorCom}
                 style={{
                   color: authorComColor,
@@ -163,7 +167,7 @@ const save = props => {
             </div>
           </div>
         </div>
-        <span className={`${className}__lower`}>
+        <span className={`premium-testimonial__lower`}>
           <PremiumLowerQuote
             color={quotColor}
             size={quotSize}

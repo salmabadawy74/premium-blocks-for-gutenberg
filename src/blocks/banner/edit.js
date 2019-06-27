@@ -1,11 +1,10 @@
+import classnames from 'classnames'
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumPadding from "../../components/premium-padding";
-
-const className = "premium-banner";
 
 const { __ } = wp.i18n;
 
@@ -31,7 +30,7 @@ const {
 } = wp.editor;
 
 const edit = props => {
-  const { isSelected, setAttributes, clientId: blockID } = props;
+  const { isSelected, setAttributes, className, clientId: blockID } = props;
   const {
     id,
     imageID,
@@ -179,6 +178,9 @@ const edit = props => {
     }
   ];
   setAttributes({ id: blockID });
+  
+  const mainClasses = classnames ( className, 'premium-banner' );
+  
   return [
     isSelected && (
       <BlockControls key="controls">
@@ -575,7 +577,7 @@ const edit = props => {
     ),
     <div
       id={`premium-banner-${id}`}
-      className={`${className} ${className}__responsive_${responsive}`}
+      className={`${mainClasses} premium-banner__responsive_${responsive}`}
       style={{
         boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
         paddingTop: paddingT + paddingU,
@@ -601,7 +603,7 @@ const edit = props => {
       />
       {imageURL && (
         <div
-          className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
+          className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
           style={{
             border: borderType,
             borderWidth: borderWidth + "px",
@@ -610,14 +612,14 @@ const edit = props => {
           }}
         >
           <div
-            className={`${className}__img_wrap ${className}__${height}`}
+            className={`premium-banner__img_wrap premium-banner__${height}`}
             style={{
               minHeight: minHeight,
               alignItems: verAlign
             }}
           >
             <img
-              className={`${className}__img`}
+              className={`premium-banner__img`}
               alt="Banner Image"
               src={imageURL}
               style={{
@@ -627,20 +629,20 @@ const edit = props => {
           </div>
 
           <div
-            className={`${className}__content`}
+            className={`premium-banner__content`}
             style={{
               background: "effect2" === effect ? titleBack : "transparent"
             }}
           >
             <div
-              className={`${className}__title_wrap`}
+              className={`premium-banner__title_wrap`}
               style={{
                 textAlign: contentAlign
               }}
             >
               <RichText
                 tagName={titleTag.toLowerCase()}
-                className={`${className}__title`}
+                className={`premium-banner__title`}
                 value={title}
                 isSelected={false}
                 onChange={newText => setAttributes({ title: newText })}
@@ -654,14 +656,14 @@ const edit = props => {
               />
             </div>
             <div
-              className={`${className}__desc_wrap`}
+              className={`premium-banner__desc_wrap`}
               style={{
                 textAlign: contentAlign
               }}
             >
               <RichText
                 tagName="p"
-                className={`${className}__desc`}
+                className={`premium-banner__desc`}
                 value={desc}
                 isSelected={false}
                 onChange={newText => setAttributes({ desc: newText })}

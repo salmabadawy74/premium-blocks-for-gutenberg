@@ -1,6 +1,9 @@
-const className = "premium-icon";
+import classnames from 'classnames'
 
 const save = props => {
+   
+  const { className } = props;
+    
   const {
     selectedIcon,
     align,
@@ -53,10 +56,12 @@ const save = props => {
     link,
     target
   } = props.attributes;
+  
+  const mainClasses = classnames ( className, 'premium-icon' );
 
   return (
     <div
-      className={`${className}__container`}
+      className={`${mainClasses}__container`}
       style={{
         textAlign: align,
         backgroundColor: backgroundColor,
@@ -83,13 +88,13 @@ const save = props => {
       }}
     >
       <a
-        className={`${className}__link`}
+        className={`premium-icon__link`}
         href={urlCheck && link}
         rel="noopener noreferrer"
         target={target ? "_blank" : "_self"}
       >
         <i
-          className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
+          className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
           style={{
             color: iconColor || "#6ec1e4",
             backgroundColor: iconBack,
