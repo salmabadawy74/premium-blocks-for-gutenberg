@@ -1,3 +1,4 @@
+import classnames from 'classnames'
 import PremiumTypo from "../../components/premium-typo";
 import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
@@ -31,10 +32,8 @@ const {
 
 const { Fragment } = wp.element;
 
-const className = "premium-testimonial";
-
 const edit = props => {
-  const { isSelected, setAttributes } = props;
+  const { isSelected, className, setAttributes } = props;
   const {
     align,
     authorImgId,
@@ -101,6 +100,8 @@ const edit = props => {
       label: __("Rounded")
     }
   ];
+
+    const mainClasses = classnames ( className, 'premium-testimonial' );
 
   return [
     isSelected && (
@@ -479,7 +480,7 @@ const edit = props => {
       </InspectorControls>
     ),
     <div
-      className={`${className}__wrap`}
+      className={`${mainClasses}__wrap`}
       style={{
         boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
         backgroundColor: backColor,
@@ -494,8 +495,8 @@ const edit = props => {
         paddingRight: paddingRight + paddingUnit
       }}
     >
-      <div className={`${className}__container`}>
-        <span className={`${className}__upper`}>
+      <div className={`premium-testimonial__container`}>
+        <span className={`premium-testimonial__upper`}>
           <PremiumUpperQuote
             size={quotSize}
             color={quotColor}
@@ -503,15 +504,15 @@ const edit = props => {
           />
         </span>
         <div
-          className={`${className}__content`}
+          className={`premium-testimonial__content`}
           style={{
             textAlign: align
           }}
         >
-          <div className={`${className}__img_wrap`}>
+          <div className={`premium-testimonial__img_wrap`}>
             {authorImgUrl && (
               <img
-                className={`${className}__img`}
+                className={`premium-testimonial__img`}
                 src={`${authorImgUrl}`}
                 alt="Author"
                 style={{
@@ -525,11 +526,11 @@ const edit = props => {
             )}
             {!authorImgUrl && <DefaultImage className={className} />}
           </div>
-          <div className={`${className}__text_wrap`}>
+          <div className={`premium-testimonial__text_wrap`}>
             <div>
               <RichText
                 tagName="p"
-                className={`${className}__text`}
+                className={`premium-testimonial__text`}
                 value={text}
                 isSelected={false}
                 placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
@@ -546,12 +547,12 @@ const edit = props => {
             </div>
           </div>
           <div
-            className={`${className}__info`}
+            className={`premium-testimonial__info`}
             style={{ justifyContent: align }}
           >
             <RichText
               tagName={authorTag.toLowerCase()}
-              className={`${className}__author`}
+              className={`premium-testimonial__author`}
               value={author}
               isSelected={false}
               onChange={newText => setAttributes({ author: newText })}
@@ -565,7 +566,7 @@ const edit = props => {
               }}
             />
             <span
-              className={`${className}__sep`}
+              className={`premium-testimonial__sep`}
               style={{
                 color: dashColor
               }}
@@ -574,7 +575,7 @@ const edit = props => {
             </span>
             <RichText
               tagName={authorComTag.toLowerCase()}
-              className={`${className}__author_comp`}
+              className={`premium-testimonial__author_comp`}
               onChange={newText => setAttributes({ authorCom: newText })}
               value={authorCom}
               isSelected={false}
@@ -585,7 +586,7 @@ const edit = props => {
             />
           </div>
         </div>
-        <span className={`${className}__lower`}>
+        <span className={`premium-testimonial__lower`}>
           <PremiumLowerQuote
             size={quotSize}
             color={quotColor}

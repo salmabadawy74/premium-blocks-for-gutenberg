@@ -1,8 +1,11 @@
-const className = "premium-button";
+import classnames from 'classnames'
 
 const { RichText } = wp.editor;
 
 const save = props => {
+   
+  const { className } = props;
+
   const {
     id,
     btnText,
@@ -41,10 +44,13 @@ const save = props => {
     btnShadowVertical,
     btnShadowPosition
   } = props.attributes;
+  
+  const mainClasses = classnames ( className, 'premium-button' );
+  
   return (
     <div
-      id={`${className}-wrap-${id}`}
-      className={`${className}__wrap ${className}__${effect} ${className}__${effectDir}`}
+      id={`${mainClasses}-wrap-${id}`}
+      className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir}`}
       style={{ textAlign: btnAlign }}
     >
       <style
@@ -68,7 +74,7 @@ const save = props => {
       <RichText.Content
         tagName="a"
         value={btnText}
-        className={`${className} ${className}__${btnSize}`}
+        className={`premium-button premium-button__${btnSize}`}
         href={btnLink}
         rel="noopener noreferrer"
         target={btnTarget ? "_blank" : "_self"}
