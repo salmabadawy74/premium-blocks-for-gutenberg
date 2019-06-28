@@ -1,3 +1,4 @@
+import classnames from 'classnames'
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
@@ -32,7 +33,7 @@ const {
 } = wp.editor;
 
 const edit = props => {
-  const { isSelected, setAttributes, clientId: blockId } = props;
+  const { isSelected, setAttributes, className, clientId: blockId } = props;
   const {
     contentAlign,
     tableBack,
@@ -231,8 +232,11 @@ const edit = props => {
   ];
 
   const FEATURES_ALIGN = ["left", "center", "right"];
+  
+  const mainClasses = classnames ( className, 'premium-pricing-table' );
 
   setAttributes({ id: blockId });
+  
   return [
     isSelected && (
       <BlockControls key="controls">
@@ -1187,8 +1191,8 @@ const edit = props => {
       </InspectorControls>
     ),
     <div
-      id={`${className}-${id}`}
-      className={`${className}`}
+      id={`${mainClasses}-${id}`}
+      className={`${mainClasses}`}
       style={{
         textAlign: contentAlign,
         background: tableBack,
@@ -1202,10 +1206,10 @@ const edit = props => {
     >
       {badgeChecked && (
         <div
-          className={`${className}__badge_wrap ${className}__badge_${badgePos}`}
+          className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgePos}`}
         >
           <div
-            className={`${className}__badge`}
+            className={`premium-pricing-table__badge`}
             style={{
               borderRightColor:
                 "right" === badgePos ? badgeBack : "transparent",
@@ -1237,7 +1241,7 @@ const edit = props => {
       )}
       {titleChecked && (
         <div
-          className={`${className}__title_wrap`}
+          className={`premium-pricing-table__title_wrap`}
           style={{
             paddingTop: titleMarginT + "px",
             paddingBottom: titleMarginB + "px"
@@ -1245,7 +1249,7 @@ const edit = props => {
         >
           <RichText
             tagName={titleTag.toLowerCase()}
-            className={`${className}__title`}
+            className={`premium-pricing-table__title`}
             onChange={newText => setAttributes({ title: newText })}
             placeholder={__("Awesome Title")}
             value={title}
@@ -1266,7 +1270,7 @@ const edit = props => {
       )}
       {priceChecked && (
         <div
-          className={`${className}__price_wrap`}
+          className={`premium-pricing-table__price_wrap`}
           style={{
             background: priceBack,
             marginTop: priceMarginT + "px",
@@ -1277,7 +1281,7 @@ const edit = props => {
         >
           {slashPrice && (
             <strike
-              className={`${className}__slash`}
+              className={`premium-pricing-table__slash`}
               style={{
                 color: slashColor,
                 fontSize: slashSize + "px",
@@ -1290,7 +1294,7 @@ const edit = props => {
           )}
           {currPrice && (
             <span
-              className={`${className}__currency`}
+              className={`premium-pricing-table__currency`}
               style={{
                 color: currColor,
                 fontSize: currSize + "px",
@@ -1303,7 +1307,7 @@ const edit = props => {
           )}
           {valPrice && (
             <span
-              className={`${className}__val`}
+              className={`premium-pricing-table__val`}
               style={{
                 color: valColor,
                 fontSize: valSize + "px",
@@ -1316,7 +1320,7 @@ const edit = props => {
           )}
           {divPrice && (
             <span
-              className={`${className}__divider`}
+              className={`premium-pricing-table__divider`}
               style={{
                 color: divColor,
                 fontSize: divSize + "px",
@@ -1329,7 +1333,7 @@ const edit = props => {
           )}
           {durPrice && (
             <span
-              className={`${className}__dur`}
+              className={`premium-pricing-table__dur`}
               style={{
                 color: durColor,
                 fontSize: durSize + "px",
@@ -1344,7 +1348,7 @@ const edit = props => {
       )}
       {listChecked && (
         <div
-          className={`${className}__list_wrap`}
+          className={`premium-pricing-table__list_wrap`}
           style={{
             marginTop: listMarginT + "px",
             marginBottom: listMarginB + "px"
@@ -1352,7 +1356,7 @@ const edit = props => {
         >
           <RichText
             tagName="ul"
-            className={`${className}__list list-${listStyle}`}
+            className={`premium-pricing-table__list list-${listStyle}`}
             multiline="li"
             placeholder={__("List Item #1")}
             value={listItems}
@@ -1375,10 +1379,10 @@ const edit = props => {
         </div>
       )}
       {descChecked && (
-        <div className={`${className}__desc_wrap`}>
+        <div className={`premium-pricing-table__desc_wrap`}>
           <RichText
             tagName="p"
-            className={`${className}__desc`}
+            className={`premium-pricing-table__desc`}
             onChange={newText => setAttributes({ desc: newText })}
             placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
             value={desc}
@@ -1399,13 +1403,13 @@ const edit = props => {
       )}
       {btnChecked && (
         <div
-          className={`${className}__button`}
+          className={`premium-pricing-table__button`}
           style={{
             width: btnWidth + "%"
           }}
         >
           <a
-            class={`${className}__button_link`}
+            class={`premium-pricing-table__button_link`}
             href="{ attributes.btnUrl }"
             target={btnTarget ? "_blank" : "_self"}
             style={{

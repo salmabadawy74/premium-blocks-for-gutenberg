@@ -1,3 +1,4 @@
+import classnames from 'classnames'
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
@@ -24,10 +25,8 @@ const CONTENT = [
   ["core/paragraph", { content: __("Insert Your Content Here") }]
 ];
 
-const className = "premium-container";
-
 const edit = props => {
-  const { isSelected, setAttributes } = props;
+  const { isSelected, className, setAttributes } = props;
 
   const {
     stretchSection,
@@ -99,6 +98,9 @@ const edit = props => {
       label: __("Bottom")
     }
   ];
+  
+  const mainClasses = classnames ( className, 'premium-container' );
+  
   return [
     isSelected && (
       <BlockControls key="controls">
@@ -328,7 +330,7 @@ const edit = props => {
       </InspectorControls>
     ),
     <div
-      className={`${className} ${className}__stretch_${stretchSection} ${className}__${innerWidthType}`}
+      className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
       style={{
         textAlign: horAlign,
         minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
@@ -354,7 +356,7 @@ const edit = props => {
       }}
     >
       <div
-        className={`${className}__content_wrap ${className}__${vPos}`}
+        className={`premium-container__content_wrap premium-container__${vPos}`}
         style={{
           maxWidth:
             "boxed" == innerWidthType && stretchSection
@@ -364,7 +366,7 @@ const edit = props => {
               : "100%"
         }}
       >
-        <div className={`${className}__content_inner`}>
+        <div className={`premium-container__content_inner`}>
           <InnerBlocks template={CONTENT} />
         </div>
       </div>

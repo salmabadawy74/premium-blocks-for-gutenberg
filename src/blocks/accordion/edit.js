@@ -1,9 +1,8 @@
+import classnames from 'classnames'
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-
-const className = "premium-accordion";
 
 const { Component, Fragment } = wp.element;
 
@@ -61,7 +60,7 @@ class PremiumAccordion extends Component {
   }
 
   render() {
-    const { isSelected, setAttributes, clientId } = this.props;
+    const { isSelected, setAttributes, clientId, className } = this.props;
     const {
       accordionId,
       repeaterItems,
@@ -163,15 +162,17 @@ class PremiumAccordion extends Component {
         return item;
       });
     };
+    
+    const mainClasses = classnames ( className, 'premium-accordion' );
 
     const accordionItems = repeaterItems.map((item, index) => {
       return (
         <div
-          id={`${className}__layer${index}`}
-          className={`${className}__content_wrap`}
+          id={`premium-accordion__layer${index}`}
+          className={`premium-accordion__content_wrap`}
         >
           <div
-            className={`${className}__title_wrap ${className}__${direction} ${className}__${arrowPos}`}
+            className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
             style={{
               backgroundColor: titleBack,
               border: titleBorder,
@@ -184,10 +185,10 @@ class PremiumAccordion extends Component {
               paddingLeft: titlePaddingL
             }}
           >
-            <div className={`${className}__title`}>
+            <div className={`premium-accordion__title`}>
               <RichText
                 tagName={titleTag.toLowerCase()}
-                className={`${className}__title_text`}
+                className={`premium-accordion__title_text`}
                 onChange={newText =>
                   setAttributes({
                     repeaterItems: onAccordionChange(
@@ -211,9 +212,9 @@ class PremiumAccordion extends Component {
                 }}
               />
             </div>
-            <div className={`${className}__icon_wrap`}>
+            <div className={`premium-accordion__icon_wrap`}>
               <svg
-                className={`${className}__icon`}
+                className={`premium-accordion__icon`}
                 role="img"
                 focusable="false"
                 xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +233,7 @@ class PremiumAccordion extends Component {
             </div>
           </div>
           <div
-            className={`${className}__desc_wrap`}
+            className={`premium-accordion__desc_wrap`}
             style={{
               textAlign: descAlign,
               backgroundColor: descBack,
@@ -249,7 +250,7 @@ class PremiumAccordion extends Component {
             {"text" === contentType && (
               <RichText
                 tagName="p"
-                className={`${className}__desc`}
+                className={`premium-accordion__desc`}
                 onChange={newText =>
                   setAttributes({
                     repeaterItems: onAccordionChange("descText", newText, index)
@@ -663,7 +664,7 @@ class PremiumAccordion extends Component {
         </InspectorControls>
       ),
       <Fragment>
-        <div id={accordionId} className={`${className}`}>
+        <div id={accordionId} className={`${mainClasses}`}>
           {accordionItems}
         </div>
         <div className={"premium-repeater"}>
