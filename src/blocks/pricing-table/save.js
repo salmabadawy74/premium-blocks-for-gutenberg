@@ -1,8 +1,11 @@
-const className = "premium-pricing-table";
+import classnames from 'classnames'
 
 const { RichText } = wp.editor;
 
 const save = props => {
+  
+  const { className } = props;
+  
   const {
     contentAlign,
     tableBack,
@@ -130,10 +133,13 @@ const save = props => {
     featsAlign,
     id
   } = props.attributes;
+  
+  const mainClasses = classnames ( className, 'premium-pricing-table' );
+  
   return (
     <div
-      id={`${className}-${id}`}
-      className={`${className}`}
+      id={`${mainClasses}-${id}`}
+      className={`${mainClasses}`}
       style={{
         textAlign: contentAlign,
         background: tableBack,
@@ -147,10 +153,10 @@ const save = props => {
     >
       {badgeChecked && (
         <div
-          className={`${className}__badge_wrap ${className}__badge_${badgePos}`}
+          className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgePos}`}
         >
           <div
-            className={`${className}__badge`}
+            className={`premium-pricing-table__badge`}
             style={{
               borderRightColor:
                 "right" === badgePos ? badgeBack : "transparent",
@@ -182,7 +188,7 @@ const save = props => {
       )}
       {titleChecked && (
         <div
-          className={`${className}__title_wrap`}
+          className={`premium-pricing-table__title_wrap`}
           style={{
             paddingTop: titleMarginT + "px",
             paddingBottom: titleMarginB + "px"
@@ -190,7 +196,7 @@ const save = props => {
         >
           <RichText.Content
             tagName={titleTag.toLowerCase()}
-            className={`${className}__title`}
+            className={`premium-pricing-table__title`}
             value={title}
             style={{
               color: titleColor,
@@ -210,7 +216,7 @@ const save = props => {
       )}
       {priceChecked && (
         <div
-          className={`${className}__price_wrap`}
+          className={`premium-pricing-table__price_wrap`}
           style={{
             background: priceBack,
             marginTop: priceMarginT + "px",
@@ -221,7 +227,7 @@ const save = props => {
         >
           {slashPrice && (
             <strike
-              className={`${className}__slash`}
+              className={`premium-pricing-table__slash`}
               style={{
                 color: slashColor,
                 fontSize: slashSize + "px",
@@ -234,7 +240,7 @@ const save = props => {
           )}
           {currPrice && (
             <span
-              className={`${className}__currency`}
+              className={`premium-pricing-table__currency`}
               style={{
                 color: currColor,
                 fontSize: currSize + "px",
@@ -247,7 +253,7 @@ const save = props => {
           )}
           {valPrice && (
             <span
-              className={`${className}__val`}
+              className={`premium-pricing-table__val`}
               style={{
                 color: valColor,
                 fontSize: valSize + "px",
@@ -260,7 +266,7 @@ const save = props => {
           )}
           {divPrice && (
             <span
-              className={`${className}__divider`}
+              className={`premium-pricing-table__divider`}
               style={{
                 color: divColor,
                 fontSize: divSize + "px",
@@ -273,7 +279,7 @@ const save = props => {
           )}
           {durPrice && (
             <span
-              className={`${className}__dur`}
+              className={`premium-pricing-table__dur`}
               style={{
                 color: durColor,
                 fontSize: durSize + "px",
@@ -288,14 +294,14 @@ const save = props => {
       )}
       {listChecked && (
         <div
-          className={`${className}__list_wrap`}
+          className={`premium-pricing-table__list_wrap`}
           style={{
             marginTop: listMarginT + "px",
             marginBottom: listMarginB + "px"
           }}
         >
           <ul
-            className={`${className}__list list-${listStyle}`}
+            className={`premium-pricing-table__list list-${listStyle}`}
             style={{
               color: listColor,
               fontSize: listSize + "px",
@@ -316,10 +322,10 @@ const save = props => {
         </div>
       )}
       {descChecked && (
-        <div className={`${className}__desc_wrap`}>
+        <div className={`premium-pricing-table__desc_wrap`}>
           <RichText.Content
             tagName="p"
-            className={`${className}__desc`}
+            className={`premium-pricing-table__desc`}
             value={desc}
             style={{
               color: descColor,
@@ -338,13 +344,13 @@ const save = props => {
       )}
       {btnChecked && (
         <div
-          className={`${className}__button`}
+          className={`premium-pricing-table__button`}
           style={{
             width: btnWidth + "%"
           }}
         >
           <a
-            class={`${className}__button_link`}
+            class={`premium-pricing-table__button_link`}
             href={btnLink}
             target={btnTarget ? "_blank" : "_self"}
             rel="noopener noreferrer"

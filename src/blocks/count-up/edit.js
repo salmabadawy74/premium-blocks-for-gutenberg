@@ -1,11 +1,10 @@
+import classnames from 'classnames'
 import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import PremiumBorder from "../../components/premium-border";
 import FONTS from "../../components/premium-fonts";
-
-const className = "premium-countup";
 
 const { __ } = wp.i18n;
 
@@ -18,12 +17,12 @@ const {
   ToggleControl,
   IconButton
 } = wp.components;
-const { InspectorControls, ColorPalette, MediaUpload } = wp.editor;
+const { InspectorControls, ColorPalette, CMediaUpload } = wp.editor;
 
 const { Fragment } = wp.element;
 
 const edit = props => {
-  const { isSelected, setAttributes } = props;
+  const { isSelected, setAttributes, className } = props;
   const {
     increment,
     time,
@@ -187,6 +186,8 @@ const edit = props => {
 
     addFontToHead(fontFamily);
   };
+  
+  const mainClasses = classnames ( className, 'premium-countup' );
 
   return [
     isSelected && (
@@ -664,13 +665,13 @@ const edit = props => {
     ),
     <div>
       {iconType === "fa" && 1 != FontAwesomeEnabled && iconCheck && (
-        <p className={`${className}__alert`}>
+        <p className={`premium-countup__alert`}>
           {__("Please Enable Font Awesome Icons from Plugin settings")}
         </p>
       )}
     </div>,
     <div
-      className={`${className}__wrap`}
+      className={`${mainClasses}__wrap`}
       style={{
         justifyContent: align,
         flexDirection: flexDir,
@@ -689,7 +690,7 @@ const edit = props => {
     >
       {iconCheck && (
         <div
-          className={`${className}__icon_wrap`}
+          className={`premium-countup__icon_wrap`}
           style={{
             marginRight:
               "row" === flexDir || "row-reverse" === flexDir
@@ -707,7 +708,7 @@ const edit = props => {
         >
           {"icon" === icon && (
             <i
-              className={`${className}__icon ${iconClass}`}
+              className={`premium-countup__icon ${iconClass}`}
               style={{
                 fontSize: iconSize + "px",
                 color: iconColor
@@ -726,7 +727,7 @@ const edit = props => {
         </div>
       )}
       <div
-        className={`${className}__info`}
+        className={`premium-countup__info`}
         style={{
           alignSelf:
             "row-reverse" === flexDir || "row" === flexDir
@@ -734,10 +735,10 @@ const edit = props => {
               : selfAlign
         }}
       >
-        <div className={`${className}__desc`}>
+        <div className={`premium-countup__desc`}>
           {prefix && (
             <p
-              className={`${className}__prefix`}
+              className={`premium-countup__prefix`}
               style={{
                 fontSize: prefixSize + "px",
                 fontFamily: prefixFamily,
@@ -750,7 +751,7 @@ const edit = props => {
             </p>
           )}
           <p
-            className={`${className}__increment`}
+            className={`premium-countup__increment`}
             data-interval={time}
             data-delay={delay}
             style={{
@@ -764,7 +765,7 @@ const edit = props => {
           </p>
           {suffix && (
             <p
-              className={`${className}__suffix`}
+              className={`premium-countup__suffix`}
               style={{
                 fontSize: suffixSize + "px",
                 fontFamily: suffixFamily,
@@ -779,7 +780,7 @@ const edit = props => {
         </div>
         {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
           <h3
-            className={`${className}__title`}
+            className={`premium-countup__title`}
             style={{
               fontSize: titleSize + "px",
               fontFamily: titleFamily,
@@ -798,7 +799,7 @@ const edit = props => {
       </div>
       {titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && (
         <h3
-          className={`${className}__title`}
+          className={`premium-countup__title`}
           style={{
             fontSize: titleSize + "px",
             fontFamily: titleFamily,
