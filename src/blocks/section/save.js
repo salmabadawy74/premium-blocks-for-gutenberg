@@ -1,8 +1,11 @@
+import classnames from 'classnames'
+
 const { InnerBlocks } = wp.editor;
 
-const className = "premium-container";
-
 const save = props => {
+  
+  const { className } = props;
+  
   const {
     stretchSection,
     horAlign,
@@ -38,9 +41,12 @@ const save = props => {
     shadowVertical,
     shadowPosition
   } = props.attributes;
+  
+  const mainClasses = classnames ( className, 'premium-container' );
+  
   return (
     <div
-      className={`${className} ${className}__stretch_${stretchSection} ${className}__${innerWidthType}`}
+      className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
       style={{
         textAlign: horAlign,
         minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
@@ -66,7 +72,7 @@ const save = props => {
       }}
     >
       <div
-        className={`${className}__content_wrap ${className}__${vPos}`}
+        className={`premium-container__content_wrap premium-container__${vPos}`}
         style={{
           maxWidth:
             "boxed" == innerWidthType && stretchSection
@@ -76,7 +82,7 @@ const save = props => {
               : "100%"
         }}
       >
-        <div className={`${className}__content_inner`}>
+        <div className={`premium-container__content_inner`}>
           <InnerBlocks.Content />
         </div>
       </div>

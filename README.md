@@ -63,6 +63,10 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 ## Changelog
 
+### 1.7.0
+
+- Fixed: Additional CSS Classes are not rendered on the editor page.
+
 ### 1.6.9
 
 - Tweak: WPML Compitablity for all blocks.
