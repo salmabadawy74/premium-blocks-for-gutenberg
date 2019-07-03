@@ -1,4 +1,4 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTextShadow from "../../components/premium-text-shadow";
@@ -22,8 +22,6 @@ const {
 const { Component, Fragment } = wp.element;
 
 const { InspectorControls, MediaUpload, ColorPalette } = wp.editor;
-
-const className = "premium-video-box";
 
 const { __ } = wp.i18n;
 
@@ -213,8 +211,8 @@ class edit extends Component {
 
       addFontToHead(fontFamily);
     };
-    
-    const mainClasses = classnames ( className, 'premium-video-box' );
+
+    const mainClasses = classnames(className, "premium-video-box");
 
     return [
       isSelected && (
@@ -470,7 +468,7 @@ class edit extends Component {
                         setAttributes({ playBorderWidth: newWidth })
                       }
                       onChangeColor={colorValue =>
-                        setAttributes({ playBorderColor: colorValue })
+                        setAttributes({ playBorderColor: colorValue.hex })
                       }
                       onChangeRadius={newrRadius =>
                         setAttributes({ playBorderRadius: newrRadius })
@@ -609,7 +607,7 @@ class edit extends Component {
                       vertical={descShadowVertical}
                       onChangeColor={newColor =>
                         setAttributes({
-                          descShadowColor: newColor || "transparent"
+                          descShadowColor: newColor.hex || "transparent"
                         })
                       }
                       onChangeBlur={newBlur =>
@@ -656,7 +654,7 @@ class edit extends Component {
                 setAttributes({ boxBorderWidth: newWidth })
               }
               onChangeColor={colorValue =>
-                setAttributes({ boxBorderColor: colorValue })
+                setAttributes({ boxBorderColor: colorValue.hex })
               }
               onChangeRadius={newrRadius =>
                 setAttributes({ boxBorderRadius: newrRadius })
@@ -671,7 +669,8 @@ class edit extends Component {
               position={shadowPosition}
               onChangeColor={newColor =>
                 setAttributes({
-                  shadowColor: newColor === undefined ? "transparent" : newColor
+                  shadowColor:
+                    newColor === undefined ? "transparent" : newColor.hex
                 })
               }
               onChangeBlur={newBlur =>

@@ -1,4 +1,4 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
@@ -162,8 +162,8 @@ class PremiumAccordion extends Component {
         return item;
       });
     };
-    
-    const mainClasses = classnames ( className, 'premium-accordion' );
+
+    const mainClasses = classnames(className, "premium-accordion");
 
     const accordionItems = repeaterItems.map((item, index) => {
       return (
@@ -373,7 +373,7 @@ class PremiumAccordion extends Component {
                 setAttributes({ titleBorderWidth: newWidth })
               }
               onChangeColor={colorValue =>
-                setAttributes({ titleBorderColor: colorValue })
+                setAttributes({ titleBorderColor: colorValue.hex })
               }
               onChangeRadius={newrRadius =>
                 setAttributes({ titleBorderRadius: newrRadius })
@@ -385,7 +385,7 @@ class PremiumAccordion extends Component {
               horizontal={titleShadowHorizontal}
               vertical={titleShadowVertical}
               onChangeColor={newColor =>
-                setAttributes({ titleShadowColor: newColor })
+                setAttributes({ titleShadowColor: newColor.hex })
               }
               onChangeBlur={newBlur =>
                 setAttributes({ titleShadowBlur: newBlur })
@@ -598,7 +598,7 @@ class PremiumAccordion extends Component {
                 setAttributes({ descBorderWidth: newWidth })
               }
               onChangeColor={colorValue =>
-                setAttributes({ descBorderColor: colorValue })
+                setAttributes({ descBorderColor: colorValue.hex })
               }
               onChangeRadius={newrRadius =>
                 setAttributes({ descBorderRadius: newrRadius })
@@ -614,7 +614,7 @@ class PremiumAccordion extends Component {
                 onChangeColor={newColor =>
                   setAttributes({
                     textShadowColor:
-                      newColor === undefined ? "transparent" : newColor
+                      newColor === undefined ? "transparent" : newColor.hex
                   })
                 }
                 onChangeBlur={newBlur =>

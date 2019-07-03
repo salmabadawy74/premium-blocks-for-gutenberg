@@ -410,8 +410,9 @@ var _wp$components = wp.components,
     SelectControl = _wp$components.SelectControl,
     RangeControl = _wp$components.RangeControl,
     Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
-var ColorPalette = wp.editor.ColorPalette;
+    Button = _wp$components.Button,
+    ColorPicker = _wp$components.ColorPicker;
+
 
 function PremiumBorder(props) {
   var borderType = props.borderType,
@@ -492,10 +493,10 @@ function PremiumBorder(props) {
               null,
               __("Border Color")
             ),
-            wp.element.createElement(ColorPalette, {
-              value: borderColor,
-              onChange: onChangeColor,
-              allowReset: true
+            wp.element.createElement(ColorPicker, {
+              color: borderColor,
+              onChangeComplete: onChangeColor,
+              disableAlpha: true
             })
           ),
           wp.element.createElement(RangeControl, {
@@ -633,9 +634,10 @@ var _wp$components = wp.components,
     RangeControl = _wp$components.RangeControl,
     SelectControl = _wp$components.SelectControl,
     Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
+    Button = _wp$components.Button,
+    ColorPicker = _wp$components.ColorPicker;
 var Fragment = wp.element.Fragment;
-var ColorPalette = wp.editor.ColorPalette;
+
 
 function PremiumBoxShadow(props) {
   var inner = props.inner,
@@ -698,10 +700,10 @@ function PremiumBoxShadow(props) {
               null,
               __("Shadow Color")
             ),
-            wp.element.createElement(ColorPalette, {
-              value: color,
-              onChange: onChangeColor,
-              allowReset: true
+            wp.element.createElement(ColorPicker, {
+              color: color,
+              onChangeComplete: onChangeColor,
+              disableAlpha: true
             })
           ),
           wp.element.createElement(RangeControl, {
@@ -755,7 +757,8 @@ var __ = wp.i18n.__;
 var _wp$components = wp.components,
     RangeControl = _wp$components.RangeControl,
     Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
+    Button = _wp$components.Button,
+    ColorPicker = _wp$components.ColorPicker;
 var Fragment = wp.element.Fragment;
 var ColorPalette = wp.editor.ColorPalette;
 
@@ -808,10 +811,10 @@ function PremiumTextShadow(props) {
               null,
               __("Shadow Color")
             ),
-            wp.element.createElement(ColorPalette, {
-              value: color,
-              onChange: onChangeColor,
-              allowReset: true
+            wp.element.createElement(ColorPicker, {
+              color: borderColor,
+              onChangeComplete: onChangeColor,
+              disableAlpha: true
             })
           ),
           wp.element.createElement(RangeControl, {
@@ -4204,7 +4207,7 @@ var PremiumAccordion = function (_Component) {
         });
       };
 
-      var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-accordion');
+      var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-accordion");
 
       var accordionItems = repeaterItems.map(function (item, index) {
         return wp.element.createElement(
@@ -4450,7 +4453,7 @@ var PremiumAccordion = function (_Component) {
               return setAttributes({ titleBorderWidth: newWidth });
             },
             onChangeColor: function onChangeColor(colorValue) {
-              return setAttributes({ titleBorderColor: colorValue });
+              return setAttributes({ titleBorderColor: colorValue.hex });
             },
             onChangeRadius: function onChangeRadius(newrRadius) {
               return setAttributes({ titleBorderRadius: newrRadius });
@@ -4462,7 +4465,7 @@ var PremiumAccordion = function (_Component) {
             horizontal: titleShadowHorizontal,
             vertical: titleShadowVertical,
             onChangeColor: function onChangeColor(newColor) {
-              return setAttributes({ titleShadowColor: newColor });
+              return setAttributes({ titleShadowColor: newColor.hex });
             },
             onChangeBlur: function onChangeBlur(newBlur) {
               return setAttributes({ titleShadowBlur: newBlur });
@@ -4726,7 +4729,7 @@ var PremiumAccordion = function (_Component) {
               return setAttributes({ descBorderWidth: newWidth });
             },
             onChangeColor: function onChangeColor(colorValue) {
-              return setAttributes({ descBorderColor: colorValue });
+              return setAttributes({ descBorderColor: colorValue.hex });
             },
             onChangeRadius: function onChangeRadius(newrRadius) {
               return setAttributes({ descBorderRadius: newrRadius });
@@ -4739,7 +4742,7 @@ var PremiumAccordion = function (_Component) {
             vertical: textShadowVertical,
             onChangeColor: function onChangeColor(newColor) {
               return setAttributes({
-                textShadowColor: newColor === undefined ? "transparent" : newColor
+                textShadowColor: newColor === undefined ? "transparent" : newColor.hex
               });
             },
             onChangeBlur: function onChangeBlur(newBlur) {
@@ -5788,7 +5791,7 @@ var edit = function edit(props) {
   }];
   setAttributes({ id: blockID });
 
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-banner');
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-banner");
 
   return [isSelected && wp.element.createElement(
     BlockControls,
@@ -6073,7 +6076,7 @@ var edit = function edit(props) {
         vertical: shadowVertical,
         onChangeColor: function onChangeColor(newColor) {
           return setAttributes({
-            shadowColor: newColor === undefined ? "transparent" : newColor
+            shadowColor: newColor === undefined ? "transparent" : newColor.hex
           });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
@@ -6144,7 +6147,7 @@ var edit = function edit(props) {
         vertical: descShadowVertical,
         onChangeColor: function onChangeColor(newColor) {
           return setAttributes({
-            descShadowColor: newColor === undefined ? "transparent" : newColor
+            descShadowColor: newColor === undefined ? "transparent" : newColor.hex
           });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
@@ -6186,7 +6189,7 @@ var edit = function edit(props) {
         },
         onChangeColor: function onChangeColor(colorValue) {
           return setAttributes({
-            borderColor: colorValue === undefined ? "transparent" : colorValue
+            borderColor: colorValue === undefined ? "transparent" : colorValue.hex
           });
         },
         onChangeRadius: function onChangeRadius(newRadius) {
@@ -6204,7 +6207,7 @@ var edit = function edit(props) {
         position: containerShadowPosition,
         onChangeColor: function onChangeColor(newColor) {
           return setAttributes({
-            containerShadowColor: newColor
+            containerShadowColor: newColor.hex
           });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
@@ -7905,7 +7908,7 @@ var edit = function edit(props) {
     addFontToHead(fontFamily);
   };
 
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-button');
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-button");
 
   return [isSelected && "block" != btnSize && wp.element.createElement(
     BlockControls,
@@ -8074,7 +8077,7 @@ var edit = function edit(props) {
         horizontal: shadowHorizontal,
         vertical: shadowVertical,
         onChangeColor: function onChangeColor(newColor) {
-          return setAttributes({ shadowColor: newColor });
+          return setAttributes({ shadowColor: newColor.hex });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
           return setAttributes({ shadowBlur: newBlur });
@@ -8164,7 +8167,7 @@ var edit = function edit(props) {
           return setAttributes({ borderWidth: newWidth });
         },
         onChangeColor: function onChangeColor(colorValue) {
-          return setAttributes({ borderColor: colorValue });
+          return setAttributes({ borderColor: colorValue.hex });
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
           return setAttributes({ borderRadius: newrRadius });
@@ -8198,7 +8201,7 @@ var edit = function edit(props) {
         position: btnShadowPosition,
         onChangeColor: function onChangeColor(newColor) {
           return setAttributes({
-            btnShadowColor: newColor === undefined ? "transparent" : newColor
+            btnShadowColor: newColor === undefined ? "transparent" : newColor.hex
           });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
@@ -9389,7 +9392,7 @@ var edit = function edit(props) {
     addFontToHead(fontFamily);
   };
 
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-countup');
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-countup");
 
   return [isSelected && wp.element.createElement(
     InspectorControls,
@@ -9906,7 +9909,7 @@ var edit = function edit(props) {
           return setAttributes({ borderWidth: newWidth });
         },
         onChangeColor: function onChangeColor(colorValue) {
-          return setAttributes({ borderColor: colorValue });
+          return setAttributes({ borderColor: colorValue.hex });
         },
         onChangeRadius: function onChangeRadius(newRadius) {
           return setAttributes({ borderRadius: newRadius });
@@ -9921,7 +9924,7 @@ var edit = function edit(props) {
         position: shadowPosition,
         onChangeColor: function onChangeColor(newColor) {
           return setAttributes({
-            shadowColor: newColor
+            shadowColor: newColor.hex
           });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
@@ -11903,7 +11906,7 @@ var edit = function edit(props) {
     addFontToHead(fontFamily);
   };
 
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-dheading-block__container');
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-dheading-block__container");
 
   return [isSelected && wp.element.createElement(
     BlockControls,
@@ -12139,7 +12142,9 @@ var edit = function edit(props) {
           return setAttributes({ firstBorderWidth: newWidth || "0" });
         },
         onChangeColor: function onChangeColor(colorValue) {
-          return setAttributes({ firstBorderColor: colorValue || "transparent" });
+          return setAttributes({
+            firstBorderColor: colorValue.hex || "transparent"
+          });
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
           return setAttributes({ firstBorderRadius: newrRadius || "0" });
@@ -12151,7 +12156,7 @@ var edit = function edit(props) {
         horizontal: firstShadowHorizontal,
         vertical: firstShadowVertical,
         onChangeColor: function onChangeColor(newColor) {
-          return setAttributes({ firstShadowColor: newColor || "transparent" });
+          return setAttributes({ firstShadowColor: newColor.hex || "transparent" });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
           return setAttributes({ firstShadowBlur: newBlur || "0" });
@@ -12380,7 +12385,7 @@ var edit = function edit(props) {
         },
         onChangeColor: function onChangeColor(colorValue) {
           return setAttributes({
-            secondBorderColor: colorValue || "transparent"
+            secondBorderColor: colorValue.hex || "transparent"
           });
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
@@ -12393,7 +12398,9 @@ var edit = function edit(props) {
         horizontal: secondShadowHorizontal,
         vertical: secondShadowVertical,
         onChangeColor: function onChangeColor(newColor) {
-          return setAttributes({ secondShadowColor: newColor || "transparent" });
+          return setAttributes({
+            secondShadowColor: newColor.hex || "transparent"
+          });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
           return setAttributes({ secondShadowBlur: newBlur || "0" });
@@ -12509,7 +12516,7 @@ var edit = function edit(props) {
         },
         onChangeColor: function onChangeColor(colorValue) {
           return setAttributes({
-            containerBorderColor: colorValue
+            containerBorderColor: colorValue.hex
           });
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
@@ -13943,7 +13950,7 @@ var edit = function edit(props) {
 
   var ALIGNS = ["left", "center", "right"];
 
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-icon');
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-icon");
 
   return [isSelected && wp.element.createElement(
     InspectorControls,
@@ -14099,7 +14106,7 @@ var edit = function edit(props) {
           return setAttributes({ borderWidth: newWidth });
         },
         onChangeColor: function onChangeColor(colorValue) {
-          return setAttributes({ borderColor: colorValue });
+          return setAttributes({ borderColor: colorValue.hex });
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
           return setAttributes({ borderRadius: newrRadius });
@@ -14112,7 +14119,7 @@ var edit = function edit(props) {
         horizontal: shadowHorizontal,
         vertical: shadowVertical,
         onChangeColor: function onChangeColor(newColor) {
-          return setAttributes({ shadowColor: newColor });
+          return setAttributes({ shadowColor: newColor.hex });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
           return setAttributes({ shadowBlur: newBlur });
@@ -14249,7 +14256,7 @@ var edit = function edit(props) {
           return setAttributes({ wrapBorderWidth: newWidth });
         },
         onChangeColor: function onChangeColor(colorValue) {
-          return setAttributes({ wrapBorderColor: colorValue });
+          return setAttributes({ wrapBorderColor: colorValue.hex });
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
           return setAttributes({ wrapBorderRadius: newrRadius });
@@ -14264,7 +14271,7 @@ var edit = function edit(props) {
         position: wrapShadowPosition,
         onChangeColor: function onChangeColor(newColor) {
           return setAttributes({
-            wrapShadowColor: newColor
+            wrapShadowColor: newColor.hex
           });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
@@ -27656,7 +27663,7 @@ var edit = function edit(props) {
     addFontToHead(fontFamily);
   };
 
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-icon-box');
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-icon-box");
 
   return [isSelected && wp.element.createElement(
     InspectorControls,
@@ -27925,7 +27932,9 @@ var edit = function edit(props) {
         horizontal: titleShadowHorizontal,
         vertical: titleShadowVertical,
         onChangeColor: function onChangeColor(newColor) {
-          return setAttributes({ titleShadowColor: newColor || "transparent" });
+          return setAttributes({
+            titleShadowColor: newColor.hex || "transparent"
+          });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
           return setAttributes({ titleShadowBlur: newBlur || 0 });
@@ -28179,7 +28188,7 @@ var edit = function edit(props) {
           return setAttributes({ btnBorderWidth: newWidth });
         },
         onChangeColor: function onChangeColor(colorValue) {
-          return setAttributes({ btnBorderColor: colorValue });
+          return setAttributes({ btnBorderColor: colorValue.hex });
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
           return setAttributes({ btnBorderRadius: newrRadius });
@@ -28194,7 +28203,7 @@ var edit = function edit(props) {
         position: btnShadowPosition,
         onChangeColor: function onChangeColor(newColor) {
           return setAttributes({
-            btnShadowColor: newColor || "transparent"
+            btnShadowColor: newColor.hex || "transparent"
           });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
@@ -28329,7 +28338,7 @@ var edit = function edit(props) {
           return setAttributes({ borderWidth: newWidth });
         },
         onChangeColor: function onChangeColor(colorValue) {
-          return setAttributes({ borderColor: colorValue });
+          return setAttributes({ borderColor: colorValue.hex });
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
           return setAttributes({ borderRadius: newrRadius });
@@ -28344,7 +28353,7 @@ var edit = function edit(props) {
         position: shadowPosition,
         onChangeColor: function onChangeColor(newColor) {
           return setAttributes({
-            shadowColor: newColor || "transparent"
+            shadowColor: newColor.hex || "transparent"
           });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
@@ -28364,7 +28373,7 @@ var edit = function edit(props) {
         },
         onChangePosition: function onChangePosition(newValue) {
           return setAttributes({
-            shadowPosition: newValue || 0
+            shadowPosition: newValue
           });
         }
       }),
@@ -28378,7 +28387,7 @@ var edit = function edit(props) {
         position: hoverShadowPosition,
         onChangeColor: function onChangeColor(newColor) {
           return setAttributes({
-            hoverShadowColor: newColor
+            hoverShadowColor: newColor.hex
           });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
@@ -32363,8 +32372,6 @@ registerBlockType("premium/pricing-table", {
 
 
 
-var className = "premium-pricing-table";
-
 var __ = wp.i18n.__;
 var Fragment = wp.element.Fragment;
 var _wp$components = wp.components,
@@ -32571,7 +32578,7 @@ var edit = function edit(props) {
 
   var FEATURES_ALIGN = ["left", "center", "right"];
 
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-pricing-table');
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-pricing-table");
 
   setAttributes({ id: blockId });
 
@@ -32712,7 +32719,7 @@ var edit = function edit(props) {
         horizontal: titleShadowHorizontal,
         vertical: titleShadowVertical,
         onChangeColor: function onChangeColor(newColor) {
-          return setAttributes({ titleShadowColor: newColor });
+          return setAttributes({ titleShadowColor: newColor.hex });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
           return setAttributes({ titleShadowBlur: newBlur });
@@ -33427,7 +33434,7 @@ var edit = function edit(props) {
           return setAttributes({ btnBorderWidth: newWidth });
         },
         onChangeColor: function onChangeColor(colorValue) {
-          return setAttributes({ btnBorderColor: colorValue });
+          return setAttributes({ btnBorderColor: colorValue.hex });
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
           return setAttributes({ btnBorderRadius: newrRadius });
@@ -33643,7 +33650,7 @@ var edit = function edit(props) {
           return setAttributes({ borderWidth: newWidth });
         },
         onChangeColor: function onChangeColor(colorValue) {
-          return setAttributes({ borderColor: colorValue });
+          return setAttributes({ borderColor: colorValue.hex });
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
           return setAttributes({ borderRadius: newrRadius });
@@ -33658,7 +33665,7 @@ var edit = function edit(props) {
         position: tableShadowPosition,
         onChangeColor: function onChangeColor(newColor) {
           return setAttributes({
-            tableShadowColor: newColor === undefined ? "transparent" : newColor
+            tableShadowColor: newColor === undefined ? "transparent" : newColor.hex
           });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
@@ -35915,7 +35922,7 @@ var edit = function edit(props) {
     label: __("Bottom")
   }];
 
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-container');
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-container");
 
   return [isSelected && wp.element.createElement(
     BlockControls,
@@ -36062,7 +36069,7 @@ var edit = function edit(props) {
         return setAttributes({ borderWidth: newWidth });
       },
       onChangeColor: function onChangeColor(colorValue) {
-        return setAttributes({ borderColor: colorValue });
+        return setAttributes({ borderColor: colorValue.hex });
       },
       onChangeRadius: function onChangeRadius(newrRadius) {
         return setAttributes({ borderRadius: newrRadius });
@@ -36077,7 +36084,7 @@ var edit = function edit(props) {
       position: shadowPosition,
       onChangeColor: function onChangeColor(newColor) {
         return setAttributes({
-          shadowColor: newColor === undefined ? "transparent" : newColor
+          shadowColor: newColor === undefined ? "transparent" : newColor.hex
         });
       },
       onChangeBlur: function onChangeBlur(newBlur) {
@@ -37097,7 +37104,7 @@ var edit = function edit(props) {
     label: __("Rounded")
   }];
 
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-testimonial');
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-testimonial");
 
   return [isSelected && wp.element.createElement(
     BlockControls,
@@ -37517,7 +37524,7 @@ var edit = function edit(props) {
         position: shadowPosition,
         onChangeColor: function onChangeColor(newColor) {
           return setAttributes({
-            shadowColor: newColor
+            shadowColor: newColor.hex
           });
         },
         onChangeBlur: function onChangeBlur(newBlur) {
@@ -38822,10 +38829,6 @@ var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     MediaUpload = _wp$editor.MediaUpload,
     ColorPalette = _wp$editor.ColorPalette;
-
-
-var className = "premium-video-box";
-
 var __ = wp.i18n.__;
 
 
@@ -39013,7 +39016,7 @@ var edit = function (_Component) {
         addFontToHead(fontFamily);
       };
 
-      var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-video-box');
+      var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-video-box");
 
       return [isSelected && wp.element.createElement(
         InspectorControls,
@@ -39309,7 +39312,7 @@ var edit = function (_Component) {
                   return setAttributes({ playBorderWidth: newWidth });
                 },
                 onChangeColor: function onChangeColor(colorValue) {
-                  return setAttributes({ playBorderColor: colorValue });
+                  return setAttributes({ playBorderColor: colorValue.hex });
                 },
                 onChangeRadius: function onChangeRadius(newrRadius) {
                   return setAttributes({ playBorderRadius: newrRadius });
@@ -39465,7 +39468,7 @@ var edit = function (_Component) {
                 vertical: descShadowVertical,
                 onChangeColor: function onChangeColor(newColor) {
                   return setAttributes({
-                    descShadowColor: newColor || "transparent"
+                    descShadowColor: newColor.hex || "transparent"
                   });
                 },
                 onChangeBlur: function onChangeBlur(newBlur) {
@@ -39511,7 +39514,7 @@ var edit = function (_Component) {
               return setAttributes({ boxBorderWidth: newWidth });
             },
             onChangeColor: function onChangeColor(colorValue) {
-              return setAttributes({ boxBorderColor: colorValue });
+              return setAttributes({ boxBorderColor: colorValue.hex });
             },
             onChangeRadius: function onChangeRadius(newrRadius) {
               return setAttributes({ boxBorderRadius: newrRadius });
@@ -39526,7 +39529,7 @@ var edit = function (_Component) {
             position: shadowPosition,
             onChangeColor: function onChangeColor(newColor) {
               return setAttributes({
-                shadowColor: newColor === undefined ? "transparent" : newColor
+                shadowColor: newColor === undefined ? "transparent" : newColor.hex
               });
             },
             onChangeBlur: function onChangeBlur(newBlur) {
