@@ -1,4 +1,4 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
@@ -178,9 +178,9 @@ const edit = props => {
     }
   ];
   setAttributes({ id: blockID });
-  
-  const mainClasses = classnames ( className, 'premium-banner' );
-  
+
+  const mainClasses = classnames(className, "premium-banner");
+
   return [
     isSelected && (
       <BlockControls key="controls">
@@ -399,7 +399,8 @@ const edit = props => {
             vertical={shadowVertical}
             onChangeColor={newColor =>
               setAttributes({
-                shadowColor: newColor === undefined ? "transparent" : newColor
+                shadowColor:
+                  newColor === undefined ? "transparent" : newColor.hex
               })
             }
             onChangeBlur={newBlur =>
@@ -461,7 +462,7 @@ const edit = props => {
             onChangeColor={newColor =>
               setAttributes({
                 descShadowColor:
-                  newColor === undefined ? "transparent" : newColor
+                  newColor === undefined ? "transparent" : newColor.hex
               })
             }
             onChangeBlur={newBlur =>
@@ -500,7 +501,7 @@ const edit = props => {
             onChangeColor={colorValue =>
               setAttributes({
                 borderColor:
-                  colorValue === undefined ? "transparent" : colorValue
+                  colorValue === undefined ? "transparent" : colorValue.hex
               })
             }
             onChangeRadius={newRadius =>
@@ -518,7 +519,7 @@ const edit = props => {
             position={containerShadowPosition}
             onChangeColor={newColor =>
               setAttributes({
-                containerShadowColor: newColor
+                containerShadowColor: newColor.hex
               })
             }
             onChangeBlur={newBlur =>

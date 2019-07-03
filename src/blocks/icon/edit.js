@@ -1,4 +1,4 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconsList from "../../components/premium-icons-list";
@@ -9,7 +9,6 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackgroud from "../../components/premium-background";
-
 
 const { __ } = wp.i18n;
 
@@ -116,8 +115,8 @@ const edit = props => {
   ];
 
   const ALIGNS = ["left", "center", "right"];
-  
-  const mainClasses = classnames ( className, 'premium-icon' );
+
+  const mainClasses = classnames(className, "premium-icon");
 
   return [
     isSelected && (
@@ -225,7 +224,7 @@ const edit = props => {
             onChangeType={newType => setAttributes({ borderType: newType })}
             onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
             onChangeColor={colorValue =>
-              setAttributes({ borderColor: colorValue })
+              setAttributes({ borderColor: colorValue.hex })
             }
             onChangeRadius={newrRadius =>
               setAttributes({ borderRadius: newrRadius })
@@ -238,7 +237,9 @@ const edit = props => {
             blur={shadowBlur}
             horizontal={shadowHorizontal}
             vertical={shadowVertical}
-            onChangeColor={newColor => setAttributes({ shadowColor: newColor })}
+            onChangeColor={newColor =>
+              setAttributes({ shadowColor: newColor.hex })
+            }
             onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
             onChangehHorizontal={newValue =>
               setAttributes({ shadowHorizontal: newValue })
@@ -362,7 +363,7 @@ const edit = props => {
               setAttributes({ wrapBorderWidth: newWidth })
             }
             onChangeColor={colorValue =>
-              setAttributes({ wrapBorderColor: colorValue })
+              setAttributes({ wrapBorderColor: colorValue.hex })
             }
             onChangeRadius={newrRadius =>
               setAttributes({ wrapBorderRadius: newrRadius })
@@ -378,7 +379,7 @@ const edit = props => {
             position={wrapShadowPosition}
             onChangeColor={newColor =>
               setAttributes({
-                wrapShadowColor: newColor
+                wrapShadowColor: newColor.hex
               })
             }
             onChangeBlur={newBlur =>

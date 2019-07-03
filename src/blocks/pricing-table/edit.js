@@ -1,11 +1,9 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumSizeUnits from "../../components/premium-size-units";
-
-const className = "premium-pricing-table";
 
 const { __ } = wp.i18n;
 
@@ -232,11 +230,11 @@ const edit = props => {
   ];
 
   const FEATURES_ALIGN = ["left", "center", "right"];
-  
-  const mainClasses = classnames ( className, 'premium-pricing-table' );
+
+  const mainClasses = classnames(className, "premium-pricing-table");
 
   setAttributes({ id: blockId });
-  
+
   return [
     isSelected && (
       <BlockControls key="controls">
@@ -350,7 +348,7 @@ const edit = props => {
               horizontal={titleShadowHorizontal}
               vertical={titleShadowVertical}
               onChangeColor={newColor =>
-                setAttributes({ titleShadowColor: newColor })
+                setAttributes({ titleShadowColor: newColor.hex })
               }
               onChangeBlur={newBlur =>
                 setAttributes({ titleShadowBlur: newBlur })
@@ -945,7 +943,7 @@ const edit = props => {
                 setAttributes({ btnBorderWidth: newWidth })
               }
               onChangeColor={colorValue =>
-                setAttributes({ btnBorderColor: colorValue })
+                setAttributes({ btnBorderColor: colorValue.hex })
               }
               onChangeRadius={newrRadius =>
                 setAttributes({ btnBorderRadius: newrRadius })
@@ -1121,7 +1119,7 @@ const edit = props => {
             onChangeType={newType => setAttributes({ borderType: newType })}
             onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
             onChangeColor={colorValue =>
-              setAttributes({ borderColor: colorValue })
+              setAttributes({ borderColor: colorValue.hex })
             }
             onChangeRadius={newrRadius =>
               setAttributes({ borderRadius: newrRadius })
@@ -1137,7 +1135,7 @@ const edit = props => {
             onChangeColor={newColor =>
               setAttributes({
                 tableShadowColor:
-                  newColor === undefined ? "transparent" : newColor
+                  newColor === undefined ? "transparent" : newColor.hex
               })
             }
             onChangeBlur={newBlur =>

@@ -1,7 +1,13 @@
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { SelectControl, RangeControl, Dropdown, Button } = wp.components;
-const { ColorPalette } = wp.editor;
+const {
+  SelectControl,
+  RangeControl,
+  Dropdown,
+  Button,
+  ColorPicker
+} = wp.components;
+
 export default function PremiumBorder(props) {
   const {
     borderType,
@@ -71,10 +77,10 @@ export default function PremiumBorder(props) {
             {"none" != borderType && (
               <Fragment>
                 <p>{__("Border Color")}</p>
-                <ColorPalette
-                  value={borderColor}
-                  onChange={onChangeColor}
-                  allowReset={true}
+                <ColorPicker
+                  color={borderColor}
+                  onChangeComplete={onChangeColor}
+                  disableAlpha
                 />
               </Fragment>
             )}

@@ -1,4 +1,4 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import PremiumTypo from "../../components/premium-typo";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
@@ -285,7 +285,7 @@ const edit = props => {
     addFontToHead(fontFamily);
   };
 
-    const mainClasses = classnames ( className, 'premium-icon-box' );
+  const mainClasses = classnames(className, "premium-icon-box");
 
   return [
     isSelected && (
@@ -504,7 +504,9 @@ const edit = props => {
               horizontal={titleShadowHorizontal}
               vertical={titleShadowVertical}
               onChangeColor={newColor =>
-                setAttributes({ titleShadowColor: newColor || "transparent" })
+                setAttributes({
+                  titleShadowColor: newColor.hex || "transparent"
+                })
               }
               onChangeBlur={newBlur =>
                 setAttributes({ titleShadowBlur: newBlur || 0 })
@@ -712,7 +714,7 @@ const edit = props => {
                 setAttributes({ btnBorderWidth: newWidth })
               }
               onChangeColor={colorValue =>
-                setAttributes({ btnBorderColor: colorValue })
+                setAttributes({ btnBorderColor: colorValue.hex })
               }
               onChangeRadius={newrRadius =>
                 setAttributes({ btnBorderRadius: newrRadius })
@@ -727,7 +729,7 @@ const edit = props => {
               position={btnShadowPosition}
               onChangeColor={newColor =>
                 setAttributes({
-                  btnShadowColor: newColor || "transparent"
+                  btnShadowColor: newColor.hex || "transparent"
                 })
               }
               onChangeBlur={newBlur =>
@@ -841,7 +843,7 @@ const edit = props => {
             onChangeType={newType => setAttributes({ borderType: newType })}
             onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
             onChangeColor={colorValue =>
-              setAttributes({ borderColor: colorValue })
+              setAttributes({ borderColor: colorValue.hex })
             }
             onChangeRadius={newrRadius =>
               setAttributes({ borderRadius: newrRadius })
@@ -856,7 +858,7 @@ const edit = props => {
             position={shadowPosition}
             onChangeColor={newColor =>
               setAttributes({
-                shadowColor: newColor || "transparent"
+                shadowColor: newColor.hex || "transparent"
               })
             }
             onChangeBlur={newBlur =>
@@ -876,7 +878,7 @@ const edit = props => {
             }
             onChangePosition={newValue =>
               setAttributes({
-                shadowPosition: newValue || 0
+                shadowPosition: newValue
               })
             }
           />
@@ -890,7 +892,7 @@ const edit = props => {
             position={hoverShadowPosition}
             onChangeColor={newColor =>
               setAttributes({
-                hoverShadowColor: newColor
+                hoverShadowColor: newColor.hex
               })
             }
             onChangeBlur={newBlur =>

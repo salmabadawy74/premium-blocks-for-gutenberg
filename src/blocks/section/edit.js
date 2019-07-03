@@ -1,4 +1,4 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
@@ -98,9 +98,9 @@ const edit = props => {
       label: __("Bottom")
     }
   ];
-  
-  const mainClasses = classnames ( className, 'premium-container' );
-  
+
+  const mainClasses = classnames(className, "premium-container");
+
   return [
     isSelected && (
       <BlockControls key="controls">
@@ -227,7 +227,7 @@ const edit = props => {
           onChangeType={newType => setAttributes({ borderType: newType })}
           onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
           onChangeColor={colorValue =>
-            setAttributes({ borderColor: colorValue })
+            setAttributes({ borderColor: colorValue.hex })
           }
           onChangeRadius={newrRadius =>
             setAttributes({ borderRadius: newrRadius })
@@ -242,7 +242,7 @@ const edit = props => {
           position={shadowPosition}
           onChangeColor={newColor =>
             setAttributes({
-              shadowColor: newColor === undefined ? "transparent" : newColor
+              shadowColor: newColor === undefined ? "transparent" : newColor.hex
             })
           }
           onChangeBlur={newBlur =>
