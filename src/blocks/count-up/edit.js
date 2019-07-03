@@ -1,4 +1,4 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
@@ -186,8 +186,8 @@ const edit = props => {
 
     addFontToHead(fontFamily);
   };
-  
-  const mainClasses = classnames ( className, 'premium-countup' );
+
+  const mainClasses = classnames(className, "premium-countup");
 
   return [
     isSelected && (
@@ -621,7 +621,7 @@ const edit = props => {
             onChangeType={newType => setAttributes({ borderType: newType })}
             onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
             onChangeColor={colorValue =>
-              setAttributes({ borderColor: colorValue })
+              setAttributes({ borderColor: colorValue.hex })
             }
             onChangeRadius={newRadius =>
               setAttributes({ borderRadius: newRadius })
@@ -636,7 +636,7 @@ const edit = props => {
             position={shadowPosition}
             onChangeColor={newColor =>
               setAttributes({
-                shadowColor: newColor
+                shadowColor: newColor.hex
               })
             }
             onChangeBlur={newBlur =>

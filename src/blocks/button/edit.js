@@ -1,4 +1,4 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTextShadow from "../../components/premium-text-shadow";
@@ -27,7 +27,6 @@ const {
   RichText,
   URLInput
 } = wp.editor;
-
 
 const edit = props => {
   const { isSelected, setAttributes, className, clientId: blockId } = props;
@@ -207,7 +206,7 @@ const edit = props => {
     addFontToHead(fontFamily);
   };
 
-   const mainClasses = classnames ( className, 'premium-button' );
+  const mainClasses = classnames(className, "premium-button");
 
   return [
     isSelected && "block" != btnSize && (
@@ -340,7 +339,9 @@ const edit = props => {
             blur={shadowBlur}
             horizontal={shadowHorizontal}
             vertical={shadowVertical}
-            onChangeColor={newColor => setAttributes({ shadowColor: newColor })}
+            onChangeColor={newColor =>
+              setAttributes({ shadowColor: newColor.hex })
+            }
             onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
             onChangehHorizontal={newValue =>
               setAttributes({ shadowHorizontal: newValue })
@@ -409,7 +410,7 @@ const edit = props => {
             onChangeType={newType => setAttributes({ borderType: newType })}
             onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
             onChangeColor={colorValue =>
-              setAttributes({ borderColor: colorValue })
+              setAttributes({ borderColor: colorValue.hex })
             }
             onChangeRadius={newrRadius =>
               setAttributes({ borderRadius: newrRadius })
@@ -438,7 +439,7 @@ const edit = props => {
             onChangeColor={newColor =>
               setAttributes({
                 btnShadowColor:
-                  newColor === undefined ? "transparent" : newColor
+                  newColor === undefined ? "transparent" : newColor.hex
               })
             }
             onChangeBlur={newBlur =>
