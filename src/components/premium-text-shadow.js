@@ -1,5 +1,5 @@
 const { __ } = wp.i18n;
-const { RangeControl, Dropdown, Button } = wp.components;
+const { RangeControl, Dropdown, Button, ColorPicker } = wp.components;
 const { Fragment } = wp.element;
 const { ColorPalette } = wp.editor;
 export default function PremiumTextShadow(props) {
@@ -31,10 +31,10 @@ export default function PremiumTextShadow(props) {
           <Fragment>
             <Fragment>
               <p>{__("Shadow Color")}</p>
-              <ColorPalette
-                value={color}
-                onChange={onChangeColor}
-                allowReset={true}
+              <ColorPicker
+                color={borderColor}
+                onChangeComplete={onChangeColor}
+                disableAlpha
               />
             </Fragment>
             <RangeControl

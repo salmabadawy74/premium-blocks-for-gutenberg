@@ -1,4 +1,4 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
@@ -133,8 +133,11 @@ const edit = props => {
 
     addFontToHead(fontFamily);
   };
-  
-  const mainClasses = classnames ( className, 'premium-dheading-block__container' );
+
+  const mainClasses = classnames(
+    className,
+    "premium-dheading-block__container"
+  );
 
   return [
     isSelected && (
@@ -319,7 +322,9 @@ const edit = props => {
               setAttributes({ firstBorderWidth: newWidth || "0" })
             }
             onChangeColor={colorValue =>
-              setAttributes({ firstBorderColor: colorValue || "transparent" })
+              setAttributes({
+                firstBorderColor: colorValue.hex || "transparent"
+              })
             }
             onChangeRadius={newrRadius =>
               setAttributes({ firstBorderRadius: newrRadius || "0" })
@@ -332,7 +337,7 @@ const edit = props => {
             horizontal={firstShadowHorizontal}
             vertical={firstShadowVertical}
             onChangeColor={newColor =>
-              setAttributes({ firstShadowColor: newColor || "transparent" })
+              setAttributes({ firstShadowColor: newColor.hex || "transparent" })
             }
             onChangeBlur={newBlur =>
               setAttributes({ firstShadowBlur: newBlur || "0" })
@@ -508,7 +513,7 @@ const edit = props => {
             }
             onChangeColor={colorValue =>
               setAttributes({
-                secondBorderColor: colorValue || "transparent"
+                secondBorderColor: colorValue.hex || "transparent"
               })
             }
             onChangeRadius={newrRadius =>
@@ -522,7 +527,9 @@ const edit = props => {
             horizontal={secondShadowHorizontal}
             vertical={secondShadowVertical}
             onChangeColor={newColor =>
-              setAttributes({ secondShadowColor: newColor || "transparent" })
+              setAttributes({
+                secondShadowColor: newColor.hex || "transparent"
+              })
             }
             onChangeBlur={newBlur =>
               setAttributes({ secondShadowBlur: newBlur || "0" })
@@ -619,7 +626,7 @@ const edit = props => {
             }
             onChangeColor={colorValue =>
               setAttributes({
-                containerBorderColor: colorValue
+                containerBorderColor: colorValue.hex
               })
             }
             onChangeRadius={newrRadius =>
