@@ -1,4 +1,4 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
 import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
@@ -101,7 +101,7 @@ const edit = props => {
     }
   ];
 
-    const mainClasses = classnames ( className, 'premium-testimonial' );
+  const mainClasses = classnames(className, "premium-testimonial");
 
   return [
     isSelected && (
@@ -422,7 +422,7 @@ const edit = props => {
             position={shadowPosition}
             onChangeColor={newColor =>
               setAttributes({
-                shadowColor: newColor
+                shadowColor: newColor.hex
               })
             }
             onChangeBlur={newBlur =>
