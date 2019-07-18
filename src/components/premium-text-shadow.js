@@ -32,7 +32,7 @@ export default function PremiumTextShadow(props) {
                         <Fragment>
                             <p>{__("Shadow Color")}</p>
                             <ColorPicker
-                                color={borderColor}
+                                color={color}
                                 onChangeComplete={onChangeColor}
                                 disableAlpha
                             />
