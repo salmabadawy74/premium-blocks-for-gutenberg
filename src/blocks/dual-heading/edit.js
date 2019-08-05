@@ -50,6 +50,7 @@ const edit = props => {
     firstMarginL,
     firstClip,
     firstAnim,
+    firstStroke,
     firstClipColor,
     firstShadowBlur,
     firstShadowColor,
@@ -71,6 +72,7 @@ const edit = props => {
     secondMarginL,
     secondMarginR,
     secondClip,
+    secondStroke,
     secondAnim,
     secondClipColor,
     secondShadowBlur,
@@ -198,11 +200,18 @@ const edit = props => {
             onChange={newValue => setAttributes({ firstClip: newValue })}
           />
           {firstClip && (
-            <ToggleControl
-              label={__("Animated")}
-              checked={firstAnim}
-              onChange={newValue => setAttributes({ firstAnim: newValue })}
-            />
+            <Fragment>
+              <ToggleControl
+                label={__("Animated")}
+                checked={firstAnim}
+                onChange={newValue => setAttributes({ firstAnim: newValue })}
+              />
+              <ToggleControl
+                label={__("Stroke")}
+                checked={firstStroke}
+                onChange={newValue => setAttributes({ firstStroke: newValue })}
+              />
+            </Fragment>
           )}
           <SelectControl
             label={__("Font Family")}
@@ -389,11 +398,18 @@ const edit = props => {
             onChange={newValue => setAttributes({ secondClip: newValue })}
           />
           {secondClip && (
+            <Fragment>
             <ToggleControl
               label={__("Animated")}
               checked={secondAnim}
               onChange={newValue => setAttributes({ secondAnim: newValue })}
             />
+            <ToggleControl
+              label={__('Stroke')}
+              checked={secondStroke}
+              onChange={newValue => setAttributes({secondStroke: newValue})}
+            />
+            </Fragment>
           )}
           <SelectControl
             label={__("Font Family")}
@@ -656,7 +672,7 @@ const edit = props => {
       <div className={`premium-dheading-block__wrap`}>
         <h2 className={`premium-dheading-block__title`}>
           <span
-            className={`premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
+            className={`premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim} premium-headings-${firstStroke}`}
             style={{
               display: display,
               color: firstColor,
@@ -683,7 +699,7 @@ const edit = props => {
             {firstHeading}
           </span>
           <span
-            className={`premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
+            className={`premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim} premium-headings-${secondStroke}`}
             style={{
               display: display,
               color: secondColor,
