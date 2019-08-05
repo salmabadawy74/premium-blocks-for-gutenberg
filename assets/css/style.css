@@ -16,6 +16,11 @@
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
+.premium-dheading-block__container .premium-headings-true {
+  -webkit-text-stroke-color: transparent;
+  -webkit-text-fill-color: #fafafa;
+  -webkit-text-stroke-width: 2px;
+}
 .premium-dheading-block__container .premium-headinga-true {
   background-size: 300% 300% !important;
   -webkit-animation: Gradient 10s ease-in-out infinite;
