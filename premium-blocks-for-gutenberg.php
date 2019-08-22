@@ -18,12 +18,12 @@
 if( ! defined( 'ABSPATH' ) ) exit;
 
 //Define plugin constants
-define( 'PREMIUM_BLOCKS_VERSION', '1.7.3');
+define( 'PREMIUM_BLOCKS_VERSION', '1.7.4');
 define( 'PREMIUM_BLOCKS_URL', plugins_url('/', __FILE__) );
 define( 'PREMIUM_BLOCKS_PATH', plugin_dir_path(__FILE__) );
 define( 'PREMIUM_BLOCKS_FILE', __FILE__);
 define( 'PREMIUM_BLOCKS_BASENAME', plugin_basename(__FILE__) );
-define( 'PREMIUM_BLOCKS_STABLE_VERSION', '1.7.2');
+define( 'PREMIUM_BLOCKS_STABLE_VERSION', '1.7.3');
 
 require_once( PREMIUM_BLOCKS_PATH . 'includes/plugin.php' );
 
