@@ -1,7 +1,6 @@
 const { __ } = wp.i18n;
 const { RangeControl, Dropdown, Button, ColorPicker } = wp.components;
 const { Fragment } = wp.element;
-const { ColorPalette } = wp.editor;
 export default function PremiumTextShadow(props) {
     const {
         label,
@@ -32,7 +31,7 @@ export default function PremiumTextShadow(props) {
                         <Fragment>
                             <p>{__("Shadow Color")}</p>
                             <ColorPicker
-                                color={borderColor}
+                                color={color}
                                 onChangeComplete={onChangeColor}
                                 disableAlpha
                             />
