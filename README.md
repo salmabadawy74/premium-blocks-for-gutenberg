@@ -66,6 +66,7 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 ### 1.7.4
 
 -   Fixed: `This block has encountered an error and cannot be previewed` when adding Pricing Table to reusable blocks.
+-   Fixed: `The editor has encountered an unexpected error` with Text Shadow option.
 
 ### 1.7.3
 
