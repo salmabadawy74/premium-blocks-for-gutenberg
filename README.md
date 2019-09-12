@@ -63,6 +63,10 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 ## Changelog
 
+### 1.7.5
+
+-   Fixed: Security issues fixed.
+
 ### 1.7.4
 
 -   Fixed: `This block has encountered an error and cannot be previewed` when adding Pricing Table to reusable blocks.
