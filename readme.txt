@@ -5,7 +5,7 @@ Donate link: http://leap13.com
 Requires at least: 4.5
 Tested up to: 5.2.2
 Requires PHP: 5.4
-Stable tag: 1.7.6
+Stable tag: 1.7.7
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
