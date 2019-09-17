@@ -151,7 +151,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
             }
 
             $this->pb_maps_settings = array(
-                'premium-map-key'           => $settings['premium-map-key'],
+                'premium-map-key'           => sanitize_text_field( $settings['premium-map-key'] ),
                 'premium-map-api'           => intval( $settings['premium-map-api'] ? 1 : 0),
                 'premium-fa-css'            => intval( $settings['premium-fa-css'] ? 1 : 0),
             );
