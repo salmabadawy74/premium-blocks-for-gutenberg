@@ -126,7 +126,7 @@ const edit = props => {
                         <div className="premium-ihover-img-wrap">
                             <div className="premium-ihover-img-front">
                                 <div className="premium-ihover-img-inner-wrap"></div>
-                                <img className="premium-ihover-img" src={ ("http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg-master/assets/img/") + imgName } />
+                                <img className="premium-ihover-img" src={ ("http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/") + imgName } />
                             </div>
                         </div>
                         <div className="premium-ihover-info-wrap">
