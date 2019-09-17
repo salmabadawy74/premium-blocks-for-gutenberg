@@ -44568,7 +44568,25 @@ var edit = function edit(props) {
     }, {
         value: "style13",
         label: __("Rotated Wheel Image-Left")
+    }, {
+        value: "style1",
+        label: __("Rotor Cube")
+    }, {
+        value: "style11",
+        label: __("Slided Out Image")
+    }, {
+        value: "style12",
+        label: __("Slided In Image")
+    }, {
+        value: "style5",
+        label: __("Zoom In")
+    }, {
+        value: "style5-1",
+        label: __("Zoom Out")
     }];
+
+    // 'style20'       => 'Spinner',
+
 
     return [isSelected && wp.element.createElement(
         InspectorControls,

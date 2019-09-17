@@ -98,8 +98,30 @@ const edit = props => {
         {
             value: "style13",
             label: __("Rotated Wheel Image-Left")
+        },
+        {
+            value:"style1",
+            label:__("Rotor Cube")
+        },
+        {
+            value:"style11",
+            label:__("Slided Out Image")
+        },
+        {
+            value:"style12",
+            label:__("Slided In Image")
+        },
+        {
+            value: "style5",
+            label: __("Zoom In")
+        },
+        {
+            value: "style5-1",
+            label: __("Zoom Out")
         }
     ];
+
+    // 'style20'       => 'Spinner',
 
 
     return [
@@ -123,30 +145,32 @@ const edit = props => {
             <div className = "premium-ihover-list">
                 <div className = "premium-ihover-item-wrap">
                     <div className = { ("premium-ihover-item ") + hoverEffect }>
-                        <div className="premium-ihover-img-wrap">
-                            <div className="premium-ihover-img-front">
-                                <div className="premium-ihover-img-inner-wrap"></div>
-                                <img className="premium-ihover-img" src={ ("http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/") + imgName } />
+                                                    
+                            <div className="premium-ihover-img-wrap">
+                                <div className="premium-ihover-img-front">
+                                    <div className="premium-ihover-img-inner-wrap"></div>
+                                    <img className="premium-ihover-img" src={ ("http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/") + imgName } />
+                                </div>
                             </div>
-                        </div>
-                        <div className="premium-ihover-info-wrap">
-                            <div className="premium-ihover-info-back">
-                                <div className="premium-ihover-content">
-                                    <div className="premium-ihover-content-wrap">
-                                        <div className="premium-ihover-title-wrap">
-                                            {/* <i className="premium-ihover-icon fa fa-picture-o"></i> */}
-                                            <h4 className="premium-ihover-title">Your Title</h4>
-                                        </div>
-                                        <div className="premium-ihover-divider">
-                                            <span className="premium-ihover-divider-line"></span>
-                                        </div>
-                                        <div className="premium-ihover-description">
-                                            <p style={{fontSize:"16px"}}>Unlimited design and customization possibilities with iHover gutenberg block</p>
+                            <div className="premium-ihover-info-wrap">
+                                <div className="premium-ihover-info-back">
+                                    <div className="premium-ihover-content">
+                                        <div className="premium-ihover-content-wrap">
+                                            <div className="premium-ihover-title-wrap">
+                                                {/* <i className="premium-ihover-icon fa fa-picture-o"></i> */}
+                                                <h4 className="premium-ihover-title">Your Title</h4>
+                                            </div>
+                                            <div className="premium-ihover-divider">
+                                                <span className="premium-ihover-divider-line"></span>
+                                            </div>
+                                            <div className="premium-ihover-description">
+                                                <p style={{fontSize:"16px"}}>Unlimited design and customization possibilities with iHover gutenberg block</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
                 </div>
 
