@@ -3,7 +3,7 @@
 const { __ } = wp.i18n;
 
 //Define used components fron=m wordpress
-const { PanelBody , SelectControl } = wp.components;
+const { PanelBody , SelectControl , RangeControl} = wp.components;
 const { InspectorControls } = wp.editor;
 
 const edit = props => {
@@ -11,6 +11,8 @@ const edit = props => {
     const { isSelected, setAttributes, className } = props;
     const {
         hoverEffect,
+        imgSize,
+        imgBorderRadius,
         imgName
     } = props.attributes;
 
@@ -118,6 +120,10 @@ const edit = props => {
         {
             value: "style5-1",
             label: __("Zoom Out")
+        },
+        {
+            value: "style20",
+            label:__("spinner")
         }
     ];
 
@@ -128,32 +134,57 @@ const edit = props => {
         isSelected && (
             <InspectorControls>
                 <PanelBody
-                    title={__("Hover Effects")}
+                    title={__("Image")}
                     className="premium-panel-body"
                     initialOpen={false}  
                 >
-                    <SelectControl
-                        label = {__("Hover Effects")}
-                        options = {Hover_Effects}  
-                        value = {hoverEffect}
-                        onChange = { newhoverEffect => setAttributes({ hoverEffect : newhoverEffect }) }
-                    />
+                    <div className="premium-control-toggle">
+                        <RangeControl
+                            label={__("Img Size")}
+                            value={imgSize}
+                            onChange={newImgSize => setAttributes({ imgSize: newImgSize|| "300"})}
+                            initialPosition={300}
+                            allowReset={true}
+                            min={100}
+                            max={500}                            
+                        /> 
+                    </div>
+                    <div className="premium-control-toggle">
+                        <RangeControl
+                            label={__("Border Radius")}
+                            value={imgBorderRadius}
+                            onChange={newImgBorderRadius => setAttributes({ imgBorderRadius: newImgBorderRadius|| "50"})}
+                            initialPosition={50}
+                            allowReset={true}
+                            min={0}
+                            max={100}                           
+                        /> 
+                    </div>
+                    <div className="premium-control-toggle">
+                        <SelectControl
+                            label = {__("Hover Effects")}
+                            options = {Hover_Effects}  
+                            value = {hoverEffect}
+                            onChange = { newhoverEffect => setAttributes({ hoverEffect : newhoverEffect }) }
+                        />
+                    </div>
+
                 </PanelBody>
             </InspectorControls>
         ),
         <div className = "premium-ihover-container">
             <div className = "premium-ihover-list">
-                <div className = "premium-ihover-item-wrap">
-                    <div className = { ("premium-ihover-item ") + hoverEffect }>
+                <div className = "premium-ihover-item-wrap" style={{borderRadius: (imgBorderRadius || "50") + "%" }}>
+                    <div className = { ("premium-ihover-item ") + hoverEffect }  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px" }}>
                                                     
-                            <div className="premium-ihover-img-wrap">
+                            <div className="premium-ihover-img-wrap"  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px"}}>
                                 <div className="premium-ihover-img-front">
                                     <div className="premium-ihover-img-inner-wrap"></div>
-                                    <img className="premium-ihover-img" src={ ("http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/") + imgName } />
+                                    <img className="premium-ihover-img" src={ ("http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/") + imgName }  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px" , borderRadius: (imgBorderRadius || "50") + "%"  }}/>
                                 </div>
                             </div>
-                            <div className="premium-ihover-info-wrap">
-                                <div className="premium-ihover-info-back">
+                            <div className="premium-ihover-info-wrap"  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px"}}>
+                                <div className="premium-ihover-info-back" style={{borderRadius: (imgBorderRadius || "50") + "%" }}>
                                     <div className="premium-ihover-content">
                                         <div className="premium-ihover-content-wrap">
                                             <div className="premium-ihover-title-wrap">

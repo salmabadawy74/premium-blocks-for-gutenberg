@@ -2033,10 +2033,10 @@ a.premium-dheading-block__link:hover {
 .premium-ihover-info-wrap .premium-ihover-content .premium-ihover-description * {
   margin: 0;
 }
-.premium-ihover-item.style20 .premium-ihover-spinner, .premium-ihover-item, .premium-ihover-img-wrap, .premium-ihover-container .premium-ihover-img, .premium-ihover-info-wrap {
+/* .premium-ihover-item.style20 .premium-ihover-spinner, .premium-ihover-item, .premium-ihover-img-wrap, .premium-ihover-container .premium-ihover-img, .premium-ihover-info-wrap {
   width: 300px;
   height: 300px;
-}
+} */
 .premium-ihover-container .premium-ihover-item-wrap, .premium-ihover-container .premium-ihover-img, .premium-ihover-container .premium-ihover-info-back, .premium-ihover-container .premium-ihover-spinner {
   border-radius: 50%;
 }
@@ -2868,4 +2868,55 @@ a.premium-dheading-block__link:hover {
   -ms-transform: rotate3d(0, 1, 0, -180deg);
   transform: rotate3d(0, 1, 0, -180deg);
 }
-
+/*** Style 20 ***/
+.premium-ihover-item.style20 .premium-ihover-spinner {
+  border-top-color: #6ec1e4;
+  border-left-color: #6ec1e4;
+  border-bottom-color: #54595f;
+  border-right-color: #54595f;
+}
+.premium-ihover-item.style20 .premium-ihover-spinner {
+  position: relative;
+  border-width: 10px;
+  border-style: solid;
+  z-index: 1;
+  -webkit-transition: transform .8s ease-out;
+  -webkit-transition: -webkit-transform .8s ease-out;
+  transition: -webkit-transform .8s ease-out;
+  transition: transform .8s ease-out;
+  transition: transform .8s ease-out, -webkit-transform .8s ease-out;
+}
+.premium-ihover-item.style20:hover .premium-ihover-spinner {
+  -webkit-transition: transform .8s ease-in-out;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+  transition: -webkit-transform .8s ease-in-out;
+  transition: transform .8s ease-in-out;
+  transition: transform .8s ease-in-out, -webkit-transform .8s ease-in-out;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.premium-ihover-item.style20 .premium-ihover-img-wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: auto;
+  height: auto;
+  -webkit-transition: all .35s linear;
+  transition: all .35s linear;
+  -webkit-transform-origin: 50% 0;
+  -ms-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+}
+.premium-ihover-item.style20 .premium-ihover-info-wrap .premium-ihover-info-back {
+  -webkit-transition-delay: .5s;
+  transition-delay: .5s;
+  -webkit-transition: opacity .5s ease-in;
+  transition: opacity .5s ease-in;
+  opacity: 0;
+}
+.premium-ihover-item.style20:hover .premium-ihover-info-wrap .premium-ihover-info-back {
+  opacity: 1;
+}

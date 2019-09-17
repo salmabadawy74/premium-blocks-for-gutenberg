@@ -44461,6 +44461,14 @@ var ihoverAttr = {
         type: "string",
         default: "style18"
     },
+    imgSize: {
+        type: "number",
+        default: "300"
+    },
+    imgBorderRadius: {
+        type: "number",
+        default: "50"
+    },
     imgName: {
         type: "string",
         default: "author.jpg"
@@ -44492,7 +44500,8 @@ var __ = wp.i18n.__;
 
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
-    SelectControl = _wp$components.SelectControl;
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl;
 var InspectorControls = wp.editor.InspectorControls;
 
 
@@ -44502,6 +44511,8 @@ var edit = function edit(props) {
         className = props.className;
     var _props$attributes = props.attributes,
         hoverEffect = _props$attributes.hoverEffect,
+        imgSize = _props$attributes.imgSize,
+        imgBorderRadius = _props$attributes.imgBorderRadius,
         imgName = _props$attributes.imgName;
 
 
@@ -44583,6 +44594,9 @@ var edit = function edit(props) {
     }, {
         value: "style5-1",
         label: __("Zoom Out")
+    }, {
+        value: "style20",
+        label: __("spinner")
     }];
 
     // 'style20'       => 'Spinner',
@@ -44594,18 +44608,52 @@ var edit = function edit(props) {
         wp.element.createElement(
             PanelBody,
             {
-                title: __("Hover Effects"),
+                title: __("Image"),
                 className: "premium-panel-body",
                 initialOpen: false
             },
-            wp.element.createElement(SelectControl, {
-                label: __("Hover Effects"),
-                options: Hover_Effects,
-                value: hoverEffect,
-                onChange: function onChange(newhoverEffect) {
-                    return setAttributes({ hoverEffect: newhoverEffect });
-                }
-            })
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(RangeControl, {
+                    label: __("Img Size"),
+                    value: imgSize,
+                    onChange: function onChange(newImgSize) {
+                        return setAttributes({ imgSize: newImgSize || "300" });
+                    },
+                    initialPosition: 300,
+                    allowReset: true,
+                    min: 100,
+                    max: 500
+                })
+            ),
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(RangeControl, {
+                    label: __("Border Radius"),
+                    value: imgBorderRadius,
+                    onChange: function onChange(newImgBorderRadius) {
+                        return setAttributes({ imgBorderRadius: newImgBorderRadius || "50" });
+                    },
+                    initialPosition: 50,
+                    allowReset: true,
+                    min: 0,
+                    max: 100
+                })
+            ),
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(SelectControl, {
+                    label: __("Hover Effects"),
+                    options: Hover_Effects,
+                    value: hoverEffect,
+                    onChange: function onChange(newhoverEffect) {
+                        return setAttributes({ hoverEffect: newhoverEffect });
+                    }
+                })
+            )
         )
     ), wp.element.createElement(
         "div",
@@ -44615,26 +44663,26 @@ var edit = function edit(props) {
             { className: "premium-ihover-list" },
             wp.element.createElement(
                 "div",
-                { className: "premium-ihover-item-wrap" },
+                { className: "premium-ihover-item-wrap", style: { borderRadius: (imgBorderRadius || "50") + "%" } },
                 wp.element.createElement(
                     "div",
-                    { className: "premium-ihover-item " + hoverEffect },
+                    { className: "premium-ihover-item " + hoverEffect, style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
                     wp.element.createElement(
                         "div",
-                        { className: "premium-ihover-img-wrap" },
+                        { className: "premium-ihover-img-wrap", style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
                         wp.element.createElement(
                             "div",
                             { className: "premium-ihover-img-front" },
                             wp.element.createElement("div", { className: "premium-ihover-img-inner-wrap" }),
-                            wp.element.createElement("img", { className: "premium-ihover-img", src: "http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/" + imgName })
+                            wp.element.createElement("img", { className: "premium-ihover-img", src: "http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/" + imgName, style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "50") + "%" } })
                         )
                     ),
                     wp.element.createElement(
                         "div",
-                        { className: "premium-ihover-info-wrap" },
+                        { className: "premium-ihover-info-wrap", style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
                         wp.element.createElement(
                             "div",
-                            { className: "premium-ihover-info-back" },
+                            { className: "premium-ihover-info-back", style: { borderRadius: (imgBorderRadius || "50") + "%" } },
                             wp.element.createElement(
                                 "div",
                                 { className: "premium-ihover-content" },
@@ -44691,6 +44739,8 @@ var edit = function edit(props) {
 var save = function save(props) {
     var _props$attributes = props.attributes,
         hoverEffect = _props$attributes.hoverEffect,
+        imgSize = _props$attributes.imgSize,
+        imgBorderRadius = _props$attributes.imgBorderRadius,
         imgName = _props$attributes.imgName;
 
 
@@ -44702,26 +44752,26 @@ var save = function save(props) {
             { className: "premium-ihover-list" },
             wp.element.createElement(
                 "div",
-                { className: "premium-ihover-item-wrap" },
+                { className: "premium-ihover-item-wrap", style: { borderRadius: (imgBorderRadius || "50") + "%" } },
                 wp.element.createElement(
                     "div",
-                    { className: "premium-ihover-item " + hoverEffect },
+                    { className: "premium-ihover-item " + hoverEffect, style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
                     wp.element.createElement(
                         "div",
-                        { className: "premium-ihover-img-wrap" },
+                        { className: "premium-ihover-img-wrap", style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
                         wp.element.createElement(
                             "div",
                             { className: "premium-ihover-img-front" },
                             wp.element.createElement("div", { className: "premium-ihover-img-inner-wrap" }),
-                            wp.element.createElement("img", { className: "premium-ihover-img", src: "http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/" + imgName })
+                            wp.element.createElement("img", { className: "premium-ihover-img", src: "http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/" + imgName, style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "50") + "%" } })
                         )
                     ),
                     wp.element.createElement(
                         "div",
-                        { className: "premium-ihover-info-wrap" },
+                        { className: "premium-ihover-info-wrap", style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
                         wp.element.createElement(
                             "div",
-                            { className: "premium-ihover-info-back" },
+                            { className: "premium-ihover-info-back", style: { borderRadius: (imgBorderRadius || "50") + "%" } },
                             wp.element.createElement(
                                 "div",
                                 { className: "premium-ihover-content" },

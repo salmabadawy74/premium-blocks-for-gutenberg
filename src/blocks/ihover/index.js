@@ -15,6 +15,14 @@ const ihoverAttr = {
         type: "string",
         default: "style18"
     },
+    imgSize:{
+        type:"number",
+        default: "300"
+    },
+    imgBorderRadius:{
+        type:"number",
+        default: "50"
+    },
     imgName:{
         type:"string",
         default:"author.jpg"
