@@ -10,4 +10,5 @@ import "./blocks/pricing-table";
 import "./blocks/section";
 import "./blocks/testimonials";
 import "./blocks/video-box";
+import "./blocks/flip-box";
 //import "./blocks/test";

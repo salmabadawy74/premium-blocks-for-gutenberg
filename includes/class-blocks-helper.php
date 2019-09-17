@@ -126,6 +126,8 @@ class Premium_Blocks_Integration {
         $is_dual_enabled = self::$blocks['dualHeading'];
         
         $is_icon_box_enabled = self::$blocks['iconBox'];
+
+        $is_flip_box_enabled = self::$blocks['flipBox'];
         
         wp_enqueue_style(
             'pbg-frontend',
@@ -232,6 +234,15 @@ class Premium_Blocks_Integration {
             wp_enqueue_script(
                 'icon-box-js',
                 PREMIUM_BLOCKS_URL . 'assets/js/icon-box.js',
+                array('jquery'),
+                PREMIUM_BLOCKS_VERSION
+            );
+        }
+
+        if( $is_flip_box_enabled ) {
+            wp_enqueue_script(
+                'flip-box-js',
+                PREMIUM_BLOCKS_URL . 'assets/js/flip-box.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
