@@ -1,17 +1,21 @@
+import DefaultImage from "../../components/default-image";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
+
 
 // For Internationalization
 const { __ } = wp.i18n;
 
 //Define used components fron=m wordpress
-const { PanelBody , SelectControl , RangeControl , ToggleControl ,TextControl } = wp.components;
-const { InspectorControls , URLInput , AlignmentToolbar , ColorPalette } = wp.editor;
+const { PanelBody , IconButton , SelectControl , RangeControl , ToggleControl ,TextControl } = wp.components;
+const { InspectorControls , MediaUpload , URLInput , AlignmentToolbar , ColorPalette } = wp.editor;
 
 const edit = props => {
 
     const { isSelected, setAttributes, className } = props;
     const {    
+        imgUrl,
+        imgId,
         imgSize,
         imgBorderRadius,
         hoverEffect,
@@ -30,7 +34,7 @@ const edit = props => {
         containerShadowHorizontal,
         containerShadowVertical,
         containerShadowPosition,
-        imgName
+
     } = props.attributes;
 
     const Hover_Effects = [
@@ -158,6 +162,38 @@ const edit = props => {
                     initialOpen={false}  
                 >
                     <div className="premium-control-toggle">
+
+                        <p>{__("Change Image")}</p>
+                        {imgUrl &&(
+                            <img src={imgUrl} />
+                        )}
+                        { !imgUrl && <DefaultImage/> }
+                        <MediaUpload
+                            allowedTypes={["image"]}
+                            onSelect={media => {
+                                setAttributes({
+                                imgId: media.id,
+                                imgUrl:
+                                    "undefined" === typeof media.sizes.thumbnail
+                                    ? media.url
+                                    : media.sizes.thumbnail.url
+                                });
+                            }}
+                            type="image"
+                            value={imgId}
+                            render={({ open }) => (
+                                <IconButton
+                                label={__("Change Image")}
+                                icon="edit"
+                                onClick={open}
+                                >
+                                {__("Change Image")}
+                                </IconButton>
+                            )}
+                        />
+
+                    </div>
+                    <div className="premium-control-toggle">
                         <RangeControl
                             label={__("Img Size")}
                             value={imgSize}
@@ -261,7 +297,6 @@ const edit = props => {
                         />
                     </div>
                     <div className="premium-control-toggle">
-                        <p>{__("Box Shadow")}</p>
                         <PremiumBoxShadow
                             inner={true}
                             color={containerShadowColor}
@@ -285,7 +320,7 @@ const edit = props => {
              style={{
                      backgroundColor: overlayColor || "transparent" , opacity: overlayColor ? 1 - overlayOpacity / 100 : 1 ,
                      boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
-                    }}
+             }}
         >
             <div className = "premium-ihover-list"  style={{ textAlign : imgAlign || "center" }}>
                 <div className = "premium-ihover-item-wrap" style={{borderRadius: (imgBorderRadius || "50") + "%" }}>
@@ -294,12 +329,15 @@ const edit = props => {
                             <div className="premium-ihover-img-wrap"  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px"}}>
                                 <div className="premium-ihover-img-front">
                                     <div className="premium-ihover-img-inner-wrap"></div>
-                                    <img className="premium-ihover-img" src={ ("http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/") + imgName }
-                                         style={{ 
+                                    { imgUrl &&(
+                                        <img className="premium-ihover-img" src={ imgUrl }
+                                            style={{ 
                                                     width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px" , borderRadius: (imgBorderRadius || "50") + "%" ,
                                                     filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )` 
-                                                }}
-                                    />
+                                            }}
+                                        />
+                                    )}
+                                    { !imgUrl && <DefaultImage/> }
                                 </div>
                             </div>
                             <div className="premium-ihover-info-wrap"  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px"}}>

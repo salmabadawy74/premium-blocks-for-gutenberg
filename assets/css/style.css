@@ -1963,6 +1963,9 @@ a.premium-dheading-block__link:hover {
   border: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
 }
 .premium-ihover-img-wrap .premium-ihover-img-inner-wrap {
   position: absolute;

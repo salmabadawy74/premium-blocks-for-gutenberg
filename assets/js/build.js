@@ -44457,6 +44457,12 @@ var registerBlockType = wp.blocks.registerBlockType;
 //block attributes
 
 var ihoverAttr = {
+    imgUrl: {
+        type: "string"
+    },
+    imgId: {
+        type: "string"
+    },
     imgSize: {
         type: "number",
         default: "300"
@@ -44556,8 +44562,10 @@ registerBlockType("premium/ihover", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_filters__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_filters__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_box_shadow__ = __webpack_require__(7);
+
 
 
 
@@ -44568,12 +44576,14 @@ var __ = wp.i18n.__;
 
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
+    IconButton = _wp$components.IconButton,
     SelectControl = _wp$components.SelectControl,
     RangeControl = _wp$components.RangeControl,
     ToggleControl = _wp$components.ToggleControl,
     TextControl = _wp$components.TextControl;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
+    MediaUpload = _wp$editor.MediaUpload,
     URLInput = _wp$editor.URLInput,
     AlignmentToolbar = _wp$editor.AlignmentToolbar,
     ColorPalette = _wp$editor.ColorPalette;
@@ -44584,6 +44594,8 @@ var edit = function edit(props) {
         setAttributes = props.setAttributes,
         className = props.className;
     var _props$attributes = props.attributes,
+        imgUrl = _props$attributes.imgUrl,
+        imgId = _props$attributes.imgId,
         imgSize = _props$attributes.imgSize,
         imgBorderRadius = _props$attributes.imgBorderRadius,
         hoverEffect = _props$attributes.hoverEffect,
@@ -44601,8 +44613,7 @@ var edit = function edit(props) {
         containerShadowBlur = _props$attributes.containerShadowBlur,
         containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
         containerShadowVertical = _props$attributes.containerShadowVertical,
-        containerShadowPosition = _props$attributes.containerShadowPosition,
-        imgName = _props$attributes.imgName;
+        containerShadowPosition = _props$attributes.containerShadowPosition;
 
 
     var Hover_Effects = [{
@@ -44703,6 +44714,40 @@ var edit = function edit(props) {
             wp.element.createElement(
                 "div",
                 { className: "premium-control-toggle" },
+                wp.element.createElement(
+                    "p",
+                    null,
+                    __("Change Image")
+                ),
+                imgUrl && wp.element.createElement("img", { src: imgUrl }),
+                !imgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_default_image__["a" /* default */], null),
+                wp.element.createElement(MediaUpload, {
+                    allowedTypes: ["image"],
+                    onSelect: function onSelect(media) {
+                        setAttributes({
+                            imgId: media.id,
+                            imgUrl: "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url
+                        });
+                    },
+                    type: "image",
+                    value: imgId,
+                    render: function render(_ref) {
+                        var open = _ref.open;
+                        return wp.element.createElement(
+                            IconButton,
+                            {
+                                label: __("Change Image"),
+                                icon: "edit",
+                                onClick: open
+                            },
+                            __("Change Image")
+                        );
+                    }
+                })
+            ),
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
                 wp.element.createElement(RangeControl, {
                     label: __("Img Size"),
                     value: imgSize,
@@ -44783,7 +44828,7 @@ var edit = function edit(props) {
             wp.element.createElement(
                 "div",
                 { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_premium_filters__["a" /* default */], {
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_filters__["a" /* default */], {
                     blur: blur,
                     bright: bright,
                     contrast: contrast,
@@ -44847,12 +44892,7 @@ var edit = function edit(props) {
             wp.element.createElement(
                 "div",
                 { className: "premium-control-toggle" },
-                wp.element.createElement(
-                    "p",
-                    null,
-                    __("Box Shadow")
-                ),
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_box_shadow__["a" /* default */], {
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_box_shadow__["a" /* default */], {
                     inner: true,
                     color: containerShadowColor,
                     blur: containerShadowBlur,
@@ -44901,12 +44941,13 @@ var edit = function edit(props) {
                             "div",
                             { className: "premium-ihover-img-front" },
                             wp.element.createElement("div", { className: "premium-ihover-img-inner-wrap" }),
-                            wp.element.createElement("img", { className: "premium-ihover-img", src: "http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/" + imgName,
+                            imgUrl && wp.element.createElement("img", { className: "premium-ihover-img", src: imgUrl,
                                 style: {
                                     width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "50") + "%",
                                     filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
                                 }
-                            })
+                            }),
+                            !imgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_default_image__["a" /* default */], null)
                         )
                     ),
                     wp.element.createElement(
@@ -44973,11 +45014,13 @@ var edit = function edit(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var URLInput = wp.editor.URLInput;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(22);
 
 
 var save = function save(props) {
     var _props$attributes = props.attributes,
+        imgUrl = _props$attributes.imgUrl,
+        imgId = _props$attributes.imgId,
         imgSize = _props$attributes.imgSize,
         imgBorderRadius = _props$attributes.imgBorderRadius,
         hoverEffect = _props$attributes.hoverEffect,
@@ -44995,8 +45038,7 @@ var save = function save(props) {
         containerShadowBlur = _props$attributes.containerShadowBlur,
         containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
         containerShadowVertical = _props$attributes.containerShadowVertical,
-        containerShadowPosition = _props$attributes.containerShadowPosition,
-        imgName = _props$attributes.imgName;
+        containerShadowPosition = _props$attributes.containerShadowPosition;
 
 
     return wp.element.createElement(
@@ -45023,12 +45065,13 @@ var save = function save(props) {
                             "div",
                             { className: "premium-ihover-img-front" },
                             wp.element.createElement("div", { className: "premium-ihover-img-inner-wrap" }),
-                            wp.element.createElement("img", { className: "premium-ihover-img", src: "http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/" + imgName,
+                            imgUrl && wp.element.createElement("img", { className: "premium-ihover-img", src: imgUrl,
                                 style: {
                                     width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "50") + "%",
                                     filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
                                 }
-                            })
+                            }),
+                            !imgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_default_image__["a" /* default */], null)
                         )
                     ),
                     wp.element.createElement(

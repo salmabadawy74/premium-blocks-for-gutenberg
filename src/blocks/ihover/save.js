@@ -1,7 +1,9 @@
-const { URLInput} = wp.editor;
+import DefaultImage from "../../components/default-image";
 
 const save = props => {
     const {
+        imgUrl,
+        imgId,
         imgSize,
         imgBorderRadius,
         hoverEffect,
@@ -20,7 +22,7 @@ const save = props => {
         containerShadowHorizontal,
         containerShadowVertical,
         containerShadowPosition,
-        imgName
+
     } = props.attributes;
 
     return (
@@ -28,7 +30,7 @@ const save = props => {
              style={{
                      backgroundColor: overlayColor || "transparent" , opacity: overlayColor ? 1 - overlayOpacity / 100 : 1 ,
                      boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
-                    }}
+             }}
         >
             <div className = "premium-ihover-list"  style={{ textAlign : imgAlign || "center" }}>
                 <div className = "premium-ihover-item-wrap" style={{borderRadius: (imgBorderRadius || "50") + "%" }}>
@@ -37,12 +39,15 @@ const save = props => {
                             <div className="premium-ihover-img-wrap"  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px"}}>
                                 <div className="premium-ihover-img-front">
                                     <div className="premium-ihover-img-inner-wrap"></div>
-                                    <img className="premium-ihover-img" src={ ("http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/") + imgName }
-                                         style={{ 
+                                    { imgUrl &&(
+                                        <img className="premium-ihover-img" src={ imgUrl }
+                                            style={{ 
                                                     width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px" , borderRadius: (imgBorderRadius || "50") + "%" ,
                                                     filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )` 
-                                                }}
-                                    />
+                                            }}
+                                        />
+                                    )}
+                                    { !imgUrl && <DefaultImage/> }
                                 </div>
                             </div>
                             <div className="premium-ihover-info-wrap"  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px"}}>

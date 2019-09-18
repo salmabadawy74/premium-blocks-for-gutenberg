@@ -11,6 +11,12 @@ const { registerBlockType } = wp.blocks;
 
 //block attributes
 const ihoverAttr = {
+    imgUrl:{
+        type:"string"
+    },
+    imgId: {
+        type: "string"
+    },
     imgSize:{
         type:"number",
         default: "300"
