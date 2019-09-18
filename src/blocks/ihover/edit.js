@@ -1,14 +1,16 @@
 import DefaultImage from "../../components/default-image";
 import PremiumFilters from "../../components/premium-filters";
+import { FontAwesomeEnabled } from "../../../assets/js/settings";
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import iconsList from "../../components/premium-icons-list";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-
 
 // For Internationalization
 const { __ } = wp.i18n;
 
 //Define used components fron=m wordpress
-const { PanelBody , IconButton , SelectControl , RangeControl , ToggleControl ,TextControl } = wp.components;
-const { InspectorControls , MediaUpload , URLInput , AlignmentToolbar , ColorPalette } = wp.editor;
+const { PanelBody , IconButton , SelectControl , RangeControl , ToggleControl ,TextControl , TextareaControl } = wp.components;
+const { InspectorControls , MediaUpload , URLInput , AlignmentToolbar , RichText , ColorPalette } = wp.editor;
 
 const edit = props => {
 
@@ -27,6 +29,14 @@ const edit = props => {
         contrast,
         saturation,
         hue,
+        iconCheck,
+        iconType,
+        iconSelected,
+        titleCheck,
+        titleText,
+        descCheck,
+        descText,
+        contentAlign,
         overlayColor,
         overlayOpacity,
         containerShadowColor,
@@ -270,7 +280,64 @@ const edit = props => {
                     className="premium-panel-body"
                     initialOpen={false}  
                 >
+                    {/* Icon options */}
+                    <div className="premium-control-toggle">
+                        <ToggleControl
+                            label={__("Icon")}
+                            checked={iconCheck}
+                            onChange={newValue => setAttributes({ iconCheck: newValue })}
+                        />    
+                        {iconCheck && (
+                            <FontIconPicker
+                                icons={iconsList}
+                                onChange={newIcon => setAttributes({ iconSelected: newIcon || "fa fa-heart" })}
+                                value={iconSelected}
+                                isMulti={false}
+                                appendTo="body"
+                                noSelectedPlaceholder={__("Select Icon")}
+                            />
+                        )}                
+                    </div>
+                
+                    {/* Title options */}
+                    <div className="premium-control-toggle">
+                        <ToggleControl
+                            label={__("Title")}
+                            checked={titleCheck}
+                            onChange={newValue => setAttributes({ titleCheck: newValue })}
+                        />                    
+                        {titleCheck && (
+                            <TextControl
+                                label={__("Title Text")}
+                                value={titleText}
+                                onChange={ newText => setAttributes({ titleText : newText})}
+                            />
+                        )}
+                    </div>
 
+                    {/* Description options */}
+                    <div className="premium-control-toggle">
+                        <ToggleControl
+                            label={__("Description")}
+                            checked={descCheck}
+                            onChange={newValue => setAttributes({ descCheck: newValue })}
+                        />                    
+                        {descCheck && (
+                            <TextareaControl
+                                label= {__("Description Text")}
+                                help= "Enter your description"
+                                value= {descText}
+                                onChange= { newText => setAttributes({ descText: newText})}
+                            />
+                        )}
+                    </div>
+                    <div className="premium-control-toggle">
+                        <p><strong>{__("Alignment")}</strong></p>
+                        <AlignmentToolbar
+                            value={contentAlign}
+                            onChange={ newContentAlign => setAttributes({contentAlign: newContentAlign })}                        
+                        />
+                    </div>
 
                 </PanelBody>
 
@@ -343,17 +410,69 @@ const edit = props => {
                             <div className="premium-ihover-info-wrap"  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px"}}>
                                 <div className="premium-ihover-info-back" style={{borderRadius: (imgBorderRadius || "50") + "%" }}>
                                     <div className="premium-ihover-content">
-                                        <div className="premium-ihover-content-wrap">
-                                            <div className="premium-ihover-title-wrap">
-                                                {/* <i className="premium-ihover-icon fa fa-picture-o"></i> */}
-                                                <h4 className="premium-ihover-title">Your Title</h4>
-                                            </div>
+                                        <div className="premium-ihover-content-wrap" style={{ textAlign : contentAlign || "center" }}>
+                                            
+                                            {titleCheck && (
+                                                <div className="premium-ihover-title-wrap">                                                
+                                                        <RichText
+                                                            tagName="h4"
+                                                            className={`premium-ihover-title`}
+                                                            value={titleText}
+                                                            isSelected={false}
+                                                            placeholder="Please Enter your title"
+                                                            onChange={newTitle=> setAttributes({ titleText: newTitle})}
+                                                            // style={{
+                                                            //     color: frontTitleColor || "#e3d192",
+                                                            //     fontSize: frontTitleSize + "px",
+                                                            //     lineHeight: frontTitlelineHeight + "px",
+                                                            //     textShadow: `${frontTitleShadowHorizontal}px ${frontTitleShadowVertical}px ${frontTitleShadowBlur }px ${frontTitleShadowColor}`,
+                                                            //     paddingTop: frontTitlePaddingTop + "px",
+                                                            //     paddingBottom: frontTitlePaddingBottom + "px",
+                                                            //     paddingLeft: frontTitlePaddingLeft + "px",
+                                                            //     paddingRight: frontTitlePaddingRight + "px",
+                                                            //     marginTop: frontTitleMarginTop + "px",
+                                                            //     marginBottom: frontTitleMarginBottom + "px",
+                                                            //     marginLeft: frontTitleMarginLeft + "px",
+                                                            //     marginRight: frontTitleMarginRight + "px",
+                                                            // }}
+                                                            keepPlaceholderOnFocus                    
+                                                        />                                                
+                                                </div>   
+                                            )} 
+
+                                            {/* <i className="premium-ihover-icon fa fa-picture-o"></i> */}
+
                                             <div className="premium-ihover-divider">
                                                 <span className="premium-ihover-divider-line"></span>
                                             </div>
-                                            <div className="premium-ihover-description">
-                                                <p style={{fontSize:"16px"}}>Unlimited design and customization possibilities with iHover gutenberg block</p>
-                                            </div>
+
+                                            {descCheck && (
+                                                <div className="premium-ihover-description">
+                                                        <RichText
+                                                            tagName="p"
+                                                            value={descText}
+                                                            isSelected={false}
+                                                            placeholder="Please Enter your description"
+                                                            onChange={newDesc => setAttributes({ descText: newDesc})}
+                                                            style={{
+                                                            //     color: frontTitleColor || "#e3d192",
+                                                                 fontSize: "16px",
+                                                            //     lineHeight: frontTitlelineHeight + "px",
+                                                            //     textShadow: `${frontTitleShadowHorizontal}px ${frontTitleShadowVertical}px ${frontTitleShadowBlur }px ${frontTitleShadowColor}`,
+                                                            //     paddingTop: frontTitlePaddingTop + "px",
+                                                            //     paddingBottom: frontTitlePaddingBottom + "px",
+                                                            //     paddingLeft: frontTitlePaddingLeft + "px",
+                                                            //     paddingRight: frontTitlePaddingRight + "px",
+                                                            //     marginTop: frontTitleMarginTop + "px",
+                                                            //     marginBottom: frontTitleMarginBottom + "px",
+                                                            //     marginLeft: frontTitleMarginLeft + "px",
+                                                            //     marginRight: frontTitleMarginRight + "px",
+                                                            }}
+                                                            keepPlaceholderOnFocus                    
+                                                        /> 
+                                                </div>
+                                            )}    
+
                                         </div>
                                     </div>
                                 </div>

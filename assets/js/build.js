@@ -44507,6 +44507,34 @@ var ihoverAttr = {
         default: "0"
     },
     // content
+    iconCheck: {
+        type: "boolean",
+        default: false
+    },
+    iconType: {
+        type: "string",
+        default: "fa"
+    },
+    iconSelected: {
+        type: "string",
+        default: "dashicons dashicons-admin-site"
+    },
+    titleCheck: {
+        type: "boolean",
+        default: true
+    },
+    titleText: {
+        type: "string",
+        default: "Your Title"
+    },
+    descCheck: {
+        type: "boolean",
+        default: true
+    },
+    descText: {
+        type: "string",
+        default: "Unlimited design and customization possibilities with iHover gutenberg block"
+    },
     contentAlign: {
         type: "string",
         default: "center"
@@ -44537,12 +44565,8 @@ var ihoverAttr = {
     containerShadowPosition: {
         type: "string",
         default: ""
-    },
-    //extra
-    imgName: {
-        type: "string",
-        default: "author.jpg"
     }
+
 };
 
 //Register ihover block
@@ -44564,7 +44588,14 @@ registerBlockType("premium/ihover", {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_filters__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(7);
+
+
+
 
 
 
@@ -44580,12 +44611,14 @@ var _wp$components = wp.components,
     SelectControl = _wp$components.SelectControl,
     RangeControl = _wp$components.RangeControl,
     ToggleControl = _wp$components.ToggleControl,
-    TextControl = _wp$components.TextControl;
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     MediaUpload = _wp$editor.MediaUpload,
     URLInput = _wp$editor.URLInput,
     AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    RichText = _wp$editor.RichText,
     ColorPalette = _wp$editor.ColorPalette;
 
 
@@ -44607,6 +44640,14 @@ var edit = function edit(props) {
         contrast = _props$attributes.contrast,
         saturation = _props$attributes.saturation,
         hue = _props$attributes.hue,
+        iconCheck = _props$attributes.iconCheck,
+        iconType = _props$attributes.iconType,
+        iconSelected = _props$attributes.iconSelected,
+        titleCheck = _props$attributes.titleCheck,
+        titleText = _props$attributes.titleText,
+        descCheck = _props$attributes.descCheck,
+        descText = _props$attributes.descText,
+        contentAlign = _props$attributes.contentAlign,
         overlayColor = _props$attributes.overlayColor,
         overlayOpacity = _props$attributes.overlayOpacity,
         containerShadowColor = _props$attributes.containerShadowColor,
@@ -44852,11 +44893,91 @@ var edit = function edit(props) {
                 })
             )
         ),
-        wp.element.createElement(PanelBody, {
-            title: __("Content"),
-            className: "premium-panel-body",
-            initialOpen: false
-        }),
+        wp.element.createElement(
+            PanelBody,
+            {
+                title: __("Content"),
+                className: "premium-panel-body",
+                initialOpen: false
+            },
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(ToggleControl, {
+                    label: __("Icon"),
+                    checked: iconCheck,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ iconCheck: newValue });
+                    }
+                }),
+                iconCheck && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker___default.a, {
+                    icons: __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__["a" /* default */],
+                    onChange: function onChange(newIcon) {
+                        return setAttributes({ iconSelected: newIcon || "fa fa-heart" });
+                    },
+                    value: iconSelected,
+                    isMulti: false,
+                    appendTo: "body",
+                    noSelectedPlaceholder: __("Select Icon")
+                })
+            ),
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(ToggleControl, {
+                    label: __("Title"),
+                    checked: titleCheck,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ titleCheck: newValue });
+                    }
+                }),
+                titleCheck && wp.element.createElement(TextControl, {
+                    label: __("Title Text"),
+                    value: titleText,
+                    onChange: function onChange(newText) {
+                        return setAttributes({ titleText: newText });
+                    }
+                })
+            ),
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(ToggleControl, {
+                    label: __("Description"),
+                    checked: descCheck,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ descCheck: newValue });
+                    }
+                }),
+                descCheck && wp.element.createElement(TextareaControl, {
+                    label: __("Description Text"),
+                    help: "Enter your description",
+                    value: descText,
+                    onChange: function onChange(newText) {
+                        return setAttributes({ descText: newText });
+                    }
+                })
+            ),
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(
+                    "p",
+                    null,
+                    wp.element.createElement(
+                        "strong",
+                        null,
+                        __("Alignment")
+                    )
+                ),
+                wp.element.createElement(AlignmentToolbar, {
+                    value: contentAlign,
+                    onChange: function onChange(newContentAlign) {
+                        return setAttributes({ contentAlign: newContentAlign });
+                    }
+                })
+            )
+        ),
         wp.element.createElement(
             PanelBody,
             {
@@ -44892,7 +45013,7 @@ var edit = function edit(props) {
             wp.element.createElement(
                 "div",
                 { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_box_shadow__["a" /* default */], {
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__["a" /* default */], {
                     inner: true,
                     color: containerShadowColor,
                     blur: containerShadowBlur,
@@ -44961,29 +45082,68 @@ var edit = function edit(props) {
                                 { className: "premium-ihover-content" },
                                 wp.element.createElement(
                                     "div",
-                                    { className: "premium-ihover-content-wrap" },
-                                    wp.element.createElement(
+                                    { className: "premium-ihover-content-wrap", style: { textAlign: contentAlign || "center" } },
+                                    titleCheck && wp.element.createElement(
                                         "div",
                                         { className: "premium-ihover-title-wrap" },
-                                        wp.element.createElement(
-                                            "h4",
-                                            { className: "premium-ihover-title" },
-                                            "Your Title"
-                                        )
+                                        wp.element.createElement(RichText, {
+                                            tagName: "h4",
+                                            className: "premium-ihover-title",
+                                            value: titleText,
+                                            isSelected: false,
+                                            placeholder: "Please Enter your title",
+                                            onChange: function onChange(newTitle) {
+                                                return setAttributes({ titleText: newTitle });
+                                            }
+                                            // style={{
+                                            //     color: frontTitleColor || "#e3d192",
+                                            //     fontSize: frontTitleSize + "px",
+                                            //     lineHeight: frontTitlelineHeight + "px",
+                                            //     textShadow: `${frontTitleShadowHorizontal}px ${frontTitleShadowVertical}px ${frontTitleShadowBlur }px ${frontTitleShadowColor}`,
+                                            //     paddingTop: frontTitlePaddingTop + "px",
+                                            //     paddingBottom: frontTitlePaddingBottom + "px",
+                                            //     paddingLeft: frontTitlePaddingLeft + "px",
+                                            //     paddingRight: frontTitlePaddingRight + "px",
+                                            //     marginTop: frontTitleMarginTop + "px",
+                                            //     marginBottom: frontTitleMarginBottom + "px",
+                                            //     marginLeft: frontTitleMarginLeft + "px",
+                                            //     marginRight: frontTitleMarginRight + "px",
+                                            // }}
+                                            , keepPlaceholderOnFocus: true
+                                        })
                                     ),
                                     wp.element.createElement(
                                         "div",
                                         { className: "premium-ihover-divider" },
                                         wp.element.createElement("span", { className: "premium-ihover-divider-line" })
                                     ),
-                                    wp.element.createElement(
+                                    descCheck && wp.element.createElement(
                                         "div",
                                         { className: "premium-ihover-description" },
-                                        wp.element.createElement(
-                                            "p",
-                                            { style: { fontSize: "16px" } },
-                                            "Unlimited design and customization possibilities with iHover gutenberg block"
-                                        )
+                                        wp.element.createElement(RichText, {
+                                            tagName: "p",
+                                            value: descText,
+                                            isSelected: false,
+                                            placeholder: "Please Enter your description",
+                                            onChange: function onChange(newDesc) {
+                                                return setAttributes({ descText: newDesc });
+                                            },
+                                            style: {
+                                                //     color: frontTitleColor || "#e3d192",
+                                                fontSize: "16px"
+                                                //     lineHeight: frontTitlelineHeight + "px",
+                                                //     textShadow: `${frontTitleShadowHorizontal}px ${frontTitleShadowVertical}px ${frontTitleShadowBlur }px ${frontTitleShadowColor}`,
+                                                //     paddingTop: frontTitlePaddingTop + "px",
+                                                //     paddingBottom: frontTitlePaddingBottom + "px",
+                                                //     paddingLeft: frontTitlePaddingLeft + "px",
+                                                //     paddingRight: frontTitlePaddingRight + "px",
+                                                //     marginTop: frontTitleMarginTop + "px",
+                                                //     marginBottom: frontTitleMarginBottom + "px",
+                                                //     marginLeft: frontTitleMarginLeft + "px",
+                                                //     marginRight: frontTitleMarginRight + "px",
+                                            },
+                                            keepPlaceholderOnFocus: true
+                                        })
                                     )
                                 )
                             )
@@ -45017,6 +45177,9 @@ var edit = function edit(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(22);
 
 
+var RichText = wp.editor.RichText;
+
+
 var save = function save(props) {
     var _props$attributes = props.attributes,
         imgUrl = _props$attributes.imgUrl,
@@ -45032,6 +45195,14 @@ var save = function save(props) {
         contrast = _props$attributes.contrast,
         saturation = _props$attributes.saturation,
         hue = _props$attributes.hue,
+        iconCheck = _props$attributes.iconCheck,
+        iconType = _props$attributes.iconType,
+        iconSelected = _props$attributes.iconSelected,
+        titleCheck = _props$attributes.titleCheck,
+        titleText = _props$attributes.titleText,
+        descCheck = _props$attributes.descCheck,
+        descText = _props$attributes.descText,
+        contentAlign = _props$attributes.contentAlign,
         overlayColor = _props$attributes.overlayColor,
         overlayOpacity = _props$attributes.overlayOpacity,
         containerShadowColor = _props$attributes.containerShadowColor,
@@ -45085,29 +45256,33 @@ var save = function save(props) {
                                 { className: "premium-ihover-content" },
                                 wp.element.createElement(
                                     "div",
-                                    { className: "premium-ihover-content-wrap" },
-                                    wp.element.createElement(
+                                    { className: "premium-ihover-content-wrap", style: { textAlign: contentAlign || "center" } },
+                                    titleCheck && wp.element.createElement(
                                         "div",
                                         { className: "premium-ihover-title-wrap" },
-                                        wp.element.createElement(
-                                            "h4",
-                                            { className: "premium-ihover-title" },
-                                            "Your Title"
-                                        )
+                                        wp.element.createElement(RichText.Content, {
+                                            tagName: "h4",
+                                            className: "premium-ihover-title",
+                                            value: titleText,
+                                            keepPlaceholderOnFocus: true
+                                        })
                                     ),
                                     wp.element.createElement(
                                         "div",
                                         { className: "premium-ihover-divider" },
                                         wp.element.createElement("span", { className: "premium-ihover-divider-line" })
                                     ),
-                                    wp.element.createElement(
+                                    descCheck && wp.element.createElement(
                                         "div",
                                         { className: "premium-ihover-description" },
-                                        wp.element.createElement(
-                                            "p",
-                                            { style: { fontSize: "16px" } },
-                                            "Unlimited design and customization possibilities with iHover gutenberg block"
-                                        )
+                                        wp.element.createElement(RichText.Content, {
+                                            tagName: "p",
+                                            value: descText,
+                                            style: {
+                                                fontSize: "16px"
+                                            },
+                                            keepPlaceholderOnFocus: true
+                                        })
                                     )
                                 )
                             )

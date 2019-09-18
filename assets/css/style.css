@@ -2000,9 +2000,9 @@ a.premium-dheading-block__link:hover {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-.premium-ihover-info-wrap .premium-ihover-content-wrap{
+/* .premium-ihover-info-wrap .premium-ihover-content-wrap{
   text-align: center;
-}
+} */
 .premium-ihover-info-wrap .premium-ihover-title-wrap * {
   margin: 0;
   padding: 0;

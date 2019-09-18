@@ -61,6 +61,34 @@ const ihoverAttr = {
         default: "0"
     },
 // content
+    iconCheck:{
+        type: "boolean",
+        default: false
+    },
+    iconType:{
+        type: "string",
+        default: "fa"
+    },
+    iconSelected:{
+        type: "string",
+        default: "dashicons dashicons-admin-site"
+    },
+    titleCheck:{
+        type: "boolean",
+        default: true
+    },
+    titleText:{
+        type: "string",
+        default: "Your Title"
+    },
+    descCheck:{
+        type: "boolean",
+        default: true
+    },
+    descText:{
+        type: "string",
+        default: "Unlimited design and customization possibilities with iHover gutenberg block"
+    },
     contentAlign: {
         type: "string",
         default: "center"
@@ -92,11 +120,7 @@ const ihoverAttr = {
         type: "string",
         default: ""
     },
-//extra
-    imgName:{
-        type:"string",
-        default:"author.jpg"
-    }
+
 };
 
 //Register ihover block
