@@ -44457,10 +44457,6 @@ var registerBlockType = wp.blocks.registerBlockType;
 //block attributes
 
 var ihoverAttr = {
-    hoverEffect: {
-        type: "string",
-        default: "style18"
-    },
     imgSize: {
         type: "number",
         default: "300"
@@ -44469,6 +44465,74 @@ var ihoverAttr = {
         type: "number",
         default: "50"
     },
+    hoverEffect: {
+        type: "string",
+        default: "style18"
+    },
+    linkCheck: {
+        type: "boolean",
+        default: false
+    },
+    linkUrl: {
+        type: "string"
+    },
+    imgAlign: {
+        type: "string",
+        default: "center"
+    },
+    blur: {
+        type: "number",
+        default: "0"
+    },
+    bright: {
+        type: "number",
+        default: "100"
+    },
+    contrast: {
+        type: "number",
+        default: "100"
+    },
+    saturation: {
+        type: "number",
+        default: "100"
+    },
+    hue: {
+        type: "number",
+        default: "0"
+    },
+    // content
+    contentAlign: {
+        type: "string",
+        default: "center"
+    },
+    // container
+    overlayColor: {
+        type: "string"
+    },
+    overlayOpacity: {
+        type: "number",
+        default: "50"
+    },
+    containerShadowColor: {
+        type: "string"
+    },
+    containerShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    //extra
     imgName: {
         type: "string",
         default: "author.jpg"
@@ -44492,6 +44556,10 @@ registerBlockType("premium/ihover", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_filters__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_box_shadow__ = __webpack_require__(7);
+
+
 
 // For Internationalization
 var __ = wp.i18n.__;
@@ -44501,8 +44569,14 @@ var __ = wp.i18n.__;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
-    RangeControl = _wp$components.RangeControl;
-var InspectorControls = wp.editor.InspectorControls;
+    RangeControl = _wp$components.RangeControl,
+    ToggleControl = _wp$components.ToggleControl,
+    TextControl = _wp$components.TextControl;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    URLInput = _wp$editor.URLInput,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    ColorPalette = _wp$editor.ColorPalette;
 
 
 var edit = function edit(props) {
@@ -44510,9 +44584,24 @@ var edit = function edit(props) {
         setAttributes = props.setAttributes,
         className = props.className;
     var _props$attributes = props.attributes,
-        hoverEffect = _props$attributes.hoverEffect,
         imgSize = _props$attributes.imgSize,
         imgBorderRadius = _props$attributes.imgBorderRadius,
+        hoverEffect = _props$attributes.hoverEffect,
+        linkCheck = _props$attributes.linkCheck,
+        linkUrl = _props$attributes.linkUrl,
+        imgAlign = _props$attributes.imgAlign,
+        blur = _props$attributes.blur,
+        bright = _props$attributes.bright,
+        contrast = _props$attributes.contrast,
+        saturation = _props$attributes.saturation,
+        hue = _props$attributes.hue,
+        overlayColor = _props$attributes.overlayColor,
+        overlayOpacity = _props$attributes.overlayOpacity,
+        containerShadowColor = _props$attributes.containerShadowColor,
+        containerShadowBlur = _props$attributes.containerShadowBlur,
+        containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
+        containerShadowVertical = _props$attributes.containerShadowVertical,
+        containerShadowPosition = _props$attributes.containerShadowPosition,
         imgName = _props$attributes.imgName;
 
 
@@ -44601,7 +44690,6 @@ var edit = function edit(props) {
 
     // 'style20'       => 'Spinner',
 
-
     return [isSelected && wp.element.createElement(
         InspectorControls,
         null,
@@ -44653,14 +44741,153 @@ var edit = function edit(props) {
                         return setAttributes({ hoverEffect: newhoverEffect });
                     }
                 })
+            ),
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(ToggleControl, {
+                    label: __("Link"),
+                    checked: linkCheck,
+                    onChange: function onChange(newLinkCheck) {
+                        return setAttributes({ linkCheck: newLinkCheck });
+                    }
+                })
+            ),
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(
+                    "p",
+                    null,
+                    wp.element.createElement(
+                        "strong",
+                        null,
+                        __("Alignment")
+                    )
+                ),
+                wp.element.createElement(AlignmentToolbar, {
+                    value: imgAlign,
+                    onChange: function onChange(newimgAlign) {
+                        return setAttributes({ imgAlign: newimgAlign });
+                    }
+                })
+            )
+        ),
+        wp.element.createElement(
+            PanelBody,
+            {
+                title: __("Image Style"),
+                className: "premium-panel-body",
+                initialOpen: false
+            },
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_premium_filters__["a" /* default */], {
+                    blur: blur,
+                    bright: bright,
+                    contrast: contrast,
+                    saturation: saturation,
+                    hue: hue,
+                    onChangeBlur: function onChangeBlur(value) {
+                        return setAttributes({ blur: value });
+                    },
+                    onChangeBright: function onChangeBright(value) {
+                        return setAttributes({ bright: value });
+                    },
+                    onChangeContrast: function onChangeContrast(value) {
+                        return setAttributes({ contrast: value });
+                    },
+                    onChangeSat: function onChangeSat(value) {
+                        return setAttributes({ saturation: value });
+                    },
+                    onChangeHue: function onChangeHue(value) {
+                        return setAttributes({ hue: value });
+                    }
+                })
+            )
+        ),
+        wp.element.createElement(PanelBody, {
+            title: __("Content"),
+            className: "premium-panel-body",
+            initialOpen: false
+        }),
+        wp.element.createElement(
+            PanelBody,
+            {
+                title: __("Container Style"),
+                className: "premium-panel-body",
+                initialOpen: false
+            },
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(
+                    "p",
+                    null,
+                    __("Overlay Color")
+                ),
+                wp.element.createElement(ColorPalette, {
+                    value: overlayColor,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ overlayColor: newValue === undefined ? "transparent" : newValue });
+                    },
+                    allowReset: true
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __("Overlay Opacity"),
+                    value: overlayOpacity,
+                    min: "1",
+                    max: "100",
+                    onChange: function onChange(newOpacity) {
+                        return setAttributes({ overlayOpacity: newOpacity === undefined ? "50" : newOpacity });
+                    }
+                })
+            ),
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(
+                    "p",
+                    null,
+                    __("Box Shadow")
+                ),
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_box_shadow__["a" /* default */], {
+                    inner: true,
+                    color: containerShadowColor,
+                    blur: containerShadowBlur,
+                    horizontal: containerShadowHorizontal,
+                    vertical: containerShadowVertical,
+                    position: containerShadowPosition,
+                    onChangeColor: function onChangeColor(newColor) {
+                        return setAttributes({ containerShadowColor: newColor.hex || "transparent" });
+                    },
+                    onChangeBlur: function onChangeBlur(newBlur) {
+                        return setAttributes({ containerShadowBlur: newBlur || "0" });
+                    },
+                    onChangehHorizontal: function onChangehHorizontal(newValue) {
+                        return setAttributes({ containerShadowHorizontal: newValue || "0" });
+                    },
+                    onChangeVertical: function onChangeVertical(newValue) {
+                        return setAttributes({ containerShadowVertical: newValue || "0" });
+                    },
+                    onChangePosition: function onChangePosition(newValue) {
+                        return setAttributes({ containerShadowPosition: newValue });
+                    }
+                })
             )
         )
     ), wp.element.createElement(
         "div",
-        { className: "premium-ihover-container" },
+        { className: "premium-ihover-container",
+            style: {
+                backgroundColor: overlayColor || "transparent", opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
+                boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
+            }
+        },
         wp.element.createElement(
             "div",
-            { className: "premium-ihover-list" },
+            { className: "premium-ihover-list", style: { textAlign: imgAlign || "center" } },
             wp.element.createElement(
                 "div",
                 { className: "premium-ihover-item-wrap", style: { borderRadius: (imgBorderRadius || "50") + "%" } },
@@ -44674,7 +44901,12 @@ var edit = function edit(props) {
                             "div",
                             { className: "premium-ihover-img-front" },
                             wp.element.createElement("div", { className: "premium-ihover-img-inner-wrap" }),
-                            wp.element.createElement("img", { className: "premium-ihover-img", src: "http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/" + imgName, style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "50") + "%" } })
+                            wp.element.createElement("img", { className: "premium-ihover-img", src: "http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/" + imgName,
+                                style: {
+                                    width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "50") + "%",
+                                    filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+                                }
+                            })
                         )
                     ),
                     wp.element.createElement(
@@ -44724,7 +44956,13 @@ var edit = function edit(props) {
             { style: { textAlign: "center" } },
             "hello ihover effect ",
             hoverEffect
-        )
+        ),
+        linkCheck && wp.element.createElement(URLInput, {
+            value: linkUrl,
+            onChange: function onChange(newLinkUrl) {
+                return setAttributes({ linkUrl: newLinkUrl });
+            }
+        })
     )];
 };
 
@@ -44735,21 +44973,43 @@ var edit = function edit(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+var URLInput = wp.editor.URLInput;
+
 
 var save = function save(props) {
     var _props$attributes = props.attributes,
-        hoverEffect = _props$attributes.hoverEffect,
         imgSize = _props$attributes.imgSize,
         imgBorderRadius = _props$attributes.imgBorderRadius,
+        hoverEffect = _props$attributes.hoverEffect,
+        linkCheck = _props$attributes.linkCheck,
+        linkUrl = _props$attributes.linkUrl,
+        imgAlign = _props$attributes.imgAlign,
+        blur = _props$attributes.blur,
+        bright = _props$attributes.bright,
+        contrast = _props$attributes.contrast,
+        saturation = _props$attributes.saturation,
+        hue = _props$attributes.hue,
+        overlayColor = _props$attributes.overlayColor,
+        overlayOpacity = _props$attributes.overlayOpacity,
+        containerShadowColor = _props$attributes.containerShadowColor,
+        containerShadowBlur = _props$attributes.containerShadowBlur,
+        containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
+        containerShadowVertical = _props$attributes.containerShadowVertical,
+        containerShadowPosition = _props$attributes.containerShadowPosition,
         imgName = _props$attributes.imgName;
 
 
     return wp.element.createElement(
         "div",
-        { className: "premium-ihover-container" },
+        { className: "premium-ihover-container",
+            style: {
+                backgroundColor: overlayColor || "transparent", opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
+                boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
+            }
+        },
         wp.element.createElement(
             "div",
-            { className: "premium-ihover-list" },
+            { className: "premium-ihover-list", style: { textAlign: imgAlign || "center" } },
             wp.element.createElement(
                 "div",
                 { className: "premium-ihover-item-wrap", style: { borderRadius: (imgBorderRadius || "50") + "%" } },
@@ -44763,7 +45023,12 @@ var save = function save(props) {
                             "div",
                             { className: "premium-ihover-img-front" },
                             wp.element.createElement("div", { className: "premium-ihover-img-inner-wrap" }),
-                            wp.element.createElement("img", { className: "premium-ihover-img", src: "http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/" + imgName, style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "50") + "%" } })
+                            wp.element.createElement("img", { className: "premium-ihover-img", src: "http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/" + imgName,
+                                style: {
+                                    width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "50") + "%",
+                                    filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+                                }
+                            })
                         )
                     ),
                     wp.element.createElement(
@@ -44806,7 +45071,11 @@ var save = function save(props) {
                         )
                     )
                 )
-            )
+            ),
+            linkCheck && linkUrl && wp.element.createElement("a", {
+                className: "premium-ihover-link",
+                href: linkCheck && linkUrl
+            })
         ),
         wp.element.createElement(
             "p",

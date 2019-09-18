@@ -1,22 +1,48 @@
+const { URLInput} = wp.editor;
 
 const save = props => {
     const {
-        hoverEffect,
         imgSize,
         imgBorderRadius,
+        hoverEffect,
+        linkCheck,
+        linkUrl,
+        imgAlign,
+        blur,
+        bright,
+        contrast,
+        saturation,
+        hue,
+        overlayColor,
+        overlayOpacity,
+        containerShadowColor,
+        containerShadowBlur,
+        containerShadowHorizontal,
+        containerShadowVertical,
+        containerShadowPosition,
         imgName
     } = props.attributes;
 
     return (
-        <div className = "premium-ihover-container">
-            <div className = "premium-ihover-list">
+        <div className = "premium-ihover-container"  
+             style={{
+                     backgroundColor: overlayColor || "transparent" , opacity: overlayColor ? 1 - overlayOpacity / 100 : 1 ,
+                     boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
+                    }}
+        >
+            <div className = "premium-ihover-list"  style={{ textAlign : imgAlign || "center" }}>
                 <div className = "premium-ihover-item-wrap" style={{borderRadius: (imgBorderRadius || "50") + "%" }}>
                     <div className = { ("premium-ihover-item ") + hoverEffect }  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px" }}>
                                                     
                             <div className="premium-ihover-img-wrap"  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px"}}>
                                 <div className="premium-ihover-img-front">
                                     <div className="premium-ihover-img-inner-wrap"></div>
-                                    <img className="premium-ihover-img" src={ ("http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/") + imgName }  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px" , borderRadius: (imgBorderRadius || "50") + "%"  }}/>
+                                    <img className="premium-ihover-img" src={ ("http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/") + imgName }
+                                         style={{ 
+                                                    width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px" , borderRadius: (imgBorderRadius || "50") + "%" ,
+                                                    filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )` 
+                                                }}
+                                    />
                                 </div>
                             </div>
                             <div className="premium-ihover-info-wrap"  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px"}}>
@@ -40,6 +66,13 @@ const save = props => {
                         
                     </div>
                 </div>
+
+                { linkCheck && linkUrl && (
+                    <a
+                        className={`premium-ihover-link`}
+                        href={linkCheck && linkUrl}
+                    />
+                )}
 
             </div>
 

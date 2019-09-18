@@ -1,18 +1,35 @@
+import PremiumFilters from "../../components/premium-filters";
+import PremiumBoxShadow from "../../components/premium-box-shadow";
 
 // For Internationalization
 const { __ } = wp.i18n;
 
 //Define used components fron=m wordpress
-const { PanelBody , SelectControl , RangeControl} = wp.components;
-const { InspectorControls } = wp.editor;
+const { PanelBody , SelectControl , RangeControl , ToggleControl ,TextControl } = wp.components;
+const { InspectorControls , URLInput , AlignmentToolbar , ColorPalette } = wp.editor;
 
 const edit = props => {
 
     const { isSelected, setAttributes, className } = props;
-    const {
-        hoverEffect,
+    const {    
         imgSize,
         imgBorderRadius,
+        hoverEffect,
+        linkCheck,
+        linkUrl,
+        imgAlign,
+        blur,
+        bright,
+        contrast,
+        saturation,
+        hue,
+        overlayColor,
+        overlayOpacity,
+        containerShadowColor,
+        containerShadowBlur,
+        containerShadowHorizontal,
+        containerShadowVertical,
+        containerShadowPosition,
         imgName
     } = props.attributes;
 
@@ -129,10 +146,12 @@ const edit = props => {
 
     // 'style20'       => 'Spinner',
 
-
     return [
         isSelected && (
             <InspectorControls>
+
+                {/* Image options */}
+
                 <PanelBody
                     title={__("Image")}
                     className="premium-panel-body"
@@ -168,19 +187,119 @@ const edit = props => {
                             onChange = { newhoverEffect => setAttributes({ hoverEffect : newhoverEffect }) }
                         />
                     </div>
+                    <div className="premium-control-toggle">                    
+                        <ToggleControl
+                            label={__("Link")}
+                            checked={linkCheck}
+                            onChange={newLinkCheck => setAttributes({ linkCheck: newLinkCheck })}
+                        />   
+                    </div> 
+                    <div className="premium-control-toggle">
+                        <p><strong>{__("Alignment")}</strong></p>
+                        <AlignmentToolbar
+                            value={imgAlign}
+                            onChange={ newimgAlign => setAttributes({ imgAlign: newimgAlign })}                        
+                        />
+                    </div>
 
                 </PanelBody>
+
+                {/* Img css filter option */}
+
+                <PanelBody
+                    title={__("Image Style")}
+                    className="premium-panel-body"
+                    initialOpen={false}                      
+                >
+                    <div className="premium-control-toggle">
+                        <PremiumFilters
+                            blur={blur}
+                            bright={bright}
+                            contrast={contrast}
+                            saturation={saturation}
+                            hue={hue}
+                            onChangeBlur={value => setAttributes({ blur: value })}
+                            onChangeBright={value => setAttributes({ bright: value })}
+                            onChangeContrast={value => setAttributes({ contrast: value })}
+                            onChangeSat={value => setAttributes({ saturation: value })}
+                            onChangeHue={value => setAttributes({ hue: value })}
+                        />
+                    </div>    
+                </PanelBody>
+
+                {/* Content options */}
+
+                <PanelBody
+                    title={__("Content")}
+                    className="premium-panel-body"
+                    initialOpen={false}  
+                >
+
+
+                </PanelBody>
+
+                {/* Container Style options */}
+
+                <PanelBody
+                    title={__("Container Style")}
+                    className="premium-panel-body"
+                    initialOpen={false}  
+                >
+                    <div className="premium-control-toggle">
+                        <p>{__("Overlay Color")}</p>
+                        <ColorPalette
+                            value={overlayColor}
+                            onChange ={ newValue => setAttributes({ overlayColor: newValue === undefined ? "transparent" : newValue })}
+                            allowReset={true}
+                        />
+                        <RangeControl
+                            label={__("Overlay Opacity")}
+                            value={overlayOpacity}
+                            min="1"
+                            max="100"
+                            onChange={ newOpacity => setAttributes({ overlayOpacity : newOpacity === undefined ? "50" : newOpacity })}
+                        />
+                    </div>
+                    <div className="premium-control-toggle">
+                        <p>{__("Box Shadow")}</p>
+                        <PremiumBoxShadow
+                            inner={true}
+                            color={containerShadowColor}
+                            blur={containerShadowBlur}
+                            horizontal={containerShadowHorizontal}
+                            vertical={containerShadowVertical}
+                            position={containerShadowPosition}
+                            onChangeColor={newColor => setAttributes({ containerShadowColor: newColor.hex || "transparent" }) }
+                            onChangeBlur={newBlur => setAttributes({ containerShadowBlur: newBlur || "0" })}
+                            onChangehHorizontal={newValue => setAttributes({ containerShadowHorizontal: newValue || "0" }) }
+                            onChangeVertical={newValue => setAttributes({ containerShadowVertical: newValue || "0" })}
+                            onChangePosition={newValue => setAttributes({ containerShadowPosition: newValue })}
+                        />
+                    </div>
+
+                </PanelBody>
+
             </InspectorControls>
         ),
-        <div className = "premium-ihover-container">
-            <div className = "premium-ihover-list">
+        <div className = "premium-ihover-container"  
+             style={{
+                     backgroundColor: overlayColor || "transparent" , opacity: overlayColor ? 1 - overlayOpacity / 100 : 1 ,
+                     boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
+                    }}
+        >
+            <div className = "premium-ihover-list"  style={{ textAlign : imgAlign || "center" }}>
                 <div className = "premium-ihover-item-wrap" style={{borderRadius: (imgBorderRadius || "50") + "%" }}>
                     <div className = { ("premium-ihover-item ") + hoverEffect }  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px" }}>
                                                     
                             <div className="premium-ihover-img-wrap"  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px"}}>
                                 <div className="premium-ihover-img-front">
                                     <div className="premium-ihover-img-inner-wrap"></div>
-                                    <img className="premium-ihover-img" src={ ("http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/") + imgName }  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px" , borderRadius: (imgBorderRadius || "50") + "%"  }}/>
+                                    <img className="premium-ihover-img" src={ ("http://localhost:8888/nesma/wp-content/plugins/premium-blocks-for-gutenberg/assets/img/") + imgName }
+                                         style={{ 
+                                                    width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px" , borderRadius: (imgBorderRadius || "50") + "%" ,
+                                                    filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )` 
+                                                }}
+                                    />
                                 </div>
                             </div>
                             <div className="premium-ihover-info-wrap"  style={{ width:(imgSize || "300")+"px" , height:(imgSize || "300")+"px"}}>
@@ -209,7 +328,12 @@ const edit = props => {
 
             {/* this line only for test */}
             <p style={{textAlign: "center"}}>hello ihover effect {hoverEffect}</p>
-
+            { linkCheck &&(
+                <URLInput
+                    value={linkUrl}
+                    onChange={newLinkUrl => setAttributes({ linkUrl: newLinkUrl })}            
+                />
+            )}
         </div>
     ];
 
