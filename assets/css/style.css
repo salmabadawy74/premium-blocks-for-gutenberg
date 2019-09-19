@@ -1717,9 +1717,9 @@ a.premium-dheading-block__link:hover {
 
 .premium-flip-container{
   background-Color: transparent;
-  width: 930px;
+  width: 100%;
   min-height: 400px;
-  height: auto;
+  height: 100%;
   /* perspective: 1000px; */
   transition: background .3s,border .3s,border-radius .3s,box-shadow .3s,-webkit-border-radius .3s,-webkit-box-shadow .3s;
 }

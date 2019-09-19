@@ -1,4 +1,3 @@
-
 import classnames from 'classnames';
 
 const { RichText} = wp.editor;
@@ -6,33 +5,23 @@ const { RichText} = wp.editor;
 const save = props =>{
     const { className } = props;
 
-    const {
-        position,
-        widthhh,
-        height,
-        backfaceVisibility,
-        frontTitle,
-        frontTitleTag,
+    const {               
+        frontTitle,        
         frontTitleColor,
         frontDescription,
         frontDescriptionColor,
         frontBackgroundColor,
-        backTitle,
-        backTitleTag,
+        backTitle,        
         backTitleColor,
         backDescription,
         backDescriptionColor,
         backBackgroundColor,
-        backTransform,
-        imgWidth,
-        imgHeight,
         frontIconType,
         frontIconSelected,
         frontIconCheck,
         frontIconSize,
         frontIconColor,
-        frontIconBackground,
-        frontIconAlign,
+        frontIconBackground,        
         frontIconPaddingTop,
         frontIconPaddingRight,
         frontIconPaddingBottom,
@@ -41,6 +30,7 @@ const save = props =>{
         frontIconMarginRight,
         frontIconMarginBottom,
         frontIconMarginLeft,
+        frontIconUnit,
         frontTitleCheck,
         frontTitleSize,
         frontTitlelineHeight,
@@ -79,8 +69,7 @@ const save = props =>{
         backIconCheck,
         backIconSize,
         backIconColor,
-        backIconBackground,
-        backIconAlign,
+        backIconBackground,        
         backIconPaddingTop,
         backIconPaddingRight,
         backIconPaddingBottom,
@@ -89,6 +78,7 @@ const save = props =>{
         backIconMarginRight,
         backIconMarginBottom,
         backIconMarginLeft,
+        backIconUnit,
         backTitleCheck,
         backTitleSize,
         backTitleLineHeight,
@@ -126,7 +116,7 @@ const save = props =>{
         <div className="premium-flip-container flip-card ">
             <div className="premium-flip-main-box flip-card-inner">
 
-                <div className="premium-flip-front premium-flip-frontlr flip-card-front" style={{backgroundColor: frontBackgroundColor || "#7c5707"}}>
+                <div className="premium-flip-front premium-flip-frontlr flip-card-front" style={{backgroundColor: frontBackgroundColor || "#767676"}}>
                     <div className="premium-flip-front-overlay">
                         <div className="premium-flip-front-content-container">
                             <div className="premium-flip-front-content">
@@ -136,8 +126,8 @@ const save = props =>{
                                         <div 
                                             className={`premium-flipbox__froIcon`}
                                             style={{
-                                                width: widthhh ,
-                                                height: height,
+                                                width: "100%" ,
+                                                height: "100%" ,
                                                 marginTop: (frontIconMarginTop || "0") + (marginUnit + "px"),
                                                 marginRight: (frontIconMarginRight || "0") + (marginUnit + "px"),
                                                 marginBottom: (frontIconMarginBottom ||"0") + (marginUnit + "px"),
@@ -154,11 +144,11 @@ const save = props =>{
                                                 <i
                                                     className={`premium-icon ${frontIconSelected}`}
                                                     style={{
-                                                        width:widthhh,
-                                                        height:height,
-                                                        color: frontIconColor || "#fff",
+                                                        width: "100%" ,
+                                                        height: "100%" ,
+                                                        color: frontIconColor || "#000",
                                                         backgroundColor: frontIconBackground || "transparent",
-                                                        fontSize: (frontIconSize || 50) + "px",
+                                                        fontSize: (frontIconSize || 50) + frontIconUnit,
                                                         paddingTop: (frontIconPaddingTop || "0") + (paddingUnit || "px"),
                                                         paddingRight: (frontIconPaddingRight || "0") + (paddingUnit || "px"),
                                                         paddingBottom: (frontIconPaddingBottom || "0" )+ (paddingUnit || "px"),
@@ -176,7 +166,7 @@ const save = props =>{
                                             className={`premium-flip-front-title`}
                                             value={frontTitle}
                                             style={{
-                                                color: frontTitleColor || "#e3d192",
+                                                color: frontTitleColor || "#000",
                                                 fontSize: frontTitleSize + "px",
                                                 lineHeight: frontTitlelineHeight + "px",
                                                 textShadow: `${frontTitleShadowHorizontal}px ${frontTitleShadowVertical}px ${frontTitleShadowBlur }px ${frontTitleShadowColor}`,
@@ -198,7 +188,7 @@ const save = props =>{
                                             className={`premium-flip-front-description`}
                                             value={frontDescription}
                                             style={{
-                                                color : frontDescriptionColor || "#ddd",
+                                                color : frontDescriptionColor || "#000",
                                                 fontSize: frontDescSize + "px",
                                                 lineHeight: frontDesclineHeight + "px",
                                                 textShadow: `${frontDescShadowHorizontal}px ${frontDescShadowVertical}px ${frontDescShadowBlur }px ${frontDescShadowColor}`,
@@ -221,7 +211,7 @@ const save = props =>{
                     </div>
                 </div>
 
-                <div className="premium-flip-back premium-flip-backlr flip-card-back" style={{backgroundColor: backBackgroundColor || "#ae8686" }}>
+                <div className="premium-flip-back premium-flip-backlr flip-card-back" style={{backgroundColor: backBackgroundColor || "#767676" }}>
                     <div className="premium-flip-back-overlay">   
                         <div className="premium-flip-back-content-container">    
                             <div className="premium-flip-back-content">   
@@ -231,8 +221,8 @@ const save = props =>{
                                             <div 
                                                 className={`premium-flipbox__backIcon`}
                                                 style={{
-                                                    width: widthhh,
-                                                    height: height,
+                                                    width: "100%" ,
+                                                    height: "100%" ,
                                                     marginTop: (backIconMarginTop || "0") + "px",
                                                     marginRight: (backIconMarginRight || "0") + "px",
                                                     marginBottom: (backIconMarginBottom || "0")+ "px",
@@ -249,11 +239,11 @@ const save = props =>{
                                                     <i
                                                         className={`premium-icon ${backIconSelected}`}
                                                         style={{
-                                                            width:widthhh,
-                                                            height:height,
-                                                            color: backIconColor || "#fff",
+                                                            width: "100%" ,
+                                                            height: "100%" ,
+                                                            color: backIconColor || "#000",
                                                             backgroundColor: backIconBackground || "transparent",
-                                                            fontSize: (backIconSize || 50) + "px",
+                                                            fontSize: (backIconSize || 50) + backIconUnit ,
                                                             paddingTop: (backIconPaddingTop || "0") + "px",
                                                             paddingRight: (backIconPaddingRight || "0") + "px",
                                                             paddingBottom: (backIconPaddingBottom || "0") + "px",
@@ -270,7 +260,7 @@ const save = props =>{
                                                 className={`premium-flip-back-title`}
                                                 value={backTitle}
                                                 style={{
-                                                    color: backTitleColor || "#fff",
+                                                    color: backTitleColor || "#000",
                                                     fontSize: backTitleSize + "px",
                                                     lineHeight: backTitleLineHeight + "px",
                                                     textShadow: `${backTitleShadowHorizontal}px ${backTitleShadowVertical}px ${backTitleShadowBlur }px ${backTitleShadowColor}`,
@@ -292,7 +282,7 @@ const save = props =>{
                                                 className={`premium-flip-back-description`}
                                                 value={backDescription}
                                                 style={{
-                                                    color : backDescriptionColor || "#ddd",
+                                                    color : backDescriptionColor || "#000",
                                                     fontSize: backDescSize + "px",
                                                     lineHeight: backDesclineHeight + "px",
                                                     textShadow: `${backDescShadowHorizontal}px ${backDescShadowVertical}px ${backDescShadowBlur }px ${backDescShadowColor}`,
