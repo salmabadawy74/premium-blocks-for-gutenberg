@@ -1,4 +1,3 @@
-
 import { flipBox } from "../../../assets/js/settings";
 
 import edit from "./edit";
@@ -13,92 +12,92 @@ const { registerBlockType } = wp.blocks;
 
 // define attributes for block
 const flipBoxAttrs = {
-    position:{
+    position: {
         type: "string",
-        default :"absolute"
+        default: "absolute"
     },
-    widthhh:{
+    widthhh: {
         type: "string",
-        default :"100%"
+        default: "100%"
     },
-    height:{
+    height: {
         type: "string",
-        default :"100%"
+        default: "100%"
     },
-    backfaceVisibility:{
+    backfaceVisibility: {
         type: "string",
-        default :"hidden"
+        default: "hidden"
     },
-    frontTitle:{
+    frontTitle: {
         type: "string",
         default: "Front title box"
     },
-    frontTitleTag:{
+    frontTitleTag: {
         type: "string",
         default: "H3"
     },
-    frontTitleColor:{
+    frontTitleColor: {
         type: "string",
         default: "#e3d192"
     },
-    frontDescription:{
+    frontDescription: {
         type: "string",
         default: "Front description"
     },
-    frontDescriptionColor:{
+    frontDescriptionColor: {
         type: "string",
         default: "#ddd"
     },
-    frontBackgroundColor:{
+    frontBackgroundColor: {
         type: "string",
         default: "#7c5707"
     },
-    backTitle:{
+    backTitle: {
         type: "string",
         default: "Back title box"
     },
-    backTitleTag:{
+    backTitleTag: {
         type: "string",
         default: "H3"
     },
-    backTitleColor:{
+    backTitleColor: {
         type: "string",
         default: "#fff"
     },
-    backDescription:{
+    backDescription: {
         type: "string",
         default: "Back description"
     },
-    backDescriptionColor:{
+    backDescriptionColor: {
         type: "string",
         default: "#ddd"
     },
-    backBackgroundColor:{
+    backBackgroundColor: {
         type: "string",
         default: "#ae8686"
     },
-    backTransform:{
-        type:"string",
-        default:"rotateY(180deg)"
+    backTransform: {
+        type: "string",
+        default: "rotateY(180deg)"
     },
-    imgWidth:{
-        type:"string",
+    imgWidth: {
+        type: "string",
         default: "300px"
     },
-    imgHeight:{
-        type:"string",
+    imgHeight: {
+        type: "string",
         default: "300px"
     },
-    frontIconType:{
+    frontIconType: {
         type: "string",
         default: "dash"
     },
-    frontIconSelected:{
+    frontIconSelected: {
         type: "string",
         default: "dashicons dashicons-admin-site"
     },
-    frontIconCheck:{
-        type:"Boolean",
+    frontIconCheck: {
+        type: "Boolean",
         default: false
     },
     frontIconSize: {
@@ -110,7 +109,7 @@ const flipBoxAttrs = {
     },
     frontIconBackground: {
         type: "string",
-        default:"transparent"
+        default: "transparent"
     },
     frontIconAlign: {
         type: "string",
@@ -148,30 +147,30 @@ const flipBoxAttrs = {
         type: "number",
         default: "0"
     },
-    frontTitleCheck:{
-        type:"Boolean",
+    frontTitleCheck: {
+        type: "Boolean",
         default: true
     },
-    frontTitleSize:{
-        type:"number",
-    },  
-    frontTitlelineHeight:{
-        type:"number",       
+    frontTitleSize: {
+        type: "number"
+    },
+    frontTitlelineHeight: {
+        type: "number"
     },
     frontTitleShadowColor: {
         type: "string"
     },
     frontTitleShadowBlur: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     frontTitleShadowHorizontal: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     frontTitleShadowVertical: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     frontTitlePaddingTop: {
         type: "number"
@@ -197,77 +196,77 @@ const flipBoxAttrs = {
     frontTitleMarginLeft: {
         type: "number"
     },
-    frontDescCheck:{
-        type:"Boolean",
+    frontDescCheck: {
+        type: "Boolean",
         default: true
     },
-    frontDescSize:{
-        type:"number",
-    },  
-    frontDesclineHeight:{
-        type:"number",       
+    frontDescSize: {
+        type: "number"
+    },
+    frontDesclineHeight: {
+        type: "number"
     },
     frontDescShadowColor: {
         type: "string"
     },
     frontDescShadowBlur: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     frontDescShadowHorizontal: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     frontDescShadowVertical: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     frontDescPaddingTop: {
         type: "number"
-      },
+    },
     frontDescPaddingRight: {
         type: "number"
-      },
+    },
     frontDescPaddingBottom: {
         type: "number"
-      },
+    },
     frontDescPaddingLeft: {
         type: "number"
-      },
+    },
     frontDescMarginTop: {
         type: "number"
-      },
+    },
     frontDescMarginRight: {
         type: "number"
-      },
+    },
     frontDescMarginBottom: {
         type: "number"
-      },
+    },
     frontDescMarginLeft: {
         type: "number"
-      },
+    },
     pxUnit: {
         type: "string",
         default: "px"
     },
-    paddingUnit:{
-        type:"string",
-        default:"px"
+    paddingUnit: {
+        type: "string",
+        default: "px"
     },
-    marginUnit:{
-        type:"string",
-        default:"px"
+    marginUnit: {
+        type: "string",
+        default: "px"
     },
-    backIconType:{
+    backIconType: {
         type: "string",
         default: "dash"
     },
-    backIconSelected:{
+    backIconSelected: {
         type: "string",
         default: "dashicons dashicons-admin-site"
     },
-    backIconCheck:{
-        type:"Boolean",
+    backIconCheck: {
+        type: "Boolean",
         default: true
     },
     backIconSize: {
@@ -279,7 +278,7 @@ const flipBoxAttrs = {
     },
     backIconBackground: {
         type: "string",
-        default:"transparent"
+        default: "transparent"
     },
     backIconAlign: {
         type: "string",
@@ -317,79 +316,79 @@ const flipBoxAttrs = {
         type: "number",
         default: "0"
     },
-    backTitleCheck:{
-        type:"Boolean",
+    backTitleCheck: {
+        type: "Boolean",
         default: false
     },
-    backTitleSize:{
-        type:"number",
+    backTitleSize: {
+        type: "number"
     },
-    backTitleLineHeight:{
-        type:"number",       
+    backTitleLineHeight: {
+        type: "number"
     },
     backTitleShadowColor: {
         type: "string"
     },
     backTitleShadowBlur: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     backTitleShadowHorizontal: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     backTitleShadowVertical: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     backTitlePaddingTop: {
         type: "number"
-      },
+    },
     backTitlePaddingRight: {
         type: "number"
-      },
+    },
     backTitlePaddingBottom: {
         type: "number"
-      },
+    },
     backTitlePaddingLeft: {
         type: "number"
-      },
+    },
     backTitleMarginTop: {
         type: "number"
-      },
+    },
     backTitleMarginRight: {
         type: "number"
-      },
+    },
     backTitleMarginBottom: {
         type: "number"
-      },
+    },
     backTitleMarginLeft: {
         type: "number"
-      },  
-    backDescCheck:{
-        type:"Boolean",
+    },
+    backDescCheck: {
+        type: "Boolean",
         default: true
     },
-    backDescSize:{
-        type:"number",
-    },  
-    backDesclineHeight:{
-        type:"number",       
+    backDescSize: {
+        type: "number"
+    },
+    backDesclineHeight: {
+        type: "number"
     },
     backDescShadowColor: {
         type: "string"
     },
     backDescShadowBlur: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     backDescShadowHorizontal: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     backDescShadowVertical: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     backDescPaddingTop: {
         type: "number"
@@ -415,20 +414,17 @@ const flipBoxAttrs = {
     backDescMarginLeft: {
         type: "number"
     }
+};
 
-}; 
-
-registerBlockType( "pemium/flip-box" ,
-    {
-        title: __("Flip Box"),
-        icon: "unlock", 
-        category: "premium-blocks",
-        attributes: flipBoxAttrs,
-        supports: {
-            inserter: flipBox
-          },
-        edit: edit,
-        save: save,
-        deprecated: deprecatedContent
-    }
-);
+registerBlockType("pemium/flip-box", {
+    title: __("Flip Box"),
+    icon: "unlock",
+    category: "premium-blocks",
+    attributes: flipBoxAttrs,
+    supports: {
+        inserter: flipBox
+    },
+    edit: edit,
+    save: save,
+    deprecated: deprecatedContent
+});

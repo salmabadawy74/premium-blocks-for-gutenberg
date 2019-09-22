@@ -1,6 +1,6 @@
 <?php
 /*
- * Plugin Name: Premium Blocks for Gutenberg
+ * Plugin Name: Premium Blocks for Gutenberg (Nesma)
  * Description: Gutenberg blocks that will help you build amazing pages with the new WordPress Gutenberg editor.
  * Plugin URI: https://premiumblocks.io/
  * Author: Leap13

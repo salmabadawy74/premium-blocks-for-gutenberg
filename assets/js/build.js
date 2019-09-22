@@ -41023,7 +41023,6 @@ var deprecatedContent = [{
 
 
 
-
 //define for translation
 var __ = wp.i18n.__;
 
@@ -41436,7 +41435,6 @@ var flipBoxAttrs = {
     backDescMarginLeft: {
         type: "number"
     }
-
 };
 
 registerBlockType("pemium/flip-box", {
