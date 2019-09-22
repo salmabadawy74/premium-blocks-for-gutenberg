@@ -59,6 +59,10 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 == Changelog ==
 
+= 1.7.7 =
+
+- Tweak: Load Google maps API script only if API key is set.
+
 = 1.7.6 =
 
 - Tweak: Improved plugin security.
