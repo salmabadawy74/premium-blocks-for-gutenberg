@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classnames from "classnames";
 
 const { RichText} = wp.editor;
 
@@ -109,18 +109,24 @@ const save = props =>{
         backDescMarginRight,
         backDescMarginBottom,
         backDescMarginLeft,
+        alignFroHorizontal,
+        alignFroVertical,
+        alignBackHorizontal,
+        alignBackVertical
 
     } = props.attributes;
 
-    return (
-        <div className="premium-flip-container flip-card ">
-            <div className="premium-flip-main-box flip-card-inner">
+    const mainClasses = classnames(className, "premium-flip");
 
-                <div className="premium-flip-front premium-flip-frontlr flip-card-front" style={{backgroundColor: frontBackgroundColor || "#767676"}}>
-                    <div className="premium-flip-front-overlay">
-                        <div className="premium-flip-front-content-container">
-                            <div className="premium-flip-front-content">
-                                <div className="premium-flip-text-wrapper PafadeInRevLeft">
+    return (
+        <div className={`${mainClasses}-container `}  >
+            <div className={`premium-flip-main-box `}>
+
+                <div className={`premium-flip-front premium-flip-frontlr `} style={{ backgroundColor: frontBackgroundColor || "#767676" }}>
+                    <div className={`premium-flip-front-overlay`}>
+                        <div className={`premium-flip-front-content-container`}>
+                            <div className={`premium-flip-front-content`}  style={{justifyContent : alignFroHorizontal, alignItems : alignFroVertical}}>
+                                <div className={`premium-flip-text-wrapper PafadeInRevLeft`}>
 
                                     {frontIconCheck && (
                                         <div 
@@ -211,13 +217,13 @@ const save = props =>{
                     </div>
                 </div>
 
-                <div className="premium-flip-back premium-flip-backlr flip-card-back" style={{backgroundColor: backBackgroundColor || "#767676" }}>
-                    <div className="premium-flip-back-overlay">   
-                        <div className="premium-flip-back-content-container">    
-                            <div className="premium-flip-back-content">   
-                                <div className="premium-flip-back-text-wrapper PafadeInRevRight">      
+                <div className={`premium-flip-back premium-flip-backlr `} style={{ backgroundColor: backBackgroundColor || "#767676" }}>
+                    <div className={`premium-flip-back-overlay`}>
+                        <div className={`premium-flip-back-content-container`}>
+                            <div className={`premium-flip-back-content`}  style={{justifyContent : alignBackHorizontal , alignItems : alignBackVertical}}>
+                                <div className={`premium-flip-back-text-wrapper PafadeInRevRight`}>     
 
-                                {backIconCheck && (
+                                        {backIconCheck && (
                                             <div 
                                                 className={`premium-flipbox__backIcon`}
                                                 style={{

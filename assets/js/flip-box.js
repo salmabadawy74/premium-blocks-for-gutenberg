@@ -3,10 +3,24 @@
         setTimeout(() => { 
 
         //Functions to animate flip box block from left to write
-  
+           
         var flipboxElement = $(".premium-flip-main-box");
+
+        // $(".premium-flip-main-box").click(function(){
+        //      console.log("yesssssss");
+        //     flipboxElement.removeClass("flipped");
+            
+        //   });
+
         flipboxElement.on("mouseenter", function() {
 
+            // if( flipboxElement.dataCurrent.value == "isPrimary back" ){
+            //     $(this).addClass("flipped");
+            // }
+            // else{
+            //     $(this).addClass("not-flipped");
+            // }
+           
             $(this).addClass("flipped");
         if (
             $(this)

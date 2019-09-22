@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumPadding from "../../components/premium-padding";
@@ -10,8 +11,8 @@ import iconsList from "../../components/premium-icons-list";
 //define for translation
 const { __ } = wp.i18n;
 
-const { TextControl, PanelBody, ToggleControl, RangeControl } = wp.components;
-const { RichText, InspectorControls, ColorPalette } = wp.editor;
+const { TextControl, PanelBody, ToggleControl, RangeControl, SelectControl, ButtonGroup, Button } = wp.components;
+const { RichText, InspectorControls, ColorPalette, AlignmentToolbar } = wp.editor;
 
 const edit = props => {
 
@@ -120,8 +121,75 @@ const edit = props => {
         backDescMarginRight,
         backDescMarginBottom,
         backDescMarginLeft,
+        alignFroHorizontal,
+        alignFroVertical,
+        alignBackHorizontal,
+        alignBackVertical,
+        primary
 
     } = props.attributes;
+
+    const ALIGN_Front = [
+        {
+            value: "flex-start",
+            label: __("Top")
+        },
+        {
+            value: "center",
+            label: __("Center")
+        },
+        {
+            value: "flex-end",
+            label: __("Bottom")
+        }
+    ];
+
+    const ALIGN_Back= [
+        {
+            value: "flex-start",
+            label: __("Top")
+        },
+        {
+            value: "center",
+            label: __("Center")
+        },
+        {
+            value: "flex-end",
+            label: __("Bottom")
+        }
+    ];
+
+    const mainClasses = classnames(className, "premium-flip");
+
+    const handleFront = (e) => {
+        jQuery(document).ready(function ($) {
+            console.log("hello from front side button");
+            $(".front-btn").addClass("isPrimary"); 
+            $(".front-btn").removeClass("isDefault");
+            $(".back-btn").removeClass("isPrimary"); 
+            $(".back-btn").addClass("isDefault");
+            $(".premium-flip-main-box").removeClass("flipped");
+            
+        })
+        e.preventDefault();
+        const sideValue = e.target.value;
+        setAttributes ({ primary: sideValue})
+        console.log(primary);
+        
+    }
+
+    const handleBack = (e) => {
+        jQuery(document).ready(function ($) {
+            console.log("hello from back side button");
+            $(".back-btn").addClass("isPrimary"); 
+            $(".back-btn").removeClass("isDefault");
+            $(".front-btn").removeClass("isPrimary"); 
+            $(".front-btn").addClass("isDefault");
+            $(".premium-flip-main-box").addClass("flipped");
+            
+        })
+        
+    }
 
     return [
         isSelected && (
@@ -167,7 +235,7 @@ const edit = props => {
                     {frontIconCheck && (
                         <PremiumSizeUnits
                             onChangeSizeUnit={newValue =>
-                                setAttributes({ frontIconUnit : newValue || "px" })
+                                setAttributes({ frontIconUnit: newValue || "px" })
                             }
                         />
                     )}
@@ -220,6 +288,40 @@ const edit = props => {
                             />
                         </div>
                     )}
+                    <div className="premium-control-toggle">
+                        <ButtonGroup>
+                            <Button
+                                
+                                className="premium-unit-control-btn front-btn"
+                                onClick={handleFront}
+                            >
+                                Front Side
+                            </Button>
+                            <Button
+                                
+                                className="premium-unit-control-btn back-btn"
+                                onClick={handleBack}
+                            >
+                                Back Side
+                            </Button>
+                        </ButtonGroup>
+                    </div>
+                    <div className="premium-control-toggle">
+                        <p><strong>{__("Align Horizontal")}</strong></p>
+                        <AlignmentToolbar
+                            value={alignFroHorizontal}
+                            onChange={newAlign => setAttributes({ alignFroHorizontal: newAlign })}
+                        />
+                    </div>
+                    <div className="premium-control-toggle">
+                        <SelectControl
+                            label={__("Align vertical")}
+                            options={ALIGN_Front}
+                            value={alignFroVertical}
+                            onChange={newAlign => setAttributes({ alignFroVertical: newAlign })}                        
+                        />
+                    </div>
+
 
                 </PanelBody>
                 {/* End Front side */}
@@ -616,6 +718,21 @@ const edit = props => {
                             />
                         </div>
                     )}
+                    <div className="premium-control-toggle">
+                        <p><strong>{__("Align Horizontal")}</strong></p>
+                        <AlignmentToolbar
+                            value={alignBackHorizontal}
+                            onChange={newAlign => setAttributes({ alignBackHorizontal: newAlign })}
+                        />
+                    </div>
+                    <div className="premium-control-toggle">
+                        <SelectControl
+                            label={__("Align vertical")}
+                            options={ALIGN_Back}
+                            value={alignBackVertical}
+                            onChange={newAlign => setAttributes({ alignBackVertical: newAlign })}                        
+                        />
+                    </div>
 
                 </PanelBody>
                 {/* End Back side */}
@@ -921,14 +1038,14 @@ const edit = props => {
 
             </InspectorControls>
         ),
-        <div className="premium-flip-container "  >
-            <div className="premium-flip-main-box ">
+        <div className={`${mainClasses}-container `} >
+            <div className={`premium-flip-main-box `}  data-current={primary} >
 
-                <div className="premium-flip-front premium-flip-frontlr " style={{ backgroundColor: frontBackgroundColor || "#767676" }}>
-                    <div className="premium-flip-front-overlay">
-                        <div className="premium-flip-front-content-container">
-                            <div className="premium-flip-front-content">
-                                <div className="premium-flip-text-wrapper PafadeInRevLeft">
+                <div className={`premium-flip-front premium-flip-frontlr `} style={{ backgroundColor: frontBackgroundColor || "#767676" }}>
+                    <div className={`premium-flip-front-overlay`}>
+                        <div className={`premium-flip-front-content-container`}>
+                            <div className={`premium-flip-front-content`}  style={{justifyContent : alignFroHorizontal, alignItems : alignFroVertical}}>
+                                <div className={`premium-flip-text-wrapper PafadeInRevLeft`}>
 
                                     {frontIconCheck && (
                                         <div
@@ -956,7 +1073,7 @@ const edit = props => {
                                                         height: "100%",
                                                         color: frontIconColor || "#000",
                                                         backgroundColor: frontIconBackground || "transparent",
-                                                        fontSize: (frontIconSize || 50) + frontIconUnit ,
+                                                        fontSize: (frontIconSize || 50) + frontIconUnit,
                                                         paddingTop: (frontIconPaddingTop || "0") + (paddingUnit || "px"),
                                                         paddingRight: (frontIconPaddingRight || "0") + (paddingUnit || "px"),
                                                         paddingBottom: (frontIconPaddingBottom || "0") + (paddingUnit || "px"),
@@ -1025,11 +1142,11 @@ const edit = props => {
                     </div>
                 </div>
 
-                <div className="premium-flip-back premium-flip-backlr " style={{ backgroundColor: backBackgroundColor || "#767676" }}>
-                    <div className="premium-flip-back-overlay">
-                        <div className="premium-flip-back-content-container">
-                            <div className="premium-flip-back-content">
-                                <div className="premium-flip-back-text-wrapper PafadeInRevRight">
+                <div className={`premium-flip-back premium-flip-backlr `} style={{ backgroundColor: backBackgroundColor || "#767676" }}>
+                    <div className={`premium-flip-back-overlay`}>
+                        <div className={`premium-flip-back-content-container`}>
+                            <div className={`premium-flip-back-content`}  style={{justifyContent : alignBackHorizontal , alignItems : alignBackVertical}}>
+                                <div className={`premium-flip-text-wrapper PafadeInRevRight`}>
 
                                     {backIconCheck && (
                                         <div

@@ -378,6 +378,26 @@ const flipBoxAttrs = {
     },
     backDescMarginLeft: {
         type: "number"
+    },
+    alignFroHorizontal: {
+        type: "string",
+        default: "center"
+    },
+    alignFroVertical: {
+        type: "string",
+        default: "center"
+    },
+    alignBackHorizontal: {
+        type: "string",
+        default: "center"
+    },
+    alignBackVertical: {
+        type: "string",
+        default: "center"
+    },
+    primary:{
+        type:"string",
+        default:"isDefault"
     }
 }; 
 
