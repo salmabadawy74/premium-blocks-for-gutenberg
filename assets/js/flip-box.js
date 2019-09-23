@@ -6,22 +6,17 @@
            
         var flipboxElement = $(".premium-flip-main-box");
 
-        // $(".premium-flip-main-box").click(function(){
-        //      console.log("yesssssss");
-        //     flipboxElement.removeClass("flipped");
-            
-        //   });
-
         flipboxElement.on("mouseenter", function() {
 
-            // if( flipboxElement.dataCurrent.value == "isPrimary back" ){
-            //     $(this).addClass("flipped");
-            // }
-            // else{
-            //     $(this).addClass("not-flipped");
-            // }
+            var side = $(this).attr("data-current");
+            console.log(side);
+            if( side == "left"){
+                console.log("data is back")
+                $(this).addClass("flipped");
+                $(this).removeClass("not-flipped");
+
            
-            $(this).addClass("flipped");
+            // $(this).addClass("flipped");
         if (
             $(this)
             .children(".premium-flip-front")
@@ -59,6 +54,13 @@
             .addClass("PafadeInRevLeft")
             .removeClass("PafadeInRevRight");
         }
+
+    }
+    else {
+        console.log("data is front")
+        $(this).addClass("not-flipped");
+    }
+
         });
         flipboxElement.on("mouseleave", function() {
             $(this).removeClass("flipped");
@@ -100,6 +102,7 @@
             .addClass("PafadeInRevRight");
         }
         });
+        
 
     }, 2000);
 });

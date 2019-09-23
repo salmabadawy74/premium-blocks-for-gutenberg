@@ -11,8 +11,8 @@ import iconsList from "../../components/premium-icons-list";
 //define for translation
 const { __ } = wp.i18n;
 
-const { TextControl, PanelBody, ToggleControl, RangeControl, SelectControl, ButtonGroup, Button } = wp.components;
-const { RichText, InspectorControls, ColorPalette, AlignmentToolbar } = wp.editor;
+const { TextControl, PanelBody, ToggleControl, RangeControl, SelectControl, ButtonGroup, Button, Toolbar } = wp.components;
+const { BlockControls, RichText, InspectorControls, ColorPalette, AlignmentToolbar } = wp.editor;
 
 const edit = props => {
 
@@ -125,75 +125,146 @@ const edit = props => {
         alignFroVertical,
         alignBackHorizontal,
         alignBackVertical,
-        primary
+        primary,
+        activeSide
 
     } = props.attributes;
 
     const ALIGN_Front = [
         {
-            value: "flex-start",
-            label: __("Top")
+            icon: 'arrow-up-alt2',
+            title: __('Top'),
+            align: 'flex-start',
         },
         {
-            value: "center",
-            label: __("Center")
+            icon: 'editor-aligncenter',
+            title: __('Center'),
+            align: 'center',
         },
         {
-            value: "flex-end",
-            label: __("Bottom")
-        }
+            icon: 'arrow-down-alt2',
+            title: __('Bottom'),
+            align: 'flex-end',
+        },
     ];
 
-    const ALIGN_Back= [
+    const ALIGN_Back = [
         {
-            value: "flex-start",
-            label: __("Top")
+            icon: 'arrow-up-alt2',
+            title: __('Top'),
+            align: 'flex-start',
         },
         {
-            value: "center",
-            label: __("Center")
+            icon: 'editor-aligncenter',
+            title: __('Center'),
+            align: 'center',
         },
         {
-            value: "flex-end",
-            label: __("Bottom")
+            icon: 'arrow-down-alt2',
+            title: __('Bottom'),
+            align: 'flex-end',
+        },
+    ];
+
+    const Flip_Side = [
+        {
+            label: __('Front'),
+            value: 'front',
+        },
+        {
+            label: __('Back'),
+            value: 'back',
         }
     ];
 
     const mainClasses = classnames(className, "premium-flip");
 
     const handleFront = (e) => {
+        setAttributes({ activeSide: "right" })
         jQuery(document).ready(function ($) {
             console.log("hello from front side button");
-            $(".front-btn").addClass("isPrimary"); 
-            $(".front-btn").removeClass("isDefault");
-            $(".back-btn").removeClass("isPrimary"); 
-            $(".back-btn").addClass("isDefault");
             $(".premium-flip-main-box").removeClass("flipped");
-            
         })
-        e.preventDefault();
-        const sideValue = e.target.value;
-        setAttributes ({ primary: sideValue})
-        console.log(primary);
-        
     }
 
     const handleBack = (e) => {
+        setAttributes({ activeSide: "left" })
         jQuery(document).ready(function ($) {
             console.log("hello from back side button");
-            $(".back-btn").addClass("isPrimary"); 
-            $(".back-btn").removeClass("isDefault");
-            $(".front-btn").removeClass("isPrimary"); 
-            $(".front-btn").addClass("isDefault");
             $(".premium-flip-main-box").addClass("flipped");
-            
         })
-        
+    }
+
+    const createThumbsControl = (thumbs) => {
+        return {
+            icon: `arrow-${thumbs}-alt2`,
+            title: (thumbs == "right") ? "Front" : "Back",
+            isActive: activeSide === thumbs,
+            onClick: () => {
+                setAttributes({ activeSide: thumbs }),
+
+                "left" === activeSide
+                    ?
+                    jQuery(document).ready(function ($) {
+                        $(".premium-flip-main-box").addClass("flipped");
+                    })
+                    :
+                    jQuery(document).ready(function ($) {
+                        $(".premium-flip-main-box").removeClass("flipped");
+                    })
+            }
+        };
     }
 
     return [
         isSelected && (
-            <InspectorControls>
+            <BlockControls key="controls">
+                <AlignmentToolbar
+                    label={__('Front Alignment Horizontal')}
+                    value={alignFroHorizontal}
+                    onChange={newAlign => setAttributes({ alignFroHorizontal: newAlign || "center" })}
+                />
+            </BlockControls>
+        ),
+        isSelected && (
+            <BlockControls key="controls">
+                <AlignmentToolbar
+                    label={__('Front Alignment Vertical')}
+                    value={alignFroVertical}
+                    onChange={newAlign => setAttributes({ alignFroVertical: newAlign || "center" })}
+                    alignmentControls={ALIGN_Front}
+                />
+            </BlockControls>
+        ),
+        isSelected && (
+            <BlockControls key="controls">
+                <AlignmentToolbar
+                    label={__('Back Alignment Horizontal')}
+                    value={alignBackHorizontal}
+                    onChange={newAlign => setAttributes({ alignBackHorizontal: newAlign || "center" })}
+                />
+            </BlockControls>
+        ),
+        isSelected && (
+            <BlockControls key="controls">
+                <AlignmentToolbar
+                    label={__('Back Alignment Vertical')}
+                    value={alignBackVertical}
+                    onChange={newAlign => setAttributes({ alignBackVertical: newAlign || "center" })}
+                    alignmentControls={ALIGN_Back}
+                />
+            </BlockControls>
+        ),
+        isSelected && (
+            <BlockControls key="controls">
+                <Toolbar
+                    controls={['right', 'left'].map(createThumbsControl)}
+                />
+            </BlockControls>
+        ),
+
+        isSelected && (
+            <InspectorControls key={"inspector"}>
 
                 {/* Start Front side */}
                 <PanelBody
@@ -291,14 +362,16 @@ const edit = props => {
                     <div className="premium-control-toggle">
                         <ButtonGroup>
                             <Button
-                                
+                                isPrimary={(activeSide == "right") ? true : false}
+                                isDefault={(activeSide == "right") ? false : true}
                                 className="premium-unit-control-btn front-btn"
                                 onClick={handleFront}
                             >
-                                Front Side
+                                front side
                             </Button>
                             <Button
-                                
+                                isPrimary={(activeSide == "left") ? true : false}
+                                isDefault={(activeSide == "left") ? false : true}
                                 className="premium-unit-control-btn back-btn"
                                 onClick={handleBack}
                             >
@@ -306,22 +379,6 @@ const edit = props => {
                             </Button>
                         </ButtonGroup>
                     </div>
-                    <div className="premium-control-toggle">
-                        <p><strong>{__("Align Horizontal")}</strong></p>
-                        <AlignmentToolbar
-                            value={alignFroHorizontal}
-                            onChange={newAlign => setAttributes({ alignFroHorizontal: newAlign })}
-                        />
-                    </div>
-                    <div className="premium-control-toggle">
-                        <SelectControl
-                            label={__("Align vertical")}
-                            options={ALIGN_Front}
-                            value={alignFroVertical}
-                            onChange={newAlign => setAttributes({ alignFroVertical: newAlign })}                        
-                        />
-                    </div>
-
 
                 </PanelBody>
                 {/* End Front side */}
@@ -718,21 +775,6 @@ const edit = props => {
                             />
                         </div>
                     )}
-                    <div className="premium-control-toggle">
-                        <p><strong>{__("Align Horizontal")}</strong></p>
-                        <AlignmentToolbar
-                            value={alignBackHorizontal}
-                            onChange={newAlign => setAttributes({ alignBackHorizontal: newAlign })}
-                        />
-                    </div>
-                    <div className="premium-control-toggle">
-                        <SelectControl
-                            label={__("Align vertical")}
-                            options={ALIGN_Back}
-                            value={alignBackVertical}
-                            onChange={newAlign => setAttributes({ alignBackVertical: newAlign })}                        
-                        />
-                    </div>
 
                 </PanelBody>
                 {/* End Back side */}
@@ -1039,12 +1081,12 @@ const edit = props => {
             </InspectorControls>
         ),
         <div className={`${mainClasses}-container `} >
-            <div className={`premium-flip-main-box `}  data-current={primary} >
+            <div className={`premium-flip-main-box `} data-current={activeSide} >
 
                 <div className={`premium-flip-front premium-flip-frontlr `} style={{ backgroundColor: frontBackgroundColor || "#767676" }}>
                     <div className={`premium-flip-front-overlay`}>
                         <div className={`premium-flip-front-content-container`}>
-                            <div className={`premium-flip-front-content`}  style={{justifyContent : alignFroHorizontal, alignItems : alignFroVertical}}>
+                            <div className={`premium-flip-front-content`} style={{ justifyContent: alignFroHorizontal, alignItems: alignFroVertical }}>
                                 <div className={`premium-flip-text-wrapper PafadeInRevLeft`}>
 
                                     {frontIconCheck && (
@@ -1145,7 +1187,7 @@ const edit = props => {
                 <div className={`premium-flip-back premium-flip-backlr `} style={{ backgroundColor: backBackgroundColor || "#767676" }}>
                     <div className={`premium-flip-back-overlay`}>
                         <div className={`premium-flip-back-content-container`}>
-                            <div className={`premium-flip-back-content`}  style={{justifyContent : alignBackHorizontal , alignItems : alignBackVertical}}>
+                            <div className={`premium-flip-back-content`} style={{ justifyContent: alignBackHorizontal, alignItems: alignBackVertical }}>
                                 <div className={`premium-flip-text-wrapper PafadeInRevRight`}>
 
                                     {backIconCheck && (

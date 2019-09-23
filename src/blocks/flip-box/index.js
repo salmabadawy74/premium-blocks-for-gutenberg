@@ -396,8 +396,12 @@ const flipBoxAttrs = {
         default: "center"
     },
     primary:{
-        type:"string",
-        default:"isDefault"
+        type:"boolean",
+        default: true
+    },
+    activeSide:{
+        type: "string" ,
+        default: "right"
     }
 }; 
 

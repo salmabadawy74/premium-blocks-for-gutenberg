@@ -112,7 +112,8 @@ const save = props =>{
         alignFroHorizontal,
         alignFroVertical,
         alignBackHorizontal,
-        alignBackVertical
+        alignBackVertical,
+        boxSide
 
     } = props.attributes;
 

@@ -41417,8 +41417,12 @@ var flipBoxAttrs = {
         default: "center"
     },
     primary: {
+        type: "boolean",
+        default: true
+    },
+    activeSide: {
         type: "string",
-        default: "isDefault"
+        default: "right"
     }
 };
 
@@ -41470,8 +41474,10 @@ var _wp$components = wp.components,
     RangeControl = _wp$components.RangeControl,
     SelectControl = _wp$components.SelectControl,
     ButtonGroup = _wp$components.ButtonGroup,
-    Button = _wp$components.Button;
+    Button = _wp$components.Button,
+    Toolbar = _wp$components.Toolbar;
 var _wp$editor = wp.editor,
+    BlockControls = _wp$editor.BlockControls,
     RichText = _wp$editor.RichText,
     InspectorControls = _wp$editor.InspectorControls,
     ColorPalette = _wp$editor.ColorPalette,
@@ -41590,62 +41596,130 @@ var edit = function edit(props) {
         alignFroVertical = _props$attributes.alignFroVertical,
         alignBackHorizontal = _props$attributes.alignBackHorizontal,
         alignBackVertical = _props$attributes.alignBackVertical,
-        primary = _props$attributes.primary;
+        primary = _props$attributes.primary,
+        activeSide = _props$attributes.activeSide;
 
 
     var ALIGN_Front = [{
-        value: "flex-start",
-        label: __("Top")
+        icon: 'arrow-up-alt2',
+        title: __('Top'),
+        align: 'flex-start'
     }, {
-        value: "center",
-        label: __("Center")
+        icon: 'editor-aligncenter',
+        title: __('Center'),
+        align: 'center'
     }, {
-        value: "flex-end",
-        label: __("Bottom")
+        icon: 'arrow-down-alt2',
+        title: __('Bottom'),
+        align: 'flex-end'
     }];
 
     var ALIGN_Back = [{
-        value: "flex-start",
-        label: __("Top")
+        icon: 'arrow-up-alt2',
+        title: __('Top'),
+        align: 'flex-start'
     }, {
-        value: "center",
-        label: __("Center")
+        icon: 'editor-aligncenter',
+        title: __('Center'),
+        align: 'center'
     }, {
-        value: "flex-end",
-        label: __("Bottom")
+        icon: 'arrow-down-alt2',
+        title: __('Bottom'),
+        align: 'flex-end'
+    }];
+
+    var Flip_Side = [{
+        label: __('Front'),
+        value: 'front'
+    }, {
+        label: __('Back'),
+        value: 'back'
     }];
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-flip");
 
     var handleFront = function handleFront(e) {
+        setAttributes({ activeSide: "right" });
         jQuery(document).ready(function ($) {
             console.log("hello from front side button");
-            $(".front-btn").addClass("isPrimary");
-            $(".front-btn").removeClass("isDefault");
-            $(".back-btn").removeClass("isPrimary");
-            $(".back-btn").addClass("isDefault");
             $(".premium-flip-main-box").removeClass("flipped");
         });
-        e.preventDefault();
-        var sideValue = e.target.value;
-        setAttributes({ primary: sideValue });
-        console.log(primary);
     };
 
     var handleBack = function handleBack(e) {
+        setAttributes({ activeSide: "left" });
         jQuery(document).ready(function ($) {
             console.log("hello from back side button");
-            $(".back-btn").addClass("isPrimary");
-            $(".back-btn").removeClass("isDefault");
-            $(".front-btn").removeClass("isPrimary");
-            $(".front-btn").addClass("isDefault");
             $(".premium-flip-main-box").addClass("flipped");
         });
     };
 
+    var createThumbsControl = function createThumbsControl(thumbs) {
+        return {
+            icon: "arrow-" + thumbs + "-alt2",
+            title: thumbs == "right" ? "Front" : "Back",
+            isActive: activeSide === thumbs,
+            onClick: function onClick() {
+                setAttributes({ activeSide: thumbs }), "left" === activeSide ? jQuery(document).ready(function ($) {
+                    $(".premium-flip-main-box").addClass("flipped");
+                }) : jQuery(document).ready(function ($) {
+                    $(".premium-flip-main-box").removeClass("flipped");
+                });
+            }
+        };
+    };
+
     return [isSelected && wp.element.createElement(
+        BlockControls,
+        { key: "controls" },
+        wp.element.createElement(AlignmentToolbar, {
+            label: __('Front Alignment Horizontal'),
+            value: alignFroHorizontal,
+            onChange: function onChange(newAlign) {
+                return setAttributes({ alignFroHorizontal: newAlign || "center" });
+            }
+        })
+    ), isSelected && wp.element.createElement(
+        BlockControls,
+        { key: "controls" },
+        wp.element.createElement(AlignmentToolbar, {
+            label: __('Front Alignment Vertical'),
+            value: alignFroVertical,
+            onChange: function onChange(newAlign) {
+                return setAttributes({ alignFroVertical: newAlign || "center" });
+            },
+            alignmentControls: ALIGN_Front
+        })
+    ), isSelected && wp.element.createElement(
+        BlockControls,
+        { key: "controls" },
+        wp.element.createElement(AlignmentToolbar, {
+            label: __('Back Alignment Horizontal'),
+            value: alignBackHorizontal,
+            onChange: function onChange(newAlign) {
+                return setAttributes({ alignBackHorizontal: newAlign || "center" });
+            }
+        })
+    ), isSelected && wp.element.createElement(
+        BlockControls,
+        { key: "controls" },
+        wp.element.createElement(AlignmentToolbar, {
+            label: __('Back Alignment Vertical'),
+            value: alignBackVertical,
+            onChange: function onChange(newAlign) {
+                return setAttributes({ alignBackVertical: newAlign || "center" });
+            },
+            alignmentControls: ALIGN_Back
+        })
+    ), isSelected && wp.element.createElement(
+        BlockControls,
+        { key: "controls" },
+        wp.element.createElement(Toolbar, {
+            controls: ['right', 'left'].map(createThumbsControl)
+        })
+    ), isSelected && wp.element.createElement(
         InspectorControls,
-        null,
+        { key: "inspector" },
         wp.element.createElement(
             PanelBody,
             {
@@ -41778,53 +41852,24 @@ var edit = function edit(props) {
                     wp.element.createElement(
                         Button,
                         {
-
+                            isPrimary: activeSide == "right" ? true : false,
+                            isDefault: activeSide == "right" ? false : true,
                             className: "premium-unit-control-btn front-btn",
                             onClick: handleFront
                         },
-                        "Front Side"
+                        "front side"
                     ),
                     wp.element.createElement(
                         Button,
                         {
-
+                            isPrimary: activeSide == "left" ? true : false,
+                            isDefault: activeSide == "left" ? false : true,
                             className: "premium-unit-control-btn back-btn",
                             onClick: handleBack
                         },
                         "Back Side"
                     )
                 )
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(
-                    "p",
-                    null,
-                    wp.element.createElement(
-                        "strong",
-                        null,
-                        __("Align Horizontal")
-                    )
-                ),
-                wp.element.createElement(AlignmentToolbar, {
-                    value: alignFroHorizontal,
-                    onChange: function onChange(newAlign) {
-                        return setAttributes({ alignFroHorizontal: newAlign });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(SelectControl, {
-                    label: __("Align vertical"),
-                    options: ALIGN_Front,
-                    value: alignFroVertical,
-                    onChange: function onChange(newAlign) {
-                        return setAttributes({ alignFroVertical: newAlign });
-                    }
-                })
             )
         ),
         frontIconCheck && wp.element.createElement(
@@ -42334,37 +42379,6 @@ var edit = function edit(props) {
                         return setAttributes({ backDescription: newDesc });
                     }
                 })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(
-                    "p",
-                    null,
-                    wp.element.createElement(
-                        "strong",
-                        null,
-                        __("Align Horizontal")
-                    )
-                ),
-                wp.element.createElement(AlignmentToolbar, {
-                    value: alignBackHorizontal,
-                    onChange: function onChange(newAlign) {
-                        return setAttributes({ alignBackHorizontal: newAlign });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(SelectControl, {
-                    label: __("Align vertical"),
-                    options: ALIGN_Back,
-                    value: alignBackVertical,
-                    onChange: function onChange(newAlign) {
-                        return setAttributes({ alignBackVertical: newAlign });
-                    }
-                })
             )
         ),
         backIconCheck && wp.element.createElement(
@@ -42757,7 +42771,7 @@ var edit = function edit(props) {
         { className: mainClasses + "-container " },
         wp.element.createElement(
             "div",
-            { className: "premium-flip-main-box ", "data-current": primary },
+            { className: "premium-flip-main-box ", "data-current": activeSide },
             wp.element.createElement(
                 "div",
                 { className: "premium-flip-front premium-flip-frontlr ", style: { backgroundColor: frontBackgroundColor || "#767676" } },
@@ -43091,7 +43105,8 @@ var save = function save(props) {
         alignFroHorizontal = _props$attributes.alignFroHorizontal,
         alignFroVertical = _props$attributes.alignFroVertical,
         alignBackHorizontal = _props$attributes.alignBackHorizontal,
-        alignBackVertical = _props$attributes.alignBackVertical;
+        alignBackVertical = _props$attributes.alignBackVertical,
+        boxSide = _props$attributes.boxSide;
 
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-flip");
