@@ -11,7 +11,7 @@ import iconsList from "../../components/premium-icons-list";
 //define for translation
 const { __ } = wp.i18n;
 
-const { TextControl, PanelBody, ToggleControl, RangeControl, SelectControl, ButtonGroup, Button, Toolbar } = wp.components;
+const { TextControl, PanelBody, ToggleControl, RangeControl, ButtonGroup, Button, Toolbar } = wp.components;
 const { BlockControls, RichText, InspectorControls, ColorPalette, AlignmentToolbar } = wp.editor;
 
 const edit = props => {
@@ -1182,7 +1182,7 @@ const edit = props => {
                     <div className={`premium-flip-back-overlay`}>
                         <div className={`premium-flip-back-content-container`}>
                             <div className={`premium-flip-back-content`} style={{ justifyContent: alignBackHorizontal, alignItems: alignBackVertical }}>
-                                <div className={`premium-flip-text-wrapper PafadeInRevRight`}>
+                                <div className={`premium-flip-back-text-wrapper PafadeInRevRight`}>
 
                                     {backIconCheck && (
                                         <div

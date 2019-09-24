@@ -1853,11 +1853,11 @@ a.premium-dheading-block__link:hover {
   -o-animation-fill-mode: both;
   -ms-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation-duration: 1s;
-  -moz-animation-duration: 1s;
-  -o-animation-duration: 1s;
-  -ms-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  -ms-animation-duration: 2s;
+  animation-duration: 2s;
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
   -o-animation-delay: 0.4s;
@@ -1893,11 +1893,11 @@ a.premium-dheading-block__link:hover {
 }
 @keyframes PafadeInRevLeft {
   from {
-      -webkit-transform: translateX(20px);
-      -moz-transform: translateX(20px);
-      -o-transform: translateX(20px);
-      -ms-transform: translateX(20px);
-      transform: translateX(20px);
+      -webkit-transform: translateX(30px);
+      -moz-transform: translateX(30px);
+      -o-transform: translateX(30px);
+      -ms-transform: translateX(30px);
+      transform: translateX(30px);
  }
   to {
       -webkit-transform: translateX(0);
@@ -1916,10 +1916,10 @@ a.premium-dheading-block__link:hover {
       transform: translateX(0px);
  }
   to {
-      -webkit-transform: translateX(20px);
-      -moz-transform: translateX(20px);
-      -o-transform: translateX(20px);
-      -ms-transform: translateX(20px);
-      transform: translateX(20px);
+      -webkit-transform: translateX(30px);
+      -moz-transform: translateX(30px);
+      -o-transform: translateX(30px);
+      -ms-transform: translateX(30px);
+      transform: translateX(30px);
  }
 }
