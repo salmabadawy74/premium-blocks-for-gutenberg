@@ -4,6 +4,12 @@ import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconsList from "../../components/premium-icons-list";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
+import PremiumTypo from "../../components/premium-typo";
+import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumPadding from "../../components/premium-padding";
+import PremiumMargin from "../../components/premium-margin";
+import PremiumSizeUnits from "../../components/premium-size-units";
+import PremiumBorder from "../../components/premium-border";
 
 // For Internationalization
 const { __ } = wp.i18n;
@@ -32,10 +38,47 @@ const edit = props => {
         iconCheck,
         iconType,
         iconSelected,
+        iconSize,
+        iconUnit,
+        iconColor,
+        iconBackground,
+        iconBorderType,
+        iconBorderWidth,
+        iconBorderColor,
+        iconBorderRadius,
+        iconPadTop,
+        iconPadRight,
+        iconPadBottom,
+        iconPadLeft,
+        padUnit,
         titleCheck,
         titleText,
+        titleColor,
+        titleSize,
+        titlelineHeight,
+        titleShadColor,
+        titleShadBlur,
+        titleShadHorizontal,
+        titleShadVertical,
+        titleMarTop,
+        titleMarRight,
+        titleMarBottom,
+        titleMarLeft,
+        titleMarUnit,
         descCheck,
         descText,
+        descColor,
+        descSize,
+        desclineHeight,
+        descShadColor,
+        descShadBlur,
+        descShadHorizontal,
+        descShadVertical,
+        descMarTop,
+        descMarRight,
+        descMarBottom,
+        descMarLeft,
+        descMarUnit,
         contentAlign,
         overlayColor,
         overlayOpacity,
@@ -291,7 +334,7 @@ const edit = props => {
                         />
                         {iconCheck && (
                             <FontIconPicker
-                                icons={iconsList}
+                                icons={iconsList["Font Awesome Icons"]}
                                 onChange={newIcon => setAttributes({ iconSelected: newIcon || "fa fa-heart" })}
                                 value={iconSelected}
                                 isMulti={false}
@@ -342,6 +385,218 @@ const edit = props => {
                     </div>
 
                 </PanelBody>
+
+                {/* Icon options */}
+
+                {iconCheck && (
+                    <PanelBody
+                        title={__("Icon Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <div className="premium-control-toggle">
+                            <PremiumSizeUnits
+                                onChangeSizeUnit={newValue =>
+                                    setAttributes({ iconUnit: newValue || "px" })
+                                }
+                            />
+                            <RangeControl
+                                label={__("Size")}
+                                value={iconSize}
+                                onChange={newValue => setAttributes({ iconSize: newValue || "50" })}
+                                initialPosition={50}
+                                allowReset={true}
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <p><strong>{__("Color")}</strong></p>
+                            <ColorPalette
+                                value={iconColor}
+                                onChange={newColor => setAttributes({ iconColor: newColor || "#fff" })}
+                                allowReset={true}
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <p><strong>{__("Background Color")}</strong></p>
+                            <ColorPalette
+                                value={iconBackground}
+                                onChange={newBackColor => setAttributes({ iconBackground: newBackColor || "transparent" })}
+                                allowReset={true}
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <PremiumBorder
+                                borderType={iconBorderType}
+                                borderWidth={iconBorderWidth}
+                                borderColor={iconBorderColor}
+                                borderRadius={iconBorderRadius}
+                                onChangeType={newType =>
+                                    setAttributes({ iconBorderType: newType })
+                                }
+                                onChangeWidth={newWidth =>
+                                    setAttributes({ iconBorderWidth: newWidth || "0" })
+                                }
+                                onChangeColor={newColor =>
+                                    setAttributes({
+                                        iconBorderColor: newColor.hex || "transparent"
+                                    })
+                                }
+                                onChangeRadius={newrRadius =>
+                                    setAttributes({ iconBorderRadius: newrRadius || "0" })
+                                }
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <PremiumPadding
+                                paddingTop={iconPadTop}
+                                paddingRight={iconPadRight}
+                                paddingBottom={iconPadBottom}
+                                paddingLeft={iconPadLeft}
+                                onChangePadTop={newPadTop =>
+                                    setAttributes({
+                                        iconPadTop: newPadTop || "0"
+                                    })
+                                }
+                                onChangePadRight={newPadRight =>
+                                    setAttributes({
+                                        iconPadRight: newPadRight || "0"
+                                    })
+                                }
+                                onChangePadBottom={newPadBottom =>
+                                    setAttributes({
+                                        iconPadBottom: newPadBottom || "0"
+                                    })
+                                }
+                                onChangePadLeft={newPadleft =>
+                                    setAttributes({
+                                        iconPadLeft: newPadleft || "0"
+                                    })
+                                }
+                                showUnits={true}
+                                onChangePadSizeUnit={newvalue =>
+                                    setAttributes({ padUnit: newvalue || "px" })
+                                }
+                            />
+                        </div>
+
+                    </PanelBody>
+                )}
+
+                {/* Title options */}
+
+                {titleCheck && (
+                    <PanelBody
+                        title={__("Title Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <div className="premium-control-toggle">
+                            <p>{__("Color")}</p>
+                            <ColorPalette
+                                value={titleColor}
+                                onChange={newColor => setAttributes({ titleColor: newColor || "#fff" })}
+                                allowReset={true}
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <PremiumTypo
+                                components={["size", "line"]}
+                                size={titleSize}
+                                line={titlelineHeight}
+                                onChangeSize={newSize => setAttributes({ titleSize: newSize })}
+                                onChangeLine={newlineHeight => setAttributes({ titlelineHeight: newlineHeight })}
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <PremiumTextShadow
+                                color={titleShadColor}
+                                blur={titleShadBlur}
+                                horizontal={titleShadHorizontal}
+                                vertical={titleShadVertical}
+                                onChangeColor={newShadColor => setAttributes({ titleShadColor: newShadColor.hex || "transparent" })}
+                                onChangeBlur={newShadBlur => setAttributes({ titleShadBlur: newShadBlur || "0" })}
+                                onChangehHorizontal={newShadHorizontal => setAttributes({ titleShadHorizontal: newShadHorizontal || "0" })}
+                                onChangeVertical={newShadVertical => setAttributes({ titleShadVertical: newShadVertical || "0" })}
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <PremiumMargin
+                                directions={["top", "right", "bottom", "left"]}
+                                marginTop={titleMarTop}
+                                marginRight={titleMarRight}
+                                marginBottom={titleMarBottom}
+                                marginLeft={titleMarLeft}
+                                onChangeMarTop={newMarTop => setAttributes({ titleMarTop: newMarTop })}
+                                onChangeMarRight={newMarRight => setAttributes({ titleMarRight: newMarRight })}
+                                onChangeMarBottom={newMarBottom => setAttributes({ titleMarBottom: newMarBottom })}
+                                onChangeMarLeft={newMarLeft => setAttributes({ titleMarLeft: newMarLeft })}
+                                showUnits={true}
+                                onChangeMarSizeUnit={newMarUnit =>
+                                    setAttributes({ titleMarUnit: newMarUnit || "px" })
+                                }
+                            />
+                        </div>
+
+                    </PanelBody>
+                )}
+
+                {/* Description options */}
+
+                {descCheck && (
+                    <PanelBody
+                        title={__("Descroption Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <div className="premium-control-toggle">
+                            <p>{__("Color")}</p>
+                            <ColorPalette
+                                value={descColor}
+                                onChange={newColor => setAttributes({ descColor: newColor || "#fff" })}
+                                allowReset={true}
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <PremiumTypo
+                                components={["size", "line"]}
+                                size={descSize}
+                                line={desclineHeight}
+                                onChangeSize={newSize => setAttributes({ descSize: newSize || "16" })}
+                                onChangeLine={newlineHeight => setAttributes({ desclineHeight: newlineHeight })}
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <PremiumTextShadow
+                                color={descShadColor}
+                                blur={descShadBlur}
+                                horizontal={descShadHorizontal}
+                                vertical={descShadVertical}
+                                onChangeColor={newShadColor => setAttributes({ descShadColor: newShadColor.hex || "transparent" })}
+                                onChangeBlur={newShadBlur => setAttributes({ descShadBlur: newShadBlur || "0" })}
+                                onChangehHorizontal={newShadHorizontal => setAttributes({ descShadHorizontal: newShadHorizontal || "0" })}
+                                onChangeVertical={newShadVertical => setAttributes({ descShadVertical: newShadVertical || "0" })}
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <PremiumMargin
+                                directions={["top", "right", "bottom", "left"]}
+                                marginTop={descMarTop}
+                                marginRight={descMarRight}
+                                marginBottom={descMarBottom}
+                                marginLeft={descMarLeft}
+                                onChangeMarTop={newMarTop => setAttributes({ descMarTop: newMarTop })}
+                                onChangeMarRight={newMarRight => setAttributes({ descMarRight: newMarRight })}
+                                onChangeMarBottom={newMarBottom => setAttributes({ descMarBottom: newMarBottom })}
+                                onChangeMarLeft={newMarLeft => setAttributes({ descMarLeft: newMarLeft })}
+                                showUnits={true}
+                                onChangeMarSizeUnit={newMarUnit =>
+                                    setAttributes({ descMarUnit: newMarUnit || "px" })
+                                }
+                            />
+                        </div>
+
+                    </PanelBody>
+                )}
 
                 {/* Container Style options */}
 
@@ -414,6 +669,41 @@ const edit = props => {
                                 <div className="premium-ihover-content">
                                     <div className="premium-ihover-content-wrap" style={{ textAlign: contentAlign || "center" }}>
 
+                                        {iconCheck && (
+                                            <div className="premium-ihover-icon-wrap">
+
+                                                {iconType === "fa" && 1 != FontAwesomeEnabled && (
+                                                    <p className={`premium-ihover-icon_alert`}>
+                                                        {__("Please Enable Font Awesome Icons from Plugin settings")}
+                                                    </p>
+                                                )}
+                                                {iconType === "dash" && 1 == FontAwesomeEnabled && (
+                                                    <p className={`premium-ihover-icon_alert`}>
+                                                        {__("Please Choose Only Font Awesome  Icons")}
+                                                    </p>
+                                                )}
+                                                {(iconType === "fa" || 1 == FontAwesomeEnabled) && (
+                                                    <i
+                                                        className={`premium-ihover-icon  ${iconSelected}`}
+                                                        style={{
+                                                            fontSize: (iconSize || 50) + (iconUnit || "px"),
+                                                            color: iconColor || "#fff",
+                                                            backgroundColor: iconBackground || "transparent",
+                                                            border: iconBorderType,
+                                                            borderWidth: iconBorderWidth + "px",
+                                                            borderRadius: iconBorderRadius + "px",
+                                                            borderColor: iconBorderColor || "transparent" ,
+                                                            paddingTop: (iconPadTop || "0") + (padUnit || "px"),
+                                                            paddingRight: (iconPadRight || "0") + (padUnit || "px"),
+                                                            paddingBottom: (iconPadBottom || "0") + (padUnit || "px"),
+                                                            paddingLeft: (iconPadLeft || "0") + (padUnit || "px"),
+                                                        }}
+                                                    />
+                                                )}
+
+                                            </div>
+                                        )}
+
                                         {titleCheck && (
                                             <div className="premium-ihover-title-wrap">
                                                 <RichText
@@ -423,26 +713,20 @@ const edit = props => {
                                                     isSelected={false}
                                                     placeholder="Please Enter your title"
                                                     onChange={newTitle => setAttributes({ titleText: newTitle })}
-                                                    // style={{
-                                                    //     color: frontTitleColor || "#e3d192",
-                                                    //     fontSize: frontTitleSize + "px",
-                                                    //     lineHeight: frontTitlelineHeight + "px",
-                                                    //     textShadow: `${frontTitleShadowHorizontal}px ${frontTitleShadowVertical}px ${frontTitleShadowBlur }px ${frontTitleShadowColor}`,
-                                                    //     paddingTop: frontTitlePaddingTop + "px",
-                                                    //     paddingBottom: frontTitlePaddingBottom + "px",
-                                                    //     paddingLeft: frontTitlePaddingLeft + "px",
-                                                    //     paddingRight: frontTitlePaddingRight + "px",
-                                                    //     marginTop: frontTitleMarginTop + "px",
-                                                    //     marginBottom: frontTitleMarginBottom + "px",
-                                                    //     marginLeft: frontTitleMarginLeft + "px",
-                                                    //     marginRight: frontTitleMarginRight + "px",
-                                                    // }}
+                                                    style={{
+                                                        color: titleColor || "#fff",
+                                                        fontSize: titleSize + "px",
+                                                        lineHeight: titlelineHeight + "px",
+                                                        textShadow: `${titleShadHorizontal}px ${titleShadVertical}px ${titleShadBlur}px ${titleShadColor}`,
+                                                        marginTop: titleMarTop + (titleMarUnit || "px"),
+                                                        marginBottom: titleMarBottom + (titleMarUnit || "px"),
+                                                        marginLeft: titleMarLeft + (titleMarUnit || "px"),
+                                                        marginRight: titleMarRight + (titleMarUnit || "px"),
+                                                    }}
                                                     keepPlaceholderOnFocus
                                                 />
                                             </div>
                                         )}
-
-                                        {/* <i className="premium-ihover-icon fa fa-picture-o"></i> */}
 
                                         <div className="premium-ihover-divider">
                                             <span className="premium-ihover-divider-line"></span>
@@ -457,18 +741,14 @@ const edit = props => {
                                                     placeholder="Please Enter your description"
                                                     onChange={newDesc => setAttributes({ descText: newDesc })}
                                                     style={{
-                                                        //     color: frontTitleColor || "#e3d192",
-                                                        fontSize: "16px",
-                                                        //     lineHeight: frontTitlelineHeight + "px",
-                                                        //     textShadow: `${frontTitleShadowHorizontal}px ${frontTitleShadowVertical}px ${frontTitleShadowBlur }px ${frontTitleShadowColor}`,
-                                                        //     paddingTop: frontTitlePaddingTop + "px",
-                                                        //     paddingBottom: frontTitlePaddingBottom + "px",
-                                                        //     paddingLeft: frontTitlePaddingLeft + "px",
-                                                        //     paddingRight: frontTitlePaddingRight + "px",
-                                                        //     marginTop: frontTitleMarginTop + "px",
-                                                        //     marginBottom: frontTitleMarginBottom + "px",
-                                                        //     marginLeft: frontTitleMarginLeft + "px",
-                                                        //     marginRight: frontTitleMarginRight + "px",
+                                                        color: descColor || "#fff",
+                                                        fontSize: (descSize || "16") + "px",
+                                                        lineHeight: desclineHeight + "px",
+                                                        textShadow: `${descShadHorizontal}px ${descShadVertical}px ${descShadBlur}px ${descShadColor}`,
+                                                        marginTop: descMarTop + (descMarUnit || "px"),
+                                                        marginBottom: descMarBottom + (descMarUnit || "px"),
+                                                        marginLeft: descMarLeft + (descMarUnit || "px"),
+                                                        marginRight: descMarRight + (descMarUnit || "px"),
                                                     }}
                                                     keepPlaceholderOnFocus
                                                 />

@@ -2033,6 +2033,10 @@ a.premium-dheading-block__link:hover {
 .premium-ihover-info-wrap .premium-ihover-content .premium-ihover-icon {
   border-color: #000;
 }
+.premium-ihover-icon_alert {
+  color: #bb2c2c;
+  font-size: 20px !important;
+}
 .premium-ihover-info-wrap .premium-ihover-content .premium-ihover-description * {
   margin: 0;
 }

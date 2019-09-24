@@ -71,7 +71,59 @@ const ihoverAttr = {
     },
     iconSelected:{
         type: "string",
-        default: "dashicons dashicons-admin-site"
+        default: "fa fa-heart"
+    },
+    iconSize: {
+        type: "number"
+    },
+    iconUnit: {
+        type: "string",
+        default: "px"
+    },
+    iconColor: {
+        type: "string",
+        default: "#fff"
+    },
+    iconBackground: {
+        type: "string",
+        default:"transparent"
+    },  
+
+    iconBorderType: {
+        type: "string",
+        default: "none"
+    },
+    iconBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    iconBorderColor: {
+        type: "string"
+    },
+    iconBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+
+    iconPadTop: {
+        type: "number",
+        default: "0"
+    },
+    iconPadRight: {
+        type: "number",
+        default: "0"
+    },
+    iconPadBottom: {
+        type: "number",
+        default: "0"
+    },
+    iconPadLeft: {
+        type: "number",
+        default: "0"
+    },
+    padUnit: {
+        type: "string",
+        default: "px"
     },
     titleCheck:{
         type: "boolean",
@@ -81,13 +133,95 @@ const ihoverAttr = {
         type: "string",
         default: "Your Title"
     },
+    titleColor:{
+        type: "string",
+        default: "#fff"
+    },
+    titleSize:{
+        type:"number",
+    },  
+    titlelineHeight:{
+        type:"number",       
+    },
+    titleShadColor: {
+        type: "string"
+    },
+    titleShadBlur: {
+        type: "number",
+        default:"0"
+    },
+    titleShadHorizontal: {
+        type: "number",
+        default:"0"
+    },
+    titleShadVertical: {
+        type: "number",
+        default:"0"
+    },
+    titleMarTop: {
+        type: "number"
+    },
+    titleMarRight: {
+        type: "number"
+    },
+    titleMarBottom: {
+        type: "number"
+    },
+    titleMarLeft: {
+        type: "number"
+    },
+    titleMarUnit: {
+        type: "string",
+        default: "px"
+    },
     descCheck:{
         type: "boolean",
-        default: true
+        default: false
     },
     descText:{
         type: "string",
         default: "Unlimited design and customization possibilities with iHover gutenberg block"
+    },
+    descColor:{
+        type: "string",
+        default: "#fff"
+    },
+    descSize:{
+        type:"number",
+    },  
+    desclineHeight:{
+        type:"number",       
+    },
+    descShadColor: {
+        type: "string"
+    },
+    descShadBlur: {
+        type: "number",
+        default:"0"
+    },
+    descShadHorizontal: {
+        type: "number",
+        default:"0"
+    },
+    descShadVertical: {
+        type: "number",
+        default:"0"
+    },
+    descMarTop: {
+        type: "number"
+    },
+    descMarRight: {
+        type: "number"
+    },
+    descMarBottom: {
+        type: "number"
+    },
+    descMarLeft: {
+        type: "number"
+    },
+    descMarUnit: {
+        type: "string",
+        default: "px"
     },
     contentAlign: {
         type: "string",
