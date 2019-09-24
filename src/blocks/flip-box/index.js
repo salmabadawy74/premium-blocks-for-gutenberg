@@ -402,8 +402,7 @@ const flipBoxAttrs = {
         default: true
     },
     activeSide:{
-        type: "string" ,
-        default: "right"
+        type: "string" 
     }
 
 }; 

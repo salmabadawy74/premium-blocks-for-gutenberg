@@ -41423,8 +41423,7 @@ var flipBoxAttrs = {
         default: true
     },
     activeSide: {
-        type: "string",
-        default: "right"
+        type: "string"
     }
 
 };
@@ -41652,13 +41651,13 @@ var edit = function edit(props) {
     };
 
     var createArrowsControl = function createArrowsControl(arrows) {
+
         return {
             icon: "arrow-" + arrows + "-alt2",
             title: arrows == "right" ? "Front" : "Back",
             isActive: activeSide === arrows,
             onClick: function onClick() {
-
-                setAttributes({ activeSide: arrows }), "left" === activeSide ? jQuery(document).ready(function ($) {
+                setAttributes({ activeSide: arrows }), "left" === arrows ? jQuery(document).ready(function ($) {
                     $("#premium-flip-" + id + " .premium-flip-main-box").addClass("flipped");
                     $("#premium-flip-" + id + " .premium-flip-main-box").removeClass("not-flipped");
                 }) : jQuery(document).ready(function ($) {

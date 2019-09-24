@@ -186,25 +186,24 @@ const edit = props => {
     }
 
     const createArrowsControl = (arrows) => {
+        
         return {
             icon: `arrow-${arrows}-alt2`,
             title: (arrows == "right") ? "Front" : "Back",
             isActive: activeSide === arrows,
             onClick: () => {
-                        
                 setAttributes({ activeSide: arrows }),
-
-                "left" === activeSide
+                "left" === arrows
                     ?
-                    jQuery(document).ready(function ($) {
+                    jQuery(document).ready(function ($) {        
                         $(`#premium-flip-${id} .premium-flip-main-box` ).addClass("flipped");
                         $(`#premium-flip-${id} .premium-flip-main-box`).removeClass("not-flipped");
                     })
                     :
-                    jQuery(document).ready(function ($) {
+                    jQuery(document).ready(function ($) {    
                         $(`#premium-flip-${id} .premium-flip-main-box`).removeClass("flipped");
                         $(`#premium-flip-${id} .premium-flip-main-box`).addClass("not-flipped");
-                    })                   
+                    })     
             }
         };
     }
