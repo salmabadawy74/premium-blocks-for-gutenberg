@@ -11,7 +11,6 @@
             var side = $(this).attr("data-current");
             console.log(side);
             if( side == "left"){
-                console.log("data is back")
                 $(this).addClass("flipped");
                 $(this).removeClass("not-flipped");
 
@@ -56,9 +55,12 @@
         }
 
     }
-    else {
-        console.log("data is front")
+    else if( side == "right"){
         $(this).addClass("not-flipped");
+        $(this).removeClass("flipped");
+    }
+    else{
+        $(this).addClass("flipped");
     }
 
         });

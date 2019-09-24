@@ -12,7 +12,9 @@ const { registerBlockType } = wp.blocks;
 
 // define attributes for block
 const flipBoxAttrs = {
-
+    id: {
+        type: "string"
+    },
     frontTitle:{
         type: "string",
         default: __("Front title box")
@@ -403,6 +405,7 @@ const flipBoxAttrs = {
         type: "string" ,
         default: "right"
     }
+
 }; 
 
 registerBlockType( "pemium/flip-box" ,

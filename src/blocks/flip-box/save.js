@@ -5,7 +5,8 @@ const { RichText} = wp.editor;
 const save = props =>{
     const { className } = props;
 
-    const {               
+    const {        
+        id,       
         frontTitle,        
         frontTitleColor,
         frontDescription,
@@ -112,15 +113,14 @@ const save = props =>{
         alignFroHorizontal,
         alignFroVertical,
         alignBackHorizontal,
-        alignBackVertical,
-        boxSide
+        alignBackVertical
 
     } = props.attributes;
 
     const mainClasses = classnames(className, "premium-flip");
 
     return (
-        <div className={`${mainClasses}-container `}  >
+        <div className={`${mainClasses}-container `}  id={`premium-flip-${id}`} >
             <div className={`premium-flip-main-box `}>
 
                 <div className={`premium-flip-front premium-flip-frontlr `} style={{ backgroundColor: frontBackgroundColor || "#767676" }}>

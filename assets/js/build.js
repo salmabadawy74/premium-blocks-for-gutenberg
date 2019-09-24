@@ -41033,7 +41033,9 @@ var registerBlockType = wp.blocks.registerBlockType;
 // define attributes for block
 
 var flipBoxAttrs = {
-
+    id: {
+        type: "string"
+    },
     frontTitle: {
         type: "string",
         default: __("Front title box")
@@ -41424,6 +41426,7 @@ var flipBoxAttrs = {
         type: "string",
         default: "right"
     }
+
 };
 
 registerBlockType("pemium/flip-box", {
@@ -41487,8 +41490,10 @@ var _wp$editor = wp.editor,
 var edit = function edit(props) {
     var isSelected = props.isSelected,
         setAttributes = props.setAttributes,
-        className = props.className;
+        className = props.className,
+        blockID = props.clientId;
     var _props$attributes = props.attributes,
+        id = _props$attributes.id,
         frontTitle = _props$attributes.frontTitle,
         frontTitleColor = _props$attributes.frontTitleColor,
         frontDescription = _props$attributes.frontDescription,
@@ -41628,46 +41633,43 @@ var edit = function edit(props) {
         align: 'flex-end'
     }];
 
-    var Flip_Side = [{
-        label: __('Front'),
-        value: 'front'
-    }, {
-        label: __('Back'),
-        value: 'back'
-    }];
-
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-flip");
 
     var handleFront = function handleFront(e) {
         setAttributes({ activeSide: "right" });
         jQuery(document).ready(function ($) {
-            console.log("hello from front side button");
-            $(".premium-flip-main-box").removeClass("flipped");
+            $("#premium-flip-" + id + " .premium-flip-main-box").removeClass("flipped");
+            $("#premium-flip-" + id + " .premium-flip-main-box").addClass("not-flipped");
         });
     };
 
     var handleBack = function handleBack(e) {
         setAttributes({ activeSide: "left" });
         jQuery(document).ready(function ($) {
-            console.log("hello from back side button");
-            $(".premium-flip-main-box").addClass("flipped");
+            $("#premium-flip-" + id + " .premium-flip-main-box").addClass("flipped");
+            $("#premium-flip-" + id + " .premium-flip-main-box").removeClass("not-flipped");
         });
     };
 
-    var createThumbsControl = function createThumbsControl(thumbs) {
+    var createArrowsControl = function createArrowsControl(arrows) {
         return {
-            icon: "arrow-" + thumbs + "-alt2",
-            title: thumbs == "right" ? "Front" : "Back",
-            isActive: activeSide === thumbs,
+            icon: "arrow-" + arrows + "-alt2",
+            title: arrows == "right" ? "Front" : "Back",
+            isActive: activeSide === arrows,
             onClick: function onClick() {
-                setAttributes({ activeSide: thumbs }), "left" === activeSide ? jQuery(document).ready(function ($) {
-                    $(".premium-flip-main-box").addClass("flipped");
+
+                setAttributes({ activeSide: arrows }), "left" === activeSide ? jQuery(document).ready(function ($) {
+                    $("#premium-flip-" + id + " .premium-flip-main-box").addClass("flipped");
+                    $("#premium-flip-" + id + " .premium-flip-main-box").removeClass("not-flipped");
                 }) : jQuery(document).ready(function ($) {
-                    $(".premium-flip-main-box").removeClass("flipped");
+                    $("#premium-flip-" + id + " .premium-flip-main-box").removeClass("flipped");
+                    $("#premium-flip-" + id + " .premium-flip-main-box").addClass("not-flipped");
                 });
             }
         };
     };
+
+    setAttributes({ id: blockID });
 
     return [isSelected && wp.element.createElement(
         BlockControls,
@@ -41715,7 +41717,7 @@ var edit = function edit(props) {
         BlockControls,
         { key: "controls" },
         wp.element.createElement(Toolbar, {
-            controls: ['right', 'left'].map(createThumbsControl)
+            controls: ['right', 'left'].map(createArrowsControl)
         })
     ), isSelected && wp.element.createElement(
         InspectorControls,
@@ -41725,7 +41727,7 @@ var edit = function edit(props) {
             {
                 title: __("Front Side"),
                 className: "premium-panel-body",
-                initialOpen: false
+                initialOpen: true
             },
             wp.element.createElement(
                 "div",
@@ -41857,7 +41859,7 @@ var edit = function edit(props) {
                             className: "premium-unit-control-btn front-btn",
                             onClick: handleFront
                         },
-                        "front side"
+                        "Front Side"
                     ),
                     wp.element.createElement(
                         Button,
@@ -42768,7 +42770,7 @@ var edit = function edit(props) {
         )
     ), wp.element.createElement(
         "div",
-        { className: mainClasses + "-container " },
+        { className: mainClasses + "-container ", id: "premium-flip-" + id },
         wp.element.createElement(
             "div",
             { className: "premium-flip-main-box ", "data-current": activeSide },
@@ -42999,6 +43001,7 @@ var RichText = wp.editor.RichText;
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
+        id = _props$attributes.id,
         frontTitle = _props$attributes.frontTitle,
         frontTitleColor = _props$attributes.frontTitleColor,
         frontDescription = _props$attributes.frontDescription,
@@ -43105,15 +43108,14 @@ var save = function save(props) {
         alignFroHorizontal = _props$attributes.alignFroHorizontal,
         alignFroVertical = _props$attributes.alignFroVertical,
         alignBackHorizontal = _props$attributes.alignBackHorizontal,
-        alignBackVertical = _props$attributes.alignBackVertical,
-        boxSide = _props$attributes.boxSide;
+        alignBackVertical = _props$attributes.alignBackVertical;
 
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-flip");
 
     return wp.element.createElement(
         "div",
-        { className: mainClasses + "-container " },
+        { className: mainClasses + "-container ", id: "premium-flip-" + id },
         wp.element.createElement(
             "div",
             { className: "premium-flip-main-box " },

@@ -16,8 +16,9 @@ const { BlockControls, RichText, InspectorControls, ColorPalette, AlignmentToolb
 
 const edit = props => {
 
-    const { isSelected, setAttributes, className } = props;
+    const { isSelected, setAttributes, className , clientId: blockID} = props;
     const {
+        id,
         frontTitle,
         frontTitleColor,
         frontDescription,
@@ -166,55 +167,49 @@ const edit = props => {
         },
     ];
 
-    const Flip_Side = [
-        {
-            label: __('Front'),
-            value: 'front',
-        },
-        {
-            label: __('Back'),
-            value: 'back',
-        }
-    ];
-
     const mainClasses = classnames(className, "premium-flip");
 
     const handleFront = (e) => {
         setAttributes({ activeSide: "right" })
         jQuery(document).ready(function ($) {
-            console.log("hello from front side button");
-            $(".premium-flip-main-box").removeClass("flipped");
+            $(`#premium-flip-${id} .premium-flip-main-box`).removeClass("flipped");
+            $(`#premium-flip-${id} .premium-flip-main-box`).addClass("not-flipped");
         })
     }
 
     const handleBack = (e) => {
         setAttributes({ activeSide: "left" })
         jQuery(document).ready(function ($) {
-            console.log("hello from back side button");
-            $(".premium-flip-main-box").addClass("flipped");
+            $(`#premium-flip-${id} .premium-flip-main-box`).addClass("flipped");
+            $(`#premium-flip-${id} .premium-flip-main-box`).removeClass("not-flipped");
         })
     }
 
-    const createThumbsControl = (thumbs) => {
+    const createArrowsControl = (arrows) => {
         return {
-            icon: `arrow-${thumbs}-alt2`,
-            title: (thumbs == "right") ? "Front" : "Back",
-            isActive: activeSide === thumbs,
+            icon: `arrow-${arrows}-alt2`,
+            title: (arrows == "right") ? "Front" : "Back",
+            isActive: activeSide === arrows,
             onClick: () => {
-                setAttributes({ activeSide: thumbs }),
+                        
+                setAttributes({ activeSide: arrows }),
 
                 "left" === activeSide
                     ?
                     jQuery(document).ready(function ($) {
-                        $(".premium-flip-main-box").addClass("flipped");
+                        $(`#premium-flip-${id} .premium-flip-main-box` ).addClass("flipped");
+                        $(`#premium-flip-${id} .premium-flip-main-box`).removeClass("not-flipped");
                     })
                     :
                     jQuery(document).ready(function ($) {
-                        $(".premium-flip-main-box").removeClass("flipped");
-                    })
+                        $(`#premium-flip-${id} .premium-flip-main-box`).removeClass("flipped");
+                        $(`#premium-flip-${id} .premium-flip-main-box`).addClass("not-flipped");
+                    })                   
             }
         };
     }
+
+    setAttributes({ id: blockID });
 
     return [
         isSelected && (
@@ -258,7 +253,7 @@ const edit = props => {
         isSelected && (
             <BlockControls key="controls">
                 <Toolbar
-                    controls={['right', 'left'].map(createThumbsControl)}
+                    controls={['right', 'left'].map(createArrowsControl)}
                 />
             </BlockControls>
         ),
@@ -270,7 +265,7 @@ const edit = props => {
                 <PanelBody
                     title={__("Front Side")}
                     className="premium-panel-body"
-                    initialOpen={false}
+                    initialOpen={true}
                 >
                     <div className="premium-control-toggle">
                         <p><strong>{__("Background Color")}</strong></p>
@@ -367,7 +362,7 @@ const edit = props => {
                                 className="premium-unit-control-btn front-btn"
                                 onClick={handleFront}
                             >
-                                front side
+                                Front Side
                             </Button>
                             <Button
                                 isPrimary={(activeSide == "left") ? true : false}
@@ -1080,7 +1075,7 @@ const edit = props => {
 
             </InspectorControls>
         ),
-        <div className={`${mainClasses}-container `} >
+        <div className={`${mainClasses}-container `}  id={`premium-flip-${id}`}>
             <div className={`premium-flip-main-box `} data-current={activeSide} >
 
                 <div className={`premium-flip-front premium-flip-frontlr `} style={{ backgroundColor: frontBackgroundColor || "#767676" }}>
