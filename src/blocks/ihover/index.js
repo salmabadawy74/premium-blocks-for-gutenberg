@@ -1,3 +1,4 @@
+import { ihover } from "../../../assets/js/settings";
 
 import edit from "./edit";
 import save from "./save";
@@ -27,7 +28,7 @@ const ihoverAttr = {
     },
     hoverEffect:{
         type: "string",
-        default: "style18"
+        default: __("style18")
     },
     linkCheck:{
         type: "boolean",
@@ -63,7 +64,7 @@ const ihoverAttr = {
 // content
     iconCheck:{
         type: "boolean",
-        default: false
+        default: true
     },
     iconType:{
         type: "string",
@@ -71,7 +72,7 @@ const ihoverAttr = {
     },
     iconSelected:{
         type: "string",
-        default: "fa fa-heart"
+        default: "dashicons dashicons-admin-site"
     },
     iconSize: {
         type: "number"
@@ -104,7 +105,6 @@ const ihoverAttr = {
         type: "number",
         default: "0"
     },
-
     iconPadTop: {
         type: "number",
         default: "0"
@@ -131,7 +131,7 @@ const ihoverAttr = {
     },
     titleText:{
         type: "string",
-        default: "Your Title"
+        default: __("Your Title")
     },
     titleColor:{
         type: "string",
@@ -180,7 +180,7 @@ const ihoverAttr = {
     },
     descText:{
         type: "string",
-        default: "Unlimited design and customization possibilities with iHover gutenberg block"
+        default: __("Unlimited design and customization possibilities with iHover gutenberg block")
     },
     descColor:{
         type: "string",
@@ -229,11 +229,12 @@ const ihoverAttr = {
     },
 // container
     overlayColor:{
-        type: "string"
+        type: "string",
+        default:"#33bbce"
     },
     overlayOpacity: {
         type: "number",
-        default: "50"
+        default: "20"
     },
     containerShadowColor: {
         type: "string"
@@ -264,9 +265,11 @@ registerBlockType ( "premium/ihover",
         icon: "unlock",
         category: "premium-blocks",
         attributes: ihoverAttr,
+        supports: {
+            inserter: ihover
+          },
         edit: edit,
         save: save,
         deprecated: deprecatedContent
-
     }
 );

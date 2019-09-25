@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import DefaultImage from "../../components/default-image";
 import PremiumFilters from "../../components/premium-filters";
 import { FontAwesomeEnabled } from "../../../assets/js/settings";
@@ -202,6 +203,7 @@ const edit = props => {
     ];
 
     // 'style20'       => 'Spinner',
+    const mainClasses = classnames(className, "premium-ihover");
 
     return [
         isSelected && (
@@ -309,11 +311,11 @@ const edit = props => {
                             contrast={contrast}
                             saturation={saturation}
                             hue={hue}
-                            onChangeBlur={value => setAttributes({ blur: value })}
-                            onChangeBright={value => setAttributes({ bright: value })}
-                            onChangeContrast={value => setAttributes({ contrast: value })}
-                            onChangeSat={value => setAttributes({ saturation: value })}
-                            onChangeHue={value => setAttributes({ hue: value })}
+                            onChangeBlur={newValue => setAttributes({ blur: newValue })}
+                            onChangeBright={newValue => setAttributes({ bright: newValue })}
+                            onChangeContrast={newValue => setAttributes({ contrast: newValue })}
+                            onChangeSat={newValue => setAttributes({ saturation: newValue })}
+                            onChangeHue={newValue => setAttributes({ hue: newValue })}
                         />
                     </div>
                 </PanelBody>
@@ -332,7 +334,10 @@ const edit = props => {
                             checked={iconCheck}
                             onChange={newValue => setAttributes({ iconCheck: newValue })}
                         />
-                        {iconCheck && (
+                    </div>
+                    {iconCheck && (
+                        <div className="premium-control-toggle">
+                            <p><strong>{__("Select Icon")}</strong></p>
                             <FontIconPicker
                                 icons={iconsList["Font Awesome Icons"]}
                                 onChange={newIcon => setAttributes({ iconSelected: newIcon || "fa fa-heart" })}
@@ -341,8 +346,8 @@ const edit = props => {
                                 appendTo="body"
                                 noSelectedPlaceholder={__("Select Icon")}
                             />
-                        )}
-                    </div>
+                        </div>
+                    )}
 
                     {/* Title options */}
                     <div className="premium-control-toggle">
@@ -617,7 +622,7 @@ const edit = props => {
                             value={overlayOpacity}
                             min="1"
                             max="100"
-                            onChange={newOpacity => setAttributes({ overlayOpacity: newOpacity === undefined ? "50" : newOpacity })}
+                            onChange={newOpacity => setAttributes({ overlayOpacity: newOpacity === undefined ? "80" : newOpacity })}
                         />
                     </div>
                     <div className="premium-control-toggle">
@@ -640,21 +645,17 @@ const edit = props => {
 
             </InspectorControls>
         ),
-        <div className="premium-ihover-container"
-            style={{
-                backgroundColor: overlayColor || "transparent", opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
-                boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
-            }}
-        >
-            <div className="premium-ihover-list" style={{ textAlign: imgAlign || "center" }}>
-                <div className="premium-ihover-item-wrap" style={{ borderRadius: (imgBorderRadius || "50") + "%" }}>
+        <div className={`${mainClasses}-container`}>
+            <div className={`premium-ihover-list`} style={{ textAlign: imgAlign || "center" }}>
+
+                <div className={`premium-ihover-item-wrap`} style={{ borderRadius: (imgBorderRadius || "50") + "%", }}>
                     <div className={("premium-ihover-item ") + hoverEffect} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
 
-                        <div className="premium-ihover-img-wrap" style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
-                            <div className="premium-ihover-img-front">
-                                <div className="premium-ihover-img-inner-wrap"></div>
+                        <div className={`premium-ihover-img-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
+                            <div className={`premium-ihover-img-front`}>
+                                <div className={`premium-ihover-img-inner-wrap`}></div>
                                 {imgUrl && (
-                                    <img className="premium-ihover-img" src={imgUrl}
+                                    <img className={`premium-ihover-img`} src={imgUrl}
                                         style={{
                                             width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "50") + "%",
                                             filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
@@ -664,13 +665,19 @@ const edit = props => {
                                 {!imgUrl && <DefaultImage />}
                             </div>
                         </div>
-                        <div className="premium-ihover-info-wrap" style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
-                            <div className="premium-ihover-info-back" style={{ borderRadius: (imgBorderRadius || "50") + "%" }}>
-                                <div className="premium-ihover-content">
-                                    <div className="premium-ihover-content-wrap" style={{ textAlign: contentAlign || "center" }}>
+                        <div className={`premium-ihover-info-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
+                            <div className={`premium-ihover-info-back`}
+                                style={{
+                                    borderRadius: (imgBorderRadius || "50") + "%",
+                                     backgroundColor: overlayColor || "transparent", opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
+                                    boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
+                                }}
+                            >
+                                <div className={`premium-ihover-content`}>
+                                    <div className={`premium-ihover-content-wrap`} style={{ textAlign: contentAlign || "center" }}>
 
                                         {iconCheck && (
-                                            <div className="premium-ihover-icon-wrap">
+                                            <div className={`premium-ihover-icon-wrap`}>
 
                                                 {iconType === "fa" && 1 != FontAwesomeEnabled && (
                                                     <p className={`premium-ihover-icon_alert`}>
@@ -692,7 +699,7 @@ const edit = props => {
                                                             border: iconBorderType,
                                                             borderWidth: iconBorderWidth + "px",
                                                             borderRadius: iconBorderRadius + "px",
-                                                            borderColor: iconBorderColor || "transparent" ,
+                                                            borderColor: iconBorderColor || "transparent",
                                                             paddingTop: (iconPadTop || "0") + (padUnit || "px"),
                                                             paddingRight: (iconPadRight || "0") + (padUnit || "px"),
                                                             paddingBottom: (iconPadBottom || "0") + (padUnit || "px"),
@@ -705,7 +712,7 @@ const edit = props => {
                                         )}
 
                                         {titleCheck && (
-                                            <div className="premium-ihover-title-wrap">
+                                            <div className={`premium-ihover-title-wrap`}>
                                                 <RichText
                                                     tagName="h4"
                                                     className={`premium-ihover-title`}
@@ -728,12 +735,12 @@ const edit = props => {
                                             </div>
                                         )}
 
-                                        <div className="premium-ihover-divider">
-                                            <span className="premium-ihover-divider-line"></span>
+                                        <div className={`premium-ihover-divider`}>
+                                            <span className={`premium-ihover-divider-line`}></span>
                                         </div>
 
                                         {descCheck && (
-                                            <div className="premium-ihover-description">
+                                            <div className={`premium-ihover-description`}>
                                                 <RichText
                                                     tagName="p"
                                                     value={descText}

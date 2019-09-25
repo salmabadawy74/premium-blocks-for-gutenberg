@@ -1935,7 +1935,6 @@ a.premium-dheading-block__link:hover {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  /* text-align: center; */
 }
 .premium-ihover-container .premium-ihover-item-wrap {
   position: relative;
@@ -1947,6 +1946,7 @@ a.premium-dheading-block__link:hover {
   word-spacing: normal;
   margin: 0;
   padding: 0;
+  z-index: 1;
 }
 .premium-ihover-container .premium-ihover-item {
   position: relative;
@@ -2000,9 +2000,9 @@ a.premium-dheading-block__link:hover {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* .premium-ihover-info-wrap .premium-ihover-content-wrap{
-  text-align: center;
-} */
+.premium-ihover-info-wrap .premium-ihover-content-wrap{
+  padding: 3%;
+}
 .premium-ihover-info-wrap .premium-ihover-title-wrap * {
   margin: 0;
   padding: 0;
@@ -2019,18 +2019,11 @@ a.premium-dheading-block__link:hover {
   overflow: hidden;
 }
 .premium-ihover-info-wrap .premium-ihover-content .premium-ihover-divider .premium-ihover-divider-line {
-  /* border-style: solid;
-  border-width: 24px; */
   border: 24px solid #fff;
   display: inline;
 }
 .premium-ihover-info-wrap .premium-ihover-content .premium-ihover-description {
-  color: #ffffff;
-  font-size: 13px !important;
   padding: 0px 30px 0px 30px;
-  border-color: #000;
-}
-.premium-ihover-info-wrap .premium-ihover-content .premium-ihover-icon {
   border-color: #000;
 }
 .premium-ihover-icon_alert {
@@ -2040,13 +2033,6 @@ a.premium-dheading-block__link:hover {
 .premium-ihover-info-wrap .premium-ihover-content .premium-ihover-description * {
   margin: 0;
 }
-/* .premium-ihover-item.style20 .premium-ihover-spinner, .premium-ihover-item, .premium-ihover-img-wrap, .premium-ihover-container .premium-ihover-img, .premium-ihover-info-wrap {
-  width: 300px;
-  height: 300px;
-} */
-/* .premium-ihover-container .premium-ihover-item-wrap, .premium-ihover-container .premium-ihover-img, .premium-ihover-container .premium-ihover-info-back, .premium-ihover-container .premium-ihover-spinner {
-  border-radius: 50%;
-} */
 
 /** Style 1 **/
 .premium-ihover-item.style1 .premium-ihover-img-wrap {
@@ -2877,6 +2863,9 @@ a.premium-dheading-block__link:hover {
 }
 /*** Style 20 ***/
 .premium-ihover-item.style20 .premium-ihover-spinner {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
   border-top-color: #6ec1e4;
   border-left-color: #6ec1e4;
   border-bottom-color: #54595f;
