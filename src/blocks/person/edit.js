@@ -115,6 +115,11 @@ const edit = props => {
     titleShadowBlur,
     titleShadowHorizontal,
     titleShadowVertical,
+    descLine,
+    descSpacing,
+    descStyle,
+    descWeight,
+    descColor
   } = props.attributes;
   return [
 
@@ -329,6 +334,42 @@ const edit = props => {
             onChange={newAlign => setAttributes({ align: newAlign })}
           />
 
+          <h3 className="premium-editor-paragraph">{__("Person Description")}</h3>
+
+          <PremiumTypo
+            components={["spacing", "weight", "line", "style"]}
+            spacing={descSpacing}
+            weight={descWeight}
+            line={descLine}
+            style={descStyle}
+            onChangeSpacing={newSpacing => setAttributes({ descSpacing: newSpacing })}
+            onChangeWeight={newWeight =>
+              setAttributes({
+                descWeight: newWeight === undefined ? 500 : newWeight
+              })
+            }
+            onChangeLine={newValue =>
+              setAttributes({
+                descLine: newValue === undefined ? 10 : newValue
+              })
+            }
+            onChangeStyle={newValue =>
+              setAttributes({
+                descStyle: newValue === undefined ? 'normal' : newValue
+              })
+            }
+          />
+          
+          <ColorPalette
+            value={descColor}
+            onChange={newValue =>
+              setAttributes({
+                descColor: newValue
+              })
+            }
+            allowReset={true}
+          />
+
         </PanelBody>
       </InspectorControls>
     ),
@@ -389,7 +430,12 @@ const edit = props => {
               onChange={newText => setAttributes({ PersonDesc: newText })}
               style={{
                 textAlign: align,
-                whiteSpace: "nowrap"
+                whiteSpace: "nowrap",
+                fontWeight: descWeight,
+                lineHeight: descLine + "px",
+                fontStyle: descStyle,
+                letterSpacing: descSpacing + "px",
+                color: descColor
               }}
             >
 

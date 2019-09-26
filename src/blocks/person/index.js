@@ -130,6 +130,19 @@ const personAttr = {
     nameLine:{
         type:"number"
     },
+    titleSpacing:{
+        type:"number"
+    },
+    titleStyle:{
+        type:"string",
+        default:"normal"
+    },
+    titleWeight:{
+        type:"number"
+    },
+    titleLine:{
+        type:"number"
+    },
     nameShadowColor:{
         type:"string"
     },
@@ -160,6 +173,23 @@ const personAttr = {
         type:"number",
         default:"0"
     },
+    descLine:{
+        type:"number"
+    },
+    descSpacing:{
+        type:"number"
+    },
+    descStyle:{
+        type:"string",
+        default:"normal"
+    },
+    descWeight:{
+        type:"number"
+    },
+    descColor:{
+        type:"string",
+        default:"white"
+    }
 }
 
 registerBlockType("premium/person", {
