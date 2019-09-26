@@ -108,7 +108,58 @@ const personAttr = {
     emailAddress:{
         type:"string",
         default:"#"
-    }
+    },
+    nameColor:{
+        type:"string",
+        default:"white"
+    },
+    titleColor:{
+        type:"string",
+        default:"white"
+    },
+    nameSpacing:{
+        type:"number"
+    },
+    nameStyle:{
+        type:"string",
+        default:"normal"
+    },
+    nameWeight:{
+        type:"number"
+    },
+    nameLine:{
+        type:"number"
+    },
+    nameShadowColor:{
+        type:"string"
+    },
+    nameShadowBlur:{
+        type:"number",
+        default:"0"
+    },
+    nameShadowHorizontal:{
+        type:"number",
+        default:"0"
+    },
+    nameShadowVertical:{
+        type:"number",
+        default:"0"
+    },
+    titleShadowColor:{
+        type:"string",
+    },
+    titleShadowBlur:{
+        type:"number",
+        default:"0"
+    },
+    titleShadowHorizontal:{
+        type:"number",
+        default:"0"
+    },
+    titleShadowVertical:{
+        type:"number",
+        default:"0"
+    },
 }
 
 registerBlockType("premium/person", {
