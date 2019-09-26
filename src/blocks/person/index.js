@@ -1,4 +1,3 @@
-
 import PbgIcon from "../icons";
 import save from './save'
 import edit from './edit'
@@ -59,7 +58,8 @@ const personAttr = {
         default: "center"
     },
     iconColor: {
-        type: "string"
+        type: "string",
+        default:"white"
     },
     iconBackColor: {
         type: "string"
@@ -107,7 +107,7 @@ const personAttr = {
     },
     emailAddress:{
         type:"string",
-        default:"#"
+        default:"google.com"
     },
     nameColor:{
         type:"string",
@@ -189,6 +189,34 @@ const personAttr = {
     descColor:{
         type:"string",
         default:"white"
+    },
+    iconBorderRadius:{
+        type:"number",
+        default:"3"
+    },
+    iconBorderColor:{
+        type:"string"
+    },
+    iconBorderType:{
+        type:"string"
+    },
+    iconBorderWidth:{
+        type:"number"
+    },
+    iconPaddingT:{
+        type:"number"
+    },
+    iconPaddingR:{
+        type:"number"
+    },
+    iconPaddingL:{
+        type:"number"
+    },
+    iconPaddingB:{
+        type:"number"
+    },
+    iconHoverColor:{
+        type:"string"
     }
 }
 
