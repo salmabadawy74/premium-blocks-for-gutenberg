@@ -48,7 +48,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
         public function pb_maps_page() {
             $js_info = array(
                 'ajaxurl'   => admin_url( 'admin-ajax.php' ),
-                'nonce'     => wp_create_nonce( 'premium-blocks-gutenberg' )
+                'nonce'     => wp_create_nonce( 'pbg-assets' )
             );
 
             wp_localize_script( 'pbg-admin-js', 'settings', $js_info );
@@ -142,7 +142,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
         */
         public function pb_save_maps_settings() {
             
-            check_ajax_referer( 'premium-blocks-gutenberg', 'security' );
+            check_ajax_referer( 'pbg-assets', 'security' );
 
             if( isset( $_POST['fields'] ) ) {
                 parse_str( $_POST['fields'], $settings );
@@ -151,7 +151,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
             }
 
             $this->pb_maps_settings = array(
-                'premium-map-key'           => $settings['premium-map-key'],
+                'premium-map-key'           => sanitize_text_field( $settings['premium-map-key'] ),
                 'premium-map-api'           => intval( $settings['premium-map-api'] ? 1 : 0),
                 'premium-fa-css'            => intval( $settings['premium-fa-css'] ? 1 : 0),
             );
