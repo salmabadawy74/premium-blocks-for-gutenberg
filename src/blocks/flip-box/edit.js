@@ -16,7 +16,7 @@ const { BlockControls, RichText, InspectorControls, ColorPalette, AlignmentToolb
 
 const edit = props => {
 
-    const { isSelected, setAttributes, className , clientId: blockID} = props;
+    const { isSelected, setAttributes, className, clientId: blockID } = props;
     const {
         id,
         frontTitle,
@@ -75,8 +75,10 @@ const edit = props => {
         frontDescMarginBottom,
         frontDescMarginLeft,
         pxUnit,
-        paddingUnit,
-        marginUnit,
+        froMarUnit,
+        froPadUnit,
+        backMarUnit,
+        backPadUnit,
         backIconType,
         backIconSelected,
         backIconCheck,
@@ -186,24 +188,24 @@ const edit = props => {
     }
 
     const createArrowsControl = (arrows) => {
-        
+
         return {
             icon: `arrow-${arrows}-alt2`,
             title: (arrows == "right") ? "Front" : "Back",
             isActive: activeSide === arrows,
             onClick: () => {
                 setAttributes({ activeSide: arrows }),
-                "left" === arrows
-                    ?
-                    jQuery(document).ready(function ($) {        
-                        $(`#premium-flip-${id} .premium-flip-main-box` ).addClass("flipped");
-                        $(`#premium-flip-${id} .premium-flip-main-box`).removeClass("not-flipped");
-                    })
-                    :
-                    jQuery(document).ready(function ($) {    
-                        $(`#premium-flip-${id} .premium-flip-main-box`).removeClass("flipped");
-                        $(`#premium-flip-${id} .premium-flip-main-box`).addClass("not-flipped");
-                    })     
+                    "left" === arrows
+                        ?
+                        jQuery(document).ready(function ($) {
+                            $(`#premium-flip-${id} .premium-flip-main-box`).addClass("flipped");
+                            $(`#premium-flip-${id} .premium-flip-main-box`).removeClass("not-flipped");
+                        })
+                        :
+                        jQuery(document).ready(function ($) {
+                            $(`#premium-flip-${id} .premium-flip-main-box`).removeClass("flipped");
+                            $(`#premium-flip-${id} .premium-flip-main-box`).addClass("not-flipped");
+                        })
             }
         };
     }
@@ -429,7 +431,7 @@ const edit = props => {
                                 }
                                 showUnits={true}
                                 onChangeMarSizeUnit={newMarUnit =>
-                                    setAttributes({ marginUnit: newMarUnit || "px" })
+                                    setAttributes({ froMarUnit: newMarUnit || "px" })
                                 }
                             />
                         </div>
@@ -461,7 +463,7 @@ const edit = props => {
                                 }
                                 showUnits={true}
                                 onChangePadSizeUnit={newvalue =>
-                                    setAttributes({ paddingUnit: newvalue || "px" })
+                                    setAttributes({ froPadUnit: newvalue || "px" })
                                 }
                             />
                         </div>
@@ -825,7 +827,7 @@ const edit = props => {
                                 }
                                 showUnits={true}
                                 onChangeMarSizeUnit={newMarUnit =>
-                                    setAttributes({ marginUnit: newMarUnit || "px" })
+                                    setAttributes({ backMarUnit: newMarUnit || "px" })
                                 }
                             />
                         </div>
@@ -857,7 +859,7 @@ const edit = props => {
                                 }
                                 showUnits={true}
                                 onChangePadSizeUnit={newvalue =>
-                                    setAttributes({ paddingUnit: newvalue || "px" })
+                                    setAttributes({ backPadUnit: newvalue || "px" })
                                 }
                             />
                         </div>
@@ -1074,7 +1076,7 @@ const edit = props => {
 
             </InspectorControls>
         ),
-        <div className={`${mainClasses}-container `}  id={`premium-flip-${id}`}>
+        <div className={`${mainClasses}-container `} id={`premium-flip-${id}`}>
             <div className={`premium-flip-main-box `} data-current={activeSide} >
 
                 <div className={`premium-flip-front premium-flip-frontlr `} style={{ backgroundColor: frontBackgroundColor || "#767676" }}>
@@ -1087,12 +1089,15 @@ const edit = props => {
                                         <div
                                             className={`premium-flipbox__froIcon`}
                                             style={{
-                                                width: "100%",
-                                                height: "100%",
-                                                marginTop: (frontIconMarginTop || "0") + (marginUnit + "px"),
-                                                marginRight: (frontIconMarginRight || "0") + (marginUnit + "px"),
-                                                marginBottom: (frontIconMarginBottom || "0") + (marginUnit + "px"),
-                                                marginLeft: (frontIconMarginLeft || "0") + (marginUnit + "px"),
+                                                // marginTop: (frontIconMarginTop || "0") + (froMarUnit + "px"),
+                                                // marginRight: (frontIconMarginRight || "0") + (froMarUnit + "px"),
+                                                // marginBottom: (frontIconMarginBottom || "0") + (froMarUnit + "px"),
+                                                // marginLeft: (frontIconMarginLeft || "0") + (froMarUnit + "px"),
+
+                                                marginTop: (frontIconMarginTop|| "0") + (froMarUnit || "px"),
+                                                marginRight: (frontIconMarginRight || "0") + (froMarUnit || "px"),
+                                                marginBottom: (frontIconMarginBottom || "0") + (froMarUnit || "px"),
+                                                marginLeft: (frontIconMarginLeft || "0") + (froMarUnit || "px"),
                                             }}
                                         >
 
@@ -1105,15 +1110,15 @@ const edit = props => {
                                                 <i
                                                     className={`premium-icon ${frontIconSelected}`}
                                                     style={{
-                                                        width: "100%",
+                                                        width: "auto",
                                                         height: "100%",
                                                         color: frontIconColor || "#000",
                                                         backgroundColor: frontIconBackground || "transparent",
                                                         fontSize: (frontIconSize || 50) + frontIconUnit,
-                                                        paddingTop: (frontIconPaddingTop || "0") + (paddingUnit || "px"),
-                                                        paddingRight: (frontIconPaddingRight || "0") + (paddingUnit || "px"),
-                                                        paddingBottom: (frontIconPaddingBottom || "0") + (paddingUnit || "px"),
-                                                        paddingLeft: (frontIconPaddingLeft || "0") + (paddingUnit || "px"),
+                                                        paddingTop: (frontIconPaddingTop || "0") + (froPadUnit || "px"),
+                                                        paddingRight: (frontIconPaddingRight || "0") + (froPadUnit || "px"),
+                                                        paddingBottom: (frontIconPaddingBottom || "0") + (froPadUnit || "px"),
+                                                        paddingLeft: (frontIconPaddingLeft || "0") + (froPadUnit || "px"),
                                                     }}
                                                 />
                                             )}
@@ -1188,12 +1193,10 @@ const edit = props => {
                                         <div
                                             className={`premium-flipbox__backIcon`}
                                             style={{
-                                                width: "100%",
-                                                height: "100%",
-                                                marginTop: (backIconMarginTop || "0") + "px",
-                                                marginRight: (backIconMarginRight || "0") + "px",
-                                                marginBottom: (backIconMarginBottom || "0") + "px",
-                                                marginLeft: (backIconMarginLeft || "0") + "px",
+                                                marginTop: (backIconMarginTop || "0") + (backMarUnit || "px"),
+                                                marginRight: (backIconMarginRight || "0") + (backMarUnit || "px"),
+                                                marginBottom: (backIconMarginBottom || "0") + (backMarUnit || "px"),
+                                                marginLeft: (backIconMarginLeft || "0") + (backMarUnit || "px"),
                                             }}
                                         >
 
@@ -1206,15 +1209,15 @@ const edit = props => {
                                                 <i
                                                     className={`premium-icon ${backIconSelected}`}
                                                     style={{
-                                                        width: "100%",
+                                                        width: "auto",
                                                         height: "100%",
                                                         color: backIconColor || "#000",
                                                         backgroundColor: backIconBackground || "transparent",
                                                         fontSize: (backIconSize || 50) + backIconUnit,
-                                                        paddingTop: (backIconPaddingTop || "0") + "px",
-                                                        paddingRight: (backIconPaddingRight || "0") + "px",
-                                                        paddingBottom: (backIconPaddingBottom || "0") + "px",
-                                                        paddingLeft: (backIconPaddingLeft || "0") + "px",
+                                                        paddingTop: (backIconPaddingTop || "0") + (backPadUnit || "px"),
+                                                        paddingRight: (backIconPaddingRight || "0") + (backPadUnit || "px"),
+                                                        paddingBottom: (backIconPaddingBottom || "0") + (backPadUnit || "px"),
+                                                        paddingLeft: (backIconPaddingLeft || "0") + (backPadUnit || "px"),
                                                     }}
                                                 />
                                             )}

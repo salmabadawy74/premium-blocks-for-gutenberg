@@ -1807,12 +1807,12 @@ a.premium-dheading-block__link:hover {
   /* align-items: center;
   justify-content: center; */
 }
-.premium-flipbox__froIcon , .premium-flipbox__backIcon
+/* .premium-flipbox__froIcon , .premium-flipbox__backIcon
 {
   display: flex;
   align-items: center;
   justify-content: center
-}
+} */
 .premium-flip-front-content-container .premium-flip-front-title, .premium-flip-back-content-container .premium-flip-back-title {
   padding: 0;
   margin: 0 0 15px 0;

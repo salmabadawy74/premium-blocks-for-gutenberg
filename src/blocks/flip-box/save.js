@@ -1,18 +1,18 @@
 import classnames from "classnames";
 
-const { RichText} = wp.editor;
+const { RichText } = wp.editor;
 
-const save = props =>{
+const save = props => {
     const { className } = props;
 
-    const {        
-        id,       
-        frontTitle,        
+    const {
+        id,
+        frontTitle,
         frontTitleColor,
         frontDescription,
         frontDescriptionColor,
         frontBackgroundColor,
-        backTitle,        
+        backTitle,
         backTitleColor,
         backDescription,
         backDescriptionColor,
@@ -22,7 +22,7 @@ const save = props =>{
         frontIconCheck,
         frontIconSize,
         frontIconColor,
-        frontIconBackground,        
+        frontIconBackground,
         frontIconPaddingTop,
         frontIconPaddingRight,
         frontIconPaddingBottom,
@@ -38,7 +38,7 @@ const save = props =>{
         frontTitleShadowColor,
         frontTitleShadowBlur,
         frontTitleShadowHorizontal,
-        frontTitleShadowVertical, 
+        frontTitleShadowVertical,
         frontTitlePaddingTop,
         frontTitlePaddingRight,
         frontTitlePaddingBottom,
@@ -62,15 +62,16 @@ const save = props =>{
         frontDescMarginRight,
         frontDescMarginBottom,
         frontDescMarginLeft,
-        pxUnit,
-        paddingUnit,
-        marginUnit,
+        froMarUnit,
+        froPadUnit,
+        backMarUnit,
+        backPadUnit,
         backIconType,
         backIconSelected,
         backIconCheck,
         backIconSize,
         backIconColor,
-        backIconBackground,        
+        backIconBackground,
         backIconPaddingTop,
         backIconPaddingRight,
         backIconPaddingBottom,
@@ -86,7 +87,7 @@ const save = props =>{
         backTitleShadowColor,
         backTitleShadowBlur,
         backTitleShadowHorizontal,
-        backTitleShadowVertical, 
+        backTitleShadowVertical,
         backTitlePaddingTop,
         backTitlePaddingRight,
         backTitlePaddingBottom,
@@ -120,25 +121,23 @@ const save = props =>{
     const mainClasses = classnames(className, "premium-flip");
 
     return (
-        <div className={`${mainClasses}-container `}  id={`premium-flip-${id}`} >
+        <div className={`${mainClasses}-container `} id={`premium-flip-${id}`} >
             <div className={`premium-flip-main-box `}>
 
                 <div className={`premium-flip-front premium-flip-frontlr `} style={{ backgroundColor: frontBackgroundColor || "#767676" }}>
                     <div className={`premium-flip-front-overlay`}>
                         <div className={`premium-flip-front-content-container`}>
-                            <div className={`premium-flip-front-content`}  style={{justifyContent : alignFroHorizontal, alignItems : alignFroVertical}}>
+                            <div className={`premium-flip-front-content`} style={{ justifyContent: alignFroHorizontal, alignItems: alignFroVertical }}>
                                 <div className={`premium-flip-text-wrapper PafadeInRevLeft`}>
 
                                     {frontIconCheck && (
-                                        <div 
+                                        <div
                                             className={`premium-flipbox__froIcon`}
                                             style={{
-                                                width: "100%" ,
-                                                height: "100%" ,
-                                                marginTop: (frontIconMarginTop || "0") + (marginUnit + "px"),
-                                                marginRight: (frontIconMarginRight || "0") + (marginUnit + "px"),
-                                                marginBottom: (frontIconMarginBottom ||"0") + (marginUnit + "px"),
-                                                marginLeft: (frontIconMarginLeft ||"0") + (marginUnit + "px"),
+                                                marginTop: (frontIconMarginTop|| "0") + (froMarUnit || "px"),
+                                                marginRight: (frontIconMarginRight || "0") + (froMarUnit || "px"),
+                                                marginBottom: (frontIconMarginBottom || "0") + (froMarUnit || "px"),
+                                                marginLeft: (frontIconMarginLeft || "0") + (froMarUnit || "px"),
                                             }}
                                         >
 
@@ -151,15 +150,15 @@ const save = props =>{
                                                 <i
                                                     className={`premium-icon ${frontIconSelected}`}
                                                     style={{
-                                                        width: "100%" ,
-                                                        height: "100%" ,
+                                                        width: "auto",
+                                                        height: "100%",
                                                         color: frontIconColor || "#000",
                                                         backgroundColor: frontIconBackground || "transparent",
                                                         fontSize: (frontIconSize || 50) + frontIconUnit,
-                                                        paddingTop: (frontIconPaddingTop || "0") + (paddingUnit || "px"),
-                                                        paddingRight: (frontIconPaddingRight || "0") + (paddingUnit || "px"),
-                                                        paddingBottom: (frontIconPaddingBottom || "0" )+ (paddingUnit || "px"),
-                                                        paddingLeft: (frontIconPaddingLeft || "0")+ (paddingUnit || "px"),
+                                                        paddingTop: (frontIconPaddingTop || "0") + (froPadUnit || "px"),
+                                                        paddingRight: (frontIconPaddingRight || "0") + (froPadUnit || "px"),
+                                                        paddingBottom: (frontIconPaddingBottom || "0") + (froPadUnit || "px"),
+                                                        paddingLeft: (frontIconPaddingLeft || "0") + (froPadUnit || "px"),
                                                     }}
                                                 />
                                             )}
@@ -176,7 +175,7 @@ const save = props =>{
                                                 color: frontTitleColor || "#000",
                                                 fontSize: frontTitleSize + "px",
                                                 lineHeight: frontTitlelineHeight + "px",
-                                                textShadow: `${frontTitleShadowHorizontal}px ${frontTitleShadowVertical}px ${frontTitleShadowBlur }px ${frontTitleShadowColor}`,
+                                                textShadow: `${frontTitleShadowHorizontal}px ${frontTitleShadowVertical}px ${frontTitleShadowBlur}px ${frontTitleShadowColor}`,
                                                 paddingTop: frontTitlePaddingTop + "px",
                                                 paddingBottom: frontTitlePaddingBottom + "px",
                                                 paddingLeft: frontTitlePaddingLeft + "px",
@@ -186,8 +185,8 @@ const save = props =>{
                                                 marginLeft: frontTitleMarginLeft + "px",
                                                 marginRight: frontTitleMarginRight + "px",
                                             }}
-                                            keepPlaceholderOnFocus                    
-                                        /> 
+                                            keepPlaceholderOnFocus
+                                        />
                                     )}
                                     {frontDescCheck && (
                                         <RichText.Content
@@ -195,10 +194,10 @@ const save = props =>{
                                             className={`premium-flip-front-description`}
                                             value={frontDescription}
                                             style={{
-                                                color : frontDescriptionColor || "#000",
+                                                color: frontDescriptionColor || "#000",
                                                 fontSize: frontDescSize + "px",
                                                 lineHeight: frontDesclineHeight + "px",
-                                                textShadow: `${frontDescShadowHorizontal}px ${frontDescShadowVertical}px ${frontDescShadowBlur }px ${frontDescShadowColor}`,
+                                                textShadow: `${frontDescShadowHorizontal}px ${frontDescShadowVertical}px ${frontDescShadowBlur}px ${frontDescShadowColor}`,
                                                 paddingTop: frontDescPaddingTop + "px",
                                                 paddingBottom: frontDescPaddingBottom + "px",
                                                 paddingLeft: frontDescPaddingLeft + "px",
@@ -208,109 +207,107 @@ const save = props =>{
                                                 marginLeft: frontDescMarginLeft + "px",
                                                 marginRight: frontDescMarginRight + "px",
                                             }}
-                                            keepPlaceholderOnFocus                    
-                                        /> 
+                                            keepPlaceholderOnFocus
+                                        />
                                     )}
 
                                 </div>
-                            </div>    
-                        </div>  
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div className={`premium-flip-back premium-flip-backlr `} style={{ backgroundColor: backBackgroundColor || "#767676" }}>
                     <div className={`premium-flip-back-overlay`}>
                         <div className={`premium-flip-back-content-container`}>
-                            <div className={`premium-flip-back-content`}  style={{justifyContent : alignBackHorizontal , alignItems : alignBackVertical}}>
-                                <div className={`premium-flip-back-text-wrapper PafadeInRevRight`}>     
+                            <div className={`premium-flip-back-content`} style={{ justifyContent: alignBackHorizontal, alignItems: alignBackVertical }}>
+                                <div className={`premium-flip-back-text-wrapper PafadeInRevRight`}>
 
-                                        {backIconCheck && (
-                                            <div 
-                                                className={`premium-flipbox__backIcon`}
-                                                style={{
-                                                    width: "100%" ,
-                                                    height: "100%" ,
-                                                    marginTop: (backIconMarginTop || "0") + "px",
-                                                    marginRight: (backIconMarginRight || "0") + "px",
-                                                    marginBottom: (backIconMarginBottom || "0")+ "px",
-                                                    marginLeft: (backIconMarginLeft || "0") + "px",                                                     
-                                                }}
-                                            >
+                                    {backIconCheck && (
+                                        <div
+                                            className={`premium-flipbox__backIcon`}
+                                            style={{
+                                                marginTop: (backIconMarginTop || "0") + (backMarUnit || "px"),
+                                                marginRight: (backIconMarginRight || "0") + (backMarUnit || "px"),
+                                                marginBottom: (backIconMarginBottom || "0") + (backMarUnit || "px"),
+                                                marginLeft: (backIconMarginLeft || "0") + (backMarUnit || "px"),
+                                            }}
+                                        >
 
-                                                {backIconType === "fa" && 1 != FontAwesomeEnabled && (
-                                                    <p className={`premium-icon__alert`}>
-                                                        {__("Please Enable Font Awesome Icons from Plugin settings")}
-                                                    </p>
-                                                )}
-                                                {( backIconType === "dash" || 1 == FontAwesomeEnabled) && (
-                                                    <i
-                                                        className={`premium-icon ${backIconSelected}`}
-                                                        style={{
-                                                            width: "100%" ,
-                                                            height: "100%" ,
-                                                            color: backIconColor || "#000",
-                                                            backgroundColor: backIconBackground || "transparent",
-                                                            fontSize: (backIconSize || 50) + backIconUnit ,
-                                                            paddingTop: (backIconPaddingTop || "0") + "px",
-                                                            paddingRight: (backIconPaddingRight || "0") + "px",
-                                                            paddingBottom: (backIconPaddingBottom || "0") + "px",
-                                                            paddingLeft: (backIconPaddingLeft || "0") + "px",
-                                                        }}
-                                                    />
-                                                )}
-                                            </div>
-                                        )}       
+                                            {backIconType === "fa" && 1 != FontAwesomeEnabled && (
+                                                <p className={`premium-icon__alert`}>
+                                                    {__("Please Enable Font Awesome Icons from Plugin settings")}
+                                                </p>
+                                            )}
+                                            {(backIconType === "dash" || 1 == FontAwesomeEnabled) && (
+                                                <i
+                                                    className={`premium-icon ${backIconSelected}`}
+                                                    style={{
+                                                        width: "auto",
+                                                        height: "100%",
+                                                        color: backIconColor || "#000",
+                                                        backgroundColor: backIconBackground || "transparent",
+                                                        fontSize: (backIconSize || 50) + backIconUnit,
+                                                        paddingTop: (backIconPaddingTop || "0") + (backPadUnit || "px"),
+                                                        paddingRight: (backIconPaddingRight || "0") + (backPadUnit || "px"),
+                                                        paddingBottom: (backIconPaddingBottom || "0") + (backPadUnit || "px"),
+                                                        paddingLeft: (backIconPaddingLeft || "0") + (backPadUnit || "px"),
+                                                    }}
+                                                />
+                                            )}
+                                        </div>
+                                    )}
 
-                                        {backTitleCheck && (
-                                            <RichText.Content
-                                                tagName="h1"
-                                                className={`premium-flip-back-title`}
-                                                value={backTitle}
-                                                style={{
-                                                    color: backTitleColor || "#000",
-                                                    fontSize: backTitleSize + "px",
-                                                    lineHeight: backTitleLineHeight + "px",
-                                                    textShadow: `${backTitleShadowHorizontal}px ${backTitleShadowVertical}px ${backTitleShadowBlur }px ${backTitleShadowColor}`,
-                                                    paddingTop: backTitlePaddingTop + "px",
-                                                    paddingBottom: backTitlePaddingBottom + "px",
-                                                    paddingLeft: backTitlePaddingLeft + "px",
-                                                    paddingRight: backTitlePaddingRight + "px",
-                                                    marginTop: backTitleMarginTop + "px",
-                                                    marginBottom: backTitleMarginBottom + "px",
-                                                    marginLeft: backTitleMarginLeft + "px",
-                                                    marginRight: backTitleMarginRight + "px",
-                                                }}
-                                                keepPlaceholderOnFocus                    
-                                            /> 
-                                        )}
-                                        {backDescCheck && (
-                                            <RichText.Content
-                                                tagName="p"
-                                                className={`premium-flip-back-description`}
-                                                value={backDescription}
-                                                style={{
-                                                    color : backDescriptionColor || "#000",
-                                                    fontSize: backDescSize + "px",
-                                                    lineHeight: backDesclineHeight + "px",
-                                                    textShadow: `${backDescShadowHorizontal}px ${backDescShadowVertical}px ${backDescShadowBlur }px ${backDescShadowColor}`,
-                                                    paddingTop: backDescPaddingTop + "px",
-                                                    paddingBottom: backDescPaddingBottom + "px",
-                                                    paddingLeft: backDescPaddingLeft + "px",
-                                                    paddingRight: backDescPaddingRight + "px",
-                                                    marginTop: backDescMarginTop + "px",
-                                                    marginBottom: backDescMarginBottom + "px",
-                                                    marginLeft: backDescMarginLeft + "px",
-                                                    marginRight: backDescMarginRight + "px",
-                                                }}
-                                                keepPlaceholderOnFocus                    
-                                            /> 
-                                        )}
+                                    {backTitleCheck && (
+                                        <RichText.Content
+                                            tagName="h1"
+                                            className={`premium-flip-back-title`}
+                                            value={backTitle}
+                                            style={{
+                                                color: backTitleColor || "#000",
+                                                fontSize: backTitleSize + "px",
+                                                lineHeight: backTitleLineHeight + "px",
+                                                textShadow: `${backTitleShadowHorizontal}px ${backTitleShadowVertical}px ${backTitleShadowBlur}px ${backTitleShadowColor}`,
+                                                paddingTop: backTitlePaddingTop + "px",
+                                                paddingBottom: backTitlePaddingBottom + "px",
+                                                paddingLeft: backTitlePaddingLeft + "px",
+                                                paddingRight: backTitlePaddingRight + "px",
+                                                marginTop: backTitleMarginTop + "px",
+                                                marginBottom: backTitleMarginBottom + "px",
+                                                marginLeft: backTitleMarginLeft + "px",
+                                                marginRight: backTitleMarginRight + "px",
+                                            }}
+                                            keepPlaceholderOnFocus
+                                        />
+                                    )}
+                                    {backDescCheck && (
+                                        <RichText.Content
+                                            tagName="p"
+                                            className={`premium-flip-back-description`}
+                                            value={backDescription}
+                                            style={{
+                                                color: backDescriptionColor || "#000",
+                                                fontSize: backDescSize + "px",
+                                                lineHeight: backDesclineHeight + "px",
+                                                textShadow: `${backDescShadowHorizontal}px ${backDescShadowVertical}px ${backDescShadowBlur}px ${backDescShadowColor}`,
+                                                paddingTop: backDescPaddingTop + "px",
+                                                paddingBottom: backDescPaddingBottom + "px",
+                                                paddingLeft: backDescPaddingLeft + "px",
+                                                paddingRight: backDescPaddingRight + "px",
+                                                marginTop: backDescMarginTop + "px",
+                                                marginBottom: backDescMarginBottom + "px",
+                                                marginLeft: backDescMarginLeft + "px",
+                                                marginRight: backDescMarginRight + "px",
+                                            }}
+                                            keepPlaceholderOnFocus
+                                        />
+                                    )}
 
-                                </div>                        
-                            </div>            
+                                </div>
+                            </div>
                         </div>
-                    </div>                                         
-                </div> 
+                    </div>
+                </div>
 
             </div>
         </div>

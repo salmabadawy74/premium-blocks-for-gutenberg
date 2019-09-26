@@ -216,11 +216,19 @@ const flipBoxAttrs = {
         type: "string",
         default: "px"
     },
-    paddingUnit:{
+    froMarUnit:{
         type:"string",
         default:"px"
     },
-    marginUnit:{
+    froPadUnit:{
+        type:"string",
+        default:"px"
+    },
+    backMarUnit:{
+        type:"string",
+        default:"px"
+    },
+    backPadUnit:{
         type:"string",
         default:"px"
     },
