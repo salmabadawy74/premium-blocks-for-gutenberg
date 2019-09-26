@@ -658,7 +658,7 @@ const edit = props => {
                                     <img className={`premium-ihover-img`} src={imgUrl}
                                         style={{
                                             width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "50") + "%",
-                                            filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                            filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                                         }}
                                     />
                                 )}
@@ -670,7 +670,7 @@ const edit = props => {
                                 style={{
                                     borderRadius: (imgBorderRadius || "50") + "%",
                                      backgroundColor: overlayColor || "transparent", opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
-                                    boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
+                                     boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
                                 }}
                             >
                                 <div className={`premium-ihover-content`}>
@@ -684,15 +684,12 @@ const edit = props => {
                                                         {__("Please Enable Font Awesome Icons from Plugin settings")}
                                                     </p>
                                                 )}
-                                                {/* {iconType === "dash" && 1 == FontAwesomeEnabled && (
-                                                    <p className={`premium-ihover-icon_alert`}>
-                                                        {__("Please Choose Only Font Awesome  Icons")}
-                                                    </p>
-                                                )} */}
                                                 {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
                                                     <i
                                                         className={`premium-ihover-icon  ${iconSelected}`}
                                                         style={{
+                                                            width: "auto",
+                                                            height:"100%",
                                                             fontSize: (iconSize || 50) + (iconUnit || "px"),
                                                             color: iconColor || "#fff",
                                                             backgroundColor: iconBackground || "transparent",
@@ -772,8 +769,6 @@ const edit = props => {
 
             </div>
 
-            {/* this line only for test */}
-            <p style={{ textAlign: "center" }}>hello ihover effect {hoverEffect}</p>
             {linkCheck && (
                 <URLInput
                     value={linkUrl}

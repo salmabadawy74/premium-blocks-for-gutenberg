@@ -83,7 +83,7 @@ const ihoverAttr = {
     },
     iconColor: {
         type: "string",
-        default: "#fff"
+        default: "#000"
     },
     iconBackground: {
         type: "string",
@@ -135,7 +135,7 @@ const ihoverAttr = {
     },
     titleColor:{
         type: "string",
-        default: "#fff"
+        default: "#000"
     },
     titleSize:{
         type:"number",
@@ -184,7 +184,7 @@ const ihoverAttr = {
     },
     descColor:{
         type: "string",
-        default: "#fff"
+        default: "#000"
     },
     descSize:{
         type:"number",
@@ -230,7 +230,7 @@ const ihoverAttr = {
 // container
     overlayColor:{
         type: "string",
-        default:"#33bbce"
+        default:"#767676"
     },
     overlayOpacity: {
         type: "number",
@@ -261,7 +261,7 @@ const ihoverAttr = {
 //Register ihover block
 registerBlockType ( "premium/ihover", 
     {
-        title: __("I hover"),
+        title: __("iHover"),
         icon: "unlock",
         category: "premium-blocks",
         attributes: ihoverAttr,
