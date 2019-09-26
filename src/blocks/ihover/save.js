@@ -118,7 +118,7 @@ const save = props => {
                                                         {__("Please Enable Font Awesome Icons from Plugin settings")}
                                                     </p>
                                                 )}
-                                                {(iconType === "fa" || 1 == FontAwesomeEnabled) && (
+                                                {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
                                                     <i
                                                         className={`premium-ihover-icon  ${iconSelected}`}
                                                         style={{
@@ -160,8 +160,6 @@ const save = props => {
                                                 />
                                             </div>
                                         )}
-
-                                        {/* <i className="premium-ihover-icon fa fa-picture-o"></i> */}
 
                                         <div className={`premium-ihover-divider`}>
                                             <span className={`premium-ihover-divider-line`}></span>

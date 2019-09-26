@@ -339,8 +339,8 @@ const edit = props => {
                         <div className="premium-control-toggle">
                             <p><strong>{__("Select Icon")}</strong></p>
                             <FontIconPicker
-                                icons={iconsList["Font Awesome Icons"]}
-                                onChange={newIcon => setAttributes({ iconSelected: newIcon || "fa fa-heart" })}
+                                icons={iconsList}
+                                onChange={newIcon => setAttributes({ iconSelected: newIcon || "dashicons dashicons-admin-site" })}
                                 value={iconSelected}
                                 isMulti={false}
                                 appendTo="body"
@@ -684,12 +684,12 @@ const edit = props => {
                                                         {__("Please Enable Font Awesome Icons from Plugin settings")}
                                                     </p>
                                                 )}
-                                                {iconType === "dash" && 1 == FontAwesomeEnabled && (
+                                                {/* {iconType === "dash" && 1 == FontAwesomeEnabled && (
                                                     <p className={`premium-ihover-icon_alert`}>
                                                         {__("Please Choose Only Font Awesome  Icons")}
                                                     </p>
-                                                )}
-                                                {(iconType === "fa" || 1 == FontAwesomeEnabled) && (
+                                                )} */}
+                                                {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
                                                     <i
                                                         className={`premium-ihover-icon  ${iconSelected}`}
                                                         style={{
