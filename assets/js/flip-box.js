@@ -57,7 +57,7 @@ jQuery(document).ready(function ($) {
                 $(this).addClass("not-flipped");
                 $(this).removeClass("flipped");
             }
-            else {
+            else{
                 $(this).addClass("flipped");
             }
 
