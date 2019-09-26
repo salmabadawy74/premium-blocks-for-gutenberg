@@ -41862,8 +41862,8 @@ var edit = function edit(props) {
                     wp.element.createElement(
                         Button,
                         {
-                            isPrimary: activeSide == "right" ? true : false,
-                            isDefault: activeSide == "right" ? false : true,
+                            isPrimary: activeSide === "right" ? true : false,
+                            isDefault: activeSide === "right" ? false : true,
                             className: "premium-unit-control-btn front-btn",
                             onClick: handleFront
                         },
@@ -41872,8 +41872,8 @@ var edit = function edit(props) {
                     wp.element.createElement(
                         Button,
                         {
-                            isPrimary: activeSide == "left" ? true : false,
-                            isDefault: activeSide == "left" ? false : true,
+                            isPrimary: activeSide === "left" ? true : false,
+                            isDefault: activeSide === "left" ? false : true,
                             className: "premium-unit-control-btn back-btn",
                             onClick: handleBack
                         },

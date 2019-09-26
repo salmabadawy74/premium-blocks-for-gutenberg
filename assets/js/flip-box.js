@@ -9,7 +9,9 @@ jQuery(document).ready(function ($) {
         flipboxElement.on("mouseenter", function () {
 
             var side = $(this).attr("data-current");
-            if (side == "left") {
+            side = side || "left";
+
+            if (side === "left") {
                 $(this).addClass("flipped");
                 $(this).removeClass("not-flipped");
 
@@ -53,11 +55,11 @@ jQuery(document).ready(function ($) {
                 }
 
             }
-            else if (side == "right") {
+            else if (side === "right") {
                 $(this).addClass("not-flipped");
                 $(this).removeClass("flipped");
             }
-            else{
+            else {
                 $(this).addClass("flipped");
             }
 
@@ -104,5 +106,5 @@ jQuery(document).ready(function ($) {
         });
 
 
-    }, 2000);
+    }, 1000);
 });

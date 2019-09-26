@@ -358,16 +358,16 @@ const edit = props => {
                     <div className="premium-control-toggle">
                         <ButtonGroup>
                             <Button
-                                isPrimary={(activeSide == "right") ? true : false}
-                                isDefault={(activeSide == "right") ? false : true}
+                                isPrimary={(activeSide === "right") ? true : false}
+                                isDefault={(activeSide === "right") ? false : true}
                                 className="premium-unit-control-btn front-btn"
                                 onClick={handleFront}
                             >
                                 Front Side
                             </Button>
                             <Button
-                                isPrimary={(activeSide == "left") ? true : false}
-                                isDefault={(activeSide == "left") ? false : true}
+                                isPrimary={(activeSide === "left") ? true : false}
+                                isDefault={(activeSide === "left") ? false : true}
                                 className="premium-unit-control-btn back-btn"
                                 onClick={handleBack}
                             >

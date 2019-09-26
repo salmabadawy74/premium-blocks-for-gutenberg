@@ -1731,9 +1731,7 @@ a.premium-dheading-block__link:hover {
   -webkit-perspective: 1000px;
   perspective: 1000px;
   -webkit-transform-style: preserve-3d;
-  /* transition: transform 0.6s;  */
   transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
 }
 .premium-flip-front, .premium-flip-back {
