@@ -79,22 +79,22 @@ const save = props => {
     const mainClasses = classnames(className, "premium-ihover");
 
     return (
-        <div className={`${mainClasses}-container`}>
-            <div className={`premium-ihover-list`} style={{ textAlign: imgAlign || "center" }}>
+        <div className={`${mainClasses}__container`}>
+            <div className={`premium-ihover__list`} style={{ textAlign: imgAlign || "center" }}>
 
-                <div className={`premium-ihover-item-wrap`} style={{ borderRadius: (imgBorderRadius || "50") + "%", }}>
+                <div className={`premium-ihover__item-wrap`} style={{ borderRadius: (imgBorderRadius || "50") + "%", }}>
                     {linkCheck && linkUrl && (
                         <a
-                            className={`premium-ihover-link`}
+                            className={`premium-ihover__link`}
                             href={linkCheck && linkUrl}
                         >
-                            <div className={("premium-ihover-item ") + hoverEffect} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
+                            <div className={("premium-ihover__item ") + hoverEffect} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
 
-                                <div className={`premium-ihover-img-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
-                                    <div className={`premium-ihover-img-front`}>
-                                        <div className={`premium-ihover-img-inner-wrap`}></div>
+                                <div className={`premium-ihover__img-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
+                                    <div className={`premium-ihover__img-front`}>
+                                        <div className={`premium-ihover__img-inner-wrap`}></div>
                                         {imgUrl && (
-                                            <img className={`premium-ihover-img`} src={imgUrl}
+                                            <img className={`premium-ihover__img`} src={imgUrl}
                                                 style={{
                                                     width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "50") + "%",
                                                     filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
@@ -105,28 +105,28 @@ const save = props => {
                                         {!imgUrl && <DefaultImage />}
                                     </div>
                                 </div>
-                                <div className={`premium-ihover-info-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
-                                    <div className={`premium-ihover-info-back`}
+                                <div className={`premium-ihover__info-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
+                                    <div className={`premium-ihover__info-back`}
                                         style={{
                                             borderRadius: (imgBorderRadius || "50") + "%",
                                             backgroundColor: overlayColor || "transparent", opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
                                             boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
                                         }}
                                     >
-                                        <div className={`premium-ihover-content`}>
-                                            <div className={`premium-ihover-content-wrap`} style={{ textAlign: contentAlign || "center" }}>
+                                        <div className={`premium-ihover__content`}>
+                                            <div className={`premium-ihover__content-wrap`} style={{ textAlign: contentAlign || "center" }}>
 
                                                 {iconCheck && (
-                                                    <div className={`premium-ihover-icon-wrap`}>
+                                                    <div className={`premium-ihover__icon-wrap`}>
 
                                                         {iconType === "fa" && 1 != FontAwesomeEnabled && (
-                                                            <p className={`premium-ihover-icon_alert`}>
+                                                            <p className={`premium-ihover__icon_alert`}>
                                                                 {__("Please Enable Font Awesome Icons from Plugin settings")}
                                                             </p>
                                                         )}
                                                         {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
                                                             <i
-                                                                className={`premium-ihover-icon  ${iconSelected}`}
+                                                                className={`premium-ihover__icon  ${iconSelected}`}
                                                                 style={{
                                                                     width: "auto",
                                                                     height: "100%",
@@ -149,10 +149,10 @@ const save = props => {
                                                 )}
 
                                                 {titleCheck && (
-                                                    <div className={`premium-ihover-title-wrap`}>
+                                                    <div className={`premium-ihover__title-wrap`}>
                                                         <RichText.Content
                                                             tagName="h4"
-                                                            className={`premium-ihover-title`}
+                                                            className={`premium-ihover__title`}
                                                             value={titleText}
                                                             style={{
                                                                 color: titleColor || "#fff",
@@ -169,12 +169,12 @@ const save = props => {
                                                     </div>
                                                 )}
 
-                                                <div className={`premium-ihover-divider`}>
-                                                    <span className={`premium-ihover-divider-line`}></span>
+                                                <div className={`premium-ihover__divider`}>
+                                                    <span className={`premium-ihover__divider-line`}></span>
                                                 </div>
 
                                                 {descCheck && (
-                                                    <div className={`premium-ihover-description`}>
+                                                    <div className={`premium-ihover__description`}>
                                                         <RichText.Content
                                                             tagName="p"
                                                             value={descText}
@@ -203,13 +203,13 @@ const save = props => {
                     )}
                     {!linkUrl && (
 
-                        <div className={("premium-ihover-item ") + hoverEffect} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
+                        <div className={("premium-ihover__item ") + hoverEffect} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
 
-                            <div className={`premium-ihover-img-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
-                                <div className={`premium-ihover-img-front`}>
-                                    <div className={`premium-ihover-img-inner-wrap`}></div>
+                            <div className={`premium-ihover__img-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
+                                <div className={`premium-ihover__img-front`}>
+                                    <div className={`premium-ihover__img-inner-wrap`}></div>
                                     {imgUrl && (
-                                        <img className={`premium-ihover-img`} src={imgUrl}
+                                        <img className={`premium-ihover__img`} src={imgUrl}
                                             style={{
                                                 width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "50") + "%",
                                                 filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
@@ -219,28 +219,28 @@ const save = props => {
                                     {!imgUrl && <DefaultImage />}
                                 </div>
                             </div>
-                            <div className={`premium-ihover-info-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
-                                <div className={`premium-ihover-info-back`}
+                            <div className={`premium-ihover__info-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
+                                <div className={`premium-ihover__info-back`}
                                     style={{
                                         borderRadius: (imgBorderRadius || "50") + "%",
                                         backgroundColor: overlayColor || "transparent", opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
                                         boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
                                     }}
                                 >
-                                    <div className={`premium-ihover-content`}>
-                                        <div className={`premium-ihover-content-wrap`} style={{ textAlign: contentAlign || "center" }}>
+                                    <div className={`premium-ihover__content`}>
+                                        <div className={`premium-ihover__content-wrap`} style={{ textAlign: contentAlign || "center" }}>
 
                                             {iconCheck && (
-                                                <div className={`premium-ihover-icon-wrap`}>
+                                                <div className={`premium-ihover__icon-wrap`}>
 
                                                     {iconType === "fa" && 1 != FontAwesomeEnabled && (
-                                                        <p className={`premium-ihover-icon_alert`}>
+                                                        <p className={`premium-ihover__icon_alert`}>
                                                             {__("Please Enable Font Awesome Icons from Plugin settings")}
                                                         </p>
                                                     )}
                                                     {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
                                                         <i
-                                                            className={`premium-ihover-icon  ${iconSelected}`}
+                                                            className={`premium-ihover__icon  ${iconSelected}`}
                                                             style={{
                                                                 width: "auto",
                                                                 height: "100%",
@@ -263,10 +263,10 @@ const save = props => {
                                             )}
 
                                             {titleCheck && (
-                                                <div className={`premium-ihover-title-wrap`}>
+                                                <div className={`premium-ihover__title-wrap`}>
                                                     <RichText.Content
                                                         tagName="h4"
-                                                        className={`premium-ihover-title`}
+                                                        className={`premium-ihover__title`}
                                                         value={titleText}
                                                         style={{
                                                             color: titleColor || "#fff",
@@ -283,12 +283,12 @@ const save = props => {
                                                 </div>
                                             )}
 
-                                            <div className={`premium-ihover-divider`}>
-                                                <span className={`premium-ihover-divider-line`}></span>
+                                            <div className={`premium-ihover__divider`}>
+                                                <span className={`premium-ihover__divider-line`}></span>
                                             </div>
 
                                             {descCheck && (
-                                                <div className={`premium-ihover-description`}>
+                                                <div className={`premium-ihover__description`}>
                                                     <RichText.Content
                                                         tagName="p"
                                                         value={descText}

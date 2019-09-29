@@ -24,7 +24,7 @@ const ihoverAttr = {
     },
     imgBorderRadius:{
         type:"number",
-        default: "50"
+        default:"50"
     },
     hoverEffect:{
         type: "string",

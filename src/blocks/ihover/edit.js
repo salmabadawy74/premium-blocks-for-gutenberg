@@ -198,466 +198,465 @@ const edit = props => {
         },
         {
             value: "style20",
-            label: __("spinner")
+            label: __("Spinner")
         }
     ];
 
-    // 'style20'       => 'Spinner',
     const mainClasses = classnames(className, "premium-ihover");
 
     return [
         isSelected && (
-            <BlockControls >
-                <AlignmentToolbar
-                    label={__('Img Alignment')}
-                    value={imgAlign}
-                    onChange={newimgAlign => setAttributes({ imgAlign: newimgAlign })}
-                />
-            </BlockControls>
-        ),
-        isSelected && (
-            <InspectorControls>
+            <div>
+                <BlockControls >
+                    <AlignmentToolbar
+                        label={__('Image Alignment')}
+                        value={imgAlign}
+                        onChange={newAlign => setAttributes({ imgAlign: newAlign })}
+                    />
+                </BlockControls>
+                <InspectorControls>
 
-                {/* Image options */}
+                    {/* Image options */}
 
-                <PanelBody
-                    title={__("Image")}
-                    className="premium-panel-body"
-                    initialOpen={true}
-                >
-                    <div className="premium-control-toggle">
-
-                        <p>{__("Change Image")}</p>
-                        {imgUrl && (
-                            <img src={imgUrl} />
-                        )}
-                        {!imgUrl && <DefaultImage />}
-                        <MediaUpload
-                            allowedTypes={["image"]}
-                            onSelect={media => {
-                                setAttributes({
-                                    imgId: media.id,
-                                    imgUrl:
-                                        "undefined" === typeof media.sizes.thumbnail
-                                            ? media.url
-                                            : media.sizes.thumbnail.url
-                                });
-                            }}
-                            type="image"
-                            value={imgId}
-                            render={({ open }) => (
-                                <IconButton
-                                    label={__("Change Image")}
-                                    icon="edit"
-                                    onClick={open}
-                                >
-                                    {__("Change Image")}
-                                </IconButton>
-                            )}
-                        />
-
-                    </div>
-                    <div className="premium-control-toggle">
-                        <RangeControl
-                            label={__("Img Size")}
-                            value={imgSize}
-                            onChange={newImgSize => setAttributes({ imgSize: newImgSize || "300" })}
-                            initialPosition={300}
-                            allowReset={true}
-                            min={100}
-                            max={500}
-                        />
-                    </div>
-                    <div className="premium-control-toggle">
-                        <RangeControl
-                            label={__("Border Radius")}
-                            value={imgBorderRadius}
-                            onChange={newImgBorderRadius => setAttributes({ imgBorderRadius: newImgBorderRadius || "50" })}
-                            initialPosition={50}
-                            allowReset={true}
-                            min={0}
-                            max={100}
-                        />
-                    </div>
-                    <div className="premium-control-toggle">
-                        <SelectControl
-                            label={__("Hover Effects")}
-                            options={Hover_Effects}
-                            value={hoverEffect}
-                            onChange={newhoverEffect => setAttributes({ hoverEffect: newhoverEffect })}
-                        />
-                    </div>
-                    <div className="premium-control-toggle">
-                        <ToggleControl
-                            label={__("Link")}
-                            checked={linkCheck}
-                            onChange={newLinkCheck => setAttributes({ linkCheck: newLinkCheck })}
-                        />
-                    </div>
-
-                </PanelBody>
-
-                {/* Img css filter option */}
-
-                <PanelBody
-                    title={__("Image Style")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <div className="premium-control-toggle">
-                        <PremiumFilters
-                            blur={blur}
-                            bright={bright}
-                            contrast={contrast}
-                            saturation={saturation}
-                            hue={hue}
-                            onChangeBlur={newValue => setAttributes({ blur: newValue })}
-                            onChangeBright={newValue => setAttributes({ bright: newValue })}
-                            onChangeContrast={newValue => setAttributes({ contrast: newValue })}
-                            onChangeSat={newValue => setAttributes({ saturation: newValue })}
-                            onChangeHue={newValue => setAttributes({ hue: newValue })}
-                        />
-                    </div>
-                </PanelBody>
-
-                {/* Content options */}
-
-                <PanelBody
-                    title={__("Content")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    {/* Icon options */}
-                    <div className="premium-control-toggle">
-                        <ToggleControl
-                            label={__("Icon")}
-                            checked={iconCheck}
-                            onChange={newValue => setAttributes({ iconCheck: newValue })}
-                        />
-                    </div>
-                    {iconCheck && (
+                    <PanelBody
+                        title={__("Image")}
+                        className="premium-panel-body"
+                        initialOpen={true}
+                    >
                         <div className="premium-control-toggle">
-                            <p><strong>{__("Select Icon")}</strong></p>
-                            <FontIconPicker
-                                icons={iconsList}
-                                onChange={newIcon => setAttributes({ iconSelected: newIcon || "dashicons dashicons-admin-site" })}
-                                value={iconSelected}
-                                isMulti={false}
-                                appendTo="body"
-                                noSelectedPlaceholder={__("Select Icon")}
+
+                            <p>{__("Change Image")}</p>
+                            {imgUrl && (
+                                <img src={imgUrl} />
+                            )}
+                            {!imgUrl && <DefaultImage />}
+                            <MediaUpload
+                                allowedTypes={["image"]}
+                                onSelect={media => {
+                                    setAttributes({
+                                        imgId: media.id,
+                                        imgUrl:
+                                            "undefined" === typeof media.sizes.thumbnail
+                                                ? media.url
+                                                : media.sizes.thumbnail.url
+                                    });
+                                }}
+                                type="image"
+                                value={imgId}
+                                render={({ open }) => (
+                                    <IconButton
+                                        label={__("Change Image")}
+                                        icon="edit"
+                                        onClick={open}
+                                    >
+                                        {__("Change Image")}
+                                    </IconButton>
+                                )}
+                            />
+
+                        </div>
+                        <div className="premium-control-toggle">
+                            <RangeControl
+                                label={__("Image Size")}
+                                value={imgSize}
+                                onChange={newSize => setAttributes({ imgSize: newSize || "300" })}
+                                initialPosition={300}
+                                allowReset={true}
+                                min={100}
+                                max={500}
                             />
                         </div>
+                        <div className="premium-control-toggle">
+                            <RangeControl
+                                label={__("Border Radius")}
+                                value={imgBorderRadius}
+                                onChange={newValue => setAttributes({ imgBorderRadius: newValue || "0" })}
+                                initialPosition={50}
+                                allowReset={true}
+                                min={0}
+                                max={100}
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <SelectControl
+                                label={__("Hover Effects")}
+                                options={Hover_Effects}
+                                value={hoverEffect}
+                                onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <ToggleControl
+                                label={__("Link")}
+                                checked={linkCheck}
+                                onChange={newCheck => setAttributes({ linkCheck: newCheck })}
+                            />
+                        </div>
+
+                    </PanelBody>
+
+                    {/* Img css filter option */}
+
+                    <PanelBody
+                        title={__("Image Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <div className="premium-control-toggle">
+                            <PremiumFilters
+                                blur={blur}
+                                bright={bright}
+                                contrast={contrast}
+                                saturation={saturation}
+                                hue={hue}
+                                onChangeBlur={newValue => setAttributes({ blur: newValue })}
+                                onChangeBright={newValue => setAttributes({ bright: newValue })}
+                                onChangeContrast={newValue => setAttributes({ contrast: newValue })}
+                                onChangeSat={newValue => setAttributes({ saturation: newValue })}
+                                onChangeHue={newValue => setAttributes({ hue: newValue })}
+                            />
+                        </div>
+                    </PanelBody>
+
+                    {/* Content options */}
+
+                    <PanelBody
+                        title={__("Content")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        {/* Icon options */}
+                        <div className="premium-control-toggle">
+                            <ToggleControl
+                                label={__("Icon")}
+                                checked={iconCheck}
+                                onChange={newValue => setAttributes({ iconCheck: newValue })}
+                            />
+                        </div>
+                        {iconCheck && (
+                            <div className="premium-control-toggle">
+                                <p><strong>{__("Select Icon")}</strong></p>
+                                <FontIconPicker
+                                    icons={iconsList}
+                                    onChange={newIcon => setAttributes({ iconSelected: newIcon || "dashicons dashicons-admin-site" })}
+                                    value={iconSelected}
+                                    isMulti={false}
+                                    appendTo="body"
+                                    noSelectedPlaceholder={__("Select Icon")}
+                                />
+                            </div>
+                        )}
+
+                        {/* Title options */}
+                        <div className="premium-control-toggle">
+                            <ToggleControl
+                                label={__("Title")}
+                                checked={titleCheck}
+                                onChange={newValue => setAttributes({ titleCheck: newValue })}
+                            />
+                            {titleCheck && (
+                                <TextControl
+                                    label={__("Title Text")}
+                                    value={titleText}
+                                    onChange={newText => setAttributes({ titleText: newText })}
+                                />
+                            )}
+                        </div>
+
+                        {/* Description options */}
+                        <div className="premium-control-toggle">
+                            <ToggleControl
+                                label={__("Description")}
+                                checked={descCheck}
+                                onChange={newValue => setAttributes({ descCheck: newValue })}
+                            />
+                            {descCheck && (
+                                <TextareaControl
+                                    label={__("Description Text")}
+                                    help="Enter your description"
+                                    value={descText}
+                                    onChange={newText => setAttributes({ descText: newText })}
+                                />
+                            )}
+                        </div>
+                        <div className="premium-control-toggle">
+                            <p><strong>{__("Alignment")}</strong></p>
+                            <AlignmentToolbar
+                                value={contentAlign}
+                                onChange={newAlign => setAttributes({ contentAlign: newAlign })}
+                            />
+                        </div>
+
+                    </PanelBody>
+
+                    {/* Icon options */}
+
+                    {iconCheck && (
+                        <PanelBody
+                            title={__("Icon Style")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <div className="premium-control-toggle">
+                                <PremiumSizeUnits
+                                    onChangeSizeUnit={newValue =>
+                                        setAttributes({ iconUnit: newValue || "px" })
+                                    }
+                                />
+                                <RangeControl
+                                    label={__("Size")}
+                                    value={iconSize}
+                                    onChange={newValue => setAttributes({ iconSize: newValue || "50" })}
+                                    initialPosition={50}
+                                    allowReset={true}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <p><strong>{__("Color")}</strong></p>
+                                <ColorPalette
+                                    value={iconColor}
+                                    onChange={newColor => setAttributes({ iconColor: newColor || "#fff" })}
+                                    allowReset={true}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <p><strong>{__("Background Color")}</strong></p>
+                                <ColorPalette
+                                    value={iconBackground}
+                                    onChange={newBackColor => setAttributes({ iconBackground: newBackColor || "transparent" })}
+                                    allowReset={true}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumBorder
+                                    borderType={iconBorderType}
+                                    borderWidth={iconBorderWidth}
+                                    borderColor={iconBorderColor}
+                                    borderRadius={iconBorderRadius}
+                                    onChangeType={newType =>
+                                        setAttributes({ iconBorderType: newType })
+                                    }
+                                    onChangeWidth={newWidth =>
+                                        setAttributes({ iconBorderWidth: newWidth || "0" })
+                                    }
+                                    onChangeColor={newColor =>
+                                        setAttributes({
+                                            iconBorderColor: newColor.hex || "transparent"
+                                        })
+                                    }
+                                    onChangeRadius={newrRadius =>
+                                        setAttributes({ iconBorderRadius: newrRadius || "0" })
+                                    }
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumPadding
+                                    paddingTop={iconPadTop}
+                                    paddingRight={iconPadRight}
+                                    paddingBottom={iconPadBottom}
+                                    paddingLeft={iconPadLeft}
+                                    onChangePadTop={newPadTop =>
+                                        setAttributes({
+                                            iconPadTop: newPadTop || "0"
+                                        })
+                                    }
+                                    onChangePadRight={newPadRight =>
+                                        setAttributes({
+                                            iconPadRight: newPadRight || "0"
+                                        })
+                                    }
+                                    onChangePadBottom={newPadBottom =>
+                                        setAttributes({
+                                            iconPadBottom: newPadBottom || "0"
+                                        })
+                                    }
+                                    onChangePadLeft={newPadleft =>
+                                        setAttributes({
+                                            iconPadLeft: newPadleft || "0"
+                                        })
+                                    }
+                                    showUnits={true}
+                                    onChangePadSizeUnit={newvalue =>
+                                        setAttributes({ padUnit: newvalue || "px" })
+                                    }
+                                />
+                            </div>
+
+                        </PanelBody>
                     )}
 
                     {/* Title options */}
-                    <div className="premium-control-toggle">
-                        <ToggleControl
-                            label={__("Title")}
-                            checked={titleCheck}
-                            onChange={newValue => setAttributes({ titleCheck: newValue })}
-                        />
-                        {titleCheck && (
-                            <TextControl
-                                label={__("Title Text")}
-                                value={titleText}
-                                onChange={newText => setAttributes({ titleText: newText })}
-                            />
-                        )}
-                    </div>
+
+                    {titleCheck && (
+                        <PanelBody
+                            title={__("Title Style")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <div className="premium-control-toggle">
+                                <p>{__("Color")}</p>
+                                <ColorPalette
+                                    value={titleColor}
+                                    onChange={newColor => setAttributes({ titleColor: newColor || "#fff" })}
+                                    allowReset={true}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumTypo
+                                    components={["size", "line"]}
+                                    size={titleSize}
+                                    line={titlelineHeight}
+                                    onChangeSize={newSize => setAttributes({ titleSize: newSize })}
+                                    onChangeLine={newValue => setAttributes({ titlelineHeight: newValue})}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumTextShadow
+                                    color={titleShadColor}
+                                    blur={titleShadBlur}
+                                    horizontal={titleShadHorizontal}
+                                    vertical={titleShadVertical}
+                                    onChangeColor={newColor => setAttributes({ titleShadColor: newColor.hex || "transparent" })}
+                                    onChangeBlur={newBlur => setAttributes({ titleShadBlur: newBlur || "0" })}
+                                    onChangehHorizontal={newValue => setAttributes({ titleShadHorizontal: newValue || "0" })}
+                                    onChangeVertical={newValue => setAttributes({ titleShadVertical: newValue || "0" })}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumMargin
+                                    directions={["top", "right", "bottom", "left"]}
+                                    marginTop={titleMarTop}
+                                    marginRight={titleMarRight}
+                                    marginBottom={titleMarBottom}
+                                    marginLeft={titleMarLeft}
+                                    onChangeMarTop={newMarTop => setAttributes({ titleMarTop: newMarTop })}
+                                    onChangeMarRight={newMarRight => setAttributes({ titleMarRight: newMarRight })}
+                                    onChangeMarBottom={newMarBottom => setAttributes({ titleMarBottom: newMarBottom })}
+                                    onChangeMarLeft={newMarLeft => setAttributes({ titleMarLeft: newMarLeft })}
+                                    showUnits={true}
+                                    onChangeMarSizeUnit={newMarUnit =>
+                                        setAttributes({ titleMarUnit: newMarUnit || "px" })
+                                    }
+                                />
+                            </div>
+
+                        </PanelBody>
+                    )}
 
                     {/* Description options */}
-                    <div className="premium-control-toggle">
-                        <ToggleControl
-                            label={__("Description")}
-                            checked={descCheck}
-                            onChange={newValue => setAttributes({ descCheck: newValue })}
-                        />
-                        {descCheck && (
-                            <TextareaControl
-                                label={__("Description Text")}
-                                help="Enter your description"
-                                value={descText}
-                                onChange={newText => setAttributes({ descText: newText })}
-                            />
-                        )}
-                    </div>
-                    <div className="premium-control-toggle">
-                        <p><strong>{__("Alignment")}</strong></p>
-                        <AlignmentToolbar
-                            value={contentAlign}
-                            onChange={newContentAlign => setAttributes({ contentAlign: newContentAlign })}
-                        />
-                    </div>
 
-                </PanelBody>
+                    {descCheck && (
+                        <PanelBody
+                            title={__("Descroption Style")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <div className="premium-control-toggle">
+                                <p>{__("Color")}</p>
+                                <ColorPalette
+                                    value={descColor}
+                                    onChange={newColor => setAttributes({ descColor: newColor || "#fff" })}
+                                    allowReset={true}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumTypo
+                                    components={["size", "line"]}
+                                    size={descSize}
+                                    line={desclineHeight}
+                                    onChangeSize={newSize => setAttributes({ descSize: newSize || "16" })}
+                                    onChangeLine={newValue => setAttributes({ desclineHeight: newValue })}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumTextShadow
+                                    color={descShadColor}
+                                    blur={descShadBlur}
+                                    horizontal={descShadHorizontal}
+                                    vertical={descShadVertical}
+                                    onChangeColor={newColor => setAttributes({ descShadColor: newColor.hex || "transparent" })}
+                                    onChangeBlur={newBlur => setAttributes({ descShadBlur: newBlur || "0" })}
+                                    onChangehHorizontal={newValue => setAttributes({ descShadHorizontal: newValue || "0" })}
+                                    onChangeVertical={newValue => setAttributes({ descShadVertical: newValue || "0" })}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumMargin
+                                    directions={["top", "right", "bottom", "left"]}
+                                    marginTop={descMarTop}
+                                    marginRight={descMarRight}
+                                    marginBottom={descMarBottom}
+                                    marginLeft={descMarLeft}
+                                    onChangeMarTop={newMarTop => setAttributes({ descMarTop: newMarTop })}
+                                    onChangeMarRight={newMarRight => setAttributes({ descMarRight: newMarRight })}
+                                    onChangeMarBottom={newMarBottom => setAttributes({ descMarBottom: newMarBottom })}
+                                    onChangeMarLeft={newMarLeft => setAttributes({ descMarLeft: newMarLeft })}
+                                    showUnits={true}
+                                    onChangeMarSizeUnit={newMarUnit =>
+                                        setAttributes({ descMarUnit: newMarUnit || "px" })
+                                    }
+                                />
+                            </div>
 
-                {/* Icon options */}
+                        </PanelBody>
+                    )}
 
-                {iconCheck && (
+                    {/* Container Style options */}
+
                     <PanelBody
-                        title={__("Icon Style")}
+                        title={__("Container Style")}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <div className="premium-control-toggle">
-                            <PremiumSizeUnits
-                                onChangeSizeUnit={newValue =>
-                                    setAttributes({ iconUnit: newValue || "px" })
-                                }
+                            <p>{__("Overlay Color")}</p>
+                            <ColorPalette
+                                value={overlayColor}
+                                onChange={newValue => setAttributes({ overlayColor: newValue === undefined ? "transparent" : newValue })}
+                                allowReset={true}
                             />
                             <RangeControl
-                                label={__("Size")}
-                                value={iconSize}
-                                onChange={newValue => setAttributes({ iconSize: newValue || "50" })}
-                                initialPosition={50}
-                                allowReset={true}
+                                label={__("Overlay Opacity")}
+                                value={overlayOpacity}
+                                min="1"
+                                max="100"
+                                onChange={newOpacity => setAttributes({ overlayOpacity: newOpacity === undefined ? "80" : newOpacity })}
                             />
                         </div>
                         <div className="premium-control-toggle">
-                            <p><strong>{__("Color")}</strong></p>
-                            <ColorPalette
-                                value={iconColor}
-                                onChange={newColor => setAttributes({ iconColor: newColor || "#fff" })}
-                                allowReset={true}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <p><strong>{__("Background Color")}</strong></p>
-                            <ColorPalette
-                                value={iconBackground}
-                                onChange={newBackColor => setAttributes({ iconBackground: newBackColor || "transparent" })}
-                                allowReset={true}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumBorder
-                                borderType={iconBorderType}
-                                borderWidth={iconBorderWidth}
-                                borderColor={iconBorderColor}
-                                borderRadius={iconBorderRadius}
-                                onChangeType={newType =>
-                                    setAttributes({ iconBorderType: newType })
-                                }
-                                onChangeWidth={newWidth =>
-                                    setAttributes({ iconBorderWidth: newWidth || "0" })
-                                }
-                                onChangeColor={newColor =>
-                                    setAttributes({
-                                        iconBorderColor: newColor.hex || "transparent"
-                                    })
-                                }
-                                onChangeRadius={newrRadius =>
-                                    setAttributes({ iconBorderRadius: newrRadius || "0" })
-                                }
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumPadding
-                                paddingTop={iconPadTop}
-                                paddingRight={iconPadRight}
-                                paddingBottom={iconPadBottom}
-                                paddingLeft={iconPadLeft}
-                                onChangePadTop={newPadTop =>
-                                    setAttributes({
-                                        iconPadTop: newPadTop || "0"
-                                    })
-                                }
-                                onChangePadRight={newPadRight =>
-                                    setAttributes({
-                                        iconPadRight: newPadRight || "0"
-                                    })
-                                }
-                                onChangePadBottom={newPadBottom =>
-                                    setAttributes({
-                                        iconPadBottom: newPadBottom || "0"
-                                    })
-                                }
-                                onChangePadLeft={newPadleft =>
-                                    setAttributes({
-                                        iconPadLeft: newPadleft || "0"
-                                    })
-                                }
-                                showUnits={true}
-                                onChangePadSizeUnit={newvalue =>
-                                    setAttributes({ padUnit: newvalue || "px" })
-                                }
+                            <PremiumBoxShadow
+                                inner={true}
+                                color={containerShadowColor}
+                                blur={containerShadowBlur}
+                                horizontal={containerShadowHorizontal}
+                                vertical={containerShadowVertical}
+                                position={containerShadowPosition}
+                                onChangeColor={newColor => setAttributes({ containerShadowColor: newColor.hex || "transparent" })}
+                                onChangeBlur={newBlur => setAttributes({ containerShadowBlur: newBlur || "0" })}
+                                onChangehHorizontal={newValue => setAttributes({ containerShadowHorizontal: newValue || "0" })}
+                                onChangeVertical={newValue => setAttributes({ containerShadowVertical: newValue || "0" })}
+                                onChangePosition={newValue => setAttributes({ containerShadowPosition: newValue })}
                             />
                         </div>
 
                     </PanelBody>
-                )}
 
-                {/* Title options */}
-
-                {titleCheck && (
-                    <PanelBody
-                        title={__("Title Style")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <div className="premium-control-toggle">
-                            <p>{__("Color")}</p>
-                            <ColorPalette
-                                value={titleColor}
-                                onChange={newColor => setAttributes({ titleColor: newColor || "#fff" })}
-                                allowReset={true}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumTypo
-                                components={["size", "line"]}
-                                size={titleSize}
-                                line={titlelineHeight}
-                                onChangeSize={newSize => setAttributes({ titleSize: newSize })}
-                                onChangeLine={newlineHeight => setAttributes({ titlelineHeight: newlineHeight })}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumTextShadow
-                                color={titleShadColor}
-                                blur={titleShadBlur}
-                                horizontal={titleShadHorizontal}
-                                vertical={titleShadVertical}
-                                onChangeColor={newShadColor => setAttributes({ titleShadColor: newShadColor.hex || "transparent" })}
-                                onChangeBlur={newShadBlur => setAttributes({ titleShadBlur: newShadBlur || "0" })}
-                                onChangehHorizontal={newShadHorizontal => setAttributes({ titleShadHorizontal: newShadHorizontal || "0" })}
-                                onChangeVertical={newShadVertical => setAttributes({ titleShadVertical: newShadVertical || "0" })}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumMargin
-                                directions={["top", "right", "bottom", "left"]}
-                                marginTop={titleMarTop}
-                                marginRight={titleMarRight}
-                                marginBottom={titleMarBottom}
-                                marginLeft={titleMarLeft}
-                                onChangeMarTop={newMarTop => setAttributes({ titleMarTop: newMarTop })}
-                                onChangeMarRight={newMarRight => setAttributes({ titleMarRight: newMarRight })}
-                                onChangeMarBottom={newMarBottom => setAttributes({ titleMarBottom: newMarBottom })}
-                                onChangeMarLeft={newMarLeft => setAttributes({ titleMarLeft: newMarLeft })}
-                                showUnits={true}
-                                onChangeMarSizeUnit={newMarUnit =>
-                                    setAttributes({ titleMarUnit: newMarUnit || "px" })
-                                }
-                            />
-                        </div>
-
-                    </PanelBody>
-                )}
-
-                {/* Description options */}
-
-                {descCheck && (
-                    <PanelBody
-                        title={__("Descroption Style")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <div className="premium-control-toggle">
-                            <p>{__("Color")}</p>
-                            <ColorPalette
-                                value={descColor}
-                                onChange={newColor => setAttributes({ descColor: newColor || "#fff" })}
-                                allowReset={true}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumTypo
-                                components={["size", "line"]}
-                                size={descSize}
-                                line={desclineHeight}
-                                onChangeSize={newSize => setAttributes({ descSize: newSize || "16" })}
-                                onChangeLine={newlineHeight => setAttributes({ desclineHeight: newlineHeight })}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumTextShadow
-                                color={descShadColor}
-                                blur={descShadBlur}
-                                horizontal={descShadHorizontal}
-                                vertical={descShadVertical}
-                                onChangeColor={newShadColor => setAttributes({ descShadColor: newShadColor.hex || "transparent" })}
-                                onChangeBlur={newShadBlur => setAttributes({ descShadBlur: newShadBlur || "0" })}
-                                onChangehHorizontal={newShadHorizontal => setAttributes({ descShadHorizontal: newShadHorizontal || "0" })}
-                                onChangeVertical={newShadVertical => setAttributes({ descShadVertical: newShadVertical || "0" })}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumMargin
-                                directions={["top", "right", "bottom", "left"]}
-                                marginTop={descMarTop}
-                                marginRight={descMarRight}
-                                marginBottom={descMarBottom}
-                                marginLeft={descMarLeft}
-                                onChangeMarTop={newMarTop => setAttributes({ descMarTop: newMarTop })}
-                                onChangeMarRight={newMarRight => setAttributes({ descMarRight: newMarRight })}
-                                onChangeMarBottom={newMarBottom => setAttributes({ descMarBottom: newMarBottom })}
-                                onChangeMarLeft={newMarLeft => setAttributes({ descMarLeft: newMarLeft })}
-                                showUnits={true}
-                                onChangeMarSizeUnit={newMarUnit =>
-                                    setAttributes({ descMarUnit: newMarUnit || "px" })
-                                }
-                            />
-                        </div>
-
-                    </PanelBody>
-                )}
-
-                {/* Container Style options */}
-
-                <PanelBody
-                    title={__("Container Style")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <div className="premium-control-toggle">
-                        <p>{__("Overlay Color")}</p>
-                        <ColorPalette
-                            value={overlayColor}
-                            onChange={newValue => setAttributes({ overlayColor: newValue === undefined ? "transparent" : newValue })}
-                            allowReset={true}
-                        />
-                        <RangeControl
-                            label={__("Overlay Opacity")}
-                            value={overlayOpacity}
-                            min="1"
-                            max="100"
-                            onChange={newOpacity => setAttributes({ overlayOpacity: newOpacity === undefined ? "80" : newOpacity })}
-                        />
-                    </div>
-                    <div className="premium-control-toggle">
-                        <PremiumBoxShadow
-                            inner={true}
-                            color={containerShadowColor}
-                            blur={containerShadowBlur}
-                            horizontal={containerShadowHorizontal}
-                            vertical={containerShadowVertical}
-                            position={containerShadowPosition}
-                            onChangeColor={newColor => setAttributes({ containerShadowColor: newColor.hex || "transparent" })}
-                            onChangeBlur={newBlur => setAttributes({ containerShadowBlur: newBlur || "0" })}
-                            onChangehHorizontal={newValue => setAttributes({ containerShadowHorizontal: newValue || "0" })}
-                            onChangeVertical={newValue => setAttributes({ containerShadowVertical: newValue || "0" })}
-                            onChangePosition={newValue => setAttributes({ containerShadowPosition: newValue })}
-                        />
-                    </div>
-
-                </PanelBody>
-
-            </InspectorControls>
+                </InspectorControls>
+            </div>
         ),
-        <div className={`${mainClasses}-container`}>
-            <div className={`premium-ihover-list`} style={{ textAlign: imgAlign || "center" }}>
+        <div className={`${mainClasses}__container`}>
+            <div className={`premium-ihover__list`} style={{ textAlign: imgAlign || "center" }}>
 
-                <div className={`premium-ihover-item-wrap`} style={{ borderRadius: (imgBorderRadius || "50") + "%", }}>
-                    <div className={("premium-ihover-item ") + hoverEffect} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
+                <div className={`premium-ihover__item-wrap`} style={{ borderRadius: (imgBorderRadius || "0") + "%", }}>
+                    <div className={("premium-ihover__item ") + hoverEffect} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
 
-                        <div className={`premium-ihover-img-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
-                            <div className={`premium-ihover-img-front`}>
-                                <div className={`premium-ihover-img-inner-wrap`}></div>
+                        <div className={`premium-ihover__img-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
+                            <div className={`premium-ihover__img-front`}>
+                                <div className={`premium-ihover__img-inner-wrap`}></div>
                                 {imgUrl && (
-                                    <img className={`premium-ihover-img`} src={imgUrl}
+                                    <img className={`premium-ihover__img`} src={imgUrl}
                                         style={{
-                                            width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "50") + "%",
+                                            width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "0") + "%",
                                             filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                                         }}
                                     />
@@ -665,31 +664,31 @@ const edit = props => {
                                 {!imgUrl && <DefaultImage />}
                             </div>
                         </div>
-                        <div className={`premium-ihover-info-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
-                            <div className={`premium-ihover-info-back`}
+                        <div className={`premium-ihover__info-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
+                            <div className={`premium-ihover__info-back`}
                                 style={{
-                                    borderRadius: (imgBorderRadius || "50") + "%",
-                                     backgroundColor: overlayColor || "transparent", opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
-                                     boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
+                                    borderRadius: (imgBorderRadius || "0") + "%",
+                                    backgroundColor: overlayColor || "transparent", opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
+                                    boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
                                 }}
                             >
-                                <div className={`premium-ihover-content`}>
-                                    <div className={`premium-ihover-content-wrap`} style={{ textAlign: contentAlign || "center" }}>
+                                <div className={`premium-ihover__content`}>
+                                    <div className={`premium-ihover__content-wrap`} style={{ textAlign: contentAlign || "center" }}>
 
                                         {iconCheck && (
-                                            <div className={`premium-ihover-icon-wrap`}>
+                                            <div className={`premium-ihover__icon-wrap`}>
 
                                                 {iconType === "fa" && 1 != FontAwesomeEnabled && (
-                                                    <p className={`premium-ihover-icon_alert`}>
+                                                    <p className={`premium-ihover__icon_alert`}>
                                                         {__("Please Enable Font Awesome Icons from Plugin settings")}
                                                     </p>
                                                 )}
                                                 {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
                                                     <i
-                                                        className={`premium-ihover-icon  ${iconSelected}`}
+                                                        className={`premium-ihover__icon  ${iconSelected}`}
                                                         style={{
                                                             width: "auto",
-                                                            height:"100%",
+                                                            height: "100%",
                                                             fontSize: (iconSize || 50) + (iconUnit || "px"),
                                                             color: iconColor || "#fff",
                                                             backgroundColor: iconBackground || "transparent",
@@ -709,10 +708,10 @@ const edit = props => {
                                         )}
 
                                         {titleCheck && (
-                                            <div className={`premium-ihover-title-wrap`}>
+                                            <div className={`premium-ihover__title-wrap`}>
                                                 <RichText
                                                     tagName="h4"
-                                                    className={`premium-ihover-title`}
+                                                    className={`premium-ihover__title`}
                                                     value={titleText}
                                                     isSelected={false}
                                                     placeholder="Please Enter your title"
@@ -732,12 +731,12 @@ const edit = props => {
                                             </div>
                                         )}
 
-                                        <div className={`premium-ihover-divider`}>
-                                            <span className={`premium-ihover-divider-line`}></span>
+                                        <div className={`premium-ihover__divider`}>
+                                            <span className={`premium-ihover__divider-line`}></span>
                                         </div>
 
                                         {descCheck && (
-                                            <div className={`premium-ihover-description`}>
+                                            <div className={`premium-ihover__description`}>
                                                 <RichText
                                                     tagName="p"
                                                     value={descText}
