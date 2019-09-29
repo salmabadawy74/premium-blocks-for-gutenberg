@@ -37,6 +37,10 @@ const ihoverAttr = {
     linkUrl:{
         type: "string"
     },
+    target:{
+        type: "boolean",
+        default: false
+    },
     imgAlign: {
         type: "string",
         default: "center"

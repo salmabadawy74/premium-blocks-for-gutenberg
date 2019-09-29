@@ -15,6 +15,7 @@ const save = props => {
         hoverEffect,
         linkCheck,
         linkUrl,
+        target,
         imgAlign,
         blur,
         bright,
@@ -87,9 +88,15 @@ const save = props => {
                         <a
                             className={`premium-ihover__link`}
                             href={linkCheck && linkUrl}
+                            target={target && "_blank"}
                         >
                             <div className={("premium-ihover__item ") + hoverEffect} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
+                                {(hoverEffect === "style20" && (
 
+                                    <div className='premium-ihover-spinner' style='z-index: 1;'></div> ,
+                                    <div class='premium-ihover__spinner'></div>
+                                )
+                                )}
                                 <div className={`premium-ihover__img-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
                                     <div className={`premium-ihover__img-front`}>
                                         <div className={`premium-ihover__img-inner-wrap`}></div>
@@ -204,7 +211,12 @@ const save = props => {
                     {!linkUrl && (
 
                         <div className={("premium-ihover__item ") + hoverEffect} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
+                            {(hoverEffect === "style20" && (
 
+                                <div className='premium-ihover-spinner' style='z-index: 1;'></div> ,
+                                <div class='premium-ihover__spinner'></div>
+                            )
+                            )}
                             <div className={`premium-ihover__img-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
                                 <div className={`premium-ihover__img-front`}>
                                     <div className={`premium-ihover__img-inner-wrap`}></div>
@@ -282,10 +294,6 @@ const save = props => {
                                                     />
                                                 </div>
                                             )}
-
-                                            <div className={`premium-ihover__divider`}>
-                                                <span className={`premium-ihover__divider-line`}></span>
-                                            </div>
 
                                             {descCheck && (
                                                 <div className={`premium-ihover__description`}>

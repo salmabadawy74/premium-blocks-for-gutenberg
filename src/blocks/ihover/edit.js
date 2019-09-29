@@ -30,6 +30,7 @@ const edit = props => {
         hoverEffect,
         linkCheck,
         linkUrl,
+        target,
         imgAlign,
         blur,
         bright,
@@ -291,6 +292,13 @@ const edit = props => {
                                 checked={linkCheck}
                                 onChange={newCheck => setAttributes({ linkCheck: newCheck })}
                             />
+                            {linkCheck && (
+                                <ToggleControl
+                                    label={__("Open link in new tab")}
+                                    checked={target}
+                                    onChange={newValue => setAttributes({ target: newValue })}
+                                />
+                            )}
                         </div>
 
                     </PanelBody>
@@ -354,13 +362,13 @@ const edit = props => {
                                 checked={titleCheck}
                                 onChange={newValue => setAttributes({ titleCheck: newValue })}
                             />
-                            {titleCheck && (
+                            {/* {titleCheck && (
                                 <TextControl
                                     label={__("Title Text")}
                                     value={titleText}
                                     onChange={newText => setAttributes({ titleText: newText })}
                                 />
-                            )}
+                            )} */}
                         </div>
 
                         {/* Description options */}
@@ -370,14 +378,14 @@ const edit = props => {
                                 checked={descCheck}
                                 onChange={newValue => setAttributes({ descCheck: newValue })}
                             />
-                            {descCheck && (
+                            {/* {descCheck && (
                                 <TextareaControl
                                     label={__("Description Text")}
                                     help="Enter your description"
                                     value={descText}
                                     onChange={newText => setAttributes({ descText: newText })}
                                 />
-                            )}
+                            )} */}
                         </div>
                         <div className="premium-control-toggle">
                             <p><strong>{__("Alignment")}</strong></p>
@@ -507,7 +515,7 @@ const edit = props => {
                                     size={titleSize}
                                     line={titlelineHeight}
                                     onChangeSize={newSize => setAttributes({ titleSize: newSize })}
-                                    onChangeLine={newValue => setAttributes({ titlelineHeight: newValue})}
+                                    onChangeLine={newValue => setAttributes({ titlelineHeight: newValue })}
                                 />
                             </div>
                             <div className="premium-control-toggle">
@@ -547,7 +555,7 @@ const edit = props => {
 
                     {descCheck && (
                         <PanelBody
-                            title={__("Descroption Style")}
+                            title={__("Description Style")}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
@@ -650,6 +658,12 @@ const edit = props => {
                 <div className={`premium-ihover__item-wrap`} style={{ borderRadius: (imgBorderRadius || "0") + "%", }}>
                     <div className={("premium-ihover__item ") + hoverEffect} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
 
+                        {(hoverEffect === "style20" && (                            
+                                <div className='premium-ihover-spinner' style='z-index: 1;'></div> ,
+                                <div class='premium-ihover__spinner'></div>
+                            )
+                        )}
+
                         <div className={`premium-ihover__img-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
                             <div className={`premium-ihover__img-front`}>
                                 <div className={`premium-ihover__img-inner-wrap`}></div>
@@ -731,9 +745,9 @@ const edit = props => {
                                             </div>
                                         )}
 
-                                        <div className={`premium-ihover__divider`}>
+                                        {/* <div className={`premium-ihover__divider`}>
                                             <span className={`premium-ihover__divider-line`}></span>
-                                        </div>
+                                        </div> */}
 
                                         {descCheck && (
                                             <div className={`premium-ihover__description`}>
@@ -763,16 +777,19 @@ const edit = props => {
                             </div>
                         </div>
 
+
                     </div>
                 </div>
 
             </div>
 
             {linkCheck && (
-                <URLInput
-                    value={linkUrl}
-                    onChange={newLinkUrl => setAttributes({ linkUrl: newLinkUrl })}
-                />
+                <div style={{textAlign: imgAlign || "center"}}>
+                    <URLInput
+                        value={linkUrl}
+                        onChange={newLinkUrl => setAttributes({ linkUrl: newLinkUrl })}
+                    />
+                </div>
             )}
         </div>
     ];

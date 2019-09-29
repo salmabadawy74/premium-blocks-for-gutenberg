@@ -44486,6 +44486,10 @@ var ihoverAttr = {
     linkUrl: {
         type: "string"
     },
+    target: {
+        type: "boolean",
+        default: false
+    },
     imgAlign: {
         type: "string",
         default: "center"
@@ -44790,6 +44794,7 @@ var edit = function edit(props) {
         hoverEffect = _props$attributes.hoverEffect,
         linkCheck = _props$attributes.linkCheck,
         linkUrl = _props$attributes.linkUrl,
+        target = _props$attributes.target,
         imgAlign = _props$attributes.imgAlign,
         blur = _props$attributes.blur,
         bright = _props$attributes.bright,
@@ -45044,6 +45049,13 @@ var edit = function edit(props) {
                         onChange: function onChange(newCheck) {
                             return setAttributes({ linkCheck: newCheck });
                         }
+                    }),
+                    linkCheck && wp.element.createElement(ToggleControl, {
+                        label: __("Open link in new tab"),
+                        checked: target,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ target: newValue });
+                        }
                     })
                 )
             ),
@@ -45131,13 +45143,6 @@ var edit = function edit(props) {
                         onChange: function onChange(newValue) {
                             return setAttributes({ titleCheck: newValue });
                         }
-                    }),
-                    titleCheck && wp.element.createElement(TextControl, {
-                        label: __("Title Text"),
-                        value: titleText,
-                        onChange: function onChange(newText) {
-                            return setAttributes({ titleText: newText });
-                        }
                     })
                 ),
                 wp.element.createElement(
@@ -45148,14 +45153,6 @@ var edit = function edit(props) {
                         checked: descCheck,
                         onChange: function onChange(newValue) {
                             return setAttributes({ descCheck: newValue });
-                        }
-                    }),
-                    descCheck && wp.element.createElement(TextareaControl, {
-                        label: __("Description Text"),
-                        help: "Enter your description",
-                        value: descText,
-                        onChange: function onChange(newText) {
-                            return setAttributes({ descText: newText });
                         }
                     })
                 ),
@@ -45394,7 +45391,7 @@ var edit = function edit(props) {
             descCheck && wp.element.createElement(
                 PanelBody,
                 {
-                    title: __("Descroption Style"),
+                    title: __("Description Style"),
                     className: "premium-panel-body",
                     initialOpen: false
                 },
@@ -45552,6 +45549,7 @@ var edit = function edit(props) {
                 wp.element.createElement(
                     "div",
                     { className: "premium-ihover__item " + hoverEffect, style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
+                    hoverEffect === "style20" && (wp.element.createElement("div", { className: "premium-ihover-spinner", style: "z-index: 1;" }), wp.element.createElement("div", { "class": "premium-ihover__spinner" })),
                     wp.element.createElement(
                         "div",
                         { className: "premium-ihover__img-wrap", style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
@@ -45638,11 +45636,6 @@ var edit = function edit(props) {
                                             keepPlaceholderOnFocus: true
                                         })
                                     ),
-                                    wp.element.createElement(
-                                        "div",
-                                        { className: "premium-ihover__divider" },
-                                        wp.element.createElement("span", { className: "premium-ihover__divider-line" })
-                                    ),
                                     descCheck && wp.element.createElement(
                                         "div",
                                         { className: "premium-ihover__description" },
@@ -45674,12 +45667,16 @@ var edit = function edit(props) {
                 )
             )
         ),
-        linkCheck && wp.element.createElement(URLInput, {
-            value: linkUrl,
-            onChange: function onChange(newLinkUrl) {
-                return setAttributes({ linkUrl: newLinkUrl });
-            }
-        })
+        linkCheck && wp.element.createElement(
+            "div",
+            { style: { textAlign: imgAlign || "center" } },
+            wp.element.createElement(URLInput, {
+                value: linkUrl,
+                onChange: function onChange(newLinkUrl) {
+                    return setAttributes({ linkUrl: newLinkUrl });
+                }
+            })
+        )
     )];
 };
 
@@ -45710,6 +45707,7 @@ var save = function save(props) {
         hoverEffect = _props$attributes.hoverEffect,
         linkCheck = _props$attributes.linkCheck,
         linkUrl = _props$attributes.linkUrl,
+        target = _props$attributes.target,
         imgAlign = _props$attributes.imgAlign,
         blur = _props$attributes.blur,
         bright = _props$attributes.bright,
@@ -45785,11 +45783,13 @@ var save = function save(props) {
                     "a",
                     {
                         className: "premium-ihover__link",
-                        href: linkCheck && linkUrl
+                        href: linkCheck && linkUrl,
+                        target: target && "_blank"
                     },
                     wp.element.createElement(
                         "div",
                         { className: "premium-ihover__item " + hoverEffect, style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
+                        hoverEffect === "style20" && (wp.element.createElement("div", { className: "premium-ihover-spinner", style: "z-index: 1;" }), wp.element.createElement("div", { "class": "premium-ihover__spinner" })),
                         wp.element.createElement(
                             "div",
                             { className: "premium-ihover__img-wrap", style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
@@ -45905,6 +45905,7 @@ var save = function save(props) {
                 !linkUrl && wp.element.createElement(
                     "div",
                     { className: "premium-ihover__item " + hoverEffect, style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
+                    hoverEffect === "style20" && (wp.element.createElement("div", { className: "premium-ihover-spinner", style: "z-index: 1;" }), wp.element.createElement("div", { "class": "premium-ihover__spinner" })),
                     wp.element.createElement(
                         "div",
                         { className: "premium-ihover__img-wrap", style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
@@ -45985,11 +45986,6 @@ var save = function save(props) {
                                             },
                                             keepPlaceholderOnFocus: true
                                         })
-                                    ),
-                                    wp.element.createElement(
-                                        "div",
-                                        { className: "premium-ihover__divider" },
-                                        wp.element.createElement("span", { className: "premium-ihover__divider-line" })
                                     ),
                                     descCheck && wp.element.createElement(
                                         "div",

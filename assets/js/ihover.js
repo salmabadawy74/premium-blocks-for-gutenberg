@@ -3,13 +3,14 @@ jQuery(document).ready(function ($) {
 
         var spinnerElement = $(".style20");
 
-        $(".style20").prepend("<div class='premium-ihover__spinner'></div>");
+        // $(".style20").prepend("<div class='premium-ihover__spinner'></div>");
+        // $(".style20").prepend("<div class='premium-ihover-spinner' style='z-index: 1;'></div>");
 
         spinnerElement.on("click", function () {
-            $(".style20 .premium-ihover__spinner").css("z-index", "0");
+            $(".block-editor-page .style20 .premium-ihover__spinner").css("z-index", "0");
         });
         spinnerElement.on("mouseleave", function () {
-            $(".style20 .premium-ihover__spinner").css("z-index", "1");
+            $(".block-editor-page .style20 .premium-ihover__spinner").css("z-index", "1");
         });
 
     }, 2000);
