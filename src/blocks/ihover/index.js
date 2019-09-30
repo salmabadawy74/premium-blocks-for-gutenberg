@@ -30,6 +30,18 @@ const ihoverAttr = {
         type: "string",
         default: __("style18")
     },
+    spinnerBorderW:{
+        type: "number",
+        default: "1"
+    },
+    spinnerFirstColor:{
+        type: "string",
+        default: "#6ec1e4"
+    },
+    spinnerSecondColor:{
+        type: "string",
+        default: "#54595f"
+    },
     linkCheck:{
         type: "boolean",
         default: false
@@ -240,6 +252,10 @@ const ihoverAttr = {
         type: "number",
         default: "20"
     },
+    containerBgColor:{
+        type: "string",
+        default:"#eee"
+    },
     containerShadowColor: {
         type: "string"
     },
@@ -259,6 +275,22 @@ const ihoverAttr = {
         type: "string",
         default: ""
     },
+    containerPadTop:{
+        type: "number",
+        default: "0"
+    },
+    containerPadRight:{
+        type: "number",
+        default: "0"
+    },
+    containerPadBottom:{
+        type: "number",
+        default: "0"
+    },
+    containerPadLeft:{
+        type: "number",
+        default: "0"
+    }
 
 };
 

@@ -44479,6 +44479,18 @@ var ihoverAttr = {
         type: "string",
         default: __("style18")
     },
+    spinnerBorderW: {
+        type: "number",
+        default: "1"
+    },
+    spinnerFirstColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    spinnerSecondColor: {
+        type: "string",
+        default: "#54595f"
+    },
     linkCheck: {
         type: "boolean",
         default: false
@@ -44689,6 +44701,10 @@ var ihoverAttr = {
         type: "number",
         default: "20"
     },
+    containerBgColor: {
+        type: "string",
+        default: "#eee"
+    },
     containerShadowColor: {
         type: "string"
     },
@@ -44707,6 +44723,22 @@ var ihoverAttr = {
     containerShadowPosition: {
         type: "string",
         default: ""
+    },
+    containerPadTop: {
+        type: "number",
+        default: "0"
+    },
+    containerPadRight: {
+        type: "number",
+        default: "0"
+    },
+    containerPadBottom: {
+        type: "number",
+        default: "0"
+    },
+    containerPadLeft: {
+        type: "number",
+        default: "0"
     }
 
 };
@@ -44792,6 +44824,9 @@ var edit = function edit(props) {
         imgSize = _props$attributes.imgSize,
         imgBorderRadius = _props$attributes.imgBorderRadius,
         hoverEffect = _props$attributes.hoverEffect,
+        spinnerBorderW = _props$attributes.spinnerBorderW,
+        spinnerFirstColor = _props$attributes.spinnerFirstColor,
+        spinnerSecondColor = _props$attributes.spinnerSecondColor,
         linkCheck = _props$attributes.linkCheck,
         linkUrl = _props$attributes.linkUrl,
         target = _props$attributes.target,
@@ -44848,11 +44883,16 @@ var edit = function edit(props) {
         contentAlign = _props$attributes.contentAlign,
         overlayColor = _props$attributes.overlayColor,
         overlayOpacity = _props$attributes.overlayOpacity,
+        containerBgColor = _props$attributes.containerBgColor,
         containerShadowColor = _props$attributes.containerShadowColor,
         containerShadowBlur = _props$attributes.containerShadowBlur,
         containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
         containerShadowVertical = _props$attributes.containerShadowVertical,
-        containerShadowPosition = _props$attributes.containerShadowPosition;
+        containerShadowPosition = _props$attributes.containerShadowPosition,
+        containerPadTop = _props$attributes.containerPadTop,
+        containerPadRight = _props$attributes.containerPadRight,
+        containerPadBottom = _props$attributes.containerPadBottom,
+        containerPadLeft = _props$attributes.containerPadLeft;
 
 
     var Hover_Effects = [{
@@ -45038,6 +45078,52 @@ var edit = function edit(props) {
                         onChange: function onChange(newEffect) {
                             return setAttributes({ hoverEffect: newEffect });
                         }
+                    })
+                ),
+                hoverEffect === "style20" && wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(RangeControl, {
+                        label: __("Spinner Border Width"),
+                        value: spinnerBorderW,
+                        onChange: function onChange(newWidth) {
+                            return setAttributes({ spinnerBorderW: newWidth || "0" });
+                        },
+                        initialPosition: 10,
+                        allowReset: true,
+                        min: 0
+                    })
+                ),
+                hoverEffect === "style20" && wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("First Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: spinnerFirstColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ spinnerFirstColor: newColor || "#6ec1e4" });
+                        },
+                        allowReset: true
+                    })
+                ),
+                hoverEffect === "style20" && wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("Second Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: spinnerSecondColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ spinnerSecondColor: newColor || "#54595f" });
+                        },
+                        allowReset: true
                     })
                 ),
                 wp.element.createElement(
@@ -45496,7 +45582,8 @@ var edit = function edit(props) {
                         onChange: function onChange(newValue) {
                             return setAttributes({ overlayColor: newValue === undefined ? "transparent" : newValue });
                         },
-                        allowReset: true
+                        allowReset: true,
+                        disableAlpha: false
                     }),
                     wp.element.createElement(RangeControl, {
                         label: __("Overlay Opacity"),
@@ -45506,6 +45593,22 @@ var edit = function edit(props) {
                         onChange: function onChange(newOpacity) {
                             return setAttributes({ overlayOpacity: newOpacity === undefined ? "80" : newOpacity });
                         }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("Background Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: containerBgColor,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ containerBgColor: newValue === undefined ? "transparent" : newValue });
+                        },
+                        allowReset: true
                     })
                 ),
                 wp.element.createElement(
@@ -45534,6 +45637,37 @@ var edit = function edit(props) {
                             return setAttributes({ containerShadowPosition: newValue });
                         }
                     })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__components_premium_padding__["a" /* default */], {
+                        paddingTop: containerPadTop,
+                        paddingRight: containerPadRight,
+                        paddingBottom: containerPadBottom,
+                        paddingLeft: containerPadLeft,
+                        onChangePadTop: function onChangePadTop(newValue) {
+                            return setAttributes({
+                                containerPadTop: newValue || "0"
+                            });
+                        },
+                        onChangePadRight: function onChangePadRight(newValue) {
+                            return setAttributes({
+                                containerPadRight: newValue || "0"
+                            });
+                        },
+                        onChangePadBottom: function onChangePadBottom(newValue) {
+                            return setAttributes({
+                                containerPadBottom: newValue || "0"
+                            });
+                        },
+                        onChangePadLeft: function onChangePadLeft(newValue) {
+                            return setAttributes({
+                                containerPadLeft: newValue || "0"
+                            });
+                        },
+                        showUnits: false
+                    })
                 )
             )
         )
@@ -45545,11 +45679,29 @@ var edit = function edit(props) {
             { className: "premium-ihover__list", style: { textAlign: imgAlign || "center" } },
             wp.element.createElement(
                 "div",
-                { className: "premium-ihover__item-wrap", style: { borderRadius: (imgBorderRadius || "0") + "%" } },
+                { className: "premium-ihover__item-wrap",
+                    style: {
+                        borderRadius: (imgBorderRadius || "0") + "%",
+                        backgroundColor: containerBgColor || "transparent",
+                        paddingTop: (containerPadTop || "0") + "px",
+                        paddingRight: (containerPadRight || "0") + "px",
+                        paddingBottom: (containerPadBottom || "0") + "px",
+                        paddingLeft: (containerPadLeft || "0") + "px"
+                    }
+                },
                 wp.element.createElement(
                     "div",
                     { className: "premium-ihover__item " + hoverEffect, style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
-                    hoverEffect === "style20" && (wp.element.createElement("div", { className: "premium-ihover-spinner", style: "z-index: 1;" }), wp.element.createElement("div", { "class": "premium-ihover__spinner" })),
+                    hoverEffect === "style20" && (wp.element.createElement("div", { className: "premium-ihover-spinner", style: "z-index: 1;" }), wp.element.createElement("div", { "class": "premium-ihover__spinner",
+                        style: {
+                            borderWidth: spinnerBorderW || "0" + "px",
+                            borderRadius: (imgBorderRadius || "0") + "%",
+                            borderTopColor: spinnerFirstColor || "#6ec1e4",
+                            borderLeftColor: spinnerFirstColor || "#6ec1e4",
+                            borderBottomColor: spinnerSecondColor || "#54595f",
+                            borderRightColor: spinnerSecondColor || "#54595f"
+                        }
+                    })),
                     wp.element.createElement(
                         "div",
                         { className: "premium-ihover__img-wrap", style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
@@ -45574,7 +45726,10 @@ var edit = function edit(props) {
                             { className: "premium-ihover__info-back",
                                 style: {
                                     borderRadius: (imgBorderRadius || "0") + "%",
-                                    backgroundColor: overlayColor || "transparent", opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
+                                    backgroundColor: overlayColor || "transparent",
+                                    opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
+                                    // (overlayColor  + 1 - overlayOpacity / 100),
+                                    //  `${overlayColor || "transparent"} ${overlayColor ? 1 - overlayOpacity / 100 : 1}`,
                                     boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
                                 }
                             },
@@ -45705,6 +45860,9 @@ var save = function save(props) {
         imgSize = _props$attributes.imgSize,
         imgBorderRadius = _props$attributes.imgBorderRadius,
         hoverEffect = _props$attributes.hoverEffect,
+        spinnerBorderW = _props$attributes.spinnerBorderW,
+        spinnerFirstColor = _props$attributes.spinnerFirstColor,
+        spinnerSecondColor = _props$attributes.spinnerSecondColor,
         linkCheck = _props$attributes.linkCheck,
         linkUrl = _props$attributes.linkUrl,
         target = _props$attributes.target,
@@ -45761,11 +45919,16 @@ var save = function save(props) {
         contentAlign = _props$attributes.contentAlign,
         overlayColor = _props$attributes.overlayColor,
         overlayOpacity = _props$attributes.overlayOpacity,
+        containerBgColor = _props$attributes.containerBgColor,
         containerShadowColor = _props$attributes.containerShadowColor,
         containerShadowBlur = _props$attributes.containerShadowBlur,
         containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
         containerShadowVertical = _props$attributes.containerShadowVertical,
-        containerShadowPosition = _props$attributes.containerShadowPosition;
+        containerShadowPosition = _props$attributes.containerShadowPosition,
+        containerPadTop = _props$attributes.containerPadTop,
+        containerPadRight = _props$attributes.containerPadRight,
+        containerPadBottom = _props$attributes.containerPadBottom,
+        containerPadLeft = _props$attributes.containerPadLeft;
 
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-ihover");
@@ -45778,7 +45941,16 @@ var save = function save(props) {
             { className: "premium-ihover__list", style: { textAlign: imgAlign || "center" } },
             wp.element.createElement(
                 "div",
-                { className: "premium-ihover__item-wrap", style: { borderRadius: (imgBorderRadius || "50") + "%" } },
+                { className: "premium-ihover__item-wrap",
+                    style: {
+                        borderRadius: (imgBorderRadius || "0") + "%",
+                        backgroundColor: containerBgColor || "transparent",
+                        paddingTop: (containerPadTop || "0") + "px",
+                        paddingRight: (containerPadRight || "0") + "px",
+                        paddingBottom: (containerPadBottom || "0") + "px",
+                        paddingLeft: (containerPadLeft || "0") + "px"
+                    }
+                },
                 linkCheck && linkUrl && wp.element.createElement(
                     "a",
                     {
@@ -45789,7 +45961,16 @@ var save = function save(props) {
                     wp.element.createElement(
                         "div",
                         { className: "premium-ihover__item " + hoverEffect, style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
-                        hoverEffect === "style20" && (wp.element.createElement("div", { className: "premium-ihover-spinner", style: "z-index: 1;" }), wp.element.createElement("div", { "class": "premium-ihover__spinner" })),
+                        hoverEffect === "style20" && (wp.element.createElement("div", { className: "premium-ihover-spinner", style: "z-index: 1;" }), wp.element.createElement("div", { "class": "premium-ihover__spinner",
+                            style: {
+                                borderWidth: spinnerBorderW || "0" + "px",
+                                borderRadius: (imgBorderRadius || "0") + "%",
+                                borderTopColor: spinnerFirstColor || "#6ec1e4",
+                                borderLeftColor: spinnerFirstColor || "#6ec1e4",
+                                borderBottomColor: spinnerSecondColor || "#54595f",
+                                borderRightColor: spinnerSecondColor || "#54595f"
+                            }
+                        })),
                         wp.element.createElement(
                             "div",
                             { className: "premium-ihover__img-wrap", style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
@@ -45868,8 +46049,7 @@ var save = function save(props) {
                                                     marginBottom: titleMarBottom + (titleMarUnit || "px"),
                                                     marginLeft: titleMarLeft + (titleMarUnit || "px"),
                                                     marginRight: titleMarRight + (titleMarUnit || "px")
-                                                },
-                                                keepPlaceholderOnFocus: true
+                                                }
                                             })
                                         ),
                                         wp.element.createElement(
@@ -45892,8 +46072,7 @@ var save = function save(props) {
                                                     marginBottom: descMarBottom + (descMarUnit || "px"),
                                                     marginLeft: descMarLeft + (descMarUnit || "px"),
                                                     marginRight: descMarRight + (descMarUnit || "px")
-                                                },
-                                                keepPlaceholderOnFocus: true
+                                                }
                                             })
                                         )
                                     )
@@ -45905,7 +46084,16 @@ var save = function save(props) {
                 !linkUrl && wp.element.createElement(
                     "div",
                     { className: "premium-ihover__item " + hoverEffect, style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
-                    hoverEffect === "style20" && (wp.element.createElement("div", { className: "premium-ihover-spinner", style: "z-index: 1;" }), wp.element.createElement("div", { "class": "premium-ihover__spinner" })),
+                    hoverEffect === "style20" && (wp.element.createElement("div", { className: "premium-ihover-spinner", style: "z-index: 1;" }), wp.element.createElement("div", { "class": "premium-ihover__spinner",
+                        style: {
+                            borderWidth: spinnerBorderW || "0" + "px",
+                            borderRadius: (imgBorderRadius || "0") + "%",
+                            borderTopColor: spinnerFirstColor || "#6ec1e4",
+                            borderLeftColor: spinnerFirstColor || "#6ec1e4",
+                            borderBottomColor: spinnerSecondColor || "#54595f",
+                            borderRightColor: spinnerSecondColor || "#54595f"
+                        }
+                    })),
                     wp.element.createElement(
                         "div",
                         { className: "premium-ihover__img-wrap", style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
@@ -45983,8 +46171,7 @@ var save = function save(props) {
                                                 marginBottom: titleMarBottom + (titleMarUnit || "px"),
                                                 marginLeft: titleMarLeft + (titleMarUnit || "px"),
                                                 marginRight: titleMarRight + (titleMarUnit || "px")
-                                            },
-                                            keepPlaceholderOnFocus: true
+                                            }
                                         })
                                     ),
                                     descCheck && wp.element.createElement(
@@ -46002,8 +46189,123 @@ var save = function save(props) {
                                                 marginBottom: descMarBottom + (descMarUnit || "px"),
                                                 marginLeft: descMarLeft + (descMarUnit || "px"),
                                                 marginRight: descMarRight + (descMarUnit || "px")
-                                            },
-                                            keepPlaceholderOnFocus: true
+                                            }
+                                        })
+                                    )
+                                )
+                            )
+                        )
+                    )
+                ),
+                !linkCheck && linkUrl && wp.element.createElement(
+                    "div",
+                    { className: "premium-ihover__item " + hoverEffect, style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
+                    hoverEffect === "style20" && (wp.element.createElement("div", { className: "premium-ihover-spinner", style: "z-index: 1;" }), wp.element.createElement("div", { "class": "premium-ihover__spinner",
+                        style: {
+                            borderWidth: spinnerBorderW || "0" + "px",
+                            borderRadius: (imgBorderRadius || "0") + "%",
+                            borderTopColor: spinnerFirstColor || "#6ec1e4",
+                            borderLeftColor: spinnerFirstColor || "#6ec1e4",
+                            borderBottomColor: spinnerSecondColor || "#54595f",
+                            borderRightColor: spinnerSecondColor || "#54595f"
+                        }
+                    })),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-ihover__img-wrap", style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-ihover__img-front" },
+                            wp.element.createElement("div", { className: "premium-ihover__img-inner-wrap" }),
+                            imgUrl && wp.element.createElement("img", { className: "premium-ihover__img", src: imgUrl,
+                                style: {
+                                    width: (imgSize || "300") + "px", height: (imgSize || "300") + "px", borderRadius: (imgBorderRadius || "50") + "%",
+                                    filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+                                }
+                            }),
+                            !imgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_default_image__["a" /* default */], null)
+                        )
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-ihover__info-wrap", style: { width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" } },
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-ihover__info-back",
+                                style: {
+                                    borderRadius: (imgBorderRadius || "50") + "%",
+                                    backgroundColor: overlayColor || "transparent", opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
+                                    boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
+                                }
+                            },
+                            wp.element.createElement(
+                                "div",
+                                { className: "premium-ihover__content" },
+                                wp.element.createElement(
+                                    "div",
+                                    { className: "premium-ihover__content-wrap", style: { textAlign: contentAlign || "center" } },
+                                    iconCheck && wp.element.createElement(
+                                        "div",
+                                        { className: "premium-ihover__icon-wrap" },
+                                        iconType === "fa" && 1 != __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && wp.element.createElement(
+                                            "p",
+                                            { className: "premium-ihover__icon_alert" },
+                                            __("Please Enable Font Awesome Icons from Plugin settings")
+                                        ),
+                                        (iconType === "dash" || 1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */]) && wp.element.createElement("i", {
+                                            className: "premium-ihover__icon  " + iconSelected,
+                                            style: {
+                                                width: "auto",
+                                                height: "100%",
+                                                fontSize: (iconSize || 50) + (iconUnit || "px"),
+                                                color: iconColor || "#fff",
+                                                backgroundColor: iconBackground || "transparent",
+                                                border: iconBorderType,
+                                                borderWidth: iconBorderWidth + "px",
+                                                borderRadius: iconBorderRadius + "px",
+                                                borderColor: iconBorderColor || "transparent",
+                                                paddingTop: (iconPadTop || "0") + (padUnit || "px"),
+                                                paddingRight: (iconPadRight || "0") + (padUnit || "px"),
+                                                paddingBottom: (iconPadBottom || "0") + (padUnit || "px"),
+                                                paddingLeft: (iconPadLeft || "0") + (padUnit || "px")
+                                            }
+                                        })
+                                    ),
+                                    titleCheck && wp.element.createElement(
+                                        "div",
+                                        { className: "premium-ihover__title-wrap" },
+                                        wp.element.createElement(RichText.Content, {
+                                            tagName: "h4",
+                                            className: "premium-ihover__title",
+                                            value: titleText,
+                                            style: {
+                                                color: titleColor || "#fff",
+                                                fontSize: titleSize + "px",
+                                                lineHeight: titlelineHeight + "px",
+                                                textShadow: titleShadHorizontal + "px " + titleShadVertical + "px " + titleShadBlur + "px " + titleShadColor,
+                                                marginTop: titleMarTop + (titleMarUnit || "px"),
+                                                marginBottom: titleMarBottom + (titleMarUnit || "px"),
+                                                marginLeft: titleMarLeft + (titleMarUnit || "px"),
+                                                marginRight: titleMarRight + (titleMarUnit || "px")
+                                            }
+                                        })
+                                    ),
+                                    descCheck && wp.element.createElement(
+                                        "div",
+                                        { className: "premium-ihover__description" },
+                                        wp.element.createElement(RichText.Content, {
+                                            tagName: "p",
+                                            value: descText,
+                                            style: {
+                                                color: descColor || "#fff",
+                                                fontSize: (descSize || "16") + "px",
+                                                lineHeight: desclineHeight + "px",
+                                                textShadow: descShadHorizontal + "px " + descShadVertical + "px " + descShadBlur + "px " + descShadColor,
+                                                marginTop: descMarTop + (descMarUnit || "px"),
+                                                marginBottom: descMarBottom + (descMarUnit || "px"),
+                                                marginLeft: descMarLeft + (descMarUnit || "px"),
+                                                marginRight: descMarRight + (descMarUnit || "px")
+                                            }
                                         })
                                     )
                                 )

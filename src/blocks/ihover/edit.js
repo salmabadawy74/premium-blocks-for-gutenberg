@@ -28,6 +28,9 @@ const edit = props => {
         imgSize,
         imgBorderRadius,
         hoverEffect,
+        spinnerBorderW,
+        spinnerFirstColor,
+        spinnerSecondColor,
         linkCheck,
         linkUrl,
         target,
@@ -84,11 +87,16 @@ const edit = props => {
         contentAlign,
         overlayColor,
         overlayOpacity,
+        containerBgColor,
         containerShadowColor,
         containerShadowBlur,
         containerShadowHorizontal,
         containerShadowVertical,
         containerShadowPosition,
+        containerPadTop,
+        containerPadRight,
+        containerPadBottom,
+        containerPadLeft
 
     } = props.attributes;
 
@@ -286,6 +294,40 @@ const edit = props => {
                                 onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                             />
                         </div>
+
+                        {hoverEffect === "style20" && (
+                            <div className="premium-control-toggle">
+                                <RangeControl
+                                    label={__("Spinner Border Width")}
+                                    value={spinnerBorderW}
+                                    onChange={newWidth => setAttributes({ spinnerBorderW: newWidth || "0" })}
+                                    initialPosition={10}
+                                    allowReset={true}
+                                    min={0}
+                                />
+                            </div>
+                        )}
+                        {hoverEffect === "style20" && (
+                            <div className="premium-control-toggle">
+                                <p>{__("First Color")}</p>
+                                <ColorPalette
+                                    value={spinnerFirstColor}
+                                    onChange={newColor => setAttributes({ spinnerFirstColor: newColor || "#6ec1e4" })}
+                                    allowReset={true}
+                                />
+                            </div>
+                        )}
+                        {hoverEffect === "style20" && (
+                            <div className="premium-control-toggle">
+                                <p>{__("Second Color")}</p>
+                                <ColorPalette
+                                    value={spinnerSecondColor}
+                                    onChange={newColor => setAttributes({ spinnerSecondColor: newColor || "#54595f" })}
+                                    allowReset={true}
+                                />
+                            </div>
+                        )}
+
                         <div className="premium-control-toggle">
                             <ToggleControl
                                 label={__("Link")}
@@ -622,6 +664,7 @@ const edit = props => {
                                 value={overlayColor}
                                 onChange={newValue => setAttributes({ overlayColor: newValue === undefined ? "transparent" : newValue })}
                                 allowReset={true}
+                                disableAlpha={false}
                             />
                             <RangeControl
                                 label={__("Overlay Opacity")}
@@ -629,6 +672,14 @@ const edit = props => {
                                 min="1"
                                 max="100"
                                 onChange={newOpacity => setAttributes({ overlayOpacity: newOpacity === undefined ? "80" : newOpacity })}
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <p>{__("Background Color")}</p>
+                            <ColorPalette
+                                value={containerBgColor}
+                                onChange={newValue => setAttributes({ containerBgColor: newValue === undefined ? "transparent" : newValue })}
+                                allowReset={true}
                             />
                         </div>
                         <div className="premium-control-toggle">
@@ -646,6 +697,35 @@ const edit = props => {
                                 onChangePosition={newValue => setAttributes({ containerShadowPosition: newValue })}
                             />
                         </div>
+                        <div className="premium-control-toggle">
+                            <PremiumPadding
+                                paddingTop={containerPadTop}
+                                paddingRight={containerPadRight}
+                                paddingBottom={containerPadBottom}
+                                paddingLeft={containerPadLeft}
+                                onChangePadTop={newValue =>
+                                    setAttributes({
+                                        containerPadTop: newValue || "0"
+                                    })
+                                }
+                                onChangePadRight={newValue =>
+                                    setAttributes({
+                                        containerPadRight: newValue || "0"
+                                    })
+                                }
+                                onChangePadBottom={newValue =>
+                                    setAttributes({
+                                        containerPadBottom: newValue || "0"
+                                    })
+                                }
+                                onChangePadLeft={newValue =>
+                                    setAttributes({
+                                        containerPadLeft: newValue || "0"
+                                    })
+                                }
+                                showUnits={false}
+                            />
+                        </div>
 
                     </PanelBody>
 
@@ -655,13 +735,33 @@ const edit = props => {
         <div className={`${mainClasses}__container`}>
             <div className={`premium-ihover__list`} style={{ textAlign: imgAlign || "center" }}>
 
-                <div className={`premium-ihover__item-wrap`} style={{ borderRadius: (imgBorderRadius || "0") + "%", }}>
+                <div className={`premium-ihover__item-wrap`}
+                    style={{
+                        borderRadius: (imgBorderRadius || "0") + "%",
+                        backgroundColor: containerBgColor || "transparent",
+                        paddingTop: (containerPadTop || "0") + "px", 
+                        paddingRight: (containerPadRight || "0") + "px",
+                        paddingBottom: (containerPadBottom || "0") + "px",
+                        paddingLeft: (containerPadLeft || "0") + "px"
+                    }}
+                >
                     <div className={("premium-ihover__item ") + hoverEffect} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
 
-                        {(hoverEffect === "style20" && (                            
-                                <div className='premium-ihover-spinner' style='z-index: 1;'></div> ,
-                                <div class='premium-ihover__spinner'></div>
-                            )
+                        {(hoverEffect === "style20" && (
+                            <div className='premium-ihover-spinner' style='z-index: 1;'></div> ,
+                            <div class='premium-ihover__spinner'
+                                style={{
+                                    borderWidth: (spinnerBorderW || "0" + "px"),
+                                    borderRadius: (imgBorderRadius || "0") + "%",
+                                    borderTopColor: (spinnerFirstColor || "#6ec1e4"),
+                                    borderLeftColor: (spinnerFirstColor || "#6ec1e4"),
+                                    borderBottomColor: (spinnerSecondColor || "#54595f"),
+                                    borderRightColor: (spinnerSecondColor || "#54595f")
+                                }}
+                            >
+
+                            </div>
+                        )
                         )}
 
                         <div className={`premium-ihover__img-wrap`} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
@@ -682,7 +782,10 @@ const edit = props => {
                             <div className={`premium-ihover__info-back`}
                                 style={{
                                     borderRadius: (imgBorderRadius || "0") + "%",
-                                    backgroundColor: overlayColor || "transparent", opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
+                                    backgroundColor: overlayColor || "transparent",
+                                    opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
+                                    // (overlayColor  + 1 - overlayOpacity / 100),
+                                    //  `${overlayColor || "transparent"} ${overlayColor ? 1 - overlayOpacity / 100 : 1}`,
                                     boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
                                 }}
                             >
@@ -784,7 +887,7 @@ const edit = props => {
             </div>
 
             {linkCheck && (
-                <div style={{textAlign: imgAlign || "center"}}>
+                <div style={{ textAlign: imgAlign || "center" }}>
                     <URLInput
                         value={linkUrl}
                         onChange={newLinkUrl => setAttributes({ linkUrl: newLinkUrl })}
