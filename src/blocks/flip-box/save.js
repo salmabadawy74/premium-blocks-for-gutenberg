@@ -23,6 +23,10 @@ const save = props => {
         frontIconSize,
         frontIconColor,
         frontIconBackground,
+        froIconBorderType,
+        froIconBorderWidth,
+        froIconBorderRadius,
+        froIconBorderColor,
         frontIconPaddingTop,
         frontIconPaddingRight,
         frontIconPaddingBottom,
@@ -72,6 +76,10 @@ const save = props => {
         backIconSize,
         backIconColor,
         backIconBackground,
+        backIconBorderType,
+        backIconBorderWidth,
+        backIconBorderRadius,
+        backIconBorderColor,
         backIconPaddingTop,
         backIconPaddingRight,
         backIconPaddingBottom,
@@ -155,6 +163,10 @@ const save = props => {
                                                         color: frontIconColor || "#000",
                                                         backgroundColor: frontIconBackground || "transparent",
                                                         fontSize: (frontIconSize || 50) + frontIconUnit,
+                                                        border: froIconBorderType || "none",
+                                                        borderWidth: (froIconBorderWidth || "0") + "px",
+                                                        borderRadius: (froIconBorderRadius || "0") + "px",
+                                                        borderColor: froIconBorderColor || "transparent",
                                                         paddingTop: (frontIconPaddingTop || "0") + (froPadUnit || "px"),
                                                         paddingRight: (frontIconPaddingRight || "0") + (froPadUnit || "px"),
                                                         paddingBottom: (frontIconPaddingBottom || "0") + (froPadUnit || "px"),
@@ -185,7 +197,6 @@ const save = props => {
                                                 marginLeft: frontTitleMarginLeft + "px",
                                                 marginRight: frontTitleMarginRight + "px",
                                             }}
-                                            keepPlaceholderOnFocus
                                         />
                                     )}
                                     {frontDescCheck && (
@@ -207,7 +218,6 @@ const save = props => {
                                                 marginLeft: frontDescMarginLeft + "px",
                                                 marginRight: frontDescMarginRight + "px",
                                             }}
-                                            keepPlaceholderOnFocus
                                         />
                                     )}
 
@@ -248,6 +258,10 @@ const save = props => {
                                                         color: backIconColor || "#000",
                                                         backgroundColor: backIconBackground || "transparent",
                                                         fontSize: (backIconSize || 50) + backIconUnit,
+                                                        border: backIconBorderType || "none",
+                                                        borderWidth: (backIconBorderWidth || "0") + "px",
+                                                        borderRadius: (backIconBorderRadius || "0") + "px",
+                                                        borderColor: backIconBorderColor || "transparent",
                                                         paddingTop: (backIconPaddingTop || "0") + (backPadUnit || "px"),
                                                         paddingRight: (backIconPaddingRight || "0") + (backPadUnit || "px"),
                                                         paddingBottom: (backIconPaddingBottom || "0") + (backPadUnit || "px"),
@@ -277,7 +291,6 @@ const save = props => {
                                                 marginLeft: backTitleMarginLeft + "px",
                                                 marginRight: backTitleMarginRight + "px",
                                             }}
-                                            keepPlaceholderOnFocus
                                         />
                                     )}
                                     {backDescCheck && (
@@ -299,7 +312,6 @@ const save = props => {
                                                 marginLeft: backDescMarginLeft + "px",
                                                 marginRight: backDescMarginRight + "px",
                                             }}
-                                            keepPlaceholderOnFocus
                                         />
                                     )}
 

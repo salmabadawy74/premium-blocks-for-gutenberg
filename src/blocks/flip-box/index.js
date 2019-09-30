@@ -78,6 +78,22 @@ const flipBoxAttrs = {
         type: "string",
         default:"transparent"
     },
+    froIconBorderType: {
+        type: "string",
+        default: "none"
+    },
+    froIconBorderWidth: {
+        type: "number",
+        default: "0"
+    },
+    froIconBorderRadius: {
+        type: "number",
+        default: 0
+    },
+    froIconBorderColor: {
+        type: "string",
+        default: "transparent"
+    }, 
     frontIconPaddingTop: {
         type: "number",
         default: "0"
@@ -212,10 +228,6 @@ const flipBoxAttrs = {
     frontDescMarginLeft: {
         type: "number"
     },
-    pxUnit: {
-        type: "string",
-        default: "px"
-    },
     froMarUnit:{
         type:"string",
         default:"px"
@@ -254,6 +266,22 @@ const flipBoxAttrs = {
     backIconBackground: {
         type: "string",
         default:"transparent"
+    },
+    backIconBorderType: {
+        type: "string",
+        default: "none"
+    },
+    backIconBorderWidth: {
+        type: "number",
+        default: "0"
+    },
+    backIconBorderRadius: {
+        type: "number",
+        default: 0
+    },
+    backIconBorderColor: {
+        type: "string",
+        default: "transparent"
     },
     backIconPaddingTop: {
         type: "number",
@@ -404,10 +432,6 @@ const flipBoxAttrs = {
     alignBackVertical: {
         type: "string",
         default: "center"
-    },
-    primary:{
-        type:"boolean",
-        default: true
     },
     activeSide:{
         type: "string" 

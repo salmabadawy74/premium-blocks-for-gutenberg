@@ -41099,6 +41099,22 @@ var flipBoxAttrs = {
         type: "string",
         default: "transparent"
     },
+    froIconBorderType: {
+        type: "string",
+        default: "none"
+    },
+    froIconBorderWidth: {
+        type: "number",
+        default: "0"
+    },
+    froIconBorderRadius: {
+        type: "number",
+        default: 0
+    },
+    froIconBorderColor: {
+        type: "string",
+        default: "transparent"
+    },
     frontIconPaddingTop: {
         type: "number",
         default: "0"
@@ -41233,10 +41249,6 @@ var flipBoxAttrs = {
     frontDescMarginLeft: {
         type: "number"
     },
-    pxUnit: {
-        type: "string",
-        default: "px"
-    },
     froMarUnit: {
         type: "string",
         default: "px"
@@ -41273,6 +41285,22 @@ var flipBoxAttrs = {
         default: "#000"
     },
     backIconBackground: {
+        type: "string",
+        default: "transparent"
+    },
+    backIconBorderType: {
+        type: "string",
+        default: "none"
+    },
+    backIconBorderWidth: {
+        type: "number",
+        default: "0"
+    },
+    backIconBorderRadius: {
+        type: "number",
+        default: 0
+    },
+    backIconBorderColor: {
         type: "string",
         default: "transparent"
     },
@@ -41426,10 +41454,6 @@ var flipBoxAttrs = {
         type: "string",
         default: "center"
     },
-    primary: {
-        type: "boolean",
-        default: true
-    },
     activeSide: {
         type: "string"
     }
@@ -41460,11 +41484,13 @@ registerBlockType("pemium/flip-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_padding__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_margin__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__assets_js_settings__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_icons_list__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__assets_js_settings__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__fonticonpicker_react_fonticonpicker__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__fonticonpicker_react_fonticonpicker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_icons_list__ = __webpack_require__(21);
+
 
 
 
@@ -41516,6 +41542,10 @@ var edit = function edit(props) {
         frontIconSize = _props$attributes.frontIconSize,
         frontIconColor = _props$attributes.frontIconColor,
         frontIconBackground = _props$attributes.frontIconBackground,
+        froIconBorderType = _props$attributes.froIconBorderType,
+        froIconBorderWidth = _props$attributes.froIconBorderWidth,
+        froIconBorderRadius = _props$attributes.froIconBorderRadius,
+        froIconBorderColor = _props$attributes.froIconBorderColor,
         frontIconPaddingTop = _props$attributes.frontIconPaddingTop,
         frontIconPaddingRight = _props$attributes.frontIconPaddingRight,
         frontIconPaddingBottom = _props$attributes.frontIconPaddingBottom,
@@ -41555,7 +41585,6 @@ var edit = function edit(props) {
         frontDescMarginRight = _props$attributes.frontDescMarginRight,
         frontDescMarginBottom = _props$attributes.frontDescMarginBottom,
         frontDescMarginLeft = _props$attributes.frontDescMarginLeft,
-        pxUnit = _props$attributes.pxUnit,
         froMarUnit = _props$attributes.froMarUnit,
         froPadUnit = _props$attributes.froPadUnit,
         backMarUnit = _props$attributes.backMarUnit,
@@ -41566,6 +41595,10 @@ var edit = function edit(props) {
         backIconSize = _props$attributes.backIconSize,
         backIconColor = _props$attributes.backIconColor,
         backIconBackground = _props$attributes.backIconBackground,
+        backIconBorderType = _props$attributes.backIconBorderType,
+        backIconBorderWidth = _props$attributes.backIconBorderWidth,
+        backIconBorderRadius = _props$attributes.backIconBorderRadius,
+        backIconBorderColor = _props$attributes.backIconBorderColor,
         backIconPaddingTop = _props$attributes.backIconPaddingTop,
         backIconPaddingRight = _props$attributes.backIconPaddingRight,
         backIconPaddingBottom = _props$attributes.backIconPaddingBottom,
@@ -41609,11 +41642,38 @@ var edit = function edit(props) {
         alignFroVertical = _props$attributes.alignFroVertical,
         alignBackHorizontal = _props$attributes.alignBackHorizontal,
         alignBackVertical = _props$attributes.alignBackVertical,
-        primary = _props$attributes.primary,
         activeSide = _props$attributes.activeSide;
 
 
-    var ALIGN_Front = [{
+    var ALIGN_Front_H = [{
+        icon: 'editor-alignleft',
+        title: __('left'),
+        align: 'flex-start'
+    }, {
+        icon: 'editor-aligncenter',
+        title: __('Center'),
+        align: 'center'
+    }, {
+        icon: 'editor-alignright',
+        title: __('Right'),
+        align: 'flex-end'
+    }];
+
+    var ALIGN_Back_H = [{
+        icon: 'editor-alignleft',
+        title: __('left'),
+        align: 'flex-start'
+    }, {
+        icon: 'editor-aligncenter',
+        title: __('Center'),
+        align: 'center'
+    }, {
+        icon: 'editor-alignright',
+        title: __('Right'),
+        align: 'flex-end'
+    }];
+
+    var ALIGN_Front_V = [{
         icon: 'arrow-up-alt2',
         title: __('Top'),
         align: 'flex-start'
@@ -41627,7 +41687,7 @@ var edit = function edit(props) {
         align: 'flex-end'
     }];
 
-    var ALIGN_Back = [{
+    var ALIGN_Back_V = [{
         icon: 'arrow-up-alt2',
         title: __('Top'),
         align: 'flex-start'
@@ -41659,8 +41719,7 @@ var edit = function edit(props) {
         });
     };
 
-    var createArrowsControl = function createArrowsControl(arrows) {
-
+    var createControlers = function createControlers(arrows) {
         return {
             icon: "arrow-" + arrows + "-alt2",
             title: arrows == "right" ? "Front" : "Back",
@@ -41680,1100 +41739,1131 @@ var edit = function edit(props) {
     setAttributes({ id: blockID });
 
     return [isSelected && wp.element.createElement(
-        BlockControls,
-        { key: "controls" },
-        wp.element.createElement(AlignmentToolbar, {
-            label: __('Front Alignment Horizontal'),
-            value: alignFroHorizontal,
-            onChange: function onChange(newAlign) {
-                return setAttributes({ alignFroHorizontal: newAlign || "center" });
-            }
-        })
-    ), isSelected && wp.element.createElement(
-        BlockControls,
-        { key: "controls" },
-        wp.element.createElement(AlignmentToolbar, {
-            label: __('Front Alignment Vertical'),
-            value: alignFroVertical,
-            onChange: function onChange(newAlign) {
-                return setAttributes({ alignFroVertical: newAlign || "center" });
-            },
-            alignmentControls: ALIGN_Front
-        })
-    ), isSelected && wp.element.createElement(
-        BlockControls,
-        { key: "controls" },
-        wp.element.createElement(AlignmentToolbar, {
-            label: __('Back Alignment Horizontal'),
-            value: alignBackHorizontal,
-            onChange: function onChange(newAlign) {
-                return setAttributes({ alignBackHorizontal: newAlign || "center" });
-            }
-        })
-    ), isSelected && wp.element.createElement(
-        BlockControls,
-        { key: "controls" },
-        wp.element.createElement(AlignmentToolbar, {
-            label: __('Back Alignment Vertical'),
-            value: alignBackVertical,
-            onChange: function onChange(newAlign) {
-                return setAttributes({ alignBackVertical: newAlign || "center" });
-            },
-            alignmentControls: ALIGN_Back
-        })
-    ), isSelected && wp.element.createElement(
-        BlockControls,
-        { key: "controls" },
-        wp.element.createElement(Toolbar, {
-            controls: ['right', 'left'].map(createArrowsControl)
-        })
-    ), isSelected && wp.element.createElement(
-        InspectorControls,
-        { key: "inspector" },
+        "div",
+        null,
         wp.element.createElement(
-            PanelBody,
-            {
-                title: __("Front Side"),
-                className: "premium-panel-body",
-                initialOpen: true
-            },
+            BlockControls,
+            { key: "controls" },
+            wp.element.createElement(AlignmentToolbar, {
+                label: __('Front Alignment Horizontal'),
+                value: alignFroHorizontal,
+                onChange: function onChange(newAlign) {
+                    return setAttributes({ alignFroHorizontal: newAlign || "center" });
+                },
+                alignmentControls: ALIGN_Front_H
+            })
+        ),
+        wp.element.createElement(
+            BlockControls,
+            { key: "controls" },
+            wp.element.createElement(AlignmentToolbar, {
+                label: __('Front Alignment Vertical'),
+                value: alignFroVertical,
+                onChange: function onChange(newAlign) {
+                    return setAttributes({ alignFroVertical: newAlign || "center" });
+                },
+                alignmentControls: ALIGN_Front_V
+            })
+        ),
+        wp.element.createElement(
+            BlockControls,
+            { key: "controls" },
+            wp.element.createElement(AlignmentToolbar, {
+                label: __('Back Alignment Horizontal'),
+                value: alignBackHorizontal,
+                onChange: function onChange(newAlign) {
+                    return setAttributes({ alignBackHorizontal: newAlign || "center" });
+                },
+                alignmentControls: ALIGN_Back_H
+            })
+        ),
+        wp.element.createElement(
+            BlockControls,
+            { key: "controls" },
+            wp.element.createElement(AlignmentToolbar, {
+                label: __('Back Alignment Vertical'),
+                value: alignBackVertical,
+                onChange: function onChange(newAlign) {
+                    return setAttributes({ alignBackVertical: newAlign || "center" });
+                },
+                alignmentControls: ALIGN_Back_V
+            })
+        ),
+        wp.element.createElement(
+            BlockControls,
+            { key: "controls" },
+            wp.element.createElement(Toolbar, {
+                controls: ['right', 'left'].map(createControlers)
+            })
+        ),
+        wp.element.createElement(
+            InspectorControls,
+            { key: "inspector" },
             wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
+                PanelBody,
+                {
+                    title: __("Front Side"),
+                    className: "premium-panel-body",
+                    initialOpen: true
+                },
                 wp.element.createElement(
-                    "p",
-                    null,
+                    "div",
+                    { className: "premium-control-toggle" },
                     wp.element.createElement(
-                        "strong",
+                        "p",
                         null,
-                        __("Background Color")
-                    )
-                ),
-                wp.element.createElement(ColorPalette, {
-                    value: frontBackgroundColor,
-                    onChange: function onChange(newBgColor) {
-                        return setAttributes({ frontBackgroundColor: newBgColor || "#7c5707" });
-                    },
-                    allowReset: true
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(ToggleControl, {
-                    label: __("Icon"),
-                    checked: frontIconCheck,
-                    onChange: function onChange(newCheck) {
-                        return setAttributes({ frontIconCheck: newCheck });
-                    }
-                })
-            ),
-            frontIconCheck && wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(
-                    "p",
-                    null,
-                    wp.element.createElement(
-                        "strong",
-                        null,
-                        __("Select Icon")
-                    )
-                ),
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default.a, {
-                    icons: __WEBPACK_IMPORTED_MODULE_8__components_premium_icons_list__["a" /* default */],
-                    onChange: function onChange(newIcon) {
-                        return setAttributes({ frontIconSelected: newIcon || "dashicons dashicons-admin-site" });
-                    },
-                    value: frontIconSelected,
-                    isMulti: false,
-                    appendTo: "body",
-                    noSelectedPlaceholder: __("Select Icon")
-                })
-            ),
-            frontIconCheck && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__["a" /* default */], {
-                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                    return setAttributes({ frontIconUnit: newValue || "px" });
-                }
-            }),
-            frontIconCheck && wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(RangeControl, {
-                    label: __("Size"),
-                    value: frontIconSize,
-                    onChange: function onChange(newValue) {
-                        return setAttributes({ frontIconSize: newValue || "50" });
-                    },
-                    initialPosition: 50,
-                    allowReset: true
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(ToggleControl, {
-                    label: __("Title"),
-                    checked: frontTitleCheck,
-                    onChange: function onChange(newCheck) {
-                        return setAttributes({ frontTitleCheck: newCheck });
-                    }
-                })
-            ),
-            frontTitleCheck && wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(TextControl, {
-                    label: __("Title Text"),
-                    value: frontTitle,
-                    onChange: function onChange(newTitle) {
-                        return setAttributes({ frontTitle: newTitle });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(ToggleControl, {
-                    label: __("Description"),
-                    checked: frontDescCheck,
-                    onChange: function onChange(newCheck) {
-                        return setAttributes({ frontDescCheck: newCheck });
-                    }
-                })
-            ),
-            frontDescCheck && wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(TextControl, {
-                    label: __("Description Text"),
-                    value: frontDescription,
-                    onChange: function onChange(newDesc) {
-                        return setAttributes({ frontDescription: newDesc });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(
-                    ButtonGroup,
-                    null,
-                    wp.element.createElement(
-                        Button,
-                        {
-                            isPrimary: activeSide === "right" ? true : false,
-                            isDefault: activeSide === "right" ? false : true,
-                            className: "premium-unit-control-btn front-btn",
-                            onClick: handleFront
-                        },
-                        "Front Side"
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Background Color")
+                        )
                     ),
-                    wp.element.createElement(
-                        Button,
-                        {
-                            isPrimary: activeSide === "left" ? true : false,
-                            isDefault: activeSide === "left" ? false : true,
-                            className: "premium-unit-control-btn back-btn",
-                            onClick: handleBack
+                    wp.element.createElement(ColorPalette, {
+                        value: frontBackgroundColor,
+                        onChange: function onChange(newBgColor) {
+                            return setAttributes({ frontBackgroundColor: newBgColor || "#7c5707" });
                         },
-                        "Back Side"
+                        allowReset: true
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Icon"),
+                        checked: frontIconCheck,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ frontIconCheck: newCheck });
+                        }
+                    })
+                ),
+                frontIconCheck && wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Select Icon")
+                        )
+                    ),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__fonticonpicker_react_fonticonpicker___default.a, {
+                        icons: __WEBPACK_IMPORTED_MODULE_9__components_premium_icons_list__["a" /* default */],
+                        onChange: function onChange(newIcon) {
+                            return setAttributes({ frontIconSelected: newIcon || "dashicons dashicons-admin-site" });
+                        },
+                        value: frontIconSelected,
+                        isMulti: false,
+                        appendTo: "body",
+                        noSelectedPlaceholder: __("Select Icon")
+                    })
+                ),
+                frontIconCheck && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__["a" /* default */], {
+                    onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                        return setAttributes({ frontIconUnit: newValue || "px" });
+                    }
+                }),
+                frontIconCheck && wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(RangeControl, {
+                        label: __("Size"),
+                        value: frontIconSize,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ frontIconSize: newValue || "50" });
+                        },
+                        initialPosition: 50,
+                        allowReset: true
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Title"),
+                        checked: frontTitleCheck,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ frontTitleCheck: newCheck });
+                        }
+                    })
+                ),
+                frontTitleCheck && wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(TextControl, {
+                        label: __("Title Text"),
+                        value: frontTitle,
+                        onChange: function onChange(newTitle) {
+                            return setAttributes({ frontTitle: newTitle });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Description"),
+                        checked: frontDescCheck,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ frontDescCheck: newCheck });
+                        }
+                    })
+                ),
+                frontDescCheck && wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(TextControl, {
+                        label: __("Description Text"),
+                        value: frontDescription,
+                        onChange: function onChange(newDesc) {
+                            return setAttributes({ frontDescription: newDesc });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(
+                        ButtonGroup,
+                        null,
+                        wp.element.createElement(
+                            Button,
+                            {
+                                isPrimary: activeSide === "right" ? true : false,
+                                isDefault: activeSide === "right" ? false : true,
+                                className: "premium-unit-control-btn front-btn",
+                                onClick: handleFront
+                            },
+                            "Front Side"
+                        ),
+                        wp.element.createElement(
+                            Button,
+                            {
+                                isPrimary: activeSide === "left" ? true : false,
+                                isDefault: activeSide === "left" ? false : true,
+                                className: "premium-unit-control-btn back-btn",
+                                onClick: handleBack
+                            },
+                            "Back Side"
+                        )
                     )
                 )
-            )
-        ),
-        frontIconCheck && wp.element.createElement(
-            PanelBody,
-            {
-                title: __("Front Icon Style"),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
+            ),
+            frontIconCheck && wp.element.createElement(
+                PanelBody,
+                {
+                    title: __("Front Icon Style"),
+                    className: "premium-panel-body",
+                    initialOpen: false
+                },
                 wp.element.createElement(
-                    "p",
-                    null,
+                    "div",
+                    { className: "premium-control-toggle" },
                     wp.element.createElement(
-                        "strong",
+                        "p",
                         null,
-                        __("Color")
-                    )
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Color")
+                        )
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: frontIconColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ frontIconColor: newColor || "#fff" });
+                        },
+                        allowReset: true
+                    })
                 ),
-                wp.element.createElement(ColorPalette, {
-                    value: frontIconColor,
-                    onChange: function onChange(newColor) {
-                        return setAttributes({ frontIconColor: newColor || "#fff" });
-                    },
-                    allowReset: true
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
                 wp.element.createElement(
-                    "p",
-                    null,
+                    "div",
+                    { className: "premium-control-toggle" },
                     wp.element.createElement(
-                        "strong",
+                        "p",
                         null,
-                        __("Background Color")
-                    )
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Background Color")
+                        )
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: frontIconBackground,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ frontIconBackground: newColor || "transparent" });
+                        },
+                        allowReset: true
+                    })
                 ),
-                wp.element.createElement(ColorPalette, {
-                    value: frontIconBackground,
-                    onChange: function onChange(newBgColor) {
-                        return setAttributes({ frontIconBackground: newBgColor || "transparent" });
-                    },
-                    allowReset: true
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_margin__["a" /* default */], {
-                    directions: ["top", "right", "bottom", "left"],
-                    marginTop: frontIconMarginTop,
-                    marginRight: frontIconMarginRight,
-                    marginBottom: frontIconMarginBottom,
-                    marginLeft: frontIconMarginLeft,
-                    onChangeMarTop: function onChangeMarTop(newMarTop) {
-                        return setAttributes({
-                            frontIconMarginTop: newMarTop || "0"
-                        });
-                    },
-                    onChangeMarRight: function onChangeMarRight(newMarRight) {
-                        return setAttributes({
-                            frontIconMarginRight: newMarRight || "0"
-                        });
-                    },
-                    onChangeMarBottom: function onChangeMarBottom(newMarBottom) {
-                        return setAttributes({
-                            frontIconMarginBottom: newMarBottom || "0"
-                        });
-                    },
-                    onChangeMarLeft: function onChangeMarLeft(newMarLeft) {
-                        return setAttributes({
-                            frontIconMarginLeft: newMarLeft || "0"
-                        });
-                    },
-                    showUnits: true,
-                    onChangeMarSizeUnit: function onChangeMarSizeUnit(newMarUnit) {
-                        return setAttributes({ froMarUnit: newMarUnit || "px" });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_padding__["a" /* default */], {
-                    paddingTop: frontIconPaddingTop,
-                    paddingRight: frontIconPaddingRight,
-                    paddingBottom: frontIconPaddingBottom,
-                    paddingLeft: frontIconPaddingLeft,
-                    onChangePadTop: function onChangePadTop(newPadTop) {
-                        return setAttributes({
-                            frontIconPaddingTop: newPadTop || "0"
-                        });
-                    },
-                    onChangePadRight: function onChangePadRight(newPadRight) {
-                        return setAttributes({
-                            frontIconPaddingRight: newPadRight || "0"
-                        });
-                    },
-                    onChangePadBottom: function onChangePadBottom(newPadBottom) {
-                        return setAttributes({
-                            frontIconPaddingBottom: newPadBottom || "0"
-                        });
-                    },
-                    onChangePadLeft: function onChangePadLeft(newPadleft) {
-                        return setAttributes({
-                            frontIconPaddingLeft: newPadleft || "0"
-                        });
-                    },
-                    showUnits: true,
-                    onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                        return setAttributes({ froPadUnit: newvalue || "px" });
-                    }
-                })
-            )
-        ),
-        frontTitleCheck && wp.element.createElement(
-            PanelBody,
-            {
-                title: __("Front Title Style"),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
                 wp.element.createElement(
-                    "p",
-                    null,
-                    wp.element.createElement(
-                        "strong",
-                        null,
-                        __("Color")
-                    )
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_border__["a" /* default */], {
+                        borderType: froIconBorderType,
+                        borderWidth: froIconBorderWidth,
+                        borderColor: froIconBorderColor,
+                        borderRadius: froIconBorderRadius,
+                        onChangeType: function onChangeType(newType) {
+                            return setAttributes({ froIconBorderType: newType || "none" });
+                        },
+                        onChangeWidth: function onChangeWidth(newWidth) {
+                            return setAttributes({ froIconBorderWidth: newWidth || "0" });
+                        },
+                        onChangeColor: function onChangeColor(colorValue) {
+                            return setAttributes({ froIconBorderColor: colorValue.hex || "transparent" });
+                        },
+                        onChangeRadius: function onChangeRadius(newrRadius) {
+                            return setAttributes({ froIconBorderRadius: newrRadius || "0" });
+                        }
+                    })
                 ),
-                wp.element.createElement(ColorPalette, {
-                    value: frontTitleColor,
-                    onChange: function onChange(newColor) {
-                        return setAttributes({ frontTitleColor: newColor || "#e3d192" });
-                    },
-                    allowReset: true
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
-                    components: ["size", "line"],
-                    size: frontTitleSize,
-                    line: frontTitlelineHeight,
-                    onChangeSize: function onChangeSize(newSize) {
-                        return setAttributes({ frontTitleSize: newSize });
-                    },
-                    onChangeLine: function onChangeLine(newlineHeight) {
-                        return setAttributes({ frontTitlelineHeight: newlineHeight });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_text_shadow__["a" /* default */], {
-                    color: frontTitleShadowColor,
-                    blur: frontTitleShadowBlur,
-                    horizontal: frontTitleShadowHorizontal,
-                    vertical: frontTitleShadowVertical,
-                    onChangeColor: function onChangeColor(newShadColor) {
-                        return setAttributes({ frontTitleShadowColor: newShadColor.hex || "transparent" });
-                    },
-                    onChangeBlur: function onChangeBlur(newShadBlur) {
-                        return setAttributes({ frontTitleShadowBlur: newShadBlur || "0" });
-                    },
-                    onChangehHorizontal: function onChangehHorizontal(newShadHorizontal) {
-                        return setAttributes({ frontTitleShadowHorizontal: newShadHorizontal || "0" });
-                    },
-                    onChangeVertical: function onChangeVertical(newShadVertical) {
-                        return setAttributes({ frontTitleShadowVertical: newShadVertical || "0" });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_margin__["a" /* default */], {
-                    directions: ["top", "right", "bottom", "left"],
-                    marginTop: frontTitleMarginTop,
-                    marginRight: frontTitleMarginRight,
-                    marginBottom: frontTitleMarginBottom,
-                    marginLeft: frontTitleMarginLeft,
-                    onChangeMarTop: function onChangeMarTop(newMarTop) {
-                        return setAttributes({
-                            frontTitleMarginTop: newMarTop
-                        });
-                    },
-                    onChangeMarRight: function onChangeMarRight(newMarRight) {
-                        return setAttributes({
-                            frontTitleMarginRight: newMarRight
-                        });
-                    },
-                    onChangeMarBottom: function onChangeMarBottom(newMarBottom) {
-                        return setAttributes({
-                            frontTitleMarginBottom: newMarBottom
-                        });
-                    },
-                    onChangeMarLeft: function onChangeMarLeft(newMarLeft) {
-                        return setAttributes({
-                            frontTitleMarginLeft: newMarLeft
-                        });
-                    },
-                    showUnits: true,
-                    onChangeMarSizeUnit: function onChangeMarSizeUnit(newMarvalue) {
-                        return setAttributes({ pxUnit: newMarvalue || "px" });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_padding__["a" /* default */], {
-                    paddingTop: frontTitlePaddingTop,
-                    paddingRight: frontTitlePaddingRight,
-                    paddingBottom: frontTitlePaddingBottom,
-                    paddingLeft: frontTitlePaddingLeft,
-                    onChangePadTop: function onChangePadTop(newPadTop) {
-                        return setAttributes({
-                            frontTitlePaddingTop: newPadTop
-                        });
-                    },
-                    onChangePadRight: function onChangePadRight(newPadRight) {
-                        return setAttributes({
-                            frontTitlePaddingRight: newPadRight
-                        });
-                    },
-                    onChangePadBottom: function onChangePadBottom(newPadBottom) {
-                        return setAttributes({
-                            frontTitlePaddingBottom: newPadBottom
-                        });
-                    },
-                    onChangePadLeft: function onChangePadLeft(newPadLeft) {
-                        return setAttributes({
-                            frontTitlePaddingLeft: newPadLeft
-                        });
-                    },
-                    showUnits: true,
-                    onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                        return setAttributes({ pxUnit: newvalue || "px" });
-                    }
-                })
-            )
-        ),
-        frontDescCheck && wp.element.createElement(
-            PanelBody,
-            {
-                title: __("Front Description Style"),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
                 wp.element.createElement(
-                    "p",
-                    null,
-                    wp.element.createElement(
-                        "strong",
-                        null,
-                        __("Color")
-                    )
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_margin__["a" /* default */], {
+                        directions: ["top", "right", "bottom", "left"],
+                        marginTop: frontIconMarginTop,
+                        marginRight: frontIconMarginRight,
+                        marginBottom: frontIconMarginBottom,
+                        marginLeft: frontIconMarginLeft,
+                        onChangeMarTop: function onChangeMarTop(newValue) {
+                            return setAttributes({
+                                frontIconMarginTop: newValue || "0"
+                            });
+                        },
+                        onChangeMarRight: function onChangeMarRight(newValue) {
+                            return setAttributes({
+                                frontIconMarginRight: newValue || "0"
+                            });
+                        },
+                        onChangeMarBottom: function onChangeMarBottom(newValue) {
+                            return setAttributes({
+                                frontIconMarginBottom: newValue || "0"
+                            });
+                        },
+                        onChangeMarLeft: function onChangeMarLeft(newValue) {
+                            return setAttributes({
+                                frontIconMarginLeft: newValue || "0"
+                            });
+                        },
+                        showUnits: true,
+                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newValue) {
+                            return setAttributes({ froMarUnit: newValue || "px" });
+                        }
+                    })
                 ),
-                wp.element.createElement(ColorPalette, {
-                    value: frontDescriptionColor,
-                    onChange: function onChange(newColor) {
-                        return setAttributes({ frontDescriptionColor: newColor || "#ddd" });
-                    },
-                    allowReset: true
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
-                    components: ["size", "line"],
-                    size: frontDescSize,
-                    line: frontDesclineHeight,
-                    onChangeSize: function onChangeSize(newSize) {
-                        return setAttributes({ frontDescSize: newSize });
-                    },
-                    onChangeLine: function onChangeLine(newlineHeight) {
-                        return setAttributes({ frontDesclineHeight: newlineHeight });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_text_shadow__["a" /* default */], {
-                    color: frontDescShadowColor,
-                    blur: frontDescShadowBlur,
-                    horizontal: frontDescShadowHorizontal,
-                    vertical: frontDescShadowVertical,
-                    onChangeColor: function onChangeColor(newShadColor) {
-                        return setAttributes({ frontDescShadowColor: newShadColor.hex || "transparent" });
-                    },
-                    onChangeBlur: function onChangeBlur(newShadBlur) {
-                        return setAttributes({ frontDescShadowBlur: newShadBlur || "0" });
-                    },
-                    onChangehHorizontal: function onChangehHorizontal(newShadHorizontal) {
-                        return setAttributes({ frontDescShadowHorizontal: newShadHorizontal || "0" });
-                    },
-                    onChangeVertical: function onChangeVertical(newShadVertical) {
-                        return setAttributes({ frontDescShadowVertical: newShadVertical || "0" });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_margin__["a" /* default */], {
-                    directions: ["top", "right", "bottom", "left"],
-                    marginTop: frontDescMarginTop,
-                    marginRight: frontDescMarginRight,
-                    marginBottom: frontDescMarginBottom,
-                    marginLeft: frontDescMarginLeft,
-                    onChangeMarTop: function onChangeMarTop(newMarTop) {
-                        return setAttributes({
-                            frontDescMarginTop: newMarTop
-                        });
-                    },
-                    onChangeMarRight: function onChangeMarRight(newMarRight) {
-                        return setAttributes({
-                            frontDescMarginRight: newMarRight
-                        });
-                    },
-                    onChangeMarBottom: function onChangeMarBottom(newMarBottom) {
-                        return setAttributes({
-                            frontDescMarginBottom: newMarBottom
-                        });
-                    },
-                    onChangeMarLeft: function onChangeMarLeft(newMarLeft) {
-                        return setAttributes({
-                            frontDescMarginLeft: newMarLeft
-                        });
-                    },
-                    showUnits: true,
-                    onChangeMarSizeUnit: function onChangeMarSizeUnit(newMarvalue) {
-                        return setAttributes({ pxUnit: newMarvalue || "px" });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_padding__["a" /* default */], {
-                    paddingTop: frontDescPaddingTop,
-                    paddingRight: frontDescPaddingRight,
-                    paddingBottom: frontDescPaddingBottom,
-                    paddingLeft: frontDescPaddingLeft,
-                    onChangePadTop: function onChangePadTop(newPadTop) {
-                        return setAttributes({
-                            frontDescPaddingTop: newPadTop
-                        });
-                    },
-                    onChangePadRight: function onChangePadRight(newPadRight) {
-                        return setAttributes({
-                            frontDescPaddingRight: newPadRight
-                        });
-                    },
-                    onChangePadBottom: function onChangePadBottom(newPadBottom) {
-                        return setAttributes({
-                            frontDescPaddingBottom: newPadBottom
-                        });
-                    },
-                    onChangePadLeft: function onChangePadLeft(newPadLeft) {
-                        return setAttributes({
-                            frontDescPaddingLeft: newPadLeft
-                        });
-                    },
-                    showUnits: true,
-                    onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                        return setAttributes({ pxUnit: newvalue || "px" });
-                    }
-                })
-            )
-        ),
-        wp.element.createElement(
-            PanelBody,
-            {
-                title: __("Back Side"),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
                 wp.element.createElement(
-                    "p",
-                    null,
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_padding__["a" /* default */], {
+                        paddingTop: frontIconPaddingTop,
+                        paddingRight: frontIconPaddingRight,
+                        paddingBottom: frontIconPaddingBottom,
+                        paddingLeft: frontIconPaddingLeft,
+                        onChangePadTop: function onChangePadTop(newValue) {
+                            return setAttributes({
+                                frontIconPaddingTop: newValue || "0"
+                            });
+                        },
+                        onChangePadRight: function onChangePadRight(newValue) {
+                            return setAttributes({
+                                frontIconPaddingRight: newValue || "0"
+                            });
+                        },
+                        onChangePadBottom: function onChangePadBottom(newValue) {
+                            return setAttributes({
+                                frontIconPaddingBottom: newValue || "0"
+                            });
+                        },
+                        onChangePadLeft: function onChangePadLeft(newValue) {
+                            return setAttributes({
+                                frontIconPaddingLeft: newValue || "0"
+                            });
+                        },
+                        showUnits: true,
+                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
+                            return setAttributes({ froPadUnit: newvalue || "px" });
+                        }
+                    })
+                )
+            ),
+            frontTitleCheck && wp.element.createElement(
+                PanelBody,
+                {
+                    title: __("Front Title Style"),
+                    className: "premium-panel-body",
+                    initialOpen: false
+                },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
                     wp.element.createElement(
-                        "strong",
+                        "p",
                         null,
-                        __("Background Color")
-                    )
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Color")
+                        )
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: frontTitleColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ frontTitleColor: newColor || "#e3d192" });
+                        },
+                        allowReset: true
+                    })
                 ),
-                wp.element.createElement(ColorPalette, {
-                    value: backBackgroundColor,
-                    onChange: function onChange(newBgColor) {
-                        return setAttributes({ backBackgroundColor: newBgColor || "#ae8686" });
-                    },
-                    allowReset: true
-                })
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
+                        components: ["size", "line"],
+                        size: frontTitleSize,
+                        line: frontTitlelineHeight,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return setAttributes({ frontTitleSize: newSize });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return setAttributes({ frontTitlelineHeight: newValue });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_text_shadow__["a" /* default */], {
+                        color: frontTitleShadowColor,
+                        blur: frontTitleShadowBlur,
+                        horizontal: frontTitleShadowHorizontal,
+                        vertical: frontTitleShadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return setAttributes({ frontTitleShadowColor: newColor.hex || "transparent" });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return setAttributes({ frontTitleShadowBlur: newBlur || "0" });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return setAttributes({ frontTitleShadowHorizontal: newValue || "0" });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return setAttributes({ frontTitleShadowVertical: newValue || "0" });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_margin__["a" /* default */], {
+                        directions: ["top", "right", "bottom", "left"],
+                        marginTop: frontTitleMarginTop,
+                        marginRight: frontTitleMarginRight,
+                        marginBottom: frontTitleMarginBottom,
+                        marginLeft: frontTitleMarginLeft,
+                        onChangeMarTop: function onChangeMarTop(newValue) {
+                            return setAttributes({
+                                frontTitleMarginTop: newValue
+                            });
+                        },
+                        onChangeMarRight: function onChangeMarRight(newValue) {
+                            return setAttributes({
+                                frontTitleMarginRight: newValue
+                            });
+                        },
+                        onChangeMarBottom: function onChangeMarBottom(newValue) {
+                            return setAttributes({
+                                frontTitleMarginBottom: newValue
+                            });
+                        },
+                        onChangeMarLeft: function onChangeMarLeft(newValue) {
+                            return setAttributes({
+                                frontTitleMarginLeft: newValue
+                            });
+                        },
+                        showUnits: false
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_padding__["a" /* default */], {
+                        paddingTop: frontTitlePaddingTop,
+                        paddingRight: frontTitlePaddingRight,
+                        paddingBottom: frontTitlePaddingBottom,
+                        paddingLeft: frontTitlePaddingLeft,
+                        onChangePadTop: function onChangePadTop(newValue) {
+                            return setAttributes({
+                                frontTitlePaddingTop: newValue
+                            });
+                        },
+                        onChangePadRight: function onChangePadRight(newValue) {
+                            return setAttributes({
+                                frontTitlePaddingRight: newValue
+                            });
+                        },
+                        onChangePadBottom: function onChangePadBottom(newValue) {
+                            return setAttributes({
+                                frontTitlePaddingBottom: newValue
+                            });
+                        },
+                        onChangePadLeft: function onChangePadLeft(newValue) {
+                            return setAttributes({
+                                frontTitlePaddingLeft: newValue
+                            });
+                        },
+                        showUnits: false
+                    })
+                )
+            ),
+            frontDescCheck && wp.element.createElement(
+                PanelBody,
+                {
+                    title: __("Front Description Style"),
+                    className: "premium-panel-body",
+                    initialOpen: false
+                },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Color")
+                        )
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: frontDescriptionColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ frontDescriptionColor: newColor || "#ddd" });
+                        },
+                        allowReset: true
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
+                        components: ["size", "line"],
+                        size: frontDescSize,
+                        line: frontDesclineHeight,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return setAttributes({ frontDescSize: newSize });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return setAttributes({ frontDesclineHeight: newValue });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_text_shadow__["a" /* default */], {
+                        color: frontDescShadowColor,
+                        blur: frontDescShadowBlur,
+                        horizontal: frontDescShadowHorizontal,
+                        vertical: frontDescShadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return setAttributes({ frontDescShadowColor: newColor.hex || "transparent" });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return setAttributes({ frontDescShadowBlur: newBlur || "0" });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return setAttributes({ frontDescShadowHorizontal: newValue || "0" });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return setAttributes({ frontDescShadowVertical: newValue || "0" });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_margin__["a" /* default */], {
+                        directions: ["top", "right", "bottom", "left"],
+                        marginTop: frontDescMarginTop,
+                        marginRight: frontDescMarginRight,
+                        marginBottom: frontDescMarginBottom,
+                        marginLeft: frontDescMarginLeft,
+                        onChangeMarTop: function onChangeMarTop(newValue) {
+                            return setAttributes({
+                                frontDescMarginTop: newValue
+                            });
+                        },
+                        onChangeMarRight: function onChangeMarRight(newValue) {
+                            return setAttributes({
+                                frontDescMarginRight: newValue
+                            });
+                        },
+                        onChangeMarBottom: function onChangeMarBottom(newValue) {
+                            return setAttributes({
+                                frontDescMarginBottom: newValue
+                            });
+                        },
+                        onChangeMarLeft: function onChangeMarLeft(newValue) {
+                            return setAttributes({
+                                frontDescMarginLeft: newValue
+                            });
+                        },
+                        showUnits: false
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_padding__["a" /* default */], {
+                        paddingTop: frontDescPaddingTop,
+                        paddingRight: frontDescPaddingRight,
+                        paddingBottom: frontDescPaddingBottom,
+                        paddingLeft: frontDescPaddingLeft,
+                        onChangePadTop: function onChangePadTop(newValue) {
+                            return setAttributes({
+                                frontDescPaddingTop: newValue
+                            });
+                        },
+                        onChangePadRight: function onChangePadRight(newValue) {
+                            return setAttributes({
+                                frontDescPaddingRight: newValue
+                            });
+                        },
+                        onChangePadBottom: function onChangePadBottom(newValue) {
+                            return setAttributes({
+                                frontDescPaddingBottom: newValue
+                            });
+                        },
+                        onChangePadLeft: function onChangePadLeft(newValue) {
+                            return setAttributes({
+                                frontDescPaddingLeft: newValue
+                            });
+                        },
+                        showUnits: false
+                    })
+                )
             ),
             wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(ToggleControl, {
-                    label: __("Icon"),
-                    checked: backIconCheck,
-                    onChange: function onChange(newCheck) {
-                        return setAttributes({ backIconCheck: newCheck });
+                PanelBody,
+                {
+                    title: __("Back Side"),
+                    className: "premium-panel-body",
+                    initialOpen: false
+                },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Background Color")
+                        )
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: backBackgroundColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ backBackgroundColor: newColor || "#ae8686" });
+                        },
+                        allowReset: true
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Icon"),
+                        checked: backIconCheck,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ backIconCheck: newCheck });
+                        }
+                    })
+                ),
+                backIconCheck && wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Select Icon")
+                        )
+                    ),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__fonticonpicker_react_fonticonpicker___default.a, {
+                        icons: __WEBPACK_IMPORTED_MODULE_9__components_premium_icons_list__["a" /* default */],
+                        onChange: function onChange(newIcon) {
+                            return setAttributes({ backIconSelected: newIcon || "dashicons dashicons-admin-site" });
+                        },
+                        value: backIconSelected,
+                        isMulti: false,
+                        appendTo: "body",
+                        noSelectedPlaceholder: __("Select Icon")
+                    })
+                ),
+                backIconCheck && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__["a" /* default */], {
+                    onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                        return setAttributes({ backIconUnit: newValue || "px" });
                     }
-                })
+                }),
+                backIconCheck && wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(RangeControl, {
+                        label: __("Size"),
+                        value: backIconSize,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ backIconSize: newValue || "50" });
+                        },
+                        initialPosition: 50,
+                        allowReset: true
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Title"),
+                        checked: backTitleCheck,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ backTitleCheck: newCheck });
+                        }
+                    })
+                ),
+                backTitleCheck && wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(TextControl, {
+                        label: __("Title Text"),
+                        value: backTitle,
+                        onChange: function onChange(newTitle) {
+                            return setAttributes({ backTitle: newTitle });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Description"),
+                        checked: backDescCheck,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ backDescCheck: newCheck });
+                        }
+                    })
+                ),
+                backDescCheck && wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(TextControl, {
+                        label: __("Description Text"),
+                        value: backDescription,
+                        onChange: function onChange(newDesc) {
+                            return setAttributes({ backDescription: newDesc });
+                        }
+                    })
+                )
             ),
             backIconCheck && wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
+                PanelBody,
+                {
+                    title: __("Back Icon Style"),
+                    className: "premium-panel-body",
+                    initialOpen: false
+                },
                 wp.element.createElement(
-                    "p",
-                    null,
+                    "div",
+                    { className: "premium-control-toggle" },
                     wp.element.createElement(
-                        "strong",
+                        "p",
                         null,
-                        __("Select Icon")
-                    )
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Color")
+                        )
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: backIconColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ backIconColor: newColor || "#fff" });
+                        },
+                        allowReset: true
+                    })
                 ),
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default.a, {
-                    icons: __WEBPACK_IMPORTED_MODULE_8__components_premium_icons_list__["a" /* default */],
-                    onChange: function onChange(newIcon) {
-                        return setAttributes({ backIconSelected: newIcon || "dashicons dashicons-admin-site" });
-                    },
-                    value: backIconSelected,
-                    isMulti: false,
-                    appendTo: "body",
-                    noSelectedPlaceholder: __("Select Icon")
-                })
-            ),
-            backIconCheck && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__["a" /* default */], {
-                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                    return setAttributes({ backIconUnit: newValue || "px" });
-                }
-            }),
-            backIconCheck && wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(RangeControl, {
-                    label: __("Size"),
-                    value: backIconSize,
-                    onChange: function onChange(newValue) {
-                        return setAttributes({ backIconSize: newValue || "50" });
-                    },
-                    initialPosition: 50,
-                    allowReset: true
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(ToggleControl, {
-                    label: __("Title"),
-                    checked: backTitleCheck,
-                    onChange: function onChange(newCheck) {
-                        return setAttributes({ backTitleCheck: newCheck });
-                    }
-                })
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Background Color")
+                        )
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: backIconBackground,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ backIconBackground: newColor || "transparent" });
+                        },
+                        allowReset: true
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_border__["a" /* default */], {
+                        borderType: backIconBorderType,
+                        borderWidth: backIconBorderWidth,
+                        borderColor: backIconBorderColor,
+                        borderRadius: backIconBorderRadius,
+                        onChangeType: function onChangeType(newType) {
+                            return setAttributes({ backIconBorderType: newType || "none" });
+                        },
+                        onChangeWidth: function onChangeWidth(newWidth) {
+                            return setAttributes({ backIconBorderWidth: newWidth || "0" });
+                        },
+                        onChangeColor: function onChangeColor(colorValue) {
+                            return setAttributes({ backIconBorderColor: colorValue.hex || "transparent" });
+                        },
+                        onChangeRadius: function onChangeRadius(newrRadius) {
+                            return setAttributes({ backIconBorderRadius: newrRadius || "0" });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_margin__["a" /* default */], {
+                        directions: ["top", "right", "bottom", "left"],
+                        marginTop: backIconMarginTop,
+                        marginRight: backIconMarginRight,
+                        marginBottom: backIconMarginBottom,
+                        marginLeft: backIconMarginLeft,
+                        onChangeMarTop: function onChangeMarTop(newValue) {
+                            return setAttributes({
+                                backIconMarginTop: newValue || "0"
+                            });
+                        },
+                        onChangeMarRight: function onChangeMarRight(newValue) {
+                            return setAttributes({
+                                backIconMarginRight: newValue || "0"
+                            });
+                        },
+                        onChangeMarBottom: function onChangeMarBottom(newValue) {
+                            return setAttributes({
+                                backIconMarginBottom: newValue || "0"
+                            });
+                        },
+                        onChangeMarLeft: function onChangeMarLeft(newValue) {
+                            return setAttributes({
+                                backIconMarginLeft: newValue || "0"
+                            });
+                        },
+                        showUnits: true,
+                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newValue) {
+                            return setAttributes({ backMarUnit: newValue || "px" });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_padding__["a" /* default */], {
+                        paddingTop: backIconPaddingTop,
+                        paddingRight: backIconPaddingRight,
+                        paddingBottom: backIconPaddingBottom,
+                        paddingLeft: backIconPaddingLeft,
+                        onChangePadTop: function onChangePadTop(newValue) {
+                            return setAttributes({
+                                backIconPaddingTop: newValue || "0"
+                            });
+                        },
+                        onChangePadRight: function onChangePadRight(newValue) {
+                            return setAttributes({
+                                backIconPaddingRight: newValue || "0"
+                            });
+                        },
+                        onChangePadBottom: function onChangePadBottom(newValue) {
+                            return setAttributes({
+                                backIconPaddingBottom: newValue || "0"
+                            });
+                        },
+                        onChangePadLeft: function onChangePadLeft(newValue) {
+                            return setAttributes({
+                                backIconPaddingLeft: newValue || "0"
+                            });
+                        },
+                        showUnits: true,
+                        onChangePadSizeUnit: function onChangePadSizeUnit(newValue) {
+                            return setAttributes({ backPadUnit: newValue || "px" });
+                        }
+                    })
+                )
             ),
             backTitleCheck && wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(TextControl, {
-                    label: __("Title Text"),
-                    value: backTitle,
-                    onChange: function onChange(newTitle) {
-                        return setAttributes({ backTitle: newTitle });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(ToggleControl, {
-                    label: __("Description"),
-                    checked: backDescCheck,
-                    onChange: function onChange(newCheck) {
-                        return setAttributes({ backDescCheck: newCheck });
-                    }
-                })
+                PanelBody,
+                {
+                    title: __("Back Title Style"),
+                    className: "premium-panel-body",
+                    initialOpen: false
+                },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Color")
+                        )
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: backTitleColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ backTitleColor: newColor || "#fff" });
+                        },
+                        allowReset: true
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
+                        components: ["size", "line"],
+                        size: backTitleSize,
+                        line: backTitleLineHeight,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return setAttributes({ backTitleSize: newSize });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return setAttributes({ backTitleLineHeight: newValue });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_text_shadow__["a" /* default */], {
+                        color: backTitleShadowColor,
+                        blur: backTitleShadowBlur,
+                        horizontal: backTitleShadowHorizontal,
+                        vertical: backTitleShadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return setAttributes({ backTitleShadowColor: newColor.hex || "transparent" });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return setAttributes({ backTitleShadowBlur: newBlur || "0" });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return setAttributes({ backTitleShadowHorizontal: newValue || "0" });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return setAttributes({ backTitleShadowVertical: newValue || "0" });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_margin__["a" /* default */], {
+                        directions: ["top", "right", "bottom", "left"],
+                        marginTop: backTitleMarginTop,
+                        marginRight: backTitleMarginRight,
+                        marginBottom: backTitleMarginBottom,
+                        marginLeft: backTitleMarginLeft,
+                        onChangeMarTop: function onChangeMarTop(newValue) {
+                            return setAttributes({
+                                backTitleMarginTop: newValue
+                            });
+                        },
+                        onChangeMarRight: function onChangeMarRight(newValue) {
+                            return setAttributes({
+                                backTitleMarginRight: newValue
+                            });
+                        },
+                        onChangeMarBottom: function onChangeMarBottom(newValue) {
+                            return setAttributes({
+                                backTitleMarginBottom: newValue
+                            });
+                        },
+                        onChangeMarLeft: function onChangeMarLeft(newValue) {
+                            return setAttributes({
+                                backTitleMarginLeft: newValue
+                            });
+                        },
+                        showUnits: false
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_padding__["a" /* default */], {
+                        paddingTop: backTitlePaddingTop,
+                        paddingRight: backTitlePaddingRight,
+                        paddingBottom: backTitlePaddingBottom,
+                        paddingLeft: backTitlePaddingLeft,
+                        onChangePadTop: function onChangePadTop(newValue) {
+                            return setAttributes({
+                                backTitlePaddingTop: newValue
+                            });
+                        },
+                        onChangePadRight: function onChangePadRight(newValue) {
+                            return setAttributes({
+                                backTitlePaddingRight: newValue
+                            });
+                        },
+                        onChangePadBottom: function onChangePadBottom(newValue) {
+                            return setAttributes({
+                                backTitlePaddingBottom: newValue
+                            });
+                        },
+                        onChangePadLeft: function onChangePadLeft(newValue) {
+                            return setAttributes({
+                                backTitlePaddingLeft: newValue
+                            });
+                        },
+                        showUnits: false
+                    })
+                )
             ),
             backDescCheck && wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(TextControl, {
-                    label: __("Description Text"),
-                    value: backDescription,
-                    onChange: function onChange(newDesc) {
-                        return setAttributes({ backDescription: newDesc });
-                    }
-                })
-            )
-        ),
-        backIconCheck && wp.element.createElement(
-            PanelBody,
-            {
-                title: __("Back Icon Style"),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
+                PanelBody,
+                {
+                    title: __("Back Description Style"),
+                    className: "premium-panel-body",
+                    initialOpen: false
+                },
                 wp.element.createElement(
-                    "p",
-                    null,
+                    "div",
+                    { className: "premium-control-toggle" },
                     wp.element.createElement(
-                        "strong",
+                        "p",
                         null,
-                        __("Color")
-                    )
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Color")
+                        )
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: backDescriptionColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ backDescriptionColor: newColor || "#ddd" });
+                        },
+                        allowReset: true
+                    })
                 ),
-                wp.element.createElement(ColorPalette, {
-                    value: backIconColor,
-                    onChange: function onChange(newColor) {
-                        return setAttributes({ backIconColor: newColor || "#fff" });
-                    },
-                    allowReset: true
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
                 wp.element.createElement(
-                    "p",
-                    null,
-                    wp.element.createElement(
-                        "strong",
-                        null,
-                        __("Background Color")
-                    )
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
+                        components: ["size", "line"],
+                        size: backDescSize,
+                        line: backDesclineHeight,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return setAttributes({ backDescSize: newSize });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return setAttributes({ backDesclineHeight: newValue });
+                        }
+                    })
                 ),
-                wp.element.createElement(ColorPalette, {
-                    value: backIconBackground,
-                    onChange: function onChange(newBgColor) {
-                        return setAttributes({ backIconBackground: newBgColor || "transparent" });
-                    },
-                    allowReset: true
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_margin__["a" /* default */], {
-                    directions: ["top", "right", "bottom", "left"],
-                    marginTop: backIconMarginTop,
-                    marginRight: backIconMarginRight,
-                    marginBottom: backIconMarginBottom,
-                    marginLeft: backIconMarginLeft,
-                    onChangeMarTop: function onChangeMarTop(newMarTop) {
-                        return setAttributes({
-                            backIconMarginTop: newMarTop || "0"
-                        });
-                    },
-                    onChangeMarRight: function onChangeMarRight(newMarRight) {
-                        return setAttributes({
-                            backIconMarginRight: newMarRight || "0"
-                        });
-                    },
-                    onChangeMarBottom: function onChangeMarBottom(newMarBottom) {
-                        return setAttributes({
-                            backIconMarginBottom: newMarBottom || "0"
-                        });
-                    },
-                    onChangeMarLeft: function onChangeMarLeft(newMarLeft) {
-                        return setAttributes({
-                            backIconMarginLeft: newMarLeft || "0"
-                        });
-                    },
-                    showUnits: true,
-                    onChangeMarSizeUnit: function onChangeMarSizeUnit(newMarUnit) {
-                        return setAttributes({ backMarUnit: newMarUnit || "px" });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_padding__["a" /* default */], {
-                    paddingTop: backIconPaddingTop,
-                    paddingRight: backIconPaddingRight,
-                    paddingBottom: backIconPaddingBottom,
-                    paddingLeft: backIconPaddingLeft,
-                    onChangePadTop: function onChangePadTop(newPadTop) {
-                        return setAttributes({
-                            backIconPaddingTop: newPadTop || "0"
-                        });
-                    },
-                    onChangePadRight: function onChangePadRight(newPadRight) {
-                        return setAttributes({
-                            backIconPaddingRight: newPadRight || "0"
-                        });
-                    },
-                    onChangePadBottom: function onChangePadBottom(newPadBottom) {
-                        return setAttributes({
-                            backIconPaddingBottom: newPadBottom || "0"
-                        });
-                    },
-                    onChangePadLeft: function onChangePadLeft(newPadleft) {
-                        return setAttributes({
-                            backIconPaddingLeft: newPadleft || "0"
-                        });
-                    },
-                    showUnits: true,
-                    onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                        return setAttributes({ backPadUnit: newvalue || "px" });
-                    }
-                })
-            )
-        ),
-        backTitleCheck && wp.element.createElement(
-            PanelBody,
-            {
-                title: __("Back Title Style"),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
                 wp.element.createElement(
-                    "p",
-                    null,
-                    wp.element.createElement(
-                        "strong",
-                        null,
-                        __("Color")
-                    )
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_text_shadow__["a" /* default */], {
+                        color: backDescShadowColor,
+                        blur: backDescShadowBlur,
+                        horizontal: backDescShadowHorizontal,
+                        vertical: backDescShadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return setAttributes({ backDescShadowColor: newColor.hex || "transparent" });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return setAttributes({ backDescShadowBlur: newBlur || "0" });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return setAttributes({ backDescShadowHorizontal: newValue || "0" });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return setAttributes({ backDescShadowVertical: newValue || "0" });
+                        }
+                    })
                 ),
-                wp.element.createElement(ColorPalette, {
-                    value: backTitleColor,
-                    onChange: function onChange(newColor) {
-                        return setAttributes({ backTitleColor: newColor || "#fff" });
-                    },
-                    allowReset: true
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
-                    components: ["size", "line"],
-                    size: backTitleSize,
-                    line: backTitleLineHeight,
-                    onChangeSize: function onChangeSize(newSize) {
-                        return setAttributes({ backTitleSize: newSize });
-                    },
-                    onChangeLine: function onChangeLine(newLineHeight) {
-                        return setAttributes({ backTitleLineHeight: newLineHeight });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_text_shadow__["a" /* default */], {
-                    color: backTitleShadowColor,
-                    blur: backTitleShadowBlur,
-                    horizontal: backTitleShadowHorizontal,
-                    vertical: backTitleShadowVertical,
-                    onChangeColor: function onChangeColor(newShadColor) {
-                        return setAttributes({ backTitleShadowColor: newShadColor.hex || "transparent" });
-                    },
-                    onChangeBlur: function onChangeBlur(newShadBlur) {
-                        return setAttributes({ backTitleShadowBlur: newShadBlur || "0" });
-                    },
-                    onChangehHorizontal: function onChangehHorizontal(newShadHorizontal) {
-                        return setAttributes({ backTitleShadowHorizontal: newShadHorizontal || "0" });
-                    },
-                    onChangeVertical: function onChangeVertical(newShadVertical) {
-                        return setAttributes({ backTitleShadowVertical: newShadVertical || "0" });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_margin__["a" /* default */], {
-                    directions: ["top", "right", "bottom", "left"],
-                    marginTop: backTitleMarginTop,
-                    marginRight: backTitleMarginRight,
-                    marginBottom: backTitleMarginBottom,
-                    marginLeft: backTitleMarginLeft,
-                    onChangeMarTop: function onChangeMarTop(newMarTop) {
-                        return setAttributes({
-                            backTitleMarginTop: newMarTop
-                        });
-                    },
-                    onChangeMarRight: function onChangeMarRight(newMarRight) {
-                        return setAttributes({
-                            backTitleMarginRight: newMarRight
-                        });
-                    },
-                    onChangeMarBottom: function onChangeMarBottom(newMarBottom) {
-                        return setAttributes({
-                            backTitleMarginBottom: newMarBottom
-                        });
-                    },
-                    onChangeMarLeft: function onChangeMarLeft(newMarLeft) {
-                        return setAttributes({
-                            backTitleMarginLeft: newMarLeft
-                        });
-                    },
-                    showUnits: true,
-                    onChangeMarSizeUnit: function onChangeMarSizeUnit(newMarvalue) {
-                        return setAttributes({ pxUnit: newMarvalue || "px" });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_padding__["a" /* default */], {
-                    paddingTop: backTitlePaddingTop,
-                    paddingRight: backTitlePaddingRight,
-                    paddingBottom: backTitlePaddingBottom,
-                    paddingLeft: backTitlePaddingLeft,
-                    onChangePadTop: function onChangePadTop(newPadTop) {
-                        return setAttributes({
-                            backTitlePaddingTop: newPadTop
-                        });
-                    },
-                    onChangePadRight: function onChangePadRight(newPadRight) {
-                        return setAttributes({
-                            backTitlePaddingRight: newPadRight
-                        });
-                    },
-                    onChangePadBottom: function onChangePadBottom(newPadBottom) {
-                        return setAttributes({
-                            backTitlePaddingBottom: newPadBottom
-                        });
-                    },
-                    onChangePadLeft: function onChangePadLeft(newPadLeft) {
-                        return setAttributes({
-                            backTitlePaddingLeft: newPadLeft
-                        });
-                    },
-                    showUnits: true,
-                    onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                        return setAttributes({ pxUnit: newvalue || "px" });
-                    }
-                })
-            )
-        ),
-        backDescCheck && wp.element.createElement(
-            PanelBody,
-            {
-                title: __("Back Description Style"),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
                 wp.element.createElement(
-                    "p",
-                    null,
-                    wp.element.createElement(
-                        "strong",
-                        null,
-                        __("Color")
-                    )
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_margin__["a" /* default */], {
+                        directions: ["top", "right", "bottom", "left"],
+                        marginTop: backDescMarginTop,
+                        marginRight: backDescMarginRight,
+                        marginBottom: backDescMarginBottom,
+                        marginLeft: backDescMarginLeft,
+                        onChangeMarTop: function onChangeMarTop(newValue) {
+                            return setAttributes({
+                                backDescMarginTop: newValue
+                            });
+                        },
+                        onChangeMarRight: function onChangeMarRight(newValue) {
+                            return setAttributes({
+                                backDescMarginRight: newValue
+                            });
+                        },
+                        onChangeMarBottom: function onChangeMarBottom(newValue) {
+                            return setAttributes({
+                                backDescMarginBottom: newValue
+                            });
+                        },
+                        onChangeMarLeft: function onChangeMarLeft(newValue) {
+                            return setAttributes({
+                                backDescMarginLeft: newValue
+                            });
+                        },
+                        showUnits: false
+                    })
                 ),
-                wp.element.createElement(ColorPalette, {
-                    value: backDescriptionColor,
-                    onChange: function onChange(newColor) {
-                        return setAttributes({ backDescriptionColor: newColor || "#ddd" });
-                    },
-                    allowReset: true
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
-                    components: ["size", "line"],
-                    size: backDescSize,
-                    line: backDesclineHeight,
-                    onChangeSize: function onChangeSize(newSize) {
-                        return setAttributes({ backDescSize: newSize });
-                    },
-                    onChangeLine: function onChangeLine(newlineHeight) {
-                        return setAttributes({ backDesclineHeight: newlineHeight });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_text_shadow__["a" /* default */], {
-                    color: backDescShadowColor,
-                    blur: backDescShadowBlur,
-                    horizontal: backDescShadowHorizontal,
-                    vertical: backDescShadowVertical,
-                    onChangeColor: function onChangeColor(newShadColor) {
-                        return setAttributes({ backDescShadowColor: newShadColor.hex || "transparent" });
-                    },
-                    onChangeBlur: function onChangeBlur(newShadBlur) {
-                        return setAttributes({ backDescShadowBlur: newShadBlur || "0" });
-                    },
-                    onChangehHorizontal: function onChangehHorizontal(newShadHorizontal) {
-                        return setAttributes({ backDescShadowHorizontal: newShadHorizontal || "0" });
-                    },
-                    onChangeVertical: function onChangeVertical(newShadVertical) {
-                        return setAttributes({ backDescShadowVertical: newShadVertical || "0" });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_margin__["a" /* default */], {
-                    directions: ["top", "right", "bottom", "left"],
-                    marginTop: backDescMarginTop,
-                    marginRight: backDescMarginRight,
-                    marginBottom: backDescMarginBottom,
-                    marginLeft: backDescMarginLeft,
-                    onChangeMarTop: function onChangeMarTop(newMarTop) {
-                        return setAttributes({
-                            backDescMarginTop: newMarTop
-                        });
-                    },
-                    onChangeMarRight: function onChangeMarRight(newMarRight) {
-                        return setAttributes({
-                            backDescMarginRight: newMarRight
-                        });
-                    },
-                    onChangeMarBottom: function onChangeMarBottom(newMarBottom) {
-                        return setAttributes({
-                            backDescMarginBottom: newMarBottom
-                        });
-                    },
-                    onChangeMarLeft: function onChangeMarLeft(newMarLeft) {
-                        return setAttributes({
-                            backDescMarginLeft: newMarLeft
-                        });
-                    },
-                    showUnits: true,
-                    onChangeMarSizeUnit: function onChangeMarSizeUnit(newMarvalue) {
-                        return setAttributes({ pxUnit: newMarvalue || "px" });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_padding__["a" /* default */], {
-                    paddingTop: backDescPaddingTop,
-                    paddingRight: backDescPaddingRight,
-                    paddingBottom: backDescPaddingBottom,
-                    paddingLeft: backDescPaddingLeft,
-                    onChangePadTop: function onChangePadTop(newPadTop) {
-                        return setAttributes({
-                            backDescPaddingTop: newPadTop
-                        });
-                    },
-                    onChangePadRight: function onChangePadRight(newPadRight) {
-                        return setAttributes({
-                            backDescPaddingRight: newPadRight
-                        });
-                    },
-                    onChangePadBottom: function onChangePadBottom(newPadBottom) {
-                        return setAttributes({
-                            backDescPaddingBottom: newPadBottom
-                        });
-                    },
-                    onChangePadLeft: function onChangePadLeft(newPadLeft) {
-                        return setAttributes({
-                            backDescPaddingLeft: newPadLeft
-                        });
-                    },
-                    showUnits: true,
-                    onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                        return setAttributes({ pxUnit: newvalue || "px" });
-                    }
-                })
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_padding__["a" /* default */], {
+                        paddingTop: backDescPaddingTop,
+                        paddingRight: backDescPaddingRight,
+                        paddingBottom: backDescPaddingBottom,
+                        paddingLeft: backDescPaddingLeft,
+                        onChangePadTop: function onChangePadTop(newValue) {
+                            return setAttributes({
+                                backDescPaddingTop: newValue
+                            });
+                        },
+                        onChangePadRight: function onChangePadRight(newValue) {
+                            return setAttributes({
+                                backDescPaddingRight: newValue
+                            });
+                        },
+                        onChangePadBottom: function onChangePadBottom(newValue) {
+                            return setAttributes({
+                                backDescPaddingBottom: newValue
+                            });
+                        },
+                        onChangePadLeft: function onChangePadLeft(newValue) {
+                            return setAttributes({
+                                backDescPaddingLeft: newValue
+                            });
+                        },
+                        showUnits: false
+                    })
+                )
             )
         )
     ), wp.element.createElement(
@@ -42802,23 +42892,18 @@ var edit = function edit(props) {
                                     {
                                         className: "premium-flipbox__froIcon",
                                         style: {
-                                            // marginTop: (frontIconMarginTop || "0") + (froMarUnit + "px"),
-                                            // marginRight: (frontIconMarginRight || "0") + (froMarUnit + "px"),
-                                            // marginBottom: (frontIconMarginBottom || "0") + (froMarUnit + "px"),
-                                            // marginLeft: (frontIconMarginLeft || "0") + (froMarUnit + "px"),
-
                                             marginTop: (frontIconMarginTop || "0") + (froMarUnit || "px"),
                                             marginRight: (frontIconMarginRight || "0") + (froMarUnit || "px"),
                                             marginBottom: (frontIconMarginBottom || "0") + (froMarUnit || "px"),
                                             marginLeft: (frontIconMarginLeft || "0") + (froMarUnit || "px")
                                         }
                                     },
-                                    frontIconType === "fa" && 1 != __WEBPACK_IMPORTED_MODULE_6__assets_js_settings__["a" /* FontAwesomeEnabled */] && wp.element.createElement(
+                                    frontIconType === "fa" && 1 != __WEBPACK_IMPORTED_MODULE_7__assets_js_settings__["a" /* FontAwesomeEnabled */] && wp.element.createElement(
                                         "p",
                                         { className: "premium-icon__alert" },
                                         __("Please Enable Font Awesome Icons from Plugin settings")
                                     ),
-                                    (frontIconType === "dash" || 1 == __WEBPACK_IMPORTED_MODULE_6__assets_js_settings__["a" /* FontAwesomeEnabled */]) && wp.element.createElement("i", {
+                                    (frontIconType === "dash" || 1 == __WEBPACK_IMPORTED_MODULE_7__assets_js_settings__["a" /* FontAwesomeEnabled */]) && wp.element.createElement("i", {
                                         className: "premium-icon " + frontIconSelected,
                                         style: {
                                             width: "auto",
@@ -42826,6 +42911,10 @@ var edit = function edit(props) {
                                             color: frontIconColor || "#000",
                                             backgroundColor: frontIconBackground || "transparent",
                                             fontSize: (frontIconSize || 50) + frontIconUnit,
+                                            border: froIconBorderType || "none",
+                                            borderWidth: (froIconBorderWidth || "1") + "px",
+                                            borderRadius: (froIconBorderRadius || "100") + "px",
+                                            borderColor: froIconBorderColor || "transparent",
                                             paddingTop: (frontIconPaddingTop || "0") + (froPadUnit || "px"),
                                             paddingRight: (frontIconPaddingRight || "0") + (froPadUnit || "px"),
                                             paddingBottom: (frontIconPaddingBottom || "0") + (froPadUnit || "px"),
@@ -42914,12 +43003,12 @@ var edit = function edit(props) {
                                             marginLeft: (backIconMarginLeft || "0") + (backMarUnit || "px")
                                         }
                                     },
-                                    backIconType === "fa" && 1 != __WEBPACK_IMPORTED_MODULE_6__assets_js_settings__["a" /* FontAwesomeEnabled */] && wp.element.createElement(
+                                    backIconType === "fa" && 1 != __WEBPACK_IMPORTED_MODULE_7__assets_js_settings__["a" /* FontAwesomeEnabled */] && wp.element.createElement(
                                         "p",
                                         { className: "premium-icon__alert" },
                                         __("Please Enable Font Awesome Icons from Plugin settings")
                                     ),
-                                    (backIconType === "dash" || 1 == __WEBPACK_IMPORTED_MODULE_6__assets_js_settings__["a" /* FontAwesomeEnabled */]) && wp.element.createElement("i", {
+                                    (backIconType === "dash" || 1 == __WEBPACK_IMPORTED_MODULE_7__assets_js_settings__["a" /* FontAwesomeEnabled */]) && wp.element.createElement("i", {
                                         className: "premium-icon " + backIconSelected,
                                         style: {
                                             width: "auto",
@@ -42927,6 +43016,10 @@ var edit = function edit(props) {
                                             color: backIconColor || "#000",
                                             backgroundColor: backIconBackground || "transparent",
                                             fontSize: (backIconSize || 50) + backIconUnit,
+                                            border: backIconBorderType || "none",
+                                            borderWidth: (backIconBorderWidth || "1") + "px",
+                                            borderRadius: (backIconBorderRadius || "100") + "px",
+                                            borderColor: backIconBorderColor || "transparent",
                                             paddingTop: (backIconPaddingTop || "0") + (backPadUnit || "px"),
                                             paddingRight: (backIconPaddingRight || "0") + (backPadUnit || "px"),
                                             paddingBottom: (backIconPaddingBottom || "0") + (backPadUnit || "px"),
@@ -43027,6 +43120,10 @@ var save = function save(props) {
         frontIconSize = _props$attributes.frontIconSize,
         frontIconColor = _props$attributes.frontIconColor,
         frontIconBackground = _props$attributes.frontIconBackground,
+        froIconBorderType = _props$attributes.froIconBorderType,
+        froIconBorderWidth = _props$attributes.froIconBorderWidth,
+        froIconBorderRadius = _props$attributes.froIconBorderRadius,
+        froIconBorderColor = _props$attributes.froIconBorderColor,
         frontIconPaddingTop = _props$attributes.frontIconPaddingTop,
         frontIconPaddingRight = _props$attributes.frontIconPaddingRight,
         frontIconPaddingBottom = _props$attributes.frontIconPaddingBottom,
@@ -43076,6 +43173,10 @@ var save = function save(props) {
         backIconSize = _props$attributes.backIconSize,
         backIconColor = _props$attributes.backIconColor,
         backIconBackground = _props$attributes.backIconBackground,
+        backIconBorderType = _props$attributes.backIconBorderType,
+        backIconBorderWidth = _props$attributes.backIconBorderWidth,
+        backIconBorderRadius = _props$attributes.backIconBorderRadius,
+        backIconBorderColor = _props$attributes.backIconBorderColor,
         backIconPaddingTop = _props$attributes.backIconPaddingTop,
         backIconPaddingRight = _props$attributes.backIconPaddingRight,
         backIconPaddingBottom = _props$attributes.backIconPaddingBottom,
@@ -43168,6 +43269,10 @@ var save = function save(props) {
                                             color: frontIconColor || "#000",
                                             backgroundColor: frontIconBackground || "transparent",
                                             fontSize: (frontIconSize || 50) + frontIconUnit,
+                                            border: froIconBorderType || "none",
+                                            borderWidth: (froIconBorderWidth || "0") + "px",
+                                            borderRadius: (froIconBorderRadius || "0") + "px",
+                                            borderColor: froIconBorderColor || "transparent",
                                             paddingTop: (frontIconPaddingTop || "0") + (froPadUnit || "px"),
                                             paddingRight: (frontIconPaddingRight || "0") + (froPadUnit || "px"),
                                             paddingBottom: (frontIconPaddingBottom || "0") + (froPadUnit || "px"),
@@ -43192,8 +43297,7 @@ var save = function save(props) {
                                         marginBottom: frontTitleMarginBottom + "px",
                                         marginLeft: frontTitleMarginLeft + "px",
                                         marginRight: frontTitleMarginRight + "px"
-                                    },
-                                    keepPlaceholderOnFocus: true
+                                    }
                                 }),
                                 frontDescCheck && wp.element.createElement(RichText.Content, {
                                     tagName: "p",
@@ -43212,8 +43316,7 @@ var save = function save(props) {
                                         marginBottom: frontDescMarginBottom + "px",
                                         marginLeft: frontDescMarginLeft + "px",
                                         marginRight: frontDescMarginRight + "px"
-                                    },
-                                    keepPlaceholderOnFocus: true
+                                    }
                                 })
                             )
                         )
@@ -43259,6 +43362,10 @@ var save = function save(props) {
                                             color: backIconColor || "#000",
                                             backgroundColor: backIconBackground || "transparent",
                                             fontSize: (backIconSize || 50) + backIconUnit,
+                                            border: backIconBorderType || "none",
+                                            borderWidth: (backIconBorderWidth || "0") + "px",
+                                            borderRadius: (backIconBorderRadius || "0") + "px",
+                                            borderColor: backIconBorderColor || "transparent",
                                             paddingTop: (backIconPaddingTop || "0") + (backPadUnit || "px"),
                                             paddingRight: (backIconPaddingRight || "0") + (backPadUnit || "px"),
                                             paddingBottom: (backIconPaddingBottom || "0") + (backPadUnit || "px"),
@@ -43283,8 +43390,7 @@ var save = function save(props) {
                                         marginBottom: backTitleMarginBottom + "px",
                                         marginLeft: backTitleMarginLeft + "px",
                                         marginRight: backTitleMarginRight + "px"
-                                    },
-                                    keepPlaceholderOnFocus: true
+                                    }
                                 }),
                                 backDescCheck && wp.element.createElement(RichText.Content, {
                                     tagName: "p",
@@ -43303,8 +43409,7 @@ var save = function save(props) {
                                         marginBottom: backDescMarginBottom + "px",
                                         marginLeft: backDescMarginLeft + "px",
                                         marginRight: backDescMarginRight + "px"
-                                    },
-                                    keepPlaceholderOnFocus: true
+                                    }
                                 })
                             )
                         )

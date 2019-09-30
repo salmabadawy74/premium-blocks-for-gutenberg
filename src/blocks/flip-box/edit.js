@@ -3,6 +3,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
+import PremiumBorder from "../../components/premium-border";
 import PremiumSizeUnits from "../../components/premium-size-units";
 import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
@@ -35,6 +36,10 @@ const edit = props => {
         frontIconSize,
         frontIconColor,
         frontIconBackground,
+        froIconBorderType,
+        froIconBorderWidth,
+        froIconBorderRadius,
+        froIconBorderColor,
         frontIconPaddingTop,
         frontIconPaddingRight,
         frontIconPaddingBottom,
@@ -74,7 +79,6 @@ const edit = props => {
         frontDescMarginRight,
         frontDescMarginBottom,
         frontDescMarginLeft,
-        pxUnit,
         froMarUnit,
         froPadUnit,
         backMarUnit,
@@ -85,6 +89,10 @@ const edit = props => {
         backIconSize,
         backIconColor,
         backIconBackground,
+        backIconBorderType,
+        backIconBorderWidth,
+        backIconBorderRadius,
+        backIconBorderColor,
         backIconPaddingTop,
         backIconPaddingRight,
         backIconPaddingBottom,
@@ -128,12 +136,47 @@ const edit = props => {
         alignFroVertical,
         alignBackHorizontal,
         alignBackVertical,
-        primary,
         activeSide
 
     } = props.attributes;
 
-    const ALIGN_Front = [
+    const ALIGN_Front_H = [
+        {
+            icon: 'editor-alignleft',
+            title: __('left'),
+            align: 'flex-start',
+        },
+        {
+            icon: 'editor-aligncenter',
+            title: __('Center'),
+            align: 'center',
+        },
+        {
+            icon: 'editor-alignright',
+            title: __('Right'),
+            align: 'flex-end',
+        },
+    ];
+
+    const ALIGN_Back_H = [
+        {
+            icon: 'editor-alignleft',
+            title: __('left'),
+            align: 'flex-start',
+        },
+        {
+            icon: 'editor-aligncenter',
+            title: __('Center'),
+            align: 'center',
+        },
+        {
+            icon: 'editor-alignright',
+            title: __('Right'),
+            align: 'flex-end',
+        },
+    ];
+
+    const ALIGN_Front_V = [
         {
             icon: 'arrow-up-alt2',
             title: __('Top'),
@@ -151,7 +194,7 @@ const edit = props => {
         },
     ];
 
-    const ALIGN_Back = [
+    const ALIGN_Back_V = [
         {
             icon: 'arrow-up-alt2',
             title: __('Top'),
@@ -187,8 +230,7 @@ const edit = props => {
         })
     }
 
-    const createArrowsControl = (arrows) => {
-
+    const createControlers = (arrows) => {
         return {
             icon: `arrow-${arrows}-alt2`,
             title: (arrows == "right") ? "Front" : "Back",
@@ -214,867 +256,873 @@ const edit = props => {
 
     return [
         isSelected && (
-            <BlockControls key="controls">
-                <AlignmentToolbar
-                    label={__('Front Alignment Horizontal')}
-                    value={alignFroHorizontal}
-                    onChange={newAlign => setAttributes({ alignFroHorizontal: newAlign || "center" })}
-                />
-            </BlockControls>
-        ),
-        isSelected && (
-            <BlockControls key="controls">
-                <AlignmentToolbar
-                    label={__('Front Alignment Vertical')}
-                    value={alignFroVertical}
-                    onChange={newAlign => setAttributes({ alignFroVertical: newAlign || "center" })}
-                    alignmentControls={ALIGN_Front}
-                />
-            </BlockControls>
-        ),
-        isSelected && (
-            <BlockControls key="controls">
-                <AlignmentToolbar
-                    label={__('Back Alignment Horizontal')}
-                    value={alignBackHorizontal}
-                    onChange={newAlign => setAttributes({ alignBackHorizontal: newAlign || "center" })}
-                />
-            </BlockControls>
-        ),
-        isSelected && (
-            <BlockControls key="controls">
-                <AlignmentToolbar
-                    label={__('Back Alignment Vertical')}
-                    value={alignBackVertical}
-                    onChange={newAlign => setAttributes({ alignBackVertical: newAlign || "center" })}
-                    alignmentControls={ALIGN_Back}
-                />
-            </BlockControls>
-        ),
-        isSelected && (
-            <BlockControls key="controls">
-                <Toolbar
-                    controls={['right', 'left'].map(createArrowsControl)}
-                />
-            </BlockControls>
-        ),
+            <div>
+                <BlockControls key="controls">
+                    <AlignmentToolbar
+                        label={__('Front Alignment Horizontal')}
+                        value={alignFroHorizontal}
+                        onChange={newAlign => setAttributes({ alignFroHorizontal: newAlign || "center" })}
+                        alignmentControls={ALIGN_Front_H}
+                    />
+                </BlockControls>
 
-        isSelected && (
-            <InspectorControls key={"inspector"}>
+                <BlockControls key="controls">
+                    <AlignmentToolbar
+                        label={__('Front Alignment Vertical')}
+                        value={alignFroVertical}
+                        onChange={newAlign => setAttributes({ alignFroVertical: newAlign || "center" })}
+                        alignmentControls={ALIGN_Front_V}
+                    />
+                </BlockControls>
 
-                {/* Start Front side */}
-                <PanelBody
-                    title={__("Front Side")}
-                    className="premium-panel-body"
-                    initialOpen={true}
-                >
-                    <div className="premium-control-toggle">
-                        <p><strong>{__("Background Color")}</strong></p>
-                        <ColorPalette
-                            value={frontBackgroundColor}
-                            onChange={newBgColor => setAttributes({ frontBackgroundColor: newBgColor || "#7c5707" })}
-                            allowReset={true}
-                        />
-                    </div>
+                <BlockControls key="controls">
+                    <AlignmentToolbar
+                        label={__('Back Alignment Horizontal')}
+                        value={alignBackHorizontal}
+                        onChange={newAlign => setAttributes({ alignBackHorizontal: newAlign || "center" })}
+                        alignmentControls={ALIGN_Back_H}
+                    />
+                </BlockControls>
 
-                    {/* Front icon options */}
+                <BlockControls key="controls">
+                    <AlignmentToolbar
+                        label={__('Back Alignment Vertical')}
+                        value={alignBackVertical}
+                        onChange={newAlign => setAttributes({ alignBackVertical: newAlign || "center" })}
+                        alignmentControls={ALIGN_Back_V}
+                    />
+                </BlockControls>
 
-                    <div className="premium-control-toggle">
-                        <ToggleControl
-                            label={__("Icon")}
-                            checked={frontIconCheck}
-                            onChange={newCheck => setAttributes({ frontIconCheck: newCheck })}
-                        />
-                    </div>
-                    {frontIconCheck && (
+                <BlockControls key="controls">
+                    <Toolbar
+                        controls={['right', 'left'].map(createControlers)}
+                    />
+                </BlockControls>
+
+                <InspectorControls key={"inspector"}>
+
+                    {/* Start Front side */}
+                    <PanelBody
+                        title={__("Front Side")}
+                        className="premium-panel-body"
+                        initialOpen={true}
+                    >
                         <div className="premium-control-toggle">
-                            <p><strong>{__("Select Icon")}</strong></p>
-                            <FontIconPicker
-                                icons={iconsList}
-                                onChange={newIcon => setAttributes({ frontIconSelected: newIcon || "dashicons dashicons-admin-site" })}
-                                value={frontIconSelected}
-                                isMulti={false}
-                                appendTo="body"
-                                noSelectedPlaceholder={__("Select Icon")}
-                            />
-                        </div>
-                    )}
-                    {frontIconCheck && (
-                        <PremiumSizeUnits
-                            onChangeSizeUnit={newValue =>
-                                setAttributes({ frontIconUnit: newValue || "px" })
-                            }
-                        />
-                    )}
-                    {frontIconCheck && (
-                        <div className="premium-control-toggle">
-                            <RangeControl
-                                label={__("Size")}
-                                value={frontIconSize}
-                                onChange={newValue => setAttributes({ frontIconSize: newValue || "50" })}
-                                initialPosition={50}
+                            <p><strong>{__("Background Color")}</strong></p>
+                            <ColorPalette
+                                value={frontBackgroundColor}
+                                onChange={newBgColor => setAttributes({ frontBackgroundColor: newBgColor || "#7c5707" })}
                                 allowReset={true}
                             />
                         </div>
+
+                        {/* Front icon options */}
+
+                        <div className="premium-control-toggle">
+                            <ToggleControl
+                                label={__("Icon")}
+                                checked={frontIconCheck}
+                                onChange={newCheck => setAttributes({ frontIconCheck: newCheck })}
+                            />
+                        </div>
+                        {frontIconCheck && (
+                            <div className="premium-control-toggle">
+                                <p><strong>{__("Select Icon")}</strong></p>
+                                <FontIconPicker
+                                    icons={iconsList}
+                                    onChange={newIcon => setAttributes({ frontIconSelected: newIcon || "dashicons dashicons-admin-site" })}
+                                    value={frontIconSelected}
+                                    isMulti={false}
+                                    appendTo="body"
+                                    noSelectedPlaceholder={__("Select Icon")}
+                                />
+                            </div>
+                        )}
+                        {frontIconCheck && (
+                            <PremiumSizeUnits
+                                onChangeSizeUnit={newValue =>
+                                    setAttributes({ frontIconUnit: newValue || "px" })
+                                }
+                            />
+                        )}
+                        {frontIconCheck && (
+                            <div className="premium-control-toggle">
+                                <RangeControl
+                                    label={__("Size")}
+                                    value={frontIconSize}
+                                    onChange={newValue => setAttributes({ frontIconSize: newValue || "50" })}
+                                    initialPosition={50}
+                                    allowReset={true}
+                                />
+                            </div>
+                        )}
+
+                        {/* Front Title options */}
+
+                        <div className="premium-control-toggle">
+                            <ToggleControl
+                                label={__("Title")}
+                                checked={frontTitleCheck}
+                                onChange={newCheck => setAttributes({ frontTitleCheck: newCheck })}
+                            />
+                        </div>
+                        {frontTitleCheck && (
+                            <div className="premium-control-toggle">
+                                <TextControl
+                                    label={__("Title Text")}
+                                    value={frontTitle}
+                                    onChange={newTitle => setAttributes({ frontTitle: newTitle })}
+                                />
+                            </div>
+                        )}
+
+                        {/* Front Description options */}
+
+                        <div className="premium-control-toggle">
+                            <ToggleControl
+                                label={__("Description")}
+                                checked={frontDescCheck}
+                                onChange={newCheck => setAttributes({ frontDescCheck: newCheck })}
+                            />
+                        </div>
+                        {frontDescCheck && (
+                            <div className="premium-control-toggle">
+                                <TextControl
+                                    label={__("Description Text")}
+                                    value={frontDescription}
+                                    onChange={newDesc => setAttributes({ frontDescription: newDesc })}
+                                />
+                            </div>
+                        )}
+                        <div className="premium-control-toggle">
+                            <ButtonGroup>
+                                <Button
+                                    isPrimary={(activeSide === "right") ? true : false}
+                                    isDefault={(activeSide === "right") ? false : true}
+                                    className="premium-unit-control-btn front-btn"
+                                    onClick={handleFront}
+                                >
+                                    Front Side
+                            </Button>
+                                <Button
+                                    isPrimary={(activeSide === "left") ? true : false}
+                                    isDefault={(activeSide === "left") ? false : true}
+                                    className="premium-unit-control-btn back-btn"
+                                    onClick={handleBack}
+                                >
+                                    Back Side
+                            </Button>
+                            </ButtonGroup>
+                        </div>
+
+                    </PanelBody>
+                    {/* End Front side */}
+
+                    {/* Start Front side options */}
+                    {frontIconCheck && (
+                        <PanelBody
+                            title={__("Front Icon Style")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <div className="premium-control-toggle">
+                                <p><strong>{__("Color")}</strong></p>
+                                <ColorPalette
+                                    value={frontIconColor}
+                                    onChange={newColor => setAttributes({ frontIconColor: newColor || "#fff" })}
+                                    allowReset={true}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <p><strong>{__("Background Color")}</strong></p>
+                                <ColorPalette
+                                    value={frontIconBackground}
+                                    onChange={newColor => setAttributes({ frontIconBackground: newColor || "transparent" })}
+                                    allowReset={true}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumBorder
+                                    borderType={froIconBorderType}
+                                    borderWidth={froIconBorderWidth}
+                                    borderColor={froIconBorderColor}
+                                    borderRadius={froIconBorderRadius}
+                                    onChangeType={newType => setAttributes({ froIconBorderType: newType || "none" })}
+                                    onChangeWidth={newWidth => setAttributes({ froIconBorderWidth: newWidth || "0" })}
+                                    onChangeColor={colorValue =>
+                                        setAttributes({ froIconBorderColor: colorValue.hex || "transparent" })
+                                    }
+                                    onChangeRadius={newrRadius =>
+                                        setAttributes({ froIconBorderRadius: newrRadius || "0" })
+                                    }
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumMargin
+                                    directions={["top", "right", "bottom", "left"]}
+                                    marginTop={frontIconMarginTop}
+                                    marginRight={frontIconMarginRight}
+                                    marginBottom={frontIconMarginBottom}
+                                    marginLeft={frontIconMarginLeft}
+                                    onChangeMarTop={newValue =>
+                                        setAttributes({
+                                            frontIconMarginTop: newValue || "0"
+                                        })
+                                    }
+                                    onChangeMarRight={newValue =>
+                                        setAttributes({
+                                            frontIconMarginRight: newValue || "0"
+                                        })
+                                    }
+                                    onChangeMarBottom={newValue =>
+                                        setAttributes({
+                                            frontIconMarginBottom: newValue || "0"
+                                        })
+                                    }
+                                    onChangeMarLeft={newValue =>
+                                        setAttributes({
+                                            frontIconMarginLeft: newValue || "0"
+                                        })
+                                    }
+                                    showUnits={true}
+                                    onChangeMarSizeUnit={newValue =>
+                                        setAttributes({ froMarUnit: newValue || "px" })
+                                    }
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumPadding
+                                    paddingTop={frontIconPaddingTop}
+                                    paddingRight={frontIconPaddingRight}
+                                    paddingBottom={frontIconPaddingBottom}
+                                    paddingLeft={frontIconPaddingLeft}
+                                    onChangePadTop={newValue =>
+                                        setAttributes({
+                                            frontIconPaddingTop: newValue || "0"
+                                        })
+                                    }
+                                    onChangePadRight={newValue =>
+                                        setAttributes({
+                                            frontIconPaddingRight: newValue || "0"
+                                        })
+                                    }
+                                    onChangePadBottom={newValue =>
+                                        setAttributes({
+                                            frontIconPaddingBottom: newValue || "0"
+                                        })
+                                    }
+                                    onChangePadLeft={newValue =>
+                                        setAttributes({
+                                            frontIconPaddingLeft: newValue || "0"
+                                        })
+                                    }
+                                    showUnits={true}
+                                    onChangePadSizeUnit={newvalue =>
+                                        setAttributes({ froPadUnit: newvalue || "px" })
+                                    }
+                                />
+                            </div>
+
+                        </PanelBody>
                     )}
-
-                    {/* Front Title options */}
-
-                    <div className="premium-control-toggle">
-                        <ToggleControl
-                            label={__("Title")}
-                            checked={frontTitleCheck}
-                            onChange={newCheck => setAttributes({ frontTitleCheck: newCheck })}
-                        />
-                    </div>
                     {frontTitleCheck && (
-                        <div className="premium-control-toggle">
-                            <TextControl
-                                label={__("Title Text")}
-                                value={frontTitle}
-                                onChange={newTitle => setAttributes({ frontTitle: newTitle })}
-                            />
-                        </div>
+                        <PanelBody
+                            title={__("Front Title Style")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <div className="premium-control-toggle">
+                                <p><strong>{__("Color")}</strong></p>
+                                <ColorPalette
+                                    value={frontTitleColor}
+                                    onChange={newColor => setAttributes({ frontTitleColor: newColor || "#e3d192" })}
+                                    allowReset={true}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumTypo
+                                    components={["size", "line"]}
+                                    size={frontTitleSize}
+                                    line={frontTitlelineHeight}
+                                    onChangeSize={newSize => setAttributes({ frontTitleSize: newSize })}
+                                    onChangeLine={newValue => setAttributes({ frontTitlelineHeight: newValue })}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumTextShadow
+                                    color={frontTitleShadowColor}
+                                    blur={frontTitleShadowBlur}
+                                    horizontal={frontTitleShadowHorizontal}
+                                    vertical={frontTitleShadowVertical}
+                                    onChangeColor={newColor => setAttributes({ frontTitleShadowColor: newColor.hex || "transparent" })}
+                                    onChangeBlur={newBlur => setAttributes({ frontTitleShadowBlur: newBlur || "0" })}
+                                    onChangehHorizontal={newValue => setAttributes({ frontTitleShadowHorizontal: newValue || "0" })}
+                                    onChangeVertical={newValue => setAttributes({ frontTitleShadowVertical: newValue || "0" })}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumMargin
+                                    directions={["top", "right", "bottom", "left"]}
+                                    marginTop={frontTitleMarginTop}
+                                    marginRight={frontTitleMarginRight}
+                                    marginBottom={frontTitleMarginBottom}
+                                    marginLeft={frontTitleMarginLeft}
+                                    onChangeMarTop={newValue =>
+                                        setAttributes({
+                                            frontTitleMarginTop: newValue
+                                        })
+                                    }
+                                    onChangeMarRight={newValue =>
+                                        setAttributes({
+                                            frontTitleMarginRight: newValue
+                                        })
+                                    }
+                                    onChangeMarBottom={newValue =>
+                                        setAttributes({
+                                            frontTitleMarginBottom: newValue
+                                        })
+                                    }
+                                    onChangeMarLeft={newValue =>
+                                        setAttributes({
+                                            frontTitleMarginLeft: newValue
+                                        })
+                                    }
+                                    showUnits={false}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumPadding
+                                    paddingTop={frontTitlePaddingTop}
+                                    paddingRight={frontTitlePaddingRight}
+                                    paddingBottom={frontTitlePaddingBottom}
+                                    paddingLeft={frontTitlePaddingLeft}
+                                    onChangePadTop={newValue =>
+                                        setAttributes({
+                                            frontTitlePaddingTop: newValue
+                                        })
+                                    }
+                                    onChangePadRight={newValue =>
+                                        setAttributes({
+                                            frontTitlePaddingRight: newValue
+                                        })
+                                    }
+                                    onChangePadBottom={newValue =>
+                                        setAttributes({
+                                            frontTitlePaddingBottom: newValue
+                                        })
+                                    }
+                                    onChangePadLeft={newValue =>
+                                        setAttributes({
+                                            frontTitlePaddingLeft: newValue
+                                        })
+                                    }
+                                    showUnits={false}
+                                />
+                            </div>
+
+                        </PanelBody>
                     )}
-
-                    {/* Front Description options */}
-
-                    <div className="premium-control-toggle">
-                        <ToggleControl
-                            label={__("Description")}
-                            checked={frontDescCheck}
-                            onChange={newCheck => setAttributes({ frontDescCheck: newCheck })}
-                        />
-                    </div>
                     {frontDescCheck && (
-                        <div className="premium-control-toggle">
-                            <TextControl
-                                label={__("Description Text")}
-                                value={frontDescription}
-                                onChange={newDesc => setAttributes({ frontDescription: newDesc })}
-                            />
-                        </div>
+                        <PanelBody
+                            title={__("Front Description Style")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <div className="premium-control-toggle">
+                                <p><strong>{__("Color")}</strong></p>
+                                <ColorPalette
+                                    value={frontDescriptionColor}
+                                    onChange={newColor => setAttributes({ frontDescriptionColor: newColor || "#ddd" })}
+                                    allowReset={true}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumTypo
+                                    components={["size", "line"]}
+                                    size={frontDescSize}
+                                    line={frontDesclineHeight}
+                                    onChangeSize={newSize => setAttributes({ frontDescSize: newSize })}
+                                    onChangeLine={newValue => setAttributes({ frontDesclineHeight: newValue })}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumTextShadow
+                                    color={frontDescShadowColor}
+                                    blur={frontDescShadowBlur}
+                                    horizontal={frontDescShadowHorizontal}
+                                    vertical={frontDescShadowVertical}
+                                    onChangeColor={newColor => setAttributes({ frontDescShadowColor: newColor.hex || "transparent" })}
+                                    onChangeBlur={newBlur => setAttributes({ frontDescShadowBlur: newBlur || "0" })}
+                                    onChangehHorizontal={newValue => setAttributes({ frontDescShadowHorizontal: newValue || "0" })}
+                                    onChangeVertical={newValue => setAttributes({ frontDescShadowVertical: newValue || "0" })}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumMargin
+                                    directions={["top", "right", "bottom", "left"]}
+                                    marginTop={frontDescMarginTop}
+                                    marginRight={frontDescMarginRight}
+                                    marginBottom={frontDescMarginBottom}
+                                    marginLeft={frontDescMarginLeft}
+                                    onChangeMarTop={newValue =>
+                                        setAttributes({
+                                            frontDescMarginTop: newValue
+                                        })
+                                    }
+                                    onChangeMarRight={newValue =>
+                                        setAttributes({
+                                            frontDescMarginRight: newValue
+                                        })
+                                    }
+                                    onChangeMarBottom={newValue =>
+                                        setAttributes({
+                                            frontDescMarginBottom: newValue
+                                        })
+                                    }
+                                    onChangeMarLeft={newValue =>
+                                        setAttributes({
+                                            frontDescMarginLeft: newValue
+                                        })
+                                    }
+                                    showUnits={false}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumPadding
+                                    paddingTop={frontDescPaddingTop}
+                                    paddingRight={frontDescPaddingRight}
+                                    paddingBottom={frontDescPaddingBottom}
+                                    paddingLeft={frontDescPaddingLeft}
+                                    onChangePadTop={newValue =>
+                                        setAttributes({
+                                            frontDescPaddingTop: newValue
+                                        })
+                                    }
+                                    onChangePadRight={newValue =>
+                                        setAttributes({
+                                            frontDescPaddingRight: newValue
+                                        })
+                                    }
+                                    onChangePadBottom={newValue =>
+                                        setAttributes({
+                                            frontDescPaddingBottom: newValue
+                                        })
+                                    }
+                                    onChangePadLeft={newValue =>
+                                        setAttributes({
+                                            frontDescPaddingLeft: newValue
+                                        })
+                                    }
+                                    showUnits={false}
+                                />
+                            </div>
+
+                        </PanelBody>
                     )}
-                    <div className="premium-control-toggle">
-                        <ButtonGroup>
-                            <Button
-                                isPrimary={(activeSide === "right") ? true : false}
-                                isDefault={(activeSide === "right") ? false : true}
-                                className="premium-unit-control-btn front-btn"
-                                onClick={handleFront}
-                            >
-                                Front Side
-                            </Button>
-                            <Button
-                                isPrimary={(activeSide === "left") ? true : false}
-                                isDefault={(activeSide === "left") ? false : true}
-                                className="premium-unit-control-btn back-btn"
-                                onClick={handleBack}
-                            >
-                                Back Side
-                            </Button>
-                        </ButtonGroup>
-                    </div>
+                    {/* End Front side options */}
 
-                </PanelBody>
-                {/* End Front side */}
-
-                {/* Start Front side options */}
-                {frontIconCheck && (
+                    {/* Start Back side */}
                     <PanelBody
-                        title={__("Front Icon Style")}
+                        title={__("Back Side")}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <div className="premium-control-toggle">
-                            <p><strong>{__("Color")}</strong></p>
-                            <ColorPalette
-                                value={frontIconColor}
-                                onChange={newColor => setAttributes({ frontIconColor: newColor || "#fff" })}
-                                allowReset={true}
-                            />
-                        </div>
                         <div className="premium-control-toggle">
                             <p><strong>{__("Background Color")}</strong></p>
                             <ColorPalette
-                                value={frontIconBackground}
-                                onChange={newBgColor => setAttributes({ frontIconBackground: newBgColor || "transparent" })}
+                                value={backBackgroundColor}
+                                onChange={newColor => setAttributes({ backBackgroundColor: newColor || "#ae8686" })}
                                 allowReset={true}
                             />
                         </div>
+
+                        {/* Back icon options */}
+
                         <div className="premium-control-toggle">
-                            <PremiumMargin
-                                directions={["top", "right", "bottom", "left"]}
-                                marginTop={frontIconMarginTop}
-                                marginRight={frontIconMarginRight}
-                                marginBottom={frontIconMarginBottom}
-                                marginLeft={frontIconMarginLeft}
-                                onChangeMarTop={newMarTop =>
-                                    setAttributes({
-                                        frontIconMarginTop: newMarTop || "0"
-                                    })
-                                }
-                                onChangeMarRight={newMarRight =>
-                                    setAttributes({
-                                        frontIconMarginRight: newMarRight || "0"
-                                    })
-                                }
-                                onChangeMarBottom={newMarBottom =>
-                                    setAttributes({
-                                        frontIconMarginBottom: newMarBottom || "0"
-                                    })
-                                }
-                                onChangeMarLeft={newMarLeft =>
-                                    setAttributes({
-                                        frontIconMarginLeft: newMarLeft || "0"
-                                    })
-                                }
-                                showUnits={true}
-                                onChangeMarSizeUnit={newMarUnit =>
-                                    setAttributes({ froMarUnit: newMarUnit || "px" })
-                                }
+                            <ToggleControl
+                                label={__("Icon")}
+                                checked={backIconCheck}
+                                onChange={newCheck => setAttributes({ backIconCheck: newCheck })}
                             />
                         </div>
-                        <div className="premium-control-toggle">
-                            <PremiumPadding
-                                paddingTop={frontIconPaddingTop}
-                                paddingRight={frontIconPaddingRight}
-                                paddingBottom={frontIconPaddingBottom}
-                                paddingLeft={frontIconPaddingLeft}
-                                onChangePadTop={newPadTop =>
-                                    setAttributes({
-                                        frontIconPaddingTop: newPadTop || "0"
-                                    })
-                                }
-                                onChangePadRight={newPadRight =>
-                                    setAttributes({
-                                        frontIconPaddingRight: newPadRight || "0"
-                                    })
-                                }
-                                onChangePadBottom={newPadBottom =>
-                                    setAttributes({
-                                        frontIconPaddingBottom: newPadBottom || "0"
-                                    })
-                                }
-                                onChangePadLeft={newPadleft =>
-                                    setAttributes({
-                                        frontIconPaddingLeft: newPadleft || "0"
-                                    })
-                                }
-                                showUnits={true}
-                                onChangePadSizeUnit={newvalue =>
-                                    setAttributes({ froPadUnit: newvalue || "px" })
+                        {backIconCheck && (
+                            <div className="premium-control-toggle">
+                                <p><strong>{__("Select Icon")}</strong></p>
+                                <FontIconPicker
+                                    icons={iconsList}
+                                    onChange={newIcon => setAttributes({ backIconSelected: newIcon || "dashicons dashicons-admin-site" })}
+                                    value={backIconSelected}
+                                    isMulti={false}
+                                    appendTo="body"
+                                    noSelectedPlaceholder={__("Select Icon")}
+                                />
+                            </div>
+                        )}
+                        {backIconCheck && (
+                            <PremiumSizeUnits
+                                onChangeSizeUnit={newValue =>
+                                    setAttributes({ backIconUnit: newValue || "px" })
                                 }
                             />
+                        )}
+                        {backIconCheck && (
+                            <div className="premium-control-toggle">
+                                <RangeControl
+                                    label={__("Size")}
+                                    value={backIconSize}
+                                    onChange={newValue => setAttributes({ backIconSize: newValue || "50" })}
+                                    initialPosition={50}
+                                    allowReset={true}
+                                />
+                            </div>
+                        )}
+
+                        {/* Back Title options */}
+
+                        <div className="premium-control-toggle">
+                            <ToggleControl
+                                label={__("Title")}
+                                checked={backTitleCheck}
+                                onChange={newCheck => setAttributes({ backTitleCheck: newCheck })}
+                            />
                         </div>
+                        {backTitleCheck && (
+                            <div className="premium-control-toggle">
+                                <TextControl
+                                    label={__("Title Text")}
+                                    value={backTitle}
+                                    onChange={newTitle => setAttributes({ backTitle: newTitle })}
+                                />
+                            </div>
+                        )}
+
+                        {/* Back Description options */}
+
+                        <div className="premium-control-toggle">
+                            <ToggleControl
+                                label={__("Description")}
+                                checked={backDescCheck}
+                                onChange={newCheck => setAttributes({ backDescCheck: newCheck })}
+                            />
+                        </div>
+                        {backDescCheck && (
+                            <div className="premium-control-toggle">
+                                <TextControl
+                                    label={__("Description Text")}
+                                    value={backDescription}
+                                    onChange={newDesc => setAttributes({ backDescription: newDesc })}
+                                />
+                            </div>
+                        )}
 
                     </PanelBody>
-                )}
-                {frontTitleCheck && (
-                    <PanelBody
-                        title={__("Front Title Style")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <div className="premium-control-toggle">
-                            <p><strong>{__("Color")}</strong></p>
-                            <ColorPalette
-                                value={frontTitleColor}
-                                onChange={newColor => setAttributes({ frontTitleColor: newColor || "#e3d192" })}
-                                allowReset={true}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumTypo
-                                components={["size", "line"]}
-                                size={frontTitleSize}
-                                line={frontTitlelineHeight}
-                                onChangeSize={newSize => setAttributes({ frontTitleSize: newSize })}
-                                onChangeLine={newlineHeight => setAttributes({ frontTitlelineHeight: newlineHeight })}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumTextShadow
-                                color={frontTitleShadowColor}
-                                blur={frontTitleShadowBlur}
-                                horizontal={frontTitleShadowHorizontal}
-                                vertical={frontTitleShadowVertical}
-                                onChangeColor={newShadColor => setAttributes({ frontTitleShadowColor: newShadColor.hex || "transparent" })}
-                                onChangeBlur={newShadBlur => setAttributes({ frontTitleShadowBlur: newShadBlur || "0" })}
-                                onChangehHorizontal={newShadHorizontal => setAttributes({ frontTitleShadowHorizontal: newShadHorizontal || "0" })}
-                                onChangeVertical={newShadVertical => setAttributes({ frontTitleShadowVertical: newShadVertical || "0" })}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumMargin
-                                directions={["top", "right", "bottom", "left"]}
-                                marginTop={frontTitleMarginTop}
-                                marginRight={frontTitleMarginRight}
-                                marginBottom={frontTitleMarginBottom}
-                                marginLeft={frontTitleMarginLeft}
-                                onChangeMarTop={newMarTop =>
-                                    setAttributes({
-                                        frontTitleMarginTop: newMarTop
-                                    })
-                                }
-                                onChangeMarRight={newMarRight =>
-                                    setAttributes({
-                                        frontTitleMarginRight: newMarRight
-                                    })
-                                }
-                                onChangeMarBottom={newMarBottom =>
-                                    setAttributes({
-                                        frontTitleMarginBottom: newMarBottom
-                                    })
-                                }
-                                onChangeMarLeft={newMarLeft =>
-                                    setAttributes({
-                                        frontTitleMarginLeft: newMarLeft
-                                    })
-                                }
-                                showUnits={true}
-                                onChangeMarSizeUnit={newMarvalue =>
-                                    setAttributes({ pxUnit: newMarvalue || "px" })
-                                }
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumPadding
-                                paddingTop={frontTitlePaddingTop}
-                                paddingRight={frontTitlePaddingRight}
-                                paddingBottom={frontTitlePaddingBottom}
-                                paddingLeft={frontTitlePaddingLeft}
-                                onChangePadTop={newPadTop =>
-                                    setAttributes({
-                                        frontTitlePaddingTop: newPadTop
-                                    })
-                                }
-                                onChangePadRight={newPadRight =>
-                                    setAttributes({
-                                        frontTitlePaddingRight: newPadRight
-                                    })
-                                }
-                                onChangePadBottom={newPadBottom =>
-                                    setAttributes({
-                                        frontTitlePaddingBottom: newPadBottom
-                                    })
-                                }
-                                onChangePadLeft={newPadLeft =>
-                                    setAttributes({
-                                        frontTitlePaddingLeft: newPadLeft
-                                    })
-                                }
-                                showUnits={true}
-                                onChangePadSizeUnit={newvalue =>
-                                    setAttributes({ pxUnit: newvalue || "px" })
-                                }
-                            />
-                        </div>
+                    {/* End Back side */}
 
-                    </PanelBody>
-                )}
-                {frontDescCheck && (
-                    <PanelBody
-                        title={__("Front Description Style")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <div className="premium-control-toggle">
-                            <p><strong>{__("Color")}</strong></p>
-                            <ColorPalette
-                                value={frontDescriptionColor}
-                                onChange={newColor => setAttributes({ frontDescriptionColor: newColor || "#ddd" })}
-                                allowReset={true}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumTypo
-                                components={["size", "line"]}
-                                size={frontDescSize}
-                                line={frontDesclineHeight}
-                                onChangeSize={newSize => setAttributes({ frontDescSize: newSize })}
-                                onChangeLine={newlineHeight => setAttributes({ frontDesclineHeight: newlineHeight })}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumTextShadow
-                                color={frontDescShadowColor}
-                                blur={frontDescShadowBlur}
-                                horizontal={frontDescShadowHorizontal}
-                                vertical={frontDescShadowVertical}
-                                onChangeColor={newShadColor => setAttributes({ frontDescShadowColor: newShadColor.hex || "transparent" })}
-                                onChangeBlur={newShadBlur => setAttributes({ frontDescShadowBlur: newShadBlur || "0" })}
-                                onChangehHorizontal={newShadHorizontal => setAttributes({ frontDescShadowHorizontal: newShadHorizontal || "0" })}
-                                onChangeVertical={newShadVertical => setAttributes({ frontDescShadowVertical: newShadVertical || "0" })}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumMargin
-                                directions={["top", "right", "bottom", "left"]}
-                                marginTop={frontDescMarginTop}
-                                marginRight={frontDescMarginRight}
-                                marginBottom={frontDescMarginBottom}
-                                marginLeft={frontDescMarginLeft}
-                                onChangeMarTop={newMarTop =>
-                                    setAttributes({
-                                        frontDescMarginTop: newMarTop
-                                    })
-                                }
-                                onChangeMarRight={newMarRight =>
-                                    setAttributes({
-                                        frontDescMarginRight: newMarRight
-                                    })
-                                }
-                                onChangeMarBottom={newMarBottom =>
-                                    setAttributes({
-                                        frontDescMarginBottom: newMarBottom
-                                    })
-                                }
-                                onChangeMarLeft={newMarLeft =>
-                                    setAttributes({
-                                        frontDescMarginLeft: newMarLeft
-                                    })
-                                }
-                                showUnits={true}
-                                onChangeMarSizeUnit={newMarvalue =>
-                                    setAttributes({ pxUnit: newMarvalue || "px" })
-                                }
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumPadding
-                                paddingTop={frontDescPaddingTop}
-                                paddingRight={frontDescPaddingRight}
-                                paddingBottom={frontDescPaddingBottom}
-                                paddingLeft={frontDescPaddingLeft}
-                                onChangePadTop={newPadTop =>
-                                    setAttributes({
-                                        frontDescPaddingTop: newPadTop
-                                    })
-                                }
-                                onChangePadRight={newPadRight =>
-                                    setAttributes({
-                                        frontDescPaddingRight: newPadRight
-                                    })
-                                }
-                                onChangePadBottom={newPadBottom =>
-                                    setAttributes({
-                                        frontDescPaddingBottom: newPadBottom
-                                    })
-                                }
-                                onChangePadLeft={newPadLeft =>
-                                    setAttributes({
-                                        frontDescPaddingLeft: newPadLeft
-                                    })
-                                }
-                                showUnits={true}
-                                onChangePadSizeUnit={newvalue =>
-                                    setAttributes({ pxUnit: newvalue || "px" })
-                                }
-                            />
-                        </div>
-
-                    </PanelBody>
-                )}
-                {/* End Front side options */}
-
-                {/* Start Back side */}
-                <PanelBody
-                    title={__("Back Side")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <div className="premium-control-toggle">
-                        <p><strong>{__("Background Color")}</strong></p>
-                        <ColorPalette
-                            value={backBackgroundColor}
-                            onChange={newBgColor => setAttributes({ backBackgroundColor: newBgColor || "#ae8686" })}
-                            allowReset={true}
-                        />
-                    </div>
-
-                    {/* Back icon options */}
-
-                    <div className="premium-control-toggle">
-                        <ToggleControl
-                            label={__("Icon")}
-                            checked={backIconCheck}
-                            onChange={newCheck => setAttributes({ backIconCheck: newCheck })}
-                        />
-                    </div>
+                    {/* Start Back side options */}
                     {backIconCheck && (
-                        <div className="premium-control-toggle">
-                            <p><strong>{__("Select Icon")}</strong></p>
-                            <FontIconPicker
-                                icons={iconsList}
-                                onChange={newIcon => setAttributes({ backIconSelected: newIcon || "dashicons dashicons-admin-site" })}
-                                value={backIconSelected}
-                                isMulti={false}
-                                appendTo="body"
-                                noSelectedPlaceholder={__("Select Icon")}
-                            />
-                        </div>
-                    )}
-                    {backIconCheck && (
-                        <PremiumSizeUnits
-                            onChangeSizeUnit={newValue =>
-                                setAttributes({ backIconUnit: newValue || "px" })
-                            }
-                        />
-                    )}
-                    {backIconCheck && (
-                        <div className="premium-control-toggle">
-                            <RangeControl
-                                label={__("Size")}
-                                value={backIconSize}
-                                onChange={newValue => setAttributes({ backIconSize: newValue || "50" })}
-                                initialPosition={50}
-                                allowReset={true}
-                            />
-                        </div>
-                    )}
+                        <PanelBody
+                            title={__("Back Icon Style")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <div className="premium-control-toggle">
+                                <p><strong>{__("Color")}</strong></p>
+                                <ColorPalette
+                                    value={backIconColor}
+                                    onChange={newColor => setAttributes({ backIconColor: newColor || "#fff" })}
+                                    allowReset={true}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <p><strong>{__("Background Color")}</strong></p>
+                                <ColorPalette
+                                    value={backIconBackground}
+                                    onChange={newColor => setAttributes({ backIconBackground: newColor || "transparent" })}
+                                    allowReset={true}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumBorder
+                                    borderType={backIconBorderType}
+                                    borderWidth={backIconBorderWidth}
+                                    borderColor={backIconBorderColor}
+                                    borderRadius={backIconBorderRadius}
+                                    onChangeType={newType => setAttributes({ backIconBorderType: newType || "none" })}
+                                    onChangeWidth={newWidth => setAttributes({ backIconBorderWidth: newWidth || "0" })}
+                                    onChangeColor={colorValue =>
+                                        setAttributes({ backIconBorderColor: colorValue.hex || "transparent" })
+                                    }
+                                    onChangeRadius={newrRadius =>
+                                        setAttributes({ backIconBorderRadius: newrRadius || "0" })
+                                    }
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumMargin
+                                    directions={["top", "right", "bottom", "left"]}
+                                    marginTop={backIconMarginTop}
+                                    marginRight={backIconMarginRight}
+                                    marginBottom={backIconMarginBottom}
+                                    marginLeft={backIconMarginLeft}
+                                    onChangeMarTop={newValue =>
+                                        setAttributes({
+                                            backIconMarginTop: newValue || "0"
+                                        })
+                                    }
+                                    onChangeMarRight={newValue =>
+                                        setAttributes({
+                                            backIconMarginRight: newValue || "0"
+                                        })
+                                    }
+                                    onChangeMarBottom={newValue =>
+                                        setAttributes({
+                                            backIconMarginBottom: newValue || "0"
+                                        })
+                                    }
+                                    onChangeMarLeft={newValue =>
+                                        setAttributes({
+                                            backIconMarginLeft: newValue || "0"
+                                        })
+                                    }
+                                    showUnits={true}
+                                    onChangeMarSizeUnit={newValue =>
+                                        setAttributes({ backMarUnit: newValue || "px" })
+                                    }
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumPadding
+                                    paddingTop={backIconPaddingTop}
+                                    paddingRight={backIconPaddingRight}
+                                    paddingBottom={backIconPaddingBottom}
+                                    paddingLeft={backIconPaddingLeft}
+                                    onChangePadTop={newValue =>
+                                        setAttributes({
+                                            backIconPaddingTop: newValue || "0"
+                                        })
+                                    }
+                                    onChangePadRight={newValue =>
+                                        setAttributes({
+                                            backIconPaddingRight: newValue || "0"
+                                        })
+                                    }
+                                    onChangePadBottom={newValue =>
+                                        setAttributes({
+                                            backIconPaddingBottom: newValue || "0"
+                                        })
+                                    }
+                                    onChangePadLeft={newValue =>
+                                        setAttributes({
+                                            backIconPaddingLeft: newValue || "0"
+                                        })
+                                    }
+                                    showUnits={true}
+                                    onChangePadSizeUnit={newValue =>
+                                        setAttributes({ backPadUnit: newValue || "px" })
+                                    }
+                                />
+                            </div>
 
-                    {/* Back Title options */}
-
-                    <div className="premium-control-toggle">
-                        <ToggleControl
-                            label={__("Title")}
-                            checked={backTitleCheck}
-                            onChange={newCheck => setAttributes({ backTitleCheck: newCheck })}
-                        />
-                    </div>
+                        </PanelBody>
+                    )}
                     {backTitleCheck && (
-                        <div className="premium-control-toggle">
-                            <TextControl
-                                label={__("Title Text")}
-                                value={backTitle}
-                                onChange={newTitle => setAttributes({ backTitle: newTitle })}
-                            />
-                        </div>
+                        <PanelBody
+                            title={__("Back Title Style")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <div className="premium-control-toggle">
+                                <p><strong>{__("Color")}</strong></p>
+                                <ColorPalette
+                                    value={backTitleColor}
+                                    onChange={newColor => setAttributes({ backTitleColor: newColor || "#fff" })}
+                                    allowReset={true}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumTypo
+                                    components={["size", "line"]}
+                                    size={backTitleSize}
+                                    line={backTitleLineHeight}
+                                    onChangeSize={newSize => setAttributes({ backTitleSize: newSize })}
+                                    onChangeLine={newValue => setAttributes({ backTitleLineHeight: newValue })}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumTextShadow
+                                    color={backTitleShadowColor}
+                                    blur={backTitleShadowBlur}
+                                    horizontal={backTitleShadowHorizontal}
+                                    vertical={backTitleShadowVertical}
+                                    onChangeColor={newColor => setAttributes({ backTitleShadowColor: newColor.hex || "transparent" })}
+                                    onChangeBlur={newBlur => setAttributes({ backTitleShadowBlur: newBlur || "0" })}
+                                    onChangehHorizontal={newValue => setAttributes({ backTitleShadowHorizontal: newValue || "0" })}
+                                    onChangeVertical={newValue => setAttributes({ backTitleShadowVertical: newValue || "0" })}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumMargin
+                                    directions={["top", "right", "bottom", "left"]}
+                                    marginTop={backTitleMarginTop}
+                                    marginRight={backTitleMarginRight}
+                                    marginBottom={backTitleMarginBottom}
+                                    marginLeft={backTitleMarginLeft}
+                                    onChangeMarTop={newValue =>
+                                        setAttributes({
+                                            backTitleMarginTop: newValue
+                                        })
+                                    }
+                                    onChangeMarRight={newValue =>
+                                        setAttributes({
+                                            backTitleMarginRight: newValue
+                                        })
+                                    }
+                                    onChangeMarBottom={newValue =>
+                                        setAttributes({
+                                            backTitleMarginBottom: newValue
+                                        })
+                                    }
+                                    onChangeMarLeft={newValue =>
+                                        setAttributes({
+                                            backTitleMarginLeft: newValue
+                                        })
+                                    }
+                                    showUnits={false}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumPadding
+                                    paddingTop={backTitlePaddingTop}
+                                    paddingRight={backTitlePaddingRight}
+                                    paddingBottom={backTitlePaddingBottom}
+                                    paddingLeft={backTitlePaddingLeft}
+                                    onChangePadTop={newValue =>
+                                        setAttributes({
+                                            backTitlePaddingTop: newValue
+                                        })
+                                    }
+                                    onChangePadRight={newValue =>
+                                        setAttributes({
+                                            backTitlePaddingRight: newValue
+                                        })
+                                    }
+                                    onChangePadBottom={newValue =>
+                                        setAttributes({
+                                            backTitlePaddingBottom: newValue
+                                        })
+                                    }
+                                    onChangePadLeft={newValue =>
+                                        setAttributes({
+                                            backTitlePaddingLeft: newValue
+                                        })
+                                    }
+                                    showUnits={false}
+                                />
+                            </div>
+
+                        </PanelBody>
                     )}
-
-                    {/* Back Description options */}
-
-                    <div className="premium-control-toggle">
-                        <ToggleControl
-                            label={__("Description")}
-                            checked={backDescCheck}
-                            onChange={newCheck => setAttributes({ backDescCheck: newCheck })}
-                        />
-                    </div>
                     {backDescCheck && (
-                        <div className="premium-control-toggle">
-                            <TextControl
-                                label={__("Description Text")}
-                                value={backDescription}
-                                onChange={newDesc => setAttributes({ backDescription: newDesc })}
-                            />
-                        </div>
+                        <PanelBody
+                            title={__("Back Description Style")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <div className="premium-control-toggle">
+                                <p><strong>{__("Color")}</strong></p>
+                                <ColorPalette
+                                    value={backDescriptionColor}
+                                    onChange={newColor => setAttributes({ backDescriptionColor: newColor || "#ddd" })}
+                                    allowReset={true}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumTypo
+                                    components={["size", "line"]}
+                                    size={backDescSize}
+                                    line={backDesclineHeight}
+                                    onChangeSize={newSize => setAttributes({ backDescSize: newSize })}
+                                    onChangeLine={newValue => setAttributes({ backDesclineHeight: newValue })}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumTextShadow
+                                    color={backDescShadowColor}
+                                    blur={backDescShadowBlur}
+                                    horizontal={backDescShadowHorizontal}
+                                    vertical={backDescShadowVertical}
+                                    onChangeColor={newColor => setAttributes({ backDescShadowColor: newColor.hex || "transparent" })}
+                                    onChangeBlur={newBlur => setAttributes({ backDescShadowBlur: newBlur || "0" })}
+                                    onChangehHorizontal={newValue => setAttributes({ backDescShadowHorizontal: newValue || "0" })}
+                                    onChangeVertical={newValue => setAttributes({ backDescShadowVertical: newValue || "0" })}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumMargin
+                                    directions={["top", "right", "bottom", "left"]}
+                                    marginTop={backDescMarginTop}
+                                    marginRight={backDescMarginRight}
+                                    marginBottom={backDescMarginBottom}
+                                    marginLeft={backDescMarginLeft}
+                                    onChangeMarTop={newValue =>
+                                        setAttributes({
+                                            backDescMarginTop: newValue
+                                        })
+                                    }
+                                    onChangeMarRight={newValue =>
+                                        setAttributes({
+                                            backDescMarginRight: newValue
+                                        })
+                                    }
+                                    onChangeMarBottom={newValue =>
+                                        setAttributes({
+                                            backDescMarginBottom: newValue
+                                        })
+                                    }
+                                    onChangeMarLeft={newValue =>
+                                        setAttributes({
+                                            backDescMarginLeft: newValue
+                                        })
+                                    }
+                                    showUnits={false}
+                                />
+                            </div>
+                            <div className="premium-control-toggle">
+                                <PremiumPadding
+                                    paddingTop={backDescPaddingTop}
+                                    paddingRight={backDescPaddingRight}
+                                    paddingBottom={backDescPaddingBottom}
+                                    paddingLeft={backDescPaddingLeft}
+                                    onChangePadTop={newValue =>
+                                        setAttributes({
+                                            backDescPaddingTop: newValue
+                                        })
+                                    }
+                                    onChangePadRight={newValue =>
+                                        setAttributes({
+                                            backDescPaddingRight: newValue
+                                        })
+                                    }
+                                    onChangePadBottom={newValue =>
+                                        setAttributes({
+                                            backDescPaddingBottom: newValue
+                                        })
+                                    }
+                                    onChangePadLeft={newValue =>
+                                        setAttributes({
+                                            backDescPaddingLeft: newValue
+                                        })
+                                    }
+                                    showUnits={false}
+                                />
+                            </div>
+
+                        </PanelBody>
                     )}
+                    {/* End Back side options  */}
 
-                </PanelBody>
-                {/* End Back side */}
-
-                {/* Start Back side options */}
-                {backIconCheck && (
-                    <PanelBody
-                        title={__("Back Icon Style")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <div className="premium-control-toggle">
-                            <p><strong>{__("Color")}</strong></p>
-                            <ColorPalette
-                                value={backIconColor}
-                                onChange={newColor => setAttributes({ backIconColor: newColor || "#fff" })}
-                                allowReset={true}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <p><strong>{__("Background Color")}</strong></p>
-                            <ColorPalette
-                                value={backIconBackground}
-                                onChange={newBgColor => setAttributes({ backIconBackground: newBgColor || "transparent" })}
-                                allowReset={true}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumMargin
-                                directions={["top", "right", "bottom", "left"]}
-                                marginTop={backIconMarginTop}
-                                marginRight={backIconMarginRight}
-                                marginBottom={backIconMarginBottom}
-                                marginLeft={backIconMarginLeft}
-                                onChangeMarTop={newMarTop =>
-                                    setAttributes({
-                                        backIconMarginTop: newMarTop || "0"
-                                    })
-                                }
-                                onChangeMarRight={newMarRight =>
-                                    setAttributes({
-                                        backIconMarginRight: newMarRight || "0"
-                                    })
-                                }
-                                onChangeMarBottom={newMarBottom =>
-                                    setAttributes({
-                                        backIconMarginBottom: newMarBottom || "0"
-                                    })
-                                }
-                                onChangeMarLeft={newMarLeft =>
-                                    setAttributes({
-                                        backIconMarginLeft: newMarLeft || "0"
-                                    })
-                                }
-                                showUnits={true}
-                                onChangeMarSizeUnit={newMarUnit =>
-                                    setAttributes({ backMarUnit: newMarUnit || "px" })
-                                }
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumPadding
-                                paddingTop={backIconPaddingTop}
-                                paddingRight={backIconPaddingRight}
-                                paddingBottom={backIconPaddingBottom}
-                                paddingLeft={backIconPaddingLeft}
-                                onChangePadTop={newPadTop =>
-                                    setAttributes({
-                                        backIconPaddingTop: newPadTop || "0"
-                                    })
-                                }
-                                onChangePadRight={newPadRight =>
-                                    setAttributes({
-                                        backIconPaddingRight: newPadRight || "0"
-                                    })
-                                }
-                                onChangePadBottom={newPadBottom =>
-                                    setAttributes({
-                                        backIconPaddingBottom: newPadBottom || "0"
-                                    })
-                                }
-                                onChangePadLeft={newPadleft =>
-                                    setAttributes({
-                                        backIconPaddingLeft: newPadleft || "0"
-                                    })
-                                }
-                                showUnits={true}
-                                onChangePadSizeUnit={newvalue =>
-                                    setAttributes({ backPadUnit: newvalue || "px" })
-                                }
-                            />
-                        </div>
-
-                    </PanelBody>
-                )}
-                {backTitleCheck && (
-                    <PanelBody
-                        title={__("Back Title Style")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <div className="premium-control-toggle">
-                            <p><strong>{__("Color")}</strong></p>
-                            <ColorPalette
-                                value={backTitleColor}
-                                onChange={newColor => setAttributes({ backTitleColor: newColor || "#fff" })}
-                                allowReset={true}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumTypo
-                                components={["size", "line"]}
-                                size={backTitleSize}
-                                line={backTitleLineHeight}
-                                onChangeSize={newSize => setAttributes({ backTitleSize: newSize })}
-                                onChangeLine={newLineHeight => setAttributes({ backTitleLineHeight: newLineHeight })}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumTextShadow
-                                color={backTitleShadowColor}
-                                blur={backTitleShadowBlur}
-                                horizontal={backTitleShadowHorizontal}
-                                vertical={backTitleShadowVertical}
-                                onChangeColor={newShadColor => setAttributes({ backTitleShadowColor: newShadColor.hex || "transparent" })}
-                                onChangeBlur={newShadBlur => setAttributes({ backTitleShadowBlur: newShadBlur || "0" })}
-                                onChangehHorizontal={newShadHorizontal => setAttributes({ backTitleShadowHorizontal: newShadHorizontal || "0" })}
-                                onChangeVertical={newShadVertical => setAttributes({ backTitleShadowVertical: newShadVertical || "0" })}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumMargin
-                                directions={["top", "right", "bottom", "left"]}
-                                marginTop={backTitleMarginTop}
-                                marginRight={backTitleMarginRight}
-                                marginBottom={backTitleMarginBottom}
-                                marginLeft={backTitleMarginLeft}
-                                onChangeMarTop={newMarTop =>
-                                    setAttributes({
-                                        backTitleMarginTop: newMarTop
-                                    })
-                                }
-                                onChangeMarRight={newMarRight =>
-                                    setAttributes({
-                                        backTitleMarginRight: newMarRight
-                                    })
-                                }
-                                onChangeMarBottom={newMarBottom =>
-                                    setAttributes({
-                                        backTitleMarginBottom: newMarBottom
-                                    })
-                                }
-                                onChangeMarLeft={newMarLeft =>
-                                    setAttributes({
-                                        backTitleMarginLeft: newMarLeft
-                                    })
-                                }
-                                showUnits={true}
-                                onChangeMarSizeUnit={newMarvalue =>
-                                    setAttributes({ pxUnit: newMarvalue || "px" })
-                                }
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumPadding
-                                paddingTop={backTitlePaddingTop}
-                                paddingRight={backTitlePaddingRight}
-                                paddingBottom={backTitlePaddingBottom}
-                                paddingLeft={backTitlePaddingLeft}
-                                onChangePadTop={newPadTop =>
-                                    setAttributes({
-                                        backTitlePaddingTop: newPadTop
-                                    })
-                                }
-                                onChangePadRight={newPadRight =>
-                                    setAttributes({
-                                        backTitlePaddingRight: newPadRight
-                                    })
-                                }
-                                onChangePadBottom={newPadBottom =>
-                                    setAttributes({
-                                        backTitlePaddingBottom: newPadBottom
-                                    })
-                                }
-                                onChangePadLeft={newPadLeft =>
-                                    setAttributes({
-                                        backTitlePaddingLeft: newPadLeft
-                                    })
-                                }
-                                showUnits={true}
-                                onChangePadSizeUnit={newvalue =>
-                                    setAttributes({ pxUnit: newvalue || "px" })
-                                }
-                            />
-                        </div>
-
-                    </PanelBody>
-                )}
-                {backDescCheck && (
-                    <PanelBody
-                        title={__("Back Description Style")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <div className="premium-control-toggle">
-                            <p><strong>{__("Color")}</strong></p>
-                            <ColorPalette
-                                value={backDescriptionColor}
-                                onChange={newColor => setAttributes({ backDescriptionColor: newColor || "#ddd" })}
-                                allowReset={true}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumTypo
-                                components={["size", "line"]}
-                                size={backDescSize}
-                                line={backDesclineHeight}
-                                onChangeSize={newSize => setAttributes({ backDescSize: newSize })}
-                                onChangeLine={newlineHeight => setAttributes({ backDesclineHeight: newlineHeight })}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumTextShadow
-                                color={backDescShadowColor}
-                                blur={backDescShadowBlur}
-                                horizontal={backDescShadowHorizontal}
-                                vertical={backDescShadowVertical}
-                                onChangeColor={newShadColor => setAttributes({ backDescShadowColor: newShadColor.hex || "transparent" })}
-                                onChangeBlur={newShadBlur => setAttributes({ backDescShadowBlur: newShadBlur || "0" })}
-                                onChangehHorizontal={newShadHorizontal => setAttributes({ backDescShadowHorizontal: newShadHorizontal || "0" })}
-                                onChangeVertical={newShadVertical => setAttributes({ backDescShadowVertical: newShadVertical || "0" })}
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumMargin
-                                directions={["top", "right", "bottom", "left"]}
-                                marginTop={backDescMarginTop}
-                                marginRight={backDescMarginRight}
-                                marginBottom={backDescMarginBottom}
-                                marginLeft={backDescMarginLeft}
-                                onChangeMarTop={newMarTop =>
-                                    setAttributes({
-                                        backDescMarginTop: newMarTop
-                                    })
-                                }
-                                onChangeMarRight={newMarRight =>
-                                    setAttributes({
-                                        backDescMarginRight: newMarRight
-                                    })
-                                }
-                                onChangeMarBottom={newMarBottom =>
-                                    setAttributes({
-                                        backDescMarginBottom: newMarBottom
-                                    })
-                                }
-                                onChangeMarLeft={newMarLeft =>
-                                    setAttributes({
-                                        backDescMarginLeft: newMarLeft
-                                    })
-                                }
-                                showUnits={true}
-                                onChangeMarSizeUnit={newMarvalue =>
-                                    setAttributes({ pxUnit: newMarvalue || "px" })
-                                }
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <PremiumPadding
-                                paddingTop={backDescPaddingTop}
-                                paddingRight={backDescPaddingRight}
-                                paddingBottom={backDescPaddingBottom}
-                                paddingLeft={backDescPaddingLeft}
-                                onChangePadTop={newPadTop =>
-                                    setAttributes({
-                                        backDescPaddingTop: newPadTop
-                                    })
-                                }
-                                onChangePadRight={newPadRight =>
-                                    setAttributes({
-                                        backDescPaddingRight: newPadRight
-                                    })
-                                }
-                                onChangePadBottom={newPadBottom =>
-                                    setAttributes({
-                                        backDescPaddingBottom: newPadBottom
-                                    })
-                                }
-                                onChangePadLeft={newPadLeft =>
-                                    setAttributes({
-                                        backDescPaddingLeft: newPadLeft
-                                    })
-                                }
-                                showUnits={true}
-                                onChangePadSizeUnit={newvalue =>
-                                    setAttributes({ pxUnit: newvalue || "px" })
-                                }
-                            />
-                        </div>
-
-                    </PanelBody>
-                )}
-                {/* End Back side options  */}
-
-            </InspectorControls>
+                </InspectorControls>
+            </div>
         ),
         <div className={`${mainClasses}-container `} id={`premium-flip-${id}`}>
             <div className={`premium-flip-main-box `} data-current={activeSide} >
@@ -1089,12 +1137,7 @@ const edit = props => {
                                         <div
                                             className={`premium-flipbox__froIcon`}
                                             style={{
-                                                // marginTop: (frontIconMarginTop || "0") + (froMarUnit + "px"),
-                                                // marginRight: (frontIconMarginRight || "0") + (froMarUnit + "px"),
-                                                // marginBottom: (frontIconMarginBottom || "0") + (froMarUnit + "px"),
-                                                // marginLeft: (frontIconMarginLeft || "0") + (froMarUnit + "px"),
-
-                                                marginTop: (frontIconMarginTop|| "0") + (froMarUnit || "px"),
+                                                marginTop: (frontIconMarginTop || "0") + (froMarUnit || "px"),
                                                 marginRight: (frontIconMarginRight || "0") + (froMarUnit || "px"),
                                                 marginBottom: (frontIconMarginBottom || "0") + (froMarUnit || "px"),
                                                 marginLeft: (frontIconMarginLeft || "0") + (froMarUnit || "px"),
@@ -1115,6 +1158,10 @@ const edit = props => {
                                                         color: frontIconColor || "#000",
                                                         backgroundColor: frontIconBackground || "transparent",
                                                         fontSize: (frontIconSize || 50) + frontIconUnit,
+                                                        border: froIconBorderType || "none",
+                                                        borderWidth: (froIconBorderWidth || "1") + "px",
+                                                        borderRadius: (froIconBorderRadius || "100") + "px",
+                                                        borderColor: froIconBorderColor || "transparent",
                                                         paddingTop: (frontIconPaddingTop || "0") + (froPadUnit || "px"),
                                                         paddingRight: (frontIconPaddingRight || "0") + (froPadUnit || "px"),
                                                         paddingBottom: (frontIconPaddingBottom || "0") + (froPadUnit || "px"),
@@ -1214,6 +1261,10 @@ const edit = props => {
                                                         color: backIconColor || "#000",
                                                         backgroundColor: backIconBackground || "transparent",
                                                         fontSize: (backIconSize || 50) + backIconUnit,
+                                                        border: backIconBorderType || "none",
+                                                        borderWidth: (backIconBorderWidth || "1") + "px",
+                                                        borderRadius: (backIconBorderRadius || "100") + "px",
+                                                        borderColor: backIconBorderColor || "transparent",
                                                         paddingTop: (backIconPaddingTop || "0") + (backPadUnit || "px"),
                                                         paddingRight: (backIconPaddingRight || "0") + (backPadUnit || "px"),
                                                         paddingBottom: (backIconPaddingBottom || "0") + (backPadUnit || "px"),
