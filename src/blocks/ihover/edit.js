@@ -404,13 +404,6 @@ const edit = props => {
                                 checked={titleCheck}
                                 onChange={newValue => setAttributes({ titleCheck: newValue })}
                             />
-                            {/* {titleCheck && (
-                                <TextControl
-                                    label={__("Title Text")}
-                                    value={titleText}
-                                    onChange={newText => setAttributes({ titleText: newText })}
-                                />
-                            )} */}
                         </div>
 
                         {/* Description options */}
@@ -420,14 +413,6 @@ const edit = props => {
                                 checked={descCheck}
                                 onChange={newValue => setAttributes({ descCheck: newValue })}
                             />
-                            {/* {descCheck && (
-                                <TextareaControl
-                                    label={__("Description Text")}
-                                    help="Enter your description"
-                                    value={descText}
-                                    onChange={newText => setAttributes({ descText: newText })}
-                                />
-                            )} */}
                         </div>
                         <div className="premium-control-toggle">
                             <p><strong>{__("Alignment")}</strong></p>
@@ -473,7 +458,7 @@ const edit = props => {
                                 <p><strong>{__("Background Color")}</strong></p>
                                 <ColorPalette
                                     value={iconBackground}
-                                    onChange={newBackColor => setAttributes({ iconBackground: newBackColor || "transparent" })}
+                                    onChange={newColor => setAttributes({ iconBackground: newColor || "transparent" })}
                                     allowReset={true}
                                 />
                             </div>
@@ -494,8 +479,8 @@ const edit = props => {
                                             iconBorderColor: newColor.hex || "transparent"
                                         })
                                     }
-                                    onChangeRadius={newrRadius =>
-                                        setAttributes({ iconBorderRadius: newrRadius || "0" })
+                                    onChangeRadius={newRadius =>
+                                        setAttributes({ iconBorderRadius: newRadius || "0" })
                                     }
                                 />
                             </div>
@@ -505,29 +490,29 @@ const edit = props => {
                                     paddingRight={iconPadRight}
                                     paddingBottom={iconPadBottom}
                                     paddingLeft={iconPadLeft}
-                                    onChangePadTop={newPadTop =>
+                                    onChangePadTop={newValue =>
                                         setAttributes({
-                                            iconPadTop: newPadTop || "0"
+                                            iconPadTop: newValue || "0"
                                         })
                                     }
-                                    onChangePadRight={newPadRight =>
+                                    onChangePadRight={newValue =>
                                         setAttributes({
-                                            iconPadRight: newPadRight || "0"
+                                            iconPadRight: newValue || "0"
                                         })
                                     }
-                                    onChangePadBottom={newPadBottom =>
+                                    onChangePadBottom={newValue =>
                                         setAttributes({
-                                            iconPadBottom: newPadBottom || "0"
+                                            iconPadBottom: newValue || "0"
                                         })
                                     }
-                                    onChangePadLeft={newPadleft =>
+                                    onChangePadLeft={newValue =>
                                         setAttributes({
-                                            iconPadLeft: newPadleft || "0"
+                                            iconPadLeft: newValue || "0"
                                         })
                                     }
                                     showUnits={true}
-                                    onChangePadSizeUnit={newvalue =>
-                                        setAttributes({ padUnit: newvalue || "px" })
+                                    onChangePadSizeUnit={newValue =>
+                                        setAttributes({ padUnit: newValue || "px" })
                                     }
                                 />
                             </div>
@@ -579,13 +564,13 @@ const edit = props => {
                                     marginRight={titleMarRight}
                                     marginBottom={titleMarBottom}
                                     marginLeft={titleMarLeft}
-                                    onChangeMarTop={newMarTop => setAttributes({ titleMarTop: newMarTop })}
-                                    onChangeMarRight={newMarRight => setAttributes({ titleMarRight: newMarRight })}
-                                    onChangeMarBottom={newMarBottom => setAttributes({ titleMarBottom: newMarBottom })}
-                                    onChangeMarLeft={newMarLeft => setAttributes({ titleMarLeft: newMarLeft })}
+                                    onChangeMarTop={newValue => setAttributes({ titleMarTop: newValue })}
+                                    onChangeMarRight={newValue => setAttributes({ titleMarRight: newValue })}
+                                    onChangeMarBottom={newValue => setAttributes({ titleMarBottom: newValue })}
+                                    onChangeMarLeft={newValue => setAttributes({ titleMarLeft: newValue })}
                                     showUnits={true}
-                                    onChangeMarSizeUnit={newMarUnit =>
-                                        setAttributes({ titleMarUnit: newMarUnit || "px" })
+                                    onChangeMarSizeUnit={newValue =>
+                                        setAttributes({ titleMarUnit: newValue || "px" })
                                     }
                                 />
                             </div>
@@ -637,13 +622,13 @@ const edit = props => {
                                     marginRight={descMarRight}
                                     marginBottom={descMarBottom}
                                     marginLeft={descMarLeft}
-                                    onChangeMarTop={newMarTop => setAttributes({ descMarTop: newMarTop })}
-                                    onChangeMarRight={newMarRight => setAttributes({ descMarRight: newMarRight })}
-                                    onChangeMarBottom={newMarBottom => setAttributes({ descMarBottom: newMarBottom })}
-                                    onChangeMarLeft={newMarLeft => setAttributes({ descMarLeft: newMarLeft })}
+                                    onChangeMarTop={newValue => setAttributes({ descMarTop: newValue })}
+                                    onChangeMarRight={newValue => setAttributes({ descMarRight: newValue })}
+                                    onChangeMarBottom={newValue => setAttributes({ descMarBottom: newValue })}
+                                    onChangeMarLeft={newValue => setAttributes({ descMarLeft: newValue })}
                                     showUnits={true}
-                                    onChangeMarSizeUnit={newMarUnit =>
-                                        setAttributes({ descMarUnit: newMarUnit || "px" })
+                                    onChangeMarSizeUnit={newValue =>
+                                        setAttributes({ descMarUnit: newValue || "px" })
                                     }
                                 />
                             </div>
@@ -748,9 +733,10 @@ const edit = props => {
                     <div className={("premium-ihover__item ") + hoverEffect} style={{ width: (imgSize || "300") + "px", height: (imgSize || "300") + "px" }}>
 
                         {(hoverEffect === "style20" && (
-                            <div className='premium-ihover-spinner' style='z-index: 1;'></div> ,
                             <div class='premium-ihover__spinner'
                                 style={{
+                                    width: (imgSize || "300") + "px",
+                                    height: (imgSize || "300") + "px",
                                     borderWidth: (spinnerBorderW || "0" + "px"),
                                     borderRadius: (imgBorderRadius || "0") + "%",
                                     borderTopColor: (spinnerFirstColor || "#6ec1e4"),
@@ -782,13 +768,16 @@ const edit = props => {
                             <div className={`premium-ihover__info-back`}
                                 style={{
                                     borderRadius: (imgBorderRadius || "0") + "%",
-                                    backgroundColor: overlayColor || "transparent",
-                                    opacity: overlayColor ? 1 - overlayOpacity / 100 : 1,
-                                    // (overlayColor  + 1 - overlayOpacity / 100),
-                                    //  `${overlayColor || "transparent"} ${overlayColor ? 1 - overlayOpacity / 100 : 1}`,
                                     boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
                                 }}
                             >
+                                <div className={`premium-ihover__opacity-overlay`}
+                                    style={{
+                                        backgroundColor: overlayColor || "transparent",
+                                        opacity: overlayColor ? 1 - overlayOpacity / 100 : 1
+                                    }}
+                                >    
+                                </div>
                                 <div className={`premium-ihover__content`}>
                                     <div className={`premium-ihover__content-wrap`} style={{ textAlign: contentAlign || "center" }}>
 
@@ -848,10 +837,6 @@ const edit = props => {
                                             </div>
                                         )}
 
-                                        {/* <div className={`premium-ihover__divider`}>
-                                            <span className={`premium-ihover__divider-line`}></span>
-                                        </div> */}
-
                                         {descCheck && (
                                             <div className={`premium-ihover__description`}>
                                                 <RichText
@@ -890,7 +875,7 @@ const edit = props => {
                 <div style={{ textAlign: imgAlign || "center" }}>
                     <URLInput
                         value={linkUrl}
-                        onChange={newLinkUrl => setAttributes({ linkUrl: newLinkUrl })}
+                        onChange={newUrl => setAttributes({ linkUrl: newUrl })}
                     />
                 </div>
             )}
