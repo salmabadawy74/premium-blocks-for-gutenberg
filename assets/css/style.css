@@ -1712,6 +1712,8 @@ a.premium-dheading-block__link:hover {
   }
 }
 */
+/**************** Premium Person ********************/
+/*******************************************************/
 .premium-person__imgFrame{
   margin: 0 auto;
   width:70%;
@@ -1720,57 +1722,43 @@ a.premium-dheading-block__link:hover {
   text-align: center;
   position: relative;
 }
-
 .premium-person__img{
-  
   height: 100%;
   object-fit: cover;
   object-position: center;
   transition: all 0.5s ease;
-
 }
-
- .premium-person__imgFrame:hover .premium-person__img-ZoomIN{
-  
+ .premium-person__imgFrame:hover .premium-person__img-ZoomIN{ 
   -ms-transform: scale(1.2,1.2); 
   -webkit-transform: scale(1.2,1.2); 
   transform: scale(1.2 ,1.2)
 } 
-
-.premium-person__imgFrame:hover .premium-person__img-ZoomOut{
-  
+.premium-person__imgFrame:hover .premium-person__img-ZoomOut{ 
   -ms-transform: scale(0.9,0.9); /* IE 9 */
   -webkit-transform: scale(0.9,0.9); /* Safari prior 9.0 */
   transform: scale(0.9,0.9);
 }
-
 .premium-person__imgFrame:hover .premium-person__img.premium-person__img-Scale{
   overflow:visible; 
   border: 10px solid red;
 }
-
-
 .premium-person__imgFrame:hover .premium-person__img-Scale{
   -ms-transform: scale(1.1,1.1); 
   -webkit-transform: scale(1.1,1.1); 
   transform: scale(1.1 ,1.1)
 }
-
 .premium-person__imgFrame:hover .premium-person__img-GrayScale{
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
 }
-
 .premium-person__imgFrame:hover .premium-person__img-Blur{
   filter: blur(8px);
   -webkit-filter: blur(8px);
 }
-
 .premium-person__imgFrame:hover .premium-person__img-Bright{
   filter: brightness(150%);
   -webkit-filter: brightness(150%);
 }
-
 .premium-person__imgFrame:hover .premium-person__img-sepia{
   filter: sepia(150%);
   -webkit-filter: sepia(150%);
@@ -1779,7 +1767,6 @@ a.premium-dheading-block__link:hover {
   -ms-transform:translate(10%,10%);
   -webkit-transform:translate(10%,10%);
   transform: translate(10%,10%);
-  
 }
 .premium-person__imgOverlay{
   width: 100%;
@@ -1789,7 +1776,6 @@ a.premium-dheading-block__link:hover {
   transition: all 0.5s ease;
   background: rgba(93, 113, 165, 0.4);
   padding: 20px;
-
 }
 .premium-person__imgFrame:hover .premium-person__imgOverlay{
   bottom: 0;

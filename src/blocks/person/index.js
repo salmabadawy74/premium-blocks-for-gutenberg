@@ -2,7 +2,6 @@ import PbgIcon from "../icons";
 import save from './save'
 import edit from './edit'
 
-
 const { __ } = wp.i18n; //internationalization.
 
 const { registerBlockType } = wp.blocks; //register blocks
@@ -16,7 +15,6 @@ const personAttr = {
         source: "attribute",
         attribute: "src",
         selector: ".premium-person__img",
-
     },
     imageWidth: {
         type: "number",

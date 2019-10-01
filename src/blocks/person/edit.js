@@ -8,14 +8,9 @@ import PremiumPadding from "../../components/premium-padding";
 
 const { __ } = wp.i18n;
 
-const {
-  IconButton,
-  PanelBody,
-  Toolbar,
-  SelectControl,
-  RangeControl,
-  TextControl
-} = wp.components
+const { IconButton, PanelBody, Toolbar, SelectControl, RangeControl, TextControl } = wp.components
+
+const { InspectorControls, AlignmentToolbar, ColorPalette, RichText, MediaUpload } = wp.editor;
 
 const EFFECTS = [
   {
@@ -59,20 +54,8 @@ const icons = [
   {
     label: __("facebook"),
     value: "fa fa-facebook"
-  },
-
+  }
 ]
-const {
-  BlockControls,
-  InspectorControls,
-  AlignmentToolbar,
-  ColorPalette,
-  RichText,
-  MediaUpload
-} = wp.editor;
-
-
-
 
 const edit = props => {
   const { isSelected, setAttributes, className } = props;
@@ -138,58 +121,70 @@ const edit = props => {
 
     isSelected && (
       <InspectorControls key={"inspector"}>
+
+        {/* Person Image */}
         <PanelBody
-          title={__("Image")}
+          title={__("Person Image")}
           className="preminm-panel-body"
           initialOpen={false}
         >
-          <p className="premium-editor-paragraph">{__("Change image")}</p>
-          <div>
-            {!imageURL && <DefaultImage />}
-            {imageURL && <img src={imageURL} width="100%" height="100%" />}
-          </div>
-          <MediaUpload
-            allowedTypes={["image"]}
-            onSelect={media => {
-              setAttributes({ imageURL: media.url, imageID: media.id });
-            }}
-            type="image"
-            value={imageID}
-            render={({ open }) => (
+            <p className="premium-editor-paragraph">{__("Change image")}</p>
+            <div>
+              {!imageURL && <DefaultImage />}
+              {imageURL && <img src={imageURL} width="100%" height="100%" />}
+            </div>
+            <MediaUpload
+              allowedTypes={["image"]}
+              onSelect={media => {
+                setAttributes({ imageURL: media.url, imageID: media.id });
+              }}
+              type="image"
+              value={imageID}
+              render={({ open }) => (
 
-              <IconButton label={__("Change Image")} icon="edit" onClick={open}>
-                {__("Change Image")}
-              </IconButton>
-            )}
-          />
-          <p className="premium-editor-paragraph">{__("Image Width")}</p>
-          <PremiumSizeUnits
-            onChangeSizeUnit={newValue =>
-              setAttributes({ imageWidthU: newValue })
+                <IconButton label={__("Change Image")} icon="edit" onClick={open}>
+                  {__("Change Image")}
+                </IconButton>
+              )}
+            />
+            <p className="premium-editor-paragraph">{__("Image Width")}</p>
+            <PremiumSizeUnits
+              onChangeSizeUnit={newValue =>
+                setAttributes({ imageWidthU: newValue })
 
-            } />
-          <RangeControl
-            label={__("image width")}
-            value={imageWidth}
-            max="600"
-            onChange={newValue => setAttributes({ imageWidth: newValue })}
-            initialPosition={50}
+              } />
+            <RangeControl
+              label={__("image width")}
+              value={imageWidth}
+              max="600"
+              onChange={newValue => setAttributes({ imageWidth: newValue })}
+              initialPosition={50}
 
-          ></RangeControl>
+            ></RangeControl>
 
-          <p className="premium-editor-paragraph">{__("Hover Effect")}</p>
+            <p className="premium-editor-paragraph">{__("Hover Effect")}</p>
 
-          <SelectControl
-            label={__("Effects")}
-            value={effect}
-            options={EFFECTS}
-            onChange={newEffect => setAttributes({ effect: newEffect })}
-          >
+            <SelectControl
+              label={__("Effects")}
+              value={effect}
+              options={EFFECTS}
+              onChange={newEffect => setAttributes({ effect: newEffect })}
+            >
 
-          </SelectControl>
+            </SelectControl>
 
         </PanelBody>
 
+        {/* Person Image Style */}
+        <PanelBody
+          title={__("Person Image Style")}
+          className="preminm-panel-body"
+          initialOpen={false}
+        >
+
+        </PanelBody>
+
+        {/* Person */}
         <PanelBody
           title={__("Person")}
           className="preminm-panel-body"
@@ -393,7 +388,7 @@ const edit = props => {
                     })
                   }
                 />
-                <h3 className="premium-editor-paragraph">{__("Icon color")}</h3>
+                <h3 className="premium-editor-paragraph">{__("Description color")}</h3>
                 <ColorPalette
                   value={descColor}
                   onChange={newValue =>
@@ -410,8 +405,106 @@ const edit = props => {
 
         </PanelBody>
 
+        {/* Person Name Style */}
         <PanelBody
-          title={__("Icons")}
+          title={__("Person Name Style")}
+          className="preminm-panel-body"
+          initialOpen={false}
+        >
+
+        </PanelBody>
+
+        {/* Person Title Style */}
+        <PanelBody
+          title={__("Person Title Style")}
+          className="preminm-panel-body"
+          initialOpen={false}
+        >
+
+        </PanelBody>
+
+        {/* Person Description Style */}
+        <PanelBody
+          title={__("Person Description Style")}
+          className="preminm-panel-body"
+          initialOpen={false}
+        >
+
+        </PanelBody>
+
+        {/* Social Icons */}
+        <PanelBody
+          title={__("Social Icons URL")}
+          className="preminm-panel-body"
+          initialOpen={false}>
+            <TextControl
+                className="premium-text-control"
+                label={__("Facebook URL")}
+                value={facebookURL}
+                onChange={newURL => setAttributes({ facebookURL: newURL })}
+                
+              />
+            <TextControl
+                className="premium-text-control"
+                label={__("Twitter URL")}
+                value={twitterURL}
+                onChange={newURL => setAttributes({ twitterURL: newURL })}
+              
+              />
+              <TextControl
+                className="premium-text-control"
+                label={__("Instagram URL")}
+                value={instaURL}
+                onChange={newURL => setAttributes({ instaURL: newURL })}
+              
+              />
+              <TextControl
+                className="premium-text-control"
+                label={__(" Youtube URL")}
+                value={youtubeURL}
+                onChange={newURL => setAttributes({ youtubeURL: newURL })}
+              
+              />
+              <TextControl
+                className="premium-text-control"
+                label={__(" Google+ URL")}
+                value={googleURL}
+                onChange={newURL => setAttributes({ googleURL: newURL })}
+              
+              />
+              <TextControl
+                className="premium-text-control"
+                label={__(" Behance URL")}
+                value={behanceURL}
+                onChange={newURL => setAttributes({ behanceURL: newURL })}
+              
+              />
+              <TextControl
+                className="premium-text-control"
+                label={__(" Pinterest URL")}
+                value={pinterestURL}
+                onChange={newURL => setAttributes({ pinterestURL: newURL })}
+              
+              />
+              <TextControl
+                className="premium-text-control"
+                label={__(" Dribbble URL")}
+                value={dribbbleURL}
+                onChange={newURL => setAttributes({ dribbbleURL: newURL })}
+              
+              />
+              <TextControl
+                className="premium-text-control"
+                label={__("  Email Address")}
+                value={emailAddress}
+                onChange={newURL => setAttributes({ emailAddress: newURL })}
+              
+              />
+        </PanelBody>
+
+        {/* Social Icons Style */}
+        <PanelBody
+          title={__("Social Icons Style")}
           className="preminm-panel-body"
           initialOpen={false}
         >
@@ -487,74 +580,7 @@ const edit = props => {
           />
 
         </PanelBody>
-        <PanelBody
-          title={__("Icons URL")}
-          className="preminm-panel-body"
-          initialOpen={false}>
-            <TextControl
-                className="premium-text-control"
-                label={__("Facebook URL")}
-                value={facebookURL}
-                onChange={newURL => setAttributes({ facebookURL: newURL })}
-                
-              />
-            <TextControl
-                className="premium-text-control"
-                label={__("Twitter URL")}
-                value={twitterURL}
-                onChange={newURL => setAttributes({ twitterURL: newURL })}
-              
-              />
-              <TextControl
-                className="premium-text-control"
-                label={__("Instagram URL")}
-                value={instaURL}
-                onChange={newURL => setAttributes({ instaURL: newURL })}
-              
-              />
-              <TextControl
-                className="premium-text-control"
-                label={__(" Youtube URL")}
-                value={youtubeURL}
-                onChange={newURL => setAttributes({ youtubeURL: newURL })}
-              
-              />
-              <TextControl
-                className="premium-text-control"
-                label={__(" Google+ URL")}
-                value={googleURL}
-                onChange={newURL => setAttributes({ googleURL: newURL })}
-              
-              />
-              <TextControl
-                className="premium-text-control"
-                label={__(" Behance URL")}
-                value={behanceURL}
-                onChange={newURL => setAttributes({ behanceURL: newURL })}
-              
-              />
-              <TextControl
-                className="premium-text-control"
-                label={__(" Pinterest URL")}
-                value={pinterestURL}
-                onChange={newURL => setAttributes({ pinterestURL: newURL })}
-              
-              />
-              <TextControl
-                className="premium-text-control"
-                label={__(" Dribbble URL")}
-                value={dribbbleURL}
-                onChange={newURL => setAttributes({ dribbbleURL: newURL })}
-              
-              />
-              <TextControl
-                className="premium-text-control"
-                label={__("  Email Address")}
-                value={emailAddress}
-                onChange={newURL => setAttributes({ emailAddress: newURL })}
-              
-              />
-        </PanelBody>
+      
       </InspectorControls>
     ),
     <div>
