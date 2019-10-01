@@ -2009,24 +2009,16 @@ a.premium-dheading-block__link:hover {
 .premium-ihover__info-wrap .premium-ihover__content-wrap{
   padding: 3%;
 }
+.premium-ihover__icon-wrap {
+  padding: 0px 30px 0px 30px;
+}
 .premium-ihover__info-wrap .premium-ihover__title-wrap * {
   margin: 0;
   padding: 0;
 }
 .premium-ihover__info-wrap .premium-ihover__title-wrap {
   color :#fff;
-}
-.premium-ihover__info-wrap .premium-ihover__content .premium-ihover__divider {
-  height: 1px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  padding: 0;
-  position: relative;
-  overflow: hidden;
-}
-.premium-ihover__info-wrap .premium-ihover__content .premium-ihover__divider .premium-ihover__divider-line {
-  border: 24px solid #fff;
-  display: inline;
+  padding: 0px 30px 0px 30px;
 }
 .premium-ihover__info-wrap .premium-ihover__content .premium-ihover__description {
   padding: 0px 30px 0px 30px;
