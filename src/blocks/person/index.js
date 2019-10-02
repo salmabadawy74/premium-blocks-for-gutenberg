@@ -18,38 +18,35 @@ const personAttr = {
     },
     imageWidth: {
         type: "number",
-        default: 100
+        default: 50
     },
     imageWidthU: {
         type: "string",
         default: "%"
     },
-    imageHeight: {
-        type: "number",
-    },
-    effect: {
+    hoverEffect: {
         type: "string",
         default: "none"
     },
-    NameTag: {
+    nameTag: {
         type: "string",
         default: "H3"
     },
-    Person: {
+    personName: {
         type: "string",
-        default: "Person Name"
+        default: __("Person Name")
     },
-    TitleTag: {
+    titleTag: {
         type: "string",
         default: "H3"
     },
-    PersonTitle: {
+    personTitle: {
         type: "string",
-        default: "Person Title"
+        default: __("Person Title")
     },
-    PersonDesc: {
+    personDesc: {
         type: "string",
-        default: "Person Description"
+        default: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla")
     },
     align: {
         type: "string",
@@ -57,19 +54,16 @@ const personAttr = {
     },
     iconColor: {
         type: "string",
-        default:"white"
+        default:"#000"
     },
     iconBackColor: {
         type: "string"
     },
-    selectedIcon: {
-        type: "string",
-        default: "fa fa-linkedin"
+    iconHoverColor:{
+        type:"string"
     },
-    
-    iconType:{
-        type:"string",
-        default:"fa"
+    iconBackHover:{
+        type:"string"
     },
     facebookURL:{
         type:"string",
@@ -109,11 +103,11 @@ const personAttr = {
     },
     nameColor:{
         type:"string",
-        default:"white"
+        default:"#000"
     },
     titleColor:{
         type:"string",
-        default:"white"
+        default:"#000"
     },
     nameSpacing:{
         type:"number"
@@ -186,7 +180,7 @@ const personAttr = {
     },
     descColor:{
         type:"string",
-        default:"white"
+        default:"#000"
     },
     iconBorderRadius:{
         type:"number",
@@ -212,9 +206,6 @@ const personAttr = {
     },
     iconPaddingB:{
         type:"number"
-    },
-    iconHoverColor:{
-        type:"string"
     }
 }
 
