@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import DefaultImage from "../../components/default-image";
 import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import PremiumSizeUnits from "../../components/premium-size-units"
@@ -118,6 +119,8 @@ const edit = props => {
 
   } = props.attributes;
 
+  const mainClasses = classnames(className, "premium-person");
+
   return [
 
     isSelected && (
@@ -153,7 +156,7 @@ const edit = props => {
           </div>
           <div className="premium-control-toggle">
             <PremiumSizeUnits
-              onChangeSizeUnit={newValue => setAttributes({ imageWidthU: newValue })}
+              onChangeSizeUnit={newValue => setAttributes({ imageWidthU: newValue || "%" })}
             />
             <RangeControl
               label={__("Image Width")}
@@ -169,7 +172,7 @@ const edit = props => {
               label={__("Hover Effects")}
               value={hoverEffect}
               options={EFFECTS}
-              onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
+              onChange={newEffect => setAttributes({ hoverEffect: newEffect || "none" })}
             />
           </div>
 
@@ -216,7 +219,7 @@ const edit = props => {
             <p className="premium-editor-paragraph">{__("Alignment")}</p>
             <AlignmentToolbar
               value={align}
-              onChange={newAlign => setAttributes({ align: newAlign })}
+              onChange={newAlign => setAttributes({ align: newAlign || "center" })}
             />
           </div>
 
@@ -236,10 +239,10 @@ const edit = props => {
                 weight={nameWeight}
                 line={nameLine}
                 style={nameStyle}
-                onChangeSpacing={newSpacing => setAttributes({ nameSpacing: newSpacing })}
+                onChangeSpacing={newSpacing => setAttributes({ nameSpacing: newSpacing || "0" })}
                 onChangeWeight={newWeight => setAttributes({ nameWeight: newWeight === undefined ? 500 : newWeight })}
                 onChangeLine={newValue => setAttributes({ nameLine: newValue === undefined ? 10 : newValue })}
-                onChangeStyle={newValue => setAttributes({ nameStyle: newValue === undefined ? 'normal' : newValue })}
+                onChangeStyle={newValue => setAttributes({ nameStyle: newValue === undefined ? 'normal' : newValue || "normal" })}
               />
             </div>
             <div className="premium-control-toggle">
@@ -258,7 +261,7 @@ const edit = props => {
               <p className="premium-editor-paragraph">{__("Name Color")}</p>
               <ColorPalette
                 value={nameColor}
-                onChange={newValue => setAttributes({ nameColor: newValue })}
+                onChange={newValue => setAttributes({ nameColor: newValue || "#000" })}
                 allowReset={true}
               />
             </div>
@@ -280,7 +283,7 @@ const edit = props => {
                 weight={titleWeight}
                 line={titleLine}
                 style={titleStyle}
-                onChangeSpacing={newSpacing => setAttributes({ titleSpacing: newSpacing })}
+                onChangeSpacing={newSpacing => setAttributes({ titleSpacing: newSpacing || "0"})}
                 onChangeWeight={newWeight => setAttributes({ titleWeight: newWeight === undefined ? 500 : newWeight })}
                 onChangeLine={newValue => setAttributes({ titleLine: newValue === undefined ? 10 : newValue })}
                 onChangeStyle={newValue => setAttributes({ titleStyle: newValue === undefined ? 'normal' : newValue })}
@@ -302,7 +305,7 @@ const edit = props => {
               <p className="premium-editor-paragraph">{__("Title Color")}</p>
               <ColorPalette
                 value={titleColor}
-                onChange={newValue => setAttributes({ titleColor: newValue })}
+                onChange={newValue => setAttributes({ titleColor: newValue || "#000" })}
                 allowReset={true}
               />
             </div>
@@ -324,7 +327,7 @@ const edit = props => {
                 weight={descWeight}
                 line={descLine}
                 style={descStyle}
-                onChangeSpacing={newSpacing => setAttributes({ descSpacing: newSpacing })}
+                onChangeSpacing={newSpacing => setAttributes({ descSpacing: newSpacing || "0" })}
                 onChangeWeight={newWeight => setAttributes({ descWeight: newWeight === undefined ? 500 : newWeight })}
                 onChangeLine={newValue => setAttributes({ descLine: newValue === undefined ? 10 : newValue })}
                 onChangeStyle={newValue => setAttributes({ descStyle: newValue === undefined ? 'normal' : newValue })}
@@ -334,7 +337,7 @@ const edit = props => {
               <p className="premium-editor-paragraph">{__("Description color")}</p>
               <ColorPalette
                 value={descColor}
-                onChange={newValue => setAttributes({ descColor: newValue })}
+                onChange={newValue => setAttributes({ descColor: newValue || "#000" })}
                 allowReset={true}
               />
             </div>
@@ -433,7 +436,7 @@ const edit = props => {
             <p className="premium-editor-paragraph">{__("Icons Color")}</p>
             <ColorPalette
               value={iconColor}
-              onChange={newValue => setAttributes({ iconColor: newValue })}
+              onChange={newValue => setAttributes({ iconColor: newValue || "#000" })}
               allowReset={true}
             />
           </div>
@@ -441,7 +444,7 @@ const edit = props => {
             <p className="premium-editor-paragraph">{__("Icons Hover Color")}</p>
             <ColorPalette
               value={iconHoverColor}
-              onChange={newValue => setAttributes({ iconHoverColor: newValue })}
+              onChange={newValue => setAttributes({ iconHoverColor: newValue || "#fff"})}
               allowReset={true}
             />
           </div>
@@ -449,7 +452,7 @@ const edit = props => {
             <p className="premium-editor-paragraph">{__("Icons Background Color")}</p>
             <ColorPalette
               value={iconBackColor}
-              onChange={newValue => setAttributes({ iconBackColor: newValue })}
+              onChange={newValue => setAttributes({ iconBackColor: newValue || "transparent" })}
               allowReset={true}
             />
           </div>
@@ -457,7 +460,7 @@ const edit = props => {
             <p className="premium-editor-paragraph">{__("Icons Hover Background Color")}</p>
             <ColorPalette
               value={iconBackHover}
-              onChange={newValue => setAttributes({ iconBackHover: newValue })}
+              onChange={newValue => setAttributes({ iconBackHover: newValue || "transparent" })}
               allowReset={true}
             />
           </div>
@@ -467,10 +470,10 @@ const edit = props => {
               borderWidth={iconBorderWidth}
               borderColor={iconBorderColor}
               borderRadius={iconBorderRadius}
-              onChangeType={newType => setAttributes({ iconBorderType: newType })}
-              onChangeWidth={newWidth => setAttributes({ iconBorderWidth: newWidth })}
-              onChangeColor={colorValue => setAttributes({ iconBorderColor: colorValue.hex })}
-              onChangeRadius={newRadius => setAttributes({ iconBorderRadius: newRadius })}
+              onChangeType={newType => setAttributes({ iconBorderType: newType || "none"})}
+              onChangeWidth={newWidth => setAttributes({ iconBorderWidth: newWidth || "0"})}
+              onChangeColor={colorValue => setAttributes({ iconBorderColor: colorValue.hex || "#000"})}
+              onChangeRadius={newRadius => setAttributes({ iconBorderRadius: newRadius || "0"})}
             />
           </div>
           <div className="premium-control-toggle">
@@ -479,10 +482,10 @@ const edit = props => {
               paddingRight={iconPaddingR}
               paddingBottom={iconPaddingB}
               paddingLeft={iconPaddingL}
-              onChangePadTop={newValue => setAttributes({ iconPaddingT: newValue })}
-              onChangePadRight={newValue => setAttributes({ iconPaddingR: newValue })}
-              onChangePadBottom={newValue => setAttributes({ iconPaddingB: newValue })}
-              onChangePadLeft={newValue => setAttributes({ iconPaddingL: newValue })}
+              onChangePadTop={newValue => setAttributes({ iconPaddingT: newValue || "0"})}
+              onChangePadRight={newValue => setAttributes({ iconPaddingR: newValue || "0" })}
+              onChangePadBottom={newValue => setAttributes({ iconPaddingB: newValue || "0" })}
+              onChangePadLeft={newValue => setAttributes({ iconPaddingL: newValue || "0" })}
             />
           </div>
 
@@ -494,7 +497,7 @@ const edit = props => {
 
       {!imageURL && <DefaultImage />}
       {imageURL && (
-        <div className={`premium-person__container premium-person__${hoverEffect}-effect`} style={{width : imageWidth + imageWidthU}}>
+        <div className={`${mainClasses}__container ${mainClasses}__${hoverEffect || "none"}-effect`} style={{ width : imageWidth + (imageWidthU  || "%") }}>
 
           <div className={`premium-person__image-container`}>
             <img
@@ -503,7 +506,7 @@ const edit = props => {
             />
           </div>
           <div className={`premium-person__info`} >
-            <div className={`premium-person__info-container`}>
+            <div className={`premium-person__info-container`} style={{textAlign : align || "center"}}>
 
               <RichText
                 className={`premium-person__name`}
@@ -513,13 +516,12 @@ const edit = props => {
                 isSelected={false}
                 onChange={newText => setAttributes({ personName: newText })}
                 style={{
-                  textAlign: align,
-                  color: nameColor,
+                  color: nameColor | "#000",
                   fontWeight: nameWeight,
                   lineHeight: nameLine + "px",
-                  fontStyle: nameStyle,
-                  letterSpacing: nameSpacing + "px",
-                  textShadow: `${nameShadowHorizontal}px ${nameShadowVertical}px ${nameShadowBlur}px ${nameShadowColor}`
+                  fontStyle: nameStyle || "normal",
+                  letterSpacing: (nameSpacing || "0") + "px",
+                  textShadow: `${nameShadowHorizontal || "0"}px ${nameShadowVertical || "0"}px ${nameShadowBlur || "0"}px ${nameShadowColor || "transparent"}`
                 }}
                 keepPlaceholderOnFocus
               />
@@ -531,13 +533,12 @@ const edit = props => {
                 isSelected={false}
                 onChange={newText => setAttributes({ personTitle: newText })}
                 style={{
-                  textAlign: align,
-                  color: titleColor,
+                  color: titleColor || "#000",
                   fontWeight: titleWeight,
                   lineHeight: titleLine + "px",
-                  fontStyle: titleStyle,
-                  letterSpacing: titleSpacing + "px",
-                  textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`
+                  fontStyle: titleStyle || "normal",
+                  letterSpacing: (titleSpacing || "0") + "px",
+                  textShadow: `${titleShadowHorizontal || "0"}px ${titleShadowVertical || "0"}px ${titleShadowBlur || "0"}px ${titleShadowColor || "transparent"}`
                 }}
                 keepPlaceholderOnFocus
               />
@@ -549,12 +550,11 @@ const edit = props => {
                 isSelected={false}
                 onChange={newText => setAttributes({ personDesc: newText })}
                 style={{
-                  textAlign: align,
                   fontWeight: descWeight,
                   lineHeight: descLine + "px",
-                  fontStyle: descStyle,
-                  letterSpacing: descSpacing + "px",
-                  color: descColor
+                  fontStyle: descStyle || "normal",
+                  letterSpacing: (descSpacing || "0") + "px",
+                  color: descColor || "#000"
                 }}
                 keepPlaceholderOnFocus
               />
@@ -562,29 +562,29 @@ const edit = props => {
                 dangerouslySetInnerHTML={{
                   __html: [
                     `.premium-person__icon:hover{`,
-                    `color:${iconHoverColor}!important;`,
-                    `background-color:${iconBackHover}!important;`,
+                    `color:${iconHoverColor || "#fff"}!important;`,
+                    `background-color:${iconBackHover || "transparent"}!important;`,
                     "}"
                   ].join("\n")
                 }}
               />
-              <ul className={`premium-person__social-list`} style={{ textAlign: align }}>
+              <ul className={`premium-person__social-list`} style={{ textAlign: align || "center" }}>
                 {(1 == FontAwesomeEnabled) && (facebookURL !== '') && (
                   <li className={`premium-person__list-item`}>
                     <a href={facebookURL} target="_blank" rel="noopener noreferrer">
                       <i
                         className={`fa fa-facebook premium-person__icon `}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -596,16 +596,16 @@ const edit = props => {
                       <i
                         className={`fa fa-twitter premium-person__icon `}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -617,16 +617,16 @@ const edit = props => {
                       <i
                         className={`fa fa-instagram premium-person__icon `}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -638,16 +638,16 @@ const edit = props => {
                       <i
                         className={`fa fa-youtube premium-person__icon `}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -659,16 +659,16 @@ const edit = props => {
                       <i
                         className={`fa fa-google-plus premium-person__icon `}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -680,16 +680,16 @@ const edit = props => {
                       <i
                         className={`fa fa-behance premium-person__icon `}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -701,16 +701,16 @@ const edit = props => {
                       <i
                         className={`fa fa-pinterest premium-person__icon`}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -722,16 +722,16 @@ const edit = props => {
                       <i
                         className={`fa fa-dribbble premium-person__icon `}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -743,16 +743,16 @@ const edit = props => {
                       <i
                         className={`premium-person__icon fa fa-envelope`}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>

@@ -41036,7 +41036,7 @@ var personAttr = {
     },
     imageWidth: {
         type: "number",
-        default: 50
+        default: "50"
     },
     imageWidthU: {
         type: "string",
@@ -41075,13 +41075,16 @@ var personAttr = {
         default: "#000"
     },
     iconBackColor: {
-        type: "string"
+        type: "string",
+        default: "transparent"
     },
     iconHoverColor: {
-        type: "string"
+        type: "string",
+        default: "#fff"
     },
     iconBackHover: {
-        type: "string"
+        type: "string",
+        default: "transparent"
     },
     facebookURL: {
         type: "string",
@@ -41128,7 +41131,8 @@ var personAttr = {
         default: "#000"
     },
     nameSpacing: {
-        type: "number"
+        type: "number",
+        default: "0"
     },
     nameStyle: {
         type: "string",
@@ -41141,7 +41145,8 @@ var personAttr = {
         type: "number"
     },
     titleSpacing: {
-        type: "number"
+        type: "number",
+        default: "0"
     },
     titleStyle: {
         type: "string",
@@ -41154,7 +41159,8 @@ var personAttr = {
         type: "number"
     },
     nameShadowColor: {
-        type: "string"
+        type: "string",
+        default: "transparent"
     },
     nameShadowBlur: {
         type: "number",
@@ -41169,7 +41175,8 @@ var personAttr = {
         default: "0"
     },
     titleShadowColor: {
-        type: "string"
+        type: "string",
+        default: "transparent"
     },
     titleShadowBlur: {
         type: "number",
@@ -41187,7 +41194,8 @@ var personAttr = {
         type: "number"
     },
     descSpacing: {
-        type: "number"
+        type: "number",
+        default: "0"
     },
     descStyle: {
         type: "string",
@@ -41205,25 +41213,32 @@ var personAttr = {
         default: "3"
     },
     iconBorderColor: {
-        type: "string"
+        type: "string",
+        default: "#000"
     },
     iconBorderType: {
-        type: "string"
+        type: "string",
+        default: "none"
     },
     iconBorderWidth: {
-        type: "number"
+        type: "number",
+        default: "0"
     },
     iconPaddingT: {
-        type: "number"
+        type: "number",
+        default: "0"
     },
     iconPaddingR: {
-        type: "number"
+        type: "number",
+        default: "0"
     },
     iconPaddingL: {
-        type: "number"
+        type: "number",
+        default: "0"
     },
     iconPaddingB: {
-        type: "number"
+        type: "number",
+        default: "0"
     }
 };
 
@@ -41244,8 +41259,10 @@ registerBlockType("premium/person", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__ = __webpack_require__(2);
 
 
 
@@ -41312,13 +41329,15 @@ var save = function save(props) {
       iconPaddingB = _props$attributes.iconPaddingB;
 
 
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-person");
+
   return wp.element.createElement(
     "div",
     null,
-    !imageURL && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_default_image__["a" /* default */], null),
+    !imageURL && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_default_image__["a" /* default */], null),
     imageURL && wp.element.createElement(
       "div",
-      { className: "premium-person__container premium-person__" + hoverEffect + "-effect", style: { width: imageWidth + imageWidthU } },
+      { className: mainClasses + "__container " + mainClasses + "__" + (hoverEffect || "none") + "-effect", style: { width: imageWidth + (imageWidthU || "%") } },
       wp.element.createElement(
         "div",
         { className: "premium-person__image-container" },
@@ -41332,19 +41351,18 @@ var save = function save(props) {
         { className: "premium-person__info" },
         wp.element.createElement(
           "div",
-          { className: "premium-person__info-container" },
+          { className: "premium-person__info-container", style: { textAlign: align || "center" } },
           wp.element.createElement(RichText.Content, {
             className: "premium-person__name",
             tagName: nameTag,
             value: personName,
             style: {
-              textAlign: align,
-              color: nameColor,
+              color: nameColor || "#000",
               fontWeight: nameWeight,
               lineHeight: nameLine + "px",
-              fontStyle: nameStyle,
-              letterSpacing: nameSpacing + "px",
-              textShadow: nameShadowHorizontal + "px " + nameShadowVertical + "px " + nameShadowBlur + "px " + nameShadowColor
+              fontStyle: nameStyle || "normal",
+              letterSpacing: (nameSpacing || "0") + "px",
+              textShadow: (nameShadowHorizontal || "0") + "px " + (nameShadowVertical || "0") + "px " + (nameShadowBlur || "0") + "px " + (nameShadowColor || "transparent")
             }
           }),
           wp.element.createElement(RichText.Content, {
@@ -41352,13 +41370,12 @@ var save = function save(props) {
             tagName: titleTag,
             value: personTitle,
             style: {
-              textAlign: align,
-              color: titleColor,
+              color: titleColor || "#000",
               fontWeight: titleWeight,
               lineHeight: titleLine + "px",
-              fontStyle: titleStyle,
-              letterSpacing: titleSpacing + "px",
-              textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor
+              fontStyle: titleStyle || "normal",
+              letterSpacing: (titleSpacing || "0") + "px",
+              textShadow: (titleShadowHorizontal || "0") + "px " + (titleShadowVertical || "0") + "px " + (titleShadowBlur || "0") + "px " + (titleShadowColor || "transparent")
             }
           }),
           wp.element.createElement(RichText.Content, {
@@ -41366,23 +41383,22 @@ var save = function save(props) {
             tagName: "p",
             value: personDesc,
             style: {
-              textAlign: align,
               fontWeight: descWeight,
               lineHeight: descLine + "px",
-              fontStyle: descStyle,
-              letterSpacing: descSpacing + "px",
-              color: descColor
+              fontStyle: descStyle || "normal",
+              letterSpacing: (descSpacing || "0") + "px",
+              color: descColor || "#000"
             }
           }),
           wp.element.createElement("style", {
             dangerouslySetInnerHTML: {
-              __html: [".premium-person__icon:hover{", "color:" + iconHoverColor + "!important;", "background-color:" + iconBackHover + "!important;", "}"].join("\n")
+              __html: [".premium-person__icon:hover{", "color:" + (iconHoverColor || "#fff") + "!important;", "background-color:" + (iconBackHover || "transparent") + "!important;", "}"].join("\n")
             }
           }),
           wp.element.createElement(
             "ul",
-            { className: "premium-person__social-list", style: { textAlign: align } },
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && facebookURL !== '' && wp.element.createElement(
+            { className: "premium-person__social-list", style: { textAlign: align || "center" } },
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && facebookURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -41391,21 +41407,21 @@ var save = function save(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-facebook premium-person__icon ",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && twitterURL !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && twitterURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -41414,21 +41430,21 @@ var save = function save(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-twitter premium-person__icon ",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && instaURL !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && instaURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -41437,21 +41453,21 @@ var save = function save(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-instagram premium-person__icon ",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && youtubeURL !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && youtubeURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -41460,21 +41476,21 @@ var save = function save(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-youtube premium-person__icon ",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && googleURL !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && googleURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -41483,21 +41499,21 @@ var save = function save(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-google-plus premium-person__icon ",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && behanceURL !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && behanceURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -41506,21 +41522,21 @@ var save = function save(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-behance premium-person__icon ",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && pinterestURL !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && pinterestURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -41529,21 +41545,21 @@ var save = function save(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-pinterest premium-person__icon",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && dribbbleURL !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && dribbbleURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -41552,21 +41568,21 @@ var save = function save(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-dribbble premium-person__icon ",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && emailAddress !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && emailAddress !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -41575,16 +41591,16 @@ var save = function save(props) {
                 wp.element.createElement("i", {
                   className: "premium-person__icon fa fa-envelope",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
@@ -41602,14 +41618,17 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_size_units__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_size_units__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_typo__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_text_shadow__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_border__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(10);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -41730,6 +41749,8 @@ var edit = function edit(props) {
       iconPaddingB = _props$attributes.iconPaddingB;
 
 
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-person");
+
   return [isSelected && wp.element.createElement(
     InspectorControls,
     { key: "inspector" },
@@ -41748,7 +41769,7 @@ var edit = function edit(props) {
           { className: "premium-editor-paragraph" },
           __("Person Image")
         ),
-        !imageURL && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_default_image__["a" /* default */], null),
+        !imageURL && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_default_image__["a" /* default */], null),
         imageURL && wp.element.createElement("img", { src: imageURL, width: "100%", height: "100%" }),
         wp.element.createElement(MediaUpload, {
           allowedTypes: ["image"],
@@ -41774,9 +41795,9 @@ var edit = function edit(props) {
       wp.element.createElement(
         "div",
         { className: "premium-control-toggle" },
-        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_size_units__["a" /* default */], {
+        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_size_units__["a" /* default */], {
           onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-            return setAttributes({ imageWidthU: newValue });
+            return setAttributes({ imageWidthU: newValue || "%" });
           }
         }),
         wp.element.createElement(RangeControl, _defineProperty({
@@ -41797,7 +41818,7 @@ var edit = function edit(props) {
           value: hoverEffect,
           options: EFFECTS,
           onChange: function onChange(newEffect) {
-            return setAttributes({ hoverEffect: newEffect });
+            return setAttributes({ hoverEffect: newEffect || "none" });
           }
         })
       )
@@ -41867,7 +41888,7 @@ var edit = function edit(props) {
         wp.element.createElement(AlignmentToolbar, {
           value: align,
           onChange: function onChange(newAlign) {
-            return setAttributes({ align: newAlign });
+            return setAttributes({ align: newAlign || "center" });
           }
         })
       )
@@ -41882,14 +41903,14 @@ var edit = function edit(props) {
       wp.element.createElement(
         "div",
         { className: "premium-control-toggle" },
-        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
+        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_typo__["a" /* default */], {
           components: ["spacing", "weight", "line", "style"],
           spacing: nameSpacing,
           weight: nameWeight,
           line: nameLine,
           style: nameStyle,
           onChangeSpacing: function onChangeSpacing(newSpacing) {
-            return setAttributes({ nameSpacing: newSpacing });
+            return setAttributes({ nameSpacing: newSpacing || "0" });
           },
           onChangeWeight: function onChangeWeight(newWeight) {
             return setAttributes({ nameWeight: newWeight === undefined ? 500 : newWeight });
@@ -41898,14 +41919,14 @@ var edit = function edit(props) {
             return setAttributes({ nameLine: newValue === undefined ? 10 : newValue });
           },
           onChangeStyle: function onChangeStyle(newValue) {
-            return setAttributes({ nameStyle: newValue === undefined ? 'normal' : newValue });
+            return setAttributes({ nameStyle: newValue === undefined ? 'normal' : newValue || "normal" });
           }
         })
       ),
       wp.element.createElement(
         "div",
         { className: "premium-control-toggle" },
-        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__["a" /* default */], {
+        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_text_shadow__["a" /* default */], {
           color: nameShadowColor,
           blur: nameShadowBlur,
           horizontal: nameShadowHorizontal,
@@ -41935,7 +41956,7 @@ var edit = function edit(props) {
         wp.element.createElement(ColorPalette, {
           value: nameColor,
           onChange: function onChange(newValue) {
-            return setAttributes({ nameColor: newValue });
+            return setAttributes({ nameColor: newValue || "#000" });
           },
           allowReset: true
         })
@@ -41951,14 +41972,14 @@ var edit = function edit(props) {
       wp.element.createElement(
         "div",
         { className: "premium-control-toggle" },
-        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
+        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_typo__["a" /* default */], {
           components: ["spacing", "weight", "line", "style"],
           spacing: titleSpacing,
           weight: titleWeight,
           line: titleLine,
           style: titleStyle,
           onChangeSpacing: function onChangeSpacing(newSpacing) {
-            return setAttributes({ titleSpacing: newSpacing });
+            return setAttributes({ titleSpacing: newSpacing || "0" });
           },
           onChangeWeight: function onChangeWeight(newWeight) {
             return setAttributes({ titleWeight: newWeight === undefined ? 500 : newWeight });
@@ -41974,7 +41995,7 @@ var edit = function edit(props) {
       wp.element.createElement(
         "div",
         { className: "premium-control-toggle" },
-        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__["a" /* default */], {
+        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_text_shadow__["a" /* default */], {
           color: titleShadowColor,
           blur: titleShadowBlur,
           horizontal: titleShadowHorizontal,
@@ -42004,7 +42025,7 @@ var edit = function edit(props) {
         wp.element.createElement(ColorPalette, {
           value: titleColor,
           onChange: function onChange(newValue) {
-            return setAttributes({ titleColor: newValue });
+            return setAttributes({ titleColor: newValue || "#000" });
           },
           allowReset: true
         })
@@ -42020,14 +42041,14 @@ var edit = function edit(props) {
       wp.element.createElement(
         "div",
         { className: "premium-control-toggle" },
-        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
+        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_typo__["a" /* default */], {
           components: ["spacing", "weight", "line", "style"],
           spacing: descSpacing,
           weight: descWeight,
           line: descLine,
           style: descStyle,
           onChangeSpacing: function onChangeSpacing(newSpacing) {
-            return setAttributes({ descSpacing: newSpacing });
+            return setAttributes({ descSpacing: newSpacing || "0" });
           },
           onChangeWeight: function onChangeWeight(newWeight) {
             return setAttributes({ descWeight: newWeight === undefined ? 500 : newWeight });
@@ -42051,7 +42072,7 @@ var edit = function edit(props) {
         wp.element.createElement(ColorPalette, {
           value: descColor,
           onChange: function onChange(newValue) {
-            return setAttributes({ descColor: newValue });
+            return setAttributes({ descColor: newValue || "#000" });
           },
           allowReset: true
         })
@@ -42191,7 +42212,7 @@ var edit = function edit(props) {
         wp.element.createElement(ColorPalette, {
           value: iconColor,
           onChange: function onChange(newValue) {
-            return setAttributes({ iconColor: newValue });
+            return setAttributes({ iconColor: newValue || "#000" });
           },
           allowReset: true
         })
@@ -42207,7 +42228,7 @@ var edit = function edit(props) {
         wp.element.createElement(ColorPalette, {
           value: iconHoverColor,
           onChange: function onChange(newValue) {
-            return setAttributes({ iconHoverColor: newValue });
+            return setAttributes({ iconHoverColor: newValue || "#fff" });
           },
           allowReset: true
         })
@@ -42223,7 +42244,7 @@ var edit = function edit(props) {
         wp.element.createElement(ColorPalette, {
           value: iconBackColor,
           onChange: function onChange(newValue) {
-            return setAttributes({ iconBackColor: newValue });
+            return setAttributes({ iconBackColor: newValue || "transparent" });
           },
           allowReset: true
         })
@@ -42239,7 +42260,7 @@ var edit = function edit(props) {
         wp.element.createElement(ColorPalette, {
           value: iconBackHover,
           onChange: function onChange(newValue) {
-            return setAttributes({ iconBackHover: newValue });
+            return setAttributes({ iconBackHover: newValue || "transparent" });
           },
           allowReset: true
         })
@@ -42247,44 +42268,44 @@ var edit = function edit(props) {
       wp.element.createElement(
         "div",
         { className: "premium-control-toggle" },
-        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_border__["a" /* default */], {
+        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_border__["a" /* default */], {
           borderType: iconBorderType,
           borderWidth: iconBorderWidth,
           borderColor: iconBorderColor,
           borderRadius: iconBorderRadius,
           onChangeType: function onChangeType(newType) {
-            return setAttributes({ iconBorderType: newType });
+            return setAttributes({ iconBorderType: newType || "none" });
           },
           onChangeWidth: function onChangeWidth(newWidth) {
-            return setAttributes({ iconBorderWidth: newWidth });
+            return setAttributes({ iconBorderWidth: newWidth || "0" });
           },
           onChangeColor: function onChangeColor(colorValue) {
-            return setAttributes({ iconBorderColor: colorValue.hex });
+            return setAttributes({ iconBorderColor: colorValue.hex || "#000" });
           },
           onChangeRadius: function onChangeRadius(newRadius) {
-            return setAttributes({ iconBorderRadius: newRadius });
+            return setAttributes({ iconBorderRadius: newRadius || "0" });
           }
         })
       ),
       wp.element.createElement(
         "div",
         { className: "premium-control-toggle" },
-        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_padding__["a" /* default */], {
+        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_padding__["a" /* default */], {
           paddingTop: iconPaddingT,
           paddingRight: iconPaddingR,
           paddingBottom: iconPaddingB,
           paddingLeft: iconPaddingL,
           onChangePadTop: function onChangePadTop(newValue) {
-            return setAttributes({ iconPaddingT: newValue });
+            return setAttributes({ iconPaddingT: newValue || "0" });
           },
           onChangePadRight: function onChangePadRight(newValue) {
-            return setAttributes({ iconPaddingR: newValue });
+            return setAttributes({ iconPaddingR: newValue || "0" });
           },
           onChangePadBottom: function onChangePadBottom(newValue) {
-            return setAttributes({ iconPaddingB: newValue });
+            return setAttributes({ iconPaddingB: newValue || "0" });
           },
           onChangePadLeft: function onChangePadLeft(newValue) {
-            return setAttributes({ iconPaddingL: newValue });
+            return setAttributes({ iconPaddingL: newValue || "0" });
           }
         })
       )
@@ -42292,10 +42313,10 @@ var edit = function edit(props) {
   ), wp.element.createElement(
     "div",
     null,
-    !imageURL && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_default_image__["a" /* default */], null),
+    !imageURL && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_default_image__["a" /* default */], null),
     imageURL && wp.element.createElement(
       "div",
-      { className: "premium-person__container premium-person__" + hoverEffect + "-effect", style: { width: imageWidth + imageWidthU } },
+      { className: mainClasses + "__container " + mainClasses + "__" + (hoverEffect || "none") + "-effect", style: { width: imageWidth + (imageWidthU || "%") } },
       wp.element.createElement(
         "div",
         { className: "premium-person__image-container" },
@@ -42309,7 +42330,7 @@ var edit = function edit(props) {
         { className: "premium-person__info" },
         wp.element.createElement(
           "div",
-          { className: "premium-person__info-container" },
+          { className: "premium-person__info-container", style: { textAlign: align || "center" } },
           wp.element.createElement(RichText, {
             className: "premium-person__name",
             tagName: nameTag,
@@ -42320,13 +42341,12 @@ var edit = function edit(props) {
               return setAttributes({ personName: newText });
             },
             style: {
-              textAlign: align,
-              color: nameColor,
+              color: nameColor | "#000",
               fontWeight: nameWeight,
               lineHeight: nameLine + "px",
-              fontStyle: nameStyle,
-              letterSpacing: nameSpacing + "px",
-              textShadow: nameShadowHorizontal + "px " + nameShadowVertical + "px " + nameShadowBlur + "px " + nameShadowColor
+              fontStyle: nameStyle || "normal",
+              letterSpacing: (nameSpacing || "0") + "px",
+              textShadow: (nameShadowHorizontal || "0") + "px " + (nameShadowVertical || "0") + "px " + (nameShadowBlur || "0") + "px " + (nameShadowColor || "transparent")
             },
             keepPlaceholderOnFocus: true
           }),
@@ -42340,13 +42360,12 @@ var edit = function edit(props) {
               return setAttributes({ personTitle: newText });
             },
             style: {
-              textAlign: align,
-              color: titleColor,
+              color: titleColor || "#000",
               fontWeight: titleWeight,
               lineHeight: titleLine + "px",
-              fontStyle: titleStyle,
-              letterSpacing: titleSpacing + "px",
-              textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor
+              fontStyle: titleStyle || "normal",
+              letterSpacing: (titleSpacing || "0") + "px",
+              textShadow: (titleShadowHorizontal || "0") + "px " + (titleShadowVertical || "0") + "px " + (titleShadowBlur || "0") + "px " + (titleShadowColor || "transparent")
             },
             keepPlaceholderOnFocus: true
           }),
@@ -42360,24 +42379,23 @@ var edit = function edit(props) {
               return setAttributes({ personDesc: newText });
             },
             style: {
-              textAlign: align,
               fontWeight: descWeight,
               lineHeight: descLine + "px",
-              fontStyle: descStyle,
-              letterSpacing: descSpacing + "px",
-              color: descColor
+              fontStyle: descStyle || "normal",
+              letterSpacing: (descSpacing || "0") + "px",
+              color: descColor || "#000"
             },
             keepPlaceholderOnFocus: true
           }),
           wp.element.createElement("style", {
             dangerouslySetInnerHTML: {
-              __html: [".premium-person__icon:hover{", "color:" + iconHoverColor + "!important;", "background-color:" + iconBackHover + "!important;", "}"].join("\n")
+              __html: [".premium-person__icon:hover{", "color:" + (iconHoverColor || "#fff") + "!important;", "background-color:" + (iconBackHover || "transparent") + "!important;", "}"].join("\n")
             }
           }),
           wp.element.createElement(
             "ul",
-            { className: "premium-person__social-list", style: { textAlign: align } },
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && facebookURL !== '' && wp.element.createElement(
+            { className: "premium-person__social-list", style: { textAlign: align || "center" } },
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && facebookURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -42386,21 +42404,21 @@ var edit = function edit(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-facebook premium-person__icon ",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && twitterURL !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && twitterURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -42409,21 +42427,21 @@ var edit = function edit(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-twitter premium-person__icon ",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && instaURL !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && instaURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -42432,21 +42450,21 @@ var edit = function edit(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-instagram premium-person__icon ",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && youtubeURL !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && youtubeURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -42455,21 +42473,21 @@ var edit = function edit(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-youtube premium-person__icon ",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && googleURL !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && googleURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -42478,21 +42496,21 @@ var edit = function edit(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-google-plus premium-person__icon ",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && behanceURL !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && behanceURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -42501,21 +42519,21 @@ var edit = function edit(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-behance premium-person__icon ",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && pinterestURL !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && pinterestURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -42524,21 +42542,21 @@ var edit = function edit(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-pinterest premium-person__icon",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && dribbbleURL !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && dribbbleURL !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -42547,21 +42565,21 @@ var edit = function edit(props) {
                 wp.element.createElement("i", {
                   className: "fa fa-dribbble premium-person__icon ",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )
             ),
-            1 == __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__["a" /* FontAwesomeEnabled */] && emailAddress !== '' && wp.element.createElement(
+            1 == __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__["a" /* FontAwesomeEnabled */] && emailAddress !== '' && wp.element.createElement(
               "li",
               { className: "premium-person__list-item" },
               wp.element.createElement(
@@ -42570,16 +42588,16 @@ var edit = function edit(props) {
                 wp.element.createElement("i", {
                   className: "premium-person__icon fa fa-envelope",
                   style: {
-                    color: iconColor,
-                    backgroundColor: iconBackColor,
-                    border: "" + iconBorderType,
-                    borderWidth: iconBorderWidth + "px",
-                    borderColor: iconBorderColor,
-                    borderRadius: iconBorderRadius + "px",
-                    paddingTop: iconPaddingT + "px",
-                    paddingBottom: iconPaddingB + "px",
-                    paddingLeft: iconPaddingL + "px",
-                    paddingRight: iconPaddingR + "px"
+                    color: iconColor || "#000",
+                    backgroundColor: iconBackColor || "transparent",
+                    border: "" + (iconBorderType || "none"),
+                    borderWidth: (iconBorderWidth || "0") + "px",
+                    borderColor: iconBorderColor || "#000",
+                    borderRadius: (iconBorderRadius || "0") + "px",
+                    paddingTop: (iconPaddingT || "0") + "px",
+                    paddingBottom: (iconPaddingB || "0") + "px",
+                    paddingLeft: (iconPaddingL || "0") + "px",
+                    paddingRight: (iconPaddingR || "0") + "px"
                   }
                 })
               )

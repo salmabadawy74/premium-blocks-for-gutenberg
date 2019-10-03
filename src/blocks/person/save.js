@@ -1,4 +1,4 @@
-
+import classnames from "classnames";
 import DefaultImage from "../../components/default-image";
 import { FontAwesomeEnabled } from "../../../assets/js/settings";
 
@@ -65,12 +65,14 @@ const save = props => {
 
   } = props.attributes;
 
+  const mainClasses = classnames(className, "premium-person");
+
   return (
     <div>
 
       {(!imageURL) && (<DefaultImage />)}
       {imageURL && (
-        <div className={`premium-person__container premium-person__${hoverEffect}-effect`} style={{ width: imageWidth + imageWidthU }}>
+        <div className={`${mainClasses}__container ${mainClasses}__${hoverEffect || "none"}-effect`} style={{ width: imageWidth + (imageWidthU  || "%") }}>
 
           <div className={`premium-person__image-container`}>
             <img
@@ -79,20 +81,19 @@ const save = props => {
             />
           </div>
           <div className={`premium-person__info`} >
-            <div className={`premium-person__info-container`}>
+            <div className={`premium-person__info-container`} style={{textAlign : align || "center"}}>
 
               <RichText.Content
                 className={`premium-person__name`}
                 tagName={nameTag}
                 value={personName}
                 style={{
-                  textAlign: align,
-                  color: nameColor,
+                  color: nameColor || "#000",
                   fontWeight: nameWeight,
                   lineHeight: nameLine + "px",
-                  fontStyle: nameStyle,
-                  letterSpacing: nameSpacing + "px",
-                  textShadow: `${nameShadowHorizontal}px ${nameShadowVertical}px ${nameShadowBlur}px ${nameShadowColor}`
+                  fontStyle: nameStyle || "normal",
+                  letterSpacing: (nameSpacing || "0") + "px",
+                  textShadow: `${nameShadowHorizontal || "0"}px ${nameShadowVertical || "0"}px ${nameShadowBlur || "0"}px ${nameShadowColor || "transparent"}`
                 }}
               />
               <RichText.Content
@@ -100,13 +101,12 @@ const save = props => {
                 tagName={titleTag}
                 value={personTitle}
                 style={{
-                  textAlign: align,
-                  color: titleColor,
+                  color: titleColor || "#000",
                   fontWeight: titleWeight,
                   lineHeight: titleLine + "px",
-                  fontStyle: titleStyle,
-                  letterSpacing: titleSpacing + "px",
-                  textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`
+                  fontStyle: titleStyle || "normal",
+                  letterSpacing: (titleSpacing || "0") + "px",
+                  textShadow: `${titleShadowHorizontal || "0"}px ${titleShadowVertical || "0"}px ${titleShadowBlur || "0"}px ${titleShadowColor || "transparent"}`
                 }}
               />
               <RichText.Content
@@ -114,41 +114,40 @@ const save = props => {
                 tagName={"p"}
                 value={personDesc}
                 style={{
-                  textAlign: align,
                   fontWeight: descWeight,
                   lineHeight: descLine + "px",
-                  fontStyle: descStyle,
-                  letterSpacing: descSpacing + "px",
-                  color: descColor
+                  fontStyle: descStyle || "normal",
+                  letterSpacing: (descSpacing || "0") + "px",
+                  color: descColor || "#000"
                 }}
               />
               <style
                 dangerouslySetInnerHTML={{
                   __html: [
                     `.premium-person__icon:hover{`,
-                    `color:${iconHoverColor}!important;`,
-                    `background-color:${iconBackHover}!important;`,
+                    `color:${iconHoverColor || "#fff"}!important;`,
+                    `background-color:${iconBackHover || "transparent"}!important;`,
                     "}"
                   ].join("\n")
                 }}
               />
-              <ul className={`premium-person__social-list`} style={{ textAlign: align }}>
+              <ul className={`premium-person__social-list`} style={{ textAlign: align || "center"}}>
                 {(1 == FontAwesomeEnabled) && (facebookURL !== '') && (
                   <li className={`premium-person__list-item`}>
                     <a href={facebookURL} target="_blank" rel="noopener noreferrer">
                       <i
                         className={`fa fa-facebook premium-person__icon `}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -160,16 +159,16 @@ const save = props => {
                       <i
                         className={`fa fa-twitter premium-person__icon `}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -181,16 +180,16 @@ const save = props => {
                       <i
                         className={`fa fa-instagram premium-person__icon `}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -202,16 +201,16 @@ const save = props => {
                       <i
                         className={`fa fa-youtube premium-person__icon `}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -223,16 +222,16 @@ const save = props => {
                       <i
                         className={`fa fa-google-plus premium-person__icon `}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -244,16 +243,16 @@ const save = props => {
                       <i
                         className={`fa fa-behance premium-person__icon `}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -265,16 +264,16 @@ const save = props => {
                       <i
                         className={`fa fa-pinterest premium-person__icon`}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -286,16 +285,16 @@ const save = props => {
                       <i
                         className={`fa fa-dribbble premium-person__icon `}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>
@@ -307,16 +306,16 @@ const save = props => {
                       <i
                         className={`premium-person__icon fa fa-envelope`}
                         style={{
-                          color: iconColor,
-                          backgroundColor: iconBackColor,
-                          border: `${iconBorderType}`,
-                          borderWidth: `${iconBorderWidth}px`,
-                          borderColor: iconBorderColor,
-                          borderRadius: `${iconBorderRadius}px`,
-                          paddingTop: `${iconPaddingT}px`,
-                          paddingBottom: `${iconPaddingB}px`,
-                          paddingLeft: `${iconPaddingL}px`,
-                          paddingRight: `${iconPaddingR}px`
+                          color: iconColor || "#000",
+                          backgroundColor: iconBackColor || "transparent",
+                          border: `${iconBorderType || "none"}`,
+                          borderWidth: `${iconBorderWidth || "0"}px`,
+                          borderColor: iconBorderColor || "#000",
+                          borderRadius: `${iconBorderRadius || "0"}px`,
+                          paddingTop: `${iconPaddingT || "0"}px`,
+                          paddingBottom: `${iconPaddingB || "0"}px`,
+                          paddingLeft: `${iconPaddingL || "0"}px`,
+                          paddingRight: `${iconPaddingR || "0"}px`
                         }}
                       />
                     </a>

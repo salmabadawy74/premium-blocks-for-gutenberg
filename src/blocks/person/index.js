@@ -18,7 +18,7 @@ const personAttr = {
     },
     imageWidth: {
         type: "number",
-        default: 50
+        default: "50"
     },
     imageWidthU: {
         type: "string",
@@ -57,13 +57,16 @@ const personAttr = {
         default:"#000"
     },
     iconBackColor: {
-        type: "string"
+        type: "string",
+        default: "transparent"
     },
     iconHoverColor:{
-        type:"string"
+        type:"string",
+        default:"#fff"
     },
     iconBackHover:{
-        type:"string"
+        type:"string",
+        default:"transparent"
     },
     facebookURL:{
         type:"string",
@@ -110,7 +113,8 @@ const personAttr = {
         default:"#000"
     },
     nameSpacing:{
-        type:"number"
+        type:"number",
+        default:"0"
     },
     nameStyle:{
         type:"string",
@@ -123,7 +127,8 @@ const personAttr = {
         type:"number"
     },
     titleSpacing:{
-        type:"number"
+        type:"number",
+        default:"0"
     },
     titleStyle:{
         type:"string",
@@ -136,7 +141,8 @@ const personAttr = {
         type:"number"
     },
     nameShadowColor:{
-        type:"string"
+        type:"string",
+        default:"transparent"
     },
     nameShadowBlur:{
         type:"number",
@@ -152,6 +158,7 @@ const personAttr = {
     },
     titleShadowColor:{
         type:"string",
+        default:"transparent"
     },
     titleShadowBlur:{
         type:"number",
@@ -169,7 +176,8 @@ const personAttr = {
         type:"number"
     },
     descSpacing:{
-        type:"number"
+        type:"number",
+        default:"0"
     },
     descStyle:{
         type:"string",
@@ -187,25 +195,32 @@ const personAttr = {
         default:"3"
     },
     iconBorderColor:{
-        type:"string"
+        type:"string",
+        default:"#000"
     },
     iconBorderType:{
-        type:"string"
+        type:"string",
+        default:"none"
     },
     iconBorderWidth:{
-        type:"number"
+        type:"number",
+        default:"0"
     },
     iconPaddingT:{
-        type:"number"
+        type:"number",
+        default:"0"
     },
     iconPaddingR:{
-        type:"number"
+        type:"number",
+        default:"0"
     },
     iconPaddingL:{
-        type:"number"
+        type:"number",
+        default:"0"
     },
     iconPaddingB:{
-        type:"number"
+        type:"number",
+        default:"0"
     }
 }
 
