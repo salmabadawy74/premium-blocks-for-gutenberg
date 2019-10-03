@@ -28,9 +28,11 @@ const {
 const { Fragment } = wp.element;
 
 const {
+  BlockControls,
   InspectorControls,
   RichText,
   ColorPalette,
+  AlignmentToolbar,
   MediaUpload,
   URLInput
 } = wp.editor;
@@ -289,6 +291,14 @@ const edit = props => {
 
   return [
     isSelected && (
+      <BlockControls key="controls">
+        <AlignmentToolbar
+          value={align}
+          onChange={newAlign => setAttributes({ align: newAlign })}
+        />
+      </BlockControls>
+    ),
+    isSelected && (
       <InspectorControls key={"inspector"}>
         <PanelBody
           title={__("Display Options")}
@@ -405,6 +415,7 @@ const edit = props => {
                   value={iconImgId}
                   render={({ open }) => (
                     <IconButton
+                      className="premium-media-uplpad-btn"
                       label={__("Change Image")}
                       icon="edit"
                       onClick={open}
@@ -786,14 +797,6 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
-          <p>{__("Align")}</p>
-          <Toolbar
-            controls={ALIGNS.map(contentAlign => ({
-              icon: "editor-align" + contentAlign,
-              isActive: contentAlign === align,
-              onClick: () => setAttributes({ align: contentAlign })
-            }))}
-          />
           <Fragment>
             <p>{__("Background Color")}</p>
             <ColorPalette
