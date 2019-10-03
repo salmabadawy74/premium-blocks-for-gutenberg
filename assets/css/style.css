@@ -1714,10 +1714,9 @@ a.premium-dheading-block__link:hover {
 */
 /**************** Premium Person ********************/
 /*******************************************************/
-.premium-person__imgFrame.premium-person__container{
+.premium-person__container{
   position: relative;
   overflow: hidden;
-  text-align: center;
   margin: 0 auto;
 }
 .premium-person__image-container{
@@ -1733,9 +1732,6 @@ a.premium-dheading-block__link:hover {
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
-
-
-
 .premium-person__zoomIN-effect:hover .premium-person__image-container img {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
@@ -1758,13 +1754,6 @@ a.premium-dheading-block__link:hover {
   -o-transform: scale(1.1);
   transform: scale(1.1);
 }
-.premium-person__grayScale-effect:hover .premium-person__image-container img {
-  -webkit-filter: grayscale(100%);
-  -moz-filter: grayscale(100%);
-  -ms-filter: grayscale(100%);
-  -o-filter: grayscale(100%);
-  filter: grayscale(100%);
-}
 .premium-person__scale-effect:hover .premium-person__image-container img {
   -webkit-transform: scale(1.3) rotate(5deg);
   -moz-transform: scale(1.3) rotate(5deg);
@@ -1772,52 +1761,45 @@ a.premium-dheading-block__link:hover {
   -o-transform: scale(1.3) rotate(5deg);
   transform: scale(1.3) rotate(5deg);
 }
-
-
-
-
-
- .premium-person__imgFrame:hover .premium-person__img-ZoomIN{ 
-  -ms-transform: scale(1.2,1.2); 
-  -webkit-transform: scale(1.2,1.2); 
-  transform: scale(1.2 ,1.2)
-} 
-.premium-person__imgFrame:hover .premium-person__img-ZoomOut{ 
-  -ms-transform: scale(0.9,0.9); /* IE 9 */
-  -webkit-transform: scale(0.9,0.9); /* Safari prior 9.0 */
-  transform: scale(0.9,0.9);
-}
-.premium-person__imgFrame:hover .premium-person__img.premium-person__img-Scale{
-  overflow:visible; 
-  border: 10px solid red;
-}
-.premium-person__imgFrame:hover .premium-person__img-Scale{
-  -ms-transform: scale(1.1,1.1); 
-  -webkit-transform: scale(1.1,1.1); 
-  transform: scale(1.1 ,1.1)
-}
-.premium-person__imgFrame:hover .premium-person__img-GrayScale{
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+.premium-person__grayScale-effect:hover .premium-person__image-container img {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
   filter: grayscale(100%);
 }
-.premium-person__imgFrame:hover .premium-person__img-Blur{
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+.premium-person__sepia-effect .premium-person__image-container img {
+  -webkit-filter: sepia(30%);
+  filter: sepia(30%);
 }
-.premium-person__imgFrame:hover .premium-person__img-Bright{
-  filter: brightness(150%);
-  -webkit-filter: brightness(150%);
+.premium-person__bright-effect .premium-person__image-container img {
+  -webkit-filter: brightness(1);
+  filter: brightness(1);
 }
-.premium-person__imgFrame:hover .premium-person__img-sepia{
-  filter: sepia(150%);
-  -webkit-filter: sepia(150%);
+.premium-person__translate-effect .premium-person__image-container img {
+  -webkit-transform: translateX(-15px) scale(1.1);
+  transform: translateX(-15px) scale(1.1);
 }
-.premium-person__imgFrame:hover .premium-person__img-Translate{
-  -ms-transform:translate(10%,10%);
-  -webkit-transform:translate(10%,10%);
-  transform: translate(10%,10%);
+.premium-person__blur-effect:hover .premium-person__image-container img {
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -ms-filter: blur(3px);
+  -o-filter: blur(3px);
+  filter: blur(3px);
 }
-.premium-person__imgOverlay.premium-person__info{
+.premium-person__sepia-effect:hover .premium-person__image-container img {
+  -webkit-filter: sepia(0%);
+  filter: sepia(0%);
+}
+.premium-person__bright-effect:hover .premium-person__image-container img {
+  -webkit-filter: brightness(1.2);
+  filter: brightness(1.2);
+}
+.premium-person__translate-effect:hover .premium-person__image-container img {
+  -webkit-transform: translateX(0px) scale(1.1);
+  transform: translateX(0px) scale(1.1);
+}
+.premium-person__info{
   position: absolute;
   top: auto;
   right: 0;
@@ -1840,7 +1822,7 @@ a.premium-dheading-block__link:hover {
   bottom: -70%;
   background: rgba(93, 113, 165, 0.4); */
 }
-.premium-person__imgFrame.premium-person__container:hover .premium-person__imgOverlay.premium-person__info{
+.premium-person__container:hover .premium-person__info{
   transform: translate3d(0,0,0);
   bottom: -1px !important;
   /* bottom: 0; */
@@ -1849,23 +1831,25 @@ a.premium-dheading-block__link:hover {
   padding: 30px 15px;
 }
 .premium-person__name{
-  margin: 0 0 5px 0;
+  margin: 0 0 5px 0 !important;
 }
 .premium-person__title{
-  margin: 0 0 20px;
+  margin: 0 0 20px !important;
+  white-space: nowrap;
 }
 .premium-person__description{
-  margin: 10px 0 15px;
+  margin: 10px 0 15px !important;
+  font-size: 19px !important;
+}
+.premium-person__name::before ,  .premium-person__title::before{
+  content: none !important;
 }
 .premium-person__name , .premium-person__title, .premium-person__description{
   padding: 0;
 }
-.premium-person__title, .premium-person__description{
-  white-space: nowrap;
-}
 .premium-person__social-list {
   margin: 0px !important;
-  padding: 0;
+  padding: 0 !important;
 }
 .premium-person__list-item{
   display: inline;
@@ -1887,4 +1871,10 @@ a.premium-dheading-block__link:hover {
 .premium-person__list-item:hover {
   bottom: 5px;
 }
-
+.premium-person__list-item:hover a{
+  box-shadow: none;
+}
+.premium-person__list-item a:focus{
+  box-shadow: none;
+  outline: none;
+}

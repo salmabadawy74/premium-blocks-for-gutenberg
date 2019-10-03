@@ -70,7 +70,7 @@ const save = props => {
 
       {(!imageURL) && (<DefaultImage />)}
       {imageURL && (
-        <div className={`premium-person__imgFrame premium-person__container premium-person__${hoverEffect}-effect`} style={{ width: imageWidth + imageWidthU }}>
+        <div className={`premium-person__container premium-person__${hoverEffect}-effect`} style={{ width: imageWidth + imageWidthU }}>
 
           <div className={`premium-person__image-container`}>
             <img
@@ -78,7 +78,7 @@ const save = props => {
               src={imageURL}
             />
           </div>
-          <div className={`premium-person__imgOverlay premium-person__info`} >
+          <div className={`premium-person__info`} >
             <div className={`premium-person__info-container`}>
 
               <RichText.Content

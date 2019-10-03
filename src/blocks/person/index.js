@@ -30,7 +30,7 @@ const personAttr = {
     },
     nameTag: {
         type: "string",
-        default: "H3"
+        default: "H2"
     },
     personName: {
         type: "string",
@@ -38,7 +38,7 @@ const personAttr = {
     },
     titleTag: {
         type: "string",
-        default: "H3"
+        default: "H4"
     },
     personTitle: {
         type: "string",

@@ -330,6 +330,7 @@ process.umask = function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return accordion; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return iconBox; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return videoBox; });
+/* unused harmony export person */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FontAwesomeEnabled; });
 /*import premiumLogo from "./logo";
 wp.blocks.updateCategory("premium-blocks", { icon: premiumLogo });*/
@@ -347,7 +348,8 @@ var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
     container = _PremiumBlocksSetting.container,
     accordion = _PremiumBlocksSetting.accordion,
     iconBox = _PremiumBlocksSetting.iconBox,
-    videoBox = _PremiumBlocksSetting.videoBox;
+    videoBox = _PremiumBlocksSetting.videoBox,
+    person = _PremiumBlocksSetting.person;
 
 //Plugin Config Keys
 
@@ -41046,7 +41048,7 @@ var personAttr = {
     },
     nameTag: {
         type: "string",
-        default: "H3"
+        default: "H2"
     },
     personName: {
         type: "string",
@@ -41054,7 +41056,7 @@ var personAttr = {
     },
     titleTag: {
         type: "string",
-        default: "H3"
+        default: "H4"
     },
     personTitle: {
         type: "string",
@@ -41316,7 +41318,7 @@ var save = function save(props) {
     !imageURL && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_default_image__["a" /* default */], null),
     imageURL && wp.element.createElement(
       "div",
-      { className: "premium-person__imgFrame premium-person__container premium-person__" + hoverEffect + "-effect", style: { width: imageWidth + imageWidthU } },
+      { className: "premium-person__container premium-person__" + hoverEffect + "-effect", style: { width: imageWidth + imageWidthU } },
       wp.element.createElement(
         "div",
         { className: "premium-person__image-container" },
@@ -41327,7 +41329,7 @@ var save = function save(props) {
       ),
       wp.element.createElement(
         "div",
-        { className: "premium-person__imgOverlay premium-person__info" },
+        { className: "premium-person__info" },
         wp.element.createElement(
           "div",
           { className: "premium-person__info-container" },
@@ -42293,7 +42295,7 @@ var edit = function edit(props) {
     !imageURL && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_default_image__["a" /* default */], null),
     imageURL && wp.element.createElement(
       "div",
-      { className: "premium-person__imgFrame premium-person__container premium-person__" + hoverEffect + "-effect", style: { width: imageWidth + imageWidthU } },
+      { className: "premium-person__container premium-person__" + hoverEffect + "-effect", style: { width: imageWidth + imageWidthU } },
       wp.element.createElement(
         "div",
         { className: "premium-person__image-container" },
@@ -42304,7 +42306,7 @@ var edit = function edit(props) {
       ),
       wp.element.createElement(
         "div",
-        { className: "premium-person__imgOverlay premium-person__info" },
+        { className: "premium-person__info" },
         wp.element.createElement(
           "div",
           { className: "premium-person__info-container" },
