@@ -1717,7 +1717,6 @@ a.premium-dheading-block__link:hover {
 .premium-person__container{
   position: relative;
   overflow: hidden;
-  margin: 0 auto;
 }
 .premium-person__image-container{
   text-align: center;
@@ -1818,9 +1817,6 @@ a.premium-dheading-block__link:hover {
   -ms-transform: translate3d(0,100%,0);
   -o-transform: translate3d(0,100%,0);
   transform: translate3d(0,100%,0);
-  /* height: 70%;
-  bottom: -70%;
-  background: rgba(93, 113, 165, 0.4); */
 }
 .premium-person__container:hover .premium-person__info{
   transform: translate3d(0,0,0);

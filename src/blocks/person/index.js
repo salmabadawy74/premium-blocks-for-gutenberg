@@ -1,10 +1,14 @@
+import { person } from "../../../assets/js/settings";
 import PbgIcon from "../icons";
-import save from './save'
-import edit from './edit'
+import save from './save';
+import edit from './edit';
+import deprecatedContent from './deprecated'
 
-const { __ } = wp.i18n; //internationalization.
+//internationalization.
+const { __ } = wp.i18n; 
 
-const { registerBlockType } = wp.blocks; //register blocks
+//register blocks
+const { registerBlockType } = wp.blocks; 
 
 const personAttr = {
     imageID: {
@@ -23,6 +27,10 @@ const personAttr = {
     imageWidthU: {
         type: "string",
         default: "%"
+    },
+    imgAlign:{
+        type: "string",
+        default: "center"
     },
     hoverEffect: {
         type: "string",
@@ -51,6 +59,26 @@ const personAttr = {
     align: {
         type: "string",
         default: "center"
+    },
+    blur: {
+        type: "number",
+        default: "0"
+    },
+    bright: {
+        type: "number",
+        default: "100"
+    },
+    contrast: {
+        type: "number",
+        default: "100"
+    },
+    saturation: {
+        type: "number",
+        default: "100"
+    },
+    hue: {
+        type: "number",
+        default: "0"
     },
     iconColor: {
         type: "string",
@@ -102,7 +130,7 @@ const personAttr = {
     },
     emailAddress:{
         type:"string",
-        default:"google.com"
+        default:__("google.com")
     },
     nameColor:{
         type:"string",
@@ -192,7 +220,7 @@ const personAttr = {
     },
     iconBorderRadius:{
         type:"number",
-        default:"3"
+        default:"0"
     },
     iconBorderColor:{
         type:"string",
@@ -230,8 +258,9 @@ registerBlockType("premium/person", {
     category: "premium-blocks",
     attributes: personAttr,
     supports: {
-        inserter: true
+        inserter: person
     },
     edit: edit,
-    save: save
+    save: save,
+    deprecated: deprecatedContent
 });
