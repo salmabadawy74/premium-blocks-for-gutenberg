@@ -110,6 +110,7 @@ export default function PremiumBackground(props) {
                         )}
                         {imageURL && (
                             <IconButton
+                                className="premium-media-uplpad-btn"
                                 label={__("Remove Image")}
                                 icon="no"
                                 onClick={onRemoveImage}
