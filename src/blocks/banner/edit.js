@@ -216,7 +216,7 @@ const edit = props => {
             type="image"
             value={imageID}
             render={({ open }) => (
-              <IconButton label={__("Change Image")} icon="edit" onClick={open}>
+              <IconButton className="premium-media-uplpad-btn" label={__("Change Image")} icon="edit" onClick={open}>
                 {__("Change Image")}
               </IconButton>
             )}
