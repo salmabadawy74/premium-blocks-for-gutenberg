@@ -41,6 +41,10 @@
   color: #0084bc !important;
   font-weight: bold;
 }
+button.premium-media-uplpad-btn {
+
+  margin: 5px auto;
+}
 /*
 * FontIconPicker CSS
 */
