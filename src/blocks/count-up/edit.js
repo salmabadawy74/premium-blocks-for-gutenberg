@@ -17,7 +17,7 @@ const {
   ToggleControl,
   IconButton
 } = wp.components;
-const { InspectorControls, ColorPalette, CMediaUpload } = wp.editor;
+const { InspectorControls, ColorPalette, MediaUpload } = wp.editor;
 
 const { Fragment } = wp.element;
 
@@ -336,6 +336,7 @@ const edit = props => {
                 value={imageID}
                 render={({ open }) => (
                   <IconButton
+                    className="premium-media-uplpad-btn"
                     label={__("Change Image")}
                     icon="edit"
                     onClick={open}
