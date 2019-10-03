@@ -5,7 +5,7 @@
 **Tags:** gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks
 **Requires at least:** 4.5
 **Requires PHP:** 5.4
-**Stable tag:** 1.7.7
+**Stable tag:** 1.7.8
 **Tested up to:** 5.2.2
 **License:** GPL v3.0
 **License URI:** https://opensource.org/licenses/GPL-3.0
@@ -62,6 +62,11 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 ## Changelog
+
+### 1.7.8
+
+-   Tweak: Enhanced Icon Box block content align option.
+-   Fixed: CountUp Block image icon error.
 
 ### 1.7.7
 

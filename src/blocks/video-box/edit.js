@@ -323,6 +323,7 @@ class edit extends Component {
                 value={overlayImgID}
                 render={({ open }) => (
                   <IconButton
+                    className="premium-media-uplpad-btn"
                     label={__("Change Image")}
                     icon="edit"
                     onClick={open}
