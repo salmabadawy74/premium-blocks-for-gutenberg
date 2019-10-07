@@ -69,6 +69,20 @@ const countDownAttr = {
     contentDisplay:{
         type:"string",
         default:"block"
+    },
+//Digits style
+    digitsColor:{
+        type:"string",
+        default:"#000"
+    },
+    digitsBgColor:{
+        type:"string",
+        default:"transparent"
+    },
+//Units style
+    unitsColor:{
+        type:"string",
+        default:"#000"
     }
 }
 

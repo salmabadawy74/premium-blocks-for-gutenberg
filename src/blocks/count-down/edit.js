@@ -56,7 +56,10 @@ const edit = props => {
         hourLabel,
         minuteLabel,
         secondLabel,
-        contentDisplay
+        contentDisplay,
+        digitsColor,
+        digitsBgColor,
+        unitsColor
 
     } = props.attributes;
 
@@ -136,7 +139,7 @@ const edit = props => {
                         </div>
                     </PanelBody>
 
-                    {/* Labels */}
+                    {/* Units Labels */}
                     <PanelBody
                         title={__("Units Labels")}
                         className="premium-panel-body"
@@ -210,7 +213,22 @@ const edit = props => {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-
+                        <div className="premium-control-toggle">
+                            <p className="premium-editor-paragraph">{__("Color")}</p>
+                            <ColorPalette
+                                value={digitsColor}
+                                onChange={newColor => setAttributes({ digitsColor: newColor || "#000" })}
+                                allowReset={true}
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <p className="premium-editor-paragraph">{__("Background Color")}</p>
+                            <ColorPalette
+                                value={digitsBgColor}
+                                onChange={newColor => setAttributes({ digitsBgColor: newColor || "transparent" })}
+                                allowReset={true}
+                            />
+                        </div>
                     </PanelBody>
 
                     {/* Units Style */}
@@ -219,7 +237,14 @@ const edit = props => {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-
+                        <div className="premium-control-toggle">
+                            <p className="premium-editor-paragraph">{__("Color")}</p>
+                            <ColorPalette
+                                value={unitsColor}
+                                onChange={newColor => setAttributes({ unitsColor: newColor || "#000" })}
+                                allowReset={true}
+                            />
+                        </div>
                     </PanelBody>
 
                 </InspectorControls>
@@ -241,8 +266,23 @@ const edit = props => {
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay || "block" }} >00</span>
-                                <span className={`premium-countdown__period`} style={{ display: contentDisplay || "block" }} >{monthLabel}</span>
+                                <span className={`premium-countdown__amount`}
+                                    style={{
+                                        display: contentDisplay || "block",
+                                        color: digitsColor || "#000",
+                                        backgroundColor: digitsBgColor || "transparent"
+                                    }}
+                                >
+                                    00
+                                </span>
+                                <span className={`premium-countdown__period`}
+                                    style={{
+                                        display: contentDisplay || "block",
+                                        color: unitsColor
+                                    }}
+                                >
+                                    {monthLabel}
+                                </span>
                             </span>
                         </span>
                     )}
@@ -254,8 +294,23 @@ const edit = props => {
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay || "block" }} >00</span>
-                                <span className={`premium-countdown__period`} style={{ display: contentDisplay || "block" }} >{weekLabel}</span>
+                                <span className={`premium-countdown__amount`}
+                                    style={{
+                                        display: contentDisplay || "block",
+                                        color: digitsColor || "#000",
+                                        backgroundColor: digitsBgColor || "transparent"
+                                    }}
+                                >
+                                    00
+                                </span>
+                                <span className={`premium-countdown__period`}
+                                    style={{
+                                        display: contentDisplay || "block",
+                                        color: unitsColor
+                                    }}
+                                >
+                                    {weekLabel}
+                                </span>
                             </span>
                         </span>
                     )}
@@ -267,8 +322,23 @@ const edit = props => {
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay || "block" }} >00</span>
-                                <span className={`premium-countdown__period`} style={{ display: contentDisplay || "block" }} >{dayLabel}</span>
+                                <span className={`premium-countdown__amount`}
+                                    style={{
+                                        display: contentDisplay || "block",
+                                        color: digitsColor || "#000",
+                                        backgroundColor: digitsBgColor || "transparent"
+                                    }}
+                                >
+                                    00
+                                </span>
+                                <span className={`premium-countdown__period`}
+                                    style={{
+                                        display: contentDisplay || "block",
+                                        color: unitsColor
+                                    }}
+                                >
+                                    {dayLabel}
+                                </span>
                             </span>
                         </span>
                     )}
@@ -280,8 +350,23 @@ const edit = props => {
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay || "block" }} >23</span>
-                                <span className={`premium-countdown__period`} style={{ display: contentDisplay || "block" }} >{hourLabel}</span>
+                                <span className={`premium-countdown__amount`}
+                                    style={{
+                                        display: contentDisplay || "block",
+                                        color: digitsColor || "#000",
+                                        backgroundColor: digitsBgColor || "transparent"
+                                    }}
+                                >
+                                    23
+                                </span>
+                                <span className={`premium-countdown__period`}
+                                    style={{
+                                        display: contentDisplay || "block",
+                                        color: unitsColor
+                                    }}
+                                >
+                                    {hourLabel}
+                                </span>
                             </span>
                         </span>
                     )}
@@ -293,8 +378,23 @@ const edit = props => {
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay || "block" }} >16</span>
-                                <span className={`premium-countdown__period`} style={{ display: contentDisplay || "block" }} >{minuteLabel}</span>
+                                <span className={`premium-countdown__amount`}
+                                    style={{
+                                        display: contentDisplay || "block",
+                                        color: digitsColor || "#000",
+                                        backgroundColor: digitsBgColor || "transparent"
+                                    }}
+                                >
+                                    16
+                                </span>
+                                <span className={`premium-countdown__period`}
+                                    style={{
+                                        display: contentDisplay || "block",
+                                        color: unitsColor
+                                    }}
+                                >
+                                    {minuteLabel}
+                                </span>
                             </span>
                         </span>
                     )}
@@ -306,8 +406,23 @@ const edit = props => {
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay || "block" }} >37</span>
-                                <span className={`premium-countdown__period`} style={{ display: contentDisplay || "block" }} >{secondLabel}</span>
+                                <span className={`premium-countdown__amount`}
+                                    style={{
+                                        display: contentDisplay || "block",
+                                        color: digitsColor || "#000",
+                                        backgroundColor: digitsBgColor || "transparent"
+                                    }}
+                                >
+                                    37
+                                </span>
+                                <span className={`premium-countdown__period`}
+                                    style={{
+                                        display: contentDisplay || "block",
+                                        color: unitsColor
+                                    }}
+                                >
+                                    {secondLabel}
+                                </span>
                             </span>
                         </span>
                     )}

@@ -42828,6 +42828,20 @@ var countDownAttr = {
     contentDisplay: {
         type: "string",
         default: "block"
+    },
+    //Digits style
+    digitsColor: {
+        type: "string",
+        default: "#000"
+    },
+    digitsBgColor: {
+        type: "string",
+        default: "transparent"
+    },
+    //Units style
+    unitsColor: {
+        type: "string",
+        default: "#000"
     }
 };
 
@@ -42870,7 +42884,10 @@ var save = function save(props) {
         hourLabel = _props$attributes.hourLabel,
         minuteLabel = _props$attributes.minuteLabel,
         secondLabel = _props$attributes.secondLabel,
-        contentDisplay = _props$attributes.contentDisplay;
+        contentDisplay = _props$attributes.contentDisplay,
+        digitsColor = _props$attributes.digitsColor,
+        digitsBgColor = _props$attributes.digitsBgColor,
+        unitsColor = _props$attributes.unitsColor;
 
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-countdown");
@@ -42901,12 +42918,23 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__amount",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: digitsColor || "#000",
+                                    backgroundColor: digitsBgColor || "transparent"
+                                }
+                            },
                             "00"
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__period",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: unitsColor
+                                }
+                            },
                             monthLabel
                         )
                     )
@@ -42924,12 +42952,23 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__amount",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: digitsColor || "#000",
+                                    backgroundColor: digitsBgColor || "transparent"
+                                }
+                            },
                             "00"
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__period",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: unitsColor
+                                }
+                            },
                             weekLabel
                         )
                     )
@@ -42947,12 +42986,23 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__amount",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: digitsColor || "#000",
+                                    backgroundColor: digitsBgColor || "transparent"
+                                }
+                            },
                             "00"
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__period",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: unitsColor
+                                }
+                            },
                             dayLabel
                         )
                     )
@@ -42970,12 +43020,23 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__amount",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: digitsColor || "#000",
+                                    backgroundColor: digitsBgColor || "transparent"
+                                }
+                            },
                             "23"
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__period",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: unitsColor
+                                }
+                            },
                             hourLabel
                         )
                     )
@@ -42993,12 +43054,23 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__amount",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: digitsColor || "#000",
+                                    backgroundColor: digitsBgColor || "transparent"
+                                }
+                            },
                             "16"
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__period",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: unitsColor
+                                }
+                            },
                             minuteLabel
                         )
                     )
@@ -43016,12 +43088,23 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__amount",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: digitsColor || "#000",
+                                    backgroundColor: digitsBgColor || "transparent"
+                                }
+                            },
                             "37"
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__period",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: unitsColor
+                                }
+                            },
                             secondLabel
                         )
                     )
@@ -43104,7 +43187,10 @@ var edit = function edit(props) {
         hourLabel = _props$attributes.hourLabel,
         minuteLabel = _props$attributes.minuteLabel,
         secondLabel = _props$attributes.secondLabel,
-        contentDisplay = _props$attributes.contentDisplay;
+        contentDisplay = _props$attributes.contentDisplay,
+        digitsColor = _props$attributes.digitsColor,
+        digitsBgColor = _props$attributes.digitsBgColor,
+        unitsColor = _props$attributes.unitsColor;
 
 
     setAttributes({ id: blockID });
@@ -43280,16 +43366,70 @@ var edit = function edit(props) {
                     })
                 )
             ),
-            wp.element.createElement(PanelBody, {
-                title: __("Digits Style"),
-                className: "premium-panel-body",
-                initialOpen: false
-            }),
-            wp.element.createElement(PanelBody, {
-                title: __("Units Style"),
-                className: "premium-panel-body",
-                initialOpen: false
-            })
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __("Digits Style"),
+                    className: "premium-panel-body",
+                    initialOpen: false
+                },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(
+                        "p",
+                        { className: "premium-editor-paragraph" },
+                        __("Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: digitsColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ digitsColor: newColor || "#000" });
+                        },
+                        allowReset: true
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(
+                        "p",
+                        { className: "premium-editor-paragraph" },
+                        __("Background Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: digitsBgColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ digitsBgColor: newColor || "transparent" });
+                        },
+                        allowReset: true
+                    })
+                )
+            ),
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __("Units Style"),
+                    className: "premium-panel-body",
+                    initialOpen: false
+                },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(
+                        "p",
+                        { className: "premium-editor-paragraph" },
+                        __("Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: unitsColor,
+                        onChange: function onChange(newColor) {
+                            return setAttributes({ unitsColor: newColor || "#000" });
+                        },
+                        allowReset: true
+                    })
+                )
+            )
         )
     ), wp.element.createElement(
         "div",
@@ -43317,12 +43457,23 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__amount",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: digitsColor || "#000",
+                                    backgroundColor: digitsBgColor || "transparent"
+                                }
+                            },
                             "00"
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__period",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: unitsColor
+                                }
+                            },
                             monthLabel
                         )
                     )
@@ -43340,12 +43491,23 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__amount",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: digitsColor || "#000",
+                                    backgroundColor: digitsBgColor || "transparent"
+                                }
+                            },
                             "00"
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__period",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: unitsColor
+                                }
+                            },
                             weekLabel
                         )
                     )
@@ -43363,12 +43525,23 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__amount",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: digitsColor || "#000",
+                                    backgroundColor: digitsBgColor || "transparent"
+                                }
+                            },
                             "00"
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__period",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: unitsColor
+                                }
+                            },
                             dayLabel
                         )
                     )
@@ -43386,12 +43559,23 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__amount",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: digitsColor || "#000",
+                                    backgroundColor: digitsBgColor || "transparent"
+                                }
+                            },
                             "23"
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__period",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: unitsColor
+                                }
+                            },
                             hourLabel
                         )
                     )
@@ -43409,12 +43593,23 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__amount",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: digitsColor || "#000",
+                                    backgroundColor: digitsBgColor || "transparent"
+                                }
+                            },
                             "16"
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__period",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: unitsColor
+                                }
+                            },
                             minuteLabel
                         )
                     )
@@ -43432,12 +43627,23 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__amount",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: digitsColor || "#000",
+                                    backgroundColor: digitsBgColor || "transparent"
+                                }
+                            },
                             "37"
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period", style: { display: contentDisplay || "block" } },
+                            { className: "premium-countdown__period",
+                                style: {
+                                    display: contentDisplay || "block",
+                                    color: unitsColor
+                                }
+                            },
                             secondLabel
                         )
                     )
