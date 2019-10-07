@@ -11,4 +11,5 @@ import "./blocks/section";
 import "./blocks/testimonials";
 import "./blocks/video-box";
 import "./blocks/person";
+import "./blocks/count-down";
 //import "./blocks/test";
