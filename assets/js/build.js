@@ -42893,7 +42893,12 @@ var save = function save(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid" },
+                        { className: "premium-countdown__time-mid",
+                            style: {
+                                display: contentDisplay === "inline-block" ? "flex" : "block",
+                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                            }
+                        },
                         wp.element.createElement(
                             "span",
                             { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
@@ -42911,7 +42916,12 @@ var save = function save(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid" },
+                        { className: "premium-countdown__time-mid",
+                            style: {
+                                display: contentDisplay === "inline-block" ? "flex" : "block",
+                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                            }
+                        },
                         wp.element.createElement(
                             "span",
                             { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
@@ -42929,7 +42939,12 @@ var save = function save(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid" },
+                        { className: "premium-countdown__time-mid",
+                            style: {
+                                display: contentDisplay === "inline-block" ? "flex" : "block",
+                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                            }
+                        },
                         wp.element.createElement(
                             "span",
                             { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
@@ -42947,7 +42962,12 @@ var save = function save(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid" },
+                        { className: "premium-countdown__time-mid",
+                            style: {
+                                display: contentDisplay === "inline-block" ? "flex" : "block",
+                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                            }
+                        },
                         wp.element.createElement(
                             "span",
                             { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
@@ -42965,7 +42985,12 @@ var save = function save(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid" },
+                        { className: "premium-countdown__time-mid",
+                            style: {
+                                display: contentDisplay === "inline-block" ? "flex" : "block",
+                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                            }
+                        },
                         wp.element.createElement(
                             "span",
                             { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
@@ -42983,7 +43008,12 @@ var save = function save(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid" },
+                        { className: "premium-countdown__time-mid",
+                            style: {
+                                display: contentDisplay === "inline-block" ? "flex" : "block",
+                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                            }
+                        },
                         wp.element.createElement(
                             "span",
                             { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
@@ -43279,7 +43309,12 @@ var edit = function edit(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid" },
+                        { className: "premium-countdown__time-mid",
+                            style: {
+                                display: contentDisplay === "inline-block" ? "flex" : "block",
+                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                            }
+                        },
                         wp.element.createElement(
                             "span",
                             { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
@@ -43297,7 +43332,12 @@ var edit = function edit(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid" },
+                        { className: "premium-countdown__time-mid",
+                            style: {
+                                display: contentDisplay === "inline-block" ? "flex" : "block",
+                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                            }
+                        },
                         wp.element.createElement(
                             "span",
                             { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
@@ -43315,7 +43355,12 @@ var edit = function edit(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid" },
+                        { className: "premium-countdown__time-mid",
+                            style: {
+                                display: contentDisplay === "inline-block" ? "flex" : "block",
+                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                            }
+                        },
                         wp.element.createElement(
                             "span",
                             { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
@@ -43333,7 +43378,12 @@ var edit = function edit(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid" },
+                        { className: "premium-countdown__time-mid",
+                            style: {
+                                display: contentDisplay === "inline-block" ? "flex" : "block",
+                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                            }
+                        },
                         wp.element.createElement(
                             "span",
                             { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
@@ -43351,7 +43401,12 @@ var edit = function edit(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid" },
+                        { className: "premium-countdown__time-mid",
+                            style: {
+                                display: contentDisplay === "inline-block" ? "flex" : "block",
+                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                            }
+                        },
                         wp.element.createElement(
                             "span",
                             { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },
@@ -43369,7 +43424,12 @@ var edit = function edit(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid" },
+                        { className: "premium-countdown__time-mid",
+                            style: {
+                                display: contentDisplay === "inline-block" ? "flex" : "block",
+                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                            }
+                        },
                         wp.element.createElement(
                             "span",
                             { className: "premium-countdown__amount", style: { display: contentDisplay || "block" } },

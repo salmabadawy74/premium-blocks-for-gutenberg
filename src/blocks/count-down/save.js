@@ -36,49 +36,79 @@ const save = props => {
 
                     {monthsCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >00</span>
-                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{monthLabel}</span>
+                            <span className={`premium-countdown__time-mid`}
+                                style={{
+                                    display: contentDisplay === "inline-block" ? "flex" : "block",
+                                    alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                }}
+                            >
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay || "block" }} >00</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay || "block" }} >{monthLabel}</span>
                             </span>
                         </span>
                     )}
                     {weeksCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >00</span>
-                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{weekLabel}</span>
+                            <span className={`premium-countdown__time-mid`}
+                                style={{
+                                    display: contentDisplay === "inline-block" ? "flex" : "block",
+                                    alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                }}
+                            >
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay || "block" }} >00</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay || "block" }} >{weekLabel}</span>
                             </span>
                         </span>
                     )}
                     {daysCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >00</span>
-                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{dayLabel}</span>
+                            <span className={`premium-countdown__time-mid`}
+                                style={{
+                                    display: contentDisplay === "inline-block" ? "flex" : "block",
+                                    alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                }}
+                            >
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay || "block" }} >00</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay || "block" }} >{dayLabel}</span>
                             </span>
                         </span>
                     )}
                     {hoursCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >23</span>
-                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{hourLabel}</span>
+                            <span className={`premium-countdown__time-mid`}
+                                style={{
+                                    display: contentDisplay === "inline-block" ? "flex" : "block",
+                                    alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                }}
+                            >
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay || "block" }} >23</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay || "block" }} >{hourLabel}</span>
                             </span>
                         </span>
                     )}
                     {minutesCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >16</span>
-                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{minuteLabel}</span>
+                            <span className={`premium-countdown__time-mid`}
+                                style={{
+                                    display: contentDisplay === "inline-block" ? "flex" : "block",
+                                    alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                }}
+                            >
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay || "block" }} >16</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay || "block" }} >{minuteLabel}</span>
                             </span>
                         </span>
                     )}
                     {secondsCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >37</span>
-                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{secondLabel}</span>
+                            <span className={`premium-countdown__time-mid`}
+                                style={{
+                                    display: contentDisplay === "inline-block" ? "flex" : "block",
+                                    alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                }}
+                            >
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay || "block" }} >37</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay || "block" }} >{secondLabel}</span>
                             </span>
                         </span>
                     )}
