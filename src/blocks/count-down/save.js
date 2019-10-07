@@ -22,6 +22,10 @@ const save = props => {
         contentDisplay,
         digitsColor,
         digitsBgColor,
+        borderType,
+        borderWidth,
+        borderColor,
+        borderRadius,
         unitsColor
 
     } = props.attributes;
@@ -49,7 +53,11 @@ const save = props => {
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
-                                        backgroundColor: digitsBgColor || "transparent"
+                                        backgroundColor: digitsBgColor || "transparent",
+                                        borderStyle: borderType || "none",
+                                        borderWidth: borderWidth || "0",
+                                        borderColor: borderColor || "#000",
+                                        borderRadius : borderRadius || "0"
                                     }}
                                 >
                                     00
@@ -77,7 +85,11 @@ const save = props => {
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
-                                        backgroundColor: digitsBgColor || "transparent"
+                                        backgroundColor: digitsBgColor || "transparent",
+                                        borderStyle: borderType || "none",
+                                        borderWidth: borderWidth || "0",
+                                        borderColor: borderColor || "#000",
+                                        borderRadius : borderRadius || "0"
                                     }}
                                 >
                                     00
@@ -105,7 +117,11 @@ const save = props => {
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
-                                        backgroundColor: digitsBgColor || "transparent"
+                                        backgroundColor: digitsBgColor || "transparent",
+                                        borderStyle: borderType || "none",
+                                        borderWidth: borderWidth || "0",
+                                        borderColor: borderColor || "#000",
+                                        borderRadius : borderRadius || "0"
                                     }}
                                 >
                                     00
@@ -133,7 +149,11 @@ const save = props => {
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
-                                        backgroundColor: digitsBgColor || "transparent"
+                                        backgroundColor: digitsBgColor || "transparent",
+                                        borderStyle: borderType || "none",
+                                        borderWidth: borderWidth || "0",
+                                        borderColor: borderColor || "#000",
+                                        borderRadius : borderRadius || "0"
                                     }}
                                 >
                                     23
@@ -161,7 +181,11 @@ const save = props => {
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
-                                        backgroundColor: digitsBgColor || "transparent"
+                                        backgroundColor: digitsBgColor || "transparent",
+                                        borderStyle: borderType || "none",
+                                        borderWidth: borderWidth || "0",
+                                        borderColor: borderColor || "#000",
+                                        borderRadius : borderRadius || "0"
                                     }}
                                 >
                                     16
@@ -189,7 +213,11 @@ const save = props => {
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
-                                        backgroundColor: digitsBgColor || "transparent"
+                                        backgroundColor: digitsBgColor || "transparent",
+                                        borderStyle: borderType || "none",
+                                        borderWidth: borderWidth || "0",
+                                        borderColor: borderColor || "#000",
+                                        borderRadius : borderRadius || "0"
                                     }}
                                 >
                                     37

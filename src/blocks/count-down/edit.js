@@ -59,6 +59,10 @@ const edit = props => {
         contentDisplay,
         digitsColor,
         digitsBgColor,
+        borderType,
+        borderWidth,
+        borderColor,
+        borderRadius,
         unitsColor
 
     } = props.attributes;
@@ -229,6 +233,18 @@ const edit = props => {
                                 allowReset={true}
                             />
                         </div>
+                        <div className="premium-control-toggle">
+                            <PremiumBorder
+                                borderType={borderType}
+                                borderWidth={borderWidth}
+                                borderColor={borderColor}
+                                borderRadius={borderRadius}
+                                onChangeType={newType => setAttributes({ borderType: newType || "none" })}
+                                onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth || "0" })}
+                                onChangeColor={colorValue => setAttributes({ borderColor: colorValue.hex || "#000" })}
+                                onChangeRadius={newRadius => setAttributes({ borderRadius: newRadius || "0" })}
+                            />
+                        </div>
                     </PanelBody>
 
                     {/* Units Style */}
@@ -270,7 +286,12 @@ const edit = props => {
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
-                                        backgroundColor: digitsBgColor || "transparent"
+                                        backgroundColor: digitsBgColor || "transparent",
+                                        borderStyle: borderType || "none",
+                                        borderWidth: borderWidth || "0",
+                                        borderColor: borderColor || "#000",
+                                        borderRadius : borderRadius || "0"
+
                                     }}
                                 >
                                     00
@@ -298,7 +319,11 @@ const edit = props => {
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
-                                        backgroundColor: digitsBgColor || "transparent"
+                                        backgroundColor: digitsBgColor || "transparent",
+                                        borderStyle: borderType || "none",
+                                        borderWidth: borderWidth || "0",
+                                        borderColor: borderColor || "#000",
+                                        borderRadius : borderRadius || "0"
                                     }}
                                 >
                                     00
@@ -326,7 +351,11 @@ const edit = props => {
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
-                                        backgroundColor: digitsBgColor || "transparent"
+                                        backgroundColor: digitsBgColor || "transparent",
+                                        borderStyle: borderType || "none",
+                                        borderWidth: borderWidth || "0",
+                                        borderColor: borderColor || "#000",
+                                        borderRadius : borderRadius || "0"
                                     }}
                                 >
                                     00
@@ -354,7 +383,11 @@ const edit = props => {
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
-                                        backgroundColor: digitsBgColor || "transparent"
+                                        backgroundColor: digitsBgColor || "transparent",
+                                        borderStyle: borderType || "none",
+                                        borderWidth: borderWidth || "0",
+                                        borderColor: borderColor || "#000",
+                                        borderRadius : borderRadius || "0"
                                     }}
                                 >
                                     23
@@ -382,7 +415,11 @@ const edit = props => {
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
-                                        backgroundColor: digitsBgColor || "transparent"
+                                        backgroundColor: digitsBgColor || "transparent",
+                                        borderStyle: borderType || "none",
+                                        borderWidth: borderWidth || "0",
+                                        borderColor: borderColor || "#000",
+                                        borderRadius : borderRadius || "0"
                                     }}
                                 >
                                     16
@@ -410,7 +447,11 @@ const edit = props => {
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
-                                        backgroundColor: digitsBgColor || "transparent"
+                                        backgroundColor: digitsBgColor || "transparent",
+                                        borderStyle: borderType || "none",
+                                        borderWidth: borderWidth || "0",
+                                        borderColor: borderColor || "#000",
+                                        borderRadius : borderRadius || "0"
                                     }}
                                 >
                                     37

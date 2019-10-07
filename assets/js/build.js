@@ -42838,6 +42838,22 @@ var countDownAttr = {
         type: "string",
         default: "transparent"
     },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "0"
+    },
+    borderColor: {
+        type: "string",
+        default: "#000"
+    },
+    borderRadius: {
+        type: "number",
+        default: "0"
+    },
     //Units style
     unitsColor: {
         type: "string",
@@ -42887,6 +42903,10 @@ var save = function save(props) {
         contentDisplay = _props$attributes.contentDisplay,
         digitsColor = _props$attributes.digitsColor,
         digitsBgColor = _props$attributes.digitsBgColor,
+        borderType = _props$attributes.borderType,
+        borderWidth = _props$attributes.borderWidth,
+        borderColor = _props$attributes.borderColor,
+        borderRadius = _props$attributes.borderRadius,
         unitsColor = _props$attributes.unitsColor;
 
 
@@ -42922,7 +42942,11 @@ var save = function save(props) {
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent"
+                                    backgroundColor: digitsBgColor || "transparent",
+                                    borderStyle: borderType || "none",
+                                    borderWidth: borderWidth || "0",
+                                    borderColor: borderColor || "#000",
+                                    borderRadius: borderRadius || "0"
                                 }
                             },
                             "00"
@@ -42956,7 +42980,11 @@ var save = function save(props) {
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent"
+                                    backgroundColor: digitsBgColor || "transparent",
+                                    borderStyle: borderType || "none",
+                                    borderWidth: borderWidth || "0",
+                                    borderColor: borderColor || "#000",
+                                    borderRadius: borderRadius || "0"
                                 }
                             },
                             "00"
@@ -42990,7 +43018,11 @@ var save = function save(props) {
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent"
+                                    backgroundColor: digitsBgColor || "transparent",
+                                    borderStyle: borderType || "none",
+                                    borderWidth: borderWidth || "0",
+                                    borderColor: borderColor || "#000",
+                                    borderRadius: borderRadius || "0"
                                 }
                             },
                             "00"
@@ -43024,7 +43056,11 @@ var save = function save(props) {
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent"
+                                    backgroundColor: digitsBgColor || "transparent",
+                                    borderStyle: borderType || "none",
+                                    borderWidth: borderWidth || "0",
+                                    borderColor: borderColor || "#000",
+                                    borderRadius: borderRadius || "0"
                                 }
                             },
                             "23"
@@ -43058,7 +43094,11 @@ var save = function save(props) {
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent"
+                                    backgroundColor: digitsBgColor || "transparent",
+                                    borderStyle: borderType || "none",
+                                    borderWidth: borderWidth || "0",
+                                    borderColor: borderColor || "#000",
+                                    borderRadius: borderRadius || "0"
                                 }
                             },
                             "16"
@@ -43092,7 +43132,11 @@ var save = function save(props) {
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent"
+                                    backgroundColor: digitsBgColor || "transparent",
+                                    borderStyle: borderType || "none",
+                                    borderWidth: borderWidth || "0",
+                                    borderColor: borderColor || "#000",
+                                    borderRadius: borderRadius || "0"
                                 }
                             },
                             "37"
@@ -43190,6 +43234,10 @@ var edit = function edit(props) {
         contentDisplay = _props$attributes.contentDisplay,
         digitsColor = _props$attributes.digitsColor,
         digitsBgColor = _props$attributes.digitsBgColor,
+        borderType = _props$attributes.borderType,
+        borderWidth = _props$attributes.borderWidth,
+        borderColor = _props$attributes.borderColor,
+        borderRadius = _props$attributes.borderRadius,
         unitsColor = _props$attributes.unitsColor;
 
 
@@ -43404,6 +43452,28 @@ var edit = function edit(props) {
                         },
                         allowReset: true
                     })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
+                        borderType: borderType,
+                        borderWidth: borderWidth,
+                        borderColor: borderColor,
+                        borderRadius: borderRadius,
+                        onChangeType: function onChangeType(newType) {
+                            return setAttributes({ borderType: newType || "none" });
+                        },
+                        onChangeWidth: function onChangeWidth(newWidth) {
+                            return setAttributes({ borderWidth: newWidth || "0" });
+                        },
+                        onChangeColor: function onChangeColor(colorValue) {
+                            return setAttributes({ borderColor: colorValue.hex || "#000" });
+                        },
+                        onChangeRadius: function onChangeRadius(newRadius) {
+                            return setAttributes({ borderRadius: newRadius || "0" });
+                        }
+                    })
                 )
             ),
             wp.element.createElement(
@@ -43461,7 +43531,12 @@ var edit = function edit(props) {
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent"
+                                    backgroundColor: digitsBgColor || "transparent",
+                                    borderStyle: borderType || "none",
+                                    borderWidth: borderWidth || "0",
+                                    borderColor: borderColor || "#000",
+                                    borderRadius: borderRadius || "0"
+
                                 }
                             },
                             "00"
@@ -43495,7 +43570,11 @@ var edit = function edit(props) {
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent"
+                                    backgroundColor: digitsBgColor || "transparent",
+                                    borderStyle: borderType || "none",
+                                    borderWidth: borderWidth || "0",
+                                    borderColor: borderColor || "#000",
+                                    borderRadius: borderRadius || "0"
                                 }
                             },
                             "00"
@@ -43529,7 +43608,11 @@ var edit = function edit(props) {
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent"
+                                    backgroundColor: digitsBgColor || "transparent",
+                                    borderStyle: borderType || "none",
+                                    borderWidth: borderWidth || "0",
+                                    borderColor: borderColor || "#000",
+                                    borderRadius: borderRadius || "0"
                                 }
                             },
                             "00"
@@ -43563,7 +43646,11 @@ var edit = function edit(props) {
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent"
+                                    backgroundColor: digitsBgColor || "transparent",
+                                    borderStyle: borderType || "none",
+                                    borderWidth: borderWidth || "0",
+                                    borderColor: borderColor || "#000",
+                                    borderRadius: borderRadius || "0"
                                 }
                             },
                             "23"
@@ -43597,7 +43684,11 @@ var edit = function edit(props) {
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent"
+                                    backgroundColor: digitsBgColor || "transparent",
+                                    borderStyle: borderType || "none",
+                                    borderWidth: borderWidth || "0",
+                                    borderColor: borderColor || "#000",
+                                    borderRadius: borderRadius || "0"
                                 }
                             },
                             "16"
@@ -43631,7 +43722,11 @@ var edit = function edit(props) {
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent"
+                                    backgroundColor: digitsBgColor || "transparent",
+                                    borderStyle: borderType || "none",
+                                    borderWidth: borderWidth || "0",
+                                    borderColor: borderColor || "#000",
+                                    borderRadius: borderRadius || "0"
                                 }
                             },
                             "37"

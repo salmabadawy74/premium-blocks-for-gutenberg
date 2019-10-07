@@ -79,6 +79,22 @@ const countDownAttr = {
         type:"string",
         default:"transparent"
     },
+    borderType:{
+        type:"string",
+        default:"none"
+    },
+    borderWidth:{
+        type:"number",
+        default:"0"
+    },
+    borderColor:{
+        type:"string",
+        default:"#000"
+    },
+    borderRadius:{
+        type:"number",
+        default:"0"
+    },
 //Units style
     unitsColor:{
         type:"string",
