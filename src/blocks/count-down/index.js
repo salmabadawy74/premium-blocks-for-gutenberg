@@ -66,6 +66,10 @@ const countDownAttr = {
         type:"string",
         default:__("Seconds")
     },
+    contentDisplay:{
+        type:"string",
+        default:"block"
+    }
 }
 
 registerBlockType("premium/countdown", {

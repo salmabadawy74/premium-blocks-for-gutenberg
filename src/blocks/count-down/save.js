@@ -18,7 +18,8 @@ const save = props => {
         dayLabel,
         hourLabel,
         minuteLabel,
-        secondLabel
+        secondLabel,
+        contentDisplay
 
     } = props.attributes;
 
@@ -36,48 +37,48 @@ const save = props => {
                     {monthsCheck && (
                         <span className={`premium-countdown__section`}>
                             <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`}>00</span>
-                                <span className={`premium-countdown__period`}>{monthLabel}</span>
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >00</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{monthLabel}</span>
                             </span>
                         </span>
                     )}
                     {weeksCheck && (
                         <span className={`premium-countdown__section`}>
                             <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`}>00</span>
-                                <span className={`premium-countdown__period`}>{weekLabel}</span>
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >00</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{weekLabel}</span>
                             </span>
                         </span>
                     )}
                     {daysCheck && (
                         <span className={`premium-countdown__section`}>
                             <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`}>00</span>
-                                <span className={`premium-countdown__period`}>{dayLabel}</span>
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >00</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{dayLabel}</span>
                             </span>
                         </span>
                     )}
                     {hoursCheck && (
                         <span className={`premium-countdown__section`}>
                             <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`}>23</span>
-                                <span className={`premium-countdown__period`}>{hourLabel}</span>
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >23</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{hourLabel}</span>
                             </span>
                         </span>
                     )}
                     {minutesCheck && (
                         <span className={`premium-countdown__section`}>
                             <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`}>16</span>
-                                <span className={`premium-countdown__period`}>{minuteLabel}</span>
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >16</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{minuteLabel}</span>
                             </span>
                         </span>
                     )}
                     {secondsCheck && (
                         <span className={`premium-countdown__section`}>
                             <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`}>37</span>
-                                <span className={`premium-countdown__period`}>{secondLabel}</span>
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >37</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{secondLabel}</span>
                             </span>
                         </span>
                     )}

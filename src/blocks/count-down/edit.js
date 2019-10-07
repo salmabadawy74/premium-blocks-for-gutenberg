@@ -1,4 +1,7 @@
 import classnames from "classnames";
+import PremiumTypo from "../../components/premium-typo";
+import PremiumBorder from "../../components/premium-border";
+import PremiumMargin from "../../components/premium-margin";
 
 const { __ } = wp.i18n;
 
@@ -24,6 +27,17 @@ const AlLIGNMENT = [
     },
 ];
 
+const DISPLAY_STYLES = [
+    {
+        label:__("Block"),
+        value: "block"
+    },
+    {
+        label:__("Inline Block"),
+        value: "inline-block"
+    },
+];
+
 const edit = props => {
     const { isSelected, setAttributes, className, clientId: blockID } = props;
 
@@ -41,7 +55,8 @@ const edit = props => {
         dayLabel,
         hourLabel,
         minuteLabel,
-        secondLabel
+        secondLabel,
+        contentDisplay
 
     } = props.attributes;
 
@@ -52,6 +67,7 @@ const edit = props => {
     return [
         isSelected && (
             <div>
+                {/* Alignment */}
                 <BlockControls key="controls">
                     <AlignmentToolbar
                         label={__('Alignment')}
@@ -60,6 +76,7 @@ const edit = props => {
                         alignmentControls={AlLIGNMENT}
                     />
                 </BlockControls>
+
                 <InspectorControls key={"inspector"}>
 
                     {/* Due Date */}
@@ -109,20 +126,19 @@ const edit = props => {
                                 onChange={newCheck => setAttributes({ secondsCheck: newCheck })}
                             />
                         </div>
-                    </PanelBody>
-
-                    {/* Alignment */}
-                    <PanelBody
-                        title={__("Alignment")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-
+                        <div className="premium-control-toggle">
+                            <SelectControl
+                                label={__("Content Display Style")}
+                                value={contentDisplay}
+                                options={DISPLAY_STYLES}
+                                onChange={newValue => setAttributes({ contentDisplay: newValue || "block" })}
+                            />
+                        </div>
                     </PanelBody>
 
                     {/* Labels */}
                     <PanelBody
-                        title={__("Labels")}
+                        title={__("Units Labels")}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -220,48 +236,48 @@ const edit = props => {
                     {monthsCheck && (
                         <span className={`premium-countdown__section`}>
                             <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`}>00</span>
-                                <span className={`premium-countdown__period`}>{monthLabel}</span>
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >00</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{monthLabel}</span>
                             </span>
                         </span>
                     )}
                     {weeksCheck && (
                         <span className={`premium-countdown__section`}>
                             <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`}>00</span>
-                                <span className={`premium-countdown__period`}>{weekLabel}</span>
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >00</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{weekLabel}</span>
                             </span>
                         </span>
                     )}
                     {daysCheck && (
                         <span className={`premium-countdown__section`}>
                             <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`}>00</span>
-                                <span className={`premium-countdown__period`}>{dayLabel}</span>
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >00</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{dayLabel}</span>
                             </span>
                         </span>
                     )}
                     {hoursCheck && (
                         <span className={`premium-countdown__section`}>
                             <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`}>23</span>
-                                <span className={`premium-countdown__period`}>{hourLabel}</span>
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >23</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{hourLabel}</span>
                             </span>
                         </span>
                     )}
                     {minutesCheck && (
                         <span className={`premium-countdown__section`}>
                             <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`}>16</span>
-                                <span className={`premium-countdown__period`}>{minuteLabel}</span>
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >16</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{minuteLabel}</span>
                             </span>
                         </span>
                     )}
                     {secondsCheck && (
                         <span className={`premium-countdown__section`}>
                             <span className={`premium-countdown__time-mid`}>
-                                <span className={`premium-countdown__amount`}>37</span>
-                                <span className={`premium-countdown__period`}>{secondLabel}</span>
+                                <span className={`premium-countdown__amount`} style={{ display: contentDisplay|| "block" }} >37</span>
+                                <span className={`premium-countdown__period`} style={{ display: contentDisplay|| "block" }} >{secondLabel}</span>
                             </span>
                         </span>
                     )}
