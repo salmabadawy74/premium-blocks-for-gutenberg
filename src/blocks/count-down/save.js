@@ -1,5 +1,4 @@
 import classnames from "classnames";
-import { FontAwesomeEnabled } from "../../../assets/js/settings";
 
 const save = props => {
 
@@ -20,56 +19,68 @@ const save = props => {
         hourLabel,
         minuteLabel,
         secondLabel
-        
+
     } = props.attributes;
 
     const mainClasses = classnames(className, "premium-countdown");
 
     return (
         <div
-            id={`premium-countdown-${id}`}
+            id={`premium-countdown__${id}`}
             className={`${mainClasses}`}
             style={{ justifyContent: align || "center" }}
         >
-            <div id={`countdown-${id}`} class="premium-countdown-init countdown down is-pre_countdown">
-                <span class="pre_countdown-row pre_countdown-show4">
+            <div id={`countdown__${id}`} className={`premium-countdown__init countdown down is-pre_countdown`}>
+                <span className={`premium-countdown__row premium-countdown__show4`}>
 
-                    <span class="pre_countdown-section">
-                        <span class="pre_time-mid">
-                            <span class="pre_countdown-amount">00</span>
-                            <span class="pre_countdown-period">Months</span>
+                    {monthsCheck && (
+                        <span className={`premium-countdown__section`}>
+                            <span className={`premium-countdown__time-mid`}>
+                                <span className={`premium-countdown__amount`}>00</span>
+                                <span className={`premium-countdown__period`}>{monthLabel}</span>
+                            </span>
                         </span>
-                    </span>
-                    <span class="pre_countdown-section">
-                        <span class="pre_time-mid">
-                            <span class="pre_countdown-amount">00</span>
-                            <span class="pre_countdown-period">Weeks</span>
+                    )}
+                    {weeksCheck && (
+                        <span className={`premium-countdown__section`}>
+                            <span className={`premium-countdown__time-mid`}>
+                                <span className={`premium-countdown__amount`}>00</span>
+                                <span className={`premium-countdown__period`}>{weekLabel}</span>
+                            </span>
                         </span>
-                    </span>
-                    <span class="pre_countdown-section">
-                        <span class="pre_time-mid">
-                            <span class="pre_countdown-amount">00</span>
-                            <span class="pre_countdown-period">Days</span>
+                    )}
+                    {daysCheck && (
+                        <span className={`premium-countdown__section`}>
+                            <span className={`premium-countdown__time-mid`}>
+                                <span className={`premium-countdown__amount`}>00</span>
+                                <span className={`premium-countdown__period`}>{dayLabel}</span>
+                            </span>
                         </span>
-                    </span>
-                    <span class="pre_countdown-section">
-                        <span class="pre_time-mid">
-                            <span class="pre_countdown-amount">23</span>
-                            <span class="pre_countdown-period">Hours</span>
+                    )}
+                    {hoursCheck && (
+                        <span className={`premium-countdown__section`}>
+                            <span className={`premium-countdown__time-mid`}>
+                                <span className={`premium-countdown__amount`}>23</span>
+                                <span className={`premium-countdown__period`}>{hourLabel}</span>
+                            </span>
                         </span>
-                    </span>
-                    <span class="pre_countdown-section">
-                        <span class="pre_time-mid">
-                            <span class="pre_countdown-amount">16</span>
-                            <span class="pre_countdown-period">Minutes</span>
+                    )}
+                    {minutesCheck && (
+                        <span className={`premium-countdown__section`}>
+                            <span className={`premium-countdown__time-mid`}>
+                                <span className={`premium-countdown__amount`}>16</span>
+                                <span className={`premium-countdown__period`}>{minuteLabel}</span>
+                            </span>
                         </span>
-                    </span>
-                    <span class="pre_countdown-section">
-                        <span class="pre_time-mid">
-                            <span class="pre_countdown-amount">37</span>
-                            <span class="pre_countdown-period">Seconds</span>
+                    )}
+                    {secondsCheck && (
+                        <span className={`premium-countdown__section`}>
+                            <span className={`premium-countdown__time-mid`}>
+                                <span className={`premium-countdown__amount`}>37</span>
+                                <span className={`premium-countdown__period`}>{secondLabel}</span>
+                            </span>
                         </span>
-                    </span>
+                    )}
 
                 </span>
             </div>

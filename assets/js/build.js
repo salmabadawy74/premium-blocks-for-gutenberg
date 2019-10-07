@@ -42803,27 +42803,27 @@ var countDownAttr = {
     },
     monthLabel: {
         type: "string",
-        default: "Months"
+        default: __("Months")
     },
     weekLabel: {
         type: "string",
-        default: "Weeks"
+        default: __("Weeks")
     },
     dayLabel: {
         type: "string",
-        default: "Days"
+        default: __("Days")
     },
     hourLabel: {
         type: "string",
-        default: "Hours"
+        default: __("Hours")
     },
     minuteLabel: {
         type: "string",
-        default: "Minutes"
+        default: __("Minutes")
     },
     secondLabel: {
         type: "string",
-        default: "Seconds"
+        default: __("Seconds")
     }
 };
 
@@ -42847,8 +42847,6 @@ registerBlockType("premium/countdown", {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(1);
-
 
 
 var save = function save(props) {
@@ -42875,121 +42873,121 @@ var save = function save(props) {
     return wp.element.createElement(
         "div",
         {
-            id: "premium-countdown-" + id,
+            id: "premium-countdown__" + id,
             className: "" + mainClasses,
             style: { justifyContent: align || "center" }
         },
         wp.element.createElement(
             "div",
-            { id: "countdown-" + id, "class": "premium-countdown-init countdown down is-pre_countdown" },
+            { id: "countdown__" + id, className: "premium-countdown__init countdown down is-pre_countdown" },
             wp.element.createElement(
                 "span",
-                { "class": "pre_countdown-row pre_countdown-show4" },
-                wp.element.createElement(
+                { className: "premium-countdown__row premium-countdown__show4" },
+                monthsCheck && wp.element.createElement(
                     "span",
-                    { "class": "pre_countdown-section" },
+                    { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { "class": "pre_time-mid" },
+                        { className: "premium-countdown__time-mid" },
                         wp.element.createElement(
                             "span",
-                            { "class": "pre_countdown-amount" },
+                            { className: "premium-countdown__amount" },
                             "00"
                         ),
                         wp.element.createElement(
                             "span",
-                            { "class": "pre_countdown-period" },
-                            "Months"
+                            { className: "premium-countdown__period" },
+                            monthLabel
                         )
                     )
                 ),
-                wp.element.createElement(
+                weeksCheck && wp.element.createElement(
                     "span",
-                    { "class": "pre_countdown-section" },
+                    { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { "class": "pre_time-mid" },
+                        { className: "premium-countdown__time-mid" },
                         wp.element.createElement(
                             "span",
-                            { "class": "pre_countdown-amount" },
+                            { className: "premium-countdown__amount" },
                             "00"
                         ),
                         wp.element.createElement(
                             "span",
-                            { "class": "pre_countdown-period" },
-                            "Weeks"
+                            { className: "premium-countdown__period" },
+                            weekLabel
                         )
                     )
                 ),
-                wp.element.createElement(
+                daysCheck && wp.element.createElement(
                     "span",
-                    { "class": "pre_countdown-section" },
+                    { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { "class": "pre_time-mid" },
+                        { className: "premium-countdown__time-mid" },
                         wp.element.createElement(
                             "span",
-                            { "class": "pre_countdown-amount" },
+                            { className: "premium-countdown__amount" },
                             "00"
                         ),
                         wp.element.createElement(
                             "span",
-                            { "class": "pre_countdown-period" },
-                            "Days"
+                            { className: "premium-countdown__period" },
+                            dayLabel
                         )
                     )
                 ),
-                wp.element.createElement(
+                hoursCheck && wp.element.createElement(
                     "span",
-                    { "class": "pre_countdown-section" },
+                    { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { "class": "pre_time-mid" },
+                        { className: "premium-countdown__time-mid" },
                         wp.element.createElement(
                             "span",
-                            { "class": "pre_countdown-amount" },
+                            { className: "premium-countdown__amount" },
                             "23"
                         ),
                         wp.element.createElement(
                             "span",
-                            { "class": "pre_countdown-period" },
-                            "Hours"
+                            { className: "premium-countdown__period" },
+                            hourLabel
                         )
                     )
                 ),
-                wp.element.createElement(
+                minutesCheck && wp.element.createElement(
                     "span",
-                    { "class": "pre_countdown-section" },
+                    { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { "class": "pre_time-mid" },
+                        { className: "premium-countdown__time-mid" },
                         wp.element.createElement(
                             "span",
-                            { "class": "pre_countdown-amount" },
+                            { className: "premium-countdown__amount" },
                             "16"
                         ),
                         wp.element.createElement(
                             "span",
-                            { "class": "pre_countdown-period" },
-                            "Minutes"
+                            { className: "premium-countdown__period" },
+                            minuteLabel
                         )
                     )
                 ),
-                wp.element.createElement(
+                secondsCheck && wp.element.createElement(
                     "span",
-                    { "class": "pre_countdown-section" },
+                    { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { "class": "pre_time-mid" },
+                        { className: "premium-countdown__time-mid" },
                         wp.element.createElement(
                             "span",
-                            { "class": "pre_countdown-amount" },
+                            { className: "premium-countdown__amount" },
                             "37"
                         ),
                         wp.element.createElement(
                             "span",
-                            { "class": "pre_countdown-period" },
-                            "Seconds"
+                            { className: "premium-countdown__period" },
+                            secondLabel
                         )
                     )
                 )
@@ -43007,14 +43005,12 @@ var save = function save(props) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(1);
-
 
 
 var __ = wp.i18n.__;
 var _wp$components = wp.components,
-    IconButton = _wp$components.IconButton,
     PanelBody = _wp$components.PanelBody,
+    ToggleControl = _wp$components.ToggleControl,
     SelectControl = _wp$components.SelectControl,
     RangeControl = _wp$components.RangeControl,
     TextControl = _wp$components.TextControl;
@@ -43066,11 +43062,11 @@ var edit = function edit(props) {
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-countdown");
 
     return [isSelected && wp.element.createElement(
-        "div",
+        'div',
         null,
         wp.element.createElement(
             BlockControls,
-            { key: "controls" },
+            { key: 'controls' },
             wp.element.createElement(AlignmentToolbar, {
                 label: __('Alignment'),
                 value: align,
@@ -43085,153 +43081,277 @@ var edit = function edit(props) {
             { key: "inspector" },
             wp.element.createElement(PanelBody, {
                 title: __("Due Date"),
-                className: "premium-panel-body",
+                className: 'premium-panel-body',
                 initialOpen: true
             }),
-            wp.element.createElement(PanelBody, {
-                title: __("Time Units"),
-                className: "premium-panel-body",
-                initialOpen: false
-            }),
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __("Time Units"),
+                    className: 'premium-panel-body',
+                    initialOpen: false
+                },
+                wp.element.createElement(
+                    'div',
+                    { className: 'premium-control-toggle' },
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Show Months"),
+                        checked: monthsCheck,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ monthsCheck: newCheck });
+                        }
+                    }),
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Show Weeks"),
+                        checked: weeksCheck,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ weeksCheck: newCheck });
+                        }
+                    }),
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Show Days"),
+                        checked: daysCheck,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ daysCheck: newCheck });
+                        }
+                    }),
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Show Hours"),
+                        checked: hoursCheck,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ hoursCheck: newCheck });
+                        }
+                    }),
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Show Minutes"),
+                        checked: minutesCheck,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ minutesCheck: newCheck });
+                        }
+                    }),
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Show Seconds"),
+                        checked: secondsCheck,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ secondsCheck: newCheck });
+                        }
+                    })
+                )
+            ),
             wp.element.createElement(PanelBody, {
                 title: __("Alignment"),
-                className: "premium-panel-body",
+                className: 'premium-panel-body',
                 initialOpen: false
             }),
-            wp.element.createElement(PanelBody, {
-                title: __("Labels"),
-                className: "premium-panel-body",
-                initialOpen: false
-            }),
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __("Labels"),
+                    className: 'premium-panel-body',
+                    initialOpen: false
+                },
+                monthsCheck && wp.element.createElement(
+                    'div',
+                    { className: 'premium-control-toggle' },
+                    wp.element.createElement(TextControl, {
+                        className: 'premium-text-control',
+                        label: __("Months"),
+                        value: monthLabel,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ monthLabel: newValue });
+                        }
+                    })
+                ),
+                weeksCheck && wp.element.createElement(
+                    'div',
+                    { className: 'premium-control-toggle' },
+                    wp.element.createElement(TextControl, {
+                        className: 'premium-text-control',
+                        label: __("Weeks"),
+                        value: weekLabel,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ weekLabel: newValue });
+                        }
+                    })
+                ),
+                daysCheck && wp.element.createElement(
+                    'div',
+                    { className: 'premium-control-toggle' },
+                    wp.element.createElement(TextControl, {
+                        className: 'premium-text-control',
+                        label: __("Days"),
+                        value: dayLabel,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ dayLabel: newValue });
+                        }
+                    })
+                ),
+                hoursCheck && wp.element.createElement(
+                    'div',
+                    { className: 'premium-control-toggle' },
+                    wp.element.createElement(TextControl, {
+                        className: 'premium-text-control',
+                        label: __("Hours"),
+                        value: hourLabel,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ hourLabel: newValue });
+                        }
+                    })
+                ),
+                minutesCheck && wp.element.createElement(
+                    'div',
+                    { className: 'premium-control-toggle' },
+                    wp.element.createElement(TextControl, {
+                        className: 'premium-text-control',
+                        label: __("Minutes"),
+                        value: minuteLabel,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ minuteLabel: newValue });
+                        }
+                    })
+                ),
+                secondsCheck && wp.element.createElement(
+                    'div',
+                    { className: 'premium-control-toggle' },
+                    wp.element.createElement(TextControl, {
+                        className: 'premium-text-control',
+                        label: __("Seconds"),
+                        value: secondLabel,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ secondLabel: newValue });
+                        }
+                    })
+                )
+            ),
             wp.element.createElement(PanelBody, {
                 title: __("Digits Style"),
-                className: "premium-panel-body",
+                className: 'premium-panel-body',
                 initialOpen: false
             }),
             wp.element.createElement(PanelBody, {
                 title: __("Units Style"),
-                className: "premium-panel-body",
+                className: 'premium-panel-body',
                 initialOpen: false
             })
         )
     ), wp.element.createElement(
-        "div",
+        'div',
         {
-            id: "premium-countdown-" + id,
-            className: "" + mainClasses,
+            id: 'premium-countdown__' + id,
+            className: '' + mainClasses,
             style: { justifyContent: align || "center" }
         },
         wp.element.createElement(
-            "div",
-            { id: "countdown-" + id, "class": "premium-countdown-init countdown down is-pre_countdown" },
+            'div',
+            { id: 'countdown__' + id, className: 'premium-countdown__init countdown down is-pre_countdown' },
             wp.element.createElement(
-                "span",
-                { "class": "pre_countdown-row pre_countdown-show4" },
-                wp.element.createElement(
-                    "span",
-                    { "class": "pre_countdown-section" },
+                'span',
+                { className: 'premium-countdown__row premium-countdown__show4' },
+                monthsCheck && wp.element.createElement(
+                    'span',
+                    { className: 'premium-countdown__section' },
                     wp.element.createElement(
-                        "span",
-                        { "class": "pre_time-mid" },
+                        'span',
+                        { className: 'premium-countdown__time-mid' },
                         wp.element.createElement(
-                            "span",
-                            { "class": "pre_countdown-amount" },
-                            "00"
+                            'span',
+                            { className: 'premium-countdown__amount' },
+                            '00'
                         ),
                         wp.element.createElement(
-                            "span",
-                            { "class": "pre_countdown-period" },
-                            "Months"
+                            'span',
+                            { className: 'premium-countdown__period' },
+                            monthLabel
                         )
                     )
                 ),
-                wp.element.createElement(
-                    "span",
-                    { "class": "pre_countdown-section" },
+                weeksCheck && wp.element.createElement(
+                    'span',
+                    { className: 'premium-countdown__section' },
                     wp.element.createElement(
-                        "span",
-                        { "class": "pre_time-mid" },
+                        'span',
+                        { className: 'premium-countdown__time-mid' },
                         wp.element.createElement(
-                            "span",
-                            { "class": "pre_countdown-amount" },
-                            "00"
+                            'span',
+                            { className: 'premium-countdown__amount' },
+                            '00'
                         ),
                         wp.element.createElement(
-                            "span",
-                            { "class": "pre_countdown-period" },
-                            "Weeks"
+                            'span',
+                            { className: 'premium-countdown__period' },
+                            weekLabel
                         )
                     )
                 ),
-                wp.element.createElement(
-                    "span",
-                    { "class": "pre_countdown-section" },
+                daysCheck && wp.element.createElement(
+                    'span',
+                    { className: 'premium-countdown__section' },
                     wp.element.createElement(
-                        "span",
-                        { "class": "pre_time-mid" },
+                        'span',
+                        { className: 'premium-countdown__time-mid' },
                         wp.element.createElement(
-                            "span",
-                            { "class": "pre_countdown-amount" },
-                            "00"
+                            'span',
+                            { className: 'premium-countdown__amount' },
+                            '00'
                         ),
                         wp.element.createElement(
-                            "span",
-                            { "class": "pre_countdown-period" },
-                            "Days"
+                            'span',
+                            { className: 'premium-countdown__period' },
+                            dayLabel
                         )
                     )
                 ),
-                wp.element.createElement(
-                    "span",
-                    { "class": "pre_countdown-section" },
+                hoursCheck && wp.element.createElement(
+                    'span',
+                    { className: 'premium-countdown__section' },
                     wp.element.createElement(
-                        "span",
-                        { "class": "pre_time-mid" },
+                        'span',
+                        { className: 'premium-countdown__time-mid' },
                         wp.element.createElement(
-                            "span",
-                            { "class": "pre_countdown-amount" },
-                            "23"
+                            'span',
+                            { className: 'premium-countdown__amount' },
+                            '23'
                         ),
                         wp.element.createElement(
-                            "span",
-                            { "class": "pre_countdown-period" },
-                            "Hours"
+                            'span',
+                            { className: 'premium-countdown__period' },
+                            hourLabel
                         )
                     )
                 ),
-                wp.element.createElement(
-                    "span",
-                    { "class": "pre_countdown-section" },
+                minutesCheck && wp.element.createElement(
+                    'span',
+                    { className: 'premium-countdown__section' },
                     wp.element.createElement(
-                        "span",
-                        { "class": "pre_time-mid" },
+                        'span',
+                        { className: 'premium-countdown__time-mid' },
                         wp.element.createElement(
-                            "span",
-                            { "class": "pre_countdown-amount" },
-                            "16"
+                            'span',
+                            { className: 'premium-countdown__amount' },
+                            '16'
                         ),
                         wp.element.createElement(
-                            "span",
-                            { "class": "pre_countdown-period" },
-                            "Minutes"
+                            'span',
+                            { className: 'premium-countdown__period' },
+                            minuteLabel
                         )
                     )
                 ),
-                wp.element.createElement(
-                    "span",
-                    { "class": "pre_countdown-section" },
+                secondsCheck && wp.element.createElement(
+                    'span',
+                    { className: 'premium-countdown__section' },
                     wp.element.createElement(
-                        "span",
-                        { "class": "pre_time-mid" },
+                        'span',
+                        { className: 'premium-countdown__time-mid' },
                         wp.element.createElement(
-                            "span",
-                            { "class": "pre_countdown-amount" },
-                            "37"
+                            'span',
+                            { className: 'premium-countdown__amount' },
+                            '37'
                         ),
                         wp.element.createElement(
-                            "span",
-                            { "class": "pre_countdown-period" },
-                            "Seconds"
+                            'span',
+                            { className: 'premium-countdown__period' },
+                            secondLabel
                         )
                     )
                 )

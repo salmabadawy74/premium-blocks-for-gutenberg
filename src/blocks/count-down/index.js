@@ -44,27 +44,27 @@ const countDownAttr = {
     },
     monthLabel:{
         type:"string",
-        default:"Months"
+        default:__("Months")
     },
     weekLabel:{
         type:"string",
-        default:"Weeks"
+        default:__("Weeks")
     },
     dayLabel:{
         type:"string",
-        default:"Days"
+        default:__("Days")
     },
     hourLabel:{
         type:"string",
-        default:"Hours"
+        default:__("Hours")
     },
     minuteLabel:{
         type:"string",
-        default:"Minutes"
+        default:__("Minutes")
     },
     secondLabel:{
         type:"string",
-        default:"Seconds"
+        default:__("Seconds")
     },
 }
 
