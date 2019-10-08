@@ -5,7 +5,7 @@ import PremiumMargin from "../../components/premium-margin";
 
 const { __ } = wp.i18n;
 
-const { PanelBody, ToggleControl, SelectControl, RangeControl, TextControl } = wp.components
+const { PanelBody, DateTimePicker, ToggleControl, SelectControl, TextControl } = wp.components
 
 const { BlockControls, InspectorControls, AlignmentToolbar, ColorPalette } = wp.editor;
 
@@ -63,7 +63,11 @@ const edit = props => {
         borderWidth,
         borderColor,
         borderRadius,
-        unitsColor
+        unitsColor,
+        marginTop,
+        marginRight,
+        marginBottom,
+        marginLeft
 
     } = props.attributes;
 
@@ -261,6 +265,19 @@ const edit = props => {
                                 allowReset={true}
                             />
                         </div>
+                        <div className="premium-control-toggle">
+                            <PremiumMargin
+                                directions={["all"]}
+                                marginTop={marginTop}
+                                marginRight={marginRight}
+                                marginBottom={marginBottom}
+                                marginLeft={marginLeft}
+                                onChangeMarTop={newValue => setAttributes({ marginTop: newValue || "0"}) }
+                                onChangeMarRight={newValue => setAttributes({ marginRight: newValue || "0"}) }
+                                onChangeMarBottom={newValue => setAttributes({ marginBottom: newValue || "0"}) }
+                                onChangeMarLeft={newValue => setAttributes({ marginLeft: newValue || "0"}) }
+                            />
+                        </div>
                     </PanelBody>
 
                 </InspectorControls>
@@ -290,7 +307,7 @@ const edit = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius : borderRadius || "0"
+                                        borderRadius: borderRadius || "0"
 
                                     }}
                                 >
@@ -299,7 +316,8 @@ const edit = props => {
                                 <span className={`premium-countdown__period`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor
+                                        color: unitsColor,
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
                                     {monthLabel}
@@ -323,7 +341,7 @@ const edit = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius : borderRadius || "0"
+                                        borderRadius: borderRadius || "0"
                                     }}
                                 >
                                     00
@@ -331,7 +349,8 @@ const edit = props => {
                                 <span className={`premium-countdown__period`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor
+                                        color: unitsColor,
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
                                     {weekLabel}
@@ -355,7 +374,7 @@ const edit = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius : borderRadius || "0"
+                                        borderRadius: borderRadius || "0"
                                     }}
                                 >
                                     00
@@ -363,7 +382,8 @@ const edit = props => {
                                 <span className={`premium-countdown__period`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor
+                                        color: unitsColor,
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
                                     {dayLabel}
@@ -387,7 +407,7 @@ const edit = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius : borderRadius || "0"
+                                        borderRadius: borderRadius || "0"
                                     }}
                                 >
                                     23
@@ -395,7 +415,8 @@ const edit = props => {
                                 <span className={`premium-countdown__period`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor
+                                        color: unitsColor,
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
                                     {hourLabel}
@@ -419,7 +440,7 @@ const edit = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius : borderRadius || "0"
+                                        borderRadius: borderRadius || "0"
                                     }}
                                 >
                                     16
@@ -427,7 +448,8 @@ const edit = props => {
                                 <span className={`premium-countdown__period`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor
+                                        color: unitsColor,
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
                                     {minuteLabel}
@@ -451,7 +473,7 @@ const edit = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius : borderRadius || "0"
+                                        borderRadius: borderRadius || "0"
                                     }}
                                 >
                                     37
@@ -459,7 +481,8 @@ const edit = props => {
                                 <span className={`premium-countdown__period`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor
+                                        color: unitsColor,
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
                                     {secondLabel}

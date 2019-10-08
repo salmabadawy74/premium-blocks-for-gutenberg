@@ -26,7 +26,11 @@ const save = props => {
         borderWidth,
         borderColor,
         borderRadius,
-        unitsColor
+        unitsColor,
+        marginTop,
+        marginRight,
+        marginBottom,
+        marginLeft
 
     } = props.attributes;
 
@@ -65,7 +69,8 @@ const save = props => {
                                 <span className={`premium-countdown__period`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor
+                                        color: unitsColor,
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
                                     {monthLabel}
@@ -97,7 +102,8 @@ const save = props => {
                                 <span className={`premium-countdown__period`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor
+                                        color: unitsColor,
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
                                     {weekLabel}
@@ -129,7 +135,8 @@ const save = props => {
                                 <span className={`premium-countdown__period`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor
+                                        color: unitsColor,
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
                                     {dayLabel}
@@ -161,7 +168,8 @@ const save = props => {
                                 <span className={`premium-countdown__period`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor
+                                        color: unitsColor,
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
                                     {hourLabel}
@@ -193,7 +201,8 @@ const save = props => {
                                 <span className={`premium-countdown__period`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor
+                                        color: unitsColor,
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
                                     {minuteLabel}
@@ -225,7 +234,8 @@ const save = props => {
                                 <span className={`premium-countdown__period`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor
+                                        color: unitsColor,
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
                                     {secondLabel}

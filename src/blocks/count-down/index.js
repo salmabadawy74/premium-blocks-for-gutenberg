@@ -99,6 +99,22 @@ const countDownAttr = {
     unitsColor:{
         type:"string",
         default:"#000"
+    },  
+    marginTop:{
+        type:"number",
+        default:"0"
+    },
+    marginRight:{
+        type:"number",
+        default:"0"
+    },
+    marginBottom:{
+        type:"number",
+        default:"0"
+    },
+    marginLeft:{
+        type:"number",
+        default:"0"
     }
 }
 

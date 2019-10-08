@@ -126,6 +126,8 @@ class Premium_Blocks_Integration {
         $is_dual_enabled = self::$blocks['dualHeading'];
         
         $is_icon_box_enabled = self::$blocks['iconBox'];
+
+        $is_count_down_enabled = self::$blocks['countDown'];
         
         wp_enqueue_style(
             'pbg-frontend',
@@ -232,6 +234,15 @@ class Premium_Blocks_Integration {
             wp_enqueue_script(
                 'icon-box-js',
                 PREMIUM_BLOCKS_URL . 'assets/js/icon-box.js',
+                array('jquery'),
+                PREMIUM_BLOCKS_VERSION
+            );
+        }
+
+        if( $is_count_down_enabled ) {
+            wp_enqueue_script(
+                'countdown-js',
+                PREMIUM_BLOCKS_URL . 'assets/js/countdown.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );

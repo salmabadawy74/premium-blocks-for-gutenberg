@@ -1349,6 +1349,101 @@ if (process.env.NODE_ENV === 'production') {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumMargin;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(9);
+
+
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    RangeControl = _wp$components.RangeControl,
+    Dropdown = _wp$components.Dropdown,
+    Button = _wp$components.Button;
+
+
+function PremiumMargin(props) {
+  var directions = props.directions,
+      showUnits = props.showUnits,
+      marginTop = props.marginTop,
+      marginRight = props.marginRight,
+      marginBottom = props.marginBottom,
+      marginLeft = props.marginLeft,
+      _props$onChangeMarTop = props.onChangeMarTop,
+      onChangeMarTop = _props$onChangeMarTop === undefined ? function () {} : _props$onChangeMarTop,
+      _props$onChangeMarRig = props.onChangeMarRight,
+      onChangeMarRight = _props$onChangeMarRig === undefined ? function () {} : _props$onChangeMarRig,
+      _props$onChangeMarBot = props.onChangeMarBottom,
+      onChangeMarBottom = _props$onChangeMarBot === undefined ? function () {} : _props$onChangeMarBot,
+      _props$onChangeMarLef = props.onChangeMarLeft,
+      onChangeMarLeft = _props$onChangeMarLef === undefined ? function () {} : _props$onChangeMarLef,
+      _props$onChangeMarSiz = props.onChangeMarSizeUnit,
+      onChangeMarSizeUnit = _props$onChangeMarSiz === undefined ? function () {} : _props$onChangeMarSiz;
+
+  return wp.element.createElement(
+    "div",
+    { className: "premium-control-toggle" },
+    wp.element.createElement(
+      "strong",
+      null,
+      __("Margin")
+    ),
+    wp.element.createElement(Dropdown, {
+      className: "premium-control-toggle-btn",
+      contentClassName: "premium-control-toggle-content",
+      position: "bottom right",
+      renderToggle: function renderToggle(_ref) {
+        var isOpen = _ref.isOpen,
+            onToggle = _ref.onToggle;
+        return wp.element.createElement(
+          Button,
+          { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+          wp.element.createElement("i", { className: "dashicons dashicons-edit" })
+        );
+      },
+      renderContent: function renderContent() {
+        return wp.element.createElement(
+          Fragment,
+          null,
+          showUnits && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_size_units__["a" /* default */], { onChangeSizeUnit: onChangeMarSizeUnit }),
+          (directions.includes("all") || directions.includes("top")) && wp.element.createElement(RangeControl, {
+            label: __("Margin Top (PX)"),
+            value: marginTop,
+            min: "0",
+            max: "150",
+            onChange: onChangeMarTop
+          }),
+          (directions.includes("all") || directions.includes("right")) && wp.element.createElement(RangeControl, {
+            label: __("Margin Right (PX)"),
+            value: marginRight,
+            min: "0",
+            max: "150",
+            onChange: onChangeMarRight
+          }),
+          (directions.includes("all") || directions.includes("bottom")) && wp.element.createElement(RangeControl, {
+            label: __("Margin Bottom (PX)"),
+            value: marginBottom,
+            min: "0",
+            max: "150",
+            onChange: onChangeMarBottom
+          }),
+          (directions.includes("all") || directions.includes("left")) && wp.element.createElement(RangeControl, {
+            label: __("Margin Left (PX)"),
+            value: marginLeft,
+            min: "0",
+            max: "150",
+            onChange: onChangeMarLeft
+          })
+        );
+      }
+    })
+  );
+}
+
+/***/ }),
+/* 18 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1407,7 +1502,7 @@ var PremiumLowerQuote = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1470,7 +1565,7 @@ var PremiumUpperQuote = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1734,7 +1829,7 @@ registerBlockType("premium/video-box", {
 });
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1843,7 +1938,7 @@ function PremiumFilters(props) {
 }
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1861,7 +1956,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1879,7 +1974,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var printWarning = function printWarning() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(21);
+  var ReactPropTypesSecret = __webpack_require__(22);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -1958,101 +2053,6 @@ checkPropTypes.resetWarningCache = function () {
 
 module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 23 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumMargin;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(9);
-
-
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    RangeControl = _wp$components.RangeControl,
-    Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
-
-
-function PremiumMargin(props) {
-  var directions = props.directions,
-      showUnits = props.showUnits,
-      marginTop = props.marginTop,
-      marginRight = props.marginRight,
-      marginBottom = props.marginBottom,
-      marginLeft = props.marginLeft,
-      _props$onChangeMarTop = props.onChangeMarTop,
-      onChangeMarTop = _props$onChangeMarTop === undefined ? function () {} : _props$onChangeMarTop,
-      _props$onChangeMarRig = props.onChangeMarRight,
-      onChangeMarRight = _props$onChangeMarRig === undefined ? function () {} : _props$onChangeMarRig,
-      _props$onChangeMarBot = props.onChangeMarBottom,
-      onChangeMarBottom = _props$onChangeMarBot === undefined ? function () {} : _props$onChangeMarBot,
-      _props$onChangeMarLef = props.onChangeMarLeft,
-      onChangeMarLeft = _props$onChangeMarLef === undefined ? function () {} : _props$onChangeMarLef,
-      _props$onChangeMarSiz = props.onChangeMarSizeUnit,
-      onChangeMarSizeUnit = _props$onChangeMarSiz === undefined ? function () {} : _props$onChangeMarSiz;
-
-  return wp.element.createElement(
-    "div",
-    { className: "premium-control-toggle" },
-    wp.element.createElement(
-      "strong",
-      null,
-      __("Margin")
-    ),
-    wp.element.createElement(Dropdown, {
-      className: "premium-control-toggle-btn",
-      contentClassName: "premium-control-toggle-content",
-      position: "bottom right",
-      renderToggle: function renderToggle(_ref) {
-        var isOpen = _ref.isOpen,
-            onToggle = _ref.onToggle;
-        return wp.element.createElement(
-          Button,
-          { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-          wp.element.createElement("i", { className: "dashicons dashicons-edit" })
-        );
-      },
-      renderContent: function renderContent() {
-        return wp.element.createElement(
-          Fragment,
-          null,
-          showUnits && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_size_units__["a" /* default */], { onChangeSizeUnit: onChangeMarSizeUnit }),
-          (directions.includes("all") || directions.includes("top")) && wp.element.createElement(RangeControl, {
-            label: __("Margin Top (PX)"),
-            value: marginTop,
-            min: "0",
-            max: "150",
-            onChange: onChangeMarTop
-          }),
-          (directions.includes("all") || directions.includes("right")) && wp.element.createElement(RangeControl, {
-            label: __("Margin Right (PX)"),
-            value: marginRight,
-            min: "0",
-            max: "150",
-            onChange: onChangeMarRight
-          }),
-          (directions.includes("all") || directions.includes("bottom")) && wp.element.createElement(RangeControl, {
-            label: __("Margin Bottom (PX)"),
-            value: marginBottom,
-            min: "0",
-            max: "150",
-            onChange: onChangeMarBottom
-          }),
-          (directions.includes("all") || directions.includes("left")) && wp.element.createElement(RangeControl, {
-            label: __("Margin Left (PX)"),
-            value: marginLeft,
-            min: "0",
-            max: "150",
-            onChange: onChangeMarLeft
-          })
-        );
-      }
-    })
-  );
-}
 
 /***/ }),
 /* 24 */
@@ -3786,7 +3786,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_person__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__blocks_count_down__ = __webpack_require__(105);
 
@@ -5640,7 +5640,7 @@ registerBlockType("premium/banner", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(10);
 
 
@@ -14058,7 +14058,7 @@ registerBlockType("premium/icon", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__ = __webpack_require__(6);
@@ -14993,8 +14993,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var ReactIs = __webpack_require__(26);
 var assign = __webpack_require__(15);
 
-var ReactPropTypesSecret = __webpack_require__(21);
-var checkPropTypes = __webpack_require__(22);
+var ReactPropTypesSecret = __webpack_require__(22);
+var checkPropTypes = __webpack_require__(23);
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function printWarning() {};
@@ -15566,7 +15566,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
 
 
-var ReactPropTypesSecret = __webpack_require__(21);
+var ReactPropTypesSecret = __webpack_require__(22);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -15825,7 +15825,7 @@ if (process.env.NODE_ENV !== "production") {
     'use strict';
 
     var _assign = __webpack_require__(15);
-    var checkPropTypes = __webpack_require__(22);
+    var checkPropTypes = __webpack_require__(23);
 
     // TODO: this is special because it gets imported during build.
 
@@ -20972,7 +20972,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(8);var _assign=__webpack_require__(15);var checkPropTypes=__webpack_require__(22);var scheduler=__webpack_require__(27);var tracing=__webpack_require__(69);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(8);var _assign=__webpack_require__(15);var checkPropTypes=__webpack_require__(23);var scheduler=__webpack_require__(27);var tracing=__webpack_require__(69);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -27629,7 +27629,7 @@ registerBlockType("premium/icon-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(12);
@@ -36086,7 +36086,7 @@ registerBlockType("premium/container", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(9);
@@ -37260,8 +37260,8 @@ registerBlockType("premium/testimonial", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_default_image__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(10);
@@ -37989,8 +37989,8 @@ var edit = function edit(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(19);
 
 
 
@@ -38195,8 +38195,8 @@ var save = function save(props) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(19);
 
 
 
@@ -39050,8 +39050,8 @@ var deprecatedContent = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(14);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -39929,7 +39929,7 @@ var edit = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(20);
 
 
 
@@ -40117,7 +40117,7 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(20);
 
 
 var className = "premium-video-box";
@@ -41670,7 +41670,7 @@ var save = function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_filters__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_filters__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_text_shadow__ = __webpack_require__(6);
@@ -42730,8 +42730,8 @@ var edit = function edit(props) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(19);
 
 
 
@@ -42858,6 +42858,22 @@ var countDownAttr = {
     unitsColor: {
         type: "string",
         default: "#000"
+    },
+    marginTop: {
+        type: "number",
+        default: "0"
+    },
+    marginRight: {
+        type: "number",
+        default: "0"
+    },
+    marginBottom: {
+        type: "number",
+        default: "0"
+    },
+    marginLeft: {
+        type: "number",
+        default: "0"
     }
 };
 
@@ -42907,7 +42923,11 @@ var save = function save(props) {
         borderWidth = _props$attributes.borderWidth,
         borderColor = _props$attributes.borderColor,
         borderRadius = _props$attributes.borderRadius,
-        unitsColor = _props$attributes.unitsColor;
+        unitsColor = _props$attributes.unitsColor,
+        marginTop = _props$attributes.marginTop,
+        marginRight = _props$attributes.marginRight,
+        marginBottom = _props$attributes.marginBottom,
+        marginLeft = _props$attributes.marginLeft;
 
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-countdown");
@@ -42956,7 +42976,8 @@ var save = function save(props) {
                             { className: "premium-countdown__period",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor
+                                    color: unitsColor,
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
                             monthLabel
@@ -42994,7 +43015,8 @@ var save = function save(props) {
                             { className: "premium-countdown__period",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor
+                                    color: unitsColor,
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
                             weekLabel
@@ -43032,7 +43054,8 @@ var save = function save(props) {
                             { className: "premium-countdown__period",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor
+                                    color: unitsColor,
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
                             dayLabel
@@ -43070,7 +43093,8 @@ var save = function save(props) {
                             { className: "premium-countdown__period",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor
+                                    color: unitsColor,
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
                             hourLabel
@@ -43108,7 +43132,8 @@ var save = function save(props) {
                             { className: "premium-countdown__period",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor
+                                    color: unitsColor,
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
                             minuteLabel
@@ -43146,7 +43171,8 @@ var save = function save(props) {
                             { className: "premium-countdown__period",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor
+                                    color: unitsColor,
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
                             secondLabel
@@ -43169,7 +43195,7 @@ var save = function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(17);
 
 
 
@@ -43178,9 +43204,9 @@ var save = function save(props) {
 var __ = wp.i18n.__;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
+    DateTimePicker = _wp$components.DateTimePicker,
     ToggleControl = _wp$components.ToggleControl,
     SelectControl = _wp$components.SelectControl,
-    RangeControl = _wp$components.RangeControl,
     TextControl = _wp$components.TextControl;
 var _wp$editor = wp.editor,
     BlockControls = _wp$editor.BlockControls,
@@ -43238,7 +43264,11 @@ var edit = function edit(props) {
         borderWidth = _props$attributes.borderWidth,
         borderColor = _props$attributes.borderColor,
         borderRadius = _props$attributes.borderRadius,
-        unitsColor = _props$attributes.unitsColor;
+        unitsColor = _props$attributes.unitsColor,
+        marginTop = _props$attributes.marginTop,
+        marginRight = _props$attributes.marginRight,
+        marginBottom = _props$attributes.marginBottom,
+        marginLeft = _props$attributes.marginLeft;
 
 
     setAttributes({ id: blockID });
@@ -43498,6 +43528,29 @@ var edit = function edit(props) {
                         },
                         allowReset: true
                     })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_margin__["a" /* default */], {
+                        directions: ["all"],
+                        marginTop: marginTop,
+                        marginRight: marginRight,
+                        marginBottom: marginBottom,
+                        marginLeft: marginLeft,
+                        onChangeMarTop: function onChangeMarTop(newValue) {
+                            return setAttributes({ marginTop: newValue || "0" });
+                        },
+                        onChangeMarRight: function onChangeMarRight(newValue) {
+                            return setAttributes({ marginRight: newValue || "0" });
+                        },
+                        onChangeMarBottom: function onChangeMarBottom(newValue) {
+                            return setAttributes({ marginBottom: newValue || "0" });
+                        },
+                        onChangeMarLeft: function onChangeMarLeft(newValue) {
+                            return setAttributes({ marginLeft: newValue || "0" });
+                        }
+                    })
                 )
             )
         )
@@ -43546,7 +43599,8 @@ var edit = function edit(props) {
                             { className: "premium-countdown__period",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor
+                                    color: unitsColor,
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
                             monthLabel
@@ -43584,7 +43638,8 @@ var edit = function edit(props) {
                             { className: "premium-countdown__period",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor
+                                    color: unitsColor,
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
                             weekLabel
@@ -43622,7 +43677,8 @@ var edit = function edit(props) {
                             { className: "premium-countdown__period",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor
+                                    color: unitsColor,
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
                             dayLabel
@@ -43660,7 +43716,8 @@ var edit = function edit(props) {
                             { className: "premium-countdown__period",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor
+                                    color: unitsColor,
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
                             hourLabel
@@ -43698,7 +43755,8 @@ var edit = function edit(props) {
                             { className: "premium-countdown__period",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor
+                                    color: unitsColor,
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
                             minuteLabel
@@ -43736,7 +43794,8 @@ var edit = function edit(props) {
                             { className: "premium-countdown__period",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor
+                                    color: unitsColor,
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
                             secondLabel
