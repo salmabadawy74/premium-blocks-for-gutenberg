@@ -18,6 +18,9 @@ const countDownAttr = {
         type: "string",
         default: "center"
     },
+    dateTime:{
+        type:"string"
+    },
     monthsCheck:{
         type: "boolean",
         default: false

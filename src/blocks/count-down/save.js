@@ -7,6 +7,7 @@ const save = props => {
     const {
         id,
         align,
+        dateTime,
         monthsCheck,
         weeksCheck,
         daysCheck,
@@ -42,18 +43,18 @@ const save = props => {
             className={`${mainClasses}`}
             style={{ justifyContent: align || "center" }}
         >
-            <div id={`countdown__${id}`} className={`premium-countdown__init countdown down is-pre_countdown`}>
+            <div id={`countdown__${id}`} className={`premium-countdown__container countdown down is-pre_countdown`} >
                 <span className={`premium-countdown__row premium-countdown__show4`}>
 
                     {monthsCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}
+                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`}
+                                <span className={`premium-countdown__amount premium-countdown__get-date premium-countdown__digits-months`} 
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -61,7 +62,8 @@ const save = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius : borderRadius || "0"
+                                        borderRadius: borderRadius || "0"
+
                                     }}
                                 >
                                     00
@@ -80,13 +82,13 @@ const save = props => {
                     )}
                     {weeksCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}
+                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`}
+                                <span className={`premium-countdown__amount  premium-countdown__digits-weeks`} 
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -94,7 +96,7 @@ const save = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius : borderRadius || "0"
+                                        borderRadius: borderRadius || "0"
                                     }}
                                 >
                                     00
@@ -113,13 +115,13 @@ const save = props => {
                     )}
                     {daysCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}
+                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`}
+                                <span className={`premium-countdown__amount  premium-countdown__digits-days`} 
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -127,7 +129,7 @@ const save = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius : borderRadius || "0"
+                                        borderRadius: borderRadius || "0"
                                     }}
                                 >
                                     00
@@ -146,13 +148,13 @@ const save = props => {
                     )}
                     {hoursCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}
+                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`}
+                                <span className={`premium-countdown__amount  premium-countdown__digits-hours`} 
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -160,7 +162,7 @@ const save = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius : borderRadius || "0"
+                                        borderRadius: borderRadius || "0"
                                     }}
                                 >
                                     23
@@ -179,13 +181,13 @@ const save = props => {
                     )}
                     {minutesCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}
+                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`}
+                                <span className={`premium-countdown__amount  premium-countdown__digits-minutes`} 
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -193,7 +195,7 @@ const save = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius : borderRadius || "0"
+                                        borderRadius: borderRadius || "0"
                                     }}
                                 >
                                     16
@@ -212,13 +214,13 @@ const save = props => {
                     )}
                     {secondsCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}
+                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`}
+                                <span className={`premium-countdown__amount premium-countdown__digits-seconds`} 
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -226,7 +228,7 @@ const save = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius : borderRadius || "0"
+                                        borderRadius: borderRadius || "0"
                                     }}
                                 >
                                     37

@@ -44,6 +44,7 @@ const edit = props => {
     const {
         id,
         align,
+        dateTime,
         monthsCheck,
         weeksCheck,
         daysCheck,
@@ -75,6 +76,23 @@ const edit = props => {
 
     const mainClasses = classnames(className, "premium-countdown");
 
+    // const date: new Date()
+    // const date = new Date()
+    // const settings = __experimentalGetSettings();
+
+    // const is12HourTime = /a(?!\\)/i.test(
+    //     settings.formats.time
+    //         .toLowerCase() // Test only the lower case a
+    //         .replace(/\\\\/g, '') // Replace "//" with empty strings
+    //         .split('').reverse().join('') // Reverse the string and test for "a" not followed by a slash
+    // );
+
+
+    const onUpdateDate = ( dateTime ) => {
+      var newDateTime = moment(dateTime).format( 'YYYY-MM-DD HH:mm:ss' );
+      setAttributes( { dateTime: newDateTime } );
+    };
+
     return [
         isSelected && (
             <div>
@@ -96,7 +114,13 @@ const edit = props => {
                         className="premium-panel-body"
                         initialOpen={true}
                     >
-
+                        <div className="premium-control-toggle">
+                            <DateTimePicker
+                                currentDate={dateTime}
+                                onChange={(val) => onUpdateDate(val)}
+                                is12Hour={true}
+                            />
+                        </div>
                     </PanelBody>
 
                     {/* Time Units */}
@@ -272,10 +296,10 @@ const edit = props => {
                                 marginRight={marginRight}
                                 marginBottom={marginBottom}
                                 marginLeft={marginLeft}
-                                onChangeMarTop={newValue => setAttributes({ marginTop: newValue || "0"}) }
-                                onChangeMarRight={newValue => setAttributes({ marginRight: newValue || "0"}) }
-                                onChangeMarBottom={newValue => setAttributes({ marginBottom: newValue || "0"}) }
-                                onChangeMarLeft={newValue => setAttributes({ marginLeft: newValue || "0"}) }
+                                onChangeMarTop={newValue => setAttributes({ marginTop: newValue || "0" })}
+                                onChangeMarRight={newValue => setAttributes({ marginRight: newValue || "0" })}
+                                onChangeMarBottom={newValue => setAttributes({ marginBottom: newValue || "0" })}
+                                onChangeMarLeft={newValue => setAttributes({ marginLeft: newValue || "0" })}
                             />
                         </div>
                     </PanelBody>
@@ -288,18 +312,18 @@ const edit = props => {
             className={`${mainClasses}`}
             style={{ justifyContent: align || "center" }}
         >
-            <div id={`countdown__${id}`} className={`premium-countdown__init countdown down is-pre_countdown`}>
+            <div id={`countdown__${id}`} className={`premium-countdown__container countdown down is-pre_countdown`} >
                 <span className={`premium-countdown__row premium-countdown__show4`}>
 
                     {monthsCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}
+                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`}
+                                <span className={`premium-countdown__amount premium-countdown__get-date premium-countdown__digits-months`} 
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -327,13 +351,13 @@ const edit = props => {
                     )}
                     {weeksCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}
+                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`}
+                                <span className={`premium-countdown__amount  premium-countdown__digits-weeks`} 
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -360,13 +384,13 @@ const edit = props => {
                     )}
                     {daysCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}
+                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`}
+                                <span className={`premium-countdown__amount  premium-countdown__digits-days`} 
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -393,13 +417,13 @@ const edit = props => {
                     )}
                     {hoursCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}
+                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`}
+                                <span className={`premium-countdown__amount  premium-countdown__digits-hours`} 
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -426,13 +450,13 @@ const edit = props => {
                     )}
                     {minutesCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}
+                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`}
+                                <span className={`premium-countdown__amount  premium-countdown__digits-minutes`} 
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -459,13 +483,13 @@ const edit = props => {
                     )}
                     {secondsCheck && (
                         <span className={`premium-countdown__section`}>
-                            <span className={`premium-countdown__time-mid`}
+                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount`}
+                                <span className={`premium-countdown__amount premium-countdown__digits-seconds`} 
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",

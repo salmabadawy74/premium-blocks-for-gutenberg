@@ -42777,6 +42777,9 @@ var countDownAttr = {
         type: "string",
         default: "center"
     },
+    dateTime: {
+        type: "string"
+    },
     monthsCheck: {
         type: "boolean",
         default: false
@@ -42904,6 +42907,7 @@ var save = function save(props) {
     var _props$attributes = props.attributes,
         id = _props$attributes.id,
         align = _props$attributes.align,
+        dateTime = _props$attributes.dateTime,
         monthsCheck = _props$attributes.monthsCheck,
         weeksCheck = _props$attributes.weeksCheck,
         daysCheck = _props$attributes.daysCheck,
@@ -42941,7 +42945,7 @@ var save = function save(props) {
         },
         wp.element.createElement(
             "div",
-            { id: "countdown__" + id, className: "premium-countdown__init countdown down is-pre_countdown" },
+            { id: "countdown__" + id, className: "premium-countdown__container countdown down is-pre_countdown" },
             wp.element.createElement(
                 "span",
                 { className: "premium-countdown__row premium-countdown__show4" },
@@ -42950,7 +42954,7 @@ var save = function save(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid",
+                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -42958,7 +42962,7 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount",
+                            { className: "premium-countdown__amount premium-countdown__get-date premium-countdown__digits-months",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -42967,6 +42971,7 @@ var save = function save(props) {
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
                                     borderRadius: borderRadius || "0"
+
                                 }
                             },
                             "00"
@@ -42989,7 +42994,7 @@ var save = function save(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid",
+                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -42997,7 +43002,7 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount",
+                            { className: "premium-countdown__amount  premium-countdown__digits-weeks",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43028,7 +43033,7 @@ var save = function save(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid",
+                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43036,7 +43041,7 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount",
+                            { className: "premium-countdown__amount  premium-countdown__digits-days",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43067,7 +43072,7 @@ var save = function save(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid",
+                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43075,7 +43080,7 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount",
+                            { className: "premium-countdown__amount  premium-countdown__digits-hours",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43106,7 +43111,7 @@ var save = function save(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid",
+                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43114,7 +43119,7 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount",
+                            { className: "premium-countdown__amount  premium-countdown__digits-minutes",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43145,7 +43150,7 @@ var save = function save(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid",
+                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43153,7 +43158,7 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount",
+                            { className: "premium-countdown__amount premium-countdown__digits-seconds",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43245,6 +43250,7 @@ var edit = function edit(props) {
     var _props$attributes = props.attributes,
         id = _props$attributes.id,
         align = _props$attributes.align,
+        dateTime = _props$attributes.dateTime,
         monthsCheck = _props$attributes.monthsCheck,
         weeksCheck = _props$attributes.weeksCheck,
         daysCheck = _props$attributes.daysCheck,
@@ -43275,6 +43281,23 @@ var edit = function edit(props) {
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-countdown");
 
+    // const date: new Date()
+    // const date = new Date()
+    // const settings = __experimentalGetSettings();
+
+    // const is12HourTime = /a(?!\\)/i.test(
+    //     settings.formats.time
+    //         .toLowerCase() // Test only the lower case a
+    //         .replace(/\\\\/g, '') // Replace "//" with empty strings
+    //         .split('').reverse().join('') // Reverse the string and test for "a" not followed by a slash
+    // );
+
+
+    var onUpdateDate = function onUpdateDate(dateTime) {
+        var newDateTime = moment(dateTime).format('YYYY-MM-DD HH:mm:ss');
+        setAttributes({ dateTime: newDateTime });
+    };
+
     return [isSelected && wp.element.createElement(
         "div",
         null,
@@ -43293,11 +43316,25 @@ var edit = function edit(props) {
         wp.element.createElement(
             InspectorControls,
             { key: "inspector" },
-            wp.element.createElement(PanelBody, {
-                title: __("Due Date"),
-                className: "premium-panel-body",
-                initialOpen: true
-            }),
+            wp.element.createElement(
+                PanelBody,
+                {
+                    title: __("Due Date"),
+                    className: "premium-panel-body",
+                    initialOpen: true
+                },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(DateTimePicker, {
+                        currentDate: dateTime,
+                        onChange: function onChange(val) {
+                            return onUpdateDate(val);
+                        },
+                        is12Hour: true
+                    })
+                )
+            ),
             wp.element.createElement(
                 PanelBody,
                 {
@@ -43563,7 +43600,7 @@ var edit = function edit(props) {
         },
         wp.element.createElement(
             "div",
-            { id: "countdown__" + id, className: "premium-countdown__init countdown down is-pre_countdown" },
+            { id: "countdown__" + id, className: "premium-countdown__container countdown down is-pre_countdown" },
             wp.element.createElement(
                 "span",
                 { className: "premium-countdown__row premium-countdown__show4" },
@@ -43572,7 +43609,7 @@ var edit = function edit(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid",
+                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43580,7 +43617,7 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount",
+                            { className: "premium-countdown__amount premium-countdown__get-date premium-countdown__digits-months",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43612,7 +43649,7 @@ var edit = function edit(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid",
+                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43620,7 +43657,7 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount",
+                            { className: "premium-countdown__amount  premium-countdown__digits-weeks",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43651,7 +43688,7 @@ var edit = function edit(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid",
+                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43659,7 +43696,7 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount",
+                            { className: "premium-countdown__amount  premium-countdown__digits-days",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43690,7 +43727,7 @@ var edit = function edit(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid",
+                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43698,7 +43735,7 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount",
+                            { className: "premium-countdown__amount  premium-countdown__digits-hours",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43729,7 +43766,7 @@ var edit = function edit(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid",
+                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43737,7 +43774,7 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount",
+                            { className: "premium-countdown__amount  premium-countdown__digits-minutes",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43768,7 +43805,7 @@ var edit = function edit(props) {
                     { className: "premium-countdown__section" },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid",
+                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43776,7 +43813,7 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount",
+                            { className: "premium-countdown__amount premium-countdown__digits-seconds",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
