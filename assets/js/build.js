@@ -42988,7 +42988,7 @@ var save = function save(props) {
         },
         wp.element.createElement(
             "div",
-            { id: "countdown__" + id, className: "premium-countdown__container countdown down " },
+            { id: "countdown__" + id + "  container", className: "premium-countdown__container countdown down ", "data-date": dateTime },
             wp.element.createElement(
                 "span",
                 { className: "premium-countdown__items " },
@@ -43005,7 +43005,7 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-months",
+                            { className: "premium-countdown__amount  premium-countdown__digits-months", id: "months",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43053,7 +43053,7 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-weeks",
+                            { className: "premium-countdown__amount  premium-countdown__digits-weeks", id: "weeks",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43100,7 +43100,7 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-days",
+                            { className: "premium-countdown__amount  premium-countdown__digits-days", id: "days",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43147,7 +43147,7 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-hours",
+                            { className: "premium-countdown__amount  premium-countdown__digits-hours", id: "hours",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43162,7 +43162,7 @@ var save = function save(props) {
                                     borderRadius: borderRadius || "0"
                                 }
                             },
-                            "23"
+                            "00"
                         ),
                         wp.element.createElement(
                             "span",
@@ -43194,7 +43194,7 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-minutes",
+                            { className: "premium-countdown__amount  premium-countdown__digits-minutes", id: "minutes",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43209,7 +43209,7 @@ var save = function save(props) {
                                     borderRadius: borderRadius || "0"
                                 }
                             },
-                            "16"
+                            "00"
                         ),
                         wp.element.createElement(
                             "span",
@@ -43241,7 +43241,7 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount premium-countdown__digits-seconds",
+                            { className: "premium-countdown__amount premium-countdown__digits-seconds", id: "seconds",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43256,7 +43256,7 @@ var save = function save(props) {
                                     borderRadius: borderRadius || "0"
                                 }
                             },
-                            "37"
+                            "00"
                         ),
                         wp.element.createElement(
                             "span",
@@ -43326,6 +43326,14 @@ var AlLIGNMENT = [{
     align: 'flex-end'
 }];
 
+var TIMEZONE_OPTIONS = [{
+    label: __("Wordpress Default"),
+    value: ""
+}, {
+    label: __("User Local Time"),
+    value: ""
+}];
+
 var DISPLAY_STYLES = [{
     label: __("Block"),
     value: "block"
@@ -43381,18 +43389,6 @@ var edit = function edit(props) {
     setAttributes({ id: blockID });
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-countdown");
-
-    // const date: new Date()
-    // const date = new Date()
-    // const settings = __experimentalGetSettings();
-
-    // const is12HourTime = /a(?!\\)/i.test(
-    //     settings.formats.time
-    //         .toLowerCase() // Test only the lower case a
-    //         .replace(/\\\\/g, '') // Replace "//" with empty strings
-    //         .split('').reverse().join('') // Reverse the string and test for "a" not followed by a slash
-    // );
-
 
     var onUpdateDate = function onUpdateDate(dateTime) {
         var newDateTime = moment(dateTime).format('YYYY-MM-DD HH:mm:ss');
@@ -43761,7 +43757,7 @@ var edit = function edit(props) {
         },
         wp.element.createElement(
             "div",
-            { id: "countdown__" + id, className: "premium-countdown__container countdown down " },
+            { id: "countdown__" + id + "  container", className: "premium-countdown__container countdown down ", "data-date": dateTime },
             wp.element.createElement(
                 "span",
                 { className: "premium-countdown__items " },
@@ -43778,7 +43774,7 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-months",
+                            { className: "premium-countdown__amount  premium-countdown__digits-months", id: "months",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43826,7 +43822,7 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-weeks",
+                            { className: "premium-countdown__amount  premium-countdown__digits-weeks", id: "weeks",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43873,7 +43869,7 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-days",
+                            { className: "premium-countdown__amount  premium-countdown__digits-days", id: "days",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43920,7 +43916,7 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-hours",
+                            { className: "premium-countdown__amount  premium-countdown__digits-hours", id: "hours",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43935,7 +43931,7 @@ var edit = function edit(props) {
                                     borderRadius: borderRadius || "0"
                                 }
                             },
-                            "23"
+                            "00"
                         ),
                         wp.element.createElement(
                             "span",
@@ -43967,7 +43963,7 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-minutes",
+                            { className: "premium-countdown__amount  premium-countdown__digits-minutes", id: "minutes",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -43982,7 +43978,7 @@ var edit = function edit(props) {
                                     borderRadius: borderRadius || "0"
                                 }
                             },
-                            "16"
+                            "00"
                         ),
                         wp.element.createElement(
                             "span",
@@ -44014,7 +44010,7 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount premium-countdown__digits-seconds",
+                            { className: "premium-countdown__amount premium-countdown__digits-seconds", id: "seconds",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
@@ -44029,7 +44025,7 @@ var edit = function edit(props) {
                                     borderRadius: borderRadius || "0"
                                 }
                             },
-                            "37"
+                            "00"
                         ),
                         wp.element.createElement(
                             "span",

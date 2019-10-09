@@ -52,7 +52,7 @@ const save = props => {
             className={`${mainClasses}__wrap`}
             style={{ justifyContent: align || "center" }}
         >
-            <div id={`countdown__${id}`} className={`premium-countdown__container countdown down `} >
+            <div id={`countdown__${id}  container`} className={`premium-countdown__container countdown down `} data-date={dateTime}>
                 <span className={`premium-countdown__items `}>
 
                     {monthsCheck && (
@@ -63,7 +63,7 @@ const save = props => {
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount  premium-countdown__digits-months`}
+                                <span className={`premium-countdown__amount  premium-countdown__digits-months`} id={`months`}
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -80,7 +80,7 @@ const save = props => {
                                     }}
                                 >
                                     00
-                                </span>
+                            </span>
                                 <span className={`premium-countdown__period premium-countdown__units-months`}
                                     style={{
                                         display: contentDisplay || "block",
@@ -105,7 +105,7 @@ const save = props => {
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount  premium-countdown__digits-weeks`}
+                                <span className={`premium-countdown__amount  premium-countdown__digits-weeks`} id={`weeks`}
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -121,7 +121,7 @@ const save = props => {
                                     }}
                                 >
                                     00
-                                </span>
+                            </span>
                                 <span className={`premium-countdown__period premium-countdown__units-weeks`}
                                     style={{
                                         display: contentDisplay || "block",
@@ -146,7 +146,7 @@ const save = props => {
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount  premium-countdown__digits-days`}
+                                <span className={`premium-countdown__amount  premium-countdown__digits-days`} id={`days`}
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -162,7 +162,7 @@ const save = props => {
                                     }}
                                 >
                                     00
-                                </span>
+                            </span>
                                 <span className={`premium-countdown__period premium-countdown__units-days`}
                                     style={{
                                         display: contentDisplay || "block",
@@ -187,7 +187,7 @@ const save = props => {
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount  premium-countdown__digits-hours`}
+                                <span className={`premium-countdown__amount  premium-countdown__digits-hours`} id={`hours`}
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -202,8 +202,8 @@ const save = props => {
                                         borderRadius: borderRadius || "0"
                                     }}
                                 >
-                                    23
-                                </span>
+                                    00
+                            </span>
                                 <span className={`premium-countdown__period premium-countdown__units-hours`}
                                     style={{
                                         display: contentDisplay || "block",
@@ -228,7 +228,7 @@ const save = props => {
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount  premium-countdown__digits-minutes`}
+                                <span className={`premium-countdown__amount  premium-countdown__digits-minutes`} id={`minutes`}
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -243,8 +243,8 @@ const save = props => {
                                         borderRadius: borderRadius || "0"
                                     }}
                                 >
-                                    16
-                                </span>
+                                    00
+                            </span>
                                 <span className={`premium-countdown__period premium-countdown__units-minutes`}
                                     style={{
                                         display: contentDisplay || "block",
@@ -269,7 +269,7 @@ const save = props => {
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount premium-countdown__digits-seconds`}
+                                <span className={`premium-countdown__amount premium-countdown__digits-seconds`} id={`seconds`}
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
@@ -284,8 +284,8 @@ const save = props => {
                                         borderRadius: borderRadius || "0"
                                     }}
                                 >
-                                    37
-                                </span>
+                                    00
+                            </span>
                                 <span className={`premium-countdown__period premium-countdown__units-seconds`}
                                     style={{
                                         display: contentDisplay || "block",
