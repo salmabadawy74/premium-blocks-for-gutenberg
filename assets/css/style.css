@@ -1877,7 +1877,7 @@ a.premium-dheading-block__link:hover {
 
 /**************** Premium CountDown *************/
 /************************************************/
-.premium-countdown {
+.premium-countdown__wrap {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: -moz-flex;
@@ -1885,7 +1885,7 @@ a.premium-dheading-block__link:hover {
   display: flex;
 }
 /* jQuery Countdown styles 2.0.0. */
-.premium-countdown__row{
+.premium-countdown__items{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

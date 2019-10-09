@@ -82,6 +82,21 @@ const countDownAttr = {
         type:"string",
         default:"transparent"
     },
+    digitsSize:{
+        type:"number",
+        default:"20"
+    },
+    digitsWeight:{
+        type:"string"
+    },
+    digitsLetterSpacing:{
+        type:"number",
+        default:"0"
+    },
+    digitsLineHeight:{
+        type:"number",
+        default:"1"
+    },
     borderType:{
         type:"string",
         default:"none"
@@ -103,6 +118,21 @@ const countDownAttr = {
         type:"string",
         default:"#000"
     },  
+    unitsSize:{
+        type:"number",
+        default:"20"
+    },
+    unitsWeight:{
+        type:"string"
+    },
+    unitsLetterSpacing:{
+        type:"number",
+        default:"0"
+    },
+    unitsLineHeight:{
+        type:"number",
+        default:"2"
+    },
     marginTop:{
         type:"number",
         default:"0"
@@ -118,6 +148,10 @@ const countDownAttr = {
     marginLeft:{
         type:"number",
         default:"0"
+    },
+    unitsSpace:{
+        type:"number",
+        default:"10"
     }
 }
 

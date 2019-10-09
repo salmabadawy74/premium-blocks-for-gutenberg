@@ -42841,6 +42841,21 @@ var countDownAttr = {
         type: "string",
         default: "transparent"
     },
+    digitsSize: {
+        type: "number",
+        default: "20"
+    },
+    digitsWeight: {
+        type: "string"
+    },
+    digitsLetterSpacing: {
+        type: "number",
+        default: "0"
+    },
+    digitsLineHeight: {
+        type: "number",
+        default: "1"
+    },
     borderType: {
         type: "string",
         default: "none"
@@ -42862,6 +42877,21 @@ var countDownAttr = {
         type: "string",
         default: "#000"
     },
+    unitsSize: {
+        type: "number",
+        default: "20"
+    },
+    unitsWeight: {
+        type: "string"
+    },
+    unitsLetterSpacing: {
+        type: "number",
+        default: "0"
+    },
+    unitsLineHeight: {
+        type: "number",
+        default: "2"
+    },
     marginTop: {
         type: "number",
         default: "0"
@@ -42877,6 +42907,10 @@ var countDownAttr = {
     marginLeft: {
         type: "number",
         default: "0"
+    },
+    unitsSpace: {
+        type: "number",
+        default: "10"
     }
 };
 
@@ -42923,15 +42957,24 @@ var save = function save(props) {
         contentDisplay = _props$attributes.contentDisplay,
         digitsColor = _props$attributes.digitsColor,
         digitsBgColor = _props$attributes.digitsBgColor,
+        digitsSize = _props$attributes.digitsSize,
+        digitsWeight = _props$attributes.digitsWeight,
+        digitsLetterSpacing = _props$attributes.digitsLetterSpacing,
+        digitsLineHeight = _props$attributes.digitsLineHeight,
         borderType = _props$attributes.borderType,
         borderWidth = _props$attributes.borderWidth,
         borderColor = _props$attributes.borderColor,
         borderRadius = _props$attributes.borderRadius,
         unitsColor = _props$attributes.unitsColor,
+        unitsSize = _props$attributes.unitsSize,
+        unitsWeight = _props$attributes.unitsWeight,
+        unitsLetterSpacing = _props$attributes.unitsLetterSpacing,
+        unitsLineHeight = _props$attributes.unitsLineHeight,
         marginTop = _props$attributes.marginTop,
         marginRight = _props$attributes.marginRight,
         marginBottom = _props$attributes.marginBottom,
-        marginLeft = _props$attributes.marginLeft;
+        marginLeft = _props$attributes.marginLeft,
+        unitsSpace = _props$attributes.unitsSpace;
 
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-countdown");
@@ -42940,18 +42983,18 @@ var save = function save(props) {
         "div",
         {
             id: "premium-countdown__" + id,
-            className: "" + mainClasses,
+            className: mainClasses + "__wrap",
             style: { justifyContent: align || "center" }
         },
         wp.element.createElement(
             "div",
-            { id: "countdown__" + id, className: "premium-countdown__container countdown down is-pre_countdown" },
+            { id: "countdown__" + id, className: "premium-countdown__container countdown down " },
             wp.element.createElement(
                 "span",
-                { className: "premium-countdown__row premium-countdown__show4" },
+                { className: "premium-countdown__items " },
                 monthsCheck && wp.element.createElement(
                     "span",
-                    { className: "premium-countdown__section" },
+                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
                         { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
@@ -42962,11 +43005,15 @@ var save = function save(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount premium-countdown__get-date premium-countdown__digits-months",
+                            { className: "premium-countdown__amount  premium-countdown__digits-months",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
                                     backgroundColor: digitsBgColor || "transparent",
+                                    fontSize: digitsSize || "0",
+                                    fontWeight: digitsWeight || "normal",
+                                    letterSpacing: digitsLetterSpacing || "0",
+                                    lineHeight: digitsLineHeight || "inherit",
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
@@ -42978,10 +43025,14 @@ var save = function save(props) {
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period",
+                            { className: "premium-countdown__period premium-countdown__units-months",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor,
+                                    color: unitsColor || "#000",
+                                    fontSize: unitsSize || "0",
+                                    fontWeight: unitsWeight || "normal",
+                                    letterSpacing: unitsLetterSpacing || "0",
+                                    lineHeight: unitsLineHeight || "inherit",
                                     margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
@@ -42991,7 +43042,7 @@ var save = function save(props) {
                 ),
                 weeksCheck && wp.element.createElement(
                     "span",
-                    { className: "premium-countdown__section" },
+                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
                         { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
@@ -43007,6 +43058,10 @@ var save = function save(props) {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
                                     backgroundColor: digitsBgColor || "transparent",
+                                    fontSize: digitsSize || "0",
+                                    fontWeight: digitsWeight || "normal",
+                                    letterSpacing: digitsLetterSpacing || "0",
+                                    lineHeight: digitsLineHeight || "inherit",
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
@@ -43017,10 +43072,14 @@ var save = function save(props) {
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period",
+                            { className: "premium-countdown__period premium-countdown__units-weeks",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor,
+                                    color: unitsColor || "#000",
+                                    fontSize: unitsSize || "0",
+                                    fontWeight: unitsWeight || "normal",
+                                    letterSpacing: unitsLetterSpacing || "0",
+                                    lineHeight: unitsLineHeight || "inherit",
                                     margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
@@ -43030,7 +43089,7 @@ var save = function save(props) {
                 ),
                 daysCheck && wp.element.createElement(
                     "span",
-                    { className: "premium-countdown__section" },
+                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
                         { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
@@ -43046,6 +43105,10 @@ var save = function save(props) {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
                                     backgroundColor: digitsBgColor || "transparent",
+                                    fontSize: digitsSize || "0",
+                                    fontWeight: digitsWeight || "normal",
+                                    letterSpacing: digitsLetterSpacing || "0",
+                                    lineHeight: digitsLineHeight || "inherit",
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
@@ -43056,10 +43119,14 @@ var save = function save(props) {
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period",
+                            { className: "premium-countdown__period premium-countdown__units-days",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor,
+                                    color: unitsColor || "#000",
+                                    fontSize: unitsSize || "0",
+                                    fontWeight: unitsWeight || "normal",
+                                    letterSpacing: unitsLetterSpacing || "0",
+                                    lineHeight: unitsLineHeight || "inherit",
                                     margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
@@ -43069,7 +43136,7 @@ var save = function save(props) {
                 ),
                 hoursCheck && wp.element.createElement(
                     "span",
-                    { className: "premium-countdown__section" },
+                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
                         { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
@@ -43085,6 +43152,10 @@ var save = function save(props) {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
                                     backgroundColor: digitsBgColor || "transparent",
+                                    fontSize: digitsSize || "0",
+                                    fontWeight: digitsWeight || "normal",
+                                    letterSpacing: digitsLetterSpacing || "0",
+                                    lineHeight: digitsLineHeight || "inherit",
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
@@ -43095,10 +43166,14 @@ var save = function save(props) {
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period",
+                            { className: "premium-countdown__period premium-countdown__units-hours",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor,
+                                    color: unitsColor || "#000",
+                                    fontSize: unitsSize || "0",
+                                    fontWeight: unitsWeight || "normal",
+                                    letterSpacing: unitsLetterSpacing || "0",
+                                    lineHeight: unitsLineHeight || "inherit",
                                     margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
@@ -43108,7 +43183,7 @@ var save = function save(props) {
                 ),
                 minutesCheck && wp.element.createElement(
                     "span",
-                    { className: "premium-countdown__section" },
+                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
                         { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
@@ -43124,6 +43199,10 @@ var save = function save(props) {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
                                     backgroundColor: digitsBgColor || "transparent",
+                                    fontSize: digitsSize || "0",
+                                    fontWeight: digitsWeight || "normal",
+                                    letterSpacing: digitsLetterSpacing || "0",
+                                    lineHeight: digitsLineHeight || "inherit",
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
@@ -43134,10 +43213,14 @@ var save = function save(props) {
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period",
+                            { className: "premium-countdown__period premium-countdown__units-minutes",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor,
+                                    color: unitsColor || "#000",
+                                    fontSize: unitsSize || "0",
+                                    fontWeight: unitsWeight || "normal",
+                                    letterSpacing: unitsLetterSpacing || "0",
+                                    lineHeight: unitsLineHeight || "inherit",
                                     margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
@@ -43147,7 +43230,7 @@ var save = function save(props) {
                 ),
                 secondsCheck && wp.element.createElement(
                     "span",
-                    { className: "premium-countdown__section" },
+                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
                         { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
@@ -43163,6 +43246,10 @@ var save = function save(props) {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
                                     backgroundColor: digitsBgColor || "transparent",
+                                    fontSize: digitsSize || "0",
+                                    fontWeight: digitsWeight || "normal",
+                                    letterSpacing: digitsLetterSpacing || "0",
+                                    lineHeight: digitsLineHeight || "inherit",
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
@@ -43173,10 +43260,14 @@ var save = function save(props) {
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period",
+                            { className: "premium-countdown__period premium-countdown__units-seconds",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor,
+                                    color: unitsColor || "#000",
+                                    fontSize: unitsSize || "0",
+                                    fontWeight: unitsWeight || "normal",
+                                    letterSpacing: unitsLetterSpacing || "0",
+                                    lineHeight: unitsLineHeight || "inherit",
                                     margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
@@ -43212,7 +43303,8 @@ var _wp$components = wp.components,
     DateTimePicker = _wp$components.DateTimePicker,
     ToggleControl = _wp$components.ToggleControl,
     SelectControl = _wp$components.SelectControl,
-    TextControl = _wp$components.TextControl;
+    TextControl = _wp$components.TextControl,
+    RangeControl = _wp$components.RangeControl;
 var _wp$editor = wp.editor,
     BlockControls = _wp$editor.BlockControls,
     InspectorControls = _wp$editor.InspectorControls,
@@ -43266,15 +43358,24 @@ var edit = function edit(props) {
         contentDisplay = _props$attributes.contentDisplay,
         digitsColor = _props$attributes.digitsColor,
         digitsBgColor = _props$attributes.digitsBgColor,
+        digitsSize = _props$attributes.digitsSize,
+        digitsWeight = _props$attributes.digitsWeight,
+        digitsLetterSpacing = _props$attributes.digitsLetterSpacing,
+        digitsLineHeight = _props$attributes.digitsLineHeight,
         borderType = _props$attributes.borderType,
         borderWidth = _props$attributes.borderWidth,
         borderColor = _props$attributes.borderColor,
         borderRadius = _props$attributes.borderRadius,
         unitsColor = _props$attributes.unitsColor,
+        unitsSize = _props$attributes.unitsSize,
+        unitsWeight = _props$attributes.unitsWeight,
+        unitsLetterSpacing = _props$attributes.unitsLetterSpacing,
+        unitsLineHeight = _props$attributes.unitsLineHeight,
         marginTop = _props$attributes.marginTop,
         marginRight = _props$attributes.marginRight,
         marginBottom = _props$attributes.marginBottom,
-        marginLeft = _props$attributes.marginLeft;
+        marginLeft = _props$attributes.marginLeft,
+        unitsSpace = _props$attributes.unitsSpace;
 
 
     setAttributes({ id: blockID });
@@ -43523,6 +43624,29 @@ var edit = function edit(props) {
                 wp.element.createElement(
                     "div",
                     { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
+                        components: ["size", "weight", "spacing", "line"],
+                        size: digitsSize,
+                        weight: digitsWeight,
+                        spacing: digitsLetterSpacing,
+                        line: digitsLineHeight,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return setAttributes({ digitsSize: newSize || "0" });
+                        },
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return setAttributes({ digitsWeight: newWeight || "normal" });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return setAttributes({ digitsLetterSpacing: newValue || "0" });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return setAttributes({ digitsLineHeight: newValue || "inherit" });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
                         borderType: borderType,
                         borderWidth: borderWidth,
@@ -43569,6 +43693,29 @@ var edit = function edit(props) {
                 wp.element.createElement(
                     "div",
                     { className: "premium-control-toggle" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
+                        components: ["size", "weight", "spacing", "line"],
+                        size: unitsSize,
+                        weight: unitsWeight,
+                        spacing: unitsLetterSpacing,
+                        line: unitsLineHeight,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return setAttributes({ unitsSize: newSize || "0" });
+                        },
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return setAttributes({ unitsWeight: newWeight || "normal" });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return setAttributes({ unitsLetterSpacing: newValue || "0" });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return setAttributes({ unitsLineHeight: newValue || "inherit" });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_margin__["a" /* default */], {
                         directions: ["all"],
                         marginTop: marginTop,
@@ -43588,6 +43735,20 @@ var edit = function edit(props) {
                             return setAttributes({ marginLeft: newValue || "0" });
                         }
                     })
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-toggle" },
+                    wp.element.createElement(RangeControl, {
+                        label: __("Spacing Between"),
+                        value: unitsSpace,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ unitsSpace: newValue || "0" });
+                        },
+                        initialPosition: 10,
+                        min: 0,
+                        max: 200
+                    })
                 )
             )
         )
@@ -43595,18 +43756,18 @@ var edit = function edit(props) {
         "div",
         {
             id: "premium-countdown__" + id,
-            className: "" + mainClasses,
+            className: mainClasses + "__wrap",
             style: { justifyContent: align || "center" }
         },
         wp.element.createElement(
             "div",
-            { id: "countdown__" + id, className: "premium-countdown__container countdown down is-pre_countdown" },
+            { id: "countdown__" + id, className: "premium-countdown__container countdown down " },
             wp.element.createElement(
                 "span",
-                { className: "premium-countdown__row premium-countdown__show4" },
+                { className: "premium-countdown__items " },
                 monthsCheck && wp.element.createElement(
                     "span",
-                    { className: "premium-countdown__section" },
+                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
                         { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
@@ -43617,11 +43778,15 @@ var edit = function edit(props) {
                         },
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__amount premium-countdown__get-date premium-countdown__digits-months",
+                            { className: "premium-countdown__amount  premium-countdown__digits-months",
                                 style: {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
                                     backgroundColor: digitsBgColor || "transparent",
+                                    fontSize: digitsSize || "0",
+                                    fontWeight: digitsWeight || "normal",
+                                    letterSpacing: digitsLetterSpacing || "0",
+                                    lineHeight: digitsLineHeight || "inherit",
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
@@ -43633,10 +43798,14 @@ var edit = function edit(props) {
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period",
+                            { className: "premium-countdown__period premium-countdown__units-months",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor,
+                                    color: unitsColor || "#000",
+                                    fontSize: unitsSize || "0",
+                                    fontWeight: unitsWeight || "normal",
+                                    letterSpacing: unitsLetterSpacing || "0",
+                                    lineHeight: unitsLineHeight || "inherit",
                                     margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
@@ -43646,7 +43815,7 @@ var edit = function edit(props) {
                 ),
                 weeksCheck && wp.element.createElement(
                     "span",
-                    { className: "premium-countdown__section" },
+                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
                         { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
@@ -43662,6 +43831,10 @@ var edit = function edit(props) {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
                                     backgroundColor: digitsBgColor || "transparent",
+                                    fontSize: digitsSize || "0",
+                                    fontWeight: digitsWeight || "normal",
+                                    letterSpacing: digitsLetterSpacing || "0",
+                                    lineHeight: digitsLineHeight || "inherit",
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
@@ -43672,10 +43845,14 @@ var edit = function edit(props) {
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period",
+                            { className: "premium-countdown__period premium-countdown__units-weeks",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor,
+                                    color: unitsColor || "#000",
+                                    fontSize: unitsSize || "0",
+                                    fontWeight: unitsWeight || "normal",
+                                    letterSpacing: unitsLetterSpacing || "0",
+                                    lineHeight: unitsLineHeight || "inherit",
                                     margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
@@ -43685,7 +43862,7 @@ var edit = function edit(props) {
                 ),
                 daysCheck && wp.element.createElement(
                     "span",
-                    { className: "premium-countdown__section" },
+                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
                         { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
@@ -43701,6 +43878,10 @@ var edit = function edit(props) {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
                                     backgroundColor: digitsBgColor || "transparent",
+                                    fontSize: digitsSize || "0",
+                                    fontWeight: digitsWeight || "normal",
+                                    letterSpacing: digitsLetterSpacing || "0",
+                                    lineHeight: digitsLineHeight || "inherit",
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
@@ -43711,10 +43892,14 @@ var edit = function edit(props) {
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period",
+                            { className: "premium-countdown__period premium-countdown__units-days",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor,
+                                    color: unitsColor || "#000",
+                                    fontSize: unitsSize || "0",
+                                    fontWeight: unitsWeight || "normal",
+                                    letterSpacing: unitsLetterSpacing || "0",
+                                    lineHeight: unitsLineHeight || "inherit",
                                     margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
@@ -43724,7 +43909,7 @@ var edit = function edit(props) {
                 ),
                 hoursCheck && wp.element.createElement(
                     "span",
-                    { className: "premium-countdown__section" },
+                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
                         { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
@@ -43740,6 +43925,10 @@ var edit = function edit(props) {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
                                     backgroundColor: digitsBgColor || "transparent",
+                                    fontSize: digitsSize || "0",
+                                    fontWeight: digitsWeight || "normal",
+                                    letterSpacing: digitsLetterSpacing || "0",
+                                    lineHeight: digitsLineHeight || "inherit",
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
@@ -43750,10 +43939,14 @@ var edit = function edit(props) {
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period",
+                            { className: "premium-countdown__period premium-countdown__units-hours",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor,
+                                    color: unitsColor || "#000",
+                                    fontSize: unitsSize || "0",
+                                    fontWeight: unitsWeight || "normal",
+                                    letterSpacing: unitsLetterSpacing || "0",
+                                    lineHeight: unitsLineHeight || "inherit",
                                     margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
@@ -43763,7 +43956,7 @@ var edit = function edit(props) {
                 ),
                 minutesCheck && wp.element.createElement(
                     "span",
-                    { className: "premium-countdown__section" },
+                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
                         { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
@@ -43779,6 +43972,10 @@ var edit = function edit(props) {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
                                     backgroundColor: digitsBgColor || "transparent",
+                                    fontSize: digitsSize || "0",
+                                    fontWeight: digitsWeight || "normal",
+                                    letterSpacing: digitsLetterSpacing || "0",
+                                    lineHeight: digitsLineHeight || "inherit",
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
@@ -43789,10 +43986,14 @@ var edit = function edit(props) {
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period",
+                            { className: "premium-countdown__period premium-countdown__units-minutes",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor,
+                                    color: unitsColor || "#000",
+                                    fontSize: unitsSize || "0",
+                                    fontWeight: unitsWeight || "normal",
+                                    letterSpacing: unitsLetterSpacing || "0",
+                                    lineHeight: unitsLineHeight || "inherit",
                                     margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },
@@ -43802,7 +44003,7 @@ var edit = function edit(props) {
                 ),
                 secondsCheck && wp.element.createElement(
                     "span",
-                    { className: "premium-countdown__section" },
+                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
                         { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
@@ -43818,6 +44019,10 @@ var edit = function edit(props) {
                                     display: contentDisplay || "block",
                                     color: digitsColor || "#000",
                                     backgroundColor: digitsBgColor || "transparent",
+                                    fontSize: digitsSize || "0",
+                                    fontWeight: digitsWeight || "normal",
+                                    letterSpacing: digitsLetterSpacing || "0",
+                                    lineHeight: digitsLineHeight || "inherit",
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
@@ -43828,10 +44033,14 @@ var edit = function edit(props) {
                         ),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-countdown__period",
+                            { className: "premium-countdown__period premium-countdown__units-seconds",
                                 style: {
                                     display: contentDisplay || "block",
-                                    color: unitsColor,
+                                    color: unitsColor || "#000",
+                                    fontSize: unitsSize || "0",
+                                    fontWeight: unitsWeight || "normal",
+                                    letterSpacing: unitsLetterSpacing || "0",
+                                    lineHeight: unitsLineHeight || "inherit",
                                     margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
                                 }
                             },

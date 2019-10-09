@@ -5,7 +5,7 @@ import PremiumMargin from "../../components/premium-margin";
 
 const { __ } = wp.i18n;
 
-const { PanelBody, DateTimePicker, ToggleControl, SelectControl, TextControl } = wp.components
+const { PanelBody, DateTimePicker, ToggleControl, SelectControl, TextControl, RangeControl } = wp.components
 
 const { BlockControls, InspectorControls, AlignmentToolbar, ColorPalette } = wp.editor;
 
@@ -60,15 +60,24 @@ const edit = props => {
         contentDisplay,
         digitsColor,
         digitsBgColor,
+        digitsSize,
+        digitsWeight,
+        digitsLetterSpacing,
+        digitsLineHeight,
         borderType,
         borderWidth,
         borderColor,
         borderRadius,
         unitsColor,
+        unitsSize,
+        unitsWeight,
+        unitsLetterSpacing,
+        unitsLineHeight,
         marginTop,
         marginRight,
         marginBottom,
-        marginLeft
+        marginLeft,
+        unitsSpace
 
     } = props.attributes;
 
@@ -88,9 +97,9 @@ const edit = props => {
     // );
 
 
-    const onUpdateDate = ( dateTime ) => {
-      var newDateTime = moment(dateTime).format( 'YYYY-MM-DD HH:mm:ss' );
-      setAttributes( { dateTime: newDateTime } );
+    const onUpdateDate = (dateTime) => {
+        var newDateTime = moment(dateTime).format('YYYY-MM-DD HH:mm:ss');
+        setAttributes({ dateTime: newDateTime });
     };
 
     return [
@@ -261,6 +270,19 @@ const edit = props => {
                                 allowReset={true}
                             />
                         </div>
+                        <div  className="premium-control-toggle">
+                            <PremiumTypo
+                                components={["size", "weight", "spacing", "line"]}
+                                size={digitsSize}
+                                weight={digitsWeight}
+                                spacing={digitsLetterSpacing}
+                                line={digitsLineHeight}
+                                onChangeSize={newSize => setAttributes({ digitsSize: newSize || "0"})}
+                                onChangeWeight={newWeight => setAttributes({ digitsWeight: newWeight || "normal"}) }
+                                onChangeSpacing={newValue => setAttributes({ digitsLetterSpacing: newValue || "0"}) }
+                                onChangeLine={newValue => setAttributes({ digitsLineHeight: newValue || "inherit"})}
+                            />
+                        </div>
                         <div className="premium-control-toggle">
                             <PremiumBorder
                                 borderType={borderType}
@@ -289,6 +311,19 @@ const edit = props => {
                                 allowReset={true}
                             />
                         </div>
+                        <div  className="premium-control-toggle">
+                            <PremiumTypo
+                                components={["size", "weight", "spacing", "line"]}
+                                size={unitsSize}
+                                weight={unitsWeight}
+                                spacing={unitsLetterSpacing}
+                                line={unitsLineHeight}
+                                onChangeSize={newSize => setAttributes({ unitsSize: newSize || "0"})}
+                                onChangeWeight={newWeight => setAttributes({ unitsWeight: newWeight || "normal"}) }
+                                onChangeSpacing={newValue => setAttributes({ unitsLetterSpacing: newValue || "0"}) }
+                                onChangeLine={newValue => setAttributes({ unitsLineHeight: newValue || "inherit"})}
+                            />
+                        </div>
                         <div className="premium-control-toggle">
                             <PremiumMargin
                                 directions={["all"]}
@@ -302,6 +337,16 @@ const edit = props => {
                                 onChangeMarLeft={newValue => setAttributes({ marginLeft: newValue || "0" })}
                             />
                         </div>
+                        <div className="premium-control-toggle">
+                            <RangeControl
+                                label={__("Spacing Between")}
+                                value={unitsSpace}
+                                onChange={newValue => setAttributes({ unitsSpace: newValue || "0" })}
+                                initialPosition={10}
+                                min={0}
+                                max={200}
+                            />
+                        </div>
                     </PanelBody>
 
                 </InspectorControls>
@@ -309,25 +354,29 @@ const edit = props => {
         ),
         <div
             id={`premium-countdown__${id}`}
-            className={`${mainClasses}`}
+            className={`${mainClasses}__wrap`}
             style={{ justifyContent: align || "center" }}
         >
-            <div id={`countdown__${id}`} className={`premium-countdown__container countdown down is-pre_countdown`} >
-                <span className={`premium-countdown__row premium-countdown__show4`}>
+            <div id={`countdown__${id}`} className={`premium-countdown__container countdown down `} >
+                <span className={`premium-countdown__items `}>
 
                     {monthsCheck && (
-                        <span className={`premium-countdown__section`}>
+                        <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
                             <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount premium-countdown__get-date premium-countdown__digits-months`} 
+                                <span className={`premium-countdown__amount  premium-countdown__digits-months`}
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
                                         backgroundColor: digitsBgColor || "transparent",
+                                        fontSize: digitsSize || "0",
+                                        fontWeight: digitsWeight || "normal",
+                                        letterSpacing: digitsLetterSpacing || "0",
+                                        lineHeight: digitsLineHeight || "inherit",
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
@@ -337,10 +386,14 @@ const edit = props => {
                                 >
                                     00
                                 </span>
-                                <span className={`premium-countdown__period`}
+                                <span className={`premium-countdown__period premium-countdown__units-months`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor,
+                                        color: unitsColor || "#000",
+                                        fontSize: unitsSize || "0",
+                                        fontWeight: unitsWeight || "normal",
+                                        letterSpacing: unitsLetterSpacing || "0",
+                                        lineHeight: unitsLineHeight || "inherit",
                                         margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
@@ -350,18 +403,22 @@ const edit = props => {
                         </span>
                     )}
                     {weeksCheck && (
-                        <span className={`premium-countdown__section`}>
+                        <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
                             <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount  premium-countdown__digits-weeks`} 
+                                <span className={`premium-countdown__amount  premium-countdown__digits-weeks`}
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
                                         backgroundColor: digitsBgColor || "transparent",
+                                        fontSize: digitsSize || "0",
+                                        fontWeight: digitsWeight || "normal",
+                                        letterSpacing: digitsLetterSpacing || "0",
+                                        lineHeight: digitsLineHeight || "inherit",
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
@@ -370,10 +427,14 @@ const edit = props => {
                                 >
                                     00
                                 </span>
-                                <span className={`premium-countdown__period`}
+                                <span className={`premium-countdown__period premium-countdown__units-weeks`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor,
+                                        color: unitsColor || "#000",
+                                        fontSize: unitsSize || "0",
+                                        fontWeight: unitsWeight || "normal",
+                                        letterSpacing: unitsLetterSpacing || "0",
+                                        lineHeight: unitsLineHeight || "inherit",
                                         margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
@@ -383,18 +444,22 @@ const edit = props => {
                         </span>
                     )}
                     {daysCheck && (
-                        <span className={`premium-countdown__section`}>
+                        <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
                             <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount  premium-countdown__digits-days`} 
+                                <span className={`premium-countdown__amount  premium-countdown__digits-days`}
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
                                         backgroundColor: digitsBgColor || "transparent",
+                                        fontSize: digitsSize || "0",
+                                        fontWeight: digitsWeight || "normal",
+                                        letterSpacing: digitsLetterSpacing || "0",
+                                        lineHeight: digitsLineHeight || "inherit",
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
@@ -403,10 +468,14 @@ const edit = props => {
                                 >
                                     00
                                 </span>
-                                <span className={`premium-countdown__period`}
+                                <span className={`premium-countdown__period premium-countdown__units-days`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor,
+                                        color: unitsColor || "#000",
+                                        fontSize: unitsSize || "0",
+                                        fontWeight: unitsWeight || "normal",
+                                        letterSpacing: unitsLetterSpacing || "0",
+                                        lineHeight: unitsLineHeight || "inherit",
                                         margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
@@ -416,18 +485,22 @@ const edit = props => {
                         </span>
                     )}
                     {hoursCheck && (
-                        <span className={`premium-countdown__section`}>
+                        <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
                             <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount  premium-countdown__digits-hours`} 
+                                <span className={`premium-countdown__amount  premium-countdown__digits-hours`}
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
                                         backgroundColor: digitsBgColor || "transparent",
+                                        fontSize: digitsSize || "0",
+                                        fontWeight: digitsWeight || "normal",
+                                        letterSpacing: digitsLetterSpacing || "0",
+                                        lineHeight: digitsLineHeight || "inherit",
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
@@ -436,10 +509,14 @@ const edit = props => {
                                 >
                                     23
                                 </span>
-                                <span className={`premium-countdown__period`}
+                                <span className={`premium-countdown__period premium-countdown__units-hours`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor,
+                                        color: unitsColor || "#000",
+                                        fontSize: unitsSize || "0",
+                                        fontWeight: unitsWeight || "normal",
+                                        letterSpacing: unitsLetterSpacing || "0",
+                                        lineHeight: unitsLineHeight || "inherit",
                                         margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
@@ -449,18 +526,22 @@ const edit = props => {
                         </span>
                     )}
                     {minutesCheck && (
-                        <span className={`premium-countdown__section`}>
+                        <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
                             <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount  premium-countdown__digits-minutes`} 
+                                <span className={`premium-countdown__amount  premium-countdown__digits-minutes`}
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
                                         backgroundColor: digitsBgColor || "transparent",
+                                        fontSize: digitsSize || "0",
+                                        fontWeight: digitsWeight || "normal",
+                                        letterSpacing: digitsLetterSpacing || "0",
+                                        lineHeight: digitsLineHeight || "inherit",
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
@@ -469,10 +550,14 @@ const edit = props => {
                                 >
                                     16
                                 </span>
-                                <span className={`premium-countdown__period`}
+                                <span className={`premium-countdown__period premium-countdown__units-minutes`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor,
+                                        color: unitsColor || "#000",
+                                        fontSize: unitsSize || "0",
+                                        fontWeight: unitsWeight || "normal",
+                                        letterSpacing: unitsLetterSpacing || "0",
+                                        lineHeight: unitsLineHeight || "inherit",
                                         margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
@@ -482,18 +567,22 @@ const edit = props => {
                         </span>
                     )}
                     {secondsCheck && (
-                        <span className={`premium-countdown__section`}>
+                        <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
                             <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                 }}
                             >
-                                <span className={`premium-countdown__amount premium-countdown__digits-seconds`} 
+                                <span className={`premium-countdown__amount premium-countdown__digits-seconds`}
                                     style={{
                                         display: contentDisplay || "block",
                                         color: digitsColor || "#000",
                                         backgroundColor: digitsBgColor || "transparent",
+                                        fontSize: digitsSize || "0",
+                                        fontWeight: digitsWeight || "normal",
+                                        letterSpacing: digitsLetterSpacing || "0",
+                                        lineHeight: digitsLineHeight || "inherit",
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
@@ -502,10 +591,14 @@ const edit = props => {
                                 >
                                     37
                                 </span>
-                                <span className={`premium-countdown__period`}
+                                <span className={`premium-countdown__period premium-countdown__units-seconds`}
                                     style={{
                                         display: contentDisplay || "block",
-                                        color: unitsColor,
+                                        color: unitsColor || "#000",
+                                        fontSize: unitsSize || "0",
+                                        fontWeight: unitsWeight || "normal",
+                                        letterSpacing: unitsLetterSpacing || "0",
+                                        lineHeight: unitsLineHeight || "inherit",
                                         margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
                                     }}
                                 >
