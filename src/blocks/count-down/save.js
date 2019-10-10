@@ -52,7 +52,7 @@ const save = props => {
             className={`${mainClasses}__wrap`}
             style={{ justifyContent: align || "center" }}
         >
-            <div id={`container`} className={`premium-countdown__container countdown down `} data-date={dateTime}>
+            <div id={`container__${id}`} className={`premium-countdown__container countdown down `} data-date={dateTime}>
                 <span className={`premium-countdown__items `}>
 
                     {monthsCheck && (

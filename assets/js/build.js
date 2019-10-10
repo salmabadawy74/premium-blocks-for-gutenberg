@@ -42988,7 +42988,7 @@ var save = function save(props) {
         },
         wp.element.createElement(
             "div",
-            { id: "container", className: "premium-countdown__container countdown down ", "data-date": dateTime },
+            { id: "container__" + id, className: "premium-countdown__container countdown down ", "data-date": dateTime },
             wp.element.createElement(
                 "span",
                 { className: "premium-countdown__items " },
