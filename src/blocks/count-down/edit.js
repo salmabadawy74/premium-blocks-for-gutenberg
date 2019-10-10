@@ -29,12 +29,12 @@ const AlLIGNMENT = [
 
 const TIMEZONE_OPTIONS = [
     {
-        label:__("Wordpress Default"),
-        value:""
+        label: __("Wordpress Default"),
+        value: ""
     },
     {
-        label:__("User Local Time"),
-        value:""
+        label: __("User Local Time"),
+        value: ""
     }
 ];
 
@@ -99,7 +99,42 @@ const edit = props => {
     const onUpdateDate = (dateTime) => {
         var newDateTime = moment(dateTime).format('YYYY-MM-DD HH:mm:ss');
         setAttributes({ dateTime: newDateTime });
+
+        var $block = $(`#container__${id}`);
+        console.log($block);
+        var $date = $block.attr("data-date")
+        console.log($date);
+        var $new = new Date($date);
+        console.log($new);
+        var $interval = setInterval(function () {
+            // var $new = new Date('2019-10-24 21:22:00'.replace(' ', 'T'));
+            // var $new = new Date(`$date`.replace(' ', 'T'))
+            // var $new = moment($date, 'YYYY-MM-DD HH:mm:ss').toDate();
+            // var $r = $new.toString('dddd, MMMM ,yyyy');
+            var $now = new Date().getTime();
+            var $timer = $new - $now;
+            var $oneDay = 24 * 60 * 60 * 1000;
+            var $days = Math.floor($timer / $oneDay);
+            var $weeks = Math.floor($days / 7);
+            var $months = Math.floor($weeks / 4);
+            var $hours = Math.floor(($timer % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var $minutes = Math.floor(($timer % (1000 * 60 * 60)) / (1000 * 60));
+            var $seconds = Math.floor(($timer % (1000 * 60)) / 1000);
+
+            $("#months").text($months || "0");
+            $("#weeks").text($weeks || "0");
+            $("#days").text($days || "0");
+            $("#hours").text($hours || "0");
+            $("#minutes").text($minutes || "0");
+            $("#seconds").text($seconds || "0");
+
+            if ($timer < 0) {
+                console.log("Countdown was Expired")
+            }
+
+        }, 1000);
     };
+
 
     return [
         isSelected && (
@@ -127,6 +162,7 @@ const edit = props => {
                                 currentDate={dateTime}
                                 onChange={(val) => onUpdateDate(val)}
                                 is12Hour={true}
+
                             />
                         </div>
                     </PanelBody>
@@ -269,17 +305,17 @@ const edit = props => {
                                 allowReset={true}
                             />
                         </div>
-                        <div  className="premium-control-toggle">
+                        <div className="premium-control-toggle">
                             <PremiumTypo
                                 components={["size", "weight", "spacing", "line"]}
                                 size={digitsSize}
                                 weight={digitsWeight}
                                 spacing={digitsLetterSpacing}
                                 line={digitsLineHeight}
-                                onChangeSize={newSize => setAttributes({ digitsSize: newSize || "0"})}
-                                onChangeWeight={newWeight => setAttributes({ digitsWeight: newWeight || "normal"}) }
-                                onChangeSpacing={newValue => setAttributes({ digitsLetterSpacing: newValue || "0"}) }
-                                onChangeLine={newValue => setAttributes({ digitsLineHeight: newValue || "inherit"})}
+                                onChangeSize={newSize => setAttributes({ digitsSize: newSize || "0" })}
+                                onChangeWeight={newWeight => setAttributes({ digitsWeight: newWeight || "normal" })}
+                                onChangeSpacing={newValue => setAttributes({ digitsLetterSpacing: newValue || "0" })}
+                                onChangeLine={newValue => setAttributes({ digitsLineHeight: newValue || "inherit" })}
                             />
                         </div>
                         <div className="premium-control-toggle">
@@ -310,17 +346,17 @@ const edit = props => {
                                 allowReset={true}
                             />
                         </div>
-                        <div  className="premium-control-toggle">
+                        <div className="premium-control-toggle">
                             <PremiumTypo
                                 components={["size", "weight", "spacing", "line"]}
                                 size={unitsSize}
                                 weight={unitsWeight}
                                 spacing={unitsLetterSpacing}
                                 line={unitsLineHeight}
-                                onChangeSize={newSize => setAttributes({ unitsSize: newSize || "0"})}
-                                onChangeWeight={newWeight => setAttributes({ unitsWeight: newWeight || "normal"}) }
-                                onChangeSpacing={newValue => setAttributes({ unitsLetterSpacing: newValue || "0"}) }
-                                onChangeLine={newValue => setAttributes({ unitsLineHeight: newValue || "inherit"})}
+                                onChangeSize={newSize => setAttributes({ unitsSize: newSize || "0" })}
+                                onChangeWeight={newWeight => setAttributes({ unitsWeight: newWeight || "normal" })}
+                                onChangeSpacing={newValue => setAttributes({ unitsLetterSpacing: newValue || "0" })}
+                                onChangeLine={newValue => setAttributes({ unitsLineHeight: newValue || "inherit" })}
                             />
                         </div>
                         <div className="premium-control-toggle">
@@ -356,7 +392,7 @@ const edit = props => {
             className={`${mainClasses}__wrap`}
             style={{ justifyContent: align || "center" }}
         >
-            <div id={`countdown__${id}  container`} className={`premium-countdown__container countdown down `} data-date={dateTime}>
+            <div id={`container__${id}`} className={`premium-countdown__container countdown down `} data-date={dateTime}>
                 <span className={`premium-countdown__items `}>
 
                     {monthsCheck && (
@@ -379,7 +415,8 @@ const edit = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius: borderRadius || "0"
+                                        borderRadius: borderRadius || "0",
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
 
                                     }}
                                 >
@@ -393,7 +430,8 @@ const edit = props => {
                                         fontWeight: unitsWeight || "normal",
                                         letterSpacing: unitsLetterSpacing || "0",
                                         lineHeight: unitsLineHeight || "inherit",
-                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     {monthLabel}
@@ -421,7 +459,8 @@ const edit = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius: borderRadius || "0"
+                                        borderRadius: borderRadius || "0",
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     00
@@ -434,7 +473,8 @@ const edit = props => {
                                         fontWeight: unitsWeight || "normal",
                                         letterSpacing: unitsLetterSpacing || "0",
                                         lineHeight: unitsLineHeight || "inherit",
-                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     {weekLabel}
@@ -462,7 +502,8 @@ const edit = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius: borderRadius || "0"
+                                        borderRadius: borderRadius || "0",
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     00
@@ -475,7 +516,8 @@ const edit = props => {
                                         fontWeight: unitsWeight || "normal",
                                         letterSpacing: unitsLetterSpacing || "0",
                                         lineHeight: unitsLineHeight || "inherit",
-                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     {dayLabel}
@@ -503,7 +545,8 @@ const edit = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius: borderRadius || "0"
+                                        borderRadius: borderRadius || "0",
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     00
@@ -516,7 +559,8 @@ const edit = props => {
                                         fontWeight: unitsWeight || "normal",
                                         letterSpacing: unitsLetterSpacing || "0",
                                         lineHeight: unitsLineHeight || "inherit",
-                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     {hourLabel}
@@ -544,7 +588,8 @@ const edit = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius: borderRadius || "0"
+                                        borderRadius: borderRadius || "0",
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     00
@@ -557,7 +602,8 @@ const edit = props => {
                                         fontWeight: unitsWeight || "normal",
                                         letterSpacing: unitsLetterSpacing || "0",
                                         lineHeight: unitsLineHeight || "inherit",
-                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     {minuteLabel}
@@ -585,7 +631,8 @@ const edit = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius: borderRadius || "0"
+                                        borderRadius: borderRadius || "0",
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     00
@@ -598,7 +645,8 @@ const edit = props => {
                                         fontWeight: unitsWeight || "normal",
                                         letterSpacing: unitsLetterSpacing || "0",
                                         lineHeight: unitsLineHeight || "inherit",
-                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     {secondLabel}

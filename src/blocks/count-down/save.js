@@ -52,7 +52,7 @@ const save = props => {
             className={`${mainClasses}__wrap`}
             style={{ justifyContent: align || "center" }}
         >
-            <div id={`countdown__${id}  container`} className={`premium-countdown__container countdown down `} data-date={dateTime}>
+            <div id={`container`} className={`premium-countdown__container countdown down `} data-date={dateTime}>
                 <span className={`premium-countdown__items `}>
 
                     {monthsCheck && (
@@ -75,12 +75,13 @@ const save = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius: borderRadius || "0"
+                                        borderRadius: borderRadius || "0",
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
 
                                     }}
                                 >
                                     00
-                            </span>
+                                </span>
                                 <span className={`premium-countdown__period premium-countdown__units-months`}
                                     style={{
                                         display: contentDisplay || "block",
@@ -89,7 +90,8 @@ const save = props => {
                                         fontWeight: unitsWeight || "normal",
                                         letterSpacing: unitsLetterSpacing || "0",
                                         lineHeight: unitsLineHeight || "inherit",
-                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     {monthLabel}
@@ -117,11 +119,12 @@ const save = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius: borderRadius || "0"
+                                        borderRadius: borderRadius || "0",
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     00
-                            </span>
+                                </span>
                                 <span className={`premium-countdown__period premium-countdown__units-weeks`}
                                     style={{
                                         display: contentDisplay || "block",
@@ -130,7 +133,8 @@ const save = props => {
                                         fontWeight: unitsWeight || "normal",
                                         letterSpacing: unitsLetterSpacing || "0",
                                         lineHeight: unitsLineHeight || "inherit",
-                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     {weekLabel}
@@ -158,11 +162,12 @@ const save = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius: borderRadius || "0"
+                                        borderRadius: borderRadius || "0",
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     00
-                            </span>
+                                </span>
                                 <span className={`premium-countdown__period premium-countdown__units-days`}
                                     style={{
                                         display: contentDisplay || "block",
@@ -171,7 +176,8 @@ const save = props => {
                                         fontWeight: unitsWeight || "normal",
                                         letterSpacing: unitsLetterSpacing || "0",
                                         lineHeight: unitsLineHeight || "inherit",
-                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     {dayLabel}
@@ -199,11 +205,12 @@ const save = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius: borderRadius || "0"
+                                        borderRadius: borderRadius || "0",
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     00
-                            </span>
+                                </span>
                                 <span className={`premium-countdown__period premium-countdown__units-hours`}
                                     style={{
                                         display: contentDisplay || "block",
@@ -212,7 +219,8 @@ const save = props => {
                                         fontWeight: unitsWeight || "normal",
                                         letterSpacing: unitsLetterSpacing || "0",
                                         lineHeight: unitsLineHeight || "inherit",
-                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     {hourLabel}
@@ -240,11 +248,12 @@ const save = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius: borderRadius || "0"
+                                        borderRadius: borderRadius || "0",
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     00
-                            </span>
+                                </span>
                                 <span className={`premium-countdown__period premium-countdown__units-minutes`}
                                     style={{
                                         display: contentDisplay || "block",
@@ -253,7 +262,8 @@ const save = props => {
                                         fontWeight: unitsWeight || "normal",
                                         letterSpacing: unitsLetterSpacing || "0",
                                         lineHeight: unitsLineHeight || "inherit",
-                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     {minuteLabel}
@@ -281,11 +291,12 @@ const save = props => {
                                         borderStyle: borderType || "none",
                                         borderWidth: borderWidth || "0",
                                         borderColor: borderColor || "#000",
-                                        borderRadius: borderRadius || "0"
+                                        borderRadius: borderRadius || "0",
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     00
-                            </span>
+                                </span>
                                 <span className={`premium-countdown__period premium-countdown__units-seconds`}
                                     style={{
                                         display: contentDisplay || "block",
@@ -294,7 +305,8 @@ const save = props => {
                                         fontWeight: unitsWeight || "normal",
                                         letterSpacing: unitsLetterSpacing || "0",
                                         lineHeight: unitsLineHeight || "inherit",
-                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
+                                        margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                        padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                     }}
                                 >
                                     {secondLabel}

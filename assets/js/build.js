@@ -42988,7 +42988,7 @@ var save = function save(props) {
         },
         wp.element.createElement(
             "div",
-            { id: "countdown__" + id + "  container", className: "premium-countdown__container countdown down ", "data-date": dateTime },
+            { id: "container", className: "premium-countdown__container countdown down ", "data-date": dateTime },
             wp.element.createElement(
                 "span",
                 { className: "premium-countdown__items " },
@@ -43017,7 +43017,8 @@ var save = function save(props) {
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0"
+                                    borderRadius: borderRadius || "0",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
 
                                 }
                             },
@@ -43033,7 +43034,8 @@ var save = function save(props) {
                                     fontWeight: unitsWeight || "normal",
                                     letterSpacing: unitsLetterSpacing || "0",
                                     lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             monthLabel
@@ -43065,7 +43067,8 @@ var save = function save(props) {
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0"
+                                    borderRadius: borderRadius || "0",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             "00"
@@ -43080,7 +43083,8 @@ var save = function save(props) {
                                     fontWeight: unitsWeight || "normal",
                                     letterSpacing: unitsLetterSpacing || "0",
                                     lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             weekLabel
@@ -43112,7 +43116,8 @@ var save = function save(props) {
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0"
+                                    borderRadius: borderRadius || "0",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             "00"
@@ -43127,7 +43132,8 @@ var save = function save(props) {
                                     fontWeight: unitsWeight || "normal",
                                     letterSpacing: unitsLetterSpacing || "0",
                                     lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             dayLabel
@@ -43159,7 +43165,8 @@ var save = function save(props) {
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0"
+                                    borderRadius: borderRadius || "0",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             "00"
@@ -43174,7 +43181,8 @@ var save = function save(props) {
                                     fontWeight: unitsWeight || "normal",
                                     letterSpacing: unitsLetterSpacing || "0",
                                     lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             hourLabel
@@ -43206,7 +43214,8 @@ var save = function save(props) {
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0"
+                                    borderRadius: borderRadius || "0",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             "00"
@@ -43221,7 +43230,8 @@ var save = function save(props) {
                                     fontWeight: unitsWeight || "normal",
                                     letterSpacing: unitsLetterSpacing || "0",
                                     lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             minuteLabel
@@ -43253,7 +43263,8 @@ var save = function save(props) {
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0"
+                                    borderRadius: borderRadius || "0",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             "00"
@@ -43268,7 +43279,8 @@ var save = function save(props) {
                                     fontWeight: unitsWeight || "normal",
                                     letterSpacing: unitsLetterSpacing || "0",
                                     lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             secondLabel
@@ -43393,6 +43405,39 @@ var edit = function edit(props) {
     var onUpdateDate = function onUpdateDate(dateTime) {
         var newDateTime = moment(dateTime).format('YYYY-MM-DD HH:mm:ss');
         setAttributes({ dateTime: newDateTime });
+
+        var $block = $("#container__" + id);
+        console.log($block);
+        var $date = $block.attr("data-date");
+        console.log($date);
+        var $new = new Date($date);
+        console.log($new);
+        var $interval = setInterval(function () {
+            // var $new = new Date('2019-10-24 21:22:00'.replace(' ', 'T'));
+            // var $new = new Date(`$date`.replace(' ', 'T'))
+            // var $new = moment($date, 'YYYY-MM-DD HH:mm:ss').toDate();
+            // var $r = $new.toString('dddd, MMMM ,yyyy');
+            var $now = new Date().getTime();
+            var $timer = $new - $now;
+            var $oneDay = 24 * 60 * 60 * 1000;
+            var $days = Math.floor($timer / $oneDay);
+            var $weeks = Math.floor($days / 7);
+            var $months = Math.floor($weeks / 4);
+            var $hours = Math.floor($timer % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+            var $minutes = Math.floor($timer % (1000 * 60 * 60) / (1000 * 60));
+            var $seconds = Math.floor($timer % (1000 * 60) / 1000);
+
+            $("#months").text($months || "0");
+            $("#weeks").text($weeks || "0");
+            $("#days").text($days || "0");
+            $("#hours").text($hours || "0");
+            $("#minutes").text($minutes || "0");
+            $("#seconds").text($seconds || "0");
+
+            if ($timer < 0) {
+                console.log("Countdown was Expired");
+            }
+        }, 1000);
     };
 
     return [isSelected && wp.element.createElement(
@@ -43429,6 +43474,7 @@ var edit = function edit(props) {
                             return onUpdateDate(val);
                         },
                         is12Hour: true
+
                     })
                 )
             ),
@@ -43757,7 +43803,7 @@ var edit = function edit(props) {
         },
         wp.element.createElement(
             "div",
-            { id: "countdown__" + id + "  container", className: "premium-countdown__container countdown down ", "data-date": dateTime },
+            { id: "container__" + id, className: "premium-countdown__container countdown down ", "data-date": dateTime },
             wp.element.createElement(
                 "span",
                 { className: "premium-countdown__items " },
@@ -43786,7 +43832,8 @@ var edit = function edit(props) {
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0"
+                                    borderRadius: borderRadius || "0",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
 
                                 }
                             },
@@ -43802,7 +43849,8 @@ var edit = function edit(props) {
                                     fontWeight: unitsWeight || "normal",
                                     letterSpacing: unitsLetterSpacing || "0",
                                     lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             monthLabel
@@ -43834,7 +43882,8 @@ var edit = function edit(props) {
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0"
+                                    borderRadius: borderRadius || "0",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             "00"
@@ -43849,7 +43898,8 @@ var edit = function edit(props) {
                                     fontWeight: unitsWeight || "normal",
                                     letterSpacing: unitsLetterSpacing || "0",
                                     lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             weekLabel
@@ -43881,7 +43931,8 @@ var edit = function edit(props) {
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0"
+                                    borderRadius: borderRadius || "0",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             "00"
@@ -43896,7 +43947,8 @@ var edit = function edit(props) {
                                     fontWeight: unitsWeight || "normal",
                                     letterSpacing: unitsLetterSpacing || "0",
                                     lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             dayLabel
@@ -43928,7 +43980,8 @@ var edit = function edit(props) {
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0"
+                                    borderRadius: borderRadius || "0",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             "00"
@@ -43943,7 +43996,8 @@ var edit = function edit(props) {
                                     fontWeight: unitsWeight || "normal",
                                     letterSpacing: unitsLetterSpacing || "0",
                                     lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             hourLabel
@@ -43975,7 +44029,8 @@ var edit = function edit(props) {
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0"
+                                    borderRadius: borderRadius || "0",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             "00"
@@ -43990,7 +44045,8 @@ var edit = function edit(props) {
                                     fontWeight: unitsWeight || "normal",
                                     letterSpacing: unitsLetterSpacing || "0",
                                     lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             minuteLabel
@@ -44022,7 +44078,8 @@ var edit = function edit(props) {
                                     borderStyle: borderType || "none",
                                     borderWidth: borderWidth || "0",
                                     borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0"
+                                    borderRadius: borderRadius || "0",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             "00"
@@ -44037,7 +44094,8 @@ var edit = function edit(props) {
                                     fontWeight: unitsWeight || "normal",
                                     letterSpacing: unitsLetterSpacing || "0",
                                     lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px"
+                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
                                 }
                             },
                             secondLabel

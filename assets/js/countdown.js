@@ -79,47 +79,139 @@
 // });
 
 
-document.addEventListener("DOMContentLoaded", function () {
+// document.addEventListener("DOMContentLoaded", function () {
 
-  var countdowns = document.getElementById("container");
-  var date = document.getElementById("container").getAttribute("data-date");
-  
-  var timee = new Date(date);
-  console.log(timee )
+//   var countdowns = document.getElementById("container");
+//   var date = document.getElementById("container").getAttribute("data-date");
 
-  //  var deadline = new Date("Oct 11, 2019 15:37:25").getTime();
-  var x = setInterval(function () {
-    var now = new Date().getTime();
-    var t = timee - now;
-    var oneDay = 24 * 60 * 60 * 1000;
-    var days = Math.floor(t / oneDay);
-    var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((t % (1000 * 60)) / 1000);
-    // document.getElementById("demo").innerHTML = days + "d "
-    //   + hours + "h " + minutes + "m " + seconds + "s ";
+//   var timee = new Date(date);
+//   console.log(timee)
 
-    // var dddd = document.getElementById("demo").getAttribute("data-date");
-    // console.log(dddd + "this is my dddd")
-    // var time = new Date(dddd).getTime();
-    // console.log(time + "this is my time")
+//   var x = setInterval(function () {
+//     var now = new Date().getTime();
+//     var t = timee - now;
+//     var oneDay = 24 * 60 * 60 * 1000;
+//     var days = Math.floor(t / oneDay);
+//     var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+//     var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+//     var seconds = Math.floor((t % (1000 * 60)) / 1000);
 
-    document.getElementById("days").innerHTML = (days || "0") + "d ";
-    document.getElementById("hours").innerHTML = (hours || "0") + "h ";
-    document.getElementById("minutes").innerHTML = (minutes || "0") + "m ";
-    document.getElementById("seconds").innerHTML = (seconds || "0") + "s ";
+//     document.getElementById("days").innerHTML = (days || "0") + "d ";
+//     document.getElementById("hours").innerHTML = (hours || "0") + "h ";
+//     document.getElementById("minutes").innerHTML = (minutes || "0") + "m ";
+//     document.getElementById("seconds").innerHTML = (seconds || "0") + "s ";
+
+//     if (t < 0) {
+//       clearInterval(x);
+//       console.log("expired")
+//     }
+//   }, 1000);
+
+// });
+
+
+/**************** Jquery Select *************/
+
+// jQuery(document).ready(function ($) {
+//   setTimeout(() => {
+
+//     var $countdowns = $(".premium-countdown__wrap");
+//     console.log($countdowns);
+//     if (!$countdowns) return;
+
+//     for (var $i = 0; $i < $countdowns.length; $i++) {
+//       var $countdown = $countdowns[$i];
+//       console.log($countdown)
+//       var $counter = function ($countdown) {
+
+//         // var $dateNode = $countdown.getElementsByClassName("premium-countdown__container");
+//         // console.log($dateNode)
+//         // var $date = $dateNode[0].getAttribute("data-date")
+
+
+//         var $block = $("#container");
+//         console.log($block);
+//         var $date = $block.attr("data-date")
+//         console.log($date);
+//         var $new = new Date($date);
+//         console.log($new);
+
+//         var $now = new Date().getTime();
+//         var $timer = $new - $now;
+//         var $oneDay = 24 * 60 * 60 * 1000;
+//         var $days = Math.floor($timer / $oneDay);
+//         var $weeks = Math.floor($days / 7);
+//         var $months = Math.floor($weeks / 4);
+//         var $hours = Math.floor(($timer % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+//         var $minutes = Math.floor(($timer % (1000 * 60 * 60)) / (1000 * 60));
+//         var $seconds = Math.floor(($timer % (1000 * 60)) / 1000);
+
+//         $("#months").text($months || "0");
+//         $("#weeks").text($weeks || "0");
+//         $("#days").text($days || "0");
+//         $("#hours").text($hours || "0");
+//         $("#minutes").text($minutes || "0");
+//         $("#seconds").text($seconds || "0");
+
+//         if ($timer < 0) {
+//           console.log("Countdown was Expired")
+//         }
+
+//       }// end counter
+
+//       var $interval = setInterval(function() {
+//         $counter($countdown);
+//       }, 1000);
+
+//     } //end for loop
+
+//   }, 1000);
+// });
+
+
+        // var $new = new Date('2019-10-24 21:22:00'.replace(' ', 'T'));
+        // var $new = new Date(`$date`.replace(' ', 'T'))
+        // var $new = moment($date, 'YYYY-MM-DD HH:mm:ss').toDate();
+        // var $r = $new.toString('dddd, MMMM ,yyyy');
 
 
 
-    if (t < 0) {
-      clearInterval(x);
-      // document.getElementById("demo").innerHTML = "EXPIRED";
-      console.log("expired")
-    }
-  }, 1000);
+// jQuery(document).ready(function ($) {
+//   setTimeout(() => {
 
-});
+//       var $block = $(`#container`);
+//       console.log($block);
+//       var $date = $block.attr("data-date")
+//       console.log($date);
+//       var $new = new Date($date);
+//       console.log($new);
+//       var $interval = setInterval(function () {
+//           // var $new = new Date('2019-10-24 21:22:00'.replace(' ', 'T'));
+//           // var $new = new Date(`$date`.replace(' ', 'T'))
+//           // var $new = moment($date, 'YYYY-MM-DD HH:mm:ss').toDate();
+//           // var $r = $new.toString('dddd, MMMM ,yyyy');
+//           var $now = new Date().getTime();
+//           var $timer = $new - $now;
+//           var $oneDay = 24 * 60 * 60 * 1000;
+//           var $days = Math.floor($timer / $oneDay);
+//           var $weeks = Math.floor($days / 7);
+//           var $months = Math.floor($weeks / 4);
+//           var $hours = Math.floor(($timer % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+//           var $minutes = Math.floor(($timer % (1000 * 60 * 60)) / (1000 * 60));
+//           var $seconds = Math.floor(($timer % (1000 * 60)) / 1000);
 
-// var $date = $("#container").data("date");
-// console.log($date);
-// var $timee = new Date($date);
+//           $("#months").text($months || "0");
+//           $("#weeks").text($weeks || "0");
+//           $("#days").text($days || "0");
+//           $("#hours").text($hours || "0");
+//           $("#minutes").text($minutes || "0");
+//           $("#seconds").text($seconds || "0");
+
+//           if ($timer < 0) {
+//               console.log("Countdown was Expired")
+//           }
+
+//       }, 1000);
+
+//   }, 1000);
+// });
