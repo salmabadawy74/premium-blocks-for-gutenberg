@@ -28,6 +28,7 @@ const { __ } = wp.i18n;
 let isBoxUpdated = null;
 
 class edit extends Component {
+  
   constructor() {
     super(...arguments);
 

@@ -42982,13 +42982,13 @@ var save = function save(props) {
     return wp.element.createElement(
         "div",
         {
-            id: "premium-countdown__" + id,
+            id: id,
             className: mainClasses + "__wrap",
             style: { justifyContent: align || "center" }
         },
         wp.element.createElement(
             "div",
-            { id: "container__" + id, className: "premium-countdown__container countdown down ", "data-date": dateTime },
+            { id: "container__" + id + "p", className: "premium-countdown__container countdown down ", "data-date": dateTime },
             wp.element.createElement(
                 "span",
                 { className: "premium-countdown__items " },
@@ -43304,12 +43304,21 @@ var save = function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(17);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
 
 
 var __ = wp.i18n.__;
+var Component = wp.element.Component;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     DateTimePicker = _wp$components.DateTimePicker,
@@ -43324,788 +43333,836 @@ var _wp$editor = wp.editor,
     ColorPalette = _wp$editor.ColorPalette;
 
 
-var AlLIGNMENT = [{
-    icon: 'editor-alignleft',
-    title: __('Align Left'),
-    align: 'flex-start'
-}, {
-    icon: 'editor-aligncenter',
-    title: __('Align Center'),
-    align: 'center'
-}, {
-    icon: 'editor-alignright',
-    title: __('Align Right'),
-    align: 'flex-end'
-}];
+var isBoxUpdated = null;
 
-var TIMEZONE_OPTIONS = [{
-    label: __("Wordpress Default"),
-    value: ""
-}, {
-    label: __("User Local Time"),
-    value: ""
-}];
+var edit = function (_Component) {
+    _inherits(edit, _Component);
 
-var DISPLAY_STYLES = [{
-    label: __("Block"),
-    value: "block"
-}, {
-    label: __("Inline Block"),
-    value: "inline-block"
-}];
+    function edit() {
+        _classCallCheck(this, edit);
 
-var edit = function edit(props) {
-    var isSelected = props.isSelected,
-        setAttributes = props.setAttributes,
-        className = props.className,
-        blockID = props.clientId;
-    var _props$attributes = props.attributes,
-        id = _props$attributes.id,
-        align = _props$attributes.align,
-        dateTime = _props$attributes.dateTime,
-        monthsCheck = _props$attributes.monthsCheck,
-        weeksCheck = _props$attributes.weeksCheck,
-        daysCheck = _props$attributes.daysCheck,
-        hoursCheck = _props$attributes.hoursCheck,
-        minutesCheck = _props$attributes.minutesCheck,
-        secondsCheck = _props$attributes.secondsCheck,
-        monthLabel = _props$attributes.monthLabel,
-        weekLabel = _props$attributes.weekLabel,
-        dayLabel = _props$attributes.dayLabel,
-        hourLabel = _props$attributes.hourLabel,
-        minuteLabel = _props$attributes.minuteLabel,
-        secondLabel = _props$attributes.secondLabel,
-        contentDisplay = _props$attributes.contentDisplay,
-        digitsColor = _props$attributes.digitsColor,
-        digitsBgColor = _props$attributes.digitsBgColor,
-        digitsSize = _props$attributes.digitsSize,
-        digitsWeight = _props$attributes.digitsWeight,
-        digitsLetterSpacing = _props$attributes.digitsLetterSpacing,
-        digitsLineHeight = _props$attributes.digitsLineHeight,
-        borderType = _props$attributes.borderType,
-        borderWidth = _props$attributes.borderWidth,
-        borderColor = _props$attributes.borderColor,
-        borderRadius = _props$attributes.borderRadius,
-        unitsColor = _props$attributes.unitsColor,
-        unitsSize = _props$attributes.unitsSize,
-        unitsWeight = _props$attributes.unitsWeight,
-        unitsLetterSpacing = _props$attributes.unitsLetterSpacing,
-        unitsLineHeight = _props$attributes.unitsLineHeight,
-        marginTop = _props$attributes.marginTop,
-        marginRight = _props$attributes.marginRight,
-        marginBottom = _props$attributes.marginBottom,
-        marginLeft = _props$attributes.marginLeft,
-        unitsSpace = _props$attributes.unitsSpace;
+        var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+
+        _this.onChangeDate = _this.onChangeDate.bind(_this);
+        return _this;
+    }
+
+    _createClass(edit, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var _props = this.props,
+                attributes = _props.attributes,
+                setAttributes = _props.setAttributes,
+                clientId = _props.clientId;
 
 
-    setAttributes({ id: blockID });
-
-    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-countdown");
-
-    var onUpdateDate = function onUpdateDate(dateTime) {
-        var newDateTime = moment(dateTime).format('YYYY-MM-DD HH:mm:ss');
-        setAttributes({ dateTime: newDateTime });
-
-        var $block = $("#container__" + id);
-        console.log($block);
-        var $date = $block.attr("data-date");
-        console.log($date);
-        var $new = new Date($date);
-        console.log($new);
-        var $interval = setInterval(function () {
-            // var $new = new Date('2019-10-24 21:22:00'.replace(' ', 'T'));
-            // var $new = new Date(`$date`.replace(' ', 'T'))
-            // var $new = moment($date, 'YYYY-MM-DD HH:mm:ss').toDate();
-            // var $r = $new.toString('dddd, MMMM ,yyyy');
-            var $now = new Date().getTime();
-            var $timer = $new - $now;
-            var $oneDay = 24 * 60 * 60 * 1000;
-            var $days = Math.floor($timer / $oneDay);
-            var $weeks = Math.floor($days / 7);
-            var $months = Math.floor($weeks / 4);
-            var $hours = Math.floor($timer % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
-            var $minutes = Math.floor($timer % (1000 * 60 * 60) / (1000 * 60));
-            var $seconds = Math.floor($timer % (1000 * 60) / 1000);
-
-            $("#months").text($months || "0");
-            $("#weeks").text($weeks || "0");
-            $("#days").text($days || "0");
-            $("#hours").text($hours || "0");
-            $("#minutes").text($minutes || "0");
-            $("#seconds").text($seconds || "0");
-
-            if ($timer < 0) {
-                console.log("Countdown was Expired");
+            if (!attributes.id) {
+                setAttributes({ id: "premium-countdown__" + clientId });
             }
-        }, 1000);
-    };
+            this.onChangeDate();
+        }
+    }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate() {
+            clearTimeout(isBoxUpdated);
+            isBoxUpdated = setTimeout(this.onChangeDate, 500);
+        }
+    }, {
+        key: "onChangeDate",
+        value: function onChangeDate() {
+            var id = this.props.attributes.id;
 
-    return [isSelected && wp.element.createElement(
-        "div",
-        null,
-        wp.element.createElement(
-            BlockControls,
-            { key: "controls" },
-            wp.element.createElement(AlignmentToolbar, {
-                label: __('Alignment'),
-                value: align,
-                onChange: function onChange(newAlign) {
-                    return setAttributes({ align: newAlign || "center" });
-                },
-                alignmentControls: AlLIGNMENT
-            })
-        ),
-        wp.element.createElement(
-            InspectorControls,
-            { key: "inspector" },
-            wp.element.createElement(
-                PanelBody,
-                {
-                    title: __("Due Date"),
-                    className: "premium-panel-body",
-                    initialOpen: true
-                },
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(DateTimePicker, {
-                        currentDate: dateTime,
-                        onChange: function onChange(val) {
-                            return onUpdateDate(val);
-                        },
-                        is12Hour: true
+            if (!id) return null;
 
-                    })
-                )
-            ),
-            wp.element.createElement(
-                PanelBody,
-                {
-                    title: __("Time Units"),
-                    className: "premium-panel-body",
-                    initialOpen: false
-                },
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(ToggleControl, {
-                        label: __("Show Months"),
-                        checked: monthsCheck,
-                        onChange: function onChange(newCheck) {
-                            return setAttributes({ monthsCheck: newCheck });
-                        }
-                    }),
-                    wp.element.createElement(ToggleControl, {
-                        label: __("Show Weeks"),
-                        checked: weeksCheck,
-                        onChange: function onChange(newCheck) {
-                            return setAttributes({ weeksCheck: newCheck });
-                        }
-                    }),
-                    wp.element.createElement(ToggleControl, {
-                        label: __("Show Days"),
-                        checked: daysCheck,
-                        onChange: function onChange(newCheck) {
-                            return setAttributes({ daysCheck: newCheck });
-                        }
-                    }),
-                    wp.element.createElement(ToggleControl, {
-                        label: __("Show Hours"),
-                        checked: hoursCheck,
-                        onChange: function onChange(newCheck) {
-                            return setAttributes({ hoursCheck: newCheck });
-                        }
-                    }),
-                    wp.element.createElement(ToggleControl, {
-                        label: __("Show Minutes"),
-                        checked: minutesCheck,
-                        onChange: function onChange(newCheck) {
-                            return setAttributes({ minutesCheck: newCheck });
-                        }
-                    }),
-                    wp.element.createElement(ToggleControl, {
-                        label: __("Show Seconds"),
-                        checked: secondsCheck,
-                        onChange: function onChange(newCheck) {
-                            return setAttributes({ secondsCheck: newCheck });
-                        }
-                    })
-                ),
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(SelectControl, {
-                        label: __("Content Display Style"),
-                        value: contentDisplay,
-                        options: DISPLAY_STYLES,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ contentDisplay: newValue || "block" });
-                        }
-                    })
-                )
-            ),
-            wp.element.createElement(
-                PanelBody,
-                {
-                    title: __("Units Labels"),
-                    className: "premium-panel-body",
-                    initialOpen: false
-                },
-                monthsCheck && wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(TextControl, {
-                        className: "premium-text-control",
-                        label: __("Months"),
-                        value: monthLabel,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ monthLabel: newValue });
-                        }
-                    })
-                ),
-                weeksCheck && wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(TextControl, {
-                        className: "premium-text-control",
-                        label: __("Weeks"),
-                        value: weekLabel,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ weekLabel: newValue });
-                        }
-                    })
-                ),
-                daysCheck && wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(TextControl, {
-                        className: "premium-text-control",
-                        label: __("Days"),
-                        value: dayLabel,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ dayLabel: newValue });
-                        }
-                    })
-                ),
-                hoursCheck && wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(TextControl, {
-                        className: "premium-text-control",
-                        label: __("Hours"),
-                        value: hourLabel,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ hourLabel: newValue });
-                        }
-                    })
-                ),
-                minutesCheck && wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(TextControl, {
-                        className: "premium-text-control",
-                        label: __("Minutes"),
-                        value: minuteLabel,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ minuteLabel: newValue });
-                        }
-                    })
-                ),
-                secondsCheck && wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(TextControl, {
-                        className: "premium-text-control",
-                        label: __("Seconds"),
-                        value: secondLabel,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ secondLabel: newValue });
-                        }
-                    })
-                )
-            ),
-            wp.element.createElement(
-                PanelBody,
-                {
-                    title: __("Digits Style"),
-                    className: "premium-panel-body",
-                    initialOpen: false
-                },
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(
-                        "p",
-                        { className: "premium-editor-paragraph" },
-                        __("Color")
-                    ),
-                    wp.element.createElement(ColorPalette, {
-                        value: digitsColor,
-                        onChange: function onChange(newColor) {
-                            return setAttributes({ digitsColor: newColor || "#000" });
-                        },
-                        allowReset: true
-                    })
-                ),
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(
-                        "p",
-                        { className: "premium-editor-paragraph" },
-                        __("Background Color")
-                    ),
-                    wp.element.createElement(ColorPalette, {
-                        value: digitsBgColor,
-                        onChange: function onChange(newColor) {
-                            return setAttributes({ digitsBgColor: newColor || "transparent" });
-                        },
-                        allowReset: true
-                    })
-                ),
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
-                        components: ["size", "weight", "spacing", "line"],
-                        size: digitsSize,
-                        weight: digitsWeight,
-                        spacing: digitsLetterSpacing,
-                        line: digitsLineHeight,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ digitsSize: newSize || "0" });
-                        },
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ digitsWeight: newWeight || "normal" });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ digitsLetterSpacing: newValue || "0" });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({ digitsLineHeight: newValue || "inherit" });
-                        }
-                    })
-                ),
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
-                        borderType: borderType,
-                        borderWidth: borderWidth,
-                        borderColor: borderColor,
-                        borderRadius: borderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return setAttributes({ borderType: newType || "none" });
-                        },
-                        onChangeWidth: function onChangeWidth(newWidth) {
-                            return setAttributes({ borderWidth: newWidth || "0" });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ borderColor: colorValue.hex || "#000" });
-                        },
-                        onChangeRadius: function onChangeRadius(newRadius) {
-                            return setAttributes({ borderRadius: newRadius || "0" });
-                        }
-                    })
-                )
-            ),
-            wp.element.createElement(
-                PanelBody,
-                {
-                    title: __("Units Style"),
-                    className: "premium-panel-body",
-                    initialOpen: false
-                },
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(
-                        "p",
-                        { className: "premium-editor-paragraph" },
-                        __("Color")
-                    ),
-                    wp.element.createElement(ColorPalette, {
-                        value: unitsColor,
-                        onChange: function onChange(newColor) {
-                            return setAttributes({ unitsColor: newColor || "#000" });
-                        },
-                        allowReset: true
-                    })
-                ),
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
-                        components: ["size", "weight", "spacing", "line"],
-                        size: unitsSize,
-                        weight: unitsWeight,
-                        spacing: unitsLetterSpacing,
-                        line: unitsLineHeight,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ unitsSize: newSize || "0" });
-                        },
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ unitsWeight: newWeight || "normal" });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ unitsLetterSpacing: newValue || "0" });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({ unitsLineHeight: newValue || "inherit" });
-                        }
-                    })
-                ),
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_margin__["a" /* default */], {
-                        directions: ["all"],
-                        marginTop: marginTop,
-                        marginRight: marginRight,
-                        marginBottom: marginBottom,
-                        marginLeft: marginLeft,
-                        onChangeMarTop: function onChangeMarTop(newValue) {
-                            return setAttributes({ marginTop: newValue || "0" });
-                        },
-                        onChangeMarRight: function onChangeMarRight(newValue) {
-                            return setAttributes({ marginRight: newValue || "0" });
-                        },
-                        onChangeMarBottom: function onChangeMarBottom(newValue) {
-                            return setAttributes({ marginBottom: newValue || "0" });
-                        },
-                        onChangeMarLeft: function onChangeMarLeft(newValue) {
-                            return setAttributes({ marginLeft: newValue || "0" });
-                        }
-                    })
-                ),
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-control-toggle" },
-                    wp.element.createElement(RangeControl, {
-                        label: __("Spacing Between"),
-                        value: unitsSpace,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ unitsSpace: newValue || "0" });
-                        },
-                        initialPosition: 10,
-                        min: 0,
-                        max: 200
-                    })
-                )
-            )
-        )
-    ), wp.element.createElement(
-        "div",
-        {
-            id: "premium-countdown__" + id,
-            className: mainClasses + "__wrap",
-            style: { justifyContent: align || "center" }
-        },
-        wp.element.createElement(
-            "div",
-            { id: "container__" + id, className: "premium-countdown__container countdown down ", "data-date": dateTime },
-            wp.element.createElement(
-                "span",
-                { className: "premium-countdown__items " },
-                monthsCheck && wp.element.createElement(
-                    "span",
-                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
-                    wp.element.createElement(
-                        "span",
-                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
-                            style: {
-                                display: contentDisplay === "inline-block" ? "flex" : "block",
-                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
-                            }
-                        },
-                        wp.element.createElement(
-                            "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-months", id: "months",
-                                style: {
-                                    display: contentDisplay || "block",
-                                    color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent",
-                                    fontSize: digitsSize || "0",
-                                    fontWeight: digitsWeight || "normal",
-                                    letterSpacing: digitsLetterSpacing || "0",
-                                    lineHeight: digitsLineHeight || "inherit",
-                                    borderStyle: borderType || "none",
-                                    borderWidth: borderWidth || "0",
-                                    borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0",
-                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+            var block = document.getElementById("container__" + id);
+            console.log(block);
 
-                                }
-                            },
-                            "00"
-                        ),
-                        wp.element.createElement(
-                            "span",
-                            { className: "premium-countdown__period premium-countdown__units-months",
-                                style: {
-                                    display: contentDisplay || "block",
-                                    color: unitsColor || "#000",
-                                    fontSize: unitsSize || "0",
-                                    fontWeight: unitsWeight || "normal",
-                                    letterSpacing: unitsLetterSpacing || "0",
-                                    lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
-                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                }
-                            },
-                            monthLabel
-                        )
-                    )
+            block.addEventListener("change", function () {
+                console.log(id + " clicked");
+                var date = block.getAttribute("data-date");
+                console.log(date);
+                var neww = new Date(date);
+                console.log(neww);
+                var interval = setInterval(function () {
+
+                    var now = new Date().getTime();
+                    var timer = neww - now;
+                    console.log(timer);
+                    var oneDay = 24 * 60 * 60 * 1000;
+                    var days = Math.floor(timer / oneDay);
+                    var weeks = Math.floor(days / 7);
+                    var months = Math.floor(weeks / 4);
+                    var hours = Math.floor(timer % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+                    var minutes = Math.floor(timer % (1000 * 60 * 60) / (1000 * 60));
+                    var seconds = Math.floor(timer % (1000 * 60) / 1000);
+
+                    document.getElementById("months").innerHTML = (months || "0") + "Mo ";
+                    document.getElementById("weeks").innerHTML = (weeeks || "0") + "W ";
+                    document.getElementById("days").innerHTML = (days || "0") + "d ";
+                    document.getElementById("hours").innerHTML = (hours || "0") + "h ";
+                    document.getElementById("minutes").innerHTML = (minutes || "0") + "m ";
+                    document.getElementById("seconds").innerHTML = (seconds || "0") + "s ";
+
+                    if ($timer < 0) {
+                        clearInterval(interval);
+                        alert("Countdown was Expired");
+                    }
+                }, 1000);
+            });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props2 = this.props,
+                isSelected = _props2.isSelected,
+                setAttributes = _props2.setAttributes,
+                className = _props2.className;
+            var _props$attributes = this.props.attributes,
+                id = _props$attributes.id,
+                align = _props$attributes.align,
+                dateTime = _props$attributes.dateTime,
+                monthsCheck = _props$attributes.monthsCheck,
+                weeksCheck = _props$attributes.weeksCheck,
+                daysCheck = _props$attributes.daysCheck,
+                hoursCheck = _props$attributes.hoursCheck,
+                minutesCheck = _props$attributes.minutesCheck,
+                secondsCheck = _props$attributes.secondsCheck,
+                monthLabel = _props$attributes.monthLabel,
+                weekLabel = _props$attributes.weekLabel,
+                dayLabel = _props$attributes.dayLabel,
+                hourLabel = _props$attributes.hourLabel,
+                minuteLabel = _props$attributes.minuteLabel,
+                secondLabel = _props$attributes.secondLabel,
+                contentDisplay = _props$attributes.contentDisplay,
+                digitsColor = _props$attributes.digitsColor,
+                digitsBgColor = _props$attributes.digitsBgColor,
+                digitsSize = _props$attributes.digitsSize,
+                digitsWeight = _props$attributes.digitsWeight,
+                digitsLetterSpacing = _props$attributes.digitsLetterSpacing,
+                digitsLineHeight = _props$attributes.digitsLineHeight,
+                borderType = _props$attributes.borderType,
+                borderWidth = _props$attributes.borderWidth,
+                borderColor = _props$attributes.borderColor,
+                borderRadius = _props$attributes.borderRadius,
+                unitsColor = _props$attributes.unitsColor,
+                unitsSize = _props$attributes.unitsSize,
+                unitsWeight = _props$attributes.unitsWeight,
+                unitsLetterSpacing = _props$attributes.unitsLetterSpacing,
+                unitsLineHeight = _props$attributes.unitsLineHeight,
+                marginTop = _props$attributes.marginTop,
+                marginRight = _props$attributes.marginRight,
+                marginBottom = _props$attributes.marginBottom,
+                marginLeft = _props$attributes.marginLeft,
+                unitsSpace = _props$attributes.unitsSpace;
+
+
+            var AlLIGNMENT = [{
+                icon: 'editor-alignleft',
+                title: __('Align Left'),
+                align: 'flex-start'
+            }, {
+                icon: 'editor-aligncenter',
+                title: __('Align Center'),
+                align: 'center'
+            }, {
+                icon: 'editor-alignright',
+                title: __('Align Right'),
+                align: 'flex-end'
+            }];
+
+            var TIMEZONE_OPTIONS = [{
+                label: __("Wordpress Default"),
+                value: ""
+            }, {
+                label: __("User Local Time"),
+                value: ""
+            }];
+
+            var DISPLAY_STYLES = [{
+                label: __("Block"),
+                value: "block"
+            }, {
+                label: __("Inline Block"),
+                value: "inline-block"
+            }];
+
+            var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-countdown");
+
+            var onUpdateDate = function onUpdateDate(dateTime) {
+                var newDateTime = moment(dateTime).format('YYYY-MM-DD HH:mm:ss');
+                setAttributes({ dateTime: newDateTime });
+            };
+
+            return [isSelected && wp.element.createElement(
+                "div",
+                null,
+                wp.element.createElement(
+                    BlockControls,
+                    { key: "controls" },
+                    wp.element.createElement(AlignmentToolbar, {
+                        label: __('Alignment'),
+                        value: align,
+                        onChange: function onChange(newAlign) {
+                            return setAttributes({ align: newAlign || "center" });
+                        },
+                        alignmentControls: AlLIGNMENT
+                    })
                 ),
-                weeksCheck && wp.element.createElement(
-                    "span",
-                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
+                wp.element.createElement(
+                    InspectorControls,
+                    { key: "inspector" },
                     wp.element.createElement(
-                        "span",
-                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
-                            style: {
-                                display: contentDisplay === "inline-block" ? "flex" : "block",
-                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
-                            }
+                        PanelBody,
+                        {
+                            title: __("Due Date"),
+                            className: "premium-panel-body",
+                            initialOpen: true
                         },
                         wp.element.createElement(
-                            "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-weeks", id: "weeks",
-                                style: {
-                                    display: contentDisplay || "block",
-                                    color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent",
-                                    fontSize: digitsSize || "0",
-                                    fontWeight: digitsWeight || "normal",
-                                    letterSpacing: digitsLetterSpacing || "0",
-                                    lineHeight: digitsLineHeight || "inherit",
-                                    borderStyle: borderType || "none",
-                                    borderWidth: borderWidth || "0",
-                                    borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0",
-                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                }
-                            },
-                            "00"
-                        ),
-                        wp.element.createElement(
-                            "span",
-                            { className: "premium-countdown__period premium-countdown__units-weeks",
-                                style: {
-                                    display: contentDisplay || "block",
-                                    color: unitsColor || "#000",
-                                    fontSize: unitsSize || "0",
-                                    fontWeight: unitsWeight || "normal",
-                                    letterSpacing: unitsLetterSpacing || "0",
-                                    lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
-                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                }
-                            },
-                            weekLabel
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(DateTimePicker, {
+                                currentDate: dateTime,
+                                onChange: function onChange(val) {
+                                    return onUpdateDate(val);
+                                },
+                                is12Hour: true
+
+                            })
                         )
-                    )
-                ),
-                daysCheck && wp.element.createElement(
-                    "span",
-                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
+                    ),
                     wp.element.createElement(
-                        "span",
-                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
-                            style: {
-                                display: contentDisplay === "inline-block" ? "flex" : "block",
-                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
-                            }
+                        PanelBody,
+                        {
+                            title: __("Time Units"),
+                            className: "premium-panel-body",
+                            initialOpen: false
                         },
                         wp.element.createElement(
-                            "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-days", id: "days",
-                                style: {
-                                    display: contentDisplay || "block",
-                                    color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent",
-                                    fontSize: digitsSize || "0",
-                                    fontWeight: digitsWeight || "normal",
-                                    letterSpacing: digitsLetterSpacing || "0",
-                                    lineHeight: digitsLineHeight || "inherit",
-                                    borderStyle: borderType || "none",
-                                    borderWidth: borderWidth || "0",
-                                    borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0",
-                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(ToggleControl, {
+                                label: __("Show Months"),
+                                checked: monthsCheck,
+                                onChange: function onChange(newCheck) {
+                                    return setAttributes({ monthsCheck: newCheck });
                                 }
-                            },
-                            "00"
+                            }),
+                            wp.element.createElement(ToggleControl, {
+                                label: __("Show Weeks"),
+                                checked: weeksCheck,
+                                onChange: function onChange(newCheck) {
+                                    return setAttributes({ weeksCheck: newCheck });
+                                }
+                            }),
+                            wp.element.createElement(ToggleControl, {
+                                label: __("Show Days"),
+                                checked: daysCheck,
+                                onChange: function onChange(newCheck) {
+                                    return setAttributes({ daysCheck: newCheck });
+                                }
+                            }),
+                            wp.element.createElement(ToggleControl, {
+                                label: __("Show Hours"),
+                                checked: hoursCheck,
+                                onChange: function onChange(newCheck) {
+                                    return setAttributes({ hoursCheck: newCheck });
+                                }
+                            }),
+                            wp.element.createElement(ToggleControl, {
+                                label: __("Show Minutes"),
+                                checked: minutesCheck,
+                                onChange: function onChange(newCheck) {
+                                    return setAttributes({ minutesCheck: newCheck });
+                                }
+                            }),
+                            wp.element.createElement(ToggleControl, {
+                                label: __("Show Seconds"),
+                                checked: secondsCheck,
+                                onChange: function onChange(newCheck) {
+                                    return setAttributes({ secondsCheck: newCheck });
+                                }
+                            })
                         ),
                         wp.element.createElement(
-                            "span",
-                            { className: "premium-countdown__period premium-countdown__units-days",
-                                style: {
-                                    display: contentDisplay || "block",
-                                    color: unitsColor || "#000",
-                                    fontSize: unitsSize || "0",
-                                    fontWeight: unitsWeight || "normal",
-                                    letterSpacing: unitsLetterSpacing || "0",
-                                    lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
-                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(SelectControl, {
+                                label: __("Content Display Style"),
+                                value: contentDisplay,
+                                options: DISPLAY_STYLES,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ contentDisplay: newValue || "block" });
                                 }
-                            },
-                            dayLabel
+                            })
                         )
-                    )
-                ),
-                hoursCheck && wp.element.createElement(
-                    "span",
-                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
+                    ),
                     wp.element.createElement(
-                        "span",
-                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
-                            style: {
-                                display: contentDisplay === "inline-block" ? "flex" : "block",
-                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
-                            }
+                        PanelBody,
+                        {
+                            title: __("Units Labels"),
+                            className: "premium-panel-body",
+                            initialOpen: false
+                        },
+                        monthsCheck && wp.element.createElement(
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(TextControl, {
+                                className: "premium-text-control",
+                                label: __("Months"),
+                                value: monthLabel,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ monthLabel: newValue });
+                                }
+                            })
+                        ),
+                        weeksCheck && wp.element.createElement(
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(TextControl, {
+                                className: "premium-text-control",
+                                label: __("Weeks"),
+                                value: weekLabel,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ weekLabel: newValue });
+                                }
+                            })
+                        ),
+                        daysCheck && wp.element.createElement(
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(TextControl, {
+                                className: "premium-text-control",
+                                label: __("Days"),
+                                value: dayLabel,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ dayLabel: newValue });
+                                }
+                            })
+                        ),
+                        hoursCheck && wp.element.createElement(
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(TextControl, {
+                                className: "premium-text-control",
+                                label: __("Hours"),
+                                value: hourLabel,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ hourLabel: newValue });
+                                }
+                            })
+                        ),
+                        minutesCheck && wp.element.createElement(
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(TextControl, {
+                                className: "premium-text-control",
+                                label: __("Minutes"),
+                                value: minuteLabel,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ minuteLabel: newValue });
+                                }
+                            })
+                        ),
+                        secondsCheck && wp.element.createElement(
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(TextControl, {
+                                className: "premium-text-control",
+                                label: __("Seconds"),
+                                value: secondLabel,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ secondLabel: newValue });
+                                }
+                            })
+                        )
+                    ),
+                    wp.element.createElement(
+                        PanelBody,
+                        {
+                            title: __("Digits Style"),
+                            className: "premium-panel-body",
+                            initialOpen: false
                         },
                         wp.element.createElement(
-                            "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-hours", id: "hours",
-                                style: {
-                                    display: contentDisplay || "block",
-                                    color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent",
-                                    fontSize: digitsSize || "0",
-                                    fontWeight: digitsWeight || "normal",
-                                    letterSpacing: digitsLetterSpacing || "0",
-                                    lineHeight: digitsLineHeight || "inherit",
-                                    borderStyle: borderType || "none",
-                                    borderWidth: borderWidth || "0",
-                                    borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0",
-                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                }
-                            },
-                            "00"
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(
+                                "p",
+                                { className: "premium-editor-paragraph" },
+                                __("Color")
+                            ),
+                            wp.element.createElement(ColorPalette, {
+                                value: digitsColor,
+                                onChange: function onChange(newColor) {
+                                    return setAttributes({ digitsColor: newColor || "#000" });
+                                },
+                                allowReset: true
+                            })
                         ),
                         wp.element.createElement(
-                            "span",
-                            { className: "premium-countdown__period premium-countdown__units-hours",
-                                style: {
-                                    display: contentDisplay || "block",
-                                    color: unitsColor || "#000",
-                                    fontSize: unitsSize || "0",
-                                    fontWeight: unitsWeight || "normal",
-                                    letterSpacing: unitsLetterSpacing || "0",
-                                    lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
-                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(
+                                "p",
+                                { className: "premium-editor-paragraph" },
+                                __("Background Color")
+                            ),
+                            wp.element.createElement(ColorPalette, {
+                                value: digitsBgColor,
+                                onChange: function onChange(newColor) {
+                                    return setAttributes({ digitsBgColor: newColor || "transparent" });
+                                },
+                                allowReset: true
+                            })
+                        ),
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
+                                components: ["size", "weight", "spacing", "line"],
+                                size: digitsSize,
+                                weight: digitsWeight,
+                                spacing: digitsLetterSpacing,
+                                line: digitsLineHeight,
+                                onChangeSize: function onChangeSize(newSize) {
+                                    return setAttributes({ digitsSize: newSize || "0" });
+                                },
+                                onChangeWeight: function onChangeWeight(newWeight) {
+                                    return setAttributes({ digitsWeight: newWeight || "normal" });
+                                },
+                                onChangeSpacing: function onChangeSpacing(newValue) {
+                                    return setAttributes({ digitsLetterSpacing: newValue || "0" });
+                                },
+                                onChangeLine: function onChangeLine(newValue) {
+                                    return setAttributes({ digitsLineHeight: newValue || "inherit" });
                                 }
-                            },
-                            hourLabel
+                            })
+                        ),
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
+                                borderType: borderType,
+                                borderWidth: borderWidth,
+                                borderColor: borderColor,
+                                borderRadius: borderRadius,
+                                onChangeType: function onChangeType(newType) {
+                                    return setAttributes({ borderType: newType || "none" });
+                                },
+                                onChangeWidth: function onChangeWidth(newWidth) {
+                                    return setAttributes({ borderWidth: newWidth || "0" });
+                                },
+                                onChangeColor: function onChangeColor(colorValue) {
+                                    return setAttributes({ borderColor: colorValue.hex || "#000" });
+                                },
+                                onChangeRadius: function onChangeRadius(newRadius) {
+                                    return setAttributes({ borderRadius: newRadius || "0" });
+                                }
+                            })
                         )
-                    )
-                ),
-                minutesCheck && wp.element.createElement(
-                    "span",
-                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
+                    ),
                     wp.element.createElement(
-                        "span",
-                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
-                            style: {
-                                display: contentDisplay === "inline-block" ? "flex" : "block",
-                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
-                            }
+                        PanelBody,
+                        {
+                            title: __("Units Style"),
+                            className: "premium-panel-body",
+                            initialOpen: false
                         },
                         wp.element.createElement(
-                            "span",
-                            { className: "premium-countdown__amount  premium-countdown__digits-minutes", id: "minutes",
-                                style: {
-                                    display: contentDisplay || "block",
-                                    color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent",
-                                    fontSize: digitsSize || "0",
-                                    fontWeight: digitsWeight || "normal",
-                                    letterSpacing: digitsLetterSpacing || "0",
-                                    lineHeight: digitsLineHeight || "inherit",
-                                    borderStyle: borderType || "none",
-                                    borderWidth: borderWidth || "0",
-                                    borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0",
-                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                }
-                            },
-                            "00"
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(
+                                "p",
+                                { className: "premium-editor-paragraph" },
+                                __("Color")
+                            ),
+                            wp.element.createElement(ColorPalette, {
+                                value: unitsColor,
+                                onChange: function onChange(newColor) {
+                                    return setAttributes({ unitsColor: newColor || "#000" });
+                                },
+                                allowReset: true
+                            })
                         ),
                         wp.element.createElement(
-                            "span",
-                            { className: "premium-countdown__period premium-countdown__units-minutes",
-                                style: {
-                                    display: contentDisplay || "block",
-                                    color: unitsColor || "#000",
-                                    fontSize: unitsSize || "0",
-                                    fontWeight: unitsWeight || "normal",
-                                    letterSpacing: unitsLetterSpacing || "0",
-                                    lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
-                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
+                                components: ["size", "weight", "spacing", "line"],
+                                size: unitsSize,
+                                weight: unitsWeight,
+                                spacing: unitsLetterSpacing,
+                                line: unitsLineHeight,
+                                onChangeSize: function onChangeSize(newSize) {
+                                    return setAttributes({ unitsSize: newSize || "0" });
+                                },
+                                onChangeWeight: function onChangeWeight(newWeight) {
+                                    return setAttributes({ unitsWeight: newWeight || "normal" });
+                                },
+                                onChangeSpacing: function onChangeSpacing(newValue) {
+                                    return setAttributes({ unitsLetterSpacing: newValue || "0" });
+                                },
+                                onChangeLine: function onChangeLine(newValue) {
+                                    return setAttributes({ unitsLineHeight: newValue || "inherit" });
                                 }
-                            },
-                            minuteLabel
-                        )
-                    )
-                ),
-                secondsCheck && wp.element.createElement(
-                    "span",
-                    { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
-                    wp.element.createElement(
-                        "span",
-                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
-                            style: {
-                                display: contentDisplay === "inline-block" ? "flex" : "block",
-                                alignItems: contentDisplay === "inline-block" ? "center" : "normal"
-                            }
-                        },
-                        wp.element.createElement(
-                            "span",
-                            { className: "premium-countdown__amount premium-countdown__digits-seconds", id: "seconds",
-                                style: {
-                                    display: contentDisplay || "block",
-                                    color: digitsColor || "#000",
-                                    backgroundColor: digitsBgColor || "transparent",
-                                    fontSize: digitsSize || "0",
-                                    fontWeight: digitsWeight || "normal",
-                                    letterSpacing: digitsLetterSpacing || "0",
-                                    lineHeight: digitsLineHeight || "inherit",
-                                    borderStyle: borderType || "none",
-                                    borderWidth: borderWidth || "0",
-                                    borderColor: borderColor || "#000",
-                                    borderRadius: borderRadius || "0",
-                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                }
-                            },
-                            "00"
+                            })
                         ),
                         wp.element.createElement(
-                            "span",
-                            { className: "premium-countdown__period premium-countdown__units-seconds",
-                                style: {
-                                    display: contentDisplay || "block",
-                                    color: unitsColor || "#000",
-                                    fontSize: unitsSize || "0",
-                                    fontWeight: unitsWeight || "normal",
-                                    letterSpacing: unitsLetterSpacing || "0",
-                                    lineHeight: unitsLineHeight || "inherit",
-                                    margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
-                                    padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_margin__["a" /* default */], {
+                                directions: ["all"],
+                                marginTop: marginTop,
+                                marginRight: marginRight,
+                                marginBottom: marginBottom,
+                                marginLeft: marginLeft,
+                                onChangeMarTop: function onChangeMarTop(newValue) {
+                                    return setAttributes({ marginTop: newValue || "0" });
+                                },
+                                onChangeMarRight: function onChangeMarRight(newValue) {
+                                    return setAttributes({ marginRight: newValue || "0" });
+                                },
+                                onChangeMarBottom: function onChangeMarBottom(newValue) {
+                                    return setAttributes({ marginBottom: newValue || "0" });
+                                },
+                                onChangeMarLeft: function onChangeMarLeft(newValue) {
+                                    return setAttributes({ marginLeft: newValue || "0" });
                                 }
-                            },
-                            secondLabel
+                            })
+                        ),
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(RangeControl, {
+                                label: __("Spacing Between"),
+                                value: unitsSpace,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ unitsSpace: newValue || "0" });
+                                },
+                                initialPosition: 10,
+                                min: 0,
+                                max: 200
+                            })
                         )
                     )
                 )
-            )
-        )
-    )];
-};
+            ), wp.element.createElement(
+                "div",
+                {
+                    id: id,
+                    className: mainClasses + "__wrap",
+                    style: { justifyContent: align || "center" }
+                },
+                wp.element.createElement(
+                    "div",
+                    { id: "container__" + id, className: "premium-countdown__container countdown down ", "data-date": dateTime },
+                    wp.element.createElement(
+                        "span",
+                        { className: "premium-countdown__items " },
+                        monthsCheck && wp.element.createElement(
+                            "span",
+                            { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
+                            wp.element.createElement(
+                                "span",
+                                { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                                    style: {
+                                        display: contentDisplay === "inline-block" ? "flex" : "block",
+                                        alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                    }
+                                },
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-countdown__amount  premium-countdown__digits-months", id: "months",
+                                        style: {
+                                            display: contentDisplay || "block",
+                                            color: digitsColor || "#000",
+                                            backgroundColor: digitsBgColor || "transparent",
+                                            fontSize: digitsSize || "0",
+                                            fontWeight: digitsWeight || "normal",
+                                            letterSpacing: digitsLetterSpacing || "0",
+                                            lineHeight: digitsLineHeight || "inherit",
+                                            borderStyle: borderType || "none",
+                                            borderWidth: borderWidth || "0",
+                                            borderColor: borderColor || "#000",
+                                            borderRadius: borderRadius || "0",
+                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+
+                                        }
+                                    },
+                                    "00"
+                                ),
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-countdown__period premium-countdown__units-months",
+                                        style: {
+                                            display: contentDisplay || "block",
+                                            color: unitsColor || "#000",
+                                            fontSize: unitsSize || "0",
+                                            fontWeight: unitsWeight || "normal",
+                                            letterSpacing: unitsLetterSpacing || "0",
+                                            lineHeight: unitsLineHeight || "inherit",
+                                            margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                        }
+                                    },
+                                    monthLabel
+                                )
+                            )
+                        ),
+                        weeksCheck && wp.element.createElement(
+                            "span",
+                            { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
+                            wp.element.createElement(
+                                "span",
+                                { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                                    style: {
+                                        display: contentDisplay === "inline-block" ? "flex" : "block",
+                                        alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                    }
+                                },
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-countdown__amount  premium-countdown__digits-weeks", id: "weeks",
+                                        style: {
+                                            display: contentDisplay || "block",
+                                            color: digitsColor || "#000",
+                                            backgroundColor: digitsBgColor || "transparent",
+                                            fontSize: digitsSize || "0",
+                                            fontWeight: digitsWeight || "normal",
+                                            letterSpacing: digitsLetterSpacing || "0",
+                                            lineHeight: digitsLineHeight || "inherit",
+                                            borderStyle: borderType || "none",
+                                            borderWidth: borderWidth || "0",
+                                            borderColor: borderColor || "#000",
+                                            borderRadius: borderRadius || "0",
+                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                        }
+                                    },
+                                    "00"
+                                ),
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-countdown__period premium-countdown__units-weeks",
+                                        style: {
+                                            display: contentDisplay || "block",
+                                            color: unitsColor || "#000",
+                                            fontSize: unitsSize || "0",
+                                            fontWeight: unitsWeight || "normal",
+                                            letterSpacing: unitsLetterSpacing || "0",
+                                            lineHeight: unitsLineHeight || "inherit",
+                                            margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                        }
+                                    },
+                                    weekLabel
+                                )
+                            )
+                        ),
+                        daysCheck && wp.element.createElement(
+                            "span",
+                            { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
+                            wp.element.createElement(
+                                "span",
+                                { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                                    style: {
+                                        display: contentDisplay === "inline-block" ? "flex" : "block",
+                                        alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                    }
+                                },
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-countdown__amount  premium-countdown__digits-days", id: "days",
+                                        style: {
+                                            display: contentDisplay || "block",
+                                            color: digitsColor || "#000",
+                                            backgroundColor: digitsBgColor || "transparent",
+                                            fontSize: digitsSize || "0",
+                                            fontWeight: digitsWeight || "normal",
+                                            letterSpacing: digitsLetterSpacing || "0",
+                                            lineHeight: digitsLineHeight || "inherit",
+                                            borderStyle: borderType || "none",
+                                            borderWidth: borderWidth || "0",
+                                            borderColor: borderColor || "#000",
+                                            borderRadius: borderRadius || "0",
+                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                        }
+                                    },
+                                    "00"
+                                ),
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-countdown__period premium-countdown__units-days",
+                                        style: {
+                                            display: contentDisplay || "block",
+                                            color: unitsColor || "#000",
+                                            fontSize: unitsSize || "0",
+                                            fontWeight: unitsWeight || "normal",
+                                            letterSpacing: unitsLetterSpacing || "0",
+                                            lineHeight: unitsLineHeight || "inherit",
+                                            margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                        }
+                                    },
+                                    dayLabel
+                                )
+                            )
+                        ),
+                        hoursCheck && wp.element.createElement(
+                            "span",
+                            { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
+                            wp.element.createElement(
+                                "span",
+                                { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                                    style: {
+                                        display: contentDisplay === "inline-block" ? "flex" : "block",
+                                        alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                    }
+                                },
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-countdown__amount  premium-countdown__digits-hours", id: "hours",
+                                        style: {
+                                            display: contentDisplay || "block",
+                                            color: digitsColor || "#000",
+                                            backgroundColor: digitsBgColor || "transparent",
+                                            fontSize: digitsSize || "0",
+                                            fontWeight: digitsWeight || "normal",
+                                            letterSpacing: digitsLetterSpacing || "0",
+                                            lineHeight: digitsLineHeight || "inherit",
+                                            borderStyle: borderType || "none",
+                                            borderWidth: borderWidth || "0",
+                                            borderColor: borderColor || "#000",
+                                            borderRadius: borderRadius || "0",
+                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                        }
+                                    },
+                                    "00"
+                                ),
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-countdown__period premium-countdown__units-hours",
+                                        style: {
+                                            display: contentDisplay || "block",
+                                            color: unitsColor || "#000",
+                                            fontSize: unitsSize || "0",
+                                            fontWeight: unitsWeight || "normal",
+                                            letterSpacing: unitsLetterSpacing || "0",
+                                            lineHeight: unitsLineHeight || "inherit",
+                                            margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                        }
+                                    },
+                                    hourLabel
+                                )
+                            )
+                        ),
+                        minutesCheck && wp.element.createElement(
+                            "span",
+                            { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
+                            wp.element.createElement(
+                                "span",
+                                { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                                    style: {
+                                        display: contentDisplay === "inline-block" ? "flex" : "block",
+                                        alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                    }
+                                },
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-countdown__amount  premium-countdown__digits-minutes", id: "minutes",
+                                        style: {
+                                            display: contentDisplay || "block",
+                                            color: digitsColor || "#000",
+                                            backgroundColor: digitsBgColor || "transparent",
+                                            fontSize: digitsSize || "0",
+                                            fontWeight: digitsWeight || "normal",
+                                            letterSpacing: digitsLetterSpacing || "0",
+                                            lineHeight: digitsLineHeight || "inherit",
+                                            borderStyle: borderType || "none",
+                                            borderWidth: borderWidth || "0",
+                                            borderColor: borderColor || "#000",
+                                            borderRadius: borderRadius || "0",
+                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                        }
+                                    },
+                                    "00"
+                                ),
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-countdown__period premium-countdown__units-minutes",
+                                        style: {
+                                            display: contentDisplay || "block",
+                                            color: unitsColor || "#000",
+                                            fontSize: unitsSize || "0",
+                                            fontWeight: unitsWeight || "normal",
+                                            letterSpacing: unitsLetterSpacing || "0",
+                                            lineHeight: unitsLineHeight || "inherit",
+                                            margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                        }
+                                    },
+                                    minuteLabel
+                                )
+                            )
+                        ),
+                        secondsCheck && wp.element.createElement(
+                            "span",
+                            { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
+                            wp.element.createElement(
+                                "span",
+                                { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                                    style: {
+                                        display: contentDisplay === "inline-block" ? "flex" : "block",
+                                        alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                    }
+                                },
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-countdown__amount premium-countdown__digits-seconds", id: "seconds",
+                                        style: {
+                                            display: contentDisplay || "block",
+                                            color: digitsColor || "#000",
+                                            backgroundColor: digitsBgColor || "transparent",
+                                            fontSize: digitsSize || "0",
+                                            fontWeight: digitsWeight || "normal",
+                                            letterSpacing: digitsLetterSpacing || "0",
+                                            lineHeight: digitsLineHeight || "inherit",
+                                            borderStyle: borderType || "none",
+                                            borderWidth: borderWidth || "0",
+                                            borderColor: borderColor || "#000",
+                                            borderRadius: borderRadius || "0",
+                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                        }
+                                    },
+                                    "00"
+                                ),
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-countdown__period premium-countdown__units-seconds",
+                                        style: {
+                                            display: contentDisplay || "block",
+                                            color: unitsColor || "#000",
+                                            fontSize: unitsSize || "0",
+                                            fontWeight: unitsWeight || "normal",
+                                            letterSpacing: unitsLetterSpacing || "0",
+                                            lineHeight: unitsLineHeight || "inherit",
+                                            margin: marginTop + "px " + marginRight + "px " + marginBottom + "px " + marginLeft + "px",
+                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                        }
+                                    },
+                                    secondLabel
+                                )
+                            )
+                        )
+                    )
+                )
+            )];
+        }
+    }]);
+
+    return edit;
+}(Component);
 
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
