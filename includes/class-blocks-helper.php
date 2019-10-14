@@ -128,6 +128,8 @@ class Premium_Blocks_Integration {
         $is_icon_box_enabled = self::$blocks['iconBox'];
 
         $is_flip_box_enabled = self::$blocks['flipBox'];
+
+        $is_ihover_enabled = self::$blocks['ihover'];
         
         wp_enqueue_style(
             'pbg-frontend',
@@ -243,6 +245,15 @@ class Premium_Blocks_Integration {
             wp_enqueue_script(
                 'flip-box-js',
                 PREMIUM_BLOCKS_URL . 'assets/js/flip-box.js',
+                array('jquery'),
+                PREMIUM_BLOCKS_VERSION
+            );
+        }
+
+        if( $is_ihover_enabled ) {
+            wp_enqueue_script(
+                'ihover-js',
+                PREMIUM_BLOCKS_URL . 'assets/js/ihover.js',
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
