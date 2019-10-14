@@ -21,6 +21,18 @@ const countDownAttr = {
     dateTime:{
         type:"string"
     },
+    timeZone:{
+        type:"string",
+        default:__("UTC")
+    },
+    expiredDate:{
+        type: "boolean",
+        default: false
+    },
+    expiredUrl:{
+        type: "string",
+        default: "http://localhost:8888/nesma/"
+    },
     monthsCheck:{
         type: "boolean",
         default: false

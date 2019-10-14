@@ -42780,6 +42780,18 @@ var countDownAttr = {
     dateTime: {
         type: "string"
     },
+    timeZone: {
+        type: "string",
+        default: __("UTC")
+    },
+    expiredDate: {
+        type: "boolean",
+        default: false
+    },
+    expiredUrl: {
+        type: "string",
+        default: "http://localhost:8888/nesma/"
+    },
     monthsCheck: {
         type: "boolean",
         default: false
@@ -42942,6 +42954,9 @@ var save = function save(props) {
         id = _props$attributes.id,
         align = _props$attributes.align,
         dateTime = _props$attributes.dateTime,
+        timeZone = _props$attributes.timeZone,
+        expiredDate = _props$attributes.expiredDate,
+        expiredUrl = _props$attributes.expiredUrl,
         monthsCheck = _props$attributes.monthsCheck,
         weeksCheck = _props$attributes.weeksCheck,
         daysCheck = _props$attributes.daysCheck,
@@ -43364,51 +43379,108 @@ var edit = function (_Component) {
     }, {
         key: "componentDidUpdate",
         value: function componentDidUpdate() {
-            clearTimeout(isBoxUpdated);
-            isBoxUpdated = setTimeout(this.onChangeDate, 500);
+            clearInterval(isBoxUpdated);
+            console.log("changed");
+            isBoxUpdated = setInterval(this.onChangeDate, 1000);
         }
     }, {
         key: "onChangeDate",
         value: function onChangeDate() {
-            var id = this.props.attributes.id;
+            var setAttributes = this.props.setAttributes;
+            var _props$attributes = this.props.attributes,
+                id = _props$attributes.id,
+                expiredDate = _props$attributes.expiredDate,
+                dateTime = _props$attributes.dateTime,
+                timeZone = _props$attributes.timeZone,
+                monthsCheck = _props$attributes.monthsCheck,
+                weeksCheck = _props$attributes.weeksCheck,
+                daysCheck = _props$attributes.daysCheck,
+                hoursCheck = _props$attributes.hoursCheck,
+                minutesCheck = _props$attributes.minutesCheck,
+                secondsCheck = _props$attributes.secondsCheck;
 
             if (!id) return null;
+            var newDateTime = moment(dateTime).format('YYYY-MM-DD HH:mm:ss');
+            console.log(newDateTime + " new time");
+            setAttributes({ dateTime: newDateTime || "0" });
 
             var block = document.getElementById("container__" + id);
-            console.log(block);
+            var months = 0;
+            var weeks = 0;
+            var days = 0;
+            var hours = 0;
+            var minutes = 0;
+            var seconds = 0;
+            var now = 0;
+            var timer = 0;
+            var oneDay = 0;
 
-            block.addEventListener("change", function () {
-                console.log(id + " clicked");
-                var date = block.getAttribute("data-date");
-                console.log(date);
-                var neww = new Date(date);
-                console.log(neww);
-                var interval = setInterval(function () {
+            var date = block.getAttribute("data-date");
+            var neww = new Date(date);
+            var interval = setInterval(function () {
 
-                    var now = new Date().getTime();
-                    var timer = neww - now;
-                    console.log(timer);
-                    var oneDay = 24 * 60 * 60 * 1000;
-                    var days = Math.floor(timer / oneDay);
-                    var weeks = Math.floor(days / 7);
-                    var months = Math.floor(weeks / 4);
-                    var hours = Math.floor(timer % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
-                    var minutes = Math.floor(timer % (1000 * 60 * 60) / (1000 * 60));
-                    var seconds = Math.floor(timer % (1000 * 60) / 1000);
+                now = new Date().getTime();
+                timer = neww - now;
+                // if (timeZone === "UTC") 
+                // {
+                //     timer = neww - now
 
-                    document.getElementById("months").innerHTML = (months || "0") + "Mo ";
-                    document.getElementById("weeks").innerHTML = (weeeks || "0") + "W ";
-                    document.getElementById("days").innerHTML = (days || "0") + "d ";
-                    document.getElementById("hours").innerHTML = (hours || "0") + "h ";
-                    document.getElementById("minutes").innerHTML = (minutes || "0") + "m ";
-                    document.getElementById("seconds").innerHTML = (seconds || "0") + "s ";
+                // }
 
-                    if ($timer < 0) {
-                        clearInterval(interval);
-                        alert("Countdown was Expired");
+                if (timer > 0) {
+                    oneDay = 24 * 60 * 60 * 1000;
+                    days = Math.floor(timer / oneDay);
+                    weeks = Math.floor(days / 7);
+                    months = Math.floor(weeks / 4);
+                    hours = Math.floor(timer % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+                    minutes = Math.floor(timer % (1000 * 60 * 60) / (1000 * 60));
+                    seconds = Math.floor(timer % (1000 * 60) / 1000);
+
+                    if (monthsCheck) {
+                        block.getElementsByClassName("premium-countdown__digits-months")[0].innerHTML = months || "0";
                     }
-                }, 1000);
-            });
+                    if (weeksCheck) {
+                        block.getElementsByClassName("premium-countdown__digits-weeks")[0].innerHTML = weeks || "0";
+                    }
+                    if (daysCheck) {
+                        block.getElementsByClassName("premium-countdown__digits-days")[0].innerHTML = days || "0";
+                    }
+                    if (hoursCheck) {
+                        block.getElementsByClassName("premium-countdown__digits-hours")[0].innerHTML = hours || "0";
+                    }
+                    if (minutesCheck) {
+                        block.getElementsByClassName("premium-countdown__digits-minutes")[0].innerHTML = minutes || "0";
+                    }
+                    if (secondsCheck) {
+                        block.getElementsByClassName("premium-countdown__digits-seconds")[0].innerHTML = seconds || "0";
+                    }
+                    clearInterval(interval);
+                }
+
+                if (timer < 0) {
+                    setAttributes({ expiredDate: true });
+                    console.log(expiredDate);
+                    clearInterval(interval);
+                    if (monthsCheck) {
+                        block.getElementsByClassName("premium-countdown__digits-months")[0].innerHTML = months || "0";
+                    }
+                    if (weeksCheck) {
+                        block.getElementsByClassName("premium-countdown__digits-weeks")[0].innerHTML = weeks || "0";
+                    }
+                    if (daysCheck) {
+                        block.getElementsByClassName("premium-countdown__digits-days")[0].innerHTML = days || "0";
+                    }
+                    if (hoursCheck) {
+                        block.getElementsByClassName("premium-countdown__digits-hours")[0].innerHTML = hours || "0";
+                    }
+                    if (minutesCheck) {
+                        block.getElementsByClassName("premium-countdown__digits-minutes")[0].innerHTML = minutes || "0";
+                    }
+                    if (secondsCheck) {
+                        block.getElementsByClassName("premium-countdown__digits-seconds")[0].innerHTML = seconds || "0";
+                    }
+                }
+            }, 1000);
         }
     }, {
         key: "render",
@@ -43417,43 +43489,46 @@ var edit = function (_Component) {
                 isSelected = _props2.isSelected,
                 setAttributes = _props2.setAttributes,
                 className = _props2.className;
-            var _props$attributes = this.props.attributes,
-                id = _props$attributes.id,
-                align = _props$attributes.align,
-                dateTime = _props$attributes.dateTime,
-                monthsCheck = _props$attributes.monthsCheck,
-                weeksCheck = _props$attributes.weeksCheck,
-                daysCheck = _props$attributes.daysCheck,
-                hoursCheck = _props$attributes.hoursCheck,
-                minutesCheck = _props$attributes.minutesCheck,
-                secondsCheck = _props$attributes.secondsCheck,
-                monthLabel = _props$attributes.monthLabel,
-                weekLabel = _props$attributes.weekLabel,
-                dayLabel = _props$attributes.dayLabel,
-                hourLabel = _props$attributes.hourLabel,
-                minuteLabel = _props$attributes.minuteLabel,
-                secondLabel = _props$attributes.secondLabel,
-                contentDisplay = _props$attributes.contentDisplay,
-                digitsColor = _props$attributes.digitsColor,
-                digitsBgColor = _props$attributes.digitsBgColor,
-                digitsSize = _props$attributes.digitsSize,
-                digitsWeight = _props$attributes.digitsWeight,
-                digitsLetterSpacing = _props$attributes.digitsLetterSpacing,
-                digitsLineHeight = _props$attributes.digitsLineHeight,
-                borderType = _props$attributes.borderType,
-                borderWidth = _props$attributes.borderWidth,
-                borderColor = _props$attributes.borderColor,
-                borderRadius = _props$attributes.borderRadius,
-                unitsColor = _props$attributes.unitsColor,
-                unitsSize = _props$attributes.unitsSize,
-                unitsWeight = _props$attributes.unitsWeight,
-                unitsLetterSpacing = _props$attributes.unitsLetterSpacing,
-                unitsLineHeight = _props$attributes.unitsLineHeight,
-                marginTop = _props$attributes.marginTop,
-                marginRight = _props$attributes.marginRight,
-                marginBottom = _props$attributes.marginBottom,
-                marginLeft = _props$attributes.marginLeft,
-                unitsSpace = _props$attributes.unitsSpace;
+            var _props$attributes2 = this.props.attributes,
+                id = _props$attributes2.id,
+                align = _props$attributes2.align,
+                dateTime = _props$attributes2.dateTime,
+                timeZone = _props$attributes2.timeZone,
+                expiredDate = _props$attributes2.expiredDate,
+                expiredUrl = _props$attributes2.expiredUrl,
+                monthsCheck = _props$attributes2.monthsCheck,
+                weeksCheck = _props$attributes2.weeksCheck,
+                daysCheck = _props$attributes2.daysCheck,
+                hoursCheck = _props$attributes2.hoursCheck,
+                minutesCheck = _props$attributes2.minutesCheck,
+                secondsCheck = _props$attributes2.secondsCheck,
+                monthLabel = _props$attributes2.monthLabel,
+                weekLabel = _props$attributes2.weekLabel,
+                dayLabel = _props$attributes2.dayLabel,
+                hourLabel = _props$attributes2.hourLabel,
+                minuteLabel = _props$attributes2.minuteLabel,
+                secondLabel = _props$attributes2.secondLabel,
+                contentDisplay = _props$attributes2.contentDisplay,
+                digitsColor = _props$attributes2.digitsColor,
+                digitsBgColor = _props$attributes2.digitsBgColor,
+                digitsSize = _props$attributes2.digitsSize,
+                digitsWeight = _props$attributes2.digitsWeight,
+                digitsLetterSpacing = _props$attributes2.digitsLetterSpacing,
+                digitsLineHeight = _props$attributes2.digitsLineHeight,
+                borderType = _props$attributes2.borderType,
+                borderWidth = _props$attributes2.borderWidth,
+                borderColor = _props$attributes2.borderColor,
+                borderRadius = _props$attributes2.borderRadius,
+                unitsColor = _props$attributes2.unitsColor,
+                unitsSize = _props$attributes2.unitsSize,
+                unitsWeight = _props$attributes2.unitsWeight,
+                unitsLetterSpacing = _props$attributes2.unitsLetterSpacing,
+                unitsLineHeight = _props$attributes2.unitsLineHeight,
+                marginTop = _props$attributes2.marginTop,
+                marginRight = _props$attributes2.marginRight,
+                marginBottom = _props$attributes2.marginBottom,
+                marginLeft = _props$attributes2.marginLeft,
+                unitsSpace = _props$attributes2.unitsSpace;
 
 
             var AlLIGNMENT = [{
@@ -43472,10 +43547,10 @@ var edit = function (_Component) {
 
             var TIMEZONE_OPTIONS = [{
                 label: __("Wordpress Default"),
-                value: ""
+                value: "UTC"
             }, {
                 label: __("User Local Time"),
-                value: ""
+                value: "LocalTime"
             }];
 
             var DISPLAY_STYLES = [{
@@ -43487,11 +43562,6 @@ var edit = function (_Component) {
             }];
 
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-countdown");
-
-            var onUpdateDate = function onUpdateDate(dateTime) {
-                var newDateTime = moment(dateTime).format('YYYY-MM-DD HH:mm:ss');
-                setAttributes({ dateTime: newDateTime });
-            };
 
             return [isSelected && wp.element.createElement(
                 "div",
@@ -43523,13 +43593,32 @@ var edit = function (_Component) {
                             { className: "premium-control-toggle" },
                             wp.element.createElement(DateTimePicker, {
                                 currentDate: dateTime,
-                                onChange: function onChange(val) {
-                                    return onUpdateDate(val);
+                                onChange: function onChange(newDateTime) {
+                                    return setAttributes({ dateTime: newDateTime || "0" });
                                 },
                                 is12Hour: true
-
                             })
-                        )
+                        ),
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-control-toggle" },
+                            wp.element.createElement(SelectControl, {
+                                label: __("Time Zone"),
+                                value: timeZone,
+                                options: TIMEZONE_OPTIONS,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ timeZone: newValue || "block" });
+                                }
+                            })
+                        ),
+                        expiredDate === true && wp.element.createElement(TextControl, {
+                            className: "premium-text-control",
+                            label: __("Expired Url"),
+                            value: expiredUrl,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ expiredUrl: newValue });
+                            }
+                        })
                     ),
                     wp.element.createElement(
                         PanelBody,

@@ -56,6 +56,8 @@ const edit = props => {
         id,
         align,
         dateTime,
+        timeZone,
+        expiredDate,
         monthsCheck,
         weeksCheck,
         daysCheck,
@@ -163,6 +165,14 @@ const edit = props => {
                                 onChange={(val) => onUpdateDate(val)}
                                 is12Hour={true}
 
+                            />
+                        </div>
+                        <div className="premium-control-toggle">
+                            <SelectControl
+                                label={__("Time Zone")}
+                                value={timeZone}
+                                options={TIMEZONE_OPTIONS}
+                                onChange={newValue => setAttributes({ timeZone: newValue || "block" })}
                             />
                         </div>
                     </PanelBody>

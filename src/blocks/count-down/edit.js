@@ -30,52 +30,73 @@ class edit extends Component {
     }
 
     componentDidUpdate() {
-        clearTimeout(isBoxUpdated);
-        isBoxUpdated = setTimeout(this.onChangeDate, 500);
+        clearInterval(isBoxUpdated);
+        console.log("changed")
+        isBoxUpdated = setInterval(this.onChangeDate, 1000);
     }
 
     onChangeDate() {
 
-        const { id } = this.props.attributes;
+        const { setAttributes } = this.props;
+        const { id, expiredDate, dateTime, timeZone, monthsCheck, weeksCheck, daysCheck, hoursCheck, minutesCheck, secondsCheck } = this.props.attributes;
         if (!id) return null;
+        var newDateTime = moment(dateTime).format('YYYY-MM-DD HH:mm:ss');
+        console.log(newDateTime + " new time")
+        setAttributes({ dateTime: newDateTime || "0"});
 
         var block = document.getElementById(`container__${id}`);
-        console.log(block);
+        var months = 0;
+        var weeks = 0;
+        var days = 0;
+        var hours = 0;
+        var minutes = 0;
+        var seconds = 0;
+        var now = 0;
+        var timer = 0;
+        var oneDay = 0;
 
-        block.addEventListener("change", () => {
-            console.log( id +  " clicked")
         var date = block.getAttribute("data-date")
-        console.log(date);
         var neww = new Date(date);
-        console.log(neww);
         var interval = setInterval(function () {
 
-            var now = new Date().getTime();
-            var timer = neww - now;
-            console.log(timer);
-            var oneDay = 24 * 60 * 60 * 1000;
-            var days = Math.floor(timer / oneDay);
-            var weeks = Math.floor(days / 7);
-            var months = Math.floor(weeks / 4);
-            var hours = Math.floor((timer % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((timer % (1000 * 60)) / 1000);
+            now = new Date().getTime();
+            timer = neww - now;
+            // if (timeZone === "UTC") 
+            // {
+            //     timer = neww - now
+                
+            // }
 
-            document.getElementById("months").innerHTML = (months || "0") + "Mo ";
-            document.getElementById("weeks").innerHTML = (weeeks || "0") + "W ";
-            document.getElementById("days").innerHTML = (days || "0") + "d ";
-            document.getElementById("hours").innerHTML = (hours || "0") + "h ";
-            document.getElementById("minutes").innerHTML = (minutes || "0") + "m ";
-            document.getElementById("seconds").innerHTML = (seconds || "0") + "s ";
+            if (timer > 0) {
+                oneDay = 24 * 60 * 60 * 1000;
+                days = Math.floor(timer / oneDay);
+                weeks = Math.floor(days / 7);
+                months = Math.floor(weeks / 4);
+                hours = Math.floor((timer % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                minutes = Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60));
+                seconds = Math.floor((timer % (1000 * 60)) / 1000);
 
-            if ($timer < 0) {
+                if (monthsCheck) { block.getElementsByClassName("premium-countdown__digits-months")[0].innerHTML = (months || "0"); }
+                if (weeksCheck) { block.getElementsByClassName("premium-countdown__digits-weeks")[0].innerHTML = (weeks || "0"); }
+                if (daysCheck) { block.getElementsByClassName("premium-countdown__digits-days")[0].innerHTML = (days || "0"); }
+                if (hoursCheck) { block.getElementsByClassName("premium-countdown__digits-hours")[0].innerHTML = (hours || "0"); }
+                if (minutesCheck) { block.getElementsByClassName("premium-countdown__digits-minutes")[0].innerHTML = (minutes || "0"); }
+                if (secondsCheck) { block.getElementsByClassName("premium-countdown__digits-seconds")[0].innerHTML = (seconds || "0"); }
                 clearInterval(interval);
-                alert("Countdown was Expired")
             }
 
+            if (timer < 0) {
+                setAttributes({ expiredDate: true });
+                console.log(expiredDate)
+                clearInterval(interval);
+                if (monthsCheck) { block.getElementsByClassName("premium-countdown__digits-months")[0].innerHTML = (months || "0"); }
+                if (weeksCheck) { block.getElementsByClassName("premium-countdown__digits-weeks")[0].innerHTML = (weeks || "0"); }
+                if (daysCheck) { block.getElementsByClassName("premium-countdown__digits-days")[0].innerHTML = (days || "0"); }
+                if (hoursCheck) { block.getElementsByClassName("premium-countdown__digits-hours")[0].innerHTML = (hours || "0"); }
+                if (minutesCheck) { block.getElementsByClassName("premium-countdown__digits-minutes")[0].innerHTML = (minutes || "0"); }
+                if (secondsCheck) { block.getElementsByClassName("premium-countdown__digits-seconds")[0].innerHTML = (seconds || "0"); }
+            }
         }, 1000);
-    });
-
     };
 
     render() {
@@ -85,6 +106,9 @@ class edit extends Component {
             id,
             align,
             dateTime,
+            timeZone,
+            expiredDate,
+            expiredUrl,
             monthsCheck,
             weeksCheck,
             daysCheck,
@@ -142,11 +166,11 @@ class edit extends Component {
         const TIMEZONE_OPTIONS = [
             {
                 label: __("Wordpress Default"),
-                value: ""
+                value: "UTC"
             },
             {
                 label: __("User Local Time"),
-                value: ""
+                value: "LocalTime"
             }
         ];
 
@@ -162,11 +186,6 @@ class edit extends Component {
         ];
 
         const mainClasses = classnames(className, "premium-countdown");
-
-        const onUpdateDate = (dateTime) => {
-            var newDateTime = moment(dateTime).format('YYYY-MM-DD HH:mm:ss');
-            setAttributes({ dateTime: newDateTime });
-        }
 
         return [
             isSelected && (
@@ -192,11 +211,26 @@ class edit extends Component {
                             <div className="premium-control-toggle">
                                 <DateTimePicker
                                     currentDate={dateTime}
-                                    onChange={(val) => onUpdateDate(val)}
+                                    onChange={newDateTime => setAttributes({ dateTime: newDateTime || "0"})}
                                     is12Hour={true}
-
                                 />
                             </div>
+                            <div className="premium-control-toggle">
+                                <SelectControl
+                                    label={__("Time Zone")}
+                                    value={timeZone}
+                                    options={TIMEZONE_OPTIONS}
+                                    onChange={newValue => setAttributes({ timeZone: newValue || "block" })}
+                                />
+                            </div>
+                            {expiredDate === true && (
+                                <TextControl
+                                    className="premium-text-control"
+                                    label={__("Expired Url")}
+                                    value={expiredUrl}
+                                    onChange={newValue => setAttributes({ expiredUrl: newValue })}
+                                />
+                            )}
                         </PanelBody>
 
                         {/* Time Units */}
@@ -419,276 +453,285 @@ class edit extends Component {
                     </InspectorControls>
                 </div>
             ),
+
             <div
                 id={id}
                 className={`${mainClasses}__wrap`}
                 style={{ justifyContent: align || "center" }}
             >
-                <div id={`container__${id}`} className={`premium-countdown__container countdown down `} data-date={dateTime}>
-                    <span className={`premium-countdown__items `}>
+                {/* {expiredDate 
+                ?
+                    <div className={`premium-countdown__expired-date`} style={{display: "block" , width:"100%" , color:"red"}}>Countdown was expired</div>
+                :
+                    <div className={`premium-countdown__expired-date`} style={{display: "none" }}>Countdown was expired</div>
+                } */}
+                    <div id={`container__${id}`} className={`premium-countdown__container countdown down `} data-date={dateTime}>
+                        <span className={`premium-countdown__items `}>
 
-                        {monthsCheck && (
-                            <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                                <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
-                                    style={{
-                                        display: contentDisplay === "inline-block" ? "flex" : "block",
-                                        alignItems: contentDisplay === "inline-block" ? "center" : "normal"
-                                    }}
-                                >
-                                    <span className={`premium-countdown__amount  premium-countdown__digits-months`} id={`months`}
+                            {monthsCheck && (
+                                <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
+                                    <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                         style={{
-                                            display: contentDisplay || "block",
-                                            color: digitsColor || "#000",
-                                            backgroundColor: digitsBgColor || "transparent",
-                                            fontSize: digitsSize || "0",
-                                            fontWeight: digitsWeight || "normal",
-                                            letterSpacing: digitsLetterSpacing || "0",
-                                            lineHeight: digitsLineHeight || "inherit",
-                                            borderStyle: borderType || "none",
-                                            borderWidth: borderWidth || "0",
-                                            borderColor: borderColor || "#000",
-                                            borderRadius: borderRadius || "0",
-                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                            display: contentDisplay === "inline-block" ? "flex" : "block",
+                                            alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                        }}
+                                    >
+                                        <span className={`premium-countdown__amount  premium-countdown__digits-months`} id={`months`}
+                                            style={{
+                                                display: contentDisplay || "block",
+                                                color: digitsColor || "#000",
+                                                backgroundColor: digitsBgColor || "transparent",
+                                                fontSize: digitsSize || "0",
+                                                fontWeight: digitsWeight || "normal",
+                                                letterSpacing: digitsLetterSpacing || "0",
+                                                lineHeight: digitsLineHeight || "inherit",
+                                                borderStyle: borderType || "none",
+                                                borderWidth: borderWidth || "0",
+                                                borderColor: borderColor || "#000",
+                                                borderRadius: borderRadius || "0",
+                                                padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
 
-                                        }}
-                                    >
-                                        00
+                                            }}
+                                        >
+                                            00
                                     </span>
-                                    <span className={`premium-countdown__period premium-countdown__units-months`}
-                                        style={{
-                                            display: contentDisplay || "block",
-                                            color: unitsColor || "#000",
-                                            fontSize: unitsSize || "0",
-                                            fontWeight: unitsWeight || "normal",
-                                            letterSpacing: unitsLetterSpacing || "0",
-                                            lineHeight: unitsLineHeight || "inherit",
-                                            margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
-                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                        }}
-                                    >
-                                        {monthLabel}
-                                    </span>
-                                </span>
-                            </span>
-                        )}
-                        {weeksCheck && (
-                            <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                                <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
-                                    style={{
-                                        display: contentDisplay === "inline-block" ? "flex" : "block",
-                                        alignItems: contentDisplay === "inline-block" ? "center" : "normal"
-                                    }}
-                                >
-                                    <span className={`premium-countdown__amount  premium-countdown__digits-weeks`} id={`weeks`}
-                                        style={{
-                                            display: contentDisplay || "block",
-                                            color: digitsColor || "#000",
-                                            backgroundColor: digitsBgColor || "transparent",
-                                            fontSize: digitsSize || "0",
-                                            fontWeight: digitsWeight || "normal",
-                                            letterSpacing: digitsLetterSpacing || "0",
-                                            lineHeight: digitsLineHeight || "inherit",
-                                            borderStyle: borderType || "none",
-                                            borderWidth: borderWidth || "0",
-                                            borderColor: borderColor || "#000",
-                                            borderRadius: borderRadius || "0",
-                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                        }}
-                                    >
-                                        00
-                                    </span>
-                                    <span className={`premium-countdown__period premium-countdown__units-weeks`}
-                                        style={{
-                                            display: contentDisplay || "block",
-                                            color: unitsColor || "#000",
-                                            fontSize: unitsSize || "0",
-                                            fontWeight: unitsWeight || "normal",
-                                            letterSpacing: unitsLetterSpacing || "0",
-                                            lineHeight: unitsLineHeight || "inherit",
-                                            margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
-                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                        }}
-                                    >
-                                        {weekLabel}
+                                        <span className={`premium-countdown__period premium-countdown__units-months`}
+                                            style={{
+                                                display: contentDisplay || "block",
+                                                color: unitsColor || "#000",
+                                                fontSize: unitsSize || "0",
+                                                fontWeight: unitsWeight || "normal",
+                                                letterSpacing: unitsLetterSpacing || "0",
+                                                lineHeight: unitsLineHeight || "inherit",
+                                                margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                                padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                            }}
+                                        >
+                                            {monthLabel}
+                                        </span>
                                     </span>
                                 </span>
-                            </span>
-                        )}
-                        {daysCheck && (
-                            <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                                <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
-                                    style={{
-                                        display: contentDisplay === "inline-block" ? "flex" : "block",
-                                        alignItems: contentDisplay === "inline-block" ? "center" : "normal"
-                                    }}
-                                >
-                                    <span className={`premium-countdown__amount  premium-countdown__digits-days`} id={`days`}
+                            )}
+                            {weeksCheck && (
+                                <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
+                                    <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                         style={{
-                                            display: contentDisplay || "block",
-                                            color: digitsColor || "#000",
-                                            backgroundColor: digitsBgColor || "transparent",
-                                            fontSize: digitsSize || "0",
-                                            fontWeight: digitsWeight || "normal",
-                                            letterSpacing: digitsLetterSpacing || "0",
-                                            lineHeight: digitsLineHeight || "inherit",
-                                            borderStyle: borderType || "none",
-                                            borderWidth: borderWidth || "0",
-                                            borderColor: borderColor || "#000",
-                                            borderRadius: borderRadius || "0",
-                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                            display: contentDisplay === "inline-block" ? "flex" : "block",
+                                            alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                         }}
                                     >
-                                        00
+                                        <span className={`premium-countdown__amount  premium-countdown__digits-weeks`} id={`weeks`}
+                                            style={{
+                                                display: contentDisplay || "block",
+                                                color: digitsColor || "#000",
+                                                backgroundColor: digitsBgColor || "transparent",
+                                                fontSize: digitsSize || "0",
+                                                fontWeight: digitsWeight || "normal",
+                                                letterSpacing: digitsLetterSpacing || "0",
+                                                lineHeight: digitsLineHeight || "inherit",
+                                                borderStyle: borderType || "none",
+                                                borderWidth: borderWidth || "0",
+                                                borderColor: borderColor || "#000",
+                                                borderRadius: borderRadius || "0",
+                                                padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                            }}
+                                        >
+                                            00
                                     </span>
-                                    <span className={`premium-countdown__period premium-countdown__units-days`}
-                                        style={{
-                                            display: contentDisplay || "block",
-                                            color: unitsColor || "#000",
-                                            fontSize: unitsSize || "0",
-                                            fontWeight: unitsWeight || "normal",
-                                            letterSpacing: unitsLetterSpacing || "0",
-                                            lineHeight: unitsLineHeight || "inherit",
-                                            margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
-                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                        }}
-                                    >
-                                        {dayLabel}
-                                    </span>
-                                </span>
-                            </span>
-                        )}
-                        {hoursCheck && (
-                            <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                                <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
-                                    style={{
-                                        display: contentDisplay === "inline-block" ? "flex" : "block",
-                                        alignItems: contentDisplay === "inline-block" ? "center" : "normal"
-                                    }}
-                                >
-                                    <span className={`premium-countdown__amount  premium-countdown__digits-hours`} id={`hours`}
-                                        style={{
-                                            display: contentDisplay || "block",
-                                            color: digitsColor || "#000",
-                                            backgroundColor: digitsBgColor || "transparent",
-                                            fontSize: digitsSize || "0",
-                                            fontWeight: digitsWeight || "normal",
-                                            letterSpacing: digitsLetterSpacing || "0",
-                                            lineHeight: digitsLineHeight || "inherit",
-                                            borderStyle: borderType || "none",
-                                            borderWidth: borderWidth || "0",
-                                            borderColor: borderColor || "#000",
-                                            borderRadius: borderRadius || "0",
-                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                        }}
-                                    >
-                                        00
-                                    </span>
-                                    <span className={`premium-countdown__period premium-countdown__units-hours`}
-                                        style={{
-                                            display: contentDisplay || "block",
-                                            color: unitsColor || "#000",
-                                            fontSize: unitsSize || "0",
-                                            fontWeight: unitsWeight || "normal",
-                                            letterSpacing: unitsLetterSpacing || "0",
-                                            lineHeight: unitsLineHeight || "inherit",
-                                            margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
-                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                        }}
-                                    >
-                                        {hourLabel}
+                                        <span className={`premium-countdown__period premium-countdown__units-weeks`}
+                                            style={{
+                                                display: contentDisplay || "block",
+                                                color: unitsColor || "#000",
+                                                fontSize: unitsSize || "0",
+                                                fontWeight: unitsWeight || "normal",
+                                                letterSpacing: unitsLetterSpacing || "0",
+                                                lineHeight: unitsLineHeight || "inherit",
+                                                margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                                padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                            }}
+                                        >
+                                            {weekLabel}
+                                        </span>
                                     </span>
                                 </span>
-                            </span>
-                        )}
-                        {minutesCheck && (
-                            <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                                <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
-                                    style={{
-                                        display: contentDisplay === "inline-block" ? "flex" : "block",
-                                        alignItems: contentDisplay === "inline-block" ? "center" : "normal"
-                                    }}
-                                >
-                                    <span className={`premium-countdown__amount  premium-countdown__digits-minutes`} id={`minutes`}
+                            )}
+                            {daysCheck && (
+                                <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
+                                    <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
                                         style={{
-                                            display: contentDisplay || "block",
-                                            color: digitsColor || "#000",
-                                            backgroundColor: digitsBgColor || "transparent",
-                                            fontSize: digitsSize || "0",
-                                            fontWeight: digitsWeight || "normal",
-                                            letterSpacing: digitsLetterSpacing || "0",
-                                            lineHeight: digitsLineHeight || "inherit",
-                                            borderStyle: borderType || "none",
-                                            borderWidth: borderWidth || "0",
-                                            borderColor: borderColor || "#000",
-                                            borderRadius: borderRadius || "0",
-                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                            display: contentDisplay === "inline-block" ? "flex" : "block",
+                                            alignItems: contentDisplay === "inline-block" ? "center" : "normal"
                                         }}
                                     >
-                                        00
+                                        <span className={`premium-countdown__amount  premium-countdown__digits-days`} id={`days`}
+                                            style={{
+                                                display: contentDisplay || "block",
+                                                color: digitsColor || "#000",
+                                                backgroundColor: digitsBgColor || "transparent",
+                                                fontSize: digitsSize || "0",
+                                                fontWeight: digitsWeight || "normal",
+                                                letterSpacing: digitsLetterSpacing || "0",
+                                                lineHeight: digitsLineHeight || "inherit",
+                                                borderStyle: borderType || "none",
+                                                borderWidth: borderWidth || "0",
+                                                borderColor: borderColor || "#000",
+                                                borderRadius: borderRadius || "0",
+                                                padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                            }}
+                                        >
+                                            00
                                     </span>
-                                    <span className={`premium-countdown__period premium-countdown__units-minutes`}
-                                        style={{
-                                            display: contentDisplay || "block",
-                                            color: unitsColor || "#000",
-                                            fontSize: unitsSize || "0",
-                                            fontWeight: unitsWeight || "normal",
-                                            letterSpacing: unitsLetterSpacing || "0",
-                                            lineHeight: unitsLineHeight || "inherit",
-                                            margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
-                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                        }}
-                                    >
-                                        {minuteLabel}
-                                    </span>
-                                </span>
-                            </span>
-                        )}
-                        {secondsCheck && (
-                            <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                                <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
-                                    style={{
-                                        display: contentDisplay === "inline-block" ? "flex" : "block",
-                                        alignItems: contentDisplay === "inline-block" ? "center" : "normal"
-                                    }}
-                                >
-                                    <span className={`premium-countdown__amount premium-countdown__digits-seconds`} id={`seconds`}
-                                        style={{
-                                            display: contentDisplay || "block",
-                                            color: digitsColor || "#000",
-                                            backgroundColor: digitsBgColor || "transparent",
-                                            fontSize: digitsSize || "0",
-                                            fontWeight: digitsWeight || "normal",
-                                            letterSpacing: digitsLetterSpacing || "0",
-                                            lineHeight: digitsLineHeight || "inherit",
-                                            borderStyle: borderType || "none",
-                                            borderWidth: borderWidth || "0",
-                                            borderColor: borderColor || "#000",
-                                            borderRadius: borderRadius || "0",
-                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                        }}
-                                    >
-                                        00
-                                    </span>
-                                    <span className={`premium-countdown__period premium-countdown__units-seconds`}
-                                        style={{
-                                            display: contentDisplay || "block",
-                                            color: unitsColor || "#000",
-                                            fontSize: unitsSize || "0",
-                                            fontWeight: unitsWeight || "normal",
-                                            letterSpacing: unitsLetterSpacing || "0",
-                                            lineHeight: unitsLineHeight || "inherit",
-                                            margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
-                                            padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
-                                        }}
-                                    >
-                                        {secondLabel}
+                                        <span className={`premium-countdown__period premium-countdown__units-days`}
+                                            style={{
+                                                display: contentDisplay || "block",
+                                                color: unitsColor || "#000",
+                                                fontSize: unitsSize || "0",
+                                                fontWeight: unitsWeight || "normal",
+                                                letterSpacing: unitsLetterSpacing || "0",
+                                                lineHeight: unitsLineHeight || "inherit",
+                                                margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                                padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                            }}
+                                        >
+                                            {dayLabel}
+                                        </span>
                                     </span>
                                 </span>
-                            </span>
-                        )}
+                            )}
+                            {hoursCheck && (
+                                <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
+                                    <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
+                                        style={{
+                                            display: contentDisplay === "inline-block" ? "flex" : "block",
+                                            alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                        }}
+                                    >
+                                        <span className={`premium-countdown__amount  premium-countdown__digits-hours`} id={`hours`}
+                                            style={{
+                                                display: contentDisplay || "block",
+                                                color: digitsColor || "#000",
+                                                backgroundColor: digitsBgColor || "transparent",
+                                                fontSize: digitsSize || "0",
+                                                fontWeight: digitsWeight || "normal",
+                                                letterSpacing: digitsLetterSpacing || "0",
+                                                lineHeight: digitsLineHeight || "inherit",
+                                                borderStyle: borderType || "none",
+                                                borderWidth: borderWidth || "0",
+                                                borderColor: borderColor || "#000",
+                                                borderRadius: borderRadius || "0",
+                                                padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                            }}
+                                        >
+                                            00
+                                    </span>
+                                        <span className={`premium-countdown__period premium-countdown__units-hours`}
+                                            style={{
+                                                display: contentDisplay || "block",
+                                                color: unitsColor || "#000",
+                                                fontSize: unitsSize || "0",
+                                                fontWeight: unitsWeight || "normal",
+                                                letterSpacing: unitsLetterSpacing || "0",
+                                                lineHeight: unitsLineHeight || "inherit",
+                                                margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                                padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                            }}
+                                        >
+                                            {hourLabel}
+                                        </span>
+                                    </span>
+                                </span>
+                            )}
+                            {minutesCheck && (
+                                <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
+                                    <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
+                                        style={{
+                                            display: contentDisplay === "inline-block" ? "flex" : "block",
+                                            alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                        }}
+                                    >
+                                        <span className={`premium-countdown__amount  premium-countdown__digits-minutes`} id={`minutes`}
+                                            style={{
+                                                display: contentDisplay || "block",
+                                                color: digitsColor || "#000",
+                                                backgroundColor: digitsBgColor || "transparent",
+                                                fontSize: digitsSize || "0",
+                                                fontWeight: digitsWeight || "normal",
+                                                letterSpacing: digitsLetterSpacing || "0",
+                                                lineHeight: digitsLineHeight || "inherit",
+                                                borderStyle: borderType || "none",
+                                                borderWidth: borderWidth || "0",
+                                                borderColor: borderColor || "#000",
+                                                borderRadius: borderRadius || "0",
+                                                padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                            }}
+                                        >
+                                            00
+                                    </span>
+                                        <span className={`premium-countdown__period premium-countdown__units-minutes`}
+                                            style={{
+                                                display: contentDisplay || "block",
+                                                color: unitsColor || "#000",
+                                                fontSize: unitsSize || "0",
+                                                fontWeight: unitsWeight || "normal",
+                                                letterSpacing: unitsLetterSpacing || "0",
+                                                lineHeight: unitsLineHeight || "inherit",
+                                                margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                                padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                            }}
+                                        >
+                                            {minuteLabel}
+                                        </span>
+                                    </span>
+                                </span>
+                            )}
+                            {secondsCheck && (
+                                <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
+                                    <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
+                                        style={{
+                                            display: contentDisplay === "inline-block" ? "flex" : "block",
+                                            alignItems: contentDisplay === "inline-block" ? "center" : "normal"
+                                        }}
+                                    >
+                                        <span className={`premium-countdown__amount premium-countdown__digits-seconds`} id={`seconds`}
+                                            style={{
+                                                display: contentDisplay || "block",
+                                                color: digitsColor || "#000",
+                                                backgroundColor: digitsBgColor || "transparent",
+                                                fontSize: digitsSize || "0",
+                                                fontWeight: digitsWeight || "normal",
+                                                letterSpacing: digitsLetterSpacing || "0",
+                                                lineHeight: digitsLineHeight || "inherit",
+                                                borderStyle: borderType || "none",
+                                                borderWidth: borderWidth || "0",
+                                                borderColor: borderColor || "#000",
+                                                borderRadius: borderRadius || "0",
+                                                padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                            }}
+                                        >
+                                            00
+                                    </span>
+                                        <span className={`premium-countdown__period premium-countdown__units-seconds`}
+                                            style={{
+                                                display: contentDisplay || "block",
+                                                color: unitsColor || "#000",
+                                                fontSize: unitsSize || "0",
+                                                fontWeight: unitsWeight || "normal",
+                                                letterSpacing: unitsLetterSpacing || "0",
+                                                lineHeight: unitsLineHeight || "inherit",
+                                                margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
+                                                padding: contentDisplay === "inline-block" ? "25px 30px" : "5px 40px"
+                                            }}
+                                        >
+                                            {secondLabel}
+                                        </span>
+                                    </span>
+                                </span>
+                            )}
 
-                    </span>
-                </div>
+                        </span>
+                    </div>
+                
+
             </div>
         ]
 
