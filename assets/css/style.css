@@ -1717,9 +1717,9 @@ a.premium-dheading-block__link:hover {
 
 .premium-flip-container{
   background-Color: transparent;
-  width: 930px;
+  width: 100%;
   min-height: 400px;
-  height: auto;
+  height: 100%;
   /* perspective: 1000px; */
   transition: background .3s,border .3s,border-radius .3s,box-shadow .3s,-webkit-border-radius .3s,-webkit-box-shadow .3s;
 }
@@ -1731,9 +1731,7 @@ a.premium-dheading-block__link:hover {
   -webkit-perspective: 1000px;
   perspective: 1000px;
   -webkit-transform-style: preserve-3d;
-  /* transition: transform 0.6s;  */
   transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
 }
 .premium-flip-front, .premium-flip-back {
@@ -1804,19 +1802,21 @@ a.premium-dheading-block__link:hover {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  align-items: center;
-  justify-content: center;
+  padding: 0 2%;
 }
-.premium-flipbox__froIcon , .premium-flipbox__backIcon
-{
-  display: flex;
-  align-items: center;
-  justify-content: center
+.premium-flip-back-content{
+  padding: 0 4%;
 }
 .premium-flip-front-content-container .premium-flip-front-title, .premium-flip-back-content-container .premium-flip-back-title {
   padding: 0;
   margin: 0 0 15px 0;
 }
+.premium-flip-front-content-container .premium-flip-front-title:before , .premium-flip-back-content-container .premium-flip-back-title:before {
+  display: none;
+}
+.premium-flip-front-description , .premium-flip-back-description{
+  margin: 20px 0 !important;
+} 
 .premium-flip-front-description {
   color: #ffffff;
   font-size: 17px;
@@ -1847,11 +1847,11 @@ a.premium-dheading-block__link:hover {
   -o-animation-fill-mode: both;
   -ms-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation-duration: 1s;
-  -moz-animation-duration: 1s;
-  -o-animation-duration: 1s;
-  -ms-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  -ms-animation-duration: 2s;
+  animation-duration: 2s;
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
   -o-animation-delay: 0.4s;
@@ -1887,11 +1887,11 @@ a.premium-dheading-block__link:hover {
 }
 @keyframes PafadeInRevLeft {
   from {
-      -webkit-transform: translateX(20px);
-      -moz-transform: translateX(20px);
-      -o-transform: translateX(20px);
-      -ms-transform: translateX(20px);
-      transform: translateX(20px);
+      -webkit-transform: translateX(30px);
+      -moz-transform: translateX(30px);
+      -o-transform: translateX(30px);
+      -ms-transform: translateX(30px);
+      transform: translateX(30px);
  }
   to {
       -webkit-transform: translateX(0);
@@ -1910,11 +1910,11 @@ a.premium-dheading-block__link:hover {
       transform: translateX(0px);
  }
   to {
-      -webkit-transform: translateX(20px);
-      -moz-transform: translateX(20px);
-      -o-transform: translateX(20px);
-      -ms-transform: translateX(20px);
-      transform: translateX(20px);
+      -webkit-transform: translateX(30px);
+      -moz-transform: translateX(30px);
+      -o-transform: translateX(30px);
+      -ms-transform: translateX(30px);
+      transform: translateX(30px);
  }
 }
 /**************** Premium ihover ********************/

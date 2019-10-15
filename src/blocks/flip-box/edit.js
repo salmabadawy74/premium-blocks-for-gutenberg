@@ -1053,5 +1053,3 @@ const edit = props => {
 };
 
 export default edit;
-
-
