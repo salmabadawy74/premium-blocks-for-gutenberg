@@ -119,7 +119,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
             
             $js_info = array(
                 'ajaxurl'   => admin_url( 'admin-ajax.php' ),
-                'nonce'     => wp_create_nonce( 'premium-blocks-gutenberg' )
+                'nonce'     => wp_create_nonce( 'pbg-blocks' )
             );
 
             wp_localize_script(
@@ -319,7 +319,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
         */
         public function pbg_settings() {
 
-            check_ajax_referer( 'premium-blocks-gutenberg', 'security' );
+            check_ajax_referer( 'pbg-blocks', 'security' );
             
             if( isset( $_POST['fields'] ) ) {
 
