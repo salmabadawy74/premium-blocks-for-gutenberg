@@ -343,8 +343,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                 'accordion'     => intval( $settings['accordion'] ? 1 : 0 ),
                 'iconBox'       => intval( $settings['iconBox'] ? 1 : 0 ),
                 'videoBox'      => intval( $settings['videoBox'] ? 1 : 0 ),
-                'flipBox'      => intval( $settings['flipBox'] ? 1 : 0 ),
-                'ihover'      => intval( $settings['ihover'] ? 1 : 0 ),
+                'flipBox'       => intval( $settings['flipBox'] ? 1 : 0 ),
+                'ihover'        => intval( $settings['ihover'] ? 1 : 0 ),
             );
 
             update_option( 'pbg_settings', $this->pbg_settings );

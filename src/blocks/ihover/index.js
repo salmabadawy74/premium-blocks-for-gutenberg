@@ -12,44 +12,44 @@ const { registerBlockType } = wp.blocks;
 
 //block attributes
 const ihoverAttr = {
-    imgUrl:{
-        type:"string"
+    imgUrl: {
+        type: "string"
     },
     imgId: {
         type: "string"
     },
-    imgSize:{
-        type:"number",
+    imgSize: {
+        type: "number",
         default: "300"
     },
-    imgBorderRadius:{
-        type:"number",
-        default:"50"
+    imgBorderRadius: {
+        type: "number",
+        default: "50"
     },
-    hoverEffect:{
+    hoverEffect: {
         type: "string",
         default: __("style18")
     },
-    spinnerBorderW:{
+    spinnerBorderW: {
         type: "number",
         default: "1"
     },
-    spinnerFirstColor:{
+    spinnerFirstColor: {
         type: "string",
         default: "#6ec1e4"
     },
-    spinnerSecondColor:{
+    spinnerSecondColor: {
         type: "string",
         default: "#54595f"
     },
-    linkCheck:{
+    linkCheck: {
         type: "boolean",
         default: false
     },
-    linkUrl:{
+    linkUrl: {
         type: "string"
     },
-    target:{
+    target: {
         type: "boolean",
         default: false
     },
@@ -61,32 +61,32 @@ const ihoverAttr = {
         type: "number",
         default: "0"
     },
-      bright: {
+    bright: {
         type: "number",
         default: "100"
     },
-      contrast: {
+    contrast: {
         type: "number",
         default: "100"
     },
-      saturation: {
+    saturation: {
         type: "number",
         default: "100"
     },
-      hue: {
+    hue: {
         type: "number",
         default: "0"
     },
-// content
-    iconCheck:{
+    // content
+    iconCheck: {
         type: "boolean",
         default: true
     },
-    iconType:{
+    iconType: {
         type: "string",
         default: "fa"
     },
-    iconSelected:{
+    iconSelected: {
         type: "string",
         default: "dashicons dashicons-admin-site"
     },
@@ -103,8 +103,8 @@ const ihoverAttr = {
     },
     iconBackground: {
         type: "string",
-        default:"transparent"
-    },  
+        default: "transparent"
+    },
 
     iconBorderType: {
         type: "string",
@@ -141,38 +141,38 @@ const ihoverAttr = {
         type: "string",
         default: "px"
     },
-    titleCheck:{
+    titleCheck: {
         type: "boolean",
         default: true
     },
-    titleText:{
+    titleText: {
         type: "string",
         default: __("Your Title")
     },
-    titleColor:{
+    titleColor: {
         type: "string",
         default: "#000"
     },
-    titleSize:{
-        type:"number",
-    },  
-    titlelineHeight:{
-        type:"number",       
+    titleSize: {
+        type: "number"
+    },
+    titlelineHeight: {
+        type: "number"
     },
     titleShadColor: {
         type: "string"
     },
     titleShadBlur: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     titleShadHorizontal: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     titleShadVertical: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     titleMarTop: {
         type: "number"
@@ -190,38 +190,40 @@ const ihoverAttr = {
         type: "string",
         default: "px"
     },
-    descCheck:{
+    descCheck: {
         type: "boolean",
         default: false
     },
-    descText:{
+    descText: {
         type: "string",
-        default: __("Unlimited design and customization possibilities with iHover gutenberg block")
+        default: __(
+            "Unlimited design and customization possibilities with iHover gutenberg block"
+        )
     },
-    descColor:{
+    descColor: {
         type: "string",
         default: "#000"
     },
-    descSize:{
-        type:"number",
-    },  
-    desclineHeight:{
-        type:"number",       
+    descSize: {
+        type: "number"
+    },
+    desclineHeight: {
+        type: "number"
     },
     descShadColor: {
         type: "string"
     },
     descShadBlur: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     descShadHorizontal: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     descShadVertical: {
         type: "number",
-        default:"0"
+        default: "0"
     },
     descMarTop: {
         type: "number"
@@ -243,69 +245,66 @@ const ihoverAttr = {
         type: "string",
         default: "center"
     },
-// container
-    overlayColor:{
+    // container
+    overlayColor: {
         type: "string",
-        default:"#767676"
+        default: "#f3f4f5"
     },
     overlayOpacity: {
         type: "number",
         default: "20"
     },
-    containerBgColor:{
+    containerBgColor: {
         type: "string",
-        default:"#eee"
+        default: "#eee"
     },
     containerShadowColor: {
         type: "string"
     },
-      containerShadowBlur: {
+    containerShadowBlur: {
         type: "number",
         default: "0"
     },
-      containerShadowHorizontal: {
+    containerShadowHorizontal: {
         type: "number",
         default: "0"
     },
-      containerShadowVertical: {
+    containerShadowVertical: {
         type: "number",
         default: "0"
     },
-      containerShadowPosition: {
+    containerShadowPosition: {
         type: "string",
         default: ""
     },
-    containerPadTop:{
+    containerPadTop: {
         type: "number",
         default: "0"
     },
-    containerPadRight:{
+    containerPadRight: {
         type: "number",
         default: "0"
     },
-    containerPadBottom:{
+    containerPadBottom: {
         type: "number",
         default: "0"
     },
-    containerPadLeft:{
+    containerPadLeft: {
         type: "number",
         default: "0"
     }
-
 };
 
 //Register ihover block
-registerBlockType ( "premium/ihover", 
-    {
-        title: __("iHover"),
-        icon: "unlock",
-        category: "premium-blocks",
-        attributes: ihoverAttr,
-        supports: {
-            inserter: ihover
-          },
-        edit: edit,
-        save: save,
-        deprecated: deprecatedContent
-    }
-);
+registerBlockType("premium/ihover", {
+    title: __("iHover"),
+    icon: "unlock",
+    category: "premium-blocks",
+    attributes: ihoverAttr,
+    supports: {
+        inserter: ihover
+    },
+    edit: edit,
+    save: save,
+    deprecated: deprecatedContent
+});

@@ -12,81 +12,48 @@ const { registerBlockType } = wp.blocks;
 
 // define attributes for block
 const flipBoxAttrs = {
-    position: {
-        type: "string",
-        default: "absolute"
-    },
-    widthhh: {
-        type: "string",
-        default: "100%"
-    },
-    height: {
-        type: "string",
-        default: "100%"
-    },
-    backfaceVisibility: {
-        type: "string",
-        default: "hidden"
+    id: {
+        type: "string"
     },
     frontTitle: {
         type: "string",
-        default: "Front title box"
-    },
-    frontTitleTag: {
-        type: "string",
-        default: "H3"
+        default: __("Front title box")
     },
     frontTitleColor: {
         type: "string",
-        default: "#e3d192"
+        default: "#000"
     },
     frontDescription: {
         type: "string",
-        default: "Front description"
+        default: __("Front description")
     },
     frontDescriptionColor: {
         type: "string",
-        default: "#ddd"
+        default: "#000"
     },
     frontBackgroundColor: {
         type: "string",
-        default: "#7c5707"
+        default: "#f3f4f5"
     },
     backTitle: {
         type: "string",
-        default: "Back title box"
-    },
-    backTitleTag: {
-        type: "string",
-        default: "H3"
+        default: __("Back title box")
     },
     backTitleColor: {
         type: "string",
-        default: "#fff"
+        default: "#000"
     },
     backDescription: {
         type: "string",
-        default: "Back description"
+        default: __("Back description")
     },
     backDescriptionColor: {
         type: "string",
-        default: "#ddd"
+        default: "#000"
     },
     backBackgroundColor: {
         type: "string",
-        default: "#ae8686"
-    },
-    backTransform: {
-        type: "string",
-        default: "rotateY(180deg)"
-    },
-    imgWidth: {
-        type: "string",
-        default: "300px"
-    },
-    imgHeight: {
-        type: "string",
-        default: "300px"
+        default: "#f3f4f5"
     },
     frontIconType: {
         type: "string",
@@ -97,23 +64,35 @@ const flipBoxAttrs = {
         default: "dashicons dashicons-admin-site"
     },
     frontIconCheck: {
-        type: "Boolean",
-        default: false
+        type: "boolean",
+        default: true
     },
     frontIconSize: {
         type: "number"
     },
     frontIconColor: {
         type: "string",
-        default: "#fff"
+        default: "#000"
     },
     frontIconBackground: {
         type: "string",
         default: "transparent"
     },
-    frontIconAlign: {
+    froIconBorderType: {
         type: "string",
-        default: "center"
+        default: "none"
+    },
+    froIconBorderWidth: {
+        type: "number",
+        default: "0"
+    },
+    froIconBorderRadius: {
+        type: "number",
+        default: 0
+    },
+    froIconBorderColor: {
+        type: "string",
+        default: "transparent"
     },
     frontIconPaddingTop: {
         type: "number",
@@ -147,8 +126,12 @@ const flipBoxAttrs = {
         type: "number",
         default: "0"
     },
+    frontIconUnit: {
+        type: "string",
+        default: "px"
+    },
     frontTitleCheck: {
-        type: "Boolean",
+        type: "boolean",
         default: true
     },
     frontTitleSize: {
@@ -197,8 +180,8 @@ const flipBoxAttrs = {
         type: "number"
     },
     frontDescCheck: {
-        type: "Boolean",
-        default: true
+        type: "boolean",
+        default: false
     },
     frontDescSize: {
         type: "number"
@@ -245,15 +228,19 @@ const flipBoxAttrs = {
     frontDescMarginLeft: {
         type: "number"
     },
-    pxUnit: {
+    froMarUnit: {
         type: "string",
         default: "px"
     },
-    paddingUnit: {
+    froPadUnit: {
         type: "string",
         default: "px"
     },
-    marginUnit: {
+    backMarUnit: {
+        type: "string",
+        default: "px"
+    },
+    backPadUnit: {
         type: "string",
         default: "px"
     },
@@ -266,7 +253,7 @@ const flipBoxAttrs = {
         default: "dashicons dashicons-admin-site"
     },
     backIconCheck: {
-        type: "Boolean",
+        type: "boolean",
         default: true
     },
     backIconSize: {
@@ -274,15 +261,27 @@ const flipBoxAttrs = {
     },
     backIconColor: {
         type: "string",
-        default: "#fff"
+        default: "#000"
     },
     backIconBackground: {
         type: "string",
         default: "transparent"
     },
-    backIconAlign: {
+    backIconBorderType: {
         type: "string",
-        default: "center"
+        default: "none"
+    },
+    backIconBorderWidth: {
+        type: "number",
+        default: "0"
+    },
+    backIconBorderRadius: {
+        type: "number",
+        default: 0
+    },
+    backIconBorderColor: {
+        type: "string",
+        default: "transparent"
     },
     backIconPaddingTop: {
         type: "number",
@@ -316,9 +315,13 @@ const flipBoxAttrs = {
         type: "number",
         default: "0"
     },
+    backIconUnit: {
+        type: "string",
+        default: "px"
+    },
     backTitleCheck: {
-        type: "Boolean",
-        default: false
+        type: "boolean",
+        default: true
     },
     backTitleSize: {
         type: "number"
@@ -366,8 +369,8 @@ const flipBoxAttrs = {
         type: "number"
     },
     backDescCheck: {
-        type: "Boolean",
-        default: true
+        type: "boolean",
+        default: false
     },
     backDescSize: {
         type: "number"
@@ -413,6 +416,25 @@ const flipBoxAttrs = {
     },
     backDescMarginLeft: {
         type: "number"
+    },
+    alignFroHorizontal: {
+        type: "string",
+        default: "center"
+    },
+    alignFroVertical: {
+        type: "string",
+        default: "center"
+    },
+    alignBackHorizontal: {
+        type: "string",
+        default: "center"
+    },
+    alignBackVertical: {
+        type: "string",
+        default: "center"
+    },
+    activeSide: {
+        type: "string"
     }
 };
 
