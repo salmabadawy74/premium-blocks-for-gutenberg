@@ -236,7 +236,7 @@ class Premium_Blocks_Integration {
 
         //Enqueue Google Maps API Script
         if( $is_maps_enabled && $is_enabled ) {
-            if( ! empty( $api_key ) && '1' !== $api_key ) {
+            if( ! empty( $api_key ) && '1' != $api_key ) {
                 wp_enqueue_script(
                     'premium-map-block',
                     'https://maps.googleapis.com/maps/api/js?key=' . $api_key
