@@ -43007,12 +43007,13 @@ var save = function save(props) {
             wp.element.createElement(
                 "span",
                 { className: "premium-countdown__items " },
+                wp.element.createElement("div", { className: "premium-countdown__get-date", style: { display: "none" }, "data-date": dateTime }),
                 monthsCheck && wp.element.createElement(
                     "span",
                     { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                        { className: "premium-countdown__time-mid ",
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43062,7 +43063,7 @@ var save = function save(props) {
                     { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                        { className: "premium-countdown__time-mid ",
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43111,7 +43112,7 @@ var save = function save(props) {
                     { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                        { className: "premium-countdown__time-mid ",
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43160,7 +43161,7 @@ var save = function save(props) {
                     { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                        { className: "premium-countdown__time-mid ",
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43209,7 +43210,7 @@ var save = function save(props) {
                     { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                        { className: "premium-countdown__time-mid ",
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43258,7 +43259,7 @@ var save = function save(props) {
                     { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                     wp.element.createElement(
                         "span",
-                        { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                        { className: "premium-countdown__time-mid ",
                             style: {
                                 display: contentDisplay === "inline-block" ? "flex" : "block",
                                 alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -43380,7 +43381,6 @@ var edit = function (_Component) {
         key: "componentDidUpdate",
         value: function componentDidUpdate() {
             clearInterval(isBoxUpdated);
-            console.log("changed");
             isBoxUpdated = setInterval(this.onChangeDate, 1000);
         }
     }, {
@@ -43949,12 +43949,13 @@ var edit = function (_Component) {
                     wp.element.createElement(
                         "span",
                         { className: "premium-countdown__items " },
+                        wp.element.createElement("div", { className: "premium-countdown__get-date", style: { display: "none" }, "data-date": dateTime }),
                         monthsCheck && wp.element.createElement(
                             "span",
                             { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                             wp.element.createElement(
                                 "span",
-                                { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                                { className: "premium-countdown__time-mid ",
                                     style: {
                                         display: contentDisplay === "inline-block" ? "flex" : "block",
                                         alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -44004,7 +44005,7 @@ var edit = function (_Component) {
                             { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                             wp.element.createElement(
                                 "span",
-                                { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                                { className: "premium-countdown__time-mid ",
                                     style: {
                                         display: contentDisplay === "inline-block" ? "flex" : "block",
                                         alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -44053,7 +44054,7 @@ var edit = function (_Component) {
                             { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                             wp.element.createElement(
                                 "span",
-                                { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                                { className: "premium-countdown__time-mid ",
                                     style: {
                                         display: contentDisplay === "inline-block" ? "flex" : "block",
                                         alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -44102,7 +44103,7 @@ var edit = function (_Component) {
                             { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                             wp.element.createElement(
                                 "span",
-                                { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                                { className: "premium-countdown__time-mid ",
                                     style: {
                                         display: contentDisplay === "inline-block" ? "flex" : "block",
                                         alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -44151,7 +44152,7 @@ var edit = function (_Component) {
                             { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                             wp.element.createElement(
                                 "span",
-                                { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                                { className: "premium-countdown__time-mid ",
                                     style: {
                                         display: contentDisplay === "inline-block" ? "flex" : "block",
                                         alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -44200,7 +44201,7 @@ var edit = function (_Component) {
                             { className: "premium-countdown__section", style: { margin: "0px " + unitsSpace + "px 10px " + unitsSpace + "px" } },
                             wp.element.createElement(
                                 "span",
-                                { className: "premium-countdown__time-mid premium-countdown__get-date", "data-date": dateTime,
+                                { className: "premium-countdown__time-mid ",
                                     style: {
                                         display: contentDisplay === "inline-block" ? "flex" : "block",
                                         alignItems: contentDisplay === "inline-block" ? "center" : "normal"

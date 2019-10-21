@@ -58,9 +58,11 @@ const save = props => {
             <div id={`container__${id}p`} className={`premium-countdown__container countdown down `} data-date={dateTime}>
                 <span className={`premium-countdown__items `}>
 
+                    <div className={`premium-countdown__get-date`} style={{display:"none"}} data-date={dateTime}></div>
+
                     {monthsCheck && (
                         <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
+                            <span className={`premium-countdown__time-mid `}
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -104,7 +106,7 @@ const save = props => {
                     )}
                     {weeksCheck && (
                         <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
+                            <span className={`premium-countdown__time-mid `} 
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -147,7 +149,7 @@ const save = props => {
                     )}
                     {daysCheck && (
                         <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
+                            <span className={`premium-countdown__time-mid `} 
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -190,7 +192,7 @@ const save = props => {
                     )}
                     {hoursCheck && (
                         <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
+                            <span className={`premium-countdown__time-mid `} 
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -233,7 +235,7 @@ const save = props => {
                     )}
                     {minutesCheck && (
                         <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
+                            <span className={`premium-countdown__time-mid `} 
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
@@ -276,7 +278,7 @@ const save = props => {
                     )}
                     {secondsCheck && (
                         <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                            <span className={`premium-countdown__time-mid premium-countdown__get-date`} data-date={dateTime}
+                            <span className={`premium-countdown__time-mid `} 
                                 style={{
                                     display: contentDisplay === "inline-block" ? "flex" : "block",
                                     alignItems: contentDisplay === "inline-block" ? "center" : "normal"
