@@ -112,7 +112,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = ty
 	if (typeof module !== 'undefined' && module.exports) {
 		classNames.default = classNames;
 		module.exports = classNames;
-	} else if ("function" === 'function' && _typeof(__webpack_require__(23)) === 'object' && __webpack_require__(23)) {
+	} else if ("function" === 'function' && _typeof(__webpack_require__(24)) === 'object' && __webpack_require__(24)) {
 		// register as 'classnames', consistent with npm package name
 		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return classNames;
@@ -737,20 +737,6 @@ function PremiumBoxShadow(props) {
 
 /***/ }),
 /* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(63);
-} else {
-  module.exports = __webpack_require__(64);
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -838,6 +824,20 @@ function PremiumTextShadow(props) {
         })
     );
 }
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(63);
+} else {
+  module.exports = __webpack_require__(64);
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 9 */
@@ -1006,6 +1006,24 @@ function PremiumPadding(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+var FONTS = [{
+  value: "Opens Sans",
+  label: "Opens Sans"
+}, {
+  value: "Bangers",
+  label: "Bangers"
+}, { value: "Arial", label: "Arial" }, { value: "Tahoma", label: "Tahoma" }, { value: "Verdana", label: "Verdana" }, { value: "Helvetica", label: "Helvetica" }, { value: "Times New Roman", label: "Times New Roman" }, { value: "Trebuchet MS", label: "Trebuchet MS" }, { value: "Georgia", label: "Georgia" }, { value: "ABeeZee", label: "ABeeZee" }, { value: "Abel", label: "Abel" }, { value: "Abhaya Libre", label: "Abhaya Libre" }, { value: "Abril Fatface", label: "Abril Fatface" }, { value: "Aclonica", label: "Aclonica" }, { value: "Acme", label: "Acme" }, { value: "Actor", label: "Actor" }, { value: "Adamina", label: "Adamina" }, { value: "Advent Pro", label: "Advent Pro" }, { value: "Aguafina Script", label: "Aguafina Script" }, { value: "Akronim", label: "Akronim" }, { value: "Aladin", label: "Aladin" }, { value: "Aldrich", label: "Aldrich" }, { value: "Alef", label: "Alef" }, { value: "Alef Hebrew", label: "Alef Hebrew" }, { value: "Alegreya", label: "Alegreya" }, { value: "Alegreya SC", label: "Alegreya SC" }, { value: "Alegreya Sans", label: "Alegreya Sans" }, { value: "Alegreya Sans SC", label: "Alegreya Sans SC" }, { value: "Alex Brush", label: "Alex Brush" }, { value: "Alfa Slab One", label: "Alfa Slab One" }, { value: "Alice", label: "Alice" }, { value: "Alike", label: "Alike" }, { value: "Alike Angular", label: "Alike Angular" }, { value: "Allan", label: "Allan" }, { value: "Allerta", label: "Allerta" }, { value: "Allerta Stencil", label: "Allerta Stencil" }, { value: "Allura", label: "Allura" }, { value: "Almendra", label: "Almendra" }, { value: "Almendra Display", label: "Almendra Display" }, { value: "Almendra SC", label: "Almendra SC" }, { value: "Amarante", label: "Amarante" }, { value: "Amaranth", label: "Amaranth" }, { value: "Amatic SC", label: "Amatic SC" }, { value: "Amethysta", label: "Amethysta" }, { value: "Amiko", label: "Amiko" }, { value: "Amiri", label: "Amiri" }, { value: "Amita", label: "Amita" }, { value: "Anaheim", label: "Anaheim" }, { value: "Andada", label: "Andada" }, { value: "Andika", label: "Andika" }, { value: "Angkor", label: "Angkor" }, { value: "Annie Use Your Telescope", label: "Annie Use Your Telescope" }, { value: "Anonymous Pro", label: "Anonymous Pro" }, { value: "Antic", label: "Antic" }, { value: "Antic Didone", label: "Antic Didone" }, { value: "Antic Slab", label: "Antic Slab" }, { value: "Anton", label: "Anton" }, { value: "Arapey", label: "Arapey" }, { value: "Arbutus", label: "Arbutus" }, { value: "Arbutus Slab", label: "Arbutus Slab" }, { value: "Architects Daughter", label: "Architects Daughter" }, { value: "Archivo", label: "Archivo" }, { value: "Archivo Black", label: "Archivo Black" }, { value: "Archivo Narrow", label: "Archivo Narrow" }, { value: "Aref Ruqaa", label: "Aref Ruqaa" }, { value: "Arima Madurai", label: "Arima Madurai" }, { value: "Arimo", label: "Arimo" }, { value: "Arizonia", label: "Arizonia" }, { value: "Armata", label: "Armata" }, { value: "Arsenal", label: "Arsenal" }, { value: "Artifika", label: "Artifika" }, { value: "Arvo", label: "Arvo" }, { value: "Arya", label: "Arya" }, { value: "Asap", label: "Asap" }, { value: "Asap Condensed", label: "Asap Condensed" }, { value: "Asar", label: "Asar" }, { value: "Asset", label: "Asset" }, { value: "Assistant", label: "Assistant" }, { value: "Astloch", label: "Astloch" }, { value: "Asul", label: "Asul" }, { value: "Athiti", label: "Athiti" }, { value: "Atma", label: "Atma" }, { value: "Atomic Age", label: "Atomic Age" }, { value: "Aubrey", label: "Aubrey" }, { value: "Audiowide", label: "Audiowide" }, { value: "Autour One", label: "Autour One" }, { value: "Average", label: "Average" }, { value: "Average Sans", label: "Average Sans" }, { value: "Averia Gruesa Libre", label: "Averia Gruesa Libre" }, { value: "Averia Libre", label: "Averia Libre" }, { value: "Averia Sans Libre", label: "Averia Sans Libre" }, { value: "Averia Serif Libre", label: "Averia Serif Libre" }, { value: "Bad Script", label: "Bad Script" }, { value: "Bahiana", label: "Bahiana" }, { value: "Bai Jamjuree", label: "Bai Jamjuree" }, { value: "Baloo", label: "Baloo" }, { value: "Baloo Bhai", label: "Baloo Bhai" }, { value: "Baloo Bhaijaan", label: "Baloo Bhaijaan" }, { value: "Baloo Bhaina", label: "Baloo Bhaina" }, { value: "Baloo Chettan", label: "Baloo Chettan" }, { value: "Baloo Da", label: "Baloo Da" }, { value: "Baloo Paaji", label: "Baloo Paaji" }, { value: "Baloo Tamma", label: "Baloo Tamma" }, { value: "Baloo Tammudu", label: "Baloo Tammudu" }, { value: "Baloo Thambi", label: "Baloo Thambi" }, { value: "Balthazar", label: "Balthazar" }, { value: "Bangers", label: "Bangers" }, { value: "Barlow", label: "Barlow" }, { value: "Barlow Condensed", label: "Barlow Condensed" }, { value: "Barlow Semi Condensed", label: "Barlow Semi Condensed" }, { value: "Barrio", label: "Barrio" }, { value: "Basic", label: "Basic" }, { value: "Battambang", label: "Battambang" }, { value: "Baumans", label: "Baumans" }, { value: "Bayon", label: "Bayon" }, { value: "Belgrano", label: "Belgrano" }, { value: "Bellefair", label: "Bellefair" }, { value: "Belleza", label: "Belleza" }, { value: "BenchNine", label: "BenchNine" }, { value: "Bentham", label: "Bentham" }, { value: "Berkshire Swash", label: "Berkshire Swash" }, { value: "Bevan", label: "Bevan" }, { value: "Bigelow Rules", label: "Bigelow Rules" }, { value: "Bigshot One", label: "Bigshot One" }, { value: "Bilbo", label: "Bilbo" }, { value: "Bilbo Swash Caps", label: "Bilbo Swash Caps" }, { value: "BioRhyme", label: "BioRhyme" }, { value: "BioRhyme Expanded", label: "BioRhyme Expanded" }, { value: "Biryani", label: "Biryani" }, { value: "Bitter", label: "Bitter" }, { value: "Black And White Picture", label: "Black And White Picture" }, { value: "Black Han Sans", label: "Black Han Sans" }, { value: "Black Ops One", label: "Black Ops One" }, { value: "Bokor", label: "Bokor" }, { value: "Bonbon", label: "Bonbon" }, { value: "Boogaloo", label: "Boogaloo" }, { value: "Bowlby One", label: "Bowlby One" }, { value: "Bowlby One SC", label: "Bowlby One SC" }, { value: "Brawler", label: "Brawler" }, { value: "Bree Serif", label: "Bree Serif" }, { value: "Bubblegum Sans", label: "Bubblegum Sans" }, { value: "Bubbler One", label: "Bubbler One" }, { value: "Buda", label: "Buda" }, { value: "Buenard", label: "Buenard" }, { value: "Bungee", label: "Bungee" }, { value: "Bungee Hairline", label: "Bungee Hairline" }, { value: "Bungee Inline", label: "Bungee Inline" }, { value: "Bungee Outline", label: "Bungee Outline" }, { value: "Bungee Shade", label: "Bungee Shade" }, { value: "Butcherman", label: "Butcherman" }, { value: "Butterfly Kids", label: "Butterfly Kids" }, { value: "Cabin", label: "Cabin" }, { value: "Cabin Condensed", label: "Cabin Condensed" }, { value: "Cabin Sketch", label: "Cabin Sketch" }, { value: "Caesar Dressing", label: "Caesar Dressing" }, { value: "Cagliostro", label: "Cagliostro" }, { value: "Cairo", label: "Cairo" }, { value: "Calligraffitti", label: "Calligraffitti" }, { value: "Cambay", label: "Cambay" }, { value: "Cambo", label: "Cambo" }, { value: "Candal", label: "Candal" }, { value: "Cantarell", label: "Cantarell" }, { value: "Cantata One", label: "Cantata One" }, { value: "Cantora One", label: "Cantora One" }, { value: "Capriola", label: "Capriola" }, { value: "Cardo", label: "Cardo" }, { value: "Carme", label: "Carme" }, { value: "Carrois Gothic", label: "Carrois Gothic" }, { value: "Carrois Gothic SC", label: "Carrois Gothic SC" }, { value: "Carter One", label: "Carter One" }, { value: "Catamaran", label: "Catamaran" }, { value: "Caudex", label: "Caudex" }, { value: "Caveat", label: "Caveat" }, { value: "Caveat Brush", label: "Caveat Brush" }, { value: "Cedarville Cursive", label: "Cedarville Cursive" }, { value: "Ceviche One", label: "Ceviche One" }, { value: "Chakra Petch", label: "Chakra Petch" }, { value: "Changa", label: "Changa" }, { value: "Changa One", label: "Changa One" }, { value: "Chango", label: "Chango" }, { value: "Charmonman", label: "Charmonman" }, { value: "Chathura", label: "Chathura" }, { value: "Chau Philomene One", label: "Chau Philomene One" }, { value: "Chela One", label: "Chela One" }, { value: "Chelsea Market", label: "Chelsea Market" }, { value: "Chenla", label: "Chenla" }, { value: "Cherry Cream Soda", label: "Cherry Cream Soda" }, { value: "Cherry Swash", label: "Cherry Swash" }, { value: "Chewy", label: "Chewy" }, { value: "Chicle", label: "Chicle" }, { value: "Chivo", label: "Chivo" }, { value: "Chonburi", label: "Chonburi" }, { value: "Cinzel", label: "Cinzel" }, { value: "Cinzel Decorative", label: "Cinzel Decorative" }, { value: "Clicker Script", label: "Clicker Script" }, { value: "Coda", label: "Coda" }, { value: "Coda Caption", label: "Coda Caption" }, { value: "Codystar", label: "Codystar" }, { value: "Coiny", label: "Coiny" }, { value: "Combo", label: "Combo" }, { value: "Comfortaa", label: "Comfortaa" }, { value: "Coming Soon", label: "Coming Soon" }, { value: "Concert One", label: "Concert One" }, { value: "Condiment", label: "Condiment" }, { value: "Content", label: "Content" }, { value: "Contrail One", label: "Contrail One" }, { value: "Convergence", label: "Convergence" }, { value: "Cookie", label: "Cookie" }, { value: "Copse", label: "Copse" }, { value: "Corben", label: "Corben" }, { value: "Cormorant", label: "Cormorant" }, { value: "Cormorant Garamond", label: "Cormorant Garamond" }, { value: "Cormorant Infant", label: "Cormorant Infant" }, { value: "Cormorant SC", label: "Cormorant SC" }, { value: "Cormorant Unicase", label: "Cormorant Unicase" }, { value: "Cormorant Upright", label: "Cormorant Upright" }, { value: "Courgette", label: "Courgette" }, { value: "Cousine", label: "Cousine" }, { value: "Coustard", label: "Coustard" }, { value: "Covered By Your Grace", label: "Covered By Your Grace" }, { value: "Crafty Girls", label: "Crafty Girls" }, { value: "Creepster", label: "Creepster" }, { value: "Crete Round", label: "Crete Round" }, { value: "Crimson Text", label: "Crimson Text" }, { value: "Croissant One", label: "Croissant One" }, { value: "Crushed", label: "Crushed" }, { value: "Cuprum", label: "Cuprum" }, { value: "Cute Font", label: "Cute Font" }, { value: "Cutive", label: "Cutive" }, { value: "Cutive Mono", label: "Cutive Mono" }, { value: "Damion", label: "Damion" }, { value: "Dancing Script", label: "Dancing Script" }, { value: "Dangrek", label: "Dangrek" }, { value: "David Libre", label: "David Libre" }, { value: "Dawning of a New Day", label: "Dawning of a New Day" }, { value: "Days One", label: "Days One" }, { value: "Dekko", label: "Dekko" }, { value: "Delius", label: "Delius" }, { value: "Delius Swash Caps", label: "Delius Swash Caps" }, { value: "Delius Unicase", label: "Delius Unicase" }, { value: "Della Respira", label: "Della Respira" }, { value: "Denk One", label: "Denk One" }, { value: "Devonshire", label: "Devonshire" }, { value: "Dhurjati", label: "Dhurjati" }, { value: "Didact Gothic", label: "Didact Gothic" }, { value: "Diplomata", label: "Diplomata" }, { value: "Diplomata SC", label: "Diplomata SC" }, { value: "Do Hyeon", label: "Do Hyeon" }, { value: "Dokdo", label: "Dokdo" }, { value: "Domine", label: "Domine" }, { value: "Donegal One", label: "Donegal One" }, { value: "Doppio One", label: "Doppio One" }, { value: "Dorsa", label: "Dorsa" }, { value: "Dosis", label: "Dosis" }, { value: "Dr Sugiyama", label: "Dr Sugiyama" }, { value: "Droid Arabic Kufi", label: "Droid Arabic Kufi" }, { value: "Droid Arabic Naskh", label: "Droid Arabic Naskh" }, { value: "Duru Sans", label: "Duru Sans" }, { value: "Dynalight", label: "Dynalight" }, { value: "EB Garamond", label: "EB Garamond" }, { value: "Eagle Lake", label: "Eagle Lake" }, { value: "East Sea Dokdo", label: "East Sea Dokdo" }, { value: "Eater", label: "Eater" }, { value: "Economica", label: "Economica" }, { value: "Eczar", label: "Eczar" }, { value: "El Messiri", label: "El Messiri" }, { value: "Electrolize", label: "Electrolize" }, { value: "Elsie", label: "Elsie" }, { value: "Elsie Swash Caps", label: "Elsie Swash Caps" }, { value: "Emblema One", label: "Emblema One" }, { value: "Emilys Candy", label: "Emilys Candy" }, { value: "Encode Sans", label: "Encode Sans" }, { value: "Encode Sans Condensed", label: "Encode Sans Condensed" }, { value: "Encode Sans Expanded", label: "Encode Sans Expanded" }, { value: "Encode Sans Semi Condensed", label: "Encode Sans Semi Condensed" }, { value: "Encode Sans Semi Expanded", label: "Encode Sans Semi Expanded" }, { value: "Engagement", label: "Engagement" }, { value: "Englebert", label: "Englebert" }, { value: "Enriqueta", label: "Enriqueta" }, { value: "Erica One", label: "Erica One" }, { value: "Esteban", label: "Esteban" }, { value: "Euphoria Script", label: "Euphoria Script" }, { value: "Ewert", label: "Ewert" }, { value: "Exo", label: "Exo" }, { value: "Exo 2", label: "Exo 2" }, { value: "Expletus Sans", label: "Expletus Sans" }, { value: "Fahkwang", label: "Fahkwang" }, { value: "Fanwood Text", label: "Fanwood Text" }, { value: "Farsan", label: "Farsan" }, { value: "Fascinate", label: "Fascinate" }, { value: "Fascinate Inline", label: "Fascinate Inline" }, { value: "Faster One", label: "Faster One" }, { value: "Fasthand", label: "Fasthand" }, { value: "Fauna One", label: "Fauna One" }, { value: "Faustina", label: "Faustina" }, { value: "Federant", label: "Federant" }, { value: "Federo", label: "Federo" }, { value: "Felipa", label: "Felipa" }, { value: "Fenix", label: "Fenix" }, { value: "Finger Paint", label: "Finger Paint" }, { value: "Fira Mono", label: "Fira Mono" }, { value: "Fira Sans", label: "Fira Sans" }, { value: "Fira Sans Condensed", label: "Fira Sans Condensed" }, { value: "Fira Sans Extra Condensed", label: "Fira Sans Extra Condensed" }, { value: "Fjalla One", label: "Fjalla One" }, { value: "Fjord One", label: "Fjord One" }, { value: "Flamenco", label: "Flamenco" }, { value: "Flavors", label: "Flavors" }, { value: "Fondamento", label: "Fondamento" }, { value: "Fontdiner Swanky", label: "Fontdiner Swanky" }, { value: "Forum", label: "Forum" }, { value: "Francois One", label: "Francois One" }, { value: "Frank Ruhl Libre", label: "Frank Ruhl Libre" }, { value: "Freckle Face", label: "Freckle Face" }, { value: "Fredericka the Great", label: "Fredericka the Great" }, { value: "Fredoka One", label: "Fredoka One" }, { value: "Freehand", label: "Freehand" }, { value: "Fresca", label: "Fresca" }, { value: "Frijole", label: "Frijole" }, { value: "Fruktur", label: "Fruktur" }, { value: "Fugaz One", label: "Fugaz One" }, { value: "GFS Didot", label: "GFS Didot" }, { value: "GFS Neohellenic", label: "GFS Neohellenic" }, { value: "Gabriela", label: "Gabriela" }, { value: "Gaegu", label: "Gaegu" }, { value: "Gafata", label: "Gafata" }, { value: "Galada", label: "Galada" }, { value: "Galdeano", label: "Galdeano" }, { value: "Galindo", label: "Galindo" }, { value: "Gamja Flower", label: "Gamja Flower" }, { value: "Gentium Basic", label: "Gentium Basic" }, { value: "Gentium Book Basic", label: "Gentium Book Basic" }, { value: "Geo", label: "Geo" }, { value: "Geostar", label: "Geostar" }, { value: "Geostar Fill", label: "Geostar Fill" }, { value: "Germania One", label: "Germania One" }, { value: "Gidugu", label: "Gidugu" }, { value: "Gilda Display", label: "Gilda Display" }, { value: "Give You Glory", label: "Give You Glory" }, { value: "Glass Antiqua", label: "Glass Antiqua" }, { value: "Glegoo", label: "Glegoo" }, { value: "Gloria Hallelujah", label: "Gloria Hallelujah" }, { value: "Goblin One", label: "Goblin One" }, { value: "Gochi Hand", label: "Gochi Hand" }, { value: "Gorditas", label: "Gorditas" }, { value: "Gothic A1", label: "Gothic A1" }, { value: "Goudy Bookletter 1911", label: "Goudy Bookletter 1911" }, { value: "Graduate", label: "Graduate" }, { value: "Grand Hotel", label: "Grand Hotel" }, { value: "Gravitas One", label: "Gravitas One" }, { value: "Great Vibes", label: "Great Vibes" }, { value: "Griffy", label: "Griffy" }, { value: "Gruppo", label: "Gruppo" }, { value: "Gudea", label: "Gudea" }, { value: "Gugi", label: "Gugi" }, { value: "Gurajada", label: "Gurajada" }, { value: "Habibi", label: "Habibi" }, { value: "Halant", label: "Halant" }, { value: "Hammersmith One", label: "Hammersmith One" }, { value: "Hanalei", label: "Hanalei" }, { value: "Hanalei Fill", label: "Hanalei Fill" }, { value: "Handlee", label: "Handlee" }, { value: "Hanuman", label: "Hanuman" }, { value: "Happy Monkey", label: "Happy Monkey" }, { value: "Harmattan", label: "Harmattan" }, { value: "Headland One", label: "Headland One" }, { value: "Heebo", label: "Heebo" }, { value: "Henny Penny", label: "Henny Penny" }, { value: "Herr Von Muellerhoff", label: "Herr Von Muellerhoff" }, { value: "Hi Melody", label: "Hi Melody" }, { value: "Hind", label: "Hind" }, { value: "Hind Guntur", label: "Hind Guntur" }, { value: "Hind Madurai", label: "Hind Madurai" }, { value: "Hind Siliguri", label: "Hind Siliguri" }, { value: "Hind Vadodara", label: "Hind Vadodara" }, { value: "Holtwood One SC", label: "Holtwood One SC" }, { value: "Homemade Apple", label: "Homemade Apple" }, { value: "Homenaje", label: "Homenaje" }, { value: "IBM Plex Mono", label: "IBM Plex Mono" }, { value: "IBM Plex Sans", label: "IBM Plex Sans" }, { value: "IBM Plex Sans Condensed", label: "IBM Plex Sans Condensed" }, { value: "IBM Plex Serif", label: "IBM Plex Serif" }, { value: "IM Fell DW Pica", label: "IM Fell DW Pica" }, { value: "IM Fell DW Pica SC", label: "IM Fell DW Pica SC" }, { value: "IM Fell Double Pica", label: "IM Fell Double Pica" }, { value: "IM Fell Double Pica SC", label: "IM Fell Double Pica SC" }, { value: "IM Fell English", label: "IM Fell English" }, { value: "IM Fell English SC", label: "IM Fell English SC" }, { value: "IM Fell French Canon", label: "IM Fell French Canon" }, { value: "IM Fell French Canon SC", label: "IM Fell French Canon SC" }, { value: "IM Fell Great Primer", label: "IM Fell Great Primer" }, { value: "IM Fell Great Primer SC", label: "IM Fell Great Primer SC" }, { value: "Iceberg", label: "Iceberg" }, { value: "Iceland", label: "Iceland" }, { value: "Imprima", label: "Imprima" }, { value: "Inconsolata", label: "Inconsolata" }, { value: "Inder", label: "Inder" }, { value: "Indie Flower", label: "Indie Flower" }, { value: "Inika", label: "Inika" }, { value: "Inknut Antiqua", label: "Inknut Antiqua" }, { value: "Irish Grover", label: "Irish Grover" }, { value: "Istok Web", label: "Istok Web" }, { value: "Italiana", label: "Italiana" }, { value: "Italianno", label: "Italianno" }, { value: "Itim", label: "Itim" }, { value: "Jacques Francois", label: "Jacques Francois" }, { value: "Jacques Francois Shadow", label: "Jacques Francois Shadow" }, { value: "Jaldi", label: "Jaldi" }, { value: "Jim Nightshade", label: "Jim Nightshade" }, { value: "Jockey One", label: "Jockey One" }, { value: "Jolly Lodger", label: "Jolly Lodger" }, { value: "Jomhuria", label: "Jomhuria" }, { value: "Josefin Sans", label: "Josefin Sans" }, { value: "Josefin Slab", label: "Josefin Slab" }, { value: "Joti One", label: "Joti One" }, { value: "Jua", label: "Jua" }, { value: "Judson", label: "Judson" }, { value: "Julee", label: "Julee" }, { value: "Julius Sans One", label: "Julius Sans One" }, { value: "Junge", label: "Junge" }, { value: "Jura", label: "Jura" }, { value: "Just Another Hand", label: "Just Another Hand" }, { value: "Just Me Again Down Here", label: "Just Me Again Down Here" }, { value: "K2D", label: "K2D" }, { value: "Kadwa", label: "Kadwa" }, { value: "Kalam", label: "Kalam" }, { value: "Kameron", label: "Kameron" }, { value: "Kanit", label: "Kanit" }, { value: "Kantumruy", label: "Kantumruy" }, { value: "Karla", label: "Karla" }, { value: "Karma", label: "Karma" }, { value: "Katibeh", label: "Katibeh" }, { value: "Kaushan Script", label: "Kaushan Script" }, { value: "Kavivanar", label: "Kavivanar" }, { value: "Kavoon", label: "Kavoon" }, { value: "Kdam Thmor", label: "Kdam Thmor" }, { value: "Keania One", label: "Keania One" }, { value: "Kelly Slab", label: "Kelly Slab" }, { value: "Kenia", label: "Kenia" }, { value: "Khand", label: "Khand" }, { value: "Khmer", label: "Khmer" }, { value: "Khula", label: "Khula" }, { value: "Kirang Haerang", label: "Kirang Haerang" }, { value: "Kite One", label: "Kite One" }, { value: "Knewave", label: "Knewave" }, { value: "KoHo", label: "KoHo" }, { value: "Kodchasan", label: "Kodchasan" }, { value: "Kosugi", label: "Kosugi" }, { value: "Kosugi Maru", label: "Kosugi Maru" }, { value: "Kotta One", label: "Kotta One" }, { value: "Koulen", label: "Koulen" }, { value: "Kranky", label: "Kranky" }, { value: "Kreon", label: "Kreon" }, { value: "Kristi", label: "Kristi" }, { value: "Krona One", label: "Krona One" }, { value: "Krub", label: "Krub" }, { value: "Kumar One", label: "Kumar One" }, { value: "Kumar One Outline", label: "Kumar One Outline" }, { value: "Kurale", label: "Kurale" }, { value: "La Belle Aurore", label: "La Belle Aurore" }, { value: "Laila", label: "Laila" }, { value: "Lakki Reddy", label: "Lakki Reddy" }, { value: "Lalezar", label: "Lalezar" }, { value: "Lancelot", label: "Lancelot" }, { value: "Lateef", label: "Lateef" }, { value: "Lato", label: "Lato" }, { value: "League Script", label: "League Script" }, { value: "Leckerli One", label: "Leckerli One" }, { value: "Ledger", label: "Ledger" }, { value: "Lekton", label: "Lekton" }, { value: "Lemon", label: "Lemon" }, { value: "Lemonada", label: "Lemonada" }, { value: "Libre Barcode 128", label: "Libre Barcode 128" }, { value: "Libre Barcode 128 Text", label: "Libre Barcode 128 Text" }, { value: "Libre Barcode 39", label: "Libre Barcode 39" }, { value: "Libre Barcode 39 Extended", label: "Libre Barcode 39 Extended" }, {
+  value: "Libre Barcode 39 Extended Text",
+  label: "Libre Barcode 39 Extended Text"
+}, { value: "Libre Barcode 39 Text", label: "Libre Barcode 39 Text" }, { value: "Libre Baskerville", label: "Libre Baskerville" }, { value: "Libre Franklin", label: "Libre Franklin" }, { value: "Life Savers", label: "Life Savers" }, { value: "Lilita One", label: "Lilita One" }, { value: "Lily Script One", label: "Lily Script One" }, { value: "Limelight", label: "Limelight" }, { value: "Linden Hill", label: "Linden Hill" }, { value: "Lobster", label: "Lobster" }, { value: "Lobster Two", label: "Lobster Two" }, { value: "Londrina Outline", label: "Londrina Outline" }, { value: "Londrina Shadow", label: "Londrina Shadow" }, { value: "Londrina Sketch", label: "Londrina Sketch" }, { value: "Londrina Solid", label: "Londrina Solid" }, { value: "Lora", label: "Lora" }, { value: "Love Ya Like A Sister", label: "Love Ya Like A Sister" }, { value: "Loved by the King", label: "Loved by the King" }, { value: "Lovers Quarrel", label: "Lovers Quarrel" }, { value: "Luckiest Guy", label: "Luckiest Guy" }, { value: "Lusitana", label: "Lusitana" }, { value: "Lustria", label: "Lustria" }, { value: "M PLUS 1p", label: "M PLUS 1p" }, { value: "M PLUS Rounded 1c", label: "M PLUS Rounded 1c" }, { value: "Macondo", label: "Macondo" }, { value: "Macondo Swash Caps", label: "Macondo Swash Caps" }, { value: "Mada", label: "Mada" }, { value: "Magra", label: "Magra" }, { value: "Maiden Orange", label: "Maiden Orange" }, { value: "Maitree", label: "Maitree" }, { value: "Mako", label: "Mako" }, { value: "Mali", label: "Mali" }, { value: "Mallanna", label: "Mallanna" }, { value: "Mandali", label: "Mandali" }, { value: "Manuale", label: "Manuale" }, { value: "Marcellus", label: "Marcellus" }, { value: "Marcellus SC", label: "Marcellus SC" }, { value: "Marck Script", label: "Marck Script" }, { value: "Margarine", label: "Margarine" }, { value: "Markazi Text", label: "Markazi Text" }, { value: "Marko One", label: "Marko One" }, { value: "Marmelad", label: "Marmelad" }, { value: "Martel", label: "Martel" }, { value: "Martel Sans", label: "Martel Sans" }, { value: "Marvel", label: "Marvel" }, { value: "Mate", label: "Mate" }, { value: "Mate SC", label: "Mate SC" }, { value: "Maven Pro", label: "Maven Pro" }, { value: "McLaren", label: "McLaren" }, { value: "Meddon", label: "Meddon" }, { value: "MedievalSharp", label: "MedievalSharp" }, { value: "Medula One", label: "Medula One" }, { value: "Meera Inimai", label: "Meera Inimai" }, { value: "Megrim", label: "Megrim" }, { value: "Meie Script", label: "Meie Script" }, { value: "Merienda", label: "Merienda" }, { value: "Merienda One", label: "Merienda One" }, { value: "Merriweather", label: "Merriweather" }, { value: "Merriweather Sans", label: "Merriweather Sans" }, { value: "Metal", label: "Metal" }, { value: "Metal Mania", label: "Metal Mania" }, { value: "Metamorphous", label: "Metamorphous" }, { value: "Metrophobic", label: "Metrophobic" }, { value: "Michroma", label: "Michroma" }, { value: "Milonga", label: "Milonga" }, { value: "Miltonian", label: "Miltonian" }, { value: "Miltonian Tattoo", label: "Miltonian Tattoo" }, { value: "Mina", label: "Mina" }, { value: "Miniver", label: "Miniver" }, { value: "Miriam Libre", label: "Miriam Libre" }, { value: "Mirza", label: "Mirza" }, { value: "Miss Fajardose", label: "Miss Fajardose" }, { value: "Mitr", label: "Mitr" }, { value: "Modak", label: "Modak" }, { value: "Modern Antiqua", label: "Modern Antiqua" }, { value: "Mogra", label: "Mogra" }, { value: "Molengo", label: "Molengo" }, { value: "Molle", label: "Molle" }, { value: "Monda", label: "Monda" }, { value: "Monofett", label: "Monofett" }, { value: "Monoton", label: "Monoton" }, { value: "Monsieur La Doulaise", label: "Monsieur La Doulaise" }, { value: "Montaga", label: "Montaga" }, { value: "Montez", label: "Montez" }, { value: "Montserrat", label: "Montserrat" }, { value: "Montserrat Alternates", label: "Montserrat Alternates" }, { value: "Montserrat Subrayada", label: "Montserrat Subrayada" }, { value: "Moul", label: "Moul" }, { value: "Moulpali", label: "Moulpali" }, { value: "Mountains of Christmas", label: "Mountains of Christmas" }, { value: "Mouse Memoirs", label: "Mouse Memoirs" }, { value: "Mr Bedfort", label: "Mr Bedfort" }, { value: "Mr Dafoe", label: "Mr Dafoe" }, { value: "Mr De Haviland", label: "Mr De Haviland" }, { value: "Mrs Saint Delafield", label: "Mrs Saint Delafield" }, { value: "Mrs Sheppards", label: "Mrs Sheppards" }, { value: "Mukta", label: "Mukta" }, { value: "Mukta Mahee", label: "Mukta Mahee" }, { value: "Mukta Malar", label: "Mukta Malar" }, { value: "Mukta Vaani", label: "Mukta Vaani" }, { value: "Muli", label: "Muli" }, { value: "Mystery Quest", label: "Mystery Quest" }, { value: "NTR", label: "NTR" }, { value: "Nanum Brush Script", label: "Nanum Brush Script" }, { value: "Nanum Gothic", label: "Nanum Gothic" }, { value: "Nanum Gothic Coding", label: "Nanum Gothic Coding" }, { value: "Nanum Myeongjo", label: "Nanum Myeongjo" }, { value: "Nanum Pen Script", label: "Nanum Pen Script" }, { value: "Neucha", label: "Neucha" }, { value: "Neuton", label: "Neuton" }, { value: "New Rocker", label: "New Rocker" }, { value: "News Cycle", label: "News Cycle" }, { value: "Niconne", label: "Niconne" }, { value: "Niramit", label: "Niramit" }, { value: "Nixie One", label: "Nixie One" }, { value: "Nobile", label: "Nobile" }, { value: "Nokora", label: "Nokora" }, { value: "Norican", label: "Norican" }, { value: "Nosifer", label: "Nosifer" }, { value: "Notable", label: "Notable" }, { value: "Nothing You Could Do", label: "Nothing You Could Do" }, { value: "Noticia Text", label: "Noticia Text" }, { value: "Noto Kufi Arabic", label: "Noto Kufi Arabic" }, { value: "Noto Naskh Arabic", label: "Noto Naskh Arabic" }, { value: "Noto Sans", label: "Noto Sans" }, { value: "Noto Sans Hebrew", label: "Noto Sans Hebrew" }, { value: "Noto Sans JP", label: "Noto Sans JP" }, { value: "Noto Sans KR", label: "Noto Sans KR" }, { value: "Noto Serif", label: "Noto Serif" }, { value: "Noto Serif JP", label: "Noto Serif JP" }, { value: "Noto Serif KR", label: "Noto Serif KR" }, { value: "Nova Cut", label: "Nova Cut" }, { value: "Nova Flat", label: "Nova Flat" }, { value: "Nova Mono", label: "Nova Mono" }, { value: "Nova Oval", label: "Nova Oval" }, { value: "Nova Round", label: "Nova Round" }, { value: "Nova Script", label: "Nova Script" }, { value: "Nova Slim", label: "Nova Slim" }, { value: "Nova Square", label: "Nova Square" }, { value: "Numans", label: "Numans" }, { value: "Nunito", label: "Nunito" }, { value: "Nunito Sans", label: "Nunito Sans" }, { value: "Odor Mean Chey", label: "Odor Mean Chey" }, { value: "Offside", label: "Offside" }, { value: "Old Standard TT", label: "Old Standard TT" }, { value: "Oldenburg", label: "Oldenburg" }, { value: "Oleo Script", label: "Oleo Script" }, { value: "Oleo Script Swash Caps", label: "Oleo Script Swash Caps" }, { value: "Open Sans", label: "Open Sans" }, { value: "Open Sans Condensed", label: "Open Sans Condensed" }, { value: "Open Sans Hebrew", label: "Open Sans Hebrew" }, { value: "Open Sans Hebrew Condensed", label: "Open Sans Hebrew Condensed" }, { value: "Oranienbaum", label: "Oranienbaum" }, { value: "Orbitron", label: "Orbitron" }, { value: "Oregano", label: "Oregano" }, { value: "Orienta", label: "Orienta" }, { value: "Original Surfer", label: "Original Surfer" }, { value: "Oswald", label: "Oswald" }, { value: "Over the Rainbow", label: "Over the Rainbow" }, { value: "Overlock", label: "Overlock" }, { value: "Overlock SC", label: "Overlock SC" }, { value: "Overpass", label: "Overpass" }, { value: "Overpass Mono", label: "Overpass Mono" }, { value: "Ovo", label: "Ovo" }, { value: "Oxygen", label: "Oxygen" }, { value: "Oxygen Mono", label: "Oxygen Mono" }, { value: "PT Mono", label: "PT Mono" }, { value: "PT Sans", label: "PT Sans" }, { value: "PT Sans Caption", label: "PT Sans Caption" }, { value: "PT Sans Narrow", label: "PT Sans Narrow" }, { value: "PT Serif", label: "PT Serif" }, { value: "PT Serif Caption", label: "PT Serif Caption" }, { value: "Pacifico", label: "Pacifico" }, { value: "Padauk", label: "Padauk" }, { value: "Palanquin", label: "Palanquin" }, { value: "Palanquin Dark", label: "Palanquin Dark" }, { value: "Pangolin", label: "Pangolin" }, { value: "Paprika", label: "Paprika" }, { value: "Parisienne", label: "Parisienne" }, { value: "Passero One", label: "Passero One" }, { value: "Passion One", label: "Passion One" }, { value: "Pathway Gothic One", label: "Pathway Gothic One" }, { value: "Patrick Hand", label: "Patrick Hand" }, { value: "Patrick Hand SC", label: "Patrick Hand SC" }, { value: "Pattaya", label: "Pattaya" }, { value: "Patua One", label: "Patua One" }, { value: "Pavanam", label: "Pavanam" }, { value: "Paytone One", label: "Paytone One" }, { value: "Peddana", label: "Peddana" }, { value: "Peralta", label: "Peralta" }, { value: "Permanent Marker", label: "Permanent Marker" }, { value: "Petit Formal Script", label: "Petit Formal Script" }, { value: "Petrona", label: "Petrona" }, { value: "Philosopher", label: "Philosopher" }, { value: "Piedra", label: "Piedra" }, { value: "Pinyon Script", label: "Pinyon Script" }, { value: "Pirata One", label: "Pirata One" }, { value: "Plaster", label: "Plaster" }, { value: "Play", label: "Play" }, { value: "Playball", label: "Playball" }, { value: "Playfair Display", label: "Playfair Display" }, { value: "Playfair Display SC", label: "Playfair Display SC" }, { value: "Podkova", label: "Podkova" }, { value: "Poiret One", label: "Poiret One" }, { value: "Poller One", label: "Poller One" }, { value: "Poly", label: "Poly" }, { value: "Pompiere", label: "Pompiere" }, { value: "Pontano Sans", label: "Pontano Sans" }, { value: "Poor Story", label: "Poor Story" }, { value: "Poppins", label: "Poppins" }, { value: "Port Lligat Sans", label: "Port Lligat Sans" }, { value: "Port Lligat Slab", label: "Port Lligat Slab" }, { value: "Pragati Narrow", label: "Pragati Narrow" }, { value: "Prata", label: "Prata" }, { value: "Preahvihear", label: "Preahvihear" }, { value: "Press Start 2P", label: "Press Start 2P" }, { value: "Pridi", label: "Pridi" }, { value: "Princess Sofia", label: "Princess Sofia" }, { value: "Prociono", label: "Prociono" }, { value: "Prompt", label: "Prompt" }, { value: "Prosto One", label: "Prosto One" }, { value: "Proza Libre", label: "Proza Libre" }, { value: "Puritan", label: "Puritan" }, { value: "Purple Purse", label: "Purple Purse" }, { value: "Quando", label: "Quando" }, { value: "Quantico", label: "Quantico" }, { value: "Quattrocento", label: "Quattrocento" }, { value: "Quattrocento Sans", label: "Quattrocento Sans" }, { value: "Questrial", label: "Questrial" }, { value: "Quicksand", label: "Quicksand" }, { value: "Quintessential", label: "Quintessential" }, { value: "Qwigley", label: "Qwigley" }, { value: "Racing Sans One", label: "Racing Sans One" }, { value: "Radley", label: "Radley" }, { value: "Rajdhani", label: "Rajdhani" }, { value: "Rakkas", label: "Rakkas" }, { value: "Raleway", label: "Raleway" }, { value: "Raleway Dots", label: "Raleway Dots" }, { value: "Ramabhadra", label: "Ramabhadra" }, { value: "Ramaraja", label: "Ramaraja" }, { value: "Rambla", label: "Rambla" }, { value: "Rammetto One", label: "Rammetto One" }, { value: "Ranchers", label: "Ranchers" }, { value: "Rancho", label: "Rancho" }, { value: "Ranga", label: "Ranga" }, { value: "Rasa", label: "Rasa" }, { value: "Rationale", label: "Rationale" }, { value: "Ravi Prakash", label: "Ravi Prakash" }, { value: "Redressed", label: "Redressed" }, { value: "Reem Kufi", label: "Reem Kufi" }, { value: "Reenie Beanie", label: "Reenie Beanie" }, { value: "Revalia", label: "Revalia" }, { value: "Rhodium Libre", label: "Rhodium Libre" }, { value: "Ribeye", label: "Ribeye" }, { value: "Ribeye Marrow", label: "Ribeye Marrow" }, { value: "Righteous", label: "Righteous" }, { value: "Risque", label: "Risque" }, { value: "Roboto", label: "Roboto" }, { value: "Roboto Condensed", label: "Roboto Condensed" }, { value: "Roboto Mono", label: "Roboto Mono" }, { value: "Roboto Slab", label: "Roboto Slab" }, { value: "Rochester", label: "Rochester" }, { value: "Rock Salt", label: "Rock Salt" }, { value: "Rokkitt", label: "Rokkitt" }, { value: "Romanesco", label: "Romanesco" }, { value: "Ropa Sans", label: "Ropa Sans" }, { value: "Rosario", label: "Rosario" }, { value: "Rosarivo", label: "Rosarivo" }, { value: "Rouge Script", label: "Rouge Script" }, { value: "Rozha One", label: "Rozha One" }, { value: "Rubik", label: "Rubik" }, { value: "Rubik Mono One", label: "Rubik Mono One" }, { value: "Ruda", label: "Ruda" }, { value: "Rufina", label: "Rufina" }, { value: "Ruge Boogie", label: "Ruge Boogie" }, { value: "Ruluko", label: "Ruluko" }, { value: "Rum Raisin", label: "Rum Raisin" }, { value: "Ruslan Display", label: "Ruslan Display" }, { value: "Russo One", label: "Russo One" }, { value: "Ruthie", label: "Ruthie" }, { value: "Rye", label: "Rye" }, { value: "Sacramento", label: "Sacramento" }, { value: "Sahitya", label: "Sahitya" }, { value: "Sail", label: "Sail" }, { value: "Saira", label: "Saira" }, { value: "Saira Condensed", label: "Saira Condensed" }, { value: "Saira Extra Condensed", label: "Saira Extra Condensed" }, { value: "Saira Semi Condensed", label: "Saira Semi Condensed" }, { value: "Salsa", label: "Salsa" }, { value: "Sanchez", label: "Sanchez" }, { value: "Sancreek", label: "Sancreek" }, { value: "Sansita", label: "Sansita" }, { value: "Sarala", label: "Sarala" }, { value: "Sarina", label: "Sarina" }, { value: "Sarpanch", label: "Sarpanch" }, { value: "Satisfy", label: "Satisfy" }, { value: "Sawarabi Gothic", label: "Sawarabi Gothic" }, { value: "Sawarabi Mincho", label: "Sawarabi Mincho" }, { value: "Scada", label: "Scada" }, { value: "Scheherazade", label: "Scheherazade" }, { value: "Schoolbell", label: "Schoolbell" }, { value: "Scope One", label: "Scope One" }, { value: "Seaweed Script", label: "Seaweed Script" }, { value: "Secular One", label: "Secular One" }, { value: "Sedgwick Ave", label: "Sedgwick Ave" }, { value: "Sedgwick Ave Display", label: "Sedgwick Ave Display" }, { value: "Sevillana", label: "Sevillana" }, { value: "Seymour One", label: "Seymour One" }, { value: "Shadows Into Light", label: "Shadows Into Light" }, { value: "Shadows Into Light Two", label: "Shadows Into Light Two" }, { value: "Shanti", label: "Shanti" }, { value: "Share", label: "Share" }, { value: "Share Tech", label: "Share Tech" }, { value: "Share Tech Mono", label: "Share Tech Mono" }, { value: "Shojumaru", label: "Shojumaru" }, { value: "Short Stack", label: "Short Stack" }, { value: "Shrikhand", label: "Shrikhand" }, { value: "Siemreap", label: "Siemreap" }, { value: "Sigmar One", label: "Sigmar One" }, { value: "Signika", label: "Signika" }, { value: "Signika Negative", label: "Signika Negative" }, { value: "Simonetta", label: "Simonetta" }, { value: "Sintony", label: "Sintony" }, { value: "Sirin Stencil", label: "Sirin Stencil" }, { value: "Six Caps", label: "Six Caps" }, { value: "Skranji", label: "Skranji" }, { value: "Slabo 13px", label: "Slabo 13px" }, { value: "Slabo 27px", label: "Slabo 27px" }, { value: "Slackey", label: "Slackey" }, { value: "Smokum", label: "Smokum" }, { value: "Smythe", label: "Smythe" }, { value: "Sniglet", label: "Sniglet" }, { value: "Snippet", label: "Snippet" }, { value: "Snowburst One", label: "Snowburst One" }, { value: "Sofadi One", label: "Sofadi One" }, { value: "Sofia", label: "Sofia" }, { value: "Song Myung", label: "Song Myung" }, { value: "Sonsie One", label: "Sonsie One" }, { value: "Sorts Mill Goudy", label: "Sorts Mill Goudy" }, { value: "Source Code Pro", label: "Source Code Pro" }, { value: "Source Sans Pro", label: "Source Sans Pro" }, { value: "Source Serif Pro", label: "Source Serif Pro" }, { value: "Space Mono", label: "Space Mono" }, { value: "Special Elite", label: "Special Elite" }, { value: "Spectral", label: "Spectral" }, { value: "Spectral SC", label: "Spectral SC" }, { value: "Spicy Rice", label: "Spicy Rice" }, { value: "Spinnaker", label: "Spinnaker" }, { value: "Spirax", label: "Spirax" }, { value: "Squada One", label: "Squada One" }, { value: "Sree Krushnadevaraya", label: "Sree Krushnadevaraya" }, { value: "Sriracha", label: "Sriracha" }, { value: "Srisakdi", label: "Srisakdi" }, { value: "Stalemate", label: "Stalemate" }, { value: "Stalinist One", label: "Stalinist One" }, { value: "Stardos Stencil", label: "Stardos Stencil" }, { value: "Stint Ultra Condensed", label: "Stint Ultra Condensed" }, { value: "Stint Ultra Expanded", label: "Stint Ultra Expanded" }, { value: "Stoke", label: "Stoke" }, { value: "Strait", label: "Strait" }, { value: "Stylish", label: "Stylish" }, { value: "Sue Ellen Francisco", label: "Sue Ellen Francisco" }, { value: "Suez One", label: "Suez One" }, { value: "Sumana", label: "Sumana" }, { value: "Sunflower", label: "Sunflower" }, { value: "Sunshiney", label: "Sunshiney" }, { value: "Supermercado One", label: "Supermercado One" }, { value: "Sura", label: "Sura" }, { value: "Suranna", label: "Suranna" }, { value: "Suravaram", label: "Suravaram" }, { value: "Suwannaphum", label: "Suwannaphum" }, { value: "Swanky and Moo Moo", label: "Swanky and Moo Moo" }, { value: "Syncopate", label: "Syncopate" }, { value: "Tajawal", label: "Tajawal" }, { value: "Tangerine", label: "Tangerine" }, { value: "Taprom", label: "Taprom" }, { value: "Tauri", label: "Tauri" }, { value: "Taviraj", label: "Taviraj" }, { value: "Teko", label: "Teko" }, { value: "Telex", label: "Telex" }, { value: "Tenali Ramakrishna", label: "Tenali Ramakrishna" }, { value: "Tenor Sans", label: "Tenor Sans" }, { value: "Text Me One", label: "Text Me One" }, { value: "The Girl Next Door", label: "The Girl Next Door" }, { value: "Tienne", label: "Tienne" }, { value: "Tillana", label: "Tillana" }, { value: "Timmana", label: "Timmana" }, { value: "Tinos", label: "Tinos" }, { value: "Titan One", label: "Titan One" }, { value: "Titillium Web", label: "Titillium Web" }, { value: "Trade Winds", label: "Trade Winds" }, { value: "Trirong", label: "Trirong" }, { value: "Trocchi", label: "Trocchi" }, { value: "Trochut", label: "Trochut" }, { value: "Trykker", label: "Trykker" }, { value: "Tulpen One", label: "Tulpen One" }, { value: "Ubuntu", label: "Ubuntu" }, { value: "Ubuntu Condensed", label: "Ubuntu Condensed" }, { value: "Ubuntu Mono", label: "Ubuntu Mono" }, { value: "Ultra", label: "Ultra" }, { value: "Uncial Antiqua", label: "Uncial Antiqua" }, { value: "Underdog", label: "Underdog" }, { value: "Unica One", label: "Unica One" }, { value: "UnifrakturCook", label: "UnifrakturCook" }, { value: "UnifrakturMaguntia", label: "UnifrakturMaguntia" }, { value: "Unkempt", label: "Unkempt" }, { value: "Unlock", label: "Unlock" }, { value: "Unna", label: "Unna" }, { value: "VT323", label: "VT323" }, { value: "Vampiro One", label: "Vampiro One" }, { value: "Varela", label: "Varela" }, { value: "Varela Round", label: "Varela Round" }, { value: "Vast Shadow", label: "Vast Shadow" }, { value: "Vesper Libre", label: "Vesper Libre" }, { value: "Vibur", label: "Vibur" }, { value: "Vidaloka", label: "Vidaloka" }, { value: "Viga", label: "Viga" }, { value: "Voces", label: "Voces" }, { value: "Volkhov", label: "Volkhov" }, { value: "Vollkorn", label: "Vollkorn" }, { value: "Vollkorn SC", label: "Vollkorn SC" }, { value: "Voltaire", label: "Voltaire" }, { value: "Waiting for the Sunrise", label: "Waiting for the Sunrise" }, { value: "Wallpoet", label: "Wallpoet" }, { value: "Walter Turncoat", label: "Walter Turncoat" }, { value: "Warnes", label: "Warnes" }, { value: "Wellfleet", label: "Wellfleet" }, { value: "Wendy One", label: "Wendy One" }, { value: "Wire One", label: "Wire One" }, { value: "Work Sans", label: "Work Sans" }, { value: "Yanone Kaffeesatz", label: "Yanone Kaffeesatz" }, { value: "Yantramanav", label: "Yantramanav" }, { value: "Yatra One", label: "Yatra One" }, { value: "Yellowtail", label: "Yellowtail" }, { value: "Yeon Sung", label: "Yeon Sung" }, { value: "Yeseva One", label: "Yeseva One" }, { value: "Yesteryear", label: "Yesteryear" }, { value: "Yrsa", label: "Yrsa" }, { value: "Zeyada", label: "Zeyada" }, { value: "Zilla Slab", label: "Zilla Slab" }, { value: "Zilla Slab Highlight", label: "Zilla Slab Highlight" }];
+
+/* harmony default export */ __webpack_exports__["a"] = (FONTS);
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumBackground;
 var __ = wp.i18n.__;
 var Fragment = wp.element.Fragment;
@@ -1155,24 +1173,6 @@ function PremiumBackground(props) {
 }
 
 /***/ }),
-/* 13 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var FONTS = [{
-  value: "Opens Sans",
-  label: "Opens Sans"
-}, {
-  value: "Bangers",
-  label: "Bangers"
-}, { value: "Arial", label: "Arial" }, { value: "Tahoma", label: "Tahoma" }, { value: "Verdana", label: "Verdana" }, { value: "Helvetica", label: "Helvetica" }, { value: "Times New Roman", label: "Times New Roman" }, { value: "Trebuchet MS", label: "Trebuchet MS" }, { value: "Georgia", label: "Georgia" }, { value: "ABeeZee", label: "ABeeZee" }, { value: "Abel", label: "Abel" }, { value: "Abhaya Libre", label: "Abhaya Libre" }, { value: "Abril Fatface", label: "Abril Fatface" }, { value: "Aclonica", label: "Aclonica" }, { value: "Acme", label: "Acme" }, { value: "Actor", label: "Actor" }, { value: "Adamina", label: "Adamina" }, { value: "Advent Pro", label: "Advent Pro" }, { value: "Aguafina Script", label: "Aguafina Script" }, { value: "Akronim", label: "Akronim" }, { value: "Aladin", label: "Aladin" }, { value: "Aldrich", label: "Aldrich" }, { value: "Alef", label: "Alef" }, { value: "Alef Hebrew", label: "Alef Hebrew" }, { value: "Alegreya", label: "Alegreya" }, { value: "Alegreya SC", label: "Alegreya SC" }, { value: "Alegreya Sans", label: "Alegreya Sans" }, { value: "Alegreya Sans SC", label: "Alegreya Sans SC" }, { value: "Alex Brush", label: "Alex Brush" }, { value: "Alfa Slab One", label: "Alfa Slab One" }, { value: "Alice", label: "Alice" }, { value: "Alike", label: "Alike" }, { value: "Alike Angular", label: "Alike Angular" }, { value: "Allan", label: "Allan" }, { value: "Allerta", label: "Allerta" }, { value: "Allerta Stencil", label: "Allerta Stencil" }, { value: "Allura", label: "Allura" }, { value: "Almendra", label: "Almendra" }, { value: "Almendra Display", label: "Almendra Display" }, { value: "Almendra SC", label: "Almendra SC" }, { value: "Amarante", label: "Amarante" }, { value: "Amaranth", label: "Amaranth" }, { value: "Amatic SC", label: "Amatic SC" }, { value: "Amethysta", label: "Amethysta" }, { value: "Amiko", label: "Amiko" }, { value: "Amiri", label: "Amiri" }, { value: "Amita", label: "Amita" }, { value: "Anaheim", label: "Anaheim" }, { value: "Andada", label: "Andada" }, { value: "Andika", label: "Andika" }, { value: "Angkor", label: "Angkor" }, { value: "Annie Use Your Telescope", label: "Annie Use Your Telescope" }, { value: "Anonymous Pro", label: "Anonymous Pro" }, { value: "Antic", label: "Antic" }, { value: "Antic Didone", label: "Antic Didone" }, { value: "Antic Slab", label: "Antic Slab" }, { value: "Anton", label: "Anton" }, { value: "Arapey", label: "Arapey" }, { value: "Arbutus", label: "Arbutus" }, { value: "Arbutus Slab", label: "Arbutus Slab" }, { value: "Architects Daughter", label: "Architects Daughter" }, { value: "Archivo", label: "Archivo" }, { value: "Archivo Black", label: "Archivo Black" }, { value: "Archivo Narrow", label: "Archivo Narrow" }, { value: "Aref Ruqaa", label: "Aref Ruqaa" }, { value: "Arima Madurai", label: "Arima Madurai" }, { value: "Arimo", label: "Arimo" }, { value: "Arizonia", label: "Arizonia" }, { value: "Armata", label: "Armata" }, { value: "Arsenal", label: "Arsenal" }, { value: "Artifika", label: "Artifika" }, { value: "Arvo", label: "Arvo" }, { value: "Arya", label: "Arya" }, { value: "Asap", label: "Asap" }, { value: "Asap Condensed", label: "Asap Condensed" }, { value: "Asar", label: "Asar" }, { value: "Asset", label: "Asset" }, { value: "Assistant", label: "Assistant" }, { value: "Astloch", label: "Astloch" }, { value: "Asul", label: "Asul" }, { value: "Athiti", label: "Athiti" }, { value: "Atma", label: "Atma" }, { value: "Atomic Age", label: "Atomic Age" }, { value: "Aubrey", label: "Aubrey" }, { value: "Audiowide", label: "Audiowide" }, { value: "Autour One", label: "Autour One" }, { value: "Average", label: "Average" }, { value: "Average Sans", label: "Average Sans" }, { value: "Averia Gruesa Libre", label: "Averia Gruesa Libre" }, { value: "Averia Libre", label: "Averia Libre" }, { value: "Averia Sans Libre", label: "Averia Sans Libre" }, { value: "Averia Serif Libre", label: "Averia Serif Libre" }, { value: "Bad Script", label: "Bad Script" }, { value: "Bahiana", label: "Bahiana" }, { value: "Bai Jamjuree", label: "Bai Jamjuree" }, { value: "Baloo", label: "Baloo" }, { value: "Baloo Bhai", label: "Baloo Bhai" }, { value: "Baloo Bhaijaan", label: "Baloo Bhaijaan" }, { value: "Baloo Bhaina", label: "Baloo Bhaina" }, { value: "Baloo Chettan", label: "Baloo Chettan" }, { value: "Baloo Da", label: "Baloo Da" }, { value: "Baloo Paaji", label: "Baloo Paaji" }, { value: "Baloo Tamma", label: "Baloo Tamma" }, { value: "Baloo Tammudu", label: "Baloo Tammudu" }, { value: "Baloo Thambi", label: "Baloo Thambi" }, { value: "Balthazar", label: "Balthazar" }, { value: "Bangers", label: "Bangers" }, { value: "Barlow", label: "Barlow" }, { value: "Barlow Condensed", label: "Barlow Condensed" }, { value: "Barlow Semi Condensed", label: "Barlow Semi Condensed" }, { value: "Barrio", label: "Barrio" }, { value: "Basic", label: "Basic" }, { value: "Battambang", label: "Battambang" }, { value: "Baumans", label: "Baumans" }, { value: "Bayon", label: "Bayon" }, { value: "Belgrano", label: "Belgrano" }, { value: "Bellefair", label: "Bellefair" }, { value: "Belleza", label: "Belleza" }, { value: "BenchNine", label: "BenchNine" }, { value: "Bentham", label: "Bentham" }, { value: "Berkshire Swash", label: "Berkshire Swash" }, { value: "Bevan", label: "Bevan" }, { value: "Bigelow Rules", label: "Bigelow Rules" }, { value: "Bigshot One", label: "Bigshot One" }, { value: "Bilbo", label: "Bilbo" }, { value: "Bilbo Swash Caps", label: "Bilbo Swash Caps" }, { value: "BioRhyme", label: "BioRhyme" }, { value: "BioRhyme Expanded", label: "BioRhyme Expanded" }, { value: "Biryani", label: "Biryani" }, { value: "Bitter", label: "Bitter" }, { value: "Black And White Picture", label: "Black And White Picture" }, { value: "Black Han Sans", label: "Black Han Sans" }, { value: "Black Ops One", label: "Black Ops One" }, { value: "Bokor", label: "Bokor" }, { value: "Bonbon", label: "Bonbon" }, { value: "Boogaloo", label: "Boogaloo" }, { value: "Bowlby One", label: "Bowlby One" }, { value: "Bowlby One SC", label: "Bowlby One SC" }, { value: "Brawler", label: "Brawler" }, { value: "Bree Serif", label: "Bree Serif" }, { value: "Bubblegum Sans", label: "Bubblegum Sans" }, { value: "Bubbler One", label: "Bubbler One" }, { value: "Buda", label: "Buda" }, { value: "Buenard", label: "Buenard" }, { value: "Bungee", label: "Bungee" }, { value: "Bungee Hairline", label: "Bungee Hairline" }, { value: "Bungee Inline", label: "Bungee Inline" }, { value: "Bungee Outline", label: "Bungee Outline" }, { value: "Bungee Shade", label: "Bungee Shade" }, { value: "Butcherman", label: "Butcherman" }, { value: "Butterfly Kids", label: "Butterfly Kids" }, { value: "Cabin", label: "Cabin" }, { value: "Cabin Condensed", label: "Cabin Condensed" }, { value: "Cabin Sketch", label: "Cabin Sketch" }, { value: "Caesar Dressing", label: "Caesar Dressing" }, { value: "Cagliostro", label: "Cagliostro" }, { value: "Cairo", label: "Cairo" }, { value: "Calligraffitti", label: "Calligraffitti" }, { value: "Cambay", label: "Cambay" }, { value: "Cambo", label: "Cambo" }, { value: "Candal", label: "Candal" }, { value: "Cantarell", label: "Cantarell" }, { value: "Cantata One", label: "Cantata One" }, { value: "Cantora One", label: "Cantora One" }, { value: "Capriola", label: "Capriola" }, { value: "Cardo", label: "Cardo" }, { value: "Carme", label: "Carme" }, { value: "Carrois Gothic", label: "Carrois Gothic" }, { value: "Carrois Gothic SC", label: "Carrois Gothic SC" }, { value: "Carter One", label: "Carter One" }, { value: "Catamaran", label: "Catamaran" }, { value: "Caudex", label: "Caudex" }, { value: "Caveat", label: "Caveat" }, { value: "Caveat Brush", label: "Caveat Brush" }, { value: "Cedarville Cursive", label: "Cedarville Cursive" }, { value: "Ceviche One", label: "Ceviche One" }, { value: "Chakra Petch", label: "Chakra Petch" }, { value: "Changa", label: "Changa" }, { value: "Changa One", label: "Changa One" }, { value: "Chango", label: "Chango" }, { value: "Charmonman", label: "Charmonman" }, { value: "Chathura", label: "Chathura" }, { value: "Chau Philomene One", label: "Chau Philomene One" }, { value: "Chela One", label: "Chela One" }, { value: "Chelsea Market", label: "Chelsea Market" }, { value: "Chenla", label: "Chenla" }, { value: "Cherry Cream Soda", label: "Cherry Cream Soda" }, { value: "Cherry Swash", label: "Cherry Swash" }, { value: "Chewy", label: "Chewy" }, { value: "Chicle", label: "Chicle" }, { value: "Chivo", label: "Chivo" }, { value: "Chonburi", label: "Chonburi" }, { value: "Cinzel", label: "Cinzel" }, { value: "Cinzel Decorative", label: "Cinzel Decorative" }, { value: "Clicker Script", label: "Clicker Script" }, { value: "Coda", label: "Coda" }, { value: "Coda Caption", label: "Coda Caption" }, { value: "Codystar", label: "Codystar" }, { value: "Coiny", label: "Coiny" }, { value: "Combo", label: "Combo" }, { value: "Comfortaa", label: "Comfortaa" }, { value: "Coming Soon", label: "Coming Soon" }, { value: "Concert One", label: "Concert One" }, { value: "Condiment", label: "Condiment" }, { value: "Content", label: "Content" }, { value: "Contrail One", label: "Contrail One" }, { value: "Convergence", label: "Convergence" }, { value: "Cookie", label: "Cookie" }, { value: "Copse", label: "Copse" }, { value: "Corben", label: "Corben" }, { value: "Cormorant", label: "Cormorant" }, { value: "Cormorant Garamond", label: "Cormorant Garamond" }, { value: "Cormorant Infant", label: "Cormorant Infant" }, { value: "Cormorant SC", label: "Cormorant SC" }, { value: "Cormorant Unicase", label: "Cormorant Unicase" }, { value: "Cormorant Upright", label: "Cormorant Upright" }, { value: "Courgette", label: "Courgette" }, { value: "Cousine", label: "Cousine" }, { value: "Coustard", label: "Coustard" }, { value: "Covered By Your Grace", label: "Covered By Your Grace" }, { value: "Crafty Girls", label: "Crafty Girls" }, { value: "Creepster", label: "Creepster" }, { value: "Crete Round", label: "Crete Round" }, { value: "Crimson Text", label: "Crimson Text" }, { value: "Croissant One", label: "Croissant One" }, { value: "Crushed", label: "Crushed" }, { value: "Cuprum", label: "Cuprum" }, { value: "Cute Font", label: "Cute Font" }, { value: "Cutive", label: "Cutive" }, { value: "Cutive Mono", label: "Cutive Mono" }, { value: "Damion", label: "Damion" }, { value: "Dancing Script", label: "Dancing Script" }, { value: "Dangrek", label: "Dangrek" }, { value: "David Libre", label: "David Libre" }, { value: "Dawning of a New Day", label: "Dawning of a New Day" }, { value: "Days One", label: "Days One" }, { value: "Dekko", label: "Dekko" }, { value: "Delius", label: "Delius" }, { value: "Delius Swash Caps", label: "Delius Swash Caps" }, { value: "Delius Unicase", label: "Delius Unicase" }, { value: "Della Respira", label: "Della Respira" }, { value: "Denk One", label: "Denk One" }, { value: "Devonshire", label: "Devonshire" }, { value: "Dhurjati", label: "Dhurjati" }, { value: "Didact Gothic", label: "Didact Gothic" }, { value: "Diplomata", label: "Diplomata" }, { value: "Diplomata SC", label: "Diplomata SC" }, { value: "Do Hyeon", label: "Do Hyeon" }, { value: "Dokdo", label: "Dokdo" }, { value: "Domine", label: "Domine" }, { value: "Donegal One", label: "Donegal One" }, { value: "Doppio One", label: "Doppio One" }, { value: "Dorsa", label: "Dorsa" }, { value: "Dosis", label: "Dosis" }, { value: "Dr Sugiyama", label: "Dr Sugiyama" }, { value: "Droid Arabic Kufi", label: "Droid Arabic Kufi" }, { value: "Droid Arabic Naskh", label: "Droid Arabic Naskh" }, { value: "Duru Sans", label: "Duru Sans" }, { value: "Dynalight", label: "Dynalight" }, { value: "EB Garamond", label: "EB Garamond" }, { value: "Eagle Lake", label: "Eagle Lake" }, { value: "East Sea Dokdo", label: "East Sea Dokdo" }, { value: "Eater", label: "Eater" }, { value: "Economica", label: "Economica" }, { value: "Eczar", label: "Eczar" }, { value: "El Messiri", label: "El Messiri" }, { value: "Electrolize", label: "Electrolize" }, { value: "Elsie", label: "Elsie" }, { value: "Elsie Swash Caps", label: "Elsie Swash Caps" }, { value: "Emblema One", label: "Emblema One" }, { value: "Emilys Candy", label: "Emilys Candy" }, { value: "Encode Sans", label: "Encode Sans" }, { value: "Encode Sans Condensed", label: "Encode Sans Condensed" }, { value: "Encode Sans Expanded", label: "Encode Sans Expanded" }, { value: "Encode Sans Semi Condensed", label: "Encode Sans Semi Condensed" }, { value: "Encode Sans Semi Expanded", label: "Encode Sans Semi Expanded" }, { value: "Engagement", label: "Engagement" }, { value: "Englebert", label: "Englebert" }, { value: "Enriqueta", label: "Enriqueta" }, { value: "Erica One", label: "Erica One" }, { value: "Esteban", label: "Esteban" }, { value: "Euphoria Script", label: "Euphoria Script" }, { value: "Ewert", label: "Ewert" }, { value: "Exo", label: "Exo" }, { value: "Exo 2", label: "Exo 2" }, { value: "Expletus Sans", label: "Expletus Sans" }, { value: "Fahkwang", label: "Fahkwang" }, { value: "Fanwood Text", label: "Fanwood Text" }, { value: "Farsan", label: "Farsan" }, { value: "Fascinate", label: "Fascinate" }, { value: "Fascinate Inline", label: "Fascinate Inline" }, { value: "Faster One", label: "Faster One" }, { value: "Fasthand", label: "Fasthand" }, { value: "Fauna One", label: "Fauna One" }, { value: "Faustina", label: "Faustina" }, { value: "Federant", label: "Federant" }, { value: "Federo", label: "Federo" }, { value: "Felipa", label: "Felipa" }, { value: "Fenix", label: "Fenix" }, { value: "Finger Paint", label: "Finger Paint" }, { value: "Fira Mono", label: "Fira Mono" }, { value: "Fira Sans", label: "Fira Sans" }, { value: "Fira Sans Condensed", label: "Fira Sans Condensed" }, { value: "Fira Sans Extra Condensed", label: "Fira Sans Extra Condensed" }, { value: "Fjalla One", label: "Fjalla One" }, { value: "Fjord One", label: "Fjord One" }, { value: "Flamenco", label: "Flamenco" }, { value: "Flavors", label: "Flavors" }, { value: "Fondamento", label: "Fondamento" }, { value: "Fontdiner Swanky", label: "Fontdiner Swanky" }, { value: "Forum", label: "Forum" }, { value: "Francois One", label: "Francois One" }, { value: "Frank Ruhl Libre", label: "Frank Ruhl Libre" }, { value: "Freckle Face", label: "Freckle Face" }, { value: "Fredericka the Great", label: "Fredericka the Great" }, { value: "Fredoka One", label: "Fredoka One" }, { value: "Freehand", label: "Freehand" }, { value: "Fresca", label: "Fresca" }, { value: "Frijole", label: "Frijole" }, { value: "Fruktur", label: "Fruktur" }, { value: "Fugaz One", label: "Fugaz One" }, { value: "GFS Didot", label: "GFS Didot" }, { value: "GFS Neohellenic", label: "GFS Neohellenic" }, { value: "Gabriela", label: "Gabriela" }, { value: "Gaegu", label: "Gaegu" }, { value: "Gafata", label: "Gafata" }, { value: "Galada", label: "Galada" }, { value: "Galdeano", label: "Galdeano" }, { value: "Galindo", label: "Galindo" }, { value: "Gamja Flower", label: "Gamja Flower" }, { value: "Gentium Basic", label: "Gentium Basic" }, { value: "Gentium Book Basic", label: "Gentium Book Basic" }, { value: "Geo", label: "Geo" }, { value: "Geostar", label: "Geostar" }, { value: "Geostar Fill", label: "Geostar Fill" }, { value: "Germania One", label: "Germania One" }, { value: "Gidugu", label: "Gidugu" }, { value: "Gilda Display", label: "Gilda Display" }, { value: "Give You Glory", label: "Give You Glory" }, { value: "Glass Antiqua", label: "Glass Antiqua" }, { value: "Glegoo", label: "Glegoo" }, { value: "Gloria Hallelujah", label: "Gloria Hallelujah" }, { value: "Goblin One", label: "Goblin One" }, { value: "Gochi Hand", label: "Gochi Hand" }, { value: "Gorditas", label: "Gorditas" }, { value: "Gothic A1", label: "Gothic A1" }, { value: "Goudy Bookletter 1911", label: "Goudy Bookletter 1911" }, { value: "Graduate", label: "Graduate" }, { value: "Grand Hotel", label: "Grand Hotel" }, { value: "Gravitas One", label: "Gravitas One" }, { value: "Great Vibes", label: "Great Vibes" }, { value: "Griffy", label: "Griffy" }, { value: "Gruppo", label: "Gruppo" }, { value: "Gudea", label: "Gudea" }, { value: "Gugi", label: "Gugi" }, { value: "Gurajada", label: "Gurajada" }, { value: "Habibi", label: "Habibi" }, { value: "Halant", label: "Halant" }, { value: "Hammersmith One", label: "Hammersmith One" }, { value: "Hanalei", label: "Hanalei" }, { value: "Hanalei Fill", label: "Hanalei Fill" }, { value: "Handlee", label: "Handlee" }, { value: "Hanuman", label: "Hanuman" }, { value: "Happy Monkey", label: "Happy Monkey" }, { value: "Harmattan", label: "Harmattan" }, { value: "Headland One", label: "Headland One" }, { value: "Heebo", label: "Heebo" }, { value: "Henny Penny", label: "Henny Penny" }, { value: "Herr Von Muellerhoff", label: "Herr Von Muellerhoff" }, { value: "Hi Melody", label: "Hi Melody" }, { value: "Hind", label: "Hind" }, { value: "Hind Guntur", label: "Hind Guntur" }, { value: "Hind Madurai", label: "Hind Madurai" }, { value: "Hind Siliguri", label: "Hind Siliguri" }, { value: "Hind Vadodara", label: "Hind Vadodara" }, { value: "Holtwood One SC", label: "Holtwood One SC" }, { value: "Homemade Apple", label: "Homemade Apple" }, { value: "Homenaje", label: "Homenaje" }, { value: "IBM Plex Mono", label: "IBM Plex Mono" }, { value: "IBM Plex Sans", label: "IBM Plex Sans" }, { value: "IBM Plex Sans Condensed", label: "IBM Plex Sans Condensed" }, { value: "IBM Plex Serif", label: "IBM Plex Serif" }, { value: "IM Fell DW Pica", label: "IM Fell DW Pica" }, { value: "IM Fell DW Pica SC", label: "IM Fell DW Pica SC" }, { value: "IM Fell Double Pica", label: "IM Fell Double Pica" }, { value: "IM Fell Double Pica SC", label: "IM Fell Double Pica SC" }, { value: "IM Fell English", label: "IM Fell English" }, { value: "IM Fell English SC", label: "IM Fell English SC" }, { value: "IM Fell French Canon", label: "IM Fell French Canon" }, { value: "IM Fell French Canon SC", label: "IM Fell French Canon SC" }, { value: "IM Fell Great Primer", label: "IM Fell Great Primer" }, { value: "IM Fell Great Primer SC", label: "IM Fell Great Primer SC" }, { value: "Iceberg", label: "Iceberg" }, { value: "Iceland", label: "Iceland" }, { value: "Imprima", label: "Imprima" }, { value: "Inconsolata", label: "Inconsolata" }, { value: "Inder", label: "Inder" }, { value: "Indie Flower", label: "Indie Flower" }, { value: "Inika", label: "Inika" }, { value: "Inknut Antiqua", label: "Inknut Antiqua" }, { value: "Irish Grover", label: "Irish Grover" }, { value: "Istok Web", label: "Istok Web" }, { value: "Italiana", label: "Italiana" }, { value: "Italianno", label: "Italianno" }, { value: "Itim", label: "Itim" }, { value: "Jacques Francois", label: "Jacques Francois" }, { value: "Jacques Francois Shadow", label: "Jacques Francois Shadow" }, { value: "Jaldi", label: "Jaldi" }, { value: "Jim Nightshade", label: "Jim Nightshade" }, { value: "Jockey One", label: "Jockey One" }, { value: "Jolly Lodger", label: "Jolly Lodger" }, { value: "Jomhuria", label: "Jomhuria" }, { value: "Josefin Sans", label: "Josefin Sans" }, { value: "Josefin Slab", label: "Josefin Slab" }, { value: "Joti One", label: "Joti One" }, { value: "Jua", label: "Jua" }, { value: "Judson", label: "Judson" }, { value: "Julee", label: "Julee" }, { value: "Julius Sans One", label: "Julius Sans One" }, { value: "Junge", label: "Junge" }, { value: "Jura", label: "Jura" }, { value: "Just Another Hand", label: "Just Another Hand" }, { value: "Just Me Again Down Here", label: "Just Me Again Down Here" }, { value: "K2D", label: "K2D" }, { value: "Kadwa", label: "Kadwa" }, { value: "Kalam", label: "Kalam" }, { value: "Kameron", label: "Kameron" }, { value: "Kanit", label: "Kanit" }, { value: "Kantumruy", label: "Kantumruy" }, { value: "Karla", label: "Karla" }, { value: "Karma", label: "Karma" }, { value: "Katibeh", label: "Katibeh" }, { value: "Kaushan Script", label: "Kaushan Script" }, { value: "Kavivanar", label: "Kavivanar" }, { value: "Kavoon", label: "Kavoon" }, { value: "Kdam Thmor", label: "Kdam Thmor" }, { value: "Keania One", label: "Keania One" }, { value: "Kelly Slab", label: "Kelly Slab" }, { value: "Kenia", label: "Kenia" }, { value: "Khand", label: "Khand" }, { value: "Khmer", label: "Khmer" }, { value: "Khula", label: "Khula" }, { value: "Kirang Haerang", label: "Kirang Haerang" }, { value: "Kite One", label: "Kite One" }, { value: "Knewave", label: "Knewave" }, { value: "KoHo", label: "KoHo" }, { value: "Kodchasan", label: "Kodchasan" }, { value: "Kosugi", label: "Kosugi" }, { value: "Kosugi Maru", label: "Kosugi Maru" }, { value: "Kotta One", label: "Kotta One" }, { value: "Koulen", label: "Koulen" }, { value: "Kranky", label: "Kranky" }, { value: "Kreon", label: "Kreon" }, { value: "Kristi", label: "Kristi" }, { value: "Krona One", label: "Krona One" }, { value: "Krub", label: "Krub" }, { value: "Kumar One", label: "Kumar One" }, { value: "Kumar One Outline", label: "Kumar One Outline" }, { value: "Kurale", label: "Kurale" }, { value: "La Belle Aurore", label: "La Belle Aurore" }, { value: "Laila", label: "Laila" }, { value: "Lakki Reddy", label: "Lakki Reddy" }, { value: "Lalezar", label: "Lalezar" }, { value: "Lancelot", label: "Lancelot" }, { value: "Lateef", label: "Lateef" }, { value: "Lato", label: "Lato" }, { value: "League Script", label: "League Script" }, { value: "Leckerli One", label: "Leckerli One" }, { value: "Ledger", label: "Ledger" }, { value: "Lekton", label: "Lekton" }, { value: "Lemon", label: "Lemon" }, { value: "Lemonada", label: "Lemonada" }, { value: "Libre Barcode 128", label: "Libre Barcode 128" }, { value: "Libre Barcode 128 Text", label: "Libre Barcode 128 Text" }, { value: "Libre Barcode 39", label: "Libre Barcode 39" }, { value: "Libre Barcode 39 Extended", label: "Libre Barcode 39 Extended" }, {
-  value: "Libre Barcode 39 Extended Text",
-  label: "Libre Barcode 39 Extended Text"
-}, { value: "Libre Barcode 39 Text", label: "Libre Barcode 39 Text" }, { value: "Libre Baskerville", label: "Libre Baskerville" }, { value: "Libre Franklin", label: "Libre Franklin" }, { value: "Life Savers", label: "Life Savers" }, { value: "Lilita One", label: "Lilita One" }, { value: "Lily Script One", label: "Lily Script One" }, { value: "Limelight", label: "Limelight" }, { value: "Linden Hill", label: "Linden Hill" }, { value: "Lobster", label: "Lobster" }, { value: "Lobster Two", label: "Lobster Two" }, { value: "Londrina Outline", label: "Londrina Outline" }, { value: "Londrina Shadow", label: "Londrina Shadow" }, { value: "Londrina Sketch", label: "Londrina Sketch" }, { value: "Londrina Solid", label: "Londrina Solid" }, { value: "Lora", label: "Lora" }, { value: "Love Ya Like A Sister", label: "Love Ya Like A Sister" }, { value: "Loved by the King", label: "Loved by the King" }, { value: "Lovers Quarrel", label: "Lovers Quarrel" }, { value: "Luckiest Guy", label: "Luckiest Guy" }, { value: "Lusitana", label: "Lusitana" }, { value: "Lustria", label: "Lustria" }, { value: "M PLUS 1p", label: "M PLUS 1p" }, { value: "M PLUS Rounded 1c", label: "M PLUS Rounded 1c" }, { value: "Macondo", label: "Macondo" }, { value: "Macondo Swash Caps", label: "Macondo Swash Caps" }, { value: "Mada", label: "Mada" }, { value: "Magra", label: "Magra" }, { value: "Maiden Orange", label: "Maiden Orange" }, { value: "Maitree", label: "Maitree" }, { value: "Mako", label: "Mako" }, { value: "Mali", label: "Mali" }, { value: "Mallanna", label: "Mallanna" }, { value: "Mandali", label: "Mandali" }, { value: "Manuale", label: "Manuale" }, { value: "Marcellus", label: "Marcellus" }, { value: "Marcellus SC", label: "Marcellus SC" }, { value: "Marck Script", label: "Marck Script" }, { value: "Margarine", label: "Margarine" }, { value: "Markazi Text", label: "Markazi Text" }, { value: "Marko One", label: "Marko One" }, { value: "Marmelad", label: "Marmelad" }, { value: "Martel", label: "Martel" }, { value: "Martel Sans", label: "Martel Sans" }, { value: "Marvel", label: "Marvel" }, { value: "Mate", label: "Mate" }, { value: "Mate SC", label: "Mate SC" }, { value: "Maven Pro", label: "Maven Pro" }, { value: "McLaren", label: "McLaren" }, { value: "Meddon", label: "Meddon" }, { value: "MedievalSharp", label: "MedievalSharp" }, { value: "Medula One", label: "Medula One" }, { value: "Meera Inimai", label: "Meera Inimai" }, { value: "Megrim", label: "Megrim" }, { value: "Meie Script", label: "Meie Script" }, { value: "Merienda", label: "Merienda" }, { value: "Merienda One", label: "Merienda One" }, { value: "Merriweather", label: "Merriweather" }, { value: "Merriweather Sans", label: "Merriweather Sans" }, { value: "Metal", label: "Metal" }, { value: "Metal Mania", label: "Metal Mania" }, { value: "Metamorphous", label: "Metamorphous" }, { value: "Metrophobic", label: "Metrophobic" }, { value: "Michroma", label: "Michroma" }, { value: "Milonga", label: "Milonga" }, { value: "Miltonian", label: "Miltonian" }, { value: "Miltonian Tattoo", label: "Miltonian Tattoo" }, { value: "Mina", label: "Mina" }, { value: "Miniver", label: "Miniver" }, { value: "Miriam Libre", label: "Miriam Libre" }, { value: "Mirza", label: "Mirza" }, { value: "Miss Fajardose", label: "Miss Fajardose" }, { value: "Mitr", label: "Mitr" }, { value: "Modak", label: "Modak" }, { value: "Modern Antiqua", label: "Modern Antiqua" }, { value: "Mogra", label: "Mogra" }, { value: "Molengo", label: "Molengo" }, { value: "Molle", label: "Molle" }, { value: "Monda", label: "Monda" }, { value: "Monofett", label: "Monofett" }, { value: "Monoton", label: "Monoton" }, { value: "Monsieur La Doulaise", label: "Monsieur La Doulaise" }, { value: "Montaga", label: "Montaga" }, { value: "Montez", label: "Montez" }, { value: "Montserrat", label: "Montserrat" }, { value: "Montserrat Alternates", label: "Montserrat Alternates" }, { value: "Montserrat Subrayada", label: "Montserrat Subrayada" }, { value: "Moul", label: "Moul" }, { value: "Moulpali", label: "Moulpali" }, { value: "Mountains of Christmas", label: "Mountains of Christmas" }, { value: "Mouse Memoirs", label: "Mouse Memoirs" }, { value: "Mr Bedfort", label: "Mr Bedfort" }, { value: "Mr Dafoe", label: "Mr Dafoe" }, { value: "Mr De Haviland", label: "Mr De Haviland" }, { value: "Mrs Saint Delafield", label: "Mrs Saint Delafield" }, { value: "Mrs Sheppards", label: "Mrs Sheppards" }, { value: "Mukta", label: "Mukta" }, { value: "Mukta Mahee", label: "Mukta Mahee" }, { value: "Mukta Malar", label: "Mukta Malar" }, { value: "Mukta Vaani", label: "Mukta Vaani" }, { value: "Muli", label: "Muli" }, { value: "Mystery Quest", label: "Mystery Quest" }, { value: "NTR", label: "NTR" }, { value: "Nanum Brush Script", label: "Nanum Brush Script" }, { value: "Nanum Gothic", label: "Nanum Gothic" }, { value: "Nanum Gothic Coding", label: "Nanum Gothic Coding" }, { value: "Nanum Myeongjo", label: "Nanum Myeongjo" }, { value: "Nanum Pen Script", label: "Nanum Pen Script" }, { value: "Neucha", label: "Neucha" }, { value: "Neuton", label: "Neuton" }, { value: "New Rocker", label: "New Rocker" }, { value: "News Cycle", label: "News Cycle" }, { value: "Niconne", label: "Niconne" }, { value: "Niramit", label: "Niramit" }, { value: "Nixie One", label: "Nixie One" }, { value: "Nobile", label: "Nobile" }, { value: "Nokora", label: "Nokora" }, { value: "Norican", label: "Norican" }, { value: "Nosifer", label: "Nosifer" }, { value: "Notable", label: "Notable" }, { value: "Nothing You Could Do", label: "Nothing You Could Do" }, { value: "Noticia Text", label: "Noticia Text" }, { value: "Noto Kufi Arabic", label: "Noto Kufi Arabic" }, { value: "Noto Naskh Arabic", label: "Noto Naskh Arabic" }, { value: "Noto Sans", label: "Noto Sans" }, { value: "Noto Sans Hebrew", label: "Noto Sans Hebrew" }, { value: "Noto Sans JP", label: "Noto Sans JP" }, { value: "Noto Sans KR", label: "Noto Sans KR" }, { value: "Noto Serif", label: "Noto Serif" }, { value: "Noto Serif JP", label: "Noto Serif JP" }, { value: "Noto Serif KR", label: "Noto Serif KR" }, { value: "Nova Cut", label: "Nova Cut" }, { value: "Nova Flat", label: "Nova Flat" }, { value: "Nova Mono", label: "Nova Mono" }, { value: "Nova Oval", label: "Nova Oval" }, { value: "Nova Round", label: "Nova Round" }, { value: "Nova Script", label: "Nova Script" }, { value: "Nova Slim", label: "Nova Slim" }, { value: "Nova Square", label: "Nova Square" }, { value: "Numans", label: "Numans" }, { value: "Nunito", label: "Nunito" }, { value: "Nunito Sans", label: "Nunito Sans" }, { value: "Odor Mean Chey", label: "Odor Mean Chey" }, { value: "Offside", label: "Offside" }, { value: "Old Standard TT", label: "Old Standard TT" }, { value: "Oldenburg", label: "Oldenburg" }, { value: "Oleo Script", label: "Oleo Script" }, { value: "Oleo Script Swash Caps", label: "Oleo Script Swash Caps" }, { value: "Open Sans", label: "Open Sans" }, { value: "Open Sans Condensed", label: "Open Sans Condensed" }, { value: "Open Sans Hebrew", label: "Open Sans Hebrew" }, { value: "Open Sans Hebrew Condensed", label: "Open Sans Hebrew Condensed" }, { value: "Oranienbaum", label: "Oranienbaum" }, { value: "Orbitron", label: "Orbitron" }, { value: "Oregano", label: "Oregano" }, { value: "Orienta", label: "Orienta" }, { value: "Original Surfer", label: "Original Surfer" }, { value: "Oswald", label: "Oswald" }, { value: "Over the Rainbow", label: "Over the Rainbow" }, { value: "Overlock", label: "Overlock" }, { value: "Overlock SC", label: "Overlock SC" }, { value: "Overpass", label: "Overpass" }, { value: "Overpass Mono", label: "Overpass Mono" }, { value: "Ovo", label: "Ovo" }, { value: "Oxygen", label: "Oxygen" }, { value: "Oxygen Mono", label: "Oxygen Mono" }, { value: "PT Mono", label: "PT Mono" }, { value: "PT Sans", label: "PT Sans" }, { value: "PT Sans Caption", label: "PT Sans Caption" }, { value: "PT Sans Narrow", label: "PT Sans Narrow" }, { value: "PT Serif", label: "PT Serif" }, { value: "PT Serif Caption", label: "PT Serif Caption" }, { value: "Pacifico", label: "Pacifico" }, { value: "Padauk", label: "Padauk" }, { value: "Palanquin", label: "Palanquin" }, { value: "Palanquin Dark", label: "Palanquin Dark" }, { value: "Pangolin", label: "Pangolin" }, { value: "Paprika", label: "Paprika" }, { value: "Parisienne", label: "Parisienne" }, { value: "Passero One", label: "Passero One" }, { value: "Passion One", label: "Passion One" }, { value: "Pathway Gothic One", label: "Pathway Gothic One" }, { value: "Patrick Hand", label: "Patrick Hand" }, { value: "Patrick Hand SC", label: "Patrick Hand SC" }, { value: "Pattaya", label: "Pattaya" }, { value: "Patua One", label: "Patua One" }, { value: "Pavanam", label: "Pavanam" }, { value: "Paytone One", label: "Paytone One" }, { value: "Peddana", label: "Peddana" }, { value: "Peralta", label: "Peralta" }, { value: "Permanent Marker", label: "Permanent Marker" }, { value: "Petit Formal Script", label: "Petit Formal Script" }, { value: "Petrona", label: "Petrona" }, { value: "Philosopher", label: "Philosopher" }, { value: "Piedra", label: "Piedra" }, { value: "Pinyon Script", label: "Pinyon Script" }, { value: "Pirata One", label: "Pirata One" }, { value: "Plaster", label: "Plaster" }, { value: "Play", label: "Play" }, { value: "Playball", label: "Playball" }, { value: "Playfair Display", label: "Playfair Display" }, { value: "Playfair Display SC", label: "Playfair Display SC" }, { value: "Podkova", label: "Podkova" }, { value: "Poiret One", label: "Poiret One" }, { value: "Poller One", label: "Poller One" }, { value: "Poly", label: "Poly" }, { value: "Pompiere", label: "Pompiere" }, { value: "Pontano Sans", label: "Pontano Sans" }, { value: "Poor Story", label: "Poor Story" }, { value: "Poppins", label: "Poppins" }, { value: "Port Lligat Sans", label: "Port Lligat Sans" }, { value: "Port Lligat Slab", label: "Port Lligat Slab" }, { value: "Pragati Narrow", label: "Pragati Narrow" }, { value: "Prata", label: "Prata" }, { value: "Preahvihear", label: "Preahvihear" }, { value: "Press Start 2P", label: "Press Start 2P" }, { value: "Pridi", label: "Pridi" }, { value: "Princess Sofia", label: "Princess Sofia" }, { value: "Prociono", label: "Prociono" }, { value: "Prompt", label: "Prompt" }, { value: "Prosto One", label: "Prosto One" }, { value: "Proza Libre", label: "Proza Libre" }, { value: "Puritan", label: "Puritan" }, { value: "Purple Purse", label: "Purple Purse" }, { value: "Quando", label: "Quando" }, { value: "Quantico", label: "Quantico" }, { value: "Quattrocento", label: "Quattrocento" }, { value: "Quattrocento Sans", label: "Quattrocento Sans" }, { value: "Questrial", label: "Questrial" }, { value: "Quicksand", label: "Quicksand" }, { value: "Quintessential", label: "Quintessential" }, { value: "Qwigley", label: "Qwigley" }, { value: "Racing Sans One", label: "Racing Sans One" }, { value: "Radley", label: "Radley" }, { value: "Rajdhani", label: "Rajdhani" }, { value: "Rakkas", label: "Rakkas" }, { value: "Raleway", label: "Raleway" }, { value: "Raleway Dots", label: "Raleway Dots" }, { value: "Ramabhadra", label: "Ramabhadra" }, { value: "Ramaraja", label: "Ramaraja" }, { value: "Rambla", label: "Rambla" }, { value: "Rammetto One", label: "Rammetto One" }, { value: "Ranchers", label: "Ranchers" }, { value: "Rancho", label: "Rancho" }, { value: "Ranga", label: "Ranga" }, { value: "Rasa", label: "Rasa" }, { value: "Rationale", label: "Rationale" }, { value: "Ravi Prakash", label: "Ravi Prakash" }, { value: "Redressed", label: "Redressed" }, { value: "Reem Kufi", label: "Reem Kufi" }, { value: "Reenie Beanie", label: "Reenie Beanie" }, { value: "Revalia", label: "Revalia" }, { value: "Rhodium Libre", label: "Rhodium Libre" }, { value: "Ribeye", label: "Ribeye" }, { value: "Ribeye Marrow", label: "Ribeye Marrow" }, { value: "Righteous", label: "Righteous" }, { value: "Risque", label: "Risque" }, { value: "Roboto", label: "Roboto" }, { value: "Roboto Condensed", label: "Roboto Condensed" }, { value: "Roboto Mono", label: "Roboto Mono" }, { value: "Roboto Slab", label: "Roboto Slab" }, { value: "Rochester", label: "Rochester" }, { value: "Rock Salt", label: "Rock Salt" }, { value: "Rokkitt", label: "Rokkitt" }, { value: "Romanesco", label: "Romanesco" }, { value: "Ropa Sans", label: "Ropa Sans" }, { value: "Rosario", label: "Rosario" }, { value: "Rosarivo", label: "Rosarivo" }, { value: "Rouge Script", label: "Rouge Script" }, { value: "Rozha One", label: "Rozha One" }, { value: "Rubik", label: "Rubik" }, { value: "Rubik Mono One", label: "Rubik Mono One" }, { value: "Ruda", label: "Ruda" }, { value: "Rufina", label: "Rufina" }, { value: "Ruge Boogie", label: "Ruge Boogie" }, { value: "Ruluko", label: "Ruluko" }, { value: "Rum Raisin", label: "Rum Raisin" }, { value: "Ruslan Display", label: "Ruslan Display" }, { value: "Russo One", label: "Russo One" }, { value: "Ruthie", label: "Ruthie" }, { value: "Rye", label: "Rye" }, { value: "Sacramento", label: "Sacramento" }, { value: "Sahitya", label: "Sahitya" }, { value: "Sail", label: "Sail" }, { value: "Saira", label: "Saira" }, { value: "Saira Condensed", label: "Saira Condensed" }, { value: "Saira Extra Condensed", label: "Saira Extra Condensed" }, { value: "Saira Semi Condensed", label: "Saira Semi Condensed" }, { value: "Salsa", label: "Salsa" }, { value: "Sanchez", label: "Sanchez" }, { value: "Sancreek", label: "Sancreek" }, { value: "Sansita", label: "Sansita" }, { value: "Sarala", label: "Sarala" }, { value: "Sarina", label: "Sarina" }, { value: "Sarpanch", label: "Sarpanch" }, { value: "Satisfy", label: "Satisfy" }, { value: "Sawarabi Gothic", label: "Sawarabi Gothic" }, { value: "Sawarabi Mincho", label: "Sawarabi Mincho" }, { value: "Scada", label: "Scada" }, { value: "Scheherazade", label: "Scheherazade" }, { value: "Schoolbell", label: "Schoolbell" }, { value: "Scope One", label: "Scope One" }, { value: "Seaweed Script", label: "Seaweed Script" }, { value: "Secular One", label: "Secular One" }, { value: "Sedgwick Ave", label: "Sedgwick Ave" }, { value: "Sedgwick Ave Display", label: "Sedgwick Ave Display" }, { value: "Sevillana", label: "Sevillana" }, { value: "Seymour One", label: "Seymour One" }, { value: "Shadows Into Light", label: "Shadows Into Light" }, { value: "Shadows Into Light Two", label: "Shadows Into Light Two" }, { value: "Shanti", label: "Shanti" }, { value: "Share", label: "Share" }, { value: "Share Tech", label: "Share Tech" }, { value: "Share Tech Mono", label: "Share Tech Mono" }, { value: "Shojumaru", label: "Shojumaru" }, { value: "Short Stack", label: "Short Stack" }, { value: "Shrikhand", label: "Shrikhand" }, { value: "Siemreap", label: "Siemreap" }, { value: "Sigmar One", label: "Sigmar One" }, { value: "Signika", label: "Signika" }, { value: "Signika Negative", label: "Signika Negative" }, { value: "Simonetta", label: "Simonetta" }, { value: "Sintony", label: "Sintony" }, { value: "Sirin Stencil", label: "Sirin Stencil" }, { value: "Six Caps", label: "Six Caps" }, { value: "Skranji", label: "Skranji" }, { value: "Slabo 13px", label: "Slabo 13px" }, { value: "Slabo 27px", label: "Slabo 27px" }, { value: "Slackey", label: "Slackey" }, { value: "Smokum", label: "Smokum" }, { value: "Smythe", label: "Smythe" }, { value: "Sniglet", label: "Sniglet" }, { value: "Snippet", label: "Snippet" }, { value: "Snowburst One", label: "Snowburst One" }, { value: "Sofadi One", label: "Sofadi One" }, { value: "Sofia", label: "Sofia" }, { value: "Song Myung", label: "Song Myung" }, { value: "Sonsie One", label: "Sonsie One" }, { value: "Sorts Mill Goudy", label: "Sorts Mill Goudy" }, { value: "Source Code Pro", label: "Source Code Pro" }, { value: "Source Sans Pro", label: "Source Sans Pro" }, { value: "Source Serif Pro", label: "Source Serif Pro" }, { value: "Space Mono", label: "Space Mono" }, { value: "Special Elite", label: "Special Elite" }, { value: "Spectral", label: "Spectral" }, { value: "Spectral SC", label: "Spectral SC" }, { value: "Spicy Rice", label: "Spicy Rice" }, { value: "Spinnaker", label: "Spinnaker" }, { value: "Spirax", label: "Spirax" }, { value: "Squada One", label: "Squada One" }, { value: "Sree Krushnadevaraya", label: "Sree Krushnadevaraya" }, { value: "Sriracha", label: "Sriracha" }, { value: "Srisakdi", label: "Srisakdi" }, { value: "Stalemate", label: "Stalemate" }, { value: "Stalinist One", label: "Stalinist One" }, { value: "Stardos Stencil", label: "Stardos Stencil" }, { value: "Stint Ultra Condensed", label: "Stint Ultra Condensed" }, { value: "Stint Ultra Expanded", label: "Stint Ultra Expanded" }, { value: "Stoke", label: "Stoke" }, { value: "Strait", label: "Strait" }, { value: "Stylish", label: "Stylish" }, { value: "Sue Ellen Francisco", label: "Sue Ellen Francisco" }, { value: "Suez One", label: "Suez One" }, { value: "Sumana", label: "Sumana" }, { value: "Sunflower", label: "Sunflower" }, { value: "Sunshiney", label: "Sunshiney" }, { value: "Supermercado One", label: "Supermercado One" }, { value: "Sura", label: "Sura" }, { value: "Suranna", label: "Suranna" }, { value: "Suravaram", label: "Suravaram" }, { value: "Suwannaphum", label: "Suwannaphum" }, { value: "Swanky and Moo Moo", label: "Swanky and Moo Moo" }, { value: "Syncopate", label: "Syncopate" }, { value: "Tajawal", label: "Tajawal" }, { value: "Tangerine", label: "Tangerine" }, { value: "Taprom", label: "Taprom" }, { value: "Tauri", label: "Tauri" }, { value: "Taviraj", label: "Taviraj" }, { value: "Teko", label: "Teko" }, { value: "Telex", label: "Telex" }, { value: "Tenali Ramakrishna", label: "Tenali Ramakrishna" }, { value: "Tenor Sans", label: "Tenor Sans" }, { value: "Text Me One", label: "Text Me One" }, { value: "The Girl Next Door", label: "The Girl Next Door" }, { value: "Tienne", label: "Tienne" }, { value: "Tillana", label: "Tillana" }, { value: "Timmana", label: "Timmana" }, { value: "Tinos", label: "Tinos" }, { value: "Titan One", label: "Titan One" }, { value: "Titillium Web", label: "Titillium Web" }, { value: "Trade Winds", label: "Trade Winds" }, { value: "Trirong", label: "Trirong" }, { value: "Trocchi", label: "Trocchi" }, { value: "Trochut", label: "Trochut" }, { value: "Trykker", label: "Trykker" }, { value: "Tulpen One", label: "Tulpen One" }, { value: "Ubuntu", label: "Ubuntu" }, { value: "Ubuntu Condensed", label: "Ubuntu Condensed" }, { value: "Ubuntu Mono", label: "Ubuntu Mono" }, { value: "Ultra", label: "Ultra" }, { value: "Uncial Antiqua", label: "Uncial Antiqua" }, { value: "Underdog", label: "Underdog" }, { value: "Unica One", label: "Unica One" }, { value: "UnifrakturCook", label: "UnifrakturCook" }, { value: "UnifrakturMaguntia", label: "UnifrakturMaguntia" }, { value: "Unkempt", label: "Unkempt" }, { value: "Unlock", label: "Unlock" }, { value: "Unna", label: "Unna" }, { value: "VT323", label: "VT323" }, { value: "Vampiro One", label: "Vampiro One" }, { value: "Varela", label: "Varela" }, { value: "Varela Round", label: "Varela Round" }, { value: "Vast Shadow", label: "Vast Shadow" }, { value: "Vesper Libre", label: "Vesper Libre" }, { value: "Vibur", label: "Vibur" }, { value: "Vidaloka", label: "Vidaloka" }, { value: "Viga", label: "Viga" }, { value: "Voces", label: "Voces" }, { value: "Volkhov", label: "Volkhov" }, { value: "Vollkorn", label: "Vollkorn" }, { value: "Vollkorn SC", label: "Vollkorn SC" }, { value: "Voltaire", label: "Voltaire" }, { value: "Waiting for the Sunrise", label: "Waiting for the Sunrise" }, { value: "Wallpoet", label: "Wallpoet" }, { value: "Walter Turncoat", label: "Walter Turncoat" }, { value: "Warnes", label: "Warnes" }, { value: "Wellfleet", label: "Wellfleet" }, { value: "Wendy One", label: "Wendy One" }, { value: "Wire One", label: "Wire One" }, { value: "Work Sans", label: "Work Sans" }, { value: "Yanone Kaffeesatz", label: "Yanone Kaffeesatz" }, { value: "Yantramanav", label: "Yantramanav" }, { value: "Yatra One", label: "Yatra One" }, { value: "Yellowtail", label: "Yellowtail" }, { value: "Yeon Sung", label: "Yeon Sung" }, { value: "Yeseva One", label: "Yeseva One" }, { value: "Yesteryear", label: "Yesteryear" }, { value: "Yrsa", label: "Yrsa" }, { value: "Zeyada", label: "Zeyada" }, { value: "Zilla Slab", label: "Zilla Slab" }, { value: "Zilla Slab Highlight", label: "Zilla Slab Highlight" }];
-
-/* harmony default export */ __webpack_exports__["a"] = (FONTS);
-
-/***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1270,6 +1270,44 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 /***/ }),
 /* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var placeHolder = PremiumBlocksSettings.defaultAuthImg;
+
+var Component = wp.element.Component;
+
+var DefaultImage = function (_Component) {
+  _inherits(DefaultImage, _Component);
+
+  function DefaultImage() {
+    _classCallCheck(this, DefaultImage);
+
+    return _possibleConstructorReturn(this, (DefaultImage.__proto__ || Object.getPrototypeOf(DefaultImage)).apply(this, arguments));
+  }
+
+  _createClass(DefaultImage, [{
+    key: "render",
+    value: function render() {
+      return wp.element.createElement("img", { src: placeHolder });
+    }
+  }]);
+
+  return DefaultImage;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (DefaultImage);
+
+/***/ }),
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1311,7 +1349,7 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1575,391 +1613,7 @@ registerBlockType("premium/video-box", {
 });
 
 /***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-
-var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
-
-module.exports = ReactPropTypesSecret;
-
-/***/ }),
 /* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var printWarning = function printWarning() {};
-
-if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(17);
-  var loggedTypeFailures = {};
-  var has = Function.call.bind(Object.prototype.hasOwnProperty);
-
-  printWarning = function printWarning(text) {
-    var message = 'Warning: ' + text;
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-}
-
-/**
- * Assert that the values match with the type specs.
- * Error messages are memorized and will only be shown once.
- *
- * @param {object} typeSpecs Map of name to a ReactPropType
- * @param {object} values Runtime values that need to be type-checked
- * @param {string} location e.g. "prop", "context", "child context"
- * @param {string} componentName Name of the component for error messages.
- * @param {?Function} getStack Returns the component stack.
- * @private
- */
-function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
-  if (process.env.NODE_ENV !== 'production') {
-    for (var typeSpecName in typeSpecs) {
-      if (has(typeSpecs, typeSpecName)) {
-        var error;
-        // Prop type validation may throw. In case they do, we don't want to
-        // fail the render phase where it didn't fail before. So we log it.
-        // After these have been cleaned up, we'll let them throw.
-        try {
-          // This is intentionally an invariant that gets caught. It's the same
-          // behavior as without this statement except with a better message.
-          if (typeof typeSpecs[typeSpecName] !== 'function') {
-            var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + _typeof(typeSpecs[typeSpecName]) + '`.');
-            err.name = 'Invariant Violation';
-            throw err;
-          }
-          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
-        } catch (ex) {
-          error = ex;
-        }
-        if (error && !(error instanceof Error)) {
-          printWarning((componentName || 'React class') + ': type specification of ' + location + ' `' + typeSpecName + '` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a ' + (typeof error === 'undefined' ? 'undefined' : _typeof(error)) + '. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).');
-        }
-        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
-          // Only monitor this failure once because there tends to be a lot of the
-          // same error.
-          loggedTypeFailures[error.message] = true;
-
-          var stack = getStack ? getStack() : '';
-
-          printWarning('Failed ' + location + ' type: ' + error.message + (stack != null ? stack : ''));
-        }
-      }
-    }
-  }
-}
-
-/**
- * Resets warning cache when testing.
- *
- * @private
- */
-checkPropTypes.resetWarningCache = function () {
-  if (process.env.NODE_ENV !== 'production') {
-    loggedTypeFailures = {};
-  }
-};
-
-module.exports = checkPropTypes;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 19 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumMargin;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(9);
-
-
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    RangeControl = _wp$components.RangeControl,
-    Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
-
-
-function PremiumMargin(props) {
-  var directions = props.directions,
-      showUnits = props.showUnits,
-      marginTop = props.marginTop,
-      marginRight = props.marginRight,
-      marginBottom = props.marginBottom,
-      marginLeft = props.marginLeft,
-      _props$onChangeMarTop = props.onChangeMarTop,
-      onChangeMarTop = _props$onChangeMarTop === undefined ? function () {} : _props$onChangeMarTop,
-      _props$onChangeMarRig = props.onChangeMarRight,
-      onChangeMarRight = _props$onChangeMarRig === undefined ? function () {} : _props$onChangeMarRig,
-      _props$onChangeMarBot = props.onChangeMarBottom,
-      onChangeMarBottom = _props$onChangeMarBot === undefined ? function () {} : _props$onChangeMarBot,
-      _props$onChangeMarLef = props.onChangeMarLeft,
-      onChangeMarLeft = _props$onChangeMarLef === undefined ? function () {} : _props$onChangeMarLef,
-      _props$onChangeMarSiz = props.onChangeMarSizeUnit,
-      onChangeMarSizeUnit = _props$onChangeMarSiz === undefined ? function () {} : _props$onChangeMarSiz;
-
-  return wp.element.createElement(
-    "div",
-    { className: "premium-control-toggle" },
-    wp.element.createElement(
-      "strong",
-      null,
-      __("Margin")
-    ),
-    wp.element.createElement(Dropdown, {
-      className: "premium-control-toggle-btn",
-      contentClassName: "premium-control-toggle-content",
-      position: "bottom right",
-      renderToggle: function renderToggle(_ref) {
-        var isOpen = _ref.isOpen,
-            onToggle = _ref.onToggle;
-        return wp.element.createElement(
-          Button,
-          { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-          wp.element.createElement("i", { className: "dashicons dashicons-edit" })
-        );
-      },
-      renderContent: function renderContent() {
-        return wp.element.createElement(
-          Fragment,
-          null,
-          showUnits && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_size_units__["a" /* default */], { onChangeSizeUnit: onChangeMarSizeUnit }),
-          (directions.includes("all") || directions.includes("top")) && wp.element.createElement(RangeControl, {
-            label: __("Margin Top (PX)"),
-            value: marginTop,
-            min: "0",
-            max: "150",
-            onChange: onChangeMarTop
-          }),
-          (directions.includes("all") || directions.includes("right")) && wp.element.createElement(RangeControl, {
-            label: __("Margin Right (PX)"),
-            value: marginRight,
-            min: "0",
-            max: "150",
-            onChange: onChangeMarRight
-          }),
-          (directions.includes("all") || directions.includes("bottom")) && wp.element.createElement(RangeControl, {
-            label: __("Margin Bottom (PX)"),
-            value: marginBottom,
-            min: "0",
-            max: "150",
-            onChange: onChangeMarBottom
-          }),
-          (directions.includes("all") || directions.includes("left")) && wp.element.createElement(RangeControl, {
-            label: __("Margin Left (PX)"),
-            value: marginLeft,
-            min: "0",
-            max: "150",
-            onChange: onChangeMarLeft
-          })
-        );
-      }
-    })
-  );
-}
-
-/***/ }),
-/* 20 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var placeHolder = PremiumBlocksSettings.defaultAuthImg;
-
-var Component = wp.element.Component;
-
-var DefaultImage = function (_Component) {
-  _inherits(DefaultImage, _Component);
-
-  function DefaultImage() {
-    _classCallCheck(this, DefaultImage);
-
-    return _possibleConstructorReturn(this, (DefaultImage.__proto__ || Object.getPrototypeOf(DefaultImage)).apply(this, arguments));
-  }
-
-  _createClass(DefaultImage, [{
-    key: "render",
-    value: function render() {
-      return wp.element.createElement("img", { src: placeHolder });
-    }
-  }]);
-
-  return DefaultImage;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["a"] = (DefaultImage);
-
-/***/ }),
-/* 21 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Component = wp.element.Component;
-
-var PremiumLowerQuote = function (_Component) {
-  _inherits(PremiumLowerQuote, _Component);
-
-  function PremiumLowerQuote() {
-    _classCallCheck(this, PremiumLowerQuote);
-
-    return _possibleConstructorReturn(this, (PremiumLowerQuote.__proto__ || Object.getPrototypeOf(PremiumLowerQuote)).apply(this, arguments));
-  }
-
-  _createClass(PremiumLowerQuote, [{
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps) {
-      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _props = this.props,
-          size = _props.size,
-          color = _props.color,
-          opacity = _props.opacity;
-
-      return wp.element.createElement(
-        "svg",
-        {
-          style: { width: size + "em", opacity: opacity / 100 },
-          "aria-hidden": "true",
-          "data-prefix": "fas",
-          "data-icon": "quote-left",
-          "class": "svg-inline--fa fa-quote-left fa-w-16",
-          role: "img",
-          xmlns: "http://www.w3.org/2000/svg",
-          viewBox: "0 0 512 512"
-        },
-        wp.element.createElement("path", {
-          fill: "" + color,
-          d: "M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
-        })
-      );
-    }
-  }]);
-
-  return PremiumLowerQuote;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
-
-/***/ }),
-/* 22 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Component = wp.element.Component;
-
-var PremiumUpperQuote = function (_Component) {
-  _inherits(PremiumUpperQuote, _Component);
-
-  function PremiumUpperQuote() {
-    _classCallCheck(this, PremiumUpperQuote);
-
-    return _possibleConstructorReturn(this, (PremiumUpperQuote.__proto__ || Object.getPrototypeOf(PremiumUpperQuote)).apply(this, arguments));
-  }
-
-  _createClass(PremiumUpperQuote, [{
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps) {
-      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _props = this.props,
-          size = _props.size,
-          color = _props.color,
-          opacity = _props.opacity;
-
-
-      return wp.element.createElement(
-        "svg",
-        {
-          style: { width: size + "em", opacity: opacity / 100 },
-          "aria-hidden": "true",
-          "data-prefix": "fas",
-          "data-icon": "quote-right",
-          "class": "svg-inline--fa fa-quote-right fa-w-16",
-          role: "img",
-          xmlns: "http://www.w3.org/2000/svg",
-          viewBox: "0 0 512 512"
-        },
-        wp.element.createElement("path", {
-          fill: "" + color,
-          d: "M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z"
-        })
-      );
-    }
-  }]);
-
-  return PremiumUpperQuote;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports) {
-
-/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
-module.exports = __webpack_amd_options__;
-
-/* WEBPACK VAR INJECTION */}.call(exports, {}))
-
-/***/ }),
-/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2068,6 +1722,352 @@ function PremiumFilters(props) {
 }
 
 /***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var printWarning = function printWarning() {};
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactPropTypesSecret = __webpack_require__(19);
+  var loggedTypeFailures = {};
+  var has = Function.call.bind(Object.prototype.hasOwnProperty);
+
+  printWarning = function printWarning(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */
+function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+  if (process.env.NODE_ENV !== 'production') {
+    for (var typeSpecName in typeSpecs) {
+      if (has(typeSpecs, typeSpecName)) {
+        var error;
+        // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + _typeof(typeSpecs[typeSpecName]) + '`.');
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+        } catch (ex) {
+          error = ex;
+        }
+        if (error && !(error instanceof Error)) {
+          printWarning((componentName || 'React class') + ': type specification of ' + location + ' `' + typeSpecName + '` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a ' + (typeof error === 'undefined' ? 'undefined' : _typeof(error)) + '. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).');
+        }
+        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error.message] = true;
+
+          var stack = getStack ? getStack() : '';
+
+          printWarning('Failed ' + location + ' type: ' + error.message + (stack != null ? stack : ''));
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Resets warning cache when testing.
+ *
+ * @private
+ */
+checkPropTypes.resetWarningCache = function () {
+  if (process.env.NODE_ENV !== 'production') {
+    loggedTypeFailures = {};
+  }
+};
+
+module.exports = checkPropTypes;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 21 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumMargin;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(9);
+
+
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    RangeControl = _wp$components.RangeControl,
+    Dropdown = _wp$components.Dropdown,
+    Button = _wp$components.Button;
+
+
+function PremiumMargin(props) {
+  var directions = props.directions,
+      showUnits = props.showUnits,
+      marginTop = props.marginTop,
+      marginRight = props.marginRight,
+      marginBottom = props.marginBottom,
+      marginLeft = props.marginLeft,
+      _props$onChangeMarTop = props.onChangeMarTop,
+      onChangeMarTop = _props$onChangeMarTop === undefined ? function () {} : _props$onChangeMarTop,
+      _props$onChangeMarRig = props.onChangeMarRight,
+      onChangeMarRight = _props$onChangeMarRig === undefined ? function () {} : _props$onChangeMarRig,
+      _props$onChangeMarBot = props.onChangeMarBottom,
+      onChangeMarBottom = _props$onChangeMarBot === undefined ? function () {} : _props$onChangeMarBot,
+      _props$onChangeMarLef = props.onChangeMarLeft,
+      onChangeMarLeft = _props$onChangeMarLef === undefined ? function () {} : _props$onChangeMarLef,
+      _props$onChangeMarSiz = props.onChangeMarSizeUnit,
+      onChangeMarSizeUnit = _props$onChangeMarSiz === undefined ? function () {} : _props$onChangeMarSiz;
+
+  return wp.element.createElement(
+    "div",
+    { className: "premium-control-toggle" },
+    wp.element.createElement(
+      "strong",
+      null,
+      __("Margin")
+    ),
+    wp.element.createElement(Dropdown, {
+      className: "premium-control-toggle-btn",
+      contentClassName: "premium-control-toggle-content",
+      position: "bottom right",
+      renderToggle: function renderToggle(_ref) {
+        var isOpen = _ref.isOpen,
+            onToggle = _ref.onToggle;
+        return wp.element.createElement(
+          Button,
+          { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+          wp.element.createElement("i", { className: "dashicons dashicons-edit" })
+        );
+      },
+      renderContent: function renderContent() {
+        return wp.element.createElement(
+          Fragment,
+          null,
+          showUnits && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_size_units__["a" /* default */], { onChangeSizeUnit: onChangeMarSizeUnit }),
+          (directions.includes("all") || directions.includes("top")) && wp.element.createElement(RangeControl, {
+            label: __("Margin Top (PX)"),
+            value: marginTop,
+            min: "0",
+            max: "150",
+            onChange: onChangeMarTop
+          }),
+          (directions.includes("all") || directions.includes("right")) && wp.element.createElement(RangeControl, {
+            label: __("Margin Right (PX)"),
+            value: marginRight,
+            min: "0",
+            max: "150",
+            onChange: onChangeMarRight
+          }),
+          (directions.includes("all") || directions.includes("bottom")) && wp.element.createElement(RangeControl, {
+            label: __("Margin Bottom (PX)"),
+            value: marginBottom,
+            min: "0",
+            max: "150",
+            onChange: onChangeMarBottom
+          }),
+          (directions.includes("all") || directions.includes("left")) && wp.element.createElement(RangeControl, {
+            label: __("Margin Left (PX)"),
+            value: marginLeft,
+            min: "0",
+            max: "150",
+            onChange: onChangeMarLeft
+          })
+        );
+      }
+    })
+  );
+}
+
+/***/ }),
+/* 22 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = wp.element.Component;
+
+var PremiumLowerQuote = function (_Component) {
+  _inherits(PremiumLowerQuote, _Component);
+
+  function PremiumLowerQuote() {
+    _classCallCheck(this, PremiumLowerQuote);
+
+    return _possibleConstructorReturn(this, (PremiumLowerQuote.__proto__ || Object.getPrototypeOf(PremiumLowerQuote)).apply(this, arguments));
+  }
+
+  _createClass(PremiumLowerQuote, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          size = _props.size,
+          color = _props.color,
+          opacity = _props.opacity;
+
+      return wp.element.createElement(
+        "svg",
+        {
+          style: { width: size + "em", opacity: opacity / 100 },
+          "aria-hidden": "true",
+          "data-prefix": "fas",
+          "data-icon": "quote-left",
+          "class": "svg-inline--fa fa-quote-left fa-w-16",
+          role: "img",
+          xmlns: "http://www.w3.org/2000/svg",
+          viewBox: "0 0 512 512"
+        },
+        wp.element.createElement("path", {
+          fill: "" + color,
+          d: "M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
+        })
+      );
+    }
+  }]);
+
+  return PremiumLowerQuote;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
+
+/***/ }),
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = wp.element.Component;
+
+var PremiumUpperQuote = function (_Component) {
+  _inherits(PremiumUpperQuote, _Component);
+
+  function PremiumUpperQuote() {
+    _classCallCheck(this, PremiumUpperQuote);
+
+    return _possibleConstructorReturn(this, (PremiumUpperQuote.__proto__ || Object.getPrototypeOf(PremiumUpperQuote)).apply(this, arguments));
+  }
+
+  _createClass(PremiumUpperQuote, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          size = _props.size,
+          color = _props.color,
+          opacity = _props.opacity;
+
+
+      return wp.element.createElement(
+        "svg",
+        {
+          style: { width: size + "em", opacity: opacity / 100 },
+          "aria-hidden": "true",
+          "data-prefix": "fas",
+          "data-icon": "quote-right",
+          "class": "svg-inline--fa fa-quote-right fa-w-16",
+          role: "img",
+          xmlns: "http://www.w3.org/2000/svg",
+          viewBox: "0 0 512 512"
+        },
+        wp.element.createElement("path", {
+          fill: "" + color,
+          d: "M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z"
+        })
+      );
+    }
+  }]);
+
+  return PremiumUpperQuote;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports) {
+
+/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
+module.exports = __webpack_amd_options__;
+
+/* WEBPACK VAR INJECTION */}.call(exports, {}))
+
+/***/ }),
 /* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2091,7 +2091,7 @@ function PremiumFilters(props) {
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(10), __webpack_require__(7), __webpack_require__(0), __webpack_require__(15), __webpack_require__(29)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(10), __webpack_require__(7), __webpack_require__(0), __webpack_require__(15), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(10), __webpack_require__(8), __webpack_require__(0), __webpack_require__(16), __webpack_require__(29)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(10), __webpack_require__(8), __webpack_require__(0), __webpack_require__(16), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -2727,9 +2727,9 @@ exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(10));
 
-var _react = _interopRequireDefault(__webpack_require__(7));
+var _react = _interopRequireDefault(__webpack_require__(8));
 
-var _reactDom = _interopRequireDefault(__webpack_require__(15));
+var _reactDom = _interopRequireDefault(__webpack_require__(16));
 
 var _reactLifecyclesCompat = __webpack_require__(31);
 
@@ -3536,7 +3536,7 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(10));
 
-var _react = _interopRequireDefault(__webpack_require__(7));
+var _react = _interopRequireDefault(__webpack_require__(8));
 
 var _reactLifecyclesCompat = __webpack_require__(31);
 
@@ -3790,7 +3790,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_person__ = __webpack_require__(101);
 
 
@@ -4036,7 +4036,7 @@ registerBlockType("premium/accordion", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(7);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -5641,9 +5641,9 @@ registerBlockType("premium/banner", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(11);
 
 
@@ -7735,10 +7735,10 @@ registerBlockType("premium/button", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(12);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -9222,9 +9222,9 @@ registerBlockType("premium/countup", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(12);
 
 
 
@@ -11794,9 +11794,9 @@ registerBlockType("premium/dheading-block", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_fonts__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_fonts__ = __webpack_require__(12);
 
 
 
@@ -14062,11 +14062,11 @@ registerBlockType("premium/icon", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(13);
 
 
 
@@ -14997,8 +14997,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var ReactIs = __webpack_require__(26);
 var assign = __webpack_require__(14);
 
-var ReactPropTypesSecret = __webpack_require__(17);
-var checkPropTypes = __webpack_require__(18);
+var ReactPropTypesSecret = __webpack_require__(19);
+var checkPropTypes = __webpack_require__(20);
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function printWarning() {};
@@ -15570,7 +15570,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
 
 
-var ReactPropTypesSecret = __webpack_require__(17);
+var ReactPropTypesSecret = __webpack_require__(19);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -15829,7 +15829,7 @@ if (process.env.NODE_ENV !== "production") {
     'use strict';
 
     var _assign = __webpack_require__(14);
-    var checkPropTypes = __webpack_require__(18);
+    var checkPropTypes = __webpack_require__(20);
 
     // TODO: this is special because it gets imported during build.
 
@@ -17730,7 +17730,7 @@ if (process.env.NODE_ENV !== "production") {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var aa = __webpack_require__(7),
+var aa = __webpack_require__(8),
     n = __webpack_require__(14),
     r = __webpack_require__(27);function ba(a, b, c, d, e, f, g, h) {
   if (!a) {
@@ -20976,7 +20976,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(7);var _assign=__webpack_require__(14);var checkPropTypes=__webpack_require__(18);var scheduler=__webpack_require__(27);var tracing=__webpack_require__(69);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(8);var _assign=__webpack_require__(14);var checkPropTypes=__webpack_require__(20);var scheduler=__webpack_require__(27);var tracing=__webpack_require__(69);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -25338,7 +25338,7 @@ var _addClass = _interopRequireDefault(__webpack_require__(73));
 
 var _removeClass = _interopRequireDefault(__webpack_require__(76));
 
-var _react = _interopRequireDefault(__webpack_require__(7));
+var _react = _interopRequireDefault(__webpack_require__(8));
 
 var _Transition = _interopRequireDefault(__webpack_require__(30));
 
@@ -25797,9 +25797,9 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(10));
 
-var _react = _interopRequireDefault(__webpack_require__(7));
+var _react = _interopRequireDefault(__webpack_require__(8));
 
-var _reactDom = __webpack_require__(15);
+var _reactDom = __webpack_require__(16);
 
 var _TransitionGroup = _interopRequireDefault(__webpack_require__(33));
 
@@ -25963,7 +25963,7 @@ exports.mergeChildMappings = mergeChildMappings;
 exports.getInitialChildMapping = getInitialChildMapping;
 exports.getNextChildMapping = getNextChildMapping;
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(8);
 
 /**
  * Given `this.props.children`, return an object mapping key to child.
@@ -27633,12 +27633,12 @@ registerBlockType("premium/icon-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(12);
 
 
 
@@ -32588,7 +32588,7 @@ registerBlockType("premium/pricing-table", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(9);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -36086,9 +36086,9 @@ registerBlockType("premium/container", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(9);
 
 
@@ -37259,11 +37259,11 @@ registerBlockType("premium/testimonial", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_default_image__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_default_image__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(11);
 
 
@@ -37988,9 +37988,9 @@ var edit = function edit(props) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(23);
 
 
 
@@ -38194,9 +38194,9 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(23);
 
 
 
@@ -39048,11 +39048,11 @@ var deprecatedContent = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(12);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39930,7 +39930,7 @@ var edit = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(17);
 
 
 
@@ -40118,7 +40118,7 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(17);
 
 
 var className = "premium-video-box";
@@ -41022,6 +41022,10 @@ var deprecatedContent = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
+var _personAttrs;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -41032,154 +41036,305 @@ var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 
 
-var personAttrs = {
-  personText: {
-    type: "string",
-    default: __("Premium person")
-  },
-  personSize: {
-    type: "string",
-    default: "md"
-  },
-  personAlign: {
-    type: "string",
-    default: "center"
-  },
-  personLink: {
-    type: "string",
-    source: "attribute",
-    attribute: "href",
-    selector: ".premium-person"
-  },
-  personTarget: {
-    type: "boolean",
-    default: false
-  },
-  titleTag: {
-    type: "string",
-    default: "p"
-  },
-  effect: {
-    type: "string",
-    default: "none"
-  },
-  effectDir: {
-    type: "string",
-    default: "top"
-  },
-  descColor: {
+var personAttrs = (_personAttrs = {
+    personText: {
+        type: "string",
+        default: __("Premium person")
+    },
+    newpersonText: {
+        type: "string",
+        default: __("New person")
+    },
+    personSize: {
+        type: "string",
+        default: "md"
+    },
+    personAlign: {
+        type: "string",
+        default: "center"
+    },
+    personLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-person"
+    },
+    personTarget: {
+        type: "boolean",
+        default: false
+    },
+    personImgId: {
+        type: "string"
+    },
+    personImgUrl: {
+        type: "string"
+    },
+    imgRadius: {
+        type: "string",
+        default: "50%"
+    },
+    imgSize: {
+        type: "number"
+    },
+    imgBorder: {
+        type: "number",
+        default: "1"
+    },
+    imgBorderColor: {
+        type: "string"
+    },
+    priceBack: {
+        type: "string"
+    },
+    priceMarginT: {
+        type: "number"
+    },
+    priceMarginB: {
+        type: "number",
+        default: 10
+    },
+    pricePadding: {
+        type: "number"
+    },
+    name: {
+        type: "string",
+        default: "Merna Hanna"
+    },
+    nameColor: {
+        type: "string",
+        default: "rgb(110, 193, 228)"
+    },
+    nameSize: {
+        type: "number",
+        default: 20
+    },
+    nameLetter: {
+        type: "number"
+    },
+    title: {
+        type: "string",
+        default: "Senior Developer"
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleSize: {
+        type: "number",
+        default: 20
+    },
+    titleWeight: {
+        type: "number"
+    },
+    titleTag: {
+        type: "string",
+        default: "p"
+    },
+    titleLetter: {
+        type: "number"
+    },
+    DescText: {
+        type: "string",
+        default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla"
+    },
+    descColor: {
+        type: "string"
+    },
+    descSize: {
+        type: "number",
+        default: 20
+    },
+    descWeight: {
+        type: "number"
+    },
+    descLetter: {
+        type: "number"
+    },
+    descHoverColor: {
+        type: "string"
+    },
+    descStyle: {
+        type: "string"
+    },
+    descUpper: {
+        type: "boolean"
+    },
+    descLine: {
+        type: "number"
+    },
+    descshadowColor: {
+        type: "string"
+    },
+    descshadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    descshadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    descshadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    socialIcon: {
+        type: "boolean",
+        default: false
+    },
+    facebook: {
+        type: "string",
+        default: "fb"
+    },
+    twitter: {
+        type: "string",
+        default: "tw"
+    },
+    instagram: {
+        type: "string",
+        default: "insta"
+    },
+    youtube: {
+        type: "string",
+        default: "yout"
+    },
+    socialIconSize: {
+        type: "number",
+        default: 20
+    },
+    socialIconColor: {
+        type: "string"
+    },
+    socialIconHoverColor: {
+        type: "string"
+    },
+    blur: {
+        type: "number",
+        default: "0"
+    },
+    bright: {
+        type: "number",
+        default: "100"
+    },
+    contrast: {
+        type: "number",
+        default: "100"
+    },
+    saturation: {
+        type: "number",
+        default: "100"
+    },
+    hue: {
+        type: "number",
+        default: "0"
+    },
+    effect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    }
+}, _defineProperty(_personAttrs, "descColor", {
     type: "string",
     default: "#000"
-  },
-  textColor: {
+}), _defineProperty(_personAttrs, "textColor", {
     type: "string"
-  },
-  textHoverColor: {
+}), _defineProperty(_personAttrs, "nameHoverColor", {
     type: "string"
-  },
-  backColor: {
+}), _defineProperty(_personAttrs, "titleHoverColor", {
     type: "string"
-  },
-  backHoverColor: {
+}), _defineProperty(_personAttrs, "backColor", {
     type: "string"
-  },
-  slideColor: {
+}), _defineProperty(_personAttrs, "backHoverColor", {
     type: "string"
-  },
-  textSize: {
-    type: "number"
-  },
-  textFontFamily: {
+}), _defineProperty(_personAttrs, "slideColor", {
     type: "string"
-  },
-  textLetter: {
-    type: "number"
-  },
-  textStyle: {
+}), _defineProperty(_personAttrs, "textFontFamily", {
     type: "string"
-  },
-  textUpper: {
+}), _defineProperty(_personAttrs, "multiPersonChecked", {
+    type: "boolean",
+    default: false
+}), _defineProperty(_personAttrs, "nameStyle", {
+    type: "string"
+}), _defineProperty(_personAttrs, "nameUpper", {
     type: "boolean"
-  },
-  textWeight: {
+}), _defineProperty(_personAttrs, "titleStyle", {
+    type: "string"
+}), _defineProperty(_personAttrs, "titleUpper", {
+    type: "boolean"
+}), _defineProperty(_personAttrs, "nameWeight", {
     type: "number",
     default: 500
-  },
-  textLine: {
+}), _defineProperty(_personAttrs, "nameLine", {
     type: "number"
-  },
-  borderType: {
+}), _defineProperty(_personAttrs, "titleLine", {
+    type: "number"
+}), _defineProperty(_personAttrs, "borderType", {
     type: "string",
     default: "none"
-  },
-  borderWidth: {
+}), _defineProperty(_personAttrs, "borderWidth", {
     type: "number",
     default: "1"
-  },
-  borderRadius: {
+}), _defineProperty(_personAttrs, "borderRadius", {
     type: "number"
-  },
-  borderColor: {
+}), _defineProperty(_personAttrs, "borderColor", {
     type: "string"
-  },
-  borderHoverColor: {
+}), _defineProperty(_personAttrs, "borderHoverColor", {
     type: "string"
-  },
-  padding: {
+}), _defineProperty(_personAttrs, "padding", {
     type: "number"
-  },
-  paddingU: {
+}), _defineProperty(_personAttrs, "paddingU", {
     type: "string"
-  },
-  shadowColor: {
+}), _defineProperty(_personAttrs, "nameshadowColor", {
     type: "string"
-  },
-  shadowBlur: {
+}), _defineProperty(_personAttrs, "nameshadowBlur", {
     type: "number",
     default: "0"
-  },
-  shadowHorizontal: {
+}), _defineProperty(_personAttrs, "nameshadowHorizontal", {
     type: "number",
     default: "0"
-  },
-  shadowVertical: {
+}), _defineProperty(_personAttrs, "nameshadowVertical", {
     type: "number",
     default: "0"
-  },
-  personShadowColor: {
+}), _defineProperty(_personAttrs, "titleshadowColor", {
     type: "string"
-  },
-  personShadowBlur: {
+}), _defineProperty(_personAttrs, "titleshadowBlur", {
     type: "number",
     default: "0"
-  },
-  personShadowHorizontal: {
+}), _defineProperty(_personAttrs, "titleshadowHorizontal", {
     type: "number",
     default: "0"
-  },
-  personShadowVertical: {
+}), _defineProperty(_personAttrs, "titleshadowVertical", {
     type: "number",
     default: "0"
-  },
-  personShadowPosition: {
+}), _defineProperty(_personAttrs, "personnamenamenameshadowColor", {
+    type: "string"
+}), _defineProperty(_personAttrs, "personnameshadowBlur", {
+    type: "number",
+    default: "0"
+}), _defineProperty(_personAttrs, "personnameshadowHorizontal", {
+    type: "number",
+    default: "0"
+}), _defineProperty(_personAttrs, "personnameshadowVertical", {
+    type: "number",
+    default: "0"
+}), _defineProperty(_personAttrs, "personShadowPosition", {
     type: "string",
     default: ""
-  },
-  id: {
+}), _defineProperty(_personAttrs, "id", {
     type: "string"
-  }
-};
+}), _personAttrs);
 
 registerBlockType("premium/person", {
-  title: __("person"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__icons__["a" /* default */], { icon: "button" }),
-  category: "premium-blocks",
-  attributes: personAttrs,
-  supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["k" /* person */]
-  },
-  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
-  save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */]
+    title: __("person"),
+    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__icons__["a" /* default */], { icon: "button" }),
+    category: "premium-blocks",
+    attributes: personAttrs,
+    supports: {
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["k" /* person */]
+    },
+    edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+    save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */]
 });
 
 /***/ }),
@@ -41189,95 +41344,261 @@ registerBlockType("premium/person", {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(15);
+
 
 
 var RichText = wp.editor.RichText;
 
 
 var save = function save(props) {
-  var className = props.className;
-  var _props$attributes = props.attributes,
-      id = _props$attributes.id,
-      personText = _props$attributes.personText,
-      personSize = _props$attributes.personSize,
-      personAlign = _props$attributes.personAlign,
-      personLink = _props$attributes.personLink,
-      personTarget = _props$attributes.personTarget,
-      titleTag = _props$attributes.titleTag,
-      effect = _props$attributes.effect,
-      effectDir = _props$attributes.effectDir,
-      descColor = _props$attributes.descColor,
-      textColor = _props$attributes.textColor,
-      textHoverColor = _props$attributes.textHoverColor,
-      backColor = _props$attributes.backColor,
-      backHoverColor = _props$attributes.backHoverColor,
-      slideColor = _props$attributes.slideColor,
-      textSize = _props$attributes.textSize,
-      textFontFamily = _props$attributes.textFontFamily,
-      textWeight = _props$attributes.textWeight,
-      textLine = _props$attributes.textLine,
-      textLetter = _props$attributes.textLetter,
-      textStyle = _props$attributes.textStyle,
-      textUpper = _props$attributes.textUpper,
-      borderType = _props$attributes.borderType,
-      borderWidth = _props$attributes.borderWidth,
-      borderRadius = _props$attributes.borderRadius,
-      borderColor = _props$attributes.borderColor,
-      borderHoverColor = _props$attributes.borderHoverColor,
-      padding = _props$attributes.padding,
-      paddingU = _props$attributes.paddingU,
-      shadowBlur = _props$attributes.shadowBlur,
-      shadowColor = _props$attributes.shadowColor,
-      shadowHorizontal = _props$attributes.shadowHorizontal,
-      shadowVertical = _props$attributes.shadowVertical,
-      personShadowBlur = _props$attributes.personShadowBlur,
-      personShadowColor = _props$attributes.personShadowColor,
-      personShadowHorizontal = _props$attributes.personShadowHorizontal,
-      personShadowVertical = _props$attributes.personShadowVertical,
-      personShadowPosition = _props$attributes.personShadowPosition;
+    var className = props.className;
+    var _props$attributes = props.attributes,
+        id = _props$attributes.id,
+        personText = _props$attributes.personText,
+        newpersonText = _props$attributes.newpersonText,
+        personSize = _props$attributes.personSize,
+        personAlign = _props$attributes.personAlign,
+        personLink = _props$attributes.personLink,
+        personTarget = _props$attributes.personTarget,
+        personImgUrl = _props$attributes.personImgUrl,
+        imgRadius = _props$attributes.imgRadius,
+        imgBorder = _props$attributes.imgBorder,
+        imgBorderColor = _props$attributes.imgBorderColor,
+        imgSize = _props$attributes.imgSize,
+        name = _props$attributes.name,
+        nameColor = _props$attributes.nameColor,
+        nameSize = _props$attributes.nameSize,
+        nameWeight = _props$attributes.nameWeight,
+        nameV = _props$attributes.nameV,
+        title = _props$attributes.title,
+        titleColor = _props$attributes.titleColor,
+        titleSize = _props$attributes.titleSize,
+        titleWeight = _props$attributes.titleWeight,
+        titleV = _props$attributes.titleV,
+        titleTag = _props$attributes.titleTag,
+        DescText = _props$attributes.DescText,
+        descColor = _props$attributes.descColor,
+        descSize = _props$attributes.descSize,
+        descWeight = _props$attributes.descWeight,
+        descV = _props$attributes.descV,
+        descLine = _props$attributes.descLine,
+        descLetter = _props$attributes.descLetter,
+        descStyle = _props$attributes.descStyle,
+        descUpper = _props$attributes.descUpper,
+        descshadowBlur = _props$attributes.descshadowBlur,
+        descshadowColor = _props$attributes.descshadowColor,
+        descshadowHorizontal = _props$attributes.descshadowHorizontal,
+        descshadowVertical = _props$attributes.descshadowVertical,
+        socialIcon = _props$attributes.socialIcon,
+        facebook = _props$attributes.facebook,
+        twitter = _props$attributes.twitter,
+        instagram = _props$attributes.instagram,
+        youtube = _props$attributes.youtube,
+        socialIconSize = _props$attributes.socialIconSize,
+        blur = _props$attributes.blur,
+        bright = _props$attributes.bright,
+        contrast = _props$attributes.contrast,
+        saturation = _props$attributes.saturation,
+        hue = _props$attributes.hue,
+        effect = _props$attributes.effect,
+        effectDir = _props$attributes.effectDir,
+        textColor = _props$attributes.textColor,
+        nameHoverColor = _props$attributes.nameHoverColor,
+        backColor = _props$attributes.backColor,
+        backHoverColor = _props$attributes.backHoverColor,
+        slideColor = _props$attributes.slideColor,
+        textFontFamily = _props$attributes.textFontFamily,
+        nameLine = _props$attributes.nameLine,
+        nameLetter = _props$attributes.nameLetter,
+        titleLine = _props$attributes.titleLine,
+        titleLetter = _props$attributes.titleLetter,
+        multiPersonChecked = _props$attributes.multiPersonChecked,
+        nameStyle = _props$attributes.nameStyle,
+        nameUpper = _props$attributes.nameUpper,
+        titleStyle = _props$attributes.titleStyle,
+        titleUpper = _props$attributes.titleUpper,
+        borderType = _props$attributes.borderType,
+        borderWidth = _props$attributes.borderWidth,
+        borderRadius = _props$attributes.borderRadius,
+        borderColor = _props$attributes.borderColor,
+        borderHoverColor = _props$attributes.borderHoverColor,
+        padding = _props$attributes.padding,
+        paddingU = _props$attributes.paddingU,
+        nameshadowBlur = _props$attributes.nameshadowBlur,
+        nameshadowColor = _props$attributes.nameshadowColor,
+        nameshadowHorizontal = _props$attributes.nameshadowHorizontal,
+        nameshadowVertical = _props$attributes.nameshadowVertical,
+        titleshadowBlur = _props$attributes.titleshadowBlur,
+        titleshadowColor = _props$attributes.titleshadowColor,
+        titleshadowHorizontal = _props$attributes.titleshadowHorizontal,
+        titleshadowVertical = _props$attributes.titleshadowVertical,
+        personnameshadowBlur = _props$attributes.personnameshadowBlur,
+        personnameshadowColor = _props$attributes.personnameshadowColor,
+        personnameshadowHorizontal = _props$attributes.personnameshadowHorizontal,
+        personnameshadowVertical = _props$attributes.personnameshadowVertical,
+        personShadowPosition = _props$attributes.personShadowPosition;
 
 
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-person');
+    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-person');
 
-  return wp.element.createElement(
-    'div',
-    {
-      id: mainClasses + '-wrap-' + id,
-      className: mainClasses + '__wrap premium-person__' + effect + ' premium-person__' + effectDir,
-      style: { textAlign: personAlign }
-    },
-    wp.element.createElement('style', {
-      dangerouslySetInnerHTML: {
-        __html: ['#premium-person-wrap-' + id + ' .premium-person:hover {', 'color: ' + textHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-person-wrap-' + id + '.premium-person__none .premium-person:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-person-wrap-' + id + '.premium-person__slide .premium-person::before,', '#premium-person-wrap-' + id + '.premium-person__shutter .premium-person::before,', '#premium-person-wrap-' + id + '.premium-person__radial .premium-person::before {', 'background-color: ' + slideColor, "}"].join("\n")
-      }
-    }),
-    wp.element.createElement(RichText.Content, {
-      tagName: titleTag.toLowerCase(),
-      value: personText,
-      className: 'premium-person premium-person__' + personSize,
-      href: personLink,
-      rel: 'noopener noreferrer',
-      target: personTarget ? "_blank" : "_self",
-      style: {
-        color: descColor,
-        backgroundColor: backColor,
-        fontSize: textSize + "px",
-        fontFamily: textFontFamily,
-        letterSpacing: textLetter + "px",
-        textTransform: textUpper ? "uppercase" : "none",
-        fontStyle: textStyle,
-        lineHeight: textLine + "px",
-        fontWeight: textWeight,
-        textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
-        boxShadow: personShadowHorizontal + 'px ' + personShadowVertical + 'px ' + personShadowBlur + 'px ' + personShadowColor + ' ' + personShadowPosition,
-        padding: padding + paddingU,
-        border: borderType,
-        borderWidth: borderWidth + "px",
-        borderRadius: borderRadius + "px",
-        borderColor: borderColor
-      }
-    })
-  );
+    return wp.element.createElement(
+        'div',
+        null,
+        wp.element.createElement(
+            'div',
+            {
+                id: mainClasses + '-wrap-' + id,
+                className: mainClasses + '__wrap premium-person__' + effect + ' premium-person__' + effectDir,
+                style: { textAlign: personAlign }
+            },
+            wp.element.createElement('style', {
+                dangerouslySetInnerHTML: {
+                    __html: ['#premium-person-wrap-' + id + ' .premium-person:hover {', 'color: ' + nameHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-person-wrap-' + id + '.premium-person__none .premium-person:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-person-wrap-' + id + '.premium-person__slide .premium-person::before,', '#premium-person-wrap-' + id + '.premium-person__shutter .premium-person::before,', '#premium-person-wrap-' + id + '.premium-person__radial .premium-person::before {', 'background-color: ' + slideColor, "}"].join("\n")
+                }
+            }),
+            wp.element.createElement(
+                'div',
+                { className: 'premium-person__img_wrap' },
+                personImgUrl && wp.element.createElement('img', {
+                    className: 'premium-person__img',
+                    src: '' + personImgUrl,
+                    alt: 'Person',
+                    style: {
+                        borderWidth: imgBorder + "px",
+                        borderRadius: imgRadius,
+                        borderColor: imgBorderColor,
+                        width: imgSize + "px",
+                        height: imgSize + "px",
+                        filter: 'brightness( ' + bright + '% ) contrast( ' + contrast + '% ) saturate( ' + saturation + '% ) blur( ' + blur + 'px ) hue-rotate( ' + hue + 'deg )'
+                    }
+                }),
+                !personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_default_image__["a" /* default */], { className: className })
+            ),
+            wp.element.createElement(
+                'div',
+                {
+                    className: 'premium-person__name_wrap'
+                },
+                wp.element.createElement(
+                    'div',
+                    null,
+                    name && wp.element.createElement(
+                        'span',
+                        {
+                            className: 'premium-person__name',
+                            style: {
+                                color: nameColor,
+                                fontSize: nameSize + "px",
+                                fontWeight: nameWeight,
+                                alignSelf: nameV,
+                                letterSpacing: nameLetter + "px",
+                                lineHeight: nameLine + "px",
+                                fontStyle: nameStyle,
+                                textTransform: nameUpper ? "uppercase" : "none",
+                                textShadow: nameshadowHorizontal + 'px ' + nameshadowVertical + 'px ' + nameshadowBlur + 'px ' + nameshadowColor
+                            }
+                        },
+                        name
+                    )
+                ),
+                wp.element.createElement(
+                    'div',
+                    null,
+                    title && wp.element.createElement(
+                        'span',
+                        {
+                            className: 'premium-person__title',
+                            style: {
+                                color: titleColor,
+                                fontSize: titleSize + "px",
+                                fontWeight: titleWeight,
+                                alignSelf: titleV,
+                                letterSpacing: titleLetter + "px",
+                                lineHeight: titleLine + "px",
+                                fontStyle: titleStyle,
+                                textTransform: titleUpper ? "uppercase" : "none",
+                                textShadow: titleshadowHorizontal + 'px ' + titleshadowVertical + 'px ' + titleshadowBlur + 'px ' + titleshadowColor
+                            }
+                        },
+                        title
+                    )
+                ),
+                wp.element.createElement(
+                    'div',
+                    null,
+                    DescText && wp.element.createElement(
+                        'span',
+                        {
+                            className: 'premium-person__desc',
+                            style: {
+                                color: descColor,
+                                fontSize: descSize + "px",
+                                fontWeight: descWeight,
+                                alignSelf: descV,
+                                letterSpacing: descLetter + "px",
+                                lineHeight: descLine + "px",
+                                fontStyle: descStyle,
+                                textTransform: descUpper ? "uppercase" : "none",
+                                textShadow: descshadowHorizontal + 'px ' + descshadowVertical + 'px ' + descshadowBlur + 'px ' + descshadowColor
+                            }
+                        },
+                        DescText
+                    )
+                ),
+                socialIcon && wp.element.createElement(
+                    'div',
+                    null,
+                    wp.element.createElement(
+                        'div',
+                        null,
+                        facebook
+                    ),
+                    wp.element.createElement(
+                        'div',
+                        null,
+                        twitter
+                    ),
+                    wp.element.createElement(
+                        'div',
+                        null,
+                        instagram
+                    ),
+                    wp.element.createElement(
+                        'div',
+                        null,
+                        youtube
+                    )
+                )
+            ),
+            multiPersonChecked && wp.element.createElement(RichText.Content, {
+                tagName: titleTag.toLowerCase(),
+                titleue: multiPersonChecked ? personText : newpersonText,
+                className: 'premium-person premium-person__' + personSize,
+                href: personLink,
+                rel: 'noopener noreferrer',
+                target: personTarget ? "_blank" : "_self",
+                style: {
+                    color: descColor,
+                    backgroundColor: backColor,
+                    fontSize: nameSize + "px",
+                    fontFamily: textFontFamily,
+                    letterSpacing: nameLetter + "px",
+                    textTransform: nameUpper ? "uppercase" : "none",
+                    fontStyle: nameStyle,
+                    lineHeight: nameLine + "px",
+                    fontWeight: nameWeight,
+                    textShadow: nameshadowHorizontal + 'px ' + nameshadowVertical + 'px ' + nameshadowBlur + 'px ' + nameshadowColor,
+                    boxShadow: personnameshadowHorizontal + 'px ' + personnameshadowVertical + 'px ' + personnameshadowBlur + 'px ' + personnameshadowColor + ' ' + personShadowPosition,
+                    padding: padding + paddingU,
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        )
+    );
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (save);
@@ -41291,11 +41612,15 @@ var save = function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_default_image__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_filters__ = __webpack_require__(18);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -41307,12 +41632,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var __ = wp.i18n.__;
 var _wp$components = wp.components,
+    IconButton = _wp$components.IconButton,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
     RangeControl = _wp$components.RangeControl,
     ToggleControl = _wp$components.ToggleControl,
     Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
+    Button = _wp$components.Button,
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl;
 var Fragment = wp.element.Fragment;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
@@ -41320,530 +41648,1166 @@ var _wp$editor = wp.editor,
     AlignmentToolbar = _wp$editor.AlignmentToolbar,
     BlockControls = _wp$editor.BlockControls,
     RichText = _wp$editor.RichText,
-    URLInput = _wp$editor.URLInput;
+    URLInput = _wp$editor.URLInput,
+    MediaUpload = _wp$editor.MediaUpload;
 
 
 var edit = function edit(props) {
-  var _wp$element$createEle;
+    var _wp$element$createEle, _wp$element$createEle2, _wp$element$createEle3;
 
-  var isSelected = props.isSelected,
-      setAttributes = props.setAttributes,
-      className = props.className,
-      blockId = props.clientId;
-  var _props$attributes = props.attributes,
-      id = _props$attributes.id,
-      personText = _props$attributes.personText,
-      personSize = _props$attributes.personSize,
-      personAlign = _props$attributes.personAlign,
-      personLink = _props$attributes.personLink,
-      personTarget = _props$attributes.personTarget,
-      effect = _props$attributes.effect,
-      effectDir = _props$attributes.effectDir,
-      descColor = _props$attributes.descColor,
-      textColor = _props$attributes.textColor,
-      textHoverColor = _props$attributes.textHoverColor,
-      backColor = _props$attributes.backColor,
-      backHoverColor = _props$attributes.backHoverColor,
-      slideColor = _props$attributes.slideColor,
-      textSize = _props$attributes.textSize,
-      textFontFamily = _props$attributes.textFontFamily,
-      textWeight = _props$attributes.textWeight,
-      textLetter = _props$attributes.textLetter,
-      textUpper = _props$attributes.textUpper,
-      textLine = _props$attributes.textLine,
-      textStyle = _props$attributes.textStyle,
-      borderType = _props$attributes.borderType,
-      borderWidth = _props$attributes.borderWidth,
-      borderRadius = _props$attributes.borderRadius,
-      borderColor = _props$attributes.borderColor,
-      borderHoverColor = _props$attributes.borderHoverColor,
-      shadowBlur = _props$attributes.shadowBlur,
-      shadowColor = _props$attributes.shadowColor,
-      shadowHorizontal = _props$attributes.shadowHorizontal,
-      shadowVertical = _props$attributes.shadowVertical,
-      padding = _props$attributes.padding,
-      paddingU = _props$attributes.paddingU,
-      personShadowBlur = _props$attributes.personShadowBlur,
-      personShadowColor = _props$attributes.personShadowColor,
-      personShadowHorizontal = _props$attributes.personShadowHorizontal,
-      personShadowVertical = _props$attributes.personShadowVertical,
-      personShadowPosition = _props$attributes.personShadowPosition;
+    var isSelected = props.isSelected,
+        setAttributes = props.setAttributes,
+        className = props.className,
+        blockId = props.clientId;
+    var _props$attributes = props.attributes,
+        id = _props$attributes.id,
+        personText = _props$attributes.personText,
+        newpersonText = _props$attributes.newpersonText,
+        personSize = _props$attributes.personSize,
+        personAlign = _props$attributes.personAlign,
+        personLink = _props$attributes.personLink,
+        personTarget = _props$attributes.personTarget,
+        personImgId = _props$attributes.personImgId,
+        personImgUrl = _props$attributes.personImgUrl,
+        imgRadius = _props$attributes.imgRadius,
+        imgSize = _props$attributes.imgSize,
+        imgBorder = _props$attributes.imgBorder,
+        imgBorderColor = _props$attributes.imgBorderColor,
+        name = _props$attributes.name,
+        nameColor = _props$attributes.nameColor,
+        nameSize = _props$attributes.nameSize,
+        nameWeight = _props$attributes.nameWeight,
+        nameV = _props$attributes.nameV,
+        title = _props$attributes.title,
+        titleColor = _props$attributes.titleColor,
+        titleSize = _props$attributes.titleSize,
+        titleWeight = _props$attributes.titleWeight,
+        titleV = _props$attributes.titleV,
+        titleTag = _props$attributes.titleTag,
+        DescText = _props$attributes.DescText,
+        descSize = _props$attributes.descSize,
+        descWeight = _props$attributes.descWeight,
+        descV = _props$attributes.descV,
+        descLine = _props$attributes.descLine,
+        descLetter = _props$attributes.descLetter,
+        descStyle = _props$attributes.descStyle,
+        descUpper = _props$attributes.descUpper,
+        descshadowBlur = _props$attributes.descshadowBlur,
+        descshadowColor = _props$attributes.descshadowColor,
+        descshadowHorizontal = _props$attributes.descshadowHorizontal,
+        descshadowVertical = _props$attributes.descshadowVertical,
+        descHoverColor = _props$attributes.descHoverColor,
+        socialIcon = _props$attributes.socialIcon,
+        facebook = _props$attributes.facebook,
+        twitter = _props$attributes.twitter,
+        instagram = _props$attributes.instagram,
+        youtube = _props$attributes.youtube,
+        socialIconSize = _props$attributes.socialIconSize,
+        socialIconColor = _props$attributes.socialIconColor,
+        socialIconHoverColor = _props$attributes.socialIconHoverColor,
+        blur = _props$attributes.blur,
+        bright = _props$attributes.bright,
+        contrast = _props$attributes.contrast,
+        saturation = _props$attributes.saturation,
+        hue = _props$attributes.hue,
+        effect = _props$attributes.effect,
+        effectDir = _props$attributes.effectDir,
+        descColor = _props$attributes.descColor,
+        textColor = _props$attributes.textColor,
+        nameHoverColor = _props$attributes.nameHoverColor,
+        titleHoverColor = _props$attributes.titleHoverColor,
+        backColor = _props$attributes.backColor,
+        backHoverColor = _props$attributes.backHoverColor,
+        slideColor = _props$attributes.slideColor,
+        textFontFamily = _props$attributes.textFontFamily,
+        nameLetter = _props$attributes.nameLetter,
+        titleLetter = _props$attributes.titleLetter,
+        multiPersonChecked = _props$attributes.multiPersonChecked,
+        nameUpper = _props$attributes.nameUpper,
+        nameLine = _props$attributes.nameLine,
+        nameStyle = _props$attributes.nameStyle,
+        titleUpper = _props$attributes.titleUpper,
+        titleLine = _props$attributes.titleLine,
+        titleStyle = _props$attributes.titleStyle,
+        borderType = _props$attributes.borderType,
+        borderWidth = _props$attributes.borderWidth,
+        borderRadius = _props$attributes.borderRadius,
+        borderColor = _props$attributes.borderColor,
+        borderHoverColor = _props$attributes.borderHoverColor,
+        nameshadowBlur = _props$attributes.nameshadowBlur,
+        nameshadowColor = _props$attributes.nameshadowColor,
+        nameshadowHorizontal = _props$attributes.nameshadowHorizontal,
+        nameshadowVertical = _props$attributes.nameshadowVertical,
+        titleshadowBlur = _props$attributes.titleshadowBlur,
+        titleshadowColor = _props$attributes.titleshadowColor,
+        titleshadowHorizontal = _props$attributes.titleshadowHorizontal,
+        titleshadowVertical = _props$attributes.titleshadowVertical,
+        padding = _props$attributes.padding,
+        paddingU = _props$attributes.paddingU,
+        personnameshadowBlur = _props$attributes.personnameshadowBlur,
+        personnameshadowColor = _props$attributes.personnameshadowColor,
+        personnameshadowHorizontal = _props$attributes.personnameshadowHorizontal,
+        personnameshadowVertical = _props$attributes.personnameshadowVertical,
+        personShadowPosition = _props$attributes.personShadowPosition;
 
 
-  var SIZE = [{
-    value: "sm",
-    label: __("Small")
-  }, {
-    value: "md",
-    label: __("Medium")
-  }, {
-    value: "lg",
-    label: __("Large")
-  }, {
-    value: "block",
-    label: __("Block")
-  }];
-  var DIRECTION = [{
-    value: "top",
-    label: __("Top to Bottom")
-  }, {
-    value: "bottom",
-    label: __("Bottom to Top")
-  }, {
-    value: "left",
-    label: __("Left to Right")
-  }, {
-    value: "right",
-    label: __("Right to Left")
-  }];
-  var SHUTTER = [{
-    value: "shutouthor",
-    label: __("Shutter out Horizontal")
-  }, {
-    value: "shutoutver",
-    label: __("Shutter out Vertical")
-  }, {
-    value: "scshutoutver",
-    label: __("Scaled Shutter Vertical")
-  }, {
-    value: "scshutouthor",
-    label: __("Scaled Shutter Horizontal")
-  }, {
-    value: "dshutinver",
-    label: __("Tilted Left")
-  }, {
-    value: "dshutinhor",
-    label: __("Tilted Right")
-  }];
-  var RADIAL = [{
-    value: "radialin",
-    label: __("Radial In")
-  }, {
-    value: "radialout",
-    label: __("Radial Out")
-  }, {
-    value: "rectin",
-    label: __("Rectangle In")
-  }, {
-    value: "rectout",
-    label: __("Rectangle Out")
-  }];
-  var EFFECTS = [{
-    value: "none",
-    label: __("None")
-  }, {
-    value: "slide",
-    label: __("Slide")
-  }, {
-    value: "shutter",
-    label: __("Shutter")
-  }, {
-    value: "radial",
-    label: __("Radial")
-  }];
-  var onChangeHover = function onChangeHover(newValue) {
-    props.setAttributes({ effect: newValue });
-    switch (newValue) {
-      case "slide":
-        props.setAttributes({ effectDir: "top" });
-        break;
-      case "shutter":
-        props.setAttributes({ effectDir: "shutouthor" });
-        break;
-      case "radial":
-        props.setAttributes({ effectDir: "radialin" });
-        break;
-    }
-  };
-  setAttributes({ id: blockId });
-
-  var addFontToHead = function addFontToHead(fontFamily) {
-    var head = document.head;
-    var link = document.createElement("link");
-    link.type = "text/css";
-    link.rel = "stylesheet";
-    link.href = "https://fonts.googleapis.com/css?family=" + fontFamily.replace(/\s+/g, "+") + ":" + "regular";
-    head.appendChild(link);
-  };
-
-  var onChangeTextFamily = function onChangeTextFamily(fontFamily) {
-    setAttributes({ textFontFamily: fontFamily });
-    if (!fontFamily) {
-      return;
-    }
-
-    addFontToHead(fontFamily);
-  };
-
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-person");
-
-  return [isSelected && "block" != personSize && wp.element.createElement(
-    BlockControls,
-    { key: "controls" },
-    wp.element.createElement(AlignmentToolbar, {
-      value: personAlign,
-      onChange: function onChange(newAlign) {
-        return setAttributes({ personAlign: newAlign });
-      }
-    })
-  ), isSelected && wp.element.createElement(
-    InspectorControls,
-    { key: "inspector" },
-    wp.element.createElement(
-      PanelBody,
-      {
-        title: __("General Settings"),
-        className: "premium-panel-body",
-        initialOpen: false
-      },
-      wp.element.createElement(SelectControl, {
-        options: EFFECTS,
-        label: __("Hover Effect"),
-        value: effect,
-        onChange: onChangeHover
-      }),
-      "slide" === effect && wp.element.createElement(SelectControl, {
-        options: DIRECTION,
-        label: __("Direction"),
-        value: effectDir,
-        onChange: function onChange(newValue) {
-          return setAttributes({ effectDir: newValue });
+    var SIZE = [{
+        value: "sm",
+        label: __("Small")
+    }, {
+        value: "md",
+        label: __("Medium")
+    }, {
+        value: "lg",
+        label: __("Large")
+    }, {
+        value: "block",
+        label: __("Block")
+    }];
+    var DIRECTION = [{
+        value: "top",
+        label: __("Top to Bottom")
+    }, {
+        value: "bottom",
+        label: __("Bottom to Top")
+    }, {
+        value: "left",
+        label: __("Left to Right")
+    }, {
+        value: "right",
+        label: __("Right to Left")
+    }];
+    var SHUTTER = [{
+        value: "shutouthor",
+        label: __("Shutter out Horizontal")
+    }, {
+        value: "shutoutver",
+        label: __("Shutter out Vertical")
+    }, {
+        value: "scshutoutver",
+        label: __("Scaled Shutter Vertical")
+    }, {
+        value: "scshutouthor",
+        label: __("Scaled Shutter Horizontal")
+    }, {
+        value: "dshutinver",
+        label: __("Tilted Left")
+    }, {
+        value: "dshutinhor",
+        label: __("Tilted Right")
+    }];
+    var RADIAL = [{
+        value: "radialin",
+        label: __("Radial In")
+    }, {
+        value: "radialout",
+        label: __("Radial Out")
+    }, {
+        value: "rectin",
+        label: __("Rectangle In")
+    }, {
+        value: "rectout",
+        label: __("Rectangle Out")
+    }];
+    var PERCONINFO = [{
+        value: "name",
+        label: __("Name")
+    }, {
+        value: "title",
+        label: __("Title")
+    }, {
+        value: "desc",
+        label: __("Description")
+    }];
+    var RADIUS = [{
+        value: "0",
+        label: __("Square")
+    }, {
+        value: "50%",
+        label: __("Circle")
+    }, {
+        value: "15px",
+        label: __("Rounded")
+    }];
+    var EFFECTS = [{
+        value: "none",
+        label: __("None")
+    }, {
+        value: "slide",
+        label: __("Slide")
+    }, {
+        value: "shutter",
+        label: __("Shutter")
+    }, {
+        value: "radial",
+        label: __("Radial")
+    }];
+    var onChangeHover = function onChangeHover(newValue) {
+        props.setAttributes({ effect: newValue });
+        switch (newValue) {
+            case "slide":
+                props.setAttributes({ effectDir: "top" });
+                break;
+            case "shutter":
+                props.setAttributes({ effectDir: "shutouthor" });
+                break;
+            case "radial":
+                props.setAttributes({ effectDir: "radialin" });
+                break;
         }
-      }),
-      "shutter" === effect && wp.element.createElement(SelectControl, {
-        options: SHUTTER,
-        label: __("Shutter Direction"),
-        value: effectDir,
-        onChange: function onChange(newValue) {
-          return setAttributes({ effectDir: newValue });
+    };
+    setAttributes({ id: blockId });
+
+    var addFontToHead = function addFontToHead(fontFamily) {
+        var head = document.head;
+        var link = document.createElement("link");
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        link.href = "https://fonts.googleapis.com/css?family=" + fontFamily.replace(/\s+/g, "+") + ":" + "regular";
+        head.appendChild(link);
+    };
+
+    var onChangeTextFamily = function onChangeTextFamily(fontFamily) {
+        setAttributes({ textFontFamily: fontFamily });
+        if (!fontFamily) {
+            return;
         }
-      }),
-      "radial" === effect && wp.element.createElement(SelectControl, {
-        options: RADIAL,
-        label: __("Style"),
-        value: effectDir,
-        onChange: function onChange(newValue) {
-          return setAttributes({ effectDir: newValue });
-        }
-      }),
-      wp.element.createElement(SelectControl, {
-        options: SIZE,
-        label: __("Person Size"),
-        value: personSize,
-        onChange: function onChange(newSize) {
-          return setAttributes({ personSize: newSize });
-        }
-      }),
-      wp.element.createElement(ToggleControl, {
-        label: __("Open link in new tab"),
-        checked: personTarget,
-        onChange: function onChange(newValue) {
-          return setAttributes({ personTarget: newValue });
-        }
-      })
-    ),
-    wp.element.createElement(
-      PanelBody,
-      {
-        title: __("Text Style"),
-        className: "premium-panel-body",
-        initialOpen: false
-      },
-      wp.element.createElement(SelectControl, {
-        label: __("Font Family"),
-        value: textFontFamily,
-        options: __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__["a" /* default */],
-        onChange: onChangeTextFamily
-      }),
-      wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], (_wp$element$createEle = {
-        components: ["size", "weight", "line", "style", "upper", "spacing"],
-        size: textSize,
-        weight: textWeight,
-        style: textStyle,
-        spacing: textLetter,
-        upper: textUpper,
-        line: textLine,
-        onChangeSize: function onChangeSize(newSize) {
-          return setAttributes({ textSize: newSize });
-        },
-        onChangeWeight: function onChangeWeight(newWeight) {
-          return setAttributes({ textWeight: newWeight });
-        },
-        onChangeLine: function onChangeLine(newValue) {
-          return setAttributes({ textLine: newValue });
-        }
-      }, _defineProperty(_wp$element$createEle, "onChangeSize", function onChangeSize(newSize) {
-        return setAttributes({ textSize: newSize });
-      }), _defineProperty(_wp$element$createEle, "onChangeStyle", function onChangeStyle(newStyle) {
-        return setAttributes({ textStyle: newStyle });
-      }), _defineProperty(_wp$element$createEle, "onChangeSpacing", function onChangeSpacing(newValue) {
-        return setAttributes({ textLetter: newValue });
-      }), _defineProperty(_wp$element$createEle, "onChangeUpper", function onChangeUpper(check) {
-        return setAttributes({ textUpper: check });
-      }), _wp$element$createEle)),
-      wp.element.createElement(
+
+        addFontToHead(fontFamily);
+    };
+
+    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-person");
+
+    return [isSelected && "block" != personSize && wp.element.createElement(
+        BlockControls,
+        { key: "controls" },
+        wp.element.createElement(AlignmentToolbar, {
+            value: personAlign,
+            onChange: function onChange(newAlign) {
+                return setAttributes({ personAlign: newAlign });
+            }
+        })
+    ), isSelected && wp.element.createElement(
+        InspectorControls,
+        { key: "inspector" },
+        wp.element.createElement(
+            PanelBody,
+            {
+                title: __("General Settings"),
+                className: "premium-panel-body",
+                initialOpen: false
+            },
+            wp.element.createElement(ToggleControl, {
+                label: __("Multiple Persons"),
+                checked: multiPersonChecked,
+                onChange: function onChange(newValue) {
+                    return setAttributes({ multiPersonChecked: newValue });
+                }
+            }),
+            wp.element.createElement(
+                "p",
+                null,
+                __("Enable this option if you need to add multiple persons")
+            ),
+            wp.element.createElement(SelectControl, {
+                options: EFFECTS,
+                label: __("Hover Effect"),
+                value: effect,
+                onChange: onChangeHover
+            }),
+            "slide" === effect && wp.element.createElement(SelectControl, {
+                options: DIRECTION,
+                label: __("Direction"),
+                value: effectDir,
+                onChange: function onChange(newValue) {
+                    return setAttributes({ effectDir: newValue });
+                }
+            }),
+            "shutter" === effect && wp.element.createElement(SelectControl, {
+                options: SHUTTER,
+                label: __("Shutter Direction"),
+                value: effectDir,
+                onChange: function onChange(newValue) {
+                    return setAttributes({ effectDir: newValue });
+                }
+            }),
+            "radial" === effect && wp.element.createElement(SelectControl, {
+                options: RADIAL,
+                label: __("Style"),
+                value: effectDir,
+                onChange: function onChange(newValue) {
+                    return setAttributes({ effectDir: newValue });
+                }
+            }),
+            wp.element.createElement(SelectControl, {
+                options: SIZE,
+                label: __("Person Size"),
+                value: personSize,
+                onChange: function onChange(newSize) {
+                    return setAttributes({ personSize: newSize });
+                }
+            }),
+            wp.element.createElement(ToggleControl, {
+                label: __("Open link in new tab"),
+                checked: personTarget,
+                onChange: function onChange(newValue) {
+                    return setAttributes({ personTarget: newValue });
+                }
+            })
+        ),
+        wp.element.createElement(
+            PanelBody,
+            {
+                title: __("Single Person Settings"),
+                className: "premium-panel-body",
+                initialOpen: false
+            },
+            wp.element.createElement(
+                "p",
+                null,
+                __("Image")
+            ),
+            personImgUrl && wp.element.createElement("img", { src: personImgUrl, width: "100%", height: "auto" }),
+            !personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_default_image__["a" /* default */], null),
+            wp.element.createElement(MediaUpload, {
+                allowedTypes: ["image"],
+                onSelect: function onSelect(media) {
+                    setAttributes({
+                        personImgId: media.id,
+                        personImgUrl: "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url
+                    });
+                },
+                type: "image",
+                value: personImgId,
+                render: function render(_ref) {
+                    var open = _ref.open;
+                    return wp.element.createElement(
+                        IconButton,
+                        {
+                            label: __("Change Image"),
+                            icon: "edit",
+                            onClick: open
+                        },
+                        __("Change Image")
+                    );
+                }
+            }),
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_filters__["a" /* default */], {
+                blur: blur,
+                bright: bright,
+                contrast: contrast,
+                saturation: saturation,
+                hue: hue,
+                onChangeBlur: function onChangeBlur(value) {
+                    return setAttributes({ blur: value });
+                },
+                onChangeBright: function onChangeBright(value) {
+                    return setAttributes({ bright: value });
+                },
+                onChangeContrast: function onChangeContrast(value) {
+                    return setAttributes({ contrast: value });
+                },
+                onChangeSat: function onChangeSat(value) {
+                    return setAttributes({ saturation: value });
+                },
+                onChangeHue: function onChangeHue(value) {
+                    return setAttributes({ hue: value });
+                }
+            }),
+            wp.element.createElement(TextControl, {
+                label: __("Name"),
+                value: name,
+                onChange: function onChange(value) {
+                    return setAttributes({ name: value });
+                }
+            }),
+            wp.element.createElement(TextControl, {
+                label: __("Title"),
+                value: title,
+                onChange: function onChange(value) {
+                    return setAttributes({ title: value });
+                }
+            }),
+            wp.element.createElement(TextareaControl, {
+                label: __("Description"),
+                value: DescText,
+                onChange: function onChange(newText) {
+                    return setAttributes({ DescText: newText });
+                }
+            }),
+            wp.element.createElement(ToggleControl, {
+                label: __("Enable Social Icons"),
+                checked: socialIcon,
+                onChange: function onChange(newCheck) {
+                    return setAttributes({ socialIcon: newCheck });
+                }
+            }),
+            socialIcon && wp.element.createElement(
+                "div",
+                null,
+                wp.element.createElement(TextControl, {
+                    label: __("Facebook"),
+                    value: facebook,
+                    onChange: function onChange(fb) {
+                        return setAttributes({ facebook: fb });
+                    }
+                }),
+                wp.element.createElement(TextControl, {
+                    label: __("Twitter"),
+                    value: twitter,
+                    onChange: function onChange(tw) {
+                        return setAttributes({ twitter: tw });
+                    }
+                }),
+                wp.element.createElement(TextControl, {
+                    label: __("Instagram"),
+                    value: instagram,
+                    onChange: function onChange(insta) {
+                        return setAttributes({ instagram: insta });
+                    }
+                }),
+                wp.element.createElement(TextControl, {
+                    label: __("Youtube"),
+                    value: youtube,
+                    onChange: function onChange(yout) {
+                        return setAttributes({ youtube: yout });
+                    }
+                })
+            )
+        ),
+        wp.element.createElement(
+            PanelBody,
+            {
+                title: __("Name"),
+                className: "premium-panel-body",
+                initialOpen: false
+            },
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], (_wp$element$createEle = {
+                components: ["size", "weight", "line", "style", "upper", "spacing"],
+                size: nameSize,
+                weight: nameWeight,
+                style: nameStyle,
+                spacing: nameLetter,
+                upper: nameUpper,
+                line: nameLine,
+                onChangeSize: function onChangeSize(newSize) {
+                    return setAttributes({ nameSize: newSize });
+                },
+                onChangeWeight: function onChangeWeight(newWeight) {
+                    return setAttributes({ nameWeight: newWeight });
+                },
+                onChangeLine: function onChangeLine(newValue) {
+                    return setAttributes({ nameLine: newValue });
+                }
+            }, _defineProperty(_wp$element$createEle, "onChangeSize", function onChangeSize(newSize) {
+                return setAttributes({ nameSize: newSize });
+            }), _defineProperty(_wp$element$createEle, "onChangeStyle", function onChangeStyle(newStyle) {
+                return setAttributes({ nameStyle: newStyle });
+            }), _defineProperty(_wp$element$createEle, "onChangeSpacing", function onChangeSpacing(newValue) {
+                return setAttributes({ nameLetter: newValue });
+            }), _defineProperty(_wp$element$createEle, "onChangeUpper", function onChangeUpper(check) {
+                return setAttributes({ nameUpper: check });
+            }), _wp$element$createEle)),
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(
+                    "strong",
+                    null,
+                    __("Colors")
+                ),
+                wp.element.createElement(Dropdown, {
+                    className: "premium-control-toggle-person",
+                    contentClassName: "premium-control-toggle-content",
+                    position: "bottom right",
+                    renderToggle: function renderToggle(_ref2) {
+                        var isOpen = _ref2.isOpen,
+                            onToggle = _ref2.onToggle;
+                        return wp.element.createElement(
+                            Button,
+                            { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+                            wp.element.createElement("i", { className: "dashicons dashicons-edit" })
+                        );
+                    },
+                    renderContent: function renderContent() {
+                        return wp.element.createElement(
+                            Fragment,
+                            null,
+                            wp.element.createElement(
+                                "p",
+                                null,
+                                __("Name Color")
+                            ),
+                            wp.element.createElement(ColorPalette, {
+                                value: nameColor,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({
+                                        nameColor: newValue
+                                    });
+                                },
+                                allowReset: true
+                            }),
+                            wp.element.createElement(
+                                "p",
+                                null,
+                                __("Name Hover Color")
+                            ),
+                            wp.element.createElement(ColorPalette, {
+                                value: nameHoverColor,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({
+                                        nameHoverColor: newValue
+                                    });
+                                },
+                                allowReset: true
+                            })
+                        );
+                    }
+                })
+            ),
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__["a" /* default */], {
+                color: nameshadowColor,
+                blur: nameshadowBlur,
+                horizontal: nameshadowHorizontal,
+                vertical: nameshadowVertical,
+                onChangeColor: function onChangeColor(newColor) {
+                    return setAttributes({ nameshadowColor: newColor.hex });
+                },
+                onChangeBlur: function onChangeBlur(newBlur) {
+                    return setAttributes({ nameshadowBlur: newBlur });
+                },
+                onChangehHorizontal: function onChangehHorizontal(newValue) {
+                    return setAttributes({ nameshadowHorizontal: newValue });
+                },
+                onChangeVertical: function onChangeVertical(newValue) {
+                    return setAttributes({ nameshadowVertical: newValue });
+                }
+            })
+        ),
+        wp.element.createElement(
+            PanelBody,
+            {
+                title: __("Title"),
+                className: "premium-panel-body",
+                initialOpen: false
+            },
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], (_wp$element$createEle2 = {
+                components: ["size", "weight", "line", "style", "upper", "spacing"],
+                size: titleSize,
+                weight: titleWeight,
+                style: titleStyle,
+                spacing: titleLetter,
+                upper: titleUpper,
+                line: titleLine,
+                onChangeSize: function onChangeSize(newSize) {
+                    return setAttributes({ titleSize: newSize });
+                },
+                onChangeWeight: function onChangeWeight(newWeight) {
+                    return setAttributes({ titleWeight: newWeight });
+                },
+                onChangeLine: function onChangeLine(newValue) {
+                    return setAttributes({ titleLine: newValue });
+                }
+            }, _defineProperty(_wp$element$createEle2, "onChangeSize", function onChangeSize(newSize) {
+                return setAttributes({ titleSize: newSize });
+            }), _defineProperty(_wp$element$createEle2, "onChangeStyle", function onChangeStyle(newStyle) {
+                return setAttributes({ titleStyle: newStyle });
+            }), _defineProperty(_wp$element$createEle2, "onChangeSpacing", function onChangeSpacing(newValue) {
+                return setAttributes({ titleLetter: newValue });
+            }), _defineProperty(_wp$element$createEle2, "onChangeUpper", function onChangeUpper(check) {
+                return setAttributes({ titleUpper: check });
+            }), _wp$element$createEle2)),
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(
+                    "strong",
+                    null,
+                    __("Colors")
+                ),
+                wp.element.createElement(Dropdown, {
+                    className: "premium-control-toggle-person",
+                    contentClassName: "premium-control-toggle-content",
+                    position: "bottom right",
+                    renderToggle: function renderToggle(_ref3) {
+                        var isOpen = _ref3.isOpen,
+                            onToggle = _ref3.onToggle;
+                        return wp.element.createElement(
+                            Button,
+                            { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+                            wp.element.createElement("i", { className: "dashicons dashicons-edit" })
+                        );
+                    },
+                    renderContent: function renderContent() {
+                        return wp.element.createElement(
+                            Fragment,
+                            null,
+                            wp.element.createElement(
+                                "p",
+                                null,
+                                __("Title Color")
+                            ),
+                            wp.element.createElement(ColorPalette, {
+                                value: titleColor,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({
+                                        titleColor: newValue
+                                    });
+                                },
+                                allowReset: true
+                            }),
+                            wp.element.createElement(
+                                "p",
+                                null,
+                                __("Title Hover Color")
+                            ),
+                            wp.element.createElement(ColorPalette, {
+                                value: titleHoverColor,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({
+                                        titleHoverColor: newValue
+                                    });
+                                },
+                                allowReset: true
+                            })
+                        );
+                    }
+                })
+            ),
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__["a" /* default */], {
+                color: titleshadowColor,
+                blur: titleshadowBlur,
+                horizontal: titleshadowHorizontal,
+                vertical: titleshadowVertical,
+                onChangeColor: function onChangeColor(newColor) {
+                    return setAttributes({ titleshadowColor: newColor.hex });
+                },
+                onChangeBlur: function onChangeBlur(newBlur) {
+                    return setAttributes({ titleshadowBlur: newBlur });
+                },
+                onChangehHorizontal: function onChangehHorizontal(newValue) {
+                    return setAttributes({ titleshadowHorizontal: newValue });
+                },
+                onChangeVertical: function onChangeVertical(newValue) {
+                    return setAttributes({ titleshadowVertical: newValue });
+                }
+            })
+        ),
+        wp.element.createElement(
+            PanelBody,
+            {
+                title: __("Description"),
+                className: "premium-panel-body",
+                initialOpen: false
+            },
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], (_wp$element$createEle3 = {
+                components: ["size", "weight", "line", "style", "upper", "spacing"],
+                size: descSize,
+                weight: descWeight,
+                style: descStyle,
+                spacing: descLetter,
+                upper: descUpper,
+                line: descLine,
+                onChangeSize: function onChangeSize(newSize) {
+                    return setAttributes({ descSize: newSize });
+                },
+                onChangeWeight: function onChangeWeight(newWeight) {
+                    return setAttributes({ descWeight: newWeight });
+                },
+                onChangeLine: function onChangeLine(newValue) {
+                    return setAttributes({ descLine: newValue });
+                }
+            }, _defineProperty(_wp$element$createEle3, "onChangeSize", function onChangeSize(newSize) {
+                return setAttributes({ descSize: newSize });
+            }), _defineProperty(_wp$element$createEle3, "onChangeStyle", function onChangeStyle(newStyle) {
+                return setAttributes({ descStyle: newStyle });
+            }), _defineProperty(_wp$element$createEle3, "onChangeSpacing", function onChangeSpacing(newValue) {
+                return setAttributes({ descLetter: newValue });
+            }), _defineProperty(_wp$element$createEle3, "onChangeUpper", function onChangeUpper(check) {
+                return setAttributes({ descUpper: check });
+            }), _wp$element$createEle3)),
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(
+                    "strong",
+                    null,
+                    __("Colors")
+                ),
+                wp.element.createElement(Dropdown, {
+                    className: "premium-control-toggle-person",
+                    contentClassName: "premium-control-toggle-content",
+                    position: "bottom right",
+                    renderToggle: function renderToggle(_ref4) {
+                        var isOpen = _ref4.isOpen,
+                            onToggle = _ref4.onToggle;
+                        return wp.element.createElement(
+                            Button,
+                            { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+                            wp.element.createElement("i", { className: "dashicons dashicons-edit" })
+                        );
+                    },
+                    renderContent: function renderContent() {
+                        return wp.element.createElement(
+                            Fragment,
+                            null,
+                            wp.element.createElement(
+                                "p",
+                                null,
+                                __("Desc Color")
+                            ),
+                            wp.element.createElement(ColorPalette, {
+                                value: descColor,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({
+                                        descColor: newValue
+                                    });
+                                },
+                                allowReset: true
+                            }),
+                            wp.element.createElement(
+                                "p",
+                                null,
+                                __("Desc Hover Color")
+                            ),
+                            wp.element.createElement(ColorPalette, {
+                                value: descHoverColor,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({
+                                        descHoverColor: newValue
+                                    });
+                                },
+                                allowReset: true
+                            })
+                        );
+                    }
+                })
+            ),
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__["a" /* default */], {
+                color: descshadowColor,
+                blur: descshadowBlur,
+                horizontal: descshadowHorizontal,
+                vertical: descshadowVertical,
+                onChangeColor: function onChangeColor(newColor) {
+                    return setAttributes({ descshadowColor: newColor.hex });
+                },
+                onChangeBlur: function onChangeBlur(newBlur) {
+                    return setAttributes({ descshadowBlur: newBlur });
+                },
+                onChangehHorizontal: function onChangehHorizontal(newValue) {
+                    return setAttributes({ descshadowHorizontal: newValue });
+                },
+                onChangeVertical: function onChangeVertical(newValue) {
+                    return setAttributes({ descshadowVertical: newValue });
+                }
+            })
+        ),
+        wp.element.createElement(
+            PanelBody,
+            {
+                title: __("Social Icon"),
+                className: "premium-panel-body",
+                initialOpen: false
+            },
+            wp.element.createElement(RangeControl, {
+                label: __("Size "),
+                value: socialIconSize,
+                onChange: function onChange(newValue) {
+                    return setAttributes({ socialIconSize: newValue });
+                }
+            }),
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(
+                    "strong",
+                    null,
+                    __("Colors")
+                ),
+                wp.element.createElement(Dropdown, {
+                    className: "premium-control-toggle-person",
+                    contentClassName: "premium-control-toggle-content",
+                    position: "bottom right",
+                    renderToggle: function renderToggle(_ref5) {
+                        var isOpen = _ref5.isOpen,
+                            onToggle = _ref5.onToggle;
+                        return wp.element.createElement(
+                            Button,
+                            { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+                            wp.element.createElement("i", { className: "dashicons dashicons-edit" })
+                        );
+                    },
+                    renderContent: function renderContent() {
+                        return wp.element.createElement(
+                            Fragment,
+                            null,
+                            wp.element.createElement(
+                                "p",
+                                null,
+                                __("Social Icon Color")
+                            ),
+                            wp.element.createElement(ColorPalette, {
+                                value: socialIconColor,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({
+                                        socialIconColor: newValue
+                                    });
+                                },
+                                allowReset: true
+                            }),
+                            wp.element.createElement(
+                                "p",
+                                null,
+                                __("Social Icon Hover Color")
+                            ),
+                            wp.element.createElement(ColorPalette, {
+                                value: socialIconHoverColor,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({
+                                        socialIconHoverColor: newValue
+                                    });
+                                },
+                                allowReset: true
+                            })
+                        );
+                    }
+                })
+            )
+        ),
+        wp.element.createElement(
+            PanelBody,
+            {
+                title: __("Person Style"),
+                className: "premium-panel-body",
+                initialOpen: false
+            },
+            wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(
+                    "strong",
+                    null,
+                    __("Colors")
+                ),
+                wp.element.createElement(Dropdown, {
+                    className: "premium-control-toggle-person",
+                    contentClassName: "premium-control-toggle-content",
+                    position: "bottom right",
+                    renderToggle: function renderToggle(_ref6) {
+                        var isOpen = _ref6.isOpen,
+                            onToggle = _ref6.onToggle;
+                        return wp.element.createElement(
+                            Button,
+                            { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+                            wp.element.createElement("i", { className: "dashicons dashicons-edit" })
+                        );
+                    },
+                    renderContent: function renderContent() {
+                        return wp.element.createElement(
+                            Fragment,
+                            null,
+                            wp.element.createElement(
+                                "p",
+                                null,
+                                "radial" !== effect ? __("Background Color") : __("Background Hover Color")
+                            ),
+                            wp.element.createElement(ColorPalette, {
+                                value: backColor,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({
+                                        backColor: newValue
+                                    });
+                                },
+                                allowReset: true
+                            }),
+                            wp.element.createElement(
+                                "p",
+                                null,
+                                "radial" !== effect ? __("Background Hover Color") : __("Background Color")
+                            ),
+                            wp.element.createElement(ColorPalette, {
+                                value: backHoverColor,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({
+                                        backHoverColor: newValue,
+                                        slideColor: newValue
+                                    });
+                                },
+                                allowReset: true
+                            })
+                        );
+                    }
+                })
+            ),
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
+                borderType: borderType,
+                borderWidth: borderWidth,
+                borderColor: borderColor,
+                borderRadius: borderRadius,
+                onChangeType: function onChangeType(newType) {
+                    return setAttributes({ borderType: newType });
+                },
+                onChangeWidth: function onChangeWidth(newWidth) {
+                    return setAttributes({ borderWidth: newWidth });
+                },
+                onChangeColor: function onChangeColor(colorValue) {
+                    return setAttributes({ borderColor: colorValue.hex });
+                },
+                onChangeRadius: function onChangeRadius(newrRadius) {
+                    return setAttributes({ borderRadius: newrRadius });
+                }
+            }),
+            wp.element.createElement(
+                Fragment,
+                null,
+                wp.element.createElement(
+                    "p",
+                    null,
+                    __("Border Hover Color")
+                ),
+                wp.element.createElement(ColorPalette, {
+                    value: borderHoverColor,
+                    onChange: function onChange(newValue) {
+                        return setAttributes({
+                            borderHoverColor: newValue
+                        });
+                    },
+                    allowReset: true
+                })
+            ),
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__["a" /* default */], {
+                label: "Shadow",
+                inner: true,
+                color: personnameshadowColor,
+                blur: personnameshadowBlur,
+                horizontal: personnameshadowHorizontal,
+                vertical: personnameshadowVertical,
+                position: personShadowPosition,
+                onChangeColor: function onChangeColor(newColor) {
+                    return setAttributes({
+                        personnameshadowColor: newColor === undefined ? "transparent" : newColor.hex
+                    });
+                },
+                onChangeBlur: function onChangeBlur(newBlur) {
+                    return setAttributes({
+                        personnameshadowBlur: newBlur === undefined ? 0 : newBlur
+                    });
+                },
+                onChangehHorizontal: function onChangehHorizontal(newValue) {
+                    return setAttributes({
+                        personnameshadowHorizontal: newValue === undefined ? 0 : newValue
+                    });
+                },
+                onChangeVertical: function onChangeVertical(newValue) {
+                    return setAttributes({
+                        personnameshadowVertical: newValue === undefined ? 0 : newValue
+                    });
+                },
+                onChangePosition: function onChangePosition(newValue) {
+                    return setAttributes({
+                        personShadowPosition: newValue === undefined ? 0 : newValue
+                    });
+                }
+            }),
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__["a" /* default */], {
+                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                    return setAttributes({ paddingU: newValue });
+                }
+            }),
+            wp.element.createElement(RangeControl, {
+                label: __("Padding"),
+                value: padding,
+                onChange: function onChange(newValue) {
+                    return setAttributes({ padding: newValue });
+                }
+            })
+        )
+    ), wp.element.createElement(
         "div",
-        { className: "premium-control-toggle" },
+        {
+            id: mainClasses + "-wrap-" + id,
+            className: mainClasses + "__wrap premium-person__" + effect + " premium-person__" + effectDir,
+            style: { textAlign: personAlign }
+        },
+        wp.element.createElement("style", {
+            dangerouslySetInnerHTML: {
+                __html: ["#premium-person-wrap-" + id + " .premium-person:hover {", "color: " + nameHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-person-wrap-" + id + ".premium-person__none .premium-person:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-person-wrap-" + id + ".premium-person__slide .premium-person::before,", "#premium-person-wrap-" + id + ".premium-person__shutter .premium-person::before,", "#premium-person-wrap-" + id + ".premium-person__radial .premium-person::before {", "background-color: " + slideColor, "}"].join("\n")
+            }
+        }),
         wp.element.createElement(
-          "strong",
-          null,
-          __("Colors")
+            "div",
+            { className: "premium-person__img_wrap" },
+            personImgUrl && wp.element.createElement("img", {
+                className: "premium-person__img",
+                src: "" + personImgUrl,
+                alt: "Person",
+                style: {
+                    borderWidth: imgBorder + "px",
+                    borderRadius: imgRadius,
+                    borderColor: imgBorderColor,
+                    width: imgSize + "px",
+                    height: imgSize + "px",
+                    filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+                }
+            }),
+            !personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_default_image__["a" /* default */], { className: className })
         ),
-        wp.element.createElement(Dropdown, {
-          className: "premium-control-toggle-person",
-          contentClassName: "premium-control-toggle-content",
-          position: "bottom right",
-          renderToggle: function renderToggle(_ref) {
-            var isOpen = _ref.isOpen,
-                onToggle = _ref.onToggle;
-            return wp.element.createElement(
-              Button,
-              { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-              wp.element.createElement("i", { className: "dashicons dashicons-edit" })
-            );
-          },
-          renderContent: function renderContent() {
-            return wp.element.createElement(
-              Fragment,
-              null,
-              wp.element.createElement(
-                "p",
-                null,
-                __("Text Color")
-              ),
-              wp.element.createElement(ColorPalette, {
-                value: descColor,
-                onChange: function onChange(newValue) {
-                  return setAttributes({
-                    descColor: newValue
-                  });
-                },
-                allowReset: true
-              }),
-              wp.element.createElement(
-                "p",
-                null,
-                __("Text Hover Color")
-              ),
-              wp.element.createElement(ColorPalette, {
-                value: textHoverColor,
-                onChange: function onChange(newValue) {
-                  return setAttributes({
-                    textHoverColor: newValue
-                  });
-                },
-                allowReset: true
-              })
-            );
-          }
-        })
-      ),
-      wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__["a" /* default */], {
-        color: shadowColor,
-        blur: shadowBlur,
-        horizontal: shadowHorizontal,
-        vertical: shadowVertical,
-        onChangeColor: function onChangeColor(newColor) {
-          return setAttributes({ shadowColor: newColor.hex });
-        },
-        onChangeBlur: function onChangeBlur(newBlur) {
-          return setAttributes({ shadowBlur: newBlur });
-        },
-        onChangehHorizontal: function onChangehHorizontal(newValue) {
-          return setAttributes({ shadowHorizontal: newValue });
-        },
-        onChangeVertical: function onChangeVertical(newValue) {
-          return setAttributes({ shadowVertical: newValue });
-        }
-      })
-    ),
-    wp.element.createElement(
-      PanelBody,
-      {
-        title: __("Person Style"),
-        className: "premium-panel-body",
-        initialOpen: false
-      },
-      wp.element.createElement(
-        "div",
-        { className: "premium-control-toggle" },
         wp.element.createElement(
-          "strong",
-          null,
-          __("Colors")
-        ),
-        wp.element.createElement(Dropdown, {
-          className: "premium-control-toggle-person",
-          contentClassName: "premium-control-toggle-content",
-          position: "bottom right",
-          renderToggle: function renderToggle(_ref2) {
-            var isOpen = _ref2.isOpen,
-                onToggle = _ref2.onToggle;
-            return wp.element.createElement(
-              Button,
-              { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-              wp.element.createElement("i", { className: "dashicons dashicons-edit" })
-            );
-          },
-          renderContent: function renderContent() {
-            return wp.element.createElement(
-              Fragment,
-              null,
-              wp.element.createElement(
-                "p",
+            "div",
+            {
+                className: "premium-person__name_wrap"
+            },
+            wp.element.createElement(
+                "div",
                 null,
-                "radial" !== effect ? __("Background Color") : __("Background Hover Color")
-              ),
-              wp.element.createElement(ColorPalette, {
-                value: backColor,
-                onChange: function onChange(newValue) {
-                  return setAttributes({
-                    backColor: newValue
-                  });
-                },
-                allowReset: true
-              }),
-              wp.element.createElement(
-                "p",
+                name && wp.element.createElement(
+                    "span",
+                    {
+                        className: "premium-person__name",
+                        style: {
+                            color: nameColor,
+                            fontSize: nameSize + "px",
+                            fontWeight: nameWeight,
+                            alignSelf: nameV,
+                            letterSpacing: nameLetter + "px",
+                            lineHeight: nameLine + "px",
+                            fontStyle: nameStyle,
+                            textTransform: nameUpper ? "uppercase" : "none",
+                            textShadow: nameshadowHorizontal + "px " + nameshadowVertical + "px " + nameshadowBlur + "px " + nameshadowColor
+                        }
+                    },
+                    name
+                )
+            ),
+            wp.element.createElement(
+                "div",
                 null,
-                "radial" !== effect ? __("Background Hover Color") : __("Background Color")
-              ),
-              wp.element.createElement(ColorPalette, {
-                value: backHoverColor,
-                onChange: function onChange(newValue) {
-                  return setAttributes({
-                    backHoverColor: newValue,
-                    slideColor: newValue
-                  });
-                },
-                allowReset: true
-              })
-            );
-          }
-        })
-      ),
-      wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
-        borderType: borderType,
-        borderWidth: borderWidth,
-        borderColor: borderColor,
-        borderRadius: borderRadius,
-        onChangeType: function onChangeType(newType) {
-          return setAttributes({ borderType: newType });
-        },
-        onChangeWidth: function onChangeWidth(newWidth) {
-          return setAttributes({ borderWidth: newWidth });
-        },
-        onChangeColor: function onChangeColor(colorValue) {
-          return setAttributes({ borderColor: colorValue.hex });
-        },
-        onChangeRadius: function onChangeRadius(newrRadius) {
-          return setAttributes({ borderRadius: newrRadius });
-        }
-      }),
-      wp.element.createElement(
-        Fragment,
-        null,
-        wp.element.createElement(
-          "p",
-          null,
-          __("Border Hover Color")
+                title && wp.element.createElement(
+                    "span",
+                    {
+                        className: "premium-person__title",
+                        style: {
+                            color: titleColor,
+                            fontSize: titleSize + "px",
+                            fontWeight: titleWeight,
+                            alignSelf: titleV,
+                            letterSpacing: titleLetter + "px",
+                            lineHeight: titleLine + "px",
+                            fontStyle: titleStyle,
+                            textTransform: titleUpper ? "uppercase" : "none",
+                            textShadow: titleshadowHorizontal + "px " + titleshadowVertical + "px " + titleshadowBlur + "px " + titleshadowColor
+                        }
+                    },
+                    title
+                )
+            ),
+            wp.element.createElement(
+                "div",
+                null,
+                DescText && wp.element.createElement(
+                    "span",
+                    {
+                        className: "premium-person__desc",
+                        style: {
+                            color: descColor,
+                            fontSize: descSize + "px",
+                            fontWeight: descWeight,
+                            alignSelf: descV,
+                            letterSpacing: descLetter + "px",
+                            lineHeight: descLine + "px",
+                            fontStyle: descStyle,
+                            textTransform: descUpper ? "uppercase" : "none",
+                            textShadow: descshadowHorizontal + "px " + descshadowVertical + "px " + descshadowBlur + "px " + descshadowColor
+                        }
+                    },
+                    DescText
+                )
+            ),
+            socialIcon && wp.element.createElement(
+                "div",
+                null,
+                wp.element.createElement(
+                    "div",
+                    null,
+                    facebook
+                ),
+                wp.element.createElement(
+                    "div",
+                    null,
+                    twitter
+                ),
+                wp.element.createElement(
+                    "div",
+                    null,
+                    instagram
+                ),
+                wp.element.createElement(
+                    "div",
+                    null,
+                    youtube
+                )
+            )
         ),
-        wp.element.createElement(ColorPalette, {
-          value: borderHoverColor,
-          onChange: function onChange(newValue) {
-            return setAttributes({
-              borderHoverColor: newValue
-            });
-          },
-          allowReset: true
-        })
-      ),
-      wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__["a" /* default */], {
-        label: "Shadow",
-        inner: true,
-        color: personShadowColor,
-        blur: personShadowBlur,
-        horizontal: personShadowHorizontal,
-        vertical: personShadowVertical,
-        position: personShadowPosition,
-        onChangeColor: function onChangeColor(newColor) {
-          return setAttributes({
-            personShadowColor: newColor === undefined ? "transparent" : newColor.hex
-          });
-        },
-        onChangeBlur: function onChangeBlur(newBlur) {
-          return setAttributes({
-            personShadowBlur: newBlur === undefined ? 0 : newBlur
-          });
-        },
-        onChangehHorizontal: function onChangehHorizontal(newValue) {
-          return setAttributes({
-            personShadowHorizontal: newValue === undefined ? 0 : newValue
-          });
-        },
-        onChangeVertical: function onChangeVertical(newValue) {
-          return setAttributes({
-            personShadowVertical: newValue === undefined ? 0 : newValue
-          });
-        },
-        onChangePosition: function onChangePosition(newValue) {
-          return setAttributes({
-            personShadowPosition: newValue === undefined ? 0 : newValue
-          });
-        }
-      }),
-      wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__["a" /* default */], {
-        onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-          return setAttributes({ paddingU: newValue });
-        }
-      }),
-      wp.element.createElement(RangeControl, {
-        label: __("Padding"),
-        value: padding,
-        onChange: function onChange(newValue) {
-          return setAttributes({ padding: newValue });
-        }
-      })
-    )
-  ), wp.element.createElement(
-    "div",
-    {
-      id: mainClasses + "-wrap-" + id,
-      className: mainClasses + "__wrap premium-person__" + effect + " premium-person__" + effectDir,
-      style: { textAlign: personAlign }
-    },
-    wp.element.createElement("style", {
-      dangerouslySetInnerHTML: {
-        __html: ["#premium-person-wrap-" + id + " .premium-person:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-person-wrap-" + id + ".premium-person__none .premium-person:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-person-wrap-" + id + ".premium-person__slide .premium-person::before,", "#premium-person-wrap-" + id + ".premium-person__shutter .premium-person::before,", "#premium-person-wrap-" + id + ".premium-person__radial .premium-person::before {", "background-color: " + slideColor, "}"].join("\n")
-      }
-    }),
-    wp.element.createElement(RichText, {
-      className: "premium-person premium-person__" + personSize,
-      value: personText,
-      onChange: function onChange(value) {
-        return setAttributes({ personText: value });
-      },
-      style: {
-        color: descColor,
-        backgroundColor: backColor,
-        fontSize: textSize + "px",
-        fontFamily: textFontFamily,
-        letterSpacing: textLetter + "px",
-        textTransform: textUpper ? "uppercase" : "none",
-        fontStyle: textStyle,
-        lineHeight: textLine + "px",
-        fontWeight: textWeight,
-        textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
-        boxShadow: personShadowHorizontal + "px " + personShadowVertical + "px " + personShadowBlur + "px " + personShadowColor + " " + personShadowPosition,
-        padding: padding + paddingU,
-        border: borderType,
-        borderWidth: borderWidth + "px",
-        borderRadius: borderRadius + "px",
-        borderColor: borderColor
-      },
-      keepPlaceholderOnFocus: true
-    })
-  )];
+        multiPersonChecked ? wp.element.createElement(
+            "div",
+            null,
+            wp.element.createElement(RichText, {
+                className: "premium-person premium-person__" + personSize,
+                value: personText,
+                onChange: function onChange(value) {
+                    return setAttributes({ personText: value });
+                },
+                style: {
+                    color: descColor,
+                    backgroundColor: backColor,
+                    fontSize: nameSize + "px",
+                    fontFamily: textFontFamily,
+                    letterSpacing: nameLetter + "px",
+                    textTransform: nameUpper ? "uppercase" : "none",
+                    fontStyle: nameStyle,
+                    lineHeight: nameLine + "px",
+                    fontWeight: nameWeight,
+                    textShadow: nameshadowHorizontal + "px " + nameshadowVertical + "px " + nameshadowBlur + "px " + nameshadowColor,
+                    boxShadow: personnameshadowHorizontal + "px " + personnameshadowVertical + "px " + personnameshadowBlur + "px " + personnameshadowColor + " " + personShadowPosition,
+                    padding: padding + paddingU,
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                },
+                keepPlaceholderOnFocus: true
+            })
+        ) : wp.element.createElement(
+            "div",
+            null,
+            wp.element.createElement(RichText, {
+                className: "premium-person premium-person__" + personSize,
+                value: newpersonText,
+                onChange: function onChange(value) {
+                    return setAttributes({ newpersonText: value });
+                },
+                style: {
+                    color: descColor,
+                    backgroundColor: backColor,
+                    fontSize: nameSize + "px",
+                    fontFamily: textFontFamily,
+                    letterSpacing: nameLetter + "px",
+                    textTransform: nameUpper ? "uppercase" : "none",
+                    fontStyle: nameStyle,
+                    lineHeight: nameLine + "px",
+                    fontWeight: nameWeight,
+                    textShadow: nameshadowHorizontal + "px " + nameshadowVertical + "px " + nameshadowBlur + "px " + nameshadowColor,
+                    boxShadow: personnameshadowHorizontal + "px " + personnameshadowVertical + "px " + personnameshadowBlur + "px " + personnameshadowColor + " " + personShadowPosition,
+                    padding: padding + paddingU,
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                },
+                keepPlaceholderOnFocus: true
+            })
+        )
+    )];
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (edit);
