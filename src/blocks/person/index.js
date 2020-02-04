@@ -151,53 +151,88 @@ const personAttrs = {
     socialIcon: {
         type: "boolean",
         default: false
-      },
-      facebook: {
+    },
+    facebook: {
         type: "string",
-        default: "fb"
-      },
-      twitter: {
+        default: "dashicons dashicons-facebook"
+    },
+    twitter: {
         type: "string",
-        default: "tw"
-      },
-      instagram: {
+        default: "dashicons dashicons-twitter"
+    },
+    instagram: {
         type: "string",
-        default: "insta"
-      },
-      youtube: {
+        default: "fa fa-instagram"
+    },
+    youtube: {
         type: "string",
-        default: "yout"
-      },
-      socialIconSize: {
+        default: "fa fa-youtube-play"
+    },
+    socialIconSize: {
         type: "number",
         default: 20
+    },
+    iconSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    socialIconColor: {
+        type: "string",
+        //   default: "#6ec1e4"
+    },
+    socialIconHoverColor: {
+        type: "string"
+    },
+    socialIconBackgroundColor: {
+        type: "string"
+    },
+    defaultIconColor: {
+        type: "boolean",
+        default: false
+    },
+    borderTypeIcon: {
+        type: "string",
+        default: "none"
+    },
+    borderWidthIcon: {
+        type: "number",
+        default: "1"
+    },
+    borderRadiusIcon: {
+        type: "number",
+        default: "0"
+    },
+    borderColorIcon: {
+        type: "string"
+    },
+    iconMarginT: {
+        type: "number",
+        default: "1"
       },
-      socialIconColor: {
-          type: "string"
-      },
-      socialIconHoverColor: {
-          type: "string"
+      iconMarginB: {
+        type: "number",
+        default: "1"
       },
     blur: {
         type: "number",
         default: "0"
-      },
-      bright: {
+    },
+    bright: {
         type: "number",
         default: "100"
-      },
-      contrast: {
+    },
+    contrast: {
         type: "number",
         default: "100"
-      },
-      saturation: {
+    },
+    saturation: {
         type: "number",
         default: "100"
-      },
-      hue: {
+    },
+    hue: {
         type: "number",
         default: "0"
-      },
+    },
     effect: {
         type: "string",
         default: "none"
@@ -331,7 +366,11 @@ const personAttrs = {
     },
     id: {
         type: "string"
-    }
+    },
+    items: {
+        type: "array",
+        default: ['facebook', 'twitter', 'instagram', 'youtube']
+      },
 };
 
 registerBlockType("premium/person", {

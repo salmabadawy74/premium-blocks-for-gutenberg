@@ -45,11 +45,14 @@ const save = props => {
         descshadowHorizontal,
         descshadowVertical,
         socialIcon,
-        facebook,
-        twitter,
-        instagram,
-        youtube,
+        iconSizeUnit,
         socialIconSize,
+        socialIconColor,
+        socialIconHoverColor,
+        socialIconBackgroundColor,
+        defaultIconColor,
+        iconMarginT,
+        iconMarginB,
         blur,
         bright,
         contrast,
@@ -72,13 +75,11 @@ const save = props => {
         nameUpper,
         titleStyle,
         titleUpper,
-        borderType,
-        borderWidth,
-        borderRadius,
-        borderColor,
+        borderTypeIcon,
+        borderWidthIcon,
+        borderRadiusIcon,
+        borderColorIcon,
         borderHoverColor,
-        padding,
-        paddingU,
         nameshadowBlur,
         nameshadowColor,
         nameshadowHorizontal,
@@ -87,14 +88,37 @@ const save = props => {
         titleshadowColor,
         titleshadowHorizontal,
         titleshadowVertical,
-        personnameshadowBlur,
-        personnameshadowColor,
-        personnameshadowHorizontal,
-        personnameshadowVertical,
-        personShadowPosition
+        items
     } = props.attributes;
 
+
     const mainClasses = classnames(className, 'premium-person');
+
+    const socialIconfn = () => {
+        return <div>{items.map((value, index) => (
+            <div className={`premium-person__socialIcon__${value}`}>
+            <i className={`premium-person__socialIcon ${value == "youtube" ? "fa fa-youtube-play" : `dashicons dashicons-${value}`}  premium-person__${socialIconHoverColor}`}
+                style={{
+                    color: defaultIconColor ? "#ffffff" : socialIconColor,
+                    background: defaultIconColor ? `${value == "youtube" ? "red" : `${value == "instagram" ? `linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)` : `${value == "twitter" ? "#00aced" : "#3b5998"}`}`}` : socialIconBackgroundColor,
+                    fontSize: (socialIconSize || 50) + iconSizeUnit,
+                    paddingRight: "5px",
+                    paddingTop: "2px",
+                    margin: "2px",
+                    height: "1.2em",
+                    width: "1.5em",
+                    border: borderTypeIcon,
+                    borderWidth: borderWidthIcon + "px",
+                    borderRadius: borderRadiusIcon || 100 + "px",
+                    borderColor: borderColorIcon,
+                    marginTop: iconMarginT,
+                    marginBottom: iconMarginB
+                }}
+            />
+            </div>
+        ))}
+        </div>
+    }
 
     return (
         <div>
@@ -203,42 +227,10 @@ const save = props => {
                     </div>
                     {socialIcon && (
                         <div>
-                            <div>{facebook}</div>
-                            <div>{twitter}</div>
-                            <div>{instagram}</div>
-                            <div>{youtube}</div>
+                            {socialIconfn()}
                         </div>
                     )}
                 </div>
-
-                {multiPersonChecked && (
-                    <RichText.Content
-                        tagName={titleTag.toLowerCase()}
-                        titleue={multiPersonChecked ? personText : newpersonText}
-                        className={`premium-person premium-person__${personSize}`}
-                        href={personLink}
-                        rel="noopener noreferrer"
-                        target={personTarget ? "_blank" : "_self"}
-                        style={{
-                            color: descColor,
-                            backgroundColor: backColor,
-                            fontSize: nameSize + "px",
-                            fontFamily: textFontFamily,
-                            letterSpacing: nameLetter + "px",
-                            textTransform: nameUpper ? "uppercase" : "none",
-                            fontStyle: nameStyle,
-                            lineHeight: nameLine + "px",
-                            fontWeight: nameWeight,
-                            textShadow: `${nameshadowHorizontal}px ${nameshadowVertical}px ${nameshadowBlur}px ${nameshadowColor}`,
-                            boxShadow: `${personnameshadowHorizontal}px ${personnameshadowVertical}px ${personnameshadowBlur}px ${personnameshadowColor} ${personShadowPosition}`,
-                            padding: padding + paddingU,
-                            border: borderType,
-                            borderWidth: borderWidth + "px",
-                            borderRadius: borderRadius + "px",
-                            borderColor: borderColor
-                        }}
-                    />
-                )}
             </div>
         </div>
     );

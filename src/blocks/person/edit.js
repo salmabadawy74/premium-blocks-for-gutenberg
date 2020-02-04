@@ -4,9 +4,10 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumSizeUnits from "../../components/premium-size-units";
-import FONTS from "../../components/premium-fonts";
 import DefaultImage from "../../components/default-image";
 import PremiumFilters from "../../components/premium-filters";
+import PremiumMargin from "../../components/premium-margin";
+import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 
 const { __ } = wp.i18n;
 
@@ -83,6 +84,11 @@ const edit = props => {
         socialIconSize,
         socialIconColor,
         socialIconHoverColor,
+        iconSizeUnit,
+        defaultIconColor,
+        socialIconBackgroundColor,
+        iconMarginT,
+        iconMarginB,
         blur,
         bright,
         contrast,
@@ -107,10 +113,10 @@ const edit = props => {
         titleUpper,
         titleLine,
         titleStyle,
-        borderType,
-        borderWidth,
-        borderRadius,
-        borderColor,
+        borderTypeIcon,
+        borderWidthIcon,
+        borderRadiusIcon,
+        borderColorIcon,
         borderHoverColor,
         nameshadowBlur,
         nameshadowColor,
@@ -126,7 +132,8 @@ const edit = props => {
         personnameshadowColor,
         personnameshadowHorizontal,
         personnameshadowVertical,
-        personShadowPosition
+        personShadowPosition,
+        items
     } = props.attributes;
 
     const SIZE = [
@@ -284,16 +291,54 @@ const edit = props => {
         head.appendChild(link);
     };
 
-    const onChangeTextFamily = fontFamily => {
-        setAttributes({ textFontFamily: fontFamily });
-        if (!fontFamily) {
-            return;
-        }
-
-        addFontToHead(fontFamily);
-    };
-
     const mainClasses = classnames(className, "premium-person");
+
+    const SortableItem = SortableElement(({ value }) => <li tabIndex={0}>
+        <TextControl
+            label={value}
+            value={value}
+            onChange={yout => setAttributes({ value: yout })}
+        />
+    </li>);
+
+    const SortableList = SortableContainer(({ items }) => {
+        return (
+            <ul>
+                {items.map((value, index) => (
+                    <SortableItem key={`item-${value}`} index={index} value={value} />
+                ))}
+            </ul>
+        );
+    });
+    const socialIconfn = () => {
+        return <div>{items.map((value, index) => (
+            <i className={`premium-person__socialIcon ${value == "youtube" ? "fa fa-youtube-play" : `dashicons dashicons-${value}`} premium-person__${socialIconHoverColor}`}
+                style={{
+                    color: defaultIconColor ? "#ffffff" : socialIconColor,
+                    background: defaultIconColor ? `${value == "youtube" ? "red" : `${value == "instagram" ? `linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)` : `${value == "twitter" ? "#00aced" : "#3b5998"}`}`}` : socialIconBackgroundColor,
+                    fontSize: (socialIconSize || 50) + iconSizeUnit,
+                    paddingRight: "5px",
+                    paddingTop: "2px",
+                    margin: "2px",
+                    height: "1.2em",
+                    width: "1.5em",
+                    border: borderTypeIcon,
+                    borderWidth: borderWidthIcon + "px",
+                    borderRadius: borderRadiusIcon || 100 + "px",
+                    borderColor: borderColorIcon,
+                    marginTop: iconMarginT,
+                    marginBottom: iconMarginB
+                }}
+            />
+
+        ))}
+        </div>
+    }
+
+    const onSortEnd = ({ oldIndex, newIndex }) => {
+        const array = arrayMove(items, oldIndex, newIndex)
+        setAttributes({ items: array });
+    };
 
     return [
         isSelected && "block" != personSize && (
@@ -428,26 +473,7 @@ const edit = props => {
                     />
                     {socialIcon && (
                         <div>
-                            <TextControl
-                                label={__("Facebook")}
-                                value={facebook}
-                                onChange={fb => setAttributes({ facebook: fb })}
-                            />
-                            <TextControl
-                                label={__("Twitter")}
-                                value={twitter}
-                                onChange={tw => setAttributes({ twitter: tw })}
-                            />
-                            <TextControl
-                                label={__("Instagram")}
-                                value={instagram}
-                                onChange={insta => setAttributes({ instagram: insta })}
-                            />
-                            <TextControl
-                                label={__("Youtube")}
-                                value={youtube}
-                                onChange={yout => setAttributes({ youtube: yout })}
-                            />
+                            <SortableList items={items} onSortEnd={onSortEnd} />
                         </div>
                     )}
                 </PanelBody>
@@ -688,7 +714,7 @@ const edit = props => {
                         }
                     />
                 </PanelBody>
-                <PanelBody
+                {socialIcon && (<PanelBody
                     title={__("Social Icon")}
                     className="premium-panel-body"
                     initialOpen={false}
@@ -735,14 +761,8 @@ const edit = props => {
                             )}
                         />
                     </div>
-                </PanelBody>
-                <PanelBody
-                    title={__("Person Style")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
                     <div className="premium-control-toggle">
-                        <strong>{__("Colors")}</strong>
+                        <strong>{__("Background Color")}</strong>
                         <Dropdown
                             className="premium-control-toggle-person"
                             contentClassName="premium-control-toggle-content"
@@ -754,31 +774,12 @@ const edit = props => {
                             )}
                             renderContent={() => (
                                 <Fragment>
-                                    <p>
-                                        {"radial" !== effect
-                                            ? __("Background Color")
-                                            : __("Background Hover Color")}
-                                    </p>
+                                    <p>{__("Social Icon Background Color")}</p>
                                     <ColorPalette
-                                        value={backColor}
+                                        value={socialIconBackgroundColor}
                                         onChange={newValue =>
                                             setAttributes({
-                                                backColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                    <p>
-                                        {"radial" !== effect
-                                            ? __("Background Hover Color")
-                                            : __("Background Color")}
-                                    </p>
-                                    <ColorPalette
-                                        value={backHoverColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                backHoverColor: newValue,
-                                                slideColor: newValue
+                                                socialIconBackgroundColor: newValue
                                             })
                                         }
                                         allowReset={true}
@@ -787,76 +788,44 @@ const edit = props => {
                             )}
                         />
                     </div>
+                    <ToggleControl
+                        label={__("Brands Default Colors")}
+                        checked={defaultIconColor}
+                        onChange={newCheck => setAttributes({ defaultIconColor: newCheck })}
+                    />
                     <PremiumBorder
-                        borderType={borderType}
-                        borderWidth={borderWidth}
-                        borderColor={borderColor}
-                        borderRadius={borderRadius}
-                        onChangeType={newType => setAttributes({ borderType: newType })}
-                        onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
+                        borderType={borderTypeIcon}
+                        borderWidth={borderWidthIcon}
+                        borderColor={borderColorIcon}
+                        borderRadius={borderRadiusIcon}
+                        onChangeType={newType => setAttributes({ borderTypeIcon: newType })}
+                        onChangeWidth={newWidth => setAttributes({ borderWidthIcon: newWidth })}
                         onChangeColor={colorValue =>
-                            setAttributes({ borderColor: colorValue.hex })
+                            setAttributes({ borderColorIcon: colorValue.hex })
                         }
                         onChangeRadius={newrRadius =>
-                            setAttributes({ borderRadius: newrRadius })
+                            setAttributes({ borderRadiusIcon: newrRadius })
                         }
                     />
-                    <Fragment>
-                        <p>{__("Border Hover Color")}</p>
-                        <ColorPalette
-                            value={borderHoverColor}
-                            onChange={newValue =>
+                    <div className="premium-control-toggle">
+                        <PremiumMargin
+                            directions={["top", "bottom"]}
+                            marginTop={iconMarginT}
+                            marginBottom={iconMarginB}
+                            onChangeMarTop={value =>
                                 setAttributes({
-                                    borderHoverColor: newValue
+                                    iconMarginT: value || 0
                                 })
                             }
-                            allowReset={true}
+                            onChangeMarBottom={value =>
+                                setAttributes({
+                                    iconMarginB: value || 0
+                                })
+                            }
                         />
-                    </Fragment>
-                    <PremiumBoxShadow
-                        label="Shadow"
-                        inner={true}
-                        color={personnameshadowColor}
-                        blur={personnameshadowBlur}
-                        horizontal={personnameshadowHorizontal}
-                        vertical={personnameshadowVertical}
-                        position={personShadowPosition}
-                        onChangeColor={newColor =>
-                            setAttributes({
-                                personnameshadowColor:
-                                    newColor === undefined ? "transparent" : newColor.hex
-                            })
-                        }
-                        onChangeBlur={newBlur =>
-                            setAttributes({
-                                personnameshadowBlur: newBlur === undefined ? 0 : newBlur
-                            })
-                        }
-                        onChangehHorizontal={newValue =>
-                            setAttributes({
-                                personnameshadowHorizontal: newValue === undefined ? 0 : newValue
-                            })
-                        }
-                        onChangeVertical={newValue =>
-                            setAttributes({
-                                personnameshadowVertical: newValue === undefined ? 0 : newValue
-                            })
-                        }
-                        onChangePosition={newValue =>
-                            setAttributes({
-                                personShadowPosition: newValue === undefined ? 0 : newValue
-                            })
-                        }
-                    />
-                    <PremiumSizeUnits
-                        onChangeSizeUnit={newValue => setAttributes({ paddingU: newValue })}
-                    />
-                    <RangeControl
-                        label={__("Padding")}
-                        value={padding}
-                        onChange={newValue => setAttributes({ padding: newValue })}
-                    />
+                    </div>
                 </PanelBody>
+                )}
             </InspectorControls>
         ),
         <div
@@ -965,69 +934,10 @@ const edit = props => {
                 </div>
                 {socialIcon && (
                     <div>
-                        <div>{facebook}</div>
-                        <div>{twitter}</div>
-                        <div>{instagram}</div>
-                        <div>{youtube}</div>
+                        {socialIconfn()}
                     </div>
                 )}
             </div>
-            {multiPersonChecked ? (
-                <div>
-                    <RichText
-                        className={`premium-person premium-person__${personSize}`}
-                        value={personText}
-                        onChange={value => setAttributes({ personText: value })}
-                        style={{
-                            color: descColor,
-                            backgroundColor: backColor,
-                            fontSize: nameSize + "px",
-                            fontFamily: textFontFamily,
-                            letterSpacing: nameLetter + "px",
-                            textTransform: nameUpper ? "uppercase" : "none",
-                            fontStyle: nameStyle,
-                            lineHeight: nameLine + "px",
-                            fontWeight: nameWeight,
-                            textShadow: `${nameshadowHorizontal}px ${nameshadowVertical}px ${nameshadowBlur}px ${nameshadowColor}`,
-                            boxShadow: `${personnameshadowHorizontal}px ${personnameshadowVertical}px ${personnameshadowBlur}px ${personnameshadowColor} ${personShadowPosition}`,
-                            padding: padding + paddingU,
-                            border: borderType,
-                            borderWidth: borderWidth + "px",
-                            borderRadius: borderRadius + "px",
-                            borderColor: borderColor
-                        }}
-                        keepPlaceholderOnFocus
-                    />
-                </div>
-            ) : (
-                    <div
-                    >
-                        <RichText
-                            className={`premium-person premium-person__${personSize}`}
-                            value={newpersonText}
-                            onChange={value => setAttributes({ newpersonText: value })}
-                            style={{
-                                color: descColor,
-                                backgroundColor: backColor,
-                                fontSize: nameSize + "px",
-                                fontFamily: textFontFamily,
-                                letterSpacing: nameLetter + "px",
-                                textTransform: nameUpper ? "uppercase" : "none",
-                                fontStyle: nameStyle,
-                                lineHeight: nameLine + "px",
-                                fontWeight: nameWeight,
-                                textShadow: `${nameshadowHorizontal}px ${nameshadowVertical}px ${nameshadowBlur}px ${nameshadowColor}`,
-                                boxShadow: `${personnameshadowHorizontal}px ${personnameshadowVertical}px ${personnameshadowBlur}px ${personnameshadowColor} ${personShadowPosition}`,
-                                padding: padding + paddingU,
-                                border: borderType,
-                                borderWidth: borderWidth + "px",
-                                borderRadius: borderRadius + "px",
-                                borderColor: borderColor
-                            }}
-                            keepPlaceholderOnFocus
-                        />
-                    </div>
-                )}
         </div>
     ];
 };
