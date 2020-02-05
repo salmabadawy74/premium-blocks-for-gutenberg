@@ -972,6 +972,7 @@ const edit = props => {
                 paddingL: value || 0
               })
             }
+            selectedUnit={paddingU}
             onChangePadSizeUnit={newvalue =>
               setAttributes({ paddingU: newvalue })
             }

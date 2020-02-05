@@ -472,6 +472,7 @@ const edit = props => {
               })
             }
             showUnits={true}
+            selectedUnit={paddingUnit}
             onChangePadSizeUnit={newvalue =>
               setAttributes({ paddingUnit: newvalue })
             }
