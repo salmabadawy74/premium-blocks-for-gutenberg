@@ -2,11 +2,11 @@ import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumSizeUnits from "../../components/premium-size-units";
 import DefaultImage from "../../components/default-image";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumMargin from "../../components/premium-margin";
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+// import iconsList from "../../components/premium-icons-list";
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 
 const { __ } = wp.i18n;
@@ -30,8 +30,6 @@ const {
     ColorPalette,
     AlignmentToolbar,
     BlockControls,
-    RichText,
-    URLInput,
     MediaUpload,
 } = wp.editor;
 
@@ -40,12 +38,8 @@ const edit = props => {
 
     const {
         id,
-        personText,
-        newpersonText,
         personSize,
         personAlign,
-        personLink,
-        personTarget,
         personImgId,
         personImgUrl,
         imgRadius,
@@ -62,7 +56,6 @@ const edit = props => {
         titleSize,
         titleWeight,
         titleV,
-        titleTag,
         DescText,
         descSize,
         descWeight,
@@ -77,10 +70,6 @@ const edit = props => {
         descshadowVertical,
         descHoverColor,
         socialIcon,
-        facebook,
-        twitter,
-        instagram,
-        youtube,
         socialIconSize,
         socialIconColor,
         socialIconHoverColor,
@@ -97,13 +86,10 @@ const edit = props => {
         effect,
         effectDir,
         descColor,
-        textColor,
         nameHoverColor,
         titleHoverColor,
-        backColor,
         backHoverColor,
         slideColor,
-        textFontFamily,
         nameLetter,
         titleLetter,
         multiPersonChecked,
@@ -126,180 +112,165 @@ const edit = props => {
         titleshadowColor,
         titleshadowHorizontal,
         titleshadowVertical,
-        padding,
-        paddingU,
-        personnameshadowBlur,
-        personnameshadowColor,
-        personnameshadowHorizontal,
-        personnameshadowVertical,
-        personShadowPosition,
-        items
+        items,
+        hoverEffectPerson,
+        selectedSocialMediaIcon
     } = props.attributes;
 
-    const SIZE = [
-        {
-            value: "sm",
-            label: __("Small")
-        },
-        {
-            value: "md",
-            label: __("Medium")
-        },
-        {
-            value: "lg",
-            label: __("Large")
-        },
-        {
-            value: "block",
-            label: __("Block")
-        }
-    ];
-    const DIRECTION = [
-        {
-            value: "top",
-            label: __("Top to Bottom")
-        },
-        {
-            value: "bottom",
-            label: __("Bottom to Top")
-        },
-        {
-            value: "left",
-            label: __("Left to Right")
-        },
-        {
-            value: "right",
-            label: __("Right to Left")
-        }
-    ];
-    const SHUTTER = [
-        {
-            value: "shutouthor",
-            label: __("Shutter out Horizontal")
-        },
-        {
-            value: "shutoutver",
-            label: __("Shutter out Vertical")
-        },
-        {
-            value: "scshutoutver",
-            label: __("Scaled Shutter Vertical")
-        },
-        {
-            value: "scshutouthor",
-            label: __("Scaled Shutter Horizontal")
-        },
-        {
-            value: "dshutinver",
-            label: __("Tilted Left")
-        },
-        {
-            value: "dshutinhor",
-            label: __("Tilted Right")
-        }
-    ];
-    const RADIAL = [
-        {
-            value: "radialin",
-            label: __("Radial In")
-        },
-        {
-            value: "radialout",
-            label: __("Radial Out")
-        },
-        {
-            value: "rectin",
-            label: __("Rectangle In")
-        },
-        {
-            value: "rectout",
-            label: __("Rectangle Out")
-        }
-    ];
-    const PERCONINFO = [
-        {
-            value: "name",
-            label: __("Name")
-        },
-        {
-            value: "title",
-            label: __("Title")
-        },
-        {
-            value: "desc",
-            label: __("Description")
-        }
-    ];
-    const RADIUS = [
-        {
-            value: "0",
-            label: __("Square")
-        },
-        {
-            value: "50%",
-            label: __("Circle")
-        },
-        {
-            value: "15px",
-            label: __("Rounded")
-        }
-    ];
-    const EFFECTS = [
+    const HOVER = [
         {
             value: "none",
             label: __("None")
         },
         {
-            value: "slide",
-            label: __("Slide")
+            value: "zoomin",
+            label: __("Zoom In")
         },
         {
-            value: "shutter",
-            label: __("Shutter")
+            value: "zoomout",
+            label: "Zoom Out"
         },
         {
-            value: "radial",
-            label: __("Radial")
+            value: "scale",
+            label: __("Scale")
+        },
+        {
+            value: "gray",
+            label: __("Gray Scale")
+        },
+        {
+            value: "blur",
+            label: __("Blur")
+        },
+        {
+            value: "bright",
+            label: __("Bright")
+        },
+        {
+            value: "sepia",
+            label: __("Sepia")
+        },
+        {
+            value: "translate",
+            label: __("Translate")
         }
     ];
-    const onChangeHover = newValue => {
-        props.setAttributes({ effect: newValue });
-        switch (newValue) {
-            case "slide":
-                props.setAttributes({ effectDir: "top" });
-                break;
-            case "shutter":
-                props.setAttributes({ effectDir: "shutouthor" });
-                break;
-            case "radial":
-                props.setAttributes({ effectDir: "radialin" });
-                break;
-        }
-    };
-    setAttributes({ id: blockId });
 
-    const addFontToHead = fontFamily => {
-        const head = document.head;
-        const link = document.createElement("link");
-        link.type = "text/css";
-        link.rel = "stylesheet";
-        link.href =
-            "https://fonts.googleapis.com/css?family=" +
-            fontFamily.replace(/\s+/g, "+") +
-            ":" +
-            "regular";
-        head.appendChild(link);
-    };
+    const iconsList = [
+        {
+            value: "fab fa-facebook-f",
+            label: __("facebook")
+        },
+        {
+            value: "fab fa-twitter",
+            label: __("twitter")
+        },
+        {
+            value: "fab fa-instagram",
+            label: __("instagram")
+        },
+        {
+            value: "fab fa-youtube",
+            label: __("youtube")
+        },
+        {
+            value: "fab fa-linkedin",
+            label: __("linkedin")
+        },
+        {
+            value: "fab fa-flickr",
+            label: __("flickr")
+        },
+        {
+            value: "fab fa-github",
+            label: __("github")
+        },
+        {
+            value: "fab fa-google-plus",
+            label: __("google-plus")
+        },
+        {
+            value: "fab fa-pinterest",
+            label: __("pinterest")
+        },
+        {
+            value: "fab fa-reddit",
+            label: __("reddit")
+        },
+        {
+            value: "fab fa-skype",
+            label: __("skype")
+        },
+        {
+            value: "fab fa-stack-overflow",
+            label: __("stack-overflow")
+        },
+        {
+            value: "fab fa-whatsapp",
+            label: __("whatsapp")
+        },
+        {
+            value: "fab fa-vimeo-v",
+            label: __("vimeo-v")
+        },
+        {
+            value: "fab fa-tumblr",
+            label: __("tumblr")
+        },
+        {
+            value: "fab fa-dribbble",
+            label: __("dribbble")
+        },
+        {
+            value: "fab fa-quora",
+            label: __("quora")
+        },
+        {
+            value: "fab fa-foursquare",
+            label: __("foursquare")
+        },
+        {
+            value: "fab fa-wordpress",
+            label: __("wordpress")
+        },
+        {
+            value: "fab fa-stumbleupon",
+            label: __("stumbleupon")
+        },
+        {
+            value: "fab fa-yahoo",
+            label: __("yahoo")
+        },
+        {
+            value: "fab fa-soundcloud",
+            label: __("soundcloud")
+        },
+    ];
+
+    setAttributes({ id: blockId });
 
     const mainClasses = classnames(className, "premium-person");
 
-    const SortableItem = SortableElement(({ value }) => <li tabIndex={0}>
-        <TextControl
-            label={value}
-            value={value}
-            onChange={yout => setAttributes({ value: yout })}
-        />
+    const SortableItem = SortableElement(({ value }) => <li>
+        <span className="premium-person__socialIcon__container">
+            <span className="premium-person__socialIcon__dragHandle"></span>
+            <span className="premium-person__socialIcon__content">
+                <span className={`premium-person__socialIcon__iconvalue fa fa-${value}`}></span>
+                <span>{value}</span>
+            </span>
+            <span className="premium-person__socialIcon__trashicon fa fa-trash" onclick={deleteSocialIcon(value)}></span>
+        </span>
     </li>);
+
+    const deleteSocialIcon = (value) => {
+        console.log(value)
+        // let newData = items.filter(b => {
+        //     return b!= value
+        //   })
+        //   setAttributes({ items: newData });
+        //   console.log(newData);
+          
+    };
 
     const SortableList = SortableContainer(({ items }) => {
         return (
@@ -311,17 +282,12 @@ const edit = props => {
         );
     });
     const socialIconfn = () => {
-        return <div>{items.map((value, index) => (
-            <i className={`premium-person__socialIcon ${value == "youtube" ? "fa fa-youtube-play" : `dashicons dashicons-${value}`} premium-person__${socialIconHoverColor}`}
+        return <div>{items.map((value) => (
+            <i className={`premium-person__socialIcon ${value == "youtube" ? "fa fa-youtube-play" : `fa fa-${value}`} premium-person__${socialIconHoverColor}`}
                 style={{
                     color: defaultIconColor ? "#ffffff" : socialIconColor,
                     background: defaultIconColor ? `${value == "youtube" ? "red" : `${value == "instagram" ? `linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)` : `${value == "twitter" ? "#00aced" : "#3b5998"}`}`}` : socialIconBackgroundColor,
                     fontSize: (socialIconSize || 50) + iconSizeUnit,
-                    paddingRight: "5px",
-                    paddingTop: "2px",
-                    margin: "2px",
-                    height: "1.2em",
-                    width: "1.5em",
                     border: borderTypeIcon,
                     borderWidth: borderWidthIcon + "px",
                     borderRadius: borderRadiusIcon || 100 + "px",
@@ -338,6 +304,22 @@ const edit = props => {
     const onSortEnd = ({ oldIndex, newIndex }) => {
         const array = arrayMove(items, oldIndex, newIndex)
         setAttributes({ items: array });
+    };
+
+    const addSocialIcon = (newsocial) => {
+        let array = iconsList.map((i, index) => (
+            i
+        )).filter(f => f.value == newsocial)
+        if (array[0] != undefined) {
+            newsocial = array[0];
+            setAttributes({ selectedSocialMediaIcon: newsocial.label });
+            const newicon = newsocial.label;
+            items.push(newicon);
+            var filtered = items.filter(function (el) {
+                return el != undefined;
+            });
+            setAttributes({ items: filtered });
+        }
     };
 
     return [
@@ -363,46 +345,12 @@ const edit = props => {
                     />
                     <p>{__("Enable this option if you need to add multiple persons")}</p>
                     <SelectControl
-                        options={EFFECTS}
-                        label={__("Hover Effect")}
-                        value={effect}
-                        onChange={onChangeHover}
+                        label={__("Image Hover Effect")}
+                        options={HOVER}
+                        value={hoverEffectPerson}
+                        onChange={newEffect => setAttributes({ hoverEffectPerson: newEffect })}
                     />
-                    {"slide" === effect && (
-                        <SelectControl
-                            options={DIRECTION}
-                            label={__("Direction")}
-                            value={effectDir}
-                            onChange={newValue => setAttributes({ effectDir: newValue })}
-                        />
-                    )}
-                    {"shutter" === effect && (
-                        <SelectControl
-                            options={SHUTTER}
-                            label={__("Shutter Direction")}
-                            value={effectDir}
-                            onChange={newValue => setAttributes({ effectDir: newValue })}
-                        />
-                    )}
-                    {"radial" === effect && (
-                        <SelectControl
-                            options={RADIAL}
-                            label={__("Style")}
-                            value={effectDir}
-                            onChange={newValue => setAttributes({ effectDir: newValue })}
-                        />
-                    )}
-                    <SelectControl
-                        options={SIZE}
-                        label={__("Person Size")}
-                        value={personSize}
-                        onChange={newSize => setAttributes({ personSize: newSize })}
-                    />
-                    <ToggleControl
-                        label={__("Open link in new tab")}
-                        checked={personTarget}
-                        onChange={newValue => setAttributes({ personTarget: newValue })}
-                    />
+
                 </PanelBody>
                 <PanelBody
                     title={__("Single Person Settings")}
@@ -473,6 +421,19 @@ const edit = props => {
                     />
                     {socialIcon && (
                         <div>
+                            <p className="premium-person-paragraph">{__("Social Media")}</p>
+                            <FontIconPicker
+                                icons={iconsList.map((i) => (
+                                    i.value
+                                ))}
+                                onChange={value => addSocialIcon(value)}
+                                value={selectedSocialMediaIcon}
+                                isMulti={false}
+                                appendTo="body"
+                                noSelectedPlaceholder={__("Select Icon")}
+                                noIconPlaceholder={__("No icons found")}
+                                closeOnSelect={true}
+                            />
                             <SortableList items={items} onSortEnd={onSortEnd} />
                         </div>
                     )}
@@ -851,7 +812,7 @@ const edit = props => {
                     ].join("\n")
                 }}
             />
-            <div className={`premium-person__img_wrap`}>
+            <div className={`premium-person__img_wrap premium-person__${hoverEffectPerson}`}>
                 {personImgUrl && (
                     <img
                         className={`premium-person__img`}

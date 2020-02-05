@@ -9,12 +9,7 @@ const save = props => {
 
     const {
         id,
-        personText,
-        newpersonText,
-        personSize,
         personAlign,
-        personLink,
-        personTarget,
         personImgUrl,
         imgRadius,
         imgBorder,
@@ -30,7 +25,6 @@ const save = props => {
         titleSize,
         titleWeight,
         titleV,
-        titleTag,
         DescText,
         descColor,
         descSize,
@@ -60,12 +54,9 @@ const save = props => {
         hue,
         effect,
         effectDir,
-        textColor,
         nameHoverColor,
-        backColor,
         backHoverColor,
         slideColor,
-        textFontFamily,
         nameLine,
         nameLetter,
         titleLine,
@@ -88,25 +79,21 @@ const save = props => {
         titleshadowColor,
         titleshadowHorizontal,
         titleshadowVertical,
-        items
+        items,
+        hoverEffectPerson,
+        selectedSocialMediaIcon
     } = props.attributes;
 
 
     const mainClasses = classnames(className, 'premium-person');
 
     const socialIconfn = () => {
-        return <div>{items.map((value, index) => (
-            <div className={`premium-person__socialIcon__${value}`}>
+        return <div>{items.map((value) => (
             <i className={`premium-person__socialIcon ${value == "youtube" ? "fa fa-youtube-play" : `dashicons dashicons-${value}`}  premium-person__${socialIconHoverColor}`}
                 style={{
                     color: defaultIconColor ? "#ffffff" : socialIconColor,
                     background: defaultIconColor ? `${value == "youtube" ? "red" : `${value == "instagram" ? `linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)` : `${value == "twitter" ? "#00aced" : "#3b5998"}`}`}` : socialIconBackgroundColor,
                     fontSize: (socialIconSize || 50) + iconSizeUnit,
-                    paddingRight: "5px",
-                    paddingTop: "2px",
-                    margin: "2px",
-                    height: "1.2em",
-                    width: "1.5em",
                     border: borderTypeIcon,
                     borderWidth: borderWidthIcon + "px",
                     borderRadius: borderRadiusIcon || 100 + "px",
@@ -115,7 +102,6 @@ const save = props => {
                     marginBottom: iconMarginB
                 }}
             />
-            </div>
         ))}
         </div>
     }
@@ -145,7 +131,7 @@ const save = props => {
                         ].join("\n")
                     }}
                 />
-                <div className={`premium-person__img_wrap`}>
+                <div className={`premium-person__img_wrap premium-person__${hoverEffectPerson}`}>
                     {personImgUrl && (
                         <img
                             className={`premium-person__img`}

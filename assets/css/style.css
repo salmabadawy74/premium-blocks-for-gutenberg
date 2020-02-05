@@ -1712,3 +1712,59 @@ a.premium-dheading-block__link:hover {
   }
 }
 */
+
+/**************** Premium Social Icon *********************/
+/*******************************************************/
+.premium-person__socialIcon {
+  padding-right: 5px;
+  padding-top: 2px;
+  margin: 2px;
+  height: 1.2em;
+  width: 1.5em;
+}
+.premium-person__socialIcon__container{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid;
+  line-height: 2.5em;
+}
+.premium-person__socialIcon__dragHandle{
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  flex: 1;
+    background: darkgrey;
+    border-right: 1px solid;
+    cursor: move;
+    color: #ffffff;
+    align-items: center;
+    display: flex !important;
+    justify-content: center;
+}
+.premium-person__socialIcon__dragHandle::before{
+  content: "\f142";
+}
+.premium-person__socialIcon__content{
+  font-size: 14px;
+    padding-right: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+    width: 90%;
+    flex: 12;
+    line-height: 2.5em;
+}
+.premium-person__socialIcon__iconvalue{
+  padding-right: 2%;
+}
+
+.premium-person__socialIcon__trashicon{
+  font-size: 14px;
+    border-left: 1px solid gray;
+    line-height: 2.5em;
+    flex: 2 1 0%;
+    text-align: center;
+    padding-top: 3%;
+}

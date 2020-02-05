@@ -178,7 +178,6 @@ const personAttrs = {
     },
     socialIconColor: {
         type: "string",
-        //   default: "#6ec1e4"
     },
     socialIconHoverColor: {
         type: "string"
@@ -370,6 +369,14 @@ const personAttrs = {
     items: {
         type: "array",
         default: ['facebook', 'twitter', 'instagram', 'youtube']
+      },
+      hoverEffectPerson: {
+        type: "string",
+        default: "none"
+      },
+      selectedSocialMediaIcon: {
+        type: "string",
+        // default: "dashicons dashicons-admin-site"
       },
 };
 
