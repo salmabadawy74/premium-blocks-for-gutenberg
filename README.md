@@ -6,7 +6,7 @@
 **Requires at least:** 4.5
 **Requires PHP:** 5.4
 **Stable tag:** 1.7.9
-**Tested up to:** 5.2.2
+**Tested up to:** 5.3.2
 **License:** GPL v3.0
 **License URI:** https://opensource.org/licenses/GPL-3.0
 
@@ -66,6 +66,8 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 ### 1.7.9
 
 -   Tweak: Size units user interface improved.
+-   Fixed: Stretch Section option not working in some themes.
+-   Fixed: Font Awesome Icons not working on frontend in some themes.
 
 ### 1.7.8
 
