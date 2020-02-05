@@ -28,14 +28,16 @@
   display: block;
 }
 .premium-unit-control button.premium-unit-control-btn {
-  text-shadow: none;
-  text-decoration: none;
+  color: black;
+  background: transparent !important;
+  outline: none !important;
+  -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  border: none;
-  outline: none;
+  border: none !important;
+  text-shadow: none !important;
 }
 .premium-unit-control button.premium-unit-control-btn:focus {
-  background: #f3f4f5 !important;
+  color: #0084bc !important;
 }
 .premium-unit-control button.premium-unit-control-active-btn {
   color: #0084bc !important;
