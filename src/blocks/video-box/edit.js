@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTextShadow from "../../components/premium-text-shadow";
@@ -21,8 +22,6 @@ const {
 const { Component, Fragment } = wp.element;
 
 const { InspectorControls, MediaUpload, ColorPalette } = wp.editor;
-
-const className = "premium-video-box";
 
 const { __ } = wp.i18n;
 
@@ -79,7 +78,7 @@ class edit extends Component {
   }
 
   render() {
-    const { isSelected, setAttributes } = this.props;
+    const { isSelected, setAttributes, className } = this.props;
     const {
       videoBoxId,
       videoType,
@@ -213,6 +212,8 @@ class edit extends Component {
       addFontToHead(fontFamily);
     };
 
+    const mainClasses = classnames(className, "premium-video-box");
+
     return [
       isSelected && (
         <InspectorControls key={"inspector"}>
@@ -322,6 +323,7 @@ class edit extends Component {
                 value={overlayImgID}
                 render={({ open }) => (
                   <IconButton
+                    className="premium-media-uplpad-btn"
                     label={__("Change Image")}
                     icon="edit"
                     onClick={open}
@@ -467,7 +469,7 @@ class edit extends Component {
                         setAttributes({ playBorderWidth: newWidth })
                       }
                       onChangeColor={colorValue =>
-                        setAttributes({ playBorderColor: colorValue })
+                        setAttributes({ playBorderColor: colorValue.hex })
                       }
                       onChangeRadius={newrRadius =>
                         setAttributes({ playBorderRadius: newrRadius })
@@ -606,7 +608,7 @@ class edit extends Component {
                       vertical={descShadowVertical}
                       onChangeColor={newColor =>
                         setAttributes({
-                          descShadowColor: newColor || "transparent"
+                          descShadowColor: newColor.hex || "transparent"
                         })
                       }
                       onChangeBlur={newBlur =>
@@ -653,7 +655,7 @@ class edit extends Component {
                 setAttributes({ boxBorderWidth: newWidth })
               }
               onChangeColor={colorValue =>
-                setAttributes({ boxBorderColor: colorValue })
+                setAttributes({ boxBorderColor: colorValue.hex })
               }
               onChangeRadius={newrRadius =>
                 setAttributes({ boxBorderRadius: newrRadius })
@@ -668,7 +670,8 @@ class edit extends Component {
               position={shadowPosition}
               onChangeColor={newColor =>
                 setAttributes({
-                  shadowColor: newColor === undefined ? "transparent" : newColor
+                  shadowColor:
+                    newColor === undefined ? "transparent" : newColor.hex
                 })
               }
               onChangeBlur={newBlur =>
@@ -697,7 +700,7 @@ class edit extends Component {
       ),
       <div
         id={videoBoxId}
-        className={`${className} video-overlay-${overlay}`}
+        className={`${mainClasses} video-overlay-${overlay}`}
         data-type={videoType}
         style={{
           border: boxBorderType,
@@ -710,14 +713,14 @@ class edit extends Component {
         <style
           dangerouslySetInnerHTML={{
             __html: [
-              `#${videoBoxId} .${className}__play:hover {`,
+              `#${videoBoxId} .premium-video-box__play:hover {`,
               `color: ${playHoverColor} !important;`,
               `background-color: ${playHoverBackColor} !important;`,
               "}"
             ].join("\n")
           }}
         />
-        <div className={`${className}__container`}>
+        <div className={`premium-video-box__container`}>
           {"self" !== videoType && (
             <iframe
               src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${
@@ -745,7 +748,7 @@ class edit extends Component {
         </div>
         {overlay && overlayImgURL && (
           <div
-            className={`${className}__overlay`}
+            className={`premium-video-box__overlay`}
             style={{
               backgroundImage: `url('${overlayImgURL}')`,
               filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
@@ -754,7 +757,7 @@ class edit extends Component {
         )}
         {overlay && playIcon && (
           <div
-            className={`${className}__play`}
+            className={`premium-video-box__play`}
             style={{
               top: playTop + "%",
               left: playLeft + "%",
@@ -768,7 +771,7 @@ class edit extends Component {
             }}
           >
             <i
-              className={`${className}__play_icon dashicons dashicons-controls-play`}
+              className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
               style={{
                 fontSize: playSize + "px"
               }}
@@ -777,7 +780,7 @@ class edit extends Component {
         )}
         {overlay && videoDesc && (
           <div
-            className={`${className}__desc`}
+            className={`premium-video-box__desc`}
             style={{
               color: videoDescColor,
               backgroundColor: videoDescBack,
@@ -788,7 +791,7 @@ class edit extends Component {
             }}
           >
             <p
-              className={`${className}__desc_text`}
+              className={`premium-video-box__desc_text`}
               style={{
                 fontSize: videoDescSize + "px",
                 fontFamily: videoDescFamily,

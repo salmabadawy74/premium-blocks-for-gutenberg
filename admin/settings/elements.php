@@ -115,10 +115,11 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
         }
 
         //Update options and Create HTML layout for Blocks Settings submenu
-        public function pbg_blocks_page(){
+        public function pbg_blocks_page() {
             
             $js_info = array(
-                'ajaxurl' => admin_url( 'admin-ajax.php' )
+                'ajaxurl'   => admin_url( 'admin-ajax.php' ),
+                'nonce'     => wp_create_nonce( 'pbg-blocks' )
             );
 
             wp_localize_script(
@@ -303,6 +304,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
         */
         public function pbg_settings() {
 
+            check_ajax_referer( 'pbg-blocks', 'security' );
+            
             if( isset( $_POST['fields'] ) ) {
 
                 parse_str( $_POST['fields'], $settings );
@@ -331,7 +334,6 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
 
             return true;
 
-            die();    
         }
         
         public static function get_instance() {

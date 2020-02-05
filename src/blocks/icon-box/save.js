@@ -1,8 +1,11 @@
-const className = "premium-icon-box";
+import classnames from 'classnames'
 
 const { RichText } = wp.editor;
 
 const save = props => {
+  
+  const { className } = props;
+  
   const {
     id,
     align,
@@ -12,6 +15,9 @@ const save = props => {
     selectedIcon,
     iconChecked,
     hoverEffect,
+    iconPos,
+    iconHPos,
+    iconVPos,
     iconSize,
     iconColor,
     iconBackColor,
@@ -100,11 +106,13 @@ const save = props => {
     hoverShadowVertical,
     hoverShadowPosition
   } = props.attributes;
+  
+  const mainClasses = classnames ( className, 'premium-icon-box' );
 
   return (
     <div
-      id={`${className}-${id}`}
-      className={`${className}`}
+      id={`premium-icon-box-${id}`}
+      className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
       style={{
         textAlign: align,
         border: borderType,
@@ -150,10 +158,12 @@ const save = props => {
         />
       )}
       {iconChecked && (
-        <div className={`${className}__icon_wrap`}>
+        <div
+          className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}
+        >
           {"icon" === iconImage && selectedIcon && (
             <i
-              className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
+              className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
               style={{
                 color: iconColor,
                 backgroundColor: iconBackColor,
@@ -163,7 +173,7 @@ const save = props => {
           )}
           {"image" === iconImage && iconImgUrl && (
             <img
-              className={`${className}__icon premium-icon__${hoverEffect}`}
+              className={`premium-icon-box__icon premium-icon__${hoverEffect}`}
               src={`${iconImgUrl}`}
               alt="Image Icon"
               style={{
@@ -175,87 +185,89 @@ const save = props => {
           )}
         </div>
       )}
-      {titleChecked && titleText && (
-        <div
-          className={`${className}__title_wrap`}
-          style={{
-            marginTop: titleMarginT,
-            marginBottom: titleMarginB
-          }}
-        >
-          <RichText.Content
-            tagName={titleTag.toLowerCase()}
-            className={`${className}__title`}
-            value={titleText}
+      <div className={`premium-icon-box__content_wrap`}>
+        {titleChecked && titleText && (
+          <div
+            className={`premium-icon-box__title_wrap`}
             style={{
-              color: titleColor,
-              fontSize: titleSize + "px",
-              fontFamily: titleFont,
-              letterSpacing: titleLetter + "px",
-              textTransform: titleUpper ? "uppercase" : "none",
-              fontStyle: titleStyle,
-              fontWeight: titleWeight,
-              textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-              lineHeight: titleLine + "px"
+              marginTop: titleMarginT,
+              marginBottom: titleMarginB
             }}
-          />
-        </div>
-      )}
-      {descChecked && descText && (
-        <div
-          className={`${className}__desc_wrap`}
-          style={{
-            marginTop: descMarginT,
-            marginBottom: descMarginB
-          }}
-        >
-          <RichText.Content
-            tagName="p"
-            className={`${className}__desc`}
-            value={descText}
+          >
+            <RichText.Content
+              tagName={titleTag.toLowerCase()}
+              className={`premium-icon-box__title`}
+              value={titleText}
+              style={{
+                color: titleColor,
+                fontSize: titleSize + "px",
+                fontFamily: titleFont,
+                letterSpacing: titleLetter + "px",
+                textTransform: titleUpper ? "uppercase" : "none",
+                fontStyle: titleStyle,
+                fontWeight: titleWeight,
+                textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
+                lineHeight: titleLine + "px"
+              }}
+            />
+          </div>
+        )}
+        {descChecked && descText && (
+          <div
+            className={`premium-icon-box__desc_wrap`}
             style={{
-              color: descColor,
-              fontSize: descSize + "px",
-              fontFamily: descFont,
-              lineHeight: descLine + "px",
-              fontWeight: descWeight
+              marginTop: descMarginT,
+              marginBottom: descMarginB
             }}
-          />
-        </div>
-      )}
-      {btnChecked && btnText && (
-        <div
-          className={`${className}__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
-          style={{
-            marginTop: btnMarginT,
-            marginBottom: btnMarginB
-          }}
-        >
-          <RichText.Content
-            tagName="a"
-            className={`${className}__btn premium-button`}
-            href={btnLink}
-            rel="noopener noreferrer"
-            target={btnTarget ? "_blank" : "_self"}
-            value={btnText}
+          >
+            <RichText.Content
+              tagName="p"
+              className={`premium-icon-box__desc`}
+              value={descText}
+              style={{
+                color: descColor,
+                fontSize: descSize + "px",
+                fontFamily: descFont,
+                lineHeight: descLine + "px",
+                fontWeight: descWeight
+              }}
+            />
+          </div>
+        )}
+        {btnChecked && btnText && (
+          <div
+            className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
             style={{
-              color: btnColor,
-              backgroundColor: btnBack,
-              fontSize: btnSize + "px",
-              letterSpacing: btnLetter + "px",
-              textTransform: btnUpper ? "uppercase" : "none",
-              fontStyle: btnStyle,
-              fontWeight: btnWeight,
-              border: btnBorderType,
-              borderWidth: btnBorderWidth + "px",
-              borderRadius: btnBorderRadius + "px",
-              borderColor: btnBorderColor,
-              padding: btnPadding + btnPaddingU,
-              boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
+              marginTop: btnMarginT,
+              marginBottom: btnMarginB
             }}
-          />
-        </div>
-      )}
+          >
+            <RichText.Content
+              tagName="a"
+              className={`premium-icon-box__btn premium-button`}
+              href={btnLink}
+              rel="noopener noreferrer"
+              target={btnTarget ? "_blank" : "_self"}
+              value={btnText}
+              style={{
+                color: btnColor,
+                backgroundColor: btnBack,
+                fontSize: btnSize + "px",
+                letterSpacing: btnLetter + "px",
+                textTransform: btnUpper ? "uppercase" : "none",
+                fontStyle: btnStyle,
+                fontWeight: btnWeight,
+                border: btnBorderType,
+                borderWidth: btnBorderWidth + "px",
+                borderRadius: btnBorderRadius + "px",
+                borderColor: btnBorderColor,
+                padding: btnPadding + btnPaddingU,
+                boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
+              }}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

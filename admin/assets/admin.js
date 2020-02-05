@@ -16,9 +16,10 @@
 			type: 'post',
 			data: {
 				action: 'pbg_settings',
-				fields: $( 'form#pbg-settings' ).serialize(),
+                security: settings.nonce,
+				fields: $( 'form#pbg-settings' ).serialize()
 			},
-            success: function( response ) {
+            success: function() {
 				swal(
 				  'Settings Saved!',
 				  'Click OK to continue',
@@ -42,9 +43,10 @@
 			type: 'post',
 			data: {
 				action: 'pb_maps',
-				fields: $( 'form#pb-maps' ).serialize(),
+                security: settings.nonce,
+				fields: $( 'form#pb-maps' ).serialize()
 			},
-            success: function( response ) {
+            success: function() {
 				swal(
 				  'Settings Saved!',
 				  'Click OK to continue',

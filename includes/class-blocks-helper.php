@@ -21,6 +21,7 @@ class Premium_Blocks_Integration {
 
         //Gets Active Blocks
         self::$blocks = Premium_Guten_Admin::get_enabled_keys();
+        
         //Gets Plugin Admin Settings
         self::$config = Premium_Guten_Maps::get_enabled_keys();
         
@@ -29,14 +30,10 @@ class Premium_Blocks_Integration {
         
         //Enqueue Frontend Styles
         add_action( 'enqueue_block_assets', array( $this, 'premium_gutenberg_frontend' ) );
-        
-        //Enqueue Frontend Scripts
-//        add_action( 'wp_enqueue_scripts', array( $this, 'public_scripts' ) );
-        
+                
         //Register Premium Blocks category
         add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
-        
-//        add_filter('the_content', array( $this, 'check_used_blocks'));
+
     }
     
     /**
@@ -237,12 +234,14 @@ class Premium_Blocks_Integration {
             );
         }
 
-        //Enqueue Google Maps API key Script
-        if( $is_maps_enabled && $is_enabled && ! empty( $api_key ) ) {
-            wp_enqueue_script(
-                'premium-map-block',
-                'https://maps.googleapis.com/maps/api/js?key=' . $api_key
-            );
+        //Enqueue Google Maps API Script
+        if( $is_maps_enabled && $is_enabled ) {
+            if( ! empty( $api_key ) && '1' != $api_key ) {
+                wp_enqueue_script(
+                    'premium-map-block',
+                    'https://maps.googleapis.com/maps/api/js?key=' . $api_key
+                );
+            }
         }
         
     }

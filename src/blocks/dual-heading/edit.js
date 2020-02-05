@@ -1,10 +1,9 @@
+import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import FONTS from "../../components/premium-fonts";
-
-const className = "premium-dheading-block";
 
 const { __ } = wp.i18n;
 
@@ -28,7 +27,7 @@ const {
 } = wp.editor;
 
 const edit = props => {
-  const { setAttributes, isSelected } = props;
+  const { setAttributes, isSelected, className } = props;
   const {
     contentAlign,
     firstHeading,
@@ -51,6 +50,7 @@ const edit = props => {
     firstMarginL,
     firstClip,
     firstAnim,
+    firstStroke,
     firstClipColor,
     firstShadowBlur,
     firstShadowColor,
@@ -72,6 +72,7 @@ const edit = props => {
     secondMarginL,
     secondMarginR,
     secondClip,
+    secondStroke,
     secondAnim,
     secondClipColor,
     secondShadowBlur,
@@ -135,6 +136,11 @@ const edit = props => {
     addFontToHead(fontFamily);
   };
 
+  const mainClasses = classnames(
+    className,
+    "premium-dheading-block__container"
+  );
+
   return [
     isSelected && (
       <BlockControls key="controls">
@@ -194,11 +200,18 @@ const edit = props => {
             onChange={newValue => setAttributes({ firstClip: newValue })}
           />
           {firstClip && (
-            <ToggleControl
-              label={__("Animated")}
-              checked={firstAnim}
-              onChange={newValue => setAttributes({ firstAnim: newValue })}
-            />
+            <Fragment>
+              <ToggleControl
+                label={__("Animated")}
+                checked={firstAnim}
+                onChange={newValue => setAttributes({ firstAnim: newValue })}
+              />
+              <ToggleControl
+                label={__("Stroke")}
+                checked={firstStroke}
+                onChange={newValue => setAttributes({ firstStroke: newValue })}
+              />
+            </Fragment>
           )}
           <SelectControl
             label={__("Font Family")}
@@ -318,7 +331,9 @@ const edit = props => {
               setAttributes({ firstBorderWidth: newWidth || "0" })
             }
             onChangeColor={colorValue =>
-              setAttributes({ firstBorderColor: colorValue || "transparent" })
+              setAttributes({
+                firstBorderColor: colorValue.hex || "transparent"
+              })
             }
             onChangeRadius={newrRadius =>
               setAttributes({ firstBorderRadius: newrRadius || "0" })
@@ -331,7 +346,7 @@ const edit = props => {
             horizontal={firstShadowHorizontal}
             vertical={firstShadowVertical}
             onChangeColor={newColor =>
-              setAttributes({ firstShadowColor: newColor || "transparent" })
+              setAttributes({ firstShadowColor: newColor.hex || "transparent" })
             }
             onChangeBlur={newBlur =>
               setAttributes({ firstShadowBlur: newBlur || "0" })
@@ -383,11 +398,18 @@ const edit = props => {
             onChange={newValue => setAttributes({ secondClip: newValue })}
           />
           {secondClip && (
+            <Fragment>
             <ToggleControl
               label={__("Animated")}
               checked={secondAnim}
               onChange={newValue => setAttributes({ secondAnim: newValue })}
             />
+            <ToggleControl
+              label={__('Stroke')}
+              checked={secondStroke}
+              onChange={newValue => setAttributes({secondStroke: newValue})}
+            />
+            </Fragment>
           )}
           <SelectControl
             label={__("Font Family")}
@@ -507,7 +529,7 @@ const edit = props => {
             }
             onChangeColor={colorValue =>
               setAttributes({
-                secondBorderColor: colorValue || "transparent"
+                secondBorderColor: colorValue.hex || "transparent"
               })
             }
             onChangeRadius={newrRadius =>
@@ -521,7 +543,9 @@ const edit = props => {
             horizontal={secondShadowHorizontal}
             vertical={secondShadowVertical}
             onChangeColor={newColor =>
-              setAttributes({ secondShadowColor: newColor || "transparent" })
+              setAttributes({
+                secondShadowColor: newColor.hex || "transparent"
+              })
             }
             onChangeBlur={newBlur =>
               setAttributes({ secondShadowBlur: newBlur || "0" })
@@ -618,7 +642,7 @@ const edit = props => {
             }
             onChangeColor={colorValue =>
               setAttributes({
-                containerBorderColor: colorValue
+                containerBorderColor: colorValue.hex
               })
             }
             onChangeRadius={newrRadius =>
@@ -630,7 +654,7 @@ const edit = props => {
     ),
 
     <div
-      className={`${className}__container`}
+      className={`${mainClasses}`}
       style={{
         textAlign: contentAlign,
         backgroundColor: containerBack,
@@ -645,10 +669,10 @@ const edit = props => {
         borderColor: containerBorderColor
       }}
     >
-      <div className={`${className}__wrap`}>
-        <h2 className={`${className}__title`}>
+      <div className={`premium-dheading-block__wrap`}>
+        <h2 className={`premium-dheading-block__title`}>
           <span
-            className={`${className}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
+            className={`premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim} premium-headings-${firstStroke}`}
             style={{
               display: display,
               color: firstColor,
@@ -675,7 +699,7 @@ const edit = props => {
             {firstHeading}
           </span>
           <span
-            className={`${className}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
+            className={`premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim} premium-headings-${secondStroke}`}
             style={{
               display: display,
               color: secondColor,

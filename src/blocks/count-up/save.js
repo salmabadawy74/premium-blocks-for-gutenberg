@@ -1,6 +1,9 @@
-const className = "premium-countup";
+import classnames from 'classnames'
 
 const save = props => {
+   
+  const { className } = props;
+    
   const {
     increment,
     time,
@@ -52,15 +55,22 @@ const save = props => {
     backgroundRepeat,
     backgroundPosition,
     backgroundSize,
+    borderType,
+    borderColor,
+    borderRadius,
+    borderWidth,
     titleFamily,
     counterFamily,
     prefixFamily,
     suffixFamily
   } = props.attributes;
   let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
+  
+  const mainClasses = classnames ( className, 'premium-countup' );
+  
   return (
     <div
-      className={`${className}__wrap`}
+      className={`${mainClasses}__wrap`}
       style={{
         justifyContent: align,
         flexDirection: flexDir,
@@ -70,12 +80,16 @@ const save = props => {
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
         backgroundSize: backgroundSize,
-        backgroundAttachment: fixed ? "fixed" : "unset"
+        backgroundAttachment: fixed ? "fixed" : "unset",
+        border: borderType,
+        borderWidth: borderWidth + "px",
+        borderRadius: borderRadius + "px",
+        borderColor: borderColor
       }}
     >
       {iconCheck && (
         <div
-          className={`${className}__icon_wrap`}
+          className={`premium-countup__icon_wrap`}
           style={{
             marginRight:
               "row" === flexDir || "row-reverse" === flexDir
@@ -93,7 +107,7 @@ const save = props => {
         >
           {"icon" === icon && (
             <i
-              className={`${className}__icon ${iconClass}`}
+              className={`premium-countup__icon ${iconClass}`}
               style={{
                 fontSize: iconSize + "px",
                 color: iconColor
@@ -113,7 +127,7 @@ const save = props => {
       )}
 
       <div
-        className={`${className}__info`}
+        className={`premium-countup__info`}
         style={{
           alignSelf:
             "row-reverse" === flexDir || "row" === flexDir
@@ -121,10 +135,10 @@ const save = props => {
               : selfAlign
         }}
       >
-        <div className={`${className}__desc`}>
+        <div className={`premium-countup__desc`}>
           {prefix && (
             <p
-              className={`${className}__prefix`}
+              className={`premium-countup__prefix`}
               style={{
                 fontSize: prefixSize + "px",
                 fontFamily: prefixFamily,
@@ -137,7 +151,7 @@ const save = props => {
             </p>
           )}
           <p
-            className={`${className}__increment`}
+            className={`premium-countup__increment`}
             data-interval={time}
             data-delay={delay}
             style={{
@@ -151,7 +165,7 @@ const save = props => {
           </p>
           {suffix && (
             <p
-              className={`${className}__suffix`}
+              className={`premium-countup__suffix`}
               style={{
                 fontSize: suffixSize + "px",
                 fontFamily: suffixFamily,
@@ -166,7 +180,7 @@ const save = props => {
         </div>
         {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
           <h3
-            className={`${className}__title`}
+            className={`premium-countup__title`}
             style={{
               fontSize: titleSize + "px",
               fontFamily: titleFamily,
@@ -185,7 +199,7 @@ const save = props => {
       </div>
       {titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && (
         <h3
-          className={`${className}__title`}
+          className={`premium-countup__title`}
           style={{
             fontSize: titleSize + "px",
             fontFamily: titleFamily,

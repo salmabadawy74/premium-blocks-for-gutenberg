@@ -47,7 +47,8 @@ if( ! class_exists('Premium_Guten_Maps') ) {
         //Update options and Create HTML layout for System Info submenu
         public function pb_maps_page() {
             $js_info = array(
-                'ajaxurl' => admin_url( 'admin-ajax.php' )
+                'ajaxurl'   => admin_url( 'admin-ajax.php' ),
+                'nonce'     => wp_create_nonce( 'pbg-assets' )
             );
 
             wp_localize_script( 'pbg-admin-js', 'settings', $js_info );
@@ -92,7 +93,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
                                     </tr>
                                     <tr>
                                         <th>
-                                            <h4 class="pb-api-title"><label>Google Maps API Key:</label><input name="premium-map-key" id="premium-map-key" type="text" placeholder="API Key" value="<?php echo $this->pa_maps_get['premium-map-key']; ?>"></h4>
+                                            <h4 class="pb-api-title"><label><?php echo __('Google Maps API Key:', 'premium-blocks-for-gutenberg'); ?></label><input name="premium-map-key" id="premium-map-key" type="text" placeholder="API Key" value="<?php echo esc_attr( $this->pa_maps_get['premium-map-key'] ); ?>"></h4>
                                         </th>
                                     </tr>
                                     <tr>
@@ -140,6 +141,8 @@ if( ! class_exists('Premium_Guten_Maps') ) {
         * @return object
         */
         public function pb_save_maps_settings() {
+            
+            check_ajax_referer( 'pbg-assets', 'security' );
 
             if( isset( $_POST['fields'] ) ) {
                 parse_str( $_POST['fields'], $settings );
@@ -148,7 +151,7 @@ if( ! class_exists('Premium_Guten_Maps') ) {
             }
 
             $this->pb_maps_settings = array(
-                'premium-map-key'           => $settings['premium-map-key'],
+                'premium-map-key'           => sanitize_text_field( $settings['premium-map-key'] ),
                 'premium-map-api'           => intval( $settings['premium-map-api'] ? 1 : 0),
                 'premium-fa-css'            => intval( $settings['premium-fa-css'] ? 1 : 0),
             );
