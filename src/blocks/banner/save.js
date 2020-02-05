@@ -1,8 +1,11 @@
-const className = "premium-banner";
+import classnames from 'classnames'
 
 const { RichText } = wp.editor;
 
 const save = props => {
+    
+  const { className } = props;
+  
   const {
     id,
     imageURL,
@@ -53,14 +56,26 @@ const save = props => {
     containerShadowColor,
     containerShadowHorizontal,
     containerShadowVertical,
-    containerShadowPosition
+    containerShadowPosition,
+    paddingB,
+    paddingT,
+    paddingR,
+    paddingL,
+    paddingU
   } = props.attributes;
+  
+  const mainClasses = classnames ( className, 'premium-banner' );
+  
   return (
     <div
       id={`premium-banner-${id}`}
-      className={`${className} ${className}__responsive_${responsive}`}
+      className={`${mainClasses} premium-banner__responsive_${responsive}`}
       style={{
-        boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
+        boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
+        paddingTop: paddingT + paddingU,
+        paddingRight: paddingR + paddingU,
+        paddingBottom: paddingB + paddingU,
+        paddingLeft: paddingL + paddingU
       }}
     >
       <style
@@ -79,7 +94,7 @@ const save = props => {
         }}
       />
       <div
-        className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
+        className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
         style={{
           border: borderType,
           borderWidth: borderWidth + "px",
@@ -88,14 +103,14 @@ const save = props => {
         }}
       >
         <div
-          className={`${className}__img_wrap ${className}__${height}`}
+          className={`premium-banner__img_wrap premium-banner__${height}`}
           style={{
             minHeight: minHeight,
             alignItems: verAlign
           }}
         >
           <img
-            className={`${className}__img`}
+            className={`premium-banner__img`}
             alt="Banner Image"
             src={imageURL}
             style={{
@@ -105,20 +120,20 @@ const save = props => {
         </div>
 
         <div
-          className={`${className}__content`}
+          className={`premium-banner__content`}
           style={{
             background: "effect2" === effect ? titleBack : "transparent"
           }}
         >
           <div
-            className={`${className}__title_wrap`}
+            className={`premium-banner__title_wrap`}
             style={{
               textAlign: contentAlign
             }}
           >
             <RichText.Content
               tagName={titleTag.toLowerCase()}
-              className={`${className}__title`}
+              className={`premium-banner__title`}
               value={title}
               style={{
                 color: titleColor,
@@ -130,14 +145,14 @@ const save = props => {
             />
           </div>
           <div
-            className={`${className}__desc_wrap`}
+            className={`premium-banner__desc_wrap`}
             style={{
               textAlign: contentAlign
             }}
           >
             <RichText.Content
               tagName="p"
-              className={`${className}__desc`}
+              className={`premium-banner__desc`}
               value={desc}
               style={{
                 color: descColor,
@@ -151,7 +166,7 @@ const save = props => {
         </div>
         {urlCheck && "" !== url && (
           <a
-            className={`${className}__link`}
+            className={`premium-banner__link`}
             href={url}
             target={target && "_blank"}
           />

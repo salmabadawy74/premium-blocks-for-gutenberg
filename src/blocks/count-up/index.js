@@ -203,6 +203,21 @@ const counterAttrs = {
     type: "boolean",
     default: false
   },
+  borderType: {
+    type: "string",
+    default: "none"
+  },
+  borderWidth: {
+    type: "number",
+    default: "1"
+  },
+  borderRadius: {
+    type: "number",
+    default: "0"
+  },
+  borderColor: {
+    type: "string"
+  },
   titleFamily: {
     type: "string"
   },

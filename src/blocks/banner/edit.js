@@ -1,10 +1,10 @@
+import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
-
-const className = "premium-banner";
+import PremiumPadding from "../../components/premium-padding";
 
 const { __ } = wp.i18n;
 
@@ -30,7 +30,7 @@ const {
 } = wp.editor;
 
 const edit = props => {
-  const { isSelected, setAttributes, clientId: blockID } = props;
+  const { isSelected, setAttributes, className, clientId: blockID } = props;
   const {
     id,
     imageID,
@@ -82,7 +82,12 @@ const edit = props => {
     containerShadowColor,
     containerShadowHorizontal,
     containerShadowVertical,
-    containerShadowPosition
+    containerShadowPosition,
+    paddingB,
+    paddingT,
+    paddingR,
+    paddingL,
+    paddingU
   } = props.attributes;
   const ALIGNS = [
     {
@@ -173,6 +178,9 @@ const edit = props => {
     }
   ];
   setAttributes({ id: blockID });
+
+  const mainClasses = classnames(className, "premium-banner");
+
   return [
     isSelected && (
       <BlockControls key="controls">
@@ -208,7 +216,7 @@ const edit = props => {
             type="image"
             value={imageID}
             render={({ open }) => (
-              <IconButton label={__("Change Image")} icon="edit" onClick={open}>
+              <IconButton className="premium-media-uplpad-btn" label={__("Change Image")} icon="edit" onClick={open}>
                 {__("Change Image")}
               </IconButton>
             )}
@@ -285,29 +293,6 @@ const edit = props => {
             onChange={newOpacity =>
               setAttributes({
                 opacity: newOpacity === undefined ? 50 : newOpacity
-              })
-            }
-          />
-          <PremiumBorder
-            borderType={borderType}
-            borderWidth={borderWidth}
-            borderColor={borderColor}
-            borderRadius={borderRadius}
-            onChangeType={newType => setAttributes({ borderType: newType })}
-            onChangeWidth={newWidth =>
-              setAttributes({
-                borderWidth: newWidth === undefined ? 0 : newWidth
-              })
-            }
-            onChangeColor={colorValue =>
-              setAttributes({
-                borderColor:
-                  colorValue === undefined ? "transparent" : colorValue
-              })
-            }
-            onChangeRadius={newRadius =>
-              setAttributes({
-                borderRadius: newRadius === undefined ? 0 : newRadius
               })
             }
           />
@@ -414,7 +399,8 @@ const edit = props => {
             vertical={shadowVertical}
             onChangeColor={newColor =>
               setAttributes({
-                shadowColor: newColor === undefined ? "transparent" : newColor
+                shadowColor:
+                  newColor === undefined ? "transparent" : newColor.hex
               })
             }
             onChangeBlur={newBlur =>
@@ -476,7 +462,7 @@ const edit = props => {
             onChangeColor={newColor =>
               setAttributes({
                 descShadowColor:
-                  newColor === undefined ? "transparent" : newColor
+                  newColor === undefined ? "transparent" : newColor.hex
               })
             }
             onChangeBlur={newBlur =>
@@ -501,6 +487,29 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
+          <PremiumBorder
+            borderType={borderType}
+            borderWidth={borderWidth}
+            borderColor={borderColor}
+            borderRadius={borderRadius}
+            onChangeType={newType => setAttributes({ borderType: newType })}
+            onChangeWidth={newWidth =>
+              setAttributes({
+                borderWidth: newWidth === undefined ? 0 : newWidth
+              })
+            }
+            onChangeColor={colorValue =>
+              setAttributes({
+                borderColor:
+                  colorValue === undefined ? "transparent" : colorValue.hex
+              })
+            }
+            onChangeRadius={newRadius =>
+              setAttributes({
+                borderRadius: newRadius === undefined ? 0 : newRadius
+              })
+            }
+          />
           <PremiumBoxShadow
             inner={true}
             color={containerShadowColor}
@@ -510,7 +519,7 @@ const edit = props => {
             position={containerShadowPosition}
             onChangeColor={newColor =>
               setAttributes({
-                containerShadowColor: newColor
+                containerShadowColor: newColor.hex
               })
             }
             onChangeBlur={newBlur =>
@@ -534,14 +543,49 @@ const edit = props => {
               })
             }
           />
+          <PremiumPadding
+            paddingTop={paddingT}
+            paddingRight={paddingR}
+            paddingBottom={paddingB}
+            paddingLeft={paddingL}
+            showUnits={true}
+            onChangePadTop={value =>
+              setAttributes({
+                paddingT: value
+              })
+            }
+            onChangePadRight={value =>
+              setAttributes({
+                paddingR: value
+              })
+            }
+            onChangePadBottom={value =>
+              setAttributes({
+                paddingB: value
+              })
+            }
+            onChangePadLeft={value =>
+              setAttributes({
+                paddingL: value
+              })
+            }
+            selectedUnit={paddingU}
+            onChangePadSizeUnit={newvalue =>
+              setAttributes({ paddingU: newvalue })
+            }
+          />
         </PanelBody>
       </InspectorControls>
     ),
     <div
       id={`premium-banner-${id}`}
-      className={`${className} ${className}__responsive_${responsive}`}
+      className={`${mainClasses} premium-banner__responsive_${responsive}`}
       style={{
-        boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`
+        boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
+        paddingTop: paddingT + paddingU,
+        paddingRight: paddingR + paddingU,
+        paddingBottom: paddingB + paddingU,
+        paddingLeft: paddingL + paddingU
       }}
     >
       <style
@@ -561,7 +605,7 @@ const edit = props => {
       />
       {imageURL && (
         <div
-          className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
+          className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
           style={{
             border: borderType,
             borderWidth: borderWidth + "px",
@@ -570,14 +614,14 @@ const edit = props => {
           }}
         >
           <div
-            className={`${className}__img_wrap ${className}__${height}`}
+            className={`premium-banner__img_wrap premium-banner__${height}`}
             style={{
               minHeight: minHeight,
               alignItems: verAlign
             }}
           >
             <img
-              className={`${className}__img`}
+              className={`premium-banner__img`}
               alt="Banner Image"
               src={imageURL}
               style={{
@@ -587,20 +631,20 @@ const edit = props => {
           </div>
 
           <div
-            className={`${className}__content`}
+            className={`premium-banner__content`}
             style={{
               background: "effect2" === effect ? titleBack : "transparent"
             }}
           >
             <div
-              className={`${className}__title_wrap`}
+              className={`premium-banner__title_wrap`}
               style={{
                 textAlign: contentAlign
               }}
             >
               <RichText
                 tagName={titleTag.toLowerCase()}
-                className={`${className}__title`}
+                className={`premium-banner__title`}
                 value={title}
                 isSelected={false}
                 onChange={newText => setAttributes({ title: newText })}
@@ -614,14 +658,14 @@ const edit = props => {
               />
             </div>
             <div
-              className={`${className}__desc_wrap`}
+              className={`premium-banner__desc_wrap`}
               style={{
                 textAlign: contentAlign
               }}
             >
               <RichText
                 tagName="p"
-                className={`${className}__desc`}
+                className={`premium-banner__desc`}
                 value={desc}
                 isSelected={false}
                 onChange={newText => setAttributes({ desc: newText })}

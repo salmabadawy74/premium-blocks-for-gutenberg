@@ -1,10 +1,10 @@
+import classnames from "classnames";
 import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
+import PremiumBorder from "../../components/premium-border";
 import FONTS from "../../components/premium-fonts";
-
-const className = "premium-countup";
 
 const { __ } = wp.i18n;
 
@@ -22,7 +22,7 @@ const { InspectorControls, ColorPalette, MediaUpload } = wp.editor;
 const { Fragment } = wp.element;
 
 const edit = props => {
-  const { isSelected, setAttributes } = props;
+  const { isSelected, setAttributes, className } = props;
   const {
     increment,
     time,
@@ -76,6 +76,10 @@ const edit = props => {
     backgroundRepeat,
     backgroundPosition,
     backgroundSize,
+    borderType,
+    borderColor,
+    borderRadius,
+    borderWidth,
     titleFamily,
     counterFamily,
     prefixFamily,
@@ -182,6 +186,8 @@ const edit = props => {
 
     addFontToHead(fontFamily);
   };
+
+  const mainClasses = classnames(className, "premium-countup");
 
   return [
     isSelected && (
@@ -330,6 +336,7 @@ const edit = props => {
                 value={imageID}
                 render={({ open }) => (
                   <IconButton
+                    className="premium-media-uplpad-btn"
                     label={__("Change Image")}
                     icon="edit"
                     onClick={open}
@@ -607,6 +614,20 @@ const edit = props => {
             }
             onChangeFixed={check => setAttributes({ fixed: check })}
           />
+          <PremiumBorder
+            borderType={borderType}
+            borderWidth={borderWidth}
+            borderColor={borderColor}
+            borderRadius={borderRadius}
+            onChangeType={newType => setAttributes({ borderType: newType })}
+            onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
+            onChangeColor={colorValue =>
+              setAttributes({ borderColor: colorValue.hex })
+            }
+            onChangeRadius={newRadius =>
+              setAttributes({ borderRadius: newRadius })
+            }
+          />
           <PremiumBoxShadow
             inner={true}
             color={shadowColor}
@@ -616,7 +637,7 @@ const edit = props => {
             position={shadowPosition}
             onChangeColor={newColor =>
               setAttributes({
-                shadowColor: newColor
+                shadowColor: newColor.hex
               })
             }
             onChangeBlur={newBlur =>
@@ -645,13 +666,13 @@ const edit = props => {
     ),
     <div>
       {iconType === "fa" && 1 != FontAwesomeEnabled && iconCheck && (
-        <p className={`${className}__alert`}>
+        <p className={`premium-countup__alert`}>
           {__("Please Enable Font Awesome Icons from Plugin settings")}
         </p>
       )}
     </div>,
     <div
-      className={`${className}__wrap`}
+      className={`${mainClasses}__wrap`}
       style={{
         justifyContent: align,
         flexDirection: flexDir,
@@ -661,12 +682,16 @@ const edit = props => {
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
         backgroundSize: backgroundSize,
-        backgroundAttachment: fixed ? "fixed" : "unset"
+        backgroundAttachment: fixed ? "fixed" : "unset",
+        border: borderType,
+        borderWidth: borderWidth + "px",
+        borderRadius: borderRadius + "px",
+        borderColor: borderColor
       }}
     >
       {iconCheck && (
         <div
-          className={`${className}__icon_wrap`}
+          className={`premium-countup__icon_wrap`}
           style={{
             marginRight:
               "row" === flexDir || "row-reverse" === flexDir
@@ -684,7 +709,7 @@ const edit = props => {
         >
           {"icon" === icon && (
             <i
-              className={`${className}__icon ${iconClass}`}
+              className={`premium-countup__icon ${iconClass}`}
               style={{
                 fontSize: iconSize + "px",
                 color: iconColor
@@ -703,7 +728,7 @@ const edit = props => {
         </div>
       )}
       <div
-        className={`${className}__info`}
+        className={`premium-countup__info`}
         style={{
           alignSelf:
             "row-reverse" === flexDir || "row" === flexDir
@@ -711,10 +736,10 @@ const edit = props => {
               : selfAlign
         }}
       >
-        <div className={`${className}__desc`}>
+        <div className={`premium-countup__desc`}>
           {prefix && (
             <p
-              className={`${className}__prefix`}
+              className={`premium-countup__prefix`}
               style={{
                 fontSize: prefixSize + "px",
                 fontFamily: prefixFamily,
@@ -727,7 +752,7 @@ const edit = props => {
             </p>
           )}
           <p
-            className={`${className}__increment`}
+            className={`premium-countup__increment`}
             data-interval={time}
             data-delay={delay}
             style={{
@@ -741,7 +766,7 @@ const edit = props => {
           </p>
           {suffix && (
             <p
-              className={`${className}__suffix`}
+              className={`premium-countup__suffix`}
               style={{
                 fontSize: suffixSize + "px",
                 fontFamily: suffixFamily,
@@ -756,7 +781,7 @@ const edit = props => {
         </div>
         {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
           <h3
-            className={`${className}__title`}
+            className={`premium-countup__title`}
             style={{
               fontSize: titleSize + "px",
               fontFamily: titleFamily,
@@ -775,7 +800,7 @@ const edit = props => {
       </div>
       {titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && (
         <h3
-          className={`${className}__title`}
+          className={`premium-countup__title`}
           style={{
             fontSize: titleSize + "px",
             fontFamily: titleFamily,

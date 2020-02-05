@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import PremiumTypo from "../../components/premium-typo";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
@@ -10,8 +11,6 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import PremiumSizeUnits from "../../components/premium-size-units";
 import FONTS from "../../components/premium-fonts";
-
-const className = "premium-icon-box";
 
 const { __ } = wp.i18n;
 
@@ -29,15 +28,17 @@ const {
 const { Fragment } = wp.element;
 
 const {
+  BlockControls,
   InspectorControls,
   RichText,
   ColorPalette,
+  AlignmentToolbar,
   MediaUpload,
   URLInput
 } = wp.editor;
 
 const edit = props => {
-  const { isSelected, setAttributes, clientId: blockId } = props;
+  const { isSelected, setAttributes, className, clientId: blockId } = props;
   const {
     id,
     align,
@@ -48,6 +49,9 @@ const edit = props => {
     iconType,
     selectedIcon,
     hoverEffect,
+    iconPos,
+    iconHPos,
+    iconVPos,
     iconSize,
     iconRadius,
     iconColor,
@@ -215,6 +219,43 @@ const edit = props => {
     }
   ];
 
+  const ICON_POS = [
+    {
+      label: __("Inline"),
+      value: "inline"
+    },
+    {
+      label: __("Block"),
+      value: "block"
+    }
+  ];
+
+  const ICON_HPOS = [
+    {
+      label: __("Before"),
+      value: "before"
+    },
+    {
+      label: __("After"),
+      value: "after"
+    }
+  ];
+
+  const ICON_VPOS = [
+    {
+      label: __("Top"),
+      value: "top"
+    },
+    {
+      label: __("Middle"),
+      value: "center"
+    },
+    {
+      label: __("Bottom"),
+      value: "bottom"
+    }
+  ];
+
   const addFontToHead = fontFamily => {
     const head = document.head;
     const link = document.createElement("link");
@@ -246,7 +287,17 @@ const edit = props => {
     addFontToHead(fontFamily);
   };
 
+  const mainClasses = classnames(className, "premium-icon-box");
+
   return [
+    isSelected && (
+      <BlockControls key="controls">
+        <AlignmentToolbar
+          value={align}
+          onChange={newAlign => setAttributes({ align: newAlign })}
+        />
+      </BlockControls>
+    ),
     isSelected && (
       <InspectorControls key={"inspector"}>
         <PanelBody
@@ -281,6 +332,28 @@ const edit = props => {
             className="premium-panel-body"
             initialOpen={false}
           >
+            <SelectControl
+              label={__("Icon Position")}
+              options={ICON_POS}
+              value={iconPos}
+              onChange={newValue => setAttributes({ iconPos: newValue })}
+            />
+            {"inline" === iconPos && (
+              <Fragment>
+                <SelectControl
+                  label={__("Horizontal Position")}
+                  options={ICON_HPOS}
+                  value={iconHPos}
+                  onChange={newValue => setAttributes({ iconHPos: newValue })}
+                />
+                <SelectControl
+                  label={__("Vertical Position")}
+                  options={ICON_VPOS}
+                  value={iconVPos}
+                  onChange={newValue => setAttributes({ iconVPos: newValue })}
+                />
+              </Fragment>
+            )}
             <SelectControl
               label={__("Icon Type")}
               options={imgIcon}
@@ -342,6 +415,7 @@ const edit = props => {
                   value={iconImgId}
                   render={({ open }) => (
                     <IconButton
+                      className="premium-media-uplpad-btn"
                       label={__("Change Image")}
                       icon="edit"
                       onClick={open}
@@ -354,7 +428,7 @@ const edit = props => {
                   label={__("Border Radius (PX)")}
                   value={iconRadius}
                   onChange={newValue =>
-                    setAttributes({ iconRadius: newValue || "0" })
+                    setAttributes({ iconRadius: newValue || 0 })
                   }
                 />
               </Fragment>
@@ -370,9 +444,7 @@ const edit = props => {
               value={iconSize}
               min="1"
               max="200"
-              onChange={newValue =>
-                setAttributes({ iconSize: newValue || "30" })
-              }
+              onChange={newValue => setAttributes({ iconSize: newValue || 30 })}
             />
           </PanelBody>
         )}
@@ -443,16 +515,18 @@ const edit = props => {
               horizontal={titleShadowHorizontal}
               vertical={titleShadowVertical}
               onChangeColor={newColor =>
-                setAttributes({ titleShadowColor: newColor || "transparent" })
+                setAttributes({
+                  titleShadowColor: newColor.hex || "transparent"
+                })
               }
               onChangeBlur={newBlur =>
-                setAttributes({ titleShadowBlur: newBlur || "0" })
+                setAttributes({ titleShadowBlur: newBlur || 0 })
               }
               onChangehHorizontal={newValue =>
-                setAttributes({ titleShadowHorizontal: newValue || "0" })
+                setAttributes({ titleShadowHorizontal: newValue || 0 })
               }
               onChangeVertical={newValue =>
-                setAttributes({ titleShadowVertical: newValue || "0" })
+                setAttributes({ titleShadowVertical: newValue || 0 })
               }
             />
             <PremiumMargin
@@ -461,12 +535,12 @@ const edit = props => {
               marginBottom={titleMarginB}
               onChangeMarTop={value =>
                 setAttributes({
-                  titleMarginT: value || "0"
+                  titleMarginT: value || 0
                 })
               }
               onChangeMarBottom={value =>
                 setAttributes({
-                  titleMarginB: value || "0"
+                  titleMarginB: value || 0
                 })
               }
             />
@@ -589,7 +663,7 @@ const edit = props => {
                       value={btnColor}
                       onChange={newValue =>
                         setAttributes({
-                          btnColor: newValue || "000"
+                          btnColor: newValue || "#000"
                         })
                       }
                       allowReset={true}
@@ -651,7 +725,7 @@ const edit = props => {
                 setAttributes({ btnBorderWidth: newWidth })
               }
               onChangeColor={colorValue =>
-                setAttributes({ btnBorderColor: colorValue })
+                setAttributes({ btnBorderColor: colorValue.hex })
               }
               onChangeRadius={newrRadius =>
                 setAttributes({ btnBorderRadius: newrRadius })
@@ -666,7 +740,7 @@ const edit = props => {
               position={btnShadowPosition}
               onChangeColor={newColor =>
                 setAttributes({
-                  btnShadowColor: newColor || "transparent"
+                  btnShadowColor: newColor.hex || "transparent"
                 })
               }
               onChangeBlur={newBlur =>
@@ -723,14 +797,6 @@ const edit = props => {
           className="premium-panel-body"
           initialOpen={false}
         >
-          <p>{__("Align")}</p>
-          <Toolbar
-            controls={ALIGNS.map(contentAlign => ({
-              icon: "editor-align" + contentAlign,
-              isActive: contentAlign === align,
-              onClick: () => setAttributes({ align: contentAlign })
-            }))}
-          />
           <Fragment>
             <p>{__("Background Color")}</p>
             <ColorPalette
@@ -780,7 +846,7 @@ const edit = props => {
             onChangeType={newType => setAttributes({ borderType: newType })}
             onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
             onChangeColor={colorValue =>
-              setAttributes({ borderColor: colorValue })
+              setAttributes({ borderColor: colorValue.hex })
             }
             onChangeRadius={newrRadius =>
               setAttributes({ borderRadius: newrRadius })
@@ -795,7 +861,7 @@ const edit = props => {
             position={shadowPosition}
             onChangeColor={newColor =>
               setAttributes({
-                shadowColor: newColor || "transparent"
+                shadowColor: newColor.hex || "transparent"
               })
             }
             onChangeBlur={newBlur =>
@@ -815,7 +881,7 @@ const edit = props => {
             }
             onChangePosition={newValue =>
               setAttributes({
-                shadowPosition: newValue || 0
+                shadowPosition: newValue
               })
             }
           />
@@ -829,7 +895,7 @@ const edit = props => {
             position={hoverShadowPosition}
             onChangeColor={newColor =>
               setAttributes({
-                hoverShadowColor: newColor
+                hoverShadowColor: newColor.hex
               })
             }
             onChangeBlur={newBlur =>
@@ -906,6 +972,7 @@ const edit = props => {
                 paddingL: value || 0
               })
             }
+            selectedUnit={paddingU}
             onChangePadSizeUnit={newvalue =>
               setAttributes({ paddingU: newvalue })
             }
@@ -914,8 +981,8 @@ const edit = props => {
       </InspectorControls>
     ),
     <div
-      id={`${className}-${id}`}
-      className={`${className}`}
+      id={`${mainClasses}-${id}`}
+      className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
       style={{
         textAlign: align,
         border: borderType,
@@ -961,17 +1028,19 @@ const edit = props => {
         />
       )}
       {iconChecked && (
-        <div className={`${className}__icon_wrap`}>
+        <div
+          className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}
+        >
           {"icon" === iconImage && (
             <Fragment>
               {iconType === "fa" && 1 != FontAwesomeEnabled && (
-                <p className={`${className}__alert`}>
+                <p className={`premium-icon-box__alert`}>
                   {__("Please Enable Font Awesome Icons from Plugin settings")}
                 </p>
               )}
               {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
                 <i
-                  className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
+                  className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
                   style={{
                     color: iconColor,
                     backgroundColor: iconBackColor,
@@ -983,7 +1052,7 @@ const edit = props => {
           )}
           {"image" === iconImage && iconImgUrl && (
             <img
-              className={`${className}__icon premium-icon__${hoverEffect}`}
+              className={`premium-icon-box__icon premium-icon__${hoverEffect}`}
               src={`${iconImgUrl}`}
               alt="Image Icon"
               style={{
@@ -995,100 +1064,102 @@ const edit = props => {
           )}
         </div>
       )}
-      {titleChecked && titleText && (
-        <div
-          className={`${className}__title_wrap`}
-          style={{
-            marginTop: titleMarginT,
-            marginBottom: titleMarginB
-          }}
-        >
-          <RichText
-            tagName={titleTag.toLowerCase()}
-            className={`${className}__title`}
-            onChange={newText => setAttributes({ titleText: newText })}
-            placeholder={__("Awesome Title")}
-            value={titleText}
+      <div className={`premium-icon-box__content_wrap`}>
+        {titleChecked && titleText && (
+          <div
+            className={`premium-icon-box__title_wrap`}
             style={{
-              color: titleColor,
-              fontSize: titleSize + "px",
-              fontFamily: titleFont,
-              letterSpacing: titleLetter + "px",
-              textTransform: titleUpper ? "uppercase" : "none",
-              fontStyle: titleStyle,
-              fontWeight: titleWeight,
-              textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-              lineHeight: titleLine + "px"
+              marginTop: titleMarginT,
+              marginBottom: titleMarginB
             }}
-            keepPlaceholderOnFocus
-          />
-        </div>
-      )}
-      {descChecked && descText && (
-        <div
-          className={`${className}__desc_wrap`}
-          style={{
-            marginTop: descMarginT,
-            marginBottom: descMarginB
-          }}
-        >
-          <RichText
-            tagName="p"
-            className={`${className}__desc`}
-            value={descText}
-            isSelected={false}
-            placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
-            onChange={newText => setAttributes({ descText: newText })}
-            style={{
-              color: descColor,
-              fontSize: descSize + "px",
-              fontFamily: descFont,
-              lineHeight: descLine + "px",
-              fontWeight: descWeight
-            }}
-            keepPlaceholderOnFocus
-          />
-        </div>
-      )}
-      {btnChecked && btnText && (
-        <div
-          className={`${className}__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
-          style={{
-            marginTop: btnMarginT,
-            marginBottom: btnMarginB
-          }}
-        >
-          <RichText
-            tagName="a"
-            className={`${className}__btn premium-button`}
-            onChange={newText => setAttributes({ btnText: newText })}
-            placeholder={__("Click Here")}
-            value={btnText}
-            style={{
-              color: btnColor,
-              backgroundColor: btnBack,
-              fontSize: btnSize + "px",
-              letterSpacing: btnLetter + "px",
-              textTransform: btnUpper ? "uppercase" : "none",
-              fontStyle: btnStyle,
-              fontWeight: btnWeight,
-              border: btnBorderType,
-              borderWidth: btnBorderWidth + "px",
-              borderRadius: btnBorderRadius + "px",
-              borderColor: btnBorderColor,
-              padding: btnPadding + btnPaddingU,
-              boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
-            }}
-            keepPlaceholderOnFocus
-          />
-          {isSelected && (
-            <URLInput
-              value={btnLink}
-              onChange={newLink => setAttributes({ btnLink: newLink })}
+          >
+            <RichText
+              tagName={titleTag.toLowerCase()}
+              className={`premium-icon-box__title`}
+              onChange={newText => setAttributes({ titleText: newText })}
+              placeholder={__("Awesome Title")}
+              value={titleText}
+              style={{
+                color: titleColor,
+                fontSize: titleSize + "px",
+                fontFamily: titleFont,
+                letterSpacing: titleLetter + "px",
+                textTransform: titleUpper ? "uppercase" : "none",
+                fontStyle: titleStyle,
+                fontWeight: titleWeight,
+                textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
+                lineHeight: titleLine + "px"
+              }}
+              keepPlaceholderOnFocus
             />
-          )}
-        </div>
-      )}
+          </div>
+        )}
+        {descChecked && descText && (
+          <div
+            className={`premium-icon-box__desc_wrap`}
+            style={{
+              marginTop: descMarginT,
+              marginBottom: descMarginB
+            }}
+          >
+            <RichText
+              tagName="p"
+              className={`premium-icon-box__desc`}
+              value={descText}
+              isSelected={false}
+              placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
+              onChange={newText => setAttributes({ descText: newText })}
+              style={{
+                color: descColor,
+                fontSize: descSize + "px",
+                fontFamily: descFont,
+                lineHeight: descLine + "px",
+                fontWeight: descWeight
+              }}
+              keepPlaceholderOnFocus
+            />
+          </div>
+        )}
+        {btnChecked && btnText && (
+          <div
+            className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
+            style={{
+              marginTop: btnMarginT,
+              marginBottom: btnMarginB
+            }}
+          >
+            <RichText
+              tagName="a"
+              className={`premium-icon-box__btn premium-button`}
+              onChange={newText => setAttributes({ btnText: newText })}
+              placeholder={__("Click Here")}
+              value={btnText}
+              style={{
+                color: btnColor,
+                backgroundColor: btnBack,
+                fontSize: btnSize + "px",
+                letterSpacing: btnLetter + "px",
+                textTransform: btnUpper ? "uppercase" : "none",
+                fontStyle: btnStyle,
+                fontWeight: btnWeight,
+                border: btnBorderType,
+                borderWidth: btnBorderWidth + "px",
+                borderRadius: btnBorderRadius + "px",
+                borderColor: btnBorderColor,
+                padding: btnPadding + btnPaddingU,
+                boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
+              }}
+              keepPlaceholderOnFocus
+            />
+            {isSelected && (
+              <URLInput
+                value={btnLink}
+                onChange={newLink => setAttributes({ btnLink: newLink })}
+              />
+            )}
+          </div>
+        )}
+      </div>
     </div>
   ];
 };

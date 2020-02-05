@@ -3,9 +3,9 @@ Contributors: leap13
 Tags: gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks
 Donate link: http://leap13.com
 Requires at least: 4.5
-Tested up to: 5.1.1
+Tested up to: 5.3.2
 Requires PHP: 5.4
-Stable tag: 1.6.3
+Stable tag: 1.7.9
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -58,6 +58,76 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+
+= 1.7.9 =
+
+- Tweak: Size units user interface improved.
+- Fixed: Stretch Section option not working in some themes.
+- Fixed: Font Awesome Icons not working on frontend in some themes.
+
+= 1.7.8 =
+
+- Tweak: Enhanced Icon Box block content align option.
+- Fixed: CountUp Block image icon error.
+
+= 1.7.7 =
+
+- Tweak: Load Google maps API script only if API key is set.
+
+= 1.7.6 =
+
+- Tweak: Improved plugin security.
+
+= 1.7.5 =
+
+- Fixed: Security issues fixed.
+
+= 1.7.4 =
+
+- Fixed: `This block has encountered an error and cannot be previewed` when adding Pricing Table to reusable blocks.
+- Fixed: `The editor has encountered an unexpected error` with Text Shadow option.
+
+= 1.7.3 =
+
+- Tweak: Added `Stroke` option in Dual Heading block.
+
+= 1.7.2 =
+
+- Fixed: Error `The editor has encountered an unexpected error.` with `Text Shadow` option.
+
+= 1.7.1 =
+
+- Fixed: Border,Box Shadow and Text Shadow Popup close when trying to insert a custom color.
+
+= 1.7.0 =
+
+- Fixed: Additional CSS Classes are not rendered on the editor page.
+
+= 1.6.9 =
+
+- Tweak: WPML Compitablity for all blocks.
+- Fixed: Error `This block contains unexpected or invalid content` in Icon Box block.
+
+= 1.6.8 =
+
+- Tweak: Added `Padding` option for container in Banner block.
+
+= 1.6.7 =
+
+- Tweak: Added `Vertical/Horizontal Position` option for icon in Icon Box block.
+
+= 1.6.6 =
+
+- Tweak: Added `Padding` options group control for container in Testimonials block.
+
+= 1.6.5 =
+
+- Tweak: Added `Border` options group control for container in Counter block.
+
+= 1.6.4 =
+
+- Tweak: Added `Align` option for Features List in Pricing Table block.
+- Tweak: Changed `Spacings` from tab to dropdown in Pricing Table block to enhance editing experience.
 
 = 1.6.3 =
 
@@ -135,7 +205,7 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 = 1.4.5 =
 
-- Tweak: Change `Colors` submenu to dropdown to enhance editing experince.
+- Tweak: Change `Colors` submenu to dropdown to enhance editing experience.
 - Tweak: Added `Text Shadow` option for Description Text in Banner block.
 
 = 1.4.4 =
