@@ -21,8 +21,7 @@ const {
 } = wp.editor;
 
 const CONTENT = [
-    ["core/paragraph", { content: __("Insert Your Content Here") }],
-    ["core/paragraph", { content: __("Insert Your Content Here") }]
+    ["core/paragraph", { content: __("Insert your text or select a block ") }]
 ];
 
 const edit = props => {
