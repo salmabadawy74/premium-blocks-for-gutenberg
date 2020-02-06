@@ -114,7 +114,6 @@ const edit = props => {
         titleshadowVertical,
         items,
         hoverEffectPerson,
-        selectedSocialMediaIcon,
         effectPersonStyle,
         multiPersonContent
     } = props.attributes;

@@ -41433,7 +41433,6 @@ var save = function save(props) {
         socialIconSize = _props$attributes.socialIconSize,
         socialIconColor = _props$attributes.socialIconColor,
         socialIconHoverColor = _props$attributes.socialIconHoverColor,
-        socialIconBackgroundColor = _props$attributes.socialIconBackgroundColor,
         defaultIconColor = _props$attributes.defaultIconColor,
         iconMarginT = _props$attributes.iconMarginT,
         iconMarginB = _props$attributes.iconMarginB,
@@ -41472,7 +41471,6 @@ var save = function save(props) {
         items = _props$attributes.items,
         hoverEffectPerson = _props$attributes.hoverEffectPerson,
         effectPersonStyle = _props$attributes.effectPersonStyle,
-        selectedSocialMediaIcon = _props$attributes.selectedSocialMediaIcon,
         multiPersonContent = _props$attributes.multiPersonContent;
 
 
@@ -41768,7 +41766,6 @@ var edit = function edit(props) {
         titleshadowVertical = _props$attributes.titleshadowVertical,
         items = _props$attributes.items,
         hoverEffectPerson = _props$attributes.hoverEffectPerson,
-        selectedSocialMediaIcon = _props$attributes.selectedSocialMediaIcon,
         effectPersonStyle = _props$attributes.effectPersonStyle,
         multiPersonContent = _props$attributes.multiPersonContent;
 

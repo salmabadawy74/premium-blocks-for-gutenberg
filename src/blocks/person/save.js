@@ -43,7 +43,6 @@ const save = props => {
         socialIconSize,
         socialIconColor,
         socialIconHoverColor,
-        socialIconBackgroundColor,
         defaultIconColor,
         iconMarginT,
         iconMarginB,
@@ -82,7 +81,6 @@ const save = props => {
         items,
         hoverEffectPerson,
         effectPersonStyle,
-        selectedSocialMediaIcon,
         multiPersonContent
     } = props.attributes;
 
