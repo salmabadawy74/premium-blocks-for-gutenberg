@@ -41088,16 +41088,6 @@ var personAttrs = (_personAttrs = {
         type: "string",
         default: "center"
     },
-    personLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-person"
-    },
-    personTarget: {
-        type: "boolean",
-        default: false
-    },
     personImgId: {
         type: "string"
     },
@@ -41117,19 +41107,6 @@ var personAttrs = (_personAttrs = {
     },
     imgBorderColor: {
         type: "string"
-    },
-    priceBack: {
-        type: "string"
-    },
-    priceMarginT: {
-        type: "number"
-    },
-    priceMarginB: {
-        type: "number",
-        default: 10
-    },
-    pricePadding: {
-        type: "number"
     },
     name: {
         type: "string",
@@ -41215,22 +41192,6 @@ var personAttrs = (_personAttrs = {
         type: "boolean",
         default: false
     },
-    facebook: {
-        type: "string",
-        default: "dashicons dashicons-facebook"
-    },
-    twitter: {
-        type: "string",
-        default: "dashicons dashicons-twitter"
-    },
-    instagram: {
-        type: "string",
-        default: "fa fa-instagram"
-    },
-    youtube: {
-        type: "string",
-        default: "fa fa-youtube-play"
-    },
     socialIconSize: {
         type: "number",
         default: 20
@@ -41246,7 +41207,8 @@ var personAttrs = (_personAttrs = {
         type: "string"
     },
     socialIconBackgroundColor: {
-        type: "string"
+        type: "string",
+        default: "#00aced"
     },
     defaultIconColor: {
         type: "boolean",
@@ -41312,8 +41274,6 @@ var personAttrs = (_personAttrs = {
     type: "string"
 }), _defineProperty(_personAttrs, "titleHoverColor", {
     type: "string"
-}), _defineProperty(_personAttrs, "backColor", {
-    type: "string"
 }), _defineProperty(_personAttrs, "backHoverColor", {
     type: "string"
 }), _defineProperty(_personAttrs, "slideColor", {
@@ -41321,8 +41281,8 @@ var personAttrs = (_personAttrs = {
 }), _defineProperty(_personAttrs, "textFontFamily", {
     type: "string"
 }), _defineProperty(_personAttrs, "multiPersonChecked", {
-    type: "boolean",
-    default: false
+    type: "number",
+    default: 1
 }), _defineProperty(_personAttrs, "nameStyle", {
     type: "string"
 }), _defineProperty(_personAttrs, "nameUpper", {
@@ -41401,6 +41361,12 @@ var personAttrs = (_personAttrs = {
 }), _defineProperty(_personAttrs, "selectedSocialMediaIcon", {
     type: "string"
     // default: "dashicons dashicons-admin-site"
+}), _defineProperty(_personAttrs, "effectPersonStyle", {
+    type: "string",
+    default: "effect1"
+}), _defineProperty(_personAttrs, "multiPersonContent", {
+    type: "array",
+    default: ["hh"]
 }), _personAttrs);
 
 registerBlockType("premium/person", {
@@ -41505,7 +41471,9 @@ var save = function save(props) {
         titleshadowVertical = _props$attributes.titleshadowVertical,
         items = _props$attributes.items,
         hoverEffectPerson = _props$attributes.hoverEffectPerson,
-        selectedSocialMediaIcon = _props$attributes.selectedSocialMediaIcon;
+        effectPersonStyle = _props$attributes.effectPersonStyle,
+        selectedSocialMediaIcon = _props$attributes.selectedSocialMediaIcon,
+        multiPersonContent = _props$attributes.multiPersonContent;
 
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-person');
@@ -41515,10 +41483,9 @@ var save = function save(props) {
             'div',
             null,
             items.map(function (value) {
-                return wp.element.createElement('i', { className: 'premium-person__socialIcon ' + (value == "youtube" ? "fa fa-youtube-play" : 'dashicons dashicons-' + value) + '  premium-person__' + socialIconHoverColor,
+                return wp.element.createElement('i', { className: 'premium-person__socialIcon ' + (defaultIconColor ? value : "") + ' ' + (value == "youtube" ? "fa fa-youtube-play" : 'dashicons dashicons-' + value) + '  premium-person__' + socialIconHoverColor,
                     style: {
                         color: defaultIconColor ? "#ffffff" : socialIconColor,
-                        background: defaultIconColor ? '' + (value == "youtube" ? "red" : '' + (value == "instagram" ? 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)' : '' + (value == "twitter" ? "#00aced" : "#3b5998"))) : socialIconBackgroundColor,
                         fontSize: (socialIconSize || 50) + iconSizeUnit,
                         border: borderTypeIcon,
                         borderWidth: borderWidthIcon + "px",
@@ -41528,6 +41495,119 @@ var save = function save(props) {
                         marginBottom: iconMarginB
                     }
                 });
+            })
+        );
+    };
+
+    var content = function content() {
+        return wp.element.createElement(
+            'div',
+            { className: '' + (multiPersonChecked > 1 ? 'premium-person__' + multiPersonChecked : "")
+            },
+            ' ',
+            multiPersonContent.map(function (value) {
+                return wp.element.createElement(
+                    'div',
+                    { className: 'premium-person__inner premium-persson__min premium-person__' + effectPersonStyle + ' premium-person__' + hoverEffectPerson },
+                    wp.element.createElement(
+                        'div',
+                        {
+                            className: 'premium-person__img_wrap'
+                        },
+                        personImgUrl && wp.element.createElement('img', {
+                            className: 'premium-person__img',
+                            src: '' + personImgUrl,
+                            alt: 'Person',
+                            style: {
+
+                                borderWidth: imgBorder + "px",
+                                borderRadius: imgRadius,
+                                borderColor: imgBorderColor,
+                                width: imgSize + "px",
+                                height: imgSize + "px",
+                                filter: 'brightness( ' + bright + '% ) contrast( ' + contrast + '% ) saturate( ' + saturation + '% ) blur( ' + blur + 'px ) hue-rotate( ' + hue + 'deg )'
+                            }
+                        }),
+                        !personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_default_image__["a" /* default */], { className: className })
+                    ),
+                    wp.element.createElement(
+                        'div',
+                        {
+                            className: 'premium-person__info'
+                        },
+                        wp.element.createElement(
+                            'div',
+                            { className: 'premium-person__name_wrap' },
+                            name && wp.element.createElement(
+                                'span',
+                                {
+                                    className: 'premium-person__name',
+                                    style: {
+                                        color: nameColor,
+                                        fontSize: nameSize + "px",
+                                        fontWeight: nameWeight,
+                                        alignSelf: nameV,
+                                        letterSpacing: nameLetter + "px",
+                                        lineHeight: nameLine + "px",
+                                        fontStyle: nameStyle,
+                                        textTransform: nameUpper ? "uppercase" : "none",
+                                        textShadow: nameshadowHorizontal + 'px ' + nameshadowVertical + 'px ' + nameshadowBlur + 'px ' + nameshadowColor
+                                    }
+                                },
+                                name
+                            )
+                        ),
+                        wp.element.createElement(
+                            'div',
+                            { className: 'premium-person__title_wrap' },
+                            title && wp.element.createElement(
+                                'span',
+                                {
+                                    className: 'premium-person__title',
+                                    style: {
+                                        color: titleColor,
+                                        fontSize: titleSize + "px",
+                                        fontWeight: titleWeight,
+                                        alignSelf: titleV,
+                                        letterSpacing: titleLetter + "px",
+                                        lineHeight: titleLine + "px",
+                                        fontStyle: titleStyle,
+                                        textTransform: titleUpper ? "uppercase" : "none",
+                                        textShadow: titleshadowHorizontal + 'px ' + titleshadowVertical + 'px ' + titleshadowBlur + 'px ' + titleshadowColor
+                                    }
+                                },
+                                title
+                            )
+                        ),
+                        wp.element.createElement(
+                            'div',
+                            { className: 'premium-person__desc_wrap' },
+                            DescText && wp.element.createElement(
+                                'span',
+                                {
+                                    className: 'premium-person__desc',
+                                    style: {
+                                        color: descColor,
+                                        fontSize: descSize + "px",
+                                        fontWeight: descWeight,
+                                        alignSelf: descV,
+                                        letterSpacing: descLetter + "px",
+                                        lineHeight: descLine + "px",
+                                        fontStyle: descStyle,
+                                        textTransform: descUpper ? "uppercase" : "none",
+                                        textShadow: descshadowHorizontal + 'px ' + descshadowVertical + 'px ' + descshadowBlur + 'px ' + descshadowColor
+                                    }
+                                },
+                                DescText
+                            )
+                        ),
+                        socialIcon && wp.element.createElement(
+                            'div',
+                            null,
+                            socialIconfn()
+                        )
+                    )
+                );
             })
         );
     };
@@ -41547,101 +41627,7 @@ var save = function save(props) {
                     __html: ['#premium-person-wrap-' + id + ' .premium-person:hover {', 'color: ' + nameHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-person-wrap-' + id + '.premium-person__none .premium-person:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-person-wrap-' + id + '.premium-person__slide .premium-person::before,', '#premium-person-wrap-' + id + '.premium-person__shutter .premium-person::before,', '#premium-person-wrap-' + id + '.premium-person__radial .premium-person::before {', 'background-color: ' + slideColor, "}"].join("\n")
                 }
             }),
-            wp.element.createElement(
-                'div',
-                { className: 'premium-person__img_wrap premium-person__' + hoverEffectPerson },
-                personImgUrl && wp.element.createElement('img', {
-                    className: 'premium-person__img',
-                    src: '' + personImgUrl,
-                    alt: 'Person',
-                    style: {
-                        borderWidth: imgBorder + "px",
-                        borderRadius: imgRadius,
-                        borderColor: imgBorderColor,
-                        width: imgSize + "px",
-                        height: imgSize + "px",
-                        filter: 'brightness( ' + bright + '% ) contrast( ' + contrast + '% ) saturate( ' + saturation + '% ) blur( ' + blur + 'px ) hue-rotate( ' + hue + 'deg )'
-                    }
-                }),
-                !personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_default_image__["a" /* default */], { className: className })
-            ),
-            wp.element.createElement(
-                'div',
-                {
-                    className: 'premium-person__name_wrap'
-                },
-                wp.element.createElement(
-                    'div',
-                    null,
-                    name && wp.element.createElement(
-                        'span',
-                        {
-                            className: 'premium-person__name',
-                            style: {
-                                color: nameColor,
-                                fontSize: nameSize + "px",
-                                fontWeight: nameWeight,
-                                alignSelf: nameV,
-                                letterSpacing: nameLetter + "px",
-                                lineHeight: nameLine + "px",
-                                fontStyle: nameStyle,
-                                textTransform: nameUpper ? "uppercase" : "none",
-                                textShadow: nameshadowHorizontal + 'px ' + nameshadowVertical + 'px ' + nameshadowBlur + 'px ' + nameshadowColor
-                            }
-                        },
-                        name
-                    )
-                ),
-                wp.element.createElement(
-                    'div',
-                    null,
-                    title && wp.element.createElement(
-                        'span',
-                        {
-                            className: 'premium-person__title',
-                            style: {
-                                color: titleColor,
-                                fontSize: titleSize + "px",
-                                fontWeight: titleWeight,
-                                alignSelf: titleV,
-                                letterSpacing: titleLetter + "px",
-                                lineHeight: titleLine + "px",
-                                fontStyle: titleStyle,
-                                textTransform: titleUpper ? "uppercase" : "none",
-                                textShadow: titleshadowHorizontal + 'px ' + titleshadowVertical + 'px ' + titleshadowBlur + 'px ' + titleshadowColor
-                            }
-                        },
-                        title
-                    )
-                ),
-                wp.element.createElement(
-                    'div',
-                    null,
-                    DescText && wp.element.createElement(
-                        'span',
-                        {
-                            className: 'premium-person__desc',
-                            style: {
-                                color: descColor,
-                                fontSize: descSize + "px",
-                                fontWeight: descWeight,
-                                alignSelf: descV,
-                                letterSpacing: descLetter + "px",
-                                lineHeight: descLine + "px",
-                                fontStyle: descStyle,
-                                textTransform: descUpper ? "uppercase" : "none",
-                                textShadow: descshadowHorizontal + 'px ' + descshadowVertical + 'px ' + descshadowBlur + 'px ' + descshadowColor
-                            }
-                        },
-                        DescText
-                    )
-                ),
-                socialIcon && wp.element.createElement(
-                    'div',
-                    null,
-                    socialIconfn()
-                )
-            )
+            content()
         )
     );
 };
@@ -41782,7 +41768,9 @@ var edit = function edit(props) {
         titleshadowVertical = _props$attributes.titleshadowVertical,
         items = _props$attributes.items,
         hoverEffectPerson = _props$attributes.hoverEffectPerson,
-        selectedSocialMediaIcon = _props$attributes.selectedSocialMediaIcon;
+        selectedSocialMediaIcon = _props$attributes.selectedSocialMediaIcon,
+        effectPersonStyle = _props$attributes.effectPersonStyle,
+        multiPersonContent = _props$attributes.multiPersonContent;
 
 
     var HOVER = [{
@@ -41812,6 +41800,14 @@ var edit = function edit(props) {
     }, {
         value: "translate",
         label: __("Translate")
+    }];
+
+    var EFFECTS = [{
+        value: "effect1",
+        label: __("Style 1")
+    }, {
+        value: "effect2",
+        label: __("Style 2")
     }];
 
     var iconsList = [{
@@ -41887,10 +41883,12 @@ var edit = function edit(props) {
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-person");
 
     var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_8_react_sortable_hoc__["b" /* SortableElement */])(function (_ref) {
-        var value = _ref.value;
+        var index = _ref.index,
+            onRemove = _ref.onRemove,
+            value = _ref.value;
         return wp.element.createElement(
             "li",
-            null,
+            { tabIndex: 0 },
             wp.element.createElement(
                 "span",
                 { className: "premium-person__socialIcon__container" },
@@ -41905,28 +41903,36 @@ var edit = function edit(props) {
                         value
                     )
                 ),
-                wp.element.createElement("span", { className: "premium-person__socialIcon__trashicon fa fa-trash", onclick: deleteSocialIcon(value) })
+                wp.element.createElement("button", { className: "premium-person__socialIcon__trashicon fa fa-trash", onClick: function onClick() {
+                        return onRemove(value);
+                    } })
             )
         );
     });
 
-    var deleteSocialIcon = function deleteSocialIcon(value) {
-        console.log(value);
-        // let newData = items.filter(b => {
-        //     return b!= value
-        //   })
-        //   setAttributes({ items: newData });
-        //   console.log(newData);
+    var shouldCancelStart = function shouldCancelStart(e) {
+        // Prevent sorting from being triggered if target is input or button
+        if (['input', 'button'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+            return true; // Return true to cancel sorting
+        }
+    };
+
+    var _onRemove = function _onRemove(value) {
+        var newData = items.filter(function (b) {
+            return b != value;
+        });
+        setAttributes({ items: newData });
     };
 
     var SortableList = Object(__WEBPACK_IMPORTED_MODULE_8_react_sortable_hoc__["a" /* SortableContainer */])(function (_ref2) {
-        var items = _ref2.items;
+        var items = _ref2.items,
+            onRemove = _ref2.onRemove;
 
         return wp.element.createElement(
             "ul",
             null,
             items.map(function (value, index) {
-                return wp.element.createElement(SortableItem, { key: "item-" + value, index: index, value: value });
+                return wp.element.createElement(SortableItem, { key: "item-" + value, index: index, value: value, onRemove: onRemove });
             })
         );
     });
@@ -41935,10 +41941,9 @@ var edit = function edit(props) {
             "div",
             null,
             items.map(function (value) {
-                return wp.element.createElement("i", { className: "premium-person__socialIcon " + (value == "youtube" ? "fa fa-youtube-play" : "fa fa-" + value) + " premium-person__" + socialIconHoverColor,
+                return wp.element.createElement("i", { className: "premium-person__socialIcon " + (defaultIconColor ? value : "") + " " + (value == "youtube" ? "fa fa-youtube-play" : "fa fa-" + value) + " premium-person__" + socialIconHoverColor,
                     style: {
                         color: defaultIconColor ? "#ffffff" : socialIconColor,
-                        background: defaultIconColor ? "" + (value == "youtube" ? "red" : "" + (value == "instagram" ? "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)" : "" + (value == "twitter" ? "#00aced" : "#3b5998"))) : socialIconBackgroundColor,
                         fontSize: (socialIconSize || 50) + iconSizeUnit,
                         border: borderTypeIcon,
                         borderWidth: borderWidthIcon + "px",
@@ -41952,6 +41957,119 @@ var edit = function edit(props) {
         );
     };
 
+    var content = function content() {
+        return wp.element.createElement(
+            "div",
+            { className: "" + (multiPersonChecked > 1 ? "premium-person__" + multiPersonChecked : "")
+            },
+            " ",
+            multiPersonContent.map(function (value) {
+                return wp.element.createElement(
+                    "div",
+                    { className: "premium-person__inner premium-persson__min premium-person__" + effectPersonStyle + " premium-person__" + hoverEffectPerson },
+                    wp.element.createElement(
+                        "div",
+                        {
+                            className: "premium-person__img_wrap"
+                        },
+                        personImgUrl && wp.element.createElement("img", {
+                            className: "premium-person__img",
+                            src: "" + personImgUrl,
+                            alt: "Person",
+                            style: {
+
+                                borderWidth: imgBorder + "px",
+                                borderRadius: imgRadius,
+                                borderColor: imgBorderColor,
+                                width: imgSize + "px",
+                                height: imgSize + "px",
+                                filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+                            }
+                        }),
+                        !personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_default_image__["a" /* default */], { className: className })
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        {
+                            className: "premium-person__info"
+                        },
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-person__name_wrap" },
+                            name && wp.element.createElement(
+                                "span",
+                                {
+                                    className: "premium-person__name",
+                                    style: {
+                                        color: nameColor,
+                                        fontSize: nameSize + "px",
+                                        fontWeight: nameWeight,
+                                        alignSelf: nameV,
+                                        letterSpacing: nameLetter + "px",
+                                        lineHeight: nameLine + "px",
+                                        fontStyle: nameStyle,
+                                        textTransform: nameUpper ? "uppercase" : "none",
+                                        textShadow: nameshadowHorizontal + "px " + nameshadowVertical + "px " + nameshadowBlur + "px " + nameshadowColor
+                                    }
+                                },
+                                name
+                            )
+                        ),
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-person__title_wrap" },
+                            title && wp.element.createElement(
+                                "span",
+                                {
+                                    className: "premium-person__title",
+                                    style: {
+                                        color: titleColor,
+                                        fontSize: titleSize + "px",
+                                        fontWeight: titleWeight,
+                                        alignSelf: titleV,
+                                        letterSpacing: titleLetter + "px",
+                                        lineHeight: titleLine + "px",
+                                        fontStyle: titleStyle,
+                                        textTransform: titleUpper ? "uppercase" : "none",
+                                        textShadow: titleshadowHorizontal + "px " + titleshadowVertical + "px " + titleshadowBlur + "px " + titleshadowColor
+                                    }
+                                },
+                                title
+                            )
+                        ),
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-person__desc_wrap" },
+                            DescText && wp.element.createElement(
+                                "span",
+                                {
+                                    className: "premium-person__desc",
+                                    style: {
+                                        color: descColor,
+                                        fontSize: descSize + "px",
+                                        fontWeight: descWeight,
+                                        alignSelf: descV,
+                                        letterSpacing: descLetter + "px",
+                                        lineHeight: descLine + "px",
+                                        fontStyle: descStyle,
+                                        textTransform: descUpper ? "uppercase" : "none",
+                                        textShadow: descshadowHorizontal + "px " + descshadowVertical + "px " + descshadowBlur + "px " + descshadowColor
+                                    }
+                                },
+                                DescText
+                            )
+                        ),
+                        socialIcon && wp.element.createElement(
+                            "div",
+                            null,
+                            socialIconfn()
+                        )
+                    )
+                );
+            })
+        );
+    };
+
     var onSortEnd = function onSortEnd(_ref3) {
         var oldIndex = _ref3.oldIndex,
             newIndex = _ref3.newIndex;
@@ -41961,7 +42079,7 @@ var edit = function edit(props) {
     };
 
     var addSocialIcon = function addSocialIcon(newsocial) {
-        var array = iconsList.map(function (i, index) {
+        var array = iconsList.map(function (i) {
             return i;
         }).filter(function (f) {
             return f.value == newsocial;
@@ -41976,6 +42094,11 @@ var edit = function edit(props) {
             });
             setAttributes({ items: filtered });
         }
+    };
+    var addMultiPerson = function addMultiPerson(newP) {
+        setAttributes({ multiPersonChecked: newP });
+        multiPersonContent.push(newP);
+        console.log(newP);
     };
 
     return [isSelected && "block" != personSize && wp.element.createElement(
@@ -41997,11 +42120,12 @@ var edit = function edit(props) {
                 className: "premium-panel-body",
                 initialOpen: false
             },
-            wp.element.createElement(ToggleControl, {
-                label: __("Multiple Persons"),
-                checked: multiPersonChecked,
-                onChange: function onChange(newValue) {
-                    return setAttributes({ multiPersonChecked: newValue });
+            wp.element.createElement(RangeControl, {
+                label: __("Person Number"),
+                value: multiPersonChecked
+                // onChange={newValue => setAttributes({ multiPersonChecked: newValue })}
+                , onChange: function onChange(value) {
+                    return addMultiPerson(value);
                 }
             }),
             wp.element.createElement(
@@ -42009,6 +42133,14 @@ var edit = function edit(props) {
                 null,
                 __("Enable this option if you need to add multiple persons")
             ),
+            wp.element.createElement(SelectControl, {
+                label: __("Style"),
+                value: effectPersonStyle,
+                onChange: function onChange(newEffect) {
+                    return setAttributes({ effectPersonStyle: newEffect });
+                },
+                options: EFFECTS
+            }),
             wp.element.createElement(SelectControl, {
                 label: __("Image Hover Effect"),
                 options: HOVER,
@@ -42120,14 +42252,14 @@ var edit = function edit(props) {
                     onChange: function onChange(value) {
                         return addSocialIcon(value);
                     },
-                    value: selectedSocialMediaIcon,
                     isMulti: false,
                     appendTo: "body",
                     noSelectedPlaceholder: __("Select Icon"),
-                    noIconPlaceholder: __("No icons found"),
-                    closeOnSelect: true
+                    noIconPlaceholder: __("No icons found")
                 }),
-                wp.element.createElement(SortableList, { items: items, onSortEnd: onSortEnd })
+                wp.element.createElement(SortableList, { items: items, onSortEnd: onSortEnd, onRemove: function onRemove(index) {
+                        return _onRemove(index);
+                    }, shouldCancelStart: shouldCancelStart })
             )
         ),
         wp.element.createElement(
@@ -42628,101 +42760,7 @@ var edit = function edit(props) {
                 __html: ["#premium-person-wrap-" + id + " .premium-person:hover {", "color: " + nameHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-person-wrap-" + id + ".premium-person__none .premium-person:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-person-wrap-" + id + ".premium-person__slide .premium-person::before,", "#premium-person-wrap-" + id + ".premium-person__shutter .premium-person::before,", "#premium-person-wrap-" + id + ".premium-person__radial .premium-person::before {", "background-color: " + slideColor, "}"].join("\n")
             }
         }),
-        wp.element.createElement(
-            "div",
-            { className: "premium-person__img_wrap premium-person__" + hoverEffectPerson },
-            personImgUrl && wp.element.createElement("img", {
-                className: "premium-person__img",
-                src: "" + personImgUrl,
-                alt: "Person",
-                style: {
-                    borderWidth: imgBorder + "px",
-                    borderRadius: imgRadius,
-                    borderColor: imgBorderColor,
-                    width: imgSize + "px",
-                    height: imgSize + "px",
-                    filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
-                }
-            }),
-            !personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_default_image__["a" /* default */], { className: className })
-        ),
-        wp.element.createElement(
-            "div",
-            {
-                className: "premium-person__name_wrap"
-            },
-            wp.element.createElement(
-                "div",
-                null,
-                name && wp.element.createElement(
-                    "span",
-                    {
-                        className: "premium-person__name",
-                        style: {
-                            color: nameColor,
-                            fontSize: nameSize + "px",
-                            fontWeight: nameWeight,
-                            alignSelf: nameV,
-                            letterSpacing: nameLetter + "px",
-                            lineHeight: nameLine + "px",
-                            fontStyle: nameStyle,
-                            textTransform: nameUpper ? "uppercase" : "none",
-                            textShadow: nameshadowHorizontal + "px " + nameshadowVertical + "px " + nameshadowBlur + "px " + nameshadowColor
-                        }
-                    },
-                    name
-                )
-            ),
-            wp.element.createElement(
-                "div",
-                null,
-                title && wp.element.createElement(
-                    "span",
-                    {
-                        className: "premium-person__title",
-                        style: {
-                            color: titleColor,
-                            fontSize: titleSize + "px",
-                            fontWeight: titleWeight,
-                            alignSelf: titleV,
-                            letterSpacing: titleLetter + "px",
-                            lineHeight: titleLine + "px",
-                            fontStyle: titleStyle,
-                            textTransform: titleUpper ? "uppercase" : "none",
-                            textShadow: titleshadowHorizontal + "px " + titleshadowVertical + "px " + titleshadowBlur + "px " + titleshadowColor
-                        }
-                    },
-                    title
-                )
-            ),
-            wp.element.createElement(
-                "div",
-                null,
-                DescText && wp.element.createElement(
-                    "span",
-                    {
-                        className: "premium-person__desc",
-                        style: {
-                            color: descColor,
-                            fontSize: descSize + "px",
-                            fontWeight: descWeight,
-                            alignSelf: descV,
-                            letterSpacing: descLetter + "px",
-                            lineHeight: descLine + "px",
-                            fontStyle: descStyle,
-                            textTransform: descUpper ? "uppercase" : "none",
-                            textShadow: descshadowHorizontal + "px " + descshadowVertical + "px " + descshadowBlur + "px " + descshadowColor
-                        }
-                    },
-                    DescText
-                )
-            ),
-            socialIcon && wp.element.createElement(
-                "div",
-                null,
-                socialIconfn()
-            )
-        )
+        content()
     )];
 };
 

@@ -25,16 +25,6 @@ const personAttrs = {
         type: "string",
         default: "center"
     },
-    personLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-person"
-    },
-    personTarget: {
-        type: "boolean",
-        default: false
-    },
     personImgId: {
         type: "string"
     },
@@ -54,19 +44,6 @@ const personAttrs = {
     },
     imgBorderColor: {
         type: "string"
-    },
-    priceBack: {
-        type: "string"
-    },
-    priceMarginT: {
-        type: "number"
-    },
-    priceMarginB: {
-        type: "number",
-        default: 10
-    },
-    pricePadding: {
-        type: "number"
     },
     name: {
         type: "string",
@@ -152,22 +129,6 @@ const personAttrs = {
         type: "boolean",
         default: false
     },
-    facebook: {
-        type: "string",
-        default: "dashicons dashicons-facebook"
-    },
-    twitter: {
-        type: "string",
-        default: "dashicons dashicons-twitter"
-    },
-    instagram: {
-        type: "string",
-        default: "fa fa-instagram"
-    },
-    youtube: {
-        type: "string",
-        default: "fa fa-youtube-play"
-    },
     socialIconSize: {
         type: "number",
         default: 20
@@ -183,7 +144,8 @@ const personAttrs = {
         type: "string"
     },
     socialIconBackgroundColor: {
-        type: "string"
+        type: "string",
+        default: "#00aced"
     },
     defaultIconColor: {
         type: "boolean",
@@ -207,11 +169,11 @@ const personAttrs = {
     iconMarginT: {
         type: "number",
         default: "1"
-      },
-      iconMarginB: {
+    },
+    iconMarginB: {
         type: "number",
         default: "1"
-      },
+    },
     blur: {
         type: "number",
         default: "0"
@@ -253,9 +215,6 @@ const personAttrs = {
     titleHoverColor: {
         type: "string"
     },
-    backColor: {
-        type: "string"
-    },
     backHoverColor: {
         type: "string"
     },
@@ -266,8 +225,8 @@ const personAttrs = {
         type: "string"
     },
     multiPersonChecked: {
-        type: "boolean",
-        default: false
+        type: "number",
+        default: 1
     },
     nameStyle: {
         type: "string"
@@ -369,15 +328,24 @@ const personAttrs = {
     items: {
         type: "array",
         default: ['facebook', 'twitter', 'instagram', 'youtube']
-      },
-      hoverEffectPerson: {
+    },
+    hoverEffectPerson: {
         type: "string",
         default: "none"
-      },
-      selectedSocialMediaIcon: {
+    },
+    selectedSocialMediaIcon: {
         type: "string",
         // default: "dashicons dashicons-admin-site"
-      },
+    },
+    effectPersonStyle: {
+        type: "string",
+        default: "effect1"
+    },
+    multiPersonContent:{
+            type: "array",
+            default: ["hh"
+              ]
+    }
 };
 
 registerBlockType("premium/person", {

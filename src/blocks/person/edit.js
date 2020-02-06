@@ -114,7 +114,9 @@ const edit = props => {
         titleshadowVertical,
         items,
         hoverEffectPerson,
-        selectedSocialMediaIcon
+        selectedSocialMediaIcon,
+        effectPersonStyle,
+        multiPersonContent
     } = props.attributes;
 
     const HOVER = [
@@ -153,6 +155,17 @@ const edit = props => {
         {
             value: "translate",
             label: __("Translate")
+        }
+    ];
+
+    const EFFECTS = [
+        {
+            value: "effect1",
+            label: __("Style 1")
+        },
+        {
+            value: "effect2",
+            label: __("Style 2")
         }
     ];
 
@@ -251,42 +264,45 @@ const edit = props => {
 
     const mainClasses = classnames(className, "premium-person");
 
-    const SortableItem = SortableElement(({ value }) => <li>
+    const SortableItem = SortableElement(({ index, onRemove, value }) => <li tabIndex={0}>
         <span className="premium-person__socialIcon__container">
             <span className="premium-person__socialIcon__dragHandle"></span>
             <span className="premium-person__socialIcon__content">
                 <span className={`premium-person__socialIcon__iconvalue fa fa-${value}`}></span>
                 <span>{value}</span>
             </span>
-            <span className="premium-person__socialIcon__trashicon fa fa-trash" onclick={deleteSocialIcon(value)}></span>
+            <button className="premium-person__socialIcon__trashicon fa fa-trash" onClick={() => onRemove(value)}></button>
         </span>
     </li>);
 
-    const deleteSocialIcon = (value) => {
-        console.log(value)
-        // let newData = items.filter(b => {
-        //     return b!= value
-        //   })
-        //   setAttributes({ items: newData });
-        //   console.log(newData);
-          
+    const shouldCancelStart = (e) => {
+        // Prevent sorting from being triggered if target is input or button
+        if (['input', 'button'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+            return true; // Return true to cancel sorting
+        }
+    }
+
+    const onRemove = (value) => {
+        let newData = items.filter(b => {
+            return b != value
+        })
+        setAttributes({ items: newData });
     };
 
-    const SortableList = SortableContainer(({ items }) => {
+    const SortableList = SortableContainer(({ items, onRemove }) => {
         return (
             <ul>
                 {items.map((value, index) => (
-                    <SortableItem key={`item-${value}`} index={index} value={value} />
+                    <SortableItem key={`item-${value}`} index={index} value={value} onRemove={onRemove} />
                 ))}
             </ul>
         );
     });
     const socialIconfn = () => {
         return <div>{items.map((value) => (
-            <i className={`premium-person__socialIcon ${value == "youtube" ? "fa fa-youtube-play" : `fa fa-${value}`} premium-person__${socialIconHoverColor}`}
+            <i className={`premium-person__socialIcon ${defaultIconColor ? value : ""} ${value == "youtube" ? "fa fa-youtube-play" : `fa fa-${value}`} premium-person__${socialIconHoverColor}`}
                 style={{
                     color: defaultIconColor ? "#ffffff" : socialIconColor,
-                    background: defaultIconColor ? `${value == "youtube" ? "red" : `${value == "instagram" ? `linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)` : `${value == "twitter" ? "#00aced" : "#3b5998"}`}`}` : socialIconBackgroundColor,
                     fontSize: (socialIconSize || 50) + iconSizeUnit,
                     border: borderTypeIcon,
                     borderWidth: borderWidthIcon + "px",
@@ -301,13 +317,114 @@ const edit = props => {
         </div>
     }
 
+    const content = () => {
+        return <div className={`${multiPersonChecked > 1 ? `premium-person__${multiPersonChecked}` : ""}`}
+        > {multiPersonContent.map((value) => (
+            <div className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}>
+                <div
+                    className={`premium-person__img_wrap`}
+                >
+                    {personImgUrl && (
+                        <img
+                            className={`premium-person__img`}
+                            src={`${personImgUrl}`}
+                            alt="Person"
+                            style={{
+
+                                borderWidth: imgBorder + "px",
+                                borderRadius: imgRadius,
+                                borderColor: imgBorderColor,
+                                width: imgSize + "px",
+                                height: imgSize + "px",
+                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                            }}
+                        />
+                    )}
+                    {!personImgUrl && <DefaultImage className={className} />}
+                </div>
+
+                <div
+                    className={`premium-person__info`}
+                >
+                    <div className={`premium-person__name_wrap`}>
+                        {name && (
+                            <span
+                                className={`premium-person__name`}
+                                style={{
+                                    color: nameColor,
+                                    fontSize: nameSize + "px",
+                                    fontWeight: nameWeight,
+                                    alignSelf: nameV,
+                                    letterSpacing: nameLetter + "px",
+                                    lineHeight: nameLine + "px",
+                                    fontStyle: nameStyle,
+                                    textTransform: nameUpper ? "uppercase" : "none",
+                                    textShadow: `${nameshadowHorizontal}px ${nameshadowVertical}px ${nameshadowBlur}px ${nameshadowColor}`
+                                }}
+                            >
+                                {name}
+                            </span>
+                        )}
+                    </div>
+                    <div className={`premium-person__title_wrap`}>
+                        {title && (
+                            <span
+                                className={`premium-person__title`}
+                                style={{
+                                    color: titleColor,
+                                    fontSize: titleSize + "px",
+                                    fontWeight: titleWeight,
+                                    alignSelf: titleV,
+                                    letterSpacing: titleLetter + "px",
+                                    lineHeight: titleLine + "px",
+                                    fontStyle: titleStyle,
+                                    textTransform: titleUpper ? "uppercase" : "none",
+                                    textShadow: `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`,
+                                }}
+                            >
+                                {title}
+                            </span>
+                        )}
+                    </div>
+                    <div className={`premium-person__desc_wrap`}>
+                        {DescText && (
+                            <span
+                                className={`premium-person__desc`}
+                                style={{
+                                    color: descColor,
+                                    fontSize: descSize + "px",
+                                    fontWeight: descWeight,
+                                    alignSelf: descV,
+                                    letterSpacing: descLetter + "px",
+                                    lineHeight: descLine + "px",
+                                    fontStyle: descStyle,
+                                    textTransform: descUpper ? "uppercase" : "none",
+                                    textShadow: `${descshadowHorizontal}px ${descshadowVertical}px ${descshadowBlur}px ${descshadowColor}`,
+                                }}
+                            >
+                                {DescText}
+                            </span>
+                        )}
+                    </div>
+                    {socialIcon && (
+                        <div>
+                            {socialIconfn()}
+                        </div>
+                    )}
+                </div>
+            </div>
+        ))}
+
+        </div>
+    }
+
     const onSortEnd = ({ oldIndex, newIndex }) => {
         const array = arrayMove(items, oldIndex, newIndex)
         setAttributes({ items: array });
     };
 
     const addSocialIcon = (newsocial) => {
-        let array = iconsList.map((i, index) => (
+        let array = iconsList.map((i) => (
             i
         )).filter(f => f.value == newsocial)
         if (array[0] != undefined) {
@@ -320,6 +437,12 @@ const edit = props => {
             });
             setAttributes({ items: filtered });
         }
+    };
+    const addMultiPerson = (newP) => {
+        setAttributes({ multiPersonChecked: newP })
+        multiPersonContent.push(newP);
+        console.log(newP);
+
     };
 
     return [
@@ -338,12 +461,19 @@ const edit = props => {
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <ToggleControl
-                        label={__("Multiple Persons")}
-                        checked={multiPersonChecked}
-                        onChange={newValue => setAttributes({ multiPersonChecked: newValue })}
+                    <RangeControl
+                        label={__("Person Number")}
+                        value={multiPersonChecked}
+                        // onChange={newValue => setAttributes({ multiPersonChecked: newValue })}
+                        onChange={value => addMultiPerson(value)}
                     />
                     <p>{__("Enable this option if you need to add multiple persons")}</p>
+                    <SelectControl
+                        label={__("Style")}
+                        value={effectPersonStyle}
+                        onChange={newEffect => setAttributes({ effectPersonStyle: newEffect })}
+                        options={EFFECTS}
+                    />
                     <SelectControl
                         label={__("Image Hover Effect")}
                         options={HOVER}
@@ -427,14 +557,12 @@ const edit = props => {
                                     i.value
                                 ))}
                                 onChange={value => addSocialIcon(value)}
-                                value={selectedSocialMediaIcon}
                                 isMulti={false}
                                 appendTo="body"
                                 noSelectedPlaceholder={__("Select Icon")}
                                 noIconPlaceholder={__("No icons found")}
-                                closeOnSelect={true}
                             />
-                            <SortableList items={items} onSortEnd={onSortEnd} />
+                            <SortableList items={items} onSortEnd={onSortEnd} onRemove={(index) => onRemove(index)} shouldCancelStart={shouldCancelStart} />
                         </div>
                     )}
                 </PanelBody>
@@ -812,93 +940,102 @@ const edit = props => {
                     ].join("\n")
                 }}
             />
-            <div className={`premium-person__img_wrap premium-person__${hoverEffectPerson}`}>
-                {personImgUrl && (
-                    <img
-                        className={`premium-person__img`}
-                        src={`${personImgUrl}`}
-                        alt="Person"
-                        style={{
-                            borderWidth: imgBorder + "px",
-                            borderRadius: imgRadius,
-                            borderColor: imgBorderColor,
-                            width: imgSize + "px",
-                            height: imgSize + "px",
-                            filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
-                        }}
-                    />
-                )}
-                {!personImgUrl && <DefaultImage className={className} />}
-            </div>
-            <div
-                className={`premium-person__name_wrap`}
+            {content()}
+            {/* <div
+                className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}
             >
-                <div>
-                    {name && (
-                        <span
-                            className={`premium-person__name`}
+                <div
+                    className={`premium-person__img_wrap`}
+                >
+                    {personImgUrl && (
+                        <img
+                            className={`premium-person__img`}
+                            src={`${personImgUrl}`}
+                            alt="Person"
                             style={{
-                                color: nameColor,
-                                fontSize: nameSize + "px",
-                                fontWeight: nameWeight,
-                                alignSelf: nameV,
-                                letterSpacing: nameLetter + "px",
-                                lineHeight: nameLine + "px",
-                                fontStyle: nameStyle,
-                                textTransform: nameUpper ? "uppercase" : "none",
-                                textShadow: `${nameshadowHorizontal}px ${nameshadowVertical}px ${nameshadowBlur}px ${nameshadowColor}`
+
+                                borderWidth: imgBorder + "px",
+                                borderRadius: imgRadius,
+                                borderColor: imgBorderColor,
+                                width: imgSize + "px",
+                                height: imgSize + "px",
+                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
                             }}
-                        >
-                            {name}
-                        </span>
+                        />
                     )}
+                    {!personImgUrl && <DefaultImage className={className} />}
                 </div>
-                <div>
-                    {title && (
-                        <span
-                            className={`premium-person__title`}
-                            style={{
-                                color: titleColor,
-                                fontSize: titleSize + "px",
-                                fontWeight: titleWeight,
-                                alignSelf: titleV,
-                                letterSpacing: titleLetter + "px",
-                                lineHeight: titleLine + "px",
-                                fontStyle: titleStyle,
-                                textTransform: titleUpper ? "uppercase" : "none",
-                                textShadow: `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`,
-                            }}
-                        >
-                            {title}
-                        </span>
-                    )}
-                </div>
-                <div>
-                    {DescText && (
-                        <span
-                            className={`premium-person__desc`}
-                            style={{
-                                color: descColor,
-                                fontSize: descSize + "px",
-                                fontWeight: descWeight,
-                                alignSelf: descV,
-                                letterSpacing: descLetter + "px",
-                                lineHeight: descLine + "px",
-                                fontStyle: descStyle,
-                                textTransform: descUpper ? "uppercase" : "none",
-                                textShadow: `${descshadowHorizontal}px ${descshadowVertical}px ${descshadowBlur}px ${descshadowColor}`,
-                            }}
-                        >
-                            {DescText}
-                        </span>
-                    )}
-                </div>
-                {socialIcon && (
-                    <div>
-                        {socialIconfn()}
+
+                <div
+                    className={`premium-person__info`}
+                >
+                    <div className={`premium-person__name_wrap`}>
+                        {name && (
+                            <span
+                                className={`premium-person__name`}
+                                style={{
+                                    color: nameColor,
+                                    fontSize: nameSize + "px",
+                                    fontWeight: nameWeight,
+                                    alignSelf: nameV,
+                                    letterSpacing: nameLetter + "px",
+                                    lineHeight: nameLine + "px",
+                                    fontStyle: nameStyle,
+                                    textTransform: nameUpper ? "uppercase" : "none",
+                                    textShadow: `${nameshadowHorizontal}px ${nameshadowVertical}px ${nameshadowBlur}px ${nameshadowColor}`
+                                }}
+                            >
+                                {name}
+                            </span>
+                        )}
                     </div>
-                )}
-            </div>
+                    <div className={`premium-person__title_wrap`}>
+                        {title && (
+                            <span
+                                className={`premium-person__title`}
+                                style={{
+                                    color: titleColor,
+                                    fontSize: titleSize + "px",
+                                    fontWeight: titleWeight,
+                                    alignSelf: titleV,
+                                    letterSpacing: titleLetter + "px",
+                                    lineHeight: titleLine + "px",
+                                    fontStyle: titleStyle,
+                                    textTransform: titleUpper ? "uppercase" : "none",
+                                    textShadow: `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`,
+                                }}
+                            >
+                                {title}
+                            </span>
+                        )}
+                    </div>
+                    <div className={`premium-person__desc_wrap`}>
+                        {DescText && (
+                            <span
+                                className={`premium-person__desc`}
+                                style={{
+                                    color: descColor,
+                                    fontSize: descSize + "px",
+                                    fontWeight: descWeight,
+                                    alignSelf: descV,
+                                    letterSpacing: descLetter + "px",
+                                    lineHeight: descLine + "px",
+                                    fontStyle: descStyle,
+                                    textTransform: descUpper ? "uppercase" : "none",
+                                    textShadow: `${descshadowHorizontal}px ${descshadowVertical}px ${descshadowBlur}px ${descshadowColor}`,
+                                }}
+                            >
+                                {DescText}
+                            </span>
+                        )}
+                    </div>
+                    {socialIcon && (
+                        <div>
+                            {socialIconfn()}
+                        </div>
+                    )}
+                </div>
+            </div> */}
         </div>
     ];
 };
