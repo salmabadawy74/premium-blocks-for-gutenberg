@@ -31,10 +31,6 @@ const personAttrs = {
     personImgUrl: {
         type: "string"
     },
-    imgRadius: {
-        type: "string",
-        default: "50%"
-    },
     imgSize: {
         type: "number"
     },
@@ -46,8 +42,8 @@ const personAttrs = {
         type: "string"
     },
     name: {
-        type: "string",
-        default: "Merna Hanna"
+        type: "array",
+        default: ["Merna Hanna"]
     },
     nameColor: {
         type: "string",
@@ -98,9 +94,6 @@ const personAttrs = {
     descLetter: {
         type: "number"
     },
-    descHoverColor: {
-        type: "string"
-    },
     descStyle: {
         type: "string"
     },
@@ -145,7 +138,6 @@ const personAttrs = {
     },
     socialIconBackgroundColor: {
         type: "string",
-        default: "#00aced"
     },
     defaultIconColor: {
         type: "boolean",
@@ -209,16 +201,7 @@ const personAttrs = {
     textColor: {
         type: "string"
     },
-    nameHoverColor: {
-        type: "string"
-    },
-    titleHoverColor: {
-        type: "string"
-    },
     backHoverColor: {
-        type: "string"
-    },
-    slideColor: {
         type: "string"
     },
     textFontFamily: {
@@ -341,11 +324,21 @@ const personAttrs = {
         type: "string",
         default: "effect1"
     },
-    multiPersonContent:{
-            type: "array",
-            default: ["hh"
-              ]
-    }
+    multiPersonContent: {
+        type: "array",
+        default: [
+            {
+              id: 1,
+              name:"Merna Hanna"
+            }
+          ]
+    },
+    socialIconPadding: {
+        type: "number"
+    },
+    socialIconPaddingU: {
+        type: "string"
+    },
 };
 
 registerBlockType("premium/person", {

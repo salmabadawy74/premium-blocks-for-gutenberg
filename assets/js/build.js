@@ -841,31 +841,6 @@ function PremiumBoxShadow(props) {
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = __webpack_require__(26);
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(63)(ReactIs.isElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(64)();
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -908,12 +883,37 @@ function PremiumSizeUnits(props) {
 }
 
 /***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactIs = __webpack_require__(26);
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(63)(ReactIs.isElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(64)();
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
 /* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumPadding;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(9);
 
 
 var __ = wp.i18n.__;
@@ -1354,7 +1354,7 @@ var DefaultImage = function (_Component) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumMargin;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(9);
 
 
 var __ = wp.i18n.__;
@@ -1840,7 +1840,7 @@ function PremiumFilters(props) {
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(9), __webpack_require__(6), __webpack_require__(0), __webpack_require__(15), __webpack_require__(29)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(9), __webpack_require__(6), __webpack_require__(0), __webpack_require__(15), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(10), __webpack_require__(6), __webpack_require__(0), __webpack_require__(15), __webpack_require__(29)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(10), __webpack_require__(6), __webpack_require__(0), __webpack_require__(15), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -2725,7 +2725,7 @@ module.exports = {
 exports.__esModule = true;
 exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports.EXITED = exports.UNMOUNTED = void 0;
 
-var PropTypes = _interopRequireWildcard(__webpack_require__(9));
+var PropTypes = _interopRequireWildcard(__webpack_require__(10));
 
 var _react = _interopRequireDefault(__webpack_require__(6));
 
@@ -3497,7 +3497,7 @@ function polyfill(Component) {
 exports.__esModule = true;
 exports.classNamesShape = exports.timeoutsShape = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(9));
+var _propTypes = _interopRequireDefault(__webpack_require__(10));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -3534,7 +3534,7 @@ exports.classNamesShape = classNamesShape;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(9));
+var _propTypes = _interopRequireDefault(__webpack_require__(10));
 
 var _react = _interopRequireDefault(__webpack_require__(6));
 
@@ -7772,7 +7772,7 @@ registerBlockType("premium/button", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(13);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -14095,7 +14095,7 @@ registerBlockType("premium/icon", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(11);
@@ -25367,7 +25367,7 @@ if (process.env.NODE_ENV !== "production") {
 exports.__esModule = true;
 exports.default = void 0;
 
-var PropTypes = _interopRequireWildcard(__webpack_require__(9));
+var PropTypes = _interopRequireWildcard(__webpack_require__(10));
 
 var _addClass = _interopRequireDefault(__webpack_require__(75));
 
@@ -25830,7 +25830,7 @@ module.exports = function removeClass(element, className) {
 exports.__esModule = true;
 exports.default = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(9));
+var _propTypes = _interopRequireDefault(__webpack_require__(10));
 
 var _react = _interopRequireDefault(__webpack_require__(6));
 
@@ -27672,7 +27672,7 @@ registerBlockType("premium/icon-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(13);
 
 
@@ -32624,7 +32624,7 @@ registerBlockType("premium/pricing-table", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(9);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36124,7 +36124,7 @@ registerBlockType("premium/container", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(9);
 
 
 
@@ -41094,10 +41094,6 @@ var personAttrs = (_personAttrs = {
     personImgUrl: {
         type: "string"
     },
-    imgRadius: {
-        type: "string",
-        default: "50%"
-    },
     imgSize: {
         type: "number"
     },
@@ -41109,8 +41105,8 @@ var personAttrs = (_personAttrs = {
         type: "string"
     },
     name: {
-        type: "string",
-        default: "Merna Hanna"
+        type: "array",
+        default: ["Merna Hanna"]
     },
     nameColor: {
         type: "string",
@@ -41161,9 +41157,6 @@ var personAttrs = (_personAttrs = {
     descLetter: {
         type: "number"
     },
-    descHoverColor: {
-        type: "string"
-    },
     descStyle: {
         type: "string"
     },
@@ -41207,8 +41200,7 @@ var personAttrs = (_personAttrs = {
         type: "string"
     },
     socialIconBackgroundColor: {
-        type: "string",
-        default: "#00aced"
+        type: "string"
     },
     defaultIconColor: {
         type: "boolean",
@@ -41270,13 +41262,7 @@ var personAttrs = (_personAttrs = {
     default: "#000"
 }), _defineProperty(_personAttrs, "textColor", {
     type: "string"
-}), _defineProperty(_personAttrs, "nameHoverColor", {
-    type: "string"
-}), _defineProperty(_personAttrs, "titleHoverColor", {
-    type: "string"
 }), _defineProperty(_personAttrs, "backHoverColor", {
-    type: "string"
-}), _defineProperty(_personAttrs, "slideColor", {
     type: "string"
 }), _defineProperty(_personAttrs, "textFontFamily", {
     type: "string"
@@ -41366,7 +41352,14 @@ var personAttrs = (_personAttrs = {
     default: "effect1"
 }), _defineProperty(_personAttrs, "multiPersonContent", {
     type: "array",
-    default: ["hh"]
+    default: [{
+        id: 1,
+        name: "Merna Hanna"
+    }]
+}), _defineProperty(_personAttrs, "socialIconPadding", {
+    type: "number"
+}), _defineProperty(_personAttrs, "socialIconPaddingU", {
+    type: "string"
 }), _personAttrs);
 
 registerBlockType("premium/person", {
@@ -41401,7 +41394,6 @@ var save = function save(props) {
         id = _props$attributes.id,
         personAlign = _props$attributes.personAlign,
         personImgUrl = _props$attributes.personImgUrl,
-        imgRadius = _props$attributes.imgRadius,
         imgBorder = _props$attributes.imgBorder,
         imgBorderColor = _props$attributes.imgBorderColor,
         imgSize = _props$attributes.imgSize,
@@ -41443,9 +41435,6 @@ var save = function save(props) {
         hue = _props$attributes.hue,
         effect = _props$attributes.effect,
         effectDir = _props$attributes.effectDir,
-        nameHoverColor = _props$attributes.nameHoverColor,
-        backHoverColor = _props$attributes.backHoverColor,
-        slideColor = _props$attributes.slideColor,
         nameLine = _props$attributes.nameLine,
         nameLetter = _props$attributes.nameLetter,
         titleLine = _props$attributes.titleLine,
@@ -41471,7 +41460,9 @@ var save = function save(props) {
         items = _props$attributes.items,
         hoverEffectPerson = _props$attributes.hoverEffectPerson,
         effectPersonStyle = _props$attributes.effectPersonStyle,
-        multiPersonContent = _props$attributes.multiPersonContent;
+        multiPersonContent = _props$attributes.multiPersonContent,
+        socialIconPadding = _props$attributes.socialIconPadding,
+        socialIconPaddingU = _props$attributes.socialIconPaddingU;
 
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-person');
@@ -41484,13 +41475,15 @@ var save = function save(props) {
                 return wp.element.createElement('i', { className: 'premium-person__socialIcon ' + (defaultIconColor ? value : "") + ' ' + (value == "youtube" ? "fa fa-youtube-play" : 'dashicons dashicons-' + value) + '  premium-person__' + socialIconHoverColor,
                     style: {
                         color: defaultIconColor ? "#ffffff" : socialIconColor,
+                        background: defaultIconColor ? "" : socialIconBackgroundColor,
                         fontSize: (socialIconSize || 50) + iconSizeUnit,
                         border: borderTypeIcon,
                         borderWidth: borderWidthIcon + "px",
                         borderRadius: borderRadiusIcon || 100 + "px",
                         borderColor: borderColorIcon,
                         marginTop: iconMarginT,
-                        marginBottom: iconMarginB
+                        marginBottom: iconMarginB,
+                        padding: socialIconPadding + socialIconPaddingU
                     }
                 });
             })
@@ -41500,7 +41493,7 @@ var save = function save(props) {
     var content = function content() {
         return wp.element.createElement(
             'div',
-            { className: '' + (multiPersonChecked > 1 ? 'premium-person__' + multiPersonChecked : "")
+            { className: '' + (multiPersonChecked > 1 ? 'premium-person__multiPersonChecked' : "")
             },
             ' ',
             multiPersonContent.map(function (value) {
@@ -41519,7 +41512,6 @@ var save = function save(props) {
                             style: {
 
                                 borderWidth: imgBorder + "px",
-                                borderRadius: imgRadius,
                                 borderColor: imgBorderColor,
                                 width: imgSize + "px",
                                 height: imgSize + "px",
@@ -41622,7 +41614,7 @@ var save = function save(props) {
             },
             wp.element.createElement('style', {
                 dangerouslySetInnerHTML: {
-                    __html: ['#premium-person-wrap-' + id + ' .premium-person:hover {', 'color: ' + nameHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-person-wrap-' + id + '.premium-person__none .premium-person:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-person-wrap-' + id + '.premium-person__slide .premium-person::before,', '#premium-person-wrap-' + id + '.premium-person__shutter .premium-person::before,', '#premium-person-wrap-' + id + '.premium-person__radial .premium-person::before {', 'background-color: ' + slideColor, "}"].join("\n")
+                    __html: ['#premium-person-wrap-' + id + ' .premium-person:hover {', 'border-color: ' + borderHoverColor + ' !important;', "}", '.premium-person__socialIcon:hover {', 'color: ' + (defaultIconColor ? "" : socialIconHoverColor + ' !important;'), "}"].join("\n")
                 }
             }),
             content()
@@ -41647,7 +41639,8 @@ var save = function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_sortable_hoc__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(106);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -41658,7 +41651,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-// import iconsList from "../../components/premium-icons-list";
+
 
 
 var __ = wp.i18n.__;
@@ -41694,7 +41687,6 @@ var edit = function edit(props) {
         personAlign = _props$attributes.personAlign,
         personImgId = _props$attributes.personImgId,
         personImgUrl = _props$attributes.personImgUrl,
-        imgRadius = _props$attributes.imgRadius,
         imgSize = _props$attributes.imgSize,
         imgBorder = _props$attributes.imgBorder,
         imgBorderColor = _props$attributes.imgBorderColor,
@@ -41720,7 +41712,6 @@ var edit = function edit(props) {
         descshadowColor = _props$attributes.descshadowColor,
         descshadowHorizontal = _props$attributes.descshadowHorizontal,
         descshadowVertical = _props$attributes.descshadowVertical,
-        descHoverColor = _props$attributes.descHoverColor,
         socialIcon = _props$attributes.socialIcon,
         socialIconSize = _props$attributes.socialIconSize,
         socialIconColor = _props$attributes.socialIconColor,
@@ -41738,10 +41729,6 @@ var edit = function edit(props) {
         effect = _props$attributes.effect,
         effectDir = _props$attributes.effectDir,
         descColor = _props$attributes.descColor,
-        nameHoverColor = _props$attributes.nameHoverColor,
-        titleHoverColor = _props$attributes.titleHoverColor,
-        backHoverColor = _props$attributes.backHoverColor,
-        slideColor = _props$attributes.slideColor,
         nameLetter = _props$attributes.nameLetter,
         titleLetter = _props$attributes.titleLetter,
         multiPersonChecked = _props$attributes.multiPersonChecked,
@@ -41767,7 +41754,9 @@ var edit = function edit(props) {
         items = _props$attributes.items,
         hoverEffectPerson = _props$attributes.hoverEffectPerson,
         effectPersonStyle = _props$attributes.effectPersonStyle,
-        multiPersonContent = _props$attributes.multiPersonContent;
+        multiPersonContent = _props$attributes.multiPersonContent,
+        socialIconPadding = _props$attributes.socialIconPadding,
+        socialIconPaddingU = _props$attributes.socialIconPaddingU;
 
 
     var HOVER = [{
@@ -41879,7 +41868,7 @@ var edit = function edit(props) {
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-person");
 
-    var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_8_react_sortable_hoc__["b" /* SortableElement */])(function (_ref) {
+    var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__["b" /* SortableElement */])(function (_ref) {
         var index = _ref.index,
             onRemove = _ref.onRemove,
             value = _ref.value;
@@ -41921,7 +41910,7 @@ var edit = function edit(props) {
         setAttributes({ items: newData });
     };
 
-    var SortableList = Object(__WEBPACK_IMPORTED_MODULE_8_react_sortable_hoc__["a" /* SortableContainer */])(function (_ref2) {
+    var SortableList = Object(__WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__["a" /* SortableContainer */])(function (_ref2) {
         var items = _ref2.items,
             onRemove = _ref2.onRemove;
 
@@ -41941,13 +41930,15 @@ var edit = function edit(props) {
                 return wp.element.createElement("i", { className: "premium-person__socialIcon " + (defaultIconColor ? value : "") + " " + (value == "youtube" ? "fa fa-youtube-play" : "fa fa-" + value) + " premium-person__" + socialIconHoverColor,
                     style: {
                         color: defaultIconColor ? "#ffffff" : socialIconColor,
+                        background: defaultIconColor ? "" : socialIconBackgroundColor,
                         fontSize: (socialIconSize || 50) + iconSizeUnit,
                         border: borderTypeIcon,
                         borderWidth: borderWidthIcon + "px",
                         borderRadius: borderRadiusIcon || 100 + "px",
                         borderColor: borderColorIcon,
                         marginTop: iconMarginT,
-                        marginBottom: iconMarginB
+                        marginBottom: iconMarginB,
+                        padding: socialIconPadding + socialIconPaddingU
                     }
                 });
             })
@@ -41957,13 +41948,13 @@ var edit = function edit(props) {
     var content = function content() {
         return wp.element.createElement(
             "div",
-            { className: "" + (multiPersonChecked > 1 ? "premium-person__" + multiPersonChecked : "")
+            { className: "" + (multiPersonChecked > 1 ? "premium-person__multiPersonChecked" : "")
             },
             " ",
             multiPersonContent.map(function (value) {
                 return wp.element.createElement(
                     "div",
-                    { className: "premium-person__inner premium-persson__min premium-person__" + effectPersonStyle + " premium-person__" + hoverEffectPerson },
+                    { key: value.id, className: "premium-person__inner premium-persson__min premium-person__" + effectPersonStyle + " premium-person__" + hoverEffectPerson },
                     wp.element.createElement(
                         "div",
                         {
@@ -41976,7 +41967,6 @@ var edit = function edit(props) {
                             style: {
 
                                 borderWidth: imgBorder + "px",
-                                borderRadius: imgRadius,
                                 borderColor: imgBorderColor,
                                 width: imgSize + "px",
                                 height: imgSize + "px",
@@ -42071,7 +42061,7 @@ var edit = function edit(props) {
         var oldIndex = _ref3.oldIndex,
             newIndex = _ref3.newIndex;
 
-        var array = Object(__WEBPACK_IMPORTED_MODULE_8_react_sortable_hoc__["c" /* arrayMove */])(items, oldIndex, newIndex);
+        var array = Object(__WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__["c" /* arrayMove */])(items, oldIndex, newIndex);
         setAttributes({ items: array });
     };
 
@@ -42093,9 +42083,150 @@ var edit = function edit(props) {
         }
     };
     var addMultiPerson = function addMultiPerson(newP) {
-        setAttributes({ multiPersonChecked: newP });
-        multiPersonContent.push(newP);
-        console.log(newP);
+        if (newP < multiPersonChecked) {
+            multiPersonContent.splice(newP, 1);
+            setAttributes({ multiPersonChecked: newP });
+            console.log(multiPersonContent);
+        } else {
+            setAttributes({ multiPersonChecked: newP });
+            multiPersonContent.push({ id: newP, name: "Merna Hanna" });
+            console.log(multiPersonContent);
+        }
+    };
+
+    var Name = function Name(value, i) {
+        console.log(value);
+        console.log(i);
+        var array = multiPersonContent.map(function (cont) {
+            return cont;
+        }).filter(function (f) {
+            return f.id == i;
+        });
+        array[0].name = value;
+        console.log(array);
+        multiPersonContent[i - 1] = array[0];
+        setAttributes({ multiPersonContent: multiPersonContent });
+        console.log(multiPersonContent);
+    };
+
+    var MultiPersonSetting = function MultiPersonSetting() {
+        return wp.element.createElement(
+            PanelBody,
+            null,
+            multiPersonContent.map(function (content) {
+                return wp.element.createElement(
+                    PanelBody,
+                    { key: content.id, title: __("Person #" + content.id + " Setting"),
+                        initialOpen: false },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("Image")
+                    ),
+                    personImgUrl && wp.element.createElement("img", { src: personImgUrl, width: "100%", height: "auto" }),
+                    !personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_default_image__["a" /* default */], null),
+                    wp.element.createElement(MediaUpload, {
+                        allowedTypes: ["image"],
+                        onSelect: function onSelect(media) {
+                            setAttributes({
+                                personImgId: media.id,
+                                personImgUrl: "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url
+                            });
+                        },
+                        type: "image",
+                        value: personImgId,
+                        render: function render(_ref4) {
+                            var open = _ref4.open;
+                            return wp.element.createElement(
+                                IconButton,
+                                {
+                                    label: __("Change Image"),
+                                    icon: "edit",
+                                    onClick: open
+                                },
+                                __("Change Image")
+                            );
+                        }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_filters__["a" /* default */], {
+                        blur: blur,
+                        bright: bright,
+                        contrast: contrast,
+                        saturation: saturation,
+                        hue: hue,
+                        onChangeBlur: function onChangeBlur(value) {
+                            return setAttributes({ blur: value });
+                        },
+                        onChangeBright: function onChangeBright(value) {
+                            return setAttributes({ bright: value });
+                        },
+                        onChangeContrast: function onChangeContrast(value) {
+                            return setAttributes({ contrast: value });
+                        },
+                        onChangeSat: function onChangeSat(value) {
+                            return setAttributes({ saturation: value });
+                        },
+                        onChangeHue: function onChangeHue(value) {
+                            return setAttributes({ hue: value });
+                        }
+                    }),
+                    wp.element.createElement(TextControl, {
+                        label: __("Name"),
+                        value: content.name
+                        // onChange={value => setAttributes({ name: value })}
+                        , key: content.id,
+                        onChange: function onChange(value) {
+                            return Name(value, content.id);
+                        }
+                    }),
+                    wp.element.createElement(TextControl, {
+                        label: __("Title"),
+                        value: title,
+                        onChange: function onChange(value) {
+                            return setAttributes({ title: value });
+                        }
+                    }),
+                    wp.element.createElement(TextareaControl, {
+                        label: __("Description"),
+                        value: DescText,
+                        onChange: function onChange(newText) {
+                            return setAttributes({ DescText: newText });
+                        }
+                    }),
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Enable Social Icons"),
+                        checked: socialIcon,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ socialIcon: newCheck });
+                        }
+                    }),
+                    socialIcon && wp.element.createElement(
+                        "div",
+                        null,
+                        wp.element.createElement(
+                            "p",
+                            { className: "premium-person-paragraph" },
+                            __("Social Media")
+                        ),
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default.a, {
+                            icons: iconsList.map(function (i) {
+                                return i.value;
+                            }),
+                            onChange: function onChange(value) {
+                                return addSocialIcon(value);
+                            },
+                            isMulti: false,
+                            appendTo: "body",
+                            noSelectedPlaceholder: __("Select Icon"),
+                            noIconPlaceholder: __("No icons found")
+                        }),
+                        wp.element.createElement(SortableList, { items: items, onSortEnd: onSortEnd, onRemove: function onRemove(index) {
+                                return _onRemove(index);
+                            }, shouldCancelStart: shouldCancelStart })
+                    )
+                );
+            })
+        );
     };
 
     return [isSelected && "block" != personSize && wp.element.createElement(
@@ -42147,7 +42278,15 @@ var edit = function edit(props) {
                 }
             })
         ),
-        wp.element.createElement(
+        multiPersonChecked > 1 ? wp.element.createElement(
+            PanelBody,
+            {
+                title: __("Multi Person Settings"),
+                className: "premium-panel-body",
+                initialOpen: false
+            },
+            MultiPersonSetting()
+        ) : wp.element.createElement(
             PanelBody,
             {
                 title: __("Single Person Settings"),
@@ -42171,8 +42310,8 @@ var edit = function edit(props) {
                 },
                 type: "image",
                 value: personImgId,
-                render: function render(_ref4) {
-                    var open = _ref4.open;
+                render: function render(_ref5) {
+                    var open = _ref5.open;
                     return wp.element.createElement(
                         IconButton,
                         {
@@ -42304,9 +42443,9 @@ var edit = function edit(props) {
                     className: "premium-control-toggle-person",
                     contentClassName: "premium-control-toggle-content",
                     position: "bottom right",
-                    renderToggle: function renderToggle(_ref5) {
-                        var isOpen = _ref5.isOpen,
-                            onToggle = _ref5.onToggle;
+                    renderToggle: function renderToggle(_ref6) {
+                        var isOpen = _ref6.isOpen,
+                            onToggle = _ref6.onToggle;
                         return wp.element.createElement(
                             Button,
                             { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
@@ -42327,20 +42466,6 @@ var edit = function edit(props) {
                                 onChange: function onChange(newValue) {
                                     return setAttributes({
                                         nameColor: newValue
-                                    });
-                                },
-                                allowReset: true
-                            }),
-                            wp.element.createElement(
-                                "p",
-                                null,
-                                __("Name Hover Color")
-                            ),
-                            wp.element.createElement(ColorPalette, {
-                                value: nameHoverColor,
-                                onChange: function onChange(newValue) {
-                                    return setAttributes({
-                                        nameHoverColor: newValue
                                     });
                                 },
                                 allowReset: true
@@ -42413,9 +42538,9 @@ var edit = function edit(props) {
                     className: "premium-control-toggle-person",
                     contentClassName: "premium-control-toggle-content",
                     position: "bottom right",
-                    renderToggle: function renderToggle(_ref6) {
-                        var isOpen = _ref6.isOpen,
-                            onToggle = _ref6.onToggle;
+                    renderToggle: function renderToggle(_ref7) {
+                        var isOpen = _ref7.isOpen,
+                            onToggle = _ref7.onToggle;
                         return wp.element.createElement(
                             Button,
                             { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
@@ -42436,20 +42561,6 @@ var edit = function edit(props) {
                                 onChange: function onChange(newValue) {
                                     return setAttributes({
                                         titleColor: newValue
-                                    });
-                                },
-                                allowReset: true
-                            }),
-                            wp.element.createElement(
-                                "p",
-                                null,
-                                __("Title Hover Color")
-                            ),
-                            wp.element.createElement(ColorPalette, {
-                                value: titleHoverColor,
-                                onChange: function onChange(newValue) {
-                                    return setAttributes({
-                                        titleHoverColor: newValue
                                     });
                                 },
                                 allowReset: true
@@ -42522,9 +42633,9 @@ var edit = function edit(props) {
                     className: "premium-control-toggle-person",
                     contentClassName: "premium-control-toggle-content",
                     position: "bottom right",
-                    renderToggle: function renderToggle(_ref7) {
-                        var isOpen = _ref7.isOpen,
-                            onToggle = _ref7.onToggle;
+                    renderToggle: function renderToggle(_ref8) {
+                        var isOpen = _ref8.isOpen,
+                            onToggle = _ref8.onToggle;
                         return wp.element.createElement(
                             Button,
                             { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
@@ -42545,20 +42656,6 @@ var edit = function edit(props) {
                                 onChange: function onChange(newValue) {
                                     return setAttributes({
                                         descColor: newValue
-                                    });
-                                },
-                                allowReset: true
-                            }),
-                            wp.element.createElement(
-                                "p",
-                                null,
-                                __("Desc Hover Color")
-                            ),
-                            wp.element.createElement(ColorPalette, {
-                                value: descHoverColor,
-                                onChange: function onChange(newValue) {
-                                    return setAttributes({
-                                        descHoverColor: newValue
                                     });
                                 },
                                 allowReset: true
@@ -42612,9 +42709,9 @@ var edit = function edit(props) {
                     className: "premium-control-toggle-person",
                     contentClassName: "premium-control-toggle-content",
                     position: "bottom right",
-                    renderToggle: function renderToggle(_ref8) {
-                        var isOpen = _ref8.isOpen,
-                            onToggle = _ref8.onToggle;
+                    renderToggle: function renderToggle(_ref9) {
+                        var isOpen = _ref9.isOpen,
+                            onToggle = _ref9.onToggle;
                         return wp.element.createElement(
                             Button,
                             { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
@@ -42669,9 +42766,9 @@ var edit = function edit(props) {
                     className: "premium-control-toggle-person",
                     contentClassName: "premium-control-toggle-content",
                     position: "bottom right",
-                    renderToggle: function renderToggle(_ref9) {
-                        var isOpen = _ref9.isOpen,
-                            onToggle = _ref9.onToggle;
+                    renderToggle: function renderToggle(_ref10) {
+                        var isOpen = _ref10.isOpen,
+                            onToggle = _ref10.onToggle;
                         return wp.element.createElement(
                             Button,
                             { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
@@ -42725,6 +42822,18 @@ var edit = function edit(props) {
                     return setAttributes({ borderRadiusIcon: newrRadius });
                 }
             }),
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__["a" /* default */], {
+                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                    return setAttributes({ socialIconPaddingU: newValue });
+                }
+            }),
+            wp.element.createElement(RangeControl, {
+                label: __("Padding"),
+                value: socialIconPadding,
+                onChange: function onChange(newValue) {
+                    return setAttributes({ socialIconPadding: newValue });
+                }
+            }),
             wp.element.createElement(
                 "div",
                 { className: "premium-control-toggle" },
@@ -42754,7 +42863,7 @@ var edit = function edit(props) {
         },
         wp.element.createElement("style", {
             dangerouslySetInnerHTML: {
-                __html: ["#premium-person-wrap-" + id + " .premium-person:hover {", "color: " + nameHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-person-wrap-" + id + ".premium-person__none .premium-person:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-person-wrap-" + id + ".premium-person__slide .premium-person::before,", "#premium-person-wrap-" + id + ".premium-person__shutter .premium-person::before,", "#premium-person-wrap-" + id + ".premium-person__radial .premium-person::before {", "background-color: " + slideColor, "}"].join("\n")
+                __html: ["#premium-person-wrap-" + id + " .premium-person:hover {", "border-color: " + borderHoverColor + " !important;", "}", ".premium-person__socialIcon:hover {", "color: " + (defaultIconColor ? "" : socialIconHoverColor + " !important;"), "}"].join("\n")
             }
         }),
         content()
@@ -42787,7 +42896,7 @@ var edit = function edit(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__babel_runtime_helpers_esm_defineProperty__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_react_dom__);

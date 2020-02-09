@@ -6,7 +6,7 @@ import DefaultImage from "../../components/default-image";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumMargin from "../../components/premium-margin";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-// import iconsList from "../../components/premium-icons-list";
+import PremiumSizeUnits from "../../components/premium-size-units";
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 
 const { __ } = wp.i18n;
@@ -42,7 +42,6 @@ const edit = props => {
         personAlign,
         personImgId,
         personImgUrl,
-        imgRadius,
         imgSize,
         imgBorder,
         imgBorderColor,
@@ -68,7 +67,6 @@ const edit = props => {
         descshadowColor,
         descshadowHorizontal,
         descshadowVertical,
-        descHoverColor,
         socialIcon,
         socialIconSize,
         socialIconColor,
@@ -86,10 +84,6 @@ const edit = props => {
         effect,
         effectDir,
         descColor,
-        nameHoverColor,
-        titleHoverColor,
-        backHoverColor,
-        slideColor,
         nameLetter,
         titleLetter,
         multiPersonChecked,
@@ -115,7 +109,9 @@ const edit = props => {
         items,
         hoverEffectPerson,
         effectPersonStyle,
-        multiPersonContent
+        multiPersonContent,
+        socialIconPadding,
+        socialIconPaddingU,
     } = props.attributes;
 
     const HOVER = [
@@ -302,13 +298,15 @@ const edit = props => {
             <i className={`premium-person__socialIcon ${defaultIconColor ? value : ""} ${value == "youtube" ? "fa fa-youtube-play" : `fa fa-${value}`} premium-person__${socialIconHoverColor}`}
                 style={{
                     color: defaultIconColor ? "#ffffff" : socialIconColor,
+                    background: defaultIconColor ? "" : socialIconBackgroundColor,
                     fontSize: (socialIconSize || 50) + iconSizeUnit,
                     border: borderTypeIcon,
                     borderWidth: borderWidthIcon + "px",
                     borderRadius: borderRadiusIcon || 100 + "px",
                     borderColor: borderColorIcon,
                     marginTop: iconMarginT,
-                    marginBottom: iconMarginB
+                    marginBottom: iconMarginB,
+                    padding: socialIconPadding + socialIconPaddingU,
                 }}
             />
 
@@ -317,9 +315,9 @@ const edit = props => {
     }
 
     const content = () => {
-        return <div className={`${multiPersonChecked > 1 ? `premium-person__${multiPersonChecked}` : ""}`}
+        return <div className={`${multiPersonChecked > 1 ? `premium-person__multiPersonChecked` : ""}`}
         > {multiPersonContent.map((value) => (
-            <div className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}>
+            <div key={value.id} className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}>
                 <div
                     className={`premium-person__img_wrap`}
                 >
@@ -331,7 +329,6 @@ const edit = props => {
                             style={{
 
                                 borderWidth: imgBorder + "px",
-                                borderRadius: imgRadius,
                                 borderColor: imgBorderColor,
                                 width: imgSize + "px",
                                 height: imgSize + "px",
@@ -438,54 +435,36 @@ const edit = props => {
         }
     };
     const addMultiPerson = (newP) => {
-        setAttributes({ multiPersonChecked: newP })
-        multiPersonContent.push(newP);
-        console.log(newP);
-
+        if (newP < multiPersonChecked) {
+            multiPersonContent.splice(newP, 1);
+            setAttributes({ multiPersonChecked: newP })
+            console.log(multiPersonContent);
+        }
+        else {
+            setAttributes({ multiPersonChecked: newP })
+            multiPersonContent.push({id:newP,name:"Merna Hanna"})
+            console.log(multiPersonContent);
+        }
     };
 
-    return [
-        isSelected && "block" != personSize && (
-            <BlockControls key="controls">
-                <AlignmentToolbar
-                    value={personAlign}
-                    onChange={newAlign => setAttributes({ personAlign: newAlign })}
-                />
-            </BlockControls>
-        ),
-        isSelected && (
-            <InspectorControls key={"inspector"}>
-                <PanelBody
-                    title={__("General Settings")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <RangeControl
-                        label={__("Person Number")}
-                        value={multiPersonChecked}
-                        // onChange={newValue => setAttributes({ multiPersonChecked: newValue })}
-                        onChange={value => addMultiPerson(value)}
-                    />
-                    <p>{__("Enable this option if you need to add multiple persons")}</p>
-                    <SelectControl
-                        label={__("Style")}
-                        value={effectPersonStyle}
-                        onChange={newEffect => setAttributes({ effectPersonStyle: newEffect })}
-                        options={EFFECTS}
-                    />
-                    <SelectControl
-                        label={__("Image Hover Effect")}
-                        options={HOVER}
-                        value={hoverEffectPerson}
-                        onChange={newEffect => setAttributes({ hoverEffectPerson: newEffect })}
-                    />
+    const Name = (value, i) => {
+        console.log(value);
+        console.log(i);
+        let array = multiPersonContent.map((cont) => (
+            cont
+        )).filter(f => f.id == i)
+        array[0].name= value
+      console.log(array);
+      multiPersonContent[i-1]= array[0]
+        setAttributes({ multiPersonContent });
+        console.log(multiPersonContent);
+    }
 
-                </PanelBody>
-                <PanelBody
-                    title={__("Single Person Settings")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
+    const MultiPersonSetting = () => {
+        return <PanelBody>
+            {multiPersonContent.map((content) => (
+                <PanelBody key={content.id} title={__(`Person #${content.id} Setting`)}
+                    initialOpen={false}>
                     <p>{__("Image")}</p>
                     {personImgUrl && (
                         <img src={personImgUrl} width="100%" height="auto" />
@@ -528,8 +507,10 @@ const edit = props => {
                     />
                     <TextControl
                         label={__("Name")}
-                        value={name}
-                        onChange={value => setAttributes({ name: value })}
+                        value={content.name}
+                        // onChange={value => setAttributes({ name: value })}
+                        key={content.id}
+                        onChange={(value) => Name(value, content.id)}
                     />
                     <TextControl
                         label={__("Title")}
@@ -565,6 +546,219 @@ const edit = props => {
                         </div>
                     )}
                 </PanelBody>
+            ))}
+        </PanelBody>
+    }
+
+    return [
+        isSelected && "block" != personSize && (
+            <BlockControls key="controls">
+                <AlignmentToolbar
+                    value={personAlign}
+                    onChange={newAlign => setAttributes({ personAlign: newAlign })}
+                />
+            </BlockControls>
+        ),
+        isSelected && (
+            <InspectorControls key={"inspector"}>
+                <PanelBody
+                    title={__("General Settings")}
+                    className="premium-panel-body"
+                    initialOpen={false}
+                >
+                    <RangeControl
+                        label={__("Person Number")}
+                        value={multiPersonChecked}
+                        // onChange={newValue => setAttributes({ multiPersonChecked: newValue })}
+                        onChange={value => addMultiPerson(value)}
+                    />
+                    <p>{__("Enable this option if you need to add multiple persons")}</p>
+                    <SelectControl
+                        label={__("Style")}
+                        value={effectPersonStyle}
+                        onChange={newEffect => setAttributes({ effectPersonStyle: newEffect })}
+                        options={EFFECTS}
+                    />
+                    <SelectControl
+                        label={__("Image Hover Effect")}
+                        options={HOVER}
+                        value={hoverEffectPerson}
+                        onChange={newEffect => setAttributes({ hoverEffectPerson: newEffect })}
+                    />
+
+                </PanelBody>
+                {multiPersonChecked > 1 ?
+                    <PanelBody
+                        title={__("Multi Person Settings")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        {MultiPersonSetting()}
+
+                        {/* <p>{__("Image")}</p>
+                        {personImgUrl && (
+                            <img src={personImgUrl} width="100%" height="auto" />
+                        )}
+                        {!personImgUrl && <DefaultImage />}
+                        <MediaUpload
+                            allowedTypes={["image"]}
+                            onSelect={media => {
+                                setAttributes({
+                                    personImgId: media.id,
+                                    personImgUrl:
+                                        "undefined" === typeof media.sizes.thumbnail
+                                            ? media.url
+                                            : media.sizes.thumbnail.url
+                                });
+                            }}
+                            type="image"
+                            value={personImgId}
+                            render={({ open }) => (
+                                <IconButton
+                                    label={__("Change Image")}
+                                    icon="edit"
+                                    onClick={open}
+                                >
+                                    {__("Change Image")}
+                                </IconButton>
+                            )}
+                        />
+                        <PremiumFilters
+                            blur={blur}
+                            bright={bright}
+                            contrast={contrast}
+                            saturation={saturation}
+                            hue={hue}
+                            onChangeBlur={value => setAttributes({ blur: value })}
+                            onChangeBright={value => setAttributes({ bright: value })}
+                            onChangeContrast={value => setAttributes({ contrast: value })}
+                            onChangeSat={value => setAttributes({ saturation: value })}
+                            onChangeHue={value => setAttributes({ hue: value })}
+                        />
+                        <TextControl
+                            label={__("Name")}
+                            value={name}
+                            onChange={value => setAttributes({ name: value })}
+                        />
+                        <TextControl
+                            label={__("Title")}
+                            value={title}
+                            onChange={value => setAttributes({ title: value })}
+                        />
+                        <TextareaControl
+                            label={__("Description")}
+                            value={DescText}
+                            onChange={newText =>
+                                setAttributes({ DescText: newText })
+                            }
+                        />
+                        <ToggleControl
+                            label={__("Enable Social Icons")}
+                            checked={socialIcon}
+                            onChange={newCheck => setAttributes({ socialIcon: newCheck })}
+                        />
+                        {socialIcon && (
+                            <div>
+                                <p className="premium-person-paragraph">{__("Social Media")}</p>
+                                <FontIconPicker
+                                    icons={iconsList.map((i) => (
+                                        i.value
+                                    ))}
+                                    onChange={value => addSocialIcon(value)}
+                                    isMulti={false}
+                                    appendTo="body"
+                                    noSelectedPlaceholder={__("Select Icon")}
+                                    noIconPlaceholder={__("No icons found")}
+                                />
+                                <SortableList items={items} onSortEnd={onSortEnd} onRemove={(index) => onRemove(index)} shouldCancelStart={shouldCancelStart} />
+                            </div>
+                        )} */}
+                    </PanelBody> :
+                    <PanelBody
+                        title={__("Single Person Settings")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <p>{__("Image")}</p>
+                        {personImgUrl && (
+                            <img src={personImgUrl} width="100%" height="auto" />
+                        )}
+                        {!personImgUrl && <DefaultImage />}
+                        <MediaUpload
+                            allowedTypes={["image"]}
+                            onSelect={media => {
+                                setAttributes({
+                                    personImgId: media.id,
+                                    personImgUrl:
+                                        "undefined" === typeof media.sizes.thumbnail
+                                            ? media.url
+                                            : media.sizes.thumbnail.url
+                                });
+                            }}
+                            type="image"
+                            value={personImgId}
+                            render={({ open }) => (
+                                <IconButton
+                                    label={__("Change Image")}
+                                    icon="edit"
+                                    onClick={open}
+                                >
+                                    {__("Change Image")}
+                                </IconButton>
+                            )}
+                        />
+                        <PremiumFilters
+                            blur={blur}
+                            bright={bright}
+                            contrast={contrast}
+                            saturation={saturation}
+                            hue={hue}
+                            onChangeBlur={value => setAttributes({ blur: value })}
+                            onChangeBright={value => setAttributes({ bright: value })}
+                            onChangeContrast={value => setAttributes({ contrast: value })}
+                            onChangeSat={value => setAttributes({ saturation: value })}
+                            onChangeHue={value => setAttributes({ hue: value })}
+                        />
+                        <TextControl
+                            label={__("Name")}
+                            value={name}
+                            onChange={value => setAttributes({ name: value })}
+                        />
+                        <TextControl
+                            label={__("Title")}
+                            value={title}
+                            onChange={value => setAttributes({ title: value })}
+                        />
+                        <TextareaControl
+                            label={__("Description")}
+                            value={DescText}
+                            onChange={newText =>
+                                setAttributes({ DescText: newText })
+                            }
+                        />
+                        <ToggleControl
+                            label={__("Enable Social Icons")}
+                            checked={socialIcon}
+                            onChange={newCheck => setAttributes({ socialIcon: newCheck })}
+                        />
+                        {socialIcon && (
+                            <div>
+                                <p className="premium-person-paragraph">{__("Social Media")}</p>
+                                <FontIconPicker
+                                    icons={iconsList.map((i) => (
+                                        i.value
+                                    ))}
+                                    onChange={value => addSocialIcon(value)}
+                                    isMulti={false}
+                                    appendTo="body"
+                                    noSelectedPlaceholder={__("Select Icon")}
+                                    noIconPlaceholder={__("No icons found")}
+                                />
+                                <SortableList items={items} onSortEnd={onSortEnd} onRemove={(index) => onRemove(index)} shouldCancelStart={shouldCancelStart} />
+                            </div>
+                        )}
+                    </PanelBody>
+                }
                 <PanelBody
                     title={__("Name")}
                     className="premium-panel-body"
@@ -609,16 +803,6 @@ const edit = props => {
                                         onChange={newValue =>
                                             setAttributes({
                                                 nameColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                    <p>{__("Name Hover Color")}</p>
-                                    <ColorPalette
-                                        value={nameHoverColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                nameHoverColor: newValue
                                             })
                                         }
                                         allowReset={true}
@@ -692,16 +876,6 @@ const edit = props => {
                                         }
                                         allowReset={true}
                                     />
-                                    <p>{__("Title Hover Color")}</p>
-                                    <ColorPalette
-                                        value={titleHoverColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                titleHoverColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
                                 </Fragment>
                             )}
                         />
@@ -767,16 +941,6 @@ const edit = props => {
                                         onChange={newValue =>
                                             setAttributes({
                                                 descColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                    <p>{__("Desc Hover Color")}</p>
-                                    <ColorPalette
-                                        value={descHoverColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                descHoverColor: newValue
                                             })
                                         }
                                         allowReset={true}
@@ -895,6 +1059,16 @@ const edit = props => {
                             setAttributes({ borderRadiusIcon: newrRadius })
                         }
                     />
+                    <PremiumSizeUnits
+                        onChangeSizeUnit={newValue =>
+                            setAttributes({ socialIconPaddingU: newValue })
+                        }
+                    />
+                    <RangeControl
+                        label={__("Padding")}
+                        value={socialIconPadding}
+                        onChange={newValue => setAttributes({ socialIconPadding: newValue })}
+                    />
                     <div className="premium-control-toggle">
                         <PremiumMargin
                             directions={["top", "bottom"]}
@@ -925,116 +1099,15 @@ const edit = props => {
                 dangerouslySetInnerHTML={{
                     __html: [
                         `#premium-person-wrap-${id} .premium-person:hover {`,
-                        `color: ${nameHoverColor} !important;`,
                         `border-color: ${borderHoverColor} !important;`,
                         "}",
-                        `#premium-person-wrap-${id}.premium-person__none .premium-person:hover {`,
-                        `background-color: ${backHoverColor} !important;`,
-                        "}",
-                        `#premium-person-wrap-${id}.premium-person__slide .premium-person::before,`,
-                        `#premium-person-wrap-${id}.premium-person__shutter .premium-person::before,`,
-                        `#premium-person-wrap-${id}.premium-person__radial .premium-person::before {`,
-                        `background-color: ${slideColor}`,
+                        `.premium-person__socialIcon:hover {`,
+                        `color: ${defaultIconColor ? "" : `${socialIconHoverColor} !important;`}`,
                         "}"
                     ].join("\n")
                 }}
             />
             {content()}
-            {/* <div
-                className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}
-            >
-                <div
-                    className={`premium-person__img_wrap`}
-                >
-                    {personImgUrl && (
-                        <img
-                            className={`premium-person__img`}
-                            src={`${personImgUrl}`}
-                            alt="Person"
-                            style={{
-
-                                borderWidth: imgBorder + "px",
-                                borderRadius: imgRadius,
-                                borderColor: imgBorderColor,
-                                width: imgSize + "px",
-                                height: imgSize + "px",
-                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
-                            }}
-                        />
-                    )}
-                    {!personImgUrl && <DefaultImage className={className} />}
-                </div>
-
-                <div
-                    className={`premium-person__info`}
-                >
-                    <div className={`premium-person__name_wrap`}>
-                        {name && (
-                            <span
-                                className={`premium-person__name`}
-                                style={{
-                                    color: nameColor,
-                                    fontSize: nameSize + "px",
-                                    fontWeight: nameWeight,
-                                    alignSelf: nameV,
-                                    letterSpacing: nameLetter + "px",
-                                    lineHeight: nameLine + "px",
-                                    fontStyle: nameStyle,
-                                    textTransform: nameUpper ? "uppercase" : "none",
-                                    textShadow: `${nameshadowHorizontal}px ${nameshadowVertical}px ${nameshadowBlur}px ${nameshadowColor}`
-                                }}
-                            >
-                                {name}
-                            </span>
-                        )}
-                    </div>
-                    <div className={`premium-person__title_wrap`}>
-                        {title && (
-                            <span
-                                className={`premium-person__title`}
-                                style={{
-                                    color: titleColor,
-                                    fontSize: titleSize + "px",
-                                    fontWeight: titleWeight,
-                                    alignSelf: titleV,
-                                    letterSpacing: titleLetter + "px",
-                                    lineHeight: titleLine + "px",
-                                    fontStyle: titleStyle,
-                                    textTransform: titleUpper ? "uppercase" : "none",
-                                    textShadow: `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`,
-                                }}
-                            >
-                                {title}
-                            </span>
-                        )}
-                    </div>
-                    <div className={`premium-person__desc_wrap`}>
-                        {DescText && (
-                            <span
-                                className={`premium-person__desc`}
-                                style={{
-                                    color: descColor,
-                                    fontSize: descSize + "px",
-                                    fontWeight: descWeight,
-                                    alignSelf: descV,
-                                    letterSpacing: descLetter + "px",
-                                    lineHeight: descLine + "px",
-                                    fontStyle: descStyle,
-                                    textTransform: descUpper ? "uppercase" : "none",
-                                    textShadow: `${descshadowHorizontal}px ${descshadowVertical}px ${descshadowBlur}px ${descshadowColor}`,
-                                }}
-                            >
-                                {DescText}
-                            </span>
-                        )}
-                    </div>
-                    {socialIcon && (
-                        <div>
-                            {socialIconfn()}
-                        </div>
-                    )}
-                </div>
-            </div> */}
         </div>
     ];
 };
