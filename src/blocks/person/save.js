@@ -10,21 +10,17 @@ const save = props => {
     const {
         id,
         personAlign,
-        personImgUrl,
         imgBorder,
         imgBorderColor,
         imgSize,
-        name,
         nameColor,
         nameSize,
         nameWeight,
         nameV,
-        title,
         titleColor,
         titleSize,
         titleWeight,
         titleV,
-        DescText,
         descColor,
         descSize,
         descWeight,
@@ -37,7 +33,6 @@ const save = props => {
         descshadowColor,
         descshadowHorizontal,
         descshadowVertical,
-        socialIcon,
         iconSizeUnit,
         socialIconSize,
         socialIconColor,
@@ -74,20 +69,20 @@ const save = props => {
         titleshadowColor,
         titleshadowHorizontal,
         titleshadowVertical,
-        items,
         hoverEffectPerson,
         effectPersonStyle,
         multiPersonContent,
         socialIconPadding,
         socialIconPaddingU,
+        socialIconBackgroundColor
     } = props.attributes;
 
 
     const mainClasses = classnames(className, 'premium-person');
 
-    const socialIconfn = () => {
-        return <div>{items.map((value) => (
-            <i className={`premium-person__socialIcon ${defaultIconColor ? value : ""} ${value == "youtube" ? "fa fa-youtube-play" : `dashicons dashicons-${value}`}  premium-person__${socialIconHoverColor}`}
+    const socialIconfn = (v) => {
+        return <div>{(v).map((value) => (
+            <i className={`premium-person__socialIcon ${defaultIconColor ? value : ""} ${value == "youtube" ? "fa fa-youtube-play" : `fa fa-${value}`} premium-person__${socialIconHoverColor}`}
                 style={{
                     color: defaultIconColor ? "#ffffff" : socialIconColor,
                     background: defaultIconColor ? "" : socialIconBackgroundColor,
@@ -101,21 +96,22 @@ const save = props => {
                     padding: socialIconPadding + socialIconPaddingU,
                 }}
             />
+
         ))}
         </div>
-    };
+    }
 
     const content = () => {
         return <div className={`${multiPersonChecked > 1 ? `premium-person__multiPersonChecked` : ""}`}
         > {multiPersonContent.map((value) => (
-            <div className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}>
+            <div key={value.id} className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}>
                 <div
                     className={`premium-person__img_wrap`}
                 >
-                    {personImgUrl && (
+                    {value.personImgUrl && (
                         <img
                             className={`premium-person__img`}
-                            src={`${personImgUrl}`}
+                            src={`${value.personImgUrl}`}
                             alt="Person"
                             style={{
 
@@ -123,20 +119,20 @@ const save = props => {
                                 borderColor: imgBorderColor,
                                 width: imgSize + "px",
                                 height: imgSize + "px",
-                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                filter: `brightness( ${value.bright}% ) contrast( ${value.contrast}% ) saturate( ${value.saturation}% ) blur( ${value.blur}px ) hue-rotate( ${value.hue}deg )`
                             }}
                         />
                     )}
-                    {!personImgUrl && <DefaultImage className={className} />}
+                    {!value.personImgUrl && <DefaultImage className={className} />}
                 </div>
 
                 <div
                     className={`premium-person__info`}
                 >
                     <div className={`premium-person__name_wrap`}>
-                        {name && (
+                        {value.name && (
                             <span
-                                className={`premium-person__name`}
+                                className={`premium-person__name${value.name}`}
                                 style={{
                                     color: nameColor,
                                     fontSize: nameSize + "px",
@@ -149,12 +145,12 @@ const save = props => {
                                     textShadow: `${nameshadowHorizontal}px ${nameshadowVertical}px ${nameshadowBlur}px ${nameshadowColor}`
                                 }}
                             >
-                                {name}
+                                {value.name}
                             </span>
                         )}
                     </div>
                     <div className={`premium-person__title_wrap`}>
-                        {title && (
+                        {value.title && (
                             <span
                                 className={`premium-person__title`}
                                 style={{
@@ -169,12 +165,12 @@ const save = props => {
                                     textShadow: `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`,
                                 }}
                             >
-                                {title}
+                                {value.title}
                             </span>
                         )}
                     </div>
                     <div className={`premium-person__desc_wrap`}>
-                        {DescText && (
+                        {value.desc && (
                             <span
                                 className={`premium-person__desc`}
                                 style={{
@@ -189,13 +185,13 @@ const save = props => {
                                     textShadow: `${descshadowHorizontal}px ${descshadowVertical}px ${descshadowBlur}px ${descshadowColor}`,
                                 }}
                             >
-                                {DescText}
+                                {value.desc}
                             </span>
                         )}
                     </div>
-                    {socialIcon && (
+                    {value.socialIcon && (
                         <div>
-                            {socialIconfn()}
+                            {socialIconfn(value.items)}
                         </div>
                     )}
                 </div>

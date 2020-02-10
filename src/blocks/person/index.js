@@ -28,9 +28,6 @@ const personAttrs = {
     personImgId: {
         type: "string"
     },
-    personImgUrl: {
-        type: "string"
-    },
     imgSize: {
         type: "number"
     },
@@ -40,10 +37,6 @@ const personAttrs = {
     },
     imgBorderColor: {
         type: "string"
-    },
-    name: {
-        type: "array",
-        default: ["Merna Hanna"]
     },
     nameColor: {
         type: "string",
@@ -55,10 +48,6 @@ const personAttrs = {
     },
     nameLetter: {
         type: "number"
-    },
-    title: {
-        type: "string",
-        default: "Senior Developer"
     },
     titleColor: {
         type: "string"
@@ -76,10 +65,6 @@ const personAttrs = {
     },
     titleLetter: {
         type: "number"
-    },
-    DescText: {
-        type: "string",
-        default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla"
     },
     descColor: {
         type: "string"
@@ -117,10 +102,6 @@ const personAttrs = {
     descshadowVertical: {
         type: "number",
         default: "0"
-    },
-    socialIcon: {
-        type: "boolean",
-        default: false
     },
     socialIconSize: {
         type: "number",
@@ -165,26 +146,6 @@ const personAttrs = {
     iconMarginB: {
         type: "number",
         default: "1"
-    },
-    blur: {
-        type: "number",
-        default: "0"
-    },
-    bright: {
-        type: "number",
-        default: "100"
-    },
-    contrast: {
-        type: "number",
-        default: "100"
-    },
-    saturation: {
-        type: "number",
-        default: "100"
-    },
-    hue: {
-        type: "number",
-        default: "0"
     },
     effect: {
         type: "string",
@@ -308,10 +269,6 @@ const personAttrs = {
     id: {
         type: "string"
     },
-    items: {
-        type: "array",
-        default: ['facebook', 'twitter', 'instagram', 'youtube']
-    },
     hoverEffectPerson: {
         type: "string",
         default: "none"
@@ -328,10 +285,20 @@ const personAttrs = {
         type: "array",
         default: [
             {
-              id: 1,
-              name:"Merna Hanna"
+                id: 1,
+                personImgUrl:"",
+                name: "Merna Hanna",
+                title: "Senior Developer",
+                desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
+                socialIcon: false,
+                items:['facebook', 'twitter', 'instagram', 'youtube'],
+                blur:"0",
+                bright:"100",
+                contrast:"100",
+                saturation:"100",
+                hue:"0"
             }
-          ]
+        ]
     },
     socialIconPadding: {
         type: "number"
