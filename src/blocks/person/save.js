@@ -1,7 +1,6 @@
 import classnames from 'classnames'
 import DefaultImage from "../../components/default-image";
 
-const { RichText } = wp.editor;
 
 const save = props => {
 
@@ -40,11 +39,6 @@ const save = props => {
         defaultIconColor,
         iconMarginT,
         iconMarginB,
-        blur,
-        bright,
-        contrast,
-        saturation,
-        hue,
         effect,
         effectDir,
         nameLine,
@@ -82,7 +76,7 @@ const save = props => {
 
     const socialIconfn = (v) => {
         return <div>{(v).map((value) => (
-            <i className={`premium-person__socialIcon ${defaultIconColor ? value : ""} ${value == "youtube" ? "fa fa-youtube-play" : `fa fa-${value}`} premium-person__${socialIconHoverColor}`}
+            <i className={`premium-person__socialIcon ${defaultIconColor ? value.label : ""} ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
                 style={{
                     color: defaultIconColor ? "#ffffff" : socialIconColor,
                     background: defaultIconColor ? "" : socialIconBackgroundColor,
@@ -94,9 +88,10 @@ const save = props => {
                     marginTop: iconMarginT,
                     marginBottom: iconMarginB,
                     padding: socialIconPadding + socialIconPaddingU,
+                    height: `${socialIconPadding > 0 ? "auto" : "1.2em"}`,
+                    width: `${socialIconPadding > 0 ? "auto" : "1.2em"}`,
                 }}
             />
-
         ))}
         </div>
     }
@@ -132,7 +127,7 @@ const save = props => {
                     <div className={`premium-person__name_wrap`}>
                         {value.name && (
                             <span
-                                className={`premium-person__name${value.name}`}
+                                className={`premium-person__name`}
                                 style={{
                                     color: nameColor,
                                     fontSize: nameSize + "px",
@@ -204,14 +199,14 @@ const save = props => {
     return (
         <div>
             <div
-                id={`${mainClasses}-wrap-${id}`}
-                className={`${mainClasses}__wrap premium-person__${effect} premium-person__${effectDir}`}
+                id={`premium-person-${id}`}
+                className={`${mainClasses} premium-person__${effect} premium-person__${effectDir}`}
                 style={{ textAlign: personAlign }}
             >
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
-                            `#premium-person-wrap-${id} .premium-person:hover {`,
+                            `#premium-person-${id} .premium-person:hover {`,
                             `border-color: ${borderHoverColor} !important;`,
                             "}",
                             `.premium-person__socialIcon:hover {`,

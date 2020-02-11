@@ -71,11 +71,6 @@ const edit = props => {
         socialIconBackgroundColor,
         iconMarginT,
         iconMarginB,
-        blur,
-        bright,
-        contrast,
-        saturation,
-        hue,
         effect,
         effectDir,
         descColor,
@@ -105,7 +100,7 @@ const edit = props => {
         effectPersonStyle,
         multiPersonContent,
         socialIconPadding,
-        socialIconPaddingU,
+        socialIconPaddingU
     } = props.attributes;
 
     const HOVER = [
@@ -253,24 +248,83 @@ const edit = props => {
 
     const mainClasses = classnames(className, "premium-person");
 
-    const SortableItem = SortableElement(({ index, onRemove, value }) => <li tabIndex={0}>
+    const SortableItem = SortableElement(({ index, onRemove, value, addLink }) => <li tabIndex={0}>
         <span className="premium-person__socialIcon__container">
             <span className="premium-person__socialIcon__dragHandle"></span>
-            <span className="premium-person__socialIcon__content">
-                <span className={`premium-person__socialIcon__iconvalue fa fa-${value}`}></span>
-                <span>{value}</span>
-            </span>
-            <button className="premium-person__socialIcon__trashicon fa fa-trash" onClick={() => onRemove(value)}></button>
+            <div className="premium-person__socialIcon__content" onClick={() => addLink(value)}>
+                <span className={`premium-person__socialIcon__iconvalue fa fa-${value.label}`}></span>
+                {value.label}
+            </div>
+            <button className="premium-person__socialIcon__trashicon fa fa-trash" onClick={() => onRemove(value.label)}></button>
         </span>
+        {value.link && (
+            <div className="premium-person__socialIcon__link">
+                <TextControl
+                    placeholder={__(`Enter ${value.label} link`)}
+                    value={value.value}
+                    onChange={(val) => LinkValue(val, value)}
+                />
+                <button className="premium-person__socialIcon__saveButton">Save</button>
+            </div>
+        )}
     </li>);
 
     const shouldCancelStart = (e) => {
         // Prevent sorting from being triggered if target is input or button
-        if (['input', 'button'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+        if (['div', 'button', 'input'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
             return true; // Return true to cancel sorting
         }
     }
+    const addLink = (value, i) => {
+        console.log(value);
+        console.log(i);
+        if (i > 0) {
+            value.link = !value.link
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            console.log(array[0]);
+            let newData = (array[0].items).filter(b => {
+                return b
+            })
+            console.log(newData);
+            array[0].items = newData
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
+            console.log(multiPersonContent);
+        } else {
+            value.link = !value.link
+            let arrayItem = multiPersonContent.map((cont) => (
+                cont
+            ))
+            console.log(arrayItem);
 
+            let newData = (arrayItem[0].items).filter(b => {
+                return b
+            })
+            console.log(newData);
+
+            setAttributes({ multiPersonContent: [{ id: 1, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+            console.log(value.link);
+        }
+    }
+    const LinkValue = (value, i) => {
+        console.log(value);
+        console.log(i);
+        i.value = value
+        let arrayItem = multiPersonContent.map((cont) => (
+            cont
+        ))
+        console.log(arrayItem);
+
+        let newData = (arrayItem[0].items).filter(b => {
+            return b
+        })
+        console.log(newData);
+
+        setAttributes({ multiPersonContent: [{ id: 1, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+        console.log(multiPersonContent);
+    }
     const onRemove = (value, i) => {
         console.log(value);
         console.log(i);
@@ -280,7 +334,7 @@ const edit = props => {
             )).filter(f => f.id == i)
             console.log(array[0]);
             let newData = (array[0].items).filter(b => {
-                return b != value
+                return b.label != value
             })
             console.log(newData);
             array[0].items = newData
@@ -293,24 +347,28 @@ const edit = props => {
                 cont
             ))
             let newData = (arrayItem[0].items).filter(b => {
-                return b != value
+                return b.label != value
             })
-            setAttributes({ multiPersonContent: [{ id: 1, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData }] });
+            console.log(newData);
+
+            setAttributes({ multiPersonContent: [{ id: 1, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+            console.log(multiPersonContent);
+
         }
     };
 
-    const SortableList = SortableContainer(({ items, onRemove }) => {
+    const SortableList = SortableContainer(({ items, onRemove, addLink }) => {
         return (
             <ul>
                 {(items).map((value, index) => (
-                    <SortableItem key={`item-${value}`} index={index} value={value} onRemove={onRemove} />
+                    <SortableItem key={`item-${value}`} index={index} value={value} onRemove={onRemove} addLink={addLink} />
                 ))}
             </ul>
         );
     });
     const socialIconfn = (v) => {
         return <div>{(v).map((value) => (
-            <i className={`premium-person__socialIcon ${defaultIconColor ? value : ""} ${value == "youtube" ? "fa fa-youtube-play" : `fa fa-${value}`} premium-person__${socialIconHoverColor}`}
+            <i className={`premium-person__socialIcon ${defaultIconColor ? value.label : ""} ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
                 style={{
                     color: defaultIconColor ? "#ffffff" : socialIconColor,
                     background: defaultIconColor ? "" : socialIconBackgroundColor,
@@ -322,9 +380,10 @@ const edit = props => {
                     marginTop: iconMarginT,
                     marginBottom: iconMarginB,
                     padding: socialIconPadding + socialIconPaddingU,
+                    height: `${socialIconPadding > 0 ? "auto" : "1.2em"}`,
+                    width: `${socialIconPadding > 0 ? "auto" : "1.2em"}`,
                 }}
             />
-
         ))}
         </div>
     }
@@ -360,7 +419,7 @@ const edit = props => {
                     <div className={`premium-person__name_wrap`}>
                         {value.name && (
                             <span
-                                className={`premium-person__name${value.name}`}
+                                className={`premium-person__name`}
                                 style={{
                                     color: nameColor,
                                     fontSize: nameSize + "px",
@@ -433,10 +492,10 @@ const edit = props => {
         let arrayItem = multiPersonContent.map((cont) => (
             cont
         ))
-        console.log("arrayItem", arrayItem[0].items);
-
         const array = arrayMove(arrayItem[0].items, oldIndex, newIndex)
-        setAttributes({ multiPersonContent: [{ id: 1, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: array }] });
+        console.log(array);
+
+        setAttributes({ multiPersonContent: [{ id: 1, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: array, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
     };
 
     const addSocialIcon = (newsocial, index) => {
@@ -451,7 +510,7 @@ const edit = props => {
             let arrayItem = multiPersonContent.map((cont) => (
                 cont
             )).filter(f => f.id == index)
-            arrayItem[0].items.push(newicon)
+            arrayItem[0].items.push({ label: newicon, link: false })
             multiPersonContent[index - 1] = arrayItem[0]
             setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
         }
@@ -470,7 +529,12 @@ const edit = props => {
                 title: "Senior Developer",
                 desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
                 socialIcon: false,
-                items: ['facebook', 'twitter', 'instagram', 'youtube'],
+                items: [
+                    { label: 'facebook', link: false, value: "#" },
+                    { label: 'twitter', link: false, value: "#" },
+                    { label: 'instagram', link: false, value: "#" },
+                    { label: 'youtube', link: false, value: "#" }
+                ],
                 blur: "0",
                 bright: "100",
                 contrast: "100",
@@ -665,8 +729,10 @@ const edit = props => {
             let arrayItem = multiPersonContent.map((cont) => (
                 cont
             ))
-            arrayItem[0].items.push(newicon)
-            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: arrayItem[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+            arrayItem[0].items.push({ label: newicon, link: false })
+            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: arrayItem[0].items, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+            console.log(multiPersonContent);
+
         }
     }
 
@@ -740,7 +806,7 @@ const edit = props => {
                                 noSelectedPlaceholder={__("Select Icon")}
                                 noIconPlaceholder={__("No icons found")}
                             />
-                            <SortableList items={content.items} onSortEnd={(o, n) => onSortEndMulti(content.id, o, n)} onRemove={(value) => onRemove(value, content.id)} shouldCancelStart={shouldCancelStart} />
+                            <SortableList items={content.items} onSortEnd={(o, n) => onSortEndMulti(content.id, o, n)} onRemove={(value) => onRemove(value, content.id)} addLink={(value) => addLink(value, content.id)} shouldCancelStart={shouldCancelStart} />
                         </div>
                     )}
                 </PanelBody>
@@ -862,7 +928,7 @@ const edit = props => {
                                     noSelectedPlaceholder={__("Select Icon")}
                                     noIconPlaceholder={__("No icons found")}
                                 />
-                                <SortableList items={multiPersonContent[0].items} onSortEnd={(o, n) => onSortEndSingle(o, n)} onRemove={(value) => onRemove(value)} shouldCancelStart={shouldCancelStart} />
+                                <SortableList items={multiPersonContent[0].items} onSortEnd={(o, n) => onSortEndSingle(o, n)} onRemove={(value) => onRemove(value)} addLink={(value) => addLink(value)} shouldCancelStart={shouldCancelStart} />
                             </div>
                         )}
                     </PanelBody>
@@ -1199,14 +1265,14 @@ const edit = props => {
             </InspectorControls>
         ),
         <div
-            id={`${mainClasses}-wrap-${id}`}
-            className={`${mainClasses}__wrap premium-person__${effect} premium-person__${effectDir}`}
+            id={`premium-person-${id}`}
+            className={`${mainClasses} premium-person__${effect} premium-person__${effectDir}`}
             style={{ textAlign: personAlign }}
         >
             <style
                 dangerouslySetInnerHTML={{
                     __html: [
-                        `#premium-person-wrap-${id} .premium-person:hover {`,
+                        `#premium-person-${id} .premium-person:hover {`,
                         `border-color: ${borderHoverColor} !important;`,
                         "}",
                         `.premium-person__socialIcon:hover {`,

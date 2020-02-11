@@ -286,17 +286,23 @@ const personAttrs = {
         default: [
             {
                 id: 1,
-                personImgUrl:"",
+                personImgUrl: "",
                 name: "Merna Hanna",
                 title: "Senior Developer",
                 desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
                 socialIcon: false,
-                items:['facebook', 'twitter', 'instagram', 'youtube'],
-                blur:"0",
-                bright:"100",
-                contrast:"100",
-                saturation:"100",
-                hue:"0"
+                items: [
+                    { label: 'facebook', link: false, value:"#" },
+                    { label: 'twitter', link: false, value:"#" },
+                    { label: 'instagram', link: false, value:"#" },
+                    { label: 'youtube', link: false, value:"#" }
+                ],
+                blur: "0",
+                bright: "100",
+                contrast: "100",
+                saturation: "100",
+                hue: "0",
+                link: false
             }
         ]
     },
@@ -304,8 +310,8 @@ const personAttrs = {
         type: "number"
     },
     socialIconPaddingU: {
-        type: "string"
-    },
+        type: "number"
+    }
 };
 
 registerBlockType("premium/person", {
