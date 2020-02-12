@@ -281,6 +281,10 @@ const personAttrs = {
         type: "string",
         default: "effect1"
     },
+    rowPerson: {
+        type: "string",
+        default: "column1"
+    },
     multiPersonContent: {
         type: "array",
         default: [
@@ -292,10 +296,10 @@ const personAttrs = {
                 desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
                 socialIcon: false,
                 items: [
-                    { label: 'facebook', link: false, value:"#" },
-                    { label: 'twitter', link: false, value:"#" },
-                    { label: 'instagram', link: false, value:"#" },
-                    { label: 'youtube', link: false, value:"#" }
+                    { label: 'facebook', link: false, value:"" },
+                    { label: 'twitter', link: false, value:"" },
+                    { label: 'instagram', link: false, value:"" },
+                    { label: 'youtube', link: false, value:"" }
                 ],
                 blur: "0",
                 bright: "100",

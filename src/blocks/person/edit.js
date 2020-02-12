@@ -98,6 +98,7 @@ const edit = props => {
         titleshadowVertical,
         hoverEffectPerson,
         effectPersonStyle,
+        rowPerson,
         multiPersonContent,
         socialIconPadding,
         socialIconPaddingU
@@ -152,6 +153,32 @@ const edit = props => {
             label: __("Style 2")
         }
     ];
+    const ROWS = [
+        {
+            value: "column1",
+            label: __("1 Column")
+        },
+        {
+            value: "column2",
+            label: __("2 Columns")
+        },
+        {
+            value: "column3",
+            label: __("3 Columns")
+        },
+        {
+            value: "column4",
+            label: __("4 Columns")
+        },
+        {
+            value: "column5",
+            label: __("5 Columns")
+        },
+        {
+            value: "column6",
+            label: __("6 Columns")
+        }
+    ]
 
     const iconsList = [
         {
@@ -248,7 +275,7 @@ const edit = props => {
 
     const mainClasses = classnames(className, "premium-person");
 
-    const SortableItem = SortableElement(({ index, onRemove, value, addLink }) => <li tabIndex={0}>
+    const SortableItem = SortableElement(({ newIndex, onRemove, value, addLink, personIndex }) => <li tabIndex={0}>
         <span className="premium-person__socialIcon__container">
             <span className="premium-person__socialIcon__dragHandle"></span>
             <div className="premium-person__socialIcon__content" onClick={() => addLink(value)}>
@@ -262,7 +289,7 @@ const edit = props => {
                 <TextControl
                     placeholder={__(`Enter ${value.label} link`)}
                     value={value.value}
-                    onChange={(val) => LinkValue(val, value)}
+                    onChange={(val) => LinkValue(val, newIndex, personIndex)}
                 />
                 <button className="premium-person__socialIcon__saveButton">Save</button>
             </div>
@@ -304,26 +331,41 @@ const edit = props => {
             })
             console.log(newData);
 
-            setAttributes({ multiPersonContent: [{ id: 1, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
             console.log(value.link);
         }
     }
-    const LinkValue = (value, i) => {
+    const LinkValue = (value, i, personIndex) => {
         console.log(value);
         console.log(i);
-        i.value = value
-        let arrayItem = multiPersonContent.map((cont) => (
-            cont
-        ))
-        console.log(arrayItem);
+        console.log(personIndex)
+        // if (personIndex > 0) { 
+        //     i.value = value
+        //     let arrayItem = multiPersonContent.map((cont) => (
+        //         cont
+        //     )).filter(f => f.id == personIndex)
+        //     console.log(arrayItem[0]);
+        //     let newData = (arrayItem[0].items).filter(b => {
+        //         return b
+        //     })
+        //     console.log(newData);
+        // }
+        // else {
+        //     i.value = value
+        //     let arrayItem = multiPersonContent.map((cont) => (
+        //         cont
+        //     ))
+        //     console.log(arrayItem);
 
-        let newData = (arrayItem[0].items).filter(b => {
-            return b
-        })
-        console.log(newData);
+        //     let newData = (arrayItem[0].items).filter(b => {
+        //         return b
+        //     })
+        //     console.log(newData);
 
-        setAttributes({ multiPersonContent: [{ id: 1, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
-        console.log(multiPersonContent);
+        //     setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+        //     console.log(multiPersonContent);
+        // }
+
     }
     const onRemove = (value, i) => {
         console.log(value);
@@ -351,17 +393,17 @@ const edit = props => {
             })
             console.log(newData);
 
-            setAttributes({ multiPersonContent: [{ id: 1, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
             console.log(multiPersonContent);
 
         }
     };
 
-    const SortableList = SortableContainer(({ items, onRemove, addLink }) => {
+    const SortableList = SortableContainer(({ items, onRemove, addLink, personIndex }) => {
         return (
             <ul>
                 {(items).map((value, index) => (
-                    <SortableItem key={`item-${value}`} index={index} value={value} onRemove={onRemove} addLink={addLink} />
+                    <SortableItem key={`item-${value}`} index={index} newIndex={index} personIndex={personIndex} value={value} onRemove={onRemove} addLink={addLink} />
                 ))}
             </ul>
         );
@@ -389,7 +431,7 @@ const edit = props => {
     }
 
     const content = () => {
-        return <div className={`${multiPersonChecked > 1 ? `premium-person__multiPersonChecked` : ""}`}
+        return <div className={`${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
         > {multiPersonContent.map((value) => (
             <div key={value.id} className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}>
                 <div
@@ -411,6 +453,11 @@ const edit = props => {
                         />
                     )}
                     {!value.personImgUrl && <DefaultImage className={className} />}
+                    {effectPersonStyle == 'effect2' ? <div className={`premium-person__socialEffect2`}>{value.socialIcon && (
+                        <div>
+                            {socialIconfn(value.items)}
+                        </div>
+                    )}</div> : ""}
                 </div>
 
                 <div
@@ -476,11 +523,11 @@ const edit = props => {
                             </span>
                         )}
                     </div>
-                    {value.socialIcon && (
+                    {effectPersonStyle == 'effect1' ? <div>{value.socialIcon && (
                         <div>
                             {socialIconfn(value.items)}
                         </div>
-                    )}
+                    )}</div> : ""}
                 </div>
             </div>
         ))}
@@ -495,35 +542,62 @@ const edit = props => {
         const array = arrayMove(arrayItem[0].items, oldIndex, newIndex)
         console.log(array);
 
-        setAttributes({ multiPersonContent: [{ id: 1, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: array, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: array, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
     };
 
     const addSocialIcon = (newsocial, index) => {
-        let array = iconsList.map((i) => (
-            i
-        )).filter(f => f.value == newsocial)
-        if (array[0] != undefined) {
-            newsocial = array[0];
-            setAttributes({ selectedSocialMediaIcon: newsocial.label });
-            const newicon = newsocial.label;
+        if (index > 0) {
+            let array = iconsList.map((i) => (
+                i
+            )).filter(f => f.value == newsocial)
+            if (array[0] != undefined) {
+                newsocial = array[0];
+                setAttributes({ selectedSocialMediaIcon: newsocial.label });
+                const newicon = newsocial.label;
 
-            let arrayItem = multiPersonContent.map((cont) => (
-                cont
-            )).filter(f => f.id == index)
-            arrayItem[0].items.push({ label: newicon, link: false })
-            multiPersonContent[index - 1] = arrayItem[0]
-            setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
+                let arrayItem = multiPersonContent.map((cont) => (
+                    cont
+                )).filter(f => f.id == index)
+                arrayItem[0].items.push({ label: newicon, link: false, value: "#" })
+                multiPersonContent[index - 1] = arrayItem[0]
+                setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
+            }
+        }
+        else {
+            let array = iconsList.map((i) => (
+                i
+            )).filter(f => f.value == newsocial)
+            console.log(array);
+
+            if (array[0] != undefined) {
+                newsocial = array[0];
+                setAttributes({ selectedSocialMediaIcon: newsocial.label });
+                const newicon = newsocial.label;
+
+                let arrayItem = multiPersonContent.map((cont) => (
+                    cont
+                ))
+
+                console.log(arrayItem[0].items.filter(d => d.label != newicon));
+
+                let push = arrayItem[0].items.push({ label: newicon, link: false, value: "" })
+                console.log(push);
+
+                let filter = arrayItem[0].items.filter(d => d.label != newicon)
+                console.log(filter);
+
+                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: arrayItem[0].items, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+                console.log(multiPersonContent);
+
+            }
         }
     };
     const addMultiPerson = (newP) => {
-        if (newP < multiPersonChecked) {
-            multiPersonContent.splice(newP, 1);
-            setAttributes({ multiPersonChecked: newP })
-        }
-        else {
-            setAttributes({ multiPersonChecked: newP })
-            multiPersonContent.push({
-                id: newP,
+        setAttributes({ multiPersonChecked: newP })
+        let array = []
+        for (let i = 1; i <= newP; i++) {
+            array.push({
+                id: i,
                 personImgUrl: "",
                 name: "Merna Hanna",
                 title: "Senior Developer",
@@ -541,6 +615,7 @@ const edit = props => {
                 saturation: "100",
                 hue: "0"
             })
+            setAttributes({ multiPersonContent: array })
         }
     };
 
@@ -555,184 +630,186 @@ const edit = props => {
     };
     const PersonImage = (media, i) => {
         console.log(media);
+        if (i > 0) {
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            array[0].personImgUrl = "undefined" === typeof media.sizes.thumbnail
+                ? media.url
+                : media.sizes.thumbnail.url
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
+            setAttributes({
+                personImgId: media.id
+            })
+        }
+        else {
+            let array = multiPersonContent.map((content) => (
+                content
+            ))
+            array[0].personImgUrl = "undefined" === typeof media.sizes.thumbnail
+                ? media.url
+                : media.sizes.thumbnail.url
+            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+            setAttributes({
+                personImgId: media.id
+            })
+        }
 
-        let array = multiPersonContent.map((cont) => (
-            cont
-        )).filter(f => f.id == i)
-        array[0].personImgUrl = "undefined" === typeof media.sizes.thumbnail
-            ? media.url
-            : media.sizes.thumbnail.url
-        multiPersonContent[i - 1] = array[0]
-        setAttributes(multiPersonContent[i - 1] = array[0]);
-        setAttributes({
-            personImgId: media.id
-        })
     }
     const Blur = (value, i) => {
-        let array = multiPersonContent.map((cont) => (
-            cont
-        )).filter(f => f.id == i)
-        array[0].blur = value
-        multiPersonContent[i - 1] = array[0]
-        setAttributes(multiPersonContent[i - 1] = array[0]);
+        if (i > 0) {
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            array[0].blur = value
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
+        }
+        else {
+            let array = multiPersonContent.map((content) => (
+                content
+            ))
+            array[0].blur = value
+            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+        }
+
     }
     const Bright = (value, i) => {
-        let array = multiPersonContent.map((cont) => (
-            cont
-        )).filter(f => f.id == i)
-        array[0].bright = value
-        multiPersonContent[i - 1] = array[0]
-        setAttributes(multiPersonContent[i - 1] = array[0]);
+        if (i > 0) {
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            array[0].bright = value
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
+        }
+        else {
+            let array = multiPersonContent.map((content) => (
+                content
+            ))
+            array[0].bright = value
+            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+        }
+
     }
     const Saturation = (value, i) => {
-        let array = multiPersonContent.map((cont) => (
-            cont
-        )).filter(f => f.id == i)
-        array[0].saturation = value
-        multiPersonContent[i - 1] = array[0]
-        setAttributes(multiPersonContent[i - 1] = array[0]);
+        if (i > 0) {
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            array[0].saturation = value
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
+        }
+        else {
+            let array = multiPersonContent.map((content) => (
+                content
+            ))
+            array[0].saturation = value
+            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+        }
     }
     const Contrast = (value, i) => {
-        let array = multiPersonContent.map((cont) => (
-            cont
-        )).filter(f => f.id == i)
-        array[0].contrast = value
-        multiPersonContent[i - 1] = array[0]
-        setAttributes(multiPersonContent[i - 1] = array[0]);
+        if (i > 0) {
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            array[0].contrast = value
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
+        }
+        else {
+            let array = multiPersonContent.map((content) => (
+                content
+            ))
+            array[0].contrast = value
+            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+        }
     }
     const Hue = (value, i) => {
-        let array = multiPersonContent.map((cont) => (
-            cont
-        )).filter(f => f.id == i)
-        array[0].hue = value
-        multiPersonContent[i - 1] = array[0]
-        setAttributes(multiPersonContent[i - 1] = array[0]);
+        if (i > 0) {
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            array[0].hue = value
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
+        }
+        else {
+            let array = multiPersonContent.map((content) => (
+                content
+            ))
+            array[0].hue = value
+            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+        }
     }
     const Name = (value, i) => {
-        let array = multiPersonContent.map((cont) => (
-            cont
-        )).filter(f => f.id == i)
-        array[0].name = value
-        multiPersonContent[i - 1] = array[0]
-        setAttributes(multiPersonContent[i - 1] = array[0]);
+        if (i > 0) {
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            array[0].name = value
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
+        }
+        else {
+            let array = multiPersonContent.map((content) => (
+                content
+            ))
+            array[0].name = value
+            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+        }
     }
     const Title = (value, i) => {
-        let array = multiPersonContent.map((cont) => (
-            cont
-        )).filter(f => f.id == i)
-        array[0].title = value
-        multiPersonContent[i - 1] = array[0]
-        setAttributes(multiPersonContent[i - 1] = array[0]);
+        if (i > 0) {
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            array[0].title = value
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
+        }
+        else {
+            let array = multiPersonContent.map((content) => (
+                content
+            ))
+            array[0].title = value
+            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+        }
     }
     const Desc = (value, i) => {
-        let array = multiPersonContent.map((cont) => (
-            cont
-        )).filter(f => f.id == i)
-        array[0].desc = value
-        multiPersonContent[i - 1] = array[0]
-        setAttributes(multiPersonContent[i - 1] = array[0]);
+        if (i > 0) {
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            array[0].desc = value
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
+        }
+        else {
+            let array = multiPersonContent.map((content) => (
+                content
+            ))
+            array[0].desc = value
+            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+        }
     }
     const SocialIcon = (value, i) => {
-        let array = multiPersonContent.map((cont) => (
-            cont
-        )).filter(f => f.id == i)
-        array[0].socialIcon = value
-        multiPersonContent[i - 1] = array[0]
-        setAttributes(multiPersonContent[i - 1] = array[0]);
-    }
-
-    const singleImage = (value) => {
-        let array = multiPersonContent.map((content) => (
-            content
-        ))
-        array[0].personImgUrl = "undefined" === typeof value.sizes.thumbnail
-            ? value.url
-            : value.sizes.thumbnail.url
-        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
-        setAttributes({
-            personImgId: value.id
-        })
-    }
-    const singleBlur = (value) => {
-        let array = multiPersonContent.map((content) => (
-            content
-        ))
-        array[0].blur = value
-        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
-    }
-    const singleBright = (value) => {
-        let array = multiPersonContent.map((content) => (
-            content
-        ))
-        array[0].bright = value
-        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
-    }
-    const singleContrast = (value) => {
-        let array = multiPersonContent.map((content) => (
-            content
-        ))
-        array[0].contrast = value
-        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
-    }
-    const singleSaturation = (value) => {
-        let array = multiPersonContent.map((content) => (
-            content
-        ))
-        array[0].saturation = value
-        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
-    }
-    const singleHue = (value) => {
-        let array = multiPersonContent.map((content) => (
-            content
-        ))
-        array[0].hue = value
-        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
-    }
-    const singleName = (value) => {
-        let array = multiPersonContent.map((content) => (
-            content
-        ))
-        array[0].name = value
-        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
-    }
-
-    const singleTitle = (value) => {
-        let array = multiPersonContent.map((content) => (
-            content
-        ))
-        array[0].title = value
-        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
-    }
-    const singleDesc = (value) => {
-        let array = multiPersonContent.map((content) => (
-            content
-        ))
-        array[0].desc = value
-        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
-    }
-    const singleSocialIcon = (value) => {
-        let array = multiPersonContent.map((content) => (
-            content
-        ))
-        array[0].socialIcon = value
-        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
-    }
-    const singleaddSocialIcon = (newsocial) => {
-        let array = iconsList.map((i) => (
-            i
-        )).filter(f => f.value == newsocial)
-        if (array[0] != undefined) {
-            newsocial = array[0];
-            setAttributes({ selectedSocialMediaIcon: newsocial.label });
-            const newicon = newsocial.label;
-
-            let arrayItem = multiPersonContent.map((cont) => (
+        if (i > 0) {
+            let array = multiPersonContent.map((cont) => (
                 cont
+            )).filter(f => f.id == i)
+            array[0].socialIcon = value
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
+        }
+        else {
+            let array = multiPersonContent.map((content) => (
+                content
             ))
-            arrayItem[0].items.push({ label: newicon, link: false })
-            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: arrayItem[0].items, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
-            console.log(multiPersonContent);
-
+            array[0].socialIcon = value
+            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
         }
     }
 
@@ -795,7 +872,7 @@ const edit = props => {
                     />
                     {content.socialIcon && (
                         <div>
-                            <p className="premium-person-paragraph">{__("Social Media")}</p>
+                            <label className="premium-person-paragraph">{__("Social Media")}</label>
                             <FontIconPicker
                                 icons={iconsList.map((i) => (
                                     i.value
@@ -806,7 +883,7 @@ const edit = props => {
                                 noSelectedPlaceholder={__("Select Icon")}
                                 noIconPlaceholder={__("No icons found")}
                             />
-                            <SortableList items={content.items} onSortEnd={(o, n) => onSortEndMulti(content.id, o, n)} onRemove={(value) => onRemove(value, content.id)} addLink={(value) => addLink(value, content.id)} shouldCancelStart={shouldCancelStart} />
+                            <SortableList items={content.items} personIndex={content.id} onSortEnd={(o, n) => onSortEndMulti(content.id, o, n)} onRemove={(value) => onRemove(value, content.id)} addLink={(value) => addLink(value, content.id)} shouldCancelStart={shouldCancelStart} />
                         </div>
                     )}
                 </PanelBody>
@@ -833,9 +910,16 @@ const edit = props => {
                     <RangeControl
                         label={__("Person Number")}
                         value={multiPersonChecked}
+                        min="1"
                         onChange={value => addMultiPerson(value)}
                     />
                     <p>{__("Enable this option if you need to add multiple persons")}</p>
+                    {multiPersonChecked > 1 ? <SelectControl
+                        label={__("Persons/Row")}
+                        value={rowPerson}
+                        onChange={newColumn => setAttributes({ rowPerson: newColumn })}
+                        options={ROWS}
+                    /> : ""}
                     <SelectControl
                         label={__("Style")}
                         value={effectPersonStyle}
@@ -870,7 +954,7 @@ const edit = props => {
                         {!multiPersonContent[0].personImgUrl && <DefaultImage />}
                         <MediaUpload
                             allowedTypes={["image"]}
-                            onSelect={media => singleImage(media)}
+                            onSelect={media => PersonImage(media)}
                             type="image"
                             value={personImgId}
                             render={({ open }) => (
@@ -889,40 +973,40 @@ const edit = props => {
                             contrast={multiPersonContent[0].contrast}
                             saturation={multiPersonContent[0].saturation}
                             hue={multiPersonContent[0].hue}
-                            onChangeBlur={value => singleBlur(value)}
-                            onChangeBright={value => singleBright(value)}
-                            onChangeContrast={value => singleContrast(value)}
-                            onChangeSat={value => singleSaturation(value)}
-                            onChangeHue={value => singleHue(value)}
+                            onChangeBlur={value => Blur(value)}
+                            onChangeBright={value => Bright(value)}
+                            onChangeContrast={value => Contrast(value)}
+                            onChangeSat={value => Saturation(value)}
+                            onChangeHue={value => Hue(value)}
                         />
                         <TextControl
                             label={__("Name")}
                             value={multiPersonContent[0].name}
-                            onChange={value => singleName(value)}
+                            onChange={value => Name(value)}
                         />
                         <TextControl
                             label={__("Title")}
                             value={multiPersonContent[0].title}
-                            onChange={value => singleTitle(value)}
+                            onChange={value => Title(value)}
                         />
                         <TextareaControl
                             label={__("Description")}
                             value={multiPersonContent[0].desc}
-                            onChange={value => singleDesc(value)}
+                            onChange={value => Desc(value)}
                         />
                         <ToggleControl
                             label={__("Enable Social Icons")}
                             checked={multiPersonContent[0].socialIcon}
-                            onChange={value => singleSocialIcon(value)}
+                            onChange={value => SocialIcon(value)}
                         />
                         {multiPersonContent[0].socialIcon && (
                             <div>
-                                <p className="premium-person-paragraph">{__("Social Media")}</p>
+                                <label className="premium-person-paragraph">{__("Social Media")}</label>
                                 <FontIconPicker
                                     icons={iconsList.map((i) => (
                                         i.value
                                     ))}
-                                    onChange={value => singleaddSocialIcon(value)}
+                                    onChange={value => addSocialIcon(value)}
                                     isMulti={false}
                                     appendTo="body"
                                     noSelectedPlaceholder={__("Select Icon")}
