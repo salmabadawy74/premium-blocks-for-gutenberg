@@ -68,7 +68,8 @@ const save = props => {
         multiPersonContent,
         socialIconPadding,
         socialIconPaddingU,
-        socialIconBackgroundColor
+        socialIconBackgroundColor,
+        rowPerson
     } = props.attributes;
 
 
@@ -76,51 +77,58 @@ const save = props => {
 
     const socialIconfn = (v) => {
         return <div>{(v).map((value) => (
-            <i className={`premium-person__socialIcon ${defaultIconColor ? value.label : ""} ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
-                style={{
-                    color: defaultIconColor ? "#ffffff" : socialIconColor,
-                    background: defaultIconColor ? "" : socialIconBackgroundColor,
-                    fontSize: (socialIconSize || 50) + iconSizeUnit,
-                    border: borderTypeIcon,
-                    borderWidth: borderWidthIcon + "px",
-                    borderRadius: borderRadiusIcon || 100 + "px",
-                    borderColor: borderColorIcon,
-                    marginTop: iconMarginT,
-                    marginBottom: iconMarginB,
-                    padding: socialIconPadding + socialIconPaddingU,
-                    height: `${socialIconPadding > 0 ? "auto" : "1.2em"}`,
-                    width: `${socialIconPadding > 0 ? "auto" : "1.2em"}`,
-                }}
-            />
+            <a className={`premium-person__socialIcon__link_content`} href={`${value.value}`} style={{
+                padding: socialIconPadding + socialIconPaddingU,
+            }}>
+                <i className={`premium-person__socialIcon ${defaultIconColor ? value.label : ""} ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
+                    style={{
+                        color: defaultIconColor ? "#ffffff" : socialIconColor,
+                        background: defaultIconColor ? "" : socialIconBackgroundColor,
+                        fontSize: (socialIconSize || 50) + iconSizeUnit,
+                        border: borderTypeIcon,
+                        borderWidth: borderWidthIcon + "px",
+                        borderRadius: borderRadiusIcon || 100 + "px",
+                        borderColor: borderColorIcon,
+                        marginTop: iconMarginT,
+                        marginBottom: iconMarginB
+                    }}
+                />
+            </a>
         ))}
         </div>
     }
 
     const content = () => {
-        return <div className={`${multiPersonChecked > 1 ? `premium-person__multiPersonChecked` : ""}`}
+        return <div className={`${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
         > {multiPersonContent.map((value) => (
             <div key={value.id} className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}>
-                <div
-                    className={`premium-person__img_wrap`}
-                >
-                    {value.personImgUrl && (
-                        <img
-                            className={`premium-person__img`}
-                            src={`${value.personImgUrl}`}
-                            alt="Person"
-                            style={{
+                <div className={`premium-person__img__container`}>
+                    <div
+                        className={`premium-person__img_wrap`}
+                    >
+                        {value.personImgUrl && (
+                            <img
+                                className={`premium-person__img`}
+                                src={`${value.personImgUrl}`}
+                                alt="Person"
+                                style={{
 
-                                borderWidth: imgBorder + "px",
-                                borderColor: imgBorderColor,
-                                width: imgSize + "px",
-                                height: imgSize + "px",
-                                filter: `brightness( ${value.bright}% ) contrast( ${value.contrast}% ) saturate( ${value.saturation}% ) blur( ${value.blur}px ) hue-rotate( ${value.hue}deg )`
-                            }}
-                        />
-                    )}
-                    {!value.personImgUrl && <DefaultImage className={className} />}
+                                    borderWidth: imgBorder + "px",
+                                    borderColor: imgBorderColor,
+                                    width: imgSize + "px",
+                                    height: imgSize + "px",
+                                    filter: `brightness( ${value.bright}% ) contrast( ${value.contrast}% ) saturate( ${value.saturation}% ) blur( ${value.blur}px ) hue-rotate( ${value.hue}deg )`
+                                }}
+                            />
+                        )}
+                        {!value.personImgUrl && <DefaultImage className={className} />}
+                    </div>
+                    {effectPersonStyle == 'effect2' ? <div className={`premium-person__socialEffect2`}>{value.socialIcon && (
+                        <div>
+                            {socialIconfn(value.items)}
+                        </div>
+                    )}</div> : ""}
                 </div>
-
                 <div
                     className={`premium-person__info`}
                 >
@@ -184,39 +192,36 @@ const save = props => {
                             </span>
                         )}
                     </div>
-                    {value.socialIcon && (
+                    {effectPersonStyle == 'effect1' ? <div>{value.socialIcon && (
                         <div>
                             {socialIconfn(value.items)}
                         </div>
-                    )}
+                    )}</div> : ""}
                 </div>
             </div>
         ))}
-
         </div>
     }
 
     return (
-        <div>
-            <div
-                id={`premium-person-${id}`}
-                className={`${mainClasses} premium-person__${effect} premium-person__${effectDir}`}
-                style={{ textAlign: personAlign }}
-            >
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: [
-                            `#premium-person-${id} .premium-person:hover {`,
-                            `border-color: ${borderHoverColor} !important;`,
-                            "}",
-                            `.premium-person__socialIcon:hover {`,
-                            `color: ${defaultIconColor ? "" : `${socialIconHoverColor} !important;`}`,
-                            "}"
-                        ].join("\n")
-                    }}
-                />
-                {content()}
-            </div>
+        <div
+            id={`premium-person-${id}`}
+            className={`${mainClasses} premium-person__${effect} premium-person__${effectDir}`}
+            style={{ textAlign: personAlign }}
+        >
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: [
+                        `#premium-person-${id} .premium-person:hover {`,
+                        `border-color: ${borderHoverColor} !important;`,
+                        "}",
+                        `.premium-person__socialIcon:hover {`,
+                        `color: ${defaultIconColor ? "" : `${socialIconHoverColor} !important;`}`,
+                        "}"
+                    ].join("\n")
+                }}
+            />
+            {content()}
         </div>
     );
 };

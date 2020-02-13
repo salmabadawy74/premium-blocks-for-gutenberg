@@ -9,14 +9,6 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const personAttrs = {
-    personText: {
-        type: "string",
-        default: __("Premium person")
-    },
-    newpersonText: {
-        type: "string",
-        default: __("New person")
-    },
     personSize: {
         type: "string",
         default: "md"
@@ -159,15 +151,6 @@ const personAttrs = {
         type: "string",
         default: "#000"
     },
-    textColor: {
-        type: "string"
-    },
-    backHoverColor: {
-        type: "string"
-    },
-    textFontFamily: {
-        type: "string"
-    },
     multiPersonChecked: {
         type: "number",
         default: 1
@@ -211,12 +194,6 @@ const personAttrs = {
     borderHoverColor: {
         type: "string"
     },
-    padding: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string"
-    },
     nameshadowColor: {
         type: "string"
     },
@@ -247,21 +224,6 @@ const personAttrs = {
         type: "number",
         default: "0"
     },
-    personnamenamenameshadowColor: {
-        type: "string"
-    },
-    personnameshadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    personnameshadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    personnameshadowVertical: {
-        type: "number",
-        default: "0"
-    },
     personShadowPosition: {
         type: "string",
         default: ""
@@ -275,7 +237,6 @@ const personAttrs = {
     },
     selectedSocialMediaIcon: {
         type: "string",
-        // default: "dashicons dashicons-admin-site"
     },
     effectPersonStyle: {
         type: "string",
@@ -296,10 +257,10 @@ const personAttrs = {
                 desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
                 socialIcon: false,
                 items: [
-                    { label: 'facebook', link: false, value:"" },
-                    { label: 'twitter', link: false, value:"" },
-                    { label: 'instagram', link: false, value:"" },
-                    { label: 'youtube', link: false, value:"" }
+                    { label: 'facebook', link: false, value:"#", changeinput: "#"},
+                    { label: 'twitter', link: false, value:"#", changeinput: "#" },
+                    { label: 'instagram', link: false, value:"#", changeinput: "#" },
+                    { label: 'youtube', link: false, value:"#", changeinput: "#" }
                 ],
                 blur: "0",
                 bright: "100",
