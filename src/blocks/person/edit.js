@@ -47,6 +47,7 @@ const SortableItem = SortableElement(({ onRemove, saveLink, changeLinkValue, val
                 placeholder={__(`Enter ${value.label} link`)}
                 value={value.changeinput}
                 onChange={(val) => changeLinkValue(val, value, personIndex)}
+                className="premium-person__socialIcon__textInput"
             />
             <button className="premium-person__socialIcon__saveButton" onClick={() => saveLink(value.changeinput, value, personIndex)}>Save</button>
         </div>
@@ -104,8 +105,8 @@ class PremiumPerson extends Component {
             iconSizeUnit,
             defaultIconColor,
             socialIconBackgroundColor,
-            iconMarginT,
-            iconMarginB,
+            iconMarginL,
+            iconMarginR,
             effect,
             effectDir,
             descColor,
@@ -136,7 +137,8 @@ class PremiumPerson extends Component {
             rowPerson,
             multiPersonContent,
             socialIconPadding,
-            socialIconPaddingU
+            socialIconPaddingU,
+            change
         } = this.props.attributes;
 
         const HOVER = [
@@ -414,26 +416,28 @@ class PremiumPerson extends Component {
             }
         };
         const socialIconfn = (v) => {
-            return <div>{(v).map((value) => (
-                <a className={`premium-person__socialIcon__link_content`} href={`${value.value}`} style={{
-                    padding: socialIconPadding + socialIconPaddingU,
-                }}>
-                    <i className={`premium-person__socialIcon ${defaultIconColor ? value.label : ""} ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
-                        style={{
-                            color: defaultIconColor ? "#ffffff" : socialIconColor,
-                            background: defaultIconColor ? "" : socialIconBackgroundColor,
-                            fontSize: (socialIconSize || 50) + iconSizeUnit,
-                            border: borderTypeIcon,
-                            borderWidth: borderWidthIcon + "px",
-                            borderRadius: borderRadiusIcon || 100 + "px",
-                            borderColor: borderColorIcon,
-                            marginTop: iconMarginT,
-                            marginBottom: iconMarginB
-                        }}
-                    />
-                </a>
+            return <ul className="premium-person__social-list">{(v).map((value) => (
+                <li>
+                    <a className={`premium-person__socialIcon__link_content`} href={`${value.value}`} style={{
+                        padding: socialIconPadding + socialIconPaddingU,
+                        borderStyle: borderTypeIcon,
+                        borderWidth: borderWidthIcon + "px",
+                        borderRadius: borderRadiusIcon || 100 + "px",
+                        borderColor: borderColorIcon,
+                        marginLeft: iconMarginL,
+                        marginRight: iconMarginR
+                    }}>
+                        <i className={`premium-person__socialIcon ${defaultIconColor ? value.label : ""} ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
+                            style={{
+                                color: socialIconColor,
+                                background: socialIconBackgroundColor,
+                                fontSize: (socialIconSize || 50) + iconSizeUnit,
+                            }}
+                        />
+                    </a>
+                </li>
             ))}
-            </div>
+            </ul>
         }
         const content = () => {
             return <div className={`${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
@@ -454,16 +458,14 @@ class PremiumPerson extends Component {
                                         borderColor: imgBorderColor,
                                         width: imgSize + "px",
                                         height: imgSize + "px",
-                                        filter: `brightness( ${value.bright}% ) contrast( ${value.contrast}% ) saturate( ${value.saturation}% ) blur( ${value.blur}px ) hue-rotate( ${value.hue}deg )`
+                                        filter: `${change ? `brightness( ${value.bright}% ) contrast( ${value.contrast}% ) saturate( ${value.saturation}% ) blur( ${value.blur}px ) hue-rotate( ${value.hue}deg )` : ""}`
                                     }}
                                 />
                             )}
                             {!value.personImgUrl && <DefaultImage className={className} />}
                         </div>
                         {effectPersonStyle == 'effect2' ? <div className={`premium-person__socialEffect2`}>{value.socialIcon && (
-                            <div>
-                                {socialIconfn(value.items)}
-                            </div>
+                            socialIconfn(value.items)
                         )}</div> : ""}
                     </div>
                     <div
@@ -530,9 +532,7 @@ class PremiumPerson extends Component {
                             )}
                         </div>
                         {effectPersonStyle == 'effect1' ? <div>{value.socialIcon && (
-                            <div>
-                                {socialIconfn(value.items)}
-                            </div>
+                            socialIconfn(value.items)
                         )}</div> : ""}
                     </div>
                 </div>
@@ -599,28 +599,33 @@ class PremiumPerson extends Component {
         };
         const addMultiPerson = (newP) => {
             setAttributes({ multiPersonChecked: newP })
-            let array = []
-            for (let i = 1; i <= newP; i++) {
-                array.push({
-                    id: i,
-                    personImgUrl: "",
-                    name: "Merna Hanna",
-                    title: "Senior Developer",
-                    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
-                    socialIcon: false,
-                    items: [
-                        { label: 'facebook', link: false, value: "#", changeinput: "#" },
-                        { label: 'twitter', link: false, value: "#", changeinput: "#" },
-                        { label: 'instagram', link: false, value: "#", changeinput: "#" },
-                        { label: 'youtube', link: false, value: "#", changeinput: "#" }
-                    ],
-                    blur: "0",
-                    bright: "100",
-                    contrast: "100",
-                    saturation: "100",
-                    hue: "0"
-                })
-                setAttributes({ multiPersonContent: array })
+            if (newP < multiPersonChecked) {
+                for (let i = multiPersonChecked; i > newP; i--) {
+                    multiPersonContent.splice(i - 1, 1)
+                }
+            }
+            else {
+                for (let i = multiPersonChecked + 1; i <= newP; i++) {
+                    multiPersonContent.push({
+                        id: i,
+                        personImgUrl: "",
+                        name: "Merna Hanna",
+                        title: "Senior Developer",
+                        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
+                        socialIcon: false,
+                        items: [
+                            { label: 'facebook', link: false, value: "#", changeinput: "#" },
+                            { label: 'twitter', link: false, value: "#", changeinput: "#" },
+                            { label: 'instagram', link: false, value: "#", changeinput: "#" },
+                            { label: 'youtube', link: false, value: "#", changeinput: "#" }
+                        ],
+                        blur: "0",
+                        bright: "100",
+                        contrast: "100",
+                        saturation: "100",
+                        hue: "0"
+                    })
+                }
             }
         };
 
@@ -661,6 +666,7 @@ class PremiumPerson extends Component {
             }
         }
         const Blur = (value, i) => {
+            setAttributes({ change: true });
             if (i > 0) {
                 let array = multiPersonContent.map((cont) => (
                     cont
@@ -678,6 +684,7 @@ class PremiumPerson extends Component {
             }
         }
         const Bright = (value, i) => {
+            setAttributes({ change: true });
             if (i > 0) {
                 let array = multiPersonContent.map((cont) => (
                     cont
@@ -695,6 +702,7 @@ class PremiumPerson extends Component {
             }
         }
         const Saturation = (value, i) => {
+            setAttributes({ change: true });
             if (i > 0) {
                 let array = multiPersonContent.map((cont) => (
                     cont
@@ -712,6 +720,7 @@ class PremiumPerson extends Component {
             }
         }
         const Contrast = (value, i) => {
+            setAttributes({ change: true });
             if (i > 0) {
                 let array = multiPersonContent.map((cont) => (
                     cont
@@ -729,6 +738,7 @@ class PremiumPerson extends Component {
             }
         }
         const Hue = (value, i) => {
+            setAttributes({ change: true });
             if (i > 0) {
                 let array = multiPersonContent.map((cont) => (
                     cont
@@ -880,8 +890,9 @@ class PremiumPerson extends Component {
                                 onChange={value => addSocialIcon(value, content.id)}
                                 isMulti={false}
                                 appendTo="body"
+                                closeOnSelect={false}
+                                iconsPerPage="25"
                                 noSelectedPlaceholder={__("Select Icon")}
-                                noIconPlaceholder={__("No icons found")}
                             />
                             <SortableList items={content.items} personIndex={content.id} onSortEnd={(o, n) => onSortEndMulti(content.id, o, n)} onRemove={(value) => onRemove(value, content.id)} saveLink={(value, i) => saveLink(value, i, content.id)} changeLinkValue={(value, i) => changeLinkValue(value, i, content.id)} addLink={(value) => addLink(value, content.id)} shouldCancelStart={shouldCancelStart} helperClass='premium-person__sortableHelper' />
                         </div>
@@ -1003,8 +1014,9 @@ class PremiumPerson extends Component {
                                         onChange={value => addSocialIcon(value)}
                                         isMulti={false}
                                         appendTo="body"
+                                        closeOnSelect={false}
+                                        iconsPerPage="25"
                                         noSelectedPlaceholder={__("Select Icon")}
-                                        noIconPlaceholder={__("No icons found")}
                                     />
                                     <SortableList items={multiPersonContent[0].items} onSortEnd={(o, n) => onSortEndSingle(o, n)} onRemove={(value) => onRemove(value)} saveLink={(value, i) => saveLink(value, i)} changeLinkValue={(value, i) => changeLinkValue(value, i)} addLink={(value) => addLink(value)} shouldCancelStart={shouldCancelStart} helperClass='premium-person__sortableHelper' />
                                 </div>
@@ -1323,17 +1335,17 @@ class PremiumPerson extends Component {
                         />
                         <div className="premium-control-toggle">
                             <PremiumMargin
-                                directions={["top", "bottom"]}
-                                marginTop={iconMarginT}
-                                marginBottom={iconMarginB}
-                                onChangeMarTop={value =>
+                                directions={["left", "right"]}
+                                marginLeft={iconMarginL}
+                                marginRight={iconMarginR}
+                                onChangeMarLeft={value =>
                                     setAttributes({
-                                        iconMarginT: value || 0
+                                        iconMarginL: value || 0
                                     })
                                 }
-                                onChangeMarBottom={value =>
+                                onChangeMarRight={value =>
                                     setAttributes({
-                                        iconMarginB: value || 0
+                                        iconMarginR: value || 0
                                     })
                                 }
                             />
@@ -1444,17 +1456,17 @@ class PremiumPerson extends Component {
                             />
                             <div className="premium-control-toggle">
                                 <PremiumMargin
-                                    directions={["top", "bottom"]}
-                                    marginTop={iconMarginT}
-                                    marginBottom={iconMarginB}
-                                    onChangeMarTop={value =>
+                                    directions={["left", "right"]}
+                                    marginLeft={iconMarginL}
+                                    marginRight={iconMarginR}
+                                    onChangeMarLeft={value =>
                                         setAttributes({
-                                            iconMarginT: value || 0
+                                            iconMarginL: value || 0
                                         })
                                     }
-                                    onChangeMarBottom={value =>
+                                    onChangeMarRight={value =>
                                         setAttributes({
-                                            iconMarginB: value || 0
+                                            iconMarginR: value || 0
                                         })
                                     }
                                 />
@@ -1475,7 +1487,9 @@ class PremiumPerson extends Component {
                             `border-color: ${borderHoverColor} !important;`,
                             "}",
                             `.premium-person__socialIcon:hover {`,
-                            `color: ${defaultIconColor ? "" : `${socialIconHoverColor} !important;`}`,
+                            `color: ${socialIconHoverColor} !important;}`,
+                            `-webkit-transition: all .2s ease-in-out`,
+                            `transition: all .2s ease-in-out`,
                             "}"
                         ].join("\n")
                     }}

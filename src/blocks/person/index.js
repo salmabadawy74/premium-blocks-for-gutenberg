@@ -131,11 +131,11 @@ const personAttrs = {
     borderColorIcon: {
         type: "string"
     },
-    iconMarginT: {
+    iconMarginL: {
         type: "number",
         default: "1"
     },
-    iconMarginB: {
+    iconMarginR: {
         type: "number",
         default: "1"
     },
@@ -276,6 +276,10 @@ const personAttrs = {
     },
     socialIconPaddingU: {
         type: "number"
+    },
+    change:{
+        type: "boolean",
+        default: false
     }
 };
 

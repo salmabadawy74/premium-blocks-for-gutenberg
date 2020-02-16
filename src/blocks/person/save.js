@@ -37,8 +37,8 @@ const save = props => {
         socialIconColor,
         socialIconHoverColor,
         defaultIconColor,
-        iconMarginT,
-        iconMarginB,
+        iconMarginL,
+        iconMarginR,
         effect,
         effectDir,
         nameLine,
@@ -76,26 +76,28 @@ const save = props => {
     const mainClasses = classnames(className, 'premium-person');
 
     const socialIconfn = (v) => {
-        return <div>{(v).map((value) => (
-            <a className={`premium-person__socialIcon__link_content`} href={`${value.value}`} style={{
-                padding: socialIconPadding + socialIconPaddingU,
-            }}>
-                <i className={`premium-person__socialIcon ${defaultIconColor ? value.label : ""} ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
-                    style={{
-                        color: defaultIconColor ? "#ffffff" : socialIconColor,
-                        background: defaultIconColor ? "" : socialIconBackgroundColor,
-                        fontSize: (socialIconSize || 50) + iconSizeUnit,
-                        border: borderTypeIcon,
-                        borderWidth: borderWidthIcon + "px",
-                        borderRadius: borderRadiusIcon || 100 + "px",
-                        borderColor: borderColorIcon,
-                        marginTop: iconMarginT,
-                        marginBottom: iconMarginB
-                    }}
-                />
-            </a>
+        return <ul className="premium-person__social-list">{(v).map((value) => (
+            <li>
+                <a className={`premium-person__socialIcon__link_content`} href={`${value.value}`} style={{
+                    padding: socialIconPadding + socialIconPaddingU,
+                    borderStyle: borderTypeIcon,
+                    borderWidth: borderWidthIcon + "px",
+                    borderRadius: borderRadiusIcon || 100 + "px",
+                    borderColor: borderColorIcon,
+                    marginLeft: iconMarginL,
+                    marginRight: iconMarginR
+                }}>
+                    <i className={`premium-person__socialIcon ${defaultIconColor ? value.label : ""} ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
+                        style={{
+                            color: socialIconColor,
+                            background: socialIconBackgroundColor,
+                            fontSize: (socialIconSize || 50) + iconSizeUnit,
+                        }}
+                    />
+                </a>
+            </li>
         ))}
-        </div>
+        </ul>
     }
 
     const content = () => {
@@ -117,16 +119,14 @@ const save = props => {
                                     borderColor: imgBorderColor,
                                     width: imgSize + "px",
                                     height: imgSize + "px",
-                                    filter: `brightness( ${value.bright}% ) contrast( ${value.contrast}% ) saturate( ${value.saturation}% ) blur( ${value.blur}px ) hue-rotate( ${value.hue}deg )`
+                                    filter: `${change ? `brightness( ${value.bright}% ) contrast( ${value.contrast}% ) saturate( ${value.saturation}% ) blur( ${value.blur}px ) hue-rotate( ${value.hue}deg )` : ""}`
                                 }}
                             />
                         )}
                         {!value.personImgUrl && <DefaultImage className={className} />}
                     </div>
                     {effectPersonStyle == 'effect2' ? <div className={`premium-person__socialEffect2`}>{value.socialIcon && (
-                        <div>
-                            {socialIconfn(value.items)}
-                        </div>
+                        socialIconfn(value.items)
                     )}</div> : ""}
                 </div>
                 <div
@@ -193,9 +193,7 @@ const save = props => {
                         )}
                     </div>
                     {effectPersonStyle == 'effect1' ? <div>{value.socialIcon && (
-                        <div>
-                            {socialIconfn(value.items)}
-                        </div>
+                        socialIconfn(value.items)
                     )}</div> : ""}
                 </div>
             </div>
@@ -210,17 +208,19 @@ const save = props => {
             style={{ textAlign: personAlign }}
         >
             <style
-                dangerouslySetInnerHTML={{
-                    __html: [
-                        `#premium-person-${id} .premium-person:hover {`,
-                        `border-color: ${borderHoverColor} !important;`,
-                        "}",
-                        `.premium-person__socialIcon:hover {`,
-                        `color: ${defaultIconColor ? "" : `${socialIconHoverColor} !important;`}`,
-                        "}"
-                    ].join("\n")
-                }}
-            />
+                    dangerouslySetInnerHTML={{
+                        __html: [
+                            `#premium-person-${id} .premium-person:hover {`,
+                            `border-color: ${borderHoverColor} !important;`,
+                            "}",
+                            `.premium-person__socialIcon:hover {`,
+                            `color: ${socialIconHoverColor} !important;`,
+                            `-webkit-transition: all .2s ease-in-out`,
+                            `transition: all .2s ease-in-out`,
+                            "}"
+                        ].join("\n")
+                    }}
+                />
             {content()}
         </div>
     );

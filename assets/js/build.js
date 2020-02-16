@@ -41194,11 +41194,11 @@ var personAttrs = (_personAttrs = {
     borderColorIcon: {
         type: "string"
     },
-    iconMarginT: {
+    iconMarginL: {
         type: "number",
         default: "1"
     },
-    iconMarginB: {
+    iconMarginR: {
         type: "number",
         default: "1"
     },
@@ -41302,6 +41302,9 @@ var personAttrs = (_personAttrs = {
     type: "number"
 }), _defineProperty(_personAttrs, "socialIconPaddingU", {
     type: "number"
+}), _defineProperty(_personAttrs, "change", {
+    type: "boolean",
+    default: false
 }), _personAttrs);
 
 registerBlockType("premium/person", {
@@ -41360,8 +41363,8 @@ var save = function save(props) {
         socialIconColor = _props$attributes.socialIconColor,
         socialIconHoverColor = _props$attributes.socialIconHoverColor,
         defaultIconColor = _props$attributes.defaultIconColor,
-        iconMarginT = _props$attributes.iconMarginT,
-        iconMarginB = _props$attributes.iconMarginB,
+        iconMarginL = _props$attributes.iconMarginL,
+        iconMarginR = _props$attributes.iconMarginR,
         effect = _props$attributes.effect,
         effectDir = _props$attributes.effectDir,
         nameLine = _props$attributes.nameLine,
@@ -41399,27 +41402,31 @@ var save = function save(props) {
 
     var socialIconfn = function socialIconfn(v) {
         return wp.element.createElement(
-            'div',
-            null,
+            'ul',
+            { className: 'premium-person__social-list' },
             v.map(function (value) {
                 return wp.element.createElement(
-                    'a',
-                    { className: 'premium-person__socialIcon__link_content', href: '' + value.value, style: {
-                            padding: socialIconPadding + socialIconPaddingU
-                        } },
-                    wp.element.createElement('i', { className: 'premium-person__socialIcon ' + (defaultIconColor ? value.label : "") + ' ' + (value.label == "youtube" ? "fa fa-youtube-play" : 'fa fa-' + value.label) + ' premium-person__' + socialIconHoverColor,
-                        style: {
-                            color: defaultIconColor ? "#ffffff" : socialIconColor,
-                            background: defaultIconColor ? "" : socialIconBackgroundColor,
-                            fontSize: (socialIconSize || 50) + iconSizeUnit,
-                            border: borderTypeIcon,
-                            borderWidth: borderWidthIcon + "px",
-                            borderRadius: borderRadiusIcon || 100 + "px",
-                            borderColor: borderColorIcon,
-                            marginTop: iconMarginT,
-                            marginBottom: iconMarginB
-                        }
-                    })
+                    'li',
+                    null,
+                    wp.element.createElement(
+                        'a',
+                        { className: 'premium-person__socialIcon__link_content', href: '' + value.value, style: {
+                                padding: socialIconPadding + socialIconPaddingU,
+                                borderStyle: borderTypeIcon,
+                                borderWidth: borderWidthIcon + "px",
+                                borderRadius: borderRadiusIcon || 100 + "px",
+                                borderColor: borderColorIcon,
+                                marginLeft: iconMarginL,
+                                marginRight: iconMarginR
+                            } },
+                        wp.element.createElement('i', { className: 'premium-person__socialIcon ' + (defaultIconColor ? value.label : "") + ' ' + (value.label == "youtube" ? "fa fa-youtube-play" : 'fa fa-' + value.label) + ' premium-person__' + socialIconHoverColor,
+                            style: {
+                                color: socialIconColor,
+                                background: socialIconBackgroundColor,
+                                fontSize: (socialIconSize || 50) + iconSizeUnit
+                            }
+                        })
+                    )
                 );
             })
         );
@@ -41453,7 +41460,7 @@ var save = function save(props) {
                                     borderColor: imgBorderColor,
                                     width: imgSize + "px",
                                     height: imgSize + "px",
-                                    filter: 'brightness( ' + value.bright + '% ) contrast( ' + value.contrast + '% ) saturate( ' + value.saturation + '% ) blur( ' + value.blur + 'px ) hue-rotate( ' + value.hue + 'deg )'
+                                    filter: '' + (change ? 'brightness( ' + value.bright + '% ) contrast( ' + value.contrast + '% ) saturate( ' + value.saturation + '% ) blur( ' + value.blur + 'px ) hue-rotate( ' + value.hue + 'deg )' : "")
                                 }
                             }),
                             !value.personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_default_image__["a" /* default */], { className: className })
@@ -41461,11 +41468,7 @@ var save = function save(props) {
                         effectPersonStyle == 'effect2' ? wp.element.createElement(
                             'div',
                             { className: 'premium-person__socialEffect2' },
-                            value.socialIcon && wp.element.createElement(
-                                'div',
-                                null,
-                                socialIconfn(value.items)
-                            )
+                            value.socialIcon && socialIconfn(value.items)
                         ) : ""
                     ),
                     wp.element.createElement(
@@ -41542,11 +41545,7 @@ var save = function save(props) {
                         effectPersonStyle == 'effect1' ? wp.element.createElement(
                             'div',
                             null,
-                            value.socialIcon && wp.element.createElement(
-                                'div',
-                                null,
-                                socialIconfn(value.items)
-                            )
+                            value.socialIcon && socialIconfn(value.items)
                         ) : ""
                     )
                 );
@@ -41563,7 +41562,7 @@ var save = function save(props) {
         },
         wp.element.createElement('style', {
             dangerouslySetInnerHTML: {
-                __html: ['#premium-person-' + id + ' .premium-person:hover {', 'border-color: ' + borderHoverColor + ' !important;', "}", '.premium-person__socialIcon:hover {', 'color: ' + (defaultIconColor ? "" : socialIconHoverColor + ' !important;'), "}"].join("\n")
+                __html: ['#premium-person-' + id + ' .premium-person:hover {', 'border-color: ' + borderHoverColor + ' !important;', "}", '.premium-person__socialIcon:hover {', 'color: ' + socialIconHoverColor + ' !important;', '-webkit-transition: all .2s ease-in-out', 'transition: all .2s ease-in-out', "}"].join("\n")
             }
         }),
         content()
@@ -41666,7 +41665,8 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__["b" /
                 value: value.changeinput,
                 onChange: function onChange(val) {
                     return changeLinkValue(val, value, personIndex);
-                }
+                },
+                className: "premium-person__socialIcon__textInput"
             }),
             wp.element.createElement(
                 "button",
@@ -41748,8 +41748,8 @@ var PremiumPerson = function (_Component) {
                 iconSizeUnit = _props$attributes.iconSizeUnit,
                 defaultIconColor = _props$attributes.defaultIconColor,
                 socialIconBackgroundColor = _props$attributes.socialIconBackgroundColor,
-                iconMarginT = _props$attributes.iconMarginT,
-                iconMarginB = _props$attributes.iconMarginB,
+                iconMarginL = _props$attributes.iconMarginL,
+                iconMarginR = _props$attributes.iconMarginR,
                 effect = _props$attributes.effect,
                 effectDir = _props$attributes.effectDir,
                 descColor = _props$attributes.descColor,
@@ -41780,7 +41780,8 @@ var PremiumPerson = function (_Component) {
                 rowPerson = _props$attributes.rowPerson,
                 multiPersonContent = _props$attributes.multiPersonContent,
                 socialIconPadding = _props$attributes.socialIconPadding,
-                socialIconPaddingU = _props$attributes.socialIconPaddingU;
+                socialIconPaddingU = _props$attributes.socialIconPaddingU,
+                change = _props$attributes.change;
 
 
             var HOVER = [{
@@ -42021,27 +42022,31 @@ var PremiumPerson = function (_Component) {
             };
             var socialIconfn = function socialIconfn(v) {
                 return wp.element.createElement(
-                    "div",
-                    null,
+                    "ul",
+                    { className: "premium-person__social-list" },
                     v.map(function (value) {
                         return wp.element.createElement(
-                            "a",
-                            { className: "premium-person__socialIcon__link_content", href: "" + value.value, style: {
-                                    padding: socialIconPadding + socialIconPaddingU
-                                } },
-                            wp.element.createElement("i", { className: "premium-person__socialIcon " + (defaultIconColor ? value.label : "") + " " + (value.label == "youtube" ? "fa fa-youtube-play" : "fa fa-" + value.label) + " premium-person__" + socialIconHoverColor,
-                                style: {
-                                    color: defaultIconColor ? "#ffffff" : socialIconColor,
-                                    background: defaultIconColor ? "" : socialIconBackgroundColor,
-                                    fontSize: (socialIconSize || 50) + iconSizeUnit,
-                                    border: borderTypeIcon,
-                                    borderWidth: borderWidthIcon + "px",
-                                    borderRadius: borderRadiusIcon || 100 + "px",
-                                    borderColor: borderColorIcon,
-                                    marginTop: iconMarginT,
-                                    marginBottom: iconMarginB
-                                }
-                            })
+                            "li",
+                            null,
+                            wp.element.createElement(
+                                "a",
+                                { className: "premium-person__socialIcon__link_content", href: "" + value.value, style: {
+                                        padding: socialIconPadding + socialIconPaddingU,
+                                        borderStyle: borderTypeIcon,
+                                        borderWidth: borderWidthIcon + "px",
+                                        borderRadius: borderRadiusIcon || 100 + "px",
+                                        borderColor: borderColorIcon,
+                                        marginLeft: iconMarginL,
+                                        marginRight: iconMarginR
+                                    } },
+                                wp.element.createElement("i", { className: "premium-person__socialIcon " + (defaultIconColor ? value.label : "") + " " + (value.label == "youtube" ? "fa fa-youtube-play" : "fa fa-" + value.label) + " premium-person__" + socialIconHoverColor,
+                                    style: {
+                                        color: socialIconColor,
+                                        background: socialIconBackgroundColor,
+                                        fontSize: (socialIconSize || 50) + iconSizeUnit
+                                    }
+                                })
+                            )
                         );
                     })
                 );
@@ -42074,7 +42079,7 @@ var PremiumPerson = function (_Component) {
                                             borderColor: imgBorderColor,
                                             width: imgSize + "px",
                                             height: imgSize + "px",
-                                            filter: "brightness( " + value.bright + "% ) contrast( " + value.contrast + "% ) saturate( " + value.saturation + "% ) blur( " + value.blur + "px ) hue-rotate( " + value.hue + "deg )"
+                                            filter: "" + (change ? "brightness( " + value.bright + "% ) contrast( " + value.contrast + "% ) saturate( " + value.saturation + "% ) blur( " + value.blur + "px ) hue-rotate( " + value.hue + "deg )" : "")
                                         }
                                     }),
                                     !value.personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_default_image__["a" /* default */], { className: className })
@@ -42082,11 +42087,7 @@ var PremiumPerson = function (_Component) {
                                 effectPersonStyle == 'effect2' ? wp.element.createElement(
                                     "div",
                                     { className: "premium-person__socialEffect2" },
-                                    value.socialIcon && wp.element.createElement(
-                                        "div",
-                                        null,
-                                        socialIconfn(value.items)
-                                    )
+                                    value.socialIcon && socialIconfn(value.items)
                                 ) : ""
                             ),
                             wp.element.createElement(
@@ -42163,11 +42164,7 @@ var PremiumPerson = function (_Component) {
                                 effectPersonStyle == 'effect1' ? wp.element.createElement(
                                     "div",
                                     null,
-                                    value.socialIcon && wp.element.createElement(
-                                        "div",
-                                        null,
-                                        socialIconfn(value.items)
-                                    )
+                                    value.socialIcon && socialIconfn(value.items)
                                 ) : ""
                             )
                         );
@@ -42252,23 +42249,27 @@ var PremiumPerson = function (_Component) {
             };
             var addMultiPerson = function addMultiPerson(newP) {
                 setAttributes({ multiPersonChecked: newP });
-                var array = [];
-                for (var i = 1; i <= newP; i++) {
-                    array.push({
-                        id: i,
-                        personImgUrl: "",
-                        name: "Merna Hanna",
-                        title: "Senior Developer",
-                        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
-                        socialIcon: false,
-                        items: [{ label: 'facebook', link: false, value: "#", changeinput: "#" }, { label: 'twitter', link: false, value: "#", changeinput: "#" }, { label: 'instagram', link: false, value: "#", changeinput: "#" }, { label: 'youtube', link: false, value: "#", changeinput: "#" }],
-                        blur: "0",
-                        bright: "100",
-                        contrast: "100",
-                        saturation: "100",
-                        hue: "0"
-                    });
-                    setAttributes({ multiPersonContent: array });
+                if (newP < multiPersonChecked) {
+                    for (var i = multiPersonChecked; i > newP; i--) {
+                        multiPersonContent.splice(i - 1, 1);
+                    }
+                } else {
+                    for (var _i = multiPersonChecked + 1; _i <= newP; _i++) {
+                        multiPersonContent.push({
+                            id: _i,
+                            personImgUrl: "",
+                            name: "Merna Hanna",
+                            title: "Senior Developer",
+                            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
+                            socialIcon: false,
+                            items: [{ label: 'facebook', link: false, value: "#", changeinput: "#" }, { label: 'twitter', link: false, value: "#", changeinput: "#" }, { label: 'instagram', link: false, value: "#", changeinput: "#" }, { label: 'youtube', link: false, value: "#", changeinput: "#" }],
+                            blur: "0",
+                            bright: "100",
+                            contrast: "100",
+                            saturation: "100",
+                            hue: "0"
+                        });
+                    }
                 }
             };
 
@@ -42311,6 +42312,7 @@ var PremiumPerson = function (_Component) {
                 }
             };
             var Blur = function Blur(value, i) {
+                setAttributes({ change: true });
                 if (i > 0) {
                     var array = multiPersonContent.map(function (cont) {
                         return cont;
@@ -42329,6 +42331,7 @@ var PremiumPerson = function (_Component) {
                 }
             };
             var Bright = function Bright(value, i) {
+                setAttributes({ change: true });
                 if (i > 0) {
                     var array = multiPersonContent.map(function (cont) {
                         return cont;
@@ -42347,6 +42350,7 @@ var PremiumPerson = function (_Component) {
                 }
             };
             var Saturation = function Saturation(value, i) {
+                setAttributes({ change: true });
                 if (i > 0) {
                     var array = multiPersonContent.map(function (cont) {
                         return cont;
@@ -42365,6 +42369,7 @@ var PremiumPerson = function (_Component) {
                 }
             };
             var Contrast = function Contrast(value, i) {
+                setAttributes({ change: true });
                 if (i > 0) {
                     var array = multiPersonContent.map(function (cont) {
                         return cont;
@@ -42383,6 +42388,7 @@ var PremiumPerson = function (_Component) {
                 }
             };
             var Hue = function Hue(value, i) {
+                setAttributes({ change: true });
                 if (i > 0) {
                     var array = multiPersonContent.map(function (cont) {
                         return cont;
@@ -42573,8 +42579,9 @@ var PremiumPerson = function (_Component) {
                                 },
                                 isMulti: false,
                                 appendTo: "body",
-                                noSelectedPlaceholder: __("Select Icon"),
-                                noIconPlaceholder: __("No icons found")
+                                closeOnSelect: false,
+                                iconsPerPage: "25",
+                                noSelectedPlaceholder: __("Select Icon")
                             }),
                             wp.element.createElement(SortableList, { items: content.items, personIndex: content.id, onSortEnd: function onSortEnd(o, n) {
                                     return onSortEndMulti(content.id, o, n);
@@ -42754,8 +42761,9 @@ var PremiumPerson = function (_Component) {
                             },
                             isMulti: false,
                             appendTo: "body",
-                            noSelectedPlaceholder: __("Select Icon"),
-                            noIconPlaceholder: __("No icons found")
+                            closeOnSelect: false,
+                            iconsPerPage: "25",
+                            noSelectedPlaceholder: __("Select Icon")
                         }),
                         wp.element.createElement(SortableList, { items: multiPersonContent[0].items, onSortEnd: function onSortEnd(o, n) {
                                 return onSortEndSingle(o, n);
@@ -43212,17 +43220,17 @@ var PremiumPerson = function (_Component) {
                         "div",
                         { className: "premium-control-toggle" },
                         wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_margin__["a" /* default */], {
-                            directions: ["top", "bottom"],
-                            marginTop: iconMarginT,
-                            marginBottom: iconMarginB,
-                            onChangeMarTop: function onChangeMarTop(value) {
+                            directions: ["left", "right"],
+                            marginLeft: iconMarginL,
+                            marginRight: iconMarginR,
+                            onChangeMarLeft: function onChangeMarLeft(value) {
                                 return setAttributes({
-                                    iconMarginT: value || 0
+                                    iconMarginL: value || 0
                                 });
                             },
-                            onChangeMarBottom: function onChangeMarBottom(value) {
+                            onChangeMarRight: function onChangeMarRight(value) {
                                 return setAttributes({
-                                    iconMarginB: value || 0
+                                    iconMarginR: value || 0
                                 });
                             }
                         })
@@ -43382,17 +43390,17 @@ var PremiumPerson = function (_Component) {
                         "div",
                         { className: "premium-control-toggle" },
                         wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_margin__["a" /* default */], {
-                            directions: ["top", "bottom"],
-                            marginTop: iconMarginT,
-                            marginBottom: iconMarginB,
-                            onChangeMarTop: function onChangeMarTop(value) {
+                            directions: ["left", "right"],
+                            marginLeft: iconMarginL,
+                            marginRight: iconMarginR,
+                            onChangeMarLeft: function onChangeMarLeft(value) {
                                 return setAttributes({
-                                    iconMarginT: value || 0
+                                    iconMarginL: value || 0
                                 });
                             },
-                            onChangeMarBottom: function onChangeMarBottom(value) {
+                            onChangeMarRight: function onChangeMarRight(value) {
                                 return setAttributes({
-                                    iconMarginB: value || 0
+                                    iconMarginR: value || 0
                                 });
                             }
                         })
@@ -43407,7 +43415,7 @@ var PremiumPerson = function (_Component) {
                 },
                 wp.element.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: ["#premium-person-" + id + " .premium-person:hover {", "border-color: " + borderHoverColor + " !important;", "}", ".premium-person__socialIcon:hover {", "color: " + (defaultIconColor ? "" : socialIconHoverColor + " !important;"), "}"].join("\n")
+                        __html: ["#premium-person-" + id + " .premium-person:hover {", "border-color: " + borderHoverColor + " !important;", "}", ".premium-person__socialIcon:hover {", "color: " + socialIconHoverColor + " !important;}", "-webkit-transition: all .2s ease-in-out", "transition: all .2s ease-in-out", "}"].join("\n")
                     }
                 }),
                 content()
