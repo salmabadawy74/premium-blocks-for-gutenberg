@@ -69,28 +69,34 @@ const save = props => {
         socialIconPadding,
         socialIconPaddingU,
         socialIconBackgroundColor,
-        rowPerson
+        rowPerson,
+        change,
+        blur,
+        bright,
+        contrast,
+        saturation,
+        hue
     } = props.attributes;
 
 
     const mainClasses = classnames(className, 'premium-person');
 
     const socialIconfn = (v) => {
-        return <ul className="premium-person__social-list">{(v).map((value) => (
+        return <ul className="premium-person__social-List">{(v).map((value) => (
             <li>
-                <a className={`premium-person__socialIcon__link_content`} href={`${value.value}`} style={{
+                <a className={`premium-person__socialIcon__link_content ${defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
                     padding: socialIconPadding + socialIconPaddingU,
                     borderStyle: borderTypeIcon,
                     borderWidth: borderWidthIcon + "px",
                     borderRadius: borderRadiusIcon || 100 + "px",
                     borderColor: borderColorIcon,
-                    marginLeft: iconMarginL,
-                    marginRight: iconMarginR
+                    marginLeft: iconMarginL + "px",
+                    marginRight: iconMarginR + "px",
+                    background: socialIconBackgroundColor,
                 }}>
-                    <i className={`premium-person__socialIcon ${defaultIconColor ? value.label : ""} ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
+                    <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
                         style={{
                             color: socialIconColor,
-                            background: socialIconBackgroundColor,
                             fontSize: (socialIconSize || 50) + iconSizeUnit,
                         }}
                     />
@@ -99,7 +105,6 @@ const save = props => {
         ))}
         </ul>
     }
-
     const content = () => {
         return <div className={`${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
         > {multiPersonContent.map((value) => (
@@ -119,13 +124,13 @@ const save = props => {
                                     borderColor: imgBorderColor,
                                     width: imgSize + "px",
                                     height: imgSize + "px",
-                                    filter: `${change ? `brightness( ${value.bright}% ) contrast( ${value.contrast}% ) saturate( ${value.saturation}% ) blur( ${value.blur}px ) hue-rotate( ${value.hue}deg )` : ""}`
+                                    filter: `${change ? `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )` : ""}`
                                 }}
                             />
                         )}
                         {!value.personImgUrl && <DefaultImage className={className} />}
                     </div>
-                    {effectPersonStyle == 'effect2' ? <div className={`premium-person__socialEffect2`}>{value.socialIcon && (
+                    {effectPersonStyle === 'effect2' ? <div className={`premium-person__socialEffect2`}>{value.socialIcon && (
                         socialIconfn(value.items)
                     )}</div> : ""}
                 </div>
@@ -208,19 +213,19 @@ const save = props => {
             style={{ textAlign: personAlign }}
         >
             <style
-                    dangerouslySetInnerHTML={{
-                        __html: [
-                            `#premium-person-${id} .premium-person:hover {`,
-                            `border-color: ${borderHoverColor} !important;`,
-                            "}",
-                            `.premium-person__socialIcon:hover {`,
-                            `color: ${socialIconHoverColor} !important;`,
-                            `-webkit-transition: all .2s ease-in-out`,
-                            `transition: all .2s ease-in-out`,
-                            "}"
-                        ].join("\n")
-                    }}
-                />
+                dangerouslySetInnerHTML={{
+                    __html: [
+                        `#premium-person-${id} .premium-person:hover {`,
+                        `border-color: ${borderHoverColor} !important;`,
+                        "}",
+                        `.premium-person__social-List li:hover i{`,
+                        `color: ${socialIconHoverColor} !important;`,
+                        `-webkit-transition: all .2s ease-in-out;`,
+                        `transition: all .2s ease-in-out;`,
+                        "}"
+                    ].join("\n")
+                }}
+            />
             {content()}
         </div>
     );

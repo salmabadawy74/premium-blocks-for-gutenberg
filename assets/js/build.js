@@ -41286,17 +41286,11 @@ var personAttrs = (_personAttrs = {
     default: [{
         id: 1,
         personImgUrl: "",
-        name: "Merna Hanna",
+        name: "John Doe",
         title: "Senior Developer",
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
         socialIcon: false,
-        items: [{ label: 'facebook', link: false, value: "#", changeinput: "#" }, { label: 'twitter', link: false, value: "#", changeinput: "#" }, { label: 'instagram', link: false, value: "#", changeinput: "#" }, { label: 'youtube', link: false, value: "#", changeinput: "#" }],
-        blur: "0",
-        bright: "100",
-        contrast: "100",
-        saturation: "100",
-        hue: "0",
-        link: false
+        items: [{ label: 'facebook', link: false, value: "#", changeinput: "#" }, { label: 'twitter', link: false, value: "#", changeinput: "#" }, { label: 'instagram', link: false, value: "#", changeinput: "#" }, { label: 'youtube', link: false, value: "#", changeinput: "#" }]
     }]
 }), _defineProperty(_personAttrs, "socialIconPadding", {
     type: "number"
@@ -41305,6 +41299,21 @@ var personAttrs = (_personAttrs = {
 }), _defineProperty(_personAttrs, "change", {
     type: "boolean",
     default: false
+}), _defineProperty(_personAttrs, "blur", {
+    type: "number",
+    default: "0"
+}), _defineProperty(_personAttrs, "bright", {
+    type: "number",
+    default: "100"
+}), _defineProperty(_personAttrs, "contrast", {
+    type: "number",
+    default: "100"
+}), _defineProperty(_personAttrs, "saturation", {
+    type: "number",
+    default: "100"
+}), _defineProperty(_personAttrs, "hue", {
+    type: "number",
+    default: "0"
 }), _personAttrs);
 
 registerBlockType("premium/person", {
@@ -41395,7 +41404,13 @@ var save = function save(props) {
         socialIconPadding = _props$attributes.socialIconPadding,
         socialIconPaddingU = _props$attributes.socialIconPaddingU,
         socialIconBackgroundColor = _props$attributes.socialIconBackgroundColor,
-        rowPerson = _props$attributes.rowPerson;
+        rowPerson = _props$attributes.rowPerson,
+        change = _props$attributes.change,
+        blur = _props$attributes.blur,
+        bright = _props$attributes.bright,
+        contrast = _props$attributes.contrast,
+        saturation = _props$attributes.saturation,
+        hue = _props$attributes.hue;
 
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-person');
@@ -41403,26 +41418,26 @@ var save = function save(props) {
     var socialIconfn = function socialIconfn(v) {
         return wp.element.createElement(
             'ul',
-            { className: 'premium-person__social-list' },
+            { className: 'premium-person__social-List' },
             v.map(function (value) {
                 return wp.element.createElement(
                     'li',
                     null,
                     wp.element.createElement(
                         'a',
-                        { className: 'premium-person__socialIcon__link_content', href: '' + value.value, style: {
+                        { className: 'premium-person__socialIcon__link_content ' + (defaultIconColor ? value.label : ""), href: '' + value.value, style: {
                                 padding: socialIconPadding + socialIconPaddingU,
                                 borderStyle: borderTypeIcon,
                                 borderWidth: borderWidthIcon + "px",
                                 borderRadius: borderRadiusIcon || 100 + "px",
                                 borderColor: borderColorIcon,
-                                marginLeft: iconMarginL,
-                                marginRight: iconMarginR
+                                marginLeft: iconMarginL + "px",
+                                marginRight: iconMarginR + "px",
+                                background: socialIconBackgroundColor
                             } },
-                        wp.element.createElement('i', { className: 'premium-person__socialIcon ' + (defaultIconColor ? value.label : "") + ' ' + (value.label == "youtube" ? "fa fa-youtube-play" : 'fa fa-' + value.label) + ' premium-person__' + socialIconHoverColor,
+                        wp.element.createElement('i', { className: 'premium-person__socialIcon ' + (value.label == "youtube" ? "fa fa-youtube-play" : 'fa fa-' + value.label) + ' premium-person__' + socialIconHoverColor,
                             style: {
                                 color: socialIconColor,
-                                background: socialIconBackgroundColor,
                                 fontSize: (socialIconSize || 50) + iconSizeUnit
                             }
                         })
@@ -41431,7 +41446,6 @@ var save = function save(props) {
             })
         );
     };
-
     var content = function content() {
         return wp.element.createElement(
             'div',
@@ -41460,12 +41474,12 @@ var save = function save(props) {
                                     borderColor: imgBorderColor,
                                     width: imgSize + "px",
                                     height: imgSize + "px",
-                                    filter: '' + (change ? 'brightness( ' + value.bright + '% ) contrast( ' + value.contrast + '% ) saturate( ' + value.saturation + '% ) blur( ' + value.blur + 'px ) hue-rotate( ' + value.hue + 'deg )' : "")
+                                    filter: '' + (change ? 'brightness( ' + bright + '% ) contrast( ' + contrast + '% ) saturate( ' + saturation + '% ) blur( ' + blur + 'px ) hue-rotate( ' + hue + 'deg )' : "")
                                 }
                             }),
                             !value.personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_default_image__["a" /* default */], { className: className })
                         ),
-                        effectPersonStyle == 'effect2' ? wp.element.createElement(
+                        effectPersonStyle === 'effect2' ? wp.element.createElement(
                             'div',
                             { className: 'premium-person__socialEffect2' },
                             value.socialIcon && socialIconfn(value.items)
@@ -41562,7 +41576,7 @@ var save = function save(props) {
         },
         wp.element.createElement('style', {
             dangerouslySetInnerHTML: {
-                __html: ['#premium-person-' + id + ' .premium-person:hover {', 'border-color: ' + borderHoverColor + ' !important;', "}", '.premium-person__socialIcon:hover {', 'color: ' + socialIconHoverColor + ' !important;', '-webkit-transition: all .2s ease-in-out', 'transition: all .2s ease-in-out', "}"].join("\n")
+                __html: ['#premium-person-' + id + ' .premium-person:hover {', 'border-color: ' + borderHoverColor + ' !important;', "}", '.premium-person__social-List li:hover i{', 'color: ' + socialIconHoverColor + ' !important;', '-webkit-transition: all .2s ease-in-out;', 'transition: all .2s ease-in-out;', "}"].join("\n")
             }
         }),
         content()
@@ -41781,7 +41795,12 @@ var PremiumPerson = function (_Component) {
                 multiPersonContent = _props$attributes.multiPersonContent,
                 socialIconPadding = _props$attributes.socialIconPadding,
                 socialIconPaddingU = _props$attributes.socialIconPaddingU,
-                change = _props$attributes.change;
+                change = _props$attributes.change,
+                blur = _props$attributes.blur,
+                bright = _props$attributes.bright,
+                contrast = _props$attributes.contrast,
+                saturation = _props$attributes.saturation,
+                hue = _props$attributes.hue;
 
 
             var HOVER = [{
@@ -41942,7 +41961,7 @@ var PremiumPerson = function (_Component) {
                     var _newData = arrayItem[0].items.filter(function (b) {
                         return b;
                     });
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: _newData, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: _newData }] });
                 }
             };
             var _saveLink = function _saveLink(value, i, personIndex) {
@@ -41969,7 +41988,7 @@ var PremiumPerson = function (_Component) {
                     var _newData2 = _arrayItem[0].items.filter(function (b) {
                         return b;
                     });
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem[0].personImgUrl, name: _arrayItem[0].name, title: _arrayItem[0].title, desc: _arrayItem[0].desc, socialIcon: _arrayItem[0].socialIcon, items: _newData2, blur: _arrayItem[0].blur, bright: _arrayItem[0].bright, contrast: _arrayItem[0].contrast, saturation: _arrayItem[0].saturation, hue: _arrayItem[0].hue }] });
+                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem[0].personImgUrl, name: _arrayItem[0].name, title: _arrayItem[0].title, desc: _arrayItem[0].desc, socialIcon: _arrayItem[0].socialIcon, items: _newData2 }] });
                 }
             };
             var _changeLinkValue = function _changeLinkValue(value, i, personIndex) {
@@ -41994,7 +42013,7 @@ var PremiumPerson = function (_Component) {
                     var _newData3 = _arrayItem2[0].items.filter(function (b) {
                         return b;
                     });
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem2[0].personImgUrl, name: _arrayItem2[0].name, title: _arrayItem2[0].title, desc: _arrayItem2[0].desc, socialIcon: _arrayItem2[0].socialIcon, items: _newData3, blur: _arrayItem2[0].blur, bright: _arrayItem2[0].bright, contrast: _arrayItem2[0].contrast, saturation: _arrayItem2[0].saturation, hue: _arrayItem2[0].hue }] });
+                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem2[0].personImgUrl, name: _arrayItem2[0].name, title: _arrayItem2[0].title, desc: _arrayItem2[0].desc, socialIcon: _arrayItem2[0].socialIcon, items: _newData3 }] });
                 }
             };
             var _onRemove = function _onRemove(value, i) {
@@ -42017,32 +42036,32 @@ var PremiumPerson = function (_Component) {
                     var _newData4 = arrayItem[0].items.filter(function (b) {
                         return b.label != value;
                     });
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: _newData4, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: _newData4 }] });
                 }
             };
             var socialIconfn = function socialIconfn(v) {
                 return wp.element.createElement(
                     "ul",
-                    { className: "premium-person__social-list" },
+                    { className: "premium-person__social-List" },
                     v.map(function (value) {
                         return wp.element.createElement(
                             "li",
                             null,
                             wp.element.createElement(
                                 "a",
-                                { className: "premium-person__socialIcon__link_content", href: "" + value.value, style: {
+                                { className: "premium-person__socialIcon__link_content " + (defaultIconColor ? value.label : ""), href: "" + value.value, style: {
                                         padding: socialIconPadding + socialIconPaddingU,
                                         borderStyle: borderTypeIcon,
                                         borderWidth: borderWidthIcon + "px",
                                         borderRadius: borderRadiusIcon || 100 + "px",
                                         borderColor: borderColorIcon,
-                                        marginLeft: iconMarginL,
-                                        marginRight: iconMarginR
+                                        marginLeft: iconMarginL + "px",
+                                        marginRight: iconMarginR + "px",
+                                        background: socialIconBackgroundColor
                                     } },
-                                wp.element.createElement("i", { className: "premium-person__socialIcon " + (defaultIconColor ? value.label : "") + " " + (value.label == "youtube" ? "fa fa-youtube-play" : "fa fa-" + value.label) + " premium-person__" + socialIconHoverColor,
+                                wp.element.createElement("i", { className: "premium-person__socialIcon " + (value.label == "youtube" ? "fa fa-youtube-play" : "fa fa-" + value.label) + " premium-person__" + socialIconHoverColor,
                                     style: {
                                         color: socialIconColor,
-                                        background: socialIconBackgroundColor,
                                         fontSize: (socialIconSize || 50) + iconSizeUnit
                                     }
                                 })
@@ -42079,12 +42098,12 @@ var PremiumPerson = function (_Component) {
                                             borderColor: imgBorderColor,
                                             width: imgSize + "px",
                                             height: imgSize + "px",
-                                            filter: "" + (change ? "brightness( " + value.bright + "% ) contrast( " + value.contrast + "% ) saturate( " + value.saturation + "% ) blur( " + value.blur + "px ) hue-rotate( " + value.hue + "deg )" : "")
+                                            filter: "" + (change ? "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )" : "")
                                         }
                                     }),
                                     !value.personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_default_image__["a" /* default */], { className: className })
                                 ),
-                                effectPersonStyle == 'effect2' ? wp.element.createElement(
+                                effectPersonStyle === 'effect2' ? wp.element.createElement(
                                     "div",
                                     { className: "premium-person__socialEffect2" },
                                     value.socialIcon && socialIconfn(value.items)
@@ -42179,7 +42198,7 @@ var PremiumPerson = function (_Component) {
                     return cont;
                 });
                 var array = Object(__WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__["c" /* arrayMove */])(arrayItem[0].items, oldIndex, newIndex);
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: array, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: array }] });
             };
             var addSocialIcon = function addSocialIcon(newsocial, index) {
                 if (index > 0) {
@@ -42236,13 +42255,13 @@ var PremiumPerson = function (_Component) {
                             _arrayItem3[0].items.filter(function (d) {
                                 return d.label != _newicon;
                             });
-                            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem3[0].personImgUrl, name: _arrayItem3[0].name, title: _arrayItem3[0].title, desc: _arrayItem3[0].desc, socialIcon: _arrayItem3[0].socialIcon, items: _arrayItem3[0].items, blur: _arrayItem3[0].blur, bright: _arrayItem3[0].bright, contrast: _arrayItem3[0].contrast, saturation: _arrayItem3[0].saturation, hue: _arrayItem3[0].hue }] });
+                            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem3[0].personImgUrl, name: _arrayItem3[0].name, title: _arrayItem3[0].title, desc: _arrayItem3[0].desc, socialIcon: _arrayItem3[0].socialIcon, items: _arrayItem3[0].items }] });
                         } else {
                             _arrayItem3[0].items.push({ label: _newicon, link: false, value: "", changeinput: "#" });
                             _arrayItem3[0].items.filter(function (d) {
                                 return d.label != _newicon;
                             });
-                            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem3[0].personImgUrl, name: _arrayItem3[0].name, title: _arrayItem3[0].title, desc: _arrayItem3[0].desc, socialIcon: _arrayItem3[0].socialIcon, items: _arrayItem3[0].items, blur: _arrayItem3[0].blur, bright: _arrayItem3[0].bright, contrast: _arrayItem3[0].contrast, saturation: _arrayItem3[0].saturation, hue: _arrayItem3[0].hue }] });
+                            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem3[0].personImgUrl, name: _arrayItem3[0].name, title: _arrayItem3[0].title, desc: _arrayItem3[0].desc, socialIcon: _arrayItem3[0].socialIcon, items: _arrayItem3[0].items }] });
                         }
                     }
                 }
@@ -42258,16 +42277,11 @@ var PremiumPerson = function (_Component) {
                         multiPersonContent.push({
                             id: _i,
                             personImgUrl: "",
-                            name: "Merna Hanna",
+                            name: "John Doe",
                             title: "Senior Developer",
                             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
                             socialIcon: false,
-                            items: [{ label: 'facebook', link: false, value: "#", changeinput: "#" }, { label: 'twitter', link: false, value: "#", changeinput: "#" }, { label: 'instagram', link: false, value: "#", changeinput: "#" }, { label: 'youtube', link: false, value: "#", changeinput: "#" }],
-                            blur: "0",
-                            bright: "100",
-                            contrast: "100",
-                            saturation: "100",
-                            hue: "0"
+                            items: [{ label: 'facebook', link: false, value: "#", changeinput: "#" }, { label: 'twitter', link: false, value: "#", changeinput: "#" }, { label: 'instagram', link: false, value: "#", changeinput: "#" }, { label: 'youtube', link: false, value: "#", changeinput: "#" }]
                         });
                     }
                 }
@@ -42305,105 +42319,10 @@ var PremiumPerson = function (_Component) {
                         return content;
                     });
                     _array2[0].personImgUrl = "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array2[0].personImgUrl, name: _array2[0].name, title: _array2[0].title, desc: _array2[0].desc, socialIcon: _array2[0].socialIcon, items: _array2[0].items, blur: _array2[0].blur, bright: _array2[0].bright, contrast: _array2[0].contrast, saturation: _array2[0].saturation, hue: _array2[0].hue }] });
+                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array2[0].personImgUrl, name: _array2[0].name, title: _array2[0].title, desc: _array2[0].desc, socialIcon: _array2[0].socialIcon, items: _array2[0].items }] });
                     setAttributes({
                         personImgId: media.id
                     });
-                }
-            };
-            var Blur = function Blur(value, i) {
-                setAttributes({ change: true });
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].blur = value;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var _array3 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array3[0].blur = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array3[0].personImgUrl, name: _array3[0].name, title: _array3[0].title, desc: _array3[0].desc, socialIcon: _array3[0].socialIcon, items: _array3[0].items, blur: _array3[0].blur, bright: _array3[0].bright, contrast: _array3[0].contrast, saturation: _array3[0].saturation, hue: _array3[0].hue }] });
-                }
-            };
-            var Bright = function Bright(value, i) {
-                setAttributes({ change: true });
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].bright = value;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var _array4 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array4[0].bright = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array4[0].personImgUrl, name: _array4[0].name, title: _array4[0].title, desc: _array4[0].desc, socialIcon: _array4[0].socialIcon, items: _array4[0].items, blur: _array4[0].blur, bright: _array4[0].bright, contrast: _array4[0].contrast, saturation: _array4[0].saturation, hue: _array4[0].hue }] });
-                }
-            };
-            var Saturation = function Saturation(value, i) {
-                setAttributes({ change: true });
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].saturation = value;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var _array5 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array5[0].saturation = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array5[0].personImgUrl, name: _array5[0].name, title: _array5[0].title, desc: _array5[0].desc, socialIcon: _array5[0].socialIcon, items: _array5[0].items, blur: _array5[0].blur, bright: _array5[0].bright, contrast: _array5[0].contrast, saturation: _array5[0].saturation, hue: _array5[0].hue }] });
-                }
-            };
-            var Contrast = function Contrast(value, i) {
-                setAttributes({ change: true });
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].contrast = value;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var _array6 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array6[0].contrast = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array6[0].personImgUrl, name: _array6[0].name, title: _array6[0].title, desc: _array6[0].desc, socialIcon: _array6[0].socialIcon, items: _array6[0].items, blur: _array6[0].blur, bright: _array6[0].bright, contrast: _array6[0].contrast, saturation: _array6[0].saturation, hue: _array6[0].hue }] });
-                }
-            };
-            var Hue = function Hue(value, i) {
-                setAttributes({ change: true });
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].hue = value;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var _array7 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array7[0].hue = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array7[0].personImgUrl, name: _array7[0].name, title: _array7[0].title, desc: _array7[0].desc, socialIcon: _array7[0].socialIcon, items: _array7[0].items, blur: _array7[0].blur, bright: _array7[0].bright, contrast: _array7[0].contrast, saturation: _array7[0].saturation, hue: _array7[0].hue }] });
                 }
             };
             var Name = function Name(value, i) {
@@ -42417,11 +42336,11 @@ var PremiumPerson = function (_Component) {
                     multiPersonContent[i - 1] = array[0];
                     setAttributes(multiPersonContent[i - 1] = array[0]);
                 } else {
-                    var _array8 = multiPersonContent.map(function (content) {
+                    var _array3 = multiPersonContent.map(function (content) {
                         return content;
                     });
-                    _array8[0].name = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array8[0].personImgUrl, name: _array8[0].name, title: _array8[0].title, desc: _array8[0].desc, socialIcon: _array8[0].socialIcon, items: _array8[0].items, blur: _array8[0].blur, bright: _array8[0].bright, contrast: _array8[0].contrast, saturation: _array8[0].saturation, hue: _array8[0].hue }] });
+                    _array3[0].name = value;
+                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array3[0].personImgUrl, name: _array3[0].name, title: _array3[0].title, desc: _array3[0].desc, socialIcon: _array3[0].socialIcon, items: _array3[0].items }] });
                 }
             };
             var Title = function Title(value, i) {
@@ -42435,11 +42354,11 @@ var PremiumPerson = function (_Component) {
                     multiPersonContent[i - 1] = array[0];
                     setAttributes(multiPersonContent[i - 1] = array[0]);
                 } else {
-                    var _array9 = multiPersonContent.map(function (content) {
+                    var _array4 = multiPersonContent.map(function (content) {
                         return content;
                     });
-                    _array9[0].title = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array9[0].personImgUrl, name: _array9[0].name, title: _array9[0].title, desc: _array9[0].desc, socialIcon: _array9[0].socialIcon, items: _array9[0].items, blur: _array9[0].blur, bright: _array9[0].bright, contrast: _array9[0].contrast, saturation: _array9[0].saturation, hue: _array9[0].hue }] });
+                    _array4[0].title = value;
+                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array4[0].personImgUrl, name: _array4[0].name, title: _array4[0].title, desc: _array4[0].desc, socialIcon: _array4[0].socialIcon, items: _array4[0].items }] });
                 }
             };
             var Desc = function Desc(value, i) {
@@ -42453,11 +42372,11 @@ var PremiumPerson = function (_Component) {
                     multiPersonContent[i - 1] = array[0];
                     setAttributes(multiPersonContent[i - 1] = array[0]);
                 } else {
-                    var _array10 = multiPersonContent.map(function (content) {
+                    var _array5 = multiPersonContent.map(function (content) {
                         return content;
                     });
-                    _array10[0].desc = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array10[0].personImgUrl, name: _array10[0].name, title: _array10[0].title, desc: _array10[0].desc, socialIcon: _array10[0].socialIcon, items: _array10[0].items, blur: _array10[0].blur, bright: _array10[0].bright, contrast: _array10[0].contrast, saturation: _array10[0].saturation, hue: _array10[0].hue }] });
+                    _array5[0].desc = value;
+                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array5[0].personImgUrl, name: _array5[0].name, title: _array5[0].title, desc: _array5[0].desc, socialIcon: _array5[0].socialIcon, items: _array5[0].items }] });
                 }
             };
             var SocialIcon = function SocialIcon(value, i) {
@@ -42471,11 +42390,11 @@ var PremiumPerson = function (_Component) {
                     multiPersonContent[i - 1] = array[0];
                     setAttributes(multiPersonContent[i - 1] = array[0]);
                 } else {
-                    var _array11 = multiPersonContent.map(function (content) {
+                    var _array6 = multiPersonContent.map(function (content) {
                         return content;
                     });
-                    _array11[0].socialIcon = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array11[0].personImgUrl, name: _array11[0].name, title: _array11[0].title, desc: _array11[0].desc, socialIcon: _array11[0].socialIcon, items: _array11[0].items, blur: _array11[0].blur, bright: _array11[0].bright, contrast: _array11[0].contrast, saturation: _array11[0].saturation, hue: _array11[0].hue }] });
+                    _array6[0].socialIcon = value;
+                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array6[0].personImgUrl, name: _array6[0].name, title: _array6[0].title, desc: _array6[0].desc, socialIcon: _array6[0].socialIcon, items: _array6[0].items }] });
                 }
             };
 
@@ -42510,28 +42429,6 @@ var PremiumPerson = function (_Component) {
                                     },
                                     __("Change Image")
                                 );
-                            }
-                        }),
-                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_filters__["a" /* default */], {
-                            blur: content.blur,
-                            bright: content.bright,
-                            contrast: content.contrast,
-                            saturation: content.saturation,
-                            hue: content.hue,
-                            onChangeBlur: function onChangeBlur(value) {
-                                return Blur(value, content.id);
-                            },
-                            onChangeBright: function onChangeBright(value) {
-                                return Bright(value, content.id);
-                            },
-                            onChangeContrast: function onChangeContrast(value) {
-                                return Contrast(value, content.id);
-                            },
-                            onChangeSat: function onChangeSat(value) {
-                                return Saturation(value, content.id);
-                            },
-                            onChangeHue: function onChangeHue(value) {
-                                return Hue(value, content.id);
                             }
                         }),
                         wp.element.createElement(TextControl, {
@@ -42694,28 +42591,6 @@ var PremiumPerson = function (_Component) {
                             );
                         }
                     }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_filters__["a" /* default */], {
-                        blur: multiPersonContent[0].blur,
-                        bright: multiPersonContent[0].bright,
-                        contrast: multiPersonContent[0].contrast,
-                        saturation: multiPersonContent[0].saturation,
-                        hue: multiPersonContent[0].hue,
-                        onChangeBlur: function onChangeBlur(value) {
-                            return Blur(value);
-                        },
-                        onChangeBright: function onChangeBright(value) {
-                            return Bright(value);
-                        },
-                        onChangeContrast: function onChangeContrast(value) {
-                            return Contrast(value);
-                        },
-                        onChangeSat: function onChangeSat(value) {
-                            return Saturation(value);
-                        },
-                        onChangeHue: function onChangeHue(value) {
-                            return Hue(value);
-                        }
-                    }),
                     wp.element.createElement(TextControl, {
                         label: __("Name"),
                         value: multiPersonContent[0].name,
@@ -42777,6 +42652,36 @@ var PremiumPerson = function (_Component) {
                                 return _addLink(value);
                             }, shouldCancelStart: shouldCancelStart, helperClass: "premium-person__sortableHelper" })
                     )
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Image Style"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_filters__["a" /* default */], {
+                        blur: blur,
+                        bright: bright,
+                        contrast: contrast,
+                        saturation: saturation,
+                        hue: hue,
+                        onChangeBlur: function onChangeBlur(newSize) {
+                            return setAttributes({ blur: newSize, change: true });
+                        },
+                        onChangeBright: function onChangeBright(newSize) {
+                            return setAttributes({ bright: newSize, change: true });
+                        },
+                        onChangeContrast: function onChangeContrast(newSize) {
+                            return setAttributes({ contrast: newSize, change: true });
+                        },
+                        onChangeSat: function onChangeSat(newSize) {
+                            return setAttributes({ saturation: newSize, change: true });
+                        },
+                        onChangeHue: function onChangeHue(newSize) {
+                            return setAttributes({ hue: newSize, change: true });
+                        }
+                    })
                 ),
                 wp.element.createElement(
                     PanelBody,
@@ -43225,12 +43130,12 @@ var PremiumPerson = function (_Component) {
                             marginRight: iconMarginR,
                             onChangeMarLeft: function onChangeMarLeft(value) {
                                 return setAttributes({
-                                    iconMarginL: value || 0
+                                    iconMarginL: value || 1
                                 });
                             },
                             onChangeMarRight: function onChangeMarRight(value) {
                                 return setAttributes({
-                                    iconMarginR: value || 0
+                                    iconMarginR: value || 1
                                 });
                             }
                         })
@@ -43395,12 +43300,12 @@ var PremiumPerson = function (_Component) {
                             marginRight: iconMarginR,
                             onChangeMarLeft: function onChangeMarLeft(value) {
                                 return setAttributes({
-                                    iconMarginL: value || 0
+                                    iconMarginL: value || 1
                                 });
                             },
                             onChangeMarRight: function onChangeMarRight(value) {
                                 return setAttributes({
-                                    iconMarginR: value || 0
+                                    iconMarginR: value || 1
                                 });
                             }
                         })
@@ -43415,7 +43320,7 @@ var PremiumPerson = function (_Component) {
                 },
                 wp.element.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: ["#premium-person-" + id + " .premium-person:hover {", "border-color: " + borderHoverColor + " !important;", "}", ".premium-person__socialIcon:hover {", "color: " + socialIconHoverColor + " !important;}", "-webkit-transition: all .2s ease-in-out", "transition: all .2s ease-in-out", "}"].join("\n")
+                        __html: ["#premium-person-" + id + " .premium-person:hover {", "border-color: " + borderHoverColor + " !important;", "}", ".premium-person__social-List li:hover i{", "color: " + socialIconHoverColor + " !important;", "-webkit-transition: all .2s ease-in-out;", "transition: all .2s ease-in-out;", "}"].join("\n")
                     }
                 }),
                 content()

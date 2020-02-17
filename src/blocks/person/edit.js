@@ -138,7 +138,12 @@ class PremiumPerson extends Component {
             multiPersonContent,
             socialIconPadding,
             socialIconPaddingU,
-            change
+            change,
+            blur,
+            bright,
+            contrast,
+            saturation,
+            hue
         } = this.props.attributes;
 
         const HOVER = [
@@ -340,7 +345,7 @@ class PremiumPerson extends Component {
                 let newData = (arrayItem[0].items).filter(b => {
                     return b
                 })
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData }] });
             }
         }
         const saveLink = (value, i, personIndex) => {
@@ -366,7 +371,7 @@ class PremiumPerson extends Component {
                 let newData = (arrayItem[0].items).filter(b => {
                     return b
                 })
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData }] });
             }
         }
         const changeLinkValue = (value, i, personIndex) => {
@@ -390,7 +395,7 @@ class PremiumPerson extends Component {
                 let newData = (arrayItem[0].items).filter(b => {
                     return b
                 })
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData }] });
             }
         }
         const onRemove = (value, i) => {
@@ -412,25 +417,25 @@ class PremiumPerson extends Component {
                 let newData = (arrayItem[0].items).filter(b => {
                     return b.label != value
                 })
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData }] });
             }
         };
         const socialIconfn = (v) => {
-            return <ul className="premium-person__social-list">{(v).map((value) => (
+            return <ul className="premium-person__social-List">{(v).map((value) => (
                 <li>
-                    <a className={`premium-person__socialIcon__link_content`} href={`${value.value}`} style={{
+                    <a className={`premium-person__socialIcon__link_content ${defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
                         padding: socialIconPadding + socialIconPaddingU,
                         borderStyle: borderTypeIcon,
                         borderWidth: borderWidthIcon + "px",
                         borderRadius: borderRadiusIcon || 100 + "px",
                         borderColor: borderColorIcon,
-                        marginLeft: iconMarginL,
-                        marginRight: iconMarginR
+                        marginLeft: iconMarginL + "px",
+                        marginRight: iconMarginR + "px",
+                        background: socialIconBackgroundColor,
                     }}>
-                        <i className={`premium-person__socialIcon ${defaultIconColor ? value.label : ""} ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
+                        <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
                             style={{
                                 color: socialIconColor,
-                                background: socialIconBackgroundColor,
                                 fontSize: (socialIconSize || 50) + iconSizeUnit,
                             }}
                         />
@@ -458,13 +463,13 @@ class PremiumPerson extends Component {
                                         borderColor: imgBorderColor,
                                         width: imgSize + "px",
                                         height: imgSize + "px",
-                                        filter: `${change ? `brightness( ${value.bright}% ) contrast( ${value.contrast}% ) saturate( ${value.saturation}% ) blur( ${value.blur}px ) hue-rotate( ${value.hue}deg )` : ""}`
+                                        filter: `${change ? `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )` : ""}`
                                     }}
                                 />
                             )}
                             {!value.personImgUrl && <DefaultImage className={className} />}
                         </div>
-                        {effectPersonStyle == 'effect2' ? <div className={`premium-person__socialEffect2`}>{value.socialIcon && (
+                        {effectPersonStyle === 'effect2' ? <div className={`premium-person__socialEffect2`}>{value.socialIcon && (
                             socialIconfn(value.items)
                         )}</div> : ""}
                     </div>
@@ -544,7 +549,7 @@ class PremiumPerson extends Component {
                 cont
             ))
             const array = arrayMove(arrayItem[0].items, oldIndex, newIndex)
-            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: array, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: array }] });
         };
         const addSocialIcon = (newsocial, index) => {
             if (index > 0) {
@@ -587,12 +592,12 @@ class PremiumPerson extends Component {
                     let repeat = arrayItem[0].items.filter(d => d.label == newicon)
                     if (repeat[0] != undefined) {
                         arrayItem[0].items.filter(d => d.label != newicon)
-                        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: arrayItem[0].items, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+                        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: arrayItem[0].items }] });
                     }
                     else {
                         arrayItem[0].items.push({ label: newicon, link: false, value: "", changeinput: "#" })
                         arrayItem[0].items.filter(d => d.label != newicon)
-                        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: arrayItem[0].items, blur: arrayItem[0].blur, bright: arrayItem[0].bright, contrast: arrayItem[0].contrast, saturation: arrayItem[0].saturation, hue: arrayItem[0].hue }] });
+                        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: arrayItem[0].items }] });
                     }
                 }
             }
@@ -609,7 +614,7 @@ class PremiumPerson extends Component {
                     multiPersonContent.push({
                         id: i,
                         personImgUrl: "",
-                        name: "Merna Hanna",
+                        name: "John Doe",
                         title: "Senior Developer",
                         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
                         socialIcon: false,
@@ -618,12 +623,7 @@ class PremiumPerson extends Component {
                             { label: 'twitter', link: false, value: "#", changeinput: "#" },
                             { label: 'instagram', link: false, value: "#", changeinput: "#" },
                             { label: 'youtube', link: false, value: "#", changeinput: "#" }
-                        ],
-                        blur: "0",
-                        bright: "100",
-                        contrast: "100",
-                        saturation: "100",
-                        hue: "0"
+                        ]
                     })
                 }
             }
@@ -659,100 +659,10 @@ class PremiumPerson extends Component {
                 array[0].personImgUrl = "undefined" === typeof media.sizes.thumbnail
                     ? media.url
                     : media.sizes.thumbnail.url
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items }] });
                 setAttributes({
                     personImgId: media.id
                 })
-            }
-        }
-        const Blur = (value, i) => {
-            setAttributes({ change: true });
-            if (i > 0) {
-                let array = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == i)
-                array[0].blur = value
-                multiPersonContent[i - 1] = array[0]
-                setAttributes(multiPersonContent[i - 1] = array[0]);
-            }
-            else {
-                let array = multiPersonContent.map((content) => (
-                    content
-                ))
-                array[0].blur = value
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
-            }
-        }
-        const Bright = (value, i) => {
-            setAttributes({ change: true });
-            if (i > 0) {
-                let array = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == i)
-                array[0].bright = value
-                multiPersonContent[i - 1] = array[0]
-                setAttributes(multiPersonContent[i - 1] = array[0]);
-            }
-            else {
-                let array = multiPersonContent.map((content) => (
-                    content
-                ))
-                array[0].bright = value
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
-            }
-        }
-        const Saturation = (value, i) => {
-            setAttributes({ change: true });
-            if (i > 0) {
-                let array = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == i)
-                array[0].saturation = value
-                multiPersonContent[i - 1] = array[0]
-                setAttributes(multiPersonContent[i - 1] = array[0]);
-            }
-            else {
-                let array = multiPersonContent.map((content) => (
-                    content
-                ))
-                array[0].saturation = value
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
-            }
-        }
-        const Contrast = (value, i) => {
-            setAttributes({ change: true });
-            if (i > 0) {
-                let array = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == i)
-                array[0].contrast = value
-                multiPersonContent[i - 1] = array[0]
-                setAttributes(multiPersonContent[i - 1] = array[0]);
-            }
-            else {
-                let array = multiPersonContent.map((content) => (
-                    content
-                ))
-                array[0].contrast = value
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
-            }
-        }
-        const Hue = (value, i) => {
-            setAttributes({ change: true });
-            if (i > 0) {
-                let array = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == i)
-                array[0].hue = value
-                multiPersonContent[i - 1] = array[0]
-                setAttributes(multiPersonContent[i - 1] = array[0]);
-            }
-            else {
-                let array = multiPersonContent.map((content) => (
-                    content
-                ))
-                array[0].hue = value
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
             }
         }
         const Name = (value, i) => {
@@ -769,7 +679,7 @@ class PremiumPerson extends Component {
                     content
                 ))
                 array[0].name = value
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items }] });
             }
         }
         const Title = (value, i) => {
@@ -786,7 +696,7 @@ class PremiumPerson extends Component {
                     content
                 ))
                 array[0].title = value
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items }] });
             }
         }
         const Desc = (value, i) => {
@@ -803,7 +713,7 @@ class PremiumPerson extends Component {
                     content
                 ))
                 array[0].desc = value
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items }] });
             }
         }
         const SocialIcon = (value, i) => {
@@ -820,7 +730,7 @@ class PremiumPerson extends Component {
                     content
                 ))
                 array[0].socialIcon = value
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items, blur: array[0].blur, bright: array[0].bright, contrast: array[0].contrast, saturation: array[0].saturation, hue: array[0].hue }] });
+                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items }] });
             }
         }
 
@@ -847,18 +757,6 @@ class PremiumPerson extends Component {
                                 {__("Change Image")}
                             </IconButton>
                         )}
-                    />
-                    <PremiumFilters
-                        blur={content.blur}
-                        bright={content.bright}
-                        contrast={content.contrast}
-                        saturation={content.saturation}
-                        hue={content.hue}
-                        onChangeBlur={value => Blur(value, content.id)}
-                        onChangeBright={value => Bright(value, content.id)}
-                        onChangeContrast={value => Contrast(value, content.id)}
-                        onChangeSat={value => Saturation(value, content.id)}
-                        onChangeHue={value => Hue(value, content.id)}
                     />
                     <TextControl
                         label={__("Name")}
@@ -972,18 +870,6 @@ class PremiumPerson extends Component {
                                     </IconButton>
                                 )}
                             />
-                            <PremiumFilters
-                                blur={multiPersonContent[0].blur}
-                                bright={multiPersonContent[0].bright}
-                                contrast={multiPersonContent[0].contrast}
-                                saturation={multiPersonContent[0].saturation}
-                                hue={multiPersonContent[0].hue}
-                                onChangeBlur={value => Blur(value)}
-                                onChangeBright={value => Bright(value)}
-                                onChangeContrast={value => Contrast(value)}
-                                onChangeSat={value => Saturation(value)}
-                                onChangeHue={value => Hue(value)}
-                            />
                             <TextControl
                                 label={__("Name")}
                                 value={multiPersonContent[0].name}
@@ -1023,6 +909,24 @@ class PremiumPerson extends Component {
                             )}
                         </PanelBody>
                     }
+                    <PanelBody
+                        title={__("Image Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <PremiumFilters
+                            blur={blur}
+                            bright={bright}
+                            contrast={contrast}
+                            saturation={saturation}
+                            hue={hue}
+                            onChangeBlur={newSize => setAttributes({ blur: newSize, change: true })}
+                            onChangeBright={newSize => setAttributes({ bright: newSize, change: true })}
+                            onChangeContrast={newSize => setAttributes({ contrast: newSize, change: true })}
+                            onChangeSat={newSize => setAttributes({ saturation: newSize, change: true })}
+                            onChangeHue={newSize => setAttributes({ hue: newSize, change: true })}
+                        />
+                    </PanelBody>
                     <PanelBody
                         title={__("Name")}
                         className="premium-panel-body"
@@ -1340,12 +1244,12 @@ class PremiumPerson extends Component {
                                 marginRight={iconMarginR}
                                 onChangeMarLeft={value =>
                                     setAttributes({
-                                        iconMarginL: value || 0
+                                        iconMarginL: value || 1
                                     })
                                 }
                                 onChangeMarRight={value =>
                                     setAttributes({
-                                        iconMarginR: value || 0
+                                        iconMarginR: value || 1
                                     })
                                 }
                             />
@@ -1461,12 +1365,12 @@ class PremiumPerson extends Component {
                                     marginRight={iconMarginR}
                                     onChangeMarLeft={value =>
                                         setAttributes({
-                                            iconMarginL: value || 0
+                                            iconMarginL: value || 1
                                         })
                                     }
                                     onChangeMarRight={value =>
                                         setAttributes({
-                                            iconMarginR: value || 0
+                                            iconMarginR: value || 1
                                         })
                                     }
                                 />
@@ -1486,10 +1390,10 @@ class PremiumPerson extends Component {
                             `#premium-person-${id} .premium-person:hover {`,
                             `border-color: ${borderHoverColor} !important;`,
                             "}",
-                            `.premium-person__socialIcon:hover {`,
-                            `color: ${socialIconHoverColor} !important;}`,
-                            `-webkit-transition: all .2s ease-in-out`,
-                            `transition: all .2s ease-in-out`,
+                            `.premium-person__social-List li:hover i{`,
+                            `color: ${socialIconHoverColor} !important;`,
+                            `-webkit-transition: all .2s ease-in-out;`,
+                            `transition: all .2s ease-in-out;`,
                             "}"
                         ].join("\n")
                     }}

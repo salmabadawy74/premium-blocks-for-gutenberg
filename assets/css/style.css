@@ -1740,15 +1740,26 @@ a.premium-dheading-block__link:hover {
 .premium-person__socialIcon {
   height:  1.2em;
   width: 1.2em;
+  font-style: normal !important;
 }
-.premium-person__social-list{
+.premium-person__social-List{
   margin: 0!important;
   padding: 0;
   list-style: none !important;
 }
-.premium-person__social-list li{
+.premium-person__social-List li{
   display: inline;
   list-style: none;
+  position: relative;
+    bottom: 0;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+.premium-person__social-List li i{
+  position: relative;
+  bottom: 0;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
 }
 .premium-person__img {
   min-width: 100%;
@@ -1784,7 +1795,7 @@ a.premium-dheading-block__link:hover {
 .vimeo-v:hover{
   background: #45bbff !important;
 }
-.reddit{
+.reddit:hover{
   background: #ff5700 !important;
 }
 .tumblr:hover{
@@ -1897,6 +1908,8 @@ a.premium-dheading-block__link:hover {
   color: black;
   padding-right: 10px;
   display: inline-block;
+  margin-top: 1px;
+  margin-bottom: 1px;
 }
 .premium-person__socialIcon__link_content:hover{
   text-decoration: none;
@@ -1953,6 +1966,10 @@ a.premium-dheading-block__link:hover {
 }
 .premium-person__socialEffect2:hover {
   opacity: 1;
+}
+.premium-person__socialIcon__link_content {
+    -webkit-transition: all .5s ease-in-out 0s;
+    transition: all .5s ease-in-out 0s !important;
 }
 /**
 * Unique Image Hover Effects
