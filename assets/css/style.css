@@ -1727,7 +1727,7 @@ a.premium-dheading-block__link:hover {
 .premium-person__inner {
   z-index: 1;
   overflow: hidden;
-  text-align: center;
+  /* text-align: center; */
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -2045,7 +2045,7 @@ a.premium-dheading-block__link:hover {
   transition: transform 0.35s, -webkit-transform 0.35s;
   -webkit-transform: translate3d(0, 200%, 0);
   transform: translate3d(0, 200%, 0);
-  text-align: center;
+  /* text-align: center; */
 }
 .premium-person__effect1 .premium-person__name_wrap,
 .premium-person__effect1 .premium-person__title_wrap,
@@ -2149,4 +2149,54 @@ a.premium-dheading-block__link:hover {
 .premium-person__column6{
   display: grid;
   grid-template-columns: 16.667% 16.667% 16.667% 16.667% 16.667% 16.667%;
+}
+
+/**************** Premium icon-list *********************/
+/*******************************************************/
+.premium-icon-list__content{
+  color: #3a3a3a;
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.premium-icon-list__content-icon{
+  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}
+.premium-icon-list-inline{
+  -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: flex-start;
+    -webkit-align-items: flex-start;
+    -moz-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    -webkit-box-pack: flex-start;
+    -webkit-justify-content: flex-start;
+    -moz-box-pack: flex-start;
+    -ms-flex-pack: flex-start;
+    justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-box-pack: flex-start;
+    -ms-flex-pack: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+}
+.premium-icon-list-inline .premium-icon-list__content{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.premium-icon-list-block{
+  display: flex;
+  flex-direction: column;
 }
