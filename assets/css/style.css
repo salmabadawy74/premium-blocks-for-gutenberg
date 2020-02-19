@@ -2153,20 +2153,15 @@ a.premium-dheading-block__link:hover {
 
 /**************** Premium icon-list *********************/
 /*******************************************************/
-.premium-icon-list__content{
+.premium-icon-list__content-wrap{
   color: #3a3a3a;
     -js-display: flex;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
     display: -ms-flexbox;
-    display: flex;
-}
-.premium-icon-list__content-icon{
-  margin-right: 10px;
-  width: 16px;
-  height: 16px;
-  font-size: 16px;
+    display: flex !important;
+    align-items: center;
 }
 .premium-icon-list-inline{
   -js-display: flex;
@@ -2192,11 +2187,37 @@ a.premium-dheading-block__link:hover {
     -ms-flex-align: flex-start;
     align-items: flex-start;
 }
-.premium-icon-list-inline .premium-icon-list__content{
+.premium-icon-list-inline .premium-icon-list__content-wrap{
   margin-left: 5px;
   margin-right: 5px;
 }
 .premium-icon-list-block{
   display: flex;
   flex-direction: column;
+}
+.premium-icon-list-tab-panel .components-tab-panel__tabs{
+  margin-bottom: 15px;
+}
+.premium-icon-list-tab-panel .components-tab-panel__tabs button{
+  width: 50%;
+  padding: 10px;
+  background: transparent;
+  color: #333;
+  outline: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 3px solid #eee;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.premium-icon-list-tab-panel button.active-tab{
+  border-bottom: 3px solid #333;
+  outline: none;
+  font-weight: 500;
+}
+.premium-icon-list__content-icon i {
+  font-style: normal !important;
 }

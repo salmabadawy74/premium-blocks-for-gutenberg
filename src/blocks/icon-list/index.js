@@ -55,6 +55,68 @@ const iconListAttrs = {
         type: "boolean",
         default: false
     },
+    size: {
+        type: "number",
+        default: 16
+    },
+    titleSize: {
+        type: "number"
+    },
+    titleLetter: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    titleFont: {
+        type: "string"
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number",
+        default: 100
+    },
+    borderColor: {
+        type: "string"
+    },
+    iconSpacing: {
+        type: "number",
+        default: 10
+    },
+    titlePadding: {
+        type: "number",
+        default: 10
+    },
+    itemMarginL: {
+        type: "number",
+        default: "1"
+    },
+    itemMarginR: {
+        type: "number",
+        default: "1"
+    },
+    itemMarginT: {
+        type: "number",
+        default: "1"
+    },
+    itemMarginB: {
+        type: "number",
+        default: "1"
+    },
 };
 
 registerBlockType("premium/icon-list", {
