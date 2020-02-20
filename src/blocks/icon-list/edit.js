@@ -1,6 +1,5 @@
 import classnames from "classnames"
 import times from "lodash/times"
-import map from "lodash/map"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import styling from "./styling"
 import iconsList from "../../components/premium-icons-list";
@@ -40,11 +39,13 @@ class edit extends Component {
 
     componentDidMount() {
         // Assigning id in the attribute.
-        this.props.setAttributes({ id: this.props.clientId })
+        this.props.setAttributes({ block_id: this.props.clientId })
         this.props.setAttributes({ classMigrate: true })
         // Pushing Style tag for this block css.
         const $style = document.createElement("style")
-        $style.setAttribute("id", "uagb-style-icon-list-" + this.props.clientId)
+        console.log($style);
+        
+        $style.setAttribute("id", "premium-style-icon-list-" + this.props.clientId)
         document.head.appendChild($style)
     }
 
@@ -72,7 +73,6 @@ class edit extends Component {
             linkTarget,
             align,
             className,
-            icon_count,
             icons,
             size,
             titleSize,
@@ -139,12 +139,9 @@ class edit extends Component {
         ];
 
         const addmultiTitleCount = (newCount) => {
-            console.log(newCount);
             let cloneIcons = [...icons]
-            console.log(cloneIcons);
             if (cloneIcons.length < newCount) {
                 const incAmount = Math.abs(newCount - cloneIcons.length)
-                console.log(incAmount);
                 {
                     times(incAmount, n => {
                         cloneIcons.push({
@@ -160,23 +157,18 @@ class edit extends Component {
                             icon_border_color: cloneIcons[0].icon_border_color,
                             icon_border_hover_color: cloneIcons[0].icon_border_hover_color,
                             link: cloneIcons[0].link,
-                            target: cloneIcons[0].target,
                             disableLink: cloneIcons[0].disableLink,
                         })
                     })
                 }
                 setAttributes({ icons: cloneIcons })
-                console.log(icons);
             }
             else {
-                console.log("else");
                 for (let i = multiTitleCount; i > newCount; i--) {
                     icons.splice(i - 1, 1)
-                    console.log(icons);
                 }
             }
             setAttributes({ multiTitleCount: newCount })
-            console.log(multiTitleCount);
         };
         const iconControls = (index) => {
             let color_control = ""
@@ -370,7 +362,7 @@ class edit extends Component {
             )
         }
 
-        var element = document.getElementById("uagb-style-icon-list-" + this.props.clientId)
+        var element = document.getElementById("premium-style-icon-list-" + this.props.clientId)
 
         if (null != element && "undefined" != typeof element) {
             element.innerHTML = styling(this.props)
@@ -549,7 +541,7 @@ class edit extends Component {
                         {
                             icons.map((icon, index) => {
 
-                                if (icon_count <= index) {
+                                if (multiTitleCount <= index) {
                                     return
                                 }
 
@@ -560,27 +552,25 @@ class edit extends Component {
                                 if (icon.image_icon == "icon") {
                                     if (icon.icon) {
                                         image_icon_html = <span className="premium-icon-list__content-icon"
+                                            style={{
+                                                width: size,
+                                                height: size,
+                                            }}
                                         >
                                             <i className={`${icon.icon}`} style={{
-                                                // width: size,
-                                                // height: size,
-                                                borderStyle: borderType,
-                                                borderWidth: borderWidth + "px",
-                                                borderRadius: borderRadius || 100 + "px",
-                                                borderColor: borderColor,
+                                                width: size,
+                                                height: size,
                                                 fontSize: size,
                                             }} />
                                         </span>
                                     }
                                 } else {
                                     if (icon.image) {
-                                        image_icon_html = <span className="premium-icon-list__content-icon">
-                                            <img src={icon.image.url} style={{ width: size }} />
-                                        </span>
+                                        image_icon_html = <img src={icon.image.url} style={{ width: size }} />
                                     }
                                 }
 
-                                let target = (icon.target) ? "_blank" : "_self"
+                                let target = (linkTarget) ? "_blank" : "_self"
 
                                 return (
                                     <div
@@ -588,6 +578,9 @@ class edit extends Component {
                                             `premium-icon-list-content${index}`,
                                             "premium-icon-list__wrapper"
                                         )}
+                                        style={{
+                                            padding: titlePadding + "px"
+                                        }}
                                         key={index}
                                         target={target}
                                         rel="noopener noreferrer"
@@ -595,14 +588,22 @@ class edit extends Component {
                                         <div className="premium-icon-list__content-wrap" style={{
                                             flexDirection: align == "right" ? 'row-reverse' : "",
                                             justifyContent: align == "right" ? align : align,
-                                            marginLeft: layoutPos == 'block' ? "" : itemMarginL + "px",
-                                            marginRight: layoutPos == 'block' ? "" : itemMarginR + "px",
+                                            marginLeft: layoutPos == 'block' ? "" : itemMarginL / 2 + "px",
+                                            marginRight: layoutPos == 'block' ? "" : itemMarginR / 2 + "px",
                                             marginTop: layoutPos == 'block' ? itemMarginT + "px" : "",
                                             marginBottom: layoutPos == 'block' ? itemMarginB + "px" : "",
+                                            display: iconPosition == "left" ? "flex" : "inline-flex",
+                                            flexDirection: iconPosition == "top" ? "column" : iconPosition == "right" ? "row-reverse" : ""
                                         }}>
                                             <span className="premium-icon-list__icon-wrap"
                                                 style={{
-                                                    marginRight: iconSpacing + "px"
+                                                    marginRight: iconPosition == "left" ? iconSpacing + "px" : "",
+                                                    marginLeft: iconPosition == "right" ? iconSpacing + "px" : "",
+                                                    marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
+                                                    borderStyle: borderType,
+                                                    borderWidth: borderWidth + "px",
+                                                    borderRadius: borderRadius || 100 + "px",
+                                                    borderColor: borderColor
                                                 }}
                                             >{image_icon_html}</span>
                                             <div className="premium-icon-list__label-wrap">
@@ -622,8 +623,7 @@ class edit extends Component {
                                                         letterSpacing: titleLetter + "px",
                                                         textTransform: titleUpper ? "uppercase" : "none",
                                                         fontStyle: titleStyle,
-                                                        fontWeight: titleWeight,
-                                                        padding: titlePadding + "px"
+                                                        fontWeight: titleWeight
                                                     }}
                                                 />
                                             </div>

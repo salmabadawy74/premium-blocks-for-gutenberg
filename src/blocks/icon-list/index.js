@@ -9,7 +9,7 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const iconListAttrs = {
-    id: {
+    block_id: {
         type: "string"
     },
     align: {
@@ -43,6 +43,10 @@ const iconListAttrs = {
             }
         ],
     },
+    classMigrate: {
+		type: "boolean",
+		default: false
+	},
     layoutPos: {
         type: "string",
         default: "block"
@@ -57,7 +61,7 @@ const iconListAttrs = {
     },
     size: {
         type: "number",
-        default: 16
+        default: 20
     },
     titleSize: {
         type: "number"
