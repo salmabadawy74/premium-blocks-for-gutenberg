@@ -105,6 +105,7 @@ class PremiumPerson extends Component {
             iconSizeUnit,
             defaultIconColor,
             socialIconBackgroundColor,
+            contentColor,
             iconMarginL,
             iconMarginR,
             effect,
@@ -143,7 +144,8 @@ class PremiumPerson extends Component {
             bright,
             contrast,
             saturation,
-            hue
+            hue,
+            bottomInfo
         } = this.props.attributes;
 
         const HOVER = [
@@ -324,55 +326,30 @@ class PremiumPerson extends Component {
             }
         }
         const addLink = (value, i) => {
-            if (i > 0) {
-                value.link = !value.link
-                value.link == false ? value.changeinput = value.value : value.changeinput
-                let array = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == i)
-                let newData = (array[0].items).filter(b => {
-                    return b
-                })
-                array[0].items = newData
-                multiPersonContent[i - 1] = array[0]
-                setAttributes(multiPersonContent[i - 1] = array[0]);
-            } else {
-                value.link = !value.link
-                value.link == false ? value.changeinput = value.value : value.changeinput
-                let arrayItem = multiPersonContent.map((cont) => (
-                    cont
-                ))
-                let newData = (arrayItem[0].items).filter(b => {
-                    return b
-                })
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData }] });
-            }
+            value.link = !value.link
+            value.link == false ? value.changeinput = value.value : value.changeinput
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            let newData = (array[0].items).filter(b => {
+                return b
+            })
+            array[0].items = newData
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
         }
         const saveLink = (value, i, personIndex) => {
-            if (personIndex > 0) {
-                i.value = value
-                let arrayItem = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == personIndex)
-                i.link = false
-                let newData = (arrayItem[0].items).filter(b => {
-                    return b
-                })
-                arrayItem[0].items = newData
-                multiPersonContent[personIndex - 1] = arrayItem[0]
-                setAttributes(multiPersonContent[personIndex - 1] = arrayItem[0]);
-            }
-            else {
-                i.value = value
-                let arrayItem = multiPersonContent.map((cont) => (
-                    cont
-                ))
-                i.link = false
-                let newData = (arrayItem[0].items).filter(b => {
-                    return b
-                })
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData }] });
-            }
+            i.value = value
+            let arrayItem = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == personIndex)
+            i.link = false
+            let newData = (arrayItem[0].items).filter(b => {
+                return b
+            })
+            arrayItem[0].items = newData
+            multiPersonContent[personIndex - 1] = arrayItem[0]
+            setAttributes(multiPersonContent[personIndex - 1] = arrayItem[0]);
         }
         const changeLinkValue = (value, i, personIndex) => {
             if (personIndex > 0) {
@@ -399,26 +376,15 @@ class PremiumPerson extends Component {
             }
         }
         const onRemove = (value, i) => {
-            if (i > 0) {
-                let array = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == i)
-                let newData = (array[0].items).filter(b => {
-                    return b.label != value
-                })
-                array[0].items = newData
-                multiPersonContent[i - 1] = array[0]
-                setAttributes(multiPersonContent[i - 1] = array[0]);
-            }
-            else {
-                let arrayItem = multiPersonContent.map((cont) => (
-                    cont
-                ))
-                let newData = (arrayItem[0].items).filter(b => {
-                    return b.label != value
-                })
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData }] });
-            }
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            let newData = (array[0].items).filter(b => {
+                return b.label != value
+            })
+            array[0].items = newData
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
         };
         const socialIconfn = (v) => {
             return <ul className="premium-person__social-List">{(v).map((value) => (
@@ -475,6 +441,10 @@ class PremiumPerson extends Component {
                     </div>
                     <div
                         className={`premium-person__info`}
+                        style={{
+                            background: contentColor ? contentColor : "#f2f2f2",
+                            bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
+                        }}
                     >
                         <div className={`premium-person__name_wrap`}>
                             {value.name && (
@@ -552,53 +522,28 @@ class PremiumPerson extends Component {
             setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: array }] });
         };
         const addSocialIcon = (newsocial, index) => {
-            if (index > 0) {
-                let array = iconsList.map((i) => (
-                    i
-                )).filter(f => f.value == newsocial)
-                if (array[0] != undefined) {
-                    newsocial = array[0];
-                    setAttributes({ selectedSocialMediaIcon: newsocial.label });
-                    const newicon = newsocial.label;
-                    let arrayItem = multiPersonContent.map((cont) => (
-                        cont
-                    )).filter(f => f.id == index)
+            let array = iconsList.map((i) => (
+                i
+            )).filter(f => f.value == newsocial)
+            if (array[0] != undefined) {
+                newsocial = array[0];
+                setAttributes({ selectedSocialMediaIcon: newsocial.label });
+                const newicon = newsocial.label;
+                let arrayItem = multiPersonContent.map((cont) => (
+                    cont
+                )).filter(f => f.id == index)
 
-                    let repeat = arrayItem[0].items.filter(d => d.label == newicon)
-                    if (repeat[0] != undefined) {
-                        arrayItem[0].items.filter(d => d.label != newicon)
-                        multiPersonContent[index - 1] = arrayItem[0]
-                        setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
-                    }
-                    else {
-                        arrayItem[0].items.push({ label: newicon, link: false, value: "", changeinput: "#" })
-                        arrayItem[0].items.filter(d => d.label != newicon)
-                        multiPersonContent[index - 1] = arrayItem[0]
-                        setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
-                    }
+                let repeat = arrayItem[0].items.filter(d => d.label == newicon)
+                if (repeat[0] != undefined) {
+                    arrayItem[0].items.filter(d => d.label != newicon)
+                    multiPersonContent[index - 1] = arrayItem[0]
+                    setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
                 }
-            }
-            else {
-                let array = iconsList.map((i) => (
-                    i
-                )).filter(f => f.value == newsocial)
-                if (array[0] != undefined) {
-                    newsocial = array[0];
-                    setAttributes({ selectedSocialMediaIcon: newsocial.label });
-                    const newicon = newsocial.label;
-                    let arrayItem = multiPersonContent.map((cont) => (
-                        cont
-                    ))
-                    let repeat = arrayItem[0].items.filter(d => d.label == newicon)
-                    if (repeat[0] != undefined) {
-                        arrayItem[0].items.filter(d => d.label != newicon)
-                        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: arrayItem[0].items }] });
-                    }
-                    else {
-                        arrayItem[0].items.push({ label: newicon, link: false, value: "", changeinput: "#" })
-                        arrayItem[0].items.filter(d => d.label != newicon)
-                        setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: arrayItem[0].items }] });
-                    }
+                else {
+                    arrayItem[0].items.push({ label: newicon, link: false, value: "", changeinput: "#" })
+                    arrayItem[0].items.filter(d => d.label != newicon)
+                    multiPersonContent[index - 1] = arrayItem[0]
+                    setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
                 }
             }
         };
@@ -639,99 +584,49 @@ class PremiumPerson extends Component {
             setAttributes(multiPersonContent[i - 1] = arrayItem[0]);
         };
         const PersonImage = (media, i) => {
-            if (i > 0) {
-                let array = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == i)
-                array[0].personImgUrl = "undefined" === typeof media.sizes.thumbnail
-                    ? media.url
-                    : media.sizes.thumbnail.url
-                multiPersonContent[i - 1] = array[0]
-                setAttributes(multiPersonContent[i - 1] = array[0]);
-                setAttributes({
-                    personImgId: media.id
-                })
-            }
-            else {
-                let array = multiPersonContent.map((content) => (
-                    content
-                ))
-                array[0].personImgUrl = "undefined" === typeof media.sizes.thumbnail
-                    ? media.url
-                    : media.sizes.thumbnail.url
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items }] });
-                setAttributes({
-                    personImgId: media.id
-                })
-            }
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            array[0].personImgUrl = "undefined" === typeof media.sizes.thumbnail
+                ? media.url
+                : media.sizes.thumbnail.url
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
+            setAttributes({
+                personImgId: media.id
+            })
         }
         const Name = (value, i) => {
-            if (i > 0) {
-                let array = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == i)
-                array[0].name = value
-                multiPersonContent[i - 1] = array[0]
-                setAttributes(multiPersonContent[i - 1] = array[0]);
-            }
-            else {
-                let array = multiPersonContent.map((content) => (
-                    content
-                ))
-                array[0].name = value
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items }] });
-            }
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            array[0].name = value
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
         }
         const Title = (value, i) => {
-            if (i > 0) {
-                let array = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == i)
-                array[0].title = value
-                multiPersonContent[i - 1] = array[0]
-                setAttributes(multiPersonContent[i - 1] = array[0]);
-            }
-            else {
-                let array = multiPersonContent.map((content) => (
-                    content
-                ))
-                array[0].title = value
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items }] });
-            }
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            array[0].title = value
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
         }
         const Desc = (value, i) => {
-            if (i > 0) {
-                let array = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == i)
-                array[0].desc = value
-                multiPersonContent[i - 1] = array[0]
-                setAttributes(multiPersonContent[i - 1] = array[0]);
-            }
-            else {
-                let array = multiPersonContent.map((content) => (
-                    content
-                ))
-                array[0].desc = value
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items }] });
-            }
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            array[0].desc = value
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
         }
         const SocialIcon = (value, i) => {
-            if (i > 0) {
-                let array = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == i)
-                array[0].socialIcon = value
-                multiPersonContent[i - 1] = array[0]
-                setAttributes(multiPersonContent[i - 1] = array[0]);
-            }
-            else {
-                let array = multiPersonContent.map((content) => (
-                    content
-                ))
-                array[0].socialIcon = value
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: array[0].personImgUrl, name: array[0].name, title: array[0].title, desc: array[0].desc, socialIcon: array[0].socialIcon, items: array[0].items }] });
-            }
+            let array = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == i)
+            array[0].socialIcon = value
+            multiPersonContent[i - 1] = array[0]
+            setAttributes(multiPersonContent[i - 1] = array[0]);
         }
 
         const MultiPersonSetting = () => {
@@ -789,7 +684,7 @@ class PremiumPerson extends Component {
                                 isMulti={false}
                                 appendTo="body"
                                 closeOnSelect={false}
-                                iconsPerPage="25"
+                                iconsPerPage={25}
                                 noSelectedPlaceholder={__("Select Icon")}
                             />
                             <SortableList items={content.items} personIndex={content.id} onSortEnd={(o, n) => onSortEndMulti(content.id, o, n)} onRemove={(value) => onRemove(value, content.id)} saveLink={(value, i) => saveLink(value, i, content.id)} changeLinkValue={(value, i) => changeLinkValue(value, i, content.id)} addLink={(value) => addLink(value, content.id)} shouldCancelStart={shouldCancelStart} helperClass='premium-person__sortableHelper' />
@@ -821,7 +716,6 @@ class PremiumPerson extends Component {
                             min="1"
                             onChange={value => addMultiPerson(value)}
                         />
-                        <p>{__("Enable this option if you need to add multiple persons")}</p>
                         {multiPersonChecked > 1 ? <SelectControl
                             label={__("Persons/Row")}
                             value={rowPerson}
@@ -857,7 +751,7 @@ class PremiumPerson extends Component {
                             {!multiPersonContent[0].personImgUrl && <DefaultImage />}
                             <MediaUpload
                                 allowedTypes={["image"]}
-                                onSelect={media => PersonImage(media)}
+                                onSelect={media => PersonImage(media, 1)}
                                 type="image"
                                 value={personImgId}
                                 render={({ open }) => (
@@ -873,22 +767,22 @@ class PremiumPerson extends Component {
                             <TextControl
                                 label={__("Name")}
                                 value={multiPersonContent[0].name}
-                                onChange={value => Name(value)}
+                                onChange={value => Name(value, 1)}
                             />
                             <TextControl
                                 label={__("Title")}
                                 value={multiPersonContent[0].title}
-                                onChange={value => Title(value)}
+                                onChange={value => Title(value, 1)}
                             />
                             <TextareaControl
                                 label={__("Description")}
                                 value={multiPersonContent[0].desc}
-                                onChange={value => Desc(value)}
+                                onChange={value => Desc(value, 1)}
                             />
                             <ToggleControl
                                 label={__("Enable Social Icons")}
                                 checked={multiPersonContent[0].socialIcon}
-                                onChange={value => SocialIcon(value)}
+                                onChange={value => SocialIcon(value, 1)}
                             />
                             {multiPersonContent[0].socialIcon && (
                                 <div>
@@ -897,14 +791,14 @@ class PremiumPerson extends Component {
                                         icons={iconsList.map((i) => (
                                             i.value
                                         ))}
-                                        onChange={value => addSocialIcon(value)}
+                                        onChange={value => addSocialIcon(value, 1)}
                                         isMulti={false}
                                         appendTo="body"
                                         closeOnSelect={false}
-                                        iconsPerPage="25"
+                                        iconsPerPage={25}
                                         noSelectedPlaceholder={__("Select Icon")}
                                     />
-                                    <SortableList items={multiPersonContent[0].items} onSortEnd={(o, n) => onSortEndSingle(o, n)} onRemove={(value) => onRemove(value)} saveLink={(value, i) => saveLink(value, i)} changeLinkValue={(value, i) => changeLinkValue(value, i)} addLink={(value) => addLink(value)} shouldCancelStart={shouldCancelStart} helperClass='premium-person__sortableHelper' />
+                                    <SortableList items={multiPersonContent[0].items} onSortEnd={(o, n) => onSortEndSingle(o, n)} onRemove={(value) => onRemove(value, 1)} saveLink={(value, i) => saveLink(value, i, 1)} changeLinkValue={(value, i) => changeLinkValue(value, i)} addLink={(value) => addLink(value, 1)} shouldCancelStart={shouldCancelStart} helperClass='premium-person__sortableHelper' />
                                 </div>
                             )}
                         </PanelBody>
@@ -1377,6 +1271,46 @@ class PremiumPerson extends Component {
                             </div>
                         </PanelBody>
                         )}
+                    <PanelBody
+                        title={__("Content")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <div className="premium-control-toggle">
+                            <strong>{__("Color")}</strong>
+                            <Dropdown
+                                className="premium-control-toggle-person"
+                                contentClassName="premium-control-toggle-content"
+                                position="bottom right"
+                                renderToggle={({ isOpen, onToggle }) => (
+                                    <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+                                        <i className="dashicons dashicons-edit" />
+                                    </Button>
+                                )}
+                                renderContent={() => (
+                                    <Fragment>
+                                        <p>{__("Content Color")}</p>
+                                        <ColorPalette
+                                            value={contentColor}
+                                            onChange={newValue =>
+                                                setAttributes({
+                                                    contentColor: newValue
+                                                })
+                                            }
+                                            allowReset={true}
+                                        />
+                                    </Fragment>
+                                )}
+                            />
+                        </div>
+                        {effectPersonStyle === 'effect1' ?
+                            <RangeControl
+                                label={__("Bottom Offset")}
+                                value={bottomInfo}
+                                min={15}
+                                onChange={newValue => setAttributes({ bottomInfo: newValue })}
+                            /> : ""}
+                    </PanelBody>
                 </InspectorControls>
             ),
             <div

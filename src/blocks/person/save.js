@@ -75,7 +75,9 @@ const save = props => {
         bright,
         contrast,
         saturation,
-        hue
+        hue,
+        contentColor,
+        bottomInfo
     } = props.attributes;
 
 
@@ -136,6 +138,10 @@ const save = props => {
                 </div>
                 <div
                     className={`premium-person__info`}
+                    style={{
+                        background: contentColor ? contentColor : "#f2f2f2",
+                        bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
+                    }}
                 >
                     <div className={`premium-person__name_wrap`}>
                         {value.name && (

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 37);
+/******/ 	return __webpack_require__(__webpack_require__.s = 38);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -112,7 +112,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = ty
 	if (typeof module !== 'undefined' && module.exports) {
 		classNames.default = classNames;
 		module.exports = classNames;
-	} else if ("function" === 'function' && _typeof(__webpack_require__(25)) === 'object' && __webpack_require__(25)) {
+	} else if ("function" === 'function' && _typeof(__webpack_require__(27)) === 'object' && __webpack_require__(27)) {
 		// register as 'classnames', consistent with npm package name
 		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return classNames;
@@ -633,9 +633,9 @@ function PremiumTypo(props) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(65);
-} else {
   module.exports = __webpack_require__(66);
+} else {
+  module.exports = __webpack_require__(67);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -894,16 +894,16 @@ function PremiumSizeUnits(props) {
  */
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = __webpack_require__(26);
+  var ReactIs = __webpack_require__(28);
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(63)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(64)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(64)();
+  module.exports = __webpack_require__(65)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -1003,6 +1003,24 @@ function PremiumPadding(props) {
 
 /***/ }),
 /* 12 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var FONTS = [{
+  value: "Opens Sans",
+  label: "Opens Sans"
+}, {
+  value: "Bangers",
+  label: "Bangers"
+}, { value: "Arial", label: "Arial" }, { value: "Tahoma", label: "Tahoma" }, { value: "Verdana", label: "Verdana" }, { value: "Helvetica", label: "Helvetica" }, { value: "Times New Roman", label: "Times New Roman" }, { value: "Trebuchet MS", label: "Trebuchet MS" }, { value: "Georgia", label: "Georgia" }, { value: "ABeeZee", label: "ABeeZee" }, { value: "Abel", label: "Abel" }, { value: "Abhaya Libre", label: "Abhaya Libre" }, { value: "Abril Fatface", label: "Abril Fatface" }, { value: "Aclonica", label: "Aclonica" }, { value: "Acme", label: "Acme" }, { value: "Actor", label: "Actor" }, { value: "Adamina", label: "Adamina" }, { value: "Advent Pro", label: "Advent Pro" }, { value: "Aguafina Script", label: "Aguafina Script" }, { value: "Akronim", label: "Akronim" }, { value: "Aladin", label: "Aladin" }, { value: "Aldrich", label: "Aldrich" }, { value: "Alef", label: "Alef" }, { value: "Alef Hebrew", label: "Alef Hebrew" }, { value: "Alegreya", label: "Alegreya" }, { value: "Alegreya SC", label: "Alegreya SC" }, { value: "Alegreya Sans", label: "Alegreya Sans" }, { value: "Alegreya Sans SC", label: "Alegreya Sans SC" }, { value: "Alex Brush", label: "Alex Brush" }, { value: "Alfa Slab One", label: "Alfa Slab One" }, { value: "Alice", label: "Alice" }, { value: "Alike", label: "Alike" }, { value: "Alike Angular", label: "Alike Angular" }, { value: "Allan", label: "Allan" }, { value: "Allerta", label: "Allerta" }, { value: "Allerta Stencil", label: "Allerta Stencil" }, { value: "Allura", label: "Allura" }, { value: "Almendra", label: "Almendra" }, { value: "Almendra Display", label: "Almendra Display" }, { value: "Almendra SC", label: "Almendra SC" }, { value: "Amarante", label: "Amarante" }, { value: "Amaranth", label: "Amaranth" }, { value: "Amatic SC", label: "Amatic SC" }, { value: "Amethysta", label: "Amethysta" }, { value: "Amiko", label: "Amiko" }, { value: "Amiri", label: "Amiri" }, { value: "Amita", label: "Amita" }, { value: "Anaheim", label: "Anaheim" }, { value: "Andada", label: "Andada" }, { value: "Andika", label: "Andika" }, { value: "Angkor", label: "Angkor" }, { value: "Annie Use Your Telescope", label: "Annie Use Your Telescope" }, { value: "Anonymous Pro", label: "Anonymous Pro" }, { value: "Antic", label: "Antic" }, { value: "Antic Didone", label: "Antic Didone" }, { value: "Antic Slab", label: "Antic Slab" }, { value: "Anton", label: "Anton" }, { value: "Arapey", label: "Arapey" }, { value: "Arbutus", label: "Arbutus" }, { value: "Arbutus Slab", label: "Arbutus Slab" }, { value: "Architects Daughter", label: "Architects Daughter" }, { value: "Archivo", label: "Archivo" }, { value: "Archivo Black", label: "Archivo Black" }, { value: "Archivo Narrow", label: "Archivo Narrow" }, { value: "Aref Ruqaa", label: "Aref Ruqaa" }, { value: "Arima Madurai", label: "Arima Madurai" }, { value: "Arimo", label: "Arimo" }, { value: "Arizonia", label: "Arizonia" }, { value: "Armata", label: "Armata" }, { value: "Arsenal", label: "Arsenal" }, { value: "Artifika", label: "Artifika" }, { value: "Arvo", label: "Arvo" }, { value: "Arya", label: "Arya" }, { value: "Asap", label: "Asap" }, { value: "Asap Condensed", label: "Asap Condensed" }, { value: "Asar", label: "Asar" }, { value: "Asset", label: "Asset" }, { value: "Assistant", label: "Assistant" }, { value: "Astloch", label: "Astloch" }, { value: "Asul", label: "Asul" }, { value: "Athiti", label: "Athiti" }, { value: "Atma", label: "Atma" }, { value: "Atomic Age", label: "Atomic Age" }, { value: "Aubrey", label: "Aubrey" }, { value: "Audiowide", label: "Audiowide" }, { value: "Autour One", label: "Autour One" }, { value: "Average", label: "Average" }, { value: "Average Sans", label: "Average Sans" }, { value: "Averia Gruesa Libre", label: "Averia Gruesa Libre" }, { value: "Averia Libre", label: "Averia Libre" }, { value: "Averia Sans Libre", label: "Averia Sans Libre" }, { value: "Averia Serif Libre", label: "Averia Serif Libre" }, { value: "Bad Script", label: "Bad Script" }, { value: "Bahiana", label: "Bahiana" }, { value: "Bai Jamjuree", label: "Bai Jamjuree" }, { value: "Baloo", label: "Baloo" }, { value: "Baloo Bhai", label: "Baloo Bhai" }, { value: "Baloo Bhaijaan", label: "Baloo Bhaijaan" }, { value: "Baloo Bhaina", label: "Baloo Bhaina" }, { value: "Baloo Chettan", label: "Baloo Chettan" }, { value: "Baloo Da", label: "Baloo Da" }, { value: "Baloo Paaji", label: "Baloo Paaji" }, { value: "Baloo Tamma", label: "Baloo Tamma" }, { value: "Baloo Tammudu", label: "Baloo Tammudu" }, { value: "Baloo Thambi", label: "Baloo Thambi" }, { value: "Balthazar", label: "Balthazar" }, { value: "Bangers", label: "Bangers" }, { value: "Barlow", label: "Barlow" }, { value: "Barlow Condensed", label: "Barlow Condensed" }, { value: "Barlow Semi Condensed", label: "Barlow Semi Condensed" }, { value: "Barrio", label: "Barrio" }, { value: "Basic", label: "Basic" }, { value: "Battambang", label: "Battambang" }, { value: "Baumans", label: "Baumans" }, { value: "Bayon", label: "Bayon" }, { value: "Belgrano", label: "Belgrano" }, { value: "Bellefair", label: "Bellefair" }, { value: "Belleza", label: "Belleza" }, { value: "BenchNine", label: "BenchNine" }, { value: "Bentham", label: "Bentham" }, { value: "Berkshire Swash", label: "Berkshire Swash" }, { value: "Bevan", label: "Bevan" }, { value: "Bigelow Rules", label: "Bigelow Rules" }, { value: "Bigshot One", label: "Bigshot One" }, { value: "Bilbo", label: "Bilbo" }, { value: "Bilbo Swash Caps", label: "Bilbo Swash Caps" }, { value: "BioRhyme", label: "BioRhyme" }, { value: "BioRhyme Expanded", label: "BioRhyme Expanded" }, { value: "Biryani", label: "Biryani" }, { value: "Bitter", label: "Bitter" }, { value: "Black And White Picture", label: "Black And White Picture" }, { value: "Black Han Sans", label: "Black Han Sans" }, { value: "Black Ops One", label: "Black Ops One" }, { value: "Bokor", label: "Bokor" }, { value: "Bonbon", label: "Bonbon" }, { value: "Boogaloo", label: "Boogaloo" }, { value: "Bowlby One", label: "Bowlby One" }, { value: "Bowlby One SC", label: "Bowlby One SC" }, { value: "Brawler", label: "Brawler" }, { value: "Bree Serif", label: "Bree Serif" }, { value: "Bubblegum Sans", label: "Bubblegum Sans" }, { value: "Bubbler One", label: "Bubbler One" }, { value: "Buda", label: "Buda" }, { value: "Buenard", label: "Buenard" }, { value: "Bungee", label: "Bungee" }, { value: "Bungee Hairline", label: "Bungee Hairline" }, { value: "Bungee Inline", label: "Bungee Inline" }, { value: "Bungee Outline", label: "Bungee Outline" }, { value: "Bungee Shade", label: "Bungee Shade" }, { value: "Butcherman", label: "Butcherman" }, { value: "Butterfly Kids", label: "Butterfly Kids" }, { value: "Cabin", label: "Cabin" }, { value: "Cabin Condensed", label: "Cabin Condensed" }, { value: "Cabin Sketch", label: "Cabin Sketch" }, { value: "Caesar Dressing", label: "Caesar Dressing" }, { value: "Cagliostro", label: "Cagliostro" }, { value: "Cairo", label: "Cairo" }, { value: "Calligraffitti", label: "Calligraffitti" }, { value: "Cambay", label: "Cambay" }, { value: "Cambo", label: "Cambo" }, { value: "Candal", label: "Candal" }, { value: "Cantarell", label: "Cantarell" }, { value: "Cantata One", label: "Cantata One" }, { value: "Cantora One", label: "Cantora One" }, { value: "Capriola", label: "Capriola" }, { value: "Cardo", label: "Cardo" }, { value: "Carme", label: "Carme" }, { value: "Carrois Gothic", label: "Carrois Gothic" }, { value: "Carrois Gothic SC", label: "Carrois Gothic SC" }, { value: "Carter One", label: "Carter One" }, { value: "Catamaran", label: "Catamaran" }, { value: "Caudex", label: "Caudex" }, { value: "Caveat", label: "Caveat" }, { value: "Caveat Brush", label: "Caveat Brush" }, { value: "Cedarville Cursive", label: "Cedarville Cursive" }, { value: "Ceviche One", label: "Ceviche One" }, { value: "Chakra Petch", label: "Chakra Petch" }, { value: "Changa", label: "Changa" }, { value: "Changa One", label: "Changa One" }, { value: "Chango", label: "Chango" }, { value: "Charmonman", label: "Charmonman" }, { value: "Chathura", label: "Chathura" }, { value: "Chau Philomene One", label: "Chau Philomene One" }, { value: "Chela One", label: "Chela One" }, { value: "Chelsea Market", label: "Chelsea Market" }, { value: "Chenla", label: "Chenla" }, { value: "Cherry Cream Soda", label: "Cherry Cream Soda" }, { value: "Cherry Swash", label: "Cherry Swash" }, { value: "Chewy", label: "Chewy" }, { value: "Chicle", label: "Chicle" }, { value: "Chivo", label: "Chivo" }, { value: "Chonburi", label: "Chonburi" }, { value: "Cinzel", label: "Cinzel" }, { value: "Cinzel Decorative", label: "Cinzel Decorative" }, { value: "Clicker Script", label: "Clicker Script" }, { value: "Coda", label: "Coda" }, { value: "Coda Caption", label: "Coda Caption" }, { value: "Codystar", label: "Codystar" }, { value: "Coiny", label: "Coiny" }, { value: "Combo", label: "Combo" }, { value: "Comfortaa", label: "Comfortaa" }, { value: "Coming Soon", label: "Coming Soon" }, { value: "Concert One", label: "Concert One" }, { value: "Condiment", label: "Condiment" }, { value: "Content", label: "Content" }, { value: "Contrail One", label: "Contrail One" }, { value: "Convergence", label: "Convergence" }, { value: "Cookie", label: "Cookie" }, { value: "Copse", label: "Copse" }, { value: "Corben", label: "Corben" }, { value: "Cormorant", label: "Cormorant" }, { value: "Cormorant Garamond", label: "Cormorant Garamond" }, { value: "Cormorant Infant", label: "Cormorant Infant" }, { value: "Cormorant SC", label: "Cormorant SC" }, { value: "Cormorant Unicase", label: "Cormorant Unicase" }, { value: "Cormorant Upright", label: "Cormorant Upright" }, { value: "Courgette", label: "Courgette" }, { value: "Cousine", label: "Cousine" }, { value: "Coustard", label: "Coustard" }, { value: "Covered By Your Grace", label: "Covered By Your Grace" }, { value: "Crafty Girls", label: "Crafty Girls" }, { value: "Creepster", label: "Creepster" }, { value: "Crete Round", label: "Crete Round" }, { value: "Crimson Text", label: "Crimson Text" }, { value: "Croissant One", label: "Croissant One" }, { value: "Crushed", label: "Crushed" }, { value: "Cuprum", label: "Cuprum" }, { value: "Cute Font", label: "Cute Font" }, { value: "Cutive", label: "Cutive" }, { value: "Cutive Mono", label: "Cutive Mono" }, { value: "Damion", label: "Damion" }, { value: "Dancing Script", label: "Dancing Script" }, { value: "Dangrek", label: "Dangrek" }, { value: "David Libre", label: "David Libre" }, { value: "Dawning of a New Day", label: "Dawning of a New Day" }, { value: "Days One", label: "Days One" }, { value: "Dekko", label: "Dekko" }, { value: "Delius", label: "Delius" }, { value: "Delius Swash Caps", label: "Delius Swash Caps" }, { value: "Delius Unicase", label: "Delius Unicase" }, { value: "Della Respira", label: "Della Respira" }, { value: "Denk One", label: "Denk One" }, { value: "Devonshire", label: "Devonshire" }, { value: "Dhurjati", label: "Dhurjati" }, { value: "Didact Gothic", label: "Didact Gothic" }, { value: "Diplomata", label: "Diplomata" }, { value: "Diplomata SC", label: "Diplomata SC" }, { value: "Do Hyeon", label: "Do Hyeon" }, { value: "Dokdo", label: "Dokdo" }, { value: "Domine", label: "Domine" }, { value: "Donegal One", label: "Donegal One" }, { value: "Doppio One", label: "Doppio One" }, { value: "Dorsa", label: "Dorsa" }, { value: "Dosis", label: "Dosis" }, { value: "Dr Sugiyama", label: "Dr Sugiyama" }, { value: "Droid Arabic Kufi", label: "Droid Arabic Kufi" }, { value: "Droid Arabic Naskh", label: "Droid Arabic Naskh" }, { value: "Duru Sans", label: "Duru Sans" }, { value: "Dynalight", label: "Dynalight" }, { value: "EB Garamond", label: "EB Garamond" }, { value: "Eagle Lake", label: "Eagle Lake" }, { value: "East Sea Dokdo", label: "East Sea Dokdo" }, { value: "Eater", label: "Eater" }, { value: "Economica", label: "Economica" }, { value: "Eczar", label: "Eczar" }, { value: "El Messiri", label: "El Messiri" }, { value: "Electrolize", label: "Electrolize" }, { value: "Elsie", label: "Elsie" }, { value: "Elsie Swash Caps", label: "Elsie Swash Caps" }, { value: "Emblema One", label: "Emblema One" }, { value: "Emilys Candy", label: "Emilys Candy" }, { value: "Encode Sans", label: "Encode Sans" }, { value: "Encode Sans Condensed", label: "Encode Sans Condensed" }, { value: "Encode Sans Expanded", label: "Encode Sans Expanded" }, { value: "Encode Sans Semi Condensed", label: "Encode Sans Semi Condensed" }, { value: "Encode Sans Semi Expanded", label: "Encode Sans Semi Expanded" }, { value: "Engagement", label: "Engagement" }, { value: "Englebert", label: "Englebert" }, { value: "Enriqueta", label: "Enriqueta" }, { value: "Erica One", label: "Erica One" }, { value: "Esteban", label: "Esteban" }, { value: "Euphoria Script", label: "Euphoria Script" }, { value: "Ewert", label: "Ewert" }, { value: "Exo", label: "Exo" }, { value: "Exo 2", label: "Exo 2" }, { value: "Expletus Sans", label: "Expletus Sans" }, { value: "Fahkwang", label: "Fahkwang" }, { value: "Fanwood Text", label: "Fanwood Text" }, { value: "Farsan", label: "Farsan" }, { value: "Fascinate", label: "Fascinate" }, { value: "Fascinate Inline", label: "Fascinate Inline" }, { value: "Faster One", label: "Faster One" }, { value: "Fasthand", label: "Fasthand" }, { value: "Fauna One", label: "Fauna One" }, { value: "Faustina", label: "Faustina" }, { value: "Federant", label: "Federant" }, { value: "Federo", label: "Federo" }, { value: "Felipa", label: "Felipa" }, { value: "Fenix", label: "Fenix" }, { value: "Finger Paint", label: "Finger Paint" }, { value: "Fira Mono", label: "Fira Mono" }, { value: "Fira Sans", label: "Fira Sans" }, { value: "Fira Sans Condensed", label: "Fira Sans Condensed" }, { value: "Fira Sans Extra Condensed", label: "Fira Sans Extra Condensed" }, { value: "Fjalla One", label: "Fjalla One" }, { value: "Fjord One", label: "Fjord One" }, { value: "Flamenco", label: "Flamenco" }, { value: "Flavors", label: "Flavors" }, { value: "Fondamento", label: "Fondamento" }, { value: "Fontdiner Swanky", label: "Fontdiner Swanky" }, { value: "Forum", label: "Forum" }, { value: "Francois One", label: "Francois One" }, { value: "Frank Ruhl Libre", label: "Frank Ruhl Libre" }, { value: "Freckle Face", label: "Freckle Face" }, { value: "Fredericka the Great", label: "Fredericka the Great" }, { value: "Fredoka One", label: "Fredoka One" }, { value: "Freehand", label: "Freehand" }, { value: "Fresca", label: "Fresca" }, { value: "Frijole", label: "Frijole" }, { value: "Fruktur", label: "Fruktur" }, { value: "Fugaz One", label: "Fugaz One" }, { value: "GFS Didot", label: "GFS Didot" }, { value: "GFS Neohellenic", label: "GFS Neohellenic" }, { value: "Gabriela", label: "Gabriela" }, { value: "Gaegu", label: "Gaegu" }, { value: "Gafata", label: "Gafata" }, { value: "Galada", label: "Galada" }, { value: "Galdeano", label: "Galdeano" }, { value: "Galindo", label: "Galindo" }, { value: "Gamja Flower", label: "Gamja Flower" }, { value: "Gentium Basic", label: "Gentium Basic" }, { value: "Gentium Book Basic", label: "Gentium Book Basic" }, { value: "Geo", label: "Geo" }, { value: "Geostar", label: "Geostar" }, { value: "Geostar Fill", label: "Geostar Fill" }, { value: "Germania One", label: "Germania One" }, { value: "Gidugu", label: "Gidugu" }, { value: "Gilda Display", label: "Gilda Display" }, { value: "Give You Glory", label: "Give You Glory" }, { value: "Glass Antiqua", label: "Glass Antiqua" }, { value: "Glegoo", label: "Glegoo" }, { value: "Gloria Hallelujah", label: "Gloria Hallelujah" }, { value: "Goblin One", label: "Goblin One" }, { value: "Gochi Hand", label: "Gochi Hand" }, { value: "Gorditas", label: "Gorditas" }, { value: "Gothic A1", label: "Gothic A1" }, { value: "Goudy Bookletter 1911", label: "Goudy Bookletter 1911" }, { value: "Graduate", label: "Graduate" }, { value: "Grand Hotel", label: "Grand Hotel" }, { value: "Gravitas One", label: "Gravitas One" }, { value: "Great Vibes", label: "Great Vibes" }, { value: "Griffy", label: "Griffy" }, { value: "Gruppo", label: "Gruppo" }, { value: "Gudea", label: "Gudea" }, { value: "Gugi", label: "Gugi" }, { value: "Gurajada", label: "Gurajada" }, { value: "Habibi", label: "Habibi" }, { value: "Halant", label: "Halant" }, { value: "Hammersmith One", label: "Hammersmith One" }, { value: "Hanalei", label: "Hanalei" }, { value: "Hanalei Fill", label: "Hanalei Fill" }, { value: "Handlee", label: "Handlee" }, { value: "Hanuman", label: "Hanuman" }, { value: "Happy Monkey", label: "Happy Monkey" }, { value: "Harmattan", label: "Harmattan" }, { value: "Headland One", label: "Headland One" }, { value: "Heebo", label: "Heebo" }, { value: "Henny Penny", label: "Henny Penny" }, { value: "Herr Von Muellerhoff", label: "Herr Von Muellerhoff" }, { value: "Hi Melody", label: "Hi Melody" }, { value: "Hind", label: "Hind" }, { value: "Hind Guntur", label: "Hind Guntur" }, { value: "Hind Madurai", label: "Hind Madurai" }, { value: "Hind Siliguri", label: "Hind Siliguri" }, { value: "Hind Vadodara", label: "Hind Vadodara" }, { value: "Holtwood One SC", label: "Holtwood One SC" }, { value: "Homemade Apple", label: "Homemade Apple" }, { value: "Homenaje", label: "Homenaje" }, { value: "IBM Plex Mono", label: "IBM Plex Mono" }, { value: "IBM Plex Sans", label: "IBM Plex Sans" }, { value: "IBM Plex Sans Condensed", label: "IBM Plex Sans Condensed" }, { value: "IBM Plex Serif", label: "IBM Plex Serif" }, { value: "IM Fell DW Pica", label: "IM Fell DW Pica" }, { value: "IM Fell DW Pica SC", label: "IM Fell DW Pica SC" }, { value: "IM Fell Double Pica", label: "IM Fell Double Pica" }, { value: "IM Fell Double Pica SC", label: "IM Fell Double Pica SC" }, { value: "IM Fell English", label: "IM Fell English" }, { value: "IM Fell English SC", label: "IM Fell English SC" }, { value: "IM Fell French Canon", label: "IM Fell French Canon" }, { value: "IM Fell French Canon SC", label: "IM Fell French Canon SC" }, { value: "IM Fell Great Primer", label: "IM Fell Great Primer" }, { value: "IM Fell Great Primer SC", label: "IM Fell Great Primer SC" }, { value: "Iceberg", label: "Iceberg" }, { value: "Iceland", label: "Iceland" }, { value: "Imprima", label: "Imprima" }, { value: "Inconsolata", label: "Inconsolata" }, { value: "Inder", label: "Inder" }, { value: "Indie Flower", label: "Indie Flower" }, { value: "Inika", label: "Inika" }, { value: "Inknut Antiqua", label: "Inknut Antiqua" }, { value: "Irish Grover", label: "Irish Grover" }, { value: "Istok Web", label: "Istok Web" }, { value: "Italiana", label: "Italiana" }, { value: "Italianno", label: "Italianno" }, { value: "Itim", label: "Itim" }, { value: "Jacques Francois", label: "Jacques Francois" }, { value: "Jacques Francois Shadow", label: "Jacques Francois Shadow" }, { value: "Jaldi", label: "Jaldi" }, { value: "Jim Nightshade", label: "Jim Nightshade" }, { value: "Jockey One", label: "Jockey One" }, { value: "Jolly Lodger", label: "Jolly Lodger" }, { value: "Jomhuria", label: "Jomhuria" }, { value: "Josefin Sans", label: "Josefin Sans" }, { value: "Josefin Slab", label: "Josefin Slab" }, { value: "Joti One", label: "Joti One" }, { value: "Jua", label: "Jua" }, { value: "Judson", label: "Judson" }, { value: "Julee", label: "Julee" }, { value: "Julius Sans One", label: "Julius Sans One" }, { value: "Junge", label: "Junge" }, { value: "Jura", label: "Jura" }, { value: "Just Another Hand", label: "Just Another Hand" }, { value: "Just Me Again Down Here", label: "Just Me Again Down Here" }, { value: "K2D", label: "K2D" }, { value: "Kadwa", label: "Kadwa" }, { value: "Kalam", label: "Kalam" }, { value: "Kameron", label: "Kameron" }, { value: "Kanit", label: "Kanit" }, { value: "Kantumruy", label: "Kantumruy" }, { value: "Karla", label: "Karla" }, { value: "Karma", label: "Karma" }, { value: "Katibeh", label: "Katibeh" }, { value: "Kaushan Script", label: "Kaushan Script" }, { value: "Kavivanar", label: "Kavivanar" }, { value: "Kavoon", label: "Kavoon" }, { value: "Kdam Thmor", label: "Kdam Thmor" }, { value: "Keania One", label: "Keania One" }, { value: "Kelly Slab", label: "Kelly Slab" }, { value: "Kenia", label: "Kenia" }, { value: "Khand", label: "Khand" }, { value: "Khmer", label: "Khmer" }, { value: "Khula", label: "Khula" }, { value: "Kirang Haerang", label: "Kirang Haerang" }, { value: "Kite One", label: "Kite One" }, { value: "Knewave", label: "Knewave" }, { value: "KoHo", label: "KoHo" }, { value: "Kodchasan", label: "Kodchasan" }, { value: "Kosugi", label: "Kosugi" }, { value: "Kosugi Maru", label: "Kosugi Maru" }, { value: "Kotta One", label: "Kotta One" }, { value: "Koulen", label: "Koulen" }, { value: "Kranky", label: "Kranky" }, { value: "Kreon", label: "Kreon" }, { value: "Kristi", label: "Kristi" }, { value: "Krona One", label: "Krona One" }, { value: "Krub", label: "Krub" }, { value: "Kumar One", label: "Kumar One" }, { value: "Kumar One Outline", label: "Kumar One Outline" }, { value: "Kurale", label: "Kurale" }, { value: "La Belle Aurore", label: "La Belle Aurore" }, { value: "Laila", label: "Laila" }, { value: "Lakki Reddy", label: "Lakki Reddy" }, { value: "Lalezar", label: "Lalezar" }, { value: "Lancelot", label: "Lancelot" }, { value: "Lateef", label: "Lateef" }, { value: "Lato", label: "Lato" }, { value: "League Script", label: "League Script" }, { value: "Leckerli One", label: "Leckerli One" }, { value: "Ledger", label: "Ledger" }, { value: "Lekton", label: "Lekton" }, { value: "Lemon", label: "Lemon" }, { value: "Lemonada", label: "Lemonada" }, { value: "Libre Barcode 128", label: "Libre Barcode 128" }, { value: "Libre Barcode 128 Text", label: "Libre Barcode 128 Text" }, { value: "Libre Barcode 39", label: "Libre Barcode 39" }, { value: "Libre Barcode 39 Extended", label: "Libre Barcode 39 Extended" }, {
+  value: "Libre Barcode 39 Extended Text",
+  label: "Libre Barcode 39 Extended Text"
+}, { value: "Libre Barcode 39 Text", label: "Libre Barcode 39 Text" }, { value: "Libre Baskerville", label: "Libre Baskerville" }, { value: "Libre Franklin", label: "Libre Franklin" }, { value: "Life Savers", label: "Life Savers" }, { value: "Lilita One", label: "Lilita One" }, { value: "Lily Script One", label: "Lily Script One" }, { value: "Limelight", label: "Limelight" }, { value: "Linden Hill", label: "Linden Hill" }, { value: "Lobster", label: "Lobster" }, { value: "Lobster Two", label: "Lobster Two" }, { value: "Londrina Outline", label: "Londrina Outline" }, { value: "Londrina Shadow", label: "Londrina Shadow" }, { value: "Londrina Sketch", label: "Londrina Sketch" }, { value: "Londrina Solid", label: "Londrina Solid" }, { value: "Lora", label: "Lora" }, { value: "Love Ya Like A Sister", label: "Love Ya Like A Sister" }, { value: "Loved by the King", label: "Loved by the King" }, { value: "Lovers Quarrel", label: "Lovers Quarrel" }, { value: "Luckiest Guy", label: "Luckiest Guy" }, { value: "Lusitana", label: "Lusitana" }, { value: "Lustria", label: "Lustria" }, { value: "M PLUS 1p", label: "M PLUS 1p" }, { value: "M PLUS Rounded 1c", label: "M PLUS Rounded 1c" }, { value: "Macondo", label: "Macondo" }, { value: "Macondo Swash Caps", label: "Macondo Swash Caps" }, { value: "Mada", label: "Mada" }, { value: "Magra", label: "Magra" }, { value: "Maiden Orange", label: "Maiden Orange" }, { value: "Maitree", label: "Maitree" }, { value: "Mako", label: "Mako" }, { value: "Mali", label: "Mali" }, { value: "Mallanna", label: "Mallanna" }, { value: "Mandali", label: "Mandali" }, { value: "Manuale", label: "Manuale" }, { value: "Marcellus", label: "Marcellus" }, { value: "Marcellus SC", label: "Marcellus SC" }, { value: "Marck Script", label: "Marck Script" }, { value: "Margarine", label: "Margarine" }, { value: "Markazi Text", label: "Markazi Text" }, { value: "Marko One", label: "Marko One" }, { value: "Marmelad", label: "Marmelad" }, { value: "Martel", label: "Martel" }, { value: "Martel Sans", label: "Martel Sans" }, { value: "Marvel", label: "Marvel" }, { value: "Mate", label: "Mate" }, { value: "Mate SC", label: "Mate SC" }, { value: "Maven Pro", label: "Maven Pro" }, { value: "McLaren", label: "McLaren" }, { value: "Meddon", label: "Meddon" }, { value: "MedievalSharp", label: "MedievalSharp" }, { value: "Medula One", label: "Medula One" }, { value: "Meera Inimai", label: "Meera Inimai" }, { value: "Megrim", label: "Megrim" }, { value: "Meie Script", label: "Meie Script" }, { value: "Merienda", label: "Merienda" }, { value: "Merienda One", label: "Merienda One" }, { value: "Merriweather", label: "Merriweather" }, { value: "Merriweather Sans", label: "Merriweather Sans" }, { value: "Metal", label: "Metal" }, { value: "Metal Mania", label: "Metal Mania" }, { value: "Metamorphous", label: "Metamorphous" }, { value: "Metrophobic", label: "Metrophobic" }, { value: "Michroma", label: "Michroma" }, { value: "Milonga", label: "Milonga" }, { value: "Miltonian", label: "Miltonian" }, { value: "Miltonian Tattoo", label: "Miltonian Tattoo" }, { value: "Mina", label: "Mina" }, { value: "Miniver", label: "Miniver" }, { value: "Miriam Libre", label: "Miriam Libre" }, { value: "Mirza", label: "Mirza" }, { value: "Miss Fajardose", label: "Miss Fajardose" }, { value: "Mitr", label: "Mitr" }, { value: "Modak", label: "Modak" }, { value: "Modern Antiqua", label: "Modern Antiqua" }, { value: "Mogra", label: "Mogra" }, { value: "Molengo", label: "Molengo" }, { value: "Molle", label: "Molle" }, { value: "Monda", label: "Monda" }, { value: "Monofett", label: "Monofett" }, { value: "Monoton", label: "Monoton" }, { value: "Monsieur La Doulaise", label: "Monsieur La Doulaise" }, { value: "Montaga", label: "Montaga" }, { value: "Montez", label: "Montez" }, { value: "Montserrat", label: "Montserrat" }, { value: "Montserrat Alternates", label: "Montserrat Alternates" }, { value: "Montserrat Subrayada", label: "Montserrat Subrayada" }, { value: "Moul", label: "Moul" }, { value: "Moulpali", label: "Moulpali" }, { value: "Mountains of Christmas", label: "Mountains of Christmas" }, { value: "Mouse Memoirs", label: "Mouse Memoirs" }, { value: "Mr Bedfort", label: "Mr Bedfort" }, { value: "Mr Dafoe", label: "Mr Dafoe" }, { value: "Mr De Haviland", label: "Mr De Haviland" }, { value: "Mrs Saint Delafield", label: "Mrs Saint Delafield" }, { value: "Mrs Sheppards", label: "Mrs Sheppards" }, { value: "Mukta", label: "Mukta" }, { value: "Mukta Mahee", label: "Mukta Mahee" }, { value: "Mukta Malar", label: "Mukta Malar" }, { value: "Mukta Vaani", label: "Mukta Vaani" }, { value: "Muli", label: "Muli" }, { value: "Mystery Quest", label: "Mystery Quest" }, { value: "NTR", label: "NTR" }, { value: "Nanum Brush Script", label: "Nanum Brush Script" }, { value: "Nanum Gothic", label: "Nanum Gothic" }, { value: "Nanum Gothic Coding", label: "Nanum Gothic Coding" }, { value: "Nanum Myeongjo", label: "Nanum Myeongjo" }, { value: "Nanum Pen Script", label: "Nanum Pen Script" }, { value: "Neucha", label: "Neucha" }, { value: "Neuton", label: "Neuton" }, { value: "New Rocker", label: "New Rocker" }, { value: "News Cycle", label: "News Cycle" }, { value: "Niconne", label: "Niconne" }, { value: "Niramit", label: "Niramit" }, { value: "Nixie One", label: "Nixie One" }, { value: "Nobile", label: "Nobile" }, { value: "Nokora", label: "Nokora" }, { value: "Norican", label: "Norican" }, { value: "Nosifer", label: "Nosifer" }, { value: "Notable", label: "Notable" }, { value: "Nothing You Could Do", label: "Nothing You Could Do" }, { value: "Noticia Text", label: "Noticia Text" }, { value: "Noto Kufi Arabic", label: "Noto Kufi Arabic" }, { value: "Noto Naskh Arabic", label: "Noto Naskh Arabic" }, { value: "Noto Sans", label: "Noto Sans" }, { value: "Noto Sans Hebrew", label: "Noto Sans Hebrew" }, { value: "Noto Sans JP", label: "Noto Sans JP" }, { value: "Noto Sans KR", label: "Noto Sans KR" }, { value: "Noto Serif", label: "Noto Serif" }, { value: "Noto Serif JP", label: "Noto Serif JP" }, { value: "Noto Serif KR", label: "Noto Serif KR" }, { value: "Nova Cut", label: "Nova Cut" }, { value: "Nova Flat", label: "Nova Flat" }, { value: "Nova Mono", label: "Nova Mono" }, { value: "Nova Oval", label: "Nova Oval" }, { value: "Nova Round", label: "Nova Round" }, { value: "Nova Script", label: "Nova Script" }, { value: "Nova Slim", label: "Nova Slim" }, { value: "Nova Square", label: "Nova Square" }, { value: "Numans", label: "Numans" }, { value: "Nunito", label: "Nunito" }, { value: "Nunito Sans", label: "Nunito Sans" }, { value: "Odor Mean Chey", label: "Odor Mean Chey" }, { value: "Offside", label: "Offside" }, { value: "Old Standard TT", label: "Old Standard TT" }, { value: "Oldenburg", label: "Oldenburg" }, { value: "Oleo Script", label: "Oleo Script" }, { value: "Oleo Script Swash Caps", label: "Oleo Script Swash Caps" }, { value: "Open Sans", label: "Open Sans" }, { value: "Open Sans Condensed", label: "Open Sans Condensed" }, { value: "Open Sans Hebrew", label: "Open Sans Hebrew" }, { value: "Open Sans Hebrew Condensed", label: "Open Sans Hebrew Condensed" }, { value: "Oranienbaum", label: "Oranienbaum" }, { value: "Orbitron", label: "Orbitron" }, { value: "Oregano", label: "Oregano" }, { value: "Orienta", label: "Orienta" }, { value: "Original Surfer", label: "Original Surfer" }, { value: "Oswald", label: "Oswald" }, { value: "Over the Rainbow", label: "Over the Rainbow" }, { value: "Overlock", label: "Overlock" }, { value: "Overlock SC", label: "Overlock SC" }, { value: "Overpass", label: "Overpass" }, { value: "Overpass Mono", label: "Overpass Mono" }, { value: "Ovo", label: "Ovo" }, { value: "Oxygen", label: "Oxygen" }, { value: "Oxygen Mono", label: "Oxygen Mono" }, { value: "PT Mono", label: "PT Mono" }, { value: "PT Sans", label: "PT Sans" }, { value: "PT Sans Caption", label: "PT Sans Caption" }, { value: "PT Sans Narrow", label: "PT Sans Narrow" }, { value: "PT Serif", label: "PT Serif" }, { value: "PT Serif Caption", label: "PT Serif Caption" }, { value: "Pacifico", label: "Pacifico" }, { value: "Padauk", label: "Padauk" }, { value: "Palanquin", label: "Palanquin" }, { value: "Palanquin Dark", label: "Palanquin Dark" }, { value: "Pangolin", label: "Pangolin" }, { value: "Paprika", label: "Paprika" }, { value: "Parisienne", label: "Parisienne" }, { value: "Passero One", label: "Passero One" }, { value: "Passion One", label: "Passion One" }, { value: "Pathway Gothic One", label: "Pathway Gothic One" }, { value: "Patrick Hand", label: "Patrick Hand" }, { value: "Patrick Hand SC", label: "Patrick Hand SC" }, { value: "Pattaya", label: "Pattaya" }, { value: "Patua One", label: "Patua One" }, { value: "Pavanam", label: "Pavanam" }, { value: "Paytone One", label: "Paytone One" }, { value: "Peddana", label: "Peddana" }, { value: "Peralta", label: "Peralta" }, { value: "Permanent Marker", label: "Permanent Marker" }, { value: "Petit Formal Script", label: "Petit Formal Script" }, { value: "Petrona", label: "Petrona" }, { value: "Philosopher", label: "Philosopher" }, { value: "Piedra", label: "Piedra" }, { value: "Pinyon Script", label: "Pinyon Script" }, { value: "Pirata One", label: "Pirata One" }, { value: "Plaster", label: "Plaster" }, { value: "Play", label: "Play" }, { value: "Playball", label: "Playball" }, { value: "Playfair Display", label: "Playfair Display" }, { value: "Playfair Display SC", label: "Playfair Display SC" }, { value: "Podkova", label: "Podkova" }, { value: "Poiret One", label: "Poiret One" }, { value: "Poller One", label: "Poller One" }, { value: "Poly", label: "Poly" }, { value: "Pompiere", label: "Pompiere" }, { value: "Pontano Sans", label: "Pontano Sans" }, { value: "Poor Story", label: "Poor Story" }, { value: "Poppins", label: "Poppins" }, { value: "Port Lligat Sans", label: "Port Lligat Sans" }, { value: "Port Lligat Slab", label: "Port Lligat Slab" }, { value: "Pragati Narrow", label: "Pragati Narrow" }, { value: "Prata", label: "Prata" }, { value: "Preahvihear", label: "Preahvihear" }, { value: "Press Start 2P", label: "Press Start 2P" }, { value: "Pridi", label: "Pridi" }, { value: "Princess Sofia", label: "Princess Sofia" }, { value: "Prociono", label: "Prociono" }, { value: "Prompt", label: "Prompt" }, { value: "Prosto One", label: "Prosto One" }, { value: "Proza Libre", label: "Proza Libre" }, { value: "Puritan", label: "Puritan" }, { value: "Purple Purse", label: "Purple Purse" }, { value: "Quando", label: "Quando" }, { value: "Quantico", label: "Quantico" }, { value: "Quattrocento", label: "Quattrocento" }, { value: "Quattrocento Sans", label: "Quattrocento Sans" }, { value: "Questrial", label: "Questrial" }, { value: "Quicksand", label: "Quicksand" }, { value: "Quintessential", label: "Quintessential" }, { value: "Qwigley", label: "Qwigley" }, { value: "Racing Sans One", label: "Racing Sans One" }, { value: "Radley", label: "Radley" }, { value: "Rajdhani", label: "Rajdhani" }, { value: "Rakkas", label: "Rakkas" }, { value: "Raleway", label: "Raleway" }, { value: "Raleway Dots", label: "Raleway Dots" }, { value: "Ramabhadra", label: "Ramabhadra" }, { value: "Ramaraja", label: "Ramaraja" }, { value: "Rambla", label: "Rambla" }, { value: "Rammetto One", label: "Rammetto One" }, { value: "Ranchers", label: "Ranchers" }, { value: "Rancho", label: "Rancho" }, { value: "Ranga", label: "Ranga" }, { value: "Rasa", label: "Rasa" }, { value: "Rationale", label: "Rationale" }, { value: "Ravi Prakash", label: "Ravi Prakash" }, { value: "Redressed", label: "Redressed" }, { value: "Reem Kufi", label: "Reem Kufi" }, { value: "Reenie Beanie", label: "Reenie Beanie" }, { value: "Revalia", label: "Revalia" }, { value: "Rhodium Libre", label: "Rhodium Libre" }, { value: "Ribeye", label: "Ribeye" }, { value: "Ribeye Marrow", label: "Ribeye Marrow" }, { value: "Righteous", label: "Righteous" }, { value: "Risque", label: "Risque" }, { value: "Roboto", label: "Roboto" }, { value: "Roboto Condensed", label: "Roboto Condensed" }, { value: "Roboto Mono", label: "Roboto Mono" }, { value: "Roboto Slab", label: "Roboto Slab" }, { value: "Rochester", label: "Rochester" }, { value: "Rock Salt", label: "Rock Salt" }, { value: "Rokkitt", label: "Rokkitt" }, { value: "Romanesco", label: "Romanesco" }, { value: "Ropa Sans", label: "Ropa Sans" }, { value: "Rosario", label: "Rosario" }, { value: "Rosarivo", label: "Rosarivo" }, { value: "Rouge Script", label: "Rouge Script" }, { value: "Rozha One", label: "Rozha One" }, { value: "Rubik", label: "Rubik" }, { value: "Rubik Mono One", label: "Rubik Mono One" }, { value: "Ruda", label: "Ruda" }, { value: "Rufina", label: "Rufina" }, { value: "Ruge Boogie", label: "Ruge Boogie" }, { value: "Ruluko", label: "Ruluko" }, { value: "Rum Raisin", label: "Rum Raisin" }, { value: "Ruslan Display", label: "Ruslan Display" }, { value: "Russo One", label: "Russo One" }, { value: "Ruthie", label: "Ruthie" }, { value: "Rye", label: "Rye" }, { value: "Sacramento", label: "Sacramento" }, { value: "Sahitya", label: "Sahitya" }, { value: "Sail", label: "Sail" }, { value: "Saira", label: "Saira" }, { value: "Saira Condensed", label: "Saira Condensed" }, { value: "Saira Extra Condensed", label: "Saira Extra Condensed" }, { value: "Saira Semi Condensed", label: "Saira Semi Condensed" }, { value: "Salsa", label: "Salsa" }, { value: "Sanchez", label: "Sanchez" }, { value: "Sancreek", label: "Sancreek" }, { value: "Sansita", label: "Sansita" }, { value: "Sarala", label: "Sarala" }, { value: "Sarina", label: "Sarina" }, { value: "Sarpanch", label: "Sarpanch" }, { value: "Satisfy", label: "Satisfy" }, { value: "Sawarabi Gothic", label: "Sawarabi Gothic" }, { value: "Sawarabi Mincho", label: "Sawarabi Mincho" }, { value: "Scada", label: "Scada" }, { value: "Scheherazade", label: "Scheherazade" }, { value: "Schoolbell", label: "Schoolbell" }, { value: "Scope One", label: "Scope One" }, { value: "Seaweed Script", label: "Seaweed Script" }, { value: "Secular One", label: "Secular One" }, { value: "Sedgwick Ave", label: "Sedgwick Ave" }, { value: "Sedgwick Ave Display", label: "Sedgwick Ave Display" }, { value: "Sevillana", label: "Sevillana" }, { value: "Seymour One", label: "Seymour One" }, { value: "Shadows Into Light", label: "Shadows Into Light" }, { value: "Shadows Into Light Two", label: "Shadows Into Light Two" }, { value: "Shanti", label: "Shanti" }, { value: "Share", label: "Share" }, { value: "Share Tech", label: "Share Tech" }, { value: "Share Tech Mono", label: "Share Tech Mono" }, { value: "Shojumaru", label: "Shojumaru" }, { value: "Short Stack", label: "Short Stack" }, { value: "Shrikhand", label: "Shrikhand" }, { value: "Siemreap", label: "Siemreap" }, { value: "Sigmar One", label: "Sigmar One" }, { value: "Signika", label: "Signika" }, { value: "Signika Negative", label: "Signika Negative" }, { value: "Simonetta", label: "Simonetta" }, { value: "Sintony", label: "Sintony" }, { value: "Sirin Stencil", label: "Sirin Stencil" }, { value: "Six Caps", label: "Six Caps" }, { value: "Skranji", label: "Skranji" }, { value: "Slabo 13px", label: "Slabo 13px" }, { value: "Slabo 27px", label: "Slabo 27px" }, { value: "Slackey", label: "Slackey" }, { value: "Smokum", label: "Smokum" }, { value: "Smythe", label: "Smythe" }, { value: "Sniglet", label: "Sniglet" }, { value: "Snippet", label: "Snippet" }, { value: "Snowburst One", label: "Snowburst One" }, { value: "Sofadi One", label: "Sofadi One" }, { value: "Sofia", label: "Sofia" }, { value: "Song Myung", label: "Song Myung" }, { value: "Sonsie One", label: "Sonsie One" }, { value: "Sorts Mill Goudy", label: "Sorts Mill Goudy" }, { value: "Source Code Pro", label: "Source Code Pro" }, { value: "Source Sans Pro", label: "Source Sans Pro" }, { value: "Source Serif Pro", label: "Source Serif Pro" }, { value: "Space Mono", label: "Space Mono" }, { value: "Special Elite", label: "Special Elite" }, { value: "Spectral", label: "Spectral" }, { value: "Spectral SC", label: "Spectral SC" }, { value: "Spicy Rice", label: "Spicy Rice" }, { value: "Spinnaker", label: "Spinnaker" }, { value: "Spirax", label: "Spirax" }, { value: "Squada One", label: "Squada One" }, { value: "Sree Krushnadevaraya", label: "Sree Krushnadevaraya" }, { value: "Sriracha", label: "Sriracha" }, { value: "Srisakdi", label: "Srisakdi" }, { value: "Stalemate", label: "Stalemate" }, { value: "Stalinist One", label: "Stalinist One" }, { value: "Stardos Stencil", label: "Stardos Stencil" }, { value: "Stint Ultra Condensed", label: "Stint Ultra Condensed" }, { value: "Stint Ultra Expanded", label: "Stint Ultra Expanded" }, { value: "Stoke", label: "Stoke" }, { value: "Strait", label: "Strait" }, { value: "Stylish", label: "Stylish" }, { value: "Sue Ellen Francisco", label: "Sue Ellen Francisco" }, { value: "Suez One", label: "Suez One" }, { value: "Sumana", label: "Sumana" }, { value: "Sunflower", label: "Sunflower" }, { value: "Sunshiney", label: "Sunshiney" }, { value: "Supermercado One", label: "Supermercado One" }, { value: "Sura", label: "Sura" }, { value: "Suranna", label: "Suranna" }, { value: "Suravaram", label: "Suravaram" }, { value: "Suwannaphum", label: "Suwannaphum" }, { value: "Swanky and Moo Moo", label: "Swanky and Moo Moo" }, { value: "Syncopate", label: "Syncopate" }, { value: "Tajawal", label: "Tajawal" }, { value: "Tangerine", label: "Tangerine" }, { value: "Taprom", label: "Taprom" }, { value: "Tauri", label: "Tauri" }, { value: "Taviraj", label: "Taviraj" }, { value: "Teko", label: "Teko" }, { value: "Telex", label: "Telex" }, { value: "Tenali Ramakrishna", label: "Tenali Ramakrishna" }, { value: "Tenor Sans", label: "Tenor Sans" }, { value: "Text Me One", label: "Text Me One" }, { value: "The Girl Next Door", label: "The Girl Next Door" }, { value: "Tienne", label: "Tienne" }, { value: "Tillana", label: "Tillana" }, { value: "Timmana", label: "Timmana" }, { value: "Tinos", label: "Tinos" }, { value: "Titan One", label: "Titan One" }, { value: "Titillium Web", label: "Titillium Web" }, { value: "Trade Winds", label: "Trade Winds" }, { value: "Trirong", label: "Trirong" }, { value: "Trocchi", label: "Trocchi" }, { value: "Trochut", label: "Trochut" }, { value: "Trykker", label: "Trykker" }, { value: "Tulpen One", label: "Tulpen One" }, { value: "Ubuntu", label: "Ubuntu" }, { value: "Ubuntu Condensed", label: "Ubuntu Condensed" }, { value: "Ubuntu Mono", label: "Ubuntu Mono" }, { value: "Ultra", label: "Ultra" }, { value: "Uncial Antiqua", label: "Uncial Antiqua" }, { value: "Underdog", label: "Underdog" }, { value: "Unica One", label: "Unica One" }, { value: "UnifrakturCook", label: "UnifrakturCook" }, { value: "UnifrakturMaguntia", label: "UnifrakturMaguntia" }, { value: "Unkempt", label: "Unkempt" }, { value: "Unlock", label: "Unlock" }, { value: "Unna", label: "Unna" }, { value: "VT323", label: "VT323" }, { value: "Vampiro One", label: "Vampiro One" }, { value: "Varela", label: "Varela" }, { value: "Varela Round", label: "Varela Round" }, { value: "Vast Shadow", label: "Vast Shadow" }, { value: "Vesper Libre", label: "Vesper Libre" }, { value: "Vibur", label: "Vibur" }, { value: "Vidaloka", label: "Vidaloka" }, { value: "Viga", label: "Viga" }, { value: "Voces", label: "Voces" }, { value: "Volkhov", label: "Volkhov" }, { value: "Vollkorn", label: "Vollkorn" }, { value: "Vollkorn SC", label: "Vollkorn SC" }, { value: "Voltaire", label: "Voltaire" }, { value: "Waiting for the Sunrise", label: "Waiting for the Sunrise" }, { value: "Wallpoet", label: "Wallpoet" }, { value: "Walter Turncoat", label: "Walter Turncoat" }, { value: "Warnes", label: "Warnes" }, { value: "Wellfleet", label: "Wellfleet" }, { value: "Wendy One", label: "Wendy One" }, { value: "Wire One", label: "Wire One" }, { value: "Work Sans", label: "Work Sans" }, { value: "Yanone Kaffeesatz", label: "Yanone Kaffeesatz" }, { value: "Yantramanav", label: "Yantramanav" }, { value: "Yatra One", label: "Yatra One" }, { value: "Yellowtail", label: "Yellowtail" }, { value: "Yeon Sung", label: "Yeon Sung" }, { value: "Yeseva One", label: "Yeseva One" }, { value: "Yesteryear", label: "Yesteryear" }, { value: "Yrsa", label: "Yrsa" }, { value: "Zeyada", label: "Zeyada" }, { value: "Zilla Slab", label: "Zilla Slab" }, { value: "Zilla Slab Highlight", label: "Zilla Slab Highlight" }];
+
+/* harmony default export */ __webpack_exports__["a"] = (FONTS);
+
+/***/ }),
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1155,24 +1173,6 @@ function PremiumBackground(props) {
 }
 
 /***/ }),
-/* 13 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var FONTS = [{
-  value: "Opens Sans",
-  label: "Opens Sans"
-}, {
-  value: "Bangers",
-  label: "Bangers"
-}, { value: "Arial", label: "Arial" }, { value: "Tahoma", label: "Tahoma" }, { value: "Verdana", label: "Verdana" }, { value: "Helvetica", label: "Helvetica" }, { value: "Times New Roman", label: "Times New Roman" }, { value: "Trebuchet MS", label: "Trebuchet MS" }, { value: "Georgia", label: "Georgia" }, { value: "ABeeZee", label: "ABeeZee" }, { value: "Abel", label: "Abel" }, { value: "Abhaya Libre", label: "Abhaya Libre" }, { value: "Abril Fatface", label: "Abril Fatface" }, { value: "Aclonica", label: "Aclonica" }, { value: "Acme", label: "Acme" }, { value: "Actor", label: "Actor" }, { value: "Adamina", label: "Adamina" }, { value: "Advent Pro", label: "Advent Pro" }, { value: "Aguafina Script", label: "Aguafina Script" }, { value: "Akronim", label: "Akronim" }, { value: "Aladin", label: "Aladin" }, { value: "Aldrich", label: "Aldrich" }, { value: "Alef", label: "Alef" }, { value: "Alef Hebrew", label: "Alef Hebrew" }, { value: "Alegreya", label: "Alegreya" }, { value: "Alegreya SC", label: "Alegreya SC" }, { value: "Alegreya Sans", label: "Alegreya Sans" }, { value: "Alegreya Sans SC", label: "Alegreya Sans SC" }, { value: "Alex Brush", label: "Alex Brush" }, { value: "Alfa Slab One", label: "Alfa Slab One" }, { value: "Alice", label: "Alice" }, { value: "Alike", label: "Alike" }, { value: "Alike Angular", label: "Alike Angular" }, { value: "Allan", label: "Allan" }, { value: "Allerta", label: "Allerta" }, { value: "Allerta Stencil", label: "Allerta Stencil" }, { value: "Allura", label: "Allura" }, { value: "Almendra", label: "Almendra" }, { value: "Almendra Display", label: "Almendra Display" }, { value: "Almendra SC", label: "Almendra SC" }, { value: "Amarante", label: "Amarante" }, { value: "Amaranth", label: "Amaranth" }, { value: "Amatic SC", label: "Amatic SC" }, { value: "Amethysta", label: "Amethysta" }, { value: "Amiko", label: "Amiko" }, { value: "Amiri", label: "Amiri" }, { value: "Amita", label: "Amita" }, { value: "Anaheim", label: "Anaheim" }, { value: "Andada", label: "Andada" }, { value: "Andika", label: "Andika" }, { value: "Angkor", label: "Angkor" }, { value: "Annie Use Your Telescope", label: "Annie Use Your Telescope" }, { value: "Anonymous Pro", label: "Anonymous Pro" }, { value: "Antic", label: "Antic" }, { value: "Antic Didone", label: "Antic Didone" }, { value: "Antic Slab", label: "Antic Slab" }, { value: "Anton", label: "Anton" }, { value: "Arapey", label: "Arapey" }, { value: "Arbutus", label: "Arbutus" }, { value: "Arbutus Slab", label: "Arbutus Slab" }, { value: "Architects Daughter", label: "Architects Daughter" }, { value: "Archivo", label: "Archivo" }, { value: "Archivo Black", label: "Archivo Black" }, { value: "Archivo Narrow", label: "Archivo Narrow" }, { value: "Aref Ruqaa", label: "Aref Ruqaa" }, { value: "Arima Madurai", label: "Arima Madurai" }, { value: "Arimo", label: "Arimo" }, { value: "Arizonia", label: "Arizonia" }, { value: "Armata", label: "Armata" }, { value: "Arsenal", label: "Arsenal" }, { value: "Artifika", label: "Artifika" }, { value: "Arvo", label: "Arvo" }, { value: "Arya", label: "Arya" }, { value: "Asap", label: "Asap" }, { value: "Asap Condensed", label: "Asap Condensed" }, { value: "Asar", label: "Asar" }, { value: "Asset", label: "Asset" }, { value: "Assistant", label: "Assistant" }, { value: "Astloch", label: "Astloch" }, { value: "Asul", label: "Asul" }, { value: "Athiti", label: "Athiti" }, { value: "Atma", label: "Atma" }, { value: "Atomic Age", label: "Atomic Age" }, { value: "Aubrey", label: "Aubrey" }, { value: "Audiowide", label: "Audiowide" }, { value: "Autour One", label: "Autour One" }, { value: "Average", label: "Average" }, { value: "Average Sans", label: "Average Sans" }, { value: "Averia Gruesa Libre", label: "Averia Gruesa Libre" }, { value: "Averia Libre", label: "Averia Libre" }, { value: "Averia Sans Libre", label: "Averia Sans Libre" }, { value: "Averia Serif Libre", label: "Averia Serif Libre" }, { value: "Bad Script", label: "Bad Script" }, { value: "Bahiana", label: "Bahiana" }, { value: "Bai Jamjuree", label: "Bai Jamjuree" }, { value: "Baloo", label: "Baloo" }, { value: "Baloo Bhai", label: "Baloo Bhai" }, { value: "Baloo Bhaijaan", label: "Baloo Bhaijaan" }, { value: "Baloo Bhaina", label: "Baloo Bhaina" }, { value: "Baloo Chettan", label: "Baloo Chettan" }, { value: "Baloo Da", label: "Baloo Da" }, { value: "Baloo Paaji", label: "Baloo Paaji" }, { value: "Baloo Tamma", label: "Baloo Tamma" }, { value: "Baloo Tammudu", label: "Baloo Tammudu" }, { value: "Baloo Thambi", label: "Baloo Thambi" }, { value: "Balthazar", label: "Balthazar" }, { value: "Bangers", label: "Bangers" }, { value: "Barlow", label: "Barlow" }, { value: "Barlow Condensed", label: "Barlow Condensed" }, { value: "Barlow Semi Condensed", label: "Barlow Semi Condensed" }, { value: "Barrio", label: "Barrio" }, { value: "Basic", label: "Basic" }, { value: "Battambang", label: "Battambang" }, { value: "Baumans", label: "Baumans" }, { value: "Bayon", label: "Bayon" }, { value: "Belgrano", label: "Belgrano" }, { value: "Bellefair", label: "Bellefair" }, { value: "Belleza", label: "Belleza" }, { value: "BenchNine", label: "BenchNine" }, { value: "Bentham", label: "Bentham" }, { value: "Berkshire Swash", label: "Berkshire Swash" }, { value: "Bevan", label: "Bevan" }, { value: "Bigelow Rules", label: "Bigelow Rules" }, { value: "Bigshot One", label: "Bigshot One" }, { value: "Bilbo", label: "Bilbo" }, { value: "Bilbo Swash Caps", label: "Bilbo Swash Caps" }, { value: "BioRhyme", label: "BioRhyme" }, { value: "BioRhyme Expanded", label: "BioRhyme Expanded" }, { value: "Biryani", label: "Biryani" }, { value: "Bitter", label: "Bitter" }, { value: "Black And White Picture", label: "Black And White Picture" }, { value: "Black Han Sans", label: "Black Han Sans" }, { value: "Black Ops One", label: "Black Ops One" }, { value: "Bokor", label: "Bokor" }, { value: "Bonbon", label: "Bonbon" }, { value: "Boogaloo", label: "Boogaloo" }, { value: "Bowlby One", label: "Bowlby One" }, { value: "Bowlby One SC", label: "Bowlby One SC" }, { value: "Brawler", label: "Brawler" }, { value: "Bree Serif", label: "Bree Serif" }, { value: "Bubblegum Sans", label: "Bubblegum Sans" }, { value: "Bubbler One", label: "Bubbler One" }, { value: "Buda", label: "Buda" }, { value: "Buenard", label: "Buenard" }, { value: "Bungee", label: "Bungee" }, { value: "Bungee Hairline", label: "Bungee Hairline" }, { value: "Bungee Inline", label: "Bungee Inline" }, { value: "Bungee Outline", label: "Bungee Outline" }, { value: "Bungee Shade", label: "Bungee Shade" }, { value: "Butcherman", label: "Butcherman" }, { value: "Butterfly Kids", label: "Butterfly Kids" }, { value: "Cabin", label: "Cabin" }, { value: "Cabin Condensed", label: "Cabin Condensed" }, { value: "Cabin Sketch", label: "Cabin Sketch" }, { value: "Caesar Dressing", label: "Caesar Dressing" }, { value: "Cagliostro", label: "Cagliostro" }, { value: "Cairo", label: "Cairo" }, { value: "Calligraffitti", label: "Calligraffitti" }, { value: "Cambay", label: "Cambay" }, { value: "Cambo", label: "Cambo" }, { value: "Candal", label: "Candal" }, { value: "Cantarell", label: "Cantarell" }, { value: "Cantata One", label: "Cantata One" }, { value: "Cantora One", label: "Cantora One" }, { value: "Capriola", label: "Capriola" }, { value: "Cardo", label: "Cardo" }, { value: "Carme", label: "Carme" }, { value: "Carrois Gothic", label: "Carrois Gothic" }, { value: "Carrois Gothic SC", label: "Carrois Gothic SC" }, { value: "Carter One", label: "Carter One" }, { value: "Catamaran", label: "Catamaran" }, { value: "Caudex", label: "Caudex" }, { value: "Caveat", label: "Caveat" }, { value: "Caveat Brush", label: "Caveat Brush" }, { value: "Cedarville Cursive", label: "Cedarville Cursive" }, { value: "Ceviche One", label: "Ceviche One" }, { value: "Chakra Petch", label: "Chakra Petch" }, { value: "Changa", label: "Changa" }, { value: "Changa One", label: "Changa One" }, { value: "Chango", label: "Chango" }, { value: "Charmonman", label: "Charmonman" }, { value: "Chathura", label: "Chathura" }, { value: "Chau Philomene One", label: "Chau Philomene One" }, { value: "Chela One", label: "Chela One" }, { value: "Chelsea Market", label: "Chelsea Market" }, { value: "Chenla", label: "Chenla" }, { value: "Cherry Cream Soda", label: "Cherry Cream Soda" }, { value: "Cherry Swash", label: "Cherry Swash" }, { value: "Chewy", label: "Chewy" }, { value: "Chicle", label: "Chicle" }, { value: "Chivo", label: "Chivo" }, { value: "Chonburi", label: "Chonburi" }, { value: "Cinzel", label: "Cinzel" }, { value: "Cinzel Decorative", label: "Cinzel Decorative" }, { value: "Clicker Script", label: "Clicker Script" }, { value: "Coda", label: "Coda" }, { value: "Coda Caption", label: "Coda Caption" }, { value: "Codystar", label: "Codystar" }, { value: "Coiny", label: "Coiny" }, { value: "Combo", label: "Combo" }, { value: "Comfortaa", label: "Comfortaa" }, { value: "Coming Soon", label: "Coming Soon" }, { value: "Concert One", label: "Concert One" }, { value: "Condiment", label: "Condiment" }, { value: "Content", label: "Content" }, { value: "Contrail One", label: "Contrail One" }, { value: "Convergence", label: "Convergence" }, { value: "Cookie", label: "Cookie" }, { value: "Copse", label: "Copse" }, { value: "Corben", label: "Corben" }, { value: "Cormorant", label: "Cormorant" }, { value: "Cormorant Garamond", label: "Cormorant Garamond" }, { value: "Cormorant Infant", label: "Cormorant Infant" }, { value: "Cormorant SC", label: "Cormorant SC" }, { value: "Cormorant Unicase", label: "Cormorant Unicase" }, { value: "Cormorant Upright", label: "Cormorant Upright" }, { value: "Courgette", label: "Courgette" }, { value: "Cousine", label: "Cousine" }, { value: "Coustard", label: "Coustard" }, { value: "Covered By Your Grace", label: "Covered By Your Grace" }, { value: "Crafty Girls", label: "Crafty Girls" }, { value: "Creepster", label: "Creepster" }, { value: "Crete Round", label: "Crete Round" }, { value: "Crimson Text", label: "Crimson Text" }, { value: "Croissant One", label: "Croissant One" }, { value: "Crushed", label: "Crushed" }, { value: "Cuprum", label: "Cuprum" }, { value: "Cute Font", label: "Cute Font" }, { value: "Cutive", label: "Cutive" }, { value: "Cutive Mono", label: "Cutive Mono" }, { value: "Damion", label: "Damion" }, { value: "Dancing Script", label: "Dancing Script" }, { value: "Dangrek", label: "Dangrek" }, { value: "David Libre", label: "David Libre" }, { value: "Dawning of a New Day", label: "Dawning of a New Day" }, { value: "Days One", label: "Days One" }, { value: "Dekko", label: "Dekko" }, { value: "Delius", label: "Delius" }, { value: "Delius Swash Caps", label: "Delius Swash Caps" }, { value: "Delius Unicase", label: "Delius Unicase" }, { value: "Della Respira", label: "Della Respira" }, { value: "Denk One", label: "Denk One" }, { value: "Devonshire", label: "Devonshire" }, { value: "Dhurjati", label: "Dhurjati" }, { value: "Didact Gothic", label: "Didact Gothic" }, { value: "Diplomata", label: "Diplomata" }, { value: "Diplomata SC", label: "Diplomata SC" }, { value: "Do Hyeon", label: "Do Hyeon" }, { value: "Dokdo", label: "Dokdo" }, { value: "Domine", label: "Domine" }, { value: "Donegal One", label: "Donegal One" }, { value: "Doppio One", label: "Doppio One" }, { value: "Dorsa", label: "Dorsa" }, { value: "Dosis", label: "Dosis" }, { value: "Dr Sugiyama", label: "Dr Sugiyama" }, { value: "Droid Arabic Kufi", label: "Droid Arabic Kufi" }, { value: "Droid Arabic Naskh", label: "Droid Arabic Naskh" }, { value: "Duru Sans", label: "Duru Sans" }, { value: "Dynalight", label: "Dynalight" }, { value: "EB Garamond", label: "EB Garamond" }, { value: "Eagle Lake", label: "Eagle Lake" }, { value: "East Sea Dokdo", label: "East Sea Dokdo" }, { value: "Eater", label: "Eater" }, { value: "Economica", label: "Economica" }, { value: "Eczar", label: "Eczar" }, { value: "El Messiri", label: "El Messiri" }, { value: "Electrolize", label: "Electrolize" }, { value: "Elsie", label: "Elsie" }, { value: "Elsie Swash Caps", label: "Elsie Swash Caps" }, { value: "Emblema One", label: "Emblema One" }, { value: "Emilys Candy", label: "Emilys Candy" }, { value: "Encode Sans", label: "Encode Sans" }, { value: "Encode Sans Condensed", label: "Encode Sans Condensed" }, { value: "Encode Sans Expanded", label: "Encode Sans Expanded" }, { value: "Encode Sans Semi Condensed", label: "Encode Sans Semi Condensed" }, { value: "Encode Sans Semi Expanded", label: "Encode Sans Semi Expanded" }, { value: "Engagement", label: "Engagement" }, { value: "Englebert", label: "Englebert" }, { value: "Enriqueta", label: "Enriqueta" }, { value: "Erica One", label: "Erica One" }, { value: "Esteban", label: "Esteban" }, { value: "Euphoria Script", label: "Euphoria Script" }, { value: "Ewert", label: "Ewert" }, { value: "Exo", label: "Exo" }, { value: "Exo 2", label: "Exo 2" }, { value: "Expletus Sans", label: "Expletus Sans" }, { value: "Fahkwang", label: "Fahkwang" }, { value: "Fanwood Text", label: "Fanwood Text" }, { value: "Farsan", label: "Farsan" }, { value: "Fascinate", label: "Fascinate" }, { value: "Fascinate Inline", label: "Fascinate Inline" }, { value: "Faster One", label: "Faster One" }, { value: "Fasthand", label: "Fasthand" }, { value: "Fauna One", label: "Fauna One" }, { value: "Faustina", label: "Faustina" }, { value: "Federant", label: "Federant" }, { value: "Federo", label: "Federo" }, { value: "Felipa", label: "Felipa" }, { value: "Fenix", label: "Fenix" }, { value: "Finger Paint", label: "Finger Paint" }, { value: "Fira Mono", label: "Fira Mono" }, { value: "Fira Sans", label: "Fira Sans" }, { value: "Fira Sans Condensed", label: "Fira Sans Condensed" }, { value: "Fira Sans Extra Condensed", label: "Fira Sans Extra Condensed" }, { value: "Fjalla One", label: "Fjalla One" }, { value: "Fjord One", label: "Fjord One" }, { value: "Flamenco", label: "Flamenco" }, { value: "Flavors", label: "Flavors" }, { value: "Fondamento", label: "Fondamento" }, { value: "Fontdiner Swanky", label: "Fontdiner Swanky" }, { value: "Forum", label: "Forum" }, { value: "Francois One", label: "Francois One" }, { value: "Frank Ruhl Libre", label: "Frank Ruhl Libre" }, { value: "Freckle Face", label: "Freckle Face" }, { value: "Fredericka the Great", label: "Fredericka the Great" }, { value: "Fredoka One", label: "Fredoka One" }, { value: "Freehand", label: "Freehand" }, { value: "Fresca", label: "Fresca" }, { value: "Frijole", label: "Frijole" }, { value: "Fruktur", label: "Fruktur" }, { value: "Fugaz One", label: "Fugaz One" }, { value: "GFS Didot", label: "GFS Didot" }, { value: "GFS Neohellenic", label: "GFS Neohellenic" }, { value: "Gabriela", label: "Gabriela" }, { value: "Gaegu", label: "Gaegu" }, { value: "Gafata", label: "Gafata" }, { value: "Galada", label: "Galada" }, { value: "Galdeano", label: "Galdeano" }, { value: "Galindo", label: "Galindo" }, { value: "Gamja Flower", label: "Gamja Flower" }, { value: "Gentium Basic", label: "Gentium Basic" }, { value: "Gentium Book Basic", label: "Gentium Book Basic" }, { value: "Geo", label: "Geo" }, { value: "Geostar", label: "Geostar" }, { value: "Geostar Fill", label: "Geostar Fill" }, { value: "Germania One", label: "Germania One" }, { value: "Gidugu", label: "Gidugu" }, { value: "Gilda Display", label: "Gilda Display" }, { value: "Give You Glory", label: "Give You Glory" }, { value: "Glass Antiqua", label: "Glass Antiqua" }, { value: "Glegoo", label: "Glegoo" }, { value: "Gloria Hallelujah", label: "Gloria Hallelujah" }, { value: "Goblin One", label: "Goblin One" }, { value: "Gochi Hand", label: "Gochi Hand" }, { value: "Gorditas", label: "Gorditas" }, { value: "Gothic A1", label: "Gothic A1" }, { value: "Goudy Bookletter 1911", label: "Goudy Bookletter 1911" }, { value: "Graduate", label: "Graduate" }, { value: "Grand Hotel", label: "Grand Hotel" }, { value: "Gravitas One", label: "Gravitas One" }, { value: "Great Vibes", label: "Great Vibes" }, { value: "Griffy", label: "Griffy" }, { value: "Gruppo", label: "Gruppo" }, { value: "Gudea", label: "Gudea" }, { value: "Gugi", label: "Gugi" }, { value: "Gurajada", label: "Gurajada" }, { value: "Habibi", label: "Habibi" }, { value: "Halant", label: "Halant" }, { value: "Hammersmith One", label: "Hammersmith One" }, { value: "Hanalei", label: "Hanalei" }, { value: "Hanalei Fill", label: "Hanalei Fill" }, { value: "Handlee", label: "Handlee" }, { value: "Hanuman", label: "Hanuman" }, { value: "Happy Monkey", label: "Happy Monkey" }, { value: "Harmattan", label: "Harmattan" }, { value: "Headland One", label: "Headland One" }, { value: "Heebo", label: "Heebo" }, { value: "Henny Penny", label: "Henny Penny" }, { value: "Herr Von Muellerhoff", label: "Herr Von Muellerhoff" }, { value: "Hi Melody", label: "Hi Melody" }, { value: "Hind", label: "Hind" }, { value: "Hind Guntur", label: "Hind Guntur" }, { value: "Hind Madurai", label: "Hind Madurai" }, { value: "Hind Siliguri", label: "Hind Siliguri" }, { value: "Hind Vadodara", label: "Hind Vadodara" }, { value: "Holtwood One SC", label: "Holtwood One SC" }, { value: "Homemade Apple", label: "Homemade Apple" }, { value: "Homenaje", label: "Homenaje" }, { value: "IBM Plex Mono", label: "IBM Plex Mono" }, { value: "IBM Plex Sans", label: "IBM Plex Sans" }, { value: "IBM Plex Sans Condensed", label: "IBM Plex Sans Condensed" }, { value: "IBM Plex Serif", label: "IBM Plex Serif" }, { value: "IM Fell DW Pica", label: "IM Fell DW Pica" }, { value: "IM Fell DW Pica SC", label: "IM Fell DW Pica SC" }, { value: "IM Fell Double Pica", label: "IM Fell Double Pica" }, { value: "IM Fell Double Pica SC", label: "IM Fell Double Pica SC" }, { value: "IM Fell English", label: "IM Fell English" }, { value: "IM Fell English SC", label: "IM Fell English SC" }, { value: "IM Fell French Canon", label: "IM Fell French Canon" }, { value: "IM Fell French Canon SC", label: "IM Fell French Canon SC" }, { value: "IM Fell Great Primer", label: "IM Fell Great Primer" }, { value: "IM Fell Great Primer SC", label: "IM Fell Great Primer SC" }, { value: "Iceberg", label: "Iceberg" }, { value: "Iceland", label: "Iceland" }, { value: "Imprima", label: "Imprima" }, { value: "Inconsolata", label: "Inconsolata" }, { value: "Inder", label: "Inder" }, { value: "Indie Flower", label: "Indie Flower" }, { value: "Inika", label: "Inika" }, { value: "Inknut Antiqua", label: "Inknut Antiqua" }, { value: "Irish Grover", label: "Irish Grover" }, { value: "Istok Web", label: "Istok Web" }, { value: "Italiana", label: "Italiana" }, { value: "Italianno", label: "Italianno" }, { value: "Itim", label: "Itim" }, { value: "Jacques Francois", label: "Jacques Francois" }, { value: "Jacques Francois Shadow", label: "Jacques Francois Shadow" }, { value: "Jaldi", label: "Jaldi" }, { value: "Jim Nightshade", label: "Jim Nightshade" }, { value: "Jockey One", label: "Jockey One" }, { value: "Jolly Lodger", label: "Jolly Lodger" }, { value: "Jomhuria", label: "Jomhuria" }, { value: "Josefin Sans", label: "Josefin Sans" }, { value: "Josefin Slab", label: "Josefin Slab" }, { value: "Joti One", label: "Joti One" }, { value: "Jua", label: "Jua" }, { value: "Judson", label: "Judson" }, { value: "Julee", label: "Julee" }, { value: "Julius Sans One", label: "Julius Sans One" }, { value: "Junge", label: "Junge" }, { value: "Jura", label: "Jura" }, { value: "Just Another Hand", label: "Just Another Hand" }, { value: "Just Me Again Down Here", label: "Just Me Again Down Here" }, { value: "K2D", label: "K2D" }, { value: "Kadwa", label: "Kadwa" }, { value: "Kalam", label: "Kalam" }, { value: "Kameron", label: "Kameron" }, { value: "Kanit", label: "Kanit" }, { value: "Kantumruy", label: "Kantumruy" }, { value: "Karla", label: "Karla" }, { value: "Karma", label: "Karma" }, { value: "Katibeh", label: "Katibeh" }, { value: "Kaushan Script", label: "Kaushan Script" }, { value: "Kavivanar", label: "Kavivanar" }, { value: "Kavoon", label: "Kavoon" }, { value: "Kdam Thmor", label: "Kdam Thmor" }, { value: "Keania One", label: "Keania One" }, { value: "Kelly Slab", label: "Kelly Slab" }, { value: "Kenia", label: "Kenia" }, { value: "Khand", label: "Khand" }, { value: "Khmer", label: "Khmer" }, { value: "Khula", label: "Khula" }, { value: "Kirang Haerang", label: "Kirang Haerang" }, { value: "Kite One", label: "Kite One" }, { value: "Knewave", label: "Knewave" }, { value: "KoHo", label: "KoHo" }, { value: "Kodchasan", label: "Kodchasan" }, { value: "Kosugi", label: "Kosugi" }, { value: "Kosugi Maru", label: "Kosugi Maru" }, { value: "Kotta One", label: "Kotta One" }, { value: "Koulen", label: "Koulen" }, { value: "Kranky", label: "Kranky" }, { value: "Kreon", label: "Kreon" }, { value: "Kristi", label: "Kristi" }, { value: "Krona One", label: "Krona One" }, { value: "Krub", label: "Krub" }, { value: "Kumar One", label: "Kumar One" }, { value: "Kumar One Outline", label: "Kumar One Outline" }, { value: "Kurale", label: "Kurale" }, { value: "La Belle Aurore", label: "La Belle Aurore" }, { value: "Laila", label: "Laila" }, { value: "Lakki Reddy", label: "Lakki Reddy" }, { value: "Lalezar", label: "Lalezar" }, { value: "Lancelot", label: "Lancelot" }, { value: "Lateef", label: "Lateef" }, { value: "Lato", label: "Lato" }, { value: "League Script", label: "League Script" }, { value: "Leckerli One", label: "Leckerli One" }, { value: "Ledger", label: "Ledger" }, { value: "Lekton", label: "Lekton" }, { value: "Lemon", label: "Lemon" }, { value: "Lemonada", label: "Lemonada" }, { value: "Libre Barcode 128", label: "Libre Barcode 128" }, { value: "Libre Barcode 128 Text", label: "Libre Barcode 128 Text" }, { value: "Libre Barcode 39", label: "Libre Barcode 39" }, { value: "Libre Barcode 39 Extended", label: "Libre Barcode 39 Extended" }, {
-  value: "Libre Barcode 39 Extended Text",
-  label: "Libre Barcode 39 Extended Text"
-}, { value: "Libre Barcode 39 Text", label: "Libre Barcode 39 Text" }, { value: "Libre Baskerville", label: "Libre Baskerville" }, { value: "Libre Franklin", label: "Libre Franklin" }, { value: "Life Savers", label: "Life Savers" }, { value: "Lilita One", label: "Lilita One" }, { value: "Lily Script One", label: "Lily Script One" }, { value: "Limelight", label: "Limelight" }, { value: "Linden Hill", label: "Linden Hill" }, { value: "Lobster", label: "Lobster" }, { value: "Lobster Two", label: "Lobster Two" }, { value: "Londrina Outline", label: "Londrina Outline" }, { value: "Londrina Shadow", label: "Londrina Shadow" }, { value: "Londrina Sketch", label: "Londrina Sketch" }, { value: "Londrina Solid", label: "Londrina Solid" }, { value: "Lora", label: "Lora" }, { value: "Love Ya Like A Sister", label: "Love Ya Like A Sister" }, { value: "Loved by the King", label: "Loved by the King" }, { value: "Lovers Quarrel", label: "Lovers Quarrel" }, { value: "Luckiest Guy", label: "Luckiest Guy" }, { value: "Lusitana", label: "Lusitana" }, { value: "Lustria", label: "Lustria" }, { value: "M PLUS 1p", label: "M PLUS 1p" }, { value: "M PLUS Rounded 1c", label: "M PLUS Rounded 1c" }, { value: "Macondo", label: "Macondo" }, { value: "Macondo Swash Caps", label: "Macondo Swash Caps" }, { value: "Mada", label: "Mada" }, { value: "Magra", label: "Magra" }, { value: "Maiden Orange", label: "Maiden Orange" }, { value: "Maitree", label: "Maitree" }, { value: "Mako", label: "Mako" }, { value: "Mali", label: "Mali" }, { value: "Mallanna", label: "Mallanna" }, { value: "Mandali", label: "Mandali" }, { value: "Manuale", label: "Manuale" }, { value: "Marcellus", label: "Marcellus" }, { value: "Marcellus SC", label: "Marcellus SC" }, { value: "Marck Script", label: "Marck Script" }, { value: "Margarine", label: "Margarine" }, { value: "Markazi Text", label: "Markazi Text" }, { value: "Marko One", label: "Marko One" }, { value: "Marmelad", label: "Marmelad" }, { value: "Martel", label: "Martel" }, { value: "Martel Sans", label: "Martel Sans" }, { value: "Marvel", label: "Marvel" }, { value: "Mate", label: "Mate" }, { value: "Mate SC", label: "Mate SC" }, { value: "Maven Pro", label: "Maven Pro" }, { value: "McLaren", label: "McLaren" }, { value: "Meddon", label: "Meddon" }, { value: "MedievalSharp", label: "MedievalSharp" }, { value: "Medula One", label: "Medula One" }, { value: "Meera Inimai", label: "Meera Inimai" }, { value: "Megrim", label: "Megrim" }, { value: "Meie Script", label: "Meie Script" }, { value: "Merienda", label: "Merienda" }, { value: "Merienda One", label: "Merienda One" }, { value: "Merriweather", label: "Merriweather" }, { value: "Merriweather Sans", label: "Merriweather Sans" }, { value: "Metal", label: "Metal" }, { value: "Metal Mania", label: "Metal Mania" }, { value: "Metamorphous", label: "Metamorphous" }, { value: "Metrophobic", label: "Metrophobic" }, { value: "Michroma", label: "Michroma" }, { value: "Milonga", label: "Milonga" }, { value: "Miltonian", label: "Miltonian" }, { value: "Miltonian Tattoo", label: "Miltonian Tattoo" }, { value: "Mina", label: "Mina" }, { value: "Miniver", label: "Miniver" }, { value: "Miriam Libre", label: "Miriam Libre" }, { value: "Mirza", label: "Mirza" }, { value: "Miss Fajardose", label: "Miss Fajardose" }, { value: "Mitr", label: "Mitr" }, { value: "Modak", label: "Modak" }, { value: "Modern Antiqua", label: "Modern Antiqua" }, { value: "Mogra", label: "Mogra" }, { value: "Molengo", label: "Molengo" }, { value: "Molle", label: "Molle" }, { value: "Monda", label: "Monda" }, { value: "Monofett", label: "Monofett" }, { value: "Monoton", label: "Monoton" }, { value: "Monsieur La Doulaise", label: "Monsieur La Doulaise" }, { value: "Montaga", label: "Montaga" }, { value: "Montez", label: "Montez" }, { value: "Montserrat", label: "Montserrat" }, { value: "Montserrat Alternates", label: "Montserrat Alternates" }, { value: "Montserrat Subrayada", label: "Montserrat Subrayada" }, { value: "Moul", label: "Moul" }, { value: "Moulpali", label: "Moulpali" }, { value: "Mountains of Christmas", label: "Mountains of Christmas" }, { value: "Mouse Memoirs", label: "Mouse Memoirs" }, { value: "Mr Bedfort", label: "Mr Bedfort" }, { value: "Mr Dafoe", label: "Mr Dafoe" }, { value: "Mr De Haviland", label: "Mr De Haviland" }, { value: "Mrs Saint Delafield", label: "Mrs Saint Delafield" }, { value: "Mrs Sheppards", label: "Mrs Sheppards" }, { value: "Mukta", label: "Mukta" }, { value: "Mukta Mahee", label: "Mukta Mahee" }, { value: "Mukta Malar", label: "Mukta Malar" }, { value: "Mukta Vaani", label: "Mukta Vaani" }, { value: "Muli", label: "Muli" }, { value: "Mystery Quest", label: "Mystery Quest" }, { value: "NTR", label: "NTR" }, { value: "Nanum Brush Script", label: "Nanum Brush Script" }, { value: "Nanum Gothic", label: "Nanum Gothic" }, { value: "Nanum Gothic Coding", label: "Nanum Gothic Coding" }, { value: "Nanum Myeongjo", label: "Nanum Myeongjo" }, { value: "Nanum Pen Script", label: "Nanum Pen Script" }, { value: "Neucha", label: "Neucha" }, { value: "Neuton", label: "Neuton" }, { value: "New Rocker", label: "New Rocker" }, { value: "News Cycle", label: "News Cycle" }, { value: "Niconne", label: "Niconne" }, { value: "Niramit", label: "Niramit" }, { value: "Nixie One", label: "Nixie One" }, { value: "Nobile", label: "Nobile" }, { value: "Nokora", label: "Nokora" }, { value: "Norican", label: "Norican" }, { value: "Nosifer", label: "Nosifer" }, { value: "Notable", label: "Notable" }, { value: "Nothing You Could Do", label: "Nothing You Could Do" }, { value: "Noticia Text", label: "Noticia Text" }, { value: "Noto Kufi Arabic", label: "Noto Kufi Arabic" }, { value: "Noto Naskh Arabic", label: "Noto Naskh Arabic" }, { value: "Noto Sans", label: "Noto Sans" }, { value: "Noto Sans Hebrew", label: "Noto Sans Hebrew" }, { value: "Noto Sans JP", label: "Noto Sans JP" }, { value: "Noto Sans KR", label: "Noto Sans KR" }, { value: "Noto Serif", label: "Noto Serif" }, { value: "Noto Serif JP", label: "Noto Serif JP" }, { value: "Noto Serif KR", label: "Noto Serif KR" }, { value: "Nova Cut", label: "Nova Cut" }, { value: "Nova Flat", label: "Nova Flat" }, { value: "Nova Mono", label: "Nova Mono" }, { value: "Nova Oval", label: "Nova Oval" }, { value: "Nova Round", label: "Nova Round" }, { value: "Nova Script", label: "Nova Script" }, { value: "Nova Slim", label: "Nova Slim" }, { value: "Nova Square", label: "Nova Square" }, { value: "Numans", label: "Numans" }, { value: "Nunito", label: "Nunito" }, { value: "Nunito Sans", label: "Nunito Sans" }, { value: "Odor Mean Chey", label: "Odor Mean Chey" }, { value: "Offside", label: "Offside" }, { value: "Old Standard TT", label: "Old Standard TT" }, { value: "Oldenburg", label: "Oldenburg" }, { value: "Oleo Script", label: "Oleo Script" }, { value: "Oleo Script Swash Caps", label: "Oleo Script Swash Caps" }, { value: "Open Sans", label: "Open Sans" }, { value: "Open Sans Condensed", label: "Open Sans Condensed" }, { value: "Open Sans Hebrew", label: "Open Sans Hebrew" }, { value: "Open Sans Hebrew Condensed", label: "Open Sans Hebrew Condensed" }, { value: "Oranienbaum", label: "Oranienbaum" }, { value: "Orbitron", label: "Orbitron" }, { value: "Oregano", label: "Oregano" }, { value: "Orienta", label: "Orienta" }, { value: "Original Surfer", label: "Original Surfer" }, { value: "Oswald", label: "Oswald" }, { value: "Over the Rainbow", label: "Over the Rainbow" }, { value: "Overlock", label: "Overlock" }, { value: "Overlock SC", label: "Overlock SC" }, { value: "Overpass", label: "Overpass" }, { value: "Overpass Mono", label: "Overpass Mono" }, { value: "Ovo", label: "Ovo" }, { value: "Oxygen", label: "Oxygen" }, { value: "Oxygen Mono", label: "Oxygen Mono" }, { value: "PT Mono", label: "PT Mono" }, { value: "PT Sans", label: "PT Sans" }, { value: "PT Sans Caption", label: "PT Sans Caption" }, { value: "PT Sans Narrow", label: "PT Sans Narrow" }, { value: "PT Serif", label: "PT Serif" }, { value: "PT Serif Caption", label: "PT Serif Caption" }, { value: "Pacifico", label: "Pacifico" }, { value: "Padauk", label: "Padauk" }, { value: "Palanquin", label: "Palanquin" }, { value: "Palanquin Dark", label: "Palanquin Dark" }, { value: "Pangolin", label: "Pangolin" }, { value: "Paprika", label: "Paprika" }, { value: "Parisienne", label: "Parisienne" }, { value: "Passero One", label: "Passero One" }, { value: "Passion One", label: "Passion One" }, { value: "Pathway Gothic One", label: "Pathway Gothic One" }, { value: "Patrick Hand", label: "Patrick Hand" }, { value: "Patrick Hand SC", label: "Patrick Hand SC" }, { value: "Pattaya", label: "Pattaya" }, { value: "Patua One", label: "Patua One" }, { value: "Pavanam", label: "Pavanam" }, { value: "Paytone One", label: "Paytone One" }, { value: "Peddana", label: "Peddana" }, { value: "Peralta", label: "Peralta" }, { value: "Permanent Marker", label: "Permanent Marker" }, { value: "Petit Formal Script", label: "Petit Formal Script" }, { value: "Petrona", label: "Petrona" }, { value: "Philosopher", label: "Philosopher" }, { value: "Piedra", label: "Piedra" }, { value: "Pinyon Script", label: "Pinyon Script" }, { value: "Pirata One", label: "Pirata One" }, { value: "Plaster", label: "Plaster" }, { value: "Play", label: "Play" }, { value: "Playball", label: "Playball" }, { value: "Playfair Display", label: "Playfair Display" }, { value: "Playfair Display SC", label: "Playfair Display SC" }, { value: "Podkova", label: "Podkova" }, { value: "Poiret One", label: "Poiret One" }, { value: "Poller One", label: "Poller One" }, { value: "Poly", label: "Poly" }, { value: "Pompiere", label: "Pompiere" }, { value: "Pontano Sans", label: "Pontano Sans" }, { value: "Poor Story", label: "Poor Story" }, { value: "Poppins", label: "Poppins" }, { value: "Port Lligat Sans", label: "Port Lligat Sans" }, { value: "Port Lligat Slab", label: "Port Lligat Slab" }, { value: "Pragati Narrow", label: "Pragati Narrow" }, { value: "Prata", label: "Prata" }, { value: "Preahvihear", label: "Preahvihear" }, { value: "Press Start 2P", label: "Press Start 2P" }, { value: "Pridi", label: "Pridi" }, { value: "Princess Sofia", label: "Princess Sofia" }, { value: "Prociono", label: "Prociono" }, { value: "Prompt", label: "Prompt" }, { value: "Prosto One", label: "Prosto One" }, { value: "Proza Libre", label: "Proza Libre" }, { value: "Puritan", label: "Puritan" }, { value: "Purple Purse", label: "Purple Purse" }, { value: "Quando", label: "Quando" }, { value: "Quantico", label: "Quantico" }, { value: "Quattrocento", label: "Quattrocento" }, { value: "Quattrocento Sans", label: "Quattrocento Sans" }, { value: "Questrial", label: "Questrial" }, { value: "Quicksand", label: "Quicksand" }, { value: "Quintessential", label: "Quintessential" }, { value: "Qwigley", label: "Qwigley" }, { value: "Racing Sans One", label: "Racing Sans One" }, { value: "Radley", label: "Radley" }, { value: "Rajdhani", label: "Rajdhani" }, { value: "Rakkas", label: "Rakkas" }, { value: "Raleway", label: "Raleway" }, { value: "Raleway Dots", label: "Raleway Dots" }, { value: "Ramabhadra", label: "Ramabhadra" }, { value: "Ramaraja", label: "Ramaraja" }, { value: "Rambla", label: "Rambla" }, { value: "Rammetto One", label: "Rammetto One" }, { value: "Ranchers", label: "Ranchers" }, { value: "Rancho", label: "Rancho" }, { value: "Ranga", label: "Ranga" }, { value: "Rasa", label: "Rasa" }, { value: "Rationale", label: "Rationale" }, { value: "Ravi Prakash", label: "Ravi Prakash" }, { value: "Redressed", label: "Redressed" }, { value: "Reem Kufi", label: "Reem Kufi" }, { value: "Reenie Beanie", label: "Reenie Beanie" }, { value: "Revalia", label: "Revalia" }, { value: "Rhodium Libre", label: "Rhodium Libre" }, { value: "Ribeye", label: "Ribeye" }, { value: "Ribeye Marrow", label: "Ribeye Marrow" }, { value: "Righteous", label: "Righteous" }, { value: "Risque", label: "Risque" }, { value: "Roboto", label: "Roboto" }, { value: "Roboto Condensed", label: "Roboto Condensed" }, { value: "Roboto Mono", label: "Roboto Mono" }, { value: "Roboto Slab", label: "Roboto Slab" }, { value: "Rochester", label: "Rochester" }, { value: "Rock Salt", label: "Rock Salt" }, { value: "Rokkitt", label: "Rokkitt" }, { value: "Romanesco", label: "Romanesco" }, { value: "Ropa Sans", label: "Ropa Sans" }, { value: "Rosario", label: "Rosario" }, { value: "Rosarivo", label: "Rosarivo" }, { value: "Rouge Script", label: "Rouge Script" }, { value: "Rozha One", label: "Rozha One" }, { value: "Rubik", label: "Rubik" }, { value: "Rubik Mono One", label: "Rubik Mono One" }, { value: "Ruda", label: "Ruda" }, { value: "Rufina", label: "Rufina" }, { value: "Ruge Boogie", label: "Ruge Boogie" }, { value: "Ruluko", label: "Ruluko" }, { value: "Rum Raisin", label: "Rum Raisin" }, { value: "Ruslan Display", label: "Ruslan Display" }, { value: "Russo One", label: "Russo One" }, { value: "Ruthie", label: "Ruthie" }, { value: "Rye", label: "Rye" }, { value: "Sacramento", label: "Sacramento" }, { value: "Sahitya", label: "Sahitya" }, { value: "Sail", label: "Sail" }, { value: "Saira", label: "Saira" }, { value: "Saira Condensed", label: "Saira Condensed" }, { value: "Saira Extra Condensed", label: "Saira Extra Condensed" }, { value: "Saira Semi Condensed", label: "Saira Semi Condensed" }, { value: "Salsa", label: "Salsa" }, { value: "Sanchez", label: "Sanchez" }, { value: "Sancreek", label: "Sancreek" }, { value: "Sansita", label: "Sansita" }, { value: "Sarala", label: "Sarala" }, { value: "Sarina", label: "Sarina" }, { value: "Sarpanch", label: "Sarpanch" }, { value: "Satisfy", label: "Satisfy" }, { value: "Sawarabi Gothic", label: "Sawarabi Gothic" }, { value: "Sawarabi Mincho", label: "Sawarabi Mincho" }, { value: "Scada", label: "Scada" }, { value: "Scheherazade", label: "Scheherazade" }, { value: "Schoolbell", label: "Schoolbell" }, { value: "Scope One", label: "Scope One" }, { value: "Seaweed Script", label: "Seaweed Script" }, { value: "Secular One", label: "Secular One" }, { value: "Sedgwick Ave", label: "Sedgwick Ave" }, { value: "Sedgwick Ave Display", label: "Sedgwick Ave Display" }, { value: "Sevillana", label: "Sevillana" }, { value: "Seymour One", label: "Seymour One" }, { value: "Shadows Into Light", label: "Shadows Into Light" }, { value: "Shadows Into Light Two", label: "Shadows Into Light Two" }, { value: "Shanti", label: "Shanti" }, { value: "Share", label: "Share" }, { value: "Share Tech", label: "Share Tech" }, { value: "Share Tech Mono", label: "Share Tech Mono" }, { value: "Shojumaru", label: "Shojumaru" }, { value: "Short Stack", label: "Short Stack" }, { value: "Shrikhand", label: "Shrikhand" }, { value: "Siemreap", label: "Siemreap" }, { value: "Sigmar One", label: "Sigmar One" }, { value: "Signika", label: "Signika" }, { value: "Signika Negative", label: "Signika Negative" }, { value: "Simonetta", label: "Simonetta" }, { value: "Sintony", label: "Sintony" }, { value: "Sirin Stencil", label: "Sirin Stencil" }, { value: "Six Caps", label: "Six Caps" }, { value: "Skranji", label: "Skranji" }, { value: "Slabo 13px", label: "Slabo 13px" }, { value: "Slabo 27px", label: "Slabo 27px" }, { value: "Slackey", label: "Slackey" }, { value: "Smokum", label: "Smokum" }, { value: "Smythe", label: "Smythe" }, { value: "Sniglet", label: "Sniglet" }, { value: "Snippet", label: "Snippet" }, { value: "Snowburst One", label: "Snowburst One" }, { value: "Sofadi One", label: "Sofadi One" }, { value: "Sofia", label: "Sofia" }, { value: "Song Myung", label: "Song Myung" }, { value: "Sonsie One", label: "Sonsie One" }, { value: "Sorts Mill Goudy", label: "Sorts Mill Goudy" }, { value: "Source Code Pro", label: "Source Code Pro" }, { value: "Source Sans Pro", label: "Source Sans Pro" }, { value: "Source Serif Pro", label: "Source Serif Pro" }, { value: "Space Mono", label: "Space Mono" }, { value: "Special Elite", label: "Special Elite" }, { value: "Spectral", label: "Spectral" }, { value: "Spectral SC", label: "Spectral SC" }, { value: "Spicy Rice", label: "Spicy Rice" }, { value: "Spinnaker", label: "Spinnaker" }, { value: "Spirax", label: "Spirax" }, { value: "Squada One", label: "Squada One" }, { value: "Sree Krushnadevaraya", label: "Sree Krushnadevaraya" }, { value: "Sriracha", label: "Sriracha" }, { value: "Srisakdi", label: "Srisakdi" }, { value: "Stalemate", label: "Stalemate" }, { value: "Stalinist One", label: "Stalinist One" }, { value: "Stardos Stencil", label: "Stardos Stencil" }, { value: "Stint Ultra Condensed", label: "Stint Ultra Condensed" }, { value: "Stint Ultra Expanded", label: "Stint Ultra Expanded" }, { value: "Stoke", label: "Stoke" }, { value: "Strait", label: "Strait" }, { value: "Stylish", label: "Stylish" }, { value: "Sue Ellen Francisco", label: "Sue Ellen Francisco" }, { value: "Suez One", label: "Suez One" }, { value: "Sumana", label: "Sumana" }, { value: "Sunflower", label: "Sunflower" }, { value: "Sunshiney", label: "Sunshiney" }, { value: "Supermercado One", label: "Supermercado One" }, { value: "Sura", label: "Sura" }, { value: "Suranna", label: "Suranna" }, { value: "Suravaram", label: "Suravaram" }, { value: "Suwannaphum", label: "Suwannaphum" }, { value: "Swanky and Moo Moo", label: "Swanky and Moo Moo" }, { value: "Syncopate", label: "Syncopate" }, { value: "Tajawal", label: "Tajawal" }, { value: "Tangerine", label: "Tangerine" }, { value: "Taprom", label: "Taprom" }, { value: "Tauri", label: "Tauri" }, { value: "Taviraj", label: "Taviraj" }, { value: "Teko", label: "Teko" }, { value: "Telex", label: "Telex" }, { value: "Tenali Ramakrishna", label: "Tenali Ramakrishna" }, { value: "Tenor Sans", label: "Tenor Sans" }, { value: "Text Me One", label: "Text Me One" }, { value: "The Girl Next Door", label: "The Girl Next Door" }, { value: "Tienne", label: "Tienne" }, { value: "Tillana", label: "Tillana" }, { value: "Timmana", label: "Timmana" }, { value: "Tinos", label: "Tinos" }, { value: "Titan One", label: "Titan One" }, { value: "Titillium Web", label: "Titillium Web" }, { value: "Trade Winds", label: "Trade Winds" }, { value: "Trirong", label: "Trirong" }, { value: "Trocchi", label: "Trocchi" }, { value: "Trochut", label: "Trochut" }, { value: "Trykker", label: "Trykker" }, { value: "Tulpen One", label: "Tulpen One" }, { value: "Ubuntu", label: "Ubuntu" }, { value: "Ubuntu Condensed", label: "Ubuntu Condensed" }, { value: "Ubuntu Mono", label: "Ubuntu Mono" }, { value: "Ultra", label: "Ultra" }, { value: "Uncial Antiqua", label: "Uncial Antiqua" }, { value: "Underdog", label: "Underdog" }, { value: "Unica One", label: "Unica One" }, { value: "UnifrakturCook", label: "UnifrakturCook" }, { value: "UnifrakturMaguntia", label: "UnifrakturMaguntia" }, { value: "Unkempt", label: "Unkempt" }, { value: "Unlock", label: "Unlock" }, { value: "Unna", label: "Unna" }, { value: "VT323", label: "VT323" }, { value: "Vampiro One", label: "Vampiro One" }, { value: "Varela", label: "Varela" }, { value: "Varela Round", label: "Varela Round" }, { value: "Vast Shadow", label: "Vast Shadow" }, { value: "Vesper Libre", label: "Vesper Libre" }, { value: "Vibur", label: "Vibur" }, { value: "Vidaloka", label: "Vidaloka" }, { value: "Viga", label: "Viga" }, { value: "Voces", label: "Voces" }, { value: "Volkhov", label: "Volkhov" }, { value: "Vollkorn", label: "Vollkorn" }, { value: "Vollkorn SC", label: "Vollkorn SC" }, { value: "Voltaire", label: "Voltaire" }, { value: "Waiting for the Sunrise", label: "Waiting for the Sunrise" }, { value: "Wallpoet", label: "Wallpoet" }, { value: "Walter Turncoat", label: "Walter Turncoat" }, { value: "Warnes", label: "Warnes" }, { value: "Wellfleet", label: "Wellfleet" }, { value: "Wendy One", label: "Wendy One" }, { value: "Wire One", label: "Wire One" }, { value: "Work Sans", label: "Work Sans" }, { value: "Yanone Kaffeesatz", label: "Yanone Kaffeesatz" }, { value: "Yantramanav", label: "Yantramanav" }, { value: "Yatra One", label: "Yatra One" }, { value: "Yellowtail", label: "Yellowtail" }, { value: "Yeon Sung", label: "Yeon Sung" }, { value: "Yeseva One", label: "Yeseva One" }, { value: "Yesteryear", label: "Yesteryear" }, { value: "Yrsa", label: "Yrsa" }, { value: "Zeyada", label: "Zeyada" }, { value: "Zilla Slab", label: "Zilla Slab" }, { value: "Zilla Slab Highlight", label: "Zilla Slab Highlight" }];
-
-/* harmony default export */ __webpack_exports__["a"] = (FONTS);
-
-/***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1304,52 +1304,14 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(67);
+  module.exports = __webpack_require__(68);
 } else {
-  module.exports = __webpack_require__(70);
+  module.exports = __webpack_require__(71);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 16 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var placeHolder = PremiumBlocksSettings.defaultAuthImg;
-
-var Component = wp.element.Component;
-
-var DefaultImage = function (_Component) {
-  _inherits(DefaultImage, _Component);
-
-  function DefaultImage() {
-    _classCallCheck(this, DefaultImage);
-
-    return _possibleConstructorReturn(this, (DefaultImage.__proto__ || Object.getPrototypeOf(DefaultImage)).apply(this, arguments));
-  }
-
-  _createClass(DefaultImage, [{
-    key: "render",
-    value: function render() {
-      return wp.element.createElement("img", { src: placeHolder });
-    }
-  }]);
-
-  return DefaultImage;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["a"] = (DefaultImage);
-
-/***/ }),
-/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1444,380 +1406,45 @@ function PremiumMargin(props) {
 }
 
 /***/ }),
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var placeHolder = PremiumBlocksSettings.defaultAuthImg;
+
+var Component = wp.element.Component;
+
+var DefaultImage = function (_Component) {
+  _inherits(DefaultImage, _Component);
+
+  function DefaultImage() {
+    _classCallCheck(this, DefaultImage);
+
+    return _possibleConstructorReturn(this, (DefaultImage.__proto__ || Object.getPrototypeOf(DefaultImage)).apply(this, arguments));
+  }
+
+  _createClass(DefaultImage, [{
+    key: "render",
+    value: function render() {
+      return wp.element.createElement("img", { src: placeHolder });
+    }
+  }]);
+
+  return DefaultImage;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (DefaultImage);
+
+/***/ }),
 /* 18 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(102);
-
-
-
-
-
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-
-
-var videoBoxAttrs = {
-  videoBoxId: {
-    type: "string"
-  },
-  videoType: {
-    type: "string",
-    default: "youtube"
-  },
-  videoURL: {
-    type: "string",
-    default: "07d2dXHYb94"
-  },
-  videoID: {
-    type: "string"
-  },
-  autoPlay: {
-    type: "boolean",
-    default: false
-  },
-  loop: {
-    type: "boolean",
-    default: false
-  },
-  controls: {
-    type: "boolean",
-    default: true
-  },
-  relatedVideos: {
-    type: "boolean",
-    default: false
-  },
-  mute: {
-    type: "boolean",
-    default: false
-  },
-  overlay: {
-    type: "boolean",
-    default: false
-  },
-  overlayImgID: {
-    type: "string"
-  },
-  overlayImgURL: {
-    type: "string"
-  },
-  blur: {
-    type: "number",
-    default: 0
-  },
-  bright: {
-    type: "number",
-    default: 100
-  },
-  contrast: {
-    type: "number",
-    default: 100
-  },
-  saturation: {
-    type: "number",
-    default: 100
-  },
-  hue: {
-    type: "number",
-    default: 0
-  },
-  playTop: {
-    type: "number"
-  },
-  playIcon: {
-    type: "boolean",
-    default: true
-  },
-  playSize: {
-    type: "number"
-  },
-  playColor: {
-    type: "string"
-  },
-  playBack: {
-    type: "string"
-  },
-  playHoverColor: {
-    type: "string"
-  },
-  playHoverBackColor: {
-    type: "string"
-  },
-  playPadding: {
-    type: "number"
-  },
-  playBorderType: {
-    type: "string",
-    default: "none"
-  },
-  playBorderWidth: {
-    type: "number",
-    default: "1"
-  },
-  playBorderRadius: {
-    type: "number"
-  },
-  playBorderColor: {
-    type: "string"
-  },
-  videoDescText: {
-    type: "string"
-  },
-  videoDesc: {
-    type: "boolean"
-  },
-  descLeft: {
-    type: "number"
-  },
-  descTop: {
-    type: "number"
-  },
-  videoDescSize: {
-    type: "number"
-  },
-  videoDescFamily: {
-    type: "string"
-  },
-  videoDescWeight: {
-    type: "number"
-  },
-  videoDescLetter: {
-    type: "number"
-  },
-  videoDescStyle: {
-    type: "string"
-  },
-  videoDescUpper: {
-    type: "boolean"
-  },
-  videoDescColor: {
-    type: "string"
-  },
-  videoDescBack: {
-    type: "string"
-  },
-  videoDescPadding: {
-    type: "number"
-  },
-  videoDescBorderRadius: {
-    type: "number"
-  },
-  descShadowColor: {
-    type: "string"
-  },
-  descShadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  descShadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  descShadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  boxBorderType: {
-    type: "string",
-    default: "none"
-  },
-  boxBorderWidth: {
-    type: "number",
-    default: "1"
-  },
-  boxBorderRadius: {
-    type: "number"
-  },
-  boxBorderColor: {
-    type: "string"
-  },
-  shadowColor: {
-    type: "string"
-  },
-  shadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  shadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  shadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  shadowPosition: {
-    type: "string",
-    default: ""
-  },
-
-  // Old props
-  playLeft: {
-    type: "number"
-  }
-};
-
-var onChangeVideoURL = function onChangeVideoURL(type, URL) {
-  var videoUrl = void 0;
-  switch (type) {
-    case "youtube":
-      if (URL.startsWith("http")) {
-        videoUrl = URL;
-      } else {
-        videoUrl = "https://www.youtube.com/embed/" + URL;
-      }
-      break;
-    case "vimeo":
-      if (URL.startsWith("http")) {
-        videoUrl = URL;
-      } else {
-        videoUrl = "https://player.vimeo.com/video/" + URL;
-      }
-      break;
-    case "daily":
-      if (URL.startsWith("http")) {
-        videoUrl = URL;
-      } else {
-        videoUrl = "https://dailymotion.com/embed/video/" + URL;
-      }
-      break;
-  }
-  return videoUrl;
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (onChangeVideoURL);
-
-registerBlockType("premium/video-box", {
-  title: __("Video Box"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "video" }),
-  category: "premium-blocks",
-  attributes: videoBoxAttrs,
-  supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["n" /* videoBox */]
-  },
-  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
-  save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
-  deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
-});
-
-/***/ }),
-/* 19 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumFilters;
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    RangeControl = _wp$components.RangeControl,
-    Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
-
-
-function PremiumFilters(props) {
-  var blur = props.blur,
-      bright = props.bright,
-      contrast = props.contrast,
-      saturation = props.saturation,
-      hue = props.hue,
-      _props$onChangeBlur = props.onChangeBlur,
-      onChangeBlur = _props$onChangeBlur === undefined ? function () {} : _props$onChangeBlur,
-      _props$onChangeBright = props.onChangeBright,
-      onChangeBright = _props$onChangeBright === undefined ? function () {} : _props$onChangeBright,
-      _props$onChangeContra = props.onChangeContrast,
-      onChangeContrast = _props$onChangeContra === undefined ? function () {} : _props$onChangeContra,
-      _props$onChangeSat = props.onChangeSat,
-      onChangeSat = _props$onChangeSat === undefined ? function () {} : _props$onChangeSat,
-      _props$onChangeHue = props.onChangeHue,
-      onChangeHue = _props$onChangeHue === undefined ? function () {} : _props$onChangeHue;
-
-
-  return wp.element.createElement(
-    "div",
-    { className: "premium-control-toggle" },
-    wp.element.createElement(
-      "strong",
-      null,
-      __("CSS Filters")
-    ),
-    wp.element.createElement(Dropdown, {
-      className: "premium-control-toggle-btn",
-      contentClassName: "premium-control-toggle-content",
-      position: "bottom right",
-      renderToggle: function renderToggle(_ref) {
-        var isOpen = _ref.isOpen,
-            onToggle = _ref.onToggle;
-        return wp.element.createElement(
-          Button,
-          { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-          wp.element.createElement("i", { className: "dashicons dashicons-edit" })
-        );
-      },
-      renderContent: function renderContent() {
-        return wp.element.createElement(
-          Fragment,
-          null,
-          wp.element.createElement(RangeControl, {
-            label: __("Blur"),
-            min: "0",
-            max: "10",
-            step: "0.1",
-            initialPosition: "0",
-            value: blur,
-            onChange: onChangeBlur,
-            allowReset: true
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Brightness"),
-            min: "0",
-            max: "200",
-            initialPosition: 100,
-            value: bright,
-            onChange: onChangeBright,
-            allowReset: true
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Contrast"),
-            min: "0",
-            max: "200",
-            initialPosition: 100,
-            value: contrast,
-            onChange: onChangeContrast,
-            allowReset: true
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Saturation"),
-            min: "0",
-            max: "200",
-            initialPosition: 100,
-            value: saturation,
-            onChange: onChangeSat,
-            allowReset: true
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Hue"),
-            min: "0",
-            max: "360",
-            initialPosition: "0",
-            value: hue,
-            onChange: onChangeHue,
-            allowReset: true
-          })
-        );
-      }
-    })
-  );
-}
-
-/***/ }),
-/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -1840,7 +1467,7 @@ function PremiumFilters(props) {
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(10), __webpack_require__(6), __webpack_require__(0), __webpack_require__(15), __webpack_require__(29)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(10), __webpack_require__(6), __webpack_require__(0), __webpack_require__(15), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(10), __webpack_require__(6), __webpack_require__(0), __webpack_require__(15), __webpack_require__(30)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(10), __webpack_require__(6), __webpack_require__(0), __webpack_require__(15), __webpack_require__(30)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -2381,7 +2008,380 @@ function PremiumFilters(props) {
     var n;Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var a = ((n = r(14)) && n.__esModule ? n : { default: n }).default;t.default = a;
   }]).default;
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(61)(module)))
+
+/***/ }),
+/* 19 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(103);
+
+
+
+
+
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+
+var videoBoxAttrs = {
+  videoBoxId: {
+    type: "string"
+  },
+  videoType: {
+    type: "string",
+    default: "youtube"
+  },
+  videoURL: {
+    type: "string",
+    default: "07d2dXHYb94"
+  },
+  videoID: {
+    type: "string"
+  },
+  autoPlay: {
+    type: "boolean",
+    default: false
+  },
+  loop: {
+    type: "boolean",
+    default: false
+  },
+  controls: {
+    type: "boolean",
+    default: true
+  },
+  relatedVideos: {
+    type: "boolean",
+    default: false
+  },
+  mute: {
+    type: "boolean",
+    default: false
+  },
+  overlay: {
+    type: "boolean",
+    default: false
+  },
+  overlayImgID: {
+    type: "string"
+  },
+  overlayImgURL: {
+    type: "string"
+  },
+  blur: {
+    type: "number",
+    default: 0
+  },
+  bright: {
+    type: "number",
+    default: 100
+  },
+  contrast: {
+    type: "number",
+    default: 100
+  },
+  saturation: {
+    type: "number",
+    default: 100
+  },
+  hue: {
+    type: "number",
+    default: 0
+  },
+  playTop: {
+    type: "number"
+  },
+  playIcon: {
+    type: "boolean",
+    default: true
+  },
+  playSize: {
+    type: "number"
+  },
+  playColor: {
+    type: "string"
+  },
+  playBack: {
+    type: "string"
+  },
+  playHoverColor: {
+    type: "string"
+  },
+  playHoverBackColor: {
+    type: "string"
+  },
+  playPadding: {
+    type: "number"
+  },
+  playBorderType: {
+    type: "string",
+    default: "none"
+  },
+  playBorderWidth: {
+    type: "number",
+    default: "1"
+  },
+  playBorderRadius: {
+    type: "number"
+  },
+  playBorderColor: {
+    type: "string"
+  },
+  videoDescText: {
+    type: "string"
+  },
+  videoDesc: {
+    type: "boolean"
+  },
+  descLeft: {
+    type: "number"
+  },
+  descTop: {
+    type: "number"
+  },
+  videoDescSize: {
+    type: "number"
+  },
+  videoDescFamily: {
+    type: "string"
+  },
+  videoDescWeight: {
+    type: "number"
+  },
+  videoDescLetter: {
+    type: "number"
+  },
+  videoDescStyle: {
+    type: "string"
+  },
+  videoDescUpper: {
+    type: "boolean"
+  },
+  videoDescColor: {
+    type: "string"
+  },
+  videoDescBack: {
+    type: "string"
+  },
+  videoDescPadding: {
+    type: "number"
+  },
+  videoDescBorderRadius: {
+    type: "number"
+  },
+  descShadowColor: {
+    type: "string"
+  },
+  descShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  descShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  descShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  boxBorderType: {
+    type: "string",
+    default: "none"
+  },
+  boxBorderWidth: {
+    type: "number",
+    default: "1"
+  },
+  boxBorderRadius: {
+    type: "number"
+  },
+  boxBorderColor: {
+    type: "string"
+  },
+  shadowColor: {
+    type: "string"
+  },
+  shadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  shadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  shadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  shadowPosition: {
+    type: "string",
+    default: ""
+  },
+
+  // Old props
+  playLeft: {
+    type: "number"
+  }
+};
+
+var onChangeVideoURL = function onChangeVideoURL(type, URL) {
+  var videoUrl = void 0;
+  switch (type) {
+    case "youtube":
+      if (URL.startsWith("http")) {
+        videoUrl = URL;
+      } else {
+        videoUrl = "https://www.youtube.com/embed/" + URL;
+      }
+      break;
+    case "vimeo":
+      if (URL.startsWith("http")) {
+        videoUrl = URL;
+      } else {
+        videoUrl = "https://player.vimeo.com/video/" + URL;
+      }
+      break;
+    case "daily":
+      if (URL.startsWith("http")) {
+        videoUrl = URL;
+      } else {
+        videoUrl = "https://dailymotion.com/embed/video/" + URL;
+      }
+      break;
+  }
+  return videoUrl;
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (onChangeVideoURL);
+
+registerBlockType("premium/video-box", {
+  title: __("Video Box"),
+  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "video" }),
+  category: "premium-blocks",
+  attributes: videoBoxAttrs,
+  supports: {
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["n" /* videoBox */]
+  },
+  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+  save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
+  deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
+});
+
+/***/ }),
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumFilters;
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    RangeControl = _wp$components.RangeControl,
+    Dropdown = _wp$components.Dropdown,
+    Button = _wp$components.Button;
+
+
+function PremiumFilters(props) {
+  var blur = props.blur,
+      bright = props.bright,
+      contrast = props.contrast,
+      saturation = props.saturation,
+      hue = props.hue,
+      _props$onChangeBlur = props.onChangeBlur,
+      onChangeBlur = _props$onChangeBlur === undefined ? function () {} : _props$onChangeBlur,
+      _props$onChangeBright = props.onChangeBright,
+      onChangeBright = _props$onChangeBright === undefined ? function () {} : _props$onChangeBright,
+      _props$onChangeContra = props.onChangeContrast,
+      onChangeContrast = _props$onChangeContra === undefined ? function () {} : _props$onChangeContra,
+      _props$onChangeSat = props.onChangeSat,
+      onChangeSat = _props$onChangeSat === undefined ? function () {} : _props$onChangeSat,
+      _props$onChangeHue = props.onChangeHue,
+      onChangeHue = _props$onChangeHue === undefined ? function () {} : _props$onChangeHue;
+
+
+  return wp.element.createElement(
+    "div",
+    { className: "premium-control-toggle" },
+    wp.element.createElement(
+      "strong",
+      null,
+      __("CSS Filters")
+    ),
+    wp.element.createElement(Dropdown, {
+      className: "premium-control-toggle-btn",
+      contentClassName: "premium-control-toggle-content",
+      position: "bottom right",
+      renderToggle: function renderToggle(_ref) {
+        var isOpen = _ref.isOpen,
+            onToggle = _ref.onToggle;
+        return wp.element.createElement(
+          Button,
+          { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+          wp.element.createElement("i", { className: "dashicons dashicons-edit" })
+        );
+      },
+      renderContent: function renderContent() {
+        return wp.element.createElement(
+          Fragment,
+          null,
+          wp.element.createElement(RangeControl, {
+            label: __("Blur"),
+            min: "0",
+            max: "10",
+            step: "0.1",
+            initialPosition: "0",
+            value: blur,
+            onChange: onChangeBlur,
+            allowReset: true
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Brightness"),
+            min: "0",
+            max: "200",
+            initialPosition: 100,
+            value: bright,
+            onChange: onChangeBright,
+            allowReset: true
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Contrast"),
+            min: "0",
+            max: "200",
+            initialPosition: 100,
+            value: contrast,
+            onChange: onChangeContrast,
+            allowReset: true
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Saturation"),
+            min: "0",
+            max: "200",
+            initialPosition: 100,
+            value: saturation,
+            onChange: onChangeSat,
+            allowReset: true
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Hue"),
+            min: "0",
+            max: "360",
+            initialPosition: "0",
+            value: hue,
+            onChange: onChangeHue,
+            allowReset: true
+          })
+        );
+      }
+    })
+  );
+}
 
 /***/ }),
 /* 21 */
@@ -2502,6 +2502,45 @@ module.exports = checkPropTypes;
 
 /***/ }),
 /* 23 */
+/***/ (function(module, exports) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var g;
+
+// This works in non-strict mode
+g = function () {
+	return this;
+}();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1, eval)("this");
+} catch (e) {
+	// This works if the window reference is available
+	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+/***/ }),
+/* 24 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var iconsList = {
+  Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
+  "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (iconsList);
+
+/***/ }),
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2563,7 +2602,7 @@ var PremiumLowerQuote = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2626,7 +2665,7 @@ var PremiumUpperQuote = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -2635,74 +2674,47 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(61);
-} else {
-  module.exports = __webpack_require__(62);
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(68);
-} else {
-  module.exports = __webpack_require__(69);
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
 /* 28 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
 
-var g;
-
-// This works in non-strict mode
-g = function () {
-	return this;
-}();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1, eval)("this");
-} catch (e) {
-	// This works if the window reference is available
-	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(62);
+} else {
+  module.exports = __webpack_require__(63);
 }
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(69);
+} else {
+  module.exports = __webpack_require__(70);
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
-var _CSSTransition = _interopRequireDefault(__webpack_require__(74));
+var _CSSTransition = _interopRequireDefault(__webpack_require__(75));
 
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(79));
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(80));
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(33));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(34));
 
-var _Transition = _interopRequireDefault(__webpack_require__(30));
+var _Transition = _interopRequireDefault(__webpack_require__(31));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -2716,7 +2728,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2731,9 +2743,9 @@ var _react = _interopRequireDefault(__webpack_require__(6));
 
 var _reactDom = _interopRequireDefault(__webpack_require__(15));
 
-var _reactLifecyclesCompat = __webpack_require__(31);
+var _reactLifecyclesCompat = __webpack_require__(32);
 
-var _PropTypes = __webpack_require__(32);
+var _PropTypes = __webpack_require__(33);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -3356,7 +3368,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3488,7 +3500,7 @@ function polyfill(Component) {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3525,7 +3537,7 @@ exports.classNamesShape = classNamesShape;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3538,9 +3550,9 @@ var _propTypes = _interopRequireDefault(__webpack_require__(10));
 
 var _react = _interopRequireDefault(__webpack_require__(6));
 
-var _reactLifecyclesCompat = __webpack_require__(31);
+var _reactLifecyclesCompat = __webpack_require__(32);
 
-var _ChildMapping = __webpack_require__(80);
+var _ChildMapping = __webpack_require__(81);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -3762,18 +3774,6 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 34 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var iconsList = {
-  Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
-  "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (iconsList);
-
-/***/ }),
 /* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3809,24 +3809,25 @@ function _assertThisInitialized(self) {
 }
 
 /***/ }),
-/* 37 */
+/* 37 */,
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_accordion__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_button__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_count_up__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_dual_heading__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_icon__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon_box__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_maps__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(92);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_person__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_accordion__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_button__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_count_up__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_dual_heading__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_icon__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon_box__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_maps__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_person__ = __webpack_require__(104);
 
 
 
@@ -3844,15 +3845,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //import "./blocks/test";
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(42);
 
 
 
@@ -4062,7 +4063,7 @@ registerBlockType("premium/accordion", {
 });
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4876,7 +4877,7 @@ var PremiumAccordion = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumAccordion);
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5059,7 +5060,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5420,15 +5421,15 @@ var deprecated = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecated);
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(46);
 
 
 
@@ -5668,7 +5669,7 @@ registerBlockType("premium/banner", {
 });
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5678,7 +5679,7 @@ registerBlockType("premium/banner", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(11);
 
 
@@ -6419,7 +6420,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6602,7 +6603,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7598,14 +7599,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(3);
 
 
@@ -7762,7 +7763,7 @@ registerBlockType("premium/button", {
 });
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7773,7 +7774,7 @@ registerBlockType("premium/button", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(12);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -8333,7 +8334,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8431,7 +8432,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8991,15 +8992,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(54);
 
 
 
@@ -9248,7 +9249,7 @@ registerBlockType("premium/countup", {
 });
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9257,9 +9258,9 @@ registerBlockType("premium/countup", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(12);
 
 
 
@@ -10147,7 +10148,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10365,7 +10366,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11541,15 +11542,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(58);
 
 
 
@@ -11821,7 +11822,7 @@ registerBlockType("premium/dheading-block", {
 });
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11830,8 +11831,8 @@ registerBlockType("premium/dheading-block", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_fonts__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_fonts__ = __webpack_require__(12);
 
 
 
@@ -12693,7 +12694,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12858,7 +12859,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13851,15 +13852,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(83);
 
 
 
@@ -14085,23 +14086,23 @@ registerBlockType("premium/icon", {
 });
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(13);
 
 
 
@@ -14678,7 +14679,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports) {
 
 module.exports = function (module) {
@@ -14705,7 +14706,7 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14780,7 +14781,7 @@ exports.isSuspense = function (a) {
 };
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15014,7 +15015,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15029,7 +15030,7 @@ if (process.env.NODE_ENV !== "production") {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var ReactIs = __webpack_require__(26);
+var ReactIs = __webpack_require__(28);
 var assign = __webpack_require__(14);
 
 var ReactPropTypesSecret = __webpack_require__(21);
@@ -15592,7 +15593,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15658,7 +15659,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15842,7 +15843,7 @@ var X = { Children: { map: function map(a, b, d) {
     Z = Y && X || Y;module.exports = Z.default || Z;
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17745,7 +17746,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17767,7 +17768,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var aa = __webpack_require__(6),
     n = __webpack_require__(14),
-    r = __webpack_require__(27);function ba(a, b, c, d, e, f, g, h) {
+    r = __webpack_require__(29);function ba(a, b, c, d, e, f, g, h) {
   if (!a) {
     a = void 0;if (void 0 === b) a = Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else {
       var l = [c, d, e, f, g, h],
@@ -20088,7 +20089,7 @@ var Vi = { createPortal: Ti, findDOMNode: function findDOMNode(a) {
     Xi = Wi && Vi || Wi;module.exports = Xi.default || Xi;
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20291,10 +20292,10 @@ exports.unstable_shouldYield = function () {
 };exports.unstable_pauseExecution = function () {};exports.unstable_getFirstCallbackNode = function () {
   return d;
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)))
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20997,10 +20998,10 @@ if (process.env.NODE_ENV !== "production") {
     exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
   })();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(28)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(23)))
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21011,7 +21012,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(6);var _assign=__webpack_require__(14);var checkPropTypes=__webpack_require__(22);var scheduler=__webpack_require__(27);var tracing=__webpack_require__(71);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(6);var _assign=__webpack_require__(14);var checkPropTypes=__webpack_require__(22);var scheduler=__webpack_require__(29);var tracing=__webpack_require__(72);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -24889,21 +24890,21 @@ var reactDom=ReactDOM$3.default||ReactDOM$3;module.exports=reactDom;})();}
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(72);
-} else {
   module.exports = __webpack_require__(73);
+} else {
+  module.exports = __webpack_require__(74);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24930,7 +24931,7 @@ Object.defineProperty(exports, "__esModule", { value: !0 });var b = 0;exports.__
 };exports.unstable_subscribe = function () {};exports.unstable_unsubscribe = function () {};
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25358,7 +25359,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25369,15 +25370,15 @@ exports.default = void 0;
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(10));
 
-var _addClass = _interopRequireDefault(__webpack_require__(75));
+var _addClass = _interopRequireDefault(__webpack_require__(76));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(78));
+var _removeClass = _interopRequireDefault(__webpack_require__(79));
 
 var _react = _interopRequireDefault(__webpack_require__(6));
 
-var _Transition = _interopRequireDefault(__webpack_require__(30));
+var _Transition = _interopRequireDefault(__webpack_require__(31));
 
-var _PropTypes = __webpack_require__(32);
+var _PropTypes = __webpack_require__(33);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -25758,18 +25759,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(76);
+var _interopRequireDefault = __webpack_require__(77);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(77));
+var _hasClass = _interopRequireDefault(__webpack_require__(78));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -25778,7 +25779,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports) {
 
 function _interopRequireDefault(obj) {
@@ -25790,7 +25791,7 @@ function _interopRequireDefault(obj) {
 module.exports = _interopRequireDefault;
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25806,7 +25807,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25821,7 +25822,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25836,7 +25837,7 @@ var _react = _interopRequireDefault(__webpack_require__(6));
 
 var _reactDom = __webpack_require__(15);
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(33));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(34));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -25986,7 +25987,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26141,7 +26142,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26269,7 +26270,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27267,15 +27268,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(87);
 
 
 
@@ -27655,7 +27656,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27663,17 +27664,17 @@ registerBlockType("premium/icon-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(12);
 
 
 
@@ -28905,7 +28906,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29169,7 +29170,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31296,7 +31297,7 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32129,15 +32130,15 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(92);
 
 
 
@@ -32614,7 +32615,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34303,7 +34304,7 @@ var PremiumPricingTable = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumPricingTable);
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34713,7 +34714,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35957,14 +35958,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(3);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -36113,7 +36114,7 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36121,9 +36122,9 @@ registerBlockType("premium/container", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(9);
 
 
@@ -36510,7 +36511,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36609,7 +36610,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37083,14 +37084,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(3);
 
 
@@ -37287,18 +37288,18 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_default_image__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_default_image__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(11);
 
 
@@ -38017,15 +38018,15 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(26);
 
 
 
@@ -38225,13 +38226,13 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(26);
 
 
 
@@ -39075,7 +39076,7 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39085,9 +39086,9 @@ var deprecatedContent = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(12);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39959,13 +39960,13 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(19);
 
 
 
@@ -40149,11 +40150,11 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(19);
 
 
 var className = "premium-video-box";
@@ -41049,13 +41050,13 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
 var _personAttrs;
 
@@ -41174,6 +41175,13 @@ var personAttrs = (_personAttrs = {
     },
     socialIconBackgroundColor: {
         type: "string"
+    },
+    contentColor: {
+        type: "string"
+    },
+    bottomInfo: {
+        type: "number",
+        default: 15
     },
     defaultIconColor: {
         type: "boolean",
@@ -41329,13 +41337,13 @@ registerBlockType("premium/person", {
 });
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(17);
 
 
 
@@ -41410,7 +41418,9 @@ var save = function save(props) {
         bright = _props$attributes.bright,
         contrast = _props$attributes.contrast,
         saturation = _props$attributes.saturation,
-        hue = _props$attributes.hue;
+        hue = _props$attributes.hue,
+        contentColor = _props$attributes.contentColor,
+        bottomInfo = _props$attributes.bottomInfo;
 
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-person');
@@ -41488,7 +41498,11 @@ var save = function save(props) {
                     wp.element.createElement(
                         'div',
                         {
-                            className: 'premium-person__info'
+                            className: 'premium-person__info',
+                            style: {
+                                background: contentColor ? contentColor : "#f2f2f2",
+                                bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
+                            }
                         },
                         wp.element.createElement(
                             'div',
@@ -41586,7 +41600,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41595,13 +41609,13 @@ var save = function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_default_image__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_default_image__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(107);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -41762,6 +41776,7 @@ var PremiumPerson = function (_Component) {
                 iconSizeUnit = _props$attributes.iconSizeUnit,
                 defaultIconColor = _props$attributes.defaultIconColor,
                 socialIconBackgroundColor = _props$attributes.socialIconBackgroundColor,
+                contentColor = _props$attributes.contentColor,
                 iconMarginL = _props$attributes.iconMarginL,
                 iconMarginR = _props$attributes.iconMarginR,
                 effect = _props$attributes.effect,
@@ -41800,7 +41815,8 @@ var PremiumPerson = function (_Component) {
                 bright = _props$attributes.bright,
                 contrast = _props$attributes.contrast,
                 saturation = _props$attributes.saturation,
-                hue = _props$attributes.hue;
+                hue = _props$attributes.hue,
+                bottomInfo = _props$attributes.bottomInfo;
 
 
             var HOVER = [{
@@ -41938,58 +41954,34 @@ var PremiumPerson = function (_Component) {
                 }
             };
             var _addLink = function _addLink(value, i) {
-                if (i > 0) {
-                    value.link = !value.link;
-                    value.link == false ? value.changeinput = value.value : value.changeinput;
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    var newData = array[0].items.filter(function (b) {
-                        return b;
-                    });
-                    array[0].items = newData;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    value.link = !value.link;
-                    value.link == false ? value.changeinput = value.value : value.changeinput;
-                    var arrayItem = multiPersonContent.map(function (cont) {
-                        return cont;
-                    });
-                    var _newData = arrayItem[0].items.filter(function (b) {
-                        return b;
-                    });
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: _newData }] });
-                }
+                value.link = !value.link;
+                value.link == false ? value.changeinput = value.value : value.changeinput;
+                var array = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == i;
+                });
+                var newData = array[0].items.filter(function (b) {
+                    return b;
+                });
+                array[0].items = newData;
+                multiPersonContent[i - 1] = array[0];
+                setAttributes(multiPersonContent[i - 1] = array[0]);
             };
             var _saveLink = function _saveLink(value, i, personIndex) {
-                if (personIndex > 0) {
-                    i.value = value;
-                    var arrayItem = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == personIndex;
-                    });
-                    i.link = false;
-                    var newData = arrayItem[0].items.filter(function (b) {
-                        return b;
-                    });
-                    arrayItem[0].items = newData;
-                    multiPersonContent[personIndex - 1] = arrayItem[0];
-                    setAttributes(multiPersonContent[personIndex - 1] = arrayItem[0]);
-                } else {
-                    i.value = value;
-                    var _arrayItem = multiPersonContent.map(function (cont) {
-                        return cont;
-                    });
-                    i.link = false;
-                    var _newData2 = _arrayItem[0].items.filter(function (b) {
-                        return b;
-                    });
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem[0].personImgUrl, name: _arrayItem[0].name, title: _arrayItem[0].title, desc: _arrayItem[0].desc, socialIcon: _arrayItem[0].socialIcon, items: _newData2 }] });
-                }
+                i.value = value;
+                var arrayItem = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == personIndex;
+                });
+                i.link = false;
+                var newData = arrayItem[0].items.filter(function (b) {
+                    return b;
+                });
+                arrayItem[0].items = newData;
+                multiPersonContent[personIndex - 1] = arrayItem[0];
+                setAttributes(multiPersonContent[personIndex - 1] = arrayItem[0]);
             };
             var _changeLinkValue = function _changeLinkValue(value, i, personIndex) {
                 if (personIndex > 0) {
@@ -42007,37 +41999,27 @@ var PremiumPerson = function (_Component) {
                     setAttributes(multiPersonContent[personIndex - 1] = arrayItem[0]);
                 } else {
                     i.changeinput = value;
-                    var _arrayItem2 = multiPersonContent.map(function (cont) {
+                    var _arrayItem = multiPersonContent.map(function (cont) {
                         return cont;
                     });
-                    var _newData3 = _arrayItem2[0].items.filter(function (b) {
+                    var _newData = _arrayItem[0].items.filter(function (b) {
                         return b;
                     });
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem2[0].personImgUrl, name: _arrayItem2[0].name, title: _arrayItem2[0].title, desc: _arrayItem2[0].desc, socialIcon: _arrayItem2[0].socialIcon, items: _newData3 }] });
+                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem[0].personImgUrl, name: _arrayItem[0].name, title: _arrayItem[0].title, desc: _arrayItem[0].desc, socialIcon: _arrayItem[0].socialIcon, items: _newData }] });
                 }
             };
             var _onRemove = function _onRemove(value, i) {
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    var newData = array[0].items.filter(function (b) {
-                        return b.label != value;
-                    });
-                    array[0].items = newData;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var arrayItem = multiPersonContent.map(function (cont) {
-                        return cont;
-                    });
-                    var _newData4 = arrayItem[0].items.filter(function (b) {
-                        return b.label != value;
-                    });
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: _newData4 }] });
-                }
+                var array = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == i;
+                });
+                var newData = array[0].items.filter(function (b) {
+                    return b.label != value;
+                });
+                array[0].items = newData;
+                multiPersonContent[i - 1] = array[0];
+                setAttributes(multiPersonContent[i - 1] = array[0]);
             };
             var socialIconfn = function socialIconfn(v) {
                 return wp.element.createElement(
@@ -42112,7 +42094,11 @@ var PremiumPerson = function (_Component) {
                             wp.element.createElement(
                                 "div",
                                 {
-                                    className: "premium-person__info"
+                                    className: "premium-person__info",
+                                    style: {
+                                        background: contentColor ? contentColor : "#f2f2f2",
+                                        bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
+                                    }
                                 },
                                 wp.element.createElement(
                                     "div",
@@ -42201,68 +42187,37 @@ var PremiumPerson = function (_Component) {
                 setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: array }] });
             };
             var addSocialIcon = function addSocialIcon(newsocial, index) {
-                if (index > 0) {
-                    var array = iconsList.map(function (i) {
-                        return i;
+                var array = iconsList.map(function (i) {
+                    return i;
+                }).filter(function (f) {
+                    return f.value == newsocial;
+                });
+                if (array[0] != undefined) {
+                    newsocial = array[0];
+                    setAttributes({ selectedSocialMediaIcon: newsocial.label });
+                    var newicon = newsocial.label;
+                    var arrayItem = multiPersonContent.map(function (cont) {
+                        return cont;
                     }).filter(function (f) {
-                        return f.value == newsocial;
+                        return f.id == index;
                     });
-                    if (array[0] != undefined) {
-                        newsocial = array[0];
-                        setAttributes({ selectedSocialMediaIcon: newsocial.label });
-                        var newicon = newsocial.label;
-                        var arrayItem = multiPersonContent.map(function (cont) {
-                            return cont;
-                        }).filter(function (f) {
-                            return f.id == index;
-                        });
 
-                        var repeat = arrayItem[0].items.filter(function (d) {
-                            return d.label == newicon;
-                        });
-                        if (repeat[0] != undefined) {
-                            arrayItem[0].items.filter(function (d) {
-                                return d.label != newicon;
-                            });
-                            multiPersonContent[index - 1] = arrayItem[0];
-                            setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
-                        } else {
-                            arrayItem[0].items.push({ label: newicon, link: false, value: "", changeinput: "#" });
-                            arrayItem[0].items.filter(function (d) {
-                                return d.label != newicon;
-                            });
-                            multiPersonContent[index - 1] = arrayItem[0];
-                            setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
-                        }
-                    }
-                } else {
-                    var _array = iconsList.map(function (i) {
-                        return i;
-                    }).filter(function (f) {
-                        return f.value == newsocial;
+                    var repeat = arrayItem[0].items.filter(function (d) {
+                        return d.label == newicon;
                     });
-                    if (_array[0] != undefined) {
-                        newsocial = _array[0];
-                        setAttributes({ selectedSocialMediaIcon: newsocial.label });
-                        var _newicon = newsocial.label;
-                        var _arrayItem3 = multiPersonContent.map(function (cont) {
-                            return cont;
+                    if (repeat[0] != undefined) {
+                        arrayItem[0].items.filter(function (d) {
+                            return d.label != newicon;
                         });
-                        var _repeat = _arrayItem3[0].items.filter(function (d) {
-                            return d.label == _newicon;
+                        multiPersonContent[index - 1] = arrayItem[0];
+                        setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
+                    } else {
+                        arrayItem[0].items.push({ label: newicon, link: false, value: "", changeinput: "#" });
+                        arrayItem[0].items.filter(function (d) {
+                            return d.label != newicon;
                         });
-                        if (_repeat[0] != undefined) {
-                            _arrayItem3[0].items.filter(function (d) {
-                                return d.label != _newicon;
-                            });
-                            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem3[0].personImgUrl, name: _arrayItem3[0].name, title: _arrayItem3[0].title, desc: _arrayItem3[0].desc, socialIcon: _arrayItem3[0].socialIcon, items: _arrayItem3[0].items }] });
-                        } else {
-                            _arrayItem3[0].items.push({ label: _newicon, link: false, value: "", changeinput: "#" });
-                            _arrayItem3[0].items.filter(function (d) {
-                                return d.label != _newicon;
-                            });
-                            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem3[0].personImgUrl, name: _arrayItem3[0].name, title: _arrayItem3[0].title, desc: _arrayItem3[0].desc, socialIcon: _arrayItem3[0].socialIcon, items: _arrayItem3[0].items }] });
-                        }
+                        multiPersonContent[index - 1] = arrayItem[0];
+                        setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
                     }
                 }
             };
@@ -42302,100 +42257,57 @@ var PremiumPerson = function (_Component) {
                 setAttributes(multiPersonContent[i - 1] = arrayItem[0]);
             };
             var PersonImage = function PersonImage(media, i) {
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].personImgUrl = "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                    setAttributes({
-                        personImgId: media.id
-                    });
-                } else {
-                    var _array2 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array2[0].personImgUrl = "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array2[0].personImgUrl, name: _array2[0].name, title: _array2[0].title, desc: _array2[0].desc, socialIcon: _array2[0].socialIcon, items: _array2[0].items }] });
-                    setAttributes({
-                        personImgId: media.id
-                    });
-                }
+                var array = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == i;
+                });
+                array[0].personImgUrl = "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url;
+                multiPersonContent[i - 1] = array[0];
+                setAttributes(multiPersonContent[i - 1] = array[0]);
+                setAttributes({
+                    personImgId: media.id
+                });
             };
             var Name = function Name(value, i) {
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].name = value;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var _array3 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array3[0].name = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array3[0].personImgUrl, name: _array3[0].name, title: _array3[0].title, desc: _array3[0].desc, socialIcon: _array3[0].socialIcon, items: _array3[0].items }] });
-                }
+                var array = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == i;
+                });
+                array[0].name = value;
+                multiPersonContent[i - 1] = array[0];
+                setAttributes(multiPersonContent[i - 1] = array[0]);
             };
             var Title = function Title(value, i) {
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].title = value;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var _array4 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array4[0].title = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array4[0].personImgUrl, name: _array4[0].name, title: _array4[0].title, desc: _array4[0].desc, socialIcon: _array4[0].socialIcon, items: _array4[0].items }] });
-                }
+                var array = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == i;
+                });
+                array[0].title = value;
+                multiPersonContent[i - 1] = array[0];
+                setAttributes(multiPersonContent[i - 1] = array[0]);
             };
             var Desc = function Desc(value, i) {
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].desc = value;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var _array5 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array5[0].desc = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array5[0].personImgUrl, name: _array5[0].name, title: _array5[0].title, desc: _array5[0].desc, socialIcon: _array5[0].socialIcon, items: _array5[0].items }] });
-                }
+                var array = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == i;
+                });
+                array[0].desc = value;
+                multiPersonContent[i - 1] = array[0];
+                setAttributes(multiPersonContent[i - 1] = array[0]);
             };
             var SocialIcon = function SocialIcon(value, i) {
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].socialIcon = value;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var _array6 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array6[0].socialIcon = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array6[0].personImgUrl, name: _array6[0].name, title: _array6[0].title, desc: _array6[0].desc, socialIcon: _array6[0].socialIcon, items: _array6[0].items }] });
-                }
+                var array = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == i;
+                });
+                array[0].socialIcon = value;
+                multiPersonContent[i - 1] = array[0];
+                setAttributes(multiPersonContent[i - 1] = array[0]);
             };
 
             var MultiPersonSetting = function MultiPersonSetting() {
@@ -42477,7 +42389,7 @@ var PremiumPerson = function (_Component) {
                                 isMulti: false,
                                 appendTo: "body",
                                 closeOnSelect: false,
-                                iconsPerPage: "25",
+                                iconsPerPage: 25,
                                 noSelectedPlaceholder: __("Select Icon")
                             }),
                             wp.element.createElement(SortableList, { items: content.items, personIndex: content.id, onSortEnd: function onSortEnd(o, n) {
@@ -42523,11 +42435,6 @@ var PremiumPerson = function (_Component) {
                             return addMultiPerson(value);
                         }
                     }),
-                    wp.element.createElement(
-                        "p",
-                        null,
-                        __("Enable this option if you need to add multiple persons")
-                    ),
                     multiPersonChecked > 1 ? wp.element.createElement(SelectControl, {
                         label: __("Persons/Row"),
                         value: rowPerson,
@@ -42574,7 +42481,7 @@ var PremiumPerson = function (_Component) {
                     wp.element.createElement(MediaUpload, {
                         allowedTypes: ["image"],
                         onSelect: function onSelect(media) {
-                            return PersonImage(media);
+                            return PersonImage(media, 1);
                         },
                         type: "image",
                         value: personImgId,
@@ -42595,28 +42502,28 @@ var PremiumPerson = function (_Component) {
                         label: __("Name"),
                         value: multiPersonContent[0].name,
                         onChange: function onChange(value) {
-                            return Name(value);
+                            return Name(value, 1);
                         }
                     }),
                     wp.element.createElement(TextControl, {
                         label: __("Title"),
                         value: multiPersonContent[0].title,
                         onChange: function onChange(value) {
-                            return Title(value);
+                            return Title(value, 1);
                         }
                     }),
                     wp.element.createElement(TextareaControl, {
                         label: __("Description"),
                         value: multiPersonContent[0].desc,
                         onChange: function onChange(value) {
-                            return Desc(value);
+                            return Desc(value, 1);
                         }
                     }),
                     wp.element.createElement(ToggleControl, {
                         label: __("Enable Social Icons"),
                         checked: multiPersonContent[0].socialIcon,
                         onChange: function onChange(value) {
-                            return SocialIcon(value);
+                            return SocialIcon(value, 1);
                         }
                     }),
                     multiPersonContent[0].socialIcon && wp.element.createElement(
@@ -42632,24 +42539,24 @@ var PremiumPerson = function (_Component) {
                                 return i.value;
                             }),
                             onChange: function onChange(value) {
-                                return addSocialIcon(value);
+                                return addSocialIcon(value, 1);
                             },
                             isMulti: false,
                             appendTo: "body",
                             closeOnSelect: false,
-                            iconsPerPage: "25",
+                            iconsPerPage: 25,
                             noSelectedPlaceholder: __("Select Icon")
                         }),
                         wp.element.createElement(SortableList, { items: multiPersonContent[0].items, onSortEnd: function onSortEnd(o, n) {
                                 return onSortEndSingle(o, n);
                             }, onRemove: function onRemove(value) {
-                                return _onRemove(value);
+                                return _onRemove(value, 1);
                             }, saveLink: function saveLink(value, i) {
-                                return _saveLink(value, i);
+                                return _saveLink(value, i, 1);
                             }, changeLinkValue: function changeLinkValue(value, i) {
                                 return _changeLinkValue(value, i);
                             }, addLink: function addLink(value) {
-                                return _addLink(value);
+                                return _addLink(value, 1);
                             }, shouldCancelStart: shouldCancelStart, helperClass: "premium-person__sortableHelper" })
                     )
                 ),
@@ -43310,6 +43217,65 @@ var PremiumPerson = function (_Component) {
                             }
                         })
                     )
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Content"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-control-toggle" },
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Color")
+                        ),
+                        wp.element.createElement(Dropdown, {
+                            className: "premium-control-toggle-person",
+                            contentClassName: "premium-control-toggle-content",
+                            position: "bottom right",
+                            renderToggle: function renderToggle(_ref14) {
+                                var isOpen = _ref14.isOpen,
+                                    onToggle = _ref14.onToggle;
+                                return wp.element.createElement(
+                                    Button,
+                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+                                    wp.element.createElement("i", { className: "dashicons dashicons-edit" })
+                                );
+                            },
+                            renderContent: function renderContent() {
+                                return wp.element.createElement(
+                                    Fragment,
+                                    null,
+                                    wp.element.createElement(
+                                        "p",
+                                        null,
+                                        __("Content Color")
+                                    ),
+                                    wp.element.createElement(ColorPalette, {
+                                        value: contentColor,
+                                        onChange: function onChange(newValue) {
+                                            return setAttributes({
+                                                contentColor: newValue
+                                            });
+                                        },
+                                        allowReset: true
+                                    })
+                                );
+                            }
+                        })
+                    ),
+                    effectPersonStyle === 'effect1' ? wp.element.createElement(RangeControl, {
+                        label: __("Bottom Offset"),
+                        value: bottomInfo,
+                        min: 15,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ bottomInfo: newValue });
+                        }
+                    }) : ""
                 )
             ), wp.element.createElement(
                 "div",
@@ -43334,7 +43300,7 @@ var PremiumPerson = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumPerson);
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43345,14 +43311,14 @@ var PremiumPerson = function (_Component) {
 /* unused harmony export SortableHandle */
 /* unused harmony export sortableHandle */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return arrayMove; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_esm_slicedToArray__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_objectSpread__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__babel_runtime_helpers_esm_classCallCheck__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__babel_runtime_helpers_esm_createClass__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__babel_runtime_helpers_esm_possibleConstructorReturn__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__babel_runtime_helpers_esm_getPrototypeOf__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__babel_runtime_helpers_esm_inherits__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_esm_slicedToArray__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_objectSpread__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__babel_runtime_helpers_esm_classCallCheck__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__babel_runtime_helpers_esm_createClass__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__babel_runtime_helpers_esm_possibleConstructorReturn__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__babel_runtime_helpers_esm_getPrototypeOf__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__babel_runtime_helpers_esm_inherits__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__babel_runtime_helpers_esm_assertThisInitialized__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__babel_runtime_helpers_esm_defineProperty__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react__ = __webpack_require__(6);
@@ -43361,9 +43327,9 @@ var PremiumPerson = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__babel_runtime_helpers_esm_toConsumableArray__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__babel_runtime_helpers_esm_toConsumableArray__ = __webpack_require__(122);
 
 
 
@@ -44950,7 +44916,7 @@ function sortableElement(WrappedComponent) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44974,14 +44940,14 @@ function _extends() {
 }
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _slicedToArray;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithHoles__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArrayLimit__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableRest__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithHoles__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArrayLimit__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableRest__ = __webpack_require__(112);
 
 
 
@@ -44990,7 +44956,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45000,7 +44966,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45032,7 +44998,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45042,7 +45008,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45069,7 +45035,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45081,7 +45047,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45103,12 +45069,12 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _possibleConstructorReturn;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_esm_typeof__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_esm_typeof__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assertThisInitialized__ = __webpack_require__(36);
 
 
@@ -45121,7 +45087,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45155,7 +45121,7 @@ function _typeof(obj) {
 }
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45168,12 +45134,12 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _inherits;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setPrototypeOf__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setPrototypeOf__ = __webpack_require__(120);
 
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
@@ -45191,7 +45157,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45206,7 +45172,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45259,14 +45225,14 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _toConsumableArray;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithoutHoles__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArray__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableSpread__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithoutHoles__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArray__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableSpread__ = __webpack_require__(125);
 
 
 
@@ -45275,7 +45241,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45291,7 +45257,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45301,7 +45267,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
