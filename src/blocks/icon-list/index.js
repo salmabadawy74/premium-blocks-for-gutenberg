@@ -44,9 +44,9 @@ const iconListAttrs = {
         ],
     },
     classMigrate: {
-		type: "boolean",
-		default: false
-	},
+        type: "boolean",
+        default: false
+    },
     layoutPos: {
         type: "string",
         default: "block"
@@ -73,7 +73,7 @@ const iconListAttrs = {
         type: "string"
     },
     titleUpper: {
-        type: "boolean"
+        type: "string"
     },
     titleWeight: {
         type: "number",
@@ -92,7 +92,7 @@ const iconListAttrs = {
     },
     borderRadius: {
         type: "number",
-        default: 100
+        default: 0
     },
     borderColor: {
         type: "string"

@@ -44,7 +44,7 @@ class edit extends Component {
         // Pushing Style tag for this block css.
         const $style = document.createElement("style")
         console.log($style);
-        
+
         $style.setAttribute("id", "premium-style-icon-list-" + this.props.clientId)
         document.head.appendChild($style)
     }
@@ -545,8 +545,6 @@ class edit extends Component {
                                     return
                                 }
 
-                                let url = ""
-
                                 let image_icon_html = ""
 
                                 if (icon.image_icon == "icon") {
@@ -602,7 +600,7 @@ class edit extends Component {
                                                     marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
                                                     borderStyle: borderType,
                                                     borderWidth: borderWidth + "px",
-                                                    borderRadius: borderRadius || 100 + "px",
+                                                    borderRadius: borderRadius || 0 + "px",
                                                     borderColor: borderColor
                                                 }}
                                             >{image_icon_html}</span>

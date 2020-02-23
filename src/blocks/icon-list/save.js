@@ -109,7 +109,7 @@ export default function save(props) {
                                                 marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
                                                 borderStyle: borderType,
                                                 borderWidth: borderWidth + "px",
-                                                borderRadius: borderRadius || 100 + "px",
+                                                borderRadius: borderRadius || 0 + "px",
                                                 borderColor: borderColor
                                             }}
                                         >{image_icon_html}</span>
@@ -157,10 +157,12 @@ export default function save(props) {
                                     }}>
                                         <span className="premium-icon-list__icon-wrap"
                                             style={{
-                                                marginRight: iconSpacing + "px",
+                                                marginRight: iconPosition == "left" ? iconSpacing + "px" : "",
+                                                marginLeft: iconPosition == "right" ? iconSpacing + "px" : "",
+                                                marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
                                                 borderStyle: borderType,
                                                 borderWidth: borderWidth + "px",
-                                                borderRadius: borderRadius || 100 + "px",
+                                                borderRadius: borderRadius || 0 + "px",
                                                 borderColor: borderColor
                                             }}
                                         >{image_icon_html}</span>

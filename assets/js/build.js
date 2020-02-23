@@ -45407,7 +45407,7 @@ var iconListAttrs = {
         type: "string"
     },
     titleUpper: {
-        type: "boolean"
+        type: "string"
     },
     titleWeight: {
         type: "number",
@@ -45426,7 +45426,7 @@ var iconListAttrs = {
     },
     borderRadius: {
         type: "number",
-        default: 100
+        default: 0
     },
     borderColor: {
         type: "string"
@@ -45589,7 +45589,7 @@ function save(props) {
                                         marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
                                         borderStyle: borderType,
                                         borderWidth: borderWidth + "px",
-                                        borderRadius: borderRadius || 100 + "px",
+                                        borderRadius: borderRadius || 0 + "px",
                                         borderColor: borderColor
                                     }
                                 },
@@ -45641,10 +45641,12 @@ function save(props) {
                                 "span",
                                 { className: "premium-icon-list__icon-wrap",
                                     style: {
-                                        marginRight: iconSpacing + "px",
+                                        marginRight: iconPosition == "left" ? iconSpacing + "px" : "",
+                                        marginLeft: iconPosition == "right" ? iconSpacing + "px" : "",
+                                        marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
                                         borderStyle: borderType,
                                         borderWidth: borderWidth + "px",
-                                        borderRadius: borderRadius || 100 + "px",
+                                        borderRadius: borderRadius || 0 + "px",
                                         borderColor: borderColor
                                     }
                                 },
@@ -46463,8 +46465,6 @@ var edit = function (_Component) {
                                 return;
                             }
 
-                            var url = "";
-
                             var image_icon_html = "";
 
                             if (icon.image_icon == "icon") {
@@ -46523,7 +46523,7 @@ var edit = function (_Component) {
                                                 marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
                                                 borderStyle: borderType,
                                                 borderWidth: borderWidth + "px",
-                                                borderRadius: borderRadius || 100 + "px",
+                                                borderRadius: borderRadius || 0 + "px",
                                                 borderColor: borderColor
                                             }
                                         },
