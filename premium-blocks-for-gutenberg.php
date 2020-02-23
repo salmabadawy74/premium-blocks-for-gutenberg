@@ -31,4 +31,4 @@ require_once( PREMIUM_BLOCKS_PATH . 'includes/plugin.php' );
  * Initialize Plugin Main Class
  * @return void
  */
-add_action('init', array('Premium_Blocks_Gutenberg','get_instance') );
+add_action('init', array('PBG_Plugin','get_instance') );

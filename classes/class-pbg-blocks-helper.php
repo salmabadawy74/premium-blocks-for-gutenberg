@@ -4,9 +4,9 @@
 if( ! defined( 'ABSPATH' ) ) exit();
 
 /**
-* Define Premium_Blocks_Integration class
+* Define PBG_Blocks_Helper class
 */
-class Premium_Blocks_Integration {
+class PBG_Blocks_Helper {
     
     private static $instance = null;
 
@@ -20,16 +20,16 @@ class Premium_Blocks_Integration {
     public function __construct() {
 
         //Gets Active Blocks
-        self::$blocks = Premium_Guten_Admin::get_enabled_keys();
+        self::$blocks = PBG_Admin::get_enabled_keys();
         
         //Gets Plugin Admin Settings
-        self::$config = Premium_Guten_Maps::get_enabled_keys();
+        self::$config = PBG_Settings::get_enabled_keys();
         
         //Enqueue Editor Assets
-        add_action( 'enqueue_block_editor_assets', array( $this, 'premium_gutenberg_editor' ) );
+        add_action( 'enqueue_block_editor_assets', array( $this, 'pbg_editor' ) );
         
         //Enqueue Frontend Styles
-        add_action( 'enqueue_block_assets', array( $this, 'premium_gutenberg_frontend' ) );
+        add_action( 'enqueue_block_assets', array( $this, 'pbg_frontend' ) );
                 
         //Register Premium Blocks category
         add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
@@ -42,7 +42,7 @@ class Premium_Blocks_Integration {
     * @access public
     * @return void
     */
-    public function premium_gutenberg_editor() {
+    public function pbg_editor() {
 
         $is_fa_enabled = isset( self::$config['premium-fa-css'] ) ? self::$config['premium-fa-css'] : true;
         
@@ -98,7 +98,7 @@ class Premium_Blocks_Integration {
     * @access public
     * @return void
     */
-    public function premium_gutenberg_frontend() {
+    public function pbg_frontend() {
        
         $is_fa_enabled = isset( self::$config['premium-fa-css'] ) ? self::$config['premium-fa-css'] : true;
 
@@ -282,15 +282,15 @@ class Premium_Blocks_Integration {
 }
     
 
-if ( ! function_exists( 'premium_blocks_integration' ) ) {
+if ( ! function_exists( 'PBG_Blocks_Helper' ) ) {
 
 	/**
 	 * Returns an instance of the plugin class.
 	 * @since  1.0.0
 	 * @return object
 	 */
-	function premium_blocks_integration() {
-		return Premium_Blocks_Integration::get_instance();
+	function PBG_Blocks_Helper() {
+		return PBG_Blocks_Helper::get_instance();
 	}
 }
-premium_blocks_integration();
+PBG_Blocks_Helper();

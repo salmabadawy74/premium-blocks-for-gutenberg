@@ -3,13 +3,13 @@
 //Exit if accessed directly
 if( ! defined('ABSPATH') ) exit;
 
-// Define class 'Premium_Guten_Maps' if not Exists
-if( ! class_exists('Premium_Guten_Maps') ) {
+// Define class 'PBG_Settings' if not Exists
+if( ! class_exists('PBG_Settings') ) {
     
     /**
-    * Define Premium_Guten_Maps class
+    * Define PBG_Settings class
     */
-    class Premium_Guten_Maps {
+    class PBG_Settings {
 
         private static $instance = null;
 
@@ -26,14 +26,14 @@ if( ! class_exists('Premium_Guten_Maps') ) {
 		 */
         public function __construct() {
 
-            add_action( 'admin_menu', array ( $this,'premium_gutenberg_maps' ), 100 );
+            add_action( 'admin_menu', array ( $this,'pbg_maps' ), 100 );
 
             add_action( 'wp_ajax_pb_maps', array( $this, 'pb_save_maps_settings' ) );
 
         }
 
         //Create Google Maps API submenu
-        public function premium_gutenberg_maps() {
+        public function pbg_maps() {
             add_submenu_page(
                 'premium-gutenberg',
                 '',
@@ -178,11 +178,11 @@ if( ! class_exists('Premium_Guten_Maps') ) {
     }
 }
 
-if( ! function_exists('premium_gutenberg_maps') ) {
+if( ! function_exists('pbg_maps') ) {
     
-    function premium_gutenberg_maps() {
-        return Premium_Guten_Maps::get_instance();
+    function pbg_maps() {
+        return PBG_Settings::get_instance();
     }
     
 }
-premium_gutenberg_maps();
+pbg_maps();

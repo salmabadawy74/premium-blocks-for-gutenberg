@@ -3,13 +3,13 @@
 //Exit if accessed directly
 if( ! defined('ABSPATH') ) exit;
 
-// Define class 'Premium_Blocks_Gutenberg' if not Exists
-if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
+// Define class 'PBG_Plugin' if not Exists
+if( ! class_exists( 'PBG_Plugin' ) ) {
     
     /**
-    * Define Premium_Blocks_Gutenberg class
+    * Define PBG_Plugin class
     */
-    class Premium_Blocks_Gutenberg {
+    class PBG_Plugin {
         
         private static $instance = null;
         
@@ -19,7 +19,7 @@ if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
         public function __construct() {
             
             //Enqueue the required files
-            $this->premium_gutenberg_setup();
+            $this->pbg_setup();
         }
         
         /*
@@ -28,7 +28,7 @@ if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
          * @access public
          * @return void
          */
-        public function premium_gutenberg_setup() {
+        public function pbg_setup() {
             
             $this->load_domain();
             
@@ -66,7 +66,7 @@ if( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
                 require_once ( PREMIUM_BLOCKS_PATH . 'admin/includes/notices.php' );
             }
             
-            require_once ( PREMIUM_BLOCKS_PATH . 'includes/class-blocks-helper.php' );
+            require_once ( PREMIUM_BLOCKS_PATH . 'classes/class-pbg-blocks-helper.php' );
         }
         
         /**

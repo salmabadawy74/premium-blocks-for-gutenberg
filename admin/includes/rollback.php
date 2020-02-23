@@ -4,9 +4,9 @@
 if( ! defined( 'ABSPATH' ) ) exit();
 
 //Declare `Premium_Guten_Blocks` if not declared yet.
-if ( ! class_exists('Premium_Guten_RollBack') ) {
+if ( ! class_exists('PBG_Rollback') ) {
 
-	class Premium_Guten_RollBack {
+	class PBG_Rollback {
 
 		protected $package_url;
 
@@ -99,11 +99,11 @@ if ( ! class_exists('Premium_Guten_RollBack') ) {
 	}
 }
 
-if( ! function_exists('premium_gutenberg_rollback') ) {
+if( ! function_exists('pbg_rollback') ) {
     
-    function premium_gutenberg_rollback() {
-        return Premium_Guten_RollBack::get_instance();
+    function pbg_rollback() {
+        return PBG_Rollback::get_instance();
     }
     
 }
-premium_gutenberg_rollback();
+pbg_rollback();
