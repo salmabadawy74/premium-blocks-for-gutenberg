@@ -56,7 +56,7 @@ class Premium_Blocks_Integration {
     * Constructor for the class
     */    
     public function __construct() {
-        require( PREMIUM_BLOCKS_PATH . 'includes/class-config.php' );
+        require( PREMIUM_BLOCKS_PATH . 'includes/class-pbg-blocks-config.php' );
 
 		self::$block_list      = Config::get_block_attributes();
 
@@ -124,7 +124,9 @@ class Premium_Blocks_Integration {
             'PremiumBlocksSettings',
             array(
 				'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/author.jpg',
-                'activeBlocks'      => self::$blocks
+                'activeBlocks'      => self::$blocks,
+                'tablet_breakpoint' => PBG_TABLET_BREAKPOINT,
+				'mobile_breakpoint' => PBG_MOBILE_BREAKPOINT,
 			)
         );
 
@@ -566,9 +568,70 @@ class Premium_Blocks_Integration {
 			$m_selectors = array();
 			$t_selectors = array();
 
-			$selectors = array();
+			$selectors = array(
+				// Desktop Icon Size CSS starts.
+				" .premium-icon-list__icon-wrap img" => array(
+					"width" => self::get_css_value( $attr['size'], $attr['sizeType'] )
+				),
+				" .premium-icon-list__content-icon" => array(
+					"width" => self::get_css_value( $attr['size'], $attr['sizeType'] ),
+					"height" => self::get_css_value( $attr['size'], $attr['sizeType'] )
+				),
+				" .premium-icon-list__content-icon i" => array(
+					"width" => self::get_css_value( $attr['size'], $attr['sizeType'] ),
+                    "height" => self::get_css_value( $attr['size'], $attr['sizeType'] ),
+                    "font-size" => self::get_css_value( $attr['size'], $attr['sizeType'] )
+				),
+				" .premium-icon-list__content-icon:before"=> array(
+					"width" => self::get_css_value( $attr['size'], $attr['sizeType'] ),
+					"height" => self::get_css_value( $attr['size'], $attr['sizeType'] ),
+					"font-size" => self::get_css_value( $attr['size'], $attr['sizeType'] )
+                )
+            );
+            // Desktop Icon Size CSS ends.
 
+			// Mobile Icon Size CSS starts.
+			$m_selectors = array(
+				" .premium-icon-list__icon-wrap img" => array(
+					"width" => self::get_css_value( $attr['sizeMobile'], $attr['sizeType'] )
+				),
+				" .premium-icon-list__content-icon" => array(
+					"width" => self::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
+					"height" => self::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
+				),
+				" .premium-icon-list__content-icon i" => array(
+					"width" => self::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
+                    "height" => self::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
+                    "font-size" => self::get_css_value( $attr['sizeMobile'], $attr['sizeType'] )
+				),
+				" .premium-icon-list__content-icon:before" => array(
+					"width" => self::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
+					"height" => self::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
+					"font-size" => self::get_css_value( $attr['sizeMobile'], $attr['sizeType'] )
+				),
+			);
+			// Mobile Icon Size CSS ends.
 
+			// Tablet Icon Size CSS starts.
+			$t_selectors = array(
+				" .premium-icon-list__icon-wrap img" => array(
+					"width" => self::get_css_value( $attr['sizeTablet'], $attr['sizeType'] )
+				),
+				" .premium-icon-list__content-icon" => array(
+					"width" => self::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
+					"height" => self::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
+				),
+				" .premium-icon-list__content-icon i" => array(
+					"width" => self::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
+                    "height" => self::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
+                    "font-size" => self::get_css_value( $attr['sizeTablet'], $attr['sizeType'] )
+				),
+				" .premium-icon-list__content-icon:before" => array(
+					"width" => self::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
+					"height" => self::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
+					"font-size" => self::get_css_value( $attr['sizeTablet'], $attr['sizeType'] )
+				),
+			);
 			// Tablet Icon Size CSS ends.
 
 			foreach ( $attr['icons'] as $key => $icon ) {
@@ -576,8 +639,8 @@ class Premium_Blocks_Integration {
 				$icon['icon_hover_color'] = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
 				$icon['icon_bg_color'] = ( isset( $icon['icon_bg_color'] ) ) ? $icon['icon_bg_color'] : '';
 				$icon['icon_bg_hover_color'] = ( isset( $icon['icon_bg_hover_color'] ) ) ? $icon['icon_bg_hover_color'] : '';
-				$icon['icon_border_color'] = ( isset( $icon['icon_border_color'] ) ) ? $icon['icon_border_color'] : '';
-				$icon['icon_border_hover_color'] = ( isset( $icon['icon_border_hover_color'] ) ) ? $icon['icon_border_hover_color'] : '';
+				$icon['item_bg_color'] = ( isset( $icon['item_bg_color'] ) ) ? $icon['item_bg_color'] : '';
+				$icon['item_bg_hover_color'] = ( isset( $icon['item_bg_hover_color'] ) ) ? $icon['item_bg_hover_color'] : '';
 				$icon['label_color'] = ( isset( $icon['label_color'] ) ) ? $icon['label_color'] : '';
 				$icon['label_hover_color'] = ( isset( $icon['label_hover_color'] ) ) ? $icon['label_hover_color'] : '';
 
@@ -603,21 +666,30 @@ class Premium_Blocks_Integration {
 				);
 
 				$selectors[" .premium-icon-list-content" . $key . " .premium-icon-list__label"] = array (
-					"color" => $icon['label_color'],
+                    "color" => $icon['label_color'],
+					"background" => $icon['item_bg_color'],
+					"font-size" => self::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 				);
 
 				$selectors[" .premium-icon-list-content" . $key . ":hover .premium-icon-list__label"] = array (
-					"color" => $icon['label_hover_color']
+                    "color" => $icon['label_hover_color'],
+                    "background" => $icon['item_bg_hover_color'],
 				);
 
 				$selectors[" .premium-icon-list-content" . $key . " .premium-icon-list__icon-wrap"] = array(
 					"background" => $icon['icon_bg_color'],
-					"border-color" => $icon['icon_border_color'],
 				);
 
 				$selectors[" .premium-icon-list-content" . $key . ":hover .premium-icon-list__icon-wrap"] = array(
-					"background" => $icon['icon_bg_hover_color'],
-					"border-color" => $icon['icon_border_hover_color']
+					"background" => $icon['icon_bg_hover_color']
+				);
+
+				$m_selectors[" .premium-icon-list-content" . $key . " .premium-icon-list__label"] = array (
+					"font-size" => self::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
+				);
+
+				$t_selectors[" .premium-icon-list-content" . $key . " .premium-icon-list__label"] = array (
+					"font-size" => self::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
 				);
 			}
 
@@ -625,9 +697,16 @@ class Premium_Blocks_Integration {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-icon-list-';
 
-			$desktop = self::generate_css( $selectors, $base_selector . $id );
+            $desktop = self::generate_css( $selectors, $base_selector . $id );
+
+			$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+            $mobile = self::generate_css( $m_selectors, $base_selector . $id );
+            
 			$generated_css = array(
-				'desktop' => $desktop
+				'desktop' => $desktop,
+				'tablet'  => $tablet,
+				'mobile'  => $mobile,
 			);
             
             return $generated_css;
@@ -665,6 +744,39 @@ class Premium_Blocks_Integration {
 			}
 
 			return $styling_css;
+        }
+        
+        /**
+		 * Get CSS value
+		 *
+		 * Syntax:
+		 *
+		 *  get_css_value( VALUE, UNIT );
+		 *
+		 * E.g.
+		 *
+		 *  get_css_value( VALUE, 'em' );
+		 *
+		 * @param string $value  CSS value.
+		 * @param string $unit  CSS unit.
+		 * @since 1.13.4
+		 */
+		public static function get_css_value( $value = '', $unit = '' ) {
+
+			// @codingStandardsIgnoreStart
+			
+			if ( '' == $value ) {
+				return $value;
+			}
+			// @codingStandardsIgnoreEnd
+
+			$css_val = '';
+
+			if ( ! empty( $value ) ) {
+				$css_val = esc_attr( $value ) . $unit;
+			}
+
+			return $css_val;
         }
         
         /**
@@ -714,13 +826,13 @@ class Premium_Blocks_Integration {
 			}
 
 			if ( ! empty( $tablet ) ) {
-				$tab_styling_css .= '@media only screen and (max-width: ' . UAGB_TABLET_BREAKPOINT . 'px) {';
+				$tab_styling_css .= '@media only screen and (max-width: ' . PBG_TABLET_BREAKPOINT . 'px) {';
 				$tab_styling_css .= $tablet;
 				$tab_styling_css .= '}';
 			}
 
 			if ( ! empty( $mobile ) ) {
-				$mob_styling_css .= '@media only screen and (max-width: ' . UAGB_MOBILE_BREAKPOINT . 'px) {';
+				$mob_styling_css .= '@media only screen and (max-width: ' . PBG_MOBILE_BREAKPOINT . 'px) {';
 				$mob_styling_css .= $mobile;
 				$mob_styling_css .= '}';
 			}

@@ -35,11 +35,11 @@ const iconListAttrs = {
                 label_hover_color: "",
                 icon_bg_color: "",
                 icon_bg_hover_color: "",
-                icon_border_color: "",
-                icon_border_hover_color: "",
+                item_bg_color: "",
+                item_bg_hover_color: "",
                 link: "#",
                 target: false,
-                disableLink: true,
+                disableLink: false,
             }
         ],
     },
@@ -59,12 +59,37 @@ const iconListAttrs = {
         type: "boolean",
         default: false
     },
+    sizeType: {
+        type: "string",
+        default: "px"
+    },
     size: {
         type: "number",
         default: 20
     },
-    titleSize: {
-        type: "number"
+    sizeMobile: {
+        type: "number",
+        default: 20
+    },
+    sizeTablet: {
+        type: "number",
+        default: 20
+    },
+    fontSize: {
+        type: "number",
+        default: 20
+    },
+    fontSizeType: {
+        type: "string",
+        default: "px"
+    },
+    fontSizeMobile: {
+        type: "number",
+        default: 20
+    },
+    fontSizeTablet: {
+        type: "number",
+        default: 20
     },
     titleLetter: {
         type: "number"
@@ -104,6 +129,10 @@ const iconListAttrs = {
     titlePadding: {
         type: "number",
         default: 10
+    },
+    iconPadding: {
+        type: "number",
+        default: 0
     },
     itemMarginL: {
         type: "number",

@@ -1,5 +1,6 @@
 import classnames from "classnames"
 import times from "lodash/times"
+import map from "lodash/map"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import styling from "./styling"
 import iconsList from "../../components/premium-icons-list";
@@ -31,7 +32,9 @@ const {
     Button,
     TextControl,
     ToggleControl,
-    TabPanel
+    TabPanel,
+    Dashicon,
+    ButtonGroup
 } = wp.components
 
 
@@ -43,8 +46,6 @@ class edit extends Component {
         this.props.setAttributes({ classMigrate: true })
         // Pushing Style tag for this block css.
         const $style = document.createElement("style")
-        console.log($style);
-
         $style.setAttribute("id", "premium-style-icon-list-" + this.props.clientId)
         document.head.appendChild($style)
     }
@@ -74,8 +75,10 @@ class edit extends Component {
             align,
             className,
             icons,
+            sizeType,
             size,
-            titleSize,
+            sizeMobile,
+            sizeTablet,
             titleLetter,
             titleStyle,
             titleUpper,
@@ -87,10 +90,15 @@ class edit extends Component {
             borderColor,
             iconSpacing,
             titlePadding,
+            iconPadding,
             itemMarginL,
             itemMarginR,
             itemMarginT,
             itemMarginB,
+            fontSize,
+            fontSizeType,
+            fontSizeMobile,
+            fontSizeTablet,
         } = attributes
 
         const LAYOUT = [
@@ -137,6 +145,10 @@ class edit extends Component {
                 title: __("Hover")
             },
         ];
+        const sizeTypes = [
+            { key: "px", name: __("px") },
+            { key: "em", name: __("em") },
+        ]
 
         const addmultiTitleCount = (newCount) => {
             let cloneIcons = [...icons]
@@ -154,8 +166,8 @@ class edit extends Component {
                             icon_hover_color: cloneIcons[0].icon_hover_color,
                             icon_bg_color: cloneIcons[0].icon_bg_color,
                             icon_bg_hover_color: cloneIcons[0].icon_bg_hover_color,
-                            icon_border_color: cloneIcons[0].icon_border_color,
-                            icon_border_hover_color: cloneIcons[0].icon_border_hover_color,
+                            item_bg_color: cloneIcons[0].item_bg_color,
+                            item_bg_hover_color: cloneIcons[0].item_bg_hover_color,
                             link: cloneIcons[0].link,
                             disableLink: cloneIcons[0].disableLink,
                         })
@@ -176,7 +188,7 @@ class edit extends Component {
             if ("image" == icons[index].image_icon) {
                 color_control = (
                     <Fragment>
-                        <p>{__("Text Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].label_color }} ></span></span></p>
+                        <p>{__("Label Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].label_color }} ></span></span></p>
                         <ColorPalette
                             value={icons[index].label_color}
                             onChange={(value) => this.saveIcons({ label_color: value }, index)}
@@ -188,17 +200,17 @@ class edit extends Component {
                             onChange={(value) => this.saveIcons({ icon_bg_color: value }, index)}
                             allowReset
                         />
-                        <p>{__("Image Border Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].icon_border_color }} ></span></span></p>
+                        <p>{__("Item Background Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].item_bg_color }} ></span></span></p>
                         <ColorPalette
-                            value={icons[index].icon_border_color}
-                            onChange={(value) => this.saveIcons({ icon_border_color: value }, index)}
+                            value={icons[index].item_bg_color}
+                            onChange={(value) => this.saveIcons({ item_bg_color: value }, index)}
                             allowReset
                         />
                     </Fragment>
                 )
                 color_control_hover = (
                     <Fragment>
-                        <p>{__("Text Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].label_hover_color }} ></span></span></p>
+                        <p>{__("Label Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].label_hover_color }} ></span></span></p>
                         <ColorPalette
                             value={icons[index].label_hover_color}
                             onChange={(value) => this.saveIcons({ label_hover_color: value }, index)}
@@ -210,10 +222,10 @@ class edit extends Component {
                             onChange={(value) => this.saveIcons({ icon_bg_hover_color: value }, index)}
                             allowReset
                         />
-                        <p >{__("Image Border Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].icon_border_hover_color }} ></span></span></p>
+                        <p >{__("Item Background Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].item_bg_hover_color }} ></span></span></p>
                         <ColorPalette
-                            value={icons[index].icon_border_hover_color}
-                            onChange={(value) => this.saveIcons({ icon_border_hover_color: value }, index)}
+                            value={icons[index].item_bg_hover_color}
+                            onChange={(value) => this.saveIcons({ item_bg_hover_color: value }, index)}
                             allowReset
                         />
                     </Fragment>
@@ -221,7 +233,7 @@ class edit extends Component {
             } else {
                 color_control = (
                     <Fragment>
-                        <p >{__("Text Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].label_color }} ></span></span></p>
+                        <p >{__("Label Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].label_color }} ></span></span></p>
                         <ColorPalette
                             value={icons[index].label_color}
                             onChange={(value) => this.saveIcons({ label_color: value }, index)}
@@ -239,17 +251,17 @@ class edit extends Component {
                             onChange={(value) => this.saveIcons({ icon_bg_color: value }, index)}
                             allowReset
                         />
-                        <p >{__("Icon Border Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].icon_border_color }} ></span></span></p>
+                        <p >{__("Item Background Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].item_bg_color }} ></span></span></p>
                         <ColorPalette
-                            value={icons[index].icon_border_color}
-                            onChange={(value) => this.saveIcons({ icon_border_color: value }, index)}
+                            value={icons[index].item_bg_color}
+                            onChange={(value) => this.saveIcons({ item_bg_color: value }, index)}
                             allowReset
                         />
                     </Fragment>
                 )
                 color_control_hover = (
                     <Fragment>
-                        <p >{__("Text Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].label_hover_color }} ></span></span></p>
+                        <p >{__("Label Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].label_hover_color }} ></span></span></p>
                         <ColorPalette
                             value={icons[index].label_hover_color}
                             onChange={(value) => this.saveIcons({ label_hover_color: value }, index)}
@@ -267,10 +279,10 @@ class edit extends Component {
                             onChange={(value) => this.saveIcons({ icon_bg_hover_color: value }, index)}
                             allowReset
                         />
-                        <p >{__("Icon Border Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].icon_border_hover_color }} ></span></span></p>
+                        <p >{__("Item Background Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].item_bg_hover_color }} ></span></span></p>
                         <ColorPalette
-                            value={icons[index].icon_border_hover_color}
-                            onChange={(value) => this.saveIcons({ icon_border_hover_color: value }, index)}
+                            value={icons[index].item_bg_hover_color}
+                            onChange={(value) => this.saveIcons({ item_bg_hover_color: value }, index)}
                             allowReset
                         />
                     </Fragment>
@@ -279,7 +291,7 @@ class edit extends Component {
             return (
                 <PanelBody
                     key={index}
-                    title={__("Icon") + " " + (index + 1) + " " + __("Settings")}
+                    title={__("Icon #") + " " + (index + 1) + " " + __("Settings")}
                     initialOpen={false}
                 >
                     <SelectControl
@@ -303,6 +315,9 @@ class edit extends Component {
                     }
                     {"image" == icons[index].image_icon &&
                         <Fragment>
+                            {icons[index].image ?
+                                <img src={icons[index].image.url} width="100%" height="auto" />
+                                : ""}
                             <MediaUpload
                                 title={__("Select Image")}
                                 onSelect={value => { this.saveIcons({ image: value }, index) }}
@@ -324,13 +339,12 @@ class edit extends Component {
                         </Fragment>
                     }
                     <hr />
-                    <h2>{__("List Item Link")}</h2>
                     <ToggleControl
-                        label={__("Disable Link")}
+                        label={__("Link")}
                         checked={icons[index].disableLink}
                         onChange={value => { this.saveIcons({ disableLink: value }, index) }}
                     />
-                    {!icons[index].disableLink &&
+                    {icons[index].disableLink &&
                         <Fragment>
                             <p>{__("URL")}</p>
                             <TextControl
@@ -341,7 +355,7 @@ class edit extends Component {
                         </Fragment>
                     }
                     <hr />
-                    <h2>{__("Icon #") + " " + (index + 1) + " " + __(" Color Settings")}</h2>
+                    <h2>{__(" Color Settings")}</h2>
                     <TabPanel
                         className="premium-icon-list-tab-panel"
                         activeClass="active-tab"
@@ -388,6 +402,22 @@ class edit extends Component {
             }
             addFontToHead(fontFamily);
         };
+        const sizeTypeControls = (
+            <ButtonGroup className="premium-size-type-field" aria-label={__("Size Type")}>
+                {map(sizeTypes, ({ name, key }) => (
+                    <Button
+                        key={key}
+                        className="premium-size-btn"
+                        isSmall
+                        isPrimary={sizeType === key}
+                        aria-pressed={sizeType === key}
+                        onClick={() => setAttributes({ sizeType: key })}
+                    >
+                        {name}
+                    </Button>
+                ))}
+            </ButtonGroup>
+        )
 
         return (
             <Fragment>
@@ -406,7 +436,7 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <RangeControl
-                            label={__("Number of Title")}
+                            label={__("Number of Items")}
                             value={multiTitleCount}
                             min="1"
                             max="10"
@@ -425,25 +455,130 @@ class edit extends Component {
                             onChange={newValue => setAttributes({ iconPosition: newValue })}
                         />
                         <ToggleControl
-                            label={__("Open link in new tab")}
+                            label={__("Open links in new tab")}
                             checked={linkTarget}
                             onChange={newValue => setAttributes({ linkTarget: newValue })}
                         />
                     </PanelBody>
                     {times(multiTitleCount, n => iconControls(n))}
                     <PanelBody
-                        title={__("Style")}
+                        title={__("Icon Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <TabPanel className="premium-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "premium-desktop-tab premium-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "premium-tablet-tab premium-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "premium-mobile-tab premium-responsive-tabs",
+								},
+							] }>
+                            {
+                                (tab) => {
+                                    let tabout
+
+                                    if ("mobile" === tab.name) {
+                                        tabout = (
+                                            <Fragment>
+                                                {sizeTypeControls}
+                                                <RangeControl
+                                                    label={__("Icon Size")}
+                                                    value={sizeMobile}
+                                                    onChange={(value) => setAttributes({ sizeMobile: value })}
+                                                    min={0}
+                                                    max={500}
+                                                    allowReset
+                                                    initialPosition={40}
+                                                />
+                                            </Fragment>
+                                        )
+                                    } else if ("tablet" === tab.name) {
+                                        tabout = (<Fragment>
+                                            {sizeTypeControls}
+                                            <RangeControl
+                                                label={__("Icon Size")}
+                                                value={sizeTablet}
+                                                onChange={(value) => setAttributes({ sizeTablet: value })}
+                                                min={0}
+                                                max={500}
+                                                allowReset
+                                                initialPosition={40}
+                                            />
+                                        </Fragment>
+                                        )
+                                    } else {
+                                        tabout = (<Fragment>
+                                            {sizeTypeControls}
+                                            <RangeControl
+                                                label={__("Icon Size")}
+                                                value={size}
+                                                onChange={(value) => setAttributes({ size: value })}
+                                                min={0}
+                                                max={500}
+                                                allowReset
+                                                initialPosition={40}
+                                            />
+                                        </Fragment>
+                                        )
+                                    }
+
+                                    return <div>{tabout}</div>
+                                }
+                            }
+                        </TabPanel>
+                        <PremiumBorder
+                            borderType={borderType}
+                            borderWidth={borderWidth}
+                            borderColor={borderColor}
+                            borderRadius={borderRadius}
+                            onChangeType={newType => setAttributes({ borderType: newType })}
+                            onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
+                            onChangeColor={colorValue =>
+                                setAttributes({ borderColor: colorValue.hex })
+                            }
+                            onChangeRadius={newrRadius =>
+                                setAttributes({ borderRadius: newrRadius })
+                            }
+                        />
+                        <RangeControl
+                            label={__("Icons Spacing ")}
+                            value={iconSpacing}
+                            onChange={newValue => setAttributes({ iconSpacing: newValue })}
+                        />
+                        {borderType != "none" ? <RangeControl
+                            label={__("Icon Padding")}
+                            value={iconPadding}
+                            onChange={newValue => setAttributes({ iconPadding: newValue })}
+                        /> : ""}
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Item Style")}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <PremiumTypo
-                            components={["size", "weight", "style", "upper", "spacing"]}
-                            size={titleSize}
+                            components={["respsize", "weight", "style", "upper", "spacing"]}
+                            setAttributes={setAttributes}
+                            fontSizeType={{ value: fontSizeType, label: __("fontSizeType") }}
+                            fontSize={{ value: fontSize, label: __("fontSize") }}
+                            fontSizeMobile={{ value: fontSizeMobile, label: __("fontSizeMobile") }}
+                            fontSizeTablet={{ value: fontSizeTablet, label: __("fontSizeTablet") }}
                             weight={titleWeight}
                             style={titleStyle}
                             spacing={titleLetter}
                             upper={titleUpper}
-                            onChangeSize={newSize => setAttributes({ titleSize: newSize })}
+                            onChangeRespSize={newSize => setAttributes({ titleSize: newSize })}
                             onChangeWeight={newWeight =>
                                 setAttributes({ titleWeight: newWeight || 500 })
                             }
@@ -462,35 +597,7 @@ class edit extends Component {
                             onChange={onChangeTitleFamily}
                         />
                         <RangeControl
-                            label={__("Icon Size")}
-                            value={size}
-                            onChange={(value) => setAttributes({ size: value })}
-                            min={0}
-                            max={500}
-                            allowReset
-                            initialPosition={40}
-                        />
-                        <PremiumBorder
-                            borderType={borderType}
-                            borderWidth={borderWidth}
-                            borderColor={borderColor}
-                            borderRadius={borderRadius}
-                            onChangeType={newType => setAttributes({ borderType: newType })}
-                            onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
-                            onChangeColor={colorValue =>
-                                setAttributes({ borderColor: colorValue.hex })
-                            }
-                            onChangeRadius={newrRadius =>
-                                setAttributes({ borderRadius: newrRadius })
-                            }
-                        />
-                        <RangeControl
-                            label={__("Spacing")}
-                            value={iconSpacing}
-                            onChange={newValue => setAttributes({ iconSpacing: newValue })}
-                        />
-                        <RangeControl
-                            label={__("Padding")}
+                            label={__("Item Padding")}
                             value={titlePadding}
                             onChange={newValue => setAttributes({ titlePadding: newValue })}
                         />
@@ -549,22 +656,13 @@ class edit extends Component {
 
                                 if (icon.image_icon == "icon") {
                                     if (icon.icon) {
-                                        image_icon_html = <span className="premium-icon-list__content-icon"
-                                            style={{
-                                                width: size,
-                                                height: size,
-                                            }}
-                                        >
-                                            <i className={`${icon.icon}`} style={{
-                                                width: size,
-                                                height: size,
-                                                fontSize: size,
-                                            }} />
+                                        image_icon_html = <span className="premium-icon-list__content-icon">
+                                            <i className={`${icon.icon}`} />
                                         </span>
                                     }
                                 } else {
                                     if (icon.image) {
-                                        image_icon_html = <img src={icon.image.url} style={{ width: size }} />
+                                        image_icon_html = <img src={icon.image.url} />
                                     }
                                 }
 
@@ -584,14 +682,13 @@ class edit extends Component {
                                         rel="noopener noreferrer"
                                     >
                                         <div className="premium-icon-list__content-wrap" style={{
-                                            flexDirection: align == "right" ? 'row-reverse' : "",
                                             justifyContent: align == "right" ? align : align,
                                             marginLeft: layoutPos == 'block' ? "" : itemMarginL / 2 + "px",
                                             marginRight: layoutPos == 'block' ? "" : itemMarginR / 2 + "px",
                                             marginTop: layoutPos == 'block' ? itemMarginT + "px" : "",
                                             marginBottom: layoutPos == 'block' ? itemMarginB + "px" : "",
                                             display: iconPosition == "left" ? "flex" : "inline-flex",
-                                            flexDirection: iconPosition == "top" ? "column" : iconPosition == "right" ? "row-reverse" : ""
+                                            flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "right" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
                                         }}>
                                             <span className="premium-icon-list__icon-wrap"
                                                 style={{
@@ -599,9 +696,11 @@ class edit extends Component {
                                                     marginLeft: iconPosition == "right" ? iconSpacing + "px" : "",
                                                     marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
                                                     borderStyle: borderType,
+                                                    padding: iconPadding,
                                                     borderWidth: borderWidth + "px",
                                                     borderRadius: borderRadius || 0 + "px",
-                                                    borderColor: borderColor
+                                                    borderColor: borderColor,
+                                                    overflow: icons[index].image_icon == "image" ? "hidden" : ""
                                                 }}
                                             >{image_icon_html}</span>
                                             <div className="premium-icon-list__label-wrap">
@@ -616,7 +715,6 @@ class edit extends Component {
                                                     placeholder={__("Title")}
                                                     multiline={false}
                                                     style={{
-                                                        fontSize: titleSize + "px",
                                                         fontFamily: titleFont,
                                                         letterSpacing: titleLetter + "px",
                                                         textTransform: titleUpper ? "uppercase" : "none",

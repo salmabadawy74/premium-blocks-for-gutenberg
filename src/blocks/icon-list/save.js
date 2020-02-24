@@ -15,8 +15,6 @@ export default function save(props) {
         layoutPos,
         linkTarget,
         align,
-        size,
-        titleSize,
         titleLetter,
         titleStyle,
         titleUpper,
@@ -32,7 +30,8 @@ export default function save(props) {
         itemMarginR,
         itemMarginT,
         itemMarginB,
-        iconPosition
+        iconPosition,
+        iconPadding
     } = attributes
 
     return (
@@ -58,29 +57,20 @@ export default function save(props) {
                         let image_icon_html = ""
                         if (icon.image_icon == "icon") {
                             if (icon.icon) {
-                                image_icon_html = <span className="premium-icon-list__content-icon"
-                                    style={{
-                                        width: size,
-                                        height: size,
-                                    }}
-                                >
-                                    <i className={`${icon.icon}`} style={{
-                                        width: size,
-                                        height: size,
-                                        fontSize: size,
-                                    }} />
+                                image_icon_html = <span className="premium-icon-list__content-icon">
+                                    <i className={`${icon.icon}`} />
                                 </span>
                             }
                         } else {
                             if (icon.image) {
-                                image_icon_html = <img src={icon.image.url} style={{ width: size }} />
+                                image_icon_html = <img src={icon.image.url} />
                             }
                         }
 
                         let target = (linkTarget) ? "_blank" : "_self"
-                        let link_url = (!icon.disableLink) ? icon.link : "/"
+                        let link_url = (icon.disableLink) ? icon.link : "/"
 
-                        if (icon.disableLink) {
+                        if (!icon.disableLink) {
                             return (
                                 <div
                                     className={classnames(
@@ -93,14 +83,13 @@ export default function save(props) {
                                     }}
                                 >
                                     <div className="premium-icon-list__content-wrap" style={{
-                                        flexDirection: align == "right" ? 'row-reverse' : "",
                                         justifyContent: align == "right" ? align : align,
                                         marginLeft: layoutPos == 'block' ? "" : itemMarginL / 2 + "px",
                                         marginRight: layoutPos == 'block' ? "" : itemMarginR / 2 + "px",
                                         marginTop: layoutPos == 'block' ? itemMarginT + "px" : "",
                                         marginBottom: layoutPos == 'block' ? itemMarginB + "px" : "",
                                         display: iconPosition == "left" ? "flex" : "inline-flex",
-                                        flexDirection: iconPosition == "top" ? "column" : iconPosition == "right" ? "row-reverse" : ""
+                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "right" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
                                     }}>
                                         <span className="premium-icon-list__icon-wrap"
                                             style={{
@@ -108,9 +97,11 @@ export default function save(props) {
                                                 marginLeft: iconPosition == "right" ? iconSpacing + "px" : "",
                                                 marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
                                                 borderStyle: borderType,
+                                                padding: iconPadding,
                                                 borderWidth: borderWidth + "px",
                                                 borderRadius: borderRadius || 0 + "px",
-                                                borderColor: borderColor
+                                                borderColor: borderColor,
+                                                overflow: icons[index].image_icon == 'image' ? "hidden" : ""
                                             }}
                                         >{image_icon_html}</span>
                                         <div className="premium-icon-list__label-wrap">
@@ -119,7 +110,6 @@ export default function save(props) {
                                                 value={icons[index].label}
                                                 className='premium-icon-list__label'
                                                 style={{
-                                                    fontSize: titleSize + "px",
                                                     fontFamily: titleFont,
                                                     letterSpacing: titleLetter + "px",
                                                     textTransform: titleUpper ? "uppercase" : "none",
@@ -148,12 +138,13 @@ export default function save(props) {
                                     href={link_url}
                                 >
                                     <div className="premium-icon-list__content-wrap" style={{
-                                        flexDirection: align == "right" ? 'row-reverse' : "",
                                         justifyContent: align == "right" ? align : align,
                                         marginLeft: layoutPos == 'block' ? "" : itemMarginL / 2 + "px",
                                         marginRight: layoutPos == 'block' ? "" : itemMarginR / 2 + "px",
                                         marginTop: layoutPos == 'block' ? itemMarginT + "px" : "",
                                         marginBottom: layoutPos == 'block' ? itemMarginB + "px" : "",
+                                        display: iconPosition == "left" ? "flex" : "inline-flex",
+                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "right" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
                                     }}>
                                         <span className="premium-icon-list__icon-wrap"
                                             style={{
@@ -161,9 +152,11 @@ export default function save(props) {
                                                 marginLeft: iconPosition == "right" ? iconSpacing + "px" : "",
                                                 marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
                                                 borderStyle: borderType,
+                                                padding: iconPadding,
                                                 borderWidth: borderWidth + "px",
                                                 borderRadius: borderRadius || 0 + "px",
-                                                borderColor: borderColor
+                                                borderColor: borderColor,
+                                                overflow: icons[index].image_icon == 'image' ? "hidden" : ""
                                             }}
                                         >{image_icon_html}</span>
                                         <div className="premium-icon-list__label-wrap">
@@ -172,7 +165,6 @@ export default function save(props) {
                                                 value={icons[index].label}
                                                 className='premium-icon-list__label'
                                                 style={{
-                                                    fontSize: titleSize + "px",
                                                     fontFamily: titleFont,
                                                     letterSpacing: titleLetter + "px",
                                                     textTransform: titleUpper ? "uppercase" : "none",
