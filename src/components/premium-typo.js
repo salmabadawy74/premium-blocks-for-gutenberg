@@ -8,8 +8,7 @@ const {
   RangeControl,
   ToggleControl,
   Dropdown,
-  Button,
-  Dashicon
+  Button
 } = wp.components;
 
 export default class PremiumTypo extends Component {

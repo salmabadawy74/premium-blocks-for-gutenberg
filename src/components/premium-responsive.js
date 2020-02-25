@@ -31,11 +31,11 @@ function PremiumResponsive( props ) {
 	}
 
 	const sizeTypesControls = (
-		<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+		<ButtonGroup className="premium-size-type-field" aria-label={ __( "Size Type" ) }>
 			{ map( sizeTypes, ( { name, key } ) => (
 				<Button
 					key={ key }
-					className="uagb-size-btn"
+					className = "premium-size-btn"
 					isSmall
 					isPrimary={ props.type.value === key }
 					aria-pressed={ props.type.value === key }
@@ -47,25 +47,23 @@ function PremiumResponsive( props ) {
 		</ButtonGroup>
 	)
 
-	return (
-		<div className="uag-typography-range-options">
-
-			<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+	return ( 
+		< TabPanel className = "premium-size-type-field-tabs" activeClass = "active-tab"
 				tabs={ [
 					{
 						name: "desktop",
 						title: <Dashicon icon="desktop" />,
-						className: "uagb-desktop-tab uagb-responsive-tabs",
+						className: "premium-desktop-tab premium-responsive-tabs",
 					},
 					{
 						name: "tablet",
 						title: <Dashicon icon="tablet" />,
-						className: "uagb-tablet-tab uagb-responsive-tabs",
+						className: "premium-tablet-tab premium-responsive-tabs",
 					},
 					{
 						name: "mobile",
 						title: <Dashicon icon="smartphone" />,
-						className: "uagb-mobile-tab uagb-responsive-tabs",
+						className: "premium-mobile-tab premium-responsive-tabs",
 					},
 				] }>
 				{
@@ -129,7 +127,6 @@ function PremiumResponsive( props ) {
 					}
 				}
 			</TabPanel>
-		</div>
 	)
 }
 

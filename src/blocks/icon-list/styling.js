@@ -15,6 +15,31 @@ function styling(props) {
 		fontSizeType,
 		fontSizeMobile,
 		fontSizeTablet,
+		iconPaddingType,
+		iconPadding,
+		iconPaddingTablet,
+		iconPaddingMobile,
+		titlePadding,
+		titlePaddingMobile,
+		titlePaddingTablet,
+		titlePaddingType,
+		layoutPos,
+		marginTop,
+		marginTopMobile,
+		marginTopTablet,
+		marginTopType,
+		marginBottom,
+		marginBottomMobile,
+		marginBottomTablet,
+		marginBottomType,
+		marginLeft,
+		marginLeftMobile,
+		marginLeftType,
+		marginLeftTablet,
+		marginRightTablet,
+		marginRight,
+		marginRightMobile,
+		marginRightType
 	} = props.attributes
 
 	var selectors = {}
@@ -24,6 +49,9 @@ function styling(props) {
 	selectors = {
 		" .premium-icon-list__icon-wrap img": {
 			"width": generateCSSUnit(size, sizeType)
+		},
+		" .premium-icon-list__icon-wrap" : {
+			"padding": generateCSSUnit(iconPadding, iconPaddingType)
 		},
 		" .premium-icon-list__content-icon": {
 			"width": generateCSSUnit(size, sizeType),
@@ -45,6 +73,9 @@ function styling(props) {
 		" .premium-icon-list__icon-wrap img": {
 			"width": generateCSSUnit(sizeMobile, sizeType)
 		},
+		" .premium-icon-list__icon-wrap": {
+			"padding": generateCSSUnit(iconPaddingMobile, iconPaddingType)
+		},
 		" .premium-icon-list__content-icon": {
 			"width": generateCSSUnit(sizeMobile, sizeType),
 			"height": generateCSSUnit(sizeMobile, sizeType),
@@ -64,6 +95,9 @@ function styling(props) {
 	tablet_selectors = {
 		" .premium-icon-list__icon-wrap img": {
 			"width": generateCSSUnit(sizeTablet, sizeType)
+		},
+		" .premium-icon-list__icon-wrap": {
+			"padding": generateCSSUnit(iconPaddingTablet, iconPaddingType)
 		},
 		" .premium-icon-list__content-icon": {
 			"width": generateCSSUnit(sizeTablet, sizeType),
@@ -120,6 +154,18 @@ function styling(props) {
 		selectors[" .premium-icon-list-content" + index + ":hover .premium-icon-list__icon-wrap"] = {
 			"background": icon.icon_bg_hover_color
 		}
+// item Padding
+		selectors[" .premium-icon-list-content" + index] = {
+			"padding": generateCSSUnit(titlePadding, titlePaddingType),
+		}
+		
+		mobile_selectors[" .premium-icon-list-content" + index] = {
+			"padding": generateCSSUnit(titlePaddingMobile, titlePaddingType),
+		}
+
+		tablet_selectors[" .premium-icon-list-content" + index] = {
+			"padding": generateCSSUnit(titlePaddingTablet, titlePaddingType),
+		}
 
 		mobile_selectors[" .premium-icon-list-content" + index + " .premium-icon-list__label"] = {
 			"font-size": generateCSSUnit(fontSizeMobile, fontSizeType),
@@ -128,6 +174,28 @@ function styling(props) {
 		tablet_selectors[" .premium-icon-list-content" + index + " .premium-icon-list__label"] = {
 			"font-size": generateCSSUnit(fontSizeTablet, fontSizeType),
 		}
+		//margins for Items
+		selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-wrap"] = {
+			"margin-top": layoutPos == 'block' ? generateCSSUnit(marginTop, marginTopType) : "",
+			"margin-bottom": layoutPos == 'block' ? generateCSSUnit(marginBottom, marginBottomType) : "",
+			"margin-right": layoutPos == 'block' ? "": generateCSSUnit(marginRight/2, marginRightType),
+			"margin-left": layoutPos == 'block' ? "" : generateCSSUnit(marginLeft/2, marginLeftType),
+		}
+
+		mobile_selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-wrap"] = {
+			"margin-top": layoutPos == 'block' ? generateCSSUnit(marginTopMobile, marginTopType) : "",
+			"margin-top": layoutPos == 'block' ? generateCSSUnit(marginBottomMobile, marginBottomType) : "",
+			"margin-right": layoutPos == 'block' ? "" : generateCSSUnit(marginRightMobile/2, marginRightType),
+			"margin-left": layoutPos == 'block' ? "" : generateCSSUnit(marginLeftMobile/2, marginLeftType),
+		}
+
+		tablet_selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-wrap"] = {
+			"margin-top": layoutPos == 'block' ? generateCSSUnit(marginTopTablet, marginTopType) : "",
+			"margin-top": layoutPos == 'block' ? generateCSSUnit(marginBottomTablet, marginBottomType) : "",
+			"margin-right": layoutPos == 'block' ? "" : generateCSSUnit(marginRightTablet/2, marginRightType),
+			"margin-left": layoutPos == 'block' ? "" : generateCSSUnit(marginLeftTablet/2, marginLeftType),
+		}
+
 	})
 
 

@@ -25,13 +25,7 @@ export default function save(props) {
         borderRadius,
         borderColor,
         iconSpacing,
-        titlePadding,
-        itemMarginL,
-        itemMarginR,
-        itemMarginT,
-        itemMarginB,
-        iconPosition,
-        iconPadding
+        iconPosition
     } = attributes
 
     return (
@@ -78,16 +72,9 @@ export default function save(props) {
                                         "premium-icon-list__wrapper"
                                     )}
                                     key={index}
-                                    style={{
-                                        padding: titlePadding + "px"
-                                    }}
                                 >
                                     <div className="premium-icon-list__content-wrap" style={{
                                         justifyContent: align == "right" ? align : align,
-                                        marginLeft: layoutPos == 'block' ? "" : itemMarginL / 2 + "px",
-                                        marginRight: layoutPos == 'block' ? "" : itemMarginR / 2 + "px",
-                                        marginTop: layoutPos == 'block' ? itemMarginT + "px" : "",
-                                        marginBottom: layoutPos == 'block' ? itemMarginB + "px" : "",
                                         display: iconPosition == "left" ? "flex" : "inline-flex",
                                         flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "right" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
                                     }}>
@@ -97,7 +84,6 @@ export default function save(props) {
                                                 marginLeft: iconPosition == "right" ? iconSpacing + "px" : "",
                                                 marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
                                                 borderStyle: borderType,
-                                                padding: iconPadding,
                                                 borderWidth: borderWidth + "px",
                                                 borderRadius: borderRadius || 0 + "px",
                                                 borderColor: borderColor,
@@ -129,9 +115,6 @@ export default function save(props) {
                                         `premium-icon-list-content${index}`,
                                         "premium-icon-list__wrapper"
                                     )}
-                                    style={{
-                                        padding: titlePadding + "px"
-                                    }}
                                     key={index}
                                     target={target}
                                     rel="noopener noreferrer"
@@ -139,10 +122,6 @@ export default function save(props) {
                                 >
                                     <div className="premium-icon-list__content-wrap" style={{
                                         justifyContent: align == "right" ? align : align,
-                                        marginLeft: layoutPos == 'block' ? "" : itemMarginL / 2 + "px",
-                                        marginRight: layoutPos == 'block' ? "" : itemMarginR / 2 + "px",
-                                        marginTop: layoutPos == 'block' ? itemMarginT + "px" : "",
-                                        marginBottom: layoutPos == 'block' ? itemMarginB + "px" : "",
                                         display: iconPosition == "left" ? "flex" : "inline-flex",
                                         flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "right" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
                                     }}>
@@ -152,7 +131,6 @@ export default function save(props) {
                                                 marginLeft: iconPosition == "right" ? iconSpacing + "px" : "",
                                                 marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
                                                 borderStyle: borderType,
-                                                padding: iconPadding,
                                                 borderWidth: borderWidth + "px",
                                                 borderRadius: borderRadius || 0 + "px",
                                                 borderColor: borderColor,

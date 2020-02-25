@@ -1,12 +1,18 @@
-import { iconList } from "../../../assets/js/settings";
+import {
+    iconList
+} from "../../../assets/js/settings";
 
 import save from "./save";
 import edit from "./edit";
 import PbgIcon from "../icons";
 
-const { __ } = wp.i18n;
+const {
+    __
+} = wp.i18n;
 
-const { registerBlockType } = wp.blocks;
+const {
+    registerBlockType
+} = wp.blocks;
 
 const iconListAttrs = {
     block_id: {
@@ -22,26 +28,24 @@ const iconListAttrs = {
     },
     icons: {
         type: "array",
-        default: [
-            {
-                id: 1,
-                label: "Title #" + 1,
-                image_icon: "icon",
-                icon: "fa fa-arrow-circle-right",
-                image: "",
-                icon_color: "#3a3a3a",
-                label_color: "",
-                icon_hover_color: "",
-                label_hover_color: "",
-                icon_bg_color: "",
-                icon_bg_hover_color: "",
-                item_bg_color: "",
-                item_bg_hover_color: "",
-                link: "#",
-                target: false,
-                disableLink: false,
-            }
-        ],
+        default: [{
+            id: 1,
+            label: "Title #" + 1,
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            image: "",
+            icon_color: "#3a3a3a",
+            label_color: "",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+        }],
     },
     classMigrate: {
         type: "boolean",
@@ -130,7 +134,31 @@ const iconListAttrs = {
         type: "number",
         default: 10
     },
+    titlePaddingMobile: {
+        type: "number",
+        default: 10
+    },
+    titlePaddingTablet: {
+        type: "number",
+        default: 10
+    },
+    titlePaddingType: {
+        type: "string",
+        default: "px"
+    },
+    iconPaddingType: {
+        type: "string",
+        default: "px"
+    },
     iconPadding: {
+        type: "number",
+        default: 0
+    },
+    iconPaddingMobile: {
+        type: "number",
+        default: 0
+    },
+    iconPaddingTablet: {
         type: "number",
         default: 0
     },
@@ -150,11 +178,75 @@ const iconListAttrs = {
         type: "number",
         default: "1"
     },
+    marginTop: {
+        type: "number",
+        default: 0
+    },
+    marginTopType: {
+        type: "string",
+        default: "px"
+    },
+    marginTopMobile: {
+        type: "number",
+        default: 0
+    },
+    marginTopTablet: {
+        type: "number",
+        default: 0
+    },
+    marginRight: {
+        type: "number",
+        default: 0
+    },
+    marginRightType: {
+        type: "string",
+        default: "px"
+    },
+    marginRightMobile: {
+        type: "number",
+        default: 0
+    },
+    marginRightTablet: {
+        type: "number",
+        default: 0
+    },
+    marginBottom: {
+        type: "number",
+        default: 0
+    },
+    marginBottomType: {
+        type: "string",
+        default: "px"
+    },
+    marginBottomMobile: {
+        type: "number",
+        default: 0
+    },
+    marginBottomTablet: {
+        type: "number",
+        default: 0
+    },
+    marginLeft: {
+        type: "number",
+        default: 0
+    },
+    marginLeftType: {
+        type: "string",
+        default: "px"
+    },
+    marginLeftMobile: {
+        type: "number",
+        default: 0
+    },
+    marginLeftTablet: {
+        type: "number",
+        default: 0
+    },
 };
 
 registerBlockType("premium/icon-list", {
     title: __("Icon List"),
-    icon: <PbgIcon icon="icon-list" />,
+    icon: < PbgIcon icon = "icon-list" / > ,
     category: "premium-blocks",
     attributes: iconListAttrs,
     supports: {

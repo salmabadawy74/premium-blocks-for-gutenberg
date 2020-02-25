@@ -573,6 +573,9 @@ class Premium_Blocks_Integration {
 				" .premium-icon-list__icon-wrap img" => array(
 					"width" => self::get_css_value( $attr['size'], $attr['sizeType'] )
 				),
+					" .premium-icon-list__icon-wrap" => array(
+					"padding" => self::get_css_value( $attr['iconPadding'], $attr['iconPaddingType'] )
+				),
 				" .premium-icon-list__content-icon" => array(
 					"width" => self::get_css_value( $attr['size'], $attr['sizeType'] ),
 					"height" => self::get_css_value( $attr['size'], $attr['sizeType'] )
@@ -595,6 +598,9 @@ class Premium_Blocks_Integration {
 				" .premium-icon-list__icon-wrap img" => array(
 					"width" => self::get_css_value( $attr['sizeMobile'], $attr['sizeType'] )
 				),
+				" .premium-icon-list__icon-wrap" => array(
+					"padding" => self::get_css_value( $attr['iconPaddingMobile'], $attr['iconPaddingType'] )
+				),
 				" .premium-icon-list__content-icon" => array(
 					"width" => self::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
 					"height" => self::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
@@ -616,6 +622,9 @@ class Premium_Blocks_Integration {
 			$t_selectors = array(
 				" .premium-icon-list__icon-wrap img" => array(
 					"width" => self::get_css_value( $attr['sizeTablet'], $attr['sizeType'] )
+				),
+				" .premium-icon-list__icon-wrap" => array(
+					"padding" => self::get_css_value( $attr['iconPaddingTablet'], $attr['iconPaddingType'] )
 				),
 				" .premium-icon-list__content-icon" => array(
 					"width" => self::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
@@ -684,12 +693,44 @@ class Premium_Blocks_Integration {
 					"background" => $icon['icon_bg_hover_color']
 				);
 
+				$selectors[" .premium-icon-list-content" . $key] = array(
+					"padding" => self::get_css_value( $attr['titlePadding'], $attr['titlePaddingType'] ),
+				);
+
+					$m_selectors[" .premium-icon-list-content" . $key] = array (
+					"padding" => self::get_css_value( $attr['titlePaddingMobile'], $attr['titlePaddingType'] ),
+				);
+
+				$t_selectors[" .premium-icon-list-content" . $key] = array (
+					"padding" => self::get_css_value( $attr['titlePaddingTablet'], $attr['titlePaddingType'] ),
+				);
+
 				$m_selectors[" .premium-icon-list-content" . $key . " .premium-icon-list__label"] = array (
 					"font-size" => self::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
 				);
 
 				$t_selectors[" .premium-icon-list-content" . $key . " .premium-icon-list__label"] = array (
 					"font-size" => self::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
+				);
+
+				$selectors[" .premium-icon-list-content" . $key . " .premium-icon-list__content-wrap"] = array(
+					"margin-top" => $attr['layoutPos'] == 'block' ? self::get_css_value( $attr['marginTop'], $attr['marginTopType'] ):"",
+					"margin-bottom" => $attr['layoutPos'] == 'block'? self::get_css_value( $attr['marginBottom'], $attr['marginBottomType'] ): "",
+					"margin-right" => $attr['layoutPos'] == 'block'? "" :self::get_css_value( $attr['marginRight']/2, $attr['marginRightType'] ),
+					"margin-left" => $attr['layoutPos'] == 'block'? "" :self::get_css_value( $attr['marginLeft']/2, $attr['marginLeftType'] ),
+				);
+				$m_selectors[" .premium-icon-list-content" . $key . " .premium-icon-list__content-wrap"] = array (
+					"margin-top" => $attr['layoutPos'] == 'block' ? self::get_css_value( $attr['marginTopMobile'], $attr['marginTopType'] ): "",
+					"margin-bottom" => $attr['layoutPos'] == 'block' ? self::get_css_value( $attr['marginBottomMobile'], $attr['marginBottomType'] ): "",
+					"margin-right" => $attr['layoutPos'] == 'block' ? "" :self::get_css_value( $attr['marginRightMobile']/2, $attr['marginRightType'] ),
+					"margin-left" => $attr['layoutPos'] == 'block' ? "" :self::get_css_value( $attr['marginLeftMobile']/2, $attr['marginLeftType'] ),
+				);
+
+				$t_selectors[" .premium-icon-list-content" . $key . " .premium-icon-list__content-wrap"] = array (
+					"margin-top" => $attr['layoutPos'] == 'block' ? self::get_css_value( $attr['marginTopTablet'], $attr['marginTopType'] ): "",
+					"margin-bottom" => $attr['layoutPos'] == 'block' ? self::get_css_value( $attr['marginBottomTablet'], $attr['marginBottomType'] ) : "",
+					"margin-right" => $attr['layoutPos'] == 'block' ? "" :self::get_css_value( $attr['marginRightTablet']/2, $attr['marginRightType'] ),
+					"margin-left" => $attr['layoutPos'] == 'block' ? "" :self::get_css_value( $attr['marginLeftTablet']/2, $attr['marginLeftType'] ),
 				);
 			}
 
