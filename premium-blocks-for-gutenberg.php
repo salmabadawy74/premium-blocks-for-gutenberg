@@ -5,7 +5,7 @@
  * Plugin URI: https://premiumblocks.io/
  * Author: Leap13
  * Author URI: https://leap13.com/
- * Version: 1.7.9
+ * Version: 1.8.0
  * Text Domain: premium-blocks-for-gutenberg
  * Domain Path: /languages
  * License: GNU General Public License v3.0
@@ -31,4 +31,4 @@ require_once( PREMIUM_BLOCKS_PATH . 'includes/plugin.php' );
  * Initialize Plugin Main Class
  * @return void
  */
-add_action('init', array('Premium_Blocks_Gutenberg','get_instance') );
+add_action('init', array('PBG_Plugin','get_instance') );
