@@ -24,7 +24,6 @@ export default function save(props) {
         borderWidth,
         borderRadius,
         borderColor,
-        iconSpacing,
         iconPosition
     } = attributes
 
@@ -80,9 +79,6 @@ export default function save(props) {
                                     }}>
                                         <span className="premium-icon-list__icon-wrap"
                                             style={{
-                                                marginRight: iconPosition == "left" ? iconSpacing + "px" : "",
-                                                marginLeft: iconPosition == "right" ? iconSpacing + "px" : "",
-                                                marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
                                                 borderStyle: borderType,
                                                 borderWidth: borderWidth + "px",
                                                 borderRadius: borderRadius || 0 + "px",
@@ -127,9 +123,6 @@ export default function save(props) {
                                     }}>
                                         <span className="premium-icon-list__icon-wrap"
                                             style={{
-                                                marginRight: iconPosition == "left" ? iconSpacing + "px" : "",
-                                                marginLeft: iconPosition == "right" ? iconSpacing + "px" : "",
-                                                marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
                                                 borderStyle: borderType,
                                                 borderWidth: borderWidth + "px",
                                                 borderRadius: borderRadius || 0 + "px",

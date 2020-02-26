@@ -39,7 +39,12 @@ function styling(props) {
 		marginRightTablet,
 		marginRight,
 		marginRightMobile,
-		marginRightType
+		marginRightType,
+		iconSpacing,
+		iconSpacingType,
+		iconSpacingMobile,
+		iconSpacingTablet,
+		iconPosition
 	} = props.attributes
 
 	var selectors = {}
@@ -50,8 +55,11 @@ function styling(props) {
 		" .premium-icon-list__icon-wrap img": {
 			"width": generateCSSUnit(size, sizeType)
 		},
-		" .premium-icon-list__icon-wrap" : {
-			"padding": generateCSSUnit(iconPadding, iconPaddingType)
+		" .premium-icon-list__icon-wrap": {
+			"padding": generateCSSUnit(iconPadding, iconPaddingType),
+			"margin-right": iconPosition == "left" ? generateCSSUnit(iconSpacing, iconSpacingType) : "",
+			"margin-left": iconPosition == "right" ? generateCSSUnit(iconSpacing, iconSpacingType) : "",
+			"margin-bottom": iconPosition == "top" ? generateCSSUnit(iconSpacing, iconSpacingType) : "",
 		},
 		" .premium-icon-list__content-icon": {
 			"width": generateCSSUnit(size, sizeType),
@@ -74,7 +82,10 @@ function styling(props) {
 			"width": generateCSSUnit(sizeMobile, sizeType)
 		},
 		" .premium-icon-list__icon-wrap": {
-			"padding": generateCSSUnit(iconPaddingMobile, iconPaddingType)
+			"padding": generateCSSUnit(iconPaddingMobile, iconPaddingType),
+			"margin-right": iconPosition == "left" ? generateCSSUnit(iconSpacingMobile, iconSpacingType) : "",
+			"margin-left": iconPosition == "right" ? generateCSSUnit(iconSpacingMobile, iconSpacingType) : "",
+			"margin-bottom": iconPosition == "top" ? generateCSSUnit(iconSpacingMobile, iconSpacingType) : "",
 		},
 		" .premium-icon-list__content-icon": {
 			"width": generateCSSUnit(sizeMobile, sizeType),
@@ -97,7 +108,10 @@ function styling(props) {
 			"width": generateCSSUnit(sizeTablet, sizeType)
 		},
 		" .premium-icon-list__icon-wrap": {
-			"padding": generateCSSUnit(iconPaddingTablet, iconPaddingType)
+			"padding": generateCSSUnit(iconPaddingTablet, iconPaddingType),
+			"margin-right": iconPosition == "left" ? generateCSSUnit(iconSpacingTablet, iconSpacingType) : "",
+			"margin-left": iconPosition == "right" ? generateCSSUnit(iconSpacingTablet, iconSpacingType) : "",
+			"margin-bottom": iconPosition == "top" ? generateCSSUnit(iconSpacingTablet, iconSpacingType) : "",
 		},
 		" .premium-icon-list__content-icon": {
 			"width": generateCSSUnit(sizeTablet, sizeType),
@@ -139,14 +153,17 @@ function styling(props) {
 
 		selectors[" .premium-icon-list-content" + index + " .premium-icon-list__label"] = {
 			"color": icon.label_color,
-			"background": icon.item_bg_color,
 			"font-size": generateCSSUnit(fontSize, fontSizeType),
 		}
 
 		selectors[" .premium-icon-list-content" + index + ":hover .premium-icon-list__label"] = {
 			"color": icon.label_hover_color,
+		}
+
+		selectors[" .premium-icon-list-content" + index + ":hover .premium-icon-list__content-wrap"] = {
 			"background": icon.item_bg_hover_color,
 		}
+
 		selectors[" .premium-icon-list-content" + index + " .premium-icon-list__icon-wrap"] = {
 			"background": icon.icon_bg_color
 		}
@@ -154,11 +171,11 @@ function styling(props) {
 		selectors[" .premium-icon-list-content" + index + ":hover .premium-icon-list__icon-wrap"] = {
 			"background": icon.icon_bg_hover_color
 		}
-// item Padding
+		// item Padding
 		selectors[" .premium-icon-list-content" + index] = {
 			"padding": generateCSSUnit(titlePadding, titlePaddingType),
 		}
-		
+
 		mobile_selectors[" .premium-icon-list-content" + index] = {
 			"padding": generateCSSUnit(titlePaddingMobile, titlePaddingType),
 		}
@@ -176,24 +193,25 @@ function styling(props) {
 		}
 		//margins for Items
 		selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-wrap"] = {
+			"background": icon.item_bg_color,
 			"margin-top": layoutPos == 'block' ? generateCSSUnit(marginTop, marginTopType) : "",
 			"margin-bottom": layoutPos == 'block' ? generateCSSUnit(marginBottom, marginBottomType) : "",
-			"margin-right": layoutPos == 'block' ? "": generateCSSUnit(marginRight/2, marginRightType),
-			"margin-left": layoutPos == 'block' ? "" : generateCSSUnit(marginLeft/2, marginLeftType),
+			"margin-right": layoutPos == 'block' ? "" : generateCSSUnit(marginRight, marginRightType),
+			"margin-left": layoutPos == 'block' ? "" : generateCSSUnit(marginLeft, marginLeftType),
 		}
 
 		mobile_selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-wrap"] = {
 			"margin-top": layoutPos == 'block' ? generateCSSUnit(marginTopMobile, marginTopType) : "",
 			"margin-top": layoutPos == 'block' ? generateCSSUnit(marginBottomMobile, marginBottomType) : "",
-			"margin-right": layoutPos == 'block' ? "" : generateCSSUnit(marginRightMobile/2, marginRightType),
-			"margin-left": layoutPos == 'block' ? "" : generateCSSUnit(marginLeftMobile/2, marginLeftType),
+			"margin-right": layoutPos == 'block' ? "" : generateCSSUnit(marginRightMobile, marginRightType),
+			"margin-left": layoutPos == 'block' ? "" : generateCSSUnit(marginLeftMobile, marginLeftType),
 		}
 
 		tablet_selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-wrap"] = {
 			"margin-top": layoutPos == 'block' ? generateCSSUnit(marginTopTablet, marginTopType) : "",
 			"margin-top": layoutPos == 'block' ? generateCSSUnit(marginBottomTablet, marginBottomType) : "",
-			"margin-right": layoutPos == 'block' ? "" : generateCSSUnit(marginRightTablet/2, marginRightType),
-			"margin-left": layoutPos == 'block' ? "" : generateCSSUnit(marginLeftTablet/2, marginLeftType),
+			"margin-right": layoutPos == 'block' ? "" : generateCSSUnit(marginRightTablet, marginRightType),
+			"margin-left": layoutPos == 'block' ? "" : generateCSSUnit(marginLeftTablet, marginLeftType),
 		}
 
 	})

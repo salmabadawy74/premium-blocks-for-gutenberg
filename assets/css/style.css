@@ -2161,6 +2161,12 @@ a.premium-dheading-block__link:hover {
     display: -moz-box;
     display: -ms-flexbox;
     align-items: center;
+    -webkit-transition: 0.3s ease-in-out;
+	-o-transition: 0.3s ease-in-out;
+	transition: 0.3s ease-in-out;
+}
+.premium-icon-list__wrapper{
+  display: inline-flex;
 }
 .premium-icon-list__label{
   -webkit-transition: 0.3s ease-in-out;
@@ -2231,7 +2237,7 @@ a.premium-dheading-block__link:hover {
   transition: all 0.2s;
 }
 .premium-icon-list-tab-panel button.active-tab{
-  background: #eee;
+  background: #eee !important;
   outline: none;
   font-weight: 500;
 }

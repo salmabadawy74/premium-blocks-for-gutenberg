@@ -130,6 +130,18 @@ const iconListAttrs = {
         type: "number",
         default: 10
     },
+    iconSpacingMobile: {
+        type: "number",
+        default: 10
+    },
+    iconSpacingTablet: {
+        type: "number",
+        default: 10
+    },
+    iconSpacingType: {
+        type: "string",
+        default: "px"
+    },
     titlePadding: {
         type: "number",
         default: 10
@@ -161,22 +173,6 @@ const iconListAttrs = {
     iconPaddingTablet: {
         type: "number",
         default: 0
-    },
-    itemMarginL: {
-        type: "number",
-        default: "1"
-    },
-    itemMarginR: {
-        type: "number",
-        default: "1"
-    },
-    itemMarginT: {
-        type: "number",
-        default: "1"
-    },
-    itemMarginB: {
-        type: "number",
-        default: "1"
     },
     marginTop: {
         type: "number",
@@ -246,7 +242,7 @@ const iconListAttrs = {
 
 registerBlockType("premium/icon-list", {
     title: __("Icon List"),
-    icon: < PbgIcon icon = "icon-list" / > ,
+    icon: < PbgIcon icon="icon-list" />,
     category: "premium-blocks",
     attributes: iconListAttrs,
     supports: {

@@ -1,6 +1,5 @@
 import classnames from "classnames"
 import times from "lodash/times"
-import map from "lodash/map"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import styling from "./styling"
 import iconsList from "../../components/premium-icons-list";
@@ -8,6 +7,7 @@ import PremiumTypo from "../../components/premium-typo";
 import FONTS from "../../components/premium-fonts";
 import PremiumBorder from "../../components/premium-border";
 import PremiumMarginR from "../../components/premium-margin-responsive";
+import PremiumRange from "../../components/premium-range-responsive";
 
 const { __ } = wp.i18n
 
@@ -33,8 +33,6 @@ const {
     TextControl,
     ToggleControl,
     TabPanel,
-    Dashicon,
-    ButtonGroup
 } = wp.components
 
 
@@ -55,7 +53,7 @@ class edit extends Component {
         const { icons } = attributes
         const newItems = icons.map((item, thisIndex) => {
             if (index === thisIndex) {
-                item = Object.assign(item, value)
+                item = { ...item, ...value }
             }
             return item
         })
@@ -89,6 +87,9 @@ class edit extends Component {
             borderRadius,
             borderColor,
             iconSpacing,
+            iconSpacingType,
+            iconSpacingMobile,
+            iconSpacingTablet,
             titlePadding,
             titlePaddingMobile,
             titlePaddingTablet,
@@ -97,10 +98,6 @@ class edit extends Component {
             iconPadding,
             iconPaddingTablet,
             iconPaddingMobile,
-            itemMarginL,
-            itemMarginR,
-            itemMarginT,
-            itemMarginB,
             fontSize,
             fontSizeType,
             fontSizeMobile,
@@ -167,10 +164,6 @@ class edit extends Component {
                 title: __("Hover")
             },
         ];
-        const sizeTypes = [
-            { key: "px", name: __("px") },
-            { key: "em", name: __("em") },
-        ]
 
         const addmultiTitleCount = (newCount) => {
             let cloneIcons = [...icons]
@@ -424,59 +417,9 @@ class edit extends Component {
             }
             addFontToHead(fontFamily);
         };
-        const sizeTypeControls = (
-            <ButtonGroup className="premium-size-type-field" aria-label={__("Size Type")}>
-                {map(sizeTypes, ({ name, key }) => (
-                    <Button
-                        key={key}
-                        className="premium-size-btn"
-                        isSmall
-                        isPrimary={sizeType === key}
-                        aria-pressed={sizeType === key}
-                        onClick={() => setAttributes({ sizeType: key })}
-                    >
-                        {name}
-                    </Button>
-                ))}
-            </ButtonGroup>
-        )
-
-        const iconPaddingTypeControls = (
-            <ButtonGroup className="premium-size-type-field" aria-label={__("Size Type")}>
-                {map(sizeTypes, ({ name, key }) => (
-                    <Button
-                        key={key}
-                        className="premium-size-btn"
-                        isSmall
-                        isPrimary={iconPaddingType === key}
-                        aria-pressed={iconPaddingType === key}
-                        onClick={() => setAttributes({ iconPaddingType: key })}
-                    >
-                        {name}
-                    </Button>
-                ))}
-            </ButtonGroup>
-        )
-
-        const titlePaddingTypeControls = (
-            <ButtonGroup className="premium-size-type-field" aria-label={__("Size Type")}>
-                {map(sizeTypes, ({ name, key }) => (
-                    <Button
-                        key={key}
-                        className="premium-size-btn"
-                        isSmall
-                        isPrimary={titlePaddingType === key}
-                        aria-pressed={titlePaddingType === key}
-                        onClick={() => setAttributes({ titlePaddingType: key })}
-                    >
-                        {name}
-                    </Button>
-                ))}
-            </ButtonGroup>
-        )
-
-        return (
-            <Fragment>
+        const mainClasses = classnames(className, "premium-icon-list");
+        return [
+            isSelected && (
                 <BlockControls>
                     <AlignmentToolbar
                         value={align}
@@ -485,6 +428,8 @@ class edit extends Component {
                         }}
                     />
                 </BlockControls>
+            ),
+            isSelected && (
                 <InspectorControls>
                     <PanelBody
                         title={__("General Settings")}
@@ -522,77 +467,14 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <TabPanel className="premium-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "premium-desktop-tab premium-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "premium-tablet-tab premium-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "premium-mobile-tab premium-responsive-tabs",
-								},
-							] }>
-                            {
-                                (tab) => {
-                                    let tabout
-
-                                    if ("mobile" === tab.name) {
-                                        tabout = (
-                                            <Fragment>
-                                                {sizeTypeControls}
-                                                <RangeControl
-                                                    label={__("Icon Size")}
-                                                    value={sizeMobile}
-                                                    onChange={(value) => setAttributes({ sizeMobile: value })}
-                                                    min={0}
-                                                    max={500}
-                                                    allowReset
-                                                    initialPosition={40}
-                                                />
-                                            </Fragment>
-                                        )
-                                    } else if ("tablet" === tab.name) {
-                                        tabout = (<Fragment>
-                                            {sizeTypeControls}
-                                            <RangeControl
-                                                label={__("Icon Size")}
-                                                value={sizeTablet}
-                                                onChange={(value) => setAttributes({ sizeTablet: value })}
-                                                min={0}
-                                                max={500}
-                                                allowReset
-                                                initialPosition={40}
-                                            />
-                                        </Fragment>
-                                        )
-                                    } else {
-                                        tabout = (<Fragment>
-                                            {sizeTypeControls}
-                                            <RangeControl
-                                                label={__("Icon Size")}
-                                                value={size}
-                                                onChange={(value) => setAttributes({ size: value })}
-                                                min={0}
-                                                max={500}
-                                                allowReset
-                                                initialPosition={40}
-                                            />
-                                        </Fragment>
-                                        )
-                                    }
-
-                                    return <div>{tabout}</div>
-                                }
-                            }
-                        </TabPanel>
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: sizeType, label: __("sizeType") }}
+                            range={{ value: size, label: __("size") }}
+                            rangeMobile={{ value: sizeMobile, label: __("sizeMobile") }}
+                            rangeTablet={{ value: sizeTablet, label: __("sizeTablet") }}
+                            rangeLabel={__("Icon Size ")}
+                        />
                         <PremiumBorder
                             borderType={borderType}
                             borderWidth={borderWidth}
@@ -607,96 +489,22 @@ class edit extends Component {
                                 setAttributes({ borderRadius: newrRadius })
                             }
                         />
-                        <RangeControl
-                            label={__("Icons Spacing ")}
-                            value={iconSpacing}
-                            onChange={newValue => setAttributes({ iconSpacing: newValue })}
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: iconSpacingType, label: __("iconSpacingType") }}
+                            range={{ value: iconSpacing, label: __("iconSpacing") }}
+                            rangeMobile={{ value: iconSpacingMobile, label: __("iconSpacingMobile") }}
+                            rangeTablet={{ value: iconSpacingTablet, label: __("iconSpacingTablet") }}
+                            rangeLabel={__("Icons Spacing ")}
                         />
-                        {borderType != "none" ? <TabPanel className="premium-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "premium-desktop-tab premium-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "premium-tablet-tab premium-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "premium-mobile-tab premium-responsive-tabs",
-								},
-							] }>
-                            {
-                                (tab) => {
-                                    let tabout
-
-                                    if ("mobile" === tab.name) {
-                                        tabout = (
-                                            <Fragment>
-                                                {iconPaddingTypeControls}
-                                                <RangeControl
-                                                    label={__("Icon Padding")}
-                                                    value = {
-                                                        iconPaddingMobile
-                                                    }
-                                                    onChange = {
-                                                        (value) => setAttributes({
-                                                            iconPaddingMobile: value
-                                                        })
-                                                    }
-                                                    min={0}
-                                                    max={100}
-                                                    allowReset
-                                                />
-                                            </Fragment>
-                                        )
-                                    } else if ("tablet" === tab.name) {
-                                        tabout = (<Fragment>
-                                            {iconPaddingTypeControls}
-                                            <RangeControl
-                                                label={__("Icon Padding")}
-                                                value = {
-                                                    iconPaddingTablet
-                                                }
-                                                onChange = {
-                                                    (value) => setAttributes({
-                                                        iconPaddingTablet: value
-                                                    })
-                                                }
-                                                min={0}
-                                                max={100}
-                                                allowReset
-                                            />
-                                        </Fragment>
-                                        )
-                                    } else {
-                                        tabout = (<Fragment>
-                                            {iconPaddingTypeControls}
-                                            <RangeControl
-                                                label={__("Icon Padding")}
-                                                value={iconPadding}
-                                                onChange = {
-                                                    (value) => setAttributes({
-                                                        iconPadding: value
-                                                    })
-                                                }
-                                                min={0}
-                                                max={100}
-                                                allowReset
-                                                initialPosition={0}
-                                            />
-                                        </Fragment>
-                                        )
-                                    }
-
-                                    return <div>{tabout}</div>
-                                }
-                            }
-                        </TabPanel> : ""}
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: iconPaddingType, label: __("iconPaddingType") }}
+                            range={{ value: iconPadding, label: __("iconPadding") }}
+                            rangeMobile={{ value: iconPaddingMobile, label: __("iconPaddingMobile") }}
+                            rangeTablet={{ value: iconPaddingTablet, label: __("iconPaddingTablet") }}
+                            rangeLabel={__("Icon Padding ")}
+                        />
                     </PanelBody>
                     <PanelBody
                         title={__("Item Style")}
@@ -732,214 +540,129 @@ class edit extends Component {
                             options={FONTS}
                             onChange={onChangeTitleFamily}
                         />
-						<TabPanel className="premium-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "premium-desktop-tab premium-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "premium-tablet-tab premium-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "premium-mobile-tab premium-responsive-tabs",
-								},
-							] }>
-                            {
-                                (tab) => {
-                                    let tabout
-
-                                    if ("mobile" === tab.name) {
-                                        tabout = (
-                                            <Fragment>
-                                                {titlePaddingTypeControls}
-                                                <RangeControl
-                                                    label={__("Item Padding")}
-                                                    value = {
-                                                        titlePaddingMobile
-                                                    }
-                                                    onChange = {
-                                                        (value) => setAttributes({
-                                                            titlePaddingMobile: value
-                                                        })
-                                                    }
-                                                    min={0}
-                                                    max={100}
-                                                    allowReset
-                                                />
-                                            </Fragment>
-                                        )
-                                    } else if ("tablet" === tab.name) {
-                                        tabout = (<Fragment>
-                                            {titlePaddingTypeControls}
-                                            <RangeControl
-                                                label = {
-                                                    __("Item Padding")
-                                                }
-                                                value = {
-                                                    titlePaddingTablet
-                                                }
-                                                onChange = {
-                                                    (value) => setAttributes({
-                                                        titlePaddingTablet: value
-                                                    })
-                                                }
-                                                min={0}
-                                                max={100}
-                                                allowReset
-                                            />
-                                        </Fragment>
-                                        )
-                                    } else {
-                                        tabout = (<Fragment>
-                                            {titlePaddingTypeControls}
-                                            <RangeControl
-                                                label = {
-                                                    __("Item Padding")
-                                                }
-                                                value = {
-                                                    titlePadding
-                                                }
-                                                onChange = {
-                                                    (value) => setAttributes({
-                                                        titlePadding: value
-                                                    })
-                                                }
-                                                min={0}
-                                                max={100}
-                                                allowReset
-                                                initialPosition={0}
-                                            />
-                                        </Fragment>
-                                        )
-                                    }
-
-                                    return <div>{tabout}</div>
-                                }
-                            }
-                        </TabPanel>
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: titlePaddingType, label: __("titlePaddingType") }}
+                            range={{ value: titlePadding, label: __("titlePadding") }}
+                            rangeMobile={{ value: titlePaddingMobile, label: __("titlePaddingMobile") }}
+                            rangeTablet={{ value: titlePaddingTablet, label: __("titlePaddingTablet") }}
+                            rangeLabel={__("Item Padding ")}
+                        />
                         {layoutPos == "block" ? <PremiumMarginR
-                            directions={["top" ,"bottom"]}
+                            directions={["top", "bottom"]}
                             setAttributes={setAttributes}
                             marginTopType={{ value: marginTopType, label: __("marginTopType") }}
                             marginTop={{ value: marginTop, label: __("marginTop") }}
                             marginTopMobile={{ value: marginTopMobile, label: __("marginTopMobile") }}
                             marginTopTablet={{ value: marginTopTablet, label: __("marginTopTablet") }}
-                             marginBottomType={{ value: marginBottomType, label: __("marginBottomType") }}
+                            marginBottomType={{ value: marginBottomType, label: __("marginBottomType") }}
                             marginBottom={{ value: marginBottom, label: __("marginBottom") }}
                             marginBottomMobile={{ value: marginBottomMobile, label: __("marginBottomMobile") }}
                             marginBottomTablet={{ value: marginBottomTablet, label: __("marginBottomTablet") }}
                         /> :
                             <PremiumMarginR
                                 directions={["left", "right"]}
-                                 setAttributes={setAttributes}
-                            marginLeftType={{ value: marginLeftType, label: __("marginLeftType") }}
-                            marginLeft={{ value: marginLeft, label: __("marginLeft") }}
-                            marginLeftMobile={{ value: marginLeftMobile, label: __("marginLeftMobile") }}
-                            marginLeftTablet={{ value: marginLeftTablet, label: __("marginLeftTablet") }}
-                             marginRightType={{ value: marginRightType, label: __("marginRightType") }}
-                            marginRight={{ value: marginRight, label: __("marginRight") }}
-                            marginRightMobile={{ value: marginRightMobile, label: __("marginRightMobile") }}
-                            marginRightTablet={{ value: marginRightTablet, label: __("marginRightTablet") }}
+                                setAttributes={setAttributes}
+                                marginLeftType={{ value: marginLeftType, label: __("marginLeftType") }}
+                                marginLeft={{ value: marginLeft, label: __("marginLeft") }}
+                                marginLeftMobile={{ value: marginLeftMobile, label: __("marginLeftMobile") }}
+                                marginLeftTablet={{ value: marginLeftTablet, label: __("marginLeftTablet") }}
+                                marginRightType={{ value: marginRightType, label: __("marginRightType") }}
+                                marginRight={{ value: marginRight, label: __("marginRight") }}
+                                marginRightMobile={{ value: marginRightMobile, label: __("marginRightMobile") }}
+                                marginRightTablet={{ value: marginRightTablet, label: __("marginRightTablet") }}
                             />
                         }
                     </PanelBody>
                 </InspectorControls>
-                <div className={classnames(
-                    className,
-                    `premium-block-${this.props.clientId}`
-                )} style={{
-                    textAlign: align,
-                }}>
-                    <div className={`premium-icon-list-${layoutPos}`}
-                        style={{
-                            textAlign: align,
-                            justifyContent: align == "right" ? "flex-end" : align
-                        }}>
-                        {
-                            icons.map((icon, index) => {
+            ),
+            <div className={classnames(
+                className,
+                `premium-block-${this.props.clientId}`
+            )} style={{
+                textAlign: align,
+            }} id={`${mainClasses}-wrap-${this.props.clientId}`}>
+                <div className={`premium-icon-list-${layoutPos}`}
+                    style={{
+                        textAlign: align,
+                        justifyContent: align == "right" ? "flex-end" : align
+                    }}>
+                    {
+                        icons.map((icon, index) => {
 
-                                if (multiTitleCount <= index) {
-                                    return
+                            if (multiTitleCount <= index) {
+                                return
+                            }
+
+                            let image_icon_html = ""
+
+                            if (icon.image_icon == "icon") {
+                                if (icon.icon) {
+                                    image_icon_html = <span className="premium-icon-list__content-icon">
+                                        <i className={`${icon.icon}`} />
+                                    </span>
                                 }
-
-                                let image_icon_html = ""
-
-                                if (icon.image_icon == "icon") {
-                                    if (icon.icon) {
-                                        image_icon_html = <span className="premium-icon-list__content-icon">
-                                            <i className={`${icon.icon}`} />
-                                        </span>
-                                    }
-                                } else {
-                                    if (icon.image) {
-                                        image_icon_html = <img src={icon.image.url} />
-                                    }
+                            } else {
+                                if (icon.image) {
+                                    image_icon_html = <img src={icon.image.url} />
                                 }
+                            }
 
-                                let target = (linkTarget) ? "_blank" : "_self"
+                            let target = (linkTarget) ? "_blank" : "_self"
 
-                                return (
-                                    <div
-                                        className={classnames(
-                                            `premium-icon-list-content${index}`,
-                                            "premium-icon-list__wrapper"
-                                        )}
-                                        key={index}
-                                        target={target}
-                                        rel="noopener noreferrer"
-                                    >
-                                        <div className="premium-icon-list__content-wrap" style={{
-                                            justifyContent: align == "right" ? align : align,
-                                            display: iconPosition == "left" ? "flex" : "inline-flex",
-                                            flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "right" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
-                                        }}>
-                                            <span className="premium-icon-list__icon-wrap"
-                                                style={{
-                                                    marginRight: iconPosition == "left" ? iconSpacing + "px" : "",
-                                                    marginLeft: iconPosition == "right" ? iconSpacing + "px" : "",
-                                                    marginBottom: iconPosition == "top" ? iconSpacing + "px" : "",
-                                                    borderStyle: borderType,
-                                                    borderWidth: borderWidth + "px",
-                                                    borderRadius: borderRadius || 0 + "px",
-                                                    borderColor: borderColor,
-                                                    overflow: icons[index].image_icon == "image" ? "hidden" : ""
+                            return (
+                                <div
+                                    className={classnames(
+                                        `premium-icon-list-content${index}`,
+                                        "premium-icon-list__wrapper"
+                                    )}
+                                    key={index}
+                                    target={target}
+                                    rel="noopener noreferrer"
+                                >
+                                    <div className="premium-icon-list__content-wrap" style={{
+                                        justifyContent: align == "right" ? align : align,
+                                        display: iconPosition == "left" ? "flex" : "inline-flex",
+                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "right" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
+                                    }}>
+                                        <span className="premium-icon-list__icon-wrap"
+                                            style={{
+                                                borderStyle: borderType,
+                                                borderWidth: borderWidth + "px",
+                                                borderRadius: borderRadius || 0 + "px",
+                                                borderColor: borderColor,
+                                                overflow: "hidden"
+                                            }}
+                                        >{image_icon_html}</span>
+                                        <div className="premium-icon-list__label-wrap">
+                                            <RichText
+                                                tagName="div"
+                                                placeholder={__("Title Name")}
+                                                value={icons[index].label}
+                                                className='premium-icon-list__label'
+                                                onChange={value => {
+                                                    this.saveIcons({ label: value }, index)
                                                 }}
-                                            >{image_icon_html}</span>
-                                            <div className="premium-icon-list__label-wrap">
-                                                <RichText
-                                                    tagName="div"
-                                                    placeholder={__("Title Name")}
-                                                    value={icons[index].label}
-                                                    className='premium-icon-list__label'
-                                                    onChange={value => {
-                                                        this.saveIcons({ label: value }, index)
-                                                    }}
-                                                    placeholder={__("Title")}
-                                                    multiline={false}
-                                                    style={{
-                                                        fontFamily: titleFont,
-                                                        letterSpacing: titleLetter + "px",
-                                                        textTransform: titleUpper ? "uppercase" : "none",
-                                                        fontStyle: titleStyle,
-                                                        fontWeight: titleWeight
-                                                    }}
-                                                />
-                                            </div>
+                                                placeholder={__("Title")}
+                                                multiline={false}
+                                                style={{
+                                                    fontFamily: titleFont,
+                                                    letterSpacing: titleLetter + "px",
+                                                    textTransform: titleUpper ? "uppercase" : "none",
+                                                    fontStyle: titleStyle,
+                                                    fontWeight: titleWeight
+                                                }}
+                                            />
                                         </div>
                                     </div>
-                                )
-                            })
-                        }
-                    </div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
-            </Fragment>
-        )
+            </div>
+
+        ]
     }
 }
 
