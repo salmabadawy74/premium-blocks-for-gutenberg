@@ -2,7 +2,7 @@
 
 if( !defined( 'ABSPATH' ) ) exit; //Exit if accessed directly
 
-function premium_gutenberg_get_sysinfo() {
+function pbg_get_sysinfo() {
     global $wpdb;
 
     // Get theme info

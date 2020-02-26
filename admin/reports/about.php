@@ -2,9 +2,9 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-// Define class 'Premium_Guten_About' if not Exists
-if( ! class_exists( 'Premium_Guten_About' ) ) {
-  class Premium_Guten_About {
+// Define class 'PBG_About' if not Exists
+if( ! class_exists( 'PBG_About' ) ) {
+  class PBG_About {
 
       private static $instance = null;
 
@@ -92,11 +92,11 @@ if( ! class_exists( 'Premium_Guten_About' ) ) {
   }
 }
 
-if( ! function_exists('premium_gutenberg_about') ) {
+if( ! function_exists('pbg_about') ) {
     
-    function premium_gutenberg_about() {
-        return Premium_Guten_About::get_instance();
+    function pbg_about() {
+        return PBG_About::get_instance();
     }
     
 }
-premium_gutenberg_about();
+pbg_about();

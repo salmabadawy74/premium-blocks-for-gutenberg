@@ -2,7 +2,7 @@
 
 if( ! defined( 'ABSPATH' ) ) exit;
 
-class Premium_Guten_Version_Control {
+class PBG_Version_Control {
 
     private static $instance = null;
     
@@ -68,7 +68,7 @@ class Premium_Guten_Version_Control {
 
 	    check_admin_referer( 'premium_gutenberg_rollback' );
 	    $plugin_slug = basename( PREMIUM_BLOCKS_FILE, '.php' );
-	    $pbg_rollback = new Premium_Guten_RollBack(
+	    $pbg_rollback = new PBG_Rollback(
 	        [
 	            'version' => PREMIUM_BLOCKS_STABLE_VERSION,
 	            'plugin_name' => PREMIUM_BLOCKS_BASENAME,
@@ -95,11 +95,11 @@ class Premium_Guten_Version_Control {
 }
 
 
-if( ! function_exists('premium_gutenberg_version_control') ) {
+if( ! function_exists('pbg_version_control') ) {
     
-    function premium_gutenberg_version_control() {
-        return Premium_Guten_Version_Control::get_instance();
+    function pbg_version_control() {
+        return PBG_Version_Control::get_instance();
     }
     
 }
-premium_gutenberg_version_control();
+pbg_version_control();
