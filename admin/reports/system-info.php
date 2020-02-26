@@ -3,13 +3,13 @@
 //Exit if accessed directly
 if( ! defined('ABSPATH') ) exit;
 
-// Define class 'Premium_Guten_System' if not Exists
-if( ! class_exists( 'Premium_Guten_System' ) ) {
+// Define class 'PBG_System' if not Exists
+if( ! class_exists( 'PBG_System' ) ) {
     
     /**
-    * Define Premium_Guten_System class
+    * Define PBG_System class
     */
-    class Premium_Guten_System {
+    class PBG_System {
 
         private static $instance = null;
 
@@ -76,11 +76,11 @@ if( ! class_exists( 'Premium_Guten_System' ) ) {
     }
 }
 
-if( ! function_exists('premium_gutenberg_system') ) {
+if( ! function_exists('pbg_system') ) {
     
-    function premium_gutenberg_system() {
-        return Premium_Guten_System::get_instance();
+    function pbg_system() {
+        return PBG_System::get_instance();
     }
     
 }
-premium_gutenberg_system();
+pbg_system();

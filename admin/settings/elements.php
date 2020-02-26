@@ -7,9 +7,9 @@ if( ! defined( 'ABSPATH' ) ) exit();
 if ( ! class_exists('Premium_Guten_Blocks') ) {
     
     /**
-    * Define Premium_Guten_Admin class
+    * Define PBG_Admin class
     */
-    class Premium_Guten_Admin {
+    class PBG_Admin {
     
         private static $instance = null;
 
@@ -346,11 +346,11 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
     }
 }
 
-if( ! function_exists('premium_gutenberg') ) {
+if( ! function_exists('pbg_admin') ) {
     
-    function premium_gutenberg() {
-        return Premium_Guten_Admin::get_instance();
+    function pbg_admin() {
+        return PBG_Admin::get_instance();
     }
     
 }
-premium_gutenberg();
+pbg_admin();
