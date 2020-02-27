@@ -16,7 +16,8 @@ export const {
   iconBox,
   videoBox,
   person,
-  iconList
+  iconList,
+  contentSwitcher
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys

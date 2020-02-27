@@ -516,8 +516,10 @@ class Premium_Blocks_Integration {
             switch ( $name ) {
                 case 'premium/icon-list':
                     $css += $this->get_icon_list_css( $blockattr, $block_id );
-                    break;
-
+					break;
+					case 'premium/content-switcher':
+						$css += $this->get_content_switcher_css( $blockattr, $block_id );
+						break;
                 default:
                     // Nothing to do here.
                     break;
@@ -765,7 +767,60 @@ class Premium_Blocks_Integration {
             return $generated_css;
            
         }
-        
+		
+		public static function get_content_switcher_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
+            
+			$defaults = self::$block_list['premium/content-switcher']['attributes'];
+            
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors = array(
+				// Desktop Icon Size CSS starts.
+				" .premium-content-switcher-toggle-switch" => array(
+                    "font-size" => self::get_css_value( $attr['switchSize'], $attr['switchSizeType'] )
+				)
+            );
+            // Desktop Icon Size CSS ends.
+
+			// Mobile Icon Size CSS starts.
+			$m_selectors = array(
+				" .premium-content-switcher-toggle-switch" => array(
+                    "font-size" => self::get_css_value( $attr['switchSizeMobile'], $attr['switchSizeType'] )
+				)
+			);
+			// Mobile Icon Size CSS ends.
+
+			// Tablet Icon Size CSS starts.
+			$t_selectors = array(
+				" .premium-content-switcher-toggle-switch" => array(
+                    "font-size" => self::get_css_value( $attr['switchSizeTablet'], $attr['switchSizeType'] )
+				)
+			);
+			// Tablet Icon Size CSS ends.
+
+			// @codingStandardsIgnoreEnd
+
+			$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-content-switcher-';
+
+            $desktop = self::generate_css( $selectors, $base_selector . $id );
+
+			$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+            $mobile = self::generate_css( $m_selectors, $base_selector . $id );
+            
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => $tablet,
+				'mobile'  => $mobile,
+			);
+            
+            return $generated_css;
+           
+		}
+		
         public static function generate_css( $selectors, $id ) {
 
 			$styling_css = '';
