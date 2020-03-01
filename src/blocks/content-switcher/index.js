@@ -30,11 +30,11 @@ const contentSwitcherAttrs = {
         type: "boolean",
         default: true
     },
-    firstLabel : {
+    firstLabel: {
         type: "string",
         default: "Content #1"
     },
-    secondLabel : {
+    secondLabel: {
         type: "string",
         default: "Content #2"
     },
@@ -78,6 +78,309 @@ const contentSwitcherAttrs = {
         type: "number",
         default: 15
     },
+    bottomSpacingType: {
+        type: "string",
+        default: "px"
+    },
+    bottomSpacing: {
+        type: "number",
+        default: 1
+    },
+    bottomSpacingMobile: {
+        type: "number",
+        default: 1
+    },
+    bottomSpacingTablet: {
+        type: "number",
+        default: 1
+    },
+    firstStateColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    secondStateColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    switcherBGColor: {
+        type: "string",
+        default: "#f2f2f2"
+    },
+    switchRadius: {
+        type: "string",
+        default: "50"
+    },
+    labelSpacingType: {
+        type: "string",
+        default: "px"
+    },
+    labelSpacing: {
+        type: "number",
+        default: 15
+    },
+    labelSpacingMobile: {
+        type: "number",
+        default: 15
+    },
+    labelSpacingTablet: {
+        type: "number",
+        default: 15
+    },
+    firstLabelColor: {
+        type: "string",
+        default: "#54595f"
+    },
+    firstLabelLetter: {
+        type: "number"
+    },
+    firstLabelStyle: {
+        type: "string"
+    },
+    firstLabelUpper: {
+        type: "string"
+    },
+    firstLabelWeight: {
+        type: "number",
+        default: 500
+    },
+    firstLabelfontSize: {
+        type: "number",
+        default: 20
+    },
+    firstLabelfontSizeType: {
+        type: "string",
+        default: "px"
+    },
+    firstLabelfontSizeMobile: {
+        type: "number",
+        default: 20
+    },
+    firstLabelfontSizeTablet: {
+        type: "number",
+        default: 20
+    },
+    secondLabelColor: {
+        type: "string",
+        default: "#54595f"
+    },
+    secondLabelLetter: {
+        type: "number"
+    },
+    secondLabelStyle: {
+        type: "string"
+    },
+    secondLabelUpper: {
+        type: "string"
+    },
+    secondLabelWeight: {
+        type: "number",
+        default: 500
+    },
+    secondLabelfontSize: {
+        type: "number",
+        default: 20
+    },
+    secondLabelfontSizeType: {
+        type: "string",
+        default: "px"
+    },
+    secondLabelfontSizeMobile: {
+        type: "number",
+        default: 20
+    },
+    secondLabelfontSizeTablet: {
+        type: "number",
+        default: 20
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    firstContentHeight: {
+        type: "number",
+        default: 50
+    },
+    firstContentHeightType: {
+        type: "string",
+        default: "px"
+    },
+    firstContentHeightMobile: {
+        type: "number",
+        default: 50
+    },
+    firstContentHeightTablet: {
+        type: "number",
+        default: 50
+    },
+    firstContentColor: {
+        type: "string",
+        default: "#54595f"
+    },
+    firstContentBGColor: {
+        type: "string"
+    },
+    secondContentHeightType: {
+        type: "string",
+        default: "px"
+    },
+    secondContentHeight: {
+        type: "number",
+        default: 50
+    },
+    secondContentHeightMobile: {
+        type: "number",
+        default: 50
+    },
+    secondContentHeightTablet: {
+        type: "number",
+        default: 50
+    },
+    secondContentColor: {
+        type: "string",
+        default: "#54595f"
+    },
+    secondContentBGColor: {
+        type: "string"
+    },
+    firstpaddingTop: {
+        type: "number",
+        default: 0
+    },
+    firstpaddingTopType: {
+        type: "string",
+        default: "px"
+    },
+    firstpaddingTopMobile: {
+        type: "number",
+        default: 0
+    },
+    firstpaddingTopTablet: {
+        type: "number",
+        default: 0
+    },
+    firstpaddingRight: {
+        type: "number",
+        default: 0
+    },
+    firstpaddingRightType: {
+        type: "string",
+        default: "px"
+    },
+    firstpaddingRightMobile: {
+        type: "number",
+        default: 0
+    },
+    firstpaddingRightTablet: {
+        type: "number",
+        default: 0
+    },
+    firstpaddingBottom: {
+        type: "number",
+        default: 0
+    },
+    firstpaddingBottomType: {
+        type: "string",
+        default: "px"
+    },
+    firstpaddingBottomMobile: {
+        type: "number",
+        default: 0
+    },
+    firstpaddingBottomTablet: {
+        type: "number",
+        default: 0
+    },
+    firstpaddingLeft: {
+        type: "number",
+        default: 0
+    },
+    firstpaddingLeftType: {
+        type: "string",
+        default: "px"
+    },
+    firstpaddingLeftMobile: {
+        type: "number",
+        default: 0
+    },
+    firstpaddingLeftTablet: {
+        type: "number",
+        default: 0
+    },
+    secondpaddingTop: {
+        type: "number",
+        default: 0
+    },
+    secondpaddingTopType: {
+        type: "string",
+        default: "px"
+    },
+    secondpaddingTopMobile: {
+        type: "number",
+        default: 0
+    },
+    secondpaddingTopTablet: {
+        type: "number",
+        default: 0
+    },
+    secondpaddingRight: {
+        type: "number",
+        default: 0
+    },
+    secondpaddingRightType: {
+        type: "string",
+        default: "px"
+    },
+    secondpaddingRightMobile: {
+        type: "number",
+        default: 0
+    },
+    secondpaddingRightTablet: {
+        type: "number",
+        default: 0
+    },
+    secondpaddingBottom: {
+        type: "number",
+        default: 0
+    },
+    secondpaddingBottomType: {
+        type: "string",
+        default: "px"
+    },
+    secondpaddingBottomMobile: {
+        type: "number",
+        default: 0
+    },
+    secondpaddingBottomTablet: {
+        type: "number",
+        default: 0
+    },
+    secondpaddingLeft: {
+        type: "number",
+        default: 0
+    },
+    secondpaddingLeftType: {
+        type: "string",
+        default: "px"
+    },
+    secondpaddingLeftMobile: {
+        type: "number",
+        default: 0
+    },
+    secondpaddingLeftTablet: {
+        type: "number",
+        default: 0
+    },
 };
 
 registerBlockType("premium/content-switcher", {
@@ -89,5 +392,5 @@ registerBlockType("premium/content-switcher", {
         inserter: contentSwitcher
     },
     edit: edit,
-    // save: save
+    save: save
 });

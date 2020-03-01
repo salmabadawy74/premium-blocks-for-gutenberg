@@ -781,7 +781,45 @@ class Premium_Blocks_Integration {
 				// Desktop Icon Size CSS starts.
 				" .premium-content-switcher-toggle-switch" => array(
                     "font-size" => self::get_css_value( $attr['switchSize'], $attr['switchSizeType'] )
-				)
+				),
+				" .premium-content-switcher-toggle-" . $attr['display'] => array(
+                    "margin-bottom" => self::get_css_value( $attr['bottomSpacing'], $attr['bottomSpacingType'] )
+				),
+				" .premium-content-switcher-toggle-switch-slider::before" => array(
+                    "background" => $attr['firstStateColor'] 
+				),
+				" .premium-content-switcher-toggle-switch-label input:checked + .premium-content-switcher-toggle-switch-slider::before" => array(
+                    "background" => $attr['secondStateColor']
+				),
+				" .premium-content-switcher-toggle-switch-slider" => array(
+                    "background" => $attr['switcherBGColor'] 
+				),
+				" .premium-content-switcher-first-label" => array(
+                    "margin-right" => self::get_css_value( $attr['labelSpacing'], $attr['labelSpacingType'] )
+				),
+				" .premium-content-switcher-first-label h3" => array(
+                    "font-size" => self::get_css_value( $attr['firstLabelfontSize'], $attr['firstLabelfontSizeType'] )
+				),
+				" .premium-content-switcher-second-label" => array(
+                    "margin-left" => self::get_css_value( $attr['labelSpacing'], $attr['labelSpacingType'] )
+				),
+				" .premium-content-switcher-second-label h3" => array(
+                    "font-size" => self::get_css_value( $attr['secondLabelfontSize'], $attr['secondLabelfontSizeType'] )
+				),
+				" .premium-content-switcher-first-list" => array(
+					"min-height" => self::get_css_value( $attr['firstContentHeight'], $attr['firstContentHeightType'] ),
+					"padding-top"  => self::get_css_value( $attr['firstpaddingTop'], $attr['firstpaddingTopType']),
+					"padding-bottom" => self::get_css_value( $attr['firstpaddingBottom'], $attr['firstpaddingBottomType']),
+					"padding-right"=> self::get_css_value( $attr['firstpaddingRight'], $attr['firstpaddingRightType']),
+					"padding-left"=> self::get_css_value( $attr['firstpaddingLeft'], $attr['firstpaddingLeftType']),
+				),
+				" .premium-content-switcher-second-list" => array(
+                    "min-height" => self::get_css_value( $attr['secondContentHeight'], $attr['secondContentHeightType'] ),
+					"padding-top"  => self::get_css_value( $attr['secondpaddingTop'], $attr['secondpaddingTopType']),
+					"padding-bottom" => self::get_css_value( $attr['secondpaddingBottom'], $attr['secondpaddingBottomType']),
+					"padding-right"=> self::get_css_value( $attr['secondpaddingRight'], $attr['secondpaddingRightType']),
+					"padding-left"=> self::get_css_value( $attr['secondpaddingLeft'], $attr['secondpaddingLeftType']),
+				),
             );
             // Desktop Icon Size CSS ends.
 
@@ -789,7 +827,36 @@ class Premium_Blocks_Integration {
 			$m_selectors = array(
 				" .premium-content-switcher-toggle-switch" => array(
                     "font-size" => self::get_css_value( $attr['switchSizeMobile'], $attr['switchSizeType'] )
-				)
+				),
+				" .premium-content-switcher-toggle-" . $attr['display'] => array(
+                    "margin-bottom" => self::get_css_value( $attr['bottomSpacingMobile'], $attr['bottomSpacingType'] )
+				),
+				" .premium-content-switcher-first-label" => array(
+                    "margin-right" => self::get_css_value( $attr['labelSpacingMobile'], $attr['labelSpacingType'] )
+				),
+				" .premium-content-switcher-first-label h3" => array(
+                    "font-size" => self::get_css_value( $attr['firstLabelfontSizeMobile'], $attr['firstLabelfontSizeType'] )
+				),
+				" .premium-content-switcher-second-label" => array(
+                    "margin-left" => self::get_css_value( $attr['labelSpacingMobile'], $attr['labelSpacingType'] )
+				),
+				" .premium-content-switcher-second-label h3" => array(
+                    "font-size" => self::get_css_value( $attr['secondLabelfontSizeMobile'], $attr['secondLabelfontSizeType'] )
+				),
+				" .premium-content-switcher-first-list" => array(
+                    "min-height" => self::get_css_value( $attr['firstContentHeightMobile'], $attr['firstContentHeightType'] ),
+					"padding-top"  => self::get_css_value( $attr['firstpaddingTopMobile'], $attr['firstpaddingTopType']),
+					"padding-bottom" => self::get_css_value( $attr['firstpaddingBottomMobile'], $attr['firstpaddingBottomType']),
+					"padding-right"=> self::get_css_value( $attr['firstpaddingRightMobile'], $attr['firstpaddingRightType']),
+					"padding-left"=> self::get_css_value( $attr['firstpaddingLeftMobile'], $attr['firstpaddingLeftType']),
+				),
+				" .premium-content-switcher-second-list" => array(
+                    "min-height" => self::get_css_value( $attr['secondContentHeightMobile'], $attr['secondContentHeightType'] ),
+					"padding-top"  => self::get_css_value( $attr['secondpaddingTopMobile'], $attr['secondpaddingTopType']),
+					"padding-bottom" => self::get_css_value( $attr['secondpaddingBottomMobile'], $attr['secondpaddingBottomType']),
+					"padding-right"=> self::get_css_value( $attr['secondpaddingRightMobile'], $attr['secondpaddingRightType']),
+					"padding-left"=> self::get_css_value( $attr['secondpaddingLeftMobile'], $attr['secondpaddingLeftType']),
+				),
 			);
 			// Mobile Icon Size CSS ends.
 
@@ -797,7 +864,36 @@ class Premium_Blocks_Integration {
 			$t_selectors = array(
 				" .premium-content-switcher-toggle-switch" => array(
                     "font-size" => self::get_css_value( $attr['switchSizeTablet'], $attr['switchSizeType'] )
-				)
+				),
+				" .premium-content-switcher-toggle-" . $attr['display'] => array(
+                    "margin-bottom" => self::get_css_value( $attr['bottomSpacingTablet'], $attr['bottomSpacingType'] )
+				),
+				" .premium-content-switcher-first-label" => array(
+                    "margin-right" => self::get_css_value( $attr['labelSpacingTablet'], $attr['labelSpacingType'] )
+				),
+				" .premium-content-switcher-first-label h3" => array(
+                    "font-size" => self::get_css_value( $attr['firstLabelfontSizeTablet'], $attr['firstLabelfontSizeType'] )
+				),
+				" .premium-content-switcher-second-label" => array(
+                    "margin-left" => self::get_css_value( $attr['labelSpacingTablet'], $attr['labelSpacingType'] )
+				),
+				" .premium-content-switcher-second-label h3" => array(
+                    "font-size" => self::get_css_value( $attr['secondLabelfontSizeTablet'], $attr['secondLabelfontSizeType'] )
+				),
+				" .premium-content-switcher-first-list" => array(
+                    "min-height" => self::get_css_value( $attr['firstContentHeightTablet'], $attr['firstContentHeightType'] ),
+					"padding-top"  => self::get_css_value( $attr['firstpaddingTopTablet'], $attr['firstpaddingTopType']),
+					"padding-bottom" => self::get_css_value( $attr['firstpaddingBottomTablet'], $attr['firstpaddingBottomType']),
+					"padding-right"=> self::get_css_value( $attr['firstpaddingRightTablet'], $attr['firstpaddingRightType']),
+					"padding-left"=> self::get_css_value( $attr['firstpaddingLeftTablet'], $attr['firstpaddingLeftType']),
+				),
+				" .premium-content-switcher-second-list" => array(
+                    "min-height" => self::get_css_value( $attr['secondContentHeightTablet'], $attr['secondContentHeightType'] ),
+					"padding-top"  => self::get_css_value( $attr['secondpaddingTopTablet'], $attr['secondpaddingTopType']),
+					"padding-bottom" => self::get_css_value( $attr['secondpaddingBottomTablet'], $attr['secondpaddingBottomType']),
+					"padding-right"=> self::get_css_value( $attr['secondpaddingRightTablet'], $attr['secondpaddingRightType']),
+					"padding-left"=> self::get_css_value( $attr['secondpaddingLeftTablet'], $attr['secondpaddingLeftType']),
+				),
 			);
 			// Tablet Icon Size CSS ends.
 

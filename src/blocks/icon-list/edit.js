@@ -512,7 +512,7 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <PremiumTypo
-                            components={["respsize", "weight", "style", "upper", "spacing"]}
+                            components={["responsiveSize", "weight", "style", "upper", "spacing"]}
                             setAttributes={setAttributes}
                             fontSizeType={{ value: fontSizeType, label: __("fontSizeType") }}
                             fontSize={{ value: fontSize, label: __("fontSize") }}
@@ -522,7 +522,7 @@ class edit extends Component {
                             style={titleStyle}
                             spacing={titleLetter}
                             upper={titleUpper}
-                            onChangeRespSize={newSize => setAttributes({ titleSize: newSize })}
+                            onChangeresponsiveSize={newSize => setAttributes({ titleSize: newSize })}
                             onChangeWeight={newWeight =>
                                 setAttributes({ titleWeight: newWeight || 500 })
                             }

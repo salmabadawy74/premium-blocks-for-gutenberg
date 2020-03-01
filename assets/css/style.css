@@ -2375,15 +2375,8 @@ color: #23282d;
 /**************** Premium Content Switcher *********************/
 /*******************************************************/
 .premium-content-switcher {
-  padding: 10px 20px;
   border-color: #000;
   overflow: hidden;
-}
-.premium-content-switcher-first-label{
-  margin-right: 2em;
-}
-.premium-content-switcher-second-label{
-  margin-left: 2em;
 }
 .premium-content-switcher-toggle-switch-label{
   position: relative;
@@ -2391,9 +2384,6 @@ color: #23282d;
   width: 4.5em;
   height: 2.3em;
   vertical-align: middle;
-}
-.premium-content-switcher-toggle-switch{
-  margin-top: 2.5%;
 }
 .premium-content-switcher-toggle-switch-label input {
   opacity: 0;
@@ -2410,9 +2400,6 @@ color: #23282d;
   bottom: 0;
   -webkit-transition: .4s;
   transition: .4s;
-  -webkit-border-radius: 1.5em;
-  border-radius: 1.5em;
-  background: #f2f2f2;
 }
 .premium-content-switcher-toggle-switch-slider::before {
   position: absolute;
@@ -2425,7 +2412,6 @@ color: #23282d;
   transition: .4s;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-  background: #6ec1e4;
   -webkit-transform: translateX(0);
   -moz-transform: translateX(0);
   -ms-transform: translateX(0);
@@ -2442,22 +2428,6 @@ color: #23282d;
     display: -moz-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: flex-start;
-    -webkit-align-items: flex-start;
-    -moz-box-align: flex-start;
-    -ms-flex-align: flex-start;
-    align-items: flex-start;
-    -webkit-box-pack: flex-start;
-    -webkit-justify-content: flex-start;
-    -moz-box-pack: flex-start;
-    -ms-flex-pack: flex-start;
-    justify-content: flex-start;
-    justify-content: flex-start;
-    -webkit-box-pack: flex-start;
-    -ms-flex-pack: flex-start;
-    -webkit-box-align: flex-start;
-    -ms-flex-align: flex-start;
-    align-items: flex-start;
 }
 .premium-content-switcher-toggle-block{
   display: flex;
@@ -2465,14 +2435,13 @@ color: #23282d;
 }
 .premium-content-switcher-two-content{
   position: relative;
-  margin: 0;
+  margin: 0 !important;
   overflow: hidden;
 }
 .premium-content-switcher-two-content li{
   -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     outline: 1px solid transparent;
-    min-height: 100px;
     -webkit-transition: all 0.7s cubic-bezier(0.5, 0.2, 0.2, 0.8);
     -moz-transition: all 0.7s cubic-bezier(0.5, 0.2, 0.2, 0.8);
     -ms-transition: all 0.7s cubic-bezier(0.5, 0.2, 0.2, 0.8);
@@ -2483,6 +2452,8 @@ color: #23282d;
   position: relative;
   z-index: 5;
   opacity: 1;
+  height: 100%;
+  width: 100%;
 }
 .premium-content-switcher-is-hidden{
   position: absolute;
@@ -2493,4 +2464,11 @@ color: #23282d;
   z-index: 1;
   opacity: 0;
   visibility: hidden;
+}
+.premium-content-switcher-labels-style {
+  font-weight: 700;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0 0px 15px;
 }

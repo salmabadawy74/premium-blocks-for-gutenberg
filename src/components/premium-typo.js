@@ -79,7 +79,7 @@ export default class PremiumTypo extends Component {
                   onChange={onChangeSize}
                 />
               )}
-              {components.includes("respsize") && (
+              {components.includes("responsiveSize") && (
                 <PremiumResponsive
                 type={this.props.fontSizeType}
                 typeLabel={this.props.fontSizeType.label}

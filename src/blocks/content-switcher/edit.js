@@ -1,6 +1,9 @@
 import classnames from "classnames"
 import styling from "./styling"
 import PremiumRange from "../../components/premium-range-responsive";
+import PremiumTypo from "../../components/premium-typo";
+import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumPaddingR from "../../components/premium-padding-responsive";
 
 const { __ } = wp.i18n
 
@@ -13,7 +16,7 @@ const {
     BlockControls,
     AlignmentToolbar,
     InspectorControls,
-    MediaUpload,
+    InnerBlocks,
     ColorPalette,
     RichText
 } = wp.blockEditor
@@ -59,7 +62,85 @@ class edit extends Component {
             switchSize,
             switchSizeTablet,
             switchSizeType,
-            switchSizeMobile
+            switchSizeMobile,
+            bottomSpacing,
+            bottomSpacingTablet,
+            bottomSpacingMobile,
+            bottomSpacingType,
+            secondStateColor,
+            firstStateColor,
+            switcherBGColor,
+            switchRadius,
+            labelSpacing,
+            labelSpacingTablet,
+            labelSpacingMobile,
+            labelSpacingType,
+            firstLabelColor,
+            firstLabelWeight,
+            firstLabelLetter,
+            firstLabelUpper,
+            firstLabelStyle,
+            firstLabelfontSize,
+            firstLabelfontSizeMobile,
+            firstLabelfontSizeTablet,
+            firstLabelfontSizeType,
+            secondLabelColor,
+            secondLabelWeight,
+            secondLabelLetter,
+            secondLabelUpper,
+            secondLabelStyle,
+            secondLabelfontSize,
+            secondLabelfontSizeMobile,
+            secondLabelfontSizeTablet,
+            secondLabelfontSizeType,
+            shadowColor,
+            shadowBlur,
+            shadowHorizontal,
+            shadowVertical,
+            firstContentHeight,
+            firstContentHeightTablet,
+            firstContentHeightType,
+            firstContentHeightMobile,
+            firstContentColor,
+            firstContentBGColor,
+            secondContentHeight,
+            secondContentHeightTablet,
+            secondContentHeightType,
+            secondContentHeightMobile,
+            secondContentColor,
+            secondContentBGColor,
+            firstpaddingTop,
+            firstpaddingTopMobile,
+            firstpaddingTopTablet,
+            firstpaddingTopType,
+            firstpaddingLeft,
+            firstpaddingLeftMobile,
+            firstpaddingLeftTablet,
+            firstpaddingLeftType,
+            firstpaddingRight,
+            firstpaddingRightMobile,
+            firstpaddingRightTablet,
+            firstpaddingRightType,
+            firstpaddingBottom,
+            firstpaddingBottomMobile,
+            firstpaddingBottomTablet,
+            firstpaddingBottomType,
+            secondpaddingTop,
+            secondpaddingTopMobile,
+            secondpaddingTopTablet,
+            secondpaddingTopType,
+            secondpaddingLeft,
+            secondpaddingLeftMobile,
+            secondpaddingLeftTablet,
+            secondpaddingLeftType,
+            secondpaddingRight,
+            secondpaddingRightMobile,
+            secondpaddingRightTablet,
+            secondpaddingRightType,
+            secondpaddingBottom,
+            secondpaddingBottomMobile,
+            secondpaddingBottomTablet,
+            secondpaddingBottomType
         } = attributes
 
         const DISPLAY = [
@@ -74,6 +155,12 @@ class edit extends Component {
         ];
         const ALIGNS = ["left", "center", "right"];
 
+        const CONTENT = [
+            ["core/paragraph", { content: __("Insert Your Content Here") }]
+        ];
+        const SECONDCONTENT = [
+            ["core/paragraph", { content: __("Insert Content Here") }]
+        ]
         const changeSwitch = () => {
             setAttributes({ switchCheck: !switchCheck })
         }
@@ -148,8 +235,24 @@ class edit extends Component {
                                 />
                             </Fragment>
                         )}
+                        <p>{__("First Content Alignment")}</p>
+                        <Toolbar
+                            controls={ALIGNS.map(contentAlign => ({
+                                icon: "editor-align" + contentAlign,
+                                isActive: contentAlign === firstcontentlign,
+                                onClick: () => setAttributes({ firstcontentlign: contentAlign })
+                            }))}
+                        />
+                        <p>{__("Second Content Alignment")}</p>
+                        <Toolbar
+                            controls={ALIGNS.map(contentAlign => ({
+                                icon: "editor-align" + contentAlign,
+                                isActive: contentAlign === secondcontentlign,
+                                onClick: () => setAttributes({ secondcontentlign: contentAlign })
+                            }))}
+                        />
                     </PanelBody>
-                    <PanelBody
+                    {/* <PanelBody
                         title={__("First Content")}
                         className="premium-panel-body"
                         initialOpen={false}
@@ -186,7 +289,7 @@ class edit extends Component {
                                 onClick: () => setAttributes({ secondcontentlign: contentAlign })
                             }))}
                         />
-                    </PanelBody>
+                    </PanelBody> */}
                     <PanelBody
                         title={__("Switcher Style")}
                         className="premium-panel-body"
@@ -199,6 +302,255 @@ class edit extends Component {
                             rangeMobile={{ value: switchSizeMobile, label: __("switchSizeMobile") }}
                             rangeTablet={{ value: switchSizeTablet, label: __("switchSizeTablet") }}
                             rangeLabel={__("Size")}
+                        />
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: bottomSpacingType, label: __("bottomSpacingType") }}
+                            range={{ value: bottomSpacing, label: __("bottomSpacing") }}
+                            rangeMobile={{ value: bottomSpacingMobile, label: __("bottomSpacingMobile") }}
+                            rangeTablet={{ value: bottomSpacingTablet, label: __("bottomSpacingTablet") }}
+                            rangeLabel={__("Bottom Spacing")}
+                        />
+                        <p>{__("First State Color")}</p>
+                        <ColorPalette
+                            value={firstStateColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    firstStateColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <p>{__("Second State Color")}</p>
+                        <ColorPalette
+                            value={secondStateColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    secondStateColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <p>{__("Background Color")}</p>
+                        <ColorPalette
+                            value={switcherBGColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    switcherBGColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <RangeControl
+                            label={__("Border Radius")}
+                            value={switchRadius}
+                            onChange={newValue => setAttributes({ switchRadius: newValue })}
+                            initialPosition={50}
+                            allowReset={true}
+                        />
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Labels Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: labelSpacingType, label: __("labelSpacingType") }}
+                            range={{ value: labelSpacing, label: __("labelSpacing") }}
+                            rangeMobile={{ value: labelSpacingMobile, label: __("labelSpacingMobile") }}
+                            rangeTablet={{ value: labelSpacingTablet, label: __("labelSpacingTablet") }}
+                            rangeLabel={__("Spacing")}
+                        />
+                        <PremiumTextShadow
+                            color={shadowColor}
+                            blur={shadowBlur}
+                            horizontal={shadowHorizontal}
+                            vertical={shadowVertical}
+                            onChangeColor={newColor =>
+                                setAttributes({ shadowColor: newColor.hex })
+                            }
+                            onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
+                            onChangehHorizontal={newValue =>
+                                setAttributes({ shadowHorizontal: newValue })
+                            }
+                            onChangeVertical={newValue =>
+                                setAttributes({ shadowVertical: newValue })
+                            }
+                        />
+                        <hr />
+                        <h2 className="premium-content-switcher-labels-style">{__("First Label")}</h2>
+                        <p>{__("First Label Color")}</p>
+                        <ColorPalette
+                            value={firstLabelColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    firstLabelColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <PremiumTypo
+                            components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                            setAttributes={setAttributes}
+                            fontSizeType={{ value: firstLabelfontSizeType, label: __("firstLabelfontSizeType") }}
+                            fontSize={{ value: firstLabelfontSize, label: __("firstLabelfontSize") }}
+                            fontSizeMobile={{ value: firstLabelfontSizeMobile, label: __("firstLabelfontSizeMobile") }}
+                            fontSizeTablet={{ value: firstLabelfontSizeTablet, label: __("firstLabelfontSizeTablet") }}
+                            weight={firstLabelWeight}
+                            style={firstLabelStyle}
+                            spacing={firstLabelLetter}
+                            upper={firstLabelUpper}
+                            onChangeWeight={newWeight =>
+                                setAttributes({ firstLabelWeight: newWeight || 500 })
+                            }
+                            onChangeStyle={newStyle =>
+                                setAttributes({ firstLabelStyle: newStyle })
+                            }
+                            onChangeSpacing={newValue =>
+                                setAttributes({ firstLabelLetter: newValue })
+                            }
+                            onChangeUpper={check => setAttributes({ firstLabelUpper: check })}
+                        />
+                        <hr />
+                        <h2 className="premium-content-switcher-labels-style">{__("Second Label")}</h2>
+                        <p>{__("Second Label Color")}</p>
+                        <ColorPalette
+                            value={secondLabelColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    secondLabelColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <PremiumTypo
+                            components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                            setAttributes={setAttributes}
+                            fontSizeType={{ value: secondLabelfontSizeType, label: __("secondLabelfontSizeType") }}
+                            fontSize={{ value: secondLabelfontSize, label: __("secondLabelfontSize") }}
+                            fontSizeMobile={{ value: secondLabelfontSizeMobile, label: __("secondLabelfontSizeMobile") }}
+                            fontSizeTablet={{ value: secondLabelfontSizeTablet, label: __("secondLabelfontSizeTablet") }}
+                            weight={secondLabelWeight}
+                            style={secondLabelStyle}
+                            spacing={secondLabelLetter}
+                            upper={secondLabelUpper}
+                            onChangeWeight={newWeight =>
+                                setAttributes({ secondLabelWeight: newWeight || 500 })
+                            }
+                            onChangeStyle={newStyle =>
+                                setAttributes({ secondLabelStyle: newStyle })
+                            }
+                            onChangeSpacing={newValue =>
+                                setAttributes({ secondLabelLetter: newValue })
+                            }
+                            onChangeUpper={check => setAttributes({ secondLabelUpper: check })}
+                        />
+                    </PanelBody>
+                    <PanelBody
+                        title={__("First Content Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: firstContentHeightType, label: __("firstContentHeightType") }}
+                            range={{ value: firstContentHeight, label: __("firstContentHeight") }}
+                            rangeMobile={{ value: firstContentHeightMobile, label: __("firstContentHeightMobile") }}
+                            rangeTablet={{ value: firstContentHeightTablet, label: __("firstContentHeightTablet") }}
+                            rangeLabel={__("Height")}
+                        />
+                        <p>{__("Text Color")}</p>
+                        <ColorPalette
+                            value={firstContentColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    firstContentColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <p>{__("Background Color")}</p>
+                        <ColorPalette
+                            value={firstContentBGColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    firstContentBGColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <PremiumPaddingR
+                            setAttributes={setAttributes}
+                            paddingTopType={{ value: firstpaddingTopType, label: __("firstpaddingTopType") }}
+                            paddingTop={{ value: firstpaddingTop, label: __("firstpaddingTop") }}
+                            paddingTopMobile={{ value: firstpaddingTopMobile, label: __("firstpaddingTopMobile") }}
+                            paddingTopTablet={{ value: firstpaddingTopTablet, label: __("firstpaddingTopTablet") }}
+                            paddingBottomType={{ value: firstpaddingBottomType, label: __("firstpaddingBottomType") }}
+                            paddingBottom={{ value: firstpaddingBottom, label: __("firstpaddingBottom") }}
+                            paddingBottomMobile={{ value: firstpaddingBottomMobile, label: __("firstpaddingBottomMobile") }}
+                            paddingBottomTablet={{ value: firstpaddingBottomTablet, label: __("firstpaddingBottomTablet") }}
+                            paddingRightType={{ value: firstpaddingRightType, label: __("firstpaddingRightType") }}
+                            paddingRight={{ value: firstpaddingRight, label: __("firstpaddingRight") }}
+                            paddingRightMobile={{ value: firstpaddingRightMobile, label: __("firstpaddingRightMobile") }}
+                            paddingRightTablet={{ value: firstpaddingRightTablet, label: __("firstpaddingRightTablet") }}
+                            paddingLeftType={{ value: firstpaddingLeftType, label: __("firstpaddingLeftType") }}
+                            paddingLeft={{ value: firstpaddingLeft, label: __("firstpaddingLeft") }}
+                            paddingLeftMobile={{ value: firstpaddingLeftMobile, label: __("firstpaddingLeftMobile") }}
+                            paddingLeftTablet={{ value: firstpaddingLeftTablet, label: __("firstpaddingLeftTablet") }}
+                        />
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Second Content Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: secondContentHeightType, label: __("secondContentHeightType") }}
+                            range={{ value: secondContentHeight, label: __("secondContentHeight") }}
+                            rangeMobile={{ value: secondContentHeightMobile, label: __("secondContentHeightMobile") }}
+                            rangeTablet={{ value: secondContentHeightTablet, label: __("secondContentHeightTablet") }}
+                            rangeLabel={__("Height")}
+                        />
+                        <p>{__("Text Color")}</p>
+                        <ColorPalette
+                            value={secondContentColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    secondContentColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <p>{__("Background Color")}</p>
+                        <ColorPalette
+                            value={secondContentBGColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    secondContentBGColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <PremiumPaddingR
+                            setAttributes={setAttributes}
+                            paddingTopType={{ value: secondpaddingTopType, label: __("secondpaddingTopType") }}
+                            paddingTop={{ value: secondpaddingTop, label: __("secondpaddingTop") }}
+                            paddingTopMobile={{ value: secondpaddingTopMobile, label: __("secondpaddingTopMobile") }}
+                            paddingTopTablet={{ value: secondpaddingTopTablet, label: __("secondpaddingTopTablet") }}
+                            paddingBottomType={{ value: secondpaddingBottomType, label: __("secondpaddingBottomType") }}
+                            paddingBottom={{ value: secondpaddingBottom, label: __("secondpaddingBottom") }}
+                            paddingBottomMobile={{ value: secondpaddingBottomMobile, label: __("secondpaddingBottomMobile") }}
+                            paddingBottomTablet={{ value: secondpaddingBottomTablet, label: __("secondpaddingBottomTablet") }}
+                            paddingRightType={{ value: secondpaddingRightType, label: __("secondpaddingRightType") }}
+                            paddingRight={{ value: secondpaddingRight, label: __("secondpaddingRight") }}
+                            paddingRightMobile={{ value: secondpaddingRightMobile, label: __("secondpaddingRightMobile") }}
+                            paddingRightTablet={{ value: secondpaddingRightTablet, label: __("secondpaddingRightTablet") }}
+                            paddingLeftType={{ value: secondpaddingLeftType, label: __("secondpaddingLeftType") }}
+                            paddingLeft={{ value: secondpaddingLeft, label: __("secondpaddingLeft") }}
+                            paddingLeftMobile={{ value: secondpaddingLeftMobile, label: __("secondpaddingLeftMobile") }}
+                            paddingLeftTablet={{ value: secondpaddingLeftTablet, label: __("secondpaddingLeftTablet") }}
                         />
                     </PanelBody>
                 </InspectorControls>
@@ -216,27 +568,49 @@ class edit extends Component {
                     <div className={`premium-content-switcher-toggle-${display}`}
                         style={{
                             textAlign: align,
-                            justifyContent: align == "right" ? "flex-end" : align
+                            justifyContent: align == "right" ? "flex-end" : align,
+                            alignItems: align
                         }}>
                         {showLabel && (<div className="premium-content-switcher-first-label">
-                            <h3>{firstLabel}</h3>
+                            <h3 style={{
+                                color: firstLabelColor,
+                                letterSpacing: firstLabelLetter + "px",
+                                textTransform: firstLabelUpper ? "uppercase" : "none",
+                                fontStyle: firstLabelStyle,
+                                fontWeight: firstLabelWeight,
+                                textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+                            }}>{firstLabel}</h3>
                         </div>
                         )}
                         <div className="premium-content-switcher-toggle-switch">
                             <label className="premium-content-switcher-toggle-switch-label">
                                 <input type="checkbox" onClick={() => changeSwitch()} />
-                                <span className="premium-content-switcher-toggle-switch-slider round"></span>
+                                <span className="premium-content-switcher-toggle-switch-slider round"
+                                    style={{
+                                        borderRadius: switchRadius + "px"
+                                    }}></span>
                             </label>
                         </div>
                         {showLabel && (<div className="premium-content-switcher-second-label">
-                            <h3>{secondLabel}</h3>
+                            <h3 style={{
+                                color: secondLabelColor,
+                                letterSpacing: secondLabelLetter + "px",
+                                textTransform: secondLabelUpper ? "uppercase" : "none",
+                                fontStyle: secondLabelStyle,
+                                fontWeight: secondLabelWeight,
+                                textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+                            }}>{secondLabel}</h3>
                         </div>
                         )}
                     </div>
                     <div className="premium-content-switcher-list">
                         <ul className="premium-content-switcher-two-content">
-                            <li className={`premium-content-switcher-${switchCheck ? "is-hidden" : "is-visible"}`}>
-                                <RichText
+                            <li className={`premium-content-switcher-${switchCheck ? "is-hidden" : "is-visible"} premium-content-switcher-first-list`}
+                                style={{
+                                    background: firstContentBGColor
+                                }}>
+                                    <InnerBlocks template={CONTENT}/>
+                                {/* <RichText
                                     tagName="p"
                                     className={`premium-content-switcher-first-content`}
                                     value={firstContent}
@@ -245,12 +619,17 @@ class edit extends Component {
                                     }}
                                     style={{
                                         textAlign: firstcontentlign,
-                                        justifyContent: firstcontentlign
+                                        justifyContent: firstcontentlign,
+                                        color: firstContentColor
                                     }}
-                                />
+                                /> */}
                             </li>
-                            <li className={`premium-content-switcher-${switchCheck ? "is-visible" : "is-hidden"}`}>
-                                <RichText
+                            <li className={`premium-content-switcher-${switchCheck ? "is-visible" : "is-hidden"} premium-content-switcher-second-list`}
+                                style={{
+                                    background: secondContentBGColor
+                                }}>
+                                <InnerBlocks template={SECONDCONTENT}/>
+                                {/* <RichText
                                     tagName="p"
                                     className={`premium-content-switcher-second-content`}
                                     value={secondContent}
@@ -259,15 +638,15 @@ class edit extends Component {
                                     }}
                                     style={{
                                         textAlign: secondcontentlign,
-                                        justifyContent: secondcontentlign
+                                        justifyContent: secondcontentlign,
+                                        color: secondContentColor
                                     }}
-                                />
+                                /> */}
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-
         ]
     }
 }
