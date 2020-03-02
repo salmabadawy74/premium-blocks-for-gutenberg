@@ -4,9 +4,9 @@ import PremiumRange from "../../components/premium-range-responsive";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumPaddingR from "../../components/premium-padding-responsive";
-
+import times from "lodash/times"
 const { __ } = wp.i18n
-
+const ALLOWED_BLOCKS = ["uagb/column"]
 const {
     Component,
     Fragment,
@@ -17,8 +17,7 @@ const {
     AlignmentToolbar,
     InspectorControls,
     InnerBlocks,
-    ColorPalette,
-    RichText
+    ColorPalette
 } = wp.blockEditor
 
 const {
@@ -28,13 +27,17 @@ const {
     Toolbar,
     TextControl,
     ToggleControl,
-    TextareaControl,
 } = wp.components
+
+const getColumnsTemplate = () => {
+    return times(2, n => ["uagb/column", { className: `card-image-top-${n + 1}` }])
+}
 
 
 class edit extends Component {
 
     componentDidMount() {
+        const { switchCheck } = this.props.attributes
         // Assigning id in the attribute.
         this.props.setAttributes({ block_id: this.props.clientId })
         this.props.setAttributes({ classMigrate: true })
@@ -42,6 +45,13 @@ class edit extends Component {
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-content-switcher-" + this.props.clientId)
         document.head.appendChild($style)
+        setTimeout(() => {
+            var element = document.getElementsByClassName(`card-image-top-${switchCheck ? "1" : "2"}`);
+            console.log(element);
+            
+            element[0].parentNode.removeChild(element[0]);
+        }, 20)
+
     }
 
     render() {
@@ -140,7 +150,10 @@ class edit extends Component {
             secondpaddingBottom,
             secondpaddingBottomMobile,
             secondpaddingBottomTablet,
-            secondpaddingBottomType
+            secondpaddingBottomType,
+            effect,
+            slide,
+            two
         } = attributes
 
         const DISPLAY = [
@@ -155,14 +168,42 @@ class edit extends Component {
         ];
         const ALIGNS = ["left", "center", "right"];
 
-        const CONTENT = [
-            ["core/paragraph", { content: __("Insert Your Content Here") }]
-        ];
-        const SECONDCONTENT = [
-            ["core/paragraph", { content: __("Insert Content Here") }]
+        const EFFECTS = [
+            {
+                label: __("Fade"),
+                value: "fade"
+            },
+            {
+                label: __("Slide"),
+                value: "slide"
+            }
+        ]
+        const SLIDE = [
+            {
+                label: __("Top"),
+                value: "top"
+            },
+            {
+                label: __("Left"),
+                value: "left"
+            },
+            {
+                label: __("Bottom"),
+                value: "bottom"
+            },
+            {
+                label: __("Right"),
+                value: "right"
+            }
         ]
         const changeSwitch = () => {
+            console.log(two);
             setAttributes({ switchCheck: !switchCheck })
+            if (two) {
+                var element = document.getElementsByClassName(`card-image-top-${switchCheck ? "2" : "1"}`);
+                element[`${switchCheck ? "0" : "1"}`].parentNode.removeChild(element[`${switchCheck ? "0" : "1"}`]);
+            }
+            setAttributes({ two: false })
         }
 
         var element = document.getElementById("premium-style-content-switcher-" + this.props.clientId)
@@ -171,26 +212,6 @@ class edit extends Component {
             element.innerHTML = styling(this.props)
         }
 
-        const addFontToHead = fontFamily => {
-            const head = document.head;
-            const link = document.createElement("link");
-            link.type = "text/css";
-            link.rel = "stylesheet";
-            link.href =
-                "https://fonts.googleapis.com/css?family=" +
-                fontFamily.replace(/\s+/g, "+") +
-                ":" +
-                "regular";
-            head.appendChild(link);
-        };
-
-        const onChangeTitleFamily = fontFamily => {
-            setAttributes({ titleFont: fontFamily });
-            if (!fontFamily) {
-                return;
-            }
-            addFontToHead(fontFamily);
-        };
         const mainClasses = classnames(className, "premium-content-switcher");
         return [
             isSelected && (
@@ -251,6 +272,20 @@ class edit extends Component {
                                 onClick: () => setAttributes({ secondcontentlign: contentAlign })
                             }))}
                         />
+                        <SelectControl
+                            label={__("Effect")}
+                            options={EFFECTS}
+                            value={effect}
+                            onChange={newEffect => setAttributes({ effect: newEffect })}
+                        />
+                        {effect == 'slide' &&
+                            <SelectControl
+                                label={__("Slide Direction")}
+                                options={SLIDE}
+                                value={slide}
+                                onChange={newEffect => setAttributes({ slide: newEffect })}
+                            />
+                        }
                     </PanelBody>
                     {/* <PanelBody
                         title={__("First Content")}
@@ -603,13 +638,20 @@ class edit extends Component {
                         </div>
                         )}
                     </div>
-                    <div className="premium-content-switcher-list">
+                    <div className={`premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`}>
+                        {/* {getLi(two)
+                        } */}
                         <ul className="premium-content-switcher-two-content">
                             <li className={`premium-content-switcher-${switchCheck ? "is-hidden" : "is-visible"} premium-content-switcher-first-list`}
                                 style={{
                                     background: firstContentBGColor
                                 }}>
-                                    <InnerBlocks template={CONTENT}/>
+                                <InnerBlocks
+                                    template={getColumnsTemplate()}
+                                    templateLock="all"
+                                    allowedBlocks={ALLOWED_BLOCKS}
+                                />
+                                {/* <InnerBlocks template={CONTENT} /> */}
                                 {/* <RichText
                                     tagName="p"
                                     className={`premium-content-switcher-first-content`}
@@ -628,7 +670,12 @@ class edit extends Component {
                                 style={{
                                     background: secondContentBGColor
                                 }}>
-                                <InnerBlocks template={SECONDCONTENT}/>
+                                <InnerBlocks
+                                    template={getColumnsTemplate()}
+                                    templateLock="all"
+                                    allowedBlocks={ALLOWED_BLOCKS}
+                                />
+                                {/* <InnerBlocks template={SECONDCONTENT} /> */}
                                 {/* <RichText
                                     tagName="p"
                                     className={`premium-content-switcher-second-content`}

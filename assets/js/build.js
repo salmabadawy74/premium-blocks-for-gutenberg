@@ -51800,6 +51800,18 @@ var contentSwitcherAttrs = {
     secondpaddingLeftTablet: {
         type: "number",
         default: 0
+    },
+    effect: {
+        type: "string",
+        default: "fade"
+    },
+    slide: {
+        type: "string",
+        default: "top"
+    },
+    two: {
+        type: "boolean",
+        default: true
     }
 };
 
@@ -51976,6 +51988,8 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_padding_responsive__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash_times__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash_times___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash_times__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -51992,6 +52006,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var __ = wp.i18n.__;
+
+var ALLOWED_BLOCKS = ["uagb/column"];
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -52000,16 +52016,21 @@ var _wp$blockEditor = wp.blockEditor,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
     InspectorControls = _wp$blockEditor.InspectorControls,
     InnerBlocks = _wp$blockEditor.InnerBlocks,
-    ColorPalette = _wp$blockEditor.ColorPalette,
-    RichText = _wp$blockEditor.RichText;
+    ColorPalette = _wp$blockEditor.ColorPalette;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
     RangeControl = _wp$components.RangeControl,
     Toolbar = _wp$components.Toolbar,
     TextControl = _wp$components.TextControl,
-    ToggleControl = _wp$components.ToggleControl,
-    TextareaControl = _wp$components.TextareaControl;
+    ToggleControl = _wp$components.ToggleControl;
+
+
+var getColumnsTemplate = function getColumnsTemplate() {
+    return __WEBPACK_IMPORTED_MODULE_6_lodash_times___default()(2, function (n) {
+        return ["uagb/column", { className: "card-image-top-" + (n + 1) }];
+    });
+};
 
 var edit = function (_Component) {
     _inherits(edit, _Component);
@@ -52023,13 +52044,21 @@ var edit = function (_Component) {
     _createClass(edit, [{
         key: "componentDidMount",
         value: function componentDidMount() {
+            var switchCheck = this.props.attributes.switchCheck;
             // Assigning id in the attribute.
+
             this.props.setAttributes({ block_id: this.props.clientId });
             this.props.setAttributes({ classMigrate: true });
             // Pushing Style tag for this block css.
             var $style = document.createElement("style");
             $style.setAttribute("id", "premium-style-content-switcher-" + this.props.clientId);
             document.head.appendChild($style);
+            setTimeout(function () {
+                var element = document.getElementsByClassName("card-image-top-" + (switchCheck ? "1" : "2"));
+                console.log(element);
+
+                element[0].parentNode.removeChild(element[0]);
+            }, 20);
         }
     }, {
         key: "render",
@@ -52130,7 +52159,10 @@ var edit = function (_Component) {
                 secondpaddingBottom = attributes.secondpaddingBottom,
                 secondpaddingBottomMobile = attributes.secondpaddingBottomMobile,
                 secondpaddingBottomTablet = attributes.secondpaddingBottomTablet,
-                secondpaddingBottomType = attributes.secondpaddingBottomType;
+                secondpaddingBottomType = attributes.secondpaddingBottomType,
+                effect = attributes.effect,
+                slide = attributes.slide,
+                two = attributes.two;
 
 
             var DISPLAY = [{
@@ -52142,10 +52174,34 @@ var edit = function (_Component) {
             }];
             var ALIGNS = ["left", "center", "right"];
 
-            var CONTENT = [["core/paragraph", { content: __("Insert Your Content Here") }]];
-            var SECONDCONTENT = [["core/paragraph", { content: __("Insert Content Here") }]];
+            var EFFECTS = [{
+                label: __("Fade"),
+                value: "fade"
+            }, {
+                label: __("Slide"),
+                value: "slide"
+            }];
+            var SLIDE = [{
+                label: __("Top"),
+                value: "top"
+            }, {
+                label: __("Left"),
+                value: "left"
+            }, {
+                label: __("Bottom"),
+                value: "bottom"
+            }, {
+                label: __("Right"),
+                value: "right"
+            }];
             var changeSwitch = function changeSwitch() {
+                console.log(two);
                 setAttributes({ switchCheck: !switchCheck });
+                if (two) {
+                    var element = document.getElementsByClassName("card-image-top-" + (switchCheck ? "2" : "1"));
+                    element["" + (switchCheck ? "0" : "1")].parentNode.removeChild(element["" + (switchCheck ? "0" : "1")]);
+                }
+                setAttributes({ two: false });
             };
 
             var element = document.getElementById("premium-style-content-switcher-" + this.props.clientId);
@@ -52154,22 +52210,6 @@ var edit = function (_Component) {
                 element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_1__styling__["a" /* default */])(this.props);
             }
 
-            var addFontToHead = function addFontToHead(fontFamily) {
-                var head = document.head;
-                var link = document.createElement("link");
-                link.type = "text/css";
-                link.rel = "stylesheet";
-                link.href = "https://fonts.googleapis.com/css?family=" + fontFamily.replace(/\s+/g, "+") + ":" + "regular";
-                head.appendChild(link);
-            };
-
-            var onChangeTitleFamily = function onChangeTitleFamily(fontFamily) {
-                setAttributes({ titleFont: fontFamily });
-                if (!fontFamily) {
-                    return;
-                }
-                addFontToHead(fontFamily);
-            };
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-content-switcher");
             return [isSelected && wp.element.createElement(
                 BlockControls,
@@ -52254,6 +52294,22 @@ var edit = function (_Component) {
                                 }
                             };
                         })
+                    }),
+                    wp.element.createElement(SelectControl, {
+                        label: __("Effect"),
+                        options: EFFECTS,
+                        value: effect,
+                        onChange: function onChange(newEffect) {
+                            return setAttributes({ effect: newEffect });
+                        }
+                    }),
+                    effect == 'slide' && wp.element.createElement(SelectControl, {
+                        label: __("Slide Direction"),
+                        options: SLIDE,
+                        value: slide,
+                        onChange: function onChange(newEffect) {
+                            return setAttributes({ slide: newEffect });
+                        }
                     })
                 ),
                 wp.element.createElement(
@@ -52648,7 +52704,7 @@ var edit = function (_Component) {
                     ),
                     wp.element.createElement(
                         "div",
-                        { className: "premium-content-switcher-list" },
+                        { className: "premium-content-switcher-list " + (effect == 'slide' ? "slide-" + slide : "") },
                         wp.element.createElement(
                             "ul",
                             { className: "premium-content-switcher-two-content" },
@@ -52658,7 +52714,11 @@ var edit = function (_Component) {
                                     style: {
                                         background: firstContentBGColor
                                     } },
-                                wp.element.createElement(InnerBlocks, { template: CONTENT })
+                                wp.element.createElement(InnerBlocks, {
+                                    template: getColumnsTemplate(),
+                                    templateLock: "all",
+                                    allowedBlocks: ALLOWED_BLOCKS
+                                })
                             ),
                             wp.element.createElement(
                                 "li",
@@ -52666,7 +52726,11 @@ var edit = function (_Component) {
                                     style: {
                                         background: secondContentBGColor
                                     } },
-                                wp.element.createElement(InnerBlocks, { template: SECONDCONTENT })
+                                wp.element.createElement(InnerBlocks, {
+                                    template: getColumnsTemplate(),
+                                    templateLock: "all",
+                                    allowedBlocks: ALLOWED_BLOCKS
+                                })
                             )
                         )
                     )

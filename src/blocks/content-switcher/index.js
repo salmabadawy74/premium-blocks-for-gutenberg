@@ -381,6 +381,18 @@ const contentSwitcherAttrs = {
         type: "number",
         default: 0
     },
+    effect:{
+        type: "string",
+        default: "fade"
+    },
+    slide:{
+        type: "string",
+        default: "top"
+    },
+    two:{
+        type: "boolean",
+        default: true
+    }
 };
 
 registerBlockType("premium/content-switcher", {
