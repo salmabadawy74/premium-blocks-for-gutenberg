@@ -52025,13 +52025,6 @@ var _wp$components = wp.components,
     TextControl = _wp$components.TextControl,
     ToggleControl = _wp$components.ToggleControl;
 
-
-var getColumnsTemplate = function getColumnsTemplate() {
-    return __WEBPACK_IMPORTED_MODULE_6_lodash_times___default()(2, function (n) {
-        return ["uagb/column", { className: "card-image-top-" + (n + 1) }];
-    });
-};
-
 var edit = function (_Component) {
     _inherits(edit, _Component);
 
@@ -52044,7 +52037,11 @@ var edit = function (_Component) {
     _createClass(edit, [{
         key: "componentDidMount",
         value: function componentDidMount() {
-            var switchCheck = this.props.attributes.switchCheck;
+            var _this2 = this;
+
+            var _props$attributes = this.props.attributes,
+                switchCheck = _props$attributes.switchCheck,
+                block_id = _props$attributes.block_id;
             // Assigning id in the attribute.
 
             this.props.setAttributes({ block_id: this.props.clientId });
@@ -52054,7 +52051,7 @@ var edit = function (_Component) {
             $style.setAttribute("id", "premium-style-content-switcher-" + this.props.clientId);
             document.head.appendChild($style);
             setTimeout(function () {
-                var element = document.getElementsByClassName("card-image-top-" + (switchCheck ? "1" : "2"));
+                var element = document.getElementsByClassName("premium-columns-temp-" + (switchCheck ? "1" : "2") + "-" + _this2.props.clientId);
                 console.log(element);
 
                 element[0].parentNode.removeChild(element[0]);
@@ -52063,6 +52060,8 @@ var edit = function (_Component) {
     }, {
         key: "render",
         value: function render() {
+            var _this3 = this;
+
             var _props = this.props,
                 attributes = _props.attributes,
                 setAttributes = _props.setAttributes,
@@ -52198,12 +52197,16 @@ var edit = function (_Component) {
                 console.log(two);
                 setAttributes({ switchCheck: !switchCheck });
                 if (two) {
-                    var element = document.getElementsByClassName("card-image-top-" + (switchCheck ? "2" : "1"));
+                    var element = document.getElementsByClassName("premium-columns-temp-" + (switchCheck ? "2" : "1") + "-" + _this3.props.clientId);
                     element["" + (switchCheck ? "0" : "1")].parentNode.removeChild(element["" + (switchCheck ? "0" : "1")]);
                 }
                 setAttributes({ two: false });
             };
-
+            var getColumnsTemplate = function getColumnsTemplate() {
+                return __WEBPACK_IMPORTED_MODULE_6_lodash_times___default()(2, function (n) {
+                    return ["uagb/column", { className: "premium-columns-temp-" + (n + 1) + "-" + _this3.props.clientId }];
+                });
+            };
             var element = document.getElementById("premium-style-content-switcher-" + this.props.clientId);
 
             if (null != element && "undefined" != typeof element) {

@@ -29,15 +29,10 @@ const {
     ToggleControl,
 } = wp.components
 
-const getColumnsTemplate = () => {
-    return times(2, n => ["uagb/column", { className: `card-image-top-${n + 1}` }])
-}
-
-
 class edit extends Component {
 
     componentDidMount() {
-        const { switchCheck } = this.props.attributes
+        const { switchCheck, block_id } = this.props.attributes
         // Assigning id in the attribute.
         this.props.setAttributes({ block_id: this.props.clientId })
         this.props.setAttributes({ classMigrate: true })
@@ -46,12 +41,11 @@ class edit extends Component {
         $style.setAttribute("id", "premium-style-content-switcher-" + this.props.clientId)
         document.head.appendChild($style)
         setTimeout(() => {
-            var element = document.getElementsByClassName(`card-image-top-${switchCheck ? "1" : "2"}`);
+            var element = document.getElementsByClassName(`premium-columns-temp-${switchCheck ? "1" : "2"}-${this.props.clientId}`);
             console.log(element);
-            
+
             element[0].parentNode.removeChild(element[0]);
         }, 20)
-
     }
 
     render() {
@@ -200,12 +194,14 @@ class edit extends Component {
             console.log(two);
             setAttributes({ switchCheck: !switchCheck })
             if (two) {
-                var element = document.getElementsByClassName(`card-image-top-${switchCheck ? "2" : "1"}`);
+                var element = document.getElementsByClassName(`premium-columns-temp-${switchCheck ? "2" : "1"}-${this.props.clientId}`);
                 element[`${switchCheck ? "0" : "1"}`].parentNode.removeChild(element[`${switchCheck ? "0" : "1"}`]);
             }
             setAttributes({ two: false })
         }
-
+        const getColumnsTemplate = () => {
+            return times(2, n => ["uagb/column", { className: `premium-columns-temp-${n + 1}-${this.props.clientId}` }])
+        }
         var element = document.getElementById("premium-style-content-switcher-" + this.props.clientId)
 
         if (null != element && "undefined" != typeof element) {
@@ -639,8 +635,6 @@ class edit extends Component {
                         )}
                     </div>
                     <div className={`premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`}>
-                        {/* {getLi(two)
-                        } */}
                         <ul className="premium-content-switcher-two-content">
                             <li className={`premium-content-switcher-${switchCheck ? "is-hidden" : "is-visible"} premium-content-switcher-first-list`}
                                 style={{
@@ -651,7 +645,6 @@ class edit extends Component {
                                     templateLock="all"
                                     allowedBlocks={ALLOWED_BLOCKS}
                                 />
-                                {/* <InnerBlocks template={CONTENT} /> */}
                                 {/* <RichText
                                     tagName="p"
                                     className={`premium-content-switcher-first-content`}
@@ -675,7 +668,6 @@ class edit extends Component {
                                     templateLock="all"
                                     allowedBlocks={ALLOWED_BLOCKS}
                                 />
-                                {/* <InnerBlocks template={SECONDCONTENT} /> */}
                                 {/* <RichText
                                     tagName="p"
                                     className={`premium-content-switcher-second-content`}
