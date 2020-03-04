@@ -1,7 +1,8 @@
 import classnames from "classnames"
 
 const {
-    InnerBlocks
+    InnerBlocks,
+    RichText
 } = wp.blockEditor
 
 export default function save(props) {
@@ -48,7 +49,7 @@ export default function save(props) {
     return (
         <div className={classnames(
             className,
-            `premium-block-${block_id}`
+            `premium-block-${block_id} ${switchCheck}`
         )}
             id={`premium-block-${block_id}`}
             style={{
@@ -76,8 +77,8 @@ export default function save(props) {
                     </div>
                     )}
                     <div className="premium-content-switcher-toggle-switch">
-                        <label className="premium-content-switcher-toggle-switch-label">
-                            <input type="checkbox" onClick={() => changeSwitch()} />
+                        <label className={`premium-content-switcher-toggle-switch-label ${block_id}`}>
+                            <input type="checkbox" />
                             <span className="premium-content-switcher-toggle-switch-slider round"
                                 style={{
                                     borderRadius: switchRadius + "px"
@@ -98,11 +99,11 @@ export default function save(props) {
                 </div>
                 <div className="premium-content-switcher-list">
                     <ul className="premium-content-switcher-two-content">
-                        <li className={`premium-content-switcher-${switchCheck ? "is-hidden" : "is-visible"} premium-content-switcher-first-list`}
+                        <li className={`premium-content-switcher-is-visible premium-content-switcher-first-list ${block_id}`}
                             style={{
                                 background: firstContentBGColor
                             }}>
-                            {/* <RichText.Content
+                            <RichText.Content
                                 tagName="p"
                                 className={`premium-content-switcher-first-content`}
                                 value={firstContent}
@@ -111,14 +112,14 @@ export default function save(props) {
                                     justifyContent: firstcontentlign,
                                     color: firstContentColor
                                 }}
-                            /> */}
-                            <InnerBlocks.Content />
+                            />
+                            {/* <InnerBlocks.Content /> */}
                         </li>
-                        <li className={`premium-content-switcher-${switchCheck ? "is-visible" : "is-hidden"} premium-content-switcher-second-list`}
+                        <li className={`premium-content-switcher-is-hidden premium-content-switcher-second-list ${block_id}`}
                             style={{
                                 background: secondContentBGColor
                             }}>
-                            {/* <RichText.Content
+                            <RichText.Content
                                 tagName="p"
                                 className={`premium-content-switcher-second-content`}
                                 value={secondContent}
@@ -127,8 +128,8 @@ export default function save(props) {
                                     justifyContent: secondcontentlign,
                                     color: secondContentColor
                                 }}
-                            /> */}
-                            <InnerBlocks.Content />
+                            />
+                            {/* <InnerBlocks.Content /> */}
                         </li>
                     </ul>
                 </div>

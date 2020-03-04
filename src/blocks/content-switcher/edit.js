@@ -7,6 +7,7 @@ import PremiumPaddingR from "../../components/premium-padding-responsive";
 import times from "lodash/times"
 const { __ } = wp.i18n
 const ALLOWED_BLOCKS = ["uagb/column"]
+let isBoxUpdated = null;
 const {
     Component,
     Fragment,
@@ -17,7 +18,8 @@ const {
     AlignmentToolbar,
     InspectorControls,
     InnerBlocks,
-    ColorPalette
+    ColorPalette,
+    RichText
 } = wp.blockEditor
 
 const {
@@ -31,6 +33,11 @@ const {
 
 class edit extends Component {
 
+    constructor() {
+        super(...arguments);
+
+        this.initToggleBox = this.initToggleBox.bind(this);
+    }
     componentDidMount() {
         const { switchCheck, block_id } = this.props.attributes
         // Assigning id in the attribute.
@@ -40,12 +47,41 @@ class edit extends Component {
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-content-switcher-" + this.props.clientId)
         document.head.appendChild($style)
-        setTimeout(() => {
-            var element = document.getElementsByClassName(`premium-columns-temp-${switchCheck ? "1" : "2"}-${this.props.clientId}`);
-            console.log(element);
+        this.initToggleBox()
+    }
+    componentDidUpdate() {
+        clearTimeout(isBoxUpdated);
+        isBoxUpdated = setTimeout(this.initToggleBox, 500);
+    }
+    initToggleBox() {
+        const { block_id, switchCheck } = this.props.attributes;
+        if (!block_id) return null;
+        let toggleBox = document.getElementsByClassName(`premium-content-switcher-toggle-switch-label ${block_id}`);
+        console.log(toggleBox[0]);
 
-            element[0].parentNode.removeChild(element[0]);
-        }, 20)
+        toggleBox[0].addEventListener("click", () => {
+            this.props.setAttributes({ switchCheck: !switchCheck })
+            if (switchCheck) {
+                let switchToggle = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
+                console.log(switchToggle[0]);
+                switchToggle[0].classList.remove("premium-content-switcher-is-visible");
+                switchToggle[0].classList.add("premium-content-switcher-is-hidden");
+                let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
+                console.log(switchTogglesecond[0]);
+                switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
+                switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
+            }
+            else {
+                let switchToggle = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
+                console.log(switchToggle[0]);
+                switchToggle[0].classList.remove("premium-content-switcher-is-visible");
+                switchToggle[0].classList.add("premium-content-switcher-is-hidden");
+                let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
+                console.log(switchTogglesecond[0]);
+                switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
+                switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
+            }
+        });
     }
 
     render() {
@@ -614,8 +650,8 @@ class edit extends Component {
                         </div>
                         )}
                         <div className="premium-content-switcher-toggle-switch">
-                            <label className="premium-content-switcher-toggle-switch-label">
-                                <input type="checkbox" onClick={() => changeSwitch()} />
+                            <label className={`premium-content-switcher-toggle-switch-label ${this.props.clientId}`}>
+                                <input type="checkbox" />
                                 <span className="premium-content-switcher-toggle-switch-slider round"
                                     style={{
                                         borderRadius: switchRadius + "px"
@@ -636,16 +672,16 @@ class edit extends Component {
                     </div>
                     <div className={`premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`}>
                         <ul className="premium-content-switcher-two-content">
-                            <li className={`premium-content-switcher-${switchCheck ? "is-hidden" : "is-visible"} premium-content-switcher-first-list`}
+                            <li className={`premium-content-switcher-is-visible premium-content-switcher-first-list ${this.props.clientId}`}
                                 style={{
                                     background: firstContentBGColor
                                 }}>
-                                <InnerBlocks
+                                {/* <InnerBlocks
                                     template={getColumnsTemplate()}
                                     templateLock="all"
                                     allowedBlocks={ALLOWED_BLOCKS}
-                                />
-                                {/* <RichText
+                                /> */}
+                                <RichText
                                     tagName="p"
                                     className={`premium-content-switcher-first-content`}
                                     value={firstContent}
@@ -657,18 +693,18 @@ class edit extends Component {
                                         justifyContent: firstcontentlign,
                                         color: firstContentColor
                                     }}
-                                /> */}
+                                />
                             </li>
-                            <li className={`premium-content-switcher-${switchCheck ? "is-visible" : "is-hidden"} premium-content-switcher-second-list`}
+                            <li className={`premium-content-switcher-is-hidden premium-content-switcher-second-list ${this.props.clientId}`}
                                 style={{
                                     background: secondContentBGColor
                                 }}>
-                                <InnerBlocks
+                                {/* <InnerBlocks
                                     template={getColumnsTemplate()}
                                     templateLock="all"
                                     allowedBlocks={ALLOWED_BLOCKS}
-                                />
-                                {/* <RichText
+                                /> */}
+                                <RichText
                                     tagName="p"
                                     className={`premium-content-switcher-second-content`}
                                     value={secondContent}
@@ -680,7 +716,7 @@ class edit extends Component {
                                         justifyContent: secondcontentlign,
                                         color: secondContentColor
                                     }}
-                                /> */}
+                                />
                             </li>
                         </ul>
                     </div>

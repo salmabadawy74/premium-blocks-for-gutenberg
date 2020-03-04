@@ -381,15 +381,15 @@ const contentSwitcherAttrs = {
         type: "number",
         default: 0
     },
-    effect:{
+    effect: {
         type: "string",
         default: "fade"
     },
-    slide:{
+    slide: {
         type: "string",
         default: "top"
     },
-    two:{
+    two: {
         type: "boolean",
         default: true
     }

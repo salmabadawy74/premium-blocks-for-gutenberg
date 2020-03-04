@@ -173,7 +173,10 @@ class Premium_Blocks_Integration {
 
         $is_person_enabled = self::$blocks['person'];
 
-        $is_icon_list_enabled = self::$blocks['iconList'];
+		$is_icon_list_enabled = self::$blocks['iconList'];
+		
+        $is_content_switcher_enabled = self::$blocks['contentSwitcher'];
+
         
         wp_enqueue_style(
             'pbg-frontend',
@@ -303,6 +306,14 @@ class Premium_Blocks_Integration {
             );
         }
 
+		if( $is_content_switcher_enabled ) {
+            wp_enqueue_script(
+                'content-switcher-js',
+                PREMIUM_BLOCKS_URL . 'assets/js/content-switcher.js',
+                array('jquery'),
+                PREMIUM_BLOCKS_VERSION
+            );
+        }
         //Enqueue Google Maps API Script
         if( $is_maps_enabled && $is_enabled ) {
             if( ! empty( $api_key ) && '1' !== $api_key ) {

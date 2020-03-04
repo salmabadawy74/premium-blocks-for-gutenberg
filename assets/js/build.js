@@ -51837,7 +51837,9 @@ registerBlockType("premium/content-switcher", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 
 
-var InnerBlocks = wp.blockEditor.InnerBlocks;
+var _wp$blockEditor = wp.blockEditor,
+    InnerBlocks = _wp$blockEditor.InnerBlocks,
+    RichText = _wp$blockEditor.RichText;
 
 
 function save(props) {
@@ -51881,7 +51883,7 @@ function save(props) {
 
     return wp.element.createElement(
         "div",
-        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id),
+        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id + " " + switchCheck),
             id: "premium-block-" + block_id,
             style: {
                 textAlign: align
@@ -51921,10 +51923,8 @@ function save(props) {
                     { className: "premium-content-switcher-toggle-switch" },
                     wp.element.createElement(
                         "label",
-                        { className: "premium-content-switcher-toggle-switch-label" },
-                        wp.element.createElement("input", { type: "checkbox", onClick: function onClick() {
-                                return changeSwitch();
-                            } }),
+                        { className: "premium-content-switcher-toggle-switch-label " + block_id },
+                        wp.element.createElement("input", { type: "checkbox" }),
                         wp.element.createElement("span", { className: "premium-content-switcher-toggle-switch-slider round",
                             style: {
                                 borderRadius: switchRadius + "px"
@@ -51956,19 +51956,37 @@ function save(props) {
                     { className: "premium-content-switcher-two-content" },
                     wp.element.createElement(
                         "li",
-                        { className: "premium-content-switcher-" + (switchCheck ? "is-hidden" : "is-visible") + " premium-content-switcher-first-list",
+                        { className: "premium-content-switcher-is-visible premium-content-switcher-first-list " + block_id,
                             style: {
                                 background: firstContentBGColor
                             } },
-                        wp.element.createElement(InnerBlocks.Content, null)
+                        wp.element.createElement(RichText.Content, {
+                            tagName: "p",
+                            className: "premium-content-switcher-first-content",
+                            value: firstContent,
+                            style: {
+                                textAlign: firstcontentlign,
+                                justifyContent: firstcontentlign,
+                                color: firstContentColor
+                            }
+                        })
                     ),
                     wp.element.createElement(
                         "li",
-                        { className: "premium-content-switcher-" + (switchCheck ? "is-visible" : "is-hidden") + " premium-content-switcher-second-list",
+                        { className: "premium-content-switcher-is-hidden premium-content-switcher-second-list " + block_id,
                             style: {
                                 background: secondContentBGColor
                             } },
-                        wp.element.createElement(InnerBlocks.Content, null)
+                        wp.element.createElement(RichText.Content, {
+                            tagName: "p",
+                            className: "premium-content-switcher-second-content",
+                            value: secondContent,
+                            style: {
+                                textAlign: secondcontentlign,
+                                justifyContent: secondcontentlign,
+                                color: secondContentColor
+                            }
+                        })
                     )
                 )
             )
@@ -52008,6 +52026,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var __ = wp.i18n.__;
 
 var ALLOWED_BLOCKS = ["uagb/column"];
+var isBoxUpdated = null;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -52016,7 +52035,8 @@ var _wp$blockEditor = wp.blockEditor,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
     InspectorControls = _wp$blockEditor.InspectorControls,
     InnerBlocks = _wp$blockEditor.InnerBlocks,
-    ColorPalette = _wp$blockEditor.ColorPalette;
+    ColorPalette = _wp$blockEditor.ColorPalette,
+    RichText = _wp$blockEditor.RichText;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
@@ -52031,14 +52051,15 @@ var edit = function (_Component) {
     function edit() {
         _classCallCheck(this, edit);
 
-        return _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+
+        _this.initToggleBox = _this.initToggleBox.bind(_this);
+        return _this;
     }
 
     _createClass(edit, [{
         key: "componentDidMount",
         value: function componentDidMount() {
-            var _this2 = this;
-
             var _props$attributes = this.props.attributes,
                 switchCheck = _props$attributes.switchCheck,
                 block_id = _props$attributes.block_id;
@@ -52050,12 +52071,49 @@ var edit = function (_Component) {
             var $style = document.createElement("style");
             $style.setAttribute("id", "premium-style-content-switcher-" + this.props.clientId);
             document.head.appendChild($style);
-            setTimeout(function () {
-                var element = document.getElementsByClassName("premium-columns-temp-" + (switchCheck ? "1" : "2") + "-" + _this2.props.clientId);
-                console.log(element);
+            this.initToggleBox();
+        }
+    }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate() {
+            clearTimeout(isBoxUpdated);
+            isBoxUpdated = setTimeout(this.initToggleBox, 500);
+        }
+    }, {
+        key: "initToggleBox",
+        value: function initToggleBox() {
+            var _this2 = this;
 
-                element[0].parentNode.removeChild(element[0]);
-            }, 20);
+            var _props$attributes2 = this.props.attributes,
+                block_id = _props$attributes2.block_id,
+                switchCheck = _props$attributes2.switchCheck;
+
+            if (!block_id) return null;
+            var toggleBox = document.getElementsByClassName("premium-content-switcher-toggle-switch-label " + block_id);
+            console.log(toggleBox[0]);
+
+            toggleBox[0].addEventListener("click", function () {
+                _this2.props.setAttributes({ switchCheck: !switchCheck });
+                if (switchCheck) {
+                    var switchToggle = document.getElementsByClassName("premium-content-switcher-second-list " + block_id);
+                    console.log(switchToggle[0]);
+                    switchToggle[0].classList.remove("premium-content-switcher-is-visible");
+                    switchToggle[0].classList.add("premium-content-switcher-is-hidden");
+                    var switchTogglesecond = document.getElementsByClassName("premium-content-switcher-first-list " + block_id);
+                    console.log(switchTogglesecond[0]);
+                    switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
+                    switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
+                } else {
+                    var _switchToggle = document.getElementsByClassName("premium-content-switcher-first-list " + block_id);
+                    console.log(_switchToggle[0]);
+                    _switchToggle[0].classList.remove("premium-content-switcher-is-visible");
+                    _switchToggle[0].classList.add("premium-content-switcher-is-hidden");
+                    var _switchTogglesecond = document.getElementsByClassName("premium-content-switcher-second-list " + block_id);
+                    console.log(_switchTogglesecond[0]);
+                    _switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
+                    _switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
+                }
+            });
         }
     }, {
         key: "render",
@@ -52678,10 +52736,8 @@ var edit = function (_Component) {
                             { className: "premium-content-switcher-toggle-switch" },
                             wp.element.createElement(
                                 "label",
-                                { className: "premium-content-switcher-toggle-switch-label" },
-                                wp.element.createElement("input", { type: "checkbox", onClick: function onClick() {
-                                        return changeSwitch();
-                                    } }),
+                                { className: "premium-content-switcher-toggle-switch-label " + this.props.clientId },
+                                wp.element.createElement("input", { type: "checkbox" }),
                                 wp.element.createElement("span", { className: "premium-content-switcher-toggle-switch-slider round",
                                     style: {
                                         borderRadius: switchRadius + "px"
@@ -52713,26 +52769,42 @@ var edit = function (_Component) {
                             { className: "premium-content-switcher-two-content" },
                             wp.element.createElement(
                                 "li",
-                                { className: "premium-content-switcher-" + (switchCheck ? "is-hidden" : "is-visible") + " premium-content-switcher-first-list",
+                                { className: "premium-content-switcher-is-visible premium-content-switcher-first-list " + this.props.clientId,
                                     style: {
                                         background: firstContentBGColor
                                     } },
-                                wp.element.createElement(InnerBlocks, {
-                                    template: getColumnsTemplate(),
-                                    templateLock: "all",
-                                    allowedBlocks: ALLOWED_BLOCKS
+                                wp.element.createElement(RichText, {
+                                    tagName: "p",
+                                    className: "premium-content-switcher-first-content",
+                                    value: firstContent,
+                                    onChange: function onChange(value) {
+                                        setAttributes({ firstContent: value });
+                                    },
+                                    style: {
+                                        textAlign: firstcontentlign,
+                                        justifyContent: firstcontentlign,
+                                        color: firstContentColor
+                                    }
                                 })
                             ),
                             wp.element.createElement(
                                 "li",
-                                { className: "premium-content-switcher-" + (switchCheck ? "is-visible" : "is-hidden") + " premium-content-switcher-second-list",
+                                { className: "premium-content-switcher-is-hidden premium-content-switcher-second-list " + this.props.clientId,
                                     style: {
                                         background: secondContentBGColor
                                     } },
-                                wp.element.createElement(InnerBlocks, {
-                                    template: getColumnsTemplate(),
-                                    templateLock: "all",
-                                    allowedBlocks: ALLOWED_BLOCKS
+                                wp.element.createElement(RichText, {
+                                    tagName: "p",
+                                    className: "premium-content-switcher-second-content",
+                                    value: secondContent,
+                                    onChange: function onChange(value) {
+                                        setAttributes({ secondContent: value });
+                                    },
+                                    style: {
+                                        textAlign: secondcontentlign,
+                                        justifyContent: secondcontentlign,
+                                        color: secondContentColor
+                                    }
                                 })
                             )
                         )

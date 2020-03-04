@@ -1,49 +1,23 @@
 jQuery(document).ready(function ($) {
-  setTimeout(function () {
-    const $contentSwitcher = $(".premium-content-switcher");
-    $contentSwitcher.map((index, contentSwitcher) => {
-      let $contentSwitcher = $(contentSwitcher),
-    $title = $contentSwitcher.find(".premium-content-switcher-toggle-switch-label input");
-    $title.on("click", function () {
-      let self = $(this);
-      self
-          .find(".premium-content-switcher-is-visible")
-          .toggleClass("premium-accordion__closed");
-      self.siblings().toggleClass("premium-content-switcher-is-visible");
-
-      $title.not($(this)).map((index, otherTitle) => {
-        $otherTitle = $(otherTitle);
-        $otherTitleIcon = $otherTitle.find(".premium-content-switcher-is-visible");
-        $otherTitleSiblings = $otherTitle.siblings();
-
-        !$otherTitleIcon.hasClass("premium-accordion__closed") &&
-          $otherTitleIcon.toggleClass("premium-accordion__closed");
-        !$otherTitleSiblings.hasClass("premium-accordion__desc_close") &&
-          $otherTitleSiblings.toggleClass("premium-accordion__desc_close");
-      });
-    });
-  })
-  }, 500);
-
-  const addFontToHead = fontFamily => {
-    const head = document.head;
-    const link = document.createElement("link");
-    link.type = "text/css";
-    link.rel = "stylesheet";
-    link.href =
-      "https://fonts.googleapis.com/css?family=" +
-      fontFamily.replace(/\s+/g, "+") +
-      ":" +
-      "regular";
-    head.appendChild(link);
-  };
-
+  const $contentSwitcher = $(".premium-content-switcher");
+ 
   $contentSwitcher.map((index, contentSwitcher) => {
-    let $contentSwitcher = $(contentSwitcher),
-      titleFont = $contentSwitcher.find(".premium-content-switcher__title").css("font-family"),
-      descFont = $contentSwitcher.find(".premium-content-switcher__desc").css("font-family");
+    let $contentSwitcher = $(contentSwitcher);
 
-    addFontToHead(titleFont);
-    addFontToHead(descFont);
+    let $toggleBox = $contentSwitcher.find(`.premium-content-switcher-toggle-switch-label`)[0];
+    console.log('gg',$toggleBox);
+    $($toggleBox).click(function() { 
+      let $switch = $contentSwitcher.find(".premium-content-switcher-first-list");
+      console.log($switch[0]);
+      
+      $switch[0].remove("premium-content-switcher-is-visible");
+      $switch[0].classList.add(".premium-content-switcher-is-hidden");
+
+      let $switchsecond = $contentSwitcher.find(".premium-content-switcher-second-list");
+      console.log($switchsecond[0]);
+      
+      $switchsecond[0].remove("premium-content-switcher-is-hidden");
+      $switchsecond[0].classList.add(".premium-content-switcher-is-visible");
+    })
   });
 });
