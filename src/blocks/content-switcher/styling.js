@@ -92,13 +92,15 @@ function styling(props) {
             "background": switcherBGColor
         },
         " .premium-content-switcher-first-label": {
-            "margin-right": generateCSSUnit(labelSpacing, labelSpacingType)
+            "margin-right": display=='inline' ? generateCSSUnit(labelSpacing, labelSpacingType) : "",
+            "margin-bottom": display=='block' ? generateCSSUnit(labelSpacing, labelSpacingType) : ""
         },
         " .premium-content-switcher-first-label h3": {
             "font-size": generateCSSUnit(firstLabelfontSize, firstLabelfontSizeType)
         },
         " .premium-content-switcher-second-label": {
-            "margin-left": generateCSSUnit(labelSpacing, labelSpacingType)
+            "margin-left": display=='inline' ? generateCSSUnit(labelSpacing, labelSpacingType) : "",
+            "margin-top": display=='block' ? generateCSSUnit(labelSpacing, labelSpacingType) : ""
         },
         " .premium-content-switcher-second-label h3": {
             "font-size": generateCSSUnit(secondLabelfontSize, secondLabelfontSizeType)

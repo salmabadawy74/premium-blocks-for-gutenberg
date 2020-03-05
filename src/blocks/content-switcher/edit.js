@@ -4,10 +4,11 @@ import PremiumRange from "../../components/premium-range-responsive";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumPaddingR from "../../components/premium-padding-responsive";
-import times from "lodash/times"
+
 const { __ } = wp.i18n
-const ALLOWED_BLOCKS = ["uagb/column"]
+
 let isBoxUpdated = null;
+
 const {
     Component,
     Fragment,
@@ -17,10 +18,9 @@ const {
     BlockControls,
     AlignmentToolbar,
     InspectorControls,
-    InnerBlocks,
     ColorPalette,
     RichText
-} = wp.blockEditor
+} = wp.editor
 
 const {
     PanelBody,
@@ -39,7 +39,6 @@ class edit extends Component {
         this.initToggleBox = this.initToggleBox.bind(this);
     }
     componentDidMount() {
-        const { switchCheck, block_id } = this.props.attributes
         // Assigning id in the attribute.
         this.props.setAttributes({ block_id: this.props.clientId })
         this.props.setAttributes({ classMigrate: true })
@@ -51,37 +50,32 @@ class edit extends Component {
     }
     componentDidUpdate() {
         clearTimeout(isBoxUpdated);
-        isBoxUpdated = setTimeout(this.initToggleBox, 500);
+        isBoxUpdated = setTimeout(this.initToggleBox, 10);
     }
     initToggleBox() {
         const { block_id, switchCheck } = this.props.attributes;
         if (!block_id) return null;
-        let toggleBox = document.getElementsByClassName(`premium-content-switcher-toggle-switch-label ${block_id}`);
-        console.log(toggleBox[0]);
-
-        toggleBox[0].addEventListener("click", () => {
-            this.props.setAttributes({ switchCheck: !switchCheck })
-            if (switchCheck) {
-                let switchToggle = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
-                console.log(switchToggle[0]);
+        let toggleBox = document.getElementsByClassName(`premium-content-switcher-toggle-switch-input ${block_id}`);
+        console.log(toggleBox);
+        $(toggleBox[0]).on('change', function () {
+            if ($(this).is(':checked')) {
+                let switchToggle = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
                 switchToggle[0].classList.remove("premium-content-switcher-is-visible");
                 switchToggle[0].classList.add("premium-content-switcher-is-hidden");
-                let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
-                console.log(switchTogglesecond[0]);
+                let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
                 switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
                 switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
             }
             else {
-                let switchToggle = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
-                console.log(switchToggle[0]);
+                let switchToggle = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
                 switchToggle[0].classList.remove("premium-content-switcher-is-visible");
                 switchToggle[0].classList.add("premium-content-switcher-is-hidden");
-                let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
-                console.log(switchTogglesecond[0]);
+
+                let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
                 switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
                 switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
             }
-        });
+        })
     }
 
     render() {
@@ -226,18 +220,7 @@ class edit extends Component {
                 value: "right"
             }
         ]
-        const changeSwitch = () => {
-            console.log(two);
-            setAttributes({ switchCheck: !switchCheck })
-            if (two) {
-                var element = document.getElementsByClassName(`premium-columns-temp-${switchCheck ? "2" : "1"}-${this.props.clientId}`);
-                element[`${switchCheck ? "0" : "1"}`].parentNode.removeChild(element[`${switchCheck ? "0" : "1"}`]);
-            }
-            setAttributes({ two: false })
-        }
-        const getColumnsTemplate = () => {
-            return times(2, n => ["uagb/column", { className: `premium-columns-temp-${n + 1}-${this.props.clientId}` }])
-        }
+
         var element = document.getElementById("premium-style-content-switcher-" + this.props.clientId)
 
         if (null != element && "undefined" != typeof element) {
@@ -319,44 +302,6 @@ class edit extends Component {
                             />
                         }
                     </PanelBody>
-                    {/* <PanelBody
-                        title={__("First Content")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <TextareaControl
-                            label={__("Content")}
-                            value={firstContent}
-                            onChange={value => setAttributes({ firstContent: value })}
-                        />
-                        <p>{__("Alignment")}</p>
-                        <Toolbar
-                            controls={ALIGNS.map(contentAlign => ({
-                                icon: "editor-align" + contentAlign,
-                                isActive: contentAlign === firstcontentlign,
-                                onClick: () => setAttributes({ firstcontentlign: contentAlign })
-                            }))}
-                        />
-                    </PanelBody>
-                    <PanelBody
-                        title={__("Second Content")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <TextareaControl
-                            label={__("Content")}
-                            value={secondContent}
-                            onChange={value => setAttributes({ secondContent: value })}
-                        />
-                        <p>{__("Alignment")}</p>
-                        <Toolbar
-                            controls={ALIGNS.map(contentAlign => ({
-                                icon: "editor-align" + contentAlign,
-                                isActive: contentAlign === secondcontentlign,
-                                onClick: () => setAttributes({ secondcontentlign: contentAlign })
-                            }))}
-                        />
-                    </PanelBody> */}
                     <PanelBody
                         title={__("Switcher Style")}
                         className="premium-panel-body"
@@ -416,7 +361,7 @@ class edit extends Component {
                             allowReset={true}
                         />
                     </PanelBody>
-                    <PanelBody
+                    {showLabel && (<PanelBody
                         title={__("Labels Style")}
                         className="premium-panel-body"
                         initialOpen={false}
@@ -514,6 +459,7 @@ class edit extends Component {
                             onChangeUpper={check => setAttributes({ secondLabelUpper: check })}
                         />
                     </PanelBody>
+                    )}
                     <PanelBody
                         title={__("First Content Style")}
                         className="premium-panel-body"
@@ -651,7 +597,7 @@ class edit extends Component {
                         )}
                         <div className="premium-content-switcher-toggle-switch">
                             <label className={`premium-content-switcher-toggle-switch-label ${this.props.clientId}`}>
-                                <input type="checkbox" />
+                                <input type="checkbox" className={`premium-content-switcher-toggle-switch-input ${this.props.clientId}`}/>
                                 <span className="premium-content-switcher-toggle-switch-slider round"
                                     style={{
                                         borderRadius: switchRadius + "px"
@@ -676,13 +622,9 @@ class edit extends Component {
                                 style={{
                                     background: firstContentBGColor
                                 }}>
-                                {/* <InnerBlocks
-                                    template={getColumnsTemplate()}
-                                    templateLock="all"
-                                    allowedBlocks={ALLOWED_BLOCKS}
-                                /> */}
                                 <RichText
-                                    tagName="p"
+                                    tagName="div"
+                                    format="string"
                                     className={`premium-content-switcher-first-content`}
                                     value={firstContent}
                                     onChange={value => {
@@ -699,13 +641,9 @@ class edit extends Component {
                                 style={{
                                     background: secondContentBGColor
                                 }}>
-                                {/* <InnerBlocks
-                                    template={getColumnsTemplate()}
-                                    templateLock="all"
-                                    allowedBlocks={ALLOWED_BLOCKS}
-                                /> */}
                                 <RichText
-                                    tagName="p"
+                                    tagName="div"
+                                    format="string"
                                     className={`premium-content-switcher-second-content`}
                                     value={secondContent}
                                     onChange={value => {

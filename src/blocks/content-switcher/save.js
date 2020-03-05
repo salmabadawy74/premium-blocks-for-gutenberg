@@ -1,9 +1,8 @@
 import classnames from "classnames"
 
 const {
-    InnerBlocks,
     RichText
-} = wp.blockEditor
+} = wp.editor
 
 export default function save(props) {
 
@@ -23,23 +22,25 @@ export default function save(props) {
         secondcontentlign,
         switchRadius,
         firstLabelColor,
+        firstLabelWeight,
         firstLabelLetter,
-        firstLabelStyle,
         firstLabelUpper,
-        shadowVertical,
-        shadowHorizontal,
+        firstLabelStyle,
+        secondLabelColor,
+        secondLabelWeight,
+        secondLabelLetter,
+        secondLabelUpper,
+        secondLabelStyle,
         shadowColor,
         shadowBlur,
-        secondLabelColor,
-        secondLabelLetter,
-        secondLabelStyle,
-        secondLabelUpper,
-        secondLabelWeight,
+        shadowHorizontal,
+        shadowVertical,
         firstContentColor,
         firstContentBGColor,
         secondContentColor,
         secondContentBGColor,
-        firstLabelWeight
+        effect,
+        slide
     } = attributes
 
     const changeSwitch = () => {
@@ -97,14 +98,15 @@ export default function save(props) {
                     </div>
                     )}
                 </div>
-                <div className="premium-content-switcher-list">
+                <div className={`premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`}>
                     <ul className="premium-content-switcher-two-content">
                         <li className={`premium-content-switcher-is-visible premium-content-switcher-first-list ${block_id}`}
                             style={{
                                 background: firstContentBGColor
                             }}>
                             <RichText.Content
-                                tagName="p"
+                                tagName="div"
+                                format="string"
                                 className={`premium-content-switcher-first-content`}
                                 value={firstContent}
                                 style={{
@@ -113,14 +115,14 @@ export default function save(props) {
                                     color: firstContentColor
                                 }}
                             />
-                            {/* <InnerBlocks.Content /> */}
                         </li>
                         <li className={`premium-content-switcher-is-hidden premium-content-switcher-second-list ${block_id}`}
                             style={{
                                 background: secondContentBGColor
                             }}>
                             <RichText.Content
-                                tagName="p"
+                                tagName="div"
+                                format="string"
                                 className={`premium-content-switcher-second-content`}
                                 value={secondContent}
                                 style={{
@@ -129,7 +131,6 @@ export default function save(props) {
                                     color: secondContentColor
                                 }}
                             />
-                            {/* <InnerBlocks.Content /> */}
                         </li>
                     </ul>
                 </div>
