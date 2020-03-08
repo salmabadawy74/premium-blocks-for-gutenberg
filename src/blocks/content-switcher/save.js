@@ -40,19 +40,22 @@ export default function save(props) {
         secondContentColor,
         secondContentBGColor,
         effect,
-        slide
+        slide,
+        firstContentborderType,
+        firstContentborderWidth,
+        firstContentborderColor,
+        firstContentborderRadius,
+        secondContentborderColor,
+        secondContentborderRadius,
+        secondContentborderWidth,
+        secondContentborderType
     } = attributes
-
-    const changeSwitch = () => {
-        setAttributes({ switchCheck: !switchCheck })
-    }
 
     return (
         <div className={classnames(
             className,
-            `premium-block-${block_id} ${switchCheck}`
+            `premium-block-${block_id}`
         )}
-            id={`premium-block-${block_id}`}
             style={{
                 textAlign: align,
             }}>
@@ -78,8 +81,8 @@ export default function save(props) {
                     </div>
                     )}
                     <div className="premium-content-switcher-toggle-switch">
-                        <label className={`premium-content-switcher-toggle-switch-label ${block_id}`}>
-                            <input type="checkbox" />
+                        <label className={`premium-content-switcher-toggle-switch-label`}>
+                            <input type="checkbox" className={`premium-content-switcher-toggle-switch-input ${block_id}`} />
                             <span className="premium-content-switcher-toggle-switch-slider round"
                                 style={{
                                     borderRadius: switchRadius + "px"
@@ -102,33 +105,47 @@ export default function save(props) {
                     <ul className="premium-content-switcher-two-content">
                         <li className={`premium-content-switcher-is-visible premium-content-switcher-first-list ${block_id}`}
                             style={{
-                                background: firstContentBGColor
+                                background: firstContentBGColor,
+                                borderStyle: firstContentborderType,
+                                borderWidth: firstContentborderWidth + "px",
+                                borderRadius: firstContentborderRadius || 0 + "px",
+                                borderColor: firstContentborderColor,
                             }}>
                             <RichText.Content
-                                tagName="div"
-                                format="string"
+                                tagName="p"
                                 className={`premium-content-switcher-first-content`}
                                 value={firstContent}
                                 style={{
                                     textAlign: firstcontentlign,
                                     justifyContent: firstcontentlign,
-                                    color: firstContentColor
+                                    color: firstContentColor,
+                                    // letterSpacing: firstContentLetter + "px",
+                                    // textTransform: firstContentUpper ? "uppercase" : "none",
+                                    // fontStyle: firstContentStyle,
+                                    // fontWeight: firstContentWeight,
                                 }}
                             />
                         </li>
                         <li className={`premium-content-switcher-is-hidden premium-content-switcher-second-list ${block_id}`}
                             style={{
-                                background: secondContentBGColor
+                                background: secondContentBGColor,
+                                borderStyle: secondContentborderType,
+                                borderWidth: secondContentborderWidth + "px",
+                                borderRadius: secondContentborderRadius || 0 + "px",
+                                borderColor: secondContentborderColor,
                             }}>
                             <RichText.Content
-                                tagName="div"
-                                format="string"
+                                tagName="p"
                                 className={`premium-content-switcher-second-content`}
                                 value={secondContent}
                                 style={{
                                     textAlign: secondcontentlign,
                                     justifyContent: secondcontentlign,
-                                    color: secondContentColor
+                                    color: secondContentColor,
+                                    // letterSpacing: secondContentLetter + "px",
+                                    // textTransform: secondContentUpper ? "uppercase" : "none",
+                                    // fontStyle: secondContentStyle,
+                                    // fontWeight: secondContentWeight,
                                 }}
                             />
                         </li>

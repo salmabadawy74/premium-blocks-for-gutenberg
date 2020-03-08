@@ -797,22 +797,26 @@ class Premium_Blocks_Integration {
                     "margin-bottom" => self::get_css_value( $attr['bottomSpacing'], $attr['bottomSpacingType'] )
 				),
 				" .premium-content-switcher-toggle-switch-slider::before" => array(
-                    "background" => $attr['firstStateColor'] 
+					"background" => $attr['firstStateColor'] ,
+					"border-radius" => self::get_css_value( $attr['switchRadius'] , $attr['switchRadiusType'] )
 				),
 				" .premium-content-switcher-toggle-switch-label input:checked + .premium-content-switcher-toggle-switch-slider::before" => array(
-                    "background" => $attr['secondStateColor']
+					"background" => $attr['secondStateColor'],
+					"border-radius" => self::get_css_value( $attr['switchRadius'] , $attr['switchRadiusType'] )
 				),
 				" .premium-content-switcher-toggle-switch-slider" => array(
                     "background" => $attr['switcherBGColor'] 
 				),
 				" .premium-content-switcher-first-label" => array(
-                    "margin-right" => self::get_css_value( $attr['labelSpacing'], $attr['labelSpacingType'] )
+					"margin-right" => $attr['display'] == 'inline' ?self::get_css_value( $attr['labelSpacing'], $attr['labelSpacingType'] ) : "",
+					"margin-bottom" => $attr['display'] == 'block' ?self::get_css_value( $attr['labelSpacing'], $attr['labelSpacingType'] ) : "",
 				),
 				" .premium-content-switcher-first-label h3" => array(
                     "font-size" => self::get_css_value( $attr['firstLabelfontSize'], $attr['firstLabelfontSizeType'] )
 				),
 				" .premium-content-switcher-second-label" => array(
-                    "margin-left" => self::get_css_value( $attr['labelSpacing'], $attr['labelSpacingType'] )
+					"margin-left" => $attr['display'] == 'inline' ? self::get_css_value( $attr['labelSpacing'], $attr['labelSpacingType'] ): "",
+					"margin-top" => $attr['display'] == 'block' ? self::get_css_value( $attr['labelSpacing'], $attr['labelSpacingType'] ): "",
 				),
 				" .premium-content-switcher-second-label h3" => array(
                     "font-size" => self::get_css_value( $attr['secondLabelfontSize'], $attr['secondLabelfontSizeType'] )
@@ -831,6 +835,20 @@ class Premium_Blocks_Integration {
 					"padding-right"=> self::get_css_value( $attr['secondpaddingRight'], $attr['secondpaddingRightType']),
 					"padding-left"=> self::get_css_value( $attr['secondpaddingLeft'], $attr['secondpaddingLeftType']),
 				),
+				" .premium-content-switcher-first-content" => array(
+					"font-size" => self::get_css_value( $attr['firstContentfontSize'], $attr['firstContentfontSizeType'] ),
+					"letter-spacing" => self::get_css_value($attr['firstContentLetter'] , $attr['switchRadiusType']) ,
+            		"text-transform" => $attr['firstContentUpper'] ? "uppercase" : "none" ,
+            		"font-style" => $attr['firstContentStyle'] ,
+            		"font-weight" => $attr['firstContentWeight'] ,
+				),
+				" .premium-content-switcher-second-content" => array(
+					"font-size" => self::get_css_value( $attr['secondContentfontSize'], $attr['secondContentfontSizeType'] ),
+					"letter-spacing" => self::get_css_value($attr['secondContentLetter'] , $attr['switchRadiusType']) ,
+            		"text-transform" => $attr['secondContentUpper'] ? "uppercase" : "none" ,
+            		"font-style" => $attr['secondContentStyle'] ,
+            		"font-weight" => $attr['secondContentWeight'],
+				),
             );
             // Desktop Icon Size CSS ends.
 
@@ -843,13 +861,15 @@ class Premium_Blocks_Integration {
                     "margin-bottom" => self::get_css_value( $attr['bottomSpacingMobile'], $attr['bottomSpacingType'] )
 				),
 				" .premium-content-switcher-first-label" => array(
-                    "margin-right" => self::get_css_value( $attr['labelSpacingMobile'], $attr['labelSpacingType'] )
+					"margin-right" => $attr['display'] == 'inline' ?self::get_css_value( $attr['labelSpacingMobile'], $attr['labelSpacingType'] ): "",
+					"margin-bottom" => $attr['display'] == 'block' ?self::get_css_value( $attr['labelSpacingMobile'], $attr['labelSpacingType'] ): "",
 				),
 				" .premium-content-switcher-first-label h3" => array(
                     "font-size" => self::get_css_value( $attr['firstLabelfontSizeMobile'], $attr['firstLabelfontSizeType'] )
 				),
 				" .premium-content-switcher-second-label" => array(
-                    "margin-left" => self::get_css_value( $attr['labelSpacingMobile'], $attr['labelSpacingType'] )
+					"margin-left" => $attr['display'] == 'inline' ?self::get_css_value( $attr['labelSpacingMobile'], $attr['labelSpacingType'] ): "",
+                    "margin-top" => $attr['display'] == 'block' ?self::get_css_value( $attr['labelSpacingMobile'], $attr['labelSpacingType'] ): "",
 				),
 				" .premium-content-switcher-second-label h3" => array(
                     "font-size" => self::get_css_value( $attr['secondLabelfontSizeMobile'], $attr['secondLabelfontSizeType'] )
@@ -868,6 +888,12 @@ class Premium_Blocks_Integration {
 					"padding-right"=> self::get_css_value( $attr['secondpaddingRightMobile'], $attr['secondpaddingRightType']),
 					"padding-left"=> self::get_css_value( $attr['secondpaddingLeftMobile'], $attr['secondpaddingLeftType']),
 				),
+				" .premium-content-switcher-first-content" => array(
+                    "font-size" => self::get_css_value( $attr['firstContentfontSizeMobile'], $attr['firstContentfontSizeType'] )
+				),
+				" .premium-content-switcher-second-content" => array(
+                    "font-size" => self::get_css_value( $attr['secondContentfontSizeMobile'], $attr['secondContentfontSizeType'] )
+				),
 			);
 			// Mobile Icon Size CSS ends.
 
@@ -880,13 +906,15 @@ class Premium_Blocks_Integration {
                     "margin-bottom" => self::get_css_value( $attr['bottomSpacingTablet'], $attr['bottomSpacingType'] )
 				),
 				" .premium-content-switcher-first-label" => array(
-                    "margin-right" => self::get_css_value( $attr['labelSpacingTablet'], $attr['labelSpacingType'] )
+					"margin-right" => $attr['display'] == 'inline' ?self::get_css_value( $attr['labelSpacingTablet'], $attr['labelSpacingType'] ):"",
+					"margin-bottom" => $attr['display'] == 'block' ?self::get_css_value( $attr['labelSpacingTablet'], $attr['labelSpacingType'] ):"",
 				),
 				" .premium-content-switcher-first-label h3" => array(
                     "font-size" => self::get_css_value( $attr['firstLabelfontSizeTablet'], $attr['firstLabelfontSizeType'] )
 				),
 				" .premium-content-switcher-second-label" => array(
-                    "margin-left" => self::get_css_value( $attr['labelSpacingTablet'], $attr['labelSpacingType'] )
+					"margin-left" => $attr['display'] == 'inline' ?self::get_css_value( $attr['labelSpacingTablet'], $attr['labelSpacingType'] ):"",
+					"margin-top" => $attr['display'] == 'block' ?self::get_css_value( $attr['labelSpacingTablet'], $attr['labelSpacingType'] ):"",
 				),
 				" .premium-content-switcher-second-label h3" => array(
                     "font-size" => self::get_css_value( $attr['secondLabelfontSizeTablet'], $attr['secondLabelfontSizeType'] )
@@ -904,6 +932,12 @@ class Premium_Blocks_Integration {
 					"padding-bottom" => self::get_css_value( $attr['secondpaddingBottomTablet'], $attr['secondpaddingBottomType']),
 					"padding-right"=> self::get_css_value( $attr['secondpaddingRightTablet'], $attr['secondpaddingRightType']),
 					"padding-left"=> self::get_css_value( $attr['secondpaddingLeftTablet'], $attr['secondpaddingLeftType']),
+				),
+				" .premium-content-switcher-first-content" => array(
+                    "font-size" => self::get_css_value( $attr['firstContentfontSizeTablet'], $attr['firstContentfontSizeType'] )
+				),
+				" .premium-content-switcher-second-content" => array(
+                    "font-size" => self::get_css_value( $attr['secondContentfontSizeTablet'], $attr['secondContentfontSizeType'] )
 				),
 			);
 			// Tablet Icon Size CSS ends.

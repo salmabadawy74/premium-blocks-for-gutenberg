@@ -2410,8 +2410,8 @@ color: #23282d;
   bottom: .25em;
   -webkit-transition: .4s;
   transition: .4s;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
+  /* -webkit-border-radius: 50%; */
+  /* border-radius: 50%; */
   -webkit-transform: translateX(0);
   -moz-transform: translateX(0);
   -ms-transform: translateX(0);

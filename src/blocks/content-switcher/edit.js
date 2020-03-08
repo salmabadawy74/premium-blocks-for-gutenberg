@@ -4,6 +4,7 @@ import PremiumRange from "../../components/premium-range-responsive";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumPaddingR from "../../components/premium-padding-responsive";
+import PremiumBorder from "../../components/premium-border";
 
 const { __ } = wp.i18n
 
@@ -46,7 +47,8 @@ class edit extends Component {
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-content-switcher-" + this.props.clientId)
         document.head.appendChild($style)
-        this.initToggleBox()
+        this.props.setAttributes({ switchCheck: false })
+        setTimeout(this.initToggleBox, 10);
     }
     componentDidUpdate() {
         clearTimeout(isBoxUpdated);
@@ -55,27 +57,32 @@ class edit extends Component {
     initToggleBox() {
         const { block_id, switchCheck } = this.props.attributes;
         if (!block_id) return null;
-        let toggleBox = document.getElementsByClassName(`premium-content-switcher-toggle-switch-input ${block_id}`);
-        console.log(toggleBox);
-        $(toggleBox[0]).on('change', function () {
-            if ($(this).is(':checked')) {
-                let switchToggle = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
-                switchToggle[0].classList.remove("premium-content-switcher-is-visible");
-                switchToggle[0].classList.add("premium-content-switcher-is-hidden");
-                let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
-                switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
-                switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
-            }
-            else {
-                let switchToggle = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
-                switchToggle[0].classList.remove("premium-content-switcher-is-visible");
-                switchToggle[0].classList.add("premium-content-switcher-is-hidden");
 
-                let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
-                switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
-                switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
-            }
-        })
+        let toggleBox = document.getElementsByClassName(`premium-content-switcher-toggle-switch-input ${block_id}`);
+        setTimeout(
+            toggleBox[0].addEventListener("click", () => {
+                this.props.setAttributes({ switchCheck: !switchCheck })
+                console.log(switchCheck);
+
+                if (!switchCheck) {
+                    let switchToggle = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
+                    switchToggle[0].classList.remove("premium-content-switcher-is-visible");
+                    switchToggle[0].classList.add("premium-content-switcher-is-hidden");
+                    let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
+                    switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
+                    switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
+                }
+                else {
+                    let switchToggle = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
+                    switchToggle[0].classList.remove("premium-content-switcher-is-visible");
+                    switchToggle[0].classList.add("premium-content-switcher-is-hidden");
+
+                    let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
+                    switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
+                    switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
+                }
+            })
+            , 10);
     }
 
     render() {
@@ -177,7 +184,30 @@ class edit extends Component {
             secondpaddingBottomType,
             effect,
             slide,
-            two
+            firstContentfontSize,
+            firstContentfontSizeMobile,
+            firstContentfontSizeTablet,
+            firstContentfontSizeType,
+            firstContentWeight,
+            firstContentLetter,
+            firstContentUpper,
+            firstContentStyle,
+            firstContentborderType,
+            firstContentborderWidth,
+            firstContentborderColor,
+            firstContentborderRadius,
+            secondContentfontSize,
+            secondContentfontSizeType,
+            secondContentfontSizeMobile,
+            secondContentfontSizeTablet,
+            secondContentLetter,
+            secondContentStyle,
+            secondContentWeight,
+            secondContentUpper,
+            secondContentborderType,
+            secondContentborderWidth,
+            secondContentborderColor,
+            secondContentborderRadius
         } = attributes
 
         const DISPLAY = [
@@ -512,6 +542,42 @@ class edit extends Component {
                             paddingLeftMobile={{ value: firstpaddingLeftMobile, label: __("firstpaddingLeftMobile") }}
                             paddingLeftTablet={{ value: firstpaddingLeftTablet, label: __("firstpaddingLeftTablet") }}
                         />
+                        <PremiumTypo
+                            components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                            setAttributes={setAttributes}
+                            fontSizeType={{ value: firstContentfontSizeType, label: __("firstContentfontSizeType") }}
+                            fontSize={{ value: firstContentfontSize, label: __("firstContentfontSize") }}
+                            fontSizeMobile={{ value: firstContentfontSizeMobile, label: __("firstContentfontSizeMobile") }}
+                            fontSizeTablet={{ value: firstContentfontSizeTablet, label: __("firstContentfontSizeTablet") }}
+                            weight={firstContentWeight}
+                            style={firstContentStyle}
+                            spacing={firstContentLetter}
+                            upper={firstContentUpper}
+                            onChangeWeight={newWeight =>
+                                setAttributes({ firstContentWeight: newWeight || 500 })
+                            }
+                            onChangeStyle={newStyle =>
+                                setAttributes({ firstContentStyle: newStyle })
+                            }
+                            onChangeSpacing={newValue =>
+                                setAttributes({ firstContentLetter: newValue })
+                            }
+                            onChangeUpper={check => setAttributes({ firstContentUpper: check })}
+                        />
+                        <PremiumBorder
+                            borderType={firstContentborderType}
+                            borderWidth={firstContentborderWidth}
+                            borderColor={firstContentborderColor}
+                            borderRadius={firstContentborderRadius}
+                            onChangeType={newType => setAttributes({ firstContentborderType: newType })}
+                            onChangeWidth={newWidth => setAttributes({ firstContentborderWidth: newWidth })}
+                            onChangeColor={colorValue =>
+                                setAttributes({ firstContentborderColor: colorValue.hex })
+                            }
+                            onChangeRadius={newrRadius =>
+                                setAttributes({ firstContentborderRadius: newrRadius })
+                            }
+                        />
                     </PanelBody>
                     <PanelBody
                         title={__("Second Content Style")}
@@ -565,6 +631,42 @@ class edit extends Component {
                             paddingLeftMobile={{ value: secondpaddingLeftMobile, label: __("secondpaddingLeftMobile") }}
                             paddingLeftTablet={{ value: secondpaddingLeftTablet, label: __("secondpaddingLeftTablet") }}
                         />
+                        <PremiumTypo
+                            components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                            setAttributes={setAttributes}
+                            fontSizeType={{ value: secondContentfontSizeType, label: __("secondContentfontSizeType") }}
+                            fontSize={{ value: secondContentfontSize, label: __("secondContentfontSize") }}
+                            fontSizeMobile={{ value: secondContentfontSizeMobile, label: __("secondContentfontSizeMobile") }}
+                            fontSizeTablet={{ value: secondContentfontSizeTablet, label: __("secondContentfontSizeTablet") }}
+                            weight={secondContentWeight}
+                            style={secondContentStyle}
+                            spacing={secondContentLetter}
+                            upper={secondContentUpper}
+                            onChangeWeight={newWeight =>
+                                setAttributes({ secondContentWeight: newWeight || 500 })
+                            }
+                            onChangeStyle={newStyle =>
+                                setAttributes({ secondContentStyle: newStyle })
+                            }
+                            onChangeSpacing={newValue =>
+                                setAttributes({ secondContentLetter: newValue })
+                            }
+                            onChangeUpper={check => setAttributes({ secondContentUpper: check })}
+                        />
+                        <PremiumBorder
+                            borderType={secondContentborderType}
+                            borderWidth={secondContentborderWidth}
+                            borderColor={secondContentborderColor}
+                            borderRadius={secondContentborderRadius}
+                            onChangeType={newType => setAttributes({ secondContentborderType: newType })}
+                            onChangeWidth={newWidth => setAttributes({ secondContentborderWidth: newWidth })}
+                            onChangeColor={colorValue =>
+                                setAttributes({ secondContentborderColor: colorValue.hex })
+                            }
+                            onChangeRadius={newrRadius =>
+                                setAttributes({ secondContentborderRadius: newrRadius })
+                            }
+                        />
                     </PanelBody>
                 </InspectorControls>
             ),
@@ -573,7 +675,7 @@ class edit extends Component {
                 `premium-block-${this.props.clientId}`
             )} style={{
                 textAlign: align,
-            }} id={`${mainClasses}-wrap-${this.props.clientId}`}>
+            }}>
                 <div className={`premium-content-switcher`}
                     style={{
                         textAlign: align,
@@ -596,8 +698,8 @@ class edit extends Component {
                         </div>
                         )}
                         <div className="premium-content-switcher-toggle-switch">
-                            <label className={`premium-content-switcher-toggle-switch-label ${this.props.clientId}`}>
-                                <input type="checkbox" className={`premium-content-switcher-toggle-switch-input ${this.props.clientId}`}/>
+                            <label className={`premium-content-switcher-toggle-switch-label`}>
+                                <input type="checkbox" className={`premium-content-switcher-toggle-switch-input ${this.props.clientId}`} />
                                 <span className="premium-content-switcher-toggle-switch-slider round"
                                     style={{
                                         borderRadius: switchRadius + "px"
@@ -620,11 +722,14 @@ class edit extends Component {
                         <ul className="premium-content-switcher-two-content">
                             <li className={`premium-content-switcher-is-visible premium-content-switcher-first-list ${this.props.clientId}`}
                                 style={{
-                                    background: firstContentBGColor
+                                    background: firstContentBGColor,
+                                    borderStyle: firstContentborderType,
+                                    borderWidth: firstContentborderWidth + "px",
+                                    borderRadius: firstContentborderRadius || 0 + "px",
+                                    borderColor: firstContentborderColor,
                                 }}>
                                 <RichText
-                                    tagName="div"
-                                    format="string"
+                                    tagName="p"
                                     className={`premium-content-switcher-first-content`}
                                     value={firstContent}
                                     onChange={value => {
@@ -633,17 +738,24 @@ class edit extends Component {
                                     style={{
                                         textAlign: firstcontentlign,
                                         justifyContent: firstcontentlign,
-                                        color: firstContentColor
+                                        color: firstContentColor,
+                                        // letterSpacing: firstContentLetter + "px",
+                                        // textTransform: firstContentUpper ? "uppercase" : "none",
+                                        // fontStyle: firstContentStyle,
+                                        // fontWeight: firstContentWeight,
                                     }}
                                 />
                             </li>
                             <li className={`premium-content-switcher-is-hidden premium-content-switcher-second-list ${this.props.clientId}`}
                                 style={{
-                                    background: secondContentBGColor
+                                    background: secondContentBGColor,
+                                    borderStyle: secondContentborderType,
+                                    borderWidth: secondContentborderWidth + "px",
+                                    borderRadius: secondContentborderRadius || 0 + "px",
+                                    borderColor: secondContentborderColor,
                                 }}>
                                 <RichText
-                                    tagName="div"
-                                    format="string"
+                                    tagName="p"
                                     className={`premium-content-switcher-second-content`}
                                     value={secondContent}
                                     onChange={value => {
@@ -652,7 +764,11 @@ class edit extends Component {
                                     style={{
                                         textAlign: secondcontentlign,
                                         justifyContent: secondcontentlign,
-                                        color: secondContentColor
+                                        color: secondContentColor,
+                                        // letterSpacing: secondContentLetter + "px",
+                                        // textTransform: secondContentUpper ? "uppercase" : "none",
+                                        // fontStyle: secondContentStyle,
+                                        // fontWeight: secondContentWeight,
                                     }}
                                 />
                             </li>

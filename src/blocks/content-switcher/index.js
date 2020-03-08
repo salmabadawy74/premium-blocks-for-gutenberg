@@ -44,12 +44,10 @@ const contentSwitcherAttrs = {
     },
     firstContent: {
         type: "string",
-        source: 'html',
         default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
     },
     secondContent: {
         type: "string",
-        source: 'html',
         default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     switchCheck: {
@@ -109,8 +107,12 @@ const contentSwitcherAttrs = {
         default: "#f2f2f2"
     },
     switchRadius: {
+        type: "number",
+        default: 50
+    },
+    switchRadiusType: {
         type: "string",
-        default: "50"
+        default: "px"
     },
     labelSpacingType: {
         type: "string",
@@ -139,7 +141,8 @@ const contentSwitcherAttrs = {
         type: "string"
     },
     firstLabelUpper: {
-        type: "string"
+        type: "boolean",
+        default: false
     },
     firstLabelWeight: {
         type: "number",
@@ -172,7 +175,8 @@ const contentSwitcherAttrs = {
         type: "string"
     },
     secondLabelUpper: {
-        type: "string"
+        type: "boolean",
+        default: false
     },
     secondLabelWeight: {
         type: "number",
@@ -391,10 +395,96 @@ const contentSwitcherAttrs = {
         type: "string",
         default: "top"
     },
-    two: {
+    firstContentLetter: {
+        type: "number"
+    },
+    firstContentStyle: {
+        type: "string"
+    },
+    firstContentUpper: {
         type: "boolean",
-        default: true
-    }
+        default: false
+    },
+    firstContentWeight: {
+        type: "number",
+        default: 500
+    },
+    firstContentfontSize: {
+        type: "number",
+        default: 15
+    },
+    firstContentfontSizeType: {
+        type: "string",
+        default: "px"
+    },
+    firstContentfontSizeMobile: {
+        type: "number",
+        default: 15
+    },
+    firstContentfontSizeTablet: {
+        type: "number",
+        default: 15
+    },
+    firstContentborderType: {
+        type: "string",
+        default: "none"
+    },
+    firstContentborderWidth: {
+        type: "number",
+        default: "1"
+    },
+    firstContentborderRadius: {
+        type: "number",
+        default: 0
+    },
+    firstContentborderColor: {
+        type: "string"
+    },
+    secondContentLetter: {
+        type: "number"
+    },
+    secondContentStyle: {
+        type: "string"
+    },
+    secondContentUpper: {
+        type: "boolean",
+        default: false
+    },
+    secondContentWeight: {
+        type: "number",
+        default: 500
+    },
+    secondContentfontSize: {
+        type: "number",
+        default: 15
+    },
+    secondContentfontSizeType: {
+        type: "string",
+        default: "px"
+    },
+    secondContentfontSizeMobile: {
+        type: "number",
+        default: 15
+    },
+    secondContentfontSizeTablet: {
+        type: "number",
+        default: 15
+    },
+    secondContentborderType: {
+        type: "string",
+        default: "none"
+    },
+    secondContentborderWidth: {
+        type: "number",
+        default: "1"
+    },
+    secondContentborderRadius: {
+        type: "number",
+        default: 0
+    },
+    secondContentborderColor: {
+        type: "string"
+    },
 };
 
 registerBlockType("premium/content-switcher", {

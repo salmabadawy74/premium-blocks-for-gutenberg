@@ -68,7 +68,25 @@ function styling(props) {
         secondpaddingBottom,
         secondpaddingBottomMobile,
         secondpaddingBottomTablet,
-        secondpaddingBottomType
+        secondpaddingBottomType,
+        switchRadius,
+        switchRadiusType,
+        firstContentfontSizeTablet,
+        firstContentfontSizeType,
+        firstContentfontSize,
+        firstContentfontSizeMobile,
+        firstContentLetter,
+        firstContentStyle,
+        firstContentUpper,
+        firstContentWeight,
+        secondContentfontSize,
+        secondContentfontSizeTablet,
+        secondContentfontSizeType,
+        secondContentfontSizeMobile,
+        secondContentUpper,
+        secondContentWeight,
+        secondContentStyle,
+        secondContentLetter
     } = props.attributes
 
     var selectors = {}
@@ -83,10 +101,12 @@ function styling(props) {
             "margin-bottom": generateCSSUnit(bottomSpacing, bottomSpacingType)
         },
         " .premium-content-switcher-toggle-switch-slider::before": {
-            "background": firstStateColor
+            "background": firstStateColor,
+            "border-radius" : generateCSSUnit(switchRadius , switchRadiusType)
         },
         " .premium-content-switcher-toggle-switch-label input:checked + .premium-content-switcher-toggle-switch-slider::before": {
-            "background": secondStateColor
+            "background": secondStateColor,
+            "border-radius" : generateCSSUnit(switchRadius , switchRadiusType)
         },
         " .premium-content-switcher-toggle-switch-slider": {
             "background": switcherBGColor
@@ -119,6 +139,20 @@ function styling(props) {
 			"padding-right": generateCSSUnit(secondpaddingRight, secondpaddingRightType),
 			"padding-left": generateCSSUnit(secondpaddingLeft, secondpaddingLeftType),
         },
+        " .premium-content-switcher-first-content": {
+            "font-size": generateCSSUnit(firstContentfontSize, firstContentfontSizeType) + "!important",
+            "letter-spacing" : firstContentLetter + "px" + "!important",
+            "text-transform" : firstContentUpper ? "uppercase" : "none" + "!important",
+            "font-style" : firstContentStyle + "!important",
+            "font-weight" : firstContentWeight + "!important",
+        },
+        " .premium-content-switcher-second-content": {
+            "font-size": generateCSSUnit(secondContentfontSize, secondContentfontSizeType) + "!important",
+            "letter-spacing" : secondContentLetter + "px" + "!important",
+            "text-transform" : secondContentUpper ? "uppercase" : "none" + "!important",
+            "font-style" : secondContentStyle + "!important",
+            "font-weight" : secondContentWeight + "!important",
+        },
     }
 
     mobile_selectors = {
@@ -129,13 +163,15 @@ function styling(props) {
             "margin-bottom": generateCSSUnit(bottomSpacingMobile, bottomSpacingType)
         },
         " .premium-content-switcher-first-label": {
-            "margin-right": generateCSSUnit(labelSpacingMobile, labelSpacingType)
+            "margin-right": display=='inline' ? generateCSSUnit(labelSpacingMobile, labelSpacingType) : "",
+            "margin-bottom": display=='block' ? generateCSSUnit(labelSpacingMobile, labelSpacingType) : ""
         },
         " .premium-content-switcher-first-label h3": {
             "font-size": generateCSSUnit(firstLabelfontSizeMobile, firstLabelfontSizeType)
         },
         " .premium-content-switcher-second-label": {
-            "margin-left": generateCSSUnit(labelSpacingMobile, labelSpacingType)
+            "margin-left": display=='inline' ? generateCSSUnit(labelSpacingMobile, labelSpacingType): "",
+            "margin-top": display=='block' ? generateCSSUnit(labelSpacingMobile, labelSpacingType) : ""
         },
         " .premium-content-switcher-second-label h3": {
             "font-size": generateCSSUnit(secondLabelfontSizeMobile, secondLabelfontSizeType)
@@ -154,6 +190,12 @@ function styling(props) {
 			"padding-right": generateCSSUnit(secondpaddingRightMobile, secondpaddingRightType),
 			"padding-left": generateCSSUnit(secondpaddingLeftMobile, secondpaddingLeftType),
         },
+        " .premium-content-switcher-first-content": {
+            "font-size": generateCSSUnit(firstContentfontSizeMobile, firstContentfontSizeType) + "!important"
+        },
+        " .premium-content-switcher-second-content": {
+            "font-size": generateCSSUnit(secondContentfontSizeMobile, secondContentfontSizeType) + "!important"
+        },
     }
 
     tablet_selectors = {
@@ -164,13 +206,15 @@ function styling(props) {
             "margin-bottom": generateCSSUnit(bottomSpacingTablet, bottomSpacingType)
         },
         " .premium-content-switcher-first-label": {
-            "margin-right": generateCSSUnit(labelSpacingTablet, labelSpacingType)
+            "margin-right": display=='inline' ? generateCSSUnit(labelSpacingTablet, labelSpacingType): "",
+            "margin-bottom": display=='block' ? generateCSSUnit(labelSpacingTablet, labelSpacingType) : ""
         },
         " .premium-content-switcher-first-label h3": {
             "font-size": generateCSSUnit(firstLabelfontSizeTablet, firstLabelfontSizeType)
         },
         " .premium-content-switcher-second-label": {
-            "margin-left": generateCSSUnit(labelSpacingTablet, labelSpacingType)
+            "margin-left": display=='inline' ? generateCSSUnit(labelSpacingTablet, labelSpacingType) : "",
+            "margin-top": display=='block' ? generateCSSUnit(labelSpacingTablet, labelSpacingType) : ""
         },
         " .premium-content-switcher-second-label h3": {
             "font-size": generateCSSUnit(secondLabelfontSizeTablet, secondLabelfontSizeType)
@@ -188,6 +232,12 @@ function styling(props) {
 			"padding-bottom": generateCSSUnit(secondpaddingBottomTablet, secondpaddingBottomType),
 			"padding-right": generateCSSUnit(secondpaddingRightTablet, secondpaddingRightType),
 			"padding-left": generateCSSUnit(secondpaddingLeftTablet, secondpaddingLeftType),
+        },
+        " .premium-content-switcher-first-content": {
+            "font-size": generateCSSUnit(firstContentfontSizeTablet, firstContentfontSizeType) + "!important"
+        },
+        " .premium-content-switcher-second-content": {
+            "font-size": generateCSSUnit(secondContentfontSizeTablet, secondContentfontSizeType) + "!important"
         },
     }
 

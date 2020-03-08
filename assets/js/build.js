@@ -51464,12 +51464,10 @@ var contentSwitcherAttrs = {
     },
     firstContent: {
         type: "string",
-        source: 'html',
         default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
     },
     secondContent: {
         type: "string",
-        source: 'html',
         default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     switchCheck: {
@@ -51529,8 +51527,12 @@ var contentSwitcherAttrs = {
         default: "#f2f2f2"
     },
     switchRadius: {
+        type: "number",
+        default: 50
+    },
+    switchRadiusType: {
         type: "string",
-        default: "50"
+        default: "px"
     },
     labelSpacingType: {
         type: "string",
@@ -51559,7 +51561,8 @@ var contentSwitcherAttrs = {
         type: "string"
     },
     firstLabelUpper: {
-        type: "string"
+        type: "boolean",
+        default: false
     },
     firstLabelWeight: {
         type: "number",
@@ -51592,7 +51595,8 @@ var contentSwitcherAttrs = {
         type: "string"
     },
     secondLabelUpper: {
-        type: "string"
+        type: "boolean",
+        default: false
     },
     secondLabelWeight: {
         type: "number",
@@ -51811,9 +51815,95 @@ var contentSwitcherAttrs = {
         type: "string",
         default: "top"
     },
-    two: {
+    firstContentLetter: {
+        type: "number"
+    },
+    firstContentStyle: {
+        type: "string"
+    },
+    firstContentUpper: {
         type: "boolean",
-        default: true
+        default: false
+    },
+    firstContentWeight: {
+        type: "number",
+        default: 500
+    },
+    firstContentfontSize: {
+        type: "number",
+        default: 15
+    },
+    firstContentfontSizeType: {
+        type: "string",
+        default: "px"
+    },
+    firstContentfontSizeMobile: {
+        type: "number",
+        default: 15
+    },
+    firstContentfontSizeTablet: {
+        type: "number",
+        default: 15
+    },
+    firstContentborderType: {
+        type: "string",
+        default: "none"
+    },
+    firstContentborderWidth: {
+        type: "number",
+        default: "1"
+    },
+    firstContentborderRadius: {
+        type: "number",
+        default: 0
+    },
+    firstContentborderColor: {
+        type: "string"
+    },
+    secondContentLetter: {
+        type: "number"
+    },
+    secondContentStyle: {
+        type: "string"
+    },
+    secondContentUpper: {
+        type: "boolean",
+        default: false
+    },
+    secondContentWeight: {
+        type: "number",
+        default: 500
+    },
+    secondContentfontSize: {
+        type: "number",
+        default: 15
+    },
+    secondContentfontSizeType: {
+        type: "string",
+        default: "px"
+    },
+    secondContentfontSizeMobile: {
+        type: "number",
+        default: 15
+    },
+    secondContentfontSizeTablet: {
+        type: "number",
+        default: 15
+    },
+    secondContentborderType: {
+        type: "string",
+        default: "none"
+    },
+    secondContentborderWidth: {
+        type: "number",
+        default: "1"
+    },
+    secondContentborderRadius: {
+        type: "number",
+        default: 0
+    },
+    secondContentborderColor: {
+        type: "string"
     }
 };
 
@@ -51876,17 +51966,20 @@ function save(props) {
         secondContentColor = attributes.secondContentColor,
         secondContentBGColor = attributes.secondContentBGColor,
         effect = attributes.effect,
-        slide = attributes.slide;
+        slide = attributes.slide,
+        firstContentborderType = attributes.firstContentborderType,
+        firstContentborderWidth = attributes.firstContentborderWidth,
+        firstContentborderColor = attributes.firstContentborderColor,
+        firstContentborderRadius = attributes.firstContentborderRadius,
+        secondContentborderColor = attributes.secondContentborderColor,
+        secondContentborderRadius = attributes.secondContentborderRadius,
+        secondContentborderWidth = attributes.secondContentborderWidth,
+        secondContentborderType = attributes.secondContentborderType;
 
-
-    var changeSwitch = function changeSwitch() {
-        setAttributes({ switchCheck: !switchCheck });
-    };
 
     return wp.element.createElement(
         "div",
-        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id + " " + switchCheck),
-            id: "premium-block-" + block_id,
+        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id),
             style: {
                 textAlign: align
             } },
@@ -51925,8 +52018,8 @@ function save(props) {
                     { className: "premium-content-switcher-toggle-switch" },
                     wp.element.createElement(
                         "label",
-                        { className: "premium-content-switcher-toggle-switch-label " + block_id },
-                        wp.element.createElement("input", { type: "checkbox" }),
+                        { className: "premium-content-switcher-toggle-switch-label" },
+                        wp.element.createElement("input", { type: "checkbox", className: "premium-content-switcher-toggle-switch-input " + block_id }),
                         wp.element.createElement("span", { className: "premium-content-switcher-toggle-switch-slider round",
                             style: {
                                 borderRadius: switchRadius + "px"
@@ -51960,17 +52053,24 @@ function save(props) {
                         "li",
                         { className: "premium-content-switcher-is-visible premium-content-switcher-first-list " + block_id,
                             style: {
-                                background: firstContentBGColor
+                                background: firstContentBGColor,
+                                borderStyle: firstContentborderType,
+                                borderWidth: firstContentborderWidth + "px",
+                                borderRadius: firstContentborderRadius || 0 + "px",
+                                borderColor: firstContentborderColor
                             } },
                         wp.element.createElement(RichText.Content, {
-                            tagName: "div",
-                            format: "string",
+                            tagName: "p",
                             className: "premium-content-switcher-first-content",
                             value: firstContent,
                             style: {
                                 textAlign: firstcontentlign,
                                 justifyContent: firstcontentlign,
                                 color: firstContentColor
+                                // letterSpacing: firstContentLetter + "px",
+                                // textTransform: firstContentUpper ? "uppercase" : "none",
+                                // fontStyle: firstContentStyle,
+                                // fontWeight: firstContentWeight,
                             }
                         })
                     ),
@@ -51978,17 +52078,24 @@ function save(props) {
                         "li",
                         { className: "premium-content-switcher-is-hidden premium-content-switcher-second-list " + block_id,
                             style: {
-                                background: secondContentBGColor
+                                background: secondContentBGColor,
+                                borderStyle: secondContentborderType,
+                                borderWidth: secondContentborderWidth + "px",
+                                borderRadius: secondContentborderRadius || 0 + "px",
+                                borderColor: secondContentborderColor
                             } },
                         wp.element.createElement(RichText.Content, {
-                            tagName: "div",
-                            format: "string",
+                            tagName: "p",
                             className: "premium-content-switcher-second-content",
                             value: secondContent,
                             style: {
                                 textAlign: secondcontentlign,
                                 justifyContent: secondcontentlign,
                                 color: secondContentColor
+                                // letterSpacing: secondContentLetter + "px",
+                                // textTransform: secondContentUpper ? "uppercase" : "none",
+                                // fontStyle: secondContentStyle,
+                                // fontWeight: secondContentWeight,
                             }
                         })
                     )
@@ -52010,6 +52117,7 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_padding_responsive__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_border__ = __webpack_require__(4);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52017,6 +52125,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -52069,7 +52178,8 @@ var edit = function (_Component) {
             var $style = document.createElement("style");
             $style.setAttribute("id", "premium-style-content-switcher-" + this.props.clientId);
             document.head.appendChild($style);
-            this.initToggleBox();
+            this.props.setAttributes({ switchCheck: false });
+            setTimeout(this.initToggleBox, 10);
         }
     }, {
         key: "componentDidUpdate",
@@ -52080,15 +52190,20 @@ var edit = function (_Component) {
     }, {
         key: "initToggleBox",
         value: function initToggleBox() {
+            var _this2 = this;
+
             var _props$attributes = this.props.attributes,
                 block_id = _props$attributes.block_id,
                 switchCheck = _props$attributes.switchCheck;
 
             if (!block_id) return null;
+
             var toggleBox = document.getElementsByClassName("premium-content-switcher-toggle-switch-input " + block_id);
-            console.log(toggleBox);
-            $(toggleBox[0]).on('change', function () {
-                if ($(this).is(':checked')) {
+            setTimeout(toggleBox[0].addEventListener("click", function () {
+                _this2.props.setAttributes({ switchCheck: !switchCheck });
+                console.log(switchCheck);
+
+                if (!switchCheck) {
                     var switchToggle = document.getElementsByClassName("premium-content-switcher-first-list " + block_id);
                     switchToggle[0].classList.remove("premium-content-switcher-is-visible");
                     switchToggle[0].classList.add("premium-content-switcher-is-hidden");
@@ -52104,7 +52219,7 @@ var edit = function (_Component) {
                     _switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
                     _switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
                 }
-            });
+            }), 10);
         }
     }, {
         key: "render",
@@ -52208,7 +52323,30 @@ var edit = function (_Component) {
                 secondpaddingBottomType = attributes.secondpaddingBottomType,
                 effect = attributes.effect,
                 slide = attributes.slide,
-                two = attributes.two;
+                firstContentfontSize = attributes.firstContentfontSize,
+                firstContentfontSizeMobile = attributes.firstContentfontSizeMobile,
+                firstContentfontSizeTablet = attributes.firstContentfontSizeTablet,
+                firstContentfontSizeType = attributes.firstContentfontSizeType,
+                firstContentWeight = attributes.firstContentWeight,
+                firstContentLetter = attributes.firstContentLetter,
+                firstContentUpper = attributes.firstContentUpper,
+                firstContentStyle = attributes.firstContentStyle,
+                firstContentborderType = attributes.firstContentborderType,
+                firstContentborderWidth = attributes.firstContentborderWidth,
+                firstContentborderColor = attributes.firstContentborderColor,
+                firstContentborderRadius = attributes.firstContentborderRadius,
+                secondContentfontSize = attributes.secondContentfontSize,
+                secondContentfontSizeType = attributes.secondContentfontSizeType,
+                secondContentfontSizeMobile = attributes.secondContentfontSizeMobile,
+                secondContentfontSizeTablet = attributes.secondContentfontSizeTablet,
+                secondContentLetter = attributes.secondContentLetter,
+                secondContentStyle = attributes.secondContentStyle,
+                secondContentWeight = attributes.secondContentWeight,
+                secondContentUpper = attributes.secondContentUpper,
+                secondContentborderType = attributes.secondContentborderType,
+                secondContentborderWidth = attributes.secondContentborderWidth,
+                secondContentborderColor = attributes.secondContentborderColor,
+                secondContentborderRadius = attributes.secondContentborderRadius;
 
 
             var DISPLAY = [{
@@ -52607,6 +52745,48 @@ var edit = function (_Component) {
                         paddingLeft: { value: firstpaddingLeft, label: __("firstpaddingLeft") },
                         paddingLeftMobile: { value: firstpaddingLeftMobile, label: __("firstpaddingLeftMobile") },
                         paddingLeftTablet: { value: firstpaddingLeftTablet, label: __("firstpaddingLeftTablet") }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
+                        components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                        setAttributes: setAttributes,
+                        fontSizeType: { value: firstContentfontSizeType, label: __("firstContentfontSizeType") },
+                        fontSize: { value: firstContentfontSize, label: __("firstContentfontSize") },
+                        fontSizeMobile: { value: firstContentfontSizeMobile, label: __("firstContentfontSizeMobile") },
+                        fontSizeTablet: { value: firstContentfontSizeTablet, label: __("firstContentfontSizeTablet") },
+                        weight: firstContentWeight,
+                        style: firstContentStyle,
+                        spacing: firstContentLetter,
+                        upper: firstContentUpper,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return setAttributes({ firstContentWeight: newWeight || 500 });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return setAttributes({ firstContentStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return setAttributes({ firstContentLetter: newValue });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return setAttributes({ firstContentUpper: check });
+                        }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_border__["a" /* default */], {
+                        borderType: firstContentborderType,
+                        borderWidth: firstContentborderWidth,
+                        borderColor: firstContentborderColor,
+                        borderRadius: firstContentborderRadius,
+                        onChangeType: function onChangeType(newType) {
+                            return setAttributes({ firstContentborderType: newType });
+                        },
+                        onChangeWidth: function onChangeWidth(newWidth) {
+                            return setAttributes({ firstContentborderWidth: newWidth });
+                        },
+                        onChangeColor: function onChangeColor(colorValue) {
+                            return setAttributes({ firstContentborderColor: colorValue.hex });
+                        },
+                        onChangeRadius: function onChangeRadius(newrRadius) {
+                            return setAttributes({ firstContentborderRadius: newrRadius });
+                        }
                     })
                 ),
                 wp.element.createElement(
@@ -52670,13 +52850,55 @@ var edit = function (_Component) {
                         paddingLeft: { value: secondpaddingLeft, label: __("secondpaddingLeft") },
                         paddingLeftMobile: { value: secondpaddingLeftMobile, label: __("secondpaddingLeftMobile") },
                         paddingLeftTablet: { value: secondpaddingLeftTablet, label: __("secondpaddingLeftTablet") }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
+                        components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                        setAttributes: setAttributes,
+                        fontSizeType: { value: secondContentfontSizeType, label: __("secondContentfontSizeType") },
+                        fontSize: { value: secondContentfontSize, label: __("secondContentfontSize") },
+                        fontSizeMobile: { value: secondContentfontSizeMobile, label: __("secondContentfontSizeMobile") },
+                        fontSizeTablet: { value: secondContentfontSizeTablet, label: __("secondContentfontSizeTablet") },
+                        weight: secondContentWeight,
+                        style: secondContentStyle,
+                        spacing: secondContentLetter,
+                        upper: secondContentUpper,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return setAttributes({ secondContentWeight: newWeight || 500 });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return setAttributes({ secondContentStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return setAttributes({ secondContentLetter: newValue });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return setAttributes({ secondContentUpper: check });
+                        }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_border__["a" /* default */], {
+                        borderType: secondContentborderType,
+                        borderWidth: secondContentborderWidth,
+                        borderColor: secondContentborderColor,
+                        borderRadius: secondContentborderRadius,
+                        onChangeType: function onChangeType(newType) {
+                            return setAttributes({ secondContentborderType: newType });
+                        },
+                        onChangeWidth: function onChangeWidth(newWidth) {
+                            return setAttributes({ secondContentborderWidth: newWidth });
+                        },
+                        onChangeColor: function onChangeColor(colorValue) {
+                            return setAttributes({ secondContentborderColor: colorValue.hex });
+                        },
+                        onChangeRadius: function onChangeRadius(newrRadius) {
+                            return setAttributes({ secondContentborderRadius: newrRadius });
+                        }
                     })
                 )
             ), wp.element.createElement(
                 "div",
                 { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId), style: {
                         textAlign: align
-                    }, id: mainClasses + "-wrap-" + this.props.clientId },
+                    } },
                 wp.element.createElement(
                     "div",
                     { className: "premium-content-switcher",
@@ -52712,7 +52934,7 @@ var edit = function (_Component) {
                             { className: "premium-content-switcher-toggle-switch" },
                             wp.element.createElement(
                                 "label",
-                                { className: "premium-content-switcher-toggle-switch-label " + this.props.clientId },
+                                { className: "premium-content-switcher-toggle-switch-label" },
                                 wp.element.createElement("input", { type: "checkbox", className: "premium-content-switcher-toggle-switch-input " + this.props.clientId }),
                                 wp.element.createElement("span", { className: "premium-content-switcher-toggle-switch-slider round",
                                     style: {
@@ -52747,11 +52969,14 @@ var edit = function (_Component) {
                                 "li",
                                 { className: "premium-content-switcher-is-visible premium-content-switcher-first-list " + this.props.clientId,
                                     style: {
-                                        background: firstContentBGColor
+                                        background: firstContentBGColor,
+                                        borderStyle: firstContentborderType,
+                                        borderWidth: firstContentborderWidth + "px",
+                                        borderRadius: firstContentborderRadius || 0 + "px",
+                                        borderColor: firstContentborderColor
                                     } },
                                 wp.element.createElement(RichText, {
-                                    tagName: "div",
-                                    format: "string",
+                                    tagName: "p",
                                     className: "premium-content-switcher-first-content",
                                     value: firstContent,
                                     onChange: function onChange(value) {
@@ -52761,6 +52986,10 @@ var edit = function (_Component) {
                                         textAlign: firstcontentlign,
                                         justifyContent: firstcontentlign,
                                         color: firstContentColor
+                                        // letterSpacing: firstContentLetter + "px",
+                                        // textTransform: firstContentUpper ? "uppercase" : "none",
+                                        // fontStyle: firstContentStyle,
+                                        // fontWeight: firstContentWeight,
                                     }
                                 })
                             ),
@@ -52768,11 +52997,14 @@ var edit = function (_Component) {
                                 "li",
                                 { className: "premium-content-switcher-is-hidden premium-content-switcher-second-list " + this.props.clientId,
                                     style: {
-                                        background: secondContentBGColor
+                                        background: secondContentBGColor,
+                                        borderStyle: secondContentborderType,
+                                        borderWidth: secondContentborderWidth + "px",
+                                        borderRadius: secondContentborderRadius || 0 + "px",
+                                        borderColor: secondContentborderColor
                                     } },
                                 wp.element.createElement(RichText, {
-                                    tagName: "div",
-                                    format: "string",
+                                    tagName: "p",
                                     className: "premium-content-switcher-second-content",
                                     value: secondContent,
                                     onChange: function onChange(value) {
@@ -52782,6 +53014,10 @@ var edit = function (_Component) {
                                         textAlign: secondcontentlign,
                                         justifyContent: secondcontentlign,
                                         color: secondContentColor
+                                        // letterSpacing: secondContentLetter + "px",
+                                        // textTransform: secondContentUpper ? "uppercase" : "none",
+                                        // fontStyle: secondContentStyle,
+                                        // fontWeight: secondContentWeight,
                                     }
                                 })
                             )
@@ -52877,7 +53113,25 @@ function styling(props) {
         secondpaddingBottom = _props$attributes.secondpaddingBottom,
         secondpaddingBottomMobile = _props$attributes.secondpaddingBottomMobile,
         secondpaddingBottomTablet = _props$attributes.secondpaddingBottomTablet,
-        secondpaddingBottomType = _props$attributes.secondpaddingBottomType;
+        secondpaddingBottomType = _props$attributes.secondpaddingBottomType,
+        switchRadius = _props$attributes.switchRadius,
+        switchRadiusType = _props$attributes.switchRadiusType,
+        firstContentfontSizeTablet = _props$attributes.firstContentfontSizeTablet,
+        firstContentfontSizeType = _props$attributes.firstContentfontSizeType,
+        firstContentfontSize = _props$attributes.firstContentfontSize,
+        firstContentfontSizeMobile = _props$attributes.firstContentfontSizeMobile,
+        firstContentLetter = _props$attributes.firstContentLetter,
+        firstContentStyle = _props$attributes.firstContentStyle,
+        firstContentUpper = _props$attributes.firstContentUpper,
+        firstContentWeight = _props$attributes.firstContentWeight,
+        secondContentfontSize = _props$attributes.secondContentfontSize,
+        secondContentfontSizeTablet = _props$attributes.secondContentfontSizeTablet,
+        secondContentfontSizeType = _props$attributes.secondContentfontSizeType,
+        secondContentfontSizeMobile = _props$attributes.secondContentfontSizeMobile,
+        secondContentUpper = _props$attributes.secondContentUpper,
+        secondContentWeight = _props$attributes.secondContentWeight,
+        secondContentStyle = _props$attributes.secondContentStyle,
+        secondContentLetter = _props$attributes.secondContentLetter;
 
 
     var selectors = {};
@@ -52891,9 +53145,11 @@ function styling(props) {
     }, _defineProperty(_selectors, " .premium-content-switcher-toggle-" + display, {
         "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(bottomSpacing, bottomSpacingType)
     }), _defineProperty(_selectors, " .premium-content-switcher-toggle-switch-slider::before", {
-        "background": firstStateColor
+        "background": firstStateColor,
+        "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(switchRadius, switchRadiusType)
     }), _defineProperty(_selectors, " .premium-content-switcher-toggle-switch-label input:checked + .premium-content-switcher-toggle-switch-slider::before", {
-        "background": secondStateColor
+        "background": secondStateColor,
+        "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(switchRadius, switchRadiusType)
     }), _defineProperty(_selectors, " .premium-content-switcher-toggle-switch-slider", {
         "background": switcherBGColor
     }), _defineProperty(_selectors, " .premium-content-switcher-first-label", {
@@ -52918,6 +53174,18 @@ function styling(props) {
         "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(secondpaddingBottom, secondpaddingBottomType),
         "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(secondpaddingRight, secondpaddingRightType),
         "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(secondpaddingLeft, secondpaddingLeftType)
+    }), _defineProperty(_selectors, " .premium-content-switcher-first-content", {
+        "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(firstContentfontSize, firstContentfontSizeType) + "!important",
+        "letter-spacing": firstContentLetter + "px" + "!important",
+        "text-transform": firstContentUpper ? "uppercase" : "none" + "!important",
+        "font-style": firstContentStyle + "!important",
+        "font-weight": firstContentWeight + "!important"
+    }), _defineProperty(_selectors, " .premium-content-switcher-second-content", {
+        "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(secondContentfontSize, secondContentfontSizeType) + "!important",
+        "letter-spacing": secondContentLetter + "px" + "!important",
+        "text-transform": secondContentUpper ? "uppercase" : "none" + "!important",
+        "font-style": secondContentStyle + "!important",
+        "font-weight": secondContentWeight + "!important"
     }), _selectors);
 
     mobile_selectors = (_mobile_selectors = {
@@ -52927,11 +53195,13 @@ function styling(props) {
     }, _defineProperty(_mobile_selectors, " .premium-content-switcher-toggle-" + display, {
         "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(bottomSpacingMobile, bottomSpacingType)
     }), _defineProperty(_mobile_selectors, " .premium-content-switcher-first-label", {
-        "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(labelSpacingMobile, labelSpacingType)
+        "margin-right": display == 'inline' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(labelSpacingMobile, labelSpacingType) : "",
+        "margin-bottom": display == 'block' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(labelSpacingMobile, labelSpacingType) : ""
     }), _defineProperty(_mobile_selectors, " .premium-content-switcher-first-label h3", {
         "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(firstLabelfontSizeMobile, firstLabelfontSizeType)
     }), _defineProperty(_mobile_selectors, " .premium-content-switcher-second-label", {
-        "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(labelSpacingMobile, labelSpacingType)
+        "margin-left": display == 'inline' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(labelSpacingMobile, labelSpacingType) : "",
+        "margin-top": display == 'block' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(labelSpacingMobile, labelSpacingType) : ""
     }), _defineProperty(_mobile_selectors, " .premium-content-switcher-second-label h3", {
         "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(secondLabelfontSizeMobile, secondLabelfontSizeType)
     }), _defineProperty(_mobile_selectors, " .premium-content-switcher-first-list", {
@@ -52946,6 +53216,10 @@ function styling(props) {
         "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(secondpaddingBottomMobile, secondpaddingBottomType),
         "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(secondpaddingRightMobile, secondpaddingRightType),
         "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(secondpaddingLeftMobile, secondpaddingLeftType)
+    }), _defineProperty(_mobile_selectors, " .premium-content-switcher-first-content", {
+        "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(firstContentfontSizeMobile, firstContentfontSizeType) + "!important"
+    }), _defineProperty(_mobile_selectors, " .premium-content-switcher-second-content", {
+        "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(secondContentfontSizeMobile, secondContentfontSizeType) + "!important"
     }), _mobile_selectors);
 
     tablet_selectors = (_tablet_selectors = {
@@ -52955,11 +53229,13 @@ function styling(props) {
     }, _defineProperty(_tablet_selectors, " .premium-content-switcher-toggle-" + display, {
         "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(bottomSpacingTablet, bottomSpacingType)
     }), _defineProperty(_tablet_selectors, " .premium-content-switcher-first-label", {
-        "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(labelSpacingTablet, labelSpacingType)
+        "margin-right": display == 'inline' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(labelSpacingTablet, labelSpacingType) : "",
+        "margin-bottom": display == 'block' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(labelSpacingTablet, labelSpacingType) : ""
     }), _defineProperty(_tablet_selectors, " .premium-content-switcher-first-label h3", {
         "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(firstLabelfontSizeTablet, firstLabelfontSizeType)
     }), _defineProperty(_tablet_selectors, " .premium-content-switcher-second-label", {
-        "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(labelSpacingTablet, labelSpacingType)
+        "margin-left": display == 'inline' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(labelSpacingTablet, labelSpacingType) : "",
+        "margin-top": display == 'block' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(labelSpacingTablet, labelSpacingType) : ""
     }), _defineProperty(_tablet_selectors, " .premium-content-switcher-second-label h3", {
         "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(secondLabelfontSizeTablet, secondLabelfontSizeType)
     }), _defineProperty(_tablet_selectors, " .premium-content-switcher-first-list", {
@@ -52974,6 +53250,10 @@ function styling(props) {
         "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(secondpaddingBottomTablet, secondpaddingBottomType),
         "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(secondpaddingRightTablet, secondpaddingRightType),
         "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(secondpaddingLeftTablet, secondpaddingLeftType)
+    }), _defineProperty(_tablet_selectors, " .premium-content-switcher-first-content", {
+        "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(firstContentfontSizeTablet, firstContentfontSizeType) + "!important"
+    }), _defineProperty(_tablet_selectors, " .premium-content-switcher-second-content", {
+        "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(secondContentfontSizeTablet, secondContentfontSizeType) + "!important"
     }), _tablet_selectors);
 
     var styling_css = "";
