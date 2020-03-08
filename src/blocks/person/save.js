@@ -118,7 +118,7 @@ const save = props => {
                         {value.personImgUrl && (
                             <img
                                 className={`premium-person__img`}
-                                src={`${value.personImgUrl}`}
+                                src={`${value.personImgUrl.url}`}
                                 alt="Person"
                                 style={{
 
