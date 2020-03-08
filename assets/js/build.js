@@ -41880,7 +41880,7 @@ var save = function save(props) {
     var content = function content() {
         return wp.element.createElement(
             'div',
-            { className: '' + (multiPersonChecked > 1 ? 'premium-person__' + rowPerson : "")
+            { className: (multiPersonChecked > 1 ? 'premium-person__' + rowPerson : "") + ' ' + id
             },
             ' ',
             multiPersonContent.map(function (value) {

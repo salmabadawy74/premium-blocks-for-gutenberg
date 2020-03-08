@@ -108,7 +108,7 @@ const save = props => {
         </ul>
     }
     const content = () => {
-        return <div className={`${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
+        return <div className={`${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""} ${id}`}
         > {multiPersonContent.map((value) => (
             <div key={value.id} className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}>
                 <div className={`premium-person__img__container`}>
