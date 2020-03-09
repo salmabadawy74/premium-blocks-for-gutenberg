@@ -322,17 +322,18 @@ process.umask = function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return dualHeading; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return pricingTable; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return maps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return testimonial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return testimonial; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return countUp; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return icon; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return button; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return container; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return accordion; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return iconBox; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return videoBox; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return videoBox; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return person; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return iconList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return contentSwitcher; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return progressBar; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FontAwesomeEnabled; });
 /*import premiumLogo from "./logo";
 wp.blocks.updateCategory("premium-blocks", { icon: premiumLogo });*/
@@ -353,7 +354,8 @@ var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
     videoBox = _PremiumBlocksSetting.videoBox,
     person = _PremiumBlocksSetting.person,
     iconList = _PremiumBlocksSetting.iconList,
-    contentSwitcher = _PremiumBlocksSetting.contentSwitcher;
+    contentSwitcher = _PremiumBlocksSetting.contentSwitcher,
+    progressBar = _PremiumBlocksSetting.progressBar;
 
 //Plugin Config Keys
 
@@ -2828,7 +2830,7 @@ registerBlockType("premium/video-box", {
   category: "premium-blocks",
   attributes: videoBoxAttrs,
   supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["p" /* videoBox */]
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["q" /* videoBox */]
   },
   edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
   save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
@@ -5377,6 +5379,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_person__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__blocks_icon_list__ = __webpack_require__(250);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__blocks_content_switcher__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__blocks_progress_bar__ = __webpack_require__(265);
+
 
 
 
@@ -41417,7 +41421,7 @@ registerBlockType("premium/testimonial", {
   category: "premium-blocks",
   attributes: testimonialsAttrs,
   supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["o" /* testimonial */]
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["p" /* testimonial */]
   },
   edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */],
   save: __WEBPACK_IMPORTED_MODULE_2__save__["a" /* default */],
@@ -53443,6 +53447,825 @@ var PremiumPaddingR = function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["a"] = (PremiumPaddingR);
+
+/***/ }),
+/* 265 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
+
+
+
+
+
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+
+var progressBarAttrs = {
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    multiStage: {
+        type: "boolean",
+        default: false
+    },
+    percentage: {
+        type: "string",
+        default: "50%"
+    },
+    label: {
+        type: "string",
+        default: "label"
+    },
+    progressBarHeight: {
+        type: "number",
+        default: 25
+    },
+    progressBarHeightType: {
+        type: "string",
+        default: "px"
+    },
+    progressBarHeightMobile: {
+        type: "number",
+        default: 25
+    },
+    progressBarHeightTablet: {
+        type: "number",
+        default: 25
+    },
+    progressBarRadius: {
+        type: "number",
+        default: 0
+    },
+    progressBarRadiusType: {
+        type: "string",
+        default: "px"
+    },
+    progressBarRadiusMobile: {
+        type: "number",
+        default: 0
+    },
+    progressBarRadiusTablet: {
+        type: "number",
+        default: 0
+    },
+    progressBarbgColor: {
+        type: "string",
+        default: "#f5f5f5"
+    },
+    progressBarColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    labelColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    LabelLetter: {
+        type: "number",
+        default: 0
+    },
+    LabelStyle: {
+        type: "string"
+    },
+    LabelUpper: {
+        type: "boolean",
+        default: false
+    },
+    LabelWeight: {
+        type: "number",
+        default: 500
+    },
+    LabelfontSize: {
+        type: "number",
+        default: 20
+    },
+    LabelfontSizeType: {
+        type: "string",
+        default: "px"
+    },
+    LabelfontSizeMobile: {
+        type: "number",
+        default: 20
+    },
+    LabelfontSizeTablet: {
+        type: "number",
+        default: 20
+    },
+    percentageColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    percentageLetter: {
+        type: "number",
+        default: 0
+    },
+    percentageStyle: {
+        type: "string"
+    },
+    percentageWeight: {
+        type: "number",
+        default: 500
+    },
+    percentagefontSize: {
+        type: "number",
+        default: 20
+    },
+    percentagefontSizeType: {
+        type: "string",
+        default: "px"
+    },
+    percentagefontSizeMobile: {
+        type: "number",
+        default: 20
+    },
+    percentagefontSizeTablet: {
+        type: "number",
+        default: 20
+    },
+    progress: {
+        type: "number",
+        default: 50
+    },
+    repeaterItems: {
+        type: "array",
+        default: [{
+            title: __("Label"),
+            percentage: "50"
+        }]
+    }
+};
+
+registerBlockType("premium/progress-bar", {
+    title: __("progress Bar"),
+    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__icons__["a" /* default */], { icon: "progress-bar" }),
+    category: "premium-blocks",
+    attributes: progressBarAttrs,
+    supports: {
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["o" /* progressBar */]
+    },
+    edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+    save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */]
+});
+
+/***/ }),
+/* 266 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = save;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+
+
+var RichText = wp.editor.RichText;
+
+
+function save(props) {
+    var attributes = props.attributes,
+        className = props.className;
+    var block_id = attributes.block_id,
+        align = attributes.align,
+        multiStage = attributes.multiStage,
+        percentage = attributes.percentage,
+        label = attributes.label;
+
+
+    return wp.element.createElement(
+        "div",
+        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id),
+            style: {
+                textAlign: align
+            } },
+        wp.element.createElement(
+            "div",
+            { className: "premium-progress-bar",
+                style: {
+                    textAlign: align
+                } },
+            !multiStage && wp.element.createElement(
+                "p",
+                { className: "premium-progress-bar-left-label" },
+                wp.element.createElement(
+                    "span",
+                    null,
+                    label
+                )
+            ),
+            !multiStage && wp.element.createElement(
+                "p",
+                { className: "premium-progress-bar-right-label" },
+                wp.element.createElement(
+                    "span",
+                    null,
+                    percentage
+                )
+            ),
+            multiStage && wp.element.createElement(
+                "div",
+                { className: "premium-progress-bar-multiple-label" },
+                wp.element.createElement(
+                    "p",
+                    { className: "premium-progress-bar-center-label" },
+                    label,
+                    wp.element.createElement(
+                        "span",
+                        { className: "premium-progress-bar-percentage" },
+                        percentage
+                    )
+                )
+            ),
+            wp.element.createElement("div", { className: "premium-progress-bar-clear" }),
+            wp.element.createElement(
+                "div",
+                { className: "premium-progress-bar-progress" },
+                wp.element.createElement("div", { className: "premium-progress-bar-progress-bar" })
+            )
+        )
+    );
+}
+
+/***/ }),
+/* 267 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_padding_responsive__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_border__ = __webpack_require__(4);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+
+var __ = wp.i18n.__;
+
+
+var isBoxUpdated = null;
+
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var _wp$editor = wp.editor,
+    BlockControls = _wp$editor.BlockControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    InspectorControls = _wp$editor.InspectorControls,
+    ColorPalette = _wp$editor.ColorPalette,
+    RichText = _wp$editor.RichText;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl,
+    Toolbar = _wp$components.Toolbar,
+    TextControl = _wp$components.TextControl,
+    ToggleControl = _wp$components.ToggleControl;
+
+var edit = function (_Component) {
+    _inherits(edit, _Component);
+
+    function edit() {
+        _classCallCheck(this, edit);
+
+        return _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+    }
+
+    _createClass(edit, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            // Assigning id in the attribute.
+            this.props.setAttributes({ block_id: this.props.clientId });
+            this.props.setAttributes({ classMigrate: true });
+            // Pushing Style tag for this block css.
+            var $style = document.createElement("style");
+            $style.setAttribute("id", "premium-style-progress-bar-" + this.props.clientId);
+            document.head.appendChild($style);
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                attributes = _props.attributes,
+                setAttributes = _props.setAttributes,
+                isSelected = _props.isSelected;
+            var align = attributes.align,
+                className = attributes.className,
+                multiStage = attributes.multiStage,
+                percentage = attributes.percentage,
+                label = attributes.label,
+                progressBarHeight = attributes.progressBarHeight,
+                progressBarHeightTablet = attributes.progressBarHeightTablet,
+                progressBarHeightType = attributes.progressBarHeightType,
+                progressBarHeightMobile = attributes.progressBarHeightMobile,
+                progressBarRadius = attributes.progressBarRadius,
+                progressBarRadiusTablet = attributes.progressBarRadiusTablet,
+                progressBarRadiusType = attributes.progressBarRadiusType,
+                progressBarRadiusMobile = attributes.progressBarRadiusMobile,
+                progressBarbgColor = attributes.progressBarbgColor,
+                progressBarColor = attributes.progressBarColor,
+                labelColor = attributes.labelColor,
+                LabelfontSize = attributes.LabelfontSize,
+                LabelfontSizeMobile = attributes.LabelfontSizeMobile,
+                LabelfontSizeTablet = attributes.LabelfontSizeTablet,
+                LabelfontSizeType = attributes.LabelfontSizeType,
+                LabelWeight = attributes.LabelWeight,
+                LabelStyle = attributes.LabelStyle,
+                LabelUpper = attributes.LabelUpper,
+                LabelLetter = attributes.LabelLetter,
+                percentageColor = attributes.percentageColor,
+                percentagefontSize = attributes.percentagefontSize,
+                percentagefontSizeMobile = attributes.percentagefontSizeMobile,
+                percentagefontSizeTablet = attributes.percentagefontSizeTablet,
+                percentagefontSizeType = attributes.percentagefontSizeType,
+                percentageWeight = attributes.percentageWeight,
+                percentageStyle = attributes.percentageStyle,
+                percentageLetter = attributes.percentageLetter,
+                progress = attributes.progress,
+                repeaterItems = attributes.repeaterItems;
+
+
+            var element = document.getElementById("premium-style-progress-bar-" + this.props.clientId);
+
+            if (null != element && "undefined" != typeof element) {
+                element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_1__styling__["a" /* default */])(this.props);
+            }
+
+            var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-progress-bar");
+            return [isSelected && wp.element.createElement(
+                BlockControls,
+                null,
+                wp.element.createElement(AlignmentToolbar, {
+                    value: align,
+                    onChange: function onChange(value) {
+                        setAttributes({ align: value });
+                    }
+                })
+            ), isSelected && wp.element.createElement(
+                InspectorControls,
+                null,
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Progress Bar (Tab)"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Multiple Stage"),
+                        checked: multiStage,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ multiStage: newCheck });
+                        }
+                    }),
+                    !multiStage && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(TextControl, {
+                            label: __("Label"),
+                            value: label,
+                            onChange: function onChange(value) {
+                                return setAttributes({ label: value });
+                            }
+                        }),
+                        wp.element.createElement(TextControl, {
+                            label: __("Percentage"),
+                            value: percentage,
+                            onChange: function onChange(value) {
+                                return setAttributes({ percentage: value });
+                            }
+                        })
+                    ),
+                    wp.element.createElement(RangeControl, {
+                        label: __("Progress"),
+                        value: progress,
+                        min: "1",
+                        max: "100",
+                        onChange: function onChange(value) {
+                            return setAttributes({ progress: value });
+                        }
+                    }),
+                    wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-progress-bar-control-content" },
+                            wp.element.createElement(
+                                "label",
+                                null,
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-progress-bar-control-title" },
+                                    "Label"
+                                )
+                            ),
+                            wp.element.createElement("div", null),
+                            wp.element.createElement(
+                                "div",
+                                null,
+                                wp.element.createElement(
+                                    "button",
+                                    {
+                                        className: "premium-progress-bar-btn",
+                                        onClick: function onClick() {
+                                            return setAttributes({
+                                                repeaterItems: repeaterItems.concat([{
+                                                    title: __("Label"),
+                                                    percentage: __("50")
+                                                }])
+                                            });
+                                        }
+                                    },
+                                    wp.element.createElement("i", { className: "dashicons dashicons-plus premium-progress-bar-icon" }),
+                                    __("Add New Item")
+                                )
+                            )
+                        )
+                    )
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Progress Bar Style (Tab)"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__["a" /* default */], {
+                        setAttributes: setAttributes,
+                        rangeType: { value: progressBarHeightType, label: __("progressBarHeightType") },
+                        range: { value: progressBarHeight, label: __("progressBarHeight") },
+                        rangeMobile: { value: progressBarHeightMobile, label: __("progressBarHeightMobile") },
+                        rangeTablet: { value: progressBarHeightTablet, label: __("progressBarHeightTablet") },
+                        rangeLabel: __("Height")
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__["a" /* default */], {
+                        setAttributes: setAttributes,
+                        rangeType: { value: progressBarRadiusType, label: __("progressBarRadiusType") },
+                        range: { value: progressBarRadius, label: __("progressBarRadius") },
+                        rangeMobile: { value: progressBarRadiusMobile, label: __("progressBarRadiusMobile") },
+                        rangeTablet: { value: progressBarRadiusTablet, label: __("progressBarRadiusTablet") },
+                        rangeLabel: __("Border Radius")
+                    }),
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("Background Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: progressBarbgColor,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({
+                                progressBarbgColor: newValue
+                            });
+                        },
+                        allowReset: true
+                    }),
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("Progressbar Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: progressBarColor,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({
+                                progressBarColor: newValue
+                            });
+                        },
+                        allowReset: true
+                    })
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Label Style (Tab)"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: labelColor,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({
+                                labelColor: newValue
+                            });
+                        },
+                        allowReset: true
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
+                        components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                        setAttributes: setAttributes,
+                        fontSizeType: { value: LabelfontSizeType, label: __("LabelfontSizeType") },
+                        fontSize: { value: LabelfontSize, label: __("LabelfontSize") },
+                        fontSizeMobile: { value: LabelfontSizeMobile, label: __("LabelfontSizeMobile") },
+                        fontSizeTablet: { value: LabelfontSizeTablet, label: __("LabelfontSizeTablet") },
+                        weight: LabelWeight,
+                        style: LabelStyle,
+                        spacing: LabelLetter,
+                        upper: LabelUpper,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return setAttributes({ LabelWeight: newWeight || 500 });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return setAttributes({ LabelStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return setAttributes({ LabelLetter: newValue });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return setAttributes({ LabelUpper: check });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Percentage Style (Tab)"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: percentageColor,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({
+                                percentageColor: newValue
+                            });
+                        },
+                        allowReset: true
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
+                        components: ["responsiveSize", "weight", "style", "spacing"],
+                        setAttributes: setAttributes,
+                        fontSizeType: { value: percentagefontSizeType, label: __("percentagefontSizeType") },
+                        fontSize: { value: percentagefontSize, label: __("percentagefontSize") },
+                        fontSizeMobile: { value: percentagefontSizeMobile, label: __("percentagefontSizeMobile") },
+                        fontSizeTablet: { value: percentagefontSizeTablet, label: __("percentagefontSizeTablet") },
+                        weight: percentageWeight,
+                        style: percentageStyle,
+                        spacing: percentageLetter,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return setAttributes({ percentageWeight: newWeight || 500 });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return setAttributes({ percentageStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return setAttributes({ percentageLetter: newValue });
+                        }
+                    })
+                )
+            ), wp.element.createElement(
+                "div",
+                { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId), style: {
+                        textAlign: align
+                    } },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-progress-bar",
+                        style: {
+                            textAlign: align
+                        } },
+                    !multiStage && wp.element.createElement(
+                        "p",
+                        { className: "premium-progress-bar-left-label" },
+                        wp.element.createElement(
+                            "span",
+                            null,
+                            label
+                        )
+                    ),
+                    !multiStage && wp.element.createElement(
+                        "p",
+                        { className: "premium-progress-bar-right-label" },
+                        wp.element.createElement(
+                            "span",
+                            null,
+                            percentage
+                        )
+                    ),
+                    multiStage && wp.element.createElement(
+                        "div",
+                        { className: "premium-progress-bar-multiple-label" },
+                        wp.element.createElement(
+                            "p",
+                            { className: "premium-progress-bar-center-label" },
+                            label,
+                            wp.element.createElement(
+                                "span",
+                                { className: "premium-progress-bar-percentage" },
+                                percentage
+                            )
+                        )
+                    ),
+                    wp.element.createElement("div", { className: "premium-progress-bar-clear" }),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-progress-bar-progress" },
+                        wp.element.createElement("div", { className: "premium-progress-bar-progress-bar" })
+                    )
+                )
+            )];
+        }
+    }]);
+
+    return edit;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (edit);
+
+/***/ }),
+/* 268 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(77);
+
+
+
+function styling(props) {
+    var _props$attributes = props.attributes,
+        classMigrate = _props$attributes.classMigrate,
+        progressBarHeightTablet = _props$attributes.progressBarHeightTablet,
+        progressBarHeightType = _props$attributes.progressBarHeightType,
+        progressBarHeight = _props$attributes.progressBarHeight,
+        progressBarHeightMobile = _props$attributes.progressBarHeightMobile,
+        progressBarRadius = _props$attributes.progressBarRadius,
+        progressBarRadiusType = _props$attributes.progressBarRadiusType,
+        progressBarRadiusTablet = _props$attributes.progressBarRadiusTablet,
+        progressBarRadiusMobile = _props$attributes.progressBarRadiusMobile,
+        progressBarbgColor = _props$attributes.progressBarbgColor,
+        progressBarColor = _props$attributes.progressBarColor,
+        labelColor = _props$attributes.labelColor,
+        LabelfontSize = _props$attributes.LabelfontSize,
+        LabelfontSizeMobile = _props$attributes.LabelfontSizeMobile,
+        LabelfontSizeTablet = _props$attributes.LabelfontSizeTablet,
+        LabelfontSizeType = _props$attributes.LabelfontSizeType,
+        LabelWeight = _props$attributes.LabelWeight,
+        LabelStyle = _props$attributes.LabelStyle,
+        LabelUpper = _props$attributes.LabelUpper,
+        LabelLetter = _props$attributes.LabelLetter,
+        percentageColor = _props$attributes.percentageColor,
+        percentagefontSize = _props$attributes.percentagefontSize,
+        percentagefontSizeMobile = _props$attributes.percentagefontSizeMobile,
+        percentagefontSizeTablet = _props$attributes.percentagefontSizeTablet,
+        percentagefontSizeType = _props$attributes.percentagefontSizeType,
+        percentageWeight = _props$attributes.percentageWeight,
+        percentageStyle = _props$attributes.percentageStyle,
+        percentageLetter = _props$attributes.percentageLetter,
+        progress = _props$attributes.progress;
+
+
+    var selectors = {};
+    var tablet_selectors = {};
+    var mobile_selectors = {};
+
+    selectors = {
+        " .premium-progress-bar-progress": {
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(progressBarHeight, progressBarHeightType),
+            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(progressBarRadius, progressBarRadiusType),
+            "background-color": progressBarbgColor
+        },
+        " .premium-progress-bar-progress-bar": {
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(progressBarHeight, progressBarHeightType),
+            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(progressBarRadius, progressBarRadiusType),
+            "background-color": progressBarColor,
+            "width": progress + "%" + "!important"
+        },
+        " .premium-progress-bar-left-label": {
+            "color": labelColor,
+            "font-weight": LabelWeight + "!important",
+            "letter-spacing": LabelLetter + "px" + "!important",
+            "text-transform": LabelUpper ? "uppercase" : "none" + "!important",
+            "font-style": LabelStyle + "!important",
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(LabelfontSize, LabelfontSizeType) + "!important"
+        },
+        " .premium-progress-bar-right-label": {
+            "color": percentageColor,
+            "font-weight": percentageWeight + "!important",
+            "letter-spacing": percentageLetter + "px" + "!important",
+            "font-style": percentageStyle + "!important",
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(percentagefontSize, percentagefontSizeType) + "!important"
+        },
+        " .premium-progress-bar-center-label": {
+            "color": labelColor,
+            "font-weight": LabelWeight + "!important",
+            "letter-spacing": LabelLetter + "px" + "!important",
+            "text-transform": LabelUpper ? "uppercase" : "none" + "!important",
+            "font-style": LabelStyle + "!important",
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(LabelfontSize, LabelfontSizeType) + "!important"
+        },
+        " .premium-progress-bar-percentage": {
+            "color": percentageColor,
+            "font-weight": percentageWeight + "!important",
+            "letter-spacing": percentageLetter + "px" + "!important",
+            "font-style": percentageStyle + "!important",
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(percentagefontSize, percentagefontSizeType) + "!important"
+        }
+        // " .premium-progress-bar-progress-bar": {
+        //     "width": progress + "%" + "!important",
+        // },
+    };
+
+    mobile_selectors = {
+        " .premium-progress-bar-progress": {
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(progressBarHeightMobile, progressBarHeightType),
+            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(progressBarRadiusMobile, progressBarRadiusType)
+        },
+        " .premium-progress-bar-progress-bar": {
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(progressBarHeightMobile, progressBarHeightType),
+            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(progressBarRadiusMobile, progressBarRadiusType)
+        },
+        " .premium-progress-bar-left-label": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(LabelfontSizeMobile, LabelfontSizeType) + "!important"
+        },
+        " .premium-progress-bar-right-label": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(percentagefontSizeMobile, percentagefontSizeType) + "!important"
+        },
+        " .premium-progress-bar-center-label": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(LabelfontSizeMobile, LabelfontSizeType) + "!important"
+        },
+        " .premium-progress-bar-percentage": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(percentagefontSizeMobile, percentagefontSizeType) + "!important"
+        }
+    };
+
+    tablet_selectors = {
+        " .premium-progress-bar-progress": {
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(progressBarHeightTablet, progressBarHeightType),
+            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(progressBarRadiusTablet, progressBarRadiusType)
+        },
+        " .premium-progress-bar-progress-bar": {
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(progressBarHeightTablet, progressBarHeightType),
+            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(progressBarRadiusTablet, progressBarRadiusType)
+        },
+        " .premium-progress-bar-left-label": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(LabelfontSizeTablet, LabelfontSizeType) + "!important"
+        },
+        " .premium-progress-bar-right-label": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(percentagefontSizeTablet, percentagefontSizeType) + "!important"
+        },
+        " .premium-progress-bar-center-label": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(LabelfontSizeTablet, LabelfontSizeType) + "!important"
+        },
+        " .premium-progress-bar-percentage": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(percentagefontSizeTablet, percentagefontSizeType) + "!important"
+        }
+    };
+
+    var styling_css = "";
+    var id = '#premium-progress-bar-' + props.clientId;
+    if (classMigrate) {
+        id = '.premium-block-' + props.clientId;
+    }
+
+    styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(selectors, id);
+    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
+
+    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
+
+    return styling_css;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ })
 /******/ ]);
