@@ -85,14 +85,121 @@ class edit extends Component {
             percentageStyle,
             percentageLetter,
             progress,
-            repeaterItems
+            repeaterItems,
+            editTitle,
+            styleProgress,
+            animate
         } = attributes
 
+        const STYLE = [{
+                value: "solid",
+                label: __("Solid")
+            },
+            {
+                value: "stripe",
+                label: __("Stripe")
+            }
+        ];
         var element = document.getElementById("premium-style-progress-bar-" + this.props.clientId)
 
         if (null != element && "undefined" != typeof element) {
             element.innerHTML = styling(this.props)
         }
+
+        const Items = repeaterItems.map((item, index) => {
+            return ( <div className = "premium-progress-bar-repeater" >
+                < div className = {
+                    `premium-progress-bar-repeater-title ${index}`
+                } >
+                     < div className = "premium-progress-bar-repeater-title-item" 
+                      onClick = {
+                              () => {
+                                  return setAttributes({
+                                      editTitle: !editTitle
+                                  });
+                              }
+                          } > Item# {
+                         index + 1
+                     } </div>
+                     {
+                         repeaterItems.length !=1 ?< div className = "premium-progress-bar-repeater-trashicon" >
+                         < button className = "dashicons dashicons-no"
+                         onClick={()=> removeItem(index,item)}
+                         > </button>
+                     </div>:""}
+                      </div>
+                < div className = {
+                    `premium-progress-bar-repeater-controls ${editTitle? "editable" : ""}`
+                } > 
+                <TextControl
+                label = {__("Label")}
+                value = {item.title}
+                onChange = {
+                    newText =>
+                    setAttributes({
+                        repeaterItems: onRepeaterChange(
+                            "title",
+                            newText,
+                            index
+                        )
+                    })
+                }
+                /> 
+                <TextControl
+                label = {__("Percentage")}
+                value = {item.percentage}
+                onChange = {
+                    newText =>
+                    setAttributes({
+                        repeaterItems: onRepeaterChange(
+                            "percentage",
+                            newText,
+                            index
+                        )
+                    })
+                }
+                /></div >
+                 </div>
+            )})
+
+            const onRepeaterChange = (attr, value, index) => {
+                const items = repeaterItems;
+
+                return items.map(function (item, currIndex) {
+                    if (index == currIndex) {
+                        item[attr] = value;
+                    }
+
+                    return item;
+                });
+            };
+
+            const removeItem = (index,item) => {
+                console.log(index);
+                console.log(item);
+                let array= repeaterItems.map((cont, currIndex) => {
+                        return cont
+                }).filter((f,i)=> i != index)
+                console.log(array);
+                setAttributes({repeaterItems : array});
+            }
+
+            const renderItems = repeaterItems.map((item, index) => {
+                return ( < div className = "premium-progress-bar-multiple-label"
+                        style = {
+                            {
+                                left: item.percentage + "%"
+                            }
+                        } >
+                        <p className = "premium-progress-bar-center-label" > {
+                            item.title
+                        } 
+                        <span className = "premium-progress-bar-percentage" > {
+                            item.percentage
+                        }% </span> 
+                        </p> 
+                        </div>
+                        )})
 
         const mainClasses = classnames(className, "premium-progress-bar");
         return [
@@ -118,7 +225,7 @@ class edit extends Component {
                             checked={multiStage}
                             onChange={newCheck => setAttributes({ multiStage: newCheck })}
                         />
-                        {!multiStage && (
+                        {!multiStage ? (
                             <Fragment>
                                 <TextControl
                                     label={__("Label")}
@@ -131,7 +238,35 @@ class edit extends Component {
                                     onChange={value => setAttributes({ percentage: value })}
                                 />
                             </Fragment>
-                        )}
+                        ) :
+                        < Fragment >
+                            <div className = "premium-progress-bar-control-content" >
+                            <label >
+                            <span className = "premium-progress-bar-control-title" > Label </span> 
+                            </label> 
+                            <div>{Items}</div> 
+                            <div >
+                            <button
+                                className = {
+                                    "premium-progress-bar-btn"
+                                }
+                                onClick = {
+                                        () => {
+                                            return setAttributes({
+                                                repeaterItems: repeaterItems.concat([{
+                                                    title: __("Label"),
+                                                    percentage: __("50")
+                                                }])
+                                            });
+                                        }
+                                    } >
+                            <i className = "dashicons dashicons-plus premium-progress-bar-icon" /> 
+                            {__("Add New Item")} 
+                            </button> 
+                            </div> 
+                            </div> 
+                            </Fragment>
+                            }
                         {/* <TextControl
                             label={__("Progress")}
                             value={progress}
@@ -144,32 +279,37 @@ class edit extends Component {
                             max="100"
                             onChange={value => setAttributes({ progress: value })}
                         />
-                        <Fragment>
-                            <div className="premium-progress-bar-control-content">
-                                <label>
-                                    <span className="premium-progress-bar-control-title">Label</span>
-                                </label>
-                                <div></div>
-                                <div>
-                                    <button
-                                        className={"premium-progress-bar-btn"}
-                                        onClick={() => {
-                                            return setAttributes({
-                                              repeaterItems: repeaterItems.concat([
-                                                {
-                                                  title: __("Label"),
-                                                  percentage: __("50")
-                                                }
-                                              ])
-                                            });
-                                          }}
-                                    >
-                                        <i className="dashicons dashicons-plus premium-progress-bar-icon" />
-                                        {__("Add New Item")}
-                                    </button>
-                                </div>
-                            </div>
-                        </Fragment>
+                        < SelectControl
+                        label = {
+                            __("Style")
+                        }
+                        value = {
+                            styleProgress
+                        }
+                        onChange = {
+                            newEffect => setAttributes({
+                                styleProgress: newEffect
+                            })
+                        }
+                        options = {
+                            STYLE
+                        }
+                        />
+                        {styleProgress== 'stripe' &&
+                            < ToggleControl
+                            label = {
+                                __("Animated")
+                            }
+                            checked = {
+                                animate
+                            }
+                            onChange = {
+                                newCheck => setAttributes({
+                                    animate: newCheck
+                                })
+                            }
+                            />
+                        }
                     </PanelBody>
                     <PanelBody
                         title={__("Progress Bar Style (Tab)")}
@@ -309,17 +449,13 @@ class edit extends Component {
                             <span>{percentage}</span>
                         </p>
                     )}
-                    {multiStage && (
-                        <div className="premium-progress-bar-multiple-label">
-                            <p className="premium-progress-bar-center-label">
-                                {label}
-                                <span className="premium-progress-bar-percentage">{percentage}</span>
-                            </p>
-                        </div>
-                    )}
+                    {
+                        multiStage && (<div>{renderItems}</div>)}
                     <div className="premium-progress-bar-clear"></div>
                     <div className="premium-progress-bar-progress">
-                        <div className="premium-progress-bar-progress-bar"></div>
+                        < div className = {
+                            `premium-progress-bar-progress-bar ${styleProgress=='stripe'? "premium-progress-bar-progress-stripe":""} ${animate? "premium-progress-bar-progress-active" : ""}`
+                        } > </div>
                     </div>
                 </div>
             </div>

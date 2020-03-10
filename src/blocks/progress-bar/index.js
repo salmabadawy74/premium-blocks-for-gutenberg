@@ -157,6 +157,18 @@ const progressBarAttrs = {
             }
         ]
     },
+    editTitle:{
+        type: "boolean",
+        default: false
+    },
+    styleProgress:{
+        type: "string",
+        default: "solid"
+    },
+    animate: {
+        type: "boolean",
+            default: false
+    }
 };
 
 registerBlockType("premium/progress-bar", {
