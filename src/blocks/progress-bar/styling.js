@@ -5,6 +5,7 @@ function styling(props) {
 
     const {
         classMigrate,
+        align,
         progressBarHeightTablet,
         progressBarHeightType,
         progressBarHeight,
@@ -32,7 +33,8 @@ function styling(props) {
         percentageWeight,
         percentageStyle,
         percentageLetter,
-        progress
+        progress,
+        speeds
     } = props.attributes
 
     var selectors = {}
@@ -73,6 +75,7 @@ function styling(props) {
             "text-transform": LabelUpper ? "uppercase" : "none" + "!important",
             "font-style": LabelStyle + "!important",
             "font-size": generateCSSUnit(LabelfontSize, LabelfontSizeType) + "!important",
+            "transform" : align == 'right' ? "translateX(-10%)" : align== 'left'? "translateX(-82%)" : "translateX(-45%)"
         },
         " .premium-progress-bar-percentage": {
             "color": percentageColor,
@@ -81,9 +84,6 @@ function styling(props) {
             "font-style": percentageStyle + "!important",
             "font-size": generateCSSUnit(percentagefontSize, percentagefontSizeType) + "!important",
         },
-        // " .premium-progress-bar-progress-bar": {
-        //     "width": progress + "%" + "!important",
-        // },
     }
 
     mobile_selectors = {

@@ -1,9 +1,5 @@
 import classnames from "classnames"
 
-const {
-    RichText
-} = wp.editor
-
 export default function save(props) {
 
     const { attributes, className } = props
@@ -14,7 +10,30 @@ export default function save(props) {
         multiStage,
         percentage,
         label,
+        repeaterItems,
+        styleProgress,
+        animate,
+        speeds
     } = attributes
+
+    const renderItems = repeaterItems.map((item, index) => {
+        return (< div className="premium-progress-bar-multiple-label"
+            style={
+                {
+                    left: item.percentage + "%"
+                }
+            } >
+            <p className="premium-progress-bar-center-label" > {
+                item.title
+            }
+                <span className="premium-progress-bar-percentage" > {
+                    item.percentage
+                }% </span>
+            </p>
+            <p className="premium-progress-bar-arrow"></p>
+        </div>
+        )
+    })
 
     return (
         <div className={classnames(
@@ -38,17 +57,15 @@ export default function save(props) {
                         <span>{percentage}</span>
                     </p>
                 )}
-                {multiStage && (
-                    <div className="premium-progress-bar-multiple-label">
-                        <p className="premium-progress-bar-center-label">
-                            {label}
-                            <span className="premium-progress-bar-percentage">{percentage}</span>
-                        </p>
-                    </div>
-                )}
+                {
+                    multiStage && (<div>{renderItems}</div>)}
                 <div className="premium-progress-bar-clear"></div>
                 <div className="premium-progress-bar-progress">
-                    <div className="premium-progress-bar-progress-bar"></div>
+                    < div className={
+                        `premium-progress-bar-progress-bar ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
+                    }
+                        style={{ transition: `width ${speeds}ms ease-in-out` }}
+                    > </div>
                 </div>
             </div>
         </div>

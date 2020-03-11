@@ -148,26 +148,31 @@ const progressBarAttrs = {
         type: "number",
         default: 50
     },
+    speeds: {
+        type: "number",
+        default: 100
+    },
     repeaterItems: {
         type: "array",
         default: [
             {
                 title: __("Label"),
-                percentage: "50"
+                percentage: "50",
+                edit: false
             }
         ]
     },
-    editTitle:{
+    editTitle: {
         type: "boolean",
-        default: false
+        default: true
     },
-    styleProgress:{
+    styleProgress: {
         type: "string",
         default: "solid"
     },
     animate: {
         type: "boolean",
-            default: false
+        default: false
     }
 };
 

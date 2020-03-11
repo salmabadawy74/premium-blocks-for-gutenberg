@@ -277,6 +277,8 @@ if ( ! class_exists( 'Config' ) ) {
 							'percentagefontSizeType' => 'px',
 							'percentagefontSizeMobile' => '20',
 							'percentagefontSizeTablet' => '20',
+							'progress'  => '50',
+							'progressType' => '%'
 						)
 					),
 				);
