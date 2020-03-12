@@ -36,7 +36,7 @@ const progressBarAttrs = {
     },
     label: {
         type: "string",
-        default: "label"
+        default: "Label"
     },
     progressBarHeight: {
         type: "number",
@@ -113,6 +113,10 @@ const progressBarAttrs = {
         type: "number",
         default: 20
     },
+    arrowColor:{
+        type: "string",
+        default: "#6ec1e4"
+    },
     percentageColor: {
         type: "string",
         default: "#6ec1e4"
@@ -150,7 +154,7 @@ const progressBarAttrs = {
     },
     speeds: {
         type: "number",
-        default: 100
+        default: 1
     },
     repeaterItems: {
         type: "array",

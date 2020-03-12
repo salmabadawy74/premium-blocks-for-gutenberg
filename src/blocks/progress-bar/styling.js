@@ -34,7 +34,7 @@ function styling(props) {
         percentageStyle,
         percentageLetter,
         progress,
-        speeds
+        arrowColor
     } = props.attributes
 
     var selectors = {}
@@ -83,6 +83,9 @@ function styling(props) {
             "letter-spacing": percentageLetter + "px" + "!important",
             "font-style": percentageStyle + "!important",
             "font-size": generateCSSUnit(percentagefontSize, percentagefontSizeType) + "!important",
+        },
+        " .premium-progress-bar-arrow": {
+            "color": arrowColor
         },
     }
 

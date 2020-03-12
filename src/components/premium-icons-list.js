@@ -14,7 +14,7 @@ const iconsList = {
 
     "dashicons dashicons-admin-links",
 
-    "dashicons dashicons-admin-page",
+    "dashicons admin-pagedashicons-",
 
     "dashicons dashicons-admin-comments",
 
