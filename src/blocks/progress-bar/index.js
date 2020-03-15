@@ -113,7 +113,7 @@ const progressBarAttrs = {
         type: "number",
         default: 20
     },
-    arrowColor:{
+    arrowColor: {
         type: "string",
         default: "#6ec1e4"
     },

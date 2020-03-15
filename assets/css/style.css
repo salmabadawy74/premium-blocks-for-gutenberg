@@ -2540,11 +2540,11 @@ color: #23282d;
 .premium-progress-bar-right-label{
   margin: 0 !important;
   float: right;
-  padding-left: 75%;
   font-family: "Roboto", Sans-serif;
 }
 .premium-progress-bar-labels-wrap{
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 .premium-progress-bar-progress{

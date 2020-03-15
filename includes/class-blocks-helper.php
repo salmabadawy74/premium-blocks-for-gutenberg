@@ -175,7 +175,9 @@ class Premium_Blocks_Integration {
 
 		$is_icon_list_enabled = self::$blocks['iconList'];
 		
-        $is_content_switcher_enabled = self::$blocks['contentSwitcher'];
+		$is_content_switcher_enabled = self::$blocks['contentSwitcher'];
+		
+        $is_progress_bar_enabled = self::$blocks['progressBar'];
 
         
         wp_enqueue_style(
@@ -313,7 +315,25 @@ class Premium_Blocks_Integration {
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
-        }
+		}
+		
+		if( $is_progress_bar_enabled ) {
+
+			wp_enqueue_script(
+				'waypoints_lib',
+				PREMIUM_BLOCKS_URL . 'assets/js/lib/jquery.waypoints.js',
+				array('jquery'),
+				PREMIUM_BLOCKS_VERSION
+            );
+
+            wp_enqueue_script(
+				'progress-bar-js',
+				PREMIUM_BLOCKS_URL . 'assets/js/progress-bar.js',
+				array('jquery'),
+				PREMIUM_BLOCKS_VERSION
+            );
+		}
+		
         //Enqueue Google Maps API Script
         if( $is_maps_enabled && $is_enabled ) {
             if( ! empty( $api_key ) && '1' !== $api_key ) {

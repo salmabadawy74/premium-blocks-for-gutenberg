@@ -112,115 +112,115 @@ class edit extends Component {
             removeItem,
             newIndex,
             value,
-        }) => < div className = "premium-progress-bar-repeater" >
+        }) => < div className="premium-progress-bar-repeater" >
 
-            <div className = {
-                `premium-progress-bar-repeater-title ${newIndex}`
-            } >
-            <div className = "premium-progress-bar-repeater-title-item"
-        onClick = {
-                () => edit(newIndex)
-            } >
-            Item# {
-                newIndex + 1
-            } </div>
-            < span className = "premium-progress-bar-repeater-trashicon" >
-                < i className = "dashicons dashicons-admin-page"/>
-            </span>
-             {
-                repeaterItems.length != 1 ? < div className = "premium-progress-bar-repeater-trashicon" >
-                    <button className = "dashicons dashicons-no"
-                onClick = {
-                        () => removeItem(newIndex, value)
-                    } >
-                    </button> 
-                    </div> : ""} 
-                    </div> 
-                    <div className = {
-                        `premium-progress-bar-repeater-controls ${value.edit ? "editable" : ""}`
-                    } >
-                    <TextControl
-                label = {
-                    __("Label")
-                }
-                value = {
-                    value.title
-                }
-                onChange = {
-                    newText =>
-                    setAttributes({
-                        repeaterItems: onRepeaterChange(
-                            "title",
-                            newText,
-                            newIndex
-                        )
-                    })
-                }
-                /> 
-                <TextControl
-                label = {
-                    __("Percentage")
-                }
-                value = {
-                    value.percentage
-                }
-                onChange = {
-                    newText =>
-                    setAttributes({
-                        repeaterItems: onRepeaterChange(
-                            "percentage",
-                            newText,
-                            newIndex
-                        )
-                    })
-                }
-                />
-                </div >
+                <div className={
+                    `premium-progress-bar-repeater-title ${newIndex}`
+                } >
+                    <div className="premium-progress-bar-repeater-title-item"
+                        onClick={
+                            () => edit(newIndex)
+                        } >
+                        Item# {
+                            newIndex + 1
+                        } </div>
+                    < span className="premium-progress-bar-repeater-trashicon" >
+                        < i className="dashicons dashicons-admin-page" />
+                    </span>
+                    {
+                        repeaterItems.length != 1 ? < div className="premium-progress-bar-repeater-trashicon" >
+                            <button className="dashicons dashicons-no"
+                                onClick={
+                                    () => removeItem(newIndex, value)
+                                } >
+                            </button>
+                        </div> : ""}
                 </div>
-)
+                <div className={
+                    `premium-progress-bar-repeater-controls ${value.edit ? "editable" : ""}`
+                } >
+                    <TextControl
+                        label={
+                            __("Label")
+                        }
+                        value={
+                            value.title
+                        }
+                        onChange={
+                            newText =>
+                                setAttributes({
+                                    repeaterItems: onRepeaterChange(
+                                        "title",
+                                        newText,
+                                        newIndex
+                                    )
+                                })
+                        }
+                    />
+                    <TextControl
+                        label={
+                            __("Percentage")
+                        }
+                        value={
+                            value.percentage
+                        }
+                        onChange={
+                            newText =>
+                                setAttributes({
+                                    repeaterItems: onRepeaterChange(
+                                        "percentage",
+                                        newText,
+                                        newIndex
+                                    )
+                                })
+                        }
+                    />
+                </div >
+            </div>
+        )
 
-const SortableList = SortableContainer(({
-    items,
-    removeItem,
-    edit,
-}) => {
-    return ( <div > {
-            (items).map((value, index) => (
-            <SortableItem key = {`item-${value}`}
-                index = {index}
-                newIndex = {index}
-                value = {value}
-                removeItem = {removeItem}
-                edit = {edit}
-                />
+        const SortableList = SortableContainer(({
+            items,
+            removeItem,
+            edit,
+        }) => {
+            return (<div > {
+                (items).map((value, index) => (
+                    <SortableItem key={`item-${value}`}
+                        index={index}
+                        newIndex={index}
+                        value={value}
+                        removeItem={removeItem}
+                        edit={edit}
+                    />
+                ))
+            } </div>
+            );
+        });
+        const onSortEndSingle = ({
+            oldIndex,
+            newIndex
+        }) => {
+            let arrayItem = repeaterItems.map((cont) => (
+                cont
             ))
-        } </div>
-    );
-});
-         const onSortEndSingle = ({
-             oldIndex,
-             newIndex
-         }) => {
-             let arrayItem = repeaterItems.map((cont) => (
-                 cont
-             ))
-             
-             const array = arrayMove(arrayItem, oldIndex, newIndex)
-             
-             setAttributes({
-                 repeaterItems: 
-                     array
-                
-             });
-             console.log(repeaterItems);
-             
-         };
-const shouldCancelStart = (e) => {
-    // Prevent sorting from being triggered if target is input or button
-    if (['button', 'div', 'input'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
-        return true; // Return true to cancel sorting
-    }
-}
+
+            const array = arrayMove(arrayItem, oldIndex, newIndex)
+
+            setAttributes({
+                repeaterItems:
+                    array
+
+            });
+            console.log(repeaterItems);
+
+        };
+        const shouldCancelStart = (e) => {
+            // Prevent sorting from being triggered if target is input or button
+            if (['button', 'div', 'input'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+                return true; // Return true to cancel sorting
+            }
+        }
         const Items = repeaterItems.map((item, index) => {
             return (<div className="premium-progress-bar-repeater" >
 
@@ -331,12 +331,12 @@ const shouldCancelStart = (e) => {
                     item.title
                 }
                     {
-                        item.percentage  ? < span className = "premium-progress-bar-percentage" > {
-                        item.percentage
-                    }% </span> : ""}
+                        item.percentage ? < span className="premium-progress-bar-percentage" > {
+                            item.percentage
+                        }% </span> : ""}
                 </p>
                 {
-                    (item.title || item.percentage)? < p className = "premium-progress-bar-arrow" > </p>:""}
+                    (item.title || item.percentage) ? < p className="premium-progress-bar-arrow" > </p> : ""}
             </div>
             )
         })
@@ -384,23 +384,23 @@ const shouldCancelStart = (e) => {
                                     <label >
                                         <span className="premium-progress-bar-control-title" > Label </span>
                                     </label>
-                                    < SortableList items = {
+                                    < SortableList items={
                                         repeaterItems
                                     }
-                                    onSortEnd = {
-                                        (o, n) => onSortEndSingle(o, n)
-                                    }
-                                    removeItem = {
-                                        (value) => removeItem(value)
-                                    }
-                                    edit = {
-                                        (value) => edit(value)
-                                    }
-                                    
-                                    shouldCancelStart = {
-                                        shouldCancelStart
-                                    }
-                                    helperClass = 'premium-person__sortableHelper' / >
+                                        onSortEnd={
+                                            (o, n) => onSortEndSingle(o, n)
+                                        }
+                                        removeItem={
+                                            (value) => removeItem(value)
+                                        }
+                                        edit={
+                                            (value) => edit(value)
+                                        }
+
+                                        shouldCancelStart={
+                                            shouldCancelStart
+                                        }
+                                        helperClass='premium-person__sortableHelper' />
                                     {/* <div>{Items}</div> */}
                                     <div >
                                         <button
@@ -570,21 +570,21 @@ const shouldCancelStart = (e) => {
                             }
                         />
                     </PanelBody>
-                    {multiStage &&< PanelBody
-                    title = { __("Arrow Style")}
-                    className = "premium-panel-body"
-                    initialOpen = {false} 
+                    {multiStage && < PanelBody
+                        title={__("Arrow Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
                     >
-                        < p > { __("Color")} </p> 
+                        < p > {__("Color")} </p>
                         < ColorPalette
-                            value = { arrowColor}
-                            onChange = {
+                            value={arrowColor}
+                            onChange={
                                 newValue =>
-                                setAttributes({
-                                    arrowColor: newValue
-                                })
+                                    setAttributes({
+                                        arrowColor: newValue
+                                    })
                             }
-                            allowReset = {true}
+                            allowReset={true}
                         />
                     </PanelBody>}
                 </InspectorControls>
@@ -600,26 +600,28 @@ const shouldCancelStart = (e) => {
                         textAlign: align,
                     }}>
                     {
-                        !multiStage? label? (
-                            < div className = "premium-progress-bar-labels-wrap" >
-                        <p className="premium-progress-bar-left-label">
-                            <span>{label}</span>
-                        </p>
-                        < p className = "premium-progress-bar-right-label" >
-                            <span > {
-                                percentage
-                            } </span> 
-                            </p>
-                        </div>
-                    ):"" :""}
+                        !multiStage ? label ? (
+                            < div className="premium-progress-bar-labels-wrap" >
+                                <p className="premium-progress-bar-left-label">
+                                    <span>{label}</span>
+                                </p>
+                                < p className="premium-progress-bar-right-label" >
+                                    <span > {
+                                        percentage
+                                    } </span>
+                                </p>
+                            </div>
+                        ) : "" : ""}
                     {
                         multiStage && (<div>{renderItems}</div>)}
                     <div className="premium-progress-bar-clear"></div>
                     <div className="premium-progress-bar-progress">
                         < div className={
-                            `premium-progress-bar-progress-bar ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
+                            `premium-progress-bar-progress-bar ${this.props.clientId} ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
                         }
-                            style={{ transition: `width ${speeds}ms ease-in-out` }}
+                            style={{ transition: `width ${speeds}s ease-in-out` }}
+                            data-score={`${progress}`}
+                        role="progressbar" aria-valuemin="0" aria-valuemax="100"
                         > </div>
                     </div>
                 </div>

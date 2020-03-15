@@ -13,7 +13,8 @@ export default function save(props) {
         repeaterItems,
         styleProgress,
         animate,
-        speeds
+        speeds,
+        progress
     } = attributes
 
     const renderItems = repeaterItems.map((item, index) => {
@@ -26,11 +27,13 @@ export default function save(props) {
             <p className="premium-progress-bar-center-label" > {
                 item.title
             }
-                <span className="premium-progress-bar-percentage" > {
-                    item.percentage
-                }% </span>
+                {
+                    item.percentage ? < span className="premium-progress-bar-percentage" > {
+                        item.percentage
+                    }% </span> : ""}
             </p>
-            <p className="premium-progress-bar-arrow"></p>
+            {
+                (item.title || item.percentage) ? < p className="premium-progress-bar-arrow" > </p> : ""}
         </div>
         )
     })
@@ -47,27 +50,32 @@ export default function save(props) {
                 style={{
                     textAlign: align,
                 }}>
-                {!multiStage && (
-                    <p className="premium-progress-bar-left-label">
-                        <span>{label}</span>
-                    </p>
-                )}
-                {!multiStage && (
-                    <p className="premium-progress-bar-right-label">
-                        <span>{percentage}</span>
-                    </p>
-                )}
                 {
-                    multiStage && (<div>{renderItems}</div>)}
-                <div className="premium-progress-bar-clear"></div>
-                <div className="premium-progress-bar-progress">
-                    < div className={
-                        `premium-progress-bar-progress-bar ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
-                    }
-                        style={{ transition: `width ${speeds}ms ease-in-out` }}
-                    > </div>
+                        !multiStage ? label ? (
+                            < div className="premium-progress-bar-labels-wrap" >
+                                <p className="premium-progress-bar-left-label">
+                                    <span>{label}</span>
+                                </p>
+                                < p className="premium-progress-bar-right-label" >
+                                    <span > {
+                                        percentage
+                                    } </span>
+                                </p>
+                            </div>
+                        ) : "" : ""}
+                    {
+                        multiStage && (<div>{renderItems}</div>)}
+                    <div className="premium-progress-bar-clear"></div>
+                    <div className="premium-progress-bar-progress">
+                        < div className={
+                            `premium-progress-bar-progress-bar ${block_id} ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
+                        }
+                            style={{ transition: `width ${speeds}s ease-in-out` }}
+                            data-score={`${progress}`}
+                        role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                        > </div>
+                    </div>
                 </div>
             </div>
-        </div>
     )
 }
