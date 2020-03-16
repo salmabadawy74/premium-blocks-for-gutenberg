@@ -1647,8 +1647,8 @@ function PremiumResponsive(props) {
 						onChange: function onChange(value) {
 							return props.setAttributes(_defineProperty({}, props.sizeMobileLabel, value));
 						},
-						min: 0,
-						max: 200,
+						min: props.min || 0,
+						max: props.max || 200,
 						step: props.steps,
 						beforeIcon: "editor-textcolor",
 						allowReset: true,
@@ -1666,8 +1666,8 @@ function PremiumResponsive(props) {
 						onChange: function onChange(value) {
 							return props.setAttributes(_defineProperty({}, props.sizeTabletLabel, value));
 						},
-						min: 0,
-						max: 200,
+						min: props.min || 0,
+						max: props.max || 200,
 						step: props.steps,
 						beforeIcon: "editor-textcolor",
 						allowReset: true,
@@ -1685,8 +1685,8 @@ function PremiumResponsive(props) {
 						onChange: function onChange(value) {
 							return props.setAttributes(_defineProperty({}, props.sizeLabel, value));
 						},
-						min: 0,
-						max: 200,
+						min: props.min || 0,
+						max: props.max || 200,
 						step: props.steps,
 						beforeIcon: "editor-textcolor",
 						allowReset: true,
@@ -3604,7 +3604,9 @@ var PremiumRange = function (_Component) {
                     sizeMobileText: !this.props.rangeLabel ? __("Range") : this.props.rangeLabel,
                     sizeTabletText: !this.props.rangeLabel ? __("Range") : this.props.rangeLabel,
                     sizeText: !this.props.rangeLabel ? __("Range") : this.props.rangeLabel,
-                    steps: 0.1
+                    steps: 0.1,
+                    min: this.props.min,
+                    max: this.props.max
                 }, this.props))
             );
         }
@@ -53570,6 +53572,22 @@ var progressBarAttrs = {
         type: "string",
         default: "#6ec1e4"
     },
+    arrow: {
+        type: "number",
+        default: 10
+    },
+    arrowType: {
+        type: "string",
+        default: "px"
+    },
+    arrowMobile: {
+        type: "number",
+        default: 10
+    },
+    arrowTablet: {
+        type: "number",
+        default: 10
+    },
     percentageColor: {
         type: "string",
         default: "#6ec1e4"
@@ -53628,6 +53646,46 @@ var progressBarAttrs = {
     animate: {
         type: "boolean",
         default: false
+    },
+    indicator: {
+        type: "string",
+        default: "arrow"
+    },
+    pinColor: {
+        type: "string",
+        default: "#54595f"
+    },
+    pin: {
+        type: "number",
+        default: 1
+    },
+    pinType: {
+        type: "string",
+        default: "px"
+    },
+    pinMobile: {
+        type: "number",
+        default: 1
+    },
+    pinTablet: {
+        type: "number",
+        default: 1
+    },
+    pinHeight: {
+        type: "number",
+        default: 12
+    },
+    pinHeightType: {
+        type: "string",
+        default: "px"
+    },
+    pinHeightMobile: {
+        type: "number",
+        default: 12
+    },
+    pinHeightTablet: {
+        type: "number",
+        default: 12
     }
 };
 
@@ -53665,7 +53723,8 @@ function save(props) {
         styleProgress = attributes.styleProgress,
         animate = attributes.animate,
         speeds = attributes.speeds,
-        progress = attributes.progress;
+        progress = attributes.progress,
+        indicator = attributes.indicator;
 
 
     var renderItems = repeaterItems.map(function (item, index) {
@@ -53688,11 +53747,11 @@ function save(props) {
                     "% "
                 ) : ""
             ),
-            item.title || item.percentage ? wp.element.createElement(
+            item.title || item.percentage ? indicator == 'arrow' ? wp.element.createElement(
                 "p",
                 { className: "premium-progress-bar-arrow" },
                 " "
-            ) : ""
+            ) : indicator == 'pin' ? wp.element.createElement("p", { className: "premium-progress-bar-pin" }) : "" : ""
         );
     });
 
@@ -53863,7 +53922,21 @@ var edit = function (_Component) {
                 styleProgress = attributes.styleProgress,
                 animate = attributes.animate,
                 speeds = attributes.speeds,
-                arrowColor = attributes.arrowColor;
+                arrowColor = attributes.arrowColor,
+                arrow = attributes.arrow,
+                arrowTablet = attributes.arrowTablet,
+                arrowMobile = attributes.arrowMobile,
+                arrowType = attributes.arrowType,
+                indicator = attributes.indicator,
+                pinColor = attributes.pinColor,
+                pin = attributes.pin,
+                pinTablet = attributes.pinTablet,
+                pinType = attributes.pinType,
+                pinMobile = attributes.pinMobile,
+                pinHeight = attributes.pinHeight,
+                pinHeightTablet = attributes.pinHeightTablet,
+                pinHeightType = attributes.pinHeightType,
+                pinHeightMobile = attributes.pinHeightMobile;
 
 
             var STYLE = [{
@@ -53873,6 +53946,17 @@ var edit = function (_Component) {
                 value: "stripe",
                 label: __("Stripe")
             }];
+            var INDICATOR = [{
+                value: "arrow",
+                label: __("Arrow")
+            }, {
+                value: "pin",
+                label: __("Pin")
+            }, {
+                value: "none",
+                label: __("None")
+            }];
+
             var element = document.getElementById("premium-style-progress-bar-" + this.props.clientId);
 
             if (null != element && "undefined" != typeof element) {
@@ -53982,62 +54066,6 @@ var edit = function (_Component) {
                     return true; // Return true to cancel sorting
                 }
             };
-            var Items = repeaterItems.map(function (item, index) {
-                return wp.element.createElement(
-                    "div",
-                    { className: "premium-progress-bar-repeater" },
-                    wp.element.createElement(
-                        "div",
-                        { className: "premium-progress-bar-repeater-title " + index },
-                        wp.element.createElement(
-                            "div",
-                            { className: "premium-progress-bar-repeater-title-item",
-                                onClick: function onClick() {
-                                    return _edit(index);
-                                }
-                            },
-                            "Item #",
-                            index + 1,
-                            " "
-                        ),
-                        repeaterItems.length != 1 ? wp.element.createElement(
-                            "div",
-                            { className: "premium-progress-bar-repeater-trashicon" },
-                            wp.element.createElement(
-                                "button",
-                                { className: "dashicons dashicons-no",
-                                    onClick: function onClick() {
-                                        return removeItem(index, item);
-                                    }
-                                },
-                                " "
-                            )
-                        ) : ""
-                    ),
-                    wp.element.createElement(
-                        "div",
-                        { className: "premium-progress-bar-repeater-controls " + (item.edit ? "editable" : "") },
-                        wp.element.createElement(TextControl, {
-                            label: __("Label"),
-                            value: item.title,
-                            onChange: function onChange(newText) {
-                                return setAttributes({
-                                    repeaterItems: onRepeaterChange("title", newText, index)
-                                });
-                            }
-                        }),
-                        wp.element.createElement(TextControl, {
-                            label: __("Percentage"),
-                            value: item.percentage,
-                            onChange: function onChange(newText) {
-                                return setAttributes({
-                                    repeaterItems: onRepeaterChange("percentage", newText, index)
-                                });
-                            }
-                        })
-                    )
-                );
-            });
 
             var onRepeaterChange = function onRepeaterChange(attr, value, index) {
                 _this2.forceUpdate();
@@ -54067,7 +54095,7 @@ var edit = function (_Component) {
                 });
             };
 
-            var removeItem = function removeItem(index, item) {
+            var _removeItem = function _removeItem(index, item) {
                 _this2.forceUpdate();
                 var array = repeaterItems.map(function (cont, currIndex) {
                     return cont;
@@ -54097,11 +54125,11 @@ var edit = function (_Component) {
                             "% "
                         ) : ""
                     ),
-                    item.title || item.percentage ? wp.element.createElement(
+                    item.title || item.percentage ? indicator == 'arrow' ? wp.element.createElement(
                         "p",
                         { className: "premium-progress-bar-arrow" },
                         " "
-                    ) : ""
+                    ) : indicator == 'pin' ? wp.element.createElement("p", { className: "premium-progress-bar-pin" }) : "" : ""
                 );
             });
 
@@ -54168,19 +54196,9 @@ var edit = function (_Component) {
                                 onSortEnd: function onSortEnd(o, n) {
                                     return onSortEndSingle(o, n);
                                 },
-                                removeItem: function (_removeItem) {
-                                    function removeItem(_x) {
-                                        return _removeItem.apply(this, arguments);
-                                    }
-
-                                    removeItem.toString = function () {
-                                        return _removeItem.toString();
-                                    };
-
-                                    return removeItem;
-                                }(function (value) {
-                                    return removeItem(value);
-                                }),
+                                removeItem: function removeItem(value) {
+                                    return _removeItem(value);
+                                },
                                 edit: function edit(value) {
                                     return _edit(value);
                                 },
@@ -54208,8 +54226,17 @@ var edit = function (_Component) {
                                     __("Add New Item")
                                 )
                             )
-                        )
+                        ),
+                        wp.element.createElement("br", null)
                     ),
+                    wp.element.createElement(SelectControl, {
+                        label: __("Labels Indicator"),
+                        value: indicator,
+                        onChange: function onChange(newEffect) {
+                            return setAttributes({ indicator: newEffect });
+                        },
+                        options: INDICATOR
+                    }),
                     wp.element.createElement(RangeControl, {
                         label: __("Progress"),
                         value: progress,
@@ -54257,7 +54284,9 @@ var edit = function (_Component) {
                         range: { value: progressBarHeight, label: __("progressBarHeight") },
                         rangeMobile: { value: progressBarHeightMobile, label: __("progressBarHeightMobile") },
                         rangeTablet: { value: progressBarHeightTablet, label: __("progressBarHeightTablet") },
-                        rangeLabel: __("Height")
+                        rangeLabel: __("Height"),
+                        min: 1,
+                        max: 100
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__["a" /* default */], {
                         setAttributes: setAttributes,
@@ -54384,7 +54413,7 @@ var edit = function (_Component) {
                         }
                     })
                 ),
-                multiStage && wp.element.createElement(
+                multiStage && indicator == 'arrow' ? wp.element.createElement(
                     PanelBody,
                     {
                         title: __("Arrow Style"),
@@ -54406,8 +54435,62 @@ var edit = function (_Component) {
                             });
                         },
                         allowReset: true
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__["a" /* default */], {
+                        setAttributes: setAttributes,
+                        rangeType: { value: arrowType, label: __("arrowType") },
+                        range: { value: arrow, label: __("arrow") },
+                        rangeMobile: { value: arrowMobile, label: __("arrowMobile") },
+                        rangeTablet: { value: arrowTablet, label: __("arrowTablet") },
+                        rangeLabel: __("Size"),
+                        min: 1,
+                        max: 50
                     })
-                )
+                ) : "",
+                multiStage && indicator == 'pin' ? wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Indicator"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        " ",
+                        __("Color"),
+                        " "
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: pinColor,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({
+                                pinColor: newValue
+                            });
+                        },
+                        allowReset: true
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__["a" /* default */], {
+                        setAttributes: setAttributes,
+                        rangeType: { value: pinType, label: __("pinType") },
+                        range: { value: pin, label: __("pin") },
+                        rangeMobile: { value: pinMobile, label: __("pinMobile") },
+                        rangeTablet: { value: pinTablet, label: __("pinTablet") },
+                        rangeLabel: __("Size"),
+                        min: 1,
+                        max: 100
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__["a" /* default */], {
+                        setAttributes: setAttributes,
+                        rangeType: { value: pinHeightType, label: __("pinHeightType") },
+                        range: { value: pinHeight, label: __("pinHeight") },
+                        rangeMobile: { value: pinHeightMobile, label: __("pinHeightMobile") },
+                        rangeTablet: { value: pinHeightTablet, label: __("pinHeightTablet") },
+                        rangeLabel: __("Height"),
+                        min: 1,
+                        max: 100
+                    })
+                ) : ""
             ), wp.element.createElement(
                 "div",
                 { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId), style: {
@@ -54514,7 +54597,20 @@ function styling(props) {
         percentageStyle = _props$attributes.percentageStyle,
         percentageLetter = _props$attributes.percentageLetter,
         progress = _props$attributes.progress,
-        arrowColor = _props$attributes.arrowColor;
+        arrowColor = _props$attributes.arrowColor,
+        arrow = _props$attributes.arrow,
+        arrowType = _props$attributes.arrowType,
+        arrowTablet = _props$attributes.arrowTablet,
+        arrowMobile = _props$attributes.arrowMobile,
+        pinColor = _props$attributes.pinColor,
+        pin = _props$attributes.pin,
+        pinType = _props$attributes.pinType,
+        pinTablet = _props$attributes.pinTablet,
+        pinMobile = _props$attributes.pinMobile,
+        pinHeight = _props$attributes.pinHeight,
+        pinHeightTablet = _props$attributes.pinHeightTablet,
+        pinHeightType = _props$attributes.pinHeightType,
+        pinHeightMobile = _props$attributes.pinHeightMobile;
 
 
     var selectors = {};
@@ -54565,7 +54661,13 @@ function styling(props) {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(percentagefontSize, percentagefontSizeType) + "!important"
         },
         " .premium-progress-bar-arrow": {
-            "color": arrowColor
+            "color": arrowColor,
+            "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(arrow, arrowType) + "!important"
+        },
+        " .premium-progress-bar-pin": {
+            "border-color": pinColor,
+            "border-left-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(pin, pinType) + "!important",
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(pinHeight, pinHeightType) + "!important"
         }
     };
 
@@ -54589,6 +54691,13 @@ function styling(props) {
         },
         " .premium-progress-bar-percentage": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(percentagefontSizeMobile, percentagefontSizeType) + "!important"
+        },
+        " .premium-progress-bar-arrow": {
+            "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(arrowMobile, arrowType) + "!important"
+        },
+        " .premium-progress-bar-pin": {
+            "border-left-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(pinMobile, pinType) + "!important",
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(pinHeightMobile, pinHeightType) + "!important"
         }
     };
 
@@ -54612,6 +54721,13 @@ function styling(props) {
         },
         " .premium-progress-bar-percentage": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(percentagefontSizeTablet, percentagefontSizeType) + "!important"
+        },
+        " .premium-progress-bar-arrow": {
+            "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(arrowTablet, arrowType) + "!important"
+        },
+        " .premium-progress-bar-pin": {
+            "border-left-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(pinTablet, pinType) + "!important",
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(pinHeightTablet, pinHeightType) + "!important"
         }
     };
 

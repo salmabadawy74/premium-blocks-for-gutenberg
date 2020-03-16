@@ -78,8 +78,8 @@ function PremiumResponsive(props) {
 									label={__(props.sizeMobileText)}
 									value={props.sizeMobile.value}
 									onChange={(value) => props.setAttributes({ [props.sizeMobileLabel]: value })}
-									min={0}
-									max={200}
+									min={props.min || 0}
+									max={props.max || 200}
 									step={props.steps}
 									beforeIcon="editor-textcolor"
 									allowReset
@@ -95,8 +95,8 @@ function PremiumResponsive(props) {
 									label={__(props.sizeTabletText)}
 									value={props.sizeTablet.value}
 									onChange={(value) => props.setAttributes({ [props.sizeTabletLabel]: value })}
-									min={0}
-									max={200}
+									min={props.min || 0}
+									max={props.max || 200}
 									step={props.steps}
 									beforeIcon="editor-textcolor"
 									allowReset
@@ -112,8 +112,8 @@ function PremiumResponsive(props) {
 									label={__(props.sizeText)}
 									value={props.size.value}
 									onChange={(value) => props.setAttributes({ [props.sizeLabel]: value })}
-									min={0}
-									max={200}
+									min={props.min || 0}
+									max={props.max || 200}
 									step={props.steps}
 									beforeIcon="editor-textcolor"
 									allowReset

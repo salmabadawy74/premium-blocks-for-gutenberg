@@ -14,7 +14,8 @@ export default function save(props) {
         styleProgress,
         animate,
         speeds,
-        progress
+        progress,
+        indicator
     } = attributes
 
     const renderItems = repeaterItems.map((item, index) => {
@@ -33,8 +34,8 @@ export default function save(props) {
                     }% </span> : ""}
             </p>
             {
-                (item.title || item.percentage) ? < p className="premium-progress-bar-arrow" > </p> : ""}
-        </div>
+                    (item.title || item.percentage) ? indicator == 'arrow' ? < p className="premium-progress-bar-arrow" > </p> : indicator == 'pin' ? <p className="premium-progress-bar-pin"></p> : "" : ""}
+            </div>
         )
     })
 

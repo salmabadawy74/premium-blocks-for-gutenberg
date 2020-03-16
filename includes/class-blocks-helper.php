@@ -1003,8 +1003,7 @@ class Premium_Blocks_Integration {
 				" .premium-progress-bar-progress-bar" => array(
 					"height" => self::get_css_value( $attr['progressBarHeight'], $attr['progressBarHeightType'] ),
 					"border-radius" => self::get_css_value( $attr['progressBarRadius'], $attr['progressBarRadiusType'] ),
-					"background-color" => $attr['progressBarColor'],
-					"width" => self::get_css_value($attr['progress'], $attr['progressType'] ) ,
+					"background-color" => $attr['progressBarColor']
 				),
 				" .premium-progress-bar-left-label" => array(
 					"color" => $attr['labelColor'],
@@ -1037,6 +1036,15 @@ class Premium_Blocks_Integration {
 					"font-style" => $attr['percentageStyle'],
 					"font-size" => self::get_css_value( $attr['percentagefontSize'], $attr['percentagefontSizeType'] ),
 				),
+				" .premium-progress-bar-arrow" => array(
+					"color" => $attr['arrowColor'],
+					"border-width" => self::get_css_value( $attr['arrow'], $attr['arrowType'] ),
+				),
+				" .premium-progress-bar-pin" => array(
+					"border-color" => $attr['pinColor'],
+					"border-left-width" => self::get_css_value( $attr['pin'], $attr['pinType'] ),
+					"height" => self::get_css_value( $attr['pinHeight'], $attr['pinHeightType'] ),
+				),
             );
             // Desktop Icon Size CSS ends.
 
@@ -1062,6 +1070,13 @@ class Premium_Blocks_Integration {
 				" .premium-progress-bar-percentage" => array(
 					"font-size" => self::get_css_value( $attr['percentagefontSizeMobile'], $attr['percentagefontSizeType'] ),
 				),
+				" .premium-progress-bar-arrow" => array(
+					"border-width" => self::get_css_value( $attr['arrowMobile'], $attr['arrowType'] ),
+				),
+				" .premium-progress-bar-pin" => array(
+					"border-left-width" => self::get_css_value( $attr['pinMobile'], $attr['pinType'] ),
+					"height" => self::get_css_value( $attr['pinHeightMobile'], $attr['pinHeightType'] ),
+				),
 			);
 			// Mobile Icon Size CSS ends.
 
@@ -1086,6 +1101,13 @@ class Premium_Blocks_Integration {
 				),
 				" .premium-progress-bar-percentage" => array(
 					"font-size" => self::get_css_value( $attr['percentagefontSizeTablet'], $attr['percentagefontSizeType'] ),
+				),
+				" .premium-progress-bar-arrow" => array(
+					"border-width" => self::get_css_value( $attr['arrowTablet'], $attr['arrowType'] ),
+				),
+				" .premium-progress-bar-pin" => array(
+					"border-left-width" => self::get_css_value( $attr['pinTablet'], $attr['pinType'] ),
+					"height" => self::get_css_value( $attr['pinHeightTablet'], $attr['pinHeightType'] ),
 				),
 			);
 			// Tablet Icon Size CSS ends.

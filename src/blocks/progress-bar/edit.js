@@ -89,7 +89,21 @@ class edit extends Component {
             styleProgress,
             animate,
             speeds,
-            arrowColor
+            arrowColor,
+            arrow,
+            arrowTablet,
+            arrowMobile,
+            arrowType,
+            indicator,
+            pinColor,
+            pin,
+            pinTablet,
+            pinType,
+            pinMobile,
+            pinHeight,
+            pinHeightTablet,
+            pinHeightType,
+            pinHeightMobile
         } = attributes
 
         const STYLE = [{
@@ -101,6 +115,20 @@ class edit extends Component {
             label: __("Stripe")
         }
         ];
+        const INDICATOR = [{
+            value: "arrow",
+            label: __("Arrow")
+        },
+        {
+            value: "pin",
+            label: __("Pin")
+        },
+        {
+            value: "none",
+            label: __("None")
+        }
+        ];
+
         var element = document.getElementById("premium-style-progress-bar-" + this.props.clientId)
 
         if (null != element && "undefined" != typeof element) {
@@ -221,60 +249,7 @@ class edit extends Component {
                 return true; // Return true to cancel sorting
             }
         }
-        const Items = repeaterItems.map((item, index) => {
-            return (<div className="premium-progress-bar-repeater" >
-
-                < div className={
-                    `premium-progress-bar-repeater-title ${index}`
-                } >
-                    < div className="premium-progress-bar-repeater-title-item"
-                        onClick={() => edit(index)}
-                    >
-                        Item #{
-                            index + 1
-                        } </div>
-                    {
-                        repeaterItems.length != 1 ? < div className="premium-progress-bar-repeater-trashicon" >
-                            < button className="dashicons dashicons-no"
-                                onClick={() => removeItem(index, item)}
-                            > </button>
-                        </div> : ""}
-                </div>
-                < div className={
-                    `premium-progress-bar-repeater-controls ${item.edit ? "editable" : ""}`
-                } >
-                    <TextControl
-                        label={__("Label")}
-                        value={item.title}
-                        onChange={
-                            newText =>
-                                setAttributes({
-                                    repeaterItems: onRepeaterChange(
-                                        "title",
-                                        newText,
-                                        index
-                                    )
-                                })
-                        }
-                    />
-                    <TextControl
-                        label={__("Percentage")}
-                        value={item.percentage}
-                        onChange={
-                            newText =>
-                                setAttributes({
-                                    repeaterItems: onRepeaterChange(
-                                        "percentage",
-                                        newText,
-                                        index
-                                    )
-                                })
-                        }
-                    /></div >
-            </div>
-            )
-        })
-
+        
         const onRepeaterChange = (attr, value, index) => {
             this.forceUpdate()
             const items = repeaterItems;
@@ -336,7 +311,7 @@ class edit extends Component {
                         }% </span> : ""}
                 </p>
                 {
-                    (item.title || item.percentage) ? < p className="premium-progress-bar-arrow" > </p> : ""}
+                    (item.title || item.percentage) ? indicator == 'arrow' ? < p className="premium-progress-bar-arrow" > </p> : indicator == 'pin' ? <p className="premium-progress-bar-pin"></p> : "" : ""}
             </div>
             )
         })
@@ -424,8 +399,15 @@ class edit extends Component {
                                         </button>
                                     </div>
                                 </div>
+                                <br />
                             </Fragment>
                         }
+                        < SelectControl
+                            label={__("Labels Indicator")}
+                            value={indicator}
+                            onChange={newEffect => setAttributes({ indicator: newEffect })}
+                            options={INDICATOR}
+                        />
                         <RangeControl
                             label={__("Progress")}
                             value={progress}
@@ -466,6 +448,8 @@ class edit extends Component {
                             rangeMobile={{ value: progressBarHeightMobile, label: __("progressBarHeightMobile") }}
                             rangeTablet={{ value: progressBarHeightTablet, label: __("progressBarHeightTablet") }}
                             rangeLabel={__("Height")}
+                            min={1}
+                            max={100}
                         />
                         <PremiumRange
                             setAttributes={setAttributes}
@@ -570,7 +554,7 @@ class edit extends Component {
                             }
                         />
                     </PanelBody>
-                    {multiStage && < PanelBody
+                    {multiStage && indicator == 'arrow' ? < PanelBody
                         title={__("Arrow Style")}
                         className="premium-panel-body"
                         initialOpen={false}
@@ -586,7 +570,54 @@ class edit extends Component {
                             }
                             allowReset={true}
                         />
-                    </PanelBody>}
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: arrowType, label: __("arrowType") }}
+                            range={{ value: arrow, label: __("arrow") }}
+                            rangeMobile={{ value: arrowMobile, label: __("arrowMobile") }}
+                            rangeTablet={{ value: arrowTablet, label: __("arrowTablet") }}
+                            rangeLabel={__("Size")}
+                            min={1}
+                            max={50}
+                        />
+                    </PanelBody> : ""}
+                    {multiStage && indicator == 'pin' ? < PanelBody
+                        title={__("Indicator")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        < p > {__("Color")} </p>
+                        < ColorPalette
+                            value={pinColor}
+                            onChange={
+                                newValue =>
+                                    setAttributes({
+                                        pinColor: newValue
+                                    })
+                            }
+                            allowReset={true}
+                        />
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: pinType, label: __("pinType") }}
+                            range={{ value: pin, label: __("pin") }}
+                            rangeMobile={{ value: pinMobile, label: __("pinMobile") }}
+                            rangeTablet={{ value: pinTablet, label: __("pinTablet") }}
+                            rangeLabel={__("Size")}
+                            min={1}
+                            max={100}
+                        />
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: pinHeightType, label: __("pinHeightType") }}
+                            range={{ value: pinHeight, label: __("pinHeight") }}
+                            rangeMobile={{ value: pinHeightMobile, label: __("pinHeightMobile") }}
+                            rangeTablet={{ value: pinHeightTablet, label: __("pinHeightTablet") }}
+                            rangeLabel={__("Height")}
+                            min={1}
+                            max={100}
+                        />
+                    </PanelBody> : ""}
                 </InspectorControls>
             ),
             <div className={classnames(
@@ -621,7 +652,7 @@ class edit extends Component {
                         }
                             style={{ transition: `width ${speeds}s ease-in-out` }}
                             data-score={`${progress}`}
-                        role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                            role="progressbar" aria-valuemin="0" aria-valuemax="100"
                         > </div>
                     </div>
                 </div>

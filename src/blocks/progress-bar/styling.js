@@ -34,7 +34,20 @@ function styling(props) {
         percentageStyle,
         percentageLetter,
         progress,
-        arrowColor
+        arrowColor,
+        arrow,
+        arrowType,
+        arrowTablet,
+        arrowMobile,
+        pinColor,
+        pin,
+        pinType,
+        pinTablet,
+        pinMobile,
+        pinHeight,
+        pinHeightTablet,
+        pinHeightType,
+        pinHeightMobile
     } = props.attributes
 
     var selectors = {}
@@ -75,7 +88,7 @@ function styling(props) {
             "text-transform": LabelUpper ? "uppercase" : "none" + "!important",
             "font-style": LabelStyle + "!important",
             "font-size": generateCSSUnit(LabelfontSize, LabelfontSizeType) + "!important",
-            "transform" : align == 'right' ? "translateX(-10%)" : align== 'left'? "translateX(-82%)" : "translateX(-45%)"
+            "transform": align == 'right' ? "translateX(-10%)" : align == 'left' ? "translateX(-82%)" : "translateX(-45%)"
         },
         " .premium-progress-bar-percentage": {
             "color": percentageColor,
@@ -85,7 +98,13 @@ function styling(props) {
             "font-size": generateCSSUnit(percentagefontSize, percentagefontSizeType) + "!important",
         },
         " .premium-progress-bar-arrow": {
-            "color": arrowColor
+            "color": arrowColor,
+            "border-width": generateCSSUnit(arrow, arrowType) + "!important"
+        },
+        " .premium-progress-bar-pin": {
+            "border-color": pinColor,
+            "border-left-width": generateCSSUnit(pin, pinType) + "!important",
+            "height": generateCSSUnit(pinHeight, pinHeightType) + "!important"
         },
     }
 
@@ -110,6 +129,13 @@ function styling(props) {
         " .premium-progress-bar-percentage": {
             "font-size": generateCSSUnit(percentagefontSizeMobile, percentagefontSizeType) + "!important",
         },
+        " .premium-progress-bar-arrow": {
+            "border-width": generateCSSUnit(arrowMobile, arrowType) + "!important"
+        },
+        " .premium-progress-bar-pin": {
+            "border-left-width": generateCSSUnit(pinMobile, pinType) + "!important",
+            "height": generateCSSUnit(pinHeightMobile, pinHeightType) + "!important"
+        },
     }
 
     tablet_selectors = {
@@ -132,6 +158,13 @@ function styling(props) {
         },
         " .premium-progress-bar-percentage": {
             "font-size": generateCSSUnit(percentagefontSizeTablet, percentagefontSizeType) + "!important",
+        },
+        " .premium-progress-bar-arrow": {
+            "border-width": generateCSSUnit(arrowTablet, arrowType) + "!important"
+        },
+        " .premium-progress-bar-pin": {
+            "border-left-width": generateCSSUnit(pinTablet, pinType) + "!important",
+            "height": generateCSSUnit(pinHeightTablet, pinHeightType) + "!important"
         },
     }
 

@@ -117,6 +117,22 @@ const progressBarAttrs = {
         type: "string",
         default: "#6ec1e4"
     },
+    arrow: {
+        type: "number",
+        default: 10
+    },
+    arrowType: {
+        type: "string",
+        default: "px"
+    },
+    arrowMobile: {
+        type: "number",
+        default: 10
+    },
+    arrowTablet: {
+        type: "number",
+        default: 10
+    },
     percentageColor: {
         type: "string",
         default: "#6ec1e4"
@@ -177,7 +193,47 @@ const progressBarAttrs = {
     animate: {
         type: "boolean",
         default: false
-    }
+    },
+    indicator: {
+        type: "string",
+        default: "arrow"
+    },
+    pinColor: {
+        type: "string",
+        default: "#54595f"
+    },
+    pin: {
+        type: "number",
+        default: 1
+    },
+    pinType: {
+        type: "string",
+        default: "px"
+    },
+    pinMobile: {
+        type: "number",
+        default: 1
+    },
+    pinTablet: {
+        type: "number",
+        default: 1
+    },
+    pinHeight: {
+        type: "number",
+        default: 12
+    },
+    pinHeightType: {
+        type: "string",
+        default: "px"
+    },
+    pinHeightMobile: {
+        type: "number",
+        default: 12
+    },
+    pinHeightTablet: {
+        type: "number",
+        default: 12
+    },
 };
 
 registerBlockType("premium/progress-bar", {

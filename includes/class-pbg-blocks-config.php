@@ -278,7 +278,22 @@ if ( ! class_exists( 'Config' ) ) {
 							'percentagefontSizeMobile' => '20',
 							'percentagefontSizeTablet' => '20',
 							'progress'  => '0',
-							'progressType' => '%'
+							'progressType' => '%',
+							'arrowColor'  => '#6ec1e4',
+							'arrow' => '10',
+							'arrowType' => 'px',
+							'arrowTablet' => '10',
+							'arrowMobile' => '10',
+							'indicator'  => 'arrow',
+							'pinColor' => '#54595f',
+							'pin' => '1',
+							'pinType' => 'px',
+							'pinTablet' => '1',
+							'pinMobile' => '1',
+							'pinHeight' => '12',
+							'pinHeightType' => 'px',
+							'pinHeightTablet' => '12',
+							'pinHeightMobile' => '12',
 						)
 					),
 				);

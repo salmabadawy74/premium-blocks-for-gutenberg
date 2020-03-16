@@ -2708,3 +2708,13 @@ color: #23282d;
   margin-bottom: 0 !important;
   margin-top: 0 !important;
 }
+.premium-progress-bar-pin{
+  left: 50%;
+  transform: translateX(50%);
+  margin: 0 !important;
+  float: right;
+  /* border-color: #54595f; */
+  border-left: 1px solid;
+  height: 12px;
+  display: inline-block;
+}

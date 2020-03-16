@@ -44,6 +44,8 @@ export default class PremiumRange extends Component {
                         (!this.props.rangeLabel) ? __("Range") : this.props.rangeLabel
                     }
                     steps={0.1}
+                    min={this.props.min}
+                    max={this.props.max}
                     {...this.props}
                 />
             </div>
