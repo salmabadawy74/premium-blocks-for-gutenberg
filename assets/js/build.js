@@ -53736,7 +53736,7 @@ function save(props) {
                 } },
             wp.element.createElement(
                 "p",
-                { className: "premium-progress-bar-center-label" },
+                { className: "premium-progress-bar-center-label", style: { transform: align == "center" ? "translateX(-45%)" : align == "left" ? "translateX(-82%)" : "translateX(-10%)" } },
                 " ",
                 item.title,
                 item.percentage ? wp.element.createElement(

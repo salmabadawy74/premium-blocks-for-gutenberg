@@ -1027,7 +1027,6 @@ class Premium_Blocks_Integration {
 					"text-transform" => $attr['LabelUpper'] ? "uppercase" : "none" ,
 					"font-style" => $attr['LabelStyle'],
 					"font-size" => self::get_css_value( $attr['LabelfontSize'], $attr['LabelfontSizeType'] ),
-					"transform" => $attr['align'] == "right" ? "translateX(-10%)" : $attr['align'] == "left"? "translateX(-82%)" : "translateX(-45%)"
 				),
 				" .premium-progress-bar-percentage" => array(
 					"color" => $attr['percentageColor'],
