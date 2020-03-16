@@ -171,7 +171,7 @@ class Premium_Blocks_Integration {
         
         $is_icon_box_enabled = self::$blocks['iconBox'];
 
-        $is_person_enabled = self::$blocks['person'];
+        $is_persons_enabled = self::$blocks['persons'];
 
 		$is_icon_list_enabled = self::$blocks['iconList'];
 		
@@ -290,7 +290,7 @@ class Premium_Blocks_Integration {
             );
         }
 
-        if( $is_person_enabled ) {
+        if( $is_persons_enabled ) {
             wp_enqueue_script(
                 'person-js',
                 PREMIUM_BLOCKS_URL . 'assets/js/person.js',
