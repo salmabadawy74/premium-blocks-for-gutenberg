@@ -25,7 +25,7 @@ export default function save(props) {
                     left: item.percentage + "%"
                 }
             } >
-            <p className="premium-progress-bar-center-label" > {
+            <p className="premium-progress-bar-center-label" style={{ transform: align == "center" ? "translateX(-45%)" : align == "left" ? "translateX(-82%)" : "translateX(-10%)" }}> {
                 item.title
             }
                 {
@@ -34,8 +34,8 @@ export default function save(props) {
                     }% </span> : ""}
             </p>
             {
-                    (item.title || item.percentage) ? indicator == 'arrow' ? < p className="premium-progress-bar-arrow" > </p> : indicator == 'pin' ? <p className="premium-progress-bar-pin"></p> : "" : ""}
-            </div>
+                (item.title || item.percentage) ? indicator == 'arrow' ? < p className="premium-progress-bar-arrow" > </p> : indicator == 'pin' ? <p className="premium-progress-bar-pin"></p> : "" : ""}
+        </div>
         )
     })
 
@@ -52,31 +52,31 @@ export default function save(props) {
                     textAlign: align,
                 }}>
                 {
-                        !multiStage ? label ? (
-                            < div className="premium-progress-bar-labels-wrap" >
-                                <p className="premium-progress-bar-left-label">
-                                    <span>{label}</span>
-                                </p>
-                                < p className="premium-progress-bar-right-label" >
-                                    <span > {
-                                        percentage
-                                    } </span>
-                                </p>
-                            </div>
-                        ) : "" : ""}
-                    {
-                        multiStage && (<div>{renderItems}</div>)}
-                    <div className="premium-progress-bar-clear"></div>
-                    <div className="premium-progress-bar-progress">
-                        < div className={
-                            `premium-progress-bar-progress-bar ${block_id} ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
-                        }
-                            style={{ transition: `width ${speeds}s ease-in-out` }}
-                            data-score={`${progress}`}
+                    !multiStage ? label ? (
+                        < div className="premium-progress-bar-labels-wrap" >
+                            <p className="premium-progress-bar-left-label">
+                                <span>{label}</span>
+                            </p>
+                            < p className="premium-progress-bar-right-label" >
+                                <span > {
+                                    percentage
+                                } </span>
+                            </p>
+                        </div>
+                    ) : "" : ""}
+                {
+                    multiStage && (<div>{renderItems}</div>)}
+                <div className="premium-progress-bar-clear"></div>
+                <div className="premium-progress-bar-progress">
+                    < div className={
+                        `premium-progress-bar-progress-bar ${block_id} ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
+                    }
+                        style={{ transition: `width ${speeds}s ease-in-out` }}
+                        data-score={`${progress}`}
                         role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                        > </div>
-                    </div>
+                    > </div>
                 </div>
             </div>
+        </div>
     )
 }
