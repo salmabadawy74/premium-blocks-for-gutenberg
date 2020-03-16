@@ -1,24 +1,31 @@
 jQuery(document).ready(function ($) {
-  const $progressBar = $(".premium-progress-bar");
 
-  $progressBar.map((index, progressBar) => {
-    let $progressBar = $(progressBar);
+    const $bars = $(".premium-progress-bar");
 
-    let $toggleprogressBar = $progressBar.find(`.premium-progress-bar-progress-bar`);
+    if (!$bars.length)
+        return;
 
-    if (!$toggleprogressBar.length)
-      return;
+    $bars.map((index, progressBar) => {
 
+        let $progressBar = $(progressBar),
+            $toggleprogressBar = $progressBar.find(`.premium-progress-bar-progress-bar`);
 
-    const waypoint = new Waypoint({
-      element: $toggleprogressBar,
-      handler: function () {
-        let width = $toggleprogressBar.data('score');
-        $toggleprogressBar.animate({ width: width + '%' }, 700);
-      },
-      offset: Waypoint.viewportHeight() - 150,
-      triggerOnce: true
-    });
+        //Get bar width
+        let barWidth = $toggleprogressBar.data('score');
 
-  })
+        if (!barWidth)
+            return;
+
+        const waypoint = new Waypoint({
+            element: $toggleprogressBar,
+            handler: function () {
+                $toggleprogressBar.animate({
+                    width: barWidth + '%'
+                }, 700);
+            },
+            offset: Waypoint.viewportHeight() - 150,
+            triggerOnce: true
+        });
+
+    })
 });
