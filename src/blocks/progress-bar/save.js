@@ -71,9 +71,9 @@ export default function save(props) {
                     < div className={
                         `premium-progress-bar-progress-bar ${block_id} ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
                     }
-                        style={{ transition: `width ${speeds}s ease-in-out` }}
+                        // style={{ transition: `width ${speeds}s ease-in-out` }}
                         data-score={`${progress}`}
-                        role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                        data-speed={`${speeds}`}
                     > </div>
                 </div>
             </div>

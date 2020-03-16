@@ -143,26 +143,24 @@ class edit extends Component {
         }) => < div className="premium-progress-bar-repeater" >
 
                 <div className={
-                    `premium-progress-bar-repeater-title ${newIndex}`
+                    `premium-progress-bar__container ${newIndex}`
                 } >
-                    <div className="premium-progress-bar-repeater-title-item"
+                    < span className="premium-progress-bar__dragHandle" ></span>
+                    <div className="premium-progress-bar__content"
                         onClick={
                             () => edit(newIndex)
                         } >
                         Item# {
                             newIndex + 1
                         } </div>
-                    < span className="premium-progress-bar-repeater-trashicon" >
-                        < i className="dashicons dashicons-admin-page" />
-                    </span>
+
                     {
-                        repeaterItems.length != 1 ? < div className="premium-progress-bar-repeater-trashicon" >
-                            <button className="dashicons dashicons-no"
-                                onClick={
-                                    () => removeItem(newIndex, value)
-                                } >
-                            </button>
-                        </div> : ""}
+                        repeaterItems.length != 1 ? <button className="premium-progress-bar__trashicon fa fa-trash"
+                            onClick={
+                                () => removeItem(newIndex, value)
+                            } >
+                        </button>
+                            : ""}
                 </div>
                 <div className={
                     `premium-progress-bar-repeater-controls ${value.edit ? "editable" : ""}`
@@ -240,8 +238,6 @@ class edit extends Component {
                     array
 
             });
-            console.log(repeaterItems);
-
         };
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
@@ -311,7 +307,7 @@ class edit extends Component {
                         }% </span> : ""}
                 </p>
                 {
-                    (item.title || item.percentage) ? indicator == 'arrow' ? < p className="premium-progress-bar-arrow" > </p> : indicator == 'pin' ? <p className="premium-progress-bar-pin"></p> : "" : ""}
+                    (item.title || item.percentage) ? indicator == 'arrow' ? < div className="premium-progress-bar-arrow" > </div> : indicator == 'pin' ? <div className="premium-progress-bar-pin"></div> : "" : ""}
             </div>
             )
         })
@@ -418,8 +414,8 @@ class edit extends Component {
                         <RangeControl
                             label={__("Speed")}
                             value={speeds}
-                            min="1"
-                            max="100"
+                            min="0"
+                            max="5"
                             onChange={value => setAttributes({ speeds: value })}
                         />
                         < SelectControl
@@ -652,7 +648,7 @@ class edit extends Component {
                         }
                             style={{ transition: `width ${speeds}s ease-in-out` }}
                             data-score={`${progress}`}
-                            role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                            data-speed={`${speeds}`}
                         > </div>
                     </div>
                 </div>

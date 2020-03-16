@@ -12,16 +12,21 @@ jQuery(document).ready(function ($) {
 
         //Get bar width
         let barWidth = $toggleprogressBar.data('score');
-
+        // var settings = $toggleprogressBar.data("settings"),
+        // barWidth = settings["progress_length"],
+        // speed = settings["speed"];
+        let speed = $toggleprogressBar.data('speed')
         if (!barWidth)
             return;
 
         const waypoint = new Waypoint({
             element: $toggleprogressBar,
             handler: function () {
+                console.log(barWidth);
+                
                 $toggleprogressBar.animate({
                     width: barWidth + '%'
-                }, 700);
+                }, speed);
             },
             offset: Waypoint.viewportHeight() - 150,
             triggerOnce: true

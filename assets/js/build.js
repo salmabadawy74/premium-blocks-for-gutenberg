@@ -53802,10 +53802,10 @@ function save(props) {
                 { className: "premium-progress-bar-progress" },
                 wp.element.createElement(
                     "div",
-                    { className: "premium-progress-bar-progress-bar " + block_id + " " + (styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : "") + " " + (animate ? "premium-progress-bar-progress-active" : ""),
-                        style: { transition: "width " + speeds + "s ease-in-out" },
-                        "data-score": "" + progress,
-                        role: "progressbar", "aria-valuemin": "0", "aria-valuemax": "100"
+                    { className: "premium-progress-bar-progress-bar " + block_id + " " + (styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : "") + " " + (animate ? "premium-progress-bar-progress-active" : "")
+                        // style={{ transition: `width ${speeds}s ease-in-out` }}
+                        , "data-score": "" + progress,
+                        "data-speed": "" + speeds
                     },
                     " "
                 )
@@ -53973,10 +53973,11 @@ var edit = function (_Component) {
                     { className: "premium-progress-bar-repeater" },
                     wp.element.createElement(
                         "div",
-                        { className: "premium-progress-bar-repeater-title " + newIndex },
+                        { className: "premium-progress-bar__container " + newIndex },
+                        wp.element.createElement("span", { className: "premium-progress-bar__dragHandle" }),
                         wp.element.createElement(
                             "div",
-                            { className: "premium-progress-bar-repeater-title-item",
+                            { className: "premium-progress-bar__content",
                                 onClick: function onClick() {
                                     return edit(newIndex);
                                 } },
@@ -53984,19 +53985,10 @@ var edit = function (_Component) {
                             newIndex + 1,
                             " "
                         ),
-                        wp.element.createElement(
-                            "span",
-                            { className: "premium-progress-bar-repeater-trashicon" },
-                            wp.element.createElement("i", { className: "dashicons dashicons-admin-page" })
-                        ),
-                        repeaterItems.length != 1 ? wp.element.createElement(
-                            "div",
-                            { className: "premium-progress-bar-repeater-trashicon" },
-                            wp.element.createElement("button", { className: "dashicons dashicons-no",
-                                onClick: function onClick() {
-                                    return removeItem(newIndex, value);
-                                } })
-                        ) : ""
+                        repeaterItems.length != 1 ? wp.element.createElement("button", { className: "premium-progress-bar__trashicon fa fa-trash",
+                            onClick: function onClick() {
+                                return removeItem(newIndex, value);
+                            } }) : ""
                     ),
                     wp.element.createElement(
                         "div",
@@ -54058,7 +54050,6 @@ var edit = function (_Component) {
                     repeaterItems: array
 
                 });
-                console.log(repeaterItems);
             };
             var shouldCancelStart = function shouldCancelStart(e) {
                 // Prevent sorting from being triggered if target is input or button
@@ -54126,10 +54117,10 @@ var edit = function (_Component) {
                         ) : ""
                     ),
                     item.title || item.percentage ? indicator == 'arrow' ? wp.element.createElement(
-                        "p",
+                        "div",
                         { className: "premium-progress-bar-arrow" },
                         " "
-                    ) : indicator == 'pin' ? wp.element.createElement("p", { className: "premium-progress-bar-pin" }) : "" : ""
+                    ) : indicator == 'pin' ? wp.element.createElement("div", { className: "premium-progress-bar-pin" }) : "" : ""
                 );
             });
 
@@ -54249,8 +54240,8 @@ var edit = function (_Component) {
                     wp.element.createElement(RangeControl, {
                         label: __("Speed"),
                         value: speeds,
-                        min: "1",
-                        max: "100",
+                        min: "0",
+                        max: "5",
                         onChange: function onChange(value) {
                             return setAttributes({ speeds: value });
                         }
@@ -54540,7 +54531,7 @@ var edit = function (_Component) {
                             { className: "premium-progress-bar-progress-bar " + this.props.clientId + " " + (styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : "") + " " + (animate ? "premium-progress-bar-progress-active" : ""),
                                 style: { transition: "width " + speeds + "s ease-in-out" },
                                 "data-score": "" + progress,
-                                role: "progressbar", "aria-valuemin": "0", "aria-valuemax": "100"
+                                "data-speed": "" + speeds
                             },
                             " "
                         )

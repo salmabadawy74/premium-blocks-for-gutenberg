@@ -1003,7 +1003,8 @@ class Premium_Blocks_Integration {
 				" .premium-progress-bar-progress-bar" => array(
 					"height" => self::get_css_value( $attr['progressBarHeight'], $attr['progressBarHeightType'] ),
 					"border-radius" => self::get_css_value( $attr['progressBarRadius'], $attr['progressBarRadiusType'] ),
-					"background-color" => $attr['progressBarColor']
+					"background-color" => $attr['progressBarColor'],
+					// "transition"  => 'width ' . $attr['speeds'].'s ease-in-out'
 				),
 				" .premium-progress-bar-left-label" => array(
 					"color" => $attr['labelColor'],

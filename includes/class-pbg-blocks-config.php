@@ -294,6 +294,7 @@ if ( ! class_exists( 'Config' ) ) {
 							'pinHeightType' => 'px',
 							'pinHeightTablet' => '12',
 							'pinHeightMobile' => '12',
+							'speeds' => '1'
 						)
 					),
 				);
