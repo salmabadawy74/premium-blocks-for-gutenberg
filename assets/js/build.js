@@ -54227,16 +54227,16 @@ var edit = function (_Component) {
                                 )
                             )
                         ),
-                        wp.element.createElement("br", null)
+                        wp.element.createElement("br", null),
+                        wp.element.createElement(SelectControl, {
+                            label: __("Labels Indicator"),
+                            value: indicator,
+                            onChange: function onChange(newEffect) {
+                                return setAttributes({ indicator: newEffect });
+                            },
+                            options: INDICATOR
+                        })
                     ),
-                    wp.element.createElement(SelectControl, {
-                        label: __("Labels Indicator"),
-                        value: indicator,
-                        onChange: function onChange(newEffect) {
-                            return setAttributes({ indicator: newEffect });
-                        },
-                        options: INDICATOR
-                    }),
                     wp.element.createElement(RangeControl, {
                         label: __("Progress"),
                         value: progress,
@@ -54502,10 +54502,10 @@ var edit = function (_Component) {
                         style: {
                             textAlign: align
                         } },
-                    !multiStage ? label ? wp.element.createElement(
+                    !multiStage ? wp.element.createElement(
                         "div",
                         { className: "premium-progress-bar-labels-wrap" },
-                        wp.element.createElement(
+                        label ? wp.element.createElement(
                             "p",
                             { className: "premium-progress-bar-left-label" },
                             wp.element.createElement(
@@ -54513,8 +54513,8 @@ var edit = function (_Component) {
                                 null,
                                 label
                             )
-                        ),
-                        wp.element.createElement(
+                        ) : "",
+                        percentage ? wp.element.createElement(
                             "p",
                             { className: "premium-progress-bar-right-label" },
                             wp.element.createElement(
@@ -54524,8 +54524,8 @@ var edit = function (_Component) {
                                 percentage,
                                 " "
                             )
-                        )
-                    ) : "" : "",
+                        ) : ""
+                    ) : "",
                     multiStage && wp.element.createElement(
                         "div",
                         null,

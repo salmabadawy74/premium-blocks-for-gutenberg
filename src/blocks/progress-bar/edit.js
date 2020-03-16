@@ -249,7 +249,7 @@ class edit extends Component {
                 return true; // Return true to cancel sorting
             }
         }
-        
+
         const onRepeaterChange = (attr, value, index) => {
             this.forceUpdate()
             const items = repeaterItems;
@@ -376,7 +376,6 @@ class edit extends Component {
                                             shouldCancelStart
                                         }
                                         helperClass='premium-person__sortableHelper' />
-                                    {/* <div>{Items}</div> */}
                                     <div >
                                         <button
                                             className={
@@ -400,14 +399,15 @@ class edit extends Component {
                                     </div>
                                 </div>
                                 <br />
+                                < SelectControl
+                                    label={__("Labels Indicator")}
+                                    value={indicator}
+                                    onChange={newEffect => setAttributes({ indicator: newEffect })}
+                                    options={INDICATOR}
+                                />
                             </Fragment>
                         }
-                        < SelectControl
-                            label={__("Labels Indicator")}
-                            value={indicator}
-                            onChange={newEffect => setAttributes({ indicator: newEffect })}
-                            options={INDICATOR}
-                        />
+
                         <RangeControl
                             label={__("Progress")}
                             value={progress}
@@ -631,18 +631,18 @@ class edit extends Component {
                         textAlign: align,
                     }}>
                     {
-                        !multiStage ? label ? (
+                        !multiStage ? (
                             < div className="premium-progress-bar-labels-wrap" >
-                                <p className="premium-progress-bar-left-label">
+                                {label ? <p className="premium-progress-bar-left-label">
                                     <span>{label}</span>
-                                </p>
-                                < p className="premium-progress-bar-right-label" >
+                                </p> : ""}
+                                {percentage ? < p className="premium-progress-bar-right-label" >
                                     <span > {
                                         percentage
                                     } </span>
-                                </p>
+                                </p> : ""}
                             </div>
-                        ) : "" : ""}
+                        ) : ""}
                     {
                         multiStage && (<div>{renderItems}</div>)}
                     <div className="premium-progress-bar-clear"></div>

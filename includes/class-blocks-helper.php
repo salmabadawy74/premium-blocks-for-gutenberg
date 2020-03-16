@@ -1008,7 +1008,7 @@ class Premium_Blocks_Integration {
 				" .premium-progress-bar-left-label" => array(
 					"color" => $attr['labelColor'],
 					"font-weight" => $attr['LabelWeight'],
-					"letter-spacing" => $attr['LabelLetter'],
+					"letter-spacing" => self::get_css_value($attr['LabelLetter'], 'px' ),
 					"text-transform" => $attr['LabelUpper'] ? "uppercase" : "none" ,
 					"font-style" => $attr['LabelStyle'],
 					"font-size" => self::get_css_value( $attr['LabelfontSize'], $attr['LabelfontSizeType'] ),
@@ -1016,14 +1016,14 @@ class Premium_Blocks_Integration {
 				" .premium-progress-bar-right-label" => array(
 					"color" => $attr['percentageColor'],
 					"font-weight" => $attr['percentageWeight'],
-					"letter-spacing" => $attr['percentageLetter'],
+					"letter-spacing" => self::get_css_value($attr['percentageLetter'], 'px' ),
 					"font-style" => $attr['percentageStyle'],
 					"font-size" => self::get_css_value( $attr['percentagefontSize'], $attr['percentagefontSizeType'] ),
 				),
 				" .premium-progress-bar-center-label" => array(
 					"color" => $attr['labelColor'],
 					"font-weight" => $attr['LabelWeight'],
-					"letter-spacing" => $attr['LabelLetter'],
+					"letter-spacing" => self::get_css_value( $attr['LabelLetter'], 'px' ),
 					"text-transform" => $attr['LabelUpper'] ? "uppercase" : "none" ,
 					"font-style" => $attr['LabelStyle'],
 					"font-size" => self::get_css_value( $attr['LabelfontSize'], $attr['LabelfontSizeType'] ),
@@ -1032,7 +1032,7 @@ class Premium_Blocks_Integration {
 				" .premium-progress-bar-percentage" => array(
 					"color" => $attr['percentageColor'],
 					"font-weight" => $attr['percentageWeight'],
-					"letter-spacing" => $attr['percentageLetter'],
+					"letter-spacing" => self::get_css_value( $attr['percentageLetter'], 'px' ),
 					"font-style" => $attr['percentageStyle'],
 					"font-size" => self::get_css_value( $attr['percentagefontSize'], $attr['percentagefontSizeType'] ),
 				),
