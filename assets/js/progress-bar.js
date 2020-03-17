@@ -26,7 +26,7 @@ jQuery(document).ready(function ($) {
                 
                 $toggleprogressBar.animate({
                     width: barWidth + '%'
-                }, speed);
+                }, speed*1000);
             },
             offset: Waypoint.viewportHeight() - 150,
             triggerOnce: true
