@@ -476,7 +476,8 @@ class edit extends Component {
                             allowReset={true}
                         />
                     </PanelBody>
-                    <PanelBody
+                    {
+                        label && < PanelBody
                         title={__("Label Style")}
                         className="premium-panel-body"
                         initialOpen={false}
@@ -513,8 +514,9 @@ class edit extends Component {
                             }
                             onChangeUpper={check => setAttributes({ LabelUpper: check })}
                         />
-                    </PanelBody>
-                    <PanelBody
+                    </PanelBody>}
+                    {
+                        percentage && < PanelBody
                         title={__("Percentage Style")}
                         className="premium-panel-body"
                         initialOpen={false}
@@ -549,7 +551,7 @@ class edit extends Component {
                                 setAttributes({ percentageLetter: newValue })
                             }
                         />
-                    </PanelBody>
+                    </PanelBody>}
                     {multiStage && indicator == 'arrow' ? < PanelBody
                         title={__("Arrow Style")}
                         className="premium-panel-body"

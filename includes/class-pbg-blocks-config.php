@@ -270,7 +270,7 @@ if ( ! class_exists( 'Config' ) ) {
 							'LabelfontSizeMobile' => '20',
 							'LabelfontSizeTablet' => '20',
 							'percentageColor'  => '#6ec1e4',
-							'percentageLetter' => '0',
+							'percentageLetter' => '1',
 							'percentageStyle' => '',
 							'percentageWeight' => '500',
 							'percentagefontSize' => '20',

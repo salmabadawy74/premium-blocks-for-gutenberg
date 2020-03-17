@@ -54316,7 +54316,7 @@ var edit = function (_Component) {
                         allowReset: true
                     })
                 ),
-                wp.element.createElement(
+                label && wp.element.createElement(
                     PanelBody,
                     {
                         title: __("Label Style"),
@@ -54362,7 +54362,7 @@ var edit = function (_Component) {
                         }
                     })
                 ),
-                wp.element.createElement(
+                percentage && wp.element.createElement(
                     PanelBody,
                     {
                         title: __("Percentage Style"),

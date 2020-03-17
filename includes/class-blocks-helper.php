@@ -1032,7 +1032,7 @@ class Premium_Blocks_Integration {
 				" .premium-progress-bar-percentage" => array(
 					"color" => $attr['percentageColor'],
 					"font-weight" => $attr['percentageWeight'],
-					"letter-spacing" => self::get_css_value( $attr['percentageLetter'], 'px' ),
+					"letter-spacing" => self::get_css_value( $attr['percentageLetter'], 'px !important' ),
 					"font-style" => $attr['percentageStyle'],
 					"font-size" => self::get_css_value( $attr['percentagefontSize'], $attr['percentagefontSizeType'] ),
 				),
