@@ -53855,6 +53855,85 @@ var _wp$components = wp.components,
     TextControl = _wp$components.TextControl,
     ToggleControl = _wp$components.ToggleControl;
 
+
+var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__["b" /* SortableElement */])(function (_ref) {
+    var edit = _ref.edit,
+        removeItem = _ref.removeItem,
+        newIndex = _ref.newIndex,
+        value = _ref.value,
+        changeLableValue = _ref.changeLableValue,
+        changePercentageValue = _ref.changePercentageValue,
+        items = _ref.items;
+    return wp.element.createElement(
+        "div",
+        { className: "premium-progress-bar-repeater" },
+        wp.element.createElement(
+            "div",
+            { className: "premium-progress-bar__container " + newIndex },
+            wp.element.createElement("span", { className: "premium-progress-bar__dragHandle" }),
+            wp.element.createElement(
+                "div",
+                { className: "premium-progress-bar__content",
+                    onClick: function onClick() {
+                        return edit(newIndex);
+                    } },
+                "Item# ",
+                newIndex + 1,
+                " "
+            ),
+            items.length != 1 ? wp.element.createElement("button", { className: "premium-progress-bar__trashicon fa fa-trash",
+                onClick: function onClick() {
+                    return removeItem(newIndex, value);
+                } }) : ""
+        ),
+        wp.element.createElement(
+            "div",
+            { className: "premium-progress-bar-repeater-controls " + (value.edit ? "editable" : "") },
+            wp.element.createElement(TextControl, {
+                label: __("Label"),
+                value: value.title,
+                onChange: function onChange(newText) {
+                    return changeLableValue(newText, newIndex);
+                }
+            }),
+            wp.element.createElement(TextControl, {
+                label: __("Percentage"),
+                value: value.percentage,
+                onChange: function onChange(newText) {
+                    return changePercentageValue(newText, newIndex);
+                }
+            })
+        )
+    );
+});
+
+var SortableList = Object(__WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__["a" /* SortableContainer */])(function (_ref2) {
+    var items = _ref2.items,
+        removeItem = _ref2.removeItem,
+        edit = _ref2.edit,
+        changeLableValue = _ref2.changeLableValue,
+        changePercentageValue = _ref2.changePercentageValue;
+
+    return wp.element.createElement(
+        "div",
+        null,
+        " ",
+        items.map(function (value, index) {
+            return wp.element.createElement(SortableItem, { key: "item-" + value,
+                index: index,
+                newIndex: index,
+                value: value,
+                removeItem: removeItem,
+                edit: edit,
+                changeLableValue: changeLableValue,
+                changePercentageValue: changePercentageValue,
+                items: items
+            });
+        }),
+        " "
+    );
+});
+
 var edit = function (_Component) {
     _inherits(edit, _Component);
 
@@ -53962,80 +54041,18 @@ var edit = function (_Component) {
             if (null != element && "undefined" != typeof element) {
                 element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_1__styling__["a" /* default */])(this.props);
             }
+            var changeLableValue = function changeLableValue(newText, newIndex) {
+                setAttributes({
+                    repeaterItems: onRepeaterChange("title", newText, newIndex)
+                });
+            };
 
-            var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__["b" /* SortableElement */])(function (_ref) {
-                var edit = _ref.edit,
-                    removeItem = _ref.removeItem,
-                    newIndex = _ref.newIndex,
-                    value = _ref.value;
-                return wp.element.createElement(
-                    "div",
-                    { className: "premium-progress-bar-repeater" },
-                    wp.element.createElement(
-                        "div",
-                        { className: "premium-progress-bar__container " + newIndex },
-                        wp.element.createElement("span", { className: "premium-progress-bar__dragHandle" }),
-                        wp.element.createElement(
-                            "div",
-                            { className: "premium-progress-bar__content",
-                                onClick: function onClick() {
-                                    return edit(newIndex);
-                                } },
-                            "Item# ",
-                            newIndex + 1,
-                            " "
-                        ),
-                        repeaterItems.length != 1 ? wp.element.createElement("button", { className: "premium-progress-bar__trashicon fa fa-trash",
-                            onClick: function onClick() {
-                                return removeItem(newIndex, value);
-                            } }) : ""
-                    ),
-                    wp.element.createElement(
-                        "div",
-                        { className: "premium-progress-bar-repeater-controls " + (value.edit ? "editable" : "") },
-                        wp.element.createElement(TextControl, {
-                            label: __("Label"),
-                            value: value.title,
-                            onChange: function onChange(newText) {
-                                return setAttributes({
-                                    repeaterItems: onRepeaterChange("title", newText, newIndex)
-                                });
-                            }
-                        }),
-                        wp.element.createElement(TextControl, {
-                            label: __("Percentage"),
-                            value: value.percentage,
-                            onChange: function onChange(newText) {
-                                return setAttributes({
-                                    repeaterItems: onRepeaterChange("percentage", newText, newIndex)
-                                });
-                            }
-                        })
-                    )
-                );
-            });
+            var changePercentageValue = function changePercentageValue(newText, newIndex) {
+                setAttributes({
+                    repeaterItems: onRepeaterChange("percentage", newText, newIndex)
+                });
+            };
 
-            var SortableList = Object(__WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__["a" /* SortableContainer */])(function (_ref2) {
-                var items = _ref2.items,
-                    removeItem = _ref2.removeItem,
-                    edit = _ref2.edit;
-
-                return wp.element.createElement(
-                    "div",
-                    null,
-                    " ",
-                    items.map(function (value, index) {
-                        return wp.element.createElement(SortableItem, { key: "item-" + value,
-                            index: index,
-                            newIndex: index,
-                            value: value,
-                            removeItem: removeItem,
-                            edit: edit
-                        });
-                    }),
-                    " "
-                );
-            });
             var onSortEndSingle = function onSortEndSingle(_ref3) {
                 var oldIndex = _ref3.oldIndex,
                     newIndex = _ref3.newIndex;
@@ -54195,10 +54212,12 @@ var edit = function (_Component) {
                                 },
 
                                 shouldCancelStart: shouldCancelStart,
+                                changeLableValue: changeLableValue,
+                                changePercentageValue: changePercentageValue,
                                 helperClass: "premium-person__sortableHelper" }),
                             wp.element.createElement(
                                 "div",
-                                null,
+                                { className: "premium-progress-bar-btn__wrap" },
                                 wp.element.createElement(
                                     "button",
                                     {
@@ -54238,7 +54257,7 @@ var edit = function (_Component) {
                         }
                     }),
                     wp.element.createElement(RangeControl, {
-                        label: __("Speed"),
+                        label: __("Speed (milliseconds)"),
                         value: speeds,
                         min: "0",
                         max: "5",

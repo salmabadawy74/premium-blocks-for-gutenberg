@@ -2598,8 +2598,12 @@ color: #23282d;
   line-height: 1;
   margin-right: 5px;
 }
+.premium-progress-bar-btn__wrap{
+  text-align: center;
+}
 .premium-progress-bar-btn{
-  display: inline-block;
+  display: inline-flex;
+  justify-content: space-between;
   background-color: #a4afb7;
   color: #fff;
   font-size: 11px;
@@ -2641,8 +2645,10 @@ color: #23282d;
 .premium-progress-bar-repeater-controls{
   border-color: #64666a;
   border: 1px solid #d5dadf;
-  border-top: 0 solid #d5dadf;
-  padding-top: 15px;
+  border-top: 0 solid #b4c1ce;
+  /* padding-top: 15px; */
+  padding: 0.5em;
+  margin-bottom: 1em;
 }
 .premium-progress-bar-repeater-controls:not(.editable){
   display: none;
@@ -2722,7 +2728,7 @@ color: #23282d;
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   border: 1px solid;
   line-height: 2.5em;
 }

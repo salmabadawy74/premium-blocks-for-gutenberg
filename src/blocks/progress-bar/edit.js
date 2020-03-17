@@ -30,7 +30,94 @@ const {
     ToggleControl,
 } = wp.components
 
+const SortableItem = SortableElement(({
+            edit,
+            removeItem,
+            newIndex,
+            value,
+            changeLableValue,
+            changePercentageValue,
+            items
+        }) => < div className="premium-progress-bar-repeater" >
 
+                <div className={
+                    `premium-progress-bar__container ${newIndex}`
+                } >
+                    < span className="premium-progress-bar__dragHandle" ></span>
+                    <div className="premium-progress-bar__content"
+                        onClick={
+                            () => edit(newIndex)
+                        } >
+                        Item# {
+                            newIndex + 1
+                        } </div>
+
+                     {
+                         items.length != 1 ? < button className = "premium-progress-bar__trashicon fa fa-trash"
+                            onClick={
+                                () => removeItem(newIndex, value)
+                            } >
+                        </button>:""}
+                            
+                </div>
+                <div className={
+                    `premium-progress-bar-repeater-controls ${value.edit ? "editable" : ""}`
+                } >
+                    <TextControl
+                        label={
+                            __("Label")
+                        }
+                        value={
+                            value.title
+                        }
+                        onChange = {
+                            (newText) => changeLableValue(newText, newIndex)
+                        }
+                    />
+                    <TextControl
+                        label={
+                            __("Percentage")
+                        }
+                        value={
+                            value.percentage
+                        }
+                        onChange = {
+                            (newText) => changePercentageValue(newText, newIndex)
+                        }
+                    />
+                </div >
+            </div>
+        )
+
+        const SortableList = SortableContainer(({
+            items,
+            removeItem,
+            edit,
+            changeLableValue,
+            changePercentageValue
+        }) => {
+            return (<div > {
+                (items).map((value, index) => (
+                    <SortableItem key={`item-${value}`}
+                        index={index}
+                        newIndex={index}
+                        value={value}
+                        removeItem={removeItem}
+                        edit={edit}
+                        changeLableValue = {
+                            changeLableValue
+                        }
+                        changePercentageValue = {
+                            changePercentageValue
+                        }
+                        items = {
+                            items
+                        }
+                    />
+                ))
+            } </div>
+            );
+        });
 
 class edit extends Component {
 
@@ -134,95 +221,26 @@ class edit extends Component {
         if (null != element && "undefined" != typeof element) {
             element.innerHTML = styling(this.props)
         }
+        const changeLableValue = (newText, newIndex) => {
+            setAttributes({
+                repeaterItems: onRepeaterChange(
+                    "title",
+                    newText,
+                    newIndex
+                )
+            })
+        }
+        
+        const changePercentageValue = (newText, newIndex) => {
+             setAttributes({
+                 repeaterItems: onRepeaterChange(
+                     "percentage",
+                     newText,
+                     newIndex
+                 )
+             })
+        }
 
-        const SortableItem = SortableElement(({
-            edit,
-            removeItem,
-            newIndex,
-            value,
-        }) => < div className="premium-progress-bar-repeater" >
-
-                <div className={
-                    `premium-progress-bar__container ${newIndex}`
-                } >
-                    < span className="premium-progress-bar__dragHandle" ></span>
-                    <div className="premium-progress-bar__content"
-                        onClick={
-                            () => edit(newIndex)
-                        } >
-                        Item# {
-                            newIndex + 1
-                        } </div>
-
-                    {
-                        repeaterItems.length != 1 ? <button className="premium-progress-bar__trashicon fa fa-trash"
-                            onClick={
-                                () => removeItem(newIndex, value)
-                            } >
-                        </button>
-                            : ""}
-                </div>
-                <div className={
-                    `premium-progress-bar-repeater-controls ${value.edit ? "editable" : ""}`
-                } >
-                    <TextControl
-                        label={
-                            __("Label")
-                        }
-                        value={
-                            value.title
-                        }
-                        onChange={
-                            newText =>
-                                setAttributes({
-                                    repeaterItems: onRepeaterChange(
-                                        "title",
-                                        newText,
-                                        newIndex
-                                    )
-                                })
-                        }
-                    />
-                    <TextControl
-                        label={
-                            __("Percentage")
-                        }
-                        value={
-                            value.percentage
-                        }
-                        onChange={
-                            newText =>
-                                setAttributes({
-                                    repeaterItems: onRepeaterChange(
-                                        "percentage",
-                                        newText,
-                                        newIndex
-                                    )
-                                })
-                        }
-                    />
-                </div >
-            </div>
-        )
-
-        const SortableList = SortableContainer(({
-            items,
-            removeItem,
-            edit,
-        }) => {
-            return (<div > {
-                (items).map((value, index) => (
-                    <SortableItem key={`item-${value}`}
-                        index={index}
-                        newIndex={index}
-                        value={value}
-                        removeItem={removeItem}
-                        edit={edit}
-                    />
-                ))
-            } </div>
-            );
-        });
         const onSortEndSingle = ({
             oldIndex,
             newIndex
@@ -371,8 +389,14 @@ class edit extends Component {
                                         shouldCancelStart={
                                             shouldCancelStart
                                         }
+                                        changeLableValue = {
+                                            changeLableValue
+                                        }
+                                        changePercentageValue = {
+                                            changePercentageValue
+                                        }
                                         helperClass='premium-person__sortableHelper' />
-                                    <div >
+                                    < div className = "premium-progress-bar-btn__wrap" >
                                         <button
                                             className={
                                                 "premium-progress-bar-btn"
@@ -412,7 +436,9 @@ class edit extends Component {
                             onChange={value => setAttributes({ progress: value })}
                         />
                         <RangeControl
-                            label={__("Speed")}
+                            label = {
+                                __("Speed (milliseconds)")
+                            }
                             value={speeds}
                             min="0"
                             max="5"
