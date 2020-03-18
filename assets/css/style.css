@@ -2770,3 +2770,90 @@ color: #23282d;
   color: #ffffff;
   cursor: pointer;
 }
+
+/**************** Premium Tabs *****************/
+/*******************************************************/
+.premium-tab-title{
+  /* border-width: 1px; */
+  display: table-cell;
+  font-family: "Roboto", Sans-serif;
+    font-weight: 600;
+    /* color: #6ec1e4; */
+    position: relative;
+    padding: 20px 25px;
+    line-height: 1;
+    /* border: 1px solid transparent; */
+    cursor: pointer;
+    outline: none;
+}
+.premium-tab-title::before {
+  border-width: 1px;
+  right: 100%;
+  bottom: 0;
+  height: 0;
+  width: 999em;
+  border-bottom-style: solid;
+  display: block;
+    content: "";
+    position: absolute;
+    border: 1px #d4d4d4;
+}
+.premium-tab-title::after{
+  border-width: 1px;
+  left: 100%;
+  bottom: 0;
+  height: 0;
+  width: 999em;
+  border-bottom-style: solid;
+  display: block;
+  content: "";
+  position: absolute;
+  border: 1px #d4d4d4;
+}
+.premium-tab-title a{
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  /* color: #6ec1e4 !important; */
+}
+.premium-tab-title__wrap{
+  overflow: hidden;
+}
+.premium-tab-content__wrap{
+  border-width: 1px;
+  border: 1px #d4d4d4;
+}
+.premium-tab-content{
+  display: none;
+  /* border-width: 1px; */
+  border-style: none solid solid;
+  color: #7a7a7a;
+  font-family: "Roboto",
+  Sans-serif;
+  font-weight: 400;
+  min-height: 15px;
+  padding: 20px;
+  /* border: 1px #d4d4d4; */
+}
+.premium-tab-title-active a{
+  color: #45fc5d !important;
+}
+.premium-tab-title-active {
+  /* border-color: #E32929; */
+  border-bottom-style: none !important;
+}
+.premium-tab-content-active{
+  display: block !important;
+  border-style: none solid solid !important;
+  /* border-color: #E32929; */
+}
+.premium-tab-content-title{
+  /* border-width: 2px; */
+  font-family: "Roboto",
+  Sans-serif;
+  font-weight: 600;
+  color: #6ec1e4;
+  padding: 10px;
+  cursor: pointer;
+   display: none;
+}

@@ -14,4 +14,5 @@ import "./blocks/person";
 import "./blocks/icon-list"
 import "./blocks/content-switcher"
 import "./blocks/progress-bar"
+import "./blocks/tab"
 //import "./blocks/test";
