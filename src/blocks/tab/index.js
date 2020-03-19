@@ -68,7 +68,71 @@ const tabAttrs = {
     activetitleColor: {
       type: "string",
       default: "#45fc5d"
-    }
+    },
+    titleLetter: {
+        type: "number"
+      },
+      titleStyle: {
+        type: "string"
+      },
+      titleUpper: {
+        type: "boolean",
+        default: false
+      },
+      titleWeight: {
+        type: "number",
+        default: 500
+      },
+      titlefontSize: {
+        type: "number",
+        default: 20
+      },
+      titlefontSizeType: {
+        type: "string",
+        default: "px"
+      },
+      titlefontSizeMobile: {
+        type: "number",
+        default: 20
+      },
+      titlefontSizeTablet: {
+        type: "number",
+        default: 20
+      },
+      contentColor: {
+      type: "string",
+      default: "#7a7a7a"
+    },
+    contentLetter: {
+        type: "number"
+      },
+      contentStyle: {
+        type: "string"
+      },
+      contentUpper: {
+        type: "boolean",
+        default: false
+      },
+      contentWeight: {
+        type: "number",
+        default: 500
+      },
+      contentfontSize: {
+        type: "number",
+        default: 20
+      },
+      contentfontSizeType: {
+        type: "string",
+        default: "px"
+      },
+      contentfontSizeMobile: {
+        type: "number",
+        default: 20
+      },
+      contentfontSizeTablet: {
+        type: "number",
+        default: 20
+      },
 };
 
 registerBlockType("premium/tab", {

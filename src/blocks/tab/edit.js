@@ -148,7 +148,24 @@ class edit extends Component {
             tabborderColor,
             tabBGColor,
             titleColor,
-            activetitleColor
+            activetitleColor,
+            titleWeight,
+            titleLetter,
+            titleUpper,
+            titleStyle,
+            titlefontSize,
+            titlefontSizeMobile,
+            titlefontSizeTablet,
+            titlefontSizeType,
+            contentColor,
+            contentWeight,
+            contentLetter,
+            contentUpper,
+            contentStyle,
+            contentfontSize,
+            contentfontSizeMobile,
+            contentfontSizeTablet,
+            contentfontSizeType,
         } = attributes
 
 
@@ -245,7 +262,7 @@ class edit extends Component {
             return ( < div className = {
                   `premium-tab-title ${item.active? "premium-tab-title-active": ""}`
                 } >
-               <a onClick={() =>activeTab(index)}>{item.title}</a>
+               <a onClick={() =>activeTab(index)} style={{color: titleColor}}>{item.title}</a>
             </div>
             )
         })
@@ -403,6 +420,66 @@ class edit extends Component {
                                 })
                             }
                             allowReset={true}
+                        />
+                        <PremiumTypo
+                            components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                            setAttributes={setAttributes}
+                            fontSizeType={{ value: titlefontSizeType, label: __("titlefontSizeType") }}
+                            fontSize={{ value: titlefontSize, label: __("titlefontSize") }}
+                            fontSizeMobile={{ value: titlefontSizeMobile, label: __("titlefontSizeMobile") }}
+                            fontSizeTablet={{ value: titlefontSizeTablet, label: __("titlefontSizeTablet") }}
+                            weight={titleWeight}
+                            style={titleStyle}
+                            spacing={titleLetter}
+                            upper={titleUpper}
+                            onChangeWeight={newWeight =>
+                                setAttributes({ titleWeight: newWeight || 500 })
+                            }
+                            onChangeStyle={newStyle =>
+                                setAttributes({ titleStyle: newStyle })
+                            }
+                            onChangeSpacing={newValue =>
+                                setAttributes({ titleLetter: newValue })
+                            }
+                            onChangeUpper={check => setAttributes({ titleUpper: check })}
+                        />
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Content Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                       <p>{__("Color")}</p>
+                        <ColorPalette
+                            value={contentColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    contentColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <PremiumTypo
+                            components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                            setAttributes={setAttributes}
+                            fontSizeType={{ value: contentfontSizeType, label: __("contentfontSizeType") }}
+                            fontSize={{ value: contentfontSize, label: __("contentfontSize") }}
+                            fontSizeMobile={{ value: contentfontSizeMobile, label: __("contentfontSizeMobile") }}
+                            fontSizeTablet={{ value: contentfontSizeTablet, label: __("contentfontSizeTablet") }}
+                            weight={contentWeight}
+                            style={contentStyle}
+                            spacing={contentLetter}
+                            upper={contentUpper}
+                            onChangeWeight={newWeight =>
+                                setAttributes({ contentWeight: newWeight || 500 })
+                            }
+                            onChangeStyle={newStyle =>
+                                setAttributes({ contentStyle: newStyle })
+                            }
+                            onChangeSpacing={newValue =>
+                                setAttributes({ contentLetter: newValue })
+                            }
+                            onChangeUpper={check => setAttributes({ contentUpper: check })}
                         />
                     </PanelBody>
                 </InspectorControls>

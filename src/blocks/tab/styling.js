@@ -10,7 +10,24 @@ function styling(props) {
     tabborderColor,
     tabBGColor,
     titleColor,
-    activetitleColor
+    activetitleColor,
+    titleWeight,
+    titleLetter,
+    titleUpper,
+    titleStyle,
+    titlefontSize,
+    titlefontSizeMobile,
+    titlefontSizeTablet,
+    titlefontSizeType,
+    contentColor,
+    contentWeight,
+    contentLetter,
+    contentUpper,
+    contentStyle,
+    contentfontSize,
+    contentfontSizeMobile,
+    contentfontSizeTablet,
+    contentfontSizeType,
   } = props.attributes
 
   var selectors = {}
@@ -20,18 +37,30 @@ function styling(props) {
   selectors = {
     " .premium-tab-title-active": {
       "border-style": tabborderType,
-        "border-width": generateCSSUnit(tabborderWidth , "px"),
-        "border-color": tabborderColor,
-        "background-color": tabBGColor
+      "border-width": generateCSSUnit(tabborderWidth, "px"),
+      "border-color": tabborderColor,
+      "background-color": tabBGColor
     },
     " .premium-tab-title": {
-      // "color": titleColor + " !important"
+      "font-size": generateCSSUnit(titlefontSize, titlefontSizeType),
+      "letter-spacing": titleLetter + "px" + "!important",
+      "text-transform": titleUpper ? "uppercase" : "none" + "!important",
+      "font-style": titleStyle + "!important",
+      "font-weight": titleWeight + "!important",
     },
-    " .premium-tab-title-active a":{
+    " .premium-tab-content p": {
+      "font-size": generateCSSUnit(contentfontSize, contentfontSizeType),
+      "letter-spacing": contentLetter + "px",
+      "text-transform": contentUpper ? "uppercase" : "none" + "!important",
+      "font-style": contentStyle + "!important",
+      "font-weight": contentWeight + "!important",
+      "color": contentColor + " !important"
+    },
+    " .premium-tab-title-active a": {
       "color": activetitleColor + " !important"
     },
     " .premium-tab-title a": {
-      "color": titleColor + " !important"
+      // "color": titleColor + " !important"
     },
     " .premium-tab-content-active": {
       "border-style": tabborderType,
@@ -44,15 +73,21 @@ function styling(props) {
   }
 
   mobile_selectors = {
-    // " .premium-content-switcher-toggle-switch": {
-    //   "font-size": generateCSSUnit(switchSizeMobile, switchSizeType)
-    // },
+    " .premium-tab-title": {
+      "font-size": generateCSSUnit(titlefontSizeMobile, titlefontSizeType)
+    },
+    " .premium-tab-content": {
+      "font-size": generateCSSUnit(contentfontSizeMobile, contentfontSizeType)
+    },
   }
 
   tablet_selectors = {
-    // " .premium-content-switcher-toggle-switch": {
-    //   "font-size": generateCSSUnit(switchSizeTablet, switchSizeType)
-    // },
+    " .premium-tab-title": {
+      "font-size": generateCSSUnit(titlefontSizeTablet, titlefontSizeType)
+    },
+    " .premium-tab-content": {
+      "font-size": generateCSSUnit(contentfontSizeTablet, contentfontSizeType)
+    },
   }
 
   var styling_css = ""
