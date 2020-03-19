@@ -22,12 +22,13 @@ const {
     AlignmentToolbar,
     InspectorControls,
     ColorPalette,
+    RichText
 } = wp.editor
 
 const {
     PanelBody,
     SelectControl,
-    RangeControl,
+    TextareaControl,
     TextControl,
     ToggleControl,
 } = wp.components
@@ -76,7 +77,7 @@ const SortableItem = SortableElement(({
                             (newText) => changeTabValue(newText, newIndex)
                         }
                     />
-                    <TextControl
+                    < TextareaControl
                         label={
                             __("Content")
                         }
@@ -212,7 +213,7 @@ class edit extends Component {
         };
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
-            if (['button', 'div', 'input'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+            if (['button', 'div', 'input', 'textarea'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                 return true; // Return true to cancel sorting
             }
         }
@@ -271,8 +272,15 @@ class edit extends Component {
           return ( < div className = {
                 `premium-tab-content ${item.active? "premium-tab-content-active": ""}`
               } >
+                  <RichText
+                    tagName="p"
+                    value={item.content}
+                    onChange = {
+                        (newText) => changeContentValue(newText, index)
+                    }
+                    />
                 {/* <div className="premium-tab-content-title">{item.title}</div> */}
-               <p>{item.content}</p>
+               {/* <p>{item.content}</p> */}
             </div>
             )
         })

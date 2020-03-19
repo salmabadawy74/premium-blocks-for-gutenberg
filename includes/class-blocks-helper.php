@@ -177,7 +177,9 @@ class Premium_Blocks_Integration {
 		
 		$is_content_switcher_enabled = self::$blocks['contentSwitcher'];
 		
-        $is_progress_bar_enabled = self::$blocks['progressBar'];
+				$is_progress_bar_enabled = self::$blocks['progressBar'];
+				
+        $is_tab_enabled = self::$blocks['tab'];
 
         
         wp_enqueue_style(
@@ -315,6 +317,15 @@ class Premium_Blocks_Integration {
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
+		}
+
+		if( $is_tab_enabled) {
+			wp_enqueue_script(
+            'tab-js',
+            PREMIUM_BLOCKS_URL . 'assets/js/tab.js',
+            array('jquery'),
+            PREMIUM_BLOCKS_VERSION
+      );
 		}
 		
 		if( $is_progress_bar_enabled ) {
@@ -547,13 +558,16 @@ class Premium_Blocks_Integration {
             switch ( $name ) {
                 case 'premium/icon-list':
                     $css += $this->get_icon_list_css( $blockattr, $block_id );
-					break;
-					case 'premium/content-switcher':
-						$css += $this->get_content_switcher_css( $blockattr, $block_id );
-						break;
-					case 'premium/progress-bar':
-						$css += $this->get_progress_bar_css( $blockattr, $block_id );
-						break;
+										break;
+									case 'premium/content-switcher':
+										$css += $this->get_content_switcher_css( $blockattr, $block_id );
+										break;
+									case 'premium/progress-bar':
+										$css += $this->get_progress_bar_css( $blockattr, $block_id );
+										break;
+										case 'premium/tab':
+										$css += $this->get_tab_css( $blockattr, $block_id );
+										break;
                 default:
                     // Nothing to do here.
                     break;
@@ -1108,6 +1122,92 @@ class Premium_Blocks_Integration {
 				" .premium-progress-bar-pin" => array(
 					"border-left-width" => self::get_css_value( $attr['pinTablet'], $attr['pinType'] ),
 					"height" => self::get_css_value( $attr['pinHeightTablet'], $attr['pinHeightType'] ),
+				),
+			);
+			// Tablet Icon Size CSS ends.
+
+			// @codingStandardsIgnoreEnd
+
+			$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-progress-bar-';
+
+            $desktop = self::generate_css( $selectors, $base_selector . $id );
+
+			$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+            $mobile = self::generate_css( $m_selectors, $base_selector . $id );
+            
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => $tablet,
+				'mobile'  => $mobile,
+			);
+            
+            return $generated_css;
+		}
+
+		public static function get_tab_css ( $attr, $id ){
+			$defaults = self::$block_list['premium/tab']['attributes'];
+            
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors = array(
+				// Desktop Icon Size CSS starts.
+				" .premium-tab-title-active" => array(
+					"border-style" => $attr['tabborderType'],
+					"border-width" =>  self::get_css_value($attr['tabborderWidth'] , 'px'),
+					"border-color" => $attr['tabborderColor'],
+					"background-color" => $attr['tabBGColor']
+				),
+				" .premium-tab-title" => array(
+					"font-size" => self::get_css_value($attr['titlefontSize'], $attr['titlefontSizeType']),
+					"letter-spacing" =>  self::get_css_value($attr['titleLetter'] , 'px'),
+					"text-transform" => $attr['titleUpper'] ? "uppercase" : "none" ,
+					"font-style" => $attr['titleStyle'],
+					"font-weight" => $attr['titleWeight']
+				),
+				" .premium-tab-content p" => array(
+					"font-size" => self::get_css_value($attr['contentfontSize'], $attr['contentfontSizeType']),
+					"letter-spacing" => self::get_css_value($attr['contentLetter'] , 'px'),
+					"text-transform" => $attr['contentUpper'] ? "uppercase" : "none" ,
+					"font-style" => $attr['contentStyle'],
+					"font-weight" => $attr['contentWeight'],
+					"color" => $attr['contentColor']
+				),
+				" .premium-tab-title-active a" => array(
+					"color" => self::get_css_value($attr['activetitleColor'], " !important")
+				),
+				" .premium-tab-content-active" => array(
+					"border-style" => $attr['tabborderType'],
+					"border-width" => self::get_css_value($attr['tabborderWidth'], 'px'),
+					"border-color" => $attr['tabborderColor']
+				),
+				" .premium-tab-content__wrap" => array(
+					"background-color" => $attr['tabBGColor']
+				),
+      );
+            // Desktop Icon Size CSS ends.
+
+			// Mobile Icon Size CSS starts.
+			$m_selectors = array(
+				" .premium-tab-title" => array(
+					"font-size" => self::get_css_value($attr['titlefontSizeMobile'], $attr['titlefontSizeType']),
+				),
+					" .premium-tab-content" => array(
+					"font-size" => self::get_css_value($attr['contentfontSizeMobile'], $attr['contentfontSizeType']),
+				),
+			);
+			// Mobile Icon Size CSS ends.
+
+			// Tablet Icon Size CSS starts.
+			$t_selectors = array(
+				" .premium-tab-title" => array(
+					"font-size" => self::get_css_value($attr['titlefontSizeTablet'], $attr['titlefontSizeType']),
+				),
+					" .premium-tab-content" => array(
+					"font-size" => self::get_css_value($attr['contentfontSizeTablet'], $attr['contentfontSizeType']),
 				),
 			);
 			// Tablet Icon Size CSS ends.

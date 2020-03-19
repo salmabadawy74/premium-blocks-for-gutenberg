@@ -70,10 +70,12 @@ const tabAttrs = {
       default: "#45fc5d"
     },
     titleLetter: {
-        type: "number"
+        type: "number",
+        default: 0
       },
       titleStyle: {
-        type: "string"
+        type: "string",
+        default: "normal"
       },
       titleUpper: {
         type: "boolean",
@@ -104,10 +106,12 @@ const tabAttrs = {
       default: "#7a7a7a"
     },
     contentLetter: {
-        type: "number"
+        type: "number",
+        default: 0
       },
       contentStyle: {
-        type: "string"
+        type: "string",
+        default: "normal"
       },
       contentUpper: {
         type: "boolean",
@@ -143,5 +147,6 @@ registerBlockType("premium/tab", {
   supports: {
     inserter: tab
   },
-  edit: edit
+  edit: edit,
+  save: save
 });

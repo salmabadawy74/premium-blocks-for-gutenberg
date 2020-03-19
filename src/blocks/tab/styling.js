@@ -9,7 +9,6 @@ function styling(props) {
     tabborderWidth,
     tabborderColor,
     tabBGColor,
-    titleColor,
     activetitleColor,
     titleWeight,
     titleLetter,
@@ -59,9 +58,6 @@ function styling(props) {
     " .premium-tab-title-active a": {
       "color": activetitleColor + " !important"
     },
-    " .premium-tab-title a": {
-      // "color": titleColor + " !important"
-    },
     " .premium-tab-content-active": {
       "border-style": tabborderType,
       "border-width": generateCSSUnit(tabborderWidth, "px"),
@@ -69,6 +65,9 @@ function styling(props) {
     },
     " .premium-tab-content__wrap": {
       "background-color": tabBGColor
+    },
+    " .premium-tab-title::after": {
+      "border-color": tabborderColor + " !important"
     }
   }
 

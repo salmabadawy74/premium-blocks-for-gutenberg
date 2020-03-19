@@ -297,6 +297,37 @@ if ( ! class_exists( 'Config' ) ) {
 							'speeds' => '1'
 						)
 					),
+					'premium/tab'         => array(
+						'slug'        => '',
+						'default'     => true,
+						'attributes'  => array(
+							'classMigrate'     => false,
+							'align'            => 'center',
+							'block_id'        => '',
+							'tabborderType' => 'solid',
+							'tabborderWidth' => '1',
+							'tabborderColor' => '#d4d4d4',
+							'tabBGColor' => '',
+							'activetitleColor' => '#45fc5d',
+							'titleWeight' => '500',
+							'titleLetter' => '0',
+							'titleUpper' => false,
+							'titleStyle' => 'normal',
+							'titlefontSize' => '20',
+							'titlefontSizeMobile' => '20',
+							'titlefontSizeTablet' => '20',
+							'titlefontSizeType' => 'px',
+							'contentColor' => '#7a7a7a',
+							'contentWeight' => '500',
+							'contentLetter' => '0',
+							'contentUpper' => false,
+							'contentStyle' => 'normal',
+							'contentfontSize' => '20',
+							'contentfontSizeMobile' => '20',
+							'contentfontSizeTablet' => '20',
+							'contentfontSizeType' => 'px',
+						)
+						),
 				);
 			}
 			return self::$block_attributes;

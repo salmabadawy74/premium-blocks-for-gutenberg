@@ -54768,7 +54768,6 @@ function styling(props) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(270);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__save__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(271);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
 
@@ -54835,10 +54834,12 @@ var tabAttrs = {
     default: "#45fc5d"
   },
   titleLetter: {
-    type: "number"
+    type: "number",
+    default: 0
   },
   titleStyle: {
-    type: "string"
+    type: "string",
+    default: "normal"
   },
   titleUpper: {
     type: "boolean",
@@ -54869,10 +54870,12 @@ var tabAttrs = {
     default: "#7a7a7a"
   },
   contentLetter: {
-    type: "number"
+    type: "number",
+    default: 0
   },
   contentStyle: {
-    type: "string"
+    type: "string",
+    default: "normal"
   },
   contentUpper: {
     type: "boolean",
@@ -54908,14 +54911,114 @@ registerBlockType("premium/tab", {
   supports: {
     inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["p" /* tab */]
   },
-  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */]
+  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+  save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */]
 });
 
 /***/ }),
 /* 270 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = save;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 
 
+var RichText = wp.editor.RichText;
+
+
+function save(props) {
+  var attributes = props.attributes,
+      className = props.className;
+  var block_id = attributes.block_id,
+      align = attributes.align,
+      repeatertabs = attributes.repeatertabs,
+      titleColor = attributes.titleColor;
+
+
+  var renderTabs = repeatertabs.map(function (item, index) {
+    return wp.element.createElement(
+      "div",
+      { className: "premium-tab-title " + (item.active ? "premium-tab-title-active" : "") },
+      wp.element.createElement(
+        "a",
+        { onClick: function onClick() {
+            return activeTab(index);
+          }, style: { color: titleColor } },
+        item.title
+      )
+    );
+  });
+
+  var renderContents = repeatertabs.map(function (item, index) {
+    return wp.element.createElement(
+      "div",
+      { className: "premium-tab-content " + (item.active ? "premium-tab-content-active" : "") },
+      wp.element.createElement(RichText.Content, {
+        tagName: "p",
+        value: item.content,
+        onChange: function onChange(newText) {
+          return changeContentValue(newText, index);
+        }
+      })
+    );
+  });
+  var changeContentValue = function changeContentValue(newText, newIndex) {
+    setAttributes({
+      repeaterItems: onRepeaterChange("content", newText, newIndex)
+    });
+  };
+  var activeTab = function activeTab(index) {
+    return repeatertabs.map(function (item, i) {
+      if (index == i) {
+        setAttributes({
+          repeatertabs: onRepeaterChange("active", item.active ? false : true, index)
+        });
+      } else {
+        setAttributes({
+          repeatertabs: onRepeaterChange("active", false, i)
+        });
+      }
+    });
+  };
+
+  var onRepeaterChange = function onRepeaterChange(attr, value, index) {
+    var items = repeatertabs;
+    return items.map(function (item, currIndex) {
+      if (index == currIndex) {
+        item[attr] = value;
+      }
+
+      return item;
+    });
+  };
+
+  return wp.element.createElement(
+    "div",
+    { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id),
+      style: {
+        textAlign: align
+      } },
+    wp.element.createElement(
+      "div",
+      { className: "premium-tab",
+        style: {
+          textAlign: align
+        } },
+      wp.element.createElement(
+        "div",
+        { className: "premium-tab-title__wrap" },
+        renderTabs
+      ),
+      wp.element.createElement(
+        "div",
+        { className: "premium-tab-content__wrap" },
+        renderContents
+      )
+    )
+  );
+}
 
 /***/ }),
 /* 271 */
@@ -54953,11 +55056,12 @@ var _wp$editor = wp.editor,
     BlockControls = _wp$editor.BlockControls,
     AlignmentToolbar = _wp$editor.AlignmentToolbar,
     InspectorControls = _wp$editor.InspectorControls,
-    ColorPalette = _wp$editor.ColorPalette;
+    ColorPalette = _wp$editor.ColorPalette,
+    RichText = _wp$editor.RichText;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
-    RangeControl = _wp$components.RangeControl,
+    TextareaControl = _wp$components.TextareaControl,
     TextControl = _wp$components.TextControl,
     ToggleControl = _wp$components.ToggleControl;
 
@@ -55002,7 +55106,7 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__["b" /
                     return changeTabValue(newText, newIndex);
                 }
             }),
-            wp.element.createElement(TextControl, {
+            wp.element.createElement(TextareaControl, {
                 label: __("Content"),
                 value: value.content,
                 onChange: function onChange(newText) {
@@ -55129,7 +55233,7 @@ var edit = function (_Component) {
             };
             var shouldCancelStart = function shouldCancelStart(e) {
                 // Prevent sorting from being triggered if target is input or button
-                if (['button', 'div', 'input'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+                if (['button', 'div', 'input', 'textarea'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                     return true; // Return true to cancel sorting
                 }
             };
@@ -55186,11 +55290,13 @@ var edit = function (_Component) {
                 return wp.element.createElement(
                     "div",
                     { className: "premium-tab-content " + (item.active ? "premium-tab-content-active" : "") },
-                    wp.element.createElement(
-                        "p",
-                        null,
-                        item.content
-                    )
+                    wp.element.createElement(RichText, {
+                        tagName: "p",
+                        value: item.content,
+                        onChange: function onChange(newText) {
+                            return changeContentValue(newText, index);
+                        }
+                    })
                 );
             });
 
@@ -55472,7 +55578,6 @@ function styling(props) {
       tabborderWidth = _props$attributes.tabborderWidth,
       tabborderColor = _props$attributes.tabborderColor,
       tabBGColor = _props$attributes.tabBGColor,
-      titleColor = _props$attributes.titleColor,
       activetitleColor = _props$attributes.activetitleColor,
       titleWeight = _props$attributes.titleWeight,
       titleLetter = _props$attributes.titleLetter,
@@ -55522,9 +55627,6 @@ function styling(props) {
     " .premium-tab-title-active a": {
       "color": activetitleColor + " !important"
     },
-    " .premium-tab-title a": {
-      // "color": titleColor + " !important"
-    },
     " .premium-tab-content-active": {
       "border-style": tabborderType,
       "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px"),
@@ -55532,6 +55634,9 @@ function styling(props) {
     },
     " .premium-tab-content__wrap": {
       "background-color": tabBGColor
+    },
+    " .premium-tab-title::after": {
+      "border-color": tabborderColor + " !important"
     }
   };
 
