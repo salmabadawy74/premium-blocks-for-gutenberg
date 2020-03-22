@@ -66,8 +66,13 @@ function styling(props) {
     " .premium-tab-content__wrap": {
       "background-color": tabBGColor
     },
-    " .premium-tab-title::after": {
-      "border-color": tabborderColor + " !important"
+    " .premium-tab-title-active::after": {
+      "border-color": tabborderColor + " !important",
+      "border-width" : generateCSSUnit(tabborderWidth, "px"),
+    },
+    " .premium-tab-title-active::before": {
+      "border-color": tabborderColor + " !important",
+      "border-width" : generateCSSUnit(tabborderWidth, "px"),
     }
   }
 
@@ -75,7 +80,7 @@ function styling(props) {
     " .premium-tab-title": {
       "font-size": generateCSSUnit(titlefontSizeMobile, titlefontSizeType)
     },
-    " .premium-tab-content": {
+    " .premium-tab-content p": {
       "font-size": generateCSSUnit(contentfontSizeMobile, contentfontSizeType)
     },
   }
@@ -84,7 +89,7 @@ function styling(props) {
     " .premium-tab-title": {
       "font-size": generateCSSUnit(titlefontSizeTablet, titlefontSizeType)
     },
-    " .premium-tab-content": {
+    " .premium-tab-content p": {
       "font-size": generateCSSUnit(contentfontSizeTablet, contentfontSizeType)
     },
   }

@@ -1187,6 +1187,14 @@ class Premium_Blocks_Integration {
 				" .premium-tab-content__wrap" => array(
 					"background-color" => $attr['tabBGColor']
 				),
+				" .premium-tab-title-active::after" => array(
+					"border-width" => self::get_css_value($attr['tabborderWidth'], 'px'),
+					"border-color" => $attr['tabborderColor']
+				),
+				" .premium-tab-title-active::before" => array(
+					"border-width" => self::get_css_value($attr['tabborderWidth'], 'px'),
+					"border-color" => $attr['tabborderColor']
+				),
       );
             // Desktop Icon Size CSS ends.
 
@@ -1195,7 +1203,7 @@ class Premium_Blocks_Integration {
 				" .premium-tab-title" => array(
 					"font-size" => self::get_css_value($attr['titlefontSizeMobile'], $attr['titlefontSizeType']),
 				),
-					" .premium-tab-content" => array(
+					" .premium-tab-content p" => array(
 					"font-size" => self::get_css_value($attr['contentfontSizeMobile'], $attr['contentfontSizeType']),
 				),
 			);
@@ -1206,7 +1214,7 @@ class Premium_Blocks_Integration {
 				" .premium-tab-title" => array(
 					"font-size" => self::get_css_value($attr['titlefontSizeTablet'], $attr['titlefontSizeType']),
 				),
-					" .premium-tab-content" => array(
+					" .premium-tab-content p" => array(
 					"font-size" => self::get_css_value($attr['contentfontSizeTablet'], $attr['contentfontSizeType']),
 				),
 			);

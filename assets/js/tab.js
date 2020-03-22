@@ -5,23 +5,24 @@ jQuery(document).ready(function ($) {
     let $tab = $(tab),
 
     $toggletabs = $tab.find(`.premium-tab-title`);
-    console.log($toggletabs.length);
+    
+
+    $togglecontent = $tab.find(`.premium-tab-content`);
+
     $toggletabs.map((index, active) => {
       let $active = $(active)
-      console.log($active);
+
+
       $active.on("click", () => {
-        console.log(index);
-        for (let i = 0; i < $toggletabs.length; i++){
+        for (let i = 0; i <= $toggletabs.length-1; i++){
           if(i == index){
-            console.log(index);
-            console.log($active);
-            
+
             $active.addClass("premium-tab-title-active");
+            $($togglecontent[i]).addClass("premium-tab-content-active");
           }
           else{
-            console.log("else = ",$active);
-            console.log(i);
-            $active.removeClass("premium-tab-title-active");
+            $($toggletabs[i]).removeClass("premium-tab-title-active");
+            $($togglecontent[i]).removeClass("premium-tab-content-active");
           }
         }
         

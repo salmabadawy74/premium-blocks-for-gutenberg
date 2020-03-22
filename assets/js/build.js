@@ -1726,14 +1726,14 @@ var listCacheClear = __webpack_require__(87),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `ListCache`.
@@ -2478,6 +2478,7 @@ module.exports = toKey;
     var n;Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var a = ((n = r(14)) && n.__esModule ? n : { default: n }).default;t.default = a;
   }]).default;
 });
+//# sourceMappingURL=fonticonpicker.react.js.map
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(41)(module)))
 
 /***/ }),
@@ -3057,14 +3058,14 @@ var mapCacheClear = __webpack_require__(103),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `MapCache`.
@@ -8713,14 +8714,14 @@ var hashClear = __webpack_require__(105),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `Hash`.
@@ -9080,13 +9081,13 @@ var MapCache = __webpack_require__(39),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-  var index = -1,
-      length = values == null ? 0 : values.length;
+    var index = -1,
+        length = values == null ? 0 : values.length;
 
-  this.__data__ = new MapCache();
-  while (++index < length) {
-    this.add(values[index]);
-  }
+    this.__data__ = new MapCache();
+    while (++index < length) {
+        this.add(values[index]);
+    }
 }
 
 // Add methods to `SetCache`.
@@ -10030,16 +10031,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-  var result = keys(object),
-      length = result.length;
+    var result = keys(object),
+        length = result.length;
 
-  while (length--) {
-    var key = result[length],
-        value = object[key];
+    while (length--) {
+        var key = result[length],
+            value = object[key];
 
-    result[length] = [key, value, isStrictComparable(value)];
-  }
-  return result;
+        result[length] = [key, value, isStrictComparable(value)];
+    }
+    return result;
 }
 
 module.exports = getMatchData;
@@ -54900,6 +54901,10 @@ var tabAttrs = {
   contentfontSizeTablet: {
     type: "number",
     default: 20
+  },
+  type: {
+    type: "string",
+    default: "horizontal"
   }
 };
 
@@ -54929,95 +54934,61 @@ var RichText = wp.editor.RichText;
 
 
 function save(props) {
-  var attributes = props.attributes,
-      className = props.className;
-  var block_id = attributes.block_id,
-      align = attributes.align,
-      repeatertabs = attributes.repeatertabs,
-      titleColor = attributes.titleColor;
+    var attributes = props.attributes,
+        className = props.className;
+    var block_id = attributes.block_id,
+        align = attributes.align,
+        repeatertabs = attributes.repeatertabs,
+        titleColor = attributes.titleColor;
 
 
-  var renderTabs = repeatertabs.map(function (item, index) {
+    var renderTabs = repeatertabs.map(function (item, index) {
+        return wp.element.createElement(
+            "div",
+            { className: "premium-tab-title " + (item.active ? "premium-tab-title-active" : "") },
+            wp.element.createElement(
+                "a",
+                { style: { color: titleColor } },
+                item.title
+            )
+        );
+    });
+
+    var renderContents = repeatertabs.map(function (item, index) {
+        return wp.element.createElement(
+            "div",
+            { className: "premium-tab-content " + (item.active ? "premium-tab-content-active" : "") },
+            wp.element.createElement(RichText.Content, {
+                tagName: "p",
+                value: item.content
+            })
+        );
+    });
+
     return wp.element.createElement(
-      "div",
-      { className: "premium-tab-title " + (item.active ? "premium-tab-title-active" : "") },
-      wp.element.createElement(
-        "a",
-        { onClick: function onClick() {
-            return activeTab(index);
-          }, style: { color: titleColor } },
-        item.title
-      )
-    );
-  });
-
-  var renderContents = repeatertabs.map(function (item, index) {
-    return wp.element.createElement(
-      "div",
-      { className: "premium-tab-content " + (item.active ? "premium-tab-content-active" : "") },
-      wp.element.createElement(RichText.Content, {
-        tagName: "p",
-        value: item.content,
-        onChange: function onChange(newText) {
-          return changeContentValue(newText, index);
-        }
-      })
-    );
-  });
-  var changeContentValue = function changeContentValue(newText, newIndex) {
-    setAttributes({
-      repeaterItems: onRepeaterChange("content", newText, newIndex)
-    });
-  };
-  var activeTab = function activeTab(index) {
-    return repeatertabs.map(function (item, i) {
-      if (index == i) {
-        setAttributes({
-          repeatertabs: onRepeaterChange("active", item.active ? false : true, index)
-        });
-      } else {
-        setAttributes({
-          repeatertabs: onRepeaterChange("active", false, i)
-        });
-      }
-    });
-  };
-
-  var onRepeaterChange = function onRepeaterChange(attr, value, index) {
-    var items = repeatertabs;
-    return items.map(function (item, currIndex) {
-      if (index == currIndex) {
-        item[attr] = value;
-      }
-
-      return item;
-    });
-  };
-
-  return wp.element.createElement(
-    "div",
-    { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id),
-      style: {
-        textAlign: align
-      } },
-    wp.element.createElement(
-      "div",
-      { className: "premium-tab",
-        style: {
-          textAlign: align
-        } },
-      wp.element.createElement(
         "div",
-        { className: "premium-tab-title__wrap" },
-        renderTabs
-      ),
-      wp.element.createElement(
-        "div",
-        { className: "premium-tab-content__wrap" },
-        renderContents
-      )
-    )
-  );
+        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id),
+            style: {
+                textAlign: align
+            } },
+        wp.element.createElement(
+            "div",
+            { className: "premium-tab",
+                style: {
+                    textAlign: align
+                } },
+            wp.element.createElement(
+                "div",
+                { className: "premium-tab-title__wrap" },
+                renderTabs
+            ),
+            wp.element.createElement(
+                "div",
+                { className: "premium-tab-content__wrap" },
+                renderContents
+            )
+        )
+    );
 }
 
 /***/ }),
@@ -55196,9 +55167,17 @@ var edit = function (_Component) {
                 contentfontSize = attributes.contentfontSize,
                 contentfontSizeMobile = attributes.contentfontSizeMobile,
                 contentfontSizeTablet = attributes.contentfontSizeTablet,
-                contentfontSizeType = attributes.contentfontSizeType;
+                contentfontSizeType = attributes.contentfontSizeType,
+                type = attributes.type;
 
 
+            var TYPE = [{
+                value: "horizontal",
+                label: __("Horizontal")
+            }, {
+                value: "vertical",
+                label: __("Vertical")
+            }];
             var element = document.getElementById("premium-style-tab-" + this.props.clientId);
 
             if (null != element && "undefined" != typeof element) {
@@ -55386,7 +55365,15 @@ var edit = function (_Component) {
                             )
                         ),
                         wp.element.createElement("br", null)
-                    )
+                    ),
+                    wp.element.createElement(SelectControl, {
+                        label: __("Type"),
+                        value: type,
+                        onChange: function onChange(newEffect) {
+                            return setAttributes({ type: newEffect });
+                        },
+                        options: TYPE
+                    })
                 ),
                 wp.element.createElement(
                     PanelBody,
@@ -55537,13 +55524,13 @@ var edit = function (_Component) {
                     } },
                 wp.element.createElement(
                     "div",
-                    { className: "premium-tab",
+                    { className: "premium-tab " + (type == 'vertical' ? "premium-tab-view-vertical" : ""),
                         style: {
                             textAlign: align
                         } },
                     wp.element.createElement(
                         "div",
-                        { className: "premium-tab-title__wrap" },
+                        { className: "premium-tab-title__wrap " + (type == 'vertical' ? "premium-tab-title__wrap-view-vertical" : "") },
                         renderTabs
                     ),
                     wp.element.createElement(
@@ -55635,8 +55622,13 @@ function styling(props) {
     " .premium-tab-content__wrap": {
       "background-color": tabBGColor
     },
-    " .premium-tab-title::after": {
-      "border-color": tabborderColor + " !important"
+    " .premium-tab-title-active::after": {
+      "border-color": tabborderColor + " !important",
+      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
+    },
+    " .premium-tab-title-active::before": {
+      "border-color": tabborderColor + " !important",
+      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
     }
   };
 
@@ -55644,7 +55636,7 @@ function styling(props) {
     " .premium-tab-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeMobile, titlefontSizeType)
     },
-    " .premium-tab-content": {
+    " .premium-tab-content p": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeMobile, contentfontSizeType)
     }
   };
@@ -55653,7 +55645,7 @@ function styling(props) {
     " .premium-tab-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeTablet, titlefontSizeType)
     },
-    " .premium-tab-content": {
+    " .premium-tab-content p": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeTablet, contentfontSizeType)
     }
   };

@@ -137,6 +137,10 @@ const tabAttrs = {
         type: "number",
         default: 20
       },
+      type: {
+        type: "string",
+        default: "horizontal"
+    }
 };
 
 registerBlockType("premium/tab", {

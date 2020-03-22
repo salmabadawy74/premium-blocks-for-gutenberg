@@ -167,9 +167,18 @@ class edit extends Component {
             contentfontSizeMobile,
             contentfontSizeTablet,
             contentfontSizeType,
+            type
         } = attributes
 
-
+        const TYPE = [{
+            value: "horizontal",
+            label: __("Horizontal")
+        },
+        {
+            value: "vertical",
+            label: __("Vertical")
+        },
+    ]
         var element = document.getElementById("premium-style-tab-" + this.props.clientId)
 
         if (null != element && "undefined" != typeof element) {
@@ -377,6 +386,12 @@ class edit extends Component {
                                 </div>
                                 <br />
                             </Fragment>
+                            < SelectControl
+                                    label={__("Type")}
+                                    value={type}
+                                    onChange={newEffect => setAttributes({ type: newEffect })}
+                                    options={TYPE}
+                            />
                     </PanelBody>
                     <PanelBody
                         title={__("Tabs Style")}
@@ -498,11 +513,11 @@ class edit extends Component {
             )} style={{
                 textAlign: align,
             }}>
-                <div className={`premium-tab`}
+                <div className={`premium-tab ${type =='vertical'?"premium-tab-view-vertical":""}`}
                     style={{
                         textAlign: align,
                     }}>
-                      <div className="premium-tab-title__wrap">
+                      <div className={`premium-tab-title__wrap ${type =='vertical'?"premium-tab-title__wrap-view-vertical":""}`}>
                     {
                       renderTabs
                     }
