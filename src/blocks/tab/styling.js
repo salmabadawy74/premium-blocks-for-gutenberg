@@ -47,6 +47,19 @@ function styling(props) {
       "font-style": titleStyle + "!important",
       "font-weight": titleWeight + "!important",
     },
+    " .premium-tab-title-vertical-active": {
+      "border-style": tabborderType,
+      "border-width": generateCSSUnit(tabborderWidth, "px"),
+      "border-color": tabborderColor,
+      "background-color": tabBGColor
+    },
+    " .premium-tab-title-vertical": {
+      "font-size": generateCSSUnit(titlefontSize, titlefontSizeType),
+      "letter-spacing": titleLetter + "px" + "!important",
+      "text-transform": titleUpper ? "uppercase" : "none" + "!important",
+      "font-style": titleStyle + "!important",
+      "font-weight": titleWeight + "!important",
+    },
     " .premium-tab-content p": {
       "font-size": generateCSSUnit(contentfontSize, contentfontSizeType),
       "letter-spacing": contentLetter + "px",
@@ -56,6 +69,9 @@ function styling(props) {
       "color": contentColor + " !important"
     },
     " .premium-tab-title-active a": {
+      "color": activetitleColor + " !important"
+    },
+    " .premium-tab-title-vertical-active a": {
       "color": activetitleColor + " !important"
     },
     " .premium-tab-content-active": {
@@ -73,7 +89,15 @@ function styling(props) {
     " .premium-tab-title-active::before": {
       "border-color": tabborderColor + " !important",
       "border-width" : generateCSSUnit(tabborderWidth, "px"),
-    }
+    },
+     " .premium-tab-title-vertical-active::after": {
+       "border-color": tabborderColor + " !important",
+       "border-width": generateCSSUnit(tabborderWidth, "px"),
+     },
+     " .premium-tab-title-vertical-active::before": {
+       "border-color": tabborderColor + " !important",
+       "border-width": generateCSSUnit(tabborderWidth, "px"),
+     }
   }
 
   mobile_selectors = {

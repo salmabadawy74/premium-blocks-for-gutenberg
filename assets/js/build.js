@@ -1726,14 +1726,14 @@ var listCacheClear = __webpack_require__(87),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `ListCache`.
@@ -3058,14 +3058,14 @@ var mapCacheClear = __webpack_require__(103),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `MapCache`.
@@ -8714,14 +8714,14 @@ var hashClear = __webpack_require__(105),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `Hash`.
@@ -9081,13 +9081,13 @@ var MapCache = __webpack_require__(39),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-    var index = -1,
-        length = values == null ? 0 : values.length;
+  var index = -1,
+      length = values == null ? 0 : values.length;
 
-    this.__data__ = new MapCache();
-    while (++index < length) {
-        this.add(values[index]);
-    }
+  this.__data__ = new MapCache();
+  while (++index < length) {
+    this.add(values[index]);
+  }
 }
 
 // Add methods to `SetCache`.
@@ -10031,16 +10031,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-    var result = keys(object),
-        length = result.length;
+  var result = keys(object),
+      length = result.length;
 
-    while (length--) {
-        var key = result[length],
-            value = object[key];
+  while (length--) {
+    var key = result[length],
+        value = object[key];
 
-        result[length] = [key, value, isStrictComparable(value)];
-    }
-    return result;
+    result[length] = [key, value, isStrictComparable(value)];
+  }
+  return result;
 }
 
 module.exports = getMatchData;
@@ -55254,7 +55254,7 @@ var edit = function (_Component) {
             var renderTabs = repeatertabs.map(function (item, index) {
                 return wp.element.createElement(
                     "div",
-                    { className: "premium-tab-title " + (item.active ? "premium-tab-title-active" : "") },
+                    { className: (type == 'vertical' ? "premium-tab-title-vertical" : "premium-tab-title") + " " + (item.active ? type == 'vertical' ? "premium-tab-title-vertical-active" : "premium-tab-title-active" : "") + " " },
                     wp.element.createElement(
                         "a",
                         { onClick: function onClick() {
@@ -55603,6 +55603,19 @@ function styling(props) {
       "font-style": titleStyle + "!important",
       "font-weight": titleWeight + "!important"
     },
+    " .premium-tab-title-vertical-active": {
+      "border-style": tabborderType,
+      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px"),
+      "border-color": tabborderColor,
+      "background-color": tabBGColor
+    },
+    " .premium-tab-title-vertical": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSize, titlefontSizeType),
+      "letter-spacing": titleLetter + "px" + "!important",
+      "text-transform": titleUpper ? "uppercase" : "none" + "!important",
+      "font-style": titleStyle + "!important",
+      "font-weight": titleWeight + "!important"
+    },
     " .premium-tab-content p": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSize, contentfontSizeType),
       "letter-spacing": contentLetter + "px",
@@ -55612,6 +55625,9 @@ function styling(props) {
       "color": contentColor + " !important"
     },
     " .premium-tab-title-active a": {
+      "color": activetitleColor + " !important"
+    },
+    " .premium-tab-title-vertical-active a": {
       "color": activetitleColor + " !important"
     },
     " .premium-tab-content-active": {
@@ -55627,6 +55643,14 @@ function styling(props) {
       "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
     },
     " .premium-tab-title-active::before": {
+      "border-color": tabborderColor + " !important",
+      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
+    },
+    " .premium-tab-title-vertical-active::after": {
+      "border-color": tabborderColor + " !important",
+      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
+    },
+    " .premium-tab-title-vertical-active::before": {
       "border-color": tabborderColor + " !important",
       "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
     }

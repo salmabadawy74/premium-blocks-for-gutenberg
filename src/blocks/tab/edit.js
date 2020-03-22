@@ -270,7 +270,7 @@ class edit extends Component {
 
         const renderTabs = repeatertabs.map((item, index) => {
             return ( < div className = {
-                  `premium-tab-title ${item.active? "premium-tab-title-active": ""}`
+                  `${type== 'vertical'? "premium-tab-title-vertical":"premium-tab-title"} ${item.active? type== 'vertical'?"premium-tab-title-vertical-active": "premium-tab-title-active": ""} `
                 } >
                <a onClick={() =>activeTab(index)} style={{color: titleColor}}>{item.title}</a>
             </div>
