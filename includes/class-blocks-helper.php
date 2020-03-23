@@ -1168,7 +1168,28 @@ class Premium_Blocks_Integration {
 					"font-style" => $attr['titleStyle'],
 					"font-weight" => $attr['titleWeight']
 				),
+				" .premium-tab-title-vertical-active" => array(
+					"border-style" => $attr['tabborderType'],
+					"border-width" =>  self::get_css_value($attr['tabborderWidth'] , 'px'),
+					"border-color" => $attr['tabborderColor'],
+					"background-color" => $attr['tabBGColor']
+				),
+				" .premium-tab-title-vertical" => array(
+					"font-size" => self::get_css_value($attr['titlefontSize'], $attr['titlefontSizeType']),
+					"letter-spacing" =>  self::get_css_value($attr['titleLetter'] , 'px'),
+					"text-transform" => $attr['titleUpper'] ? "uppercase" : "none" ,
+					"font-style" => $attr['titleStyle'],
+					"font-weight" => $attr['titleWeight']
+				),
 				" .premium-tab-content p" => array(
+					"font-size" => self::get_css_value($attr['contentfontSize'], $attr['contentfontSizeType']),
+					"letter-spacing" => self::get_css_value($attr['contentLetter'] , 'px'),
+					"text-transform" => $attr['contentUpper'] ? "uppercase" : "none" ,
+					"font-style" => $attr['contentStyle'],
+					"font-weight" => $attr['contentWeight'],
+					"color" => $attr['contentColor']
+				),
+				" .premium-tab-content-vertical p" => array(
 					"font-size" => self::get_css_value($attr['contentfontSize'], $attr['contentfontSizeType']),
 					"letter-spacing" => self::get_css_value($attr['contentLetter'] , 'px'),
 					"text-transform" => $attr['contentUpper'] ? "uppercase" : "none" ,
@@ -1179,19 +1200,39 @@ class Premium_Blocks_Integration {
 				" .premium-tab-title-active a" => array(
 					"color" => self::get_css_value($attr['activetitleColor'], " !important")
 				),
+				" .premium-tab-title-vertical-active a" => array(
+					"color" => self::get_css_value($attr['activetitleColor'], " !important")
+				),
 				" .premium-tab-content-active" => array(
-					"border-style" => $attr['tabborderType'],
+					"border-width" => self::get_css_value($attr['tabborderWidth'], 'px'),
+					"border-color" => $attr['tabborderColor']
+				),
+				" .premium-tab-content-vertical-active" => array(
 					"border-width" => self::get_css_value($attr['tabborderWidth'], 'px'),
 					"border-color" => $attr['tabborderColor']
 				),
 				" .premium-tab-content__wrap" => array(
+					"border-width" => self::get_css_value($attr['tabborderWidth'], 'px'),
 					"background-color" => $attr['tabBGColor']
+				),
+				" .premium-tab-content__wrap-view-vertical" => array(
+					"border-width" => self::get_css_value($attr['tabborderWidth'], 'px'),
+					"background-color" => $attr['tabBGColor'],
+					"border-color" => $attr['tabborderColor']
 				),
 				" .premium-tab-title-active::after" => array(
 					"border-width" => self::get_css_value($attr['tabborderWidth'], 'px'),
 					"border-color" => $attr['tabborderColor']
 				),
 				" .premium-tab-title-active::before" => array(
+					"border-width" => self::get_css_value($attr['tabborderWidth'], 'px'),
+					"border-color" => $attr['tabborderColor']
+				),
+				" .premium-tab-title-vertical-active::after" => array(
+					"border-width" => self::get_css_value($attr['tabborderWidth'], 'px'),
+					"border-color" => $attr['tabborderColor']
+				),
+				" .premium-tab-title-vertical-active::before" => array(
 					"border-width" => self::get_css_value($attr['tabborderWidth'], 'px'),
 					"border-color" => $attr['tabborderColor']
 				),
@@ -1206,6 +1247,12 @@ class Premium_Blocks_Integration {
 					" .premium-tab-content p" => array(
 					"font-size" => self::get_css_value($attr['contentfontSizeMobile'], $attr['contentfontSizeType']),
 				),
+				" .premium-tab-title-vertical" => array(
+					"font-size" => self::get_css_value($attr['titlefontSizeMobile'], $attr['titlefontSizeType']),
+				),
+					" .premium-tab-content-vertical p" => array(
+					"font-size" => self::get_css_value($attr['contentfontSizeMobile'], $attr['contentfontSizeType']),
+				),
 			);
 			// Mobile Icon Size CSS ends.
 
@@ -1215,6 +1262,12 @@ class Premium_Blocks_Integration {
 					"font-size" => self::get_css_value($attr['titlefontSizeTablet'], $attr['titlefontSizeType']),
 				),
 					" .premium-tab-content p" => array(
+					"font-size" => self::get_css_value($attr['contentfontSizeTablet'], $attr['contentfontSizeType']),
+				),
+				" .premium-tab-title-vertical" => array(
+					"font-size" => self::get_css_value($attr['titlefontSizeTablet'], $attr['titlefontSizeType']),
+				),
+					" .premium-tab-content-vertical p" => array(
 					"font-size" => self::get_css_value($attr['contentfontSizeTablet'], $attr['contentfontSizeType']),
 				),
 			);

@@ -13,28 +13,32 @@ export default function save(props) {
         align,
         repeatertabs,
         titleColor,
+        type
     } = attributes
 
-     const renderTabs = repeatertabs.map((item, index) => {
-            return ( < div className = {
-                  `premium-tab-title ${item.active? "premium-tab-title-active": ""}`
-                } >
-               <a style={{color: titleColor}}>{item.title}</a>
-            </div>
-            )
-        })
+    const renderTabs = repeatertabs.map((item, index) => {
+      return ( < div className = {
+            `${type== 'vertical'? "premium-tab-title-vertical":"premium-tab-title"} ${item.active? type== 'vertical'?"premium-tab-title-vertical-active": "premium-tab-title-active": ""} `
+          } >
+         <a style={{color: titleColor}}>{item.title}</a>
+      </div>
+      )
+  })
 
-        const renderContents = repeatertabs.map((item, index) => {
-          return ( < div className = {
-                `premium-tab-content ${item.active? "premium-tab-content-active": ""}`
-              } >
-                  < RichText.Content
-                    tagName="p"
-                    value={item.content}
-                    />
-            </div>
-            )
-        })
+  const renderContents = repeatertabs.map((item, index) => {
+    return ( < div className = {
+          `${type== 'vertical'? "premium-tab-content-vertical":"premium-tab-content"} ${item.active? type== 'vertical'?"premium-tab-content-vertical-active": "premium-tab-content-active": ""}`
+        } >
+            <RichText.Content
+              tagName="p"
+              value={item.content}
+              onChange = {
+                  (newText) => changeContentValue(newText, index)
+              }
+              />
+      </div>
+      )
+  })
 
     return (
         <div className={classnames(
@@ -44,16 +48,16 @@ export default function save(props) {
             style={{
                 textAlign: align,
             }}>
-            <div className={`premium-tab`}
+            <div className={`premium-tab ${type =='vertical'?"premium-tab-view-vertical":""}`}
                     style={{
                         textAlign: align,
                     }}>
-                      <div className="premium-tab-title__wrap">
+                      <div className={`${type =='vertical'?"premium-tab-title__wrap-view-vertical":"premium-tab-title__wrap"}`}>
                     {
                       renderTabs
                     }
                     </div>
-                    <div className="premium-tab-content__wrap">
+                    <div className={`${type =='vertical'?"premium-tab-content__wrap-view-vertical":"premium-tab-content__wrap"}`}>
                     {
                       renderContents
                     }

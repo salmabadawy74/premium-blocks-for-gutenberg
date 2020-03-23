@@ -2855,18 +2855,31 @@ color: #23282d;
   overflow: hidden;
 }
 .premium-tab-content__wrap{
-  border-width: 1px;
+  /* border-width: 1px; */
   border: 1px #d4d4d4;
+}
+.premium-tab-content__wrap-view-vertical{
+  -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    border-style: solid solid solid none;
 }
 .premium-tab-content{
   display: none;
-  /* border-width: 1px; */
   border-style: none solid solid;
   color: #7a7a7a;
   font-family: "Roboto",
   Sans-serif;
   min-height: 15px;
   padding: 20px;
+}
+.premium-tab-content-vertical{
+  color: #7a7a7a;
+    font-family: "Roboto", Sans-serif;
+    padding: 20px;
+    display: none;
+    min-height: 15px;
 }
 .premium-tab-title-active {
   border-bottom-style: none !important;
@@ -2875,14 +2888,8 @@ color: #23282d;
   display: block !important;
   border-style: none solid solid !important;
 }
-.premium-tab-content-title{
-  font-family: "Roboto",
-  Sans-serif;
-  font-weight: 600;
-  color: #6ec1e4;
-  padding: 10px;
-  cursor: pointer;
-   display: none;
+.premium-tab-content-vertical-active{
+  display: block !important;
 }
 .premium-tab-view-vertical{
   display: -webkit-box;
@@ -2895,4 +2902,5 @@ color: #23282d;
     -webkit-flex-shrink: 0;
     -ms-flex-negative: 0;
     flex-shrink: 0;
+    overflow: hidden;
 }

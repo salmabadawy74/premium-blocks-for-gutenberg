@@ -51,8 +51,8 @@ const SortableItem = SortableElement(({
                         onClick={
                             () => edit(newIndex)
                         } >
-                        Tab # {
-                            newIndex + 1
+                       {
+                            value.title
                         } </div>
 
                      {
@@ -68,7 +68,7 @@ const SortableItem = SortableElement(({
                 } >
                     <TextControl
                         label={
-                            __(`Tab #${ newIndex + 1}`)
+                            __("Title")
                         }
                         value={
                             value.title
@@ -279,7 +279,7 @@ class edit extends Component {
 
         const renderContents = repeatertabs.map((item, index) => {
           return ( < div className = {
-                `premium-tab-content ${item.active? "premium-tab-content-active": ""}`
+                `${type== 'vertical'? "premium-tab-content-vertical":"premium-tab-content"} ${item.active? type== 'vertical'?"premium-tab-content-vertical-active": "premium-tab-content-active": ""}`
               } >
                   <RichText
                     tagName="p"
@@ -288,8 +288,6 @@ class edit extends Component {
                         (newText) => changeContentValue(newText, index)
                     }
                     />
-                {/* <div className="premium-tab-content-title">{item.title}</div> */}
-               {/* <p>{item.content}</p> */}
             </div>
             )
         })
@@ -372,7 +370,7 @@ class edit extends Component {
                                                 () => {
                                                     return setAttributes({
                                                         repeatertabs: repeatertabs.concat([{
-                                                            title: __("Tab"),
+                                                            title: __("Tab Title"),
                                                             content: __("Tab Content"),
                                                             edit: false
                                                         }])
@@ -517,12 +515,12 @@ class edit extends Component {
                     style={{
                         textAlign: align,
                     }}>
-                      <div className={`premium-tab-title__wrap ${type =='vertical'?"premium-tab-title__wrap-view-vertical":""}`}>
+                      <div className={`${type =='vertical'?"premium-tab-title__wrap-view-vertical":"premium-tab-title__wrap"}`}>
                     {
                       renderTabs
                     }
                     </div>
-                    <div className="premium-tab-content__wrap">
+                    <div className={`${type =='vertical'?"premium-tab-content__wrap-view-vertical":"premium-tab-content__wrap"}`}>
                     {
                       renderContents
                     }

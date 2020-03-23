@@ -1726,14 +1726,14 @@ var listCacheClear = __webpack_require__(87),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `ListCache`.
@@ -3058,14 +3058,14 @@ var mapCacheClear = __webpack_require__(103),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `MapCache`.
@@ -8714,14 +8714,14 @@ var hashClear = __webpack_require__(105),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `Hash`.
@@ -9081,13 +9081,13 @@ var MapCache = __webpack_require__(39),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-  var index = -1,
-      length = values == null ? 0 : values.length;
+    var index = -1,
+        length = values == null ? 0 : values.length;
 
-  this.__data__ = new MapCache();
-  while (++index < length) {
-    this.add(values[index]);
-  }
+    this.__data__ = new MapCache();
+    while (++index < length) {
+        this.add(values[index]);
+    }
 }
 
 // Add methods to `SetCache`.
@@ -10031,16 +10031,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-  var result = keys(object),
-      length = result.length;
+    var result = keys(object),
+        length = result.length;
 
-  while (length--) {
-    var key = result[length],
-        value = object[key];
+    while (length--) {
+        var key = result[length],
+            value = object[key];
 
-    result[length] = [key, value, isStrictComparable(value)];
-  }
-  return result;
+        result[length] = [key, value, isStrictComparable(value)];
+    }
+    return result;
 }
 
 module.exports = getMatchData;
@@ -54939,13 +54939,14 @@ function save(props) {
     var block_id = attributes.block_id,
         align = attributes.align,
         repeatertabs = attributes.repeatertabs,
-        titleColor = attributes.titleColor;
+        titleColor = attributes.titleColor,
+        type = attributes.type;
 
 
     var renderTabs = repeatertabs.map(function (item, index) {
         return wp.element.createElement(
             "div",
-            { className: "premium-tab-title " + (item.active ? "premium-tab-title-active" : "") },
+            { className: (type == 'vertical' ? "premium-tab-title-vertical" : "premium-tab-title") + " " + (item.active ? type == 'vertical' ? "premium-tab-title-vertical-active" : "premium-tab-title-active" : "") + " " },
             wp.element.createElement(
                 "a",
                 { style: { color: titleColor } },
@@ -54957,10 +54958,13 @@ function save(props) {
     var renderContents = repeatertabs.map(function (item, index) {
         return wp.element.createElement(
             "div",
-            { className: "premium-tab-content " + (item.active ? "premium-tab-content-active" : "") },
+            { className: (type == 'vertical' ? "premium-tab-content-vertical" : "premium-tab-content") + " " + (item.active ? type == 'vertical' ? "premium-tab-content-vertical-active" : "premium-tab-content-active" : "") },
             wp.element.createElement(RichText.Content, {
                 tagName: "p",
-                value: item.content
+                value: item.content,
+                onChange: function onChange(newText) {
+                    return changeContentValue(newText, index);
+                }
             })
         );
     });
@@ -54973,18 +54977,18 @@ function save(props) {
             } },
         wp.element.createElement(
             "div",
-            { className: "premium-tab",
+            { className: "premium-tab " + (type == 'vertical' ? "premium-tab-view-vertical" : ""),
                 style: {
                     textAlign: align
                 } },
             wp.element.createElement(
                 "div",
-                { className: "premium-tab-title__wrap" },
+                { className: "" + (type == 'vertical' ? "premium-tab-title__wrap-view-vertical" : "premium-tab-title__wrap") },
                 renderTabs
             ),
             wp.element.createElement(
                 "div",
-                { className: "premium-tab-content__wrap" },
+                { className: "" + (type == 'vertical' ? "premium-tab-content__wrap-view-vertical" : "premium-tab-content__wrap") },
                 renderContents
             )
         )
@@ -55058,8 +55062,7 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__["b" /
                     onClick: function onClick() {
                         return edit(newIndex);
                     } },
-                "Tab # ",
-                newIndex + 1,
+                value.title,
                 " "
             ),
             items.length != 1 ? wp.element.createElement("button", { className: "premium-progress-bar__trashicon fa fa-trash",
@@ -55071,7 +55074,7 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__["b" /
             "div",
             { className: "premium-progress-bar-repeater-controls " + (value.edit ? "editable" : "") },
             wp.element.createElement(TextControl, {
-                label: __("Tab #" + (newIndex + 1)),
+                label: __("Title"),
                 value: value.title,
                 onChange: function onChange(newText) {
                     return changeTabValue(newText, newIndex);
@@ -55268,7 +55271,7 @@ var edit = function (_Component) {
             var renderContents = repeatertabs.map(function (item, index) {
                 return wp.element.createElement(
                     "div",
-                    { className: "premium-tab-content " + (item.active ? "premium-tab-content-active" : "") },
+                    { className: (type == 'vertical' ? "premium-tab-content-vertical" : "premium-tab-content") + " " + (item.active ? type == 'vertical' ? "premium-tab-content-vertical-active" : "premium-tab-content-active" : "") },
                     wp.element.createElement(RichText, {
                         tagName: "p",
                         value: item.content,
@@ -55353,7 +55356,7 @@ var edit = function (_Component) {
                                         onClick: function onClick() {
                                             return setAttributes({
                                                 repeatertabs: repeatertabs.concat([{
-                                                    title: __("Tab"),
+                                                    title: __("Tab Title"),
                                                     content: __("Tab Content"),
                                                     edit: false
                                                 }])
@@ -55530,12 +55533,12 @@ var edit = function (_Component) {
                         } },
                     wp.element.createElement(
                         "div",
-                        { className: "premium-tab-title__wrap " + (type == 'vertical' ? "premium-tab-title__wrap-view-vertical" : "") },
+                        { className: "" + (type == 'vertical' ? "premium-tab-title__wrap-view-vertical" : "premium-tab-title__wrap") },
                         renderTabs
                     ),
                     wp.element.createElement(
                         "div",
-                        { className: "premium-tab-content__wrap" },
+                        { className: "" + (type == 'vertical' ? "premium-tab-content__wrap-view-vertical" : "premium-tab-content__wrap") },
                         renderContents
                     )
                 )
@@ -55624,6 +55627,14 @@ function styling(props) {
       "font-weight": contentWeight + "!important",
       "color": contentColor + " !important"
     },
+    " .premium-tab-content-vertical p": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSize, contentfontSizeType),
+      "letter-spacing": contentLetter + "px",
+      "text-transform": contentUpper ? "uppercase" : "none" + "!important",
+      "font-style": contentStyle + "!important",
+      "font-weight": contentWeight + "!important",
+      "color": contentColor + " !important"
+    },
     " .premium-tab-title-active a": {
       "color": activetitleColor + " !important"
     },
@@ -55631,12 +55642,21 @@ function styling(props) {
       "color": activetitleColor + " !important"
     },
     " .premium-tab-content-active": {
-      "border-style": tabborderType,
+      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px"),
+      "border-color": tabborderColor
+    },
+    " .premium-tab-content-vertical-active": {
       "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px"),
       "border-color": tabborderColor
     },
     " .premium-tab-content__wrap": {
-      "background-color": tabBGColor
+      "background-color": tabBGColor,
+      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
+    },
+    " .premium-tab-content__wrap-view-vertical": {
+      "background-color": tabBGColor,
+      "border-color": tabborderColor,
+      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
     },
     " .premium-tab-title-active::after": {
       "border-color": tabborderColor + " !important",
@@ -55660,7 +55680,13 @@ function styling(props) {
     " .premium-tab-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeMobile, titlefontSizeType)
     },
+    " .premium-tab-title-vertical": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeMobile, titlefontSizeType)
+    },
     " .premium-tab-content p": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeMobile, contentfontSizeType)
+    },
+    " .premium-tab-content-vertical p": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeMobile, contentfontSizeType)
     }
   };
@@ -55669,7 +55695,13 @@ function styling(props) {
     " .premium-tab-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeTablet, titlefontSizeType)
     },
+    " .premium-tab-title-vertical": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeTablet, titlefontSizeType)
+    },
     " .premium-tab-content p": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeTablet, contentfontSizeType)
+    },
+    " .premium-tab-content-vertical p": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeTablet, contentfontSizeType)
     }
   };
