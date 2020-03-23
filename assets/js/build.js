@@ -1726,14 +1726,14 @@ var listCacheClear = __webpack_require__(87),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `ListCache`.
@@ -3058,14 +3058,14 @@ var mapCacheClear = __webpack_require__(103),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `MapCache`.
@@ -8714,14 +8714,14 @@ var hashClear = __webpack_require__(105),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `Hash`.
@@ -9081,13 +9081,13 @@ var MapCache = __webpack_require__(39),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-    var index = -1,
-        length = values == null ? 0 : values.length;
+  var index = -1,
+      length = values == null ? 0 : values.length;
 
-    this.__data__ = new MapCache();
-    while (++index < length) {
-        this.add(values[index]);
-    }
+  this.__data__ = new MapCache();
+  while (++index < length) {
+    this.add(values[index]);
+  }
 }
 
 // Add methods to `SetCache`.
@@ -10031,16 +10031,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-    var result = keys(object),
-        length = result.length;
+  var result = keys(object),
+      length = result.length;
 
-    while (length--) {
-        var key = result[length],
-            value = object[key];
+  while (length--) {
+    var key = result[length],
+        value = object[key];
 
-        result[length] = [key, value, isStrictComparable(value)];
-    }
-    return result;
+    result[length] = [key, value, isStrictComparable(value)];
+  }
+  return result;
 }
 
 module.exports = getMatchData;
@@ -54796,11 +54796,13 @@ var tabAttrs = {
   repeatertabs: {
     type: "array",
     default: [{
+      id: 1,
       title: __("Tab #1"),
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
       edit: false,
       active: true
     }, {
+      id: 2,
       title: __("Tab #2"),
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
       edit: false,
@@ -54946,7 +54948,7 @@ function save(props) {
     var renderTabs = repeatertabs.map(function (item, index) {
         return wp.element.createElement(
             "div",
-            { className: (type == 'vertical' ? "premium-tab-title-vertical" : "premium-tab-title") + " " + (item.active ? type == 'vertical' ? "premium-tab-title-vertical-active" : "premium-tab-title-active" : "") + " " },
+            { className: "premium-tab-title " + (type == 'vertical' ? "premium-tab-title-vertical" : "") + " " + (item.active ? type == 'vertical' ? "premium-tab-title-vertical-active" : "premium-tab-title-active" : "") + " " },
             wp.element.createElement(
                 "a",
                 { style: { color: titleColor } },
@@ -54958,7 +54960,7 @@ function save(props) {
     var renderContents = repeatertabs.map(function (item, index) {
         return wp.element.createElement(
             "div",
-            { className: (type == 'vertical' ? "premium-tab-content-vertical" : "premium-tab-content") + " " + (item.active ? type == 'vertical' ? "premium-tab-content-vertical-active" : "premium-tab-content-active" : "") },
+            { className: "premium-tab-content " + (type == 'vertical' ? "premium-tab-content-vertical" : "") + " " + (item.active ? type == 'vertical' ? "premium-tab-content-vertical-active" : "premium-tab-content-active" : "") },
             wp.element.createElement(RichText.Content, {
                 tagName: "p",
                 value: item.content,
@@ -55003,10 +55005,9 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(272);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__ = __webpack_require__(51);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55014,7 +55015,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -55037,11 +55037,10 @@ var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
     TextareaControl = _wp$components.TextareaControl,
-    TextControl = _wp$components.TextControl,
-    ToggleControl = _wp$components.ToggleControl;
+    TextControl = _wp$components.TextControl;
 
 
-var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__["b" /* SortableElement */])(function (_ref) {
+var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__["b" /* SortableElement */])(function (_ref) {
     var edit = _ref.edit,
         removeItem = _ref.removeItem,
         newIndex = _ref.newIndex,
@@ -55091,7 +55090,7 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__["b" /
     );
 });
 
-var SortableList = Object(__WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__["a" /* SortableContainer */])(function (_ref2) {
+var SortableList = Object(__WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__["a" /* SortableContainer */])(function (_ref2) {
     var items = _ref2.items,
         removeItem = _ref2.removeItem,
         edit = _ref2.edit,
@@ -55206,7 +55205,7 @@ var edit = function (_Component) {
                     return cont;
                 });
 
-                var array = Object(__WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__["c" /* arrayMove */])(arrayItem, oldIndex, newIndex);
+                var array = Object(__WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__["c" /* arrayMove */])(arrayItem, oldIndex, newIndex);
 
                 setAttributes({
                     repeatertabs: array
@@ -55251,13 +55250,18 @@ var edit = function (_Component) {
                 }).filter(function (f, i) {
                     return i != index;
                 });
-                setAttributes({ repeatertabs: array });
+
+                array[0].active = false;
+                activeTab(index == 0 ? index + 1 : index - 1, array);
+                setAttributes({
+                    repeatertabs: array
+                });
             };
 
             var renderTabs = repeatertabs.map(function (item, index) {
                 return wp.element.createElement(
                     "div",
-                    { className: (type == 'vertical' ? "premium-tab-title-vertical" : "premium-tab-title") + " " + (item.active ? type == 'vertical' ? "premium-tab-title-vertical-active" : "premium-tab-title-active" : "") + " " },
+                    { className: "premium-tab-title " + (type == 'vertical' ? "premium-tab-title-vertical" : "") + " " + (item.active ? type == 'vertical' ? "premium-tab-title-vertical-active" : "premium-tab-title-active" : "") + " " },
                     wp.element.createElement(
                         "a",
                         { onClick: function onClick() {
@@ -55271,7 +55275,7 @@ var edit = function (_Component) {
             var renderContents = repeatertabs.map(function (item, index) {
                 return wp.element.createElement(
                     "div",
-                    { className: (type == 'vertical' ? "premium-tab-content-vertical" : "premium-tab-content") + " " + (item.active ? type == 'vertical' ? "premium-tab-content-vertical-active" : "premium-tab-content-active" : "") },
+                    { className: "premium-tab-content " + (type == 'vertical' ? "premium-tab-content-vertical" : "") + " " + (item.active ? type == 'vertical' ? "premium-tab-content-vertical-active" : "premium-tab-content-active" : "") },
                     wp.element.createElement(RichText, {
                         tagName: "p",
                         value: item.content,
@@ -55282,21 +55286,54 @@ var edit = function (_Component) {
                 );
             });
 
-            var activeTab = function activeTab(index) {
+            var addNewTab = function addNewTab() {
                 return repeatertabs.map(function (item, i) {
-                    if (index == i) {
-                        setAttributes({
-                            repeatertabs: onRepeaterChange("active", item.active ? false : true, index)
-                        });
+                    activeTab(i + 1);
+                    setAttributes({
+                        repeatertabs: repeatertabs.concat([{
+                            id: i + 1,
+                            title: __("Tab Title"),
+                            content: __("Tab Content"),
+                            edit: false,
+                            active: true
+                        }])
+                    });
+                });
+            };
+
+            var activeTab = function activeTab(index, array) {
+                return (array ? array : repeatertabs).map(function (item, i) {
+                    if (array) {
+                        if (array.length == 1) {
+                            setAttributes({
+                                repeatertabs: onRepeaterChange("active", true, index)
+                            });
+                        } else {
+                            if (index == i) {
+                                setAttributes({
+                                    repeatertabs: onRepeaterChange("active", item.active ? false : true, index)
+                                });
+                            } else {
+                                setAttributes({
+                                    repeatertabs: onRepeaterChange("active", false, i)
+                                });
+                            }
+                        }
                     } else {
-                        setAttributes({
-                            repeatertabs: onRepeaterChange("active", false, i)
-                        });
+                        if (index == i) {
+                            setAttributes({
+                                repeatertabs: onRepeaterChange("active", item.active ? false : true, index)
+                            });
+                        } else {
+                            setAttributes({
+                                repeatertabs: onRepeaterChange("active", false, i)
+                            });
+                        }
                     }
                 });
             };
 
-            var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-progress-bar");
+            var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-tab");
             return [isSelected && wp.element.createElement(
                 BlockControls,
                 null,
@@ -55354,13 +55391,7 @@ var edit = function (_Component) {
                                     {
                                         className: "premium-tab-btn",
                                         onClick: function onClick() {
-                                            return setAttributes({
-                                                repeatertabs: repeatertabs.concat([{
-                                                    title: __("Tab Title"),
-                                                    content: __("Tab Content"),
-                                                    edit: false
-                                                }])
-                                            });
+                                            return addNewTab();
                                         } },
                                     wp.element.createElement("i", { className: "dashicons dashicons-plus premium-tab-icon" }),
                                     __("Add New Item")
@@ -55385,7 +55416,7 @@ var edit = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_border__["a" /* default */], {
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
                         borderType: tabborderType,
                         borderWidth: tabborderWidth,
                         borderColor: tabborderColor,
@@ -55449,7 +55480,7 @@ var edit = function (_Component) {
                         },
                         allowReset: true
                     }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
                         setAttributes: setAttributes,
                         fontSizeType: { value: titlefontSizeType, label: __("titlefontSizeType") },
@@ -55495,7 +55526,7 @@ var edit = function (_Component) {
                         },
                         allowReset: true
                     }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
                         setAttributes: setAttributes,
                         fontSizeType: { value: contentfontSizeType, label: __("contentfontSizeType") },

@@ -16,29 +16,29 @@ export default function save(props) {
         type
     } = attributes
 
-    const renderTabs = repeatertabs.map((item, index) => {
-      return ( < div className = {
-            `${type== 'vertical'? "premium-tab-title-vertical":"premium-tab-title"} ${item.active? type== 'vertical'?"premium-tab-title-vertical-active": "premium-tab-title-active": ""} `
-          } >
-         <a style={{color: titleColor}}>{item.title}</a>
-      </div>
-      )
-  })
+   const renderTabs = repeatertabs.map((item, index) => {
+            return ( < div className = {
+                  `premium-tab-title ${type== 'vertical'? "premium-tab-title-vertical":""} ${item.active? type== 'vertical'?"premium-tab-title-vertical-active": "premium-tab-title-active": ""} `
+                } >
+               <a style={{color: titleColor}}>{item.title}</a>
+            </div>
+            )
+        })
 
-  const renderContents = repeatertabs.map((item, index) => {
-    return ( < div className = {
-          `${type== 'vertical'? "premium-tab-content-vertical":"premium-tab-content"} ${item.active? type== 'vertical'?"premium-tab-content-vertical-active": "premium-tab-content-active": ""}`
-        } >
-            <RichText.Content
-              tagName="p"
-              value={item.content}
-              onChange = {
-                  (newText) => changeContentValue(newText, index)
-              }
-              />
-      </div>
-      )
-  })
+        const renderContents = repeatertabs.map((item, index) => {
+          return ( < div className = {
+                `premium-tab-content ${type== 'vertical'? "premium-tab-content-vertical":""} ${item.active? type== 'vertical'?"premium-tab-content-vertical-active": "premium-tab-content-active": ""}`
+              } >
+                  <RichText.Content
+                    tagName="p"
+                    value={item.content}
+                    onChange = {
+                        (newText) => changeContentValue(newText, index)
+                    }
+                    />
+            </div>
+            )
+        })
 
     return (
         <div className={classnames(

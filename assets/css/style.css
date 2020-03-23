@@ -2867,7 +2867,7 @@ color: #23282d;
 }
 .premium-tab-content{
   display: none;
-  border-style: none solid solid;
+  /* border-style: none solid solid; */
   color: #7a7a7a;
   font-family: "Roboto",
   Sans-serif;

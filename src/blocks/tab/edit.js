@@ -1,6 +1,5 @@
 import classnames from "classnames"
 import styling from "./styling"
-import PremiumRange from "../../components/premium-range-responsive";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 
@@ -30,7 +29,6 @@ const {
     SelectControl,
     TextareaControl,
     TextControl,
-    ToggleControl,
 } = wp.components
 
 const SortableItem = SortableElement(({
@@ -265,12 +263,17 @@ class edit extends Component {
             let array = repeatertabs.map((cont, currIndex) => {
                 return cont
             }).filter((f, i) => i != index)
-            setAttributes({ repeatertabs: array });
+
+            array[0].active= false;
+            activeTab(index==0?index+1: index-1, array)
+            setAttributes({
+                repeatertabs: array
+            });
         }
 
         const renderTabs = repeatertabs.map((item, index) => {
             return ( < div className = {
-                  `${type== 'vertical'? "premium-tab-title-vertical":"premium-tab-title"} ${item.active? type== 'vertical'?"premium-tab-title-vertical-active": "premium-tab-title-active": ""} `
+                  `premium-tab-title ${type== 'vertical'? "premium-tab-title-vertical":""} ${item.active? type== 'vertical'?"premium-tab-title-vertical-active": "premium-tab-title-active": ""} `
                 } >
                <a onClick={() =>activeTab(index)} style={{color: titleColor}}>{item.title}</a>
             </div>
@@ -279,7 +282,7 @@ class edit extends Component {
 
         const renderContents = repeatertabs.map((item, index) => {
           return ( < div className = {
-                `${type== 'vertical'? "premium-tab-content-vertical":"premium-tab-content"} ${item.active? type== 'vertical'?"premium-tab-content-vertical-active": "premium-tab-content-active": ""}`
+                `premium-tab-content ${type== 'vertical'? "premium-tab-content-vertical":""} ${item.active? type== 'vertical'?"premium-tab-content-vertical-active": "premium-tab-content-active": ""}`
               } >
                   <RichText
                     tagName="p"
@@ -292,9 +295,35 @@ class edit extends Component {
             )
         })
 
-         const activeTab = (index) => {
-           return repeatertabs.map((item, i) => {
-             if (index == i) {
+        const addNewTab = () => {
+            return repeatertabs.map((item, i) => {
+                activeTab(i+1)
+             setAttributes({
+                repeatertabs: repeatertabs.concat([{
+                    id: i+1,
+                    title: __("Tab Title"),
+                    content: __("Tab Content"),
+                    edit: false,
+                    active: true
+                }])
+            });
+        })
+        }
+
+         const activeTab = (index, array) => {
+           return (array?array :repeatertabs).map((item, i) => {
+               if(array) {
+                   if(array.length ==1){
+                       setAttributes({
+                           repeatertabs: onRepeaterChange(
+                               "active",
+                               true,
+                               index
+                           )
+                       })
+                   }
+                   else {
+                       if (index == i) {
                setAttributes({
                  repeatertabs: onRepeaterChange(
                    "active",
@@ -311,10 +340,30 @@ class edit extends Component {
                  )
                })
              }
+                   }
+               }
+              else {
+             if (index == i) {
+               setAttributes({
+                 repeatertabs: onRepeaterChange(
+                   "active",
+                   item.active ? false : true,
+                   index
+                 )
+               })
+             } else {
+               setAttributes({
+                 repeatertabs: onRepeaterChange(
+                   "active",
+                   false,
+                   i
+                 )
+               })
+             }}
            })
          }
 
-        const mainClasses = classnames(className, "premium-progress-bar");
+        const mainClasses = classnames(className, "premium-tab");
         return [
             isSelected && (
                 <BlockControls>
@@ -367,15 +416,7 @@ class edit extends Component {
                                                 "premium-tab-btn"
                                             }
                                             onClick={
-                                                () => {
-                                                    return setAttributes({
-                                                        repeatertabs: repeatertabs.concat([{
-                                                            title: __("Tab Title"),
-                                                            content: __("Tab Content"),
-                                                            edit: false
-                                                        }])
-                                                    });
-                                                }
+                                                () => addNewTab()
                                             } >
                                             <i className="dashicons dashicons-plus premium-tab-icon" />
                                             {__("Add New Item")}
