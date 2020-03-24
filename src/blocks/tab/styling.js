@@ -53,22 +53,7 @@ function styling(props) {
       "border-color": tabborderColor,
       "background-color": tabBGColor
     },
-    " .premium-tab-title-vertical": {
-      "font-size": generateCSSUnit(titlefontSize, titlefontSizeType),
-      "letter-spacing": titleLetter + "px" + "!important",
-      "text-transform": titleUpper ? "uppercase" : "none" + "!important",
-      "font-style": titleStyle + "!important",
-      "font-weight": titleWeight + "!important",
-    },
     " .premium-tab-content p": {
-      "font-size": generateCSSUnit(contentfontSize, contentfontSizeType),
-      "letter-spacing": contentLetter + "px",
-      "text-transform": contentUpper ? "uppercase" : "none" + "!important",
-      "font-style": contentStyle + "!important",
-      "font-weight": contentWeight + "!important",
-      "color": contentColor + " !important"
-    },
-    " .premium-tab-content-vertical p": {
       "font-size": generateCSSUnit(contentfontSize, contentfontSizeType),
       "letter-spacing": contentLetter + "px",
       "text-transform": contentUpper ? "uppercase" : "none" + "!important",
@@ -121,13 +106,7 @@ function styling(props) {
     " .premium-tab-title": {
       "font-size": generateCSSUnit(titlefontSizeMobile, titlefontSizeType)
     },
-    " .premium-tab-title-vertical": {
-      "font-size": generateCSSUnit(titlefontSizeMobile, titlefontSizeType)
-    },
     " .premium-tab-content p": {
-      "font-size": generateCSSUnit(contentfontSizeMobile, contentfontSizeType)
-    },
-    " .premium-tab-content-vertical p": {
       "font-size": generateCSSUnit(contentfontSizeMobile, contentfontSizeType)
     },
   }
@@ -136,13 +115,7 @@ function styling(props) {
     " .premium-tab-title": {
       "font-size": generateCSSUnit(titlefontSizeTablet, titlefontSizeType)
     },
-    " .premium-tab-title-vertical": {
-      "font-size": generateCSSUnit(titlefontSizeTablet, titlefontSizeType)
-    },
     " .premium-tab-content p": {
-      "font-size": generateCSSUnit(contentfontSizeTablet, contentfontSizeType)
-    },
-    " .premium-tab-content-vertical p": {
       "font-size": generateCSSUnit(contentfontSizeTablet, contentfontSizeType)
     },
   }

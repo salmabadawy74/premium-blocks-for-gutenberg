@@ -29,6 +29,7 @@ const {
     SelectControl,
     TextareaControl,
     TextControl,
+    RangeControl
 } = wp.components
 
 const SortableItem = SortableElement(({
@@ -165,7 +166,8 @@ class edit extends Component {
             contentfontSizeMobile,
             contentfontSizeTablet,
             contentfontSizeType,
-            type
+            type,
+            tabIndex
         } = attributes
 
         const TYPE = [{
@@ -211,7 +213,7 @@ class edit extends Component {
             ))
 
             const array = arrayMove(arrayItem, oldIndex, newIndex)
-
+            activeIndex(newIndex+1)
             setAttributes({
                 repeatertabs:
                     array
@@ -264,8 +266,12 @@ class edit extends Component {
                 return cont
             }).filter((f, i) => i != index)
 
-            array[0].active= false;
-            activeTab(index==0?index+1: index-1, array)
+            // array[0].active= false;
+            console.log('repeatertabs',repeatertabs.length);
+            console.log(array);
+            
+            repeatertabs.length==2? activeIndex(1):""
+            // activeTab(index==0?index+1: index-1, array)
             setAttributes({
                 repeatertabs: array
             });
@@ -297,17 +303,24 @@ class edit extends Component {
 
         const addNewTab = () => {
             return repeatertabs.map((item, i) => {
-                activeTab(i+1)
+                // activeIndex(i+2)
+                edit(i+1)
              setAttributes({
                 repeatertabs: repeatertabs.concat([{
                     id: i+1,
                     title: __("Tab Title"),
                     content: __("Tab Content"),
                     edit: true,
-                    active: true
+                    active: false
                 }])
             });
         })
+        }
+
+        const activeIndex =(value) => {
+            console.log(value);
+            activeTab(value-1)
+            setAttributes({ tabIndex: value })
         }
 
          const activeTab = (index, array) => {
@@ -344,6 +357,9 @@ class edit extends Component {
                }
               else {
              if (index == i) {
+                 console.log("hh",index);
+                 console.log(item.active);
+                 item.active= false
                setAttributes({
                  repeatertabs: onRepeaterChange(
                    "active",
@@ -351,7 +367,11 @@ class edit extends Component {
                    index
                  )
                })
+               console.log("if",repeatertabs);
+               
              } else {
+                 console.log("else",i);
+                 
                setAttributes({
                  repeatertabs: onRepeaterChange(
                    "active",
@@ -359,6 +379,8 @@ class edit extends Component {
                    i
                  )
                })
+               console.log("else",repeatertabs);
+
              }}
            })
          }
@@ -437,6 +459,13 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
+                        <RangeControl
+                            label={__("Default Tab Index")}
+                            value={tabIndex}
+                            min="1"
+                            max={repeatertabs.length}
+                            onChange={value => activeIndex(value)}
+                        />
                       <PremiumBorder
                             borderType={tabborderType}
                             borderWidth={tabborderWidth}

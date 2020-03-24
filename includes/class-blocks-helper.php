@@ -1174,22 +1174,7 @@ class Premium_Blocks_Integration {
 					"border-color" => $attr['tabborderColor'],
 					"background-color" => $attr['tabBGColor']
 				),
-				" .premium-tab-title-vertical" => array(
-					"font-size" => self::get_css_value($attr['titlefontSize'], $attr['titlefontSizeType']),
-					"letter-spacing" =>  self::get_css_value($attr['titleLetter'] , 'px'),
-					"text-transform" => $attr['titleUpper'] ? "uppercase" : "none" ,
-					"font-style" => $attr['titleStyle'],
-					"font-weight" => $attr['titleWeight']
-				),
 				" .premium-tab-content p" => array(
-					"font-size" => self::get_css_value($attr['contentfontSize'], $attr['contentfontSizeType']),
-					"letter-spacing" => self::get_css_value($attr['contentLetter'] , 'px'),
-					"text-transform" => $attr['contentUpper'] ? "uppercase" : "none" ,
-					"font-style" => $attr['contentStyle'],
-					"font-weight" => $attr['contentWeight'],
-					"color" => $attr['contentColor']
-				),
-				" .premium-tab-content-vertical p" => array(
 					"font-size" => self::get_css_value($attr['contentfontSize'], $attr['contentfontSizeType']),
 					"letter-spacing" => self::get_css_value($attr['contentLetter'] , 'px'),
 					"text-transform" => $attr['contentUpper'] ? "uppercase" : "none" ,
@@ -1246,13 +1231,7 @@ class Premium_Blocks_Integration {
 				),
 					" .premium-tab-content p" => array(
 					"font-size" => self::get_css_value($attr['contentfontSizeMobile'], $attr['contentfontSizeType']),
-				),
-				" .premium-tab-title-vertical" => array(
-					"font-size" => self::get_css_value($attr['titlefontSizeMobile'], $attr['titlefontSizeType']),
-				),
-					" .premium-tab-content-vertical p" => array(
-					"font-size" => self::get_css_value($attr['contentfontSizeMobile'], $attr['contentfontSizeType']),
-				),
+				)
 			);
 			// Mobile Icon Size CSS ends.
 
@@ -1263,13 +1242,7 @@ class Premium_Blocks_Integration {
 				),
 					" .premium-tab-content p" => array(
 					"font-size" => self::get_css_value($attr['contentfontSizeTablet'], $attr['contentfontSizeType']),
-				),
-				" .premium-tab-title-vertical" => array(
-					"font-size" => self::get_css_value($attr['titlefontSizeTablet'], $attr['titlefontSizeType']),
-				),
-					" .premium-tab-content-vertical p" => array(
-					"font-size" => self::get_css_value($attr['contentfontSizeTablet'], $attr['contentfontSizeType']),
-				),
+				)
 			);
 			// Tablet Icon Size CSS ends.
 

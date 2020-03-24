@@ -54907,6 +54907,10 @@ var tabAttrs = {
   type: {
     type: "string",
     default: "horizontal"
+  },
+  tabIndex: {
+    type: "number",
+    default: 1
   }
 };
 
@@ -55037,7 +55041,8 @@ var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
     TextareaControl = _wp$components.TextareaControl,
-    TextControl = _wp$components.TextControl;
+    TextControl = _wp$components.TextControl,
+    RangeControl = _wp$components.RangeControl;
 
 
 var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__["b" /* SortableElement */])(function (_ref) {
@@ -55170,7 +55175,8 @@ var edit = function (_Component) {
                 contentfontSizeMobile = attributes.contentfontSizeMobile,
                 contentfontSizeTablet = attributes.contentfontSizeTablet,
                 contentfontSizeType = attributes.contentfontSizeType,
-                type = attributes.type;
+                type = attributes.type,
+                tabIndex = attributes.tabIndex;
 
 
             var TYPE = [{
@@ -55206,7 +55212,7 @@ var edit = function (_Component) {
                 });
 
                 var array = Object(__WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__["c" /* arrayMove */])(arrayItem, oldIndex, newIndex);
-
+                activeIndex(newIndex + 1);
                 setAttributes({
                     repeatertabs: array
 
@@ -55251,8 +55257,12 @@ var edit = function (_Component) {
                     return i != index;
                 });
 
-                array[0].active = false;
-                activeTab(index == 0 ? index + 1 : index - 1, array);
+                // array[0].active= false;
+                console.log('repeatertabs', repeatertabs.length);
+                console.log(array);
+
+                repeatertabs.length == 2 ? activeIndex(1) : "";
+                // activeTab(index==0?index+1: index-1, array)
                 setAttributes({
                     repeatertabs: array
                 });
@@ -55288,17 +55298,24 @@ var edit = function (_Component) {
 
             var addNewTab = function addNewTab() {
                 return repeatertabs.map(function (item, i) {
-                    activeTab(i + 1);
+                    // activeIndex(i+2)
+                    _edit(i + 1);
                     setAttributes({
                         repeatertabs: repeatertabs.concat([{
                             id: i + 1,
                             title: __("Tab Title"),
                             content: __("Tab Content"),
                             edit: true,
-                            active: true
+                            active: false
                         }])
                     });
                 });
+            };
+
+            var activeIndex = function activeIndex(value) {
+                console.log(value);
+                activeTab(value - 1);
+                setAttributes({ tabIndex: value });
             };
 
             var activeTab = function activeTab(index, array) {
@@ -55321,13 +55338,20 @@ var edit = function (_Component) {
                         }
                     } else {
                         if (index == i) {
+                            console.log("hh", index);
+                            console.log(item.active);
+                            item.active = false;
                             setAttributes({
                                 repeatertabs: onRepeaterChange("active", item.active ? false : true, index)
                             });
+                            console.log("if", repeatertabs);
                         } else {
+                            console.log("else", i);
+
                             setAttributes({
                                 repeatertabs: onRepeaterChange("active", false, i)
                             });
+                            console.log("else", repeatertabs);
                         }
                     }
                 });
@@ -55416,6 +55440,15 @@ var edit = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
+                    wp.element.createElement(RangeControl, {
+                        label: __("Default Tab Index"),
+                        value: tabIndex,
+                        min: "1",
+                        max: repeatertabs.length,
+                        onChange: function onChange(value) {
+                            return activeIndex(value);
+                        }
+                    }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
                         borderType: tabborderType,
                         borderWidth: tabborderWidth,
@@ -55643,22 +55676,7 @@ function styling(props) {
       "border-color": tabborderColor,
       "background-color": tabBGColor
     },
-    " .premium-tab-title-vertical": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSize, titlefontSizeType),
-      "letter-spacing": titleLetter + "px" + "!important",
-      "text-transform": titleUpper ? "uppercase" : "none" + "!important",
-      "font-style": titleStyle + "!important",
-      "font-weight": titleWeight + "!important"
-    },
     " .premium-tab-content p": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSize, contentfontSizeType),
-      "letter-spacing": contentLetter + "px",
-      "text-transform": contentUpper ? "uppercase" : "none" + "!important",
-      "font-style": contentStyle + "!important",
-      "font-weight": contentWeight + "!important",
-      "color": contentColor + " !important"
-    },
-    " .premium-tab-content-vertical p": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSize, contentfontSizeType),
       "letter-spacing": contentLetter + "px",
       "text-transform": contentUpper ? "uppercase" : "none" + "!important",
@@ -55711,13 +55729,7 @@ function styling(props) {
     " .premium-tab-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeMobile, titlefontSizeType)
     },
-    " .premium-tab-title-vertical": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeMobile, titlefontSizeType)
-    },
     " .premium-tab-content p": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeMobile, contentfontSizeType)
-    },
-    " .premium-tab-content-vertical p": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeMobile, contentfontSizeType)
     }
   };
@@ -55726,13 +55738,7 @@ function styling(props) {
     " .premium-tab-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeTablet, titlefontSizeType)
     },
-    " .premium-tab-title-vertical": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeTablet, titlefontSizeType)
-    },
     " .premium-tab-content p": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeTablet, contentfontSizeType)
-    },
-    " .premium-tab-content-vertical p": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeTablet, contentfontSizeType)
     }
   };

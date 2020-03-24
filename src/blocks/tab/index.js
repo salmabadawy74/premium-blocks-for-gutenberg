@@ -142,6 +142,10 @@ const tabAttrs = {
       type: {
         type: "string",
         default: "horizontal"
+    },
+    tabIndex: {
+      type: "number",
+      default: 1
     }
 };
 
