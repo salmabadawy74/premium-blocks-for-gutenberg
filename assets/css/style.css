@@ -2855,7 +2855,6 @@ color: #23282d;
   overflow: hidden;
 }
 .premium-tab-content__wrap{
-  /* border-width: 1px; */
   border: 1px #d4d4d4;
 }
 .premium-tab-content__wrap-view-vertical{
@@ -2867,7 +2866,6 @@ color: #23282d;
 }
 .premium-tab-content{
   display: none;
-  /* border-style: none solid solid; */
   color: #7a7a7a;
   font-family: "Roboto",
   Sans-serif;
@@ -2903,4 +2901,33 @@ color: #23282d;
     -ms-flex-negative: 0;
     flex-shrink: 0;
     overflow: hidden;
+}
+.premium-tab-btn__wrap{
+  text-align: center;
+}
+.premium-tab-btn{
+  display: inline-flex;
+  justify-content: space-between;
+  background-color: #a4afb7;
+  color: #fff;
+  font-size: 11px;
+  padding: 7px 21px;
+  cursor: pointer;
+  font-weight: 500;
+  text-transform: uppercase;
+  outline: none;
+  border: none;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition-property: background,color,opacity,-webkit-box-shadow;
+  transition-property: background,color,opacity,-webkit-box-shadow;
+  -o-transition-property: background,color,box-shadow,opacity;
+  transition-property: background,color,box-shadow,opacity;
+  transition-property: background,color,box-shadow,opacity,-webkit-box-shadow;
+  -webkit-transition-duration: .3s;
+  -o-transition-duration: .3s;
+  transition-duration: .3s;
+}
+.premium-tab-icon{
+  margin-right: 10px;
 }

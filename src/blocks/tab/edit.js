@@ -303,7 +303,7 @@ class edit extends Component {
                     id: i+1,
                     title: __("Tab Title"),
                     content: __("Tab Content"),
-                    edit: false,
+                    edit: true,
                     active: true
                 }])
             });
