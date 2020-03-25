@@ -54800,13 +54800,15 @@ var tabAttrs = {
       title: __("Tab #1"),
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
       edit: false,
-      active: true
+      active: true,
+      default: true
     }, {
       id: 2,
       title: __("Tab #2"),
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
       edit: false,
-      active: false
+      active: false,
+      default: false
     }]
   },
   tabborderType: {
@@ -54952,7 +54954,7 @@ function save(props) {
     var renderTabs = repeatertabs.map(function (item, index) {
         return wp.element.createElement(
             "div",
-            { className: "premium-tab-title " + (type == 'vertical' ? "premium-tab-title-vertical" : "") + " " + (item.active ? type == 'vertical' ? "premium-tab-title-vertical-active" : "premium-tab-title-active" : "") + " " },
+            { className: "premium-tab-title " + (type == 'vertical' ? "premium-tab-title-vertical" : "") + " " + (item.default ? type == 'vertical' ? "premium-tab-title-vertical-active" : "premium-tab-title-active" : "") + " " },
             wp.element.createElement(
                 "a",
                 { style: { color: titleColor } },
@@ -54964,7 +54966,7 @@ function save(props) {
     var renderContents = repeatertabs.map(function (item, index) {
         return wp.element.createElement(
             "div",
-            { className: "premium-tab-content " + (type == 'vertical' ? "premium-tab-content-vertical" : "") + " " + (item.active ? type == 'vertical' ? "premium-tab-content-vertical-active" : "premium-tab-content-active" : "") },
+            { className: "premium-tab-content " + (type == 'vertical' ? "premium-tab-content-vertical" : "") + " " + (item.default ? type == 'vertical' ? "premium-tab-content-vertical-active" : "premium-tab-content-active" : "") },
             wp.element.createElement(RichText.Content, {
                 tagName: "p",
                 value: item.content,
@@ -55212,11 +55214,24 @@ var edit = function (_Component) {
                 });
 
                 var array = Object(__WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__["c" /* arrayMove */])(arrayItem, oldIndex, newIndex);
-                activeIndex(newIndex + 1);
+                console.log("old", oldIndex, array);
+
+                // activeTab(oldIndex-1, array)
+
+                activeIndex(oldIndex + 1, array);
+                // let active = array.map((arr,index)=>{
+                //     return arr.default
+                // })
+                // console.log(active);
+
+                // if(active.length ==0){
+                //     activeIndex(oldIndex+1)
+                // }
                 setAttributes({
                     repeatertabs: array
 
                 });
+                console.log(repeatertabs);
             };
             var shouldCancelStart = function shouldCancelStart(e) {
                 // Prevent sorting from being triggered if target is input or button
@@ -55231,7 +55246,6 @@ var edit = function (_Component) {
                     if (index == currIndex) {
                         item[attr] = value;
                     }
-
                     return item;
                 });
             };
@@ -55257,12 +55271,15 @@ var edit = function (_Component) {
                     return i != index;
                 });
 
-                // array[0].active= false;
-                console.log('repeatertabs', repeatertabs.length);
-                console.log(array);
-
-                repeatertabs.length == 2 ? activeIndex(1) : "";
-                // activeTab(index==0?index+1: index-1, array)
+                var active = array.map(function (arr, index) {
+                    return arr.active;
+                }).filter(function (f, i) {
+                    return f != false;
+                });
+                if (active.length == 0) {
+                    activeIndex(index);
+                }
+                activeTab(index == 0 ? index : index - 1, array);
                 setAttributes({
                     repeatertabs: array
                 });
@@ -55298,7 +55315,7 @@ var edit = function (_Component) {
 
             var addNewTab = function addNewTab() {
                 return repeatertabs.map(function (item, i) {
-                    // activeIndex(i+2)
+                    activeTab(i + 1);
                     _edit(i + 1);
                     setAttributes({
                         repeatertabs: repeatertabs.concat([{
@@ -55306,30 +55323,66 @@ var edit = function (_Component) {
                             title: __("Tab Title"),
                             content: __("Tab Content"),
                             edit: true,
-                            active: false
+                            active: true,
+                            default: false
                         }])
                     });
                 });
             };
 
-            var activeIndex = function activeIndex(value) {
+            var activeIndex = function activeIndex(value, array) {
                 console.log(value);
-                activeTab(value - 1);
-                setAttributes({ tabIndex: value });
+                if (array) {
+                    activeTab(value - 1, array);
+                    setAttributes({ tabIndex: value });
+                    return array.map(function (item, i) {
+                        if (value - 1 == i) {
+                            setAttributes({
+                                repeatertabs: onRepeaterChange("default", true, value - 1)
+                            });
+                        } else {
+                            setAttributes({
+                                repeatertabs: onRepeaterChange("default", false, i)
+                            });
+                        }
+                    });
+                } else {
+                    activeTab(value - 1);
+                    setAttributes({ tabIndex: value });
+                    console.log('activeindex', repeatertabs);
+                    return repeatertabs.map(function (item, i) {
+                        if (value - 1 == i) {
+                            setAttributes({
+                                repeatertabs: onRepeaterChange("default", true, value - 1)
+                            });
+                        } else {
+                            setAttributes({
+                                repeatertabs: onRepeaterChange("default", false, i)
+                            });
+                        }
+                    });
+                }
             };
 
             var activeTab = function activeTab(index, array) {
+                console.log(array);
+                console.log(index);
+
                 return (array ? array : repeatertabs).map(function (item, i) {
                     if (array) {
                         if (array.length == 1) {
+                            console.log(item, i);
+
                             setAttributes({
                                 repeatertabs: onRepeaterChange("active", true, index)
                             });
+                            console.log(repeatertabs);
                         } else {
                             if (index == i) {
                                 setAttributes({
-                                    repeatertabs: onRepeaterChange("active", item.active ? false : true, index)
+                                    repeatertabs: onRepeaterChange("active", true, index)
                                 });
+                                console.log(repeatertabs);
                             } else {
                                 setAttributes({
                                     repeatertabs: onRepeaterChange("active", false, i)
@@ -55342,7 +55395,7 @@ var edit = function (_Component) {
                             console.log(item.active);
                             item.active = false;
                             setAttributes({
-                                repeatertabs: onRepeaterChange("active", item.active ? false : true, index)
+                                repeatertabs: onRepeaterChange("active", true, index)
                             });
                             console.log("if", repeatertabs);
                         } else {

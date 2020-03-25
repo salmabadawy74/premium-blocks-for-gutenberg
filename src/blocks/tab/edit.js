@@ -213,12 +213,26 @@ class edit extends Component {
             ))
 
             const array = arrayMove(arrayItem, oldIndex, newIndex)
-            activeIndex(newIndex+1)
+            console.log("old",oldIndex,array);
+
+            // activeTab(oldIndex-1, array)
+            
+            activeIndex(oldIndex+1,array)
+            // let active = array.map((arr,index)=>{
+            //     return arr.default
+            // })
+            // console.log(active);
+            
+            // if(active.length ==0){
+            //     activeIndex(oldIndex+1)
+            // }
             setAttributes({
                 repeatertabs:
                     array
 
             });
+            console.log(repeatertabs);
+            
         };
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
@@ -233,7 +247,6 @@ class edit extends Component {
                 if (index == currIndex) {
                     item[attr] = value;
                 }
-
                 return item;
             });
         };
@@ -266,12 +279,13 @@ class edit extends Component {
                 return cont
             }).filter((f, i) => i != index)
 
-            // array[0].active= false;
-            console.log('repeatertabs',repeatertabs.length);
-            console.log(array);
-            
-            repeatertabs.length==2? activeIndex(1):""
-            // activeTab(index==0?index+1: index-1, array)
+            let active = array.map((arr,index)=>{
+                return arr.active
+            }).filter((f,i)=> f != false)
+            if(active.length ==0){
+                activeIndex(index)
+            }
+            activeTab(index==0?index: index-1, array)
             setAttributes({
                 repeatertabs: array
             });
@@ -303,7 +317,7 @@ class edit extends Component {
 
         const addNewTab = () => {
             return repeatertabs.map((item, i) => {
-                // activeIndex(i+2)
+                activeTab(i+1)
                 edit(i+1)
              setAttributes({
                 repeatertabs: repeatertabs.concat([{
@@ -311,22 +325,75 @@ class edit extends Component {
                     title: __("Tab Title"),
                     content: __("Tab Content"),
                     edit: true,
-                    active: false
+                    active: true,
+                    default: false
                 }])
             });
         })
         }
 
-        const activeIndex =(value) => {
+        const activeIndex =(value,array) => {
             console.log(value);
-            activeTab(value-1)
-            setAttributes({ tabIndex: value })
+            if(array){
+                activeTab(value-1,array)
+                setAttributes({ tabIndex: value })
+                return array.map((item,i)=> {
+                    if(value-1 == i)
+                    { setAttributes({
+                         repeatertabs: onRepeaterChange(
+                             "default",
+                             true,
+                             value-1
+                         )
+                     })}
+                     else {
+                         setAttributes({
+                             repeatertabs: onRepeaterChange(
+                                 "default",
+                                 false,
+                                 i
+                             )
+                         })
+                     }
+                 })
+                     }
+            else
+            {
+                activeTab(value-1)
+                setAttributes({ tabIndex: value })
+            console.log('activeindex',repeatertabs);
+            return repeatertabs.map((item, i) => {
+                if(value-1 == i)
+           { setAttributes({
+                repeatertabs: onRepeaterChange(
+                    "default",
+                    true,
+                    value-1
+                )
+            })}
+            else {
+                setAttributes({
+                    repeatertabs: onRepeaterChange(
+                        "default",
+                        false,
+                        i
+                    )
+                })
+            }
+        })
+            }
+            
         }
 
          const activeTab = (index, array) => {
+             console.log(array);
+             console.log(index);
+             
            return (array?array :repeatertabs).map((item, i) => {
                if(array) {
                    if(array.length ==1){
+                       console.log(item,i);
+                       
                        setAttributes({
                            repeatertabs: onRepeaterChange(
                                "active",
@@ -334,16 +401,20 @@ class edit extends Component {
                                index
                            )
                        })
+                       console.log(repeatertabs);
+                       
                    }
                    else {
                        if (index == i) {
                setAttributes({
                  repeatertabs: onRepeaterChange(
                    "active",
-                   item.active ? false : true,
+                   true,
                    index
                  )
                })
+               console.log(repeatertabs);
+
              } else {
                setAttributes({
                  repeatertabs: onRepeaterChange(
@@ -363,7 +434,7 @@ class edit extends Component {
                setAttributes({
                  repeatertabs: onRepeaterChange(
                    "active",
-                   item.active ? false : true,
+                   true,
                    index
                  )
                })
@@ -466,6 +537,7 @@ class edit extends Component {
                             max={repeatertabs.length}
                             onChange={value => activeIndex(value)}
                         />
+                        <p>{__("This option allow only in frontend")}</p>
                       <PremiumBorder
                             borderType={tabborderType}
                             borderWidth={tabborderWidth}
