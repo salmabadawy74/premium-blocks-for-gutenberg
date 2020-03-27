@@ -125,6 +125,7 @@ class edit extends Component {
 
     constructor() {
         super(...arguments);
+        this.initToggleBox = this.initToggleBox.bind(this);
     }
     componentDidMount() {
         // Assigning id in the attribute.
@@ -134,8 +135,22 @@ class edit extends Component {
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-tab-" + this.props.clientId)
         document.head.appendChild($style)
-    }
 
+        setTimeout(this.initToggleBox, 10);
+       
+
+    }
+    
+    initToggleBox() {
+        const { block_id, repeatertabs } = this.props.attributes
+        if (!block_id) return null;
+        let array = repeatertabs.map((cont, currIndex) => {
+            return cont.active
+        }).filter((f,i)=> f != false)
+        if(array.length ==0){
+            repeatertabs[0].active = true
+        }
+    }
     render() {
         const { attributes, setAttributes, isSelected } = this.props
 
@@ -213,27 +228,13 @@ class edit extends Component {
             ))
 
             const array = arrayMove(arrayItem, oldIndex, newIndex)
-            console.log("old",oldIndex,array);
-
-            // activeTab(oldIndex-1, array)
-            
-            activeIndex(oldIndex+1,array)
-            // let active = array.map((arr,index)=>{
-            //     return arr.default
-            // })
-            // console.log(active);
-            
-            // if(active.length ==0){
-            //     activeIndex(oldIndex+1)
-            // }
             setAttributes({
                 repeatertabs:
                     array
 
             });
-            console.log(repeatertabs);
-            
         };
+
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
             if (['button', 'div', 'input', 'textarea'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
@@ -280,12 +281,12 @@ class edit extends Component {
             }).filter((f, i) => i != index)
 
             let active = array.map((arr,index)=>{
-                return arr.active
+                return arr.default
             }).filter((f,i)=> f != false)
             if(active.length ==0){
-                activeIndex(index)
+                setAttributes({tabIndex : index})
             }
-            activeTab(index==0?index: index-1, array)
+            activeTab(index==0?index: index-1)
             setAttributes({
                 repeatertabs: array
             });
@@ -293,7 +294,7 @@ class edit extends Component {
 
         const renderTabs = repeatertabs.map((item, index) => {
             return ( < div className = {
-                  `premium-tab-title ${type== 'vertical'? "premium-tab-title-vertical":""} ${item.active? type== 'vertical'?"premium-tab-title-vertical-active": "premium-tab-title-active": ""} `
+                  `premium-tab-title-${type} ${item.active? `premium-tab-title-active-${type}`: ""} ${this.props.clientId} ${item.active}`
                 } >
                <a onClick={() =>activeTab(index)} style={{color: titleColor}}>{item.title}</a>
             </div>
@@ -302,7 +303,7 @@ class edit extends Component {
 
         const renderContents = repeatertabs.map((item, index) => {
           return ( < div className = {
-                `premium-tab-content ${type== 'vertical'? "premium-tab-content-vertical":""} ${item.active? type== 'vertical'?"premium-tab-content-vertical-active": "premium-tab-content-active": ""}`
+                `premium-tab-content-${type} ${item.active? `premium-tab-content-active-${type}`:""} ${this.props.clientId}`
               } >
                   <RichText
                     tagName="p"
@@ -332,104 +333,9 @@ class edit extends Component {
         })
         }
 
-        const activeIndex =(value,array) => {
-            console.log(value);
-            if(array){
-                activeTab(value-1,array)
-                setAttributes({ tabIndex: value })
-                return array.map((item,i)=> {
-                    if(value-1 == i)
-                    { setAttributes({
-                         repeatertabs: onRepeaterChange(
-                             "default",
-                             true,
-                             value-1
-                         )
-                     })}
-                     else {
-                         setAttributes({
-                             repeatertabs: onRepeaterChange(
-                                 "default",
-                                 false,
-                                 i
-                             )
-                         })
-                     }
-                 })
-                     }
-            else
-            {
-                activeTab(value-1)
-                setAttributes({ tabIndex: value })
-            console.log('activeindex',repeatertabs);
-            return repeatertabs.map((item, i) => {
-                if(value-1 == i)
-           { setAttributes({
-                repeatertabs: onRepeaterChange(
-                    "default",
-                    true,
-                    value-1
-                )
-            })}
-            else {
-                setAttributes({
-                    repeatertabs: onRepeaterChange(
-                        "default",
-                        false,
-                        i
-                    )
-                })
-            }
-        })
-            }
-            
-        }
-
-         const activeTab = (index, array) => {
-             console.log(array);
-             console.log(index);
-             
-           return (array?array :repeatertabs).map((item, i) => {
-               if(array) {
-                   if(array.length ==1){
-                       console.log(item,i);
-                       
-                       setAttributes({
-                           repeatertabs: onRepeaterChange(
-                               "active",
-                               true,
-                               index
-                           )
-                       })
-                       console.log(repeatertabs);
-                       
-                   }
-                   else {
-                       if (index == i) {
-               setAttributes({
-                 repeatertabs: onRepeaterChange(
-                   "active",
-                   true,
-                   index
-                 )
-               })
-               console.log(repeatertabs);
-
-             } else {
-               setAttributes({
-                 repeatertabs: onRepeaterChange(
-                   "active",
-                   false,
-                   i
-                 )
-               })
-             }
-                   }
-               }
-              else {
+         const activeTab = (index) => {
+           return repeatertabs.map((item, i) => {
              if (index == i) {
-                 console.log("hh",index);
-                 console.log(item.active);
                  item.active= false
                setAttributes({
                  repeatertabs: onRepeaterChange(
@@ -438,10 +344,8 @@ class edit extends Component {
                    index
                  )
                })
-               console.log("if",repeatertabs);
                
              } else {
-                 console.log("else",i);
                  
                setAttributes({
                  repeatertabs: onRepeaterChange(
@@ -450,9 +354,8 @@ class edit extends Component {
                    i
                  )
                })
-               console.log("else",repeatertabs);
 
-             }}
+             }
            })
          }
 
@@ -535,7 +438,7 @@ class edit extends Component {
                             value={tabIndex}
                             min="1"
                             max={repeatertabs.length}
-                            onChange={value => activeIndex(value)}
+                            onChange={value => setAttributes({ tabIndex: value })}
                         />
                         <p>{__("This option allow only in frontend")}</p>
                       <PremiumBorder
@@ -653,21 +556,24 @@ class edit extends Component {
             )} style={{
                 textAlign: align,
             }}>
-                <div className={`premium-tab ${type =='vertical'?"premium-tab-view-vertical":""}`}
+                <div className={`premium-tab`}  data-type={`${type}`}>
+                <div className={`premium-tab-view-${type}`}
+               
                     style={{
                         textAlign: align,
                     }}>
-                      <div className={`${type =='vertical'?"premium-tab-title__wrap-view-vertical":"premium-tab-title__wrap"}`}>
+                      <div className={`premium-tab-title__wrap-view-${type} ${this.props.clientId}`}>
                     {
                       renderTabs
                     }
                     </div>
-                    <div className={`${type =='vertical'?"premium-tab-content__wrap-view-vertical":"premium-tab-content__wrap"}`}>
+                    <div className={`premium-tab-content__wrap-view-${type} ${this.props.clientId}`}>
                     {
                       renderContents
                     }
                     </div>
                 </div>
+            </div>
             </div>
         ]
     }

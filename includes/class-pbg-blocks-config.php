@@ -326,6 +326,7 @@ if ( ! class_exists( 'Config' ) ) {
 							'contentfontSizeMobile' => '20',
 							'contentfontSizeTablet' => '20',
 							'contentfontSizeType' => 'px',
+							'type'  => 'horizontal'
 						)
 						),
 				);

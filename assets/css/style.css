@@ -2773,7 +2773,7 @@ color: #23282d;
 
 /**************** Premium Tabs *****************/
 /*******************************************************/
-.premium-tab-title{
+.premium-tab-title-horizontal{
   display: table-cell;
   font-family: "Roboto", Sans-serif;
     position: relative;
@@ -2792,10 +2792,10 @@ color: #23282d;
   cursor: pointer;
   outline: none;
 }
-.premium-tab-title-vertical-active {
+.premium-tab-title-active-vertical {
   border-right-style: none !important;
 }
-.premium-tab-title-vertical-active::before {
+.premium-tab-title-active-vertical::before {
   top: 0;
   -webkit-transform: translateY(-100%);
   -ms-transform: translateY(-100%);
@@ -2809,7 +2809,7 @@ color: #23282d;
   position: absolute;
   border: 1px #d4d4d4;
 }
-.premium-tab-title-vertical-active::after {
+.premium-tab-title-active-vertical::after {
   top: 100%;
   height: 999em;
   width: 0;
@@ -2819,7 +2819,7 @@ color: #23282d;
   content: "";
   position: absolute;
 }
-.premium-tab-title-active::before {
+.premium-tab-title-active-horizontal::before {
   right: 100%;
   bottom: 0;
   height: 0;
@@ -2830,7 +2830,7 @@ color: #23282d;
   position: absolute;
   border: 1px #d4d4d4;
 }
-.premium-tab-title-active::after{
+.premium-tab-title-active-horizontal::after{
   left: 100%;
   bottom: 0;
   height: 0;
@@ -2846,15 +2846,15 @@ color: #23282d;
   box-shadow: none !important;
   text-decoration: none !important;
 }
-.premium-tab-title a{
+.premium-tab-title-horizontal a{
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   text-decoration: none !important;
 }
-.premium-tab-title__wrap{
+.premium-tab-title__wrap-view-horizontal{
   overflow: hidden;
 }
-.premium-tab-content__wrap{
+.premium-tab-content__wrap-view-horizontal{
   border: 1px #d4d4d4;
 }
 .premium-tab-content__wrap-view-vertical{
@@ -2864,7 +2864,7 @@ color: #23282d;
     flex-grow: 1;
     border-style: solid solid solid none;
 }
-.premium-tab-content{
+.premium-tab-content-horizontal{
   display: none;
   color: #7a7a7a;
   font-family: "Roboto",
@@ -2879,14 +2879,14 @@ color: #23282d;
     display: none;
     min-height: 15px;
 }
-.premium-tab-title-active {
+.premium-tab-title-active-horizontal {
   border-bottom-style: none !important;
 }
-.premium-tab-content-active{
+.premium-tab-content-active-horizontal{
   display: block !important;
   border-style: none solid solid !important;
 }
-.premium-tab-content-vertical-active{
+.premium-tab-content-active-vertical{
   display: block !important;
 }
 .premium-tab-view-vertical{

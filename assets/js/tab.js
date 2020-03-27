@@ -2,42 +2,32 @@ jQuery(document).ready(function ($) {
   const $tab = $(".premium-tab");
 
   $tab.map((index, tab) => {
-    let $tab = $(tab),
+    let $tab = $(tab)
+    let type = $tab.data('type');
 
-      $toggletabs = $tab.find(`.premium-tab-title`);
+    $toggletabs = $tab.find(`.premium-tab-title-` + type);
 
-    $togglecontent = $tab.find(`.premium-tab-content`);
+    $togglecontent = $tab.find(`.premium-tab-content-` + type);
 
     $toggletabs.map((index, active) => {
       let $active = $(active)
 
+      console.log($active);
 
       $active.on("click", () => {
         for (let i = 0; i <= $toggletabs.length - 1; i++) {
           if (i == index) {
-            if ($($toggletabs).hasClass('premium-tab-title-vertical')) {
-              $active.addClass("premium-tab-title-vertical-active");
-              $($togglecontent[i]).addClass("premium-tab-content-vertical-active");
-              $($toggletabs[i]).removeClass("premium-tab-title-active");
-              $($togglecontent[i]).removeClass("premium-tab-content-active");
-            } 
-            else {
-              $active.addClass("premium-tab-title-active");
-              $($togglecontent[i]).addClass("premium-tab-content-active");
-              $($toggletabs[i]).removeClass("premium-tab-title-vertical-active");
-              $($togglecontent[i]).removeClass("premium-tab-content-vertical-active");
-            }
-          } 
+            console.log(i);
+            $active.addClass("premium-tab-title-active-" + type);
+            $($togglecontent[i]).addClass("premium-tab-content-active-" + type);
+            console.log($togglecontent[i]);
+            
+          }
           else {
-            if ($($toggletabs).hasClass('premium-tab-title-vertical')) {
-              $($toggletabs[i]).removeClass("premium-tab-title-vertical-active");
-              $($togglecontent[i]).removeClass("premium-tab-content-vertical-active");
-              $($toggletabs[i]).removeClass("premium-tab-title-active");
-              $($togglecontent[i]).removeClass("premium-tab-content-active");
-            } else {
-              $($toggletabs[i]).removeClass("premium-tab-title-active");
-              $($togglecontent[i]).removeClass("premium-tab-content-active");
-            }
+            console.log($toggletabs[i]);
+            $($toggletabs[i]).removeClass("premium-tab-title-active-" + type);
+
+            $($togglecontent[i]).removeClass("premium-tab-content-active-" + type);
           }
         }
 

@@ -54948,13 +54948,14 @@ function save(props) {
         align = attributes.align,
         repeatertabs = attributes.repeatertabs,
         titleColor = attributes.titleColor,
-        type = attributes.type;
+        type = attributes.type,
+        tabIndex = attributes.tabIndex;
 
 
     var renderTabs = repeatertabs.map(function (item, index) {
         return wp.element.createElement(
             "div",
-            { className: "premium-tab-title " + (type == 'vertical' ? "premium-tab-title-vertical" : "") + " " + (item.default ? type == 'vertical' ? "premium-tab-title-vertical-active" : "premium-tab-title-active" : "") + " " },
+            { className: "premium-tab-title-" + type + " " + (tabIndex - 1 == index ? "premium-tab-title-active-" + type : "") + " " },
             wp.element.createElement(
                 "a",
                 { style: { color: titleColor } },
@@ -54966,7 +54967,7 @@ function save(props) {
     var renderContents = repeatertabs.map(function (item, index) {
         return wp.element.createElement(
             "div",
-            { className: "premium-tab-content " + (type == 'vertical' ? "premium-tab-content-vertical" : "") + " " + (item.default ? type == 'vertical' ? "premium-tab-content-vertical-active" : "premium-tab-content-active" : "") },
+            { className: "premium-tab-content-" + type + " " + (tabIndex - 1 == index ? "premium-tab-content-active-" + type : "") },
             wp.element.createElement(RichText.Content, {
                 tagName: "p",
                 value: item.content,
@@ -54985,19 +54986,24 @@ function save(props) {
             } },
         wp.element.createElement(
             "div",
-            { className: "premium-tab " + (type == 'vertical' ? "premium-tab-view-vertical" : ""),
-                style: {
-                    textAlign: align
-                } },
+            { className: "premium-tab", "data-type": "" + type },
             wp.element.createElement(
                 "div",
-                { className: "" + (type == 'vertical' ? "premium-tab-title__wrap-view-vertical" : "premium-tab-title__wrap") },
-                renderTabs
-            ),
-            wp.element.createElement(
-                "div",
-                { className: "" + (type == 'vertical' ? "premium-tab-content__wrap-view-vertical" : "premium-tab-content__wrap") },
-                renderContents
+                { className: "premium-tab-view-" + type,
+
+                    style: {
+                        textAlign: align
+                    } },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-tab-title__wrap-view-" + type },
+                    renderTabs
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-tab-content__wrap-view-" + type },
+                    renderContents
+                )
             )
         )
     );
@@ -55130,7 +55136,10 @@ var edit = function (_Component) {
     function edit() {
         _classCallCheck(this, edit);
 
-        return _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+
+        _this.initToggleBox = _this.initToggleBox.bind(_this);
+        return _this;
     }
 
     _createClass(edit, [{
@@ -55143,10 +55152,31 @@ var edit = function (_Component) {
             var $style = document.createElement("style");
             $style.setAttribute("id", "premium-style-tab-" + this.props.clientId);
             document.head.appendChild($style);
+
+            setTimeout(this.initToggleBox, 10);
+        }
+    }, {
+        key: "initToggleBox",
+        value: function initToggleBox() {
+            var _props$attributes = this.props.attributes,
+                block_id = _props$attributes.block_id,
+                repeatertabs = _props$attributes.repeatertabs;
+
+            if (!block_id) return null;
+            var array = repeatertabs.map(function (cont, currIndex) {
+                return cont.active;
+            }).filter(function (f, i) {
+                return f != false;
+            });
+            if (array.length == 0) {
+                repeatertabs[0].active = true;
+            }
         }
     }, {
         key: "render",
         value: function render() {
+            var _this2 = this;
+
             var _props = this.props,
                 attributes = _props.attributes,
                 setAttributes = _props.setAttributes,
@@ -55214,25 +55244,12 @@ var edit = function (_Component) {
                 });
 
                 var array = Object(__WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__["c" /* arrayMove */])(arrayItem, oldIndex, newIndex);
-                console.log("old", oldIndex, array);
-
-                // activeTab(oldIndex-1, array)
-
-                activeIndex(oldIndex + 1, array);
-                // let active = array.map((arr,index)=>{
-                //     return arr.default
-                // })
-                // console.log(active);
-
-                // if(active.length ==0){
-                //     activeIndex(oldIndex+1)
-                // }
                 setAttributes({
                     repeatertabs: array
 
                 });
-                console.log(repeatertabs);
             };
+
             var shouldCancelStart = function shouldCancelStart(e) {
                 // Prevent sorting from being triggered if target is input or button
                 if (['button', 'div', 'input', 'textarea'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
@@ -55272,14 +55289,14 @@ var edit = function (_Component) {
                 });
 
                 var active = array.map(function (arr, index) {
-                    return arr.active;
+                    return arr.default;
                 }).filter(function (f, i) {
                     return f != false;
                 });
                 if (active.length == 0) {
-                    activeIndex(index);
+                    setAttributes({ tabIndex: index });
                 }
-                activeTab(index == 0 ? index : index - 1, array);
+                activeTab(index == 0 ? index : index - 1);
                 setAttributes({
                     repeatertabs: array
                 });
@@ -55288,7 +55305,7 @@ var edit = function (_Component) {
             var renderTabs = repeatertabs.map(function (item, index) {
                 return wp.element.createElement(
                     "div",
-                    { className: "premium-tab-title " + (type == 'vertical' ? "premium-tab-title-vertical" : "") + " " + (item.active ? type == 'vertical' ? "premium-tab-title-vertical-active" : "premium-tab-title-active" : "") + " " },
+                    { className: "premium-tab-title-" + type + " " + (item.active ? "premium-tab-title-active-" + type : "") + " " + _this2.props.clientId + " " + item.active },
                     wp.element.createElement(
                         "a",
                         { onClick: function onClick() {
@@ -55302,7 +55319,7 @@ var edit = function (_Component) {
             var renderContents = repeatertabs.map(function (item, index) {
                 return wp.element.createElement(
                     "div",
-                    { className: "premium-tab-content " + (type == 'vertical' ? "premium-tab-content-vertical" : "") + " " + (item.active ? type == 'vertical' ? "premium-tab-content-vertical-active" : "premium-tab-content-active" : "") },
+                    { className: "premium-tab-content-" + type + " " + (item.active ? "premium-tab-content-active-" + type : "") + " " + _this2.props.clientId },
                     wp.element.createElement(RichText, {
                         tagName: "p",
                         value: item.content,
@@ -55330,82 +55347,18 @@ var edit = function (_Component) {
                 });
             };
 
-            var activeIndex = function activeIndex(value, array) {
-                console.log(value);
-                if (array) {
-                    activeTab(value - 1, array);
-                    setAttributes({ tabIndex: value });
-                    return array.map(function (item, i) {
-                        if (value - 1 == i) {
-                            setAttributes({
-                                repeatertabs: onRepeaterChange("default", true, value - 1)
-                            });
-                        } else {
-                            setAttributes({
-                                repeatertabs: onRepeaterChange("default", false, i)
-                            });
-                        }
-                    });
-                } else {
-                    activeTab(value - 1);
-                    setAttributes({ tabIndex: value });
-                    console.log('activeindex', repeatertabs);
-                    return repeatertabs.map(function (item, i) {
-                        if (value - 1 == i) {
-                            setAttributes({
-                                repeatertabs: onRepeaterChange("default", true, value - 1)
-                            });
-                        } else {
-                            setAttributes({
-                                repeatertabs: onRepeaterChange("default", false, i)
-                            });
-                        }
-                    });
-                }
-            };
-
-            var activeTab = function activeTab(index, array) {
-                console.log(array);
-                console.log(index);
-
-                return (array ? array : repeatertabs).map(function (item, i) {
-                    if (array) {
-                        if (array.length == 1) {
-                            console.log(item, i);
-
-                            setAttributes({
-                                repeatertabs: onRepeaterChange("active", true, index)
-                            });
-                            console.log(repeatertabs);
-                        } else {
-                            if (index == i) {
-                                setAttributes({
-                                    repeatertabs: onRepeaterChange("active", true, index)
-                                });
-                                console.log(repeatertabs);
-                            } else {
-                                setAttributes({
-                                    repeatertabs: onRepeaterChange("active", false, i)
-                                });
-                            }
-                        }
+            var activeTab = function activeTab(index) {
+                return repeatertabs.map(function (item, i) {
+                    if (index == i) {
+                        item.active = false;
+                        setAttributes({
+                            repeatertabs: onRepeaterChange("active", true, index)
+                        });
                     } else {
-                        if (index == i) {
-                            console.log("hh", index);
-                            console.log(item.active);
-                            item.active = false;
-                            setAttributes({
-                                repeatertabs: onRepeaterChange("active", true, index)
-                            });
-                            console.log("if", repeatertabs);
-                        } else {
-                            console.log("else", i);
 
-                            setAttributes({
-                                repeatertabs: onRepeaterChange("active", false, i)
-                            });
-                            console.log("else", repeatertabs);
-                        }
+                        setAttributes({
+                            repeatertabs: onRepeaterChange("active", false, i)
+                        });
                     }
                 });
             };
@@ -55499,9 +55452,14 @@ var edit = function (_Component) {
                         min: "1",
                         max: repeatertabs.length,
                         onChange: function onChange(value) {
-                            return activeIndex(value);
+                            return setAttributes({ tabIndex: value });
                         }
                     }),
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("This option allow only in frontend")
+                    ),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
                         borderType: tabborderType,
                         borderWidth: tabborderWidth,
@@ -55644,19 +55602,24 @@ var edit = function (_Component) {
                     } },
                 wp.element.createElement(
                     "div",
-                    { className: "premium-tab " + (type == 'vertical' ? "premium-tab-view-vertical" : ""),
-                        style: {
-                            textAlign: align
-                        } },
+                    { className: "premium-tab", "data-type": "" + type },
                     wp.element.createElement(
                         "div",
-                        { className: "" + (type == 'vertical' ? "premium-tab-title__wrap-view-vertical" : "premium-tab-title__wrap") },
-                        renderTabs
-                    ),
-                    wp.element.createElement(
-                        "div",
-                        { className: "" + (type == 'vertical' ? "premium-tab-content__wrap-view-vertical" : "premium-tab-content__wrap") },
-                        renderContents
+                        { className: "premium-tab-view-" + type,
+
+                            style: {
+                                textAlign: align
+                            } },
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-tab-title__wrap-view-" + type + " " + this.props.clientId },
+                            renderTabs
+                        ),
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-tab-content__wrap-view-" + type + " " + this.props.clientId },
+                            renderContents
+                        )
                     )
                 )
             )];
@@ -55675,10 +55638,14 @@ var edit = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(35);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
 function styling(props) {
+  var _selectors, _mobile_selectors, _tablet_selectors;
+
   var _props$attributes = props.attributes,
       classMigrate = _props$attributes.classMigrate,
       tabborderType = _props$attributes.tabborderType,
@@ -55702,99 +55669,90 @@ function styling(props) {
       contentfontSize = _props$attributes.contentfontSize,
       contentfontSizeMobile = _props$attributes.contentfontSizeMobile,
       contentfontSizeTablet = _props$attributes.contentfontSizeTablet,
-      contentfontSizeType = _props$attributes.contentfontSizeType;
+      contentfontSizeType = _props$attributes.contentfontSizeType,
+      type = _props$attributes.type;
 
 
   var selectors = {};
   var tablet_selectors = {};
   var mobile_selectors = {};
 
-  selectors = {
-    " .premium-tab-title-active": {
-      "border-style": tabborderType,
-      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px"),
-      "border-color": tabborderColor,
-      "background-color": tabBGColor
-    },
-    " .premium-tab-title": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSize, titlefontSizeType),
-      "letter-spacing": titleLetter + "px" + "!important",
-      "text-transform": titleUpper ? "uppercase" : "none" + "!important",
-      "font-style": titleStyle + "!important",
-      "font-weight": titleWeight + "!important"
-    },
-    " .premium-tab-title-vertical-active": {
-      "border-style": tabborderType,
-      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px"),
-      "border-color": tabborderColor,
-      "background-color": tabBGColor
-    },
-    " .premium-tab-content p": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSize, contentfontSizeType),
-      "letter-spacing": contentLetter + "px",
-      "text-transform": contentUpper ? "uppercase" : "none" + "!important",
-      "font-style": contentStyle + "!important",
-      "font-weight": contentWeight + "!important",
-      "color": contentColor + " !important"
-    },
-    " .premium-tab-title-active a": {
-      "color": activetitleColor + " !important"
-    },
-    " .premium-tab-title-vertical-active a": {
-      "color": activetitleColor + " !important"
-    },
-    " .premium-tab-content-active": {
-      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px"),
-      "border-color": tabborderColor
-    },
-    " .premium-tab-content-vertical-active": {
-      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px"),
-      "border-color": tabborderColor
-    },
-    " .premium-tab-content__wrap": {
-      "background-color": tabBGColor,
-      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
-    },
-    " .premium-tab-content__wrap-view-vertical": {
-      "background-color": tabBGColor,
-      "border-color": tabborderColor,
-      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
-    },
-    " .premium-tab-title-active::after": {
-      "border-color": tabborderColor + " !important",
-      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
-    },
-    " .premium-tab-title-active::before": {
-      "border-color": tabborderColor + " !important",
-      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
-    },
-    " .premium-tab-title-vertical-active::after": {
-      "border-color": tabborderColor + " !important",
-      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
-    },
-    " .premium-tab-title-vertical-active::before": {
-      "border-color": tabborderColor + " !important",
-      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
-    }
-  };
+  selectors = (_selectors = {}, _defineProperty(_selectors, " .premium-tab-title-active-" + type, {
+    "border-style": tabborderType,
+    "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px"),
+    "border-color": tabborderColor,
+    "background-color": tabBGColor
+  }), _defineProperty(_selectors, " .premium-tab-title-" + type, {
+    "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSize, titlefontSizeType),
+    "letter-spacing": titleLetter + "px" + "!important",
+    "text-transform": titleUpper ? "uppercase" : "none" + "!important",
+    "font-style": titleStyle + "!important",
+    "font-weight": titleWeight + "!important"
+  }), _defineProperty(_selectors, " .premium-tab-title-active-vertical", {
+    "border-style": tabborderType,
+    "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px"),
+    "border-color": tabborderColor,
+    "background-color": tabBGColor
+  }), _defineProperty(_selectors, " .premium-tab-content-vertical p", {
+    "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSize, contentfontSizeType),
+    "letter-spacing": contentLetter + "px",
+    "text-transform": contentUpper ? "uppercase" : "none" + "!important",
+    "font-style": contentStyle + "!important",
+    "font-weight": contentWeight + "!important",
+    "color": contentColor + " !important"
+  }), _defineProperty(_selectors, " .premium-tab-content-horizontal p", {
+    "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSize, contentfontSizeType),
+    "letter-spacing": contentLetter + "px",
+    "text-transform": contentUpper ? "uppercase" : "none" + "!important",
+    "font-style": contentStyle + "!important",
+    "font-weight": contentWeight + "!important",
+    "color": contentColor + " !important"
+  }), _defineProperty(_selectors, " .premium-tab-title-active-horizontal a", {
+    "color": activetitleColor + " !important"
+  }), _defineProperty(_selectors, " .premium-tab-title-active-vertical a", {
+    "color": activetitleColor + " !important"
+  }), _defineProperty(_selectors, " .premium-tab-content-active-horizontal", {
+    "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px"),
+    "border-color": tabborderColor
+  }), _defineProperty(_selectors, " .premium-tab-content-active-vertical", {
+    "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px"),
+    "border-color": tabborderColor
+  }), _defineProperty(_selectors, " .premium-tab-content__wrap-view-horizontal", {
+    "background-color": tabBGColor,
+    "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
+  }), _defineProperty(_selectors, " .premium-tab-content__wrap-view-vertical", {
+    "background-color": tabBGColor,
+    "border-color": tabborderColor,
+    "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
+  }), _defineProperty(_selectors, " .premium-tab-title-active-horizontal::after", {
+    "border-color": tabborderColor + " !important",
+    "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
+  }), _defineProperty(_selectors, " .premium-tab-title-active-horizontal::before", {
+    "border-color": tabborderColor + " !important",
+    "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
+  }), _defineProperty(_selectors, " .premium-tab-title-active-vertical::after", {
+    "border-color": tabborderColor + " !important",
+    "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
+  }), _defineProperty(_selectors, " .premium-tab-title-active-vertical::before", {
+    "border-color": tabborderColor + " !important",
+    "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px")
+  }), _selectors);
 
-  mobile_selectors = {
-    " .premium-tab-title": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeMobile, titlefontSizeType)
-    },
-    " .premium-tab-content p": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeMobile, contentfontSizeType)
-    }
-  };
+  mobile_selectors = (_mobile_selectors = {}, _defineProperty(_mobile_selectors, " .premium-tab-title" + type, {
+    "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeMobile, titlefontSizeType)
+  }), _defineProperty(_mobile_selectors, " .premium-tab-content-vertical p", {
+    "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeMobile, contentfontSizeType)
+  }), _defineProperty(_mobile_selectors, " .premium-tab-content-horizontal p", {
+    "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeMobile, contentfontSizeType)
+  }), _mobile_selectors);
 
-  tablet_selectors = {
-    " .premium-tab-title": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeTablet, titlefontSizeType)
-    },
-    " .premium-tab-content p": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeTablet, contentfontSizeType)
-    }
-  };
+  tablet_selectors = (_tablet_selectors = {}, _defineProperty(_tablet_selectors, " .premium-tab-title" + type, {
+    "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeTablet, titlefontSizeType)
+  }), _defineProperty(_tablet_selectors, " .premium-tab-content-vertical p", {
+    "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeTablet, contentfontSizeType)
+  }), _defineProperty(_tablet_selectors, " .premium-tab-content-horizontal p", {
+    "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeTablet, contentfontSizeType)
+  }), _tablet_selectors);
 
   var styling_css = "";
   var id = '#premium-tab-' + props.clientId;
