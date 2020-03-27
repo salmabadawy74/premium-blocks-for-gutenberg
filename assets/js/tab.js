@@ -5,27 +5,24 @@ jQuery(document).ready(function ($) {
     let $tab = $(tab)
     let type = $tab.data('type');
 
-    $toggletabs = $tab.find(`.premium-tab-title-` + type);
+    let tabClass = `.premium-tab-title-` + type;
 
     $togglecontent = $tab.find(`.premium-tab-content-` + type);
 
-    $toggletabs.map((index, active) => {
-      let $active = $(active)
+    $tab.on("click", tabClass, function () {
 
-      $active.on("click", () => {
-        for (let i = 0; i <= $toggletabs.length - 1; i++) {
-          if (i == index) {
-            $active.addClass("premium-tab-title-active-" + type);
-            $($togglecontent[i]).addClass("premium-tab-content-active-" + type);
-          }
-          else {
-            $($toggletabs[i]).removeClass("premium-tab-title-active-" + type);
+      let $currentTab = $(this);
 
-            $($togglecontent[i]).removeClass("premium-tab-content-active-" + type);
-          }
-        }
+      let currentTabIndex = $currentTab.index();
+      
 
-      })
-    })
+      $tab.find(".premium-tab-title-active-" + type).removeClass("premium-tab-title-active-" + type);
+      $tab.find(".premium-tab-content-active-" + type).removeClass("premium-tab-content-active-" + type);
+
+      $currentTab.addClass("premium-tab-title-active-" + type);
+      $tab.find(`.premium-tab-content-` + type).eq(currentTabIndex).addClass("premium-tab-content-active-" + type);
+
+    });
+
   });
 });
