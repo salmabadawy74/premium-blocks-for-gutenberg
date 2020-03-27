@@ -441,15 +441,20 @@ class edit extends Component {
                             onChange={value => setAttributes({ tabIndex: value })}
                         />
                         <p>{__("This option allow only in frontend")}</p>
-                      <PremiumBorder
-                            borderType={tabborderType}
-                            borderWidth={tabborderWidth}
-                            borderColor={tabborderColor}
-                            onChangeType={newType => setAttributes({ tabborderType: newType })}
-                            onChangeWidth={newWidth => setAttributes({ tabborderWidth: newWidth })}
-                            onChangeColor={colorValue =>
-                                setAttributes({ tabborderColor: colorValue.hex })
+                        <RangeControl
+                            label={__("Border Width")}
+                            value={tabborderWidth}
+                            onChange={value => setAttributes({ tabborderWidth: value })}
+                        />
+                        <p>{__("Border Color")}</p>
+                        <ColorPalette
+                            value={tabborderColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    tabborderColor: newValue
+                                })
                             }
+                            allowReset={true}
                         />
                          <p>{__("Background Color")}</p>
                         <ColorPalette

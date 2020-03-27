@@ -55460,19 +55460,26 @@ var edit = function (_Component) {
                         null,
                         __("This option allow only in frontend")
                     ),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
-                        borderType: tabborderType,
-                        borderWidth: tabborderWidth,
-                        borderColor: tabborderColor,
-                        onChangeType: function onChangeType(newType) {
-                            return setAttributes({ tabborderType: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(newWidth) {
-                            return setAttributes({ tabborderWidth: newWidth });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ tabborderColor: colorValue.hex });
+                    wp.element.createElement(RangeControl, {
+                        label: __("Border Width"),
+                        value: tabborderWidth,
+                        onChange: function onChange(value) {
+                            return setAttributes({ tabborderWidth: value });
                         }
+                    }),
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("Border Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: tabborderColor,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({
+                                tabborderColor: newValue
+                            });
+                        },
+                        allowReset: true
                     }),
                     wp.element.createElement(
                         "p",

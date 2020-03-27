@@ -12,19 +12,13 @@ jQuery(document).ready(function ($) {
     $toggletabs.map((index, active) => {
       let $active = $(active)
 
-      console.log($active);
-
       $active.on("click", () => {
         for (let i = 0; i <= $toggletabs.length - 1; i++) {
           if (i == index) {
-            console.log(i);
             $active.addClass("premium-tab-title-active-" + type);
             $($togglecontent[i]).addClass("premium-tab-content-active-" + type);
-            console.log($togglecontent[i]);
-            
           }
           else {
-            console.log($toggletabs[i]);
             $($toggletabs[i]).removeClass("premium-tab-title-active-" + type);
 
             $($togglecontent[i]).removeClass("premium-tab-content-active-" + type);
