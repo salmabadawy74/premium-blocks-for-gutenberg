@@ -2294,14 +2294,14 @@ var listCacheClear = __webpack_require__(87),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `ListCache`.
@@ -2993,14 +2993,14 @@ var mapCacheClear = __webpack_require__(103),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `MapCache`.
@@ -8714,14 +8714,14 @@ var hashClear = __webpack_require__(105),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `Hash`.
@@ -9081,13 +9081,13 @@ var MapCache = __webpack_require__(39),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-    var index = -1,
-        length = values == null ? 0 : values.length;
+  var index = -1,
+      length = values == null ? 0 : values.length;
 
-    this.__data__ = new MapCache();
-    while (++index < length) {
-        this.add(values[index]);
-    }
+  this.__data__ = new MapCache();
+  while (++index < length) {
+    this.add(values[index]);
+  }
 }
 
 // Add methods to `SetCache`.
@@ -10031,16 +10031,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-    var result = keys(object),
-        length = result.length;
+  var result = keys(object),
+      length = result.length;
 
-    while (length--) {
-        var key = result[length],
-            value = object[key];
+  while (length--) {
+    var key = result[length],
+        value = object[key];
 
-        result[length] = [key, value, isStrictComparable(value)];
-    }
-    return result;
+    result[length] = [key, value, isStrictComparable(value)];
+  }
+  return result;
 }
 
 module.exports = getMatchData;
@@ -54916,6 +54916,10 @@ var tabAttrs = {
   tabIndex: {
     type: "number",
     default: 1
+  },
+  tabStyle: {
+    type: "string",
+    default: "arrow"
   }
 };
 
@@ -55255,7 +55259,8 @@ var edit = function (_Component) {
                 contentfontSizeTablet = attributes.contentfontSizeTablet,
                 contentfontSizeType = attributes.contentfontSizeType,
                 type = attributes.type,
-                tabIndex = attributes.tabIndex;
+                tabIndex = attributes.tabIndex,
+                tabStyle = attributes.tabStyle;
 
 
             var TYPE = [{
@@ -55264,6 +55269,13 @@ var edit = function (_Component) {
             }, {
                 value: "vertical",
                 label: __("Vertical")
+            }];
+            var STYLE = [{
+                value: "arrow",
+                label: __("Arrow Pointer")
+            }, {
+                value: "flipped",
+                label: __("Flipped")
             }];
             var element = document.getElementById("premium-style-tab-" + this.props.clientId);
 
@@ -55370,10 +55382,10 @@ var edit = function (_Component) {
                 // )
                 return wp.element.createElement(
                     "li",
-                    { className: "premium-tab-nav-list-item " + (item.active ? 'tab-current' : "") },
+                    { className: "premium-tab-nav-list-item " + (tabStyle == 'flipped' ? "premium-tab-nav-list-item-flipped" : "") + " " + (item.active ? 'tab-current' : "") },
                     wp.element.createElement(
                         "a",
-                        { className: "premium-tab-link-icon", href: "#section-tab-content-" + index + "-" + _this2.props.clientId, onClick: function onClick() {
+                        { className: "premium-tab-link-icon " + (tabStyle == 'flipped' ? "premium-tab-link-icon-flipped" : ""), href: "#section-tab-content-" + index + "-" + _this2.props.clientId, onClick: function onClick() {
                                 return activeTab(index);
                             } },
                         item.enableIcon ? wp.element.createElement("i", { className: "premium-tab-title-icon " + item.icon }) : "",
@@ -55421,25 +55433,39 @@ var edit = function (_Component) {
             });
 
             var addNewTab = function addNewTab() {
-                // return repeatertabs.map((item, i) => {
-                activeTab(0);
-                //     edit(i+1)
-                setAttributes({
-                    repeatertabs: repeatertabs.concat([{
-                        // id: i+1,
-                        title: __("Title"),
-                        content: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
-                        edit: true,
-                        active: true,
-                        default: false,
-                        enableIcon: true,
-                        icon: "dashicons dashicons-star-filled"
-                    }])
-                });
-                // })
+                if (repeatertabs.length != []) {
+                    return (repeatertabs || []).map(function (item, i) {
+                        activeTab(i + 1);
+                        _edit(i + 1);
+                        setAttributes({
+                            repeatertabs: repeatertabs.concat([{
+                                title: __("Title"),
+                                content: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
+                                edit: true,
+                                active: true,
+                                default: false,
+                                enableIcon: true,
+                                icon: "dashicons dashicons-star-filled"
+                            }])
+                        });
+                    });
+                } else {
+                    setAttributes({
+                        repeatertabs: repeatertabs.concat([{
+                            title: __("Title"),
+                            content: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
+                            edit: true,
+                            active: true,
+                            default: false,
+                            enableIcon: true,
+                            icon: "dashicons dashicons-star-filled"
+                        }])
+                    });
+                }
             };
 
             var activeTab = function activeTab(index) {
+                console.log('i', index);
 
                 return repeatertabs.map(function (item, i) {
 
@@ -55527,12 +55553,22 @@ var edit = function (_Component) {
                         wp.element.createElement("br", null)
                     ),
                     wp.element.createElement(SelectControl, {
-                        label: __("Type"),
+                        label: __("Tabs Type"),
                         value: type,
                         onChange: function onChange(newEffect) {
                             return setAttributes({ type: newEffect });
                         },
                         options: TYPE
+                    }),
+                    wp.element.createElement(SelectControl, {
+                        label: __("Tabs Style"),
+                        value: tabStyle,
+                        onChange: function onChange(newEffect) {
+                            return setAttributes({
+                                tabStyle: newEffect
+                            });
+                        },
+                        options: STYLE
                     })
                 ),
                 wp.element.createElement(

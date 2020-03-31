@@ -215,7 +215,8 @@ console.log(this.props.attributes.repeatertabs);
             contentfontSizeTablet,
             contentfontSizeType,
             type,
-            tabIndex
+            tabIndex,
+            tabStyle
         } = attributes
 
         const TYPE = [{
@@ -225,6 +226,15 @@ console.log(this.props.attributes.repeatertabs);
         {
             value: "vertical",
             label: __("Vertical")
+        },
+    ]
+    const STYLE = [{
+            value: "arrow",
+            label: __("Arrow Pointer")
+        },
+        {
+            value: "flipped",
+            label: __("Flipped")
         },
     ]
         var element = document.getElementById("premium-style-tab-" + this.props.clientId)
@@ -352,8 +362,8 @@ console.log(this.props.attributes.repeatertabs);
             //    <a onClick={() =>activeTab(index)} style={{color: titleColor}}>{item.title}</a>
             // </div>
             // )
-            return <li className={`premium-tab-nav-list-item ${item.active?'tab-current':""}`}>
-                <a className="premium-tab-link-icon" href={`#section-tab-content-${index}-${this.props.clientId}`} onClick={() =>activeTab(index)}>
+            return <li className={`premium-tab-nav-list-item ${tabStyle =='flipped'?"premium-tab-nav-list-item-flipped":""} ${item.active?'tab-current':""}`}>
+                <a className={`premium-tab-link-icon ${tabStyle =='flipped'?"premium-tab-link-icon-flipped":""}`} href={`#section-tab-content-${index}-${this.props.clientId}`} onClick={() =>activeTab(index)}>
                     {item.enableIcon? <i className={`premium-tab-title-icon ${item.icon}`}/> :""}
                     <p className="premium-tab-title">{item.title}</p>
                 </a>
@@ -389,12 +399,12 @@ console.log(this.props.attributes.repeatertabs);
         })
 
         const addNewTab = () => {
-            // return repeatertabs.map((item, i) => {
-                activeTab(0)
-            //     edit(i+1)
+            if(repeatertabs.length !=[])
+            {return (repeatertabs || []).map((item, i) => {
+                activeTab(i+1)
+                edit(i+1)
              setAttributes({
                 repeatertabs: repeatertabs.concat([{
-                    // id: i+1,
                     title: __("Title"),
                     content: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
                     edit: true,
@@ -404,10 +414,24 @@ console.log(this.props.attributes.repeatertabs);
                     icon:"dashicons dashicons-star-filled"
                 }])
             });
-        // })
+        })}
+        else {
+            setAttributes({
+                repeatertabs: repeatertabs.concat([{
+                    title: __("Title"),
+                    content: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
+                    edit: true,
+                    active: true,
+                    default: false,
+                    enableIcon: true,
+                    icon: "dashicons dashicons-star-filled"
+                }])
+            });
+        }
         }
 
          const activeTab = (index) => {
+             console.log('i',index);
              
            return repeatertabs.map((item, i) => {
                
@@ -499,10 +523,20 @@ console.log(this.props.attributes.repeatertabs);
                                 <br />
                             </Fragment>
                             < SelectControl
-                                    label={__("Type")}
+                                    label={__("Tabs Type")}
                                     value={type}
                                     onChange={newEffect => setAttributes({ type: newEffect })}
                                     options={TYPE}
+                            />
+                            < SelectControl
+                                    label={__("Tabs Style")}
+                                    value={tabStyle}
+                                    onChange = {
+                                        newEffect => setAttributes({
+                                            tabStyle: newEffect
+                                        })
+                                    }
+                                    options={STYLE}
                             />
                     </PanelBody>
                     <PanelBody

@@ -149,6 +149,10 @@ const tabAttrs = {
     tabIndex: {
       type: "number",
       default: 1
+    },
+    tabStyle: {
+      type: "string",
+      default: "arrow"
     }
 };
 
