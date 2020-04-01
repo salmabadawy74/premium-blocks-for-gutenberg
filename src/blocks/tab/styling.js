@@ -11,6 +11,7 @@ function styling(props) {
     tabborderRadius,
     tabBGColor,
     activetitleColor,
+    titleColor,
     titleWeight,
     titleLetter,
     titleUpper,
@@ -35,7 +36,32 @@ function styling(props) {
     tabShadowHorizontal,
     tabShadowVertical,
     tabShadowPosition,
-    activetabBGColor
+    activetabBGColor,
+    arrowColor,
+    iconColor,
+    activeiconColor,
+    hovericonColor,
+    iconfontSize,
+    iconfontSizeType,
+    iconfontSizeMobile,
+    iconfontSizeTablet,
+    iconborderType,
+    iconborderRadius,
+    iconborderWidth,
+    iconborderColor,
+    iconshadowBlur,
+    iconshadowColor,
+    iconshadowHorizontal,
+    iconshadowVertical,
+    hovertitleColor,
+    titleborderType,
+    titleborderRadius,
+    titleborderWidth,
+    titleborderColor,
+    titleshadowBlur,
+    titleshadowColor,
+    titleshadowHorizontal,
+    titleshadowVertical,
   } = props.attributes
 
   var selectors = {}
@@ -67,6 +93,46 @@ function styling(props) {
     },
     " .tab-current .premium-tab-link-icon-flipped":{
       "background-color": activetabBGColor + "!important"
+    },
+    " .premium-tab-horizontal .tab-current .premium-tab-link-icon::after": {
+      "border-top-color": arrowColor + "!important"
+    },
+    " .premium-tab-vertical .tab-current .premium-tab-link-icon::after": {
+      "border-left-color": arrowColor + "!important"
+    },
+    " .premium-tab-title-icon": {
+      "color": iconColor,
+      "font-size": generateCSSUnit(iconfontSize, iconfontSizeType),
+      "border-style": iconborderType,
+      "border-width": generateCSSUnit(iconborderWidth, "px"),
+      "border-color": iconborderColor,
+      "border-radius": generateCSSUnit(iconborderRadius, "px"),
+      "text-shadow": `${iconshadowHorizontal}px ${iconshadowVertical}px ${iconshadowBlur}px ${iconshadowColor}`,
+    },
+    " .tab-current .premium-tab-title-icon": {
+      "color": activeiconColor + "!important"
+    },
+    " .premium-tab-nav-list-item:hover .premium-tab-title-icon": {
+      "color": hovericonColor + "!important"
+    },
+    " .tab-current .premium-tab-title": {
+      "color": activetitleColor + "!important"
+    },
+    " .premium-tab-nav-list-item .premium-tab-title": {
+      "color": titleColor,
+      "font-size": generateCSSUnit(titlefontSize, titlefontSizeType),
+      "letter-spacing": titleLetter + "px",
+      "text-transform": titleUpper ? "uppercase" : "none" + "!important",
+      "font-style": titleStyle + "!important",
+      "font-weight": titleWeight + "!important",
+      "border-style": titleborderType,
+      "border-width": generateCSSUnit(titleborderWidth, "px"),
+      "border-color": titleborderColor,
+      "border-radius": generateCSSUnit(titleborderRadius, "px"),
+      "text-shadow": `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`,
+    },
+    " .premium-tab-nav-list-item:hover .premium-tab-title": {
+      "color": hovertitleColor + "!important"
     },
     " .premium-tab-content-vertical p": {
       "font-size": generateCSSUnit(contentfontSize, contentfontSizeType),
@@ -126,26 +192,20 @@ function styling(props) {
   }
 
   mobile_selectors = {
-   [ " .premium-tab-title" + type]: {
-      "font-size": generateCSSUnit(titlefontSizeMobile, titlefontSizeType)
-    },
-    " .premium-tab-content-vertical p": {
-      "font-size": generateCSSUnit(contentfontSizeMobile, contentfontSizeType)
-    },
-    " .premium-tab-content-horizontal p": {
-      "font-size": generateCSSUnit(contentfontSizeMobile, contentfontSizeType)
-    },
+   " .premium-tab-title-icon": {
+     "font-size": generateCSSUnit(iconfontSizeMobile, iconfontSizeType),
+   },
+   " .premium-tab-nav-list-item .premium-tab-title": {
+     "font-size": generateCSSUnit(titlefontSizeMobile, titlefontSizeType)
+   },
   }
 
   tablet_selectors = {
-    [ " .premium-tab-title" + type]: {
+    " .premium-tab-title-icon": {
+      "font-size": generateCSSUnit(iconfontSizeTablet, iconfontSizeType),
+    },
+    " .premium-tab-nav-list-item .premium-tab-title": {
       "font-size": generateCSSUnit(titlefontSizeTablet, titlefontSizeType)
-    },
-    " .premium-tab-content-vertical p": {
-      "font-size": generateCSSUnit(contentfontSizeTablet, contentfontSizeType)
-    },
-    " .premium-tab-content-horizontal p": {
-      "font-size": generateCSSUnit(contentfontSizeTablet, contentfontSizeType)
     },
   }
 

@@ -5,6 +5,8 @@ import PremiumBorder from "../../components/premium-border";
 import iconsList from "../../components/premium-icons-list";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
+import PremiumRange from "../../components/premium-range-responsive";
+import PremiumTextShadow from "../../components/premium-text-shadow";
 
 import {
     SortableContainer,
@@ -225,7 +227,32 @@ class edit extends Component {
             tabShadowHorizontal,
             tabShadowVertical,
             tabShadowPosition,
-            activetabBGColor
+            activetabBGColor,
+            arrowColor,
+            iconColor,
+            activeiconColor,
+            hovericonColor,
+            iconfontSize,
+            iconfontSizeMobile,
+            iconfontSizeType,
+            iconfontSizeTablet,
+            iconborderType,
+            iconborderRadius,
+            iconborderWidth,
+            iconborderColor,
+            iconshadowBlur,
+            iconshadowColor,
+            iconshadowHorizontal,
+            iconshadowVertical,
+            hovertitleColor,
+            titleborderType,
+            titleborderRadius,
+            titleborderWidth,
+            titleborderColor,
+            titleshadowBlur,
+            titleshadowColor,
+            titleshadowHorizontal,
+            titleshadowVertical,
         } = attributes
 
         const TYPE = [{
@@ -648,6 +675,96 @@ class edit extends Component {
                             }
                             allowReset={true}
                         />
+                        <p>{__("Arrow Color")}</p>
+                        <ColorPalette
+                            value={arrowColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    arrowColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Icon Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                         <p>{__("Color")}</p>
+                        <ColorPalette
+                            value={iconColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    iconColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <p>{__("Active Color")}</p>
+                        <ColorPalette
+                            value = {
+                                activeiconColor
+                            }
+                            onChange={newValue =>
+                                setAttributes({
+                                    activeiconColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <p>{__("Hover Color")}</p>
+                        <ColorPalette
+                            value = {
+                                hovericonColor
+                            }
+                            onChange={newValue =>
+                                setAttributes({
+                                    hovericonColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: iconfontSizeType, label: __("iconfontSizeType") }}
+                            range={{ value: iconfontSize, label: __("iconfontSize") }}
+                            rangeMobile={{ value: iconfontSizeMobile, label: __("iconfontSizeMobile") }}
+                            rangeTablet={{ value: iconfontSizeTablet, label: __("iconfontSizeTablet") }}
+                            rangeLabel={__("Font Size")}
+                            min={1}
+                            max={100}
+                        />
+                        <PremiumBorder
+                            borderType={iconborderType}
+                            borderWidth={iconborderWidth}
+                            borderColor={iconborderColor}
+                            borderRadius={iconborderRadius}
+                            onChangeType={newType => setAttributes({ iconborderType: newType })}
+                            onChangeWidth={newWidth => setAttributes({ iconborderWidth: newWidth })}
+                            onChangeColor={colorValue =>
+                                setAttributes({ iconborderColor: colorValue.hex })
+                            }
+                            onChangeRadius={newrRadius =>
+                                setAttributes({ iconborderRadius: newrRadius })
+                            }
+                        />
+                        <PremiumTextShadow
+                            color={iconshadowColor}
+                            blur={iconshadowBlur}
+                            horizontal={iconshadowHorizontal}
+                            vertical={iconshadowVertical}
+                            onChangeColor={newColor =>
+                            setAttributes({ iconshadowColor: newColor.hex })
+                            }
+                            onChangeBlur={newBlur => setAttributes({ iconshadowBlur: newBlur })}
+                            onChangehHorizontal={newValue =>
+                            setAttributes({ iconshadowHorizontal: newValue })
+                            }
+                            onChangeVertical={newValue =>
+                            setAttributes({ iconshadowVertical: newValue })
+                            }
+                        />
                     </PanelBody>
                     <PanelBody
                         title={__("Title Style")}
@@ -674,6 +791,16 @@ class edit extends Component {
                             }
                             allowReset={true}
                         />
+                        <p>{__("Hover Color")}</p>
+                        <ColorPalette
+                            value={hovertitleColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    hovertitleColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
                         <PremiumTypo
                             components={["responsiveSize", "weight", "style", "upper", "spacing"]}
                             setAttributes={setAttributes}
@@ -695,6 +822,36 @@ class edit extends Component {
                                 setAttributes({ titleLetter: newValue })
                             }
                             onChangeUpper={check => setAttributes({ titleUpper: check })}
+                        />
+                        <PremiumBorder
+                            borderType={titleborderType}
+                            borderWidth={titleborderWidth}
+                            borderColor={titleborderColor}
+                            borderRadius={titleborderRadius}
+                            onChangeType={newType => setAttributes({ titleborderType: newType })}
+                            onChangeWidth={newWidth => setAttributes({ titleborderWidth: newWidth })}
+                            onChangeColor={colorValue =>
+                                setAttributes({ titleborderColor: colorValue.hex })
+                            }
+                            onChangeRadius={newrRadius =>
+                                setAttributes({ titleborderRadius: newrRadius })
+                            }
+                        />
+                        <PremiumTextShadow
+                            color={titleshadowColor}
+                            blur={titleshadowBlur}
+                            horizontal={titleshadowHorizontal}
+                            vertical={titleshadowVertical}
+                            onChangeColor={newColor =>
+                            setAttributes({ titleshadowColor: newColor.hex })
+                            }
+                            onChangeBlur={newBlur => setAttributes({ titleshadowBlur: newBlur })}
+                            onChangehHorizontal={newValue =>
+                            setAttributes({ titleshadowHorizontal: newValue })
+                            }
+                            onChangeVertical={newValue =>
+                            setAttributes({ titleshadowVertical: newValue })
+                            }
                         />
                     </PanelBody>
                     <PanelBody
