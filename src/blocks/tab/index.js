@@ -118,9 +118,12 @@ const tabAttrs = {
     type: "number",
     default: 20
   },
+  contentBGColor: {
+    type: "string"
+  },
   contentColor: {
     type: "string",
-    default: "#7a7a7a"
+    default: "#54595f"
   },
   contentLetter: {
     type: "number",
@@ -265,25 +268,56 @@ const tabAttrs = {
     default: "#d4d4d4"
   },
   titleshadowColor: {
-        type: "string"
-      },
+    type: "string"
+  },
   titleshadowBlur: {
-        type: "number",
-        default: "0"
-      },
+    type: "number",
+    default: "0"
+  },
   titleshadowHorizontal: {
-        type: "number",
-        default: "0"
-      },
+    type: "number",
+    default: "0"
+  },
   titleshadowVertical: {
-        type: "number",
-        default: "0"
-      },
+    type: "number",
+    default: "0"
+  },
+  contentborderType: {
+    type: "string",
+    default: "none"
+  },
+  contentborderWidth: {
+    type: "number",
+    default: "1"
+  },
+  contentborderRadius: {
+    type: "number",
+    default: 0
+  },
+  contentborderColor: {
+    type: "string",
+    default: "#d4d4d4"
+  },
+  contentshadowColor: {
+    type: "string"
+  },
+  contentshadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  contentshadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  contentshadowVertical: {
+    type: "number",
+    default: "0"
+  },
 };
 
 registerBlockType("premium/tab", {
   title: __("tab"),
-  icon: < PbgIcon icon = "tab" / > ,
+  icon: < PbgIcon icon="tab" />,
   category: "premium-blocks",
   attributes: tabAttrs,
   supports: {

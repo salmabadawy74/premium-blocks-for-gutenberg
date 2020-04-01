@@ -253,6 +253,15 @@ class edit extends Component {
             titleshadowColor,
             titleshadowHorizontal,
             titleshadowVertical,
+            contentBGColor,
+            contentborderType,
+            contentborderRadius,
+            contentborderWidth,
+            contentborderColor,
+            contentshadowBlur,
+            contentshadowColor,
+            contentshadowHorizontal,
+            contentshadowVertical,
         } = attributes
 
         const TYPE = [{
@@ -890,6 +899,46 @@ class edit extends Component {
                                 setAttributes({ contentLetter: newValue })
                             }
                             onChangeUpper={check => setAttributes({ contentUpper: check })}
+                        />
+                        <p>{__("Background Color")}</p>
+                        <ColorPalette
+                            value={contentBGColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    contentBGColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <PremiumBorder
+                            borderType={contentborderType}
+                            borderWidth={contentborderWidth}
+                            borderColor={contentborderColor}
+                            borderRadius={contentborderRadius}
+                            onChangeType={newType => setAttributes({ contentborderType: newType })}
+                            onChangeWidth={newWidth => setAttributes({ contentborderWidth: newWidth })}
+                            onChangeColor={colorValue =>
+                                setAttributes({ contentborderColor: colorValue.hex })
+                            }
+                            onChangeRadius={newrRadius =>
+                                setAttributes({ contentborderRadius: newrRadius })
+                            }
+                        />
+                        <PremiumTextShadow
+                            color={contentshadowColor}
+                            blur={contentshadowBlur}
+                            horizontal={contentshadowHorizontal}
+                            vertical={contentshadowVertical}
+                            onChangeColor={newColor =>
+                            setAttributes({ contentshadowColor: newColor.hex })
+                            }
+                            onChangeBlur={newBlur => setAttributes({ contentshadowBlur: newBlur })}
+                            onChangehHorizontal={newValue =>
+                            setAttributes({ contentshadowHorizontal: newValue })
+                            }
+                            onChangeVertical={newValue =>
+                            setAttributes({ contentshadowVertical: newValue })
+                            }
                         />
                     </PanelBody>
                 </InspectorControls>

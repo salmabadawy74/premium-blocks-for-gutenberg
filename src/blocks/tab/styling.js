@@ -62,6 +62,15 @@ function styling(props) {
     titleshadowColor,
     titleshadowHorizontal,
     titleshadowVertical,
+    contentBGColor,
+    contentborderType,
+    contentborderRadius,
+    contentborderWidth,
+    contentborderColor,
+    contentshadowBlur,
+    contentshadowColor,
+    contentshadowHorizontal,
+    contentshadowVertical,
   } = props.attributes
 
   var selectors = {}
@@ -88,10 +97,10 @@ function styling(props) {
       "box-shadow": `${tabShadowHorizontal}px ${tabShadowVertical}px ${tabShadowBlur}px ${tabShadowColor} ${tabShadowPosition}`,
       "background-color": tabBGColor
     },
-    " .tab-current .premium-tab-link-icon":{
+    " .tab-current .premium-tab-link-icon": {
       "background-color": activetabBGColor + "!important"
     },
-    " .tab-current .premium-tab-link-icon-flipped":{
+    " .tab-current .premium-tab-link-icon-flipped": {
       "background-color": activetabBGColor + "!important"
     },
     " .premium-tab-horizontal .tab-current .premium-tab-link-icon::after": {
@@ -134,70 +143,35 @@ function styling(props) {
     " .premium-tab-nav-list-item:hover .premium-tab-title": {
       "color": hovertitleColor + "!important"
     },
-    " .premium-tab-content-vertical p": {
+    " .premium-tab-content-wrap-inner": {
+      "color": contentColor
+    },
+    " .premium-tab-content": {
       "font-size": generateCSSUnit(contentfontSize, contentfontSizeType),
-      "letter-spacing": contentLetter + "px",
+      "letter-spacing": generateCSSUnit(contentLetter, "px"),
       "text-transform": contentUpper ? "uppercase" : "none" + "!important",
       "font-style": contentStyle + "!important",
       "font-weight": contentWeight + "!important",
-      "color": contentColor + " !important"
+      "color": contentColor + " !important",
+      "background-color": contentBGColor,
+      "border-style": contentborderType,
+      "border-width": generateCSSUnit(contentborderWidth, "px"),
+      "border-color": contentborderColor,
+      "border-radius": generateCSSUnit(contentborderRadius, "px"),
+      "text-shadow": `${contentshadowHorizontal}px ${contentshadowVertical}px ${contentshadowBlur}px ${contentshadowColor}`,
     },
-    " .premium-tab-content-horizontal p": {
-      "font-size": generateCSSUnit(contentfontSize, contentfontSizeType),
-      "letter-spacing": contentLetter + "px",
-      "text-transform": contentUpper ? "uppercase" : "none" + "!important",
-      "font-style": contentStyle + "!important",
-      "font-weight": contentWeight + "!important",
-      "color": contentColor + " !important"
-    },
-    " .premium-tab-title-active-horizontal a": {
-      "color": activetitleColor + " !important"
-    },
-    " .premium-tab-title-active-vertical a": {
-      "color": activetitleColor + " !important"
-    },
-    " .premium-tab-content-active-horizontal": {
-      "border-width": generateCSSUnit(tabborderWidth, "px"),
-      "border-color": tabborderColor,
-    },
-    " .premium-tab-content-active-vertical": {
-      "border-width": generateCSSUnit(tabborderWidth, "px"),
-      "border-color": tabborderColor,
-    },
-    " .premium-tab-content__wrap-view-horizontal": {
-      "background-color": tabBGColor,
-      "border-width": generateCSSUnit(tabborderWidth, "px"),
-    },
-    " .premium-tab-content__wrap-view-vertical": {
-      "background-color": tabBGColor,
-      "border-color": tabborderColor,
-      "border-width": generateCSSUnit(tabborderWidth, "px"),
-    },
-    " .premium-tab-title-active-horizontal::after": {
-      "border-color": tabborderColor + " !important",
-      "border-width" : generateCSSUnit(tabborderWidth, "px"),
-    },
-    " .premium-tab-title-active-horizontal::before": {
-      "border-color": tabborderColor + " !important",
-      "border-width" : generateCSSUnit(tabborderWidth, "px"),
-    },
-     " .premium-tab-title-active-vertical::after": {
-       "border-color": tabborderColor + " !important",
-       "border-width": generateCSSUnit(tabborderWidth, "px"),
-     },
-     " .premium-tab-title-active-vertical::before": {
-       "border-color": tabborderColor + " !important",
-       "border-width": generateCSSUnit(tabborderWidth, "px"),
-     }
   }
 
   mobile_selectors = {
-   " .premium-tab-title-icon": {
-     "font-size": generateCSSUnit(iconfontSizeMobile, iconfontSizeType),
-   },
-   " .premium-tab-nav-list-item .premium-tab-title": {
-     "font-size": generateCSSUnit(titlefontSizeMobile, titlefontSizeType)
-   },
+    " .premium-tab-title-icon": {
+      "font-size": generateCSSUnit(iconfontSizeMobile, iconfontSizeType),
+    },
+    " .premium-tab-nav-list-item .premium-tab-title": {
+      "font-size": generateCSSUnit(titlefontSizeMobile, titlefontSizeType)
+    },
+    " .premium-tab-content": {
+      "font-size": generateCSSUnit(contentfontSizeMobile, contentfontSizeType)
+    }
   }
 
   tablet_selectors = {
@@ -207,6 +181,9 @@ function styling(props) {
     " .premium-tab-nav-list-item .premium-tab-title": {
       "font-size": generateCSSUnit(titlefontSizeTablet, titlefontSizeType)
     },
+    " .premium-tab-content": {
+      "font-size": generateCSSUnit(contentfontSizeTablet, contentfontSizeType),
+    }
   }
 
   var styling_css = ""
