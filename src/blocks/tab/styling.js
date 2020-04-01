@@ -8,6 +8,7 @@ function styling(props) {
     tabborderType,
     tabborderWidth,
     tabborderColor,
+    tabborderRadius,
     tabBGColor,
     activetitleColor,
     titleWeight,
@@ -27,7 +28,14 @@ function styling(props) {
     contentfontSizeMobile,
     contentfontSizeTablet,
     contentfontSizeType,
-    type
+    type,
+    tabsBorderColor,
+    tabShadowBlur,
+    tabShadowColor,
+    tabShadowHorizontal,
+    tabShadowVertical,
+    tabShadowPosition,
+    activetabBGColor
   } = props.attributes
 
   var selectors = {}
@@ -35,24 +43,30 @@ function styling(props) {
   var mobile_selectors = {}
 
   selectors = {
-    [" .premium-tab-title-active-" + type]: {
+    " .premium-tab-link-icon": {
       "border-style": tabborderType,
       "border-width": generateCSSUnit(tabborderWidth, "px"),
       "border-color": tabborderColor,
+      "border-radius": generateCSSUnit(tabborderRadius, "px"),
+      "box-shadow": `${tabShadowHorizontal}px ${tabShadowVertical}px ${tabShadowBlur}px ${tabShadowColor} ${tabShadowPosition}`,
       "background-color": tabBGColor
     },
-    [" .premium-tab-title-" +type]: {
-      "font-size": generateCSSUnit(titlefontSize, titlefontSizeType),
-      "letter-spacing": titleLetter + "px" + "!important",
-      "text-transform": titleUpper ? "uppercase" : "none" + "!important",
-      "font-style": titleStyle + "!important",
-      "font-weight": titleWeight + "!important",
+    " .premium-tab-nav-list-item::after": {
+      "background-color": tabsBorderColor
     },
-    " .premium-tab-title-active-vertical": {
+    " .premium-tab-link-icon-flipped": {
       "border-style": tabborderType,
       "border-width": generateCSSUnit(tabborderWidth, "px"),
       "border-color": tabborderColor,
+      "border-radius": generateCSSUnit(tabborderRadius, "px"),
+      "box-shadow": `${tabShadowHorizontal}px ${tabShadowVertical}px ${tabShadowBlur}px ${tabShadowColor} ${tabShadowPosition}`,
       "background-color": tabBGColor
+    },
+    " .tab-current .premium-tab-link-icon":{
+      "background-color": activetabBGColor + "!important"
+    },
+    " .tab-current .premium-tab-link-icon-flipped":{
+      "background-color": activetabBGColor + "!important"
     },
     " .premium-tab-content-vertical p": {
       "font-size": generateCSSUnit(contentfontSize, contentfontSizeType),

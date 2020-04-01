@@ -49,7 +49,7 @@ const tabAttrs = {
   },
   tabborderType: {
       type: "string",
-      default: "solid"
+      // default: "solid"
     },
     tabborderWidth: {
       type: "number",
@@ -64,7 +64,16 @@ const tabAttrs = {
       default: "#d4d4d4"
     },
     tabBGColor: {
-      type: "string"
+      type: "string",
+      default: "#6ec1e4"
+    },
+    activetabBGColor:{
+      type: "string",
+      default: "#7a7a7a"
+    },
+    tabsBorderColor: {
+      type: "string",
+      default: "#7a7a7a"
     },
     titleColor:{
       type: "string",
@@ -153,7 +162,26 @@ const tabAttrs = {
     tabStyle: {
       type: "string",
       default: "arrow"
-    }
+    },
+    tabShadowColor: {
+    type: "string"
+  },
+  tabShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  tabShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  tabShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  tabShadowPosition: {
+    type: "string",
+    default: ""
+  },
 };
 
 registerBlockType("premium/tab", {

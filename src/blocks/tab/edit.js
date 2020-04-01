@@ -4,6 +4,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import iconsList from "../../components/premium-icons-list";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import PremiumBoxShadow from "../../components/premium-box-shadow";
 
 import {
     SortableContainer,
@@ -38,115 +39,115 @@ const {
 } = wp.components
 
 const SortableItem = SortableElement(({
-            edit,
-            removeItem,
-            newIndex,
-            value,
-            changeTabValue,
-            changeContentValue,
-            changeEnableIcon,
-            changeIcon,
-            items
-        }) => < div className="premium-progress-bar-repeater" >
+    edit,
+    removeItem,
+    newIndex,
+    value,
+    changeTabValue,
+    changeContentValue,
+    changeEnableIcon,
+    changeIcon,
+    items
+}) => < div className="premium-progress-bar-repeater" >
 
-                <div className={
-                    `premium-progress-bar__container ${newIndex}`
+        <div className={
+            `premium-progress-bar__container ${newIndex}`
+        } >
+            < span className="premium-progress-bar__dragHandle" ></span>
+            <div className="premium-progress-bar__content"
+                onClick={
+                    () => edit(newIndex)
                 } >
-                    < span className="premium-progress-bar__dragHandle" ></span>
-                    <div className="premium-progress-bar__content"
-                        onClick={
-                            () => edit(newIndex)
-                        } >
-                       {
-                            value.title
-                        } </div>
+                {
+                    value.title
+                } </div>
 
-                     {
-                         items.length != 1 ? < button className = "premium-progress-bar__trashicon fa fa-trash"
-                            onClick={
-                                () => removeItem(newIndex, value)
-                            } >
-                        </button>:""}
-                            
-                </div>
-                <div className={
-                    `premium-progress-bar-repeater-controls ${value.edit ? "editable" : ""}`
-                } >
-                    < ToggleControl
-                                label={__("Enable Icon")}
-                                checked={value.enableIcon}
-                                onChange={newCheck => changeEnableIcon(newCheck, newIndex)}
-                            />
-                           {value.enableIcon? <Fragment>
-                            <p>{__("Icon")}</p>
-                            <FontIconPicker
-                                icons={iconsList}
-                                value={value.icon}
-                                onChange={value => changeIcon(value,newIndex)}
-                                isMulti={false}
-                                appendTo="body"
-                                noSelectedPlaceholder={__("Select Icon")}
-                            />
-                        </Fragment>:""}
-                    <TextControl
-                        label={
-                            __("Title")
-                        }
-                        value={
-                            value.title
-                        }
-                        onChange = {
-                            (newText) => changeTabValue(newText, newIndex)
-                        }
-                    />
-                    < TextareaControl
-                        label={
-                            __("Content")
-                        }
-                        value={
-                            value.content
-                        }
-                        onChange = {
-                            (newText) => changeContentValue(newText, newIndex)
-                        }
-                    />
-                </div >
-            </div>
-        )
+            {
+                items.length != 1 ? < button className="premium-progress-bar__trashicon fa fa-trash"
+                    onClick={
+                        () => removeItem(newIndex, value)
+                    } >
+                </button> : ""}
 
-        const SortableList = SortableContainer(({
-            items,
-            removeItem,
-            edit,
-            changeTabValue,
-            changeEnableIcon,
-            changeIcon,
-            changeContentValue
-        }) => {
-            return (<div > {
-                (items).map((value, index) => (
-                    <SortableItem key={`item-${value}`}
-                        index={index}
-                        newIndex={index}
-                        value={value}
-                        removeItem={removeItem}
-                        edit={edit}
-                        changeEnableIcon={changeEnableIcon}
-                        changeIcon={changeIcon}
-                        changeTabValue = {
-                            changeTabValue
-                        }
-                        changeContentValue = {
-                            changeContentValue
-                        }
-                        items = {
-                            items
-                        }
-                    />
-                ))
-            } </div>
-            );
-        });
+        </div>
+        <div className={
+            `premium-progress-bar-repeater-controls ${value.edit ? "editable" : ""}`
+        } >
+            < ToggleControl
+                label={__("Enable Icon")}
+                checked={value.enableIcon}
+                onChange={newCheck => changeEnableIcon(newCheck, newIndex)}
+            />
+            {value.enableIcon ? <Fragment>
+                <p>{__("Icon")}</p>
+                <FontIconPicker
+                    icons={iconsList}
+                    value={value.icon}
+                    onChange={value => changeIcon(value, newIndex)}
+                    isMulti={false}
+                    appendTo="body"
+                    noSelectedPlaceholder={__("Select Icon")}
+                />
+            </Fragment> : ""}
+            <TextControl
+                label={
+                    __("Title")
+                }
+                value={
+                    value.title
+                }
+                onChange={
+                    (newText) => changeTabValue(newText, newIndex)
+                }
+            />
+            < TextareaControl
+                label={
+                    __("Content")
+                }
+                value={
+                    value.content
+                }
+                onChange={
+                    (newText) => changeContentValue(newText, newIndex)
+                }
+            />
+        </div >
+    </div>
+)
+
+const SortableList = SortableContainer(({
+    items,
+    removeItem,
+    edit,
+    changeTabValue,
+    changeEnableIcon,
+    changeIcon,
+    changeContentValue
+}) => {
+    return (<div > {
+        (items).map((value, index) => (
+            <SortableItem key={`item-${value}`}
+                index={index}
+                newIndex={index}
+                value={value}
+                removeItem={removeItem}
+                edit={edit}
+                changeEnableIcon={changeEnableIcon}
+                changeIcon={changeIcon}
+                changeTabValue={
+                    changeTabValue
+                }
+                changeContentValue={
+                    changeContentValue
+                }
+                items={
+                    items
+                }
+            />
+        ))
+    } </div>
+    );
+});
 
 class edit extends Component {
 
@@ -162,17 +163,17 @@ class edit extends Component {
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-tab-" + this.props.clientId)
         document.head.appendChild($style)
-console.log(this.props.attributes.repeatertabs);
+        console.log(this.props.attributes.repeatertabs);
 
         setTimeout(this.initToggleBox, 1);
-       
+
 
     }
     componentDidUpdate() {
         clearTimeout(isBoxUpdated);
         isBoxUpdated = setTimeout(this.initToggleBox, 10);
     }
-    
+
     initToggleBox() {
         // const { block_id, repeatertabs } = this.props.attributes
         // if (!block_id) return null;
@@ -183,7 +184,7 @@ console.log(this.props.attributes.repeatertabs);
         //     repeatertabs[0].active = true
         // }
     }
-    
+
     render() {
         const { attributes, setAttributes, isSelected } = this.props
 
@@ -192,6 +193,7 @@ console.log(this.props.attributes.repeatertabs);
             className,
             repeatertabs,
             tabborderType,
+            tabborderRadius,
             tabborderWidth,
             tabborderColor,
             tabBGColor,
@@ -216,7 +218,14 @@ console.log(this.props.attributes.repeatertabs);
             contentfontSizeType,
             type,
             tabIndex,
-            tabStyle
+            tabStyle,
+            tabsBorderColor,
+            tabShadowBlur,
+            tabShadowColor,
+            tabShadowHorizontal,
+            tabShadowVertical,
+            tabShadowPosition,
+            activetabBGColor
         } = attributes
 
         const TYPE = [{
@@ -227,8 +236,8 @@ console.log(this.props.attributes.repeatertabs);
             value: "vertical",
             label: __("Vertical")
         },
-    ]
-    const STYLE = [{
+        ]
+        const STYLE = [{
             value: "arrow",
             label: __("Arrow Pointer")
         },
@@ -236,7 +245,7 @@ console.log(this.props.attributes.repeatertabs);
             value: "flipped",
             label: __("Flipped")
         },
-    ]
+        ]
         var element = document.getElementById("premium-style-tab-" + this.props.clientId)
 
         if (null != element && "undefined" != typeof element) {
@@ -246,41 +255,41 @@ console.log(this.props.attributes.repeatertabs);
         const changeEnableIcon = (newCheck, newIndex) => {
             setAttributes({
                 repeaterItems: onRepeaterChange(
-                  "enableIcon",
-                  newCheck,
-                  newIndex
+                    "enableIcon",
+                    newCheck,
+                    newIndex
                 )
-              })
+            })
         }
 
         const changeIcon = (newIcon, newIndex) => {
             setAttributes({
                 repeaterItems: onRepeaterChange(
-                  "icon",
-                  newIcon,
-                  newIndex
+                    "icon",
+                    newIcon,
+                    newIndex
                 )
-              })
+            })
         }
 
         const changeTabValue = (newText, newIndex) => {
-          setAttributes({
-            repeaterItems: onRepeaterChange(
-              "title",
-              newText,
-              newIndex
-            )
-          })
+            setAttributes({
+                repeaterItems: onRepeaterChange(
+                    "title",
+                    newText,
+                    newIndex
+                )
+            })
         }
 
         const changeContentValue = (newText, newIndex) => {
-          setAttributes({
-            repeaterItems: onRepeaterChange(
-              "content",
-              newText,
-              newIndex
-            )
-          })
+            setAttributes({
+                repeaterItems: onRepeaterChange(
+                    "content",
+                    newText,
+                    newIndex
+                )
+            })
         }
         const onSortEndSingle = ({
             oldIndex,
@@ -343,13 +352,13 @@ console.log(this.props.attributes.repeatertabs);
                 return cont
             }).filter((f, i) => i != index)
 
-            let active = array.map((arr,index)=>{
+            let active = array.map((arr, index) => {
                 return arr.default
-            }).filter((f,i)=> f != false)
-            if(active.length ==0){
-                setAttributes({tabIndex : index})
+            }).filter((f, i) => f != false)
+            if (active.length == 0) {
+                setAttributes({ tabIndex: index })
             }
-            activeTab(index==0?index: index-1)
+            activeTab(index == 0 ? index : index - 1)
             setAttributes({
                 repeatertabs: array
             });
@@ -362,101 +371,102 @@ console.log(this.props.attributes.repeatertabs);
             //    <a onClick={() =>activeTab(index)} style={{color: titleColor}}>{item.title}</a>
             // </div>
             // )
-            return <li className={`premium-tab-nav-list-item ${tabStyle =='flipped'?"premium-tab-nav-list-item-flipped":""} ${item.active?'tab-current':""}`}>
-                <a className={`premium-tab-link-icon ${tabStyle =='flipped'?"premium-tab-link-icon-flipped":""}`} href={`#section-tab-content-${index}-${this.props.clientId}`} onClick={() =>activeTab(index)}>
-                    {item.enableIcon? <i className={`premium-tab-title-icon ${item.icon}`}/> :""}
+            return <li className={`premium-tab-nav-list-item ${tabStyle == 'flipped' ? "premium-tab-nav-list-item-flipped" : ""} ${item.active ? 'tab-current' : ""}`}>
+                <a className={`${tabStyle == 'flipped' ? "premium-tab-link-icon-flipped" : "premium-tab-link-icon"}`} href={`#section-tab-content-${index}-${this.props.clientId}`} onClick={() => activeTab(index)}>
+                    {item.enableIcon ? <i className={`premium-tab-title-icon ${item.icon}`} /> : ""}
                     <p className="premium-tab-title">{item.title}</p>
                 </a>
             </li>
         })
 
         const renderContents = repeatertabs.map((item, index) => {
-        //   return ( < div className = {
-        //         `premium-tab-content-${type} ${item.active? `premium-tab-content-active-${type}`:""} ${this.props.clientId}`
-        //       } >
-        //           <RichText
-        //             tagName="p"
-        //             value={item.content}
-        //             onChange = {
-        //                 (newText) => changeContentValue(newText, index)
-        //             }
-        //             />
-        //     </div>
-        //     )
-        return <section id={`section-tab-content-${index}-${this.props.clientId}`} className={`premium-tab-content-section ${item.active?`content-current`:""}`}>
-            <div className="premium-tab-content">
-                <div className="premium-tab-content-wrap-inner">
-                <RichText
-                    tagName="p"
-                    value={item.content}
-                    onChange = {
-                        (newText) => changeContentValue(newText, index)
-                    }
-                    />
+            //   return ( < div className = {
+            //         `premium-tab-content-${type} ${item.active? `premium-tab-content-active-${type}`:""} ${this.props.clientId}`
+            //       } >
+            //           <RichText
+            //             tagName="p"
+            //             value={item.content}
+            //             onChange = {
+            //                 (newText) => changeContentValue(newText, index)
+            //             }
+            //             />
+            //     </div>
+            //     )
+            return <section id={`section-tab-content-${index}-${this.props.clientId}`} className={`premium-tab-content-section ${item.active ? `content-current` : ""}`}>
+                <div className="premium-tab-content">
+                    <div className="premium-tab-content-wrap-inner">
+                        <RichText
+                            tagName="p"
+                            value={item.content}
+                            onChange={
+                                (newText) => changeContentValue(newText, index)
+                            }
+                        />
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
         })
 
         const addNewTab = () => {
-            if(repeatertabs.length !=[])
-            {return (repeatertabs || []).map((item, i) => {
-                activeTab(i+1)
-                edit(i+1)
-             setAttributes({
-                repeatertabs: repeatertabs.concat([{
-                    title: __("Title"),
-                    content: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
-                    edit: true,
-                    active: true,
-                    default: false,
-                    enableIcon: true,
-                    icon:"dashicons dashicons-star-filled"
-                }])
-            });
-        })}
-        else {
-            setAttributes({
-                repeatertabs: repeatertabs.concat([{
-                    title: __("Title"),
-                    content: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
-                    edit: true,
-                    active: true,
-                    default: false,
-                    enableIcon: true,
-                    icon: "dashicons dashicons-star-filled"
-                }])
-            });
-        }
+            if (repeatertabs.length != []) {
+                return (repeatertabs || []).map((item, i) => {
+                    activeTab(i + 1)
+                    edit(i + 1)
+                    setAttributes({
+                        repeatertabs: repeatertabs.concat([{
+                            title: __("Title"),
+                            content: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
+                            edit: true,
+                            active: true,
+                            default: false,
+                            enableIcon: true,
+                            icon: "dashicons dashicons-star-filled"
+                        }])
+                    });
+                })
+            }
+            else {
+                setAttributes({
+                    repeatertabs: repeatertabs.concat([{
+                        title: __("Title"),
+                        content: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
+                        edit: true,
+                        active: true,
+                        default: false,
+                        enableIcon: true,
+                        icon: "dashicons dashicons-star-filled"
+                    }])
+                });
+            }
         }
 
-         const activeTab = (index) => {
-             console.log('i',index);
-             
-           return repeatertabs.map((item, i) => {
-               
-             if (index == i) {
-                 item.active= false
-               setAttributes({
-                 repeatertabs: onRepeaterChange(
-                   "active",
-                   true,
-                   index
-                 )
-               })
-               
-             } else {
-              setAttributes({
-                 repeatertabs: onRepeaterChange(
-                   "active",
-                   false,
-                   i
-                 )
-               })
-               console.log(repeatertabs);
-            }
-           })
-         }
+        const activeTab = (index) => {
+            console.log('i', index);
+
+            return repeatertabs.map((item, i) => {
+
+                if (index == i) {
+                    item.active = false
+                    setAttributes({
+                        repeatertabs: onRepeaterChange(
+                            "active",
+                            true,
+                            index
+                        )
+                    })
+
+                } else {
+                    setAttributes({
+                        repeatertabs: onRepeaterChange(
+                            "active",
+                            false,
+                            i
+                        )
+                    })
+                    console.log(repeatertabs);
+                }
+            })
+        }
 
         const mainClasses = classnames(className, "premium-tab");
         return [
@@ -478,66 +488,66 @@ console.log(this.props.attributes.repeatertabs);
                         initialOpen={false}
                     >
                         < Fragment >
-                                <div className="premium-tab-control-content" >
-                                    <label >
-                                        <span className="premium-tab-control-title" > Tabs </span>
-                                    </label>
-                                    < SortableList items={
-                                        repeatertabs
+                            <div className="premium-tab-control-content" >
+                                <label >
+                                    <span className="premium-tab-control-title" > Tabs </span>
+                                </label>
+                                < SortableList items={
+                                    repeatertabs
+                                }
+                                    onSortEnd={
+                                        (o, n) => onSortEndSingle(o, n)
                                     }
-                                        onSortEnd={
-                                            (o, n) => onSortEndSingle(o, n)
-                                        }
-                                        removeItem={
-                                            (value) => removeItem(value)
-                                        }
-                                        edit={
-                                            (value) => edit(value)
-                                        }
+                                    removeItem={
+                                        (value) => removeItem(value)
+                                    }
+                                    edit={
+                                        (value) => edit(value)
+                                    }
 
-                                        shouldCancelStart={
-                                            shouldCancelStart
-                                        }
-                                        changeEnableIcon={changeEnableIcon}
-                                        changeIcon={changeIcon}
-                                        changeTabValue = {
-                                            changeTabValue
-                                        }
-                                        changeContentValue = {
-                                            changeContentValue
-                                        }
-                                        helperClass='premium-tab__sortableHelper' />
-                                    < div className = "premium-tab-btn__wrap" >
-                                        <button
-                                            className={
-                                                "premium-tab-btn"
-                                            }
-                                            onClick={
-                                                () => addNewTab()
-                                            } >
-                                            <i className="dashicons dashicons-plus premium-tab-icon" />
-                                            {__("Add New Item")}
-                                        </button>
-                                    </div>
-                                </div>
-                                <br />
-                            </Fragment>
-                            < SelectControl
-                                    label={__("Tabs Type")}
-                                    value={type}
-                                    onChange={newEffect => setAttributes({ type: newEffect })}
-                                    options={TYPE}
-                            />
-                            < SelectControl
-                                    label={__("Tabs Style")}
-                                    value={tabStyle}
-                                    onChange = {
-                                        newEffect => setAttributes({
-                                            tabStyle: newEffect
-                                        })
+                                    shouldCancelStart={
+                                        shouldCancelStart
                                     }
-                                    options={STYLE}
-                            />
+                                    changeEnableIcon={changeEnableIcon}
+                                    changeIcon={changeIcon}
+                                    changeTabValue={
+                                        changeTabValue
+                                    }
+                                    changeContentValue={
+                                        changeContentValue
+                                    }
+                                    helperClass='premium-tab__sortableHelper' />
+                                < div className="premium-tab-btn__wrap" >
+                                    <button
+                                        className={
+                                            "premium-tab-btn"
+                                        }
+                                        onClick={
+                                            () => addNewTab()
+                                        } >
+                                        <i className="dashicons dashicons-plus premium-tab-icon" />
+                                        {__("Add New Item")}
+                                    </button>
+                                </div>
+                            </div>
+                            <br />
+                        </Fragment>
+                        < SelectControl
+                            label={__("Tabs Type")}
+                            value={type}
+                            onChange={newEffect => setAttributes({ type: newEffect })}
+                            options={TYPE}
+                        />
+                        < SelectControl
+                            label={__("Tabs Style")}
+                            value={tabStyle}
+                            onChange={
+                                newEffect => setAttributes({
+                                    tabStyle: newEffect
+                                })
+                            }
+                            options={STYLE}
+                        />
                     </PanelBody>
                     <PanelBody
                         title={__("Tabs Style")}
@@ -552,17 +562,13 @@ console.log(this.props.attributes.repeatertabs);
                             onChange={value => setAttributes({ tabIndex: value })}
                         />
                         <p>{__("This option allow only in frontend")}</p>
-                        <RangeControl
-                            label={__("Border Width")}
-                            value={tabborderWidth}
-                            onChange={value => setAttributes({ tabborderWidth: value })}
-                        />
+
                         <p>{__("Border Color")}</p>
                         <ColorPalette
-                            value={tabborderColor}
+                            value={tabsBorderColor}
                             onChange={newValue =>
                                 setAttributes({
-                                    tabborderColor: newValue
+                                    tabsBorderColor: newValue
                                 })
                             }
                             allowReset={true}
@@ -577,13 +583,78 @@ console.log(this.props.attributes.repeatertabs);
                             }
                             allowReset={true}
                         />
+                        <PremiumBorder
+                            borderType={tabborderType}
+                            borderWidth={tabborderWidth}
+                            borderColor={tabborderColor}
+                            borderRadius={tabborderRadius}
+                            onChangeType={newType => setAttributes({ tabborderType: newType })}
+                            onChangeWidth={newWidth => setAttributes({ tabborderWidth: newWidth })}
+                            onChangeColor={colorValue =>
+                                setAttributes({ tabborderColor: colorValue.hex })
+                            }
+                            onChangeRadius={newrRadius =>
+                                setAttributes({ tabborderRadius: newrRadius })
+                            }
+                        />
+                        <PremiumBoxShadow
+                            label="Box Shadow"
+                            inner={true}
+                            color={tabShadowColor}
+                            blur={tabShadowBlur}
+                            horizontal={tabShadowHorizontal}
+                            vertical={tabShadowVertical}
+                            position={tabShadowPosition}
+                            onChangeColor={newColor =>
+                                setAttributes({
+                                    tabShadowColor:
+                                        newColor === undefined ? "transparent" : newColor.hex
+                                })
+                            }
+                            onChangeBlur={newBlur =>
+                                setAttributes({
+                                    tabShadowBlur: newBlur === undefined ? 0 : newBlur
+                                })
+                            }
+                            onChangehHorizontal={newValue =>
+                                setAttributes({
+                                    tabShadowHorizontal: newValue === undefined ? 0 : newValue
+                                })
+                            }
+                            onChangeVertical={newValue =>
+                                setAttributes({
+                                    tabShadowVertical: newValue === undefined ? 0 : newValue
+                                })
+                            }
+                            onChangePosition={newValue =>
+                                setAttributes({
+                                    tabShadowPosition: newValue === undefined ? 0 : newValue
+                                })
+                            }
+                        />
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Active Tab Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                         <p>{__("Background Color")}</p>
+                        <ColorPalette
+                            value={activetabBGColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    activetabBGColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
                     </PanelBody>
                     <PanelBody
                         title={__("Title Style")}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                       <p>{__("Color")}</p>
+                        <p>{__("Color")}</p>
                         <ColorPalette
                             value={titleColor}
                             onChange={newValue =>
@@ -631,7 +702,7 @@ console.log(this.props.attributes.repeatertabs);
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                       <p>{__("Color")}</p>
+                        <p>{__("Color")}</p>
                         <ColorPalette
                             value={contentColor}
                             onChange={newValue =>
@@ -672,22 +743,22 @@ console.log(this.props.attributes.repeatertabs);
             )} style={{
                 textAlign: align,
             }}>
-                <div className={`premium-tab ${this.props.clientId}`}  data-type={`${type}`}  data-setting={`${this.props.clientId}`}>
+                <div className={`premium-tab ${this.props.clientId}`} data-type={`${type}`} data-setting={`${this.props.clientId}`}>
                     <section className="premium-tab-section">
                         <div className={`premium-tab-container premium-tab-${type}`}>
-                            <div className="premium-tab-nav"  
-                            style={{textAlign: align}}>
+                            <div className="premium-tab-nav"
+                                style={{ textAlign: align }}>
                                 <ul className={`premium-tab-nav-list premium-tab-${type}`}>
-                                {renderTabs}
+                                    {renderTabs}
                                 </ul>
                             </div>
                             <div className={`premium-tab-content-wrap premium-tab-${type}`}>
-                            {renderContents}
+                                {renderContents}
                             </div>
                             <div className="premium-tab-clearfix"></div>
                         </div>
                     </section>
-                {/* <div className={`premium-tab-view-${type} ${this.props.clientId}`}
+                    {/* <div className={`premium-tab-view-${type} ${this.props.clientId}`}
                
                     style={{
                         textAlign: align,
@@ -703,7 +774,7 @@ console.log(this.props.attributes.repeatertabs);
                     }
                     </div>
                 </div> */}
-            </div>
+                </div>
             </div>
         ]
     }
