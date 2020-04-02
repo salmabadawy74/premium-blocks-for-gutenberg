@@ -71,6 +71,42 @@ function styling(props) {
     contentshadowColor,
     contentshadowHorizontal,
     contentshadowVertical,
+    contentShadowBlur,
+    contentShadowColor,
+    contentShadowHorizontal,
+    contentShadowVertical,
+    contentShadowPosition,
+    contentPadding,
+    contentPaddingTablet,
+    contentPaddingType,
+    contentPaddingMobile,
+    titleMargin,
+    titleMarginTablet,
+    titleMarginType,
+    titleMarginMobile,
+    iconPadding,
+    iconPaddingTablet,
+    iconPaddingType,
+    iconPaddingMobile,
+    tabhoverShadowBlur,
+    tabhoverShadowColor,
+    tabhoverShadowHorizontal,
+    tabhoverShadowVertical,
+    tabhoverShadowPosition,
+    tabhoverborderType,
+    tabhoverborderRadius,
+    tabhoverborderWidth,
+    tabhoverborderColor,
+    tabBGHoverColor,
+    tabPadding,
+    tabPaddingType,
+    tabPaddingTablet,
+    tabPaddingMobile,
+    tabMargin,
+    tabMarginType,
+    tabMarginTablet,
+    tabMarginMobile,
+    iconHoverColor
   } = props.attributes
 
   var selectors = {}
@@ -86,8 +122,11 @@ function styling(props) {
       "box-shadow": `${tabShadowHorizontal}px ${tabShadowVertical}px ${tabShadowBlur}px ${tabShadowColor} ${tabShadowPosition}`,
       "background-color": tabBGColor
     },
-    " .premium-tab-nav-list-item::after": {
-      "background-color": tabsBorderColor
+    " .premium-tab-horizontal .premium-tab-nav-list-item::after": {
+      "background-color": tabsBorderColor + "!important"
+    },
+    " .premium-tab-vertical .premium-tab-nav-list-item::after": {
+      "background-color": tabsBorderColor + "!important"
     },
     " .premium-tab-link-icon-flipped": {
       "border-style": tabborderType,
@@ -104,7 +143,7 @@ function styling(props) {
       "background-color": activetabBGColor + "!important"
     },
     " .premium-tab-horizontal .tab-current .premium-tab-link-icon::after": {
-      "border-top-color": arrowColor + "!important"
+      "border-top-color": arrowColor
     },
     " .premium-tab-vertical .tab-current .premium-tab-link-icon::after": {
       "border-left-color": arrowColor + "!important"
@@ -117,6 +156,7 @@ function styling(props) {
       "border-color": iconborderColor,
       "border-radius": generateCSSUnit(iconborderRadius, "px"),
       "text-shadow": `${iconshadowHorizontal}px ${iconshadowVertical}px ${iconshadowBlur}px ${iconshadowColor}`,
+      "padding": generateCSSUnit(iconPadding, iconPaddingType)
     },
     " .tab-current .premium-tab-title-icon": {
       "color": activeiconColor + "!important"
@@ -139,6 +179,7 @@ function styling(props) {
       "border-color": titleborderColor,
       "border-radius": generateCSSUnit(titleborderRadius, "px"),
       "text-shadow": `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`,
+      "margin": generateCSSUnit(titleMargin, titleMarginType)
     },
     " .premium-tab-nav-list-item:hover .premium-tab-title": {
       "color": hovertitleColor + "!important"
@@ -146,7 +187,7 @@ function styling(props) {
     " .premium-tab-content-wrap-inner": {
       "color": contentColor
     },
-    " .premium-tab-content": {
+    " .premium-tab-content-section .premium-tab-content": {
       "font-size": generateCSSUnit(contentfontSize, contentfontSizeType),
       "letter-spacing": generateCSSUnit(contentLetter, "px"),
       "text-transform": contentUpper ? "uppercase" : "none" + "!important",
@@ -159,30 +200,67 @@ function styling(props) {
       "border-color": contentborderColor,
       "border-radius": generateCSSUnit(contentborderRadius, "px"),
       "text-shadow": `${contentshadowHorizontal}px ${contentshadowVertical}px ${contentshadowBlur}px ${contentshadowColor}`,
+      "box-shadow": `${contentShadowHorizontal}px ${contentShadowVertical}px ${contentShadowBlur}px ${contentShadowColor} ${contentShadowPosition}`,
+      "padding": generateCSSUnit(contentPadding, contentPaddingType)
     },
+    " .premium-tab-nav-list-item a:hover":{
+      "background-color": tabBGHoverColor + "!important",
+      "border-style": tabhoverborderType,
+      "border-width": generateCSSUnit(tabhoverborderWidth, "px"),
+        "border-color": tabhoverborderColor,
+        "border-radius": generateCSSUnit(tabhoverborderRadius, "px"),
+        "box-shadow": `${tabhoverShadowHorizontal}px ${tabhoverShadowVertical}px ${tabhoverShadowBlur}px ${tabhoverShadowColor} ${tabhoverShadowPosition}`,
+    },
+    " .premium-tab-horizontal .tab-current a:hover::after": {
+      "border-top-color": tabBGHoverColor + "!important",
+    },
+    " .premium-tab-vertical .tab-current .premium-tab-link-icon:hover::after": {
+      "border-left-color": tabBGHoverColor + "!important"
+    },
+    " .premium-tab-nav-list-item a": {
+      "padding": generateCSSUnit(tabPadding, tabPaddingType) + "!important",
+      "margin": generateCSSUnit(tabMargin, tabMarginType) + "!important",
+    },
+    " .premium-tab-horizontal .premium-tab-nav-list-item:hover .premium-tab-link-icon::after":{
+      "border-top-color": iconHoverColor,
+    }
   }
 
   mobile_selectors = {
     " .premium-tab-title-icon": {
-      "font-size": generateCSSUnit(iconfontSizeMobile, iconfontSizeType),
+      "font-size": generateCSSUnit(iconfontSizeMobile, iconfontSizeType) + "!important",
+      "padding": generateCSSUnit(iconPaddingMobile, iconPaddingType) + "!important",
     },
     " .premium-tab-nav-list-item .premium-tab-title": {
-      "font-size": generateCSSUnit(titlefontSizeMobile, titlefontSizeType)
+      "font-size": generateCSSUnit(titlefontSizeMobile, titlefontSizeType) + "!important",
+      "margin": generateCSSUnit(titleMarginMobile, titleMarginType) + "!important"
     },
     " .premium-tab-content": {
-      "font-size": generateCSSUnit(contentfontSizeMobile, contentfontSizeType)
+      "font-size": generateCSSUnit(contentfontSizeMobile, contentfontSizeType) + "!important",
+      "padding": generateCSSUnit(contentPaddingMobile, contentPaddingType) + "!important"
+    },
+    " .premium-tab-nav-list-item a": {
+      "padding": generateCSSUnit(tabPaddingMobile, tabPaddingType) + "!important",
+      "margin": generateCSSUnit(tabMarginMobile, tabMarginType) + "!important",
     }
   }
 
   tablet_selectors = {
     " .premium-tab-title-icon": {
-      "font-size": generateCSSUnit(iconfontSizeTablet, iconfontSizeType),
+      "font-size": generateCSSUnit(iconfontSizeTablet, iconfontSizeType) + "!important",
+      "padding": generateCSSUnit(iconPaddingTablet, iconPaddingType) + "!important",
     },
     " .premium-tab-nav-list-item .premium-tab-title": {
-      "font-size": generateCSSUnit(titlefontSizeTablet, titlefontSizeType)
+      "font-size": generateCSSUnit(titlefontSizeTablet, titlefontSizeType) + "!important",
+      "margin": generateCSSUnit(titleMarginTablet, titleMarginType) + "!important"
     },
     " .premium-tab-content": {
-      "font-size": generateCSSUnit(contentfontSizeTablet, contentfontSizeType),
+      "font-size": generateCSSUnit(contentfontSizeTablet, contentfontSizeType) + "!important",
+      "padding": generateCSSUnit(contentPaddingTablet, contentPaddingType) + "!important"
+    },
+    " .premium-tab-nav-list-item a": {
+      "padding": generateCSSUnit(tabPaddingTablet, tabPaddingType) + "!important",
+      "margin": generateCSSUnit(tabMarginTablet, tabMarginType) + "!important",
     }
   }
 

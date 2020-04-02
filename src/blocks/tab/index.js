@@ -67,6 +67,13 @@ const tabAttrs = {
     type: "string",
     default: "#6ec1e4"
   },
+  tabBGHoverColor:{
+    type: "string"
+  },
+  iconHoverColor: {
+    type: "string",
+    default: "#7a7a7a"
+  },
   activetabBGColor: {
     type: "string",
     default: "#7a7a7a"
@@ -80,7 +87,8 @@ const tabAttrs = {
     default: "#54595f"
   },
   hovertitleColor: {
-    type: "string"
+    type: "string",
+    default: "#54595f"
   },
   activetitleColor: {
     type: "string",
@@ -202,7 +210,7 @@ const tabAttrs = {
   },
   hovericonColor: {
     type: "string",
-    default: "54595f"
+    default: "#54595f"
   },
   iconfontSize: {
     type: "number",
@@ -313,6 +321,140 @@ const tabAttrs = {
     type: "number",
     default: "0"
   },
+  tabShadowColor: {
+    type: "string"
+  },
+  contentShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  contentShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  contentShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  contentShadowPosition: {
+    type: "string",
+    default: ""
+  },
+  contentPadding:{
+    type: "number",
+    default: 10
+  },
+  contentPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  contentPaddingMobile:{
+    type: "number",
+    default: 10
+  },
+  contentPaddingTablet: {
+    type: "number",
+    default: 10
+  },
+  titleMargin:{
+    type: "number",
+      default: 0
+  },
+  titleMarginType:{
+    type: "string",
+      default: "px"
+  },
+  titleMarginTablet: {
+    type: "number",
+      default: 0
+  },
+  titleMarginMobile: {
+    type: "number",
+      default: 0
+  },
+  iconPadding:{
+    type: "number",
+    default: 0
+  },
+  iconPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  iconPaddingMobile:{
+    type: "number",
+    default: 0
+  },
+  iconPaddingTablet: {
+    type: "number",
+    default: 0
+  },
+  tabhoverborderType: {
+    type: "string",
+    default: "none"
+  },
+  tabhoverborderWidth: {
+    type: "number",
+    default: "1"
+  },
+  tabhoverborderRadius: {
+    type: "number",
+    default: 0
+  },
+  tabhoverborderColor: {
+    type: "string",
+    default: "#d4d4d4"
+  },
+  tabhoverShadowColor: {
+    type: "string"
+  },
+  tabhoverShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  tabhoverShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  tabhoverShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  tabhoverShadowPosition: {
+    type: "string",
+    default: ""
+  },
+  tabPadding:{
+    type: "number",
+    default: 1
+  },
+  tabPaddingType: {
+    type: "string",
+    default: "em"
+  },
+  tabPaddingTablet: {
+    type: "number",
+    default: 1
+  },
+  tabPaddingMobile: {
+    type: "number",
+    default: 1
+  },
+  tabMargin: {
+    type: "number",
+    default: 0
+  },
+  tabMarginType: {
+    type: "string",
+    default: "px"
+  },
+  tabMarginTablet: {
+    type: "number",
+    default: 0
+  },
+  tabMarginMobile: {
+    type: "number",
+    default: 0
+  }
 };
 
 registerBlockType("premium/tab", {

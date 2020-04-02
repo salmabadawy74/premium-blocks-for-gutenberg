@@ -37,7 +37,8 @@ const {
     TextareaControl,
     TextControl,
     RangeControl,
-    ToggleControl
+    ToggleControl,
+    TabPanel
 } = wp.components
 
 const SortableItem = SortableElement(({
@@ -155,7 +156,6 @@ class edit extends Component {
 
     constructor() {
         super(...arguments);
-        this.initToggleBox = this.initToggleBox.bind(this);
     }
     componentDidMount() {
         // Assigning id in the attribute.
@@ -166,25 +166,6 @@ class edit extends Component {
         $style.setAttribute("id", "premium-style-tab-" + this.props.clientId)
         document.head.appendChild($style)
         console.log(this.props.attributes.repeatertabs);
-
-        setTimeout(this.initToggleBox, 1);
-
-
-    }
-    componentDidUpdate() {
-        clearTimeout(isBoxUpdated);
-        isBoxUpdated = setTimeout(this.initToggleBox, 10);
-    }
-
-    initToggleBox() {
-        // const { block_id, repeatertabs } = this.props.attributes
-        // if (!block_id) return null;
-        // let array = repeatertabs.map((cont, currIndex) => {
-        //     return cont.active
-        // }).filter((f,i)=> f != false)
-        // if(array.length ==0){
-        //     repeatertabs[0].active = true
-        // }
     }
 
     render() {
@@ -199,6 +180,7 @@ class edit extends Component {
             tabborderWidth,
             tabborderColor,
             tabBGColor,
+            tabBGHoverColor,
             titleColor,
             activetitleColor,
             titleWeight,
@@ -253,6 +235,10 @@ class edit extends Component {
             titleshadowColor,
             titleshadowHorizontal,
             titleshadowVertical,
+            titleMargin,
+            titleMarginTablet,
+            titleMarginType,
+            titleMarginMobile,
             contentBGColor,
             contentborderType,
             contentborderRadius,
@@ -262,6 +248,36 @@ class edit extends Component {
             contentshadowColor,
             contentshadowHorizontal,
             contentshadowVertical,
+            contentShadowBlur,
+            contentShadowColor,
+            contentShadowHorizontal,
+            contentShadowVertical,
+            contentShadowPosition,
+            contentPadding,
+            contentPaddingTablet,
+            contentPaddingType,
+            contentPaddingMobile,
+            iconPadding,
+            iconPaddingTablet,
+            iconPaddingType,
+            iconPaddingMobile,
+            tabhoverShadowBlur,
+            tabhoverShadowColor,
+            tabhoverShadowHorizontal,
+            tabhoverShadowVertical,
+            tabhoverShadowPosition,
+            tabhoverborderType,
+            tabhoverborderRadius,
+            tabhoverborderWidth,
+            tabhoverborderColor,
+            tabPadding,
+            tabPaddingType,
+            tabPaddingTablet,
+            tabPaddingMobile,
+            tabMargin,
+            tabMarginType,
+            tabMarginTablet,
+            tabMarginMobile
         } = attributes
 
         const TYPE = [{
@@ -282,6 +298,15 @@ class edit extends Component {
             label: __("Flipped")
         },
         ]
+        const TABSTYLE = [{
+                name: "normal",
+                title: __("Normal")
+            },
+            {
+                name: "hover",
+                title: __("Hover")
+            },
+        ];
         var element = document.getElementById("premium-style-tab-" + this.props.clientId)
 
         if (null != element && "undefined" != typeof element) {
@@ -599,75 +624,170 @@ class edit extends Component {
                         />
                         <p>{__("This option allow only in frontend")}</p>
 
-                        <p>{__("Border Color")}</p>
-                        <ColorPalette
-                            value={tabsBorderColor}
-                            onChange={newValue =>
-                                setAttributes({
-                                    tabsBorderColor: newValue
-                                })
-                            }
-                            allowReset={true}
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: tabPaddingType, label: __("tabPaddingType") }}
+                            range={{ value: tabPadding, label: __("tabPadding") }}
+                            rangeMobile={{ value: tabPaddingMobile, label: __("tabPaddingMobile") }}
+                            rangeTablet={{ value: tabPaddingTablet, label: __("tabPaddingTablet") }}
+                            rangeLabel={__("Padding")}
+                            min={1}
+                            max={100}
                         />
-                         <p>{__("Background Color")}</p>
-                        <ColorPalette
-                            value={tabBGColor}
-                            onChange={newValue =>
-                                setAttributes({
-                                    tabBGColor: newValue
-                                })
-                            }
-                            allowReset={true}
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: tabMarginType, label: __("tabMarginType") }}
+                            range={{ value: tabMargin, label: __("tabMargin") }}
+                            rangeMobile={{ value: tabMarginMobile, label: __("tabMarginMobile") }}
+                            rangeTablet={{ value: tabMarginTablet, label: __("tabMarginTablet") }}
+                            rangeLabel={__("Margin")}
+                            min={1}
+                            max={100}
                         />
-                        <PremiumBorder
-                            borderType={tabborderType}
-                            borderWidth={tabborderWidth}
-                            borderColor={tabborderColor}
-                            borderRadius={tabborderRadius}
-                            onChangeType={newType => setAttributes({ tabborderType: newType })}
-                            onChangeWidth={newWidth => setAttributes({ tabborderWidth: newWidth })}
-                            onChangeColor={colorValue =>
-                                setAttributes({ tabborderColor: colorValue.hex })
+                        <TabPanel
+                        className="premium-icon-list-tab-panel"
+                        activeClass="active-tab"
+                        tabs={TABSTYLE}>
+                        {
+                            (tabName) => {
+                                if ("normal" === tabName.name) {
+                                    return <Fragment>
+                                        <p>{__("Border Color")}</p>
+                                        <ColorPalette
+                                            value={tabsBorderColor}
+                                            onChange={newValue =>
+                                                setAttributes({
+                                                    tabsBorderColor: newValue
+                                                })
+                                            }
+                                            allowReset={true}
+                                        />
+                                        <p>{__("Background Color")}</p>
+                                        <ColorPalette
+                                            value={tabBGColor}
+                                            onChange={newValue =>
+                                                setAttributes({
+                                                    tabBGColor: newValue
+                                                })
+                                            }
+                                            allowReset={true}
+                                        />
+                                        <PremiumBorder
+                                            borderType={tabborderType}
+                                            borderWidth={tabborderWidth}
+                                            borderColor={tabborderColor}
+                                            borderRadius={tabborderRadius}
+                                            onChangeType={newType => setAttributes({ tabborderType: newType })}
+                                            onChangeWidth={newWidth => setAttributes({ tabborderWidth: newWidth })}
+                                            onChangeColor={colorValue =>
+                                                setAttributes({ tabborderColor: colorValue.hex })
+                                            }
+                                            onChangeRadius={newrRadius =>
+                                                setAttributes({ tabborderRadius: newrRadius })
+                                            }
+                                        />
+                                        <PremiumBoxShadow
+                                            label="Box Shadow"
+                                            inner={true}
+                                            color={tabShadowColor}
+                                            blur={tabShadowBlur}
+                                            horizontal={tabShadowHorizontal}
+                                            vertical={tabShadowVertical}
+                                            position={tabShadowPosition}
+                                            onChangeColor={newColor =>
+                                                setAttributes({
+                                                    tabShadowColor:
+                                                        newColor === undefined ? "transparent" : newColor.hex
+                                                })
+                                            }
+                                            onChangeBlur={newBlur =>
+                                                setAttributes({
+                                                    tabShadowBlur: newBlur === undefined ? 0 : newBlur
+                                                })
+                                            }
+                                            onChangehHorizontal={newValue =>
+                                                setAttributes({
+                                                    tabShadowHorizontal: newValue === undefined ? 0 : newValue
+                                                })
+                                            }
+                                            onChangeVertical={newValue =>
+                                                setAttributes({
+                                                    tabShadowVertical: newValue === undefined ? 0 : newValue
+                                                })
+                                            }
+                                            onChangePosition={newValue =>
+                                                setAttributes({
+                                                    tabShadowPosition: newValue === undefined ? 0 : newValue
+                                                })
+                                            }
+                                        />
+                                    </Fragment>
+                                } else {
+                                    return <Fragment>
+                                        <p>{__("Background Color")}</p>
+                                        <ColorPalette
+                                            value={tabBGHoverColor}
+                                            onChange={newValue =>
+                                                setAttributes({
+                                                    tabBGHoverColor: newValue
+                                                })
+                                            }
+                                            allowReset={true}
+                                        />
+                                        <PremiumBorder
+                                            borderType={tabhoverborderType}
+                                            borderWidth={tabhoverborderWidth}
+                                            borderColor={tabhoverborderColor}
+                                            borderRadius={tabhoverborderRadius}
+                                            onChangeType={newType => setAttributes({ tabhoverborderType: newType })}
+                                            onChangeWidth={newWidth => setAttributes({ tabhoverborderWidth: newWidth })}
+                                            onChangeColor={colorValue =>
+                                                setAttributes({ tabhoverborderColor: colorValue.hex })
+                                            }
+                                            onChangeRadius={newrRadius =>
+                                                setAttributes({ tabhoverborderRadius: newrRadius })
+                                            }
+                                        />
+                                        <PremiumBoxShadow
+                                            label="Box Shadow"
+                                            inner={true}
+                                            color={tabhoverShadowColor}
+                                            blur={tabhoverShadowBlur}
+                                            horizontal={tabhoverShadowHorizontal}
+                                            vertical={tabhoverShadowVertical}
+                                            position={tabhoverShadowPosition}
+                                            onChangeColor={newColor =>
+                                                setAttributes({
+                                                    tabhoverShadowColor:
+                                                        newColor === undefined ? "transparent" : newColor.hex
+                                                })
+                                            }
+                                            onChangeBlur={newBlur =>
+                                                setAttributes({
+                                                    tabhoverShadowBlur: newBlur === undefined ? 0 : newBlur
+                                                })
+                                            }
+                                            onChangehHorizontal={newValue =>
+                                                setAttributes({
+                                                    tabhoverShadowHorizontal: newValue === undefined ? 0 : newValue
+                                                })
+                                            }
+                                            onChangeVertical={newValue =>
+                                                setAttributes({
+                                                    tabhoverShadowVertical: newValue === undefined ? 0 : newValue
+                                                })
+                                            }
+                                            onChangePosition={newValue =>
+                                                setAttributes({
+                                                    tabhoverShadowPosition: newValue === undefined ? 0 : newValue
+                                                })
+                                            }
+                                        />
+                                    </Fragment>
+                                }
                             }
-                            onChangeRadius={newrRadius =>
-                                setAttributes({ tabborderRadius: newrRadius })
-                            }
-                        />
-                        <PremiumBoxShadow
-                            label="Box Shadow"
-                            inner={true}
-                            color={tabShadowColor}
-                            blur={tabShadowBlur}
-                            horizontal={tabShadowHorizontal}
-                            vertical={tabShadowVertical}
-                            position={tabShadowPosition}
-                            onChangeColor={newColor =>
-                                setAttributes({
-                                    tabShadowColor:
-                                        newColor === undefined ? "transparent" : newColor.hex
-                                })
-                            }
-                            onChangeBlur={newBlur =>
-                                setAttributes({
-                                    tabShadowBlur: newBlur === undefined ? 0 : newBlur
-                                })
-                            }
-                            onChangehHorizontal={newValue =>
-                                setAttributes({
-                                    tabShadowHorizontal: newValue === undefined ? 0 : newValue
-                                })
-                            }
-                            onChangeVertical={newValue =>
-                                setAttributes({
-                                    tabShadowVertical: newValue === undefined ? 0 : newValue
-                                })
-                            }
-                            onChangePosition={newValue =>
-                                setAttributes({
-                                    tabShadowPosition: newValue === undefined ? 0 : newValue
-                                })
-                            }
-                        />
+                        }
+                    </TabPanel>
                     </PanelBody>
                     <PanelBody
                         title={__("Active Tab Style")}
@@ -774,6 +894,16 @@ class edit extends Component {
                             setAttributes({ iconshadowVertical: newValue })
                             }
                         />
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: iconPaddingType, label: __("iconPaddingType") }}
+                            range={{ value: iconPadding, label: __("iconPadding") }}
+                            rangeMobile={{ value: iconPaddingMobile, label: __("iconPaddingMobile") }}
+                            rangeTablet={{ value: iconPaddingTablet, label: __("iconPaddingTablet") }}
+                            rangeLabel={__("Padding")}
+                            min={1}
+                            max={100}
+                        />
                     </PanelBody>
                     <PanelBody
                         title={__("Title Style")}
@@ -862,6 +992,16 @@ class edit extends Component {
                             setAttributes({ titleshadowVertical: newValue })
                             }
                         />
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: titleMarginType, label: __("titleMarginType") }}
+                            range={{ value: titleMargin, label: __("titleMargin") }}
+                            rangeMobile={{ value: titleMarginMobile, label: __("titleMarginMobile") }}
+                            rangeTablet={{ value: titleMarginTablet, label: __("titleMarginTablet") }}
+                            rangeLabel={__("Margin")}
+                            min={1}
+                            max={100}
+                        />
                     </PanelBody>
                     <PanelBody
                         title={__("Content Style")}
@@ -939,6 +1079,51 @@ class edit extends Component {
                             onChangeVertical={newValue =>
                             setAttributes({ contentshadowVertical: newValue })
                             }
+                        />
+                        <PremiumBoxShadow
+                            label="Box Shadow"
+                            inner={true}
+                            color={contentShadowColor}
+                            blur={contentShadowBlur}
+                            horizontal={contentShadowHorizontal}
+                            vertical={contentShadowVertical}
+                            position={contentShadowPosition}
+                            onChangeColor={newColor =>
+                                setAttributes({
+                                    contentShadowColor:
+                                        newColor === undefined ? "transparent" : newColor.hex
+                                })
+                            }
+                            onChangeBlur={newBlur =>
+                                setAttributes({
+                                    contentShadowBlur: newBlur === undefined ? 0 : newBlur
+                                })
+                            }
+                            onChangehHorizontal={newValue =>
+                                setAttributes({
+                                    contentShadowHorizontal: newValue === undefined ? 0 : newValue
+                                })
+                            }
+                            onChangeVertical={newValue =>
+                                setAttributes({
+                                    contentShadowVertical: newValue === undefined ? 0 : newValue
+                                })
+                            }
+                            onChangePosition={newValue =>
+                                setAttributes({
+                                    contentShadowPosition: newValue === undefined ? 0 : newValue
+                                })
+                            }
+                        />
+                        <PremiumRange
+                            setAttributes={setAttributes}
+                            rangeType={{ value: contentPaddingType, label: __("contentPaddingType") }}
+                            range={{ value: contentPadding, label: __("contentPadding") }}
+                            rangeMobile={{ value: contentPaddingMobile, label: __("contentPaddingMobile") }}
+                            rangeTablet={{ value: contentPaddingTablet, label: __("contentPaddingTablet") }}
+                            rangeLabel={__("Padding")}
+                            min={1}
+                            max={100}
                         />
                     </PanelBody>
                 </InspectorControls>

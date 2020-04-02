@@ -2294,14 +2294,14 @@ var listCacheClear = __webpack_require__(87),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `ListCache`.
@@ -3070,14 +3070,14 @@ var mapCacheClear = __webpack_require__(103),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `MapCache`.
@@ -8714,14 +8714,14 @@ var hashClear = __webpack_require__(105),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `Hash`.
@@ -9081,13 +9081,13 @@ var MapCache = __webpack_require__(40),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-    var index = -1,
-        length = values == null ? 0 : values.length;
+  var index = -1,
+      length = values == null ? 0 : values.length;
 
-    this.__data__ = new MapCache();
-    while (++index < length) {
-        this.add(values[index]);
-    }
+  this.__data__ = new MapCache();
+  while (++index < length) {
+    this.add(values[index]);
+  }
 }
 
 // Add methods to `SetCache`.
@@ -10031,16 +10031,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-    var result = keys(object),
-        length = result.length;
+  var result = keys(object),
+      length = result.length;
 
-    while (length--) {
-        var key = result[length],
-            value = object[key];
+  while (length--) {
+    var key = result[length],
+        value = object[key];
 
-        result[length] = [key, value, isStrictComparable(value)];
-    }
-    return result;
+    result[length] = [key, value, isStrictComparable(value)];
+  }
+  return result;
 }
 
 module.exports = getMatchData;
@@ -54771,6 +54771,10 @@ function styling(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(270);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(271);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
+var _tabAttrs;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -54781,7 +54785,7 @@ var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 
 
-var tabAttrs = {
+var tabAttrs = (_tabAttrs = {
   block_id: {
     type: "string"
   },
@@ -54834,6 +54838,13 @@ var tabAttrs = {
     type: "string",
     default: "#6ec1e4"
   },
+  tabBGHoverColor: {
+    type: "string"
+  },
+  iconHoverColor: {
+    type: "string",
+    default: "#7a7a7a"
+  },
   activetabBGColor: {
     type: "string",
     default: "#7a7a7a"
@@ -54847,7 +54858,8 @@ var tabAttrs = {
     default: "#54595f"
   },
   hovertitleColor: {
-    type: "string"
+    type: "string",
+    default: "#54595f"
   },
   activetitleColor: {
     type: "string",
@@ -54969,7 +54981,7 @@ var tabAttrs = {
   },
   hovericonColor: {
     type: "string",
-    default: "54595f"
+    default: "#54595f"
   },
   iconfontSize: {
     type: "number",
@@ -55080,7 +55092,107 @@ var tabAttrs = {
     type: "number",
     default: "0"
   }
-};
+}, _defineProperty(_tabAttrs, "tabShadowColor", {
+  type: "string"
+}), _defineProperty(_tabAttrs, "contentShadowBlur", {
+  type: "number",
+  default: "0"
+}), _defineProperty(_tabAttrs, "contentShadowHorizontal", {
+  type: "number",
+  default: "0"
+}), _defineProperty(_tabAttrs, "contentShadowVertical", {
+  type: "number",
+  default: "0"
+}), _defineProperty(_tabAttrs, "contentShadowPosition", {
+  type: "string",
+  default: ""
+}), _defineProperty(_tabAttrs, "contentPadding", {
+  type: "number",
+  default: 10
+}), _defineProperty(_tabAttrs, "contentPaddingType", {
+  type: "string",
+  default: "px"
+}), _defineProperty(_tabAttrs, "contentPaddingMobile", {
+  type: "number",
+  default: 10
+}), _defineProperty(_tabAttrs, "contentPaddingTablet", {
+  type: "number",
+  default: 10
+}), _defineProperty(_tabAttrs, "titleMargin", {
+  type: "number",
+  default: 0
+}), _defineProperty(_tabAttrs, "titleMarginType", {
+  type: "string",
+  default: "px"
+}), _defineProperty(_tabAttrs, "titleMarginTablet", {
+  type: "number",
+  default: 0
+}), _defineProperty(_tabAttrs, "titleMarginMobile", {
+  type: "number",
+  default: 0
+}), _defineProperty(_tabAttrs, "iconPadding", {
+  type: "number",
+  default: 0
+}), _defineProperty(_tabAttrs, "iconPaddingType", {
+  type: "string",
+  default: "px"
+}), _defineProperty(_tabAttrs, "iconPaddingMobile", {
+  type: "number",
+  default: 0
+}), _defineProperty(_tabAttrs, "iconPaddingTablet", {
+  type: "number",
+  default: 0
+}), _defineProperty(_tabAttrs, "tabhoverborderType", {
+  type: "string",
+  default: "none"
+}), _defineProperty(_tabAttrs, "tabhoverborderWidth", {
+  type: "number",
+  default: "1"
+}), _defineProperty(_tabAttrs, "tabhoverborderRadius", {
+  type: "number",
+  default: 0
+}), _defineProperty(_tabAttrs, "tabhoverborderColor", {
+  type: "string",
+  default: "#d4d4d4"
+}), _defineProperty(_tabAttrs, "tabhoverShadowColor", {
+  type: "string"
+}), _defineProperty(_tabAttrs, "tabhoverShadowBlur", {
+  type: "number",
+  default: "0"
+}), _defineProperty(_tabAttrs, "tabhoverShadowHorizontal", {
+  type: "number",
+  default: "0"
+}), _defineProperty(_tabAttrs, "tabhoverShadowVertical", {
+  type: "number",
+  default: "0"
+}), _defineProperty(_tabAttrs, "tabhoverShadowPosition", {
+  type: "string",
+  default: ""
+}), _defineProperty(_tabAttrs, "tabPadding", {
+  type: "number",
+  default: 1
+}), _defineProperty(_tabAttrs, "tabPaddingType", {
+  type: "string",
+  default: "em"
+}), _defineProperty(_tabAttrs, "tabPaddingTablet", {
+  type: "number",
+  default: 1
+}), _defineProperty(_tabAttrs, "tabPaddingMobile", {
+  type: "number",
+  default: 1
+}), _defineProperty(_tabAttrs, "tabMargin", {
+  type: "number",
+  default: 0
+}), _defineProperty(_tabAttrs, "tabMarginType", {
+  type: "string",
+  default: "px"
+}), _defineProperty(_tabAttrs, "tabMarginTablet", {
+  type: "number",
+  default: 0
+}), _defineProperty(_tabAttrs, "tabMarginMobile", {
+  type: "number",
+  default: 0
+}), _tabAttrs);
 
 registerBlockType("premium/tab", {
   title: __("tab"),
@@ -55232,7 +55344,8 @@ var _wp$components = wp.components,
     TextareaControl = _wp$components.TextareaControl,
     TextControl = _wp$components.TextControl,
     RangeControl = _wp$components.RangeControl,
-    ToggleControl = _wp$components.ToggleControl;
+    ToggleControl = _wp$components.ToggleControl,
+    TabPanel = _wp$components.TabPanel;
 
 
 var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__["b" /* SortableElement */])(function (_ref) {
@@ -55350,10 +55463,7 @@ var edit = function (_Component) {
     function edit() {
         _classCallCheck(this, edit);
 
-        var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
-
-        _this.initToggleBox = _this.initToggleBox.bind(_this);
-        return _this;
+        return _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
     }
 
     _createClass(edit, [{
@@ -55367,26 +55477,6 @@ var edit = function (_Component) {
             $style.setAttribute("id", "premium-style-tab-" + this.props.clientId);
             document.head.appendChild($style);
             console.log(this.props.attributes.repeatertabs);
-
-            setTimeout(this.initToggleBox, 1);
-        }
-    }, {
-        key: "componentDidUpdate",
-        value: function componentDidUpdate() {
-            clearTimeout(isBoxUpdated);
-            isBoxUpdated = setTimeout(this.initToggleBox, 10);
-        }
-    }, {
-        key: "initToggleBox",
-        value: function initToggleBox() {
-            // const { block_id, repeatertabs } = this.props.attributes
-            // if (!block_id) return null;
-            // let array = repeatertabs.map((cont, currIndex) => {
-            //     return cont.active
-            // }).filter((f,i)=> f != false)
-            // if(array.length ==0){
-            //     repeatertabs[0].active = true
-            // }
         }
     }, {
         key: "render",
@@ -55405,6 +55495,7 @@ var edit = function (_Component) {
                 tabborderWidth = attributes.tabborderWidth,
                 tabborderColor = attributes.tabborderColor,
                 tabBGColor = attributes.tabBGColor,
+                tabBGHoverColor = attributes.tabBGHoverColor,
                 titleColor = attributes.titleColor,
                 activetitleColor = attributes.activetitleColor,
                 titleWeight = attributes.titleWeight,
@@ -55459,6 +55550,10 @@ var edit = function (_Component) {
                 titleshadowColor = attributes.titleshadowColor,
                 titleshadowHorizontal = attributes.titleshadowHorizontal,
                 titleshadowVertical = attributes.titleshadowVertical,
+                titleMargin = attributes.titleMargin,
+                titleMarginTablet = attributes.titleMarginTablet,
+                titleMarginType = attributes.titleMarginType,
+                titleMarginMobile = attributes.titleMarginMobile,
                 contentBGColor = attributes.contentBGColor,
                 contentborderType = attributes.contentborderType,
                 contentborderRadius = attributes.contentborderRadius,
@@ -55467,7 +55562,37 @@ var edit = function (_Component) {
                 contentshadowBlur = attributes.contentshadowBlur,
                 contentshadowColor = attributes.contentshadowColor,
                 contentshadowHorizontal = attributes.contentshadowHorizontal,
-                contentshadowVertical = attributes.contentshadowVertical;
+                contentshadowVertical = attributes.contentshadowVertical,
+                contentShadowBlur = attributes.contentShadowBlur,
+                contentShadowColor = attributes.contentShadowColor,
+                contentShadowHorizontal = attributes.contentShadowHorizontal,
+                contentShadowVertical = attributes.contentShadowVertical,
+                contentShadowPosition = attributes.contentShadowPosition,
+                contentPadding = attributes.contentPadding,
+                contentPaddingTablet = attributes.contentPaddingTablet,
+                contentPaddingType = attributes.contentPaddingType,
+                contentPaddingMobile = attributes.contentPaddingMobile,
+                iconPadding = attributes.iconPadding,
+                iconPaddingTablet = attributes.iconPaddingTablet,
+                iconPaddingType = attributes.iconPaddingType,
+                iconPaddingMobile = attributes.iconPaddingMobile,
+                tabhoverShadowBlur = attributes.tabhoverShadowBlur,
+                tabhoverShadowColor = attributes.tabhoverShadowColor,
+                tabhoverShadowHorizontal = attributes.tabhoverShadowHorizontal,
+                tabhoverShadowVertical = attributes.tabhoverShadowVertical,
+                tabhoverShadowPosition = attributes.tabhoverShadowPosition,
+                tabhoverborderType = attributes.tabhoverborderType,
+                tabhoverborderRadius = attributes.tabhoverborderRadius,
+                tabhoverborderWidth = attributes.tabhoverborderWidth,
+                tabhoverborderColor = attributes.tabhoverborderColor,
+                tabPadding = attributes.tabPadding,
+                tabPaddingType = attributes.tabPaddingType,
+                tabPaddingTablet = attributes.tabPaddingTablet,
+                tabPaddingMobile = attributes.tabPaddingMobile,
+                tabMargin = attributes.tabMargin,
+                tabMarginType = attributes.tabMarginType,
+                tabMarginTablet = attributes.tabMarginTablet,
+                tabMarginMobile = attributes.tabMarginMobile;
 
 
             var TYPE = [{
@@ -55483,6 +55608,13 @@ var edit = function (_Component) {
             }, {
                 value: "flipped",
                 label: __("Flipped")
+            }];
+            var TABSTYLE = [{
+                name: "normal",
+                title: __("Normal")
+            }, {
+                name: "hover",
+                title: __("Hover")
             }];
             var element = document.getElementById("premium-style-tab-" + this.props.clientId);
 
@@ -55799,86 +55931,192 @@ var edit = function (_Component) {
                         null,
                         __("This option allow only in frontend")
                     ),
-                    wp.element.createElement(
-                        "p",
-                        null,
-                        __("Border Color")
-                    ),
-                    wp.element.createElement(ColorPalette, {
-                        value: tabsBorderColor,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({
-                                tabsBorderColor: newValue
-                            });
-                        },
-                        allowReset: true
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__["a" /* default */], {
+                        setAttributes: setAttributes,
+                        rangeType: { value: tabPaddingType, label: __("tabPaddingType") },
+                        range: { value: tabPadding, label: __("tabPadding") },
+                        rangeMobile: { value: tabPaddingMobile, label: __("tabPaddingMobile") },
+                        rangeTablet: { value: tabPaddingTablet, label: __("tabPaddingTablet") },
+                        rangeLabel: __("Padding"),
+                        min: 1,
+                        max: 100
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__["a" /* default */], {
+                        setAttributes: setAttributes,
+                        rangeType: { value: tabMarginType, label: __("tabMarginType") },
+                        range: { value: tabMargin, label: __("tabMargin") },
+                        rangeMobile: { value: tabMarginMobile, label: __("tabMarginMobile") },
+                        rangeTablet: { value: tabMarginTablet, label: __("tabMarginTablet") },
+                        rangeLabel: __("Margin"),
+                        min: 1,
+                        max: 100
                     }),
                     wp.element.createElement(
-                        "p",
-                        null,
-                        __("Background Color")
-                    ),
-                    wp.element.createElement(ColorPalette, {
-                        value: tabBGColor,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({
-                                tabBGColor: newValue
-                            });
-                        },
-                        allowReset: true
-                    }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
-                        borderType: tabborderType,
-                        borderWidth: tabborderWidth,
-                        borderColor: tabborderColor,
-                        borderRadius: tabborderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return setAttributes({ tabborderType: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(newWidth) {
-                            return setAttributes({ tabborderWidth: newWidth });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ tabborderColor: colorValue.hex });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ tabborderRadius: newrRadius });
+                        TabPanel,
+                        {
+                            className: "premium-icon-list-tab-panel",
+                            activeClass: "active-tab",
+                            tabs: TABSTYLE },
+                        function (tabName) {
+                            if ("normal" === tabName.name) {
+                                return wp.element.createElement(
+                                    Fragment,
+                                    null,
+                                    wp.element.createElement(
+                                        "p",
+                                        null,
+                                        __("Border Color")
+                                    ),
+                                    wp.element.createElement(ColorPalette, {
+                                        value: tabsBorderColor,
+                                        onChange: function onChange(newValue) {
+                                            return setAttributes({
+                                                tabsBorderColor: newValue
+                                            });
+                                        },
+                                        allowReset: true
+                                    }),
+                                    wp.element.createElement(
+                                        "p",
+                                        null,
+                                        __("Background Color")
+                                    ),
+                                    wp.element.createElement(ColorPalette, {
+                                        value: tabBGColor,
+                                        onChange: function onChange(newValue) {
+                                            return setAttributes({
+                                                tabBGColor: newValue
+                                            });
+                                        },
+                                        allowReset: true
+                                    }),
+                                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
+                                        borderType: tabborderType,
+                                        borderWidth: tabborderWidth,
+                                        borderColor: tabborderColor,
+                                        borderRadius: tabborderRadius,
+                                        onChangeType: function onChangeType(newType) {
+                                            return setAttributes({ tabborderType: newType });
+                                        },
+                                        onChangeWidth: function onChangeWidth(newWidth) {
+                                            return setAttributes({ tabborderWidth: newWidth });
+                                        },
+                                        onChangeColor: function onChangeColor(colorValue) {
+                                            return setAttributes({ tabborderColor: colorValue.hex });
+                                        },
+                                        onChangeRadius: function onChangeRadius(newrRadius) {
+                                            return setAttributes({ tabborderRadius: newrRadius });
+                                        }
+                                    }),
+                                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__["a" /* default */], {
+                                        label: "Box Shadow",
+                                        inner: true,
+                                        color: tabShadowColor,
+                                        blur: tabShadowBlur,
+                                        horizontal: tabShadowHorizontal,
+                                        vertical: tabShadowVertical,
+                                        position: tabShadowPosition,
+                                        onChangeColor: function onChangeColor(newColor) {
+                                            return setAttributes({
+                                                tabShadowColor: newColor === undefined ? "transparent" : newColor.hex
+                                            });
+                                        },
+                                        onChangeBlur: function onChangeBlur(newBlur) {
+                                            return setAttributes({
+                                                tabShadowBlur: newBlur === undefined ? 0 : newBlur
+                                            });
+                                        },
+                                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                                            return setAttributes({
+                                                tabShadowHorizontal: newValue === undefined ? 0 : newValue
+                                            });
+                                        },
+                                        onChangeVertical: function onChangeVertical(newValue) {
+                                            return setAttributes({
+                                                tabShadowVertical: newValue === undefined ? 0 : newValue
+                                            });
+                                        },
+                                        onChangePosition: function onChangePosition(newValue) {
+                                            return setAttributes({
+                                                tabShadowPosition: newValue === undefined ? 0 : newValue
+                                            });
+                                        }
+                                    })
+                                );
+                            } else {
+                                return wp.element.createElement(
+                                    Fragment,
+                                    null,
+                                    wp.element.createElement(
+                                        "p",
+                                        null,
+                                        __("Background Color")
+                                    ),
+                                    wp.element.createElement(ColorPalette, {
+                                        value: tabBGHoverColor,
+                                        onChange: function onChange(newValue) {
+                                            return setAttributes({
+                                                tabBGHoverColor: newValue
+                                            });
+                                        },
+                                        allowReset: true
+                                    }),
+                                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
+                                        borderType: tabhoverborderType,
+                                        borderWidth: tabhoverborderWidth,
+                                        borderColor: tabhoverborderColor,
+                                        borderRadius: tabhoverborderRadius,
+                                        onChangeType: function onChangeType(newType) {
+                                            return setAttributes({ tabhoverborderType: newType });
+                                        },
+                                        onChangeWidth: function onChangeWidth(newWidth) {
+                                            return setAttributes({ tabhoverborderWidth: newWidth });
+                                        },
+                                        onChangeColor: function onChangeColor(colorValue) {
+                                            return setAttributes({ tabhoverborderColor: colorValue.hex });
+                                        },
+                                        onChangeRadius: function onChangeRadius(newrRadius) {
+                                            return setAttributes({ tabhoverborderRadius: newrRadius });
+                                        }
+                                    }),
+                                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__["a" /* default */], {
+                                        label: "Box Shadow",
+                                        inner: true,
+                                        color: tabhoverShadowColor,
+                                        blur: tabhoverShadowBlur,
+                                        horizontal: tabhoverShadowHorizontal,
+                                        vertical: tabhoverShadowVertical,
+                                        position: tabhoverShadowPosition,
+                                        onChangeColor: function onChangeColor(newColor) {
+                                            return setAttributes({
+                                                tabhoverShadowColor: newColor === undefined ? "transparent" : newColor.hex
+                                            });
+                                        },
+                                        onChangeBlur: function onChangeBlur(newBlur) {
+                                            return setAttributes({
+                                                tabhoverShadowBlur: newBlur === undefined ? 0 : newBlur
+                                            });
+                                        },
+                                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                                            return setAttributes({
+                                                tabhoverShadowHorizontal: newValue === undefined ? 0 : newValue
+                                            });
+                                        },
+                                        onChangeVertical: function onChangeVertical(newValue) {
+                                            return setAttributes({
+                                                tabhoverShadowVertical: newValue === undefined ? 0 : newValue
+                                            });
+                                        },
+                                        onChangePosition: function onChangePosition(newValue) {
+                                            return setAttributes({
+                                                tabhoverShadowPosition: newValue === undefined ? 0 : newValue
+                                            });
+                                        }
+                                    })
+                                );
+                            }
                         }
-                    }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__["a" /* default */], {
-                        label: "Box Shadow",
-                        inner: true,
-                        color: tabShadowColor,
-                        blur: tabShadowBlur,
-                        horizontal: tabShadowHorizontal,
-                        vertical: tabShadowVertical,
-                        position: tabShadowPosition,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
-                                tabShadowColor: newColor === undefined ? "transparent" : newColor.hex
-                            });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
-                                tabShadowBlur: newBlur === undefined ? 0 : newBlur
-                            });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
-                                tabShadowHorizontal: newValue === undefined ? 0 : newValue
-                            });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
-                                tabShadowVertical: newValue === undefined ? 0 : newValue
-                            });
-                        },
-                        onChangePosition: function onChangePosition(newValue) {
-                            return setAttributes({
-                                tabShadowPosition: newValue === undefined ? 0 : newValue
-                            });
-                        }
-                    })
+                    )
                 ),
                 wp.element.createElement(
                     PanelBody,
@@ -56010,6 +56248,16 @@ var edit = function (_Component) {
                         onChangeVertical: function onChangeVertical(newValue) {
                             return setAttributes({ iconshadowVertical: newValue });
                         }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__["a" /* default */], {
+                        setAttributes: setAttributes,
+                        rangeType: { value: iconPaddingType, label: __("iconPaddingType") },
+                        range: { value: iconPadding, label: __("iconPadding") },
+                        rangeMobile: { value: iconPaddingMobile, label: __("iconPaddingMobile") },
+                        rangeTablet: { value: iconPaddingTablet, label: __("iconPaddingTablet") },
+                        rangeLabel: __("Padding"),
+                        min: 1,
+                        max: 100
                     })
                 ),
                 wp.element.createElement(
@@ -56120,6 +56368,16 @@ var edit = function (_Component) {
                         onChangeVertical: function onChangeVertical(newValue) {
                             return setAttributes({ titleshadowVertical: newValue });
                         }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__["a" /* default */], {
+                        setAttributes: setAttributes,
+                        rangeType: { value: titleMarginType, label: __("titleMarginType") },
+                        range: { value: titleMargin, label: __("titleMargin") },
+                        rangeMobile: { value: titleMarginMobile, label: __("titleMarginMobile") },
+                        rangeTablet: { value: titleMarginTablet, label: __("titleMarginTablet") },
+                        rangeLabel: __("Margin"),
+                        min: 1,
+                        max: 100
                     })
                 ),
                 wp.element.createElement(
@@ -56216,6 +56474,50 @@ var edit = function (_Component) {
                         onChangeVertical: function onChangeVertical(newValue) {
                             return setAttributes({ contentshadowVertical: newValue });
                         }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__["a" /* default */], {
+                        label: "Box Shadow",
+                        inner: true,
+                        color: contentShadowColor,
+                        blur: contentShadowBlur,
+                        horizontal: contentShadowHorizontal,
+                        vertical: contentShadowVertical,
+                        position: contentShadowPosition,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return setAttributes({
+                                contentShadowColor: newColor === undefined ? "transparent" : newColor.hex
+                            });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return setAttributes({
+                                contentShadowBlur: newBlur === undefined ? 0 : newBlur
+                            });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return setAttributes({
+                                contentShadowHorizontal: newValue === undefined ? 0 : newValue
+                            });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return setAttributes({
+                                contentShadowVertical: newValue === undefined ? 0 : newValue
+                            });
+                        },
+                        onChangePosition: function onChangePosition(newValue) {
+                            return setAttributes({
+                                contentShadowPosition: newValue === undefined ? 0 : newValue
+                            });
+                        }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__["a" /* default */], {
+                        setAttributes: setAttributes,
+                        rangeType: { value: contentPaddingType, label: __("contentPaddingType") },
+                        range: { value: contentPadding, label: __("contentPadding") },
+                        rangeMobile: { value: contentPaddingMobile, label: __("contentPaddingMobile") },
+                        rangeTablet: { value: contentPaddingTablet, label: __("contentPaddingTablet") },
+                        rangeLabel: __("Padding"),
+                        min: 1,
+                        max: 100
                     })
                 )
             ), wp.element.createElement(
@@ -56338,7 +56640,43 @@ function styling(props) {
       contentshadowBlur = _props$attributes.contentshadowBlur,
       contentshadowColor = _props$attributes.contentshadowColor,
       contentshadowHorizontal = _props$attributes.contentshadowHorizontal,
-      contentshadowVertical = _props$attributes.contentshadowVertical;
+      contentshadowVertical = _props$attributes.contentshadowVertical,
+      contentShadowBlur = _props$attributes.contentShadowBlur,
+      contentShadowColor = _props$attributes.contentShadowColor,
+      contentShadowHorizontal = _props$attributes.contentShadowHorizontal,
+      contentShadowVertical = _props$attributes.contentShadowVertical,
+      contentShadowPosition = _props$attributes.contentShadowPosition,
+      contentPadding = _props$attributes.contentPadding,
+      contentPaddingTablet = _props$attributes.contentPaddingTablet,
+      contentPaddingType = _props$attributes.contentPaddingType,
+      contentPaddingMobile = _props$attributes.contentPaddingMobile,
+      titleMargin = _props$attributes.titleMargin,
+      titleMarginTablet = _props$attributes.titleMarginTablet,
+      titleMarginType = _props$attributes.titleMarginType,
+      titleMarginMobile = _props$attributes.titleMarginMobile,
+      iconPadding = _props$attributes.iconPadding,
+      iconPaddingTablet = _props$attributes.iconPaddingTablet,
+      iconPaddingType = _props$attributes.iconPaddingType,
+      iconPaddingMobile = _props$attributes.iconPaddingMobile,
+      tabhoverShadowBlur = _props$attributes.tabhoverShadowBlur,
+      tabhoverShadowColor = _props$attributes.tabhoverShadowColor,
+      tabhoverShadowHorizontal = _props$attributes.tabhoverShadowHorizontal,
+      tabhoverShadowVertical = _props$attributes.tabhoverShadowVertical,
+      tabhoverShadowPosition = _props$attributes.tabhoverShadowPosition,
+      tabhoverborderType = _props$attributes.tabhoverborderType,
+      tabhoverborderRadius = _props$attributes.tabhoverborderRadius,
+      tabhoverborderWidth = _props$attributes.tabhoverborderWidth,
+      tabhoverborderColor = _props$attributes.tabhoverborderColor,
+      tabBGHoverColor = _props$attributes.tabBGHoverColor,
+      tabPadding = _props$attributes.tabPadding,
+      tabPaddingType = _props$attributes.tabPaddingType,
+      tabPaddingTablet = _props$attributes.tabPaddingTablet,
+      tabPaddingMobile = _props$attributes.tabPaddingMobile,
+      tabMargin = _props$attributes.tabMargin,
+      tabMarginType = _props$attributes.tabMarginType,
+      tabMarginTablet = _props$attributes.tabMarginTablet,
+      tabMarginMobile = _props$attributes.tabMarginMobile,
+      iconHoverColor = _props$attributes.iconHoverColor;
 
 
   var selectors = {};
@@ -56354,8 +56692,11 @@ function styling(props) {
       "box-shadow": tabShadowHorizontal + 'px ' + tabShadowVertical + 'px ' + tabShadowBlur + 'px ' + tabShadowColor + ' ' + tabShadowPosition,
       "background-color": tabBGColor
     },
-    " .premium-tab-nav-list-item::after": {
-      "background-color": tabsBorderColor
+    " .premium-tab-horizontal .premium-tab-nav-list-item::after": {
+      "background-color": tabsBorderColor + "!important"
+    },
+    " .premium-tab-vertical .premium-tab-nav-list-item::after": {
+      "background-color": tabsBorderColor + "!important"
     },
     " .premium-tab-link-icon-flipped": {
       "border-style": tabborderType,
@@ -56372,7 +56713,7 @@ function styling(props) {
       "background-color": activetabBGColor + "!important"
     },
     " .premium-tab-horizontal .tab-current .premium-tab-link-icon::after": {
-      "border-top-color": arrowColor + "!important"
+      "border-top-color": arrowColor
     },
     " .premium-tab-vertical .tab-current .premium-tab-link-icon::after": {
       "border-left-color": arrowColor + "!important"
@@ -56384,7 +56725,8 @@ function styling(props) {
       "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconborderWidth, "px"),
       "border-color": iconborderColor,
       "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconborderRadius, "px"),
-      "text-shadow": iconshadowHorizontal + 'px ' + iconshadowVertical + 'px ' + iconshadowBlur + 'px ' + iconshadowColor
+      "text-shadow": iconshadowHorizontal + 'px ' + iconshadowVertical + 'px ' + iconshadowBlur + 'px ' + iconshadowColor,
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPadding, iconPaddingType)
     },
     " .tab-current .premium-tab-title-icon": {
       "color": activeiconColor + "!important"
@@ -56406,7 +56748,8 @@ function styling(props) {
       "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderWidth, "px"),
       "border-color": titleborderColor,
       "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px"),
-      "text-shadow": titleshadowHorizontal + 'px ' + titleshadowVertical + 'px ' + titleshadowBlur + 'px ' + titleshadowColor
+      "text-shadow": titleshadowHorizontal + 'px ' + titleshadowVertical + 'px ' + titleshadowBlur + 'px ' + titleshadowColor,
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMargin, titleMarginType)
     },
     " .premium-tab-nav-list-item:hover .premium-tab-title": {
       "color": hovertitleColor + "!important"
@@ -56414,7 +56757,7 @@ function styling(props) {
     " .premium-tab-content-wrap-inner": {
       "color": contentColor
     },
-    " .premium-tab-content": {
+    " .premium-tab-content-section .premium-tab-content": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSize, contentfontSizeType),
       "letter-spacing": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentLetter, "px"),
       "text-transform": contentUpper ? "uppercase" : "none" + "!important",
@@ -56426,31 +56769,68 @@ function styling(props) {
       "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentborderWidth, "px"),
       "border-color": contentborderColor,
       "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentborderRadius, "px"),
-      "text-shadow": contentshadowHorizontal + 'px ' + contentshadowVertical + 'px ' + contentshadowBlur + 'px ' + contentshadowColor
+      "text-shadow": contentshadowHorizontal + 'px ' + contentshadowVertical + 'px ' + contentshadowBlur + 'px ' + contentshadowColor,
+      "box-shadow": contentShadowHorizontal + 'px ' + contentShadowVertical + 'px ' + contentShadowBlur + 'px ' + contentShadowColor + ' ' + contentShadowPosition,
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentPadding, contentPaddingType)
+    },
+    " .premium-tab-nav-list-item a:hover": {
+      "background-color": tabBGHoverColor + "!important",
+      "border-style": tabhoverborderType,
+      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabhoverborderWidth, "px"),
+      "border-color": tabhoverborderColor,
+      "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabhoverborderRadius, "px"),
+      "box-shadow": tabhoverShadowHorizontal + 'px ' + tabhoverShadowVertical + 'px ' + tabhoverShadowBlur + 'px ' + tabhoverShadowColor + ' ' + tabhoverShadowPosition
+    },
+    " .premium-tab-horizontal .tab-current a:hover::after": {
+      "border-top-color": tabBGHoverColor + "!important"
+    },
+    " .premium-tab-vertical .tab-current .premium-tab-link-icon:hover::after": {
+      "border-left-color": tabBGHoverColor + "!important"
+    },
+    " .premium-tab-nav-list-item a": {
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabPadding, tabPaddingType) + "!important",
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabMargin, tabMarginType) + "!important"
+    },
+    " .premium-tab-horizontal .premium-tab-nav-list-item:hover .premium-tab-link-icon::after": {
+      "border-top-color": iconHoverColor
     }
   };
 
   mobile_selectors = {
     " .premium-tab-title-icon": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconfontSizeMobile, iconfontSizeType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconfontSizeMobile, iconfontSizeType) + "!important",
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingMobile, iconPaddingType) + "!important"
     },
     " .premium-tab-nav-list-item .premium-tab-title": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeMobile, titlefontSizeType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeMobile, titlefontSizeType) + "!important",
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginMobile, titleMarginType) + "!important"
     },
     " .premium-tab-content": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeMobile, contentfontSizeType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeMobile, contentfontSizeType) + "!important",
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentPaddingMobile, contentPaddingType) + "!important"
+    },
+    " .premium-tab-nav-list-item a": {
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabPaddingMobile, tabPaddingType) + "!important",
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabMarginMobile, tabMarginType) + "!important"
     }
   };
 
   tablet_selectors = {
     " .premium-tab-title-icon": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconfontSizeTablet, iconfontSizeType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconfontSizeTablet, iconfontSizeType) + "!important",
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingTablet, iconPaddingType) + "!important"
     },
     " .premium-tab-nav-list-item .premium-tab-title": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeTablet, titlefontSizeType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeTablet, titlefontSizeType) + "!important",
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginTablet, titleMarginType) + "!important"
     },
     " .premium-tab-content": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeTablet, contentfontSizeType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeTablet, contentfontSizeType) + "!important",
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentPaddingTablet, contentPaddingType) + "!important"
+    },
+    " .premium-tab-nav-list-item a": {
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabPaddingTablet, tabPaddingType) + "!important",
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabMarginTablet, tabMarginType) + "!important"
     }
   };
 
