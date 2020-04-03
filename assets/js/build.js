@@ -54799,24 +54799,7 @@ var tabAttrs = (_tabAttrs = {
   },
   repeatertabs: {
     type: "array",
-    default: [
-      // {
-      // id: 1,
-      //   title: __("Tab #1"),
-      //   content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
-      //   edit: false,
-      //   active: true,
-      //   default:true
-      // },
-      // {
-      //   id: 2,
-      //   title: __("Tab #2"),
-      //   content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
-      //   edit: false,
-      //   active: false,
-      //   default:false
-      // }
-    ]
+    default: []
   },
   tabborderType: {
     type: "string",
@@ -55495,7 +55478,6 @@ var edit = function (_Component) {
             var $style = document.createElement("style");
             $style.setAttribute("id", "premium-style-tab-" + this.props.clientId);
             document.head.appendChild($style);
-            console.log(this.props.attributes.repeatertabs);
         }
     }, {
         key: "render",
@@ -55733,12 +55715,6 @@ var edit = function (_Component) {
             };
 
             var renderTabs = repeatertabs.map(function (item, index) {
-                // return ( < div className = {
-                //       `premium-tab-title-${type} ${item.active? `premium-tab-title-active-${type}`:""} ${this.props.clientId} ${item.active}`
-                //     } >
-                //    <a onClick={() =>activeTab(index)} style={{color: titleColor}}>{item.title}</a>
-                // </div>
-                // )
                 return wp.element.createElement(
                     "li",
                     { className: "premium-tab-nav-list-item " + (tabStyle == 'flipped' ? "premium-tab-nav-list-item-flipped" : "") + " " + (item.active ? 'tab-current' : "") },
@@ -55758,18 +55734,6 @@ var edit = function (_Component) {
             });
 
             var renderContents = repeatertabs.map(function (item, index) {
-                //   return ( < div className = {
-                //         `premium-tab-content-${type} ${item.active? `premium-tab-content-active-${type}`:""} ${this.props.clientId}`
-                //       } >
-                //           <RichText
-                //             tagName="p"
-                //             value={item.content}
-                //             onChange = {
-                //                 (newText) => changeContentValue(newText, index)
-                //             }
-                //             />
-                //     </div>
-                //     )
                 return wp.element.createElement(
                     "section",
                     { id: "section-tab-content-" + index + "-" + _this2.props.clientId, className: "premium-tab-content-section " + (item.active ? "content-current" : "") },
@@ -55824,10 +55788,7 @@ var edit = function (_Component) {
             };
 
             var activeTab = function activeTab(index) {
-                console.log('i', index);
-
                 return repeatertabs.map(function (item, i) {
-
                     if (index == i) {
                         item.active = false;
                         setAttributes({
@@ -55837,7 +55798,6 @@ var edit = function (_Component) {
                         setAttributes({
                             repeatertabs: onRepeaterChange("active", false, i)
                         });
-                        console.log(repeatertabs);
                     }
                 });
             };

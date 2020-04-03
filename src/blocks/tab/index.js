@@ -28,24 +28,7 @@ const tabAttrs = {
   },
   repeatertabs: {
     type: "array",
-    default: [
-      // {
-      // id: 1,
-      //   title: __("Tab #1"),
-      //   content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
-      //   edit: false,
-      //   active: true,
-      //   default:true
-      // },
-      // {
-      //   id: 2,
-      //   title: __("Tab #2"),
-      //   content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
-      //   edit: false,
-      //   active: false,
-      //   default:false
-      // }
-    ]
+    default: []
   },
   tabborderType: {
     type: "string",

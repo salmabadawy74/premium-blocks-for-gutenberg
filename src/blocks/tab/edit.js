@@ -165,7 +165,6 @@ class edit extends Component {
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-tab-" + this.props.clientId)
         document.head.appendChild($style)
-        console.log(this.props.attributes.repeatertabs);
     }
 
     render() {
@@ -427,12 +426,6 @@ class edit extends Component {
         }
 
         const renderTabs = repeatertabs.map((item, index) => {
-            // return ( < div className = {
-            //       `premium-tab-title-${type} ${item.active? `premium-tab-title-active-${type}`:""} ${this.props.clientId} ${item.active}`
-            //     } >
-            //    <a onClick={() =>activeTab(index)} style={{color: titleColor}}>{item.title}</a>
-            // </div>
-            // )
             return <li className={`premium-tab-nav-list-item ${tabStyle == 'flipped' ? "premium-tab-nav-list-item-flipped" : ""} ${item.active ? 'tab-current' : ""}`}>
                 <a className={`${tabStyle == 'flipped' ? "premium-tab-link-icon-flipped" : "premium-tab-link-icon"}`} href={`#section-tab-content-${index}-${this.props.clientId}`} onClick={() => activeTab(index)}>
                     {item.enableIcon ? <i className={`premium-tab-title-icon ${item.icon}`} /> : ""}
@@ -442,18 +435,6 @@ class edit extends Component {
         })
 
         const renderContents = repeatertabs.map((item, index) => {
-            //   return ( < div className = {
-            //         `premium-tab-content-${type} ${item.active? `premium-tab-content-active-${type}`:""} ${this.props.clientId}`
-            //       } >
-            //           <RichText
-            //             tagName="p"
-            //             value={item.content}
-            //             onChange = {
-            //                 (newText) => changeContentValue(newText, index)
-            //             }
-            //             />
-            //     </div>
-            //     )
             return <section id={`section-tab-content-${index}-${this.props.clientId}`} className={`premium-tab-content-section ${item.active ? `content-current` : ""}`}>
                 <div className="premium-tab-content">
                     <div className="premium-tab-content-wrap-inner">
@@ -503,10 +484,7 @@ class edit extends Component {
         }
 
         const activeTab = (index) => {
-            console.log('i', index);
-
             return repeatertabs.map((item, i) => {
-
                 if (index == i) {
                     item.active = false
                     setAttributes({
@@ -516,7 +494,6 @@ class edit extends Component {
                             index
                         )
                     })
-
                 } else {
                     setAttributes({
                         repeatertabs: onRepeaterChange(
@@ -525,7 +502,6 @@ class edit extends Component {
                             i
                         )
                     })
-                    console.log(repeatertabs);
                 }
             })
         }
