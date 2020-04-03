@@ -277,7 +277,8 @@ class edit extends Component {
             tabMargin,
             tabMarginType,
             tabMarginTablet,
-            tabMarginMobile
+            tabMarginMobile,
+            tabWidth
         } = attributes
 
         const TYPE = [{
@@ -624,6 +625,15 @@ class edit extends Component {
                         />
                         <p>{__("This option allow only in frontend")}</p>
 
+                        {type == 'vertical'? <Fragment>
+                            <RangeControl
+                            label={__("Tabs Sections Width (%)")}
+                            value={tabWidth}
+                            min="1"
+                            max="100"
+                            onChange={value => setAttributes({ tabWidth: value })}
+                        />
+                        </Fragment>: ""}
                         <PremiumRange
                             setAttributes={setAttributes}
                             rangeType={{ value: tabPaddingType, label: __("tabPaddingType") }}
@@ -804,7 +814,12 @@ class edit extends Component {
                             }
                             allowReset={true}
                         />
-                        <p>{__("Arrow Color")}</p>
+                        {
+                            tabStyle == 'arrow' ?
+                            <Fragment>
+                            <p > {
+                                __("Arrow Color")
+                            } </p>
                         <ColorPalette
                             value={arrowColor}
                             onChange={newValue =>
@@ -814,6 +829,7 @@ class edit extends Component {
                             }
                             allowReset={true}
                         />
+                        </Fragment>:""}
                     </PanelBody>
                     <PanelBody
                         title={__("Icon Style")}
@@ -1018,6 +1034,16 @@ class edit extends Component {
                             }
                             allowReset={true}
                         />
+                        <p>{__("Background Color")}</p>
+                        <ColorPalette
+                            value={contentBGColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    contentBGColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
                         <PremiumTypo
                             components={["responsiveSize", "weight", "style", "upper", "spacing"]}
                             setAttributes={setAttributes}
@@ -1039,16 +1065,6 @@ class edit extends Component {
                                 setAttributes({ contentLetter: newValue })
                             }
                             onChangeUpper={check => setAttributes({ contentUpper: check })}
-                        />
-                        <p>{__("Background Color")}</p>
-                        <ColorPalette
-                            value={contentBGColor}
-                            onChange={newValue =>
-                                setAttributes({
-                                    contentBGColor: newValue
-                                })
-                            }
-                            allowReset={true}
                         />
                         <PremiumBorder
                             borderType={contentborderType}
@@ -1134,7 +1150,7 @@ class edit extends Component {
             )} style={{
                 textAlign: align,
             }}>
-                <div className={`premium-tab ${this.props.clientId}`} data-type={`${type}`} data-setting={`${this.props.clientId}`}>
+                <div className={`premium-tab`} data-type={`${type}`} data-setting={`${this.props.clientId}`}>
                     <section className="premium-tab-section">
                         <div className={`premium-tab-container premium-tab-${type}`}>
                             <div className="premium-tab-nav"
@@ -1149,22 +1165,6 @@ class edit extends Component {
                             <div className="premium-tab-clearfix"></div>
                         </div>
                     </section>
-                    {/* <div className={`premium-tab-view-${type} ${this.props.clientId}`}
-               
-                    style={{
-                        textAlign: align,
-                    }}>
-                      <div className={`premium-tab-title__wrap-view-${type} ${this.props.clientId}`}>
-                    {
-                      renderTabs
-                    }
-                    </div>
-                    <div className={`premium-tab-content__wrap-view-${type} ${this.props.clientId}`}>
-                    {
-                      renderContents
-                    }
-                    </div>
-                </div> */}
                 </div>
             </div>
         ]

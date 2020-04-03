@@ -12,33 +12,33 @@ export default function save(props) {
         block_id,
         align,
         repeatertabs,
-        titleColor,
         type,
-        tabIndex
+        tabIndex,
+        tabStyle,
     } = attributes
 
    const renderTabs = repeatertabs.map((item, index) => {
-            return ( < div className = {
-                `premium-tab-title-${type} ${tabIndex-1 == index? `premium-tab-title-active-${type}`: ""} `
-              } >
-               <a style={{color: titleColor}}>{item.title}</a>
-            </div>
-            )
+            return <li className = {
+                `premium-tab-nav-list-item ${tabStyle == 'flipped' ? "premium-tab-nav-list-item-flipped" : ""} ${tabIndex-1== index ? 'tab-current' : ""}`
+            } >
+                <a className={`${tabStyle == 'flipped' ? "premium-tab-link-icon-flipped" : "premium-tab-link-icon"}`}>
+                    {item.enableIcon ? <i className={`premium-tab-title-icon ${item.icon}`} /> : ""}
+                    <p className="premium-tab-title">{item.title}</p>
+                </a>
+            </li>
         })
 
         const renderContents = repeatertabs.map((item, index) => {
-          return ( < div className = {
-                `premium-tab-content-${type} ${tabIndex-1 == index? `premium-tab-content-active-${type}`:""}`
-              } >
-                  <RichText.Content
-                    tagName="p"
-                    value={item.content}
-                    onChange = {
-                        (newText) => changeContentValue(newText, index)
-                    }
-                    />
-            </div>
-            )
+          return <section id={`section-tab-content-${index}-${block_id}`} className={`premium-tab-content-section ${tabIndex-1 == index ? `content-current` : ""}`}>
+                <div className="premium-tab-content">
+                    <div className="premium-tab-content-wrap-inner">
+                        <RichText.Content
+                            tagName="p"
+                            value={item.content}
+                        />
+                    </div>
+                </div>
+            </section>
         })
 
     return (
@@ -49,24 +49,22 @@ export default function save(props) {
             style={{
                 textAlign: align,
             }}>
-            <div className={`premium-tab`} data-type={`${type}`}>
-                <div className={`premium-tab-view-${type}`}
-                
-                    style={{
-                        textAlign: align,
-                    }}>
-                      <div className={`premium-tab-title__wrap-view-${type}`}>
-                    {
-                      renderTabs
-                    }
-                    </div>
-                    <div className={`premium-tab-content__wrap-view-${type}`}>
-                    {
-                      renderContents
-                    }
-                    </div>
+            <div className={`premium-tab`} data-type={`${type}`} data-setting={`${block_id}`}>
+                    <section className="premium-tab-section">
+                        <div className={`premium-tab-container premium-tab-${type}`}>
+                            <div className="premium-tab-nav"
+                                style={{ textAlign: align }}>
+                                <ul className={`premium-tab-nav-list premium-tab-${type}`}>
+                                    {renderTabs}
+                                </ul>
+                            </div>
+                            <div className={`premium-tab-content-wrap premium-tab-${type}`}>
+                                {renderContents}
+                            </div>
+                            <div className="premium-tab-clearfix"></div>
+                        </div>
+                    </section>
                 </div>
-            </div>
             </div>
     )
 }

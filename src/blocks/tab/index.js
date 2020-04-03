@@ -454,6 +454,10 @@ const tabAttrs = {
   tabMarginMobile: {
     type: "number",
     default: 0
+  },
+  tabWidth: {
+    type: "number",
+    default: 100
   }
 };
 

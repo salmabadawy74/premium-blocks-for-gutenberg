@@ -3218,7 +3218,6 @@ color: #23282d;
   z-index: 1;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
-  /* border-left-color: #6ec1e4; */
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
@@ -3261,7 +3260,6 @@ color: #23282d;
   -webkit-transform: translate(-50%);
   transform: translate(-50%);
 }
-.premium-tab-content-wrap .premium-tab-vertical{
-  width: 100%;
+.premium-tab-vertical .premium-tab-content-wrap{
   float: left;
 }

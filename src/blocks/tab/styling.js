@@ -106,7 +106,8 @@ function styling(props) {
     tabMarginType,
     tabMarginTablet,
     tabMarginMobile,
-    iconHoverColor
+    iconHoverColor,
+    tabWidth
   } = props.attributes
 
   var selectors = {}
@@ -146,7 +147,7 @@ function styling(props) {
       "border-top-color": arrowColor
     },
     " .premium-tab-vertical .tab-current .premium-tab-link-icon::after": {
-      "border-left-color": arrowColor + "!important"
+      "border-left-color": arrowColor 
     },
     " .premium-tab-title-icon": {
       "color": iconColor,
@@ -223,6 +224,12 @@ function styling(props) {
     },
     " .premium-tab-horizontal .premium-tab-nav-list-item:hover .premium-tab-link-icon::after":{
       "border-top-color": iconHoverColor,
+    },
+    " .premium-tab-vertical .premium-tab-nav-list-item:hover .premium-tab-link-icon::after": {
+      "border-left-color": iconHoverColor,
+    },
+    " .premium-tab-vertical .premium-tab-content-wrap": {
+      "width": tabWidth + "% !important"
     }
   }
 
@@ -241,7 +248,7 @@ function styling(props) {
     },
     " .premium-tab-nav-list-item a": {
       "padding": generateCSSUnit(tabPaddingMobile, tabPaddingType) + "!important",
-      "margin": generateCSSUnit(tabMarginMobile, tabMarginType) + "!important",
+      "margin": generateCSSUnit(tabMarginMobile, tabMarginType) + "!important"
     }
   }
 
