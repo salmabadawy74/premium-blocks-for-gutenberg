@@ -427,7 +427,7 @@ class edit extends Component {
 
         const renderTabs = repeatertabs.map((item, index) => {
             return <li className={`premium-tab-nav-list-item ${tabStyle == 'flipped' ? "premium-tab-nav-list-item-flipped" : ""} ${item.active ? 'tab-current' : ""}`}>
-                <a className={`${tabStyle == 'flipped' ? "premium-tab-link-icon-flipped" : "premium-tab-link-icon"}`} href={`#section-tab-content-${index}-${this.props.clientId}`} onClick={() => activeTab(index)}>
+                <a className={`${tabStyle == 'flipped' ? "premium-tab-link-icon-flipped" : "premium-tab-link-icon"}`} onClick={() => activeTab(index)}>
                     {item.enableIcon ? <i className={`premium-tab-title-icon ${item.icon}`} /> : ""}
                     <p className="premium-tab-title">{item.title}</p>
                 </a>

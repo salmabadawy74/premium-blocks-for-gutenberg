@@ -126,8 +126,14 @@ function styling(props) {
     " .premium-tab-horizontal .premium-tab-nav-list-item::after": {
       "background-color": tabsBorderColor + "!important"
     },
+    " .premium-tab-horizontal .premium-tab-nav-list-item:last-child::after": {
+      "background-color": "#ffffff00" + "!important"
+    },
     " .premium-tab-vertical .premium-tab-nav-list-item::after": {
       "background-color": tabsBorderColor + "!important"
+    },
+    " .premium-tab-vertical .premium-tab-nav-list-item:last-child::after": {
+      "background-color": "#ffffff00" + "!important"
     },
     " .premium-tab-link-icon-flipped": {
       "border-style": tabborderType,
@@ -135,12 +141,15 @@ function styling(props) {
       "border-color": tabborderColor,
       "border-radius": generateCSSUnit(tabborderRadius, "px"),
       "box-shadow": `${tabShadowHorizontal}px ${tabShadowVertical}px ${tabShadowBlur}px ${tabShadowColor} ${tabShadowPosition}`,
-      "background-color": tabBGColor
+      // "background-color": tabBGColor
     },
     " .tab-current .premium-tab-link-icon": {
       "background-color": activetabBGColor + "!important"
     },
-    " .tab-current .premium-tab-link-icon-flipped": {
+    " .premium-tab-nav-list-item-flipped": {
+      "background-color": tabBGColor
+    },
+    " .tab-current .premium-tab-link-icon-flipped::after": {
       "background-color": activetabBGColor + "!important"
     },
     " .premium-tab-horizontal .tab-current .premium-tab-link-icon::after": {
@@ -188,6 +197,9 @@ function styling(props) {
     " .premium-tab-content-wrap-inner": {
       "color": contentColor
     },
+    " .premium-tab-content-section .premium-tab-content p": {
+      "font-size": generateCSSUnit(contentfontSize, contentfontSizeType) + "!important",
+      },
     " .premium-tab-content-section .premium-tab-content": {
       "font-size": generateCSSUnit(contentfontSize, contentfontSizeType),
       "letter-spacing": generateCSSUnit(contentLetter, "px"),
@@ -246,6 +258,9 @@ function styling(props) {
       "font-size": generateCSSUnit(contentfontSizeMobile, contentfontSizeType) + "!important",
       "padding": generateCSSUnit(contentPaddingMobile, contentPaddingType) + "!important"
     },
+    " .premium-tab-content-section .premium-tab-content p": {
+      "font-size": generateCSSUnit(contentfontSizeMobile, contentfontSizeType) + "!important",
+      },
     " .premium-tab-nav-list-item a": {
       "padding": generateCSSUnit(tabPaddingMobile, tabPaddingType) + "!important",
       "margin": generateCSSUnit(tabMarginMobile, tabMarginType) + "!important"
@@ -257,6 +272,9 @@ function styling(props) {
       "font-size": generateCSSUnit(iconfontSizeTablet, iconfontSizeType) + "!important",
       "padding": generateCSSUnit(iconPaddingTablet, iconPaddingType) + "!important",
     },
+    " .premium-tab-content-section .premium-tab-content p": {
+      "font-size": generateCSSUnit(contentfontSizeTablet, contentfontSizeType) + "!important",
+      },
     " .premium-tab-nav-list-item .premium-tab-title": {
       "font-size": generateCSSUnit(titlefontSizeTablet, titlefontSizeType) + "!important",
       "margin": generateCSSUnit(titleMarginTablet, titleMarginType) + "!important"

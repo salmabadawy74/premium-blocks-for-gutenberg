@@ -1161,7 +1161,7 @@ class Premium_Blocks_Integration {
 					"border-color" => $attr['tabborderColor'],
 					"border-radius" => self::get_css_value($attr['tabborderRadius'], 'px'),
 					"background-color" => $attr['tabBGColor'],
-					"box-shadow" => self::get_css_value($attr['tabShadowHorizontal'], 'px') .self::get_css_value($attr['tabShadowVertical'],'px') .self::get_css_value($attr['tabShadowBlur'],'px') . $attr['tabShadowColor'] . $attr['tabShadowPosition']
+					"box-shadow" => self::get_css_value($attr['tabShadowHorizontal'], 'px ') . self::get_css_value($attr['tabShadowVertical'],'px ') . self::get_css_value($attr['tabShadowBlur'],'px ') .  self::get_css_value($attr['tabShadowColor'], " ") . $attr[ 'tabShadowPosition']
 				),
 				" .premium-tab-horizontal .premium-tab-nav-list-item::after" => array(
 					"background-color" => self::get_css_value($attr['tabsBorderColor'], " !important")
@@ -1169,18 +1169,26 @@ class Premium_Blocks_Integration {
 				" .premium-tab-vertical .premium-tab-nav-list-item::after" => array(
 					"background-color" => self::get_css_value($attr['tabsBorderColor'], " !important")
 				),
+				" .premium-tab-horizontal .premium-tab-nav-list-item:last-child::after" => array(
+					"background-color" =>"#ffffff00 !important"
+				),
+				" .premium-tab-vertical .premium-tab-nav-list-item:last-child::after" => array(
+					"background-color" =>  "#ffffff00 !important"
+				),
 				" .premium-tab-link-icon-flipped" => array(
 					"border-style" => $attr['tabborderType'],
 					"border-width" =>  self::get_css_value($attr['tabborderWidth'] , 'px'),
 					"border-color" => $attr['tabborderColor'],
 					"border-radius" => self::get_css_value($attr['tabborderRadius'], 'px'),
-					"background-color" => $attr['tabBGColor'],
-					"box-shadow" => self::get_css_value($attr['tabShadowHorizontal'], 'px') .self::get_css_value($attr['tabShadowVertical'],'px') .self::get_css_value($attr['tabShadowBlur'],'px') . $attr['tabShadowColor'] . $attr['tabShadowPosition']
+					"box-shadow" => self::get_css_value($attr['tabShadowHorizontal'], 'px ') . self::get_css_value($attr['tabShadowVertical'],'px ') . self::get_css_value($attr['tabShadowBlur'],'px ') .  self::get_css_value($attr['tabShadowColor'], " ") . $attr[ 'tabShadowPosition']
 				),
 				" .tab-current .premium-tab-link-icon" => array(
 					"background-color" => self::get_css_value($attr['activetabBGColor'], " !important")
 				),
-				" .tab-current .premium-tab-link-icon-flipped" => array(
+				" .premium-tab-nav-list-item-flipped" => array(
+					"background-color" => $attr['tabBGColor'],
+				),
+				" .tab-current .premium-tab-link-icon-flipped::after" => array(
 					"background-color" => self::get_css_value($attr['activetabBGColor'], " !important")
 				),
 				" .premium-tab-horizontal .tab-current .premium-tab-link-icon::after" => array(
@@ -1212,14 +1220,14 @@ class Premium_Blocks_Integration {
 					"color" => $attr['titleColor'],
 					"font-size" => self::get_css_value($attr['titlefontSize'], $attr['titlefontSizeType']),
 					"letter-spacing" => self::get_css_value($attr['titleLetter'] , 'px') ,
-          "text-transform" => $attr['titleUpper'] ? "uppercase" : "none" ,
-          "font-style" => self::get_css_value($attr['titleStyle'], " !important") ,
+					"text-transform" => $attr['titleUpper'] ? "uppercase" : "none" ,
+					"font-style" => self::get_css_value($attr['titleStyle'], " !important") ,
 					"font-weight" => self::get_css_value($attr['titleWeight'], " !important") ,
 					"border-style" => $attr['titleborderType'],
 					"border-width" =>  self::get_css_value($attr['titleborderWidth'] , 'px'),
 					"border-color" => $attr['titleborderColor'],
 					"border-radius" => self::get_css_value($attr['titleborderRadius'], 'px'),
-					"text-shadow" => self::get_css_value($attr['titleshadowHorizontal'], 'px') .self::get_css_value($attr['titleshadowVertical'],'px') . self::get_css_value($attr['titleshadowBlur'], 'px') . $attr['titleshadowColor'],
+					"text-shadow" => self::get_css_value($attr['titleshadowHorizontal'], 'px ') .self::get_css_value($attr['titleshadowVertical'],'px ') . self::get_css_value($attr['titleshadowBlur'], 'px ') . $attr['titleshadowColor'],
 					"margin" =>  self::get_css_value($attr['titleMargin'], $attr['titleMarginType']),
 				),
 				" .premium-tab-nav-list-item:hover .premium-tab-title" => array(
@@ -1231,8 +1239,8 @@ class Premium_Blocks_Integration {
 				" .premium-tab-content-section .premium-tab-content" => array(
 					"font-size" => self::get_css_value($attr['contentfontSize'], $attr['contentfontSizeType']),
 					"letter-spacing" => self::get_css_value($attr['contentLetter'] , 'px') ,
-          "text-transform" => $attr['contentUpper'] ? "uppercase" : "none" ,
-          "font-style" => self::get_css_value($attr['contentStyle'], " !important") ,
+					"text-transform" => $attr['contentUpper'] ? "uppercase" : "none" ,
+					"font-style" => self::get_css_value($attr['contentStyle'], " !important") ,
 					"font-weight" => self::get_css_value($attr['contentWeight'], " !important") ,
 					"color" => self::get_css_value($attr['contentColor'], " !important") ,
 					"background-color" => $attr['contentBGColor'],
@@ -1240,9 +1248,9 @@ class Premium_Blocks_Integration {
 					"border-width" =>  self::get_css_value($attr['contentborderWidth'] , 'px'),
 					"border-color" => $attr['contentborderColor'],
 					"border-radius" => self::get_css_value($attr['contentborderRadius'], 'px'),
-					"text-shadow" => self::get_css_value($attr['contentshadowHorizontal'], 'px') .self::get_css_value($attr['contentshadowVertical'],'px') . self::get_css_value($attr['contentshadowBlur'], 'px') . $attr['contentshadowColor'],
+					"text-shadow" => self::get_css_value($attr['contentshadowHorizontal'], 'px ') .self::get_css_value($attr['contentshadowVertical'],'px ') . self::get_css_value($attr['contentshadowBlur'], 'px ') . $attr['contentshadowColor'],
 					"padding" =>  self::get_css_value($attr['contentPadding'], $attr['contentPaddingType']),
-					"box-shadow" => self::get_css_value($attr['contentShadowHorizontal'], 'px') .self::get_css_value($attr['contentShadowVertical'],'px') .self::get_css_value($attr['contentShadowBlur'],'px') . $attr['contentShadowColor'] . $attr['contentShadowPosition']
+					"box-shadow" => self::get_css_value($attr['contentShadowHorizontal'], 'px ') .self::get_css_value($attr['contentShadowVertical'],'px ') .self::get_css_value($attr['contentShadowBlur'],'px ') . self::get_css_value( $attr['contentShadowColor'], " ") . $attr['contentShadowPosition']
 				),
 				" .premium-tab-nav-list-item a:hover" => array(
 					"background-color" => self::get_css_value($attr['tabBGHoverColor'], '!important'),
@@ -1250,7 +1258,7 @@ class Premium_Blocks_Integration {
 					"border-color" => $attr['tabhoverborderColor'],
 					"border-style" => $attr['tabhoverborderType'],
 					"border-radius" => self::get_css_value($attr['tabhoverborderRadius'], 'px'),
-					"box-shadow" => self::get_css_value($attr['tabhoverShadowHorizontal'], 'px') .self::get_css_value($attr['tabhoverShadowVertical'],'px') .self::get_css_value($attr['tabhoverShadowBlur'],'px') . $attr['tabhoverShadowColor'] . $attr['tabhoverShadowPosition']
+					"box-shadow" => self::get_css_value($attr['tabhoverShadowHorizontal'], 'px ') .self::get_css_value($attr['tabhoverShadowVertical'],'px ') .self::get_css_value($attr['tabhoverShadowBlur'],'px ') .self::get_css_value( $attr['tabhoverShadowColor'], " ") . $attr['tabhoverShadowPosition']
 				),
 				" .premium-tab-horizontal .tab-current a:hover::after" => array(
 					"border-top-color" => self::get_css_value($attr['tabBGHoverColor'], '!important')

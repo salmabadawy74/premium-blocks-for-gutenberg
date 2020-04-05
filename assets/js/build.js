@@ -2294,14 +2294,14 @@ var listCacheClear = __webpack_require__(87),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `ListCache`.
@@ -3070,14 +3070,14 @@ var mapCacheClear = __webpack_require__(103),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `MapCache`.
@@ -8714,14 +8714,14 @@ var hashClear = __webpack_require__(105),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `Hash`.
@@ -9081,13 +9081,13 @@ var MapCache = __webpack_require__(40),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-  var index = -1,
-      length = values == null ? 0 : values.length;
+    var index = -1,
+        length = values == null ? 0 : values.length;
 
-  this.__data__ = new MapCache();
-  while (++index < length) {
-    this.add(values[index]);
-  }
+    this.__data__ = new MapCache();
+    while (++index < length) {
+        this.add(values[index]);
+    }
 }
 
 // Add methods to `SetCache`.
@@ -10031,16 +10031,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-  var result = keys(object),
-      length = result.length;
+    var result = keys(object),
+        length = result.length;
 
-  while (length--) {
-    var key = result[length],
-        value = object[key];
+    while (length--) {
+        var key = result[length],
+            value = object[key];
 
-    result[length] = [key, value, isStrictComparable(value)];
-  }
-  return result;
+        result[length] = [key, value, isStrictComparable(value)];
+    }
+    return result;
 }
 
 module.exports = getMatchData;
@@ -55720,7 +55720,7 @@ var edit = function (_Component) {
                     { className: "premium-tab-nav-list-item " + (tabStyle == 'flipped' ? "premium-tab-nav-list-item-flipped" : "") + " " + (item.active ? 'tab-current' : "") },
                     wp.element.createElement(
                         "a",
-                        { className: "" + (tabStyle == 'flipped' ? "premium-tab-link-icon-flipped" : "premium-tab-link-icon"), href: "#section-tab-content-" + index + "-" + _this2.props.clientId, onClick: function onClick() {
+                        { className: "" + (tabStyle == 'flipped' ? "premium-tab-link-icon-flipped" : "premium-tab-link-icon"), onClick: function onClick() {
                                 return activeTab(index);
                             } },
                         item.enableIcon ? wp.element.createElement("i", { className: "premium-tab-title-icon " + item.icon }) : "",
@@ -56695,21 +56695,30 @@ function styling(props) {
     " .premium-tab-horizontal .premium-tab-nav-list-item::after": {
       "background-color": tabsBorderColor + "!important"
     },
+    " .premium-tab-horizontal .premium-tab-nav-list-item:last-child::after": {
+      "background-color": "#ffffff00" + "!important"
+    },
     " .premium-tab-vertical .premium-tab-nav-list-item::after": {
       "background-color": tabsBorderColor + "!important"
+    },
+    " .premium-tab-vertical .premium-tab-nav-list-item:last-child::after": {
+      "background-color": "#ffffff00" + "!important"
     },
     " .premium-tab-link-icon-flipped": {
       "border-style": tabborderType,
       "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderWidth, "px"),
       "border-color": tabborderColor,
       "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderRadius, "px"),
-      "box-shadow": tabShadowHorizontal + 'px ' + tabShadowVertical + 'px ' + tabShadowBlur + 'px ' + tabShadowColor + ' ' + tabShadowPosition,
-      "background-color": tabBGColor
+      "box-shadow": tabShadowHorizontal + 'px ' + tabShadowVertical + 'px ' + tabShadowBlur + 'px ' + tabShadowColor + ' ' + tabShadowPosition
+      // "background-color": tabBGColor
     },
     " .tab-current .premium-tab-link-icon": {
       "background-color": activetabBGColor + "!important"
     },
-    " .tab-current .premium-tab-link-icon-flipped": {
+    " .premium-tab-nav-list-item-flipped": {
+      "background-color": tabBGColor
+    },
+    " .tab-current .premium-tab-link-icon-flipped::after": {
       "background-color": activetabBGColor + "!important"
     },
     " .premium-tab-horizontal .tab-current .premium-tab-link-icon::after": {
@@ -56756,6 +56765,9 @@ function styling(props) {
     },
     " .premium-tab-content-wrap-inner": {
       "color": contentColor
+    },
+    " .premium-tab-content-section .premium-tab-content p": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSize, contentfontSizeType) + "!important"
     },
     " .premium-tab-content-section .premium-tab-content": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSize, contentfontSizeType),
@@ -56815,6 +56827,9 @@ function styling(props) {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeMobile, contentfontSizeType) + "!important",
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentPaddingMobile, contentPaddingType) + "!important"
     },
+    " .premium-tab-content-section .premium-tab-content p": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeMobile, contentfontSizeType) + "!important"
+    },
     " .premium-tab-nav-list-item a": {
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabPaddingMobile, tabPaddingType) + "!important",
       "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabMarginMobile, tabMarginType) + "!important"
@@ -56825,6 +56840,9 @@ function styling(props) {
     " .premium-tab-title-icon": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconfontSizeTablet, iconfontSizeType) + "!important",
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingTablet, iconPaddingType) + "!important"
+    },
+    " .premium-tab-content-section .premium-tab-content p": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentfontSizeTablet, contentfontSizeType) + "!important"
     },
     " .premium-tab-nav-list-item .premium-tab-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeTablet, titlefontSizeType) + "!important",

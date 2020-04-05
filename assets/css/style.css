@@ -2935,7 +2935,6 @@ color: #23282d;
   -webkit-box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
-    padding: 8rem 0;
 }
 .premium-tab-container{
   position: relative;
@@ -2950,8 +2949,8 @@ color: #23282d;
     display: -moz-flex;
     display: -ms-flex;
     display: flex;
-    margin: 0 auto;
-    padding: 0;
+    margin: 0px !important;
+    padding: 0px !important;
     list-style: none;
     -ms-box-orient: horizontal;
     -ms-box-pack: center;
@@ -2963,6 +2962,9 @@ color: #23282d;
     -moz-justify-content: center;
     -ms-justify-content: center;
     justify-content: center;
+}
+.premium-tab-content-wrap-inner p{
+  margin: 0px !important;
 }
 .premium-tab-content-wrap{
   position: relative;
@@ -3037,6 +3039,7 @@ color: #23282d;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  font-style: normal !important;
 }
 .premium-tab-title-icon::before{
   display: block;
@@ -3063,10 +3066,10 @@ color: #23282d;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     /* border-top-color: #6ec1e4; */
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    /* -webkit-transition:  0.3s;
+    -moz-transition:  0.3s;
+    -o-transition:  0.3s;
+    transition:  0.3s; */
 }
 .premium-tab-link-icon::after {
   position: absolute;
@@ -3084,6 +3087,7 @@ color: #23282d;
   display: none;
     margin: 0 auto;
     text-align: center;
+    padding: 0% !important;
 }
 .premium-tab-content-wrap .content-current{
   display: block !important;
@@ -3122,7 +3126,7 @@ color: #23282d;
 .tab-current .premium-tab-link-icon-flipped::after {
   -webkit-transform: perspective(900px) rotate3d(1, 0, 0, 0deg);
   transform: perspective(900px) rotate3d(1, 0, 0, 0deg);
-  background-color: #7a7a7a !important;
+  /* background-color: #7a7a7a !important; */
 }
 .premium-tab-link-icon-flipped::after {
   position: absolute;
@@ -3143,17 +3147,8 @@ color: #23282d;
   -webkit-perspective-origin: 50% 100%;
   perspective-origin: 50% 100%;
 }
-.premium-tab-horizontal .premium-tab-nav-list-item-flipped:not(.tab-current)::after {
-  position: absolute;
-  top: 20%;
-  right: 0;
-  z-index: 1;
-  width: 1px;
-  height: 60%;
-  content: '';
-}
 .premium-tab-nav-list-item-flipped{
-  background-color: #6ec1e4;
+  /* background-color: #6ec1e4; */
 }
 .premium-tab-vertical{
   display: -ms-flexbox;
@@ -3179,6 +3174,19 @@ color: #23282d;
 .premium-tab-vertical .premium-tab-link-icon-flipped{
   padding: 25px;
 }
+.premium-tab-vertical .premium-tab-link-icon-flipped::after{
+  -webkit-transform: perspective(900px) rotate3d(0, 1, 0, 90deg);
+    transform: perspective(900px) rotate3d(0, 1, 0, 90deg);
+    -webkit-transform-origin: 0%;
+    transform-origin: 0%;
+    -webkit-perspective-origin: 0%;
+    perspective-origin: 0%;
+    transform-origin: 0%;
+}
+.premium-tab-vertical .tab-current .premium-tab-link-icon-flipped::after{
+  -webkit-transform: perspective(900px) rotate3d(1, 0, 0, 0deg);
+  transform: perspective(900px) rotate3d(1, 0, 0, 0deg);
+}
 .premium-tab-vertical .tab-current .premium-tab-link-icon::after{
   position: absolute;
   top: 50%;
@@ -3192,10 +3200,10 @@ color: #23282d;
   z-index: 1;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  /* -webkit-transition:  0.3s;
+  -moz-transition:  0.3s;
+  -o-transition:  0.3s;
+  transition:  0.3s; */
 }
 .premium-tab-vertical .premium-tab-nav-list-item::after {
   position: absolute;
@@ -3212,17 +3220,6 @@ color: #23282d;
   border-left-color: #7a7a7a;
 }
 .premium-tab-vertical .premium-tab-nav-list-item-flipped::after {
-  position: absolute;
-  content: '';
-  bottom: 0;
-  left: 50%;
-  z-index: 1;
-  width: 50%;
-  height: 1px;
-  -webkit-transform: translate(-50%);
-  transform: translate(-50%);
-}
-.premium-tab-vertical .premium-tab-nav-list-item::after {
   position: absolute;
   content: '';
   bottom: 0;
