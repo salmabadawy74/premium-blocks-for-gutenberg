@@ -224,10 +224,6 @@ class edit extends Component {
             iconshadowHorizontal,
             iconshadowVertical,
             hovertitleColor,
-            titleborderType,
-            titleborderRadius,
-            titleborderWidth,
-            titleborderColor,
             titleshadowBlur,
             titleshadowColor,
             titleshadowHorizontal,
@@ -421,7 +417,7 @@ class edit extends Component {
         const renderTabs = repeatertabs.map((item, index) => {
             return <li className={`premium-tab-nav-list-item ${tabStyle == 'flipped' ? "premium-tab-nav-list-item-flipped" : ""} ${item.active ? 'tab-current' : ""}`}>
                 <a className={`${tabStyle == 'flipped' ? "premium-tab-link-icon-flipped" : "premium-tab-link-icon"}`} onClick={() => activeTab(index)}>
-                    {item.enableIcon ? <i className={`premium-tab-title-icon ${item.icon}`} /> : ""}
+                    <i className={`premium-tab-title-icon ${item.icon} ${item.enableIcon}`} />
                     <p className="premium-tab-title">{item.title}</p>
                 </a>
             </li>
@@ -429,7 +425,9 @@ class edit extends Component {
 
         const renderContents = repeatertabs.map((item, index) => {
             return <section id={`section-tab-content-${index}-${this.props.clientId}`} className={`premium-tab-content-section ${item.active ? `content-current` : ""}`}>
-                <div className="premium-tab-content">
+                <div className="premium-tab-content"  style={{
+                textAlign: align,
+            }}>
                     <div className="premium-tab-content-wrap-inner">
                         <RichText
                             tagName="p"
@@ -591,18 +589,8 @@ class edit extends Component {
                             min="1"
                             max={repeatertabs.length}
                             onChange={value => setAttributes({ tabIndex: value })}
+                            help="This option works only on frontend"
                         />
-                        <p>{__("This option allow only in frontend")}</p>
-
-                        {type == 'vertical'? <Fragment>
-                            <RangeControl
-                            label={__("Tabs Sections Width (%)")}
-                            value={tabWidth}
-                            min="1"
-                            max="100"
-                            onChange={value => setAttributes({ tabWidth: value })}
-                        />
-                        </Fragment>: ""}
                         <PremiumRange
                             setAttributes={setAttributes}
                             rangeType={{ value: tabPaddingType, label: __("tabPaddingType") }}
@@ -845,7 +833,7 @@ class edit extends Component {
                             range={{ value: iconfontSize, label: __("iconfontSize") }}
                             rangeMobile={{ value: iconfontSizeMobile, label: __("iconfontSizeMobile") }}
                             rangeTablet={{ value: iconfontSizeTablet, label: __("iconfontSizeTablet") }}
-                            rangeLabel={__("Font Size")}
+                            rangeLabel={__("Size")}
                             min={1}
                             max={100}
                         />
@@ -947,20 +935,6 @@ class edit extends Component {
                             }
                             onChangeUpper={check => setAttributes({ titleUpper: check })}
                         />
-                        <PremiumBorder
-                            borderType={titleborderType}
-                            borderWidth={titleborderWidth}
-                            borderColor={titleborderColor}
-                            borderRadius={titleborderRadius}
-                            onChangeType={newType => setAttributes({ titleborderType: newType })}
-                            onChangeWidth={newWidth => setAttributes({ titleborderWidth: newWidth })}
-                            onChangeColor={colorValue =>
-                                setAttributes({ titleborderColor: colorValue.hex })
-                            }
-                            onChangeRadius={newrRadius =>
-                                setAttributes({ titleborderRadius: newrRadius })
-                            }
-                        />
                         <PremiumTextShadow
                             color={titleshadowColor}
                             blur={titleshadowBlur}
@@ -993,6 +967,15 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
+                        {type == 'vertical'? <Fragment>
+                            <RangeControl
+                            label={__("Content Width")}
+                            value={tabWidth}
+                            min="1"
+                            max="100"
+                            onChange={value => setAttributes({ tabWidth: value })}
+                        />
+                        </Fragment>: ""}
                         <p>{__("Color")}</p>
                         <ColorPalette
                             value={contentColor}

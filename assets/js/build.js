@@ -2294,14 +2294,14 @@ var listCacheClear = __webpack_require__(87),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `ListCache`.
@@ -3070,14 +3070,14 @@ var mapCacheClear = __webpack_require__(103),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `MapCache`.
@@ -8714,14 +8714,14 @@ var hashClear = __webpack_require__(105),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `Hash`.
@@ -9081,13 +9081,13 @@ var MapCache = __webpack_require__(40),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-  var index = -1,
-      length = values == null ? 0 : values.length;
+    var index = -1,
+        length = values == null ? 0 : values.length;
 
-  this.__data__ = new MapCache();
-  while (++index < length) {
-    this.add(values[index]);
-  }
+    this.__data__ = new MapCache();
+    while (++index < length) {
+        this.add(values[index]);
+    }
 }
 
 // Add methods to `SetCache`.
@@ -10031,16 +10031,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-  var result = keys(object),
-      length = result.length;
+    var result = keys(object),
+        length = result.length;
 
-  while (length--) {
-    var key = result[length],
-        value = object[key];
+    while (length--) {
+        var key = result[length],
+            value = object[key];
 
-    result[length] = [key, value, isStrictComparable(value)];
-  }
-  return result;
+        result[length] = [key, value, isStrictComparable(value)];
+    }
+    return result;
 }
 
 module.exports = getMatchData;
@@ -55013,22 +55013,6 @@ var tabAttrs = (_tabAttrs = {
     type: "number",
     default: "0"
   },
-  titleborderType: {
-    type: "string",
-    default: "none"
-  },
-  titleborderWidth: {
-    type: "number",
-    default: "1"
-  },
-  titleborderRadius: {
-    type: "number",
-    default: 0
-  },
-  titleborderColor: {
-    type: "string",
-    default: "#d4d4d4"
-  },
   titleshadowColor: {
     type: "string"
   },
@@ -55539,10 +55523,6 @@ var edit = function (_Component) {
                 iconshadowHorizontal = attributes.iconshadowHorizontal,
                 iconshadowVertical = attributes.iconshadowVertical,
                 hovertitleColor = attributes.hovertitleColor,
-                titleborderType = attributes.titleborderType,
-                titleborderRadius = attributes.titleborderRadius,
-                titleborderWidth = attributes.titleborderWidth,
-                titleborderColor = attributes.titleborderColor,
                 titleshadowBlur = attributes.titleshadowBlur,
                 titleshadowColor = attributes.titleshadowColor,
                 titleshadowHorizontal = attributes.titleshadowHorizontal,
@@ -55714,7 +55694,7 @@ var edit = function (_Component) {
                         { className: "" + (tabStyle == 'flipped' ? "premium-tab-link-icon-flipped" : "premium-tab-link-icon"), onClick: function onClick() {
                                 return activeTab(index);
                             } },
-                        item.enableIcon ? wp.element.createElement("i", { className: "premium-tab-title-icon " + item.icon }) : "",
+                        wp.element.createElement("i", { className: "premium-tab-title-icon " + item.icon + " " + item.enableIcon }),
                         wp.element.createElement(
                             "p",
                             { className: "premium-tab-title" },
@@ -55730,7 +55710,9 @@ var edit = function (_Component) {
                     { id: "section-tab-content-" + index + "-" + _this2.props.clientId, className: "premium-tab-content-section " + (item.active ? "content-current" : "") },
                     wp.element.createElement(
                         "div",
-                        { className: "premium-tab-content" },
+                        { className: "premium-tab-content", style: {
+                                textAlign: align
+                            } },
                         wp.element.createElement(
                             "div",
                             { className: "premium-tab-content-wrap-inner" },
@@ -55895,26 +55877,9 @@ var edit = function (_Component) {
                         max: repeatertabs.length,
                         onChange: function onChange(value) {
                             return setAttributes({ tabIndex: value });
-                        }
+                        },
+                        help: "This option works only on frontend"
                     }),
-                    wp.element.createElement(
-                        "p",
-                        null,
-                        __("This option allow only in frontend")
-                    ),
-                    type == 'vertical' ? wp.element.createElement(
-                        Fragment,
-                        null,
-                        wp.element.createElement(RangeControl, {
-                            label: __("Tabs Sections Width (%)"),
-                            value: tabWidth,
-                            min: "1",
-                            max: "100",
-                            onChange: function onChange(value) {
-                                return setAttributes({ tabWidth: value });
-                            }
-                        })
-                    ) : "",
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__["a" /* default */], {
                         setAttributes: setAttributes,
                         rangeType: { value: tabPaddingType, label: __("tabPaddingType") },
@@ -56199,7 +56164,7 @@ var edit = function (_Component) {
                         range: { value: iconfontSize, label: __("iconfontSize") },
                         rangeMobile: { value: iconfontSizeMobile, label: __("iconfontSizeMobile") },
                         rangeTablet: { value: iconfontSizeTablet, label: __("iconfontSizeTablet") },
-                        rangeLabel: __("Font Size"),
+                        rangeLabel: __("Size"),
                         min: 1,
                         max: 100
                     }),
@@ -56323,24 +56288,6 @@ var edit = function (_Component) {
                             return setAttributes({ titleUpper: check });
                         }
                     }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
-                        borderType: titleborderType,
-                        borderWidth: titleborderWidth,
-                        borderColor: titleborderColor,
-                        borderRadius: titleborderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return setAttributes({ titleborderType: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(newWidth) {
-                            return setAttributes({ titleborderWidth: newWidth });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ titleborderColor: colorValue.hex });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ titleborderRadius: newrRadius });
-                        }
-                    }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__["a" /* default */], {
                         color: titleshadowColor,
                         blur: titleshadowBlur,
@@ -56377,6 +56324,19 @@ var edit = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
+                    type == 'vertical' ? wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(RangeControl, {
+                            label: __("Content Width"),
+                            value: tabWidth,
+                            min: "1",
+                            max: "100",
+                            onChange: function onChange(value) {
+                                return setAttributes({ tabWidth: value });
+                            }
+                        })
+                    ) : "",
                     wp.element.createElement(
                         "p",
                         null,
@@ -56579,10 +56539,6 @@ function styling(props) {
       iconshadowHorizontal = _props$attributes.iconshadowHorizontal,
       iconshadowVertical = _props$attributes.iconshadowVertical,
       hovertitleColor = _props$attributes.hovertitleColor,
-      titleborderType = _props$attributes.titleborderType,
-      titleborderRadius = _props$attributes.titleborderRadius,
-      titleborderWidth = _props$attributes.titleborderWidth,
-      titleborderColor = _props$attributes.titleborderColor,
       titleshadowBlur = _props$attributes.titleshadowBlur,
       titleshadowColor = _props$attributes.titleshadowColor,
       titleshadowHorizontal = _props$attributes.titleshadowHorizontal,
@@ -56703,10 +56659,6 @@ function styling(props) {
       "text-transform": titleUpper ? "uppercase" : "none" + "!important",
       "font-style": titleStyle + "!important",
       "font-weight": titleWeight + "!important",
-      "border-style": titleborderType,
-      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderWidth, "px"),
-      "border-color": titleborderColor,
-      "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px"),
       "text-shadow": titleshadowHorizontal + 'px ' + titleshadowVertical + 'px ' + titleshadowBlur + 'px ' + titleshadowColor,
       "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMargin, titleMarginType)
     },

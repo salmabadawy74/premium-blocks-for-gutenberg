@@ -242,22 +242,6 @@ const tabAttrs = {
     type: "number",
     default: "0"
   },
-  titleborderType: {
-    type: "string",
-    default: "none"
-  },
-  titleborderWidth: {
-    type: "number",
-    default: "1"
-  },
-  titleborderRadius: {
-    type: "number",
-    default: 0
-  },
-  titleborderColor: {
-    type: "string",
-    default: "#d4d4d4"
-  },
   titleshadowColor: {
     type: "string"
   },
