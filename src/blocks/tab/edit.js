@@ -16,8 +16,6 @@ import {
 
 const { __ } = wp.i18n
 
-let isBoxUpdated = null;
-
 const {
     Component,
     Fragment,
@@ -247,11 +245,6 @@ class edit extends Component {
             contentshadowColor,
             contentshadowHorizontal,
             contentshadowVertical,
-            contentShadowBlur,
-            contentShadowColor,
-            contentShadowHorizontal,
-            contentShadowVertical,
-            contentShadowPosition,
             contentPadding,
             contentPaddingTablet,
             contentPaddingType,
@@ -1070,41 +1063,6 @@ class edit extends Component {
                             }
                             onChangeVertical={newValue =>
                             setAttributes({ contentshadowVertical: newValue })
-                            }
-                        />
-                        <PremiumBoxShadow
-                            label="Box Shadow"
-                            inner={true}
-                            color={contentShadowColor}
-                            blur={contentShadowBlur}
-                            horizontal={contentShadowHorizontal}
-                            vertical={contentShadowVertical}
-                            position={contentShadowPosition}
-                            onChangeColor={newColor =>
-                                setAttributes({
-                                    contentShadowColor:
-                                        newColor === undefined ? "transparent" : newColor.hex
-                                })
-                            }
-                            onChangeBlur={newBlur =>
-                                setAttributes({
-                                    contentShadowBlur: newBlur === undefined ? 0 : newBlur
-                                })
-                            }
-                            onChangehHorizontal={newValue =>
-                                setAttributes({
-                                    contentShadowHorizontal: newValue === undefined ? 0 : newValue
-                                })
-                            }
-                            onChangeVertical={newValue =>
-                                setAttributes({
-                                    contentShadowVertical: newValue === undefined ? 0 : newValue
-                                })
-                            }
-                            onChangePosition={newValue =>
-                                setAttributes({
-                                    contentShadowPosition: newValue === undefined ? 0 : newValue
-                                })
                             }
                         />
                         <PremiumRange

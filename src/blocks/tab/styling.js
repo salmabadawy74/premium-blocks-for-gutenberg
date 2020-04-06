@@ -29,7 +29,6 @@ function styling(props) {
     contentfontSizeMobile,
     contentfontSizeTablet,
     contentfontSizeType,
-    type,
     tabsBorderColor,
     tabShadowBlur,
     tabShadowColor,
@@ -71,11 +70,6 @@ function styling(props) {
     contentshadowColor,
     contentshadowHorizontal,
     contentshadowVertical,
-    contentShadowBlur,
-    contentShadowColor,
-    contentShadowHorizontal,
-    contentShadowVertical,
-    contentShadowPosition,
     contentPadding,
     contentPaddingTablet,
     contentPaddingType,
@@ -141,7 +135,6 @@ function styling(props) {
       "border-color": tabborderColor,
       "border-radius": generateCSSUnit(tabborderRadius, "px"),
       "box-shadow": `${tabShadowHorizontal}px ${tabShadowVertical}px ${tabShadowBlur}px ${tabShadowColor} ${tabShadowPosition}`,
-      // "background-color": tabBGColor
     },
     " .tab-current .premium-tab-link-icon": {
       "background-color": activetabBGColor + "!important"
@@ -213,7 +206,6 @@ function styling(props) {
       "border-color": contentborderColor,
       "border-radius": generateCSSUnit(contentborderRadius, "px"),
       "text-shadow": `${contentshadowHorizontal}px ${contentshadowVertical}px ${contentshadowBlur}px ${contentshadowColor}`,
-      "box-shadow": `${contentShadowHorizontal}px ${contentShadowVertical}px ${contentShadowBlur}px ${contentShadowColor} ${contentShadowPosition}`,
       "padding": generateCSSUnit(contentPadding, contentPaddingType)
     },
     " .premium-tab-nav-list-item a:hover":{

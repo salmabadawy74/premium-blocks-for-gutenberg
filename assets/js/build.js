@@ -2294,14 +2294,14 @@ var listCacheClear = __webpack_require__(87),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `ListCache`.
@@ -3070,14 +3070,14 @@ var mapCacheClear = __webpack_require__(103),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `MapCache`.
@@ -8714,14 +8714,14 @@ var hashClear = __webpack_require__(105),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `Hash`.
@@ -9081,13 +9081,13 @@ var MapCache = __webpack_require__(40),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-    var index = -1,
-        length = values == null ? 0 : values.length;
+  var index = -1,
+      length = values == null ? 0 : values.length;
 
-    this.__data__ = new MapCache();
-    while (++index < length) {
-        this.add(values[index]);
-    }
+  this.__data__ = new MapCache();
+  while (++index < length) {
+    this.add(values[index]);
+  }
 }
 
 // Add methods to `SetCache`.
@@ -10031,16 +10031,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-    var result = keys(object),
-        length = result.length;
+  var result = keys(object),
+      length = result.length;
 
-    while (length--) {
-        var key = result[length],
-            value = object[key];
+  while (length--) {
+    var key = result[length],
+        value = object[key];
 
-        result[length] = [key, value, isStrictComparable(value)];
-    }
-    return result;
+    result[length] = [key, value, isStrictComparable(value)];
+  }
+  return result;
 }
 
 module.exports = getMatchData;
@@ -55327,10 +55327,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var __ = wp.i18n.__;
-
-
-var isBoxUpdated = null;
-
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -55564,11 +55560,6 @@ var edit = function (_Component) {
                 contentshadowColor = attributes.contentshadowColor,
                 contentshadowHorizontal = attributes.contentshadowHorizontal,
                 contentshadowVertical = attributes.contentshadowVertical,
-                contentShadowBlur = attributes.contentShadowBlur,
-                contentShadowColor = attributes.contentShadowColor,
-                contentShadowHorizontal = attributes.contentShadowHorizontal,
-                contentShadowVertical = attributes.contentShadowVertical,
-                contentShadowPosition = attributes.contentShadowPosition,
                 contentPadding = attributes.contentPadding,
                 contentPaddingTablet = attributes.contentPaddingTablet,
                 contentPaddingType = attributes.contentPaddingType,
@@ -56474,40 +56465,6 @@ var edit = function (_Component) {
                             return setAttributes({ contentshadowVertical: newValue });
                         }
                     }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__["a" /* default */], {
-                        label: "Box Shadow",
-                        inner: true,
-                        color: contentShadowColor,
-                        blur: contentShadowBlur,
-                        horizontal: contentShadowHorizontal,
-                        vertical: contentShadowVertical,
-                        position: contentShadowPosition,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
-                                contentShadowColor: newColor === undefined ? "transparent" : newColor.hex
-                            });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
-                                contentShadowBlur: newBlur === undefined ? 0 : newBlur
-                            });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
-                                contentShadowHorizontal: newValue === undefined ? 0 : newValue
-                            });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
-                                contentShadowVertical: newValue === undefined ? 0 : newValue
-                            });
-                        },
-                        onChangePosition: function onChangePosition(newValue) {
-                            return setAttributes({
-                                contentShadowPosition: newValue === undefined ? 0 : newValue
-                            });
-                        }
-                    }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__["a" /* default */], {
                         setAttributes: setAttributes,
                         rangeType: { value: contentPaddingType, label: __("contentPaddingType") },
@@ -56598,7 +56555,6 @@ function styling(props) {
       contentfontSizeMobile = _props$attributes.contentfontSizeMobile,
       contentfontSizeTablet = _props$attributes.contentfontSizeTablet,
       contentfontSizeType = _props$attributes.contentfontSizeType,
-      type = _props$attributes.type,
       tabsBorderColor = _props$attributes.tabsBorderColor,
       tabShadowBlur = _props$attributes.tabShadowBlur,
       tabShadowColor = _props$attributes.tabShadowColor,
@@ -56640,11 +56596,6 @@ function styling(props) {
       contentshadowColor = _props$attributes.contentshadowColor,
       contentshadowHorizontal = _props$attributes.contentshadowHorizontal,
       contentshadowVertical = _props$attributes.contentshadowVertical,
-      contentShadowBlur = _props$attributes.contentShadowBlur,
-      contentShadowColor = _props$attributes.contentShadowColor,
-      contentShadowHorizontal = _props$attributes.contentShadowHorizontal,
-      contentShadowVertical = _props$attributes.contentShadowVertical,
-      contentShadowPosition = _props$attributes.contentShadowPosition,
       contentPadding = _props$attributes.contentPadding,
       contentPaddingTablet = _props$attributes.contentPaddingTablet,
       contentPaddingType = _props$attributes.contentPaddingType,
@@ -56710,7 +56661,6 @@ function styling(props) {
       "border-color": tabborderColor,
       "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(tabborderRadius, "px"),
       "box-shadow": tabShadowHorizontal + 'px ' + tabShadowVertical + 'px ' + tabShadowBlur + 'px ' + tabShadowColor + ' ' + tabShadowPosition
-      // "background-color": tabBGColor
     },
     " .tab-current .premium-tab-link-icon": {
       "background-color": activetabBGColor + "!important"
@@ -56782,7 +56732,6 @@ function styling(props) {
       "border-color": contentborderColor,
       "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentborderRadius, "px"),
       "text-shadow": contentshadowHorizontal + 'px ' + contentshadowVertical + 'px ' + contentshadowBlur + 'px ' + contentshadowColor,
-      "box-shadow": contentShadowHorizontal + 'px ' + contentShadowVertical + 'px ' + contentShadowBlur + 'px ' + contentShadowColor + ' ' + contentShadowPosition,
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(contentPadding, contentPaddingType)
     },
     " .premium-tab-nav-list-item a:hover": {

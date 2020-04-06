@@ -1250,7 +1250,6 @@ class Premium_Blocks_Integration {
 					"border-radius" => self::get_css_value($attr['contentborderRadius'], 'px'),
 					"text-shadow" => self::get_css_value($attr['contentshadowHorizontal'], 'px ') .self::get_css_value($attr['contentshadowVertical'],'px ') . self::get_css_value($attr['contentshadowBlur'], 'px ') . $attr['contentshadowColor'],
 					"padding" =>  self::get_css_value($attr['contentPadding'], $attr['contentPaddingType']),
-					"box-shadow" => self::get_css_value($attr['contentShadowHorizontal'], 'px ') .self::get_css_value($attr['contentShadowVertical'],'px ') .self::get_css_value($attr['contentShadowBlur'],'px ') . self::get_css_value( $attr['contentShadowColor'], " ") . $attr['contentShadowPosition']
 				),
 				" .premium-tab-nav-list-item a:hover" => array(
 					"background-color" => self::get_css_value($attr['tabBGHoverColor'], '!important'),
