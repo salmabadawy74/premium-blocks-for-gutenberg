@@ -1,6 +1,7 @@
 import classnames from "classnames"
 import styling from "./styling"
 import PremiumTypo from "../../components/premium-typo";
+import PremiumTypoReset from '../../components/premium-typo-reset'
 import PremiumBorder from "../../components/premium-border";
 import iconsList from "../../components/premium-icons-list";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
@@ -913,27 +914,17 @@ class edit extends Component {
                             }
                             allowReset={true}
                         />
-                        <PremiumTypo
+                        <PremiumTypoReset
                             components={["responsiveSize", "weight", "style", "upper", "spacing"]}
                             setAttributes={setAttributes}
-                            fontSizeType={{ value: titlefontSizeType, label: __("titlefontSizeType") }}
-                            fontSize={{ value: titlefontSize, label: __("titlefontSize") }}
-                            fontSizeMobile={{ value: titlefontSizeMobile, label: __("titlefontSizeMobile") }}
-                            fontSizeTablet={{ value: titlefontSizeTablet, label: __("titlefontSizeTablet") }}
-                            weight={titleWeight}
-                            style={titleStyle}
-                            spacing={titleLetter}
-                            upper={titleUpper}
-                            onChangeWeight={newWeight =>
-                                setAttributes({ titleWeight: newWeight || 500 })
-                            }
-                            onChangeStyle={newStyle =>
-                                setAttributes({ titleStyle: newStyle })
-                            }
-                            onChangeSpacing={newValue =>
-                                setAttributes({ titleLetter: newValue })
-                            }
-                            onChangeUpper={check => setAttributes({ titleUpper: check })}
+                            fontSizeType={{ value: titlefontSizeType, label: __("titlefontSizeType"), default : "px" }}
+                            fontSize={{ value: titlefontSize, label: __("titlefontSize"), default : "20" }}
+                            fontSizeMobile={{ value: titlefontSizeMobile, label: __("titlefontSizeMobile"), default : "20" }}
+                            fontSizeTablet={{ value: titlefontSizeTablet, label: __("titlefontSizeTablet"), default : "20" }}
+                            weight={{ value: titleWeight, label: __("titleWeight"), default : "500" }}
+                            style={{ value: titleStyle, label: __("titleStyle"), default : "normal" }}
+                            spacing={{ value: titleLetter, label: __("titleLetter"), default : "0" }}
+                            upper={{ value: titleUpper, label: __("titleUpper"), default : false }}
                         />
                         <PremiumTextShadow
                             color={titleshadowColor}
