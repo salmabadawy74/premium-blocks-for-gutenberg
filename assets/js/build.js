@@ -56277,15 +56277,6 @@ var edit = function (_Component) {
                         style: { value: titleStyle, label: __("titleStyle"), default: "normal" },
                         spacing: { value: titleLetter, label: __("titleLetter"), default: "0" },
                         upper: { value: titleUpper, label: __("titleUpper"), default: false }
-                        // onChangeWeight={newWeight =>
-                        //     setAttributes({ titleWeight: newWeight || 500 })
-                        // }
-                        // onChangeStyle={newStyle =>
-                        //     setAttributes({ titleStyle: newStyle })
-                        // }
-                        // onChangeSpacing={newValue =>
-                        //     setAttributes({ titleLetter: newValue })
-                        // }
                         // onChangeUpper={check => setAttributes({ titleUpper: check })}
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__["a" /* default */], {
@@ -56781,9 +56772,6 @@ function styling(props) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_responsive__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_range_reset__ = __webpack_require__(274);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__premium_select_reset__ = __webpack_require__(275);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__premium_toggle_reset__ = __webpack_require__(276);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -56798,9 +56786,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
-
-
 var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
@@ -56808,7 +56793,9 @@ var _wp$element = wp.element,
 var _wp$components = wp.components,
     RangeControl = _wp$components.RangeControl,
     Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
+    Button = _wp$components.Button,
+    ToggleControl = _wp$components.ToggleControl,
+    SelectControl = _wp$components.SelectControl;
 
 var PremiumTypoReset = function (_Component) {
   _inherits(PremiumTypoReset, _Component);
@@ -56856,6 +56843,14 @@ var PremiumTypoReset = function (_Component) {
           onChangeSize = _props$onChangeSize === undefined ? function () {} : _props$onChangeSize;
 
 
+      var STYLE = [{
+        value: "normal",
+        label: "Normal"
+      }, {
+        value: "italic",
+        label: "Italic"
+      }];
+
       return wp.element.createElement(
         "div",
         { className: "premium-control-toggle" },
@@ -56902,31 +56897,39 @@ var PremiumTypoReset = function (_Component) {
                 sizeText: !_this2.props.fontSizeLabel ? __("Font Size") : _this2.props.fontSizeLabel,
                 steps: 0.1
               }, _this2.props)),
-              components.includes("weight") && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__premium_range_reset__["a" /* default */], _extends({
-                size: _this2.props.weight,
-                Label: _this2.props.weight.label,
-                Text: __("Font Weight")
-              }, _this2.props, {
+              components.includes("weight") && wp.element.createElement(RangeControl, {
+                label: __("Font Weight"),
                 min: "100",
                 max: "900",
-                step: "100"
-              })),
-              components.includes("style") && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__premium_select_reset__["a" /* default */], _extends({
-                size: _this2.props.style,
-                Label: _this2.props.style.label,
-                Text: __("Style")
-              }, _this2.props)),
-              components.includes("upper") && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__premium_toggle_reset__["a" /* default */], _extends({
-                size: _this2.props.upper,
-                Label: _this2.props.upper.label,
-                Text: __("Uppercase")
-              }, _this2.props)),
-              components.includes("spacing") && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__premium_range_reset__["a" /* default */], _extends({
-                size: _this2.props.spacing,
-                Label: _this2.props.spacing.label,
-                Text: __("Letter Spacing (PX)"),
-                steps: 0.1
-              }, _this2.props)),
+                step: "100",
+                value: _this2.props.weight.value,
+                onChange: function onChange(value) {
+                  return _this2.props.setAttributes(_defineProperty({}, _this2.props.weight.label, value));
+                }
+              }),
+              components.includes("style") && wp.element.createElement(SelectControl, {
+                label: __("Style"),
+                value: _this2.props.style.value,
+                options: STYLE,
+                onChange: function onChange(value) {
+                  return _this2.props.setAttributes(_defineProperty({}, _this2.props.style.label, value));
+                }
+              }),
+              components.includes("upper") && wp.element.createElement(ToggleControl, {
+                label: __("Uppercase"),
+                value: _this2.props.upper.value,
+                checked: _this2.props.upper.value,
+                onChange: function onChange(value) {
+                  return _this2.props.setAttributes(_defineProperty({}, _this2.props.upper.label, value));
+                }
+              }),
+              components.includes("spacing") && wp.element.createElement(RangeControl, {
+                label: __("Letter Spacing (PX)"),
+                value: _this2.props.spacing.value,
+                onChange: function onChange(value) {
+                  return _this2.props.setAttributes(_defineProperty({}, _this2.props.spacing.label, value));
+                }
+              }),
               components.includes("line") && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_responsive__["a" /* default */], _extends({
                 type: _this2.props.lineHeightType,
                 typeLabel: _this2.props.lineHeightType.label,
@@ -56962,110 +56965,6 @@ var PremiumTypoReset = function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["a"] = (PremiumTypoReset);
-
-/***/ }),
-/* 274 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var __ = wp.i18n.__;
-var RangeControl = wp.components.RangeControl;
-
-
-function PremiumReset(props) {
-    return wp.element.createElement(RangeControl, {
-        label: __(props.Text),
-        value: props.size.value,
-        onChange: function onChange(value) {
-            return props.setAttributes(_defineProperty({}, props.Label, value));
-        },
-        min: props.min || 0,
-        max: props.max || 200,
-        step: props.steps,
-        beforeIcon: "editor-textcolor"
-    });
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (PremiumReset);
-
-/***/ }),
-/* 275 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_map__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_map__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var __ = wp.i18n.__;
-var SelectControl = wp.components.SelectControl;
-
-// Extend component
-
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
-
-/**
- * Internal dependencies
- */
-
-
-
-function PremiumSelectReset(props) {
-    var STYLE = [{
-        value: "normal",
-        label: "Normal"
-    }, {
-        value: "italic",
-        label: "Italic"
-    }];
-
-    return wp.element.createElement(SelectControl, {
-        label: __(props.Text),
-        value: props.size.value,
-        options: STYLE,
-        onChange: function onChange(value) {
-            return props.setAttributes(_defineProperty({}, props.Label, value));
-        },
-        min: props.min || 0,
-        max: props.max || 200,
-        step: props.steps,
-        beforeIcon: "editor-textcolor"
-    });
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (PremiumSelectReset);
-
-/***/ }),
-/* 276 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var __ = wp.i18n.__;
-var ToggleControl = wp.components.ToggleControl;
-
-
-function PremiumToggleReset(props) {
-    return wp.element.createElement(ToggleControl, {
-        label: __(props.Text),
-        value: props.size.value,
-        checked: props.size.value,
-        onChange: function onChange(value) {
-            return props.setAttributes(_defineProperty({}, props.Label, value));
-        },
-        min: props.min || 0,
-        max: props.max || 200,
-        step: props.steps,
-        beforeIcon: "editor-textcolor"
-    });
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (PremiumToggleReset);
 
 /***/ })
 /******/ ]);

@@ -925,6 +925,7 @@ class edit extends Component {
                             style={{ value: titleStyle, label: __("titleStyle"), default : "normal" }}
                             spacing={{ value: titleLetter, label: __("titleLetter"), default : "0" }}
                             upper={{ value: titleUpper, label: __("titleUpper"), default : false }}
+                            // onChangeUpper={check => setAttributes({ titleUpper: check })}
                         />
                         <PremiumTextShadow
                             color={titleshadowColor}
