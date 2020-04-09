@@ -530,6 +530,24 @@ class edit extends Component {
             });
         }
 
+        const onResetClickIconTextShadow= () => {
+            setAttributes({ 
+                iconshadowColor: "", 
+                iconshadowBlur:"0", 
+                iconshadowHorizontal:"0", 
+                iconshadowVertical:"0",
+            });
+        }
+
+        const onResetClickTitleTextShadow= () => {
+            setAttributes({ 
+                titleshadowColor: "", 
+                titleshadowBlur:"0", 
+                titleshadowHorizontal:"0", 
+                titleshadowVertical:"0",
+            });
+        }
+
         const mainClasses = classnames(className, "premium-tab");
         return [
             isSelected && (
@@ -901,6 +919,7 @@ class edit extends Component {
                             onChangeVertical={newValue =>
                             setAttributes({ iconshadowVertical: newValue })
                             }
+                            onResetClick={onResetClickIconTextShadow}
                         />
                         <PremiumRange
                             setAttributes={setAttributes}
@@ -986,6 +1005,7 @@ class edit extends Component {
                             onChangeVertical={newValue =>
                             setAttributes({ titleshadowVertical: newValue })
                             }
+                            onResetClick={onResetClickTitleTextShadow}
                         />
                         <PremiumRange
                             setAttributes={setAttributes}

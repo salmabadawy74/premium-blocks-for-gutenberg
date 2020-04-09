@@ -727,7 +727,9 @@ function PremiumTextShadow(props) {
         _props$onChangehHoriz = props.onChangehHorizontal,
         onChangehHorizontal = _props$onChangehHoriz === undefined ? function () {} : _props$onChangehHoriz,
         _props$onChangeVertic = props.onChangeVertical,
-        onChangeVertical = _props$onChangeVertic === undefined ? function () {} : _props$onChangeVertic;
+        onChangeVertical = _props$onChangeVertic === undefined ? function () {} : _props$onChangeVertic,
+        _props$onResetClick = props.onResetClick,
+        onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
 
 
     return wp.element.createElement(
@@ -766,27 +768,40 @@ function PremiumTextShadow(props) {
                         wp.element.createElement(ColorPicker, {
                             color: color,
                             onChangeComplete: onChangeColor,
-                            disableAlpha: true
+                            disableAlpha: true,
+                            onResetClick: onResetClick
                         })
                     ),
                     wp.element.createElement(RangeControl, {
                         label: __("Blur"),
                         value: blur,
-                        onChange: onChangeBlur
+                        onChange: onChangeBlur,
+                        onResetClick: onResetClick
                     }),
                     wp.element.createElement(RangeControl, {
                         label: __("Horizontal"),
                         value: horizontal,
-                        onChange: onChangehHorizontal
+                        onChange: onChangehHorizontal,
+                        onResetClick: onResetClick
                     }),
                     wp.element.createElement(RangeControl, {
                         label: __("Vertical"),
                         value: vertical,
-                        onChange: onChangeVertical
+                        onChange: onChangeVertical,
+                        onResetClick: onResetClick
                     })
                 );
             }
-        })
+        }),
+        wp.element.createElement(
+            Button,
+            {
+                className: "premium-control-reset-btn",
+                isSmall: true,
+                onClick: onResetClick
+            },
+            wp.element.createElement("i", { className: "premium-control-reset dashicons dashicons-image-rotate" })
+        )
     );
 }
 
@@ -55826,6 +55841,24 @@ var edit = function (_Component) {
                 });
             };
 
+            var onResetClickIconTextShadow = function onResetClickIconTextShadow() {
+                setAttributes({
+                    iconshadowColor: "",
+                    iconshadowBlur: "0",
+                    iconshadowHorizontal: "0",
+                    iconshadowVertical: "0"
+                });
+            };
+
+            var onResetClickTitleTextShadow = function onResetClickTitleTextShadow() {
+                setAttributes({
+                    titleshadowColor: "",
+                    titleshadowBlur: "0",
+                    titleshadowHorizontal: "0",
+                    titleshadowVertical: "0"
+                });
+            };
+
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-tab");
             return [isSelected && wp.element.createElement(
                 BlockControls,
@@ -56255,7 +56288,8 @@ var edit = function (_Component) {
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
                             return setAttributes({ iconshadowVertical: newValue });
-                        }
+                        },
+                        onResetClick: onResetClickIconTextShadow
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__["a" /* default */], {
                         setAttributes: setAttributes,
@@ -56358,7 +56392,8 @@ var edit = function (_Component) {
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
                             return setAttributes({ titleshadowVertical: newValue });
-                        }
+                        },
+                        onResetClick: onResetClickTitleTextShadow
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__["a" /* default */], {
                         setAttributes: setAttributes,
