@@ -866,7 +866,9 @@ function PremiumBoxShadow(props) {
       _props$onChangeVertic = props.onChangeVertical,
       onChangeVertical = _props$onChangeVertic === undefined ? function () {} : _props$onChangeVertic,
       _props$onChangePositi = props.onChangePosition,
-      onChangePosition = _props$onChangePositi === undefined ? function () {} : _props$onChangePositi;
+      onChangePosition = _props$onChangePositi === undefined ? function () {} : _props$onChangePositi,
+      _props$onResetClick = props.onResetClick,
+      onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
 
 
   var POSITION = [{
@@ -913,33 +915,47 @@ function PremiumBoxShadow(props) {
             wp.element.createElement(ColorPicker, {
               color: color,
               onChangeComplete: onChangeColor,
-              disableAlpha: true
+              disableAlpha: true,
+              onResetClick: onResetClick
             })
           ),
           wp.element.createElement(RangeControl, {
             label: __("Horizontal"),
             value: horizontal,
-            onChange: onChangehHorizontal
+            onChange: onChangehHorizontal,
+            onResetClick: onResetClick
           }),
           wp.element.createElement(RangeControl, {
             label: __("Vertical"),
             value: vertical,
-            onChange: onChangeVertical
+            onChange: onChangeVertical,
+            onResetClick: onResetClick
           }),
           wp.element.createElement(RangeControl, {
             label: __("Blur"),
             value: blur,
-            onChange: onChangeBlur
+            onChange: onChangeBlur,
+            onResetClick: onResetClick
           }),
           wp.element.createElement(SelectControl, {
             label: __("Position"),
             options: POSITION,
             value: position,
-            onChange: onChangePosition
+            onChange: onChangePosition,
+            onResetClick: onResetClick
           })
         );
       }
-    })
+    }),
+    wp.element.createElement(
+      Button,
+      {
+        className: "premium-control-reset-btn",
+        isSmall: true,
+        onClick: onResetClick
+      },
+      wp.element.createElement("i", { className: "premium-control-reset dashicons dashicons-image-rotate" })
+    )
   );
 }
 
@@ -55790,6 +55806,26 @@ var edit = function (_Component) {
                 });
             };
 
+            var onResetClickTabNormal = function onResetClickTabNormal() {
+                setAttributes({
+                    tabShadowColor: "",
+                    tabShadowBlur: "0",
+                    tabShadowHorizontal: "0",
+                    tabShadowVertical: "0",
+                    tabShadowPosition: ""
+                });
+            };
+
+            var onResetClickTabHover = function onResetClickTabHover() {
+                setAttributes({
+                    tabhoverShadowColor: "",
+                    tabhoverShadowBlur: "0",
+                    tabhoverShadowHorizontal: "0",
+                    tabhoverShadowVertical: "0",
+                    tabhoverShadowPosition: ""
+                });
+            };
+
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-tab");
             return [isSelected && wp.element.createElement(
                 BlockControls,
@@ -56004,7 +56040,8 @@ var edit = function (_Component) {
                                             return setAttributes({
                                                 tabShadowPosition: newValue === undefined ? 0 : newValue
                                             });
-                                        }
+                                        },
+                                        onResetClick: onResetClickTabNormal
                                     })
                                 );
                             } else {
@@ -56075,7 +56112,8 @@ var edit = function (_Component) {
                                             return setAttributes({
                                                 tabhoverShadowPosition: newValue === undefined ? 0 : newValue
                                             });
-                                        }
+                                        },
+                                        onResetClick: onResetClickTabHover
                                     })
                                 );
                             }

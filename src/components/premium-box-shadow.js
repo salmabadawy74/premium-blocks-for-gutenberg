@@ -21,7 +21,8 @@ export default function PremiumBoxShadow(props) {
     onChangeBlur = () => {},
     onChangehHorizontal = () => {},
     onChangeVertical = () => {},
-    onChangePosition = () => {}
+    onChangePosition = () => {},
+    onResetClick = () => {}
   } = props;
 
   const POSITION = [
@@ -55,32 +56,42 @@ export default function PremiumBoxShadow(props) {
                 color={color}
                 onChangeComplete={onChangeColor}
                 disableAlpha
+                onResetClick={onResetClick}
               />
             </Fragment>
             <RangeControl
               label={__("Horizontal")}
               value={horizontal}
               onChange={onChangehHorizontal}
+              onResetClick={onResetClick}
             />
             <RangeControl
               label={__("Vertical")}
               value={vertical}
               onChange={onChangeVertical}
+              onResetClick={onResetClick}
             />
             <RangeControl
               label={__("Blur")}
               value={blur}
               onChange={onChangeBlur}
+              onResetClick={onResetClick}
             />
             <SelectControl
               label={__("Position")}
               options={POSITION}
               value={position}
               onChange={onChangePosition}
+              onResetClick={onResetClick}
             />
           </Fragment>
         )}
       />
+      <Button
+          className="premium-control-reset-btn"
+          isSmall
+          onClick={onResetClick}
+        ><i className="premium-control-reset dashicons dashicons-image-rotate" /></Button>
     </div>
   );
 }

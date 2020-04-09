@@ -510,6 +510,26 @@ class edit extends Component {
             });
         }
 
+        const onResetClickTabNormal = () => {
+            setAttributes({ 
+                tabShadowColor: "", 
+                tabShadowBlur:"0", 
+                tabShadowHorizontal:"0", 
+                tabShadowVertical:"0", 
+                tabShadowPosition:""
+            });
+        }
+
+        const onResetClickTabHover = () => {
+            setAttributes({ 
+                tabhoverShadowColor: "", 
+                tabhoverShadowBlur:"0", 
+                tabhoverShadowHorizontal:"0", 
+                tabhoverShadowVertical:"0", 
+                tabhoverShadowPosition:""
+            });
+        }
+
         const mainClasses = classnames(className, "premium-tab");
         return [
             isSelected && (
@@ -700,6 +720,7 @@ class edit extends Component {
                                                     tabShadowPosition: newValue === undefined ? 0 : newValue
                                                 })
                                             }
+                                            onResetClick={onResetClickTabNormal}
                                         />
                                     </Fragment>
                                 } else {
@@ -762,6 +783,7 @@ class edit extends Component {
                                                     tabhoverShadowPosition: newValue === undefined ? 0 : newValue
                                                 })
                                             }
+                                            onResetClick={onResetClickTabHover}
                                         />
                                     </Fragment>
                                 }
