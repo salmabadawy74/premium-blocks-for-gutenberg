@@ -6,8 +6,8 @@ import iconsList from "../../components/premium-icons-list";
 import PremiumTypo from "../../components/premium-typo";
 import FONTS from "../../components/premium-fonts";
 import PremiumBorder from "../../components/premium-border";
-import PremiumMarginR from "../../components/premium-margin-responsive";
-import PremiumRange from "../../components/premium-range-responsive";
+import PremiumMarginResponsive from "../../components/premium-margin-responsive";
+import PremiumRangeResponsive from "../../components/premium-range-responsive";
 
 const { __ } = wp.i18n
 
@@ -467,7 +467,7 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: sizeType, label: __("sizeType") }}
                             range={{ value: size, label: __("size") }}
@@ -489,7 +489,7 @@ class edit extends Component {
                                 setAttributes({ borderRadius: newrRadius })
                             }
                         />
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: iconSpacingType, label: __("iconSpacingType") }}
                             range={{ value: iconSpacing, label: __("iconSpacing") }}
@@ -497,7 +497,7 @@ class edit extends Component {
                             rangeTablet={{ value: iconSpacingTablet, label: __("iconSpacingTablet") }}
                             rangeLabel={__("Icons Spacing ")}
                         />
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: iconPaddingType, label: __("iconPaddingType") }}
                             range={{ value: iconPadding, label: __("iconPadding") }}
@@ -540,7 +540,7 @@ class edit extends Component {
                             options={FONTS}
                             onChange={onChangeTitleFamily}
                         />
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: titlePaddingType, label: __("titlePaddingType") }}
                             range={{ value: titlePadding, label: __("titlePadding") }}
@@ -548,7 +548,7 @@ class edit extends Component {
                             rangeTablet={{ value: titlePaddingTablet, label: __("titlePaddingTablet") }}
                             rangeLabel={__("Item Padding ")}
                         />
-                        {layoutPos == "block" ? <PremiumMarginR
+                        {layoutPos == "block" ? <PremiumMarginResponsive
                             directions={["top", "bottom"]}
                             setAttributes={setAttributes}
                             marginTopType={{ value: marginTopType, label: __("marginTopType") }}
@@ -560,7 +560,7 @@ class edit extends Component {
                             marginBottomMobile={{ value: marginBottomMobile, label: __("marginBottomMobile") }}
                             marginBottomTablet={{ value: marginBottomTablet, label: __("marginBottomTablet") }}
                         /> :
-                            <PremiumMarginR
+                            <PremiumMarginResponsive
                                 directions={["left", "right"]}
                                 setAttributes={setAttributes}
                                 marginLeftType={{ value: marginLeftType, label: __("marginLeftType") }}

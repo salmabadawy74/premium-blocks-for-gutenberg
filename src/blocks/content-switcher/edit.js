@@ -1,9 +1,9 @@
 import classnames from "classnames"
 import styling from "./styling"
-import PremiumRange from "../../components/premium-range-responsive";
+import PremiumRangeResponsive from "../../components/premium-range-responsive";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumPaddingR from "../../components/premium-padding-responsive";
+import PremiumPaddingResponsive from "../../components/premium-padding-responsive";
 import PremiumBorder from "../../components/premium-border";
 
 const { __ } = wp.i18n
@@ -251,6 +251,27 @@ class edit extends Component {
             }
         ]
 
+        const onResetClickfirstPadding = () => {
+            setAttributes({ 
+                firstpaddingTop: "0", 
+                firstpaddingTopType:"px", 
+                firstpaddingTopMobile: "0",
+                firstpaddingTopTablet: "0",
+                firstpaddingBottom: "0", 
+                firstpaddingBottomType:"px", 
+                firstpaddingBottomMobile: "0",
+                firstpaddingBottomTablet: "0",
+                firstpaddingRight: "0", 
+                firstpaddingRightType:"px", 
+                firstpaddingRightMobile: "0",
+                firstpaddingRightTablet: "0",
+                firstpaddingLeft: "0", 
+                firstpaddingLeftType:"px", 
+                firstpaddingLeftMobile: "0",
+                firstpaddingLeftTablet: "0",
+            });
+        }
+
         var element = document.getElementById("premium-style-content-switcher-" + this.props.clientId)
 
         if (null != element && "undefined" != typeof element) {
@@ -337,7 +358,7 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: switchSizeType, label: __("switchSizeType") }}
                             range={{ value: switchSize, label: __("switchSize") }}
@@ -345,7 +366,7 @@ class edit extends Component {
                             rangeTablet={{ value: switchSizeTablet, label: __("switchSizeTablet") }}
                             rangeLabel={__("Size")}
                         />
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: bottomSpacingType, label: __("bottomSpacingType") }}
                             range={{ value: bottomSpacing, label: __("bottomSpacing") }}
@@ -396,7 +417,7 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: labelSpacingType, label: __("labelSpacingType") }}
                             range={{ value: labelSpacing, label: __("labelSpacing") }}
@@ -495,7 +516,7 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: firstContentHeightType, label: __("firstContentHeightType") }}
                             range={{ value: firstContentHeight, label: __("firstContentHeight") }}
@@ -523,7 +544,7 @@ class edit extends Component {
                             }
                             allowReset={true}
                         />
-                        <PremiumPaddingR
+                        <PremiumPaddingResponsive
                             setAttributes={setAttributes}
                             paddingTopType={{ value: firstpaddingTopType, label: __("firstpaddingTopType") }}
                             paddingTop={{ value: firstpaddingTop, label: __("firstpaddingTop") }}
@@ -541,6 +562,7 @@ class edit extends Component {
                             paddingLeft={{ value: firstpaddingLeft, label: __("firstpaddingLeft") }}
                             paddingLeftMobile={{ value: firstpaddingLeftMobile, label: __("firstpaddingLeftMobile") }}
                             paddingLeftTablet={{ value: firstpaddingLeftTablet, label: __("firstpaddingLeftTablet") }}
+                            onResetClick={onResetClickfirstPadding}
                         />
                         <PremiumTypo
                             components={["responsiveSize", "weight", "style", "upper", "spacing"]}
@@ -584,7 +606,7 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: secondContentHeightType, label: __("secondContentHeightType") }}
                             range={{ value: secondContentHeight, label: __("secondContentHeight") }}
@@ -612,7 +634,7 @@ class edit extends Component {
                             }
                             allowReset={true}
                         />
-                        <PremiumPaddingR
+                        <PremiumPaddingResponsive
                             setAttributes={setAttributes}
                             paddingTopType={{ value: secondpaddingTopType, label: __("secondpaddingTopType") }}
                             paddingTop={{ value: secondpaddingTop, label: __("secondpaddingTop") }}

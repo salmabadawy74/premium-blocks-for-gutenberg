@@ -8,42 +8,17 @@ const {
 } = wp.element;
 const { Dropdown, Button } = wp.components;
 
-export default class PremiumPaddingR extends Component {
+export default class PremiumPaddingResponsive extends Component {
 
     constructor() {
         super(...arguments)
-        this.onAdvancedControlReset = this.onAdvancedControlReset.bind(this)
-    }
-
-    onAdvancedControlReset() {
-
-        const { setAttributes } = this.props
-        // Reset padding to default.
-        setAttributes({ [this.props.paddingTop.label]: "" })
-        setAttributes({ [this.props.paddingTopType.label]: "px" })
-        setAttributes({ [this.props.paddingTopMobile.label]: "" })
-        setAttributes({ [this.props.paddingTopTablet.label]: "" })
-
-        setAttributes({ [this.props.paddingRight.label]: "" })
-        setAttributes({ [this.props.paddingRightType.label]: "px" })
-        setAttributes({ [this.props.paddingRightMobile.label]: "" })
-        setAttributes({ [this.props.paddingRightTablet.label]: "" })
-
-        setAttributes({ [this.props.paddingBottom.label]: "" })
-        setAttributes({ [this.props.paddingBottomType.label]: "px" })
-        setAttributes({ [this.props.paddingBottomMobile.label]: "" })
-        setAttributes({ [this.props.paddingBottomTablet.label]: "" })
-
-        setAttributes({ [this.props.paddingLeft.label]: "" })
-        setAttributes({ [this.props.paddingLeftType.label]: "px" })
-        setAttributes({ [this.props.paddingLeftMobile.label]: "" })
-        setAttributes({ [this.props.paddingLeftTablet.label]: "" })
     }
 
     render() {
         const {
             showUnits,
-            onChangePadSizeUnit = () => { }
+            onChangePadSizeUnit = () => { },
+            onResetClick = () => { }
         } = this.props;
         return (
             <div className="premium-control-toggle">
@@ -80,6 +55,7 @@ export default class PremiumPaddingR extends Component {
                                 sizeText={
                                     (!this.props.paddingTopLabel) ? __("padding Top") : this.props.paddingTopLabel
                                 }
+                                onResetClick={onResetClick}
                                 steps={0.1}
                                 {...this.props}
                             />
@@ -101,6 +77,7 @@ export default class PremiumPaddingR extends Component {
                                 sizeText={
                                     (!this.props.paddingRightLabel) ? __("padding Right") : this.props.paddingRightLabel
                                 }
+                                onResetClick={onResetClick}
                                 steps={0.1}
                                 {...this.props}
                             />
@@ -122,6 +99,7 @@ export default class PremiumPaddingR extends Component {
                                 sizeText={
                                     (!this.props.paddingBottomLabel) ? __("padding Bottom") : this.props.paddingBottomLabel
                                 }
+                                onResetClick={onResetClick}
                                 steps={0.1}
                                 {...this.props}
                             />
@@ -143,12 +121,19 @@ export default class PremiumPaddingR extends Component {
                                 sizeText={
                                     (!this.props.paddingLeftLabel) ? __("padding Left") : this.props.paddingLeftLabel
                                 }
+                                onResetClick={onResetClick}
                                 steps={0.1}
                                 {...this.props}
                             />
                         </Fragment>
                     )}
                 />
+                <Button
+                    className="premium-control-toggle-btn reset-btn"
+                    contentClassName="premium-control-toggle-content"
+                    isSmall
+                    onClick={onResetClick}
+                ><i className="premium-control-reset dashicons dashicons-image-rotate" /></Button>
             </div>
         );
     }

@@ -8,43 +8,18 @@ const {
 } = wp.element;
 const { RangeControl, Dropdown, Button } = wp.components;
 
-export default class PremiumMarginR extends Component {
+export default class PremiumMarginResponsive extends Component {
 
   constructor() {
     super(...arguments)
-    this.onAdvancedControlReset = this.onAdvancedControlReset.bind(this)
-  }
-
-  onAdvancedControlReset() {
-
-    const { setAttributes } = this.props
-    // Reset Margin to default.
-    setAttributes({ [this.props.marginTop.label]: "" })
-    setAttributes({ [this.props.marginTopType.label]: "px" })
-    setAttributes({ [this.props.marginTopMobile.label]: "" })
-    setAttributes({ [this.props.marginTopTablet.label]: "" })
-
-    setAttributes({ [this.props.marginRight.label]: "" })
-    setAttributes({ [this.props.marginRightType.label]: "px" })
-    setAttributes({ [this.props.marginRightMobile.label]: "" })
-    setAttributes({ [this.props.marginRightTablet.label]: "" })
-
-    setAttributes({ [this.props.marginBottom.label]: "" })
-    setAttributes({ [this.props.marginBottomType.label]: "px" })
-    setAttributes({ [this.props.marginBottomMobile.label]: "" })
-    setAttributes({ [this.props.marginBottomTablet.label]: "" })
-
-    setAttributes({ [this.props.marginLeft.label]: "" })
-    setAttributes({ [this.props.marginLeftType.label]: "px" })
-    setAttributes({ [this.props.marginLeftMobile.label]: "" })
-    setAttributes({ [this.props.marginLeftTablet.label]: "" })
   }
 
   render() {
     const {
       directions,
       showUnits,
-      onChangeMarSizeUnit = () => { }
+      onChangeMarSizeUnit = () => { },
+      onResetClick = () => {}
     } = this.props;
     return (
       <div className="premium-control-toggle">
@@ -82,6 +57,7 @@ export default class PremiumMarginR extends Component {
                   sizeText={
                     (!this.props.marginTopLabel) ? __("Margin Top") : this.props.marginTopLabel
                   }
+                  onResetClick={onResetClick}
                   steps={0.1}
                   {...this.props}
                 />
@@ -105,6 +81,7 @@ export default class PremiumMarginR extends Component {
                   sizeText={
                     (!this.props.marginRightLabel) ? __("Margin Right") : this.props.marginRightLabel
                   }
+                  onResetClick={onResetClick}
                   steps={0.1}
                   {...this.props}
                 />
@@ -128,6 +105,7 @@ export default class PremiumMarginR extends Component {
                   sizeText={
                     (!this.props.marginBottomLabel) ? __("Margin Bottom") : this.props.marginBottomLabel
                   }
+                  onResetClick={onResetClick}
                   steps={0.1}
                   {...this.props}
                 />
@@ -151,6 +129,7 @@ export default class PremiumMarginR extends Component {
                   sizeText={
                     (!this.props.marginLeftLabel) ? __("Margin Left") : this.props.marginLeftLabel
                   }
+                  onResetClick={onResetClick}
                   steps={0.1}
                   {...this.props}
                 />
@@ -158,6 +137,12 @@ export default class PremiumMarginR extends Component {
             </Fragment>
           )}
         />
+        <Button
+          className="premium-control-toggle-btn reset-btn"
+          contentClassName="premium-control-toggle-content"
+          isSmall
+          onClick={onResetClick}
+        ><i className="premium-control-reset dashicons dashicons-image-rotate" /></Button>
       </div>
     );
   }

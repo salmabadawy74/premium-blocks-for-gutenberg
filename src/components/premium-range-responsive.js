@@ -5,7 +5,7 @@ const {
     Component
 } = wp.element;
 
-export default class PremiumRange extends Component {
+export default class PremiumRangeResponsive extends Component {
 
     constructor() {
         super(...arguments)

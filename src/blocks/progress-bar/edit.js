@@ -1,6 +1,6 @@
 import classnames from "classnames"
 import styling from "./styling"
-import PremiumRange from "../../components/premium-range-responsive";
+import PremiumRangeResponsive from "../../components/premium-range-responsive";
 import PremiumTypo from "../../components/premium-typo";
 import {
     SortableContainer,
@@ -463,7 +463,7 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: progressBarHeightType, label: __("progressBarHeightType") }}
                             range={{ value: progressBarHeight, label: __("progressBarHeight") }}
@@ -473,7 +473,7 @@ class edit extends Component {
                             min={1}
                             max={100}
                         />
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: progressBarRadiusType, label: __("progressBarRadiusType") }}
                             range={{ value: progressBarRadius, label: __("progressBarRadius") }}
@@ -594,7 +594,7 @@ class edit extends Component {
                             }
                             allowReset={true}
                         />
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: arrowType, label: __("arrowType") }}
                             range={{ value: arrow, label: __("arrow") }}
@@ -621,7 +621,7 @@ class edit extends Component {
                             }
                             allowReset={true}
                         />
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: pinType, label: __("pinType") }}
                             range={{ value: pin, label: __("pin") }}
@@ -631,7 +631,7 @@ class edit extends Component {
                             min={1}
                             max={100}
                         />
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: pinHeightType, label: __("pinHeightType") }}
                             range={{ value: pinHeight, label: __("pinHeight") }}

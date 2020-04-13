@@ -16,7 +16,8 @@ export default function PremiumMargin(props) {
     onChangeMarRight = () => {},
     onChangeMarBottom = () => {},
     onChangeMarLeft = () => {},
-    onChangeMarSizeUnit = () => {}
+    onChangeMarSizeUnit = () => {},
+    onResetClick = () => {}
   } = props;
   return (
     <div className="premium-control-toggle">
@@ -42,6 +43,7 @@ export default function PremiumMargin(props) {
                 min="0"
                 max="150"
                 onChange={onChangeMarTop}
+                onResetClick={onResetClick}
               />
             )}
             {(directions.includes("all") || directions.includes("right")) && (
@@ -51,6 +53,7 @@ export default function PremiumMargin(props) {
                 min="0"
                 max="150"
                 onChange={onChangeMarRight}
+                onResetClick={onResetClick}
               />
             )}
             {(directions.includes("all") || directions.includes("bottom")) && (
@@ -60,6 +63,7 @@ export default function PremiumMargin(props) {
                 min="0"
                 max="150"
                 onChange={onChangeMarBottom}
+                onResetClick={onResetClick}
               />
             )}
             {(directions.includes("all") || directions.includes("left")) && (
@@ -69,11 +73,18 @@ export default function PremiumMargin(props) {
                 min="0"
                 max="150"
                 onChange={onChangeMarLeft}
+                onResetClick={onResetClick}
               />
             )}
           </Fragment>
         )}
       />
+      <Button
+          className="premium-control-toggle-btn reset-btn"
+          contentClassName="premium-control-toggle-content"
+          isSmall
+          onClick={onResetClick}
+        ><i className="premium-control-reset dashicons dashicons-image-rotate" /></Button>
     </div>
   );
 }

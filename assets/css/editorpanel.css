@@ -16,6 +16,9 @@
   border-radius: 3px;
   background-color: #f3f4f5;
 }
+.reset-btn{
+  margin-right: 3%;
+}
 /*
 * Unit Group Button
 */

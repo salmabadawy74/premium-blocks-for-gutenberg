@@ -100,7 +100,7 @@ export default function PremiumBorder(props) {
         )}
       />
       <Button
-          className="premium-control-toggle-btn"
+          className="premium-control-toggle-btn reset-btn"
           contentClassName="premium-control-toggle-content"
           isSmall
           onClick={onResetClick}

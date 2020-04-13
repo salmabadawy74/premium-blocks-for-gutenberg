@@ -15,7 +15,8 @@ export default function PremiumPadding(props) {
     onChangePadRight = () => {},
     onChangePadBottom = () => {},
     onChangePadLeft = () => {},
-    onChangePadSizeUnit = () => {}
+    onChangePadSizeUnit = () => {},
+    onResetClick= () => {}
   } = props;
   return (
     <div className="premium-control-toggle">
@@ -40,6 +41,7 @@ export default function PremiumPadding(props) {
               min="0"
               max="150"
               onChange={onChangePadTop}
+              onResetClick={onResetClick}
             />
             <RangeControl
               label={__("Padding Right")}
@@ -47,6 +49,7 @@ export default function PremiumPadding(props) {
               min="0"
               max="150"
               onChange={onChangePadRight}
+              onResetClick={onResetClick}
             />
             <RangeControl
               label={__("Padding Bottom")}
@@ -54,6 +57,7 @@ export default function PremiumPadding(props) {
               min="0"
               max="150"
               onChange={onChangePadBottom}
+              onResetClick={onResetClick}
             />
             <RangeControl
               label={__("Padding Left")}
@@ -61,10 +65,17 @@ export default function PremiumPadding(props) {
               min="0"
               max="150"
               onChange={onChangePadLeft}
+              onResetClick={onResetClick}
             />
           </Fragment>
         )}
       />
+      <Button
+          className="premium-control-toggle-btn reset-btn"
+          contentClassName="premium-control-toggle-content"
+          isSmall
+          onClick={onResetClick}
+        ><i className="premium-control-reset dashicons dashicons-image-rotate" /></Button>
     </div>
   );
 }

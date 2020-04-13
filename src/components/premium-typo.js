@@ -136,7 +136,7 @@ export default class PremiumTypo extends Component {
           )}
         />
         <Button
-          className="premium-control-toggle-btn"
+          className="premium-control-toggle-btn reset-btn"
           contentClassName="premium-control-toggle-content"
           isSmall
           aria-pressed={(this.state !== null)}

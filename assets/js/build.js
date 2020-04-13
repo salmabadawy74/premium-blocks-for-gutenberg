@@ -528,7 +528,7 @@ function PremiumBorder(props) {
     wp.element.createElement(
       Button,
       {
-        className: "premium-control-toggle-btn",
+        className: "premium-control-toggle-btn reset-btn",
         contentClassName: "premium-control-toggle-content",
         isSmall: true,
         onClick: onResetClick
@@ -700,7 +700,7 @@ var PremiumTypo = function (_Component) {
         wp.element.createElement(
           Button,
           {
-            className: "premium-control-toggle-btn",
+            className: "premium-control-toggle-btn reset-btn",
             contentClassName: "premium-control-toggle-content",
             isSmall: true,
             "aria-pressed": this.state !== null,
@@ -813,7 +813,7 @@ function PremiumTextShadow(props) {
         wp.element.createElement(
             Button,
             {
-                className: "premium-control-toggle-btn",
+                className: "premium-control-toggle-btn reset-btn",
                 contentClassName: "premium-control-toggle-content",
                 isSmall: true,
                 onClick: onResetClick
@@ -983,7 +983,7 @@ function PremiumBoxShadow(props) {
     wp.element.createElement(
       Button,
       {
-        className: "premium-control-toggle-btn",
+        className: "premium-control-toggle-btn reset-btn",
         contentClassName: "premium-control-toggle-content",
         isSmall: true,
         onClick: onResetClick
@@ -1111,7 +1111,9 @@ function PremiumPadding(props) {
       _props$onChangePadLef = props.onChangePadLeft,
       onChangePadLeft = _props$onChangePadLef === undefined ? function () {} : _props$onChangePadLef,
       _props$onChangePadSiz = props.onChangePadSizeUnit,
-      onChangePadSizeUnit = _props$onChangePadSiz === undefined ? function () {} : _props$onChangePadSiz;
+      onChangePadSizeUnit = _props$onChangePadSiz === undefined ? function () {} : _props$onChangePadSiz,
+      _props$onResetClick = props.onResetClick,
+      onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
 
   return wp.element.createElement(
     "div",
@@ -1144,32 +1146,46 @@ function PremiumPadding(props) {
             value: paddingTop,
             min: "0",
             max: "150",
-            onChange: onChangePadTop
+            onChange: onChangePadTop,
+            onResetClick: onResetClick
           }),
           wp.element.createElement(RangeControl, {
             label: __("Padding Right"),
             value: paddingRight,
             min: "0",
             max: "150",
-            onChange: onChangePadRight
+            onChange: onChangePadRight,
+            onResetClick: onResetClick
           }),
           wp.element.createElement(RangeControl, {
             label: __("Padding Bottom"),
             value: paddingBottom,
             min: "0",
             max: "150",
-            onChange: onChangePadBottom
+            onChange: onChangePadBottom,
+            onResetClick: onResetClick
           }),
           wp.element.createElement(RangeControl, {
             label: __("Padding Left"),
             value: paddingLeft,
             min: "0",
             max: "150",
-            onChange: onChangePadLeft
+            onChange: onChangePadLeft,
+            onResetClick: onResetClick
           })
         );
       }
-    })
+    }),
+    wp.element.createElement(
+      Button,
+      {
+        className: "premium-control-toggle-btn reset-btn",
+        contentClassName: "premium-control-toggle-content",
+        isSmall: true,
+        onClick: onResetClick
+      },
+      wp.element.createElement("i", { className: "premium-control-reset dashicons dashicons-image-rotate" })
+    )
   );
 }
 
@@ -2578,7 +2594,9 @@ function PremiumMargin(props) {
       _props$onChangeMarLef = props.onChangeMarLeft,
       onChangeMarLeft = _props$onChangeMarLef === undefined ? function () {} : _props$onChangeMarLef,
       _props$onChangeMarSiz = props.onChangeMarSizeUnit,
-      onChangeMarSizeUnit = _props$onChangeMarSiz === undefined ? function () {} : _props$onChangeMarSiz;
+      onChangeMarSizeUnit = _props$onChangeMarSiz === undefined ? function () {} : _props$onChangeMarSiz,
+      _props$onResetClick = props.onResetClick,
+      onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
 
   return wp.element.createElement(
     "div",
@@ -2611,32 +2629,46 @@ function PremiumMargin(props) {
             value: marginTop,
             min: "0",
             max: "150",
-            onChange: onChangeMarTop
+            onChange: onChangeMarTop,
+            onResetClick: onResetClick
           }),
           (directions.includes("all") || directions.includes("right")) && wp.element.createElement(RangeControl, {
             label: __("Margin Right (PX)"),
             value: marginRight,
             min: "0",
             max: "150",
-            onChange: onChangeMarRight
+            onChange: onChangeMarRight,
+            onResetClick: onResetClick
           }),
           (directions.includes("all") || directions.includes("bottom")) && wp.element.createElement(RangeControl, {
             label: __("Margin Bottom (PX)"),
             value: marginBottom,
             min: "0",
             max: "150",
-            onChange: onChangeMarBottom
+            onChange: onChangeMarBottom,
+            onResetClick: onResetClick
           }),
           (directions.includes("all") || directions.includes("left")) && wp.element.createElement(RangeControl, {
             label: __("Margin Left (PX)"),
             value: marginLeft,
             min: "0",
             max: "150",
-            onChange: onChangeMarLeft
+            onChange: onChangeMarLeft,
+            onResetClick: onResetClick
           })
         );
       }
-    })
+    }),
+    wp.element.createElement(
+      Button,
+      {
+        className: "premium-control-toggle-btn reset-btn",
+        contentClassName: "premium-control-toggle-content",
+        isSmall: true,
+        onClick: onResetClick
+      },
+      wp.element.createElement("i", { className: "premium-control-reset dashicons dashicons-image-rotate" })
+    )
   );
 }
 
@@ -3011,19 +3043,19 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var __ = wp.i18n.__;
 var Component = wp.element.Component;
 
-var PremiumRange = function (_Component) {
-    _inherits(PremiumRange, _Component);
+var PremiumRangeResponsive = function (_Component) {
+    _inherits(PremiumRangeResponsive, _Component);
 
-    function PremiumRange() {
-        _classCallCheck(this, PremiumRange);
+    function PremiumRangeResponsive() {
+        _classCallCheck(this, PremiumRangeResponsive);
 
-        var _this = _possibleConstructorReturn(this, (PremiumRange.__proto__ || Object.getPrototypeOf(PremiumRange)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (PremiumRangeResponsive.__proto__ || Object.getPrototypeOf(PremiumRangeResponsive)).apply(this, arguments));
 
         _this.onAdvancedControlReset = _this.onAdvancedControlReset.bind(_this);
         return _this;
     }
 
-    _createClass(PremiumRange, [{
+    _createClass(PremiumRangeResponsive, [{
         key: "onAdvancedControlReset",
         value: function onAdvancedControlReset() {
             var setAttributes = this.props.setAttributes;
@@ -3060,10 +3092,10 @@ var PremiumRange = function (_Component) {
         }
     }]);
 
-    return PremiumRange;
+    return PremiumRangeResponsive;
 }(Component);
 
-/* harmony default export */ __webpack_exports__["a"] = (PremiumRange);
+/* harmony default export */ __webpack_exports__["a"] = (PremiumRangeResponsive);
 
 /***/ }),
 /* 38 */
@@ -3437,7 +3469,7 @@ function PremiumFilters(props) {
     wp.element.createElement(
       Button,
       {
-        className: "premium-control-toggle-btn",
+        className: "premium-control-toggle-btn reset-btn",
         contentClassName: "premium-control-toggle-content",
         isSmall: true,
         onClick: onResetClick
@@ -51332,8 +51364,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -51352,45 +51382,16 @@ var _wp$components = wp.components,
     Dropdown = _wp$components.Dropdown,
     Button = _wp$components.Button;
 
-var PremiumMarginR = function (_Component) {
-  _inherits(PremiumMarginR, _Component);
+var PremiumMarginResponsive = function (_Component) {
+  _inherits(PremiumMarginResponsive, _Component);
 
-  function PremiumMarginR() {
-    _classCallCheck(this, PremiumMarginR);
+  function PremiumMarginResponsive() {
+    _classCallCheck(this, PremiumMarginResponsive);
 
-    var _this = _possibleConstructorReturn(this, (PremiumMarginR.__proto__ || Object.getPrototypeOf(PremiumMarginR)).apply(this, arguments));
-
-    _this.onAdvancedControlReset = _this.onAdvancedControlReset.bind(_this);
-    return _this;
+    return _possibleConstructorReturn(this, (PremiumMarginResponsive.__proto__ || Object.getPrototypeOf(PremiumMarginResponsive)).apply(this, arguments));
   }
 
-  _createClass(PremiumMarginR, [{
-    key: "onAdvancedControlReset",
-    value: function onAdvancedControlReset() {
-      var setAttributes = this.props.setAttributes;
-      // Reset Margin to default.
-
-      setAttributes(_defineProperty({}, this.props.marginTop.label, ""));
-      setAttributes(_defineProperty({}, this.props.marginTopType.label, "px"));
-      setAttributes(_defineProperty({}, this.props.marginTopMobile.label, ""));
-      setAttributes(_defineProperty({}, this.props.marginTopTablet.label, ""));
-
-      setAttributes(_defineProperty({}, this.props.marginRight.label, ""));
-      setAttributes(_defineProperty({}, this.props.marginRightType.label, "px"));
-      setAttributes(_defineProperty({}, this.props.marginRightMobile.label, ""));
-      setAttributes(_defineProperty({}, this.props.marginRightTablet.label, ""));
-
-      setAttributes(_defineProperty({}, this.props.marginBottom.label, ""));
-      setAttributes(_defineProperty({}, this.props.marginBottomType.label, "px"));
-      setAttributes(_defineProperty({}, this.props.marginBottomMobile.label, ""));
-      setAttributes(_defineProperty({}, this.props.marginBottomTablet.label, ""));
-
-      setAttributes(_defineProperty({}, this.props.marginLeft.label, ""));
-      setAttributes(_defineProperty({}, this.props.marginLeftType.label, "px"));
-      setAttributes(_defineProperty({}, this.props.marginLeftMobile.label, ""));
-      setAttributes(_defineProperty({}, this.props.marginLeftTablet.label, ""));
-    }
-  }, {
+  _createClass(PremiumMarginResponsive, [{
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -51399,7 +51400,9 @@ var PremiumMarginR = function (_Component) {
           directions = _props.directions,
           showUnits = _props.showUnits,
           _props$onChangeMarSiz = _props.onChangeMarSizeUnit,
-          onChangeMarSizeUnit = _props$onChangeMarSiz === undefined ? function () {} : _props$onChangeMarSiz;
+          onChangeMarSizeUnit = _props$onChangeMarSiz === undefined ? function () {} : _props$onChangeMarSiz,
+          _props$onResetClick = _props.onResetClick,
+          onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
 
       return wp.element.createElement(
         "div",
@@ -51439,6 +51442,7 @@ var PremiumMarginR = function (_Component) {
                 sizeMobileText: !_this2.props.marginTopLabel ? __("Margin Top") : _this2.props.marginTopLabel,
                 sizeTabletText: !_this2.props.marginTopLabel ? __("Margin Top") : _this2.props.marginTopLabel,
                 sizeText: !_this2.props.marginTopLabel ? __("Margin Top") : _this2.props.marginTopLabel,
+                onResetClick: onResetClick,
                 steps: 0.1
               }, _this2.props)),
               (directions.includes("all") || directions.includes("right")) && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__premium_responsive__["a" /* default */], _extends({
@@ -51453,6 +51457,7 @@ var PremiumMarginR = function (_Component) {
                 sizeMobileText: !_this2.props.marginRightLabel ? __("Margin Right") : _this2.props.marginTRightLabel,
                 sizeTabletText: !_this2.props.marginRightLabel ? __("Margin Right") : _this2.props.marginRightLabel,
                 sizeText: !_this2.props.marginRightLabel ? __("Margin Right") : _this2.props.marginRightLabel,
+                onResetClick: onResetClick,
                 steps: 0.1
               }, _this2.props)),
               (directions.includes("all") || directions.includes("bottom")) && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__premium_responsive__["a" /* default */], _extends({
@@ -51467,6 +51472,7 @@ var PremiumMarginR = function (_Component) {
                 sizeMobileText: !_this2.props.marginBottomLabel ? __("Margin Bottom") : _this2.props.marginBottomLabel,
                 sizeTabletText: !_this2.props.marginBottomLabel ? __("Margin Bottom") : _this2.props.marginBottomLabel,
                 sizeText: !_this2.props.marginBottomLabel ? __("Margin Bottom") : _this2.props.marginBottomLabel,
+                onResetClick: onResetClick,
                 steps: 0.1
               }, _this2.props)),
               (directions.includes("all") || directions.includes("left")) && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__premium_responsive__["a" /* default */], _extends({
@@ -51481,19 +51487,30 @@ var PremiumMarginR = function (_Component) {
                 sizeMobileText: !_this2.props.marginLeftLabel ? __("Margin Left") : _this2.props.marginLeftLabel,
                 sizeTabletText: !_this2.props.marginLeftLabel ? __("Margin Left") : _this2.props.marginLeftLabel,
                 sizeText: !_this2.props.marginLeftLabel ? __("Margin Left") : _this2.props.marginLeftLabel,
+                onResetClick: onResetClick,
                 steps: 0.1
               }, _this2.props))
             );
           }
-        })
+        }),
+        wp.element.createElement(
+          Button,
+          {
+            className: "premium-control-toggle-btn reset-btn",
+            contentClassName: "premium-control-toggle-content",
+            isSmall: true,
+            onClick: onResetClick
+          },
+          wp.element.createElement("i", { className: "premium-control-reset dashicons dashicons-image-rotate" })
+        )
       );
     }
   }]);
 
-  return PremiumMarginR;
+  return PremiumMarginResponsive;
 }(Component);
 
-/* harmony default export */ __webpack_exports__["a"] = (PremiumMarginR);
+/* harmony default export */ __webpack_exports__["a"] = (PremiumMarginResponsive);
 
 /***/ }),
 /* 260 */
@@ -52459,6 +52476,27 @@ var edit = function (_Component) {
                 value: "right"
             }];
 
+            var onResetClickfirstPadding = function onResetClickfirstPadding() {
+                setAttributes({
+                    firstpaddingTop: "0",
+                    firstpaddingTopType: "px",
+                    firstpaddingTopMobile: "0",
+                    firstpaddingTopTablet: "0",
+                    firstpaddingBottom: "0",
+                    firstpaddingBottomType: "px",
+                    firstpaddingBottomMobile: "0",
+                    firstpaddingBottomTablet: "0",
+                    firstpaddingRight: "0",
+                    firstpaddingRightType: "px",
+                    firstpaddingRightMobile: "0",
+                    firstpaddingRightTablet: "0",
+                    firstpaddingLeft: "0",
+                    firstpaddingLeftType: "px",
+                    firstpaddingLeftMobile: "0",
+                    firstpaddingLeftTablet: "0"
+                });
+            };
+
             var element = document.getElementById("premium-style-content-switcher-" + this.props.clientId);
 
             if (null != element && "undefined" != typeof element) {
@@ -52824,7 +52862,8 @@ var edit = function (_Component) {
                         paddingLeftType: { value: firstpaddingLeftType, label: __("firstpaddingLeftType") },
                         paddingLeft: { value: firstpaddingLeft, label: __("firstpaddingLeft") },
                         paddingLeftMobile: { value: firstpaddingLeftMobile, label: __("firstpaddingLeftMobile") },
-                        paddingLeftTablet: { value: firstpaddingLeftTablet, label: __("firstpaddingLeftTablet") }
+                        paddingLeftTablet: { value: firstpaddingLeftTablet, label: __("firstpaddingLeftTablet") },
+                        onResetClick: onResetClickfirstPadding
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
@@ -53363,8 +53402,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -53382,45 +53419,16 @@ var _wp$components = wp.components,
     Dropdown = _wp$components.Dropdown,
     Button = _wp$components.Button;
 
-var PremiumPaddingR = function (_Component) {
-    _inherits(PremiumPaddingR, _Component);
+var PremiumPaddingResponsive = function (_Component) {
+    _inherits(PremiumPaddingResponsive, _Component);
 
-    function PremiumPaddingR() {
-        _classCallCheck(this, PremiumPaddingR);
+    function PremiumPaddingResponsive() {
+        _classCallCheck(this, PremiumPaddingResponsive);
 
-        var _this = _possibleConstructorReturn(this, (PremiumPaddingR.__proto__ || Object.getPrototypeOf(PremiumPaddingR)).apply(this, arguments));
-
-        _this.onAdvancedControlReset = _this.onAdvancedControlReset.bind(_this);
-        return _this;
+        return _possibleConstructorReturn(this, (PremiumPaddingResponsive.__proto__ || Object.getPrototypeOf(PremiumPaddingResponsive)).apply(this, arguments));
     }
 
-    _createClass(PremiumPaddingR, [{
-        key: "onAdvancedControlReset",
-        value: function onAdvancedControlReset() {
-            var setAttributes = this.props.setAttributes;
-            // Reset padding to default.
-
-            setAttributes(_defineProperty({}, this.props.paddingTop.label, ""));
-            setAttributes(_defineProperty({}, this.props.paddingTopType.label, "px"));
-            setAttributes(_defineProperty({}, this.props.paddingTopMobile.label, ""));
-            setAttributes(_defineProperty({}, this.props.paddingTopTablet.label, ""));
-
-            setAttributes(_defineProperty({}, this.props.paddingRight.label, ""));
-            setAttributes(_defineProperty({}, this.props.paddingRightType.label, "px"));
-            setAttributes(_defineProperty({}, this.props.paddingRightMobile.label, ""));
-            setAttributes(_defineProperty({}, this.props.paddingRightTablet.label, ""));
-
-            setAttributes(_defineProperty({}, this.props.paddingBottom.label, ""));
-            setAttributes(_defineProperty({}, this.props.paddingBottomType.label, "px"));
-            setAttributes(_defineProperty({}, this.props.paddingBottomMobile.label, ""));
-            setAttributes(_defineProperty({}, this.props.paddingBottomTablet.label, ""));
-
-            setAttributes(_defineProperty({}, this.props.paddingLeft.label, ""));
-            setAttributes(_defineProperty({}, this.props.paddingLeftType.label, "px"));
-            setAttributes(_defineProperty({}, this.props.paddingLeftMobile.label, ""));
-            setAttributes(_defineProperty({}, this.props.paddingLeftTablet.label, ""));
-        }
-    }, {
+    _createClass(PremiumPaddingResponsive, [{
         key: "render",
         value: function render() {
             var _this2 = this;
@@ -53428,7 +53436,9 @@ var PremiumPaddingR = function (_Component) {
             var _props = this.props,
                 showUnits = _props.showUnits,
                 _props$onChangePadSiz = _props.onChangePadSizeUnit,
-                onChangePadSizeUnit = _props$onChangePadSiz === undefined ? function () {} : _props$onChangePadSiz;
+                onChangePadSizeUnit = _props$onChangePadSiz === undefined ? function () {} : _props$onChangePadSiz,
+                _props$onResetClick = _props.onResetClick,
+                onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
 
             return wp.element.createElement(
                 "div",
@@ -53468,6 +53478,7 @@ var PremiumPaddingR = function (_Component) {
                                 sizeMobileText: !_this2.props.paddingTopLabel ? __("padding Top") : _this2.props.paddingTopLabel,
                                 sizeTabletText: !_this2.props.paddingTopLabel ? __("padding Top") : _this2.props.paddingTopLabel,
                                 sizeText: !_this2.props.paddingTopLabel ? __("padding Top") : _this2.props.paddingTopLabel,
+                                onResetClick: onResetClick,
                                 steps: 0.1
                             }, _this2.props)),
                             wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__premium_responsive__["a" /* default */], _extends({
@@ -53482,6 +53493,7 @@ var PremiumPaddingR = function (_Component) {
                                 sizeMobileText: !_this2.props.paddingRightLabel ? __("padding Right") : _this2.props.paddingTRightLabel,
                                 sizeTabletText: !_this2.props.paddingRightLabel ? __("padding Right") : _this2.props.paddingRightLabel,
                                 sizeText: !_this2.props.paddingRightLabel ? __("padding Right") : _this2.props.paddingRightLabel,
+                                onResetClick: onResetClick,
                                 steps: 0.1
                             }, _this2.props)),
                             wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__premium_responsive__["a" /* default */], _extends({
@@ -53496,6 +53508,7 @@ var PremiumPaddingR = function (_Component) {
                                 sizeMobileText: !_this2.props.paddingBottomLabel ? __("padding Bottom") : _this2.props.paddingBottomLabel,
                                 sizeTabletText: !_this2.props.paddingBottomLabel ? __("padding Bottom") : _this2.props.paddingBottomLabel,
                                 sizeText: !_this2.props.paddingBottomLabel ? __("padding Bottom") : _this2.props.paddingBottomLabel,
+                                onResetClick: onResetClick,
                                 steps: 0.1
                             }, _this2.props)),
                             wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__premium_responsive__["a" /* default */], _extends({
@@ -53510,19 +53523,30 @@ var PremiumPaddingR = function (_Component) {
                                 sizeMobileText: !_this2.props.paddingLeftLabel ? __("padding Left") : _this2.props.paddingLeftLabel,
                                 sizeTabletText: !_this2.props.paddingLeftLabel ? __("padding Left") : _this2.props.paddingLeftLabel,
                                 sizeText: !_this2.props.paddingLeftLabel ? __("padding Left") : _this2.props.paddingLeftLabel,
+                                onResetClick: onResetClick,
                                 steps: 0.1
                             }, _this2.props))
                         );
                     }
-                })
+                }),
+                wp.element.createElement(
+                    Button,
+                    {
+                        className: "premium-control-toggle-btn reset-btn",
+                        contentClassName: "premium-control-toggle-content",
+                        isSmall: true,
+                        onClick: onResetClick
+                    },
+                    wp.element.createElement("i", { className: "premium-control-reset dashicons dashicons-image-rotate" })
+                )
             );
         }
     }]);
 
-    return PremiumPaddingR;
+    return PremiumPaddingResponsive;
 }(Component);
 
-/* harmony default export */ __webpack_exports__["a"] = (PremiumPaddingR);
+/* harmony default export */ __webpack_exports__["a"] = (PremiumPaddingResponsive);
 
 /***/ }),
 /* 265 */

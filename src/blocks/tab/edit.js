@@ -5,7 +5,7 @@ import PremiumBorder from "../../components/premium-border";
 import iconsList from "../../components/premium-icons-list";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumRange from "../../components/premium-range-responsive";
+import PremiumRangeResponsive from "../../components/premium-range-responsive";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 
 import {
@@ -650,7 +650,7 @@ class edit extends Component {
                             onChange={value => setAttributes({ tabIndex: value })}
                             help="This option works only on frontend"
                         />
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: tabPaddingType, label: __("tabPaddingType") }}
                             range={{ value: tabPadding, label: __("tabPadding") }}
@@ -660,7 +660,7 @@ class edit extends Component {
                             min={1}
                             max={100}
                         />
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: tabMarginType, label: __("tabMarginType") }}
                             range={{ value: tabMargin, label: __("tabMargin") }}
@@ -889,7 +889,7 @@ class edit extends Component {
                             }
                             allowReset={true}
                         />
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: iconfontSizeType, label: __("iconfontSizeType") }}
                             range={{ value: iconfontSize, label: __("iconfontSize") }}
@@ -930,7 +930,7 @@ class edit extends Component {
                             }
                             onResetClick={onResetClickIconTextShadow}
                         />
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: iconPaddingType, label: __("iconPaddingType") }}
                             range={{ value: iconPadding, label: __("iconPadding") }}
@@ -1016,7 +1016,7 @@ class edit extends Component {
                             }
                             onResetClick={onResetClickTitleTextShadow}
                         />
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: titleMarginType, label: __("titleMarginType") }}
                             range={{ value: titleMargin, label: __("titleMargin") }}
@@ -1113,7 +1113,7 @@ class edit extends Component {
                             setAttributes({ contentshadowVertical: newValue })
                             }
                         />
-                        <PremiumRange
+                        <PremiumRangeResponsive
                             setAttributes={setAttributes}
                             rangeType={{ value: contentPaddingType, label: __("contentPaddingType") }}
                             range={{ value: contentPadding, label: __("contentPadding") }}
