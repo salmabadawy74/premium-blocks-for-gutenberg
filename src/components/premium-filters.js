@@ -13,7 +13,8 @@ export default function PremiumFilters(props) {
     onChangeBright = () => {},
     onChangeContrast = () => {},
     onChangeSat = () => {},
-    onChangeHue = () => {}
+    onChangeHue = () => {},
+    onResetClick = () => {}
   } = props;
 
   return (
@@ -39,6 +40,7 @@ export default function PremiumFilters(props) {
               value={blur}
               onChange={onChangeBlur}
               allowReset={true}
+              onResetClick={onResetClick}
             />
             <RangeControl
               label={__("Brightness")}
@@ -48,6 +50,7 @@ export default function PremiumFilters(props) {
               value={bright}
               onChange={onChangeBright}
               allowReset={true}
+              onResetClick={onResetClick}
             />
             <RangeControl
               label={__("Contrast")}
@@ -57,6 +60,7 @@ export default function PremiumFilters(props) {
               value={contrast}
               onChange={onChangeContrast}
               allowReset={true}
+              onResetClick={onResetClick}
             />
             <RangeControl
               label={__("Saturation")}
@@ -66,6 +70,7 @@ export default function PremiumFilters(props) {
               value={saturation}
               onChange={onChangeSat}
               allowReset={true}
+              onResetClick={onResetClick}
             />
             <RangeControl
               label={__("Hue")}
@@ -75,10 +80,17 @@ export default function PremiumFilters(props) {
               value={hue}
               onChange={onChangeHue}
               allowReset={true}
+              onResetClick={onResetClick}
             />
           </Fragment>
         )}
       />
+      <Button
+          className="premium-control-toggle-btn"
+          contentClassName="premium-control-toggle-content"
+          isSmall
+          onClick={onResetClick}
+        ><i className="premium-control-reset dashicons dashicons-image-rotate" /></Button>
     </div>
   );
 }

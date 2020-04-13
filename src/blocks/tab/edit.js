@@ -497,6 +497,65 @@ class edit extends Component {
             })
         }
 
+        const onResetClickTitle = () => {
+            setAttributes({ 
+                titleWeight: 500, 
+                titlefontSizeType:"px", 
+                titlefontSize: "20",
+                titlefontSizeMobile: "20",
+                titlefontSizeTablet: "20",
+                titleStyle: "normal",
+                titleLetter: "0",
+                titleUpper: false
+            });
+        }
+
+        const onResetClickTabNormal = () => {
+            setAttributes({ 
+                tabShadowColor: "", 
+                tabShadowBlur:"0", 
+                tabShadowHorizontal:"0", 
+                tabShadowVertical:"0", 
+                tabShadowPosition:""
+            });
+        }
+
+        const onResetClickTabHover = () => {
+            setAttributes({ 
+                tabhoverShadowColor: "", 
+                tabhoverShadowBlur:"0", 
+                tabhoverShadowHorizontal:"0", 
+                tabhoverShadowVertical:"0", 
+                tabhoverShadowPosition:""
+            });
+        }
+
+        const onResetClickIconTextShadow= () => {
+            setAttributes({ 
+                iconshadowColor: "", 
+                iconshadowBlur:"0", 
+                iconshadowHorizontal:"0", 
+                iconshadowVertical:"0",
+            });
+        }
+
+        const onResetClickTitleTextShadow= () => {
+            setAttributes({ 
+                titleshadowColor: "", 
+                titleshadowBlur:"0", 
+                titleshadowHorizontal:"0", 
+                titleshadowVertical:"0",
+            });
+        }
+        const onResetClickTabBorder= () => {
+            setAttributes({ 
+                tabborderType: "none", 
+                tabborderWidth:"1", 
+                tabborderColor:"", 
+                tabborderRadius:"0",
+            });
+        }
+
         const mainClasses = classnames(className, "premium-tab");
         return [
             isSelected && (
@@ -652,6 +711,7 @@ class edit extends Component {
                                             onChangeRadius={newrRadius =>
                                                 setAttributes({ tabborderRadius: newrRadius })
                                             }
+                                            onResetClick={onResetClickTabBorder}
                                         />
                                         <PremiumBoxShadow
                                             label="Box Shadow"
@@ -687,6 +747,7 @@ class edit extends Component {
                                                     tabShadowPosition: newValue === undefined ? 0 : newValue
                                                 })
                                             }
+                                            onResetClick={onResetClickTabNormal}
                                         />
                                     </Fragment>
                                 } else {
@@ -749,6 +810,7 @@ class edit extends Component {
                                                     tabhoverShadowPosition: newValue === undefined ? 0 : newValue
                                                 })
                                             }
+                                            onResetClick={onResetClickTabHover}
                                         />
                                     </Fragment>
                                 }
@@ -866,6 +928,7 @@ class edit extends Component {
                             onChangeVertical={newValue =>
                             setAttributes({ iconshadowVertical: newValue })
                             }
+                            onResetClick={onResetClickIconTextShadow}
                         />
                         <PremiumRange
                             setAttributes={setAttributes}
@@ -934,6 +997,7 @@ class edit extends Component {
                                 setAttributes({ titleLetter: newValue })
                             }
                             onChangeUpper={check => setAttributes({ titleUpper: check })}
+                            onResetClick={onResetClickTitle}
                         />
                         <PremiumTextShadow
                             color={titleshadowColor}
@@ -950,6 +1014,7 @@ class edit extends Component {
                             onChangeVertical={newValue =>
                             setAttributes({ titleshadowVertical: newValue })
                             }
+                            onResetClick={onResetClickTitleTextShadow}
                         />
                         <PremiumRange
                             setAttributes={setAttributes}

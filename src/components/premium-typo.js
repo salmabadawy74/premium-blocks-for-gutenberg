@@ -15,18 +15,8 @@ export default class PremiumTypo extends Component {
 
   constructor() {
     super(...arguments)
-    this.onAdvancedControlReset = this.onAdvancedControlReset.bind(this)
   }
 
-  onAdvancedControlReset() {
-
-    const { setAttributes } = this.props
-    // Reset Font Size to default.
-    setAttributes({ [this.props.fontSize.label]: "" })
-    setAttributes({ [this.props.fontSizeType.label]: "px" })
-    setAttributes({ [this.props.fontSizeMobile.label]: "" })
-    setAttributes({ [this.props.fontSizeTablet.label]: "" })
-  }
 
   render() {
     const {
@@ -42,7 +32,8 @@ export default class PremiumTypo extends Component {
       onChangeStyle = () => { },
       onChangeSpacing = () => { },
       onChangeLine = () => { },
-      onChangeUpper = () => { }
+      onChangeUpper = () => { },
+      onResetClick= () => { }
     } = this.props;
 
     const STYLE = [
@@ -93,6 +84,7 @@ export default class PremiumTypo extends Component {
                 sizeTabletText={(!this.props.fontSizeLabel) ? __("Font Size") : this.props.fontSizeLabel}
                 sizeText={(!this.props.fontSizeLabel) ? __("Font Size") : this.props.fontSizeLabel}
                 steps={0.1}
+                onResetClick={onResetClick}
                 {...this.props}
             />
               )}
@@ -104,6 +96,7 @@ export default class PremiumTypo extends Component {
                   step="100"
                   value={weight}
                   onChange={onChangeWeight}
+                  onResetClick={onResetClick}
                 />
               )}
               {components.includes("style") && (
@@ -112,6 +105,7 @@ export default class PremiumTypo extends Component {
                   options={STYLE}
                   value={style}
                   onChange={onChangeStyle}
+                  onResetClick={onResetClick}
                 />
               )}
               {components.includes("upper") && (
@@ -119,6 +113,7 @@ export default class PremiumTypo extends Component {
                   label={__("Uppercase")}
                   checked={upper}
                   onChange={onChangeUpper}
+                  onResetClick={onResetClick}
                 />
               )}
               {components.includes("spacing") && (
@@ -126,6 +121,7 @@ export default class PremiumTypo extends Component {
                   label={__("Letter Spacing (PX)")}
                   value={spacing}
                   onChange={onChangeSpacing}
+                  onResetClick={onResetClick}
                 />
               )}
               {components.includes("line") && (
@@ -133,11 +129,19 @@ export default class PremiumTypo extends Component {
                   label={__("Line Height (PX)")}
                   value={line}
                   onChange={onChangeLine}
+                  onResetClick={onResetClick}
                 />
               )}
             </Fragment>
           )}
         />
+        <Button
+          className="premium-control-toggle-btn"
+          contentClassName="premium-control-toggle-content"
+          isSmall
+          aria-pressed={(this.state !== null)}
+          onClick={onResetClick}
+        ><i className="premium-control-reset dashicons dashicons-image-rotate" /></Button>
       </div>
     );
   }

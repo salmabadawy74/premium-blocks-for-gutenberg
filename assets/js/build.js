@@ -436,7 +436,9 @@ function PremiumBorder(props) {
       _props$onChangeColor = props.onChangeColor,
       onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
       _props$onChangeRadius = props.onChangeRadius,
-      onChangeRadius = _props$onChangeRadius === undefined ? function () {} : _props$onChangeRadius;
+      onChangeRadius = _props$onChangeRadius === undefined ? function () {} : _props$onChangeRadius,
+      _props$onResetClick = props.onResetClick,
+      onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
 
   var BORDER = [{
     value: "none",
@@ -486,14 +488,16 @@ function PremiumBorder(props) {
             label: __("Border Type"),
             options: BORDER,
             value: borderType,
-            onChange: onChangeType
+            onChange: onChangeType,
+            onResetClick: onResetClick
           }),
           "none" != borderType && wp.element.createElement(RangeControl, {
             label: __("Border Width"),
             value: borderWidth,
             min: "0",
             max: "50",
-            onChange: onChangeWidth
+            onChange: onChangeWidth,
+            onResetClick: onResetClick
           }),
           "none" != borderType && wp.element.createElement(
             Fragment,
@@ -506,7 +510,8 @@ function PremiumBorder(props) {
             wp.element.createElement(ColorPicker, {
               color: borderColor,
               onChangeComplete: onChangeColor,
-              disableAlpha: true
+              disableAlpha: true,
+              onResetClick: onResetClick
             })
           ),
           wp.element.createElement(RangeControl, {
@@ -514,11 +519,22 @@ function PremiumBorder(props) {
             value: borderRadius,
             min: "0",
             max: "150",
-            onChange: onChangeRadius
+            onChange: onChangeRadius,
+            onResetClick: onResetClick
           })
         );
       }
-    })
+    }),
+    wp.element.createElement(
+      Button,
+      {
+        className: "premium-control-toggle-btn",
+        contentClassName: "premium-control-toggle-content",
+        isSmall: true,
+        onClick: onResetClick
+      },
+      wp.element.createElement("i", { className: "premium-control-reset dashicons dashicons-image-rotate" })
+    )
   );
 }
 
@@ -531,8 +547,6 @@ function PremiumBorder(props) {
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -559,24 +573,10 @@ var PremiumTypo = function (_Component) {
   function PremiumTypo() {
     _classCallCheck(this, PremiumTypo);
 
-    var _this = _possibleConstructorReturn(this, (PremiumTypo.__proto__ || Object.getPrototypeOf(PremiumTypo)).apply(this, arguments));
-
-    _this.onAdvancedControlReset = _this.onAdvancedControlReset.bind(_this);
-    return _this;
+    return _possibleConstructorReturn(this, (PremiumTypo.__proto__ || Object.getPrototypeOf(PremiumTypo)).apply(this, arguments));
   }
 
   _createClass(PremiumTypo, [{
-    key: "onAdvancedControlReset",
-    value: function onAdvancedControlReset() {
-      var setAttributes = this.props.setAttributes;
-      // Reset Font Size to default.
-
-      setAttributes(_defineProperty({}, this.props.fontSize.label, ""));
-      setAttributes(_defineProperty({}, this.props.fontSizeType.label, "px"));
-      setAttributes(_defineProperty({}, this.props.fontSizeMobile.label, ""));
-      setAttributes(_defineProperty({}, this.props.fontSizeTablet.label, ""));
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -600,7 +600,9 @@ var PremiumTypo = function (_Component) {
           _props$onChangeLine = _props.onChangeLine,
           onChangeLine = _props$onChangeLine === undefined ? function () {} : _props$onChangeLine,
           _props$onChangeUpper = _props.onChangeUpper,
-          onChangeUpper = _props$onChangeUpper === undefined ? function () {} : _props$onChangeUpper;
+          onChangeUpper = _props$onChangeUpper === undefined ? function () {} : _props$onChangeUpper,
+          _props$onResetClick = _props.onResetClick,
+          onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
 
 
       var STYLE = [{
@@ -655,7 +657,8 @@ var PremiumTypo = function (_Component) {
                 sizeMobileText: !_this2.props.fontSizeLabel ? __("Font Size") : _this2.props.fontSizeLabel,
                 sizeTabletText: !_this2.props.fontSizeLabel ? __("Font Size") : _this2.props.fontSizeLabel,
                 sizeText: !_this2.props.fontSizeLabel ? __("Font Size") : _this2.props.fontSizeLabel,
-                steps: 0.1
+                steps: 0.1,
+                onResetClick: onResetClick
               }, _this2.props)),
               components.includes("weight") && wp.element.createElement(RangeControl, {
                 label: __("Font Weight"),
@@ -663,32 +666,48 @@ var PremiumTypo = function (_Component) {
                 max: "900",
                 step: "100",
                 value: weight,
-                onChange: onChangeWeight
+                onChange: onChangeWeight,
+                onResetClick: onResetClick
               }),
               components.includes("style") && wp.element.createElement(SelectControl, {
                 label: __("Style"),
                 options: STYLE,
                 value: style,
-                onChange: onChangeStyle
+                onChange: onChangeStyle,
+                onResetClick: onResetClick
               }),
               components.includes("upper") && wp.element.createElement(ToggleControl, {
                 label: __("Uppercase"),
                 checked: upper,
-                onChange: onChangeUpper
+                onChange: onChangeUpper,
+                onResetClick: onResetClick
               }),
               components.includes("spacing") && wp.element.createElement(RangeControl, {
                 label: __("Letter Spacing (PX)"),
                 value: spacing,
-                onChange: onChangeSpacing
+                onChange: onChangeSpacing,
+                onResetClick: onResetClick
               }),
               components.includes("line") && wp.element.createElement(RangeControl, {
                 label: __("Line Height (PX)"),
                 value: line,
-                onChange: onChangeLine
+                onChange: onChangeLine,
+                onResetClick: onResetClick
               })
             );
           }
-        })
+        }),
+        wp.element.createElement(
+          Button,
+          {
+            className: "premium-control-toggle-btn",
+            contentClassName: "premium-control-toggle-content",
+            isSmall: true,
+            "aria-pressed": this.state !== null,
+            onClick: onResetClick
+          },
+          wp.element.createElement("i", { className: "premium-control-reset dashicons dashicons-image-rotate" })
+        )
       );
     }
   }]);
@@ -725,7 +744,9 @@ function PremiumTextShadow(props) {
         _props$onChangehHoriz = props.onChangehHorizontal,
         onChangehHorizontal = _props$onChangehHoriz === undefined ? function () {} : _props$onChangehHoriz,
         _props$onChangeVertic = props.onChangeVertical,
-        onChangeVertical = _props$onChangeVertic === undefined ? function () {} : _props$onChangeVertic;
+        onChangeVertical = _props$onChangeVertic === undefined ? function () {} : _props$onChangeVertic,
+        _props$onResetClick = props.onResetClick,
+        onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
 
 
     return wp.element.createElement(
@@ -764,27 +785,41 @@ function PremiumTextShadow(props) {
                         wp.element.createElement(ColorPicker, {
                             color: color,
                             onChangeComplete: onChangeColor,
-                            disableAlpha: true
+                            disableAlpha: true,
+                            onResetClick: onResetClick
                         })
                     ),
                     wp.element.createElement(RangeControl, {
                         label: __("Blur"),
                         value: blur,
-                        onChange: onChangeBlur
+                        onChange: onChangeBlur,
+                        onResetClick: onResetClick
                     }),
                     wp.element.createElement(RangeControl, {
                         label: __("Horizontal"),
                         value: horizontal,
-                        onChange: onChangehHorizontal
+                        onChange: onChangehHorizontal,
+                        onResetClick: onResetClick
                     }),
                     wp.element.createElement(RangeControl, {
                         label: __("Vertical"),
                         value: vertical,
-                        onChange: onChangeVertical
+                        onChange: onChangeVertical,
+                        onResetClick: onResetClick
                     })
                 );
             }
-        })
+        }),
+        wp.element.createElement(
+            Button,
+            {
+                className: "premium-control-toggle-btn",
+                contentClassName: "premium-control-toggle-content",
+                isSmall: true,
+                onClick: onResetClick
+            },
+            wp.element.createElement("i", { className: "premium-control-reset dashicons dashicons-image-rotate" })
+        )
     );
 }
 
@@ -864,7 +899,9 @@ function PremiumBoxShadow(props) {
       _props$onChangeVertic = props.onChangeVertical,
       onChangeVertical = _props$onChangeVertic === undefined ? function () {} : _props$onChangeVertic,
       _props$onChangePositi = props.onChangePosition,
-      onChangePosition = _props$onChangePositi === undefined ? function () {} : _props$onChangePositi;
+      onChangePosition = _props$onChangePositi === undefined ? function () {} : _props$onChangePositi,
+      _props$onResetClick = props.onResetClick,
+      onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
 
 
   var POSITION = [{
@@ -911,33 +948,48 @@ function PremiumBoxShadow(props) {
             wp.element.createElement(ColorPicker, {
               color: color,
               onChangeComplete: onChangeColor,
-              disableAlpha: true
+              disableAlpha: true,
+              onResetClick: onResetClick
             })
           ),
           wp.element.createElement(RangeControl, {
             label: __("Horizontal"),
             value: horizontal,
-            onChange: onChangehHorizontal
+            onChange: onChangehHorizontal,
+            onResetClick: onResetClick
           }),
           wp.element.createElement(RangeControl, {
             label: __("Vertical"),
             value: vertical,
-            onChange: onChangeVertical
+            onChange: onChangeVertical,
+            onResetClick: onResetClick
           }),
           wp.element.createElement(RangeControl, {
             label: __("Blur"),
             value: blur,
-            onChange: onChangeBlur
+            onChange: onChangeBlur,
+            onResetClick: onResetClick
           }),
           wp.element.createElement(SelectControl, {
             label: __("Position"),
             options: POSITION,
             value: position,
-            onChange: onChangePosition
+            onChange: onChangePosition,
+            onResetClick: onResetClick
           })
         );
       }
-    })
+    }),
+    wp.element.createElement(
+      Button,
+      {
+        className: "premium-control-toggle-btn",
+        contentClassName: "premium-control-toggle-content",
+        isSmall: true,
+        onClick: onResetClick
+      },
+      wp.element.createElement("i", { className: "premium-control-reset dashicons dashicons-image-rotate" })
+    )
   );
 }
 
@@ -3298,7 +3350,9 @@ function PremiumFilters(props) {
       _props$onChangeSat = props.onChangeSat,
       onChangeSat = _props$onChangeSat === undefined ? function () {} : _props$onChangeSat,
       _props$onChangeHue = props.onChangeHue,
-      onChangeHue = _props$onChangeHue === undefined ? function () {} : _props$onChangeHue;
+      onChangeHue = _props$onChangeHue === undefined ? function () {} : _props$onChangeHue,
+      _props$onResetClick = props.onResetClick,
+      onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
 
 
   return wp.element.createElement(
@@ -3334,7 +3388,8 @@ function PremiumFilters(props) {
             initialPosition: "0",
             value: blur,
             onChange: onChangeBlur,
-            allowReset: true
+            allowReset: true,
+            onResetClick: onResetClick
           }),
           wp.element.createElement(RangeControl, {
             label: __("Brightness"),
@@ -3343,7 +3398,8 @@ function PremiumFilters(props) {
             initialPosition: 100,
             value: bright,
             onChange: onChangeBright,
-            allowReset: true
+            allowReset: true,
+            onResetClick: onResetClick
           }),
           wp.element.createElement(RangeControl, {
             label: __("Contrast"),
@@ -3352,7 +3408,8 @@ function PremiumFilters(props) {
             initialPosition: 100,
             value: contrast,
             onChange: onChangeContrast,
-            allowReset: true
+            allowReset: true,
+            onResetClick: onResetClick
           }),
           wp.element.createElement(RangeControl, {
             label: __("Saturation"),
@@ -3361,7 +3418,8 @@ function PremiumFilters(props) {
             initialPosition: 100,
             value: saturation,
             onChange: onChangeSat,
-            allowReset: true
+            allowReset: true,
+            onResetClick: onResetClick
           }),
           wp.element.createElement(RangeControl, {
             label: __("Hue"),
@@ -3370,11 +3428,22 @@ function PremiumFilters(props) {
             initialPosition: "0",
             value: hue,
             onChange: onChangeHue,
-            allowReset: true
+            allowReset: true,
+            onResetClick: onResetClick
           })
         );
       }
-    })
+    }),
+    wp.element.createElement(
+      Button,
+      {
+        className: "premium-control-toggle-btn",
+        contentClassName: "premium-control-toggle-content",
+        isSmall: true,
+        onClick: onResetClick
+      },
+      wp.element.createElement("i", { className: "premium-control-reset dashicons dashicons-image-rotate" })
+    )
   );
 }
 
@@ -55775,6 +55844,65 @@ var edit = function (_Component) {
                 });
             };
 
+            var onResetClickTitle = function onResetClickTitle() {
+                setAttributes({
+                    titleWeight: 500,
+                    titlefontSizeType: "px",
+                    titlefontSize: "20",
+                    titlefontSizeMobile: "20",
+                    titlefontSizeTablet: "20",
+                    titleStyle: "normal",
+                    titleLetter: "0",
+                    titleUpper: false
+                });
+            };
+
+            var onResetClickTabNormal = function onResetClickTabNormal() {
+                setAttributes({
+                    tabShadowColor: "",
+                    tabShadowBlur: "0",
+                    tabShadowHorizontal: "0",
+                    tabShadowVertical: "0",
+                    tabShadowPosition: ""
+                });
+            };
+
+            var onResetClickTabHover = function onResetClickTabHover() {
+                setAttributes({
+                    tabhoverShadowColor: "",
+                    tabhoverShadowBlur: "0",
+                    tabhoverShadowHorizontal: "0",
+                    tabhoverShadowVertical: "0",
+                    tabhoverShadowPosition: ""
+                });
+            };
+
+            var onResetClickIconTextShadow = function onResetClickIconTextShadow() {
+                setAttributes({
+                    iconshadowColor: "",
+                    iconshadowBlur: "0",
+                    iconshadowHorizontal: "0",
+                    iconshadowVertical: "0"
+                });
+            };
+
+            var onResetClickTitleTextShadow = function onResetClickTitleTextShadow() {
+                setAttributes({
+                    titleshadowColor: "",
+                    titleshadowBlur: "0",
+                    titleshadowHorizontal: "0",
+                    titleshadowVertical: "0"
+                });
+            };
+            var onResetClickTabBorder = function onResetClickTabBorder() {
+                setAttributes({
+                    tabborderType: "none",
+                    tabborderWidth: "1",
+                    tabborderColor: "",
+                    tabborderRadius: "0"
+                });
+            };
+
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-tab");
             return [isSelected && wp.element.createElement(
                 BlockControls,
@@ -55955,7 +56083,8 @@ var edit = function (_Component) {
                                         },
                                         onChangeRadius: function onChangeRadius(newrRadius) {
                                             return setAttributes({ tabborderRadius: newrRadius });
-                                        }
+                                        },
+                                        onResetClick: onResetClickTabBorder
                                     }),
                                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__["a" /* default */], {
                                         label: "Box Shadow",
@@ -55989,7 +56118,8 @@ var edit = function (_Component) {
                                             return setAttributes({
                                                 tabShadowPosition: newValue === undefined ? 0 : newValue
                                             });
-                                        }
+                                        },
+                                        onResetClick: onResetClickTabNormal
                                     })
                                 );
                             } else {
@@ -56060,7 +56190,8 @@ var edit = function (_Component) {
                                             return setAttributes({
                                                 tabhoverShadowPosition: newValue === undefined ? 0 : newValue
                                             });
-                                        }
+                                        },
+                                        onResetClick: onResetClickTabHover
                                     })
                                 );
                             }
@@ -56202,7 +56333,8 @@ var edit = function (_Component) {
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
                             return setAttributes({ iconshadowVertical: newValue });
-                        }
+                        },
+                        onResetClick: onResetClickIconTextShadow
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__["a" /* default */], {
                         setAttributes: setAttributes,
@@ -56286,7 +56418,8 @@ var edit = function (_Component) {
                         },
                         onChangeUpper: function onChangeUpper(check) {
                             return setAttributes({ titleUpper: check });
-                        }
+                        },
+                        onResetClick: onResetClickTitle
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__["a" /* default */], {
                         color: titleshadowColor,
@@ -56304,7 +56437,8 @@ var edit = function (_Component) {
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
                             return setAttributes({ titleshadowVertical: newValue });
-                        }
+                        },
+                        onResetClick: onResetClickTitleTextShadow
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__["a" /* default */], {
                         setAttributes: setAttributes,

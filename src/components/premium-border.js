@@ -17,7 +17,8 @@ export default function PremiumBorder(props) {
     onChangeType = () => {},
     onChangeWidth = () => {},
     onChangeColor = () => {},
-    onChangeRadius = () => {}
+    onChangeRadius = () => {},
+    onResetClick = () => {}
   } = props;
   const BORDER = [
     {
@@ -64,6 +65,7 @@ export default function PremiumBorder(props) {
               options={BORDER}
               value={borderType}
               onChange={onChangeType}
+              onResetClick={onResetClick}
             />
             {"none" != borderType && (
               <RangeControl
@@ -72,6 +74,7 @@ export default function PremiumBorder(props) {
                 min="0"
                 max="50"
                 onChange={onChangeWidth}
+                onResetClick={onResetClick}
               />
             )}
             {"none" != borderType && (
@@ -81,6 +84,7 @@ export default function PremiumBorder(props) {
                   color={borderColor}
                   onChangeComplete={onChangeColor}
                   disableAlpha
+                  onResetClick={onResetClick}
                 />
               </Fragment>
             )}
@@ -90,10 +94,17 @@ export default function PremiumBorder(props) {
               min="0"
               max="150"
               onChange={onChangeRadius}
+              onResetClick={onResetClick}
             />
           </Fragment>
         )}
       />
+      <Button
+          className="premium-control-toggle-btn"
+          contentClassName="premium-control-toggle-content"
+          isSmall
+          onClick={onResetClick}
+        ><i className="premium-control-reset dashicons dashicons-image-rotate" /></Button>
     </div>
   );
 }
