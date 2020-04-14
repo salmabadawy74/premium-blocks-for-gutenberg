@@ -271,11 +271,103 @@ class edit extends Component {
                 firstpaddingLeftTablet: "0",
             });
         }
+        const onResetClickSecondPadding= () => {
+            setAttributes({ 
+                secondpaddingTop: "0", 
+                secondpaddingTopType:"px", 
+                secondpaddingTopMobile: "0",
+                secondpaddingTopTablet: "0",
+                secondpaddingBottom: "0", 
+                secondpaddingBottomType:"px", 
+                secondpaddingBottomMobile: "0",
+                secondpaddingBottomTablet: "0",
+                secondpaddingRight: "0", 
+                secondpaddingRightType:"px", 
+                secondpaddingRightMobile: "0",
+                secondpaddingRightTablet: "0",
+                secondpaddingLeft: "0", 
+                secondpaddingLeftType:"px", 
+                secondpaddingLeftMobile: "0",
+                secondpaddingLeftTablet: "0",
+            });
+        }
 
         var element = document.getElementById("premium-style-content-switcher-" + this.props.clientId)
 
         if (null != element && "undefined" != typeof element) {
             element.innerHTML = styling(this.props)
+        }
+        const onResetClickFirstLabelTypo = () => {
+            setAttributes({ 
+                firstLabelWeight: 500, 
+                firstLabelfontSizeType:"px", 
+                firstLabelfontSize: "20",
+                firstLabelfontSizeMobile: "20",
+                firstLabelfontSizeTablet: "20",
+                firstLabelStyle: "normal",
+                firstLabelLetter: "0",
+                firstLabelUpper: false
+            });
+        }
+        const onResetClickSecondLabelTypo = () => {
+            setAttributes({ 
+                secondLabelWeight: 500, 
+                secondLabelfontSizeType:"px", 
+                secondLabelfontSize: "20",
+                secondLabelfontSizeMobile: "20",
+                secondLabelfontSizeTablet: "20",
+                secondLabelStyle: "normal",
+                secondLabelLetter: "0",
+                secondLabelUpper: false
+            });
+        }
+        const onResetClickFirstContentTypo = () => {
+            setAttributes({ 
+                firstContentWeight: 500, 
+                firstContentfontSizeType:"px", 
+                firstContentfontSize: "15",
+                firstContentfontSizeMobile: "15",
+                firstContentfontSizeTablet: "15",
+                firstContentStyle: "normal",
+                firstContentLetter: "0",
+                firstContentUpper: false
+            });
+        }
+        const onResetClickSecondContentTypo = () => {
+            setAttributes({ 
+                secondContentWeight: 500, 
+                secondContentfontSizeType:"px", 
+                secondContentfontSize: "15",
+                secondContentfontSizeMobile: "15",
+                secondContentfontSizeTablet: "15",
+                secondContentStyle: "normal",
+                secondContentLetter: "0",
+                secondContentUpper: false
+            });
+        }
+        const onResetClickLabelTextShadow= () => {
+            setAttributes({ 
+                shadowColor: "", 
+                shadowBlur:"0", 
+                shadowHorizontal:"0", 
+                shadowVertical:"0",
+            });
+        }
+        const onResetClickFirstContentBorder= () => {
+            setAttributes({ 
+                firstContentborderType: "none", 
+                firstContentborderWidth:"1", 
+                firstContentborderColor:"", 
+                firstContentborderRadius:"0",
+            });
+        }
+        const onResetClickSecondContentBorder= () => {
+            setAttributes({ 
+                secondContentborderType: "none", 
+                secondContentborderWidth:"1", 
+                secondContentborderColor:"", 
+                secondContentborderRadius:"0",
+            });
         }
 
         const mainClasses = classnames(className, "premium-content-switcher");
@@ -440,6 +532,7 @@ class edit extends Component {
                             onChangeVertical={newValue =>
                                 setAttributes({ shadowVertical: newValue })
                             }
+                            onResetClick={onResetClickLabelTextShadow}
                         />
                         <hr />
                         <h2 className="premium-content-switcher-labels-style">{__("First Label")}</h2>
@@ -474,6 +567,7 @@ class edit extends Component {
                                 setAttributes({ firstLabelLetter: newValue })
                             }
                             onChangeUpper={check => setAttributes({ firstLabelUpper: check })}
+                            onResetClick={onResetClickFirstLabelTypo}
                         />
                         <hr />
                         <h2 className="premium-content-switcher-labels-style">{__("Second Label")}</h2>
@@ -508,6 +602,7 @@ class edit extends Component {
                                 setAttributes({ secondLabelLetter: newValue })
                             }
                             onChangeUpper={check => setAttributes({ secondLabelUpper: check })}
+                            onResetClick={onResetClickSecondLabelTypo}
                         />
                     </PanelBody>
                     )}
@@ -585,6 +680,7 @@ class edit extends Component {
                                 setAttributes({ firstContentLetter: newValue })
                             }
                             onChangeUpper={check => setAttributes({ firstContentUpper: check })}
+                            onResetClick={onResetClickFirstContentTypo}
                         />
                         <PremiumBorder
                             borderType={firstContentborderType}
@@ -599,6 +695,7 @@ class edit extends Component {
                             onChangeRadius={newrRadius =>
                                 setAttributes({ firstContentborderRadius: newrRadius })
                             }
+                            onResetClick={onResetClickFirstContentBorder}
                         />
                     </PanelBody>
                     <PanelBody
@@ -652,6 +749,7 @@ class edit extends Component {
                             paddingLeft={{ value: secondpaddingLeft, label: __("secondpaddingLeft") }}
                             paddingLeftMobile={{ value: secondpaddingLeftMobile, label: __("secondpaddingLeftMobile") }}
                             paddingLeftTablet={{ value: secondpaddingLeftTablet, label: __("secondpaddingLeftTablet") }}
+                            onResetClick={onResetClickSecondPadding}
                         />
                         <PremiumTypo
                             components={["responsiveSize", "weight", "style", "upper", "spacing"]}
@@ -674,6 +772,7 @@ class edit extends Component {
                                 setAttributes({ secondContentLetter: newValue })
                             }
                             onChangeUpper={check => setAttributes({ secondContentUpper: check })}
+                            onResetClick={onResetClickSecondContentTypo}
                         />
                         <PremiumBorder
                             borderType={secondContentborderType}
@@ -688,6 +787,7 @@ class edit extends Component {
                             onChangeRadius={newrRadius =>
                                 setAttributes({ secondContentborderRadius: newrRadius })
                             }
+                            onResetClick={onResetClickSecondContentBorder}
                         />
                     </PanelBody>
                 </InspectorControls>

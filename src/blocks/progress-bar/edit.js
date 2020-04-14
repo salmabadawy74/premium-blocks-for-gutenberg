@@ -329,6 +329,29 @@ class edit extends Component {
             </div>
             )
         })
+        const onResetClickLabel = () => {
+            setAttributes({ 
+                LabelWeight: 500, 
+                LabelfontSizeType:"px", 
+                LabelfontSize: "20",
+                LabelfontSizeMobile: "20",
+                LabelfontSizeTablet: "20",
+                LabelStyle: "normal",
+                LabelLetter: "0",
+                LabelUpper: false
+            });
+        }
+        const onResetClickpercentage = () => {
+            setAttributes({ 
+                percentageWeight: 500, 
+                percentagefontSizeType:"px", 
+                percentagefontSize: "20",
+                percentagefontSizeMobile: "20",
+                percentagefontSizeTablet: "20",
+                percentageStyle: "normal",
+                percentageLetter: "0"
+            });
+        }
 
         const mainClasses = classnames(className, "premium-progress-bar");
         return [
@@ -539,6 +562,7 @@ class edit extends Component {
                                 setAttributes({ LabelLetter: newValue })
                             }
                             onChangeUpper={check => setAttributes({ LabelUpper: check })}
+                            onResetClick={onResetClickLabel}
                         />
                     </PanelBody>}
                     {
@@ -576,6 +600,7 @@ class edit extends Component {
                             onChangeSpacing={newValue =>
                                 setAttributes({ percentageLetter: newValue })
                             }
+                            onResetClick={onResetClickpercentage}
                         />
                     </PanelBody>}
                     {multiStage && indicator == 'arrow' ? < PanelBody

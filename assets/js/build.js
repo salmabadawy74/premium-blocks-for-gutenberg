@@ -7530,6 +7530,74 @@ var PremiumAccordion = function (_Component) {
           return item;
         });
       };
+      var onResetClickTitleBorder = function onResetClickTitleBorder() {
+        setAttributes({
+          titleBorder: "none",
+          titleBorderWidth: "1",
+          titleBorderColor: "",
+          titleBorderRadius: "0"
+        });
+      };
+      var onResetClickDescBorder = function onResetClickDescBorder() {
+        setAttributes({
+          descBorder: "none",
+          descBorderWidth: "1",
+          descBorderColor: "",
+          descBorderRadius: "0"
+        });
+      };
+      var onResetClickTitlePadding = function onResetClickTitlePadding() {
+        setAttributes({
+          titlePaddingT: "0",
+          titlePaddingR: "0",
+          titlePaddingB: "0",
+          titlePaddingL: "0"
+        });
+      };
+      var onResetClickDescPadding = function onResetClickDescPadding() {
+        setAttributes({
+          descPaddingT: "0",
+          descPaddingR: "0",
+          descPaddingB: "0",
+          descPaddingL: "0"
+        });
+      };
+      var onResetClickTitleTypo = function onResetClickTitleTypo() {
+        setAttributes({
+          titleSize: "",
+          titleWeight: 500,
+          titleStyle: "normal",
+          titleLetter: "",
+          titleLine: "",
+          titleUpper: false
+        });
+      };
+      var onResetClickDescTypo = function onResetClickDescTypo() {
+        setAttributes({
+          descSize: "",
+          descWeight: 500,
+          descStyle: "normal",
+          descLetter: "",
+          descLine: "",
+          descUpper: false
+        });
+      };
+      var onResetClickTitleTextShadow = function onResetClickTitleTextShadow() {
+        setAttributes({
+          titleShadowColor: "",
+          titleShadowBlur: "0",
+          titleShadowHorizontal: "0",
+          titleShadowVertical: "0"
+        });
+      };
+      var onResetClickDescTextShadow = function onResetClickDescTextShadow() {
+        setAttributes({
+          textShadowColor: "",
+          textShadowBlur: "0",
+          textShadowHorizontal: "0",
+          textShadowVertical: "0"
+        });
+      };
 
       var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-accordion");
 
@@ -7706,7 +7774,8 @@ var PremiumAccordion = function (_Component) {
             },
             onChangeUpper: function onChangeUpper(check) {
               return setAttributes({ titleUpper: check });
-            }
+            },
+            onResetClick: onResetClickTitleTypo
           }),
           wp.element.createElement(
             "div",
@@ -7781,7 +7850,8 @@ var PremiumAccordion = function (_Component) {
             },
             onChangeRadius: function onChangeRadius(newrRadius) {
               return setAttributes({ titleBorderRadius: newrRadius });
-            }
+            },
+            onResetClick: onResetClickTitleBorder
           }),
           wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__["a" /* default */], {
             color: titleShadowColor,
@@ -7799,7 +7869,8 @@ var PremiumAccordion = function (_Component) {
             },
             onChangeVertical: function onChangeVertical(newValue) {
               return setAttributes({ titleShadowVertical: newValue });
-            }
+            },
+            onResetClick: onResetClickTitleTextShadow
           }),
           wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_padding__["a" /* default */], {
             paddingTop: titlePaddingT,
@@ -7825,7 +7896,8 @@ var PremiumAccordion = function (_Component) {
               return setAttributes({
                 titlePaddingL: value === undefined ? 0 : value
               });
-            }
+            },
+            onResetClick: onResetClickTitlePadding
           })
         ),
         wp.element.createElement(
@@ -7981,7 +8053,8 @@ var PremiumAccordion = function (_Component) {
               },
               onChangeUpper: function onChangeUpper(check) {
                 return setAttributes({ descUpper: check });
-              }
+              },
+              onResetClick: onResetClickDescTypo
             }),
             wp.element.createElement(
               "div",
@@ -8057,7 +8130,8 @@ var PremiumAccordion = function (_Component) {
             },
             onChangeRadius: function onChangeRadius(newrRadius) {
               return setAttributes({ descBorderRadius: newrRadius });
-            }
+            },
+            onResetClick: onResetClickDescBorder
           }),
           "text" === contentType && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__["a" /* default */], {
             color: textShadowColor,
@@ -8083,7 +8157,8 @@ var PremiumAccordion = function (_Component) {
               return setAttributes({
                 textShadowVertical: newValue === undefined ? 0 : newValue
               });
-            }
+            },
+            onResetClick: onResetClickDescTextShadow
           }),
           wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_padding__["a" /* default */], {
             paddingTop: descPaddingT,
@@ -8109,7 +8184,8 @@ var PremiumAccordion = function (_Component) {
               return setAttributes({
                 descPaddingL: value === undefined ? 0 : value
               });
-            }
+            },
+            onResetClick: onResetClickDescPadding
           })
         )
       ), wp.element.createElement(
@@ -11729,6 +11805,58 @@ var edit = function edit(props) {
   }];
   setAttributes({ id: blockID });
 
+  var onResetClickContainerBorder = function onResetClickContainerBorder() {
+    setAttributes({
+      borderType: "none",
+      borderWidth: "1",
+      borderColor: "",
+      borderRadius: "0"
+    });
+  };
+  var onResetClickTitleTextShadow = function onResetClickTitleTextShadow() {
+    setAttributes({
+      shadowColor: "",
+      shadowBlur: "0",
+      shadowHorizontal: "0",
+      shadowVertical: "0"
+    });
+  };
+  var onResetClickDescTextShadow = function onResetClickDescTextShadow() {
+    setAttributes({
+      descShadowColor: "",
+      descShadowBlur: "0",
+      descShadowHorizontal: "0",
+      descShadowVertical: "0"
+    });
+  };
+  var onResetClickContainerBoxShadow = function onResetClickContainerBoxShadow() {
+    setAttributes({
+      containerShadowColor: "",
+      containerShadowBlur: "0",
+      containerShadowHorizontal: "0",
+      containerShadowVertical: "0",
+      containerShadowPosition: ""
+    });
+  };
+  var onResetClickFilter = function onResetClickFilter() {
+    setAttributes({
+      blur: "0",
+      bright: "100",
+      contrast: "100",
+      saturation: "100",
+      hue: "0"
+    });
+  };
+  var onResetClickContainerPadding = function onResetClickContainerPadding() {
+    setAttributes({
+      paddingT: "",
+      paddingB: "",
+      paddingL: "",
+      paddingR: "",
+      paddingU: "px"
+    });
+  };
+
   var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-banner");
 
   return [isSelected && wp.element.createElement(
@@ -11799,7 +11927,8 @@ var edit = function edit(props) {
         },
         onChangeHue: function onChangeHue(value) {
           return setAttributes({ hue: value });
-        }
+        },
+        onResetClick: onResetClickFilter
       }),
       wp.element.createElement(SelectControl, {
         label: __("Banner Style"),
@@ -12031,7 +12160,8 @@ var edit = function edit(props) {
           return setAttributes({
             shadowVertical: newValue === undefined ? 0 : newValue
           });
-        }
+        },
+        onResetClick: onResetClickTitleTextShadow
       })
     ),
     wp.element.createElement(
@@ -12102,7 +12232,8 @@ var edit = function edit(props) {
           return setAttributes({
             descShadowVertical: newValue === undefined ? 0 : newValue
           });
-        }
+        },
+        onResetClick: onResetClickDescTextShadow
       })
     ),
     wp.element.createElement(
@@ -12134,7 +12265,8 @@ var edit = function edit(props) {
           return setAttributes({
             borderRadius: newRadius === undefined ? 0 : newRadius
           });
-        }
+        },
+        onResetClick: onResetClickContainerBorder
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__["a" /* default */], {
         inner: true,
@@ -12167,7 +12299,8 @@ var edit = function edit(props) {
           return setAttributes({
             containerShadowPosition: newValue
           });
-        }
+        },
+        onResetClick: onResetClickContainerBoxShadow
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_padding__["a" /* default */], {
         paddingTop: paddingT,
@@ -12197,7 +12330,8 @@ var edit = function edit(props) {
         },
         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
           return setAttributes({ paddingU: newvalue });
-        }
+        },
+        onResetClick: onResetClickContainerPadding
       })
     )
   ), wp.element.createElement(
@@ -13667,8 +13801,6 @@ registerBlockType("premium/button", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(15);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -13696,8 +13828,6 @@ var _wp$editor = wp.editor,
 
 
 var edit = function edit(props) {
-  var _wp$element$createEle;
-
   var isSelected = props.isSelected,
       setAttributes = props.setAttributes,
       className = props.className,
@@ -13845,6 +13975,41 @@ var edit = function edit(props) {
 
     addFontToHead(fontFamily);
   };
+  var onResetClickTextTypo = function onResetClickTextTypo() {
+    setAttributes({
+      textWeight: 500,
+      textSize: "",
+      textLine: "",
+      textStyle: "normal",
+      textLetter: "0",
+      textUpper: false
+    });
+  };
+  var onResetClickBorder = function onResetClickBorder() {
+    setAttributes({
+      borderType: "none",
+      borderWidth: "1",
+      borderColor: "",
+      borderRadius: "0"
+    });
+  };
+  var onResetClickTextShadow = function onResetClickTextShadow() {
+    setAttributes({
+      shadowColor: "",
+      shadowBlur: "0",
+      shadowHorizontal: "0",
+      shadowVertical: "0"
+    });
+  };
+  var onResetClickbtnBoxShadow = function onResetClickbtnBoxShadow() {
+    setAttributes({
+      btnShadowColor: "",
+      btnShadowBlur: "0",
+      btnShadowHorizontal: "0",
+      btnShadowVertical: "0",
+      btnShadowPosition: ""
+    });
+  };
 
   var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-button");
 
@@ -13926,7 +14091,7 @@ var edit = function edit(props) {
         options: __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__["a" /* default */],
         onChange: onChangeTextFamily
       }),
-      wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], (_wp$element$createEle = {
+      wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
         components: ["size", "weight", "line", "style", "upper", "spacing"],
         size: textSize,
         weight: textWeight,
@@ -13942,16 +14107,18 @@ var edit = function edit(props) {
         },
         onChangeLine: function onChangeLine(newValue) {
           return setAttributes({ textLine: newValue });
-        }
-      }, _defineProperty(_wp$element$createEle, "onChangeSize", function onChangeSize(newSize) {
-        return setAttributes({ textSize: newSize });
-      }), _defineProperty(_wp$element$createEle, "onChangeStyle", function onChangeStyle(newStyle) {
-        return setAttributes({ textStyle: newStyle });
-      }), _defineProperty(_wp$element$createEle, "onChangeSpacing", function onChangeSpacing(newValue) {
-        return setAttributes({ textLetter: newValue });
-      }), _defineProperty(_wp$element$createEle, "onChangeUpper", function onChangeUpper(check) {
-        return setAttributes({ textUpper: check });
-      }), _wp$element$createEle)),
+        },
+        onChangeStyle: function onChangeStyle(newStyle) {
+          return setAttributes({ textStyle: newStyle });
+        },
+        onChangeSpacing: function onChangeSpacing(newValue) {
+          return setAttributes({ textLetter: newValue });
+        },
+        onChangeUpper: function onChangeUpper(check) {
+          return setAttributes({ textUpper: check });
+        },
+        onResetClick: onResetClickTextTypo
+      }),
       wp.element.createElement(
         "div",
         { className: "premium-control-toggle" },
@@ -14025,7 +14192,8 @@ var edit = function edit(props) {
         },
         onChangeVertical: function onChangeVertical(newValue) {
           return setAttributes({ shadowVertical: newValue });
-        }
+        },
+        onResetClick: onResetClickTextShadow
       })
     ),
     wp.element.createElement(
@@ -14109,7 +14277,8 @@ var edit = function edit(props) {
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
           return setAttributes({ borderRadius: newrRadius });
-        }
+        },
+        onResetClick: onResetClickBorder
       }),
       wp.element.createElement(
         Fragment,
@@ -14161,7 +14330,8 @@ var edit = function edit(props) {
           return setAttributes({
             btnShadowPosition: newValue === undefined ? 0 : newValue
           });
-        }
+        },
+        onResetClick: onResetClickbtnBoxShadow
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__["a" /* default */], {
         onChangeSizeUnit: function onChangeSizeUnit(newValue) {
@@ -50612,6 +50782,50 @@ var edit = function (_Component) {
                 }
                 addFontToHead(fontFamily);
             };
+            var onResetClickTitle = function onResetClickTitle() {
+                setAttributes({
+                    titleWeight: 500,
+                    fontSizeType: "px",
+                    fontSize: "20",
+                    fontSizeMobile: "20",
+                    fontSizeTablet: "20",
+                    titleStyle: "normal",
+                    titleLetter: "0",
+                    titleUpper: false
+                });
+            };
+            var onResetClickIconBorder = function onResetClickIconBorder() {
+                setAttributes({
+                    borderType: "none",
+                    borderWidth: "1",
+                    borderColor: "",
+                    borderRadius: "0"
+                });
+            };
+            onResetClickfirstMargin = function onResetClickfirstMargin() {
+                setAttributes({
+                    marginTop: "0",
+                    marginTopType: "px",
+                    marginTopMobile: "0",
+                    marginTopTablet: "0",
+                    marginBottom: "0",
+                    marginBottomType: "px",
+                    marginBottomMobile: "0",
+                    marginBottomTablet: "0"
+                });
+            };
+            onResetClicksecondMargin = function onResetClicksecondMargin() {
+                setAttributes({
+                    marginLeft: "0",
+                    marginLeftType: "px",
+                    marginLeftMobile: "0",
+                    marginLeftTablet: "0",
+                    marginRight: "0",
+                    marginRightType: "px",
+                    marginRightMobile: "0",
+                    marginRightTablet: "0"
+                });
+            };
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-icon-list");
             return [isSelected && wp.element.createElement(
                 BlockControls,
@@ -50699,7 +50913,8 @@ var edit = function (_Component) {
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return setAttributes({ borderRadius: newrRadius });
-                        }
+                        },
+                        onResetClick: onResetClickIconBorder
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__components_premium_range_responsive__["a" /* default */], {
                         setAttributes: setAttributes,
@@ -50750,7 +50965,8 @@ var edit = function (_Component) {
                         },
                         onChangeUpper: function onChangeUpper(check) {
                             return setAttributes({ titleUpper: check });
-                        }
+                        },
+                        onResetClick: onResetClickTitle
                     }),
                     wp.element.createElement(SelectControl, {
                         label: __("Font Family"),
@@ -50776,7 +50992,8 @@ var edit = function (_Component) {
                         marginBottomType: { value: marginBottomType, label: __("marginBottomType") },
                         marginBottom: { value: marginBottom, label: __("marginBottom") },
                         marginBottomMobile: { value: marginBottomMobile, label: __("marginBottomMobile") },
-                        marginBottomTablet: { value: marginBottomTablet, label: __("marginBottomTablet") }
+                        marginBottomTablet: { value: marginBottomTablet, label: __("marginBottomTablet") },
+                        onResetClick: onResetClickfirstMargin
                     }) : wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_margin_responsive__["a" /* default */], {
                         directions: ["left", "right"],
                         setAttributes: setAttributes,
@@ -50787,7 +51004,8 @@ var edit = function (_Component) {
                         marginRightType: { value: marginRightType, label: __("marginRightType") },
                         marginRight: { value: marginRight, label: __("marginRight") },
                         marginRightMobile: { value: marginRightMobile, label: __("marginRightMobile") },
-                        marginRightTablet: { value: marginRightTablet, label: __("marginRightTablet") }
+                        marginRightTablet: { value: marginRightTablet, label: __("marginRightTablet") },
+                        onResetClick: onResetClicksecondMargin
                     })
                 )
             ), wp.element.createElement(
@@ -52496,12 +52714,104 @@ var edit = function (_Component) {
                     firstpaddingLeftTablet: "0"
                 });
             };
+            var onResetClickSecondPadding = function onResetClickSecondPadding() {
+                setAttributes({
+                    secondpaddingTop: "0",
+                    secondpaddingTopType: "px",
+                    secondpaddingTopMobile: "0",
+                    secondpaddingTopTablet: "0",
+                    secondpaddingBottom: "0",
+                    secondpaddingBottomType: "px",
+                    secondpaddingBottomMobile: "0",
+                    secondpaddingBottomTablet: "0",
+                    secondpaddingRight: "0",
+                    secondpaddingRightType: "px",
+                    secondpaddingRightMobile: "0",
+                    secondpaddingRightTablet: "0",
+                    secondpaddingLeft: "0",
+                    secondpaddingLeftType: "px",
+                    secondpaddingLeftMobile: "0",
+                    secondpaddingLeftTablet: "0"
+                });
+            };
 
             var element = document.getElementById("premium-style-content-switcher-" + this.props.clientId);
 
             if (null != element && "undefined" != typeof element) {
                 element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_1__styling__["a" /* default */])(this.props);
             }
+            var onResetClickFirstLabelTypo = function onResetClickFirstLabelTypo() {
+                setAttributes({
+                    firstLabelWeight: 500,
+                    firstLabelfontSizeType: "px",
+                    firstLabelfontSize: "20",
+                    firstLabelfontSizeMobile: "20",
+                    firstLabelfontSizeTablet: "20",
+                    firstLabelStyle: "normal",
+                    firstLabelLetter: "0",
+                    firstLabelUpper: false
+                });
+            };
+            var onResetClickSecondLabelTypo = function onResetClickSecondLabelTypo() {
+                setAttributes({
+                    secondLabelWeight: 500,
+                    secondLabelfontSizeType: "px",
+                    secondLabelfontSize: "20",
+                    secondLabelfontSizeMobile: "20",
+                    secondLabelfontSizeTablet: "20",
+                    secondLabelStyle: "normal",
+                    secondLabelLetter: "0",
+                    secondLabelUpper: false
+                });
+            };
+            var onResetClickFirstContentTypo = function onResetClickFirstContentTypo() {
+                setAttributes({
+                    firstContentWeight: 500,
+                    firstContentfontSizeType: "px",
+                    firstContentfontSize: "15",
+                    firstContentfontSizeMobile: "15",
+                    firstContentfontSizeTablet: "15",
+                    firstContentStyle: "normal",
+                    firstContentLetter: "0",
+                    firstContentUpper: false
+                });
+            };
+            var onResetClickSecondContentTypo = function onResetClickSecondContentTypo() {
+                setAttributes({
+                    secondContentWeight: 500,
+                    secondContentfontSizeType: "px",
+                    secondContentfontSize: "15",
+                    secondContentfontSizeMobile: "15",
+                    secondContentfontSizeTablet: "15",
+                    secondContentStyle: "normal",
+                    secondContentLetter: "0",
+                    secondContentUpper: false
+                });
+            };
+            var onResetClickLabelTextShadow = function onResetClickLabelTextShadow() {
+                setAttributes({
+                    shadowColor: "",
+                    shadowBlur: "0",
+                    shadowHorizontal: "0",
+                    shadowVertical: "0"
+                });
+            };
+            var onResetClickFirstContentBorder = function onResetClickFirstContentBorder() {
+                setAttributes({
+                    firstContentborderType: "none",
+                    firstContentborderWidth: "1",
+                    firstContentborderColor: "",
+                    firstContentborderRadius: "0"
+                });
+            };
+            var onResetClickSecondContentBorder = function onResetClickSecondContentBorder() {
+                setAttributes({
+                    secondContentborderType: "none",
+                    secondContentborderWidth: "1",
+                    secondContentborderColor: "",
+                    secondContentborderRadius: "0"
+                });
+            };
 
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-content-switcher");
             return [isSelected && wp.element.createElement(
@@ -52711,7 +53021,8 @@ var edit = function (_Component) {
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
                             return setAttributes({ shadowVertical: newValue });
-                        }
+                        },
+                        onResetClick: onResetClickLabelTextShadow
                     }),
                     wp.element.createElement("hr", null),
                     wp.element.createElement(
@@ -52755,7 +53066,8 @@ var edit = function (_Component) {
                         },
                         onChangeUpper: function onChangeUpper(check) {
                             return setAttributes({ firstLabelUpper: check });
-                        }
+                        },
+                        onResetClick: onResetClickFirstLabelTypo
                     }),
                     wp.element.createElement("hr", null),
                     wp.element.createElement(
@@ -52799,7 +53111,8 @@ var edit = function (_Component) {
                         },
                         onChangeUpper: function onChangeUpper(check) {
                             return setAttributes({ secondLabelUpper: check });
-                        }
+                        },
+                        onResetClick: onResetClickSecondLabelTypo
                     })
                 ),
                 wp.element.createElement(
@@ -52887,7 +53200,8 @@ var edit = function (_Component) {
                         },
                         onChangeUpper: function onChangeUpper(check) {
                             return setAttributes({ firstContentUpper: check });
-                        }
+                        },
+                        onResetClick: onResetClickFirstContentTypo
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_border__["a" /* default */], {
                         borderType: firstContentborderType,
@@ -52905,7 +53219,8 @@ var edit = function (_Component) {
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return setAttributes({ firstContentborderRadius: newrRadius });
-                        }
+                        },
+                        onResetClick: onResetClickFirstContentBorder
                     })
                 ),
                 wp.element.createElement(
@@ -52968,7 +53283,8 @@ var edit = function (_Component) {
                         paddingLeftType: { value: secondpaddingLeftType, label: __("secondpaddingLeftType") },
                         paddingLeft: { value: secondpaddingLeft, label: __("secondpaddingLeft") },
                         paddingLeftMobile: { value: secondpaddingLeftMobile, label: __("secondpaddingLeftMobile") },
-                        paddingLeftTablet: { value: secondpaddingLeftTablet, label: __("secondpaddingLeftTablet") }
+                        paddingLeftTablet: { value: secondpaddingLeftTablet, label: __("secondpaddingLeftTablet") },
+                        onResetClick: onResetClickSecondPadding
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
@@ -52992,7 +53308,8 @@ var edit = function (_Component) {
                         },
                         onChangeUpper: function onChangeUpper(check) {
                             return setAttributes({ secondContentUpper: check });
-                        }
+                        },
+                        onResetClick: onResetClickSecondContentTypo
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_border__["a" /* default */], {
                         borderType: secondContentborderType,
@@ -53010,7 +53327,8 @@ var edit = function (_Component) {
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return setAttributes({ secondContentborderRadius: newrRadius });
-                        }
+                        },
+                        onResetClick: onResetClickSecondContentBorder
                     })
                 )
             ), wp.element.createElement(
@@ -54238,6 +54556,29 @@ var edit = function (_Component) {
                     ) : indicator == 'pin' ? wp.element.createElement("div", { className: "premium-progress-bar-pin" }) : "" : ""
                 );
             });
+            var onResetClickLabel = function onResetClickLabel() {
+                setAttributes({
+                    LabelWeight: 500,
+                    LabelfontSizeType: "px",
+                    LabelfontSize: "20",
+                    LabelfontSizeMobile: "20",
+                    LabelfontSizeTablet: "20",
+                    LabelStyle: "normal",
+                    LabelLetter: "0",
+                    LabelUpper: false
+                });
+            };
+            var onResetClickpercentage = function onResetClickpercentage() {
+                setAttributes({
+                    percentageWeight: 500,
+                    percentagefontSizeType: "px",
+                    percentagefontSize: "20",
+                    percentagefontSizeMobile: "20",
+                    percentagefontSizeTablet: "20",
+                    percentageStyle: "normal",
+                    percentageLetter: "0"
+                });
+            };
 
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-progress-bar");
             return [isSelected && wp.element.createElement(
@@ -54476,7 +54817,8 @@ var edit = function (_Component) {
                         },
                         onChangeUpper: function onChangeUpper(check) {
                             return setAttributes({ LabelUpper: check });
-                        }
+                        },
+                        onResetClick: onResetClickLabel
                     })
                 ),
                 percentage && wp.element.createElement(
@@ -54518,7 +54860,8 @@ var edit = function (_Component) {
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
                             return setAttributes({ percentageLetter: newValue });
-                        }
+                        },
+                        onResetClick: onResetClickpercentage
                     })
                 ),
                 multiStage && indicator == 'arrow' ? wp.element.createElement(

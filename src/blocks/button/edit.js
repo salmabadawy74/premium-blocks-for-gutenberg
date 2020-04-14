@@ -205,6 +205,41 @@ const edit = props => {
 
     addFontToHead(fontFamily);
   };
+  const onResetClickTextTypo = () => {
+    setAttributes({ 
+      textWeight: 500, 
+      textSize: "",
+      textLine:"",
+      textStyle: "normal",
+      textLetter: "0",
+      textUpper: false
+    });
+}
+const onResetClickBorder= () => {
+  setAttributes({ 
+    borderType: "none", 
+    borderWidth:"1", 
+    borderColor:"", 
+    borderRadius:"0",
+  });
+}
+const onResetClickTextShadow= () => {
+  setAttributes({ 
+    shadowColor: "", 
+    shadowBlur:"0", 
+    shadowHorizontal:"0", 
+    shadowVertical:"0",
+  });
+}
+const onResetClickbtnBoxShadow = () => {
+  setAttributes({ 
+    btnShadowColor: "", 
+    btnShadowBlur:"0", 
+    btnShadowHorizontal:"0", 
+    btnShadowVertical:"0", 
+    btnShadowPosition:""
+  });
+}
 
   const mainClasses = classnames(className, "premium-button");
 
@@ -290,12 +325,12 @@ const edit = props => {
               setAttributes({ textWeight: newWeight })
             }
             onChangeLine={newValue => setAttributes({ textLine: newValue })}
-            onChangeSize={newSize => setAttributes({ textSize: newSize })}
             onChangeStyle={newStyle => setAttributes({ textStyle: newStyle })}
             onChangeSpacing={newValue =>
               setAttributes({ textLetter: newValue })
             }
             onChangeUpper={check => setAttributes({ textUpper: check })}
+            onResetClick={onResetClickTextTypo}
           />
           <div className="premium-control-toggle">
             <strong>{__("Colors")}</strong>
@@ -349,6 +384,7 @@ const edit = props => {
             onChangeVertical={newValue =>
               setAttributes({ shadowVertical: newValue })
             }
+            onResetClick={onResetClickTextShadow}
           />
         </PanelBody>
         <PanelBody
@@ -415,6 +451,7 @@ const edit = props => {
             onChangeRadius={newrRadius =>
               setAttributes({ borderRadius: newrRadius })
             }
+            onResetClick={onResetClickBorder}
           />
           <Fragment>
             <p>{__("Border Hover Color")}</p>
@@ -462,6 +499,7 @@ const edit = props => {
                 btnShadowPosition: newValue === undefined ? 0 : newValue
               })
             }
+            onResetClick={onResetClickbtnBoxShadow}
           />
           <PremiumSizeUnits
             onChangeSizeUnit={newValue => setAttributes({ paddingU: newValue })}

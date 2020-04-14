@@ -162,6 +162,74 @@ class PremiumAccordion extends Component {
         return item;
       });
     };
+    const onResetClickTitleBorder= () => {
+      setAttributes({ 
+        titleBorder: "none", 
+        titleBorderWidth:"1", 
+        titleBorderColor:"", 
+        titleBorderRadius:"0",
+      });
+  }
+    const onResetClickDescBorder= () => {
+      setAttributes({ 
+        descBorder: "none", 
+        descBorderWidth:"1", 
+        descBorderColor:"", 
+        descBorderRadius:"0",
+      });
+  }
+  const onResetClickTitlePadding = () => {
+    setAttributes({ 
+      titlePaddingT: "0", 
+      titlePaddingR:"0", 
+      titlePaddingB:"0", 
+      titlePaddingL:"0",
+    });
+  }
+  const onResetClickDescPadding = () => {
+    setAttributes({ 
+      descPaddingT: "0", 
+      descPaddingR:"0", 
+      descPaddingB:"0", 
+      descPaddingL:"0",
+    });
+  }
+  const onResetClickTitleTypo = () => {
+    setAttributes({ 
+      titleSize: "", 
+      titleWeight: 500, 
+      titleStyle:"normal", 
+      titleLetter:"",
+      titleLine:"",
+      titleUpper: false
+    });
+  }
+  const onResetClickDescTypo = () => {
+    setAttributes({ 
+      descSize: "", 
+      descWeight: 500, 
+      descStyle:"normal", 
+      descLetter:"",
+      descLine:"",
+      descUpper: false
+    });
+  }
+  const onResetClickTitleTextShadow = () =>{
+    setAttributes({ 
+      titleShadowColor: "", 
+      titleShadowBlur: "0", 
+      titleShadowHorizontal:"0", 
+      titleShadowVertical:"0"
+    });
+  }
+  const onResetClickDescTextShadow = () =>{
+    setAttributes({ 
+      textShadowColor: "", 
+      textShadowBlur: "0", 
+      textShadowHorizontal:"0", 
+      textShadowVertical:"0"
+    });
+  }
 
     const mainClasses = classnames(className, "premium-accordion");
 
@@ -325,6 +393,7 @@ class PremiumAccordion extends Component {
               }
               onChangeLine={newValue => setAttributes({ titleLine: newValue })}
               onChangeUpper={check => setAttributes({ titleUpper: check })}
+              onResetClick={onResetClickTitleTypo}
             />
             <div className="premium-control-toggle">
               <strong>{__("Colors")}</strong>
@@ -378,6 +447,7 @@ class PremiumAccordion extends Component {
               onChangeRadius={newrRadius =>
                 setAttributes({ titleBorderRadius: newrRadius })
               }
+              onResetClick={onResetClickTitleBorder}
             />
             <PremiumTextShadow
               color={titleShadowColor}
@@ -396,6 +466,7 @@ class PremiumAccordion extends Component {
               onChangeVertical={newValue =>
                 setAttributes({ titleShadowVertical: newValue })
               }
+              onResetClick={onResetClickTitleTextShadow}
             />
 
             <PremiumPadding
@@ -423,6 +494,7 @@ class PremiumAccordion extends Component {
                   titlePaddingL: value === undefined ? 0 : value
                 })
               }
+              onResetClick={onResetClickTitlePadding}
             />
           </PanelBody>
           <PanelBody
@@ -547,6 +619,7 @@ class PremiumAccordion extends Component {
                     setAttributes({ descLine: newValue })
                   }
                   onChangeUpper={check => setAttributes({ descUpper: check })}
+                  onResetClick={onResetClickDescTypo}
                 />
                 <div className="premium-control-toggle">
                   <strong>{__("Colors")}</strong>
@@ -603,6 +676,7 @@ class PremiumAccordion extends Component {
               onChangeRadius={newrRadius =>
                 setAttributes({ descBorderRadius: newrRadius })
               }
+              onResetClick={onResetClickDescBorder}
             />
 
             {"text" === contentType && (
@@ -632,6 +706,7 @@ class PremiumAccordion extends Component {
                     textShadowVertical: newValue === undefined ? 0 : newValue
                   })
                 }
+                onResetClick={onResetClickDescTextShadow}
               />
             )}
             <PremiumPadding
@@ -659,6 +734,7 @@ class PremiumAccordion extends Component {
                   descPaddingL: value === undefined ? 0 : value
                 })
               }
+              onResetClick={onResetClickDescPadding}
             />
           </PanelBody>
         </InspectorControls>

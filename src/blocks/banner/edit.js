@@ -179,6 +179,58 @@ const edit = props => {
   ];
   setAttributes({ id: blockID });
 
+  const onResetClickContainerBorder = () => {
+    setAttributes({ 
+      borderType: "none", 
+      borderWidth:"1", 
+      borderColor:"", 
+      borderRadius:"0",
+    });
+  }
+  const onResetClickTitleTextShadow= () => {
+    setAttributes({ 
+      shadowColor: "", 
+      shadowBlur:"0", 
+      shadowHorizontal:"0", 
+      shadowVertical:"0",
+    });
+  }
+  const onResetClickDescTextShadow = () => {
+    setAttributes({ 
+      descShadowColor: "", 
+      descShadowBlur:"0", 
+      descShadowHorizontal:"0", 
+      descShadowVertical:"0",
+    });
+  }
+  const onResetClickContainerBoxShadow = () => {
+      setAttributes({ 
+        containerShadowColor: "", 
+        containerShadowBlur:"0", 
+        containerShadowHorizontal:"0", 
+        containerShadowVertical:"0", 
+        containerShadowPosition:""
+    });
+  }
+  const onResetClickFilter =() => {
+    setAttributes({ 
+      blur: "0", 
+      bright:"100", 
+      contrast:"100", 
+      saturation:"100", 
+      hue:"0"
+    });
+  }
+  const onResetClickContainerPadding = () => {
+    setAttributes({ 
+      paddingT: "", 
+      paddingB:"", 
+      paddingL:"", 
+      paddingR:"", 
+      paddingU:"px"
+    });
+  }
+
   const mainClasses = classnames(className, "premium-banner");
 
   return [
@@ -232,6 +284,7 @@ const edit = props => {
             onChangeContrast={value => setAttributes({ contrast: value })}
             onChangeSat={value => setAttributes({ saturation: value })}
             onChangeHue={value => setAttributes({ hue: value })}
+            onResetClick={onResetClickFilter}
           />
           <SelectControl
             label={__("Banner Style")}
@@ -418,6 +471,7 @@ const edit = props => {
                 shadowVertical: newValue === undefined ? 0 : newValue
               })
             }
+            onResetClick={onResetClickTitleTextShadow}
           />
         </PanelBody>
         <PanelBody
@@ -480,6 +534,7 @@ const edit = props => {
                 descShadowVertical: newValue === undefined ? 0 : newValue
               })
             }
+            onResetClick={onResetClickDescTextShadow}
           />
         </PanelBody>
         <PanelBody
@@ -509,6 +564,7 @@ const edit = props => {
                 borderRadius: newRadius === undefined ? 0 : newRadius
               })
             }
+            onResetClick={onResetClickContainerBorder}
           />
           <PremiumBoxShadow
             inner={true}
@@ -542,6 +598,7 @@ const edit = props => {
                 containerShadowPosition: newValue
               })
             }
+            onResetClick={onResetClickContainerBoxShadow}
           />
           <PremiumPadding
             paddingTop={paddingT}
@@ -572,6 +629,7 @@ const edit = props => {
             onChangePadSizeUnit={newvalue =>
               setAttributes({ paddingU: newvalue })
             }
+            onResetClick={onResetClickContainerPadding}
           />
         </PanelBody>
       </InspectorControls>

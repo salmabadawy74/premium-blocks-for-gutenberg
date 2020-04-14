@@ -417,6 +417,50 @@ class edit extends Component {
             }
             addFontToHead(fontFamily);
         };
+        const onResetClickTitle = () => {
+            setAttributes({ 
+                titleWeight: 500, 
+                fontSizeType:"px", 
+                fontSize: "20",
+                fontSizeMobile: "20",
+                fontSizeTablet: "20",
+                titleStyle: "normal",
+                titleLetter: "0",
+                titleUpper: false
+            });
+        }
+        const onResetClickIconBorder= () => {
+            setAttributes({ 
+                borderType: "none", 
+                borderWidth:"1", 
+                borderColor:"", 
+                borderRadius:"0",
+            });
+        }
+        onResetClickfirstMargin= () => {
+            setAttributes({ 
+                marginTop: "0", 
+                marginTopType:"px", 
+                marginTopMobile: "0",
+                marginTopTablet: "0",
+                marginBottom: "0", 
+                marginBottomType:"px", 
+                marginBottomMobile: "0",
+                marginBottomTablet: "0"
+            });
+        }
+        onResetClicksecondMargin= () => {
+            setAttributes({ 
+                marginLeft: "0", 
+                marginLeftType:"px", 
+                marginLeftMobile: "0",
+                marginLeftTablet: "0",
+                marginRight: "0", 
+                marginRightType:"px", 
+                marginRightMobile: "0",
+                marginRightTablet: "0"
+            });
+        }
         const mainClasses = classnames(className, "premium-icon-list");
         return [
             isSelected && (
@@ -488,6 +532,7 @@ class edit extends Component {
                             onChangeRadius={newrRadius =>
                                 setAttributes({ borderRadius: newrRadius })
                             }
+                            onResetClick={onResetClickIconBorder}
                         />
                         <PremiumRangeResponsive
                             setAttributes={setAttributes}
@@ -533,6 +578,7 @@ class edit extends Component {
                                 setAttributes({ titleLetter: newValue })
                             }
                             onChangeUpper={check => setAttributes({ titleUpper: check })}
+                            onResetClick={onResetClickTitle}
                         />
                         <SelectControl
                             label={__("Font Family")}
@@ -559,6 +605,7 @@ class edit extends Component {
                             marginBottom={{ value: marginBottom, label: __("marginBottom") }}
                             marginBottomMobile={{ value: marginBottomMobile, label: __("marginBottomMobile") }}
                             marginBottomTablet={{ value: marginBottomTablet, label: __("marginBottomTablet") }}
+                            onResetClick={onResetClickfirstMargin}
                         /> :
                             <PremiumMarginResponsive
                                 directions={["left", "right"]}
@@ -571,6 +618,7 @@ class edit extends Component {
                                 marginRight={{ value: marginRight, label: __("marginRight") }}
                                 marginRightMobile={{ value: marginRightMobile, label: __("marginRightMobile") }}
                                 marginRightTablet={{ value: marginRightTablet, label: __("marginRightTablet") }}
+                                onResetClick={onResetClicksecondMargin}
                             />
                         }
                     </PanelBody>
