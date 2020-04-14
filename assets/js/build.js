@@ -55881,6 +55881,19 @@ var edit = function (_Component) {
                 });
             };
 
+            var onResetClickTypoContent = function onResetClickTypoContent() {
+                setAttributes({
+                    contentWeight: 500,
+                    contentfontSizeType: "px",
+                    contentfontSize: "20",
+                    contentfontSizeMobile: "20",
+                    contentfontSizeTablet: "20",
+                    contentStyle: "normal",
+                    contentLetter: "0",
+                    contentUpper: false
+                });
+            };
+
             var onResetClickTabNormal = function onResetClickTabNormal() {
                 setAttributes({
                     tabShadowColor: "",
@@ -55918,12 +55931,44 @@ var edit = function (_Component) {
                     titleshadowVertical: "0"
                 });
             };
+            var onResetClickContentTextShadow = function onResetClickContentTextShadow() {
+                setAttributes({
+                    contentshadowColor: "",
+                    contentshadowBlur: "0",
+                    contentshadowHorizontal: "0",
+                    contentshadowVertical: "0"
+                });
+            };
             var onResetClickTabBorder = function onResetClickTabBorder() {
                 setAttributes({
                     tabborderType: "none",
                     tabborderWidth: "1",
                     tabborderColor: "",
                     tabborderRadius: "0"
+                });
+            };
+            var onResetClickTabBorderHover = function onResetClickTabBorderHover() {
+                setAttributes({
+                    tabhoverborderType: "none",
+                    tabhoverborderWidth: "1",
+                    tabhoverborderColor: "",
+                    tabhoverborderRadius: "0"
+                });
+            };
+            var onResetClickIconBorder = function onResetClickIconBorder() {
+                setAttributes({
+                    iconborderType: "none",
+                    iconborderWidth: "1",
+                    iconborderColor: "",
+                    iconborderRadius: "0"
+                });
+            };
+            var onResetClickContentBorder = function onResetClickContentBorder() {
+                setAttributes({
+                    contentborderType: "none",
+                    contentborderWidth: "1",
+                    contentborderColor: "",
+                    contentborderRadius: "0"
                 });
             };
 
@@ -56180,7 +56225,8 @@ var edit = function (_Component) {
                                         },
                                         onChangeRadius: function onChangeRadius(newrRadius) {
                                             return setAttributes({ tabhoverborderRadius: newrRadius });
-                                        }
+                                        },
+                                        onResetClick: onResetClickTabBorderHover
                                     }),
                                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__["a" /* default */], {
                                         label: "Box Shadow",
@@ -56339,7 +56385,8 @@ var edit = function (_Component) {
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return setAttributes({ iconborderRadius: newrRadius });
-                        }
+                        },
+                        onResetClick: onResetClickIconBorder
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__["a" /* default */], {
                         color: iconshadowColor,
@@ -56545,7 +56592,8 @@ var edit = function (_Component) {
                         },
                         onChangeUpper: function onChangeUpper(check) {
                             return setAttributes({ contentUpper: check });
-                        }
+                        },
+                        onResetClick: onResetClickTypoContent
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
                         borderType: contentborderType,
@@ -56563,7 +56611,8 @@ var edit = function (_Component) {
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return setAttributes({ contentborderRadius: newrRadius });
-                        }
+                        },
+                        onResetClick: onResetClickContentBorder
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__["a" /* default */], {
                         color: contentshadowColor,
@@ -56581,7 +56630,8 @@ var edit = function (_Component) {
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
                             return setAttributes({ contentshadowVertical: newValue });
-                        }
+                        },
+                        onResetClick: onResetClickContentTextShadow
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__["a" /* default */], {
                         setAttributes: setAttributes,

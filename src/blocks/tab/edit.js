@@ -510,6 +510,19 @@ class edit extends Component {
             });
         }
 
+        const onResetClickTypoContent = () => {
+            setAttributes({ 
+                contentWeight: 500, 
+                contentfontSizeType:"px", 
+                contentfontSize: "20",
+                contentfontSizeMobile: "20",
+                contentfontSizeTablet: "20",
+                contentStyle: "normal",
+                contentLetter: "0",
+                contentUpper: false
+            });
+        }
+
         const onResetClickTabNormal = () => {
             setAttributes({ 
                 tabShadowColor: "", 
@@ -547,12 +560,44 @@ class edit extends Component {
                 titleshadowVertical:"0",
             });
         }
+        const onResetClickContentTextShadow = () => {
+            setAttributes({ 
+                contentshadowColor: "", 
+                contentshadowBlur:"0", 
+                contentshadowHorizontal:"0", 
+                contentshadowVertical:"0",
+            });
+        }
         const onResetClickTabBorder= () => {
             setAttributes({ 
                 tabborderType: "none", 
                 tabborderWidth:"1", 
                 tabborderColor:"", 
                 tabborderRadius:"0",
+            });
+        }
+        const onResetClickTabBorderHover= () => {
+            setAttributes({ 
+                tabhoverborderType: "none", 
+                tabhoverborderWidth:"1", 
+                tabhoverborderColor:"", 
+                tabhoverborderRadius:"0",
+            });
+        }
+        const onResetClickIconBorder = () => {
+            setAttributes({ 
+                iconborderType: "none", 
+                iconborderWidth:"1", 
+                iconborderColor:"", 
+                iconborderRadius:"0",
+            });
+        }
+        const onResetClickContentBorder = () => {
+            setAttributes({ 
+                contentborderType: "none", 
+                contentborderWidth:"1", 
+                contentborderColor:"", 
+                contentborderRadius:"0",
             });
         }
 
@@ -775,6 +820,7 @@ class edit extends Component {
                                             onChangeRadius={newrRadius =>
                                                 setAttributes({ tabhoverborderRadius: newrRadius })
                                             }
+                                            onResetClick={onResetClickTabBorderHover}
                                         />
                                         <PremiumBoxShadow
                                             label="Box Shadow"
@@ -912,6 +958,7 @@ class edit extends Component {
                             onChangeRadius={newrRadius =>
                                 setAttributes({ iconborderRadius: newrRadius })
                             }
+                            onResetClick={onResetClickIconBorder}
                         />
                         <PremiumTextShadow
                             color={iconshadowColor}
@@ -1082,6 +1129,7 @@ class edit extends Component {
                                 setAttributes({ contentLetter: newValue })
                             }
                             onChangeUpper={check => setAttributes({ contentUpper: check })}
+                            onResetClick={onResetClickTypoContent}
                         />
                         <PremiumBorder
                             borderType={contentborderType}
@@ -1096,6 +1144,7 @@ class edit extends Component {
                             onChangeRadius={newrRadius =>
                                 setAttributes({ contentborderRadius: newrRadius })
                             }
+                            onResetClick={onResetClickContentBorder}
                         />
                         <PremiumTextShadow
                             color={contentshadowColor}
@@ -1112,6 +1161,7 @@ class edit extends Component {
                             onChangeVertical={newValue =>
                             setAttributes({ contentshadowVertical: newValue })
                             }
+                            onResetClick={onResetClickContentTextShadow}
                         />
                         <PremiumRangeResponsive
                             setAttributes={setAttributes}
