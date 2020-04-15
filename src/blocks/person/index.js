@@ -112,6 +112,13 @@ const personAttrs = {
     socialIconBackgroundColor: {
         type: "string",
     },
+    contentColor: {
+        type: "string",
+    },
+    bottomInfo: {
+        type: "number",
+        default: 15
+    },
     defaultIconColor: {
         type: "boolean",
         default: false
@@ -257,10 +264,10 @@ const personAttrs = {
                 desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
                 socialIcon: false,
                 items: [
-                    { label: 'facebook', link: false, value:"#", changeinput: "#"},
-                    { label: 'twitter', link: false, value:"#", changeinput: "#" },
-                    { label: 'instagram', link: false, value:"#", changeinput: "#" },
-                    { label: 'youtube', link: false, value:"#", changeinput: "#" }
+                    { label: 'facebook', link: false, value: "#", changeinput: "#" },
+                    { label: 'twitter', link: false, value: "#", changeinput: "#" },
+                    { label: 'instagram', link: false, value: "#", changeinput: "#" },
+                    { label: 'youtube', link: false, value: "#", changeinput: "#" }
                 ]
             }
         ]
@@ -271,30 +278,30 @@ const personAttrs = {
     socialIconPaddingU: {
         type: "number"
     },
-    change:{
+    change: {
         type: "boolean",
         default: false
     },
     blur: {
         type: "number",
         default: "0"
-      },
-      bright: {
+    },
+    bright: {
         type: "number",
         default: "100"
-      },
-      contrast: {
+    },
+    contrast: {
         type: "number",
         default: "100"
-      },
-      saturation: {
+    },
+    saturation: {
         type: "number",
         default: "100"
-      },
-      hue: {
+    },
+    hue: {
         type: "number",
         default: "0"
-      },
+    },
 };
 
 registerBlockType("premium/person", {

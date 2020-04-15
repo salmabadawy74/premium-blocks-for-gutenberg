@@ -246,6 +246,118 @@ class PremiumPricingTable extends Component {
 
   const FEATURES_ALIGN = ["left", "center", "right"];
 
+  const onResetClickbtnBorder = () => {
+    setAttributes({ 
+        btnBorderType: "none", 
+        btnBorderWidth:"1", 
+        btnBorderColor:"", 
+        btnBorderRadius:"0",
+    });
+  }
+  const onResetClickTableBorder = () => {
+    setAttributes({ 
+      borderType: "none", 
+      borderWidth:"1", 
+      borderColor:"", 
+      borderRadius:"0",
+    });
+  }
+  const onResetClickTitleTypo = () => {
+    setAttributes({ 
+      titleWeight: 500,  
+      titleSize: "",
+      titleStyle: "normal",
+      titleLetter: "0",
+      titleUpper: false,
+      titleLine:""
+    });
+  }
+  const onResetClickSlashTypo = () => {
+    setAttributes({ 
+      slashWeight: 500, 
+      slashSize: "20",
+    });
+  }
+  const onResetClickCurrTypo = () => {
+    setAttributes({ 
+      currWeight: "", 
+      currSize: "20",
+    });
+  }
+  const onResetClickValTypo = () => {
+    setAttributes({ 
+      valWeight: "", 
+      valSize: "50",
+    });
+  }
+  const onResetClickDivTypo = () => {
+    setAttributes({ 
+      divWeight: "", 
+      divSize: "20",
+    });
+  }
+  const onResetClickDurTypo = () => {
+    setAttributes({ 
+      durWeight: "", 
+      durSize: "20",
+    });
+  }
+  const onResetClickListTypo = () => {
+    setAttributes({ 
+      listWeight: 500, 
+      listSize: "",
+      listItemsStyle: "normal",
+      listLetter: "0",
+      listUpper: false,
+      listLine:""
+    });
+  }
+  const onResetClickDescTypo = () => {
+    setAttributes({ 
+      descWeight: "",  
+      descSize: "",
+      descStyle: "normal",
+      descLetter: "",
+      descLine: ""
+    });
+  }
+  const onResetClickBtnTypo = () => {
+    setAttributes({ 
+      btnWeight: 900, 
+      btnSize: "",
+      btnStyle: "normal",
+      btnLetter: "0",
+      btnUpper: false,
+      btnLine:""
+    });
+  }
+  const onResetClickBadgeTypo = () => {
+    setAttributes({ 
+      badgeWeight: 900, 
+      badgeTextSize: "",
+      badgeStyle: "normal",
+      badgeLetter: "0",
+      badgeUpper: false
+    });
+  }
+  const onResetClickTableBoxShadow = () => {
+    setAttributes({ 
+      tableShadowColor: "", 
+      tableShadowBlur:"0", 
+      tableShadowHorizontal:"0", 
+      tableShadowVertical:"0", 
+      tableShadowPosition:""
+    });
+  }
+  const onResetClickTitleTextShadow= () => {
+    setAttributes({ 
+      titleShadowColor: "", 
+      titleShadowBlur:"0", 
+      titleShadowHorizontal:"0", 
+      titleShadowVertical:"0",
+    });
+}
+
   const mainClasses = classnames(className, "premium-pricing-table");
 
   return [
@@ -337,6 +449,7 @@ class PremiumPricingTable extends Component {
               }
               onChangeLine={newValue => setAttributes({ titleLine: newValue })}
               onChangeUpper={check => setAttributes({ titleUpper: check })}
+              onResetClick={onResetClickTitleTypo}
             />
             <PanelColorSettings
               title={__("Colors")}
@@ -372,6 +485,7 @@ class PremiumPricingTable extends Component {
               onChangeVertical={newValue =>
                 setAttributes({ titleShadowVertical: newValue })
               }
+              onResetClick={onResetClickTitleTextShadow}
             />
             <div className="premium-control-toggle">
               <strong>{__("Spacings")}</strong>
@@ -473,6 +587,7 @@ class PremiumPricingTable extends Component {
                     onChangeWeight={newWeight =>
                       setAttributes({ slashWeight: newWeight })
                     }
+                    onResetClick={onResetClickSlashTypo}
                   />
                   <SelectControl
                     label={__("Vertical Align")}
@@ -507,6 +622,7 @@ class PremiumPricingTable extends Component {
                     onChangeWeight={newWeight =>
                       setAttributes({ currWeight: newWeight })
                     }
+                    onResetClick={onResetClickCurrTypo}
                   />
                   <SelectControl
                     label={__("Vertical Align")}
@@ -541,6 +657,7 @@ class PremiumPricingTable extends Component {
                     onChangeWeight={newWeight =>
                       setAttributes({ valWeight: newWeight })
                     }
+                    onResetClick={onResetClickValTypo}
                   />
                   <SelectControl
                     label={__("Vertical Align")}
@@ -575,6 +692,7 @@ class PremiumPricingTable extends Component {
                     onChangeWeight={newWeight =>
                       setAttributes({ divWeight: newWeight })
                     }
+                    onResetClick={onResetClickDivTypo}
                   />
                   <SelectControl
                     label={__("Vertical Align")}
@@ -609,6 +727,7 @@ class PremiumPricingTable extends Component {
                     onChangeWeight={newWeight =>
                       setAttributes({ durWeight: newWeight })
                     }
+                    onResetClick={onResetClickDurTypo}
                   />
                   <SelectControl
                     label={__("Vertical Align")}
@@ -739,6 +858,7 @@ class PremiumPricingTable extends Component {
               }
               onChangeLine={newValue => setAttributes({ listLine: newValue })}
               onChangeUpper={check => setAttributes({ listUpper: check })}
+              onResetClick={onResetClickListTypo}
             />
             <PanelColorSettings
               title={__("Colors")}
@@ -819,6 +939,7 @@ class PremiumPricingTable extends Component {
                 setAttributes({ descLetter: newValue })
               }
               onChangeLine={newValue => setAttributes({ descLine: newValue })}
+              onResetClick={onResetClickDescTypo}
             />
             <PanelColorSettings
               title={__("Colors")}
@@ -914,6 +1035,7 @@ class PremiumPricingTable extends Component {
               }
               onChangeLine={newValue => setAttributes({ btnLine: newValue })}
               onChangeUpper={check => setAttributes({ btnUpper: check })}
+              onResetClick={onResetClickBtnTypo}
             />
             <PanelColorSettings
               title={__("Colors")}
@@ -961,6 +1083,7 @@ class PremiumPricingTable extends Component {
               onChangeRadius={newrRadius =>
                 setAttributes({ btnBorderRadius: newrRadius })
               }
+              onResetClick={onResetClickbtnBorder}
             />
             <div className="premium-control-toggle">
               <strong>{__("Spacings")}</strong>
@@ -1060,6 +1183,7 @@ class PremiumPricingTable extends Component {
                 setAttributes({ badgeLetter: newValue })
               }
               onChangeUpper={check => setAttributes({ badgeUpper: check })}
+              onResetClick={onResetClickBadgeTypo}
             />
             <PanelColorSettings
               title={__("Colors")}
@@ -1137,6 +1261,7 @@ class PremiumPricingTable extends Component {
             onChangeRadius={newrRadius =>
               setAttributes({ borderRadius: newrRadius })
             }
+            onResetClick={onResetClickTableBorder}
           />
           <PremiumBoxShadow
             inner={true}
@@ -1171,6 +1296,7 @@ class PremiumPricingTable extends Component {
                 tableShadowPosition: newValue === undefined ? 0 : newValue
               })
             }
+            onResetClick={onResetClickTableBoxShadow}
           />
           <div className="premium-control-toggle">
             <strong>{__("Spacings")}</strong>

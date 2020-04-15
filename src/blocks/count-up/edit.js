@@ -186,6 +186,50 @@ const edit = props => {
 
     addFontToHead(fontFamily);
   };
+  const onResetClickNumberTypo = () => {
+    setAttributes({ 
+      numberWeight: 900,
+      numberSize: "30"
+    });
+  }
+  const onResetClickPrefixTypo = () => {
+    setAttributes({ 
+      prefixWeight: "", 
+      prefixSize: "20"
+    });
+  }
+  const onResetClickSuffixTypo = () => {
+    setAttributes({ 
+      suffixWeight: "",  
+      suffixSize: "20"
+    });
+  }
+  const onResetClickTitleTypo = () => {
+    setAttributes({ 
+      titleWeight: 500, 
+      titleSize: "20",
+      titleStyle: "normal",
+      titleSpacing: "0",
+      titleUpper: false
+    });
+  }
+  const onResetClickContainerBoxShadow = () => {
+    setAttributes({ 
+      shadowColor: "", 
+      shadowBlur:"0", 
+      shadowHorizontal:"0", 
+      shadowVertical:"0", 
+      shadowPosition:""
+    });
+  }
+  const onResetClickContainerBorder= () => {
+    setAttributes({ 
+      borderType: "none", 
+      borderWidth:"1", 
+      borderColor:"", 
+      borderRadius:"0",
+    });
+}
 
   const mainClasses = classnames(className, "premium-countup");
 
@@ -388,6 +432,7 @@ const edit = props => {
             onChangeWeight={newWeight =>
               setAttributes({ numberWeight: newWeight })
             }
+            onResetClick={onResetClickNumberTypo}
           />
           <Fragment>
             <p>{__("Number Color")}</p>
@@ -428,6 +473,7 @@ const edit = props => {
               onChangeWeight={newWeight =>
                 setAttributes({ prefixWeight: newWeight })
               }
+            onResetClick={onResetClickPrefixTypo}
             />
 
             <Fragment>
@@ -475,6 +521,7 @@ const edit = props => {
               onChangeWeight={newWeight =>
                 setAttributes({ suffixWeight: newWeight })
               }
+              onResetClick={onResetClickSuffixTypo}
             />
             <Fragment>
               <p>{__("Text Color")}</p>
@@ -531,6 +578,7 @@ const edit = props => {
                 setAttributes({ titleSpacing: newValue })
               }
               onChangeUpper={check => setAttributes({ titleUpper: check })}
+              onResetClick={onResetClickTitleTypo}
             />
             <Fragment>
               <p>{__("Text Color")}</p>
@@ -627,6 +675,7 @@ const edit = props => {
             onChangeRadius={newRadius =>
               setAttributes({ borderRadius: newRadius })
             }
+            onResetClick={onResetClickContainerBorder}
           />
           <PremiumBoxShadow
             inner={true}
@@ -660,6 +709,7 @@ const edit = props => {
                 shadowPosition: newValue
               })
             }
+            onResetClick={onResetClickContainerBoxShadow}
           />
         </PanelBody>
       </InspectorControls>

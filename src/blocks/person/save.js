@@ -75,7 +75,9 @@ const save = props => {
         bright,
         contrast,
         saturation,
-        hue
+        hue,
+        contentColor,
+        bottomInfo
     } = props.attributes;
 
 
@@ -106,7 +108,7 @@ const save = props => {
         </ul>
     }
     const content = () => {
-        return <div className={`${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
+        return <div className={`${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""} ${id}`}
         > {multiPersonContent.map((value) => (
             <div key={value.id} className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}>
                 <div className={`premium-person__img__container`}>
@@ -116,7 +118,7 @@ const save = props => {
                         {value.personImgUrl && (
                             <img
                                 className={`premium-person__img`}
-                                src={`${value.personImgUrl}`}
+                                src={`${value.personImgUrl.url}`}
                                 alt="Person"
                                 style={{
 
@@ -136,6 +138,10 @@ const save = props => {
                 </div>
                 <div
                     className={`premium-person__info`}
+                    style={{
+                        background: contentColor ? contentColor : "#f2f2f2",
+                        bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
+                    }}
                 >
                     <div className={`premium-person__name_wrap`}>
                         {value.name && (

@@ -116,6 +116,72 @@ const edit = props => {
 
   const ALIGNS = ["left", "center", "right"];
 
+  const onResetClickIconBorder= () => {
+    setAttributes({ 
+      borderType: "none", 
+      borderWidth:"1", 
+      borderColor:"", 
+      borderRadius:"0",
+    });
+  }
+  const onResetClickWrapBorder= () => {
+    setAttributes({ 
+      wrapBorderType: "none", 
+      wrapBorderWidth:"1", 
+      wrapBorderColor:"", 
+      wrapBorderRadius:"0",
+    });
+  }
+  const onResetClickIconMargin= () => {
+    setAttributes({ 
+      marginT: "0", 
+      marginR:"0", 
+      marginB:"0", 
+      marginL:"0",
+    });
+  }
+  const onResetClickWrapMargin= () => {
+    setAttributes({ 
+      wrapMarginT: "0", 
+      wrapMarginR:"0", 
+      wrapMarginB:"0", 
+      wrapMarginL:"0",
+    });
+  }
+  const onResetClickIconPadding= () => {
+    setAttributes({ 
+      paddingT: "0", 
+      paddingR:"0", 
+      paddingB:"0", 
+      paddingL:"0",
+      paddingU:"px"
+    });
+  }
+  const onResetClickWrapPadding= () => {
+    setAttributes({ 
+      wrapPaddingT: "0", 
+      wrapPaddingR:"0", 
+      wrapPaddingB:"0", 
+      wrapPaddingL:"0",
+    });
+  }
+  const onResetClickWrapBoxShadow = () => {
+    setAttributes({ 
+      wrapShadowColor: "", 
+      wrapShadowBlur:"0", 
+      wrapShadowHorizontal:"0", 
+      wrapShadowVertical:"0", 
+      wrapShadowPosition:""
+    });
+  }
+  const onResetClickIconTextShadow= () => {
+    setAttributes({ 
+      shadowColor: "", 
+      shadowBlur:"0", 
+      shadowHorizontal:"0", 
+      shadowVertical:"0",
+    });
+  }
   const mainClasses = classnames(className, "premium-icon");
 
   return [
@@ -229,6 +295,7 @@ const edit = props => {
             onChangeRadius={newrRadius =>
               setAttributes({ borderRadius: newrRadius })
             }
+            onResetClick={onResetClickIconBorder}
           />
 
           <PremiumTextShadow
@@ -247,6 +314,7 @@ const edit = props => {
             onChangeVertical={newValue =>
               setAttributes({ shadowVertical: newValue })
             }
+            onResetClick={onResetClickIconTextShadow}
           />
 
           <PremiumMargin
@@ -275,6 +343,7 @@ const edit = props => {
                 marginL: value
               })
             }
+            onResetClick={onResetClickIconMargin}
           />
           <PremiumPadding
             paddingTop={paddingT}
@@ -305,6 +374,7 @@ const edit = props => {
             onChangePadSizeUnit={newvalue =>
               setAttributes({ paddingU: newvalue })
             }
+            onResetClick={onResetClickIconPadding}
           />
         </PanelBody>
         <PanelBody
@@ -368,6 +438,7 @@ const edit = props => {
             onChangeRadius={newrRadius =>
               setAttributes({ wrapBorderRadius: newrRadius })
             }
+            onResetClick={onResetClickWrapBorder}
           />
 
           <PremiumBoxShadow
@@ -402,6 +473,7 @@ const edit = props => {
                 wrapShadowPosition: newValue
               })
             }
+            onResetClick={onResetClickWrapBoxShadow}
           />
 
           <PremiumMargin
@@ -430,6 +502,7 @@ const edit = props => {
                 wrapMarginL: value
               })
             }
+            onResetClick={onResetClickWrapMargin}
           />
           <PremiumPadding
             paddingTop={wrapPaddingT}
@@ -456,6 +529,7 @@ const edit = props => {
                 wrapPaddingL: value
               })
             }
+            onResetClick={onResetClickWrapPadding}
           />
         </PanelBody>
       </InspectorControls>

@@ -98,6 +98,41 @@ const edit = props => {
       label: __("Bottom")
     }
   ];
+  const onResetClickBorder= () => {
+    setAttributes({ 
+      borderType: "none", 
+      borderWidth:"1", 
+      borderColor:"", 
+      borderRadius:"0",
+    });
+  }
+  const onResetClickPadding = () => {
+    setAttributes({ 
+      paddingTop: "0", 
+      paddingRight:"0", 
+      paddingBottom:"0", 
+      paddingLeft:"0",
+      paddingUnit:"px"
+    });
+  }
+  const onResetClickMargin = () => {
+    setAttributes({ 
+      marginTop: "0", 
+      marginRight:"0", 
+      marginBottom:"0", 
+      marginLeft:"0",
+      marginUnit:"px"
+    });
+  }
+  const onResetClickBoxShadow = () => {
+    setAttributes({ 
+      shadowColor: "", 
+      shadowBlur:"0", 
+      shadowHorizontal:"0", 
+      shadowVertical:"0", 
+      shadowPosition:""
+    });
+  }
 
   const mainClasses = classnames(className, "premium-container");
 
@@ -232,6 +267,7 @@ const edit = props => {
           onChangeRadius={newrRadius =>
             setAttributes({ borderRadius: newrRadius })
           }
+          onResetClick={onResetClickBorder}
         />
         <PremiumBoxShadow
           inner={false}
@@ -265,6 +301,7 @@ const edit = props => {
               shadowPosition: newValue === undefined ? 0 : newValue
             })
           }
+          onResetClick={onResetClickBoxShadow}
         />
         <PremiumMargin
           directions={["all"]}
@@ -296,6 +333,7 @@ const edit = props => {
           onChangeMarSizeUnit={newvalue =>
             setAttributes({ marginUnit: newvalue })
           }
+          onResetClick={onResetClickMargin}
         />
         <PremiumPadding
           paddingTop={paddingTop}
@@ -326,6 +364,7 @@ const edit = props => {
           onChangePadSizeUnit={newvalue =>
             setAttributes({ paddingUnit: newvalue })
           }
+          onResetClick={onResetClickPadding}
         />
       </InspectorControls>
     ),

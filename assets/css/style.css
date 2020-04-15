@@ -1724,15 +1724,27 @@ a.premium-dheading-block__link:hover {
   -webkit-flex-shrink: 0;
   flex-shrink: 0;
 }
+.premium-person__img_wrap{
+  overflow: hidden;
+}
+.premium-person__effect2{
+  padding: 0 5px 5px 5px;
+  margin: 5px 0 5px 0;
+}
+.premium-person__effect1{
+  padding: 0 5px 5px 5px;
+  margin: 5px 0 5px 0;
+}
 .premium-person__inner {
   z-index: 1;
   overflow: hidden;
+<<<<<<< HEAD
   /* text-align: center; */
+=======
+>>>>>>> ac73b66a303b057279fd35141176eddf94ff87cc
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 0 5px 0 5px;
-  margin: 5px 0 5px 0;
 }
 .premium-person .premium-person__img {
    transition: all .5s ease-in-out !important;
@@ -1906,7 +1918,6 @@ a.premium-dheading-block__link:hover {
 .premium-person__socialIcon__link_content{
   text-decoration: none;
   color: black;
-  padding-right: 10px;
   display: inline-block;
   margin-top: 1px;
   margin-bottom: 1px;
@@ -1914,7 +1925,6 @@ a.premium-dheading-block__link:hover {
 .premium-person__socialIcon__link_content:hover{
   text-decoration: none;
   color: black;
-  padding-right: 10px;
   display: inline-block;
 }
 .premium-person__img__container {
@@ -1976,7 +1986,6 @@ a.premium-dheading-block__link:hover {
 */
 .premium-person__effect2 .premium-person__info{
   position: inherit;
-  background: rgba(245,245,245,0.97);
 }
 .premium-person__effect2.premium-person__translate .premium-person__img{
   -webkit-transform: translateX(-15px) scale(1.1);
@@ -2020,21 +2029,16 @@ a.premium-dheading-block__link:hover {
 * Effect 1
 */
 .premium-person__effect1 .premium-person__info {
-  top: auto;
-  bottom: 0;
-  padding: 15px;
-  height: auto;
-  background: #f2f2f2;
-  color: #3c4a50;
-  -webkit-transition: -webkit-transform 0.35s;
-  transition: -webkit-transform 0.35s;
-  transition: transform 0.35s;
-  transition: transform 0.35s, -webkit-transform 0.35s;
-  -webkit-transform: translate3d(0, 100%, 0);
-  transform: translate3d(0, 100%, 0);
   position: absolute;
-  left: 0;
-  width: 100%;
+  top: auto;
+  left: 5px;
+  right: 5px;
+  padding: 20px 15px;
+  -webkit-transition: all .5s ease 0s;
+  transition: all .5s ease 0s;
+  -webkit-transform: translate3d(0,100%,0);
+  -ms-transform: translate3d(0,100%,0);
+  transform: translate3d(0,100%,0);
 }
 .premium-person__effect1 .premium-person__name_wrap,
 .premium-person__effect1 .premium-person__title_wrap,
@@ -2043,14 +2047,16 @@ a.premium-dheading-block__link:hover {
   transition: -webkit-transform 0.35s;
   transition: transform 0.35s;
   transition: transform 0.35s, -webkit-transform 0.35s;
+<<<<<<< HEAD
   -webkit-transform: translate3d(0, 200%, 0);
   transform: translate3d(0, 200%, 0);
   /* text-align: center; */
+=======
+>>>>>>> ac73b66a303b057279fd35141176eddf94ff87cc
 }
 .premium-person__effect1 .premium-person__name_wrap,
 .premium-person__effect1 .premium-person__title_wrap,
 .premium-person__effect1 .premium-person__desc_wrap {
-  background: transparent;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-box-sizing: border-box;
@@ -2068,6 +2074,8 @@ a.premium-dheading-block__link:hover {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(0);
+  transform: translate3d(0,0,0);
+  bottom: -1px!important;
 }
 .premium-person__effect1:hover .premium-person__name_wrap,
 .premium-person__effect1:hover .premium-person__title_wrap,

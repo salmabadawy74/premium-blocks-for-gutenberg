@@ -135,6 +135,64 @@ const edit = props => {
 
     addFontToHead(fontFamily);
   };
+  const onResetClickFirstBorder= () => {
+    setAttributes({ 
+      firstBorderType: "none", 
+      firstBorderWidth:"1", 
+      firstBorderColor:"", 
+      firstBorderRadius:"0",
+    });
+  }
+  const onResetClickSecondBorder= () => {
+    setAttributes({ 
+      secondBorderType: "none", 
+      secondBorderWidth:"1", 
+      secondBorderColor:"", 
+      secondBorderRadius:"0",
+    });
+  }
+  const onResetClickContainerBorder= () => {
+    setAttributes({ 
+      containerBorderType: "none", 
+      containerBorderWidth:"1", 
+      containerBorderColor:"", 
+      containerBorderRadius:"0",
+    });
+  }
+  const onResetClickFirstTypo = () => {
+    setAttributes({ 
+      firstWeight: 500,  
+      firstSize: "20",
+      firstStyle: "normal",
+      firstLetter: "0",
+      firstUpper: false
+    });
+}
+  const onResetClickSecondTypo = () => {
+    setAttributes({ 
+      secondWeight: 500, 
+      secondSize: "20",
+      secondStyle: "normal",
+      secondLetter: "0",
+      secondUpper: false
+    });
+  }
+  const onResetClickFirstTextShadow= () => {
+    setAttributes({ 
+      firstShadowColor: "", 
+      firstShadowBlur:"0", 
+      firstShadowHorizontal:"0", 
+      firstShadowVertical:"0",
+    });
+  }
+  const onResetClickSecondTextShadow= () => {
+    setAttributes({ 
+      secondShadowColor: "", 
+      secondShadowBlur:"0", 
+      secondShadowHorizontal:"0", 
+      secondShadowVertical:"0",
+    });
+  }
 
   const mainClasses = classnames(
     className,
@@ -237,6 +295,7 @@ const edit = props => {
               setAttributes({ firstLetter: newValue })
             }
             onChangeUpper={check => setAttributes({ firstUpper: check })}
+            onResetClick={onResetClickFirstTypo}
           />
 
           {!firstClip && (
@@ -338,6 +397,7 @@ const edit = props => {
             onChangeRadius={newrRadius =>
               setAttributes({ firstBorderRadius: newrRadius || "0" })
             }
+            onResetClick={onResetClickFirstBorder}
           />
 
           <PremiumTextShadow
@@ -357,6 +417,7 @@ const edit = props => {
             onChangeVertical={newValue =>
               setAttributes({ firstShadowVertical: newValue || "0" })
             }
+            onResetClick={onResetClickFirstTextShadow}
           />
 
           <p>{__("Margin Left")}</p>
@@ -435,6 +496,7 @@ const edit = props => {
               setAttributes({ secondLetter: newValue })
             }
             onChangeUpper={check => setAttributes({ secondUpper: check })}
+            onResetClick={onResetClickSecondTypo}
           />
 
           {!secondClip && (
@@ -535,6 +597,7 @@ const edit = props => {
             onChangeRadius={newrRadius =>
               setAttributes({ secondBorderRadius: newrRadius || "0" })
             }
+            onResetClick={onResetClickSecondBorder}
           />
 
           <PremiumTextShadow
@@ -556,6 +619,7 @@ const edit = props => {
             onChangeVertical={newValue =>
               setAttributes({ secondShadowVertical: newValue || "0" })
             }
+            onResetClick={onResetClickSecondTextShadow}
           />
           <p>{__("Margin Left")}</p>
           <RangeControl
@@ -648,6 +712,7 @@ const edit = props => {
             onChangeRadius={newrRadius =>
               setAttributes({ containerBorderRadius: newrRadius })
             }
+            onResetClick={onResetClickContainerBorder}
           />
         </PanelBody>
       </InspectorControls>

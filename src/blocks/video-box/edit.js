@@ -212,6 +212,58 @@ class edit extends Component {
       addFontToHead(fontFamily);
     };
 
+    const onResetClickVideoDesc = () => {
+      setAttributes({ 
+        videoDescWeight: "", 
+        videoDescSize: "",
+        videoDescStyle: "normal",
+        videoDescLetter: "0",
+        videoDescUpper: false
+      });
+  }
+  const onResetClickPlayBorder= () => {
+    setAttributes({ 
+      playBorderType: "none", 
+      playBorderWidth:"1", 
+      playBorderColor:"", 
+      playBorderRadius:"0",
+    });
+  }
+  const onResetClickBoxBorder= () => {
+    setAttributes({ 
+      boxBorderType: "none", 
+      boxBorderWidth:"1", 
+      boxBorderColor:"", 
+      boxBorderRadius:"0",
+    });
+  }
+  const onResetClickDescTextShadow= () => {
+    setAttributes({ 
+      descShadowColor: "", 
+      descShadowBlur:"0", 
+      descShadowHorizontal:"0", 
+      descShadowVertical:"0",
+    });
+  }
+  const onResetClickBoxShadow = () => {
+    setAttributes({ 
+      shadowColor: "", 
+      shadowBlur:"0", 
+      shadowHorizontal:"0", 
+      shadowVertical:"0", 
+      shadowPosition:""
+    });
+  }
+  const onResetClickFilter = () =>{
+    setAttributes({ 
+      blur: "0", 
+      bright:"100", 
+      contrast:"100", 
+      saturation:"100", 
+      hue:"0"
+    });
+  }
+
     const mainClasses = classnames(className, "premium-video-box");
 
     return [
@@ -359,6 +411,7 @@ class edit extends Component {
                 onChangeHue={value =>
                   setAttributes({ hue: value === undefined ? 100 : value })
                 }
+                onResetClick={onResetClickFilter}
               />
             </PanelBody>
           )}
@@ -474,6 +527,7 @@ class edit extends Component {
                       onChangeRadius={newrRadius =>
                         setAttributes({ playBorderRadius: newrRadius })
                       }
+                      onResetClick={onResetClickPlayBorder}
                     />
                     <RangeControl
                       label={__("Padding (PX)")}
@@ -540,6 +594,7 @@ class edit extends Component {
                       onChangeUpper={check =>
                         setAttributes({ videoDescUpper: check })
                       }
+                      onResetClick={onResetClickVideoDesc}
                     />
                     <RangeControl
                       label={__("Vertical Offset (%)")}
@@ -622,6 +677,7 @@ class edit extends Component {
                       onChangeVertical={newValue =>
                         setAttributes({ descShadowVertical: newValue || "0" })
                       }
+                      onResetClick={onResetClickDescTextShadow}
                     />
                     <RangeControl
                       label={__("Padding (PX)")}
@@ -660,6 +716,7 @@ class edit extends Component {
               onChangeRadius={newrRadius =>
                 setAttributes({ boxBorderRadius: newrRadius })
               }
+              onResetClick={onResetClickBoxBorder}
             />
             <PremiumBoxShadow
               inner={true}
@@ -694,6 +751,7 @@ class edit extends Component {
                   shadowPosition: newValue === undefined ? 0 : newValue
                 })
               }
+              onResetClick={onResetClickBoxShadow}
             />
           </PanelBody>
         </InspectorControls>

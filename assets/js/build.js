@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 80);
+/******/ 	return __webpack_require__(__webpack_require__.s = 81);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1001,9 +1001,9 @@ function PremiumBoxShadow(props) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(191);
-} else {
   module.exports = __webpack_require__(192);
+} else {
+  module.exports = __webpack_require__(193);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -1071,11 +1071,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(189)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(190)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(190)();
+  module.exports = __webpack_require__(191)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -1193,8 +1193,8 @@ function PremiumPadding(props) {
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsNative = __webpack_require__(97),
-    getValue = __webpack_require__(102);
+var baseIsNative = __webpack_require__(98),
+    getValue = __webpack_require__(103);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -1387,8 +1387,8 @@ function PremiumBackground(props) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var _Symbol = __webpack_require__(26),
-    getRawTag = __webpack_require__(98),
-    objectToString = __webpack_require__(99);
+    getRawTag = __webpack_require__(99),
+    objectToString = __webpack_require__(100);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -2149,9 +2149,9 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(193);
+  module.exports = __webpack_require__(194);
 } else {
-  module.exports = __webpack_require__(196);
+  module.exports = __webpack_require__(197);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -2198,7 +2198,7 @@ var DefaultImage = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_map__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_map__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_map__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -2348,11 +2348,11 @@ function PremiumResponsive(props) {
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var listCacheClear = __webpack_require__(87),
-    listCacheDelete = __webpack_require__(88),
-    listCacheGet = __webpack_require__(89),
-    listCacheHas = __webpack_require__(90),
-    listCacheSet = __webpack_require__(91);
+var listCacheClear = __webpack_require__(88),
+    listCacheDelete = __webpack_require__(89),
+    listCacheGet = __webpack_require__(90),
+    listCacheHas = __webpack_require__(91),
+    listCacheSet = __webpack_require__(92);
 
 /**
  * Creates an list cache object.
@@ -2471,7 +2471,7 @@ module.exports = nativeCreate;
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isKeyable = __webpack_require__(111);
+var isKeyable = __webpack_require__(112);
 
 /**
  * Gets the data for `map`.
@@ -2679,9 +2679,9 @@ function PremiumMargin(props) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(227);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(229);
 
 
 
@@ -3140,11 +3140,11 @@ module.exports = g;
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var mapCacheClear = __webpack_require__(103),
-    mapCacheDelete = __webpack_require__(110),
-    mapCacheGet = __webpack_require__(112),
-    mapCacheHas = __webpack_require__(113),
-    mapCacheSet = __webpack_require__(114);
+var mapCacheClear = __webpack_require__(104),
+    mapCacheDelete = __webpack_require__(111),
+    mapCacheGet = __webpack_require__(113),
+    mapCacheHas = __webpack_require__(114),
+    mapCacheSet = __webpack_require__(115);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -3177,8 +3177,8 @@ module.exports = MapCache;
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayLikeKeys = __webpack_require__(132),
-    baseKeys = __webpack_require__(138),
+var arrayLikeKeys = __webpack_require__(133),
+    baseKeys = __webpack_require__(139),
     isArrayLike = __webpack_require__(44);
 
 /**
@@ -3733,14 +3733,14 @@ var PremiumUpperQuote = function (_Component) {
 /* unused harmony export SortableHandle */
 /* unused harmony export sortableHandle */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return arrayMove; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_esm_slicedToArray__ = __webpack_require__(233);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_objectSpread__ = __webpack_require__(237);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__babel_runtime_helpers_esm_classCallCheck__ = __webpack_require__(238);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__babel_runtime_helpers_esm_createClass__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__babel_runtime_helpers_esm_possibleConstructorReturn__ = __webpack_require__(240);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__babel_runtime_helpers_esm_getPrototypeOf__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__babel_runtime_helpers_esm_inherits__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_esm_slicedToArray__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_objectSpread__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__babel_runtime_helpers_esm_classCallCheck__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__babel_runtime_helpers_esm_createClass__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__babel_runtime_helpers_esm_possibleConstructorReturn__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__babel_runtime_helpers_esm_getPrototypeOf__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__babel_runtime_helpers_esm_inherits__ = __webpack_require__(244);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__babel_runtime_helpers_esm_assertThisInitialized__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__babel_runtime_helpers_esm_defineProperty__ = __webpack_require__(78);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react__ = __webpack_require__(9);
@@ -3749,9 +3749,9 @@ var PremiumUpperQuote = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__babel_runtime_helpers_esm_toConsumableArray__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__babel_runtime_helpers_esm_toConsumableArray__ = __webpack_require__(247);
 
 
 
@@ -5377,11 +5377,11 @@ module.exports = arrayMap;
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(24),
-    stackClear = __webpack_require__(92),
-    stackDelete = __webpack_require__(93),
-    stackGet = __webpack_require__(94),
-    stackHas = __webpack_require__(95),
-    stackSet = __webpack_require__(96);
+    stackClear = __webpack_require__(93),
+    stackDelete = __webpack_require__(94),
+    stackGet = __webpack_require__(95),
+    stackHas = __webpack_require__(96),
+    stackSet = __webpack_require__(97);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -5535,7 +5535,7 @@ module.exports = toSource;
 /* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqualDeep = __webpack_require__(115),
+var baseIsEqualDeep = __webpack_require__(116),
     isObjectLike = __webpack_require__(18);
 
 /**
@@ -5568,9 +5568,9 @@ module.exports = baseIsEqual;
 /* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var SetCache = __webpack_require__(116),
-    arraySome = __webpack_require__(119),
-    cacheHas = __webpack_require__(120);
+var SetCache = __webpack_require__(117),
+    arraySome = __webpack_require__(120),
+    cacheHas = __webpack_require__(121);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -5675,7 +5675,7 @@ module.exports = baseTimes;
 /* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsArguments = __webpack_require__(133),
+var baseIsArguments = __webpack_require__(134),
     isObjectLike = __webpack_require__(18);
 
 /** Used for built-in method references. */
@@ -5720,7 +5720,7 @@ module.exports = isArguments;
 /* WEBPACK VAR INJECTION */(function(module) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var root = __webpack_require__(10),
-    stubFalse = __webpack_require__(134);
+    stubFalse = __webpack_require__(135);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -5792,9 +5792,9 @@ module.exports = isIndex;
 /* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsTypedArray = __webpack_require__(135),
-    baseUnary = __webpack_require__(136),
-    nodeUtil = __webpack_require__(137);
+var baseIsTypedArray = __webpack_require__(136),
+    baseUnary = __webpack_require__(137),
+    nodeUtil = __webpack_require__(138);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -5899,8 +5899,8 @@ module.exports = baseGet;
 
 var isArray = __webpack_require__(11),
     isKey = __webpack_require__(45),
-    stringToPath = __webpack_require__(150),
-    toString = __webpack_require__(153);
+    stringToPath = __webpack_require__(151),
+    toString = __webpack_require__(154);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -5953,9 +5953,9 @@ module.exports = identity;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(187);
-} else {
   module.exports = __webpack_require__(188);
+} else {
+  module.exports = __webpack_require__(189);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -5967,9 +5967,9 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(194);
-} else {
   module.exports = __webpack_require__(195);
+} else {
+  module.exports = __webpack_require__(196);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -5980,9 +5980,9 @@ if (process.env.NODE_ENV === 'production') {
 "use strict";
 
 
-var _CSSTransition = _interopRequireDefault(__webpack_require__(200));
+var _CSSTransition = _interopRequireDefault(__webpack_require__(201));
 
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(205));
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(206));
 
 var _TransitionGroup = _interopRequireDefault(__webpack_require__(77));
 
@@ -6824,7 +6824,7 @@ var _react = _interopRequireDefault(__webpack_require__(9));
 
 var _reactLifecyclesCompat = __webpack_require__(75);
 
-var _ChildMapping = __webpack_require__(206);
+var _ChildMapping = __webpack_require__(207);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -7082,24 +7082,80 @@ function _assertThisInitialized(self) {
 
 /***/ }),
 /* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseTimes = __webpack_require__(61),
+    castFunction = __webpack_require__(251),
+    toInteger = __webpack_require__(252);
+
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER = 9007199254740991;
+
+/** Used as references for the maximum length and index of an array. */
+var MAX_ARRAY_LENGTH = 4294967295;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMin = Math.min;
+
+/**
+ * Invokes the iteratee `n` times, returning an array of the results of
+ * each invocation. The iteratee is invoked with one argument; (index).
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Util
+ * @param {number} n The number of times to invoke `iteratee`.
+ * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+ * @returns {Array} Returns the array of results.
+ * @example
+ *
+ * _.times(3, String);
+ * // => ['0', '1', '2']
+ *
+ *  _.times(4, _.constant(0));
+ * // => [0, 0, 0, 0]
+ */
+function times(n, iteratee) {
+  n = toInteger(n);
+  if (n < 1 || n > MAX_SAFE_INTEGER) {
+    return [];
+  }
+  var index = MAX_ARRAY_LENGTH,
+      length = nativeMin(n, MAX_ARRAY_LENGTH);
+
+  iteratee = castFunction(iteratee);
+  n -= MAX_ARRAY_LENGTH;
+
+  var result = baseTimes(length, iteratee);
+  while (++index < n) {
+    iteratee(index);
+  }
+  return result;
+}
+
+module.exports = times;
+
+/***/ }),
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_accordion__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(169);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_button__ = __webpack_require__(173);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_count_up__ = __webpack_require__(177);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_dual_heading__ = __webpack_require__(181);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_icon__ = __webpack_require__(185);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon_box__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_maps__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_accordion__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_button__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_count_up__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_dual_heading__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_icon__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon_box__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_maps__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(223);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_person__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__blocks_icon_list__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_person__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__blocks_icon_list__ = __webpack_require__(255);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__blocks_content_switcher__ = __webpack_require__(260);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__blocks_progress_bar__ = __webpack_require__(265);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__blocks_tab__ = __webpack_require__(269);
@@ -7123,15 +7179,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //import "./blocks/test";
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(167);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(169);
 
 
 
@@ -7341,7 +7397,7 @@ registerBlockType("premium/accordion", {
 });
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8231,12 +8287,12 @@ var PremiumAccordion = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumAccordion);
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayMap = __webpack_require__(53),
-    baseIteratee = __webpack_require__(84),
-    baseMap = __webpack_require__(161),
+    baseIteratee = __webpack_require__(85),
+    baseMap = __webpack_require__(162),
     isArray = __webpack_require__(11);
 
 /**
@@ -8289,16 +8345,16 @@ function map(collection, iteratee) {
 module.exports = map;
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseMatches = __webpack_require__(85),
-    baseMatchesProperty = __webpack_require__(148),
+var baseMatches = __webpack_require__(86),
+    baseMatchesProperty = __webpack_require__(149),
     identity = __webpack_require__(70),
     isArray = __webpack_require__(11),
-    property = __webpack_require__(158);
+    property = __webpack_require__(159);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -8325,11 +8381,11 @@ function baseIteratee(value) {
 module.exports = baseIteratee;
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsMatch = __webpack_require__(86),
-    getMatchData = __webpack_require__(147),
+var baseIsMatch = __webpack_require__(87),
+    getMatchData = __webpack_require__(148),
     matchesStrictComparable = __webpack_require__(67);
 
 /**
@@ -8352,7 +8408,7 @@ function baseMatches(source) {
 module.exports = baseMatches;
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Stack = __webpack_require__(54),
@@ -8413,7 +8469,7 @@ function baseIsMatch(object, source, matchData, customizer) {
 module.exports = baseIsMatch;
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports) {
 
 /**
@@ -8431,7 +8487,7 @@ function listCacheClear() {
 module.exports = listCacheClear;
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(25);
@@ -8471,7 +8527,7 @@ function listCacheDelete(key) {
 module.exports = listCacheDelete;
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(25);
@@ -8495,7 +8551,7 @@ function listCacheGet(key) {
 module.exports = listCacheGet;
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(25);
@@ -8516,7 +8572,7 @@ function listCacheHas(key) {
 module.exports = listCacheHas;
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(25);
@@ -8547,7 +8603,7 @@ function listCacheSet(key, value) {
 module.exports = listCacheSet;
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(24);
@@ -8567,7 +8623,7 @@ function stackClear() {
 module.exports = stackClear;
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports) {
 
 /**
@@ -8590,7 +8646,7 @@ function stackDelete(key) {
 module.exports = stackDelete;
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports) {
 
 /**
@@ -8609,7 +8665,7 @@ function stackGet(key) {
 module.exports = stackGet;
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports) {
 
 /**
@@ -8628,7 +8684,7 @@ function stackHas(key) {
 module.exports = stackHas;
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(24),
@@ -8667,11 +8723,11 @@ function stackSet(key, value) {
 module.exports = stackSet;
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isFunction = __webpack_require__(56),
-    isMasked = __webpack_require__(100),
+    isMasked = __webpack_require__(101),
     isObject = __webpack_require__(27),
     toSource = __webpack_require__(58);
 
@@ -8716,7 +8772,7 @@ function baseIsNative(value) {
 module.exports = baseIsNative;
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _Symbol = __webpack_require__(26);
@@ -8767,7 +8823,7 @@ function getRawTag(value) {
 module.exports = getRawTag;
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -8794,10 +8850,10 @@ function objectToString(value) {
 module.exports = objectToString;
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var coreJsData = __webpack_require__(101);
+var coreJsData = __webpack_require__(102);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = function () {
@@ -8819,7 +8875,7 @@ function isMasked(func) {
 module.exports = isMasked;
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(10);
@@ -8830,7 +8886,7 @@ var coreJsData = root['__core-js_shared__'];
 module.exports = coreJsData;
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports) {
 
 /**
@@ -8848,10 +8904,10 @@ function getValue(object, key) {
 module.exports = getValue;
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Hash = __webpack_require__(104),
+var Hash = __webpack_require__(105),
     ListCache = __webpack_require__(24),
     Map = __webpack_require__(38);
 
@@ -8874,14 +8930,14 @@ function mapCacheClear() {
 module.exports = mapCacheClear;
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hashClear = __webpack_require__(105),
-    hashDelete = __webpack_require__(106),
-    hashGet = __webpack_require__(107),
-    hashHas = __webpack_require__(108),
-    hashSet = __webpack_require__(109);
+var hashClear = __webpack_require__(106),
+    hashDelete = __webpack_require__(107),
+    hashGet = __webpack_require__(108),
+    hashHas = __webpack_require__(109),
+    hashSet = __webpack_require__(110);
 
 /**
  * Creates a hash object.
@@ -8911,7 +8967,7 @@ Hash.prototype.set = hashSet;
 module.exports = Hash;
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(28);
@@ -8931,7 +8987,7 @@ function hashClear() {
 module.exports = hashClear;
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports) {
 
 /**
@@ -8953,7 +9009,7 @@ function hashDelete(key) {
 module.exports = hashDelete;
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(28);
@@ -8988,7 +9044,7 @@ function hashGet(key) {
 module.exports = hashGet;
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(28);
@@ -9016,7 +9072,7 @@ function hashHas(key) {
 module.exports = hashHas;
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(28);
@@ -9044,7 +9100,7 @@ function hashSet(key, value) {
 module.exports = hashSet;
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(29);
@@ -9067,7 +9123,7 @@ function mapCacheDelete(key) {
 module.exports = mapCacheDelete;
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -9087,7 +9143,7 @@ function isKeyable(value) {
 module.exports = isKeyable;
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(29);
@@ -9108,7 +9164,7 @@ function mapCacheGet(key) {
 module.exports = mapCacheGet;
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(29);
@@ -9129,7 +9185,7 @@ function mapCacheHas(key) {
 module.exports = mapCacheHas;
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(29);
@@ -9156,14 +9212,14 @@ function mapCacheSet(key, value) {
 module.exports = mapCacheSet;
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Stack = __webpack_require__(54),
     equalArrays = __webpack_require__(60),
-    equalByTag = __webpack_require__(121),
-    equalObjects = __webpack_require__(125),
-    getTag = __webpack_require__(142),
+    equalByTag = __webpack_require__(122),
+    equalObjects = __webpack_require__(126),
+    getTag = __webpack_require__(143),
     isArray = __webpack_require__(11),
     isBuffer = __webpack_require__(63),
     isTypedArray = __webpack_require__(65);
@@ -9242,12 +9298,12 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = baseIsEqualDeep;
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapCache = __webpack_require__(40),
-    setCacheAdd = __webpack_require__(117),
-    setCacheHas = __webpack_require__(118);
+    setCacheAdd = __webpack_require__(118),
+    setCacheHas = __webpack_require__(119);
 
 /**
  *
@@ -9274,7 +9330,7 @@ SetCache.prototype.has = setCacheHas;
 module.exports = SetCache;
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports) {
 
 /** Used to stand-in for `undefined` hash values. */
@@ -9298,7 +9354,7 @@ function setCacheAdd(value) {
 module.exports = setCacheAdd;
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports) {
 
 /**
@@ -9317,7 +9373,7 @@ function setCacheHas(value) {
 module.exports = setCacheHas;
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports) {
 
 /**
@@ -9345,7 +9401,7 @@ function arraySome(array, predicate) {
 module.exports = arraySome;
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports) {
 
 /**
@@ -9363,15 +9419,15 @@ function cacheHas(cache, key) {
 module.exports = cacheHas;
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _Symbol = __webpack_require__(26),
-    Uint8Array = __webpack_require__(122),
+    Uint8Array = __webpack_require__(123),
     eq = __webpack_require__(55),
     equalArrays = __webpack_require__(60),
-    mapToArray = __webpack_require__(123),
-    setToArray = __webpack_require__(124);
+    mapToArray = __webpack_require__(124),
+    setToArray = __webpack_require__(125);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -9478,7 +9534,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
 module.exports = equalByTag;
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(10);
@@ -9489,7 +9545,7 @@ var Uint8Array = root.Uint8Array;
 module.exports = Uint8Array;
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports) {
 
 /**
@@ -9512,7 +9568,7 @@ function mapToArray(map) {
 module.exports = mapToArray;
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports) {
 
 /**
@@ -9535,10 +9591,10 @@ function setToArray(set) {
 module.exports = setToArray;
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getAllKeys = __webpack_require__(126);
+var getAllKeys = __webpack_require__(127);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -9621,11 +9677,11 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalObjects;
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetAllKeys = __webpack_require__(127),
-    getSymbols = __webpack_require__(129),
+var baseGetAllKeys = __webpack_require__(128),
+    getSymbols = __webpack_require__(130),
     keys = __webpack_require__(41);
 
 /**
@@ -9642,10 +9698,10 @@ function getAllKeys(object) {
 module.exports = getAllKeys;
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(128),
+var arrayPush = __webpack_require__(129),
     isArray = __webpack_require__(11);
 
 /**
@@ -9667,7 +9723,7 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
 module.exports = baseGetAllKeys;
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports) {
 
 /**
@@ -9692,11 +9748,11 @@ function arrayPush(array, values) {
 module.exports = arrayPush;
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayFilter = __webpack_require__(130),
-    stubArray = __webpack_require__(131);
+var arrayFilter = __webpack_require__(131),
+    stubArray = __webpack_require__(132);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -9727,7 +9783,7 @@ var getSymbols = !nativeGetSymbols ? stubArray : function (object) {
 module.exports = getSymbols;
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports) {
 
 /**
@@ -9757,7 +9813,7 @@ function arrayFilter(array, predicate) {
 module.exports = arrayFilter;
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports) {
 
 /**
@@ -9785,7 +9841,7 @@ function stubArray() {
 module.exports = stubArray;
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseTimes = __webpack_require__(61),
@@ -9837,7 +9893,7 @@ function arrayLikeKeys(value, inherited) {
 module.exports = arrayLikeKeys;
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(17),
@@ -9860,7 +9916,7 @@ function baseIsArguments(value) {
 module.exports = baseIsArguments;
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports) {
 
 /**
@@ -9883,7 +9939,7 @@ function stubFalse() {
 module.exports = stubFalse;
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(17),
@@ -9936,7 +9992,7 @@ function baseIsTypedArray(value) {
 module.exports = baseIsTypedArray;
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports) {
 
 /**
@@ -9955,7 +10011,7 @@ function baseUnary(func) {
 module.exports = baseUnary;
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -9993,11 +10049,11 @@ module.exports = nodeUtil;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(42)(module)))
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isPrototype = __webpack_require__(139),
-    nativeKeys = __webpack_require__(140);
+var isPrototype = __webpack_require__(140),
+    nativeKeys = __webpack_require__(141);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -10028,7 +10084,7 @@ function baseKeys(object) {
 module.exports = baseKeys;
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -10051,10 +10107,10 @@ function isPrototype(value) {
 module.exports = isPrototype;
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var overArg = __webpack_require__(141);
+var overArg = __webpack_require__(142);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = overArg(Object.keys, Object);
@@ -10062,7 +10118,7 @@ var nativeKeys = overArg(Object.keys, Object);
 module.exports = nativeKeys;
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports) {
 
 /**
@@ -10082,14 +10138,14 @@ function overArg(func, transform) {
 module.exports = overArg;
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DataView = __webpack_require__(143),
+var DataView = __webpack_require__(144),
     Map = __webpack_require__(38),
-    Promise = __webpack_require__(144),
-    Set = __webpack_require__(145),
-    WeakMap = __webpack_require__(146),
+    Promise = __webpack_require__(145),
+    Set = __webpack_require__(146),
+    WeakMap = __webpack_require__(147),
     baseGetTag = __webpack_require__(17),
     toSource = __webpack_require__(58);
 
@@ -10146,7 +10202,7 @@ if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map &
 module.exports = getTag;
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14),
@@ -10158,7 +10214,7 @@ var DataView = getNative(root, 'DataView');
 module.exports = DataView;
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14),
@@ -10170,7 +10226,7 @@ var Promise = getNative(root, 'Promise');
 module.exports = Promise;
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14),
@@ -10182,7 +10238,7 @@ var Set = getNative(root, 'Set');
 module.exports = Set;
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14),
@@ -10194,7 +10250,7 @@ var WeakMap = getNative(root, 'WeakMap');
 module.exports = WeakMap;
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isStrictComparable = __webpack_require__(66),
@@ -10223,12 +10279,12 @@ function getMatchData(object) {
 module.exports = getMatchData;
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqual = __webpack_require__(59),
-    get = __webpack_require__(149),
-    hasIn = __webpack_require__(155),
+    get = __webpack_require__(150),
+    hasIn = __webpack_require__(156),
     isKey = __webpack_require__(45),
     isStrictComparable = __webpack_require__(66),
     matchesStrictComparable = __webpack_require__(67),
@@ -10259,7 +10315,7 @@ function baseMatchesProperty(path, srcValue) {
 module.exports = baseMatchesProperty;
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(68);
@@ -10297,10 +10353,10 @@ function get(object, path, defaultValue) {
 module.exports = get;
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoizeCapped = __webpack_require__(151);
+var memoizeCapped = __webpack_require__(152);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -10329,10 +10385,10 @@ var stringToPath = memoizeCapped(function (string) {
 module.exports = stringToPath;
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoize = __webpack_require__(152);
+var memoize = __webpack_require__(153);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -10360,7 +10416,7 @@ function memoizeCapped(func) {
 module.exports = memoizeCapped;
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapCache = __webpack_require__(40);
@@ -10438,10 +10494,10 @@ memoize.Cache = MapCache;
 module.exports = memoize;
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseToString = __webpack_require__(154);
+var baseToString = __webpack_require__(155);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -10471,7 +10527,7 @@ function toString(value) {
 module.exports = toString;
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _Symbol = __webpack_require__(26),
@@ -10513,11 +10569,11 @@ function baseToString(value) {
 module.exports = baseToString;
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseHasIn = __webpack_require__(156),
-    hasPath = __webpack_require__(157);
+var baseHasIn = __webpack_require__(157),
+    hasPath = __webpack_require__(158);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -10552,7 +10608,7 @@ function hasIn(object, path) {
 module.exports = hasIn;
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports) {
 
 /**
@@ -10570,7 +10626,7 @@ function baseHasIn(object, key) {
 module.exports = baseHasIn;
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(69),
@@ -10613,11 +10669,11 @@ function hasPath(object, path, hasFunc) {
 module.exports = hasPath;
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseProperty = __webpack_require__(159),
-    basePropertyDeep = __webpack_require__(160),
+var baseProperty = __webpack_require__(160),
+    basePropertyDeep = __webpack_require__(161),
     isKey = __webpack_require__(45),
     toKey = __webpack_require__(31);
 
@@ -10650,7 +10706,7 @@ function property(path) {
 module.exports = property;
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports) {
 
 /**
@@ -10669,7 +10725,7 @@ function baseProperty(key) {
 module.exports = baseProperty;
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(68);
@@ -10690,10 +10746,10 @@ function basePropertyDeep(path) {
 module.exports = basePropertyDeep;
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseEach = __webpack_require__(162),
+var baseEach = __webpack_require__(163),
     isArrayLike = __webpack_require__(44);
 
 /**
@@ -10717,11 +10773,11 @@ function baseMap(collection, iteratee) {
 module.exports = baseMap;
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseForOwn = __webpack_require__(163),
-    createBaseEach = __webpack_require__(166);
+var baseForOwn = __webpack_require__(164),
+    createBaseEach = __webpack_require__(167);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -10736,10 +10792,10 @@ var baseEach = createBaseEach(baseForOwn);
 module.exports = baseEach;
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseFor = __webpack_require__(164),
+var baseFor = __webpack_require__(165),
     keys = __webpack_require__(41);
 
 /**
@@ -10757,10 +10813,10 @@ function baseForOwn(object, iteratee) {
 module.exports = baseForOwn;
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createBaseFor = __webpack_require__(165);
+var createBaseFor = __webpack_require__(166);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -10778,7 +10834,7 @@ var baseFor = createBaseFor();
 module.exports = baseFor;
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports) {
 
 /**
@@ -10808,7 +10864,7 @@ function createBaseFor(fromRight) {
 module.exports = createBaseFor;
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArrayLike = __webpack_require__(44);
@@ -10845,7 +10901,7 @@ function createBaseEach(eachFunc, fromRight) {
 module.exports = createBaseEach;
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11028,7 +11084,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11389,15 +11445,15 @@ var deprecated = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecated);
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(173);
 
 
 
@@ -11637,7 +11693,7 @@ registerBlockType("premium/banner", {
 });
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12446,7 +12502,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12629,7 +12685,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13625,14 +13681,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(174);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(175);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(175);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(177);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(3);
 
 
@@ -13789,7 +13845,7 @@ registerBlockType("premium/button", {
 });
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14396,7 +14452,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14494,7 +14550,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15054,15 +15110,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(178);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(180);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(180);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(181);
 
 
 
@@ -15311,7 +15367,7 @@ registerBlockType("premium/countup", {
 });
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15498,6 +15554,50 @@ var edit = function edit(props) {
     }
 
     addFontToHead(fontFamily);
+  };
+  var onResetClickNumberTypo = function onResetClickNumberTypo() {
+    setAttributes({
+      numberWeight: 900,
+      numberSize: "30"
+    });
+  };
+  var onResetClickPrefixTypo = function onResetClickPrefixTypo() {
+    setAttributes({
+      prefixWeight: "",
+      prefixSize: "20"
+    });
+  };
+  var onResetClickSuffixTypo = function onResetClickSuffixTypo() {
+    setAttributes({
+      suffixWeight: "",
+      suffixSize: "20"
+    });
+  };
+  var onResetClickTitleTypo = function onResetClickTitleTypo() {
+    setAttributes({
+      titleWeight: 500,
+      titleSize: "20",
+      titleStyle: "normal",
+      titleSpacing: "0",
+      titleUpper: false
+    });
+  };
+  var onResetClickContainerBoxShadow = function onResetClickContainerBoxShadow() {
+    setAttributes({
+      shadowColor: "",
+      shadowBlur: "0",
+      shadowHorizontal: "0",
+      shadowVertical: "0",
+      shadowPosition: ""
+    });
+  };
+  var onResetClickContainerBorder = function onResetClickContainerBorder() {
+    setAttributes({
+      borderType: "none",
+      borderWidth: "1",
+      borderColor: "",
+      borderRadius: "0"
+    });
   };
 
   var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-countup");
@@ -15729,7 +15829,8 @@ var edit = function edit(props) {
         },
         onChangeWeight: function onChangeWeight(newWeight) {
           return setAttributes({ numberWeight: newWeight });
-        }
+        },
+        onResetClick: onResetClickNumberTypo
       }),
       wp.element.createElement(
         Fragment,
@@ -15779,7 +15880,8 @@ var edit = function edit(props) {
         },
         onChangeWeight: function onChangeWeight(newWeight) {
           return setAttributes({ prefixWeight: newWeight });
-        }
+        },
+        onResetClick: onResetClickPrefixTypo
       }),
       wp.element.createElement(
         Fragment,
@@ -15836,7 +15938,8 @@ var edit = function edit(props) {
         },
         onChangeWeight: function onChangeWeight(newWeight) {
           return setAttributes({ suffixWeight: newWeight });
-        }
+        },
+        onResetClick: onResetClickSuffixTypo
       }),
       wp.element.createElement(
         Fragment,
@@ -15905,7 +16008,8 @@ var edit = function edit(props) {
         },
         onChangeUpper: function onChangeUpper(check) {
           return setAttributes({ titleUpper: check });
-        }
+        },
+        onResetClick: onResetClickTitleTypo
       }),
       wp.element.createElement(
         Fragment,
@@ -16022,7 +16126,8 @@ var edit = function edit(props) {
         },
         onChangeRadius: function onChangeRadius(newRadius) {
           return setAttributes({ borderRadius: newRadius });
-        }
+        },
+        onResetClick: onResetClickContainerBorder
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__["a" /* default */], {
         inner: true,
@@ -16055,7 +16160,8 @@ var edit = function edit(props) {
           return setAttributes({
             shadowPosition: newValue
           });
-        }
+        },
+        onResetClick: onResetClickContainerBoxShadow
       })
     )
   ), wp.element.createElement(
@@ -16210,7 +16316,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16428,7 +16534,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17604,15 +17710,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(182);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(183);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(184);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(184);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(185);
 
 
 
@@ -17884,7 +17990,7 @@ registerBlockType("premium/dheading-block", {
 });
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18024,6 +18130,64 @@ var edit = function edit(props) {
 
     addFontToHead(fontFamily);
   };
+  var onResetClickFirstBorder = function onResetClickFirstBorder() {
+    setAttributes({
+      firstBorderType: "none",
+      firstBorderWidth: "1",
+      firstBorderColor: "",
+      firstBorderRadius: "0"
+    });
+  };
+  var onResetClickSecondBorder = function onResetClickSecondBorder() {
+    setAttributes({
+      secondBorderType: "none",
+      secondBorderWidth: "1",
+      secondBorderColor: "",
+      secondBorderRadius: "0"
+    });
+  };
+  var onResetClickContainerBorder = function onResetClickContainerBorder() {
+    setAttributes({
+      containerBorderType: "none",
+      containerBorderWidth: "1",
+      containerBorderColor: "",
+      containerBorderRadius: "0"
+    });
+  };
+  var onResetClickFirstTypo = function onResetClickFirstTypo() {
+    setAttributes({
+      firstWeight: 500,
+      firstSize: "20",
+      firstStyle: "normal",
+      firstLetter: "0",
+      firstUpper: false
+    });
+  };
+  var onResetClickSecondTypo = function onResetClickSecondTypo() {
+    setAttributes({
+      secondWeight: 500,
+      secondSize: "20",
+      secondStyle: "normal",
+      secondLetter: "0",
+      secondUpper: false
+    });
+  };
+  var onResetClickFirstTextShadow = function onResetClickFirstTextShadow() {
+    setAttributes({
+      firstShadowColor: "",
+      firstShadowBlur: "0",
+      firstShadowHorizontal: "0",
+      firstShadowVertical: "0"
+    });
+  };
+  var onResetClickSecondTextShadow = function onResetClickSecondTextShadow() {
+    setAttributes({
+      secondShadowColor: "",
+      secondShadowBlur: "0",
+      secondShadowHorizontal: "0",
+      secondShadowVertical: "0"
+    });
+  };
 
   var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-dheading-block__container");
 
@@ -18144,7 +18308,8 @@ var edit = function edit(props) {
         },
         onChangeUpper: function onChangeUpper(check) {
           return setAttributes({ firstUpper: check });
-        }
+        },
+        onResetClick: onResetClickFirstTypo
       }),
       !firstClip && wp.element.createElement(
         "div",
@@ -18278,7 +18443,8 @@ var edit = function edit(props) {
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
           return setAttributes({ firstBorderRadius: newrRadius || "0" });
-        }
+        },
+        onResetClick: onResetClickFirstBorder
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__["a" /* default */], {
         color: firstShadowColor,
@@ -18296,7 +18462,8 @@ var edit = function edit(props) {
         },
         onChangeVertical: function onChangeVertical(newValue) {
           return setAttributes({ firstShadowVertical: newValue || "0" });
-        }
+        },
+        onResetClick: onResetClickFirstTextShadow
       }),
       wp.element.createElement(
         "p",
@@ -18397,7 +18564,8 @@ var edit = function edit(props) {
         },
         onChangeUpper: function onChangeUpper(check) {
           return setAttributes({ secondUpper: check });
-        }
+        },
+        onResetClick: onResetClickSecondTypo
       }),
       !secondClip && wp.element.createElement(
         "div",
@@ -18531,7 +18699,8 @@ var edit = function edit(props) {
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
           return setAttributes({ secondBorderRadius: newrRadius || "0" });
-        }
+        },
+        onResetClick: onResetClickSecondBorder
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__["a" /* default */], {
         color: secondShadowColor,
@@ -18551,7 +18720,8 @@ var edit = function edit(props) {
         },
         onChangeVertical: function onChangeVertical(newValue) {
           return setAttributes({ secondShadowVertical: newValue || "0" });
-        }
+        },
+        onResetClick: onResetClickSecondTextShadow
       }),
       wp.element.createElement(
         "p",
@@ -18662,7 +18832,8 @@ var edit = function edit(props) {
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
           return setAttributes({ containerBorderRadius: newrRadius });
-        }
+        },
+        onResetClick: onResetClickContainerBorder
       })
     )
   ), wp.element.createElement(
@@ -18756,7 +18927,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18921,7 +19092,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19914,15 +20085,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(209);
 
 
 
@@ -20148,7 +20319,7 @@ registerBlockType("premium/icon", {
 });
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20277,6 +20448,72 @@ var edit = function edit(props) {
 
   var ALIGNS = ["left", "center", "right"];
 
+  var onResetClickIconBorder = function onResetClickIconBorder() {
+    setAttributes({
+      borderType: "none",
+      borderWidth: "1",
+      borderColor: "",
+      borderRadius: "0"
+    });
+  };
+  var onResetClickWrapBorder = function onResetClickWrapBorder() {
+    setAttributes({
+      wrapBorderType: "none",
+      wrapBorderWidth: "1",
+      wrapBorderColor: "",
+      wrapBorderRadius: "0"
+    });
+  };
+  var onResetClickIconMargin = function onResetClickIconMargin() {
+    setAttributes({
+      marginT: "0",
+      marginR: "0",
+      marginB: "0",
+      marginL: "0"
+    });
+  };
+  var onResetClickWrapMargin = function onResetClickWrapMargin() {
+    setAttributes({
+      wrapMarginT: "0",
+      wrapMarginR: "0",
+      wrapMarginB: "0",
+      wrapMarginL: "0"
+    });
+  };
+  var onResetClickIconPadding = function onResetClickIconPadding() {
+    setAttributes({
+      paddingT: "0",
+      paddingR: "0",
+      paddingB: "0",
+      paddingL: "0",
+      paddingU: "px"
+    });
+  };
+  var onResetClickWrapPadding = function onResetClickWrapPadding() {
+    setAttributes({
+      wrapPaddingT: "0",
+      wrapPaddingR: "0",
+      wrapPaddingB: "0",
+      wrapPaddingL: "0"
+    });
+  };
+  var onResetClickWrapBoxShadow = function onResetClickWrapBoxShadow() {
+    setAttributes({
+      wrapShadowColor: "",
+      wrapShadowBlur: "0",
+      wrapShadowHorizontal: "0",
+      wrapShadowVertical: "0",
+      wrapShadowPosition: ""
+    });
+  };
+  var onResetClickIconTextShadow = function onResetClickIconTextShadow() {
+    setAttributes({
+      shadowColor: "",
+      shadowBlur: "0",
+      shadowHorizontal: "0",
+      shadowVertical: "0"
+    });
+  };
   var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-icon");
 
   return [isSelected && wp.element.createElement(
@@ -20437,7 +20674,8 @@ var edit = function edit(props) {
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
           return setAttributes({ borderRadius: newrRadius });
-        }
+        },
+        onResetClick: onResetClickIconBorder
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__["a" /* default */], {
         label: "Shadow",
@@ -20456,7 +20694,8 @@ var edit = function edit(props) {
         },
         onChangeVertical: function onChangeVertical(newValue) {
           return setAttributes({ shadowVertical: newValue });
-        }
+        },
+        onResetClick: onResetClickIconTextShadow
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_margin__["a" /* default */], {
         directions: ["all"],
@@ -20483,7 +20722,8 @@ var edit = function edit(props) {
           return setAttributes({
             marginL: value
           });
-        }
+        },
+        onResetClick: onResetClickIconMargin
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_padding__["a" /* default */], {
         paddingTop: paddingT,
@@ -20513,7 +20753,8 @@ var edit = function edit(props) {
         showUnits: true,
         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
           return setAttributes({ paddingU: newvalue });
-        }
+        },
+        onResetClick: onResetClickIconPadding
       })
     ),
     wp.element.createElement(
@@ -20587,7 +20828,8 @@ var edit = function edit(props) {
         },
         onChangeRadius: function onChangeRadius(newrRadius) {
           return setAttributes({ wrapBorderRadius: newrRadius });
-        }
+        },
+        onResetClick: onResetClickWrapBorder
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__["a" /* default */], {
         inner: true,
@@ -20620,7 +20862,8 @@ var edit = function edit(props) {
           return setAttributes({
             wrapShadowPosition: newValue
           });
-        }
+        },
+        onResetClick: onResetClickWrapBoxShadow
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_margin__["a" /* default */], {
         directions: ["all"],
@@ -20647,7 +20890,8 @@ var edit = function edit(props) {
           return setAttributes({
             wrapMarginL: value
           });
-        }
+        },
+        onResetClick: onResetClickWrapMargin
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_padding__["a" /* default */], {
         paddingTop: wrapPaddingT,
@@ -20673,7 +20917,8 @@ var edit = function edit(props) {
           return setAttributes({
             wrapPaddingL: value
           });
-        }
+        },
+        onResetClick: onResetClickWrapPadding
       })
     )
   ), wp.element.createElement(
@@ -20741,7 +20986,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20816,7 +21061,7 @@ exports.isSuspense = function (a) {
 };
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21050,7 +21295,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21628,7 +21873,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21694,7 +21939,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21878,7 +22123,7 @@ var X = { Children: { map: function map(a, b, d) {
     Z = Y && X || Y;module.exports = Z.default || Z;
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23781,7 +24026,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26124,7 +26369,7 @@ var Vi = { createPortal: Ti, findDOMNode: function findDOMNode(a) {
     Xi = Wi && Vi || Wi;module.exports = Xi.default || Xi;
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26330,7 +26575,7 @@ exports.unstable_shouldYield = function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27036,7 +27281,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(39)))
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27047,7 +27292,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(9);var _assign=__webpack_require__(20);var checkPropTypes=__webpack_require__(48);var scheduler=__webpack_require__(72);var tracing=__webpack_require__(197);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(9);var _assign=__webpack_require__(20);var checkPropTypes=__webpack_require__(48);var scheduler=__webpack_require__(72);var tracing=__webpack_require__(198);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -30925,21 +31170,21 @@ var reactDom=ReactDOM$3.default||ReactDOM$3;module.exports=reactDom;})();}
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(198);
-} else {
   module.exports = __webpack_require__(199);
+} else {
+  module.exports = __webpack_require__(200);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30966,7 +31211,7 @@ Object.defineProperty(exports, "__esModule", { value: !0 });var b = 0;exports.__
 };exports.unstable_subscribe = function () {};exports.unstable_unsubscribe = function () {};
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31394,7 +31639,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31405,9 +31650,9 @@ exports.default = void 0;
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(12));
 
-var _addClass = _interopRequireDefault(__webpack_require__(201));
+var _addClass = _interopRequireDefault(__webpack_require__(202));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(204));
+var _removeClass = _interopRequireDefault(__webpack_require__(205));
 
 var _react = _interopRequireDefault(__webpack_require__(9));
 
@@ -31794,18 +32039,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(202);
+var _interopRequireDefault = __webpack_require__(203);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(203));
+var _hasClass = _interopRequireDefault(__webpack_require__(204));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -31814,7 +32059,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports) {
 
 function _interopRequireDefault(obj) {
@@ -31826,7 +32071,7 @@ function _interopRequireDefault(obj) {
 module.exports = _interopRequireDefault;
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31842,7 +32087,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31857,7 +32102,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32022,7 +32267,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32177,7 +32422,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32305,7 +32550,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33303,15 +33548,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 209 */
+/* 210 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(213);
 
 
 
@@ -33691,7 +33936,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 210 */
+/* 211 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33964,6 +34209,102 @@ var edit = function edit(props) {
 
     addFontToHead(fontFamily);
   };
+  var onResetClickTitle = function onResetClickTitle() {
+    setAttributes({
+      titleWeight: 500,
+      titleSize: "20",
+      titleStyle: "normal",
+      titleLetter: "0",
+      titleUpper: false,
+      titleLine: ""
+    });
+  };
+  var onResetClickDescTypo = function onResetClickDescTypo() {
+    setAttributes({
+      descWeight: 500,
+      descSize: "20",
+      descLine: "0"
+    });
+  };
+  var onResetClickbtnTypo = function onResetClickbtnTypo() {
+    setAttributes({
+      btnWeight: 500,
+      btnSize: "20",
+      btnStyle: "normal",
+      btnLetter: "0",
+      btnUpper: false
+    });
+  };
+  var onResetClickContainerPadding = function onResetClickContainerPadding() {
+    setAttributes({
+      paddingT: "0",
+      paddingR: "0",
+      paddingB: "0",
+      paddingL: "0",
+      paddingU: "px"
+    });
+  };
+  var onResetClickTitleMargin = function onResetClickTitleMargin() {
+    setAttributes({
+      titleMarginT: "0",
+      titleMarginB: "0"
+    });
+  };
+  var onResetClickDescMargin = function onResetClickDescMargin() {
+    setAttributes({
+      descMarginT: "0",
+      descMarginB: "0"
+    });
+  };
+  var onResetClickbtnMargin = function onResetClickbtnMargin() {
+    setAttributes({
+      btnMarginT: "0",
+      btnMarginB: "0"
+    });
+  };
+  var onResetClickContainerMargin = function onResetClickContainerMargin() {
+    setAttributes({
+      marginT: "0",
+      marginR: "0",
+      marginB: "0",
+      marginL: "0"
+    });
+  };
+  var onResetClickTitleTextShadow = function onResetClickTitleTextShadow() {
+    setAttributes({
+      titleShadowColor: "",
+      titleShadowBlur: "0",
+      titleShadowHorizontal: "0",
+      titleShadowVertical: "0"
+    });
+  };
+  var onResetClickbtnBoxShadow = function onResetClickbtnBoxShadow() {
+    setAttributes({
+      btnShadowColor: "",
+      btnShadowBlur: "0",
+      btnShadowHorizontal: "0",
+      btnShadowVertical: "0",
+      btnShadowPosition: ""
+    });
+  };
+  var onResetClickContainerBoxShadow = function onResetClickContainerBoxShadow() {
+    setAttributes({
+      shadowColor: "",
+      shadowBlur: "0",
+      shadowHorizontal: "0",
+      shadowVertical: "0",
+      shadowPosition: ""
+    });
+  };
+  var onResetClickHoverBoxShadow = function onResetClickHoverBoxShadow() {
+    setAttributes({
+      hoverShadowColor: "",
+      hoverShadowBlur: "0",
+      hoverShadowHorizontal: "0",
+      hoverShadowVertical: "0",
+      hoverShadowPosition: ""
+    });
+  };
 
   var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-icon-box");
 
@@ -34218,7 +34559,8 @@ var edit = function edit(props) {
         },
         onChangeUpper: function onChangeUpper(check) {
           return setAttributes({ titleUpper: check });
-        }
+        },
+        onResetClick: onResetClickTitle
       }),
       wp.element.createElement(
         Fragment,
@@ -34256,7 +34598,8 @@ var edit = function edit(props) {
         },
         onChangeVertical: function onChangeVertical(newValue) {
           return setAttributes({ titleShadowVertical: newValue || 0 });
-        }
+        },
+        onResetClick: onResetClickTitleTextShadow
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_margin__["a" /* default */], {
         directions: ["top", "bottom"],
@@ -34271,7 +34614,8 @@ var edit = function edit(props) {
           return setAttributes({
             titleMarginB: value || 0
           });
-        }
+        },
+        onResetClick: onResetClickTitleMargin
       })
     ),
     descChecked && wp.element.createElement(
@@ -34300,7 +34644,8 @@ var edit = function edit(props) {
         },
         onChangeLine: function onChangeLine(newValue) {
           return setAttributes({ descLine: newValue });
-        }
+        },
+        onResetClick: onResetClickDescTypo
       }),
       wp.element.createElement(
         Fragment,
@@ -34333,7 +34678,8 @@ var edit = function edit(props) {
           return setAttributes({
             descMarginB: value || 0
           });
-        }
+        },
+        onResetClick: onResetClickDescMargin
       })
     ),
     btnChecked && wp.element.createElement(
@@ -34387,7 +34733,8 @@ var edit = function edit(props) {
         },
         onChangeUpper: function onChangeUpper(check) {
           return setAttributes({ btnUpper: check });
-        }
+        },
+        onResetClick: onResetClickbtnTypo
       }),
       wp.element.createElement(
         "div",
@@ -34537,7 +34884,8 @@ var edit = function edit(props) {
           return setAttributes({
             btnShadowPosition: newValue || 0
           });
-        }
+        },
+        onResetClick: onResetClickbtnBoxShadow
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__["a" /* default */], {
         onChangeSizeUnit: function onChangeSizeUnit(newValue) {
@@ -34564,7 +34912,8 @@ var edit = function edit(props) {
           return setAttributes({
             btnMarginB: value || 0
           });
-        }
+        },
+        onResetClick: onResetClickbtnMargin
       })
     ),
     wp.element.createElement(
@@ -34671,7 +35020,8 @@ var edit = function edit(props) {
           return setAttributes({
             shadowPosition: newValue
           });
-        }
+        },
+        onResetClick: onResetClickContainerBoxShadow
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__["a" /* default */], {
         inner: true,
@@ -34705,7 +35055,8 @@ var edit = function edit(props) {
           return setAttributes({
             hoverShadowPosition: newValue
           });
-        }
+        },
+        onResetClick: onResetClickHoverBoxShadow
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_margin__["a" /* default */], {
         directions: ["all"],
@@ -34732,7 +35083,8 @@ var edit = function edit(props) {
           return setAttributes({
             marginL: value || 0
           });
-        }
+        },
+        onResetClick: onResetClickContainerMargin
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_padding__["a" /* default */], {
         paddingTop: paddingT,
@@ -34762,7 +35114,8 @@ var edit = function edit(props) {
         },
         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
           return setAttributes({ paddingU: newvalue });
-        }
+        },
+        onResetClick: onResetClickContainerPadding
       })
     )
   ), wp.element.createElement(
@@ -34941,7 +35294,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 211 */
+/* 212 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35205,7 +35558,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 212 */
+/* 213 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37332,7 +37685,7 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 213 */
+/* 214 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38165,15 +38518,15 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(218);
 
 
 
@@ -38650,7 +39003,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38905,6 +39258,118 @@ var PremiumPricingTable = function (_Component) {
 
       var FEATURES_ALIGN = ["left", "center", "right"];
 
+      var onResetClickbtnBorder = function onResetClickbtnBorder() {
+        setAttributes({
+          btnBorderType: "none",
+          btnBorderWidth: "1",
+          btnBorderColor: "",
+          btnBorderRadius: "0"
+        });
+      };
+      var onResetClickTableBorder = function onResetClickTableBorder() {
+        setAttributes({
+          borderType: "none",
+          borderWidth: "1",
+          borderColor: "",
+          borderRadius: "0"
+        });
+      };
+      var onResetClickTitleTypo = function onResetClickTitleTypo() {
+        setAttributes({
+          titleWeight: 500,
+          titleSize: "",
+          titleStyle: "normal",
+          titleLetter: "0",
+          titleUpper: false,
+          titleLine: ""
+        });
+      };
+      var onResetClickSlashTypo = function onResetClickSlashTypo() {
+        setAttributes({
+          slashWeight: 500,
+          slashSize: "20"
+        });
+      };
+      var onResetClickCurrTypo = function onResetClickCurrTypo() {
+        setAttributes({
+          currWeight: "",
+          currSize: "20"
+        });
+      };
+      var onResetClickValTypo = function onResetClickValTypo() {
+        setAttributes({
+          valWeight: "",
+          valSize: "50"
+        });
+      };
+      var onResetClickDivTypo = function onResetClickDivTypo() {
+        setAttributes({
+          divWeight: "",
+          divSize: "20"
+        });
+      };
+      var onResetClickDurTypo = function onResetClickDurTypo() {
+        setAttributes({
+          durWeight: "",
+          durSize: "20"
+        });
+      };
+      var onResetClickListTypo = function onResetClickListTypo() {
+        setAttributes({
+          listWeight: 500,
+          listSize: "",
+          listItemsStyle: "normal",
+          listLetter: "0",
+          listUpper: false,
+          listLine: ""
+        });
+      };
+      var onResetClickDescTypo = function onResetClickDescTypo() {
+        setAttributes({
+          descWeight: "",
+          descSize: "",
+          descStyle: "normal",
+          descLetter: "",
+          descLine: ""
+        });
+      };
+      var onResetClickBtnTypo = function onResetClickBtnTypo() {
+        setAttributes({
+          btnWeight: 900,
+          btnSize: "",
+          btnStyle: "normal",
+          btnLetter: "0",
+          btnUpper: false,
+          btnLine: ""
+        });
+      };
+      var onResetClickBadgeTypo = function onResetClickBadgeTypo() {
+        setAttributes({
+          badgeWeight: 900,
+          badgeTextSize: "",
+          badgeStyle: "normal",
+          badgeLetter: "0",
+          badgeUpper: false
+        });
+      };
+      var onResetClickTableBoxShadow = function onResetClickTableBoxShadow() {
+        setAttributes({
+          tableShadowColor: "",
+          tableShadowBlur: "0",
+          tableShadowHorizontal: "0",
+          tableShadowVertical: "0",
+          tableShadowPosition: ""
+        });
+      };
+      var onResetClickTitleTextShadow = function onResetClickTitleTextShadow() {
+        setAttributes({
+          titleShadowColor: "",
+          titleShadowBlur: "0",
+          titleShadowHorizontal: "0",
+          titleShadowVertical: "0"
+        });
+      };
+
       var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-pricing-table");
 
       return [isSelected && wp.element.createElement(
@@ -39018,7 +39483,8 @@ var PremiumPricingTable = function (_Component) {
             },
             onChangeUpper: function onChangeUpper(check) {
               return setAttributes({ titleUpper: check });
-            }
+            },
+            onResetClick: onResetClickTitleTypo
           }),
           wp.element.createElement(PanelColorSettings, {
             title: __("Colors"),
@@ -39054,7 +39520,8 @@ var PremiumPricingTable = function (_Component) {
             },
             onChangeVertical: function onChangeVertical(newValue) {
               return setAttributes({ titleShadowVertical: newValue });
-            }
+            },
+            onResetClick: onResetClickTitleTextShadow
           }),
           wp.element.createElement(
             "div",
@@ -39182,7 +39649,8 @@ var PremiumPricingTable = function (_Component) {
                 },
                 onChangeWeight: function onChangeWeight(newWeight) {
                   return setAttributes({ slashWeight: newWeight });
-                }
+                },
+                onResetClick: onResetClickSlashTypo
               }),
               wp.element.createElement(SelectControl, {
                 label: __("Vertical Align"),
@@ -39223,7 +39691,8 @@ var PremiumPricingTable = function (_Component) {
                 },
                 onChangeWeight: function onChangeWeight(newWeight) {
                   return setAttributes({ currWeight: newWeight });
-                }
+                },
+                onResetClick: onResetClickCurrTypo
               }),
               wp.element.createElement(SelectControl, {
                 label: __("Vertical Align"),
@@ -39264,7 +39733,8 @@ var PremiumPricingTable = function (_Component) {
                 },
                 onChangeWeight: function onChangeWeight(newWeight) {
                   return setAttributes({ valWeight: newWeight });
-                }
+                },
+                onResetClick: onResetClickValTypo
               }),
               wp.element.createElement(SelectControl, {
                 label: __("Vertical Align"),
@@ -39305,7 +39775,8 @@ var PremiumPricingTable = function (_Component) {
                 },
                 onChangeWeight: function onChangeWeight(newWeight) {
                   return setAttributes({ divWeight: newWeight });
-                }
+                },
+                onResetClick: onResetClickDivTypo
               }),
               wp.element.createElement(SelectControl, {
                 label: __("Vertical Align"),
@@ -39346,7 +39817,8 @@ var PremiumPricingTable = function (_Component) {
                 },
                 onChangeWeight: function onChangeWeight(newWeight) {
                   return setAttributes({ durWeight: newWeight });
-                }
+                },
+                onResetClick: onResetClickDurTypo
               }),
               wp.element.createElement(SelectControl, {
                 label: __("Vertical Align"),
@@ -39507,7 +39979,8 @@ var PremiumPricingTable = function (_Component) {
             },
             onChangeUpper: function onChangeUpper(check) {
               return setAttributes({ listUpper: check });
-            }
+            },
+            onResetClick: onResetClickListTypo
           }),
           wp.element.createElement(PanelColorSettings, {
             title: __("Colors"),
@@ -39606,7 +40079,8 @@ var PremiumPricingTable = function (_Component) {
             },
             onChangeLine: function onChangeLine(newValue) {
               return setAttributes({ descLine: newValue });
-            }
+            },
+            onResetClick: onResetClickDescTypo
           }),
           wp.element.createElement(PanelColorSettings, {
             title: __("Colors"),
@@ -39715,7 +40189,8 @@ var PremiumPricingTable = function (_Component) {
             },
             onChangeUpper: function onChangeUpper(check) {
               return setAttributes({ btnUpper: check });
-            }
+            },
+            onResetClick: onResetClickBtnTypo
           }),
           wp.element.createElement(PanelColorSettings, {
             title: __("Colors"),
@@ -39763,7 +40238,8 @@ var PremiumPricingTable = function (_Component) {
             },
             onChangeRadius: function onChangeRadius(newrRadius) {
               return setAttributes({ btnBorderRadius: newrRadius });
-            }
+            },
+            onResetClick: onResetClickbtnBorder
           }),
           wp.element.createElement(
             "div",
@@ -39884,7 +40360,8 @@ var PremiumPricingTable = function (_Component) {
             },
             onChangeUpper: function onChangeUpper(check) {
               return setAttributes({ badgeUpper: check });
-            }
+            },
+            onResetClick: onResetClickBadgeTypo
           }),
           wp.element.createElement(PanelColorSettings, {
             title: __("Colors"),
@@ -39979,7 +40456,8 @@ var PremiumPricingTable = function (_Component) {
             },
             onChangeRadius: function onChangeRadius(newrRadius) {
               return setAttributes({ borderRadius: newrRadius });
-            }
+            },
+            onResetClick: onResetClickTableBorder
           }),
           wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__["a" /* default */], {
             inner: true,
@@ -40012,7 +40490,8 @@ var PremiumPricingTable = function (_Component) {
               return setAttributes({
                 tableShadowPosition: newValue === undefined ? 0 : newValue
               });
-            }
+            },
+            onResetClick: onResetClickTableBoxShadow
           }),
           wp.element.createElement(
             "div",
@@ -40339,7 +40818,7 @@ var PremiumPricingTable = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumPricingTable);
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -40749,7 +41228,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41993,14 +42472,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(222);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(3);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -42149,7 +42628,7 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42250,6 +42729,41 @@ var edit = function edit(props) {
     value: "bottom",
     label: __("Bottom")
   }];
+  var onResetClickBorder = function onResetClickBorder() {
+    setAttributes({
+      borderType: "none",
+      borderWidth: "1",
+      borderColor: "",
+      borderRadius: "0"
+    });
+  };
+  var onResetClickPadding = function onResetClickPadding() {
+    setAttributes({
+      paddingTop: "0",
+      paddingRight: "0",
+      paddingBottom: "0",
+      paddingLeft: "0",
+      paddingUnit: "px"
+    });
+  };
+  var onResetClickMargin = function onResetClickMargin() {
+    setAttributes({
+      marginTop: "0",
+      marginRight: "0",
+      marginBottom: "0",
+      marginLeft: "0",
+      marginUnit: "px"
+    });
+  };
+  var onResetClickBoxShadow = function onResetClickBoxShadow() {
+    setAttributes({
+      shadowColor: "",
+      shadowBlur: "0",
+      shadowHorizontal: "0",
+      shadowVertical: "0",
+      shadowPosition: ""
+    });
+  };
 
   var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-container");
 
@@ -42402,7 +42916,8 @@ var edit = function edit(props) {
       },
       onChangeRadius: function onChangeRadius(newrRadius) {
         return setAttributes({ borderRadius: newrRadius });
-      }
+      },
+      onResetClick: onResetClickBorder
     }),
     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__["a" /* default */], {
       inner: false,
@@ -42435,7 +42950,8 @@ var edit = function edit(props) {
         return setAttributes({
           shadowPosition: newValue === undefined ? 0 : newValue
         });
-      }
+      },
+      onResetClick: onResetClickBoxShadow
     }),
     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_margin__["a" /* default */], {
       directions: ["all"],
@@ -42466,7 +42982,8 @@ var edit = function edit(props) {
       showUnits: true,
       onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
         return setAttributes({ marginUnit: newvalue });
-      }
+      },
+      onResetClick: onResetClickMargin
     }),
     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_padding__["a" /* default */], {
       paddingTop: paddingTop,
@@ -42496,7 +43013,8 @@ var edit = function edit(props) {
       showUnits: true,
       onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
         return setAttributes({ paddingUnit: newvalue });
-      }
+      },
+      onResetClick: onResetClickPadding
     })
   ), wp.element.createElement(
     "div",
@@ -42546,7 +43064,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42645,7 +43163,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 221 */
+/* 222 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43119,14 +43637,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(226);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(3);
 
 
@@ -43323,7 +43841,7 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43432,6 +43950,44 @@ var edit = function edit(props) {
     value: "15px",
     label: __("Rounded")
   }];
+  var onResetClickAuthorTypo = function onResetClickAuthorTypo() {
+    setAttributes({
+      authorWeight: 500,
+      authorSize: "",
+      authorStyle: "normal",
+      authorLetter: "0",
+      authorUpper: false
+    });
+  };
+  var onResetClickBodyTypo = function onResetClickBodyTypo() {
+    setAttributes({
+      bodySize: "",
+      bodyLine: ""
+    });
+  };
+  var onResetClickAuthorComTypo = function onResetClickAuthorComTypo() {
+    setAttributes({
+      authorComSize: ""
+    });
+  };
+  var onResetClickBoxShadow = function onResetClickBoxShadow() {
+    setAttributes({
+      shadowColor: "",
+      shadowBlur: "0",
+      shadowHorizontal: "0",
+      shadowVertical: "0",
+      shadowPosition: ""
+    });
+  };
+  var onResetClickPadding = function onResetClickPadding() {
+    setAttributes({
+      paddingTop: "0",
+      paddingRight: "0",
+      paddingBottom: "0",
+      paddingLeft: "0",
+      paddingUnit: "px"
+    });
+  };
 
   var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-testimonial");
 
@@ -43571,7 +44127,8 @@ var edit = function edit(props) {
         },
         onChangeUpper: function onChangeUpper(check) {
           return setAttributes({ authorUpper: check });
-        }
+        },
+        onResetClick: onResetClickAuthorTypo
       }),
       wp.element.createElement(
         "p",
@@ -43604,7 +44161,8 @@ var edit = function edit(props) {
         },
         onChangeLine: function onChangeLine(newWeight) {
           return setAttributes({ bodyLine: newWeight });
-        }
+        },
+        onResetClick: onResetClickBodyTypo
       }),
       wp.element.createElement(
         "p",
@@ -43664,7 +44222,8 @@ var edit = function edit(props) {
         size: authorComSize,
         onChangeSize: function onChangeSize(newSize) {
           return setAttributes({ authorComSize: newSize });
-        }
+        },
+        onResetClick: onResetClickAuthorComTypo
       }),
       wp.element.createElement(
         "div",
@@ -43875,7 +44434,8 @@ var edit = function edit(props) {
           return setAttributes({
             shadowPosition: newValue
           });
-        }
+        },
+        onResetClick: onResetClickBoxShadow
       }),
       wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_padding__["a" /* default */], {
         paddingTop: paddingTop,
@@ -43905,7 +44465,8 @@ var edit = function edit(props) {
         showUnits: true,
         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
           return setAttributes({ paddingUnit: newvalue });
-        }
+        },
+        onResetClick: onResetClickPadding
       })
     )
   ), wp.element.createElement(
@@ -44053,7 +44614,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 224 */
+/* 225 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44261,7 +44822,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45111,7 +45672,7 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45345,6 +45906,58 @@ var edit = function (_Component) {
         addFontToHead(fontFamily);
       };
 
+      var onResetClickVideoDesc = function onResetClickVideoDesc() {
+        setAttributes({
+          videoDescWeight: "",
+          videoDescSize: "",
+          videoDescStyle: "normal",
+          videoDescLetter: "0",
+          videoDescUpper: false
+        });
+      };
+      var onResetClickPlayBorder = function onResetClickPlayBorder() {
+        setAttributes({
+          playBorderType: "none",
+          playBorderWidth: "1",
+          playBorderColor: "",
+          playBorderRadius: "0"
+        });
+      };
+      var onResetClickBoxBorder = function onResetClickBoxBorder() {
+        setAttributes({
+          boxBorderType: "none",
+          boxBorderWidth: "1",
+          boxBorderColor: "",
+          boxBorderRadius: "0"
+        });
+      };
+      var onResetClickDescTextShadow = function onResetClickDescTextShadow() {
+        setAttributes({
+          descShadowColor: "",
+          descShadowBlur: "0",
+          descShadowHorizontal: "0",
+          descShadowVertical: "0"
+        });
+      };
+      var onResetClickBoxShadow = function onResetClickBoxShadow() {
+        setAttributes({
+          shadowColor: "",
+          shadowBlur: "0",
+          shadowHorizontal: "0",
+          shadowVertical: "0",
+          shadowPosition: ""
+        });
+      };
+      var onResetClickFilter = function onResetClickFilter() {
+        setAttributes({
+          blur: "0",
+          bright: "100",
+          contrast: "100",
+          saturation: "100",
+          hue: "0"
+        });
+      };
+
       var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-video-box");
 
       return [isSelected && wp.element.createElement(
@@ -45500,7 +46113,8 @@ var edit = function (_Component) {
             },
             onChangeHue: function onChangeHue(value) {
               return setAttributes({ hue: value === undefined ? 100 : value });
-            }
+            },
+            onResetClick: onResetClickFilter
           })
         ),
         overlay && wp.element.createElement(
@@ -45646,7 +46260,8 @@ var edit = function (_Component) {
                 },
                 onChangeRadius: function onChangeRadius(newrRadius) {
                   return setAttributes({ playBorderRadius: newrRadius });
-                }
+                },
+                onResetClick: onResetClickPlayBorder
               }),
               wp.element.createElement(RangeControl, {
                 label: __("Padding (PX)"),
@@ -45710,7 +46325,8 @@ var edit = function (_Component) {
                 },
                 onChangeUpper: function onChangeUpper(check) {
                   return setAttributes({ videoDescUpper: check });
-                }
+                },
+                onResetClick: onResetClickVideoDesc
               }),
               wp.element.createElement(RangeControl, {
                 label: __("Vertical Offset (%)"),
@@ -45811,7 +46427,8 @@ var edit = function (_Component) {
                 },
                 onChangeVertical: function onChangeVertical(newValue) {
                   return setAttributes({ descShadowVertical: newValue || "0" });
-                }
+                },
+                onResetClick: onResetClickDescTextShadow
               }),
               wp.element.createElement(RangeControl, {
                 label: __("Padding (PX)"),
@@ -45848,7 +46465,8 @@ var edit = function (_Component) {
             },
             onChangeRadius: function onChangeRadius(newrRadius) {
               return setAttributes({ boxBorderRadius: newrRadius });
-            }
+            },
+            onResetClick: onResetClickBoxBorder
           }),
           wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__["a" /* default */], {
             inner: true,
@@ -45881,7 +46499,8 @@ var edit = function (_Component) {
               return setAttributes({
                 shadowPosition: newValue === undefined ? 0 : newValue
               });
-            }
+            },
+            onResetClick: onResetClickBoxShadow
           })
         )
       ), wp.element.createElement(
@@ -45995,7 +46614,7 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46185,7 +46804,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47085,13 +47704,13 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(232);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
 var _personAttrs;
 
@@ -47210,6 +47829,13 @@ var personAttrs = (_personAttrs = {
     },
     socialIconBackgroundColor: {
         type: "string"
+    },
+    contentColor: {
+        type: "string"
+    },
+    bottomInfo: {
+        type: "number",
+        default: 15
     },
     defaultIconColor: {
         type: "boolean",
@@ -47365,7 +47991,7 @@ registerBlockType("premium/person", {
 });
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47446,7 +48072,9 @@ var save = function save(props) {
         bright = _props$attributes.bright,
         contrast = _props$attributes.contrast,
         saturation = _props$attributes.saturation,
-        hue = _props$attributes.hue;
+        hue = _props$attributes.hue,
+        contentColor = _props$attributes.contentColor,
+        bottomInfo = _props$attributes.bottomInfo;
 
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-person');
@@ -47485,7 +48113,7 @@ var save = function save(props) {
     var content = function content() {
         return wp.element.createElement(
             'div',
-            { className: '' + (multiPersonChecked > 1 ? 'premium-person__' + rowPerson : "")
+            { className: (multiPersonChecked > 1 ? 'premium-person__' + rowPerson : "") + ' ' + id
             },
             ' ',
             multiPersonContent.map(function (value) {
@@ -47502,7 +48130,7 @@ var save = function save(props) {
                             },
                             value.personImgUrl && wp.element.createElement('img', {
                                 className: 'premium-person__img',
-                                src: '' + value.personImgUrl,
+                                src: '' + value.personImgUrl.url,
                                 alt: 'Person',
                                 style: {
 
@@ -47524,7 +48152,11 @@ var save = function save(props) {
                     wp.element.createElement(
                         'div',
                         {
-                            className: 'premium-person__info'
+                            className: 'premium-person__info',
+                            style: {
+                                background: contentColor ? contentColor : "#f2f2f2",
+                                bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
+                            }
                         },
                         wp.element.createElement(
                             'div',
@@ -47622,7 +48254,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47638,15 +48270,22 @@ var save = function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_times__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_times___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_lodash_times__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -47756,15 +48395,36 @@ var PremiumPerson = function (_Component) {
     }
 
     _createClass(PremiumPerson, [{
+        key: "save",
+        value: function save(value, index) {
+            var _props = this.props,
+                attributes = _props.attributes,
+                setAttributes = _props.setAttributes;
+            var multiPersonContent = attributes.multiPersonContent;
+
+            var newItems = multiPersonContent.map(function (item, thisIndex) {
+                if (index === thisIndex) {
+                    item = _extends({}, item, value);
+                }
+                return item;
+            });
+
+            setAttributes({
+                multiPersonContent: newItems
+            });
+        }
+    }, {
         key: "render",
         value: function render() {
-            var _wp$element$createEle, _wp$element$createEle2, _wp$element$createEle3;
+            var _this2 = this,
+                _wp$element$createEle,
+                _wp$element$createEle2;
 
-            var _props = this.props,
-                isSelected = _props.isSelected,
-                setAttributes = _props.setAttributes,
-                className = _props.className,
-                blockId = _props.clientId;
+            var _props2 = this.props,
+                isSelected = _props2.isSelected,
+                setAttributes = _props2.setAttributes,
+                className = _props2.className,
+                blockId = _props2.clientId;
             var _props$attributes = this.props.attributes,
                 id = _props$attributes.id,
                 personSize = _props$attributes.personSize,
@@ -47798,6 +48458,7 @@ var PremiumPerson = function (_Component) {
                 iconSizeUnit = _props$attributes.iconSizeUnit,
                 defaultIconColor = _props$attributes.defaultIconColor,
                 socialIconBackgroundColor = _props$attributes.socialIconBackgroundColor,
+                contentColor = _props$attributes.contentColor,
                 iconMarginL = _props$attributes.iconMarginL,
                 iconMarginR = _props$attributes.iconMarginR,
                 effect = _props$attributes.effect,
@@ -47836,7 +48497,8 @@ var PremiumPerson = function (_Component) {
                 bright = _props$attributes.bright,
                 contrast = _props$attributes.contrast,
                 saturation = _props$attributes.saturation,
-                hue = _props$attributes.hue;
+                hue = _props$attributes.hue,
+                bottomInfo = _props$attributes.bottomInfo;
 
 
             var HOVER = [{
@@ -47974,106 +48636,72 @@ var PremiumPerson = function (_Component) {
                 }
             };
             var _addLink = function _addLink(value, i) {
-                if (i > 0) {
-                    value.link = !value.link;
-                    value.link == false ? value.changeinput = value.value : value.changeinput;
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    var newData = array[0].items.filter(function (b) {
-                        return b;
-                    });
-                    array[0].items = newData;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    value.link = !value.link;
-                    value.link == false ? value.changeinput = value.value : value.changeinput;
-                    var arrayItem = multiPersonContent.map(function (cont) {
-                        return cont;
-                    });
-                    var _newData = arrayItem[0].items.filter(function (b) {
-                        return b;
-                    });
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: _newData }] });
-                }
+                value.link = !value.link;
+                value.link == false ? value.changeinput = value.value : value.changeinput;
+                var array = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == i + 1;
+                });
+                var newData = array[0].items.filter(function (b) {
+                    return b;
+                });
+                array[0].items = newData;
+                multiPersonContent[i] = array[0];
+                setAttributes(multiPersonContent[i] = array[0]);
             };
             var _saveLink = function _saveLink(value, i, personIndex) {
-                if (personIndex > 0) {
-                    i.value = value;
+                i.value = value;
+                var arrayItem = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == personIndex + 1;
+                });
+                i.link = false;
+                var newData = arrayItem[0].items.filter(function (b) {
+                    return b;
+                });
+                arrayItem[0].items = newData;
+                multiPersonContent[personIndex] = arrayItem[0];
+                setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
+            };
+            var _changeLinkValue = function _changeLinkValue(value, i, personIndex) {
+                if (personIndex + 1 > 0) {
+                    i.changeinput = value;
                     var arrayItem = multiPersonContent.map(function (cont) {
                         return cont;
                     }).filter(function (f) {
-                        return f.id == personIndex;
+                        return f.id == personIndex + 1;
                     });
-                    i.link = false;
                     var newData = arrayItem[0].items.filter(function (b) {
                         return b;
                     });
                     arrayItem[0].items = newData;
-                    multiPersonContent[personIndex - 1] = arrayItem[0];
-                    setAttributes(multiPersonContent[personIndex - 1] = arrayItem[0]);
+                    multiPersonContent[personIndex] = arrayItem[0];
+                    setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
                 } else {
-                    i.value = value;
+                    i.changeinput = value;
                     var _arrayItem = multiPersonContent.map(function (cont) {
                         return cont;
                     });
-                    i.link = false;
-                    var _newData2 = _arrayItem[0].items.filter(function (b) {
+                    var _newData = _arrayItem[0].items.filter(function (b) {
                         return b;
                     });
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem[0].personImgUrl, name: _arrayItem[0].name, title: _arrayItem[0].title, desc: _arrayItem[0].desc, socialIcon: _arrayItem[0].socialIcon, items: _newData2 }] });
-                }
-            };
-            var _changeLinkValue = function _changeLinkValue(value, i, personIndex) {
-                if (personIndex > 0) {
-                    i.changeinput = value;
-                    var arrayItem = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == personIndex;
-                    });
-                    var newData = arrayItem[0].items.filter(function (b) {
-                        return b;
-                    });
-                    arrayItem[0].items = newData;
-                    multiPersonContent[personIndex - 1] = arrayItem[0];
-                    setAttributes(multiPersonContent[personIndex - 1] = arrayItem[0]);
-                } else {
-                    i.changeinput = value;
-                    var _arrayItem2 = multiPersonContent.map(function (cont) {
-                        return cont;
-                    });
-                    var _newData3 = _arrayItem2[0].items.filter(function (b) {
-                        return b;
-                    });
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem2[0].personImgUrl, name: _arrayItem2[0].name, title: _arrayItem2[0].title, desc: _arrayItem2[0].desc, socialIcon: _arrayItem2[0].socialIcon, items: _newData3 }] });
+                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem[0].personImgUrl, name: _arrayItem[0].name, title: _arrayItem[0].title, desc: _arrayItem[0].desc, socialIcon: _arrayItem[0].socialIcon, items: _newData }] });
                 }
             };
             var _onRemove = function _onRemove(value, i) {
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    var newData = array[0].items.filter(function (b) {
-                        return b.label != value;
-                    });
-                    array[0].items = newData;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var arrayItem = multiPersonContent.map(function (cont) {
-                        return cont;
-                    });
-                    var _newData4 = arrayItem[0].items.filter(function (b) {
-                        return b.label != value;
-                    });
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: _newData4 }] });
-                }
+                var array = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == i + 1;
+                });
+                var newData = array[0].items.filter(function (b) {
+                    return b.label != value;
+                });
+                array[0].items = newData;
+                multiPersonContent[i] = array[0];
+                setAttributes(multiPersonContent[i] = array[0]);
             };
             var socialIconfn = function socialIconfn(v) {
                 return wp.element.createElement(
@@ -48109,7 +48737,7 @@ var PremiumPerson = function (_Component) {
             var content = function content() {
                 return wp.element.createElement(
                     "div",
-                    { className: "" + (multiPersonChecked > 1 ? "premium-person__" + rowPerson : "")
+                    { className: (multiPersonChecked > 1 ? "premium-person__" + rowPerson : "") + " " + id
                     },
                     " ",
                     multiPersonContent.map(function (value) {
@@ -48126,7 +48754,7 @@ var PremiumPerson = function (_Component) {
                                     },
                                     value.personImgUrl && wp.element.createElement("img", {
                                         className: "premium-person__img",
-                                        src: "" + value.personImgUrl,
+                                        src: "" + value.personImgUrl.url,
                                         alt: "Person",
                                         style: {
 
@@ -48148,7 +48776,11 @@ var PremiumPerson = function (_Component) {
                             wp.element.createElement(
                                 "div",
                                 {
-                                    className: "premium-person__info"
+                                    className: "premium-person__info",
+                                    style: {
+                                        background: contentColor ? contentColor : "#f2f2f2",
+                                        bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
+                                    }
                                 },
                                 wp.element.createElement(
                                     "div",
@@ -48226,309 +48858,265 @@ var PremiumPerson = function (_Component) {
                     })
                 );
             };
-            var onSortEndSingle = function onSortEndSingle(_ref3) {
+            var addSocialIcon = function addSocialIcon(newsocial, index) {
+                var array = iconsList.map(function (i) {
+                    return i;
+                }).filter(function (f) {
+                    return f.value == newsocial;
+                });
+                if (array[0] != undefined) {
+                    newsocial = array[0];
+                    setAttributes({ selectedSocialMediaIcon: newsocial.label });
+                    var newicon = newsocial.label;
+                    var arrayItem = multiPersonContent.map(function (cont) {
+                        return cont;
+                    }).filter(function (f) {
+                        return f.id == index + 1;
+                    });
+                    var repeat = arrayItem[0].items.filter(function (d) {
+                        return d.label == newicon;
+                    });
+                    if (repeat[0] != undefined) {
+                        arrayItem[0].items.filter(function (d) {
+                            return d.label != newicon;
+                        });
+                        multiPersonContent[index - 1] = arrayItem[0];
+                        setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
+                    } else {
+                        arrayItem[0].items.push({ label: newicon, link: false, value: "", changeinput: "#" });
+                        arrayItem[0].items.filter(function (d) {
+                            return d.label != newicon;
+                        });
+                        multiPersonContent[index - 1] = arrayItem[0];
+                        setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
+                    }
+                }
+            };
+            var addMultiPerson = function addMultiPerson(newP) {
+                var multi = [].concat(_toConsumableArray(multiPersonContent));
+                if (multi.length < newP) {
+                    var incAmount = Math.abs(newP - multi.length);
+                    {
+                        __WEBPACK_IMPORTED_MODULE_10_lodash_times___default()(incAmount, function (n) {
+                            multi.push({
+                                id: multi.length + 1,
+                                personImgUrl: multi[0].personImgUrl,
+                                name: multi[0].name,
+                                title: multi[0].title,
+                                desc: multi[0].desc,
+                                socialIcon: multi[0].socialIcon,
+                                items: [{ label: 'facebook', link: false, value: "#", changeinput: "#" }, { label: 'twitter', link: false, value: "#", changeinput: "#" }, { label: 'instagram', link: false, value: "#", changeinput: "#" }, { label: 'youtube', link: false, value: "#", changeinput: "#" }]
+                            });
+                        });
+                    }
+                    setAttributes({ multiPersonContent: multi });
+                } else {
+                    for (var i = multiPersonChecked; i > newP; i--) {
+                        multiPersonContent.splice(i - 1, 1);
+                    }
+                }
+                setAttributes({ multiPersonChecked: newP });
+            };
+
+            var onSortEndMulti = function onSortEndMulti(i, _ref3) {
                 var oldIndex = _ref3.oldIndex,
                     newIndex = _ref3.newIndex;
 
                 var arrayItem = multiPersonContent.map(function (cont) {
                     return cont;
-                });
-                var array = Object(__WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__["c" /* arrayMove */])(arrayItem[0].items, oldIndex, newIndex);
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: array }] });
-            };
-            var addSocialIcon = function addSocialIcon(newsocial, index) {
-                if (index > 0) {
-                    var array = iconsList.map(function (i) {
-                        return i;
-                    }).filter(function (f) {
-                        return f.value == newsocial;
-                    });
-                    if (array[0] != undefined) {
-                        newsocial = array[0];
-                        setAttributes({ selectedSocialMediaIcon: newsocial.label });
-                        var newicon = newsocial.label;
-                        var arrayItem = multiPersonContent.map(function (cont) {
-                            return cont;
-                        }).filter(function (f) {
-                            return f.id == index;
-                        });
-
-                        var repeat = arrayItem[0].items.filter(function (d) {
-                            return d.label == newicon;
-                        });
-                        if (repeat[0] != undefined) {
-                            arrayItem[0].items.filter(function (d) {
-                                return d.label != newicon;
-                            });
-                            multiPersonContent[index - 1] = arrayItem[0];
-                            setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
-                        } else {
-                            arrayItem[0].items.push({ label: newicon, link: false, value: "", changeinput: "#" });
-                            arrayItem[0].items.filter(function (d) {
-                                return d.label != newicon;
-                            });
-                            multiPersonContent[index - 1] = arrayItem[0];
-                            setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
-                        }
-                    }
-                } else {
-                    var _array = iconsList.map(function (i) {
-                        return i;
-                    }).filter(function (f) {
-                        return f.value == newsocial;
-                    });
-                    if (_array[0] != undefined) {
-                        newsocial = _array[0];
-                        setAttributes({ selectedSocialMediaIcon: newsocial.label });
-                        var _newicon = newsocial.label;
-                        var _arrayItem3 = multiPersonContent.map(function (cont) {
-                            return cont;
-                        });
-                        var _repeat = _arrayItem3[0].items.filter(function (d) {
-                            return d.label == _newicon;
-                        });
-                        if (_repeat[0] != undefined) {
-                            _arrayItem3[0].items.filter(function (d) {
-                                return d.label != _newicon;
-                            });
-                            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem3[0].personImgUrl, name: _arrayItem3[0].name, title: _arrayItem3[0].title, desc: _arrayItem3[0].desc, socialIcon: _arrayItem3[0].socialIcon, items: _arrayItem3[0].items }] });
-                        } else {
-                            _arrayItem3[0].items.push({ label: _newicon, link: false, value: "", changeinput: "#" });
-                            _arrayItem3[0].items.filter(function (d) {
-                                return d.label != _newicon;
-                            });
-                            setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem3[0].personImgUrl, name: _arrayItem3[0].name, title: _arrayItem3[0].title, desc: _arrayItem3[0].desc, socialIcon: _arrayItem3[0].socialIcon, items: _arrayItem3[0].items }] });
-                        }
-                    }
-                }
-            };
-            var addMultiPerson = function addMultiPerson(newP) {
-                setAttributes({ multiPersonChecked: newP });
-                if (newP < multiPersonChecked) {
-                    for (var i = multiPersonChecked; i > newP; i--) {
-                        multiPersonContent.splice(i - 1, 1);
-                    }
-                } else {
-                    for (var _i = multiPersonChecked + 1; _i <= newP; _i++) {
-                        multiPersonContent.push({
-                            id: _i,
-                            personImgUrl: "",
-                            name: "John Doe",
-                            title: "Senior Developer",
-                            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
-                            socialIcon: false,
-                            items: [{ label: 'facebook', link: false, value: "#", changeinput: "#" }, { label: 'twitter', link: false, value: "#", changeinput: "#" }, { label: 'instagram', link: false, value: "#", changeinput: "#" }, { label: 'youtube', link: false, value: "#", changeinput: "#" }]
-                        });
-                    }
-                }
-            };
-
-            var onSortEndMulti = function onSortEndMulti(i, _ref4) {
-                var oldIndex = _ref4.oldIndex,
-                    newIndex = _ref4.newIndex;
-
-                var arrayItem = multiPersonContent.map(function (cont) {
-                    return cont;
                 }).filter(function (f) {
-                    return f.id == i;
+                    return f.id == i + 1;
                 });
                 var array = Object(__WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__["c" /* arrayMove */])(arrayItem[0].items, oldIndex, newIndex);
                 arrayItem[0].items = array;
-                multiPersonContent[i - 1] = arrayItem[0];
-                setAttributes(multiPersonContent[i - 1] = arrayItem[0]);
-            };
-            var PersonImage = function PersonImage(media, i) {
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].personImgUrl = "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                    setAttributes({
-                        personImgId: media.id
-                    });
-                } else {
-                    var _array2 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array2[0].personImgUrl = "undefined" === typeof media.sizes.thumbnail ? media.url : media.sizes.thumbnail.url;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array2[0].personImgUrl, name: _array2[0].name, title: _array2[0].title, desc: _array2[0].desc, socialIcon: _array2[0].socialIcon, items: _array2[0].items }] });
-                    setAttributes({
-                        personImgId: media.id
-                    });
-                }
-            };
-            var Name = function Name(value, i) {
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].name = value;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var _array3 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array3[0].name = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array3[0].personImgUrl, name: _array3[0].name, title: _array3[0].title, desc: _array3[0].desc, socialIcon: _array3[0].socialIcon, items: _array3[0].items }] });
-                }
-            };
-            var Title = function Title(value, i) {
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].title = value;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var _array4 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array4[0].title = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array4[0].personImgUrl, name: _array4[0].name, title: _array4[0].title, desc: _array4[0].desc, socialIcon: _array4[0].socialIcon, items: _array4[0].items }] });
-                }
-            };
-            var Desc = function Desc(value, i) {
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].desc = value;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var _array5 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array5[0].desc = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array5[0].personImgUrl, name: _array5[0].name, title: _array5[0].title, desc: _array5[0].desc, socialIcon: _array5[0].socialIcon, items: _array5[0].items }] });
-                }
-            };
-            var SocialIcon = function SocialIcon(value, i) {
-                if (i > 0) {
-                    var array = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == i;
-                    });
-                    array[0].socialIcon = value;
-                    multiPersonContent[i - 1] = array[0];
-                    setAttributes(multiPersonContent[i - 1] = array[0]);
-                } else {
-                    var _array6 = multiPersonContent.map(function (content) {
-                        return content;
-                    });
-                    _array6[0].socialIcon = value;
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _array6[0].personImgUrl, name: _array6[0].name, title: _array6[0].title, desc: _array6[0].desc, socialIcon: _array6[0].socialIcon, items: _array6[0].items }] });
-                }
+                multiPersonContent[i] = arrayItem[0];
+                setAttributes(multiPersonContent[i] = arrayItem[0]);
             };
 
-            var MultiPersonSetting = function MultiPersonSetting() {
-                return multiPersonContent.map(function (content) {
-                    return wp.element.createElement(
-                        PanelBody,
-                        { key: content.id, title: __("Person #" + content.id + " Setting"),
-                            initialOpen: false },
-                        wp.element.createElement(
-                            "p",
-                            null,
-                            __("Image")
-                        ),
-                        content.personImgUrl && wp.element.createElement("img", { src: content.personImgUrl, width: "100%", height: "auto" }),
-                        !content.personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_default_image__["a" /* default */], null),
-                        wp.element.createElement(MediaUpload, {
-                            allowedTypes: ["image"],
-                            onSelect: function onSelect(media) {
-                                return PersonImage(media, content.id);
-                            },
-                            type: "image",
-                            value: personImgId,
-                            render: function render(_ref5) {
-                                var open = _ref5.open;
-                                return wp.element.createElement(
-                                    IconButton,
-                                    {
-                                        label: __("Change Image"),
-                                        icon: "edit",
-                                        onClick: open
-                                    },
-                                    __("Change Image")
-                                );
-                            }
-                        }),
-                        wp.element.createElement(TextControl, {
-                            label: __("Name"),
-                            value: content.name,
-                            onChange: function onChange(value) {
-                                return Name(value, content.id);
-                            }
-                        }),
-                        wp.element.createElement(TextControl, {
-                            label: __("Title"),
-                            value: content.title,
-                            onChange: function onChange(value) {
-                                return Title(value, content.id);
-                            }
-                        }),
-                        wp.element.createElement(TextareaControl, {
-                            label: __("Description"),
-                            value: content.desc,
-                            onChange: function onChange(value) {
-                                return Desc(value, content.id);
-                            }
-                        }),
-                        wp.element.createElement(ToggleControl, {
-                            label: __("Enable Social Icons"),
-                            checked: content.socialIcon,
-                            onChange: function onChange(value) {
-                                return SocialIcon(value, content.id);
-                            }
-                        }),
-                        content.socialIcon && wp.element.createElement(
-                            "div",
-                            null,
-                            wp.element.createElement(
-                                "label",
-                                { className: "premium-person-paragraph" },
-                                __("Social Media")
-                            ),
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default.a, {
-                                icons: iconsList.map(function (i) {
-                                    return i.value;
-                                }),
-                                onChange: function onChange(value) {
-                                    return addSocialIcon(value, content.id);
+            var MultiPersonSetting = function MultiPersonSetting(index) {
+                return wp.element.createElement(
+                    PanelBody,
+                    { key: index, title: __("Person #" + (index + 1) + " Setting"),
+                        initialOpen: false },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("Image")
+                    ),
+                    multiPersonContent[index].personImgUrl && wp.element.createElement("img", { src: multiPersonContent[index].personImgUrl.url, width: "100%", height: "auto" }),
+                    !multiPersonContent[index].personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_default_image__["a" /* default */], null),
+                    wp.element.createElement(MediaUpload, {
+                        allowedTypes: ["image"],
+                        onSelect: function onSelect(value) {
+                            _this2.save({ personImgUrl: value }, index);
+                        },
+                        type: "image",
+                        value: personImgId,
+                        render: function render(_ref4) {
+                            var open = _ref4.open;
+                            return wp.element.createElement(
+                                IconButton,
+                                {
+                                    label: __("Change Image"),
+                                    icon: "edit",
+                                    onClick: open
                                 },
-                                isMulti: false,
-                                appendTo: "body",
-                                closeOnSelect: false,
-                                iconsPerPage: "25",
-                                noSelectedPlaceholder: __("Select Icon")
+                                __("Change Image")
+                            );
+                        }
+                    }),
+                    wp.element.createElement(TextControl, {
+                        label: __("Name"),
+                        value: multiPersonContent[index].name,
+                        onChange: function onChange(value) {
+                            _this2.save({ name: value }, index);
+                        }
+                    }),
+                    wp.element.createElement(TextControl, {
+                        label: __("Title"),
+                        value: multiPersonContent[index].title,
+                        onChange: function onChange(value) {
+                            _this2.save({ title: value }, index);
+                        }
+                    }),
+                    wp.element.createElement(TextareaControl, {
+                        label: __("Description"),
+                        value: multiPersonContent[index].desc,
+                        onChange: function onChange(value) {
+                            _this2.save({ desc: value }, index);
+                        }
+                    }),
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Enable Social Icons"),
+                        checked: multiPersonContent[index].socialIcon,
+                        onChange: function onChange(value) {
+                            _this2.save({ socialIcon: value }, index);
+                        }
+                    }),
+                    multiPersonContent[index].socialIcon && wp.element.createElement(
+                        "div",
+                        null,
+                        wp.element.createElement(
+                            "label",
+                            { className: "premium-person-paragraph" },
+                            __("Social Media")
+                        ),
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default.a, {
+                            icons: iconsList.map(function (i) {
+                                return i.value;
                             }),
-                            wp.element.createElement(SortableList, { items: content.items, personIndex: content.id, onSortEnd: function onSortEnd(o, n) {
-                                    return onSortEndMulti(content.id, o, n);
-                                }, onRemove: function onRemove(value) {
-                                    return _onRemove(value, content.id);
-                                }, saveLink: function saveLink(value, i) {
-                                    return _saveLink(value, i, content.id);
-                                }, changeLinkValue: function changeLinkValue(value, i) {
-                                    return _changeLinkValue(value, i, content.id);
-                                }, addLink: function addLink(value) {
-                                    return _addLink(value, content.id);
-                                }, shouldCancelStart: shouldCancelStart, helperClass: "premium-person__sortableHelper" })
-                        )
-                    );
+                            onChange: function onChange(value) {
+                                return addSocialIcon(value, index);
+                            },
+                            isMulti: false,
+                            appendTo: "body",
+                            closeOnSelect: false,
+                            iconsPerPage: 25,
+                            noSelectedPlaceholder: __("Select Icon")
+                        }),
+                        wp.element.createElement(SortableList, { items: multiPersonContent[index].items, personIndex: index, onSortEnd: function onSortEnd(o, n) {
+                                return onSortEndMulti(index, o, n);
+                            }, onRemove: function onRemove(value) {
+                                return _onRemove(value, index);
+                            }, saveLink: function saveLink(value, i) {
+                                return _saveLink(value, i, index);
+                            }, changeLinkValue: function changeLinkValue(value, i) {
+                                return _changeLinkValue(value, i, index);
+                            }, addLink: function addLink(value) {
+                                return _addLink(value, index);
+                            }, shouldCancelStart: shouldCancelStart, helperClass: "premium-person__sortableHelper" })
+                    )
+                );
+            };
+            var onResetClickNameTypo = function onResetClickNameTypo() {
+                setAttributes({
+                    nameWeight: 500,
+                    nameSize: "20",
+                    nameStyle: "normal",
+                    nameLetter: "0",
+                    nameUpper: false,
+                    nameLine: ""
+                });
+            };
+            var onResetClickTitleTypo = function onResetClickTitleTypo() {
+                setAttributes({
+                    titleWeight: 500,
+                    titleSize: "20",
+                    titleStyle: "normal",
+                    titleLetter: "0",
+                    titleUpper: false,
+                    titleLine: ""
+                });
+            };
+            var onResetClickDescTypo = function onResetClickDescTypo() {
+                setAttributes({
+                    descWeight: "",
+                    descSize: "20",
+                    descStyle: "normal",
+                    descLetter: "0",
+                    descUpper: false,
+                    descLine: ""
+                });
+            };
+            var onResetClickMultiPersonBorder = function onResetClickMultiPersonBorder() {
+                setAttributes({
+                    borderTypeIcon: "none",
+                    borderWidthIcon: "1",
+                    borderColorIcon: "",
+                    borderRadiusIcon: "0"
+                });
+            };
+            var onResetClickPersonBorder = function onResetClickPersonBorder() {
+                setAttributes({
+                    borderTypeIcon: "none",
+                    borderWidthIcon: "1",
+                    borderColorIcon: "",
+                    borderRadiusIcon: "0"
+                });
+            };
+            var onResetClickNameTextShadow = function onResetClickNameTextShadow() {
+                setAttributes({
+                    nameshadowColor: "",
+                    nameshadowBlur: "0",
+                    nameshadowHorizontal: "0",
+                    nameshadowVertical: "0"
+                });
+            };
+            var onResetClickTitleTextShadow = function onResetClickTitleTextShadow() {
+                setAttributes({
+                    titleshadowColor: "",
+                    titleshadowBlur: "0",
+                    titleshadowHorizontal: "0",
+                    titleshadowVertical: "0"
+                });
+            };
+            var onResetClickDescTextShadow = function onResetClickDescTextShadow() {
+                setAttributes({
+                    descshadowColor: "",
+                    descshadowBlur: "0",
+                    descshadowHorizontal: "0",
+                    descshadowVertical: "0"
+                });
+            };
+            var onResetClickImageFilter = function onResetClickImageFilter() {
+                setAttributes({
+                    blur: "0",
+                    bright: "100",
+                    contrast: "100",
+                    saturation: "100",
+                    hue: "0"
+                });
+            };
+            var onResetClickMultiPersonMargin = function onResetClickMultiPersonMargin() {
+                setAttributes({
+                    iconMarginL: "1",
+                    iconMarginR: "1"
+                });
+            };
+            var onResetClickPersonMargin = function onResetClickPersonMargin() {
+                setAttributes({
+                    iconMarginL: "1",
+                    iconMarginR: "1"
                 });
             };
 
@@ -48559,11 +49147,6 @@ var PremiumPerson = function (_Component) {
                             return addMultiPerson(value);
                         }
                     }),
-                    wp.element.createElement(
-                        "p",
-                        null,
-                        __("Enable this option if you need to add multiple persons")
-                    ),
                     multiPersonChecked > 1 ? wp.element.createElement(SelectControl, {
                         label: __("Persons/Row"),
                         value: rowPerson,
@@ -48589,106 +49172,9 @@ var PremiumPerson = function (_Component) {
                         }
                     })
                 ),
-                multiPersonChecked > 1 ? wp.element.createElement(
-                    Fragment,
-                    null,
-                    MultiPersonSetting()
-                ) : wp.element.createElement(
-                    PanelBody,
-                    {
-                        title: __("Single Person Settings"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    wp.element.createElement(
-                        "p",
-                        null,
-                        __("Image")
-                    ),
-                    multiPersonContent[0].personImgUrl && wp.element.createElement("img", { src: multiPersonContent[0].personImgUrl, width: "100%", height: "auto" }),
-                    !multiPersonContent[0].personImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_default_image__["a" /* default */], null),
-                    wp.element.createElement(MediaUpload, {
-                        allowedTypes: ["image"],
-                        onSelect: function onSelect(media) {
-                            return PersonImage(media);
-                        },
-                        type: "image",
-                        value: personImgId,
-                        render: function render(_ref6) {
-                            var open = _ref6.open;
-                            return wp.element.createElement(
-                                IconButton,
-                                {
-                                    label: __("Change Image"),
-                                    icon: "edit",
-                                    onClick: open
-                                },
-                                __("Change Image")
-                            );
-                        }
-                    }),
-                    wp.element.createElement(TextControl, {
-                        label: __("Name"),
-                        value: multiPersonContent[0].name,
-                        onChange: function onChange(value) {
-                            return Name(value);
-                        }
-                    }),
-                    wp.element.createElement(TextControl, {
-                        label: __("Title"),
-                        value: multiPersonContent[0].title,
-                        onChange: function onChange(value) {
-                            return Title(value);
-                        }
-                    }),
-                    wp.element.createElement(TextareaControl, {
-                        label: __("Description"),
-                        value: multiPersonContent[0].desc,
-                        onChange: function onChange(value) {
-                            return Desc(value);
-                        }
-                    }),
-                    wp.element.createElement(ToggleControl, {
-                        label: __("Enable Social Icons"),
-                        checked: multiPersonContent[0].socialIcon,
-                        onChange: function onChange(value) {
-                            return SocialIcon(value);
-                        }
-                    }),
-                    multiPersonContent[0].socialIcon && wp.element.createElement(
-                        "div",
-                        null,
-                        wp.element.createElement(
-                            "label",
-                            { className: "premium-person-paragraph" },
-                            __("Social Media")
-                        ),
-                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default.a, {
-                            icons: iconsList.map(function (i) {
-                                return i.value;
-                            }),
-                            onChange: function onChange(value) {
-                                return addSocialIcon(value);
-                            },
-                            isMulti: false,
-                            appendTo: "body",
-                            closeOnSelect: false,
-                            iconsPerPage: "25",
-                            noSelectedPlaceholder: __("Select Icon")
-                        }),
-                        wp.element.createElement(SortableList, { items: multiPersonContent[0].items, onSortEnd: function onSortEnd(o, n) {
-                                return onSortEndSingle(o, n);
-                            }, onRemove: function onRemove(value) {
-                                return _onRemove(value);
-                            }, saveLink: function saveLink(value, i) {
-                                return _saveLink(value, i);
-                            }, changeLinkValue: function changeLinkValue(value, i) {
-                                return _changeLinkValue(value, i);
-                            }, addLink: function addLink(value) {
-                                return _addLink(value);
-                            }, shouldCancelStart: shouldCancelStart, helperClass: "premium-person__sortableHelper" })
-                    )
-                ),
+                __WEBPACK_IMPORTED_MODULE_10_lodash_times___default()(multiPersonChecked, function (n) {
+                    return MultiPersonSetting(n);
+                }),
                 wp.element.createElement(
                     PanelBody,
                     {
@@ -48716,7 +49202,8 @@ var PremiumPerson = function (_Component) {
                         },
                         onChangeHue: function onChangeHue(newSize) {
                             return setAttributes({ hue: newSize, change: true });
-                        }
+                        },
+                        onResetClick: onResetClickImageFilter
                     })
                 ),
                 wp.element.createElement(
@@ -48726,7 +49213,7 @@ var PremiumPerson = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], (_wp$element$createEle = {
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
                         components: ["size", "weight", "line", "style", "upper", "spacing"],
                         size: nameSize,
                         weight: nameWeight,
@@ -48742,16 +49229,18 @@ var PremiumPerson = function (_Component) {
                         },
                         onChangeLine: function onChangeLine(newValue) {
                             return setAttributes({ nameLine: newValue });
-                        }
-                    }, _defineProperty(_wp$element$createEle, "onChangeSize", function onChangeSize(newSize) {
-                        return setAttributes({ nameSize: newSize });
-                    }), _defineProperty(_wp$element$createEle, "onChangeStyle", function onChangeStyle(newStyle) {
-                        return setAttributes({ nameStyle: newStyle });
-                    }), _defineProperty(_wp$element$createEle, "onChangeSpacing", function onChangeSpacing(newValue) {
-                        return setAttributes({ nameLetter: newValue });
-                    }), _defineProperty(_wp$element$createEle, "onChangeUpper", function onChangeUpper(check) {
-                        return setAttributes({ nameUpper: check });
-                    }), _wp$element$createEle)),
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return setAttributes({ nameStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return setAttributes({ nameLetter: newValue });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return setAttributes({ nameUpper: check });
+                        },
+                        onResetClick: onResetClickNameTypo
+                    }),
                     wp.element.createElement(
                         "div",
                         { className: "premium-control-toggle" },
@@ -48764,9 +49253,9 @@ var PremiumPerson = function (_Component) {
                             className: "premium-control-toggle-person",
                             contentClassName: "premium-control-toggle-content",
                             position: "bottom right",
-                            renderToggle: function renderToggle(_ref7) {
-                                var isOpen = _ref7.isOpen,
-                                    onToggle = _ref7.onToggle;
+                            renderToggle: function renderToggle(_ref5) {
+                                var isOpen = _ref5.isOpen,
+                                    onToggle = _ref5.onToggle;
                                 return wp.element.createElement(
                                     Button,
                                     { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
@@ -48811,7 +49300,8 @@ var PremiumPerson = function (_Component) {
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
                             return setAttributes({ nameshadowVertical: newValue });
-                        }
+                        },
+                        onResetClick: onResetClickNameTextShadow
                     })
                 ),
                 wp.element.createElement(
@@ -48821,7 +49311,7 @@ var PremiumPerson = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], (_wp$element$createEle2 = {
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], (_wp$element$createEle = {
                         components: ["size", "weight", "line", "style", "upper", "spacing"],
                         size: titleSize,
                         weight: titleWeight,
@@ -48838,15 +49328,15 @@ var PremiumPerson = function (_Component) {
                         onChangeLine: function onChangeLine(newValue) {
                             return setAttributes({ titleLine: newValue });
                         }
-                    }, _defineProperty(_wp$element$createEle2, "onChangeSize", function onChangeSize(newSize) {
+                    }, _defineProperty(_wp$element$createEle, "onChangeSize", function onChangeSize(newSize) {
                         return setAttributes({ titleSize: newSize });
-                    }), _defineProperty(_wp$element$createEle2, "onChangeStyle", function onChangeStyle(newStyle) {
+                    }), _defineProperty(_wp$element$createEle, "onChangeStyle", function onChangeStyle(newStyle) {
                         return setAttributes({ titleStyle: newStyle });
-                    }), _defineProperty(_wp$element$createEle2, "onChangeSpacing", function onChangeSpacing(newValue) {
+                    }), _defineProperty(_wp$element$createEle, "onChangeSpacing", function onChangeSpacing(newValue) {
                         return setAttributes({ titleLetter: newValue });
-                    }), _defineProperty(_wp$element$createEle2, "onChangeUpper", function onChangeUpper(check) {
+                    }), _defineProperty(_wp$element$createEle, "onChangeUpper", function onChangeUpper(check) {
                         return setAttributes({ titleUpper: check });
-                    }), _wp$element$createEle2)),
+                    }), _defineProperty(_wp$element$createEle, "onResetClick", onResetClickTitleTypo), _wp$element$createEle)),
                     wp.element.createElement(
                         "div",
                         { className: "premium-control-toggle" },
@@ -48859,9 +49349,9 @@ var PremiumPerson = function (_Component) {
                             className: "premium-control-toggle-person",
                             contentClassName: "premium-control-toggle-content",
                             position: "bottom right",
-                            renderToggle: function renderToggle(_ref8) {
-                                var isOpen = _ref8.isOpen,
-                                    onToggle = _ref8.onToggle;
+                            renderToggle: function renderToggle(_ref6) {
+                                var isOpen = _ref6.isOpen,
+                                    onToggle = _ref6.onToggle;
                                 return wp.element.createElement(
                                     Button,
                                     { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
@@ -48906,7 +49396,8 @@ var PremiumPerson = function (_Component) {
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
                             return setAttributes({ titleshadowVertical: newValue });
-                        }
+                        },
+                        onResetClick: onResetClickTitleTextShadow
                     })
                 ),
                 wp.element.createElement(
@@ -48916,7 +49407,7 @@ var PremiumPerson = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], (_wp$element$createEle3 = {
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], (_wp$element$createEle2 = {
                         components: ["size", "weight", "line", "style", "upper", "spacing"],
                         size: descSize,
                         weight: descWeight,
@@ -48933,15 +49424,15 @@ var PremiumPerson = function (_Component) {
                         onChangeLine: function onChangeLine(newValue) {
                             return setAttributes({ descLine: newValue });
                         }
-                    }, _defineProperty(_wp$element$createEle3, "onChangeSize", function onChangeSize(newSize) {
+                    }, _defineProperty(_wp$element$createEle2, "onChangeSize", function onChangeSize(newSize) {
                         return setAttributes({ descSize: newSize });
-                    }), _defineProperty(_wp$element$createEle3, "onChangeStyle", function onChangeStyle(newStyle) {
+                    }), _defineProperty(_wp$element$createEle2, "onChangeStyle", function onChangeStyle(newStyle) {
                         return setAttributes({ descStyle: newStyle });
-                    }), _defineProperty(_wp$element$createEle3, "onChangeSpacing", function onChangeSpacing(newValue) {
+                    }), _defineProperty(_wp$element$createEle2, "onChangeSpacing", function onChangeSpacing(newValue) {
                         return setAttributes({ descLetter: newValue });
-                    }), _defineProperty(_wp$element$createEle3, "onChangeUpper", function onChangeUpper(check) {
+                    }), _defineProperty(_wp$element$createEle2, "onChangeUpper", function onChangeUpper(check) {
                         return setAttributes({ descUpper: check });
-                    }), _wp$element$createEle3)),
+                    }), _defineProperty(_wp$element$createEle2, "onResetClick", onResetClickDescTypo), _wp$element$createEle2)),
                     wp.element.createElement(
                         "div",
                         { className: "premium-control-toggle" },
@@ -48954,9 +49445,9 @@ var PremiumPerson = function (_Component) {
                             className: "premium-control-toggle-person",
                             contentClassName: "premium-control-toggle-content",
                             position: "bottom right",
-                            renderToggle: function renderToggle(_ref9) {
-                                var isOpen = _ref9.isOpen,
-                                    onToggle = _ref9.onToggle;
+                            renderToggle: function renderToggle(_ref7) {
+                                var isOpen = _ref7.isOpen,
+                                    onToggle = _ref7.onToggle;
                                 return wp.element.createElement(
                                     Button,
                                     { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
@@ -49001,12 +49492,185 @@ var PremiumPerson = function (_Component) {
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
                             return setAttributes({ descshadowVertical: newValue });
-                        }
+                        },
+                        onResetClick: onResetClickDescTextShadow
                     })
                 ),
                 multiPersonChecked > 1 ? multiPersonContent.map(function (i) {
                     return i.socialIcon;
                 }) && wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Social Icon"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(RangeControl, {
+                        label: __("Size "),
+                        value: socialIconSize,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ socialIconSize: newValue });
+                        }
+                    }),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-control-toggle" },
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Colors")
+                        ),
+                        wp.element.createElement(Dropdown, {
+                            className: "premium-control-toggle-person",
+                            contentClassName: "premium-control-toggle-content",
+                            position: "bottom right",
+                            renderToggle: function renderToggle(_ref8) {
+                                var isOpen = _ref8.isOpen,
+                                    onToggle = _ref8.onToggle;
+                                return wp.element.createElement(
+                                    Button,
+                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+                                    wp.element.createElement("i", { className: "dashicons dashicons-edit" })
+                                );
+                            },
+                            renderContent: function renderContent() {
+                                return wp.element.createElement(
+                                    Fragment,
+                                    null,
+                                    wp.element.createElement(
+                                        "p",
+                                        null,
+                                        __("Social Icon Color")
+                                    ),
+                                    wp.element.createElement(ColorPalette, {
+                                        value: socialIconColor,
+                                        onChange: function onChange(newValue) {
+                                            return setAttributes({
+                                                socialIconColor: newValue
+                                            });
+                                        },
+                                        allowReset: true
+                                    }),
+                                    wp.element.createElement(
+                                        "p",
+                                        null,
+                                        __("Social Icon Hover Color")
+                                    ),
+                                    wp.element.createElement(ColorPalette, {
+                                        value: socialIconHoverColor,
+                                        onChange: function onChange(newValue) {
+                                            return setAttributes({
+                                                socialIconHoverColor: newValue
+                                            });
+                                        },
+                                        allowReset: true
+                                    })
+                                );
+                            }
+                        })
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-control-toggle" },
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Background Color")
+                        ),
+                        wp.element.createElement(Dropdown, {
+                            className: "premium-control-toggle-person",
+                            contentClassName: "premium-control-toggle-content",
+                            position: "bottom right",
+                            renderToggle: function renderToggle(_ref9) {
+                                var isOpen = _ref9.isOpen,
+                                    onToggle = _ref9.onToggle;
+                                return wp.element.createElement(
+                                    Button,
+                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+                                    wp.element.createElement("i", { className: "dashicons dashicons-edit" })
+                                );
+                            },
+                            renderContent: function renderContent() {
+                                return wp.element.createElement(
+                                    Fragment,
+                                    null,
+                                    wp.element.createElement(
+                                        "p",
+                                        null,
+                                        __("Social Icon Background Color")
+                                    ),
+                                    wp.element.createElement(ColorPalette, {
+                                        value: socialIconBackgroundColor,
+                                        onChange: function onChange(newValue) {
+                                            return setAttributes({
+                                                socialIconBackgroundColor: newValue
+                                            });
+                                        },
+                                        allowReset: true
+                                    })
+                                );
+                            }
+                        })
+                    ),
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Brands Default Colors"),
+                        checked: defaultIconColor,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ defaultIconColor: newCheck });
+                        }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
+                        borderType: borderTypeIcon,
+                        borderWidth: borderWidthIcon,
+                        borderColor: borderColorIcon,
+                        borderRadius: borderRadiusIcon,
+                        onChangeType: function onChangeType(newType) {
+                            return setAttributes({ borderTypeIcon: newType });
+                        },
+                        onChangeWidth: function onChangeWidth(newWidth) {
+                            return setAttributes({ borderWidthIcon: newWidth });
+                        },
+                        onChangeColor: function onChangeColor(colorValue) {
+                            return setAttributes({ borderColorIcon: colorValue.hex });
+                        },
+                        onChangeRadius: function onChangeRadius(newrRadius) {
+                            return setAttributes({ borderRadiusIcon: newrRadius });
+                        },
+                        onResetClick: onResetClickMultiPersonBorder
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__["a" /* default */], {
+                        onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                            return setAttributes({ socialIconPaddingU: newValue });
+                        }
+                    }),
+                    wp.element.createElement(RangeControl, {
+                        label: __("Padding"),
+                        value: socialIconPadding,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ socialIconPadding: newValue });
+                        }
+                    }),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-control-toggle" },
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_margin__["a" /* default */], {
+                            directions: ["left", "right"],
+                            marginLeft: iconMarginL,
+                            marginRight: iconMarginR,
+                            onChangeMarLeft: function onChangeMarLeft(value) {
+                                return setAttributes({
+                                    iconMarginL: value || 1
+                                });
+                            },
+                            onChangeMarRight: function onChangeMarRight(value) {
+                                return setAttributes({
+                                    iconMarginR: value || 1
+                                });
+                            },
+                            onResetClick: onResetClickMultiPersonMargin
+                        })
+                    )
+                ) : multiPersonContent[0].socialIcon && wp.element.createElement(
                     PanelBody,
                     {
                         title: __("Social Icon"),
@@ -49143,7 +49807,8 @@ var PremiumPerson = function (_Component) {
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return setAttributes({ borderRadiusIcon: newrRadius });
-                        }
+                        },
+                        onResetClick: onResetClickPersonBorder
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__["a" /* default */], {
                         onChangeSizeUnit: function onChangeSizeUnit(newValue) {
@@ -49173,30 +49838,25 @@ var PremiumPerson = function (_Component) {
                                 return setAttributes({
                                     iconMarginR: value || 1
                                 });
-                            }
+                            },
+                            onResetClick: onResetClickPersonMargin
                         })
                     )
-                ) : multiPersonContent[0].socialIcon && wp.element.createElement(
+                ),
+                wp.element.createElement(
                     PanelBody,
                     {
-                        title: __("Social Icon"),
+                        title: __("Content"),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    wp.element.createElement(RangeControl, {
-                        label: __("Size "),
-                        value: socialIconSize,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ socialIconSize: newValue });
-                        }
-                    }),
                     wp.element.createElement(
                         "div",
                         { className: "premium-control-toggle" },
                         wp.element.createElement(
                             "strong",
                             null,
-                            __("Colors")
+                            __("Color")
                         ),
                         wp.element.createElement(Dropdown, {
                             className: "premium-control-toggle-person",
@@ -49218,27 +49878,13 @@ var PremiumPerson = function (_Component) {
                                     wp.element.createElement(
                                         "p",
                                         null,
-                                        __("Social Icon Color")
+                                        __("Content Color")
                                     ),
                                     wp.element.createElement(ColorPalette, {
-                                        value: socialIconColor,
+                                        value: contentColor,
                                         onChange: function onChange(newValue) {
                                             return setAttributes({
-                                                socialIconColor: newValue
-                                            });
-                                        },
-                                        allowReset: true
-                                    }),
-                                    wp.element.createElement(
-                                        "p",
-                                        null,
-                                        __("Social Icon Hover Color")
-                                    ),
-                                    wp.element.createElement(ColorPalette, {
-                                        value: socialIconHoverColor,
-                                        onChange: function onChange(newValue) {
-                                            return setAttributes({
-                                                socialIconHoverColor: newValue
+                                                contentColor: newValue
                                             });
                                         },
                                         allowReset: true
@@ -49247,105 +49893,14 @@ var PremiumPerson = function (_Component) {
                             }
                         })
                     ),
-                    wp.element.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        wp.element.createElement(
-                            "strong",
-                            null,
-                            __("Background Color")
-                        ),
-                        wp.element.createElement(Dropdown, {
-                            className: "premium-control-toggle-person",
-                            contentClassName: "premium-control-toggle-content",
-                            position: "bottom right",
-                            renderToggle: function renderToggle(_ref13) {
-                                var isOpen = _ref13.isOpen,
-                                    onToggle = _ref13.onToggle;
-                                return wp.element.createElement(
-                                    Button,
-                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                                    wp.element.createElement("i", { className: "dashicons dashicons-edit" })
-                                );
-                            },
-                            renderContent: function renderContent() {
-                                return wp.element.createElement(
-                                    Fragment,
-                                    null,
-                                    wp.element.createElement(
-                                        "p",
-                                        null,
-                                        __("Social Icon Background Color")
-                                    ),
-                                    wp.element.createElement(ColorPalette, {
-                                        value: socialIconBackgroundColor,
-                                        onChange: function onChange(newValue) {
-                                            return setAttributes({
-                                                socialIconBackgroundColor: newValue
-                                            });
-                                        },
-                                        allowReset: true
-                                    })
-                                );
-                            }
-                        })
-                    ),
-                    wp.element.createElement(ToggleControl, {
-                        label: __("Brands Default Colors"),
-                        checked: defaultIconColor,
-                        onChange: function onChange(newCheck) {
-                            return setAttributes({ defaultIconColor: newCheck });
-                        }
-                    }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
-                        borderType: borderTypeIcon,
-                        borderWidth: borderWidthIcon,
-                        borderColor: borderColorIcon,
-                        borderRadius: borderRadiusIcon,
-                        onChangeType: function onChangeType(newType) {
-                            return setAttributes({ borderTypeIcon: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(newWidth) {
-                            return setAttributes({ borderWidthIcon: newWidth });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ borderColorIcon: colorValue.hex });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ borderRadiusIcon: newrRadius });
-                        }
-                    }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__["a" /* default */], {
-                        onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                            return setAttributes({ socialIconPaddingU: newValue });
-                        }
-                    }),
-                    wp.element.createElement(RangeControl, {
-                        label: __("Padding"),
-                        value: socialIconPadding,
+                    effectPersonStyle === 'effect1' ? wp.element.createElement(RangeControl, {
+                        label: __("Bottom Offset"),
+                        value: bottomInfo,
+                        min: 15,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ socialIconPadding: newValue });
+                            return setAttributes({ bottomInfo: newValue });
                         }
-                    }),
-                    wp.element.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_margin__["a" /* default */], {
-                            directions: ["left", "right"],
-                            marginLeft: iconMarginL,
-                            marginRight: iconMarginR,
-                            onChangeMarLeft: function onChangeMarLeft(value) {
-                                return setAttributes({
-                                    iconMarginL: value || 1
-                                });
-                            },
-                            onChangeMarRight: function onChangeMarRight(value) {
-                                return setAttributes({
-                                    iconMarginR: value || 1
-                                });
-                            }
-                        })
-                    )
+                    }) : ""
                 )
             ), wp.element.createElement(
                 "div",
@@ -49370,7 +49925,7 @@ var PremiumPerson = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumPerson);
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49394,14 +49949,14 @@ function _extends() {
 }
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _slicedToArray;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithHoles__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArrayLimit__ = __webpack_require__(235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableRest__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithHoles__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArrayLimit__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableRest__ = __webpack_require__(237);
 
 
 
@@ -49410,7 +49965,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49420,7 +49975,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49452,7 +50007,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49462,7 +50017,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49489,7 +50044,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49501,7 +50056,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49523,12 +50078,12 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _possibleConstructorReturn;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_esm_typeof__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_esm_typeof__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assertThisInitialized__ = __webpack_require__(79);
 
 
@@ -49541,7 +50096,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49575,7 +50130,7 @@ function _typeof(obj) {
 }
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49588,12 +50143,12 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _inherits;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setPrototypeOf__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setPrototypeOf__ = __webpack_require__(245);
 
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
@@ -49611,7 +50166,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49626,7 +50181,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49679,14 +50234,14 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _toConsumableArray;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithoutHoles__ = __webpack_require__(247);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArray__ = __webpack_require__(248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableSpread__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithoutHoles__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArray__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableSpread__ = __webpack_require__(250);
 
 
 
@@ -49695,7 +50250,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49711,7 +50266,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49721,7 +50276,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49731,13 +50286,189 @@ function _nonIterableSpread() {
 }
 
 /***/ }),
-/* 250 */
+/* 251 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var identity = __webpack_require__(70);
+
+/**
+ * Casts `value` to `identity` if it's not a function.
+ *
+ * @private
+ * @param {*} value The value to inspect.
+ * @returns {Function} Returns cast function.
+ */
+function castFunction(value) {
+  return typeof value == 'function' ? value : identity;
+}
+
+module.exports = castFunction;
+
+/***/ }),
+/* 252 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var toFinite = __webpack_require__(253);
+
+/**
+ * Converts `value` to an integer.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted integer.
+ * @example
+ *
+ * _.toInteger(3.2);
+ * // => 3
+ *
+ * _.toInteger(Number.MIN_VALUE);
+ * // => 0
+ *
+ * _.toInteger(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toInteger('3.2');
+ * // => 3
+ */
+function toInteger(value) {
+  var result = toFinite(value),
+      remainder = result % 1;
+
+  return result === result ? remainder ? result - remainder : result : 0;
+}
+
+module.exports = toInteger;
+
+/***/ }),
+/* 253 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var toNumber = __webpack_require__(254);
+
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0,
+    MAX_INTEGER = 1.7976931348623157e+308;
+
+/**
+ * Converts `value` to a finite number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.12.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted number.
+ * @example
+ *
+ * _.toFinite(3.2);
+ * // => 3.2
+ *
+ * _.toFinite(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toFinite(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toFinite('3.2');
+ * // => 3.2
+ */
+function toFinite(value) {
+  if (!value) {
+    return value === 0 ? value : 0;
+  }
+  value = toNumber(value);
+  if (value === INFINITY || value === -INFINITY) {
+    var sign = value < 0 ? -1 : 1;
+    return sign * MAX_INTEGER;
+  }
+  return value === value ? value : 0;
+}
+
+module.exports = toFinite;
+
+/***/ }),
+/* 254 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(27),
+    isSymbol = __webpack_require__(30);
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject(other) ? other + '' : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
+}
+
+module.exports = toNumber;
+
+/***/ }),
+/* 255 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(251);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(257);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
 
 
@@ -49988,7 +50719,7 @@ registerBlockType("premium/icon-list", {
 });
 
 /***/ }),
-/* 251 */
+/* 256 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50157,13 +50888,13 @@ function save(props) {
 }
 
 /***/ }),
-/* 252 */
+/* 257 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_times__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_times__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_times___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_times__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
@@ -51104,238 +51835,6 @@ var edit = function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["a"] = (edit);
-
-/***/ }),
-/* 253 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseTimes = __webpack_require__(61),
-    castFunction = __webpack_require__(254),
-    toInteger = __webpack_require__(255);
-
-/** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER = 9007199254740991;
-
-/** Used as references for the maximum length and index of an array. */
-var MAX_ARRAY_LENGTH = 4294967295;
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeMin = Math.min;
-
-/**
- * Invokes the iteratee `n` times, returning an array of the results of
- * each invocation. The iteratee is invoked with one argument; (index).
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Util
- * @param {number} n The number of times to invoke `iteratee`.
- * @param {Function} [iteratee=_.identity] The function invoked per iteration.
- * @returns {Array} Returns the array of results.
- * @example
- *
- * _.times(3, String);
- * // => ['0', '1', '2']
- *
- *  _.times(4, _.constant(0));
- * // => [0, 0, 0, 0]
- */
-function times(n, iteratee) {
-  n = toInteger(n);
-  if (n < 1 || n > MAX_SAFE_INTEGER) {
-    return [];
-  }
-  var index = MAX_ARRAY_LENGTH,
-      length = nativeMin(n, MAX_ARRAY_LENGTH);
-
-  iteratee = castFunction(iteratee);
-  n -= MAX_ARRAY_LENGTH;
-
-  var result = baseTimes(length, iteratee);
-  while (++index < n) {
-    iteratee(index);
-  }
-  return result;
-}
-
-module.exports = times;
-
-/***/ }),
-/* 254 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var identity = __webpack_require__(70);
-
-/**
- * Casts `value` to `identity` if it's not a function.
- *
- * @private
- * @param {*} value The value to inspect.
- * @returns {Function} Returns cast function.
- */
-function castFunction(value) {
-  return typeof value == 'function' ? value : identity;
-}
-
-module.exports = castFunction;
-
-/***/ }),
-/* 255 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toFinite = __webpack_require__(256);
-
-/**
- * Converts `value` to an integer.
- *
- * **Note:** This method is loosely based on
- * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {number} Returns the converted integer.
- * @example
- *
- * _.toInteger(3.2);
- * // => 3
- *
- * _.toInteger(Number.MIN_VALUE);
- * // => 0
- *
- * _.toInteger(Infinity);
- * // => 1.7976931348623157e+308
- *
- * _.toInteger('3.2');
- * // => 3
- */
-function toInteger(value) {
-  var result = toFinite(value),
-      remainder = result % 1;
-
-  return result === result ? remainder ? result - remainder : result : 0;
-}
-
-module.exports = toInteger;
-
-/***/ }),
-/* 256 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toNumber = __webpack_require__(257);
-
-/** Used as references for various `Number` constants. */
-var INFINITY = 1 / 0,
-    MAX_INTEGER = 1.7976931348623157e+308;
-
-/**
- * Converts `value` to a finite number.
- *
- * @static
- * @memberOf _
- * @since 4.12.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {number} Returns the converted number.
- * @example
- *
- * _.toFinite(3.2);
- * // => 3.2
- *
- * _.toFinite(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toFinite(Infinity);
- * // => 1.7976931348623157e+308
- *
- * _.toFinite('3.2');
- * // => 3.2
- */
-function toFinite(value) {
-  if (!value) {
-    return value === 0 ? value : 0;
-  }
-  value = toNumber(value);
-  if (value === INFINITY || value === -INFINITY) {
-    var sign = value < 0 ? -1 : 1;
-    return sign * MAX_INTEGER;
-  }
-  return value === value ? value : 0;
-}
-
-module.exports = toFinite;
-
-/***/ }),
-/* 257 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(27),
-    isSymbol = __webpack_require__(30);
-
-/** Used as references for various `Number` constants. */
-var NAN = 0 / 0;
-
-/** Used to match leading and trailing whitespace. */
-var reTrim = /^\s+|\s+$/g;
-
-/** Used to detect bad signed hexadecimal string values. */
-var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-
-/** Used to detect binary string values. */
-var reIsBinary = /^0b[01]+$/i;
-
-/** Used to detect octal string values. */
-var reIsOctal = /^0o[0-7]+$/i;
-
-/** Built-in method references without a dependency on `root`. */
-var freeParseInt = parseInt;
-
-/**
- * Converts `value` to a number.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to process.
- * @returns {number} Returns the number.
- * @example
- *
- * _.toNumber(3.2);
- * // => 3.2
- *
- * _.toNumber(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toNumber(Infinity);
- * // => Infinity
- *
- * _.toNumber('3.2');
- * // => 3.2
- */
-function toNumber(value) {
-  if (typeof value == 'number') {
-    return value;
-  }
-  if (isSymbol(value)) {
-    return NAN;
-  }
-  if (isObject(value)) {
-    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
-    value = isObject(other) ? other + '' : other;
-  }
-  if (typeof value != 'string') {
-    return value === 0 ? value : +value;
-  }
-  value = value.replace(reTrim, '');
-  var isBinary = reIsBinary.test(value);
-  return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
-}
-
-module.exports = toNumber;
 
 /***/ }),
 /* 258 */

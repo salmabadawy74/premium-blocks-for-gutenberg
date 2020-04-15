@@ -100,6 +100,44 @@ const edit = props => {
       label: __("Rounded")
     }
   ];
+  const onResetClickAuthorTypo = () => {
+    setAttributes({ 
+      authorWeight: 500, 
+      authorSize: "",
+      authorStyle: "normal",
+      authorLetter: "0",
+      authorUpper: false
+    });
+  }
+  const onResetClickBodyTypo = () => {
+    setAttributes({ 
+      bodySize: "",
+      bodyLine:""
+    });
+  }
+  const onResetClickAuthorComTypo = () => {
+    setAttributes({  
+      authorComSize: "",
+    });
+  }
+  const onResetClickBoxShadow = () => {
+    setAttributes({ 
+      shadowColor: "", 
+      shadowBlur:"0", 
+      shadowHorizontal:"0", 
+      shadowVertical:"0", 
+      shadowPosition:""
+    });
+  }
+  const onResetClickPadding =() => {
+    setAttributes({ 
+      paddingTop: "0", 
+      paddingRight:"0", 
+      paddingBottom:"0", 
+      paddingLeft:"0", 
+      paddingUnit:"px"
+    });
+  }
 
   const mainClasses = classnames(className, "premium-testimonial");
 
@@ -215,6 +253,7 @@ const edit = props => {
               setAttributes({ authorLetter: newValue })
             }
             onChangeUpper={check => setAttributes({ authorUpper: check })}
+            onResetClick={onResetClickAuthorTypo}
           />
           <p>{__("Color")}</p>
           <ColorPalette
@@ -238,6 +277,7 @@ const edit = props => {
             line={bodyLine}
             onChangeSize={newSize => setAttributes({ bodySize: newSize })}
             onChangeLine={newWeight => setAttributes({ bodyLine: newWeight })}
+            onResetClick={onResetClickBodyTypo}
           />
           <p>{__("Color")}</p>
           <ColorPalette
@@ -278,6 +318,7 @@ const edit = props => {
             components={["size"]}
             size={authorComSize}
             onChangeSize={newSize => setAttributes({ authorComSize: newSize })}
+            onResetClick={onResetClickAuthorComTypo}
           />
           <div className="premium-control-toggle">
             <strong>{__("Colors")}</strong>
@@ -445,6 +486,7 @@ const edit = props => {
                 shadowPosition: newValue
               })
             }
+            onResetClick={onResetClickBoxShadow}
           />
           <PremiumPadding
             paddingTop={paddingTop}
@@ -475,6 +517,7 @@ const edit = props => {
             onChangePadSizeUnit={newvalue =>
               setAttributes({ paddingUnit: newvalue })
             }
+            onResetClick={onResetClickPadding}
           />
         </PanelBody>
       </InspectorControls>

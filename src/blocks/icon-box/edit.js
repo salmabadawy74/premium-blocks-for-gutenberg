@@ -286,6 +286,102 @@ const edit = props => {
 
     addFontToHead(fontFamily);
   };
+  const onResetClickTitle = () => {
+    setAttributes({ 
+      titleWeight: 500,
+      titleSize: "20",
+      titleStyle: "normal",
+      titleLetter: "0",
+      titleUpper: false,
+      titleLine:""
+    });
+  }
+  const onResetClickDescTypo = () => {
+    setAttributes({ 
+      descWeight: 500, 
+      descSize: "20",
+      descLine: "0",
+    });
+  }
+  const onResetClickbtnTypo = () => {
+    setAttributes({ 
+      btnWeight: 500, 
+      btnSize: "20",
+      btnStyle: "normal",
+      btnLetter: "0",
+      btnUpper: false
+    });
+  }
+  const onResetClickContainerPadding = () => {
+    setAttributes({ 
+      paddingT: "0", 
+      paddingR: "0",
+      paddingB: "0",
+      paddingL: "0",
+      paddingU:"px"
+    });
+  }
+  const onResetClickTitleMargin = () => {
+    setAttributes({ 
+      titleMarginT: "0", 
+      titleMarginB: "0",
+    });
+  }
+  const onResetClickDescMargin = () => {
+    setAttributes({ 
+      descMarginT: "0", 
+      descMarginB: "0",
+    });
+  }
+  const onResetClickbtnMargin = () => {
+    setAttributes({ 
+      btnMarginT: "0", 
+      btnMarginB: "0",
+    });
+  }
+  const onResetClickContainerMargin = () => {
+    setAttributes({ 
+      marginT: "0", 
+      marginR: "0",
+      marginB: "0",
+      marginL: "0",
+    });
+  }
+  const onResetClickTitleTextShadow= () => {
+    setAttributes({ 
+      titleShadowColor: "", 
+      titleShadowBlur:"0", 
+      titleShadowHorizontal:"0", 
+      titleShadowVertical:"0",
+    });
+  }
+  const onResetClickbtnBoxShadow = () => {
+    setAttributes({ 
+      btnShadowColor: "", 
+      btnShadowBlur:"0", 
+      btnShadowHorizontal:"0", 
+      btnShadowVertical:"0", 
+      btnShadowPosition:""
+    });
+  }
+  const onResetClickContainerBoxShadow = () => {
+    setAttributes({ 
+      shadowColor: "", 
+      shadowBlur:"0", 
+      shadowHorizontal:"0", 
+      shadowVertical:"0", 
+      shadowPosition:""
+    });
+  }
+  const onResetClickHoverBoxShadow = () => {
+    setAttributes({ 
+      hoverShadowColor: "", 
+      hoverShadowBlur:"0", 
+      hoverShadowHorizontal:"0", 
+      hoverShadowVertical:"0", 
+      hoverShadowPosition:""
+    });
+  }
 
   const mainClasses = classnames(className, "premium-icon-box");
 
@@ -496,6 +592,7 @@ const edit = props => {
               }
               onChangeLine={newValue => setAttributes({ titleLine: newValue })}
               onChangeUpper={check => setAttributes({ titleUpper: check })}
+              onResetClick={onResetClickTitle}
             />
             <Fragment>
               <p>{__("Text Color")}</p>
@@ -528,6 +625,7 @@ const edit = props => {
               onChangeVertical={newValue =>
                 setAttributes({ titleShadowVertical: newValue || 0 })
               }
+              onResetClick={onResetClickTitleTextShadow}
             />
             <PremiumMargin
               directions={["top", "bottom"]}
@@ -543,6 +641,7 @@ const edit = props => {
                   titleMarginB: value || 0
                 })
               }
+              onResetClick={onResetClickTitleMargin}
             />
           </PanelBody>
         )}
@@ -570,6 +669,7 @@ const edit = props => {
                 setAttributes({ descWeight: newWeight || 500 })
               }
               onChangeLine={newValue => setAttributes({ descLine: newValue })}
+              onResetClick={onResetClickDescTypo}
             />
             <Fragment>
               <p>{__("Text Color")}</p>
@@ -597,6 +697,7 @@ const edit = props => {
                   descMarginB: value || 0
                 })
               }
+              onResetClick={onResetClickDescMargin}
             />
           </PanelBody>
         )}
@@ -644,6 +745,7 @@ const edit = props => {
                 setAttributes({ btnLetter: newValue })
               }
               onChangeUpper={check => setAttributes({ btnUpper: check })}
+              onResetClick={onResetClickbtnTypo}
             />
             <div className="premium-control-toggle">
               <strong>{__("Colors")}</strong>
@@ -763,6 +865,7 @@ const edit = props => {
                   btnShadowPosition: newValue || 0
                 })
               }
+              onResetClick={onResetClickbtnBoxShadow}
             />
             <PremiumSizeUnits
               onChangeSizeUnit={newValue =>
@@ -788,6 +891,7 @@ const edit = props => {
                   btnMarginB: value || 0
                 })
               }
+              onResetClick={onResetClickbtnMargin}
             />
           </PanelBody>
         )}
@@ -884,6 +988,7 @@ const edit = props => {
                 shadowPosition: newValue
               })
             }
+            onResetClick={onResetClickContainerBoxShadow}
           />
           <PremiumBoxShadow
             inner={true}
@@ -918,6 +1023,7 @@ const edit = props => {
                 hoverShadowPosition: newValue
               })
             }
+            onResetClick={onResetClickHoverBoxShadow}
           />
           <PremiumMargin
             directions={["all"]}
@@ -945,6 +1051,7 @@ const edit = props => {
                 marginL: value || 0
               })
             }
+            onResetClick={onResetClickContainerMargin}
           />
           <PremiumPadding
             paddingTop={paddingT}
@@ -975,6 +1082,7 @@ const edit = props => {
             onChangePadSizeUnit={newvalue =>
               setAttributes({ paddingU: newvalue })
             }
+            onResetClick={onResetClickContainerPadding}
           />
         </PanelBody>
       </InspectorControls>
