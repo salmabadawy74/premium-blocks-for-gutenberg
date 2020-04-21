@@ -130,21 +130,22 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = ty
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return banner; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return dualHeading; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return pricingTable; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return maps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return testimonial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return pricingTable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return maps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return testimonial; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return countUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return icon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return icon; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return button; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return container; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return accordion; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return iconBox; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return videoBox; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return person; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return iconList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return iconBox; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return videoBox; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return person; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return iconList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return contentSwitcher; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return progressBar; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return tab; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return progressBar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return tab; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return fancyText; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FontAwesomeEnabled; });
 /*import premiumLogo from "./logo";
 wp.blocks.updateCategory("premium-blocks", { icon: premiumLogo });*/
@@ -167,7 +168,8 @@ var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
     iconList = _PremiumBlocksSetting.iconList,
     contentSwitcher = _PremiumBlocksSetting.contentSwitcher,
     progressBar = _PremiumBlocksSetting.progressBar,
-    tab = _PremiumBlocksSetting.tab;
+    tab = _PremiumBlocksSetting.tab,
+    fancyText = _PremiumBlocksSetting.fancyText;
 
 //Plugin Config Keys
 
@@ -543,7 +545,7 @@ function PremiumBorder(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_responsive__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_responsive__ = __webpack_require__(25);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -828,49 +830,6 @@ function PremiumTextShadow(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumSizeUnits;
-var _wp$components = wp.components,
-    ButtonGroup = _wp$components.ButtonGroup,
-    Button = _wp$components.Button;
-
-
-function PremiumSizeUnits(props) {
-  var units = props.units,
-      _props$onChangeSizeUn = props.onChangeSizeUnit,
-      onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
-
-
-  var sizeUnits = ["px", "em", "%"];
-
-  if (undefined !== units) {
-    sizeUnits = units;
-  }
-
-  return wp.element.createElement(
-    ButtonGroup,
-    { className: "premium-unit-control" },
-    sizeUnits.map(function (unit, index) {
-      return wp.element.createElement(
-        Button,
-        {
-          isSmall: true,
-          isDefault: true,
-          className: "premium-unit-control-btn",
-          onClick: function onClick() {
-            return onChangeSizeUnit(unit);
-          }
-        },
-        unit
-      );
-    })
-  );
-}
-
-/***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumBoxShadow;
 var __ = wp.i18n.__;
 var _wp$components = wp.components,
@@ -994,6 +953,49 @@ function PremiumBoxShadow(props) {
 }
 
 /***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumSizeUnits;
+var _wp$components = wp.components,
+    ButtonGroup = _wp$components.ButtonGroup,
+    Button = _wp$components.Button;
+
+
+function PremiumSizeUnits(props) {
+  var units = props.units,
+      _props$onChangeSizeUn = props.onChangeSizeUnit,
+      onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
+
+
+  var sizeUnits = ["px", "em", "%"];
+
+  if (undefined !== units) {
+    sizeUnits = units;
+  }
+
+  return wp.element.createElement(
+    ButtonGroup,
+    { className: "premium-unit-control" },
+    sizeUnits.map(function (unit, index) {
+      return wp.element.createElement(
+        Button,
+        {
+          isSmall: true,
+          isDefault: true,
+          className: "premium-unit-control-btn",
+          onClick: function onClick() {
+            return onChangeSizeUnit(unit);
+          }
+        },
+        unit
+      );
+    })
+  );
+}
+
+/***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1085,7 +1087,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumPadding;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(8);
 
 
 var __ = wp.i18n.__;
@@ -1384,73 +1386,6 @@ function PremiumBackground(props) {
 
 /***/ }),
 /* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _Symbol = __webpack_require__(26),
-    getRawTag = __webpack_require__(99),
-    objectToString = __webpack_require__(100);
-
-/** `Object#toString` result references. */
-var nullTag = '[object Null]',
-    undefinedTag = '[object Undefined]';
-
-/** Built-in value references. */
-var symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
-
-/**
- * The base implementation of `getTag` without fallbacks for buggy environments.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-function baseGetTag(value) {
-    if (value == null) {
-        return value === undefined ? undefinedTag : nullTag;
-    }
-    return symToStringTag && symToStringTag in Object(value) ? getRawTag(value) : objectToString(value);
-}
-
-module.exports = baseGetTag;
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return value != null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'object';
-}
-
-module.exports = isObjectLike;
-
-/***/ }),
-/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -2015,7 +1950,74 @@ module.exports = isObjectLike;
   }]).default;
 });
 //# sourceMappingURL=fonticonpicker.react.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(42)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _Symbol = __webpack_require__(28),
+    getRawTag = __webpack_require__(99),
+    objectToString = __webpack_require__(100);
+
+/** `Object#toString` result references. */
+var nullTag = '[object Null]',
+    undefinedTag = '[object Undefined]';
+
+/** Built-in value references. */
+var symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
+
+/**
+ * The base implementation of `getTag` without fallbacks for buggy environments.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+function baseGetTag(value) {
+    if (value == null) {
+        return value === undefined ? undefinedTag : nullTag;
+    }
+    return symToStringTag && symToStringTag in Object(value) ? getRawTag(value) : objectToString(value);
+}
+
+module.exports = baseGetTag;
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return value != null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'object';
+}
+
+module.exports = isObjectLike;
 
 /***/ }),
 /* 20 */
@@ -2160,6 +2162,18 @@ if (process.env.NODE_ENV === 'production') {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+var iconsList = {
+    Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons admin-pagedashicons-", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
+    "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (iconsList);
+
+/***/ }),
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2194,7 +2208,84 @@ var DefaultImage = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (DefaultImage);
 
 /***/ }),
-/* 23 */
+/* 24 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_responsive__ = __webpack_require__(25);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var __ = wp.i18n.__;
+var Component = wp.element.Component;
+
+var PremiumRangeResponsive = function (_Component) {
+    _inherits(PremiumRangeResponsive, _Component);
+
+    function PremiumRangeResponsive() {
+        _classCallCheck(this, PremiumRangeResponsive);
+
+        var _this = _possibleConstructorReturn(this, (PremiumRangeResponsive.__proto__ || Object.getPrototypeOf(PremiumRangeResponsive)).apply(this, arguments));
+
+        _this.onAdvancedControlReset = _this.onAdvancedControlReset.bind(_this);
+        return _this;
+    }
+
+    _createClass(PremiumRangeResponsive, [{
+        key: "onAdvancedControlReset",
+        value: function onAdvancedControlReset() {
+            var setAttributes = this.props.setAttributes;
+
+
+            setAttributes(_defineProperty({}, this.props.range.label, ""));
+            setAttributes(_defineProperty({}, this.props.rangeType.label, "px"));
+            setAttributes(_defineProperty({}, this.props.rangeMobile.label, ""));
+            setAttributes(_defineProperty({}, this.props.rangeTablet.label, ""));
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            return wp.element.createElement(
+                "div",
+                { className: "premium-control-toggle" },
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_responsive__["a" /* default */], _extends({
+                    type: this.props.rangeType,
+                    typeLabel: this.props.rangeType.label,
+                    sizeMobile: this.props.rangeMobile,
+                    sizeMobileLabel: this.props.rangeMobile.label,
+                    sizeTablet: this.props.rangeTablet,
+                    sizeTabletLabel: this.props.rangeTablet.label,
+                    size: this.props.range,
+                    sizeLabel: this.props.range.label,
+                    sizeMobileText: !this.props.rangeLabel ? __("Range") : this.props.rangeLabel,
+                    sizeTabletText: !this.props.rangeLabel ? __("Range") : this.props.rangeLabel,
+                    sizeText: !this.props.rangeLabel ? __("Range") : this.props.rangeLabel,
+                    steps: 0.1,
+                    min: this.props.min,
+                    max: this.props.max
+                }, this.props))
+            );
+        }
+    }]);
+
+    return PremiumRangeResponsive;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (PremiumRangeResponsive);
+
+/***/ }),
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2345,7 +2436,7 @@ function PremiumResponsive(props) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumResponsive);
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var listCacheClear = __webpack_require__(88),
@@ -2382,7 +2473,7 @@ ListCache.prototype.set = listCacheSet;
 module.exports = ListCache;
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var eq = __webpack_require__(55);
@@ -2408,7 +2499,7 @@ function assocIndexOf(array, key) {
 module.exports = assocIndexOf;
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(10);
@@ -2419,7 +2510,7 @@ var _Symbol = root.Symbol;
 module.exports = _Symbol;
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -2457,7 +2548,7 @@ function isObject(value) {
 module.exports = isObject;
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14);
@@ -2468,7 +2559,7 @@ var nativeCreate = getNative(Object, 'create');
 module.exports = nativeCreate;
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isKeyable = __webpack_require__(112);
@@ -2489,13 +2580,13 @@ function getMapData(map, key) {
 module.exports = getMapData;
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseGetTag = __webpack_require__(17),
-    isObjectLike = __webpack_require__(18);
+var baseGetTag = __webpack_require__(18),
+    isObjectLike = __webpack_require__(19);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -2524,10 +2615,10 @@ function isSymbol(value) {
 module.exports = isSymbol;
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isSymbol = __webpack_require__(30);
+var isSymbol = __webpack_require__(32);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -2550,24 +2641,12 @@ function toKey(value) {
 module.exports = toKey;
 
 /***/ }),
-/* 32 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var iconsList = {
-    Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons admin-pagedashicons-", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
-    "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (iconsList);
-
-/***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumMargin;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(8);
 
 
 var __ = wp.i18n.__;
@@ -2673,7 +2752,7 @@ function PremiumMargin(props) {
 }
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2929,7 +3008,7 @@ registerBlockType("premium/video-box", {
   category: "premium-blocks",
   attributes: videoBoxAttrs,
   supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["r" /* videoBox */]
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["s" /* videoBox */]
   },
   edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
   save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
@@ -2937,792 +3016,7 @@ registerBlockType("premium/video-box", {
 });
 
 /***/ }),
-/* 35 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-function generateCSS(selectors, id) {
-	var isResponsive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-	var responsiveType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
-
-
-	var styling_css = "";
-	var breakpoint = "";
-	var gen_styling_css = "";
-	var res_styling_css = "";
-
-	if (responsiveType == "tablet") {
-		breakpoint = PremiumBlocksSettings.tablet_breakpoint;
-	} else if (responsiveType == "mobile") {
-		breakpoint = PremiumBlocksSettings.mobile_breakpoint;
-	}
-
-	for (var i in selectors) {
-
-		var sel = selectors[i];
-		var css = "";
-
-		for (var j in sel) {
-
-			var checkString = true;
-
-			if (typeof sel[j] === "string" && sel[j].length === 0) {
-				checkString = false;
-			}
-
-			if ('font-family' === j && typeof sel[j] != "undefined" && 'Default' === sel[j]) {
-				continue;
-			}
-
-			if (typeof sel[j] != "undefined" && checkString) {
-				css += j + ": " + sel[j] + ";";
-			}
-		}
-
-		if (css.length !== 0) {
-			gen_styling_css += id;
-			gen_styling_css += i + "{";
-			gen_styling_css += css;
-			gen_styling_css += "}";
-		}
-	}
-
-	if (isResponsive && typeof gen_styling_css !== "undefined" && gen_styling_css.length !== 0) {
-		res_styling_css += "@media only screen and (max-width: " + breakpoint + "px) {";
-		res_styling_css += gen_styling_css;
-		res_styling_css += "}";
-	}
-
-	if (isResponsive) {
-		return res_styling_css;
-	} else {
-		return gen_styling_css;
-	}
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (generateCSS);
-
-/***/ }),
 /* 36 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-function generateCSSUnit(value, unit) {
-
-	var css = "";
-
-	if (typeof value != "undefined") {
-		css += value + unit;
-	}
-
-	return css;
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (generateCSSUnit);
-
-/***/ }),
-/* 37 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_responsive__ = __webpack_require__(23);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var __ = wp.i18n.__;
-var Component = wp.element.Component;
-
-var PremiumRangeResponsive = function (_Component) {
-    _inherits(PremiumRangeResponsive, _Component);
-
-    function PremiumRangeResponsive() {
-        _classCallCheck(this, PremiumRangeResponsive);
-
-        var _this = _possibleConstructorReturn(this, (PremiumRangeResponsive.__proto__ || Object.getPrototypeOf(PremiumRangeResponsive)).apply(this, arguments));
-
-        _this.onAdvancedControlReset = _this.onAdvancedControlReset.bind(_this);
-        return _this;
-    }
-
-    _createClass(PremiumRangeResponsive, [{
-        key: "onAdvancedControlReset",
-        value: function onAdvancedControlReset() {
-            var setAttributes = this.props.setAttributes;
-
-
-            setAttributes(_defineProperty({}, this.props.range.label, ""));
-            setAttributes(_defineProperty({}, this.props.rangeType.label, "px"));
-            setAttributes(_defineProperty({}, this.props.rangeMobile.label, ""));
-            setAttributes(_defineProperty({}, this.props.rangeTablet.label, ""));
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            return wp.element.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_responsive__["a" /* default */], _extends({
-                    type: this.props.rangeType,
-                    typeLabel: this.props.rangeType.label,
-                    sizeMobile: this.props.rangeMobile,
-                    sizeMobileLabel: this.props.rangeMobile.label,
-                    sizeTablet: this.props.rangeTablet,
-                    sizeTabletLabel: this.props.rangeTablet.label,
-                    size: this.props.range,
-                    sizeLabel: this.props.range.label,
-                    sizeMobileText: !this.props.rangeLabel ? __("Range") : this.props.rangeLabel,
-                    sizeTabletText: !this.props.rangeLabel ? __("Range") : this.props.rangeLabel,
-                    sizeText: !this.props.rangeLabel ? __("Range") : this.props.rangeLabel,
-                    steps: 0.1,
-                    min: this.props.min,
-                    max: this.props.max
-                }, this.props))
-            );
-        }
-    }]);
-
-    return PremiumRangeResponsive;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["a"] = (PremiumRangeResponsive);
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var getNative = __webpack_require__(14),
-    root = __webpack_require__(10);
-
-/* Built-in method references that are verified to be native. */
-var Map = getNative(root, 'Map');
-
-module.exports = Map;
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var g;
-
-// This works in non-strict mode
-g = function () {
-	return this;
-}();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1, eval)("this");
-} catch (e) {
-	// This works if the window reference is available
-	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var mapCacheClear = __webpack_require__(104),
-    mapCacheDelete = __webpack_require__(111),
-    mapCacheGet = __webpack_require__(113),
-    mapCacheHas = __webpack_require__(114),
-    mapCacheSet = __webpack_require__(115);
-
-/**
- * Creates a map cache object to store key-value pairs.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function MapCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
-
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
-}
-
-// Add methods to `MapCache`.
-MapCache.prototype.clear = mapCacheClear;
-MapCache.prototype['delete'] = mapCacheDelete;
-MapCache.prototype.get = mapCacheGet;
-MapCache.prototype.has = mapCacheHas;
-MapCache.prototype.set = mapCacheSet;
-
-module.exports = MapCache;
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayLikeKeys = __webpack_require__(133),
-    baseKeys = __webpack_require__(139),
-    isArrayLike = __webpack_require__(44);
-
-/**
- * Creates an array of the own enumerable property names of `object`.
- *
- * **Note:** Non-object values are coerced to objects. See the
- * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
- * for more details.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Object
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- * @example
- *
- * function Foo() {
- *   this.a = 1;
- *   this.b = 2;
- * }
- *
- * Foo.prototype.c = 3;
- *
- * _.keys(new Foo);
- * // => ['a', 'b'] (iteration order is not guaranteed)
- *
- * _.keys('hi');
- * // => ['0', '1']
- */
-function keys(object) {
-  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
-}
-
-module.exports = keys;
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports) {
-
-module.exports = function (module) {
-	if (!module.webpackPolyfill) {
-		module.deprecate = function () {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if (!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function get() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function get() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports) {
-
-/** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER = 9007199254740991;
-
-/**
- * Checks if `value` is a valid array-like length.
- *
- * **Note:** This method is loosely based on
- * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
- * @example
- *
- * _.isLength(3);
- * // => true
- *
- * _.isLength(Number.MIN_VALUE);
- * // => false
- *
- * _.isLength(Infinity);
- * // => false
- *
- * _.isLength('3');
- * // => false
- */
-function isLength(value) {
-  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-}
-
-module.exports = isLength;
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isFunction = __webpack_require__(56),
-    isLength = __webpack_require__(43);
-
-/**
- * Checks if `value` is array-like. A value is considered array-like if it's
- * not a function and has a `value.length` that's an integer greater than or
- * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
- * @example
- *
- * _.isArrayLike([1, 2, 3]);
- * // => true
- *
- * _.isArrayLike(document.body.children);
- * // => true
- *
- * _.isArrayLike('abc');
- * // => true
- *
- * _.isArrayLike(_.noop);
- * // => false
- */
-function isArrayLike(value) {
-  return value != null && isLength(value.length) && !isFunction(value);
-}
-
-module.exports = isArrayLike;
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var isArray = __webpack_require__(11),
-    isSymbol = __webpack_require__(30);
-
-/** Used to match property names within property paths. */
-var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
-    reIsPlainProp = /^\w*$/;
-
-/**
- * Checks if `value` is a property name and not a property path.
- *
- * @private
- * @param {*} value The value to check.
- * @param {Object} [object] The object to query keys on.
- * @returns {boolean} Returns `true` if `value` is a property name, else `false`.
- */
-function isKey(value, object) {
-  if (isArray(value)) {
-    return false;
-  }
-  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
-  if (type == 'number' || type == 'symbol' || type == 'boolean' || value == null || isSymbol(value)) {
-    return true;
-  }
-  return reIsPlainProp.test(value) || !reIsDeepProp.test(value) || object != null && value in Object(object);
-}
-
-module.exports = isKey;
-
-/***/ }),
-/* 46 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumFilters;
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    RangeControl = _wp$components.RangeControl,
-    Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
-
-
-function PremiumFilters(props) {
-  var blur = props.blur,
-      bright = props.bright,
-      contrast = props.contrast,
-      saturation = props.saturation,
-      hue = props.hue,
-      _props$onChangeBlur = props.onChangeBlur,
-      onChangeBlur = _props$onChangeBlur === undefined ? function () {} : _props$onChangeBlur,
-      _props$onChangeBright = props.onChangeBright,
-      onChangeBright = _props$onChangeBright === undefined ? function () {} : _props$onChangeBright,
-      _props$onChangeContra = props.onChangeContrast,
-      onChangeContrast = _props$onChangeContra === undefined ? function () {} : _props$onChangeContra,
-      _props$onChangeSat = props.onChangeSat,
-      onChangeSat = _props$onChangeSat === undefined ? function () {} : _props$onChangeSat,
-      _props$onChangeHue = props.onChangeHue,
-      onChangeHue = _props$onChangeHue === undefined ? function () {} : _props$onChangeHue,
-      _props$onResetClick = props.onResetClick,
-      onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
-
-
-  return wp.element.createElement(
-    "div",
-    { className: "premium-control-toggle" },
-    wp.element.createElement(
-      "strong",
-      null,
-      __("CSS Filters")
-    ),
-    wp.element.createElement(Dropdown, {
-      className: "premium-control-toggle-btn",
-      contentClassName: "premium-control-toggle-content",
-      position: "bottom right",
-      renderToggle: function renderToggle(_ref) {
-        var isOpen = _ref.isOpen,
-            onToggle = _ref.onToggle;
-        return wp.element.createElement(
-          Button,
-          { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-          wp.element.createElement("i", { className: "dashicons dashicons-edit" })
-        );
-      },
-      renderContent: function renderContent() {
-        return wp.element.createElement(
-          Fragment,
-          null,
-          wp.element.createElement(RangeControl, {
-            label: __("Blur"),
-            min: "0",
-            max: "10",
-            step: "0.1",
-            initialPosition: "0",
-            value: blur,
-            onChange: onChangeBlur,
-            allowReset: true,
-            onResetClick: onResetClick
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Brightness"),
-            min: "0",
-            max: "200",
-            initialPosition: 100,
-            value: bright,
-            onChange: onChangeBright,
-            allowReset: true,
-            onResetClick: onResetClick
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Contrast"),
-            min: "0",
-            max: "200",
-            initialPosition: 100,
-            value: contrast,
-            onChange: onChangeContrast,
-            allowReset: true,
-            onResetClick: onResetClick
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Saturation"),
-            min: "0",
-            max: "200",
-            initialPosition: 100,
-            value: saturation,
-            onChange: onChangeSat,
-            allowReset: true,
-            onResetClick: onResetClick
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Hue"),
-            min: "0",
-            max: "360",
-            initialPosition: "0",
-            value: hue,
-            onChange: onChangeHue,
-            allowReset: true,
-            onResetClick: onResetClick
-          })
-        );
-      }
-    }),
-    wp.element.createElement(
-      Button,
-      {
-        className: "premium-control-toggle-btn reset-btn",
-        contentClassName: "premium-control-toggle-content",
-        isSmall: true,
-        onClick: onResetClick
-      },
-      wp.element.createElement("i", { className: "premium-control-reset dashicons dashicons-image-rotate" })
-    )
-  );
-}
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-
-var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
-
-module.exports = ReactPropTypesSecret;
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var printWarning = function printWarning() {};
-
-if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(47);
-  var loggedTypeFailures = {};
-  var has = Function.call.bind(Object.prototype.hasOwnProperty);
-
-  printWarning = function printWarning(text) {
-    var message = 'Warning: ' + text;
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-}
-
-/**
- * Assert that the values match with the type specs.
- * Error messages are memorized and will only be shown once.
- *
- * @param {object} typeSpecs Map of name to a ReactPropType
- * @param {object} values Runtime values that need to be type-checked
- * @param {string} location e.g. "prop", "context", "child context"
- * @param {string} componentName Name of the component for error messages.
- * @param {?Function} getStack Returns the component stack.
- * @private
- */
-function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
-  if (process.env.NODE_ENV !== 'production') {
-    for (var typeSpecName in typeSpecs) {
-      if (has(typeSpecs, typeSpecName)) {
-        var error;
-        // Prop type validation may throw. In case they do, we don't want to
-        // fail the render phase where it didn't fail before. So we log it.
-        // After these have been cleaned up, we'll let them throw.
-        try {
-          // This is intentionally an invariant that gets caught. It's the same
-          // behavior as without this statement except with a better message.
-          if (typeof typeSpecs[typeSpecName] !== 'function') {
-            var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + _typeof(typeSpecs[typeSpecName]) + '`.');
-            err.name = 'Invariant Violation';
-            throw err;
-          }
-          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
-        } catch (ex) {
-          error = ex;
-        }
-        if (error && !(error instanceof Error)) {
-          printWarning((componentName || 'React class') + ': type specification of ' + location + ' `' + typeSpecName + '` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a ' + (typeof error === 'undefined' ? 'undefined' : _typeof(error)) + '. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).');
-        }
-        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
-          // Only monitor this failure once because there tends to be a lot of the
-          // same error.
-          loggedTypeFailures[error.message] = true;
-
-          var stack = getStack ? getStack() : '';
-
-          printWarning('Failed ' + location + ' type: ' + error.message + (stack != null ? stack : ''));
-        }
-      }
-    }
-  }
-}
-
-/**
- * Resets warning cache when testing.
- *
- * @private
- */
-checkPropTypes.resetWarningCache = function () {
-  if (process.env.NODE_ENV !== 'production') {
-    loggedTypeFailures = {};
-  }
-};
-
-module.exports = checkPropTypes;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 49 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Component = wp.element.Component;
-
-var PremiumLowerQuote = function (_Component) {
-  _inherits(PremiumLowerQuote, _Component);
-
-  function PremiumLowerQuote() {
-    _classCallCheck(this, PremiumLowerQuote);
-
-    return _possibleConstructorReturn(this, (PremiumLowerQuote.__proto__ || Object.getPrototypeOf(PremiumLowerQuote)).apply(this, arguments));
-  }
-
-  _createClass(PremiumLowerQuote, [{
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps) {
-      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _props = this.props,
-          size = _props.size,
-          color = _props.color,
-          opacity = _props.opacity;
-
-      return wp.element.createElement(
-        "svg",
-        {
-          style: { width: size + "em", opacity: opacity / 100 },
-          "aria-hidden": "true",
-          "data-prefix": "fas",
-          "data-icon": "quote-left",
-          "class": "svg-inline--fa fa-quote-left fa-w-16",
-          role: "img",
-          xmlns: "http://www.w3.org/2000/svg",
-          viewBox: "0 0 512 512"
-        },
-        wp.element.createElement("path", {
-          fill: "" + color,
-          d: "M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
-        })
-      );
-    }
-  }]);
-
-  return PremiumLowerQuote;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
-
-/***/ }),
-/* 50 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Component = wp.element.Component;
-
-var PremiumUpperQuote = function (_Component) {
-  _inherits(PremiumUpperQuote, _Component);
-
-  function PremiumUpperQuote() {
-    _classCallCheck(this, PremiumUpperQuote);
-
-    return _possibleConstructorReturn(this, (PremiumUpperQuote.__proto__ || Object.getPrototypeOf(PremiumUpperQuote)).apply(this, arguments));
-  }
-
-  _createClass(PremiumUpperQuote, [{
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps) {
-      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _props = this.props,
-          size = _props.size,
-          color = _props.color,
-          opacity = _props.opacity;
-
-
-      return wp.element.createElement(
-        "svg",
-        {
-          style: { width: size + "em", opacity: opacity / 100 },
-          "aria-hidden": "true",
-          "data-prefix": "fas",
-          "data-icon": "quote-right",
-          "class": "svg-inline--fa fa-quote-right fa-w-16",
-          role: "img",
-          xmlns: "http://www.w3.org/2000/svg",
-          viewBox: "0 0 512 512"
-        },
-        wp.element.createElement("path", {
-          fill: "" + color,
-          d: "M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z"
-        })
-      );
-    }
-  }]);
-
-  return PremiumUpperQuote;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
-
-/***/ }),
-/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5338,6 +4632,714 @@ function sortableElement(WrappedComponent) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
+/* 37 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function generateCSS(selectors, id) {
+	var isResponsive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+	var responsiveType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+
+
+	var styling_css = "";
+	var breakpoint = "";
+	var gen_styling_css = "";
+	var res_styling_css = "";
+
+	if (responsiveType == "tablet") {
+		breakpoint = PremiumBlocksSettings.tablet_breakpoint;
+	} else if (responsiveType == "mobile") {
+		breakpoint = PremiumBlocksSettings.mobile_breakpoint;
+	}
+
+	for (var i in selectors) {
+
+		var sel = selectors[i];
+		var css = "";
+
+		for (var j in sel) {
+
+			var checkString = true;
+
+			if (typeof sel[j] === "string" && sel[j].length === 0) {
+				checkString = false;
+			}
+
+			if ('font-family' === j && typeof sel[j] != "undefined" && 'Default' === sel[j]) {
+				continue;
+			}
+
+			if (typeof sel[j] != "undefined" && checkString) {
+				css += j + ": " + sel[j] + ";";
+			}
+		}
+
+		if (css.length !== 0) {
+			gen_styling_css += id;
+			gen_styling_css += i + "{";
+			gen_styling_css += css;
+			gen_styling_css += "}";
+		}
+	}
+
+	if (isResponsive && typeof gen_styling_css !== "undefined" && gen_styling_css.length !== 0) {
+		res_styling_css += "@media only screen and (max-width: " + breakpoint + "px) {";
+		res_styling_css += gen_styling_css;
+		res_styling_css += "}";
+	}
+
+	if (isResponsive) {
+		return res_styling_css;
+	} else {
+		return gen_styling_css;
+	}
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (generateCSS);
+
+/***/ }),
+/* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function generateCSSUnit(value, unit) {
+
+	var css = "";
+
+	if (typeof value != "undefined") {
+		css += value + unit;
+	}
+
+	return css;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (generateCSSUnit);
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getNative = __webpack_require__(14),
+    root = __webpack_require__(10);
+
+/* Built-in method references that are verified to be native. */
+var Map = getNative(root, 'Map');
+
+module.exports = Map;
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var g;
+
+// This works in non-strict mode
+g = function () {
+	return this;
+}();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1, eval)("this");
+} catch (e) {
+	// This works if the window reference is available
+	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var mapCacheClear = __webpack_require__(104),
+    mapCacheDelete = __webpack_require__(111),
+    mapCacheGet = __webpack_require__(113),
+    mapCacheHas = __webpack_require__(114),
+    mapCacheSet = __webpack_require__(115);
+
+/**
+ * Creates a map cache object to store key-value pairs.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function MapCache(entries) {
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
+
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
+}
+
+// Add methods to `MapCache`.
+MapCache.prototype.clear = mapCacheClear;
+MapCache.prototype['delete'] = mapCacheDelete;
+MapCache.prototype.get = mapCacheGet;
+MapCache.prototype.has = mapCacheHas;
+MapCache.prototype.set = mapCacheSet;
+
+module.exports = MapCache;
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeKeys = __webpack_require__(133),
+    baseKeys = __webpack_require__(139),
+    isArrayLike = __webpack_require__(45);
+
+/**
+ * Creates an array of the own enumerable property names of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects. See the
+ * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+ * for more details.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.keys(new Foo);
+ * // => ['a', 'b'] (iteration order is not guaranteed)
+ *
+ * _.keys('hi');
+ * // => ['0', '1']
+ */
+function keys(object) {
+  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
+}
+
+module.exports = keys;
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports) {
+
+module.exports = function (module) {
+	if (!module.webpackPolyfill) {
+		module.deprecate = function () {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function get() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function get() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports) {
+
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER = 9007199254740991;
+
+/**
+ * Checks if `value` is a valid array-like length.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+ * @example
+ *
+ * _.isLength(3);
+ * // => true
+ *
+ * _.isLength(Number.MIN_VALUE);
+ * // => false
+ *
+ * _.isLength(Infinity);
+ * // => false
+ *
+ * _.isLength('3');
+ * // => false
+ */
+function isLength(value) {
+  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+}
+
+module.exports = isLength;
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isFunction = __webpack_require__(56),
+    isLength = __webpack_require__(44);
+
+/**
+ * Checks if `value` is array-like. A value is considered array-like if it's
+ * not a function and has a `value.length` that's an integer greater than or
+ * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+ * @example
+ *
+ * _.isArrayLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLike(document.body.children);
+ * // => true
+ *
+ * _.isArrayLike('abc');
+ * // => true
+ *
+ * _.isArrayLike(_.noop);
+ * // => false
+ */
+function isArrayLike(value) {
+  return value != null && isLength(value.length) && !isFunction(value);
+}
+
+module.exports = isArrayLike;
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var isArray = __webpack_require__(11),
+    isSymbol = __webpack_require__(32);
+
+/** Used to match property names within property paths. */
+var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
+    reIsPlainProp = /^\w*$/;
+
+/**
+ * Checks if `value` is a property name and not a property path.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {Object} [object] The object to query keys on.
+ * @returns {boolean} Returns `true` if `value` is a property name, else `false`.
+ */
+function isKey(value, object) {
+  if (isArray(value)) {
+    return false;
+  }
+  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+  if (type == 'number' || type == 'symbol' || type == 'boolean' || value == null || isSymbol(value)) {
+    return true;
+  }
+  return reIsPlainProp.test(value) || !reIsDeepProp.test(value) || object != null && value in Object(object);
+}
+
+module.exports = isKey;
+
+/***/ }),
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumFilters;
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    RangeControl = _wp$components.RangeControl,
+    Dropdown = _wp$components.Dropdown,
+    Button = _wp$components.Button;
+
+
+function PremiumFilters(props) {
+  var blur = props.blur,
+      bright = props.bright,
+      contrast = props.contrast,
+      saturation = props.saturation,
+      hue = props.hue,
+      _props$onChangeBlur = props.onChangeBlur,
+      onChangeBlur = _props$onChangeBlur === undefined ? function () {} : _props$onChangeBlur,
+      _props$onChangeBright = props.onChangeBright,
+      onChangeBright = _props$onChangeBright === undefined ? function () {} : _props$onChangeBright,
+      _props$onChangeContra = props.onChangeContrast,
+      onChangeContrast = _props$onChangeContra === undefined ? function () {} : _props$onChangeContra,
+      _props$onChangeSat = props.onChangeSat,
+      onChangeSat = _props$onChangeSat === undefined ? function () {} : _props$onChangeSat,
+      _props$onChangeHue = props.onChangeHue,
+      onChangeHue = _props$onChangeHue === undefined ? function () {} : _props$onChangeHue,
+      _props$onResetClick = props.onResetClick,
+      onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
+
+
+  return wp.element.createElement(
+    "div",
+    { className: "premium-control-toggle" },
+    wp.element.createElement(
+      "strong",
+      null,
+      __("CSS Filters")
+    ),
+    wp.element.createElement(Dropdown, {
+      className: "premium-control-toggle-btn",
+      contentClassName: "premium-control-toggle-content",
+      position: "bottom right",
+      renderToggle: function renderToggle(_ref) {
+        var isOpen = _ref.isOpen,
+            onToggle = _ref.onToggle;
+        return wp.element.createElement(
+          Button,
+          { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+          wp.element.createElement("i", { className: "dashicons dashicons-edit" })
+        );
+      },
+      renderContent: function renderContent() {
+        return wp.element.createElement(
+          Fragment,
+          null,
+          wp.element.createElement(RangeControl, {
+            label: __("Blur"),
+            min: "0",
+            max: "10",
+            step: "0.1",
+            initialPosition: "0",
+            value: blur,
+            onChange: onChangeBlur,
+            allowReset: true,
+            onResetClick: onResetClick
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Brightness"),
+            min: "0",
+            max: "200",
+            initialPosition: 100,
+            value: bright,
+            onChange: onChangeBright,
+            allowReset: true,
+            onResetClick: onResetClick
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Contrast"),
+            min: "0",
+            max: "200",
+            initialPosition: 100,
+            value: contrast,
+            onChange: onChangeContrast,
+            allowReset: true,
+            onResetClick: onResetClick
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Saturation"),
+            min: "0",
+            max: "200",
+            initialPosition: 100,
+            value: saturation,
+            onChange: onChangeSat,
+            allowReset: true,
+            onResetClick: onResetClick
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Hue"),
+            min: "0",
+            max: "360",
+            initialPosition: "0",
+            value: hue,
+            onChange: onChangeHue,
+            allowReset: true,
+            onResetClick: onResetClick
+          })
+        );
+      }
+    }),
+    wp.element.createElement(
+      Button,
+      {
+        className: "premium-control-toggle-btn reset-btn",
+        contentClassName: "premium-control-toggle-content",
+        isSmall: true,
+        onClick: onResetClick
+      },
+      wp.element.createElement("i", { className: "premium-control-reset dashicons dashicons-image-rotate" })
+    )
+  );
+}
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var printWarning = function printWarning() {};
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactPropTypesSecret = __webpack_require__(48);
+  var loggedTypeFailures = {};
+  var has = Function.call.bind(Object.prototype.hasOwnProperty);
+
+  printWarning = function printWarning(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */
+function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+  if (process.env.NODE_ENV !== 'production') {
+    for (var typeSpecName in typeSpecs) {
+      if (has(typeSpecs, typeSpecName)) {
+        var error;
+        // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + _typeof(typeSpecs[typeSpecName]) + '`.');
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+        } catch (ex) {
+          error = ex;
+        }
+        if (error && !(error instanceof Error)) {
+          printWarning((componentName || 'React class') + ': type specification of ' + location + ' `' + typeSpecName + '` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a ' + (typeof error === 'undefined' ? 'undefined' : _typeof(error)) + '. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).');
+        }
+        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error.message] = true;
+
+          var stack = getStack ? getStack() : '';
+
+          printWarning('Failed ' + location + ' type: ' + error.message + (stack != null ? stack : ''));
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Resets warning cache when testing.
+ *
+ * @private
+ */
+checkPropTypes.resetWarningCache = function () {
+  if (process.env.NODE_ENV !== 'production') {
+    loggedTypeFailures = {};
+  }
+};
+
+module.exports = checkPropTypes;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = wp.element.Component;
+
+var PremiumLowerQuote = function (_Component) {
+  _inherits(PremiumLowerQuote, _Component);
+
+  function PremiumLowerQuote() {
+    _classCallCheck(this, PremiumLowerQuote);
+
+    return _possibleConstructorReturn(this, (PremiumLowerQuote.__proto__ || Object.getPrototypeOf(PremiumLowerQuote)).apply(this, arguments));
+  }
+
+  _createClass(PremiumLowerQuote, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          size = _props.size,
+          color = _props.color,
+          opacity = _props.opacity;
+
+      return wp.element.createElement(
+        "svg",
+        {
+          style: { width: size + "em", opacity: opacity / 100 },
+          "aria-hidden": "true",
+          "data-prefix": "fas",
+          "data-icon": "quote-left",
+          "class": "svg-inline--fa fa-quote-left fa-w-16",
+          role: "img",
+          xmlns: "http://www.w3.org/2000/svg",
+          viewBox: "0 0 512 512"
+        },
+        wp.element.createElement("path", {
+          fill: "" + color,
+          d: "M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
+        })
+      );
+    }
+  }]);
+
+  return PremiumLowerQuote;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
+
+/***/ }),
+/* 51 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = wp.element.Component;
+
+var PremiumUpperQuote = function (_Component) {
+  _inherits(PremiumUpperQuote, _Component);
+
+  function PremiumUpperQuote() {
+    _classCallCheck(this, PremiumUpperQuote);
+
+    return _possibleConstructorReturn(this, (PremiumUpperQuote.__proto__ || Object.getPrototypeOf(PremiumUpperQuote)).apply(this, arguments));
+  }
+
+  _createClass(PremiumUpperQuote, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          size = _props.size,
+          color = _props.color,
+          opacity = _props.opacity;
+
+
+      return wp.element.createElement(
+        "svg",
+        {
+          style: { width: size + "em", opacity: opacity / 100 },
+          "aria-hidden": "true",
+          "data-prefix": "fas",
+          "data-icon": "quote-right",
+          "class": "svg-inline--fa fa-quote-right fa-w-16",
+          role: "img",
+          xmlns: "http://www.w3.org/2000/svg",
+          viewBox: "0 0 512 512"
+        },
+        wp.element.createElement("path", {
+          fill: "" + color,
+          d: "M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z"
+        })
+      );
+    }
+  }]);
+
+  return PremiumUpperQuote;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
+
+/***/ }),
 /* 52 */
 /***/ (function(module, exports) {
 
@@ -5376,7 +5378,7 @@ module.exports = arrayMap;
 /* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ListCache = __webpack_require__(24),
+var ListCache = __webpack_require__(26),
     stackClear = __webpack_require__(93),
     stackDelete = __webpack_require__(94),
     stackGet = __webpack_require__(95),
@@ -5450,8 +5452,8 @@ module.exports = eq;
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(17),
-    isObject = __webpack_require__(27);
+var baseGetTag = __webpack_require__(18),
+    isObject = __webpack_require__(29);
 
 /** `Object#toString` result references. */
 var asyncTag = '[object AsyncFunction]',
@@ -5498,7 +5500,7 @@ module.exports = isFunction;
 var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
 
 module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40)))
 
 /***/ }),
 /* 58 */
@@ -5536,7 +5538,7 @@ module.exports = toSource;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqualDeep = __webpack_require__(116),
-    isObjectLike = __webpack_require__(18);
+    isObjectLike = __webpack_require__(19);
 
 /**
  * The base implementation of `_.isEqual` which supports partial comparisons
@@ -5676,7 +5678,7 @@ module.exports = baseTimes;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsArguments = __webpack_require__(134),
-    isObjectLike = __webpack_require__(18);
+    isObjectLike = __webpack_require__(19);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -5757,7 +5759,7 @@ var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
 var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(42)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
 
 /***/ }),
 /* 64 */
@@ -5824,7 +5826,7 @@ module.exports = isTypedArray;
 /* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(27);
+var isObject = __webpack_require__(29);
 
 /**
  * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
@@ -5869,7 +5871,7 @@ module.exports = matchesStrictComparable;
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(69),
-    toKey = __webpack_require__(31);
+    toKey = __webpack_require__(33);
 
 /**
  * The base implementation of `_.get` without support for default values.
@@ -5898,7 +5900,7 @@ module.exports = baseGet;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArray = __webpack_require__(11),
-    isKey = __webpack_require__(45),
+    isKey = __webpack_require__(46),
     stringToPath = __webpack_require__(151),
     toString = __webpack_require__(154);
 
@@ -7153,12 +7155,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(219);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_person__ = __webpack_require__(230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__blocks_icon_list__ = __webpack_require__(255);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__blocks_content_switcher__ = __webpack_require__(260);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__blocks_progress_bar__ = __webpack_require__(265);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__blocks_tab__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__blocks_fancy_text__ = __webpack_require__(273);
+
 
 
 
@@ -8490,7 +8494,7 @@ module.exports = listCacheClear;
 /* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(25);
+var assocIndexOf = __webpack_require__(27);
 
 /** Used for built-in method references. */
 var arrayProto = Array.prototype;
@@ -8530,7 +8534,7 @@ module.exports = listCacheDelete;
 /* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(25);
+var assocIndexOf = __webpack_require__(27);
 
 /**
  * Gets the list cache value for `key`.
@@ -8554,7 +8558,7 @@ module.exports = listCacheGet;
 /* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(25);
+var assocIndexOf = __webpack_require__(27);
 
 /**
  * Checks if a list cache value for `key` exists.
@@ -8575,7 +8579,7 @@ module.exports = listCacheHas;
 /* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(25);
+var assocIndexOf = __webpack_require__(27);
 
 /**
  * Sets the list cache `key` to `value`.
@@ -8606,7 +8610,7 @@ module.exports = listCacheSet;
 /* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ListCache = __webpack_require__(24);
+var ListCache = __webpack_require__(26);
 
 /**
  * Removes all key-value entries from the stack.
@@ -8687,9 +8691,9 @@ module.exports = stackHas;
 /* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ListCache = __webpack_require__(24),
-    Map = __webpack_require__(38),
-    MapCache = __webpack_require__(40);
+var ListCache = __webpack_require__(26),
+    Map = __webpack_require__(39),
+    MapCache = __webpack_require__(41);
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
@@ -8728,7 +8732,7 @@ module.exports = stackSet;
 
 var isFunction = __webpack_require__(56),
     isMasked = __webpack_require__(101),
-    isObject = __webpack_require__(27),
+    isObject = __webpack_require__(29),
     toSource = __webpack_require__(58);
 
 /**
@@ -8775,7 +8779,7 @@ module.exports = baseIsNative;
 /* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _Symbol = __webpack_require__(26);
+var _Symbol = __webpack_require__(28);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -8908,8 +8912,8 @@ module.exports = getValue;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Hash = __webpack_require__(105),
-    ListCache = __webpack_require__(24),
-    Map = __webpack_require__(38);
+    ListCache = __webpack_require__(26),
+    Map = __webpack_require__(39);
 
 /**
  * Removes all key-value entries from the map.
@@ -8970,7 +8974,7 @@ module.exports = Hash;
 /* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(28);
+var nativeCreate = __webpack_require__(30);
 
 /**
  * Removes all key-value entries from the hash.
@@ -9012,7 +9016,7 @@ module.exports = hashDelete;
 /* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(28);
+var nativeCreate = __webpack_require__(30);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -9047,7 +9051,7 @@ module.exports = hashGet;
 /* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(28);
+var nativeCreate = __webpack_require__(30);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -9075,7 +9079,7 @@ module.exports = hashHas;
 /* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(28);
+var nativeCreate = __webpack_require__(30);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -9103,7 +9107,7 @@ module.exports = hashSet;
 /* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(29);
+var getMapData = __webpack_require__(31);
 
 /**
  * Removes `key` and its value from the map.
@@ -9146,7 +9150,7 @@ module.exports = isKeyable;
 /* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(29);
+var getMapData = __webpack_require__(31);
 
 /**
  * Gets the map value for `key`.
@@ -9167,7 +9171,7 @@ module.exports = mapCacheGet;
 /* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(29);
+var getMapData = __webpack_require__(31);
 
 /**
  * Checks if a map value for `key` exists.
@@ -9188,7 +9192,7 @@ module.exports = mapCacheHas;
 /* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(29);
+var getMapData = __webpack_require__(31);
 
 /**
  * Sets the map `key` to `value`.
@@ -9301,7 +9305,7 @@ module.exports = baseIsEqualDeep;
 /* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(40),
+var MapCache = __webpack_require__(41),
     setCacheAdd = __webpack_require__(118),
     setCacheHas = __webpack_require__(119);
 
@@ -9422,7 +9426,7 @@ module.exports = cacheHas;
 /* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _Symbol = __webpack_require__(26),
+var _Symbol = __webpack_require__(28),
     Uint8Array = __webpack_require__(123),
     eq = __webpack_require__(55),
     equalArrays = __webpack_require__(60),
@@ -9682,7 +9686,7 @@ module.exports = equalObjects;
 
 var baseGetAllKeys = __webpack_require__(128),
     getSymbols = __webpack_require__(130),
-    keys = __webpack_require__(41);
+    keys = __webpack_require__(42);
 
 /**
  * Creates an array of own enumerable property names and symbols of `object`.
@@ -9896,8 +9900,8 @@ module.exports = arrayLikeKeys;
 /* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(17),
-    isObjectLike = __webpack_require__(18);
+var baseGetTag = __webpack_require__(18),
+    isObjectLike = __webpack_require__(19);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]';
@@ -9942,9 +9946,9 @@ module.exports = stubFalse;
 /* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(17),
-    isLength = __webpack_require__(43),
-    isObjectLike = __webpack_require__(18);
+var baseGetTag = __webpack_require__(18),
+    isLength = __webpack_require__(44),
+    isObjectLike = __webpack_require__(19);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -10046,7 +10050,7 @@ var nodeUtil = function () {
 }();
 
 module.exports = nodeUtil;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(42)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
 
 /***/ }),
 /* 139 */
@@ -10142,11 +10146,11 @@ module.exports = overArg;
 /***/ (function(module, exports, __webpack_require__) {
 
 var DataView = __webpack_require__(144),
-    Map = __webpack_require__(38),
+    Map = __webpack_require__(39),
     Promise = __webpack_require__(145),
     Set = __webpack_require__(146),
     WeakMap = __webpack_require__(147),
-    baseGetTag = __webpack_require__(17),
+    baseGetTag = __webpack_require__(18),
     toSource = __webpack_require__(58);
 
 /** `Object#toString` result references. */
@@ -10254,7 +10258,7 @@ module.exports = WeakMap;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isStrictComparable = __webpack_require__(66),
-    keys = __webpack_require__(41);
+    keys = __webpack_require__(42);
 
 /**
  * Gets the property names, values, and compare flags of `object`.
@@ -10285,10 +10289,10 @@ module.exports = getMatchData;
 var baseIsEqual = __webpack_require__(59),
     get = __webpack_require__(150),
     hasIn = __webpack_require__(156),
-    isKey = __webpack_require__(45),
+    isKey = __webpack_require__(46),
     isStrictComparable = __webpack_require__(66),
     matchesStrictComparable = __webpack_require__(67),
-    toKey = __webpack_require__(31);
+    toKey = __webpack_require__(33);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -10419,7 +10423,7 @@ module.exports = memoizeCapped;
 /* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(40);
+var MapCache = __webpack_require__(41);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -10530,10 +10534,10 @@ module.exports = toString;
 /* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _Symbol = __webpack_require__(26),
+var _Symbol = __webpack_require__(28),
     arrayMap = __webpack_require__(53),
     isArray = __webpack_require__(11),
-    isSymbol = __webpack_require__(30);
+    isSymbol = __webpack_require__(32);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -10633,8 +10637,8 @@ var castPath = __webpack_require__(69),
     isArguments = __webpack_require__(62),
     isArray = __webpack_require__(11),
     isIndex = __webpack_require__(64),
-    isLength = __webpack_require__(43),
-    toKey = __webpack_require__(31);
+    isLength = __webpack_require__(44),
+    toKey = __webpack_require__(33);
 
 /**
  * Checks if `path` exists on `object`.
@@ -10674,8 +10678,8 @@ module.exports = hasPath;
 
 var baseProperty = __webpack_require__(160),
     basePropertyDeep = __webpack_require__(161),
-    isKey = __webpack_require__(45),
-    toKey = __webpack_require__(31);
+    isKey = __webpack_require__(46),
+    toKey = __webpack_require__(33);
 
 /**
  * Creates a function that returns the value at `path` of a given object.
@@ -10750,7 +10754,7 @@ module.exports = basePropertyDeep;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseEach = __webpack_require__(163),
-    isArrayLike = __webpack_require__(44);
+    isArrayLike = __webpack_require__(45);
 
 /**
  * The base implementation of `_.map` without support for iteratee shorthands.
@@ -10796,7 +10800,7 @@ module.exports = baseEach;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseFor = __webpack_require__(165),
-    keys = __webpack_require__(41);
+    keys = __webpack_require__(42);
 
 /**
  * The base implementation of `_.forOwn` without support for iteratee shorthands.
@@ -10867,7 +10871,7 @@ module.exports = createBaseFor;
 /* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArrayLike = __webpack_require__(44);
+var isArrayLike = __webpack_require__(45);
 
 /**
  * Creates a `baseEach` or `baseEachRight` function.
@@ -11702,8 +11706,8 @@ registerBlockType("premium/banner", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(13);
 
 
@@ -13854,8 +13858,8 @@ registerBlockType("premium/button", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(15);
 
 
@@ -15375,7 +15379,7 @@ registerBlockType("premium/countup", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(15);
@@ -20311,7 +20315,7 @@ registerBlockType("premium/icon", {
   category: "premium-blocks",
   attributes: iconAttrs,
   supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["i" /* icon */]
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["j" /* icon */]
   },
   edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
   save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
@@ -20326,14 +20330,14 @@ registerBlockType("premium/icon", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(16);
 
@@ -21313,8 +21317,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var ReactIs = __webpack_require__(71);
 var assign = __webpack_require__(20);
 
-var ReactPropTypesSecret = __webpack_require__(47);
-var checkPropTypes = __webpack_require__(48);
+var ReactPropTypesSecret = __webpack_require__(48);
+var checkPropTypes = __webpack_require__(49);
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function printWarning() {};
@@ -21886,7 +21890,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
 
 
-var ReactPropTypesSecret = __webpack_require__(47);
+var ReactPropTypesSecret = __webpack_require__(48);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -22145,7 +22149,7 @@ if (process.env.NODE_ENV !== "production") {
     'use strict';
 
     var _assign = __webpack_require__(20);
-    var checkPropTypes = __webpack_require__(48);
+    var checkPropTypes = __webpack_require__(49);
 
     // TODO: this is special because it gets imported during build.
 
@@ -26572,7 +26576,7 @@ exports.unstable_shouldYield = function () {
 };exports.unstable_pauseExecution = function () {};exports.unstable_getFirstCallbackNode = function () {
   return d;
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40)))
 
 /***/ }),
 /* 196 */
@@ -27278,7 +27282,7 @@ if (process.env.NODE_ENV !== "production") {
     exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
   })();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(39)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(40)))
 
 /***/ }),
 /* 197 */
@@ -27292,7 +27296,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(9);var _assign=__webpack_require__(20);var checkPropTypes=__webpack_require__(48);var scheduler=__webpack_require__(72);var tracing=__webpack_require__(198);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(9);var _assign=__webpack_require__(20);var checkPropTypes=__webpack_require__(49);var scheduler=__webpack_require__(72);var tracing=__webpack_require__(198);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -33928,7 +33932,7 @@ registerBlockType("premium/icon-box", {
   category: "premium-blocks",
   attributes: iconBoxAttrs,
   supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["j" /* iconBox */]
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["k" /* iconBox */]
   },
   edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
   save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
@@ -33944,16 +33948,16 @@ registerBlockType("premium/icon-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(15);
 
 
@@ -38343,7 +38347,7 @@ registerBlockType("premium/maps", {
   category: "premium-blocks",
   attributes: mapAttrs,
   supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["l" /* maps */]
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["m" /* maps */]
   },
   edit: PremiumMap,
   save: function save(props) {
@@ -38995,7 +38999,7 @@ registerBlockType("premium/pricing-table", {
     category: "premium-blocks",
     attributes: pricingAttrs,
     supports: {
-        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["n" /* pricingTable */]
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["o" /* pricingTable */]
     },
     edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
     save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
@@ -39011,9 +39015,9 @@ registerBlockType("premium/pricing-table", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(8);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -42636,10 +42640,10 @@ registerBlockType("premium/container", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(8);
 
 
 
@@ -43833,7 +43837,7 @@ registerBlockType("premium/testimonial", {
   category: "premium-blocks",
   attributes: testimonialsAttrs,
   supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["q" /* testimonial */]
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["r" /* testimonial */]
   },
   edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */],
   save: __WEBPACK_IMPORTED_MODULE_2__save__["a" /* default */],
@@ -43848,10 +43852,10 @@ registerBlockType("premium/testimonial", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_default_image__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_default_image__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(13);
 
@@ -44620,9 +44624,9 @@ var edit = function edit(props) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(51);
 
 
 
@@ -44826,9 +44830,9 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(51);
 
 
 
@@ -45681,9 +45685,9 @@ var deprecatedContent = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(15);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -46620,7 +46624,7 @@ var edit = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(35);
 
 
 
@@ -46808,7 +46812,7 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(35);
 
 
 var className = "premium-video-box";
@@ -47984,7 +47988,7 @@ registerBlockType("premium/person", {
     category: "premium-blocks",
     attributes: personAttrs,
     supports: {
-        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["m" /* person */]
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["n" /* person */]
     },
     edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
     save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */]
@@ -47997,7 +48001,7 @@ registerBlockType("premium/person", {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(23);
 
 
 
@@ -48263,13 +48267,13 @@ var save = function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_default_image__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_default_image__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_times__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_times___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_lodash_times__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -50396,8 +50400,8 @@ module.exports = toFinite;
 /* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(27),
-    isSymbol = __webpack_require__(30);
+var isObject = __webpack_require__(29),
+    isSymbol = __webpack_require__(32);
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
@@ -50712,7 +50716,7 @@ registerBlockType("premium/icon-list", {
     category: "premium-blocks",
     attributes: iconListAttrs,
     supports: {
-        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["k" /* iconList */]
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["l" /* iconList */]
     },
     edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
     save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */]
@@ -50896,15 +50900,15 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_times__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_times___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_times__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styling__ = __webpack_require__(258);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_margin_responsive__ = __webpack_require__(259);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_range_responsive__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_range_responsive__ = __webpack_require__(24);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -51841,8 +51845,8 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__generateCss__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__generateCssUnit__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__generateCss__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__generateCssUnit__ = __webpack_require__(38);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -52075,8 +52079,8 @@ function styling(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_responsive__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_responsive__ = __webpack_require__(25);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -52927,7 +52931,7 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_padding_responsive__ = __webpack_require__(264);
@@ -53974,8 +53978,8 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(38);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -54213,8 +54217,8 @@ function styling(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_responsive__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_responsive__ = __webpack_require__(25);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -54610,7 +54614,7 @@ registerBlockType("premium/progress-bar", {
     category: "premium-blocks",
     attributes: progressBarAttrs,
     supports: {
-        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["o" /* progressBar */]
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["p" /* progressBar */]
     },
     edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
     save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */]
@@ -54737,9 +54741,9 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(268);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__ = __webpack_require__(36);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55510,8 +55514,8 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(38);
 
 
 
@@ -56105,7 +56109,7 @@ registerBlockType("premium/tab", {
   category: "premium-blocks",
   attributes: tabAttrs,
   supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["p" /* tab */]
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["q" /* tab */]
   },
   edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
   save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */]
@@ -56218,13 +56222,13 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(272);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(36);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57533,8 +57537,8 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(38);
 
 
 
@@ -57824,6 +57828,471 @@ function styling(props) {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (styling);
+
+/***/ }),
+/* 273 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__icons__ = __webpack_require__(3);
+
+
+// import save from "./save";
+
+
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+
+var fancyTextAttrs = {
+  block_id: {
+    type: "string"
+  },
+  classMigrate: {
+    type: "boolean",
+    default: false
+  },
+  align: {
+    type: "string",
+    default: "center"
+  },
+  prefix: {
+    type: "string",
+    default: "This is"
+  },
+  repeaterFancyText: {
+    type: "array",
+    default: [{ title: __("Designer"), edit: false }, { title: __("Developer"), edit: false }, { title: __("Awesome"), edit: false }]
+  }
+};
+
+registerBlockType("premium/fancy-text", {
+  title: __("fancy Text"),
+  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__icons__["a" /* default */], { icon: "fancy-text" }),
+  category: "premium-blocks",
+  attributes: fancyTextAttrs,
+  supports: {
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["i" /* fancyText */]
+  },
+  edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */]
+  // save: save
+});
+
+/***/ }),
+/* 274 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__fonticonpicker_react_fonticonpicker__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__fonticonpicker_react_fonticonpicker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_text_shadow__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_sortable_hoc__ = __webpack_require__(36);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+// import styling from "./styling"
+
+
+
+
+
+
+
+
+
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var _wp$editor = wp.editor,
+    BlockControls = _wp$editor.BlockControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    InspectorControls = _wp$editor.InspectorControls,
+    ColorPalette = _wp$editor.ColorPalette,
+    RichText = _wp$editor.RichText;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    SelectControl = _wp$components.SelectControl,
+    TextareaControl = _wp$components.TextareaControl,
+    TextControl = _wp$components.TextControl,
+    RangeControl = _wp$components.RangeControl,
+    ToggleControl = _wp$components.ToggleControl,
+    TabPanel = _wp$components.TabPanel;
+
+
+var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_8_react_sortable_hoc__["b" /* SortableElement */])(function (_ref) {
+    var edit = _ref.edit,
+        removeItem = _ref.removeItem,
+        newIndex = _ref.newIndex,
+        value = _ref.value,
+        changeFancyValue = _ref.changeFancyValue,
+        items = _ref.items;
+    return wp.element.createElement(
+        "div",
+        { className: "premium-progress-bar-repeater" },
+        wp.element.createElement(
+            "div",
+            { className: "premium-progress-bar__container " + newIndex },
+            wp.element.createElement("span", { className: "premium-progress-bar__dragHandle" }),
+            wp.element.createElement(
+                "div",
+                { className: "premium-progress-bar__content",
+                    onClick: function onClick() {
+                        return edit(newIndex);
+                    } },
+                value.title,
+                " "
+            ),
+            items.length != 1 ? wp.element.createElement("button", { className: "premium-progress-bar__trashicon fa fa-trash",
+                onClick: function onClick() {
+                    return removeItem(newIndex, value);
+                } }) : ""
+        ),
+        wp.element.createElement(
+            "div",
+            { className: "premium-progress-bar-repeater-controls " + (value.edit ? "editable" : "") },
+            wp.element.createElement(TextControl, {
+                label: __("Fancy String"),
+                value: value.title,
+                onChange: function onChange(newText) {
+                    return changeFancyValue(newText, newIndex);
+                }
+            })
+        )
+    );
+});
+
+var SortableList = Object(__WEBPACK_IMPORTED_MODULE_8_react_sortable_hoc__["a" /* SortableContainer */])(function (_ref2) {
+    var items = _ref2.items,
+        removeItem = _ref2.removeItem,
+        edit = _ref2.edit,
+        changeFancyValue = _ref2.changeFancyValue;
+
+    return wp.element.createElement(
+        "div",
+        null,
+        " ",
+        items.map(function (value, index) {
+            return wp.element.createElement(SortableItem, { key: "item-" + value,
+                index: index,
+                newIndex: index,
+                value: value,
+                removeItem: removeItem,
+                edit: edit,
+                changeFancyValue: changeFancyValue,
+                items: items
+            });
+        }),
+        " "
+    );
+});
+
+var edit = function (_Component) {
+    _inherits(edit, _Component);
+
+    function edit() {
+        _classCallCheck(this, edit);
+
+        var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+
+        _this.state = {
+            txt: '',
+            fullTxt: '',
+            loopNum: 0,
+            isDeleting: false
+        };
+        _this.renderFancyText = _this.renderFancyText.bind(_this);
+        return _this;
+    }
+
+    _createClass(edit, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            // Assigning id in the attribute.
+            this.props.setAttributes({ block_id: this.props.clientId });
+            this.props.setAttributes({ classMigrate: true });
+            // Pushing Style tag for this block css.
+            // const $style = document.createElement("style")
+            // $style.setAttribute("id", "premium-style-tab-" + this.props.clientId)
+            // document.head.appendChild($style)
+            this.renderFancyText();
+        }
+    }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate(prevProps, prevState) {
+            var _this2 = this;
+
+            var delta = 200 - Math.random() * 100;
+
+            if (this.state.isDeleting) {
+                delta /= 2;
+            }
+            if (!this.state.isDeleting && this.state.txt === this.state.fullTxt) {
+                delta = 2000;
+            } else if (this.state.isDeleting && this.state.txt === '') {
+                delta = 200;
+            }
+
+            setTimeout(function () {
+                return _this2.renderFancyText();
+            }, delta);
+        }
+    }, {
+        key: "renderFancyText",
+        value: function renderFancyText() {
+            var repeaterFancyText = this.props.attributes.repeaterFancyText;
+
+            if (!repeaterFancyText) return null;
+            // let i = 0;
+            // let speed = 30;
+            var txt = repeaterFancyText.map(function (item, index) {
+                return item.title;
+            });
+            // console.log('tt',txt);
+            // for(i=0;i< txt.length;i++){
+            //     fancyString(txt[i]);
+            //     // delay(4000);
+            //     reversefancyString(txt[i]);
+            //     // delay(1000);
+            // }
+            var i = this.state.loopNum % txt.length;
+
+            var setFullTxt = txt[i];
+
+            var copy = _extends({}, this.state);
+
+            if (this.state.isDeleting) {
+                copy.txt = setFullTxt.substring(0, copy.txt.length - 1);
+            } else {
+                copy.txt = setFullTxt.substring(0, copy.txt.length + 1);
+            }
+
+            if (!this.state.isDeleting && this.state.txt === setFullTxt) {
+
+                copy.isDeleting = true;
+            } else if (copy.isDeleting && this.state.txt === '') {
+                copy.isDeleting = false;
+                console.log('looping', copy.loopNum, copy.delta);
+                copy.loopNum = copy.loopNum + 1;
+            }
+            copy.fullTxt = setFullTxt;
+            console.log('copytxt', copy);
+            this.setState(function () {
+                return copy;
+            }, console.log('delta', this.state.delta));
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                attributes = _props.attributes,
+                setAttributes = _props.setAttributes,
+                isSelected = _props.isSelected;
+            var align = attributes.align,
+                className = attributes.className,
+                prefix = attributes.prefix,
+                repeaterFancyText = attributes.repeaterFancyText;
+
+            // var element = document.getElementById("premium-style-tab-" + this.props.clientId)
+
+            // if (null != element && "undefined" != typeof element) {
+            //     element.innerHTML = styling(this.props)
+            // }
+
+
+            var changeFancyValue = function changeFancyValue(newText, newIndex) {
+                setAttributes({
+                    repeaterFancyText: onRepeaterChange("title", newText, newIndex)
+                });
+            };
+            var onSortEndSingle = function onSortEndSingle(_ref3) {
+                var oldIndex = _ref3.oldIndex,
+                    newIndex = _ref3.newIndex;
+
+                var arrayItem = repeaterFancyText.map(function (cont) {
+                    return cont;
+                });
+
+                var array = Object(__WEBPACK_IMPORTED_MODULE_8_react_sortable_hoc__["c" /* arrayMove */])(arrayItem, oldIndex, newIndex);
+                setAttributes({
+                    repeaterFancyText: array
+
+                });
+            };
+
+            var shouldCancelStart = function shouldCancelStart(e) {
+                // Prevent sorting from being triggered if target is input or button
+                if (['button', 'div', 'input', 'textarea', 'i'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+                    return true; // Return true to cancel sorting
+                }
+            };
+
+            var onRepeaterChange = function onRepeaterChange(attr, value, index) {
+                var items = repeaterFancyText;
+                return items.map(function (item, currIndex) {
+                    if (index == currIndex) {
+                        item[attr] = value;
+                    }
+                    return item;
+                });
+            };
+
+            var _edit = function _edit(index) {
+                return repeaterFancyText.map(function (item, i) {
+                    if (index == i) {
+                        setAttributes({
+                            repeaterFancyText: onRepeaterChange("edit", item.edit ? false : true, index)
+                        });
+                    } else {
+                        setAttributes({
+                            repeaterFancyText: onRepeaterChange("edit", false, i)
+                        });
+                    }
+                });
+            };
+
+            var _removeItem = function _removeItem(index, item) {
+                var array = repeaterFancyText.map(function (cont, currIndex) {
+                    return cont;
+                }).filter(function (f, i) {
+                    return i != index;
+                });
+                setAttributes({
+                    repeaterFancyText: array
+                });
+            };
+
+            var addNewFancyText = function addNewFancyText() {
+                setAttributes({
+                    repeaterFancyText: repeaterFancyText.concat([{
+                        title: __("Title"),
+                        edit: true
+                    }])
+                });
+            };
+
+            var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-fancy-text");
+            return [isSelected && wp.element.createElement(
+                BlockControls,
+                null,
+                wp.element.createElement(AlignmentToolbar, {
+                    value: align,
+                    onChange: function onChange(value) {
+                        setAttributes({ align: value });
+                    }
+                })
+            ), isSelected && wp.element.createElement(
+                InspectorControls,
+                null,
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("General Settings"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(TextControl, {
+                        label: __("Prefix"),
+                        value: prefix,
+                        onChange: function onChange(newText) {
+                            return setAttributes({ prefix: newText });
+                        }
+                    }),
+                    wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-fancy-text-control-content" },
+                            wp.element.createElement(
+                                "label",
+                                null,
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-fancy-text-control-title" },
+                                    " Fancy Text "
+                                )
+                            ),
+                            wp.element.createElement(SortableList, { items: repeaterFancyText,
+                                onSortEnd: function onSortEnd(o, n) {
+                                    return onSortEndSingle(o, n);
+                                },
+                                removeItem: function removeItem(value) {
+                                    return _removeItem(value);
+                                },
+                                edit: function edit(value) {
+                                    return _edit(value);
+                                },
+
+                                shouldCancelStart: shouldCancelStart,
+                                changeFancyValue: changeFancyValue,
+                                helperClass: "premium-fancy-text__sortableHelper" }),
+                            wp.element.createElement(
+                                "div",
+                                { className: "premium-fancy-text-btn__wrap" },
+                                wp.element.createElement(
+                                    "button",
+                                    {
+                                        className: "premium-fancy-text-btn",
+                                        onClick: function onClick() {
+                                            return addNewFancyText();
+                                        } },
+                                    wp.element.createElement("i", { className: "dashicons dashicons-plus premium-fancy-text-icon" }),
+                                    __("Add New Item")
+                                )
+                            )
+                        ),
+                        wp.element.createElement("br", null)
+                    )
+                )
+            ), wp.element.createElement(
+                "div",
+                { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId), style: {
+                        textAlign: align
+                    } },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-fancy-text", style: {
+                            textAlign: align
+                        } },
+                    wp.element.createElement(
+                        "span",
+                        { className: "premium-fancy-text-prefix-text" },
+                        prefix
+                    ),
+                    wp.element.createElement(
+                        "span",
+                        { className: "premium-fancy-text-title", id: "demo" },
+                        this.state.txt
+                    )
+                )
+            )];
+        }
+    }]);
+
+    return edit;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ })
 /******/ ]);

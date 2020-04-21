@@ -3119,3 +3119,17 @@ color: #23282d;
 .premium-tab-vertical .premium-tab-content-wrap{
   float: left;
 }
+/**************** Premium Fancy Text *****************/
+/*******************************************************/
+.premium-fancy-text-prefix-text{
+  color: #54595f;
+    font-family: "Roboto", Sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+}
+.premium-fancy-text-title{
+  color: #6ec1e4;
+    font-family: "Roboto", Sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+}

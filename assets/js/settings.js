@@ -19,7 +19,8 @@ export const {
   iconList,
   contentSwitcher,
   progressBar,
-  tab
+  tab,
+  fancyText
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys
