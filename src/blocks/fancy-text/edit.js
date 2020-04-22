@@ -1,5 +1,5 @@
 import classnames from "classnames"
-// import styling from "./styling"
+import styling from "./styling"
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import iconsList from "../../components/premium-icons-list";
@@ -36,7 +36,8 @@ const {
     TextControl,
     RangeControl,
     ToggleControl,
-    TabPanel
+    TabPanel,
+    Toolbar
 } = wp.components
 
 const SortableItem = SortableElement(({
@@ -129,20 +130,20 @@ class edit extends Component {
         this.props.setAttributes({ block_id: this.props.clientId })
         this.props.setAttributes({ classMigrate: true })
         // Pushing Style tag for this block css.
-        // const $style = document.createElement("style")
-        // $style.setAttribute("id", "premium-style-tab-" + this.props.clientId)
-        // document.head.appendChild($style)
+        const $style = document.createElement("style")
+        $style.setAttribute("id", "premium-style-fancy-text-" + this.props.clientId)
+        document.head.appendChild($style)
         this.renderFancyText()
     }
 
     componentDidUpdate(prevProps, prevState) {
-        let delta = 200 - Math.random() * 100;
+        let delta = 300;
 
         if (this.state.isDeleting) { delta /= 2; }
        if (!this.state.isDeleting && this.state.txt === this.state.fullTxt) {
-       delta = 2000;
+       delta = 3000;
        } else if (this.state.isDeleting && this.state.txt === '') {
-      delta = 200;
+      delta = 300;
        }
 
         setTimeout(() => this.renderFancyText(), delta); 
@@ -151,16 +152,7 @@ class edit extends Component {
     renderFancyText  () {
         const { repeaterFancyText } = this.props.attributes;
         if (!repeaterFancyText) return null;
-        // let i = 0;
-        // let speed = 30;
         let txt =  repeaterFancyText.map((item, index) => {return item.title})
-        // console.log('tt',txt);
-        // for(i=0;i< txt.length;i++){
-        //     fancyString(txt[i]);
-        //     // delay(4000);
-        //     reversefancyString(txt[i]);
-        //     // delay(1000);
-        // }
         let i = this.state.loopNum % txt.length;
 		
 		let setFullTxt = txt[i];
@@ -173,15 +165,14 @@ class edit extends Component {
         copy.txt = setFullTxt.substring(0, copy.txt.length + 1);
         }
 
-      
         if (!this.state.isDeleting && this.state.txt === setFullTxt) {
       
         copy.isDeleting = true;
-        } else if (copy.isDeleting && this.state.txt === '') {
+        } 
+        else if (copy.isDeleting && this.state.txt === '') {
         copy.isDeleting = false;
         console.log('looping', copy.loopNum, copy.delta)
         copy.loopNum = copy.loopNum + 1;
-   
         }
         copy.fullTxt = setFullTxt;
         console.log('copytxt', copy)
@@ -196,16 +187,83 @@ class edit extends Component {
             align,
             className,
             prefix,
-            repeaterFancyText
+            suffix,
+            repeaterFancyText,
+            effect,
+            fancyTextColor,
+            fancyTextfontSize,
+            fancyTextfontSizeMobile,
+            fancyTextfontSizeTablet,
+            fancyTextfontSizeType,
+            fancyTextWeight,
+            fancyTextUpper,
+            fancyTextStyle,
+            fancyTextLetter,
+            fancyTextBGColor,
+            shadowColor,
+            shadowBlur,
+            shadowHorizontal,
+            shadowVertical,
+            cursorColor,
+            textColor,
+            TextfontSize,
+            TextfontSizeMobile,
+            TextfontSizeTablet,
+            TextfontSizeType,
+            TextWeight,
+            TextLetter,
+            TextUpper,
+            TextStyle,
+            TextBGColor
         } = attributes
 
+        const ALIGNS = ["left", "center", "right"];
+        const EFFECT = [{
+                label: __("Typing"),
+                value: "typing"
+            },
+            {
+                label: __("Slide"),
+                value: "slide"
+            }
+        ];
+        var element = document.getElementById("premium-style-fancy-text-" + this.props.clientId)
 
-        // var element = document.getElementById("premium-style-tab-" + this.props.clientId)
-
-        // if (null != element && "undefined" != typeof element) {
-        //     element.innerHTML = styling(this.props)
-        // }
-
+        if (null != element && "undefined" != typeof element) {
+            element.innerHTML = styling(this.props)
+        }
+        const onResetClickfancyTextTypo = () => {
+            setAttributes({
+                fancyTextWeight: 600,
+                fancyTextfontSizeType: "px",
+                fancyTextfontSize: "40",
+                fancyTextfontSizeMobile: "40",
+                fancyTextfontSizeTablet: "40",
+                fancyTextStyle: "normal",
+                fancyTextLetter: "0",
+                fancyTextUpper: false
+            });
+        }
+        const onResetClickTextTypo = () => {
+            setAttributes({
+                TextWeight: 600,
+                TextfontSizeType: "px",
+                TextfontSize: "40",
+                TextfontSizeMobile: "40",
+                TextfontSizeTablet: "40",
+                TextStyle: "normal",
+                TextLetter: "0",
+                TextUpper: false
+            });
+        }
+        const onResetClickLabelTextShadow = () => {
+            setAttributes({
+                shadowColor: "",
+                shadowBlur: "0",
+                shadowHorizontal: "0",
+                shadowVertical: "0",
+            });
+        }
 
         const changeFancyValue = (newText, newIndex) => {
             setAttributes({
@@ -314,7 +372,7 @@ class edit extends Component {
                     >
                         <TextControl
                             label={
-                                __("Prefix")
+                                __("Prefix Text")
                             }
                             value={prefix}
                             onChange={newText => setAttributes({ prefix: newText })}
@@ -322,7 +380,7 @@ class edit extends Component {
                         < Fragment >
                             <div className="premium-fancy-text-control-content" >
                                 <label >
-                                    <span className="premium-fancy-text-control-title" > Fancy Text </span>
+                                    <span className="premium-fancy-text-control-title" > Fancy Strings </span>
                                 </label>
                                 < SortableList items={
                                     repeaterFancyText
@@ -359,6 +417,162 @@ class edit extends Component {
                             </div>
                             <br />
                         </Fragment>
+                        <TextControl
+                            label={
+                                __("Suffix Text")
+                            }
+                            value={suffix}
+                            onChange={newText => setAttributes({ suffix: newText })}
+                        />
+                        <p>{__("AlignmentToolbar")}</p>
+                        <Toolbar
+                            controls={ALIGNS.map(contentAlign => ({
+                                icon: "editor-align" + contentAlign,
+                                isActive: contentAlign === align,
+                                onClick: () => setAttributes({ align: contentAlign })
+                            }))}
+                        />
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Advanced Settings")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <SelectControl
+                            label={__("Effect")}
+                            options={EFFECT}
+                            value={effect}
+                            onChange={newValue => setAttributes({ effect: newValue })}
+                        />
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Fancy Text Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <p>{__("Color")}</p>
+                        <ColorPalette
+                            value={fancyTextColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    fancyTextColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <PremiumTypo
+                            components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                            setAttributes={setAttributes}
+                            fontSizeType={{ value: fancyTextfontSizeType, label: __("fancyTextfontSizeType") }}
+                            fontSize={{ value: fancyTextfontSize, label: __("fancyTextfontSize") }}
+                            fontSizeMobile={{ value: fancyTextfontSizeMobile, label: __("fancyTextfontSizeMobile") }}
+                            fontSizeTablet={{ value: fancyTextfontSizeTablet, label: __("fancyTextfontSizeTablet") }}
+                            weight={fancyTextWeight}
+                            style={fancyTextStyle}
+                            spacing={fancyTextLetter}
+                            upper={fancyTextUpper}
+                            onChangeWeight={newWeight =>
+                                setAttributes({ fancyTextWeight: newWeight || 500 })
+                            }
+                            onChangeStyle={newStyle =>
+                                setAttributes({ fancyTextStyle: newStyle })
+                            }
+                            onChangeSpacing={newValue =>
+                                setAttributes({ fancyTextLetter: newValue })
+                            }
+                            onChangeUpper={check => setAttributes({ fancyTextUpper: check })}
+                            onResetClick={onResetClickfancyTextTypo}
+                        />
+                        <p>{__("Background Color")}</p>
+                        <ColorPalette
+                            value={fancyTextBGColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    fancyTextBGColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <PremiumTextShadow
+                            color={shadowColor}
+                            blur={shadowBlur}
+                            horizontal={shadowHorizontal}
+                            vertical={shadowVertical}
+                            onChangeColor={newColor =>
+                                setAttributes({ shadowColor: newColor.hex })
+                            }
+                            onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
+                            onChangehHorizontal={newValue =>
+                                setAttributes({ shadowHorizontal: newValue })
+                            }
+                            onChangeVertical={newValue =>
+                                setAttributes({ shadowVertical: newValue })
+                            }
+                            onResetClick={onResetClickLabelTextShadow}
+                        />
+                        {effect == 'typing' && (
+                            <Fragment>
+                                <p>{__("Cursor Color")}</p>
+                                <ColorPalette
+                                    value={cursorColor}
+                                    onChange={newValue =>
+                                        setAttributes({
+                                            cursorColor: newValue
+                                        })
+                                    }
+                                    allowReset={true}
+                                />
+                            </Fragment>
+                        )}
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Prefix & Suffix Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <p>{__("Color")}</p>
+                        <ColorPalette
+                            value={textColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    textColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        <PremiumTypo
+                            components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                            setAttributes={setAttributes}
+                            fontSizeType={{ value: TextfontSizeType, label: __("TextfontSizeType") }}
+                            fontSize={{ value: TextfontSize, label: __("TextfontSize") }}
+                            fontSizeMobile={{ value: TextfontSizeMobile, label: __("TextfontSizeMobile") }}
+                            fontSizeTablet={{ value: TextfontSizeTablet, label: __("TextfontSizeTablet") }}
+                            weight={TextWeight}
+                            style={TextStyle}
+                            spacing={TextLetter}
+                            upper={TextUpper}
+                            onChangeWeight={newWeight =>
+                                setAttributes({ TextWeight: newWeight || 500 })
+                            }
+                            onChangeStyle={newStyle =>
+                                setAttributes({ TextStyle: newStyle })
+                            }
+                            onChangeSpacing={newValue =>
+                                setAttributes({ TextLetter: newValue })
+                            }
+                            onChangeUpper={check => setAttributes({ TextUpper: check })}
+                            onResetClick={onResetClickTextTypo}
+                        />
+                        <p>{__("Background Color")}</p>
+                        <ColorPalette
+                            value={TextBGColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    TextBGColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
                     </PanelBody>
                 </InspectorControls>
             ),
@@ -371,8 +585,10 @@ class edit extends Component {
                 <div className={`premium-fancy-text`} style={{
                     textAlign: align,
                 }}>
-                    <span className={`premium-fancy-text-prefix-text`}>{prefix}</span>
-                    <span className={`premium-fancy-text-title`} id="demo">{this.state.txt}</span>
+                    <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
+                    <span className={`premium-fancy-text-title`} id="demo"> {this.state.txt}</span>
+                    <span className={`premium-fancy-text-cursor`}> | </span>
+                    <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
                 </div>
             </div>
         ]

@@ -1738,10 +1738,7 @@ a.premium-dheading-block__link:hover {
 .premium-person__inner {
   z-index: 1;
   overflow: hidden;
-<<<<<<< HEAD
   /* text-align: center; */
-=======
->>>>>>> ac73b66a303b057279fd35141176eddf94ff87cc
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -2047,12 +2044,9 @@ a.premium-dheading-block__link:hover {
   transition: -webkit-transform 0.35s;
   transition: transform 0.35s;
   transition: transform 0.35s, -webkit-transform 0.35s;
-<<<<<<< HEAD
   -webkit-transform: translate3d(0, 200%, 0);
   transform: translate3d(0, 200%, 0);
   /* text-align: center; */
-=======
->>>>>>> ac73b66a303b057279fd35141176eddf94ff87cc
 }
 .premium-person__effect1 .premium-person__name_wrap,
 .premium-person__effect1 .premium-person__title_wrap,
@@ -3122,14 +3116,47 @@ color: #23282d;
 /**************** Premium Fancy Text *****************/
 /*******************************************************/
 .premium-fancy-text-prefix-text{
-  color: #54595f;
-    font-family: "Roboto", Sans-serif;
-    font-weight: 600;
-    font-size: 40px;
+  /* color: #54595f; */
+  font-family: "Roboto", Sans-serif;
+  /* font-weight: 600; */
+  /* font-size: 40px; */
 }
 .premium-fancy-text-title{
-  color: #6ec1e4;
-    font-family: "Roboto", Sans-serif;
-    font-weight: 600;
-    font-size: 40px;
+  /* color: #6ec1e4; */
+  font-family: "Roboto", Sans-serif;
+  /* font-weight: 600; */
+  /* font-size: 40px; */
+}
+.premium-fancy-text-cursor{
+  /* color: #6ec1e4; */
+  font-family: "Roboto",
+  Sans-serif;
+  font-weight: 600;
+  opacity: 1;
+  -webkit-animation: blink_cursor .7s infinite;
+  animation: blink_cursor .7s infinite;
+}
+@keyframes blink_cursor {
+  from, to {
+    color: transparent;
+  }
+}
+
+@-moz-keyframes blink_cursor {
+  from, to {
+    color: transparent;
+  }
+}
+
+@-webkit-keyframes blink_cursor {
+  from, to {
+    color: transparent;
+  }
+}
+.premium-fancy-text-suffix-text{
+  /* color: #54595f; */
+  font-family: "Roboto",
+  Sans-serif;
+  /* font-weight: 600; */
+  /* font-size: 40px; */
 }
