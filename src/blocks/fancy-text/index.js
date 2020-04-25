@@ -147,6 +147,18 @@ const fancyTextAttrs = {
   TextBGColor: {
     type: "string"
   },
+  loop:{
+    type:"boolean",
+    default:"true"
+  },
+  cursorShow:{
+    type: "boolean",
+    default: "true"
+  },
+  cursorMark:{
+    type: "string",
+    default:"|"
+  }
 };
 
 registerBlockType("premium/fancy-text", {

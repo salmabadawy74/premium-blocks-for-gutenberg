@@ -15,6 +15,7 @@ import {
 } from 'react-sortable-hoc';
 
 const { __ } = wp.i18n
+let isBoxUpdated = null;
 
 const {
     Component,
@@ -73,15 +74,9 @@ const SortableItem = SortableElement(({
             `premium-progress-bar-repeater-controls ${value.edit ? "editable" : ""}`
         } >
             <TextControl
-                label={
-                    __("Fancy String")
-                }
-                value={
-                    value.title
-                }
-                onChange={
-                    (newText) => changeFancyValue(newText, newIndex)
-                }
+                label={ __("Fancy String")}
+                value={ value.title}
+                onChange={(newText) => changeFancyValue(newText, newIndex)}
             />
         </div >
     </div>
@@ -122,8 +117,10 @@ class edit extends Component {
 			fullTxt: '',
 			loopNum: 0,
 			isDeleting: false,
-		}
+        }
+        this.speed = 80;
     this.renderFancyText = this.renderFancyText.bind(this);
+        // this.writeLoop = this.writeLoop.bind(this);
     }
     componentDidMount() {
         // Assigning id in the attribute.
@@ -134,23 +131,67 @@ class edit extends Component {
         $style.setAttribute("id", "premium-style-fancy-text-" + this.props.clientId)
         document.head.appendChild($style)
         this.renderFancyText()
+        // this.writeLoop()
     }
+    // componentDidUpdate() {        
+    // //     // console.log(this.props.attributes.repeaterFancyText);
+    // //     // this.writeLoop();
+    // //     // this.delay(this.speed);
+    //     // this.writeLoop()
+    // }
+    
+    // async typewriter (txt) {
+    //     document.querySelector('.kero').innerHTML = '';
+    //     for (let i = 0; i < txt.length; i++) {
+    //         await this.delay(20);
+    //         document.querySelector('.kero').innerHTML += txt.charAt(i);
+    //         await this.delay(this.speed);
+    //     }
+    // }
 
+    // async deleteWrite (txt) {
+    //     for (let i = txt.length; i > 0; i--) {
+    //         document.querySelector('.kero').innerHTML =
+    //             document.querySelector('.kero').innerHTML.slice(0, -1);
+    //         await this.delay(this.speed);
+    //     }
+    // }
+    
+    // async writeLoop() {
+    //     // document.querySelector('.kero').innerHTML = '';
+    //     const { repeaterFancyText } = this.props.attributes;
+    //     console.log(repeaterFancyText);
+    //     if (!repeaterFancyText) return null;
+    //     let typing =  repeaterFancyText.map((item, index) => {return item.title})
+    //     for (let i = 0; i < typing.length; i++) {
+    //         this.typewriter(typing[i]);
+    //         await this.delay(3000);
+    //         this.deleteWrite(typing[i]);
+    //         await this.delay(4000);
+    //         if (i === typing.length-1) {
+    //             i = -1;
+    //         }
+    //     }
+    // }
+    // delay(ms) {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => resolve(), ms);
+    //     })
+    // }
+    
     componentDidUpdate(prevProps, prevState) {
         let delta = 300;
-
         if (this.state.isDeleting) { delta /= 2; }
        if (!this.state.isDeleting && this.state.txt === this.state.fullTxt) {
-       delta = 3000;
+       delta = 9000;
        } else if (this.state.isDeleting && this.state.txt === '') {
       delta = 300;
        }
-
         setTimeout(() => this.renderFancyText(), delta); 
    }
 
     renderFancyText  () {
-        const { repeaterFancyText } = this.props.attributes;
+        const { repeaterFancyText, loop } = this.props.attributes;
         if (!repeaterFancyText) return null;
         let txt =  repeaterFancyText.map((item, index) => {return item.title})
         let i = this.state.loopNum % txt.length;
@@ -166,17 +207,33 @@ class edit extends Component {
         }
 
         if (!this.state.isDeleting && this.state.txt === setFullTxt) {
-      
-        copy.isDeleting = true;
+      if (txt.length === copy.loopNum + 1 && !loop) {
+          console.log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
+          
+          copy.isDeleting = false;
+      }
+      else {
+          copy.isDeleting = true;
+        }
         } 
         else if (copy.isDeleting && this.state.txt === '') {
         copy.isDeleting = false;
         console.log('looping', copy.loopNum, copy.delta)
-        copy.loopNum = copy.loopNum + 1;
+        console.log(txt.length);
+        if (txt.length === copy.loopNum + 1 && !loop) {
+            copy.loopNum = copy.loopNum ;
+        }
+            else{ 
+                if (txt.length === copy.loopNum + 1)
+                {
+                    copy.loopNum =-1;
+                }
+                copy.loopNum = copy.loopNum + 1
+            };
         }
         copy.fullTxt = setFullTxt;
         console.log('copytxt', copy)
-        this.setState(() => copy, console.log('delta', this.state.delta))
+        this.setState(() => copy)
     } 
 
 
@@ -214,7 +271,10 @@ class edit extends Component {
             TextLetter,
             TextUpper,
             TextStyle,
-            TextBGColor
+            TextBGColor,
+            loop,
+            cursorShow,
+            cursorMark
         } = attributes
 
         const ALIGNS = ["left", "center", "right"];
@@ -444,6 +504,27 @@ class edit extends Component {
                             value={effect}
                             onChange={newValue => setAttributes({ effect: newValue })}
                         />
+                        {effect=='typing'&&(
+                            <Fragment>
+                                <ToggleControl
+                                    label={__("Loop")}
+                                    checked={loop}
+                                    onChange={newCheck => setAttributes({ loop: newCheck })}
+                                />
+                                <ToggleControl
+                                    label={__("Show Cursor")}
+                                    checked={cursorShow}
+                                    onChange={newCheck => setAttributes({ cursorShow: newCheck })}
+                                />
+                                {cursorShow&&(
+                                    <TextControl
+                                        label={ __("Cursor Mark")}
+                                        value={cursorMark}
+                                        onChange={newCheck => setAttributes({ cursorMark: newCheck })}
+                                    />
+                                )}
+                            </Fragment>
+                        )}
                     </PanelBody>
                     <PanelBody
                         title={__("Fancy Text Style")}
@@ -586,8 +667,8 @@ class edit extends Component {
                     textAlign: align,
                 }}>
                     <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
-                    <span className={`premium-fancy-text-title`} id="demo"> {this.state.txt}</span>
-                    <span className={`premium-fancy-text-cursor`}> | </span>
+                    <span className={`premium-fancy-text-title kero`} id="demo"> {this.state.txt}</span>
+                    {cursorShow&& <span className={`premium-fancy-text-cursor`}> {cursorMark} </span>}
                     <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
                 </div>
             </div>

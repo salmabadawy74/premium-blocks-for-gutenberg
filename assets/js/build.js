@@ -57976,6 +57976,18 @@ var fancyTextAttrs = {
   },
   TextBGColor: {
     type: "string"
+  },
+  loop: {
+    type: "boolean",
+    default: "true"
+  },
+  cursorShow: {
+    type: "boolean",
+    default: "true"
+  },
+  cursorMark: {
+    type: "string",
+    default: "|"
   }
 };
 
@@ -58031,6 +58043,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var __ = wp.i18n.__;
+
+var isBoxUpdated = null;
+
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -58132,7 +58147,9 @@ var edit = function (_Component) {
             loopNum: 0,
             isDeleting: false
         };
+        _this.speed = 80;
         _this.renderFancyText = _this.renderFancyText.bind(_this);
+        // this.writeLoop = this.writeLoop.bind(this);
         return _this;
     }
 
@@ -58147,23 +58164,68 @@ var edit = function (_Component) {
             $style.setAttribute("id", "premium-style-fancy-text-" + this.props.clientId);
             document.head.appendChild($style);
             this.renderFancyText();
+            // this.writeLoop()
         }
+        // componentDidUpdate() {        
+        // //     // console.log(this.props.attributes.repeaterFancyText);
+        // //     // this.writeLoop();
+        // //     // this.delay(this.speed);
+        //     // this.writeLoop()
+        // }
+
+        // async typewriter (txt) {
+        //     document.querySelector('.kero').innerHTML = '';
+        //     for (let i = 0; i < txt.length; i++) {
+        //         await this.delay(20);
+        //         document.querySelector('.kero').innerHTML += txt.charAt(i);
+        //         await this.delay(this.speed);
+        //     }
+        // }
+
+        // async deleteWrite (txt) {
+        //     for (let i = txt.length; i > 0; i--) {
+        //         document.querySelector('.kero').innerHTML =
+        //             document.querySelector('.kero').innerHTML.slice(0, -1);
+        //         await this.delay(this.speed);
+        //     }
+        // }
+
+        // async writeLoop() {
+        //     // document.querySelector('.kero').innerHTML = '';
+        //     const { repeaterFancyText } = this.props.attributes;
+        //     console.log(repeaterFancyText);
+        //     if (!repeaterFancyText) return null;
+        //     let typing =  repeaterFancyText.map((item, index) => {return item.title})
+        //     for (let i = 0; i < typing.length; i++) {
+        //         this.typewriter(typing[i]);
+        //         await this.delay(3000);
+        //         this.deleteWrite(typing[i]);
+        //         await this.delay(4000);
+        //         if (i === typing.length-1) {
+        //             i = -1;
+        //         }
+        //     }
+        // }
+        // delay(ms) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => resolve(), ms);
+        //     })
+        // }
+
     }, {
         key: "componentDidUpdate",
         value: function componentDidUpdate(prevProps, prevState) {
             var _this2 = this;
 
             var delta = 300;
-
             if (this.state.isDeleting) {
                 delta /= 2;
             }
             if (!this.state.isDeleting && this.state.txt === this.state.fullTxt) {
-                delta = 3000;
+                delta = 9000;
             } else if (this.state.isDeleting && this.state.txt === '') {
                 delta = 300;
             }
-
             setTimeout(function () {
                 return _this2.renderFancyText();
             }, delta);
@@ -58171,7 +58233,9 @@ var edit = function (_Component) {
     }, {
         key: "renderFancyText",
         value: function renderFancyText() {
-            var repeaterFancyText = this.props.attributes.repeaterFancyText;
+            var _props$attributes = this.props.attributes,
+                repeaterFancyText = _props$attributes.repeaterFancyText,
+                loop = _props$attributes.loop;
 
             if (!repeaterFancyText) return null;
             var txt = repeaterFancyText.map(function (item, index) {
@@ -58190,18 +58254,31 @@ var edit = function (_Component) {
             }
 
             if (!this.state.isDeleting && this.state.txt === setFullTxt) {
+                if (txt.length === copy.loopNum + 1 && !loop) {
+                    console.log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
 
-                copy.isDeleting = true;
+                    copy.isDeleting = false;
+                } else {
+                    copy.isDeleting = true;
+                }
             } else if (copy.isDeleting && this.state.txt === '') {
                 copy.isDeleting = false;
                 console.log('looping', copy.loopNum, copy.delta);
-                copy.loopNum = copy.loopNum + 1;
+                console.log(txt.length);
+                if (txt.length === copy.loopNum + 1 && !loop) {
+                    copy.loopNum = copy.loopNum;
+                } else {
+                    if (txt.length === copy.loopNum + 1) {
+                        copy.loopNum = -1;
+                    }
+                    copy.loopNum = copy.loopNum + 1;
+                };
             }
             copy.fullTxt = setFullTxt;
             console.log('copytxt', copy);
             this.setState(function () {
                 return copy;
-            }, console.log('delta', this.state.delta));
+            });
         }
     }, {
         key: "render",
@@ -58240,7 +58317,10 @@ var edit = function (_Component) {
                 TextLetter = attributes.TextLetter,
                 TextUpper = attributes.TextUpper,
                 TextStyle = attributes.TextStyle,
-                TextBGColor = attributes.TextBGColor;
+                TextBGColor = attributes.TextBGColor,
+                loop = attributes.loop,
+                cursorShow = attributes.cursorShow,
+                cursorMark = attributes.cursorMark;
 
 
             var ALIGNS = ["left", "center", "right"];
@@ -58471,7 +58551,32 @@ var edit = function (_Component) {
                         onChange: function onChange(newValue) {
                             return setAttributes({ effect: newValue });
                         }
-                    })
+                    }),
+                    effect == 'typing' && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(ToggleControl, {
+                            label: __("Loop"),
+                            checked: loop,
+                            onChange: function onChange(newCheck) {
+                                return setAttributes({ loop: newCheck });
+                            }
+                        }),
+                        wp.element.createElement(ToggleControl, {
+                            label: __("Show Cursor"),
+                            checked: cursorShow,
+                            onChange: function onChange(newCheck) {
+                                return setAttributes({ cursorShow: newCheck });
+                            }
+                        }),
+                        cursorShow && wp.element.createElement(TextControl, {
+                            label: __("Cursor Mark"),
+                            value: cursorMark,
+                            onChange: function onChange(newCheck) {
+                                return setAttributes({ cursorMark: newCheck });
+                            }
+                        })
+                    )
                 ),
                 wp.element.createElement(
                     PanelBody,
@@ -58650,14 +58755,16 @@ var edit = function (_Component) {
                     ),
                     wp.element.createElement(
                         "span",
-                        { className: "premium-fancy-text-title", id: "demo" },
+                        { className: "premium-fancy-text-title kero", id: "demo" },
                         " ",
                         this.state.txt
                     ),
-                    wp.element.createElement(
+                    cursorShow && wp.element.createElement(
                         "span",
                         { className: "premium-fancy-text-cursor" },
-                        " | "
+                        " ",
+                        cursorMark,
+                        " "
                     ),
                     wp.element.createElement(
                         "span",
