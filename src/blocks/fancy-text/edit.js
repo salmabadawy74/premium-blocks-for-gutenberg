@@ -7,7 +7,7 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumRangeResponsive from "../../components/premium-range-responsive";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-
+import Typed from 'typed.js';
 import {
     SortableContainer,
     SortableElement,
@@ -113,14 +113,17 @@ class edit extends Component {
     constructor() {
         super(...arguments);
         this.state = {
-			txt: '',
-			fullTxt: '',
-			loopNum: 0,
-			isDeleting: false,
+			// txt: '',
+			// fullTxt: '',
+			// loopNum: 0,
+            // isDeleting: false,
+            text: '',
+            wordIndex: 0,
+            isDeleting: false,
+            isWaiting: false,
         }
         this.speed = 80;
-    this.renderFancyText = this.renderFancyText.bind(this);
-        // this.writeLoop = this.writeLoop.bind(this);
+        this.renderFancyText = this.renderFancyText.bind(this);
     }
     componentDidMount() {
         // Assigning id in the attribute.
@@ -131,112 +134,146 @@ class edit extends Component {
         $style.setAttribute("id", "premium-style-fancy-text-" + this.props.clientId)
         document.head.appendChild($style)
         this.renderFancyText()
-        // this.writeLoop()
     }
-    // componentDidUpdate() {        
-    // //     // console.log(this.props.attributes.repeaterFancyText);
-    // //     // this.writeLoop();
-    // //     // this.delay(this.speed);
-    //     // this.writeLoop()
-    // }
-    
-    // async typewriter (txt) {
-    //     document.querySelector('.kero').innerHTML = '';
-    //     for (let i = 0; i < txt.length; i++) {
-    //         await this.delay(20);
-    //         document.querySelector('.kero').innerHTML += txt.charAt(i);
-    //         await this.delay(this.speed);
-    //     }
-    // }
-
-    // async deleteWrite (txt) {
-    //     for (let i = txt.length; i > 0; i--) {
-    //         document.querySelector('.kero').innerHTML =
-    //             document.querySelector('.kero').innerHTML.slice(0, -1);
-    //         await this.delay(this.speed);
-    //     }
-    // }
-    
-    // async writeLoop() {
-    //     // document.querySelector('.kero').innerHTML = '';
-    //     const { repeaterFancyText } = this.props.attributes;
-    //     console.log(repeaterFancyText);
-    //     if (!repeaterFancyText) return null;
-    //     let typing =  repeaterFancyText.map((item, index) => {return item.title})
-    //     for (let i = 0; i < typing.length; i++) {
-    //         this.typewriter(typing[i]);
-    //         await this.delay(3000);
-    //         this.deleteWrite(typing[i]);
-    //         await this.delay(4000);
-    //         if (i === typing.length-1) {
-    //             i = -1;
-    //         }
-    //     }
-    // }
-    // delay(ms) {
-    //     return new Promise((resolve, reject) => {
-    //         setTimeout(() => resolve(), ms);
-    //     })
-    // }
     
     componentDidUpdate(prevProps, prevState) {
-        let delta = 300;
-        if (this.state.isDeleting) { delta /= 2; }
-       if (!this.state.isDeleting && this.state.txt === this.state.fullTxt) {
-       delta = 9000;
-       } else if (this.state.isDeleting && this.state.txt === '') {
-      delta = 300;
-       }
-        setTimeout(() => this.renderFancyText(), delta); 
+        // const { repeaterFancyText, loop } = this.props.attributes;
+        //     if (!repeaterFancyText) return null;
+        // let txt =  repeaterFancyText.map((item, index) => {return item.title})
+        // var typed = new Typed("#demo", {
+        //     strings: txt,
+        //     typeSpeed: 3000,
+        //     backSpeed: 3000,
+        //     backDelay: 5000,
+        //     startDelay: 1000,
+        //     loop: true,
+        // });
+        // let delta = 2000;
+    //     if (this.state.isDeleting) { delta = 2000; console.log('2000 is deleting')}
+    //    if (!this.state.isDeleting && this.state.txt === this.state.fullTxt) {
+    //        console.log('2000 is not Del')
+    //     delta = 2000;
+    //    } else if (this.state.isDeleting && this.state.txt === '') {
+    //        console.log('900 is emp')
+    //     delta = 900;
+    //    }
+        // setTimeout(() => this.renderFancyText(), 10); 
    }
 
     renderFancyText  () {
+        // const { wordIndex, isDeleting, text, wait } = this.state
+        // const currentIndex = wordIndex % this.props.words.length
         const { repeaterFancyText, loop } = this.props.attributes;
-        if (!repeaterFancyText) return null;
-        let txt =  repeaterFancyText.map((item, index) => {return item.title})
-        let i = this.state.loopNum % txt.length;
+            if (!repeaterFancyText) return null;
+        let fancystring=[]
+        let txt =  repeaterFancyText.map((item, index) => {fancystring.push(item.title)})
+        const options = {
+            strings: fancystring,
+            typeSpeed: 3000,
+                backSpeed: 3000,
+                backDelay: 5000,
+                startDelay: 1000,
+                loop: true,
+                showCursor:true,
+                cursorChar: '|'
+        };
+        this.typed = new Typed(this.el, options);
+        // var typed = new Typed("#demo", {
+        //     strings: fancystring,
+        //     typeSpeed: 3000,
+        //     backSpeed: 3000,
+        //     backDelay: 5000,
+        //     startDelay: 1000,
+        //     loop: true,
+        //     showCursor:true,
+        //     cursorChar: '|'
+        // });
+        // currentWord = currentWord[currentIndex]
+
+        // this.setState({ isWaiting: false })
+
+        // if (isDeleting) {
+        // this.setState({
+        //     text: currentWord.substring(0, text.length - 1)
+        // })
+        // } else {
+        // this.setState({
+        //     text: currentWord.substring(0, text.length + 1)
+        // })
+        // }
+
+        // let typeSpeed = 200
+
+        // if (this.isDeleting) {
+        // typeSpeed /= 2
+        // }
+
+        // if (!isDeleting && (text === currentWord)) {
+        // typeSpeed = (Math.random() * Math.floor(3)) * 1000
+
+        // this.setState({
+        //     isWaiting: true,
+        //     isDeleting: true,
+        // })
+        // } else if (isDeleting && text === '') {
+        // this.setState({
+        //     isDeleting: false,
+        //     wordIndex: this.state.wordIndex + 1
+        // })
+        // typeSpeed = 400
+        // }
+
+        // setTimeout(() => this.type(), typeSpeed)
+
+    //     const { repeaterFancyText, loop } = this.props.attributes;
+    //     if (!repeaterFancyText) return null;
+    //     let txt =  repeaterFancyText.map((item, index) => {return item.title})
+    //     let i = this.state.loopNum % txt.length;
 		
-		let setFullTxt = txt[i];
+	// 	let setFullTxt = txt[i];
 
-		let copy = {...this.state};
+	// 	let copy = {...this.state};
 
-		   if (this.state.isDeleting) {
-        copy.txt = setFullTxt.substring(0, copy.txt.length - 1);
-        } else {
-        copy.txt = setFullTxt.substring(0, copy.txt.length + 1);
-        }
+	// 	   if (this.state.isDeleting) {
+    //     copy.txt = setFullTxt.substring(0, copy.txt.length - 1);
+    //     } else {
+    //     copy.txt = setFullTxt.substring(0, copy.txt.length + 1);
+    //     }
 
-        if (!this.state.isDeleting && this.state.txt === setFullTxt) {
-      if (txt.length === copy.loopNum + 1 && !loop) {
-          console.log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
+    //     if (!this.state.isDeleting && this.state.txt === setFullTxt) {
+    //   if (txt.length === copy.loopNum + 1 && !loop) {
           
-          copy.isDeleting = false;
-      }
-      else {
-          copy.isDeleting = true;
-        }
-        } 
-        else if (copy.isDeleting && this.state.txt === '') {
-        copy.isDeleting = false;
-        console.log('looping', copy.loopNum, copy.delta)
-        console.log(txt.length);
-        if (txt.length === copy.loopNum + 1 && !loop) {
-            copy.loopNum = copy.loopNum ;
-        }
-            else{ 
-                if (txt.length === copy.loopNum + 1)
-                {
-                    copy.loopNum =-1;
-                }
-                copy.loopNum = copy.loopNum + 1
-            };
-        }
-        copy.fullTxt = setFullTxt;
-        console.log('copytxt', copy)
-        this.setState(() => copy)
+    //       copy.isDeleting = false;
+    //   }
+    //   else {
+    //       copy.isDeleting = true;
+    //     }
+    //     } 
+    //     else if (copy.isDeleting && this.state.txt === '') {
+    //     copy.isDeleting = false;
+    //     // console.log('looping', copy.loopNum, copy.delta)
+    //     // console.log(txt.length);
+    //     if (txt.length === copy.loopNum + 1 && !loop) {
+    //         copy.loopNum = copy.loopNum ;
+    //     }
+    //         else{ 
+    //             if (txt.length === copy.loopNum + 1)
+    //             {
+    //                 copy.loopNum =-1;
+    //             }
+    //             copy.loopNum = copy.loopNum + 1
+    //         };
+    //     }
+    //     copy.fullTxt = setFullTxt;
+    //     console.log('copytxt', copy)
+    //     this.setState(() => copy)
     } 
 
-
+    componentWillUnmount() {
+        // Make sure to destroy Typed instance on unmounting
+      // to prevent memory leaks
+      this.typed.destroy();
+    }
     render() {
         const { attributes, setAttributes, isSelected } = this.props
 
@@ -287,6 +324,8 @@ class edit extends Component {
                 value: "slide"
             }
         ];
+        
+        
         var element = document.getElementById("premium-style-fancy-text-" + this.props.clientId)
 
         if (null != element && "undefined" != typeof element) {
@@ -667,8 +706,8 @@ class edit extends Component {
                     textAlign: align,
                 }}>
                     <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
-                    <span className={`premium-fancy-text-title kero`} id="demo"> {this.state.txt}</span>
-                    {cursorShow&& <span className={`premium-fancy-text-cursor`}> {cursorMark} </span>}
+                    <span className={`premium-fancy-text-title`} id="demo" ref={(el) => { this.el = el; }}> </span>
+                    {/* {cursorShow&& <span className={`premium-fancy-text-cursor`}> {cursorMark} </span>} */}
                     <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
                 </div>
             </div>

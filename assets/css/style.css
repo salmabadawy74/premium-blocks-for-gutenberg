@@ -3137,20 +3137,12 @@ color: #23282d;
   animation: blink_cursor .7s infinite;
 }
 @keyframes blink_cursor {
-  from, to {
-    color: transparent;
+  0%, 100% {
+    opacity: 1;
   }
-}
 
-@-moz-keyframes blink_cursor {
-  from, to {
-    color: transparent;
-  }
-}
-
-@-webkit-keyframes blink_cursor {
-  from, to {
-    color: transparent;
+  50% {
+    opacity: 0;
   }
 }
 .premium-fancy-text-suffix-text{
