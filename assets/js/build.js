@@ -1950,7 +1950,7 @@ function PremiumBackground(props) {
   }]).default;
 });
 //# sourceMappingURL=fonticonpicker.react.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
 
 /***/ }),
 /* 18 */
@@ -2537,14 +2537,14 @@ var listCacheClear = __webpack_require__(88),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `ListCache`.
@@ -2665,33 +2665,6 @@ module.exports = getMapData;
 
 /***/ }),
 /* 34 */
-/***/ (function(module, exports) {
-
-module.exports = function (module) {
-	if (!module.webpackPolyfill) {
-		module.deprecate = function () {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if (!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function get() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function get() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-/***/ }),
-/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -2726,10 +2699,10 @@ function isSymbol(value) {
 module.exports = isSymbol;
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isSymbol = __webpack_require__(35);
+var isSymbol = __webpack_require__(34);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -2752,7 +2725,7 @@ function toKey(value) {
 module.exports = toKey;
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2863,7 +2836,7 @@ function PremiumMargin(props) {
 }
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3127,7 +3100,7 @@ registerBlockType("premium/video-box", {
 });
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4743,7 +4716,7 @@ function sortableElement(WrappedComponent) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14),
@@ -4755,7 +4728,7 @@ var Map = getNative(root, 'Map');
 module.exports = Map;
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -4782,7 +4755,7 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var mapCacheClear = __webpack_require__(104),
@@ -4799,14 +4772,14 @@ var mapCacheClear = __webpack_require__(104),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `MapCache`.
@@ -4819,7 +4792,7 @@ MapCache.prototype.set = mapCacheSet;
 module.exports = MapCache;
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayLikeKeys = __webpack_require__(133),
@@ -4859,6 +4832,33 @@ function keys(object) {
 }
 
 module.exports = keys;
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports) {
+
+module.exports = function (module) {
+	if (!module.webpackPolyfill) {
+		module.deprecate = function () {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function get() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function get() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
 
 /***/ }),
 /* 44 */
@@ -4944,7 +4944,7 @@ module.exports = isArrayLike;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var isArray = __webpack_require__(11),
-    isSymbol = __webpack_require__(35);
+    isSymbol = __webpack_require__(34);
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -5500,7 +5500,7 @@ module.exports = isFunction;
 var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
 
 module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(41)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40)))
 
 /***/ }),
 /* 58 */
@@ -5759,7 +5759,7 @@ var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
 var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
 
 /***/ }),
 /* 64 */
@@ -5871,7 +5871,7 @@ module.exports = matchesStrictComparable;
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(69),
-    toKey = __webpack_require__(36);
+    toKey = __webpack_require__(35);
 
 /**
  * The base implementation of `_.get` without support for default values.
@@ -7155,7 +7155,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(219);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_person__ = __webpack_require__(230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__blocks_icon_list__ = __webpack_require__(255);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__blocks_content_switcher__ = __webpack_require__(260);
@@ -8692,8 +8692,8 @@ module.exports = stackHas;
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(28),
-    Map = __webpack_require__(40),
-    MapCache = __webpack_require__(42);
+    Map = __webpack_require__(39),
+    MapCache = __webpack_require__(41);
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
@@ -8913,7 +8913,7 @@ module.exports = getValue;
 
 var Hash = __webpack_require__(105),
     ListCache = __webpack_require__(28),
-    Map = __webpack_require__(40);
+    Map = __webpack_require__(39);
 
 /**
  * Removes all key-value entries from the map.
@@ -8951,14 +8951,14 @@ var hashClear = __webpack_require__(106),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `Hash`.
@@ -9305,7 +9305,7 @@ module.exports = baseIsEqualDeep;
 /* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(42),
+var MapCache = __webpack_require__(41),
     setCacheAdd = __webpack_require__(118),
     setCacheHas = __webpack_require__(119);
 
@@ -9318,13 +9318,13 @@ var MapCache = __webpack_require__(42),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-    var index = -1,
-        length = values == null ? 0 : values.length;
+  var index = -1,
+      length = values == null ? 0 : values.length;
 
-    this.__data__ = new MapCache();
-    while (++index < length) {
-        this.add(values[index]);
-    }
+  this.__data__ = new MapCache();
+  while (++index < length) {
+    this.add(values[index]);
+  }
 }
 
 // Add methods to `SetCache`.
@@ -9686,7 +9686,7 @@ module.exports = equalObjects;
 
 var baseGetAllKeys = __webpack_require__(128),
     getSymbols = __webpack_require__(130),
-    keys = __webpack_require__(43);
+    keys = __webpack_require__(42);
 
 /**
  * Creates an array of own enumerable property names and symbols of `object`.
@@ -10050,7 +10050,7 @@ var nodeUtil = function () {
 }();
 
 module.exports = nodeUtil;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
 
 /***/ }),
 /* 139 */
@@ -10146,7 +10146,7 @@ module.exports = overArg;
 /***/ (function(module, exports, __webpack_require__) {
 
 var DataView = __webpack_require__(144),
-    Map = __webpack_require__(40),
+    Map = __webpack_require__(39),
     Promise = __webpack_require__(145),
     Set = __webpack_require__(146),
     WeakMap = __webpack_require__(147),
@@ -10258,7 +10258,7 @@ module.exports = WeakMap;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isStrictComparable = __webpack_require__(66),
-    keys = __webpack_require__(43);
+    keys = __webpack_require__(42);
 
 /**
  * Gets the property names, values, and compare flags of `object`.
@@ -10268,16 +10268,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-    var result = keys(object),
-        length = result.length;
+  var result = keys(object),
+      length = result.length;
 
-    while (length--) {
-        var key = result[length],
-            value = object[key];
+  while (length--) {
+    var key = result[length],
+        value = object[key];
 
-        result[length] = [key, value, isStrictComparable(value)];
-    }
-    return result;
+    result[length] = [key, value, isStrictComparable(value)];
+  }
+  return result;
 }
 
 module.exports = getMatchData;
@@ -10292,7 +10292,7 @@ var baseIsEqual = __webpack_require__(59),
     isKey = __webpack_require__(46),
     isStrictComparable = __webpack_require__(66),
     matchesStrictComparable = __webpack_require__(67),
-    toKey = __webpack_require__(36);
+    toKey = __webpack_require__(35);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -10423,7 +10423,7 @@ module.exports = memoizeCapped;
 /* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(42);
+var MapCache = __webpack_require__(41);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -10537,7 +10537,7 @@ module.exports = toString;
 var _Symbol = __webpack_require__(30),
     arrayMap = __webpack_require__(53),
     isArray = __webpack_require__(11),
-    isSymbol = __webpack_require__(35);
+    isSymbol = __webpack_require__(34);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -10638,7 +10638,7 @@ var castPath = __webpack_require__(69),
     isArray = __webpack_require__(11),
     isIndex = __webpack_require__(64),
     isLength = __webpack_require__(44),
-    toKey = __webpack_require__(36);
+    toKey = __webpack_require__(35);
 
 /**
  * Checks if `path` exists on `object`.
@@ -10679,7 +10679,7 @@ module.exports = hasPath;
 var baseProperty = __webpack_require__(160),
     basePropertyDeep = __webpack_require__(161),
     isKey = __webpack_require__(46),
-    toKey = __webpack_require__(36);
+    toKey = __webpack_require__(35);
 
 /**
  * Creates a function that returns the value at `path` of a given object.
@@ -10800,7 +10800,7 @@ module.exports = baseEach;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseFor = __webpack_require__(165),
-    keys = __webpack_require__(43);
+    keys = __webpack_require__(42);
 
 /**
  * The base implementation of `_.forOwn` without support for iteratee shorthands.
@@ -20335,7 +20335,7 @@ registerBlockType("premium/icon", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__ = __webpack_require__(6);
@@ -26576,7 +26576,7 @@ exports.unstable_shouldYield = function () {
 };exports.unstable_pauseExecution = function () {};exports.unstable_getFirstCallbackNode = function () {
   return d;
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(41)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40)))
 
 /***/ }),
 /* 196 */
@@ -27282,7 +27282,7 @@ if (process.env.NODE_ENV !== "production") {
     exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
   })();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(41)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(40)))
 
 /***/ }),
 /* 197 */
@@ -33953,7 +33953,7 @@ registerBlockType("premium/icon-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(16);
@@ -42640,7 +42640,7 @@ registerBlockType("premium/container", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(8);
@@ -45687,7 +45687,7 @@ var deprecatedContent = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(15);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -46624,7 +46624,7 @@ var edit = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(37);
 
 
 
@@ -46812,7 +46812,7 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(37);
 
 
 var className = "premium-video-box";
@@ -48269,11 +48269,11 @@ var save = function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_default_image__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_times__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_times___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_lodash_times__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -50401,7 +50401,7 @@ module.exports = toFinite;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(31),
-    isSymbol = __webpack_require__(35);
+    isSymbol = __webpack_require__(34);
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
@@ -54743,7 +54743,7 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(268);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__ = __webpack_require__(38);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56228,7 +56228,7 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(38);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57988,6 +57988,22 @@ var fancyTextAttrs = {
   cursorMark: {
     type: "string",
     default: "|"
+  },
+  typeSpeed: {
+    type: "number",
+    default: 30
+  },
+  backdelay: {
+    type: "number",
+    default: 30
+  },
+  startdelay: {
+    type: "number",
+    default: 30
+  },
+  backSpeed: {
+    type: "number",
+    default: 30
   }
 };
 
@@ -58021,7 +58037,7 @@ registerBlockType("premium/fancy-text", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_typed_js__ = __webpack_require__(276);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_typed_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_typed_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_sortable_hoc__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_sortable_hoc__ = __webpack_require__(38);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -58141,17 +58157,6 @@ var edit = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
 
-        _this.state = {
-            // txt: '',
-            // fullTxt: '',
-            // loopNum: 0,
-            // isDeleting: false,
-            text: '',
-            wordIndex: 0,
-            isDeleting: false,
-            isWaiting: false
-        };
-        _this.speed = 80;
         _this.renderFancyText = _this.renderFancyText.bind(_this);
         return _this;
     }
@@ -58170,150 +58175,54 @@ var edit = function (_Component) {
         }
     }, {
         key: "componentDidUpdate",
-        value: function componentDidUpdate(prevProps, prevState) {
-            // const { repeaterFancyText, loop } = this.props.attributes;
-            //     if (!repeaterFancyText) return null;
-            // let txt =  repeaterFancyText.map((item, index) => {return item.title})
-            // var typed = new Typed("#demo", {
-            //     strings: txt,
-            //     typeSpeed: 3000,
-            //     backSpeed: 3000,
-            //     backDelay: 5000,
-            //     startDelay: 1000,
-            //     loop: true,
-            // });
-            // let delta = 2000;
-            //     if (this.state.isDeleting) { delta = 2000; console.log('2000 is deleting')}
-            //    if (!this.state.isDeleting && this.state.txt === this.state.fullTxt) {
-            //        console.log('2000 is not Del')
-            //     delta = 2000;
-            //    } else if (this.state.isDeleting && this.state.txt === '') {
-            //        console.log('900 is emp')
-            //     delta = 900;
-            //    }
-            // setTimeout(() => this.renderFancyText(), 10); 
+        value: function componentDidUpdate() {
+            var effect = this.props.attributes.effect;
+
+            effect === 'typing' ? this.typed.destroy() : "";
+            this.renderFancyText();
         }
     }, {
         key: "renderFancyText",
         value: function renderFancyText() {
-            // const { wordIndex, isDeleting, text, wait } = this.state
-            // const currentIndex = wordIndex % this.props.words.length
             var _props$attributes = this.props.attributes,
                 repeaterFancyText = _props$attributes.repeaterFancyText,
-                loop = _props$attributes.loop;
+                loop = _props$attributes.loop,
+                cursorShow = _props$attributes.cursorShow,
+                cursorMark = _props$attributes.cursorMark,
+                typeSpeed = _props$attributes.typeSpeed,
+                backSpeed = _props$attributes.backSpeed,
+                startdelay = _props$attributes.startdelay,
+                backdelay = _props$attributes.backdelay,
+                effect = _props$attributes.effect;
 
             if (!repeaterFancyText) return null;
-            var fancystring = [];
             var txt = repeaterFancyText.map(function (item, index) {
-                fancystring.push(item.title);
+                return item.title;
             });
-            var options = {
-                strings: fancystring,
-                typeSpeed: 3000,
-                backSpeed: 3000,
-                backDelay: 5000,
-                startDelay: 1000,
-                loop: true,
-                showCursor: true,
-                cursorChar: '|'
-            };
-            this.typed = new __WEBPACK_IMPORTED_MODULE_9_typed_js___default.a(this.el, options);
-            // var typed = new Typed("#demo", {
-            //     strings: fancystring,
-            //     typeSpeed: 3000,
-            //     backSpeed: 3000,
-            //     backDelay: 5000,
-            //     startDelay: 1000,
-            //     loop: true,
-            //     showCursor:true,
-            //     cursorChar: '|'
-            // });
-            // currentWord = currentWord[currentIndex]
-
-            // this.setState({ isWaiting: false })
-
-            // if (isDeleting) {
-            // this.setState({
-            //     text: currentWord.substring(0, text.length - 1)
-            // })
-            // } else {
-            // this.setState({
-            //     text: currentWord.substring(0, text.length + 1)
-            // })
-            // }
-
-            // let typeSpeed = 200
-
-            // if (this.isDeleting) {
-            // typeSpeed /= 2
-            // }
-
-            // if (!isDeleting && (text === currentWord)) {
-            // typeSpeed = (Math.random() * Math.floor(3)) * 1000
-
-            // this.setState({
-            //     isWaiting: true,
-            //     isDeleting: true,
-            // })
-            // } else if (isDeleting && text === '') {
-            // this.setState({
-            //     isDeleting: false,
-            //     wordIndex: this.state.wordIndex + 1
-            // })
-            // typeSpeed = 400
-            // }
-
-            // setTimeout(() => this.type(), typeSpeed)
-
-            //     const { repeaterFancyText, loop } = this.props.attributes;
-            //     if (!repeaterFancyText) return null;
-            //     let txt =  repeaterFancyText.map((item, index) => {return item.title})
-            //     let i = this.state.loopNum % txt.length;
-
-            // 	let setFullTxt = txt[i];
-
-            // 	let copy = {...this.state};
-
-            // 	   if (this.state.isDeleting) {
-            //     copy.txt = setFullTxt.substring(0, copy.txt.length - 1);
-            //     } else {
-            //     copy.txt = setFullTxt.substring(0, copy.txt.length + 1);
-            //     }
-
-            //     if (!this.state.isDeleting && this.state.txt === setFullTxt) {
-            //   if (txt.length === copy.loopNum + 1 && !loop) {
-
-            //       copy.isDeleting = false;
-            //   }
-            //   else {
-            //       copy.isDeleting = true;
-            //     }
-            //     } 
-            //     else if (copy.isDeleting && this.state.txt === '') {
-            //     copy.isDeleting = false;
-            //     // console.log('looping', copy.loopNum, copy.delta)
-            //     // console.log(txt.length);
-            //     if (txt.length === copy.loopNum + 1 && !loop) {
-            //         copy.loopNum = copy.loopNum ;
-            //     }
-            //         else{ 
-            //             if (txt.length === copy.loopNum + 1)
-            //             {
-            //                 copy.loopNum =-1;
-            //             }
-            //             copy.loopNum = copy.loopNum + 1
-            //         };
-            //     }
-            //     copy.fullTxt = setFullTxt;
-            //     console.log('copytxt', copy)
-            //     this.setState(() => copy)
+            if (effect === 'typing') {
+                var options = {
+                    strings: txt,
+                    typeSpeed: typeSpeed,
+                    backSpeed: backSpeed,
+                    backDelay: backdelay,
+                    startDelay: startdelay,
+                    loop: loop,
+                    showCursor: cursorShow,
+                    cursorChar: cursorMark
+                };
+                this.typed = new __WEBPACK_IMPORTED_MODULE_9_typed_js___default.a(this.el, options);
+            } else {
+                // ('.premium-fancy-text-title-slide-list').vTicker();
+            }
         }
     }, {
         key: "componentWillUnmount",
         value: function componentWillUnmount() {
+            var effect = this.props.attributes.effect;
             // Make sure to destroy Typed instance on unmounting
             // to prevent memory leaks
-            this.typed.destroy();
+
+            effect === 'typing' ? this.typed.destroy() : "";
         }
     }, {
         key: "render",
@@ -58357,7 +58266,11 @@ var edit = function (_Component) {
                 TextBGColor = attributes.TextBGColor,
                 loop = attributes.loop,
                 cursorShow = attributes.cursorShow,
-                cursorMark = attributes.cursorMark;
+                cursorMark = attributes.cursorMark,
+                typeSpeed = attributes.typeSpeed,
+                backSpeed = attributes.backSpeed,
+                startdelay = attributes.startdelay,
+                backdelay = attributes.backdelay;
 
 
             var ALIGNS = ["left", "center", "right"];
@@ -58593,6 +58506,38 @@ var edit = function (_Component) {
                     effect == 'typing' && wp.element.createElement(
                         Fragment,
                         null,
+                        wp.element.createElement(TextControl, {
+                            label: __("Type Speed"),
+                            type: "Number",
+                            value: typeSpeed,
+                            onChange: function onChange(newText) {
+                                return setAttributes({ typeSpeed: newText });
+                            }
+                        }),
+                        wp.element.createElement(TextControl, {
+                            label: __("Back Speed"),
+                            type: "Number",
+                            value: backSpeed,
+                            onChange: function onChange(newText) {
+                                return setAttributes({ backSpeed: newText });
+                            }
+                        }),
+                        wp.element.createElement(TextControl, {
+                            label: __("Start Delay"),
+                            type: "Number",
+                            value: startdelay,
+                            onChange: function onChange(newText) {
+                                return setAttributes({ startdelay: newText });
+                            }
+                        }),
+                        wp.element.createElement(TextControl, {
+                            label: __("Back Delay"),
+                            type: "Number",
+                            value: backdelay,
+                            onChange: function onChange(newText) {
+                                return setAttributes({ backdelay: newText });
+                            }
+                        }),
                         wp.element.createElement(ToggleControl, {
                             label: __("Loop"),
                             checked: loop,
@@ -58782,7 +58727,7 @@ var edit = function (_Component) {
                     } },
                 wp.element.createElement(
                     "div",
-                    { className: "premium-fancy-text", style: {
+                    { className: "premium-fancy-text " + (effect == 'slide' ? 'premium-fancy-slide' : ""), style: {
                             textAlign: align
                         } },
                     wp.element.createElement(
@@ -58791,9 +58736,23 @@ var edit = function (_Component) {
                         prefix,
                         " "
                     ),
-                    wp.element.createElement(
+                    effect == 'slide' ? wp.element.createElement(
+                        "div",
+                        { className: "premium-fancy-text-title-slide" },
+                        wp.element.createElement(
+                            "ul",
+                            { className: "premium-fancy-text-title-slide-list" },
+                            repeaterFancyText.map(function (item, index) {
+                                return wp.element.createElement(
+                                    "li",
+                                    null,
+                                    item.title
+                                );
+                            })
+                        )
+                    ) : wp.element.createElement(
                         "span",
-                        { className: "premium-fancy-text-title", id: "demo", ref: function ref(el) {
+                        { className: "premium-fancy-text-title", ref: function ref(el) {
                                 _this2.el = el;
                             } },
                         " "
@@ -60039,7 +59998,7 @@ function styling(props) {
 	);
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
 
 /***/ })
 /******/ ]);

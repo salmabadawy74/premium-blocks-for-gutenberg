@@ -158,6 +158,22 @@ const fancyTextAttrs = {
   cursorMark:{
     type: "string",
     default:"|"
+  },
+  typeSpeed:{
+    type:"number",
+    default: 30
+  },
+  backdelay:{
+    type: "number",
+    default: 30
+  },
+  startdelay:{
+    type: "number",
+    default: 30
+  },
+  backSpeed:{
+    type: "number",
+    default: 30
   }
 };
 

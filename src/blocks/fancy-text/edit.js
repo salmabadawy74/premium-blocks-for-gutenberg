@@ -112,17 +112,6 @@ class edit extends Component {
 
     constructor() {
         super(...arguments);
-        this.state = {
-			// txt: '',
-			// fullTxt: '',
-			// loopNum: 0,
-            // isDeleting: false,
-            text: '',
-            wordIndex: 0,
-            isDeleting: false,
-            isWaiting: false,
-        }
-        this.speed = 80;
         this.renderFancyText = this.renderFancyText.bind(this);
     }
     componentDidMount() {
@@ -136,143 +125,39 @@ class edit extends Component {
         this.renderFancyText()
     }
     
-    componentDidUpdate(prevProps, prevState) {
-        // const { repeaterFancyText, loop } = this.props.attributes;
-        //     if (!repeaterFancyText) return null;
-        // let txt =  repeaterFancyText.map((item, index) => {return item.title})
-        // var typed = new Typed("#demo", {
-        //     strings: txt,
-        //     typeSpeed: 3000,
-        //     backSpeed: 3000,
-        //     backDelay: 5000,
-        //     startDelay: 1000,
-        //     loop: true,
-        // });
-        // let delta = 2000;
-    //     if (this.state.isDeleting) { delta = 2000; console.log('2000 is deleting')}
-    //    if (!this.state.isDeleting && this.state.txt === this.state.fullTxt) {
-    //        console.log('2000 is not Del')
-    //     delta = 2000;
-    //    } else if (this.state.isDeleting && this.state.txt === '') {
-    //        console.log('900 is emp')
-    //     delta = 900;
-    //    }
-        // setTimeout(() => this.renderFancyText(), 10); 
+    componentDidUpdate() {
+        const { effect } = this.props.attributes;
+      effect==='typing'?this.typed.destroy():""
+      this.renderFancyText()
    }
 
     renderFancyText  () {
-        // const { wordIndex, isDeleting, text, wait } = this.state
-        // const currentIndex = wordIndex % this.props.words.length
-        const { repeaterFancyText, loop } = this.props.attributes;
+        const { repeaterFancyText, loop,cursorShow, cursorMark, typeSpeed,backSpeed, startdelay, backdelay, effect } = this.props.attributes;
             if (!repeaterFancyText) return null;
-        let fancystring=[]
-        let txt =  repeaterFancyText.map((item, index) => {fancystring.push(item.title)})
-        const options = {
-            strings: fancystring,
-            typeSpeed: 3000,
-                backSpeed: 3000,
-                backDelay: 5000,
-                startDelay: 1000,
-                loop: true,
-                showCursor:true,
-                cursorChar: '|'
-        };
-        this.typed = new Typed(this.el, options);
-        // var typed = new Typed("#demo", {
-        //     strings: fancystring,
-        //     typeSpeed: 3000,
-        //     backSpeed: 3000,
-        //     backDelay: 5000,
-        //     startDelay: 1000,
-        //     loop: true,
-        //     showCursor:true,
-        //     cursorChar: '|'
-        // });
-        // currentWord = currentWord[currentIndex]
-
-        // this.setState({ isWaiting: false })
-
-        // if (isDeleting) {
-        // this.setState({
-        //     text: currentWord.substring(0, text.length - 1)
-        // })
-        // } else {
-        // this.setState({
-        //     text: currentWord.substring(0, text.length + 1)
-        // })
-        // }
-
-        // let typeSpeed = 200
-
-        // if (this.isDeleting) {
-        // typeSpeed /= 2
-        // }
-
-        // if (!isDeleting && (text === currentWord)) {
-        // typeSpeed = (Math.random() * Math.floor(3)) * 1000
-
-        // this.setState({
-        //     isWaiting: true,
-        //     isDeleting: true,
-        // })
-        // } else if (isDeleting && text === '') {
-        // this.setState({
-        //     isDeleting: false,
-        //     wordIndex: this.state.wordIndex + 1
-        // })
-        // typeSpeed = 400
-        // }
-
-        // setTimeout(() => this.type(), typeSpeed)
-
-    //     const { repeaterFancyText, loop } = this.props.attributes;
-    //     if (!repeaterFancyText) return null;
-    //     let txt =  repeaterFancyText.map((item, index) => {return item.title})
-    //     let i = this.state.loopNum % txt.length;
-		
-	// 	let setFullTxt = txt[i];
-
-	// 	let copy = {...this.state};
-
-	// 	   if (this.state.isDeleting) {
-    //     copy.txt = setFullTxt.substring(0, copy.txt.length - 1);
-    //     } else {
-    //     copy.txt = setFullTxt.substring(0, copy.txt.length + 1);
-    //     }
-
-    //     if (!this.state.isDeleting && this.state.txt === setFullTxt) {
-    //   if (txt.length === copy.loopNum + 1 && !loop) {
-          
-    //       copy.isDeleting = false;
-    //   }
-    //   else {
-    //       copy.isDeleting = true;
-    //     }
-    //     } 
-    //     else if (copy.isDeleting && this.state.txt === '') {
-    //     copy.isDeleting = false;
-    //     // console.log('looping', copy.loopNum, copy.delta)
-    //     // console.log(txt.length);
-    //     if (txt.length === copy.loopNum + 1 && !loop) {
-    //         copy.loopNum = copy.loopNum ;
-    //     }
-    //         else{ 
-    //             if (txt.length === copy.loopNum + 1)
-    //             {
-    //                 copy.loopNum =-1;
-    //             }
-    //             copy.loopNum = copy.loopNum + 1
-    //         };
-    //     }
-    //     copy.fullTxt = setFullTxt;
-    //     console.log('copytxt', copy)
-    //     this.setState(() => copy)
+        let txt =  repeaterFancyText.map((item, index) => {return item.title})
+        if(effect==='typing'){
+            const options = {
+                strings: txt,
+                typeSpeed: typeSpeed,
+                backSpeed: backSpeed,
+                backDelay: backdelay,
+                startDelay: startdelay,
+                loop: loop,
+                showCursor: cursorShow,
+                cursorChar: cursorMark
+            };
+            this.typed = new Typed(this.el, options);
+        }
+        else {
+            // ('.premium-fancy-text-title-slide-list').vTicker();
+        }
     } 
 
     componentWillUnmount() {
+        const { effect } = this.props.attributes;
         // Make sure to destroy Typed instance on unmounting
       // to prevent memory leaks
-      this.typed.destroy();
+        effect==='typing'?this.typed.destroy():""
     }
     render() {
         const { attributes, setAttributes, isSelected } = this.props
@@ -311,7 +196,11 @@ class edit extends Component {
             TextBGColor,
             loop,
             cursorShow,
-            cursorMark
+            cursorMark,
+            typeSpeed,
+            backSpeed,
+            startdelay,
+            backdelay
         } = attributes
 
         const ALIGNS = ["left", "center", "right"];
@@ -324,7 +213,6 @@ class edit extends Component {
                 value: "slide"
             }
         ];
-        
         
         var element = document.getElementById("premium-style-fancy-text-" + this.props.clientId)
 
@@ -448,8 +336,6 @@ class edit extends Component {
             });
         }
 
-        
-
         const mainClasses = classnames(className, "premium-fancy-text");
         return [
             isSelected && (
@@ -545,6 +431,30 @@ class edit extends Component {
                         />
                         {effect=='typing'&&(
                             <Fragment>
+                                <TextControl
+                                    label={ __("Type Speed")}
+                                    type="Number"
+                                    value={ typeSpeed}
+                                    onChange={newText => setAttributes({ typeSpeed: newText })}
+                                />
+                                <TextControl
+                                    label={ __("Back Speed")}
+                                    type="Number"
+                                    value={ backSpeed}
+                                    onChange={newText => setAttributes({ backSpeed: newText })}
+                                />
+                                <TextControl
+                                    label={ __("Start Delay")}
+                                    type="Number"
+                                    value={ startdelay}
+                                    onChange={newText => setAttributes({ startdelay: newText })}
+                                />
+                                <TextControl
+                                    label={ __("Back Delay")}
+                                    type="Number"
+                                    value={ backdelay}
+                                    onChange={newText => setAttributes({ backdelay: newText })}
+                                />
                                 <ToggleControl
                                     label={__("Loop")}
                                     checked={loop}
@@ -702,12 +612,17 @@ class edit extends Component {
             )} style={{
                 textAlign: align,
             }}>
-                <div className={`premium-fancy-text`} style={{
+                <div className={`premium-fancy-text ${effect=='slide'? 'premium-fancy-slide':""}`} style={{
                     textAlign: align,
                 }}>
                     <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
-                    <span className={`premium-fancy-text-title`} id="demo" ref={(el) => { this.el = el; }}> </span>
-                    {/* {cursorShow&& <span className={`premium-fancy-text-cursor`}> {cursorMark} </span>} */}
+                    {effect=='slide'?
+                    <div className={`premium-fancy-text-title-slide`}>
+                        <ul className={`premium-fancy-text-title-slide-list`}>
+                            {repeaterFancyText.map((item, index) => {return <li>{item.title}</li>})}
+                        </ul>
+                    </div>
+                    :<span className={`premium-fancy-text-title`} ref={(el) => { this.el = el; }}> </span>}
                     <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
                 </div>
             </div>
