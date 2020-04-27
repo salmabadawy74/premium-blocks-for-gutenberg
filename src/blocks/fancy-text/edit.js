@@ -8,6 +8,7 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumRangeResponsive from "../../components/premium-range-responsive";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import Typed from 'typed.js';
+import {$, vTicker} from 'jquery';
 import {
     SortableContainer,
     SortableElement,
@@ -150,6 +151,11 @@ class edit extends Component {
         }
         else {
             // ('.premium-fancy-text-title-slide-list').vTicker();
+            $('.premium-fancy-text-title-slide-list').vTicker({
+                speed: 400, 
+                pause: 1000,
+                showItems: 2,
+                padding:4});
         }
     } 
 

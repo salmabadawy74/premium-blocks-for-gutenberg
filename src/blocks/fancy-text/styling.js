@@ -47,6 +47,16 @@ function styling(props) {
       "background-color": fancyTextBGColor,
       "text-shadow": `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
     },
+    " .premium-fancy-text-title-slide":{
+      "font-size": generateCSSUnit(fancyTextfontSize, fancyTextfontSizeType),
+      "color": fancyTextColor,
+      "font-weight": fancyTextWeight,
+      "letter-spacing": fancyTextLetter + "px" + "!important",
+      "text-transform": fancyTextUpper ? "uppercase" : "none" + "!important",
+      "font-style": fancyTextStyle + "!important",
+      "background-color": fancyTextBGColor,
+      "text-shadow": `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+    },
     " .premium-fancy-text-cursor":{
       "color": cursorColor
     },
@@ -74,6 +84,9 @@ function styling(props) {
     " .premium-fancy-text-title": {
       "font-size": generateCSSUnit(fancyTextfontSizeMobile, fancyTextfontSizeType)
     },
+    " .premium-fancy-text-title-slide":{
+      "font-size": generateCSSUnit(fancyTextfontSizeMobile, fancyTextfontSizeType)
+    },
     " .premium-fancy-text-prefix-text": {
       "font-size": generateCSSUnit(TextfontSizeMobile, TextfontSizeType)
     },
@@ -84,6 +97,9 @@ function styling(props) {
 
   tablet_selectors = {
     " .premium-fancy-text-title": {
+      "font-size": generateCSSUnit(fancyTextfontSizeTablet, fancyTextfontSizeType)
+    },
+    " .premium-fancy-text-title-slide":{
       "font-size": generateCSSUnit(fancyTextfontSizeTablet, fancyTextfontSizeType)
     },
     " .premium-fancy-text-prefix-text": {
