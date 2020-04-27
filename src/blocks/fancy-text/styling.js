@@ -57,7 +57,7 @@ function styling(props) {
       "background-color": fancyTextBGColor,
       "text-shadow": `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
     },
-    " .premium-fancy-text-cursor":{
+    " .typed-cursor": {
       "color": cursorColor
     },
     " .premium-fancy-text-prefix-text": {

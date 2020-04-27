@@ -151,11 +151,11 @@ class edit extends Component {
         }
         else {
             // ('.premium-fancy-text-title-slide-list').vTicker();
-            $('.premium-fancy-text-title-slide-list').vTicker({
-                speed: 400, 
-                pause: 1000,
-                showItems: 2,
-                padding:4});
+            // $('.premium-fancy-text-title-slide-list').vTicker({
+            //     speed: 400, 
+            //     pause: 1000,
+            //     showItems: 2,
+            //     padding:4});
         }
     } 
 

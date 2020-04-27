@@ -15,7 +15,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
 
         protected $slug = 'premium-gutenberg';
 
-        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'iconList', 'contentSwitcher', 'progressBar', 'persons', 'tab'];
+        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'iconList', 'contentSwitcher', 'progressBar', 'persons', 'tab', 'fancyText'];
 
         private $pbg_default;
 
@@ -295,6 +295,14 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+
+                                    <th><?php echo __('Premium Fancy Text', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="fancyText" name="fancyText" <?php checked(1, $this->pbg_get_settings['fancyText'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
                                     
                                 </tr>
                                 <tr>
@@ -403,7 +411,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                 'iconList'      => intval( $settings['iconList'] ? 1 : 0 ),
                 'progressBar'   => intval( $settings['progressBar'] ? 1 : 0 ),
                 'contentSwitcher'=> intval( $settings['contentSwitcher'] ? 1 : 0 ), 
-                'tab'            => intval( $settings['tab'] ? 1 : 0 )
+                'tab'            => intval( $settings['tab'] ? 1 : 0 ),
+                'fancyText'      => intval( $settings['fancyText'] ? 1 : 0 )
             );
 
             update_option( 'pbg_settings', $this->pbg_settings );

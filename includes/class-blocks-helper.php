@@ -1385,171 +1385,83 @@ class Premium_Blocks_Integration {
 					"font-weight" => self::get_css_value($attr['fancyTextWeight'], " !important") ,
 					"text-shadow" => self::get_css_value($attr['shadowHorizontal'],'px ') .self::get_css_value($attr['shadowVertical'],'px ') . self::get_css_value($attr['shadowBlur'], 'px ') . $attr['shadowColor'],
 				),
-				" .premium-tab-horizontal .premium-tab-nav-list-item::after" => array(
-					"background-color" => self::get_css_value($attr['tabsBorderColor'], " !important")
+				" .premium-fancy-text-title-slide" => array(
+					"font-size" =>  self::get_css_value($attr['fancyTextfontSize'] , $attr['fancyTextfontSizeType'] ),
+					"color" => $attr['fancyTextColor'],
+					"background-color" => $attr['fancyTextBGColor'],
+					"letter-spacing" => self::get_css_value($attr['fancyTextLetter'] , 'px') ,
+					"text-transform" => $attr['fancyTextUpper'] ? "uppercase" : "none" ,
+					"font-style" => self::get_css_value($attr['fancyTextStyle'], " !important") ,
+					"font-weight" => self::get_css_value($attr['fancyTextWeight'], " !important") ,
+					"text-shadow" => self::get_css_value($attr['shadowHorizontal'],'px ') .self::get_css_value($attr['shadowVertical'],'px ') . self::get_css_value($attr['shadowBlur'], 'px ') . $attr['shadowColor'],
 				),
-				" .premium-tab-vertical .premium-tab-nav-list-item::after" => array(
-					"background-color" => self::get_css_value($attr['tabsBorderColor'], " !important")
+				" .typed-cursor" => array(
+					"color" => $attr['cursorColor'],
 				),
-				" .premium-tab-horizontal .premium-tab-nav-list-item:last-child::after" => array(
-					"background-color" =>"#ffffff00 !important"
+				" .premium-fancy-text-prefix-text" => array(
+					"font-size" =>  self::get_css_value($attr['TextfontSize'] , $attr['TextfontSizeType'] ),
+					"color" => $attr['textColor'],
+					"background-color" => $attr['TextBGColor'],
+					"letter-spacing" => self::get_css_value($attr['TextLetter'] , 'px') ,
+					"text-transform" => $attr['TextUpper'] ? "uppercase" : "none" ,
+					"font-style" => self::get_css_value($attr['TextStyle'], " !important") ,
+					"font-weight" => self::get_css_value($attr['TextWeight'], " !important") ,
 				),
-				" .premium-tab-vertical .premium-tab-nav-list-item:last-child::after" => array(
-					"background-color" =>  "#ffffff00 !important"
-				),
-				" .premium-tab-link-icon-flipped" => array(
-					"border-style" => $attr['tabborderType'],
-					"border-width" =>  self::get_css_value($attr['tabborderWidth'] , 'px'),
-					"border-color" => $attr['tabborderColor'],
-					"border-radius" => self::get_css_value($attr['tabborderRadius'], 'px'),
-					"box-shadow" => self::get_css_value($attr['tabShadowHorizontal'], 'px ') . self::get_css_value($attr['tabShadowVertical'],'px ') . self::get_css_value($attr['tabShadowBlur'],'px ') .  self::get_css_value($attr['tabShadowColor'], " ") . $attr[ 'tabShadowPosition']
-				),
-				" .tab-current .premium-tab-link-icon" => array(
-					"background-color" => self::get_css_value($attr['activetabBGColor'], " !important")
-				),
-				" .premium-tab-nav-list-item-flipped" => array(
-					"background-color" => $attr['tabBGColor'],
-				),
-				" .tab-current .premium-tab-link-icon-flipped::after" => array(
-					"background-color" => self::get_css_value($attr['activetabBGColor'], " !important")
-				),
-				" .premium-tab-horizontal .tab-current .premium-tab-link-icon::after" => array(
-					"border-top-color" => $attr['arrowColor']
-				),
-				" .premium-tab-vertical .tab-current .premium-tab-link-icon::after" => array(
-					"border-left-color" => $attr['arrowColor']
-				),
-				" .premium-tab-title-icon" => array(
-					"font-size" => self::get_css_value($attr['iconfontSize'], $attr['iconfontSizeType']),
-					"color" => self::get_css_value($attr['iconColor'], '!important'),
-					"border-style" => $attr['iconborderType'],
-					"border-width" =>  self::get_css_value($attr['iconborderWidth'] , 'px'),
-					"border-color" => $attr['iconborderColor'],
-					"border-radius" => self::get_css_value($attr['iconborderRadius'], 'px'),
-					"text-shadow" => self::get_css_value($attr['iconshadowHorizontal'],'px ') .self::get_css_value($attr['iconshadowVertical'],'px ') . self::get_css_value($attr['iconshadowBlur'], 'px ') . $attr['iconshadowColor'],
-					"padding" =>  self::get_css_value($attr['iconPadding'], $attr['iconPaddingType']),
-				),
-				" .tab-current .premium-tab-title-icon" => array(
-					"color" => self::get_css_value($attr['activeiconColor'], " !important")
-				),
-				" .premium-tab-nav-list-item:hover .premium-tab-title-icon" => array(
-					"color" => self::get_css_value($attr['hovericonColor'], " !important")
-				),
-				" .tab-current .premium-tab-title" => array(
-					"color" => self::get_css_value($attr['activetitleColor'], " !important")
-				),
-				" .premium-tab-nav-list-item .premium-tab-title" => array(
-					"color" => $attr['titleColor'],
-					"font-size" => self::get_css_value($attr['titlefontSize'], $attr['titlefontSizeType']),
-					"letter-spacing" => self::get_css_value($attr['titleLetter'] , 'px') ,
-					"text-transform" => $attr['titleUpper'] ? "uppercase" : "none" ,
-					"font-style" => self::get_css_value($attr['titleStyle'], " !important") ,
-					"font-weight" => self::get_css_value($attr['titleWeight'], " !important") ,
-					"text-shadow" => self::get_css_value($attr['titleshadowHorizontal'], 'px ') .self::get_css_value($attr['titleshadowVertical'],'px ') . self::get_css_value($attr['titleshadowBlur'], 'px ') . $attr['titleshadowColor'],
-					"margin" =>  self::get_css_value($attr['titleMargin'], $attr['titleMarginType']),
-				),
-				" .premium-tab-nav-list-item:hover .premium-tab-title" => array(
-					"color" => self::get_css_value($attr['hovertitleColor'], '!important')
-				),
-				" .premium-tab-content-wrap-inner" => array(
-					"color" => $attr['contentColor']
-				),
-				" .premium-tab-content-section .premium-tab-content" => array(
-					"font-size" => self::get_css_value($attr['contentfontSize'], $attr['contentfontSizeType']),
-					"letter-spacing" => self::get_css_value($attr['contentLetter'] , 'px') ,
-					"text-transform" => $attr['contentUpper'] ? "uppercase" : "none" ,
-					"font-style" => self::get_css_value($attr['contentStyle'], " !important") ,
-					"font-weight" => self::get_css_value($attr['contentWeight'], " !important") ,
-					"color" => self::get_css_value($attr['contentColor'], " !important") ,
-					"background-color" => $attr['contentBGColor'],
-					"border-style" => $attr['contentborderType'],
-					"border-width" =>  self::get_css_value($attr['contentborderWidth'] , 'px'),
-					"border-color" => $attr['contentborderColor'],
-					"border-radius" => self::get_css_value($attr['contentborderRadius'], 'px'),
-					"text-shadow" => self::get_css_value($attr['contentshadowHorizontal'], 'px ') .self::get_css_value($attr['contentshadowVertical'],'px ') . self::get_css_value($attr['contentshadowBlur'], 'px ') . $attr['contentshadowColor'],
-					"padding" =>  self::get_css_value($attr['contentPadding'], $attr['contentPaddingType']),
-				),
-				" .premium-tab-nav-list-item a:hover" => array(
-					"background-color" => self::get_css_value($attr['tabBGHoverColor'], '!important'),
-					"border-width" => self::get_css_value($attr['tabhoverborderWidth'], 'px'),
-					"border-color" => $attr['tabhoverborderColor'],
-					"border-style" => $attr['tabhoverborderType'],
-					"border-radius" => self::get_css_value($attr['tabhoverborderRadius'], 'px'),
-					"box-shadow" => self::get_css_value($attr['tabhoverShadowHorizontal'], 'px ') .self::get_css_value($attr['tabhoverShadowVertical'],'px ') .self::get_css_value($attr['tabhoverShadowBlur'],'px ') .self::get_css_value( $attr['tabhoverShadowColor'], " ") . $attr['tabhoverShadowPosition']
-				),
-				" .premium-tab-horizontal .tab-current a:hover::after" => array(
-					"border-top-color" => self::get_css_value($attr['tabBGHoverColor'], '!important')
-				),
-				" .premium-tab-vertical .tab-current .premium-tab-link-icon:hover::after" => array(
-					"border-left-color" => self::get_css_value($attr['tabBGHoverColor'], '!important')
-				),
-				" .premium-tab-nav-list-item a" => array(
-					"padding" => self::get_css_value($attr['tabPadding'], $attr['tabPaddingType']),
-					"margin" => self::get_css_value($attr['tabMargin'], $attr['tabMarginType']),
-				),
-				" .premium-tab-horizontal .premium-tab-nav-list-item:hover .premium-tab-link-icon::after" => array(
-					"border-top-color" => $attr['iconHoverColor']
-				),
-				" .premium-tab-vertical .premium-tab-nav-list-item:hover .premium-tab-link-icon::after" => array(
-					"border-left-color" => $attr['iconHoverColor']
-				),
-				" .premium-tab-vertical .premium-tab-content-wrap" => array(
-					"width" => self::get_css_value($attr['tabWidth'], '% !important')
+				" .premium-fancy-text-suffix-text" => array(
+					"font-size" =>  self::get_css_value($attr['TextfontSize'] , $attr['TextfontSizeType'] ),
+					"color" => $attr['textColor'],
+					"background-color" => $attr['TextBGColor'],
+					"letter-spacing" => self::get_css_value($attr['TextLetter'] , 'px') ,
+					"text-transform" => $attr['TextUpper'] ? "uppercase" : "none" ,
+					"font-style" => self::get_css_value($attr['TextStyle'], " !important") ,
+					"font-weight" => self::get_css_value($attr['TextWeight'], " !important") ,
 				),
       );
             // Desktop Icon Size CSS ends.
 
 			// Mobile Icon Size CSS starts.
 			$m_selectors = array(
-				" .premium-tab-title-icon"  => array(
-					"font-size" => self::get_css_value($attr['iconfontSizeMobile'], $attr['iconfontSizeType']) . "!important",
-					"padding" => self::get_css_value($attr['iconPaddingMobile'], $attr['iconPaddingType']) . "!important",
+				" premium-fancy-text-title"  => array(
+					"font-size" => self::get_css_value($attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeType']) . "!important"
 				),
-				" .premium-tab-nav-list-item .premium-tab-title"  => array(
-					"font-size" => self::get_css_value($attr['titlefontSizeMobile'], $attr['titlefontSizeType']) . "!important",
-					"margin" => self::get_css_value($attr['titleMarginMobile'], $attr['titleMarginType']) . "!important",
+				" .premium-fancy-text-title-slide"  => array(
+					"font-size" => self::get_css_value($attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeType']) . "!important"
 				),
-					" .premium-tab-content" => array(
-					"font-size" => self::get_css_value($attr['contentfontSizeMobile'], $attr['contentfontSizeType']). "!important",
-					"padding" => self::get_css_value($attr['contentPaddingMobile'], $attr['contentPaddingType']) . "!important",
+					" .premium-fancy-text-prefix-text" => array(
+					"font-size" => self::get_css_value($attr['TextfontSizeMobile'], $attr['TextfontSizeType']). "!important"
 					),
-					" .premium-tab-nav-list-item a" => array(
-						"padding" => self::get_css_value($attr['tabPaddingMobile'], $attr['tabPaddingType']),
-						"margin" => self::get_css_value($attr['tabMarginMobile'], $attr['tabMarginType']) . "!important",
-					)
+					" .premium-fancy-text-suffix-text" => array(
+					"font-size" => self::get_css_value($attr['TextfontSizeMobile'], $attr['TextfontSizeType']). "!important"
+					),
 			);
 			// Mobile Icon Size CSS ends.
 
 			// Tablet Icon Size CSS starts.
 			$t_selectors = array(
-				" .premium-tab-title-icon"  => array(
-					"font-size" => self::get_css_value($attr['iconfontSizeTablet'], $attr['iconfontSizeType']) . "!important",
-					"padding" => self::get_css_value($attr['iconPaddingTablet'], $attr['iconPaddingType']) . "!important",
+				" .premium-fancy-text-title"  => array(
+					"font-size" => self::get_css_value($attr['fancyTextfontSizeTablet'], $attr['fancyTextfontSizeType']) . "!important"
 				),
-				" .premium-tab-nav-list-item .premium-tab-title"  => array(
-					"font-size" => self::get_css_value($attr['titlefontSizeTablet'], $attr['titlefontSizeType']) . "!important",
-					"margin" => self::get_css_value($attr['titleMarginTablet'], $attr['titleMarginType']) . "!important",
+				" .premium-fancy-text-title-slide"  => array(
+					"font-size" => self::get_css_value($attr['fancyTextfontSizeTablet'], $attr['fancyTextfontSizeType']) . "!important"
 				),
-					" .premium-tab-content" => array(
-					"font-size" => self::get_css_value($attr['contentfontSizeTablet'], $attr['contentfontSizeType']). "!important",
-					"padding" => self::get_css_value($attr['contentPaddingTablet'], $attr['contentPaddingType']) . "!important",
+					" .premium-fancy-text-prefix-text" => array(
+					"font-size" => self::get_css_value($attr['TextfontSizeTablet'], $attr['TextfontSizeType']). "!important"
 					),
-					" .premium-tab-nav-list-item a" => array(
-						"padding" => self::get_css_value($attr['tabPaddingTablet'], $attr['tabPaddingType']),
-						"margin" => self::get_css_value($attr['tabMarginTablet'], $attr['tabMarginType']) . "!important",
+					" .premium-fancy-text-suffix-text" => array(
+						"padding" => self::get_css_value($attr['TextfontSizeTablet'], $attr['TextfontSizeType'])
 					)
 			);
 			// Tablet Icon Size CSS ends.
 
 			// @codingStandardsIgnoreEnd
 
-			$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-progress-bar-';
+			$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-fancy-text-';
 
-            $desktop = self::generate_css( $selectors, $base_selector . $id );
+        $desktop = self::generate_css( $selectors, $base_selector . $id );
 
-			$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+				$tablet = self::generate_css( $t_selectors, $base_selector . $id );
 
-            $mobile = self::generate_css( $m_selectors, $base_selector . $id );
+        $mobile = self::generate_css( $m_selectors, $base_selector . $id );
             
 			$generated_css = array(
 				'desktop' => $desktop,

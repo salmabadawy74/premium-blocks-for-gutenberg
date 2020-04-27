@@ -405,6 +405,40 @@ if ( ! class_exists( 'Config' ) ) {
 							'tabWidth' => '100'
 						)
 						),
+						'premium/fancy-text'         => array(
+						'slug'        => '',
+						'default'     => true,
+						'attributes'  => array(
+							'classMigrate'     => false,
+							'align'            => 'center',
+							'block_id'        => '',
+							'fancyTextColor' => '#6ec1e4',
+							'fancyTextfontSize' => '40',
+							'fancyTextfontSizeType' => 'px',
+							'fancyTextfontSizeMobile' => '40',
+							'fancyTextfontSizeTablet' => '40',
+							'fancyTextWeight' => '600',
+							'fancyTextUpper' => false,
+							'fancyTextStyle' => '',
+							'fancyTextLetter' => '',
+							'fancyTextBGColor' => '',
+							'shadowColor' => '',
+							'shadowBlur' => '1',
+							'shadowHorizontal' => '1',
+							'shadowVertical' => '1',
+							'cursorColor' => '#6ec1e4',
+							'textColor' => '#54595f',
+							'TextfontSize' => '40',
+							'TextfontSizeType' => 'px',
+							'TextfontSizeMobile' => '40',
+							'TextfontSizeTablet' => '40',
+							'TextWeight' => '600',
+							'TextLetter' => '',
+							'TextUpper' => false,
+							'TextStyle' => '',
+							'TextBGColor' => ''
+						)
+						)
 				);
 			}
 			return self::$block_attributes;

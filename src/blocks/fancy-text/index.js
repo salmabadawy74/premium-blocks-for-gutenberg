@@ -2,7 +2,7 @@ import {
   fancyText
 } from "../../../assets/js/settings";
 
-// import save from "./save";
+import save from "./save";
 import edit from "./edit";
 import PbgIcon from "../icons";
 
@@ -186,5 +186,5 @@ registerBlockType("premium/fancy-text", {
     inserter: fancyText
   },
   edit: edit,
-  // save: save
+  save: save
 });
