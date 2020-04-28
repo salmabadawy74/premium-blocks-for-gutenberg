@@ -3201,4 +3201,5 @@ color: #23282d;
   Sans-serif;
 }
 .premium-fancy-text-title-slide-list{
+  list-style: none !important;
 }

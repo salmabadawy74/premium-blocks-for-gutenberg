@@ -206,7 +206,11 @@ class edit extends Component {
             typeSpeed,
             backSpeed,
             startdelay,
-            backdelay
+            backdelay,
+            animationSpeed,
+            pauseTime,
+            hoverPause,
+            fancyalign
         } = attributes
 
         const ALIGNS = ["left", "center", "right"];
@@ -435,7 +439,7 @@ class edit extends Component {
                             value={effect}
                             onChange={newValue => setAttributes({ effect: newValue })}
                         />
-                        {effect=='typing'&&(
+                        {effect=='typing'?(
                             <Fragment>
                                 <TextControl
                                     label={ __("Type Speed")}
@@ -478,6 +482,32 @@ class edit extends Component {
                                         onChange={newCheck => setAttributes({ cursorMark: newCheck })}
                                     />
                                 )}
+                            </Fragment>
+                        ):(
+                            <Fragment>
+                                <TextControl
+                                    label={ __("Animation Speed")}
+                                    value={animationSpeed}
+                                    onChange={newCheck => setAttributes({ animationSpeed: newCheck })}
+                                />
+                                <TextControl
+                                    label={ __("Pause Time")}
+                                    value={pauseTime}
+                                    onChange={newCheck => setAttributes({ pauseTime: newCheck })}
+                                />
+                                <ToggleControl
+                                    label={__("Pause on Hover")}
+                                    checked={hoverPause}
+                                    onChange={newCheck => setAttributes({ hoverPause: newCheck })}
+                                />
+                                <p>{__("Fancy Strings Alignment")}</p>
+                                <Toolbar
+                                    controls={ALIGNS.map(contentAlign => ({
+                                        icon: "editor-align" + contentAlign,
+                                        isActive: contentAlign === align,
+                                        onClick: () => setAttributes({ fancyalign: contentAlign })
+                                    }))}
+                                />
                             </Fragment>
                         )}
                     </PanelBody>

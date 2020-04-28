@@ -2564,14 +2564,14 @@ var listCacheClear = __webpack_require__(88),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `ListCache`.
@@ -4799,14 +4799,14 @@ var mapCacheClear = __webpack_require__(104),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `MapCache`.
@@ -8951,14 +8951,14 @@ var hashClear = __webpack_require__(106),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `Hash`.
@@ -9318,13 +9318,13 @@ var MapCache = __webpack_require__(42),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-  var index = -1,
-      length = values == null ? 0 : values.length;
+    var index = -1,
+        length = values == null ? 0 : values.length;
 
-  this.__data__ = new MapCache();
-  while (++index < length) {
-    this.add(values[index]);
-  }
+    this.__data__ = new MapCache();
+    while (++index < length) {
+        this.add(values[index]);
+    }
 }
 
 // Add methods to `SetCache`.
@@ -10268,16 +10268,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-  var result = keys(object),
-      length = result.length;
+    var result = keys(object),
+        length = result.length;
 
-  while (length--) {
-    var key = result[length],
-        value = object[key];
+    while (length--) {
+        var key = result[length],
+            value = object[key];
 
-    result[length] = [key, value, isStrictComparable(value)];
-  }
-  return result;
+        result[length] = [key, value, isStrictComparable(value)];
+    }
+    return result;
 }
 
 module.exports = getMatchData;
@@ -57835,8 +57835,8 @@ function styling(props) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(278);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(275);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
 
 
@@ -58005,6 +58005,22 @@ var fancyTextAttrs = {
   backSpeed: {
     type: "number",
     default: 30
+  },
+  animationSpeed: {
+    type: "number",
+    default: 200
+  },
+  pauseTime: {
+    type: "number",
+    default: 3000
+  },
+  hoverPause: {
+    type: "boolean",
+    default: false
+  },
+  fancyalign: {
+    type: "string",
+    default: "center"
   }
 };
 
@@ -58025,9 +58041,127 @@ registerBlockType("premium/fancy-text", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = save;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(275);
+
+
+function save(props) {
+    var attributes = props.attributes,
+        className = props.className;
+    var block_id = attributes.block_id,
+        align = attributes.align,
+        prefix = attributes.prefix,
+        suffix = attributes.suffix,
+        repeaterFancyText = attributes.repeaterFancyText,
+        effect = attributes.effect,
+        loop = attributes.loop,
+        cursorShow = attributes.cursorShow,
+        cursorMark = attributes.cursorMark,
+        typeSpeed = attributes.typeSpeed,
+        backSpeed = attributes.backSpeed,
+        startdelay = attributes.startdelay,
+        backdelay = attributes.backdelay,
+        animationSpeed = attributes.animationSpeed,
+        pauseTime = attributes.pauseTime,
+        hoverPause = attributes.hoverPause,
+        fancyalign = attributes.fancyalign;
+
+
+    return wp.element.createElement(
+        "div",
+        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id),
+            style: {
+                textAlign: align
+            } },
+        effect == 'typing' ? wp.element.createElement(
+            "div",
+            { className: "premium-fancy-text",
+                style: {
+                    textAlign: align
+                },
+                "data-effect": "" + effect,
+                "data-strings": "" + repeaterFancyText.map(function (item, index) {
+                    return item.title;
+                }),
+                "data-typespeed": "" + typeSpeed,
+                "data-backspeed": "" + backSpeed,
+                "data-startdelay": "" + startdelay,
+                "data-backdelay": "" + backdelay,
+                "data-loop": "" + loop,
+                "data-cursorshow": "" + cursorShow,
+                "data-cursormark": "" + cursorMark
+            },
+            wp.element.createElement(
+                "span",
+                { className: "premium-fancy-text-prefix-text" },
+                prefix,
+                " "
+            ),
+            wp.element.createElement(
+                "span",
+                { className: "premium-fancy-text-title" },
+                " "
+            ),
+            wp.element.createElement(
+                "span",
+                { className: "premium-fancy-text-suffix-text" },
+                " ",
+                suffix
+            )
+        ) : wp.element.createElement(
+            "div",
+            { className: "premium-fancy-text premium-fancy-slide",
+                style: {
+                    textAlign: align
+                },
+                "data-effect": "" + effect,
+                "data-strings": "" + repeaterFancyText.map(function (item, index) {
+                    return item.title;
+                }),
+                "data-animationspeed": "" + animationSpeed,
+                "data-pausetime": "" + pauseTime,
+                "data-hoverpause": "" + hoverPause
+            },
+            wp.element.createElement(
+                "span",
+                { className: "premium-fancy-text-prefix-text" },
+                prefix,
+                " "
+            ),
+            wp.element.createElement(
+                "div",
+                { className: "premium-fancy-text-title-slide" },
+                wp.element.createElement(
+                    "ul",
+                    { className: "premium-fancy-text-title-slide-list" },
+                    repeaterFancyText.map(function (item, index) {
+                        return wp.element.createElement(
+                            "li",
+                            null,
+                            item.title
+                        );
+                    })
+                )
+            ),
+            wp.element.createElement(
+                "span",
+                { className: "premium-fancy-text-suffix-text" },
+                " ",
+                suffix
+            )
+        )
+    );
+}
+
+/***/ }),
+/* 275 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(276);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(23);
@@ -58036,9 +58170,9 @@ registerBlockType("premium/fancy-text", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_typed_js__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_typed_js__ = __webpack_require__(277);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_typed_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_typed_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_jquery__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_jquery__ = __webpack_require__(278);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_jquery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react_sortable_hoc__ = __webpack_require__(39);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -58279,7 +58413,11 @@ var edit = function (_Component) {
                 typeSpeed = attributes.typeSpeed,
                 backSpeed = attributes.backSpeed,
                 startdelay = attributes.startdelay,
-                backdelay = attributes.backdelay;
+                backdelay = attributes.backdelay,
+                animationSpeed = attributes.animationSpeed,
+                pauseTime = attributes.pauseTime,
+                hoverPause = attributes.hoverPause,
+                fancyalign = attributes.fancyalign;
 
 
             var ALIGNS = ["left", "center", "right"];
@@ -58512,7 +58650,7 @@ var edit = function (_Component) {
                             return setAttributes({ effect: newValue });
                         }
                     }),
-                    effect == 'typing' && wp.element.createElement(
+                    effect == 'typing' ? wp.element.createElement(
                         Fragment,
                         null,
                         wp.element.createElement(TextControl, {
@@ -58567,6 +58705,46 @@ var edit = function (_Component) {
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ cursorMark: newCheck });
                             }
+                        })
+                    ) : wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(TextControl, {
+                            label: __("Animation Speed"),
+                            value: animationSpeed,
+                            onChange: function onChange(newCheck) {
+                                return setAttributes({ animationSpeed: newCheck });
+                            }
+                        }),
+                        wp.element.createElement(TextControl, {
+                            label: __("Pause Time"),
+                            value: pauseTime,
+                            onChange: function onChange(newCheck) {
+                                return setAttributes({ pauseTime: newCheck });
+                            }
+                        }),
+                        wp.element.createElement(ToggleControl, {
+                            label: __("Pause on Hover"),
+                            checked: hoverPause,
+                            onChange: function onChange(newCheck) {
+                                return setAttributes({ hoverPause: newCheck });
+                            }
+                        }),
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            __("Fancy Strings Alignment")
+                        ),
+                        wp.element.createElement(Toolbar, {
+                            controls: ALIGNS.map(function (contentAlign) {
+                                return {
+                                    icon: "editor-align" + contentAlign,
+                                    isActive: contentAlign === align,
+                                    onClick: function onClick() {
+                                        return setAttributes({ fancyalign: contentAlign });
+                                    }
+                                };
+                            })
                         })
                     )
                 ),
@@ -58783,7 +58961,7 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58917,7 +59095,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -60026,7 +60204,7 @@ function styling(props) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)(module)))
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -70396,91 +70574,6 @@ function styling(props) {
 	return jQuery;
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)(module)))
-
-/***/ }),
-/* 278 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = save;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-
-
-function save(props) {
-    var attributes = props.attributes,
-        className = props.className;
-    var block_id = attributes.block_id,
-        align = attributes.align,
-        prefix = attributes.prefix,
-        suffix = attributes.suffix,
-        repeaterFancyText = attributes.repeaterFancyText,
-        effect = attributes.effect,
-        loop = attributes.loop,
-        cursorShow = attributes.cursorShow,
-        cursorMark = attributes.cursorMark,
-        typeSpeed = attributes.typeSpeed,
-        backSpeed = attributes.backSpeed,
-        startdelay = attributes.startdelay,
-        backdelay = attributes.backdelay;
-
-
-    return wp.element.createElement(
-        'div',
-        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-block-' + block_id),
-            style: {
-                textAlign: align
-            } },
-        wp.element.createElement(
-            'div',
-            { className: 'premium-fancy-text ' + (effect == 'slide' ? 'premium-fancy-slide' : ""),
-                style: {
-                    textAlign: align
-                },
-                'data-effect': '' + effect,
-                'data-strings': '' + repeaterFancyText,
-                'data-typeSpeed': '' + typeSpeed,
-                'data-backSpeed': '' + backSpeed,
-                'data-startDelay': '' + startdelay,
-                'data-backDelay': '' + backdelay,
-                'data-loop': '' + loop,
-                'data-cursorShow': '' + cursorShow,
-                'data-cursorMark': '' + cursorMark
-            },
-            wp.element.createElement(
-                'span',
-                { className: 'premium-fancy-text-prefix-text' },
-                prefix,
-                ' '
-            ),
-            effect == 'slide' ? wp.element.createElement(
-                'div',
-                { className: 'premium-fancy-text-title-slide' },
-                wp.element.createElement(
-                    'ul',
-                    { className: 'premium-fancy-text-title-slide-list' },
-                    repeaterFancyText.map(function (item, index) {
-                        return wp.element.createElement(
-                            'li',
-                            null,
-                            item.title
-                        );
-                    })
-                )
-            ) : wp.element.createElement(
-                'span',
-                { className: 'premium-fancy-text-title' },
-                ' '
-            ),
-            wp.element.createElement(
-                'span',
-                { className: 'premium-fancy-text-suffix-text' },
-                ' ',
-                suffix
-            )
-        )
-    );
-}
 
 /***/ })
 /******/ ]);

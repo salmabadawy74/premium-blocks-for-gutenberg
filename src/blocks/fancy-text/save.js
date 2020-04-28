@@ -17,7 +17,11 @@ export default function save(props) {
         typeSpeed,
         backSpeed,
         startdelay,
-        backdelay
+        backdelay,
+        animationSpeed,
+        pauseTime,
+        hoverPause,
+        fancyalign
     } = attributes
 
     return (
@@ -28,30 +32,44 @@ export default function save(props) {
             style={{
                 textAlign: align,
             }}>
-            <div className={`premium-fancy-text ${effect == 'slide' ? 'premium-fancy-slide' : ""}`} 
+            {effect== 'typing'? <div className={`premium-fancy-text`} 
                 style={{
                     textAlign: align,
                 }}
                 data-effect={`${effect}`}
-                data-strings={`${repeaterFancyText}`}
-                data-typeSpeed={`${typeSpeed}`}
-                data-backSpeed={`${backSpeed}`}
-                data-startDelay={`${startdelay}`}
-                data-backDelay={`${backdelay}`}
+                data-strings={`${repeaterFancyText.map((item, index) => {return item.title})}`}
+                data-typespeed={`${typeSpeed}`}
+                data-backspeed={`${backSpeed}`}
+                data-startdelay={`${startdelay}`}
+                data-backdelay={`${backdelay}`}
                 data-loop={`${loop}`}
-                data-cursorShow={`${cursorShow}`}
-                data-cursorMark={`${cursorMark}`}
+                data-cursorshow={`${cursorShow}`}
+                data-cursormark={`${cursorMark}`}
             >
                 <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
-                {effect == 'slide' ?
-                    <div className={`premium-fancy-text-title-slide`}>
-                        <ul className={`premium-fancy-text-title-slide-list`}>
-                            {repeaterFancyText.map((item, index) => { return <li>{item.title}</li> })}
-                        </ul>
-                    </div>
-                    : <span className={`premium-fancy-text-title`}> </span>}
+                <span className={`premium-fancy-text-title`}> </span>
                 <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
             </div>
+            : 
+            <div className={`premium-fancy-text premium-fancy-slide`} 
+                style={{
+                    textAlign: align,
+                }}
+                data-effect={`${effect}`}
+                data-strings={`${repeaterFancyText.map((item, index) => {return item.title})}`}
+                data-animationspeed={`${animationSpeed}`}
+                data-pausetime={`${pauseTime}`}
+                data-hoverpause={`${hoverPause}`}
+            >
+                <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
+                <div className={`premium-fancy-text-title-slide`}>
+                    <ul className={`premium-fancy-text-title-slide-list`}>
+                        {repeaterFancyText.map((item, index) => { return <li>{item.title}</li> })}
+                    </ul>
+                </div>
+                <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
+            </div>
+            }
         </div>
     )
 }

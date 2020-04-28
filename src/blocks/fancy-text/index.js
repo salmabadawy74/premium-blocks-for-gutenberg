@@ -174,6 +174,22 @@ const fancyTextAttrs = {
   backSpeed:{
     type: "number",
     default: 30
+  },
+  animationSpeed:{
+    type: "number",
+    default: 200
+  },
+  pauseTime:{
+    type: "number",
+    default: 3000
+  },
+  hoverPause:{
+    type: "boolean",
+    default: false
+  },
+  fancyalign:{
+    type: "string",
+    default: "center"
   }
 };
 
