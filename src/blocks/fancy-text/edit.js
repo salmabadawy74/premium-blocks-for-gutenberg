@@ -1,14 +1,8 @@
 import classnames from "classnames"
 import styling from "./styling"
 import PremiumTypo from "../../components/premium-typo";
-import PremiumBorder from "../../components/premium-border";
-import iconsList from "../../components/premium-icons-list";
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumRangeResponsive from "../../components/premium-range-responsive";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import Typed from 'typed.js';
-import {$, vTicker} from 'jquery';
 import {
     SortableContainer,
     SortableElement,
@@ -16,7 +10,6 @@ import {
 } from 'react-sortable-hoc';
 
 const { __ } = wp.i18n
-let isBoxUpdated = null;
 
 const {
     Component,
@@ -27,18 +20,14 @@ const {
     BlockControls,
     AlignmentToolbar,
     InspectorControls,
-    ColorPalette,
-    RichText
+    ColorPalette
 } = wp.editor
 
 const {
     PanelBody,
     SelectControl,
-    TextareaControl,
     TextControl,
-    RangeControl,
     ToggleControl,
-    TabPanel,
     Toolbar
 } = wp.components
 
@@ -148,14 +137,6 @@ class edit extends Component {
                 cursorChar: cursorMark
             };
             this.typed = new Typed(this.el, options);
-        }
-        else {
-            // ('.premium-fancy-text-title-slide-list').vTicker();
-            // $('.premium-fancy-text-title-slide-list').vTicker({
-            //     speed: 400, 
-            //     pause: 1000,
-            //     showItems: 2,
-            //     padding:4});
         }
     } 
 
@@ -438,6 +419,7 @@ class edit extends Component {
                             options={EFFECT}
                             value={effect}
                             onChange={newValue => setAttributes({ effect: newValue })}
+                            // help={effct == 'slide'? "Get icon class from":""}
                         />
                         {effect=='typing'?(
                             <Fragment>
@@ -485,6 +467,7 @@ class edit extends Component {
                             </Fragment>
                         ):(
                             <Fragment>
+                                <p>This effects works only on frontend</p>
                                 <TextControl
                                     label={ __("Animation Speed")}
                                     value={animationSpeed}
@@ -504,7 +487,7 @@ class edit extends Component {
                                 <Toolbar
                                     controls={ALIGNS.map(contentAlign => ({
                                         icon: "editor-align" + contentAlign,
-                                        isActive: contentAlign === align,
+                                        isActive: contentAlign === fancyalign,
                                         onClick: () => setAttributes({ fancyalign: contentAlign })
                                     }))}
                                 />
@@ -648,19 +631,25 @@ class edit extends Component {
             )} style={{
                 textAlign: align,
             }}>
-                <div className={`premium-fancy-text ${effect=='slide'? 'premium-fancy-slide':""}`} style={{
+                {effect== 'typing'?<div className={`premium-fancy-text`} style={{
                     textAlign: align,
                 }}>
                     <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
-                    {effect=='slide'?
+                    <span className={`premium-fancy-text-title`} ref={(el) => { this.el = el; }}> </span>
+                    <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
+                </div>
+                :<div className={`premium-fancy-text premium-fancy-slide`} style={{
+                    textAlign: align,
+                }}>
+                    <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
                     <div className={`premium-fancy-text-title-slide`}>
                         <ul className={`premium-fancy-text-title-slide-list`}>
                             {repeaterFancyText.map((item, index) => {return <li>{item.title}</li>})}
                         </ul>
                     </div>
-                    :<span className={`premium-fancy-text-title`} ref={(el) => { this.el = el; }}> </span>}
                     <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
                 </div>
+                }
             </div>
         ]
     }
