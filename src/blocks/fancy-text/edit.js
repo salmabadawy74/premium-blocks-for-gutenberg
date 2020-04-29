@@ -64,8 +64,8 @@ const SortableItem = SortableElement(({
             `premium-progress-bar-repeater-controls ${value.edit ? "editable" : ""}`
         } >
             <TextControl
-                label={ __("Fancy String")}
-                value={ value.title}
+                label={__("Fancy String")}
+                value={value.title}
                 onChange={(newText) => changeFancyValue(newText, newIndex)}
             />
         </div >
@@ -114,18 +114,18 @@ class edit extends Component {
         document.head.appendChild($style)
         this.renderFancyText()
     }
-    
+
     componentDidUpdate() {
         const { effect } = this.props.attributes;
-      effect==='typing'?this.typed.destroy():""
-      this.renderFancyText()
-   }
+        effect === 'typing' ? this.typed.destroy() : ""
+        this.renderFancyText()
+    }
 
-    renderFancyText  () {
-        const { repeaterFancyText, loop,cursorShow, cursorMark, typeSpeed,backSpeed, startdelay, backdelay, effect } = this.props.attributes;
-            if (!repeaterFancyText) return null;
-        let txt =  repeaterFancyText.map((item, index) => {return item.title})
-        if(effect==='typing'){
+    renderFancyText() {
+        const { repeaterFancyText, loop, cursorShow, cursorMark, typeSpeed, backSpeed, startdelay, backdelay, effect } = this.props.attributes;
+        if (!repeaterFancyText) return null;
+        let txt = repeaterFancyText.map((item, index) => { return item.title })
+        if (effect === 'typing') {
             const options = {
                 strings: txt,
                 typeSpeed: typeSpeed,
@@ -138,13 +138,13 @@ class edit extends Component {
             };
             this.typed = new Typed(this.el, options);
         }
-    } 
+    }
 
     componentWillUnmount() {
         const { effect } = this.props.attributes;
         // Make sure to destroy Typed instance on unmounting
-      // to prevent memory leaks
-        effect==='typing'?this.typed.destroy():""
+        // to prevent memory leaks
+        effect === 'typing' ? this.typed.destroy() : ""
     }
     render() {
         const { attributes, setAttributes, isSelected } = this.props
@@ -196,15 +196,15 @@ class edit extends Component {
 
         const ALIGNS = ["left", "center", "right"];
         const EFFECT = [{
-                label: __("Typing"),
-                value: "typing"
-            },
-            {
-                label: __("Slide"),
-                value: "slide"
-            }
+            label: __("Typing"),
+            value: "typing"
+        },
+        {
+            label: __("Slide"),
+            value: "slide"
+        }
         ];
-        
+
         var element = document.getElementById("premium-style-fancy-text-" + this.props.clientId)
 
         if (null != element && "undefined" != typeof element) {
@@ -358,34 +358,20 @@ class edit extends Component {
                                 <label >
                                     <span className="premium-fancy-text-control-title" > Fancy Strings </span>
                                 </label>
-                                < SortableList items={
-                                    repeaterFancyText
-                                }
-                                    onSortEnd={
-                                        (o, n) => onSortEndSingle(o, n)
-                                    }
-                                    removeItem={
-                                        (value) => removeItem(value)
-                                    }
-                                    edit={
-                                        (value) => edit(value)
-                                    }
+                                < SortableList 
+                                    items={ repeaterFancyText}
+                                    onSortEnd={(o, n) => onSortEndSingle(o, n)}
+                                    removeItem={(value) => removeItem(value)}
+                                    edit={(value) => edit(value)}
 
-                                    shouldCancelStart={
-                                        shouldCancelStart
-                                    }
-                                    changeFancyValue={
-                                        changeFancyValue
-                                    }
+                                    shouldCancelStart={shouldCancelStart}
+                                    changeFancyValue={changeFancyValue}
                                     helperClass='premium-fancy-text__sortableHelper' />
                                 < div className="premium-fancy-text-btn__wrap" >
                                     <button
-                                        className={
-                                            "premium-fancy-text-btn"
-                                        }
-                                        onClick={
-                                            () => addNewFancyText()
-                                        } >
+                                        className={"premium-fancy-text-btn"}
+                                        onClick={() => addNewFancyText()} 
+                                    >
                                         <i className="dashicons dashicons-plus premium-fancy-text-icon" />
                                         {__("Add New Item")}
                                     </button>
@@ -394,9 +380,7 @@ class edit extends Component {
                             <br />
                         </Fragment>
                         <TextControl
-                            label={
-                                __("Suffix Text")
-                            }
+                            label={__("Suffix Text")}
                             value={suffix}
                             onChange={newText => setAttributes({ suffix: newText })}
                         />
@@ -419,32 +403,31 @@ class edit extends Component {
                             options={EFFECT}
                             value={effect}
                             onChange={newValue => setAttributes({ effect: newValue })}
-                            // help={effct == 'slide'? "Get icon class from":""}
                         />
-                        {effect=='typing'?(
+                        {effect == 'typing' ? (
                             <Fragment>
                                 <TextControl
-                                    label={ __("Type Speed")}
+                                    label={__("Type Speed")}
                                     type="Number"
-                                    value={ typeSpeed}
+                                    value={typeSpeed}
                                     onChange={newText => setAttributes({ typeSpeed: newText })}
                                 />
                                 <TextControl
-                                    label={ __("Back Speed")}
+                                    label={__("Back Speed")}
                                     type="Number"
-                                    value={ backSpeed}
+                                    value={backSpeed}
                                     onChange={newText => setAttributes({ backSpeed: newText })}
                                 />
                                 <TextControl
-                                    label={ __("Start Delay")}
+                                    label={__("Start Delay")}
                                     type="Number"
-                                    value={ startdelay}
+                                    value={startdelay}
                                     onChange={newText => setAttributes({ startdelay: newText })}
                                 />
                                 <TextControl
-                                    label={ __("Back Delay")}
+                                    label={__("Back Delay")}
                                     type="Number"
-                                    value={ backdelay}
+                                    value={backdelay}
                                     onChange={newText => setAttributes({ backdelay: newText })}
                                 />
                                 <ToggleControl
@@ -457,42 +440,42 @@ class edit extends Component {
                                     checked={cursorShow}
                                     onChange={newCheck => setAttributes({ cursorShow: newCheck })}
                                 />
-                                {cursorShow&&(
+                                {cursorShow && (
                                     <TextControl
-                                        label={ __("Cursor Mark")}
+                                        label={__("Cursor Mark")}
                                         value={cursorMark}
                                         onChange={newCheck => setAttributes({ cursorMark: newCheck })}
                                     />
                                 )}
                             </Fragment>
-                        ):(
-                            <Fragment>
-                                <p>This effects works only on frontend</p>
-                                <TextControl
-                                    label={ __("Animation Speed")}
-                                    value={animationSpeed}
-                                    onChange={newCheck => setAttributes({ animationSpeed: newCheck })}
-                                />
-                                <TextControl
-                                    label={ __("Pause Time")}
-                                    value={pauseTime}
-                                    onChange={newCheck => setAttributes({ pauseTime: newCheck })}
-                                />
-                                <ToggleControl
-                                    label={__("Pause on Hover")}
-                                    checked={hoverPause}
-                                    onChange={newCheck => setAttributes({ hoverPause: newCheck })}
-                                />
-                                <p>{__("Fancy Strings Alignment")}</p>
-                                <Toolbar
-                                    controls={ALIGNS.map(contentAlign => ({
-                                        icon: "editor-align" + contentAlign,
-                                        isActive: contentAlign === fancyalign,
-                                        onClick: () => setAttributes({ fancyalign: contentAlign })
-                                    }))}
-                                />
-                            </Fragment>
-                        )}
+                        ) : (
+                                <Fragment>
+                                    <p>This effects works only on frontend</p>
+                                    <TextControl
+                                        label={__("Animation Speed")}
+                                        value={animationSpeed}
+                                        onChange={newCheck => setAttributes({ animationSpeed: newCheck })}
+                                    />
+                                    <TextControl
+                                        label={__("Pause Time")}
+                                        value={pauseTime}
+                                        onChange={newCheck => setAttributes({ pauseTime: newCheck })}
+                                    />
+                                    <ToggleControl
+                                        label={__("Pause on Hover")}
+                                        checked={hoverPause}
+                                        onChange={newCheck => setAttributes({ hoverPause: newCheck })}
+                                    />
+                                    <p>{__("Fancy Strings Alignment")}</p>
+                                    <Toolbar
+                                        controls={ALIGNS.map(contentAlign => ({
+                                            icon: "editor-align" + contentAlign,
+                                            isActive: contentAlign === fancyalign,
+                                            onClick: () => setAttributes({ fancyalign: contentAlign })
+                                        }))}
+                                    />
+                                </Fragment>
+                            )}
                     </PanelBody>
                     <PanelBody
                         title={__("Fancy Text Style")}
@@ -559,7 +542,7 @@ class edit extends Component {
                             }
                             onResetClick={onResetClickLabelTextShadow}
                         />
-                        {effect == 'typing' && (
+                        {effect == 'typing' && cursorShow && (
                             <Fragment>
                                 <p>{__("Cursor Color")}</p>
                                 <ColorPalette
@@ -631,24 +614,26 @@ class edit extends Component {
             )} style={{
                 textAlign: align,
             }}>
-                {effect== 'typing'?<div className={`premium-fancy-text`} style={{
+                {effect == 'typing' ? <div className={`premium-fancy-text`} style={{
                     textAlign: align,
                 }}>
                     <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
                     <span className={`premium-fancy-text-title`} ref={(el) => { this.el = el; }}> </span>
                     <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
                 </div>
-                :<div className={`premium-fancy-text premium-fancy-slide`} style={{
-                    textAlign: align,
-                }}>
-                    <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
-                    <div className={`premium-fancy-text-title-slide`}>
-                        <ul className={`premium-fancy-text-title-slide-list`}>
-                            {repeaterFancyText.map((item, index) => {return <li>{item.title}</li>})}
-                        </ul>
+                    : <div className={`premium-fancy-text premium-fancy-slide`} style={{
+                        textAlign: align
+                    }}>
+                        <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
+                        <div className={`premium-fancy-text-title-slide`} style={{
+                            textAlign: fancyalign
+                        }}>
+                            <ul className={`premium-fancy-text-title-slide-list`}>
+                                {repeaterFancyText.map((item, index) => { return <li>{item.title}</li> })}
+                            </ul>
+                        </div>
+                        <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
                     </div>
-                    <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
-                </div>
                 }
             </div>
         ]

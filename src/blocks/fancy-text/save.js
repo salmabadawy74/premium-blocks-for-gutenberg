@@ -32,7 +32,7 @@ export default function save(props) {
             style={{
                 textAlign: align,
             }}>
-            {effect== 'typing'? <div className={`premium-fancy-text`} 
+            {effect== 'typing'? <div className={`premium-fancy-text ${block_id}`} 
                 style={{
                     textAlign: align,
                 }}
@@ -51,7 +51,7 @@ export default function save(props) {
                 <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
             </div>
             : 
-            <div className={`premium-fancy-text premium-fancy-slide`} 
+            <div className={`premium-fancy-text premium-fancy-slide ${block_id}`} 
                 style={{
                     textAlign: align,
                 }}
@@ -62,7 +62,9 @@ export default function save(props) {
                 data-hoverpause={`${hoverPause}`}
             >
                 <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
-                <div className={`premium-fancy-text-title-slide`}>
+                <div className={`premium-fancy-text-title-slide-front`} style={{
+                    textAlign: fancyalign
+                }}>
                     <ul className={`premium-fancy-text-title-slide-list`}>
                         {repeaterFancyText.map((item, index) => { return <li>{item.title}</li> })}
                     </ul>

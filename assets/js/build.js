@@ -2448,14 +2448,14 @@ var listCacheClear = __webpack_require__(88),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `ListCache`.
@@ -4799,14 +4799,14 @@ var mapCacheClear = __webpack_require__(104),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `MapCache`.
@@ -8951,14 +8951,14 @@ var hashClear = __webpack_require__(106),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `Hash`.
@@ -9318,13 +9318,13 @@ var MapCache = __webpack_require__(42),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-  var index = -1,
-      length = values == null ? 0 : values.length;
+    var index = -1,
+        length = values == null ? 0 : values.length;
 
-  this.__data__ = new MapCache();
-  while (++index < length) {
-    this.add(values[index]);
-  }
+    this.__data__ = new MapCache();
+    while (++index < length) {
+        this.add(values[index]);
+    }
 }
 
 // Add methods to `SetCache`.
@@ -10268,16 +10268,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-  var result = keys(object),
-      length = result.length;
+    var result = keys(object),
+        length = result.length;
 
-  while (length--) {
-    var key = result[length],
-        value = object[key];
+    while (length--) {
+        var key = result[length],
+            value = object[key];
 
-    result[length] = [key, value, isStrictComparable(value)];
-  }
-  return result;
+        result[length] = [key, value, isStrictComparable(value)];
+    }
+    return result;
 }
 
 module.exports = getMatchData;
@@ -58076,7 +58076,7 @@ function save(props) {
             } },
         effect == 'typing' ? wp.element.createElement(
             "div",
-            { className: "premium-fancy-text",
+            { className: "premium-fancy-text " + block_id,
                 style: {
                     textAlign: align
                 },
@@ -58111,7 +58111,7 @@ function save(props) {
             )
         ) : wp.element.createElement(
             "div",
-            { className: "premium-fancy-text premium-fancy-slide",
+            { className: "premium-fancy-text premium-fancy-slide " + block_id,
                 style: {
                     textAlign: align
                 },
@@ -58131,7 +58131,9 @@ function save(props) {
             ),
             wp.element.createElement(
                 "div",
-                { className: "premium-fancy-text-title-slide" },
+                { className: "premium-fancy-text-title-slide-front", style: {
+                        textAlign: fancyalign
+                    } },
                 wp.element.createElement(
                     "ul",
                     { className: "premium-fancy-text-title-slide-list" },
@@ -58552,7 +58554,8 @@ var edit = function (_Component) {
                                     " Fancy Strings "
                                 )
                             ),
-                            wp.element.createElement(SortableList, { items: repeaterFancyText,
+                            wp.element.createElement(SortableList, {
+                                items: repeaterFancyText,
                                 onSortEnd: function onSortEnd(o, n) {
                                     return onSortEndSingle(o, n);
                                 },
@@ -58575,7 +58578,8 @@ var edit = function (_Component) {
                                         className: "premium-fancy-text-btn",
                                         onClick: function onClick() {
                                             return addNewFancyText();
-                                        } },
+                                        }
+                                    },
                                     wp.element.createElement("i", { className: "dashicons dashicons-plus premium-fancy-text-icon" }),
                                     __("Add New Item")
                                 )
@@ -58621,7 +58625,6 @@ var edit = function (_Component) {
                         onChange: function onChange(newValue) {
                             return setAttributes({ effect: newValue });
                         }
-                        // help={effct == 'slide'? "Get icon class from":""}
                     }),
                     effect == 'typing' ? wp.element.createElement(
                         Fragment,
@@ -58805,7 +58808,7 @@ var edit = function (_Component) {
                         },
                         onResetClick: onResetClickLabelTextShadow
                     }),
-                    effect == 'typing' && wp.element.createElement(
+                    effect == 'typing' && cursorShow && wp.element.createElement(
                         Fragment,
                         null,
                         wp.element.createElement(
@@ -58927,7 +58930,9 @@ var edit = function (_Component) {
                     ),
                     wp.element.createElement(
                         "div",
-                        { className: "premium-fancy-text-title-slide" },
+                        { className: "premium-fancy-text-title-slide", style: {
+                                textAlign: fancyalign
+                            } },
                         wp.element.createElement(
                             "ul",
                             { className: "premium-fancy-text-title-slide-list" },
@@ -59021,6 +59026,16 @@ function styling(props) {
       "background-color": fancyTextBGColor,
       "text-shadow": shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor
     },
+    " .premium-fancy-text-title-slide-front": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(fancyTextfontSize, fancyTextfontSizeType),
+      "color": fancyTextColor,
+      "font-weight": fancyTextWeight,
+      "letter-spacing": fancyTextLetter + "px" + "!important",
+      "text-transform": fancyTextUpper ? "uppercase" : "none" + "!important",
+      "font-style": fancyTextStyle + "!important",
+      "background-color": fancyTextBGColor,
+      "text-shadow": shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor
+    },
     " .typed-cursor": {
       "color": cursorColor
     },
@@ -59051,6 +59066,9 @@ function styling(props) {
     " .premium-fancy-text-title-slide": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(fancyTextfontSizeMobile, fancyTextfontSizeType)
     },
+    " .premium-fancy-text-title-slide-front": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(fancyTextfontSizeMobile, fancyTextfontSizeType)
+    },
     " .premium-fancy-text-prefix-text": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(TextfontSizeMobile, TextfontSizeType)
     },
@@ -59064,6 +59082,9 @@ function styling(props) {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(fancyTextfontSizeTablet, fancyTextfontSizeType)
     },
     " .premium-fancy-text-title-slide": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(fancyTextfontSizeTablet, fancyTextfontSizeType)
+    },
+    " .premium-fancy-text-title-slide-front": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(fancyTextfontSizeTablet, fancyTextfontSizeType)
     },
     " .premium-fancy-text-prefix-text": {
