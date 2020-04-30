@@ -1395,16 +1395,6 @@ class Premium_Blocks_Integration {
 					"font-weight" => self::get_css_value($attr['fancyTextWeight'], " !important") ,
 					"text-shadow" => self::get_css_value($attr['shadowHorizontal'],'px ') .self::get_css_value($attr['shadowVertical'],'px ') . self::get_css_value($attr['shadowBlur'], 'px ') . $attr['shadowColor'],
 				),
-				" .premium-fancy-text-title-slide-front" => array(
-					"font-size" =>  self::get_css_value($attr['fancyTextfontSize'] , $attr['fancyTextfontSizeType'] ),
-					"color" => $attr['fancyTextColor'],
-					"background-color" => $attr['fancyTextBGColor'],
-					"letter-spacing" => self::get_css_value($attr['fancyTextLetter'] , 'px') ,
-					"text-transform" => $attr['fancyTextUpper'] ? "uppercase" : "none" ,
-					"font-style" => self::get_css_value($attr['fancyTextStyle'], " !important") ,
-					"font-weight" => self::get_css_value($attr['fancyTextWeight'], " !important") ,
-					"text-shadow" => self::get_css_value($attr['shadowHorizontal'],'px ') .self::get_css_value($attr['shadowVertical'],'px ') . self::get_css_value($attr['shadowBlur'], 'px ') . $attr['shadowColor'],
-				),
 				" .typed-cursor" => array(
 					"color" => $attr['cursorColor'],
 				),
@@ -1437,9 +1427,6 @@ class Premium_Blocks_Integration {
 				" .premium-fancy-text-title-slide"  => array(
 					"font-size" => self::get_css_value($attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeType']) . "!important"
 				),
-				" .premium-fancy-text-title-slide-front"  => array(
-					"font-size" => self::get_css_value($attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeType']) . "!important"
-				),
 				" .premium-fancy-text-prefix-text" => array(
 				"font-size" => self::get_css_value($attr['TextfontSizeMobile'], $attr['TextfontSizeType']). "!important"
 				),
@@ -1455,9 +1442,6 @@ class Premium_Blocks_Integration {
 					"font-size" => self::get_css_value($attr['fancyTextfontSizeTablet'], $attr['fancyTextfontSizeType']) . "!important"
 				),
 				" .premium-fancy-text-title-slide"  => array(
-					"font-size" => self::get_css_value($attr['fancyTextfontSizeTablet'], $attr['fancyTextfontSizeType']) . "!important"
-				),
-				" .premium-fancy-text-title-slide-front"  => array(
 					"font-size" => self::get_css_value($attr['fancyTextfontSizeTablet'], $attr['fancyTextfontSizeType']) . "!important"
 				),
 				" .premium-fancy-text-prefix-text" => array(

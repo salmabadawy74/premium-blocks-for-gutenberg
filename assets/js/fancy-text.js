@@ -9,6 +9,8 @@ jQuery(document).ready(function ($) {
     let fanctStrings = strings.split(",")
 
     if (effect == 'typing') {
+      console.log($fancyText.data('typespeed'));
+      
       $fancyText.find(".premium-fancy-text-title").typed({
         strings: fanctStrings,
         typeSpeed: $fancyText.data('typespeed'),
@@ -21,7 +23,7 @@ jQuery(document).ready(function ($) {
       });
     }
     else if (effect == 'slide') {
-      $fancyText.find(".premium-fancy-text-title-slide-front").vTicker({
+      $fancyText.find(".premium-fancy-text-title-slide").vTicker({
         strings: fanctStrings,
         speed: $fancyText.data('animationspeed'),
         pause: $fancyText.data('pausetime'),

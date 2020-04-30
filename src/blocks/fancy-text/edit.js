@@ -117,15 +117,21 @@ class edit extends Component {
 
     componentDidUpdate() {
         const { effect } = this.props.attributes;
-        effect === 'typing' ? this.typed.destroy() : ""
+        console.log(this.typed);
+        
+        if (effect == 'typing' && this.typed!= undefined){
+            this.typed.destroy()
+        }
         this.renderFancyText()
     }
 
     renderFancyText() {
         const { repeaterFancyText, loop, cursorShow, cursorMark, typeSpeed, backSpeed, startdelay, backdelay, effect } = this.props.attributes;
         if (!repeaterFancyText) return null;
-        let txt = repeaterFancyText.map((item, index) => { return item.title })
-        if (effect === 'typing') {
+        let txt = repeaterFancyText.map((item) => { return item.title })
+        console.log(typeSpeed, backSpeed, backdelay, startdelay);
+        
+        if (effect == 'typing') {
             const options = {
                 strings: txt,
                 typeSpeed: typeSpeed,
@@ -136,16 +142,22 @@ class edit extends Component {
                 showCursor: cursorShow,
                 cursorChar: cursorMark
             };
-            this.typed = new Typed(this.el, options);
+            this.typed = new Typed(this.el, options); 
+            // this.typed = new Typed('.premium-fancy-text-title', {
+            //     strings: txt,
+            //     typeSpeed: typeSpeed,
+            //     backSpeed: backSpeed,
+            //     backDelay: backdelay,
+            //     startDelay: startdelay,
+            //     loop: loop,
+            //     showCursor: cursorShow,
+            //     cursorChar: cursorMark
+            // });
+            console.log(this.typed);
+            
         }
     }
 
-    componentWillUnmount() {
-        const { effect } = this.props.attributes;
-        // Make sure to destroy Typed instance on unmounting
-        // to prevent memory leaks
-        effect === 'typing' ? this.typed.destroy() : ""
-    }
     render() {
         const { attributes, setAttributes, isSelected } = this.props
 
@@ -384,14 +396,6 @@ class edit extends Component {
                             value={suffix}
                             onChange={newText => setAttributes({ suffix: newText })}
                         />
-                        <p>{__("AlignmentToolbar")}</p>
-                        <Toolbar
-                            controls={ALIGNS.map(contentAlign => ({
-                                icon: "editor-align" + contentAlign,
-                                isActive: contentAlign === align,
-                                onClick: () => setAttributes({ align: contentAlign })
-                            }))}
-                        />
                     </PanelBody>
                     <PanelBody
                         title={__("Advanced Settings")}
@@ -411,24 +415,28 @@ class edit extends Component {
                                     type="Number"
                                     value={typeSpeed}
                                     onChange={newText => setAttributes({ typeSpeed: newText })}
+                                    help = "Set typing effect speed in milliseconds."
                                 />
                                 <TextControl
                                     label={__("Back Speed")}
                                     type="Number"
                                     value={backSpeed}
                                     onChange={newText => setAttributes({ backSpeed: newText })}
+                                    help = "Set a speed for backspace effect in milliseconds."
                                 />
                                 <TextControl
                                     label={__("Start Delay")}
                                     type="Number"
                                     value={startdelay}
                                     onChange={newText => setAttributes({ startdelay: newText })}
+                                    help = "If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds."
                                 />
                                 <TextControl
                                     label={__("Back Delay")}
                                     type="Number"
                                     value={backdelay}
                                     onChange={newText => setAttributes({ backdelay: newText })}
+                                    help = "If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect."
                                 />
                                 <ToggleControl
                                     label={__("Loop")}
@@ -450,21 +458,24 @@ class edit extends Component {
                             </Fragment>
                         ) : (
                                 <Fragment>
-                                    <p>This effects works only on frontend</p>
+                                    <p className="premium-notice">Please note that Slide effect works only on frontend</p>
                                     <TextControl
                                         label={__("Animation Speed")}
                                         value={animationSpeed}
                                         onChange={newCheck => setAttributes({ animationSpeed: newCheck })}
+                                        help = "Set a duration value in milliseconds for slide effect."
                                     />
                                     <TextControl
                                         label={__("Pause Time")}
                                         value={pauseTime}
                                         onChange={newCheck => setAttributes({ pauseTime: newCheck })}
+                                        help = "How long should the word/string stay visible? Set a value in milliseconds."
                                     />
                                     <ToggleControl
                                         label={__("Pause on Hover")}
                                         checked={hoverPause}
                                         onChange={newCheck => setAttributes({ hoverPause: newCheck })}
+                                        help = "If you enabled this option, the slide will be paused when mouseover."
                                     />
                                     <p>{__("Fancy Strings Alignment")}</p>
                                     <Toolbar
@@ -614,16 +625,32 @@ class edit extends Component {
             )} style={{
                 textAlign: align,
             }}>
-                {effect == 'typing' ? <div className={`premium-fancy-text`} style={{
+                {effect == 'typing' ? <div className={`premium-fancy-text ${this.props.clientId}`} style={{
                     textAlign: align,
-                }}>
+                }}
+                data-effect={`${effect}`}
+                data-strings={`${repeaterFancyText.map((item, index) => {return item.title})}`}
+                data-typespeed={`${typeSpeed}`}
+                data-backspeed={`${backSpeed}`}
+                data-startdelay={`${startdelay}`}
+                data-backdelay={`${backdelay}`}
+                data-loop={`${loop}`}
+                data-cursorshow={`${cursorShow}`}
+                data-cursormark={`${cursorMark}`}
+                >
                     <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
                     <span className={`premium-fancy-text-title`} ref={(el) => { this.el = el; }}> </span>
                     <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
                 </div>
-                    : <div className={`premium-fancy-text premium-fancy-slide`} style={{
+                    : <div className={`premium-fancy-text premium-fancy-slide ${this.props.clientId}`} style={{
                         textAlign: align
-                    }}>
+                        }}
+                        data-effect={`${effect}`}
+                        data-strings={`${repeaterFancyText.map((item, index) => {return item.title})}`}
+                        data-animationspeed={`${animationSpeed}`}
+                        data-pausetime={`${pauseTime}`}
+                        data-hoverpause={`${hoverPause}`}
+                        >
                         <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
                         <div className={`premium-fancy-text-title-slide`} style={{
                             textAlign: fancyalign

@@ -2448,14 +2448,14 @@ var listCacheClear = __webpack_require__(88),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `ListCache`.
@@ -4799,14 +4799,14 @@ var mapCacheClear = __webpack_require__(104),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `MapCache`.
@@ -8951,14 +8951,14 @@ var hashClear = __webpack_require__(106),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `Hash`.
@@ -9318,13 +9318,13 @@ var MapCache = __webpack_require__(42),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-    var index = -1,
-        length = values == null ? 0 : values.length;
+  var index = -1,
+      length = values == null ? 0 : values.length;
 
-    this.__data__ = new MapCache();
-    while (++index < length) {
-        this.add(values[index]);
-    }
+  this.__data__ = new MapCache();
+  while (++index < length) {
+    this.add(values[index]);
+  }
 }
 
 // Add methods to `SetCache`.
@@ -10268,16 +10268,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-    var result = keys(object),
-        length = result.length;
+  var result = keys(object),
+      length = result.length;
 
-    while (length--) {
-        var key = result[length],
-            value = object[key];
+  while (length--) {
+    var key = result[length],
+        value = object[key];
 
-        result[length] = [key, value, isStrictComparable(value)];
-    }
-    return result;
+    result[length] = [key, value, isStrictComparable(value)];
+  }
+  return result;
 }
 
 module.exports = getMatchData;
@@ -58025,7 +58025,7 @@ var fancyTextAttrs = {
 };
 
 registerBlockType("premium/fancy-text", {
-  title: __("fancy Text"),
+  title: __("Fancy Text"),
   icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__icons__["a" /* default */], { icon: "fancy-text" }),
   category: "premium-blocks",
   attributes: fancyTextAttrs,
@@ -58081,7 +58081,7 @@ function save(props) {
                     textAlign: align
                 },
                 "data-effect": "" + effect,
-                "data-strings": "" + repeaterFancyText.map(function (item, index) {
+                "data-strings": "" + repeaterFancyText.map(function (item) {
                     return item.title;
                 }),
                 "data-typespeed": "" + typeSpeed,
@@ -58116,7 +58116,7 @@ function save(props) {
                     textAlign: align
                 },
                 "data-effect": "" + effect,
-                "data-strings": "" + repeaterFancyText.map(function (item, index) {
+                "data-strings": "" + repeaterFancyText.map(function (item) {
                     return item.title;
                 }),
                 "data-animationspeed": "" + animationSpeed,
@@ -58131,13 +58131,13 @@ function save(props) {
             ),
             wp.element.createElement(
                 "div",
-                { className: "premium-fancy-text-title-slide-front", style: {
+                { className: "premium-fancy-text-title-slide", style: {
                         textAlign: fancyalign
                     } },
                 wp.element.createElement(
                     "ul",
                     { className: "premium-fancy-text-title-slide-list" },
-                    repeaterFancyText.map(function (item, index) {
+                    repeaterFancyText.map(function (item) {
                         return wp.element.createElement(
                             "li",
                             null,
@@ -58297,7 +58297,11 @@ var edit = function (_Component) {
         value: function componentDidUpdate() {
             var effect = this.props.attributes.effect;
 
-            effect === 'typing' ? this.typed.destroy() : "";
+            console.log(this.typed);
+
+            if (effect == 'typing' && this.typed != undefined) {
+                this.typed.destroy();
+            }
             this.renderFancyText();
         }
     }, {
@@ -58315,10 +58319,12 @@ var edit = function (_Component) {
                 effect = _props$attributes.effect;
 
             if (!repeaterFancyText) return null;
-            var txt = repeaterFancyText.map(function (item, index) {
+            var txt = repeaterFancyText.map(function (item) {
                 return item.title;
             });
-            if (effect === 'typing') {
+            console.log(typeSpeed, backSpeed, backdelay, startdelay);
+
+            if (effect == 'typing') {
                 var options = {
                     strings: txt,
                     typeSpeed: typeSpeed,
@@ -58330,16 +58336,18 @@ var edit = function (_Component) {
                     cursorChar: cursorMark
                 };
                 this.typed = new __WEBPACK_IMPORTED_MODULE_4_typed_js___default.a(this.el, options);
+                // this.typed = new Typed('.premium-fancy-text-title', {
+                //     strings: txt,
+                //     typeSpeed: typeSpeed,
+                //     backSpeed: backSpeed,
+                //     backDelay: backdelay,
+                //     startDelay: startdelay,
+                //     loop: loop,
+                //     showCursor: cursorShow,
+                //     cursorChar: cursorMark
+                // });
+                console.log(this.typed);
             }
-        }
-    }, {
-        key: "componentWillUnmount",
-        value: function componentWillUnmount() {
-            var effect = this.props.attributes.effect;
-            // Make sure to destroy Typed instance on unmounting
-            // to prevent memory leaks
-
-            effect === 'typing' ? this.typed.destroy() : "";
         }
     }, {
         key: "render",
@@ -58593,22 +58601,6 @@ var edit = function (_Component) {
                         onChange: function onChange(newText) {
                             return setAttributes({ suffix: newText });
                         }
-                    }),
-                    wp.element.createElement(
-                        "p",
-                        null,
-                        __("AlignmentToolbar")
-                    ),
-                    wp.element.createElement(Toolbar, {
-                        controls: ALIGNS.map(function (contentAlign) {
-                            return {
-                                icon: "editor-align" + contentAlign,
-                                isActive: contentAlign === align,
-                                onClick: function onClick() {
-                                    return setAttributes({ align: contentAlign });
-                                }
-                            };
-                        })
                     })
                 ),
                 wp.element.createElement(
@@ -58635,7 +58627,8 @@ var edit = function (_Component) {
                             value: typeSpeed,
                             onChange: function onChange(newText) {
                                 return setAttributes({ typeSpeed: newText });
-                            }
+                            },
+                            help: "Set typing effect speed in milliseconds."
                         }),
                         wp.element.createElement(TextControl, {
                             label: __("Back Speed"),
@@ -58643,7 +58636,8 @@ var edit = function (_Component) {
                             value: backSpeed,
                             onChange: function onChange(newText) {
                                 return setAttributes({ backSpeed: newText });
-                            }
+                            },
+                            help: "Set a speed for backspace effect in milliseconds."
                         }),
                         wp.element.createElement(TextControl, {
                             label: __("Start Delay"),
@@ -58651,7 +58645,8 @@ var edit = function (_Component) {
                             value: startdelay,
                             onChange: function onChange(newText) {
                                 return setAttributes({ startdelay: newText });
-                            }
+                            },
+                            help: "If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds."
                         }),
                         wp.element.createElement(TextControl, {
                             label: __("Back Delay"),
@@ -58659,7 +58654,8 @@ var edit = function (_Component) {
                             value: backdelay,
                             onChange: function onChange(newText) {
                                 return setAttributes({ backdelay: newText });
-                            }
+                            },
+                            help: "If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect."
                         }),
                         wp.element.createElement(ToggleControl, {
                             label: __("Loop"),
@@ -58687,29 +58683,32 @@ var edit = function (_Component) {
                         null,
                         wp.element.createElement(
                             "p",
-                            null,
-                            "This effects works only on frontend"
+                            { className: "premium-notice" },
+                            "Please note that Slide effect works only on frontend"
                         ),
                         wp.element.createElement(TextControl, {
                             label: __("Animation Speed"),
                             value: animationSpeed,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ animationSpeed: newCheck });
-                            }
+                            },
+                            help: "Set a duration value in milliseconds for slide effect."
                         }),
                         wp.element.createElement(TextControl, {
                             label: __("Pause Time"),
                             value: pauseTime,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ pauseTime: newCheck });
-                            }
+                            },
+                            help: "How long should the word/string stay visible? Set a value in milliseconds."
                         }),
                         wp.element.createElement(ToggleControl, {
                             label: __("Pause on Hover"),
                             checked: hoverPause,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ hoverPause: newCheck });
-                            }
+                            },
+                            help: "If you enabled this option, the slide will be paused when mouseover."
                         }),
                         wp.element.createElement(
                             "p",
@@ -58895,9 +58894,21 @@ var edit = function (_Component) {
                     } },
                 effect == 'typing' ? wp.element.createElement(
                     "div",
-                    { className: "premium-fancy-text", style: {
+                    { className: "premium-fancy-text " + this.props.clientId, style: {
                             textAlign: align
-                        } },
+                        },
+                        "data-effect": "" + effect,
+                        "data-strings": "" + repeaterFancyText.map(function (item, index) {
+                            return item.title;
+                        }),
+                        "data-typespeed": "" + typeSpeed,
+                        "data-backspeed": "" + backSpeed,
+                        "data-startdelay": "" + startdelay,
+                        "data-backdelay": "" + backdelay,
+                        "data-loop": "" + loop,
+                        "data-cursorshow": "" + cursorShow,
+                        "data-cursormark": "" + cursorMark
+                    },
                     wp.element.createElement(
                         "span",
                         { className: "premium-fancy-text-prefix-text" },
@@ -58919,9 +58930,17 @@ var edit = function (_Component) {
                     )
                 ) : wp.element.createElement(
                     "div",
-                    { className: "premium-fancy-text premium-fancy-slide", style: {
+                    { className: "premium-fancy-text premium-fancy-slide " + this.props.clientId, style: {
                             textAlign: align
-                        } },
+                        },
+                        "data-effect": "" + effect,
+                        "data-strings": "" + repeaterFancyText.map(function (item, index) {
+                            return item.title;
+                        }),
+                        "data-animationspeed": "" + animationSpeed,
+                        "data-pausetime": "" + pauseTime,
+                        "data-hoverpause": "" + hoverPause
+                    },
                     wp.element.createElement(
                         "span",
                         { className: "premium-fancy-text-prefix-text" },
@@ -59026,16 +59045,6 @@ function styling(props) {
       "background-color": fancyTextBGColor,
       "text-shadow": shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor
     },
-    " .premium-fancy-text-title-slide-front": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(fancyTextfontSize, fancyTextfontSizeType),
-      "color": fancyTextColor,
-      "font-weight": fancyTextWeight,
-      "letter-spacing": fancyTextLetter + "px" + "!important",
-      "text-transform": fancyTextUpper ? "uppercase" : "none" + "!important",
-      "font-style": fancyTextStyle + "!important",
-      "background-color": fancyTextBGColor,
-      "text-shadow": shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor
-    },
     " .typed-cursor": {
       "color": cursorColor
     },
@@ -59066,9 +59075,6 @@ function styling(props) {
     " .premium-fancy-text-title-slide": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(fancyTextfontSizeMobile, fancyTextfontSizeType)
     },
-    " .premium-fancy-text-title-slide-front": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(fancyTextfontSizeMobile, fancyTextfontSizeType)
-    },
     " .premium-fancy-text-prefix-text": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(TextfontSizeMobile, TextfontSizeType)
     },
@@ -59082,9 +59088,6 @@ function styling(props) {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(fancyTextfontSizeTablet, fancyTextfontSizeType)
     },
     " .premium-fancy-text-title-slide": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(fancyTextfontSizeTablet, fancyTextfontSizeType)
-    },
-    " .premium-fancy-text-title-slide-front": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(fancyTextfontSizeTablet, fancyTextfontSizeType)
     },
     " .premium-fancy-text-prefix-text": {

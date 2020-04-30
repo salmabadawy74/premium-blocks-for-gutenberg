@@ -194,7 +194,7 @@ const fancyTextAttrs = {
 };
 
 registerBlockType("premium/fancy-text", {
-  title: __("fancy Text"),
+  title: __("Fancy Text"),
   icon: < PbgIcon icon = "fancy-text" / > ,
   category: "premium-blocks",
   attributes: fancyTextAttrs,
