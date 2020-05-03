@@ -2448,14 +2448,14 @@ var listCacheClear = __webpack_require__(88),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `ListCache`.
@@ -4799,14 +4799,14 @@ var mapCacheClear = __webpack_require__(104),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `MapCache`.
@@ -8951,14 +8951,14 @@ var hashClear = __webpack_require__(106),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `Hash`.
@@ -9318,13 +9318,13 @@ var MapCache = __webpack_require__(42),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-  var index = -1,
-      length = values == null ? 0 : values.length;
+    var index = -1,
+        length = values == null ? 0 : values.length;
 
-  this.__data__ = new MapCache();
-  while (++index < length) {
-    this.add(values[index]);
-  }
+    this.__data__ = new MapCache();
+    while (++index < length) {
+        this.add(values[index]);
+    }
 }
 
 // Add methods to `SetCache`.
@@ -10268,16 +10268,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-  var result = keys(object),
-      length = result.length;
+    var result = keys(object),
+        length = result.length;
 
-  while (length--) {
-    var key = result[length],
-        value = object[key];
+    while (length--) {
+        var key = result[length],
+            value = object[key];
 
-    result[length] = [key, value, isStrictComparable(value)];
-  }
-  return result;
+        result[length] = [key, value, isStrictComparable(value)];
+    }
+    return result;
 }
 
 module.exports = getMatchData;
@@ -58067,79 +58067,78 @@ function save(props) {
         hoverPause = attributes.hoverPause,
         fancyalign = attributes.fancyalign;
 
+    console.log('typeSpeed', typeSpeed);
 
     return wp.element.createElement(
-        "div",
-        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id),
+        'div',
+        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-block-' + block_id),
             style: {
                 textAlign: align
             } },
         effect == 'typing' ? wp.element.createElement(
-            "div",
-            { className: "premium-fancy-text " + block_id,
-                style: {
+            'div',
+            { className: 'premium-fancy-text ' + block_id, style: {
                     textAlign: align
                 },
-                "data-effect": "" + effect,
-                "data-strings": "" + repeaterFancyText.map(function (item) {
+                'data-effect': '' + effect,
+                'data-strings': '' + repeaterFancyText.map(function (item, index) {
                     return item.title;
                 }),
-                "data-typespeed": "" + typeSpeed,
-                "data-backspeed": "" + backSpeed,
-                "data-startdelay": "" + startdelay,
-                "data-backdelay": "" + backdelay,
-                "data-loop": "" + loop,
-                "data-cursorshow": "" + cursorShow,
-                "data-cursormark": "" + cursorMark
+                'data-typespeed': '' + typeSpeed,
+                'data-backspeed': '' + backSpeed,
+                'data-startdelay': '' + startdelay,
+                'data-backdelay': '' + backdelay,
+                'data-loop': '' + loop,
+                'data-cursorshow': '' + cursorShow,
+                'data-cursormark': '' + cursorMark
             },
             wp.element.createElement(
-                "span",
-                { className: "premium-fancy-text-prefix-text" },
+                'span',
+                { className: 'premium-fancy-text-prefix-text' },
                 prefix,
-                " "
+                ' '
             ),
             wp.element.createElement(
-                "span",
-                { className: "premium-fancy-text-title" },
-                " "
+                'span',
+                { className: 'premium-fancy-text-title' },
+                ' '
             ),
             wp.element.createElement(
-                "span",
-                { className: "premium-fancy-text-suffix-text" },
-                " ",
+                'span',
+                { className: 'premium-fancy-text-suffix-text' },
+                ' ',
                 suffix
             )
         ) : wp.element.createElement(
-            "div",
-            { className: "premium-fancy-text premium-fancy-slide " + block_id,
-                style: {
+            'div',
+            { className: 'premium-fancy-text premium-fancy-slide ' + block_id, style: {
                     textAlign: align
                 },
-                "data-effect": "" + effect,
-                "data-strings": "" + repeaterFancyText.map(function (item) {
+                'data-effect': '' + effect,
+                'data-strings': '' + repeaterFancyText.map(function (item, index) {
                     return item.title;
                 }),
-                "data-animationspeed": "" + animationSpeed,
-                "data-pausetime": "" + pauseTime,
-                "data-hoverpause": "" + hoverPause
+                'data-animationspeed': '' + animationSpeed,
+                'data-pausetime': '' + pauseTime,
+                'data-hoverpause': '' + hoverPause
             },
             wp.element.createElement(
-                "span",
-                { className: "premium-fancy-text-prefix-text" },
+                'span',
+                { className: 'premium-fancy-text-prefix-text' },
                 prefix,
-                " "
+                ' '
             ),
             wp.element.createElement(
-                "div",
-                { className: "premium-fancy-text-title-slide", style: {
+                'div',
+                { className: 'premium-fancy-text-title-slide', style: {
                         textAlign: fancyalign
                     } },
                 wp.element.createElement(
-                    "ul",
-                    { className: "premium-fancy-text-title-slide-list" },
-                    repeaterFancyText.map(function (item) {
+                    'ul',
+                    { className: 'premium-fancy-text-title-slide-list' },
+                    repeaterFancyText.map(function (item, index) {
                         return wp.element.createElement(
-                            "li",
+                            'li',
                             null,
                             item.title
                         );
@@ -58147,9 +58146,9 @@ function save(props) {
                 )
             ),
             wp.element.createElement(
-                "span",
-                { className: "premium-fancy-text-suffix-text" },
-                " ",
+                'span',
+                { className: 'premium-fancy-text-suffix-text' },
+                ' ',
                 suffix
             )
         )
@@ -58323,6 +58322,7 @@ var edit = function (_Component) {
                 return item.title;
             });
             console.log(typeSpeed, backSpeed, backdelay, startdelay);
+            var title = document.getElementsByClassName('premium-fancy-text-title')[0];
 
             if (effect == 'typing') {
                 var options = {
@@ -58335,25 +58335,13 @@ var edit = function (_Component) {
                     showCursor: cursorShow,
                     cursorChar: cursorMark
                 };
-                this.typed = new __WEBPACK_IMPORTED_MODULE_4_typed_js___default.a(this.el, options);
-                // this.typed = new Typed('.premium-fancy-text-title', {
-                //     strings: txt,
-                //     typeSpeed: typeSpeed,
-                //     backSpeed: backSpeed,
-                //     backDelay: backdelay,
-                //     startDelay: startdelay,
-                //     loop: loop,
-                //     showCursor: cursorShow,
-                //     cursorChar: cursorMark
-                // });
+                this.typed = new __WEBPACK_IMPORTED_MODULE_4_typed_js___default.a(title, options);
                 console.log(this.typed);
             }
         }
     }, {
         key: "render",
         value: function render() {
-            var _this2 = this;
-
             var _props = this.props,
                 attributes = _props.attributes,
                 setAttributes = _props.setAttributes,
@@ -58917,9 +58905,7 @@ var edit = function (_Component) {
                     ),
                     wp.element.createElement(
                         "span",
-                        { className: "premium-fancy-text-title", ref: function ref(el) {
-                                _this2.el = el;
-                            } },
+                        { className: "premium-fancy-text-title" },
                         " "
                     ),
                     wp.element.createElement(

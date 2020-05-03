@@ -130,6 +130,8 @@ class edit extends Component {
         if (!repeaterFancyText) return null;
         let txt = repeaterFancyText.map((item) => { return item.title })
         console.log(typeSpeed, backSpeed, backdelay, startdelay);
+            let title = document.getElementsByClassName('premium-fancy-text-title')[0];
+            
         
         if (effect == 'typing') {
             const options = {
@@ -142,17 +144,7 @@ class edit extends Component {
                 showCursor: cursorShow,
                 cursorChar: cursorMark
             };
-            this.typed = new Typed(this.el, options); 
-            // this.typed = new Typed('.premium-fancy-text-title', {
-            //     strings: txt,
-            //     typeSpeed: typeSpeed,
-            //     backSpeed: backSpeed,
-            //     backDelay: backdelay,
-            //     startDelay: startdelay,
-            //     loop: loop,
-            //     showCursor: cursorShow,
-            //     cursorChar: cursorMark
-            // });
+            this.typed = new Typed(title, options);
             console.log(this.typed);
             
         }
@@ -639,7 +631,7 @@ class edit extends Component {
                 data-cursormark={`${cursorMark}`}
                 >
                     <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
-                    <span className={`premium-fancy-text-title`} ref={(el) => { this.el = el; }}> </span>
+                    <span className={`premium-fancy-text-title`}> </span>
                     <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
                 </div>
                     : <div className={`premium-fancy-text premium-fancy-slide ${this.props.clientId}`} style={{
