@@ -23,7 +23,7 @@ export default function save(props) {
         hoverPause,
         fancyalign
     } = attributes
-console.log('typeSpeed',typeSpeed);
+console.log('typeSpeed', attributes);
 
     return (
         <div className={classnames(

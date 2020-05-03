@@ -58067,7 +58067,7 @@ function save(props) {
         hoverPause = attributes.hoverPause,
         fancyalign = attributes.fancyalign;
 
-    console.log('typeSpeed', typeSpeed);
+    console.log('typeSpeed', attributes);
 
     return wp.element.createElement(
         'div',
@@ -58315,13 +58315,14 @@ var edit = function (_Component) {
                 backSpeed = _props$attributes.backSpeed,
                 startdelay = _props$attributes.startdelay,
                 backdelay = _props$attributes.backdelay,
-                effect = _props$attributes.effect;
+                effect = _props$attributes.effect,
+                block_id = _props$attributes.block_id;
 
             if (!repeaterFancyText) return null;
             var txt = repeaterFancyText.map(function (item) {
                 return item.title;
             });
-            console.log(typeSpeed, backSpeed, backdelay, startdelay);
+            console.log(parseInt(typeSpeed), backSpeed, backdelay, startdelay);
             var title = document.getElementsByClassName('premium-fancy-text-title')[0];
 
             if (effect == 'typing') {
@@ -58335,13 +58336,24 @@ var edit = function (_Component) {
                     showCursor: cursorShow,
                     cursorChar: cursorMark
                 };
-                this.typed = new __WEBPACK_IMPORTED_MODULE_4_typed_js___default.a(title, options);
+                this.typed = new __WEBPACK_IMPORTED_MODULE_4_typed_js___default.a(this.el, options);
                 console.log(this.typed);
             }
         }
     }, {
+        key: "componentWillUnmount",
+        value: function componentWillUnmount() {
+            var effect = this.props.attributes.effect;
+            // Make sure to destroy Typed instance on unmounting
+            // to prevent memory leaks
+
+            effect === 'typing' ? this.typed.destroy() : "";
+        }
+    }, {
         key: "render",
         value: function render() {
+            var _this2 = this;
+
             var _props = this.props,
                 attributes = _props.attributes,
                 setAttributes = _props.setAttributes,
@@ -58613,8 +58625,8 @@ var edit = function (_Component) {
                             label: __("Type Speed"),
                             type: "Number",
                             value: typeSpeed,
-                            onChange: function onChange(newText) {
-                                return setAttributes({ typeSpeed: newText });
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ typeSpeed: parseInt(newValue) });
                             },
                             help: "Set typing effect speed in milliseconds."
                         }),
@@ -58622,8 +58634,8 @@ var edit = function (_Component) {
                             label: __("Back Speed"),
                             type: "Number",
                             value: backSpeed,
-                            onChange: function onChange(newText) {
-                                return setAttributes({ backSpeed: newText });
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ backSpeed: parseInt(newValue) });
                             },
                             help: "Set a speed for backspace effect in milliseconds."
                         }),
@@ -58631,8 +58643,8 @@ var edit = function (_Component) {
                             label: __("Start Delay"),
                             type: "Number",
                             value: startdelay,
-                            onChange: function onChange(newText) {
-                                return setAttributes({ startdelay: newText });
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ startdelay: parseInt(newValue) });
                             },
                             help: "If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds."
                         }),
@@ -58640,8 +58652,8 @@ var edit = function (_Component) {
                             label: __("Back Delay"),
                             type: "Number",
                             value: backdelay,
-                            onChange: function onChange(newText) {
-                                return setAttributes({ backdelay: newText });
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ backdelay: parseInt(newValue) });
                             },
                             help: "If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect."
                         }),
@@ -58677,16 +58689,18 @@ var edit = function (_Component) {
                         wp.element.createElement(TextControl, {
                             label: __("Animation Speed"),
                             value: animationSpeed,
-                            onChange: function onChange(newCheck) {
-                                return setAttributes({ animationSpeed: newCheck });
+                            type: "Number",
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ animationSpeed: parseInt(newValue) });
                             },
                             help: "Set a duration value in milliseconds for slide effect."
                         }),
                         wp.element.createElement(TextControl, {
                             label: __("Pause Time"),
                             value: pauseTime,
-                            onChange: function onChange(newCheck) {
-                                return setAttributes({ pauseTime: newCheck });
+                            type: "Number",
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ pauseTime: parseInt(newValue) });
                             },
                             help: "How long should the word/string stay visible? Set a value in milliseconds."
                         }),
@@ -58905,7 +58919,9 @@ var edit = function (_Component) {
                     ),
                     wp.element.createElement(
                         "span",
-                        { className: "premium-fancy-text-title" },
+                        { className: "premium-fancy-text-title " + this.props.clientId, ref: function ref(el) {
+                                _this2.el = el;
+                            } },
                         " "
                     ),
                     wp.element.createElement(

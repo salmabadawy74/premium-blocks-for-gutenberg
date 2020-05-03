@@ -3212,5 +3212,5 @@ color: #23282d;
   margin-right: 10px;
 }
 .premium-notice{
-  margin-top: -15px;
+  margin-top: -15px !important;
 }
