@@ -9,7 +9,6 @@ jQuery(document).ready(function ($) {
     let fanctStrings = strings.split(",")
 
     if (effect == 'typing') {
-      console.log($fancyText.data('typespeed'));
       
       $fancyText.find(".premium-fancy-text-title").typed({
         strings: fanctStrings,

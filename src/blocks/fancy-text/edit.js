@@ -117,7 +117,6 @@ class edit extends Component {
 
     componentDidUpdate() {
         const { effect } = this.props.attributes;
-        console.log(this.typed);
 
         if (effect == 'typing' && this.typed != undefined) {
             this.typed.destroy()
@@ -129,9 +128,6 @@ class edit extends Component {
         const { repeaterFancyText, loop, cursorShow, cursorMark, typeSpeed, backSpeed, startdelay, backdelay, effect, block_id } = this.props.attributes;
         if (!repeaterFancyText) return null;
         let txt = repeaterFancyText.map((item) => { return item.title })
-        console.log(parseInt(typeSpeed), backSpeed, backdelay, startdelay);
-        let title = document.getElementsByClassName('premium-fancy-text-title')[0];
-
 
         if (effect == 'typing') {
             const options = {
@@ -145,8 +141,6 @@ class edit extends Component {
                 cursorChar: cursorMark
             };
             this.typed = new Typed(this.el, options);
-            console.log(this.typed);
-
         }
     }
 
