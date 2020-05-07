@@ -38,13 +38,13 @@ const SortableItem = SortableElement(({
     value,
     changeFancyValue,
     items
-}) => < div className="premium-progress-bar-repeater" >
+}) => < div className="premium-repeater-item" >
 
         <div className={
-            `premium-progress-bar__container ${newIndex}`
+            `premium-repeater-item__container ${newIndex}`
         } >
-            < span className="premium-progress-bar__dragHandle" ></span>
-            <div className="premium-progress-bar__content"
+            < span className="premium-repeater-item__dragHandle" ></span>
+            <div className="premium-repeater-item__content"
                 onClick={
                     () => edit(newIndex)
                 } >
@@ -53,7 +53,7 @@ const SortableItem = SortableElement(({
                 } </div>
 
             {
-                items.length != 1 ? < button className="premium-progress-bar__trashicon fa fa-trash"
+                items.length != 1 ? < button className="premium-repeater-item__trashicon fa fa-trash"
                     onClick={
                         () => removeItem(newIndex, value)
                     } >
@@ -61,7 +61,7 @@ const SortableItem = SortableElement(({
 
         </div>
         <div className={
-            `premium-progress-bar-repeater-controls ${value.edit ? "editable" : ""}`
+            `premium-repeater-item-controls ${value.edit ? "editable" : ""}`
         } >
             <TextControl
                 label={__("Fancy String")}
@@ -125,17 +125,17 @@ class edit extends Component {
     }
 
     renderFancyText() {
-        const { repeaterFancyText, loop, cursorShow, cursorMark, typeSpeed, backSpeed, startdelay, backdelay, effect, block_id } = this.props.attributes;
+        const { repeaterFancyText, loop, cursorShow, cursorMark, typeSpeed, backSpeed, startdelay, backdelay, effect } = this.props.attributes;
         if (!repeaterFancyText) return null;
         let txt = repeaterFancyText.map((item) => { return item.title })
 
-        if (effect == 'typing') {
+        if (effect === 'typing') {
             const options = {
                 strings: txt,
-                typeSpeed: typeSpeed,
-                backSpeed: backSpeed,
-                backDelay: backdelay,
-                startDelay: startdelay,
+                typeSpeed: typeSpeed+20,
+                backSpeed: backSpeed+20,
+                backDelay: backdelay+20,
+                startDelay: startdelay+20,
                 loop: loop,
                 showCursor: cursorShow,
                 cursorChar: cursorMark

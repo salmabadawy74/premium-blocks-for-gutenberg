@@ -56281,28 +56281,28 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__["b" /
         items = _ref.items;
     return wp.element.createElement(
         "div",
-        { className: "premium-progress-bar-repeater" },
+        { className: "premium-repeater-item" },
         wp.element.createElement(
             "div",
-            { className: "premium-progress-bar__container " + newIndex },
-            wp.element.createElement("span", { className: "premium-progress-bar__dragHandle" }),
+            { className: "premium-repeater-item__container " + newIndex },
+            wp.element.createElement("span", { className: "premium-repeater-item__dragHandle" }),
             wp.element.createElement(
                 "div",
-                { className: "premium-progress-bar__content",
+                { className: "premium-repeater-item__content",
                     onClick: function onClick() {
                         return edit(newIndex);
                     } },
                 value.title,
                 " "
             ),
-            items.length != 1 ? wp.element.createElement("button", { className: "premium-progress-bar__trashicon fa fa-trash",
+            items.length != 1 ? wp.element.createElement("button", { className: "premium-repeater-item__trashicon fa fa-trash",
                 onClick: function onClick() {
                     return removeItem(newIndex, value);
                 } }) : ""
         ),
         wp.element.createElement(
             "div",
-            { className: "premium-progress-bar-repeater-controls " + (value.edit ? "editable" : "") },
+            { className: "premium-repeater-item-controls " + (value.edit ? "editable" : "") },
             wp.element.createElement(ToggleControl, {
                 label: __("Enable Icon"),
                 checked: value.enableIcon,
@@ -58067,78 +58067,77 @@ function save(props) {
         hoverPause = attributes.hoverPause,
         fancyalign = attributes.fancyalign;
 
-    console.log('typeSpeed', attributes);
 
     return wp.element.createElement(
-        'div',
-        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-block-' + block_id),
+        "div",
+        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id),
             style: {
                 textAlign: align
             } },
         effect == 'typing' ? wp.element.createElement(
-            'div',
-            { className: 'premium-fancy-text ' + block_id, style: {
+            "div",
+            { className: "premium-fancy-text " + block_id, style: {
                     textAlign: align
                 },
-                'data-effect': '' + effect,
-                'data-strings': '' + repeaterFancyText.map(function (item, index) {
+                "data-effect": "" + effect,
+                "data-strings": "" + repeaterFancyText.map(function (item, index) {
                     return item.title;
                 }),
-                'data-typespeed': '' + typeSpeed,
-                'data-backspeed': '' + backSpeed,
-                'data-startdelay': '' + startdelay,
-                'data-backdelay': '' + backdelay,
-                'data-loop': '' + loop,
-                'data-cursorshow': '' + cursorShow,
-                'data-cursormark': '' + cursorMark
+                "data-typespeed": "" + typeSpeed,
+                "data-backspeed": "" + backSpeed,
+                "data-startdelay": "" + startdelay,
+                "data-backdelay": "" + backdelay,
+                "data-loop": "" + loop,
+                "data-cursorshow": "" + cursorShow,
+                "data-cursormark": "" + cursorMark
             },
             wp.element.createElement(
-                'span',
-                { className: 'premium-fancy-text-prefix-text' },
+                "span",
+                { className: "premium-fancy-text-prefix-text" },
                 prefix,
-                ' '
+                " "
             ),
             wp.element.createElement(
-                'span',
-                { className: 'premium-fancy-text-title' },
-                ' '
+                "span",
+                { className: "premium-fancy-text-title" },
+                " "
             ),
             wp.element.createElement(
-                'span',
-                { className: 'premium-fancy-text-suffix-text' },
-                ' ',
+                "span",
+                { className: "premium-fancy-text-suffix-text" },
+                " ",
                 suffix
             )
         ) : wp.element.createElement(
-            'div',
-            { className: 'premium-fancy-text premium-fancy-slide ' + block_id, style: {
+            "div",
+            { className: "premium-fancy-text premium-fancy-slide " + block_id, style: {
                     textAlign: align
                 },
-                'data-effect': '' + effect,
-                'data-strings': '' + repeaterFancyText.map(function (item, index) {
+                "data-effect": "" + effect,
+                "data-strings": "" + repeaterFancyText.map(function (item, index) {
                     return item.title;
                 }),
-                'data-animationspeed': '' + animationSpeed,
-                'data-pausetime': '' + pauseTime,
-                'data-hoverpause': '' + hoverPause
+                "data-animationspeed": "" + animationSpeed,
+                "data-pausetime": "" + pauseTime,
+                "data-hoverpause": "" + hoverPause
             },
             wp.element.createElement(
-                'span',
-                { className: 'premium-fancy-text-prefix-text' },
+                "span",
+                { className: "premium-fancy-text-prefix-text" },
                 prefix,
-                ' '
+                " "
             ),
             wp.element.createElement(
-                'div',
-                { className: 'premium-fancy-text-title-slide', style: {
+                "div",
+                { className: "premium-fancy-text-title-slide", style: {
                         textAlign: fancyalign
                     } },
                 wp.element.createElement(
-                    'ul',
-                    { className: 'premium-fancy-text-title-slide-list' },
+                    "ul",
+                    { className: "premium-fancy-text-title-slide-list" },
                     repeaterFancyText.map(function (item, index) {
                         return wp.element.createElement(
-                            'li',
+                            "li",
                             null,
                             item.title
                         );
@@ -58146,9 +58145,9 @@ function save(props) {
                 )
             ),
             wp.element.createElement(
-                'span',
-                { className: 'premium-fancy-text-suffix-text' },
-                ' ',
+                "span",
+                { className: "premium-fancy-text-suffix-text" },
+                " ",
                 suffix
             )
         )
@@ -58209,28 +58208,28 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__["b" /
         items = _ref.items;
     return wp.element.createElement(
         "div",
-        { className: "premium-progress-bar-repeater" },
+        { className: "premium-repeater-item" },
         wp.element.createElement(
             "div",
-            { className: "premium-progress-bar__container " + newIndex },
-            wp.element.createElement("span", { className: "premium-progress-bar__dragHandle" }),
+            { className: "premium-repeater-item__container " + newIndex },
+            wp.element.createElement("span", { className: "premium-repeater-item__dragHandle" }),
             wp.element.createElement(
                 "div",
-                { className: "premium-progress-bar__content",
+                { className: "premium-repeater-item__content",
                     onClick: function onClick() {
                         return edit(newIndex);
                     } },
                 value.title,
                 " "
             ),
-            items.length != 1 ? wp.element.createElement("button", { className: "premium-progress-bar__trashicon fa fa-trash",
+            items.length != 1 ? wp.element.createElement("button", { className: "premium-repeater-item__trashicon fa fa-trash",
                 onClick: function onClick() {
                     return removeItem(newIndex, value);
                 } }) : ""
         ),
         wp.element.createElement(
             "div",
-            { className: "premium-progress-bar-repeater-controls " + (value.edit ? "editable" : "") },
+            { className: "premium-repeater-item-controls " + (value.edit ? "editable" : "") },
             wp.element.createElement(TextControl, {
                 label: __("Fancy String"),
                 value: value.title,
@@ -58296,7 +58295,6 @@ var edit = function (_Component) {
         value: function componentDidUpdate() {
             var effect = this.props.attributes.effect;
 
-            console.log(this.typed);
 
             if (effect == 'typing' && this.typed != undefined) {
                 this.typed.destroy();
@@ -58315,29 +58313,25 @@ var edit = function (_Component) {
                 backSpeed = _props$attributes.backSpeed,
                 startdelay = _props$attributes.startdelay,
                 backdelay = _props$attributes.backdelay,
-                effect = _props$attributes.effect,
-                block_id = _props$attributes.block_id;
+                effect = _props$attributes.effect;
 
             if (!repeaterFancyText) return null;
             var txt = repeaterFancyText.map(function (item) {
                 return item.title;
             });
-            console.log(parseInt(typeSpeed), backSpeed, backdelay, startdelay);
-            var title = document.getElementsByClassName('premium-fancy-text-title')[0];
 
-            if (effect == 'typing') {
+            if (effect === 'typing') {
                 var options = {
                     strings: txt,
-                    typeSpeed: typeSpeed,
-                    backSpeed: backSpeed,
-                    backDelay: backdelay,
-                    startDelay: startdelay,
+                    typeSpeed: typeSpeed + 20,
+                    backSpeed: backSpeed + 20,
+                    backDelay: backdelay + 20,
+                    startDelay: startdelay + 20,
                     loop: loop,
                     showCursor: cursorShow,
                     cursorChar: cursorMark
                 };
                 this.typed = new __WEBPACK_IMPORTED_MODULE_4_typed_js___default.a(this.el, options);
-                console.log(this.typed);
             }
         }
     }, {
