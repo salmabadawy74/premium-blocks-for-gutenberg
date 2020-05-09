@@ -339,13 +339,13 @@ class Premium_Blocks_Integration {
 			);
 			  
 			wp_enqueue_script(
-				'vticker-js',
+				'pbg-vticket-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/vticker.js',
 				array('jquery'),
 				PREMIUM_BLOCKS_VERSION
 			);
 			wp_enqueue_script(
-				'typed-js',
+				'pbg-typed-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/typed.js',
 				array('jquery'),
 				PREMIUM_BLOCKS_VERSION

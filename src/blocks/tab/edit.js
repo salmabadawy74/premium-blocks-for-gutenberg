@@ -49,13 +49,13 @@ const SortableItem = SortableElement(({
     changeEnableIcon,
     changeIcon,
     items
-}) => < div className="premium-progress-bar-repeater" >
+}) => < div className="premium-repeater-item" >
 
         <div className={
-            `premium-progress-bar__container ${newIndex}`
+            `premium-repeater-item__container ${newIndex}`
         } >
-            < span className="premium-progress-bar__dragHandle" ></span>
-            <div className="premium-progress-bar__content"
+            < span className="premium-repeater-item__dragHandle" ></span>
+            <div className="premium-repeater-item__content"
                 onClick={
                     () => edit(newIndex)
                 } >
@@ -64,7 +64,7 @@ const SortableItem = SortableElement(({
                 } </div>
 
             {
-                items.length != 1 ? < button className="premium-progress-bar__trashicon fa fa-trash"
+                items.length != 1 ? < button className="premium-repeater-item__trashicon fa fa-trash"
                     onClick={
                         () => removeItem(newIndex, value)
                     } >
@@ -72,7 +72,7 @@ const SortableItem = SortableElement(({
 
         </div>
         <div className={
-            `premium-progress-bar-repeater-controls ${value.edit ? "editable" : ""}`
+            `premium-repeater-item-controls ${value.edit ? "editable" : ""}`
         } >
             < ToggleControl
                 label={__("Enable Icon")}
