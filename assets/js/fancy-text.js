@@ -7,11 +7,10 @@ jQuery(document).ready(function ($) {
     let effect = $fancyText.data('effect');
     let strings = $fancyText.data('strings');
     let fanctStrings = strings.split(",")
-    let title = $fancyText.find(".premium-fancy-text-title")[0];
 
     if (effect == 'typing') {
       
-      title.typed({
+      $fancyText.find(".premium-fancy-text-title").typed({
         strings: fanctStrings,
         typeSpeed: $fancyText.data('typespeed'),
         backSpeed: $fancyText.data('backspeed'),
