@@ -1,5 +1,7 @@
 jQuery(document).ready(function ($) {
+
   const $fancyText = $(".premium-fancy-text");
+
   $fancyText.map((index, fancyText) => {
 
     let $fancyText = $(fancyText)
@@ -7,10 +9,11 @@ jQuery(document).ready(function ($) {
     let effect = $fancyText.data('effect');
     let strings = $fancyText.data('strings');
     let fanctStrings = strings.split(",")
+    let instance = null;
 
     if (effect == 'typing') {
-      
-      $fancyText.find(".premium-fancy-text-title").typed({
+
+      instance = new Typed('.premium-fancy-text-title', {
         strings: fanctStrings,
         typeSpeed: $fancyText.data('typespeed'),
         backSpeed: $fancyText.data('backspeed'),
