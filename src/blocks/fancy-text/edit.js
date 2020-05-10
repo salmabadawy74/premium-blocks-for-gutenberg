@@ -132,10 +132,10 @@ class edit extends Component {
         if (effect === 'typing') {
             const options = {
                 strings: txt,
-                typeSpeed: typeSpeed + 20,
-                backSpeed: backSpeed + 20,
-                backDelay: backdelay + 20,
-                startDelay: startdelay + 20,
+                typeSpeed: typeSpeed+20,
+                backSpeed: backSpeed+20,
+                backDelay: backdelay+20,
+                startDelay: startdelay+20,
                 loop: loop,
                 showCursor: cursorShow,
                 cursorChar: cursorMark
@@ -613,7 +613,7 @@ class edit extends Component {
                             allowReset={true}
                         />
                     </PanelBody>
-                </InspectorControls >
+                </InspectorControls>
             ),
             <div className={classnames(
                 className,
