@@ -1,14 +1,15 @@
 jQuery(document).ready(function ($) {
   const $fancyText = $(".premium-fancy-text");
+
   $fancyText.map((index, fancyText) => {
 
     let $fancyText = $(fancyText)
-
     let effect = $fancyText.data('effect');
     let strings = $fancyText.data('strings');
     let fanctStrings = strings.split(",")
+    console.log($fancyText)
 
-    if (effect == 'typing') {
+    if (effect === 'typing') {
       
       $fancyText.find(".premium-fancy-text-title").typed({
         strings: fanctStrings,
@@ -21,13 +22,13 @@ jQuery(document).ready(function ($) {
         loop: $fancyText.data('loop')
       });
     }
-    else if (effect == 'slide') {
+    else if (effect === 'slide') {
       $fancyText.find(".premium-fancy-text-title-slide").vTicker({
         strings: fanctStrings,
         speed: $fancyText.data('animationspeed'),
         pause: $fancyText.data('pausetime'),
         mousePause: $fancyText.data('hoverpause'),
-        direction: "up"
+        // direction: "up"
       });
     }
   })
