@@ -57992,7 +57992,7 @@ var fancyTextAttrs = {
   },
   typeSpeed: {
     type: "number",
-    default: 30
+    default: 100
   },
   backdelay: {
     type: "number",
