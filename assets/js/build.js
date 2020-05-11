@@ -58323,10 +58323,10 @@ var edit = function (_Component) {
             if (effect === 'typing') {
                 var options = {
                     strings: txt,
-                    typeSpeed: typeSpeed + 20,
-                    backSpeed: backSpeed + 20,
-                    backDelay: backdelay + 20,
-                    startDelay: startdelay + 20,
+                    typeSpeed: typeSpeed,
+                    backSpeed: backSpeed,
+                    backDelay: backdelay,
+                    startDelay: startdelay,
                     loop: loop,
                     showCursor: cursorShow,
                     cursorChar: cursorMark
