@@ -2448,14 +2448,14 @@ var listCacheClear = __webpack_require__(88),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `ListCache`.
@@ -4799,14 +4799,14 @@ var mapCacheClear = __webpack_require__(104),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `MapCache`.
@@ -8951,14 +8951,14 @@ var hashClear = __webpack_require__(106),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `Hash`.
@@ -9318,13 +9318,13 @@ var MapCache = __webpack_require__(42),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-    var index = -1,
-        length = values == null ? 0 : values.length;
+  var index = -1,
+      length = values == null ? 0 : values.length;
 
-    this.__data__ = new MapCache();
-    while (++index < length) {
-        this.add(values[index]);
-    }
+  this.__data__ = new MapCache();
+  while (++index < length) {
+    this.add(values[index]);
+  }
 }
 
 // Add methods to `SetCache`.
@@ -10268,16 +10268,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-    var result = keys(object),
-        length = result.length;
+  var result = keys(object),
+      length = result.length;
 
-    while (length--) {
-        var key = result[length],
-            value = object[key];
+  while (length--) {
+    var key = result[length],
+        value = object[key];
 
-        result[length] = [key, value, isStrictComparable(value)];
-    }
-    return result;
+    result[length] = [key, value, isStrictComparable(value)];
+  }
+  return result;
 }
 
 module.exports = getMatchData;
@@ -58323,10 +58323,10 @@ var edit = function (_Component) {
             if (effect === 'typing') {
                 var options = {
                     strings: txt,
-                    typeSpeed: typeSpeed + 20,
-                    backSpeed: backSpeed + 20,
-                    backDelay: backdelay + 20,
-                    startDelay: startdelay + 20,
+                    typeSpeed: typeSpeed,
+                    backSpeed: backSpeed,
+                    backDelay: backdelay,
+                    startDelay: startdelay,
                     loop: loop,
                     showCursor: cursorShow,
                     cursorChar: cursorMark
