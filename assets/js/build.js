@@ -58070,13 +58070,16 @@ function save(props) {
 
     return wp.element.createElement(
         "div",
-        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id),
+        {
+            className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id),
             style: {
                 textAlign: align
             } },
         effect == 'typing' ? wp.element.createElement(
             "div",
-            { className: "premium-fancy-text " + block_id, style: {
+            {
+                id: "premium-fancy-text-" + block_id,
+                className: "premium-fancy-text", style: {
                     textAlign: align
                 },
                 "data-effect": "" + effect,
@@ -58110,7 +58113,7 @@ function save(props) {
             )
         ) : wp.element.createElement(
             "div",
-            { className: "premium-fancy-text premium-fancy-slide " + block_id, style: {
+            { className: "premium-fancy-text-" + block_id + " premium-fancy-slide", style: {
                     textAlign: align
                 },
                 "data-effect": "" + effect,
@@ -58514,7 +58517,6 @@ var edit = function (_Component) {
                 });
             };
 
-            var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-fancy-text");
             return [isSelected && wp.element.createElement(
                 BlockControls,
                 null,
@@ -58885,12 +58887,15 @@ var edit = function (_Component) {
                 )
             ), wp.element.createElement(
                 "div",
-                { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId), style: {
+                {
+                    className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId), style: {
                         textAlign: align
                     } },
                 effect == 'typing' ? wp.element.createElement(
                     "div",
-                    { className: "premium-fancy-text " + this.props.clientId, style: {
+                    {
+                        id: "premium-fancy-text-" + this.props.clientId,
+                        className: "premium-fancy-text", style: {
                             textAlign: align
                         },
                         "data-effect": "" + effect,
@@ -58913,7 +58918,7 @@ var edit = function (_Component) {
                     ),
                     wp.element.createElement(
                         "span",
-                        { className: "premium-fancy-text-title " + this.props.clientId, ref: function ref(el) {
+                        { className: "premium-fancy-text-title", ref: function ref(el) {
                                 _this2.el = el;
                             } },
                         " "
@@ -58926,7 +58931,7 @@ var edit = function (_Component) {
                     )
                 ) : wp.element.createElement(
                     "div",
-                    { className: "premium-fancy-text premium-fancy-slide " + this.props.clientId, style: {
+                    { className: "premium-fancy-text-" + block_id + " premium-fancy-slide", style: {
                             textAlign: align
                         },
                         "data-effect": "" + effect,

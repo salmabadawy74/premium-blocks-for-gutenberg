@@ -1,36 +1,41 @@
 jQuery(document).ready(function ($) {
-  const $fancyText = $(".premium-fancy-text");
 
-  $fancyText.map((index, fancyText) => {
+  const $fancyTextBlocks = $(".premium-fancy-text");
 
-    let $fancyText = $(fancyText)
-    let effect = $fancyText.data('effect');
-    let strings = $fancyText.data('strings');
-    let fanctStrings = strings.split(",")
-    console.log($fancyText)
+  $fancyTextBlocks.map((index, elem) => {
+
+    let $elem = $(elem),
+      id = $elem.attr('id'),
+      effect = $elem.data('effect'),
+      strings = $elem.data('strings'),
+      fancyStrings = strings.split(",")
+console.log(id);
 
     if (effect === 'typing') {
-      
-      $fancyText.find(".premium-fancy-text-title").typed({
-        strings: fanctStrings,
-        typeSpeed: $fancyText.data('typespeed'),
-        backSpeed: $fancyText.data('backspeed'),
-        startDelay: $fancyText.data('startdelay'),
-        backDelay: $fancyText.data('backdelay'),
-        showCursor: $fancyText.data('cursorshow'),
-        cursorChar: $fancyText.data('cursormark'),
-        loop: $fancyText.data('loop')
+
+      let instance = null;
+      console.log("typing ",fancyStrings);
+
+      instance = new Typed(`#${id} .premium-fancy-text-title`, {
+        strings: fancyStrings,
+        typeSpeed: $elem.data('typespeed'),
+        backSpeed: $elem.data('backspeed'),
+        startDelay: $elem.data('startdelay'),
+        backDelay: $elem.data('backdelay'),
+        showCursor: $elem.data('cursorshow'),
+        cursorChar: $elem.data('cursormark'),
+        loop: $elem.data('loop')
       });
-    }
-    else if (effect === 'slide') {
-      $fancyText.find(".premium-fancy-text-title-slide").vTicker({
-        strings: fanctStrings,
-        speed: $fancyText.data('animationspeed'),
-        pause: $fancyText.data('pausetime'),
-        mousePause: $fancyText.data('hoverpause'),
+
+
+    } else if (effect === 'slide') {
+      $elem.find(".premium-fancy-text-title-slide").vTicker({
+        strings: fancyStrings,
+        speed: $elem.data('animationspeed'),
+        pause: $elem.data('pausetime'),
+        mousePause: $elem.data('hoverpause'),
         // direction: "up"
       });
     }
   })
 });
-
