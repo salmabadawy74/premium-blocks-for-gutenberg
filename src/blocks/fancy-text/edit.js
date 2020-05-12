@@ -615,15 +615,18 @@ class edit extends Component {
                     </PanelBody>
                 </InspectorControls>
             ),
-            <div className={classnames(
-                className,
-                `premium-block-${this.props.clientId}`
-            )} style={{
-                textAlign: align,
-            }}>
-                {effect == 'typing' ? <div className={`premium-fancy-text ${this.props.clientId}`} style={{
+            <div
+                className={classnames(
+                    className,
+                    `premium-block-${this.props.clientId}`
+                )} style={{
                     textAlign: align,
-                }}
+                }}>
+                {effect == 'typing' ? <div
+                    id={`premium-fancy-text-${this.props.clientId}`}
+                    className={`premium-fancy-text`} style={{
+                        textAlign: align,
+                    }}
                     data-effect={`${effect}`}
                     data-strings={`${repeaterFancyText.map((item, index) => { return item.title })}`}
                     data-typespeed={`${typeSpeed}`}
@@ -635,10 +638,10 @@ class edit extends Component {
                     data-cursormark={`${cursorMark}`}
                 >
                     <span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
-                    <span className={`premium-fancy-text-title ${this.props.clientId}`} ref={(el) => { this.el = el; }}> </span>
+                    <span className={`premium-fancy-text-title`} ref={(el) => { this.el = el; }}> </span>
                     <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
                 </div>
-                    : <div className={`premium-fancy-text premium-fancy-slide ${this.props.clientId}`} style={{
+                    : <div className={`premium-fancy-text premium-fancy-slide`} style={{
                         textAlign: align
                     }}
                         data-effect={`${effect}`}

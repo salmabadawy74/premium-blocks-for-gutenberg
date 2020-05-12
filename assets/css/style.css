@@ -3131,10 +3131,13 @@ color: #23282d;
   display: inline-flex;
   font-family: "Roboto",
   Sans-serif;
+  width: 40%;
+  margin-bottom: -4%;
 }
 .premium-fancy-text-title-slide-list{
   list-style: none !important;
   margin: 0% !important;
+  width: -webkit-fill-available;
 }
 .premium-fancy-slide .typed-cursor{
   visibility: hidden;

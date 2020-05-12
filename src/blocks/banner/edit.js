@@ -180,54 +180,54 @@ const edit = props => {
   setAttributes({ id: blockID });
 
   const onResetClickContainerBorder = () => {
-    setAttributes({ 
-      borderType: "none", 
-      borderWidth:"1", 
-      borderColor:"", 
-      borderRadius:"0",
+    setAttributes({
+      borderType: "none",
+      borderWidth: "1",
+      borderColor: "",
+      borderRadius: "0",
     });
   }
-  const onResetClickTitleTextShadow= () => {
-    setAttributes({ 
-      shadowColor: "", 
-      shadowBlur:"0", 
-      shadowHorizontal:"0", 
-      shadowVertical:"0",
+  const onResetClickTitleTextShadow = () => {
+    setAttributes({
+      shadowColor: "",
+      shadowBlur: "0",
+      shadowHorizontal: "0",
+      shadowVertical: "0",
     });
   }
   const onResetClickDescTextShadow = () => {
-    setAttributes({ 
-      descShadowColor: "", 
-      descShadowBlur:"0", 
-      descShadowHorizontal:"0", 
-      descShadowVertical:"0",
+    setAttributes({
+      descShadowColor: "",
+      descShadowBlur: "0",
+      descShadowHorizontal: "0",
+      descShadowVertical: "0",
     });
   }
   const onResetClickContainerBoxShadow = () => {
-      setAttributes({ 
-        containerShadowColor: "", 
-        containerShadowBlur:"0", 
-        containerShadowHorizontal:"0", 
-        containerShadowVertical:"0", 
-        containerShadowPosition:""
+    setAttributes({
+      containerShadowColor: "",
+      containerShadowBlur: "0",
+      containerShadowHorizontal: "0",
+      containerShadowVertical: "0",
+      containerShadowPosition: ""
     });
   }
-  const onResetClickFilter =() => {
-    setAttributes({ 
-      blur: "0", 
-      bright:"100", 
-      contrast:"100", 
-      saturation:"100", 
-      hue:"0"
+  const onResetClickFilter = () => {
+    setAttributes({
+      blur: "0",
+      bright: "100",
+      contrast: "100",
+      saturation: "100",
+      hue: "0"
     });
   }
   const onResetClickContainerPadding = () => {
-    setAttributes({ 
-      paddingT: "", 
-      paddingB:"", 
-      paddingL:"", 
-      paddingR:"", 
-      paddingU:"px"
+    setAttributes({
+      paddingT: "",
+      paddingB: "",
+      paddingL: "",
+      paddingR: "",
+      paddingU: "px"
     });
   }
 
