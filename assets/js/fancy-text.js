@@ -9,32 +9,25 @@ jQuery(document).ready(function ($) {
       effect = $elem.data('effect'),
       strings = $elem.data('strings'),
       fancyStrings = strings.split(",")
-console.log(id);
 
     if (effect === 'typing') {
-
-      let instance = null;
-      console.log("typing ",fancyStrings);
-
-      instance = new Typed(`#${id} .premium-fancy-text-title`, {
-        strings: fancyStrings,
-        typeSpeed: $elem.data('typespeed'),
-        backSpeed: $elem.data('backspeed'),
-        startDelay: $elem.data('startdelay'),
-        backDelay: $elem.data('backdelay'),
-        showCursor: $elem.data('cursorshow'),
-        cursorChar: $elem.data('cursormark'),
-        loop: $elem.data('loop')
-      });
-
-
+       $(`#${id} .premium-fancy-text-title`).typed({
+          strings: fancyStrings,
+          typeSpeed: $elem.data('typespeed'),
+          backSpeed: $elem.data('backspeed'),
+          startDelay: $elem.data('startdelay'),
+          backDelay: $elem.data('backdelay'),
+          showCursor: $elem.data('cursorshow'),
+          cursorChar: $elem.data('cursormark'),
+          loop: $elem.data('loop')
+       });
     } else if (effect === 'slide') {
       $elem.find(".premium-fancy-text-title-slide").vTicker({
         strings: fancyStrings,
         speed: $elem.data('animationspeed'),
         pause: $elem.data('pausetime'),
         mousePause: $elem.data('hoverpause'),
-        // direction: "up"
+        direction: "up"
       });
     }
   })

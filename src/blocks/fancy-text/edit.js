@@ -39,26 +39,17 @@ const SortableItem = SortableElement(({
     changeFancyValue,
     items
 }) => < div className="premium-repeater-item" >
-
         <div className={
             `premium-repeater-item__container ${newIndex}`
         } >
             < span className="premium-repeater-item__dragHandle" ></span>
-            <div className="premium-repeater-item__content"
-                onClick={
-                    () => edit(newIndex)
-                } >
-                {
-                    value.title
-                } </div>
-
+            <div className="premium-repeater-item__content"onClick={() => edit(newIndex)} >{value.title} </div>
             {
                 items.length != 1 ? < button className="premium-repeater-item__trashicon fa fa-trash"
                     onClick={
                         () => removeItem(newIndex, value)
                     } >
                 </button> : ""}
-
         </div>
         <div className={
             `premium-repeater-item-controls ${value.edit ? "editable" : ""}`
@@ -86,12 +77,8 @@ const SortableList = SortableContainer(({
                 value={value}
                 removeItem={removeItem}
                 edit={edit}
-                changeFancyValue={
-                    changeFancyValue
-                }
-                items={
-                    items
-                }
+                changeFancyValue={changeFancyValue}
+                items={items}
             />
         ))
     } </div>
@@ -117,8 +104,7 @@ class edit extends Component {
 
     componentDidUpdate() {
         const { effect } = this.props.attributes;
-
-        if (effect == 'typing' && this.typed != undefined) {
+        if (effect === 'typing' && this.typed != undefined) {
             this.typed.destroy()
         }
         this.renderFancyText()
@@ -199,7 +185,6 @@ class edit extends Component {
             fancyalign
         } = attributes
 
-
         const ALIGNS = ["left", "center", "right"];
         const EFFECT = [{
             label: __("Typing"),
@@ -270,7 +255,6 @@ class edit extends Component {
             setAttributes({
                 repeaterFancyText:
                     array
-
             });
         };
 
@@ -323,7 +307,6 @@ class edit extends Component {
             });
         }
 
-
         const addNewFancyText = () => {
             setAttributes({
                 repeaterFancyText: repeaterFancyText.concat([{
@@ -352,9 +335,7 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <TextControl
-                            label={
-                                __("Prefix Text")
-                            }
+                            label={__("Prefix Text")}
                             value={prefix}
                             onChange={newText => setAttributes({ prefix: newText })}
                         />
@@ -368,7 +349,6 @@ class edit extends Component {
                                     onSortEnd={(o, n) => onSortEndSingle(o, n)}
                                     removeItem={(value) => removeItem(value)}
                                     edit={(value) => edit(value)}
-
                                     shouldCancelStart={shouldCancelStart}
                                     changeFancyValue={changeFancyValue}
                                     helperClass='premium-fancy-text__sortableHelper' />
@@ -491,11 +471,7 @@ class edit extends Component {
                         <p>{__("Color")}</p>
                         <ColorPalette
                             value={fancyTextColor}
-                            onChange={newValue =>
-                                setAttributes({
-                                    fancyTextColor: newValue
-                                })
-                            }
+                            onChange={newValue =>setAttributes({fancyTextColor: newValue})}
                             allowReset={true}
                         />
                         <PremiumTypo
@@ -640,11 +616,11 @@ class edit extends Component {
                     <span className={`premium-fancy-text-title`} ref={(el) => { this.el = el; }}> </span>
                     <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
                 </div>
-                    : <div className={`premium-fancy-text-${block_id} premium-fancy-slide`} style={{
+                    : <div className={`premium-fancy-text premium-fancy-slide`} style={{
                         textAlign: align
                     }}
                         data-effect={`${effect}`}
-                        data-strings={`${repeaterFancyText.map((item, index) => { return item.title })}`}
+                        data-strings={`${repeaterFancyText.map((item) => { return item.title })}`}
                         data-animationspeed={`${animationSpeed}`}
                         data-pausetime={`${pauseTime}`}
                         data-hoverpause={`${hoverPause}`}
@@ -654,7 +630,7 @@ class edit extends Component {
                             textAlign: fancyalign
                         }}>
                             <ul className={`premium-fancy-text-title-slide-list`}>
-                                {repeaterFancyText.map((item, index) => { return <li>{item.title}</li> })}
+                                {repeaterFancyText.map((item) => { return <li>{item.title}</li> })}
                             </ul>
                         </div>
                         <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>

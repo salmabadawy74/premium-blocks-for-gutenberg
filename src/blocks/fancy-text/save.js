@@ -52,7 +52,7 @@ export default function save(props) {
                 <span className={`premium-fancy-text-title`}> </span>
                 <span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
             </div>
-                : <div className={`premium-fancy-text-${block_id} premium-fancy-slide`} style={{
+                : <div className={`premium-fancy-text premium-fancy-slide`} style={{
                     textAlign: align
                 }}
                     data-effect={`${effect}`}

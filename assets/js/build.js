@@ -58113,7 +58113,7 @@ function save(props) {
             )
         ) : wp.element.createElement(
             "div",
-            { className: "premium-fancy-text-" + block_id + " premium-fancy-slide", style: {
+            { className: "premium-fancy-text premium-fancy-slide", style: {
                     textAlign: align
                 },
                 "data-effect": "" + effect,
@@ -58218,8 +58218,7 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__["b" /
             wp.element.createElement("span", { className: "premium-repeater-item__dragHandle" }),
             wp.element.createElement(
                 "div",
-                { className: "premium-repeater-item__content",
-                    onClick: function onClick() {
+                { className: "premium-repeater-item__content", onClick: function onClick() {
                         return edit(newIndex);
                     } },
                 value.title,
@@ -58298,8 +58297,7 @@ var edit = function (_Component) {
         value: function componentDidUpdate() {
             var effect = this.props.attributes.effect;
 
-
-            if (effect == 'typing' && this.typed != undefined) {
+            if (effect === 'typing' && this.typed != undefined) {
                 this.typed.destroy();
             }
             this.renderFancyText();
@@ -58462,7 +58460,6 @@ var edit = function (_Component) {
                 var array = Object(__WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__["c" /* arrayMove */])(arrayItem, oldIndex, newIndex);
                 setAttributes({
                     repeaterFancyText: array
-
                 });
             };
 
@@ -58569,7 +58566,6 @@ var edit = function (_Component) {
                                 edit: function edit(value) {
                                     return _edit(value);
                                 },
-
                                 shouldCancelStart: shouldCancelStart,
                                 changeFancyValue: changeFancyValue,
                                 helperClass: "premium-fancy-text__sortableHelper" }),
@@ -58741,9 +58737,7 @@ var edit = function (_Component) {
                     wp.element.createElement(ColorPalette, {
                         value: fancyTextColor,
                         onChange: function onChange(newValue) {
-                            return setAttributes({
-                                fancyTextColor: newValue
-                            });
+                            return setAttributes({ fancyTextColor: newValue });
                         },
                         allowReset: true
                     }),
@@ -58931,11 +58925,11 @@ var edit = function (_Component) {
                     )
                 ) : wp.element.createElement(
                     "div",
-                    { className: "premium-fancy-text-" + block_id + " premium-fancy-slide", style: {
+                    { className: "premium-fancy-text premium-fancy-slide", style: {
                             textAlign: align
                         },
                         "data-effect": "" + effect,
-                        "data-strings": "" + repeaterFancyText.map(function (item, index) {
+                        "data-strings": "" + repeaterFancyText.map(function (item) {
                             return item.title;
                         }),
                         "data-animationspeed": "" + animationSpeed,
@@ -58956,7 +58950,7 @@ var edit = function (_Component) {
                         wp.element.createElement(
                             "ul",
                             { className: "premium-fancy-text-title-slide-list" },
-                            repeaterFancyText.map(function (item, index) {
+                            repeaterFancyText.map(function (item) {
                                 return wp.element.createElement(
                                     "li",
                                     null,
