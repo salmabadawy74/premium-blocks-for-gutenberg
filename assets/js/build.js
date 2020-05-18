@@ -2539,14 +2539,14 @@ var listCacheClear = __webpack_require__(88),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `ListCache`.
@@ -4801,14 +4801,14 @@ var mapCacheClear = __webpack_require__(104),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `MapCache`.
@@ -8955,14 +8955,14 @@ var hashClear = __webpack_require__(106),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `Hash`.
@@ -9322,13 +9322,13 @@ var MapCache = __webpack_require__(42),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-  var index = -1,
-      length = values == null ? 0 : values.length;
+    var index = -1,
+        length = values == null ? 0 : values.length;
 
-  this.__data__ = new MapCache();
-  while (++index < length) {
-    this.add(values[index]);
-  }
+    this.__data__ = new MapCache();
+    while (++index < length) {
+        this.add(values[index]);
+    }
 }
 
 // Add methods to `SetCache`.
@@ -10272,16 +10272,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-  var result = keys(object),
-      length = result.length;
+    var result = keys(object),
+        length = result.length;
 
-  while (length--) {
-    var key = result[length],
-        value = object[key];
+    while (length--) {
+        var key = result[length],
+            value = object[key];
 
-    result[length] = [key, value, isStrictComparable(value)];
-  }
-  return result;
+        result[length] = [key, value, isStrictComparable(value)];
+    }
+    return result;
 }
 
 module.exports = getMatchData;
@@ -60574,10 +60574,25 @@ var edit = function (_Component) {
                         } },
                     wp.element.createElement(
                         "h2",
-                        { className: "premium-title-header premium-title-" + style + " " + iconPosition },
-                        iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
-                        iconValue && iconType == 'image' && image && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
-                        wp.element.createElement(
+                        { className: "premium-title-header premium-title-" + style + " " + (iconValue ? iconPosition : "") },
+                        iconValue && iconType == 'icon' && style != 'style7' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
+                        iconValue && iconType == 'image' && image && style != 'style7' && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
+                        style == 'style7' ? wp.element.createElement(
+                            "span",
+                            { className: "premium-title-style7-stripe__wrap" },
+                            wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
+                        ) : "",
+                        style == 'style7' ? wp.element.createElement(
+                            "div",
+                            { className: "premium-title-style7-inner-title" },
+                            iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
+                            iconValue && iconType == 'image' && image && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
+                            wp.element.createElement(
+                                "span",
+                                null,
+                                title
+                            )
+                        ) : wp.element.createElement(
                             "span",
                             null,
                             title

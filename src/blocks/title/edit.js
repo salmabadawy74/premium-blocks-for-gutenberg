@@ -227,14 +227,28 @@ class edit extends Component {
                 <div className={`premium-title ${style}`} data-setting={`${this.props.clientId}`} style={{
                 textAlign: align,
               }}>
-                  <h2 className={`premium-title-header premium-title-${style} ${iconPosition}`}>
+                  <h2 className={`premium-title-header premium-title-${style} ${iconValue?iconPosition:""}`}>
                     {
-                      iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`}/>
+                      iconValue && iconType == 'icon' && style != 'style7' && <i className={`premium-title-icon ${icon}`}/>
                     }
                     {
-                      iconValue && iconType == 'image' && image && < img className = {`premium-title-icon`} src = {image.url}/>
+                      iconValue && iconType == 'image' && image && style != 'style7' && < img className = {`premium-title-icon`} src = {image.url}/>
                     }
-                    <span>{title}</span>
+                    {style == 'style7'?<span className={`premium-title-style7-stripe__wrap`}>
+                      <span className={`premium-title-style7-stripe-span`}></span>
+                      </span>:""
+                    }
+                    {style == 'style7'?<div className={`premium-title-style7-inner-title`}>
+                      {
+                        iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`}/>
+                      }
+                      {
+                        iconValue && iconType == 'image' && image && < img className = {`premium-title-icon`} src = {image.url}/>
+                      }
+                      <span>{title}</span>
+                      </div>
+                      :<span>{title}</span>
+                    }
                     {link && <a href={`${url}`}></a>}
                   </h2>
                 </div>
