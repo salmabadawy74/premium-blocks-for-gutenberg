@@ -2539,14 +2539,14 @@ var listCacheClear = __webpack_require__(88),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `ListCache`.
@@ -4801,14 +4801,14 @@ var mapCacheClear = __webpack_require__(104),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `MapCache`.
@@ -8955,14 +8955,14 @@ var hashClear = __webpack_require__(106),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `Hash`.
@@ -9322,13 +9322,13 @@ var MapCache = __webpack_require__(42),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-    var index = -1,
-        length = values == null ? 0 : values.length;
+  var index = -1,
+      length = values == null ? 0 : values.length;
 
-    this.__data__ = new MapCache();
-    while (++index < length) {
-        this.add(values[index]);
-    }
+  this.__data__ = new MapCache();
+  while (++index < length) {
+    this.add(values[index]);
+  }
 }
 
 // Add methods to `SetCache`.
@@ -10272,16 +10272,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-    var result = keys(object),
-        length = result.length;
+  var result = keys(object),
+      length = result.length;
 
-    while (length--) {
-        var key = result[length],
-            value = object[key];
+  while (length--) {
+    var key = result[length],
+        value = object[key];
 
-        result[length] = [key, value, isStrictComparable(value)];
-    }
-    return result;
+    result[length] = [key, value, isStrictComparable(value)];
+  }
+  return result;
 }
 
 module.exports = getMatchData;
@@ -60286,6 +60286,85 @@ var titleAttrs = {
   url: {
     type: "string",
     default: "#"
+  },
+  iconAlign: {
+    type: "string",
+    default: "center"
+  },
+  stripePosition: {
+    type: "string",
+    default: "top"
+  },
+  stripeWidth: {
+    type: "number",
+    default: 120
+  },
+  stripeHeight: {
+    type: "number",
+    default: 5
+  },
+  stripeTopSpacing: {
+    type: "number",
+    default: 0
+  },
+  stripeBottomSpacing: {
+    type: "number",
+    default: 0
+  },
+  titleColor: {
+    type: "string",
+    default: "#6ec1e4"
+  },
+  titleLetter: {
+    type: "number",
+    default: 0
+  },
+  titleStyle: {
+    type: "string",
+    default: "normal"
+  },
+  titleUpper: {
+    type: "boolean",
+    default: false
+  },
+  titleWeight: {
+    type: "number",
+    default: 500
+  },
+  titlefontSize: {
+    type: "number",
+    default: 30
+  },
+  titlefontSizeType: {
+    type: "string",
+    default: "px"
+  },
+  titlefontSizeMobile: {
+    type: "number",
+    default: 30
+  },
+  titlefontSizeTablet: {
+    type: "number",
+    default: 30
+  },
+  titleshadowColor: {
+    type: "string"
+  },
+  titleshadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  titleshadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  titleshadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  stripeColor: {
+    type: "string",
+    default: "#6ec1e4"
   }
 };
 
@@ -60307,14 +60386,15 @@ registerBlockType("premium/title", {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__fonticonpicker_react_fonticonpicker__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_text_shadow__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(6);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -60324,7 +60404,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
-// import styling from "./styling"
+
 
 
 
@@ -60346,9 +60426,9 @@ var _wp$editor = wp.editor,
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
-    TextareaControl = _wp$components.TextareaControl,
-    TextControl = _wp$components.TextControl,
     RangeControl = _wp$components.RangeControl,
+    TextControl = _wp$components.TextControl,
+    Toolbar = _wp$components.Toolbar,
     ToggleControl = _wp$components.ToggleControl,
     Button = _wp$components.Button;
 
@@ -60368,9 +60448,9 @@ var edit = function (_Component) {
             this.props.setAttributes({ block_id: this.props.clientId });
             this.props.setAttributes({ classMigrate: true });
             // Pushing Style tag for this block css.
-            // const $style = document.createElement("style")
-            // $style.setAttribute("id", "premium-style-title-" + this.props.clientId)
-            // document.head.appendChild($style)
+            var $style = document.createElement("style");
+            $style.setAttribute("id", "premium-style-title-" + this.props.clientId);
+            document.head.appendChild($style);
         }
     }, {
         key: "render",
@@ -60389,7 +60469,27 @@ var edit = function (_Component) {
                 iconPosition = attributes.iconPosition,
                 image = attributes.image,
                 link = attributes.link,
-                url = attributes.url;
+                url = attributes.url,
+                iconAlign = attributes.iconAlign,
+                stripePosition = attributes.stripePosition,
+                stripeWidth = attributes.stripeWidth,
+                stripeHeight = attributes.stripeHeight,
+                stripeTopSpacing = attributes.stripeTopSpacing,
+                stripeBottomSpacing = attributes.stripeBottomSpacing,
+                titleColor = attributes.titleColor,
+                titleWeight = attributes.titleWeight,
+                titleLetter = attributes.titleLetter,
+                titleUpper = attributes.titleUpper,
+                titleStyle = attributes.titleStyle,
+                titlefontSize = attributes.titlefontSize,
+                titlefontSizeMobile = attributes.titlefontSizeMobile,
+                titlefontSizeTablet = attributes.titlefontSizeTablet,
+                titlefontSizeType = attributes.titlefontSizeType,
+                titleshadowBlur = attributes.titleshadowBlur,
+                titleshadowColor = attributes.titleshadowColor,
+                titleshadowHorizontal = attributes.titleshadowHorizontal,
+                titleshadowVertical = attributes.titleshadowVertical,
+                stripeColor = attributes.stripeColor;
 
 
             var STYLE = [{
@@ -60431,12 +60531,41 @@ var edit = function (_Component) {
                 value: "top",
                 label: __("Top")
             }];
+            var ALIGNS = ["left", "center", "right"];
+            var STRIPEPOSITION = [{
+                value: "top",
+                label: __("Top")
+            }, {
+                value: "bottom",
+                label: __("Bottom")
+            }];
 
-            // var element = document.getElementById("premium-style-title-" + this.props.clientId)
+            var element = document.getElementById("premium-style-title-" + this.props.clientId);
 
-            // if (null != element && "undefined" != typeof element) {
-            //     element.innerHTML = styling(this.props)
-            // }
+            if (null != element && "undefined" != typeof element) {
+                element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_1__styling__["a" /* default */])(this.props);
+            }
+
+            var onResetClickTitle = function onResetClickTitle() {
+                setAttributes({
+                    titleWeight: 500,
+                    titlefontSizeType: "px",
+                    titlefontSize: "30",
+                    titlefontSizeMobile: "30",
+                    titlefontSizeTablet: "30",
+                    titleStyle: "normal",
+                    titleLetter: "0",
+                    titleUpper: false
+                });
+            };
+            var onResetClickTitleTextShadow = function onResetClickTitleTextShadow() {
+                setAttributes({
+                    titleshadowColor: "",
+                    titleshadowBlur: "0",
+                    titleshadowHorizontal: "0",
+                    titleshadowVertical: "0"
+                });
+            };
 
             return [isSelected && wp.element.createElement(
                 BlockControls,
@@ -60498,8 +60627,8 @@ var edit = function (_Component) {
                                 null,
                                 __("Icon")
                             ),
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__fonticonpicker_react_fonticonpicker___default.a, {
-                                icons: __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__["a" /* default */],
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker___default.a, {
+                                icons: __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__["a" /* default */],
                                 value: icon,
                                 onChange: function onChange(value) {
                                     return setAttributes({ icon: value });
@@ -60536,6 +60665,74 @@ var edit = function (_Component) {
                                 return setAttributes({ iconPosition: newSelect });
                             },
                             options: POSITION
+                        }),
+                        iconPosition === 'top' && style != 'style3' && style != 'style4' && wp.element.createElement(
+                            Fragment,
+                            null,
+                            wp.element.createElement(
+                                "p",
+                                null,
+                                __("First Content Alignment")
+                            ),
+                            wp.element.createElement(Toolbar, {
+                                controls: ALIGNS.map(function (contentAlign) {
+                                    return {
+                                        icon: "editor-align" + contentAlign,
+                                        isActive: contentAlign === iconAlign,
+                                        onClick: function onClick() {
+                                            return setAttributes({ iconAlign: contentAlign });
+                                        }
+                                    };
+                                })
+                            })
+                        )
+                    ),
+                    style === 'style7' && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(SelectControl, {
+                            label: __("Stripe Position"),
+                            value: stripePosition,
+                            onChange: function onChange(newSelect) {
+                                return setAttributes({ stripePosition: newSelect });
+                            },
+                            options: STRIPEPOSITION
+                        }),
+                        wp.element.createElement(RangeControl, {
+                            label: __("Stripe Width"),
+                            value: stripeWidth,
+                            min: "1",
+                            max: "100",
+                            onChange: function onChange(value) {
+                                return setAttributes({ stripeWidth: value });
+                            }
+                        }),
+                        wp.element.createElement(RangeControl, {
+                            label: __("Stripe Height"),
+                            value: stripeHeight,
+                            min: "1",
+                            max: "100",
+                            onChange: function onChange(value) {
+                                return setAttributes({ stripeHeight: value });
+                            }
+                        }),
+                        wp.element.createElement(RangeControl, {
+                            label: __("Stripe Top Spacing"),
+                            value: stripeTopSpacing,
+                            min: "1",
+                            max: "100",
+                            onChange: function onChange(value) {
+                                return setAttributes({ stripeTopSpacing: value });
+                            }
+                        }),
+                        wp.element.createElement(RangeControl, {
+                            label: __("Stripe Bottom Spacing"),
+                            value: stripeBottomSpacing,
+                            min: "1",
+                            max: "100",
+                            onChange: function onChange(value) {
+                                return setAttributes({ stripeBottomSpacing: value });
+                            }
                         })
                     ),
                     wp.element.createElement(ToggleControl, {
@@ -60561,6 +60758,90 @@ var edit = function (_Component) {
                             placeholder: __("Enter URL")
                         })
                     )
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Title Style"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: titleColor,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({
+                                titleColor: newValue
+                            });
+                        },
+                        allowReset: true
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+                        components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                        setAttributes: setAttributes,
+                        fontSizeType: { value: titlefontSizeType, label: __("titlefontSizeType") },
+                        fontSize: { value: titlefontSize, label: __("titlefontSize") },
+                        fontSizeMobile: { value: titlefontSizeMobile, label: __("titlefontSizeMobile") },
+                        fontSizeTablet: { value: titlefontSizeTablet, label: __("titlefontSizeTablet") },
+                        weight: titleWeight,
+                        style: titleStyle,
+                        spacing: titleLetter,
+                        upper: titleUpper,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return setAttributes({ titleWeight: newWeight || 500 });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return setAttributes({ titleStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return setAttributes({ titleLetter: newValue });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return setAttributes({ titleUpper: check });
+                        },
+                        onResetClick: onResetClickTitle
+                    }),
+                    style === 'style7' && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            __("Stripe Color")
+                        ),
+                        wp.element.createElement(ColorPalette, {
+                            value: stripeColor,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({
+                                    stripeColor: newValue
+                                });
+                            },
+                            allowReset: true
+                        })
+                    ),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__["a" /* default */], {
+                        color: titleshadowColor,
+                        blur: titleshadowBlur,
+                        horizontal: titleshadowHorizontal,
+                        vertical: titleshadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return setAttributes({ titleshadowColor: newColor.hex });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return setAttributes({ titleshadowBlur: newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return setAttributes({ titleshadowHorizontal: newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return setAttributes({ titleshadowVertical: newValue });
+                        },
+                        onResetClick: onResetClickTitleTextShadow
+                    })
                 )
             ), wp.element.createElement(
                 "div",
@@ -60574,27 +60855,32 @@ var edit = function (_Component) {
                         } },
                     wp.element.createElement(
                         "h2",
-                        { className: "premium-title-header premium-title-" + style + " " + (iconValue ? iconPosition : "") },
+                        { className: "premium-title-header premium-title-" + style + "__wrap " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : "") },
                         iconValue && iconType == 'icon' && style != 'style7' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
                         iconValue && iconType == 'image' && image && style != 'style7' && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
-                        style == 'style7' ? wp.element.createElement(
+                        style == 'style7' && iconPosition != 'top' && wp.element.createElement(
                             "span",
                             { className: "premium-title-style7-stripe__wrap" },
                             wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
-                        ) : "",
+                        ),
                         style == 'style7' ? wp.element.createElement(
                             "div",
                             { className: "premium-title-style7-inner-title" },
                             iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
                             iconValue && iconType == 'image' && image && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
+                            iconPosition == 'top' && wp.element.createElement(
+                                "span",
+                                { className: "premium-title-style7-stripe__wrap" },
+                                wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
+                            ),
                             wp.element.createElement(
                                 "span",
-                                null,
+                                { className: "premium-title-text-title" },
                                 title
                             )
                         ) : wp.element.createElement(
                             "span",
-                            null,
+                            { className: "premium-title-text-title" },
                             title
                         ),
                         link && wp.element.createElement("a", { href: "" + url })
@@ -60608,6 +60894,92 @@ var edit = function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["a"] = (edit);
+
+/***/ }),
+/* 280 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(25);
+
+
+
+function styling(props) {
+    var _props$attributes = props.attributes,
+        classMigrate = _props$attributes.classMigrate,
+        stripeWidth = _props$attributes.stripeWidth,
+        stripeHeight = _props$attributes.stripeHeight,
+        stripeTopSpacing = _props$attributes.stripeTopSpacing,
+        stripeBottomSpacing = _props$attributes.stripeBottomSpacing,
+        titleColor = _props$attributes.titleColor,
+        titleWeight = _props$attributes.titleWeight,
+        titleLetter = _props$attributes.titleLetter,
+        titleUpper = _props$attributes.titleUpper,
+        titleStyle = _props$attributes.titleStyle,
+        titlefontSize = _props$attributes.titlefontSize,
+        titlefontSizeMobile = _props$attributes.titlefontSizeMobile,
+        titlefontSizeTablet = _props$attributes.titlefontSizeTablet,
+        titlefontSizeType = _props$attributes.titlefontSizeType,
+        titleshadowBlur = _props$attributes.titleshadowBlur,
+        titleshadowColor = _props$attributes.titleshadowColor,
+        titleshadowHorizontal = _props$attributes.titleshadowHorizontal,
+        titleshadowVertical = _props$attributes.titleshadowVertical,
+        stripeColor = _props$attributes.stripeColor;
+
+
+    var selectors = {};
+    var tablet_selectors = {};
+    var mobile_selectors = {};
+
+    selectors = {
+        " .premium-title-style7-stripe__wrap": {
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(stripeTopSpacing, 'px'),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(stripeBottomSpacing, 'px')
+        },
+        " .premium-title-style7-stripe-span": {
+            "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(stripeWidth, 'px'),
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(stripeHeight, 'px'),
+            "background-color": stripeColor
+        },
+        " .premium-title-header": {
+            "color": titleColor + "!important",
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSize, titlefontSizeType),
+            "letter-spacing": titleLetter + "px",
+            "text-transform": titleUpper ? "uppercase" : "none" + "!important",
+            "font-style": titleStyle + "!important",
+            "font-weight": titleWeight + "!important",
+            "text-shadow": titleshadowHorizontal + 'px ' + titleshadowVertical + 'px ' + titleshadowBlur + 'px ' + titleshadowColor
+        }
+    };
+
+    mobile_selectors = {
+        " .premium-title-header": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeMobile, titlefontSizeType)
+        }
+    };
+
+    tablet_selectors = {
+        " .premium-title-header": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeTablet, titlefontSizeType)
+        }
+    };
+
+    var styling_css = "";
+    var id = '#premium-title-' + props.clientId;
+    if (classMigrate) {
+        id = '.premium-block-' + props.clientId;
+    }
+
+    styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(selectors, id);
+    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
+
+    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
+
+    return styling_css;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ })
 /******/ ]);

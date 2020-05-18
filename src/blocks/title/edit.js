@@ -1,5 +1,5 @@
 import classnames from "classnames"
-// import styling from "./styling"
+import styling from "./styling"
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import iconsList from "../../components/premium-icons-list";
@@ -26,9 +26,9 @@ const {
 const {
     PanelBody,
     SelectControl,
-    TextareaControl,
-    TextControl,
     RangeControl,
+    TextControl,
+    Toolbar,
     ToggleControl,
     Button
 } = wp.components
@@ -43,9 +43,9 @@ class edit extends Component {
         this.props.setAttributes({ block_id: this.props.clientId })
         this.props.setAttributes({ classMigrate: true })
         // Pushing Style tag for this block css.
-        // const $style = document.createElement("style")
-        // $style.setAttribute("id", "premium-style-title-" + this.props.clientId)
-        // document.head.appendChild($style)
+        const $style = document.createElement("style")
+        $style.setAttribute("id", "premium-style-title-" + this.props.clientId)
+        document.head.appendChild($style)
     }
 
     render() {
@@ -62,7 +62,27 @@ class edit extends Component {
             iconPosition,
             image,
             link,
-            url
+            url,
+            iconAlign,
+            stripePosition,
+            stripeWidth,
+            stripeHeight,
+            stripeTopSpacing,
+            stripeBottomSpacing,
+            titleColor,
+            titleWeight,
+            titleLetter,
+            titleUpper,
+            titleStyle,
+            titlefontSize,
+            titlefontSizeMobile,
+            titlefontSizeTablet,
+            titlefontSizeType,
+            titleshadowBlur,
+            titleshadowColor,
+            titleshadowHorizontal,
+            titleshadowVertical,
+            stripeColor
         } = attributes
 
         const STYLE = [{
@@ -117,12 +137,43 @@ class edit extends Component {
             label: __("Top")
           }
         ]
+        const ALIGNS = ["left", "center", "right"];
+        const STRIPEPOSITION = [
+          {
+            value: "top",
+            label: __("Top")
+          }, {
+            value: "bottom",
+            label: __("Bottom")
+          }
+        ]
 
-        // var element = document.getElementById("premium-style-title-" + this.props.clientId)
+        var element = document.getElementById("premium-style-title-" + this.props.clientId)
 
-        // if (null != element && "undefined" != typeof element) {
-        //     element.innerHTML = styling(this.props)
-        // }
+        if (null != element && "undefined" != typeof element) {
+            element.innerHTML = styling(this.props)
+        }
+
+        const onResetClickTitle = () => {
+          setAttributes({
+            titleWeight: 500,
+            titlefontSizeType: "px",
+            titlefontSize: "30",
+            titlefontSizeMobile: "30",
+            titlefontSizeTablet: "30",
+            titleStyle: "normal",
+            titleLetter: "0",
+            titleUpper: false
+          });
+        }
+        const onResetClickTitleTextShadow = () => {
+          setAttributes({
+            titleshadowColor: "",
+            titleshadowBlur: "0",
+            titleshadowHorizontal: "0",
+            titleshadowVertical: "0",
+          });
+        }
 
         return [
             isSelected && (
@@ -198,6 +249,54 @@ class edit extends Component {
                               onChange={newSelect => setAttributes({ iconPosition: newSelect })}
                               options={POSITION}
                             />
+                            {iconPosition === 'top' && style != 'style3'  && style != 'style4' && <Fragment>
+                                <p>{__("First Content Alignment")}</p>
+                                <Toolbar
+                                    controls={ALIGNS.map(contentAlign => ({
+                                        icon: "editor-align" + contentAlign,
+                                        isActive: contentAlign === iconAlign,
+                                        onClick: () => setAttributes({ iconAlign: contentAlign })
+                                    }))}
+                                />
+                              </Fragment>
+                            }
+                          </Fragment>
+                        }
+                        {style === 'style7' && <Fragment>
+                            <SelectControl
+                              label={__("Stripe Position")}
+                              value={stripePosition}
+                              onChange={newSelect => setAttributes({ stripePosition: newSelect })}
+                              options={STRIPEPOSITION}
+                            />
+                            <RangeControl
+                              label={__("Stripe Width")}
+                              value={stripeWidth}
+                              min="1"
+                              max="100"
+                              onChange={value => setAttributes({ stripeWidth: value })}
+                            />
+                            <RangeControl
+                              label={__("Stripe Height")}
+                              value={stripeHeight}
+                              min="1"
+                              max="100"
+                              onChange={value => setAttributes({ stripeHeight: value })}
+                            />
+                            <RangeControl
+                              label={__("Stripe Top Spacing")}
+                              value={stripeTopSpacing}
+                              min="1"
+                              max="100"
+                              onChange={value => setAttributes({ stripeTopSpacing: value })}
+                            />
+                            <RangeControl
+                              label={__("Stripe Bottom Spacing")}
+                              value={stripeBottomSpacing}
+                              min="1"
+                              max="100"
+                              onChange={value => setAttributes({ stripeBottomSpacing: value })}
+                            />
                           </Fragment>
                         }
                         <ToggleControl
@@ -216,6 +315,75 @@ class edit extends Component {
                             </Fragment>
                         }
                     </PanelBody>
+                    <PanelBody
+                        title={__("Title Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                      <p>{__("Color")}</p>
+                      <ColorPalette
+                          value={titleColor}
+                          onChange={newValue =>
+                              setAttributes({
+                                  titleColor: newValue
+                              })
+                          }
+                          allowReset={true}
+                      />
+                      <PremiumTypo
+                            components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                            setAttributes={setAttributes}
+                            fontSizeType={{ value: titlefontSizeType, label: __("titlefontSizeType") }}
+                            fontSize={{ value: titlefontSize, label: __("titlefontSize") }}
+                            fontSizeMobile={{ value: titlefontSizeMobile, label: __("titlefontSizeMobile") }}
+                            fontSizeTablet={{ value: titlefontSizeTablet, label: __("titlefontSizeTablet") }}
+                            weight={titleWeight}
+                            style={titleStyle}
+                            spacing={titleLetter}
+                            upper={titleUpper}
+                            onChangeWeight={newWeight =>
+                                setAttributes({ titleWeight: newWeight || 500 })
+                            }
+                            onChangeStyle={newStyle =>
+                                setAttributes({ titleStyle: newStyle })
+                            }
+                            onChangeSpacing={newValue =>
+                                setAttributes({ titleLetter: newValue })
+                            }
+                            onChangeUpper={check => setAttributes({ titleUpper: check })}
+                            onResetClick={onResetClickTitle}
+                        />
+                        {style === 'style7' && <Fragment>
+                            <p>{__("Stripe Color")}</p>
+                            <ColorPalette
+                                value={stripeColor}
+                                onChange={newValue =>
+                                    setAttributes({
+                                        stripeColor: newValue
+                                    })
+                                }
+                                allowReset={true}
+                            />
+                          </Fragment>
+                          }
+                        <PremiumTextShadow
+                            color={titleshadowColor}
+                            blur={titleshadowBlur}
+                            horizontal={titleshadowHorizontal}
+                            vertical={titleshadowVertical}
+                            onChangeColor={newColor =>
+                            setAttributes({ titleshadowColor: newColor.hex })
+                            }
+                            onChangeBlur={newBlur => setAttributes({ titleshadowBlur: newBlur })}
+                            onChangehHorizontal={newValue =>
+                            setAttributes({ titleshadowHorizontal: newValue })
+                            }
+                            onChangeVertical={newValue =>
+                            setAttributes({ titleshadowVertical: newValue })
+                            }
+                            onResetClick={onResetClickTitleTextShadow}
+                        />
+                    </PanelBody>
                 </InspectorControls>
             ),
             <div className={classnames(
@@ -227,16 +395,16 @@ class edit extends Component {
                 <div className={`premium-title ${style}`} data-setting={`${this.props.clientId}`} style={{
                 textAlign: align,
               }}>
-                  <h2 className={`premium-title-header premium-title-${style} ${iconValue?iconPosition:""}`}>
+                  <h2 className={`premium-title-header premium-title-${style}__wrap ${iconValue?iconPosition:""} ${iconPosition=='top'? `premium-title-${iconAlign}`:""}`}>
                     {
                       iconValue && iconType == 'icon' && style != 'style7' && <i className={`premium-title-icon ${icon}`}/>
                     }
                     {
                       iconValue && iconType == 'image' && image && style != 'style7' && < img className = {`premium-title-icon`} src = {image.url}/>
                     }
-                    {style == 'style7'?<span className={`premium-title-style7-stripe__wrap`}>
+                    {style == 'style7' && iconPosition !='top' &&<span className={`premium-title-style7-stripe__wrap`}>
                       <span className={`premium-title-style7-stripe-span`}></span>
-                      </span>:""
+                      </span>
                     }
                     {style == 'style7'?<div className={`premium-title-style7-inner-title`}>
                       {
@@ -245,9 +413,13 @@ class edit extends Component {
                       {
                         iconValue && iconType == 'image' && image && < img className = {`premium-title-icon`} src = {image.url}/>
                       }
-                      <span>{title}</span>
+                      {iconPosition =='top' &&<span className={`premium-title-style7-stripe__wrap`}>
+                      <span className={`premium-title-style7-stripe-span`}></span>
+                      </span>
+                    }
+                      <span className={`premium-title-text-title`}>{title}</span>
                       </div>
-                      :<span>{title}</span>
+                      :<span className={`premium-title-text-title`}>{title}</span>
                     }
                     {link && <a href={`${url}`}></a>}
                   </h2>

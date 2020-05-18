@@ -60,6 +60,85 @@ const titleAttrs = {
   url: {
     type: "string",
     default: "#"
+  },
+  iconAlign: {
+    type: "string",
+    default: "center"
+  },
+  stripePosition:{
+    type: "string",
+    default: "top"
+  },
+  stripeWidth: {
+    type: "number",
+    default: 120
+  },
+  stripeHeight:{
+    type: "number",
+    default: 5
+  },
+  stripeTopSpacing:{
+    type: "number",
+    default: 0
+  },
+  stripeBottomSpacing: {
+    type: "number",
+    default: 0
+  },
+  titleColor: {
+    type: "string",
+    default: "#6ec1e4"
+  },
+  titleLetter: {
+    type: "number",
+    default: 0
+  },
+  titleStyle: {
+    type: "string",
+    default: "normal"
+  },
+  titleUpper: {
+    type: "boolean",
+    default: false
+  },
+  titleWeight: {
+    type: "number",
+    default: 500
+  },
+  titlefontSize: {
+    type: "number",
+    default: 30
+  },
+  titlefontSizeType: {
+    type: "string",
+    default: "px"
+  },
+  titlefontSizeMobile: {
+    type: "number",
+    default: 30
+  },
+  titlefontSizeTablet: {
+    type: "number",
+    default: 30
+  },
+  titleshadowColor: {
+    type: "string"
+  },
+  titleshadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  titleshadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  titleshadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  stripeColor: {
+    type: "string",
+    default: "#6ec1e4"
   }
 };
 
