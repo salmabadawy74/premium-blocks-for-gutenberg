@@ -4,7 +4,6 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import iconsList from "../../components/premium-icons-list";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumRangeResponsive from "../../components/premium-range-responsive";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 
@@ -82,7 +81,36 @@ class edit extends Component {
             titleshadowColor,
             titleshadowHorizontal,
             titleshadowVertical,
-            stripeColor
+            stripeColor,
+            titleborderType,
+            titleborderRadius,
+            titleborderWidth,
+            titleborderColor,
+            BGColor,
+            lineColor,
+            triangleColor,
+            stripeAlign,
+            iconColor,
+            iconSize,
+            iconSizeType,
+            iconSizeTablet,
+            iconSizeMobile,
+            iconborderType,
+            iconborderRadius,
+            iconborderWidth,
+            iconborderColor,
+            iconshadowBlur,
+            iconshadowColor,
+            iconshadowHorizontal,
+            iconshadowVertical,
+            titleMargin,
+            titleMarginType,
+            titleMarginMobile,
+            titleMarginTablet,
+            titlePadding,
+            titlePaddingTablet,
+            titlePaddingType,
+            titlePaddingMobile
         } = attributes
 
         const STYLE = [{
@@ -156,7 +184,7 @@ class edit extends Component {
 
         const onResetClickTitle = () => {
           setAttributes({
-            titleWeight: 500,
+            titleWeight: 600,
             titlefontSizeType: "px",
             titlefontSize: "30",
             titlefontSizeMobile: "30",
@@ -172,6 +200,30 @@ class edit extends Component {
             titleshadowBlur: "0",
             titleshadowHorizontal: "0",
             titleshadowVertical: "0",
+          });
+        }
+        const onResetClicktitleborder = () => {
+          setAttributes({
+            titleborderType: "none",
+            titleborderWidth: "1",
+            titleborderColor: "",
+            titleborderRadius: "0",
+          });
+        }
+        const onResetClickiconborder = () => {
+          setAttributes({
+            iconborderType: "none",
+            iconborderWidth: "1",
+            iconborderColor: "",
+            iconborderRadius: "0",
+          });
+        }
+        const onResetClickIconTextShadow = () => {
+          setAttributes({
+            iconshadowColor: "",
+            iconshadowBlur: "0",
+            iconshadowHorizontal: "0",
+            iconshadowVertical: "0",
           });
         }
 
@@ -250,7 +302,7 @@ class edit extends Component {
                               options={POSITION}
                             />
                             {iconPosition === 'top' && style != 'style3'  && style != 'style4' && <Fragment>
-                                <p>{__("First Content Alignment")}</p>
+                                <p>{__("Icon Alignment")}</p>
                                 <Toolbar
                                     controls={ALIGNS.map(contentAlign => ({
                                         icon: "editor-align" + contentAlign,
@@ -297,6 +349,14 @@ class edit extends Component {
                               max="100"
                               onChange={value => setAttributes({ stripeBottomSpacing: value })}
                             />
+                            <p>{__("Stripe Alignment")}</p>
+                            <Toolbar
+                                controls={ALIGNS.map(contentAlign => ({
+                                    icon: "editor-align" + contentAlign,
+                                    isActive: contentAlign === stripeAlign,
+                                    onClick: () => setAttributes({ stripeAlign: contentAlign })
+                                }))}
+                            />
                           </Fragment>
                         }
                         <ToggleControl
@@ -342,7 +402,7 @@ class edit extends Component {
                             spacing={titleLetter}
                             upper={titleUpper}
                             onChangeWeight={newWeight =>
-                                setAttributes({ titleWeight: newWeight || 500 })
+                                setAttributes({ titleWeight: newWeight || 600 })
                             }
                             onChangeStyle={newStyle =>
                                 setAttributes({ titleStyle: newStyle })
@@ -353,7 +413,69 @@ class edit extends Component {
                             onChangeUpper={check => setAttributes({ titleUpper: check })}
                             onResetClick={onResetClickTitle}
                         />
-                        {style === 'style7' && <Fragment>
+                        {style === 'style2' && <Fragment>
+                            <p>{__("Background Color")}</p>
+                            <ColorPalette
+                                value={BGColor}
+                                onChange={newValue =>
+                                    setAttributes({
+                                        BGColor: newValue
+                                    })
+                                }
+                                allowReset={true}
+                            />
+                          </Fragment>
+                        }
+                        {style === 'style3' && <Fragment>
+                            <p>{__("Background Color")}</p>
+                            <ColorPalette
+                                value={BGColor}
+                                onChange={newValue =>
+                                    setAttributes({
+                                        BGColor: newValue
+                                    })
+                                }
+                                allowReset={true}
+                            />
+                          </Fragment>
+                        }
+                        {style === 'style5' && <Fragment>
+                            <p>{__("Line Color")}</p>
+                            <ColorPalette
+                                value={lineColor}
+                                onChange={newValue =>
+                                    setAttributes({
+                                        lineColor: newValue
+                                    })
+                                }
+                                allowReset={true}
+                            />
+                          </Fragment>
+                        }
+                        {style === 'style6' && <Fragment>
+                            <p>{__("Line Color")}</p>
+                            <ColorPalette
+                                value={lineColor}
+                                onChange={newValue =>
+                                    setAttributes({
+                                        lineColor: newValue
+                                    })
+                                }
+                                allowReset={true}
+                            />
+                            <p>{__("Triangle Color")}</p>
+                            <ColorPalette
+                                value={triangleColor}
+                                onChange={newValue =>
+                                    setAttributes({
+                                        triangleColor: newValue
+                                    })
+                                }
+                                allowReset={true}
+                            />
+                          </Fragment>
+                        }
+                        {style === 'style7' ? <Fragment>
                             <p>{__("Stripe Color")}</p>
                             <ColorPalette
                                 value={stripeColor}
@@ -365,6 +487,21 @@ class edit extends Component {
                                 allowReset={true}
                             />
                           </Fragment>
+                          : style != 'style3' && <PremiumBorder
+                            borderType={titleborderType}
+                            borderWidth={titleborderWidth}
+                            borderColor={titleborderColor}
+                            borderRadius={titleborderRadius}
+                            onChangeType={newType => setAttributes({ titleborderType: newType })}
+                            onChangeWidth={newWidth => setAttributes({ titleborderWidth: newWidth })}
+                            onChangeColor={colorValue =>
+                                setAttributes({ titleborderColor: colorValue.hex })
+                            }
+                            onChangeRadius={newrRadius =>
+                                setAttributes({ titleborderRadius: newrRadius })
+                            }
+                            onResetClick={onResetClicktitleborder}
+                          />
                           }
                         <PremiumTextShadow
                             color={titleshadowColor}
@@ -383,7 +520,89 @@ class edit extends Component {
                             }
                             onResetClick={onResetClickTitleTextShadow}
                         />
+                        <PremiumRangeResponsive
+                            setAttributes={setAttributes}
+                            rangeType={{ value: titleMarginType, label: __("titleMarginType") }}
+                            range={{ value: titleMargin, label: __("titleMargin") }}
+                            rangeMobile={{ value: titleMarginMobile, label: __("titleMarginMobile") }}
+                            rangeTablet={{ value: titleMarginTablet, label: __("titleMarginTablet") }}
+                            rangeLabel={__("Margin")}
+                            min={1}
+                            max={100}
+                        />
+                        <PremiumRangeResponsive
+                            setAttributes={setAttributes}
+                            rangeType={{ value: titlePaddingType, label: __("titlePaddingType") }}
+                            range={{ value: titlePadding, label: __("titlePadding") }}
+                            rangeMobile={{ value: titlePaddingMobile, label: __("titlePaddingMobile") }}
+                            rangeTablet={{ value: titlePaddingTablet, label: __("titlePaddingTablet") }}
+                            rangeLabel={__("Padding")}
+                            min={1}
+                            max={100}
+                        />
                     </PanelBody>
+                    {iconValue && <PanelBody
+                        title={__("Icon Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                      >
+                        {iconType === 'icon' && <Fragment>
+                            <p>{__("Color")}</p>
+                            <ColorPalette
+                                value={iconColor}
+                                onChange={newValue =>
+                                    setAttributes({
+                                        iconColor: newValue
+                                    })
+                                }
+                                allowReset={true}
+                            />
+                          </Fragment>
+                        }
+                        <PremiumRangeResponsive
+                            setAttributes={setAttributes}
+                            rangeType={{ value: iconSizeType, label: __("iconSizeType") }}
+                            range={{ value: iconSize, label: __("iconSize") }}
+                            rangeMobile={{ value: iconSizeMobile, label: __("iconSizeMobile") }}
+                            rangeTablet={{ value: iconSizeTablet, label: __("iconSizeTablet") }}
+                            rangeLabel={__("Size")}
+                            min={1}
+                            max={100}
+                        />
+                        <PremiumBorder
+                            borderType={iconborderType}
+                            borderWidth={iconborderWidth}
+                            borderColor={iconborderColor}
+                            borderRadius={iconborderRadius}
+                            onChangeType={newType => setAttributes({ iconborderType: newType })}
+                            onChangeWidth={newWidth => setAttributes({ iconborderWidth: newWidth })}
+                            onChangeColor={colorValue =>
+                                setAttributes({ iconborderColor: colorValue.hex })
+                            }
+                            onChangeRadius={newrRadius =>
+                                setAttributes({ iconborderRadius: newrRadius })
+                            }
+                            onResetClick={onResetClickiconborder}
+                          />
+                          {iconType === 'icon' && <PremiumTextShadow
+                            color={iconshadowColor}
+                            blur={iconshadowBlur}
+                            horizontal={iconshadowHorizontal}
+                            vertical={iconshadowVertical}
+                            onChangeColor={newColor =>
+                            setAttributes({ iconshadowColor: newColor.hex })
+                            }
+                            onChangeBlur={newBlur => setAttributes({ iconshadowBlur: newBlur })}
+                            onChangehHorizontal={newValue =>
+                            setAttributes({ iconshadowHorizontal: newValue })
+                            }
+                            onChangeVertical={newValue =>
+                            setAttributes({ iconshadowVertical: newValue })
+                            }
+                            onResetClick={onResetClickIconTextShadow}
+                        />}
+                      </PanelBody>
+                    }
                 </InspectorControls>
             ),
             <div className={classnames(
@@ -392,9 +611,10 @@ class edit extends Component {
             )} style={{
                 textAlign: align,
             }}>
-                <div className={`premium-title ${style}`} data-setting={`${this.props.clientId}`} style={{
+                <div className={`premium-title`} data-setting={`${this.props.clientId}`} style={{
                 textAlign: align,
               }}>
+                <div className={`${style}`}>
                   <h2 className={`premium-title-header premium-title-${style}__wrap ${iconValue?iconPosition:""} ${iconPosition=='top'? `premium-title-${iconAlign}`:""}`}>
                     {
                       iconValue && iconType == 'icon' && style != 'style7' && <i className={`premium-title-icon ${icon}`}/>
@@ -402,18 +622,32 @@ class edit extends Component {
                     {
                       iconValue && iconType == 'image' && image && style != 'style7' && < img className = {`premium-title-icon`} src = {image.url}/>
                     }
-                    {style == 'style7' && iconPosition !='top' &&<span className={`premium-title-style7-stripe__wrap`}>
+                      {style == 'style7' ? !iconValue ?<Fragment> <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
+                        <span className={`premium-title-style7-stripe-span`}></span>
+                        </span>
+                        <span className={`premium-title-text-title`}>{title}</span>
+                        </Fragment>
+                      : iconPosition !='top'? <Fragment><span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                       <span className={`premium-title-style7-stripe-span`}></span>
                       </span>
-                    }
-                    {style == 'style7'?<div className={`premium-title-style7-inner-title`}>
+                    <div className={`premium-title-style7-inner-title`}>
                       {
                         iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`}/>
                       }
                       {
                         iconValue && iconType == 'image' && image && < img className = {`premium-title-icon`} src = {image.url}/>
                       }
-                      {iconPosition =='top' &&<span className={`premium-title-style7-stripe__wrap`}>
+                      <span className={`premium-title-text-title`}>{title}</span>
+                      </div>
+                      </Fragment>
+                      : <div className={`premium-title-style7-inner-title`}>
+                      {
+                        iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`}/>
+                      }
+                      {
+                        iconValue && iconType == 'image' && image && < img className = {`premium-title-icon`} src = {image.url}/>
+                      }
+                      {iconPosition =='top' &&<span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                       <span className={`premium-title-style7-stripe-span`}></span>
                       </span>
                     }
@@ -423,6 +657,7 @@ class edit extends Component {
                     }
                     {link && <a href={`${url}`}></a>}
                   </h2>
+                </div>
                 </div>
             </div>
         ]

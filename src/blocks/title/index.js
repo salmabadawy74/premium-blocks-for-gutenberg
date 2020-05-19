@@ -2,7 +2,7 @@ import {
   title
 } from "../../../assets/js/settings";
 
-// import save from "./save";
+import save from "./save";
 import edit from "./edit";
 import PbgIcon from "../icons";
 
@@ -103,7 +103,7 @@ const titleAttrs = {
   },
   titleWeight: {
     type: "number",
-    default: 500
+    default: 600
   },
   titlefontSize: {
     type: "number",
@@ -139,7 +139,122 @@ const titleAttrs = {
   stripeColor: {
     type: "string",
     default: "#6ec1e4"
-  }
+  },
+  titleborderType: {
+    type: "string",
+    default: "none"
+  },
+  titleborderWidth: {
+    type: "number",
+    default: "1"
+  },
+  titleborderRadius: {
+    type: "number",
+    default: 0
+  },
+  titleborderColor: {
+    type: "string",
+    default: "#d4d4d4"
+  },
+  BGColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  lineColor: {
+    type: "string",
+    default: "#6ec1e4"
+  },
+  triangleColor: {
+    type: "string",
+    default: "#6ec1e4"
+  },
+  stripeAlign:{
+    type: "string",
+    default: "center"
+  },
+  iconColor:{
+    type: "string",
+    default: "#6ec1e4"
+  },
+  iconSize: {
+    type: "number",
+    default: 30
+  },
+  iconSizeType: {
+    type: "string",
+    default: "px"
+  },
+  iconSizeMobile: {
+    type: "number",
+    default: 30
+  },
+  iconSizeTablet: {
+    type: "number",
+    default: 30
+  },
+  iconborderType: {
+    type: "string",
+    default: "none"
+  },
+  iconborderWidth: {
+    type: "number",
+    default: "1"
+  },
+  iconborderRadius: {
+    type: "number",
+    default: 0
+  },
+  iconborderColor: {
+    type: "string",
+    default: "#d4d4d4"
+  },
+  iconshadowColor: {
+    type: "string"
+  },
+  iconshadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  iconshadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  iconshadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  titleMargin: {
+    type: "number",
+    default: "0"
+  },
+  titleMarginType: {
+    type: "string",
+    default: "px"
+  },
+  titleMarginMobile: {
+    type: "number",
+    default: "0"
+  },
+  titleMarginTablet: {
+    type: "number",
+    default: "0"
+  },
+  titlePadding: {
+    type: "number",
+    default: "0"
+  },
+  titlePaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  titlePaddingType: {
+    type: "string",
+    default: "px"
+  },
+  titlePaddingMobile: {
+    type: "number",
+    default: "0"
+  },
 };
 
 registerBlockType("premium/title", {
@@ -150,5 +265,6 @@ registerBlockType("premium/title", {
   supports: {
     inserter: title
   },
-  edit: edit
+  edit: edit,
+  save: save
 });

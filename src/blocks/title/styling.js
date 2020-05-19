@@ -22,7 +22,35 @@ function styling(props) {
         titleshadowColor,
         titleshadowHorizontal,
         titleshadowVertical,
-        stripeColor
+        stripeColor,
+        titleborderType,
+        titleborderRadius,
+        titleborderWidth,
+        titleborderColor,
+        BGColor,
+        lineColor,
+        triangleColor,
+        iconColor,
+        iconSize,
+        iconSizeType,
+        iconSizeTablet,
+        iconSizeMobile,
+        iconborderType,
+        iconborderRadius,
+        iconborderWidth,
+        iconborderColor,
+        iconshadowBlur,
+        iconshadowColor,
+        iconshadowHorizontal,
+        iconshadowVertical,
+        titleMargin,
+        titleMarginType,
+        titleMarginMobile,
+        titleMarginTablet,
+        titlePadding,
+        titlePaddingTablet,
+        titlePaddingType,
+        titlePaddingMobile
     } = props.attributes
 
     var selectors = {}
@@ -46,7 +74,65 @@ function styling(props) {
           "text-transform": titleUpper ? "uppercase" : "none" + "!important",
           "font-style": titleStyle + "!important",
           "font-weight": titleWeight + "!important",
-          "text-shadow": `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`,
+          "text-shadow": `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`
+        },
+        " .premium-title .style1 .premium-title-header": {
+            "border-style": titleborderType,
+            "border-width": generateCSSUnit(titleborderWidth, "px"),
+            "border-color": titleborderColor,
+            "border-radius": generateCSSUnit(titleborderRadius, "px"),
+        },
+        " .premium-title-style2__wrap": {
+          "background-color": BGColor
+        },
+        " .premium-title-style3__wrap":{
+          "background-color": BGColor
+        },
+        " .premium-title .style2": {
+            "border-style": titleborderType,
+            "border-width": generateCSSUnit(titleborderWidth, "px"),
+            "border-color": titleborderColor,
+            "border-radius": generateCSSUnit(titleborderRadius, "px"),
+        },
+        " .premium-title .style4": {
+            "border-style": titleborderType,
+            "border-width": generateCSSUnit(titleborderWidth, "px"),
+            "border-color": titleborderColor,
+            "border-radius": generateCSSUnit(titleborderRadius, "px"),
+        },
+        " .premium-title .style5": {
+            "border-style": titleborderType,
+            "border-width": generateCSSUnit(titleborderWidth, "px"),
+            "border-color": titleborderColor,
+            "border-radius": generateCSSUnit(titleborderRadius, "px"),
+        },
+        " .premium-title .style6": {
+            "border-style": titleborderType,
+            "border-width": generateCSSUnit(titleborderWidth, "px"),
+            "border-color": titleborderColor,
+            "border-radius": generateCSSUnit(titleborderRadius, "px"),
+        },
+        " .premium-title-style5__wrap": {
+            "border-bottom": `2px solid ${lineColor}`
+        },
+        " .premium-title-style6__wrap": {
+            "border-bottom": `2px solid ${lineColor}`
+        },
+        " .premium-title-style6__wrap:before": {
+            "border-bottom-color": triangleColor
+        },
+        " .premium-title-icon":{
+            "color": iconColor,
+            "font-size": generateCSSUnit(iconSize, iconSizeType),
+            "border-style": iconborderType,
+            "border-width": generateCSSUnit(iconborderWidth, "px"),
+            "border-color": iconborderColor,
+            "border-radius": generateCSSUnit(iconborderRadius, "px"),
+            "text-shadow": `${iconshadowHorizontal}px ${iconshadowVertical}px ${iconshadowBlur}px ${iconshadowColor}`
+        },
+        " .premium-title-text-title":{
+            "margin": generateCSSUnit(titleMargin, titleMarginType),
+            "padding": generateCSSUnit(titlePadding, titlePaddingType),
         }
     }
 
@@ -54,12 +140,26 @@ function styling(props) {
         " .premium-title-header": {
             "font-size": generateCSSUnit(titlefontSizeMobile, titlefontSizeType)
         },
+        " .premium-title-icon": {
+            "font-size": generateCSSUnit(iconSizeMobile, iconSizeType),
+        },
+        " .premium-title-text-title": {
+            "margin": generateCSSUnit(titleMarginMobile, titleMarginType),
+            "padding": generateCSSUnit(titlePaddingMobile, titlePaddingType),
+        }
     }
 
     tablet_selectors = {
         " .premium-title-header": {
             "font-size": generateCSSUnit(titlefontSizeTablet, titlefontSizeType)
         },
+        " .premium-title-icon": {
+            "font-size": generateCSSUnit(iconSizeTablet, iconSizeType),
+        },
+        " .premium-title-text-title": {
+            "margin": generateCSSUnit(titleMarginTablet, titleMarginType),
+            "padding": generateCSSUnit(titlePaddingTablet, titlePaddingType),
+        }
     }
 
     var styling_css = ""
