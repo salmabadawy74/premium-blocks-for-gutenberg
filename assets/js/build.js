@@ -832,6 +832,49 @@ function PremiumTextShadow(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumSizeUnits;
+var _wp$components = wp.components,
+    ButtonGroup = _wp$components.ButtonGroup,
+    Button = _wp$components.Button;
+
+
+function PremiumSizeUnits(props) {
+  var units = props.units,
+      _props$onChangeSizeUn = props.onChangeSizeUnit,
+      onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
+
+
+  var sizeUnits = ["px", "em", "%"];
+
+  if (undefined !== units) {
+    sizeUnits = units;
+  }
+
+  return wp.element.createElement(
+    ButtonGroup,
+    { className: "premium-unit-control" },
+    sizeUnits.map(function (unit, index) {
+      return wp.element.createElement(
+        Button,
+        {
+          isSmall: true,
+          isDefault: true,
+          className: "premium-unit-control-btn",
+          onClick: function onClick() {
+            return onChangeSizeUnit(unit);
+          }
+        },
+        unit
+      );
+    })
+  );
+}
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumBoxShadow;
 var __ = wp.i18n.__;
 var _wp$components = wp.components,
@@ -955,49 +998,6 @@ function PremiumBoxShadow(props) {
 }
 
 /***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumSizeUnits;
-var _wp$components = wp.components,
-    ButtonGroup = _wp$components.ButtonGroup,
-    Button = _wp$components.Button;
-
-
-function PremiumSizeUnits(props) {
-  var units = props.units,
-      _props$onChangeSizeUn = props.onChangeSizeUnit,
-      onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
-
-
-  var sizeUnits = ["px", "em", "%"];
-
-  if (undefined !== units) {
-    sizeUnits = units;
-  }
-
-  return wp.element.createElement(
-    ButtonGroup,
-    { className: "premium-unit-control" },
-    sizeUnits.map(function (unit, index) {
-      return wp.element.createElement(
-        Button,
-        {
-          isSmall: true,
-          isDefault: true,
-          className: "premium-unit-control-btn",
-          onClick: function onClick() {
-            return onChangeSizeUnit(unit);
-          }
-        },
-        unit
-      );
-    })
-  );
-}
-
-/***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1089,7 +1089,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumPadding;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(7);
 
 
 var __ = wp.i18n.__;
@@ -2759,7 +2759,7 @@ module.exports = toKey;
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumMargin;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(7);
 
 
 var __ = wp.i18n.__;
@@ -11710,7 +11710,7 @@ registerBlockType("premium/banner", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(13);
 
@@ -13862,8 +13862,8 @@ registerBlockType("premium/button", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(15);
 
 
@@ -15383,7 +15383,7 @@ registerBlockType("premium/countup", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(15);
@@ -20337,11 +20337,11 @@ registerBlockType("premium/icon", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(16);
 
@@ -33959,9 +33959,9 @@ registerBlockType("premium/icon-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(15);
 
 
@@ -39019,9 +39019,9 @@ registerBlockType("premium/pricing-table", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(7);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -42645,9 +42645,9 @@ registerBlockType("premium/container", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(7);
 
 
 
@@ -43859,7 +43859,7 @@ registerBlockType("premium/testimonial", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_default_image__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(13);
 
@@ -45689,7 +45689,7 @@ var deprecatedContent = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(15);
@@ -48276,7 +48276,7 @@ var save = function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_times__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_times___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_lodash_times__);
@@ -52083,7 +52083,7 @@ function styling(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_responsive__ = __webpack_require__(27);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -54221,7 +54221,7 @@ function styling(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_responsive__ = __webpack_require__(27);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -56229,7 +56229,7 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(39);
@@ -60228,8 +60228,8 @@ function styling(props) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(281);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(280);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
 
 
@@ -60481,6 +60481,41 @@ var titleAttrs = {
   titlePaddingMobile: {
     type: "number",
     default: "0"
+  },
+  iconBGColor: {
+    type: "string"
+  },
+  iconPadding: {
+    type: "number",
+    default: "0"
+  },
+  iconPaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  iconPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  iconPaddingMobile: {
+    type: "number",
+    default: "0"
+  },
+  iconSpacing: {
+    type: "number",
+    default: "10"
+  },
+  iconSpacingTablet: {
+    type: "number",
+    default: "10"
+  },
+  iconSpacingType: {
+    type: "string",
+    default: "px"
+  },
+  iconSpacingMobile: {
+    type: "number",
+    default: "10"
   }
 };
 
@@ -60501,9 +60536,121 @@ registerBlockType("premium/title", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = save;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(280);
+
+
+var Fragment = wp.element.Fragment;
+
+
+function save(props) {
+  var attributes = props.attributes,
+      className = props.className;
+  var block_id = attributes.block_id,
+      align = attributes.align,
+      style = attributes.style,
+      title = attributes.title,
+      iconValue = attributes.iconValue,
+      iconType = attributes.iconType,
+      icon = attributes.icon,
+      iconPosition = attributes.iconPosition,
+      image = attributes.image,
+      link = attributes.link,
+      url = attributes.url,
+      iconAlign = attributes.iconAlign,
+      stripePosition = attributes.stripePosition,
+      stripeAlign = attributes.stripeAlign;
+
+  console.log(image);
+
+  return wp.element.createElement(
+    "div",
+    { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id),
+      style: {
+        textAlign: align
+      } },
+    wp.element.createElement(
+      "div",
+      { className: "premium-title", style: {
+          textAlign: align
+        } },
+      wp.element.createElement(
+        "div",
+        { className: "" + style },
+        wp.element.createElement(
+          "h2",
+          { className: "premium-title-header premium-title-" + style + "__wrap " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : "") },
+          iconValue && iconType == 'icon' && style != 'style7' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
+          iconValue && iconType == 'image' && image && style != 'style7' && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
+          style == 'style7' ? !iconValue ? wp.element.createElement(
+            Fragment,
+            null,
+            " ",
+            wp.element.createElement(
+              "span",
+              { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
+              wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
+            ),
+            wp.element.createElement(
+              "span",
+              { className: "premium-title-text-title" },
+              title
+            )
+          ) : iconPosition != 'top' ? wp.element.createElement(
+            Fragment,
+            null,
+            wp.element.createElement(
+              "span",
+              { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
+              wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
+            ),
+            wp.element.createElement(
+              "div",
+              { className: "premium-title-style7-inner-title" },
+              iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
+              iconValue && iconType == 'image' && image && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
+              wp.element.createElement(
+                "span",
+                { className: "premium-title-text-title" },
+                title
+              )
+            )
+          ) : wp.element.createElement(
+            "div",
+            { className: "premium-title-style7-inner-title" },
+            iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
+            iconValue && iconType == 'image' && image && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
+            iconPosition == 'top' && wp.element.createElement(
+              "span",
+              { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
+              wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
+            ),
+            wp.element.createElement(
+              "span",
+              { className: "premium-title-text-title" },
+              title
+            )
+          ) : wp.element.createElement(
+            "span",
+            { className: "premium-title-text-title" },
+            title
+          ),
+          link && wp.element.createElement("a", { href: "" + url })
+        )
+      )
+    )
+  );
+}
+
+/***/ }),
+/* 280 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(24);
@@ -60633,7 +60780,16 @@ var edit = function (_Component) {
                 titlePadding = attributes.titlePadding,
                 titlePaddingTablet = attributes.titlePaddingTablet,
                 titlePaddingType = attributes.titlePaddingType,
-                titlePaddingMobile = attributes.titlePaddingMobile;
+                titlePaddingMobile = attributes.titlePaddingMobile,
+                iconBGColor = attributes.iconBGColor,
+                iconPadding = attributes.iconPadding,
+                iconPaddingType = attributes.iconPaddingType,
+                iconPaddingMobile = attributes.iconPaddingMobile,
+                iconPaddingTablet = attributes.iconPaddingTablet,
+                iconSpacing = attributes.iconSpacing,
+                iconSpacingType = attributes.iconSpacingType,
+                iconSpacingMobile = attributes.iconSpacingMobile,
+                iconSpacingTablet = attributes.iconSpacingTablet;
 
 
             var STYLE = [{
@@ -61186,6 +61342,20 @@ var edit = function (_Component) {
                         min: 1,
                         max: 100
                     }),
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("Background Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: iconBGColor,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({
+                                iconBGColor: newValue
+                            });
+                        },
+                        allowReset: true
+                    }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
                         borderType: iconborderType,
                         borderWidth: iconborderWidth,
@@ -61223,6 +61393,26 @@ var edit = function (_Component) {
                             return setAttributes({ iconshadowVertical: newValue });
                         },
                         onResetClick: onResetClickIconTextShadow
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+                        setAttributes: setAttributes,
+                        rangeType: { value: iconPaddingType, label: __("iconPaddingType") },
+                        range: { value: iconPadding, label: __("iconPadding") },
+                        rangeMobile: { value: iconPaddingMobile, label: __("iconPaddingMobile") },
+                        rangeTablet: { value: iconPaddingTablet, label: __("iconPaddingTablet") },
+                        rangeLabel: __("Padding"),
+                        min: 1,
+                        max: 100
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+                        setAttributes: setAttributes,
+                        rangeType: { value: iconSpacingType, label: __("iconSpacingType") },
+                        range: { value: iconSpacing, label: __("iconSpacing") },
+                        rangeMobile: { value: iconSpacingMobile, label: __("iconSpacingMobile") },
+                        rangeTablet: { value: iconSpacingTablet, label: __("iconSpacingTablet") },
+                        rangeLabel: __("Spacing"),
+                        min: 1,
+                        max: 100
                     })
                 )
             ), wp.element.createElement(
@@ -61310,7 +61500,7 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61367,7 +61557,16 @@ function styling(props) {
         titlePadding = _props$attributes.titlePadding,
         titlePaddingTablet = _props$attributes.titlePaddingTablet,
         titlePaddingType = _props$attributes.titlePaddingType,
-        titlePaddingMobile = _props$attributes.titlePaddingMobile;
+        titlePaddingMobile = _props$attributes.titlePaddingMobile,
+        iconBGColor = _props$attributes.iconBGColor,
+        iconPadding = _props$attributes.iconPadding,
+        iconPaddingType = _props$attributes.iconPaddingType,
+        iconPaddingMobile = _props$attributes.iconPaddingMobile,
+        iconPaddingTablet = _props$attributes.iconPaddingTablet,
+        iconSpacing = _props$attributes.iconSpacing,
+        iconSpacingType = _props$attributes.iconSpacingType,
+        iconSpacingMobile = _props$attributes.iconSpacingMobile,
+        iconSpacingTablet = _props$attributes.iconSpacingTablet;
 
 
     var selectors = {};
@@ -61445,7 +61644,10 @@ function styling(props) {
             "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconborderWidth, "px"),
             "border-color": iconborderColor,
             "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconborderRadius, "px"),
-            "text-shadow": iconshadowHorizontal + 'px ' + iconshadowVertical + 'px ' + iconshadowBlur + 'px ' + iconshadowColor
+            "text-shadow": iconshadowHorizontal + 'px ' + iconshadowVertical + 'px ' + iconshadowBlur + 'px ' + iconshadowColor,
+            "background-color": iconBGColor,
+            "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPadding, iconPaddingType),
+            "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacing, iconSpacingType)
         },
         " .premium-title-text-title": {
             "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMargin, titleMarginType),
@@ -61458,7 +61660,9 @@ function styling(props) {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeMobile, titlefontSizeType)
         },
         " .premium-title-icon": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeMobile, iconSizeType)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeMobile, iconSizeType),
+            "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingMobile, iconPaddingType),
+            "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingMobile, iconSpacingType)
         },
         " .premium-title-text-title": {
             "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginMobile, titleMarginType),
@@ -61471,7 +61675,9 @@ function styling(props) {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeTablet, titlefontSizeType)
         },
         " .premium-title-icon": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeTablet, iconSizeType)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeTablet, iconSizeType),
+            "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingTablet, iconPaddingType),
+            "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingTablet, iconSpacingType)
         },
         " .premium-title-text-title": {
             "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginTablet, titleMarginType),
@@ -61494,114 +61700,6 @@ function styling(props) {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (styling);
-
-/***/ }),
-/* 281 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = save;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-
-
-function save(props) {
-  var attributes = props.attributes,
-      className = props.className;
-  var block_id = attributes.block_id,
-      align = attributes.align,
-      style = attributes.style,
-      title = attributes.title,
-      iconValue = attributes.iconValue,
-      iconType = attributes.iconType,
-      icon = attributes.icon,
-      iconPosition = attributes.iconPosition,
-      image = attributes.image,
-      link = attributes.link,
-      url = attributes.url,
-      iconAlign = attributes.iconAlign,
-      stripePosition = attributes.stripePosition,
-      stripeAlign = attributes.stripeAlign;
-
-
-  return wp.element.createElement(
-    "div",
-    { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id),
-      style: {
-        textAlign: align
-      } },
-    wp.element.createElement(
-      "div",
-      { className: "premium-title", style: {
-          textAlign: align
-        } },
-      wp.element.createElement(
-        "div",
-        { className: "" + style },
-        wp.element.createElement(
-          "h2",
-          { className: "premium-title-header premium-title-" + style + "__wrap " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : "") },
-          iconValue && iconType == 'icon' && style != 'style7' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
-          iconValue && iconType == 'image' && image && style != 'style7' && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
-          style == 'style7' ? !iconValue ? wp.element.createElement(
-            Fragment,
-            null,
-            " ",
-            wp.element.createElement(
-              "span",
-              { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
-              wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
-            ),
-            wp.element.createElement(
-              "span",
-              { className: "premium-title-text-title" },
-              title
-            )
-          ) : iconPosition != 'top' ? wp.element.createElement(
-            Fragment,
-            null,
-            wp.element.createElement(
-              "span",
-              { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
-              wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
-            ),
-            wp.element.createElement(
-              "div",
-              { className: "premium-title-style7-inner-title" },
-              iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
-              iconValue && iconType == 'image' && image && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
-              wp.element.createElement(
-                "span",
-                { className: "premium-title-text-title" },
-                title
-              )
-            )
-          ) : wp.element.createElement(
-            "div",
-            { className: "premium-title-style7-inner-title" },
-            iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
-            iconValue && iconType == 'image' && image && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
-            iconPosition == 'top' && wp.element.createElement(
-              "span",
-              { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
-              wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
-            ),
-            wp.element.createElement(
-              "span",
-              { className: "premium-title-text-title" },
-              title
-            )
-          ) : wp.element.createElement(
-            "span",
-            { className: "premium-title-text-title" },
-            title
-          ),
-          link && wp.element.createElement("a", { href: "" + url })
-        )
-      )
-    )
-  );
-}
 
 /***/ })
 /******/ ]);

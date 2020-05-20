@@ -255,6 +255,41 @@ const titleAttrs = {
     type: "number",
     default: "0"
   },
+  iconBGColor:{
+    type: "string"
+  },
+  iconPadding: {
+    type: "number",
+    default: "0"
+  },
+  iconPaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  iconPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  iconPaddingMobile: {
+    type: "number",
+    default: "0"
+  },
+  iconSpacing: {
+    type: "number",
+    default: "10"
+  },
+  iconSpacingTablet: {
+    type: "number",
+    default: "10"
+  },
+  iconSpacingType: {
+    type: "string",
+    default: "px"
+  },
+  iconSpacingMobile: {
+    type: "number",
+    default: "10"
+  },
 };
 
 registerBlockType("premium/title", {

@@ -50,7 +50,16 @@ function styling(props) {
         titlePadding,
         titlePaddingTablet,
         titlePaddingType,
-        titlePaddingMobile
+        titlePaddingMobile,
+        iconBGColor,
+        iconPadding,
+        iconPaddingType,
+        iconPaddingMobile,
+        iconPaddingTablet,
+        iconSpacing,
+        iconSpacingType,
+        iconSpacingMobile,
+        iconSpacingTablet
     } = props.attributes
 
     var selectors = {}
@@ -128,7 +137,10 @@ function styling(props) {
             "border-width": generateCSSUnit(iconborderWidth, "px"),
             "border-color": iconborderColor,
             "border-radius": generateCSSUnit(iconborderRadius, "px"),
-            "text-shadow": `${iconshadowHorizontal}px ${iconshadowVertical}px ${iconshadowBlur}px ${iconshadowColor}`
+            "text-shadow": `${iconshadowHorizontal}px ${iconshadowVertical}px ${iconshadowBlur}px ${iconshadowColor}`,
+            "background-color": iconBGColor,
+            "padding": generateCSSUnit(iconPadding, iconPaddingType),
+            "margin": generateCSSUnit(iconSpacing, iconSpacingType)
         },
         " .premium-title-text-title":{
             "margin": generateCSSUnit(titleMargin, titleMarginType),
@@ -142,6 +154,8 @@ function styling(props) {
         },
         " .premium-title-icon": {
             "font-size": generateCSSUnit(iconSizeMobile, iconSizeType),
+            "padding": generateCSSUnit(iconPaddingMobile, iconPaddingType),
+            "margin": generateCSSUnit(iconSpacingMobile, iconSpacingType)
         },
         " .premium-title-text-title": {
             "margin": generateCSSUnit(titleMarginMobile, titleMarginType),
@@ -155,6 +169,8 @@ function styling(props) {
         },
         " .premium-title-icon": {
             "font-size": generateCSSUnit(iconSizeTablet, iconSizeType),
+            "padding": generateCSSUnit(iconPaddingTablet, iconPaddingType),
+            "margin": generateCSSUnit(iconSpacingTablet, iconSpacingType)
         },
         " .premium-title-text-title": {
             "margin": generateCSSUnit(titleMarginTablet, titleMarginType),

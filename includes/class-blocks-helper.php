@@ -173,15 +173,17 @@ class Premium_Blocks_Integration {
 
         $is_persons_enabled = self::$blocks['persons'];
 
-		$is_icon_list_enabled = self::$blocks['iconList'];
-		
-		$is_content_switcher_enabled = self::$blocks['contentSwitcher'];
-		
-		$is_progress_bar_enabled = self::$blocks['progressBar'];
+				$is_icon_list_enabled = self::$blocks['iconList'];
 				
-		$is_tab_enabled = self::$blocks['tab'];
+				$is_content_switcher_enabled = self::$blocks['contentSwitcher'];
+				
+				$is_progress_bar_enabled = self::$blocks['progressBar'];
+						
+				$is_tab_enabled = self::$blocks['tab'];
 		
-        $is_fancy_text_enabled = self::$blocks['fancyText'];
+				$is_fancy_text_enabled = self::$blocks['fancyText'];
+				
+        $is_title_enabled = self::$blocks['title'];
 
         
         wp_enqueue_style(
@@ -325,6 +327,15 @@ class Premium_Blocks_Integration {
 			wp_enqueue_script(
             'tab-js',
             PREMIUM_BLOCKS_URL . 'assets/js/tab.js',
+            array('jquery'),
+            PREMIUM_BLOCKS_VERSION
+      		);
+		}
+
+		if( $is_title_enabled) {
+			wp_enqueue_script(
+            'title-js',
+            PREMIUM_BLOCKS_URL . 'assets/js/title.js',
             array('jquery'),
             PREMIUM_BLOCKS_VERSION
       		);
@@ -581,20 +592,23 @@ class Premium_Blocks_Integration {
 
             switch ( $name ) {
                 case 'premium/icon-list':
-                    $css += $this->get_icon_list_css( $blockattr, $block_id );
-					break;
-				case 'premium/content-switcher':
-					$css += $this->get_content_switcher_css( $blockattr, $block_id );
-					break;
-				case 'premium/progress-bar':
-					$css += $this->get_progress_bar_css( $blockattr, $block_id );
-					break;
-				case 'premium/tab':
-					$css += $this->get_tab_css( $blockattr, $block_id );
-					break;
-				case 'premium/fancy-text':
-					$css += $this->get_fancy_text_css( $blockattr, $block_id );
-					break;
+                  $css += $this->get_icon_list_css( $blockattr, $block_id );
+									break;
+								case 'premium/content-switcher':
+									$css += $this->get_content_switcher_css( $blockattr, $block_id );
+									break;
+								case 'premium/progress-bar':
+									$css += $this->get_progress_bar_css( $blockattr, $block_id );
+									break;
+								case 'premium/tab':
+									$css += $this->get_tab_css( $blockattr, $block_id );
+									break;
+								case 'premium/fancy-text':
+									$css += $this->get_fancy_text_css( $blockattr, $block_id );
+									break;
+								case 'premium/title':
+									$css += $this->get_title_css( $blockattr, $block_id );
+									break;
                 default:
                     // Nothing to do here.
                     break;
@@ -1456,6 +1470,151 @@ class Premium_Blocks_Integration {
 			// @codingStandardsIgnoreEnd
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-fancy-text-';
+
+        $desktop = self::generate_css( $selectors, $base_selector . $id );
+
+				$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+        $mobile = self::generate_css( $m_selectors, $base_selector . $id );
+            
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => $tablet,
+				'mobile'  => $mobile,
+			);
+            
+            return $generated_css;
+		}
+
+		public static function get_title_css ( $attr, $id ){
+			$defaults = self::$block_list['premium/title']['attributes'];
+            
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors = array(
+				// Desktop Icon Size CSS starts.
+				" .premium-title-style7-stripe__wrap" => array(
+					"margin-top" =>  self::get_css_value($attr['stripeTopSpacing'] , 'px'),
+					"margin-bottom" =>  self::get_css_value($attr['stripeBottomSpacing'] , 'px')
+				),
+				" .premium-title-style7-stripe-span" => array(
+					"width" =>  self::get_css_value($attr['stripeWidth'] , 'px'),
+					"height" =>  self::get_css_value($attr['stripeHeight'] , 'px'),
+					"background-color" => $attr['stripeColor']
+				),
+				" .premium-title-header" => array(
+					"font-size" =>  self::get_css_value($attr['titlefontSize'] , $attr['titlefontSizeType'] ),
+					"color" => self::get_css_value($attr['titleColor'], '!important') ,
+					"letter-spacing" => self::get_css_value($attr['titleLetter'] , 'px') ,
+					"text-transform" => $attr['titleUpper'] ? "uppercase" : "none" ,
+					"font-style" => self::get_css_value($attr['titleStyle'], " !important") ,
+					"font-weight" => self::get_css_value($attr['titleWeight'], " !important") ,
+					"text-shadow" => self::get_css_value($attr['titleshadowHorizontal'],'px ') .self::get_css_value($attr['titleshadowVertical'],'px ') . self::get_css_value($attr['titleshadowBlur'], 'px ') . $attr['titleshadowColor']
+				),
+				" .premium-title .style1 .premium-title-header" => array(
+					"border-width" => self::get_css_value($attr['titleborderWidth'], 'px'),
+					"border-color" => $attr['titleborderColor'],
+					"border-style" => $attr['titleborderType'],
+					"border-radius" => self::get_css_value($attr['titleborderRadius'], 'px')
+				),
+				" .premium-title-style2__wrap" => array(
+					"background-color" => $attr['BGColor']
+				),
+				" .premium-title-style3__wrap" => array(
+					"background-color" => $attr['BGColor']
+				),
+				" .premium-title .style2" => array(
+					"border-width" => self::get_css_value($attr['titleborderWidth'], 'px'),
+					"border-color" => $attr['titleborderColor'],
+					"border-style" => $attr['titleborderType'],
+					"border-radius" => self::get_css_value($attr['titleborderRadius'], 'px')
+				),
+				" .premium-title .style4" => array(
+					"border-width" => self::get_css_value($attr['titleborderWidth'], 'px'),
+					"border-color" => $attr['titleborderColor'],
+					"border-style" => $attr['titleborderType'],
+					"border-radius" => self::get_css_value($attr['titleborderRadius'], 'px')
+				),
+				" .premium-title .style5" => array(
+					"border-width" => self::get_css_value($attr['titleborderWidth'], 'px'),
+					"border-color" => $attr['titleborderColor'],
+					"border-style" => $attr['titleborderType'],
+					"border-radius" => self::get_css_value($attr['titleborderRadius'], 'px')
+				),
+				" .premium-title .style6" => array(
+					"border-width" => self::get_css_value($attr['titleborderWidth'], 'px'),
+					"border-color" => $attr['titleborderColor'],
+					"border-style" => $attr['titleborderType'],
+					"border-radius" => self::get_css_value($attr['titleborderRadius'], 'px')
+				),
+				" .premium-title-style5__wrap" => array(
+					"border-bottom" => '2px solid ' . $attr['lineColor']
+				),
+				" .premium-title-style6__wrap" => array(
+					"border-bottom" => '2px solid ' . $attr['lineColor']
+				),
+				" .premium-title-style6__wrap:before" => array(
+					"border-bottom-color" => $attr['triangleColor']
+				),
+				" .premium-title-icon" => array(
+					"font-size" =>  self::get_css_value($attr['iconSize'] , $attr['iconSizeType'] ),
+					"color" => $attr['iconColor'],
+					"background-color" => $attr['iconBGColor'],
+					"border-width" => self::get_css_value($attr['iconborderWidth'], 'px'),
+					"border-color" => $attr['iconborderColor'],
+					"border-style" => $attr['iconborderType'],
+					"border-radius" => self::get_css_value($attr['iconborderRadius'], 'px'),
+					"text-shadow" => self::get_css_value($attr['iconshadowHorizontal'],'px ') .self::get_css_value($attr['iconshadowVertical'],'px ') . self::get_css_value($attr['iconshadowBlur'], 'px ') . $attr['iconshadowColor'],
+					"padding" => self::get_css_value($attr['iconPadding'], $attr['iconPaddingType']),
+					"margin" => self::get_css_value($attr['iconSpacing'], $attr['iconSpacingType'])
+				),
+				" .premium-title-text-title" => array(
+					"padding" => self::get_css_value($attr['titlePadding'], $attr['titlePaddingType']),
+					"margin" => self::get_css_value($attr['titleMargin'], $attr['titleMarginType'])
+				),
+      );
+            // Desktop Icon Size CSS ends.
+
+			// Mobile Icon Size CSS starts.
+			$m_selectors = array(
+				" premium-title-header"  => array(
+					"font-size" => self::get_css_value($attr['titlefontSizeMobile'], $attr['titlefontSizeType']) . "!important"
+				),
+				" .premium-title-icon"  => array(
+					"font-size" => self::get_css_value($attr['iconSizeMobile'], $attr['iconSizeType']) . "!important",
+					"margin" => self::get_css_value($attr['iconSpacingMobile'], $attr['iconSpacingType']) . "!important",
+					"padding" => self::get_css_value($attr['iconPaddingMobile'], $attr['iconPaddingType']) . "!important"
+				),
+				" .premium-title-text-title"  => array(
+					"margin" => self::get_css_value($attr['titleMarginMobile'], $attr['titleMarginType']) . "!important",
+					"padding" => self::get_css_value($attr['titlePaddingMobile'], $attr['titlePaddingType']) . "!important"
+				),
+			);
+			// Mobile Icon Size CSS ends.
+
+			// Tablet Icon Size CSS starts.
+			$t_selectors = array(
+				" .premium-title-header"  => array(
+					"font-size" => self::get_css_value($attr['titlefontSizeTablet'], $attr['titlefontSizeType']) . "!important"
+				),
+				" .premium-title-icon"  => array(
+					"font-size" => self::get_css_value($attr['iconSizeTablet'], $attr['iconSizeType']) . "!important",
+					"margin" => self::get_css_value($attr['iconSpacingTablet'], $attr['iconSpacingType']) . "!important",
+					"padding" => self::get_css_value($attr['iconPaddingTablet'], $attr['iconPaddingType']) . "!important"
+				),
+				" .premium-title-text-title"  => array(
+					"margin" => self::get_css_value($attr['titleMarginTablet'], $attr['titleMarginType']) . "!important",
+					"padding" => self::get_css_value($attr['titlePaddingTablet'], $attr['titlePaddingType']) . "!important"
+				),
+			);
+			// Tablet Icon Size CSS ends.
+
+			// @codingStandardsIgnoreEnd
+
+			$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-title-';
 
         $desktop = self::generate_css( $selectors, $base_selector . $id );
 

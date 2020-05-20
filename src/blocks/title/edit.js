@@ -110,7 +110,16 @@ class edit extends Component {
             titlePadding,
             titlePaddingTablet,
             titlePaddingType,
-            titlePaddingMobile
+            titlePaddingMobile,
+            iconBGColor,
+            iconPadding,
+            iconPaddingType,
+            iconPaddingMobile,
+            iconPaddingTablet,
+            iconSpacing,
+            iconSpacingType,
+            iconSpacingMobile,
+            iconSpacingTablet
         } = attributes
 
         const STYLE = [{
@@ -569,6 +578,16 @@ class edit extends Component {
                             min={1}
                             max={100}
                         />
+                        <p>{__("Background Color")}</p>
+                        <ColorPalette
+                            value={iconBGColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                    iconBGColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
                         <PremiumBorder
                             borderType={iconborderType}
                             borderWidth={iconborderWidth}
@@ -601,6 +620,26 @@ class edit extends Component {
                             }
                             onResetClick={onResetClickIconTextShadow}
                         />}
+                        <PremiumRangeResponsive
+                          setAttributes={setAttributes}
+                          rangeType={{ value: iconPaddingType, label: __("iconPaddingType") }}
+                          range={{ value: iconPadding, label: __("iconPadding") }}
+                          rangeMobile={{ value: iconPaddingMobile, label: __("iconPaddingMobile") }}
+                          rangeTablet={{ value: iconPaddingTablet, label: __("iconPaddingTablet") }}
+                          rangeLabel={__("Padding")}
+                          min={1}
+                          max={100}
+                        />
+                        <PremiumRangeResponsive
+                          setAttributes={setAttributes}
+                          rangeType={{ value: iconSpacingType, label: __("iconSpacingType") }}
+                          range={{ value: iconSpacing, label: __("iconSpacing") }}
+                          rangeMobile={{ value: iconSpacingMobile, label: __("iconSpacingMobile") }}
+                          rangeTablet={{ value: iconSpacingTablet, label: __("iconSpacingTablet") }}
+                          rangeLabel={__("Spacing")}
+                          min={1}
+                          max={100}
+                        />
                       </PanelBody>
                     }
                 </InspectorControls>

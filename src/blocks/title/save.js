@@ -1,5 +1,8 @@
 import classnames from "classnames"
 
+const {
+  Fragment
+} = wp.element;
 
 export default function save(props) {
 
@@ -21,6 +24,8 @@ export default function save(props) {
         stripePosition,
         stripeAlign,
     } = attributes
+    console.log(image);
+    
 
     return (
         <div className={classnames(
