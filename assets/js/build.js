@@ -60277,9 +60277,6 @@ var titleAttrs = {
     type: "string",
     default: "before"
   },
-  image: {
-    type: "string"
-  },
   imageID: {
     type: "number"
   },
@@ -60564,7 +60561,6 @@ function save(props) {
       iconType = attributes.iconType,
       icon = attributes.icon,
       iconPosition = attributes.iconPosition,
-      image = attributes.image,
       imageURL = attributes.imageURL,
       link = attributes.link,
       url = attributes.url,
@@ -60572,7 +60568,6 @@ function save(props) {
       stripePosition = attributes.stripePosition,
       stripeAlign = attributes.stripeAlign;
 
-  console.log(image);
 
   return wp.element.createElement(
     "div",

@@ -17,7 +17,6 @@ export default function save(props) {
         iconType,
         icon,
         iconPosition,
-        image,
         imageURL,
         link,
         url,
@@ -25,7 +24,6 @@ export default function save(props) {
         stripePosition,
         stripeAlign,
     } = attributes
-    console.log(image);
     
 
     return (

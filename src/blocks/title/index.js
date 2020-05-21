@@ -50,9 +50,6 @@ const titleAttrs = {
     type: "string",
     default: "before"
   },
-  image: {
-    type: "string"
-  },
   imageID: {
     type: "number"
   },
