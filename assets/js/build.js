@@ -60591,26 +60591,15 @@ function save(props) {
         wp.element.createElement(
           "h2",
           { className: "premium-title-header premium-title-" + style + "__wrap " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : "") },
-          iconValue && iconType == 'icon' && style != 'style7' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
-          iconValue && iconType == 'image' && style != 'style7' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
-          style == 'style7' ? !iconValue ? wp.element.createElement(
+          style === 'style7' ? wp.element.createElement(
             Fragment,
             null,
-            " ",
-            wp.element.createElement(
+            iconPosition != 'top' && iconValue && wp.element.createElement(
               "span",
               { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
               wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
             ),
-            wp.element.createElement(
-              "span",
-              { className: "premium-title-text-title" },
-              title
-            )
-          ) : iconPosition != 'top' ? wp.element.createElement(
-            Fragment,
-            null,
-            wp.element.createElement(
+            !iconValue && wp.element.createElement(
               "span",
               { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
               wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
@@ -60620,6 +60609,11 @@ function save(props) {
               { className: "premium-title-style7-inner-title" },
               iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
               iconValue && iconType == 'image' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
+              iconPosition === 'top' && wp.element.createElement(
+                "span",
+                { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
+                wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
+              ),
               wp.element.createElement(
                 "span",
                 { className: "premium-title-text-title" },
@@ -60627,24 +60621,15 @@ function save(props) {
               )
             )
           ) : wp.element.createElement(
-            "div",
-            { className: "premium-title-style7-inner-title" },
+            Fragment,
+            null,
             iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
             iconValue && iconType == 'image' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
-            iconPosition == 'top' && wp.element.createElement(
-              "span",
-              { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
-              wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
-            ),
             wp.element.createElement(
               "span",
               { className: "premium-title-text-title" },
               title
             )
-          ) : wp.element.createElement(
-            "span",
-            { className: "premium-title-text-title" },
-            title
           ),
           link && wp.element.createElement("a", { href: "" + url })
         )
@@ -60739,7 +60724,6 @@ var edit = function (_Component) {
                 iconType = attributes.iconType,
                 icon = attributes.icon,
                 iconPosition = attributes.iconPosition,
-                image = attributes.image,
                 imageURL = attributes.imageURL,
                 imageID = attributes.imageID,
                 link = attributes.link,
@@ -61434,7 +61418,7 @@ var edit = function (_Component) {
                     } },
                 wp.element.createElement(
                     "div",
-                    { className: "premium-title", "data-setting": "" + this.props.clientId, style: {
+                    { className: "premium-title", style: {
                             textAlign: align
                         } },
                     wp.element.createElement(
@@ -61443,26 +61427,15 @@ var edit = function (_Component) {
                         wp.element.createElement(
                             "h2",
                             { className: "premium-title-header premium-title-" + style + "__wrap " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : "") },
-                            iconValue && iconType == 'icon' && style != 'style7' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
-                            iconValue && iconType == 'image' && style != 'style7' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
-                            style == 'style7' ? !iconValue ? wp.element.createElement(
+                            style === 'style7' ? wp.element.createElement(
                                 Fragment,
                                 null,
-                                " ",
-                                wp.element.createElement(
+                                iconPosition != 'top' && iconValue && wp.element.createElement(
                                     "span",
                                     { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
                                     wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
                                 ),
-                                wp.element.createElement(
-                                    "span",
-                                    { className: "premium-title-text-title" },
-                                    title
-                                )
-                            ) : iconPosition != 'top' ? wp.element.createElement(
-                                Fragment,
-                                null,
-                                wp.element.createElement(
+                                !iconValue && wp.element.createElement(
                                     "span",
                                     { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
                                     wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
@@ -61472,6 +61445,11 @@ var edit = function (_Component) {
                                     { className: "premium-title-style7-inner-title" },
                                     iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
                                     iconValue && iconType == 'image' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
+                                    iconValue && iconPosition === 'top' && wp.element.createElement(
+                                        "span",
+                                        { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
+                                        wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
+                                    ),
                                     wp.element.createElement(
                                         "span",
                                         { className: "premium-title-text-title" },
@@ -61479,24 +61457,15 @@ var edit = function (_Component) {
                                     )
                                 )
                             ) : wp.element.createElement(
-                                "div",
-                                { className: "premium-title-style7-inner-title" },
+                                Fragment,
+                                null,
                                 iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
                                 iconValue && iconType == 'image' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
-                                iconPosition == 'top' && wp.element.createElement(
-                                    "span",
-                                    { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
-                                    wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
-                                ),
                                 wp.element.createElement(
                                     "span",
                                     { className: "premium-title-text-title" },
                                     title
                                 )
-                            ) : wp.element.createElement(
-                                "span",
-                                { className: "premium-title-text-title" },
-                                title
                             ),
                             link && wp.element.createElement("a", { href: "" + url })
                         )
@@ -61664,6 +61633,10 @@ function styling(props) {
         " .premium-title-text-title": {
             "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMargin, titleMarginType),
             "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePadding, titlePaddingType)
+        },
+        " .premium-title-header img": {
+            "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSize, iconSizeType),
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSize, iconSizeType)
         }
     };
 
@@ -61679,6 +61652,10 @@ function styling(props) {
         " .premium-title-text-title": {
             "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginMobile, titleMarginType),
             "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingMobile, titlePaddingType)
+        },
+        " .premium-title-header img": {
+            "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeMobile, iconSizeType),
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeMobile, iconSizeType)
         }
     };
 
@@ -61694,6 +61671,10 @@ function styling(props) {
         " .premium-title-text-title": {
             "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginTablet, titleMarginType),
             "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingTablet, titlePaddingType)
+        },
+        " .premium-title-header img": {
+            "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeTablet, iconSizeType),
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeTablet, iconSizeType)
         }
     };
 

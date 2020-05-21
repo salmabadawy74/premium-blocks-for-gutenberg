@@ -145,6 +145,10 @@ function styling(props) {
         " .premium-title-text-title":{
             "margin": generateCSSUnit(titleMargin, titleMarginType),
             "padding": generateCSSUnit(titlePadding, titlePaddingType),
+        },
+        " .premium-title-header img":{
+            "width": generateCSSUnit(iconSize, iconSizeType),
+            "height": generateCSSUnit(iconSize, iconSizeType)
         }
     }
 
@@ -160,6 +164,10 @@ function styling(props) {
         " .premium-title-text-title": {
             "margin": generateCSSUnit(titleMarginMobile, titleMarginType),
             "padding": generateCSSUnit(titlePaddingMobile, titlePaddingType),
+        },
+        " .premium-title-header img": {
+            "width": generateCSSUnit(iconSizeMobile, iconSizeType),
+            "height": generateCSSUnit(iconSizeMobile, iconSizeType)
         }
     }
 
@@ -175,6 +183,10 @@ function styling(props) {
         " .premium-title-text-title": {
             "margin": generateCSSUnit(titleMarginTablet, titleMarginType),
             "padding": generateCSSUnit(titlePaddingTablet, titlePaddingType),
+        },
+        " .premium-title-header img": {
+            "width": generateCSSUnit(iconSizeTablet, iconSizeType),
+            "height": generateCSSUnit(iconSizeTablet, iconSizeType)
         }
     }
 

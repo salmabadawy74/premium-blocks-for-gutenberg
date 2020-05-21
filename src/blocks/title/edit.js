@@ -59,7 +59,6 @@ class edit extends Component {
             iconType,
             icon,
             iconPosition,
-            image,
             imageURL,
             imageID,
             link,
@@ -654,17 +653,46 @@ class edit extends Component {
             )} style={{
                 textAlign: align,
             }}>
-                <div className={`premium-title`} data-setting={`${this.props.clientId}`} style={{
+                <div className={`premium-title`} style={{
                 textAlign: align,
               }}>
                 <div className={`${style}`}>
                   <h2 className={`premium-title-header premium-title-${style}__wrap ${iconValue?iconPosition:""} ${iconPosition=='top'? `premium-title-${iconAlign}`:""}`}>
-                    {
-                      iconValue && iconType == 'icon' && style != 'style7' && <i className={`premium-title-icon ${icon}`}/>
+                    {style === 'style7' ? <Fragment>
+                      {iconPosition !='top' && iconValue && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
+                        <span className={`premium-title-style7-stripe-span`}></span>
+                        </span>
+                      }
+                      {!iconValue &&<span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
+                        <span className={`premium-title-style7-stripe-span`}></span>
+                        </span>
+                      }
+                      <div className={`premium-title-style7-inner-title`}>
+                      {
+                        iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`}/>
+                      }
+                      {
+                        iconValue && iconType == 'image' && < img className = {`premium-title-icon`} src = {imageURL}/>
+                      }
+                      {iconValue && iconPosition ==='top' &&<span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
+                        <span className={`premium-title-style7-stripe-span`}></span>
+                        </span>
+                      }
+                      <span className={`premium-title-text-title`}>{title}</span>
+                      </div>
+                      </Fragment>
+                      : <Fragment>
+                        {iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`}/>
+                        }
+                        {
+                          iconValue && iconType == 'image' && < img className = {`premium-title-icon`} src = {imageURL}/>
+                        }
+                      <span className={`premium-title-text-title`}>{title}</span>
+                      </Fragment>
                     }
+                     
                     {
-                      iconValue && iconType == 'image' && style != 'style7' && < img className = {`premium-title-icon`} src = {imageURL}/>
-                    }
+                      /*
                       {style == 'style7' ? !iconValue ?<Fragment> <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                         <span className={`premium-title-style7-stripe-span`}></span>
                         </span>
@@ -697,7 +725,7 @@ class edit extends Component {
                       <span className={`premium-title-text-title`}>{title}</span>
                       </div>
                       :<span className={`premium-title-text-title`}>{title}</span>
-                    }
+                    } */}
                     {link && <a href={`${url}`}></a>}
                   </h2>
                 </div>

@@ -1575,6 +1575,10 @@ class Premium_Blocks_Integration {
 					"padding" => self::get_css_value($attr['titlePadding'], $attr['titlePaddingType']),
 					"margin" => self::get_css_value($attr['titleMargin'], $attr['titleMarginType'])
 				),
+				" .premium-title-header img" => array(
+					"width" => self::get_css_value($attr['iconSize'] , $attr['iconSizeType'] ),
+					"height" => self::get_css_value($attr['iconSize'] , $attr['iconSizeType'] )
+				),
       );
             // Desktop Icon Size CSS ends.
 
@@ -1592,6 +1596,10 @@ class Premium_Blocks_Integration {
 					"margin" => self::get_css_value($attr['titleMarginMobile'], $attr['titleMarginType']) . "!important",
 					"padding" => self::get_css_value($attr['titlePaddingMobile'], $attr['titlePaddingType']) . "!important"
 				),
+				" .premium-title-header img" => array(
+					"width" => self::get_css_value($attr['iconSizeMobile'] , $attr['iconSizeType'] ),
+					"height" => self::get_css_value($attr['iconSizeMobile'] , $attr['iconSizeType'] )
+				),
 			);
 			// Mobile Icon Size CSS ends.
 
@@ -1608,6 +1616,10 @@ class Premium_Blocks_Integration {
 				" .premium-title-text-title"  => array(
 					"margin" => self::get_css_value($attr['titleMarginTablet'], $attr['titleMarginType']) . "!important",
 					"padding" => self::get_css_value($attr['titlePaddingTablet'], $attr['titlePaddingType']) . "!important"
+				),
+				" .premium-title-header img" => array(
+					"width" => self::get_css_value($attr['iconSizeTablet'] , $attr['iconSizeType'] ),
+					"height" => self::get_css_value($attr['iconSizeTablet'] , $attr['iconSizeType'] )
 				),
 			);
 			// Tablet Icon Size CSS ends.

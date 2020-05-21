@@ -3274,17 +3274,11 @@ color: #23282d;
 .premium-title .top {
   flex-direction: column;
 }
-.premium-title .after i{
-  margin-left: 10px !important;
-}
 .premium-title-header img{
   width: 40px;
   height: 40px;
   -o-object-fit: cover;
   object-fit: cover;
-}
-.premium-title .after img {
-  margin-left: 10px !important;
 }
 .premium-title-header a{
   position: absolute;
