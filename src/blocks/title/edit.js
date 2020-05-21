@@ -29,7 +29,7 @@ const {
     TextControl,
     Toolbar,
     ToggleControl,
-    Button
+    IconButton
 } = wp.components
 
 class edit extends Component {
@@ -60,6 +60,8 @@ class edit extends Component {
             icon,
             iconPosition,
             image,
+            imageURL,
+            imageID,
             link,
             url,
             iconAlign,
@@ -290,16 +292,18 @@ class edit extends Component {
                                 />
                               </Fragment>
                               :<Fragment>
-                                {image && <img src={image.url} width="100%" height="auto" />}
+                                {imageURL && <img src={imageURL} width="100%" height="auto" />}
                                 <MediaUpload
-                                  title={__("Select Image")}
-                                  onSelect={value => setAttributes({ image: value })}
                                   allowedTypes={["image"]}
-                                  value={image}
+                                  onSelect={media => {
+                                    setAttributes({ imageURL: media.url, imageID: media.id });
+                                  }}
+                                  type="image"
+                                  value={imageID}
                                   render={({ open }) => (
-                                      <Button isDefault onClick={open}>
-                                          {!image ? __("Select Image") : __("Replace image")}
-                                      </Button>
+                                    <IconButton className="premium-media-uplpad-btn" label={__("Change Image")} icon="edit" onClick={open}>
+                                      {__("Change Image")}
+                                    </IconButton>
                                   )}
                                 />
                               </Fragment>
@@ -637,7 +641,7 @@ class edit extends Component {
                           rangeMobile={{ value: iconSpacingMobile, label: __("iconSpacingMobile") }}
                           rangeTablet={{ value: iconSpacingTablet, label: __("iconSpacingTablet") }}
                           rangeLabel={__("Spacing")}
-                          min={1}
+                          min={0}
                           max={100}
                         />
                       </PanelBody>
@@ -659,7 +663,7 @@ class edit extends Component {
                       iconValue && iconType == 'icon' && style != 'style7' && <i className={`premium-title-icon ${icon}`}/>
                     }
                     {
-                      iconValue && iconType == 'image' && image && style != 'style7' && < img className = {`premium-title-icon`} src = {image.url}/>
+                      iconValue && iconType == 'image' && style != 'style7' && < img className = {`premium-title-icon`} src = {imageURL}/>
                     }
                       {style == 'style7' ? !iconValue ?<Fragment> <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                         <span className={`premium-title-style7-stripe-span`}></span>
@@ -674,7 +678,7 @@ class edit extends Component {
                         iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`}/>
                       }
                       {
-                        iconValue && iconType == 'image' && image && < img className = {`premium-title-icon`} src = {image.url}/>
+                        iconValue && iconType == 'image' && < img className = {`premium-title-icon`} src = {imageURL}/>
                       }
                       <span className={`premium-title-text-title`}>{title}</span>
                       </div>
@@ -684,7 +688,7 @@ class edit extends Component {
                         iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`}/>
                       }
                       {
-                        iconValue && iconType == 'image' && image && < img className = {`premium-title-icon`} src = {image.url}/>
+                        iconValue && iconType == 'image' && < img className = {`premium-title-icon`} src = {imageURL}/>
                       }
                       {iconPosition =='top' &&<span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                       <span className={`premium-title-style7-stripe-span`}></span>

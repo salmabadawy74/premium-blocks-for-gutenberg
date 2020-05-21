@@ -53,6 +53,15 @@ const titleAttrs = {
   image: {
     type: "string"
   },
+  imageID: {
+    type: "number"
+  },
+  imageURL: {
+    type: "string",
+    source: "attribute",
+    attribute: "src",
+    selector: ".premium-title-icon"
+  },
   link: {
     type: "boolean",
     default: false

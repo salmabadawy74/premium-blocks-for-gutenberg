@@ -3428,3 +3428,7 @@ color: #23282d;
 .premium-title-style7-inner-title .premium-stripe-right {
   align-self: flex-end !important;
 }
+.premium-title-header .dashicons {
+  width: auto !important;
+  height: auto !important;
+}

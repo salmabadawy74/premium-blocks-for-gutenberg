@@ -60280,6 +60280,15 @@ var titleAttrs = {
   image: {
     type: "string"
   },
+  imageID: {
+    type: "number"
+  },
+  imageURL: {
+    type: "string",
+    source: "attribute",
+    attribute: "src",
+    selector: ".premium-title-icon"
+  },
   link: {
     type: "boolean",
     default: false
@@ -60556,6 +60565,7 @@ function save(props) {
       icon = attributes.icon,
       iconPosition = attributes.iconPosition,
       image = attributes.image,
+      imageURL = attributes.imageURL,
       link = attributes.link,
       url = attributes.url,
       iconAlign = attributes.iconAlign,
@@ -60582,7 +60592,7 @@ function save(props) {
           "h2",
           { className: "premium-title-header premium-title-" + style + "__wrap " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : "") },
           iconValue && iconType == 'icon' && style != 'style7' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
-          iconValue && iconType == 'image' && image && style != 'style7' && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
+          iconValue && iconType == 'image' && style != 'style7' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
           style == 'style7' ? !iconValue ? wp.element.createElement(
             Fragment,
             null,
@@ -60609,7 +60619,7 @@ function save(props) {
               "div",
               { className: "premium-title-style7-inner-title" },
               iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
-              iconValue && iconType == 'image' && image && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
+              iconValue && iconType == 'image' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
               wp.element.createElement(
                 "span",
                 { className: "premium-title-text-title" },
@@ -60620,7 +60630,7 @@ function save(props) {
             "div",
             { className: "premium-title-style7-inner-title" },
             iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
-            iconValue && iconType == 'image' && image && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
+            iconValue && iconType == 'image' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
             iconPosition == 'top' && wp.element.createElement(
               "span",
               { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
@@ -60692,7 +60702,7 @@ var _wp$components = wp.components,
     TextControl = _wp$components.TextControl,
     Toolbar = _wp$components.Toolbar,
     ToggleControl = _wp$components.ToggleControl,
-    Button = _wp$components.Button;
+    IconButton = _wp$components.IconButton;
 
 var edit = function (_Component) {
     _inherits(edit, _Component);
@@ -60730,6 +60740,8 @@ var edit = function (_Component) {
                 icon = attributes.icon,
                 iconPosition = attributes.iconPosition,
                 image = attributes.image,
+                imageURL = attributes.imageURL,
+                imageID = attributes.imageID,
                 link = attributes.link,
                 url = attributes.url,
                 iconAlign = attributes.iconAlign,
@@ -60964,20 +60976,20 @@ var edit = function (_Component) {
                         ) : wp.element.createElement(
                             Fragment,
                             null,
-                            image && wp.element.createElement("img", { src: image.url, width: "100%", height: "auto" }),
+                            imageURL && wp.element.createElement("img", { src: imageURL, width: "100%", height: "auto" }),
                             wp.element.createElement(MediaUpload, {
-                                title: __("Select Image"),
-                                onSelect: function onSelect(value) {
-                                    return setAttributes({ image: value });
-                                },
                                 allowedTypes: ["image"],
-                                value: image,
+                                onSelect: function onSelect(media) {
+                                    setAttributes({ imageURL: media.url, imageID: media.id });
+                                },
+                                type: "image",
+                                value: imageID,
                                 render: function render(_ref) {
                                     var open = _ref.open;
                                     return wp.element.createElement(
-                                        Button,
-                                        { isDefault: true, onClick: open },
-                                        !image ? __("Select Image") : __("Replace image")
+                                        IconButton,
+                                        { className: "premium-media-uplpad-btn", label: __("Change Image"), icon: "edit", onClick: open },
+                                        __("Change Image")
                                     );
                                 }
                             })
@@ -61411,7 +61423,7 @@ var edit = function (_Component) {
                         rangeMobile: { value: iconSpacingMobile, label: __("iconSpacingMobile") },
                         rangeTablet: { value: iconSpacingTablet, label: __("iconSpacingTablet") },
                         rangeLabel: __("Spacing"),
-                        min: 1,
+                        min: 0,
                         max: 100
                     })
                 )
@@ -61432,7 +61444,7 @@ var edit = function (_Component) {
                             "h2",
                             { className: "premium-title-header premium-title-" + style + "__wrap " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : "") },
                             iconValue && iconType == 'icon' && style != 'style7' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
-                            iconValue && iconType == 'image' && image && style != 'style7' && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
+                            iconValue && iconType == 'image' && style != 'style7' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
                             style == 'style7' ? !iconValue ? wp.element.createElement(
                                 Fragment,
                                 null,
@@ -61459,7 +61471,7 @@ var edit = function (_Component) {
                                     "div",
                                     { className: "premium-title-style7-inner-title" },
                                     iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
-                                    iconValue && iconType == 'image' && image && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
+                                    iconValue && iconType == 'image' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
                                     wp.element.createElement(
                                         "span",
                                         { className: "premium-title-text-title" },
@@ -61470,7 +61482,7 @@ var edit = function (_Component) {
                                 "div",
                                 { className: "premium-title-style7-inner-title" },
                                 iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
-                                iconValue && iconType == 'image' && image && wp.element.createElement("img", { className: "premium-title-icon", src: image.url }),
+                                iconValue && iconType == 'image' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
                                 iconPosition == 'top' && wp.element.createElement(
                                     "span",
                                     { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },

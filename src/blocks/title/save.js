@@ -18,6 +18,7 @@ export default function save(props) {
         icon,
         iconPosition,
         image,
+        imageURL,
         link,
         url,
         iconAlign,
@@ -44,7 +45,7 @@ export default function save(props) {
                       iconValue && iconType == 'icon' && style != 'style7' && <i className={`premium-title-icon ${icon}`}/>
                     }
                     {
-                      iconValue && iconType == 'image' && image && style != 'style7' && < img className = {`premium-title-icon`} src = {image.url}/>
+                      iconValue && iconType == 'image' && style != 'style7' && < img className = {`premium-title-icon`} src = {imageURL}/>
                     }
                       {style == 'style7' ? !iconValue ?<Fragment> <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                         <span className={`premium-title-style7-stripe-span`}></span>
@@ -59,7 +60,7 @@ export default function save(props) {
                         iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`}/>
                       }
                       {
-                        iconValue && iconType == 'image' && image && < img className = {`premium-title-icon`} src = {image.url}/>
+                        iconValue && iconType == 'image' && < img className = {`premium-title-icon`} src = {imageURL}/>
                       }
                       <span className={`premium-title-text-title`}>{title}</span>
                       </div>
@@ -69,7 +70,7 @@ export default function save(props) {
                         iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`}/>
                       }
                       {
-                        iconValue && iconType == 'image' && image && < img className = {`premium-title-icon`} src = {image.url}/>
+                        iconValue && iconType == 'image' && < img className = {`premium-title-icon`} src = {imageURL}/>
                       }
                       {iconPosition =='top' &&<span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                       <span className={`premium-title-style7-stripe-span`}></span>
