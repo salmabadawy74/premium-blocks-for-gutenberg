@@ -37,8 +37,8 @@ export default function save(props) {
             <div className={`premium-title`} style={{
                 textAlign: align,
               }}>
-                <div className={`${style}`}>
-                  <h2 className={`premium-title-header premium-title-${style}__wrap ${iconValue?iconPosition:""} ${iconPosition=='top'? `premium-title-${iconAlign}`:""}`}>
+                <div className={`${style} ${style}-${align}`}>
+                  <h2 className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue?iconPosition:""} ${iconPosition=='top'? `premium-title-${iconAlign}`:""}`}>
                     {style === 'style7' ? <Fragment>
                       {iconPosition !='top' && iconValue && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                         <span className={`premium-title-style7-stripe-span`}></span>

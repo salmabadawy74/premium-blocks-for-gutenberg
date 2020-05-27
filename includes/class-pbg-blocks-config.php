@@ -466,7 +466,7 @@ if ( ! class_exists( 'Config' ) ) {
 							'stripeColor' => '#6ec1e4',
 							'titleborderType' => 'none',
 							'titleborderRadius' => '0',
-							'titleborderWidth' => '1',
+							'titleborderWidth' => '0',
 							'titleborderColor' => '#d4d4d4',
 							'BGColor' => '#54595f',
 							'lineColor' => '#6ec1e4',

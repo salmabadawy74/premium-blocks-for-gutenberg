@@ -86,6 +86,7 @@ function styling(props) {
           "text-shadow": `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`
         },
         " .premium-title .style1 .premium-title-header": {
+            "border-left": titleborderWidth > '1' ? `${titleborderWidth}px ${titleborderType} ${titleborderColor} !important` : "",
             "border-style": titleborderType,
             "border-width": generateCSSUnit(titleborderWidth, "px"),
             "border-color": titleborderColor,
@@ -98,24 +99,28 @@ function styling(props) {
           "background-color": BGColor
         },
         " .premium-title .style2": {
+            "border-bottom": titleborderWidth > '1' ? `${titleborderWidth}px ${titleborderType} ${titleborderColor} !important` : "",
             "border-style": titleborderType,
             "border-width": generateCSSUnit(titleborderWidth, "px"),
             "border-color": titleborderColor,
             "border-radius": generateCSSUnit(titleborderRadius, "px"),
         },
         " .premium-title .style4": {
+            "border-bottom": titleborderWidth > '1' ? `${titleborderWidth}px ${titleborderType} ${titleborderColor} !important` : "",
             "border-style": titleborderType,
             "border-width": generateCSSUnit(titleborderWidth, "px"),
             "border-color": titleborderColor,
             "border-radius": generateCSSUnit(titleborderRadius, "px"),
         },
         " .premium-title .style5": {
+            "border-bottom": titleborderWidth > '1' ? `${titleborderWidth}px ${titleborderType} ${titleborderColor} !important` : "",
             "border-style": titleborderType,
             "border-width": generateCSSUnit(titleborderWidth, "px"),
             "border-color": titleborderColor,
             "border-radius": generateCSSUnit(titleborderRadius, "px"),
         },
         " .premium-title .style6": {
+            "border-bottom": titleborderWidth > '1' ? `${titleborderWidth}px ${titleborderType} ${titleborderColor} !important` : "",
             "border-style": titleborderType,
             "border-width": generateCSSUnit(titleborderWidth, "px"),
             "border-color": titleborderColor,

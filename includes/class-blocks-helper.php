@@ -1515,6 +1515,7 @@ class Premium_Blocks_Integration {
 					"text-shadow" => self::get_css_value($attr['titleshadowHorizontal'],'px ') .self::get_css_value($attr['titleshadowVertical'],'px ') . self::get_css_value($attr['titleshadowBlur'], 'px ') . $attr['titleshadowColor']
 				),
 				" .premium-title .style1 .premium-title-header" => array(
+					"border-left" => $attr['titleborderWidth'] > '0'? self::get_css_value($attr['titleborderWidth'],'px ') . $attr['titleborderType'] . $attr['titleborderColor'] . "!important":"",
 					"border-width" => self::get_css_value($attr['titleborderWidth'], 'px'),
 					"border-color" => $attr['titleborderColor'],
 					"border-style" => $attr['titleborderType'],
@@ -1527,24 +1528,28 @@ class Premium_Blocks_Integration {
 					"background-color" => $attr['BGColor']
 				),
 				" .premium-title .style2" => array(
+					"border-bottom" => $attr['titleborderWidth'] > '0'? self::get_css_value($attr['titleborderWidth'],'px ') . $attr['titleborderType'] . $attr['titleborderColor'] . "!important":"",
 					"border-width" => self::get_css_value($attr['titleborderWidth'], 'px'),
 					"border-color" => $attr['titleborderColor'],
 					"border-style" => $attr['titleborderType'],
 					"border-radius" => self::get_css_value($attr['titleborderRadius'], 'px')
 				),
 				" .premium-title .style4" => array(
+					"border-bottom" => $attr['titleborderWidth'] > '0'? self::get_css_value($attr['titleborderWidth'],'px ') . $attr['titleborderType'] . $attr['titleborderColor'] . "!important":"",
 					"border-width" => self::get_css_value($attr['titleborderWidth'], 'px'),
 					"border-color" => $attr['titleborderColor'],
 					"border-style" => $attr['titleborderType'],
 					"border-radius" => self::get_css_value($attr['titleborderRadius'], 'px')
 				),
 				" .premium-title .style5" => array(
+					"border-bottom" => $attr['titleborderWidth'] > '0'? self::get_css_value($attr['titleborderWidth'],'px ') . $attr['titleborderType'] . $attr['titleborderColor'] . "!important":"",
 					"border-width" => self::get_css_value($attr['titleborderWidth'], 'px'),
 					"border-color" => $attr['titleborderColor'],
 					"border-style" => $attr['titleborderType'],
 					"border-radius" => self::get_css_value($attr['titleborderRadius'], 'px')
 				),
 				" .premium-title .style6" => array(
+					"border-bottom" => $attr['titleborderWidth'] > '0'? self::get_css_value($attr['titleborderWidth'],'px ') . $attr['titleborderType'] . $attr['titleborderColor'] . "!important":"",
 					"border-width" => self::get_css_value($attr['titleborderWidth'], 'px'),
 					"border-color" => $attr['titleborderColor'],
 					"border-style" => $attr['titleborderType'],

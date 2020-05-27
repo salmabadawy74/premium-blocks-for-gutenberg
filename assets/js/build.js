@@ -60582,10 +60582,10 @@ function save(props) {
         } },
       wp.element.createElement(
         "div",
-        { className: "" + style },
+        { className: style + " " + style + "-" + align },
         wp.element.createElement(
           "h2",
-          { className: "premium-title-header premium-title-" + style + "__wrap " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : "") },
+          { className: "premium-title-header premium-title-" + style + "__wrap " + align + " " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : "") },
           style === 'style7' ? wp.element.createElement(
             Fragment,
             null,
@@ -61418,10 +61418,10 @@ var edit = function (_Component) {
                         } },
                     wp.element.createElement(
                         "div",
-                        { className: "" + style },
+                        { className: style + " " + style + "-" + align },
                         wp.element.createElement(
                             "h2",
-                            { className: "premium-title-header premium-title-" + style + "__wrap " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : "") },
+                            { className: "premium-title-header premium-title-" + style + "__wrap " + align + " " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : "") },
                             style === 'style7' ? wp.element.createElement(
                                 Fragment,
                                 null,
@@ -61569,6 +61569,7 @@ function styling(props) {
             "text-shadow": titleshadowHorizontal + 'px ' + titleshadowVertical + 'px ' + titleshadowBlur + 'px ' + titleshadowColor
         },
         " .premium-title .style1 .premium-title-header": {
+            "border-left": titleborderWidth > '1' ? titleborderWidth + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
             "border-style": titleborderType,
             "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderWidth, "px"),
             "border-color": titleborderColor,
@@ -61581,24 +61582,28 @@ function styling(props) {
             "background-color": BGColor
         },
         " .premium-title .style2": {
+            "border-bottom": titleborderWidth > '1' ? titleborderWidth + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
             "border-style": titleborderType,
             "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderWidth, "px"),
             "border-color": titleborderColor,
             "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px")
         },
         " .premium-title .style4": {
+            "border-bottom": titleborderWidth > '1' ? titleborderWidth + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
             "border-style": titleborderType,
             "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderWidth, "px"),
             "border-color": titleborderColor,
             "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px")
         },
         " .premium-title .style5": {
+            "border-bottom": titleborderWidth > '1' ? titleborderWidth + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
             "border-style": titleborderType,
             "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderWidth, "px"),
             "border-color": titleborderColor,
             "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px")
         },
         " .premium-title .style6": {
+            "border-bottom": titleborderWidth > '1' ? titleborderWidth + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
             "border-style": titleborderType,
             "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderWidth, "px"),
             "border-color": titleborderColor,
