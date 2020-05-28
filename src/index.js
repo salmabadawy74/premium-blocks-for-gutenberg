@@ -17,4 +17,5 @@ import "./blocks/progress-bar"
 import "./blocks/tab"
 import "./blocks/fancy-text"
 import "./blocks/title"
+import "./blocks/flip-box"
 //import "./blocks/test";

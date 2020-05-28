@@ -21,7 +21,8 @@ export const {
   progressBar,
   tab,
   fancyText,
-  title
+  title,
+  flipBox
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys

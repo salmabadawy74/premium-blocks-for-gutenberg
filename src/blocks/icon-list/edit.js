@@ -437,7 +437,7 @@ class edit extends Component {
                 borderRadius:"0",
             });
         }
-        onResetClickfirstMargin= () => {
+        const onResetClickfirstMargin= () => {
             setAttributes({ 
                 marginTop: "0", 
                 marginTopType:"px", 
@@ -449,7 +449,7 @@ class edit extends Component {
                 marginBottomTablet: "0"
             });
         }
-        onResetClicksecondMargin= () => {
+        const onResetClicksecondMargin= () => {
             setAttributes({ 
                 marginLeft: "0", 
                 marginLeftType:"px", 
