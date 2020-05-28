@@ -215,7 +215,7 @@ class edit extends Component {
         const onResetClicktitleborder = () => {
           setAttributes({
             titleborderType: "none",
-            titleborderWidth: "1",
+            titleborderWidth: "0",
             titleborderColor: "",
             titleborderRadius: "0",
           });

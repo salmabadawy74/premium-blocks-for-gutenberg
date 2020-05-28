@@ -152,7 +152,7 @@ const titleAttrs = {
   },
   titleborderWidth: {
     type: "number",
-    default: "1"
+    default: "0"
   },
   titleborderRadius: {
     type: "number",
