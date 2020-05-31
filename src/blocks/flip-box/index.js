@@ -153,7 +153,39 @@ const flipBoxAttrs = {
   horizontalalignBack: {
     type: "string",
     default: "center"
-  }
+  },
+  effect: {
+    type: "string",
+    default: "flip"
+  },
+  flipDir: {
+    type: "string",
+    default: "lr"
+  },
+  animation: {
+    type: "boolean",
+    default: true
+  },
+  height: {
+    type: "number",
+    default: "380"
+  },
+  heightType: {
+    type: "string",
+    default: "px"
+  },
+  heightMobile: {
+    type: "number",
+    default: "380"
+  },
+  heightTablet: {
+    type: "number",
+    default: "380"
+  },
+  switchCheck: {
+    type: "boolean",
+    default: false
+  },
 };
 
 registerBlockType("premium/flip-box", {

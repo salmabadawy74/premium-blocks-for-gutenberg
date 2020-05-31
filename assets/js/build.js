@@ -61859,6 +61859,38 @@ var flipBoxAttrs = {
   horizontalalignBack: {
     type: "string",
     default: "center"
+  },
+  effect: {
+    type: "string",
+    default: "flip"
+  },
+  flipDir: {
+    type: "string",
+    default: "lr"
+  },
+  animation: {
+    type: "boolean",
+    default: true
+  },
+  height: {
+    type: "number",
+    default: "380"
+  },
+  heightType: {
+    type: "string",
+    default: "px"
+  },
+  heightMobile: {
+    type: "number",
+    default: "380"
+  },
+  heightTablet: {
+    type: "number",
+    default: "380"
+  },
+  switchCheck: {
+    type: "boolean",
+    default: false
   }
 };
 
@@ -61962,7 +61994,7 @@ var edit = function (_Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
       clearTimeout(isBoxUpdated);
-      isBoxUpdated = setTimeout(this.initToggleBox, 5);
+      isBoxUpdated = this.initToggleBox();
     }
   }, {
     key: "initToggleBox",
@@ -61971,15 +62003,54 @@ var edit = function (_Component) {
 
       if (!block_id) return null;
 
-      var toggleBox = document.getElementsByClassName("premium-flip-box " + block_id);
-      console.log(toggleBox);
+      var toggleBox = document.getElementsByClassName("premium-flip-style-flip");
+      console.log(toggleBox.length);
+      var frontRight = document.getElementsByClassName("premium-flip-frontrl");
+      var frontLeft = document.getElementsByClassName("premium-flip-frontlr");
+      var frontWrapper = document.getElementsByClassName("premium-flip-text-wrapper");
+      var backWrapper = document.getElementsByClassName("premium-flip-back-text-wrapper");
 
-      setTimeout(toggleBox[0].addEventListener("mouseenter", function () {
-        toggleBox[0].classList.add("flipped");
-      }), 5);
-      setTimeout(toggleBox[0].addEventListener("mouseleave", function () {
-        toggleBox[0].classList.remove("flipped");
-      }), 5);
+      if (toggleBox.length !== 0) {
+        console.log("hh");
+
+        toggleBox[0].addEventListener("mouseenter", function () {
+          toggleBox[0].classList.add("flipped");
+          if (frontRight) {
+            frontWrapper[0].classList.remove("PafadeInLeft");
+            frontWrapper[0].classList.add("PafadeInRight");
+            backWrapper[0].classList.add("PafadeInLeft");
+            backWrapper[0].classList.remove("PafadeInRight");
+          } else if (frontLeft) {
+            frontWrapper[0].classList.remove("PafadeInRevLeft");
+            frontWrapper[0].classList.add("PafadeInRevRight");
+            backWrapper[0].classList.add("PafadeInRevLeft");
+            backWrapper[0].classList.remove("PafadeInRevRight");
+          }
+        });
+        toggleBox[0].addEventListener("mouseleave", function () {
+          toggleBox[0].classList.remove("flipped");
+          if (frontRight) {
+            frontWrapper[0].classList.add("PafadeInLeft");
+            frontWrapper[0].classList.remove("PafadeInRight");
+            backWrapper[0].classList.remove("PafadeInLeft");
+            backWrapper[0].classList.add("PafadeInRight");
+          } else if (frontLeft) {
+            frontWrapper[0].classList.add("PafadeInRevLeft");
+            frontWrapper[0].classList.remove("PafadeInRevRight");
+            backWrapper[0].classList.remove("PafadeInRevLeft");
+            backWrapper[0].classList.add("PafadeInRevRight");
+          }
+        });
+      } else {
+        console.log("jj", frontWrapper);
+        if (frontRight) {
+          frontWrapper[0].classList.remove("PafadeInRight");
+          backWrapper[0].classList.remove("PafadeInLeft");
+        } else if (frontLeft) {
+          frontWrapper[0].classList.remove("PafadeInRevRight");
+          backWrapper[0].classList.remove("PafadeInRevLeft");
+        }
+      }
     }
   }, {
     key: "render",
@@ -62021,7 +62092,14 @@ var edit = function (_Component) {
           descBack = attributes.descBack,
           descValueBack = attributes.descValueBack,
           verticalalignBack = attributes.verticalalignBack,
-          horizontalalignBack = attributes.horizontalalignBack;
+          horizontalalignBack = attributes.horizontalalignBack,
+          effect = attributes.effect,
+          flipDir = attributes.flipDir,
+          animation = attributes.animation,
+          height = attributes.height,
+          heightType = attributes.heightType,
+          heightMobile = attributes.heightMobile,
+          heightTablet = attributes.heightTablet;
 
 
       var ICON = [{
@@ -62031,7 +62109,6 @@ var edit = function (_Component) {
         value: "image",
         label: __("Image")
       }];
-      var ALIGNS = ["left", "center", "right"];
       var VALIGN = [{
         icon: 'arrow-up-alt',
         title: __('Top'),
@@ -62057,6 +62134,35 @@ var edit = function (_Component) {
         icon: 'arrow-right-alt',
         title: __('Right'),
         align: 'flex-end'
+      }];
+      var EFFECT = [{
+        value: "fade",
+        label: __("Fade")
+      }, {
+        value: "flip",
+        label: __("Flip")
+      }, {
+        value: "slide",
+        label: "Slide"
+      }, {
+        value: "push",
+        label: __("Push")
+      }, {
+        value: "zoom",
+        label: __("Zoom")
+      }];
+      var FLIPDIR = [{
+        value: "lr",
+        label: __("Left to Right")
+      }, {
+        value: "rl",
+        label: __("Right to Left")
+      }, {
+        value: "tb",
+        label: "Top to Bottom"
+      }, {
+        value: "bt",
+        label: __("Bottom to Top")
       }];
 
       // var element = document.getElementById("premium-style-flip-box-" + this.props.clientId)
@@ -62371,80 +62477,126 @@ var edit = function (_Component) {
               };
             })
           })
+        ),
+        wp.element.createElement(
+          PanelBody,
+          {
+            title: __("Additional Settings"),
+            className: "premium-panel-body",
+            initialOpen: false
+          },
+          wp.element.createElement(SelectControl, {
+            label: __("Effect"),
+            value: effect,
+            onChange: function onChange(newSelect) {
+              return setAttributes({ effect: newSelect });
+            },
+            options: EFFECT
+          }),
+          effect != 'fade' && effect != 'zoom' && wp.element.createElement(SelectControl, {
+            label: __("Flip Direction"),
+            value: flipDir,
+            onChange: function onChange(newSelect) {
+              return setAttributes({ flipDir: newSelect });
+            },
+            options: FLIPDIR
+          }),
+          wp.element.createElement(ToggleControl, {
+            label: __("Hover Text Animation"),
+            checked: animation,
+            onChange: function onChange(value) {
+              return setAttributes({ animation: value });
+            }
+          }),
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+            setAttributes: setAttributes,
+            rangeType: { value: heightType, label: __("heightType") },
+            range: { value: height, label: __("height") },
+            rangeMobile: { value: heightMobile, label: __("heightMobile") },
+            rangeTablet: { value: heightTablet, label: __("heightTablet") },
+            rangeLabel: __("Height"),
+            min: 0,
+            max: 1000
+          })
         )
       ), wp.element.createElement(
         "div",
         { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId), style: { textAlign: align }, id: "premium-flip-box-" + this.props.clientId },
         wp.element.createElement(
           "div",
-          { className: "premium-flip-box " + this.props.clientId, style: {
-              textAlign: align
-            } },
+          { className: "premium-flip-style-" + effect },
           wp.element.createElement(
             "div",
-            { className: "premium-flip-front premium-flip-frontrl" },
+            { className: "premium-flip-box", style: {
+                textAlign: align
+              } },
             wp.element.createElement(
               "div",
-              { className: "premium-flip-front-overlay" },
+              { className: "premium-flip-front premium-flip-front" + flipDir },
               wp.element.createElement(
                 "div",
-                { className: "premium-flip-front-content-container" },
+                { className: "premium-flip-front-overlay" },
                 wp.element.createElement(
                   "div",
-                  { className: "premium-flip-front-content", style: { justifyContent: horizontalalignFront, alignItems: verticalalignFront } },
+                  { className: "premium-flip-front-content-container" },
                   wp.element.createElement(
                     "div",
-                    { className: "premium-flip-text-wrapper PafadeInLeft" },
-                    iconValueFront && iconTypeFront == 'icon' && wp.element.createElement("i", { className: "premium-flip-front-icon " + iconFront }),
-                    iconValueFront && iconTypeFront == 'image' && wp.element.createElement("img", { className: "premium-flip-front-image", src: imageURLFront }),
-                    titleValueFront && wp.element.createElement(
-                      "h3",
-                      { className: "premium-flip-front-title" },
-                      titleFront
-                    ),
-                    descValueFront && wp.element.createElement(
+                    { className: "premium-flip-front-content", style: { justifyContent: horizontalalignFront, alignItems: verticalalignFront } },
+                    wp.element.createElement(
                       "div",
-                      { className: "premium-flip-front-description" },
-                      wp.element.createElement(
-                        "p",
-                        null,
-                        descFront
+                      { className: "premium-flip-text-wrapper" },
+                      iconValueFront && iconTypeFront == 'icon' && wp.element.createElement("i", { className: "premium-flip-front-icon " + iconFront }),
+                      iconValueFront && iconTypeFront == 'image' && wp.element.createElement("img", { className: "premium-flip-front-image", src: imageURLFront }),
+                      titleValueFront && wp.element.createElement(
+                        "h3",
+                        { className: "premium-flip-front-title" },
+                        titleFront
+                      ),
+                      descValueFront && wp.element.createElement(
+                        "div",
+                        { className: "premium-flip-front-description" },
+                        wp.element.createElement(
+                          "p",
+                          null,
+                          descFront
+                        )
                       )
                     )
                   )
                 )
               )
-            )
-          ),
-          wp.element.createElement(
-            "div",
-            { className: "premium-flip-back premium-flip-backrl" },
+            ),
             wp.element.createElement(
               "div",
-              { className: "premium-flip-back-overlay" },
+              { className: "premium-flip-back premium-flip-back" + flipDir },
               wp.element.createElement(
                 "div",
-                { className: "premium-flip-back-content-container" },
+                { className: "premium-flip-back-overlay" },
                 wp.element.createElement(
                   "div",
-                  { className: "premium-flip-back-content", style: { justifyContent: horizontalalignBack, alignItems: verticalalignBack } },
+                  { className: "premium-flip-back-content-container" },
+                  link && wp.element.createElement("a", { className: "premium-flip-box-full-link", href: "" + url }),
                   wp.element.createElement(
                     "div",
-                    { className: "premium-flip-back-text-wrapper PafadeInRight" },
-                    iconValueBack && iconTypeBack == 'icon' && wp.element.createElement("i", { className: "premium-flip-back-icon " + iconBack }),
-                    iconValueBack && iconTypeBack == 'image' && wp.element.createElement("img", { className: "premium-flip-back-image", src: imageURLBack }),
-                    titleValueBack && wp.element.createElement(
-                      "h3",
-                      { className: "premium-flip-back-title" },
-                      titleBack
-                    ),
-                    descValueBack && wp.element.createElement(
+                    { className: "premium-flip-back-content", style: { justifyContent: horizontalalignBack, alignItems: verticalalignBack } },
+                    wp.element.createElement(
                       "div",
-                      { className: "premium-flip-back-description" },
-                      wp.element.createElement(
-                        "p",
-                        null,
-                        descBack
+                      { className: "premium-flip-back-text-wrapper" },
+                      iconValueBack && iconTypeBack == 'icon' && wp.element.createElement("i", { className: "premium-flip-back-icon " + iconBack }),
+                      iconValueBack && iconTypeBack == 'image' && wp.element.createElement("img", { className: "premium-flip-back-image", src: imageURLBack }),
+                      titleValueBack && wp.element.createElement(
+                        "h3",
+                        { className: "premium-flip-back-title" },
+                        titleBack
+                      ),
+                      descValueBack && wp.element.createElement(
+                        "div",
+                        { className: "premium-flip-back-description" },
+                        wp.element.createElement(
+                          "p",
+                          null,
+                          descBack
+                        )
                       )
                     )
                   )

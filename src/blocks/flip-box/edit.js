@@ -52,24 +52,64 @@ class edit extends Component {
 
     componentDidUpdate() {
       clearTimeout(isBoxUpdated);
-      isBoxUpdated = setTimeout(this.initToggleBox, 5);
+      isBoxUpdated = this.initToggleBox();
     }
     initToggleBox() {
-      const {
-        block_id} = this.props.attributes;
+      const {block_id} = this.props.attributes;
       if (!block_id) return null;
 
-      let toggleBox = document.getElementsByClassName(`premium-flip-box ${block_id}`);
-      console.log(toggleBox);
+      let toggleBox = document.getElementsByClassName(`premium-flip-style-flip`);
+      console.log(toggleBox.length);
+      let frontRight = document.getElementsByClassName(`premium-flip-frontrl`);
+      let frontLeft = document.getElementsByClassName(`premium-flip-frontlr`);
+      let frontWrapper = document.getElementsByClassName(`premium-flip-text-wrapper`);
+      let backWrapper = document.getElementsByClassName(`premium-flip-back-text-wrapper`);
       
-      setTimeout(
-        toggleBox[0].addEventListener("mouseenter", () => {
-          toggleBox[0].classList.add("flipped");
-        }), 5);
-        setTimeout(
+      if (toggleBox.length !==0)
+      {
+        console.log("hh");
+        
+          toggleBox[0].addEventListener("mouseenter", () => {
+            toggleBox[0].classList.add("flipped");
+            if (frontRight) {
+              frontWrapper[0].classList.remove("PafadeInLeft");
+              frontWrapper[0].classList.add("PafadeInRight");
+              backWrapper[0].classList.add("PafadeInLeft");
+              backWrapper[0].classList.remove("PafadeInRight");
+            }
+            else if (frontLeft) {
+              frontWrapper[0].classList.remove("PafadeInRevLeft");
+              frontWrapper[0].classList.add("PafadeInRevRight");
+              backWrapper[0].classList.add("PafadeInRevLeft");
+              backWrapper[0].classList.remove("PafadeInRevRight");
+            }
+          });
           toggleBox[0].addEventListener("mouseleave", () => {
             toggleBox[0].classList.remove("flipped");
-          }), 5);
+            if (frontRight) {
+              frontWrapper[0].classList.add("PafadeInLeft");
+              frontWrapper[0].classList.remove("PafadeInRight");
+              backWrapper[0].classList.remove("PafadeInLeft");
+              backWrapper[0].classList.add("PafadeInRight");
+            } else if (frontLeft) {
+              frontWrapper[0].classList.add("PafadeInRevLeft");
+              frontWrapper[0].classList.remove("PafadeInRevRight");
+              backWrapper[0].classList.remove("PafadeInRevLeft");
+              backWrapper[0].classList.add("PafadeInRevRight");
+            }
+          });
+        }
+        else{
+          console.log("jj", frontWrapper);
+          if (frontRight) {
+          frontWrapper[0].classList.remove("PafadeInRight");
+          backWrapper[0].classList.remove("PafadeInLeft");
+          }
+          else if (frontLeft) {
+          frontWrapper[0].classList.remove("PafadeInRevRight");
+          backWrapper[0].classList.remove("PafadeInRevLeft");
+          }
+        }
     }
 
     render() {
@@ -109,7 +149,14 @@ class edit extends Component {
             descBack,
             descValueBack,
             verticalalignBack,
-            horizontalalignBack
+            horizontalalignBack,
+            effect,
+            flipDir,
+            animation,
+            height,
+            heightType,
+            heightMobile,
+            heightTablet,
         } = attributes
 
         const ICON = [
@@ -122,7 +169,6 @@ class edit extends Component {
             label: __("Image")
           }
         ]
-        const ALIGNS = ["left", "center", "right"];
         const VALIGN = [{
             icon: 'arrow-up-alt',
             title: __('Top'),
@@ -154,6 +200,44 @@ class edit extends Component {
             title: __('Right'),
             align: 'flex-end',
           },
+        ];
+        const EFFECT = [{
+            value: "fade",
+            label: __("Fade")
+          },
+          {
+            value: "flip",
+            label: __("Flip")
+          },
+          {
+            value: "slide",
+            label: "Slide"
+          },
+          {
+            value: "push",
+            label: __("Push")
+          },
+          {
+            value: "zoom",
+            label: __("Zoom")
+          }
+        ];
+        const FLIPDIR = [{
+            value: "lr",
+            label: __("Left to Right")
+          },
+          {
+            value: "rl",
+            label: __("Right to Left")
+          },
+          {
+            value: "tb",
+            label: "Top to Bottom"
+          },
+          {
+            value: "bt",
+            label: __("Bottom to Top")
+          }
         ];
 
         // var element = document.getElementById("premium-style-flip-box-" + this.props.clientId)
@@ -384,20 +468,54 @@ class edit extends Component {
                         }))}
                       />
                     </PanelBody>
+                    <PanelBody
+                        title={__("Additional Settings")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                      <SelectControl
+                        label={__("Effect")}
+                        value={effect}
+                        onChange={newSelect => setAttributes({ effect: newSelect })}
+                        options={EFFECT}
+                      />
+                      {effect != 'fade' && effect != 'zoom' && <SelectControl
+                        label={__("Flip Direction")}
+                        value={flipDir}
+                        onChange={newSelect => setAttributes({ flipDir: newSelect })}
+                        options={FLIPDIR}
+                      />}
+                      <ToggleControl
+                        label={__("Hover Text Animation")}
+                        checked={animation}
+                        onChange={value => setAttributes({ animation: value })}
+                      />
+                      <PremiumRangeResponsive
+                        setAttributes={setAttributes}
+                        rangeType={{ value: heightType, label: __("heightType") }}
+                        range={{ value: height, label: __("height") }}
+                        rangeMobile={{ value: heightMobile, label: __("heightMobile") }}
+                        rangeTablet={{ value: heightTablet, label: __("heightTablet") }}
+                        rangeLabel={__("Height")}
+                        min={0}
+                        max={1000}
+                      />
+                    </PanelBody>
                 </InspectorControls>
             ),
             <div className={classnames(
                 className,
                 `premium-block-${this.props.clientId}`
             )} style={{textAlign: align}} id={`premium-flip-box-${this.props.clientId}`}>
-                <div className={`premium-flip-box ${this.props.clientId}`} style={{
+              <div className={`premium-flip-style-${effect}`}>
+                <div className={`premium-flip-box`} style={{
                 textAlign: align
               }}>
-                <div className="premium-flip-front premium-flip-frontrl">
+                <div className={`premium-flip-front premium-flip-front${flipDir}`}>
                   <div className="premium-flip-front-overlay">
                     <div className="premium-flip-front-content-container">
                       <div className="premium-flip-front-content" style={{ justifyContent: horizontalalignFront, alignItems: verticalalignFront }}>
-                        <div className="premium-flip-text-wrapper PafadeInLeft">
+                        <div className="premium-flip-text-wrapper">
                           {
                             iconValueFront && iconTypeFront == 'icon' && <i className={`premium-flip-front-icon ${iconFront}`}/>
                           }
@@ -417,11 +535,12 @@ class edit extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="premium-flip-back premium-flip-backrl">
+                <div className={`premium-flip-back premium-flip-back${flipDir}`}>
                   <div className="premium-flip-back-overlay">
                     <div className="premium-flip-back-content-container">
+                      {link && <a className="premium-flip-box-full-link" href={`${url}`}></a>}
                       <div className="premium-flip-back-content" style={{ justifyContent: horizontalalignBack, alignItems: verticalalignBack }}>
-                        <div className="premium-flip-back-text-wrapper PafadeInRight">
+                        <div className="premium-flip-back-text-wrapper">
                           {
                             iconValueBack && iconTypeBack == 'icon' && <i className={`premium-flip-back-icon ${iconBack}`}/>
                           }
@@ -440,6 +559,7 @@ class edit extends Component {
                       </div>
                     </div>
                   </div>
+                </div>
                 </div>
                 </div>
             </div>
