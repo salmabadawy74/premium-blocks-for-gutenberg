@@ -22,7 +22,7 @@ const flipBoxAttrs = {
   },
   align: {
     type: "string",
-    default: "left"
+    default: "center"
   },
   iconValueFront: {
     type: "boolean",
@@ -160,7 +160,7 @@ const flipBoxAttrs = {
   },
   flipDir: {
     type: "string",
-    default: "lr"
+    default: "rl"
   },
   animation: {
     type: "boolean",
@@ -185,6 +185,342 @@ const flipBoxAttrs = {
   switchCheck: {
     type: "boolean",
     default: false
+  },
+  frontShadowColor: {
+    type: "string"
+  },
+  frontShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  frontShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  frontShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  frontShadowPosition: {
+    type: "string",
+    default: ""
+  },
+  iconfrontColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  iconfrontBGColor: {
+    type: "string",
+    default: ""
+  },
+  iconfrontborderType: {
+    type: "string",
+    default: "none"
+  },
+  iconfrontborderWidth: {
+    type: "number",
+    default: "1"
+  },
+  iconfrontborderRadius: {
+    type: "number",
+    default: 0
+  },
+  iconfrontborderColor: {
+    type: "string",
+    default: "#d4d4d4"
+  },
+  iconfrontShadowColor: {
+    type: "string"
+  },
+  iconfrontShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  iconfrontShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  iconfrontShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  titlefrontColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  titlefrontLetter: {
+    type: "number",
+    default: 0
+  },
+  titlefrontStyle: {
+    type: "string",
+    default: "normal"
+  },
+  titlefrontUpper: {
+    type: "boolean",
+    default: false
+  },
+  titlefrontWeight: {
+    type: "number",
+    default: 600
+  },
+  titlefrontfontSize: {
+    type: "number",
+    default: 20
+  },
+  titlefrontfontSizeType: {
+    type: "string",
+    default: "px"
+  },
+  titlefrontfontSizeMobile: {
+    type: "number",
+    default: 20
+  },
+  titlefrontfontSizeTablet: {
+    type: "number",
+    default: 20
+  },
+  titlefrontBGColor: {
+    type: "string",
+    default: ""
+  },
+  titlefrontshadowColor: {
+    type: "string"
+  },
+  titlefrontshadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  titlefrontshadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  titlefrontshadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  descfrontColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  descfrontLetter: {
+    type: "number",
+    default: 0
+  },
+  descfrontStyle: {
+    type: "string",
+    default: "normal"
+  },
+  descfrontUpper: {
+    type: "boolean",
+    default: false
+  },
+  descfrontWeight: {
+    type: "number",
+    default: 600
+  },
+  descfrontfontSize: {
+    type: "number",
+    default: 20
+  },
+  descfrontfontSizeType: {
+    type: "string",
+    default: "px"
+  },
+  descfrontfontSizeMobile: {
+    type: "number",
+    default: 20
+  },
+  descfrontfontSizeTablet: {
+    type: "number",
+    default: 20
+  },
+  descfrontBGColor: {
+    type: "string",
+    default: ""
+  },
+  descfrontshadowColor: {
+    type: "string"
+  },
+  descfrontshadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  descfrontshadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  descfrontshadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  backShadowColor: {
+    type: "string"
+  },
+  backShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  backShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  backShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  backShadowPosition: {
+    type: "string",
+    default: ""
+  },
+  iconbackColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  iconbackBGColor: {
+    type: "string",
+    default: ""
+  },
+  iconbackborderType: {
+    type: "string",
+    default: "none"
+  },
+  iconbackborderWidth: {
+    type: "number",
+    default: "1"
+  },
+  iconbackborderRadius: {
+    type: "number",
+    default: 0
+  },
+  iconbackborderColor: {
+    type: "string",
+    default: "#d4d4d4"
+  },
+  iconbackShadowColor: {
+    type: "string"
+  },
+  iconbackShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  iconbackShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  iconbackShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  titlebackColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  titlebackLetter: {
+    type: "number",
+    default: 0
+  },
+  titlebackStyle: {
+    type: "string",
+    default: "normal"
+  },
+  titlebackUpper: {
+    type: "boolean",
+    default: false
+  },
+  titlebackWeight: {
+    type: "number",
+    default: 600
+  },
+  titlebackfontSize: {
+    type: "number",
+    default: 20
+  },
+  titlebackfontSizeType: {
+    type: "string",
+    default: "px"
+  },
+  titlebackfontSizeMobile: {
+    type: "number",
+    default: 20
+  },
+  titlebackfontSizeTablet: {
+    type: "number",
+    default: 20
+  },
+  titlebackBGColor: {
+    type: "string",
+    default: ""
+  },
+  titlebackshadowColor: {
+    type: "string"
+  },
+  titlebackshadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  titlebackshadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  titlebackshadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  descbackColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  descbackLetter: {
+    type: "number",
+    default: 0
+  },
+  descbackStyle: {
+    type: "string",
+    default: "normal"
+  },
+  descbackUpper: {
+    type: "boolean",
+    default: false
+  },
+  descbackWeight: {
+    type: "number",
+    default: 600
+  },
+  descbackfontSize: {
+    type: "number",
+    default: 20
+  },
+  descbackfontSizeType: {
+    type: "string",
+    default: "px"
+  },
+  descbackfontSizeMobile: {
+    type: "number",
+    default: 20
+  },
+  descbackfontSizeTablet: {
+    type: "number",
+    default: 20
+  },
+  descbackBGColor: {
+    type: "string",
+    default: ""
+  },
+  descbackshadowColor: {
+    type: "string"
+  },
+  descbackshadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  descbackshadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  descbackshadowVertical: {
+    type: "number",
+    default: "0"
   },
 };
 

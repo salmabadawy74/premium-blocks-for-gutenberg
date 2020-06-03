@@ -834,49 +834,6 @@ function PremiumTextShadow(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumSizeUnits;
-var _wp$components = wp.components,
-    ButtonGroup = _wp$components.ButtonGroup,
-    Button = _wp$components.Button;
-
-
-function PremiumSizeUnits(props) {
-  var units = props.units,
-      _props$onChangeSizeUn = props.onChangeSizeUnit,
-      onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
-
-
-  var sizeUnits = ["px", "em", "%"];
-
-  if (undefined !== units) {
-    sizeUnits = units;
-  }
-
-  return wp.element.createElement(
-    ButtonGroup,
-    { className: "premium-unit-control" },
-    sizeUnits.map(function (unit, index) {
-      return wp.element.createElement(
-        Button,
-        {
-          isSmall: true,
-          isDefault: true,
-          className: "premium-unit-control-btn",
-          onClick: function onClick() {
-            return onChangeSizeUnit(unit);
-          }
-        },
-        unit
-      );
-    })
-  );
-}
-
-/***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumBoxShadow;
 var __ = wp.i18n.__;
 var _wp$components = wp.components,
@@ -996,6 +953,49 @@ function PremiumBoxShadow(props) {
       },
       wp.element.createElement("i", { className: "premium-control-reset dashicons dashicons-image-rotate" })
     )
+  );
+}
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumSizeUnits;
+var _wp$components = wp.components,
+    ButtonGroup = _wp$components.ButtonGroup,
+    Button = _wp$components.Button;
+
+
+function PremiumSizeUnits(props) {
+  var units = props.units,
+      _props$onChangeSizeUn = props.onChangeSizeUnit,
+      onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
+
+
+  var sizeUnits = ["px", "em", "%"];
+
+  if (undefined !== units) {
+    sizeUnits = units;
+  }
+
+  return wp.element.createElement(
+    ButtonGroup,
+    { className: "premium-unit-control" },
+    sizeUnits.map(function (unit, index) {
+      return wp.element.createElement(
+        Button,
+        {
+          isSmall: true,
+          isDefault: true,
+          className: "premium-unit-control-btn",
+          onClick: function onClick() {
+            return onChangeSizeUnit(unit);
+          }
+        },
+        unit
+      );
+    })
   );
 }
 
@@ -1658,8 +1658,92 @@ if (process.env.NODE_ENV !== 'production') {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+function generateCSS(selectors, id) {
+	var isResponsive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+	var responsiveType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+
+
+	var styling_css = "";
+	var breakpoint = "";
+	var gen_styling_css = "";
+	var res_styling_css = "";
+
+	if (responsiveType == "tablet") {
+		breakpoint = PremiumBlocksSettings.tablet_breakpoint;
+	} else if (responsiveType == "mobile") {
+		breakpoint = PremiumBlocksSettings.mobile_breakpoint;
+	}
+
+	for (var i in selectors) {
+
+		var sel = selectors[i];
+		var css = "";
+
+		for (var j in sel) {
+
+			var checkString = true;
+
+			if (typeof sel[j] === "string" && sel[j].length === 0) {
+				checkString = false;
+			}
+
+			if ('font-family' === j && typeof sel[j] != "undefined" && 'Default' === sel[j]) {
+				continue;
+			}
+
+			if (typeof sel[j] != "undefined" && checkString) {
+				css += j + ": " + sel[j] + ";";
+			}
+		}
+
+		if (css.length !== 0) {
+			gen_styling_css += id;
+			gen_styling_css += i + "{";
+			gen_styling_css += css;
+			gen_styling_css += "}";
+		}
+	}
+
+	if (isResponsive && typeof gen_styling_css !== "undefined" && gen_styling_css.length !== 0) {
+		res_styling_css += "@media only screen and (max-width: " + breakpoint + "px) {";
+		res_styling_css += gen_styling_css;
+		res_styling_css += "}";
+	}
+
+	if (isResponsive) {
+		return res_styling_css;
+	} else {
+		return gen_styling_css;
+	}
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (generateCSS);
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function generateCSSUnit(value, unit) {
+
+	var css = "";
+
+	if (typeof value != "undefined") {
+		css += value + unit;
+	}
+
+	return css;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (generateCSSUnit);
+
+/***/ }),
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumPadding;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(8);
 
 
 var __ = wp.i18n.__;
@@ -1764,7 +1848,7 @@ function PremiumPadding(props) {
 }
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsNative = __webpack_require__(98),
@@ -1786,7 +1870,7 @@ function getNative(object, key) {
 module.exports = getNative;
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1804,7 +1888,7 @@ var FONTS = [{
 /* harmony default export */ __webpack_exports__["a"] = (FONTS);
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1957,7 +2041,7 @@ function PremiumBackground(props) {
 }
 
 /***/ }),
-/* 18 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1967,90 +2051,6 @@ var iconsList = {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (iconsList);
-
-/***/ }),
-/* 19 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-function generateCSS(selectors, id) {
-	var isResponsive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-	var responsiveType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
-
-
-	var styling_css = "";
-	var breakpoint = "";
-	var gen_styling_css = "";
-	var res_styling_css = "";
-
-	if (responsiveType == "tablet") {
-		breakpoint = PremiumBlocksSettings.tablet_breakpoint;
-	} else if (responsiveType == "mobile") {
-		breakpoint = PremiumBlocksSettings.mobile_breakpoint;
-	}
-
-	for (var i in selectors) {
-
-		var sel = selectors[i];
-		var css = "";
-
-		for (var j in sel) {
-
-			var checkString = true;
-
-			if (typeof sel[j] === "string" && sel[j].length === 0) {
-				checkString = false;
-			}
-
-			if ('font-family' === j && typeof sel[j] != "undefined" && 'Default' === sel[j]) {
-				continue;
-			}
-
-			if (typeof sel[j] != "undefined" && checkString) {
-				css += j + ": " + sel[j] + ";";
-			}
-		}
-
-		if (css.length !== 0) {
-			gen_styling_css += id;
-			gen_styling_css += i + "{";
-			gen_styling_css += css;
-			gen_styling_css += "}";
-		}
-	}
-
-	if (isResponsive && typeof gen_styling_css !== "undefined" && gen_styling_css.length !== 0) {
-		res_styling_css += "@media only screen and (max-width: " + breakpoint + "px) {";
-		res_styling_css += gen_styling_css;
-		res_styling_css += "}";
-	}
-
-	if (isResponsive) {
-		return res_styling_css;
-	} else {
-		return gen_styling_css;
-	}
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (generateCSS);
-
-/***/ }),
-/* 20 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-function generateCSSUnit(value, unit) {
-
-	var css = "";
-
-	if (typeof value != "undefined") {
-		css += value + unit;
-	}
-
-	return css;
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (generateCSSUnit);
 
 /***/ }),
 /* 21 */
@@ -2639,7 +2639,7 @@ module.exports = isObject;
 /* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(15);
+var getNative = __webpack_require__(17);
 
 /* Built-in method references that are verified to be native. */
 var nativeCreate = getNative(Object, 'create');
@@ -2761,7 +2761,7 @@ module.exports = toKey;
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = PremiumMargin;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(8);
 
 
 var __ = wp.i18n.__;
@@ -4750,7 +4750,7 @@ function sortableElement(WrappedComponent) {
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(15),
+var getNative = __webpack_require__(17),
     root = __webpack_require__(10);
 
 /* Built-in method references that are verified to be native. */
@@ -7416,7 +7416,7 @@ registerBlockType("premium/accordion", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(6);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -10217,7 +10217,7 @@ module.exports = getTag;
 /* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(15),
+var getNative = __webpack_require__(17),
     root = __webpack_require__(10);
 
 /* Built-in method references that are verified to be native. */
@@ -10229,7 +10229,7 @@ module.exports = DataView;
 /* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(15),
+var getNative = __webpack_require__(17),
     root = __webpack_require__(10);
 
 /* Built-in method references that are verified to be native. */
@@ -10241,7 +10241,7 @@ module.exports = Promise;
 /* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(15),
+var getNative = __webpack_require__(17),
     root = __webpack_require__(10);
 
 /* Built-in method references that are verified to be native. */
@@ -10253,7 +10253,7 @@ module.exports = Set;
 /* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(15),
+var getNative = __webpack_require__(17),
     root = __webpack_require__(10);
 
 /* Built-in method references that are verified to be native. */
@@ -11714,9 +11714,9 @@ registerBlockType("premium/banner", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(16);
 
 
 
@@ -13866,9 +13866,9 @@ registerBlockType("premium/button", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(18);
 
 
 
@@ -15387,10 +15387,10 @@ registerBlockType("premium/countup", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(18);
 
 
 
@@ -18011,8 +18011,8 @@ registerBlockType("premium/dheading-block", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_fonts__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_fonts__ = __webpack_require__(18);
 
 
 
@@ -20340,14 +20340,14 @@ registerBlockType("premium/icon", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(19);
 
 
 
@@ -33958,15 +33958,15 @@ registerBlockType("premium/icon-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(18);
 
 
 
@@ -39023,9 +39023,9 @@ registerBlockType("premium/pricing-table", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(8);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -42647,11 +42647,11 @@ registerBlockType("premium/container", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(8);
 
 
 
@@ -43863,9 +43863,9 @@ registerBlockType("premium/testimonial", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_default_image__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(16);
 
 
 
@@ -45693,10 +45693,10 @@ var deprecatedContent = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(18);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -48280,7 +48280,7 @@ var save = function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_times__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_times___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_lodash_times__);
@@ -50911,9 +50911,9 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styling__ = __webpack_require__(258);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_typo__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_margin_responsive__ = __webpack_require__(259);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_range_responsive__ = __webpack_require__(21);
@@ -51853,8 +51853,8 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__generateCss__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__generateCssUnit__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__generateCss__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__generateCssUnit__ = __webpack_require__(15);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -52087,7 +52087,7 @@ function styling(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_responsive__ = __webpack_require__(27);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -53986,8 +53986,8 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(15);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -54225,7 +54225,7 @@ function styling(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_responsive__ = __webpack_require__(27);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -55522,8 +55522,8 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(15);
 
 
 
@@ -56230,10 +56230,10 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(272);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_range_responsive__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(39);
@@ -57545,8 +57545,8 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(15);
 
 
 
@@ -58988,8 +58988,8 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(15);
 
 
 
@@ -60647,7 +60647,7 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__ = __webpack_require__(21);
@@ -61484,8 +61484,8 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(15);
 
 
 
@@ -61728,7 +61728,7 @@ var flipBoxAttrs = {
   },
   align: {
     type: "string",
-    default: "left"
+    default: "center"
   },
   iconValueFront: {
     type: "boolean",
@@ -61866,7 +61866,7 @@ var flipBoxAttrs = {
   },
   flipDir: {
     type: "string",
-    default: "lr"
+    default: "rl"
   },
   animation: {
     type: "boolean",
@@ -61891,6 +61891,342 @@ var flipBoxAttrs = {
   switchCheck: {
     type: "boolean",
     default: false
+  },
+  frontShadowColor: {
+    type: "string"
+  },
+  frontShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  frontShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  frontShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  frontShadowPosition: {
+    type: "string",
+    default: ""
+  },
+  iconfrontColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  iconfrontBGColor: {
+    type: "string",
+    default: ""
+  },
+  iconfrontborderType: {
+    type: "string",
+    default: "none"
+  },
+  iconfrontborderWidth: {
+    type: "number",
+    default: "1"
+  },
+  iconfrontborderRadius: {
+    type: "number",
+    default: 0
+  },
+  iconfrontborderColor: {
+    type: "string",
+    default: "#d4d4d4"
+  },
+  iconfrontShadowColor: {
+    type: "string"
+  },
+  iconfrontShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  iconfrontShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  iconfrontShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  titlefrontColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  titlefrontLetter: {
+    type: "number",
+    default: 0
+  },
+  titlefrontStyle: {
+    type: "string",
+    default: "normal"
+  },
+  titlefrontUpper: {
+    type: "boolean",
+    default: false
+  },
+  titlefrontWeight: {
+    type: "number",
+    default: 600
+  },
+  titlefrontfontSize: {
+    type: "number",
+    default: 20
+  },
+  titlefrontfontSizeType: {
+    type: "string",
+    default: "px"
+  },
+  titlefrontfontSizeMobile: {
+    type: "number",
+    default: 20
+  },
+  titlefrontfontSizeTablet: {
+    type: "number",
+    default: 20
+  },
+  titlefrontBGColor: {
+    type: "string",
+    default: ""
+  },
+  titlefrontshadowColor: {
+    type: "string"
+  },
+  titlefrontshadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  titlefrontshadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  titlefrontshadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  descfrontColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  descfrontLetter: {
+    type: "number",
+    default: 0
+  },
+  descfrontStyle: {
+    type: "string",
+    default: "normal"
+  },
+  descfrontUpper: {
+    type: "boolean",
+    default: false
+  },
+  descfrontWeight: {
+    type: "number",
+    default: 600
+  },
+  descfrontfontSize: {
+    type: "number",
+    default: 20
+  },
+  descfrontfontSizeType: {
+    type: "string",
+    default: "px"
+  },
+  descfrontfontSizeMobile: {
+    type: "number",
+    default: 20
+  },
+  descfrontfontSizeTablet: {
+    type: "number",
+    default: 20
+  },
+  descfrontBGColor: {
+    type: "string",
+    default: ""
+  },
+  descfrontshadowColor: {
+    type: "string"
+  },
+  descfrontshadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  descfrontshadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  descfrontshadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  backShadowColor: {
+    type: "string"
+  },
+  backShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  backShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  backShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  backShadowPosition: {
+    type: "string",
+    default: ""
+  },
+  iconbackColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  iconbackBGColor: {
+    type: "string",
+    default: ""
+  },
+  iconbackborderType: {
+    type: "string",
+    default: "none"
+  },
+  iconbackborderWidth: {
+    type: "number",
+    default: "1"
+  },
+  iconbackborderRadius: {
+    type: "number",
+    default: 0
+  },
+  iconbackborderColor: {
+    type: "string",
+    default: "#d4d4d4"
+  },
+  iconbackShadowColor: {
+    type: "string"
+  },
+  iconbackShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  iconbackShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  iconbackShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  titlebackColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  titlebackLetter: {
+    type: "number",
+    default: 0
+  },
+  titlebackStyle: {
+    type: "string",
+    default: "normal"
+  },
+  titlebackUpper: {
+    type: "boolean",
+    default: false
+  },
+  titlebackWeight: {
+    type: "number",
+    default: 600
+  },
+  titlebackfontSize: {
+    type: "number",
+    default: 20
+  },
+  titlebackfontSizeType: {
+    type: "string",
+    default: "px"
+  },
+  titlebackfontSizeMobile: {
+    type: "number",
+    default: 20
+  },
+  titlebackfontSizeTablet: {
+    type: "number",
+    default: 20
+  },
+  titlebackBGColor: {
+    type: "string",
+    default: ""
+  },
+  titlebackshadowColor: {
+    type: "string"
+  },
+  titlebackshadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  titlebackshadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  titlebackshadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  descbackColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  descbackLetter: {
+    type: "number",
+    default: 0
+  },
+  descbackStyle: {
+    type: "string",
+    default: "normal"
+  },
+  descbackUpper: {
+    type: "boolean",
+    default: false
+  },
+  descbackWeight: {
+    type: "number",
+    default: 600
+  },
+  descbackfontSize: {
+    type: "number",
+    default: 20
+  },
+  descbackfontSizeType: {
+    type: "string",
+    default: "px"
+  },
+  descbackfontSizeMobile: {
+    type: "number",
+    default: 20
+  },
+  descbackfontSizeTablet: {
+    type: "number",
+    default: 20
+  },
+  descbackBGColor: {
+    type: "string",
+    default: ""
+  },
+  descbackshadowColor: {
+    type: "string"
+  },
+  descbackshadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  descbackshadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  descbackshadowVertical: {
+    type: "number",
+    default: "0"
   }
 };
 
@@ -61919,14 +62255,14 @@ registerBlockType("premium/flip-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(285);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__styling__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_text_shadow__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(7);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -61934,6 +62270,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -61964,7 +62301,8 @@ var _wp$components = wp.components,
     TextControl = _wp$components.TextControl,
     Toolbar = _wp$components.Toolbar,
     ToggleControl = _wp$components.ToggleControl,
-    IconButton = _wp$components.IconButton;
+    IconButton = _wp$components.IconButton,
+    TabPanel = _wp$components.TabPanel;
 
 var edit = function (_Component) {
   _inherits(edit, _Component);
@@ -61985,21 +62323,23 @@ var edit = function (_Component) {
       this.props.setAttributes({ block_id: this.props.clientId });
       this.props.setAttributes({ classMigrate: true });
       // Pushing Style tag for this block css.
-      // const $style = document.createElement("style")
-      // $style.setAttribute("id", "premium-style-flip-box-" + this.props.clientId)
-      // document.head.appendChild($style)
-      setTimeout(this.initToggleBox, 5);
+      var $style = document.createElement("style");
+      $style.setAttribute("id", "premium-style-flip-box-" + this.props.clientId);
+      document.head.appendChild($style);
+      this.initToggleBox();
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
       clearTimeout(isBoxUpdated);
-      isBoxUpdated = this.initToggleBox();
+      isBoxUpdated = setTimeout(this.initToggleBox, 10);
     }
   }, {
     key: "initToggleBox",
     value: function initToggleBox() {
-      var block_id = this.props.attributes.block_id;
+      var _props$attributes = this.props.attributes,
+          block_id = _props$attributes.block_id,
+          animation = _props$attributes.animation;
 
       if (!block_id) return null;
 
@@ -62009,12 +62349,14 @@ var edit = function (_Component) {
       var frontLeft = document.getElementsByClassName("premium-flip-frontlr");
       var frontWrapper = document.getElementsByClassName("premium-flip-text-wrapper");
       var backWrapper = document.getElementsByClassName("premium-flip-back-text-wrapper");
-
-      if (toggleBox.length !== 0) {
+      if (!toggleBox) return null;
+      if (toggleBox.length != 0) {
         console.log("hh");
 
         toggleBox[0].addEventListener("mouseenter", function () {
           toggleBox[0].classList.add("flipped");
+          if (!animation) return null;
+
           if (frontRight) {
             frontWrapper[0].classList.remove("PafadeInLeft");
             frontWrapper[0].classList.add("PafadeInRight");
@@ -62029,6 +62371,8 @@ var edit = function (_Component) {
         });
         toggleBox[0].addEventListener("mouseleave", function () {
           toggleBox[0].classList.remove("flipped");
+          if (!animation) return null;
+
           if (frontRight) {
             frontWrapper[0].classList.add("PafadeInLeft");
             frontWrapper[0].classList.remove("PafadeInRight");
@@ -62099,7 +62443,93 @@ var edit = function (_Component) {
           height = attributes.height,
           heightType = attributes.heightType,
           heightMobile = attributes.heightMobile,
-          heightTablet = attributes.heightTablet;
+          heightTablet = attributes.heightTablet,
+          frontShadowBlur = attributes.frontShadowBlur,
+          frontShadowColor = attributes.frontShadowColor,
+          frontShadowHorizontal = attributes.frontShadowHorizontal,
+          frontShadowVertical = attributes.frontShadowVertical,
+          frontShadowPosition = attributes.frontShadowPosition,
+          iconfrontColor = attributes.iconfrontColor,
+          iconfrontBGColor = attributes.iconfrontBGColor,
+          iconfrontborderType = attributes.iconfrontborderType,
+          iconfrontborderRadius = attributes.iconfrontborderRadius,
+          iconfrontborderWidth = attributes.iconfrontborderWidth,
+          iconfrontborderColor = attributes.iconfrontborderColor,
+          iconfrontShadowBlur = attributes.iconfrontShadowBlur,
+          iconfrontShadowColor = attributes.iconfrontShadowColor,
+          iconfrontShadowHorizontal = attributes.iconfrontShadowHorizontal,
+          iconfrontShadowVertical = attributes.iconfrontShadowVertical,
+          titlefrontColor = attributes.titlefrontColor,
+          titlefrontWeight = attributes.titlefrontWeight,
+          titlefrontLetter = attributes.titlefrontLetter,
+          titlefrontUpper = attributes.titlefrontUpper,
+          titlefrontStyle = attributes.titlefrontStyle,
+          titlefrontfontSize = attributes.titlefrontfontSize,
+          titlefrontfontSizeMobile = attributes.titlefrontfontSizeMobile,
+          titlefrontfontSizeTablet = attributes.titlefrontfontSizeTablet,
+          titlefrontfontSizeType = attributes.titlefrontfontSizeType,
+          titlefrontBGColor = attributes.titlefrontBGColor,
+          titlefrontshadowBlur = attributes.titlefrontshadowBlur,
+          titlefrontshadowColor = attributes.titlefrontshadowColor,
+          titlefrontshadowHorizontal = attributes.titlefrontshadowHorizontal,
+          titlefrontshadowVertical = attributes.titlefrontshadowVertical,
+          descfrontColor = attributes.descfrontColor,
+          descfrontWeight = attributes.descfrontWeight,
+          descfrontLetter = attributes.descfrontLetter,
+          descfrontUpper = attributes.descfrontUpper,
+          descfrontStyle = attributes.descfrontStyle,
+          descfrontfontSize = attributes.descfrontfontSize,
+          descfrontfontSizeMobile = attributes.descfrontfontSizeMobile,
+          descfrontfontSizeTablet = attributes.descfrontfontSizeTablet,
+          descfrontfontSizeType = attributes.descfrontfontSizeType,
+          descfrontBGColor = attributes.descfrontBGColor,
+          descfrontshadowBlur = attributes.descfrontshadowBlur,
+          descfrontshadowColor = attributes.descfrontshadowColor,
+          descfrontshadowHorizontal = attributes.descfrontshadowHorizontal,
+          descfrontshadowVertical = attributes.descfrontshadowVertical,
+          backShadowBlur = attributes.backShadowBlur,
+          backShadowColor = attributes.backShadowColor,
+          backShadowHorizontal = attributes.backShadowHorizontal,
+          backShadowVertical = attributes.backShadowVertical,
+          backShadowPosition = attributes.backShadowPosition,
+          iconbackColor = attributes.iconbackColor,
+          iconbackBGColor = attributes.iconbackBGColor,
+          iconbackborderType = attributes.iconbackborderType,
+          iconbackborderRadius = attributes.iconbackborderRadius,
+          iconbackborderWidth = attributes.iconbackborderWidth,
+          iconbackborderColor = attributes.iconbackborderColor,
+          iconbackShadowBlur = attributes.iconbackShadowBlur,
+          iconbackShadowColor = attributes.iconbackShadowColor,
+          iconbackShadowHorizontal = attributes.iconbackShadowHorizontal,
+          iconbackShadowVertical = attributes.iconbackShadowVertical,
+          titlebackColor = attributes.titlebackColor,
+          titlebackWeight = attributes.titlebackWeight,
+          titlebackLetter = attributes.titlebackLetter,
+          titlebackUpper = attributes.titlebackUpper,
+          titlebackStyle = attributes.titlebackStyle,
+          titlebackfontSize = attributes.titlebackfontSize,
+          titlebackfontSizeMobile = attributes.titlebackfontSizeMobile,
+          titlebackfontSizeTablet = attributes.titlebackfontSizeTablet,
+          titlebackfontSizeType = attributes.titlebackfontSizeType,
+          titlebackBGColor = attributes.titlebackBGColor,
+          titlebackshadowBlur = attributes.titlebackshadowBlur,
+          titlebackshadowColor = attributes.titlebackshadowColor,
+          titlebackshadowHorizontal = attributes.titlebackshadowHorizontal,
+          titlebackshadowVertical = attributes.titlebackshadowVertical,
+          descbackColor = attributes.descbackColor,
+          descbackWeight = attributes.descbackWeight,
+          descbackLetter = attributes.descbackLetter,
+          descbackUpper = attributes.descbackUpper,
+          descbackStyle = attributes.descbackStyle,
+          descbackfontSize = attributes.descbackfontSize,
+          descbackfontSizeMobile = attributes.descbackfontSizeMobile,
+          descbackfontSizeTablet = attributes.descbackfontSizeTablet,
+          descbackfontSizeType = attributes.descbackfontSizeType,
+          descbackBGColor = attributes.descbackBGColor,
+          descbackshadowBlur = attributes.descbackshadowBlur,
+          descbackshadowColor = attributes.descbackshadowColor,
+          descbackshadowHorizontal = attributes.descbackshadowHorizontal,
+          descbackshadowVertical = attributes.descbackshadowVertical;
 
 
       var ICON = [{
@@ -62164,12 +62594,153 @@ var edit = function (_Component) {
         value: "bt",
         label: __("Bottom to Top")
       }];
+      var TABSTYLE = [{
+        name: "icon",
+        title: __("Icon")
+      }, {
+        name: "title",
+        title: __("Title")
+      }, {
+        name: "description",
+        title: __("Description")
+      }];
 
-      // var element = document.getElementById("premium-style-flip-box-" + this.props.clientId)
+      var element = document.getElementById("premium-style-flip-box-" + this.props.clientId);
 
-      // if (null != element && "undefined" != typeof element) {
-      //     element.innerHTML = styling(this.props)
-      // }
+      if (null != element && "undefined" != typeof element) {
+        element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_1__styling__["a" /* default */])(this.props);
+      }
+
+      var onResetClickFront = function onResetClickFront() {
+        setAttributes({
+          frontShadowColor: "",
+          frontShadowBlur: "0",
+          frontShadowHorizontal: "0",
+          frontShadowVertical: "0",
+          frontShadowPosition: ""
+        });
+      };
+      var onResetClickiconfrontBorder = function onResetClickiconfrontBorder() {
+        setAttributes({
+          iconfrontborderType: "none",
+          iconfrontborderWidth: "1",
+          iconfrontborderColor: "",
+          iconfrontborderRadius: "0"
+        });
+      };
+      var onResetClickiconfrontTextShadow = function onResetClickiconfrontTextShadow() {
+        setAttributes({
+          iconfrontShadowColor: "",
+          iconfrontShadowBlur: "0",
+          iconfrontShadowHorizontal: "0",
+          iconfrontShadowVertical: "0"
+        });
+      };
+      var onResetClickTitlefront = function onResetClickTitlefront() {
+        setAttributes({
+          titlefrontWeight: 600,
+          titlefrontfontSizeType: "px",
+          titlefrontfontSize: "20",
+          titlefrontfontSizeMobile: "20",
+          titlefrontfontSizeTablet: "20",
+          titlefrontStyle: "normal",
+          titlefrontLetter: "0",
+          titlefrontUpper: false
+        });
+      };
+      var onResetClickTitlefrontTextShadow = function onResetClickTitlefrontTextShadow() {
+        setAttributes({
+          titlefrontshadowColor: "",
+          titlefrontshadowBlur: "0",
+          titlefrontshadowHorizontal: "0",
+          titlefrontshadowVertical: "0"
+        });
+      };
+      var onResetClickDescfront = function onResetClickDescfront() {
+        setAttributes({
+          descfrontWeight: 600,
+          descfrontfontSizeType: "px",
+          descfrontfontSize: "20",
+          descfrontfontSizeMobile: "20",
+          descfrontfontSizeTablet: "20",
+          descfrontStyle: "normal",
+          descfrontLetter: "0",
+          descfrontUpper: false
+        });
+      };
+      var onResetClickDescfrontTextShadow = function onResetClickDescfrontTextShadow() {
+        setAttributes({
+          descfrontshadowColor: "",
+          descfrontshadowBlur: "0",
+          descfrontshadowHorizontal: "0",
+          descfrontshadowVertical: "0"
+        });
+      };
+      var onResetClickBack = function onResetClickBack() {
+        setAttributes({
+          backShadowColor: "",
+          backShadowBlur: "0",
+          backShadowHorizontal: "0",
+          backShadowVertical: "0",
+          backShadowPosition: ""
+        });
+      };
+      var onResetClickiconbackBorder = function onResetClickiconbackBorder() {
+        setAttributes({
+          iconbackborderType: "none",
+          iconbackborderWidth: "1",
+          iconbackborderColor: "",
+          iconbackborderRadius: "0"
+        });
+      };
+      var onResetClickiconbackTextShadow = function onResetClickiconbackTextShadow() {
+        setAttributes({
+          iconbackShadowColor: "",
+          iconbackShadowBlur: "0",
+          iconbackShadowHorizontal: "0",
+          iconbackShadowVertical: "0"
+        });
+      };
+      var onResetClickTitleback = function onResetClickTitleback() {
+        setAttributes({
+          titlebackWeight: 600,
+          titlebackfontSizeType: "px",
+          titlebackfontSize: "20",
+          titlebackfontSizeMobile: "20",
+          titlebackfontSizeTablet: "20",
+          titlebackStyle: "normal",
+          titlebackLetter: "0",
+          titlebackUpper: false
+        });
+      };
+      var onResetClickTitlebackTextShadow = function onResetClickTitlebackTextShadow() {
+        setAttributes({
+          titlebackshadowColor: "",
+          titlebackshadowBlur: "0",
+          titlebackshadowHorizontal: "0",
+          titlebackshadowVertical: "0"
+        });
+      };
+      var onResetClickDescback = function onResetClickDescback() {
+        setAttributes({
+          descbackWeight: 600,
+          descbackfontSizeType: "px",
+          descbackfontSize: "20",
+          descbackfontSizeMobile: "20",
+          descbackfontSizeTablet: "20",
+          descbackStyle: "normal",
+          descbackLetter: "0",
+          descbackUpper: false
+        });
+      };
+      var onResetClickDescbackTextShadow = function onResetClickDescbackTextShadow() {
+        setAttributes({
+          descbackshadowColor: "",
+          descbackshadowBlur: "0",
+          descbackshadowHorizontal: "0",
+          descbackshadowVertical: "0"
+        });
+      };
 
       return [isSelected && wp.element.createElement(
         BlockControls,
@@ -62518,6 +63089,562 @@ var edit = function (_Component) {
             min: 0,
             max: 1000
           })
+        ),
+        wp.element.createElement(
+          PanelBody,
+          {
+            title: __("Front Style"),
+            className: "premium-panel-body",
+            initialOpen: false
+          },
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__["a" /* default */], {
+            label: "Box Shadow",
+            inner: true,
+            color: frontShadowColor,
+            blur: frontShadowBlur,
+            horizontal: frontShadowHorizontal,
+            vertical: frontShadowVertical,
+            position: frontShadowPosition,
+            onChangeColor: function onChangeColor(newColor) {
+              return setAttributes({
+                frontShadowColor: newColor === undefined ? "transparent" : newColor.hex
+              });
+            },
+            onChangeBlur: function onChangeBlur(newBlur) {
+              return setAttributes({
+                frontShadowBlur: newBlur === undefined ? 0 : newBlur
+              });
+            },
+            onChangehHorizontal: function onChangehHorizontal(newValue) {
+              return setAttributes({
+                frontShadowHorizontal: newValue === undefined ? 0 : newValue
+              });
+            },
+            onChangeVertical: function onChangeVertical(newValue) {
+              return setAttributes({
+                frontShadowVertical: newValue === undefined ? 0 : newValue
+              });
+            },
+            onChangePosition: function onChangePosition(newValue) {
+              return setAttributes({
+                frontShadowPosition: newValue === undefined ? 0 : newValue
+              });
+            },
+            onResetClick: onResetClickFront
+          }),
+          wp.element.createElement(
+            TabPanel,
+            {
+              className: "premium-flip-box-tab-panel",
+              activeClass: "active-tab",
+              tabs: TABSTYLE },
+            function (tabName) {
+              if ("icon" === tabName.name) {
+                return wp.element.createElement(
+                  Fragment,
+                  null,
+                  wp.element.createElement(
+                    "p",
+                    null,
+                    __("Color")
+                  ),
+                  wp.element.createElement(ColorPalette, {
+                    value: iconfrontColor,
+                    onChange: function onChange(newValue) {
+                      return setAttributes({
+                        iconfrontColor: newValue
+                      });
+                    },
+                    allowReset: true
+                  }),
+                  wp.element.createElement(
+                    "p",
+                    null,
+                    __("Background Color")
+                  ),
+                  wp.element.createElement(ColorPalette, {
+                    value: iconfrontBGColor,
+                    onChange: function onChange(newValue) {
+                      return setAttributes({
+                        iconfrontBGColor: newValue
+                      });
+                    },
+                    allowReset: true
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
+                    borderType: iconfrontborderType,
+                    borderWidth: iconfrontborderWidth,
+                    borderColor: iconfrontborderColor,
+                    borderRadius: iconfrontborderRadius,
+                    onChangeType: function onChangeType(newType) {
+                      return setAttributes({ iconfrontborderType: newType });
+                    },
+                    onChangeWidth: function onChangeWidth(newWidth) {
+                      return setAttributes({ iconfrontborderWidth: newWidth });
+                    },
+                    onChangeColor: function onChangeColor(colorValue) {
+                      return setAttributes({ iconfrontborderColor: colorValue.hex });
+                    },
+                    onChangeRadius: function onChangeRadius(newrRadius) {
+                      return setAttributes({ iconfrontborderRadius: newrRadius });
+                    },
+                    onResetClick: onResetClickiconfrontBorder
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_text_shadow__["a" /* default */], {
+                    color: iconfrontShadowColor,
+                    blur: iconfrontShadowBlur,
+                    horizontal: iconfrontShadowHorizontal,
+                    vertical: iconfrontShadowVertical,
+                    onChangeColor: function onChangeColor(newColor) {
+                      return setAttributes({ iconfrontShadowColor: newColor.hex });
+                    },
+                    onChangeBlur: function onChangeBlur(newBlur) {
+                      return setAttributes({ iconfrontShadowBlur: newBlur });
+                    },
+                    onChangehHorizontal: function onChangehHorizontal(newValue) {
+                      return setAttributes({ iconfrontShadowHorizontal: newValue });
+                    },
+                    onChangeVertical: function onChangeVertical(newValue) {
+                      return setAttributes({ iconfrontShadowVertical: newValue });
+                    },
+                    onResetClick: onResetClickiconfrontTextShadow
+                  })
+                );
+              } else if ("title" === tabName.name) {
+                return wp.element.createElement(
+                  Fragment,
+                  null,
+                  wp.element.createElement(
+                    "p",
+                    null,
+                    __("Text Color")
+                  ),
+                  wp.element.createElement(ColorPalette, {
+                    value: titlefrontColor,
+                    onChange: function onChange(newValue) {
+                      return setAttributes({
+                        titlefrontColor: newValue
+                      });
+                    },
+                    allowReset: true
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+                    components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                    setAttributes: setAttributes,
+                    fontSizeType: { value: titlefrontfontSizeType, label: __("titlefrontfontSizeType") },
+                    fontSize: { value: titlefrontfontSize, label: __("titlefrontfontSize") },
+                    fontSizeMobile: { value: titlefrontfontSizeMobile, label: __("titlefrontfontSizeMobile") },
+                    fontSizeTablet: { value: titlefrontfontSizeTablet, label: __("titlefrontfontSizeTablet") },
+                    weight: titlefrontWeight,
+                    style: titlefrontStyle,
+                    spacing: titlefrontLetter,
+                    upper: titlefrontUpper,
+                    onChangeWeight: function onChangeWeight(newWeight) {
+                      return setAttributes({ titlefrontWeight: newWeight || 600 });
+                    },
+                    onChangeStyle: function onChangeStyle(newStyle) {
+                      return setAttributes({ titlefrontStyle: newStyle });
+                    },
+                    onChangeSpacing: function onChangeSpacing(newValue) {
+                      return setAttributes({ titlefrontLetter: newValue });
+                    },
+                    onChangeUpper: function onChangeUpper(check) {
+                      return setAttributes({ titlefrontUpper: check });
+                    },
+                    onResetClick: onResetClickTitlefront
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_text_shadow__["a" /* default */], {
+                    color: titlefrontshadowColor,
+                    blur: titlefrontshadowBlur,
+                    horizontal: titlefrontshadowHorizontal,
+                    vertical: titlefrontshadowVertical,
+                    onChangeColor: function onChangeColor(newColor) {
+                      return setAttributes({ titlefrontshadowColor: newColor.hex });
+                    },
+                    onChangeBlur: function onChangeBlur(newBlur) {
+                      return setAttributes({ titlefrontshadowBlur: newBlur });
+                    },
+                    onChangehHorizontal: function onChangehHorizontal(newValue) {
+                      return setAttributes({ titlefrontshadowHorizontal: newValue });
+                    },
+                    onChangeVertical: function onChangeVertical(newValue) {
+                      return setAttributes({ titlefrontshadowVertical: newValue });
+                    },
+                    onResetClick: onResetClickTitlefrontTextShadow
+                  }),
+                  wp.element.createElement(
+                    "p",
+                    null,
+                    __("Background Color")
+                  ),
+                  wp.element.createElement(ColorPalette, {
+                    value: titlefrontBGColor,
+                    onChange: function onChange(newValue) {
+                      return setAttributes({
+                        titlefrontBGColor: newValue
+                      });
+                    },
+                    allowReset: true
+                  })
+                );
+              } else {
+                return wp.element.createElement(
+                  Fragment,
+                  null,
+                  wp.element.createElement(
+                    "p",
+                    null,
+                    __("Text Color")
+                  ),
+                  wp.element.createElement(ColorPalette, {
+                    value: descfrontColor,
+                    onChange: function onChange(newValue) {
+                      return setAttributes({
+                        descfrontColor: newValue
+                      });
+                    },
+                    allowReset: true
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+                    components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                    setAttributes: setAttributes,
+                    fontSizeType: { value: descfrontfontSizeType, label: __("descfrontfontSizeType") },
+                    fontSize: { value: descfrontfontSize, label: __("descfrontfontSize") },
+                    fontSizeMobile: { value: descfrontfontSizeMobile, label: __("descfrontfontSizeMobile") },
+                    fontSizeTablet: { value: descfrontfontSizeTablet, label: __("descfrontfontSizeTablet") },
+                    weight: descfrontWeight,
+                    style: descfrontStyle,
+                    spacing: descfrontLetter,
+                    upper: descfrontUpper,
+                    onChangeWeight: function onChangeWeight(newWeight) {
+                      return setAttributes({ descfrontWeight: newWeight || 600 });
+                    },
+                    onChangeStyle: function onChangeStyle(newStyle) {
+                      return setAttributes({ descfrontStyle: newStyle });
+                    },
+                    onChangeSpacing: function onChangeSpacing(newValue) {
+                      return setAttributes({ descfrontLetter: newValue });
+                    },
+                    onChangeUpper: function onChangeUpper(check) {
+                      return setAttributes({ descfrontUpper: check });
+                    },
+                    onResetClick: onResetClickDescfront
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_text_shadow__["a" /* default */], {
+                    color: descfrontshadowColor,
+                    blur: descfrontshadowBlur,
+                    horizontal: descfrontshadowHorizontal,
+                    vertical: descfrontshadowVertical,
+                    onChangeColor: function onChangeColor(newColor) {
+                      return setAttributes({ descfrontshadowColor: newColor.hex });
+                    },
+                    onChangeBlur: function onChangeBlur(newBlur) {
+                      return setAttributes({ descfrontshadowBlur: newBlur });
+                    },
+                    onChangehHorizontal: function onChangehHorizontal(newValue) {
+                      return setAttributes({ descfrontshadowHorizontal: newValue });
+                    },
+                    onChangeVertical: function onChangeVertical(newValue) {
+                      return setAttributes({ descfrontshadowVertical: newValue });
+                    },
+                    onResetClick: onResetClickDescfrontTextShadow
+                  }),
+                  wp.element.createElement(
+                    "p",
+                    null,
+                    __("Background Color")
+                  ),
+                  wp.element.createElement(ColorPalette, {
+                    value: descfrontBGColor,
+                    onChange: function onChange(newValue) {
+                      return setAttributes({
+                        descfrontBGColor: newValue
+                      });
+                    },
+                    allowReset: true
+                  })
+                );
+              }
+            }
+          )
+        ),
+        wp.element.createElement(
+          PanelBody,
+          {
+            title: __("Back Style"),
+            className: "premium-panel-body",
+            initialOpen: false
+          },
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__["a" /* default */], {
+            label: "Box Shadow",
+            inner: true,
+            color: backShadowColor,
+            blur: backShadowBlur,
+            horizontal: backShadowHorizontal,
+            vertical: backShadowVertical,
+            position: backShadowPosition,
+            onChangeColor: function onChangeColor(newColor) {
+              return setAttributes({
+                backShadowColor: newColor === undefined ? "transparent" : newColor.hex
+              });
+            },
+            onChangeBlur: function onChangeBlur(newBlur) {
+              return setAttributes({
+                backShadowBlur: newBlur === undefined ? 0 : newBlur
+              });
+            },
+            onChangehHorizontal: function onChangehHorizontal(newValue) {
+              return setAttributes({
+                backShadowHorizontal: newValue === undefined ? 0 : newValue
+              });
+            },
+            onChangeVertical: function onChangeVertical(newValue) {
+              return setAttributes({
+                backShadowVertical: newValue === undefined ? 0 : newValue
+              });
+            },
+            onChangePosition: function onChangePosition(newValue) {
+              return setAttributes({
+                backShadowPosition: newValue === undefined ? 0 : newValue
+              });
+            },
+            onResetClick: onResetClickBack
+          }),
+          wp.element.createElement(
+            TabPanel,
+            {
+              className: "premium-flip-box-tab-panel",
+              activeClass: "active-tab",
+              tabs: TABSTYLE },
+            function (tabName) {
+              if ("icon" === tabName.name) {
+                return wp.element.createElement(
+                  Fragment,
+                  null,
+                  wp.element.createElement(
+                    "p",
+                    null,
+                    __("Color")
+                  ),
+                  wp.element.createElement(ColorPalette, {
+                    value: iconbackColor,
+                    onChange: function onChange(newValue) {
+                      return setAttributes({
+                        iconbackColor: newValue
+                      });
+                    },
+                    allowReset: true
+                  }),
+                  wp.element.createElement(
+                    "p",
+                    null,
+                    __("Background Color")
+                  ),
+                  wp.element.createElement(ColorPalette, {
+                    value: iconbackBGColor,
+                    onChange: function onChange(newValue) {
+                      return setAttributes({
+                        iconbackBGColor: newValue
+                      });
+                    },
+                    allowReset: true
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
+                    borderType: iconbackborderType,
+                    borderWidth: iconbackborderWidth,
+                    borderColor: iconbackborderColor,
+                    borderRadius: iconbackborderRadius,
+                    onChangeType: function onChangeType(newType) {
+                      return setAttributes({ iconbackborderType: newType });
+                    },
+                    onChangeWidth: function onChangeWidth(newWidth) {
+                      return setAttributes({ iconbackborderWidth: newWidth });
+                    },
+                    onChangeColor: function onChangeColor(colorValue) {
+                      return setAttributes({ iconbackborderColor: colorValue.hex });
+                    },
+                    onChangeRadius: function onChangeRadius(newrRadius) {
+                      return setAttributes({ iconbackborderRadius: newrRadius });
+                    },
+                    onResetClick: onResetClickiconbackBorder
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_text_shadow__["a" /* default */], {
+                    color: iconbackShadowColor,
+                    blur: iconbackShadowBlur,
+                    horizontal: iconbackShadowHorizontal,
+                    vertical: iconbackShadowVertical,
+                    onChangeColor: function onChangeColor(newColor) {
+                      return setAttributes({ iconbackShadowColor: newColor.hex });
+                    },
+                    onChangeBlur: function onChangeBlur(newBlur) {
+                      return setAttributes({ iconbackShadowBlur: newBlur });
+                    },
+                    onChangehHorizontal: function onChangehHorizontal(newValue) {
+                      return setAttributes({ iconbackShadowHorizontal: newValue });
+                    },
+                    onChangeVertical: function onChangeVertical(newValue) {
+                      return setAttributes({ iconbackShadowVertical: newValue });
+                    },
+                    onResetClick: onResetClickiconbackTextShadow
+                  })
+                );
+              } else if ("title" === tabName.name) {
+                return wp.element.createElement(
+                  Fragment,
+                  null,
+                  wp.element.createElement(
+                    "p",
+                    null,
+                    __("Text Color")
+                  ),
+                  wp.element.createElement(ColorPalette, {
+                    value: titlebackColor,
+                    onChange: function onChange(newValue) {
+                      return setAttributes({
+                        titlebackColor: newValue
+                      });
+                    },
+                    allowReset: true
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+                    components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                    setAttributes: setAttributes,
+                    fontSizeType: { value: titlebackfontSizeType, label: __("titlebackfontSizeType") },
+                    fontSize: { value: titlebackfontSize, label: __("titlebackfontSize") },
+                    fontSizeMobile: { value: titlebackfontSizeMobile, label: __("titlebackfontSizeMobile") },
+                    fontSizeTablet: { value: titlebackfontSizeTablet, label: __("titlebackfontSizeTablet") },
+                    weight: titlebackWeight,
+                    style: titlebackStyle,
+                    spacing: titlebackLetter,
+                    upper: titlebackUpper,
+                    onChangeWeight: function onChangeWeight(newWeight) {
+                      return setAttributes({ titlebackWeight: newWeight || 600 });
+                    },
+                    onChangeStyle: function onChangeStyle(newStyle) {
+                      return setAttributes({ titlebackStyle: newStyle });
+                    },
+                    onChangeSpacing: function onChangeSpacing(newValue) {
+                      return setAttributes({ titlebackLetter: newValue });
+                    },
+                    onChangeUpper: function onChangeUpper(check) {
+                      return setAttributes({ titlebackUpper: check });
+                    },
+                    onResetClick: onResetClickTitleback
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_text_shadow__["a" /* default */], {
+                    color: titlebackshadowColor,
+                    blur: titlebackshadowBlur,
+                    horizontal: titlebackshadowHorizontal,
+                    vertical: titlebackshadowVertical,
+                    onChangeColor: function onChangeColor(newColor) {
+                      return setAttributes({ titlebackshadowColor: newColor.hex });
+                    },
+                    onChangeBlur: function onChangeBlur(newBlur) {
+                      return setAttributes({ titlebackshadowBlur: newBlur });
+                    },
+                    onChangehHorizontal: function onChangehHorizontal(newValue) {
+                      return setAttributes({ titlebackshadowHorizontal: newValue });
+                    },
+                    onChangeVertical: function onChangeVertical(newValue) {
+                      return setAttributes({ titlebackshadowVertical: newValue });
+                    },
+                    onResetClick: onResetClickTitlebackTextShadow
+                  }),
+                  wp.element.createElement(
+                    "p",
+                    null,
+                    __("Background Color")
+                  ),
+                  wp.element.createElement(ColorPalette, {
+                    value: titlebackBGColor,
+                    onChange: function onChange(newValue) {
+                      return setAttributes({
+                        titlebackBGColor: newValue
+                      });
+                    },
+                    allowReset: true
+                  })
+                );
+              } else {
+                return wp.element.createElement(
+                  Fragment,
+                  null,
+                  wp.element.createElement(
+                    "p",
+                    null,
+                    __("Text Color")
+                  ),
+                  wp.element.createElement(ColorPalette, {
+                    value: descbackColor,
+                    onChange: function onChange(newValue) {
+                      return setAttributes({
+                        descbackColor: newValue
+                      });
+                    },
+                    allowReset: true
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
+                    components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                    setAttributes: setAttributes,
+                    fontSizeType: { value: descbackfontSizeType, label: __("descbackfontSizeType") },
+                    fontSize: { value: descbackfontSize, label: __("descbackfontSize") },
+                    fontSizeMobile: { value: descbackfontSizeMobile, label: __("descbackfontSizeMobile") },
+                    fontSizeTablet: { value: descbackfontSizeTablet, label: __("descbackfontSizeTablet") },
+                    weight: descbackWeight,
+                    style: descbackStyle,
+                    spacing: descbackLetter,
+                    upper: descbackUpper,
+                    onChangeWeight: function onChangeWeight(newWeight) {
+                      return setAttributes({ descbackWeight: newWeight || 600 });
+                    },
+                    onChangeStyle: function onChangeStyle(newStyle) {
+                      return setAttributes({ descbackStyle: newStyle });
+                    },
+                    onChangeSpacing: function onChangeSpacing(newValue) {
+                      return setAttributes({ descbackLetter: newValue });
+                    },
+                    onChangeUpper: function onChangeUpper(check) {
+                      return setAttributes({ descbackUpper: check });
+                    },
+                    onResetClick: onResetClickDescback
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_text_shadow__["a" /* default */], {
+                    color: descbackshadowColor,
+                    blur: descbackshadowBlur,
+                    horizontal: descbackshadowHorizontal,
+                    vertical: descbackshadowVertical,
+                    onChangeColor: function onChangeColor(newColor) {
+                      return setAttributes({ descbackshadowColor: newColor.hex });
+                    },
+                    onChangeBlur: function onChangeBlur(newBlur) {
+                      return setAttributes({ descbackshadowBlur: newBlur });
+                    },
+                    onChangehHorizontal: function onChangehHorizontal(newValue) {
+                      return setAttributes({ descbackshadowHorizontal: newValue });
+                    },
+                    onChangeVertical: function onChangeVertical(newValue) {
+                      return setAttributes({ descbackshadowVertical: newValue });
+                    },
+                    onResetClick: onResetClickDescbackTextShadow
+                  }),
+                  wp.element.createElement(
+                    "p",
+                    null,
+                    __("Background Color")
+                  ),
+                  wp.element.createElement(ColorPalette, {
+                    value: descbackBGColor,
+                    onChange: function onChange(newValue) {
+                      return setAttributes({
+                        descbackBGColor: newValue
+                      });
+                    },
+                    allowReset: true
+                  })
+                );
+              }
+            }
+          )
         )
       ), wp.element.createElement(
         "div",
@@ -62532,7 +63659,7 @@ var edit = function (_Component) {
               } },
             wp.element.createElement(
               "div",
-              { className: "premium-flip-front premium-flip-front" + flipDir },
+              { className: "premium-flip-front premium-flip-front" + flipDir, style: { textAlign: align } },
               wp.element.createElement(
                 "div",
                 { className: "premium-flip-front-overlay" },
@@ -62555,11 +63682,7 @@ var edit = function (_Component) {
                       descValueFront && wp.element.createElement(
                         "div",
                         { className: "premium-flip-front-description" },
-                        wp.element.createElement(
-                          "p",
-                          null,
-                          descFront
-                        )
+                        descFront
                       )
                     )
                   )
@@ -62568,7 +63691,7 @@ var edit = function (_Component) {
             ),
             wp.element.createElement(
               "div",
-              { className: "premium-flip-back premium-flip-back" + flipDir },
+              { className: "premium-flip-back premium-flip-back" + flipDir, style: { textAlign: align } },
               wp.element.createElement(
                 "div",
                 { className: "premium-flip-back-overlay" },
@@ -62592,11 +63715,7 @@ var edit = function (_Component) {
                       descValueBack && wp.element.createElement(
                         "div",
                         { className: "premium-flip-back-description" },
-                        wp.element.createElement(
-                          "p",
-                          null,
-                          descBack
-                        )
+                        descBack
                       )
                     )
                   )
@@ -62616,9 +63735,243 @@ var edit = function (_Component) {
 
 /***/ }),
 /* 285 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(15);
 
 
+
+function styling(props) {
+  var _props$attributes = props.attributes,
+      classMigrate = _props$attributes.classMigrate,
+      frontShadowBlur = _props$attributes.frontShadowBlur,
+      frontShadowColor = _props$attributes.frontShadowColor,
+      frontShadowHorizontal = _props$attributes.frontShadowHorizontal,
+      frontShadowVertical = _props$attributes.frontShadowVertical,
+      frontShadowPosition = _props$attributes.frontShadowPosition,
+      iconSizeFront = _props$attributes.iconSizeFront,
+      iconSizeFrontType = _props$attributes.iconSizeFrontType,
+      iconSizeFrontMobile = _props$attributes.iconSizeFrontMobile,
+      iconSizeFrontTablet = _props$attributes.iconSizeFrontTablet,
+      iconfrontColor = _props$attributes.iconfrontColor,
+      iconfrontBGColor = _props$attributes.iconfrontBGColor,
+      iconfrontborderType = _props$attributes.iconfrontborderType,
+      iconfrontborderRadius = _props$attributes.iconfrontborderRadius,
+      iconfrontborderWidth = _props$attributes.iconfrontborderWidth,
+      iconfrontborderColor = _props$attributes.iconfrontborderColor,
+      iconfrontShadowBlur = _props$attributes.iconfrontShadowBlur,
+      iconfrontShadowColor = _props$attributes.iconfrontShadowColor,
+      iconfrontShadowHorizontal = _props$attributes.iconfrontShadowHorizontal,
+      iconfrontShadowVertical = _props$attributes.iconfrontShadowVertical,
+      titlefrontColor = _props$attributes.titlefrontColor,
+      titlefrontWeight = _props$attributes.titlefrontWeight,
+      titlefrontLetter = _props$attributes.titlefrontLetter,
+      titlefrontUpper = _props$attributes.titlefrontUpper,
+      titlefrontStyle = _props$attributes.titlefrontStyle,
+      titlefrontfontSize = _props$attributes.titlefrontfontSize,
+      titlefrontfontSizeMobile = _props$attributes.titlefrontfontSizeMobile,
+      titlefrontfontSizeTablet = _props$attributes.titlefrontfontSizeTablet,
+      titlefrontfontSizeType = _props$attributes.titlefrontfontSizeType,
+      titlefrontBGColor = _props$attributes.titlefrontBGColor,
+      titlefrontshadowBlur = _props$attributes.titlefrontshadowBlur,
+      titlefrontshadowColor = _props$attributes.titlefrontshadowColor,
+      titlefrontshadowHorizontal = _props$attributes.titlefrontshadowHorizontal,
+      titlefrontshadowVertical = _props$attributes.titlefrontshadowVertical,
+      descfrontColor = _props$attributes.descfrontColor,
+      descfrontWeight = _props$attributes.descfrontWeight,
+      descfrontLetter = _props$attributes.descfrontLetter,
+      descfrontUpper = _props$attributes.descfrontUpper,
+      descfrontStyle = _props$attributes.descfrontStyle,
+      descfrontfontSize = _props$attributes.descfrontfontSize,
+      descfrontfontSizeMobile = _props$attributes.descfrontfontSizeMobile,
+      descfrontfontSizeTablet = _props$attributes.descfrontfontSizeTablet,
+      descfrontfontSizeType = _props$attributes.descfrontfontSizeType,
+      descfrontBGColor = _props$attributes.descfrontBGColor,
+      descfrontshadowBlur = _props$attributes.descfrontshadowBlur,
+      descfrontshadowColor = _props$attributes.descfrontshadowColor,
+      descfrontshadowHorizontal = _props$attributes.descfrontshadowHorizontal,
+      descfrontshadowVertical = _props$attributes.descfrontshadowVertical,
+      backShadowBlur = _props$attributes.backShadowBlur,
+      backShadowColor = _props$attributes.backShadowColor,
+      backShadowHorizontal = _props$attributes.backShadowHorizontal,
+      backShadowVertical = _props$attributes.backShadowVertical,
+      backShadowPosition = _props$attributes.backShadowPosition,
+      iconbackColor = _props$attributes.iconbackColor,
+      iconbackBGColor = _props$attributes.iconbackBGColor,
+      iconbackborderType = _props$attributes.iconbackborderType,
+      iconbackborderRadius = _props$attributes.iconbackborderRadius,
+      iconbackborderWidth = _props$attributes.iconbackborderWidth,
+      iconbackborderColor = _props$attributes.iconbackborderColor,
+      iconbackShadowBlur = _props$attributes.iconbackShadowBlur,
+      iconbackShadowColor = _props$attributes.iconbackShadowColor,
+      iconbackShadowHorizontal = _props$attributes.iconbackShadowHorizontal,
+      iconbackShadowVertical = _props$attributes.iconbackShadowVertical,
+      titlebackColor = _props$attributes.titlebackColor,
+      titlebackWeight = _props$attributes.titlebackWeight,
+      titlebackLetter = _props$attributes.titlebackLetter,
+      titlebackUpper = _props$attributes.titlebackUpper,
+      titlebackStyle = _props$attributes.titlebackStyle,
+      titlebackfontSize = _props$attributes.titlebackfontSize,
+      titlebackfontSizeMobile = _props$attributes.titlebackfontSizeMobile,
+      titlebackfontSizeTablet = _props$attributes.titlebackfontSizeTablet,
+      titlebackfontSizeType = _props$attributes.titlebackfontSizeType,
+      titlebackBGColor = _props$attributes.titlebackBGColor,
+      titlebackshadowBlur = _props$attributes.titlebackshadowBlur,
+      titlebackshadowColor = _props$attributes.titlebackshadowColor,
+      titlebackshadowHorizontal = _props$attributes.titlebackshadowHorizontal,
+      titlebackshadowVertical = _props$attributes.titlebackshadowVertical,
+      descbackColor = _props$attributes.descbackColor,
+      descbackWeight = _props$attributes.descbackWeight,
+      descbackLetter = _props$attributes.descbackLetter,
+      descbackUpper = _props$attributes.descbackUpper,
+      descbackStyle = _props$attributes.descbackStyle,
+      descbackfontSize = _props$attributes.descbackfontSize,
+      descbackfontSizeMobile = _props$attributes.descbackfontSizeMobile,
+      descbackfontSizeTablet = _props$attributes.descbackfontSizeTablet,
+      descbackfontSizeType = _props$attributes.descbackfontSizeType,
+      descbackBGColor = _props$attributes.descbackBGColor,
+      descbackshadowBlur = _props$attributes.descbackshadowBlur,
+      descbackshadowColor = _props$attributes.descbackshadowColor,
+      descbackshadowHorizontal = _props$attributes.descbackshadowHorizontal,
+      descbackshadowVertical = _props$attributes.descbackshadowVertical,
+      iconSizeBack = _props$attributes.iconSizeBack,
+      iconSizeBackType = _props$attributes.iconSizeBackType,
+      iconSizeBackMobile = _props$attributes.iconSizeBackMobile,
+      iconSizeBackTablet = _props$attributes.iconSizeBackTablet;
+
+
+  var selectors = {};
+  var tablet_selectors = {};
+  var mobile_selectors = {};
+
+  selectors = {
+    " .premium-flip-front": {
+      "box-shadow": frontShadowHorizontal + 'px ' + frontShadowVertical + 'px ' + frontShadowBlur + 'px ' + frontShadowColor + ' ' + frontShadowPosition
+    },
+    " .premium-flip-front-icon": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFront, iconSizeFrontType),
+      "color": iconfrontColor,
+      "border-style": iconfrontborderType,
+      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconfrontborderWidth, "px"),
+      "border-color": iconfrontborderColor,
+      "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconfrontborderRadius, "px"),
+      "background": iconfrontBGColor,
+      "text-shadow": iconfrontShadowHorizontal + 'px ' + iconfrontShadowVertical + 'px ' + iconfrontShadowBlur + 'px ' + iconfrontShadowColor
+    },
+    " .premium-flip-front-title": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefrontfontSize, titlefrontfontSizeType),
+      "color": titlefrontColor,
+      "font-weight": titlefrontWeight,
+      "letter-spacing": titlefrontLetter + "px" + "!important",
+      "text-transform": titlefrontUpper ? "uppercase" : "none" + "!important",
+      "font-style": titlefrontStyle + "!important",
+      "background": titlefrontBGColor,
+      "text-shadow": titlefrontshadowHorizontal + 'px ' + titlefrontshadowVertical + 'px ' + titlefrontshadowBlur + 'px ' + titlefrontshadowColor
+    },
+    " .premium-flip-front-description": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descfrontfontSize, descfrontfontSizeType),
+      "color": descfrontColor,
+      "font-weight": descfrontWeight,
+      "letter-spacing": descfrontLetter + "px" + "!important",
+      "text-transform": descfrontUpper ? "uppercase" : "none" + "!important",
+      "font-style": descfrontStyle + "!important",
+      "background": descfrontBGColor,
+      "text-shadow": descfrontshadowHorizontal + 'px ' + descfrontshadowVertical + 'px ' + descfrontshadowBlur + 'px ' + descfrontshadowColor
+    },
+    " .premium-flip-back": {
+      "box-shadow": backShadowHorizontal + 'px ' + backShadowVertical + 'px ' + backShadowBlur + 'px ' + backShadowColor + ' ' + backShadowPosition
+    },
+    " .premium-flip-back-icon": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBack, iconSizeBackType),
+      "color": iconbackColor,
+      "border-style": iconbackborderType,
+      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconbackborderWidth, "px"),
+      "border-color": iconbackborderColor,
+      "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconbackborderRadius, "px"),
+      "background": iconbackBGColor,
+      "text-shadow": iconbackShadowHorizontal + 'px ' + iconbackShadowVertical + 'px ' + iconbackShadowBlur + 'px ' + iconbackShadowColor
+    },
+    " .premium-flip-back-title": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlebackfontSize, titlebackfontSizeType),
+      "color": titlebackColor,
+      "font-weight": titlebackWeight,
+      "letter-spacing": titlebackLetter + "px" + "!important",
+      "text-transform": titlebackUpper ? "uppercase" : "none" + "!important",
+      "font-style": titlebackStyle + "!important",
+      "background": titlebackBGColor,
+      "text-shadow": titlebackshadowHorizontal + 'px ' + titlebackshadowVertical + 'px ' + titlebackshadowBlur + 'px ' + titlebackshadowColor
+    },
+    " .premium-flip-back-description": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descbackfontSize, descbackfontSizeType),
+      "color": descbackColor,
+      "font-weight": descbackWeight,
+      "letter-spacing": descbackLetter + "px" + "!important",
+      "text-transform": descbackUpper ? "uppercase" : "none" + "!important",
+      "font-style": descbackStyle + "!important",
+      "background": descbackBGColor,
+      "text-shadow": descbackshadowHorizontal + 'px ' + descbackshadowVertical + 'px ' + descbackshadowBlur + 'px ' + descbackshadowColor
+    }
+  };
+
+  mobile_selectors = {
+    " .premium-flip-front-icon": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFrontMobile, iconSizeFrontType)
+    },
+    " .premium-flip-front-title": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefrontfontSizeMobile, titlefrontfontSizeType)
+    },
+    " .premium-flip-front-description": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descfrontfontSizeMobile, descfrontfontSizeType)
+    },
+    " .premium-flip-back-icon": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBackMobile, iconSizeBackType)
+    },
+    " .premium-flip-back-title": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlebackfontSizeMobile, titlebackfontSizeType)
+    },
+    " .premium-flip-back-description": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descbackfontSizeMobile, descbackfontSizeType)
+    }
+  };
+
+  tablet_selectors = {
+    " .premium-flip-front-icon": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFrontTablet, iconSizeFrontType)
+    },
+    " .premium-flip-front-title": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefrontfontSizeTablet, titlefrontfontSizeType)
+    },
+    " .premium-flip-front-description": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descfrontfontSizeTablet, descfrontfontSizeType)
+    },
+    " .premium-flip-back-icon": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBackTablet, iconSizeBackType)
+    },
+    " .premium-flip-back-title": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlebackfontSizeTablet, titlebackfontSizeType)
+    },
+    " .premium-flip-back-description": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descbackfontSizeTablet, descbackfontSizeType)
+    }
+  };
+
+  var styling_css = "";
+  var id = '#premium-flip-box-' + props.clientId;
+  if (classMigrate) {
+    id = '.premium-block-' + props.clientId;
+  }
+
+  styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(selectors, id);
+  styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
+
+  styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
+
+  return styling_css;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ })
 /******/ ]);

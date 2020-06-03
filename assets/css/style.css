@@ -3882,3 +3882,28 @@ color: #23282d;
   -ms-transform: none;
   transform: none;
 }
+/* Tab Panel */
+.premium-flip-box-tab-panel .components-tab-panel__tabs {
+  margin-bottom: 15px;
+}
+.premium-flip-box-tab-panel .components-tab-panel__tabs button {
+  width: 33%;
+  padding: 10px;
+  background: transparent;
+  color: #333;
+  outline: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 3px solid #eee;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+  justify-content: center;
+}
+.premium-flip-box-tab-panel button.active-tab {
+  background: #eee !important;
+  outline: none;
+  font-weight: 500;
+}
