@@ -183,7 +183,9 @@ class Premium_Blocks_Integration {
 		
 				$is_fancy_text_enabled = self::$blocks['fancyText'];
 				
-        $is_title_enabled = self::$blocks['title'];
+				$is_title_enabled = self::$blocks['title'];
+				
+        $is_flip_box_enabled = self::$blocks['flipBox'];
 
         
         wp_enqueue_style(
@@ -336,6 +338,15 @@ class Premium_Blocks_Integration {
 			wp_enqueue_script(
             'title-js',
             PREMIUM_BLOCKS_URL . 'assets/js/title.js',
+            array('jquery'),
+            PREMIUM_BLOCKS_VERSION
+      		);
+		}
+
+		if( $is_flip_box_enabled) {
+			wp_enqueue_script(
+            'flip-box-js',
+            PREMIUM_BLOCKS_URL . 'assets/js/flip-box.js',
             array('jquery'),
             PREMIUM_BLOCKS_VERSION
       		);
@@ -608,6 +619,9 @@ class Premium_Blocks_Integration {
 									break;
 								case 'premium/title':
 									$css += $this->get_title_css( $blockattr, $block_id );
+									break;
+								case 'premium/flip-box':
+									$css += $this->get_flip_box_css( $blockattr, $block_id );
 									break;
                 default:
                     // Nothing to do here.
@@ -1486,6 +1500,158 @@ class Premium_Blocks_Integration {
             return $generated_css;
 		}
 
+		public static function get_flip_box_css ( $attr, $id ){
+			$defaults = self::$block_list['premium/flip-box']['attributes'];
+            
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors = array(
+				// Desktop Icon Size CSS starts.
+				" .premium-flip-front" => array(
+					"box-shadow" => self::get_css_value($attr['frontShadowHorizontal'], 'px ') . self::get_css_value($attr['frontShadowVertical'],'px ') . self::get_css_value($attr['frontShadowBlur'],'px ') .  self::get_css_value($attr['frontShadowColor'], " ") . $attr[ 'frontShadowPosition']
+				),
+				" .premium-flip-front-icon" => array(
+					"font-size" =>  self::get_css_value($attr['iconSizeFront'] , $attr['iconSizeFrontType'] ),
+					"color" => self::get_css_value($attr['iconfrontColor'], '!important') ,
+					"background" => self::get_css_value($attr['iconfrontBGColor'], '!important') ,
+					"border-width" => self::get_css_value($attr['iconfrontborderWidth'], 'px'),
+					"border-color" => $attr['iconfrontborderColor'],
+					"border-style" => $attr['iconfrontborderType'],
+					"border-radius" => self::get_css_value($attr['iconfrontborderRadius'], 'px'),
+					"text-shadow" => self::get_css_value($attr['iconfrontShadowHorizontal'],'px ') .self::get_css_value($attr['iconfrontShadowVertical'],'px ') . self::get_css_value($attr['iconfrontShadowBlur'], 'px ') . $attr['iconfrontShadowColor']
+				),
+				" .premium-flip-text-wrapper img" => array(
+					"width" => self::get_css_value($attr['iconSizeFront'] , $attr['iconSizeFrontType'] ),
+					"height" => self::get_css_value($attr['iconSizeFront'] , $attr['iconSizeFrontType'] ),
+				),
+				" .premium-flip-front-title" => array(
+					"font-size" =>  self::get_css_value($attr['titlefrontfontSize'] , $attr['titlefrontfontSizeType'] ),
+					"color" => self::get_css_value($attr['titlefrontColor'], '!important') ,
+					"background" => self::get_css_value($attr['titlefrontBGColor'], '!important') ,
+					"letter-spacing" => self::get_css_value($attr['titlefrontLetter'] , 'px') ,
+					"text-transform" => $attr['titlefrontUpper'] ? "uppercase" : "none" ,
+					"font-style" => self::get_css_value($attr['titlefrontStyle'], " !important") ,
+					"font-weight" => self::get_css_value($attr['titlefrontWeight'], " !important") ,
+					"text-shadow" => self::get_css_value($attr['titlefrontshadowHorizontal'],'px ') .self::get_css_value($attr['titlefrontshadowVertical'],'px ') . self::get_css_value($attr['titlefrontshadowBlur'], 'px ') . $attr['titlefrontshadowColor']
+				),
+				" .premium-flip-front-description" => array(
+					"font-size" =>  self::get_css_value($attr['descfrontfontSize'] , $attr['descfrontfontSizeType'] ),
+					"color" => self::get_css_value($attr['descfrontColor'], '!important') ,
+					"background" => self::get_css_value($attr['descfrontBGColor'], '!important') ,
+					"letter-spacing" => self::get_css_value($attr['descfrontLetter'] , 'px') ,
+					"text-transform" => $attr['descfrontUpper'] ? "uppercase" : "none" ,
+					"font-style" => self::get_css_value($attr['descfrontStyle'], " !important") ,
+					"font-weight" => self::get_css_value($attr['descfrontWeight'], " !important") ,
+					"text-shadow" => self::get_css_value($attr['descfrontshadowHorizontal'],'px ') .self::get_css_value($attr['descfrontshadowVertical'],'px ') . self::get_css_value($attr['descfrontshadowBlur'], 'px ') . $attr['descfrontshadowColor']
+				),
+				" .premium-flip-back" => array(
+					"box-shadow" => self::get_css_value($attr['backShadowHorizontal'], 'px ') . self::get_css_value($attr['backShadowVertical'],'px ') . self::get_css_value($attr['backShadowBlur'],'px ') .  self::get_css_value($attr['backShadowColor'], " ") . $attr[ 'backShadowPosition']
+				),
+				" .premium-flip-back-icon" => array(
+					"font-size" =>  self::get_css_value($attr['iconSizeBack'] , $attr['iconSizeBackType'] ),
+					"color" => self::get_css_value($attr['iconbackColor'], '!important') ,
+					"background" => self::get_css_value($attr['iconbackBGColor'], '!important') ,
+					"border-width" => self::get_css_value($attr['iconbackborderWidth'], 'px'),
+					"border-color" => $attr['iconbackborderColor'],
+					"border-style" => $attr['iconbackborderType'],
+					"border-radius" => self::get_css_value($attr['iconbackborderRadius'], 'px'),
+					"text-shadow" => self::get_css_value($attr['iconbackShadowHorizontal'],'px ') .self::get_css_value($attr['iconbackShadowVertical'],'px ') . self::get_css_value($attr['iconbackShadowBlur'], 'px ') . $attr['iconbackShadowColor']
+				),
+				" .premium-flip-back-text-wrapper img" => array(
+					"width" => self::get_css_value($attr['iconSizeBack'] , $attr['iconSizeBackType'] ),
+					"height" => self::get_css_value($attr['iconSizeBack'] , $attr['iconSizeBackType'] ),
+				),
+				" .premium-flip-back-title" => array(
+					"font-size" =>  self::get_css_value($attr['titlebackfontSize'] , $attr['titlebackfontSizeType'] ),
+					"color" => self::get_css_value($attr['titlebackColor'], '!important') ,
+					"background" => self::get_css_value($attr['titlebackBGColor'], '!important') ,
+					"letter-spacing" => self::get_css_value($attr['titlebackLetter'] , 'px') ,
+					"text-transform" => $attr['titlebackUpper'] ? "uppercase" : "none" ,
+					"font-style" => self::get_css_value($attr['titlebackStyle'], " !important") ,
+					"font-weight" => self::get_css_value($attr['titlebackWeight'], " !important") ,
+					"text-shadow" => self::get_css_value($attr['titlebackshadowHorizontal'],'px ') .self::get_css_value($attr['titlebackshadowVertical'],'px ') . self::get_css_value($attr['titlebackshadowBlur'], 'px ') . $attr['titlebackshadowColor']
+				),
+				" .premium-flip-back-description" => array(
+					"font-size" =>  self::get_css_value($attr['descbackfontSize'] , $attr['descbackfontSizeType'] ),
+					"color" => self::get_css_value($attr['descbackColor'], '!important') ,
+					"background" => self::get_css_value($attr['descbackBGColor'], '!important') ,
+					"letter-spacing" => self::get_css_value($attr['descbackLetter'] , 'px') ,
+					"text-transform" => $attr['descbackUpper'] ? "uppercase" : "none" ,
+					"font-style" => self::get_css_value($attr['descbackStyle'], " !important") ,
+					"font-weight" => self::get_css_value($attr['descbackWeight'], " !important") ,
+					"text-shadow" => self::get_css_value($attr['descbackshadowHorizontal'],'px ') .self::get_css_value($attr['descbackshadowVertical'],'px ') . self::get_css_value($attr['descbackshadowBlur'], 'px ') . $attr['descbackshadowColor']
+				)
+      );
+      // Desktop Icon Size CSS ends.
+
+			// Mobile Icon Size CSS starts.
+			$m_selectors = array(
+				" .premium-flip-front-icon"  => array(
+					"font-size" => self::get_css_value($attr['iconSizeFrontMobile'], $attr['iconSizeFrontType']) . "!important"
+				),
+				" .premium-flip-front-title"  => array(
+					"font-size" => self::get_css_value($attr['titlefrontfontSizeMobile'], $attr['titlefrontfontSizeType']) . "!important"
+				),
+				" .premium-flip-front-description"  => array(
+					"font-size" => self::get_css_value($attr['descfrontfontSizeMobile'], $attr['descfrontfontSizeType']) . "!important"
+				),
+				" .premium-flip-back-icon"  => array(
+					"font-size" => self::get_css_value($attr['iconSizeBackMobile'], $attr['iconSizeBackType']) . "!important"
+				),
+				" .premium-flip-back-title"  => array(
+					"font-size" => self::get_css_value($attr['titlebackfontSizeMobile'], $attr['titlebackfontSizeType']) . "!important"
+				),
+				" .premium-flip-back-description"  => array(
+					"font-size" => self::get_css_value($attr['descbackfontSizeMobile'], $attr['descbackfontSizeType']) . "!important"
+				)
+			);
+			// Mobile Icon Size CSS ends.
+
+			// Tablet Icon Size CSS starts.
+			$t_selectors = array(
+				" .premium-flip-front-icon"  => array(
+					"font-size" => self::get_css_value($attr['iconSizeFrontTablet'], $attr['iconSizeFrontType']) . "!important"
+				),
+				" .premium-flip-front-title"  => array(
+					"font-size" => self::get_css_value($attr['titlefrontfontSizeTablet'], $attr['titlefrontfontSizeType']) . "!important"
+				),
+				" .premium-flip-front-description"  => array(
+					"font-size" => self::get_css_value($attr['descfrontfontSizeTablet'], $attr['descfrontfontSizeType']) . "!important"
+				),
+				" .premium-flip-back-icon"  => array(
+					"font-size" => self::get_css_value($attr['iconSizeBackTablet'], $attr['iconSizeBackType']) . "!important"
+				),
+				" .premium-flip-back-title"  => array(
+					"font-size" => self::get_css_value($attr['titlebackfontSizeTablet'], $attr['titlebackfontSizeType']) . "!important"
+				),
+				" .premium-flip-back-description"  => array(
+					"font-size" => self::get_css_value($attr['descbackfontSizeTablet'], $attr['descbackfontSizeType']) . "!important"
+				)
+			);
+			// Tablet Icon Size CSS ends.
+
+			// @codingStandardsIgnoreEnd
+
+			$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-flip-box-';
+
+        $desktop = self::generate_css( $selectors, $base_selector . $id );
+
+				$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+        $mobile = self::generate_css( $m_selectors, $base_selector . $id );
+            
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => $tablet,
+				'mobile'  => $mobile,
+			);
+            
+            return $generated_css;
+		}
+
 		public static function get_title_css ( $attr, $id ){
 			$defaults = self::$block_list['premium/title']['attributes'];
             
@@ -1589,7 +1755,7 @@ class Premium_Blocks_Integration {
 
 			// Mobile Icon Size CSS starts.
 			$m_selectors = array(
-				" premium-title-header"  => array(
+				" .premium-title-header"  => array(
 					"font-size" => self::get_css_value($attr['titlefontSizeMobile'], $attr['titlefontSizeType']) . "!important"
 				),
 				" .premium-title-icon"  => array(

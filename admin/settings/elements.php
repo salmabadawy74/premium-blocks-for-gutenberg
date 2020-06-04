@@ -15,7 +15,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
 
         protected $slug = 'premium-gutenberg';
 
-        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'iconList', 'contentSwitcher', 'progressBar', 'persons', 'tab', 'fancyText', 'title'];
+        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'iconList', 'contentSwitcher', 'progressBar', 'persons', 'tab', 'fancyText', 'title', 'flipBox'];
 
         private $pbg_default;
 
@@ -354,6 +354,17 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                     </td>
                                     
                                 </tr>
+                                <tr>
+                                    
+                                    <th><?php echo __('Premium Flip Box', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="flipBox" name="flipBox" <?php checked(1, $this->pbg_get_settings['flipBox'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                    
+                                </tr>
                             </tbody>
                         </table>
                         <input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
@@ -421,7 +432,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                 'contentSwitcher'=> intval( $settings['contentSwitcher'] ? 1 : 0 ), 
                 'tab'            => intval( $settings['tab'] ? 1 : 0 ),
                 'fancyText'      => intval( $settings['fancyText'] ? 1 : 0 ),
-                'title'          => intval( $settings['title'] ? 1 : 0 )
+                'title'          => intval( $settings['title'] ? 1 : 0 ),
+                'flipBox'        => intval( $settings['flipBox'] ? 1 : 0 )
             );
 
             update_option( 'pbg_settings', $this->pbg_settings );

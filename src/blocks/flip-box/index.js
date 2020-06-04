@@ -532,5 +532,6 @@ registerBlockType("premium/flip-box", {
   supports: {
     inserter: flipBox
   },
-  edit: edit
+  edit: edit,
+  save: save
 });

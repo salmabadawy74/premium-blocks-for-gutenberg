@@ -61705,7 +61705,6 @@ function styling(props) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(283);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__save__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(284);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(2);
 
@@ -62238,14 +62237,136 @@ registerBlockType("premium/flip-box", {
   supports: {
     inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["j" /* flipBox */]
   },
-  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */]
+  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+  save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */]
 });
 
 /***/ }),
 /* 283 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = save;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 
 
+function save(props) {
+  var attributes = props.attributes,
+      className = props.className;
+  var block_id = attributes.block_id,
+      align = attributes.align,
+      iconValueFront = attributes.iconValueFront,
+      iconTypeFront = attributes.iconTypeFront,
+      iconFront = attributes.iconFront,
+      imageURLFront = attributes.imageURLFront,
+      titleValueFront = attributes.titleValueFront,
+      titleFront = attributes.titleFront,
+      descFront = attributes.descFront,
+      descValueFront = attributes.descValueFront,
+      verticalalignFront = attributes.verticalalignFront,
+      horizontalalignFront = attributes.horizontalalignFront,
+      iconValueBack = attributes.iconValueBack,
+      iconTypeBack = attributes.iconTypeBack,
+      iconBack = attributes.iconBack,
+      imageURLBack = attributes.imageURLBack,
+      link = attributes.link,
+      url = attributes.url,
+      titleValueBack = attributes.titleValueBack,
+      titleBack = attributes.titleBack,
+      descBack = attributes.descBack,
+      descValueBack = attributes.descValueBack,
+      verticalalignBack = attributes.verticalalignBack,
+      horizontalalignBack = attributes.horizontalalignBack,
+      effect = attributes.effect,
+      flipDir = attributes.flipDir,
+      animation = attributes.animation;
+
+
+  return wp.element.createElement(
+    "div",
+    {
+      className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id), id: "premium-flip-box-" + block_id,
+      style: {
+        textAlign: align
+      } },
+    wp.element.createElement(
+      "div",
+      { className: "premium-flip-style-" + effect, "data-animation": "" + animation },
+      wp.element.createElement(
+        "div",
+        { className: "premium-flip-box", style: {
+            textAlign: align
+          } },
+        wp.element.createElement(
+          "div",
+          { className: "premium-flip-front premium-flip-front" + flipDir, style: { textAlign: align } },
+          wp.element.createElement(
+            "div",
+            { className: "premium-flip-front-overlay" },
+            wp.element.createElement(
+              "div",
+              { className: "premium-flip-front-content-container" },
+              wp.element.createElement(
+                "div",
+                { className: "premium-flip-front-content", style: { justifyContent: horizontalalignFront, alignItems: verticalalignFront } },
+                wp.element.createElement(
+                  "div",
+                  { className: "premium-flip-text-wrapper" },
+                  iconValueFront && iconTypeFront == 'icon' && wp.element.createElement("i", { className: "premium-flip-front-icon " + iconFront }),
+                  iconValueFront && iconTypeFront == 'image' && wp.element.createElement("img", { className: "premium-flip-front-image", src: imageURLFront }),
+                  titleValueFront && wp.element.createElement(
+                    "h3",
+                    { className: "premium-flip-front-title" },
+                    titleFront
+                  ),
+                  descValueFront && wp.element.createElement(
+                    "div",
+                    { className: "premium-flip-front-description" },
+                    descFront
+                  )
+                )
+              )
+            )
+          )
+        ),
+        wp.element.createElement(
+          "div",
+          { className: "premium-flip-back premium-flip-back" + flipDir, style: { textAlign: align } },
+          wp.element.createElement(
+            "div",
+            { className: "premium-flip-back-overlay" },
+            wp.element.createElement(
+              "div",
+              { className: "premium-flip-back-content-container" },
+              link && wp.element.createElement("a", { className: "premium-flip-box-full-link", href: "" + url }),
+              wp.element.createElement(
+                "div",
+                { className: "premium-flip-back-content", style: { justifyContent: horizontalalignBack, alignItems: verticalalignBack } },
+                wp.element.createElement(
+                  "div",
+                  { className: "premium-flip-back-text-wrapper" },
+                  iconValueBack && iconTypeBack == 'icon' && wp.element.createElement("i", { className: "premium-flip-back-icon " + iconBack }),
+                  iconValueBack && iconTypeBack == 'image' && wp.element.createElement("img", { className: "premium-flip-back-image", src: imageURLBack }),
+                  titleValueBack && wp.element.createElement(
+                    "h3",
+                    { className: "premium-flip-back-title" },
+                    titleBack
+                  ),
+                  descValueBack && wp.element.createElement(
+                    "div",
+                    { className: "premium-flip-back-description" },
+                    descBack
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  );
+}
 
 /***/ }),
 /* 284 */
@@ -63860,6 +63981,10 @@ function styling(props) {
       "background": iconfrontBGColor,
       "text-shadow": iconfrontShadowHorizontal + 'px ' + iconfrontShadowVertical + 'px ' + iconfrontShadowBlur + 'px ' + iconfrontShadowColor
     },
+    " .premium-flip-text-wrapper img": {
+      "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFront, iconSizeFrontType),
+      "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFront, iconSizeFrontType)
+    },
     " .premium-flip-front-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefrontfontSize, titlefrontfontSizeType),
       "color": titlefrontColor,
@@ -63892,6 +64017,10 @@ function styling(props) {
       "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconbackborderRadius, "px"),
       "background": iconbackBGColor,
       "text-shadow": iconbackShadowHorizontal + 'px ' + iconbackShadowVertical + 'px ' + iconbackShadowBlur + 'px ' + iconbackShadowColor
+    },
+    " .premium-flip-back-text-wrapper img": {
+      "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBack, iconSizeBackType),
+      "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBack, iconSizeBackType)
     },
     " .premium-flip-back-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlebackfontSize, titlebackfontSizeType),

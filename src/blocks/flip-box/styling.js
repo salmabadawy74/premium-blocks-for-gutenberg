@@ -119,6 +119,10 @@ function styling(props) {
       "background": iconfrontBGColor,
       "text-shadow": `${iconfrontShadowHorizontal}px ${iconfrontShadowVertical}px ${iconfrontShadowBlur}px ${iconfrontShadowColor}`,
     },
+    " .premium-flip-text-wrapper img": {
+      "width": generateCSSUnit(iconSizeFront, iconSizeFrontType),
+      "height": generateCSSUnit(iconSizeFront, iconSizeFrontType)
+    },
     " .premium-flip-front-title": {
       "font-size": generateCSSUnit(titlefrontfontSize, titlefrontfontSizeType),
       "color": titlefrontColor,
@@ -151,6 +155,10 @@ function styling(props) {
       "border-radius": generateCSSUnit(iconbackborderRadius, "px"),
       "background": iconbackBGColor,
       "text-shadow": `${iconbackShadowHorizontal}px ${iconbackShadowVertical}px ${iconbackShadowBlur}px ${iconbackShadowColor}`,
+    },
+    " .premium-flip-back-text-wrapper img": {
+      "width": generateCSSUnit(iconSizeBack, iconSizeBackType),
+      "height": generateCSSUnit(iconSizeBack, iconSizeBackType)
     },
     " .premium-flip-back-title": {
       "font-size": generateCSSUnit(titlebackfontSize, titlebackfontSizeType),

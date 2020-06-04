@@ -247,7 +247,7 @@ class edit extends Component {
             descbackshadowBlur,
             descbackshadowColor,
             descbackshadowHorizontal,
-            descbackshadowVertical,
+            descbackshadowVertical
         } = attributes
 
         const ICON = [
