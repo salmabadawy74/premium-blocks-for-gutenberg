@@ -60,14 +60,13 @@ class edit extends Component {
       const {block_id, animation} = this.props.attributes;
       if (!block_id) return null;
 
-      let toggleBox = document.getElementsByClassName(`premium-flip-style-flip`);
+      let toggleBox = document.getElementsByClassName(`premium-flip-style-flip ${block_id}`);
       console.log(toggleBox.length);
+      if (!toggleBox.length) return null;
       let frontRight = document.getElementsByClassName(`premium-flip-frontrl`);
       let frontLeft = document.getElementsByClassName(`premium-flip-frontlr`);
       let frontWrapper = document.getElementsByClassName(`premium-flip-text-wrapper`);
       let backWrapper = document.getElementsByClassName(`premium-flip-back-text-wrapper`);
-      if (!toggleBox) return null;
-      if (toggleBox.length != 0){
         console.log("hh");
         
           toggleBox[0].addEventListener("mouseenter", () => {
@@ -103,18 +102,6 @@ class edit extends Component {
               backWrapper[0].classList.add("PafadeInRevRight");
             }
           });
-        }
-        else{
-          console.log("jj", frontWrapper);
-          if (frontRight) {
-          frontWrapper[0].classList.remove("PafadeInRight");
-          backWrapper[0].classList.remove("PafadeInLeft");
-          }
-          else if (frontLeft) {
-          frontWrapper[0].classList.remove("PafadeInRevRight");
-          backWrapper[0].classList.remove("PafadeInRevLeft");
-          }
-        }
     }
 
     render() {
@@ -1208,7 +1195,7 @@ class edit extends Component {
                 className,
                 `premium-block-${this.props.clientId}`
             )} style={{textAlign: align}} id={`premium-flip-box-${this.props.clientId}`}>
-              <div className={`premium-flip-style-${effect}`}>
+              <div className={`premium-flip-style-${effect} ${this.props.clientId}`} data-animation={`${animation}`}>
                 <div className={`premium-flip-box`} style={{
                 textAlign: align
               }}>

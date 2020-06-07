@@ -99,6 +99,10 @@ function styling(props) {
     iconSizeBackType,
     iconSizeBackMobile,
     iconSizeBackTablet,
+    height,
+    heightType,
+    heightMobile,
+    heightTablet
   } = props.attributes
 
   var selectors = {}
@@ -108,6 +112,9 @@ function styling(props) {
   selectors = {
     " .premium-flip-front":{
       "box-shadow": `${frontShadowHorizontal}px ${frontShadowVertical}px ${frontShadowBlur}px ${frontShadowColor} ${frontShadowPosition}`,
+    },
+    " .premium-flip-box":{
+      "height": generateCSSUnit(height, heightType),
     },
     " .premium-flip-front-icon": {
       "font-size": generateCSSUnit(iconSizeFront, iconSizeFrontType),
@@ -186,6 +193,9 @@ function styling(props) {
     " .premium-flip-front-icon": {
       "font-size": generateCSSUnit(iconSizeFrontMobile, iconSizeFrontType)
     },
+    " .premium-flip-box":{
+      "height": generateCSSUnit(heightMobile, heightType),
+    },
     " .premium-flip-front-title": {
       "font-size": generateCSSUnit(titlefrontfontSizeMobile, titlefrontfontSizeType)
     },
@@ -206,6 +216,9 @@ function styling(props) {
   tablet_selectors = {
     " .premium-flip-front-icon": {
       "font-size": generateCSSUnit(iconSizeFrontTablet, iconSizeFrontType)
+    },
+    " .premium-flip-box":{
+      "height": generateCSSUnit(heightTablet, heightType),
     },
     " .premium-flip-front-title": {
       "font-size": generateCSSUnit(titlefrontfontSizeTablet, titlefrontfontSizeType)

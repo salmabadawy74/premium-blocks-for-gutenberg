@@ -605,6 +605,10 @@ if ( ! class_exists( 'Config' ) ) {
 							'descbackfontSizeMobile' => '20',
 							'descbackfontSizeTablet' => '20',
 							'descbackfontSizeType' => 'px',
+							'height' => '380',
+							'heightType' => 'px',
+							'heightMobile' => '380',
+							'heightTablet' => '380',
 						)
 						)
 				);

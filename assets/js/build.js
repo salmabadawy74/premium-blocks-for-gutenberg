@@ -2541,14 +2541,14 @@ var listCacheClear = __webpack_require__(88),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `ListCache`.
@@ -4803,14 +4803,14 @@ var mapCacheClear = __webpack_require__(104),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `MapCache`.
@@ -8959,14 +8959,14 @@ var hashClear = __webpack_require__(106),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `Hash`.
@@ -9326,13 +9326,13 @@ var MapCache = __webpack_require__(42),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-  var index = -1,
-      length = values == null ? 0 : values.length;
+    var index = -1,
+        length = values == null ? 0 : values.length;
 
-  this.__data__ = new MapCache();
-  while (++index < length) {
-    this.add(values[index]);
-  }
+    this.__data__ = new MapCache();
+    while (++index < length) {
+        this.add(values[index]);
+    }
 }
 
 // Add methods to `SetCache`.
@@ -10276,16 +10276,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-  var result = keys(object),
-      length = result.length;
+    var result = keys(object),
+        length = result.length;
 
-  while (length--) {
-    var key = result[length],
-        value = object[key];
+    while (length--) {
+        var key = result[length],
+            value = object[key];
 
-    result[length] = [key, value, isStrictComparable(value)];
-  }
-  return result;
+        result[length] = [key, value, isStrictComparable(value)];
+    }
+    return result;
 }
 
 module.exports = getMatchData;
@@ -62464,58 +62464,47 @@ var edit = function (_Component) {
 
       if (!block_id) return null;
 
-      var toggleBox = document.getElementsByClassName("premium-flip-style-flip");
+      var toggleBox = document.getElementsByClassName("premium-flip-style-flip " + block_id);
       console.log(toggleBox.length);
+      if (!toggleBox.length) return null;
       var frontRight = document.getElementsByClassName("premium-flip-frontrl");
       var frontLeft = document.getElementsByClassName("premium-flip-frontlr");
       var frontWrapper = document.getElementsByClassName("premium-flip-text-wrapper");
       var backWrapper = document.getElementsByClassName("premium-flip-back-text-wrapper");
-      if (!toggleBox) return null;
-      if (toggleBox.length != 0) {
-        console.log("hh");
+      console.log("hh");
 
-        toggleBox[0].addEventListener("mouseenter", function () {
-          toggleBox[0].classList.add("flipped");
-          if (!animation) return null;
+      toggleBox[0].addEventListener("mouseenter", function () {
+        toggleBox[0].classList.add("flipped");
+        if (!animation) return null;
 
-          if (frontRight) {
-            frontWrapper[0].classList.remove("PafadeInLeft");
-            frontWrapper[0].classList.add("PafadeInRight");
-            backWrapper[0].classList.add("PafadeInLeft");
-            backWrapper[0].classList.remove("PafadeInRight");
-          } else if (frontLeft) {
-            frontWrapper[0].classList.remove("PafadeInRevLeft");
-            frontWrapper[0].classList.add("PafadeInRevRight");
-            backWrapper[0].classList.add("PafadeInRevLeft");
-            backWrapper[0].classList.remove("PafadeInRevRight");
-          }
-        });
-        toggleBox[0].addEventListener("mouseleave", function () {
-          toggleBox[0].classList.remove("flipped");
-          if (!animation) return null;
-
-          if (frontRight) {
-            frontWrapper[0].classList.add("PafadeInLeft");
-            frontWrapper[0].classList.remove("PafadeInRight");
-            backWrapper[0].classList.remove("PafadeInLeft");
-            backWrapper[0].classList.add("PafadeInRight");
-          } else if (frontLeft) {
-            frontWrapper[0].classList.add("PafadeInRevLeft");
-            frontWrapper[0].classList.remove("PafadeInRevRight");
-            backWrapper[0].classList.remove("PafadeInRevLeft");
-            backWrapper[0].classList.add("PafadeInRevRight");
-          }
-        });
-      } else {
-        console.log("jj", frontWrapper);
         if (frontRight) {
+          frontWrapper[0].classList.remove("PafadeInLeft");
+          frontWrapper[0].classList.add("PafadeInRight");
+          backWrapper[0].classList.add("PafadeInLeft");
+          backWrapper[0].classList.remove("PafadeInRight");
+        } else if (frontLeft) {
+          frontWrapper[0].classList.remove("PafadeInRevLeft");
+          frontWrapper[0].classList.add("PafadeInRevRight");
+          backWrapper[0].classList.add("PafadeInRevLeft");
+          backWrapper[0].classList.remove("PafadeInRevRight");
+        }
+      });
+      toggleBox[0].addEventListener("mouseleave", function () {
+        toggleBox[0].classList.remove("flipped");
+        if (!animation) return null;
+
+        if (frontRight) {
+          frontWrapper[0].classList.add("PafadeInLeft");
           frontWrapper[0].classList.remove("PafadeInRight");
           backWrapper[0].classList.remove("PafadeInLeft");
+          backWrapper[0].classList.add("PafadeInRight");
         } else if (frontLeft) {
+          frontWrapper[0].classList.add("PafadeInRevLeft");
           frontWrapper[0].classList.remove("PafadeInRevRight");
           backWrapper[0].classList.remove("PafadeInRevLeft");
+          backWrapper[0].classList.add("PafadeInRevRight");
         }
-      }
+      });
     }
   }, {
     key: "render",
@@ -63772,7 +63761,7 @@ var edit = function (_Component) {
         { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId), style: { textAlign: align }, id: "premium-flip-box-" + this.props.clientId },
         wp.element.createElement(
           "div",
-          { className: "premium-flip-style-" + effect },
+          { className: "premium-flip-style-" + effect + " " + this.props.clientId, "data-animation": "" + animation },
           wp.element.createElement(
             "div",
             { className: "premium-flip-box", style: {
@@ -63960,7 +63949,11 @@ function styling(props) {
       iconSizeBack = _props$attributes.iconSizeBack,
       iconSizeBackType = _props$attributes.iconSizeBackType,
       iconSizeBackMobile = _props$attributes.iconSizeBackMobile,
-      iconSizeBackTablet = _props$attributes.iconSizeBackTablet;
+      iconSizeBackTablet = _props$attributes.iconSizeBackTablet,
+      height = _props$attributes.height,
+      heightType = _props$attributes.heightType,
+      heightMobile = _props$attributes.heightMobile,
+      heightTablet = _props$attributes.heightTablet;
 
 
   var selectors = {};
@@ -63970,6 +63963,9 @@ function styling(props) {
   selectors = {
     " .premium-flip-front": {
       "box-shadow": frontShadowHorizontal + 'px ' + frontShadowVertical + 'px ' + frontShadowBlur + 'px ' + frontShadowColor + ' ' + frontShadowPosition
+    },
+    " .premium-flip-box": {
+      "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(height, heightType)
     },
     " .premium-flip-front-icon": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFront, iconSizeFrontType),
@@ -64048,6 +64044,9 @@ function styling(props) {
     " .premium-flip-front-icon": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFrontMobile, iconSizeFrontType)
     },
+    " .premium-flip-box": {
+      "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(heightMobile, heightType)
+    },
     " .premium-flip-front-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefrontfontSizeMobile, titlefrontfontSizeType)
     },
@@ -64068,6 +64067,9 @@ function styling(props) {
   tablet_selectors = {
     " .premium-flip-front-icon": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFrontTablet, iconSizeFrontType)
+    },
+    " .premium-flip-box": {
+      "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(heightTablet, heightType)
     },
     " .premium-flip-front-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefrontfontSizeTablet, titlefrontfontSizeType)

@@ -1513,6 +1513,9 @@ class Premium_Blocks_Integration {
 				" .premium-flip-front" => array(
 					"box-shadow" => self::get_css_value($attr['frontShadowHorizontal'], 'px ') . self::get_css_value($attr['frontShadowVertical'],'px ') . self::get_css_value($attr['frontShadowBlur'],'px ') .  self::get_css_value($attr['frontShadowColor'], " ") . $attr[ 'frontShadowPosition']
 				),
+				" .premium-flip-box" => array(
+					"height" =>  self::get_css_value($attr['height'] , $attr['heightType'] )
+				),
 				" .premium-flip-front-icon" => array(
 					"font-size" =>  self::get_css_value($attr['iconSizeFront'] , $attr['iconSizeFrontType'] ),
 					"color" => self::get_css_value($attr['iconfrontColor'], '!important') ,
@@ -1604,6 +1607,9 @@ class Premium_Blocks_Integration {
 				" .premium-flip-back-title"  => array(
 					"font-size" => self::get_css_value($attr['titlebackfontSizeMobile'], $attr['titlebackfontSizeType']) . "!important"
 				),
+				" .premium-flip-box" => array(
+					"height" =>  self::get_css_value($attr['heightMobile'] , $attr['heightType'] )
+				),
 				" .premium-flip-back-description"  => array(
 					"font-size" => self::get_css_value($attr['descbackfontSizeMobile'], $attr['descbackfontSizeType']) . "!important"
 				)
@@ -1614,6 +1620,9 @@ class Premium_Blocks_Integration {
 			$t_selectors = array(
 				" .premium-flip-front-icon"  => array(
 					"font-size" => self::get_css_value($attr['iconSizeFrontTablet'], $attr['iconSizeFrontType']) . "!important"
+				),
+				" .premium-flip-box" => array(
+					"height" =>  self::get_css_value($attr['heightTablet'] , $attr['heightType'] )
 				),
 				" .premium-flip-front-title"  => array(
 					"font-size" => self::get_css_value($attr['titlefrontfontSizeTablet'], $attr['titlefrontfontSizeType']) . "!important"
