@@ -1589,7 +1589,7 @@ class Premium_Blocks_Integration {
 
 			// Mobile Icon Size CSS starts.
 			$m_selectors = array(
-				" premium-title-header"  => array(
+				" .premium-title-header"  => array(
 					"font-size" => self::get_css_value($attr['titlefontSizeMobile'], $attr['titlefontSizeType']) . "!important"
 				),
 				" .premium-title-icon"  => array(
