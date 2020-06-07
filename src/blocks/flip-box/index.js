@@ -43,7 +43,7 @@ const flipBoxAttrs = {
     type: "string",
     source: "attribute",
     attribute: "src",
-    selector: ".premium-flip-box-icon"
+    selector: ".premium-flip-front-image"
   },
   iconSizeFront: {
     type: "number",
@@ -104,7 +104,7 @@ const flipBoxAttrs = {
     type: "string",
     source: "attribute",
     attribute: "src",
-    selector: ".premium-flip-box-icon"
+    selector: ".premium-flip-back-image"
   },
   link: {
     type: "boolean",
@@ -519,6 +519,198 @@ const flipBoxAttrs = {
     default: "0"
   },
   descbackshadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  iconFrontMargin: {
+    type: "number",
+    default: "0"
+  },
+  iconFrontMarginType: {
+    type: "string",
+    default: "px"
+  },
+  iconFrontMarginMobile: {
+    type: "number",
+    default: "0"
+  },
+  iconFrontMarginTablet: {
+    type: "number",
+    default: "0"
+  },
+  iconFrontPadding: {
+    type: "number",
+    default: "0"
+  },
+  iconFrontPaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  iconFrontPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  iconFrontPaddingMobile: {
+    type: "number",
+    default: "0"
+  },
+  titleFrontMargin: {
+    type: "number",
+    default: "0"
+  },
+  titleFrontMarginType: {
+    type: "string",
+    default: "px"
+  },
+  titleFrontMarginMobile: {
+    type: "number",
+    default: "0"
+  },
+  titleFrontMarginTablet: {
+    type: "number",
+    default: "0"
+  },
+  titleFrontPadding: {
+    type: "number",
+    default: "0"
+  },
+  titleFrontPaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  titleFrontPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  titleFrontPaddingMobile: {
+    type: "number",
+    default: "0"
+  },
+  descFrontMargin: {
+    type: "number",
+    default: "0"
+  },
+  descFrontMarginType: {
+    type: "string",
+    default: "px"
+  },
+  descFrontMarginMobile: {
+    type: "number",
+    default: "0"
+  },
+  descFrontMarginTablet: {
+    type: "number",
+    default: "0"
+  },
+  descFrontPadding: {
+    type: "number",
+    default: "0"
+  },
+  descFrontPaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  descFrontPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  descFrontPaddingMobile: {
+    type: "number",
+    default: "0"
+  },
+  iconBackMargin: {
+    type: "number",
+    default: "0"
+  },
+  iconBackMarginType: {
+    type: "string",
+    default: "px"
+  },
+  iconBackMarginMobile: {
+    type: "number",
+    default: "0"
+  },
+  iconBackMarginTablet: {
+    type: "number",
+    default: "0"
+  },
+  iconBackPadding: {
+    type: "number",
+    default: "0"
+  },
+  iconBackPaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  iconBackPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  iconBackPaddingMobile: {
+    type: "number",
+    default: "0"
+  },
+  titleBackMargin: {
+    type: "number",
+    default: "0"
+  },
+  titleBackMarginType: {
+    type: "string",
+    default: "px"
+  },
+  titleBackMarginMobile: {
+    type: "number",
+    default: "0"
+  },
+  titleBackMarginTablet: {
+    type: "number",
+    default: "0"
+  },
+  titleBackPadding: {
+    type: "number",
+    default: "0"
+  },
+  titleBackPaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  titleBackPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  titleBackPaddingMobile: {
+    type: "number",
+    default: "0"
+  },
+  descBackMargin: {
+    type: "number",
+    default: "0"
+  },
+  descBackMarginType: {
+    type: "string",
+    default: "px"
+  },
+  descBackMarginMobile: {
+    type: "number",
+    default: "0"
+  },
+  descBackMarginTablet: {
+    type: "number",
+    default: "0"
+  },
+  descBackPadding: {
+    type: "number",
+    default: "0"
+  },
+  descBackPaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  descBackPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  descBackPaddingMobile: {
     type: "number",
     default: "0"
   },

@@ -4389,3 +4389,8 @@ a.premium-dheading-block__link:hover {
   outline: none;
   font-weight: 500;
 }
+.premium-flip-text-wrapper .dashicons,
+.premium-flip-back-text-wrapper .dashicons {
+  width: auto !important;
+  height: auto !important;
+}

@@ -62,17 +62,17 @@ class edit extends Component {
 
       let toggleBox = document.getElementsByClassName(`premium-flip-style-flip ${block_id}`);
       console.log(toggleBox.length);
-      if (!toggleBox.length) return null;
+      if (toggleBox.length == 0) return;
+      else{
       let frontRight = document.getElementsByClassName(`premium-flip-frontrl`);
       let frontLeft = document.getElementsByClassName(`premium-flip-frontlr`);
       let frontWrapper = document.getElementsByClassName(`premium-flip-text-wrapper`);
       let backWrapper = document.getElementsByClassName(`premium-flip-back-text-wrapper`);
+      
+      toggleBox[0].addEventListener("mouseenter", () => {
         console.log("hh");
-        
-          toggleBox[0].addEventListener("mouseenter", () => {
             toggleBox[0].classList.add("flipped");
       if (!animation) return null;
-
             if (frontRight) {
               frontWrapper[0].classList.remove("PafadeInLeft");
               frontWrapper[0].classList.add("PafadeInRight");
@@ -102,6 +102,7 @@ class edit extends Component {
               backWrapper[0].classList.add("PafadeInRevRight");
             }
           });
+        }
     }
 
     render() {
@@ -234,7 +235,55 @@ class edit extends Component {
             descbackshadowBlur,
             descbackshadowColor,
             descbackshadowHorizontal,
-            descbackshadowVertical
+            descbackshadowVertical,
+            iconFrontMargin,
+            iconFrontMarginType,
+            iconFrontMarginMobile,
+            iconFrontMarginTablet,
+            iconFrontPadding,
+            iconFrontPaddingTablet,
+            iconFrontPaddingType,
+            iconFrontPaddingMobile,
+            titleFrontMargin,
+            titleFrontMarginType,
+            titleFrontMarginMobile,
+            titleFrontMarginTablet,
+            titleFrontPadding,
+            titleFrontPaddingTablet,
+            titleFrontPaddingType,
+            titleFrontPaddingMobile,
+            descFrontMargin,
+            descFrontMarginType,
+            descFrontMarginMobile,
+            descFrontMarginTablet,
+            descFrontPadding,
+            descFrontPaddingTablet,
+            descFrontPaddingType,
+            descFrontPaddingMobile,
+            iconBackMargin,
+            iconBackMarginType,
+            iconBackMarginMobile,
+            iconBackMarginTablet,
+            iconBackPadding,
+            iconBackPaddingTablet,
+            iconBackPaddingType,
+            iconBackPaddingMobile,
+            titleBackMargin,
+            titleBackMarginType,
+            titleBackMarginMobile,
+            titleBackMarginTablet,
+            titleBackPadding,
+            titleBackPaddingTablet,
+            titleBackPaddingType,
+            titleBackPaddingMobile,
+            descBackMargin,
+            descBackMarginType,
+            descBackMarginMobile,
+            descBackMarginTablet,
+            descBackPadding,
+            descBackPaddingTablet,
+            descBackPaddingType,
+            descBackPaddingMobile
         } = attributes
 
         const ICON = [
@@ -824,6 +873,26 @@ class edit extends Component {
                                   }
                                   onResetClick={onResetClickiconfrontTextShadow}
                                 />
+                                <PremiumRangeResponsive
+                                  setAttributes={setAttributes}
+                                  rangeType={{ value: iconFrontMarginType, label: __("iconFrontMarginType") }}
+                                  range={{ value: iconFrontMargin, label: __("iconFrontMargin") }}
+                                  rangeMobile={{ value: iconFrontMarginMobile, label: __("iconFrontMarginMobile") }}
+                                  rangeTablet={{ value: iconFrontMarginTablet, label: __("iconFrontMarginTablet") }}
+                                  rangeLabel={__("Margin")}
+                                  min={1}
+                                  max={100}
+                                />
+                                <PremiumRangeResponsive
+                                  setAttributes={setAttributes}
+                                  rangeType={{ value: iconFrontPaddingType, label: __("iconFrontPaddingType") }}
+                                  range={{ value: iconFrontPadding, label: __("iconFrontPadding") }}
+                                  rangeMobile={{ value: iconFrontPaddingMobile, label: __("iconFrontPaddingMobile") }}
+                                  rangeTablet={{ value: iconFrontPaddingTablet, label: __("iconFrontPaddingTablet") }}
+                                  rangeLabel={__("Padding")}
+                                  min={1}
+                                  max={100}
+                                />
                               </Fragment>
                             } else if ("title" === tabName.name) {
                               return <Fragment>
@@ -887,6 +956,26 @@ class edit extends Component {
                                     }
                                     allowReset={true}
                                 />
+                                <PremiumRangeResponsive
+                                  setAttributes={setAttributes}
+                                  rangeType={{ value: titleFrontMarginType, label: __("titleFrontMarginType") }}
+                                  range={{ value: titleFrontMargin, label: __("titleFrontMargin") }}
+                                  rangeMobile={{ value: titleFrontMarginMobile, label: __("titleFrontMarginMobile") }}
+                                  rangeTablet={{ value: titleFrontMarginTablet, label: __("titleFrontMarginTablet") }}
+                                  rangeLabel={__("Margin")}
+                                  min={1}
+                                  max={100}
+                                />
+                                <PremiumRangeResponsive
+                                  setAttributes={setAttributes}
+                                  rangeType={{ value: titleFrontPaddingType, label: __("titleFrontPaddingType") }}
+                                  range={{ value: titleFrontPadding, label: __("titleFrontPadding") }}
+                                  rangeMobile={{ value: titleFrontPaddingMobile, label: __("titleFrontPaddingMobile") }}
+                                  rangeTablet={{ value: titleFrontPaddingTablet, label: __("titleFrontPaddingTablet") }}
+                                  rangeLabel={__("Padding")}
+                                  min={1}
+                                  max={100}
+                                />
                               </Fragment>
                             }else {
                               return <Fragment>
@@ -949,6 +1038,26 @@ class edit extends Component {
                                         })
                                     }
                                     allowReset={true}
+                                />
+                                <PremiumRangeResponsive
+                                  setAttributes={setAttributes}
+                                  rangeType={{ value: descFrontMarginType, label: __("descFrontMarginType") }}
+                                  range={{ value: descFrontMargin, label: __("descFrontMargin") }}
+                                  rangeMobile={{ value: descFrontMarginMobile, label: __("descFrontMarginMobile") }}
+                                  rangeTablet={{ value: descFrontMarginTablet, label: __("descFrontMarginTablet") }}
+                                  rangeLabel={__("Margin")}
+                                  min={1}
+                                  max={100}
+                                />
+                                <PremiumRangeResponsive
+                                  setAttributes={setAttributes}
+                                  rangeType={{ value: descFrontPaddingType, label: __("descFrontPaddingType") }}
+                                  range={{ value: descFrontPadding, label: __("descFrontPadding") }}
+                                  rangeMobile={{ value: descFrontPaddingMobile, label: __("descFrontPaddingMobile") }}
+                                  rangeTablet={{ value: descFrontPaddingTablet, label: __("descFrontPaddingTablet") }}
+                                  rangeLabel={__("Padding")}
+                                  min={1}
+                                  max={100}
                                 />
                               </Fragment>
                             }
@@ -1057,6 +1166,26 @@ class edit extends Component {
                                   }
                                   onResetClick={onResetClickiconbackTextShadow}
                                 />
+                                <PremiumRangeResponsive
+                                  setAttributes={setAttributes}
+                                  rangeType={{ value: iconBackMarginType, label: __("iconBackMarginType") }}
+                                  range={{ value: iconBackMargin, label: __("iconBackMargin") }}
+                                  rangeMobile={{ value: iconBackMarginMobile, label: __("iconBackMarginMobile") }}
+                                  rangeTablet={{ value: iconBackMarginTablet, label: __("iconBackMarginTablet") }}
+                                  rangeLabel={__("Margin")}
+                                  min={1}
+                                  max={100}
+                                />
+                                <PremiumRangeResponsive
+                                  setAttributes={setAttributes}
+                                  rangeType={{ value: iconBackPaddingType, label: __("iconBackPaddingType") }}
+                                  range={{ value: iconBackPadding, label: __("iconBackPadding") }}
+                                  rangeMobile={{ value: iconBackPaddingMobile, label: __("iconBackPaddingMobile") }}
+                                  rangeTablet={{ value: iconBackPaddingTablet, label: __("iconBackPaddingTablet") }}
+                                  rangeLabel={__("Padding")}
+                                  min={1}
+                                  max={100}
+                                />
                               </Fragment>
                             } else if ("title" === tabName.name) {
                               return <Fragment>
@@ -1120,6 +1249,26 @@ class edit extends Component {
                                     }
                                     allowReset={true}
                                 />
+                                <PremiumRangeResponsive
+                                  setAttributes={setAttributes}
+                                  rangeType={{ value: titleBackMarginType, label: __("titleBackMarginType") }}
+                                  range={{ value: titleBackMargin, label: __("titleBackMargin") }}
+                                  rangeMobile={{ value: titleBackMarginMobile, label: __("titleBackMarginMobile") }}
+                                  rangeTablet={{ value: titleBackMarginTablet, label: __("titleBackMarginTablet") }}
+                                  rangeLabel={__("Margin")}
+                                  min={1}
+                                  max={100}
+                                />
+                                <PremiumRangeResponsive
+                                  setAttributes={setAttributes}
+                                  rangeType={{ value: titleBackPaddingType, label: __("titleBackPaddingType") }}
+                                  range={{ value: titleBackPadding, label: __("titleBackPadding") }}
+                                  rangeMobile={{ value: titleBackPaddingMobile, label: __("titleBackPaddingMobile") }}
+                                  rangeTablet={{ value: titleBackPaddingTablet, label: __("titleBackPaddingTablet") }}
+                                  rangeLabel={__("Padding")}
+                                  min={1}
+                                  max={100}
+                                />
                               </Fragment>
                             }else {
                               return <Fragment>
@@ -1182,6 +1331,26 @@ class edit extends Component {
                                         })
                                     }
                                     allowReset={true}
+                                />
+                                <PremiumRangeResponsive
+                                  setAttributes={setAttributes}
+                                  rangeType={{ value: descBackMarginType, label: __("descBackMarginType") }}
+                                  range={{ value: descBackMargin, label: __("descBackMargin") }}
+                                  rangeMobile={{ value: descBackMarginMobile, label: __("descBackMarginMobile") }}
+                                  rangeTablet={{ value: descBackMarginTablet, label: __("descBackMarginTablet") }}
+                                  rangeLabel={__("Margin")}
+                                  min={1}
+                                  max={100}
+                                />
+                                <PremiumRangeResponsive
+                                  setAttributes={setAttributes}
+                                  rangeType={{ value: descBackPaddingType, label: __("descBackPaddingType") }}
+                                  range={{ value: descBackPadding, label: __("descBackPadding") }}
+                                  rangeMobile={{ value: descBackPaddingMobile, label: __("descBackPaddingMobile") }}
+                                  rangeTablet={{ value: descBackPaddingTablet, label: __("descBackPaddingTablet") }}
+                                  rangeLabel={__("Padding")}
+                                  min={1}
+                                  max={100}
                                 />
                               </Fragment>
                             }

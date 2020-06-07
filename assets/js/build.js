@@ -2541,14 +2541,14 @@ var listCacheClear = __webpack_require__(88),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `ListCache`.
@@ -4803,14 +4803,14 @@ var mapCacheClear = __webpack_require__(104),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `MapCache`.
@@ -8959,14 +8959,14 @@ var hashClear = __webpack_require__(106),
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
 
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
 }
 
 // Add methods to `Hash`.
@@ -9326,13 +9326,13 @@ var MapCache = __webpack_require__(42),
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-    var index = -1,
-        length = values == null ? 0 : values.length;
+  var index = -1,
+      length = values == null ? 0 : values.length;
 
-    this.__data__ = new MapCache();
-    while (++index < length) {
-        this.add(values[index]);
-    }
+  this.__data__ = new MapCache();
+  while (++index < length) {
+    this.add(values[index]);
+  }
 }
 
 // Add methods to `SetCache`.
@@ -10276,16 +10276,16 @@ var isStrictComparable = __webpack_require__(66),
  * @returns {Array} Returns the match data of `object`.
  */
 function getMatchData(object) {
-    var result = keys(object),
-        length = result.length;
+  var result = keys(object),
+      length = result.length;
 
-    while (length--) {
-        var key = result[length],
-            value = object[key];
+  while (length--) {
+    var key = result[length],
+        value = object[key];
 
-        result[length] = [key, value, isStrictComparable(value)];
-    }
-    return result;
+    result[length] = [key, value, isStrictComparable(value)];
+  }
+  return result;
 }
 
 module.exports = getMatchData;
@@ -61748,7 +61748,7 @@ var flipBoxAttrs = {
     type: "string",
     source: "attribute",
     attribute: "src",
-    selector: ".premium-flip-box-icon"
+    selector: ".premium-flip-front-image"
   },
   iconSizeFront: {
     type: "number",
@@ -61809,7 +61809,7 @@ var flipBoxAttrs = {
     type: "string",
     source: "attribute",
     attribute: "src",
-    selector: ".premium-flip-box-icon"
+    selector: ".premium-flip-back-image"
   },
   link: {
     type: "boolean",
@@ -62226,6 +62226,198 @@ var flipBoxAttrs = {
   descbackshadowVertical: {
     type: "number",
     default: "0"
+  },
+  iconFrontMargin: {
+    type: "number",
+    default: "0"
+  },
+  iconFrontMarginType: {
+    type: "string",
+    default: "px"
+  },
+  iconFrontMarginMobile: {
+    type: "number",
+    default: "0"
+  },
+  iconFrontMarginTablet: {
+    type: "number",
+    default: "0"
+  },
+  iconFrontPadding: {
+    type: "number",
+    default: "0"
+  },
+  iconFrontPaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  iconFrontPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  iconFrontPaddingMobile: {
+    type: "number",
+    default: "0"
+  },
+  titleFrontMargin: {
+    type: "number",
+    default: "0"
+  },
+  titleFrontMarginType: {
+    type: "string",
+    default: "px"
+  },
+  titleFrontMarginMobile: {
+    type: "number",
+    default: "0"
+  },
+  titleFrontMarginTablet: {
+    type: "number",
+    default: "0"
+  },
+  titleFrontPadding: {
+    type: "number",
+    default: "0"
+  },
+  titleFrontPaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  titleFrontPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  titleFrontPaddingMobile: {
+    type: "number",
+    default: "0"
+  },
+  descFrontMargin: {
+    type: "number",
+    default: "0"
+  },
+  descFrontMarginType: {
+    type: "string",
+    default: "px"
+  },
+  descFrontMarginMobile: {
+    type: "number",
+    default: "0"
+  },
+  descFrontMarginTablet: {
+    type: "number",
+    default: "0"
+  },
+  descFrontPadding: {
+    type: "number",
+    default: "0"
+  },
+  descFrontPaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  descFrontPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  descFrontPaddingMobile: {
+    type: "number",
+    default: "0"
+  },
+  iconBackMargin: {
+    type: "number",
+    default: "0"
+  },
+  iconBackMarginType: {
+    type: "string",
+    default: "px"
+  },
+  iconBackMarginMobile: {
+    type: "number",
+    default: "0"
+  },
+  iconBackMarginTablet: {
+    type: "number",
+    default: "0"
+  },
+  iconBackPadding: {
+    type: "number",
+    default: "0"
+  },
+  iconBackPaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  iconBackPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  iconBackPaddingMobile: {
+    type: "number",
+    default: "0"
+  },
+  titleBackMargin: {
+    type: "number",
+    default: "0"
+  },
+  titleBackMarginType: {
+    type: "string",
+    default: "px"
+  },
+  titleBackMarginMobile: {
+    type: "number",
+    default: "0"
+  },
+  titleBackMarginTablet: {
+    type: "number",
+    default: "0"
+  },
+  titleBackPadding: {
+    type: "number",
+    default: "0"
+  },
+  titleBackPaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  titleBackPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  titleBackPaddingMobile: {
+    type: "number",
+    default: "0"
+  },
+  descBackMargin: {
+    type: "number",
+    default: "0"
+  },
+  descBackMarginType: {
+    type: "string",
+    default: "px"
+  },
+  descBackMarginMobile: {
+    type: "number",
+    default: "0"
+  },
+  descBackMarginTablet: {
+    type: "number",
+    default: "0"
+  },
+  descBackPadding: {
+    type: "number",
+    default: "0"
+  },
+  descBackPaddingTablet: {
+    type: "number",
+    default: "0"
+  },
+  descBackPaddingType: {
+    type: "string",
+    default: "px"
+  },
+  descBackPaddingMobile: {
+    type: "number",
+    default: "0"
   }
 };
 
@@ -62466,45 +62658,45 @@ var edit = function (_Component) {
 
       var toggleBox = document.getElementsByClassName("premium-flip-style-flip " + block_id);
       console.log(toggleBox.length);
-      if (!toggleBox.length) return null;
-      var frontRight = document.getElementsByClassName("premium-flip-frontrl");
-      var frontLeft = document.getElementsByClassName("premium-flip-frontlr");
-      var frontWrapper = document.getElementsByClassName("premium-flip-text-wrapper");
-      var backWrapper = document.getElementsByClassName("premium-flip-back-text-wrapper");
-      console.log("hh");
+      if (toggleBox.length == 0) return;else {
+        var frontRight = document.getElementsByClassName("premium-flip-frontrl");
+        var frontLeft = document.getElementsByClassName("premium-flip-frontlr");
+        var frontWrapper = document.getElementsByClassName("premium-flip-text-wrapper");
+        var backWrapper = document.getElementsByClassName("premium-flip-back-text-wrapper");
 
-      toggleBox[0].addEventListener("mouseenter", function () {
-        toggleBox[0].classList.add("flipped");
-        if (!animation) return null;
+        toggleBox[0].addEventListener("mouseenter", function () {
+          console.log("hh");
+          toggleBox[0].classList.add("flipped");
+          if (!animation) return null;
+          if (frontRight) {
+            frontWrapper[0].classList.remove("PafadeInLeft");
+            frontWrapper[0].classList.add("PafadeInRight");
+            backWrapper[0].classList.add("PafadeInLeft");
+            backWrapper[0].classList.remove("PafadeInRight");
+          } else if (frontLeft) {
+            frontWrapper[0].classList.remove("PafadeInRevLeft");
+            frontWrapper[0].classList.add("PafadeInRevRight");
+            backWrapper[0].classList.add("PafadeInRevLeft");
+            backWrapper[0].classList.remove("PafadeInRevRight");
+          }
+        });
+        toggleBox[0].addEventListener("mouseleave", function () {
+          toggleBox[0].classList.remove("flipped");
+          if (!animation) return null;
 
-        if (frontRight) {
-          frontWrapper[0].classList.remove("PafadeInLeft");
-          frontWrapper[0].classList.add("PafadeInRight");
-          backWrapper[0].classList.add("PafadeInLeft");
-          backWrapper[0].classList.remove("PafadeInRight");
-        } else if (frontLeft) {
-          frontWrapper[0].classList.remove("PafadeInRevLeft");
-          frontWrapper[0].classList.add("PafadeInRevRight");
-          backWrapper[0].classList.add("PafadeInRevLeft");
-          backWrapper[0].classList.remove("PafadeInRevRight");
-        }
-      });
-      toggleBox[0].addEventListener("mouseleave", function () {
-        toggleBox[0].classList.remove("flipped");
-        if (!animation) return null;
-
-        if (frontRight) {
-          frontWrapper[0].classList.add("PafadeInLeft");
-          frontWrapper[0].classList.remove("PafadeInRight");
-          backWrapper[0].classList.remove("PafadeInLeft");
-          backWrapper[0].classList.add("PafadeInRight");
-        } else if (frontLeft) {
-          frontWrapper[0].classList.add("PafadeInRevLeft");
-          frontWrapper[0].classList.remove("PafadeInRevRight");
-          backWrapper[0].classList.remove("PafadeInRevLeft");
-          backWrapper[0].classList.add("PafadeInRevRight");
-        }
-      });
+          if (frontRight) {
+            frontWrapper[0].classList.add("PafadeInLeft");
+            frontWrapper[0].classList.remove("PafadeInRight");
+            backWrapper[0].classList.remove("PafadeInLeft");
+            backWrapper[0].classList.add("PafadeInRight");
+          } else if (frontLeft) {
+            frontWrapper[0].classList.add("PafadeInRevLeft");
+            frontWrapper[0].classList.remove("PafadeInRevRight");
+            backWrapper[0].classList.remove("PafadeInRevLeft");
+            backWrapper[0].classList.add("PafadeInRevRight");
+          }
+        });
+      }
     }
   }, {
     key: "render",
@@ -62639,7 +62831,55 @@ var edit = function (_Component) {
           descbackshadowBlur = attributes.descbackshadowBlur,
           descbackshadowColor = attributes.descbackshadowColor,
           descbackshadowHorizontal = attributes.descbackshadowHorizontal,
-          descbackshadowVertical = attributes.descbackshadowVertical;
+          descbackshadowVertical = attributes.descbackshadowVertical,
+          iconFrontMargin = attributes.iconFrontMargin,
+          iconFrontMarginType = attributes.iconFrontMarginType,
+          iconFrontMarginMobile = attributes.iconFrontMarginMobile,
+          iconFrontMarginTablet = attributes.iconFrontMarginTablet,
+          iconFrontPadding = attributes.iconFrontPadding,
+          iconFrontPaddingTablet = attributes.iconFrontPaddingTablet,
+          iconFrontPaddingType = attributes.iconFrontPaddingType,
+          iconFrontPaddingMobile = attributes.iconFrontPaddingMobile,
+          titleFrontMargin = attributes.titleFrontMargin,
+          titleFrontMarginType = attributes.titleFrontMarginType,
+          titleFrontMarginMobile = attributes.titleFrontMarginMobile,
+          titleFrontMarginTablet = attributes.titleFrontMarginTablet,
+          titleFrontPadding = attributes.titleFrontPadding,
+          titleFrontPaddingTablet = attributes.titleFrontPaddingTablet,
+          titleFrontPaddingType = attributes.titleFrontPaddingType,
+          titleFrontPaddingMobile = attributes.titleFrontPaddingMobile,
+          descFrontMargin = attributes.descFrontMargin,
+          descFrontMarginType = attributes.descFrontMarginType,
+          descFrontMarginMobile = attributes.descFrontMarginMobile,
+          descFrontMarginTablet = attributes.descFrontMarginTablet,
+          descFrontPadding = attributes.descFrontPadding,
+          descFrontPaddingTablet = attributes.descFrontPaddingTablet,
+          descFrontPaddingType = attributes.descFrontPaddingType,
+          descFrontPaddingMobile = attributes.descFrontPaddingMobile,
+          iconBackMargin = attributes.iconBackMargin,
+          iconBackMarginType = attributes.iconBackMarginType,
+          iconBackMarginMobile = attributes.iconBackMarginMobile,
+          iconBackMarginTablet = attributes.iconBackMarginTablet,
+          iconBackPadding = attributes.iconBackPadding,
+          iconBackPaddingTablet = attributes.iconBackPaddingTablet,
+          iconBackPaddingType = attributes.iconBackPaddingType,
+          iconBackPaddingMobile = attributes.iconBackPaddingMobile,
+          titleBackMargin = attributes.titleBackMargin,
+          titleBackMarginType = attributes.titleBackMarginType,
+          titleBackMarginMobile = attributes.titleBackMarginMobile,
+          titleBackMarginTablet = attributes.titleBackMarginTablet,
+          titleBackPadding = attributes.titleBackPadding,
+          titleBackPaddingTablet = attributes.titleBackPaddingTablet,
+          titleBackPaddingType = attributes.titleBackPaddingType,
+          titleBackPaddingMobile = attributes.titleBackPaddingMobile,
+          descBackMargin = attributes.descBackMargin,
+          descBackMarginType = attributes.descBackMarginType,
+          descBackMarginMobile = attributes.descBackMarginMobile,
+          descBackMarginTablet = attributes.descBackMarginTablet,
+          descBackPadding = attributes.descBackPadding,
+          descBackPaddingTablet = attributes.descBackPaddingTablet,
+          descBackPaddingType = attributes.descBackPaddingType,
+          descBackPaddingMobile = attributes.descBackPaddingMobile;
 
 
       var ICON = [{
@@ -63318,6 +63558,26 @@ var edit = function (_Component) {
                       return setAttributes({ iconfrontShadowVertical: newValue });
                     },
                     onResetClick: onResetClickiconfrontTextShadow
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+                    setAttributes: setAttributes,
+                    rangeType: { value: iconFrontMarginType, label: __("iconFrontMarginType") },
+                    range: { value: iconFrontMargin, label: __("iconFrontMargin") },
+                    rangeMobile: { value: iconFrontMarginMobile, label: __("iconFrontMarginMobile") },
+                    rangeTablet: { value: iconFrontMarginTablet, label: __("iconFrontMarginTablet") },
+                    rangeLabel: __("Margin"),
+                    min: 1,
+                    max: 100
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+                    setAttributes: setAttributes,
+                    rangeType: { value: iconFrontPaddingType, label: __("iconFrontPaddingType") },
+                    range: { value: iconFrontPadding, label: __("iconFrontPadding") },
+                    rangeMobile: { value: iconFrontPaddingMobile, label: __("iconFrontPaddingMobile") },
+                    rangeTablet: { value: iconFrontPaddingTablet, label: __("iconFrontPaddingTablet") },
+                    rangeLabel: __("Padding"),
+                    min: 1,
+                    max: 100
                   })
                 );
               } else if ("title" === tabName.name) {
@@ -63395,6 +63655,26 @@ var edit = function (_Component) {
                       });
                     },
                     allowReset: true
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+                    setAttributes: setAttributes,
+                    rangeType: { value: titleFrontMarginType, label: __("titleFrontMarginType") },
+                    range: { value: titleFrontMargin, label: __("titleFrontMargin") },
+                    rangeMobile: { value: titleFrontMarginMobile, label: __("titleFrontMarginMobile") },
+                    rangeTablet: { value: titleFrontMarginTablet, label: __("titleFrontMarginTablet") },
+                    rangeLabel: __("Margin"),
+                    min: 1,
+                    max: 100
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+                    setAttributes: setAttributes,
+                    rangeType: { value: titleFrontPaddingType, label: __("titleFrontPaddingType") },
+                    range: { value: titleFrontPadding, label: __("titleFrontPadding") },
+                    rangeMobile: { value: titleFrontPaddingMobile, label: __("titleFrontPaddingMobile") },
+                    rangeTablet: { value: titleFrontPaddingTablet, label: __("titleFrontPaddingTablet") },
+                    rangeLabel: __("Padding"),
+                    min: 1,
+                    max: 100
                   })
                 );
               } else {
@@ -63472,6 +63752,26 @@ var edit = function (_Component) {
                       });
                     },
                     allowReset: true
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+                    setAttributes: setAttributes,
+                    rangeType: { value: descFrontMarginType, label: __("descFrontMarginType") },
+                    range: { value: descFrontMargin, label: __("descFrontMargin") },
+                    rangeMobile: { value: descFrontMarginMobile, label: __("descFrontMarginMobile") },
+                    rangeTablet: { value: descFrontMarginTablet, label: __("descFrontMarginTablet") },
+                    rangeLabel: __("Margin"),
+                    min: 1,
+                    max: 100
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+                    setAttributes: setAttributes,
+                    rangeType: { value: descFrontPaddingType, label: __("descFrontPaddingType") },
+                    range: { value: descFrontPadding, label: __("descFrontPadding") },
+                    rangeMobile: { value: descFrontPaddingMobile, label: __("descFrontPaddingMobile") },
+                    rangeTablet: { value: descFrontPaddingTablet, label: __("descFrontPaddingTablet") },
+                    rangeLabel: __("Padding"),
+                    min: 1,
+                    max: 100
                   })
                 );
               }
@@ -63596,6 +63896,26 @@ var edit = function (_Component) {
                       return setAttributes({ iconbackShadowVertical: newValue });
                     },
                     onResetClick: onResetClickiconbackTextShadow
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+                    setAttributes: setAttributes,
+                    rangeType: { value: iconBackMarginType, label: __("iconBackMarginType") },
+                    range: { value: iconBackMargin, label: __("iconBackMargin") },
+                    rangeMobile: { value: iconBackMarginMobile, label: __("iconBackMarginMobile") },
+                    rangeTablet: { value: iconBackMarginTablet, label: __("iconBackMarginTablet") },
+                    rangeLabel: __("Margin"),
+                    min: 1,
+                    max: 100
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+                    setAttributes: setAttributes,
+                    rangeType: { value: iconBackPaddingType, label: __("iconBackPaddingType") },
+                    range: { value: iconBackPadding, label: __("iconBackPadding") },
+                    rangeMobile: { value: iconBackPaddingMobile, label: __("iconBackPaddingMobile") },
+                    rangeTablet: { value: iconBackPaddingTablet, label: __("iconBackPaddingTablet") },
+                    rangeLabel: __("Padding"),
+                    min: 1,
+                    max: 100
                   })
                 );
               } else if ("title" === tabName.name) {
@@ -63673,6 +63993,26 @@ var edit = function (_Component) {
                       });
                     },
                     allowReset: true
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+                    setAttributes: setAttributes,
+                    rangeType: { value: titleBackMarginType, label: __("titleBackMarginType") },
+                    range: { value: titleBackMargin, label: __("titleBackMargin") },
+                    rangeMobile: { value: titleBackMarginMobile, label: __("titleBackMarginMobile") },
+                    rangeTablet: { value: titleBackMarginTablet, label: __("titleBackMarginTablet") },
+                    rangeLabel: __("Margin"),
+                    min: 1,
+                    max: 100
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+                    setAttributes: setAttributes,
+                    rangeType: { value: titleBackPaddingType, label: __("titleBackPaddingType") },
+                    range: { value: titleBackPadding, label: __("titleBackPadding") },
+                    rangeMobile: { value: titleBackPaddingMobile, label: __("titleBackPaddingMobile") },
+                    rangeTablet: { value: titleBackPaddingTablet, label: __("titleBackPaddingTablet") },
+                    rangeLabel: __("Padding"),
+                    min: 1,
+                    max: 100
                   })
                 );
               } else {
@@ -63750,6 +64090,26 @@ var edit = function (_Component) {
                       });
                     },
                     allowReset: true
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+                    setAttributes: setAttributes,
+                    rangeType: { value: descBackMarginType, label: __("descBackMarginType") },
+                    range: { value: descBackMargin, label: __("descBackMargin") },
+                    rangeMobile: { value: descBackMarginMobile, label: __("descBackMarginMobile") },
+                    rangeTablet: { value: descBackMarginTablet, label: __("descBackMarginTablet") },
+                    rangeLabel: __("Margin"),
+                    min: 1,
+                    max: 100
+                  }),
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
+                    setAttributes: setAttributes,
+                    rangeType: { value: descBackPaddingType, label: __("descBackPaddingType") },
+                    range: { value: descBackPadding, label: __("descBackPadding") },
+                    rangeMobile: { value: descBackPaddingMobile, label: __("descBackPaddingMobile") },
+                    rangeTablet: { value: descBackPaddingTablet, label: __("descBackPaddingTablet") },
+                    rangeLabel: __("Padding"),
+                    min: 1,
+                    max: 100
                   })
                 );
               }
@@ -63953,7 +64313,55 @@ function styling(props) {
       height = _props$attributes.height,
       heightType = _props$attributes.heightType,
       heightMobile = _props$attributes.heightMobile,
-      heightTablet = _props$attributes.heightTablet;
+      heightTablet = _props$attributes.heightTablet,
+      iconFrontMargin = _props$attributes.iconFrontMargin,
+      iconFrontMarginType = _props$attributes.iconFrontMarginType,
+      iconFrontMarginMobile = _props$attributes.iconFrontMarginMobile,
+      iconFrontMarginTablet = _props$attributes.iconFrontMarginTablet,
+      iconFrontPadding = _props$attributes.iconFrontPadding,
+      iconFrontPaddingTablet = _props$attributes.iconFrontPaddingTablet,
+      iconFrontPaddingType = _props$attributes.iconFrontPaddingType,
+      iconFrontPaddingMobile = _props$attributes.iconFrontPaddingMobile,
+      titleFrontMargin = _props$attributes.titleFrontMargin,
+      titleFrontMarginType = _props$attributes.titleFrontMarginType,
+      titleFrontMarginMobile = _props$attributes.titleFrontMarginMobile,
+      titleFrontMarginTablet = _props$attributes.titleFrontMarginTablet,
+      titleFrontPadding = _props$attributes.titleFrontPadding,
+      titleFrontPaddingTablet = _props$attributes.titleFrontPaddingTablet,
+      titleFrontPaddingType = _props$attributes.titleFrontPaddingType,
+      titleFrontPaddingMobile = _props$attributes.titleFrontPaddingMobile,
+      descFrontMargin = _props$attributes.descFrontMargin,
+      descFrontMarginType = _props$attributes.descFrontMarginType,
+      descFrontMarginMobile = _props$attributes.descFrontMarginMobile,
+      descFrontMarginTablet = _props$attributes.descFrontMarginTablet,
+      descFrontPadding = _props$attributes.descFrontPadding,
+      descFrontPaddingTablet = _props$attributes.descFrontPaddingTablet,
+      descFrontPaddingType = _props$attributes.descFrontPaddingType,
+      descFrontPaddingMobile = _props$attributes.descFrontPaddingMobile,
+      iconBackMargin = _props$attributes.iconBackMargin,
+      iconBackMarginType = _props$attributes.iconBackMarginType,
+      iconBackMarginMobile = _props$attributes.iconBackMarginMobile,
+      iconBackMarginTablet = _props$attributes.iconBackMarginTablet,
+      iconBackPadding = _props$attributes.iconBackPadding,
+      iconBackPaddingTablet = _props$attributes.iconBackPaddingTablet,
+      iconBackPaddingType = _props$attributes.iconBackPaddingType,
+      iconBackPaddingMobile = _props$attributes.iconBackPaddingMobile,
+      titleBackMargin = _props$attributes.titleBackMargin,
+      titleBackMarginType = _props$attributes.titleBackMarginType,
+      titleBackMarginMobile = _props$attributes.titleBackMarginMobile,
+      titleBackMarginTablet = _props$attributes.titleBackMarginTablet,
+      titleBackPadding = _props$attributes.titleBackPadding,
+      titleBackPaddingTablet = _props$attributes.titleBackPaddingTablet,
+      titleBackPaddingType = _props$attributes.titleBackPaddingType,
+      titleBackPaddingMobile = _props$attributes.titleBackPaddingMobile,
+      descBackMargin = _props$attributes.descBackMargin,
+      descBackMarginType = _props$attributes.descBackMarginType,
+      descBackMarginMobile = _props$attributes.descBackMarginMobile,
+      descBackMarginTablet = _props$attributes.descBackMarginTablet,
+      descBackPadding = _props$attributes.descBackPadding,
+      descBackPaddingTablet = _props$attributes.descBackPaddingTablet,
+      descBackPaddingType = _props$attributes.descBackPaddingType,
+      descBackPaddingMobile = _props$attributes.descBackPaddingMobile;
 
 
   var selectors = {};
@@ -63975,11 +64383,22 @@ function styling(props) {
       "border-color": iconfrontborderColor,
       "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconfrontborderRadius, "px"),
       "background": iconfrontBGColor,
-      "text-shadow": iconfrontShadowHorizontal + 'px ' + iconfrontShadowVertical + 'px ' + iconfrontShadowBlur + 'px ' + iconfrontShadowColor
+      "text-shadow": iconfrontShadowHorizontal + 'px ' + iconfrontShadowVertical + 'px ' + iconfrontShadowBlur + 'px ' + iconfrontShadowColor,
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMargin, iconFrontMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPadding, iconFrontPaddingType)
     },
     " .premium-flip-text-wrapper img": {
       "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFront, iconSizeFrontType),
-      "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFront, iconSizeFrontType)
+      "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFront, iconSizeFrontType),
+      "color": iconfrontColor,
+      "border-style": iconfrontborderType,
+      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconfrontborderWidth, "px"),
+      "border-color": iconfrontborderColor,
+      "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconfrontborderRadius, "px"),
+      "background": iconfrontBGColor,
+      "text-shadow": iconfrontShadowHorizontal + 'px ' + iconfrontShadowVertical + 'px ' + iconfrontShadowBlur + 'px ' + iconfrontShadowColor,
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMargin, iconFrontMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPadding, iconFrontPaddingType)
     },
     " .premium-flip-front-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefrontfontSize, titlefrontfontSizeType),
@@ -63989,7 +64408,9 @@ function styling(props) {
       "text-transform": titlefrontUpper ? "uppercase" : "none" + "!important",
       "font-style": titlefrontStyle + "!important",
       "background": titlefrontBGColor,
-      "text-shadow": titlefrontshadowHorizontal + 'px ' + titlefrontshadowVertical + 'px ' + titlefrontshadowBlur + 'px ' + titlefrontshadowColor
+      "text-shadow": titlefrontshadowHorizontal + 'px ' + titlefrontshadowVertical + 'px ' + titlefrontshadowBlur + 'px ' + titlefrontshadowColor,
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontMargin, titleFrontMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontPadding, titleFrontPaddingType)
     },
     " .premium-flip-front-description": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descfrontfontSize, descfrontfontSizeType),
@@ -63999,7 +64420,9 @@ function styling(props) {
       "text-transform": descfrontUpper ? "uppercase" : "none" + "!important",
       "font-style": descfrontStyle + "!important",
       "background": descfrontBGColor,
-      "text-shadow": descfrontshadowHorizontal + 'px ' + descfrontshadowVertical + 'px ' + descfrontshadowBlur + 'px ' + descfrontshadowColor
+      "text-shadow": descfrontshadowHorizontal + 'px ' + descfrontshadowVertical + 'px ' + descfrontshadowBlur + 'px ' + descfrontshadowColor,
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontMargin, descFrontMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontPadding, descFrontPaddingType)
     },
     " .premium-flip-back": {
       "box-shadow": backShadowHorizontal + 'px ' + backShadowVertical + 'px ' + backShadowBlur + 'px ' + backShadowColor + ' ' + backShadowPosition
@@ -64012,11 +64435,22 @@ function styling(props) {
       "border-color": iconbackborderColor,
       "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconbackborderRadius, "px"),
       "background": iconbackBGColor,
-      "text-shadow": iconbackShadowHorizontal + 'px ' + iconbackShadowVertical + 'px ' + iconbackShadowBlur + 'px ' + iconbackShadowColor
+      "text-shadow": iconbackShadowHorizontal + 'px ' + iconbackShadowVertical + 'px ' + iconbackShadowBlur + 'px ' + iconbackShadowColor,
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMargin, iconBackMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackPadding, iconBackPaddingType)
     },
     " .premium-flip-back-text-wrapper img": {
       "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBack, iconSizeBackType),
-      "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBack, iconSizeBackType)
+      "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBack, iconSizeBackType),
+      "color": iconbackColor,
+      "border-style": iconbackborderType,
+      "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconbackborderWidth, "px"),
+      "border-color": iconbackborderColor,
+      "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconbackborderRadius, "px"),
+      "background": iconbackBGColor,
+      "text-shadow": iconbackShadowHorizontal + 'px ' + iconbackShadowVertical + 'px ' + iconbackShadowBlur + 'px ' + iconbackShadowColor,
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMargin, iconBackMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackPadding, iconBackPaddingType)
     },
     " .premium-flip-back-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlebackfontSize, titlebackfontSizeType),
@@ -64026,7 +64460,9 @@ function styling(props) {
       "text-transform": titlebackUpper ? "uppercase" : "none" + "!important",
       "font-style": titlebackStyle + "!important",
       "background": titlebackBGColor,
-      "text-shadow": titlebackshadowHorizontal + 'px ' + titlebackshadowVertical + 'px ' + titlebackshadowBlur + 'px ' + titlebackshadowColor
+      "text-shadow": titlebackshadowHorizontal + 'px ' + titlebackshadowVertical + 'px ' + titlebackshadowBlur + 'px ' + titlebackshadowColor,
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackMargin, titleBackMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackPadding, titleBackPaddingType)
     },
     " .premium-flip-back-description": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descbackfontSize, descbackfontSizeType),
@@ -64036,55 +64472,97 @@ function styling(props) {
       "text-transform": descbackUpper ? "uppercase" : "none" + "!important",
       "font-style": descbackStyle + "!important",
       "background": descbackBGColor,
-      "text-shadow": descbackshadowHorizontal + 'px ' + descbackshadowVertical + 'px ' + descbackshadowBlur + 'px ' + descbackshadowColor
+      "text-shadow": descbackshadowHorizontal + 'px ' + descbackshadowVertical + 'px ' + descbackshadowBlur + 'px ' + descbackshadowColor,
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackMargin, descBackMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackPadding, descBackPaddingType)
     }
   };
 
   mobile_selectors = {
     " .premium-flip-front-icon": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFrontMobile, iconSizeFrontType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFrontMobile, iconSizeFrontType),
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMarginMobile, iconFrontMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPaddingMobile, iconFrontPaddingType)
+    },
+    " .premium-flip-text-wrapper img": {
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMarginMobile, iconFrontMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPaddingMobile, iconFrontPaddingType)
     },
     " .premium-flip-box": {
       "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(heightMobile, heightType)
     },
     " .premium-flip-front-title": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefrontfontSizeMobile, titlefrontfontSizeType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefrontfontSizeMobile, titlefrontfontSizeType),
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontMarginMobile, titleFrontMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontPaddingMobile, titleFrontPaddingType)
     },
     " .premium-flip-front-description": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descfrontfontSizeMobile, descfrontfontSizeType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descfrontfontSizeMobile, descfrontfontSizeType),
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontMarginMobile, descFrontMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontPaddingMobile, descFrontPaddingType)
     },
     " .premium-flip-back-icon": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBackMobile, iconSizeBackType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBackMobile, iconSizeBackType),
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMarginMobile, iconBackMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackPaddingMobile, iconBackPaddingType)
+    },
+    " .premium-flip-back-text-wrapper img": {
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMarginMobile, iconBackMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackPaddingMobile, iconBackPaddingType)
     },
     " .premium-flip-back-title": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlebackfontSizeMobile, titlebackfontSizeType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlebackfontSizeMobile, titlebackfontSizeType),
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackMarginMobile, titleBackMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackPaddingMobile, titleBackPaddingType)
     },
     " .premium-flip-back-description": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descbackfontSizeMobile, descbackfontSizeType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descbackfontSizeMobile, descbackfontSizeType),
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackMarginMobile, descBackMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackPaddingMobile, descBackPaddingType)
     }
   };
 
   tablet_selectors = {
     " .premium-flip-front-icon": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFrontTablet, iconSizeFrontType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFrontTablet, iconSizeFrontType),
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMarginTablet, iconFrontMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPaddingTablet, iconFrontPaddingType)
+    },
+    " .premium-flip-text-wrapper img": {
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMarginTablet, iconFrontMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPaddingTablet, iconFrontPaddingType)
     },
     " .premium-flip-box": {
       "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(heightTablet, heightType)
     },
     " .premium-flip-front-title": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefrontfontSizeTablet, titlefrontfontSizeType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefrontfontSizeTablet, titlefrontfontSizeType),
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontMarginTablet, titleFrontMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontPaddingTablet, titleFrontPaddingType)
     },
     " .premium-flip-front-description": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descfrontfontSizeTablet, descfrontfontSizeType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descfrontfontSizeTablet, descfrontfontSizeType),
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontMarginTablet, descFrontMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontPaddingTablet, descFrontPaddingType)
     },
     " .premium-flip-back-icon": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBackTablet, iconSizeBackType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBackTablet, iconSizeBackType),
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMarginTablet, iconBackMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackPaddingTablet, iconBackPaddingType)
+    },
+    " .premium-flip-back-text-wrapper img": {
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMarginTablet, iconBackMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackPaddingTablet, iconBackPaddingType)
     },
     " .premium-flip-back-title": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlebackfontSizeTablet, titlebackfontSizeType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlebackfontSizeTablet, titlebackfontSizeType),
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackMarginTablet, titleBackMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackPaddingTablet, titleBackPaddingType)
     },
     " .premium-flip-back-description": {
-      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descbackfontSizeTablet, descbackfontSizeType)
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descbackfontSizeTablet, descbackfontSizeType),
+      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackMarginTablet, descBackMarginType),
+      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackPaddingTablet, descBackPaddingType)
     }
   };
 
