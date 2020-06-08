@@ -62654,20 +62654,24 @@ var edit = function (_Component) {
           block_id = _props$attributes.block_id,
           animation = _props$attributes.animation;
 
-      if (!block_id) return null;
+      console.log(animation);
 
-      var toggleBox = document.getElementsByClassName("premium-flip-style-flip " + block_id);
-      console.log(toggleBox.length);
-      if (toggleBox.length == 0) return;else {
+      if (!block_id) return null;
+      var jj = document.getElementById("premium-flip-box-" + block_id);
+      if (jj == null) return;
+      var toggleBox = jj.getElementsByClassName("premium-flip-style-flip");
+
+      if (undefined !== toggleBox[0]) {
         var frontRight = document.getElementsByClassName("premium-flip-frontrl");
         var frontLeft = document.getElementsByClassName("premium-flip-frontlr");
         var frontWrapper = document.getElementsByClassName("premium-flip-text-wrapper");
         var backWrapper = document.getElementsByClassName("premium-flip-back-text-wrapper");
 
         toggleBox[0].addEventListener("mouseenter", function () {
-          console.log("hh");
+          if (!toggleBox[0]) return;
           toggleBox[0].classList.add("flipped");
-          if (!animation) return null;
+          if (!animation) return;
+
           if (frontRight) {
             frontWrapper[0].classList.remove("PafadeInLeft");
             frontWrapper[0].classList.add("PafadeInRight");
@@ -62681,8 +62685,9 @@ var edit = function (_Component) {
           }
         });
         toggleBox[0].addEventListener("mouseleave", function () {
+          if (!toggleBox[0]) return;
           toggleBox[0].classList.remove("flipped");
-          if (!animation) return null;
+          if (!animation) return;
 
           if (frontRight) {
             frontWrapper[0].classList.add("PafadeInLeft");
@@ -64118,10 +64123,10 @@ var edit = function (_Component) {
         )
       ), wp.element.createElement(
         "div",
-        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId), style: { textAlign: align }, id: "premium-flip-box-" + this.props.clientId },
+        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId + " premium-flex"), style: { textAlign: align }, id: "premium-flip-box-" + this.props.clientId },
         wp.element.createElement(
           "div",
-          { className: "premium-flip-style-" + effect + " " + this.props.clientId, "data-animation": "" + animation },
+          { className: "premium-flip-style-" + effect, "data-animation": "" + animation },
           wp.element.createElement(
             "div",
             { className: "premium-flip-box", style: {

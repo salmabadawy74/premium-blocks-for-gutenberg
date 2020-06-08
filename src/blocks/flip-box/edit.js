@@ -58,21 +58,24 @@ class edit extends Component {
     }
     initToggleBox() {
       const {block_id, animation} = this.props.attributes;
+      console.log(animation);
+      
       if (!block_id) return null;
+      let jj = document.getElementById(`premium-flip-box-${block_id}`)
+      if(jj == null) return;
+      let toggleBox = jj.getElementsByClassName(`premium-flip-style-flip`);
 
-      let toggleBox = document.getElementsByClassName(`premium-flip-style-flip ${block_id}`);
-      console.log(toggleBox.length);
-      if (toggleBox.length == 0) return;
-      else{
+      if (undefined !== toggleBox[0]) {
       let frontRight = document.getElementsByClassName(`premium-flip-frontrl`);
       let frontLeft = document.getElementsByClassName(`premium-flip-frontlr`);
       let frontWrapper = document.getElementsByClassName(`premium-flip-text-wrapper`);
       let backWrapper = document.getElementsByClassName(`premium-flip-back-text-wrapper`);
       
       toggleBox[0].addEventListener("mouseenter", () => {
-        console.log("hh");
-            toggleBox[0].classList.add("flipped");
-      if (!animation) return null;
+        if (!toggleBox[0]) return;
+          toggleBox[0].classList.add("flipped");
+          if (!animation) return;
+
             if (frontRight) {
               frontWrapper[0].classList.remove("PafadeInLeft");
               frontWrapper[0].classList.add("PafadeInRight");
@@ -87,8 +90,9 @@ class edit extends Component {
             }
           });
           toggleBox[0].addEventListener("mouseleave", () => {
+            if (!toggleBox[0]) return;
             toggleBox[0].classList.remove("flipped");
-      if (!animation) return null;
+          if (!animation) return;
 
             if (frontRight) {
               frontWrapper[0].classList.add("PafadeInLeft");
@@ -1362,9 +1366,9 @@ class edit extends Component {
             ),
             <div className={classnames(
                 className,
-                `premium-block-${this.props.clientId}`
+                `premium-block-${this.props.clientId} premium-flex`
             )} style={{textAlign: align}} id={`premium-flip-box-${this.props.clientId}`}>
-              <div className={`premium-flip-style-${effect} ${this.props.clientId}`} data-animation={`${animation}`}>
+              <div className={`premium-flip-style-${effect}`} data-animation={`${animation}`}>
                 <div className={`premium-flip-box`} style={{
                 textAlign: align
               }}>
