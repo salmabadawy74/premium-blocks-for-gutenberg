@@ -2546,23 +2546,23 @@ a.premium-dheading-block__link:hover {
 }
 
 .premium-size-type-field-tabs .components-range-control .components-base-control__field {
-  display: block;
-  flex-wrap: unset;
+  display: block !important;
+  flex-wrap: unset !important;
 }
 
 .premium-size-type-field-tabs .components-range-control .components-base-control__label {
-  width: auto;
-  display: block;
+  width: auto !important;
+  display: block !important;
 }
 
 .premium-size-type-field-tabs .components-range-control .components-range-control__slider {
-  width: 42%;
-  margin-bottom: 0;
-  padding-bottom: 2px;
+  width: 42% !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 2px !important;
 }
 
 .premium-size-type-field-tabs .components-range-control .dashicon {
-  vertical-align: middle;
+  vertical-align: middle !important;
 }
 
 .edit-post-sidebar h2.premium-size-type-field-title {
@@ -2573,41 +2573,41 @@ a.premium-dheading-block__link:hover {
 }
 
 .premium-size-type-field-tabs {
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 20px !important;
+  margin-top: 20px !important;
 }
 
 .premium-size-type-field-tabs .components-tab-panel__tabs {
-  border-bottom: 0;
-  text-align: right;
-  margin-right: 40px;
-  margin-bottom: -20px;
+  border-bottom: 0 !important;
+  text-align: right !important;
+  margin-right: 40px !important;
+  margin-bottom: -20px !important;
 }
 
 .premium-size-type-field-tabs.premium-without-size-type .components-tab-panel__tabs {
-  margin-right: 0;
+  margin-right: 0 !important;
 }
 
 .premium-size-type-field-tabs .components-tab-panel__tabs button svg {
-  width: 14px;
-  height: 14px
+  width: 14px !important;
+  height: 14px !important;
 }
 
 .premium-size-type-field-tabs .components-tab-panel__tabs button {
-  border: 0;
-  border-bottom: 0;
-  padding: 3px;
-  margin-bottom: 0;
-  outline: 0;
-  width: auto;
-  font-size: 8px;
-  background: transparent;
-  color: #999;
-  display: inline-block;
-  border-radius: 50%;
-  height: 20px;
-  width: 20px;
-  margin-right: 3px;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  padding: 3px !important;
+  margin-bottom: 0 !important;
+  outline: 0 !important;
+  width: auto !important;
+  font-size: 8px !important;
+  background: transparent !important;
+  color: #999 !important;
+  display: inline-block !important;
+  border-radius: 50% !important;
+  height: 20px !important;
+  width: 20px !important;
+  margin-right: 3px !important;
 }
 
 .premium-size-type-field-tabs .components-tab-panel__tabs button.active-tab,
@@ -3904,7 +3904,7 @@ a.premium-dheading-block__link:hover {
   perspective: 1000px;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  height: 380px;
+  margin: 2%;
 }
 
 .premium-flip-box>div {
@@ -4350,11 +4350,11 @@ a.premium-dheading-block__link:hover {
 }
 
 /* Tab Panel */
-.premium-flip-box-tab-panel .components-tab-panel__tabs {
+.premium-flip-box-tab-panel-res .components-tab-panel__tabs {
   margin-bottom: 15px;
 }
 
-.premium-flip-box-tab-panel .components-tab-panel__tabs button {
+.premium-flip-box-tab-panel-res .components-tab-panel__tabs button {
   width: 33%;
   padding: 10px;
   background: transparent;
@@ -4371,7 +4371,7 @@ a.premium-dheading-block__link:hover {
   justify-content: center;
 }
 
-.premium-flip-box-tab-panel button.active-tab {
+.premium-flip-box-tab-panel-res button.active-tab {
   background: #eee !important;
   outline: none;
   font-weight: 500;
@@ -4380,4 +4380,7 @@ a.premium-dheading-block__link:hover {
 .premium-flip-back-text-wrapper .dashicons {
   width: auto !important;
   height: auto !important;
+}
+.premium-flip-box:hover .premium-flip-back{
+  visibility: visible !important;
 }

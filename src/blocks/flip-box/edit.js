@@ -9,7 +9,6 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 
 const { __ } = wp.i18n
-let isBoxUpdated = null;
 
 const {
     Component,
@@ -53,12 +52,10 @@ class edit extends Component {
     }
 
     componentDidUpdate() {
-      clearTimeout(isBoxUpdated);
-      isBoxUpdated = setTimeout(this.initToggleBox, 10);
+      this.initToggleBox()
     }
     initToggleBox() {
-      const {block_id, animation} = this.props.attributes;
-      console.log(animation);
+      const {block_id} = this.props.attributes;
       
       if (!block_id) return null;
       let jj = document.getElementById(`premium-flip-box-${block_id}`)
@@ -66,15 +63,22 @@ class edit extends Component {
       let toggleBox = jj.getElementsByClassName(`premium-flip-style-flip`);
 
       if (undefined !== toggleBox[0]) {
-      let frontRight = document.getElementsByClassName(`premium-flip-frontrl`);
-      let frontLeft = document.getElementsByClassName(`premium-flip-frontlr`);
-      let frontWrapper = document.getElementsByClassName(`premium-flip-text-wrapper`);
-      let backWrapper = document.getElementsByClassName(`premium-flip-back-text-wrapper`);
+      let frontRight = toggleBox[0].getElementsByClassName(`premium-flip-frontrl`);
+      let frontLeft = toggleBox[0].getElementsByClassName(`premium-flip-frontlr`);
+      let frontWrapper = toggleBox[0].getElementsByClassName(`premium-flip-text-wrapper`);
+      let backWrapper = toggleBox[0].getElementsByClassName(`premium-flip-back-text-wrapper`);
       
       toggleBox[0].addEventListener("mouseenter", () => {
         if (!toggleBox[0]) return;
           toggleBox[0].classList.add("flipped");
-          if (!animation) return;
+          
+          if (toggleBox[0].dataset.animation == 'false'){
+            frontWrapper[0].classList.remove("PafadeInLeft");
+            backWrapper[0].classList.remove("PafadeInRight");
+            frontWrapper[0].classList.remove("PafadeInRevLeft");
+            backWrapper[0].classList.remove("PafadeInRevRight");
+            return;
+          }
 
             if (frontRight) {
               frontWrapper[0].classList.remove("PafadeInLeft");
@@ -92,7 +96,13 @@ class edit extends Component {
           toggleBox[0].addEventListener("mouseleave", () => {
             if (!toggleBox[0]) return;
             toggleBox[0].classList.remove("flipped");
-          if (!animation) return;
+            if (toggleBox[0].dataset.animation == 'false'){
+              frontWrapper[0].classList.remove("PafadeInRight");
+              backWrapper[0].classList.remove("PafadeInLeft");
+              frontWrapper[0].classList.remove("PafadeInRevRight");
+              backWrapper[0].classList.remove("PafadeInRevLeft");
+              return;
+            }
 
             if (frontRight) {
               frontWrapper[0].classList.add("PafadeInLeft");
@@ -252,10 +262,6 @@ class edit extends Component {
             titleFrontMarginType,
             titleFrontMarginMobile,
             titleFrontMarginTablet,
-            titleFrontPadding,
-            titleFrontPaddingTablet,
-            titleFrontPaddingType,
-            titleFrontPaddingMobile,
             descFrontMargin,
             descFrontMarginType,
             descFrontMarginMobile,
@@ -276,10 +282,6 @@ class edit extends Component {
             titleBackMarginType,
             titleBackMarginMobile,
             titleBackMarginTablet,
-            titleBackPadding,
-            titleBackPaddingTablet,
-            titleBackPaddingType,
-            titleBackPaddingMobile,
             descBackMargin,
             descBackMarginType,
             descBackMarginMobile,
@@ -818,7 +820,7 @@ class edit extends Component {
                         onResetClick={onResetClickFront}
                       />
                       <TabPanel
-                        className="premium-flip-box-tab-panel"
+                        className="premium-flip-box-tab-panel-res"
                         activeClass="active-tab"
                         tabs={TABSTYLE}>
                         {
@@ -970,16 +972,6 @@ class edit extends Component {
                                   min={1}
                                   max={100}
                                 />
-                                <PremiumRangeResponsive
-                                  setAttributes={setAttributes}
-                                  rangeType={{ value: titleFrontPaddingType, label: __("titleFrontPaddingType") }}
-                                  range={{ value: titleFrontPadding, label: __("titleFrontPadding") }}
-                                  rangeMobile={{ value: titleFrontPaddingMobile, label: __("titleFrontPaddingMobile") }}
-                                  rangeTablet={{ value: titleFrontPaddingTablet, label: __("titleFrontPaddingTablet") }}
-                                  rangeLabel={__("Padding")}
-                                  min={1}
-                                  max={100}
-                                />
                               </Fragment>
                             }else {
                               return <Fragment>
@@ -1111,7 +1103,7 @@ class edit extends Component {
                         onResetClick={onResetClickBack}
                       />
                       <TabPanel
-                        className="premium-flip-box-tab-panel"
+                        className="premium-flip-box-tab-panel-res"
                         activeClass="active-tab"
                         tabs={TABSTYLE}>
                         {
@@ -1263,16 +1255,6 @@ class edit extends Component {
                                   min={1}
                                   max={100}
                                 />
-                                <PremiumRangeResponsive
-                                  setAttributes={setAttributes}
-                                  rangeType={{ value: titleBackPaddingType, label: __("titleBackPaddingType") }}
-                                  range={{ value: titleBackPadding, label: __("titleBackPadding") }}
-                                  rangeMobile={{ value: titleBackPaddingMobile, label: __("titleBackPaddingMobile") }}
-                                  rangeTablet={{ value: titleBackPaddingTablet, label: __("titleBackPaddingTablet") }}
-                                  rangeLabel={__("Padding")}
-                                  min={1}
-                                  max={100}
-                                />
                               </Fragment>
                             }else {
                               return <Fragment>
@@ -1396,7 +1378,7 @@ class edit extends Component {
                     </div>
                   </div>
                 </div>
-                <div className={`premium-flip-back premium-flip-back${flipDir}`} style={{textAlign: align}}>
+                <div className={`premium-flip-back premium-flip-back${flipDir}`} style={{textAlign: align, visibility: 'hidden'}}>
                   <div className="premium-flip-back-overlay">
                     <div className="premium-flip-back-content-container">
                       {link && <a className="premium-flip-box-full-link" href={`${url}`}></a>}

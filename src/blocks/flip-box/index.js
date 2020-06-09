@@ -570,22 +570,6 @@ const flipBoxAttrs = {
     type: "number",
     default: "0"
   },
-  titleFrontPadding: {
-    type: "number",
-    default: "0"
-  },
-  titleFrontPaddingTablet: {
-    type: "number",
-    default: "0"
-  },
-  titleFrontPaddingType: {
-    type: "string",
-    default: "px"
-  },
-  titleFrontPaddingMobile: {
-    type: "number",
-    default: "0"
-  },
   descFrontMargin: {
     type: "number",
     default: "0"
@@ -663,22 +647,6 @@ const flipBoxAttrs = {
     default: "0"
   },
   titleBackMarginTablet: {
-    type: "number",
-    default: "0"
-  },
-  titleBackPadding: {
-    type: "number",
-    default: "0"
-  },
-  titleBackPaddingTablet: {
-    type: "number",
-    default: "0"
-  },
-  titleBackPaddingType: {
-    type: "string",
-    default: "px"
-  },
-  titleBackPaddingMobile: {
     type: "number",
     default: "0"
   },
