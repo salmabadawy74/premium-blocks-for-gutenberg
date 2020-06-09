@@ -1,7 +1,7 @@
 jQuery(document).ready(function ($) {
   const $flipBox = $(".premium-flip-style-flip");
   
-  if (!$flipBox.length)
+  if (!$flipBox)
     return;
 
   $flipBox.map((index, flipBox) => {

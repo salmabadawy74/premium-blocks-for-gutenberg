@@ -62640,16 +62640,20 @@ var edit = function (_Component) {
             return;
           }
 
-          if (frontRight) {
+          if (frontRight[0]) {
             frontWrapper[0].classList.remove("PafadeInLeft");
             frontWrapper[0].classList.add("PafadeInRight");
             backWrapper[0].classList.add("PafadeInLeft");
             backWrapper[0].classList.remove("PafadeInRight");
-          } else if (frontLeft) {
+            frontWrapper[0].classList.remove("PafadeInRevLeft");
+            backWrapper[0].classList.remove("PafadeInRevRight");
+          } else if (frontLeft[0]) {
             frontWrapper[0].classList.remove("PafadeInRevLeft");
             frontWrapper[0].classList.add("PafadeInRevRight");
             backWrapper[0].classList.add("PafadeInRevLeft");
             backWrapper[0].classList.remove("PafadeInRevRight");
+            backWrapper[0].classList.remove("PafadeInRight");
+            frontWrapper[0].classList.remove("PafadeInLeft");
           }
         });
         toggleBox[0].addEventListener("mouseleave", function () {
@@ -62663,16 +62667,20 @@ var edit = function (_Component) {
             return;
           }
 
-          if (frontRight) {
+          if (frontRight[0]) {
             frontWrapper[0].classList.add("PafadeInLeft");
             frontWrapper[0].classList.remove("PafadeInRight");
             backWrapper[0].classList.remove("PafadeInLeft");
             backWrapper[0].classList.add("PafadeInRight");
-          } else if (frontLeft) {
+            frontWrapper[0].classList.remove("PafadeInRevRight");
+            backWrapper[0].classList.remove("PafadeInRevLeft");
+          } else if (frontLeft[0]) {
             frontWrapper[0].classList.add("PafadeInRevLeft");
             frontWrapper[0].classList.remove("PafadeInRevRight");
             backWrapper[0].classList.remove("PafadeInRevLeft");
             backWrapper[0].classList.add("PafadeInRevRight");
+            frontWrapper[0].classList.remove("PafadeInRight");
+            backWrapper[0].classList.remove("PafadeInLeft");
           }
         });
       }
