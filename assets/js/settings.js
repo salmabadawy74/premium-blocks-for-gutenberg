@@ -22,7 +22,8 @@ export const {
   tab,
   fancyText,
   title,
-  flipBox
+  flipBox,
+  imageSeparator
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys
