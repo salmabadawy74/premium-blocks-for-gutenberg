@@ -115,10 +115,6 @@ function styling(props) {
     titleFrontMarginType,
     titleFrontMarginMobile,
     titleFrontMarginTablet,
-    titleFrontPadding,
-    titleFrontPaddingTablet,
-    titleFrontPaddingType,
-    titleFrontPaddingMobile,
     descFrontMargin,
     descFrontMarginType,
     descFrontMarginMobile,
@@ -139,10 +135,6 @@ function styling(props) {
     titleBackMarginType,
     titleBackMarginMobile,
     titleBackMarginTablet,
-    titleBackPadding,
-    titleBackPaddingTablet,
-    titleBackPaddingType,
-    titleBackPaddingMobile,
     descBackMargin,
     descBackMarginType,
     descBackMarginMobile,
@@ -173,7 +165,7 @@ function styling(props) {
       "border-radius": generateCSSUnit(iconfrontborderRadius, "px"),
       "background": iconfrontBGColor,
       "text-shadow": `${iconfrontShadowHorizontal}px ${iconfrontShadowVertical}px ${iconfrontShadowBlur}px ${iconfrontShadowColor}`,
-      "margin": generateCSSUnit(iconFrontMargin, iconFrontMarginType),
+      "margin": iconFrontMargin >= '1' ? generateCSSUnit(iconFrontMargin, iconFrontMarginType) : `0 0 15px 0`,
       "padding": generateCSSUnit(iconFrontPadding, iconFrontPaddingType),
     },
     " .premium-flip-text-wrapper img": {
@@ -186,7 +178,7 @@ function styling(props) {
       "border-radius": generateCSSUnit(iconfrontborderRadius, "px"),
       "background": iconfrontBGColor,
       "text-shadow": `${iconfrontShadowHorizontal}px ${iconfrontShadowVertical}px ${iconfrontShadowBlur}px ${iconfrontShadowColor}`,
-      "margin": generateCSSUnit(iconFrontMargin, iconFrontMarginType),
+      "margin": iconFrontMargin >= '1' ? generateCSSUnit(iconFrontMargin, iconFrontMarginType) : `0 0 15px 0`,
       "padding": generateCSSUnit(iconFrontPadding, iconFrontPaddingType),
     },
     " .premium-flip-front-title": {
@@ -198,8 +190,7 @@ function styling(props) {
       "font-style": titlefrontStyle + "!important",
       "background": titlefrontBGColor,
       "text-shadow": `${titlefrontshadowHorizontal}px ${titlefrontshadowVertical}px ${titlefrontshadowBlur}px ${titlefrontshadowColor}`,
-      "margin": generateCSSUnit(titleFrontMargin, titleFrontMarginType),
-      "padding": generateCSSUnit(titleFrontPadding, titleFrontPaddingType),
+      "margin": titleFrontMargin >= '1' ? generateCSSUnit(titleFrontMargin, titleFrontMarginType): `0 0 15px 0`,
     },
     " .premium-flip-front-description": {
       "font-size": generateCSSUnit(descfrontfontSize, descfrontfontSizeType),
@@ -210,7 +201,7 @@ function styling(props) {
       "font-style": descfrontStyle + "!important",
       "background": descfrontBGColor,
       "text-shadow": `${descfrontshadowHorizontal}px ${descfrontshadowVertical}px ${descfrontshadowBlur}px ${descfrontshadowColor}`,
-      "margin": generateCSSUnit(descFrontMargin, descFrontMarginType),
+      "margin": descFrontMargin >= '1' ? generateCSSUnit(descFrontMargin, descFrontMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(descFrontPadding, descFrontPaddingType),
     },
     " .premium-flip-back": {
@@ -225,7 +216,7 @@ function styling(props) {
       "border-radius": generateCSSUnit(iconbackborderRadius, "px"),
       "background": iconbackBGColor,
       "text-shadow": `${iconbackShadowHorizontal}px ${iconbackShadowVertical}px ${iconbackShadowBlur}px ${iconbackShadowColor}`,
-      "margin": generateCSSUnit(iconBackMargin, iconBackMarginType),
+      "margin": iconBackMargin >= '1' ? generateCSSUnit(iconBackMargin, iconBackMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(iconBackPadding, iconBackPaddingType),
     },
     " .premium-flip-back-text-wrapper img": {
@@ -238,7 +229,7 @@ function styling(props) {
       "border-radius": generateCSSUnit(iconbackborderRadius, "px"),
       "background": iconbackBGColor,
       "text-shadow": `${iconbackShadowHorizontal}px ${iconbackShadowVertical}px ${iconbackShadowBlur}px ${iconbackShadowColor}`,
-      "margin": generateCSSUnit(iconBackMargin, iconBackMarginType),
+      "margin": iconBackMargin >= '1' ? generateCSSUnit(iconBackMargin, iconBackMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(iconBackPadding, iconBackPaddingType),
     },
     " .premium-flip-back-title": {
@@ -250,8 +241,7 @@ function styling(props) {
       "font-style": titlebackStyle + "!important",
       "background": titlebackBGColor,
       "text-shadow": `${titlebackshadowHorizontal}px ${titlebackshadowVertical}px ${titlebackshadowBlur}px ${titlebackshadowColor}`,
-      "margin": generateCSSUnit(titleBackMargin, titleBackMarginType),
-      "padding": generateCSSUnit(titleBackPadding, titleBackPaddingType),
+      "margin": titleBackMargin >= '1' ? generateCSSUnit(titleBackMargin, titleBackMarginType): `0 0 15px 0`,
     },
     " .premium-flip-back-description": {
       "font-size": generateCSSUnit(descbackfontSize, descbackfontSizeType),
@@ -262,7 +252,7 @@ function styling(props) {
       "font-style": descbackStyle + "!important",
       "background": descbackBGColor,
       "text-shadow": `${descbackshadowHorizontal}px ${descbackshadowVertical}px ${descbackshadowBlur}px ${descbackshadowColor}`,
-      "margin": generateCSSUnit(descBackMargin, descBackMarginType),
+      "margin": descBackMargin >= '1' ? generateCSSUnit(descBackMargin, descBackMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(descBackPadding, descBackPaddingType),
     }
   }
@@ -270,11 +260,11 @@ function styling(props) {
   mobile_selectors = {
     " .premium-flip-front-icon": {
       "font-size": generateCSSUnit(iconSizeFrontMobile, iconSizeFrontType),
-      "margin": generateCSSUnit(iconFrontMarginMobile, iconFrontMarginType),
+      "margin": iconFrontMarginMobile >= '1' ? generateCSSUnit(iconFrontMarginMobile, iconFrontMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(iconFrontPaddingMobile, iconFrontPaddingType),
     },
     " .premium-flip-text-wrapper img": {
-      "margin": generateCSSUnit(iconFrontMarginMobile, iconFrontMarginType),
+      "margin": iconFrontMarginMobile >= '1' ? generateCSSUnit(iconFrontMarginMobile, iconFrontMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(iconFrontPaddingMobile, iconFrontPaddingType),
     },
     " .premium-flip-box":{
@@ -282,31 +272,29 @@ function styling(props) {
     },
     " .premium-flip-front-title": {
       "font-size": generateCSSUnit(titlefrontfontSizeMobile, titlefrontfontSizeType),
-      "margin": generateCSSUnit(titleFrontMarginMobile, titleFrontMarginType),
-      "padding": generateCSSUnit(titleFrontPaddingMobile, titleFrontPaddingType),
+      "margin": titleFrontMarginMobile >= '1' ? generateCSSUnit(titleFrontMarginMobile, titleFrontMarginType): `0 0 15px 0`,
     },
     " .premium-flip-front-description": {
       "font-size": generateCSSUnit(descfrontfontSizeMobile, descfrontfontSizeType),
-      "margin": generateCSSUnit(descFrontMarginMobile, descFrontMarginType),
+      "margin": descFrontMarginMobile >= '1' ? generateCSSUnit(descFrontMarginMobile, descFrontMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(descFrontPaddingMobile, descFrontPaddingType),
     },
     " .premium-flip-back-icon": {
       "font-size": generateCSSUnit(iconSizeBackMobile, iconSizeBackType),
-      "margin": generateCSSUnit(iconBackMarginMobile, iconBackMarginType),
+      "margin": iconBackMarginMobile >= '1' ? generateCSSUnit(iconBackMarginMobile, iconBackMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(iconBackPaddingMobile, iconBackPaddingType),
     },
     " .premium-flip-back-text-wrapper img": {
-      "margin": generateCSSUnit(iconBackMarginMobile, iconBackMarginType),
+      "margin": iconBackMarginMobile >= '1' ? generateCSSUnit(iconBackMarginMobile, iconBackMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(iconBackPaddingMobile, iconBackPaddingType),
     },
     " .premium-flip-back-title": {
       "font-size": generateCSSUnit(titlebackfontSizeMobile, titlebackfontSizeType),
-      "margin": generateCSSUnit(titleBackMarginMobile, titleBackMarginType),
-      "padding": generateCSSUnit(titleBackPaddingMobile, titleBackPaddingType),
+      "margin": titleBackMarginMobile >= '1' ? generateCSSUnit(titleBackMarginMobile, titleBackMarginType): `0 0 15px 0`,
     },
     " .premium-flip-back-description": {
       "font-size": generateCSSUnit(descbackfontSizeMobile, descbackfontSizeType),
-      "margin": generateCSSUnit(descBackMarginMobile, descBackMarginType),
+      "margin": descBackMarginMobile >= '1' ? generateCSSUnit(descBackMarginMobile, descBackMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(descBackPaddingMobile, descBackPaddingType),
     },
   }
@@ -314,11 +302,11 @@ function styling(props) {
   tablet_selectors = {
     " .premium-flip-front-icon": {
       "font-size": generateCSSUnit(iconSizeFrontTablet, iconSizeFrontType),
-      "margin": generateCSSUnit(iconFrontMarginTablet, iconFrontMarginType),
+      "margin": iconFrontMarginTablet >= '1' ? generateCSSUnit(iconFrontMarginTablet, iconFrontMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(iconFrontPaddingTablet, iconFrontPaddingType),
     },
     " .premium-flip-text-wrapper img": {
-      "margin": generateCSSUnit(iconFrontMarginTablet, iconFrontMarginType),
+      "margin": iconFrontMarginTablet >= '1' ? generateCSSUnit(iconFrontMarginTablet, iconFrontMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(iconFrontPaddingTablet, iconFrontPaddingType),
     },
     " .premium-flip-box":{
@@ -326,31 +314,29 @@ function styling(props) {
     },
     " .premium-flip-front-title": {
       "font-size": generateCSSUnit(titlefrontfontSizeTablet, titlefrontfontSizeType),
-      "margin": generateCSSUnit(titleFrontMarginTablet, titleFrontMarginType),
-      "padding": generateCSSUnit(titleFrontPaddingTablet, titleFrontPaddingType),
+      "margin": titleFrontMarginTablet >= '1' ? generateCSSUnit(titleFrontMarginTablet, titleFrontMarginType): `0 0 15px 0`,
     },
     " .premium-flip-front-description": {
       "font-size": generateCSSUnit(descfrontfontSizeTablet, descfrontfontSizeType),
-      "margin": generateCSSUnit(descFrontMarginTablet, descFrontMarginType),
+      "margin": descFrontMarginTablet >= '1' ? generateCSSUnit(descFrontMarginTablet, descFrontMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(descFrontPaddingTablet, descFrontPaddingType),
     },
     " .premium-flip-back-icon": {
       "font-size": generateCSSUnit(iconSizeBackTablet, iconSizeBackType),
-      "margin": generateCSSUnit(iconBackMarginTablet, iconBackMarginType),
+      "margin": iconBackMarginTablet >= '1' ? generateCSSUnit(iconBackMarginTablet, iconBackMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(iconBackPaddingTablet, iconBackPaddingType),
     },
     " .premium-flip-back-text-wrapper img": {
-      "margin": generateCSSUnit(iconBackMarginTablet, iconBackMarginType),
+      "margin": iconBackMarginTablet >= '1' ? generateCSSUnit(iconBackMarginTablet, iconBackMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(iconBackPaddingTablet, iconBackPaddingType),
     },
     " .premium-flip-back-title": {
       "font-size": generateCSSUnit(titlebackfontSizeTablet, titlebackfontSizeType),
-      "margin": generateCSSUnit(titleBackMarginTablet, titleBackMarginType),
-      "padding": generateCSSUnit(titleBackPaddingTablet, titleBackPaddingType),
+      "margin": titleBackMarginTablet >= '1' ? generateCSSUnit(titleBackMarginTablet, titleBackMarginType): `0 0 15px 0`,
     },
     " .premium-flip-back-description": {
       "font-size": generateCSSUnit(descbackfontSizeTablet, descbackfontSizeType),
-      "margin": generateCSSUnit(descBackMarginTablet, descBackMarginType),
+      "margin": descBackMarginTablet >= '1' ? generateCSSUnit(descBackMarginTablet, descBackMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(descBackPaddingTablet, descBackPaddingType),
     },
   }

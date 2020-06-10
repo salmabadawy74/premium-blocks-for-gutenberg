@@ -1550,7 +1550,6 @@ class Premium_Blocks_Integration {
 					"font-style" => self::get_css_value($attr['titlefrontStyle'], " !important") ,
 					"font-weight" => self::get_css_value($attr['titlefrontWeight'], " !important") ,
 					"text-shadow" => self::get_css_value($attr['titlefrontshadowHorizontal'],'px ') .self::get_css_value($attr['titlefrontshadowVertical'],'px ') . self::get_css_value($attr['titlefrontshadowBlur'], 'px ') . $attr['titlefrontshadowColor'],
-					"padding" => self::get_css_value($attr['titleFrontPadding'] , $attr['titleFrontPaddingType'] ),
 					"margin" => self::get_css_value($attr['titleFrontMargin'] , $attr['titleFrontMarginType'] )
 				),
 				" .premium-flip-front-description" => array(
@@ -1602,7 +1601,6 @@ class Premium_Blocks_Integration {
 					"font-style" => self::get_css_value($attr['titlebackStyle'], " !important") ,
 					"font-weight" => self::get_css_value($attr['titlebackWeight'], " !important") ,
 					"text-shadow" => self::get_css_value($attr['titlebackshadowHorizontal'],'px ') .self::get_css_value($attr['titlebackshadowVertical'],'px ') . self::get_css_value($attr['titlebackshadowBlur'], 'px ') . $attr['titlebackshadowColor'],
-					"padding" => self::get_css_value($attr['titleBackPadding'] , $attr['titleBackPaddingType'] ),
 					"margin" => self::get_css_value($attr['titleBackMargin'] , $attr['titleBackMarginType'] )
 				),
 				" .premium-flip-back-description" => array(
@@ -1633,7 +1631,6 @@ class Premium_Blocks_Integration {
 				),
 				" .premium-flip-front-title"  => array(
 					"font-size" => self::get_css_value($attr['titlefrontfontSizeMobile'], $attr['titlefrontfontSizeType']) . "!important",
-					"padding" => self::get_css_value($attr['titleFrontPaddingMobile'] , $attr['titleFrontPaddingType'] ),
 					"margin" => self::get_css_value($attr['titleFrontMarginMobile'] , $attr['titleFrontMarginType'] )
 				),
 				" .premium-flip-front-description"  => array(
@@ -1652,7 +1649,6 @@ class Premium_Blocks_Integration {
 				),
 				" .premium-flip-back-title"  => array(
 					"font-size" => self::get_css_value($attr['titlebackfontSizeMobile'], $attr['titlebackfontSizeType']) . "!important",
-					"padding" => self::get_css_value($attr['titleBackPaddingMobile'] , $attr['titleBackPaddingType'] ),
 					"margin" => self::get_css_value($attr['titleBackMarginMobile'] , $attr['titleBackMarginType'] )
 				),
 				" .premium-flip-box" => array(
@@ -1682,7 +1678,6 @@ class Premium_Blocks_Integration {
 				),
 				" .premium-flip-front-title"  => array(
 					"font-size" => self::get_css_value($attr['titlefrontfontSizeTablet'], $attr['titlefrontfontSizeType']) . "!important",
-					"padding" => self::get_css_value($attr['titleFrontPaddingTablet'] , $attr['titleFrontPaddingType'] ),
 					"margin" => self::get_css_value($attr['titleFrontMarginTablet'] , $attr['titleFrontMarginType'] )
 				),
 				" .premium-flip-front-description"  => array(
@@ -1701,7 +1696,6 @@ class Premium_Blocks_Integration {
 				),
 				" .premium-flip-back-title"  => array(
 					"font-size" => self::get_css_value($attr['titlebackfontSizeTablet'], $attr['titlebackfontSizeType']) . "!important",
-					"padding" => self::get_css_value($attr['titleBackPaddingTablet'] , $attr['titleBackPaddingType'] ),
 					"margin" => self::get_css_value($attr['titleBackMarginTablet'] , $attr['titleBackMarginType'] )
 				),
 				" .premium-flip-back-description"  => array(

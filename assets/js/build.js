@@ -62275,22 +62275,6 @@ var flipBoxAttrs = {
     type: "number",
     default: "0"
   },
-  titleFrontPadding: {
-    type: "number",
-    default: "0"
-  },
-  titleFrontPaddingTablet: {
-    type: "number",
-    default: "0"
-  },
-  titleFrontPaddingType: {
-    type: "string",
-    default: "px"
-  },
-  titleFrontPaddingMobile: {
-    type: "number",
-    default: "0"
-  },
   descFrontMargin: {
     type: "number",
     default: "0"
@@ -62368,22 +62352,6 @@ var flipBoxAttrs = {
     default: "0"
   },
   titleBackMarginTablet: {
-    type: "number",
-    default: "0"
-  },
-  titleBackPadding: {
-    type: "number",
-    default: "0"
-  },
-  titleBackPaddingTablet: {
-    type: "number",
-    default: "0"
-  },
-  titleBackPaddingType: {
-    type: "string",
-    default: "px"
-  },
-  titleBackPaddingMobile: {
     type: "number",
     default: "0"
   },
@@ -62595,9 +62563,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var __ = wp.i18n.__;
-
-var isBoxUpdated = null;
-
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -62644,16 +62609,15 @@ var edit = function (_Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      clearTimeout(isBoxUpdated);
-      isBoxUpdated = setTimeout(this.initToggleBox, 10);
+      this.initToggleBox();
     }
   }, {
     key: "initToggleBox",
     value: function initToggleBox() {
-      var _props$attributes = this.props.attributes,
-          block_id = _props$attributes.block_id,
-          animation = _props$attributes.animation;
+      var block_id = this.props.attributes.block_id;
 
+
+<<<<<<< HEAD
 
       if (!block_id || !animation) return null;
 
@@ -62673,34 +62637,80 @@ var edit = function (_Component) {
           toggleBox[0].classList.add("flipped");
 
           if (frontRight) {
+=======
+      if (!block_id) return null;
+      var jj = document.getElementById("premium-flip-box-" + block_id);
+      if (jj == null) return;
+      var toggleBox = jj.getElementsByClassName("premium-flip-style-flip");
+
+      if (undefined !== toggleBox[0]) {
+        var frontRight = toggleBox[0].getElementsByClassName("premium-flip-frontrl");
+        var frontLeft = toggleBox[0].getElementsByClassName("premium-flip-frontlr");
+        var frontWrapper = toggleBox[0].getElementsByClassName("premium-flip-text-wrapper");
+        var backWrapper = toggleBox[0].getElementsByClassName("premium-flip-back-text-wrapper");
+
+        toggleBox[0].addEventListener("mouseenter", function () {
+          if (!toggleBox[0]) return;
+          toggleBox[0].classList.add("flipped");
+
+          if (toggleBox[0].dataset.animation == 'false') {
+            frontWrapper[0].classList.remove("PafadeInLeft");
+            backWrapper[0].classList.remove("PafadeInRight");
+            frontWrapper[0].classList.remove("PafadeInRevLeft");
+            backWrapper[0].classList.remove("PafadeInRevRight");
+            return;
+          }
+
+          if (frontRight[0]) {
+>>>>>>> cb80544ff2f58eecdd3b8c057ffb845106ed45f0
             frontWrapper[0].classList.remove("PafadeInLeft");
             frontWrapper[0].classList.add("PafadeInRight");
             backWrapper[0].classList.add("PafadeInLeft");
             backWrapper[0].classList.remove("PafadeInRight");
-          } else if (frontLeft) {
+            frontWrapper[0].classList.remove("PafadeInRevLeft");
+            backWrapper[0].classList.remove("PafadeInRevRight");
+          } else if (frontLeft[0]) {
             frontWrapper[0].classList.remove("PafadeInRevLeft");
             frontWrapper[0].classList.add("PafadeInRevRight");
             backWrapper[0].classList.add("PafadeInRevLeft");
             backWrapper[0].classList.remove("PafadeInRevRight");
+            backWrapper[0].classList.remove("PafadeInRight");
+            frontWrapper[0].classList.remove("PafadeInLeft");
           }
         });
 
         toggleBox[0].addEventListener("mouseleave", function () {
+<<<<<<< HEAD
 
           if (!toggleBox[0]) return;
 
           toggleBox[0].classList.remove("flipped");
+=======
+          if (!toggleBox[0]) return;
+          toggleBox[0].classList.remove("flipped");
+          if (toggleBox[0].dataset.animation == 'false') {
+            frontWrapper[0].classList.remove("PafadeInRight");
+            backWrapper[0].classList.remove("PafadeInLeft");
+            frontWrapper[0].classList.remove("PafadeInRevRight");
+            backWrapper[0].classList.remove("PafadeInRevLeft");
+            return;
+          }
+>>>>>>> cb80544ff2f58eecdd3b8c057ffb845106ed45f0
 
-          if (frontRight) {
+          if (frontRight[0]) {
             frontWrapper[0].classList.add("PafadeInLeft");
             frontWrapper[0].classList.remove("PafadeInRight");
             backWrapper[0].classList.remove("PafadeInLeft");
             backWrapper[0].classList.add("PafadeInRight");
-          } else if (frontLeft) {
+            frontWrapper[0].classList.remove("PafadeInRevRight");
+            backWrapper[0].classList.remove("PafadeInRevLeft");
+          } else if (frontLeft[0]) {
             frontWrapper[0].classList.add("PafadeInRevLeft");
             frontWrapper[0].classList.remove("PafadeInRevRight");
             backWrapper[0].classList.remove("PafadeInRevLeft");
             backWrapper[0].classList.add("PafadeInRevRight");
+            frontWrapper[0].classList.remove("PafadeInRight");
+            backWrapper[0].classList.remove("PafadeInLeft");
           }
         });
       }
@@ -62851,10 +62861,6 @@ var edit = function (_Component) {
           titleFrontMarginType = attributes.titleFrontMarginType,
           titleFrontMarginMobile = attributes.titleFrontMarginMobile,
           titleFrontMarginTablet = attributes.titleFrontMarginTablet,
-          titleFrontPadding = attributes.titleFrontPadding,
-          titleFrontPaddingTablet = attributes.titleFrontPaddingTablet,
-          titleFrontPaddingType = attributes.titleFrontPaddingType,
-          titleFrontPaddingMobile = attributes.titleFrontPaddingMobile,
           descFrontMargin = attributes.descFrontMargin,
           descFrontMarginType = attributes.descFrontMarginType,
           descFrontMarginMobile = attributes.descFrontMarginMobile,
@@ -62875,10 +62881,6 @@ var edit = function (_Component) {
           titleBackMarginType = attributes.titleBackMarginType,
           titleBackMarginMobile = attributes.titleBackMarginMobile,
           titleBackMarginTablet = attributes.titleBackMarginTablet,
-          titleBackPadding = attributes.titleBackPadding,
-          titleBackPaddingTablet = attributes.titleBackPaddingTablet,
-          titleBackPaddingType = attributes.titleBackPaddingType,
-          titleBackPaddingMobile = attributes.titleBackPaddingMobile,
           descBackMargin = attributes.descBackMargin,
           descBackMarginType = attributes.descBackMarginType,
           descBackMarginMobile = attributes.descBackMarginMobile,
@@ -63492,7 +63494,7 @@ var edit = function (_Component) {
           wp.element.createElement(
             TabPanel,
             {
-              className: "premium-flip-box-tab-panel",
+              className: "premium-flip-box-tab-panel-res",
               activeClass: "active-tab",
               tabs: TABSTYLE },
             function (tabName) {
@@ -63672,16 +63674,6 @@ var edit = function (_Component) {
                     rangeLabel: __("Margin"),
                     min: 1,
                     max: 100
-                  }),
-                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
-                    setAttributes: setAttributes,
-                    rangeType: { value: titleFrontPaddingType, label: __("titleFrontPaddingType") },
-                    range: { value: titleFrontPadding, label: __("titleFrontPadding") },
-                    rangeMobile: { value: titleFrontPaddingMobile, label: __("titleFrontPaddingMobile") },
-                    rangeTablet: { value: titleFrontPaddingTablet, label: __("titleFrontPaddingTablet") },
-                    rangeLabel: __("Padding"),
-                    min: 1,
-                    max: 100
                   })
                 );
               } else {
@@ -63830,7 +63822,7 @@ var edit = function (_Component) {
           wp.element.createElement(
             TabPanel,
             {
-              className: "premium-flip-box-tab-panel",
+              className: "premium-flip-box-tab-panel-res",
               activeClass: "active-tab",
               tabs: TABSTYLE },
             function (tabName) {
@@ -64010,16 +64002,6 @@ var edit = function (_Component) {
                     rangeLabel: __("Margin"),
                     min: 1,
                     max: 100
-                  }),
-                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
-                    setAttributes: setAttributes,
-                    rangeType: { value: titleBackPaddingType, label: __("titleBackPaddingType") },
-                    range: { value: titleBackPadding, label: __("titleBackPadding") },
-                    rangeMobile: { value: titleBackPaddingMobile, label: __("titleBackPaddingMobile") },
-                    rangeTablet: { value: titleBackPaddingTablet, label: __("titleBackPaddingTablet") },
-                    rangeLabel: __("Padding"),
-                    min: 1,
-                    max: 100
                   })
                 );
               } else {
@@ -64125,10 +64107,10 @@ var edit = function (_Component) {
         )
       ), wp.element.createElement(
         "div",
-        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId), style: { textAlign: align }, id: "premium-flip-box-" + this.props.clientId },
+        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId + " premium-flex"), style: { textAlign: align }, id: "premium-flip-box-" + this.props.clientId },
         wp.element.createElement(
           "div",
-          { className: "premium-flip-style-" + effect + " " + this.props.clientId, "data-animation": "" + animation },
+          { className: "premium-flip-style-" + effect, "data-animation": "" + animation },
           wp.element.createElement(
             "div",
             { className: "premium-flip-box", style: {
@@ -64168,7 +64150,7 @@ var edit = function (_Component) {
             ),
             wp.element.createElement(
               "div",
-              { className: "premium-flip-back premium-flip-back" + flipDir, style: { textAlign: align } },
+              { className: "premium-flip-back premium-flip-back" + flipDir, style: { textAlign: align, visibility: 'hidden' } },
               wp.element.createElement(
                 "div",
                 { className: "premium-flip-back-overlay" },
@@ -64333,10 +64315,6 @@ function styling(props) {
       titleFrontMarginType = _props$attributes.titleFrontMarginType,
       titleFrontMarginMobile = _props$attributes.titleFrontMarginMobile,
       titleFrontMarginTablet = _props$attributes.titleFrontMarginTablet,
-      titleFrontPadding = _props$attributes.titleFrontPadding,
-      titleFrontPaddingTablet = _props$attributes.titleFrontPaddingTablet,
-      titleFrontPaddingType = _props$attributes.titleFrontPaddingType,
-      titleFrontPaddingMobile = _props$attributes.titleFrontPaddingMobile,
       descFrontMargin = _props$attributes.descFrontMargin,
       descFrontMarginType = _props$attributes.descFrontMarginType,
       descFrontMarginMobile = _props$attributes.descFrontMarginMobile,
@@ -64357,10 +64335,6 @@ function styling(props) {
       titleBackMarginType = _props$attributes.titleBackMarginType,
       titleBackMarginMobile = _props$attributes.titleBackMarginMobile,
       titleBackMarginTablet = _props$attributes.titleBackMarginTablet,
-      titleBackPadding = _props$attributes.titleBackPadding,
-      titleBackPaddingTablet = _props$attributes.titleBackPaddingTablet,
-      titleBackPaddingType = _props$attributes.titleBackPaddingType,
-      titleBackPaddingMobile = _props$attributes.titleBackPaddingMobile,
       descBackMargin = _props$attributes.descBackMargin,
       descBackMarginType = _props$attributes.descBackMarginType,
       descBackMarginMobile = _props$attributes.descBackMarginMobile,
@@ -64391,7 +64365,7 @@ function styling(props) {
       "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconfrontborderRadius, "px"),
       "background": iconfrontBGColor,
       "text-shadow": iconfrontShadowHorizontal + 'px ' + iconfrontShadowVertical + 'px ' + iconfrontShadowBlur + 'px ' + iconfrontShadowColor,
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMargin, iconFrontMarginType),
+      "margin": iconFrontMargin >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMargin, iconFrontMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPadding, iconFrontPaddingType)
     },
     " .premium-flip-text-wrapper img": {
@@ -64404,7 +64378,7 @@ function styling(props) {
       "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconfrontborderRadius, "px"),
       "background": iconfrontBGColor,
       "text-shadow": iconfrontShadowHorizontal + 'px ' + iconfrontShadowVertical + 'px ' + iconfrontShadowBlur + 'px ' + iconfrontShadowColor,
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMargin, iconFrontMarginType),
+      "margin": iconFrontMargin >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMargin, iconFrontMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPadding, iconFrontPaddingType)
     },
     " .premium-flip-front-title": {
@@ -64416,8 +64390,7 @@ function styling(props) {
       "font-style": titlefrontStyle + "!important",
       "background": titlefrontBGColor,
       "text-shadow": titlefrontshadowHorizontal + 'px ' + titlefrontshadowVertical + 'px ' + titlefrontshadowBlur + 'px ' + titlefrontshadowColor,
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontMargin, titleFrontMarginType),
-      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontPadding, titleFrontPaddingType)
+      "margin": titleFrontMargin >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontMargin, titleFrontMarginType) : '0 0 15px 0'
     },
     " .premium-flip-front-description": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descfrontfontSize, descfrontfontSizeType),
@@ -64428,7 +64401,7 @@ function styling(props) {
       "font-style": descfrontStyle + "!important",
       "background": descfrontBGColor,
       "text-shadow": descfrontshadowHorizontal + 'px ' + descfrontshadowVertical + 'px ' + descfrontshadowBlur + 'px ' + descfrontshadowColor,
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontMargin, descFrontMarginType),
+      "margin": descFrontMargin >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontMargin, descFrontMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontPadding, descFrontPaddingType)
     },
     " .premium-flip-back": {
@@ -64443,7 +64416,7 @@ function styling(props) {
       "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconbackborderRadius, "px"),
       "background": iconbackBGColor,
       "text-shadow": iconbackShadowHorizontal + 'px ' + iconbackShadowVertical + 'px ' + iconbackShadowBlur + 'px ' + iconbackShadowColor,
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMargin, iconBackMarginType),
+      "margin": iconBackMargin >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMargin, iconBackMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackPadding, iconBackPaddingType)
     },
     " .premium-flip-back-text-wrapper img": {
@@ -64456,7 +64429,7 @@ function styling(props) {
       "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconbackborderRadius, "px"),
       "background": iconbackBGColor,
       "text-shadow": iconbackShadowHorizontal + 'px ' + iconbackShadowVertical + 'px ' + iconbackShadowBlur + 'px ' + iconbackShadowColor,
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMargin, iconBackMarginType),
+      "margin": iconBackMargin >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMargin, iconBackMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackPadding, iconBackPaddingType)
     },
     " .premium-flip-back-title": {
@@ -64468,8 +64441,7 @@ function styling(props) {
       "font-style": titlebackStyle + "!important",
       "background": titlebackBGColor,
       "text-shadow": titlebackshadowHorizontal + 'px ' + titlebackshadowVertical + 'px ' + titlebackshadowBlur + 'px ' + titlebackshadowColor,
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackMargin, titleBackMarginType),
-      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackPadding, titleBackPaddingType)
+      "margin": titleBackMargin >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackMargin, titleBackMarginType) : '0 0 15px 0'
     },
     " .premium-flip-back-description": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descbackfontSize, descbackfontSizeType),
@@ -64480,7 +64452,7 @@ function styling(props) {
       "font-style": descbackStyle + "!important",
       "background": descbackBGColor,
       "text-shadow": descbackshadowHorizontal + 'px ' + descbackshadowVertical + 'px ' + descbackshadowBlur + 'px ' + descbackshadowColor,
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackMargin, descBackMarginType),
+      "margin": descBackMargin >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackMargin, descBackMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackPadding, descBackPaddingType)
     }
   };
@@ -64488,11 +64460,11 @@ function styling(props) {
   mobile_selectors = {
     " .premium-flip-front-icon": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFrontMobile, iconSizeFrontType),
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMarginMobile, iconFrontMarginType),
+      "margin": iconFrontMarginMobile >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMarginMobile, iconFrontMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPaddingMobile, iconFrontPaddingType)
     },
     " .premium-flip-text-wrapper img": {
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMarginMobile, iconFrontMarginType),
+      "margin": iconFrontMarginMobile >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMarginMobile, iconFrontMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPaddingMobile, iconFrontPaddingType)
     },
     " .premium-flip-box": {
@@ -64500,31 +64472,29 @@ function styling(props) {
     },
     " .premium-flip-front-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefrontfontSizeMobile, titlefrontfontSizeType),
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontMarginMobile, titleFrontMarginType),
-      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontPaddingMobile, titleFrontPaddingType)
+      "margin": titleFrontMarginMobile >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontMarginMobile, titleFrontMarginType) : '0 0 15px 0'
     },
     " .premium-flip-front-description": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descfrontfontSizeMobile, descfrontfontSizeType),
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontMarginMobile, descFrontMarginType),
+      "margin": descFrontMarginMobile >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontMarginMobile, descFrontMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontPaddingMobile, descFrontPaddingType)
     },
     " .premium-flip-back-icon": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBackMobile, iconSizeBackType),
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMarginMobile, iconBackMarginType),
+      "margin": iconBackMarginMobile >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMarginMobile, iconBackMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackPaddingMobile, iconBackPaddingType)
     },
     " .premium-flip-back-text-wrapper img": {
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMarginMobile, iconBackMarginType),
+      "margin": iconBackMarginMobile >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMarginMobile, iconBackMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackPaddingMobile, iconBackPaddingType)
     },
     " .premium-flip-back-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlebackfontSizeMobile, titlebackfontSizeType),
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackMarginMobile, titleBackMarginType),
-      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackPaddingMobile, titleBackPaddingType)
+      "margin": titleBackMarginMobile >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackMarginMobile, titleBackMarginType) : '0 0 15px 0'
     },
     " .premium-flip-back-description": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descbackfontSizeMobile, descbackfontSizeType),
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackMarginMobile, descBackMarginType),
+      "margin": descBackMarginMobile >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackMarginMobile, descBackMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackPaddingMobile, descBackPaddingType)
     }
   };
@@ -64532,11 +64502,11 @@ function styling(props) {
   tablet_selectors = {
     " .premium-flip-front-icon": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFrontTablet, iconSizeFrontType),
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMarginTablet, iconFrontMarginType),
+      "margin": iconFrontMarginTablet >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMarginTablet, iconFrontMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPaddingTablet, iconFrontPaddingType)
     },
     " .premium-flip-text-wrapper img": {
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMarginTablet, iconFrontMarginType),
+      "margin": iconFrontMarginTablet >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMarginTablet, iconFrontMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPaddingTablet, iconFrontPaddingType)
     },
     " .premium-flip-box": {
@@ -64544,31 +64514,29 @@ function styling(props) {
     },
     " .premium-flip-front-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefrontfontSizeTablet, titlefrontfontSizeType),
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontMarginTablet, titleFrontMarginType),
-      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontPaddingTablet, titleFrontPaddingType)
+      "margin": titleFrontMarginTablet >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontMarginTablet, titleFrontMarginType) : '0 0 15px 0'
     },
     " .premium-flip-front-description": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descfrontfontSizeTablet, descfrontfontSizeType),
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontMarginTablet, descFrontMarginType),
+      "margin": descFrontMarginTablet >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontMarginTablet, descFrontMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontPaddingTablet, descFrontPaddingType)
     },
     " .premium-flip-back-icon": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBackTablet, iconSizeBackType),
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMarginTablet, iconBackMarginType),
+      "margin": iconBackMarginTablet >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMarginTablet, iconBackMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackPaddingTablet, iconBackPaddingType)
     },
     " .premium-flip-back-text-wrapper img": {
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMarginTablet, iconBackMarginType),
+      "margin": iconBackMarginTablet >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackMarginTablet, iconBackMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconBackPaddingTablet, iconBackPaddingType)
     },
     " .premium-flip-back-title": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlebackfontSizeTablet, titlebackfontSizeType),
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackMarginTablet, titleBackMarginType),
-      "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackPaddingTablet, titleBackPaddingType)
+      "margin": titleBackMarginTablet >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackMarginTablet, titleBackMarginType) : '0 0 15px 0'
     },
     " .premium-flip-back-description": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descbackfontSizeTablet, descbackfontSizeType),
-      "margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackMarginTablet, descBackMarginType),
+      "margin": descBackMarginTablet >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackMarginTablet, descBackMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackPaddingTablet, descBackPaddingType)
     }
   };
