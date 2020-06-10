@@ -1,4 +1,4 @@
-import {flipBox} from "../../../assets/js/settings";
+import { flipBox } from "../../../assets/js/settings";
 
 import save from "./save";
 import edit from "./edit";
@@ -77,7 +77,7 @@ const flipBoxAttrs = {
     type: "boolean",
     default: false
   },
-  verticalalignFront:{
+  verticalalignFront: {
     type: "string",
     default: "center"
   },
@@ -146,7 +146,7 @@ const flipBoxAttrs = {
     type: "boolean",
     default: false
   },
-  verticalalignBack:{
+  verticalalignBack: {
     type: "string",
     default: "center"
   },
@@ -686,7 +686,7 @@ const flipBoxAttrs = {
 
 registerBlockType("premium/flip-box", {
   title: __("Flip Box"),
-  icon: < PbgIcon icon = "flipBox" / > ,
+  icon: < PbgIcon icon="flipBox" />,
   category: "premium-blocks",
   attributes: flipBoxAttrs,
   supports: {

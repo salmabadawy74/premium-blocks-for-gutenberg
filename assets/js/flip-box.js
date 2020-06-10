@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
   const $flipBox = $(".premium-flip-style-flip");
-  
+
   if (!$flipBox)
     return;
 
@@ -17,27 +17,27 @@ jQuery(document).ready(function ($) {
       $($flip).addClass("flipped");
       if (!animation)
         return;
-        if (frontRight){
-          $(frontWrapper).removeClass("PafadeInLeft").addClass("PafadeInRight");
-          $(backWrapper).removeClass("PafadeInRight").addClass("PafadeInLeft");
-        }
-        else if (frontLeft){
-          $(frontWrapper).removeClass("PafadeInRevLeft").addClass("PafadeInRevRight");
-          $(backWrapper).removeClass("PafadeInRevRight").addClass("PafadeInRevLeft");
-        }
+      if (frontRight) {
+        $(frontWrapper).removeClass("PafadeInLeft").addClass("PafadeInRight");
+        $(backWrapper).removeClass("PafadeInRight").addClass("PafadeInLeft");
+      }
+      else if (frontLeft) {
+        $(frontWrapper).removeClass("PafadeInRevLeft").addClass("PafadeInRevRight");
+        $(backWrapper).removeClass("PafadeInRevRight").addClass("PafadeInRevLeft");
+      }
     });
 
     $($flipBox).on('mouseleave', function () {
       $($flip).removeClass("flipped");
       if (!animation)
         return;
-        if (frontRight) {
-          $(frontWrapper).addClass("PafadeInLeft").removeClass("PafadeInRight");
-          $(backWrapper).addClass("PafadeInRight").removeClass("PafadeInLeft");
-        } else if (frontLeft) {
-          $(frontWrapper).addClass("PafadeInRevLeft").removeClass("PafadeInRevRight");
-          $(backWrapper).addClass("PafadeInRevRight").removeClass("PafadeInRevLeft");
-        }
+      if (frontRight) {
+        $(frontWrapper).addClass("PafadeInLeft").removeClass("PafadeInRight");
+        $(backWrapper).addClass("PafadeInRight").removeClass("PafadeInLeft");
+      } else if (frontLeft) {
+        $(frontWrapper).addClass("PafadeInRevLeft").removeClass("PafadeInRevRight");
+        $(backWrapper).addClass("PafadeInRevRight").removeClass("PafadeInRevLeft");
+      }
     })
 
   });
