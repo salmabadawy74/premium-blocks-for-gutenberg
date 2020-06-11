@@ -158,7 +158,7 @@ class edit extends Component {
                         onChange={newSelect => setAttributes({ iconType: newSelect })}
                         options={ICON}
                       />
-                      {iconType == 'icon'? <Fragment>
+                      {iconType === 'icon'? <Fragment>
                         <p>{__("Icon")}</p>
                         <FontIconPicker
                           icons={iconsList}
@@ -229,7 +229,7 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                      {iconType == 'image'? <Fragment>
+                      {iconType === 'image'? <Fragment>
                         <PremiumFilters
                           blur={blur}
                           bright={bright}
@@ -350,10 +350,10 @@ class edit extends Component {
               textAlign: align}}
               >
                 {
-                  iconType == 'icon' && <i className={`${icon}`}/>
+                  iconType === 'icon' && <i className={`${icon}`}/>
                 }
                 {
-                  iconType == 'image' && < img src = {imageURL}/>
+                  iconType === 'image' && < img src = {imageURL}/>
                 }
                 {link && <a className="premium-image-separator-link" href={`${url}`}></a>}
               </div>

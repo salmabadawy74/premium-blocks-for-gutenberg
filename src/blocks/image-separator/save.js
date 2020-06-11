@@ -30,10 +30,10 @@ export default function save(props) {
             textAlign: align}}
           >
             {
-              iconType == 'icon' && <i className={`${icon}`}/>
+              iconType === 'icon' && <i className={`${icon}`}/>
             }
             {
-              iconType == 'image' && < img src = {imageURL}/>
+              iconType === 'image' && < img src = {imageURL}/>
             }
             {link && <a className="premium-image-separator-link" href={`${url}`} target={target} rel="noopener noreferrer"></a>}
           </div>
