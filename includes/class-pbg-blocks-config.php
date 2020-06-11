@@ -648,7 +648,13 @@ if ( ! class_exists( 'Config' ) ) {
 							'descBackPadding' => '0',
 							'descBackPaddingTablet' => '0',
 							'descBackPaddingType' => 'px',
-							'descBackPaddingMobile' => '0'
+							'descBackPaddingMobile' => '0',
+							'frontBGColor' => '#6ec1e4',
+							'backBGColor' => '#6ec1e4',
+							'descbackLine' => '',
+							'titlebackLine' => '',
+							'descfrontLine' => '',
+							'titlefrontLine' => ''
 						)
 						)
 				);

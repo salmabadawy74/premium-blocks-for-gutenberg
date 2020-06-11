@@ -142,7 +142,13 @@ function styling(props) {
     descBackPadding,
     descBackPaddingTablet,
     descBackPaddingType,
-    descBackPaddingMobile
+    descBackPaddingMobile,
+    frontBGColor,
+    backBGColor,
+    descbackLine,
+    titlebackLine,
+    descfrontLine,
+    titlefrontLine
   } = props.attributes
 
   var selectors = {}
@@ -152,6 +158,7 @@ function styling(props) {
   selectors = {
     " .premium-flip-front":{
       "box-shadow": `${frontShadowHorizontal}px ${frontShadowVertical}px ${frontShadowBlur}px ${frontShadowColor} ${frontShadowPosition}`,
+      "background-color": frontBGColor
     },
     " .premium-flip-box":{
       "height": generateCSSUnit(height, heightType),
@@ -188,6 +195,7 @@ function styling(props) {
       "letter-spacing": titlefrontLetter + "px" + "!important",
       "text-transform": titlefrontUpper ? "uppercase" : "none" + "!important",
       "font-style": titlefrontStyle + "!important",
+      "line-height": titlefrontLine + "px" + "!important",
       "background": titlefrontBGColor,
       "text-shadow": `${titlefrontshadowHorizontal}px ${titlefrontshadowVertical}px ${titlefrontshadowBlur}px ${titlefrontshadowColor}`,
       "margin": titleFrontMargin >= '1' ? generateCSSUnit(titleFrontMargin, titleFrontMarginType): `0 0 15px 0`,
@@ -200,12 +208,14 @@ function styling(props) {
       "text-transform": descfrontUpper ? "uppercase" : "none" + "!important",
       "font-style": descfrontStyle + "!important",
       "background": descfrontBGColor,
+      "line-height": descfrontLine + "px" + "!important",
       "text-shadow": `${descfrontshadowHorizontal}px ${descfrontshadowVertical}px ${descfrontshadowBlur}px ${descfrontshadowColor}`,
       "margin": descFrontMargin >= '1' ? generateCSSUnit(descFrontMargin, descFrontMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(descFrontPadding, descFrontPaddingType),
     },
     " .premium-flip-back": {
       "box-shadow": `${backShadowHorizontal}px ${backShadowVertical}px ${backShadowBlur}px ${backShadowColor} ${backShadowPosition}`,
+      "background-color": backBGColor
     },
     " .premium-flip-back-icon": {
       "font-size": generateCSSUnit(iconSizeBack, iconSizeBackType),
@@ -240,6 +250,7 @@ function styling(props) {
       "text-transform": titlebackUpper ? "uppercase" : "none" + "!important",
       "font-style": titlebackStyle + "!important",
       "background": titlebackBGColor,
+      "line-height": titlebackLine + "px" + "!important",
       "text-shadow": `${titlebackshadowHorizontal}px ${titlebackshadowVertical}px ${titlebackshadowBlur}px ${titlebackshadowColor}`,
       "margin": titleBackMargin >= '1' ? generateCSSUnit(titleBackMargin, titleBackMarginType): `0 0 15px 0`,
     },
@@ -251,6 +262,7 @@ function styling(props) {
       "text-transform": descbackUpper ? "uppercase" : "none" + "!important",
       "font-style": descbackStyle + "!important",
       "background": descbackBGColor,
+      "line-height": descbackLine + "px" + "!important",
       "text-shadow": `${descbackshadowHorizontal}px ${descbackshadowVertical}px ${descbackshadowBlur}px ${descbackshadowColor}`,
       "margin": descBackMargin >= '1' ? generateCSSUnit(descBackMargin, descBackMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(descBackPadding, descBackPaddingType),
@@ -264,6 +276,8 @@ function styling(props) {
       "padding": generateCSSUnit(iconFrontPaddingMobile, iconFrontPaddingType),
     },
     " .premium-flip-text-wrapper img": {
+      "width": generateCSSUnit(iconSizeFrontMobile, iconSizeFrontType),
+      "height": generateCSSUnit(iconSizeFrontMobile, iconSizeFrontType),
       "margin": iconFrontMarginMobile >= '1' ? generateCSSUnit(iconFrontMarginMobile, iconFrontMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(iconFrontPaddingMobile, iconFrontPaddingType),
     },
@@ -306,6 +320,8 @@ function styling(props) {
       "padding": generateCSSUnit(iconFrontPaddingTablet, iconFrontPaddingType),
     },
     " .premium-flip-text-wrapper img": {
+      "width": generateCSSUnit(iconSizeFrontTablet, iconSizeFrontType),
+      "height": generateCSSUnit(iconSizeFrontTablet, iconSizeFrontType),
       "margin": iconFrontMarginTablet >= '1' ? generateCSSUnit(iconFrontMarginTablet, iconFrontMarginType): `0 0 15px 0`,
       "padding": generateCSSUnit(iconFrontPaddingTablet, iconFrontPaddingType),
     },

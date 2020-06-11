@@ -58,9 +58,9 @@ class edit extends Component {
       const {block_id} = this.props.attributes;
       
       if (!block_id) return null;
-      let jj = document.getElementById(`premium-flip-box-${block_id}`)
-      if(jj == null) return;
-      let toggleBox = jj.getElementsByClassName(`premium-flip-style-flip`);
+      let id = document.getElementById(`premium-flip-box-${block_id}`)
+      if(id == null) return;
+      let toggleBox = id.getElementsByClassName(`premium-flip-style-flip`);
 
       if (undefined !== toggleBox[0]) {
       let frontRight = toggleBox[0].getElementsByClassName(`premium-flip-frontrl`);
@@ -297,7 +297,14 @@ class edit extends Component {
             descBackPadding,
             descBackPaddingTablet,
             descBackPaddingType,
-            descBackPaddingMobile
+            descBackPaddingMobile,
+            frontBGColor,
+            backBGColor,
+            linkTarget,
+            descbackLine,
+            titlebackLine,
+            descfrontLine,
+            titlefrontLine
         } = attributes
 
         const ICON = [
@@ -434,7 +441,8 @@ class edit extends Component {
             titlefrontfontSizeTablet: "20",
             titlefrontStyle: "normal",
             titlefrontLetter: "0",
-            titlefrontUpper: false
+            titlefrontUpper: false,
+            titlefrontLine: ""
           });
         }
         const onResetClickTitlefrontTextShadow = () => {
@@ -454,7 +462,8 @@ class edit extends Component {
             descfrontfontSizeTablet: "20",
             descfrontStyle: "normal",
             descfrontLetter: "0",
-            descfrontUpper: false
+            descfrontUpper: false,
+            descfrontLine: ""
           });
         }
         const onResetClickDescfrontTextShadow = () => {
@@ -499,7 +508,8 @@ class edit extends Component {
             titlebackfontSizeTablet: "20",
             titlebackStyle: "normal",
             titlebackLetter: "0",
-            titlebackUpper: false
+            titlebackUpper: false,
+            titlebackLine: ""
           });
         }
         const onResetClickTitlebackTextShadow = () => {
@@ -519,7 +529,8 @@ class edit extends Component {
             descbackfontSizeTablet: "20",
             descbackStyle: "normal",
             descbackLetter: "0",
-            descbackUpper: false
+            descbackUpper: false,
+            descbackLine: ""
           });
         }
         const onResetClickDescbackTextShadow = () => {
@@ -549,6 +560,16 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
+                      <p>{__("Background Color")}</p>
+                        <ColorPalette
+                            value={frontBGColor}
+                            onChange={newValue =>
+                                setAttributes({
+                                  frontBGColor: newValue
+                                })
+                            }
+                            allowReset={true}
+                      />
                       <ToggleControl
                         label={__("Icon")}
                         checked={iconValueFront}
@@ -562,7 +583,7 @@ class edit extends Component {
                             onChange={newSelect => setAttributes({ iconTypeFront: newSelect })}
                             options={ICON}
                           />
-                          {iconTypeFront == 'icon'? <Fragment>
+                          {iconTypeFront === 'icon'? <Fragment>
                               <p>{__("Icon")}</p>
                               <FontIconPicker
                                   icons={iconsList}
@@ -646,6 +667,16 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
+                      <p>{__("Background Color")}</p>
+                      <ColorPalette
+                        value={backBGColor}
+                        onChange={newValue =>
+                            setAttributes({
+                              backBGColor: newValue
+                            })
+                        }
+                        allowReset={true}
+                      />
                       <ToggleControl
                         label={__("Icon")}
                         checked={iconValueBack}
@@ -659,7 +690,7 @@ class edit extends Component {
                             onChange={newSelect => setAttributes({ iconTypeBack: newSelect })}
                             options={ICON}
                           />
-                          {iconTypeBack == 'icon'? <Fragment>
+                          {iconTypeBack === 'icon'? <Fragment>
                               <p>{__("Icon")}</p>
                               <FontIconPicker
                                   icons={iconsList}
@@ -734,6 +765,11 @@ class edit extends Component {
                                   onChange={value  => setAttributes({ url: value })}
                                   placeholder={__("Enter URL")}
                               />
+                              <ToggleControl
+                                label={__("Open links in new tab")}
+                                checked={linkTarget}
+                                onChange={newValue => setAttributes({ linkTarget: newValue })}
+                              />
                           </Fragment>
                       }
                       <p>{__("Vertical Position")}</p>
@@ -765,7 +801,7 @@ class edit extends Component {
                         options={EFFECT}
                       />
                       {effect != 'fade' && effect != 'zoom' && <SelectControl
-                        label={__("Flip Direction")}
+                        label={__("Direction")}
                         value={flipDir}
                         onChange={newSelect => setAttributes({ flipDir: newSelect })}
                         options={FLIPDIR}
@@ -835,16 +871,19 @@ class edit extends Component {
                           (tabName) => {
                             if ("icon" === tabName.name) {
                               return <Fragment>
-                                <p>{__("Color")}</p>
-                                <ColorPalette
-                                  value={iconfrontColor}
-                                  onChange={newValue =>
-                                      setAttributes({
-                                          iconfrontColor: newValue
-                                      })
-                                  }
-                                  allowReset={true}
-                                />
+                                {iconTypeFront ==='icon' &&<Fragment> 
+                                  <p>{__("Color")}</p>
+                                  <ColorPalette
+                                    value={iconfrontColor}
+                                    onChange={newValue =>
+                                        setAttributes({
+                                            iconfrontColor: newValue
+                                        })
+                                    }
+                                    allowReset={true}
+                                  />
+                                  </Fragment>
+                                }
                                 <p>{__("Background Color")}</p>
                                 <ColorPalette
                                   value={iconfrontBGColor}
@@ -921,7 +960,7 @@ class edit extends Component {
                                   allowReset={true}
                                 />
                                 <PremiumTypo
-                                  components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                                  components={["responsiveSize", "weight", "style", "upper", "spacing", "line"]}
                                   setAttributes={setAttributes}
                                   fontSizeType={{ value: titlefrontfontSizeType, label: __("titlefrontfontSizeType") }}
                                   fontSize={{ value: titlefrontfontSize, label: __("titlefrontfontSize") }}
@@ -931,6 +970,7 @@ class edit extends Component {
                                   style={titlefrontStyle}
                                   spacing={titlefrontLetter}
                                   upper={titlefrontUpper}
+                                  line={titlefrontLine}
                                   onChangeWeight={newWeight =>
                                       setAttributes({ titlefrontWeight: newWeight || 600 })
                                   }
@@ -941,6 +981,7 @@ class edit extends Component {
                                       setAttributes({ titlefrontLetter: newValue })
                                   }
                                   onChangeUpper={check => setAttributes({ titlefrontUpper: check })}
+                                  onChangeLine={newValue => setAttributes({ titlefrontLine: newValue })}
                                   onResetClick={onResetClickTitlefront}
                                 />
                                 <PremiumTextShadow
@@ -994,7 +1035,7 @@ class edit extends Component {
                                   allowReset={true}
                                 />
                                 <PremiumTypo
-                                  components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                                  components={["responsiveSize", "weight", "style", "upper", "spacing", "line"]}
                                   setAttributes={setAttributes}
                                   fontSizeType={{ value: descfrontfontSizeType, label: __("descfrontfontSizeType") }}
                                   fontSize={{ value: descfrontfontSize, label: __("descfrontfontSize") }}
@@ -1004,6 +1045,7 @@ class edit extends Component {
                                   style={descfrontStyle}
                                   spacing={descfrontLetter}
                                   upper={descfrontUpper}
+                                  line={descfrontLine}
                                   onChangeWeight={newWeight =>
                                       setAttributes({ descfrontWeight: newWeight || 600 })
                                   }
@@ -1014,6 +1056,7 @@ class edit extends Component {
                                       setAttributes({ descfrontLetter: newValue })
                                   }
                                   onChangeUpper={check => setAttributes({ descfrontUpper: check })}
+                                  onChangeLine={newValue => setAttributes({ descfrontLine: newValue })}
                                   onResetClick={onResetClickDescfront}
                                 />
                                 <PremiumTextShadow
@@ -1118,16 +1161,19 @@ class edit extends Component {
                           (tabName) => {
                             if ("icon" === tabName.name) {
                               return <Fragment>
-                                <p>{__("Color")}</p>
-                                <ColorPalette
-                                  value={iconbackColor}
-                                  onChange={newValue =>
-                                      setAttributes({
-                                          iconbackColor: newValue
-                                      })
-                                  }
-                                  allowReset={true}
-                                />
+                                {iconTypeBack ==='icon' &&<Fragment> 
+                                  <p>{__("Color")}</p>
+                                  <ColorPalette
+                                    value={iconbackColor}
+                                    onChange={newValue =>
+                                        setAttributes({
+                                            iconbackColor: newValue
+                                        })
+                                    }
+                                    allowReset={true}
+                                  />
+                                  </Fragment>
+                                }
                                 <p>{__("Background Color")}</p>
                                 <ColorPalette
                                   value={iconbackBGColor}
@@ -1204,7 +1250,7 @@ class edit extends Component {
                                   allowReset={true}
                                 />
                                 <PremiumTypo
-                                  components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                                  components={["responsiveSize", "weight", "style", "upper", "spacing", "line"]}
                                   setAttributes={setAttributes}
                                   fontSizeType={{ value: titlebackfontSizeType, label: __("titlebackfontSizeType") }}
                                   fontSize={{ value: titlebackfontSize, label: __("titlebackfontSize") }}
@@ -1214,6 +1260,7 @@ class edit extends Component {
                                   style={titlebackStyle}
                                   spacing={titlebackLetter}
                                   upper={titlebackUpper}
+                                  line={titlebackLine}
                                   onChangeWeight={newWeight =>
                                       setAttributes({ titlebackWeight: newWeight || 600 })
                                   }
@@ -1224,6 +1271,7 @@ class edit extends Component {
                                       setAttributes({ titlebackLetter: newValue })
                                   }
                                   onChangeUpper={check => setAttributes({ titlebackUpper: check })}
+                                  onChangeLine={newValue => setAttributes({ titlebackLine: newValue })}
                                   onResetClick={onResetClickTitleback}
                                 />
                                 <PremiumTextShadow
@@ -1277,7 +1325,7 @@ class edit extends Component {
                                   allowReset={true}
                                 />
                                 <PremiumTypo
-                                  components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                                  components={["responsiveSize", "weight", "style", "upper", "spacing", "line"]}
                                   setAttributes={setAttributes}
                                   fontSizeType={{ value: descbackfontSizeType, label: __("descbackfontSizeType") }}
                                   fontSize={{ value: descbackfontSize, label: __("descbackfontSize") }}
@@ -1287,6 +1335,7 @@ class edit extends Component {
                                   style={descbackStyle}
                                   spacing={descbackLetter}
                                   upper={descbackUpper}
+                                  line={descbackLine}
                                   onChangeWeight={newWeight =>
                                       setAttributes({ descbackWeight: newWeight || 600 })
                                   }
@@ -1297,6 +1346,7 @@ class edit extends Component {
                                       setAttributes({ descbackLetter: newValue })
                                   }
                                   onChangeUpper={check => setAttributes({ descbackUpper: check })}
+                                  onChangeLine={newValue => setAttributes({ descbackLine: newValue })}
                                   onResetClick={onResetClickDescback}
                                 />
                                 <PremiumTextShadow
@@ -1368,10 +1418,10 @@ class edit extends Component {
                       <div className="premium-flip-front-content" style={{ justifyContent: horizontalalignFront, alignItems: verticalalignFront }}>
                         <div className="premium-flip-text-wrapper">
                           {
-                            iconValueFront && iconTypeFront == 'icon' && <i className={`premium-flip-front-icon ${iconFront}`}/>
+                            iconValueFront && iconTypeFront === 'icon' && <i className={`premium-flip-front-icon ${iconFront}`}/>
                           }
                           {
-                            iconValueFront && iconTypeFront == 'image' && < img className = {`premium-flip-front-image`} src = {imageURLFront}/>
+                            iconValueFront && iconTypeFront === 'image' && < img className = {`premium-flip-front-image`} src = {imageURLFront}/>
                           }
                           {
                             titleValueFront && < h3 className = "premium-flip-front-title" >{titleFront}</h3>
@@ -1393,10 +1443,10 @@ class edit extends Component {
                       <div className="premium-flip-back-content" style={{ justifyContent: horizontalalignBack, alignItems: verticalalignBack }}>
                         <div className="premium-flip-back-text-wrapper">
                           {
-                            iconValueBack && iconTypeBack == 'icon' && <i className={`premium-flip-back-icon ${iconBack}`}/>
+                            iconValueBack && iconTypeBack === 'icon' && <i className={`premium-flip-back-icon ${iconBack}`}/>
                           }
                           {
-                            iconValueBack && iconTypeBack == 'image' && < img className = {`premium-flip-back-image`} src = {imageURLBack}/>
+                            iconValueBack && iconTypeBack === 'image' && < img className = {`premium-flip-back-image`} src = {imageURLBack}/>
                           }
                           {
                             titleValueBack && < h3 className = "premium-flip-back-title" >{titleBack}</h3>

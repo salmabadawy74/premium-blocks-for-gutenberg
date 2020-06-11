@@ -31,8 +31,11 @@ export default function save(props) {
         horizontalalignBack,
         effect,
         flipDir,
-        animation
+        animation,
+        linkTarget
     } = attributes
+    
+    let target = (linkTarget) ? "_blank" : "_self"
 
     return (
         <div
@@ -53,10 +56,10 @@ export default function save(props) {
                       <div className="premium-flip-front-content" style={{ justifyContent: horizontalalignFront, alignItems: verticalalignFront }}>
                         <div className="premium-flip-text-wrapper">
                           {
-                            iconValueFront && iconTypeFront == 'icon' && <i className={`premium-flip-front-icon ${iconFront}`}/>
+                            iconValueFront && iconTypeFront === 'icon' && <i className={`premium-flip-front-icon ${iconFront}`}/>
                           }
                           {
-                            iconValueFront && iconTypeFront == 'image' && < img className = {`premium-flip-front-image`} src = {imageURLFront}/>
+                            iconValueFront && iconTypeFront === 'image' && < img className = {`premium-flip-front-image`} src = {imageURLFront}/>
                           }
                           {
                             titleValueFront && < h3 className = "premium-flip-front-title" >{titleFront}</h3>
@@ -74,14 +77,15 @@ export default function save(props) {
                 <div className={`premium-flip-back premium-flip-back${flipDir}`} style={{textAlign: align}}>
                   <div className="premium-flip-back-overlay">
                     <div className="premium-flip-back-content-container">
-                      {link && <a className="premium-flip-box-full-link" href={`${url}`}></a>}
+                      {link && <a className="premium-flip-box-full-link" href={`${url}`}
+                      target={target} rel="noopener noreferrer"></a>}
                       <div className="premium-flip-back-content" style={{ justifyContent: horizontalalignBack, alignItems: verticalalignBack }}>
                         <div className="premium-flip-back-text-wrapper">
                           {
-                            iconValueBack && iconTypeBack == 'icon' && <i className={`premium-flip-back-icon ${iconBack}`}/>
+                            iconValueBack && iconTypeBack === 'icon' && <i className={`premium-flip-back-icon ${iconBack}`}/>
                           }
                           {
-                            iconValueBack && iconTypeBack == 'image' && < img className = {`premium-flip-back-image`} src = {imageURLBack}/>
+                            iconValueBack && iconTypeBack === 'image' && < img className = {`premium-flip-back-image`} src = {imageURLBack}/>
                           }
                           {
                             titleValueBack && < h3 className = "premium-flip-back-title" >{titleBack}</h3>
