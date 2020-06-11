@@ -650,6 +650,47 @@ if ( ! class_exists( 'Config' ) ) {
 							'descBackPaddingType' => 'px',
 							'descBackPaddingMobile' => '0'
 						)
+						),
+						'premium/image-separator'         => array(
+							'slug'        => '',
+							'default'     => true,
+							'attributes'  => array(
+								'classMigrate'     => false,
+								'align'            => 'center',
+								'block_id'        => '',
+								'iconType' => 'image',
+								'iconSize' => '200',
+								'iconSizeType' => 'px',
+								'iconSizeMobile' => '200',
+								'iconSizeTablet' => '200',
+								'gutter' => '-50',
+								'blur' => '0',
+								'bright' => '100',
+								'contrast' => '100',
+								'saturation' => '100',
+								'hue' => '0',
+								'blurHover' => '0',
+								'brightHover' => '100',
+								'contrastHover' => '100',
+								'saturationHover' => '100',
+								'hueHover' => '0',
+								'iconBorderRadius' => '0',
+								'iconBorderRadiusMobile' => '0',
+								'iconBorderRadiusTablet' => '0',
+								'iconBorderRadiusType' => 'px',
+								'iconColor' => '#6ec1e4',
+								'iconBGColor' => '#54595f',
+								'iconColorHover' => '',
+								'iconBGColorHover' => '',
+								'iconShadowHorizontal' => '1',
+								'iconShadowVertical' => '1',
+								'iconShadowBlur' => '1',
+								'iconShadowColor' => 'undefined',
+								'iconPadding' => '.1',
+								'iconPaddingMobile' => '.1',
+								'iconPaddingTablet' => '.1',
+								'iconPaddingType' => 'em',
+							)
 						)
 				);
 			}

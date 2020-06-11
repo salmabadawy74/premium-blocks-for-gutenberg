@@ -12,7 +12,10 @@ export default function save(props) {
         imageURL,
         link,
         url,
+        linkTarget
     } = attributes
+
+    let target = (linkTarget) ? "_blank" : "_self"
 
     return (
         <div
@@ -32,7 +35,7 @@ export default function save(props) {
             {
               iconType == 'image' && < img src = {imageURL}/>
             }
-            {link && <a className="premium-image-separator-link" href={`${url}`}></a>}
+            {link && <a className="premium-image-separator-link" href={`${url}`} target={target} rel="noopener noreferrer"></a>}
           </div>
         </div>
     )

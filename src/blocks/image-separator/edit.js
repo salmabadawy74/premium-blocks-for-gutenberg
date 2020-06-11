@@ -56,10 +56,10 @@ class edit extends Component {
             imageID,
             link,
             url,
-            iconSizeFront,
-            iconSizeFrontType,
-            iconSizeFrontMobile,
-            iconSizeFrontTablet,
+            iconSize,
+            iconSizeType,
+            iconSizeMobile,
+            iconSizeTablet,
             gutter,
             blur,
             bright,
@@ -86,7 +86,8 @@ class edit extends Component {
             iconPadding,
             iconPaddingMobile,
             iconPaddingTablet,
-            iconPaddingType
+            iconPaddingType,
+            linkTarget
         } = attributes
 
         const ICON = [
@@ -187,10 +188,10 @@ class edit extends Component {
                       }
                       <PremiumRangeResponsive
                         setAttributes={setAttributes}
-                        rangeType={{ value: iconSizeFrontType, label: __("iconSizeFrontType") }}
-                        range={{ value: iconSizeFront, label: __("iconSizeFront") }}
-                        rangeMobile={{ value: iconSizeFrontMobile, label: __("iconSizeFrontMobile") }}
-                        rangeTablet={{ value: iconSizeFrontTablet, label: __("iconSizeFrontTablet") }}
+                        rangeType={{ value: iconSizeType, label: __("iconSizeType") }}
+                        range={{ value: iconSize, label: __("iconSize") }}
+                        rangeMobile={{ value: iconSizeMobile, label: __("iconSizeMobile") }}
+                        rangeTablet={{ value: iconSizeTablet, label: __("iconSizeTablet") }}
                         rangeLabel={__("Size")}
                         min={1}
                         max={1000}
@@ -214,6 +215,11 @@ class edit extends Component {
                                 value={url}
                                 onChange={value  => setAttributes({ url: value })}
                                 placeholder={__("Enter URL")}
+                            />
+                            <ToggleControl
+                              label={__("Open links in new tab")}
+                              checked={linkTarget}
+                              onChange={newValue => setAttributes({ linkTarget: newValue })}
                             />
                         </Fragment>
                       }

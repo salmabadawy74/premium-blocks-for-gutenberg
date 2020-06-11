@@ -6,10 +6,10 @@ function styling(props) {
     const {
         classMigrate,
         iconType,
-        iconSizeFront,
-        iconSizeFrontType,
-        iconSizeFrontMobile,
-        iconSizeFrontTablet,
+        iconSize,
+        iconSizeType,
+        iconSizeMobile,
+        iconSizeTablet,
         gutter,
         blur,
         bright,
@@ -46,17 +46,17 @@ function styling(props) {
     selectors = {
         " .premium-image-separator-container": {
           "transform": `translateY( ${gutter}% )`,
-          "filter": iconType== 'image'?`brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`: ""
+          "filter": iconType=== 'image'?`brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`: ""
         },
         " .premium-image-separator-container:hover": {
-          "filter": iconType== 'image'? `brightness( ${brightHover}% ) contrast( ${contrastHover}% ) saturate( ${saturationHover}% ) blur( ${blurHover}px ) hue-rotate( ${hueHover}deg )`: ""
+          "filter": iconType=== 'image'? `brightness( ${brightHover}% ) contrast( ${contrastHover}% ) saturate( ${saturationHover}% ) blur( ${blurHover}px ) hue-rotate( ${hueHover}deg )`: ""
         },
         " .premium-image-separator-container img": {
-          "width": generateCSSUnit(iconSizeFront, iconSizeFrontType),
+          "width": generateCSSUnit(iconSize, iconSizeType),
           "border-radius": generateCSSUnit(iconBorderRadius, iconBorderRadiusType),
         },
         " .premium-image-separator-container i": {
-          "font-size": generateCSSUnit(iconSizeFront, iconSizeFrontType),
+          "font-size": generateCSSUnit(iconSize, iconSizeType),
           "border-radius": generateCSSUnit(iconBorderRadius, iconBorderRadiusType),
           "color": iconColor,
           "background-color": iconBGColor,
@@ -71,22 +71,22 @@ function styling(props) {
 
     mobile_selectors = {
         " .premium-image-separator-container i": {
-          "font-size": generateCSSUnit(iconSizeFrontMobile, iconSizeFrontType),
+          "font-size": generateCSSUnit(iconSizeMobile, iconSizeType),
           "padding": generateCSSUnit(iconPaddingMobile, iconPaddingType),
         },
         " .premium-image-separator-container img": {
-          "width": generateCSSUnit(iconSizeFrontMobile, iconSizeFrontType),
+          "width": generateCSSUnit(iconSizeMobile, iconSizeType),
           "border-radius": generateCSSUnit(iconBorderRadiusMobile, iconBorderRadiusType),
         }
     }
 
     tablet_selectors = {
       " .premium-image-separator-container i": {
-        "font-size": generateCSSUnit(iconSizeFrontTablet, iconSizeFrontType),
+        "font-size": generateCSSUnit(iconSizeTablet, iconSizeType),
         "padding": generateCSSUnit(iconPaddingTablet, iconPaddingType),
       },
         " .premium-image-separator-container img": {
-          "width": generateCSSUnit(iconSizeFrontTablet, iconSizeFrontType),
+          "width": generateCSSUnit(iconSizeTablet, iconSizeType),
           "border-radius": generateCSSUnit(iconBorderRadiusTablet, iconBorderRadiusType),
         }
     }

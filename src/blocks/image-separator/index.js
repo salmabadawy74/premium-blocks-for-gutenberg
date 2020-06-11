@@ -41,7 +41,7 @@ const imageSeparatorAttrs = {
     type: "string",
     source: "attribute",
     attribute: "src",
-    selector: ".premium-title-icon"
+    selector: ".premium-image-separator-container img"
   },
   link: {
     type: "boolean",
@@ -51,19 +51,19 @@ const imageSeparatorAttrs = {
     type: "string",
     default: "#"
   },
-  iconSizeFront: {
+  iconSize: {
     type: "number",
     default: "200"
   },
-  iconSizeFrontType: {
+  iconSizeType: {
     type: "string",
     default: "px"
   },
-  iconSizeFrontMobile: {
+  iconSizeMobile: {
     type: "number",
     default: "200"
   },
-  iconSizeFrontTablet: {
+  iconSizeTablet: {
     type: "number",
     default: "200"
   },
@@ -172,6 +172,10 @@ const imageSeparatorAttrs = {
     type: "number",
     default: ".1"
   },
+  linkTarget: {
+    type: "boolean",
+    default: false
+  }
 };
 
 registerBlockType("premium/image-separator", {
