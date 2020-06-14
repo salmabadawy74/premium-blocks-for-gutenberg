@@ -23,7 +23,8 @@ export const {
   fancyText,
   title,
   flipBox,
-  imageSeparator
+  imageSeparator,
+  imageAccordion
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys

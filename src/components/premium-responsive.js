@@ -77,7 +77,7 @@ function PremiumResponsive(props) {
 								<RangeControl
 									label={__(props.sizeMobileText)}
 									value={props.sizeMobile.value}
-									onChange={(value) => props.setAttributes({ [props.sizeMobileLabel]: value })}
+									onChange={props.sizeMobileLabel != "" ? (value) => props.setAttributes({ [props.sizeMobileLabel]: value }) : onChangeMobile}
 									min={props.min || 0}
 									max={props.max || 200}
 									step={props.steps}
@@ -94,7 +94,7 @@ function PremiumResponsive(props) {
 								<RangeControl
 									label={__(props.sizeTabletText)}
 									value={props.sizeTablet.value}
-									onChange={(value) => props.setAttributes({ [props.sizeTabletLabel]: value })}
+									onChange={props.sizeTabletLabel!= "" ?(value) => props.setAttributes({ [props.sizeTabletLabel]: value }) : onChangeTablet}
 									min={props.min || 0}
 									max={props.max || 200}
 									step={props.steps}
@@ -111,7 +111,7 @@ function PremiumResponsive(props) {
 								<RangeControl
 									label={__(props.sizeText)}
 									value={props.size.value}
-									onChange={(value) => props.setAttributes({ [props.sizeLabel]: value })}
+									onChange={props.sizeLabel!= "" ? (value) => props.setAttributes({ [props.sizeLabel]: value }) : onChangeSize}
 									min={props.min || 0}
 									max={props.max || 200}
 									step={props.steps}

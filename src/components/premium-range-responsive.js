@@ -29,11 +29,11 @@ export default class PremiumRangeResponsive extends Component {
                     type={this.props.rangeType}
                     typeLabel={this.props.rangeType.label}
                     sizeMobile={this.props.rangeMobile}
-                    sizeMobileLabel={this.props.rangeMobile.label}
+                    sizeMobileLabel={this.props.rangeMobile.label || ""}
                     sizeTablet={this.props.rangeTablet}
-                    sizeTabletLabel={this.props.rangeTablet.label}
+                    sizeTabletLabel={this.props.rangeTablet.label || ""}
                     size={this.props.range}
-                    sizeLabel={this.props.range.label}
+                    sizeLabel={this.props.range.label || ""}
                     sizeMobileText={
                         (!this.props.rangeLabel) ? __("Range") : this.props.rangeLabel
                     }
