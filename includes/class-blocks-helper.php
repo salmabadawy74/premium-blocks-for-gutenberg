@@ -1511,7 +1511,8 @@ class Premium_Blocks_Integration {
 			$selectors = array(
 				// Desktop Icon Size CSS starts.
 				" .premium-flip-front" => array(
-					"box-shadow" => self::get_css_value($attr['frontShadowHorizontal'], 'px ') . self::get_css_value($attr['frontShadowVertical'],'px ') . self::get_css_value($attr['frontShadowBlur'],'px ') .  self::get_css_value($attr['frontShadowColor'], " ") . $attr[ 'frontShadowPosition']
+					"box-shadow" => self::get_css_value($attr['frontShadowHorizontal'], 'px ') . self::get_css_value($attr['frontShadowVertical'],'px ') . self::get_css_value($attr['frontShadowBlur'],'px ') .  self::get_css_value($attr['frontShadowColor'], " ") . $attr[ 'frontShadowPosition'],
+					"background-color" => $attr['frontBGColor']
 				),
 				" .premium-flip-box" => array(
 					"height" =>  self::get_css_value($attr['height'] , $attr['heightType'] )
@@ -1543,6 +1544,7 @@ class Premium_Blocks_Integration {
 				),
 				" .premium-flip-front-title" => array(
 					"font-size" =>  self::get_css_value($attr['titlefrontfontSize'] , $attr['titlefrontfontSizeType'] ),
+					"line-height" => self::get_css_value($attr['titlefrontLine'], "px !important"),
 					"color" => self::get_css_value($attr['titlefrontColor'], '!important') ,
 					"background" => self::get_css_value($attr['titlefrontBGColor'], '!important') ,
 					"letter-spacing" => self::get_css_value($attr['titlefrontLetter'] , 'px') ,
@@ -1554,6 +1556,7 @@ class Premium_Blocks_Integration {
 				),
 				" .premium-flip-front-description" => array(
 					"font-size" =>  self::get_css_value($attr['descfrontfontSize'] , $attr['descfrontfontSizeType'] ),
+					"line-height" => self::get_css_value($attr['descfrontLine'], "px !important"),
 					"color" => self::get_css_value($attr['descfrontColor'], '!important') ,
 					"background" => self::get_css_value($attr['descfrontBGColor'], '!important') ,
 					"letter-spacing" => self::get_css_value($attr['descfrontLetter'] , 'px') ,
@@ -1565,7 +1568,8 @@ class Premium_Blocks_Integration {
 					"margin" => self::get_css_value($attr['descFrontMargin'] , $attr['descFrontMarginType'] )
 				),
 				" .premium-flip-back" => array(
-					"box-shadow" => self::get_css_value($attr['backShadowHorizontal'], 'px ') . self::get_css_value($attr['backShadowVertical'],'px ') . self::get_css_value($attr['backShadowBlur'],'px ') .  self::get_css_value($attr['backShadowColor'], " ") . $attr[ 'backShadowPosition']
+					"box-shadow" => self::get_css_value($attr['backShadowHorizontal'], 'px ') . self::get_css_value($attr['backShadowVertical'],'px ') . self::get_css_value($attr['backShadowBlur'],'px ') .  self::get_css_value($attr['backShadowColor'], " ") . $attr[ 'backShadowPosition'],
+					"background-color" => $attr['backBGColor']
 				),
 				" .premium-flip-back-icon" => array(
 					"font-size" =>  self::get_css_value($attr['iconSizeBack'] , $attr['iconSizeBackType'] ),
@@ -1594,6 +1598,7 @@ class Premium_Blocks_Integration {
 				),
 				" .premium-flip-back-title" => array(
 					"font-size" =>  self::get_css_value($attr['titlebackfontSize'] , $attr['titlebackfontSizeType'] ),
+					"line-height" => self::get_css_value($attr['titlebackLine'], "px !important"),
 					"color" => self::get_css_value($attr['titlebackColor'], '!important') ,
 					"background" => self::get_css_value($attr['titlebackBGColor'], '!important') ,
 					"letter-spacing" => self::get_css_value($attr['titlebackLetter'] , 'px') ,
@@ -1605,6 +1610,7 @@ class Premium_Blocks_Integration {
 				),
 				" .premium-flip-back-description" => array(
 					"font-size" =>  self::get_css_value($attr['descbackfontSize'] , $attr['descbackfontSizeType'] ),
+					"line-height" => self::get_css_value($attr['descbackLine'], "px !important"),
 					"color" => self::get_css_value($attr['descbackColor'], '!important') ,
 					"background" => self::get_css_value($attr['descbackBGColor'], '!important') ,
 					"letter-spacing" => self::get_css_value($attr['descbackLetter'] , 'px') ,
@@ -1626,6 +1632,8 @@ class Premium_Blocks_Integration {
 					"margin" => self::get_css_value($attr['iconFrontMarginMobile'] , $attr['iconFrontMarginType'] )
 				),
 				" .premium-flip-text-wrapper img"  => array(
+					"width" => self::get_css_value($attr['iconSizeFrontMobile'] , $attr['iconSizeFrontType'] ),
+					"height" => self::get_css_value($attr['iconSizeFrontMobile'] , $attr['iconSizeFrontType'] ),
 					"padding" => self::get_css_value($attr['iconFrontPaddingMobile'] , $attr['iconFrontPaddingType'] ),
 					"margin" => self::get_css_value($attr['iconFrontMarginMobile'] , $attr['iconFrontMarginType'] )
 				),
@@ -1670,6 +1678,8 @@ class Premium_Blocks_Integration {
 					"margin" => self::get_css_value($attr['iconFrontMarginTablet'] , $attr['iconFrontMarginType'] )
 				),
 				" .premium-flip-text-wrapper img"  => array(
+					"width" => self::get_css_value($attr['iconSizeFrontTablet'] , $attr['iconSizeFrontType'] ),
+					"height" => self::get_css_value($attr['iconSizeFrontTablet'] , $attr['iconSizeFrontType'] ),
 					"padding" => self::get_css_value($attr['iconFrontPaddingTablet'] , $attr['iconFrontPaddingType'] ),
 					"margin" => self::get_css_value($attr['iconFrontMarginTablet'] , $attr['iconFrontMarginType'] )
 				),

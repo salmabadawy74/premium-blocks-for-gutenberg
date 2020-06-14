@@ -682,6 +682,30 @@ const flipBoxAttrs = {
     type: "number",
     default: "0"
   },
+  frontBGColor: {
+    type: "string",
+    default: "#6ec1e4"
+  },
+  backBGColor: {
+    type: "string",
+    default: "#6ec1e4"
+  },
+  linkTarget: {
+    type: "boolean",
+    default: false
+  },
+  titlefrontLine: {
+    type: "number"
+  },
+  descfrontLine: {
+    type: "number"
+  },
+  titlebackLine: {
+    type: "number"
+  },
+  descbackLine: {
+    type: "number"
+  }
 };
 
 registerBlockType("premium/flip-box", {

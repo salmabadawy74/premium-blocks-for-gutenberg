@@ -62386,6 +62386,30 @@ var flipBoxAttrs = {
   descBackPaddingMobile: {
     type: "number",
     default: "0"
+  },
+  frontBGColor: {
+    type: "string",
+    default: "#6ec1e4"
+  },
+  backBGColor: {
+    type: "string",
+    default: "#6ec1e4"
+  },
+  linkTarget: {
+    type: "boolean",
+    default: false
+  },
+  titlefrontLine: {
+    type: "number"
+  },
+  descfrontLine: {
+    type: "number"
+  },
+  titlebackLine: {
+    type: "number"
+  },
+  descbackLine: {
+    type: "number"
   }
 };
 
@@ -62440,8 +62464,11 @@ function save(props) {
       horizontalalignBack = attributes.horizontalalignBack,
       effect = attributes.effect,
       flipDir = attributes.flipDir,
-      animation = attributes.animation;
+      animation = attributes.animation,
+      linkTarget = attributes.linkTarget;
 
+
+  var target = linkTarget ? "_blank" : "_self";
 
   return wp.element.createElement(
     "div",
@@ -62473,8 +62500,8 @@ function save(props) {
                 wp.element.createElement(
                   "div",
                   { className: "premium-flip-text-wrapper" },
-                  iconValueFront && iconTypeFront == 'icon' && wp.element.createElement("i", { className: "premium-flip-front-icon " + iconFront }),
-                  iconValueFront && iconTypeFront == 'image' && wp.element.createElement("img", { className: "premium-flip-front-image", src: imageURLFront }),
+                  iconValueFront && iconTypeFront === 'icon' && wp.element.createElement("i", { className: "premium-flip-front-icon " + iconFront }),
+                  iconValueFront && iconTypeFront === 'image' && wp.element.createElement("img", { className: "premium-flip-front-image", src: imageURLFront }),
                   titleValueFront && wp.element.createElement(
                     "h3",
                     { className: "premium-flip-front-title" },
@@ -62499,15 +62526,16 @@ function save(props) {
             wp.element.createElement(
               "div",
               { className: "premium-flip-back-content-container" },
-              link && wp.element.createElement("a", { className: "premium-flip-box-full-link", href: "" + url }),
+              link && wp.element.createElement("a", { className: "premium-flip-box-full-link", href: "" + url,
+                target: target, rel: "noopener noreferrer" }),
               wp.element.createElement(
                 "div",
                 { className: "premium-flip-back-content", style: { justifyContent: horizontalalignBack, alignItems: verticalalignBack } },
                 wp.element.createElement(
                   "div",
                   { className: "premium-flip-back-text-wrapper" },
-                  iconValueBack && iconTypeBack == 'icon' && wp.element.createElement("i", { className: "premium-flip-back-icon " + iconBack }),
-                  iconValueBack && iconTypeBack == 'image' && wp.element.createElement("img", { className: "premium-flip-back-image", src: imageURLBack }),
+                  iconValueBack && iconTypeBack === 'icon' && wp.element.createElement("i", { className: "premium-flip-back-icon " + iconBack }),
+                  iconValueBack && iconTypeBack === 'image' && wp.element.createElement("img", { className: "premium-flip-back-image", src: imageURLBack }),
                   titleValueBack && wp.element.createElement(
                     "h3",
                     { className: "premium-flip-back-title" },
@@ -62618,9 +62646,9 @@ var edit = function (_Component) {
 
 
       if (!block_id) return null;
-      var jj = document.getElementById("premium-flip-box-" + block_id);
-      if (jj == null) return;
-      var toggleBox = jj.getElementsByClassName("premium-flip-style-flip");
+      var id = document.getElementById("premium-flip-box-" + block_id);
+      if (id == null) return;
+      var toggleBox = id.getElementsByClassName("premium-flip-style-flip");
 
       if (undefined !== toggleBox[0]) {
         var frontRight = toggleBox[0].getElementsByClassName("premium-flip-frontrl");
@@ -62858,7 +62886,14 @@ var edit = function (_Component) {
           descBackPadding = attributes.descBackPadding,
           descBackPaddingTablet = attributes.descBackPaddingTablet,
           descBackPaddingType = attributes.descBackPaddingType,
-          descBackPaddingMobile = attributes.descBackPaddingMobile;
+          descBackPaddingMobile = attributes.descBackPaddingMobile,
+          frontBGColor = attributes.frontBGColor,
+          backBGColor = attributes.backBGColor,
+          linkTarget = attributes.linkTarget,
+          descbackLine = attributes.descbackLine,
+          titlebackLine = attributes.titlebackLine,
+          descfrontLine = attributes.descfrontLine,
+          titlefrontLine = attributes.titlefrontLine;
 
 
       var ICON = [{
@@ -62974,7 +63009,8 @@ var edit = function (_Component) {
           titlefrontfontSizeTablet: "20",
           titlefrontStyle: "normal",
           titlefrontLetter: "0",
-          titlefrontUpper: false
+          titlefrontUpper: false,
+          titlefrontLine: ""
         });
       };
       var onResetClickTitlefrontTextShadow = function onResetClickTitlefrontTextShadow() {
@@ -62994,7 +63030,8 @@ var edit = function (_Component) {
           descfrontfontSizeTablet: "20",
           descfrontStyle: "normal",
           descfrontLetter: "0",
-          descfrontUpper: false
+          descfrontUpper: false,
+          descfrontLine: ""
         });
       };
       var onResetClickDescfrontTextShadow = function onResetClickDescfrontTextShadow() {
@@ -63039,7 +63076,8 @@ var edit = function (_Component) {
           titlebackfontSizeTablet: "20",
           titlebackStyle: "normal",
           titlebackLetter: "0",
-          titlebackUpper: false
+          titlebackUpper: false,
+          titlebackLine: ""
         });
       };
       var onResetClickTitlebackTextShadow = function onResetClickTitlebackTextShadow() {
@@ -63059,7 +63097,8 @@ var edit = function (_Component) {
           descbackfontSizeTablet: "20",
           descbackStyle: "normal",
           descbackLetter: "0",
-          descbackUpper: false
+          descbackUpper: false,
+          descbackLine: ""
         });
       };
       var onResetClickDescbackTextShadow = function onResetClickDescbackTextShadow() {
@@ -63090,6 +63129,20 @@ var edit = function (_Component) {
             className: "premium-panel-body",
             initialOpen: false
           },
+          wp.element.createElement(
+            "p",
+            null,
+            __("Background Color")
+          ),
+          wp.element.createElement(ColorPalette, {
+            value: frontBGColor,
+            onChange: function onChange(newValue) {
+              return setAttributes({
+                frontBGColor: newValue
+              });
+            },
+            allowReset: true
+          }),
           wp.element.createElement(ToggleControl, {
             label: __("Icon"),
             checked: iconValueFront,
@@ -63108,7 +63161,7 @@ var edit = function (_Component) {
               },
               options: ICON
             }),
-            iconTypeFront == 'icon' ? wp.element.createElement(
+            iconTypeFront === 'icon' ? wp.element.createElement(
               Fragment,
               null,
               wp.element.createElement(
@@ -63226,6 +63279,20 @@ var edit = function (_Component) {
             className: "premium-panel-body",
             initialOpen: false
           },
+          wp.element.createElement(
+            "p",
+            null,
+            __("Background Color")
+          ),
+          wp.element.createElement(ColorPalette, {
+            value: backBGColor,
+            onChange: function onChange(newValue) {
+              return setAttributes({
+                backBGColor: newValue
+              });
+            },
+            allowReset: true
+          }),
           wp.element.createElement(ToggleControl, {
             label: __("Icon"),
             checked: iconValueBack,
@@ -63244,7 +63311,7 @@ var edit = function (_Component) {
               },
               options: ICON
             }),
-            iconTypeBack == 'icon' ? wp.element.createElement(
+            iconTypeBack === 'icon' ? wp.element.createElement(
               Fragment,
               null,
               wp.element.createElement(
@@ -63343,6 +63410,13 @@ var edit = function (_Component) {
                 return setAttributes({ url: value });
               },
               placeholder: __("Enter URL")
+            }),
+            wp.element.createElement(ToggleControl, {
+              label: __("Open links in new tab"),
+              checked: linkTarget,
+              onChange: function onChange(newValue) {
+                return setAttributes({ linkTarget: newValue });
+              }
             })
           ),
           wp.element.createElement(
@@ -63394,7 +63468,7 @@ var edit = function (_Component) {
             options: EFFECT
           }),
           effect != 'fade' && effect != 'zoom' && wp.element.createElement(SelectControl, {
-            label: __("Flip Direction"),
+            label: __("Direction"),
             value: flipDir,
             onChange: function onChange(newSelect) {
               return setAttributes({ flipDir: newSelect });
@@ -63472,20 +63546,24 @@ var edit = function (_Component) {
                 return wp.element.createElement(
                   Fragment,
                   null,
-                  wp.element.createElement(
-                    "p",
+                  iconTypeFront === 'icon' && wp.element.createElement(
+                    Fragment,
                     null,
-                    __("Color")
+                    wp.element.createElement(
+                      "p",
+                      null,
+                      __("Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                      value: iconfrontColor,
+                      onChange: function onChange(newValue) {
+                        return setAttributes({
+                          iconfrontColor: newValue
+                        });
+                      },
+                      allowReset: true
+                    })
                   ),
-                  wp.element.createElement(ColorPalette, {
-                    value: iconfrontColor,
-                    onChange: function onChange(newValue) {
-                      return setAttributes({
-                        iconfrontColor: newValue
-                      });
-                    },
-                    allowReset: true
-                  }),
                   wp.element.createElement(
                     "p",
                     null,
@@ -63578,7 +63656,7 @@ var edit = function (_Component) {
                     allowReset: true
                   }),
                   wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                    components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                    components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
                     setAttributes: setAttributes,
                     fontSizeType: { value: titlefrontfontSizeType, label: __("titlefrontfontSizeType") },
                     fontSize: { value: titlefrontfontSize, label: __("titlefrontfontSize") },
@@ -63588,6 +63666,7 @@ var edit = function (_Component) {
                     style: titlefrontStyle,
                     spacing: titlefrontLetter,
                     upper: titlefrontUpper,
+                    line: titlefrontLine,
                     onChangeWeight: function onChangeWeight(newWeight) {
                       return setAttributes({ titlefrontWeight: newWeight || 600 });
                     },
@@ -63599,6 +63678,9 @@ var edit = function (_Component) {
                     },
                     onChangeUpper: function onChangeUpper(check) {
                       return setAttributes({ titlefrontUpper: check });
+                    },
+                    onChangeLine: function onChangeLine(newValue) {
+                      return setAttributes({ titlefrontLine: newValue });
                     },
                     onResetClick: onResetClickTitlefront
                   }),
@@ -63665,7 +63747,7 @@ var edit = function (_Component) {
                     allowReset: true
                   }),
                   wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                    components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                    components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
                     setAttributes: setAttributes,
                     fontSizeType: { value: descfrontfontSizeType, label: __("descfrontfontSizeType") },
                     fontSize: { value: descfrontfontSize, label: __("descfrontfontSize") },
@@ -63675,6 +63757,7 @@ var edit = function (_Component) {
                     style: descfrontStyle,
                     spacing: descfrontLetter,
                     upper: descfrontUpper,
+                    line: descfrontLine,
                     onChangeWeight: function onChangeWeight(newWeight) {
                       return setAttributes({ descfrontWeight: newWeight || 600 });
                     },
@@ -63686,6 +63769,9 @@ var edit = function (_Component) {
                     },
                     onChangeUpper: function onChangeUpper(check) {
                       return setAttributes({ descfrontUpper: check });
+                    },
+                    onChangeLine: function onChangeLine(newValue) {
+                      return setAttributes({ descfrontLine: newValue });
                     },
                     onResetClick: onResetClickDescfront
                   }),
@@ -63800,20 +63886,24 @@ var edit = function (_Component) {
                 return wp.element.createElement(
                   Fragment,
                   null,
-                  wp.element.createElement(
-                    "p",
+                  iconTypeBack === 'icon' && wp.element.createElement(
+                    Fragment,
                     null,
-                    __("Color")
+                    wp.element.createElement(
+                      "p",
+                      null,
+                      __("Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                      value: iconbackColor,
+                      onChange: function onChange(newValue) {
+                        return setAttributes({
+                          iconbackColor: newValue
+                        });
+                      },
+                      allowReset: true
+                    })
                   ),
-                  wp.element.createElement(ColorPalette, {
-                    value: iconbackColor,
-                    onChange: function onChange(newValue) {
-                      return setAttributes({
-                        iconbackColor: newValue
-                      });
-                    },
-                    allowReset: true
-                  }),
                   wp.element.createElement(
                     "p",
                     null,
@@ -63906,7 +63996,7 @@ var edit = function (_Component) {
                     allowReset: true
                   }),
                   wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                    components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                    components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
                     setAttributes: setAttributes,
                     fontSizeType: { value: titlebackfontSizeType, label: __("titlebackfontSizeType") },
                     fontSize: { value: titlebackfontSize, label: __("titlebackfontSize") },
@@ -63916,6 +64006,7 @@ var edit = function (_Component) {
                     style: titlebackStyle,
                     spacing: titlebackLetter,
                     upper: titlebackUpper,
+                    line: titlebackLine,
                     onChangeWeight: function onChangeWeight(newWeight) {
                       return setAttributes({ titlebackWeight: newWeight || 600 });
                     },
@@ -63927,6 +64018,9 @@ var edit = function (_Component) {
                     },
                     onChangeUpper: function onChangeUpper(check) {
                       return setAttributes({ titlebackUpper: check });
+                    },
+                    onChangeLine: function onChangeLine(newValue) {
+                      return setAttributes({ titlebackLine: newValue });
                     },
                     onResetClick: onResetClickTitleback
                   }),
@@ -63993,7 +64087,7 @@ var edit = function (_Component) {
                     allowReset: true
                   }),
                   wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                    components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                    components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
                     setAttributes: setAttributes,
                     fontSizeType: { value: descbackfontSizeType, label: __("descbackfontSizeType") },
                     fontSize: { value: descbackfontSize, label: __("descbackfontSize") },
@@ -64003,6 +64097,7 @@ var edit = function (_Component) {
                     style: descbackStyle,
                     spacing: descbackLetter,
                     upper: descbackUpper,
+                    line: descbackLine,
                     onChangeWeight: function onChangeWeight(newWeight) {
                       return setAttributes({ descbackWeight: newWeight || 600 });
                     },
@@ -64014,6 +64109,9 @@ var edit = function (_Component) {
                     },
                     onChangeUpper: function onChangeUpper(check) {
                       return setAttributes({ descbackUpper: check });
+                    },
+                    onChangeLine: function onChangeLine(newValue) {
+                      return setAttributes({ descbackLine: newValue });
                     },
                     onResetClick: onResetClickDescback
                   }),
@@ -64101,8 +64199,8 @@ var edit = function (_Component) {
                     wp.element.createElement(
                       "div",
                       { className: "premium-flip-text-wrapper" },
-                      iconValueFront && iconTypeFront == 'icon' && wp.element.createElement("i", { className: "premium-flip-front-icon " + iconFront }),
-                      iconValueFront && iconTypeFront == 'image' && wp.element.createElement("img", { className: "premium-flip-front-image", src: imageURLFront }),
+                      iconValueFront && iconTypeFront === 'icon' && wp.element.createElement("i", { className: "premium-flip-front-icon " + iconFront }),
+                      iconValueFront && iconTypeFront === 'image' && wp.element.createElement("img", { className: "premium-flip-front-image", src: imageURLFront }),
                       titleValueFront && wp.element.createElement(
                         "h3",
                         { className: "premium-flip-front-title" },
@@ -64134,8 +64232,8 @@ var edit = function (_Component) {
                     wp.element.createElement(
                       "div",
                       { className: "premium-flip-back-text-wrapper" },
-                      iconValueBack && iconTypeBack == 'icon' && wp.element.createElement("i", { className: "premium-flip-back-icon " + iconBack }),
-                      iconValueBack && iconTypeBack == 'image' && wp.element.createElement("img", { className: "premium-flip-back-image", src: imageURLBack }),
+                      iconValueBack && iconTypeBack === 'icon' && wp.element.createElement("i", { className: "premium-flip-back-icon " + iconBack }),
+                      iconValueBack && iconTypeBack === 'image' && wp.element.createElement("img", { className: "premium-flip-back-image", src: imageURLBack }),
                       titleValueBack && wp.element.createElement(
                         "h3",
                         { className: "premium-flip-back-title" },
@@ -64312,7 +64410,13 @@ function styling(props) {
       descBackPadding = _props$attributes.descBackPadding,
       descBackPaddingTablet = _props$attributes.descBackPaddingTablet,
       descBackPaddingType = _props$attributes.descBackPaddingType,
-      descBackPaddingMobile = _props$attributes.descBackPaddingMobile;
+      descBackPaddingMobile = _props$attributes.descBackPaddingMobile,
+      frontBGColor = _props$attributes.frontBGColor,
+      backBGColor = _props$attributes.backBGColor,
+      descbackLine = _props$attributes.descbackLine,
+      titlebackLine = _props$attributes.titlebackLine,
+      descfrontLine = _props$attributes.descfrontLine,
+      titlefrontLine = _props$attributes.titlefrontLine;
 
 
   var selectors = {};
@@ -64321,7 +64425,8 @@ function styling(props) {
 
   selectors = {
     " .premium-flip-front": {
-      "box-shadow": frontShadowHorizontal + 'px ' + frontShadowVertical + 'px ' + frontShadowBlur + 'px ' + frontShadowColor + ' ' + frontShadowPosition
+      "box-shadow": frontShadowHorizontal + 'px ' + frontShadowVertical + 'px ' + frontShadowBlur + 'px ' + frontShadowColor + ' ' + frontShadowPosition,
+      "background-color": frontBGColor
     },
     " .premium-flip-box": {
       "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(height, heightType)
@@ -64358,6 +64463,7 @@ function styling(props) {
       "letter-spacing": titlefrontLetter + "px" + "!important",
       "text-transform": titlefrontUpper ? "uppercase" : "none" + "!important",
       "font-style": titlefrontStyle + "!important",
+      "line-height": titlefrontLine + "px" + "!important",
       "background": titlefrontBGColor,
       "text-shadow": titlefrontshadowHorizontal + 'px ' + titlefrontshadowVertical + 'px ' + titlefrontshadowBlur + 'px ' + titlefrontshadowColor,
       "margin": titleFrontMargin >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleFrontMargin, titleFrontMarginType) : '0 0 15px 0'
@@ -64370,12 +64476,14 @@ function styling(props) {
       "text-transform": descfrontUpper ? "uppercase" : "none" + "!important",
       "font-style": descfrontStyle + "!important",
       "background": descfrontBGColor,
+      "line-height": descfrontLine + "px" + "!important",
       "text-shadow": descfrontshadowHorizontal + 'px ' + descfrontshadowVertical + 'px ' + descfrontshadowBlur + 'px ' + descfrontshadowColor,
       "margin": descFrontMargin >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontMargin, descFrontMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descFrontPadding, descFrontPaddingType)
     },
     " .premium-flip-back": {
-      "box-shadow": backShadowHorizontal + 'px ' + backShadowVertical + 'px ' + backShadowBlur + 'px ' + backShadowColor + ' ' + backShadowPosition
+      "box-shadow": backShadowHorizontal + 'px ' + backShadowVertical + 'px ' + backShadowBlur + 'px ' + backShadowColor + ' ' + backShadowPosition,
+      "background-color": backBGColor
     },
     " .premium-flip-back-icon": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeBack, iconSizeBackType),
@@ -64410,6 +64518,7 @@ function styling(props) {
       "text-transform": titlebackUpper ? "uppercase" : "none" + "!important",
       "font-style": titlebackStyle + "!important",
       "background": titlebackBGColor,
+      "line-height": titlebackLine + "px" + "!important",
       "text-shadow": titlebackshadowHorizontal + 'px ' + titlebackshadowVertical + 'px ' + titlebackshadowBlur + 'px ' + titlebackshadowColor,
       "margin": titleBackMargin >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleBackMargin, titleBackMarginType) : '0 0 15px 0'
     },
@@ -64421,6 +64530,7 @@ function styling(props) {
       "text-transform": descbackUpper ? "uppercase" : "none" + "!important",
       "font-style": descbackStyle + "!important",
       "background": descbackBGColor,
+      "line-height": descbackLine + "px" + "!important",
       "text-shadow": descbackshadowHorizontal + 'px ' + descbackshadowVertical + 'px ' + descbackshadowBlur + 'px ' + descbackshadowColor,
       "margin": descBackMargin >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackMargin, descBackMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descBackPadding, descBackPaddingType)
@@ -64434,6 +64544,8 @@ function styling(props) {
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPaddingMobile, iconFrontPaddingType)
     },
     " .premium-flip-text-wrapper img": {
+      "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFrontMobile, iconSizeFrontType),
+      "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFrontMobile, iconSizeFrontType),
       "margin": iconFrontMarginMobile >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMarginMobile, iconFrontMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPaddingMobile, iconFrontPaddingType)
     },
@@ -64476,6 +64588,8 @@ function styling(props) {
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPaddingTablet, iconFrontPaddingType)
     },
     " .premium-flip-text-wrapper img": {
+      "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFrontTablet, iconSizeFrontType),
+      "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeFrontTablet, iconSizeFrontType),
       "margin": iconFrontMarginTablet >= '1' ? Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontMarginTablet, iconFrontMarginType) : '0 0 15px 0',
       "padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconFrontPaddingTablet, iconFrontPaddingType)
     },
