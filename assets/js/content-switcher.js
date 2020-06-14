@@ -6,7 +6,7 @@ jQuery(document).ready(function ($) {
 
     let $toggleBox = $contentSwitcher.find(`.premium-content-switcher-toggle-switch-label input`);
 
-    $($toggleBox).on('change', function () {
+    $toggleBox.on('change', function () {
       if ($(this).is(':checked')) {
         let $switch = $contentSwitcher.find(".premium-content-switcher-first-list");
         $switch
