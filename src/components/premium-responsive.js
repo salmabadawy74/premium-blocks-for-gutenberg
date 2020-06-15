@@ -27,6 +27,7 @@ function PremiumResponsive(props) {
 		sizeTypes = [
 			{ key: "px", name: __("px") },
 			{ key: "em", name: __("em") },
+			{ key: "%", name: __("%") },
 		]
 	}
 
@@ -39,7 +40,7 @@ function PremiumResponsive(props) {
 					isSmall
 					isPrimary={props.type.value === key}
 					aria-pressed={props.type.value === key}
-					onClick={() => props.setAttributes({ [props.typeLabel]: key })}
+					onClick={typeof props.typeLabel === 'string' || props.typeLabel instanceof String ? () => props.setAttributes({ [props.typeLabel]: key }): ()=>props.onChangeType(key)}
 				>
 					{name}
 				</Button>
@@ -77,7 +78,7 @@ function PremiumResponsive(props) {
 								<RangeControl
 									label={__(props.sizeMobileText)}
 									value={props.sizeMobile.value}
-									onChange={props.sizeMobileLabel != "" ? (value) => props.setAttributes({ [props.sizeMobileLabel]: value }) : onChangeMobile}
+									onChange={typeof props.sizeMobileLabel === 'string' || props.sizeMobileLabel instanceof String ? (value) => props.setAttributes({ [props.sizeMobileLabel]: value }) : props.onChangeMobile}
 									min={props.min || 0}
 									max={props.max || 200}
 									step={props.steps}
@@ -94,7 +95,7 @@ function PremiumResponsive(props) {
 								<RangeControl
 									label={__(props.sizeTabletText)}
 									value={props.sizeTablet.value}
-									onChange={props.sizeTabletLabel!= "" ?(value) => props.setAttributes({ [props.sizeTabletLabel]: value }) : onChangeTablet}
+									onChange={typeof props.sizeTabletLabel === 'string' || props.sizeTabletLabel instanceof String ? (value) => props.setAttributes({ [props.sizeTabletLabel]: value }) : props.onChangeTablet}
 									min={props.min || 0}
 									max={props.max || 200}
 									step={props.steps}
@@ -111,7 +112,7 @@ function PremiumResponsive(props) {
 								<RangeControl
 									label={__(props.sizeText)}
 									value={props.size.value}
-									onChange={props.sizeLabel!= "" ? (value) => props.setAttributes({ [props.sizeLabel]: value }) : onChangeSize}
+									onChange={typeof props.sizeLabel === 'string' || props.sizeLabel instanceof String ? (value) => props.setAttributes({ [props.sizeLabel]: value }) : props.onChangeSize}
 									min={props.min || 0}
 									max={props.max || 200}
 									step={props.steps}

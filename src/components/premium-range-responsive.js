@@ -27,13 +27,13 @@ export default class PremiumRangeResponsive extends Component {
             <div className="premium-control-toggle">
                 <PremiumResponsive
                     type={this.props.rangeType}
-                    typeLabel={this.props.rangeType.label}
+                    typeLabel={this.props.rangeType.label || this.props.onChangeType}
                     sizeMobile={this.props.rangeMobile}
-                    sizeMobileLabel={this.props.rangeMobile.label || ""}
+                    sizeMobileLabel={this.props.rangeMobile.label || this.props.onChangeMobile}
                     sizeTablet={this.props.rangeTablet}
-                    sizeTabletLabel={this.props.rangeTablet.label || ""}
+                    sizeTabletLabel={this.props.rangeTablet.label || this.props.onChangeTablet}
                     size={this.props.range}
-                    sizeLabel={this.props.range.label || ""}
+                    sizeLabel={this.props.range.label || this.props.onChangeSize}
                     sizeMobileText={
                         (!this.props.rangeLabel) ? __("Range") : this.props.rangeLabel
                     }
