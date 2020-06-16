@@ -65351,7 +65351,6 @@ function styling(props) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(291);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__save__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(292);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(2);
 
@@ -65779,14 +65778,86 @@ registerBlockType("premium/image-accordion", {
   supports: {
     inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["n" /* imageAccordion */]
   },
-  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */]
+  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+  save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */]
 });
 
 /***/ }),
 /* 291 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = save;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 
 
+function save(props) {
+  var attributes = props.attributes,
+      className = props.className;
+  var block_id = attributes.block_id,
+      align = attributes.align,
+      repeaterAccordion = attributes.repeaterAccordion,
+      defaultIndex = attributes.defaultIndex,
+      direction = attributes.direction,
+      skew = attributes.skew,
+      skewdirection = attributes.skewdirection,
+      screenWidth = attributes.screenWidth;
+
+
+  var renderList = repeaterAccordion.map(function (item, index) {
+    return wp.element.createElement(
+      "li",
+      { className: "premium-accordion-li premium-accordion-li" + index + " " + (defaultIndex - 1 == index ? 'premium-accordion-li-active' : "") },
+      !skew || direction === 'vertical' ? wp.element.createElement("div", { className: "premium-accordion-background" }) : "",
+      wp.element.createElement(
+        "div",
+        { className: "premium-accordion-overlay-wrap" },
+        item.content && wp.element.createElement(
+          "div",
+          { className: "premium-accordion-content premium-accordion-center" },
+          item.iconValue && wp.element.createElement("i", { className: "premium-accordion-icon " + item.icon }),
+          item.title && wp.element.createElement(
+            "h3",
+            { className: "premium-accordion-title" },
+            item.title
+          ),
+          item.desc && wp.element.createElement(
+            "div",
+            { className: "premium-accordion-description" },
+            item.desc
+          )
+        )
+      )
+    );
+  });
+
+  return wp.element.createElement(
+    "div",
+    {
+      className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id), id: "premium-accordion-" + block_id,
+      style: {
+        textAlign: align
+      } },
+    wp.element.createElement(
+      "div",
+      { className: "premium-accordion-container" },
+      wp.element.createElement(
+        "div",
+        { className: "premium-accordion-section", "data-skew": "" + (skew && direction === 'horizontal' ? skewdirection : ""), "data-hideDesc": "" + screenWidth },
+        wp.element.createElement(
+          "div",
+          { className: "premium-accordion-" + direction + " premium-accordion-" + (skew ? "skew" : "") },
+          wp.element.createElement(
+            "ul",
+            { className: "premium-accordion-ul premium-accordion-center" },
+            renderList
+          )
+        )
+      )
+    )
+  );
+}
 
 /***/ }),
 /* 292 */

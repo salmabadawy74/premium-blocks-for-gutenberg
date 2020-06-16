@@ -431,5 +431,6 @@ registerBlockType("premium/image-accordion", {
   supports: {
     inserter: imageAccordion
   },
-  edit: edit
+  edit: edit,
+  save: save
 });

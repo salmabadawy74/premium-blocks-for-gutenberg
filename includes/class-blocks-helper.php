@@ -187,7 +187,9 @@ class Premium_Blocks_Integration {
 				
 				$is_flip_box_enabled = self::$blocks['flipBox'];
 				
-        $is_image_separator_enabled = self::$blocks['imageSeparator'];
+				$is_image_separator_enabled = self::$blocks['imageSeparator'];
+				
+        $is_image_accordionr_enabled = self::$blocks['imageAccordion'];
         
         wp_enqueue_style(
             'pbg-frontend',
@@ -357,6 +359,15 @@ class Premium_Blocks_Integration {
 			wp_enqueue_script(
             'image-separator-js',
             PREMIUM_BLOCKS_URL . 'assets/js/image-separator.js',
+            array('jquery'),
+            PREMIUM_BLOCKS_VERSION
+      		);
+		}
+
+		if( $is_image_accordionr_enabled) {
+			wp_enqueue_script(
+            'image-accordion-js',
+            PREMIUM_BLOCKS_URL . 'assets/js/image-accordion.js',
             array('jquery'),
             PREMIUM_BLOCKS_VERSION
       		);
@@ -635,6 +646,9 @@ class Premium_Blocks_Integration {
 									break;
 								case 'premium/image-separator':
 									$css += $this->get_image_separator_css( $blockattr, $block_id );
+									break;
+								case 'premium/image-accordion':
+									$css += $this->get_image_accordion_css( $blockattr, $block_id );
 									break;
                 default:
                     // Nothing to do here.
@@ -1578,6 +1592,182 @@ class Premium_Blocks_Integration {
 			// @codingStandardsIgnoreEnd
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-image-separator-';
+
+        $desktop = self::generate_css( $selectors, $base_selector . $id );
+
+				$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+        $mobile = self::generate_css( $m_selectors, $base_selector . $id );
+            
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => $tablet,
+				'mobile'  => $mobile,
+			);
+            
+            return $generated_css;
+		}
+
+		public static function get_image_accordion_css ( $attr, $id ){
+			$defaults = self::$block_list['premium/image-accordion']['attributes'];
+            
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors = array(
+				// Desktop Icon Size CSS starts.
+				" .premium-accordion-horizontal .premium-accordion-li" => array(
+					"height" => self::get_css_value($attr['height'], $attr['heightType']) 
+				),
+				" .premium-accordion-overlay-wrap" => array(
+					"background-color" => $attr['overlayColor']
+				),
+				" .premium-accordion-li:hover .premium-accordion-overlay-wrap" => array(
+					"background-color" => $attr['overlayColorHover']
+				),
+				" .premium-accordion-ul li.premium-accordion-li" => array(
+					"filter" => 'brightness(' . $attr['bright'] . '%)' . 'contrast(' . $attr['contrast'] . '%)' . 'saturate(' . $attr['saturation'] . '%)' . 'blur(' . $attr['blur'] . 'px)' . 'hue-rotate(' . $attr['hue'] . 'deg)'
+				),
+				" .premium-accordion-ul li.premium-accordion-li:hover" => array(
+					"filter" => 'brightness(' . $attr['brightHover'] . '%)' . 'contrast(' . $attr['contrastHover'] . '%)' . 'saturate(' . $attr['saturationHover'] . '%)' . 'blur(' . $attr['blurHover'] . 'px)' . 'hue-rotate(' . $attr['hueHover'] . 'deg)'
+				),
+				" .premium-accordion-section .premium-accordion-icon" => array(
+					"font-size" =>  self::get_css_value($attr['iconSize'] , $attr['iconSizeType'] ),
+					"color" => self::get_css_value($attr['iconColor'], '!important') ,
+					"background" => self::get_css_value($attr['iconBGColor'], '!important') ,
+					"border-width" => self::get_css_value($attr['iconborderWidth'], 'px'),
+					"border-color" => $attr['iconborderColor'],
+					"border-style" => $attr['iconborderType'],
+					"border-radius" => self::get_css_value($attr['iconborderRadius'], 'px'),
+					"padding" => self::get_css_value($attr['iconPadding'] , $attr['iconPaddingType'] ),
+					"margin" => self::get_css_value($attr['iconMargin'] , $attr['iconMarginType'] ),
+					"box-shadow" => self::get_css_value($attr['iconShadowHorizontal'], 'px ') . self::get_css_value($attr['iconShadowVertical'],'px ') . self::get_css_value($attr['iconShadowBlur'],'px ') .  self::get_css_value($attr['iconShadowColor'], " ") . $attr[ 'iconShadowPosition']
+				),
+				" .premium-accordion-section .premium-accordion-icon:hover"=> array(
+					"color" => self::get_css_value($attr['iconHoverColor'], '!important') ,
+					"background" => self::get_css_value($attr['iconHoverBGColor'], '!important') ,
+				),
+				" .premium-accordion-section .premium-accordion-title" => array(
+					"font-size" =>  self::get_css_value($attr['titlefontSize'] , $attr['titlefontSizeType'] ),
+					"color" => self::get_css_value($attr['titleColor'], '!important') ,
+					"letter-spacing" => self::get_css_value($attr['titleLetter'] , 'px') ,
+					"text-transform" => $attr['titleUpper'] ? "uppercase" : "none" ,
+					"font-style" => self::get_css_value($attr['titleStyle'], " !important") ,
+					"line-height" => $attr['titleLine']>0 ? self::get_css_value($attr['titleLine'], " px !important"):"",
+					"font-weight" => self::get_css_value($attr['titleWeight'], " !important") ,
+					"text-shadow" => self::get_css_value($attr['titleshadowHorizontal'],'px ') .self::get_css_value($attr['titleshadowVertical'],'px ') . self::get_css_value($attr['titleshadowBlur'], 'px ') . $attr['titleshadowColor'],
+					"margin" => self::get_css_value($attr['titleMargin'] , $attr['titleMarginType'] )
+				),
+				" .premium-accordion-section .premium-accordion-description" => array(
+					"font-size" =>  self::get_css_value($attr['descfontSize'] , $attr['descfontSizeType'] ),
+					"color" => self::get_css_value($attr['descColor'], '!important') ,
+					"letter-spacing" => self::get_css_value($attr['descLetter'] , 'px') ,
+					"text-transform" => $attr['descUpper'] ? "uppercase" : "none" ,
+					"font-style" => self::get_css_value($attr['descStyle'], " !important") ,
+					"line-height" => $attr['descLine']>0 ? self::get_css_value($attr['descLine'], " px !important"):"",
+					"font-weight" => self::get_css_value($attr['descWeight'], " !important") ,
+					"text-shadow" => self::get_css_value($attr['descshadowHorizontal'],'px ') .self::get_css_value($attr['descshadowVertical'],'px ') . self::get_css_value($attr['descshadowBlur'], 'px ') . $attr['descshadowColor'],
+					"padding" => self::get_css_value($attr['descPadding'] , $attr['descPaddingType'] ),
+					"margin" => self::get_css_value($attr['descMargin'] , $attr['descMarginType'] )
+				),
+			);
+			// Desktop Icon Size CSS ends.
+
+			// Mobile Icon Size CSS starts.
+			$m_selectors = array(
+				" .premium-accordion-horizontal .premium-accordion-li"  => array(
+					"height" => self::get_css_value($attr['heightMobile'], $attr['heightType'])
+				),
+				" .premium-accordion-section .premium-accordion-icon"  => array(
+					"padding" => self::get_css_value($attr['iconPaddingMobile'] , $attr['iconPaddingType'] ),
+					"margin" => self::get_css_value($attr['iconMarginMobile'] , $attr['iconMarginType'] ),
+					"font-size" => self::get_css_value($attr['iconfontSizeMobile'], $attr['iconfontSizeType']) . "!important",
+				),
+				" .premium-accordion-section .premium-accordion-title"  => array(
+					"font-size" => self::get_css_value($attr['titlefontSizeMobile'], $attr['titlefontSizeType']) . "!important",
+					"margin" => self::get_css_value($attr['titleMarginMobile'] , $attr['titleMarginType'] )
+				),
+				" .premium-accordion-section .premium-accordion-description"  => array(
+					"font-size" => self::get_css_value($attr['descfontSizeMobile'], $attr['descfontSizeType']) . "!important",
+					"padding" => self::get_css_value($attr['descPaddingMobile'] , $attr['descPaddingType'] ),
+					"margin" => self::get_css_value($attr['descMarginMobile'] , $attr['descMarginType'] )
+				)
+			);
+			// Mobile Icon Size CSS ends.
+
+			// Tablet Icon Size CSS starts.
+			$t_selectors = array(
+				" .premium-accordion-section .premium-accordion-icon"  => array(
+					"font-size" => self::get_css_value($attr['iconSizeTablet'], $attr['iconSizeType']) . "!important",
+					"padding" => self::get_css_value($attr['iconPaddingTablet'] , $attr['iconPaddingType'] ),
+					"margin" => self::get_css_value($attr['iconMarginTablet'] , $attr['iconMarginType'] )
+				),
+				" .premium-accordion-horizontal .premium-accordion-li"  => array(
+					"height" => self::get_css_value($attr['heightTablet'] , $attr['heightType'] )
+				),
+				" .premium-accordion-section .premium-accordion-title"  => array(
+					"font-size" => self::get_css_value($attr['titlefontSizeTablet'], $attr['titlefontSizeType']) . "!important",
+					"margin" => self::get_css_value($attr['titleMarginTablet'] , $attr['titleMarginType'] )
+				),
+				" .premium-accordion-section .premium-accordion-description"  => array(
+					"font-size" => self::get_css_value($attr['descfontSizeTablet'], $attr['descfontSizeType']) . "!important",
+					"padding" => self::get_css_value($attr['descPaddingTablet'] , $attr['descPaddingType'] ),
+					"margin" => self::get_css_value($attr['descMarginTablet'] , $attr['descMarginType'] )
+				)
+			);
+			// Tablet Icon Size CSS ends.
+
+			foreach ( $attr['repeaterAccordion'] as $key => $item ) {
+				
+				$selectors[" .premium-accordion-li" . $key . " .premium-accordion-background"] = array (
+					"background-image" => $item['ImgUrl']? 'url("' . $item['ImgUrl.url'] . '")' :"",
+					"background-size" => $item['size'] == 'custom' ? $item['width'] . $item['widthType'] . 'auto' : $item['size'],
+					"background-position" => $item['position'],
+					"background-repeat" => $item['repeat'],
+				);
+
+				$m_selectors[" .premium-accordion-li" . $key . " .premium-accordion-background"] = array (
+					"background-size" => $item['size'] == 'custom' ? $item['widthMobile'] . $item['widthType'] . 'auto' : $item['size']
+				);
+
+				$t_selectors[" .premium-accordion-li" . $key . " .premium-accordion-background"] = array (
+					"background-size" => $item['size'] == 'custom' ? $item['widthTablet'] . $item['widthType'] . 'auto' : $item['size']
+				);
+
+				$selectors[" .premium-accordion-skew .premium-accordion-li::before"] = array (
+					"background-image" => $item['ImgUrl']? 'url("' . $item['ImgUrl.url'] . '")' :"",
+					"background-size" => $item['size'] == 'custom' ? $item['width'] . $item['widthType'] . 'auto' : $item['size'],
+					"background-position" => $item['position'],
+					"background-repeat" => $item['repeat'],
+				);
+
+				$m_selectors[" .premium-accordion-skew .premium-accordion-li::before"] = array (
+					"background-size" => $item['size'] == 'custom' ? $item['widthMobile'] . $item['widthType'] . 'auto' : $item['size']
+				);
+
+				$t_selectors[" .premium-accordion-skew .premium-accordion-li::before"] = array (
+					"background-size" => $item['size'] == 'custom' ? $item['widthTablet'] . $item['widthType'] . 'auto' : $item['size']
+				);
+
+				$selectors[" .premium-accordion-li" . $key . " .premium-accordion-content"] = array (
+					"left" => self::get_css_value($item['horizontal'] , $item['horizontalType'] ),
+					"top" => self::get_css_value($item['vertical'] , $item['verticalType'] ),
+				);
+
+				$m_selectors[" .premium-accordion-li" . $key . " .premium-accordion-content"] = array (
+					"left" => self::get_css_value($item['horizontalMobile'] , $item['horizontalType'] ),
+					"top" => self::get_css_value($item['verticalMobile'] , $item['verticalType'] ),
+				);
+
+				$t_selectors[" .premium-accordion-li" . $key . " .premium-accordion-content"] = array (
+					"left" => self::get_css_value($item['horizontalTablet'] , $item['horizontalType'] ),
+					"top" => self::get_css_value($item['verticalTablet'] , $item['verticalType'] ),
+				);
+			}
+
+			$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-image-accordion-';
 
         $desktop = self::generate_css( $selectors, $base_selector . $id );
 

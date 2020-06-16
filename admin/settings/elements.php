@@ -15,7 +15,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
 
         protected $slug = 'premium-gutenberg';
 
-        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'iconList', 'contentSwitcher', 'progressBar', 'persons', 'tab', 'fancyText', 'title', 'flipBox'];
+        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'iconList', 'contentSwitcher', 'progressBar', 'persons', 'tab', 'fancyText', 'title', 'flipBox', 'imageSeparator', 'imageAccordion'];
 
         private $pbg_default;
 
@@ -365,6 +365,28 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                     </td>
                                     
                                 </tr>
+                                <tr>
+                                    
+                                    <th><?php echo __('Premium Image Separator', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="imageSeparator" name="imageSeparator" <?php checked(1, $this->pbg_get_settings['imageSeparator'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    
+                                    <th><?php echo __('Premium Image Accordion', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="imageAccordion" name="imageAccordion" <?php checked(1, $this->pbg_get_settings['imageAccordion'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                    
+                                </tr>
                             </tbody>
                         </table>
                         <input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
@@ -433,7 +455,9 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                 'tab'            => intval( $settings['tab'] ? 1 : 0 ),
                 'fancyText'      => intval( $settings['fancyText'] ? 1 : 0 ),
                 'title'          => intval( $settings['title'] ? 1 : 0 ),
-                'flipBox'        => intval( $settings['flipBox'] ? 1 : 0 )
+                'flipBox'        => intval( $settings['flipBox'] ? 1 : 0 ),
+                'imageSeparator' => intval( $settings['imageSeparator'] ? 1 : 0 ),
+                'imageAccordion' => intval( $settings['imageAccordion'] ? 1 : 0 )
             );
 
             update_option( 'pbg_settings', $this->pbg_settings );
