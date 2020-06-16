@@ -4752,3 +4752,7 @@ a.premium-dheading-block__link:hover {
 	-webkit-transform: skewX(-15deg);
 	transform: skewX(-15deg);
 }
+.premium-accordion-content .dashicons {
+	width: auto !important;
+	height: auto !important;
+}

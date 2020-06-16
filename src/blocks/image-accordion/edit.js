@@ -7,7 +7,9 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import DefaultImage from "../../components/default-image";
-import { fancyText } from "../../../assets/js/settings";
+import PremiumBorder from "../../components/premium-border";
+import PremiumTypo from "../../components/premium-typo";
+import PremiumBoxShadow from "../../components/premium-box-shadow";
 
 const { __ } = wp.i18n
 
@@ -327,6 +329,34 @@ class edit extends Component {
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-image-accordion-" + this.props.clientId)
         document.head.appendChild($style)
+        this.initToggleBox();
+    }
+    componentDidUpdate() {
+      this.initToggleBox()
+    }
+    initToggleBox() {
+      const {block_id} = this.props.attributes;
+      
+      if (!block_id) return null;
+      let id = document.getElementById(`premium-accordion-${block_id}`)
+      if(id == null) return;
+      let section = id.getElementsByClassName(`premium-accordion-section`);
+      let description = id.getElementsByClassName(`premium-accordion-description`);
+      let active = id.getElementsByClassName(`premium-accordion-li-active`);
+      let hidedesc = section[0].dataset.hidedesc;
+
+      window.addEventListener('resize', () => {
+        if (hidedesc > window.outerWidth) {
+          description[0].style.display= 'none';
+        } else {
+          description[0].style.display= 'block';
+        }
+      });
+
+      if(!active[0]) return;
+      section[0].addEventListener("mouseleave", () => {
+        active[0].classList.remove("premium-accordion-li-active");
+      })
     }
 
     render() {
@@ -514,6 +544,19 @@ class edit extends Component {
             label: __("Left"),
             value: "left"
           }
+        ];
+        const TABSTYLE = [{
+          name: "icon",
+          title: __("Icon")
+        },
+        {
+          name: "title",
+          title: __("Title")
+        },
+        {
+          name: "description",
+          title: __("Description")
+        },
         ];
 
         var element = document.getElementById("premium-style-image-accordion-" + this.props.clientId)
@@ -915,7 +958,7 @@ class edit extends Component {
           });
         }
         const renderList = repeaterAccordion.map((item, index) => {
-          return <li className={`premium-accordion-li premium-accordion-li${index} premium-accordion-li-${skew}`}>
+          return <li className={`premium-accordion-li premium-accordion-li${index} ${defaultIndex-1 == index ? 'premium-accordion-li-active' : ""}`}>
             {!skew || direction==='vertical' ? <div className="premium-accordion-background"></div>:""}
             <div className="premium-accordion-overlay-wrap">
               {item.content&&<div className={`premium-accordion-content premium-accordion-center`}>
@@ -1247,7 +1290,7 @@ class edit extends Component {
                                   allowReset={true}
                                 />
                                 <PremiumTypo
-                                  components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                                  components={["responsiveSize", "weight", "style", "upper", "spacing", "line"]}
                                   setAttributes={setAttributes}
                                   fontSizeType={{ value: titlefontSizeType, label: __("titlefontSizeType") }}
                                   fontSize={{ value: titlefontSize, label: __("titlefontSize") }}
@@ -1312,7 +1355,7 @@ class edit extends Component {
                                   allowReset={true}
                                 />
                                 <PremiumTypo
-                                  components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                                  components={["responsiveSize", "weight", "style", "upper", "spacing", "line"]}
                                   setAttributes={setAttributes}
                                   fontSizeType={{ value: descfontSizeType, label: __("descfontSizeType") }}
                                   fontSize={{ value: descfontSize, label: __("descfontSize") }}
@@ -1384,11 +1427,11 @@ class edit extends Component {
             <div className={classnames(
                 className,
                 `premium-block-${this.props.clientId}`
-            )} style={{textAlign: align}}
+            )} style={{textAlign: align}} id={`premium-accordion-${this.props.clientId}`}
             >
               <div className="premium-accordion-container">
                 <div className="premium-accordion-section" data-skew={`${skew && direction==='horizontal'?skewdirection: ""}`} data-hideDesc={`${screenWidth}`}>
-                  <div className={`premium-accordion-${direction}`}>
+                  <div className={`premium-accordion-${direction} premium-accordion-${skew?"skew":""}`}>
                     <ul className={`premium-accordion-ul premium-accordion-center`}>
                       {renderList}
                     </ul>

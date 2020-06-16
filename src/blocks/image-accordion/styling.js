@@ -132,7 +132,7 @@ function styling(props) {
       "letter-spacing": titleLetter + "px" + "!important",
       "text-transform": titleUpper ? "uppercase" : "none" + "!important",
 			"font-style": titleStyle + "!important",
-			"line-height": titleLine + "px" + "!important",
+			"line-height": titleLine>0 ? titleLine + "px" + "!important": "",
       "text-shadow": `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`,
       "margin": generateCSSUnit(titleMargin, titleMarginType),
 		},
@@ -143,7 +143,7 @@ function styling(props) {
       "letter-spacing": descLetter + "px" + "!important",
       "text-transform": descUpper ? "uppercase" : "none" + "!important",
 			"font-style": descStyle + "!important",
-			"line-height": descLine + "px" + "!important",
+			"line-height": descLine>0 ? descLine + "px" + "!important": "",
       "text-shadow": `${descshadowHorizontal}px ${descshadowVertical}px ${descshadowBlur}px ${descshadowColor}`,
 			"margin": generateCSSUnit(descMargin, descMarginType),
       "padding": generateCSSUnit(descPadding, descPaddingType),
@@ -205,16 +205,16 @@ function styling(props) {
 			"background-size": item.size === 'custom'? `${item.widthTablet}${item.widthType} auto` :item.size,
 		}
 
-		selectors[" .premium-accordion-li-true:before"] = {
+		selectors[" .premium-accordion-skew .premium-accordion-li::before"] = {
       "background-image": item.ImgUrl?`url(" ${item.ImgUrl.url} ")`: "",
       "background-size": item.size === 'custom'? `${item.width}${item.widthType} auto` :item.size,
       "background-position": item.position,
       "background-repeat": item.repeat
 		}
-		mobile_selectors[" .premium-accordion-li-true:before"] = {
+		mobile_selectors[" .premium-accordion-skew .premium-accordion-li::before"] = {
 			"background-size": item.size === 'custom'? `${item.widthMobile}${item.widthType} auto` :item.size,
 		}
-		tablet_selectors[" .premium-accordion-li-true:before"] = {
+		tablet_selectors[" .premium-accordion-skew .premium-accordion-li::before"] = {
 			"background-size": item.size === 'custom'? `${item.widthTablet}${item.widthType} auto` :item.size,
 		}
 

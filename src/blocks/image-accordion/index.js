@@ -88,8 +88,7 @@ const imageAccordionAttrs = {
     type: "string"
   },
   defaultIndex: {
-    type: "number",
-    default: 1
+    type: "number"
   },
   direction: {
     type: "string",
@@ -120,8 +119,7 @@ const imageAccordionAttrs = {
     default: "400"
   },
   screenWidth: {
-    type:"number",
-    default: 0
+    type:"number"
   },
   overlayColor: {
     type: "string"
@@ -174,8 +172,7 @@ const imageAccordionAttrs = {
     default: "#6ec1e4"
   },
   iconHoverColor: {
-    type: "string",
-    default: "#6ec1e4"
+    type: "string"
   },
   iconBGColor: {
     type: "string"
@@ -185,11 +182,11 @@ const imageAccordionAttrs = {
   },
   iconSize: {
     type: "number",
-    default: "20"
+    default: "25"
   },
   iconSizeTablet: {
     type: "number",
-    default: "20"
+    default: "25"
   },
   iconSizeType: {
     type: "string",
@@ -197,7 +194,7 @@ const imageAccordionAttrs = {
   },
   iconSizeMobile: {
     type: "number",
-    default: "20"
+    default: "25"
   },
   iconShadowBlur: {
     type: "number",

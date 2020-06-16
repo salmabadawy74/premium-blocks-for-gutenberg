@@ -65436,8 +65436,7 @@ var imageAccordionAttrs = {
     type: "string"
   },
   defaultIndex: {
-    type: "number",
-    default: 1
+    type: "number"
   },
   direction: {
     type: "string",
@@ -65468,8 +65467,7 @@ var imageAccordionAttrs = {
     default: "400"
   },
   screenWidth: {
-    type: "number",
-    default: 0
+    type: "number"
   },
   overlayColor: {
     type: "string"
@@ -65522,8 +65520,7 @@ var imageAccordionAttrs = {
     default: "#6ec1e4"
   },
   iconHoverColor: {
-    type: "string",
-    default: "#6ec1e4"
+    type: "string"
   },
   iconBGColor: {
     type: "string"
@@ -65533,11 +65530,11 @@ var imageAccordionAttrs = {
   },
   iconSize: {
     type: "number",
-    default: "20"
+    default: "25"
   },
   iconSizeTablet: {
     type: "number",
-    default: "20"
+    default: "25"
   },
   iconSizeType: {
     type: "string",
@@ -65545,7 +65542,7 @@ var imageAccordionAttrs = {
   },
   iconSizeMobile: {
     type: "number",
-    default: "20"
+    default: "25"
   },
   iconShadowBlur: {
     type: "number",
@@ -65807,7 +65804,9 @@ registerBlockType("premium/image-accordion", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_filters__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_sortable_hoc__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_default_image__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__assets_js_settings__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_border__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_typo__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_box_shadow__ = __webpack_require__(7);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65815,6 +65814,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
 
 
 
@@ -66217,6 +66218,39 @@ var edit = function (_Component) {
       var $style = document.createElement("style");
       $style.setAttribute("id", "premium-style-image-accordion-" + this.props.clientId);
       document.head.appendChild($style);
+      this.initToggleBox();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.initToggleBox();
+    }
+  }, {
+    key: "initToggleBox",
+    value: function initToggleBox() {
+      var block_id = this.props.attributes.block_id;
+
+
+      if (!block_id) return null;
+      var id = document.getElementById("premium-accordion-" + block_id);
+      if (id == null) return;
+      var section = id.getElementsByClassName("premium-accordion-section");
+      var description = id.getElementsByClassName("premium-accordion-description");
+      var active = id.getElementsByClassName("premium-accordion-li-active");
+      var hidedesc = section[0].dataset.hidedesc;
+
+      window.addEventListener('resize', function () {
+        if (hidedesc > window.outerWidth) {
+          description[0].style.display = 'none';
+        } else {
+          description[0].style.display = 'block';
+        }
+      });
+
+      if (!active[0]) return;
+      section[0].addEventListener("mouseleave", function () {
+        active[0].classList.remove("premium-accordion-li-active");
+      });
     }
   }, {
     key: "render",
@@ -66385,6 +66419,16 @@ var edit = function (_Component) {
       }, {
         label: __("Left"),
         value: "left"
+      }];
+      var TABSTYLE = [{
+        name: "icon",
+        title: __("Icon")
+      }, {
+        name: "title",
+        title: __("Title")
+      }, {
+        name: "description",
+        title: __("Description")
       }];
 
       var element = document.getElementById("premium-style-image-accordion-" + this.props.clientId);
@@ -66680,7 +66724,7 @@ var edit = function (_Component) {
       var renderList = repeaterAccordion.map(function (item, index) {
         return wp.element.createElement(
           "li",
-          { className: "premium-accordion-li premium-accordion-li" + index + " premium-accordion-li-" + skew },
+          { className: "premium-accordion-li premium-accordion-li" + index + " " + (defaultIndex - 1 == index ? 'premium-accordion-li-active' : "") },
           !skew || direction === 'vertical' ? wp.element.createElement("div", { className: "premium-accordion-background" }) : "",
           wp.element.createElement(
             "div",
@@ -67018,7 +67062,7 @@ var edit = function (_Component) {
                     min: 1,
                     max: 100
                   }),
-                  wp.element.createElement(PremiumBorder, {
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__components_premium_border__["a" /* default */], {
                     borderType: iconborderType,
                     borderWidth: iconborderWidth,
                     borderColor: iconborderColor,
@@ -67037,7 +67081,7 @@ var edit = function (_Component) {
                     },
                     onResetClick: onResetClickiconBorder
                   }),
-                  wp.element.createElement(PremiumBoxShadow, {
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_11__components_premium_box_shadow__["a" /* default */], {
                     label: "Box Shadow",
                     inner: true,
                     color: iconShadowColor,
@@ -67111,8 +67155,8 @@ var edit = function (_Component) {
                     },
                     allowReset: true
                   }),
-                  wp.element.createElement(PremiumTypo, {
-                    components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__components_premium_typo__["a" /* default */], {
+                    components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
                     setAttributes: setAttributes,
                     fontSizeType: { value: titlefontSizeType, label: __("titlefontSizeType") },
                     fontSize: { value: titlefontSize, label: __("titlefontSize") },
@@ -67188,8 +67232,8 @@ var edit = function (_Component) {
                     },
                     allowReset: true
                   }),
-                  wp.element.createElement(PremiumTypo, {
-                    components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__components_premium_typo__["a" /* default */], {
+                    components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
                     setAttributes: setAttributes,
                     fontSizeType: { value: descfontSizeType, label: __("descfontSizeType") },
                     fontSize: { value: descfontSize, label: __("descfontSize") },
@@ -67263,7 +67307,7 @@ var edit = function (_Component) {
         )
       ), wp.element.createElement(
         "div",
-        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId), style: { textAlign: align }
+        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId), style: { textAlign: align }, id: "premium-accordion-" + this.props.clientId
         },
         wp.element.createElement(
           "div",
@@ -67273,7 +67317,7 @@ var edit = function (_Component) {
             { className: "premium-accordion-section", "data-skew": "" + (skew && direction === 'horizontal' ? skewdirection : ""), "data-hideDesc": "" + screenWidth },
             wp.element.createElement(
               "div",
-              { className: "premium-accordion-" + direction },
+              { className: "premium-accordion-" + direction + " premium-accordion-" + (skew ? "skew" : "") },
               wp.element.createElement(
                 "ul",
                 { className: "premium-accordion-ul premium-accordion-center" },
@@ -67431,7 +67475,7 @@ function styling(props) {
 			"letter-spacing": titleLetter + "px" + "!important",
 			"text-transform": titleUpper ? "uppercase" : "none" + "!important",
 			"font-style": titleStyle + "!important",
-			"line-height": titleLine + "px" + "!important",
+			"line-height": titleLine > 0 ? titleLine + "px" + "!important" : "",
 			"text-shadow": titleshadowHorizontal + 'px ' + titleshadowVertical + 'px ' + titleshadowBlur + 'px ' + titleshadowColor,
 			"margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMargin, titleMarginType)
 		},
@@ -67442,7 +67486,7 @@ function styling(props) {
 			"letter-spacing": descLetter + "px" + "!important",
 			"text-transform": descUpper ? "uppercase" : "none" + "!important",
 			"font-style": descStyle + "!important",
-			"line-height": descLine + "px" + "!important",
+			"line-height": descLine > 0 ? descLine + "px" + "!important" : "",
 			"text-shadow": descshadowHorizontal + 'px ' + descshadowVertical + 'px ' + descshadowBlur + 'px ' + descshadowColor,
 			"margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descMargin, descMarginType),
 			"padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descPadding, descPaddingType)
@@ -67504,16 +67548,16 @@ function styling(props) {
 			"background-size": item.size === 'custom' ? '' + item.widthTablet + item.widthType + ' auto' : item.size
 		};
 
-		selectors[" .premium-accordion-li-true:before"] = {
+		selectors[" .premium-accordion-skew .premium-accordion-li::before"] = {
 			"background-image": item.ImgUrl ? 'url(" ' + item.ImgUrl.url + ' ")' : "",
 			"background-size": item.size === 'custom' ? '' + item.width + item.widthType + ' auto' : item.size,
 			"background-position": item.position,
 			"background-repeat": item.repeat
 		};
-		mobile_selectors[" .premium-accordion-li-true:before"] = {
+		mobile_selectors[" .premium-accordion-skew .premium-accordion-li::before"] = {
 			"background-size": item.size === 'custom' ? '' + item.widthMobile + item.widthType + ' auto' : item.size
 		};
-		tablet_selectors[" .premium-accordion-li-true:before"] = {
+		tablet_selectors[" .premium-accordion-skew .premium-accordion-li::before"] = {
 			"background-size": item.size === 'custom' ? '' + item.widthTablet + item.widthType + ' auto' : item.size
 		};
 
