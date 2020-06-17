@@ -65873,7 +65873,7 @@ function save(props) {
             { className: "premium-accordion-description" },
             item.desc
           ),
-          item.link && wp.element.createElement("a", { className: "premium-accordion-description", href: "" + item.url, target: item.linkTarget ? "_blank" : "_self", rel: "noopener noreferrer" })
+          item.link && wp.element.createElement("a", { className: "premium-accordion-description", href: "" + item.url })
         )
       )
     );
@@ -66969,19 +66969,19 @@ var edit = function (_Component) {
             REPEAT: REPEAT,
             setAttributes: setAttributes,
             shouldCancelStart: shouldCancelStart,
-            helperClass: "premium-fancy-text__sortableHelper" }),
+            helperClass: "premium-repeater__sortableHelper" }),
           wp.element.createElement(
             "div",
-            { className: "premium-fancy-text-btn__wrap" },
+            { className: "premium-repeater-btn__wrap" },
             wp.element.createElement(
               "button",
               {
-                className: "premium-fancy-text-btn",
+                className: "premium-repeater-btn",
                 onClick: function onClick() {
                   return addNewAccordion();
                 }
               },
-              wp.element.createElement("i", { className: "dashicons dashicons-plus premium-fancy-text-icon" }),
+              wp.element.createElement("i", { className: "dashicons dashicons-plus premium-repeater-icon" }),
               __("Add New Item")
             )
           ),

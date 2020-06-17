@@ -1070,13 +1070,13 @@ class edit extends Component {
                         REPEAT={REPEAT}
                         setAttributes={setAttributes}
                         shouldCancelStart={shouldCancelStart}
-                        helperClass='premium-fancy-text__sortableHelper' />
-                      <div className="premium-fancy-text-btn__wrap" >
+                        helperClass='premium-repeater__sortableHelper' />
+                      <div className="premium-repeater-btn__wrap" >
                         <button
-                            className={"premium-fancy-text-btn"}
+                            className={"premium-repeater-btn"}
                             onClick={() => addNewAccordion()}
                         >
-                          <i className="dashicons dashicons-plus premium-fancy-text-icon" />
+                          <i className="dashicons dashicons-plus premium-repeater-icon" />
                           {__("Add New Item")}
                         </button>
                       </div>

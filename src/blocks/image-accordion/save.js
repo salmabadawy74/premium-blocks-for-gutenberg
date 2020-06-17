@@ -24,7 +24,7 @@ export default function save(props) {
           {item.iconValue&& <i className={`premium-accordion-icon ${item.icon}`}/>}
           {item.title&& <h3 className="premium-accordion-title">{item.title}</h3>}
           {item.desc&& <div className="premium-accordion-description">{item.desc}</div>}
-          {item.link&& <a className="premium-accordion-description" href={`${item.url}`} target={item.linkTarget ? "_blank" : "_self"} rel="noopener noreferrer"/>}
+          {item.link&& <a className="premium-accordion-description" href={`${item.url}`}/>}
         </div>
         }
       </div>
@@ -49,6 +49,6 @@ export default function save(props) {
                 </div>
               </div>
             </div>
-        </div>
+          </div>
     )
 }

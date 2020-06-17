@@ -4755,3 +4755,35 @@ a.premium-dheading-block__link:hover {
 	width: auto !important;
 	height: auto !important;
 }
+.premium-repeater-btn__wrap {
+	text-align: center;
+	padding-top: 5px;
+}
+
+.premium-repeater-btn {
+	display: inline-block;
+	background-color: #a4afb7;
+	color: #fff;
+	font-size: 11px;
+	padding: 7px 21px;
+	cursor: pointer;
+	font-weight: 500;
+	text-transform: uppercase;
+	outline: none;
+	border: none;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-transition-property: background, color, opacity, -webkit-box-shadow;
+	transition-property: background, color, opacity, -webkit-box-shadow;
+	-o-transition-property: background, color, box-shadow, opacity;
+	transition-property: background, color, box-shadow, opacity;
+	transition-property: background, color, box-shadow, opacity,
+		-webkit-box-shadow;
+	-webkit-transition-duration: 0.3s;
+	-o-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+
+.premium-repeater-icon {
+	margin-right: 10px;
+}
