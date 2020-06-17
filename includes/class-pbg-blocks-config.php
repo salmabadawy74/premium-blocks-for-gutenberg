@@ -767,7 +767,7 @@ if ( ! class_exists( 'Config' ) ) {
 									'iconHoverBGColor' => '',
 									'iconSize' => '25',
 									'iconSizeTablet' => '25',
-									'iconSizeType' => '25',
+									'iconSizeType' => 'px',
 									'iconSizeMobile' => '25',
 									'iconShadowHorizontal' => '1',
 									'iconShadowVertical' => '1',
@@ -826,6 +826,15 @@ if ( ! class_exists( 'Config' ) ) {
 									'descshadowVertical' => '1',
 									'descshadowBlur' => '1',
 									'descshadowColor' => 'undefined',
+									'containerShadowHorizontal' => '1',
+									'containerShadowVertical' => '1',
+									'containerShadowBlur' => '1',
+									'containerShadowColor' => 'undefined',
+									'containerShadowPosition' => '',
+									'containerborderType' => 'none',
+									'containerborderWidth' => '1',
+									'containerborderRadius' => '0',
+									'containerborderColor' => '#d4d4d4'
 								)
 							)
 				);

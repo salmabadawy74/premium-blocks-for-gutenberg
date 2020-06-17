@@ -1672,6 +1672,13 @@ class Premium_Blocks_Integration {
 					"padding" => self::get_css_value($attr['descPadding'] , $attr['descPaddingType'] ),
 					"margin" => self::get_css_value($attr['descMargin'] , $attr['descMarginType'] )
 				),
+				" .premium-accordion-section" => array(
+					"border-width" => self::get_css_value($attr['containerborderWidth'], 'px'),
+					"border-color" => $attr['containerborderColor'],
+					"border-style" => $attr['containerborderType'],
+					"border-radius" => self::get_css_value($attr['containerborderRadius'], 'px'),
+					"box-shadow" => self::get_css_value($attr['containerShadowHorizontal'], 'px ') . self::get_css_value($attr['containerShadowVertical'],'px ') . self::get_css_value($attr['containerShadowBlur'],'px ') .  self::get_css_value($attr['containerShadowColor'], " ") . $attr[ 'containerShadowPosition']
+				)
 			);
 			// Desktop Icon Size CSS ends.
 
@@ -1683,7 +1690,7 @@ class Premium_Blocks_Integration {
 				" .premium-accordion-section .premium-accordion-icon"  => array(
 					"padding" => self::get_css_value($attr['iconPaddingMobile'] , $attr['iconPaddingType'] ),
 					"margin" => self::get_css_value($attr['iconMarginMobile'] , $attr['iconMarginType'] ),
-					"font-size" => self::get_css_value($attr['iconfontSizeMobile'], $attr['iconfontSizeType']) . "!important",
+					"font-size" => self::get_css_value($attr['iconSizeMobile'], $attr['iconSizeType']) . "!important",
 				),
 				" .premium-accordion-section .premium-accordion-title"  => array(
 					"font-size" => self::get_css_value($attr['titlefontSizeMobile'], $attr['titlefontSizeType']) . "!important",
@@ -1722,7 +1729,7 @@ class Premium_Blocks_Integration {
 			foreach ( $attr['repeaterAccordion'] as $key => $item ) {
 				
 				$selectors[" .premium-accordion-li" . $key . " .premium-accordion-background"] = array (
-					"background-image" => $item['ImgUrl']? 'url("' . $item['ImgUrl.url'] . '")' :"",
+					"background-image" => $item['ImgUrl']? "url('" . $item['ImgUrl']['url'] . "' )"  :"",
 					"background-size" => $item['size'] == 'custom' ? $item['width'] . $item['widthType'] . 'auto' : $item['size'],
 					"background-position" => $item['position'],
 					"background-repeat" => $item['repeat'],
@@ -1736,34 +1743,37 @@ class Premium_Blocks_Integration {
 					"background-size" => $item['size'] == 'custom' ? $item['widthTablet'] . $item['widthType'] . 'auto' : $item['size']
 				);
 
-				$selectors[" .premium-accordion-skew .premium-accordion-li::before"] = array (
-					"background-image" => $item['ImgUrl']? 'url("' . $item['ImgUrl.url'] . '")' :"",
+				$selectors[" .premium-accordion-skew .premium-accordion-li" . $key . "::before"] = array (
+					"background-image" => $item['ImgUrl']? "url('" . $item['ImgUrl']['url'] . "' )" :"",
 					"background-size" => $item['size'] == 'custom' ? $item['width'] . $item['widthType'] . 'auto' : $item['size'],
 					"background-position" => $item['position'],
 					"background-repeat" => $item['repeat'],
 				);
 
-				$m_selectors[" .premium-accordion-skew .premium-accordion-li::before"] = array (
+				$m_selectors[" .premium-accordion-skew .premium-accordion-li" . $key . "::before"] = array (
 					"background-size" => $item['size'] == 'custom' ? $item['widthMobile'] . $item['widthType'] . 'auto' : $item['size']
 				);
 
-				$t_selectors[" .premium-accordion-skew .premium-accordion-li::before"] = array (
+				$t_selectors[" .premium-accordion-skew .premium-accordion-li" . $key . "::before"] = array (
 					"background-size" => $item['size'] == 'custom' ? $item['widthTablet'] . $item['widthType'] . 'auto' : $item['size']
 				);
 
 				$selectors[" .premium-accordion-li" . $key . " .premium-accordion-content"] = array (
 					"left" => self::get_css_value($item['horizontal'] , $item['horizontalType'] ),
 					"top" => self::get_css_value($item['vertical'] , $item['verticalType'] ),
+					"position" => 'absolute'
 				);
 
 				$m_selectors[" .premium-accordion-li" . $key . " .premium-accordion-content"] = array (
 					"left" => self::get_css_value($item['horizontalMobile'] , $item['horizontalType'] ),
 					"top" => self::get_css_value($item['verticalMobile'] , $item['verticalType'] ),
+					"position" => 'absolute'
 				);
 
 				$t_selectors[" .premium-accordion-li" . $key . " .premium-accordion-content"] = array (
 					"left" => self::get_css_value($item['horizontalTablet'] , $item['horizontalType'] ),
 					"top" => self::get_css_value($item['verticalTablet'] , $item['verticalType'] ),
+					"position" => 'absolute'
 				);
 			}
 

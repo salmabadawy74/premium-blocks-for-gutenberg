@@ -65389,8 +65389,14 @@ var imageAccordionAttrs = {
       icon: "dashicons dashicons-star-filled",
       desc: "",
       customPos: false,
-      horizontal: "0",
-      vertical: "0",
+      horizontal: "",
+      horizontalType: "%",
+      horizontalMobile: "",
+      horizontalTablet: "",
+      vertical: "",
+      verticalType: "%",
+      verticalMobile: "",
+      verticalTablet: "",
       link: false,
       url: "#",
       linkTarget: false,
@@ -65410,14 +65416,14 @@ var imageAccordionAttrs = {
       icon: "dashicons dashicons-star-filled",
       desc: "",
       customPos: false,
-      horizontal: "0",
+      horizontal: "",
       horizontalType: "%",
-      horizontalMobile: "0",
-      horizontalTablet: "0",
-      vertical: "0",
+      horizontalMobile: "",
+      horizontalTablet: "",
+      vertical: "",
       verticalType: "%",
-      verticalMobile: "0",
-      verticalTablet: "0",
+      verticalMobile: "",
+      verticalTablet: "",
       link: false,
       url: "#",
       linkTarget: false,
@@ -65767,6 +65773,45 @@ var imageAccordionAttrs = {
   descPaddingMobile: {
     type: "number",
     default: "0"
+  },
+  verticalalign: {
+    type: "string",
+    default: "center"
+  },
+  containerborderColor: {
+    type: "string",
+    default: "#d4d4d4"
+  },
+  containerborderRadius: {
+    type: "number",
+    default: 0
+  },
+  containerborderWidth: {
+    type: "number",
+    default: "1"
+  },
+  containerborderType: {
+    type: "string",
+    default: "none"
+  },
+  containerShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  containerShadowColor: {
+    type: "string"
+  },
+  containerShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  containerShadowPosition: {
+    type: "string",
+    default: ""
+  },
+  containerShadowVertical: {
+    type: "number",
+    default: "0"
   }
 };
 
@@ -65802,7 +65847,8 @@ function save(props) {
       direction = attributes.direction,
       skew = attributes.skew,
       skewdirection = attributes.skewdirection,
-      screenWidth = attributes.screenWidth;
+      screenWidth = attributes.screenWidth,
+      verticalalign = attributes.verticalalign;
 
 
   var renderList = repeaterAccordion.map(function (item, index) {
@@ -65812,10 +65858,10 @@ function save(props) {
       !skew || direction === 'vertical' ? wp.element.createElement("div", { className: "premium-accordion-background" }) : "",
       wp.element.createElement(
         "div",
-        { className: "premium-accordion-overlay-wrap" },
+        { className: "premium-accordion-overlay-wrap", style: { justifyContent: align === 'right' ? 'flex-end' : align, alignItems: verticalalign } },
         item.content && wp.element.createElement(
           "div",
-          { className: "premium-accordion-content premium-accordion-center" },
+          { className: "premium-accordion-content premium-accordion-" + align },
           item.iconValue && wp.element.createElement("i", { className: "premium-accordion-icon " + item.icon }),
           item.title && wp.element.createElement(
             "h3",
@@ -65826,7 +65872,8 @@ function save(props) {
             "div",
             { className: "premium-accordion-description" },
             item.desc
-          )
+          ),
+          item.link && wp.element.createElement("a", { className: "premium-accordion-description", href: "" + item.url, target: item.linkTarget ? "_blank" : "_self", rel: "noopener noreferrer" })
         )
       )
     );
@@ -65847,7 +65894,7 @@ function save(props) {
         { className: "premium-accordion-section", "data-skew": "" + (skew && direction === 'horizontal' ? skewdirection : ""), "data-hideDesc": "" + screenWidth },
         wp.element.createElement(
           "div",
-          { className: "premium-accordion-" + direction + " premium-accordion-" + (skew ? "skew" : "") },
+          { className: "premium-accordion-" + direction + " premium-accordion-" + (skew && direction === 'horizontal' ? "skew" : "") },
           wp.element.createElement(
             "ul",
             { className: "premium-accordion-ul premium-accordion-center" },
@@ -65917,7 +65964,8 @@ var _wp$components = wp.components,
     IconButton = _wp$components.IconButton,
     TextareaControl = _wp$components.TextareaControl,
     RangeControl = _wp$components.RangeControl,
-    TabPanel = _wp$components.TabPanel;
+    TabPanel = _wp$components.TabPanel,
+    Toolbar = _wp$components.Toolbar;
 
 
 var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_7_react_sortable_hoc__["b" /* SortableElement */])(function (_ref) {
@@ -66420,7 +66468,17 @@ var edit = function (_Component) {
           descPadding = attributes.descPadding,
           descPaddingTablet = attributes.descPaddingTablet,
           descPaddingType = attributes.descPaddingType,
-          descPaddingMobile = attributes.descPaddingMobile;
+          descPaddingMobile = attributes.descPaddingMobile,
+          verticalalign = attributes.verticalalign,
+          containerborderColor = attributes.containerborderColor,
+          containerborderRadius = attributes.containerborderRadius,
+          containerborderWidth = attributes.containerborderWidth,
+          containerborderType = attributes.containerborderType,
+          containerShadowBlur = attributes.containerShadowBlur,
+          containerShadowColor = attributes.containerShadowColor,
+          containerShadowHorizontal = attributes.containerShadowHorizontal,
+          containerShadowPosition = attributes.containerShadowPosition,
+          containerShadowVertical = attributes.containerShadowVertical;
 
 
       var SIZE = [{
@@ -66500,6 +66558,19 @@ var edit = function (_Component) {
       }, {
         name: "description",
         title: __("Description")
+      }];
+      var VALIGN = [{
+        icon: 'arrow-up-alt',
+        title: __('Top'),
+        align: 'flex-start'
+      }, {
+        icon: 'editor-aligncenter',
+        title: __('Center'),
+        align: 'center'
+      }, {
+        icon: 'arrow-down-alt',
+        title: __('Bottom'),
+        align: 'flex-end'
       }];
 
       var element = document.getElementById("premium-style-image-accordion-" + this.props.clientId);
@@ -66792,6 +66863,23 @@ var edit = function (_Component) {
           descshadowVertical: "0"
         });
       };
+      var onResetClickcontainerBorder = function onResetClickcontainerBorder() {
+        setAttributes({
+          containerborderType: "none",
+          containerborderWidth: "1",
+          containerborderColor: "",
+          containerborderRadius: "0"
+        });
+      };
+      var onResetClickcontainer = function onResetClickcontainer() {
+        setAttributes({
+          containerShadowColor: "",
+          containerShadowBlur: "0",
+          containerShadowHorizontal: "0",
+          containerShadowVertical: "0",
+          containerShadowPosition: ""
+        });
+      };
       var renderList = repeaterAccordion.map(function (item, index) {
         return wp.element.createElement(
           "li",
@@ -66799,10 +66887,10 @@ var edit = function (_Component) {
           !skew || direction === 'vertical' ? wp.element.createElement("div", { className: "premium-accordion-background" }) : "",
           wp.element.createElement(
             "div",
-            { className: "premium-accordion-overlay-wrap" },
+            { className: "premium-accordion-overlay-wrap", style: { justifyContent: align === 'right' ? 'flex-end' : align, alignItems: verticalalign } },
             item.content && wp.element.createElement(
               "div",
-              { className: "premium-accordion-content premium-accordion-center" },
+              { className: "premium-accordion-content premium-accordion-" + align },
               item.iconValue && wp.element.createElement("i", { className: "premium-accordion-icon " + item.icon }),
               item.title && wp.element.createElement(
                 "h3",
@@ -66813,7 +66901,8 @@ var edit = function (_Component) {
                 "div",
                 { className: "premium-accordion-description" },
                 item.desc
-              )
+              ),
+              item.link && wp.element.createElement("a", { className: "premium-accordion-description", href: "" + item.url })
             )
           )
         );
@@ -66838,69 +66927,65 @@ var edit = function (_Component) {
             className: "premium-panel-body",
             initialOpen: false
           },
+          wp.element.createElement(SortableList, {
+            items: repeaterAccordion,
+            onSortEnd: function onSortEnd(o, n) {
+              return onSortEndSingle(o, n);
+            },
+            removeItem: function removeItem(value) {
+              return _removeItem(value);
+            },
+            edit: function edit(value) {
+              return _edit(value);
+            },
+            changeImageValue: changeImageValue,
+            ImgId: ImgId,
+            changeSizeValue: changeSizeValue,
+            changePositionValue: changePositionValue,
+            changeRepeatValue: changeRepeatValue,
+            changeContentValue: changeContentValue,
+            changeIconValue: changeIconValue,
+            changeIcon: changeIcon,
+            changeTitleValue: changeTitleValue,
+            changeDescValue: changeDescValue,
+            changeCustomPosValue: changeCustomPosValue,
+            changeHorizontalValue: changeHorizontalValue,
+            changeHorizontalType: changeHorizontalType,
+            changeHorizontalTablet: changeHorizontalTablet,
+            changeHorizontalMobile: changeHorizontalMobile,
+            changeVerticalTablet: changeVerticalTablet,
+            changeVerticalType: changeVerticalType,
+            changeVerticalMobile: changeVerticalMobile,
+            changeVerticalValue: changeVerticalValue,
+            changeUrlValue: changeUrlValue,
+            changeLinkTargetValue: changeLinkTargetValue,
+            changeLinkValue: changeLinkValue,
+            changeWidthValue: changeWidthValue,
+            changeWidthMobile: changeWidthMobile,
+            changeWidthTablet: changeWidthTablet,
+            changeWidthType: changeWidthType,
+            SIZE: SIZE,
+            POSITION: POSITION,
+            REPEAT: REPEAT,
+            setAttributes: setAttributes,
+            shouldCancelStart: shouldCancelStart,
+            helperClass: "premium-fancy-text__sortableHelper" }),
           wp.element.createElement(
-            Fragment,
-            null,
-            wp.element.createElement(SortableList, {
-              items: repeaterAccordion,
-              onSortEnd: function onSortEnd(o, n) {
-                return onSortEndSingle(o, n);
-              },
-              removeItem: function removeItem(value) {
-                return _removeItem(value);
-              },
-              edit: function edit(value) {
-                return _edit(value);
-              },
-              changeImageValue: changeImageValue,
-              ImgId: ImgId,
-              changeSizeValue: changeSizeValue,
-              changePositionValue: changePositionValue,
-              changeRepeatValue: changeRepeatValue,
-              changeContentValue: changeContentValue,
-              changeIconValue: changeIconValue,
-              changeIcon: changeIcon,
-              changeTitleValue: changeTitleValue,
-              changeDescValue: changeDescValue,
-              changeCustomPosValue: changeCustomPosValue,
-              changeHorizontalValue: changeHorizontalValue,
-              changeHorizontalType: changeHorizontalType,
-              changeHorizontalTablet: changeHorizontalTablet,
-              changeHorizontalMobile: changeHorizontalMobile,
-              changeVerticalTablet: changeVerticalTablet,
-              changeVerticalType: changeVerticalType,
-              changeVerticalMobile: changeVerticalMobile,
-              changeVerticalValue: changeVerticalValue,
-              changeUrlValue: changeUrlValue,
-              changeLinkTargetValue: changeLinkTargetValue,
-              changeLinkValue: changeLinkValue,
-              changeWidthValue: changeWidthValue,
-              changeWidthMobile: changeWidthMobile,
-              changeWidthTablet: changeWidthTablet,
-              changeWidthType: changeWidthType,
-              SIZE: SIZE,
-              POSITION: POSITION,
-              REPEAT: REPEAT,
-              setAttributes: setAttributes,
-              shouldCancelStart: shouldCancelStart,
-              helperClass: "premium-fancy-text__sortableHelper" }),
+            "div",
+            { className: "premium-fancy-text-btn__wrap" },
             wp.element.createElement(
-              "div",
-              { className: "premium-fancy-text-btn__wrap" },
-              wp.element.createElement(
-                "button",
-                {
-                  className: "premium-fancy-text-btn",
-                  onClick: function onClick() {
-                    return addNewAccordion();
-                  }
-                },
-                wp.element.createElement("i", { className: "dashicons dashicons-plus premium-fancy-text-icon" }),
-                __("Add New Item")
-              )
-            ),
-            wp.element.createElement("br", null)
-          )
+              "button",
+              {
+                className: "premium-fancy-text-btn",
+                onClick: function onClick() {
+                  return addNewAccordion();
+                }
+              },
+              wp.element.createElement("i", { className: "dashicons dashicons-plus premium-fancy-text-icon" }),
+              __("Add New Item")
+            )
+          ),
+          wp.element.createElement("br", null)
         ),
         wp.element.createElement(
           PanelBody,
@@ -66955,6 +67040,22 @@ var edit = function (_Component) {
             rangeLabel: __("Image Height"),
             min: 1,
             max: 1000
+          }),
+          wp.element.createElement(
+            "p",
+            null,
+            __("First Content Alignment")
+          ),
+          wp.element.createElement(Toolbar, {
+            controls: VALIGN.map(function (iconAlign) {
+              return {
+                icon: iconAlign.icon,
+                isActive: iconAlign.align === verticalalign,
+                onClick: function onClick() {
+                  return setAttributes({ verticalalign: iconAlign.align });
+                }
+              };
+            })
           }),
           wp.element.createElement(TextControl, {
             label: __("Hide Description Below Width (PX)"),
@@ -67375,6 +67476,68 @@ var edit = function (_Component) {
               }
             }
           )
+        ),
+        wp.element.createElement(
+          PanelBody,
+          {
+            title: __("Container"),
+            className: "premium-panel-body",
+            initialOpen: false
+          },
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__components_premium_border__["a" /* default */], {
+            borderType: containerborderType,
+            borderWidth: containerborderWidth,
+            borderColor: containerborderColor,
+            borderRadius: containerborderRadius,
+            onChangeType: function onChangeType(newType) {
+              return setAttributes({ containerborderType: newType });
+            },
+            onChangeWidth: function onChangeWidth(newWidth) {
+              return setAttributes({ containerborderWidth: newWidth });
+            },
+            onChangeColor: function onChangeColor(colorValue) {
+              return setAttributes({ containerborderColor: colorValue.hex });
+            },
+            onChangeRadius: function onChangeRadius(newrRadius) {
+              return setAttributes({ containerborderRadius: newrRadius });
+            },
+            onResetClick: onResetClickcontainerBorder
+          }),
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_11__components_premium_box_shadow__["a" /* default */], {
+            label: "Box Shadow",
+            inner: true,
+            color: containerShadowColor,
+            blur: containerShadowBlur,
+            horizontal: containerShadowHorizontal,
+            vertical: containerShadowVertical,
+            position: containerShadowPosition,
+            onChangeColor: function onChangeColor(newColor) {
+              return setAttributes({
+                containerShadowColor: newColor === undefined ? "transparent" : newColor.hex
+              });
+            },
+            onChangeBlur: function onChangeBlur(newBlur) {
+              return setAttributes({
+                containerShadowBlur: newBlur === undefined ? 0 : newBlur
+              });
+            },
+            onChangehHorizontal: function onChangehHorizontal(newValue) {
+              return setAttributes({
+                containerShadowHorizontal: newValue === undefined ? 0 : newValue
+              });
+            },
+            onChangeVertical: function onChangeVertical(newValue) {
+              return setAttributes({
+                containerShadowVertical: newValue === undefined ? 0 : newValue
+              });
+            },
+            onChangePosition: function onChangePosition(newValue) {
+              return setAttributes({
+                containerShadowPosition: newValue === undefined ? 0 : newValue
+              });
+            },
+            onResetClick: onResetClickcontainer
+          })
         )
       ), wp.element.createElement(
         "div",
@@ -67388,7 +67551,7 @@ var edit = function (_Component) {
             { className: "premium-accordion-section", "data-skew": "" + (skew && direction === 'horizontal' ? skewdirection : ""), "data-hideDesc": "" + screenWidth },
             wp.element.createElement(
               "div",
-              { className: "premium-accordion-" + direction + " premium-accordion-" + (skew ? "skew" : "") },
+              { className: "premium-accordion-" + direction + " premium-accordion-" + (skew && direction === 'horizontal' ? "skew" : "") },
               wp.element.createElement(
                 "ul",
                 { className: "premium-accordion-ul premium-accordion-center" },
@@ -67500,7 +67663,16 @@ function styling(props) {
 	    descPadding = _props$attributes.descPadding,
 	    descPaddingTablet = _props$attributes.descPaddingTablet,
 	    descPaddingType = _props$attributes.descPaddingType,
-	    descPaddingMobile = _props$attributes.descPaddingMobile;
+	    descPaddingMobile = _props$attributes.descPaddingMobile,
+	    containerborderColor = _props$attributes.containerborderColor,
+	    containerborderRadius = _props$attributes.containerborderRadius,
+	    containerborderWidth = _props$attributes.containerborderWidth,
+	    containerborderType = _props$attributes.containerborderType,
+	    containerShadowBlur = _props$attributes.containerShadowBlur,
+	    containerShadowColor = _props$attributes.containerShadowColor,
+	    containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
+	    containerShadowPosition = _props$attributes.containerShadowPosition,
+	    containerShadowVertical = _props$attributes.containerShadowVertical;
 
 
 	var selectors = {};
@@ -67561,6 +67733,13 @@ function styling(props) {
 			"text-shadow": descshadowHorizontal + 'px ' + descshadowVertical + 'px ' + descshadowBlur + 'px ' + descshadowColor,
 			"margin": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descMargin, descMarginType),
 			"padding": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(descPadding, descPaddingType)
+		},
+		" .premium-accordion-section": {
+			"border-style": containerborderType,
+			"border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(containerborderWidth, "px"),
+			"border-color": containerborderColor,
+			"border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(containerborderRadius, "px"),
+			"box-shadow": containerShadowHorizontal + 'px ' + containerShadowVertical + 'px ' + containerShadowBlur + 'px ' + containerShadowColor + ' ' + containerShadowPosition
 		}
 	};
 
@@ -67619,16 +67798,16 @@ function styling(props) {
 			"background-size": item.size === 'custom' ? '' + item.widthTablet + item.widthType + ' auto' : item.size
 		};
 
-		selectors[" .premium-accordion-skew .premium-accordion-li::before"] = {
+		selectors[" .premium-accordion-skew .premium-accordion-li" + index + "::before"] = {
 			"background-image": item.ImgUrl ? 'url(" ' + item.ImgUrl.url + ' ")' : "",
 			"background-size": item.size === 'custom' ? '' + item.width + item.widthType + ' auto' : item.size,
 			"background-position": item.position,
 			"background-repeat": item.repeat
 		};
-		mobile_selectors[" .premium-accordion-skew .premium-accordion-li::before"] = {
+		mobile_selectors[" .premium-accordion-skew .premium-accordion-li" + index + "::before"] = {
 			"background-size": item.size === 'custom' ? '' + item.widthMobile + item.widthType + ' auto' : item.size
 		};
-		tablet_selectors[" .premium-accordion-skew .premium-accordion-li::before"] = {
+		tablet_selectors[" .premium-accordion-skew .premium-accordion-li" + index + "::before"] = {
 			"background-size": item.size === 'custom' ? '' + item.widthTablet + item.widthType + ' auto' : item.size
 		};
 

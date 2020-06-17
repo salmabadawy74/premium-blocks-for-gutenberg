@@ -34,7 +34,8 @@ const {
     IconButton,
     TextareaControl,
     RangeControl,
-    TabPanel
+    TabPanel,
+    Toolbar
 } = wp.components
 
 const SortableItem = SortableElement(({
@@ -453,7 +454,17 @@ class edit extends Component {
             descPadding,
             descPaddingTablet,
             descPaddingType,
-            descPaddingMobile
+            descPaddingMobile,
+            verticalalign,
+            containerborderColor,
+            containerborderRadius,
+            containerborderWidth,
+            containerborderType,
+            containerShadowBlur,
+            containerShadowColor,
+            containerShadowHorizontal,
+            containerShadowPosition,
+            containerShadowVertical
         } = attributes
 
         const SIZE = [{
@@ -556,8 +567,24 @@ class edit extends Component {
         {
           name: "description",
           title: __("Description")
-        },
+        }
         ];
+        const VALIGN = [{
+          icon: 'arrow-up-alt',
+          title: __('Top'),
+          align: 'flex-start',
+        },
+        {
+          icon: 'editor-aligncenter',
+          title: __('Center'),
+          align: 'center',
+        },
+        {
+          icon: 'arrow-down-alt',
+          title: __('Bottom'),
+          align: 'flex-end',
+        },
+      ];
 
         var element = document.getElementById("premium-style-image-accordion-" + this.props.clientId)
 
@@ -957,14 +984,32 @@ class edit extends Component {
             descshadowVertical: "0",
           });
         }
+        const onResetClickcontainerBorder = () => {
+          setAttributes({
+            containerborderType: "none",
+            containerborderWidth: "1",
+            containerborderColor: "",
+            containerborderRadius: "0",
+          });
+        }
+        const onResetClickcontainer = () => {
+          setAttributes({
+            containerShadowColor: "",
+            containerShadowBlur: "0",
+            containerShadowHorizontal: "0",
+            containerShadowVertical: "0",
+            containerShadowPosition: ""
+          });
+        }
         const renderList = repeaterAccordion.map((item, index) => {
           return <li className={`premium-accordion-li premium-accordion-li${index} ${defaultIndex-1 == index ? 'premium-accordion-li-active' : ""}`}>
             {!skew || direction==='vertical' ? <div className="premium-accordion-background"></div>:""}
-            <div className="premium-accordion-overlay-wrap">
-              {item.content&&<div className={`premium-accordion-content premium-accordion-center`}>
+            <div className="premium-accordion-overlay-wrap" style={{ justifyContent: align==='right'? 'flex-end': align, alignItems: verticalalign }}>
+              {item.content&&<div className={`premium-accordion-content premium-accordion-${align}`}>
                 {item.iconValue&& <i className={`premium-accordion-icon ${item.icon}`}/>}
                 {item.title&& <h3 className="premium-accordion-title">{item.title}</h3>}
                 {item.desc&& <div className="premium-accordion-description">{item.desc}</div>}
+                {item.link&& <a className="premium-accordion-description" href={`${item.url}`}/>}
               </div>
               }
             </div>
@@ -989,55 +1034,53 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                      <Fragment>
-                        <SortableList
-                          items={repeaterAccordion}
-                          onSortEnd={(o, n) => onSortEndSingle(o, n)}
-                          removeItem={(value) => removeItem(value)}
-                          edit={(value) => edit(value)}
-                          changeImageValue={changeImageValue}
-                          ImgId={ImgId}
-                          changeSizeValue={changeSizeValue}
-                          changePositionValue={changePositionValue}
-                          changeRepeatValue={changeRepeatValue}
-                          changeContentValue={changeContentValue}
-                          changeIconValue={changeIconValue}
-                          changeIcon={changeIcon}
-                          changeTitleValue={changeTitleValue}
-                          changeDescValue={changeDescValue}
-                          changeCustomPosValue={changeCustomPosValue}
-                          changeHorizontalValue={changeHorizontalValue}
-                          changeHorizontalType={changeHorizontalType}
-                          changeHorizontalTablet={changeHorizontalTablet}
-                          changeHorizontalMobile={changeHorizontalMobile}
-                          changeVerticalTablet={changeVerticalTablet}
-                          changeVerticalType={changeVerticalType}
-                          changeVerticalMobile={changeVerticalMobile}
-                          changeVerticalValue={changeVerticalValue}
-                          changeUrlValue={changeUrlValue}
-                          changeLinkTargetValue={changeLinkTargetValue}
-                          changeLinkValue={changeLinkValue}
-                          changeWidthValue={changeWidthValue}
-                          changeWidthMobile={changeWidthMobile}
-                          changeWidthTablet={changeWidthTablet}
-                          changeWidthType={changeWidthType}
-                          SIZE={SIZE}
-                          POSITION={POSITION}
-                          REPEAT={REPEAT}
-                          setAttributes={setAttributes}
-                          shouldCancelStart={shouldCancelStart}
-                          helperClass='premium-fancy-text__sortableHelper' />
-                        <div className="premium-fancy-text-btn__wrap" >
-                          <button
-                              className={"premium-fancy-text-btn"}
-                              onClick={() => addNewAccordion()}
-                          >
-                            <i className="dashicons dashicons-plus premium-fancy-text-icon" />
-                            {__("Add New Item")}
-                          </button>
-                        </div>
-                        <br/>
-                      </Fragment>
+                      <SortableList
+                        items={repeaterAccordion}
+                        onSortEnd={(o, n) => onSortEndSingle(o, n)}
+                        removeItem={(value) => removeItem(value)}
+                        edit={(value) => edit(value)}
+                        changeImageValue={changeImageValue}
+                        ImgId={ImgId}
+                        changeSizeValue={changeSizeValue}
+                        changePositionValue={changePositionValue}
+                        changeRepeatValue={changeRepeatValue}
+                        changeContentValue={changeContentValue}
+                        changeIconValue={changeIconValue}
+                        changeIcon={changeIcon}
+                        changeTitleValue={changeTitleValue}
+                        changeDescValue={changeDescValue}
+                        changeCustomPosValue={changeCustomPosValue}
+                        changeHorizontalValue={changeHorizontalValue}
+                        changeHorizontalType={changeHorizontalType}
+                        changeHorizontalTablet={changeHorizontalTablet}
+                        changeHorizontalMobile={changeHorizontalMobile}
+                        changeVerticalTablet={changeVerticalTablet}
+                        changeVerticalType={changeVerticalType}
+                        changeVerticalMobile={changeVerticalMobile}
+                        changeVerticalValue={changeVerticalValue}
+                        changeUrlValue={changeUrlValue}
+                        changeLinkTargetValue={changeLinkTargetValue}
+                        changeLinkValue={changeLinkValue}
+                        changeWidthValue={changeWidthValue}
+                        changeWidthMobile={changeWidthMobile}
+                        changeWidthTablet={changeWidthTablet}
+                        changeWidthType={changeWidthType}
+                        SIZE={SIZE}
+                        POSITION={POSITION}
+                        REPEAT={REPEAT}
+                        setAttributes={setAttributes}
+                        shouldCancelStart={shouldCancelStart}
+                        helperClass='premium-fancy-text__sortableHelper' />
+                      <div className="premium-fancy-text-btn__wrap" >
+                        <button
+                            className={"premium-fancy-text-btn"}
+                            onClick={() => addNewAccordion()}
+                        >
+                          <i className="dashicons dashicons-plus premium-fancy-text-icon" />
+                          {__("Add New Item")}
+                        </button>
+                      </div>
+                      <br/>
                     </PanelBody>
                     <PanelBody
                       title={__("Display Options")}
@@ -1080,6 +1123,14 @@ class edit extends Component {
                         rangeLabel={__("Image Height")}
                         min={1}
                         max={1000}
+                      />
+                      <p>{__("First Content Alignment")}</p>
+                      <Toolbar
+                        controls={VALIGN.map(iconAlign => ({
+                          icon: iconAlign.icon,
+                          isActive: iconAlign.align === verticalalign,
+                          onClick: () => setAttributes({verticalalign: iconAlign.align })
+                        }))}
                       />
                       <TextControl
                         label={__("Hide Description Below Width (PX)")}
@@ -1422,6 +1473,63 @@ class edit extends Component {
                         }
                     </TabPanel>
                     </PanelBody>
+                    <PanelBody 
+                      title={__("Container")}
+                      className="premium-panel-body"
+                      initialOpen={false}
+                    >
+                      <PremiumBorder
+                        borderType={containerborderType}
+                        borderWidth={containerborderWidth}
+                        borderColor={containerborderColor}
+                        borderRadius={containerborderRadius}
+                        onChangeType={newType => setAttributes({ containerborderType: newType })}
+                        onChangeWidth={newWidth => setAttributes({ containerborderWidth: newWidth })}
+                        onChangeColor={colorValue =>
+                            setAttributes({ containerborderColor: colorValue.hex })
+                        }
+                        onChangeRadius={newrRadius =>
+                            setAttributes({ containerborderRadius: newrRadius })
+                        }
+                        onResetClick={onResetClickcontainerBorder}
+                      />
+                      <PremiumBoxShadow
+                        label="Box Shadow"
+                        inner={true}
+                        color={containerShadowColor}
+                        blur={containerShadowBlur}
+                        horizontal={containerShadowHorizontal}
+                        vertical={containerShadowVertical}
+                        position={containerShadowPosition}
+                        onChangeColor={newColor =>
+                            setAttributes({
+                                containerShadowColor:
+                                    newColor === undefined ? "transparent" : newColor.hex
+                            })
+                        }
+                        onChangeBlur={newBlur =>
+                            setAttributes({
+                                containerShadowBlur: newBlur === undefined ? 0 : newBlur
+                            })
+                        }
+                        onChangehHorizontal={newValue =>
+                            setAttributes({
+                              containerShadowHorizontal: newValue === undefined ? 0 : newValue
+                            })
+                        }
+                        onChangeVertical={newValue =>
+                            setAttributes({
+                              containerShadowVertical: newValue === undefined ? 0 : newValue
+                            })
+                        }
+                        onChangePosition={newValue =>
+                            setAttributes({
+                              containerShadowPosition: newValue === undefined ? 0 : newValue
+                            })
+                        }
+                        onResetClick={onResetClickcontainer}
+                      />
+                    </PanelBody>
                 </InspectorControls>
             ),
             <div className={classnames(
@@ -1431,7 +1539,7 @@ class edit extends Component {
             >
               <div className="premium-accordion-container">
                 <div className="premium-accordion-section" data-skew={`${skew && direction==='horizontal'?skewdirection: ""}`} data-hideDesc={`${screenWidth}`}>
-                  <div className={`premium-accordion-${direction} premium-accordion-${skew?"skew":""}`}>
+                  <div className={`premium-accordion-${direction} premium-accordion-${skew&& direction==='horizontal'?"skew":""}`}>
                     <ul className={`premium-accordion-ul premium-accordion-center`}>
                       {renderList}
                     </ul>

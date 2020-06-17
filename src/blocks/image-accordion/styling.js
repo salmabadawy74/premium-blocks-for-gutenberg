@@ -86,7 +86,16 @@ function styling(props) {
 		descPadding,
 		descPaddingTablet,
 		descPaddingType,
-		descPaddingMobile
+		descPaddingMobile,
+		containerborderColor,
+		containerborderRadius,
+		containerborderWidth,
+		containerborderType,
+		containerShadowBlur,
+		containerShadowColor,
+		containerShadowHorizontal,
+		containerShadowPosition,
+		containerShadowVertical
 	} = props.attributes
 
 	var selectors = {}
@@ -148,6 +157,13 @@ function styling(props) {
 			"margin": generateCSSUnit(descMargin, descMarginType),
       "padding": generateCSSUnit(descPadding, descPaddingType),
 		},
+		" .premium-accordion-section": {
+			"border-style": containerborderType,
+      "border-width": generateCSSUnit(containerborderWidth, "px"),
+      "border-color": containerborderColor,
+			"border-radius": generateCSSUnit(containerborderRadius, "px"),
+			"box-shadow": `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
+		}
 	}
 
 	mobile_selectors = {
@@ -205,16 +221,16 @@ function styling(props) {
 			"background-size": item.size === 'custom'? `${item.widthTablet}${item.widthType} auto` :item.size,
 		}
 
-		selectors[" .premium-accordion-skew .premium-accordion-li::before"] = {
+		selectors[" .premium-accordion-skew .premium-accordion-li" + index + "::before"] = {
       "background-image": item.ImgUrl?`url(" ${item.ImgUrl.url} ")`: "",
       "background-size": item.size === 'custom'? `${item.width}${item.widthType} auto` :item.size,
       "background-position": item.position,
       "background-repeat": item.repeat
 		}
-		mobile_selectors[" .premium-accordion-skew .premium-accordion-li::before"] = {
+		mobile_selectors[" .premium-accordion-skew .premium-accordion-li" + index + "::before"] = {
 			"background-size": item.size === 'custom'? `${item.widthMobile}${item.widthType} auto` :item.size,
 		}
-		tablet_selectors[" .premium-accordion-skew .premium-accordion-li::before"] = {
+		tablet_selectors[" .premium-accordion-skew .premium-accordion-li" + index + "::before"] = {
 			"background-size": item.size === 'custom'? `${item.widthTablet}${item.widthType} auto` :item.size,
 		}
 

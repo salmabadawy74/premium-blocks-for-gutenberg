@@ -40,8 +40,14 @@ const imageAccordionAttrs = {
         icon:"dashicons dashicons-star-filled",
         desc:"",
         customPos: false,
-        horizontal: "0",
-        vertical: "0",
+        horizontal: "",
+        horizontalType: "%",
+        horizontalMobile: "",
+        horizontalTablet: "",
+        vertical: "",
+        verticalType: "%",
+        verticalMobile: "",
+        verticalTablet: "",
         link: false,
         url: "#",
         linkTarget: false,
@@ -62,14 +68,14 @@ const imageAccordionAttrs = {
         icon:"dashicons dashicons-star-filled",
         desc:"",
         customPos: false,
-        horizontal: "0",
+        horizontal: "",
         horizontalType: "%",
-        horizontalMobile: "0",
-        horizontalTablet: "0",
-        vertical: "0",
+        horizontalMobile: "",
+        horizontalTablet: "",
+        vertical: "",
         verticalType: "%",
-        verticalMobile: "0",
-        verticalTablet: "0",
+        verticalMobile: "",
+        verticalTablet: "",
         link: false,
         url: "#",
         linkTarget: false,
@@ -418,6 +424,45 @@ const imageAccordionAttrs = {
     default: "px"
   },
   descPaddingMobile: {
+    type: "number",
+    default: "0"
+  },
+  verticalalign: {
+    type: "string",
+    default: "center"
+  },
+  containerborderColor: {
+    type: "string",
+    default: "#d4d4d4"
+  },
+  containerborderRadius: {
+    type: "number",
+    default: 0
+  },
+  containerborderWidth: {
+    type: "number",
+    default: "1"
+  },
+  containerborderType: {
+    type: "string",
+    default: "none"
+  },
+  containerShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  containerShadowColor: {
+    type: "string"
+  },
+  containerShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  containerShadowPosition: {
+    type: "string",
+    default: ""
+  },
+  containerShadowVertical: {
     type: "number",
     default: "0"
   },
