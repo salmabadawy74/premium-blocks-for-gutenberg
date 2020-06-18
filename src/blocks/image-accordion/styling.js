@@ -254,7 +254,7 @@ function styling(props) {
 
 
 	var styling_css = ""
-	var id = `#premium-image-accordion-${props.clientId}`
+	var id = `#premium-accordion-${props.clientId}`
 	if (classMigrate) {
 		id = `.premium-block-${props.clientId}`
 	}

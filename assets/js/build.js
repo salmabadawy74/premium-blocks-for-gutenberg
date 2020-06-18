@@ -66003,6 +66003,7 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_7_react_sortable_hoc__["b" /
       SIZE = _ref.SIZE,
       POSITION = _ref.POSITION,
       REPEAT = _ref.REPEAT,
+      block_id = _ref.block_id,
       setAttributes = _ref.setAttributes;
   return wp.element.createElement(
     "div",
@@ -66026,7 +66027,7 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_7_react_sortable_hoc__["b" /
     ),
     wp.element.createElement(
       "div",
-      { className: "premium-repeater-item-controls " + (value.edit ? "editable" : "") },
+      { className: "premium-repeater-item-controls " + (value.edit ? "editable" : ""), id: "" + block_id + newIndex },
       value.ImgUrl && wp.element.createElement("img", { src: value.ImgUrl.url, width: "100%", height: "auto" }),
       !value.ImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_default_image__["a" /* default */], null),
       wp.element.createElement(MediaUpload, {
@@ -66268,6 +66269,7 @@ var SortableList = Object(__WEBPACK_IMPORTED_MODULE_7_react_sortable_hoc__["a" /
       SIZE = _ref3.SIZE,
       POSITION = _ref3.POSITION,
       REPEAT = _ref3.REPEAT,
+      block_id = _ref3.block_id,
       setAttributes = _ref3.setAttributes;
 
   return wp.element.createElement(
@@ -66275,7 +66277,7 @@ var SortableList = Object(__WEBPACK_IMPORTED_MODULE_7_react_sortable_hoc__["a" /
     null,
     " ",
     items.map(function (value, index) {
-      return wp.element.createElement(SortableItem, { key: "item-" + value,
+      return wp.element.createElement(SortableItem, { key: "" + block_id,
         index: index,
         newIndex: index,
         value: value,
@@ -66311,6 +66313,7 @@ var SortableList = Object(__WEBPACK_IMPORTED_MODULE_7_react_sortable_hoc__["a" /
         SIZE: SIZE,
         POSITION: POSITION,
         REPEAT: REPEAT,
+        block_id: block_id,
         setAttributes: setAttributes
       });
     }),
@@ -66378,7 +66381,8 @@ var edit = function (_Component) {
           attributes = _props.attributes,
           setAttributes = _props.setAttributes,
           isSelected = _props.isSelected;
-      var align = attributes.align,
+      var block_id = attributes.block_id,
+          align = attributes.align,
           className = attributes.className,
           repeaterAccordion = attributes.repeaterAccordion,
           index = attributes.index,
@@ -66967,6 +66971,7 @@ var edit = function (_Component) {
             SIZE: SIZE,
             POSITION: POSITION,
             REPEAT: REPEAT,
+            block_id: block_id,
             setAttributes: setAttributes,
             shouldCancelStart: shouldCancelStart,
             helperClass: "premium-repeater__sortableHelper" }),
@@ -67830,7 +67835,7 @@ function styling(props) {
 	});
 
 	var styling_css = "";
-	var id = '#premium-image-accordion-' + props.clientId;
+	var id = '#premium-accordion-' + props.clientId;
 	if (classMigrate) {
 		id = '.premium-block-' + props.clientId;
 	}

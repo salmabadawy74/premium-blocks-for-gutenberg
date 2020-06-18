@@ -73,8 +73,9 @@ const SortableItem = SortableElement(({
   SIZE,
   POSITION,
   REPEAT,
+  block_id,
   setAttributes
-}) => < div className="premium-repeater-item" >
+}) => < div className={`premium-repeater-item`} >
       <div className={
           `premium-repeater-item__container ${newIndex}`
       } >
@@ -89,7 +90,7 @@ const SortableItem = SortableElement(({
       </div>
       <div className={
           `premium-repeater-item-controls ${value.edit ? "editable" : ""}`
-      } >
+      } id={`${block_id}${newIndex}`}>
           {value.ImgUrl && (
             <img src={value.ImgUrl.url} width="100%" height="auto" />
           )}
@@ -270,11 +271,12 @@ const SortableList = SortableContainer(({
   SIZE,
   POSITION,
   REPEAT,
+  block_id,
   setAttributes
 }) => {
   return (<div > {
       (items).map((value, index) => (
-          <SortableItem key={`item-${value}`}
+          <SortableItem key={`${block_id}`}
               index={index}
               newIndex={index}
               value={value}
@@ -310,6 +312,7 @@ const SortableList = SortableContainer(({
               SIZE={SIZE}
               POSITION={POSITION}
               REPEAT={REPEAT}
+              block_id={block_id}
               setAttributes={setAttributes}
           />
       ))
@@ -364,6 +367,7 @@ class edit extends Component {
         const { attributes, setAttributes, isSelected } = this.props
 
         const {
+            block_id,
             align,
             className,
             repeaterAccordion,
@@ -1068,6 +1072,7 @@ class edit extends Component {
                         SIZE={SIZE}
                         POSITION={POSITION}
                         REPEAT={REPEAT}
+                        block_id={block_id}
                         setAttributes={setAttributes}
                         shouldCancelStart={shouldCancelStart}
                         helperClass='premium-repeater__sortableHelper' />
