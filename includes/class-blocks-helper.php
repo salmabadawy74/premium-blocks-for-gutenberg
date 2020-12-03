@@ -313,7 +313,8 @@ class Premium_Blocks_Integration {
                 array('jquery'),
                 PREMIUM_BLOCKS_VERSION
             );
-        }
+		}
+	
         //Enqueue Google Maps API Script
         if( $is_maps_enabled && $is_enabled ) {
             if( ! empty( $api_key ) && '1' !== $api_key ) {

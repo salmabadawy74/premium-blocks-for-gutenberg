@@ -11,6 +11,7 @@ import "./blocks/section";
 import "./blocks/testimonials";
 import "./blocks/video-box";
 import "./blocks/person";
-import "./blocks/icon-list"
-import "./blocks/content-switcher"
+import "./blocks/icon-list";
+import "./blocks/content-switcher";
+import "./blocks/scroll";
 //import "./blocks/test";

@@ -35,6 +35,8 @@ Premium Blocks for Gutenberg helps you create amazing looking websites using the
     <li><a href="https://premiumblocks.io/index.php/gutenberg-blocks/accordion-block/" target="_blank">Gutenberg Accordion Block</a></li>
     <li><a href="https://premiumblocks.io/gutenberg-blocks/icon-box-block/" target="_blank">Gutenberg Icon Box Block</a></li>
     <li><a href="https://premiumblocks.io/gutenberg-blocks/video-box-block/" target="_blank">Gutenberg Video Box Block</a></li>
+    
+
 </ol>
 
 <strong>Minimum Requirements</strong>
