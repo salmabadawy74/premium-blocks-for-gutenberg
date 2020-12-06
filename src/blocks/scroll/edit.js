@@ -1,14 +1,14 @@
 import PremiumBorder from "../../components/premium-border";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
-import classnames from "classnames";
+
 const { __ } = wp.i18n;
 
 const { Fragment } = wp.element;
 
 const {
   IconButton,
-  Toolbar,
+
   PanelBody,
   SelectControl,
   RangeControl,
@@ -17,19 +17,18 @@ const {
 } = wp.components;
 
 const {
-  BlockControls,
   InspectorControls,
-  AlignmentToolbar,
+
   ColorPalette,
-  RichText,
+
   MediaUpload,
 } = wp.editor;
+
 function edit(props) {
   const { isSelected, setAttributes, className, clientId: blockID } = props;
   const {
     id,
-    responsive,
-    title,
+
     imageURL,
     imageID,
     url,
@@ -58,7 +57,7 @@ function edit(props) {
     containerShadowPosition,
     verAlign,
   } = props.attributes;
-  const mainClasses = classnames(className, "premium-banner");
+
   const HOVER = [
     {
       value: "Vertical",
@@ -278,62 +277,51 @@ function edit(props) {
         />
       </PanelBody>
     </InspectorControls>,
-
     <div
-      id={`premium-banner-${id}`}
-      className={`${mainClasses} premium-banner__responsive_${responsive}`}
+      className=".premium-image-scroll-overlay"
+      style={{
+        position: "absolute",
+        top: "0",
+        bottom: "0",
+        right: "0",
+        left: "0",
+        backgroundColor: `${background}`,
+      }}
+    ></div>,
+    <div
+      id={`premium-scroll-${id}`}
+      className={`premium-image-scroll-section`}
       style={{
         boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
-        // paddingTop: paddingT + paddingU,
-        // paddingRight: paddingR + paddingU,
-        // paddingBottom: paddingB + paddingU,
-        // paddingLeft: paddingL + paddingU,
       }}
     >
-      <style
-        dangerouslySetInnerHTML={{
-          __html: [
-            `#premium-banner-${id} `,
-
-            "}",
-            `#premium-banner-${id} .premium-banner__inner {`,
-            `background: ${background}`,
-            "}",
-            `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
-            `opacity: ${background ? 1 - opacity / 100 : 1} `,
-            "}",
-          ].join("\n"),
+      <div
+        className={`premium-image-scroll-container`}
+        style={{
+          border: borderType,
+          borderWidth: borderWidth + "px",
+          borderRadius: borderRadius + "px",
+          borderColor: borderColor,
+          minHeight: minHeight,
         }}
-      />
-      {imageURL && (
+      >
         <div
-          className={`premium-banner__inner premium-banner__min premium-banner__${effectDir}  `}
+          className={` premium-image-scroll-${effectDir}  `}
           style={{
-            border: borderType,
-            borderWidth: borderWidth + "px",
-            borderRadius: borderRadius + "px",
-            borderColor: borderColor,
+            alignItems: verAlign,
+            height: height,
           }}
         >
-          <div
-            className={`premium-banner__img_wrap premium-banner__${height}`}
+          <img
+            className={`premium-scroll__img`}
+            alt="scroll Image"
+            src={imageURL}
             style={{
-              minHeight: minHeight,
-              alignItems: verAlign,
+              filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
             }}
-          >
-            <img
-              className={`premium-banner__img`}
-              alt="Banner Image"
-              src={imageURL}
-              style={{
-                height: height,
-                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
-              }}
-            />
-          </div>
+          />
         </div>
-      )}
+      </div>
     </div>,
   ];
 }

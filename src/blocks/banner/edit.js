@@ -17,7 +17,7 @@ const {
   SelectControl,
   RangeControl,
   TextControl,
-  ToggleControl
+  ToggleControl,
 } = wp.components;
 
 const {
@@ -26,10 +26,10 @@ const {
   AlignmentToolbar,
   ColorPalette,
   RichText,
-  MediaUpload
+  MediaUpload,
 } = wp.editor;
 
-const edit = props => {
+const edit = (props) => {
   const { isSelected, setAttributes, className, clientId: blockID } = props;
   const {
     id,
@@ -87,95 +87,95 @@ const edit = props => {
     paddingT,
     paddingR,
     paddingL,
-    paddingU
+    paddingU,
   } = props.attributes;
   const ALIGNS = [
     {
       value: "flex-start",
-      label: __("Top")
+      label: __("Top"),
     },
     {
       value: "center",
-      label: __("Middle")
+      label: __("Middle"),
     },
     {
       value: "flex-end",
-      label: __("Bottom")
+      label: __("Bottom"),
     },
     {
       value: "inherit",
-      label: __("Full")
-    }
+      label: __("Full"),
+    },
   ];
   const EFFECTS = [
     {
       value: "effect1",
-      label: __("Style 1")
+      label: __("Style 1"),
     },
     {
       value: "effect2",
-      label: __("Style 2")
+      label: __("Style 2"),
     },
     {
       value: "effect3",
-      label: __("Style 3")
+      label: __("Style 3"),
     },
     {
       value: "effect4",
-      label: __("Style 4")
+      label: __("Style 4"),
     },
     {
       value: "effect5",
-      label: __("Style 5")
+      label: __("Style 5"),
     },
     {
       value: "effect6",
-      label: __("Style 6")
-    }
+      label: __("Style 6"),
+    },
   ];
   const HOVER = [
     {
       value: "none",
-      label: __("None")
+      label: __("None"),
     },
     {
       value: "zoomin",
-      label: __("Zoom In")
+      label: __("Zoom In"),
     },
     {
       value: "zoomout",
-      label: "Zoom Out"
+      label: "Zoom Out",
     },
     {
       value: "scale",
-      label: __("Scale")
+      label: __("Scale"),
     },
     {
       value: "gray",
-      label: __("Gray Scale")
+      label: __("Gray Scale"),
     },
     {
       value: "blur",
-      label: __("Blur")
+      label: __("Blur"),
     },
     {
       value: "bright",
-      label: __("Bright")
+      label: __("Bright"),
     },
     {
       value: "sepia",
-      label: __("Sepia")
-    }
+      label: __("Sepia"),
+    },
   ];
   const HEIGHT = [
     {
       value: "default",
-      label: __("Default")
+      label: __("Default"),
     },
     {
       value: "custom",
-      label: __("Custom")
-    }
+      label: __("Custom"),
+    },
   ];
   setAttributes({ id: blockID });
 
@@ -196,7 +196,7 @@ const edit = props => {
         </Toolbar>
         <AlignmentToolbar
           value={contentAlign}
-          onChange={newAlign => setAttributes({ contentAlign: newAlign })}
+          onChange={(newAlign) => setAttributes({ contentAlign: newAlign })}
         />
       </BlockControls>
     ),
@@ -210,13 +210,18 @@ const edit = props => {
           {imageURL && <img src={imageURL} width="100%" height="auto" />}
           <MediaUpload
             allowedTypes={["image"]}
-            onSelect={media => {
+            onSelect={(media) => {
               setAttributes({ imageURL: media.url, imageID: media.id });
             }}
             type="image"
             value={imageID}
             render={({ open }) => (
-              <IconButton className="premium-media-uplpad-btn" label={__("Change Image")} icon="edit" onClick={open}>
+              <IconButton
+                className="premium-media-uplpad-btn"
+                label={__("Change Image")}
+                icon="edit"
+                onClick={open}
+              >
                 {__("Change Image")}
               </IconButton>
             )}
@@ -227,34 +232,34 @@ const edit = props => {
             contrast={contrast}
             saturation={saturation}
             hue={hue}
-            onChangeBlur={value => setAttributes({ blur: value })}
-            onChangeBright={value => setAttributes({ bright: value })}
-            onChangeContrast={value => setAttributes({ contrast: value })}
-            onChangeSat={value => setAttributes({ saturation: value })}
-            onChangeHue={value => setAttributes({ hue: value })}
+            onChangeBlur={(value) => setAttributes({ blur: value })}
+            onChangeBright={(value) => setAttributes({ bright: value })}
+            onChangeContrast={(value) => setAttributes({ contrast: value })}
+            onChangeSat={(value) => setAttributes({ saturation: value })}
+            onChangeHue={(value) => setAttributes({ hue: value })}
           />
           <SelectControl
             label={__("Banner Style")}
             value={effect}
-            onChange={newEffect => setAttributes({ effect: newEffect })}
+            onChange={(newEffect) => setAttributes({ effect: newEffect })}
             options={EFFECTS}
           />
           <SelectControl
             label={__("Image Hover Effect")}
             options={HOVER}
             value={hoverEffect}
-            onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
+            onChange={(newEffect) => setAttributes({ hoverEffect: newEffect })}
           />
           <ToggleControl
             label={__("Always Hovered")}
             checked={hovered}
-            onChange={check => setAttributes({ hovered: check })}
+            onChange={(check) => setAttributes({ hovered: check })}
           />
           <SelectControl
             label={__("Height")}
             options={HEIGHT}
             value={height}
-            onChange={newHeight => setAttributes({ height: newHeight })}
+            onChange={(newHeight) => setAttributes({ height: newHeight })}
           />
           <p>{"custom" === height && __("Min Height (PX)")}</p>
           {"custom" === height && (
@@ -262,7 +267,7 @@ const edit = props => {
               value={minHeight}
               min="10"
               max="800"
-              onChange={newSize => setAttributes({ minHeight: newSize })}
+              onChange={(newSize) => setAttributes({ minHeight: newSize })}
             />
           )}
           {"custom" === height && (
@@ -270,16 +275,16 @@ const edit = props => {
               label={__("Vertical Align")}
               options={ALIGNS}
               value={verAlign}
-              onChange={newValue => setAttributes({ verAlign: newValue })}
+              onChange={(newValue) => setAttributes({ verAlign: newValue })}
             />
           )}
           <Fragment>
             <p>{__("Overlay")}</p>
             <ColorPalette
               value={background}
-              onChange={newValue =>
+              onChange={(newValue) =>
                 setAttributes({
-                  background: newValue === undefined ? "transparent" : newValue
+                  background: newValue === undefined ? "transparent" : newValue,
                 })
               }
               allowReset={true}
@@ -290,34 +295,34 @@ const edit = props => {
             value={opacity}
             min="1"
             max="100"
-            onChange={newOpacity =>
+            onChange={(newOpacity) =>
               setAttributes({
-                opacity: newOpacity === undefined ? 50 : newOpacity
+                opacity: newOpacity === undefined ? 50 : newOpacity,
               })
             }
           />
           <ToggleControl
             label={__("Link")}
             checked={urlCheck}
-            onChange={newCheck => setAttributes({ urlCheck: newCheck })}
+            onChange={(newCheck) => setAttributes({ urlCheck: newCheck })}
           />
           {urlCheck && (
             <TextControl
               value={url}
-              onChange={newURL => setAttributes({ url: newURL })}
+              onChange={(newURL) => setAttributes({ url: newURL })}
             />
           )}
           {urlCheck && (
             <ToggleControl
               label={__("Open link in new tab")}
               checked={target}
-              onChange={newValue => setAttributes({ target: newValue })}
+              onChange={(newValue) => setAttributes({ target: newValue })}
             />
           )}
           <ToggleControl
             label={__("Hide Description on Mobiles")}
             checked={responsive}
-            onChange={newValue => setAttributes({ responsive: newValue })}
+            onChange={(newValue) => setAttributes({ responsive: newValue })}
           />
         </PanelBody>
         <PanelBody
@@ -327,11 +332,11 @@ const edit = props => {
         >
           <p>{__("HTML Tag")}</p>
           <Toolbar
-            controls={"123456".split("").map(tag => ({
+            controls={"123456".split("").map((tag) => ({
               icon: "heading",
               isActive: "H" + tag === titleTag,
               onClick: () => setAttributes({ titleTag: "H" + tag }),
-              subscript: tag
+              subscript: tag,
             }))}
           />
           <PremiumTypo
@@ -339,15 +344,15 @@ const edit = props => {
             size={titleSize}
             weight={titleWeight}
             line={titleLine}
-            onChangeSize={newSize => setAttributes({ titleSize: newSize })}
-            onChangeWeight={newWeight =>
+            onChangeSize={(newSize) => setAttributes({ titleSize: newSize })}
+            onChangeWeight={(newWeight) =>
               setAttributes({
-                titleWeight: newWeight === undefined ? 500 : newWeight
+                titleWeight: newWeight === undefined ? 500 : newWeight,
               })
             }
-            onChangeLine={newValue =>
+            onChangeLine={(newValue) =>
               setAttributes({
-                titleLine: newValue === undefined ? 10 : newValue
+                titleLine: newValue === undefined ? 10 : newValue,
               })
             }
           />
@@ -356,9 +361,9 @@ const edit = props => {
             <p>{__("Text Color")}</p>
             <ColorPalette
               value={titleColor}
-              onChange={newValue =>
+              onChange={(newValue) =>
                 setAttributes({
-                  titleColor: newValue === undefined ? "transparent" : newValue
+                  titleColor: newValue === undefined ? "transparent" : newValue,
                 })
               }
               allowReset={true}
@@ -369,9 +374,9 @@ const edit = props => {
               <p>{__("Separator Color")}</p>
               <ColorPalette
                 value={sepColor}
-                onChange={newValue =>
+                onChange={(newValue) =>
                   setAttributes({
-                    sepColor: newValue === undefined ? "transparent" : newValue
+                    sepColor: newValue === undefined ? "transparent" : newValue,
                   })
                 }
                 allowReset={true}
@@ -383,9 +388,10 @@ const edit = props => {
               <p>{__("Background Color")}</p>
               <ColorPalette
                 value={titleBack}
-                onChange={newValue =>
+                onChange={(newValue) =>
                   setAttributes({
-                    titleBack: newValue === undefined ? "transparent" : newValue
+                    titleBack:
+                      newValue === undefined ? "transparent" : newValue,
                   })
                 }
                 allowReset={true}
@@ -397,25 +403,25 @@ const edit = props => {
             blur={shadowBlur}
             horizontal={shadowHorizontal}
             vertical={shadowVertical}
-            onChangeColor={newColor =>
+            onChangeColor={(newColor) =>
               setAttributes({
                 shadowColor:
-                  newColor === undefined ? "transparent" : newColor.hex
+                  newColor === undefined ? "transparent" : newColor.hex,
               })
             }
-            onChangeBlur={newBlur =>
+            onChangeBlur={(newBlur) =>
               setAttributes({
-                shadowBlur: newBlur === undefined ? 0 : newBlur
+                shadowBlur: newBlur === undefined ? 0 : newBlur,
               })
             }
-            onChangehHorizontal={newValue =>
+            onChangehHorizontal={(newValue) =>
               setAttributes({
-                shadowHorizontal: newValue === undefined ? 0 : newValue
+                shadowHorizontal: newValue === undefined ? 0 : newValue,
               })
             }
-            onChangeVertical={newValue =>
+            onChangeVertical={(newValue) =>
               setAttributes({
-                shadowVertical: newValue === undefined ? 0 : newValue
+                shadowVertical: newValue === undefined ? 0 : newValue,
               })
             }
           />
@@ -430,15 +436,15 @@ const edit = props => {
             size={descSize}
             weight={descWeight}
             line={descLine}
-            onChangeSize={newSize => setAttributes({ descSize: newSize })}
-            onChangeWeight={newWeight =>
+            onChangeSize={(newSize) => setAttributes({ descSize: newSize })}
+            onChangeWeight={(newWeight) =>
               setAttributes({
-                descWeight: newWeight === undefined ? 500 : newWeight
+                descWeight: newWeight === undefined ? 500 : newWeight,
               })
             }
-            onChangeLine={newValue =>
+            onChangeLine={(newValue) =>
               setAttributes({
-                descLine: newValue === undefined ? 10 : newValue
+                descLine: newValue === undefined ? 10 : newValue,
               })
             }
           />
@@ -446,9 +452,9 @@ const edit = props => {
             <p>{__("Text Color")}</p>
             <ColorPalette
               value={descColor}
-              onChange={newValue =>
+              onChange={(newValue) =>
                 setAttributes({
-                  descColor: newValue === undefined ? "transparent" : newValue
+                  descColor: newValue === undefined ? "transparent" : newValue,
                 })
               }
               allowReset={true}
@@ -459,25 +465,25 @@ const edit = props => {
             blur={descShadowBlur}
             horizontal={descShadowHorizontal}
             vertical={descShadowVertical}
-            onChangeColor={newColor =>
+            onChangeColor={(newColor) =>
               setAttributes({
                 descShadowColor:
-                  newColor === undefined ? "transparent" : newColor.hex
+                  newColor === undefined ? "transparent" : newColor.hex,
               })
             }
-            onChangeBlur={newBlur =>
+            onChangeBlur={(newBlur) =>
               setAttributes({
-                descShadowBlur: newBlur === undefined ? 0 : newBlur
+                descShadowBlur: newBlur === undefined ? 0 : newBlur,
               })
             }
-            onChangehHorizontal={newValue =>
+            onChangehHorizontal={(newValue) =>
               setAttributes({
-                descShadowHorizontal: newValue === undefined ? 0 : newValue
+                descShadowHorizontal: newValue === undefined ? 0 : newValue,
               })
             }
-            onChangeVertical={newValue =>
+            onChangeVertical={(newValue) =>
               setAttributes({
-                descShadowVertical: newValue === undefined ? 0 : newValue
+                descShadowVertical: newValue === undefined ? 0 : newValue,
               })
             }
           />
@@ -492,21 +498,21 @@ const edit = props => {
             borderWidth={borderWidth}
             borderColor={borderColor}
             borderRadius={borderRadius}
-            onChangeType={newType => setAttributes({ borderType: newType })}
-            onChangeWidth={newWidth =>
+            onChangeType={(newType) => setAttributes({ borderType: newType })}
+            onChangeWidth={(newWidth) =>
               setAttributes({
-                borderWidth: newWidth === undefined ? 0 : newWidth
+                borderWidth: newWidth === undefined ? 0 : newWidth,
               })
             }
-            onChangeColor={colorValue =>
+            onChangeColor={(colorValue) =>
               setAttributes({
                 borderColor:
-                  colorValue === undefined ? "transparent" : colorValue.hex
+                  colorValue === undefined ? "transparent" : colorValue.hex,
               })
             }
-            onChangeRadius={newRadius =>
+            onChangeRadius={(newRadius) =>
               setAttributes({
-                borderRadius: newRadius === undefined ? 0 : newRadius
+                borderRadius: newRadius === undefined ? 0 : newRadius,
               })
             }
           />
@@ -517,29 +523,29 @@ const edit = props => {
             horizontal={containerShadowHorizontal}
             vertical={containerShadowVertical}
             position={containerShadowPosition}
-            onChangeColor={newColor =>
+            onChangeColor={(newColor) =>
               setAttributes({
-                containerShadowColor: newColor.hex
+                containerShadowColor: newColor.hex,
               })
             }
-            onChangeBlur={newBlur =>
+            onChangeBlur={(newBlur) =>
               setAttributes({
-                containerShadowBlur: newBlur
+                containerShadowBlur: newBlur,
               })
             }
-            onChangehHorizontal={newValue =>
+            onChangehHorizontal={(newValue) =>
               setAttributes({
-                containerShadowHorizontal: newValue
+                containerShadowHorizontal: newValue,
               })
             }
-            onChangeVertical={newValue =>
+            onChangeVertical={(newValue) =>
               setAttributes({
-                containerShadowVertical: newValue
+                containerShadowVertical: newValue,
               })
             }
-            onChangePosition={newValue =>
+            onChangePosition={(newValue) =>
               setAttributes({
-                containerShadowPosition: newValue
+                containerShadowPosition: newValue,
               })
             }
           />
@@ -549,27 +555,27 @@ const edit = props => {
             paddingBottom={paddingB}
             paddingLeft={paddingL}
             showUnits={true}
-            onChangePadTop={value =>
+            onChangePadTop={(value) =>
               setAttributes({
-                paddingT: value
+                paddingT: value,
               })
             }
-            onChangePadRight={value =>
+            onChangePadRight={(value) =>
               setAttributes({
-                paddingR: value
+                paddingR: value,
               })
             }
-            onChangePadBottom={value =>
+            onChangePadBottom={(value) =>
               setAttributes({
-                paddingB: value
+                paddingB: value,
               })
             }
-            onChangePadLeft={value =>
+            onChangePadLeft={(value) =>
               setAttributes({
-                paddingL: value
+                paddingL: value,
               })
             }
-            onChangePadSizeUnit={newvalue =>
+            onChangePadSizeUnit={(newvalue) =>
               setAttributes({ paddingU: newvalue })
             }
           />
@@ -584,7 +590,7 @@ const edit = props => {
         paddingTop: paddingT + paddingU,
         paddingRight: paddingR + paddingU,
         paddingBottom: paddingB + paddingU,
-        paddingLeft: paddingL + paddingU
+        paddingLeft: paddingL + paddingU,
       }}
     >
       <style
@@ -598,8 +604,8 @@ const edit = props => {
             "}",
             `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
             `opacity: ${background ? 1 - opacity / 100 : 1} `,
-            "}"
-          ].join("\n")
+            "}",
+          ].join("\n"),
         }}
       />
       {imageURL && (
@@ -609,14 +615,14 @@ const edit = props => {
             border: borderType,
             borderWidth: borderWidth + "px",
             borderRadius: borderRadius + "px",
-            borderColor: borderColor
+            borderColor: borderColor,
           }}
         >
           <div
             className={`premium-banner__img_wrap premium-banner__${height}`}
             style={{
               minHeight: minHeight,
-              alignItems: verAlign
+              alignItems: verAlign,
             }}
           >
             <img
@@ -624,7 +630,7 @@ const edit = props => {
               alt="Banner Image"
               src={imageURL}
               style={{
-                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
               }}
             />
           </div>
@@ -632,13 +638,13 @@ const edit = props => {
           <div
             className={`premium-banner__content`}
             style={{
-              background: "effect2" === effect ? titleBack : "transparent"
+              background: "effect2" === effect ? titleBack : "transparent",
             }}
           >
             <div
               className={`premium-banner__title_wrap`}
               style={{
-                textAlign: contentAlign
+                textAlign: contentAlign,
               }}
             >
               <RichText
@@ -646,20 +652,20 @@ const edit = props => {
                 className={`premium-banner__title`}
                 value={title}
                 isSelected={false}
-                onChange={newText => setAttributes({ title: newText })}
+                onChange={(newText) => setAttributes({ title: newText })}
                 style={{
                   color: titleColor,
                   fontSize: titleSize + "px",
                   fontWeight: titleWeight,
                   lineHeight: titleLine + "px",
-                  textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
+                  textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
                 }}
               />
             </div>
             <div
               className={`premium-banner__desc_wrap`}
               style={{
-                textAlign: contentAlign
+                textAlign: contentAlign,
               }}
             >
               <RichText
@@ -667,20 +673,20 @@ const edit = props => {
                 className={`premium-banner__desc`}
                 value={desc}
                 isSelected={false}
-                onChange={newText => setAttributes({ desc: newText })}
+                onChange={(newText) => setAttributes({ desc: newText })}
                 style={{
                   color: descColor,
                   fontSize: descSize + "px",
                   fontWeight: descWeight,
                   lineHeight: descLine + "px",
-                  textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`
+                  textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
                 }}
               />
             </div>
           </div>
         </div>
       )}
-    </div>
+    </div>,
   ];
 };
 export default edit;

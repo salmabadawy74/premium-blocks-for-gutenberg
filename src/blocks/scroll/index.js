@@ -2,56 +2,9 @@ const { __ } = wp.i18n;
 
 import PbgIcon from "../icons";
 import edit from "./edit";
-
-const { Fragment } = wp.element;
+import save from "./save";
 
 const { registerBlockType } = wp.blocks;
-
-const {
-  IconButton,
-  Toolbar,
-  PanelBody,
-  SelectControl,
-  RangeControl,
-  TextControl,
-  ToggleControl,
-} = wp.components;
-
-const {
-  BlockControls,
-  InspectorControls,
-  
-  gnmentToolbar,
-  ColorPalette,
-  RichText,
-  MediaUpload,
-} = wp.editor;
-const imageAttrs = {
-  title: {
-    type: "string",
-    source: "html",
-    selector: "h2",
-  },
-  body: {
-    type: "string",
-    source: "html",
-    selector: "p",
-  },
-  titleColor: {
-    type: "string",
-    default: "black",
-  },
-  height: {
-    type: "number",
-  },
-  bgImageId: {
-    type: "number",
-  },
-  bgImage: {
-    type: "string",
-    default: "null",
-  },
-};
 
 registerBlockType("premium/scroll", {
   title: __("Image Scroll"),
@@ -167,19 +120,17 @@ registerBlockType("premium/scroll", {
     },
     responsive: {
       type: "boolean",
-      default: false
+      default: false,
     },
     verAlign: {
       type: "string",
-      default: "top"
-    }
+      default: "top",
+    },
+    paddingT: {
+      type: "number",
+    },
   },
 
   edit: edit,
-
-  // save(
-
-  // ) {
-
-  // },
+  save: save,
 });
