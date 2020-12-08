@@ -322,14 +322,15 @@ process.umask = function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return dualHeading; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return pricingTable; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return maps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return testimonial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return testimonial; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return countUp; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return icon; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return button; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return container; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return accordion; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return iconBox; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return videoBox; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return videoBox; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return scroll; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return person; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return iconList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return contentSwitcher; });
@@ -351,6 +352,7 @@ var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
     accordion = _PremiumBlocksSetting.accordion,
     iconBox = _PremiumBlocksSetting.iconBox,
     videoBox = _PremiumBlocksSetting.videoBox,
+    scroll = _PremiumBlocksSetting.scroll,
     person = _PremiumBlocksSetting.person,
     iconList = _PremiumBlocksSetting.iconList,
     contentSwitcher = _PremiumBlocksSetting.contentSwitcher;
@@ -2937,7 +2939,7 @@ registerBlockType("premium/video-box", {
   category: "premium-blocks",
   attributes: videoBoxAttrs,
   supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["p" /* videoBox */]
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["q" /* videoBox */]
   },
   edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
   save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
@@ -42049,7 +42051,7 @@ registerBlockType("premium/testimonial", {
   category: "premium-blocks",
   attributes: testimonialsAttrs,
   supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["o" /* testimonial */]
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["p" /* testimonial */]
   },
   edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */],
   save: __WEBPACK_IMPORTED_MODULE_2__save__["a" /* default */],
@@ -52067,488 +52069,488 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var contentSwitcherAttrs = {
-    block_id: {
-        type: "string"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    showLabel: {
-        type: "boolean",
-        default: true
-    },
-    firstLabel: {
-        type: "string",
-        default: "Content #1"
-    },
-    secondLabel: {
-        type: "string",
-        default: "Content #2"
-    },
-    display: {
-        type: "string",
-        default: "inline"
-    },
-    firstContent: {
-        type: "string",
-        default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
-    },
-    secondContent: {
-        type: "string",
-        default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    },
-    switchCheck: {
-        type: "boolean",
-        default: false
-    },
-    firstcontentlign: {
-        type: "string",
-        default: "center"
-    },
-    secondcontentlign: {
-        type: "string",
-        default: "center"
-    },
-    switchSizeType: {
-        type: "string",
-        default: "px"
-    },
-    switchSize: {
-        type: "number",
-        default: 15
-    },
-    switchSizeMobile: {
-        type: "number",
-        default: 15
-    },
-    switchSizeTablet: {
-        type: "number",
-        default: 15
-    },
-    bottomSpacingType: {
-        type: "string",
-        default: "px"
-    },
-    bottomSpacing: {
-        type: "number",
-        default: 1
-    },
-    bottomSpacingMobile: {
-        type: "number",
-        default: 1
-    },
-    bottomSpacingTablet: {
-        type: "number",
-        default: 1
-    },
-    firstStateColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    secondStateColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    switcherBGColor: {
-        type: "string",
-        default: "#f2f2f2"
-    },
-    switchRadius: {
-        type: "number",
-        default: 50
-    },
-    switchRadiusType: {
-        type: "string",
-        default: "px"
-    },
-    labelSpacingType: {
-        type: "string",
-        default: "px"
-    },
-    labelSpacing: {
-        type: "number",
-        default: 15
-    },
-    labelSpacingMobile: {
-        type: "number",
-        default: 15
-    },
-    labelSpacingTablet: {
-        type: "number",
-        default: 15
-    },
-    firstLabelColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    firstLabelLetter: {
-        type: "number"
-    },
-    firstLabelStyle: {
-        type: "string"
-    },
-    firstLabelUpper: {
-        type: "boolean",
-        default: false
-    },
-    firstLabelWeight: {
-        type: "number",
-        default: 500
-    },
-    firstLabelfontSize: {
-        type: "number",
-        default: 20
-    },
-    firstLabelfontSizeType: {
-        type: "string",
-        default: "px"
-    },
-    firstLabelfontSizeMobile: {
-        type: "number",
-        default: 20
-    },
-    firstLabelfontSizeTablet: {
-        type: "number",
-        default: 20
-    },
-    secondLabelColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    secondLabelLetter: {
-        type: "number"
-    },
-    secondLabelStyle: {
-        type: "string"
-    },
-    secondLabelUpper: {
-        type: "boolean",
-        default: false
-    },
-    secondLabelWeight: {
-        type: "number",
-        default: 500
-    },
-    secondLabelfontSize: {
-        type: "number",
-        default: 20
-    },
-    secondLabelfontSizeType: {
-        type: "string",
-        default: "px"
-    },
-    secondLabelfontSizeMobile: {
-        type: "number",
-        default: 20
-    },
-    secondLabelfontSizeTablet: {
-        type: "number",
-        default: 20
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    firstContentHeight: {
-        type: "number",
-        default: 50
-    },
-    firstContentHeightType: {
-        type: "string",
-        default: "px"
-    },
-    firstContentHeightMobile: {
-        type: "number",
-        default: 50
-    },
-    firstContentHeightTablet: {
-        type: "number",
-        default: 50
-    },
-    firstContentColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    firstContentBGColor: {
-        type: "string"
-    },
-    secondContentHeightType: {
-        type: "string",
-        default: "px"
-    },
-    secondContentHeight: {
-        type: "number",
-        default: 50
-    },
-    secondContentHeightMobile: {
-        type: "number",
-        default: 50
-    },
-    secondContentHeightTablet: {
-        type: "number",
-        default: 50
-    },
-    secondContentColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    secondContentBGColor: {
-        type: "string"
-    },
-    firstpaddingTop: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingTopType: {
-        type: "string",
-        default: "px"
-    },
-    firstpaddingTopMobile: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingTopTablet: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingRight: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingRightType: {
-        type: "string",
-        default: "px"
-    },
-    firstpaddingRightMobile: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingRightTablet: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingBottom: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingBottomType: {
-        type: "string",
-        default: "px"
-    },
-    firstpaddingBottomMobile: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingBottomTablet: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingLeft: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingLeftType: {
-        type: "string",
-        default: "px"
-    },
-    firstpaddingLeftMobile: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingLeftTablet: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingTop: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingTopType: {
-        type: "string",
-        default: "px"
-    },
-    secondpaddingTopMobile: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingTopTablet: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingRight: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingRightType: {
-        type: "string",
-        default: "px"
-    },
-    secondpaddingRightMobile: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingRightTablet: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingBottom: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingBottomType: {
-        type: "string",
-        default: "px"
-    },
-    secondpaddingBottomMobile: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingBottomTablet: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingLeft: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingLeftType: {
-        type: "string",
-        default: "px"
-    },
-    secondpaddingLeftMobile: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingLeftTablet: {
-        type: "number",
-        default: 0
-    },
-    effect: {
-        type: "string",
-        default: "fade"
-    },
-    slide: {
-        type: "string",
-        default: "top"
-    },
-    firstContentLetter: {
-        type: "number"
-    },
-    firstContentStyle: {
-        type: "string"
-    },
-    firstContentUpper: {
-        type: "boolean",
-        default: false
-    },
-    firstContentWeight: {
-        type: "number",
-        default: 500
-    },
-    firstContentfontSize: {
-        type: "number",
-        default: 15
-    },
-    firstContentfontSizeType: {
-        type: "string",
-        default: "px"
-    },
-    firstContentfontSizeMobile: {
-        type: "number",
-        default: 15
-    },
-    firstContentfontSizeTablet: {
-        type: "number",
-        default: 15
-    },
-    firstContentborderType: {
-        type: "string",
-        default: "none"
-    },
-    firstContentborderWidth: {
-        type: "number",
-        default: "1"
-    },
-    firstContentborderRadius: {
-        type: "number",
-        default: 0
-    },
-    firstContentborderColor: {
-        type: "string"
-    },
-    secondContentLetter: {
-        type: "number"
-    },
-    secondContentStyle: {
-        type: "string"
-    },
-    secondContentUpper: {
-        type: "boolean",
-        default: false
-    },
-    secondContentWeight: {
-        type: "number",
-        default: 500
-    },
-    secondContentfontSize: {
-        type: "number",
-        default: 15
-    },
-    secondContentfontSizeType: {
-        type: "string",
-        default: "px"
-    },
-    secondContentfontSizeMobile: {
-        type: "number",
-        default: 15
-    },
-    secondContentfontSizeTablet: {
-        type: "number",
-        default: 15
-    },
-    secondContentborderType: {
-        type: "string",
-        default: "none"
-    },
-    secondContentborderWidth: {
-        type: "number",
-        default: "1"
-    },
-    secondContentborderRadius: {
-        type: "number",
-        default: 0
-    },
-    secondContentborderColor: {
-        type: "string"
-    }
+  block_id: {
+    type: "string"
+  },
+  classMigrate: {
+    type: "boolean",
+    default: false
+  },
+  align: {
+    type: "string",
+    default: "center"
+  },
+  showLabel: {
+    type: "boolean",
+    default: true
+  },
+  firstLabel: {
+    type: "string",
+    default: "Content #1"
+  },
+  secondLabel: {
+    type: "string",
+    default: "Content #2"
+  },
+  display: {
+    type: "string",
+    default: "inline"
+  },
+  firstContent: {
+    type: "string",
+    default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
+  },
+  secondContent: {
+    type: "string",
+    default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  },
+  switchCheck: {
+    type: "boolean",
+    default: false
+  },
+  firstcontentlign: {
+    type: "string",
+    default: "center"
+  },
+  secondcontentlign: {
+    type: "string",
+    default: "center"
+  },
+  switchSizeType: {
+    type: "string",
+    default: "px"
+  },
+  switchSize: {
+    type: "number",
+    default: 15
+  },
+  switchSizeMobile: {
+    type: "number",
+    default: 15
+  },
+  switchSizeTablet: {
+    type: "number",
+    default: 15
+  },
+  bottomSpacingType: {
+    type: "string",
+    default: "px"
+  },
+  bottomSpacing: {
+    type: "number",
+    default: 1
+  },
+  bottomSpacingMobile: {
+    type: "number",
+    default: 1
+  },
+  bottomSpacingTablet: {
+    type: "number",
+    default: 1
+  },
+  firstStateColor: {
+    type: "string",
+    default: "#6ec1e4"
+  },
+  secondStateColor: {
+    type: "string",
+    default: "#6ec1e4"
+  },
+  switcherBGColor: {
+    type: "string",
+    default: "#f2f2f2"
+  },
+  switchRadius: {
+    type: "number",
+    default: 50
+  },
+  switchRadiusType: {
+    type: "string",
+    default: "px"
+  },
+  labelSpacingType: {
+    type: "string",
+    default: "px"
+  },
+  labelSpacing: {
+    type: "number",
+    default: 15
+  },
+  labelSpacingMobile: {
+    type: "number",
+    default: 15
+  },
+  labelSpacingTablet: {
+    type: "number",
+    default: 15
+  },
+  firstLabelColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  firstLabelLetter: {
+    type: "number"
+  },
+  firstLabelStyle: {
+    type: "string"
+  },
+  firstLabelUpper: {
+    type: "boolean",
+    default: false
+  },
+  firstLabelWeight: {
+    type: "number",
+    default: 500
+  },
+  firstLabelfontSize: {
+    type: "number",
+    default: 20
+  },
+  firstLabelfontSizeType: {
+    type: "string",
+    default: "px"
+  },
+  firstLabelfontSizeMobile: {
+    type: "number",
+    default: 20
+  },
+  firstLabelfontSizeTablet: {
+    type: "number",
+    default: 20
+  },
+  secondLabelColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  secondLabelLetter: {
+    type: "number"
+  },
+  secondLabelStyle: {
+    type: "string"
+  },
+  secondLabelUpper: {
+    type: "boolean",
+    default: false
+  },
+  secondLabelWeight: {
+    type: "number",
+    default: 500
+  },
+  secondLabelfontSize: {
+    type: "number",
+    default: 20
+  },
+  secondLabelfontSizeType: {
+    type: "string",
+    default: "px"
+  },
+  secondLabelfontSizeMobile: {
+    type: "number",
+    default: 20
+  },
+  secondLabelfontSizeTablet: {
+    type: "number",
+    default: 20
+  },
+  shadowColor: {
+    type: "string"
+  },
+  shadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  shadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  shadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  firstContentHeight: {
+    type: "number",
+    default: 50
+  },
+  firstContentHeightType: {
+    type: "string",
+    default: "px"
+  },
+  firstContentHeightMobile: {
+    type: "number",
+    default: 50
+  },
+  firstContentHeightTablet: {
+    type: "number",
+    default: 50
+  },
+  firstContentColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  firstContentBGColor: {
+    type: "string"
+  },
+  secondContentHeightType: {
+    type: "string",
+    default: "px"
+  },
+  secondContentHeight: {
+    type: "number",
+    default: 50
+  },
+  secondContentHeightMobile: {
+    type: "number",
+    default: 50
+  },
+  secondContentHeightTablet: {
+    type: "number",
+    default: 50
+  },
+  secondContentColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  secondContentBGColor: {
+    type: "string"
+  },
+  firstpaddingTop: {
+    type: "number",
+    default: 0
+  },
+  firstpaddingTopType: {
+    type: "string",
+    default: "px"
+  },
+  firstpaddingTopMobile: {
+    type: "number",
+    default: 0
+  },
+  firstpaddingTopTablet: {
+    type: "number",
+    default: 0
+  },
+  firstpaddingRight: {
+    type: "number",
+    default: 0
+  },
+  firstpaddingRightType: {
+    type: "string",
+    default: "px"
+  },
+  firstpaddingRightMobile: {
+    type: "number",
+    default: 0
+  },
+  firstpaddingRightTablet: {
+    type: "number",
+    default: 0
+  },
+  firstpaddingBottom: {
+    type: "number",
+    default: 0
+  },
+  firstpaddingBottomType: {
+    type: "string",
+    default: "px"
+  },
+  firstpaddingBottomMobile: {
+    type: "number",
+    default: 0
+  },
+  firstpaddingBottomTablet: {
+    type: "number",
+    default: 0
+  },
+  firstpaddingLeft: {
+    type: "number",
+    default: 0
+  },
+  firstpaddingLeftType: {
+    type: "string",
+    default: "px"
+  },
+  firstpaddingLeftMobile: {
+    type: "number",
+    default: 0
+  },
+  firstpaddingLeftTablet: {
+    type: "number",
+    default: 0
+  },
+  secondpaddingTop: {
+    type: "number",
+    default: 0
+  },
+  secondpaddingTopType: {
+    type: "string",
+    default: "px"
+  },
+  secondpaddingTopMobile: {
+    type: "number",
+    default: 0
+  },
+  secondpaddingTopTablet: {
+    type: "number",
+    default: 0
+  },
+  secondpaddingRight: {
+    type: "number",
+    default: 0
+  },
+  secondpaddingRightType: {
+    type: "string",
+    default: "px"
+  },
+  secondpaddingRightMobile: {
+    type: "number",
+    default: 0
+  },
+  secondpaddingRightTablet: {
+    type: "number",
+    default: 0
+  },
+  secondpaddingBottom: {
+    type: "number",
+    default: 0
+  },
+  secondpaddingBottomType: {
+    type: "string",
+    default: "px"
+  },
+  secondpaddingBottomMobile: {
+    type: "number",
+    default: 0
+  },
+  secondpaddingBottomTablet: {
+    type: "number",
+    default: 0
+  },
+  secondpaddingLeft: {
+    type: "number",
+    default: 0
+  },
+  secondpaddingLeftType: {
+    type: "string",
+    default: "px"
+  },
+  secondpaddingLeftMobile: {
+    type: "number",
+    default: 0
+  },
+  secondpaddingLeftTablet: {
+    type: "number",
+    default: 0
+  },
+  effect: {
+    type: "string",
+    default: "fade"
+  },
+  slide: {
+    type: "string",
+    default: "top"
+  },
+  firstContentLetter: {
+    type: "number"
+  },
+  firstContentStyle: {
+    type: "string"
+  },
+  firstContentUpper: {
+    type: "boolean",
+    default: false
+  },
+  firstContentWeight: {
+    type: "number",
+    default: 500
+  },
+  firstContentfontSize: {
+    type: "number",
+    default: 15
+  },
+  firstContentfontSizeType: {
+    type: "string",
+    default: "px"
+  },
+  firstContentfontSizeMobile: {
+    type: "number",
+    default: 15
+  },
+  firstContentfontSizeTablet: {
+    type: "number",
+    default: 15
+  },
+  firstContentborderType: {
+    type: "string",
+    default: "none"
+  },
+  firstContentborderWidth: {
+    type: "number",
+    default: "1"
+  },
+  firstContentborderRadius: {
+    type: "number",
+    default: 0
+  },
+  firstContentborderColor: {
+    type: "string"
+  },
+  secondContentLetter: {
+    type: "number"
+  },
+  secondContentStyle: {
+    type: "string"
+  },
+  secondContentUpper: {
+    type: "boolean",
+    default: false
+  },
+  secondContentWeight: {
+    type: "number",
+    default: 500
+  },
+  secondContentfontSize: {
+    type: "number",
+    default: 15
+  },
+  secondContentfontSizeType: {
+    type: "string",
+    default: "px"
+  },
+  secondContentfontSizeMobile: {
+    type: "number",
+    default: 15
+  },
+  secondContentfontSizeTablet: {
+    type: "number",
+    default: 15
+  },
+  secondContentborderType: {
+    type: "string",
+    default: "none"
+  },
+  secondContentborderWidth: {
+    type: "number",
+    default: "1"
+  },
+  secondContentborderRadius: {
+    type: "number",
+    default: 0
+  },
+  secondContentborderColor: {
+    type: "string"
+  }
 };
 
 registerBlockType("premium/content-switcher", {
-    title: __("Content Switcher"),
-    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__icons__["a" /* default */], { icon: "content-switcher" }),
-    category: "premium-blocks",
-    attributes: contentSwitcherAttrs,
-    supports: {
-        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["f" /* contentSwitcher */]
-    },
-    edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
-    save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */]
+  title: __("Content Switcher"),
+  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__icons__["a" /* default */], { icon: "content-switcher" }),
+  category: "premium-blocks",
+  attributes: contentSwitcherAttrs,
+  supports: {
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["f" /* contentSwitcher */]
+  },
+  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+  save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */]
 });
 
 /***/ }),
@@ -54081,9 +54083,12 @@ var PremiumPaddingR = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(266);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(267);
+
+
 var __ = wp.i18n.__;
 
 
@@ -54096,7 +54101,7 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 registerBlockType("premium/scroll", {
   title: __("Image Scroll"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__icons__["a" /* default */], { icon: "content-switcher" }),
+  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "content-switcher" }),
   category: "premium-blocks",
   attributes: {
     title: {
@@ -54112,6 +54117,9 @@ registerBlockType("premium/scroll", {
       source: "attribute",
       attribute: "src",
       selector: ".premium-banner__img"
+    },
+    imageHeight: {
+      type: "number"
     },
     urlCheck: {
       type: "boolean",
@@ -54134,13 +54142,13 @@ registerBlockType("premium/scroll", {
     minHeight: {
       type: "number"
     },
-    effect: {
+    effectDir: {
       type: "string",
-      default: "effect1"
+      default: "vertical"
     },
     hoverEffect: {
       type: "string",
-      default: "none"
+      default: "hover"
     },
     targetOverlay: {
       type: "boolean",
@@ -54218,9 +54226,12 @@ registerBlockType("premium/scroll", {
       type: "number"
     }
   },
+  supports: {
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["o" /* scroll */]
+  },
 
-  edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */],
-  save: __WEBPACK_IMPORTED_MODULE_2__save__["a" /* default */]
+  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+  save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */]
 });
 
 /***/ }),
@@ -54236,7 +54247,6 @@ registerBlockType("premium/scroll", {
 
 
 var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
 var _wp$components = wp.components,
     IconButton = _wp$components.IconButton,
     PanelBody = _wp$components.PanelBody,
@@ -54251,14 +54261,15 @@ var _wp$editor = wp.editor,
 
 
 function edit(props) {
-  var isSelected = props.isSelected,
-      setAttributes = props.setAttributes,
+  var setAttributes = props.setAttributes,
       className = props.className,
+      isSelected = props.isSelected,
       blockID = props.clientId;
   var _props$attributes = props.attributes,
       id = _props$attributes.id,
       imageURL = _props$attributes.imageURL,
       imageID = _props$attributes.imageID,
+      imageHeight = _props$attributes.imageHeight,
       url = _props$attributes.url,
       target = _props$attributes.target,
       urlCheck = _props$attributes.urlCheck,
@@ -54285,18 +54296,18 @@ function edit(props) {
       verAlign = _props$attributes.verAlign;
 
 
-  var HOVER = [{
-    value: "Vertical",
-    label: __("Vertical")
+  var hover = [{
+    value: "vertical",
+    label: __("vertical")
   }, {
-    value: "Horizontal",
-    label: __("Horizontal")
+    value: "horizontal",
+    label: __("horizontal")
   }];
-  var TRIGGER = [{
-    value: "Hover",
+  var trigger = [{
+    value: "hover",
     label: __("Hover")
   }, {
-    value: "Mouse Scroll",
+    value: "mouse",
     label: __("Mouse Scroll")
   }];
   var ALIGNS = [{
@@ -54316,17 +54327,30 @@ function edit(props) {
   var onFileSelect = function onFileSelect(img) {
     setAttributes({
       imageURL: img.url,
-      imageID: img.id
+      imageID: img.id,
+      imageHeight: img.height
     });
   };
+
   var onChangeDirection = function onChangeDirection(newDir) {
-    HOVER.value === "Vertical" ? newDir = "Horizontal" : newDir = "Vertical";
+    HOVER.value === "vertical" ? newDir = "horizontal" : newDir = "vertical";
     setAttributes({ effectDir: newDir });
   };
+  var transformOffset = imageHeight - height;
 
-  return [wp.element.createElement(
+  var setTransform = function setTransform(e) {
+    if (effectDir === "vertical" && hoverEffect === "hover") {
+      var imageitem = e.target.c;
+      var transformOffset = imageitem.clientHeight - height;
+      console.log(transformOffset);
+
+      imageitem.style.cssText = "transform:translateY(-" + transformOffset + "px);";
+    }
+  };
+
+  return [isSelected && wp.element.createElement(
     InspectorControls,
-    { style: { marginBottom: "40px" } },
+    { style: { marginBottom: "40px" }, key: "setting" },
     wp.element.createElement(
       PanelBody,
       null,
@@ -54400,21 +54424,21 @@ function edit(props) {
         )
       ),
       wp.element.createElement(SelectControl, {
-        label: __("Direction"),
-        options: HOVER,
+        label: __("direction"),
+        options: hover,
         value: effectDir,
         onChange: function onChange(newEffect) {
           return setAttributes({ effectDir: newEffect });
         }
       }),
       wp.element.createElement(ToggleControl, {
-        label: __("Reverse Direction"),
+        label: __("reverse"),
         checked: target,
         onChange: onChangeDirection
       }),
       wp.element.createElement(SelectControl, {
-        label: __("Image Hover Effect"),
-        options: TRIGGER,
+        label: __("trigger"),
+        options: trigger,
         value: hoverEffect,
         onChange: function onChange(newEffect) {
           return setAttributes({ hoverEffect: newEffect });
@@ -54542,17 +54566,7 @@ function edit(props) {
         }
       })
     )
-  ), wp.element.createElement("div", {
-    className: ".premium-image-scroll-overlay",
-    style: {
-      position: "absolute",
-      top: "0",
-      bottom: "0",
-      right: "0",
-      left: "0",
-      backgroundColor: "" + background
-    }
-  }), wp.element.createElement(
+  ), wp.element.createElement(
     "div",
     {
       id: "premium-scroll-" + id,
@@ -54560,35 +54574,39 @@ function edit(props) {
       style: {
         boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
       }
+      //  onMouseEnter={scroll}
     },
-    wp.element.createElement(
+    imageURL && wp.element.createElement(
       "div",
       {
-        className: "premium-image-scroll-container",
+        className: "premium-image-scroll-container  premium-image-" + effectDir + "-" + hoverEffect + "-container ",
         style: {
           border: borderType,
           borderWidth: borderWidth + "px",
           borderRadius: borderRadius + "px",
           borderColor: borderColor,
-          minHeight: minHeight
-        }
+          minHeight: minHeight,
+          height: height
+        },
+        "data-settings": "{'direction':`vertical`,'trigger':'hover','reverse':''}"
       },
       wp.element.createElement(
         "div",
         {
-          className: " premium-image-scroll-" + effectDir + "  ",
-          style: {
-            alignItems: verAlign,
-            height: height
-          }
+          className: "premium-image-scroll-" + effectDir + " premium-image-scroll-" + effectDir
         },
+        wp.element.createElement("div", {
+          className: "premium-image-scroll-overlay",
+          style: { background: "" + background }
+        }),
         wp.element.createElement("img", {
-          className: "premium-scroll__img",
           alt: "scroll Image",
           src: imageURL,
           style: {
+            zindex: "99",
             filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
           }
+          // onMouseEnter={(e) => setTransform(e)}
         })
       )
     )
@@ -54610,19 +54628,13 @@ var RichText = wp.editor.RichText;
 
 
 var save = function save(props) {
-  var className = props.className;
   var _props$attributes = props.attributes,
       id = _props$attributes.id,
       imageURL = _props$attributes.imageURL,
-      imageID = _props$attributes.imageID,
-      url = _props$attributes.url,
-      target = _props$attributes.target,
-      urlCheck = _props$attributes.urlCheck,
       height = _props$attributes.height,
       minHeight = _props$attributes.minHeight,
       effectDir = _props$attributes.effectDir,
       background = _props$attributes.background,
-      targetOverlay = _props$attributes.targetOverlay,
       hoverEffect = _props$attributes.hoverEffect,
       blur = _props$attributes.blur,
       bright = _props$attributes.bright,
@@ -54637,11 +54649,8 @@ var save = function save(props) {
       containerShadowBlur = _props$attributes.containerShadowBlur,
       containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
       containerShadowVertical = _props$attributes.containerShadowVertical,
-      containerShadowPosition = _props$attributes.containerShadowPosition,
-      verAlign = _props$attributes.verAlign;
+      containerShadowPosition = _props$attributes.containerShadowPosition;
 
-
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-banner");
 
   return wp.element.createElement(
     "div",
@@ -54655,43 +54664,32 @@ var save = function save(props) {
     wp.element.createElement(
       "div",
       {
-        className: "premium-image-scroll-container",
+        className: "premium-image-scroll-container  premium-image-" + effectDir + "-" + hoverEffect + "-container ",
         style: {
           border: borderType,
           borderWidth: borderWidth + "px",
           borderRadius: borderRadius + "px",
-          borderColor: borderColor
+          borderColor: borderColor,
+          minHeight: minHeight,
+          height: height
         }
       },
       wp.element.createElement(
         "div",
         {
-          className: "premium-image-scroll-container .premium-image-scroll-" + effectDir + " ",
-          style: {
-            minHeight: minHeight,
-            alignItems: verAlign,
-            position: "relative"
-          }
+          className: "premium-image-scroll-" + effectDir + " premium-image-scroll-" + effectDir
         },
         wp.element.createElement("div", {
-          className: ".premium-image-scroll-overlay",
-          style: {
-            position: "absolute",
-            top: "0",
-            bottom: "0",
-            right: "0",
-            left: "0",
-            backgroundColor: "" + background
-          }
+          className: "premium-image-scroll-overlay",
+          style: { background: "" + background }
         }),
         wp.element.createElement("img", {
-          className: "premium-scroll__img",
           alt: "scroll Image",
           src: imageURL,
           style: {
-            height: height,
             filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
           }
+          // onMouseEnter={(e) => setTransform(e)}
         })
       )
     )

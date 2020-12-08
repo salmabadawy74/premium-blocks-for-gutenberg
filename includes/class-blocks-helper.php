@@ -174,6 +174,7 @@ class Premium_Blocks_Integration {
         $is_person_enabled = self::$blocks['person'];
 
 		$is_icon_list_enabled = self::$blocks['iconList'];
+		$is_scroll_enabled = self::$blocks['scroll'];
 		
         $is_content_switcher_enabled = self::$blocks['contentSwitcher'];
 
@@ -311,6 +312,14 @@ class Premium_Blocks_Integration {
                 'content-switcher-js',
                 PREMIUM_BLOCKS_URL . 'assets/js/content-switcher.js',
                 array('jquery'),
+                PREMIUM_BLOCKS_VERSION
+            );
+		}
+		if( $is_scroll_enabled ) {
+            wp_enqueue_script(
+                'scroll-js',
+                PREMIUM_BLOCKS_URL . 'assets/js/scroll.js',
+				
                 PREMIUM_BLOCKS_VERSION
             );
 		}

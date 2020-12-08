@@ -1,3 +1,5 @@
+import { scroll } from "../../../assets/js/settings";
+
 const { __ } = wp.i18n;
 
 import PbgIcon from "../icons";
@@ -25,6 +27,9 @@ registerBlockType("premium/scroll", {
       attribute: "src",
       selector: ".premium-banner__img",
     },
+    imageHeight: {
+      type: "number",
+    },
     urlCheck: {
       type: "boolean",
       default: false,
@@ -46,13 +51,13 @@ registerBlockType("premium/scroll", {
     minHeight: {
       type: "number",
     },
-    effect: {
+    effectDir: {
       type: "string",
-      default: "effect1",
+      default: "vertical",
     },
     hoverEffect: {
       type: "string",
-      default: "none",
+      default: "hover",
     },
     targetOverlay: {
       type: "boolean",
@@ -129,6 +134,9 @@ registerBlockType("premium/scroll", {
     paddingT: {
       type: "number",
     },
+  },
+  supports: {
+    inserter: scroll,
   },
 
   edit: edit,

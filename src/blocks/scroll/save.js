@@ -3,22 +3,17 @@ import classnames from "classnames";
 const { RichText } = wp.editor;
 
 const save = (props) => {
-  const { className } = props;
-
   const {
     id,
 
     imageURL,
-    imageID,
-    url,
-    target,
-    urlCheck,
+
     height,
     minHeight,
     effectDir,
 
     background,
-    targetOverlay,
+
     hoverEffect,
     blur,
     bright,
@@ -34,10 +29,7 @@ const save = (props) => {
     containerShadowHorizontal,
     containerShadowVertical,
     containerShadowPosition,
-    verAlign,
   } = props.attributes;
-
-  const mainClasses = classnames(className, "premium-banner");
 
   return (
     <div
@@ -48,42 +40,30 @@ const save = (props) => {
       }}
     >
       <div
-        className={`premium-image-scroll-container`}
+        className={`premium-image-scroll-container  premium-image-${effectDir}-${hoverEffect}-container `}
         style={{
           border: borderType,
           borderWidth: borderWidth + "px",
           borderRadius: borderRadius + "px",
           borderColor: borderColor,
+          minHeight: minHeight,
+          height: height,
         }}
       >
         <div
-          className={`premium-image-scroll-container .premium-image-scroll-${effectDir} `}
-          style={{
-            minHeight: minHeight,
-            alignItems: verAlign,
-            position: "relative",
-          }}
+          className={`premium-image-scroll-${effectDir} premium-image-scroll-${effectDir}`}
         >
           <div
-            className=".premium-image-scroll-overlay"
-            style={{
-              position: "absolute",
-              top: "0",
-              bottom: "0",
-              right: "0",
-              left: "0",
-              backgroundColor: `${background}`,
-            }}
+            className="premium-image-scroll-overlay"
+            style={{ background: `${background}` }}
           ></div>
-
           <img
-            className={`premium-scroll__img`}
             alt="scroll Image"
             src={imageURL}
             style={{
-              height: height,
               filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
             }}
+            // onMouseEnter={(e) => setTransform(e)}
           />
         </div>
       </div>

@@ -15,9 +15,10 @@ export const {
   accordion,
   iconBox,
   videoBox,
+  scroll,
   person,
   iconList,
-  contentSwitcher
+  contentSwitcher,
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys

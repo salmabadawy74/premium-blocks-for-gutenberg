@@ -940,14 +940,11 @@ a.premium-dheading-block__link:hover {
 
 .premium-image-scroll-container {
   width: 100%;
+  position: relative;
 }
 
 .premium-container-scroll {
   overflow: auto;
-}
-.premium-scroll__img {
-  width: 100%;
-  height: 100%;
 }
 
 .premium-image-scroll-container .premium-image-scroll-horizontal {
@@ -955,46 +952,42 @@ a.premium-dheading-block__link:hover {
   width: 100%;
   height: 100%;
 }
-.premium-image-scroll-container .premium-image-scroll-Horizontal img {
+.premium-image-scroll-container .premium-image-scroll-horizontal img {
   max-width: none;
-  height: auto;
-  transition: all 3s;
-  transform: translateY(0%);
-}
-.premium-image-scroll-container:hover .premium-image-scroll-Horizontal img {
-  transform: translateY(-20%);
+  height: 100%;
+  position: left;
 }
 
-.premium-image-scroll-container .premium-image-scroll-Vertical img {
+.premium-image-scroll-container .premium-image-scroll-vertical img {
   width: 100%;
   max-width: 100%;
-  height: 100%;
-  transition: all 3s;
-  transform: translateX(0%);
+  height: auto;
+  position: top;
 }
-.premium-image-scroll-container:hover .premium-image-scroll-Vertical img {
-  transform: translateX(10%);
+/* .premium-image-vertical-mouse-container {
+  overflow: scroll;
+} */
+/* .premium-image-vertical-hover-container:hover img {
+  transform: translateY(-20%);
 }
+.premium-image-horizontal-hover-container:hover img {
+  transform: translateX(30%);
+} */
 
 .premium-image-scroll-ver {
   position: relative;
 }
 
-.premium-image-scroll-container .premium-image-scroll-overlay {
-  background: rgba(2, 2, 2, 0.3);
-}
-
-.premium-image-scroll-container .premium-image-scroll-link,
-.premium-image-scroll-container .premium-image-scroll-overlay {
+.premium-image-scroll-overlay {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 4;
+  opacity: 0.4;
 }
 
-.premium-container-scroll-instant .premium-image-scroll-image {
+.premium-image-scroll-image {
   -webkit-transition: all 0s ease-in-out !important;
   transition: all 0s ease-in-out !important;
 }
@@ -1003,13 +996,9 @@ a.premium-dheading-block__link:hover {
   -webkit-transition: -webkit-transform 3s ease-in-out;
   transition: -webkit-transform 3s ease-in-out;
   transition: transform 3s ease-in-out;
-  transition: transform 3s ease-in-out, -webkit-transform 3s ease-in-out;
-}
 
-.premium-image-scroll-container .premium-image-scroll-overlay {
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  opacity: 1;
+  z-index: 99999;
+  transition: transform 3s ease-in-out, -webkit-transform 3s ease-in-out;
 }
 
 .pa-horizontal-mouse-scroll:before {
