@@ -54121,6 +54121,9 @@ registerBlockType("premium/scroll", {
     imageHeight: {
       type: "number"
     },
+    imageWidth: {
+      type: "number"
+    },
     urlCheck: {
       type: "boolean",
       default: false
@@ -54142,6 +54145,10 @@ registerBlockType("premium/scroll", {
     minHeight: {
       type: "number"
     },
+    width: {
+      type: "number",
+      default: "default"
+    },
     effectDir: {
       type: "string",
       default: "vertical"
@@ -54149,6 +54156,10 @@ registerBlockType("premium/scroll", {
     hoverEffect: {
       type: "string",
       default: "hover"
+    },
+    reverse: {
+      type: "boolean",
+      default: false
     },
     targetOverlay: {
       type: "boolean",
@@ -54262,7 +54273,6 @@ var _wp$editor = wp.editor,
 
 function edit(props) {
   var setAttributes = props.setAttributes,
-      className = props.className,
       isSelected = props.isSelected,
       blockID = props.clientId;
   var _props$attributes = props.attributes,
@@ -54293,15 +54303,17 @@ function edit(props) {
       containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
       containerShadowVertical = _props$attributes.containerShadowVertical,
       containerShadowPosition = _props$attributes.containerShadowPosition,
-      verAlign = _props$attributes.verAlign;
+      reverse = _props$attributes.reverse,
+      width = _props$attributes.width,
+      imageWidth = _props$attributes.imageWidth;
 
 
   var hover = [{
     value: "vertical",
-    label: __("vertical")
+    label: __("Vertical")
   }, {
     value: "horizontal",
-    label: __("horizontal")
+    label: __("Horizontal")
   }];
   var trigger = [{
     value: "hover",
@@ -54328,24 +54340,42 @@ function edit(props) {
     setAttributes({
       imageURL: img.url,
       imageID: img.id,
-      imageHeight: img.height
+      imageHeight: img.height,
+      imageWidth: img.width
     });
   };
 
   var onChangeDirection = function onChangeDirection(newDir) {
-    HOVER.value === "vertical" ? newDir = "horizontal" : newDir = "vertical";
-    setAttributes({ effectDir: newDir });
+    effectDir === "vertical" ? newDir = "horizontal" : newDir = "vertical";
+    setAttributes({ effectDir: newDir, reverse: !reverse });
   };
   var transformOffset = imageHeight - height;
 
   var setTransform = function setTransform(e) {
+    var imageitem = e.target;
     if (effectDir === "vertical" && hoverEffect === "hover") {
-      var imageitem = e.target.c;
+      console.log(imageitem.clientHeight - height);
       var transformOffset = imageitem.clientHeight - height;
       console.log(transformOffset);
 
       imageitem.style.cssText = "transform:translateY(-" + transformOffset + "px);";
+    } else if (effectDir === "horizontal" && hoverEffect === "hover") {
+      var transformOffset = 479 - imageitem.clientWidth;
+      imageitem.style.cssText = "transform:translateX(" + transformOffset + "px);";
     }
+  };
+  var endTransform = function endTransform(e) {
+    var scrollElement = document.querySelector(".premium-image-scroll-container");
+    var scrollOverlay = document.querySelector(".premium-image-scroll-overlay");
+    var imageitem = e.target;
+    if (effectDir === "vertical" && hoverEffect === "hover") {
+      var imageitem = e.target;
+      imageitem.style.cssText = "transform:translateY(0px);";
+    } else if (effectDir === "horizontal" && hoverEffect === "hover") {
+      var transformOffset = 479 - imageitem.clientWidth;
+      imageitem.style.cssText = "transform:translateX(0px);";
+    }
+    console.log(imageitem.clientWidth);
   };
 
   return [isSelected && wp.element.createElement(
@@ -54363,7 +54393,7 @@ function edit(props) {
           "Image Setting"
         )
       ),
-      imageURL && wp.element.createElement("img", { src: imageURL, width: "100%", height: "auto" }),
+      imageURL && wp.element.createElement("img", { src: imageURL }),
       wp.element.createElement(MediaUpload, {
         onSelect: onFileSelect,
         value: imageID,
@@ -54420,11 +54450,11 @@ function edit(props) {
         wp.element.createElement(
           "strong",
           null,
-          "Advance Setting"
+          "Advanced Setting"
         )
       ),
       wp.element.createElement(SelectControl, {
-        label: __("direction"),
+        label: __("Direction"),
         options: hover,
         value: effectDir,
         onChange: function onChange(newEffect) {
@@ -54432,12 +54462,12 @@ function edit(props) {
         }
       }),
       wp.element.createElement(ToggleControl, {
-        label: __("reverse"),
-        checked: target,
+        label: __("Reverse"),
+        checked: reverse,
         onChange: onChangeDirection
       }),
       wp.element.createElement(SelectControl, {
-        label: __("trigger"),
+        label: __("Trigger"),
         options: trigger,
         value: hoverEffect,
         onChange: function onChange(newEffect) {
@@ -54574,7 +54604,6 @@ function edit(props) {
       style: {
         boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
       }
-      //  onMouseEnter={scroll}
     },
     imageURL && wp.element.createElement(
       "div",
@@ -54587,8 +54616,7 @@ function edit(props) {
           borderColor: borderColor,
           minHeight: minHeight,
           height: height
-        },
-        "data-settings": "{'direction':`vertical`,'trigger':'hover','reverse':''}"
+        }
       },
       wp.element.createElement(
         "div",
@@ -54597,16 +54625,20 @@ function edit(props) {
         },
         wp.element.createElement("div", {
           className: "premium-image-scroll-overlay",
-          style: { background: "" + background }
+          style: { backgroundColor: background }
         }),
         wp.element.createElement("img", {
           alt: "scroll Image",
           src: imageURL,
           style: {
-            zindex: "99",
             filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+          },
+          onMouseEnter: function onMouseEnter(e) {
+            return setTransform(e);
+          },
+          onMouseLeave: function onMouseLeave(e) {
+            return endTransform(e);
           }
-          // onMouseEnter={(e) => setTransform(e)}
         })
       )
     )

@@ -30,6 +30,9 @@ registerBlockType("premium/scroll", {
     imageHeight: {
       type: "number",
     },
+    imageWidth: {
+      type: "number",
+    },
     urlCheck: {
       type: "boolean",
       default: false,
@@ -51,6 +54,10 @@ registerBlockType("premium/scroll", {
     minHeight: {
       type: "number",
     },
+    width: {
+      type: "number",
+      default: "default",
+    },
     effectDir: {
       type: "string",
       default: "vertical",
@@ -58,6 +65,10 @@ registerBlockType("premium/scroll", {
     hoverEffect: {
       type: "string",
       default: "hover",
+    },
+    reverse: {
+      type: "boolean",
+      default: false,
     },
     targetOverlay: {
       type: "boolean",

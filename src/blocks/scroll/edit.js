@@ -23,7 +23,7 @@ const {
 } = wp.editor;
 
 function edit(props) {
-  const { setAttributes, className, isSelected, clientId: blockID } = props;
+  const { setAttributes, isSelected, clientId: blockID } = props;
   const {
     id,
 
@@ -54,17 +54,19 @@ function edit(props) {
     containerShadowHorizontal,
     containerShadowVertical,
     containerShadowPosition,
-    verAlign,
+    reverse,
+    width,
+    imageWidth,
   } = props.attributes;
 
   const hover = [
     {
       value: "vertical",
-      label: __("vertical"),
+      label: __("Vertical"),
     },
     {
       value: "horizontal",
-      label: __("horizontal"),
+      label: __("Horizontal"),
     },
   ];
   const trigger = [
@@ -101,25 +103,45 @@ function edit(props) {
       imageURL: img.url,
       imageID: img.id,
       imageHeight: img.height,
+      imageWidth: img.width,
     });
   };
 
   const onChangeDirection = (newDir) => {
-    HOVER.value === "vertical"
-      ? (newDir = "horizontal")
-      : (newDir = "vertical");
-    setAttributes({ effectDir: newDir });
+    effectDir === "vertical" ? (newDir = "horizontal") : (newDir = "vertical");
+    setAttributes({ effectDir: newDir, reverse: !reverse });
   };
   var transformOffset = imageHeight - height;
 
   const setTransform = (e) => {
+    var imageitem = e.target;
     if (effectDir === "vertical" && hoverEffect === "hover") {
-      var imageitem = e.target.c;
+      console.log(imageitem.clientHeight - height);
       var transformOffset = imageitem.clientHeight - height;
       console.log(transformOffset);
 
       imageitem.style.cssText = `transform:translateY(-${transformOffset}px);`;
+    } else if (effectDir === "horizontal" && hoverEffect === "hover") {
+      var transformOffset = 479 - imageitem.clientWidth;
+      imageitem.style.cssText = `transform:translateX(${transformOffset}px);`;
     }
+  };
+  const endTransform = (e) => {
+    const scrollElement = document.querySelector(
+      ".premium-image-scroll-container"
+    );
+    const scrollOverlay = document.querySelector(
+      ".premium-image-scroll-overlay"
+    );
+    var imageitem = e.target;
+    if (effectDir === "vertical" && hoverEffect === "hover") {
+      var imageitem = e.target;
+      imageitem.style.cssText = `transform:translateY(0px);`;
+    } else if (effectDir === "horizontal" && hoverEffect === "hover") {
+      var transformOffset = 479 - imageitem.clientWidth;
+      imageitem.style.cssText = `transform:translateX(0px);`;
+    }
+    console.log(imageitem.clientWidth);
   };
 
   return [
@@ -129,7 +151,7 @@ function edit(props) {
           <p>
             <strong>Image Setting</strong>
           </p>
-          {imageURL && <img src={imageURL} width="100%" height="auto" />}
+          {imageURL && <img src={imageURL} />}
           <MediaUpload
             onSelect={onFileSelect}
             value={imageID}
@@ -174,23 +196,23 @@ function edit(props) {
         </PanelBody>
         <PanelBody>
           <p>
-            <strong>Advance Setting</strong>
+            <strong>Advanced Setting</strong>
           </p>
           <SelectControl
-            label={__("direction")}
+            label={__("Direction")}
             options={hover}
             value={effectDir}
             onChange={(newEffect) => setAttributes({ effectDir: newEffect })}
           />
 
           <ToggleControl
-            label={__("reverse")}
-            checked={target}
+            label={__("Reverse")}
+            checked={reverse}
             onChange={onChangeDirection}
           />
 
           <SelectControl
-            label={__("trigger")}
+            label={__("Trigger")}
             options={trigger}
             value={hoverEffect}
             onChange={(newEffect) => setAttributes({ hoverEffect: newEffect })}
@@ -300,7 +322,6 @@ function edit(props) {
       style={{
         boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
       }}
-      //  onMouseEnter={scroll}
     >
       {imageURL && (
         <div
@@ -313,23 +334,22 @@ function edit(props) {
             minHeight: minHeight,
             height: height,
           }}
-          data-settings="{'direction':`vertical`,'trigger':'hover','reverse':''}"
         >
           <div
             className={`premium-image-scroll-${effectDir} premium-image-scroll-${effectDir}`}
           >
             <div
               className="premium-image-scroll-overlay"
-              style={{ background: `${background}` }}
+              style={{ backgroundColor: background }}
             ></div>
             <img
               alt="scroll Image"
               src={imageURL}
               style={{
-                zindex: `99`,
                 filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
               }}
-              // onMouseEnter={(e) => setTransform(e)}
+              onMouseEnter={(e) => setTransform(e)}
+              onMouseLeave={(e) => endTransform(e)}
             />
           </div>
         </div>
