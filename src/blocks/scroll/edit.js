@@ -2,6 +2,8 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 
+import { scroll } from "../../../assets/js/settings";
+
 const { __ } = wp.i18n;
 
 const {
@@ -22,7 +24,12 @@ const {
   MediaUpload,
 } = wp.editor;
 
-function edit(props) {
+const edit = (props) => {
+  let scrollElement = document.getElementsByClassName("image-scroll");
+  let imageScroll = scrollElement[0];
+  console.log(imageScroll);
+
+  let transformOffset = null;
   const { setAttributes, isSelected, clientId: blockID } = props;
   const {
     id,
@@ -79,25 +86,19 @@ function edit(props) {
       label: __("Mouse Scroll"),
     },
   ];
-  const ALIGNS = [
-    {
-      value: "flex-start",
-      label: __("Top"),
-    },
-    {
-      value: "center",
-      label: __("Middle"),
-    },
-    {
-      value: "flex-end",
-      label: __("Bottom"),
-    },
-    {
-      value: "inherit",
-      label: __("Full"),
-    },
-  ];
-
+  const classVertical = `${
+    effectDir === "vertical" && hoverEffect === "mouse"
+      ? "premium-image-scroll-ver "
+      : ""
+  }`;
+  const classHorizontal = `${
+    effectDir === "horizontal" && hoverEffect === "hover"
+      ? "image-scroll-horizontal "
+      : ""
+  }`;
+  const contrainerClasses = `${
+    hoverEffect === "mouse" ? "premium-container-scroll" : ""
+  }`;
   const onFileSelect = (img) => {
     setAttributes({
       imageURL: img.url,
@@ -106,42 +107,26 @@ function edit(props) {
       imageWidth: img.width,
     });
   };
-
-  const onChangeDirection = (newDir) => {
-    effectDir === "vertical" ? (newDir = "horizontal") : (newDir = "vertical");
-    setAttributes({ effectDir: newDir, reverse: !reverse });
-  };
-  var transformOffset = imageHeight - height;
-
-  const setTransform = (e) => {
-    var imageitem = e.target;
+  const setTransform = () => {
+    console.log(reverse);
     if (effectDir === "vertical" && hoverEffect === "hover") {
-      console.log(imageitem.clientHeight - height);
-      var transformOffset = imageitem.clientHeight - height;
-      console.log(transformOffset);
+      transformOffset = imageScroll.clientHeight - height;
 
-      imageitem.style.cssText = `transform:translateY(-${transformOffset}px);`;
+      imageScroll.style.cssText = `transform:translateY(-${transformOffset}px);`;
     } else if (effectDir === "horizontal" && hoverEffect === "hover") {
-      var transformOffset = 479 - imageitem.clientWidth;
-      imageitem.style.cssText = `transform:translateX(${transformOffset}px);`;
+      transformOffset = 479 - imageScroll.clientWidth;
+      imageScroll.style.cssText = `transform:translateX(${transformOffset}px);`;
     }
   };
-  const endTransform = (e) => {
-    const scrollElement = document.querySelector(
-      ".premium-image-scroll-container"
-    );
-    const scrollOverlay = document.querySelector(
-      ".premium-image-scroll-overlay"
-    );
-    var imageitem = e.target;
+
+  const endTransform = () => {
+    console.log(scrollElement[0]);
+
     if (effectDir === "vertical" && hoverEffect === "hover") {
-      var imageitem = e.target;
-      imageitem.style.cssText = `transform:translateY(0px);`;
+      imageScroll.style.cssText = `transform:translateY(0px);`;
     } else if (effectDir === "horizontal" && hoverEffect === "hover") {
-      var transformOffset = 479 - imageitem.clientWidth;
-      imageitem.style.cssText = `transform:translateX(0px);`;
+      imageScroll.style.cssText = `transform:translateX(0px);`;
     }
-    console.log(imageitem.clientWidth);
   };
 
   return [
@@ -182,6 +167,7 @@ function edit(props) {
           />
           {urlCheck && (
             <TextControl
+              label={__("URL")}
               value={url}
               onChange={(newURL) => setAttributes({ url: newURL })}
             />
@@ -208,7 +194,7 @@ function edit(props) {
           <ToggleControl
             label={__("Reverse")}
             checked={reverse}
-            onChange={onChangeDirection}
+            onChange={(value) => setAttributes({ reverse: value })}
           />
 
           <SelectControl
@@ -325,7 +311,7 @@ function edit(props) {
     >
       {imageURL && (
         <div
-          className={`premium-image-scroll-container  premium-image-${effectDir}-${hoverEffect}-container `}
+          className={` premium-image-scroll-container premium-container-scroll-instant`}
           style={{
             border: borderType,
             borderWidth: borderWidth + "px",
@@ -334,28 +320,32 @@ function edit(props) {
             minHeight: minHeight,
             height: height,
           }}
+          onMouseEnter={setTransform}
+          onMouseLeave={endTransform}
         >
+          {urlCheck && <a class="premium-image-scroll-link" href={url}></a>}
           <div
-            className={`premium-image-scroll-${effectDir} premium-image-scroll-${effectDir}`}
+            className={` premium-image-scroll-${effectDir}  ${classHorizontal} ${classVertical}`}
           >
-            <div
-              className="premium-image-scroll-overlay"
-              style={{ backgroundColor: background }}
-            ></div>
+            {targetOverlay && (
+              <div
+                className="premium-image-scroll-overlay"
+                style={{ backgroundColor: background }}
+              ></div>
+            )}
             <img
+              className={`image-scroll`}
               alt="scroll Image"
               src={imageURL}
               style={{
                 filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
               }}
-              onMouseEnter={(e) => setTransform(e)}
-              onMouseLeave={(e) => endTransform(e)}
             />
           </div>
         </div>
       )}
     </div>,
   ];
-}
+};
 
 export default edit;

@@ -925,84 +925,140 @@ a.premium-dheading-block__link:hover {
 }
 /**************** premium Scroll Image *********************/
 /*******************************************************/
-
-.premium-image-scroll-section,
-.premium-image-scroll-container {
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
 .premium-image-scroll-section {
   overflow: hidden;
   width: 100%;
   position: relative;
 }
-
 .premium-image-scroll-container {
   width: 100%;
-  position: relative;
+  overflow: hidden;
 }
-
+.premium-image-scroll-container .premium-image-scroll-mask-media {
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+.premium-container-scroll {
+  overflow: auto;
+}
 .premium-image-scroll-container .premium-image-scroll-horizontal {
   position: relative;
   width: 100%;
   height: 100%;
 }
 .premium-image-scroll-container .premium-image-scroll-horizontal img {
-  max-width: 100%;
+  max-width: none;
   height: 100%;
-  
 }
-
 .premium-image-scroll-container .premium-image-scroll-vertical img {
   width: 100%;
   max-width: 100%;
   height: auto;
-  position: top;
 }
-.premium-image-vertical-mouse-container {
-  overflow-y: scroll;
-}
-.premium-image-horizontal-mouse-container {
-  overflow-x: scroll;
-}
-.premium-image-vertical-hover-container:hover img {
-  transform: translateY(-20%);
-}
-.premium-image-horizontal-hover-container:hover img {
-  transform: translateX(30px);
-}
-
 .premium-image-scroll-ver {
   position: relative;
 }
-
-.premium-image-scroll-overlay {
+.premium-image-scroll-container .premium-image-scroll-overlay {
+  background: rgba(2, 2, 2, 0.3);
+}
+.premium-image-scroll-container .premium-image-scroll-link,
+.premium-image-scroll-container .premium-image-scroll-overlay {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  opacity: 0.4;
+  z-index: 4;
 }
-
-.premium-image-scroll-image {
+.premium-image-scroll-content {
+  display: inline-block;
+  position: absolute;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  z-index: 5;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.premium-container-scroll-instant .premium-image-scroll-image {
   -webkit-transition: all 0s ease-in-out !important;
   transition: all 0s ease-in-out !important;
 }
-
 .premium-image-scroll-container img {
   -webkit-transition: -webkit-transform 3s ease-in-out;
   transition: -webkit-transform 3s ease-in-out;
   transition: transform 3s ease-in-out;
-
-  z-index: 99999;
   transition: transform 3s ease-in-out, -webkit-transform 3s ease-in-out;
 }
+.premium-image-scroll-container .premium-image-scroll-content,
+.premium-image-scroll-container .premium-image-scroll-overlay {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.3;
+}
 
+.premium-image-scroll-container:hover .premium-image-scroll-content {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.pa-horizontal-mouse-scroll:before {
+  content: "\e917";
+}
+.pa-vertical-mouse-scroll:before {
+  content: "\e918";
+}
 .pa-horizontal-mouse-scroll {
   -webkit-animation-name: pa-scroll-horizontal;
   animation-name: pa-scroll-horizontal;
+}
+.pa-vertical-mouse-scroll {
+  -webkit-animation-name: pa-scroll-vertical;
+  animation-name: pa-scroll-vertical;
+}
+@-webkit-keyframes pa-scroll-vertical {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+}
+@keyframes pa-scroll-vertical {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+}
+@-webkit-keyframes pa-scroll-horizontal {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(5px);
+    transform: translateX(5px);
+  }
+}
+@keyframes pa-scroll-horizontal {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(5px);
+    transform: translateX(5px);
+  }
 }
 
 /**************** Premium Count Up *********************/
