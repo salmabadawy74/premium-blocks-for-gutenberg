@@ -3,200 +3,200 @@ const className = "premium-icon";
 const deprecated_attributes_1_5_5 = {
   iconType: {
     type: "string",
-    default: "dash"
+    default: "dash",
   },
   selectedIcon: {
     type: "string",
-    default: "dashicons dashicons-admin-site"
+    default: "dashicons dashicons-admin-site",
   },
   align: {
     type: "string",
-    default: "center"
+    default: "center",
   },
   hoverEffect: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   iconSize: {
-    type: "number"
+    type: "number",
   },
   iconColor: {
     type: "string",
-    default: "#6ec1e4"
+    default: "#6ec1e4",
   },
   iconBack: {
-    type: "string"
+    type: "string",
   },
   padding: {
     type: "string",
-    default: "up"
+    default: "up",
   },
   shadowColor: {
-    type: "string"
+    type: "string",
   },
   shadowBlur: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   shadowHorizontal: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   shadowVertical: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   paddingT: {
-    type: "number"
+    type: "number",
   },
   paddingR: {
-    type: "number"
+    type: "number",
   },
   paddingB: {
-    type: "number"
+    type: "number",
   },
   paddingL: {
-    type: "number"
+    type: "number",
   },
   margin: {
     type: "string",
-    default: "up"
+    default: "up",
   },
   marginT: {
-    type: "number"
+    type: "number",
   },
   marginR: {
-    type: "number"
+    type: "number",
   },
   marginB: {
-    type: "number"
+    type: "number",
   },
   marginL: {
-    type: "number"
+    type: "number",
   },
   borderType: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   borderWidth: {
     type: "number",
-    default: "1"
+    default: "1",
   },
   borderRadius: {
     type: "number",
-    default: 100
+    default: 100,
   },
   borderColor: {
-    type: "string"
+    type: "string",
   },
   background: {
-    type: "string"
+    type: "string",
   },
   backgroundColor: {
-    type: "string"
+    type: "string",
   },
   imageID: {
-    type: "string"
+    type: "string",
   },
   imageURL: {
-    type: "string"
+    type: "string",
   },
   backgroundRepeat: {
     type: "string",
-    default: "no-repeat"
+    default: "no-repeat",
   },
   backgroundPosition: {
     type: "string",
-    default: "top center"
+    default: "top center",
   },
   backgroundSize: {
     type: "string",
-    default: "auto"
+    default: "auto",
   },
   fixed: {
     type: "boolean",
-    default: false
+    default: false,
   },
   wrapBorderType: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   wrapBorderWidth: {
     type: "number",
-    default: "1"
+    default: "1",
   },
   wrapBorderRadius: {
-    type: "number"
+    type: "number",
   },
   wrapBorderColor: {
-    type: "string"
+    type: "string",
   },
   wrapPadding: {
     type: "string",
-    default: "up"
+    default: "up",
   },
   wrapShadowColor: {
-    type: "string"
+    type: "string",
   },
   wrapShadowBlur: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   wrapShadowHorizontal: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   wrapShadowVertical: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   wrapShadowPosition: {
     type: "string",
-    default: ""
+    default: "",
   },
   wrapPaddingT: {
-    type: "number"
+    type: "number",
   },
   wrapPaddingR: {
-    type: "number"
+    type: "number",
   },
   wrapPaddingB: {
-    type: "number"
+    type: "number",
   },
   wrapPaddingL: {
-    type: "number"
+    type: "number",
   },
   wrapMargin: {
     type: "string",
-    default: "up"
+    default: "up",
   },
   wrapMarginT: {
-    type: "number"
+    type: "number",
   },
   wrapMarginR: {
-    type: "number"
+    type: "number",
   },
   wrapMarginB: {
-    type: "number"
+    type: "number",
   },
   wrapMarginL: {
-    type: "number"
+    type: "number",
   },
   urlCheck: {
-    type: "boolean"
+    type: "boolean",
   },
   link: {
-    type: "string"
+    type: "string",
   },
   target: {
-    type: "boolean"
-  }
+    type: "boolean",
+  },
 };
 
 const newAttributes_1_5_6 = {
   iconSizeUnit: {
-    type: "px"
-  }
+    type: "px",
+  },
 };
 
 const deprecated_attributes_1_5_6 = Object.assign(
@@ -207,350 +207,350 @@ const deprecated_attributes_1_5_6 = Object.assign(
 const deprecated_attributes_1_3_9 = {
   iconType: {
     type: "string",
-    default: "dash"
+    default: "dash",
   },
   selectedIcon: {
     type: "string",
-    default: "dashicons dashicons-admin-site"
+    default: "dashicons dashicons-admin-site",
   },
   align: {
     type: "string",
-    default: "center"
+    default: "center",
   },
   hoverEffect: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   iconSize: {
-    type: "number"
+    type: "number",
   },
   iconColor: {
     type: "string",
-    default: "#6ec1e4"
+    default: "#6ec1e4",
   },
   iconBack: {
-    type: "string"
+    type: "string",
   },
   padding: {
     type: "string",
-    default: "up"
+    default: "up",
   },
   shadowColor: {
-    type: "string"
+    type: "string",
   },
   shadowBlur: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   shadowHorizontal: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   shadowVertical: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   paddingT: {
-    type: "number"
+    type: "number",
   },
   paddingR: {
-    type: "number"
+    type: "number",
   },
   paddingB: {
-    type: "number"
+    type: "number",
   },
   paddingL: {
-    type: "number"
+    type: "number",
   },
   margin: {
     type: "string",
-    default: "up"
+    default: "up",
   },
   marginT: {
-    type: "number"
+    type: "number",
   },
   marginR: {
-    type: "number"
+    type: "number",
   },
   marginB: {
-    type: "number"
+    type: "number",
   },
   marginL: {
-    type: "number"
+    type: "number",
   },
   borderType: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   borderWidth: {
     type: "number",
-    default: "1"
+    default: "1",
   },
   borderRadius: {
     type: "number",
-    default: 100
+    default: 100,
   },
   borderColor: {
-    type: "string"
+    type: "string",
   },
   background: {
-    type: "string"
+    type: "string",
   },
   wrapBorderType: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   wrapBorderWidth: {
     type: "number",
-    default: "1"
+    default: "1",
   },
   wrapBorderRadius: {
-    type: "number"
+    type: "number",
   },
   wrapBorderColor: {
-    type: "string"
+    type: "string",
   },
   wrapPadding: {
     type: "string",
-    default: "up"
+    default: "up",
   },
   wrapShadowColor: {
-    type: "string"
+    type: "string",
   },
   wrapShadowBlur: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   wrapShadowHorizontal: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   wrapShadowVertical: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   wrapShadowPosition: {
     type: "string",
-    default: ""
+    default: "",
   },
   wrapPaddingT: {
-    type: "number"
+    type: "number",
   },
   wrapPaddingR: {
-    type: "number"
+    type: "number",
   },
   wrapPaddingB: {
-    type: "number"
+    type: "number",
   },
   wrapPaddingL: {
-    type: "number"
+    type: "number",
   },
   wrapMargin: {
     type: "string",
-    default: "up"
+    default: "up",
   },
   wrapMarginT: {
-    type: "number"
+    type: "number",
   },
   wrapMarginR: {
-    type: "number"
+    type: "number",
   },
   wrapMarginB: {
-    type: "number"
+    type: "number",
   },
   wrapMarginL: {
-    type: "number"
+    type: "number",
   },
   urlCheck: {
-    type: "boolean"
+    type: "boolean",
   },
   link: {
-    type: "string"
+    type: "string",
   },
   target: {
-    type: "boolean"
-  }
+    type: "boolean",
+  },
 };
 
 const deprecated_attributes_1_3_1 = {
   iconType: {
     type: "string",
-    default: "dash"
+    default: "dash",
   },
   selectedIcon: {
     type: "string",
-    default: "dashicons dashicons-admin-site"
+    default: "dashicons dashicons-admin-site",
   },
   align: {
     type: "string",
-    default: "center"
+    default: "center",
   },
   hoverEffect: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   iconSize: {
     type: "number",
-    default: 50
+    default: 50,
   },
   iconColor: {
     type: "string",
-    default: "#6ec1e4"
+    default: "#6ec1e4",
   },
   iconBack: {
-    type: "string"
+    type: "string",
   },
   padding: {
     type: "string",
-    default: "up"
+    default: "up",
   },
   shadowColor: {
-    type: "string"
+    type: "string",
   },
   shadowBlur: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   shadowHorizontal: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   shadowVertical: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   paddingT: {
-    type: "number"
+    type: "number",
   },
   paddingR: {
-    type: "number"
+    type: "number",
   },
   paddingB: {
-    type: "number"
+    type: "number",
   },
   paddingL: {
-    type: "number"
+    type: "number",
   },
   margin: {
     type: "string",
-    default: "up"
+    default: "up",
   },
   marginT: {
-    type: "number"
+    type: "number",
   },
   marginR: {
-    type: "number"
+    type: "number",
   },
   marginB: {
-    type: "number"
+    type: "number",
   },
   marginL: {
-    type: "number"
+    type: "number",
   },
   borderType: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   borderWidth: {
     type: "number",
-    default: "1"
+    default: "1",
   },
   borderRadius: {
     type: "number",
-    default: 100
+    default: 100,
   },
   borderColor: {
-    type: "string"
+    type: "string",
   },
   background: {
-    type: "string"
+    type: "string",
   },
   wrapBorderType: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   wrapBorderWidth: {
     type: "number",
-    default: "1"
+    default: "1",
   },
   wrapBorderRadius: {
-    type: "number"
+    type: "number",
   },
   wrapBorderColor: {
-    type: "string"
+    type: "string",
   },
   wrapPadding: {
     type: "string",
-    default: "up"
+    default: "up",
   },
   wrapShadowColor: {
-    type: "string"
+    type: "string",
   },
   wrapShadowBlur: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   wrapShadowHorizontal: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   wrapShadowVertical: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   wrapShadowPosition: {
     type: "string",
-    default: ""
+    default: "",
   },
   wrapPaddingT: {
-    type: "number"
+    type: "number",
   },
   wrapPaddingR: {
-    type: "number"
+    type: "number",
   },
   wrapPaddingB: {
-    type: "number"
+    type: "number",
   },
   wrapPaddingL: {
-    type: "number"
+    type: "number",
   },
   wrapMargin: {
     type: "string",
-    default: "up"
+    default: "up",
   },
   wrapMarginT: {
-    type: "number"
+    type: "number",
   },
   wrapMarginR: {
-    type: "number"
+    type: "number",
   },
   wrapMarginB: {
-    type: "number"
+    type: "number",
   },
   wrapMarginL: {
-    type: "number"
+    type: "number",
   },
   urlCheck: {
-    type: "boolean"
+    type: "boolean",
   },
   link: {
-    type: "string"
+    type: "string",
   },
   target: {
-    type: "boolean"
-  }
+    type: "boolean",
+  },
 };
 
 const deprecatedContent = [
   {
     attributes: deprecated_attributes_1_5_6,
-    migrate: attributes => {
+    migrate: (attributes) => {
       let newAttributes = {
-        paddingU: "px"
+        paddingU: "px",
       };
       return Object.assign(attributes, newAttributes);
     },
-    save: props => {
+    save: (props) => {
       const {
         selectedIcon,
         align,
@@ -600,7 +600,7 @@ const deprecatedContent = [
         wrapMarginL,
         urlCheck,
         link,
-        target
+        target,
       } = props.attributes;
 
       return (
@@ -618,9 +618,11 @@ const deprecatedContent = [
             borderWidth: wrapBorderWidth + "px",
             borderRadius: wrapBorderRadius + "px",
             borderColor: wrapBorderColor,
-            boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
-              0}px ${wrapShadowBlur ||
-              0}px ${wrapShadowColor} ${wrapShadowPosition}`,
+            boxShadow: `${wrapShadowHorizontal || 0}px ${
+              wrapShadowVertical || 0
+            }px ${
+              wrapShadowBlur || 0
+            }px ${wrapShadowColor} ${wrapShadowPosition}`,
             paddingTop: wrapPaddingT,
             paddingRight: wrapPaddingR,
             paddingBottom: wrapPaddingB,
@@ -628,7 +630,7 @@ const deprecatedContent = [
             marginTop: wrapMarginT,
             marginRight: wrapMarginR,
             marginBottom: wrapMarginB,
-            marginLeft: wrapMarginL
+            marginLeft: wrapMarginL,
           }}
         >
           <a
@@ -655,24 +657,25 @@ const deprecatedContent = [
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius || 100 + "px",
                 borderColor: borderColor,
-                textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
-                  0}px ${shadowBlur || 0}px ${shadowColor}`
+                textShadow: `${shadowHorizontal || 0}px ${
+                  shadowVertical || 0
+                }px ${shadowBlur || 0}px ${shadowColor}`,
               }}
             />
           </a>
         </div>
       );
-    }
+    },
   },
   {
     attributes: deprecated_attributes_1_5_5,
-    migrate: attributes => {
+    migrate: (attributes) => {
       let newAttributes = {
-        iconSizeUnit: "px"
+        iconSizeUnit: "px",
       };
       return Object.assign(attributes, newAttributes);
     },
-    save: props => {
+    save: (props) => {
       const {
         selectedIcon,
         align,
@@ -721,7 +724,7 @@ const deprecatedContent = [
         wrapMarginL,
         urlCheck,
         link,
-        target
+        target,
       } = props.attributes;
 
       return (
@@ -739,9 +742,11 @@ const deprecatedContent = [
             borderWidth: wrapBorderWidth + "px",
             borderRadius: wrapBorderRadius + "px",
             borderColor: wrapBorderColor,
-            boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
-              0}px ${wrapShadowBlur ||
-              0}px ${wrapShadowColor} ${wrapShadowPosition}`,
+            boxShadow: `${wrapShadowHorizontal || 0}px ${
+              wrapShadowVertical || 0
+            }px ${
+              wrapShadowBlur || 0
+            }px ${wrapShadowColor} ${wrapShadowPosition}`,
             paddingTop: wrapPaddingT,
             paddingRight: wrapPaddingR,
             paddingBottom: wrapPaddingB,
@@ -749,7 +754,7 @@ const deprecatedContent = [
             marginTop: wrapMarginT,
             marginRight: wrapMarginR,
             marginBottom: wrapMarginB,
-            marginLeft: wrapMarginL
+            marginLeft: wrapMarginL,
           }}
         >
           <a
@@ -776,18 +781,19 @@ const deprecatedContent = [
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius || 100 + "px",
                 borderColor: borderColor,
-                textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
-                  0}px ${shadowBlur || 0}px ${shadowColor}`
+                textShadow: `${shadowHorizontal || 0}px ${
+                  shadowVertical || 0
+                }px ${shadowBlur || 0}px ${shadowColor}`,
               }}
             />
           </a>
         </div>
       );
-    }
+    },
   },
   {
     attributes: deprecated_attributes_1_3_9,
-    migrate: attributes => {
+    migrate: (attributes) => {
       let newAttributes = {
         backgroundColor: attributes.background,
         imageID: "",
@@ -795,11 +801,11 @@ const deprecatedContent = [
         fixed: false,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "top center",
-        backgroundSize: "auto"
+        backgroundSize: "auto",
       };
       return Object.assign(attributes, newAttributes);
     },
-    save: props => {
+    save: (props) => {
       const {
         selectedIcon,
         align,
@@ -843,7 +849,7 @@ const deprecatedContent = [
         wrapMarginL,
         urlCheck,
         link,
-        target
+        target,
       } = props.attributes;
 
       return (
@@ -856,9 +862,11 @@ const deprecatedContent = [
             borderWidth: wrapBorderWidth + "px",
             borderRadius: wrapBorderRadius + "px",
             borderColor: wrapBorderColor,
-            boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
-              0}px ${wrapShadowBlur ||
-              0}px ${wrapShadowColor} ${wrapShadowPosition}`,
+            boxShadow: `${wrapShadowHorizontal || 0}px ${
+              wrapShadowVertical || 0
+            }px ${
+              wrapShadowBlur || 0
+            }px ${wrapShadowColor} ${wrapShadowPosition}`,
             paddingTop: wrapPaddingT,
             paddingRight: wrapPaddingR,
             paddingBottom: wrapPaddingB,
@@ -866,7 +874,7 @@ const deprecatedContent = [
             marginTop: wrapMarginT,
             marginRight: wrapMarginR,
             marginBottom: wrapMarginB,
-            marginLeft: wrapMarginL
+            marginLeft: wrapMarginL,
           }}
         >
           <a
@@ -892,18 +900,19 @@ const deprecatedContent = [
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius || 100 + "px",
                 borderColor: borderColor,
-                textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
-                  0}px ${shadowBlur || 0}px ${shadowColor}`
+                textShadow: `${shadowHorizontal || 0}px ${
+                  shadowVertical || 0
+                }px ${shadowBlur || 0}px ${shadowColor}`,
               }}
             />
           </a>
         </div>
       );
-    }
+    },
   },
   {
     attributes: deprecated_attributes_1_3_1,
-    save: props => {
+    save: (props) => {
       const {
         selectedIcon,
         align,
@@ -942,7 +951,7 @@ const deprecatedContent = [
         wrapMarginL,
         urlCheck,
         link,
-        target
+        target,
       } = props.attributes;
 
       return (
@@ -962,7 +971,7 @@ const deprecatedContent = [
             marginTop: wrapMarginT,
             marginRight: wrapMarginR,
             marginBottom: wrapMarginB,
-            marginLeft: wrapMarginL
+            marginLeft: wrapMarginL,
           }}
         >
           <a
@@ -988,14 +997,14 @@ const deprecatedContent = [
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
-                textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
+                textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
               }}
             />
           </a>
         </div>
       );
-    }
-  }
+    },
+  },
 ];
 
 export default deprecatedContent;

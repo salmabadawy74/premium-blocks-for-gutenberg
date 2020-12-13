@@ -54087,9 +54087,11 @@ var PremiumPaddingR = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(266);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(270);
 
 
 var __ = wp.i18n.__;
+
 
 
 
@@ -54242,7 +54244,8 @@ registerBlockType("premium/scroll", {
   },
 
   edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
-  save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */]
+  save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
+  deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
 });
 
 /***/ }),
@@ -54250,17 +54253,23 @@ registerBlockType("premium/scroll", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_border__ = __webpack_require__(4);
+/* WEBPACK VAR INJECTION */(function(setImmediate) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_filters__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_js_settings__ = __webpack_require__(2);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
 
 
 var __ = wp.i18n.__;
+var Component = wp.element.Component;
 var _wp$components = wp.components,
     IconButton = _wp$components.IconButton,
     PanelBody = _wp$components.PanelBody,
@@ -54273,23 +54282,464 @@ var _wp$editor = wp.editor,
     ColorPalette = _wp$editor.ColorPalette,
     MediaUpload = _wp$editor.MediaUpload;
 
+var scrollElement = void 0,
+    scrollOverlay = void 0,
+    scrollVertical = void 0,
+    imageScroll = void 0;
+var transformOffset = null;
 
-var edit = function edit(props) {
-  var scrollElement = document.getElementsByClassName("image-scroll");
-  var imageScroll = scrollElement[0];
-  console.log(imageScroll);
+var edit = function (_Component) {
+  _inherits(edit, _Component);
 
+  function edit() {
+    _classCallCheck(this, edit);
+
+    return _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+  }
+
+  _createClass(edit, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _props = this.props,
+          attributes = _props.attributes,
+          setAttributes = _props.setAttributes,
+          clientId = _props.clientId;
+
+      setAttributes({ id: clientId });
+
+      console.log(clientId);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var _this2 = this;
+
+      setImmediate(function () {
+
+        scrollElement = document.getElementById("" + _this2.props.clientId);
+
+        scrollOverlay = scrollElement.querySelector(".premium-image-scroll-overlay");
+        scrollVertical = scrollElement.querySelector(".premium-image-scroll-vertical");
+        imageScroll = scrollElement.querySelector(".image-scroll");
+      }, 10);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _props2 = this.props,
+          setAttributes = _props2.setAttributes,
+          attributes = _props2.attributes,
+          isSelected = _props2.isSelected,
+          blockID = _props2.clientId;
+      var id = attributes.id,
+          imageURL = attributes.imageURL,
+          imageID = attributes.imageID,
+          url = attributes.url,
+          target = attributes.target,
+          urlCheck = attributes.urlCheck,
+          height = attributes.height,
+          minHeight = attributes.minHeight,
+          effectDir = attributes.effectDir,
+          background = attributes.background,
+          targetOverlay = attributes.targetOverlay,
+          hoverEffect = attributes.hoverEffect,
+          blur = attributes.blur,
+          bright = attributes.bright,
+          contrast = attributes.contrast,
+          saturation = attributes.saturation,
+          hue = attributes.hue,
+          borderType = attributes.borderType,
+          borderWidth = attributes.borderWidth,
+          borderRadius = attributes.borderRadius,
+          borderColor = attributes.borderColor,
+          containerShadowColor = attributes.containerShadowColor,
+          containerShadowBlur = attributes.containerShadowBlur,
+          containerShadowHorizontal = attributes.containerShadowHorizontal,
+          containerShadowVertical = attributes.containerShadowVertical,
+          containerShadowPosition = attributes.containerShadowPosition,
+          reverse = attributes.reverse;
+
+
+      var hover = [{
+        value: "vertical",
+        label: __("Vertical")
+      }, {
+        value: "horizontal",
+        label: __("Horizontal")
+      }];
+
+      var trigger = [{
+        value: "hover",
+        label: __("Hover")
+      }, {
+        value: "mouse",
+        label: __("Mouse Scroll")
+      }];
+
+      var classVertical = "" + (effectDir === "vertical" && hoverEffect === "mouse" ? "premium-image-scroll-ver " : "");
+
+      var reverseClasses = "" + (reverse && effectDir === "vertical" ? "premium-container-scroll-instant" : "");
+
+      var classHorizontal = "" + (effectDir === "horizontal" && hoverEffect === "hover" ? "image-scroll-horizontal " : "");
+
+      var contrainerClasses = "" + (hoverEffect === "mouse" ? "premium-container-scroll" : "");
+
+      var onFileSelect = function onFileSelect(img) {
+        setAttributes({
+          imageURL: img.url,
+          imageID: img.id,
+          imageHeight: img.height,
+          imageWidth: img.width
+        });
+      };
+      var startTransform = function startTransform() {
+        imageScroll.style.cssText = "\n        transform:" + (effectDir === "vertical" ? "translateY" : "translateX") + "(" + transformOffset + "px);";
+      };
+
+      var endTransform = function endTransform() {
+        imageScroll.style.cssText = "transform:" + (effectDir === "vertical" ? "translateY" : "translateX") + "(0px);";
+      };
+      var setTransform = function setTransform() {
+        if (effectDir === "vertical" && hoverEffect === "hover") {
+          transformOffset = scrollElement.clientHeight - imageScroll.clientHeight;
+        } else if (effectDir === "horizontal" && hoverEffect === "hover") {
+          transformOffset = scrollElement.clientWidth - imageScroll.clientWidth;
+        }
+        if (hoverEffect === "mouse") {
+          transformOffset = null;
+        }
+      };
+
+      var mouseenter = function mouseenter() {
+        // if (effectDir === "vertical" && hoverEffect === "hover") {
+        //   transformOffset = imageScroll.clientHeight - scrollElement.clientHeight;
+        //   imageScroll.style.cssText = `transform:translateY(-${transformOffset}px);`;
+        // } else if (effectDir === "horizontal" && hoverEffect === "hover") {
+        //   transformOffset = scrollElement.clientWidth - imageScroll.clientWidth;
+        //   imageScroll.style.cssText = `transform:translateX(${transformOffset}px);`;
+        // }
+
+        setTransform();
+        reverse ? endTransform() : startTransform();
+      };
+
+      var mouserleave = function mouserleave() {
+        // if (effectDir === "vertical" && hoverEffect === "hover") {
+        //   imageScroll.style.cssText = `transform:translateY(0px);`;
+        // } else if (effectDir === "horizontal" && hoverEffect === "hover") {
+        //   imageScroll.style.cssText = `transform:translateX(0px);`;
+        // }
+        reverse ? startTransform() : endTransform();
+      };
+
+      return [isSelected && wp.element.createElement(
+        InspectorControls,
+        { style: { marginBottom: "40px" } },
+        wp.element.createElement(
+          PanelBody,
+          null,
+          wp.element.createElement(
+            "p",
+            null,
+            wp.element.createElement(
+              "strong",
+              null,
+              "Image Setting"
+            )
+          ),
+          imageURL && wp.element.createElement("img", { src: imageURL }),
+          wp.element.createElement(MediaUpload, {
+            onSelect: onFileSelect,
+            value: imageID,
+            render: function render(_ref) {
+              var open = _ref.open;
+              return wp.element.createElement(
+                IconButton,
+                {
+                  className: "premium-media-uplpad-btn",
+                  label: __("Change Image"),
+                  icon: "edit",
+                  onClick: open
+                },
+                __("Change Image")
+              );
+            }
+          }),
+          wp.element.createElement(RangeControl, {
+            label: "Height",
+            value: minHeight,
+            onChange: function onChange(newHeight) {
+              setAttributes({ height: newHeight });
+            },
+            min: 200,
+            max: 800
+          }),
+          wp.element.createElement(ToggleControl, {
+            label: __("Link"),
+            checked: urlCheck,
+            onChange: function onChange(newCheck) {
+              return setAttributes({ urlCheck: newCheck });
+            }
+          }),
+          urlCheck && wp.element.createElement(TextControl, {
+            label: __("URL"),
+            value: url,
+            onChange: function onChange(newURL) {
+              return setAttributes({ url: newURL });
+            }
+          }),
+          urlCheck && wp.element.createElement(ToggleControl, {
+            label: __("Open link in new tab"),
+            checked: target,
+            onChange: function onChange(newValue) {
+              return setAttributes({ target: newValue });
+            }
+          })
+        ),
+        wp.element.createElement(
+          PanelBody,
+          null,
+          wp.element.createElement(
+            "p",
+            null,
+            wp.element.createElement(
+              "strong",
+              null,
+              "Advanced Setting"
+            )
+          ),
+          wp.element.createElement(SelectControl, {
+            label: __("Direction"),
+            options: hover,
+            value: effectDir,
+            onChange: function onChange(newEffect) {
+              return setAttributes({ effectDir: newEffect });
+            }
+          }),
+          wp.element.createElement(ToggleControl, {
+            label: __("Reverse"),
+            checked: reverse,
+            onChange: function onChange(value) {
+              return setAttributes({ reverse: value });
+            }
+          }),
+          wp.element.createElement(SelectControl, {
+            label: __("Trigger"),
+            options: trigger,
+            value: hoverEffect,
+            onChange: function onChange(newEffect) {
+              return setAttributes({ hoverEffect: newEffect });
+            }
+          }),
+          wp.element.createElement(ToggleControl, {
+            label: __("Overlay"),
+            checked: targetOverlay,
+            onChange: function onChange(Overlay) {
+              return setAttributes({ targetOverlay: Overlay });
+            }
+          }),
+          targetOverlay && wp.element.createElement(ColorPalette, {
+            value: background,
+            onChange: function onChange(newValue) {
+              return setAttributes({
+                background: newValue === undefined ? "transparent" : newValue
+              });
+            },
+            allowReset: true
+          })
+        ),
+        wp.element.createElement(
+          PanelBody,
+          null,
+          wp.element.createElement(
+            "p",
+            null,
+            wp.element.createElement(
+              "strong",
+              null,
+              "Image Style"
+            )
+          ),
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_filters__["a" /* default */], {
+            blur: blur,
+            bright: bright,
+            contrast: contrast,
+            saturation: saturation,
+            hue: hue,
+            onChangeBlur: function onChangeBlur(value) {
+              return setAttributes({ blur: value });
+            },
+            onChangeBright: function onChangeBright(value) {
+              return setAttributes({ bright: value });
+            },
+            onChangeContrast: function onChangeContrast(value) {
+              return setAttributes({ contrast: value });
+            },
+            onChangeSat: function onChangeSat(value) {
+              return setAttributes({ saturation: value });
+            },
+            onChangeHue: function onChangeHue(value) {
+              return setAttributes({ hue: value });
+            }
+          })
+        ),
+        wp.element.createElement(
+          PanelBody,
+          null,
+          wp.element.createElement(
+            "p",
+            null,
+            wp.element.createElement(
+              "strong",
+              null,
+              "Container Style"
+            )
+          ),
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_premium_border__["a" /* default */], {
+            borderType: borderType,
+            borderWidth: borderWidth,
+            borderColor: borderColor,
+            borderRadius: borderRadius,
+            onChangeType: function onChangeType(newType) {
+              return setAttributes({ borderType: newType });
+            },
+            onChangeWidth: function onChangeWidth(newWidth) {
+              return setAttributes({
+                borderWidth: newWidth === undefined ? 0 : newWidth
+              });
+            },
+            onChangeColor: function onChangeColor(colorValue) {
+              return setAttributes({
+                borderColor: colorValue === undefined ? "transparent" : colorValue.hex
+              });
+            },
+            onChangeRadius: function onChangeRadius(newRadius) {
+              return setAttributes({
+                borderRadius: newRadius === undefined ? 0 : newRadius
+              });
+            }
+          }),
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_box_shadow__["a" /* default */], {
+            inner: true,
+            color: containerShadowColor,
+            blur: containerShadowBlur,
+            horizontal: containerShadowHorizontal,
+            vertical: containerShadowVertical,
+            position: containerShadowPosition,
+            onChangeColor: function onChangeColor(newColor) {
+              return setAttributes({
+                containerShadowColor: newColor.hex
+              });
+            },
+            onChangeBlur: function onChangeBlur(newBlur) {
+              return setAttributes({
+                containerShadowBlur: newBlur
+              });
+            },
+            onChangehHorizontal: function onChangehHorizontal(newValue) {
+              return setAttributes({
+                containerShadowHorizontal: newValue
+              });
+            },
+            onChangeVertical: function onChangeVertical(newValue) {
+              return setAttributes({
+                containerShadowVertical: newValue
+              });
+            },
+            onChangePosition: function onChangePosition(newValue) {
+              return setAttributes({
+                containerShadowPosition: newValue
+              });
+            }
+          })
+        )
+      ), wp.element.createElement(
+        "div",
+        {
+          id: "premium-scroll-" + id,
+          className: "premium-image-scroll-section",
+          style: {
+            boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
+          }
+        },
+        imageURL && wp.element.createElement(
+          "div",
+          {
+            id: this.props.clientId,
+            className: " premium-image-scroll-container  " + contrainerClasses + " " + reverseClasses + " ",
+            style: {
+              border: borderType,
+              borderWidth: borderWidth + "px",
+              borderRadius: borderRadius + "px",
+              borderColor: borderColor,
+              minHeight: minHeight,
+              height: height
+            },
+            onMouseEnter: mouseenter,
+            onMouseLeave: mouserleave
+          },
+          urlCheck && wp.element.createElement("a", {
+            className: "premium-image-scroll-link",
+            target: "" + (target ? "_blank" : "_self"),
+            href: url
+          }),
+          wp.element.createElement(
+            "div",
+            {
+              className: " premium-image-scroll-" + effectDir + "  " + classHorizontal + " " + classVertical + " "
+            },
+            targetOverlay && wp.element.createElement("div", {
+              className: "premium-image-scroll-overlay",
+              style: { backgroundColor: background }
+            }),
+            wp.element.createElement("img", {
+              className: "image-scroll",
+              alt: "scroll Image",
+              src: imageURL,
+              style: {
+                filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+              }
+            })
+          )
+        )
+      )];
+    }
+  }]);
+
+  return edit;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (edit);
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(268).setImmediate))
+
+/***/ }),
+/* 267 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_border__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_filters__ = __webpack_require__(31);
+
+
+
+var scrollElement = document.querySelector(".premium-image-scroll-container");
+
+var imageScroll = document.querySelector(".image-scroll");
+var transformOffset = null;
+var __ = wp.i18n.__;
+
+
+var save = function save(props) {
+  var scrollElement = document.querySelector(".premium-image-scroll-container");
+
+  var imageScroll = document.querySelector(".image-scroll");
   var transformOffset = null;
-  var setAttributes = props.setAttributes,
-      isSelected = props.isSelected,
-      blockID = props.clientId;
+
   var _props$attributes = props.attributes,
       id = _props$attributes.id,
       imageURL = _props$attributes.imageURL,
-      imageID = _props$attributes.imageID,
-      imageHeight = _props$attributes.imageHeight,
       url = _props$attributes.url,
-      target = _props$attributes.target,
       urlCheck = _props$attributes.urlCheck,
       height = _props$attributes.height,
       minHeight = _props$attributes.minHeight,
@@ -54311,280 +54761,44 @@ var edit = function edit(props) {
       containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
       containerShadowVertical = _props$attributes.containerShadowVertical,
       containerShadowPosition = _props$attributes.containerShadowPosition,
-      reverse = _props$attributes.reverse,
-      width = _props$attributes.width,
-      imageWidth = _props$attributes.imageWidth;
+      reverse = _props$attributes.reverse;
 
 
-  var hover = [{
-    value: "vertical",
-    label: __("Vertical")
-  }, {
-    value: "horizontal",
-    label: __("Horizontal")
-  }];
-  var trigger = [{
-    value: "hover",
-    label: __("Hover")
-  }, {
-    value: "mouse",
-    label: __("Mouse Scroll")
-  }];
   var classVertical = "" + (effectDir === "vertical" && hoverEffect === "mouse" ? "premium-image-scroll-ver " : "");
   var classHorizontal = "" + (effectDir === "horizontal" && hoverEffect === "hover" ? "image-scroll-horizontal " : "");
   var contrainerClasses = "" + (hoverEffect === "mouse" ? "premium-container-scroll" : "");
-  var onFileSelect = function onFileSelect(img) {
-    setAttributes({
-      imageURL: img.url,
-      imageID: img.id,
-      imageHeight: img.height,
-      imageWidth: img.width
-    });
-  };
-  var setTransform = function setTransform() {
-    console.log(reverse);
-    if (effectDir === "vertical" && hoverEffect === "hover") {
-      transformOffset = imageScroll.clientHeight - height;
 
-      imageScroll.style.cssText = "transform:translateY(-" + transformOffset + "px);";
-    } else if (effectDir === "horizontal" && hoverEffect === "hover") {
-      transformOffset = 479 - imageScroll.clientWidth;
-      imageScroll.style.cssText = "transform:translateX(" + transformOffset + "px);";
-    }
+  var startTransform = function startTransform() {
+    imageScroll.style.cssText = "\n       transform:" + (effectDir === "vertical" ? "translateY" : "translateX") + "(" + transformOffset + "px);";
   };
 
   var endTransform = function endTransform() {
-    console.log(scrollElement[0]);
-
+    imageScroll.style.cssText = "transform:" + (effectDir === "vertical" ? "translateY" : "translateX") + "(0px);";
+  };
+  var setTransform = function setTransform() {
     if (effectDir === "vertical" && hoverEffect === "hover") {
-      imageScroll.style.cssText = "transform:translateY(0px);";
+      transformOffset = scrollElement.clientHeight - imageScroll.clientHeight;
     } else if (effectDir === "horizontal" && hoverEffect === "hover") {
-      imageScroll.style.cssText = "transform:translateX(0px);";
+      transformOffset = scrollElement.clientWidth - imageScroll.clientWidth;
+    }
+    if (hoverEffect === "mouse") {
+      transformOffset = null;
     }
   };
 
-  return [isSelected && wp.element.createElement(
-    InspectorControls,
-    { style: { marginBottom: "40px" }, key: "setting" },
-    wp.element.createElement(
-      PanelBody,
-      null,
-      wp.element.createElement(
-        "p",
-        null,
-        wp.element.createElement(
-          "strong",
-          null,
-          "Image Setting"
-        )
-      ),
-      imageURL && wp.element.createElement("img", { src: imageURL }),
-      wp.element.createElement(MediaUpload, {
-        onSelect: onFileSelect,
-        value: imageID,
-        render: function render(_ref) {
-          var open = _ref.open;
-          return wp.element.createElement(
-            IconButton,
-            {
-              className: "premium-media-uplpad-btn",
-              label: __("Change Image"),
-              icon: "edit",
-              onClick: open
-            },
-            __("Change Image")
-          );
-        }
-      }),
-      wp.element.createElement(RangeControl, {
-        label: "Height",
-        value: minHeight,
-        onChange: function onChange(newHeight) {
-          setAttributes({ height: newHeight });
-        },
-        min: 200,
-        max: 800
-      }),
-      wp.element.createElement(ToggleControl, {
-        label: __("Link"),
-        checked: urlCheck,
-        onChange: function onChange(newCheck) {
-          return setAttributes({ urlCheck: newCheck });
-        }
-      }),
-      urlCheck && wp.element.createElement(TextControl, {
-        label: __("URL"),
-        value: url,
-        onChange: function onChange(newURL) {
-          return setAttributes({ url: newURL });
-        }
-      }),
-      urlCheck && wp.element.createElement(ToggleControl, {
-        label: __("Open link in new tab"),
-        checked: target,
-        onChange: function onChange(newValue) {
-          return setAttributes({ target: newValue });
-        }
-      })
-    ),
-    wp.element.createElement(
-      PanelBody,
-      null,
-      wp.element.createElement(
-        "p",
-        null,
-        wp.element.createElement(
-          "strong",
-          null,
-          "Advanced Setting"
-        )
-      ),
-      wp.element.createElement(SelectControl, {
-        label: __("Direction"),
-        options: hover,
-        value: effectDir,
-        onChange: function onChange(newEffect) {
-          return setAttributes({ effectDir: newEffect });
-        }
-      }),
-      wp.element.createElement(ToggleControl, {
-        label: __("Reverse"),
-        checked: reverse,
-        onChange: function onChange(value) {
-          return setAttributes({ reverse: value });
-        }
-      }),
-      wp.element.createElement(SelectControl, {
-        label: __("Trigger"),
-        options: trigger,
-        value: hoverEffect,
-        onChange: function onChange(newEffect) {
-          return setAttributes({ hoverEffect: newEffect });
-        }
-      }),
-      wp.element.createElement(ToggleControl, {
-        label: __("Overlay"),
-        checked: targetOverlay,
-        onChange: function onChange(Overlay) {
-          return setAttributes({ targetOverlay: Overlay });
-        }
-      }),
-      targetOverlay && wp.element.createElement(ColorPalette, {
-        value: background,
-        onChange: function onChange(newValue) {
-          return setAttributes({
-            background: newValue === undefined ? "transparent" : newValue
-          });
-        },
-        allowReset: true
-      })
-    ),
-    wp.element.createElement(
-      PanelBody,
-      null,
-      wp.element.createElement(
-        "p",
-        null,
-        wp.element.createElement(
-          "strong",
-          null,
-          "Image Style"
-        )
-      ),
-      wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_filters__["a" /* default */], {
-        blur: blur,
-        bright: bright,
-        contrast: contrast,
-        saturation: saturation,
-        hue: hue,
-        onChangeBlur: function onChangeBlur(value) {
-          return setAttributes({ blur: value });
-        },
-        onChangeBright: function onChangeBright(value) {
-          return setAttributes({ bright: value });
-        },
-        onChangeContrast: function onChangeContrast(value) {
-          return setAttributes({ contrast: value });
-        },
-        onChangeSat: function onChangeSat(value) {
-          return setAttributes({ saturation: value });
-        },
-        onChangeHue: function onChangeHue(value) {
-          return setAttributes({ hue: value });
-        }
-      })
-    ),
-    wp.element.createElement(
-      PanelBody,
-      null,
-      wp.element.createElement(
-        "p",
-        null,
-        wp.element.createElement(
-          "strong",
-          null,
-          "Container Style"
-        )
-      ),
-      wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_premium_border__["a" /* default */], {
-        borderType: borderType,
-        borderWidth: borderWidth,
-        borderColor: borderColor,
-        borderRadius: borderRadius,
-        onChangeType: function onChangeType(newType) {
-          return setAttributes({ borderType: newType });
-        },
-        onChangeWidth: function onChangeWidth(newWidth) {
-          return setAttributes({
-            borderWidth: newWidth === undefined ? 0 : newWidth
-          });
-        },
-        onChangeColor: function onChangeColor(colorValue) {
-          return setAttributes({
-            borderColor: colorValue === undefined ? "transparent" : colorValue.hex
-          });
-        },
-        onChangeRadius: function onChangeRadius(newRadius) {
-          return setAttributes({
-            borderRadius: newRadius === undefined ? 0 : newRadius
-          });
-        }
-      }),
-      wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_box_shadow__["a" /* default */], {
-        inner: true,
-        color: containerShadowColor,
-        blur: containerShadowBlur,
-        horizontal: containerShadowHorizontal,
-        vertical: containerShadowVertical,
-        position: containerShadowPosition,
-        onChangeColor: function onChangeColor(newColor) {
-          return setAttributes({
-            containerShadowColor: newColor.hex
-          });
-        },
-        onChangeBlur: function onChangeBlur(newBlur) {
-          return setAttributes({
-            containerShadowBlur: newBlur
-          });
-        },
-        onChangehHorizontal: function onChangehHorizontal(newValue) {
-          return setAttributes({
-            containerShadowHorizontal: newValue
-          });
-        },
-        onChangeVertical: function onChangeVertical(newValue) {
-          return setAttributes({
-            containerShadowVertical: newValue
-          });
-        },
-        onChangePosition: function onChangePosition(newValue) {
-          return setAttributes({
-            containerShadowPosition: newValue
-          });
-        }
-      })
-    )
-  ), wp.element.createElement(
+  var mouseenter = function mouseenter() {
+    console.log("Iam in");
+    setTransform();
+    reverse ? endTransform() : startTransform();
+  };
+
+  var mouseleave = function mouseleave() {
+    alert("Hi");
+    console.log("Iam out");
+    reverse ? startTransform() : endTransform();
+  };
+
+  return wp.element.createElement(
     "div",
     {
       id: "premium-scroll-" + id,
@@ -54593,10 +54807,10 @@ var edit = function edit(props) {
         boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
       }
     },
-    imageURL && wp.element.createElement(
+    wp.element.createElement(
       "div",
       {
-        className: " premium-image-scroll-container premium-container-scroll-instant",
+        className: " premium-image-scroll-container  " + contrainerClasses + " ",
         style: {
           border: borderType,
           borderWidth: borderWidth + "px",
@@ -54605,14 +54819,14 @@ var edit = function edit(props) {
           minHeight: minHeight,
           height: height
         },
-        onMouseEnter: setTransform,
-        onMouseLeave: endTransform
+        onMouseEnter: mouseenter,
+        onMouseLeave: mouseleave
       },
       urlCheck && wp.element.createElement("a", { "class": "premium-image-scroll-link", href: url }),
       wp.element.createElement(
         "div",
         {
-          className: " premium-image-scroll-" + effectDir + "  " + classHorizontal + " " + classVertical
+          className: " premium-image-scroll-" + effectDir + "  " + classHorizontal + " " + classVertical + " "
         },
         targetOverlay && wp.element.createElement("div", {
           className: "premium-image-scroll-overlay",
@@ -54628,93 +54842,348 @@ var edit = function edit(props) {
         })
       )
     )
-  )];
+  );
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (edit);
+/* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 267 */
+/* 268 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {var scope = typeof global !== "undefined" && global || typeof self !== "undefined" && self || window;
+var apply = Function.prototype.apply;
+
+// DOM APIs, for completeness
+
+exports.setTimeout = function () {
+  return new Timeout(apply.call(setTimeout, scope, arguments), clearTimeout);
+};
+exports.setInterval = function () {
+  return new Timeout(apply.call(setInterval, scope, arguments), clearInterval);
+};
+exports.clearTimeout = exports.clearInterval = function (timeout) {
+  if (timeout) {
+    timeout.close();
+  }
+};
+
+function Timeout(id, clearFn) {
+  this._id = id;
+  this._clearFn = clearFn;
+}
+Timeout.prototype.unref = Timeout.prototype.ref = function () {};
+Timeout.prototype.close = function () {
+  this._clearFn.call(scope, this._id);
+};
+
+// Does not start the time, just sets up the members needed.
+exports.enroll = function (item, msecs) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = msecs;
+};
+
+exports.unenroll = function (item) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = -1;
+};
+
+exports._unrefActive = exports.active = function (item) {
+  clearTimeout(item._idleTimeoutId);
+
+  var msecs = item._idleTimeout;
+  if (msecs >= 0) {
+    item._idleTimeoutId = setTimeout(function onTimeout() {
+      if (item._onTimeout) item._onTimeout();
+    }, msecs);
+  }
+};
+
+// setimmediate attaches itself to the global object
+__webpack_require__(269);
+// On some exotic environments, it's not clear which object `setimmediate` was
+// able to install onto.  Search each possibility in the same order as the
+// `setimmediate` library.
+exports.setImmediate = typeof self !== "undefined" && self.setImmediate || typeof global !== "undefined" && global.setImmediate || this && this.setImmediate;
+exports.clearImmediate = typeof self !== "undefined" && self.clearImmediate || typeof global !== "undefined" && global.clearImmediate || this && this.clearImmediate;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(96)))
+
+/***/ }),
+/* 269 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
+    "use strict";
+
+    if (global.setImmediate) {
+        return;
+    }
+
+    var nextHandle = 1; // Spec says greater than zero
+    var tasksByHandle = {};
+    var currentlyRunningATask = false;
+    var doc = global.document;
+    var registerImmediate;
+
+    function setImmediate(callback) {
+        // Callback can either be a function or a string
+        if (typeof callback !== "function") {
+            callback = new Function("" + callback);
+        }
+        // Copy function arguments
+        var args = new Array(arguments.length - 1);
+        for (var i = 0; i < args.length; i++) {
+            args[i] = arguments[i + 1];
+        }
+        // Store and register the task
+        var task = { callback: callback, args: args };
+        tasksByHandle[nextHandle] = task;
+        registerImmediate(nextHandle);
+        return nextHandle++;
+    }
+
+    function clearImmediate(handle) {
+        delete tasksByHandle[handle];
+    }
+
+    function run(task) {
+        var callback = task.callback;
+        var args = task.args;
+        switch (args.length) {
+            case 0:
+                callback();
+                break;
+            case 1:
+                callback(args[0]);
+                break;
+            case 2:
+                callback(args[0], args[1]);
+                break;
+            case 3:
+                callback(args[0], args[1], args[2]);
+                break;
+            default:
+                callback.apply(undefined, args);
+                break;
+        }
+    }
+
+    function runIfPresent(handle) {
+        // From the spec: "Wait until any invocations of this algorithm started before this one have completed."
+        // So if we're currently running a task, we'll need to delay this invocation.
+        if (currentlyRunningATask) {
+            // Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
+            // "too much recursion" error.
+            setTimeout(runIfPresent, 0, handle);
+        } else {
+            var task = tasksByHandle[handle];
+            if (task) {
+                currentlyRunningATask = true;
+                try {
+                    run(task);
+                } finally {
+                    clearImmediate(handle);
+                    currentlyRunningATask = false;
+                }
+            }
+        }
+    }
+
+    function installNextTickImplementation() {
+        registerImmediate = function registerImmediate(handle) {
+            process.nextTick(function () {
+                runIfPresent(handle);
+            });
+        };
+    }
+
+    function canUsePostMessage() {
+        // The test against `importScripts` prevents this implementation from being installed inside a web worker,
+        // where `global.postMessage` means something completely different and can't be used for this purpose.
+        if (global.postMessage && !global.importScripts) {
+            var postMessageIsAsynchronous = true;
+            var oldOnMessage = global.onmessage;
+            global.onmessage = function () {
+                postMessageIsAsynchronous = false;
+            };
+            global.postMessage("", "*");
+            global.onmessage = oldOnMessage;
+            return postMessageIsAsynchronous;
+        }
+    }
+
+    function installPostMessageImplementation() {
+        // Installs an event handler on `global` for the `message` event: see
+        // * https://developer.mozilla.org/en/DOM/window.postMessage
+        // * http://www.whatwg.org/specs/web-apps/current-work/multipage/comms.html#crossDocumentMessages
+
+        var messagePrefix = "setImmediate$" + Math.random() + "$";
+        var onGlobalMessage = function onGlobalMessage(event) {
+            if (event.source === global && typeof event.data === "string" && event.data.indexOf(messagePrefix) === 0) {
+                runIfPresent(+event.data.slice(messagePrefix.length));
+            }
+        };
+
+        if (global.addEventListener) {
+            global.addEventListener("message", onGlobalMessage, false);
+        } else {
+            global.attachEvent("onmessage", onGlobalMessage);
+        }
+
+        registerImmediate = function registerImmediate(handle) {
+            global.postMessage(messagePrefix + handle, "*");
+        };
+    }
+
+    function installMessageChannelImplementation() {
+        var channel = new MessageChannel();
+        channel.port1.onmessage = function (event) {
+            var handle = event.data;
+            runIfPresent(handle);
+        };
+
+        registerImmediate = function registerImmediate(handle) {
+            channel.port2.postMessage(handle);
+        };
+    }
+
+    function installReadyStateChangeImplementation() {
+        var html = doc.documentElement;
+        registerImmediate = function registerImmediate(handle) {
+            // Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
+            // into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
+            var script = doc.createElement("script");
+            script.onreadystatechange = function () {
+                runIfPresent(handle);
+                script.onreadystatechange = null;
+                html.removeChild(script);
+                script = null;
+            };
+            html.appendChild(script);
+        };
+    }
+
+    function installSetTimeoutImplementation() {
+        registerImmediate = function registerImmediate(handle) {
+            setTimeout(runIfPresent, 0, handle);
+        };
+    }
+
+    // If supported, we should attach to the prototype of global, since that is where setTimeout et al. live.
+    var attachTo = Object.getPrototypeOf && Object.getPrototypeOf(global);
+    attachTo = attachTo && attachTo.setTimeout ? attachTo : global;
+
+    // Don't get fooled by e.g. browserify environments.
+    if ({}.toString.call(global.process) === "[object process]") {
+        // For Node.js before 0.9
+        installNextTickImplementation();
+    } else if (canUsePostMessage()) {
+        // For non-IE10 modern browsers
+        installPostMessageImplementation();
+    } else if (global.MessageChannel) {
+        // For web workers, where supported
+        installMessageChannelImplementation();
+    } else if (doc && "onreadystatechange" in doc.createElement("script")) {
+        // For IE 6–8
+        installReadyStateChangeImplementation();
+    } else {
+        // For older browsers
+        installSetTimeoutImplementation();
+    }
+
+    attachTo.setImmediate = setImmediate;
+    attachTo.clearImmediate = clearImmediate;
+})(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(96), __webpack_require__(1)))
+
+/***/ }),
+/* 270 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+var __ = wp.i18n.__;
 
+var deprecated = [{
+  save: function save(_ref) {
+    var attributes = _ref.attributes,
+        className = _ref.className;
+    var id = attributes.id,
+        imageURL = attributes.imageURL,
+        imageID = attributes.imageID,
+        url = attributes.url,
+        target = attributes.target,
+        urlCheck = attributes.urlCheck,
+        height = attributes.height,
+        minHeight = attributes.minHeight,
+        effectDir = attributes.effectDir,
+        background = attributes.background,
+        targetOverlay = attributes.targetOverlay,
+        hoverEffect = attributes.hoverEffect,
+        blur = attributes.blur,
+        bright = attributes.bright,
+        contrast = attributes.contrast,
+        saturation = attributes.saturation,
+        hue = attributes.hue,
+        borderType = attributes.borderType,
+        borderWidth = attributes.borderWidth,
+        borderRadius = attributes.borderRadius,
+        borderColor = attributes.borderColor,
+        containerShadowColor = attributes.containerShadowColor,
+        containerShadowBlur = attributes.containerShadowBlur,
+        containerShadowHorizontal = attributes.containerShadowHorizontal,
+        containerShadowVertical = attributes.containerShadowVertical,
+        containerShadowPosition = attributes.containerShadowPosition,
+        reverse = attributes.reverse;
 
-var RichText = wp.editor.RichText;
-
-
-var save = function save(props) {
-  var _props$attributes = props.attributes,
-      id = _props$attributes.id,
-      imageURL = _props$attributes.imageURL,
-      height = _props$attributes.height,
-      minHeight = _props$attributes.minHeight,
-      effectDir = _props$attributes.effectDir,
-      background = _props$attributes.background,
-      hoverEffect = _props$attributes.hoverEffect,
-      blur = _props$attributes.blur,
-      bright = _props$attributes.bright,
-      contrast = _props$attributes.contrast,
-      saturation = _props$attributes.saturation,
-      hue = _props$attributes.hue,
-      borderType = _props$attributes.borderType,
-      borderWidth = _props$attributes.borderWidth,
-      borderRadius = _props$attributes.borderRadius,
-      borderColor = _props$attributes.borderColor,
-      containerShadowColor = _props$attributes.containerShadowColor,
-      containerShadowBlur = _props$attributes.containerShadowBlur,
-      containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
-      containerShadowVertical = _props$attributes.containerShadowVertical,
-      containerShadowPosition = _props$attributes.containerShadowPosition;
-
-
-  return wp.element.createElement(
-    "div",
-    {
-      id: "premium-scroll-" + id,
-      className: "premium-image-scroll-section",
-      style: {
-        boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
-      }
-    },
-    wp.element.createElement(
+    return wp.element.createElement(
       "div",
       {
-        className: "premium-image-scroll-container  premium-image-" + effectDir + "-" + hoverEffect + "-container ",
+        id: "premium-scroll-" + id,
+        className: "premium-image-scroll-section",
         style: {
-          border: borderType,
-          borderWidth: borderWidth + "px",
-          borderRadius: borderRadius + "px",
-          borderColor: borderColor,
-          minHeight: minHeight,
-          height: height
+          boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
         }
       },
       wp.element.createElement(
         "div",
         {
-          className: "premium-image-scroll-" + effectDir + " premium-image-scroll-" + effectDir
-        },
-        wp.element.createElement("div", {
-          className: "premium-image-scroll-overlay",
-          style: { background: "" + background }
-        }),
-        wp.element.createElement("img", {
-          alt: "scroll Image",
-          src: imageURL,
+          className: " premium-image-scroll-container  " + contrainerClasses + " ",
           style: {
-            filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
-          }
-          // onMouseEnter={(e) => setTransform(e)}
-        })
+            border: borderType,
+            borderWidth: borderWidth + "px",
+            borderRadius: borderRadius + "px",
+            borderColor: borderColor,
+            minHeight: minHeight,
+            height: height
+          },
+          onMouseEnter: mouseenter,
+          onMouseLeave: mouseleave
+        },
+        urlCheck && wp.element.createElement("a", { "class": "premium-image-scroll-link", href: url }),
+        wp.element.createElement(
+          "div",
+          {
+            className: " premium-image-scroll-" + effectDir + "  " + classHorizontal + " " + classVertical + " "
+          },
+          targetOverlay && wp.element.createElement("div", {
+            className: "premium-image-scroll-overlay",
+            style: { backgroundColor: background }
+          }),
+          wp.element.createElement("img", {
+            className: "image-scroll",
+            alt: "scroll Image",
+            src: imageURL,
+            style: {
+              filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+            }
+          })
+        )
       )
-    )
-  );
-};
+    );
+  }
+}];
 
-/* harmony default export */ __webpack_exports__["a"] = (save);
+/* harmony default export */ __webpack_exports__["a"] = (deprecated);
 
 /***/ })
 /******/ ]);
