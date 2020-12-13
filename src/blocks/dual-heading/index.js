@@ -263,6 +263,7 @@ registerBlockType("premium/dheading-block", {
     supports: {
         inserter: dualHeading
     },
+    example: {},
     edit: edit,
     save: save,
     deprecated: deprecatedContent
