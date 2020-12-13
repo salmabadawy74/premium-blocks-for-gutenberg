@@ -65,7 +65,7 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 ### 1.8.0
 
--   Fixed: Compatibility issues with WordPress 5.6.
+-   Fixed: Compatibility issues with WordPress 5.6. 
 
 ### 1.7.9
 
