@@ -5,11 +5,10 @@ const { __ } = wp.i18n;
 import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
-import deprecated from "./deprecated";
 
 const { registerBlockType } = wp.blocks;
 
-registerBlockType("premium/scroll", {
+registerBlockType("premium/image-scroll", {
   title: __("Image Scroll"),
   icon: <PbgIcon icon="content-switcher" />,
   category: "premium-blocks",
@@ -153,5 +152,4 @@ registerBlockType("premium/scroll", {
 
   edit: edit,
   save: save,
-  deprecated: deprecated,
 });

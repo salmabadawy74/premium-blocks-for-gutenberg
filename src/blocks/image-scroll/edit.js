@@ -21,17 +21,16 @@ const {
 
   MediaUpload,
 } = wp.editor;
-let scrollElement, scrollOverlay, scrollVertical, imageScroll;
+let scrollElement, imageScroll;
 let transformOffset = null;
 
 class edit extends Component {
-
   constructor() {
     super(...arguments);
   }
 
   componentDidMount() {
-    const { attributes, setAttributes, clientId } = this.props;
+    const { setAttributes, clientId } = this.props;
     setAttributes({ id: clientId });
 
     console.log(clientId);
@@ -39,16 +38,11 @@ class edit extends Component {
 
   componentDidUpdate() {
     setImmediate(() => {
-
-      scrollElement = document.getElementById(`${this.props.clientId}`);
-
-      scrollOverlay = scrollElement.querySelector(
-        ".premium-image-scroll-overlay"
+      scrollElement = document.getElementById(
+        `premium-scroll-${this.props.clientId}`
       );
-      scrollVertical = scrollElement.querySelector(
-        ".premium-image-scroll-vertical"
-      );
-      imageScroll = scrollElement.querySelector(".image-scroll");
+
+      imageScroll = scrollElement.querySelector(".premium-image-scroll");
     }, 10);
   }
 
@@ -109,13 +103,13 @@ class edit extends Component {
         label: __("Hover"),
       },
       {
-        value: "mouse",
+        value: "mouse-scroll",
         label: __("Mouse Scroll"),
       },
     ];
 
     const classVertical = `${
-      effectDir === "vertical" && hoverEffect === "mouse"
+      effectDir === "vertical" && hoverEffect === "mouse-scroll"
         ? "premium-image-scroll-ver "
         : ""
     }`;
@@ -131,9 +125,9 @@ class edit extends Component {
         ? "image-scroll-horizontal "
         : ""
     }`;
-    
-    const contrainerClasses = `${
-      hoverEffect === "mouse" ? "premium-container-scroll" : ""
+
+    const containerClasses = `${
+      hoverEffect === "mouse-scroll" ? "premium-container-scroll" : ""
     }`;
 
     const onFileSelect = (img) => {
@@ -144,6 +138,7 @@ class edit extends Component {
         imageWidth: img.width,
       });
     };
+
     const startTransform = () => {
       imageScroll.style.cssText = `
         transform:${
@@ -156,13 +151,14 @@ class edit extends Component {
         effectDir === "vertical" ? "translateY" : "translateX"
       }(0px);`;
     };
+    
     const setTransform = () => {
       if (effectDir === "vertical" && hoverEffect === "hover") {
         transformOffset = scrollElement.clientHeight - imageScroll.clientHeight;
       } else if (effectDir === "horizontal" && hoverEffect === "hover") {
         transformOffset = scrollElement.clientWidth - imageScroll.clientWidth;
       }
-      if (hoverEffect === "mouse") {
+      if (hoverEffect === "mouse-scroll") {
         transformOffset = null;
       }
     };
@@ -366,16 +362,18 @@ class edit extends Component {
       ),
 
       <div
-        id={`premium-scroll-${id}`}
-        className={`premium-image-scroll-section`}
+        data-direction={effectDir}
+        data-effect={hoverEffect}
+        data-reverse={reverse}
+        id={`premium-scroll-${this.props.clientId}`}
+        className={`premium-img-scroll-container`}
         style={{
           boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
         }}
       >
         {imageURL && (
           <div
-            id={this.props.clientId}
-            className={` premium-image-scroll-container  ${contrainerClasses} ${reverseClasses} `}
+            className={` premium-img-scroll-wrap  ${containerClasses} ${reverseClasses} `}
             style={{
               border: borderType,
               borderWidth: borderWidth + "px",
@@ -404,7 +402,7 @@ class edit extends Component {
                 ></div>
               )}
               <img
-                className={`image-scroll`}
+                className={`premium-image-scroll`}
                 alt="scroll Image"
                 src={imageURL}
                 style={{

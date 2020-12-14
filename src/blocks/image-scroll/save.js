@@ -1,30 +1,14 @@
-import PremiumBorder from "../../components/premium-border";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumFilters from "../../components/premium-filters";
-let scrollElement = document.querySelector(".premium-image-scroll-container");
-
-let imageScroll = document.querySelector(".image-scroll");
-let transformOffset = null;
 const { __ } = wp.i18n;
 
 const save = (props) => {
-  let scrollElement = document.querySelector(".premium-image-scroll-container");
-
-  let imageScroll = document.querySelector(".image-scroll");
-  let transformOffset = null;
-
   const {
     id,
-
     imageURL,
-
     url,
-
     urlCheck,
     height,
     minHeight,
     effectDir,
-
     background,
     targetOverlay,
     hoverEffect,
@@ -46,64 +30,36 @@ const save = (props) => {
   } = props.attributes;
 
   const classVertical = `${
-    effectDir === "vertical" && hoverEffect === "mouse"
+    effectDir === "vertical" && hoverEffect === "mouse-scroll"
       ? "premium-image-scroll-ver "
       : ""
   }`;
+
   const classHorizontal = `${
     effectDir === "horizontal" && hoverEffect === "hover"
       ? "image-scroll-horizontal "
       : ""
   }`;
-  const contrainerClasses = `${
-    hoverEffect === "mouse" ? "premium-container-scroll" : ""
+  const containerClasses = `${
+    hoverEffect === "mouse-scroll" ? "premium-container-scroll" : ""
   }`;
-
-  const startTransform = () => {
-    imageScroll.style.cssText = `
-       transform:${
-         effectDir === "vertical" ? "translateY" : "translateX"
-       }(${transformOffset}px);`;
-  };
-
-  const endTransform = () => {
-    imageScroll.style.cssText = `transform:${
-      effectDir === "vertical" ? "translateY" : "translateX"
-    }(0px);`;
-  };
-  const setTransform = () => {
-    if (effectDir === "vertical" && hoverEffect === "hover") {
-      transformOffset = scrollElement.clientHeight - imageScroll.clientHeight;
-    } else if (effectDir === "horizontal" && hoverEffect === "hover") {
-      transformOffset = scrollElement.clientWidth - imageScroll.clientWidth;
-    }
-    if (hoverEffect === "mouse") {
-      transformOffset = null;
-    }
-  };
-
-  const mouseenter = () => {
-    console.log("Iam in");
-    setTransform();
-    reverse ? endTransform() : startTransform();
-  };
-
-  const mouseleave = () => {
-    alert("Hi");
-    console.log("Iam out");
-    reverse ? startTransform() : endTransform();
-  };
 
   return (
     <div
-      id={`premium-scroll-${id}`}
+      data-direction={effectDir}
+      data-effect={hoverEffect}
+      data-reverse={reverse}
+      id={`premium-scroll`}
       className={`premium-image-scroll-section`}
       style={{
         boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
       }}
     >
       <div
-        className={` premium-image-scroll-container  ${contrainerClasses} `}
+        data-direction={effectDir}
+        data-effect={hoverEffect}
+        data-reverse={reverse}
+        className={` premium-image-scroll-container  ${containerClasses} `}
         style={{
           border: borderType,
           borderWidth: borderWidth + "px",
@@ -112,8 +68,6 @@ const save = (props) => {
           minHeight: minHeight,
           height: height,
         }}
-        onMouseEnter={mouseenter}
-        onMouseLeave={mouseleave}
       >
         {urlCheck && <a class="premium-image-scroll-link" href={url}></a>}
         <div
@@ -126,7 +80,7 @@ const save = (props) => {
             ></div>
           )}
           <img
-            className={`image-scroll`}
+            className={`premium-image-scroll`}
             alt="scroll Image"
             src={imageURL}
             style={{
