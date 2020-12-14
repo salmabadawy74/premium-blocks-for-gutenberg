@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 78);
+/******/ 	return __webpack_require__(__webpack_require__.s = 79);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -112,7 +112,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = ty
 	if (typeof module !== 'undefined' && module.exports) {
 		classNames.default = classNames;
 		module.exports = classNames;
-	} else if ("function" === 'function' && _typeof(__webpack_require__(47)) === 'object' && __webpack_require__(47)) {
+	} else if ("function" === 'function' && _typeof(__webpack_require__(48)) === 'object' && __webpack_require__(48)) {
 		// register as 'classnames', consistent with npm package name
 		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return classNames;
@@ -708,35 +708,36 @@ var _wp$components = wp.components,
 
 
 function PremiumSizeUnits(props) {
-  var units = props.units,
-      _props$onChangeSizeUn = props.onChangeSizeUnit,
-      onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
+    var activeUnit = props.activeUnit,
+        units = props.units,
+        _props$onChangeSizeUn = props.onChangeSizeUnit,
+        onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
 
 
-  var sizeUnits = ["px", "em", "%"];
+    var sizeUnits = ["px", "em", "%"];
 
-  if (undefined !== units) {
-    sizeUnits = units;
-  }
+    if (undefined !== units) {
+        sizeUnits = units;
+    }
 
-  return wp.element.createElement(
-    ButtonGroup,
-    { className: "premium-unit-control" },
-    sizeUnits.map(function (unit, index) {
-      return wp.element.createElement(
-        Button,
-        {
-          isSmall: true,
-          isDefault: true,
-          className: "premium-unit-control-btn",
-          onClick: function onClick() {
-            return onChangeSizeUnit(unit);
-          }
-        },
-        unit
-      );
-    })
-  );
+    return wp.element.createElement(
+        ButtonGroup,
+        { className: "premium-unit-control" },
+        sizeUnits.map(function (unit, index) {
+            return wp.element.createElement(
+                Button,
+                {
+                    isSmall: true,
+                    isDefault: true,
+                    className: "premium-unit-control-btn " + (unit === activeUnit && "premium-unit-control-active-btn"),
+                    onClick: function onClick() {
+                        return onChangeSizeUnit(unit);
+                    }
+                },
+                unit
+            );
+        })
+    );
 }
 
 /***/ }),
@@ -831,67 +832,6 @@ function PremiumTextShadow(props) {
 
 /***/ }),
 /* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(190);
-} else {
-  module.exports = __webpack_require__(191);
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var freeGlobal = __webpack_require__(52);
-
-/** Detect free variable `self`. */
-var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-module.exports = root;
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-/**
- * Checks if `value` is classified as an `Array` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an array, else `false`.
- * @example
- *
- * _.isArray([1, 2, 3]);
- * // => true
- *
- * _.isArray(document.body.children);
- * // => false
- *
- * _.isArray('abc');
- * // => false
- *
- * _.isArray(_.noop);
- * // => false
- */
-var isArray = Array.isArray;
-
-module.exports = isArray;
-
-/***/ }),
-/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1001,6 +941,67 @@ function PremiumBoxShadow(props) {
 }
 
 /***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(190);
+} else {
+  module.exports = __webpack_require__(191);
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var freeGlobal = __webpack_require__(53);
+
+/** Detect free variable `self`. */
+var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+module.exports = root;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+/**
+ * Checks if `value` is classified as an `Array` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+ * @example
+ *
+ * _.isArray([1, 2, 3]);
+ * // => true
+ *
+ * _.isArray(document.body.children);
+ * // => false
+ *
+ * _.isArray('abc');
+ * // => false
+ *
+ * _.isArray(_.noop);
+ * // => false
+ */
+var isArray = Array.isArray;
+
+module.exports = isArray;
+
+/***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1012,7 +1013,7 @@ function PremiumBoxShadow(props) {
  */
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = __webpack_require__(66);
+  var ReactIs = __webpack_require__(67);
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
@@ -1043,87 +1044,91 @@ var _wp$components = wp.components,
 
 
 function PremiumPadding(props) {
-  var showUnits = props.showUnits,
-      paddingTop = props.paddingTop,
-      paddingRight = props.paddingRight,
-      paddingBottom = props.paddingBottom,
-      paddingLeft = props.paddingLeft,
-      _props$onChangePadTop = props.onChangePadTop,
-      onChangePadTop = _props$onChangePadTop === undefined ? function () {} : _props$onChangePadTop,
-      _props$onChangePadRig = props.onChangePadRight,
-      onChangePadRight = _props$onChangePadRig === undefined ? function () {} : _props$onChangePadRig,
-      _props$onChangePadBot = props.onChangePadBottom,
-      onChangePadBottom = _props$onChangePadBot === undefined ? function () {} : _props$onChangePadBot,
-      _props$onChangePadLef = props.onChangePadLeft,
-      onChangePadLeft = _props$onChangePadLef === undefined ? function () {} : _props$onChangePadLef,
-      _props$onChangePadSiz = props.onChangePadSizeUnit,
-      onChangePadSizeUnit = _props$onChangePadSiz === undefined ? function () {} : _props$onChangePadSiz;
+    var showUnits = props.showUnits,
+        paddingTop = props.paddingTop,
+        paddingRight = props.paddingRight,
+        paddingBottom = props.paddingBottom,
+        paddingLeft = props.paddingLeft,
+        selectedUnit = props.selectedUnit,
+        _props$onChangePadTop = props.onChangePadTop,
+        onChangePadTop = _props$onChangePadTop === undefined ? function () {} : _props$onChangePadTop,
+        _props$onChangePadRig = props.onChangePadRight,
+        onChangePadRight = _props$onChangePadRig === undefined ? function () {} : _props$onChangePadRig,
+        _props$onChangePadBot = props.onChangePadBottom,
+        onChangePadBottom = _props$onChangePadBot === undefined ? function () {} : _props$onChangePadBot,
+        _props$onChangePadLef = props.onChangePadLeft,
+        onChangePadLeft = _props$onChangePadLef === undefined ? function () {} : _props$onChangePadLef,
+        _props$onChangePadSiz = props.onChangePadSizeUnit,
+        onChangePadSizeUnit = _props$onChangePadSiz === undefined ? function () {} : _props$onChangePadSiz;
 
-  return wp.element.createElement(
-    "div",
-    { className: "premium-control-toggle" },
-    wp.element.createElement(
-      "strong",
-      null,
-      __("Padding")
-    ),
-    wp.element.createElement(Dropdown, {
-      className: "premium-control-toggle-btn",
-      contentClassName: "premium-control-toggle-content",
-      position: "bottom right",
-      renderToggle: function renderToggle(_ref) {
-        var isOpen = _ref.isOpen,
-            onToggle = _ref.onToggle;
-        return wp.element.createElement(
-          Button,
-          { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-          wp.element.createElement("i", { className: "dashicons dashicons-edit" })
-        );
-      },
-      renderContent: function renderContent() {
-        return wp.element.createElement(
-          Fragment,
-          null,
-          showUnits && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_size_units__["a" /* default */], { onChangeSizeUnit: onChangePadSizeUnit }),
-          wp.element.createElement(RangeControl, {
-            label: __("Padding Top"),
-            value: paddingTop,
-            min: "0",
-            max: "150",
-            onChange: onChangePadTop
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Padding Right"),
-            value: paddingRight,
-            min: "0",
-            max: "150",
-            onChange: onChangePadRight
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Padding Bottom"),
-            value: paddingBottom,
-            min: "0",
-            max: "150",
-            onChange: onChangePadBottom
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Padding Left"),
-            value: paddingLeft,
-            min: "0",
-            max: "150",
-            onChange: onChangePadLeft
-          })
-        );
-      }
-    })
-  );
+    return wp.element.createElement(
+        "div",
+        { className: "premium-control-toggle" },
+        wp.element.createElement(
+            "strong",
+            null,
+            __("Padding")
+        ),
+        wp.element.createElement(Dropdown, {
+            className: "premium-control-toggle-btn",
+            contentClassName: "premium-control-toggle-content",
+            position: "bottom right",
+            renderToggle: function renderToggle(_ref) {
+                var isOpen = _ref.isOpen,
+                    onToggle = _ref.onToggle;
+                return wp.element.createElement(
+                    Button,
+                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+                    wp.element.createElement("i", { className: "dashicons dashicons-edit" })
+                );
+            },
+            renderContent: function renderContent() {
+                return wp.element.createElement(
+                    Fragment,
+                    null,
+                    showUnits && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_size_units__["a" /* default */], {
+                        activeUnit: selectedUnit,
+                        onChangeSizeUnit: onChangePadSizeUnit
+                    }),
+                    wp.element.createElement(RangeControl, {
+                        label: __("Padding Top"),
+                        value: paddingTop,
+                        min: "0",
+                        max: "150",
+                        onChange: onChangePadTop
+                    }),
+                    wp.element.createElement(RangeControl, {
+                        label: __("Padding Right"),
+                        value: paddingRight,
+                        min: "0",
+                        max: "150",
+                        onChange: onChangePadRight
+                    }),
+                    wp.element.createElement(RangeControl, {
+                        label: __("Padding Bottom"),
+                        value: paddingBottom,
+                        min: "0",
+                        max: "150",
+                        onChange: onChangePadBottom
+                    }),
+                    wp.element.createElement(RangeControl, {
+                        label: __("Padding Left"),
+                        value: paddingLeft,
+                        min: "0",
+                        max: "150",
+                        onChange: onChangePadLeft
+                    })
+                );
+            }
+        })
+    );
 }
 
 /***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsNative = __webpack_require__(95),
+var baseIsNative = __webpack_require__(96),
     getValue = __webpack_require__(101);
 
 /**
@@ -1560,7 +1565,7 @@ var DefaultImage = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_map__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_map__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_map__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -1710,11 +1715,11 @@ function PremiumResponsive(props) {
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var listCacheClear = __webpack_require__(85),
-    listCacheDelete = __webpack_require__(86),
-    listCacheGet = __webpack_require__(87),
-    listCacheHas = __webpack_require__(88),
-    listCacheSet = __webpack_require__(89);
+var listCacheClear = __webpack_require__(86),
+    listCacheDelete = __webpack_require__(87),
+    listCacheGet = __webpack_require__(88),
+    listCacheHas = __webpack_require__(89),
+    listCacheSet = __webpack_require__(90);
 
 /**
  * Creates an list cache object.
@@ -1747,7 +1752,7 @@ module.exports = ListCache;
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var eq = __webpack_require__(50);
+var eq = __webpack_require__(51);
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -1773,7 +1778,7 @@ module.exports = assocIndexOf;
 /* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(9);
+var root = __webpack_require__(10);
 
 /** Built-in value references. */
 var _Symbol = root.Symbol;
@@ -1913,6 +1918,115 @@ module.exports = toKey;
 
 /***/ }),
 /* 31 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumFilters;
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    RangeControl = _wp$components.RangeControl,
+    Dropdown = _wp$components.Dropdown,
+    Button = _wp$components.Button;
+
+
+function PremiumFilters(props) {
+  var blur = props.blur,
+      bright = props.bright,
+      contrast = props.contrast,
+      saturation = props.saturation,
+      hue = props.hue,
+      _props$onChangeBlur = props.onChangeBlur,
+      onChangeBlur = _props$onChangeBlur === undefined ? function () {} : _props$onChangeBlur,
+      _props$onChangeBright = props.onChangeBright,
+      onChangeBright = _props$onChangeBright === undefined ? function () {} : _props$onChangeBright,
+      _props$onChangeContra = props.onChangeContrast,
+      onChangeContrast = _props$onChangeContra === undefined ? function () {} : _props$onChangeContra,
+      _props$onChangeSat = props.onChangeSat,
+      onChangeSat = _props$onChangeSat === undefined ? function () {} : _props$onChangeSat,
+      _props$onChangeHue = props.onChangeHue,
+      onChangeHue = _props$onChangeHue === undefined ? function () {} : _props$onChangeHue;
+
+
+  return wp.element.createElement(
+    "div",
+    { className: "premium-control-toggle" },
+    wp.element.createElement(
+      "strong",
+      null,
+      __("CSS Filters")
+    ),
+    wp.element.createElement(Dropdown, {
+      className: "premium-control-toggle-btn",
+      contentClassName: "premium-control-toggle-content",
+      position: "bottom right",
+      renderToggle: function renderToggle(_ref) {
+        var isOpen = _ref.isOpen,
+            onToggle = _ref.onToggle;
+        return wp.element.createElement(
+          Button,
+          { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+          wp.element.createElement("i", { className: "dashicons dashicons-edit" })
+        );
+      },
+      renderContent: function renderContent() {
+        return wp.element.createElement(
+          Fragment,
+          null,
+          wp.element.createElement(RangeControl, {
+            label: __("Blur"),
+            min: "0",
+            max: "10",
+            step: "0.1",
+            initialPosition: "0",
+            value: blur,
+            onChange: onChangeBlur,
+            allowReset: true
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Brightness"),
+            min: "0",
+            max: "200",
+            initialPosition: 100,
+            value: bright,
+            onChange: onChangeBright,
+            allowReset: true
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Contrast"),
+            min: "0",
+            max: "200",
+            initialPosition: 100,
+            value: contrast,
+            onChange: onChangeContrast,
+            allowReset: true
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Saturation"),
+            min: "0",
+            max: "200",
+            initialPosition: 100,
+            value: saturation,
+            onChange: onChangeSat,
+            allowReset: true
+          }),
+          wp.element.createElement(RangeControl, {
+            label: __("Hue"),
+            min: "0",
+            max: "360",
+            initialPosition: "0",
+            value: hue,
+            onChange: onChangeHue,
+            allowReset: true
+          })
+        );
+      }
+    })
+  );
+}
+
+/***/ }),
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -1935,7 +2049,7 @@ module.exports = toKey;
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(12), __webpack_require__(8), __webpack_require__(0), __webpack_require__(20), __webpack_require__(68)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(12), __webpack_require__(8), __webpack_require__(0), __webpack_require__(20), __webpack_require__(68)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(12), __webpack_require__(9), __webpack_require__(0), __webpack_require__(20), __webpack_require__(69)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(12), __webpack_require__(9), __webpack_require__(0), __webpack_require__(20), __webpack_require__(69)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -2476,10 +2590,11 @@ module.exports = toKey;
     var n;Object.defineProperty(t, "__esModule", { value: !0 }), t.default = void 0;var a = ((n = r(14)) && n.__esModule ? n : { default: n }).default;t.default = a;
   }]).default;
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(37)(module)))
+//# sourceMappingURL=fonticonpicker.react.js.map
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)(module)))
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2574,7 +2689,7 @@ function PremiumMargin(props) {
 }
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2594,255 +2709,256 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var videoBoxAttrs = {
-  videoBoxId: {
-    type: "string"
-  },
-  videoType: {
-    type: "string",
-    default: "youtube"
-  },
-  videoURL: {
-    type: "string",
-    default: "07d2dXHYb94"
-  },
-  videoID: {
-    type: "string"
-  },
-  autoPlay: {
-    type: "boolean",
-    default: false
-  },
-  loop: {
-    type: "boolean",
-    default: false
-  },
-  controls: {
-    type: "boolean",
-    default: true
-  },
-  relatedVideos: {
-    type: "boolean",
-    default: false
-  },
-  mute: {
-    type: "boolean",
-    default: false
-  },
-  overlay: {
-    type: "boolean",
-    default: false
-  },
-  overlayImgID: {
-    type: "string"
-  },
-  overlayImgURL: {
-    type: "string"
-  },
-  blur: {
-    type: "number",
-    default: 0
-  },
-  bright: {
-    type: "number",
-    default: 100
-  },
-  contrast: {
-    type: "number",
-    default: 100
-  },
-  saturation: {
-    type: "number",
-    default: 100
-  },
-  hue: {
-    type: "number",
-    default: 0
-  },
-  playTop: {
-    type: "number"
-  },
-  playIcon: {
-    type: "boolean",
-    default: true
-  },
-  playSize: {
-    type: "number"
-  },
-  playColor: {
-    type: "string"
-  },
-  playBack: {
-    type: "string"
-  },
-  playHoverColor: {
-    type: "string"
-  },
-  playHoverBackColor: {
-    type: "string"
-  },
-  playPadding: {
-    type: "number"
-  },
-  playBorderType: {
-    type: "string",
-    default: "none"
-  },
-  playBorderWidth: {
-    type: "number",
-    default: "1"
-  },
-  playBorderRadius: {
-    type: "number"
-  },
-  playBorderColor: {
-    type: "string"
-  },
-  videoDescText: {
-    type: "string"
-  },
-  videoDesc: {
-    type: "boolean"
-  },
-  descLeft: {
-    type: "number"
-  },
-  descTop: {
-    type: "number"
-  },
-  videoDescSize: {
-    type: "number"
-  },
-  videoDescFamily: {
-    type: "string"
-  },
-  videoDescWeight: {
-    type: "number"
-  },
-  videoDescLetter: {
-    type: "number"
-  },
-  videoDescStyle: {
-    type: "string"
-  },
-  videoDescUpper: {
-    type: "boolean"
-  },
-  videoDescColor: {
-    type: "string"
-  },
-  videoDescBack: {
-    type: "string"
-  },
-  videoDescPadding: {
-    type: "number"
-  },
-  videoDescBorderRadius: {
-    type: "number"
-  },
-  descShadowColor: {
-    type: "string"
-  },
-  descShadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  descShadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  descShadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  boxBorderType: {
-    type: "string",
-    default: "none"
-  },
-  boxBorderWidth: {
-    type: "number",
-    default: "1"
-  },
-  boxBorderRadius: {
-    type: "number"
-  },
-  boxBorderColor: {
-    type: "string"
-  },
-  shadowColor: {
-    type: "string"
-  },
-  shadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  shadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  shadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  shadowPosition: {
-    type: "string",
-    default: ""
-  },
+    videoBoxId: {
+        type: "string"
+    },
+    videoType: {
+        type: "string",
+        default: "youtube"
+    },
+    videoURL: {
+        type: "string",
+        default: "07d2dXHYb94"
+    },
+    videoID: {
+        type: "string"
+    },
+    autoPlay: {
+        type: "boolean",
+        default: false
+    },
+    loop: {
+        type: "boolean",
+        default: false
+    },
+    controls: {
+        type: "boolean",
+        default: true
+    },
+    relatedVideos: {
+        type: "boolean",
+        default: false
+    },
+    mute: {
+        type: "boolean",
+        default: false
+    },
+    overlay: {
+        type: "boolean",
+        default: false
+    },
+    overlayImgID: {
+        type: "string"
+    },
+    overlayImgURL: {
+        type: "string"
+    },
+    blur: {
+        type: "number",
+        default: 0
+    },
+    bright: {
+        type: "number",
+        default: 100
+    },
+    contrast: {
+        type: "number",
+        default: 100
+    },
+    saturation: {
+        type: "number",
+        default: 100
+    },
+    hue: {
+        type: "number",
+        default: 0
+    },
+    playTop: {
+        type: "number"
+    },
+    playIcon: {
+        type: "boolean",
+        default: true
+    },
+    playSize: {
+        type: "number"
+    },
+    playColor: {
+        type: "string"
+    },
+    playBack: {
+        type: "string"
+    },
+    playHoverColor: {
+        type: "string"
+    },
+    playHoverBackColor: {
+        type: "string"
+    },
+    playPadding: {
+        type: "number"
+    },
+    playBorderType: {
+        type: "string",
+        default: "none"
+    },
+    playBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    playBorderRadius: {
+        type: "number"
+    },
+    playBorderColor: {
+        type: "string"
+    },
+    videoDescText: {
+        type: "string"
+    },
+    videoDesc: {
+        type: "boolean"
+    },
+    descLeft: {
+        type: "number"
+    },
+    descTop: {
+        type: "number"
+    },
+    videoDescSize: {
+        type: "number"
+    },
+    videoDescFamily: {
+        type: "string"
+    },
+    videoDescWeight: {
+        type: "number"
+    },
+    videoDescLetter: {
+        type: "number"
+    },
+    videoDescStyle: {
+        type: "string"
+    },
+    videoDescUpper: {
+        type: "boolean"
+    },
+    videoDescColor: {
+        type: "string"
+    },
+    videoDescBack: {
+        type: "string"
+    },
+    videoDescPadding: {
+        type: "number"
+    },
+    videoDescBorderRadius: {
+        type: "number"
+    },
+    descShadowColor: {
+        type: "string"
+    },
+    descShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    descShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    descShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    boxBorderType: {
+        type: "string",
+        default: "none"
+    },
+    boxBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    boxBorderRadius: {
+        type: "number"
+    },
+    boxBorderColor: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    shadowPosition: {
+        type: "string",
+        default: ""
+    },
 
-  // Old props
-  playLeft: {
-    type: "number"
-  }
+    // Old props
+    playLeft: {
+        type: "number"
+    }
 };
 
 var onChangeVideoURL = function onChangeVideoURL(type, URL) {
-  var videoUrl = void 0;
-  switch (type) {
-    case "youtube":
-      if (URL.startsWith("http")) {
-        videoUrl = URL;
-      } else {
-        videoUrl = "https://www.youtube.com/embed/" + URL;
-      }
-      break;
-    case "vimeo":
-      if (URL.startsWith("http")) {
-        videoUrl = URL;
-      } else {
-        videoUrl = "https://player.vimeo.com/video/" + URL;
-      }
-      break;
-    case "daily":
-      if (URL.startsWith("http")) {
-        videoUrl = URL;
-      } else {
-        videoUrl = "https://dailymotion.com/embed/video/" + URL;
-      }
-      break;
-  }
-  return videoUrl;
+    var videoUrl = void 0;
+    switch (type) {
+        case "youtube":
+            if (URL.startsWith("http")) {
+                videoUrl = URL;
+            } else {
+                videoUrl = "https://www.youtube.com/embed/" + URL;
+            }
+            break;
+        case "vimeo":
+            if (URL.startsWith("http")) {
+                videoUrl = URL;
+            } else {
+                videoUrl = "https://player.vimeo.com/video/" + URL;
+            }
+            break;
+        case "daily":
+            if (URL.startsWith("http")) {
+                videoUrl = URL;
+            } else {
+                videoUrl = "https://dailymotion.com/embed/video/" + URL;
+            }
+            break;
+    }
+    return videoUrl;
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (onChangeVideoURL);
 
 registerBlockType("premium/video-box", {
-  title: __("Video Box"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "video" }),
-  category: "premium-blocks",
-  attributes: videoBoxAttrs,
-  supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["q" /* videoBox */]
-  },
-  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
-  save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
-  deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
+    title: __("Video Box"),
+    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "video" }),
+    category: "premium-blocks",
+    attributes: videoBoxAttrs,
+    supports: {
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["q" /* videoBox */]
+    },
+    example: {},
+    edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+    save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
+    deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
 });
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14),
-    root = __webpack_require__(9);
+    root = __webpack_require__(10);
 
 /* Built-in method references that are verified to be native. */
 var Map = getNative(root, 'Map');
@@ -2850,7 +2966,34 @@ var Map = getNative(root, 'Map');
 module.exports = Map;
 
 /***/ }),
-/* 35 */
+/* 36 */
+/***/ (function(module, exports) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var g;
+
+// This works in non-strict mode
+g = function () {
+	return this;
+}();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1, eval)("this");
+} catch (e) {
+	// This works if the window reference is available
+	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+/***/ }),
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var mapCacheClear = __webpack_require__(102),
@@ -2887,12 +3030,12 @@ MapCache.prototype.set = mapCacheSet;
 module.exports = MapCache;
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayLikeKeys = __webpack_require__(131),
     baseKeys = __webpack_require__(137),
-    isArrayLike = __webpack_require__(39);
+    isArrayLike = __webpack_require__(41);
 
 /**
  * Creates an array of the own enumerable property names of `object`.
@@ -2929,7 +3072,7 @@ function keys(object) {
 module.exports = keys;
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ (function(module, exports) {
 
 module.exports = function (module) {
@@ -2956,7 +3099,7 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 38 */
+/* 40 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -2995,11 +3138,11 @@ function isLength(value) {
 module.exports = isLength;
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isFunction = __webpack_require__(51),
-    isLength = __webpack_require__(38);
+var isFunction = __webpack_require__(52),
+    isLength = __webpack_require__(40);
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -3033,12 +3176,12 @@ function isArrayLike(value) {
 module.exports = isArrayLike;
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var isArray = __webpack_require__(10),
+var isArray = __webpack_require__(11),
     isSymbol = __webpack_require__(29);
 
 /** Used to match property names within property paths. */
@@ -3067,116 +3210,7 @@ function isKey(value, object) {
 module.exports = isKey;
 
 /***/ }),
-/* 41 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = PremiumFilters;
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    RangeControl = _wp$components.RangeControl,
-    Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
-
-
-function PremiumFilters(props) {
-  var blur = props.blur,
-      bright = props.bright,
-      contrast = props.contrast,
-      saturation = props.saturation,
-      hue = props.hue,
-      _props$onChangeBlur = props.onChangeBlur,
-      onChangeBlur = _props$onChangeBlur === undefined ? function () {} : _props$onChangeBlur,
-      _props$onChangeBright = props.onChangeBright,
-      onChangeBright = _props$onChangeBright === undefined ? function () {} : _props$onChangeBright,
-      _props$onChangeContra = props.onChangeContrast,
-      onChangeContrast = _props$onChangeContra === undefined ? function () {} : _props$onChangeContra,
-      _props$onChangeSat = props.onChangeSat,
-      onChangeSat = _props$onChangeSat === undefined ? function () {} : _props$onChangeSat,
-      _props$onChangeHue = props.onChangeHue,
-      onChangeHue = _props$onChangeHue === undefined ? function () {} : _props$onChangeHue;
-
-
-  return wp.element.createElement(
-    "div",
-    { className: "premium-control-toggle" },
-    wp.element.createElement(
-      "strong",
-      null,
-      __("CSS Filters")
-    ),
-    wp.element.createElement(Dropdown, {
-      className: "premium-control-toggle-btn",
-      contentClassName: "premium-control-toggle-content",
-      position: "bottom right",
-      renderToggle: function renderToggle(_ref) {
-        var isOpen = _ref.isOpen,
-            onToggle = _ref.onToggle;
-        return wp.element.createElement(
-          Button,
-          { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-          wp.element.createElement("i", { className: "dashicons dashicons-edit" })
-        );
-      },
-      renderContent: function renderContent() {
-        return wp.element.createElement(
-          Fragment,
-          null,
-          wp.element.createElement(RangeControl, {
-            label: __("Blur"),
-            min: "0",
-            max: "10",
-            step: "0.1",
-            initialPosition: "0",
-            value: blur,
-            onChange: onChangeBlur,
-            allowReset: true
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Brightness"),
-            min: "0",
-            max: "200",
-            initialPosition: 100,
-            value: bright,
-            onChange: onChangeBright,
-            allowReset: true
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Contrast"),
-            min: "0",
-            max: "200",
-            initialPosition: 100,
-            value: contrast,
-            onChange: onChangeContrast,
-            allowReset: true
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Saturation"),
-            min: "0",
-            max: "200",
-            initialPosition: 100,
-            value: saturation,
-            onChange: onChangeSat,
-            allowReset: true
-          }),
-          wp.element.createElement(RangeControl, {
-            label: __("Hue"),
-            min: "0",
-            max: "360",
-            initialPosition: "0",
-            value: hue,
-            onChange: onChangeHue,
-            allowReset: true
-          })
-        );
-      }
-    })
-  );
-}
-
-/***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3194,7 +3228,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3212,7 +3246,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var printWarning = function printWarning() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(42);
+  var ReactPropTypesSecret = __webpack_require__(43);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -3293,7 +3327,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3305,7 +3339,7 @@ var iconsList = {
 /* harmony default export */ __webpack_exports__["a"] = (iconsList);
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3367,7 +3401,7 @@ var PremiumLowerQuote = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3430,7 +3464,7 @@ var PremiumUpperQuote = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -3439,7 +3473,7 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports) {
 
 /**
@@ -3465,15 +3499,15 @@ function arrayMap(array, iteratee) {
 module.exports = arrayMap;
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(23),
-    stackClear = __webpack_require__(90),
-    stackDelete = __webpack_require__(91),
-    stackGet = __webpack_require__(92),
-    stackHas = __webpack_require__(93),
-    stackSet = __webpack_require__(94);
+    stackClear = __webpack_require__(91),
+    stackDelete = __webpack_require__(92),
+    stackGet = __webpack_require__(93),
+    stackHas = __webpack_require__(94),
+    stackSet = __webpack_require__(95);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -3497,7 +3531,7 @@ Stack.prototype.set = stackSet;
 module.exports = Stack;
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports) {
 
 /**
@@ -3539,7 +3573,7 @@ function eq(value, other) {
 module.exports = eq;
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(17),
@@ -3581,7 +3615,7 @@ function isFunction(value) {
 module.exports = isFunction;
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -3590,10 +3624,10 @@ module.exports = isFunction;
 var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
 
 module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(96)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36)))
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -3624,7 +3658,7 @@ function toSource(func) {
 module.exports = toSource;
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqualDeep = __webpack_require__(114),
@@ -3657,7 +3691,7 @@ function baseIsEqual(value, other, bitmask, customizer, stack) {
 module.exports = baseIsEqual;
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var SetCache = __webpack_require__(115),
@@ -3740,7 +3774,7 @@ function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalArrays;
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports) {
 
 /**
@@ -3765,7 +3799,7 @@ function baseTimes(n, iteratee) {
 module.exports = baseTimes;
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsArguments = __webpack_require__(132),
@@ -3807,12 +3841,12 @@ var isArguments = baseIsArguments(function () {
 module.exports = isArguments;
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var root = __webpack_require__(9),
+var root = __webpack_require__(10),
     stubFalse = __webpack_require__(133);
 
 /** Detect free variable `exports`. */
@@ -3850,10 +3884,10 @@ var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
 var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(37)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)(module)))
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -3882,7 +3916,7 @@ function isIndex(value, length) {
 module.exports = isIndex;
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsTypedArray = __webpack_require__(134),
@@ -3914,7 +3948,7 @@ var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedA
 module.exports = isTypedArray;
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(26);
@@ -3934,7 +3968,7 @@ function isStrictComparable(value) {
 module.exports = isStrictComparable;
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports) {
 
 /**
@@ -3958,10 +3992,10 @@ function matchesStrictComparable(key, srcValue) {
 module.exports = matchesStrictComparable;
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var castPath = __webpack_require__(64),
+var castPath = __webpack_require__(65),
     toKey = __webpack_require__(30);
 
 /**
@@ -3987,11 +4021,11 @@ function baseGet(object, path) {
 module.exports = baseGet;
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArray = __webpack_require__(10),
-    isKey = __webpack_require__(40),
+var isArray = __webpack_require__(11),
+    isKey = __webpack_require__(42),
     stringToPath = __webpack_require__(149),
     toString = __webpack_require__(152);
 
@@ -4013,7 +4047,7 @@ function castPath(value, object) {
 module.exports = castPath;
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports) {
 
 /**
@@ -4039,7 +4073,7 @@ function identity(value) {
 module.exports = identity;
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4053,7 +4087,7 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4067,7 +4101,7 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4077,9 +4111,9 @@ var _CSSTransition = _interopRequireDefault(__webpack_require__(199));
 
 var _ReplaceTransition = _interopRequireDefault(__webpack_require__(204));
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(72));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(73));
 
-var _Transition = _interopRequireDefault(__webpack_require__(69));
+var _Transition = _interopRequireDefault(__webpack_require__(70));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -4093,7 +4127,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4104,13 +4138,13 @@ exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(12));
 
-var _react = _interopRequireDefault(__webpack_require__(8));
+var _react = _interopRequireDefault(__webpack_require__(9));
 
 var _reactDom = _interopRequireDefault(__webpack_require__(20));
 
-var _reactLifecyclesCompat = __webpack_require__(70);
+var _reactLifecyclesCompat = __webpack_require__(71);
 
-var _PropTypes = __webpack_require__(71);
+var _PropTypes = __webpack_require__(72);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -4733,7 +4767,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4865,7 +4899,7 @@ function polyfill(Component) {
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4902,7 +4936,7 @@ exports.classNamesShape = classNamesShape;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4913,9 +4947,9 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(12));
 
-var _react = _interopRequireDefault(__webpack_require__(8));
+var _react = _interopRequireDefault(__webpack_require__(9));
 
-var _reactLifecyclesCompat = __webpack_require__(70);
+var _reactLifecyclesCompat = __webpack_require__(71);
 
 var _ChildMapping = __webpack_require__(205);
 
@@ -5139,7 +5173,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5160,7 +5194,7 @@ function _defineProperty(obj, key, value) {
 }
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5174,7 +5208,7 @@ function _assertThisInitialized(self) {
 }
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5240,7 +5274,7 @@ function generateCSS(selectors, id) {
 /* harmony default export */ __webpack_exports__["a"] = (generateCSS);
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5258,7 +5292,7 @@ function generateCSSUnit(value, unit) {
 /* harmony default export */ __webpack_exports__["a"] = (generateCSSUnit);
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5333,12 +5367,12 @@ var PremiumRange = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumRange);
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_accordion__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_accordion__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(168);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_button__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_count_up__ = __webpack_require__(176);
@@ -5349,7 +5383,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(217);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_person__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__blocks_icon_list__ = __webpack_require__(250);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__blocks_content_switcher__ = __webpack_require__(260);
@@ -5373,13 +5407,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //import "./blocks/test";
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(167);
 
@@ -5394,204 +5428,205 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var accordionAttrs = {
-  accordionId: {
-    type: "string"
-  },
-  repeaterItems: {
-    type: "array",
-    default: [{
-      titleText: __("Awesome Title"),
-      descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    }]
-  },
-  direction: {
-    type: "string",
-    default: "ltr"
-  },
-  titleTag: {
-    type: "string",
-    default: "H4"
-  },
-  titleColor: {
-    type: "string"
-  },
-  titleSize: {
-    type: "number"
-  },
-  titleLine: {
-    type: "number"
-  },
-  titleLetter: {
-    type: "number"
-  },
-  titleStyle: {
-    type: "string"
-  },
-  titleUpper: {
-    type: "boolean"
-  },
-  titleWeight: {
-    type: "number",
-    default: 500
-  },
-  titleBorder: {
-    type: "string",
-    default: "none"
-  },
-  titleBorderWidth: {
-    type: "number",
-    default: "1"
-  },
-  titleBorderRadius: {
-    type: "number",
-    default: "0"
-  },
-  titleBorderColor: {
-    type: "string"
-  },
-  titleBack: {
-    type: "string"
-  },
-  titleShadowColor: {
-    type: "string"
-  },
-  titleShadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  titleShadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  titleShadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  titlePaddingT: {
-    type: "number"
-  },
-  titlePaddingR: {
-    type: "number"
-  },
-  titlePaddingB: {
-    type: "number"
-  },
-  titlePaddingL: {
-    type: "number"
-  },
-  arrowColor: {
-    type: "string"
-  },
-  arrowBack: {
-    type: "string"
-  },
-  arrowPos: {
-    type: "string",
-    default: "out"
-  },
-  arrowPadding: {
-    type: "number"
-  },
-  arrowRadius: {
-    type: "number"
-  },
-  arrowSize: {
-    type: "number",
-    default: 20
-  },
-  contentType: {
-    type: "string",
-    default: "text"
-  },
-  descAlign: {
-    type: "string",
-    default: "left"
-  },
-  descColor: {
-    type: "string"
-  },
-  descBack: {
-    type: "string"
-  },
-  descBorder: {
-    type: "string",
-    default: "none"
-  },
-  descBorderWidth: {
-    type: "number",
-    default: "1"
-  },
-  descBorderRadius: {
-    type: "number",
-    default: "0"
-  },
-  descBorderColor: {
-    type: "string"
-  },
-  descSize: {
-    type: "number"
-  },
-  descLine: {
-    type: "number"
-  },
-  descLetter: {
-    type: "number"
-  },
-  descStyle: {
-    type: "string"
-  },
-  descUpper: {
-    type: "boolean"
-  },
-  descWeight: {
-    type: "number",
-    default: 500
-  },
-  textShadowColor: {
-    type: "string"
-  },
-  textShadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  textShadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  textShadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  descPaddingT: {
-    type: "number"
-  },
-  descPaddingR: {
-    type: "number"
-  },
-  descPaddingB: {
-    type: "number"
-  },
-  descPaddingL: {
-    type: "number",
-    default: 10
-  }
+    accordionId: {
+        type: "string"
+    },
+    repeaterItems: {
+        type: "array",
+        default: [{
+            titleText: __("Awesome Title"),
+            descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }]
+    },
+    direction: {
+        type: "string",
+        default: "ltr"
+    },
+    titleTag: {
+        type: "string",
+        default: "H4"
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleSize: {
+        type: "number"
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleLetter: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    titleBorder: {
+        type: "string",
+        default: "none"
+    },
+    titleBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    titleBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    titleBorderColor: {
+        type: "string"
+    },
+    titleBack: {
+        type: "string"
+    },
+    titleShadowColor: {
+        type: "string"
+    },
+    titleShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingT: {
+        type: "number"
+    },
+    titlePaddingR: {
+        type: "number"
+    },
+    titlePaddingB: {
+        type: "number"
+    },
+    titlePaddingL: {
+        type: "number"
+    },
+    arrowColor: {
+        type: "string"
+    },
+    arrowBack: {
+        type: "string"
+    },
+    arrowPos: {
+        type: "string",
+        default: "out"
+    },
+    arrowPadding: {
+        type: "number"
+    },
+    arrowRadius: {
+        type: "number"
+    },
+    arrowSize: {
+        type: "number",
+        default: 20
+    },
+    contentType: {
+        type: "string",
+        default: "text"
+    },
+    descAlign: {
+        type: "string",
+        default: "left"
+    },
+    descColor: {
+        type: "string"
+    },
+    descBack: {
+        type: "string"
+    },
+    descBorder: {
+        type: "string",
+        default: "none"
+    },
+    descBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    descBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    descBorderColor: {
+        type: "string"
+    },
+    descSize: {
+        type: "number"
+    },
+    descLine: {
+        type: "number"
+    },
+    descLetter: {
+        type: "number"
+    },
+    descStyle: {
+        type: "string"
+    },
+    descUpper: {
+        type: "boolean"
+    },
+    descWeight: {
+        type: "number",
+        default: 500
+    },
+    textShadowColor: {
+        type: "string"
+    },
+    textShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    textShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    textShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    descPaddingT: {
+        type: "number"
+    },
+    descPaddingR: {
+        type: "number"
+    },
+    descPaddingB: {
+        type: "number"
+    },
+    descPaddingL: {
+        type: "number",
+        default: 10
+    }
 };
 
 registerBlockType("premium/accordion", {
-  title: __("Accordion"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "accordion" }),
-  category: "premium-blocks",
-  attributes: accordionAttrs,
-  supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["b" /* accordion */]
-  },
-  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
-  save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
-  deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
+    title: __("Accordion"),
+    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "accordion" }),
+    category: "premium-blocks",
+    attributes: accordionAttrs,
+    supports: {
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["b" /* accordion */]
+    },
+    example: {},
+    edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+    save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
+    deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
 });
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6405,13 +6440,13 @@ var PremiumAccordion = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumAccordion);
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(48),
-    baseIteratee = __webpack_require__(82),
+var arrayMap = __webpack_require__(49),
+    baseIteratee = __webpack_require__(83),
     baseMap = __webpack_require__(160),
-    isArray = __webpack_require__(10);
+    isArray = __webpack_require__(11);
 
 /**
  * Creates an array of values by running each element in `collection` thru
@@ -6463,15 +6498,15 @@ function map(collection, iteratee) {
 module.exports = map;
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseMatches = __webpack_require__(83),
+var baseMatches = __webpack_require__(84),
     baseMatchesProperty = __webpack_require__(147),
-    identity = __webpack_require__(65),
-    isArray = __webpack_require__(10),
+    identity = __webpack_require__(66),
+    isArray = __webpack_require__(11),
     property = __webpack_require__(157);
 
 /**
@@ -6499,12 +6534,12 @@ function baseIteratee(value) {
 module.exports = baseIteratee;
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsMatch = __webpack_require__(84),
+var baseIsMatch = __webpack_require__(85),
     getMatchData = __webpack_require__(146),
-    matchesStrictComparable = __webpack_require__(62);
+    matchesStrictComparable = __webpack_require__(63);
 
 /**
  * The base implementation of `_.matches` which doesn't clone `source`.
@@ -6526,11 +6561,11 @@ function baseMatches(source) {
 module.exports = baseMatches;
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(49),
-    baseIsEqual = __webpack_require__(54);
+var Stack = __webpack_require__(50),
+    baseIsEqual = __webpack_require__(55);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -6587,7 +6622,7 @@ function baseIsMatch(object, source, matchData, customizer) {
 module.exports = baseIsMatch;
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports) {
 
 /**
@@ -6605,7 +6640,7 @@ function listCacheClear() {
 module.exports = listCacheClear;
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(24);
@@ -6645,7 +6680,7 @@ function listCacheDelete(key) {
 module.exports = listCacheDelete;
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(24);
@@ -6669,7 +6704,7 @@ function listCacheGet(key) {
 module.exports = listCacheGet;
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(24);
@@ -6690,7 +6725,7 @@ function listCacheHas(key) {
 module.exports = listCacheHas;
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(24);
@@ -6721,7 +6756,7 @@ function listCacheSet(key, value) {
 module.exports = listCacheSet;
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(23);
@@ -6741,7 +6776,7 @@ function stackClear() {
 module.exports = stackClear;
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports) {
 
 /**
@@ -6764,7 +6799,7 @@ function stackDelete(key) {
 module.exports = stackDelete;
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports) {
 
 /**
@@ -6783,7 +6818,7 @@ function stackGet(key) {
 module.exports = stackGet;
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports) {
 
 /**
@@ -6802,12 +6837,12 @@ function stackHas(key) {
 module.exports = stackHas;
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(23),
-    Map = __webpack_require__(34),
-    MapCache = __webpack_require__(35);
+    Map = __webpack_require__(35),
+    MapCache = __webpack_require__(37);
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
@@ -6841,13 +6876,13 @@ function stackSet(key, value) {
 module.exports = stackSet;
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isFunction = __webpack_require__(51),
+var isFunction = __webpack_require__(52),
     isMasked = __webpack_require__(99),
     isObject = __webpack_require__(26),
-    toSource = __webpack_require__(53);
+    toSource = __webpack_require__(54);
 
 /**
  * Used to match `RegExp`
@@ -6888,33 +6923,6 @@ function baseIsNative(value) {
 }
 
 module.exports = baseIsNative;
-
-/***/ }),
-/* 96 */
-/***/ (function(module, exports) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var g;
-
-// This works in non-strict mode
-g = function () {
-	return this;
-}();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1, eval)("this");
-} catch (e) {
-	// This works if the window reference is available
-	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
 
 /***/ }),
 /* 97 */
@@ -7023,7 +7031,7 @@ module.exports = isMasked;
 /* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(9);
+var root = __webpack_require__(10);
 
 /** Used to detect overreaching core-js shims. */
 var coreJsData = root['__core-js_shared__'];
@@ -7054,7 +7062,7 @@ module.exports = getValue;
 
 var Hash = __webpack_require__(103),
     ListCache = __webpack_require__(23),
-    Map = __webpack_require__(34);
+    Map = __webpack_require__(35);
 
 /**
  * Removes all key-value entries from the map.
@@ -7360,14 +7368,14 @@ module.exports = mapCacheSet;
 /* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(49),
-    equalArrays = __webpack_require__(55),
+var Stack = __webpack_require__(50),
+    equalArrays = __webpack_require__(56),
     equalByTag = __webpack_require__(120),
     equalObjects = __webpack_require__(124),
     getTag = __webpack_require__(141),
-    isArray = __webpack_require__(10),
-    isBuffer = __webpack_require__(58),
-    isTypedArray = __webpack_require__(60);
+    isArray = __webpack_require__(11),
+    isBuffer = __webpack_require__(59),
+    isTypedArray = __webpack_require__(61);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -7446,7 +7454,7 @@ module.exports = baseIsEqualDeep;
 /* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(35),
+var MapCache = __webpack_require__(37),
     setCacheAdd = __webpack_require__(116),
     setCacheHas = __webpack_require__(117);
 
@@ -7569,8 +7577,8 @@ module.exports = cacheHas;
 
 var _Symbol = __webpack_require__(25),
     Uint8Array = __webpack_require__(121),
-    eq = __webpack_require__(50),
-    equalArrays = __webpack_require__(55),
+    eq = __webpack_require__(51),
+    equalArrays = __webpack_require__(56),
     mapToArray = __webpack_require__(122),
     setToArray = __webpack_require__(123);
 
@@ -7682,7 +7690,7 @@ module.exports = equalByTag;
 /* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(9);
+var root = __webpack_require__(10);
 
 /** Built-in value references. */
 var Uint8Array = root.Uint8Array;
@@ -7828,7 +7836,7 @@ module.exports = equalObjects;
 
 var baseGetAllKeys = __webpack_require__(126),
     getSymbols = __webpack_require__(128),
-    keys = __webpack_require__(36);
+    keys = __webpack_require__(38);
 
 /**
  * Creates an array of own enumerable property names and symbols of `object`.
@@ -7848,7 +7856,7 @@ module.exports = getAllKeys;
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayPush = __webpack_require__(127),
-    isArray = __webpack_require__(10);
+    isArray = __webpack_require__(11);
 
 /**
  * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -7990,12 +7998,12 @@ module.exports = stubArray;
 /* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseTimes = __webpack_require__(56),
-    isArguments = __webpack_require__(57),
-    isArray = __webpack_require__(10),
-    isBuffer = __webpack_require__(58),
-    isIndex = __webpack_require__(59),
-    isTypedArray = __webpack_require__(60);
+var baseTimes = __webpack_require__(57),
+    isArguments = __webpack_require__(58),
+    isArray = __webpack_require__(11),
+    isBuffer = __webpack_require__(59),
+    isIndex = __webpack_require__(60),
+    isTypedArray = __webpack_require__(61);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -8089,7 +8097,7 @@ module.exports = stubFalse;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(17),
-    isLength = __webpack_require__(38),
+    isLength = __webpack_require__(40),
     isObjectLike = __webpack_require__(18);
 
 /** `Object#toString` result references. */
@@ -8162,7 +8170,7 @@ module.exports = baseUnary;
 
 /* WEBPACK VAR INJECTION */(function(module) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(52);
+var freeGlobal = __webpack_require__(53);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -8192,7 +8200,7 @@ var nodeUtil = function () {
 }();
 
 module.exports = nodeUtil;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(37)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)(module)))
 
 /***/ }),
 /* 137 */
@@ -8288,12 +8296,12 @@ module.exports = overArg;
 /***/ (function(module, exports, __webpack_require__) {
 
 var DataView = __webpack_require__(142),
-    Map = __webpack_require__(34),
+    Map = __webpack_require__(35),
     Promise = __webpack_require__(143),
     Set = __webpack_require__(144),
     WeakMap = __webpack_require__(145),
     baseGetTag = __webpack_require__(17),
-    toSource = __webpack_require__(53);
+    toSource = __webpack_require__(54);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]',
@@ -8352,7 +8360,7 @@ module.exports = getTag;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14),
-    root = __webpack_require__(9);
+    root = __webpack_require__(10);
 
 /* Built-in method references that are verified to be native. */
 var DataView = getNative(root, 'DataView');
@@ -8364,7 +8372,7 @@ module.exports = DataView;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14),
-    root = __webpack_require__(9);
+    root = __webpack_require__(10);
 
 /* Built-in method references that are verified to be native. */
 var Promise = getNative(root, 'Promise');
@@ -8376,7 +8384,7 @@ module.exports = Promise;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14),
-    root = __webpack_require__(9);
+    root = __webpack_require__(10);
 
 /* Built-in method references that are verified to be native. */
 var Set = getNative(root, 'Set');
@@ -8388,7 +8396,7 @@ module.exports = Set;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14),
-    root = __webpack_require__(9);
+    root = __webpack_require__(10);
 
 /* Built-in method references that are verified to be native. */
 var WeakMap = getNative(root, 'WeakMap');
@@ -8399,8 +8407,8 @@ module.exports = WeakMap;
 /* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isStrictComparable = __webpack_require__(61),
-    keys = __webpack_require__(36);
+var isStrictComparable = __webpack_require__(62),
+    keys = __webpack_require__(38);
 
 /**
  * Gets the property names, values, and compare flags of `object`.
@@ -8428,12 +8436,12 @@ module.exports = getMatchData;
 /* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqual = __webpack_require__(54),
+var baseIsEqual = __webpack_require__(55),
     get = __webpack_require__(148),
     hasIn = __webpack_require__(154),
-    isKey = __webpack_require__(40),
-    isStrictComparable = __webpack_require__(61),
-    matchesStrictComparable = __webpack_require__(62),
+    isKey = __webpack_require__(42),
+    isStrictComparable = __webpack_require__(62),
+    matchesStrictComparable = __webpack_require__(63),
     toKey = __webpack_require__(30);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -8464,7 +8472,7 @@ module.exports = baseMatchesProperty;
 /* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGet = __webpack_require__(63);
+var baseGet = __webpack_require__(64);
 
 /**
  * Gets the value at `path` of `object`. If the resolved value is
@@ -8565,7 +8573,7 @@ module.exports = memoizeCapped;
 /* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(35);
+var MapCache = __webpack_require__(37);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -8677,8 +8685,8 @@ module.exports = toString;
 /***/ (function(module, exports, __webpack_require__) {
 
 var _Symbol = __webpack_require__(25),
-    arrayMap = __webpack_require__(48),
-    isArray = __webpack_require__(10),
+    arrayMap = __webpack_require__(49),
+    isArray = __webpack_require__(11),
     isSymbol = __webpack_require__(29);
 
 /** Used as references for various `Number` constants. */
@@ -8775,11 +8783,11 @@ module.exports = baseHasIn;
 /* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var castPath = __webpack_require__(64),
-    isArguments = __webpack_require__(57),
-    isArray = __webpack_require__(10),
-    isIndex = __webpack_require__(59),
-    isLength = __webpack_require__(38),
+var castPath = __webpack_require__(65),
+    isArguments = __webpack_require__(58),
+    isArray = __webpack_require__(11),
+    isIndex = __webpack_require__(60),
+    isLength = __webpack_require__(40),
     toKey = __webpack_require__(30);
 
 /**
@@ -8820,7 +8828,7 @@ module.exports = hasPath;
 
 var baseProperty = __webpack_require__(158),
     basePropertyDeep = __webpack_require__(159),
-    isKey = __webpack_require__(40),
+    isKey = __webpack_require__(42),
     toKey = __webpack_require__(30);
 
 /**
@@ -8874,7 +8882,7 @@ module.exports = baseProperty;
 /* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGet = __webpack_require__(63);
+var baseGet = __webpack_require__(64);
 
 /**
  * A specialized version of `baseProperty` which supports deep paths.
@@ -8896,7 +8904,7 @@ module.exports = basePropertyDeep;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseEach = __webpack_require__(161),
-    isArrayLike = __webpack_require__(39);
+    isArrayLike = __webpack_require__(41);
 
 /**
  * The base implementation of `_.map` without support for iteratee shorthands.
@@ -8942,7 +8950,7 @@ module.exports = baseEach;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseFor = __webpack_require__(163),
-    keys = __webpack_require__(36);
+    keys = __webpack_require__(38);
 
 /**
  * The base implementation of `_.forOwn` without support for iteratee shorthands.
@@ -9013,7 +9021,7 @@ module.exports = createBaseFor;
 /* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArrayLike = __webpack_require__(39);
+var isArrayLike = __webpack_require__(41);
 
 /**
  * Creates a `baseEach` or `baseEachRight` function.
@@ -9833,6 +9841,7 @@ registerBlockType("premium/banner", {
   supports: {
     inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["c" /* banner */]
   },
+  example: {},
   edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
   save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
   deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
@@ -9848,8 +9857,8 @@ registerBlockType("premium/banner", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(13);
 
 
@@ -10478,6 +10487,7 @@ var edit = function edit(props) {
             paddingL: value
           });
         },
+        selectedUnit: paddingU,
         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
           return setAttributes({ paddingU: newvalue });
         }
@@ -11795,146 +11805,147 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var buttonAttrs = {
-  btnText: {
-    type: "string",
-    default: __("Premium Button")
-  },
-  btnSize: {
-    type: "string",
-    default: "md"
-  },
-  btnAlign: {
-    type: "string",
-    default: "center"
-  },
-  btnLink: {
-    type: "string",
-    source: "attribute",
-    attribute: "href",
-    selector: ".premium-button"
-  },
-  btnTarget: {
-    type: "boolean",
-    default: false
-  },
-  effect: {
-    type: "string",
-    default: "none"
-  },
-  effectDir: {
-    type: "string",
-    default: "top"
-  },
-  textColor: {
-    type: "string"
-  },
-  textHoverColor: {
-    type: "string"
-  },
-  backColor: {
-    type: "string"
-  },
-  backHoverColor: {
-    type: "string"
-  },
-  slideColor: {
-    type: "string"
-  },
-  textSize: {
-    type: "number"
-  },
-  textFontFamily: {
-    type: "string"
-  },
-  textLetter: {
-    type: "number"
-  },
-  textStyle: {
-    type: "string"
-  },
-  textUpper: {
-    type: "boolean"
-  },
-  textWeight: {
-    type: "number",
-    default: 500
-  },
-  textLine: {
-    type: "number"
-  },
-  borderType: {
-    type: "string",
-    default: "none"
-  },
-  borderWidth: {
-    type: "number",
-    default: "1"
-  },
-  borderRadius: {
-    type: "number"
-  },
-  borderColor: {
-    type: "string"
-  },
-  borderHoverColor: {
-    type: "string"
-  },
-  padding: {
-    type: "number"
-  },
-  paddingU: {
-    type: "string"
-  },
-  shadowColor: {
-    type: "string"
-  },
-  shadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  shadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  shadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  btnShadowColor: {
-    type: "string"
-  },
-  btnShadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  btnShadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  btnShadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  btnShadowPosition: {
-    type: "string",
-    default: ""
-  },
-  id: {
-    type: "string"
-  }
+    btnText: {
+        type: "string",
+        default: __("Premium Button")
+    },
+    btnSize: {
+        type: "string",
+        default: "md"
+    },
+    btnAlign: {
+        type: "string",
+        default: "center"
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-button"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false
+    },
+    effect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    textColor: {
+        type: "string"
+    },
+    textHoverColor: {
+        type: "string"
+    },
+    backColor: {
+        type: "string"
+    },
+    backHoverColor: {
+        type: "string"
+    },
+    slideColor: {
+        type: "string"
+    },
+    textSize: {
+        type: "number"
+    },
+    textFontFamily: {
+        type: "string"
+    },
+    textLetter: {
+        type: "number"
+    },
+    textStyle: {
+        type: "string"
+    },
+    textUpper: {
+        type: "boolean"
+    },
+    textWeight: {
+        type: "number",
+        default: 500
+    },
+    textLine: {
+        type: "number"
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number"
+    },
+    borderColor: {
+        type: "string"
+    },
+    borderHoverColor: {
+        type: "string"
+    },
+    padding: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowColor: {
+        type: "string"
+    },
+    btnShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    id: {
+        type: "string"
+    }
 };
 
 registerBlockType("premium/button", {
-  title: __("Button"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__icons__["a" /* default */], { icon: "button" }),
-  category: "premium-blocks",
-  attributes: buttonAttrs,
-  supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["d" /* button */]
-  },
-  edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */],
-  save: __WEBPACK_IMPORTED_MODULE_2__save__["a" /* default */],
-  deprecated: __WEBPACK_IMPORTED_MODULE_3__deprecated__["a" /* default */]
+    title: __("Button"),
+    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__icons__["a" /* default */], { icon: "button" }),
+    category: "premium-blocks",
+    attributes: buttonAttrs,
+    supports: {
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["d" /* button */]
+    },
+    example: {},
+    edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */],
+    save: __WEBPACK_IMPORTED_MODULE_2__save__["a" /* default */],
+    deprecated: __WEBPACK_IMPORTED_MODULE_3__deprecated__["a" /* default */]
 });
 
 /***/ }),
@@ -11947,7 +11958,7 @@ registerBlockType("premium/button", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(15);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -12620,548 +12631,548 @@ var RichText = wp.editor.RichText;
 
 
 var buttonAttrs_1_0_0 = {
-  btnText: {
-    type: "string",
-    default: __("Premium Button")
-  },
-  btnSize: {
-    type: "string",
-    default: "md"
-  },
-  btnAlign: {
-    type: "string",
-    default: "center"
-  },
-  btnLink: {
-    type: "string",
-    source: "attribute",
-    attribute: "href",
-    selector: ".premium-button"
-  },
-  btnTarget: {
-    type: "boolean",
-    default: false
-  },
-  effect: {
-    type: "string",
-    default: "none"
-  },
-  effectDir: {
-    type: "string",
-    default: "top"
-  },
-  textColor: {
-    type: "string"
-  },
-  textHoverColor: {
-    type: "string"
-  },
-  backColor: {
-    type: "string"
-  },
-  backHoverColor: {
-    type: "string"
-  },
-  slideColor: {
-    type: "string"
-  },
-  textSize: {
-    type: "number"
-  },
-  textLetter: {
-    type: "number"
-  },
-  textStyle: {
-    type: "string"
-  },
-  textUpper: {
-    type: "boolean"
-  },
-  textWeight: {
-    type: "number",
-    default: 500
-  },
-  textLine: {
-    type: "number"
-  },
-  borderType: {
-    type: "string",
-    default: "none"
-  },
-  borderWidth: {
-    type: "number",
-    default: "1"
-  },
-  borderRadius: {
-    type: "number"
-  },
-  borderColor: {
-    type: "string"
-  },
-  padding: {
-    type: "number"
-  },
-  shadowColor: {
-    type: "string"
-  },
-  shadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  shadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  shadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  id: {
-    type: "string"
-  }
+    btnText: {
+        type: "string",
+        default: __("Premium Button")
+    },
+    btnSize: {
+        type: "string",
+        default: "md"
+    },
+    btnAlign: {
+        type: "string",
+        default: "center"
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-button"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false
+    },
+    effect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    textColor: {
+        type: "string"
+    },
+    textHoverColor: {
+        type: "string"
+    },
+    backColor: {
+        type: "string"
+    },
+    backHoverColor: {
+        type: "string"
+    },
+    slideColor: {
+        type: "string"
+    },
+    textSize: {
+        type: "number"
+    },
+    textLetter: {
+        type: "number"
+    },
+    textStyle: {
+        type: "string"
+    },
+    textUpper: {
+        type: "boolean"
+    },
+    textWeight: {
+        type: "number",
+        default: 500
+    },
+    textLine: {
+        type: "number"
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number"
+    },
+    borderColor: {
+        type: "string"
+    },
+    padding: {
+        type: "number"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    id: {
+        type: "string"
+    }
 };
 
 var newAttributes_1_0_1 = {
-  btnShadowColor: {
-    type: "string"
-  },
-  btnShadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  btnShadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  btnShadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  btnShadowPosition: {
-    type: "string",
-    default: ""
-  }
+    btnShadowColor: {
+        type: "string"
+    },
+    btnShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowPosition: {
+        type: "string",
+        default: ""
+    }
 };
 
 var buttonAttrs_1_0_1 = Object.assign(buttonAttrs_1_0_0, newAttributes_1_0_1);
 
 var newAttributes_1_3_4 = {
-  borderHoverColor: {
-    type: "string"
-  }
+    borderHoverColor: {
+        type: "string"
+    }
 };
 
 var buttonAttrs_1_3_4 = Object.assign(buttonAttrs_1_0_1, newAttributes_1_3_4);
 
 var newAttributes_1_4_7 = {
-  textFontFamily: {
-    type: "string"
-  }
+    textFontFamily: {
+        type: "string"
+    }
 };
 
 var buttonAttrs_1_4_7 = Object.assign(buttonAttrs_1_3_4, newAttributes_1_4_7);
 
 var deprecatedContent = [{
-  attributes: buttonAttrs_1_4_7,
-  migrate: function migrate(attributes) {
-    return Object.assign(attributes, { paddingU: "" });
-  },
-  save: function save(props) {
-    var _props$attributes = props.attributes,
-        id = _props$attributes.id,
-        btnText = _props$attributes.btnText,
-        btnSize = _props$attributes.btnSize,
-        btnAlign = _props$attributes.btnAlign,
-        btnLink = _props$attributes.btnLink,
-        btnTarget = _props$attributes.btnTarget,
-        effect = _props$attributes.effect,
-        effectDir = _props$attributes.effectDir,
-        textColor = _props$attributes.textColor,
-        textHoverColor = _props$attributes.textHoverColor,
-        backColor = _props$attributes.backColor,
-        backHoverColor = _props$attributes.backHoverColor,
-        slideColor = _props$attributes.slideColor,
-        textSize = _props$attributes.textSize,
-        textFontFamily = _props$attributes.textFontFamily,
-        textWeight = _props$attributes.textWeight,
-        textLine = _props$attributes.textLine,
-        textLetter = _props$attributes.textLetter,
-        textStyle = _props$attributes.textStyle,
-        textUpper = _props$attributes.textUpper,
-        borderType = _props$attributes.borderType,
-        borderWidth = _props$attributes.borderWidth,
-        borderRadius = _props$attributes.borderRadius,
-        borderColor = _props$attributes.borderColor,
-        borderHoverColor = _props$attributes.borderHoverColor,
-        padding = _props$attributes.padding,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        btnShadowBlur = _props$attributes.btnShadowBlur,
-        btnShadowColor = _props$attributes.btnShadowColor,
-        btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
-        btnShadowVertical = _props$attributes.btnShadowVertical,
-        btnShadowPosition = _props$attributes.btnShadowPosition;
+    attributes: buttonAttrs_1_4_7,
+    migrate: function migrate(attributes) {
+        return Object.assign(attributes, { paddingU: "" });
+    },
+    save: function save(props) {
+        var _props$attributes = props.attributes,
+            id = _props$attributes.id,
+            btnText = _props$attributes.btnText,
+            btnSize = _props$attributes.btnSize,
+            btnAlign = _props$attributes.btnAlign,
+            btnLink = _props$attributes.btnLink,
+            btnTarget = _props$attributes.btnTarget,
+            effect = _props$attributes.effect,
+            effectDir = _props$attributes.effectDir,
+            textColor = _props$attributes.textColor,
+            textHoverColor = _props$attributes.textHoverColor,
+            backColor = _props$attributes.backColor,
+            backHoverColor = _props$attributes.backHoverColor,
+            slideColor = _props$attributes.slideColor,
+            textSize = _props$attributes.textSize,
+            textFontFamily = _props$attributes.textFontFamily,
+            textWeight = _props$attributes.textWeight,
+            textLine = _props$attributes.textLine,
+            textLetter = _props$attributes.textLetter,
+            textStyle = _props$attributes.textStyle,
+            textUpper = _props$attributes.textUpper,
+            borderType = _props$attributes.borderType,
+            borderWidth = _props$attributes.borderWidth,
+            borderRadius = _props$attributes.borderRadius,
+            borderColor = _props$attributes.borderColor,
+            borderHoverColor = _props$attributes.borderHoverColor,
+            padding = _props$attributes.padding,
+            shadowBlur = _props$attributes.shadowBlur,
+            shadowColor = _props$attributes.shadowColor,
+            shadowHorizontal = _props$attributes.shadowHorizontal,
+            shadowVertical = _props$attributes.shadowVertical,
+            btnShadowBlur = _props$attributes.btnShadowBlur,
+            btnShadowColor = _props$attributes.btnShadowColor,
+            btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes.btnShadowVertical,
+            btnShadowPosition = _props$attributes.btnShadowPosition;
 
-    return wp.element.createElement(
-      "div",
-      {
-        id: className + "-wrap-" + id,
-        className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
-        style: { textAlign: btnAlign }
-      },
-      wp.element.createElement("style", {
-        dangerouslySetInnerHTML: {
-          __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
-        }
-      }),
-      wp.element.createElement(RichText.Content, {
-        tagName: "a",
-        value: btnText,
-        className: className + " " + className + "__" + btnSize,
-        href: btnLink,
-        rel: "noopener noreferrer",
-        target: btnTarget ? "_blank" : "_self",
-        style: {
-          color: textColor,
-          backgroundColor: backColor,
-          fontSize: textSize + "px",
-          fontFamily: textFontFamily,
-          letterSpacing: textLetter + "px",
-          textTransform: textUpper ? "uppercase" : "none",
-          fontStyle: textStyle,
-          lineHeight: textLine + "px",
-          fontWeight: textWeight,
-          textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
-          boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
-          padding: padding + "px",
-          border: borderType,
-          borderWidth: borderWidth + "px",
-          borderRadius: borderRadius + "px",
-          borderColor: borderColor
-        }
-      })
-    );
-  }
+        return wp.element.createElement(
+            "div",
+            {
+                id: className + "-wrap-" + id,
+                className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            wp.element.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
+                }
+            }),
+            wp.element.createElement(RichText.Content, {
+                tagName: "a",
+                value: btnText,
+                className: className + " " + className + "__" + btnSize,
+                href: btnLink,
+                rel: "noopener noreferrer",
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    fontFamily: textFontFamily,
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
+                    boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
+                    padding: padding + "px",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
 }, {
-  attributes: buttonAttrs_1_4_7,
-  save: function save(props) {
-    var _props$attributes2 = props.attributes,
-        id = _props$attributes2.id,
-        btnText = _props$attributes2.btnText,
-        btnSize = _props$attributes2.btnSize,
-        btnAlign = _props$attributes2.btnAlign,
-        btnLink = _props$attributes2.btnLink,
-        btnTarget = _props$attributes2.btnTarget,
-        effect = _props$attributes2.effect,
-        effectDir = _props$attributes2.effectDir,
-        textColor = _props$attributes2.textColor,
-        textHoverColor = _props$attributes2.textHoverColor,
-        backColor = _props$attributes2.backColor,
-        backHoverColor = _props$attributes2.backHoverColor,
-        slideColor = _props$attributes2.slideColor,
-        textSize = _props$attributes2.textSize,
-        textFontFamily = _props$attributes2.textFontFamily,
-        textWeight = _props$attributes2.textWeight,
-        textLine = _props$attributes2.textLine,
-        textLetter = _props$attributes2.textLetter,
-        textStyle = _props$attributes2.textStyle,
-        textUpper = _props$attributes2.textUpper,
-        borderType = _props$attributes2.borderType,
-        borderWidth = _props$attributes2.borderWidth,
-        borderRadius = _props$attributes2.borderRadius,
-        borderColor = _props$attributes2.borderColor,
-        borderHoverColor = _props$attributes2.borderHoverColor,
-        padding = _props$attributes2.padding,
-        shadowBlur = _props$attributes2.shadowBlur,
-        shadowColor = _props$attributes2.shadowColor,
-        shadowHorizontal = _props$attributes2.shadowHorizontal,
-        shadowVertical = _props$attributes2.shadowVertical,
-        btnShadowBlur = _props$attributes2.btnShadowBlur,
-        btnShadowColor = _props$attributes2.btnShadowColor,
-        btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
-        btnShadowVertical = _props$attributes2.btnShadowVertical,
-        btnShadowPosition = _props$attributes2.btnShadowPosition;
+    attributes: buttonAttrs_1_4_7,
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            id = _props$attributes2.id,
+            btnText = _props$attributes2.btnText,
+            btnSize = _props$attributes2.btnSize,
+            btnAlign = _props$attributes2.btnAlign,
+            btnLink = _props$attributes2.btnLink,
+            btnTarget = _props$attributes2.btnTarget,
+            effect = _props$attributes2.effect,
+            effectDir = _props$attributes2.effectDir,
+            textColor = _props$attributes2.textColor,
+            textHoverColor = _props$attributes2.textHoverColor,
+            backColor = _props$attributes2.backColor,
+            backHoverColor = _props$attributes2.backHoverColor,
+            slideColor = _props$attributes2.slideColor,
+            textSize = _props$attributes2.textSize,
+            textFontFamily = _props$attributes2.textFontFamily,
+            textWeight = _props$attributes2.textWeight,
+            textLine = _props$attributes2.textLine,
+            textLetter = _props$attributes2.textLetter,
+            textStyle = _props$attributes2.textStyle,
+            textUpper = _props$attributes2.textUpper,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            borderHoverColor = _props$attributes2.borderHoverColor,
+            padding = _props$attributes2.padding,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            btnShadowBlur = _props$attributes2.btnShadowBlur,
+            btnShadowColor = _props$attributes2.btnShadowColor,
+            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes2.btnShadowVertical,
+            btnShadowPosition = _props$attributes2.btnShadowPosition;
 
-    return wp.element.createElement(
-      "div",
-      {
-        id: className + "-wrap-" + id,
-        className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
-        style: { textAlign: btnAlign }
-      },
-      wp.element.createElement("style", {
-        dangerouslySetInnerHTML: {
-          __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
-        }
-      }),
-      wp.element.createElement(RichText.Content, {
-        tagName: "a",
-        value: btnText,
-        className: className + " " + className + "__" + btnSize,
-        href: btnLink,
-        target: btnTarget ? "_blank" : "_self",
-        style: {
-          color: textColor,
-          backgroundColor: backColor,
-          fontSize: textSize + "px",
-          fontFamily: textFontFamily,
-          letterSpacing: textLetter + "px",
-          textTransform: textUpper ? "uppercase" : "none",
-          fontStyle: textStyle,
-          lineHeight: textLine + "px",
-          fontWeight: textWeight,
-          textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
-          boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
-          padding: padding + "px",
-          border: borderType,
-          borderWidth: borderWidth + "px",
-          borderRadius: borderRadius + "px",
-          borderColor: borderColor
-        }
-      })
-    );
-  }
+        return wp.element.createElement(
+            "div",
+            {
+                id: className + "-wrap-" + id,
+                className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            wp.element.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
+                }
+            }),
+            wp.element.createElement(RichText.Content, {
+                tagName: "a",
+                value: btnText,
+                className: className + " " + className + "__" + btnSize,
+                href: btnLink,
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    fontFamily: textFontFamily,
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
+                    boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
+                    padding: padding + "px",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
 }, {
-  attributes: buttonAttrs_1_3_4,
-  migrate: function migrate(attributes) {
-    return Object.assign(attributes, { textFontFamily: "" });
-  },
-  save: function save(props) {
-    var _props$attributes3 = props.attributes,
-        id = _props$attributes3.id,
-        btnText = _props$attributes3.btnText,
-        btnSize = _props$attributes3.btnSize,
-        btnAlign = _props$attributes3.btnAlign,
-        btnLink = _props$attributes3.btnLink,
-        btnTarget = _props$attributes3.btnTarget,
-        effect = _props$attributes3.effect,
-        effectDir = _props$attributes3.effectDir,
-        textColor = _props$attributes3.textColor,
-        textHoverColor = _props$attributes3.textHoverColor,
-        backColor = _props$attributes3.backColor,
-        backHoverColor = _props$attributes3.backHoverColor,
-        slideColor = _props$attributes3.slideColor,
-        textSize = _props$attributes3.textSize,
-        textWeight = _props$attributes3.textWeight,
-        textLine = _props$attributes3.textLine,
-        textLetter = _props$attributes3.textLetter,
-        textStyle = _props$attributes3.textStyle,
-        textUpper = _props$attributes3.textUpper,
-        borderType = _props$attributes3.borderType,
-        borderWidth = _props$attributes3.borderWidth,
-        borderRadius = _props$attributes3.borderRadius,
-        borderColor = _props$attributes3.borderColor,
-        borderHoverColor = _props$attributes3.borderHoverColor,
-        padding = _props$attributes3.padding,
-        shadowBlur = _props$attributes3.shadowBlur,
-        shadowColor = _props$attributes3.shadowColor,
-        shadowHorizontal = _props$attributes3.shadowHorizontal,
-        shadowVertical = _props$attributes3.shadowVertical,
-        btnShadowBlur = _props$attributes3.btnShadowBlur,
-        btnShadowColor = _props$attributes3.btnShadowColor,
-        btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
-        btnShadowVertical = _props$attributes3.btnShadowVertical,
-        btnShadowPosition = _props$attributes3.btnShadowPosition;
+    attributes: buttonAttrs_1_3_4,
+    migrate: function migrate(attributes) {
+        return Object.assign(attributes, { textFontFamily: "" });
+    },
+    save: function save(props) {
+        var _props$attributes3 = props.attributes,
+            id = _props$attributes3.id,
+            btnText = _props$attributes3.btnText,
+            btnSize = _props$attributes3.btnSize,
+            btnAlign = _props$attributes3.btnAlign,
+            btnLink = _props$attributes3.btnLink,
+            btnTarget = _props$attributes3.btnTarget,
+            effect = _props$attributes3.effect,
+            effectDir = _props$attributes3.effectDir,
+            textColor = _props$attributes3.textColor,
+            textHoverColor = _props$attributes3.textHoverColor,
+            backColor = _props$attributes3.backColor,
+            backHoverColor = _props$attributes3.backHoverColor,
+            slideColor = _props$attributes3.slideColor,
+            textSize = _props$attributes3.textSize,
+            textWeight = _props$attributes3.textWeight,
+            textLine = _props$attributes3.textLine,
+            textLetter = _props$attributes3.textLetter,
+            textStyle = _props$attributes3.textStyle,
+            textUpper = _props$attributes3.textUpper,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            borderHoverColor = _props$attributes3.borderHoverColor,
+            padding = _props$attributes3.padding,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            btnShadowBlur = _props$attributes3.btnShadowBlur,
+            btnShadowColor = _props$attributes3.btnShadowColor,
+            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes3.btnShadowVertical,
+            btnShadowPosition = _props$attributes3.btnShadowPosition;
 
-    return wp.element.createElement(
-      "div",
-      {
-        id: className + "-wrap-" + id,
-        className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
-        style: { textAlign: btnAlign }
-      },
-      wp.element.createElement("style", {
-        dangerouslySetInnerHTML: {
-          __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
-        }
-      }),
-      wp.element.createElement(RichText.Content, {
-        tagName: "a",
-        value: btnText,
-        className: className + " " + className + "__" + btnSize,
-        href: btnLink,
-        target: btnTarget ? "_blank" : "_self",
-        style: {
-          color: textColor,
-          backgroundColor: backColor,
-          fontSize: textSize + "px",
-          letterSpacing: textLetter + "px",
-          textTransform: textUpper ? "uppercase" : "none",
-          fontStyle: textStyle,
-          lineHeight: textLine + "px",
-          fontWeight: textWeight,
-          textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
-          boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
-          padding: padding + "px",
-          border: borderType,
-          borderWidth: borderWidth + "px",
-          borderRadius: borderRadius + "px",
-          borderColor: borderColor
-        }
-      })
-    );
-  }
+        return wp.element.createElement(
+            "div",
+            {
+                id: className + "-wrap-" + id,
+                className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            wp.element.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
+                }
+            }),
+            wp.element.createElement(RichText.Content, {
+                tagName: "a",
+                value: btnText,
+                className: className + " " + className + "__" + btnSize,
+                href: btnLink,
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
+                    boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
+                    padding: padding + "px",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
 }, {
-  attributes: buttonAttrs_1_0_1,
-  migrate: function migrate(attributes) {
-    return Object.assign(attributes, { borderHoverColor: "" });
-  },
-  save: function save(props) {
-    var _props$attributes4 = props.attributes,
-        id = _props$attributes4.id,
-        btnText = _props$attributes4.btnText,
-        btnSize = _props$attributes4.btnSize,
-        btnAlign = _props$attributes4.btnAlign,
-        btnLink = _props$attributes4.btnLink,
-        btnTarget = _props$attributes4.btnTarget,
-        effect = _props$attributes4.effect,
-        effectDir = _props$attributes4.effectDir,
-        textColor = _props$attributes4.textColor,
-        textHoverColor = _props$attributes4.textHoverColor,
-        backColor = _props$attributes4.backColor,
-        backHoverColor = _props$attributes4.backHoverColor,
-        slideColor = _props$attributes4.slideColor,
-        textSize = _props$attributes4.textSize,
-        textWeight = _props$attributes4.textWeight,
-        textLine = _props$attributes4.textLine,
-        textLetter = _props$attributes4.textLetter,
-        textStyle = _props$attributes4.textStyle,
-        textUpper = _props$attributes4.textUpper,
-        borderType = _props$attributes4.borderType,
-        borderWidth = _props$attributes4.borderWidth,
-        borderRadius = _props$attributes4.borderRadius,
-        borderColor = _props$attributes4.borderColor,
-        padding = _props$attributes4.padding,
-        shadowBlur = _props$attributes4.shadowBlur,
-        shadowColor = _props$attributes4.shadowColor,
-        shadowHorizontal = _props$attributes4.shadowHorizontal,
-        shadowVertical = _props$attributes4.shadowVertical,
-        btnShadowBlur = _props$attributes4.btnShadowBlur,
-        btnShadowColor = _props$attributes4.btnShadowColor,
-        btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
-        btnShadowVertical = _props$attributes4.btnShadowVertical,
-        btnShadowPosition = _props$attributes4.btnShadowPosition;
+    attributes: buttonAttrs_1_0_1,
+    migrate: function migrate(attributes) {
+        return Object.assign(attributes, { borderHoverColor: "" });
+    },
+    save: function save(props) {
+        var _props$attributes4 = props.attributes,
+            id = _props$attributes4.id,
+            btnText = _props$attributes4.btnText,
+            btnSize = _props$attributes4.btnSize,
+            btnAlign = _props$attributes4.btnAlign,
+            btnLink = _props$attributes4.btnLink,
+            btnTarget = _props$attributes4.btnTarget,
+            effect = _props$attributes4.effect,
+            effectDir = _props$attributes4.effectDir,
+            textColor = _props$attributes4.textColor,
+            textHoverColor = _props$attributes4.textHoverColor,
+            backColor = _props$attributes4.backColor,
+            backHoverColor = _props$attributes4.backHoverColor,
+            slideColor = _props$attributes4.slideColor,
+            textSize = _props$attributes4.textSize,
+            textWeight = _props$attributes4.textWeight,
+            textLine = _props$attributes4.textLine,
+            textLetter = _props$attributes4.textLetter,
+            textStyle = _props$attributes4.textStyle,
+            textUpper = _props$attributes4.textUpper,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            padding = _props$attributes4.padding,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            btnShadowBlur = _props$attributes4.btnShadowBlur,
+            btnShadowColor = _props$attributes4.btnShadowColor,
+            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes4.btnShadowVertical,
+            btnShadowPosition = _props$attributes4.btnShadowPosition;
 
-    return wp.element.createElement(
-      "div",
-      {
-        id: className + "-wrap-" + id,
-        className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
-        style: { textAlign: btnAlign }
-      },
-      wp.element.createElement("style", {
-        dangerouslySetInnerHTML: {
-          __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
-        }
-      }),
-      wp.element.createElement(RichText.Content, {
-        tagName: "a",
-        value: btnText,
-        className: className + " " + className + "__" + btnSize,
-        href: btnLink,
-        target: btnTarget ? "_blank" : "_self",
-        style: {
-          color: textColor,
-          backgroundColor: backColor,
-          fontSize: textSize + "px",
-          letterSpacing: textLetter + "px",
-          textTransform: textUpper ? "uppercase" : "none",
-          fontStyle: textStyle,
-          lineHeight: textLine + "px",
-          fontWeight: textWeight,
-          textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
-          boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
-          padding: padding + "px",
-          border: borderType,
-          borderWidth: borderWidth + "px",
-          borderRadius: borderRadius + "px",
-          borderColor: borderColor
-        }
-      })
-    );
-  }
+        return wp.element.createElement(
+            "div",
+            {
+                id: className + "-wrap-" + id,
+                className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            wp.element.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
+                }
+            }),
+            wp.element.createElement(RichText.Content, {
+                tagName: "a",
+                value: btnText,
+                className: className + " " + className + "__" + btnSize,
+                href: btnLink,
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
+                    boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
+                    padding: padding + "px",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
 }, {
-  attributes: buttonAttrs_1_0_0,
-  migrate: function migrate(attributes) {
-    var newAttributes = {
-      btnShadowColor: "",
-      btnShadowBlur: "0",
-      btnShadowHorizontal: "0",
-      btnShadowVertical: "0",
-      btnShadowPosition: ""
-    };
-    return Object.assign(attributes, newAttributes);
-  },
-  save: function save(props) {
-    var _props$attributes5 = props.attributes,
-        id = _props$attributes5.id,
-        btnText = _props$attributes5.btnText,
-        btnSize = _props$attributes5.btnSize,
-        btnAlign = _props$attributes5.btnAlign,
-        btnLink = _props$attributes5.btnLink,
-        btnTarget = _props$attributes5.btnTarget,
-        effect = _props$attributes5.effect,
-        effectDir = _props$attributes5.effectDir,
-        textColor = _props$attributes5.textColor,
-        textHoverColor = _props$attributes5.textHoverColor,
-        backColor = _props$attributes5.backColor,
-        backHoverColor = _props$attributes5.backHoverColor,
-        slideColor = _props$attributes5.slideColor,
-        textSize = _props$attributes5.textSize,
-        textWeight = _props$attributes5.textWeight,
-        textLine = _props$attributes5.textLine,
-        textLetter = _props$attributes5.textLetter,
-        textStyle = _props$attributes5.textStyle,
-        textUpper = _props$attributes5.textUpper,
-        borderType = _props$attributes5.borderType,
-        borderWidth = _props$attributes5.borderWidth,
-        borderRadius = _props$attributes5.borderRadius,
-        borderColor = _props$attributes5.borderColor,
-        padding = _props$attributes5.padding,
-        shadowBlur = _props$attributes5.shadowBlur,
-        shadowColor = _props$attributes5.shadowColor,
-        shadowHorizontal = _props$attributes5.shadowHorizontal,
-        shadowVertical = _props$attributes5.shadowVertical;
+    attributes: buttonAttrs_1_0_0,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            btnShadowColor: "",
+            btnShadowBlur: "0",
+            btnShadowHorizontal: "0",
+            btnShadowVertical: "0",
+            btnShadowPosition: ""
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes5 = props.attributes,
+            id = _props$attributes5.id,
+            btnText = _props$attributes5.btnText,
+            btnSize = _props$attributes5.btnSize,
+            btnAlign = _props$attributes5.btnAlign,
+            btnLink = _props$attributes5.btnLink,
+            btnTarget = _props$attributes5.btnTarget,
+            effect = _props$attributes5.effect,
+            effectDir = _props$attributes5.effectDir,
+            textColor = _props$attributes5.textColor,
+            textHoverColor = _props$attributes5.textHoverColor,
+            backColor = _props$attributes5.backColor,
+            backHoverColor = _props$attributes5.backHoverColor,
+            slideColor = _props$attributes5.slideColor,
+            textSize = _props$attributes5.textSize,
+            textWeight = _props$attributes5.textWeight,
+            textLine = _props$attributes5.textLine,
+            textLetter = _props$attributes5.textLetter,
+            textStyle = _props$attributes5.textStyle,
+            textUpper = _props$attributes5.textUpper,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            padding = _props$attributes5.padding,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical;
 
-    return wp.element.createElement(
-      "div",
-      {
-        id: className + "-wrap-" + id,
-        className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
-        style: { textAlign: btnAlign }
-      },
-      wp.element.createElement("style", {
-        dangerouslySetInnerHTML: {
-          __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
-        }
-      }),
-      wp.element.createElement(RichText.Content, {
-        tagName: "a",
-        value: btnText,
-        className: className + " " + className + "__" + btnSize,
-        href: btnLink,
-        target: btnTarget ? "_blank" : "_self",
-        style: {
-          color: textColor,
-          backgroundColor: backColor,
-          fontSize: textSize + "px",
-          letterSpacing: textLetter + "px",
-          textTransform: textUpper ? "uppercase" : "none",
-          fontStyle: textStyle,
-          lineHeight: textLine + "px",
-          fontWeight: textWeight,
-          textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
-          padding: padding + "px",
-          border: borderType,
-          borderWidth: borderWidth + "px",
-          borderRadius: borderRadius + "px",
-          borderColor: borderColor
-        }
-      })
-    );
-  }
+        return wp.element.createElement(
+            "div",
+            {
+                id: className + "-wrap-" + id,
+                className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            wp.element.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
+                }
+            }),
+            wp.element.createElement(RichText.Content, {
+                tagName: "a",
+                value: btnText,
+                className: className + " " + className + "__" + btnSize,
+                href: btnLink,
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
+                    padding: padding + "px",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
@@ -13187,240 +13198,241 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var counterAttrs = {
-  increment: {
-    type: "string",
-    default: 500
-  },
-  time: {
-    type: "string",
-    default: 1000
-  },
-  delay: {
-    type: "string",
-    default: 10
-  },
-  align: {
-    type: "string",
-    default: "center"
-  },
-  flexDir: {
-    type: "string",
-    default: "column"
-  },
-  numberSize: {
-    type: "number",
-    default: 30
-  },
-  numberColor: {
-    type: "string",
-    default: "#6ec1e4"
-  },
-  numberWeight: {
-    type: "number",
-    default: 900
-  },
-  prefix: {
-    type: "boolean",
-    default: true
-  },
-  prefixTxt: {
-    type: "string",
-    default: "Prefix"
-  },
-  prefixSize: {
-    type: "number",
-    default: 20
-  },
-  prefixColor: {
-    type: "string"
-  },
-  prefixWeight: {
-    type: "number"
-  },
-  prefixGap: {
-    type: "number",
-    default: 2
-  },
-  suffix: {
-    type: "boolean",
-    default: true
-  },
-  suffixTxt: {
-    type: "string",
-    default: "Suffix"
-  },
-  suffixSize: {
-    type: "number",
-    default: 20
-  },
-  suffixColor: {
-    type: "string"
-  },
-  suffixWeight: {
-    type: "number"
-  },
-  suffixGap: {
-    type: "number",
-    default: 2
-  },
-  icon: {
-    type: "string",
-    default: "icon"
-  },
-  iconSpacing: {
-    type: "number",
-    default: 10
-  },
-  imageID: {
-    type: "string"
-  },
-  imageURL: {
-    type: "string"
-  },
-  iconType: {
-    type: "string",
-    default: "dash"
-  },
-  iconCheck: {
-    type: "boolean",
-    default: true
-  },
-  iconSize: {
-    type: "number",
-    default: 40
-  },
-  iconColor: {
-    type: "string",
-    default: "#6ec1e4"
-  },
-  selfAlign: {
-    type: "string",
-    default: "center"
-  },
-  titleCheck: {
-    type: "boolean",
-    default: true
-  },
-  titleTxt: {
-    type: "string",
-    default: "Premium Count Up"
-  },
-  titleSize: {
-    type: "number",
-    default: 20
-  },
-  titleSpacing: {
-    type: "number"
-  },
-  titleStyle: {
-    type: "string"
-  },
-  titleUpper: {
-    type: "boolean"
-  },
-  titleT: {
-    type: "number",
-    default: 1
-  },
-  titleB: {
-    type: "number",
-    default: 1
-  },
-  titleColor: {
-    type: "string"
-  },
-  titleWeight: {
-    type: "number",
-    default: 500
-  },
-  faIcon: {
-    type: "string",
-    default: "dashicons-clock"
-  },
-  containerBack: {
-    type: "string"
-  },
-  shadowColor: {
-    type: "string"
-  },
-  shadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  shadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  shadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  shadowPosition: {
-    type: "string",
-    default: ""
-  },
-  backgroundImageID: {
-    type: "string"
-  },
-  backgroundImageURL: {
-    type: "string"
-  },
-  backgroundRepeat: {
-    type: "string",
-    default: "no-repeat"
-  },
-  backgroundPosition: {
-    type: "string",
-    default: "top center"
-  },
-  backgroundSize: {
-    type: "string",
-    default: "auto"
-  },
-  fixed: {
-    type: "boolean",
-    default: false
-  },
-  borderType: {
-    type: "string",
-    default: "none"
-  },
-  borderWidth: {
-    type: "number",
-    default: "1"
-  },
-  borderRadius: {
-    type: "number",
-    default: "0"
-  },
-  borderColor: {
-    type: "string"
-  },
-  titleFamily: {
-    type: "string"
-  },
-  counterFamily: {
-    type: "string"
-  },
-  prefixFamily: {
-    type: "string"
-  },
-  suffixFamily: {
-    type: "string"
-  }
+    increment: {
+        type: "string",
+        default: 500
+    },
+    time: {
+        type: "string",
+        default: 1000
+    },
+    delay: {
+        type: "string",
+        default: 10
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    flexDir: {
+        type: "string",
+        default: "column"
+    },
+    numberSize: {
+        type: "number",
+        default: 30
+    },
+    numberColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    numberWeight: {
+        type: "number",
+        default: 900
+    },
+    prefix: {
+        type: "boolean",
+        default: true
+    },
+    prefixTxt: {
+        type: "string",
+        default: "Prefix"
+    },
+    prefixSize: {
+        type: "number",
+        default: 20
+    },
+    prefixColor: {
+        type: "string"
+    },
+    prefixWeight: {
+        type: "number"
+    },
+    prefixGap: {
+        type: "number",
+        default: 2
+    },
+    suffix: {
+        type: "boolean",
+        default: true
+    },
+    suffixTxt: {
+        type: "string",
+        default: "Suffix"
+    },
+    suffixSize: {
+        type: "number",
+        default: 20
+    },
+    suffixColor: {
+        type: "string"
+    },
+    suffixWeight: {
+        type: "number"
+    },
+    suffixGap: {
+        type: "number",
+        default: 2
+    },
+    icon: {
+        type: "string",
+        default: "icon"
+    },
+    iconSpacing: {
+        type: "number",
+        default: 10
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    iconType: {
+        type: "string",
+        default: "dash"
+    },
+    iconCheck: {
+        type: "boolean",
+        default: true
+    },
+    iconSize: {
+        type: "number",
+        default: 40
+    },
+    iconColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    selfAlign: {
+        type: "string",
+        default: "center"
+    },
+    titleCheck: {
+        type: "boolean",
+        default: true
+    },
+    titleTxt: {
+        type: "string",
+        default: "Premium Count Up"
+    },
+    titleSize: {
+        type: "number",
+        default: 20
+    },
+    titleSpacing: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleT: {
+        type: "number",
+        default: 1
+    },
+    titleB: {
+        type: "number",
+        default: 1
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    faIcon: {
+        type: "string",
+        default: "dashicons-clock"
+    },
+    containerBack: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    shadowPosition: {
+        type: "string",
+        default: ""
+    },
+    backgroundImageID: {
+        type: "string"
+    },
+    backgroundImageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number",
+        default: "0"
+    },
+    borderColor: {
+        type: "string"
+    },
+    titleFamily: {
+        type: "string"
+    },
+    counterFamily: {
+        type: "string"
+    },
+    prefixFamily: {
+        type: "string"
+    },
+    suffixFamily: {
+        type: "string"
+    }
 };
 
 registerBlockType("premium/countup", {
-  title: __("CountUp"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__icons__["a" /* default */], { icon: "counter" }),
-  category: "premium-blocks",
-  attributes: counterAttrs,
-  supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["g" /* countUp */]
-  },
-  edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */],
-  save: __WEBPACK_IMPORTED_MODULE_2__save__["a" /* default */],
-  deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
+    title: __("CountUp"),
+    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__icons__["a" /* default */], { icon: "counter" }),
+    category: "premium-blocks",
+    attributes: counterAttrs,
+    supports: {
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["g" /* countUp */]
+    },
+    example: {},
+    edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */],
+    save: __WEBPACK_IMPORTED_MODULE_2__save__["a" /* default */],
+    deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
 });
 
 /***/ }),
@@ -13432,7 +13444,7 @@ registerBlockType("premium/countup", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(15);
@@ -15991,6 +16003,7 @@ registerBlockType("premium/dheading-block", {
     supports: {
         inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["h" /* dualHeading */]
     },
+    example: {},
     edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
     save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
     deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
@@ -18047,217 +18060,218 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var iconAttrs = {
-  iconType: {
-    type: "string",
-    default: "dash"
-  },
-  selectedIcon: {
-    type: "string",
-    default: "dashicons dashicons-admin-site"
-  },
-  align: {
-    type: "string",
-    default: "center"
-  },
-  hoverEffect: {
-    type: "string",
-    default: "none"
-  },
-  iconSize: {
-    type: "number"
-  },
-  iconSizeUnit: {
-    type: "string",
-    default: "px"
-  },
-  iconColor: {
-    type: "string",
-    default: "#6ec1e4"
-  },
-  iconBack: {
-    type: "string"
-  },
-  padding: {
-    type: "string",
-    default: "up"
-  },
-  shadowColor: {
-    type: "string"
-  },
-  shadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  shadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  shadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  paddingT: {
-    type: "number"
-  },
-  paddingR: {
-    type: "number"
-  },
-  paddingB: {
-    type: "number"
-  },
-  paddingL: {
-    type: "number"
-  },
-  paddingU: {
-    type: "string",
-    default: "px"
-  },
-  margin: {
-    type: "string",
-    default: "up"
-  },
-  marginT: {
-    type: "number"
-  },
-  marginR: {
-    type: "number"
-  },
-  marginB: {
-    type: "number"
-  },
-  marginL: {
-    type: "number"
-  },
-  borderType: {
-    type: "string",
-    default: "none"
-  },
-  borderWidth: {
-    type: "number",
-    default: "1"
-  },
-  borderRadius: {
-    type: "number",
-    default: 100
-  },
-  borderColor: {
-    type: "string"
-  },
-  backgroundColor: {
-    type: "string"
-  },
-  background: {
-    type: "string"
-  },
-  imageID: {
-    type: "string"
-  },
-  imageURL: {
-    type: "string"
-  },
-  backgroundRepeat: {
-    type: "string",
-    default: "no-repeat"
-  },
-  backgroundPosition: {
-    type: "string",
-    default: "top center"
-  },
-  backgroundSize: {
-    type: "string",
-    default: "auto"
-  },
-  fixed: {
-    type: "boolean",
-    default: false
-  },
-  wrapBorderType: {
-    type: "string",
-    default: "none"
-  },
-  wrapBorderWidth: {
-    type: "number",
-    default: "1"
-  },
-  wrapBorderRadius: {
-    type: "number"
-  },
-  wrapBorderColor: {
-    type: "string"
-  },
-  wrapPadding: {
-    type: "string",
-    default: "up"
-  },
-  wrapShadowColor: {
-    type: "string"
-  },
-  wrapShadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  wrapShadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  wrapShadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  wrapShadowPosition: {
-    type: "string",
-    default: ""
-  },
-  wrapPaddingT: {
-    type: "number"
-  },
-  wrapPaddingR: {
-    type: "number"
-  },
-  wrapPaddingB: {
-    type: "number"
-  },
-  wrapPaddingL: {
-    type: "number"
-  },
-  wrapMargin: {
-    type: "string",
-    default: "up"
-  },
-  wrapMarginT: {
-    type: "number"
-  },
-  wrapMarginR: {
-    type: "number"
-  },
-  wrapMarginB: {
-    type: "number"
-  },
-  wrapMarginL: {
-    type: "number"
-  },
-  urlCheck: {
-    type: "boolean"
-  },
-  link: {
-    type: "string"
-  },
-  target: {
-    type: "boolean"
-  }
+    iconType: {
+        type: "string",
+        default: "dash"
+    },
+    selectedIcon: {
+        type: "string",
+        default: "dashicons dashicons-admin-site"
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    iconSize: {
+        type: "number"
+    },
+    iconSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    iconColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    iconBack: {
+        type: "string"
+    },
+    padding: {
+        type: "string",
+        default: "up"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string",
+        default: "px"
+    },
+    margin: {
+        type: "string",
+        default: "up"
+    },
+    marginT: {
+        type: "number"
+    },
+    marginR: {
+        type: "number"
+    },
+    marginB: {
+        type: "number"
+    },
+    marginL: {
+        type: "number"
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number",
+        default: 100
+    },
+    borderColor: {
+        type: "string"
+    },
+    backgroundColor: {
+        type: "string"
+    },
+    background: {
+        type: "string"
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    wrapBorderType: {
+        type: "string",
+        default: "none"
+    },
+    wrapBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    wrapBorderRadius: {
+        type: "number"
+    },
+    wrapBorderColor: {
+        type: "string"
+    },
+    wrapPadding: {
+        type: "string",
+        default: "up"
+    },
+    wrapShadowColor: {
+        type: "string"
+    },
+    wrapShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    wrapShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    wrapShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    wrapShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    wrapPaddingT: {
+        type: "number"
+    },
+    wrapPaddingR: {
+        type: "number"
+    },
+    wrapPaddingB: {
+        type: "number"
+    },
+    wrapPaddingL: {
+        type: "number"
+    },
+    wrapMargin: {
+        type: "string",
+        default: "up"
+    },
+    wrapMarginT: {
+        type: "number"
+    },
+    wrapMarginR: {
+        type: "number"
+    },
+    wrapMarginB: {
+        type: "number"
+    },
+    wrapMarginL: {
+        type: "number"
+    },
+    urlCheck: {
+        type: "boolean"
+    },
+    link: {
+        type: "string"
+    },
+    target: {
+        type: "boolean"
+    }
 };
 
 registerBlockType("premium/icon", {
-  title: __("Icon"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "icon" }),
-  category: "premium-blocks",
-  attributes: iconAttrs,
-  supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["i" /* icon */]
-  },
-  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
-  save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
-  deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
+    title: __("Icon"),
+    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "icon" }),
+    category: "premium-blocks",
+    attributes: iconAttrs,
+    supports: {
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["i" /* icon */]
+    },
+    example: {},
+    edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+    save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
+    deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
 });
 
 /***/ }),
@@ -18268,14 +18282,14 @@ registerBlockType("premium/icon", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(16);
 
@@ -18624,6 +18638,7 @@ var edit = function edit(props) {
           });
         },
         showUnits: true,
+        selectedUnit: paddingU,
         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
           return setAttributes({ paddingU: newvalue });
         }
@@ -19178,11 +19193,11 @@ if (process.env.NODE_ENV !== "production") {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var ReactIs = __webpack_require__(66);
+var ReactIs = __webpack_require__(67);
 var assign = __webpack_require__(19);
 
-var ReactPropTypesSecret = __webpack_require__(42);
-var checkPropTypes = __webpack_require__(43);
+var ReactPropTypesSecret = __webpack_require__(43);
+var checkPropTypes = __webpack_require__(44);
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function printWarning() {};
@@ -19754,7 +19769,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
 
 
-var ReactPropTypesSecret = __webpack_require__(42);
+var ReactPropTypesSecret = __webpack_require__(43);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -20001,7 +20016,7 @@ if (process.env.NODE_ENV !== "production") {
     'use strict';
 
     var _assign = __webpack_require__(19);
-    var checkPropTypes = __webpack_require__(43);
+    var checkPropTypes = __webpack_require__(44);
 
     var ReactVersion = '16.14.0';
 
@@ -21898,9 +21913,9 @@ if (process.env.NODE_ENV !== "production") {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var aa = __webpack_require__(8),
+var aa = __webpack_require__(9),
     n = __webpack_require__(19),
-    r = __webpack_require__(67);function u(a) {
+    r = __webpack_require__(68);function u(a) {
   for (var b = "https://reactjs.org/docs/error-decoder.html?invariant=" + a, c = 1; c < arguments.length; c++) {
     b += "&args[]=" + encodeURIComponent(arguments[c]);
   }return "Minified React error #" + a + "; visit " + b + " for the full message or use the non-minified dev environment for full errors and additional helpful warnings.";
@@ -25604,7 +25619,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(8);var _assign=__webpack_require__(19);var Scheduler=__webpack_require__(67);var checkPropTypes=__webpack_require__(43);var tracing=__webpack_require__(196);var ReactSharedInternals=React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;// Prevent newer renderers from RTE when used with older react package versions.
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(9);var _assign=__webpack_require__(19);var Scheduler=__webpack_require__(68);var checkPropTypes=__webpack_require__(44);var tracing=__webpack_require__(196);var ReactSharedInternals=React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;// Prevent newer renderers from RTE when used with older react package versions.
 // Current owner and dispatcher used to share the same ref,
 // but PR #14548 split them out to better support the react-debug-tools package.
 if(!ReactSharedInternals.hasOwnProperty('ReactCurrentDispatcher')){ReactSharedInternals.ReactCurrentDispatcher={current:null};}if(!ReactSharedInternals.hasOwnProperty('ReactCurrentBatchConfig')){ReactSharedInternals.ReactCurrentBatchConfig={suspense:null};}// by calls to these methods by a Babel plugin.
@@ -30145,11 +30160,11 @@ var _addClass = _interopRequireDefault(__webpack_require__(200));
 
 var _removeClass = _interopRequireDefault(__webpack_require__(203));
 
-var _react = _interopRequireDefault(__webpack_require__(8));
+var _react = _interopRequireDefault(__webpack_require__(9));
 
-var _Transition = _interopRequireDefault(__webpack_require__(69));
+var _Transition = _interopRequireDefault(__webpack_require__(70));
 
-var _PropTypes = __webpack_require__(71);
+var _PropTypes = __webpack_require__(72);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -30604,11 +30619,11 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(12));
 
-var _react = _interopRequireDefault(__webpack_require__(8));
+var _react = _interopRequireDefault(__webpack_require__(9));
 
 var _reactDom = __webpack_require__(20);
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(72));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(73));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -30770,7 +30785,7 @@ exports.mergeChildMappings = mergeChildMappings;
 exports.getInitialChildMapping = getInitialChildMapping;
 exports.getNextChildMapping = getNextChildMapping;
 
-var _react = __webpack_require__(8);
+var _react = __webpack_require__(9);
 
 /**
  * Given `this.props.children`, return an object mapping key to child.
@@ -32059,371 +32074,372 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var iconBoxAttrs = {
-  id: {
-    type: "string"
-  },
-  align: {
-    type: "string",
-    default: "center"
-  },
-  iconImage: {
-    type: "string",
-    default: "icon"
-  },
-  iconImgId: {
-    type: "string"
-  },
-  iconImgUrl: {
-    type: "string"
-  },
-  hoverEffect: {
-    type: "string",
-    default: "none"
-  },
-  iconChecked: {
-    type: "boolean",
-    default: true
-  },
-  iconPos: {
-    type: "string",
-    default: "block"
-  },
-  iconHPos: {
-    type: "string",
-    default: "before"
-  },
-  iconVPos: {
-    type: "string",
-    default: "center"
-  },
-  iconSize: {
-    type: "number"
-  },
-  iconRadius: {
-    type: "number"
-  },
-  iconColor: {
-    type: "string"
-  },
-  iconBackColor: {
-    type: "string"
-  },
-  selectedIcon: {
-    type: "string",
-    default: "dashicons dashicons-admin-site"
-  },
-  titleChecked: {
-    type: "boolean",
-    default: true
-  },
-  titleText: {
-    type: "array",
-    source: "children",
-    selector: ".premium-icon-box__title",
-    default: __("Awesome Title")
-  },
-  titleTag: {
-    type: "string",
-    default: "H2"
-  },
-  titleFont: {
-    type: "string"
-  },
-  titleColor: {
-    type: "string"
-  },
-  titleSize: {
-    type: "number"
-  },
-  titleLine: {
-    type: "number"
-  },
-  titleLetter: {
-    type: "number"
-  },
-  titleStyle: {
-    type: "string"
-  },
-  titleUpper: {
-    type: "boolean"
-  },
-  titleWeight: {
-    type: "number",
-    default: 500
-  },
-  titleShadowColor: {
-    type: "string"
-  },
-  titleShadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  titleShadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  titleShadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  titleMarginT: {
-    type: "number"
-  },
-  titleMarginB: {
-    type: "number"
-  },
-  descText: {
-    type: "array",
-    source: "children",
-    selector: ".premium-icon-box__desc",
-    default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
-  },
-  descChecked: {
-    type: "boolean",
-    default: true
-  },
-  descFont: {
-    type: "string"
-  },
-  descColor: {
-    type: "string"
-  },
-  descSize: {
-    type: "number"
-  },
-  descLine: {
-    type: "number"
-  },
-  descWeight: {
-    type: "number",
-    default: 500
-  },
-  descMarginT: {
-    type: "number"
-  },
-  descMarginB: {
-    type: "number"
-  },
-  btnChecked: {
-    type: "boolean",
-    default: true
-  },
-  btnEffect: {
-    type: "string",
-    default: "none"
-  },
-  effectDir: {
-    type: "string",
-    default: "top"
-  },
-  btnTarget: {
-    type: "boolean",
-    default: false
-  },
-  btnText: {
-    type: "array",
-    source: "children",
-    selector: ".premium-icon-box__btn",
-    default: __("Click Here")
-  },
-  btnLink: {
-    type: "string",
-    source: "attribute",
-    attribute: "href",
-    selector: ".premium-icon-box__btn"
-  },
-  btnColor: {
-    type: "string"
-  },
-  btnHoverColor: {
-    type: "string"
-  },
-  btnBack: {
-    type: "string"
-  },
-  btnHoverBack: {
-    type: "string"
-  },
-  btnHoverBorder: {
-    type: "string"
-  },
-  btnSize: {
-    type: "number"
-  },
-  btnLine: {
-    type: "number"
-  },
-  btnLetter: {
-    type: "number"
-  },
-  btnStyle: {
-    type: "string"
-  },
-  btnUpper: {
-    type: "boolean"
-  },
-  btnWeight: {
-    type: "number",
-    default: 500
-  },
-  btnBorderType: {
-    type: "string",
-    default: "none"
-  },
-  btnBorderWidth: {
-    type: "number",
-    default: "1"
-  },
-  btnBorderRadius: {
-    type: "number"
-  },
-  btnBorderColor: {
-    type: "string"
-  },
-  btnPadding: {
-    type: "number"
-  },
-  btnPaddingU: {
-    type: "string"
-  },
-  btnMarginT: {
-    type: "number"
-  },
-  btnMarginB: {
-    type: "number"
-  },
-  btnShadowColor: {
-    type: "string"
-  },
-  btnShadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  btnShadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  btnShadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  btnShadowPosition: {
-    type: "string",
-    default: ""
-  },
-  imageID: {
-    type: "string"
-  },
-  imageURL: {
-    type: "string"
-  },
-  backColor: {
-    type: "string"
-  },
-  backgroundRepeat: {
-    type: "string",
-    default: "no-repeat"
-  },
-  backgroundPosition: {
-    type: "string",
-    default: "top center"
-  },
-  backgroundSize: {
-    type: "string",
-    default: "auto"
-  },
-  fixed: {
-    type: "boolean",
-    default: false
-  },
-  borderType: {
-    type: "string",
-    default: "none"
-  },
-  borderWidth: {
-    type: "number",
-    default: "1"
-  },
-  borderRadius: {
-    type: "number"
-  },
-  borderColor: {
-    type: "string"
-  },
-  marginT: {
-    type: "number"
-  },
-  marginR: {
-    type: "number"
-  },
-  marginB: {
-    type: "number"
-  },
-  marginL: {
-    type: "number"
-  },
-  paddingT: {
-    type: "number"
-  },
-  paddingR: {
-    type: "number"
-  },
-  paddingB: {
-    type: "number"
-  },
-  paddingL: {
-    type: "number"
-  },
-  paddingU: {
-    type: "string"
-  },
-  shadowColor: {
-    type: "string"
-  },
-  shadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  shadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  shadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  shadowPosition: {
-    type: "string",
-    default: ""
-  },
-  hoverShadowColor: {
-    type: "string"
-  },
-  hoverShadowBlur: {
-    type: "number"
-  },
-  hoverShadowHorizontal: {
-    type: "number"
-  },
-  hoverShadowVertical: {
-    type: "number"
-  },
-  hoverShadowPosition: {
-    type: "string"
-  }
+    id: {
+        type: "string"
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    iconImage: {
+        type: "string",
+        default: "icon"
+    },
+    iconImgId: {
+        type: "string"
+    },
+    iconImgUrl: {
+        type: "string"
+    },
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    iconChecked: {
+        type: "boolean",
+        default: true
+    },
+    iconPos: {
+        type: "string",
+        default: "block"
+    },
+    iconHPos: {
+        type: "string",
+        default: "before"
+    },
+    iconVPos: {
+        type: "string",
+        default: "center"
+    },
+    iconSize: {
+        type: "number"
+    },
+    iconRadius: {
+        type: "number"
+    },
+    iconColor: {
+        type: "string"
+    },
+    iconBackColor: {
+        type: "string"
+    },
+    selectedIcon: {
+        type: "string",
+        default: "dashicons dashicons-admin-site"
+    },
+    titleChecked: {
+        type: "boolean",
+        default: true
+    },
+    titleText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__title",
+        default: __("Awesome Title")
+    },
+    titleTag: {
+        type: "string",
+        default: "H2"
+    },
+    titleFont: {
+        type: "string"
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleSize: {
+        type: "number"
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleLetter: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    titleShadowColor: {
+        type: "string"
+    },
+    titleShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginT: {
+        type: "number"
+    },
+    titleMarginB: {
+        type: "number"
+    },
+    descText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__desc",
+        default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
+    },
+    descChecked: {
+        type: "boolean",
+        default: true
+    },
+    descFont: {
+        type: "string"
+    },
+    descColor: {
+        type: "string"
+    },
+    descSize: {
+        type: "number"
+    },
+    descLine: {
+        type: "number"
+    },
+    descWeight: {
+        type: "number",
+        default: 500
+    },
+    descMarginT: {
+        type: "number"
+    },
+    descMarginB: {
+        type: "number"
+    },
+    btnChecked: {
+        type: "boolean",
+        default: true
+    },
+    btnEffect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false
+    },
+    btnText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__btn",
+        default: __("Click Here")
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-icon-box__btn"
+    },
+    btnColor: {
+        type: "string"
+    },
+    btnHoverColor: {
+        type: "string"
+    },
+    btnBack: {
+        type: "string"
+    },
+    btnHoverBack: {
+        type: "string"
+    },
+    btnHoverBorder: {
+        type: "string"
+    },
+    btnSize: {
+        type: "number"
+    },
+    btnLine: {
+        type: "number"
+    },
+    btnLetter: {
+        type: "number"
+    },
+    btnStyle: {
+        type: "string"
+    },
+    btnUpper: {
+        type: "boolean"
+    },
+    btnWeight: {
+        type: "number",
+        default: 500
+    },
+    btnBorderType: {
+        type: "string",
+        default: "none"
+    },
+    btnBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    btnBorderRadius: {
+        type: "number"
+    },
+    btnBorderColor: {
+        type: "string"
+    },
+    btnPadding: {
+        type: "number"
+    },
+    btnPaddingU: {
+        type: "string"
+    },
+    btnMarginT: {
+        type: "number"
+    },
+    btnMarginB: {
+        type: "number"
+    },
+    btnShadowColor: {
+        type: "string"
+    },
+    btnShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    backColor: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number"
+    },
+    borderColor: {
+        type: "string"
+    },
+    marginT: {
+        type: "number"
+    },
+    marginR: {
+        type: "number"
+    },
+    marginB: {
+        type: "number"
+    },
+    marginL: {
+        type: "number"
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    shadowPosition: {
+        type: "string",
+        default: ""
+    },
+    hoverShadowColor: {
+        type: "string"
+    },
+    hoverShadowBlur: {
+        type: "number"
+    },
+    hoverShadowHorizontal: {
+        type: "number"
+    },
+    hoverShadowVertical: {
+        type: "number"
+    },
+    hoverShadowPosition: {
+        type: "string"
+    }
 };
 
 registerBlockType("premium/icon-box", {
-  title: __("Icon Box"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "icon-box" }),
-  category: "premium-blocks",
-  attributes: iconBoxAttrs,
-  supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["j" /* iconBox */]
-  },
-  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
-  save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
-  deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
+    title: __("Icon Box"),
+    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "icon-box" }),
+    category: "premium-blocks",
+    attributes: iconBoxAttrs,
+    supports: {
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["j" /* iconBox */]
+    },
+    example: {},
+    edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+    save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
+    deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
 });
 
 /***/ }),
@@ -32435,14 +32451,14 @@ registerBlockType("premium/icon-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(15);
@@ -33496,6 +33512,7 @@ var edit = function edit(props) {
             paddingL: value || 0
           });
         },
+        selectedUnit: paddingU,
         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
           return setAttributes({ paddingU: newvalue });
         }
@@ -37394,7 +37411,7 @@ registerBlockType("premium/pricing-table", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(6);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -40752,136 +40769,141 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var containerAttrs = {
-  stretchSection: {
-    type: "boolean",
-    default: false
-  },
-  innerWidthType: {
-    type: "string",
-    default: "boxed"
-  },
-  horAlign: {
-    type: "string",
-    default: "center"
-  },
-  height: {
-    type: "string",
-    default: "min"
-  },
-  innerWidth: {
-    type: "number"
-  },
-  minHeight: {
-    type: "number"
-  },
-  minHeightUnit: {
-    type: "string"
-  },
-  vPos: {
-    type: "string",
-    default: "top"
-  },
-  color: {
-    type: "string"
-  },
-  imageID: {
-    type: "string"
-  },
-  imageURL: {
-    type: "string"
-  },
-  backgroundRepeat: {
-    type: "string",
-    default: "no-repeat"
-  },
-  backgroundPosition: {
-    type: "string",
-    default: "top center"
-  },
-  backgroundSize: {
-    type: "string",
-    default: "auto"
-  },
-  fixed: {
-    type: "boolean",
-    default: false
-  },
-  borderType: {
-    type: "string",
-    default: "none"
-  },
-  borderWidth: {
-    type: "number",
-    default: "1"
-  },
-  borderRadius: {
-    type: "number"
-  },
-  borderColor: {
-    type: "string"
-  },
-  marginTop: {
-    type: "number"
-  },
-  marginBottom: {
-    type: "number"
-  },
-  marginLeft: {
-    type: "number"
-  },
-  marginRight: {
-    type: "number"
-  },
-  marginUnit: {
-    type: "string"
-  },
-  paddingTop: {
-    type: "number"
-  },
-  paddingRight: {
-    type: "number"
-  },
-  paddingBottom: {
-    type: "number"
-  },
-  paddingLeft: {
-    type: "number"
-  },
-  paddingUnit: {
-    type: "string"
-  },
-  shadowColor: {
-    type: "string"
-  },
-  shadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  shadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  shadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  shadowPosition: {
-    type: "string",
-    default: ""
-  }
+    stretchSection: {
+        type: "boolean",
+        default: false
+    },
+    innerWidthType: {
+        type: "string",
+        default: "boxed"
+    },
+    horAlign: {
+        type: "string",
+        default: "center"
+    },
+    height: {
+        type: "string",
+        default: "min"
+    },
+    innerWidth: {
+        type: "number"
+    },
+    minHeight: {
+        type: "number"
+    },
+    minHeightUnit: {
+        type: "string"
+    },
+    vPos: {
+        type: "string",
+        default: "top"
+    },
+    color: {
+        type: "string"
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number"
+    },
+    borderColor: {
+        type: "string"
+    },
+    marginTop: {
+        type: "number"
+    },
+    marginBottom: {
+        type: "number"
+    },
+    marginLeft: {
+        type: "number"
+    },
+    marginRight: {
+        type: "number"
+    },
+    marginUnit: {
+        type: "string"
+    },
+    paddingTop: {
+        type: "number"
+    },
+    paddingRight: {
+        type: "number"
+    },
+    paddingBottom: {
+        type: "number"
+    },
+    paddingLeft: {
+        type: "number"
+    },
+    paddingUnit: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    shadowPosition: {
+        type: "string",
+        default: ""
+    }
 };
 registerBlockType("premium/container", {
-  title: __("Section"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__icons__["a" /* default */], { icon: "section" }),
-  category: "premium-blocks",
-  attributes: containerAttrs,
-  supports: _defineProperty({
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["e" /* container */],
-    align: true
-  }, "align", ["center", "wide", "full"]),
-  edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */],
-  save: __WEBPACK_IMPORTED_MODULE_2__save__["a" /* default */],
-  deprecated: __WEBPACK_IMPORTED_MODULE_3__deprecated__["a" /* default */]
+    title: __("Section"),
+    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__icons__["a" /* default */], { icon: "section" }),
+    category: "premium-blocks",
+    attributes: containerAttrs,
+    supports: _defineProperty({
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["e" /* container */],
+        align: true
+    }, "align", ["center", "wide", "full"]),
+    example: {
+        attributes: {
+            minHeight: 200
+        }
+    },
+    edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */],
+    save: __WEBPACK_IMPORTED_MODULE_2__save__["a" /* default */],
+    deprecated: __WEBPACK_IMPORTED_MODULE_3__deprecated__["a" /* default */]
 });
 
 /***/ }),
@@ -40893,8 +40915,8 @@ registerBlockType("premium/container", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(6);
 
@@ -40920,363 +40942,364 @@ var _wp$editor = wp.editor,
     ColorPalette = _wp$editor.ColorPalette;
 
 
-var CONTENT = [["core/paragraph", { content: __("Insert Your Content Here") }], ["core/paragraph", { content: __("Insert Your Content Here") }]];
+var CONTENT = [["core/paragraph", { content: __("Insert your text or select a block ") }]];
 
 var edit = function edit(props) {
-  var isSelected = props.isSelected,
-      className = props.className,
-      setAttributes = props.setAttributes;
-  var _props$attributes = props.attributes,
-      stretchSection = _props$attributes.stretchSection,
-      horAlign = _props$attributes.horAlign,
-      innerWidthType = _props$attributes.innerWidthType,
-      innerWidth = _props$attributes.innerWidth,
-      minHeight = _props$attributes.minHeight,
-      minHeightUnit = _props$attributes.minHeightUnit,
-      vPos = _props$attributes.vPos,
-      height = _props$attributes.height,
-      color = _props$attributes.color,
-      imageID = _props$attributes.imageID,
-      imageURL = _props$attributes.imageURL,
-      fixed = _props$attributes.fixed,
-      backgroundRepeat = _props$attributes.backgroundRepeat,
-      backgroundPosition = _props$attributes.backgroundPosition,
-      backgroundSize = _props$attributes.backgroundSize,
-      borderType = _props$attributes.borderType,
-      borderWidth = _props$attributes.borderWidth,
-      borderColor = _props$attributes.borderColor,
-      borderRadius = _props$attributes.borderRadius,
-      marginTop = _props$attributes.marginTop,
-      marginBottom = _props$attributes.marginBottom,
-      marginLeft = _props$attributes.marginLeft,
-      marginRight = _props$attributes.marginRight,
-      marginUnit = _props$attributes.marginUnit,
-      paddingTop = _props$attributes.paddingTop,
-      paddingRight = _props$attributes.paddingRight,
-      paddingBottom = _props$attributes.paddingBottom,
-      paddingLeft = _props$attributes.paddingLeft,
-      paddingUnit = _props$attributes.paddingUnit,
-      shadowBlur = _props$attributes.shadowBlur,
-      shadowColor = _props$attributes.shadowColor,
-      shadowHorizontal = _props$attributes.shadowHorizontal,
-      shadowVertical = _props$attributes.shadowVertical,
-      shadowPosition = _props$attributes.shadowPosition;
+    var isSelected = props.isSelected,
+        className = props.className,
+        setAttributes = props.setAttributes;
+    var _props$attributes = props.attributes,
+        stretchSection = _props$attributes.stretchSection,
+        horAlign = _props$attributes.horAlign,
+        innerWidthType = _props$attributes.innerWidthType,
+        innerWidth = _props$attributes.innerWidth,
+        minHeight = _props$attributes.minHeight,
+        minHeightUnit = _props$attributes.minHeightUnit,
+        vPos = _props$attributes.vPos,
+        height = _props$attributes.height,
+        color = _props$attributes.color,
+        imageID = _props$attributes.imageID,
+        imageURL = _props$attributes.imageURL,
+        fixed = _props$attributes.fixed,
+        backgroundRepeat = _props$attributes.backgroundRepeat,
+        backgroundPosition = _props$attributes.backgroundPosition,
+        backgroundSize = _props$attributes.backgroundSize,
+        borderType = _props$attributes.borderType,
+        borderWidth = _props$attributes.borderWidth,
+        borderColor = _props$attributes.borderColor,
+        borderRadius = _props$attributes.borderRadius,
+        marginTop = _props$attributes.marginTop,
+        marginBottom = _props$attributes.marginBottom,
+        marginLeft = _props$attributes.marginLeft,
+        marginRight = _props$attributes.marginRight,
+        marginUnit = _props$attributes.marginUnit,
+        paddingTop = _props$attributes.paddingTop,
+        paddingRight = _props$attributes.paddingRight,
+        paddingBottom = _props$attributes.paddingBottom,
+        paddingLeft = _props$attributes.paddingLeft,
+        paddingUnit = _props$attributes.paddingUnit,
+        shadowBlur = _props$attributes.shadowBlur,
+        shadowColor = _props$attributes.shadowColor,
+        shadowHorizontal = _props$attributes.shadowHorizontal,
+        shadowVertical = _props$attributes.shadowVertical,
+        shadowPosition = _props$attributes.shadowPosition;
 
-  var WIDTH = [{
-    value: "boxed",
-    label: __("Boxed")
-  }, {
-    value: "full",
-    label: __("Full Width")
-  }];
-  var HEIGHT = [{
-    value: "fit",
-    label: __("Fit to Screen")
-  }, {
-    value: "min",
-    label: __("Min Height")
-  }];
-  var VPOSITION = [{
-    value: "top",
-    label: __("Top")
-  }, {
-    value: "middle",
-    label: __("Middle")
-  }, {
-    value: "bottom",
-    label: __("Bottom")
-  }];
+    var WIDTH = [{
+        value: "boxed",
+        label: __("Boxed")
+    }, {
+        value: "full",
+        label: __("Full Width")
+    }];
+    var HEIGHT = [{
+        value: "fit",
+        label: __("Fit to Screen")
+    }, {
+        value: "min",
+        label: __("Min Height")
+    }];
+    var VPOSITION = [{
+        value: "top",
+        label: __("Top")
+    }, {
+        value: "middle",
+        label: __("Middle")
+    }, {
+        value: "bottom",
+        label: __("Bottom")
+    }];
 
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-container");
+    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-container");
 
-  return [isSelected && wp.element.createElement(
-    BlockControls,
-    { key: "controls" },
-    wp.element.createElement(AlignmentToolbar, {
-      value: horAlign,
-      onChange: function onChange(newAlign) {
-        return setAttributes({ horAlign: newAlign });
-      }
-    })
-  ), isSelected && wp.element.createElement(
-    InspectorControls,
-    { key: "inspector" },
-    wp.element.createElement(
-      PanelBody,
-      {
-        title: __("General Settings"),
-        className: "premium-panel-body premium-stretch-section",
-        initialOpen: true
-      },
-      wp.element.createElement(ToggleControl, {
-        label: __("Stretch Section"),
-        checked: stretchSection,
-        onChange: function onChange(check) {
-          return setAttributes({ stretchSection: check });
-        },
-        help: __("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.")
-      }),
-      stretchSection && wp.element.createElement(SelectControl, {
-        label: __("Content Width"),
-        options: WIDTH,
-        value: innerWidthType,
-        onChange: function onChange(newValue) {
-          return setAttributes({ innerWidthType: newValue });
-        }
-      }),
-      "boxed" === innerWidthType && stretchSection && wp.element.createElement(RangeControl, {
-        label: __("Max Width (%)"),
-        min: "1",
-        max: "1600",
-        value: innerWidth,
-        onChange: function onChange(newValue) {
-          return setAttributes({ innerWidth: newValue });
-        }
-      }),
-      wp.element.createElement(SelectControl, {
-        label: __("Height"),
-        options: HEIGHT,
-        value: height,
-        onChange: function onChange(newValue) {
-          return setAttributes({ height: newValue });
-        }
-      }),
-      "min" === height && wp.element.createElement(
-        Fragment,
-        null,
-        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__["a" /* default */], {
-          units: ["px", "vh", "vw"],
-          onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-            return setAttributes({ minHeightUnit: newValue });
-          }
-        }),
-        wp.element.createElement(RangeControl, {
-          label: __("Min Height"),
-          value: minHeight,
-          min: "1",
-          max: "800",
-          onChange: function onChange(newValue) {
-            return setAttributes({ minHeight: newValue });
-          }
+    return [isSelected && wp.element.createElement(
+        BlockControls,
+        { key: "controls" },
+        wp.element.createElement(AlignmentToolbar, {
+            value: horAlign,
+            onChange: function onChange(newAlign) {
+                return setAttributes({ horAlign: newAlign });
+            }
         })
-      ),
-      wp.element.createElement(SelectControl, {
-        label: __("Content Position"),
-        help: __("If you have two or more inner columns then this option will work only on the preview page"),
-        options: VPOSITION,
-        value: vPos,
-        onChange: function onChange(newValue) {
-          return setAttributes({ vPos: newValue });
-        }
-      })
-    ),
-    wp.element.createElement(
-      PanelBody,
-      {
-        title: __("Background"),
-        className: "premium-panel-body",
-        initialOpen: false
-      },
-      wp.element.createElement(
-        "p",
-        null,
-        __("Background Color")
-      ),
-      wp.element.createElement(ColorPalette, {
-        value: color,
-        onChange: function onChange(newValue) {
-          return setAttributes({
-            color: newValue
-          });
-        },
-        allowReset: true
-      }),
-      imageURL && wp.element.createElement("img", { src: imageURL, width: "100%", height: "auto" }),
-      wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_background__["a" /* default */], {
-        imageID: imageID,
-        imageURL: imageURL,
-        backgroundPosition: backgroundPosition,
-        backgroundRepeat: backgroundRepeat,
-        backgroundSize: backgroundSize,
-        fixed: fixed,
-        onSelectMedia: function onSelectMedia(media) {
-          setAttributes({
-            imageID: media.id,
-            imageURL: media.url
-          });
-        },
-        onRemoveImage: function onRemoveImage(value) {
-          return setAttributes({ imageURL: "", imageID: "" });
-        },
-        onChangeBackPos: function onChangeBackPos(newValue) {
-          return setAttributes({ backgroundPosition: newValue });
-        },
-        onchangeBackRepeat: function onchangeBackRepeat(newValue) {
-          return setAttributes({ backgroundRepeat: newValue });
-        },
-        onChangeBackSize: function onChangeBackSize(newValue) {
-          return setAttributes({ backgroundSize: newValue });
-        },
-        onChangeFixed: function onChangeFixed(check) {
-          return setAttributes({ fixed: check });
-        }
-      })
-    ),
-    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_border__["a" /* default */], {
-      borderType: borderType,
-      borderWidth: borderWidth,
-      borderColor: borderColor,
-      borderRadius: borderRadius,
-      onChangeType: function onChangeType(newType) {
-        return setAttributes({ borderType: newType });
-      },
-      onChangeWidth: function onChangeWidth(newWidth) {
-        return setAttributes({ borderWidth: newWidth });
-      },
-      onChangeColor: function onChangeColor(colorValue) {
-        return setAttributes({ borderColor: colorValue.hex });
-      },
-      onChangeRadius: function onChangeRadius(newrRadius) {
-        return setAttributes({ borderRadius: newrRadius });
-      }
-    }),
-    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__["a" /* default */], {
-      inner: false,
-      color: shadowColor,
-      blur: shadowBlur,
-      horizontal: shadowHorizontal,
-      vertical: shadowVertical,
-      position: shadowPosition,
-      onChangeColor: function onChangeColor(newColor) {
-        return setAttributes({
-          shadowColor: newColor === undefined ? "transparent" : newColor.hex
-        });
-      },
-      onChangeBlur: function onChangeBlur(newBlur) {
-        return setAttributes({
-          shadowBlur: newBlur === undefined ? 0 : newBlur
-        });
-      },
-      onChangehHorizontal: function onChangehHorizontal(newValue) {
-        return setAttributes({
-          shadowHorizontal: newValue === undefined ? 0 : newValue
-        });
-      },
-      onChangeVertical: function onChangeVertical(newValue) {
-        return setAttributes({
-          shadowVertical: newValue === undefined ? 0 : newValue
-        });
-      },
-      onChangePosition: function onChangePosition(newValue) {
-        return setAttributes({
-          shadowPosition: newValue === undefined ? 0 : newValue
-        });
-      }
-    }),
-    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_margin__["a" /* default */], {
-      directions: ["all"],
-      marginTop: marginTop,
-      marginRight: marginRight,
-      marginBottom: marginBottom,
-      marginLeft: marginLeft,
-      onChangeMarTop: function onChangeMarTop(value) {
-        return setAttributes({
-          marginTop: value === undefined ? 0 : value
-        });
-      },
-      onChangeMarRight: function onChangeMarRight(value) {
-        return setAttributes({
-          marginRight: value === undefined ? 0 : value
-        });
-      },
-      onChangeMarBottom: function onChangeMarBottom(value) {
-        return setAttributes({
-          marginBottom: value === undefined ? 0 : value
-        });
-      },
-      onChangeMarLeft: function onChangeMarLeft(value) {
-        return setAttributes({
-          marginLeft: value === undefined ? 0 : value
-        });
-      },
-      showUnits: true,
-      onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-        return setAttributes({ marginUnit: newvalue });
-      }
-    }),
-    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_padding__["a" /* default */], {
-      paddingTop: paddingTop,
-      paddingRight: paddingRight,
-      paddingBottom: paddingBottom,
-      paddingLeft: paddingLeft,
-      onChangePadTop: function onChangePadTop(value) {
-        return setAttributes({
-          paddingTop: value === undefined ? 0 : value
-        });
-      },
-      onChangePadRight: function onChangePadRight(value) {
-        return setAttributes({
-          paddingRight: value === undefined ? 0 : value
-        });
-      },
-      onChangePadBottom: function onChangePadBottom(value) {
-        return setAttributes({
-          paddingBottom: value === undefined ? 0 : value
-        });
-      },
-      onChangePadLeft: function onChangePadLeft(value) {
-        return setAttributes({
-          paddingLeft: value === undefined ? 0 : value
-        });
-      },
-      showUnits: true,
-      onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-        return setAttributes({ paddingUnit: newvalue });
-      }
-    })
-  ), wp.element.createElement(
-    "div",
-    {
-      className: mainClasses + " premium-container__stretch_" + stretchSection + " premium-container__" + innerWidthType,
-      style: {
-        textAlign: horAlign,
-        minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-        backgroundColor: color,
-        border: borderType,
-        borderWidth: borderWidth + "px",
-        borderRadius: borderRadius + "px",
-        borderColor: borderColor,
-        backgroundImage: "url('" + imageURL + "')",
-        backgroundRepeat: backgroundRepeat,
-        backgroundPosition: backgroundPosition,
-        backgroundSize: backgroundSize,
-        backgroundAttachment: fixed ? "fixed" : "unset",
-        marginTop: marginTop + marginUnit,
-        marginBottom: marginBottom + marginUnit,
-        marginLeft: marginLeft + marginUnit,
-        marginRight: marginRight + marginUnit,
-        paddingTop: paddingTop + paddingUnit,
-        paddingBottom: paddingBottom + paddingUnit,
-        paddingLeft: paddingLeft + paddingUnit,
-        paddingRight: paddingRight + paddingUnit,
-        boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
-      }
-    },
-    wp.element.createElement(
-      "div",
-      {
-        className: "premium-container__content_wrap premium-container__" + vPos,
-        style: {
-          maxWidth: "boxed" == innerWidthType && stretchSection ? innerWidth ? innerWidth + "px" : "1140px" : "100%"
-        }
-      },
-      wp.element.createElement(
+    ), isSelected && wp.element.createElement(
+        InspectorControls,
+        { key: "inspector" },
+        wp.element.createElement(
+            PanelBody,
+            {
+                title: __("General Settings"),
+                className: "premium-panel-body premium-stretch-section",
+                initialOpen: true
+            },
+            wp.element.createElement(ToggleControl, {
+                label: __("Stretch Section"),
+                checked: stretchSection,
+                onChange: function onChange(check) {
+                    return setAttributes({ stretchSection: check });
+                },
+                help: __("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.")
+            }),
+            stretchSection && wp.element.createElement(SelectControl, {
+                label: __("Content Width"),
+                options: WIDTH,
+                value: innerWidthType,
+                onChange: function onChange(newValue) {
+                    return setAttributes({ innerWidthType: newValue });
+                }
+            }),
+            "boxed" === innerWidthType && stretchSection && wp.element.createElement(RangeControl, {
+                label: __("Max Width (%)"),
+                min: "1",
+                max: "1600",
+                value: innerWidth,
+                onChange: function onChange(newValue) {
+                    return setAttributes({ innerWidth: newValue });
+                }
+            }),
+            wp.element.createElement(SelectControl, {
+                label: __("Height"),
+                options: HEIGHT,
+                value: height,
+                onChange: function onChange(newValue) {
+                    return setAttributes({ height: newValue });
+                }
+            }),
+            "min" === height && wp.element.createElement(
+                Fragment,
+                null,
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__["a" /* default */], {
+                    units: ["px", "vh", "vw"],
+                    onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                        return setAttributes({ minHeightUnit: newValue });
+                    }
+                }),
+                wp.element.createElement(RangeControl, {
+                    label: __("Min Height"),
+                    value: minHeight,
+                    min: "1",
+                    max: "800",
+                    onChange: function onChange(newValue) {
+                        return setAttributes({ minHeight: newValue });
+                    }
+                })
+            ),
+            wp.element.createElement(SelectControl, {
+                label: __("Content Position"),
+                help: __("If you have two or more inner columns then this option will work only on the preview page"),
+                options: VPOSITION,
+                value: vPos,
+                onChange: function onChange(newValue) {
+                    return setAttributes({ vPos: newValue });
+                }
+            })
+        ),
+        wp.element.createElement(
+            PanelBody,
+            {
+                title: __("Background"),
+                className: "premium-panel-body",
+                initialOpen: false
+            },
+            wp.element.createElement(
+                "p",
+                null,
+                __("Background Color")
+            ),
+            wp.element.createElement(ColorPalette, {
+                value: color,
+                onChange: function onChange(newValue) {
+                    return setAttributes({
+                        color: newValue
+                    });
+                },
+                allowReset: true
+            }),
+            imageURL && wp.element.createElement("img", { src: imageURL, width: "100%", height: "auto" }),
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_background__["a" /* default */], {
+                imageID: imageID,
+                imageURL: imageURL,
+                backgroundPosition: backgroundPosition,
+                backgroundRepeat: backgroundRepeat,
+                backgroundSize: backgroundSize,
+                fixed: fixed,
+                onSelectMedia: function onSelectMedia(media) {
+                    setAttributes({
+                        imageID: media.id,
+                        imageURL: media.url
+                    });
+                },
+                onRemoveImage: function onRemoveImage(value) {
+                    return setAttributes({ imageURL: "", imageID: "" });
+                },
+                onChangeBackPos: function onChangeBackPos(newValue) {
+                    return setAttributes({ backgroundPosition: newValue });
+                },
+                onchangeBackRepeat: function onchangeBackRepeat(newValue) {
+                    return setAttributes({ backgroundRepeat: newValue });
+                },
+                onChangeBackSize: function onChangeBackSize(newValue) {
+                    return setAttributes({ backgroundSize: newValue });
+                },
+                onChangeFixed: function onChangeFixed(check) {
+                    return setAttributes({ fixed: check });
+                }
+            })
+        ),
+        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_border__["a" /* default */], {
+            borderType: borderType,
+            borderWidth: borderWidth,
+            borderColor: borderColor,
+            borderRadius: borderRadius,
+            onChangeType: function onChangeType(newType) {
+                return setAttributes({ borderType: newType });
+            },
+            onChangeWidth: function onChangeWidth(newWidth) {
+                return setAttributes({ borderWidth: newWidth });
+            },
+            onChangeColor: function onChangeColor(colorValue) {
+                return setAttributes({ borderColor: colorValue.hex });
+            },
+            onChangeRadius: function onChangeRadius(newrRadius) {
+                return setAttributes({ borderRadius: newrRadius });
+            }
+        }),
+        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__["a" /* default */], {
+            inner: false,
+            color: shadowColor,
+            blur: shadowBlur,
+            horizontal: shadowHorizontal,
+            vertical: shadowVertical,
+            position: shadowPosition,
+            onChangeColor: function onChangeColor(newColor) {
+                return setAttributes({
+                    shadowColor: newColor === undefined ? "transparent" : newColor.hex
+                });
+            },
+            onChangeBlur: function onChangeBlur(newBlur) {
+                return setAttributes({
+                    shadowBlur: newBlur === undefined ? 0 : newBlur
+                });
+            },
+            onChangehHorizontal: function onChangehHorizontal(newValue) {
+                return setAttributes({
+                    shadowHorizontal: newValue === undefined ? 0 : newValue
+                });
+            },
+            onChangeVertical: function onChangeVertical(newValue) {
+                return setAttributes({
+                    shadowVertical: newValue === undefined ? 0 : newValue
+                });
+            },
+            onChangePosition: function onChangePosition(newValue) {
+                return setAttributes({
+                    shadowPosition: newValue === undefined ? 0 : newValue
+                });
+            }
+        }),
+        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_margin__["a" /* default */], {
+            directions: ["all"],
+            marginTop: marginTop,
+            marginRight: marginRight,
+            marginBottom: marginBottom,
+            marginLeft: marginLeft,
+            onChangeMarTop: function onChangeMarTop(value) {
+                return setAttributes({
+                    marginTop: value === undefined ? 0 : value
+                });
+            },
+            onChangeMarRight: function onChangeMarRight(value) {
+                return setAttributes({
+                    marginRight: value === undefined ? 0 : value
+                });
+            },
+            onChangeMarBottom: function onChangeMarBottom(value) {
+                return setAttributes({
+                    marginBottom: value === undefined ? 0 : value
+                });
+            },
+            onChangeMarLeft: function onChangeMarLeft(value) {
+                return setAttributes({
+                    marginLeft: value === undefined ? 0 : value
+                });
+            },
+            showUnits: true,
+            onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
+                return setAttributes({ marginUnit: newvalue });
+            }
+        }),
+        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_padding__["a" /* default */], {
+            paddingTop: paddingTop,
+            paddingRight: paddingRight,
+            paddingBottom: paddingBottom,
+            paddingLeft: paddingLeft,
+            onChangePadTop: function onChangePadTop(value) {
+                return setAttributes({
+                    paddingTop: value === undefined ? 0 : value
+                });
+            },
+            onChangePadRight: function onChangePadRight(value) {
+                return setAttributes({
+                    paddingRight: value === undefined ? 0 : value
+                });
+            },
+            onChangePadBottom: function onChangePadBottom(value) {
+                return setAttributes({
+                    paddingBottom: value === undefined ? 0 : value
+                });
+            },
+            onChangePadLeft: function onChangePadLeft(value) {
+                return setAttributes({
+                    paddingLeft: value === undefined ? 0 : value
+                });
+            },
+            showUnits: true,
+            selectedUnit: paddingUnit,
+            onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
+                return setAttributes({ paddingUnit: newvalue });
+            }
+        })
+    ), wp.element.createElement(
         "div",
-        { className: "premium-container__content_inner" },
-        wp.element.createElement(InnerBlocks, { template: CONTENT })
-      )
-    )
-  )];
+        {
+            className: mainClasses + " premium-container__stretch_" + stretchSection + " premium-container__" + innerWidthType,
+            style: {
+                textAlign: horAlign,
+                minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                backgroundColor: color,
+                border: borderType,
+                borderWidth: borderWidth + "px",
+                borderRadius: borderRadius + "px",
+                borderColor: borderColor,
+                backgroundImage: "url('" + imageURL + "')",
+                backgroundRepeat: backgroundRepeat,
+                backgroundPosition: backgroundPosition,
+                backgroundSize: backgroundSize,
+                backgroundAttachment: fixed ? "fixed" : "unset",
+                marginTop: marginTop + marginUnit,
+                marginBottom: marginBottom + marginUnit,
+                marginLeft: marginLeft + marginUnit,
+                marginRight: marginRight + marginUnit,
+                paddingTop: paddingTop + paddingUnit,
+                paddingBottom: paddingBottom + paddingUnit,
+                paddingLeft: paddingLeft + paddingUnit,
+                paddingRight: paddingRight + paddingUnit,
+                boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
+            }
+        },
+        wp.element.createElement(
+            "div",
+            {
+                className: "premium-container__content_wrap premium-container__" + vPos,
+                style: {
+                    maxWidth: "boxed" == innerWidthType && stretchSection ? innerWidth ? innerWidth + "px" : "1140px" : "100%"
+                }
+            },
+            wp.element.createElement(
+                "div",
+                { className: "premium-container__content_inner" },
+                wp.element.createElement(InnerBlocks, { template: CONTENT })
+            )
+        )
+    )];
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (edit);
@@ -41875,187 +41898,188 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var testimonialsAttrs = {
-  align: {
-    type: "string",
-    default: "center"
-  },
-  authorImgId: {
-    type: "string"
-  },
-  authorImgUrl: {
-    type: "string"
-  },
-  imgRadius: {
-    type: "string",
-    default: "50%"
-  },
-  imgSize: {
-    type: "number"
-  },
-  imgBorder: {
-    type: "number",
-    default: "1"
-  },
-  imgBorderColor: {
-    type: "string"
-  },
-  author: {
-    type: "array",
-    source: "children",
-    selector: ".premium-testimonial__author",
-    default: "John Doe"
-  },
-  authorTag: {
-    type: "string",
-    default: "H3"
-  },
-  authorColor: {
-    type: "string"
-  },
-  authorSize: {
-    type: "number"
-  },
-  authorLetter: {
-    type: "number"
-  },
-  authorStyle: {
-    type: "string"
-  },
-  authorUpper: {
-    type: "boolean"
-  },
-  authorWeight: {
-    type: "number",
-    default: 500
-  },
-  authorComTag: {
-    type: "string",
-    default: "H4"
-  },
-  text: {
-    type: "array",
-    source: "children",
-    selector: ".premium-testimonial__text"
-  },
-  authorCom: {
-    type: "array",
-    source: "children",
-    selector: ".premium-testimonial__author_comp",
-    default: "Leap13"
-  },
-  authorComColor: {
-    type: "string"
-  },
-  authorComSize: {
-    type: "number"
-  },
-  urlCheck: {
-    type: "boolean",
-    default: false
-  },
-  urlText: {
-    type: "string"
-  },
-  urlTarget: {
-    type: "boolean",
-    default: false
-  },
-  quotSize: {
-    type: "number"
-  },
-  quotColor: {
-    type: "string"
-  },
-  quotOpacity: {
-    type: "number"
-  },
-  bodyColor: {
-    type: "string"
-  },
-  bodySize: {
-    type: "number"
-  },
-  bodyLine: {
-    type: "number"
-  },
-  bodyTop: {
-    type: "number"
-  },
-  bodyBottom: {
-    type: "number"
-  },
-  dashColor: {
-    type: "string"
-  },
-  shadowColor: {
-    type: "string"
-  },
-  shadowBlur: {
-    type: "number"
-  },
-  shadowHorizontal: {
-    type: "number"
-  },
-  shadowVertical: {
-    type: "number"
-  },
-  shadowPosition: {
-    type: "string"
-  },
-  backColor: {
-    type: "string"
-  },
-  imageID: {
-    type: "string"
-  },
-  imageURL: {
-    type: "string"
-  },
-  backgroundRepeat: {
-    type: "string",
-    default: "no-repeat"
-  },
-  backgroundPosition: {
-    type: "string",
-    default: "top center"
-  },
-  backgroundSize: {
-    type: "string",
-    default: "auto"
-  },
-  fixed: {
-    type: "boolean",
-    default: false
-  },
-  paddingTop: {
-    type: "number"
-  },
-  paddingRight: {
-    type: "number"
-  },
-  paddingBottom: {
-    type: "number"
-  },
-  paddingLeft: {
-    type: "number"
-  },
-  paddingUnit: {
-    type: "string",
-    default: "px"
-  }
+    align: {
+        type: "string",
+        default: "center"
+    },
+    authorImgId: {
+        type: "string"
+    },
+    authorImgUrl: {
+        type: "string"
+    },
+    imgRadius: {
+        type: "string",
+        default: "50%"
+    },
+    imgSize: {
+        type: "number"
+    },
+    imgBorder: {
+        type: "number",
+        default: "1"
+    },
+    imgBorderColor: {
+        type: "string"
+    },
+    author: {
+        type: "array",
+        source: "children",
+        selector: ".premium-testimonial__author",
+        default: "John Doe"
+    },
+    authorTag: {
+        type: "string",
+        default: "H3"
+    },
+    authorColor: {
+        type: "string"
+    },
+    authorSize: {
+        type: "number"
+    },
+    authorLetter: {
+        type: "number"
+    },
+    authorStyle: {
+        type: "string"
+    },
+    authorUpper: {
+        type: "boolean"
+    },
+    authorWeight: {
+        type: "number",
+        default: 500
+    },
+    authorComTag: {
+        type: "string",
+        default: "H4"
+    },
+    text: {
+        type: "array",
+        source: "children",
+        selector: ".premium-testimonial__text"
+    },
+    authorCom: {
+        type: "array",
+        source: "children",
+        selector: ".premium-testimonial__author_comp",
+        default: "Leap13"
+    },
+    authorComColor: {
+        type: "string"
+    },
+    authorComSize: {
+        type: "number"
+    },
+    urlCheck: {
+        type: "boolean",
+        default: false
+    },
+    urlText: {
+        type: "string"
+    },
+    urlTarget: {
+        type: "boolean",
+        default: false
+    },
+    quotSize: {
+        type: "number"
+    },
+    quotColor: {
+        type: "string"
+    },
+    quotOpacity: {
+        type: "number"
+    },
+    bodyColor: {
+        type: "string"
+    },
+    bodySize: {
+        type: "number"
+    },
+    bodyLine: {
+        type: "number"
+    },
+    bodyTop: {
+        type: "number"
+    },
+    bodyBottom: {
+        type: "number"
+    },
+    dashColor: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number"
+    },
+    shadowHorizontal: {
+        type: "number"
+    },
+    shadowVertical: {
+        type: "number"
+    },
+    shadowPosition: {
+        type: "string"
+    },
+    backColor: {
+        type: "string"
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    paddingTop: {
+        type: "number"
+    },
+    paddingRight: {
+        type: "number"
+    },
+    paddingBottom: {
+        type: "number"
+    },
+    paddingLeft: {
+        type: "number"
+    },
+    paddingUnit: {
+        type: "string",
+        default: "px"
+    }
 };
 
 registerBlockType("premium/testimonial", {
-  title: __("Testimonial"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__icons__["a" /* default */], { icon: "testimonials" }),
-  category: "premium-blocks",
-  attributes: testimonialsAttrs,
-  supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["p" /* testimonial */]
-  },
-  edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */],
-  save: __WEBPACK_IMPORTED_MODULE_2__save__["a" /* default */],
-  deprecated: __WEBPACK_IMPORTED_MODULE_3__deprecated__["a" /* default */]
+    title: __("Testimonial"),
+    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__icons__["a" /* default */], { icon: "testimonials" }),
+    category: "premium-blocks",
+    attributes: testimonialsAttrs,
+    supports: {
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["p" /* testimonial */]
+    },
+    example: {},
+    edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */],
+    save: __WEBPACK_IMPORTED_MODULE_2__save__["a" /* default */],
+    deprecated: __WEBPACK_IMPORTED_MODULE_3__deprecated__["a" /* default */]
 });
 
 /***/ }),
@@ -42067,9 +42091,9 @@ registerBlockType("premium/testimonial", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_default_image__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(13);
 
@@ -42639,6 +42663,7 @@ var edit = function edit(props) {
           });
         },
         showUnits: true,
+        selectedUnit: paddingUnit,
         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
           return setAttributes({ paddingUnit: newvalue });
         }
@@ -42796,8 +42821,8 @@ var edit = function edit(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(47);
 
 
 
@@ -43002,8 +43027,8 @@ var save = function save(props) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(47);
 
 
 
@@ -43856,9 +43881,9 @@ var deprecatedContent = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(15);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -44737,7 +44762,7 @@ var edit = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(34);
 
 
 
@@ -44925,7 +44950,7 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(34);
 
 
 var className = "premium-video-box";
@@ -46368,9 +46393,9 @@ var save = function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_default_image__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(231);
@@ -48125,9 +48150,9 @@ var PremiumPerson = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__babel_runtime_helpers_esm_possibleConstructorReturn__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__babel_runtime_helpers_esm_getPrototypeOf__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__babel_runtime_helpers_esm_inherits__ = __webpack_require__(243);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__babel_runtime_helpers_esm_assertThisInitialized__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__babel_runtime_helpers_esm_defineProperty__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__babel_runtime_helpers_esm_assertThisInitialized__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__babel_runtime_helpers_esm_defineProperty__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_prop_types__);
@@ -49819,7 +49844,7 @@ function _nonIterableRest() {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _objectSpread;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__defineProperty__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__defineProperty__ = __webpack_require__(74);
 
 function _objectSpread(target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -49881,7 +49906,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _possibleConstructorReturn;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_esm_typeof__ = __webpack_require__(241);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assertThisInitialized__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assertThisInitialized__ = __webpack_require__(75);
 
 
 function _possibleConstructorReturn(self, call) {
@@ -50517,15 +50542,15 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_times__ = __webpack_require__(253);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_times___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_times__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styling__ = __webpack_require__(258);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_margin_responsive__ = __webpack_require__(259);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_range_responsive__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_range_responsive__ = __webpack_require__(78);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -51413,7 +51438,7 @@ var edit = function (_Component) {
 /* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseTimes = __webpack_require__(56),
+var baseTimes = __webpack_require__(57),
     castFunction = __webpack_require__(254),
     toInteger = __webpack_require__(255);
 
@@ -51469,7 +51494,7 @@ module.exports = times;
 /* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var identity = __webpack_require__(65);
+var identity = __webpack_require__(66);
 
 /**
  * Casts `value` to `identity` if it's not a function.
@@ -51646,8 +51671,8 @@ module.exports = toNumber;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__generateCss__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__generateCssUnit__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__generateCss__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__generateCssUnit__ = __webpack_require__(77);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -52747,7 +52772,7 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__ = __webpack_require__(78);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_padding_responsive__ = __webpack_require__(264);
@@ -53672,8 +53697,8 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(77);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -54251,8 +54276,8 @@ registerBlockType("premium/image-scroll", {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(setImmediate) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_border__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_box_shadow__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_filters__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_box_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_filters__ = __webpack_require__(31);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -54766,7 +54791,7 @@ __webpack_require__(268);
 // `setimmediate` library.
 exports.setImmediate = typeof self !== "undefined" && self.setImmediate || typeof global !== "undefined" && global.setImmediate || this && this.setImmediate;
 exports.clearImmediate = typeof self !== "undefined" && self.clearImmediate || typeof global !== "undefined" && global.clearImmediate || this && this.clearImmediate;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(96)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36)))
 
 /***/ }),
 /* 268 */
@@ -54954,7 +54979,7 @@ exports.clearImmediate = typeof self !== "undefined" && self.clearImmediate || t
     attachTo.setImmediate = setImmediate;
     attachTo.clearImmediate = clearImmediate;
 })(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(96), __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36), __webpack_require__(1)))
 
 /***/ }),
 /* 269 */
