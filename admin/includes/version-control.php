@@ -2,7 +2,7 @@
 
 if( ! defined( 'ABSPATH' ) ) exit;
 
-class Premium_Guten_Version_Control {
+class PBG_Version_Control {
 
     private static $instance = null;
     
@@ -52,7 +52,7 @@ class Premium_Guten_Version_Control {
                      <tr class="pb-roll-row">
                         <th>Rollback Version</th>
                         <td>
-                           <div><?php echo sprintf( '<a href="%s" target="_blank" class="button pb-btn pb-rollback-button elementor-button-spinner">Reinstall Version 1.7.7</a>', wp_nonce_url( admin_url( 'admin-post.php?action=premium_gutenberg_rollback' ), 'premium_gutenberg_rollback' ) ); ?> </div>
+                           <div><?php echo sprintf( '<a href="%s" target="_blank" class="button pb-btn pb-rollback-button elementor-button-spinner">Reinstall Version 1.7.8</a>', wp_nonce_url( admin_url( 'admin-post.php?action=premium_gutenberg_rollback' ), 'premium_gutenberg_rollback' ) ); ?> </div>
                            <p class="pb-roll-desc"><span>Warning: Please backup your database before making the rollback.</span></p>
                         </td>
                      </tr>
@@ -68,7 +68,7 @@ class Premium_Guten_Version_Control {
 
 	    check_admin_referer( 'premium_gutenberg_rollback' );
 	    $plugin_slug = basename( PREMIUM_BLOCKS_FILE, '.php' );
-	    $pbg_rollback = new Premium_Guten_RollBack(
+	    $pbg_rollback = new PBG_Rollback(
 	        [
 	            'version' => PREMIUM_BLOCKS_STABLE_VERSION,
 	            'plugin_name' => PREMIUM_BLOCKS_BASENAME,
@@ -95,11 +95,11 @@ class Premium_Guten_Version_Control {
 }
 
 
-if( ! function_exists('premium_gutenberg_version_control') ) {
+if( ! function_exists('pbg_version_control') ) {
     
-    function premium_gutenberg_version_control() {
-        return Premium_Guten_Version_Control::get_instance();
+    function pbg_version_control() {
+        return PBG_Version_Control::get_instance();
     }
     
 }
-premium_gutenberg_version_control();
+pbg_version_control();

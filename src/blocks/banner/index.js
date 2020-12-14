@@ -231,6 +231,7 @@ registerBlockType("premium/banner", {
   supports: {
     inserter: banner,
   },
+  example: {},
   edit: edit,
   save: save,
   deprecated: deprecatedContent,
