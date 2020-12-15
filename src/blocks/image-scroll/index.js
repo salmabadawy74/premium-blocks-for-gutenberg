@@ -30,6 +30,9 @@ registerBlockType("premium/image-scroll", {
     imageHeight: {
       type: "number",
     },
+    imageAlt: {
+      type: "string",
+    },
     imageWidth: {
       type: "number",
     },
@@ -131,7 +134,7 @@ registerBlockType("premium/image-scroll", {
       type: "string",
       default: "",
     },
-    id: {
+    block_id: {
       type: "string",
     },
     responsive: {
@@ -149,6 +152,7 @@ registerBlockType("premium/image-scroll", {
   supports: {
     inserter: scroll,
   },
+  example: {},
 
   edit: edit,
   save: save,

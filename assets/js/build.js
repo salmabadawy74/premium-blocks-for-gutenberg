@@ -2709,248 +2709,248 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var videoBoxAttrs = {
-    videoBoxId: {
-        type: "string"
-    },
-    videoType: {
-        type: "string",
-        default: "youtube"
-    },
-    videoURL: {
-        type: "string",
-        default: "07d2dXHYb94"
-    },
-    videoID: {
-        type: "string"
-    },
-    autoPlay: {
-        type: "boolean",
-        default: false
-    },
-    loop: {
-        type: "boolean",
-        default: false
-    },
-    controls: {
-        type: "boolean",
-        default: true
-    },
-    relatedVideos: {
-        type: "boolean",
-        default: false
-    },
-    mute: {
-        type: "boolean",
-        default: false
-    },
-    overlay: {
-        type: "boolean",
-        default: false
-    },
-    overlayImgID: {
-        type: "string"
-    },
-    overlayImgURL: {
-        type: "string"
-    },
-    blur: {
-        type: "number",
-        default: 0
-    },
-    bright: {
-        type: "number",
-        default: 100
-    },
-    contrast: {
-        type: "number",
-        default: 100
-    },
-    saturation: {
-        type: "number",
-        default: 100
-    },
-    hue: {
-        type: "number",
-        default: 0
-    },
-    playTop: {
-        type: "number"
-    },
-    playIcon: {
-        type: "boolean",
-        default: true
-    },
-    playSize: {
-        type: "number"
-    },
-    playColor: {
-        type: "string"
-    },
-    playBack: {
-        type: "string"
-    },
-    playHoverColor: {
-        type: "string"
-    },
-    playHoverBackColor: {
-        type: "string"
-    },
-    playPadding: {
-        type: "number"
-    },
-    playBorderType: {
-        type: "string",
-        default: "none"
-    },
-    playBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    playBorderRadius: {
-        type: "number"
-    },
-    playBorderColor: {
-        type: "string"
-    },
-    videoDescText: {
-        type: "string"
-    },
-    videoDesc: {
-        type: "boolean"
-    },
-    descLeft: {
-        type: "number"
-    },
-    descTop: {
-        type: "number"
-    },
-    videoDescSize: {
-        type: "number"
-    },
-    videoDescFamily: {
-        type: "string"
-    },
-    videoDescWeight: {
-        type: "number"
-    },
-    videoDescLetter: {
-        type: "number"
-    },
-    videoDescStyle: {
-        type: "string"
-    },
-    videoDescUpper: {
-        type: "boolean"
-    },
-    videoDescColor: {
-        type: "string"
-    },
-    videoDescBack: {
-        type: "string"
-    },
-    videoDescPadding: {
-        type: "number"
-    },
-    videoDescBorderRadius: {
-        type: "number"
-    },
-    descShadowColor: {
-        type: "string"
-    },
-    descShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    descShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    descShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    boxBorderType: {
-        type: "string",
-        default: "none"
-    },
-    boxBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    boxBorderRadius: {
-        type: "number"
-    },
-    boxBorderColor: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
+  videoBoxId: {
+    type: "string"
+  },
+  videoType: {
+    type: "string",
+    default: "youtube"
+  },
+  videoURL: {
+    type: "string",
+    default: "07d2dXHYb94"
+  },
+  videoID: {
+    type: "string"
+  },
+  autoPlay: {
+    type: "boolean",
+    default: false
+  },
+  loop: {
+    type: "boolean",
+    default: false
+  },
+  controls: {
+    type: "boolean",
+    default: true
+  },
+  relatedVideos: {
+    type: "boolean",
+    default: false
+  },
+  mute: {
+    type: "boolean",
+    default: false
+  },
+  overlay: {
+    type: "boolean",
+    default: false
+  },
+  overlayImgID: {
+    type: "string"
+  },
+  overlayImgURL: {
+    type: "string"
+  },
+  blur: {
+    type: "number",
+    default: 0
+  },
+  bright: {
+    type: "number",
+    default: 100
+  },
+  contrast: {
+    type: "number",
+    default: 100
+  },
+  saturation: {
+    type: "number",
+    default: 100
+  },
+  hue: {
+    type: "number",
+    default: 0
+  },
+  playTop: {
+    type: "number"
+  },
+  playIcon: {
+    type: "boolean",
+    default: true
+  },
+  playSize: {
+    type: "number"
+  },
+  playColor: {
+    type: "string"
+  },
+  playBack: {
+    type: "string"
+  },
+  playHoverColor: {
+    type: "string"
+  },
+  playHoverBackColor: {
+    type: "string"
+  },
+  playPadding: {
+    type: "number"
+  },
+  playBorderType: {
+    type: "string",
+    default: "none"
+  },
+  playBorderWidth: {
+    type: "number",
+    default: "1"
+  },
+  playBorderRadius: {
+    type: "number"
+  },
+  playBorderColor: {
+    type: "string"
+  },
+  videoDescText: {
+    type: "string"
+  },
+  videoDesc: {
+    type: "boolean"
+  },
+  descLeft: {
+    type: "number"
+  },
+  descTop: {
+    type: "number"
+  },
+  videoDescSize: {
+    type: "number"
+  },
+  videoDescFamily: {
+    type: "string"
+  },
+  videoDescWeight: {
+    type: "number"
+  },
+  videoDescLetter: {
+    type: "number"
+  },
+  videoDescStyle: {
+    type: "string"
+  },
+  videoDescUpper: {
+    type: "boolean"
+  },
+  videoDescColor: {
+    type: "string"
+  },
+  videoDescBack: {
+    type: "string"
+  },
+  videoDescPadding: {
+    type: "number"
+  },
+  videoDescBorderRadius: {
+    type: "number"
+  },
+  descShadowColor: {
+    type: "string"
+  },
+  descShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  descShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  descShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  boxBorderType: {
+    type: "string",
+    default: "none"
+  },
+  boxBorderWidth: {
+    type: "number",
+    default: "1"
+  },
+  boxBorderRadius: {
+    type: "number"
+  },
+  boxBorderColor: {
+    type: "string"
+  },
+  shadowColor: {
+    type: "string"
+  },
+  shadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  shadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  shadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  shadowPosition: {
+    type: "string",
+    default: ""
+  },
 
-    // Old props
-    playLeft: {
-        type: "number"
-    }
+  // Old props
+  playLeft: {
+    type: "number"
+  }
 };
 
 var onChangeVideoURL = function onChangeVideoURL(type, URL) {
-    var videoUrl = void 0;
-    switch (type) {
-        case "youtube":
-            if (URL.startsWith("http")) {
-                videoUrl = URL;
-            } else {
-                videoUrl = "https://www.youtube.com/embed/" + URL;
-            }
-            break;
-        case "vimeo":
-            if (URL.startsWith("http")) {
-                videoUrl = URL;
-            } else {
-                videoUrl = "https://player.vimeo.com/video/" + URL;
-            }
-            break;
-        case "daily":
-            if (URL.startsWith("http")) {
-                videoUrl = URL;
-            } else {
-                videoUrl = "https://dailymotion.com/embed/video/" + URL;
-            }
-            break;
-    }
-    return videoUrl;
+  var videoUrl = void 0;
+  switch (type) {
+    case "youtube":
+      if (URL.startsWith("http")) {
+        videoUrl = URL;
+      } else {
+        videoUrl = "https://www.youtube.com/embed/" + URL;
+      }
+      break;
+    case "vimeo":
+      if (URL.startsWith("http")) {
+        videoUrl = URL;
+      } else {
+        videoUrl = "https://player.vimeo.com/video/" + URL;
+      }
+      break;
+    case "daily":
+      if (URL.startsWith("http")) {
+        videoUrl = URL;
+      } else {
+        videoUrl = "https://dailymotion.com/embed/video/" + URL;
+      }
+      break;
+  }
+  return videoUrl;
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (onChangeVideoURL);
 
 registerBlockType("premium/video-box", {
-    title: __("Video Box"),
-    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "video" }),
-    category: "premium-blocks",
-    attributes: videoBoxAttrs,
-    supports: {
-        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["q" /* videoBox */]
-    },
-    example: {},
-    edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
-    save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
-    deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
+  title: __("Video Box"),
+  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "video" }),
+  category: "premium-blocks",
+  attributes: videoBoxAttrs,
+  supports: {
+    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["q" /* videoBox */]
+  },
+  example: {},
+  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+  save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
+  deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
 });
 
 /***/ }),
@@ -54146,6 +54146,9 @@ registerBlockType("premium/image-scroll", {
     imageHeight: {
       type: "number"
     },
+    imageAlt: {
+      type: "string"
+    },
     imageWidth: {
       type: "number"
     },
@@ -54247,7 +54250,7 @@ registerBlockType("premium/image-scroll", {
       type: "string",
       default: ""
     },
-    id: {
+    block_id: {
       type: "string"
     },
     responsive: {
@@ -54265,6 +54268,7 @@ registerBlockType("premium/image-scroll", {
   supports: {
     inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["o" /* scroll */]
   },
+  example: {},
 
   edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
   save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */]
@@ -54324,7 +54328,7 @@ var edit = function (_Component) {
           setAttributes = _props.setAttributes,
           clientId = _props.clientId;
 
-      setAttributes({ id: clientId });
+      setAttributes({ blockID: clientId });
 
       console.log(clientId);
     }
@@ -54334,9 +54338,9 @@ var edit = function (_Component) {
       var _this2 = this;
 
       setImmediate(function () {
-        scrollElement = document.getElementById("premium-scroll-" + _this2.props.clientId);
+        scrollElement = document.querySelector(".premium-scroll-" + _this2.props.clientId);
 
-        imageScroll = scrollElement.querySelector(".premium-image-scroll");
+        imageScroll = scrollElement.querySelector(".premium-img-scroll");
       }, 10);
     }
   }, {
@@ -54344,36 +54348,36 @@ var edit = function (_Component) {
     value: function render() {
       var _props2 = this.props,
           setAttributes = _props2.setAttributes,
-          attributes = _props2.attributes,
           isSelected = _props2.isSelected,
           blockID = _props2.clientId;
-      var id = attributes.id,
-          imageURL = attributes.imageURL,
-          imageID = attributes.imageID,
-          url = attributes.url,
-          target = attributes.target,
-          urlCheck = attributes.urlCheck,
-          height = attributes.height,
-          minHeight = attributes.minHeight,
-          effectDir = attributes.effectDir,
-          background = attributes.background,
-          targetOverlay = attributes.targetOverlay,
-          hoverEffect = attributes.hoverEffect,
-          blur = attributes.blur,
-          bright = attributes.bright,
-          contrast = attributes.contrast,
-          saturation = attributes.saturation,
-          hue = attributes.hue,
-          borderType = attributes.borderType,
-          borderWidth = attributes.borderWidth,
-          borderRadius = attributes.borderRadius,
-          borderColor = attributes.borderColor,
-          containerShadowColor = attributes.containerShadowColor,
-          containerShadowBlur = attributes.containerShadowBlur,
-          containerShadowHorizontal = attributes.containerShadowHorizontal,
-          containerShadowVertical = attributes.containerShadowVertical,
-          containerShadowPosition = attributes.containerShadowPosition,
-          reverse = attributes.reverse;
+      var _props$attributes = this.props.attributes,
+          imageURL = _props$attributes.imageURL,
+          imageID = _props$attributes.imageID,
+          imageAlt = _props$attributes.imageAlt,
+          url = _props$attributes.url,
+          target = _props$attributes.target,
+          urlCheck = _props$attributes.urlCheck,
+          height = _props$attributes.height,
+          minHeight = _props$attributes.minHeight,
+          effectDir = _props$attributes.effectDir,
+          background = _props$attributes.background,
+          targetOverlay = _props$attributes.targetOverlay,
+          hoverEffect = _props$attributes.hoverEffect,
+          blur = _props$attributes.blur,
+          bright = _props$attributes.bright,
+          contrast = _props$attributes.contrast,
+          saturation = _props$attributes.saturation,
+          hue = _props$attributes.hue,
+          borderType = _props$attributes.borderType,
+          borderWidth = _props$attributes.borderWidth,
+          borderRadius = _props$attributes.borderRadius,
+          borderColor = _props$attributes.borderColor,
+          containerShadowColor = _props$attributes.containerShadowColor,
+          containerShadowBlur = _props$attributes.containerShadowBlur,
+          containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
+          containerShadowVertical = _props$attributes.containerShadowVertical,
+          containerShadowPosition = _props$attributes.containerShadowPosition,
+          reverse = _props$attributes.reverse;
 
 
       var hover = [{
@@ -54392,11 +54396,11 @@ var edit = function (_Component) {
         label: __("Mouse Scroll")
       }];
 
-      var classVertical = "" + (effectDir === "vertical" && hoverEffect === "mouse-scroll" ? "premium-image-scroll-ver " : "");
+      var classVertical = "" + (effectDir === "vertical" && hoverEffect === "mouse-scroll" ? "premium-img-scroll-ver " : "");
 
       var reverseClasses = "" + (reverse && effectDir === "vertical" ? "premium-container-scroll-instant" : "");
 
-      var classHorizontal = "" + (effectDir === "horizontal" && hoverEffect === "hover" ? "image-scroll-horizontal " : "");
+      var classHorizontal = "" + (effectDir === "horizontal" && hoverEffect === "hover" ? "img-scroll-horizontal " : "");
 
       var containerClasses = "" + (hoverEffect === "mouse-scroll" ? "premium-container-scroll" : "");
 
@@ -54405,7 +54409,8 @@ var edit = function (_Component) {
           imageURL: img.url,
           imageID: img.id,
           imageHeight: img.height,
-          imageWidth: img.width
+          imageWidth: img.width,
+          imageAlt: img.alt
         });
       };
 
@@ -54429,24 +54434,12 @@ var edit = function (_Component) {
       };
 
       var mouseenter = function mouseenter() {
-        // if (effectDir === "vertical" && hoverEffect === "hover") {
-        //   transformOffset = imageScroll.clientHeight - scrollElement.clientHeight;
-        //   imageScroll.style.cssText = `transform:translateY(-${transformOffset}px);`;
-        // } else if (effectDir === "horizontal" && hoverEffect === "hover") {
-        //   transformOffset = scrollElement.clientWidth - imageScroll.clientWidth;
-        //   imageScroll.style.cssText = `transform:translateX(${transformOffset}px);`;
-        // }
-
+        console.log(scrollElement);
         setTransform();
         reverse ? endTransform() : startTransform();
       };
 
       var mouserleave = function mouserleave() {
-        // if (effectDir === "vertical" && hoverEffect === "hover") {
-        //   imageScroll.style.cssText = `transform:translateY(0px);`;
-        // } else if (effectDir === "horizontal" && hoverEffect === "hover") {
-        //   imageScroll.style.cssText = `transform:translateX(0px);`;
-        // }
         reverse ? startTransform() : endTransform();
       };
 
@@ -54674,19 +54667,20 @@ var edit = function (_Component) {
       ), wp.element.createElement(
         "div",
         {
+          id: "premium-scroll-" + blockID,
           "data-direction": effectDir,
           "data-effect": hoverEffect,
           "data-reverse": reverse,
-          id: "premium-scroll-" + this.props.clientId,
-          className: "premium-img-scroll-container",
+          className: "premium-img-scroll-container premium-scroll-" + this.props.clientId,
           style: {
+            height: height,
             boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
           }
         },
         imageURL && wp.element.createElement(
           "div",
           {
-            className: " premium-img-scroll-wrap  " + containerClasses + " " + reverseClasses + " ",
+            className: " premium-img-scroll-wrap } " + containerClasses + " " + reverseClasses + " ",
             style: {
               border: borderType,
               borderWidth: borderWidth + "px",
@@ -54699,22 +54693,22 @@ var edit = function (_Component) {
             onMouseLeave: mouserleave
           },
           urlCheck && wp.element.createElement("a", {
-            className: "premium-image-scroll-link",
+            className: "premium-img-scroll-link",
             target: "" + (target ? "_blank" : "_self"),
             href: url
           }),
           wp.element.createElement(
             "div",
             {
-              className: " premium-image-scroll-" + effectDir + "  " + classHorizontal + " " + classVertical + " "
+              className: " premium-img-scroll-" + effectDir + "  " + classHorizontal + " " + classVertical + " "
             },
             targetOverlay && wp.element.createElement("div", {
-              className: "premium-image-scroll-overlay",
+              className: "premium-img-scroll-overlay",
               style: { backgroundColor: background }
             }),
             wp.element.createElement("img", {
-              className: "premium-image-scroll",
-              alt: "scroll Image",
+              className: "premium-img-scroll",
+              alt: imageAlt,
               src: imageURL,
               style: {
                 filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
@@ -55018,9 +55012,9 @@ var save = function save(props) {
       reverse = _props$attributes.reverse;
 
 
-  var classVertical = "" + (effectDir === "vertical" && hoverEffect === "mouse-scroll" ? "premium-image-scroll-ver " : "");
+  var classVertical = "" + (effectDir === "vertical" && hoverEffect === "mouse-scroll" ? "premium-img-scroll-ver " : "");
 
-  var classHorizontal = "" + (effectDir === "horizontal" && hoverEffect === "hover" ? "image-scroll-horizontal " : "");
+  var classHorizontal = "" + (effectDir === "horizontal" && hoverEffect === "hover" ? "img-scroll-horizontal " : "");
   var containerClasses = "" + (hoverEffect === "mouse-scroll" ? "premium-container-scroll" : "");
 
   return wp.element.createElement(
@@ -55030,7 +55024,7 @@ var save = function save(props) {
       "data-effect": hoverEffect,
       "data-reverse": reverse,
       id: "premium-scroll",
-      className: "premium-image-scroll-section",
+      className: "premium-img-scroll-container",
       style: {
         boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
       }
@@ -55041,7 +55035,7 @@ var save = function save(props) {
         "data-direction": effectDir,
         "data-effect": hoverEffect,
         "data-reverse": reverse,
-        className: " premium-image-scroll-container  " + containerClasses + " ",
+        className: " premium-img-scroll-wrap " + containerClasses + " ",
         style: {
           border: borderType,
           borderWidth: borderWidth + "px",
@@ -55051,18 +55045,18 @@ var save = function save(props) {
           height: height
         }
       },
-      urlCheck && wp.element.createElement("a", { "class": "premium-image-scroll-link", href: url }),
+      urlCheck && wp.element.createElement("a", { "class": "premium-img-scroll-link", href: url }),
       wp.element.createElement(
         "div",
         {
-          className: " premium-image-scroll-" + effectDir + "  " + classHorizontal + " " + classVertical + " "
+          className: " premium-img-scroll-" + effectDir + "  " + classHorizontal + " " + classVertical + " "
         },
         targetOverlay && wp.element.createElement("div", {
-          className: "premium-image-scroll-overlay",
+          className: "premium-img-scroll-overlay",
           style: { backgroundColor: background }
         }),
         wp.element.createElement("img", {
-          className: "premium-image-scroll",
+          className: "premium-img-scroll",
           alt: "scroll Image",
           src: imageURL,
           style: {

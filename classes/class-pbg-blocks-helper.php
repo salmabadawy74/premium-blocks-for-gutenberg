@@ -70,7 +70,7 @@ class PBG_Blocks_Helper {
         add_action( 'enqueue_block_editor_assets', array( $this, 'pbg_editor' ) );
         
         //Enqueue Frontend Styles
-        add_action( 'enqueue_block_assets', array( $this, 'premium_gutenberg_frontend' ) );
+        add_action( 'enqueue_block_assets', array( $this, 'pbg_frontend' ) );
         
         add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
         //Enqueue Styles
@@ -125,8 +125,7 @@ class PBG_Blocks_Helper {
             array(
 				'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/author.jpg',
                 'activeBlocks'      => self::$blocks,
-                'tablet_breakpoint' => PBG_TABLET_BREAKPOINT,
-				'mobile_breakpoint' => PBG_MOBILE_BREAKPOINT,
+
 			)
         );
 

@@ -31,34 +31,32 @@ class edit extends Component {
 
   componentDidMount() {
     const { setAttributes, clientId } = this.props;
-    setAttributes({ id: clientId });
+    setAttributes({ blockID: clientId });
 
     console.log(clientId);
   }
 
   componentDidUpdate() {
     setImmediate(() => {
-      scrollElement = document.getElementById(
-        `premium-scroll-${this.props.clientId}`
+      scrollElement = document.querySelector(
+        `.premium-scroll-${this.props.clientId}`
       );
 
-      imageScroll = scrollElement.querySelector(".premium-image-scroll");
+      imageScroll = scrollElement.querySelector(".premium-img-scroll");
     }, 10);
   }
 
   render() {
     const {
       setAttributes,
-      attributes,
+
       isSelected,
       clientId: blockID,
     } = this.props;
     const {
-      id,
-
       imageURL,
       imageID,
-
+      imageAlt,
       url,
       target,
       urlCheck,
@@ -84,7 +82,7 @@ class edit extends Component {
       containerShadowVertical,
       containerShadowPosition,
       reverse,
-    } = attributes;
+    } = this.props.attributes;
 
     const hover = [
       {
@@ -110,7 +108,7 @@ class edit extends Component {
 
     const classVertical = `${
       effectDir === "vertical" && hoverEffect === "mouse-scroll"
-        ? "premium-image-scroll-ver "
+        ? "premium-img-scroll-ver "
         : ""
     }`;
 
@@ -122,7 +120,7 @@ class edit extends Component {
 
     const classHorizontal = `${
       effectDir === "horizontal" && hoverEffect === "hover"
-        ? "image-scroll-horizontal "
+        ? "img-scroll-horizontal "
         : ""
     }`;
 
@@ -136,6 +134,7 @@ class edit extends Component {
         imageID: img.id,
         imageHeight: img.height,
         imageWidth: img.width,
+        imageAlt: img.alt,
       });
     };
 
@@ -151,7 +150,7 @@ class edit extends Component {
         effectDir === "vertical" ? "translateY" : "translateX"
       }(0px);`;
     };
-    
+
     const setTransform = () => {
       if (effectDir === "vertical" && hoverEffect === "hover") {
         transformOffset = scrollElement.clientHeight - imageScroll.clientHeight;
@@ -164,24 +163,12 @@ class edit extends Component {
     };
 
     const mouseenter = () => {
-      // if (effectDir === "vertical" && hoverEffect === "hover") {
-      //   transformOffset = imageScroll.clientHeight - scrollElement.clientHeight;
-      //   imageScroll.style.cssText = `transform:translateY(-${transformOffset}px);`;
-      // } else if (effectDir === "horizontal" && hoverEffect === "hover") {
-      //   transformOffset = scrollElement.clientWidth - imageScroll.clientWidth;
-      //   imageScroll.style.cssText = `transform:translateX(${transformOffset}px);`;
-      // }
-
+      console.log(scrollElement);
       setTransform();
       reverse ? endTransform() : startTransform();
     };
 
     const mouserleave = () => {
-      // if (effectDir === "vertical" && hoverEffect === "hover") {
-      //   imageScroll.style.cssText = `transform:translateY(0px);`;
-      // } else if (effectDir === "horizontal" && hoverEffect === "hover") {
-      //   imageScroll.style.cssText = `transform:translateX(0px);`;
-      // }
       reverse ? startTransform() : endTransform();
     };
 
@@ -362,18 +349,19 @@ class edit extends Component {
       ),
 
       <div
+        id={`premium-scroll-${blockID}`}
         data-direction={effectDir}
         data-effect={hoverEffect}
         data-reverse={reverse}
-        id={`premium-scroll-${this.props.clientId}`}
-        className={`premium-img-scroll-container`}
+        className={`premium-img-scroll-container premium-scroll-${this.props.clientId}`}
         style={{
+          height: height,
           boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
         }}
       >
         {imageURL && (
           <div
-            className={` premium-img-scroll-wrap  ${containerClasses} ${reverseClasses} `}
+            className={` premium-img-scroll-wrap } ${containerClasses} ${reverseClasses} `}
             style={{
               border: borderType,
               borderWidth: borderWidth + "px",
@@ -387,23 +375,23 @@ class edit extends Component {
           >
             {urlCheck && (
               <a
-                className="premium-image-scroll-link"
+                className="premium-img-scroll-link"
                 target={`${target ? "_blank" : "_self"}`}
                 href={url}
               ></a>
             )}
             <div
-              className={` premium-image-scroll-${effectDir}  ${classHorizontal} ${classVertical} `}
+              className={` premium-img-scroll-${effectDir}  ${classHorizontal} ${classVertical} `}
             >
               {targetOverlay && (
                 <div
-                  className="premium-image-scroll-overlay"
+                  className="premium-img-scroll-overlay"
                   style={{ backgroundColor: background }}
                 ></div>
               )}
               <img
-                className={`premium-image-scroll`}
-                alt="scroll Image"
+                className={`premium-img-scroll`}
+                alt={imageAlt}
                 src={imageURL}
                 style={{
                   filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,

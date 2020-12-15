@@ -1,15 +1,17 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
   setTimeout(() => {
     const $counters = $(".premium-banner__inner");
+
     $counters.map((index, banner) => {
       let $banner = $(banner);
+      console.log($banner);
       $banner.hover(
-        function() {
+        function () {
           $(this)
             .find(".premium-banner__img")
             .addClass("premium-banner__active");
         },
-        function() {
+        function () {
           $(this)
             .find(".premium-banner__img")
             .removeClass("premium-banner__active");

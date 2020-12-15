@@ -31,13 +31,13 @@ const save = (props) => {
 
   const classVertical = `${
     effectDir === "vertical" && hoverEffect === "mouse-scroll"
-      ? "premium-image-scroll-ver "
+      ? "premium-img-scroll-ver "
       : ""
   }`;
 
   const classHorizontal = `${
     effectDir === "horizontal" && hoverEffect === "hover"
-      ? "image-scroll-horizontal "
+      ? "img-scroll-horizontal "
       : ""
   }`;
   const containerClasses = `${
@@ -50,7 +50,7 @@ const save = (props) => {
       data-effect={hoverEffect}
       data-reverse={reverse}
       id={`premium-scroll`}
-      className={`premium-image-scroll-section`}
+      className={`premium-img-scroll-container`}
       style={{
         boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
       }}
@@ -59,7 +59,7 @@ const save = (props) => {
         data-direction={effectDir}
         data-effect={hoverEffect}
         data-reverse={reverse}
-        className={` premium-image-scroll-container  ${containerClasses} `}
+        className={` premium-img-scroll-wrap ${containerClasses} `}
         style={{
           border: borderType,
           borderWidth: borderWidth + "px",
@@ -69,18 +69,18 @@ const save = (props) => {
           height: height,
         }}
       >
-        {urlCheck && <a class="premium-image-scroll-link" href={url}></a>}
+        {urlCheck && <a class="premium-img-scroll-link" href={url}></a>}
         <div
-          className={` premium-image-scroll-${effectDir}  ${classHorizontal} ${classVertical} `}
+          className={` premium-img-scroll-${effectDir}  ${classHorizontal} ${classVertical} `}
         >
           {targetOverlay && (
             <div
-              className="premium-image-scroll-overlay"
+              className="premium-img-scroll-overlay"
               style={{ backgroundColor: background }}
             ></div>
           )}
           <img
-            className={`premium-image-scroll`}
+            className={`premium-img-scroll`}
             alt="scroll Image"
             src={imageURL}
             style={{
