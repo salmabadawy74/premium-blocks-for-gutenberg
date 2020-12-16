@@ -163,12 +163,14 @@ class edit extends Component {
     };
 
     const mouseenter = () => {
-      console.log(scrollElement);
+      scrollElement = document.getElementById(`premium-scroll-${blockID}`);
+      imageScroll = scrollElement.querySelector(".premium-img-scroll");
+
       setTransform();
       reverse ? endTransform() : startTransform();
     };
 
-    const mouserleave = () => {
+    const mouseleave = () => {
       reverse ? startTransform() : endTransform();
     };
 
@@ -358,6 +360,8 @@ class edit extends Component {
           height: height,
           boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
         }}
+        onMouseEnter={mouseenter}
+        onMouseLeave={mouseleave}
       >
         {imageURL && (
           <div
@@ -370,8 +374,6 @@ class edit extends Component {
               minHeight: minHeight,
               height: height,
             }}
-            onMouseEnter={mouseenter}
-            onMouseLeave={mouserleave}
           >
             {urlCheck && (
               <a

@@ -54250,7 +54250,7 @@ registerBlockType("premium/image-scroll", {
       type: "string",
       default: ""
     },
-    block_id: {
+    blockID: {
       type: "string"
     },
     responsive: {
@@ -54434,12 +54434,14 @@ var edit = function (_Component) {
       };
 
       var mouseenter = function mouseenter() {
-        console.log(scrollElement);
+        scrollElement = document.getElementById("premium-scroll-" + blockID);
+        imageScroll = scrollElement.querySelector(".premium-img-scroll");
+
         setTransform();
         reverse ? endTransform() : startTransform();
       };
 
-      var mouserleave = function mouserleave() {
+      var mouseleave = function mouseleave() {
         reverse ? startTransform() : endTransform();
       };
 
@@ -54675,7 +54677,9 @@ var edit = function (_Component) {
           style: {
             height: height,
             boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
-          }
+          },
+          onMouseEnter: mouseenter,
+          onMouseLeave: mouseleave
         },
         imageURL && wp.element.createElement(
           "div",
@@ -54688,9 +54692,7 @@ var edit = function (_Component) {
               borderColor: borderColor,
               minHeight: minHeight,
               height: height
-            },
-            onMouseEnter: mouseenter,
-            onMouseLeave: mouserleave
+            }
           },
           urlCheck && wp.element.createElement("a", {
             className: "premium-img-scroll-link",
@@ -54987,6 +54989,7 @@ var save = function save(props) {
   var _props$attributes = props.attributes,
       id = _props$attributes.id,
       imageURL = _props$attributes.imageURL,
+      imageAlt = _props$attributes.imageAlt,
       url = _props$attributes.url,
       urlCheck = _props$attributes.urlCheck,
       height = _props$attributes.height,
@@ -55057,7 +55060,7 @@ var save = function save(props) {
         }),
         wp.element.createElement("img", {
           className: "premium-img-scroll",
-          alt: "scroll Image",
+          alt: imageAlt,
           src: imageURL,
           style: {
             filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
@@ -55071,4 +55074,4 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ })
-/******/ ]);
+/******/ ]);;

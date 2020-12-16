@@ -134,7 +134,7 @@ registerBlockType("premium/image-scroll", {
       type: "string",
       default: "",
     },
-    block_id: {
+    blockID: {
       type: "string",
     },
     responsive: {

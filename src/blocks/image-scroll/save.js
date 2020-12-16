@@ -4,6 +4,7 @@ const save = (props) => {
   const {
     id,
     imageURL,
+    imageAlt,
     url,
     urlCheck,
     height,
@@ -17,6 +18,7 @@ const save = (props) => {
     contrast,
     saturation,
     hue,
+
     borderType,
     borderWidth,
     borderRadius,
@@ -81,7 +83,7 @@ const save = (props) => {
           )}
           <img
             className={`premium-img-scroll`}
-            alt="scroll Image"
+            alt={imageAlt}
             src={imageURL}
             style={{
               filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,

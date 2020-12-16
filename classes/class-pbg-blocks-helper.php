@@ -318,10 +318,19 @@ class PBG_Blocks_Helper {
             wp_enqueue_script(
                 'scroll-js',
                 PREMIUM_BLOCKS_URL . 'assets/js/scroll.js',
-				
+				array('jquery'),
                 PREMIUM_BLOCKS_VERSION
-            );
+			);
+			wp_enqueue_script(
+                'scroll-js',
+                PREMIUM_BLOCKS_URL . 'assets/js/scroll.js',
+				array('jquery'),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+			
 		}
+		
 	
         //Enqueue Google Maps API Script
         if( $is_maps_enabled && $is_enabled ) {
