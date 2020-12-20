@@ -174,7 +174,8 @@ class PBG_Blocks_Helper {
 
 		$is_icon_list_enabled = self::$blocks['iconList'];
 		$is_scroll_enabled = self::$blocks['scroll'];
-		
+		$is_blog_enabled = self::$blocks['blog'];
+
         $is_content_switcher_enabled = self::$blocks['contentSwitcher'];
 
         
@@ -321,13 +322,17 @@ class PBG_Blocks_Helper {
 				array('jquery'),
                 PREMIUM_BLOCKS_VERSION
 			);
-			wp_enqueue_script(
-                'scroll-js',
-                PREMIUM_BLOCKS_URL . 'assets/js/scroll.js',
+		
+			
+		}
+		if( $is_scroll_enabled ) {
+            wp_enqueue_script(
+                'blog-js',
+                PREMIUM_BLOCKS_URL . 'assets/js/blog.js',
 				array('jquery'),
-				PREMIUM_BLOCKS_VERSION,
-				true
+                PREMIUM_BLOCKS_VERSION
 			);
+		
 			
 		}
 		

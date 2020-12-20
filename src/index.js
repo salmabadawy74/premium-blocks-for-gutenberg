@@ -14,4 +14,6 @@ import "./blocks/person";
 import "./blocks/icon-list";
 import "./blocks/content-switcher";
 import "./blocks/image-scroll";
+import "./blocks/blog";
+
 //import "./blocks/test";

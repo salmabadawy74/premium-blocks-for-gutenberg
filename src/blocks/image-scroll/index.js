@@ -21,6 +21,7 @@ registerBlockType("premium/image-scroll", {
     imageID: {
       type: "number",
     },
+
     imageURL: {
       type: "string",
       source: "attribute",
@@ -51,12 +52,14 @@ registerBlockType("premium/image-scroll", {
       default: false,
     },
     height: {
-      type: "string",
-      default: "default",
-    },
-    minHeight: {
       type: "number",
+      default: 300,
     },
+    HeightU: {
+      type: "string",
+      default: "px",
+    },
+
     width: {
       type: "number",
       default: "default",
