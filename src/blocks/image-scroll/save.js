@@ -1,6 +1,8 @@
 const { __ } = wp.i18n;
+import classnames from "classnames";
 
 const save = (props) => {
+  const { className } = props;
   const {
     imageURL,
     imageID,
@@ -60,10 +62,10 @@ const save = (props) => {
       ? "premium-img-scroll-horizontal-overlay"
       : null
   }`;
-
+  const mainClasses = classnames(className, "premium-image-scroll");
   return (
     <div
-      className={`premium-img-scroll-container`}
+      className={`${mainClasses} premium-img-scroll-container`}
       style={{
         border: borderType,
         borderWidth: borderWidth + "px",
@@ -82,22 +84,23 @@ const save = (props) => {
           height: height + HeightU,
         }}
       >
-        {urlCheck && (
-          <a
-            className="premium-img-scroll-link"
-            target={`${target ? "_blank" : "_self"}`}
-            href={url}
-          />
-        )}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: [
+              `.premium-img-scroll-horizontal-overlay{`,
+              `   width:${imageWidth}px;`,
+              "}",
+            ].join("\n"),
+          }}
+        />
         <div
           className={` premium-img-scroll-${effectDir}  ${classHorizontal} ${classVertical} `}
         >
-          {targetOverlay && (
-            <div
-              className={`premium-img-scroll-overlay ${overlayClasses}`}
-              style={{ background: background }}
-            ></div>
-          )}
+          <div
+            className={`premium-img-scroll-overlay ${overlayClasses}`}
+            style={{ background: background }}
+          ></div>
+
           <img
             className={`premium-img-scroll`}
             alt={imageAlt}
@@ -105,20 +108,17 @@ const save = (props) => {
             width={imageWidth}
             height={imageHeight}
             style={{
-              filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg );`,
-            }}
-          />
-          <style
-            dangerouslySetInnerHTML={{
-              __html: [
-                `.premium-img-scroll-horizontal-overlay{`,
-                `   width:${imageWidth}px;`,
-
-                "}",
-              ].join("\n"),
+              filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
             }}
           />
         </div>
+        {urlCheck && "" !== url && (
+          <a
+            className="premium-img-scroll-link"
+            target={`${target ? "_blank" : "_self"}`}
+            href={url}
+          />
+        )}
       </div>
     </div>
   );

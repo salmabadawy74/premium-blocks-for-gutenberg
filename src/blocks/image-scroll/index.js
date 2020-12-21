@@ -6,6 +6,7 @@ import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 
+
 const { registerBlockType } = wp.blocks;
 
 registerBlockType("premium/image-scroll", {

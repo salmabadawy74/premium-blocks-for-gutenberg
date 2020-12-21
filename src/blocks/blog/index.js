@@ -1,4 +1,3 @@
-import { Blog } from "../../../assets/js/Blog";
 const { __ } = wp.i18n;
 
 import PbgIcon from "../icons";
@@ -16,9 +15,9 @@ registerBlockType("premium/post-blog", {
       type: "string",
     },
   },
-  supports: {
-    inserter: Blog,
-  },
+  // supports: {
+  //   inserter: Blog,
+  // },
   example: {},
 
   edit: edit,

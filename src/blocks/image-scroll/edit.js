@@ -379,6 +379,23 @@ class edit extends Component {
         onMouseEnter={mouseenter}
         onMouseLeave={mouseleave}
       >
+        <style
+          dangerouslySetInnerHTML={{
+            __html: [
+              `.premium-img-scroll-overlay{`,
+              `background: ${background};`,
+
+              "}",
+              `.premium-img-scroll-horizontal-overlay{`,
+              `   width:${imageWidth}px;`,
+
+              "}",
+              `#premium-img-scroll-${blockID} {`,
+              `filter: brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
+              "}",
+            ].join("\n"),
+          }}
+        />
         {imageURL && (
           <div
             data-direction={effectDir}
@@ -413,23 +430,6 @@ class edit extends Component {
                 src={imageURL}
                 width={imageWidth}
                 height={imageHeight}
-              />
-              <style
-                dangerouslySetInnerHTML={{
-                  __html: [
-                    `.premium-img-scroll-overlay{`,
-                    `background: ${background};`,
-
-                    "}",
-                    `.premium-img-scroll-horizontal-overlay{`,
-                    `   width:${imageWidth}px;`,
-
-                    "}",
-                    `#premium-img-scroll-${blockID} {`,
-                    `filter: brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
-                    "}",
-                  ].join("\n"),
-                }}
               />
             </div>
           </div>
