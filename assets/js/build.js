@@ -10676,30 +10676,30 @@ var save = function save(props) {
       paddingU = _props$attributes.paddingU;
 
 
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-banner');
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-banner");
 
   return wp.element.createElement(
-    'div',
+    "div",
     {
-      id: 'premium-banner-' + id,
-      className: mainClasses + ' premium-banner__responsive_' + responsive,
+      id: "premium-banner-" + id,
+      className: mainClasses + " premium-banner__responsive_" + responsive,
       style: {
-        boxShadow: containerShadowHorizontal + 'px ' + containerShadowVertical + 'px ' + containerShadowBlur + 'px ' + containerShadowColor + ' ' + containerShadowPosition,
+        boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition,
         paddingTop: paddingT + paddingU,
         paddingRight: paddingR + paddingU,
         paddingBottom: paddingB + paddingU,
         paddingLeft: paddingL + paddingU
       }
     },
-    wp.element.createElement('style', {
+    wp.element.createElement("style", {
       dangerouslySetInnerHTML: {
-        __html: ['#premium-banner-' + id + ' .premium-banner__effect3 .premium-banner__title_wrap::after{', 'background: ' + sepColor, "}", '#premium-banner-' + id + ' .premium-banner__inner {', 'background: ' + background, "}", '#premium-banner-' + id + ' .premium-banner__img.premium-banner__active {', 'opacity: ' + (background ? 1 - opacity / 100 : 1) + ' ', "}"].join("\n")
+        __html: ["#premium-banner-" + id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 1) + " ", "}"].join("\n")
       }
     }),
     wp.element.createElement(
-      'div',
+      "div",
       {
-        className: 'premium-banner__inner premium-banner__min premium-banner__' + effect + ' premium-banner__' + hoverEffect + ' hover_' + hovered,
+        className: "premium-banner__inner premium-banner__min premium-banner__" + effect + " premium-banner__" + hoverEffect + " hover_" + hovered,
         style: {
           border: borderType,
           borderWidth: borderWidth + "px",
@@ -10708,76 +10708,61 @@ var save = function save(props) {
         }
       },
       wp.element.createElement(
-        'div',
+        "div",
         {
-          className: 'premium-banner__img_wrap premium-banner__' + height,
+          className: "premium-banner__img_wrap premium-banner__" + height,
           style: {
             minHeight: minHeight,
             alignItems: verAlign
           }
         },
-        wp.element.createElement('img', {
-          className: 'premium-banner__img',
-          alt: 'Banner Image',
+        wp.element.createElement("img", {
+          className: "premium-banner__img",
+          alt: "Banner Image",
           src: imageURL,
           style: {
-            filter: 'brightness( ' + bright + '% ) contrast( ' + contrast + '% ) saturate( ' + saturation + '% ) blur( ' + blur + 'px ) hue-rotate( ' + hue + 'deg )'
+            filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
           }
         })
       ),
       wp.element.createElement(
-        'div',
+        "div",
         {
-          className: 'premium-banner__content',
+          className: "premium-banner__content",
           style: {
             background: "effect2" === effect ? titleBack : "transparent"
           }
         },
+        wp.element.createElement("div", {
+          className: "premium-banner__title_wrap",
+          style: {
+            textAlign: contentAlign
+          }
+        }),
         wp.element.createElement(
-          'div',
+          "div",
           {
-            className: 'premium-banner__title_wrap',
+            className: "premium-banner__desc_wrap",
             style: {
               textAlign: contentAlign
             }
           },
           wp.element.createElement(RichText.Content, {
-            tagName: titleTag.toLowerCase(),
-            className: 'premium-banner__title',
-            value: title,
-            style: {
-              color: titleColor,
-              fontSize: titleSize + "px",
-              fontWeight: titleWeight,
-              lineHeight: titleLine + "px",
-              textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor
-            }
-          })
-        ),
-        wp.element.createElement(
-          'div',
-          {
-            className: 'premium-banner__desc_wrap',
-            style: {
-              textAlign: contentAlign
-            }
-          },
-          wp.element.createElement(RichText.Content, {
-            tagName: 'p',
-            className: 'premium-banner__desc',
+            tagName: "p",
+            className: "premium-banner__desc",
             value: desc,
             style: {
               color: descColor,
               fontSize: descSize + "px",
               fontWeight: descWeight,
               lineHeight: descLine + "px",
-              textShadow: descShadowHorizontal + 'px ' + descShadowVertical + 'px ' + descShadowBlur + 'px ' + descShadowColor
+              textShadow: descShadowHorizontal + "px " + descShadowVertical + "px " + descShadowBlur + "px " + descShadowColor
             }
           })
         )
       ),
-      urlCheck && "" !== url && wp.element.createElement('a', {
-        className: 'premium-banner__link',
+      urlCheck && "" !== url && wp.element.createElement("a", {
+        className: "premium-banner__link",
         href: url,
         target: target && "_blank"
       })
@@ -54137,11 +54122,12 @@ registerBlockType("premium/image-scroll", {
     imageID: {
       type: "number"
     },
+
     imageURL: {
       type: "string",
       source: "attribute",
       attribute: "src",
-      selector: ".premium-banner__img"
+      selector: "img"
     },
     imageHeight: {
       type: "number"
@@ -54160,19 +54146,21 @@ registerBlockType("premium/image-scroll", {
       type: "string",
       source: "attribute",
       attribute: "href",
-      selector: ".premium-banner__link"
+      selector: "a"
     },
     target: {
       type: "boolean",
       default: false
     },
     height: {
+      type: "number",
+      default: 300
+    },
+    HeightU: {
       type: "string",
-      default: "default"
+      default: "px"
     },
-    minHeight: {
-      type: "number"
-    },
+
     width: {
       type: "number",
       default: "default"
@@ -54279,9 +54267,10 @@ registerBlockType("premium/image-scroll", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(setImmediate) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_border__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_border__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_box_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_filters__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_size_units__ = __webpack_require__(6);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -54289,6 +54278,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -54309,7 +54299,8 @@ var _wp$editor = wp.editor,
     MediaUpload = _wp$editor.MediaUpload;
 
 var scrollElement = void 0,
-    imageScroll = void 0;
+    imageScroll = void 0,
+    scrollOverlay = void 0;
 var transformOffset = null;
 
 var edit = function (_Component) {
@@ -54329,19 +54320,6 @@ var edit = function (_Component) {
           clientId = _props.clientId;
 
       setAttributes({ blockID: clientId });
-
-      console.log(clientId);
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      var _this2 = this;
-
-      setImmediate(function () {
-        scrollElement = document.querySelector(".premium-scroll-" + _this2.props.clientId);
-
-        imageScroll = scrollElement.querySelector(".premium-img-scroll");
-      }, 10);
     }
   }, {
     key: "render",
@@ -54354,12 +54332,15 @@ var edit = function (_Component) {
           imageURL = _props$attributes.imageURL,
           imageID = _props$attributes.imageID,
           imageAlt = _props$attributes.imageAlt,
+          imageWidth = _props$attributes.imageWidth,
+          imageHeight = _props$attributes.imageHeight,
           url = _props$attributes.url,
           target = _props$attributes.target,
           urlCheck = _props$attributes.urlCheck,
           height = _props$attributes.height,
           minHeight = _props$attributes.minHeight,
           effectDir = _props$attributes.effectDir,
+          HeightU = _props$attributes.HeightU,
           background = _props$attributes.background,
           targetOverlay = _props$attributes.targetOverlay,
           hoverEffect = _props$attributes.hoverEffect,
@@ -54403,6 +54384,7 @@ var edit = function (_Component) {
       var classHorizontal = "" + (effectDir === "horizontal" && hoverEffect === "hover" ? "img-scroll-horizontal " : "");
 
       var containerClasses = "" + (hoverEffect === "mouse-scroll" ? "premium-container-scroll" : "");
+      var overlayClasses = "" + (hoverEffect === "mouse-scroll" && effectDir === "horizontal" ? "premium-img-scroll-horizontal-overlay" : null);
 
       var onFileSelect = function onFileSelect(img) {
         setAttributes({
@@ -54415,7 +54397,7 @@ var edit = function (_Component) {
       };
 
       var startTransform = function startTransform() {
-        imageScroll.style.cssText = "\n        transform:" + (effectDir === "vertical" ? "translateY" : "translateX") + "(" + transformOffset + "px);";
+        imageScroll.style.cssText = "\n        transform:" + (effectDir === "vertical" ? "translateY" : "translateX") + "(-" + transformOffset + "px);";
       };
 
       var endTransform = function endTransform() {
@@ -54423,11 +54405,16 @@ var edit = function (_Component) {
       };
 
       var setTransform = function setTransform() {
-        if (effectDir === "vertical" && hoverEffect === "hover") {
-          transformOffset = scrollElement.clientHeight - imageScroll.clientHeight;
-        } else if (effectDir === "horizontal" && hoverEffect === "hover") {
-          transformOffset = scrollElement.clientWidth - imageScroll.clientWidth;
+        if (effectDir === "vertical") {
+          transformOffset = imageScroll.clientHeight - scrollElement.clientHeight;
+        } else {
+          if (hoverEffect === "hover") {
+            transformOffset = imageScroll.clientWidth - scrollElement.clientWidth;
+          } else {
+            scrollOverlay.style.cssText = "width:" + imageWidth + ";\n         \n          ";
+          }
         }
+
         if (hoverEffect === "mouse-scroll") {
           transformOffset = null;
         }
@@ -54436,30 +54423,31 @@ var edit = function (_Component) {
       var mouseenter = function mouseenter() {
         scrollElement = document.getElementById("premium-scroll-" + blockID);
         imageScroll = scrollElement.querySelector(".premium-img-scroll");
+        scrollOverlay = scrollElement.querySelector(".premium-img-scroll-overlay");
 
         setTransform();
         reverse ? endTransform() : startTransform();
+        console.log(transformOffset);
       };
 
       var mouseleave = function mouseleave() {
         reverse ? startTransform() : endTransform();
       };
+      var onChangeHeight = function onChangeHeight(newHeight) {
+        if (HeightU === "em" && newHeight > 50) return 50;
 
+        setAttributes({ height: newHeight });
+      };
       return [isSelected && wp.element.createElement(
         InspectorControls,
-        { style: { marginBottom: "40px" } },
+        null,
         wp.element.createElement(
           PanelBody,
-          null,
-          wp.element.createElement(
-            "p",
-            null,
-            wp.element.createElement(
-              "strong",
-              null,
-              "Image Setting"
-            )
-          ),
+          {
+            title: __("Image Settings"),
+            className: "premium-panel-body",
+            initialOpen: true
+          },
           imageURL && wp.element.createElement("img", { src: imageURL }),
           wp.element.createElement(MediaUpload, {
             onSelect: onFileSelect,
@@ -54478,14 +54466,17 @@ var edit = function (_Component) {
               );
             }
           }),
+          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_size_units__["a" /* default */], {
+            units: ["px", "em"],
+            onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+              setAttributes({ HeightU: newValue });
+            }
+          }),
           wp.element.createElement(RangeControl, {
-            label: "Height",
-            value: minHeight,
-            onChange: function onChange(newHeight) {
-              setAttributes({ height: newHeight });
-            },
-            min: 200,
-            max: 800
+            label: __("Height"),
+            value: height,
+            onChange: onChangeHeight,
+            max: HeightU === "em" ? 50 : 800
           }),
           wp.element.createElement(ToggleControl, {
             label: __("Link"),
@@ -54511,16 +54502,11 @@ var edit = function (_Component) {
         ),
         wp.element.createElement(
           PanelBody,
-          null,
-          wp.element.createElement(
-            "p",
-            null,
-            wp.element.createElement(
-              "strong",
-              null,
-              "Advanced Setting"
-            )
-          ),
+          {
+            title: __("Advanced Settings"),
+            className: "premium-panel-body",
+            initialOpen: false
+          },
           wp.element.createElement(SelectControl, {
             label: __("Direction"),
             options: hover,
@@ -54530,7 +54516,7 @@ var edit = function (_Component) {
             }
           }),
           wp.element.createElement(ToggleControl, {
-            label: __("Reverse"),
+            label: __("Reverse Direction"),
             checked: reverse,
             onChange: function onChange(value) {
               return setAttributes({ reverse: value });
@@ -54563,16 +54549,11 @@ var edit = function (_Component) {
         ),
         wp.element.createElement(
           PanelBody,
-          null,
-          wp.element.createElement(
-            "p",
-            null,
-            wp.element.createElement(
-              "strong",
-              null,
-              "Image Style"
-            )
-          ),
+          {
+            title: __("Image Style"),
+            className: "premium-panel-body",
+            initialOpen: false
+          },
           wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_filters__["a" /* default */], {
             blur: blur,
             bright: bright,
@@ -54598,16 +54579,11 @@ var edit = function (_Component) {
         ),
         wp.element.createElement(
           PanelBody,
-          null,
-          wp.element.createElement(
-            "p",
-            null,
-            wp.element.createElement(
-              "strong",
-              null,
-              "Container Style"
-            )
-          ),
+          {
+            title: __("Container Style"),
+            className: "premium-panel-body",
+            initialOpen: false
+          },
           wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_premium_border__["a" /* default */], {
             borderType: borderType,
             borderWidth: borderWidth,
@@ -54669,29 +54645,33 @@ var edit = function (_Component) {
       ), wp.element.createElement(
         "div",
         {
-          id: "premium-scroll-" + blockID,
-          "data-direction": effectDir,
-          "data-effect": hoverEffect,
-          "data-reverse": reverse,
-          className: "premium-img-scroll-container premium-scroll-" + this.props.clientId,
+          className: "premium-img-scroll-container",
           style: {
-            height: height,
+            border: borderType,
+            borderWidth: borderWidth + "px",
+            borderRadius: borderRadius + "px",
+            borderColor: borderColor,
             boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
           },
           onMouseEnter: mouseenter,
           onMouseLeave: mouseleave
         },
+        wp.element.createElement("style", {
+          dangerouslySetInnerHTML: {
+            __html: [".premium-img-scroll-overlay{", "background: " + background + ";", "}", ".premium-img-scroll-horizontal-overlay{", "   width:" + imageWidth + "px;", "}", "#premium-img-scroll-" + blockID + " {", "filter: brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )", "}"].join("\n")
+          }
+        }),
         imageURL && wp.element.createElement(
           "div",
           {
-            className: " premium-img-scroll-wrap } " + containerClasses + " " + reverseClasses + " ",
+            "data-direction": effectDir,
+            "data-effect": hoverEffect,
+            "data-reverse": reverse,
+            id: "premium-scroll-" + blockID,
+            className: " premium-img-scroll-wrap  " + containerClasses + " " + reverseClasses + " ",
             style: {
-              border: borderType,
-              borderWidth: borderWidth + "px",
-              borderRadius: borderRadius + "px",
-              borderColor: borderColor,
               minHeight: minHeight,
-              height: height
+              height: height + HeightU
             }
           },
           urlCheck && wp.element.createElement("a", {
@@ -54705,16 +54685,15 @@ var edit = function (_Component) {
               className: " premium-img-scroll-" + effectDir + "  " + classHorizontal + " " + classVertical + " "
             },
             targetOverlay && wp.element.createElement("div", {
-              className: "premium-img-scroll-overlay",
-              style: { backgroundColor: background }
+              className: "premium-img-scroll-overlay " + overlayClasses
             }),
             wp.element.createElement("img", {
+              id: "premium-img-scroll-" + blockID,
               className: "premium-img-scroll",
               alt: imageAlt,
               src: imageURL,
-              style: {
-                filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
-              }
+              width: imageWidth,
+              height: imageHeight
             })
           )
         )
@@ -54726,258 +54705,10 @@ var edit = function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["a"] = (edit);
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(267).setImmediate))
 
 /***/ }),
-/* 267 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {var scope = typeof global !== "undefined" && global || typeof self !== "undefined" && self || window;
-var apply = Function.prototype.apply;
-
-// DOM APIs, for completeness
-
-exports.setTimeout = function () {
-  return new Timeout(apply.call(setTimeout, scope, arguments), clearTimeout);
-};
-exports.setInterval = function () {
-  return new Timeout(apply.call(setInterval, scope, arguments), clearInterval);
-};
-exports.clearTimeout = exports.clearInterval = function (timeout) {
-  if (timeout) {
-    timeout.close();
-  }
-};
-
-function Timeout(id, clearFn) {
-  this._id = id;
-  this._clearFn = clearFn;
-}
-Timeout.prototype.unref = Timeout.prototype.ref = function () {};
-Timeout.prototype.close = function () {
-  this._clearFn.call(scope, this._id);
-};
-
-// Does not start the time, just sets up the members needed.
-exports.enroll = function (item, msecs) {
-  clearTimeout(item._idleTimeoutId);
-  item._idleTimeout = msecs;
-};
-
-exports.unenroll = function (item) {
-  clearTimeout(item._idleTimeoutId);
-  item._idleTimeout = -1;
-};
-
-exports._unrefActive = exports.active = function (item) {
-  clearTimeout(item._idleTimeoutId);
-
-  var msecs = item._idleTimeout;
-  if (msecs >= 0) {
-    item._idleTimeoutId = setTimeout(function onTimeout() {
-      if (item._onTimeout) item._onTimeout();
-    }, msecs);
-  }
-};
-
-// setimmediate attaches itself to the global object
-__webpack_require__(268);
-// On some exotic environments, it's not clear which object `setimmediate` was
-// able to install onto.  Search each possibility in the same order as the
-// `setimmediate` library.
-exports.setImmediate = typeof self !== "undefined" && self.setImmediate || typeof global !== "undefined" && global.setImmediate || this && this.setImmediate;
-exports.clearImmediate = typeof self !== "undefined" && self.clearImmediate || typeof global !== "undefined" && global.clearImmediate || this && this.clearImmediate;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36)))
-
-/***/ }),
-/* 268 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
-    "use strict";
-
-    if (global.setImmediate) {
-        return;
-    }
-
-    var nextHandle = 1; // Spec says greater than zero
-    var tasksByHandle = {};
-    var currentlyRunningATask = false;
-    var doc = global.document;
-    var registerImmediate;
-
-    function setImmediate(callback) {
-        // Callback can either be a function or a string
-        if (typeof callback !== "function") {
-            callback = new Function("" + callback);
-        }
-        // Copy function arguments
-        var args = new Array(arguments.length - 1);
-        for (var i = 0; i < args.length; i++) {
-            args[i] = arguments[i + 1];
-        }
-        // Store and register the task
-        var task = { callback: callback, args: args };
-        tasksByHandle[nextHandle] = task;
-        registerImmediate(nextHandle);
-        return nextHandle++;
-    }
-
-    function clearImmediate(handle) {
-        delete tasksByHandle[handle];
-    }
-
-    function run(task) {
-        var callback = task.callback;
-        var args = task.args;
-        switch (args.length) {
-            case 0:
-                callback();
-                break;
-            case 1:
-                callback(args[0]);
-                break;
-            case 2:
-                callback(args[0], args[1]);
-                break;
-            case 3:
-                callback(args[0], args[1], args[2]);
-                break;
-            default:
-                callback.apply(undefined, args);
-                break;
-        }
-    }
-
-    function runIfPresent(handle) {
-        // From the spec: "Wait until any invocations of this algorithm started before this one have completed."
-        // So if we're currently running a task, we'll need to delay this invocation.
-        if (currentlyRunningATask) {
-            // Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
-            // "too much recursion" error.
-            setTimeout(runIfPresent, 0, handle);
-        } else {
-            var task = tasksByHandle[handle];
-            if (task) {
-                currentlyRunningATask = true;
-                try {
-                    run(task);
-                } finally {
-                    clearImmediate(handle);
-                    currentlyRunningATask = false;
-                }
-            }
-        }
-    }
-
-    function installNextTickImplementation() {
-        registerImmediate = function registerImmediate(handle) {
-            process.nextTick(function () {
-                runIfPresent(handle);
-            });
-        };
-    }
-
-    function canUsePostMessage() {
-        // The test against `importScripts` prevents this implementation from being installed inside a web worker,
-        // where `global.postMessage` means something completely different and can't be used for this purpose.
-        if (global.postMessage && !global.importScripts) {
-            var postMessageIsAsynchronous = true;
-            var oldOnMessage = global.onmessage;
-            global.onmessage = function () {
-                postMessageIsAsynchronous = false;
-            };
-            global.postMessage("", "*");
-            global.onmessage = oldOnMessage;
-            return postMessageIsAsynchronous;
-        }
-    }
-
-    function installPostMessageImplementation() {
-        // Installs an event handler on `global` for the `message` event: see
-        // * https://developer.mozilla.org/en/DOM/window.postMessage
-        // * http://www.whatwg.org/specs/web-apps/current-work/multipage/comms.html#crossDocumentMessages
-
-        var messagePrefix = "setImmediate$" + Math.random() + "$";
-        var onGlobalMessage = function onGlobalMessage(event) {
-            if (event.source === global && typeof event.data === "string" && event.data.indexOf(messagePrefix) === 0) {
-                runIfPresent(+event.data.slice(messagePrefix.length));
-            }
-        };
-
-        if (global.addEventListener) {
-            global.addEventListener("message", onGlobalMessage, false);
-        } else {
-            global.attachEvent("onmessage", onGlobalMessage);
-        }
-
-        registerImmediate = function registerImmediate(handle) {
-            global.postMessage(messagePrefix + handle, "*");
-        };
-    }
-
-    function installMessageChannelImplementation() {
-        var channel = new MessageChannel();
-        channel.port1.onmessage = function (event) {
-            var handle = event.data;
-            runIfPresent(handle);
-        };
-
-        registerImmediate = function registerImmediate(handle) {
-            channel.port2.postMessage(handle);
-        };
-    }
-
-    function installReadyStateChangeImplementation() {
-        var html = doc.documentElement;
-        registerImmediate = function registerImmediate(handle) {
-            // Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
-            // into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
-            var script = doc.createElement("script");
-            script.onreadystatechange = function () {
-                runIfPresent(handle);
-                script.onreadystatechange = null;
-                html.removeChild(script);
-                script = null;
-            };
-            html.appendChild(script);
-        };
-    }
-
-    function installSetTimeoutImplementation() {
-        registerImmediate = function registerImmediate(handle) {
-            setTimeout(runIfPresent, 0, handle);
-        };
-    }
-
-    // If supported, we should attach to the prototype of global, since that is where setTimeout et al. live.
-    var attachTo = Object.getPrototypeOf && Object.getPrototypeOf(global);
-    attachTo = attachTo && attachTo.setTimeout ? attachTo : global;
-
-    // Don't get fooled by e.g. browserify environments.
-    if ({}.toString.call(global.process) === "[object process]") {
-        // For Node.js before 0.9
-        installNextTickImplementation();
-    } else if (canUsePostMessage()) {
-        // For non-IE10 modern browsers
-        installPostMessageImplementation();
-    } else if (global.MessageChannel) {
-        // For web workers, where supported
-        installMessageChannelImplementation();
-    } else if (doc && "onreadystatechange" in doc.createElement("script")) {
-        // For IE 6–8
-        installReadyStateChangeImplementation();
-    } else {
-        // For older browsers
-        installSetTimeoutImplementation();
-    }
-
-    attachTo.setImmediate = setImmediate;
-    attachTo.clearImmediate = clearImmediate;
-})(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36), __webpack_require__(1)))
-
-/***/ }),
+/* 267 */,
+/* 268 */,
 /* 269 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -54986,15 +54717,20 @@ var __ = wp.i18n.__;
 
 
 var save = function save(props) {
+  var blockID = props.clientId;
   var _props$attributes = props.attributes,
-      id = _props$attributes.id,
       imageURL = _props$attributes.imageURL,
+      imageID = _props$attributes.imageID,
       imageAlt = _props$attributes.imageAlt,
+      imageWidth = _props$attributes.imageWidth,
+      imageHeight = _props$attributes.imageHeight,
       url = _props$attributes.url,
+      target = _props$attributes.target,
       urlCheck = _props$attributes.urlCheck,
       height = _props$attributes.height,
       minHeight = _props$attributes.minHeight,
       effectDir = _props$attributes.effectDir,
+      HeightU = _props$attributes.HeightU,
       background = _props$attributes.background,
       targetOverlay = _props$attributes.targetOverlay,
       hoverEffect = _props$attributes.hoverEffect,
@@ -55017,51 +54753,63 @@ var save = function save(props) {
 
   var classVertical = "" + (effectDir === "vertical" && hoverEffect === "mouse-scroll" ? "premium-img-scroll-ver " : "");
 
+  var reverseClasses = "" + (reverse && effectDir === "vertical" ? "premium-container-scroll-instant" : "");
+
   var classHorizontal = "" + (effectDir === "horizontal" && hoverEffect === "hover" ? "img-scroll-horizontal " : "");
+
   var containerClasses = "" + (hoverEffect === "mouse-scroll" ? "premium-container-scroll" : "");
+  var overlayClasses = "" + (hoverEffect === "mouse-scroll" && effectDir === "horizontal" ? "premium-img-scroll-horizontal-overlay" : null);
 
   return wp.element.createElement(
     "div",
     {
-      "data-direction": effectDir,
-      "data-effect": hoverEffect,
-      "data-reverse": reverse,
-      id: "premium-scroll",
       className: "premium-img-scroll-container",
       style: {
+        border: borderType,
+        borderWidth: borderWidth + "px",
+        borderRadius: borderRadius + "px",
+        borderColor: borderColor,
         boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
       }
     },
-    wp.element.createElement(
+    wp.element.createElement("style", {
+      dangerouslySetInnerHTML: {
+        __html: [".premium-img-scroll-overlay{", "background: " + background + ";", "}", ".premium-img-scroll-horizontal-overlay{", "   width:" + imageWidth + "px;", "}"].join("\n")
+      }
+    }),
+    imageURL && wp.element.createElement(
       "div",
       {
         "data-direction": effectDir,
         "data-effect": hoverEffect,
         "data-reverse": reverse,
-        className: " premium-img-scroll-wrap " + containerClasses + " ",
+        id: "premium-scroll-" + blockID,
+        className: " premium-img-scroll-wrap  " + containerClasses + " " + reverseClasses + " ",
         style: {
-          border: borderType,
-          borderWidth: borderWidth + "px",
-          borderRadius: borderRadius + "px",
-          borderColor: borderColor,
           minHeight: minHeight,
-          height: height
+          height: height + HeightU
         }
       },
-      urlCheck && wp.element.createElement("a", { "class": "premium-img-scroll-link", href: url }),
+      urlCheck && wp.element.createElement("a", {
+        className: "premium-img-scroll-link",
+        target: "" + (target ? "_blank" : "_self"),
+        href: url
+      }),
       wp.element.createElement(
         "div",
         {
           className: " premium-img-scroll-" + effectDir + "  " + classHorizontal + " " + classVertical + " "
         },
         targetOverlay && wp.element.createElement("div", {
-          className: "premium-img-scroll-overlay",
-          style: { backgroundColor: background }
+          className: "premium-img-scroll-overlay " + overlayClasses
         }),
         wp.element.createElement("img", {
+          id: "premium-img-scroll-" + blockID,
           className: "premium-img-scroll",
           alt: imageAlt,
           src: imageURL,
+          width: imageWidth,
+          height: imageHeight,
           style: {
             filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
           }

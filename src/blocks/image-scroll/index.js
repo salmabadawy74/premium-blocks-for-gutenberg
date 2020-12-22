@@ -21,11 +21,12 @@ registerBlockType("premium/image-scroll", {
     imageID: {
       type: "number",
     },
+
     imageURL: {
       type: "string",
       source: "attribute",
       attribute: "src",
-      selector: ".premium-banner__img",
+      selector: "img",
     },
     imageHeight: {
       type: "number",
@@ -44,19 +45,21 @@ registerBlockType("premium/image-scroll", {
       type: "string",
       source: "attribute",
       attribute: "href",
-      selector: ".premium-banner__link",
+      selector: "a",
     },
     target: {
       type: "boolean",
       default: false,
     },
     height: {
-      type: "string",
-      default: "default",
-    },
-    minHeight: {
       type: "number",
+      default: 300,
     },
+    HeightU: {
+      type: "string",
+      default: "px",
+    },
+
     width: {
       type: "number",
       default: "default",

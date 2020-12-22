@@ -1,6 +1,3 @@
-/*
-* Common
-*/
 div[class^="wp-block-premium"] i[class*="fa-"] {
   font-family: FontAwesome;
 }
@@ -977,11 +974,15 @@ a.premium-dheading-block__link:hover {
   position: relative;
 }
 
-.premium-img-scroll-wrap .premium-img-scroll-overlay {
-  background: rgba(2, 2, 2, 0.3);
+.premium-img-scroll-wrap .premium-img-scroll-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
 }
 
-.premium-img-scroll-wrap .premium-img-scroll-link,
 .premium-img-scroll-wrap .premium-img-scroll-overlay {
   position: absolute;
   top: 0;
@@ -990,7 +991,6 @@ a.premium-dheading-block__link:hover {
   right: 0;
   z-index: 4;
 }
-
 .premium-img-scroll-content {
   display: inline-block;
   position: absolute;
@@ -1084,6 +1084,7 @@ a.premium-dheading-block__link:hover {
     transform: translateX(5px);
   }
 }
+
 /**************** Premium Count Up *********************/
 /*******************************************************/
 .premium-countup__wrap,

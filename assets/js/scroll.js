@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
   setTimeout(() => {
-    const scrollElements = $(".premium-img-scroll-container");
+    const scrollElements = $(".premium-img-scroll-wrap");
     scrollElements.map((index, scrollElement) => {
       let $scrollElement = $(scrollElement);
 
@@ -14,7 +14,7 @@ jQuery(document).ready(function ($) {
         imageScroll.css(
           "transform",
           (Direction === "vertical" ? "translateY" : "translateX") +
-            "( " +
+            "(-" +
             transformOffset +
             "px)"
         );
@@ -28,9 +28,9 @@ jQuery(document).ready(function ($) {
       }
       function setTransform() {
         if (Direction === "vertical") {
-          transformOffset = $scrollElement.height() - imageScroll.height();
+          transformOffset = imageScroll.height() - $scrollElement.height();
         } else if (Direction === "horizontal") {
-          transformOffset = $scrollElement.width() - imageScroll.width();
+          transformOffset = imageScroll.width() - $scrollElement.width();
         }
 
         if (effect === "mouse-scroll") {

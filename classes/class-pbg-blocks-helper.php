@@ -321,13 +321,7 @@ class PBG_Blocks_Helper {
 				array('jquery'),
                 PREMIUM_BLOCKS_VERSION
 			);
-			wp_enqueue_script(
-                'scroll-js',
-                PREMIUM_BLOCKS_URL . 'assets/js/scroll.js',
-				array('jquery'),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
+		
 			
 		}
 		
