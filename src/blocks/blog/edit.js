@@ -30,16 +30,7 @@ class edit extends Component {
   constructor() {
     super(...arguments);
   }
-  componentDidMount() {
-    let choices = [];
-    if (latestPosts) {
-      latestPosts.forEach((post) => {
-        choices.push(post);
-      });
-    } else {
-      choices.push({ value: 0, label: __("Loading...", "awhitepixel") });
-    }
-  }
+  componentDidMount() {}
   render() {
     const Skin = [
       {
@@ -200,6 +191,7 @@ class edit extends Component {
     } = attributes;
     const hasPosts = Array.isArray(latestPosts) && latestPosts.length;
     console.log(latestPosts);
+    console.log(categoriesList);
 
     let choices = [];
     if (latestPosts) {
@@ -210,7 +202,13 @@ class edit extends Component {
       choices.push({ value: 0, label: __("Loading...", "awhitepixel") });
     }
 
-    return <Blog latestPosts={choices} attributes={attributes} />;
+    return (
+      <Blog
+        latestPosts={choices}
+        attributes={attributes}
+        categoriesList={categoriesList}
+      />
+    );
   }
 }
 export default withSelect((select, props) => {
@@ -221,15 +219,36 @@ export default withSelect((select, props) => {
     orderBy,
     postType,
     taxonomyType,
+    paginationMarkup,
+    postPagination,
     excludeCurrentPost,
   } = props.attributes;
+  const { setAttributes } = props;
   const { getEntityRecords } = select("core");
 
   let allTaxonomy = uagb_blocks_info.all_taxonomy;
   let currentTax = allTaxonomy[postType];
   let taxonomy = "";
-  let categoriesList = [];
+  let categoriesList = wp.data
+    .select("core")
+    .getEntityRecords("taxonomy", "category");
   let rest_base = "";
+
+  if (true === postPagination && "empty" === paginationMarkup) {
+    $.ajax({
+      url: uagb_blocks_info.ajax_url,
+      data: {
+        action: "uagb_post_pagination",
+        attributes: props.attributes,
+        nonce: uagb_blocks_info.uagb_ajax_nonce,
+      },
+      dataType: "json",
+      type: "POST",
+      success: function (data) {
+        setAttributes({ paginationMarkup: data.data });
+      },
+    });
+  }
 
   if ("undefined" != typeof currentTax) {
     if ("undefined" != typeof currentTax["taxonomy"][taxonomyType]) {
@@ -249,7 +268,6 @@ export default withSelect((select, props) => {
       }
     }
   }
-
   let latestPostsQuery = {
     order: order,
     orderby: orderBy,
@@ -259,12 +277,9 @@ export default withSelect((select, props) => {
   if (excludeCurrentPost) {
     latestPostsQuery["exclude"] = select("core/editor").getCurrentPostId();
   }
-  latestPostsQuery[rest_base] = categories;
 
   return {
     latestPosts: getEntityRecords("postType", "post"),
     categoriesList: categoriesList,
-    taxonomyList:
-      "undefined" != typeof currentTax ? currentTax["taxonomy"] : [],
   };
 })(edit);

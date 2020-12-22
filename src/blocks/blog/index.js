@@ -1,4 +1,5 @@
 const { __ } = wp.i18n;
+import blogAttributes from "./attributes";
 
 import PbgIcon from "../icons";
 import edit from "./edit";
@@ -10,11 +11,7 @@ registerBlockType("premium/post-blog", {
   title: __("Premium Blog"),
   icon: <PbgIcon icon="content-switcher" />,
   category: "premium-blocks",
-  attributes: {
-    id: {
-      type: "string",
-    },
-  },
+  attributes: blogAttributes,
   // supports: {
   //   inserter: Blog,
   // },

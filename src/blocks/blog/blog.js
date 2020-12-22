@@ -1,6 +1,7 @@
 const { decodeEntities } = wp.htmlEntities;
 const { dateI18n, format, __experimentalGetSettings } = wp.date;
-
+import Meta from "./meta";
+const { __ } = wp.i18n;
 class Blog extends React.Component {
   render() {
     const {
@@ -27,7 +28,6 @@ class Blog extends React.Component {
       latestPosts.length > postsToShow
         ? latestPosts.slice(0, postsToShow)
         : latestPosts;
-    const dateFormat = __experimentalGetSettings().formats.date;
 
     return (
       <div className={`premium-blog`}>
@@ -56,7 +56,7 @@ class Blog extends React.Component {
                         <div className="premium-blog-entry-container">
                           <div className="premium-blog-entry-title">
                             <h2>
-                              <a>
+                              <a href={post.link}>
                                 {undefined == post.title
                                   ? post.value
                                   : decodeEntities(
@@ -68,55 +68,9 @@ class Blog extends React.Component {
 
                           <div
                             className="premium-blog-entry-meta"
-                            style={{ display: "flex", gap: "5px" }}
+                            style={{ display: "flex", flexWrap: "nowrap" }}
                           >
-                            <div
-                              className={`premium-blog-post-author premium-blog-meta-data`}
-                            >
-                              {undefined == post.author_info
-                                ? post.value
-                                : [
-                                    <i className="fa fa-user fa-fw"></i>,
-                                    <a href={post.uagb_author_info.author_link}>
-                                      {post.uagb_author_info.display_name}
-                                    </a>,
-                                  ]}
-                            </div>
-                            <span className={`premium-blog-meta-separtor`}>
-                              .
-                            </span>
-                            <div
-                              className={`premium-blog-post-time premium-blog-meta-data`}
-                            >
-                              {undefined == post.author_info
-                                ? post.value
-                                : [
-                                    <time
-                                      dateTime={format("c", post.date_gmt)}
-                                      className="uagb-post__date"
-                                    >
-                                      <span className="dashicons-calendar dashicons"></span>
-                                      {dateI18n(dateFormat, post.date_gmt)}
-                                    </time>,
-                                  ]}
-                            </div>
-                            <span className={`premium-blog-meta-separtor`}>
-                              .
-                            </span>
-                            <div
-                              className={`premium-blog-post-comments premium-blog-meta-data`}
-                            >
-                              {undefined == post.author_info
-                                ? post.value
-                                : [
-                                    <i className="fa fa-comments-o fa-fw"></i>,
-                                    `  ${
-                                      post.uagb_comment_info === 0
-                                        ? "NO Comments"
-                                        : post.uagb_comment_info
-                                    }`,
-                                  ]}
-                            </div>
+                            <Meta post={post} categoriesList={categoriesList} />
                           </div>
                         </div>
                         <p>
