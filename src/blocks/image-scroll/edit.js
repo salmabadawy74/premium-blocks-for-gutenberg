@@ -2,7 +2,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumSizeUnits from "../../components/premium-size-units";
-
+alert("Hello from edit ");
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const {
@@ -369,7 +369,7 @@ class edit extends Component {
       ),
 
       <div
-        className={`premium-img-scroll-container`}
+        className={`premium-img-scroll-container  ${containerClasses} `}
         style={{
           border: borderType,
           borderWidth: borderWidth + "px",
@@ -403,13 +403,12 @@ class edit extends Component {
             data-effect={hoverEffect}
             data-reverse={reverse}
             id={`premium-scroll-${blockID}`}
-            className={` premium-img-scroll-wrap  ${containerClasses} ${reverseClasses} `}
+            className={` premium-img-scroll-wrap ${reverseClasses} `}
             style={{
-              minHeight: minHeight,
               height: height + HeightU,
             }}
           >
-            {urlCheck && (
+            {urlCheck && "" !== url && (
               <a
                 className="premium-img-scroll-link"
                 target={`${target ? "_blank" : "_self"}`}

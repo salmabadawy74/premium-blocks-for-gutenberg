@@ -26,7 +26,7 @@ registerBlockType("premium/image-scroll", {
       type: "string",
       source: "attribute",
       attribute: "src",
-      selector: "img",
+      selector: ".premium-img-scroll",
     },
     imageHeight: {
       type: "number",
@@ -45,7 +45,7 @@ registerBlockType("premium/image-scroll", {
       type: "string",
       source: "attribute",
       attribute: "href",
-      selector: "a",
+      selector: ".premium-img-scroll-link",
     },
     target: {
       type: "boolean",

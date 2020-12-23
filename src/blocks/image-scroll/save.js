@@ -4,7 +4,7 @@ const save = (props) => {
   const { clientId: blockID } = props;
   const {
     imageURL,
-    imageID,
+
     imageAlt,
     imageWidth,
     imageHeight,
@@ -13,7 +13,7 @@ const save = (props) => {
     target,
     urlCheck,
     height,
-    minHeight,
+
     effectDir,
     HeightU,
     background,
@@ -65,7 +65,7 @@ const save = (props) => {
 
   return (
     <div
-      className={`premium-img-scroll-container`}
+      className={`premium-img-scroll-container ${containerClasses}`}
       style={{
         border: borderType,
         borderWidth: borderWidth + "px",
@@ -94,13 +94,12 @@ const save = (props) => {
           data-effect={hoverEffect}
           data-reverse={reverse}
           id={`premium-scroll-${blockID}`}
-          className={` premium-img-scroll-wrap  ${containerClasses} ${reverseClasses} `}
+          className={` premium-img-scroll-wrap   ${reverseClasses} `}
           style={{
-            minHeight: minHeight,
             height: height + HeightU,
           }}
         >
-          {urlCheck && (
+          {urlCheck && "" !== url && (
             <a
               className="premium-img-scroll-link"
               target={`${target ? "_blank" : "_self"}`}
