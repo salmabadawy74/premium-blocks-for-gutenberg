@@ -1,6 +1,10 @@
+import PremiumSizeUnits from "../../components/premium-size-units";
 import Blog from "./blog";
+
 const { __ } = wp.i18n;
+
 const { Component } = wp.element;
+
 const {
   PanelBody,
   Placeholder,
@@ -16,6 +20,7 @@ const {
   TextControl,
   IconButton,
   RadioControl,
+  __experimentalNumberControl: NumberControl,
 } = wp.components;
 
 const {
@@ -72,35 +77,62 @@ class edit extends Component {
         label: __("My Templates"),
       },
     ];
-    const Filter_Rule = [
-      { value: "Match Categories", label: __("Match Categories") },
-      { value: "Exclude Categories", label: __("Exclude Categories") },
+    const orderSelect = [
+      { label: "None", value: "None" },
+      { label: "ID", value: "ID" },
+      { label: "Author", value: "Author" },
+      { label: "Title", value: "Title" },
+      { label: "Name", value: "Name" },
+      { label: "Date", value: "Date" },
+      { label: "last Modified", value: "last Modified" },
+      { label: "Random", value: "Random" },
+      { label: "Number Of Comments", value: "Number Of Comments" },
     ];
-    const Author_Rule = [
-      { value: "Match Authors", label: __("Match Authors") },
-      { value: "Exclude Authors", label: __("Exclude Authors") },
+    const hoverEffects = [
+      { label: "None", value: "None" },
+      { label: "Zoom in", value: "Zoom in " },
+      { label: "Zoom out", value: "Zoom out" },
+      { label: "Scale", value: "Scale" },
+      { label: "GrayScale", value: "GrayScale" },
+      { label: "Blur", value: "Blur" },
+      { label: "Bright", value: "Bright" },
+      { label: "Sepia", value: "Sepia" },
+      { label: "Translate", value: "Translate" },
     ];
+
     const {
       attributes,
       categoriesList,
       setAttributes,
       latestPosts,
-
+      isSelected,
       taxonomyList,
     } = this.props;
     const {
       filter_rule,
       author_rule,
+      post_rule,
       skinValue,
       gridCheck,
-      numOfPosts,
+      categoryFilter,
+      offsetNum,
       sourceValue,
-
+      equalHeight,
+      numOfColumns,
+      numOfPosts,
+      displayStickyPosts,
+      currentPost,
+      featuredImage,
+      hoverEffect,
+      height,
+      HeightU,
+      postPosition,
       block_id,
-      displayPostTitle,
+      displayPostContent,
       displayPostDate,
       displayPostComment,
       displayPostExcerpt,
+      excerptType,
       displayPostAuthor,
       displayPostImage,
       displayPostTaxonomy,
@@ -126,6 +158,7 @@ class edit extends Component {
       postsToShow,
       rowGap,
       columnGap,
+      rowGapUnit,
       bgColor,
       contentPadding,
       contentPaddingMobile,
@@ -202,13 +235,294 @@ class edit extends Component {
       choices.push({ value: 0, label: __("Loading...", "awhitepixel") });
     }
 
-    return (
+    return [
+      isSelected && (
+        <InspectorControls>
+          <PanelBody
+            title={__("General")}
+            className="premium-panel-body"
+            initialOpen={true}
+          >
+            <ToggleControl
+              label={__("Grid")}
+              checked={gridCheck}
+              onChange={(newCheck) => setAttributes({ gridCheck: newCheck })}
+            />
+
+            <ToggleControl
+              label={__("Equal Height")}
+              checked={equalHeight}
+              onChange={(newEqual) => setAttributes({ equalHeight: newEqual })}
+            />
+
+            <SelectControl
+              label={__("Number of Columns")}
+              value={numOfColumns}
+              options={[
+                { label: "2 Columns", value: 2 },
+                { label: "3 Columns", value: 3 },
+                { label: "4 Columns", value: 4 },
+                { label: "5 Columns", value: 5 },
+                { label: "6 Columns", value: 6 },
+              ]}
+              onChange={(newNumberofCol) =>
+                setAttributes({ numOfColumns: newNumberofCol })
+              }
+            />
+            <NumberControl
+              label={__("Number of Posts Per Page")}
+              isShiftStepEnabled={true}
+              onChange={(newNumberofPosts) =>
+                setAttributes({ numOfPosts: newNumberofPosts })
+              }
+              shiftStep={1}
+              value={numOfPosts}
+              min={1}
+            />
+          </PanelBody>
+          <PanelBody
+            title={__("Query")}
+            className="premium-panel-body"
+            initialOpen={false}
+          >
+            <SelectControl
+              label={__("Source")}
+              options={Source}
+              value={sourceValue}
+              onChange={(newSource) =>
+                setAttributes({ sourceValue: newSource })
+              }
+            />
+            <hr />
+            <SelectControl
+              label={__("Categories Filter Rule")}
+              options={[
+                { value: "Match Categories", label: __("Match Categories") },
+                {
+                  value: "Exclude Categories",
+                  label: __("Exclude Categories"),
+                },
+              ]}
+              value={filter_rule}
+              onChange={(newFilterRule) =>
+                setAttributes({ filter_rule: newFilterRule })
+              }
+            />
+            <hr />
+            <SelectControl
+              label={__("Author Filter Rule")}
+              options={[
+                { value: "Match Authors", label: __("Match Authors") },
+                { value: "Exclude Authors", label: __("Exclude Authors") },
+              ]}
+              value={author_rule}
+              onChange={(newAuthorRule) =>
+                setAttributes({ author_rule: newAuthorRule })
+              }
+            />
+            <hr />
+            <SelectControl
+              label={__("Filter by Post Rule")}
+              options={[
+                { value: "Match Posts", label: __("Match Posts") },
+                { value: "Exclude Posts", label: __("Exclude Posts") },
+              ]}
+              value={post_rule}
+              onChange={(newPostRule) =>
+                setAttributes({ post_rule: newPostRule })
+              }
+            />
+            <ToggleControl
+              label={__("Ignore Sticky Posts")}
+              checked={displayStickyPosts}
+              onChange={() =>
+                setAttributes({ displayStickyPosts: !displayStickyPosts })
+              }
+            />
+            <NumberControl
+              label={__("Offset")}
+              isShiftStepEnabled={true}
+              onChange={(newOffsetNum) =>
+                setAttributes({ offsetNum: newOffsetNum })
+              }
+              shiftStep={1}
+              value={offsetNum}
+              min={0}
+            />
+            <ToggleControl
+              label={__("Exclude Current Post")}
+              checked={currentPost}
+              help={
+                currentPost
+                  ? "This option will remove the current post from the query. "
+                  : " "
+              }
+              onChange={() => setAttributes({ currentPost: !currentPost })}
+            />
+            <hr />
+            <SelectControl
+              label={__("Order By")}
+              options={orderSelect}
+              value={orderBy}
+              onChange={(Orderby) => setAttributes({ orderBy: Orderby })}
+            />
+            <SelectControl
+              label={__("Order")}
+              options={[
+                { label: "Descending", value: "Desc" },
+                { label: "Ascending", value: "Asc" },
+              ]}
+              value={order}
+              onChange={(NewOrder) => setAttributes({ order: NewOrder })}
+            />
+          </PanelBody>
+          <PanelBody
+            title={__("Featured Image")}
+            className="premium-panel-body"
+            initialOpen={false}
+          >
+            <ToggleControl
+              label={__("Show Featured Iamge")}
+              checked={featuredImage}
+              onChange={() => setAttributes({ featuredImage: !featuredImage })}
+            />
+            {featuredImage && [
+              <SelectControl
+                label={__("Hover Effect")}
+                options={hoverEffects}
+                value={hoverEffect}
+                onChange={(newEffect) =>
+                  setAttributes({ hoverEffect: newEffect })
+                }
+              />,
+              <PremiumSizeUnits
+                units={["px", "em"]}
+                onChangeSizeUnit={(newValue) => {
+                  setAttributes({ HeightU: newValue });
+                }}
+              />,
+              <RangeControl
+                label={__("Height")}
+                value={height}
+                onChange={(newHeight) => setAttributes({ height: newHeight })}
+                max={HeightU === "em" ? 50 : 800}
+              />,
+            ]}
+          </PanelBody>
+          <PanelBody
+            title={__("Display Options")}
+            className="premium-panel-body"
+            initialOpen={false}
+          >
+            <SelectControl
+              label={__("Title HTML Tag")}
+              options={[
+                { label: "H1", value: "h1" },
+                { label: "H2", value: "h2" },
+                { label: "H3", value: "h3" },
+                { label: "H4", value: "h4" },
+                { label: "H5", value: "h5" },
+                { label: "H6", value: "h6" },
+                { label: "div", value: "div" },
+                { label: "span", value: "span" },
+                { label: "p", value: "p" },
+              ]}
+              value={titleTag}
+              onChange={(newTag) => setAttributes({ titleTag: newTag })}
+            />
+            <PremiumSizeUnits
+              onChangeSizeUnit={(newUnit) => {
+                setAttributes({ rowGapUnit: newUnit });
+              }}
+            />
+            <RangeControl
+              label={__("Row Spacing")}
+              value={rowGap}
+              onChange={(newRowGap) => setAttributes({ rowGap: newRowGap })}
+              max={rowGapUnit === "em" ? 10 : 200}
+            />
+            <RangeControl
+              label={__("Column Spacing")}
+              value={columnGap}
+              onChange={(newcolumnGap) =>
+                setAttributes({ columnGap: newcolumnGap })
+              }
+              max={50}
+            />
+            <h2> {__("Alignment")}</h2>
+            <IconButton
+              key={"left"}
+              icon="editor-alignleft"
+              label="Left"
+              onClick={() => setAttributes({ postPosition: "left" })}
+              aria-pressed={"left" === postPosition}
+              isPrimary={"left" === postPosition}
+            />
+            <IconButton
+              key={"center"}
+              icon="editor-aligncenter"
+              label="Right"
+              onClick={() => setAttributes({ postPosition: "center" })}
+              aria-pressed={"center" === postPosition}
+              isPrimary={"center" === postPosition}
+            />
+            <IconButton
+              key={"right"}
+              icon="editor-alignright"
+              label="Right"
+              onClick={() => setAttributes({ postPosition: "right" })}
+              aria-pressed={"right" === postPosition}
+              isPrimary={"right" === postPosition}
+            />
+          </PanelBody>
+          <PanelBody
+            title={__("Post Options")}
+            className="premium-panel-body"
+            initialOpen={false}
+          >
+            <ToggleControl
+              label={__("Show Post Content")}
+              checked={displayPostContent}
+              onChange={() =>
+                setAttributes({ displayPostContent: !displayPostContent })
+              }
+            />
+            {displayPostContent &&
+              ((
+                <SelectControl
+                  label={__("Get Content From")}
+                  options={[
+                    { label: "Post Full Content", value: "Post Full Content" },
+                    { label: "Post Excerpt", value: "Post Excerpt" },
+                  ]}
+                  value={displayPostExcerpt}
+                  onChange={(newExcerpt) =>
+                    setAttributes({ displayPostExcerpt: newExcerpt })
+                  }
+                />
+              ),
+              (
+                <SelectControl
+                  label={__("Excerpt Type")}
+                  options={[
+                    { label: "Dots", value: "Dots" },
+                    { label: "Link", value: "Link" },
+                  ]}
+                  value={excerptType}
+                  onChange={(newExcerptType) =>
+                    setAttributes({ excerptType: newExcerptType })
+                  }
+                />
+              ))}
+          </PanelBody>
+        </InspectorControls>
+      ),
       <Blog
         latestPosts={choices}
         attributes={attributes}
         categoriesList={categoriesList}
-      />
-    );
+      />,
+    ];
   }
 }
 export default withSelect((select, props) => {
