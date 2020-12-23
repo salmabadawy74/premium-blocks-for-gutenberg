@@ -54283,7 +54283,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-alert("Hello from edit ");
+
 var __ = wp.i18n.__;
 var Component = wp.element.Component;
 var _wp$components = wp.components,
@@ -54427,7 +54427,6 @@ var edit = function (_Component) {
 
         setTransform();
         reverse ? endTransform() : startTransform();
-        console.log(transformOffset);
       };
 
       var mouseleave = function mouseleave() {

@@ -2,7 +2,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumSizeUnits from "../../components/premium-size-units";
-alert("Hello from edit ");
+
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const {
@@ -174,7 +174,6 @@ class edit extends Component {
 
       setTransform();
       reverse ? endTransform() : startTransform();
-      console.log(transformOffset);
     };
 
     const mouseleave = () => {
