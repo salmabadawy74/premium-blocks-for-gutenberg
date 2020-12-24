@@ -163,5 +163,52 @@ const blogAttributes = {
     type: "string",
     value: "Dots",
   },
+  fullWidth: {
+    type: "boolean",
+    value: false,
+  },
+  readMoreText: {
+    type: "string",
+    value: "Read More",
+  },
+  displayPostAuthor: {
+    type: "boolean",
+    value: true,
+  },
+  displayPostDate: {
+    type: "boolean",
+    value: true,
+  },
+  displayPostCategories: {
+    type: "boolean",
+    value: true,
+  },
+  displayPostComment: {
+    type: "boolean",
+    value: true,
+  },
+  displayPostTags: {
+    type: "boolean",
+    value: true,
+  },
+  filterTabs: {
+    type: "boolean",
+    value: false,
+  },
+  getTabsFrom: {
+    type: "string",
+    value: "Categories",
+  },
+  tabLabel: {
+    type: "string",
+    value: "All",
+  },
+  filterPostion: {
+    type: "string",
+  },
+  linkNewTab: {
+    type: "boolean",
+    value: false,
+  },
 };
 export default blogAttributes;

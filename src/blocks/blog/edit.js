@@ -127,13 +127,22 @@ class edit extends Component {
       height,
       HeightU,
       postPosition,
+      fullWidth,
       block_id,
       displayPostContent,
+      displayPostExcerpt,
       displayPostDate,
       displayPostComment,
-      displayPostExcerpt,
+      displayPostCategories,
+      displayPostTags,
       excerptType,
+      readMoreText,
       displayPostAuthor,
+      filterTabs,
+      getTabsFrom,
+      tabLabel,
+      linkNewTab,
+      filterPosition,
       displayPostImage,
       displayPostTaxonomy,
       imgSize,
@@ -454,6 +463,153 @@ class edit extends Component {
               key={"left"}
               icon="editor-alignleft"
               label="Left"
+              onClick={() => setAttributes({ filterPosition: "left" })}
+              aria-pressed={"left" === filterPosition}
+              isPrimary={"left" === filterPosition}
+            />
+            <IconButton
+              key={"center"}
+              icon="editor-aligncenter"
+              label="Right"
+              onClick={() => setAttributes({ filterPosition: "center" })}
+              aria-pressed={"center" === filterPosition}
+              isPrimary={"center" === filterPosition}
+            />
+            <IconButton
+              key={"right"}
+              icon="editor-alignright"
+              label="Right"
+              onClick={() => setAttributes({ filterPosition: "right" })}
+              aria-pressed={"right" === filterPosition}
+              isPrimary={"right" === filterPosition}
+            />
+          </PanelBody>
+          <PanelBody
+            title={__("Post Options")}
+            className="premium-panel-body"
+            initialOpen={false}
+          >
+            <ToggleControl
+              label={__("Show Post Content")}
+              checked={displayPostContent}
+              onChange={() =>
+                setAttributes({ displayPostContent: !displayPostContent })
+              }
+            />
+            {displayPostContent && [
+              <SelectControl
+                label={__("Get Content From")}
+                options={[
+                  { label: "Post Full Content", value: "Post Full Content" },
+                  { label: "Post Excerpt", value: "Post Excerpt" },
+                ]}
+                value={displayPostExcerpt}
+                onChange={(newExcerpt) =>
+                  setAttributes({ displayPostExcerpt: newExcerpt })
+                }
+              />,
+              <SelectControl
+                label={__("Excerpt Type")}
+                options={[
+                  { label: "Dots", value: "Dots" },
+                  { label: "Link", value: "Link" },
+                ]}
+                value={excerptType}
+                onChange={(newExcerptType) =>
+                  setAttributes({ excerptType: newExcerptType })
+                }
+              />,
+              excerptType === "Link"
+                ? [
+                    <ToggleControl
+                      label={__("Full Width")}
+                      checked={fullWidth}
+                      onChange={() =>
+                        setAttributes({
+                          fullWidth: !fullWidth,
+                        })
+                      }
+                    />,
+                    <TextControl
+                      label={__("Read More Text")}
+                      value={readMoreText}
+                      onChange={(newText) =>
+                        setAttributes({ readMoreText: newText })
+                      }
+                    />,
+                  ]
+                : null,
+            ]}
+            <ToggleControl
+              label={__("Author Meta")}
+              checked={displayPostAuthor}
+              onChange={() =>
+                setAttributes({ displayPostAuthor: !displayPostAuthor })
+              }
+            />
+            <ToggleControl
+              label={__("Date Meta")}
+              checked={displayPostDate}
+              onChange={() =>
+                setAttributes({ displayPostDate: !displayPostDate })
+              }
+            />
+            <ToggleControl
+              label={__("Category Meta")}
+              checked={displayPostCategories}
+              onChange={() =>
+                setAttributes({ displayPostCategories: !displayPostCategories })
+              }
+            />
+            <ToggleControl
+              label={__("Comments Meta")}
+              checked={displayPostComment}
+              onChange={() =>
+                setAttributes({ displayPostComment: !displayPostComment })
+              }
+            />
+            <ToggleControl
+              label={__("Tags Meta")}
+              checked={displayPostTags}
+              onChange={() =>
+                setAttributes({ displayPostTags: !displayPostTags })
+              }
+            />
+          </PanelBody>
+          <PanelBody
+            title={__("Advanced Settings")}
+            className="premium-panel-body"
+            initialOpen={false}
+          >
+            <ToggleControl
+              label={__("Filter Tabs")}
+              checked={filterTabs}
+              onChange={() => setAttributes({ filterTabs: !filterTabs })}
+            />
+            <SelectControl
+              label={__("Get Tabs From")}
+              options={[
+                {
+                  label: "Categories",
+                  value: "Categories",
+                },
+                { label: "Tags", value: "Tags" },
+              ]}
+              value={getTabsFrom}
+              onChange={(newTabsFrom) =>
+                setAttributes({ getTabsFrom: newTabsFrom })
+              }
+            />
+            <TextControl
+              label={__("First Tab Label")}
+              value={tabLabel}
+              onChange={(newLabel) => setAttributes({ tabLabel: newLabel })}
+            />
+            <h2> {__("Alignment")}</h2>
+            <IconButton
+              key={"left"}
+              icon="editor-alignleft"
+              label="Left"
               onClick={() => setAttributes({ postPosition: "left" })}
               aria-pressed={"left" === postPosition}
               isPrimary={"left" === postPosition}
@@ -474,46 +630,11 @@ class edit extends Component {
               aria-pressed={"right" === postPosition}
               isPrimary={"right" === postPosition}
             />
-          </PanelBody>
-          <PanelBody
-            title={__("Post Options")}
-            className="premium-panel-body"
-            initialOpen={false}
-          >
             <ToggleControl
-              label={__("Show Post Content")}
-              checked={displayPostContent}
-              onChange={() =>
-                setAttributes({ displayPostContent: !displayPostContent })
-              }
+              label={__("Link in New Tabs")}
+              checked={linkNewTab}
+              onChange={() => setAttributes({ linkNewTab: !linkNewTab })}
             />
-            {displayPostContent &&
-              ((
-                <SelectControl
-                  label={__("Get Content From")}
-                  options={[
-                    { label: "Post Full Content", value: "Post Full Content" },
-                    { label: "Post Excerpt", value: "Post Excerpt" },
-                  ]}
-                  value={displayPostExcerpt}
-                  onChange={(newExcerpt) =>
-                    setAttributes({ displayPostExcerpt: newExcerpt })
-                  }
-                />
-              ),
-              (
-                <SelectControl
-                  label={__("Excerpt Type")}
-                  options={[
-                    { label: "Dots", value: "Dots" },
-                    { label: "Link", value: "Link" },
-                  ]}
-                  value={excerptType}
-                  onChange={(newExcerptType) =>
-                    setAttributes({ excerptType: newExcerptType })
-                  }
-                />
-              ))}
           </PanelBody>
         </InspectorControls>
       ),
