@@ -54113,12 +54113,8 @@ registerBlockType("premium/image-scroll", {
   title: __("Image Scroll"),
   icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "content-switcher" }),
   category: "premium-blocks",
+
   attributes: {
-    title: {
-      type: "string",
-      source: "html",
-      selector: "h2"
-    },
     imageID: {
       type: "number"
     },
@@ -54161,10 +54157,6 @@ registerBlockType("premium/image-scroll", {
       default: "px"
     },
 
-    width: {
-      type: "number",
-      default: "default"
-    },
     effectDir: {
       type: "string",
       default: "vertical"
@@ -54240,23 +54232,17 @@ registerBlockType("premium/image-scroll", {
     },
     blockID: {
       type: "string"
-    },
-    responsive: {
-      type: "boolean",
-      default: false
-    },
-    verAlign: {
-      type: "string",
-      default: "top"
-    },
-    paddingT: {
-      type: "number"
     }
   },
+
   supports: {
     inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["o" /* scroll */]
   },
-  example: {},
+  example: {
+    attributes: {
+      imageURL: "https://via.placeholder.com/150/0000FF/808080%20?Text=Digital.com%20C/O%20https://placeholder.com/"
+    }
+  },
 
   edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
   save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */]
@@ -54278,7 +54264,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -54338,7 +54323,6 @@ var edit = function (_Component) {
           target = _props$attributes.target,
           urlCheck = _props$attributes.urlCheck,
           height = _props$attributes.height,
-          minHeight = _props$attributes.minHeight,
           effectDir = _props$attributes.effectDir,
           HeightU = _props$attributes.HeightU,
           background = _props$attributes.background,
@@ -54360,7 +54344,6 @@ var edit = function (_Component) {
           containerShadowPosition = _props$attributes.containerShadowPosition,
           reverse = _props$attributes.reverse;
 
-
       var hover = [{
         value: "vertical",
         label: __("Vertical")
@@ -54368,7 +54351,6 @@ var edit = function (_Component) {
         value: "horizontal",
         label: __("Horizontal")
       }];
-
       var trigger = [{
         value: "hover",
         label: __("Hover")
@@ -54376,16 +54358,11 @@ var edit = function (_Component) {
         value: "mouse-scroll",
         label: __("Mouse Scroll")
       }];
-
       var classVertical = "" + (effectDir === "vertical" && hoverEffect === "mouse-scroll" ? "premium-img-scroll-ver " : "");
-
       var reverseClasses = "" + (reverse && effectDir === "vertical" ? "premium-container-scroll-instant" : "");
-
       var classHorizontal = "" + (effectDir === "horizontal" && hoverEffect === "hover" ? "img-scroll-horizontal " : "");
-
       var containerClasses = "" + (hoverEffect === "mouse-scroll" ? "premium-container-scroll" : "");
-      var overlayClasses = "" + (hoverEffect === "mouse-scroll" && effectDir === "horizontal" ? "premium-img-scroll-horizontal-overlay" : null);
-
+      var overlayClasses = "" + (targetOverlay && hoverEffect === "mouse-scroll" && effectDir === "horizontal" ? "premium-img-scroll-horizontal-overlay" : "");
       var onFileSelect = function onFileSelect(img) {
         setAttributes({
           imageURL: img.url,
@@ -54395,27 +54372,21 @@ var edit = function (_Component) {
           imageAlt: img.alt
         });
       };
-
       var startTransform = function startTransform() {
-        imageScroll.style.cssText = "\n        transform:" + (effectDir === "vertical" ? "translateY" : "translateX") + "(-" + transformOffset + "px);";
+        imageScroll.style.cssText = "\n\ttransform:" + (effectDir === "vertical" ? "translateY" : "translateX") + "(-" + transformOffset + "px);";
       };
-
       var endTransform = function endTransform() {
         imageScroll.style.cssText = "transform:" + (effectDir === "vertical" ? "translateY" : "translateX") + "(0px);";
       };
-
       var setTransform = function setTransform() {
-        if (effectDir === "vertical") {
+        if ("vertical" === effectDir) {
           transformOffset = imageScroll.clientHeight - scrollElement.clientHeight;
         } else {
-          if (hoverEffect === "hover") {
+          if ("hover" === hoverEffect) {
             transformOffset = imageScroll.clientWidth - scrollElement.clientWidth;
-          } else {
-            scrollOverlay.style.cssText = "width:" + imageWidth + ";\n         \n          ";
           }
         }
-
-        if (hoverEffect === "mouse-scroll") {
+        if ("mouse-scroll" === hoverEffect) {
           transformOffset = null;
         }
       };
@@ -54433,7 +54404,7 @@ var edit = function (_Component) {
         reverse ? startTransform() : endTransform();
       };
       var onChangeHeight = function onChangeHeight(newHeight) {
-        if (HeightU === "em" && newHeight > 50) return 50;
+        if ("em" === HeightU && newHeight > 50) return 50;
 
         setAttributes({ height: newHeight });
       };
@@ -54528,7 +54499,15 @@ var edit = function (_Component) {
             onChange: function onChange(newEffect) {
               return setAttributes({ hoverEffect: newEffect });
             }
-          }),
+          })
+        ),
+        wp.element.createElement(
+          PanelBody,
+          {
+            title: __("Image Style"),
+            className: "premium-panel-body",
+            initialOpen: false
+          },
           wp.element.createElement(ToggleControl, {
             label: __("Overlay"),
             checked: targetOverlay,
@@ -54544,15 +54523,7 @@ var edit = function (_Component) {
               });
             },
             allowReset: true
-          })
-        ),
-        wp.element.createElement(
-          PanelBody,
-          {
-            title: __("Image Style"),
-            className: "premium-panel-body",
-            initialOpen: false
-          },
+          }),
           wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_filters__["a" /* default */], {
             blur: blur,
             bright: bright,
@@ -54711,7 +54682,6 @@ var edit = function (_Component) {
 "use strict";
 var __ = wp.i18n.__;
 
-
 var save = function save(props) {
   var blockID = props.clientId;
   var _props$attributes = props.attributes,
@@ -54744,16 +54714,11 @@ var save = function save(props) {
       containerShadowPosition = _props$attributes.containerShadowPosition,
       reverse = _props$attributes.reverse;
 
-
   var classVertical = "" + (effectDir === "vertical" && hoverEffect === "mouse-scroll" ? "premium-img-scroll-ver " : "");
-
   var reverseClasses = "" + (reverse && effectDir === "vertical" ? "premium-container-scroll-instant" : "");
-
   var classHorizontal = "" + (effectDir === "horizontal" && hoverEffect === "hover" ? "img-scroll-horizontal " : "");
-
   var containerClasses = "" + (hoverEffect === "mouse-scroll" ? "premium-container-scroll" : "");
-  var overlayClasses = "" + (hoverEffect === "mouse-scroll" && effectDir === "horizontal" ? "premium-img-scroll-horizontal-overlay" : null);
-
+  var overlayClasses = "" + (targetOverlay && hoverEffect === "mouse-scroll" && effectDir === "horizontal" ? "premium-img-scroll-horizontal-overlay" : null);
   return wp.element.createElement(
     "div",
     {
@@ -54786,7 +54751,8 @@ var save = function save(props) {
       urlCheck && "" !== url && wp.element.createElement("a", {
         className: "premium-img-scroll-link",
         target: "" + (target ? "_blank" : "_self"),
-        href: url
+        href: url,
+        rel: "noopener noreferrer"
       }),
       wp.element.createElement(
         "div",

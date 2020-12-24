@@ -3,12 +3,10 @@ jQuery(document).ready(function ($) {
     const scrollElements = $(".premium-img-scroll-wrap");
     scrollElements.map((index, scrollElement) => {
       let $scrollElement = $(scrollElement);
-
       let imageScroll = $scrollElement.find(".premium-img-scroll");
       let Direction = $scrollElement.data("direction");
       let effect = $scrollElement.data("effect");
       let reverse = $scrollElement.data("reverse");
-
       let transformOffset = 0;
       function startTransform() {
         imageScroll.css(
@@ -19,7 +17,6 @@ jQuery(document).ready(function ($) {
             "px)"
         );
       }
-
       function endTransform() {
         imageScroll.css(
           "transform",
@@ -32,7 +29,6 @@ jQuery(document).ready(function ($) {
         } else if (Direction === "horizontal") {
           transformOffset = imageScroll.width() - $scrollElement.width();
         }
-
         if (effect === "mouse-scroll") {
           transformOffset = null;
         }

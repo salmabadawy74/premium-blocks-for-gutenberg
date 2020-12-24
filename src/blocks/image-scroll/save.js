@@ -1,19 +1,15 @@
 const { __ } = wp.i18n;
-
 const save = (props) => {
   const { clientId: blockID } = props;
   const {
     imageURL,
-
     imageAlt,
     imageWidth,
     imageHeight,
     url,
-
     target,
     urlCheck,
     height,
-
     effectDir,
     HeightU,
     background,
@@ -35,34 +31,31 @@ const save = (props) => {
     containerShadowPosition,
     reverse,
   } = props.attributes;
-
   const classVertical = `${
     effectDir === "vertical" && hoverEffect === "mouse-scroll"
       ? "premium-img-scroll-ver "
       : ""
   }`;
-
   const reverseClasses = `${
     reverse && effectDir === "vertical"
       ? "premium-container-scroll-instant"
       : ""
   }`;
-
   const classHorizontal = `${
     effectDir === "horizontal" && hoverEffect === "hover"
       ? "img-scroll-horizontal "
       : ""
   }`;
-
   const containerClasses = `${
     hoverEffect === "mouse-scroll" ? "premium-container-scroll" : ""
   }`;
   const overlayClasses = `${
-    hoverEffect === "mouse-scroll" && effectDir === "horizontal"
+    targetOverlay &&
+    hoverEffect === "mouse-scroll" &&
+    effectDir === "horizontal"
       ? "premium-img-scroll-horizontal-overlay"
       : null
   }`;
-
   return (
     <div
       className={`premium-img-scroll-container ${containerClasses}`}
@@ -104,6 +97,7 @@ const save = (props) => {
               className="premium-img-scroll-link"
               target={`${target ? "_blank" : "_self"}`}
               href={url}
+              rel="noopener noreferrer"
             ></a>
           )}
           <div

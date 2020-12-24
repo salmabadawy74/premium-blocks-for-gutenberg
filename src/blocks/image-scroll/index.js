@@ -12,12 +12,8 @@ registerBlockType("premium/image-scroll", {
   title: __("Image Scroll"),
   icon: <PbgIcon icon="content-switcher" />,
   category: "premium-blocks",
+
   attributes: {
-    title: {
-      type: "string",
-      source: "html",
-      selector: "h2",
-    },
     imageID: {
       type: "number",
     },
@@ -60,10 +56,6 @@ registerBlockType("premium/image-scroll", {
       default: "px",
     },
 
-    width: {
-      type: "number",
-      default: "default",
-    },
     effectDir: {
       type: "string",
       default: "vertical",
@@ -140,22 +132,17 @@ registerBlockType("premium/image-scroll", {
     blockID: {
       type: "string",
     },
-    responsive: {
-      type: "boolean",
-      default: false,
-    },
-    verAlign: {
-      type: "string",
-      default: "top",
-    },
-    paddingT: {
-      type: "number",
-    },
   },
+
   supports: {
     inserter: scroll,
   },
-  example: {},
+  example: {
+    attributes: {
+      imageURL:
+        "https://via.placeholder.com/150/0000FF/808080%20?Text=Digital.com%20C/O%20https://placeholder.com/",
+    },
+  },
 
   edit: edit,
   save: save,

@@ -2,12 +2,10 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumSizeUnits from "../../components/premium-size-units";
-
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const {
   IconButton,
-
   PanelBody,
   SelectControl,
   RangeControl,
@@ -15,13 +13,7 @@ const {
   ToggleControl,
 } = wp.components;
 
-const {
-  InspectorControls,
-
-  ColorPalette,
-
-  MediaUpload,
-} = wp.editor;
+const { InspectorControls, ColorPalette, MediaUpload } = wp.editor;
 let scrollElement, imageScroll, scrollOverlay;
 let transformOffset = null;
 class edit extends Component {
@@ -35,12 +27,7 @@ class edit extends Component {
   }
 
   render() {
-    const {
-      setAttributes,
-
-      isSelected,
-      clientId: blockID,
-    } = this.props;
+    const { setAttributes, isSelected, clientId: blockID } = this.props;
     const {
       imageURL,
       imageID,
@@ -48,11 +35,9 @@ class edit extends Component {
       imageWidth,
       imageHeight,
       url,
-
       target,
       urlCheck,
       height,
-      minHeight,
       effectDir,
       HeightU,
       background,
@@ -74,7 +59,6 @@ class edit extends Component {
       containerShadowPosition,
       reverse,
     } = this.props.attributes;
-
     const hover = [
       {
         value: "vertical",
@@ -85,7 +69,6 @@ class edit extends Component {
         label: __("Horizontal"),
       },
     ];
-
     const trigger = [
       {
         value: "hover",
@@ -96,34 +79,31 @@ class edit extends Component {
         label: __("Mouse Scroll"),
       },
     ];
-
     const classVertical = `${
       effectDir === "vertical" && hoverEffect === "mouse-scroll"
         ? "premium-img-scroll-ver "
         : ""
     }`;
-
     const reverseClasses = `${
       reverse && effectDir === "vertical"
         ? "premium-container-scroll-instant"
         : ""
     }`;
-
     const classHorizontal = `${
       effectDir === "horizontal" && hoverEffect === "hover"
         ? "img-scroll-horizontal "
         : ""
     }`;
-
     const containerClasses = `${
       hoverEffect === "mouse-scroll" ? "premium-container-scroll" : ""
     }`;
     const overlayClasses = `${
-      hoverEffect === "mouse-scroll" && effectDir === "horizontal"
+      targetOverlay &&
+      hoverEffect === "mouse-scroll" &&
+      effectDir === "horizontal"
         ? "premium-img-scroll-horizontal-overlay"
-        : null
+        : ""
     }`;
-
     const onFileSelect = (img) => {
       setAttributes({
         imageURL: img.url,
@@ -133,34 +113,26 @@ class edit extends Component {
         imageAlt: img.alt,
       });
     };
-
     const startTransform = () => {
       imageScroll.style.cssText = `
-        transform:${
-          effectDir === "vertical" ? "translateY" : "translateX"
-        }(-${transformOffset}px);`;
+	transform:${
+    effectDir === "vertical" ? "translateY" : "translateX"
+  }(-${transformOffset}px);`;
     };
-
     const endTransform = () => {
       imageScroll.style.cssText = `transform:${
         effectDir === "vertical" ? "translateY" : "translateX"
       }(0px);`;
     };
-
     const setTransform = () => {
-      if (effectDir === "vertical") {
+      if ("vertical" === effectDir) {
         transformOffset = imageScroll.clientHeight - scrollElement.clientHeight;
       } else {
-        if (hoverEffect === "hover") {
+        if ("hover" === hoverEffect) {
           transformOffset = imageScroll.clientWidth - scrollElement.clientWidth;
-        } else {
-          scrollOverlay.style.cssText = `width:${imageWidth};
-         
-          `;
         }
       }
-
-      if (hoverEffect === "mouse-scroll") {
+      if ("mouse-scroll" === hoverEffect) {
         transformOffset = null;
       }
     };
@@ -180,7 +152,7 @@ class edit extends Component {
       reverse ? startTransform() : endTransform();
     };
     const onChangeHeight = (newHeight) => {
-      if (HeightU === "em" && newHeight > 50) return 50;
+      if ("em" === HeightU && newHeight > 50) return 50;
 
       setAttributes({ height: newHeight });
     };
@@ -265,6 +237,12 @@ class edit extends Component {
                 setAttributes({ hoverEffect: newEffect })
               }
             />
+          </PanelBody>
+          <PanelBody
+            title={__("Image Style")}
+            className="premium-panel-body"
+            initialOpen={false}
+          >
             <ToggleControl
               label={__("Overlay")}
               checked={targetOverlay}
@@ -282,13 +260,6 @@ class edit extends Component {
                 allowReset={true}
               />
             )}
-          </PanelBody>
-
-          <PanelBody
-            title={__("Image Style")}
-            className="premium-panel-body"
-            initialOpen={false}
-          >
             <PremiumFilters
               blur={blur}
               bright={bright}
@@ -366,7 +337,6 @@ class edit extends Component {
           </PanelBody>
         </InspectorControls>
       ),
-
       <div
         className={`premium-img-scroll-container  ${containerClasses} `}
         style={{
@@ -384,11 +354,9 @@ class edit extends Component {
             __html: [
               `.premium-img-scroll-overlay{`,
               `background: ${background};`,
-
               "}",
               `.premium-img-scroll-horizontal-overlay{`,
               `   width:${imageWidth}px;`,
-
               "}",
               `#premium-img-scroll-${blockID} {`,
               `filter: brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
