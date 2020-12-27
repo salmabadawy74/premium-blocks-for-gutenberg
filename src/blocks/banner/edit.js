@@ -5,11 +5,8 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumPadding from "../../components/premium-padding";
-
 const { __ } = wp.i18n;
-
 const { Fragment } = wp.element;
-
 const {
   IconButton,
   Toolbar,
@@ -19,7 +16,6 @@ const {
   TextControl,
   ToggleControl,
 } = wp.components;
-
 const {
   BlockControls,
   InspectorControls,
@@ -28,7 +24,6 @@ const {
   RichText,
   MediaUpload,
 } = wp.editor;
-
 const edit = (props) => {
   const { isSelected, setAttributes, className, clientId: blockID } = props;
   const {
@@ -178,9 +173,7 @@ const edit = (props) => {
     },
   ];
   setAttributes({ id: blockID });
-
   const mainClasses = classnames(className, "premium-banner");
-
   return [
     isSelected && (
       <BlockControls key="controls">

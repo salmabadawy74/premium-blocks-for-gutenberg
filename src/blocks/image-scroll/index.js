@@ -1,23 +1,17 @@
 import { scroll } from "../../../assets/js/settings";
-
 const { __ } = wp.i18n;
-
 import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
-
 const { registerBlockType } = wp.blocks;
-
 registerBlockType("premium/image-scroll", {
   title: __("Image Scroll"),
   icon: <PbgIcon icon="content-switcher" />,
   category: "premium-blocks",
-
   attributes: {
     imageID: {
       type: "number",
     },
-
     imageURL: {
       type: "string",
       source: "attribute",
@@ -55,7 +49,6 @@ registerBlockType("premium/image-scroll", {
       type: "string",
       default: "px",
     },
-
     effectDir: {
       type: "string",
       default: "vertical",
@@ -133,17 +126,14 @@ registerBlockType("premium/image-scroll", {
       type: "string",
     },
   },
-
   supports: {
     inserter: scroll,
   },
   example: {
     attributes: {
-      imageURL:
-        "https://via.placeholder.com/150/0000FF/808080%20?Text=Digital.com%20C/O%20https://placeholder.com/",
+      imageURL: `https://i.pinimg.com/originals/08/2c/da/082cda4f08a94753defc177874f43f34.gif`,
     },
   },
-
   edit: edit,
   save: save,
 });

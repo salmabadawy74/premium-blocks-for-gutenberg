@@ -9867,7 +9867,6 @@ registerBlockType("premium/banner", {
 
 
 
-
 var __ = wp.i18n.__;
 var Fragment = wp.element.Fragment;
 var _wp$components = wp.components,
@@ -9885,7 +9884,6 @@ var _wp$editor = wp.editor,
     ColorPalette = _wp$editor.ColorPalette,
     RichText = _wp$editor.RichText,
     MediaUpload = _wp$editor.MediaUpload;
-
 
 var edit = function edit(props) {
   var isSelected = props.isSelected,
@@ -10015,9 +10013,7 @@ var edit = function edit(props) {
     label: __("Custom")
   }];
   setAttributes({ id: blockID });
-
   var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-banner");
-
   return [isSelected && wp.element.createElement(
     BlockControls,
     { key: "controls" },
@@ -54098,27 +54094,21 @@ var PremiumPaddingR = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(266);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(267);
 
-
 var __ = wp.i18n.__;
-
-
 
 
 
 
 var registerBlockType = wp.blocks.registerBlockType;
 
-
 registerBlockType("premium/image-scroll", {
   title: __("Image Scroll"),
   icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "content-switcher" }),
   category: "premium-blocks",
-
   attributes: {
     imageID: {
       type: "number"
     },
-
     imageURL: {
       type: "string",
       source: "attribute",
@@ -54156,7 +54146,6 @@ registerBlockType("premium/image-scroll", {
       type: "string",
       default: "px"
     },
-
     effectDir: {
       type: "string",
       default: "vertical"
@@ -54234,16 +54223,14 @@ registerBlockType("premium/image-scroll", {
       type: "string"
     }
   },
-
   supports: {
     inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["o" /* scroll */]
   },
   example: {
     attributes: {
-      imageURL: "https://via.placeholder.com/150/0000FF/808080%20?Text=Digital.com%20C/O%20https://placeholder.com/"
+      imageURL: "https://i.pinimg.com/originals/08/2c/da/082cda4f08a94753defc177874f43f34.gif"
     }
   },
-
   edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
   save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */]
 });
@@ -54285,7 +54272,8 @@ var _wp$editor = wp.editor,
 
 var scrollElement = void 0,
     imageScroll = void 0,
-    scrollOverlay = void 0;
+    scrollOverlay = void 0,
+    overlayHorizontalScroll = void 0;
 var transformOffset = null;
 
 var edit = function (_Component) {
@@ -54390,16 +54378,13 @@ var edit = function (_Component) {
           transformOffset = null;
         }
       };
-
       var mouseenter = function mouseenter() {
         scrollElement = document.getElementById("premium-scroll-" + blockID);
         imageScroll = scrollElement.querySelector(".premium-img-scroll");
-        scrollOverlay = scrollElement.querySelector(".premium-img-scroll-overlay");
 
         setTransform();
         reverse ? endTransform() : startTransform();
       };
-
       var mouseleave = function mouseleave() {
         reverse ? startTransform() : endTransform();
       };
@@ -54626,11 +54611,6 @@ var edit = function (_Component) {
           onMouseEnter: mouseenter,
           onMouseLeave: mouseleave
         },
-        wp.element.createElement("style", {
-          dangerouslySetInnerHTML: {
-            __html: [".premium-img-scroll-overlay{", "background: " + background + ";", "}", ".premium-img-scroll-horizontal-overlay{", "   width:" + imageWidth + "px;", "}", "#premium-img-scroll-" + blockID + " {", "filter: brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )", "}"].join("\n")
-          }
-        }),
         imageURL && wp.element.createElement(
           "div",
           {
@@ -54654,7 +54634,7 @@ var edit = function (_Component) {
               className: " premium-img-scroll-" + effectDir + "  " + classHorizontal + " " + classVertical + " "
             },
             targetOverlay && wp.element.createElement("div", {
-              className: "premium-img-scroll-overlay " + overlayClasses
+              className: "premium-img-scroll-overlay " + overlayClasses + " "
             }),
             wp.element.createElement("img", {
               id: "premium-img-scroll-" + blockID,
@@ -54663,6 +54643,11 @@ var edit = function (_Component) {
               src: imageURL,
               width: imageWidth,
               height: imageHeight
+            }),
+            wp.element.createElement("style", {
+              dangerouslySetInnerHTML: {
+                __html: ["#premium-scroll-" + blockID + " .premium-img-scroll-overlay {", "background:" + background, "}", "#premium-scroll-" + blockID + " .premium-img-scroll-horizontal-overlay {", "width:" + imageWidth + "px", "}", "#premium-img-scroll-" + blockID + " {", "filter: brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )", "}"].join("\n")
+              }
             })
           )
         )
@@ -54683,8 +54668,8 @@ var edit = function (_Component) {
 var __ = wp.i18n.__;
 
 var save = function save(props) {
-  var blockID = props.clientId;
   var _props$attributes = props.attributes,
+      blockID = _props$attributes.blockID,
       imageURL = _props$attributes.imageURL,
       imageAlt = _props$attributes.imageAlt,
       imageWidth = _props$attributes.imageWidth,
@@ -54714,11 +54699,12 @@ var save = function save(props) {
       containerShadowPosition = _props$attributes.containerShadowPosition,
       reverse = _props$attributes.reverse;
 
+
   var classVertical = "" + (effectDir === "vertical" && hoverEffect === "mouse-scroll" ? "premium-img-scroll-ver " : "");
   var reverseClasses = "" + (reverse && effectDir === "vertical" ? "premium-container-scroll-instant" : "");
   var classHorizontal = "" + (effectDir === "horizontal" && hoverEffect === "hover" ? "img-scroll-horizontal " : "");
   var containerClasses = "" + (hoverEffect === "mouse-scroll" ? "premium-container-scroll" : "");
-  var overlayClasses = "" + (targetOverlay && hoverEffect === "mouse-scroll" && effectDir === "horizontal" ? "premium-img-scroll-horizontal-overlay" : null);
+  var overlayClasses = "" + (targetOverlay && hoverEffect === "mouse-scroll" && effectDir === "horizontal" ? "premium-img-scroll-horizontal-overlay" : "");
   return wp.element.createElement(
     "div",
     {
@@ -54731,11 +54717,6 @@ var save = function save(props) {
         boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
       }
     },
-    wp.element.createElement("style", {
-      dangerouslySetInnerHTML: {
-        __html: [".premium-img-scroll-overlay{", "background: " + background + ";", "}", ".premium-img-scroll-horizontal-overlay{", "   width:" + imageWidth + "px;", "}"].join("\n")
-      }
-    }),
     imageURL && wp.element.createElement(
       "div",
       {
@@ -54772,12 +54753,16 @@ var save = function save(props) {
           style: {
             filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
           }
+        }),
+        wp.element.createElement("style", {
+          dangerouslySetInnerHTML: {
+            __html: ["#premium-scroll-" + blockID + " .premium-img-scroll-overlay {", "background:" + background, "}", "#premium-scroll-" + blockID + " .premium-img-scroll-horizontal-overlay {", "width:" + imageWidth + "px", "}", "#premium-img-scroll-" + blockID + " {", "filter: brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )", "}"].join("\n")
+          }
         })
       )
     )
   );
 };
-
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ })

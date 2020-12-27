@@ -14,18 +14,16 @@ const {
 } = wp.components;
 
 const { InspectorControls, ColorPalette, MediaUpload } = wp.editor;
-let scrollElement, imageScroll, scrollOverlay;
+let scrollElement, imageScroll, scrollOverlay, overlayHorizontalScroll;
 let transformOffset = null;
 class edit extends Component {
   constructor() {
     super(...arguments);
   }
-
   componentDidMount() {
     const { setAttributes, clientId } = this.props;
     setAttributes({ blockID: clientId });
   }
-
   render() {
     const { setAttributes, isSelected, clientId: blockID } = this.props;
     const {
@@ -136,18 +134,13 @@ class edit extends Component {
         transformOffset = null;
       }
     };
-
     const mouseenter = () => {
       scrollElement = document.getElementById(`premium-scroll-${blockID}`);
       imageScroll = scrollElement.querySelector(".premium-img-scroll");
-      scrollOverlay = scrollElement.querySelector(
-        ".premium-img-scroll-overlay"
-      );
 
       setTransform();
       reverse ? endTransform() : startTransform();
     };
-
     const mouseleave = () => {
       reverse ? startTransform() : endTransform();
     };
@@ -349,21 +342,6 @@ class edit extends Component {
         onMouseEnter={mouseenter}
         onMouseLeave={mouseleave}
       >
-        <style
-          dangerouslySetInnerHTML={{
-            __html: [
-              `.premium-img-scroll-overlay{`,
-              `background: ${background};`,
-              "}",
-              `.premium-img-scroll-horizontal-overlay{`,
-              `   width:${imageWidth}px;`,
-              "}",
-              `#premium-img-scroll-${blockID} {`,
-              `filter: brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
-              "}",
-            ].join("\n"),
-          }}
-        />
         {imageURL && (
           <div
             data-direction={effectDir}
@@ -387,7 +365,7 @@ class edit extends Component {
             >
               {targetOverlay && (
                 <div
-                  className={`premium-img-scroll-overlay ${overlayClasses}`}
+                  className={`premium-img-scroll-overlay ${overlayClasses} `}
                 ></div>
               )}
               <img
@@ -398,6 +376,21 @@ class edit extends Component {
                 width={imageWidth}
                 height={imageHeight}
               />
+              <style
+                dangerouslySetInnerHTML={{
+                  __html: [
+                    `#premium-scroll-${blockID} .premium-img-scroll-overlay {`,
+                    `background:${background}`,
+                    "}",
+                    `#premium-scroll-${blockID} .premium-img-scroll-horizontal-overlay {`,
+                    `width:${imageWidth}px`,
+                    "}",
+                    `#premium-img-scroll-${blockID} {`,
+                    `filter: brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
+                    "}",
+                  ].join("\n"),
+                }}
+              />
             </div>
           </div>
         )}
@@ -405,5 +398,4 @@ class edit extends Component {
     ];
   }
 }
-
 export default edit;

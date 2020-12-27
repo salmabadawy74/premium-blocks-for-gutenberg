@@ -1,7 +1,7 @@
 const { __ } = wp.i18n;
 const save = (props) => {
-  const { clientId: blockID } = props;
   const {
+    blockID,
     imageURL,
     imageAlt,
     imageWidth,
@@ -31,6 +31,7 @@ const save = (props) => {
     containerShadowPosition,
     reverse,
   } = props.attributes;
+
   const classVertical = `${
     effectDir === "vertical" && hoverEffect === "mouse-scroll"
       ? "premium-img-scroll-ver "
@@ -54,7 +55,7 @@ const save = (props) => {
     hoverEffect === "mouse-scroll" &&
     effectDir === "horizontal"
       ? "premium-img-scroll-horizontal-overlay"
-      : null
+      : ""
   }`;
   return (
     <div
@@ -67,20 +68,6 @@ const save = (props) => {
         boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
       }}
     >
-      <style
-        dangerouslySetInnerHTML={{
-          __html: [
-            `.premium-img-scroll-overlay{`,
-            `background: ${background};`,
-
-            "}",
-            `.premium-img-scroll-horizontal-overlay{`,
-            `   width:${imageWidth}px;`,
-
-            "}",
-          ].join("\n"),
-        }}
-      />
       {imageURL && (
         <div
           data-direction={effectDir}
@@ -119,11 +106,25 @@ const save = (props) => {
                 filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
               }}
             />
+            <style
+              dangerouslySetInnerHTML={{
+                __html: [
+                  `#premium-scroll-${blockID} .premium-img-scroll-overlay {`,
+                  `background:${background}`,
+                  "}",
+                  `#premium-scroll-${blockID} .premium-img-scroll-horizontal-overlay {`,
+                  `width:${imageWidth}px`,
+                  "}",
+                  `#premium-img-scroll-${blockID} {`,
+                  `filter: brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
+                  "}",
+                ].join("\n"),
+              }}
+            />
           </div>
         </div>
       )}
     </div>
   );
 };
-
 export default save;
