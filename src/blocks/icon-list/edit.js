@@ -467,7 +467,9 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <PremiumRange
+                        <
+                            
+                            PremiumRange
                             setAttributes={setAttributes}
                             rangeType={{ value: sizeType, label: __("sizeType") }}
                             range={{ value: size, label: __("size") }}
@@ -546,7 +548,9 @@ class edit extends Component {
                             range={{ value: titlePadding, label: __("titlePadding") }}
                             rangeMobile={{ value: titlePaddingMobile, label: __("titlePaddingMobile") }}
                             rangeTablet={{ value: titlePaddingTablet, label: __("titlePaddingTablet") }}
-                            rangeLabel={__("Item Padding ")}
+                            rangeLabel={ __( "Item Padding " ) }
+                            
+                            
                         />
                         {layoutPos == "block" ? <PremiumMarginR
                             directions={["top", "bottom"]}

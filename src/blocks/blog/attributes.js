@@ -88,21 +88,7 @@ const blogAttributes = {
     type: "number",
     value: 1,
   },
-  sourceValue: {
-    type: "string",
-    value: "Posts",
-  },
-  categoryFilter: {
-    type: "string",
-  },
-  post_rule: {
-    type: "string",
-    value: "Match Posts",
-  },
-  displayStickyPosts: {
-    type: "boolean",
-    value: false,
-  },
+
   offsetNum: {
     type: "number",
     value: 0,
@@ -134,10 +120,6 @@ const blogAttributes = {
   HeightU: {
     type: "string",
     value: "px",
-  },
-  titleTag: {
-    type: "string",
-    value: "h2",
   },
 
   rowGapUnit: {
@@ -209,6 +191,30 @@ const blogAttributes = {
   linkNewTab: {
     type: "boolean",
     value: false,
+  },
+  layoutValue: {
+    type: "string",
+    value: "Even",
+  },
+  postFilter: {
+    type: "string",
+    value: "Default",
+  },
+  sizeType: {
+    type: "string",
+    default: "px",
+  },
+  size: {
+    type: "number",
+    default: 20,
+  },
+  sizeMobile: {
+    type: "number",
+    default: 20,
+  },
+  sizeTablet: {
+    type: "number",
+    default: 20,
   },
 };
 export default blogAttributes;

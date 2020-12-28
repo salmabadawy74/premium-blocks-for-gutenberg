@@ -1,5 +1,8 @@
 import PremiumSizeUnits from "../../components/premium-size-units";
+import PremiumRange from "../../components/premium-responsive";
+
 import Blog from "./blog";
+import PremiumResponsive from "../../components/premium-responsive";
 
 const { __ } = wp.i18n;
 
@@ -20,7 +23,6 @@ const {
   TextControl,
   IconButton,
   RadioControl,
-  __experimentalNumberControl: NumberControl,
 } = wp.components;
 
 const {
@@ -99,7 +101,6 @@ class edit extends Component {
       { label: "Sepia", value: "Sepia" },
       { label: "Translate", value: "Translate" },
     ];
-
     const {
       attributes,
       categoriesList,
@@ -109,10 +110,7 @@ class edit extends Component {
       taxonomyList,
     } = this.props;
     const {
-      filter_rule,
-      author_rule,
-      post_rule,
-      skinValue,
+      postFilter,
       gridCheck,
       categoryFilter,
       offsetNum,
@@ -128,6 +126,7 @@ class edit extends Component {
       HeightU,
       postPosition,
       fullWidth,
+      layoutValue,
       block_id,
       displayPostContent,
       displayPostExcerpt,
@@ -138,6 +137,10 @@ class edit extends Component {
       excerptType,
       readMoreText,
       displayPostAuthor,
+      sizeType,
+      size,
+      sizeMobile,
+      sizeTablet,
       filterTabs,
       getTabsFrom,
       tabLabel,
@@ -172,7 +175,6 @@ class edit extends Component {
       contentPadding,
       contentPaddingMobile,
       titleColor,
-      titleTag,
       titleFontSize,
       titleFontSizeType,
       titleFontSizeMobile,
@@ -257,34 +259,39 @@ class edit extends Component {
               checked={gridCheck}
               onChange={(newCheck) => setAttributes({ gridCheck: newCheck })}
             />
+            {gridCheck &&
+              ((
+                <SelectControl
+                  label={__("Layout")}
+                  options={[
+                    { label: "Even", value: "Even" },
+                    {
+                      label: "Masonry",
+                      value: "Masonry",
+                    },
+                  ]}
+                  value={layoutValue}
+                  onChange={(newLayout) =>
+                    setAttributes({ layoutValue: newLayout })
+                  }
+                />
+              ),
+              (
+                <PremiumRange
+                  setAttributes={setAttributes}
+                  rangeType={{ value: sizeType, label: __("sizeType") }}
+                  range={{ value: size, label: __("size") }}
+                  rangeMobile={{ value: sizeMobile, label: __("sizeMobile") }}
+                  rangeTablet={{ value: sizeTablet, label: __("sizeTablet") }}
+                  rangelabel={__("Number of Columns")}
+                />
+              ))}
 
-            <ToggleControl
-              label={__("Equal Height")}
-              checked={equalHeight}
-              onChange={(newEqual) => setAttributes({ equalHeight: newEqual })}
-            />
-
-            <SelectControl
-              label={__("Number of Columns")}
-              value={numOfColumns}
-              options={[
-                { label: "2 Columns", value: 2 },
-                { label: "3 Columns", value: 3 },
-                { label: "4 Columns", value: 4 },
-                { label: "5 Columns", value: 5 },
-                { label: "6 Columns", value: 6 },
-              ]}
-              onChange={(newNumberofCol) =>
-                setAttributes({ numOfColumns: newNumberofCol })
-              }
-            />
-            <NumberControl
+            <RangeControl
               label={__("Number of Posts Per Page")}
-              isShiftStepEnabled={true}
               onChange={(newNumberofPosts) =>
                 setAttributes({ numOfPosts: newNumberofPosts })
               }
-              shiftStep={1}
               value={numOfPosts}
               min={1}
             />
@@ -295,66 +302,22 @@ class edit extends Component {
             initialOpen={false}
           >
             <SelectControl
-              label={__("Source")}
-              options={Source}
-              value={sourceValue}
-              onChange={(newSource) =>
-                setAttributes({ sourceValue: newSource })
-              }
-            />
-            <hr />
-            <SelectControl
-              label={__("Categories Filter Rule")}
+              label={__("Filter By")}
               options={[
-                { value: "Match Categories", label: __("Match Categories") },
-                {
-                  value: "Exclude Categories",
-                  label: __("Exclude Categories"),
-                },
+                { label: "Default", value: "Default" },
+                { label: "Categories", value: "Categories" },
+                { label: "Tags", value: "Tages" },
               ]}
-              value={filter_rule}
-              onChange={(newFilterRule) =>
-                setAttributes({ filter_rule: newFilterRule })
+              value={postFilter}
+              onChange={(newPostFilter) =>
+                setAttributes({ postFilter: newPostFilter })
               }
             />
-            <hr />
-            <SelectControl
-              label={__("Author Filter Rule")}
-              options={[
-                { value: "Match Authors", label: __("Match Authors") },
-                { value: "Exclude Authors", label: __("Exclude Authors") },
-              ]}
-              value={author_rule}
-              onChange={(newAuthorRule) =>
-                setAttributes({ author_rule: newAuthorRule })
-              }
-            />
-            <hr />
-            <SelectControl
-              label={__("Filter by Post Rule")}
-              options={[
-                { value: "Match Posts", label: __("Match Posts") },
-                { value: "Exclude Posts", label: __("Exclude Posts") },
-              ]}
-              value={post_rule}
-              onChange={(newPostRule) =>
-                setAttributes({ post_rule: newPostRule })
-              }
-            />
-            <ToggleControl
-              label={__("Ignore Sticky Posts")}
-              checked={displayStickyPosts}
-              onChange={() =>
-                setAttributes({ displayStickyPosts: !displayStickyPosts })
-              }
-            />
-            <NumberControl
+            <RangeControl
               label={__("Offset")}
-              isShiftStepEnabled={true}
               onChange={(newOffsetNum) =>
                 setAttributes({ offsetNum: newOffsetNum })
               }
-              shiftStep={1}
               value={offsetNum}
               min={0}
             />
@@ -423,22 +386,6 @@ class edit extends Component {
             className="premium-panel-body"
             initialOpen={false}
           >
-            <SelectControl
-              label={__("Title HTML Tag")}
-              options={[
-                { label: "H1", value: "h1" },
-                { label: "H2", value: "h2" },
-                { label: "H3", value: "h3" },
-                { label: "H4", value: "h4" },
-                { label: "H5", value: "h5" },
-                { label: "H6", value: "h6" },
-                { label: "div", value: "div" },
-                { label: "span", value: "span" },
-                { label: "p", value: "p" },
-              ]}
-              value={titleTag}
-              onChange={(newTag) => setAttributes({ titleTag: newTag })}
-            />
             <PremiumSizeUnits
               onChangeSizeUnit={(newUnit) => {
                 setAttributes({ rowGapUnit: newUnit });
@@ -576,66 +523,6 @@ class edit extends Component {
               }
             />
           </PanelBody>
-          <PanelBody
-            title={__("Advanced Settings")}
-            className="premium-panel-body"
-            initialOpen={false}
-          >
-            <ToggleControl
-              label={__("Filter Tabs")}
-              checked={filterTabs}
-              onChange={() => setAttributes({ filterTabs: !filterTabs })}
-            />
-            <SelectControl
-              label={__("Get Tabs From")}
-              options={[
-                {
-                  label: "Categories",
-                  value: "Categories",
-                },
-                { label: "Tags", value: "Tags" },
-              ]}
-              value={getTabsFrom}
-              onChange={(newTabsFrom) =>
-                setAttributes({ getTabsFrom: newTabsFrom })
-              }
-            />
-            <TextControl
-              label={__("First Tab Label")}
-              value={tabLabel}
-              onChange={(newLabel) => setAttributes({ tabLabel: newLabel })}
-            />
-            <h2> {__("Alignment")}</h2>
-            <IconButton
-              key={"left"}
-              icon="editor-alignleft"
-              label="Left"
-              onClick={() => setAttributes({ postPosition: "left" })}
-              aria-pressed={"left" === postPosition}
-              isPrimary={"left" === postPosition}
-            />
-            <IconButton
-              key={"center"}
-              icon="editor-aligncenter"
-              label="Right"
-              onClick={() => setAttributes({ postPosition: "center" })}
-              aria-pressed={"center" === postPosition}
-              isPrimary={"center" === postPosition}
-            />
-            <IconButton
-              key={"right"}
-              icon="editor-alignright"
-              label="Right"
-              onClick={() => setAttributes({ postPosition: "right" })}
-              aria-pressed={"right" === postPosition}
-              isPrimary={"right" === postPosition}
-            />
-            <ToggleControl
-              label={__("Link in New Tabs")}
-              checked={linkNewTab}
-              onChange={() => setAttributes({ linkNewTab: !linkNewTab })}
-            />
-          </PanelBody>
         </InspectorControls>
       ),
       <Blog
@@ -668,22 +555,6 @@ export default withSelect((select, props) => {
     .select("core")
     .getEntityRecords("taxonomy", "category");
   let rest_base = "";
-
-  if (true === postPagination && "empty" === paginationMarkup) {
-    $.ajax({
-      url: uagb_blocks_info.ajax_url,
-      data: {
-        action: "uagb_post_pagination",
-        attributes: props.attributes,
-        nonce: uagb_blocks_info.uagb_ajax_nonce,
-      },
-      dataType: "json",
-      type: "POST",
-      success: function (data) {
-        setAttributes({ paginationMarkup: data.data });
-      },
-    });
-  }
 
   if ("undefined" != typeof currentTax) {
     if ("undefined" != typeof currentTax["taxonomy"][taxonomyType]) {
