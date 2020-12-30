@@ -1,12 +1,11 @@
 import PremiumSizeUnits from "../../components/premium-size-units";
-import PremiumRange from "../../components/premium-responsive";
+import PremiumRange from "../../components/premium-range-responsive";
 
 import Blog from "./blog";
-import PremiumResponsive from "../../components/premium-responsive";
 
 const { __ } = wp.i18n;
 
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 const {
   PanelBody,
@@ -39,46 +38,6 @@ class edit extends Component {
   }
   componentDidMount() {}
   render() {
-    const Skin = [
-      {
-        value: "Classic",
-        label: __("Classic"),
-      },
-      {
-        value: "Modern",
-        label: __("Modern"),
-      },
-      {
-        value: "Cards",
-        label: __("Cards"),
-      },
-      {
-        value: "On Side",
-        label: __("On Side"),
-      },
-      {
-        value: "Banner",
-        label: __("Banner"),
-      },
-    ];
-    const Source = [
-      {
-        value: "Posts",
-        label: __("Posts"),
-      },
-      {
-        value: "Pages",
-        label: __("Pages"),
-      },
-      {
-        value: "Media",
-        label: __("Media"),
-      },
-      {
-        value: "My Templates",
-        label: __("My Templates"),
-      },
-    ];
     const orderSelect = [
       { label: "None", value: "None" },
       { label: "ID", value: "ID" },
@@ -101,6 +60,17 @@ class edit extends Component {
       { label: "Sepia", value: "Sepia" },
       { label: "Translate", value: "Translate" },
     ];
+    const hasPosts = Array.isArray(latestPosts) && latestPosts.length;
+
+    let categoryListOptions = [{ value: "", label: __("All") }];
+    if (categoriesList) {
+      Object.keys(categoriesList).map((item, thisIndex) => {
+        return categoryListOptions.push({
+          value: categoriesList[item]["id"],
+          label: categoriesList[item]["name"],
+        });
+      });
+    }
     const {
       attributes,
       categoriesList,
@@ -110,142 +80,82 @@ class edit extends Component {
       taxonomyList,
     } = this.props;
     const {
-      postFilter,
+      blockID,
+      DisplayTitle,
+      DisplayDate,
+      DisplayComment,
+      DisplayExcert,
+      DisplayAuthor,
+      DisplayImage,
+      DisplayTaxonomy,
+      DisplayPostLink,
+      newTab,
+      borderWidth,
+      ctaText,
+      borderRadius,
+      borderColor,
+      vPadding,
+      hPadding,
+      categories,
+      rowGap,
+      imageSize,
+
+      bgColor,
+      contentPadding,
+      contentPaddingMobile,
       gridCheck,
-      categoryFilter,
-      offsetNum,
-      sourceValue,
       equalHeight,
-      numOfColumns,
+
       numOfPosts,
-      displayStickyPosts,
+      numOfColumns,
+      offsetNum,
       currentPost,
+      orderBy,
+      order,
       featuredImage,
       hoverEffect,
       height,
       HeightU,
+
+      rowGapUnit,
+      columnGap,
       postPosition,
-      fullWidth,
-      layoutValue,
-      block_id,
       displayPostContent,
       displayPostExcerpt,
-      displayPostDate,
-      displayPostComment,
-      displayPostCategories,
-      displayPostTags,
       excerptType,
+      fullWidth,
       readMoreText,
       displayPostAuthor,
+      displayPostDate,
+      displayPostCategories,
+      displayPostComment,
+      displayPostTags,
+      filterTabs,
+      getTabsFrom,
+      tabLabel,
+      filterPosition,
+
+      linkNewTab,
+      layoutValue,
+      postFilter,
       sizeType,
       size,
       sizeMobile,
       sizeTablet,
-      filterTabs,
-      getTabsFrom,
-      tabLabel,
-      linkNewTab,
-      filterPosition,
-      displayPostImage,
-      displayPostTaxonomy,
-      imgSize,
-      imgPosition,
-      displayPostLink,
-      newTab,
-      ctaText,
-      borderWidth,
-      borderStyle,
-      borderColor,
-      borderHColor,
-      borderRadius,
-      btnVPadding,
-      btnHPadding,
-      align,
-      columns,
-      tcolumns,
-      mcolumns,
-      order,
-      orderBy,
-      categories,
-      postsToShow,
-      rowGap,
-      columnGap,
-      rowGapUnit,
-      bgColor,
-      contentPadding,
-      contentPaddingMobile,
-      titleColor,
-      titleFontSize,
-      titleFontSizeType,
-      titleFontSizeMobile,
-      titleFontSizeTablet,
-      titleFontFamily,
-      titleFontWeight,
-      titleFontSubset,
-      titleLineHeightType,
-      titleLineHeight,
-      titleLineHeightTablet,
-      titleLineHeightMobile,
-      titleLoadGoogleFonts,
-      metaFontSize,
-      metaFontSizeType,
-      metaFontSizeMobile,
-      metaFontSizeTablet,
-      metaFontFamily,
-      metaFontWeight,
-      metaFontSubset,
-      metaLineHeightType,
-      metaLineHeight,
-      metaLineHeightTablet,
-      metaLineHeightMobile,
-      metaLoadGoogleFonts,
-      excerptFontSize,
-      excerptFontSizeType,
-      excerptFontSizeTablet,
-      excerptFontSizeMobile,
-      excerptFontFamily,
-      excerptFontWeight,
-      excerptFontSubset,
-      excerptLineHeightType,
-      excerptLineHeight,
-      excerptLineHeightTablet,
-      excerptLineHeightMobile,
-      excerptLoadGoogleFonts,
-      ctaFontSize,
-      ctaFontSizeType,
-      ctaFontSizeTablet,
-      ctaFontSizeMobile,
-      ctaFontFamily,
-      ctaFontWeight,
-      ctaFontSubset,
-      ctaLineHeightType,
-      ctaLineHeight,
-      ctaLineHeightTablet,
-      ctaLineHeightMobile,
-      ctaLoadGoogleFonts,
-      metaColor,
-      excerptColor,
-      ctaColor,
-      ctaBgColor,
-      ctaHColor,
-      ctaBgHColor,
-      titleBottomSpace,
-      metaBottomSpace,
-      excerptBottomSpace,
+      Carousel,
+      Autoplay,
+      slideToScroll,
+      autoplaySpeed,
+      centerMode,
+      slideSpacing,
+      navigationDots,
+      navigationArrow,
+      arrowPosition,
+      pagination,
+      pageLimit,
+      paginationPosition,
     } = attributes;
-    const hasPosts = Array.isArray(latestPosts) && latestPosts.length;
-    console.log(latestPosts);
-    console.log(categoriesList);
-
-    let choices = [];
-    if (latestPosts) {
-      latestPosts.forEach((post) => {
-        choices.push(post);
-      });
-    } else {
-      choices.push({ value: 0, label: __("Loading...", "awhitepixel") });
-    }
-
+    console.log(attributes);
     return [
       isSelected && (
         <InspectorControls>
@@ -259,8 +169,8 @@ class edit extends Component {
               checked={gridCheck}
               onChange={(newCheck) => setAttributes({ gridCheck: newCheck })}
             />
-            {gridCheck &&
-              ((
+            {
+              gridCheck && [
                 <SelectControl
                   label={__("Layout")}
                   options={[
@@ -274,18 +184,41 @@ class edit extends Component {
                   onChange={(newLayout) =>
                     setAttributes({ layoutValue: newLayout })
                   }
-                />
-              ),
-              (
-                <PremiumRange
-                  setAttributes={setAttributes}
-                  rangeType={{ value: sizeType, label: __("sizeType") }}
-                  range={{ value: size, label: __("size") }}
-                  rangeMobile={{ value: sizeMobile, label: __("sizeMobile") }}
-                  rangeTablet={{ value: sizeTablet, label: __("sizeTablet") }}
-                  rangelabel={__("Number of Columns")}
-                />
-              ))}
+                />,
+
+                <SelectControl
+                  label={__("Number of Columns")}
+                  value={numOfColumns}
+                  options={[
+                    { label: "2 Columns", value: 2 },
+                    { label: "3 Columns", value: 3 },
+                    { label: "4 Columns", value: 4 },
+                    { label: "5 Columns", value: 5 },
+                    { label: "6 Columns", value: 6 },
+                  ]}
+                  onChange={(newNumberofCol) =>
+                    setAttributes({ numOfColumns: newNumberofCol })
+                  }
+                />,
+              ]
+              // <PremiumRange
+              //   setAttributes={setAttributes}
+              //   rangeType={{
+              //     value: sizeType,
+              //     label: __("switchSizeType"),
+              //   }}
+              //   range={{ value: size, label: __("switchSize") }}
+              //   rangeMobile={{
+              //     value: sizeMobile,
+              //     label: __("switchSizeMobile"),
+              //   }}
+              //   rangeTablet={{
+              //     value: sizeTablet,
+              //     label: __("switchSizeTablet"),
+              //   }}
+              //   rangeLabel={__("Number of Columns")}
+              // />
+            }
 
             <RangeControl
               label={__("Number of Posts Per Page")}
@@ -306,13 +239,26 @@ class edit extends Component {
               options={[
                 { label: "Default", value: "Default" },
                 { label: "Categories", value: "Categories" },
-                { label: "Tags", value: "Tages" },
+                { label: "Tags", value: "Tags" },
               ]}
               value={postFilter}
               onChange={(newPostFilter) =>
                 setAttributes({ postFilter: newPostFilter })
               }
             />
+
+            {"Default" !== postFilter && (
+              <SelectControl
+                label={__(`${postFilter}`)}
+                options={[
+                  { label: "Default", value: "Default" },
+                  { label: "Categories", value: "Categories" },
+                  { label: "Tags", value: "Tages" },
+                ]}
+                value={"First Category"}
+                onChange={() => console.log(categoriesList)}
+              />
+            )}
             <RangeControl
               label={__("Offset")}
               onChange={(newOffsetNum) =>
@@ -365,6 +311,30 @@ class edit extends Component {
                 value={hoverEffect}
                 onChange={(newEffect) =>
                   setAttributes({ hoverEffect: newEffect })
+                }
+              />,
+              <SelectControl
+                label={__("Image Size")}
+                options={[
+                  { label: "1536x1536", value: "1536x1536" },
+                  { label: "2048x2048", value: "2048x2048" },
+                  {
+                    label: "ab-block-post-grid-landscape",
+                    value: "ab-block-post-grid-landscape",
+                  },
+                  {
+                    label: "ab-block-post-grid-square",
+                    value: "ab-block-post-grid-square",
+                  },
+                  { label: "full", value: "full" },
+                  { label: "large", value: "large" },
+                  { label: "medium", value: "medium" },
+                  { label: "medium_large", value: "medium_large" },
+                  { label: "thumbnail", value: "thumbnail" },
+                ]}
+                value={imageSize}
+                onChange={(newSizeImage) =>
+                  setAttributes({ imageSize: newSizeImage })
                 }
               />,
               <PremiumSizeUnits
@@ -523,13 +493,145 @@ class edit extends Component {
               }
             />
           </PanelBody>
+          {!pagination && (
+            <PanelBody
+              title={__("Carousel")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
+              <ToggleControl
+                label={__("Enable Carousel")}
+                checked={Carousel}
+                onChange={() => setAttributes({ Carousel: !Carousel })}
+              />
+              {Carousel && (
+                <Fragment>
+                  <ToggleControl
+                    label={__("Auto Play")}
+                    checked={Autoplay}
+                    onChange={() => setAttributes({ Autoplay: !Autoplay })}
+                  />
+                  <RangeControl
+                    label={__("Slides To Scroll")}
+                    value={slideToScroll}
+                    onChange={(newSlideScroll) =>
+                      setAttributes({ slideToScroll: newSlideScroll })
+                    }
+                  />
+                  <RangeControl
+                    label={__("Autoplay Speed")}
+                    value={autoplaySpeed}
+                    onChange={(newSpeed) =>
+                      setAttributes({ autoplaySpeed: newSpeed })
+                    }
+                  />
+                  <ToggleControl
+                    label={__("Center Mode")}
+                    checked={centerMode}
+                    onChange={(centerModeValue) =>
+                      setAttributes({ centerMode: centerModeValue })
+                    }
+                  />
+                  <RangeControl
+                    label={__("Slides' Spacing")}
+                    value={slideSpacing}
+                    onChange={(slideSpacingValue) =>
+                      setAttributes({ slideSpacing: slideSpacingValue })
+                    }
+                  />
+                  <ToggleControl
+                    label={__("Navigation Dots")}
+                    checked={navigationDots}
+                    onChange={() =>
+                      setAttributes({ navigationDots: !navigationDots })
+                    }
+                  />
+                  <ToggleControl
+                    label={__("Navigation Arrows")}
+                    checked={navigationArrow}
+                    onChange={() =>
+                      setAttributes({ navigationArrow: !navigationArrow })
+                    }
+                  />
+                  {navigationArrow && (
+                    <RangeControl
+                      label={__("Arrows Position")}
+                      value={arrowPosition}
+                      onChange={(arrowPositionValue) =>
+                        setAttributes({ arrowPosition: arrowPositionValue })
+                      }
+                    />
+                  )}
+                </Fragment>
+              )}
+            </PanelBody>
+          )}
+          {!Carousel && (
+            <PanelBody
+              title={__("Pagination")}
+              className="premium-panel-body"
+              initialOpen={false}
+            >
+              <ToggleControl
+                label={__("Enable Pagination")}
+                checked={pagination}
+                onChange={() => setAttributes({ pagination: !pagination })}
+              />
+              {pagination && (
+                <Fragment>
+                  <RangeControl
+                    label={__("Page Limit")}
+                    value={pageLimit}
+                    onChange={(pageLimitValue) =>
+                      setAttributes({ pageLimit: pageLimitValue })
+                    }
+                  />
+                  <h2> {__("Alignment")}</h2>
+                  <IconButton
+                    key={"left"}
+                    icon="editor-alignleft"
+                    label="Left"
+                    onClick={() =>
+                      setAttributes({ paginationPosition: "left" })
+                    }
+                    aria-pressed={"left" === paginationPosition}
+                    isPrimary={"left" === paginationPosition}
+                  />
+                  <IconButton
+                    key={"center"}
+                    icon="editor-aligncenter"
+                    label="Right"
+                    onClick={() =>
+                      setAttributes({ paginationPosition: "center" })
+                    }
+                    aria-pressed={"center" === paginationPosition}
+                    isPrimary={"center" === paginationPosition}
+                  />
+                  <IconButton
+                    key={"right"}
+                    icon="editor-alignright"
+                    label="Right"
+                    onClick={() =>
+                      setAttributes({ paginationPosition: "right" })
+                    }
+                    aria-pressed={"right" === paginationPosition}
+                    isPrimary={"right" === paginationPosition}
+                  />
+                </Fragment>
+              )}
+            </PanelBody>
+          )}
         </InspectorControls>
       ),
-      <Blog
-        latestPosts={choices}
-        attributes={attributes}
-        categoriesList={categoriesList}
-      />,
+      latestPosts && categoriesList ? (
+        <Blog
+          latestPosts={latestPosts}
+          attributes={attributes}
+          categoriesList={categoriesList}
+        />
+      ) : (
+        <Spinner />
+      ),
     ];
   }
 }
@@ -543,7 +645,7 @@ export default withSelect((select, props) => {
     taxonomyType,
     paginationMarkup,
     postPagination,
-    excludeCurrentPost,
+    currentPost,
   } = props.attributes;
   const { setAttributes } = props;
   const { getEntityRecords } = select("core");
@@ -574,18 +676,18 @@ export default withSelect((select, props) => {
       }
     }
   }
-  let latestPostsQuery = {
-    order: order,
-    orderby: orderBy,
-    per_page: postsToShow,
-  };
-
-  if (excludeCurrentPost) {
+  // let latestPostsQuery = {
+  //   order: order,
+  //   orderby: orderBy,
+  //   per_page: postsToShow,
+  // };
+  let latestPostsQuery = {};
+  if (currentPost) {
     latestPostsQuery["exclude"] = select("core/editor").getCurrentPostId();
   }
 
   return {
-    latestPosts: getEntityRecords("postType", "post"),
+    latestPosts: getEntityRecords("postType", "post", latestPostsQuery),
     categoriesList: categoriesList,
   };
 })(edit);
