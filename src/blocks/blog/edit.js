@@ -1,5 +1,6 @@
 import PremiumSizeUnits from "../../components/premium-size-units";
 import PremiumRange from "../../components/premium-range-responsive";
+import CarouselComponent from "./Carousel";
 
 import Blog from "./blog";
 
@@ -62,15 +63,6 @@ class edit extends Component {
     ];
     const hasPosts = Array.isArray(latestPosts) && latestPosts.length;
 
-    let categoryListOptions = [{ value: "", label: __("All") }];
-    if (categoriesList) {
-      Object.keys(categoriesList).map((item, thisIndex) => {
-        return categoryListOptions.push({
-          value: categoriesList[item]["id"],
-          label: categoriesList[item]["name"],
-        });
-      });
-    }
     const {
       attributes,
       categoriesList,
@@ -155,7 +147,17 @@ class edit extends Component {
       pageLimit,
       paginationPosition,
     } = attributes;
-    console.log(attributes);
+    console.log(categoriesList);
+
+    let categoryListOptions = [{ value: "", label: __("All") }];
+    if (categoriesList) {
+      Object.keys(categoriesList).map((item, thisIndex) => {
+        return categoryListOptions.push({
+          value: categoriesList[item]["id"],
+          label: categoriesList[item]["name"],
+        });
+      });
+    }
     return [
       isSelected && (
         <InspectorControls>
@@ -238,8 +240,8 @@ class edit extends Component {
               label={__("Filter By")}
               options={[
                 { label: "Default", value: "Default" },
-                { label: "Categories", value: "Categories" },
-                { label: "Tags", value: "Tags" },
+                { label: "Categories", value: "category" },
+                { label: "Tags", value: "post_tag" },
               ]}
               value={postFilter}
               onChange={(newPostFilter) =>
@@ -249,14 +251,10 @@ class edit extends Component {
 
             {"Default" !== postFilter && (
               <SelectControl
-                label={__(`${postFilter}`)}
-                options={[
-                  { label: "Default", value: "Default" },
-                  { label: "Categories", value: "Categories" },
-                  { label: "Tags", value: "Tages" },
-                ]}
-                value={"First Category"}
-                onChange={() => console.log(categoriesList)}
+                label={taxonomyList["post_tag"]["label"]}
+                options={categoryListOptions}
+                value={categories}
+                onChange={(value) => setAttributes({ categories: value })}
               />
             )}
             <RangeControl
@@ -287,8 +285,8 @@ class edit extends Component {
             <SelectControl
               label={__("Order")}
               options={[
-                { label: "Descending", value: "Desc" },
-                { label: "Ascending", value: "Asc" },
+                { value: "desc", label: __("Descending") },
+                { value: "asc", label: __("Ascending") },
               ]}
               value={order}
               onChange={(NewOrder) => setAttributes({ order: NewOrder })}
@@ -623,6 +621,7 @@ class edit extends Component {
           )}
         </InspectorControls>
       ),
+
       latestPosts && categoriesList ? (
         <Blog
           latestPosts={latestPosts}
@@ -638,11 +637,11 @@ class edit extends Component {
 export default withSelect((select, props) => {
   const {
     categories,
-    postsToShow,
+    numOfPosts,
     order,
     orderBy,
     postType,
-    taxonomyType,
+    postFilter,
     paginationMarkup,
     postPagination,
     currentPost,
@@ -651,7 +650,7 @@ export default withSelect((select, props) => {
   const { getEntityRecords } = select("core");
 
   let allTaxonomy = uagb_blocks_info.all_taxonomy;
-  let currentTax = allTaxonomy[postType];
+  let currentTax = allTaxonomy["post"];
   let taxonomy = "";
   let categoriesList = wp.data
     .select("core")
@@ -659,35 +658,38 @@ export default withSelect((select, props) => {
   let rest_base = "";
 
   if ("undefined" != typeof currentTax) {
-    if ("undefined" != typeof currentTax["taxonomy"][taxonomyType]) {
+    if ("undefined" != typeof currentTax["taxonomy"][postFilter]) {
       rest_base =
-        currentTax["taxonomy"][taxonomyType]["rest_base"] == false ||
-        currentTax["taxonomy"][taxonomyType]["rest_base"] == null
-          ? currentTax["taxonomy"][taxonomyType]["name"]
-          : currentTax["taxonomy"][taxonomyType]["rest_base"];
+        currentTax["taxonomy"][postFilter]["rest_base"] == false ||
+        currentTax["taxonomy"][postFilter]["rest_base"] == null
+          ? currentTax["taxonomy"][postFilter]["name"]
+          : currentTax["taxonomy"][postFilter]["rest_base"];
     }
 
-    if ("" != taxonomyType) {
+    if ("" != postFilter) {
       if (
         "undefined" != typeof currentTax["terms"] &&
-        "undefined" != typeof currentTax["terms"][taxonomyType]
+        "undefined" != typeof currentTax["terms"][postFilter]
       ) {
-        categoriesList = currentTax["terms"][taxonomyType];
+        categoriesList = currentTax["terms"][postFilter];
       }
     }
   }
-  // let latestPostsQuery = {
-  //   order: order,
-  //   orderby: orderBy,
-  //   per_page: postsToShow,
-  // };
-  let latestPostsQuery = {};
+  let latestPostsQuery = {
+    order: order,
+    orderBy: orderBy,
+    per_page: numOfPosts,
+  };
+
   if (currentPost) {
     latestPostsQuery["exclude"] = select("core/editor").getCurrentPostId();
   }
+  latestPostsQuery[rest_base] = categories;
 
   return {
     latestPosts: getEntityRecords("postType", "post", latestPostsQuery),
     categoriesList: categoriesList,
+    taxonomyList:
+      "undefined" != typeof currentTax ? currentTax["taxonomy"] : [],
   };
 })(edit);

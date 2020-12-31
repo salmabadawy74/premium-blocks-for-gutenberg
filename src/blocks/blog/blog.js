@@ -1,7 +1,9 @@
 const { decodeEntities } = wp.htmlEntities;
 const { dateI18n, format, __experimentalGetSettings } = wp.date;
+
 import Meta from "./meta";
 import Iamge from "./Image";
+
 const { __ } = wp.i18n;
 let $blogElement;
 
@@ -83,8 +85,7 @@ class Blog extends React.Component {
       size,
       sizeMobile,
       sizeTablet,
-      imageSize
-
+      imageSize,
     } = attributes;
     if ("Even" === layoutValue) {
       // let equalHeight = $blogElement.data("equal");
@@ -98,12 +99,11 @@ class Blog extends React.Component {
         .querySelector(".premium-blog-content-wrapper")
         .forEach(function (index, post) {
           let height = post.outerHeight;
-          console.log(document.outerHeight);
           heights.push(height);
         });
 
       let maxHeight = Math.max.apply(null, heights);
-      console.log(heights);
+
       $blogElement.querySelector(
         ".premium-blog-content-wrapper"
       ).style.cssText = `height:${maxHeight}px`;
@@ -116,7 +116,7 @@ class Blog extends React.Component {
         : latestPosts;
     const lastDisplay = displayPosts.slice(offsetNum);
     const gridClasses = gridCheck ? "premium-blog-even" : "premium-blog-list";
-    console.log(latestPosts);
+
     return (
       <div className={`premium-blog`}>
         <div

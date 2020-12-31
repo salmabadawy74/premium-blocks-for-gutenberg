@@ -16,7 +16,7 @@ registerBlockType("premium/post-blog", {
     },
     DisplayTitle: {
       type: "boolean",
-      value: true,
+      default: true,
     },
     DisplayDate: {
       type: "boolean",
@@ -24,31 +24,31 @@ registerBlockType("premium/post-blog", {
     },
     DisplayComment: {
       type: "boolean",
-      value: true,
+      default: true,
     },
     DisplayExcert: {
       type: "boolean",
-      value: true,
+      default: true,
     },
     DisplayAuthor: {
       type: "boolean",
-      value: true,
+      default: true,
     },
     DisplayImage: {
       type: "boolean",
-      value: true,
+      default: true,
     },
     DisplayTaxonomy: {
       type: "boolean",
-      value: true,
+      default: true,
     },
     DisplayPostLink: {
       type: "boolean",
-      value: true,
+      default: true,
     },
     newTab: {
       type: "boolean",
-      value: false,
+      default: false,
     },
     borderWidth: {
       type: "number",
@@ -88,131 +88,131 @@ registerBlockType("premium/post-blog", {
     },
     gridCheck: {
       type: "boolean",
-      value: false,
+      default: false,
     },
     equalHeight: {
       type: "boolean",
-      value: false,
+      default: false,
     },
 
     numOfPosts: {
       type: "number",
-      value: 1,
+      default: 1,
     },
     numOfColumns: {
       type: "number",
-      value: "2",
+      default: "2",
     },
     offsetNum: {
       type: "number",
-      value: 0,
+      default: 0,
     },
     currentPost: {
       type: "boolean",
-      value: false,
+      default: false,
     },
     orderBy: {
       type: "string",
-      value: "Date",
+      default: "Date",
     },
     order: {
       type: "string",
-      value: "Descending",
+      default: "desc",
     },
     featuredImage: {
       type: "boolean",
-      value: false,
+      default: false,
     },
     hoverEffect: {
       type: "string",
-      value: "None",
+      default: "None",
     },
     height: {
       type: "number",
-      value: "default",
+      default: "default",
     },
     HeightU: {
       type: "string",
-      value: "px",
+      default: "px",
     },
 
     rowGapUnit: {
       type: "string",
-      value: "px",
+      default: "px",
     },
     columnGap: {
       type: "number",
     },
     postPosition: {
       type: "string",
-      value: "center",
+      default: "center",
     },
     displayPostContent: {
       type: "boolean",
-      value: false,
+      default: false,
     },
     displayPostExcerpt: {
       type: "string",
-      value: "Post Excerpt",
+      default: "Post Excerpt",
     },
     excerptType: {
       type: "string",
-      value: "Dots",
+      default: "Dots",
     },
     fullWidth: {
       type: "boolean",
-      value: false,
+      default: false,
     },
     readMoreText: {
       type: "string",
-      value: "Read More",
+      default: "Read More",
     },
     displayPostAuthor: {
       type: "boolean",
-      value: "true",
+      default: "true",
     },
     displayPostDate: {
       type: "boolean",
-      value: "true",
+      default: "true",
     },
     displayPostCategories: {
       type: "boolean",
-      value: "true",
+      default: "true",
     },
     displayPostComment: {
       type: "boolean",
-      value: "true",
+      default: "true",
     },
     displayPostTags: {
       type: "boolean",
-      value: true,
+      default: true,
     },
     filterTabs: {
       type: "boolean",
-      value: false,
+      default: false,
     },
     getTabsFrom: {
       type: "string",
-      value: "Categories",
+      default: "Categories",
     },
     tabLabel: {
       type: "string",
-      value: "All",
+      default: "All",
     },
     filterPostion: {
       type: "string",
     },
     linkNewTab: {
       type: "boolean",
-      value: false,
+      default: false,
     },
     layoutValue: {
       type: "string",
-      value: "Even",
+      default: "Even",
     },
     postFilter: {
       type: "string",
-      value: "Default",
+      default: "Default",
     },
     sizeType: {
       type: "string",
@@ -232,54 +232,57 @@ registerBlockType("premium/post-blog", {
     },
     Carousel: {
       type: "boolean",
-      value: false,
+      default: false,
     },
     Autoplay: {
       type: "boolean",
-      value: false,
+      default: false,
     },
     slideToScroll: {
       type: "number",
-      value: 0,
+      default: 0,
     },
     autoplaySpeed: {
       type: "number",
-      value: 5000,
+      default: 5000,
     },
     centerMode: {
       type: "boolean",
-      value: false,
+      default: false,
     },
     slideSpacing: {
       type: "number",
-      value: 15,
+      default: 15,
     },
     navigationDots: {
       type: "boolean",
-      value: true,
+      default: true,
     },
     navigationArrow: {
       type: "boolean",
-      value: false,
+      default: false,
     },
     arrowPosition: {
       type: "number",
-      value: 0,
+      default: 0,
     },
     pagination: {
       type: "boolean",
-      value: false,
+      default: false,
     },
     pageLimit: {
       type: "number",
-      value: 5,
+      default: 5,
     },
     paginationPosition: {
       type: "string",
     },
     imageSize: {
       type: "number",
-      value: "medium",
+      default: "medium",
+    },
+    categories: {
+      type: "string",
     },
   },
   // supports: {
