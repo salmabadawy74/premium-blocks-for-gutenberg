@@ -4,17 +4,14 @@ const { dateI18n, format, __experimentalGetSettings } = wp.date;
 import Meta from "./meta";
 import Iamge from "./Image";
 
-const { __ } = wp.i18n;
-let $blogElement;
+import { Fragment } from "react";
 
 class Blog extends React.Component {
   constructor() {
     super(...arguments);
   }
   componentDidMount() {}
-  componentDidUpdate() {
-    $blogElement = document.querySelector(".premium-blog-wrap");
-  }
+  componentDidUpdate() {}
   render() {
     const {
       attributes,
@@ -24,6 +21,7 @@ class Blog extends React.Component {
       categoriesList,
     } = this.props;
 
+    const { __ } = wp.i18n;
     const {
       blockID,
       DisplayTitle,
@@ -43,7 +41,8 @@ class Blog extends React.Component {
       hPadding,
       categories,
       rowGap,
-      columnGap,
+      imageSize,
+
       bgColor,
       contentPadding,
       contentPaddingMobile,
@@ -62,7 +61,7 @@ class Blog extends React.Component {
       HeightU,
 
       rowGapUnit,
-
+      columnGap,
       postPosition,
       displayPostContent,
       displayPostExcerpt,
@@ -77,7 +76,8 @@ class Blog extends React.Component {
       filterTabs,
       getTabsFrom,
       tabLabel,
-      filterPostion,
+      filterPosition,
+
       linkNewTab,
       layoutValue,
       postFilter,
@@ -85,8 +85,57 @@ class Blog extends React.Component {
       size,
       sizeMobile,
       sizeTablet,
-      imageSize,
+      Carousel,
+      Autoplay,
+      slideToScroll,
+      autoplaySpeed,
+      centerMode,
+      slideSpacing,
+      navigationDots,
+      navigationArrow,
+      arrowPosition,
+      pagination,
+      pageLimit,
+      overlayColor,
+      paginationPosition,
+      blur,
+      bright,
+      contrast,
+      saturation,
+      hue,
+      firstContentLetter,
+      firstContentStyle,
+      firstContentUpper,
+      firstContentWeight,
+      firstContentfontSize,
+      typoColor,
+      hoverColor,
+      firstContentfontSizeType,
+      firstContentfontSizeMobile,
+      firstContentfontSizeTablet,
+      secondContentLetter,
+      secondContentStyle,
+      secondContentUpper,
+      secondContentWeight,
+      secondContentfontSize,
+      secondContentfontSizeType,
+      secondContentfontSizeMobile,
+      secondContentfontSizeTablet,
+      metaColor,
+      linkColor,
+      sepaColor,
+
+      postContentLetter,
+      postContentStyle,
+      postContentUpper,
+      postContentWeight,
+      postContentfontSize,
+      postContentfontSizeType,
+      postContentfontSizeMobile,
+      postContentfontSizeTablet,
+      textColor,
     } = attributes;
+
     if ("Even" === layoutValue) {
       // let equalHeight = $blogElement.data("equal");
       //  forceEqualHeight();
@@ -118,65 +167,126 @@ class Blog extends React.Component {
     const gridClasses = gridCheck ? "premium-blog-even" : "premium-blog-list";
 
     return (
-      <div className={`premium-blog`}>
-        <div
-          className={`premium-blog-wrap ${gridClasses}`}
-          data-layout={layoutValue}
-          style={{ position: "relative" }}
-        >
-          {lastDisplay.map((post, i) => (
-            <div className={`premium-blog-post-outer-container`} key={i}>
-              <div
-                className={`premium-blog-post-container premium-blog-skin-modern`}
-              >
-                <Iamge post={post} attributes={attributes} />
-                <div className={`premium-blog-content-wrapper empty-thumb`}>
-                  <div className={`premium-blog-content-wrapper-inner`}>
-                    <div className={`premium-blog-inner-container`}>
-                      <div className="premium-blog-entry-container">
-                        <div className="premium-blog-entry-title">
-                          <h2>
-                            <a href={post.link}>
-                              {undefined == post.title
-                                ? post.value
-                                : decodeEntities(post.title.rendered.trim()) ||
-                                  __("(Untitled)")}
-                            </a>
-                          </h2>
-                        </div>
+      <Fragment>
+        <div className={`premium-blog`}>
+          <div
+            className={`premium-blog-wrap ${gridClasses}`}
+            data-layout={layoutValue}
+            style={{ position: "relative" }}
+          >
+            {lastDisplay.map((post, i) => (
+              <div className={`premium-blog-post-outer-container`} key={i}>
+                <div
+                  className={`premium-blog-post-container premium-blog-skin-classic`}
+                >
+                  <Iamge post={post} attributes={attributes} />
+                  <div className={`premium-blog-content-wrapper empty-thumb`}>
+                    <div className={`premium-blog-content-wrapper-inner`}>
+                      <div className={`premium-blog-inner-container`}>
+                        <div className="premium-blog-entry-container">
+                          <div className="premium-blog-entry-title">
+                            <h2>
+                              <a href={post.link}>
+                                {undefined == post.title
+                                  ? post.value
+                                  : decodeEntities(
+                                      post.title.rendered.trim()
+                                    ) || __("(Untitled)")}
+                              </a>
+                            </h2>
+                          </div>
 
-                        <div className="premium-blog-entry-meta">
-                          <Meta
-                            post={post}
-                            categoriesList={categoriesList}
-                            attributes={attributes}
-                          />
+                          <div className="premium-blog-entry-meta">
+                            <Meta
+                              post={post}
+                              categoriesList={categoriesList}
+                              attributes={attributes}
+                            />
+                          </div>
                         </div>
                       </div>
+                      <p>
+                        {undefined == post.uagb_excerpt
+                          ? post.label
+                          : decodeEntities(post.uagb_excerpt.trim()) ||
+                            __("(Untitled)")}
+                      </p>
                     </div>
-                    <p>
-                      {undefined == post.uagb_excerpt
-                        ? post.label
-                        : decodeEntities(post.uagb_excerpt.trim()) ||
-                          __("(Untitled)")}
-                    </p>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-          <style
-            dangerouslySetInnerHTML={{
-              __html: [
-                `.premium-blog-post-outer-container{`,
-                `width: ${numOfColumns ? 100 / numOfColumns : 50}%;`,
+            ))}
+            <style
+              dangerouslySetInnerHTML={{
+                __html: [
+                  `.premium-blog-post-outer-container{`,
+                  `width: ${numOfColumns ? 100 / numOfColumns : 50}%;`,
 
-                "}",
-              ].join("\n"),
-            }}
-          />
+                  ` margin-bottom: ${rowGap + rowGapUnit};`,
+                  `  padding-right: calc( ${columnGap}px/2 );`,
+                  `   padding-left: calc( ${columnGap}px/2 );`,
+
+                  "}",
+                  `.premium-blog-content-wrapper {`,
+                  `text-align:${filterPosition}`,
+
+                  "}",
+                  `.premium-blog-thumbnail-overlay{`,
+
+                  `background:${overlayColor}`,
+                  "}",
+                  `.premium-blog-post-outer-container:hover img{`,
+                  `filter: brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
+                  "}",
+                  `.premium-blog-entry-title a{`,
+                  `font-size:${firstContentfontSize}${firstContentfontSizeType};`,
+                  `font-weight:${firstContentWeight};`,
+                  `font-style:${firstContentStyle};`,
+                  `text-transform:${firstContentUpper ? "uppercase" : null} ;`,
+                  `letter-spacing:${firstContentLetter}px ;`,
+                  `color:${typoColor};`,
+                  "}",
+                  `.premium-blog-entry-title a:hover{`,
+                  `color:${hoverColor};`,
+                  "}",
+                  `.premium-blog-meta-data{`,
+                  `font-size:${secondContentfontSize}${secondContentfontSizeType};`,
+                  `font-weight:${secondContentWeight};`,
+                  `font-style:${secondContentStyle};`,
+                  `text-transform:${secondContentUpper ? "uppercase" : null} ;`,
+                  `letter-spacing:${secondContentLetter}px ;`,
+                  `color:${metaColor};`,
+                  "}",
+                  `.premium-blog-meta-data:hover{`,
+                  `color:${linkColor}`,
+                  "}",
+                  `.premium-blog-meta-separtor{`,
+                  `color:${sepaColor};`,
+                  "}",
+                  `.premium-blog-content-wrapper-inner p{`,
+                  `font-size:${postContentfontSize}${postContentfontSizeType};`,
+                  `font-weight:${postContentWeight};`,
+                  `font-style:${postContentStyle};`,
+                  `text-transform:${postContentUpper ? "uppercase" : null} ;`,
+                  `letter-spacing:${postContentLetter}px ;`,
+                  `color:${textColor};`,
+                  "}",
+                ].join("\n"),
+              }}
+            />
+          </div>
         </div>
-      </div>
+        {pagination && (
+          <div className="Premium-blog-footer">
+            <nav className="">
+              {/* <div class="pagelink"><?php wp_link_pages('pagelink=Page %'); ?></div> */}
+           {/* {   <?
+            php wp_link_pages(); 
+            ?>} */}
+            </nav>
+          </div>
+        )}
+      </Fragment>
     );
   }
 }

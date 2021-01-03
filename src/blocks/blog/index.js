@@ -1,5 +1,5 @@
 const { __ } = wp.i18n;
-
+import { Blog } from "../../../assets/js/Blog";
 import PbgIcon from "../icons";
 import edit from "./edit";
 //import save from "./save";
@@ -284,10 +284,152 @@ registerBlockType("premium/post-blog", {
     categories: {
       type: "string",
     },
+    overlayColor: {
+      type: "string",
+      default: "transparent",
+    },
+    blur: {
+      type: "number",
+      default: "0",
+    },
+    bright: {
+      type: "number",
+      default: "100",
+    },
+    contrast: {
+      type: "number",
+      default: "100",
+    },
+    saturation: {
+      type: "number",
+      default: "100",
+    },
+    hue: {
+      type: "number",
+      default: "0",
+    },
+    firstContentLetter: {
+      type: "number",
+    },
+    firstContentStyle: {
+      type: "string",
+    },
+    firstContentUpper: {
+      type: "boolean",
+      default: false,
+    },
+    firstContentWeight: {
+      type: "number",
+      default: 500,
+    },
+    firstContentfontSize: {
+      type: "number",
+      default: 15,
+    },
+    firstContentfontSizeType: {
+      type: "string",
+      default: "px",
+    },
+    firstContentfontSizeMobile: {
+      type: "number",
+      default: 15,
+    },
+    firstContentfontSizeTablet: {
+      type: "number",
+      default: 15,
+    },
+    typeColor: {
+      type: "string",
+      default: "black",
+    },
+    secondContentLetter: {
+      type: "number",
+    },
+    secondContentStyle: {
+      type: "string",
+    },
+    secondContentUpper: {
+      type: "boolean",
+      default: false,
+    },
+    secondContentWeight: {
+      type: "number",
+      default: 500,
+    },
+    secondContentfontSize: {
+      type: "number",
+      default: 15,
+    },
+    secondContentfontSizeType: {
+      type: "string",
+      default: "px",
+    },
+    secondContentfontSizeMobile: {
+      type: "number",
+      default: 15,
+    },
+    secondContentfontSizeTablet: {
+      type: "number",
+      default: 15,
+    },
+    typoColor: {
+      type: "string",
+      default: "default",
+    },
+    metaColor: {
+      type: "string",
+      default: "default",
+    },
+    linkColor: {
+      type: "string",
+      default: "default",
+    },
+    sepaColor: {
+      type: "string",
+      default: "default",
+    },
+    hoverColor: {
+      type: "string",
+      default: "default",
+    },
+    postContentLetter: {
+      type: "number",
+    },
+    postContentStyle: {
+      type: "string",
+    },
+    postContentUpper: {
+      type: "boolean",
+      default: false,
+    },
+    postContentWeight: {
+      type: "number",
+      default: 500,
+    },
+    postContentfontSize: {
+      type: "number",
+      default: 15,
+    },
+    postContentfontSizeType: {
+      type: "string",
+      default: "px",
+    },
+    postContentfontSizeMobile: {
+      type: "number",
+      default: 15,
+    },
+    postContentfontSizeTablet: {
+      type: "number",
+      default: 15,
+    },
+    textColor: {
+      type: "string",
+      default: "black",
+    },
   },
-  // supports: {
-  //   inserter: Blog,
-  // },
+  supports: {
+    inserter: Blog,
+  },
   example: {},
 
   edit: edit,

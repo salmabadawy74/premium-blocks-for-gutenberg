@@ -1,7 +1,8 @@
 import PremiumSizeUnits from "../../components/premium-size-units";
 import PremiumRange from "../../components/premium-range-responsive";
 import CarouselComponent from "./Carousel";
-
+import PremiumFilters from "../../components/premium-filters";
+import PremiumTypo from "../../components/premium-typo";
 import Blog from "./blog";
 
 const { __ } = wp.i18n;
@@ -146,8 +147,44 @@ class edit extends Component {
       pagination,
       pageLimit,
       paginationPosition,
+      overlayColor,
+      blur,
+      bright,
+      contrast,
+      saturation,
+      hue,
+      firstContentLetter,
+      firstContentStyle,
+      firstContentUpper,
+      firstContentWeight,
+      firstContentfontSize,
+      firstContentfontSizeType,
+      firstContentfontSizeMobile,
+      firstContentfontSizeTablet,
+      typeColor,
+      secondContentLetter,
+      secondContentStyle,
+      secondContentUpper,
+      secondContentWeight,
+      secondContentfontSize,
+      secondContentfontSizeType,
+      secondContentfontSizeMobile,
+      secondContentfontSizeTablet,
+      metaColor,
+      typoColor,
+      hoverColor,
+      linkColor,
+      sepaColor,
+      postContentLetter,
+      postContentStyle,
+      postContentUpper,
+      postContentWeight,
+      postContentfontSize,
+      postContentfontSizeType,
+      postContentfontSizeMobile,
+      postContentfontSizeTablet,
+      textColor,
     } = attributes;
-    console.log(categoriesList);
 
     let categoryListOptions = [{ value: "", label: __("All") }];
     if (categoriesList) {
@@ -619,6 +656,217 @@ class edit extends Component {
               )}
             </PanelBody>
           )}
+          <PanelBody
+            title={__("Image Style")}
+            className="premium-panel-body"
+            initialOpen={false}
+          >
+            <ColorPalette
+              label={__("Overlay Color")}
+              value={overlayColor}
+              onChange={(newColorOverlay) =>
+                setAttributes({ overlayColor: newColorOverlay })
+              }
+            />
+            <PremiumFilters
+              blur={blur}
+              bright={bright}
+              contrast={contrast}
+              saturation={saturation}
+              hue={hue}
+              onChangeBlur={(value) => setAttributes({ blur: value })}
+              onChangeBright={(value) => setAttributes({ bright: value })}
+              onChangeContrast={(value) => setAttributes({ contrast: value })}
+              onChangeSat={(value) => setAttributes({ saturation: value })}
+              onChangeHue={(value) => setAttributes({ hue: value })}
+            />
+          </PanelBody>
+          <PanelBody
+            title={__("Post Title Style")}
+            className="premium-panel-body"
+            initialOpen={false}
+          >
+            <PremiumTypo
+              components={[
+                "responsiveSize",
+                "weight",
+                "style",
+                "upper",
+                "spacing",
+              ]}
+              setAttributes={setAttributes}
+              fontSizeType={{
+                value: firstContentfontSizeType,
+                label: __("firstContentfontSizeType"),
+              }}
+              fontSize={{
+                value: firstContentfontSize,
+                label: __("firstContentfontSize"),
+              }}
+              fontSizeMobile={{
+                value: firstContentfontSizeMobile,
+                label: __("firstContentfontSizeMobile"),
+              }}
+              fontSizeTablet={{
+                value: firstContentfontSizeTablet,
+                label: __("firstContentfontSizeTablet"),
+              }}
+              weight={firstContentWeight}
+              style={firstContentStyle}
+              spacing={firstContentLetter}
+              upper={firstContentUpper}
+              onChangeWeight={(newWeight) =>
+                setAttributes({ firstContentWeight: newWeight || 500 })
+              }
+              onChangeStyle={(newStyle) =>
+                setAttributes({ firstContentStyle: newStyle })
+              }
+              onChangeSpacing={(newValue) =>
+                setAttributes({ firstContentLetter: newValue })
+              }
+              onChangeUpper={(check) =>
+                setAttributes({ firstContentUpper: check })
+              }
+            />
+            <ColorPalette
+              label={__("Color")}
+              value={typoColor}
+              onChange={(newTypoColor) =>
+                setAttributes({ typoColor: newTypoColor })
+              }
+            />
+            <ColorPalette
+              label={__("Hover Color")}
+              value={hoverColor}
+              onChange={(newHoverColor) =>
+                setAttributes({ hoverColor: newHoverColor })
+              }
+            />
+          </PanelBody>
+          <PanelBody
+            title={__("Metadata Style")}
+            className="premium-panel-body"
+            initialOpen={false}
+          >
+            <PremiumTypo
+              components={[
+                "responsiveSize",
+                "weight",
+                "style",
+                "upper",
+                "spacing",
+              ]}
+              setAttributes={setAttributes}
+              fontSizeType={{
+                value: secondContentfontSizeType,
+                label: __("secondContentfontSizeType"),
+              }}
+              fontSize={{
+                value: secondContentfontSize,
+                label: __("secondContentfontSize"),
+              }}
+              fontSizeMobile={{
+                value: secondContentfontSizeMobile,
+                label: __("secondContentfontSizeMobile"),
+              }}
+              fontSizeTablet={{
+                value: secondContentfontSizeTablet,
+                label: __("secondContentfontSizeTablet"),
+              }}
+              weight={secondContentWeight}
+              style={secondContentStyle}
+              spacing={secondContentLetter}
+              upper={secondContentUpper}
+              onChangeWeight={(newWeight) =>
+                setAttributes({ secondContentWeight: newWeight || 500 })
+              }
+              onChangeStyle={(newStyle) =>
+                setAttributes({ secondContentStyle: newStyle })
+              }
+              onChangeSpacing={(newValue) =>
+                setAttributes({ secondContentLetter: newValue })
+              }
+              onChangeUpper={(check) =>
+                setAttributes({ secondContentUpper: check })
+              }
+            />
+            <ColorPalette
+              label={__("Text Color")}
+              value={metaColor}
+              onChange={(newMetaColor) =>
+                setAttributes({ metaColor: newMetaColor })
+              }
+            />
+            <ColorPalette
+              label={__("Links Hover Color")}
+              value={linkColor}
+              onChange={(newLinkColor) =>
+                setAttributes({ linkColor: newLinkColor })
+              }
+            />
+            <ColorPalette
+              label={__("Separator Color")}
+              value={sepaColor}
+              onChange={(newSepaColor) =>
+                setAttributes({ sepaColor: newSepaColor })
+              }
+            />
+          </PanelBody>
+          <PanelBody
+            title={__("Post Content Style")}
+            className="premium-panel-body"
+            initialOpen={false}
+          >
+            <PremiumTypo
+              components={[
+                "responsiveSize",
+                "weight",
+                "style",
+                "upper",
+                "spacing",
+              ]}
+              setAttributes={setAttributes}
+              fontSizeType={{
+                value: postContentfontSizeType,
+                label: __("postContentfontSizeType"),
+              }}
+              fontSize={{
+                value: postContentfontSize,
+                label: __("postContentfontSize"),
+              }}
+              fontSizeMobile={{
+                value: postContentfontSizeMobile,
+                label: __("postContentfontSizeMobile"),
+              }}
+              fontSizeTablet={{
+                value: postContentfontSizeTablet,
+                label: __("postContentfontSizeTablet"),
+              }}
+              weight={postContentWeight}
+              style={postContentStyle}
+              spacing={postContentLetter}
+              upper={postContentUpper}
+              onChangeWeight={(newWeight) =>
+                setAttributes({ postContentWeight: newWeight || 500 })
+              }
+              onChangeStyle={(newStyle) =>
+                setAttributes({ postContentStyle: newStyle })
+              }
+              onChangeSpacing={(newValue) =>
+                setAttributes({ postContentLetter: newValue })
+              }
+              onChangeUpper={(check) =>
+                setAttributes({ postContentUpper: check })
+              }
+            />
+            <ColorPalette
+              label={__("Text Color")}
+              value={textColor}
+              onChange={(newTextColor) =>
+                setAttributes({ textColor: newTextColor })
+              }
+            />
+          </PanelBody>
         </InspectorControls>
       ),
 
@@ -643,7 +891,7 @@ export default withSelect((select, props) => {
     postType,
     postFilter,
     paginationMarkup,
-    postPagination,
+    pagination,
     currentPost,
   } = props.attributes;
   const { setAttributes } = props;
@@ -680,6 +928,21 @@ export default withSelect((select, props) => {
     orderBy: orderBy,
     per_page: numOfPosts,
   };
+  if (true === pagination) {
+    $.ajax({
+      url: uagb_blocks_info.ajax_url,
+      data: {
+        action: "uagb_post_pagination",
+        attributes: props.attributes,
+        nonce: uagb_blocks_info.uagb_ajax_nonce,
+      },
+      dataType: "json",
+      type: "POST",
+      success: function (data) {
+        setAttributes({ paginationMarkup: data.data });
+      },
+    });
+  }
 
   if (currentPost) {
     latestPostsQuery["exclude"] = select("core/editor").getCurrentPostId();

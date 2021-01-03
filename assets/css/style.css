@@ -1926,10 +1926,10 @@ a.premium-dheading-block__link:hover {
 }
 
 .premium-blog-thumb-effect-wrapper:hover .premium-blog-thumbnail-overlay {
-  opacity: 1;
+  opacity: 0.4;
 }
 .premium-blog-thumb-effect-wrapper:hover .premium-blog-thumbnail-overlay a {
-  opacity: 1;
+  opacity: 0.4;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);

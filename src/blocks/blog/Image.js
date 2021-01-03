@@ -29,6 +29,7 @@ class Image extends React.Component {
             <a href={post.link} target={target} rel="noopener noreferrer" />
           </div>
         </div>
+        
       );
     } else {
       return null;
