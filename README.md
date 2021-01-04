@@ -5,8 +5,8 @@
 **Tags:** gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks
 **Requires at least:** 4.5
 **Requires PHP:** 5.4
-**Stable tag:** 1.7.9
-**Tested up to:** 5.3.2
+**Stable tag:** 1.8.2
+**Tested up to:** 5.6
 **License:** GPL v3.0
 **License URI:** https://opensource.org/licenses/GPL-3.0
 
@@ -62,6 +62,14 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 ## Changelog
+
+### 1.8.2
+
+-   Tweak: Container Box Shadow CSS selector changed in Banner block.
+
+### 1.8.1
+
+-   Fixed: Compatibility issues with WordPress 5.6. 
 
 ### 1.7.9
 
