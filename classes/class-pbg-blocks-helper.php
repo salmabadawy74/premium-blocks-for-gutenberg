@@ -325,10 +325,10 @@ class PBG_Blocks_Helper {
 		
 			
 		}
-		if( $is_scroll_enabled ) {
+		if( $is_blog_enabled ) {
             wp_enqueue_script(
-                'blog-js',
-                PREMIUM_BLOCKS_URL . 'assets/js/blog.js',
+                'Blog-js',
+                PREMIUM_BLOCKS_URL . 'assets/js/Blog.js',
 				array('jquery'),
                 PREMIUM_BLOCKS_VERSION
 			);
@@ -345,7 +345,16 @@ class PBG_Blocks_Helper {
                     'https://maps.googleapis.com/maps/api/js?key=' . $api_key
                 );
             }
-        }
+		}
+		wp_localize_script(
+            'pbg-editor',
+            'PremiumSettings',
+            array(
+                'ajaxurl'   => esc_url( admin_url( 'admin-ajax.php' ) ),
+                'nonce'     => wp_create_nonce( 'pa-blog-block-nonce' ),
+            )
+        );
+
         
     }
     

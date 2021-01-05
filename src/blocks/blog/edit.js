@@ -4,11 +4,14 @@ import CarouselComponent from "./Carousel";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumTypo from "../../components/premium-typo";
 import Blog from "./blog";
+import { set } from "lodash";
+import PremiumBorder from "./../../components/premium-border";
+import PremiumPadding from "./../../components/premium-padding";
 
 const { __ } = wp.i18n;
 
 const { Component, Fragment } = wp.element;
-
+alert("OK");
 const {
   PanelBody,
   Placeholder,
@@ -74,14 +77,7 @@ class edit extends Component {
     } = this.props;
     const {
       blockID,
-      DisplayTitle,
-      DisplayDate,
-      DisplayComment,
-      DisplayExcert,
-      DisplayAuthor,
-      DisplayImage,
-      DisplayTaxonomy,
-      DisplayPostLink,
+
       newTab,
       borderWidth,
       ctaText,
@@ -184,6 +180,12 @@ class edit extends Component {
       postContentfontSizeMobile,
       postContentfontSizeTablet,
       textColor,
+      tagColor,
+      hoverTag,
+      buttonColor,
+      buttonhover,
+      buttonBackground,
+      hoverBackground,
     } = attributes;
 
     let categoryListOptions = [{ value: "", label: __("All") }];
@@ -812,62 +814,121 @@ class edit extends Component {
               }
             />
           </PanelBody>
-          <PanelBody
-            title={__("Post Content Style")}
-            className="premium-panel-body"
-            initialOpen={false}
-          >
-            <PremiumTypo
-              components={[
-                "responsiveSize",
-                "weight",
-                "style",
-                "upper",
-                "spacing",
-              ]}
-              setAttributes={setAttributes}
-              fontSizeType={{
-                value: postContentfontSizeType,
-                label: __("postContentfontSizeType"),
-              }}
-              fontSize={{
-                value: postContentfontSize,
-                label: __("postContentfontSize"),
-              }}
-              fontSizeMobile={{
-                value: postContentfontSizeMobile,
-                label: __("postContentfontSizeMobile"),
-              }}
-              fontSizeTablet={{
-                value: postContentfontSizeTablet,
-                label: __("postContentfontSizeTablet"),
-              }}
-              weight={postContentWeight}
-              style={postContentStyle}
-              spacing={postContentLetter}
-              upper={postContentUpper}
-              onChangeWeight={(newWeight) =>
-                setAttributes({ postContentWeight: newWeight || 500 })
-              }
-              onChangeStyle={(newStyle) =>
-                setAttributes({ postContentStyle: newStyle })
-              }
-              onChangeSpacing={(newValue) =>
-                setAttributes({ postContentLetter: newValue })
-              }
-              onChangeUpper={(check) =>
-                setAttributes({ postContentUpper: check })
-              }
-            />
-            <ColorPalette
-              label={__("Text Color")}
-              value={textColor}
-              onChange={(newTextColor) =>
-                setAttributes({ textColor: newTextColor })
-              }
-            />
-          </PanelBody>
         </InspectorControls>
+        //     // <PanelBody
+        //   title={__("Post Content Style")}
+        //   className="premium-panel-body"
+        //   initialOpen={false}
+        // >
+        //   <PremiumTypo
+        //     components={[
+        //       "responsiveSize",
+        //       "weight",
+        //       "style",
+        //       "upper",
+        //       "spacing",
+        //     ]}
+        //     setAttributes={setAttributes}
+        //     fontSizeType={{
+        //       value: postContentfontSizeType,
+        //       label: __("postContentfontSizeType"),
+        //     }}
+        //     fontSize={{
+        //       value: postContentfontSize,
+        //       label: __("postContentfontSize"),
+        //     }}
+        //     fontSizeMobile={{
+        //       value: postContentfontSizeMobile,
+        //       label: __("postContentfontSizeMobile"),
+        //     }}
+        //     fontSizeTablet={{
+        //       value: postContentfontSizeTablet,
+        //       label: __("postContentfontSizeTablet"),
+        //     }}
+        //     weight={postContentWeight}
+        //     style={postContentStyle}
+        //     spacing={postContentLetter}
+        //     upper={postContentUpper}
+        //     onChangeWeight={(newWeight) =>
+        //       setAttributes({ postContentWeight: newWeight || 500 })
+        //     }
+        //     onChangeStyle={(newStyle) =>
+        //       setAttributes({ postContentStyle: newStyle })
+        //     }
+        //     onChangeSpacing={(newValue) =>
+        //       setAttributes({ postContentLetter: newValue })
+        //     }
+        //     onChangeUpper={(check) =>
+        //       setAttributes({ postContentUpper: check })
+        //     }
+        //   />
+        //   <ColorPalette
+        //     label={__("Text Color")}
+        //     value={textColor}
+        //     onChange={(newTextColor) =>
+        //       setAttributes({ textColor: newTextColor })
+        //     }
+        //   />
+        // </PanelBody>
+        // <PanelBody
+        //   title={__("Tags Style")}
+        //   className="premium-panel-body"
+        //   initialOpen={false}
+        // >
+        //   <PremiumTypo />
+        //   <ColorPalette
+        //     label={__("Tag Color")}
+        //     value={tagColor}
+        //     onChange={(newtagColor) =>
+        //       setAttributes({ tagColor: newtagColor })
+        //     }
+        //   />
+        //   <ColorPalette
+        //     label={__("Hover Color")}
+        //     value={hoverTag}
+        //     onChange={(newHoverTag) =>
+        //       setAttributes({ hoverColor: newHoverTag })
+        //     }
+        //   />
+        // </PanelBody>
+        // <PanelBody
+        //   title={__("Button Style ")}
+        //   className="premium-panel-body"
+        //   initialOpen={false}
+        // >
+        //   <PremiumTypo />
+        //   <PremiumRange />
+        //   <ColorPalette
+        //     label={__("Color")}
+        //     value={buttonColor}
+        //     onChange={(newButtonColor) =>
+        //       setAttributes({ buttonColor: newButtonColor })
+        //     }
+        //   />
+        //   <ColorPalette
+        //     label={__("Hover Color")}
+        //     value={buttonhover}
+        //     onChange={(newButtonHover) =>
+        //       setAttributes({ buttonhover: newButtonHover })
+        //     }
+        //   />
+        //   <ColorPalette
+        //     label={__("Background Color")}
+        //     value={buttonBackground}
+        //     onChange={(newBackground) =>
+        //       setAttributes({ buttonBackground: newBackground })
+        //     }
+        //   />
+        //   <ColorPalette
+        //     label={__("Hover Background Color")}
+        //     value={hoverBackground}
+        //     onChange={(newhoverBackground) =>
+        //       setAttributes({ hoverBackground: newhoverBackground })
+        //     }
+        //   />
+        //   <PremiumBorder />
+        //   <PremiumPadding />
+        // </PanelBody>
       ),
 
       latestPosts && categoriesList ? (
@@ -875,6 +936,7 @@ class edit extends Component {
           latestPosts={latestPosts}
           attributes={attributes}
           categoriesList={categoriesList}
+          setAttributes={setAttributes}
         />
       ) : (
         <Spinner />
@@ -926,23 +988,22 @@ export default withSelect((select, props) => {
   let latestPostsQuery = {
     order: order,
     orderBy: orderBy,
-    per_page: numOfPosts,
   };
-  if (true === pagination) {
-    $.ajax({
-      url: uagb_blocks_info.ajax_url,
-      data: {
-        action: "uagb_post_pagination",
-        attributes: props.attributes,
-        nonce: uagb_blocks_info.uagb_ajax_nonce,
-      },
-      dataType: "json",
-      type: "POST",
-      success: function (data) {
-        setAttributes({ paginationMarkup: data.data });
-      },
-    });
-  }
+  // if (true === pagination) {
+  //   $.ajax({
+  //     url: PremiumSettings.ajaxurl,
+  //     data: {
+  //       action: "uagb_post_pagination",
+  //       attributes: props.attributes,
+  //       nonce: PremiumSettings.nonce,
+  //     },
+  //     dataType: "json",
+  //     type: "POST",
+  //     success: function (data) {
+  //       console.log("PAgination Done");
+  //     },
+  //   });
+  // }
 
   if (currentPost) {
     latestPostsQuery["exclude"] = select("core/editor").getCurrentPostId();

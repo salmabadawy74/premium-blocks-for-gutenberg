@@ -1,17 +1,35 @@
 const { decodeEntities } = wp.htmlEntities;
 const { dateI18n, format, __experimentalGetSettings } = wp.date;
+import ReactPaginate from "react-paginate";
 
 import Meta from "./meta";
 import Iamge from "./Image";
 
 import { Fragment } from "react";
-
+let $blogElement, $blogPost, layout;
 class Blog extends React.Component {
   constructor() {
     super(...arguments);
   }
-  componentDidMount() {}
-  componentDidUpdate() {}
+  componentDidMount() {
+    setTimeout(() => {
+      $blogElement = document.querySelectorAll(".premium-blog-wrap");
+      $blogPost = $blogElement.querySelector(
+        ".premium-blog-post-outer-container"
+      );
+      layout = $blogElement.dataset.layout;
+    }, 2000);
+  }
+  componentDidUpdate() {
+    setTimeout(() => {
+      $blogElement = document.querySelector(".premium-blog-wrap");
+      $blogPost = $blogElement.querySelector(
+        ".premium-blog-post-outer-container"
+      );
+      layout = $blogElement.dataset.layout;
+    }, 2000);
+  }
+
   render() {
     const {
       attributes,
@@ -19,6 +37,7 @@ class Blog extends React.Component {
       latestPosts,
       block_id,
       categoriesList,
+      setAttributes,
     } = this.props;
 
     const { __ } = wp.i18n;
@@ -134,38 +153,63 @@ class Blog extends React.Component {
       postContentfontSizeMobile,
       postContentfontSizeTablet,
       textColor,
+      currentPage,
+      pageCount,
     } = attributes;
+    console.log(latestPosts);
 
-    if ("Even" === layoutValue) {
-      // let equalHeight = $blogElement.data("equal");
-      //  forceEqualHeight();
+    if ("Even" === layout) {
+      forceEqualHeight();
     }
     function forceEqualHeight() {
-      $blogElement = document.querySelector(".premium-blog-wrap");
       let heights = [];
+      alert("Force");
 
-      $blogElement
-        .querySelector(".premium-blog-content-wrapper")
-        .forEach(function (index, post) {
-          let height = post.outerHeight;
-          heights.push(height);
-        });
-
-      let maxHeight = Math.max.apply(null, heights);
-
-      $blogElement.querySelector(
+      const Wrappers = $blogElement.querySelectorAll(
         ".premium-blog-content-wrapper"
-      ).style.cssText = `height:${maxHeight}px`;
-    }
+      );
+      Wrappers.forEach((Wrapper) => {
+        let height = Wrapper.offsetHeight;
+        heights.push(height);
+        console.log(heights);
+        let maxHeight = Math.max.apply(null, heights);
+        Wrapper.style.cssText = `height:${maxHeight}px`;
+      });
 
+      // $blogElement.forEach((index, blog) => {
+      //   let Wrapper = blog.querySelector(".premium-blog-content-wrapper");
+      //   let height = Wrapper.clientHeight;
+      //   heights.push(height);
+      //   console.log(heights);
+      // });
+
+      // $blogElement.querySelector(
+      //   ".premium-blog-content-wrapper"
+      // ).style.cssText = `height:${maxHeight}px`;
+    }
+    let lastDisplay;
     // Removing posts from display should be instant.
+
     const displayPosts =
       latestPosts.length > numOfPosts
         ? latestPosts.slice(0, numOfPosts)
         : latestPosts;
-    const lastDisplay = displayPosts.slice(offsetNum);
+    lastDisplay = displayPosts.slice(offsetNum);
     const gridClasses = gridCheck ? "premium-blog-even" : "premium-blog-list";
+    function handlePageClick(selectedPage) {
+      setAttributes({ currentPage: selectedPage.selected });
+    }
 
+    if (pagination) {
+      const PER_PAGE = numOfPosts;
+      const offset = currentPage * PER_PAGE;
+      lastDisplay = latestPosts.slice(offset, offset + PER_PAGE);
+      console.log(lastDisplay, displayPosts, latestPosts);
+      console.log(offset);
+      const pageCounts = Math.ceil(latestPosts.length / PER_PAGE);
+      setAttributes({ pageCount: pageCounts });
+    }
+    console.log(lastDisplay);
     return (
       <Fragment>
         <div className={`premium-blog`}>
@@ -278,12 +322,17 @@ class Blog extends React.Component {
         </div>
         {pagination && (
           <div className="Premium-blog-footer">
-            <nav className="">
-              {/* <div class="pagelink"><?php wp_link_pages('pagelink=Page %'); ?></div> */}
-           {/* {   <?
-            php wp_link_pages(); 
-            ?>} */}
-            </nav>
+            <ReactPaginate
+              previousLabel={"← Previous"}
+              nextLabel={"Next →"}
+              pageCount={pageCount}
+              onPageChange={handlePageClick}
+              containerClassName={"pagination"}
+              previousLinkClassName={"pagination__link"}
+              nextLinkClassName={"pagination__link"}
+              disabledClassName={"pagination__link--disabled"}
+              activeClassName={"pagination__link--active"}
+            />
           </div>
         )}
       </Fragment>

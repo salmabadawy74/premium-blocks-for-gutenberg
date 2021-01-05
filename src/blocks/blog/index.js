@@ -2,6 +2,7 @@ const { __ } = wp.i18n;
 import { Blog } from "../../../assets/js/Blog";
 import PbgIcon from "../icons";
 import edit from "./edit";
+
 //import save from "./save";
 
 const { registerBlockType } = wp.blocks;
@@ -73,6 +74,7 @@ registerBlockType("premium/post-blog", {
     },
     rowGap: {
       type: "number",
+      default: 16,
     },
     columnGap: {
       type: "number",
@@ -142,6 +144,7 @@ registerBlockType("premium/post-blog", {
     },
     columnGap: {
       type: "number",
+      default: 16,
     },
     postPosition: {
       type: "string",
@@ -425,6 +428,34 @@ registerBlockType("premium/post-blog", {
     textColor: {
       type: "string",
       default: "black",
+    },
+    tagColor: {
+      type: "string",
+      default: "default",
+    },
+    hoverColor: {
+      type: "string",
+      default: "default",
+    },
+    buttonColor: {
+      type: "string",
+      default: "default",
+    },
+    buttonhover: {
+      type: "string",
+      default: "default",
+    },
+    buttonBackground: {
+      type: "string",
+      default: "default",
+    },
+    hoverBackground: {
+      type: "string",
+      default: "default",
+    },
+    currentPage: {
+      type: "number",
+      default: 0,
     },
   },
   supports: {

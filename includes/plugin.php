@@ -56,6 +56,8 @@ if( ! class_exists( 'PBG_Plugin' ) ) {
             
             require_once ( PREMIUM_BLOCKS_PATH . 'admin/settings/elements.php' );
             require_once ( PREMIUM_BLOCKS_PATH . 'admin/settings/assets.php');
+         
+
             
             if( is_admin() ) {
                 require_once ( PREMIUM_BLOCKS_PATH . 'admin/reports/deps/data.php' );
@@ -67,6 +69,7 @@ if( ! class_exists( 'PBG_Plugin' ) ) {
             }
             
             require_once ( PREMIUM_BLOCKS_PATH . 'classes/class-pbg-blocks-helper.php' );
+        //    require_once (PREMIUM_BLOCKS_PATH . './post2.php');
         }
         
         /**
