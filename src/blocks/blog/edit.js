@@ -7,6 +7,9 @@ import Blog from "./blog";
 import { set } from "lodash";
 import PremiumBorder from "./../../components/premium-border";
 import PremiumPadding from "./../../components/premium-padding";
+import styling from "./styling";
+import Masonry from "./Masonry";
+import PremiumMarginR from "../../components/premium-margin-responsive";
 
 const { __ } = wp.i18n;
 
@@ -41,7 +44,14 @@ class edit extends Component {
   constructor() {
     super(...arguments);
   }
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.setAttributes({ blockID: this.props.clientId });
+    this.props.setAttributes({ classMigrate: true });
+    const $style = document.createElement("style");
+    $style.setAttribute("id", "premium-post-style-" + this.props.clientId);
+    document.head.appendChild($style);
+  }
+
   render() {
     const orderSelect = [
       { label: "None", value: "None" },
@@ -56,14 +66,14 @@ class edit extends Component {
     ];
     const hoverEffects = [
       { label: "None", value: "None" },
-      { label: "Zoom in", value: "Zoom in " },
-      { label: "Zoom out", value: "Zoom out" },
-      { label: "Scale", value: "Scale" },
-      { label: "GrayScale", value: "GrayScale" },
-      { label: "Blur", value: "Blur" },
-      { label: "Bright", value: "Bright" },
-      { label: "Sepia", value: "Sepia" },
-      { label: "Translate", value: "Translate" },
+      { label: "Zoom in", value: "zoomin" },
+      { label: "Zoom out", value: "zoomout" },
+      { label: "Scale", value: "scale" },
+      { label: "GrayScale", value: "gray" },
+      { label: "Blur", value: "blur" },
+      { label: "Bright", value: "bright" },
+      { label: "Sepia", value: "sepia" },
+      { label: "Translate", value: "trans" },
     ];
     const hasPosts = Array.isArray(latestPosts) && latestPosts.length;
 
@@ -186,6 +196,15 @@ class edit extends Component {
       buttonhover,
       buttonBackground,
       hoverBackground,
+      marginTopType,
+      marginTop,
+      marginTopMobile,
+      marginTopTablet,
+      marginBottomType,
+      marginBottomMobile,
+      marginBottomTablet,
+      marginBottom,
+      Posts,
     } = attributes;
 
     let categoryListOptions = [{ value: "", label: __("All") }];
@@ -196,6 +215,13 @@ class edit extends Component {
           label: categoriesList[item]["name"],
         });
       });
+    }
+    let element = document.getElementById(
+      "premium-post-style-" + this.props.clientId
+    );
+
+    if (null != element) {
+      element.innerHTML = styling(this.props);
     }
     return [
       isSelected && (
@@ -210,56 +236,55 @@ class edit extends Component {
               checked={gridCheck}
               onChange={(newCheck) => setAttributes({ gridCheck: newCheck })}
             />
-            {
-              gridCheck && [
-                <SelectControl
-                  label={__("Layout")}
-                  options={[
-                    { label: "Even", value: "Even" },
-                    {
-                      label: "Masonry",
-                      value: "Masonry",
-                    },
-                  ]}
-                  value={layoutValue}
-                  onChange={(newLayout) =>
-                    setAttributes({ layoutValue: newLayout })
-                  }
-                />,
+            {gridCheck && [
+              <SelectControl
+                label={__("Layout")}
+                options={[
+                  { label: "Even", value: "Even" },
+                  {
+                    label: "Masonry",
+                    value: "Masonry",
+                  },
+                ]}
+                value={layoutValue}
+                onChange={(newLayout) =>
+                  setAttributes({ layoutValue: newLayout })
+                }
+              />,
 
-                <SelectControl
-                  label={__("Number of Columns")}
-                  value={numOfColumns}
-                  options={[
-                    { label: "2 Columns", value: 2 },
-                    { label: "3 Columns", value: 3 },
-                    { label: "4 Columns", value: 4 },
-                    { label: "5 Columns", value: 5 },
-                    { label: "6 Columns", value: 6 },
-                  ]}
-                  onChange={(newNumberofCol) =>
-                    setAttributes({ numOfColumns: newNumberofCol })
-                  }
-                />,
-              ]
+              <SelectControl
+                label={__("Number of Columns")}
+                value={numOfColumns}
+                options={[
+                  { label: "2 Columns", value: 2 },
+                  { label: "3 Columns", value: 3 },
+                  { label: "4 Columns", value: 4 },
+                  { label: "5 Columns", value: 5 },
+                  { label: "6 Columns", value: 6 },
+                ]}
+                onChange={(newNumberofCol) =>
+                  setAttributes({ numOfColumns: newNumberofCol })
+                }
+              />,
+
               // <PremiumRange
               //   setAttributes={setAttributes}
               //   rangeType={{
               //     value: sizeType,
-              //     label: __("switchSizeType"),
+              //     label: __("NumberOfColumnsType"),
               //   }}
-              //   range={{ value: size, label: __("switchSize") }}
+              //   range={{ value: size, label: __("Number Of Columns") }}
               //   rangeMobile={{
               //     value: sizeMobile,
-              //     label: __("switchSizeMobile"),
+              //     label: __("NumberOfColumnsMobile"),
               //   }}
               //   rangeTablet={{
               //     value: sizeTablet,
-              //     label: __("switchSizeTablet"),
+              //     label: __("NumberOfColumnsTablet"),
               //   }}
               //   rangeLabel={__("Number of Columns")}
-              // />
-            }
+              // />,
+            ]}
 
             <RangeControl
               label={__("Number of Posts Per Page")}
@@ -290,7 +315,7 @@ class edit extends Component {
 
             {"Default" !== postFilter && (
               <SelectControl
-                label={taxonomyList["post_tag"]["label"]}
+                label={taxonomyList[postFilter]["label"]}
                 options={categoryListOptions}
                 value={categories}
                 onChange={(value) => setAttributes({ categories: value })}
@@ -384,7 +409,7 @@ class edit extends Component {
                 label={__("Height")}
                 value={height}
                 onChange={(newHeight) => setAttributes({ height: newHeight })}
-                max={HeightU === "em" ? 50 : 800}
+                max={HeightU === "em" ? 60 : 800}
               />,
             ]}
           </PanelBody>
@@ -744,6 +769,23 @@ class edit extends Component {
                 setAttributes({ hoverColor: newHoverColor })
               }
             />
+            <PremiumMarginR
+              directions={["bottom"]}
+              setAttributes={setAttributes}
+              marginBottomType={{
+                value: marginBottomType,
+                label: __("marginBottomType"),
+              }}
+              marginBottom={{ value: marginBottom, label: __("marginBottom") }}
+              marginBottomMobile={{
+                value: marginBottomMobile,
+                label: __("marginBottomMobile"),
+              }}
+              marginBottomTablet={{
+                value: marginBottomTablet,
+                label: __("marginBottomTablet"),
+              }}
+            />
           </PanelBody>
           <PanelBody
             title={__("Metadata Style")}
@@ -932,7 +974,7 @@ class edit extends Component {
       ),
 
       latestPosts && categoriesList ? (
-        <Blog
+        <Masonry
           latestPosts={latestPosts}
           attributes={attributes}
           categoriesList={categoriesList}

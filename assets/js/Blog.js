@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
   setTimeout(() => {
-    alert("Hi");
+    
     var $blogElement = $(".premium-blog-wrap"),
       $blogPost = $blogElement.find(".premium-blog-post-outer-container"),
       carousel = $blogElement.data("carousel"),
@@ -27,7 +27,7 @@ jQuery(document).ready(function ($) {
     }
 
     if (carousel) {
-      alert("HeLLO");
+    
       var autoPlay = $blogElement.data("play"),
         speed = $blogElement.data("speed"),
         fade = $blogElement.data("fade"),

@@ -1,3 +1,4 @@
+import Masonry from "react-masonry-component";
 const { decodeEntities } = wp.htmlEntities;
 const { dateI18n, format, __experimentalGetSettings } = wp.date;
 import ReactPaginate from "react-paginate";
@@ -6,31 +7,14 @@ import Meta from "./meta";
 import Iamge from "./Image";
 
 import { Fragment } from "react";
-let $blogElement, $blogPost, layout;
-class Blog extends React.Component {
+
+class MasonryClass extends React.Component {
   constructor() {
     super(...arguments);
   }
-  componentDidMount() {
-    setTimeout(() => {
-      $blogElement = document.querySelectorAll(".premium-blog-wrap");
-      $blogPost = $blogElement.querySelector(
-        ".premium-blog-post-outer-container"
-      );
-      layout = $blogElement.dataset.layout;
-    }, 2000);
-  }
-  componentDidUpdate() {
-    setTimeout(() => {
-      $blogElement = document.querySelector(".premium-blog-wrap");
-      $blogPost = $blogElement.querySelector(
-        ".premium-blog-post-outer-container"
-      );
-      layout = $blogElement.dataset.layout;
-    }, 2000);
-  }
 
   render() {
+    console.log(latestPosts);
     const {
       attributes,
       className,
@@ -156,25 +140,7 @@ class Blog extends React.Component {
       currentPage,
       pageCount,
     } = attributes;
-    console.log(latestPosts);
 
-    if ("Even" === layout) {
-      forceEqualHeight();
-    }
-    function forceEqualHeight() {
-      let heights = [];
-
-      const Wrappers = $blogElement.querySelectorAll(
-        ".premium-blog-content-wrapper"
-      );
-      Wrappers.forEach((Wrapper) => {
-        let height = Wrapper.offsetHeight;
-        heights.push(height);
-        console.log(heights);
-        let maxHeight = Math.max.apply(null, heights);
-        Wrapper.style.cssText = `height:${maxHeight}px`;
-      });
-    }
     let lastDisplay;
     // Removing posts from display should be instant.
 
@@ -200,14 +166,13 @@ class Blog extends React.Component {
     console.log(lastDisplay);
     return (
       <Fragment>
-        <div className={`premium-blog`}>
-          <div
-            className={`premium-blog-wrap ${gridClasses}`}
-            data-layout={layoutValue}
-            style={{ position: "relative" }}
-          >
+        <div className={`premium-blog`} id={`premium-blog-${blockID}`}>
+          <Masonry>
             {lastDisplay.map((post, i) => (
-              <div className={`premium-blog-post-outer-container`} key={i}>
+              <div
+                className={`premium-blog-post-outer-container${i} premium-blog-post-outer-container`}
+                key={i}
+              >
                 <div
                   className={`premium-blog-post-container premium-blog-skin-classic`}
                 >
@@ -237,77 +202,84 @@ class Blog extends React.Component {
                           </div>
                         </div>
                       </div>
-                      <p>
-                        {undefined == post.uagb_excerpt
-                          ? post.label
-                          : decodeEntities(post.uagb_excerpt.trim()) ||
-                            __("(Untitled)")}
-                      </p>
+
+                      {displayPostContent && (
+                        <p>
+                          {undefined == post.uagb_excerpt
+                            ? post.label
+                            : decodeEntities(post.uagb_excerpt.trim()) ||
+                              __("(Untitled)")}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
             ))}
-            <style
-              dangerouslySetInnerHTML={{
-                __html: [
-                  `.premium-blog-post-outer-container{`,
-                  `width: ${numOfColumns ? 100 / numOfColumns : 50}%;`,
+          </Masonry>
+          <style
+            dangerouslySetInnerHTML={{
+              __html: [
+                `.premium-blog-post-container  {`,
+                ` background-color: #f5f5f5;`,
+                " }",
+                `.premium-blog-post-outer-container{`,
+                `width: ${numOfColumns ? 100 / numOfColumns : 50}%;`,
 
-                  ` margin-bottom: ${rowGap + rowGapUnit};`,
-                  `  padding-right: calc( ${columnGap}px/2 );`,
-                  `   padding-left: calc( ${columnGap}px/2 );`,
+                ` margin-bottom: ${rowGap + rowGapUnit};`,
+                `  padding-right: calc( ${columnGap}px/2 );`,
+                `   padding-left: calc( ${columnGap}px/2 );`,
 
-                  "}",
-                  `.premium-blog-content-wrapper {`,
-                  `text-align:${filterPosition}`,
+                "}",
+                `.premium-blog-content-wrapper {`,
+                `text-align:${filterPosition}`,
 
-                  "}",
-                  `.premium-blog-thumbnail-overlay{`,
+                "}",
+                `.premium-blog-thumbnail-overlay{`,
 
-                  `background:${overlayColor}`,
-                  "}",
-                  `.premium-blog-post-outer-container:hover img{`,
-                  `filter: brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
-                  "}",
-                  `.premium-blog-entry-title a{`,
-                  `font-size:${firstContentfontSize}${firstContentfontSizeType};`,
-                  `font-weight:${firstContentWeight};`,
-                  `font-style:${firstContentStyle};`,
-                  `text-transform:${firstContentUpper ? "uppercase" : null} ;`,
-                  `letter-spacing:${firstContentLetter}px ;`,
-                  `color:${typoColor};`,
-                  "}",
-                  `.premium-blog-entry-title a:hover{`,
-                  `color:${hoverColor};`,
-                  "}",
-                  `.premium-blog-meta-data{`,
-                  `font-size:${secondContentfontSize}${secondContentfontSizeType};`,
-                  `font-weight:${secondContentWeight};`,
-                  `font-style:${secondContentStyle};`,
-                  `text-transform:${secondContentUpper ? "uppercase" : null} ;`,
-                  `letter-spacing:${secondContentLetter}px ;`,
-                  `color:${metaColor};`,
-                  "}",
-                  `.premium-blog-meta-data:hover{`,
-                  `color:${linkColor}`,
-                  "}",
-                  `.premium-blog-meta-separtor{`,
-                  `color:${sepaColor};`,
-                  "}",
-                  `.premium-blog-content-wrapper-inner p{`,
-                  `font-size:${postContentfontSize}${postContentfontSizeType};`,
-                  `font-weight:${postContentWeight};`,
-                  `font-style:${postContentStyle};`,
-                  `text-transform:${postContentUpper ? "uppercase" : null} ;`,
-                  `letter-spacing:${postContentLetter}px ;`,
-                  `color:${textColor};`,
-                  "}",
-                ].join("\n"),
-              }}
-            />
-          </div>
+                `background:${overlayColor}`,
+                "}",
+                `.premium-blog-post-outer-container:hover img{`,
+                `filter: brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
+                "}",
+                `.premium-blog-entry-title a{`,
+                `font-size:${firstContentfontSize}${firstContentfontSizeType};`,
+                `font-weight:${firstContentWeight};`,
+                `font-style:${firstContentStyle};`,
+                `text-transform:${firstContentUpper ? "uppercase" : null} ;`,
+                `letter-spacing:${firstContentLetter}px ;`,
+                `color:${typoColor};`,
+                "}",
+                `.premium-blog-entry-title a:hover{`,
+                `color:${hoverColor};`,
+                "}",
+                `.premium-blog-meta-data{`,
+                `font-size:${secondContentfontSize}${secondContentfontSizeType};`,
+                `font-weight:${secondContentWeight};`,
+                `font-style:${secondContentStyle};`,
+                `text-transform:${secondContentUpper ? "uppercase" : null} ;`,
+                `letter-spacing:${secondContentLetter}px ;`,
+                `color:${metaColor};`,
+                "}",
+                `.premium-blog-meta-data:hover{`,
+                `color:${linkColor}`,
+                "}",
+                `.premium-blog-meta-separtor{`,
+                `color:${sepaColor};`,
+                "}",
+                `.premium-blog-content-wrapper-inner p{`,
+                `font-size:${postContentfontSize}${postContentfontSizeType};`,
+                `font-weight:${postContentWeight};`,
+                `font-style:${postContentStyle};`,
+                `text-transform:${postContentUpper ? "uppercase" : null} ;`,
+                `letter-spacing:${postContentLetter}px ;`,
+                `color:${textColor};`,
+                "}",
+              ].join("\n"),
+            }}
+          />
         </div>
+
         {pagination && (
           <div className="Premium-blog-footer">
             <ReactPaginate
@@ -327,4 +299,4 @@ class Blog extends React.Component {
     );
   }
 }
-export default Blog;
+export default MasonryClass;

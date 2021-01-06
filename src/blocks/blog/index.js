@@ -457,6 +457,10 @@ registerBlockType("premium/post-blog", {
       type: "number",
       default: 0,
     },
+    classMigrate: {
+      type: "boolean",
+      default: false,
+    },
   },
   supports: {
     inserter: Blog,
