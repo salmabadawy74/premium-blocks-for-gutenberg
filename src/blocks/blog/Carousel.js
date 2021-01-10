@@ -3,17 +3,15 @@ const { dateI18n, format, __experimentalGetSettings } = wp.date;
 import Slider from "react-slick";
 
 import Meta from "./meta";
-import Iamge from "./Image";
-import { Fragment } from "react";
-const { __ } = wp.i18n;
 
+import Excerpt from "./Excerpt";
+import Button from "./Button";
+import Image from "./Image";
+const { __ } = wp.i18n;
+let prevArrow, nextArrow;
 class Carousel extends React.Component {
   constructor() {
     super(...arguments);
-  }
-  componentDidMount() {}
-  componentDidUpdate() {
-    //  $blogElement = document.querySelector(".premium-blog-wrap");
   }
   render() {
     const {
@@ -44,13 +42,11 @@ class Carousel extends React.Component {
       categories,
       rowGap,
       imageSize,
-
       bgColor,
       contentPadding,
       contentPaddingMobile,
       gridCheck,
       equalHeight,
-
       numOfPosts,
       numOfColumns,
       offsetNum,
@@ -79,7 +75,6 @@ class Carousel extends React.Component {
       getTabsFrom,
       tabLabel,
       filterPosition,
-
       linkNewTab,
       layoutValue,
       postFilter,
@@ -94,12 +89,21 @@ class Carousel extends React.Component {
       centerMode,
       slideSpacing,
       navigationDots,
+      cols,
+      colsMobile,
+      colsTablet,
       navigationArrow,
       arrowPosition,
-      pagination,
-      pageLimit,
-      paginationPosition,
     } = attributes;
+    if (navigationArrow) {
+      (prevArrow =
+        '<a type="button" data-role="none" class="carousel-arrow carousel-prev" aria-label="Next" role="button" style=""><i class="fas fa-angle-left" aria-hidden="true"></i></a>'),
+        (nextArrow =
+          '<a type="button" data-role="none" class="carousel-arrow carousel-next" aria-label="Next" role="button" style=""><i class="fas fa-angle-right" aria-hidden="true"></i></a>');
+    } else {
+      prevArrow = nextArrow = "";
+    }
+
     const settings = {
       dots: navigationDots,
       centerMode: centerMode,
@@ -107,31 +111,40 @@ class Carousel extends React.Component {
       autoplay: Autoplay,
       speed: autoplaySpeed,
       speed: autoplaySpeed,
-      slidesToShow: 1,
+      slidesToShow: cols,
+      // nextArrow: nextArrow,
+      // prevArrow: prevArrow,
       slidesToScroll: slideToScroll,
-      prevArrow :
-      
-      '<a type="button" data-role="none" class="carousel-arrow carousel-prev" aria-label="Next" role="button" style=""><i class="fas fa-angle-left" aria-hidden="true"></i></a>',
-      nextArrow :
-      '<a type="button" data-role="none" class="carousel-arrow carousel-next" aria-label="Next" role="button" style=""><i class="fas fa-angle-right" aria-hidden="true"></i></a>'
+      responsive: [
+        {
+          breakpoint: 1025,
+          settings: {
+            slidesToShow: colsTablet,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: colsMobile,
+            slidesToScroll: 1,
+          },
+        },
+      ],
     };
-    // Removing posts from display should be instant.
-    const displayPosts =
-      latestPosts.length > numOfPosts
-        ? latestPosts.slice(0, numOfPosts)
-        : latestPosts;
-    const lastDisplay = displayPosts.slice(offsetNum);
 
+    const lastDisplay = latestPosts.slice(offsetNum);
+    console.log(cols, colsTablet, colsMobile);
     return (
-      <div>
-        <div data-layout={layoutValue}>
+      <div className={`premium-blog-${blockID}`} id={`premium-blog-${blockID}`}>
+        <div>
           <Slider {...settings}>
             {lastDisplay.map((post, i) => (
               <div className={`premium-blog-post-outer-container`} key={i}>
                 <div
                   className={`premium-blog-post-container premium-blog-skin-modern`}
                 >
-                  <Iamge post={post} attributes={attributes} />
+                  <Image post={post} attributes={attributes} />
                   <div className={`premium-blog-content-wrapper empty-thumb`}>
                     <div className={`premium-blog-content-wrapper-inner`}>
                       <div className={`premium-blog-inner-container`}>
@@ -147,7 +160,6 @@ class Carousel extends React.Component {
                               </a>
                             </h2>
                           </div>
-
                           <div className="premium-blog-entry-meta">
                             <Meta
                               post={post}
@@ -157,12 +169,8 @@ class Carousel extends React.Component {
                           </div>
                         </div>
                       </div>
-                      <p>
-                        {undefined == post.uagb_excerpt
-                          ? post.label
-                          : decodeEntities(post.uagb_excerpt.trim()) ||
-                            __("(Untitled)")}
-                      </p>
+                      <Excerpt attributes={attributes} post={post} />
+                      <Button attributes={attributes} post={post} />
                     </div>
                   </div>
                 </div>

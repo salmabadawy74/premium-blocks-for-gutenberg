@@ -3528,7 +3528,7 @@ a.premium-dheading-block__link:hover {
   margin: 0;
   text-align: right;
   display: block;
-  margin-bottom: -18px;
+  margin-bottom: -20px;
 }
 
 .premium-size-type-field-tabs
@@ -3573,7 +3573,7 @@ a.premium-dheading-block__link:hover {
   border-bottom: 0;
   text-align: right;
   margin-right: 40px;
-  margin-bottom: -20px;
+  margin-bottom: 0;
 }
 
 .premium-size-type-field-tabs.premium-without-size-type

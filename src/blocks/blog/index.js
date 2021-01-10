@@ -2,11 +2,8 @@ const { __ } = wp.i18n;
 import { Blog } from "../../../assets/js/Blog";
 import PbgIcon from "../icons";
 import edit from "./edit";
-
 //import save from "./save";
-
 const { registerBlockType } = wp.blocks;
-
 registerBlockType("premium/post-blog", {
   title: __("Premium Blog"),
   icon: <PbgIcon icon="content-switcher" />,
@@ -96,7 +93,6 @@ registerBlockType("premium/post-blog", {
       type: "boolean",
       default: false,
     },
-
     numOfPosts: {
       type: "number",
       default: 1,
@@ -466,7 +462,6 @@ registerBlockType("premium/post-blog", {
     inserter: Blog,
   },
   example: {},
-
   edit: edit,
   save: function () {},
 });

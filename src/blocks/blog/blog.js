@@ -1,11 +1,11 @@
 const { decodeEntities } = wp.htmlEntities;
 const { dateI18n, format, __experimentalGetSettings } = wp.date;
 import ReactPaginate from "react-paginate";
-
 import Meta from "./meta";
-import Iamge from "./Image";
-
+import Image from "./Image";
 import { Fragment } from "react";
+import Button from "./Button";
+import Excerpt from "./Excerpt";
 let $blogElement, $blogPost, layout;
 class Blog extends React.Component {
   constructor() {
@@ -35,11 +35,9 @@ class Blog extends React.Component {
       attributes,
       className,
       latestPosts,
-      block_id,
       categoriesList,
       setAttributes,
     } = this.props;
-
     const { __ } = wp.i18n;
     const {
       blockID,
@@ -61,7 +59,6 @@ class Blog extends React.Component {
       categories,
       rowGap,
       imageSize,
-
       bgColor,
       contentPadding,
       contentPaddingMobile,
@@ -96,7 +93,6 @@ class Blog extends React.Component {
       getTabsFrom,
       tabLabel,
       filterPosition,
-
       linkNewTab,
       layoutValue,
       postFilter,
@@ -143,7 +139,6 @@ class Blog extends React.Component {
       metaColor,
       linkColor,
       sepaColor,
-
       postContentLetter,
       postContentStyle,
       postContentUpper,
@@ -157,27 +152,7 @@ class Blog extends React.Component {
       pageCount,
     } = attributes;
     console.log(latestPosts);
-
-    if ("Even" === layout) {
-      forceEqualHeight();
-    }
-    function forceEqualHeight() {
-      let heights = [];
-
-      const Wrappers = $blogElement.querySelectorAll(
-        ".premium-blog-content-wrapper"
-      );
-      Wrappers.forEach((Wrapper) => {
-        let height = Wrapper.offsetHeight;
-        heights.push(height);
-        console.log(heights);
-        let maxHeight = Math.max.apply(null, heights);
-        Wrapper.style.cssText = `height:${maxHeight}px`;
-      });
-    }
     let lastDisplay;
-    // Removing posts from display should be instant.
-
     const displayPosts =
       latestPosts.length > numOfPosts
         ? latestPosts.slice(0, numOfPosts)
@@ -187,20 +162,19 @@ class Blog extends React.Component {
     function handlePageClick(selectedPage) {
       setAttributes({ currentPage: selectedPage.selected });
     }
-
     if (pagination) {
       const PER_PAGE = numOfPosts;
       const offset = currentPage * PER_PAGE;
       lastDisplay = latestPosts.slice(offset, offset + PER_PAGE);
-      console.log(lastDisplay, displayPosts, latestPosts);
-      console.log(offset);
       const pageCounts = Math.ceil(latestPosts.length / PER_PAGE);
       setAttributes({ pageCount: pageCounts });
     }
-    console.log(lastDisplay);
     return (
       <Fragment>
-        <div className={`premium-blog`}>
+         <div
+          className={`premium-blog-${blockID}`}
+          id={`premium-blog-${blockID}`}
+        >
           <div
             className={`premium-blog-wrap ${gridClasses}`}
             data-layout={layoutValue}
@@ -211,7 +185,7 @@ class Blog extends React.Component {
                 <div
                   className={`premium-blog-post-container premium-blog-skin-classic`}
                 >
-                  <Iamge post={post} attributes={attributes} />
+                  <Image post={post} attributes={attributes} />
                   <div className={`premium-blog-content-wrapper empty-thumb`}>
                     <div className={`premium-blog-content-wrapper-inner`}>
                       <div className={`premium-blog-inner-container`}>
@@ -237,12 +211,8 @@ class Blog extends React.Component {
                           </div>
                         </div>
                       </div>
-                      <p>
-                        {undefined == post.uagb_excerpt
-                          ? post.label
-                          : decodeEntities(post.uagb_excerpt.trim()) ||
-                            __("(Untitled)")}
-                      </p>
+                      <Excerpt post={post} attributes={attributes} />
+                      <Button post={post} attributes={attributes} />
                     </div>
                   </div>
                 </div>
@@ -253,18 +223,14 @@ class Blog extends React.Component {
                 __html: [
                   `.premium-blog-post-outer-container{`,
                   `width: ${numOfColumns ? 100 / numOfColumns : 50}%;`,
-
                   ` margin-bottom: ${rowGap + rowGapUnit};`,
                   `  padding-right: calc( ${columnGap}px/2 );`,
                   `   padding-left: calc( ${columnGap}px/2 );`,
-
                   "}",
                   `.premium-blog-content-wrapper {`,
                   `text-align:${filterPosition}`,
-
                   "}",
                   `.premium-blog-thumbnail-overlay{`,
-
                   `background:${overlayColor}`,
                   "}",
                   `.premium-blog-post-outer-container:hover img{`,
@@ -303,6 +269,7 @@ class Blog extends React.Component {
                   `letter-spacing:${postContentLetter}px ;`,
                   `color:${textColor};`,
                   "}",
+
                 ].join("\n"),
               }}
             />

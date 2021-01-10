@@ -4,9 +4,7 @@ const { __ } = wp.i18n;
 class Image extends React.Component {
   render() {
     const { post, attributes } = this.props;
-
     let target = attributes.newTab ? "_blank" : "_self";
-
     if (
       attributes.featuredImage &&
       undefined !== post.uagb_featured_image_src &&
@@ -14,7 +12,6 @@ class Image extends React.Component {
       post.uagb_featured_image_src[attributes.imageSize]
     ) {
       var src = post.uagb_featured_image_src[attributes.imageSize];
-
       return (
         <div className="premium-blog-thumb-effect-wrapper">
           <div

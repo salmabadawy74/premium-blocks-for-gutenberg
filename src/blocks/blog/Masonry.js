@@ -7,6 +7,8 @@ import Meta from "./meta";
 import Iamge from "./Image";
 
 import { Fragment } from "react";
+import Excerpt from "./Excerpt";
+import Button from "./Button";
 
 class MasonryClass extends React.Component {
   constructor() {
@@ -23,7 +25,6 @@ class MasonryClass extends React.Component {
       categoriesList,
       setAttributes,
     } = this.props;
-
     const { __ } = wp.i18n;
     const {
       blockID,
@@ -45,7 +46,6 @@ class MasonryClass extends React.Component {
       categories,
       rowGap,
       imageSize,
-
       bgColor,
       contentPadding,
       contentPaddingMobile,
@@ -62,7 +62,6 @@ class MasonryClass extends React.Component {
       hoverEffect,
       height,
       HeightU,
-
       rowGapUnit,
       columnGap,
       postPosition,
@@ -127,7 +126,6 @@ class MasonryClass extends React.Component {
       metaColor,
       linkColor,
       sepaColor,
-
       postContentLetter,
       postContentStyle,
       postContentUpper,
@@ -140,10 +138,8 @@ class MasonryClass extends React.Component {
       currentPage,
       pageCount,
     } = attributes;
-
     let lastDisplay;
     // Removing posts from display should be instant.
-
     const displayPosts =
       latestPosts.length > numOfPosts
         ? latestPosts.slice(0, numOfPosts)
@@ -166,7 +162,10 @@ class MasonryClass extends React.Component {
     console.log(lastDisplay);
     return (
       <Fragment>
-        <div className={`premium-blog`} id={`premium-blog-${blockID}`}>
+        <div
+          className={`premium-blog-${blockID}`}
+          id={`premium-blog-${blockID}`}
+        >
           <Masonry>
             {lastDisplay.map((post, i) => (
               <div
@@ -192,7 +191,6 @@ class MasonryClass extends React.Component {
                               </a>
                             </h2>
                           </div>
-
                           <div className="premium-blog-entry-meta">
                             <Meta
                               post={post}
@@ -202,15 +200,10 @@ class MasonryClass extends React.Component {
                           </div>
                         </div>
                       </div>
-
                       {displayPostContent && (
-                        <p>
-                          {undefined == post.uagb_excerpt
-                            ? post.label
-                            : decodeEntities(post.uagb_excerpt.trim()) ||
-                              __("(Untitled)")}
-                        </p>
+                        <Excerpt post={post} attributes={attributes} />
                       )}
+                      <Button post={post} attributes={attributes} />
                     </div>
                   </div>
                 </div>
@@ -279,7 +272,6 @@ class MasonryClass extends React.Component {
             }}
           />
         </div>
-
         {pagination && (
           <div className="Premium-blog-footer">
             <ReactPaginate
