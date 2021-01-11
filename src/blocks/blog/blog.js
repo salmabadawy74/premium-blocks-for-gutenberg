@@ -11,24 +11,7 @@ class Blog extends React.Component {
   constructor() {
     super(...arguments);
   }
-  componentDidMount() {
-    setTimeout(() => {
-      $blogElement = document.querySelectorAll(".premium-blog-wrap");
-      $blogPost = $blogElement.querySelector(
-        ".premium-blog-post-outer-container"
-      );
-      layout = $blogElement.dataset.layout;
-    }, 2000);
-  }
-  componentDidUpdate() {
-    setTimeout(() => {
-      $blogElement = document.querySelector(".premium-blog-wrap");
-      $blogPost = $blogElement.querySelector(
-        ".premium-blog-post-outer-container"
-      );
-      layout = $blogElement.dataset.layout;
-    }, 2000);
-  }
+  componentDidMount() {}
 
   render() {
     const {
@@ -63,7 +46,6 @@ class Blog extends React.Component {
       contentPadding,
       contentPaddingMobile,
       gridCheck,
-      equalHeight,
 
       numOfPosts,
       numOfColumns,
@@ -148,45 +130,62 @@ class Blog extends React.Component {
       postContentfontSizeMobile,
       postContentfontSizeTablet,
       textColor,
-      currentPage,
       pageCount,
+      backgroundPostContent,
+      containerShadowColor,
+      containerShadowBlur,
+      containerShadowHorizontal,
+      containerShadowVertical,
+      containerShadowPosition,
+      cols,
+      colsMobile,
+      currentPage,
+      colsTablet,
     } = attributes;
-    console.log(latestPosts);
-    let lastDisplay;
-    const displayPosts =
-      latestPosts.length > numOfPosts
-        ? latestPosts.slice(0, numOfPosts)
-        : latestPosts;
-    lastDisplay = displayPosts.slice(offsetNum);
+    let lastDisplay, pageCounts;
+    //currentPage = 0;
+
     const gridClasses = gridCheck ? "premium-blog-even" : "premium-blog-list";
-    function handlePageClick(selectedPage) {
-      setAttributes({ currentPage: selectedPage.selected });
-    }
+    // function handlePageClick(selectedPage) {
+    //   currentPage = selectedPage.selected;
+    // }
     if (pagination) {
       const PER_PAGE = numOfPosts;
       const offset = currentPage * PER_PAGE;
       lastDisplay = latestPosts.slice(offset, offset + PER_PAGE);
-      const pageCounts = Math.ceil(latestPosts.length / PER_PAGE);
-      setAttributes({ pageCount: pageCounts });
+      pageCounts = Math.ceil(latestPosts.length / PER_PAGE);
+      console.log(lastDisplay, offset, pageCounts, latestPosts, currentPage);
+    } else {
+      const displayPosts =
+        latestPosts.length > numOfPosts
+          ? latestPosts.slice(0, numOfPosts)
+          : latestPosts;
+      lastDisplay = displayPosts.slice(offsetNum);
     }
+    console.log(lastDisplay);
+    const equalHeight = layoutValue === "Even" ? "equal-Height" : null;
     return (
       <Fragment>
-         <div
+        <div
           className={`premium-blog-${blockID}`}
           id={`premium-blog-${blockID}`}
         >
           <div
-            className={`premium-blog-wrap ${gridClasses}`}
+            className={`premium-blog-wrap`}
             data-layout={layoutValue}
             style={{ position: "relative" }}
           >
             {lastDisplay.map((post, i) => (
-              <div className={`premium-blog-post-outer-container`} key={i}>
-                <div
-                  className={`premium-blog-post-container premium-blog-skin-classic`}
-                >
+              <div
+                className={`premium-blog-post-outer-container  ${gridClasses}`}
+                key={i}
+              >
+                <div className={`premium-blog-post-container`}>
                   <Image post={post} attributes={attributes} />
-                  <div className={`premium-blog-content-wrapper empty-thumb`}>
+                  <div
+                    className={ `premium-blog-content-wrapper empty-thumb ${ equalHeight }` }
+                    style={{height:`${100}%`}}
+                  >
                     <div className={`premium-blog-content-wrapper-inner`}>
                       <div className={`premium-blog-inner-container`}>
                         <div className="premium-blog-entry-container">
@@ -212,67 +211,13 @@ class Blog extends React.Component {
                         </div>
                       </div>
                       <Excerpt post={post} attributes={attributes} />
+
                       <Button post={post} attributes={attributes} />
                     </div>
                   </div>
                 </div>
               </div>
             ))}
-            <style
-              dangerouslySetInnerHTML={{
-                __html: [
-                  `.premium-blog-post-outer-container{`,
-                  `width: ${numOfColumns ? 100 / numOfColumns : 50}%;`,
-                  ` margin-bottom: ${rowGap + rowGapUnit};`,
-                  `  padding-right: calc( ${columnGap}px/2 );`,
-                  `   padding-left: calc( ${columnGap}px/2 );`,
-                  "}",
-                  `.premium-blog-content-wrapper {`,
-                  `text-align:${filterPosition}`,
-                  "}",
-                  `.premium-blog-thumbnail-overlay{`,
-                  `background:${overlayColor}`,
-                  "}",
-                  `.premium-blog-post-outer-container:hover img{`,
-                  `filter: brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
-                  "}",
-                  `.premium-blog-entry-title a{`,
-                  `font-size:${firstContentfontSize}${firstContentfontSizeType};`,
-                  `font-weight:${firstContentWeight};`,
-                  `font-style:${firstContentStyle};`,
-                  `text-transform:${firstContentUpper ? "uppercase" : null} ;`,
-                  `letter-spacing:${firstContentLetter}px ;`,
-                  `color:${typoColor};`,
-                  "}",
-                  `.premium-blog-entry-title a:hover{`,
-                  `color:${hoverColor};`,
-                  "}",
-                  `.premium-blog-meta-data{`,
-                  `font-size:${secondContentfontSize}${secondContentfontSizeType};`,
-                  `font-weight:${secondContentWeight};`,
-                  `font-style:${secondContentStyle};`,
-                  `text-transform:${secondContentUpper ? "uppercase" : null} ;`,
-                  `letter-spacing:${secondContentLetter}px ;`,
-                  `color:${metaColor};`,
-                  "}",
-                  `.premium-blog-meta-data:hover{`,
-                  `color:${linkColor}`,
-                  "}",
-                  `.premium-blog-meta-separtor{`,
-                  `color:${sepaColor};`,
-                  "}",
-                  `.premium-blog-content-wrapper-inner p{`,
-                  `font-size:${postContentfontSize}${postContentfontSizeType};`,
-                  `font-weight:${postContentWeight};`,
-                  `font-style:${postContentStyle};`,
-                  `text-transform:${postContentUpper ? "uppercase" : null} ;`,
-                  `letter-spacing:${postContentLetter}px ;`,
-                  `color:${textColor};`,
-                  "}",
-
-                ].join("\n"),
-              }}
-            />
           </div>
         </div>
         {pagination && (
@@ -280,8 +225,8 @@ class Blog extends React.Component {
             <ReactPaginate
               previousLabel={"← Previous"}
               nextLabel={"Next →"}
-              pageCount={pageCount}
-              onPageChange={handlePageClick}
+              pageCount={pageCounts}
+              onPageChange={(selected) => console.log(selected.selected)}
               containerClassName={"pagination"}
               previousLinkClassName={"pagination__link"}
               nextLinkClassName={"pagination__link"}

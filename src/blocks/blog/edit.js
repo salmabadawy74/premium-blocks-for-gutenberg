@@ -4,18 +4,12 @@ import CarouselComponent from "./Carousel";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumTypo from "../../components/premium-typo";
 import Blog from "./blog";
-
 import PremiumBorder from "./../../components/premium-border";
-import PremiumPadding from "./../../components/premium-padding";
 import styling from "./styling";
 import Masonry from "./Masonry";
 import PremiumMarginR from "../../components/premium-margin-responsive";
-
 import PremiumBoxShadow from "./../../components/premium-box-shadow";
-import PremiumPaddingR from "./../../components/premium-padding-responsive";
-
 const { __ } = wp.i18n;
-
 const { Component, Fragment } = wp.element;
 const {
   PanelBody,
@@ -24,18 +18,11 @@ const {
   Spinner,
   ToggleControl,
   TabPanel,
-  ButtonGroup,
-  Button,
   Dashicon,
   TextControl,
   IconButton,
 } = wp.components;
-
-const {
-  InspectorControls,
-
-  ColorPalette,
-} = wp.editor;
+const { InspectorControls, ColorPalette } = wp.editor;
 const { withSelect, select } = wp.data;
 const latestPosts = null;
 class edit extends Component {
@@ -98,7 +85,6 @@ class edit extends Component {
     } = this.props;
     const {
       blockID,
-
       newTab,
       borderWidth,
       ctaText,
@@ -109,15 +95,11 @@ class edit extends Component {
       categories,
       rowGap,
       imageSize,
-
       bgColor,
       contentPadding,
       contentPaddingMobile,
       gridCheck,
-      equalHeight,
-
       numOfPosts,
-
       offsetNum,
       currentPost,
       orderBy,
@@ -141,9 +123,7 @@ class edit extends Component {
       displayPostCategories,
       displayPostComment,
       displayPostTags,
-
       filterPosition,
-
       linkNewTab,
       layoutValue,
       postFilter,
@@ -195,10 +175,6 @@ class edit extends Component {
       postContentStyle,
       postContentUpper,
       postContentWeight,
-      postContentfontSize,
-      postContentfontSizeType,
-      postContentfontSizeMobile,
-      postContentfontSizeTablet,
       textColor,
       tagColor,
       hoverTag,
@@ -217,18 +193,11 @@ class edit extends Component {
       cols,
       colsMobile,
       colsTablet,
-      thumbnail,
-      thumbnailMobile,
-      thumbnailTablet,
       containerShadowColor,
       containerShadowBlur,
       containerShadowHorizontal,
       containerShadowVertical,
       containerShadowPosition,
-      postSpacingType,
-      postSpacing,
-      postSpacingMobile,
-      postSpacingTablet,
       tagsfontSizeType,
       tagsfontSize,
       tagsfontSizeMobile,
@@ -254,6 +223,33 @@ class edit extends Component {
       buttonPadding,
       buttonPaddingMobile,
       buttonPaddingTablet,
+      thumbnail,
+      thumbnailMobile,
+      thumbnailTablet,
+      PostmarginBottomType,
+      PostmarginBottom,
+      PostmarginBottomMobile,
+      PostmarginBottomTablet,
+      PostmarginTopType,
+      PostmarginTop,
+      PostmarginTopMobile,
+      PostmarginTopTablet,
+      postSpacingType,
+      postSpacing,
+      postSpacingMobile,
+      postSpacingTablet,
+      postContentfontSizeType,
+      postContentfontSize,
+      postContentfontSizeMobile,
+      postContentfontSizeTablet,
+      PostmarginRightType,
+      PostmarginRight,
+      PostmarginRightMobile,
+      PostmarginRightTablet,
+      PostmarginLeftType,
+      PostmarginLeft,
+      PostmarginLeftMobile,
+      PostmarginLeftTablet,
     } = attributes;
 
     let categoryListOptions = [{ value: "", label: __("All") }];
@@ -320,7 +316,6 @@ class edit extends Component {
             >
               {(tab) => {
                 let tabout;
-
                 if ("mobile" === tab.name) {
                   tabout = (
                     <RangeControl
@@ -653,7 +648,6 @@ class edit extends Component {
                 : null,
             ],
           ]}
-
           <ToggleControl
             label={__("Author Meta")}
             checked={displayPostAuthor}
@@ -1042,33 +1036,68 @@ class edit extends Component {
             }
           />
           <PremiumMarginR
-            directions={["bottom", "top"]}
+            directions={["bottom", "top", "right", "left"]}
             setAttributes={setAttributes}
             marginBottomType={{
-              value: marginBottomType,
+              value: PostmarginBottomType,
               label: __("marginBottomType"),
             }}
-            marginBottom={{ value: marginBottom, label: __("marginBottom") }}
+            marginBottom={{
+              value: PostmarginBottom,
+              label: __("marginBottom"),
+            }}
             marginBottomMobile={{
-              value: marginBottomMobile,
+              value: PostmarginBottomMobile,
               label: __("marginBottomMobile"),
             }}
             marginBottomTablet={{
-              value: marginBottomTablet,
+              value: PostmarginBottomTablet,
               label: __("marginBottomTablet"),
             }}
             marginTopType={{
-              value: marginTopType,
+              value: PostmarginTopType,
               label: __("marginTopType"),
             }}
-            marginTop={{ value: marginTop, label: __("marginTop") }}
+            marginTop={{ value: PostmarginTop, label: __("marginTop") }}
             marginTopMobile={{
-              value: marginTopMobile,
+              value: PostmarginTopMobile,
               label: __("marginTopMobile"),
             }}
             marginTopTablet={{
-              value: marginTopTablet,
+              value: PostmarginTopTablet,
               label: __("marginTopTablet"),
+            }}
+            marginRightType={{
+              value: PostmarginRightType,
+              label: __("marginRightType"),
+            }}
+            marginRight={{
+              value: PostmarginRight,
+              label: __("marginRight"),
+            }}
+            marginRightMobile={{
+              value: PostmarginRightMobile,
+              label: __("marginRightMobile"),
+            }}
+            marginRightTablet={{
+              value: PostmarginRightTablet,
+              label: __("marginRightTablet"),
+            }}
+            marginLeftType={{
+              value: PostmarginLeftType,
+              label: __("marginLeftType"),
+            }}
+            marginLeft={{
+              value: PostmarginLeft,
+              label: __("marginLeft"),
+            }}
+            marginLeftMobile={{
+              value: PostmarginLeftMobile,
+              label: __("marginLeftMobile"),
+            }}
+            marginLeftTablet={{
+              value: PostmarginLeftTablet,
+              label: __("marginLeftTablet"),
             }}
           />
           <ColorPalette
@@ -1322,7 +1351,8 @@ class edit extends Component {
           <Spinner />
         </Fragment>
       );
-    } else if (layoutValue === "Masonary") {
+    }
+    if (layoutValue === "Masonry") {
       return (
         <Fragment>
           {Inspectors}
@@ -1365,31 +1395,30 @@ export default withSelect((select, props) => {
   } = props.attributes;
   const { getEntityRecords } = select("core");
 
-  let allTaxonomy = uagb_blocks_info.all_taxonomy;
-  let currentTax = allTaxonomy["post"];
-  let taxonomy = "";
+  // let allTaxonomy = uagb_blocks_info.all_taxonomy;
+  // let currentTax = allTaxonomy["post"];
   let categoriesList = wp.data
     .select("core")
     .getEntityRecords("taxonomy", "category");
   let rest_base = "";
 
-  if ("undefined" != typeof currentTax) {
-    if ("undefined" != typeof currentTax["taxonomy"][postFilter]) {
-      rest_base =
-        currentTax["taxonomy"][postFilter]["rest_base"] == false ||
-        currentTax["taxonomy"][postFilter]["rest_base"] == null
-          ? currentTax["taxonomy"][postFilter]["name"]
-          : currentTax["taxonomy"][postFilter]["rest_base"];
-    }
-    if ("" != postFilter) {
-      if (
-        "undefined" != typeof currentTax["terms"] &&
-        "undefined" != typeof currentTax["terms"][postFilter]
-      ) {
-        categoriesList = currentTax["terms"][postFilter];
-      }
-    }
-  }
+  // if ("undefined" != typeof currentTax) {
+  //   if ("undefined" != typeof currentTax["taxonomy"][postFilter]) {
+  //     rest_base =
+  //       currentTax["taxonomy"][postFilter]["rest_base"] == false ||
+  //       currentTax["taxonomy"][postFilter]["rest_base"] == null
+  //         ? currentTax["taxonomy"][postFilter]["name"]
+  //         : currentTax["taxonomy"][postFilter]["rest_base"];
+  //   }
+  // if ("" != postFilter) {
+  //   if (
+  //     "undefined" != typeof currentTax["terms"] &&
+  //     "undefined" != typeof currentTax["terms"][postFilter]
+  //   ) {
+  //     categoriesList = currentTax["terms"][postFilter];
+  //   }
+  // }
+  //}
   let latestPostsQuery = {
     order: order,
     orderBy: orderBy,

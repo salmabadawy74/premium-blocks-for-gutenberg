@@ -3,6 +3,7 @@ import { Blog } from "../../../assets/js/Blog";
 import PbgIcon from "../icons";
 import edit from "./edit";
 //import save from "./save";
+alert("HELOO");
 const { registerBlockType } = wp.blocks;
 registerBlockType("premium/post-blog", {
   title: __("Premium Blog"),
@@ -456,6 +457,107 @@ registerBlockType("premium/post-blog", {
     classMigrate: {
       type: "boolean",
       default: false,
+    },
+    cols: {
+      type: "number",
+      default: 1,
+    },
+    colsMobile: {
+      type: "number",
+      default: 1,
+    },
+    colsTablet: {
+      type: "number",
+      default: 1,
+    },
+    thumbnail: {
+      type: "string",
+      default: "cover",
+    },
+    thumbnailMobile: {
+      type: "string",
+      default: "cover",
+    },
+    thumbnailTablet: {
+      type: "string",
+      default: "cover",
+    },
+    PostmarginBottomType: {
+      type: "string",
+      default: "px",
+    },
+    PostmarginBottom: {
+      type: "number",
+    },
+    PostmarginBottomMobile: {
+      type: "number",
+    },
+    PostmarginBottomTablet: {
+      type: "number",
+    },
+    PostmarginTopType: {
+      type: "string",
+      default: "px",
+    },
+    PostmarginTop: {
+      type: "number",
+    },
+    PostmarginTopMobile: {
+      type: "number",
+    },
+    PostmarginTopTablet: {
+      type: "number",
+    },
+    postSpacingType: {
+      type: "string",
+      default: "px",
+    },
+    postSpacing: {
+      type: "number",
+    },
+    postSpacingMobile: {
+      type: "number",
+    },
+    postSpacingTablet: {
+      type: "number",
+    },
+    postContentfontSizeType: {
+      type: "string",
+      default: "px",
+    },
+    postContentfontSize: {
+      type: "number",
+    },
+    postContentfontSizeMobile: {
+      type: "number",
+    },
+    postContentfontSizeTablet: {
+      type: "number",
+    },
+    PostmarginRightType: {
+      type: "string",
+      default: "px",
+    },
+    PostmarginRight: {
+      type: "number",
+    },
+    PostmarginRightMobile: {
+      type: "number",
+    },
+    PostmarginRightTablet: {
+      type: "number",
+    },
+    PostmarginLeftType: {
+      type: "string",
+    },
+    PostmarginLeft: {
+      type: "number",
+    },
+    PostmarginLeftMobile: {
+      type: "number",
+    },
+    PostmarginLeftTablet: {
+      type: "number",
     },
   },
   supports: {

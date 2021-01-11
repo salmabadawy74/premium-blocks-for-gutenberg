@@ -1402,7 +1402,12 @@ a.premium-dheading-block__link:hover {
 }
 /**************** Premium Blog *****************/
 /*******************************************************/
-
+.equal-Height {
+  height: 100% !important;
+}
+.premium-blog-list {
+  width: 100%;
+}
 .premium-blog-thumb-effect-wrapper {
   position: relative;
   overflow: hidden;
