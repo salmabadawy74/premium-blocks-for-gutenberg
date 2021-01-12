@@ -9,6 +9,7 @@ import Iamge from "./Image";
 import { Fragment } from "react";
 import Excerpt from "./Excerpt";
 import Button from "./Button";
+import Tags from "./Tags";
 
 class MasonryClass extends React.Component {
   constructor() {
@@ -22,6 +23,7 @@ class MasonryClass extends React.Component {
       className,
       latestPosts,
       block_id,
+      taxonomyList,
       categoriesList,
       setAttributes,
     } = this.props;
@@ -203,6 +205,12 @@ class MasonryClass extends React.Component {
                       {displayPostContent && (
                         <Excerpt post={post} attributes={attributes} />
                       )}
+
+                      {/* <Tags
+                        post={post}
+                        attributes={attributes}
+                        categoriesList={categoriesList}
+                      /> */}
                       <Button post={post} attributes={attributes} />
                     </div>
                   </div>

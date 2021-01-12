@@ -117,11 +117,15 @@ div[class^="wp-block-premium"] i[class*="fa-"] {
   font-weight: normal;
   font-style: normal;
 
-  src: url("./fonts/slick.eot");
-  src: url("./fonts/slick.eot?#iefix") format("embedded-opentype"),
-    url("./fonts/slick.woff") format("woff"),
-    url("./fonts/slick.ttf") format("truetype"),
-    url("./fonts/slick.svg#slick") format("svg");
+  src: url("../../node_modules/slick-carousel/slick/fonts/slick.eot");
+  src: url("../../node_modules/slick-carousel/slick/fonts/slick.eot?#iefix")
+      format("embedded-opentype"),
+    url("../../node_modules/slick-carousel/slick/fonts/slick.woff")
+      format("woff"),
+    url("../../node_modules/slick-carousel/slick/fonts/slick.ttf")
+      format("truetype"),
+    url("../../node_modules/slick-carousel/slick/fonts/slick.svg#slick")
+      format("svg");
 }
 /* Arrows */
 .slick-prev,
@@ -148,10 +152,9 @@ div[class^="wp-block-premium"] i[class*="fa-"] {
   outline: none;
   background: transparent;
 }
-.slick-prev:hover,
-.slick-prev:focus,
-.slick-next:hover,
-.slick-next:focus {
+
+.slick-prev,
+.slick-next {
   color: transparent;
   outline: none;
   background: transparent;
@@ -193,6 +196,10 @@ div[class^="wp-block-premium"] i[class*="fa-"] {
 [dir="rtl"] .slick-prev:before {
   content: "→";
 }
+.slick-prev:before,
+.slick-next:before {
+  color: #232124;
+}
 
 .slick-next {
   right: -25px;
@@ -207,7 +214,6 @@ div[class^="wp-block-premium"] i[class*="fa-"] {
 [dir="rtl"] .slick-next:before {
   content: "←";
 }
-
 /* Dots */
 .slick-dotted.slick-slider {
   margin-bottom: 30px;

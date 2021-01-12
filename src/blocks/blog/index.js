@@ -1,9 +1,7 @@
 const { __ } = wp.i18n;
-import { Blog } from "../../../assets/js/Blog";
 import PbgIcon from "../icons";
 import edit from "./edit";
 //import save from "./save";
-alert("HELOO");
 const { registerBlockType } = wp.blocks;
 registerBlockType("premium/post-blog", {
   title: __("Premium Blog"),
@@ -120,7 +118,7 @@ registerBlockType("premium/post-blog", {
     },
     featuredImage: {
       type: "boolean",
-      default: false,
+      default: true,
     },
     hoverEffect: {
       type: "string",
@@ -158,6 +156,10 @@ registerBlockType("premium/post-blog", {
     excerptType: {
       type: "string",
       default: "Dots",
+    },
+    excerptLength: {
+      type: "number",
+      default: 25,
     },
     fullWidth: {
       type: "boolean",
@@ -278,8 +280,8 @@ registerBlockType("premium/post-blog", {
       type: "string",
     },
     imageSize: {
-      type: "number",
-      default: "medium",
+      type: "string",
+      default: "large",
     },
     categories: {
       type: "string",
@@ -559,9 +561,6 @@ registerBlockType("premium/post-blog", {
     PostmarginLeftTablet: {
       type: "number",
     },
-  },
-  supports: {
-    inserter: Blog,
   },
   example: {},
   edit: edit,

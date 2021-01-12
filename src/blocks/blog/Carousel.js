@@ -9,10 +9,32 @@ import Button from "./Button";
 import Image from "./Image";
 const { __ } = wp.i18n;
 let prevArrow, nextArrow;
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block" }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block" }}
+      onClick={onClick}
+    />
+  );
+}
 class Carousel extends React.Component {
   constructor() {
     super(...arguments);
   }
+
   render() {
     const {
       attributes,
@@ -112,8 +134,8 @@ class Carousel extends React.Component {
       speed: autoplaySpeed,
       speed: autoplaySpeed,
       slidesToShow: cols,
-      // nextArrow: nextArrow,
-      // prevArrow: prevArrow,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />,
       slidesToScroll: slideToScroll,
       responsive: [
         {
@@ -145,7 +167,9 @@ class Carousel extends React.Component {
                   className={`premium-blog-post-container premium-blog-skin-modern`}
                 >
                   <Image post={post} attributes={attributes} />
-                  <div className={`premium-blog-content-wrapper empty-thumb`}>
+                  <div
+                    className={`premium-blog-content-wrapper empty-thumb equal-Height`}
+                  >
                     <div className={`premium-blog-content-wrapper-inner`}>
                       <div className={`premium-blog-inner-container`}>
                         <div className="premium-blog-entry-container">

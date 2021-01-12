@@ -56,7 +56,9 @@ class PBG_Blocks_Helper {
     * Constructor for the class
     */    
     public function __construct() {
-        require( PREMIUM_BLOCKS_PATH . 'includes/class-pbg-blocks-config.php' );
+		
+		require( PREMIUM_BLOCKS_PATH . 'includes/class-pbg-blocks-config.php' );
+		
 
 		self::$block_list      = Config::get_block_attributes();
 
@@ -67,7 +69,9 @@ class PBG_Blocks_Helper {
         self::$config = PBG_Settings::get_enabled_keys();
         
         //Enqueue Editor Assets
-        add_action( 'enqueue_block_editor_assets', array( $this, 'pbg_editor' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'pbg_editor' ) );
+		add_action( 'init', 'gutenberg_examples_01_register_block' );
+		add_action( 'init', 'gutenberg_examples_01_register_block' );
         
         //Enqueue Frontend Styles
         add_action( 'enqueue_block_assets', array( $this, 'pbg_frontend' ) );
@@ -124,7 +128,9 @@ class PBG_Blocks_Helper {
             'PremiumBlocksSettings',
             array(
 				'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/author.jpg',
-                'activeBlocks'      => self::$blocks,
+				'activeBlocks'      => self::$blocks,
+				'tablet_breakpoint' => PBG_TABLET_BREAKPOINT,
+				'mobile_breakpoint' => PBG_MOBILE_BREAKPOINT,
 
 			)
         );
@@ -992,6 +998,58 @@ class PBG_Blocks_Helper {
             
             return $generated_css;
            
+		}
+		public static function get_query( $attributes) {
+
+		
+			$query_args = array(
+				'posts_per_page'      => ( isset( $attributes['numOfPosts'] ) ) ? $attributes['numOfPosts'] : 6,
+				'post_status'         => 'publish',
+				'post_type'           => ( isset( $attributes['postType'] ) ) ? $attributes['postType'] : 'post',
+				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
+				'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : 'date',
+			
+				'paged'               => 1,
+			);
+
+			if ( $attributes['currentPost'] ) {
+				$query_args['post__not_in'] = array( get_the_ID() );
+			}
+
+			if ( isset( $attributes['categories'] ) && '' !== $attributes['categories'] ) {
+				$query_args['tax_query'][] = array(
+					'taxonomy' => ( isset( $attributes['taxonomyType'] ) ) ? $attributes['taxonomyType'] : 'category',
+					'field'    => 'id',
+					'terms'    => $attributes['categories'],
+					'operator' => 'IN',
+				);
+			}
+
+			if (  isset( $attributes['pagination'] ) && true === $attributes['pagination'] ) {
+
+				if ( get_query_var( 'paged' ) ) {
+
+					$paged = get_query_var( 'paged' );
+
+				} elseif ( get_query_var( 'page' ) ) {
+
+					$paged = get_query_var( 'page' );
+
+				} else {
+
+					$paged = 1;
+
+				}
+				$query_args['posts_per_page'] = $attributes['numOfPosts'];
+				$query_args['paged']          = $paged;
+
+			}
+
+			
+
+			$query_args = apply_filters( "PBG_post_query_args", $query_args, $attributes );
+
+			return new WP_Query( $query_args );
 		}
 		
         public static function generate_css( $selectors, $id ) {

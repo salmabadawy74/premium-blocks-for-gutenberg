@@ -43814,223 +43814,225 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 function styling(props) {
-	var _props$attributes = props.attributes,
-	    multiTitleCount = _props$attributes.multiTitleCount,
-	    classMigrate = _props$attributes.classMigrate,
-	    icons = _props$attributes.icons,
-	    sizeType = _props$attributes.sizeType,
-	    size = _props$attributes.size,
-	    sizeTablet = _props$attributes.sizeTablet,
-	    sizeMobile = _props$attributes.sizeMobile,
-	    fontSize = _props$attributes.fontSize,
-	    fontSizeType = _props$attributes.fontSizeType,
-	    fontSizeMobile = _props$attributes.fontSizeMobile,
-	    fontSizeTablet = _props$attributes.fontSizeTablet,
-	    iconPaddingType = _props$attributes.iconPaddingType,
-	    iconPadding = _props$attributes.iconPadding,
-	    iconPaddingTablet = _props$attributes.iconPaddingTablet,
-	    iconPaddingMobile = _props$attributes.iconPaddingMobile,
-	    titlePadding = _props$attributes.titlePadding,
-	    titlePaddingMobile = _props$attributes.titlePaddingMobile,
-	    titlePaddingTablet = _props$attributes.titlePaddingTablet,
-	    titlePaddingType = _props$attributes.titlePaddingType,
-	    layoutPos = _props$attributes.layoutPos,
-	    marginTop = _props$attributes.marginTop,
-	    marginTopMobile = _props$attributes.marginTopMobile,
-	    marginTopTablet = _props$attributes.marginTopTablet,
-	    marginTopType = _props$attributes.marginTopType,
-	    marginBottom = _props$attributes.marginBottom,
-	    marginBottomMobile = _props$attributes.marginBottomMobile,
-	    marginBottomTablet = _props$attributes.marginBottomTablet,
-	    marginBottomType = _props$attributes.marginBottomType,
-	    marginLeft = _props$attributes.marginLeft,
-	    marginLeftMobile = _props$attributes.marginLeftMobile,
-	    marginLeftType = _props$attributes.marginLeftType,
-	    marginLeftTablet = _props$attributes.marginLeftTablet,
-	    marginRightTablet = _props$attributes.marginRightTablet,
-	    marginRight = _props$attributes.marginRight,
-	    marginRightMobile = _props$attributes.marginRightMobile,
-	    marginRightType = _props$attributes.marginRightType,
-	    iconSpacing = _props$attributes.iconSpacing,
-	    iconSpacingType = _props$attributes.iconSpacingType,
-	    iconSpacingMobile = _props$attributes.iconSpacingMobile,
-	    iconSpacingTablet = _props$attributes.iconSpacingTablet,
-	    iconPosition = _props$attributes.iconPosition;
+  var _props$attributes = props.attributes,
+      multiTitleCount = _props$attributes.multiTitleCount,
+      classMigrate = _props$attributes.classMigrate,
+      icons = _props$attributes.icons,
+      sizeType = _props$attributes.sizeType,
+      size = _props$attributes.size,
+      sizeTablet = _props$attributes.sizeTablet,
+      sizeMobile = _props$attributes.sizeMobile,
+      fontSize = _props$attributes.fontSize,
+      fontSizeType = _props$attributes.fontSizeType,
+      fontSizeMobile = _props$attributes.fontSizeMobile,
+      fontSizeTablet = _props$attributes.fontSizeTablet,
+      iconPaddingType = _props$attributes.iconPaddingType,
+      iconPadding = _props$attributes.iconPadding,
+      iconPaddingTablet = _props$attributes.iconPaddingTablet,
+      iconPaddingMobile = _props$attributes.iconPaddingMobile,
+      titlePadding = _props$attributes.titlePadding,
+      titlePaddingMobile = _props$attributes.titlePaddingMobile,
+      titlePaddingTablet = _props$attributes.titlePaddingTablet,
+      titlePaddingType = _props$attributes.titlePaddingType,
+      layoutPos = _props$attributes.layoutPos,
+      marginTop = _props$attributes.marginTop,
+      marginTopMobile = _props$attributes.marginTopMobile,
+      marginTopTablet = _props$attributes.marginTopTablet,
+      marginTopType = _props$attributes.marginTopType,
+      marginBottom = _props$attributes.marginBottom,
+      marginBottomMobile = _props$attributes.marginBottomMobile,
+      marginBottomTablet = _props$attributes.marginBottomTablet,
+      marginBottomType = _props$attributes.marginBottomType,
+      marginLeft = _props$attributes.marginLeft,
+      marginLeftMobile = _props$attributes.marginLeftMobile,
+      marginLeftType = _props$attributes.marginLeftType,
+      marginLeftTablet = _props$attributes.marginLeftTablet,
+      marginRightTablet = _props$attributes.marginRightTablet,
+      marginRight = _props$attributes.marginRight,
+      marginRightMobile = _props$attributes.marginRightMobile,
+      marginRightType = _props$attributes.marginRightType,
+      iconSpacing = _props$attributes.iconSpacing,
+      iconSpacingType = _props$attributes.iconSpacingType,
+      iconSpacingMobile = _props$attributes.iconSpacingMobile,
+      iconSpacingTablet = _props$attributes.iconSpacingTablet,
+      iconPosition = _props$attributes.iconPosition;
 
 
-	var selectors = {};
-	var tablet_selectors = {};
-	var mobile_selectors = {};
+  var selectors = {};
+  var tablet_selectors = {};
+  var mobile_selectors = {};
 
-	selectors = {
-		" .premium-icon-list__icon-wrap img": {
-			"width": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType)
-		},
-		" .premium-icon-list__icon-wrap": {
-			"padding": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconPadding, iconPaddingType),
-			"margin-right": iconPosition == "left" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacing, iconSpacingType) : "",
-			"margin-left": iconPosition == "right" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacing, iconSpacingType) : "",
-			"margin-bottom": iconPosition == "top" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacing, iconSpacingType) : ""
-		},
-		" .premium-icon-list__content-icon": {
-			"width": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType),
-			"height": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType)
-		},
-		" .premium-icon-list__content-icon i": {
-			"width": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType),
-			"height": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType),
-			"font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType)
-		},
-		" .premium-icon-list__content-icon:before": {
-			"width": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType),
-			"height": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType),
-			"font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType)
-		}
-	};
+  selectors = {
+    " .premium-icon-list__icon-wrap img": {
+      width: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType)
+    },
+    " .premium-icon-list__icon-wrap": {
+      padding: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconPadding, iconPaddingType),
+      "margin-right": iconPosition == "left" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacing, iconSpacingType) : "",
+      "margin-left": iconPosition == "right" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacing, iconSpacingType) : "",
+      "margin-bottom": iconPosition == "top" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacing, iconSpacingType) : ""
+    },
+    " .premium-icon-list__content-icon": {
+      width: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType),
+      height: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType)
+    },
+    " .premium-icon-list__content-icon i": {
+      width: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType),
+      height: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType),
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType)
+    },
+    " .premium-icon-list__content-icon:before": {
+      width: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType),
+      height: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType),
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(size, sizeType)
+    }
+  };
 
-	mobile_selectors = {
-		" .premium-icon-list__icon-wrap img": {
-			"width": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType)
-		},
-		" .premium-icon-list__icon-wrap": {
-			"padding": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconPaddingMobile, iconPaddingType),
-			"margin-right": iconPosition == "left" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacingMobile, iconSpacingType) : "",
-			"margin-left": iconPosition == "right" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacingMobile, iconSpacingType) : "",
-			"margin-bottom": iconPosition == "top" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacingMobile, iconSpacingType) : ""
-		},
-		" .premium-icon-list__content-icon": {
-			"width": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType),
-			"height": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType)
-		},
-		" .premium-icon-list__content-icon i": {
-			"width": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType),
-			"height": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType),
-			"font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType)
-		},
-		" .premium-icon-list__content-icon:before": {
-			"width": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType),
-			"height": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType),
-			"font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType)
-		}
-	};
+  mobile_selectors = {
+    " .premium-icon-list__icon-wrap img": {
+      width: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType)
+    },
+    " .premium-icon-list__icon-wrap": {
+      padding: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconPaddingMobile, iconPaddingType),
+      "margin-right": iconPosition == "left" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacingMobile, iconSpacingType) : "",
+      "margin-left": iconPosition == "right" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacingMobile, iconSpacingType) : "",
+      "margin-bottom": iconPosition == "top" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacingMobile, iconSpacingType) : ""
+    },
+    " .premium-icon-list__content-icon": {
+      width: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType),
+      height: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType)
+    },
+    " .premium-icon-list__content-icon i": {
+      width: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType),
+      height: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType),
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType)
+    },
+    " .premium-icon-list__content-icon:before": {
+      width: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType),
+      height: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType),
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeMobile, sizeType)
+    }
+  };
 
-	tablet_selectors = {
-		" .premium-icon-list__icon-wrap img": {
-			"width": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType)
-		},
-		" .premium-icon-list__icon-wrap": {
-			"padding": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconPaddingTablet, iconPaddingType),
-			"margin-right": iconPosition == "left" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacingTablet, iconSpacingType) : "",
-			"margin-left": iconPosition == "right" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacingTablet, iconSpacingType) : "",
-			"margin-bottom": iconPosition == "top" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacingTablet, iconSpacingType) : ""
-		},
-		" .premium-icon-list__content-icon": {
-			"width": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType),
-			"height": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType)
-		},
-		" .premium-icon-list__content-icon i": {
-			"width": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType),
-			"height": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType),
-			"font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType)
-		},
-		" .premium-icon-list__content-icon:before": {
-			"width": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType),
-			"height": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType),
-			"font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType)
-		}
-	};
+  tablet_selectors = {
+    " .premium-icon-list__icon-wrap img": {
+      width: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType)
+    },
+    " .premium-icon-list__icon-wrap": {
+      padding: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconPaddingTablet, iconPaddingType),
+      "margin-right": iconPosition == "left" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacingTablet, iconSpacingType) : "",
+      "margin-left": iconPosition == "right" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacingTablet, iconSpacingType) : "",
+      "margin-bottom": iconPosition == "top" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(iconSpacingTablet, iconSpacingType) : ""
+    },
+    " .premium-icon-list__content-icon": {
+      width: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType),
+      height: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType)
+    },
+    " .premium-icon-list__content-icon i": {
+      width: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType),
+      height: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType),
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType)
+    },
+    " .premium-icon-list__content-icon:before": {
+      width: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType),
+      height: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType),
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(sizeTablet, sizeType)
+    }
+  };
 
-	icons.map(function (icon, index) {
-		var _mobile_selectors, _tablet_selectors;
+  icons.map(function (icon, index) {
+    var _mobile_selectors, _tablet_selectors;
 
-		if (multiTitleCount <= index) {
-			return;
-		}
+    if (multiTitleCount <= index) {
+      return;
+    }
 
-		selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-icon"] = {
-			"color": icon.icon_color
-		};
+    selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-icon"] = {
+      color: icon.icon_color
+    };
 
-		selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-icon i"] = {
-			"fill": icon.icon_color
-		};
+    selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-icon i"] = {
+      fill: icon.icon_color
+    };
 
-		selectors[" .premium-icon-list-content" + index + ":hover .premium-icon-list__content-icon"] = {
-			"color": icon.icon_hover_color
-		};
+    selectors[" .premium-icon-list-content" + index + ":hover .premium-icon-list__content-icon"] = {
+      color: icon.icon_hover_color
+    };
 
-		selectors[" .premium-icon-list-content" + index + ":hover .premium-icon-list__content-icon i"] = {
-			"fill": icon.icon_hover_color
-		};
+    selectors[" .premium-icon-list-content" + index + ":hover .premium-icon-list__content-icon i"] = {
+      fill: icon.icon_hover_color
+    };
 
-		selectors[" .premium-icon-list-content" + index + " .premium-icon-list__label"] = {
-			"color": icon.label_color,
-			"font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(fontSize, fontSizeType)
-		};
+    selectors[" .premium-icon-list-content" + index + " .premium-icon-list__label"] = {
+      color: icon.label_color,
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(fontSize, fontSizeType)
+    };
 
-		selectors[" .premium-icon-list-content" + index + ":hover .premium-icon-list__label"] = {
-			"color": icon.label_hover_color
-		};
+    selectors[" .premium-icon-list-content" + index + ":hover .premium-icon-list__label"] = {
+      color: icon.label_hover_color
+    };
 
-		selectors[" .premium-icon-list-content" + index + ":hover .premium-icon-list__content-wrap"] = {
-			"background": icon.item_bg_hover_color
-		};
+    selectors[" .premium-icon-list-content" + index + ":hover .premium-icon-list__content-wrap"] = {
+      background: icon.item_bg_hover_color
+    };
 
-		selectors[" .premium-icon-list-content" + index + " .premium-icon-list__icon-wrap"] = {
-			"background": icon.icon_bg_color
-		};
+    selectors[" .premium-icon-list-content" + index + " .premium-icon-list__icon-wrap"] = {
+      background: icon.icon_bg_color
+    };
 
-		selectors[" .premium-icon-list-content" + index + ":hover .premium-icon-list__icon-wrap"] = {
-			"background": icon.icon_bg_hover_color
-			// item Padding
-		};selectors[" .premium-icon-list-content" + index] = {
-			"padding": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(titlePadding, titlePaddingType)
-		};
+    selectors[" .premium-icon-list-content" + index + ":hover .premium-icon-list__icon-wrap"] = {
+      background: icon.icon_bg_hover_color
+    };
+    // item Padding
+    selectors[" .premium-icon-list-content" + index] = {
+      padding: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(titlePadding, titlePaddingType)
+    };
 
-		mobile_selectors[" .premium-icon-list-content" + index] = {
-			"padding": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(titlePaddingMobile, titlePaddingType)
-		};
+    mobile_selectors[" .premium-icon-list-content" + index] = {
+      padding: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(titlePaddingMobile, titlePaddingType)
+    };
 
-		tablet_selectors[" .premium-icon-list-content" + index] = {
-			"padding": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(titlePaddingTablet, titlePaddingType)
-		};
+    tablet_selectors[" .premium-icon-list-content" + index] = {
+      padding: Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(titlePaddingTablet, titlePaddingType)
+    };
 
-		mobile_selectors[" .premium-icon-list-content" + index + " .premium-icon-list__label"] = {
-			"font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(fontSizeMobile, fontSizeType)
-		};
+    mobile_selectors[" .premium-icon-list-content" + index + " .premium-icon-list__label"] = {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(fontSizeMobile, fontSizeType)
+    };
 
-		tablet_selectors[" .premium-icon-list-content" + index + " .premium-icon-list__label"] = {
-			"font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(fontSizeTablet, fontSizeType)
-			//margins for Items
-		};selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-wrap"] = {
-			"background": icon.item_bg_color,
-			"margin-top": layoutPos == 'block' ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginTop, marginTopType) : "",
-			"margin-bottom": layoutPos == 'block' ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginBottom, marginBottomType) : "",
-			"margin-right": layoutPos == 'block' ? "" : Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginRight, marginRightType),
-			"margin-left": layoutPos == 'block' ? "" : Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginLeft, marginLeftType)
-		};
+    tablet_selectors[" .premium-icon-list-content" + index + " .premium-icon-list__label"] = {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(fontSizeTablet, fontSizeType)
+    };
+    //margins for Items
+    selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-wrap"] = {
+      background: icon.item_bg_color,
+      "margin-top": layoutPos == "block" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginTop, marginTopType) : "",
+      "margin-bottom": layoutPos == "block" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginBottom, marginBottomType) : "",
+      "margin-right": layoutPos == "block" ? "" : Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginRight, marginRightType),
+      "margin-left": layoutPos == "block" ? "" : Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginLeft, marginLeftType)
+    };
 
-		mobile_selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-wrap"] = (_mobile_selectors = {
-			"margin-top": layoutPos == 'block' ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginTopMobile, marginTopType) : ""
-		}, _defineProperty(_mobile_selectors, 'margin-top', layoutPos == 'block' ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginBottomMobile, marginBottomType) : ""), _defineProperty(_mobile_selectors, "margin-right", layoutPos == 'block' ? "" : Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginRightMobile, marginRightType)), _defineProperty(_mobile_selectors, "margin-left", layoutPos == 'block' ? "" : Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginLeftMobile, marginLeftType)), _mobile_selectors);
+    mobile_selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-wrap"] = (_mobile_selectors = {
+      "margin-top": layoutPos == "block" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginTopMobile, marginTopType) : ""
+    }, _defineProperty(_mobile_selectors, "margin-top", layoutPos == "block" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginBottomMobile, marginBottomType) : ""), _defineProperty(_mobile_selectors, "margin-right", layoutPos == "block" ? "" : Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginRightMobile, marginRightType)), _defineProperty(_mobile_selectors, "margin-left", layoutPos == "block" ? "" : Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginLeftMobile, marginLeftType)), _mobile_selectors);
 
-		tablet_selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-wrap"] = (_tablet_selectors = {
-			"margin-top": layoutPos == 'block' ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginTopTablet, marginTopType) : ""
-		}, _defineProperty(_tablet_selectors, 'margin-top', layoutPos == 'block' ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginBottomTablet, marginBottomType) : ""), _defineProperty(_tablet_selectors, "margin-right", layoutPos == 'block' ? "" : Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginRightTablet, marginRightType)), _defineProperty(_tablet_selectors, "margin-left", layoutPos == 'block' ? "" : Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginLeftTablet, marginLeftType)), _tablet_selectors);
-	});
+    tablet_selectors[" .premium-icon-list-content" + index + " .premium-icon-list__content-wrap"] = (_tablet_selectors = {
+      "margin-top": layoutPos == "block" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginTopTablet, marginTopType) : ""
+    }, _defineProperty(_tablet_selectors, "margin-top", layoutPos == "block" ? Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginBottomTablet, marginBottomType) : ""), _defineProperty(_tablet_selectors, "margin-right", layoutPos == "block" ? "" : Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginRightTablet, marginRightType)), _defineProperty(_tablet_selectors, "margin-left", layoutPos == "block" ? "" : Object(__WEBPACK_IMPORTED_MODULE_1__generateCssUnit__["a" /* default */])(marginLeftTablet, marginLeftType)), _tablet_selectors);
+  });
 
-	var styling_css = "";
-	var id = '#premium-icon-list-' + props.clientId;
-	if (classMigrate) {
-		id = '.premium-block-' + props.clientId;
-	}
+  var styling_css = "";
+  var id = "#premium-icon-list-" + props.clientId;
+  if (classMigrate) {
+    id = ".premium-block-" + props.clientId;
+  }
 
-	styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__generateCss__["a" /* default */])(selectors, id);
-	styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
+  styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__generateCss__["a" /* default */])(selectors, id);
+  styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
 
-	styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
-
-	return styling_css;
+  styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
+  console.log(styling_css);
+  return styling_css;
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (styling);
@@ -46802,10 +46804,8 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_Blog__ = __webpack_require__(281);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_Blog___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__assets_js_Blog__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icons__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(282);
 var _attributes;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -46814,14 +46814,12 @@ var __ = wp.i18n.__;
 
 
 
-
 //import save from "./save";
-alert("HELOO");
 var registerBlockType = wp.blocks.registerBlockType;
 
 registerBlockType("premium/post-blog", {
   title: __("Premium Blog"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "content-switcher" }),
+  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__icons__["a" /* default */], { icon: "content-switcher" }),
   category: "premium-blocks",
   attributes: (_attributes = {
     blockID: {
@@ -46934,7 +46932,7 @@ registerBlockType("premium/post-blog", {
     },
     featuredImage: {
       type: "boolean",
-      default: false
+      default: true
     },
     hoverEffect: {
       type: "string",
@@ -46968,6 +46966,9 @@ registerBlockType("premium/post-blog", {
   }), _defineProperty(_attributes, "excerptType", {
     type: "string",
     default: "Dots"
+  }), _defineProperty(_attributes, "excerptLength", {
+    type: "number",
+    default: 25
   }), _defineProperty(_attributes, "fullWidth", {
     type: "boolean",
     default: false
@@ -47057,8 +47058,8 @@ registerBlockType("premium/post-blog", {
   }), _defineProperty(_attributes, "paginationPosition", {
     type: "string"
   }), _defineProperty(_attributes, "imageSize", {
-    type: "number",
-    default: "medium"
+    type: "string",
+    default: "large"
   }), _defineProperty(_attributes, "categories", {
     type: "string"
   }), _defineProperty(_attributes, "overlayColor", {
@@ -47262,209 +47263,13 @@ registerBlockType("premium/post-blog", {
   }), _defineProperty(_attributes, "PostmarginLeftTablet", {
     type: "number"
   }), _attributes),
-  supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_Blog__["Blog"]
-  },
   example: {},
-  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+  edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */],
   save: function save() {}
 });
 
 /***/ }),
-/* 281 */
-/***/ (function(module, exports) {
-
-jQuery(document).ready(function ($) {
-  setTimeout(function () {
-
-    var $blogElement = $(".premium-blog-wrap"),
-        $blogPost = $blogElement.find(".premium-blog-post-outer-container"),
-        carousel = $blogElement.data("carousel"),
-        grid = $blogElement.data("grid"),
-        layout = $blogElement.data("layout"),
-        pagination = $blogElement.data("pagination"),
-        pageNumber = 1;
-    console.log($blogElement);
-    var $metaSeparators = $blogPost.first().find(".premium-blog-meta-separator");
-
-    if (1 === $metaSeparators.length) {
-      //If two meta only are enabled. One of them is author meta.
-      if (!$blogPost.find(".fa-user").length) {
-        $blogPost.find(".premium-blog-meta-separator").remove();
-      }
-    } else {
-      if (!$blogPost.find(".fa-user").length) {
-        $blogPost.each(function (index, post) {
-          $(post).find(".premium-blog-meta-separator").first().remove();
-        });
-      }
-    }
-
-    if (carousel) {
-
-      var autoPlay = $blogElement.data("play"),
-          speed = $blogElement.data("speed"),
-          fade = $blogElement.data("fade"),
-          center = $blogElement.data("center"),
-          spacing = $blogElement.data("slides-spacing"),
-          arrows = $blogElement.data("arrows"),
-          dots = $blogElement.data("dots"),
-          cols = $blogElement.data("col"),
-          colsTablet = $blogElement.data("col-tablet"),
-          colsMobile = $blogElement.data("col-mobile"),
-          slidesToScroll = $blogElement.data("scroll-slides"),
-          prevArrow = null,
-          nextArrow = null;
-
-      if (!grid) cols = colsTablet = colsMobile = 1;
-
-      if (arrows) {
-        prevArrow = '<a type="button" data-role="none" class="carousel-arrow carousel-prev" aria-label="Next" role="button" style=""><i class="fas fa-angle-left" aria-hidden="true"></i></a>', nextArrow = '<a type="button" data-role="none" class="carousel-arrow carousel-next" aria-label="Next" role="button" style=""><i class="fas fa-angle-right" aria-hidden="true"></i></a>';
-      } else {
-        prevArrow = prevArrow = "";
-      }
-
-      $($blogElement).slick({
-        infinite: true,
-        slidesToShow: cols,
-        slidesToScroll: slidesToScroll || cols,
-        responsive: [{
-          breakpoint: 1025,
-          settings: {
-            slidesToShow: colsTablet,
-            slidesToScroll: 1
-          }
-        }, {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: colsMobile,
-            slidesToScroll: 1
-          }
-        }],
-        autoplay: autoPlay,
-        autoplaySpeed: speed,
-        nextArrow: nextArrow,
-        prevArrow: prevArrow,
-        fade: fade,
-        centerMode: center,
-        centerPadding: spacing + "px",
-        draggable: true,
-        dots: dots,
-        customPaging: function customPaging() {
-          return '<i class="fas fa-circle"></i>';
-        }
-      });
-    }
-
-    //Force posts inner boxes to take the same height
-    if ("even" === layout) {
-      var equalHeight = $blogElement.data("equal");
-
-      if (equalHeight) {
-        forceEqualHeight();
-      }
-    }
-
-    function forceEqualHeight() {
-      var heights = new Array();
-
-      $blogElement.find(".premium-blog-content-wrapper").each(function (index, post) {
-        var height = $(post).outerHeight();
-
-        heights.push(height);
-      });
-
-      var maxHeight = Math.max.apply(null, heights);
-
-      $blogElement.find(".premium-blog-content-wrapper").css("height", maxHeight + "px");
-    }
-
-    //Handle Pagination
-    if (pagination) {
-      $scope.on("click", ".premium-blog-pagination-container .page-numbers", function (e) {
-        e.preventDefault();
-
-        //If pagination item is clicked twice
-        if ($(this).hasClass("current")) return;
-
-        var currentPage = parseInt($scope.find(".premium-blog-pagination-container .page-numbers.current").html());
-
-        if ($(this).hasClass("next")) {
-          pageNumber = currentPage + 1;
-        } else if ($(this).hasClass("prev")) {
-          pageNumber = currentPage - 1;
-        } else {
-          pageNumber = $(this).html();
-        }
-
-        getPostsByAjax(true);
-      });
-    }
-
-    function getPostsByAjax(shouldScroll) {
-      //If filter tabs is not enabled, then always set category to all.
-      if ("undefined" === typeof activeCategory) {
-        activeCategory = "*";
-      }
-
-      $.ajax({
-        url: PremiumSettings.ajaxurl,
-        dataType: "json",
-        type: "POST",
-        data: {
-          action: "pa_get_posts",
-          page_id: $blogElement.data("page"),
-          widget_id: $scope.data("id"),
-          page_number: pageNumber,
-          category: activeCategory,
-          nonce: PremiumSettings.nonce
-        },
-        beforeSend: function beforeSend() {
-          $blogElement.append('<div class="premium-loading-feed"><div class="premium-loader"></div></div>');
-
-          if (shouldScroll) {
-            $("html, body").animate({
-              scrollTop: $blogElement.offset().top - 50
-            }, "slow");
-          }
-        },
-        success: function success(res) {
-          if (!res.data) return;
-
-          $blogElement.find(".premium-loading-feed").remove();
-
-          var posts = res.data.posts,
-              paging = res.data.paging;
-
-          //Render the new markup into the widget
-          $blogElement.html(posts);
-
-          $scope.find(".premium-blog-footer").html(paging);
-
-          if ("even" === layout) {
-            var equalHeight = $blogElement.data("equal");
-            if (equalHeight) {
-              forceEqualHeight();
-            }
-          } else {
-            $blogElement.imagesLoaded(function () {
-              $blogElement.isotope("reloadItems");
-              $blogElement.isotope({
-                itemSelector: ".premium-blog-post-outer-container",
-                animate: false
-              });
-            });
-          }
-        },
-        error: function error(err) {
-          console.log(err);
-        }
-      });
-    }
-  }, 3000);
-});
-
-/***/ }),
+/* 281 */,
 /* 282 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -47745,7 +47550,11 @@ var edit = function (_Component) {
       if (null != element) {
         element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_7__styling__["a" /* default */])(this.props);
       }
-
+      var hundleCarousel = function hundleCarousel(value) {
+        setAttributes({ layoutValue: "" });
+        setAttributes({ Carousel: value });
+      };
+      console.log(taxonomyList["post_tag"], categoryListOptions, categoriesList);
       var Inspectors = wp.element.createElement(
         InspectorControls,
         null,
@@ -48156,8 +47965,8 @@ var edit = function (_Component) {
           wp.element.createElement(ToggleControl, {
             label: __("Enable Carousel"),
             checked: Carousel,
-            onChange: function onChange() {
-              return setAttributes({ Carousel: !Carousel });
+            onChange: function onChange(value) {
+              return hundleCarousel(value);
             }
           }),
           Carousel && wp.element.createElement(
@@ -48824,8 +48633,7 @@ var edit = function (_Component) {
           Inspectors,
           wp.element.createElement(Spinner, null)
         );
-      }
-      if (layoutValue === "Masonry") {
+      } else {
         return wp.element.createElement(
           Fragment,
           null,
@@ -48833,25 +48641,34 @@ var edit = function (_Component) {
           wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__Masonry__["a" /* default */], {
             latestPosts: latestPosts,
             categoriesList: categoriesList,
-            attributes: attributes
-          })
-        );
-      } else {
-        return wp.element.createElement(
-          Fragment,
-          null,
-          Inspectors,
-          Carousel ? wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__Carousel__["a" /* default */], {
             attributes: attributes,
-            categoriesList: categoriesList,
-            latestPosts: latestPosts
-          }) : wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__blog__["a" /* default */], {
-            attributes: attributes,
-            categoriesList: categoriesList,
-            latestPosts: latestPosts
+            taxonomyList: taxonomyList
           })
         );
       }
+      // if (layoutValue === "Masonry") {
+      //   return (
+      //     <Fragment>
+      //       {Inspectors}
+      //       <Masonry
+      //         latestPosts={latestPosts}
+      //         categoriesList={categoriesList}
+      //         attributes={attributes}
+      //       />
+      //     </Fragment>
+      //   );
+      // } else {
+      //   return (
+      //     <Fragment>
+      //       {Inspectors}
+      //       <Blog
+      //         latestPosts={latestPosts}
+      //         categoriesList={categoriesList}
+      //         attributes={attributes}
+      //       />
+      //     </Fragment>
+      //   );
+      // }
     }
   }]);
 
@@ -48869,30 +48686,21 @@ var edit = function (_Component) {
   var _select = select("core"),
       getEntityRecords = _select.getEntityRecords;
 
-  // let allTaxonomy = uagb_blocks_info.all_taxonomy;
-  // let currentTax = allTaxonomy["post"];
-
-
+  var allTaxonomy = uagb_blocks_info.all_taxonomy;
+  var currentTax = allTaxonomy["post"];
   var categoriesList = wp.data.select("core").getEntityRecords("taxonomy", "category");
   var rest_base = "";
 
-  // if ("undefined" != typeof currentTax) {
-  //   if ("undefined" != typeof currentTax["taxonomy"][postFilter]) {
-  //     rest_base =
-  //       currentTax["taxonomy"][postFilter]["rest_base"] == false ||
-  //       currentTax["taxonomy"][postFilter]["rest_base"] == null
-  //         ? currentTax["taxonomy"][postFilter]["name"]
-  //         : currentTax["taxonomy"][postFilter]["rest_base"];
-  //   }
-  // if ("" != postFilter) {
-  //   if (
-  //     "undefined" != typeof currentTax["terms"] &&
-  //     "undefined" != typeof currentTax["terms"][postFilter]
-  //   ) {
-  //     categoriesList = currentTax["terms"][postFilter];
-  //   }
-  // }
-  //}
+  if ("undefined" != typeof currentTax) {
+    if ("undefined" != typeof currentTax["taxonomy"][postFilter]) {
+      rest_base = currentTax["taxonomy"][postFilter]["rest_base"] == false || currentTax["taxonomy"][postFilter]["rest_base"] == null ? currentTax["taxonomy"][postFilter]["name"] : currentTax["taxonomy"][postFilter]["rest_base"];
+    }
+    if ("" != postFilter) {
+      if ("undefined" != typeof currentTax["terms"] && "undefined" != typeof currentTax["terms"][postFilter]) {
+        categoriesList = currentTax["terms"][postFilter];
+      }
+    }
+  }
   var latestPostsQuery = {
     order: order,
     orderBy: orderBy
@@ -48921,6 +48729,8 @@ var edit = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Image__ = __webpack_require__(67);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -48946,6 +48756,29 @@ var __ = wp.i18n.__;
 
 var prevArrow = void 0,
     nextArrow = void 0;
+function SampleNextArrow(props) {
+  var className = props.className,
+      style = props.style,
+      onClick = props.onClick;
+
+  return wp.element.createElement("div", {
+    className: className,
+    style: _extends({}, style, { display: "block" }),
+    onClick: onClick
+  });
+}
+
+function SamplePrevArrow(props) {
+  var className = props.className,
+      style = props.style,
+      onClick = props.onClick;
+
+  return wp.element.createElement("div", {
+    className: className,
+    style: _extends({}, style, { display: "block" }),
+    onClick: onClick
+  });
+}
 
 var Carousel = function (_React$Component) {
   _inherits(Carousel, _React$Component);
@@ -49050,7 +48883,7 @@ var Carousel = function (_React$Component) {
         infinite: true,
         autoplay: Autoplay,
         speed: autoplaySpeed
-      }, _defineProperty(_settings, "speed", autoplaySpeed), _defineProperty(_settings, "slidesToShow", cols), _defineProperty(_settings, "slidesToScroll", slideToScroll), _defineProperty(_settings, "responsive", [{
+      }, _defineProperty(_settings, "speed", autoplaySpeed), _defineProperty(_settings, "slidesToShow", cols), _defineProperty(_settings, "nextArrow", wp.element.createElement(SampleNextArrow, null)), _defineProperty(_settings, "prevArrow", wp.element.createElement(SamplePrevArrow, null)), _defineProperty(_settings, "slidesToScroll", slideToScroll), _defineProperty(_settings, "responsive", [{
         breakpoint: 1025,
         settings: {
           slidesToShow: colsTablet,
@@ -49087,7 +48920,9 @@ var Carousel = function (_React$Component) {
                   wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__Image__["a" /* default */], { post: post, attributes: attributes }),
                   wp.element.createElement(
                     "div",
-                    { className: "premium-blog-content-wrapper empty-thumb" },
+                    {
+                      className: "premium-blog-content-wrapper empty-thumb equal-Height"
+                    },
                     wp.element.createElement(
                       "div",
                       { className: "premium-blog-content-wrapper-inner" },
@@ -49137,7 +48972,7 @@ var Carousel = function (_React$Component) {
   return Carousel;
 }(React.Component);
 
-/* harmony default export */ __webpack_exports__["a"] = (Carousel);
+/* unused harmony default export */ var _unused_webpack_default_export = (Carousel);
 
 /***/ }),
 /* 284 */
@@ -53538,7 +53373,7 @@ var Blog = function (_React$Component) {
   return Blog;
 }(React.Component);
 
-/* harmony default export */ __webpack_exports__["a"] = (Blog);
+/* unused harmony default export */ var _unused_webpack_default_export = (Blog);
 
 /***/ }),
 /* 301 */
@@ -53942,6 +53777,7 @@ function generateCSSUnit(value, unit) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Excerpt__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Button__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Tags__ = __webpack_require__(368);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53956,6 +53792,7 @@ var _wp$date = wp.date,
     dateI18n = _wp$date.dateI18n,
     format = _wp$date.format,
     __experimentalGetSettings = _wp$date.__experimentalGetSettings;
+
 
 
 
@@ -53984,6 +53821,7 @@ var MasonryClass = function (_React$Component) {
           className = _props.className,
           latestPosts = _props.latestPosts,
           block_id = _props.block_id,
+          taxonomyList = _props.taxonomyList,
           categoriesList = _props.categoriesList,
           setAttributes = _props.setAttributes;
       var __ = wp.i18n.__;
@@ -61141,6 +60979,74 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
 
 module.exports = factory;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ }),
+/* 368 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __ = wp.i18n.__;
+
+var Tags = function (_React$Component) {
+  _inherits(Tags, _React$Component);
+
+  function Tags() {
+    _classCallCheck(this, Tags);
+
+    return _possibleConstructorReturn(this, (Tags.__proto__ || Object.getPrototypeOf(Tags)).apply(this, arguments));
+  }
+
+  _createClass(Tags, [{
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          post = _props.post,
+          attributes = _props.attributes,
+          taxonomyList = _props.taxonomyList,
+          categoriesList = _props.categoriesList;
+
+      var tags = taxonomyList["post_tag"];
+      console.log(tags, taxonomyList);
+      var categoryObject = [];
+      if (categoriesList) {
+        categoriesList.map(function (item, thisIndex) {
+          if (post.categories && item.id == post.categories[thisIndex]) {
+            categoryObject.push(item);
+            //alert(item);
+          }
+        });
+      }
+      if (taxonomyList && attributes.displayPostTags) {
+        return wp.element.createElement(
+          "div",
+          { className: "premium-blog-post-tags-container" },
+          wp.element.createElement("i", { className: "fa fa-tags fa-fw" }),
+          categoryObject.length === 0 ? "Uncategorized" : categoryObject.map(function (category) {
+            return wp.element.createElement(
+              "span",
+              null,
+              category.name + " "
+            );
+          })
+        );
+      } else {
+        return null;
+      }
+    }
+  }]);
+
+  return Tags;
+}(React.Component);
+
+/* unused harmony default export */ var _unused_webpack_default_export = (Tags);
 
 /***/ })
 /******/ ]);

@@ -2,21 +2,21 @@
  <?php
 
 /**
- * UAGB Post.
+ * PBG Post.
  *
- * @package UAGB
+ * @package PBG
  */
 
 if (!defined('ABSPATH')) {
       exit; // Exit if accessed directly.
 }
 
-if (!class_exists('UAGB_Post')) {
+if (!class_exists('PBG_Post')) {
 
       /**
-       * Class UAGB_Post.
+       * Class PBG_Post.
        */
-      class UAGB_Post
+      class PBG_Post
       {
 
 
@@ -76,15 +76,12 @@ if (!class_exists('UAGB_Post')) {
                   $common_attributes = $this->get_post_attributes();
 
                   register_block_type(
-                        'uagb/post-grid',
+                        'premium/post-blog',
                         array(
                               'attributes'      => array_merge(
                                     $common_attributes,
                                     array(
-                                          'equalHeight'                 => array(
-                                                'type'    => 'boolean',
-                                                'default' => true,
-                                          ),
+                                         
                                           'pagination'              => array(
                                                 'type'    => 'boolean',
                                                 'default' => false,
@@ -157,7 +154,7 @@ if (!class_exists('UAGB_Post')) {
             }
 
             /**
-             * Get Post common attributes for all Post Grid, Masonry and Carousel.
+             * Get Post common attributes 
              *
              * @since 0.0.1
              */
@@ -165,11 +162,8 @@ if (!class_exists('UAGB_Post')) {
             {
 
                   return array(
-                        'inheritFromTheme'        => array(
-                              'type'    => 'boolean',
-                              'default' => false,
-                        ),
-                        'block_id'                => array(
+                       
+                        'blockID'                => array(
                               'type'    => 'string',
                               'default' => 'not_set',
                         ),
@@ -180,17 +174,14 @@ if (!class_exists('UAGB_Post')) {
                               'type'    => 'string',
                               'default' => 'post',
                         ),
-                        'postDisplaytext'         => array(
-                              'type'    => 'string',
-                              'default' => 'No post found!',
-                        ),
+                       
                         'taxonomyType'            => array(
                               'type'    => 'string',
                               'default' => 'category',
                         ),
-                        'postsToShow'             => array(
+                        'numOfPosts'             => array(
                               'type'    => 'number',
-                              'default' => 6,
+                              'default' => 1,
                         ),
                         'displayPostDate'         => array(
                               'type'    => 'boolean',
@@ -208,30 +199,24 @@ if (!class_exists('UAGB_Post')) {
                               'type'    => 'boolean',
                               'default' => true,
                         ),
-                        'displayPostTitle'        => array(
-                              'type'    => 'boolean',
-                              'default' => true,
-                        ),
+                        
                         'displayPostComment'      => array(
                               'type'    => 'boolean',
                               'default' => true,
                         ),
-                        'displayPostTaxonomy'     => array(
+                        'displayPostCategories'     => array(
                               'type'    => 'boolean',
                               'default' => false,
                         ),
-                        'displayPostImage'        => array(
+                        ' featuredImage'        => array(
                               'type'    => 'boolean',
                               'default' => true,
                         ),
-                        'imgSize'                 => array(
+                        'imageSize'                 => array(
                               'type'    => 'string',
                               'default' => 'large',
                         ),
-                        'imgPosition'             => array(
-                              'type'    => 'string',
-                              'default' => 'top',
-                        ),
+                       
                         'linkBox'                 => array(
                               'type' => 'boolean',
                         ),
@@ -282,15 +267,15 @@ if (!class_exists('UAGB_Post')) {
                               'type'    => 'number',
                               'default' => 0,
                         ),
-                        'columns'                 => array(
+                        'cols'                 => array(
                               'type'    => 'number',
                               'default' => 3,
                         ),
-                        'tcolumns'                => array(
+                        'colsTablet'                => array(
                               'type'    => 'number',
                               'default' => 2,
                         ),
-                        'mcolumns'                => array(
+                        'colsMobile'                => array(
                               'type'    => 'number',
                               'default' => 1,
                         ),
@@ -568,7 +553,7 @@ if (!class_exists('UAGB_Post')) {
             {
 
                   // Render query.
-                  $query = UAGB_Helper::get_query($attributes, 'grid');
+                  $query = PBG_Helper::get_query($attributes, 'grid');
 
                   // Cache the settings.
                   self::$attributes['block_id'] = $attributes;
@@ -579,22 +564,7 @@ if (!class_exists('UAGB_Post')) {
                   return ob_get_clean();
             }
 
-            /**
-             * Renders the post carousel block on server.
-             *
-             * @param array $attributes Array of block attributes.
-             *
-             * @since 0.0.1
-             */
-         
-
-            /**
-             * Renders the post masonry block on server.
-             *
-             * @param array $attributes Array of block attributes.
-             *
-             * @since 0.0.1
-             */
+        
           
 
             /**
@@ -606,10 +576,10 @@ if (!class_exists('UAGB_Post')) {
              * @param string $layout post grid/masonry/carousel layout.
              * @since 0.0.1
              */
-            public function get_post_html($attributes, $query, $layout)
+            public function get_post_html($attributes, $query)
             {
 
-                  $attributes['post_type'] = $layout;
+               
 
                   $wrap = array(
                         'uagb-post__items uagb-post__columns-' . $attributes['columns'],
@@ -627,10 +597,6 @@ if (!class_exists('UAGB_Post')) {
                   );
 
              
-                              if ($attributes['equalHeight']) {
-                                    array_push($wrap, 'uagb-post__equal-height');
-                              }
-                              
 
                        
 
@@ -649,13 +615,7 @@ if (!class_exists('UAGB_Post')) {
                         <?php
                         $post_not_found = $query->found_posts;
 
-                        if (0 === $post_not_found) {
-                        ?>
-                              <p class="uagb-post__no-posts">
-                                    <?php echo esc_html($attributes['postDisplaytext']); ?>
-                              </p>
-                        <?php
-                        }
+                      
 
                         if ((isset($attributes['postPagination']) && true === $attributes['postPagination'])) {
 
@@ -684,12 +644,12 @@ if (!class_exists('UAGB_Post')) {
 
                   $permalink_structure = get_option('permalink_structure');
                   $base                = untrailingslashit(wp_specialchars_decode(get_pagenum_link()));
-                  $base                = UAGB_Helper::build_base_url($permalink_structure, $base);
-                  $format              = UAGB_Helper::paged_format($permalink_structure, $base);
-                  $paged               = UAGB_Helper::get_paged($query);
+                  $base                = PBG_Helper::build_base_url($permalink_structure, $base);
+                  $format              = PBG_Helper::paged_format($permalink_structure, $base);
+                  $paged               = PBG_Helper::get_paged($query);
                   $page_limit          = min($attributes['pageLimit'], $query->max_num_pages);
                   $page_limit          = isset($page_limit) ? $page_limit : $attributes['postsToShow'];
-                  $attributes['postsToShow'];
+                  $attributes['numOfPosts'];
 
                   $links = paginate_links(
                         array(
@@ -725,7 +685,7 @@ if (!class_exists('UAGB_Post')) {
 
                   if (isset($_POST['attributes'])) {
 
-                        $query = UAGB_Helper::get_query($_POST['attributes'], 'grid');
+                        $query = PBG_Helper::get_query($_POST['attributes']);
 
                         $pagination_markup = $this->render_pagination($query, $_POST['attributes']);
 
@@ -809,7 +769,7 @@ if (!class_exists('UAGB_Post')) {
                                     });
                                     <?php $selector = '.uagb-block-' . $key; ?>
                                     jQuery(document).ready(function() {
-                                          UAGBPostMasonry._init(<?php echo wp_json_encode($value); ?>, '<?php echo esc_attr($selector); ?>');
+                                          PBGPostMasonry._init(<?php echo wp_json_encode($value); ?>, '<?php echo esc_attr($selector); ?>');
                                     });
                               </script>
                         <?php
@@ -874,11 +834,11 @@ if (!class_exists('UAGB_Post')) {
 
                                                 if (enableEqualHeight) {
                                                       $scope.imagesLoaded(function() {
-                                                            UAGBPostCarousel._setHeight($scope);
+                                                            PBGPostCarousel._setHeight($scope);
                                                       });
 
                                                       $scope.on('afterChange', function() {
-                                                            UAGBPostCarousel._setHeight($scope);
+                                                            PBGPostCarousel._setHeight($scope);
                                                       });
                                                 }
 
@@ -1164,8 +1124,8 @@ if (!class_exists('UAGB_Post')) {
       }
 
       /**
-       *  Prepare if class 'UAGB_Post' exist.
+       *  Prepare if class 'PBG_Post' exist.
        *  Kicking this off by calling 'get_instance()' method
        */
-      UAGB_Post::get_instance();
+      PBG_Post::get_instance();
 } 

@@ -268,7 +268,11 @@ class edit extends Component {
     if (null != element) {
       element.innerHTML = styling(this.props);
     }
-
+    const hundleCarousel = (value) => {
+      setAttributes({ layoutValue: "" });
+      setAttributes({ Carousel: value });
+    };
+    console.log(taxonomyList["post_tag"], categoryListOptions, categoriesList);
     const Inspectors = (
       <InspectorControls>
         <PanelBody
@@ -693,7 +697,7 @@ class edit extends Component {
             <ToggleControl
               label={__("Enable Carousel")}
               checked={Carousel}
-              onChange={() => setAttributes({ Carousel: !Carousel })}
+              onChange={(value) => hundleCarousel(value)}
             />
             {Carousel && (
               <Fragment>
@@ -1351,8 +1355,7 @@ class edit extends Component {
           <Spinner />
         </Fragment>
       );
-    }
-    if (layoutValue === "Masonry") {
+    } else {
       return (
         <Fragment>
           {Inspectors}
@@ -1360,29 +1363,34 @@ class edit extends Component {
             latestPosts={latestPosts}
             categoriesList={categoriesList}
             attributes={attributes}
+            taxonomyList={taxonomyList}
           />
         </Fragment>
       );
-    } else {
-      return (
-        <Fragment>
-          {Inspectors}
-          {Carousel ? (
-            <CarouselComponent
-              attributes={attributes}
-              categoriesList={categoriesList}
-              latestPosts={latestPosts}
-            />
-          ) : (
-            <Blog
-              attributes={attributes}
-              categoriesList={categoriesList}
-              latestPosts={latestPosts}
-            />
-          )}
-        </Fragment>
-      );
     }
+    // if (layoutValue === "Masonry") {
+    //   return (
+    //     <Fragment>
+    //       {Inspectors}
+    //       <Masonry
+    //         latestPosts={latestPosts}
+    //         categoriesList={categoriesList}
+    //         attributes={attributes}
+    //       />
+    //     </Fragment>
+    //   );
+    // } else {
+    //   return (
+    //     <Fragment>
+    //       {Inspectors}
+    //       <Blog
+    //         latestPosts={latestPosts}
+    //         categoriesList={categoriesList}
+    //         attributes={attributes}
+    //       />
+    //     </Fragment>
+    //   );
+    // }
   }
 }
 export default withSelect((select, props) => {
@@ -1395,30 +1403,30 @@ export default withSelect((select, props) => {
   } = props.attributes;
   const { getEntityRecords } = select("core");
 
-  // let allTaxonomy = uagb_blocks_info.all_taxonomy;
-  // let currentTax = allTaxonomy["post"];
+  let allTaxonomy = uagb_blocks_info.all_taxonomy;
+  let currentTax = allTaxonomy["post"];
   let categoriesList = wp.data
     .select("core")
     .getEntityRecords("taxonomy", "category");
   let rest_base = "";
 
-  // if ("undefined" != typeof currentTax) {
-  //   if ("undefined" != typeof currentTax["taxonomy"][postFilter]) {
-  //     rest_base =
-  //       currentTax["taxonomy"][postFilter]["rest_base"] == false ||
-  //       currentTax["taxonomy"][postFilter]["rest_base"] == null
-  //         ? currentTax["taxonomy"][postFilter]["name"]
-  //         : currentTax["taxonomy"][postFilter]["rest_base"];
-  //   }
-  // if ("" != postFilter) {
-  //   if (
-  //     "undefined" != typeof currentTax["terms"] &&
-  //     "undefined" != typeof currentTax["terms"][postFilter]
-  //   ) {
-  //     categoriesList = currentTax["terms"][postFilter];
-  //   }
-  // }
-  //}
+  if ("undefined" != typeof currentTax) {
+    if ("undefined" != typeof currentTax["taxonomy"][postFilter]) {
+      rest_base =
+        currentTax["taxonomy"][postFilter]["rest_base"] == false ||
+        currentTax["taxonomy"][postFilter]["rest_base"] == null
+          ? currentTax["taxonomy"][postFilter]["name"]
+          : currentTax["taxonomy"][postFilter]["rest_base"];
+    }
+    if ("" != postFilter) {
+      if (
+        "undefined" != typeof currentTax["terms"] &&
+        "undefined" != typeof currentTax["terms"][postFilter]
+      ) {
+        categoriesList = currentTax["terms"][postFilter];
+      }
+    }
+  }
   let latestPostsQuery = {
     order: order,
     orderBy: orderBy,
