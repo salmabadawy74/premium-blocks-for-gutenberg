@@ -20,6 +20,8 @@ if( ! class_exists( 'PBG_Plugin' ) ) {
             
             //Enqueue the required files
             $this->pbg_setup();
+            
+            add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
         }
         
         /*
@@ -52,12 +54,17 @@ if( ! class_exists( 'PBG_Plugin' ) ) {
          * @access public
          * @return void
          */
+        public function load_plugin() {
+            
+            require_once PREMIUM_BLOCKS_PATH . 'includes/post2.php';
+
+        }
+
         public function init_files() {
             
             require_once ( PREMIUM_BLOCKS_PATH . 'admin/settings/elements.php' );
             require_once ( PREMIUM_BLOCKS_PATH . 'admin/settings/assets.php');
-         
-
+            // require_once ( PREMIUM_BLOCKS_PATH . 'includes/post2.php' );
             
             if( is_admin() ) {
                 require_once ( PREMIUM_BLOCKS_PATH . 'admin/reports/deps/data.php' );
@@ -69,7 +76,7 @@ if( ! class_exists( 'PBG_Plugin' ) ) {
             }
             
             require_once ( PREMIUM_BLOCKS_PATH . 'classes/class-pbg-blocks-helper.php' );
-          
+
         }
         
         /**
@@ -79,12 +86,29 @@ if( ! class_exists( 'PBG_Plugin' ) ) {
          * return object
          */
         public static function get_instance() {
+
             if( self::$instance == null ) {
                 self::$instance = new self;
             }
+
             return self::$instance;
+
         }
- 
+
     }
     
 }
+
+if ( ! function_exists( 'pbg_plugin' ) ) {
+    
+	/**
+	 * Returns an instance of the plugin class.
+	 * @since  1.0.0
+	 * @return object
+	 */
+	function pbg_plugin() {
+		return PBG_Plugin::get_instance();
+	}
+}
+
+pbg_plugin();

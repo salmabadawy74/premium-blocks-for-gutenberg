@@ -1005,7 +1005,7 @@ class PBG_Blocks_Helper {
 			$query_args = array(
 				'posts_per_page'      => ( isset( $attributes['numOfPosts'] ) ) ? $attributes['numOfPosts'] : 6,
 				'post_status'         => 'publish',
-				'post_type'           => ( isset( $attributes['postType'] ) ) ? $attributes['postType'] : 'post',
+
 				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
 				'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : 'date',
 			
@@ -1100,6 +1100,87 @@ class PBG_Blocks_Helper {
 		 * @param string $unit  CSS unit.
 		 * @since 1.13.4
 		 */
+		public static function build_base_url( $permalink_structure, $base ) {
+			
+			// Check to see if we are using pretty permalinks.
+			if ( ! empty( $permalink_structure ) ) {
+
+				if ( strrpos( $base, 'paged-' ) ) {
+					$base = substr_replace( $base, '', strrpos( $base, 'paged-' ), strlen( $base ) );
+				}
+
+				// Remove query string from base URL since paginate_links() adds it automatically.
+				// This should also fix the WPML pagination issue that was added since 1.10.2.
+				if ( count( $_GET ) > 0 ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+					$base = strtok( $base, '?' );
+				}
+
+				// Add trailing slash when necessary.
+				if ( '/' === substr( $permalink_structure, -1 ) ) {
+					$base = trailingslashit( $base );
+				} else {
+					$base = untrailingslashit( $base );
+				}
+			} else {
+				$url_params = wp_parse_url( $base, PHP_URL_QUERY );
+
+				if ( empty( $url_params ) ) {
+					$base = trailingslashit( $base );
+				}
+			}
+
+			return $base;
+		}
+		/**
+		 * Returns the Paged Format.
+		 *
+		 * @param string $permalink_structure Premalink Structure.
+		 * @param string $base Base.
+		 * @since 1.14.9
+		 */
+		public static function paged_format( $permalink_structure, $base ) {
+
+			$page_prefix = empty( $permalink_structure ) ? 'paged' : 'page';
+
+			if ( ! empty( $permalink_structure ) ) {
+				$format  = substr( $base, -1 ) !== '/' ? '/' : '';
+				$format .= $page_prefix . '/';
+				$format .= '%#%';
+				$format .= substr( $permalink_structure, -1 ) === '/' ? '/' : '';
+			} elseif ( empty( $permalink_structure ) || is_search() ) {
+				$parse_url = wp_parse_url( $base, PHP_URL_QUERY );
+				$format    = empty( $parse_url ) ? '?' : '&';
+				$format   .= $page_prefix . '=%#%';
+			}
+
+			return $format;
+		}
+		public static function get_paged( $query ) {
+			echo '<script>alert(welcome get) </script>';
+
+			global $paged;
+
+			// Check the 'paged' query var.
+			$paged_qv = $query->get( 'paged' );
+
+			if ( is_numeric( $paged_qv ) ) {
+				return $paged_qv;
+			}
+
+			// Check the 'page' query var.
+			$page_qv = $query->get( 'page' );
+
+			if ( is_numeric( $page_qv ) ) {
+				return $page_qv;
+			}
+
+			// Check the $paged global?
+			if ( is_numeric( $paged ) ) {
+				return $paged;
+			}
+
+			return 0;
+		}
 		public static function get_css_value( $value = '', $unit = '' ) {
 
 			// @codingStandardsIgnoreStart
@@ -1165,7 +1246,7 @@ class PBG_Blocks_Helper {
 			}
 
 			if ( ! empty( $tablet ) ) {
-				$tab_styling_css .= '@media only screen and (max-width: ' . PBG_TABLET_BREAKPOINT . 'px) {';
+				$tab_styling_css .= '@media only screen and (max-width: ' . PBG_TABLET_BREAKPOINT  . 'px) {';
 				$tab_styling_css .= $tablet;
 				$tab_styling_css .= '}';
 			}

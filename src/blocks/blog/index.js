@@ -110,7 +110,7 @@ registerBlockType("premium/post-blog", {
     },
     orderBy: {
       type: "string",
-      default: "Date",
+    
     },
     order: {
       type: "string",
@@ -279,6 +279,61 @@ registerBlockType("premium/post-blog", {
     paginationPosition: {
       type: "string",
     },
+    paginationBgActiveColor: {
+      type: "string",
+      default: "#e4e4e4",
+    },
+    paginationActiveColor: {
+      type: "string",
+      default: "#999999",
+    },
+    paginationBgColor: {
+      type: "string",
+      default: "#e4e4e4",
+    },
+    paginationColor: {
+      type: "string",
+      default: "#777777",
+    },
+    paginationMarkup: {
+      type: "string",
+      default: "",
+    },
+    paginationLayout: {
+      type: "string",
+      default: "filled",
+    },
+    paginationBorderActiveColor: {
+      type: "string",
+    },
+    paginationBorderColor: {
+      type: "string",
+      default: "#888686",
+    },
+    paginationBorderRadius: {
+      type: "number",
+    },
+    paginationBorderSize: {
+      type: "number",
+      default: 1,
+    },
+    paginationSpacing: {
+      type: "number",
+      default: 20,
+    },
+    paginationAlignment: {
+      type: "string",
+      default: "left",
+    },
+    paginationPrevText: {
+      type: "string",
+      default: "« Previous",
+    },
+    paginationNextText: {
+      type: "string",
+      default: "Next »",
+    },
+
     imageSize: {
       type: "string",
       default: "large",
@@ -462,11 +517,11 @@ registerBlockType("premium/post-blog", {
     },
     cols: {
       type: "number",
-      default: 1,
+      default: 3,
     },
     colsMobile: {
       type: "number",
-      default: 1,
+      default: 2,
     },
     colsTablet: {
       type: "number",

@@ -40,14 +40,14 @@ class edit extends Component {
   render() {
     const orderSelect = [
       { label: "None", value: "None" },
-      { label: "ID", value: "ID" },
-      { label: "Author", value: "Author" },
-      { label: "Title", value: "Title" },
+      { label: "ID", value: "id" },
+      { label: "Author", value: "author" },
+      { label: "Title", value: "title" },
       { label: "Name", value: "Name" },
-      { label: "Date", value: "Date" },
-      { label: "last Modified", value: "last Modified" },
-      { label: "Random", value: "Random" },
-      { label: "Number Of Comments", value: "Number Of Comments" },
+      { label: "Date", value: "date" },
+      { label: "last Modified", value: "modified" },
+      { label: "Random", value: "rand" },
+      { label: "Number Of Comments", value: "include" },
     ];
     const hoverEffects = [
       { label: "None", value: "None" },
@@ -305,7 +305,7 @@ class edit extends Component {
               activeClass="active-tab"
               tabs={[
                 {
-                  name: "desktop",
+                  name: "mobile",
                   title: <Dashicon icon="desktop" />,
                 },
                 {
@@ -313,7 +313,7 @@ class edit extends Component {
                   title: <Dashicon icon="tablet" />,
                 },
                 {
-                  name: "mobile",
+                  name: "desktop",
                   title: <Dashicon icon="smartphone" />,
                 },
               ]}
@@ -324,10 +324,8 @@ class edit extends Component {
                   tabout = (
                     <RangeControl
                       label={__("Columns")}
-                      value={colsMobile}
-                      onChange={(value) => setAttributes({ colsMobile: value })}
-                      min={1}
-                      max={latestPosts}
+                      value={cols}
+                      onChange={(value) => setAttributes({ cols: value })}
                     />
                   );
                 } else if ("tablet" === tab.name) {
@@ -336,18 +334,14 @@ class edit extends Component {
                       label={__("Columns")}
                       value={colsTablet}
                       onChange={(value) => setAttributes({ colsTablet: value })}
-                      min={1}
-                      max={latestPosts}
                     />
                   );
                 } else {
                   tabout = (
                     <RangeControl
                       label={__("Columns")}
-                      value={cols}
-                      onChange={(value) => setAttributes({ cols: value })}
-                      min={1}
-                      max={latestPosts}
+                      value={colsMobile}
+                      onChange={(value) => setAttributes({ colsMobile: value })}
                     />
                   );
                 }
@@ -1359,11 +1353,10 @@ class edit extends Component {
       return (
         <Fragment>
           {Inspectors}
-          <Masonry
+          <Blog
             latestPosts={latestPosts}
             categoriesList={categoriesList}
             attributes={attributes}
-            taxonomyList={taxonomyList}
           />
         </Fragment>
       );
@@ -1396,44 +1389,70 @@ class edit extends Component {
 export default withSelect((select, props) => {
   const {
     categories,
+    numOfPosts,
     order,
     orderBy,
-    postFilter,
-    currentPost,
+
+    taxonomyType,
+    paginationMarkup,
+    pagination,
+    excludeCurrentPost,
   } = props.attributes;
+  const { setAttributes } = props;
   const { getEntityRecords } = select("core");
 
   let allTaxonomy = uagb_blocks_info.all_taxonomy;
   let currentTax = allTaxonomy["post"];
-  let categoriesList = wp.data
-    .select("core")
-    .getEntityRecords("taxonomy", "category");
+  let taxonomy = "";
+  let categoriesList = [];
   let rest_base = "";
 
+  if (true === pagination && "empty" === paginationMarkup) {
+    $.ajax({
+      url: settings.ajax_url,
+      data: {
+        action: "premium_post_pagination",
+        attributes: props.attributes,
+        nonce: settings_ajax_nonce,
+      },
+      dataType: "json",
+      type: "POST",
+      success: function (data) {
+        alert("HHHNNNNNKKKK");
+        // setAttributes({ paginationMarkup: data.data });
+      },
+    });
+  }
+
   if ("undefined" != typeof currentTax) {
-    if ("undefined" != typeof currentTax["taxonomy"][postFilter]) {
+    if ("undefined" != typeof currentTax["taxonomy"][taxonomyType]) {
       rest_base =
-        currentTax["taxonomy"][postFilter]["rest_base"] == false ||
-        currentTax["taxonomy"][postFilter]["rest_base"] == null
-          ? currentTax["taxonomy"][postFilter]["name"]
-          : currentTax["taxonomy"][postFilter]["rest_base"];
+        currentTax["taxonomy"][taxonomyType]["rest_base"] == false ||
+        currentTax["taxonomy"][taxonomyType]["rest_base"] == null
+          ? currentTax["taxonomy"][taxonomyType]["name"]
+          : currentTax["taxonomy"][taxonomyType]["rest_base"];
     }
-    if ("" != postFilter) {
+
+    if ("" != taxonomyType) {
       if (
         "undefined" != typeof currentTax["terms"] &&
-        "undefined" != typeof currentTax["terms"][postFilter]
+        "undefined" != typeof currentTax["terms"][taxonomyType]
       ) {
-        categoriesList = currentTax["terms"][postFilter];
+        categoriesList = currentTax["terms"][taxonomyType];
       }
     }
   }
+
   let latestPostsQuery = {
     order: order,
-    orderBy: orderBy,
+    orderby: orderBy,
+    
   };
-  if (currentPost) {
+
+  if (excludeCurrentPost) {
     latestPostsQuery["exclude"] = select("core/editor").getCurrentPostId();
   }
+
   latestPostsQuery[rest_base] = categories;
   return {
     latestPosts: getEntityRecords("postType", "post", latestPostsQuery),

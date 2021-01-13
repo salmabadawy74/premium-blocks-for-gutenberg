@@ -18,8 +18,6 @@ if (!class_exists('PBG_Post')) {
        */
       class PBG_Post
       {
-
-
             /**
              * Member Variable
              *
@@ -28,19 +26,6 @@ if (!class_exists('PBG_Post')) {
              */
             private static $instance;
 
-            /**
-             * Member Variable
-             *
-             * @since 1.18.1
-             * @var settings
-             */
-            private static $settings;
-
-            /**
-             *  Initiator
-             *
-             * @since 1.18.1
-             */
             public static function get_instance()
             {
                   if (!isset(self::$instance)) {
@@ -55,24 +40,21 @@ if (!class_exists('PBG_Post')) {
             public function __construct()
             {
 
-                  add_action('init', array($this, 'register_blocks'));
-                  add_action('wp_ajax_uagb_post_pagination', array($this, 'post_pagination'));
-                  add_action('wp_ajax_nopriv_uagb_post_pagination', array($this, 'post_pagination'));
-                  add_action('wp_footer', array($this, 'add_post_dynamic_script'), 1000);
+                 add_action('init', array($this, 'register_blocks'));
+                  add_action('wp_ajax_premium_post_pagination', array($this, 'post_pagination'));
+                   add_action('wp_ajax_nopriv_premium_post_pagination', array($this, 'post_pagination'));
+                  echo '<script>alert("Welcome to Geeks for Geeks")</script>'; 
             }
 
-            /**
-             * Registers the `core/latest-posts` block on server.
-             *
-             * @since 0.0.1
-             */
+            
             public function register_blocks()
             {
+                  
                   // Check if the register function exists.
-                  if (!function_exists('register_block_type')) {
+            if (function_exists('register_block_type')) {
+                  echo '<script>alert(welcome register) </script>';
                         return;
-                  }
-
+ 
                   $common_attributes = $this->get_post_attributes();
 
                   register_block_type(
@@ -90,68 +72,69 @@ if (!class_exists('PBG_Post')) {
                                                 'type'    => 'number',
                                                 'default' => 10,
                                           ),
-                                        //   'paginationBgActiveColor'     => array(
-                                        //         'type'    => 'string',
-                                        //         'default' => '#e4e4e4',
-                                        //   ),
-                                        //   'paginationActiveColor'       => array(
-                                        //         'type'    => 'string',
-                                        //         'default' => '#333333',
-                                        //   ),
-                                        //   'paginationBgColor'           => array(
-                                        //         'type'    => 'string',
-                                        //         'default' => '#e4e4e4',
-                                        //   ),
-                                        //   'paginationColor'             => array(
-                                        //         'type'    => 'string',
-                                        //         'default' => '#777777',
-                                        //   ),
-                                        //   'paginationMarkup'            => array(
-                                        //         'type'    => 'string',
-                                        //         'default' => '',
-                                        //   ),
-                                        //   'paginationLayout'            => array(
-                                        //         'type'    => 'string',
-                                        //         'default' => 'filled',
-                                        //   ),
-                                        //   'paginationBorderActiveColor' => array(
-                                        //         'type' => 'string',
-                                        //   ),
-                                        //   'paginationBorderColor'       => array(
-                                        //         'type'    => 'string',
-                                        //         'default' => '#888686',
-                                        //   ),
-                                        //   'paginationBorderRadius'      => array(
-                                        //         'type' => 'number',
-                                        //   ),
-                                        //   'paginationBorderSize'        => array(
-                                        //         'type'    => 'number',
-                                        //         'default' => 1,
-                                        //   ),
-                                        //   'paginationSpacing'           => array(
-                                        //         'type'    => 'number',
-                                        //         'default' => 20,
-                                        //   ),
-                                        //   'paginationAlignment'         => array(
-                                        //         'type'    => 'string',
-                                        //         'default' => 'left',
-                                        //   ),
-                                        //   'paginationPrevText'          => array(
-                                        //         'type'    => 'string',
-                                        //         'default' => '« Previous',
-                                        //   ),
-                                        //   'paginationNextText'          => array(
-                                        //         'type'    => 'string',
-                                        //         'default' => 'Next »',
-                                        //   ),
+                                          'paginationBgActiveColor'     => array(
+                                                'type'    => 'string',
+                                                'default' => '#e4e4e4',
+                                          ),
+                                          'paginationActiveColor'       => array(
+                                                'type'    => 'string',
+                                                'default' => '#333333',
+                                          ),
+                                          'paginationBgColor'           => array(
+                                                'type'    => 'string',
+                                                'default' => '#e4e4e4',
+                                          ),
+                                          'paginationColor'             => array(
+                                                'type'    => 'string',
+                                                'default' => '#777777',
+                                          ),
+                                          'paginationMarkup'            => array(
+                                                'type'    => 'string',
+                                                'default' => '',
+                                          ),
+                                          'paginationLayout'            => array(
+                                                'type'    => 'string',
+                                                'default' => 'filled',
+                                          ),
+                                          'paginationBorderActiveColor' => array(
+                                                'type' => 'string',
+                                          ),
+                                          'paginationBorderColor'       => array(
+                                                'type'    => 'string',
+                                                'default' => '#888686',
+                                          ),
+                                          'paginationBorderRadius'      => array(
+                                                'type' => 'number',
+                                          ),
+                                          'paginationBorderSize'        => array(
+                                                'type'    => 'number',
+                                                'default' => 1,
+                                          ),
+                                          'paginationSpacing'           => array(
+                                                'type'    => 'number',
+                                                'default' => 20,
+                                          ),
+                                          'paginationAlignment'         => array(
+                                                'type'    => 'string',
+                                                'default' => 'left',
+                                          ),
+                                          'paginationPrevText'          => array(
+                                                'type'    => 'string',
+                                                'default' => '« Previous',
+                                          ),
+                                          'paginationNextText'          => array(
+                                                'type'    => 'string',
+                                                'default' => 'Next »',
+                                          ),
                                     )
                               ),
-                              'render_callback' => array($this, 'post_grid_callback'),
+                              'render_callback' => array($this, 'post_callback'),
                         )
                   );
 
               
             }
+      }
 
             /**
              * Get Post common attributes 
@@ -160,6 +143,7 @@ if (!class_exists('PBG_Post')) {
              */
             public function get_post_attributes()
             {
+                  
 
                   return array(
                        
@@ -535,7 +519,7 @@ if (!class_exists('PBG_Post')) {
                               'default' => 25,
                         ),
                         // Exclude Current Post.
-                        'excludeCurrentPost'      => array(
+                        'currentPost'      => array(
                               'type'    => 'boolean',
                               'default' => false,
                         ),
@@ -549,61 +533,67 @@ if (!class_exists('PBG_Post')) {
              *
              * @since 0.0.1
              */
-            public function post_grid_callback($attributes)
+            
+            public function post_callback($attributes)
             {
 
                   // Render query.
-                  $query = PBG_Helper::get_query($attributes, 'grid');
+                  $query = PBG_Blocks_Helper::get_query($attributes);
 
                   // Cache the settings.
-                  self::$attributes['block_id'] = $attributes;
+                  self::$attributes['blockID'] = $attributes;
 
                   ob_start();
-                  $this->get_post_html($attributes, $query, 'grid');
+                   $this->get_post_html($attributes, $query);
                   // Output the post markup.
                   return ob_get_clean();
             }
 
         
           
-
+            
             /**
              * Renders the post grid block on server.
              *
              * @param array  $attributes Array of block attributes.
              *
              * @param object $query WP_Query object.
-             * @param string $layout post grid/masonry/carousel layout.
+            
              * @since 0.0.1
              */
             public function get_post_html($attributes, $query)
-            {
+            
+            
+      {
+            
 
-               
-
-                  $wrap = array(
-                        'uagb-post__items uagb-post__columns-' . $attributes['columns'],
-                        'is-' . $layout,
-                        'uagb-post__columns-tablet-' . $attributes['tcolumns'],
-                        'uagb-post__columns-mobile-' . $attributes['mcolumns'],
-                  );
-
-                  $block_id  = 'uagb-block-' . $attributes['block_id'];
+                  $wrap = array( 'premium-blog-wrap' );
+                  $block_id  = 'premium-blog' . $attributes['blockID'];
                   $outerwrap = array(
-                        'uagb-post-grid',
-                        (isset($attributes['className'])) ? $attributes['className'] : '',
-                        'uagb-post__image-position-' . $attributes['imgPosition'],
-                        $block_id,
+                        'premium-blog-' . $attributes['blockID']
                   );
 
              
+                  switch ( $attributes['layoutValue'] ) {
+				case 'Masonary':
+					break;
 
-                       
+				case 'Even':
+					
+					array_push( $wrap, 'premium-blog-equal-height' );
+					
+					break;
 
-                  $total = $query->max_num_pages;
+				
+
+				default:
+					// Nothing to do here.
+					break;
+			}
+
 ?>
 
-                  <div class="<?php echo esc_html(implode(' ', $outerwrap)); ?>" data-total="<?php echo esc_attr($total); ?>">
+                  <div class="<?php echo esc_html(implode(' ', $outerwrap)); ?>">
 
                         <div class="<?php echo esc_html(implode(' ', $wrap)); ?>">
 
@@ -617,10 +607,10 @@ if (!class_exists('PBG_Post')) {
 
                       
 
-                        if ((isset($attributes['postPagination']) && true === $attributes['postPagination'])) {
+                        if ((isset($attributes['pagination']) )) {
 
                         ?>
-                              <div class="uagb-post-pagination-wrap">
+                              <div class="premium-post-pagination-wrap">
                                     <?php echo $this->render_pagination($query, $attributes); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
                                     ?>
                               </div>
@@ -641,14 +631,15 @@ if (!class_exists('PBG_Post')) {
              */
             public function render_pagination($query, $attributes)
             {
+                 
 
-                  $permalink_structure = get_option('permalink_structure');
+                  $permalink = get_option('permalink_structure');
                   $base                = untrailingslashit(wp_specialchars_decode(get_pagenum_link()));
-                  $base                = PBG_Helper::build_base_url($permalink_structure, $base);
-                  $format              = PBG_Helper::paged_format($permalink_structure, $base);
-                  $paged               = PBG_Helper::get_paged($query);
+                  $base                = PBG_Blocks_Helper::build_base_url($permalink, $base);
+                  $format              = PBG_Blocks_Helper::paged_format($permalink, $base);
+                  $paged               = PBG_Blocks_Helper::get_paged($query);
                   $page_limit          = min($attributes['pageLimit'], $query->max_num_pages);
-                  $page_limit          = isset($page_limit) ? $page_limit : $attributes['postsToShow'];
+                  $page_limit          = isset($page_limit) ? $page_limit : $attributes['numOfPosts'];
                   $attributes['numOfPosts'];
 
                   $links = paginate_links(
@@ -668,7 +659,13 @@ if (!class_exists('PBG_Post')) {
                   if (isset($links)) {
 
                         return wp_kses_post(implode(PHP_EOL, $links));
+                         
+
                   }
+              
+
+  
+
 
                   return '';
             }
@@ -681,11 +678,11 @@ if (!class_exists('PBG_Post')) {
             public function post_pagination()
             {
 
-                  check_ajax_referer('uagb_ajax_nonce', 'nonce');
+                  check_ajax_referer('settings_ajax_nonce', 'nonce');
 
                   if (isset($_POST['attributes'])) {
 
-                        $query = PBG_Helper::get_query($_POST['attributes']);
+                        $query = PBG_Blocks_Helper::get_query($_POST['attributes']);
 
                         $pagination_markup = $this->render_pagination($query, $_POST['attributes']);
 
@@ -714,15 +711,14 @@ if (!class_exists('PBG_Post')) {
                   while ($query->have_posts()) {
                         $query->the_post();
                         // Filter to modify the attributes based on content requirement.
-                        $attributes         = apply_filters('uagb_post_alter_attributes', $attributes, get_the_ID());
-                        $post_class_enabled = apply_filters('uagb_enable_post_class', false, $attributes);
+                        $attributes= apply_filters('premium_post_alter_attributes', $attributes, get_the_ID());
 
-                        do_action("uagb_post_before_article_{$attributes['post_type']}", get_the_ID(), $attributes);
+                        do_action("premium_post_before_article_{$attributes}", get_the_ID(), $attributes);
 
                   ?>
-                        <article <?php ($post_class_enabled) ? post_class() : ''; ?>>
-                              <?php do_action("uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes); ?>
-                              <div class="uagb-post__inner-wrap">
+                        <div  class="premium-blog-post-outer-container">
+                              <?php do_action("premium_post_before_inner_wrap_{$attributes}", get_the_ID(), $attributes); ?>
+                              <div class="premium-blog-post-container">
                                     <?php $this->render_complete_box_link($attributes); ?>
                                     <?php $this->render_image($attributes); ?>
                                     <div class="uagb-post__text">
@@ -732,12 +728,12 @@ if (!class_exists('PBG_Post')) {
                                           <?php $this->render_button($attributes); ?>
                                     </div>
                               </div>
-                              <?php do_action("uagb_post_after_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes); ?>
-                        </article>
+                              <?php do_action("premium_post_after_inner_wrap_{$attributes}", get_the_ID(), $attributes); ?>
+                        </div>
 
                         <?php
 
-                        do_action("uagb_post_after_article_{$attributes['post_type']}", get_the_ID(), $attributes);
+                        do_action("premium_post_after_article_{$attributes}", get_the_ID(), $attributes);
                   }
 
                   wp_reset_postdata();
@@ -752,7 +748,8 @@ if (!class_exists('PBG_Post')) {
 
                   if (isset(self::$settings['masonry']) && !empty(self::$settings['masonry'])) {
                         foreach (self::$settings['masonry'] as $key => $value) {
-                        ?>
+                              echo'<script>alert("HELLLLO ")</script>';
+               /*      ?>
                               <script type="text/javascript" id="uagb-post-masonry-script-<?php echo esc_html($key); ?>">
                                     document.addEventListener("DOMContentLoaded", function() {
                                           (function($) {
@@ -844,11 +841,11 @@ if (!class_exists('PBG_Post')) {
 
                                           })(jQuery);
                                     });
-                              </script>
-                  <?php
-                        }
-                  }
+                           /**    }
+                   */   
+                              }
             }
+      }
 
             /**
              * Render Image HTML.
@@ -859,24 +856,22 @@ if (!class_exists('PBG_Post')) {
              */
             public function render_image($attributes)
             {
-                  if (!$attributes['displayPostImage']) {
+                  if (!$attributes['featureImage']) {
                         return;
                   }
 
-                  if (!get_the_post_thumbnail_url()) {
-                        return;
-                  }
+                 
 
                   $target = ($attributes['newTab']) ? '_blank' : '_self';
-                  do_action("uagb_single_post_before_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes);
+                  do_action("uagb_single_post_before_featured_image", get_the_ID(), $attributes);
 
                   ?>
                   <div class='uagb-post__image'>
-                        <a href="<?php echo esc_url(apply_filters("uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes)); ?>" target="<?php echo esc_html($target); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image(get_post_thumbnail_id(), $attributes['imgSize']); ?>
+                        <a href="<?php echo esc_url(apply_filters("uagb_single_post_link", get_the_permalink(), get_the_ID(), $attributes)); ?>" target="<?php echo esc_html($target); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image(get_post_thumbnail_id(), $attributes['imagSize']); ?>
                         </a>
                   </div>
             <?php
-                  do_action("uagb_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes);
+                  do_action("uagb_single_post_after_featured_image", get_the_ID(), $attributes);
             }
 
             /**
@@ -894,13 +889,13 @@ if (!class_exists('PBG_Post')) {
                   }
 
                   $target = ($attributes['newTab']) ? '_blank' : '_self';
-                  do_action("uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes);
+                  do_action("uagb_single_post_before_title", get_the_ID(), $attributes);
             ?>
                   <<?php echo esc_html($attributes['titleTag']); ?> class="uagb-post__title">
-                        <a href="<?php echo esc_url(apply_filters("uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes)); ?>" target="<?php echo esc_html($target); ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
+                        <a href="<?php echo esc_url(apply_filters("uagb_single_post_link", get_the_permalink(), get_the_ID(), $attributes)); ?>" target="<?php echo esc_html($target); ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
                   </<?php echo esc_html($attributes['titleTag']); ?>>
             <?php
-                  do_action("uagb_single_post_after_title_{$attributes['post_type']}", get_the_ID(), $attributes);
+                  do_action("uagb_single_post_after_title", get_the_ID(), $attributes);
             }
 
             /**
@@ -1009,10 +1004,10 @@ if (!class_exists('PBG_Post')) {
             {
 
                   global $post;
-                  do_action("uagb_single_post_before_meta_{$attributes['post_type']}", get_the_ID(), $attributes);
+                  do_action("uagb_single_post_before_meta", get_the_ID(), $attributes);
 
                   $meta_sequence = array('author', 'date', 'comment', 'taxonomy');
-                  $meta_sequence = apply_filters("uagb_single_post_meta_sequence_{$attributes['post_type']}", $meta_sequence, get_the_ID(), $attributes);
+                  $meta_sequence = apply_filters("uagb_single_post_meta_sequence", $meta_sequence, get_the_ID(), $attributes);
             ?>
                   <div class="uagb-post-grid-byline">
                         <?php
@@ -1041,7 +1036,7 @@ if (!class_exists('PBG_Post')) {
                         ?>
                   </div>
             <?php
-                  do_action("uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes);
+                  do_action("uagb_single_post_after_meta", get_the_ID(), $attributes);
             }
 
             /**
@@ -1059,7 +1054,7 @@ if (!class_exists('PBG_Post')) {
 
                   $length = (isset($attributes['excerptLength'])) ? $attributes['excerptLength'] : 25;
 
-                  if ('full_post' === $attributes['displayPostContentRadio']) {
+                  if ('full_post' === $attributes['displayPostExcerpt']) {
                         $excerpt = get_the_content();
                   } else {
                         $excerpt = wp_trim_words(get_the_excerpt(), $length);
@@ -1069,14 +1064,14 @@ if (!class_exists('PBG_Post')) {
                         $excerpt = null;
                   }
 
-                  $excerpt = apply_filters("uagb_single_post_excerpt_{$attributes['post_type']}", $excerpt, get_the_ID(), $attributes);
-                  do_action("uagb_single_post_before_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes);
+                  $excerpt = apply_filters("uagb_single_post_excerpt", $excerpt, get_the_ID(), $attributes);
+                  do_action("uagb_single_post_before_excerpt", get_the_ID(), $attributes);
             ?>
                   <div class="uagb-post__excerpt">
                         <?php echo wp_kses_post($excerpt); ?>
                   </div>
             <?php
-                  do_action("uagb_single_post_after_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes);
+                  do_action("uagb_single_post_after_excerpt", get_the_ID(), $attributes);
             }
 
             /**
@@ -1093,15 +1088,15 @@ if (!class_exists('PBG_Post')) {
                   }
                   $target   = ($attributes['newTab']) ? '_blank' : '_self';
                   $cta_text = ($attributes['ctaText']) ? $attributes['ctaText'] : __('Read More', 'ultimate-addons-for-gutenberg');
-                  do_action("uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes);
+                  do_action("uagb_single_post_before_cta", get_the_ID(), $attributes);
                   $wrap_classes = (true === $attributes['inheritFromTheme']) ? 'uagb-post__cta wp-block-button' : 'uagb-post__cta';
                   $link_classes = (false === $attributes['inheritFromTheme']) ? 'uagb-post__link uagb-text-link' : 'wp-block-button__link uagb-text-link';
             ?>
                   <div class="<?php echo esc_html($wrap_classes); ?>">
-                        <a class="<?php echo esc_html($link_classes); ?>" href="<?php echo esc_url(apply_filters("uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes)); ?>" target="<?php echo esc_html($target); ?>" rel="bookmark noopener noreferrer"><?php echo esc_html($cta_text); ?></a>
+                        <a class="<?php echo esc_html($link_classes); ?>" href="<?php echo esc_url(apply_filters("uagb_single_post_link}", get_the_permalink(), get_the_ID(), $attributes)); ?>" target="<?php echo esc_html($target); ?>" rel="bookmark noopener noreferrer"><?php echo esc_html($cta_text); ?></a>
                   </div>
             <?php
-                  do_action("uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes);
+                  do_action("uagb_single_post_after_cta", get_the_ID(), $attributes);
             }
 
             /**
@@ -1118,9 +1113,10 @@ if (!class_exists('PBG_Post')) {
                   }
                   $target = ($attributes['newTab']) ? '_blank' : '_self';
             ?>
-                  <a class="uagb-post__link-complete-box" href="<?php echo esc_url(apply_filters("uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes)); ?>" target="<?php echo esc_html($target); ?>" rel="bookmark noopener noreferrer"></a>
+                  <a class="uagb-post__link-complete-box" href="<?php echo esc_url(apply_filters("uagb_single_post_link", get_the_permalink(), get_the_ID(), $attributes)); ?>" target="<?php echo esc_html($target); ?>" rel="bookmark noopener noreferrer"></a>
 <?php
             }
+
       }
 
       /**
