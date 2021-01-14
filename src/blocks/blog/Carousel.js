@@ -111,9 +111,9 @@ class Carousel extends React.Component {
       centerMode,
       slideSpacing,
       navigationDots,
-      cols,
-      colsMobile,
-      colsTablet,
+      column,
+      columnMobile,
+      columnTablet,
       navigationArrow,
       arrowPosition,
     } = attributes;
@@ -133,7 +133,7 @@ class Carousel extends React.Component {
       autoplay: Autoplay,
       speed: autoplaySpeed,
       speed: autoplaySpeed,
-      slidesToShow: cols,
+      slidesToShow: column,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
       slidesToScroll: slideToScroll,
@@ -141,14 +141,14 @@ class Carousel extends React.Component {
         {
           breakpoint: 1025,
           settings: {
-            slidesToShow: colsTablet,
+            slidesToShow: columnTablet,
             slidesToScroll: 1,
           },
         },
         {
           breakpoint: 768,
           settings: {
-            slidesToShow: colsMobile,
+            slidesToShow: columnMobile,
             slidesToScroll: 1,
           },
         },
@@ -156,7 +156,7 @@ class Carousel extends React.Component {
     };
 
     const lastDisplay = latestPosts.slice(offsetNum);
-    console.log(cols, colsTablet, colsMobile);
+    console.log(column, columnTablet, columnMobile);
     return (
       <div className={`premium-blog-${blockID}`} id={`premium-blog-${blockID}`}>
         <div>
@@ -167,9 +167,7 @@ class Carousel extends React.Component {
                   className={`premium-blog-post-container premium-blog-skin-modern`}
                 >
                   <Image post={post} attributes={attributes} />
-                  <div
-                    className={`premium-blog-content-wrapper empty-thumb equal-Height`}
-                  >
+                  <div className={`premium-blog-content-wrapper empty-thumb`}>
                     <div className={`premium-blog-content-wrapper-inner`}>
                       <div className={`premium-blog-inner-container`}>
                         <div className="premium-blog-entry-container">

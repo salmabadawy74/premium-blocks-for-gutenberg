@@ -7,9 +7,9 @@ function styling(props) {
     marginBottomMobile,
     marginBottomTablet,
     marginBottom,
-    cols,
-    colsMobile,
-    colsTablet,
+    column,
+    columnMobile,
+    columnTablet,
     thumbnail,
     thumbnailMobile,
     thumbnailTablet,
@@ -119,7 +119,7 @@ function styling(props) {
       color: `${hoverColor};`,
     },
     " .premium-blog-even": {
-      width: `${100 / cols}%`,
+      width: `${100 / column}%`,
       "margin-bottom": `${20}px`,
     },
     " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
@@ -190,7 +190,7 @@ function styling(props) {
       color: `${hoverColor};`,
     },
     " .premium-blog-even": {
-      width: `${100 / colsMobile}%`,
+      width: `${100 / columnMobile}%`,
     },
     " .premium-blog-post-outer-container .premium-blog-content-wrapper-inner p": {
       "font-size": `${postContentfontSizeMobile}${postContentfontSizeType} !important`,
@@ -275,7 +275,7 @@ function styling(props) {
       "box-shadow": `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
     },
     " .premium-blog-even": {
-      width: `${100 / colsTablet}%`,
+      width: `${100 / columnTablet}%`,
     },
     " .premium-blog-meta-data": {
       "font-size": `${secondContentfontSizeTablet}${secondContentfontSizeType};`,

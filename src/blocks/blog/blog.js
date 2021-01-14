@@ -141,6 +141,7 @@ class Blog extends React.Component {
       colsMobile,
       currentPage,
       colsTablet,
+      paginationMarkup,
     } = attributes;
     let lastDisplay, pageCounts;
     //currentPage = 0;
@@ -149,20 +150,13 @@ class Blog extends React.Component {
     // function handlePageClick(selectedPage) {
     //   currentPage = selectedPage.selected;
     // }
-    if (pagination) {
-      const PER_PAGE = numOfPosts;
-      const offset = currentPage * PER_PAGE;
-      lastDisplay = latestPosts.slice(offset, offset + PER_PAGE);
-      pageCounts = Math.ceil(latestPosts.length / PER_PAGE);
-      console.log(lastDisplay, offset, pageCounts, latestPosts, currentPage);
-    } else {
-      const displayPosts =
-        latestPosts.length > numOfPosts
-          ? latestPosts.slice(0, numOfPosts)
-          : latestPosts;
-      lastDisplay = displayPosts.slice(offsetNum);
-    }
-    console.log(lastDisplay);
+
+    const displayPosts =
+      latestPosts.length > numOfPosts
+        ? latestPosts.slice(0, numOfPosts)
+        : latestPosts;
+    lastDisplay = displayPosts.slice(offsetNum);
+
     const equalHeight = layoutValue === "Even" ? "equal-Height" : null;
     return (
       <Fragment>
@@ -183,8 +177,8 @@ class Blog extends React.Component {
                 <div className={`premium-blog-post-container`}>
                   <Image post={post} attributes={attributes} />
                   <div
-                    className={ `premium-blog-content-wrapper empty-thumb ${ equalHeight }` }
-                    style={{height:`${100}%`}}
+                    className={`premium-blog-content-wrapper empty-thumb ${equalHeight}`}
+                    style={{ height: `${100}%` }}
                   >
                     <div className={`premium-blog-content-wrapper-inner`}>
                       <div className={`premium-blog-inner-container`}>
@@ -220,7 +214,13 @@ class Blog extends React.Component {
             ))}
           </div>
         </div>
-        {pagination && (
+        {pagination == true && "empty" !== paginationMarkup && (
+          <div
+            dangerouslySetInnerHTML={{ __html: paginationMarkup }}
+            className="uagb-post-pagination-wrap"
+          ></div>
+        )}
+        {/* {pagination && (
           <div className="Premium-blog-footer">
             <ReactPaginate
               previousLabel={"← Previous"}
@@ -234,7 +234,7 @@ class Blog extends React.Component {
               activeClassName={"pagination__link--active"}
             />
           </div>
-        )}
+        )} */}
       </Fragment>
     );
   }

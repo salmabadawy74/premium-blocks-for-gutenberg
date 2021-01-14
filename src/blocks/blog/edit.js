@@ -24,7 +24,6 @@ const {
 } = wp.components;
 const { InspectorControls, ColorPalette } = wp.editor;
 const { withSelect, select } = wp.data;
-const latestPosts = null;
 class edit extends Component {
   constructor() {
     super(...arguments);
@@ -36,7 +35,6 @@ class edit extends Component {
     $style.setAttribute("id", "premium-post-style-" + this.props.clientId);
     document.head.appendChild($style);
   }
-
   render() {
     const orderSelect = [
       { label: "None", value: "None" },
@@ -85,19 +83,9 @@ class edit extends Component {
     } = this.props;
     const {
       blockID,
-      newTab,
-      borderWidth,
-      ctaText,
-      borderRadius,
-      borderColor,
-      vPadding,
-      hPadding,
       categories,
       rowGap,
       imageSize,
-      bgColor,
-      contentPadding,
-      contentPaddingMobile,
       gridCheck,
       numOfPosts,
       offsetNum,
@@ -111,7 +99,6 @@ class edit extends Component {
       backgroundPostContent,
       rowGapUnit,
       columnGap,
-      postPosition,
       displayPostContent,
       displayPostExcerpt,
       excerptType,
@@ -124,13 +111,8 @@ class edit extends Component {
       displayPostComment,
       displayPostTags,
       filterPosition,
-      linkNewTab,
       layoutValue,
       postFilter,
-      sizeType,
-      size,
-      sizeMobile,
-      sizeTablet,
       Carousel,
       Autoplay,
       slideToScroll,
@@ -157,7 +139,6 @@ class edit extends Component {
       firstContentfontSizeType,
       firstContentfontSizeMobile,
       firstContentfontSizeTablet,
-      typeColor,
       secondContentLetter,
       secondContentStyle,
       secondContentUpper,
@@ -182,17 +163,13 @@ class edit extends Component {
       buttonhover,
       buttonBackground,
       hoverBackground,
-      marginTopType,
-      marginTop,
-      marginTopMobile,
-      marginTopTablet,
       marginBottomType,
       marginBottomMobile,
       marginBottomTablet,
       marginBottom,
-      cols,
-      colsMobile,
-      colsTablet,
+      column,
+      columnMobile,
+      columnTablet,
       containerShadowColor,
       containerShadowBlur,
       containerShadowHorizontal,
@@ -251,8 +228,7 @@ class edit extends Component {
       PostmarginLeftMobile,
       PostmarginLeftTablet,
     } = attributes;
-
-    let categoryListOptions = [{ value: "", label: __("All") }];
+    let categoryListOptions = [];
     if (categoriesList) {
       Object.keys(categoriesList).map((item, thisIndex) => {
         return categoryListOptions.push({
@@ -264,16 +240,19 @@ class edit extends Component {
     let element = document.getElementById(
       "premium-post-style-" + this.props.clientId
     );
-
     if (null != element) {
       element.innerHTML = styling(this.props);
     }
     const hundleCarousel = (value) => {
       setAttributes({ layoutValue: "" });
       setAttributes({ Carousel: value });
+      setAttributes({ gridCheck: false });
     };
-    console.log(taxonomyList["post_tag"], categoryListOptions, categoriesList);
-    const Inspectors = (
+    const hundleGrid = () => {
+      setAttributes({ gridCheck: !gridCheck });
+      setAttributes({ Carousel: false });
+    };
+    const Inspectors = isSelected && (
       <InspectorControls>
         <PanelBody
           title={__("General")}
@@ -283,7 +262,7 @@ class edit extends Component {
           <ToggleControl
             label={__("Grid")}
             checked={gridCheck}
-            onChange={(newCheck) => setAttributes({ gridCheck: newCheck })}
+            onChange={hundleGrid}
           />
           {gridCheck && [
             <SelectControl
@@ -324,24 +303,28 @@ class edit extends Component {
                   tabout = (
                     <RangeControl
                       label={__("Columns")}
-                      value={cols}
-                      onChange={(value) => setAttributes({ cols: value })}
+                      value={column}
+                      onChange={(value) => setAttributes({ column: value })}
                     />
                   );
                 } else if ("tablet" === tab.name) {
                   tabout = (
                     <RangeControl
                       label={__("Columns")}
-                      value={colsTablet}
-                      onChange={(value) => setAttributes({ colsTablet: value })}
+                      value={columnTablet}
+                      onChange={(value) =>
+                        setAttributes({ columnTablet: value })
+                      }
                     />
                   );
                 } else {
                   tabout = (
                     <RangeControl
                       label={__("Columns")}
-                      value={colsMobile}
-                      onChange={(value) => setAttributes({ colsMobile: value })}
+                      value={columnMobile}
+                      onChange={(value) =>
+                        setAttributes({ columnMobile: value })
+                      }
                     />
                   );
                 }
@@ -1208,9 +1191,7 @@ class edit extends Component {
           <ColorPalette
             label={__("Hover Color")}
             value={hoverTag}
-            onChange={(newHoverTag) =>
-              setAttributes({ hoverColor: newHoverTag })
-            }
+            onChange={(newHoverTag) => setAttributes({ hoverTag: newHoverTag })}
           />
         </PanelBody>
         ,
@@ -1349,6 +1330,30 @@ class edit extends Component {
           <Spinner />
         </Fragment>
       );
+    }
+    if (Carousel) {
+      return (
+        <Fragment>
+          {Inspectors}
+          <CarouselComponent
+            latestPosts={latestPosts}
+            categoriesList={categoriesList}
+            attributes={attributes}
+          />
+        </Fragment>
+      );
+    }
+    if (layoutValue === "Masonry") {
+      return (
+        <Fragment>
+          {Inspectors}
+          <Masonry
+            latestPosts={latestPosts}
+            categoriesList={categoriesList}
+            attributes={attributes}
+          />
+        </Fragment>
+      );
     } else {
       return (
         <Fragment>
@@ -1361,38 +1366,13 @@ class edit extends Component {
         </Fragment>
       );
     }
-    // if (layoutValue === "Masonry") {
-    //   return (
-    //     <Fragment>
-    //       {Inspectors}
-    //       <Masonry
-    //         latestPosts={latestPosts}
-    //         categoriesList={categoriesList}
-    //         attributes={attributes}
-    //       />
-    //     </Fragment>
-    //   );
-    // } else {
-    //   return (
-    //     <Fragment>
-    //       {Inspectors}
-    //       <Blog
-    //         latestPosts={latestPosts}
-    //         categoriesList={categoriesList}
-    //         attributes={attributes}
-    //       />
-    //     </Fragment>
-    //   );
-    // }
   }
 }
 export default withSelect((select, props) => {
   const {
     categories,
-    numOfPosts,
     order,
     orderBy,
-
     taxonomyType,
     paginationMarkup,
     pagination,
@@ -1401,25 +1381,25 @@ export default withSelect((select, props) => {
   const { setAttributes } = props;
   const { getEntityRecords } = select("core");
 
-  let allTaxonomy = uagb_blocks_info.all_taxonomy;
+  let allTaxonomy = PremiumBlocksSettings.all_taxonomy;
   let currentTax = allTaxonomy["post"];
   let taxonomy = "";
   let categoriesList = [];
   let rest_base = "";
 
-  if (true === pagination && "empty" === paginationMarkup) {
+  if (pagination) {
+    alert("pagintion");
     $.ajax({
-      url: settings.ajax_url,
+      url: PremiumBlocksSettings.ajaxurl,
       data: {
-        action: "premium_post_pagination",
+        action: "uagb_post_pagination",
         attributes: props.attributes,
-        nonce: settings_ajax_nonce,
+        nonce: PremiumBlocksSettings.nonce,
       },
       dataType: "json",
       type: "POST",
       success: function (data) {
-        alert("HHHNNNNNKKKK");
-        // setAttributes({ paginationMarkup: data.data });
+        setAttributes({ paginationMarkup: data.data });
       },
     });
   }
@@ -1446,7 +1426,6 @@ export default withSelect((select, props) => {
   let latestPostsQuery = {
     order: order,
     orderby: orderBy,
-    
   };
 
   if (excludeCurrentPost) {

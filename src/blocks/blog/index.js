@@ -1,7 +1,6 @@
 const { __ } = wp.i18n;
 import PbgIcon from "../icons";
 import edit from "./edit";
-//import save from "./save";
 const { registerBlockType } = wp.blocks;
 registerBlockType("premium/post-blog", {
   title: __("Premium Blog"),
@@ -94,12 +93,8 @@ registerBlockType("premium/post-blog", {
     },
     numOfPosts: {
       type: "number",
-      default: 1,
-    },
-    numOfColumns: {
-      type: "number",
-      default: "2",
-    },
+      default: 4,
+    },  
     offsetNum: {
       type: "number",
       default: 0,
@@ -110,7 +105,6 @@ registerBlockType("premium/post-blog", {
     },
     orderBy: {
       type: "string",
-    
     },
     order: {
       type: "string",
@@ -132,7 +126,6 @@ registerBlockType("premium/post-blog", {
       type: "string",
       default: "px",
     },
-
     rowGapUnit: {
       type: "string",
       default: "px",
@@ -147,7 +140,7 @@ registerBlockType("premium/post-blog", {
     },
     displayPostContent: {
       type: "boolean",
-      default: false,
+      default: true,
     },
     displayPostExcerpt: {
       type: "string",
@@ -189,24 +182,8 @@ registerBlockType("premium/post-blog", {
       type: "boolean",
       default: true,
     },
-    filterTabs: {
-      type: "boolean",
-      default: false,
-    },
-    getTabsFrom: {
-      type: "string",
-      default: "Categories",
-    },
-    tabLabel: {
-      type: "string",
-      default: "All",
-    },
     filterPostion: {
       type: "string",
-    },
-    linkNewTab: {
-      type: "boolean",
-      default: false,
     },
     layoutValue: {
       type: "string",
@@ -215,22 +192,6 @@ registerBlockType("premium/post-blog", {
     postFilter: {
       type: "string",
       default: "Default",
-    },
-    sizeType: {
-      type: "string",
-      default: "px",
-    },
-    size: {
-      type: "number",
-      default: 20,
-    },
-    sizeMobile: {
-      type: "number",
-      default: 20,
-    },
-    sizeTablet: {
-      type: "number",
-      default: 20,
     },
     Carousel: {
       type: "boolean",
@@ -279,61 +240,6 @@ registerBlockType("premium/post-blog", {
     paginationPosition: {
       type: "string",
     },
-    paginationBgActiveColor: {
-      type: "string",
-      default: "#e4e4e4",
-    },
-    paginationActiveColor: {
-      type: "string",
-      default: "#999999",
-    },
-    paginationBgColor: {
-      type: "string",
-      default: "#e4e4e4",
-    },
-    paginationColor: {
-      type: "string",
-      default: "#777777",
-    },
-    paginationMarkup: {
-      type: "string",
-      default: "",
-    },
-    paginationLayout: {
-      type: "string",
-      default: "filled",
-    },
-    paginationBorderActiveColor: {
-      type: "string",
-    },
-    paginationBorderColor: {
-      type: "string",
-      default: "#888686",
-    },
-    paginationBorderRadius: {
-      type: "number",
-    },
-    paginationBorderSize: {
-      type: "number",
-      default: 1,
-    },
-    paginationSpacing: {
-      type: "number",
-      default: 20,
-    },
-    paginationAlignment: {
-      type: "string",
-      default: "left",
-    },
-    paginationPrevText: {
-      type: "string",
-      default: "« Previous",
-    },
-    paginationNextText: {
-      type: "string",
-      default: "Next »",
-    },
-
     imageSize: {
       type: "string",
       default: "large",
@@ -395,10 +301,6 @@ registerBlockType("premium/post-blog", {
       type: "number",
       default: 15,
     },
-    typeColor: {
-      type: "string",
-      default: "black",
-    },
     secondContentLetter: {
       type: "number",
     },
@@ -445,7 +347,7 @@ registerBlockType("premium/post-blog", {
       type: "string",
       default: "default",
     },
-    hoverColor: {
+    hoverTag: {
       type: "string",
       default: "default",
     },
@@ -515,15 +417,15 @@ registerBlockType("premium/post-blog", {
       type: "boolean",
       default: false,
     },
-    cols: {
+    column: {
       type: "number",
       default: 3,
     },
-    colsMobile: {
+    columnMobile: {
       type: "number",
       default: 2,
     },
-    colsTablet: {
+    columnTablet: {
       type: "number",
       default: 1,
     },
@@ -538,6 +440,18 @@ registerBlockType("premium/post-blog", {
     thumbnailTablet: {
       type: "string",
       default: "cover",
+    },
+    marginBottom: {
+      type: "number",
+    },
+    marginBottomTablet: {
+      type: "number",
+    },
+    marginBottomMobile: {
+      type: "number",
+    },
+    marginBottom: {
+      type: "number",
     },
     PostmarginBottomType: {
       type: "string",
@@ -616,8 +530,115 @@ registerBlockType("premium/post-blog", {
     PostmarginLeftTablet: {
       type: "number",
     },
+    backgroundPostContent: {
+      type: "string",
+    },
+    containerShadowColor: {
+      type: "string",
+    },
+    containerShadowBlur: {
+      type: "string",
+    },
+    containerShadowHorizontal: {
+      type: "string",
+    },
+    containerShadowVertical: {
+      type: "string",
+    },
+    containerShadowPosition: {
+      type: "string",
+    },
+    tagsfontSizeType: {
+      type: "string",
+      default: "px",
+    },
+    tagsfontSize: {
+      type: "number",
+      default: "default",
+    },
+    tagsfontSizeMobile: {
+      type: "number",
+      default: "default",
+    },
+    tagsfontSizeTablet: {
+      type: "number",
+      default: "default",
+    },
+    tagsWeight: {
+      type: "number",
+      default: "default",
+    },
+    tagsStyle: {
+      type: "string",
+      default: "default",
+    },
+    tagsLetter: {
+      type: "string",
+      default: "default",
+    },
+    tagsUpper: {
+      type: "string",
+      default: "default",
+    },
+    buttonfontSizeType: {
+      type: "string",
+      default: "px",
+    },
+    buttonfontSize: {
+      type: "number",
+    },
+    buttonfontSizeMobile: {
+      type: "number",
+    },
+    buttonfontSizeTablet: {
+      type: "number",
+    },
+    buttonWeight: {
+      type: "number",
+    },
+    buttonStyle: {
+      type: "number",
+    },
+    buttonLetter: {
+      type: "number",
+    },
+    buttonUpper: {
+      type: "number",
+    },
+    buttonSpacingType: {
+      type: "string",
+      default: "px",
+    },
+    buttonSpacing: {
+      type: "number",
+    },
+    buttonSpacingMobile: {
+      type: "number",
+    },
+    buttonSpacingTablet: {
+      type: "number",
+    },
+    borderType: {
+      type: "string",
+      default: "solid",
+    },
+    buttonPaddingType: {
+      type: "string",
+      default: "px",
+    },
+    buttonPadding: {
+      type: "number",
+    },
+    buttonPaddingMobile: {
+      type: "number",
+    },
+    buttonPaddingTablet: {
+      type: "number",
+    },
   },
   example: {},
   edit: edit,
-  save: function () {},
+  save() {
+    return null;
+  },
 });

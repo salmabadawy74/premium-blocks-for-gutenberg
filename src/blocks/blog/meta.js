@@ -48,7 +48,7 @@ class Meta extends React.Component {
               <div
                 className={`premium-blog-post-comments premium-blog-meta-data`}
               >
-                <span className="uagb-post__comment">
+                <span className="premium-post__comment">
                   <span className="dashicons-admin-comments dashicons"></span>
                   {post.uagb_comment_info}
                 </span>
@@ -59,7 +59,7 @@ class Meta extends React.Component {
             <div
               className={`premium-blog-post-categories premium-blog-meta-data`}
             >
-              <span className="uagb-post__taxonomy">
+              <span className="premium-post__taxonomy">
                 <span className="fa fa-align-left fa-fw"></span>
                 {categoryObject.length === 0
                   ? "Uncategorized"
