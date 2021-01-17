@@ -111,9 +111,9 @@ class Carousel extends React.Component {
       centerMode,
       slideSpacing,
       navigationDots,
-      column,
-      columnMobile,
-      columnTablet,
+      columns,
+      mcolumns,
+      tcolumns,
       navigationArrow,
       arrowPosition,
     } = attributes;
@@ -133,35 +133,24 @@ class Carousel extends React.Component {
       autoplay: Autoplay,
       speed: autoplaySpeed,
       speed: autoplaySpeed,
-      slidesToShow: column,
+      slidesToShow: columns,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
       slidesToScroll: slideToScroll,
-      responsive: [
-        {
-          breakpoint: 1025,
-          settings: {
-            slidesToShow: columnTablet,
-            slidesToScroll: 1,
-          },
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: columnMobile,
-            slidesToScroll: 1,
-          },
-        },
-      ],
     };
 
     const lastDisplay = latestPosts.slice(offsetNum);
-    console.log(column, columnTablet, columnMobile);
+    console.log(columns, tcolumns, mcolumns);
     return (
       <div className={`premium-blog-${blockID}`} id={`premium-blog-${blockID}`}>
         <div>
           <Slider {...settings}>
-            {lastDisplay.map((post, i) => (
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            {/* {lastDisplay.map((post, i) => (
               <div className={`premium-blog-post-outer-container`} key={i}>
                 <div
                   className={`premium-blog-post-container premium-blog-skin-modern`}
@@ -197,7 +186,7 @@ class Carousel extends React.Component {
                   </div>
                 </div>
               </div>
-            ))}
+            ))} */}
           </Slider>
         </div>
       </div>

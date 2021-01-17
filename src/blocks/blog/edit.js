@@ -10,6 +10,7 @@ import Masonry from "./Masonry";
 import PremiumMarginR from "../../components/premium-margin-responsive";
 import PremiumBoxShadow from "./../../components/premium-box-shadow";
 const { __ } = wp.i18n;
+alert("borderWidths");
 const { Component, Fragment } = wp.element;
 const {
   PanelBody,
@@ -167,9 +168,9 @@ class edit extends Component {
       marginBottomMobile,
       marginBottomTablet,
       marginBottom,
-      column,
-      columnMobile,
-      columnTablet,
+      columns,
+      mcolumns,
+      tcolumns,
       containerShadowColor,
       containerShadowBlur,
       containerShadowHorizontal,
@@ -227,6 +228,9 @@ class edit extends Component {
       PostmarginLeft,
       PostmarginLeftMobile,
       PostmarginLeftTablet,
+      borderWidth,
+      borderColor,
+      borderRadius,
     } = attributes;
     let categoryListOptions = [];
     if (categoriesList) {
@@ -243,15 +247,15 @@ class edit extends Component {
     if (null != element) {
       element.innerHTML = styling(this.props);
     }
-    const hundleCarousel = (value) => {
-      setAttributes({ layoutValue: "" });
-      setAttributes({ Carousel: value });
-      setAttributes({ gridCheck: false });
-    };
-    const hundleGrid = () => {
-      setAttributes({ gridCheck: !gridCheck });
-      setAttributes({ Carousel: false });
-    };
+    // const hundleCarousel = (value) => {
+    //   setAttributes({ layoutValue: "" });
+    //   setAttributes({ Carousel: value });
+    //   setAttributes({ gridCheck: false });
+    // };
+    // const hundleGrid = () => {
+    //   setAttributes({ gridCheck: !gridCheck });
+    //   setAttributes({ Carousel: false });
+    // };
     const Inspectors = isSelected && (
       <InspectorControls>
         <PanelBody
@@ -262,7 +266,7 @@ class edit extends Component {
           <ToggleControl
             label={__("Grid")}
             checked={gridCheck}
-            onChange={hundleGrid}
+            onChange={() => setAttributes({ gridCheck: !gridCheck })}
           />
           {gridCheck && [
             <SelectControl
@@ -303,28 +307,24 @@ class edit extends Component {
                   tabout = (
                     <RangeControl
                       label={__("Columns")}
-                      value={column}
-                      onChange={(value) => setAttributes({ column: value })}
+                      value={columns}
+                      onChange={(value) => setAttributes({ columns: value })}
                     />
                   );
                 } else if ("tablet" === tab.name) {
                   tabout = (
                     <RangeControl
                       label={__("Columns")}
-                      value={columnTablet}
-                      onChange={(value) =>
-                        setAttributes({ columnTablet: value })
-                      }
+                      value={tcolumns}
+                      onChange={(value) => setAttributes({ tcolumns: value })}
                     />
                   );
                 } else {
                   tabout = (
                     <RangeControl
                       label={__("Columns")}
-                      value={columnMobile}
-                      onChange={(value) =>
-                        setAttributes({ columnMobile: value })
-                      }
+                      value={mcolumns}
+                      onChange={(value) => setAttributes({ mcolumns: value })}
                     />
                   );
                 }
@@ -590,7 +590,7 @@ class edit extends Component {
                 setAttributes({ displayPostExcerpt: newExcerpt })
               }
             />,
-            displayPostExcerpt === "Post Excerpt" && [
+            "Post Excerpt" === displayPostExcerpt && [
               <RangeControl
                 label={__("Excerpt Length")}
                 value={excerptLength}
@@ -1330,30 +1330,6 @@ class edit extends Component {
           <Spinner />
         </Fragment>
       );
-    }
-    if (Carousel) {
-      return (
-        <Fragment>
-          {Inspectors}
-          <CarouselComponent
-            latestPosts={latestPosts}
-            categoriesList={categoriesList}
-            attributes={attributes}
-          />
-        </Fragment>
-      );
-    }
-    if (layoutValue === "Masonry") {
-      return (
-        <Fragment>
-          {Inspectors}
-          <Masonry
-            latestPosts={latestPosts}
-            categoriesList={categoriesList}
-            attributes={attributes}
-          />
-        </Fragment>
-      );
     } else {
       return (
         <Fragment>
@@ -1368,15 +1344,16 @@ class edit extends Component {
     }
   }
 }
+
 export default withSelect((select, props) => {
   const {
     categories,
     order,
     orderBy,
-    taxonomyType,
+    postFilter,
     paginationMarkup,
     pagination,
-    excludeCurrentPost,
+    currentPost,
   } = props.attributes;
   const { setAttributes } = props;
   const { getEntityRecords } = select("core");
@@ -1386,39 +1363,41 @@ export default withSelect((select, props) => {
   let taxonomy = "";
   let categoriesList = [];
   let rest_base = "";
+  categoriesList = wp.data
+    .select("core")
+    .getEntityRecords("taxonomy", "category");
 
   if (pagination) {
-    alert("pagintion");
     $.ajax({
-      url: PremiumBlocksSettings.ajaxurl,
+      url: uagb_blocks_info.ajaxurl,
       data: {
-        action: "uagb_post_pagination",
+        action: "premium_post_pagination",
         attributes: props.attributes,
-        nonce: PremiumBlocksSettings.nonce,
+        nonce: uagb_blocks_info.nonce,
       },
       dataType: "json",
       type: "POST",
       success: function (data) {
-        setAttributes({ paginationMarkup: data.data });
+        console.log(data, 1000);
       },
     });
   }
 
   if ("undefined" != typeof currentTax) {
-    if ("undefined" != typeof currentTax["taxonomy"][taxonomyType]) {
+    if ("undefined" != typeof currentTax["taxonomy"][postFilter]) {
       rest_base =
-        currentTax["taxonomy"][taxonomyType]["rest_base"] == false ||
-        currentTax["taxonomy"][taxonomyType]["rest_base"] == null
-          ? currentTax["taxonomy"][taxonomyType]["name"]
-          : currentTax["taxonomy"][taxonomyType]["rest_base"];
+        currentTax["taxonomy"][postFilter]["rest_base"] == false ||
+        currentTax["taxonomy"][postFilter]["rest_base"] == null
+          ? currentTax["taxonomy"][postFilter]["name"]
+          : currentTax["taxonomy"][postFilter]["rest_base"];
     }
 
-    if ("" != taxonomyType) {
+    if ("" != postFilter) {
       if (
         "undefined" != typeof currentTax["terms"] &&
-        "undefined" != typeof currentTax["terms"][taxonomyType]
+        "undefined" != typeof currentTax["terms"][postFilter]
       ) {
-        categoriesList = currentTax["terms"][taxonomyType];
+        categoriesList = currentTax["terms"][postFilter];
       }
     }
   }
@@ -1428,7 +1407,7 @@ export default withSelect((select, props) => {
     orderby: orderBy,
   };
 
-  if (excludeCurrentPost) {
+  if (currentPost) {
     latestPostsQuery["exclude"] = select("core/editor").getCurrentPostId();
   }
 

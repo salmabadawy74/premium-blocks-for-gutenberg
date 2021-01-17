@@ -35,8 +35,8 @@ if (!class_exists('PBG_Post')) {
             public function __construct()
             {
                   add_action('init', array($this, 'register_blocks'));
-                  add_action('wp_ajax_premium_post_pagination', array($this, 'post_pagination'));
-                  add_action('wp_ajax_nopriv_premium_post_pagination', array($this, 'post_pagination'));
+                   add_action('wp_ajax_premium_post_pagination', array($this, 'render_pagination'));
+                  add_action('wp_ajax_nopriv_premium_post_pagination', array($this, 'render_pagination'));
             }
 
             // Check if the register function exists.
@@ -53,6 +53,10 @@ if (!class_exists('PBG_Post')) {
                               'attributes'      => array_merge(
                                     $common_attributes,
                                     array(
+                                          'featuredImage' => array(
+                                                'type' => 'boolean',
+                                                'default' => true
+                                          ),
                                           'pagination'              => array(
                                                 'type'    => 'boolean',
                                                 'default' => false,
@@ -142,21 +146,29 @@ if (!class_exists('PBG_Post')) {
                               'type'    => 'string',
                               'default' => 'post',
                         ),
-                        'taxonomyType'            => array(
+                        'postFilter'            => array(
                               'type'    => 'string',
                               'default' => 'category',
                         ),
                         'numOfPosts'             => array(
                               'type'    => 'number',
-                              'default' => 1,
+                              'default' => 4,
+                        ),
+                        'displayPostContent' => array(
+                              'type' => 'boolean',
+                              'default' => true
                         ),
                         'displayPostDate'         => array(
                               'type'    => 'boolean',
                               'default' => true,
                         ),
                         'displayPostExcerpt'      => array(
-                              'type'    => 'boolean',
-                              'default' => true,
+                              'type'    => 'string',
+                              'default' => 'Post Excerpt',
+                        ),
+                        'displayPostTags' => array(
+                              'type' => 'string',
+                              'default' => true
                         ),
                         'excerptLength'           => array(
                               'type'    => 'number',
@@ -172,12 +184,9 @@ if (!class_exists('PBG_Post')) {
                         ),
                         'displayPostCategories'     => array(
                               'type'    => 'boolean',
-                              'default' => false,
-                        ),
-                        ' featuredImage'        => array(
-                              'type'    => 'boolean',
                               'default' => true,
                         ),
+
                         'imageSize'                 => array(
                               'type'    => 'string',
                               'default' => 'large',
@@ -201,9 +210,9 @@ if (!class_exists('PBG_Post')) {
                               'type'    => 'boolean',
                               'default' => false,
                         ),
-                        'ctaText'                 => array(
+                        'readMore'                 => array(
                               'type'    => 'string',
-                              'default' => __('Read More', 'ultimate-addons-for-gutenberg'),
+                              'default' => __('Read More'),
                         ),
                         'borderWidth'             => array(
                               'type'    => 'number',
@@ -232,15 +241,15 @@ if (!class_exists('PBG_Post')) {
                               'type'    => 'number',
                               'default' => 0,
                         ),
-                        'cols'                 => array(
+                        'columns'                 => array(
                               'type'    => 'number',
                               'default' => 3,
                         ),
-                        'colsTablet'                => array(
+                        'tcolumns'                => array(
                               'type'    => 'number',
                               'default' => 2,
                         ),
-                        'colsMobile'                => array(
+                        'mcolumns'                => array(
                               'type'    => 'number',
                               'default' => 1,
                         ),
@@ -499,6 +508,14 @@ if (!class_exists('PBG_Post')) {
                               'type'    => 'boolean',
                               'default' => false,
                         ),
+                        'offsetNum'    =>array (
+                              'type' =>'number',
+                              'default' =>2
+                        ),
+                        'postFilter'  => array(
+                              'type' => 'string' ,
+                              
+                        )
                   );
             }
             /**
@@ -512,7 +529,7 @@ if (!class_exists('PBG_Post')) {
             {
 
                   // Render query.
-                  $query = PBG_Blocks_Helper::get_query($attributes);
+                  $query = PBG_Blocks_Helper::get_query_posts($attributes);
                   // Cache the settings.
                   self::$settings['grid'] . $attributes['blockID'] = $attributes;
                   ob_start();
@@ -531,7 +548,8 @@ if (!class_exists('PBG_Post')) {
              */
             public function get_post_html($attributes, $query)
             {
-                  $wrap = array('premium-blog-wrap');
+                  $wrap = array('premium-blog-wrap','post__columns-' . $attributes['columns'],	'post__columns-tablet-' . $attributes['tcolumns'],
+                  'uagb-post__columns-mobile-' . $attributes['mcolumns'],);
                   $block_id  = 'premium-blog' . $attributes['blockID'];
                   $outerwrap = array(
                         'premium-blog-' . $attributes['blockID']
@@ -547,24 +565,26 @@ if (!class_exists('PBG_Post')) {
                               break;
                   }
 ?>
-                  <div class="<?php echo esc_html(implode(' ', $outerwrap)); ?>">
-                        <div class="<?php echo esc_html(implode(' ', $wrap)); ?>">
-                              <?php
+<div class="<?php echo esc_html(implode(' ', $outerwrap)); ?>">
+    <div class="<?php echo esc_html(implode(' ', $wrap)); ?>">
+        <?php
                               $this->posts_articles_markup($query, $attributes);
                               ?>
-                        </div>
-                        <?php
+        <?php if ($attributes['pagination']) : ?>
+        <div class="premium-blog-footer">
+            <?php PBG_Blocks_Helper::render_pagination($attributes); ?>
+        </div>
+        <?php
+                              endif; ?>
+    </div>
+    <?php
                         if ((isset($attributes['pagination']) && true === $attributes['postPagination'])) {
                         ?>
-                              <div class="premium-post-pagination-wrap">
-                                    <?php echo $this->render_pagination($query, $attributes); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-                                    ?>
-                              </div>
-                        <?php
+    <?php
                         }
                         ?>
-                  </div>
-                  <?php
+</div>
+<?php
             }
             /**
              * Renders the post post pagination on server.
@@ -573,50 +593,15 @@ if (!class_exists('PBG_Post')) {
              * @param array  $attributes Array of block attributes.
              * @since 1.18.1
              */
-            public function render_pagination($query, $attributes)
-            {
-                  $permalink_structure =         get_option('permalink_structure');
-                  $base                = untrailingslashit(wp_specialchars_decode(get_pagenum_link()));
-                  $base                = PBG_Blocks_Helper::build_base_url($permalink_structure, $base);
-                  $format              = PBG_Blocks_Helper::paged_format($permalink_structure, $base);
-                  $paged               = PBG_Blocks_Helper::get_paged($query);
-                  $page_limit          = min($attributes['pageLimit'], $query->max_num_pages);
-                  $page_limit          = isset($page_limit) ? $page_limit : $attributes['numOfPosts'];
-                  $attributes['numOfPosts'];
-                  $links = paginate_links(
-                        array(
-                              'base'      => $base . '%_%',
-                              'format'    => $format,
-                              'current'   => (!$paged) ? 1 : $paged,
-                              'total'     => $page_limit,
-                              'type'      => 'array',
-                              'mid_size'  => 4,
-                              'end_size'  => 4,
-                              'prev_text' => $attributes['paginationPrevText'],
-                              'next_text' => $attributes['paginationNextText'],
-                        )
-                  );
-                  if (isset($links)) {
-                        return wp_kses_post(implode(PHP_EOL, $links));
-                  }
-                  return '';
-            }
+           
+
+
             /**
              * Sends the Post pagination markup to edit.js
              *
              * @since 1.14.9
              */
-            public function post_pagination()
-            {
-                  check_ajax_referer('pbg_ajax_nonce', 'nonce');
-                  if (isset($_POST['attributes'])) {
-                        $query = PBG_Blocks_Helper::get_query($_POST['attributes']);
-                        $pagination_markup = $this->render_pagination($query, $_POST['attributes']);
-                        wp_send_json_success($pagination_markup);
-                  }
-                  wp_send_json_error(' No attributes recieved');
-            }
-            /**
+          /*
              * Sends the Posts to Masonry AJAX.
              *
              * @since 1.18.1
@@ -636,19 +621,26 @@ if (!class_exists('PBG_Post')) {
                         $attributes = apply_filters('premium_post_alter_attributes', $attributes, get_the_ID());
                         do_action("premium_post_before_article_{$attributes}", get_the_ID(), $attributes);
                   ?>
-                        <div class="premium-blog-post-outer-container">
-                              <?php do_action("premium_post_before_inner_wrap_{$attributes}", get_the_ID(), $attributes); ?>
-                              <div class="premium-blog-post-container">
-                                    <?php $this->render_image($attributes); ?>
-                                    <div class="pbg-post__text">
-                                          <?php $this->render_meta($attributes); ?>
-                                          <?php $this->render_excerpt($attributes); ?>
-                                          <?php $this->render_button($attributes); ?>
-                                    </div>
-                              </div>
-                              <?php do_action("premium_post_after_inner_wrap_{$attributes}", get_the_ID(), $attributes); ?>
-                        </div>
-                  <?php
+<div class="premium-blog-post-outer-container">
+    <?php do_action("premium_post_before_inner_wrap_{$attributes}", get_the_ID(), $attributes); ?>
+    <div class="premium-blog-post-container">
+        <?php $this->render_post_title($attributes); ?>
+        <?php $this->render_image($attributes); ?>
+        <div class="pbg-post__text">
+            <?php $this->render_meta($attributes); ?>
+            <?php $this->render_excerpt($attributes); ?>
+            <?php if ($attributes['displayPostTags'] && has_tag()) : ?>
+            <div class="premium-blog-post-tags-container">
+                <i class="fa fa-tags fa-fw"></i>
+                <?php the_tags(' ', ', '); ?>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <?php do_action("premium_post_after_inner_wrap_{$attributes}", get_the_ID(), $attributes); ?>
+</div>
+<?php
                         do_action("premium_post_after_article_{$attributes}", get_the_ID(), $attributes);
                   }
                   wp_reset_postdata();
@@ -667,19 +659,25 @@ if (!class_exists('PBG_Post')) {
              */
             public function render_image($attributes)
             {
-                  if (!$attributes['displayPostImage']) {
+                  if (!$attributes['featuredImage']) {
                         return;
                   }
                   if (!get_the_post_thumbnail_url()) {
                         return;
                   }
+                  $attributes['featuredImage']
+                        = array(
+                              'id' => get_post_thumbnail_id(),
+                        );
+
                   do_action("pbg_single_post_before_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes);
                   ?>
-                  <div class='premium-blog-thumbnail-container'>
-                        <a href="<?php echo esc_url(apply_filters(get_the_permalink(), get_the_ID(), $attributes)); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image(get_post_thumbnail_id(), $attributes['imagSize']); ?>
-                        </a>
-                  </div>
-            <?php
+<div class='premium-blog-thumbnail-container'>
+    <a href="<?php echo esc_url(apply_filters(get_the_permalink(), get_the_ID(), $attributes)); ?>"
+        rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image(get_post_thumbnail_id(), $attributes['imagSize']); ?>
+    </a>
+</div>
+<?php
                   do_action("pbg_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes);
             }
             /**
@@ -702,11 +700,11 @@ if (!class_exists('PBG_Post')) {
                         return;
                   }
             ?>
-                  <span class="premium-blog-post-author premium-blog-meta-data">
-                        <span class="dashicons-admin-users dashicons"></span>
-                        <?php the_author_posts_link(); ?>
-                  </span>
-            <?php
+<span class="premium-blog-post-author premium-blog-meta-data">
+    <span class="dashicons-admin-users dashicons"></span>
+    <?php the_author_posts_link(); ?>
+</span>
+<?php
             }
             /**
              * Render Post Meta - Date HTML.
@@ -722,11 +720,12 @@ if (!class_exists('PBG_Post')) {
                   }
                   global $post;
             ?>
-                  <time datetime="<?php echo esc_attr(get_the_date('c', $post->ID)); ?>" class="premium-blog-post-time premium-blog-meta-data">
-                        <span class="dashicons-calendar dashicons"></span>
-                        <?php echo esc_html(get_the_date('', $post->ID)); ?>
-                  </time>
-            <?php
+<time datetime="<?php echo esc_attr(get_the_date('c', $post->ID)); ?>"
+    class="premium-blog-post-time premium-blog-meta-data">
+    <span class="dashicons-calendar dashicons"></span>
+    <?php echo esc_html(get_the_date('', $post->ID)); ?>
+</time>
+<?php
             }
             /**
              * Render Post Meta - Comment HTML.
@@ -741,13 +740,13 @@ if (!class_exists('PBG_Post')) {
                         return;
                   }
             ?>
-                  <div class='premium-blog-post-comments premium-blog-meta-data'>
-                        <span class="premium-post__comment">
-                              <span class="dashicons-admin-comments dashicons"></span>
-                              <?php comments_number(); ?>
-                        </span>
-                  </div>
-            <?php
+<div class='premium-blog-post-comments premium-blog-meta-data'>
+    <span class="premium-post__comment">
+        <span class="dashicons-admin-comments dashicons"></span>
+        <?php comments_number(); ?>
+    </span>
+</div>
+<?php
             }
             /**
              * Render Post Meta - Comment HTML.
@@ -770,13 +769,12 @@ if (!class_exists('PBG_Post')) {
                         return;
                   }
             ?>
-                  <div class="premium-blog-post-categories premium-blog-meta-data">
-                        <span class="premium-post__taxonomy">
-                              <span class="dashicons-tag dashicons"></span>
-                              <?php echo esc_html($terms[0]->name); ?>
-                        </span>
-                  </div>
-            <?php
+<span class="premium-blog-meta-separator">•</span>
+<div class="premium-blog-post-categories premium-blog-meta-data">
+    <i class="fa fa-align-left fa-fw"></i>
+    <?php the_category(', '); ?>
+</div>
+<?php
             }
             /**
              * Render Post Meta HTML.
@@ -792,8 +790,8 @@ if (!class_exists('PBG_Post')) {
                   $meta_sequence = array('author', 'date', 'comment', 'taxonomy');
                   //   $meta_sequence = apply_filters("uagb_single_post_meta_sequence", $meta_sequence, get_the_ID(), $attributes);
             ?>
-                  <div class="uagb-post-grid-byline">
-                        <?php
+<div class="uagb-post-grid-byline">
+    <?php
                         foreach ($meta_sequence as $key => $sequence) {
                               switch ($sequence) {
                                     case 'author':
@@ -813,10 +811,21 @@ if (!class_exists('PBG_Post')) {
                               }
                         }
                         ?>
-                  </div>
-            <?php
+</div>
+<?php
                   do_action("pbg_single_post_after_meta", get_the_ID(), $attributes);
             }
+
+
+            public  function render_post_title($attributes)
+            {
+            ?>
+<a href="<?php the_permalink(); ?>">
+    <?php esc_html(the_title()); ?>
+</a>
+<?php
+            }
+
             /**
              * Render Post Excerpt HTML.
              *
@@ -826,11 +835,11 @@ if (!class_exists('PBG_Post')) {
              */
             public function render_excerpt($attributes)
             {
-                  if (!$attributes['displayPostExcerpt']) {
+                  if (!$attributes['displayPostContent']) {
                         return;
                   }
-                  $length = (isset($attributes['displayPostExcerpt'])) ? $attributes['displayPostExcerpt'] : 25;
-                  if ('full_post' === $attributes['displayPostExcerpt']) {
+                  $length = 'Post Excerpt' === $attributes['displayPostExcerpt'] ? $attributes['excerptLength'] : 25;
+                  if ('Post Full Content' === $attributes['displayPostExcerpt']) {
                         $excerpt = get_the_content();
                   } else {
                         $excerpt = wp_trim_words(get_the_excerpt(), $length);
@@ -841,13 +850,31 @@ if (!class_exists('PBG_Post')) {
                   // $excerpt = apply_filters("uagb_single_post_excerpt", $excerpt, get_the_ID(), $attributes);
                   do_action("pbg_single_post_before_excerpt", get_the_ID(), $attributes);
             ?>
-                  <div class="uagb-post__excerpt">
-                        <?php echo wp_kses_post($excerpt); ?>
-                  </div>
-            <?php
+<div class=" uagb-post__excerpt">
+    <?php echo wp_kses_post($excerpt); ?>
+</div>
+<?php
+                  if ($attributes['excerptType'] === "Link") {
+                        $this->get_post_excerpt_link($attributes);
+                  }
                   do_action("pbg_single_post_after_excerpt", get_the_ID(), $attributes);
             }
+            public static function get_tags()
+            {
+                  $tags = get_tags();
 
+                  $options = array();
+
+                  if (!empty($tags) && !is_wp_error($tags)) {
+                        foreach ($tags as $tag) {
+                              $options[$tag->term_id] = $tag->name;
+                        }
+                  }
+
+
+
+                  return $options;
+            }
             /**
              * Render Post CTA button HTML.
              *
@@ -855,21 +882,67 @@ if (!class_exists('PBG_Post')) {
              *
              * @since 0.0.1
              */
-            public function render_button($attributes)
+            public static function get_post_excerpt_link($attributes)
             {
-                  if (!$attributes['displayPostLink'] || "Post Full Content" === $attributes["displayPostExcerpt"]) {
+
+                  if (empty($attributes['readMore'])) {
                         return;
                   }
-                  $target   = ($attributes['newTab']) ? '_blank' : '_self';
-                  $cta_text = ($attributes['readMoreText']) ? $attributes['readMoreText'] : __('Read More');
-                  do_action("pbg_single_post_before_cta", get_the_ID(), $attributes);
-                  $wrap_classes = 'premium-blog-excerpt-link-wrap';
-            ?>
-                  <div class="<?php echo esc_html($wrap_classes); ?>">
-                  </div>
-<?php
-                  do_action("pbg_single_post_after_cta", get_the_ID(), $attributes);
+
+                  echo '<div class="premium-blog-excerpt-link-wrap">';
+                  echo '<a href="' . esc_url(get_permalink()) . '" class="premium-blog-excerpt-link elementor-button">';
+                  echo wp_kses_post($attributes['readMore']);
+                  echo '</a>';
+                  echo '</div>';
             }
+            protected function render_editor_script()
+            {
+
+                  ?>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+
+    $('.premium-blog-wrap').each(function() {
+
+        var $node_id = '<?php echo esc_attr($this->get_id()); ?>',
+            scope = $('[data-id="' + $node_id + '"]'),
+            selector = $(this);
+
+
+        if (selector.closest(scope).length < 1) {
+            return;
+        }
+
+
+        var masonryArgs = {
+            itemSelector: '.premium-blog-post-outer-container',
+            percentPosition: true,
+            layoutMode: 'masonry',
+        };
+
+        var $isotopeObj = {};
+
+        selector.imagesLoaded(function() {
+
+            $isotopeObj = selector.isotope(masonryArgs);
+
+            $isotopeObj.imagesLoaded().progress(function() {
+                $isotopeObj.isotope("layout");
+            });
+
+            selector.find('.premium-blog-post-outer-container').resize(function() {
+                $isotopeObj.isotope('layout');
+            });
+        });
+
+    });
+});
+</script>
+<?php
+            }
+
+
+
             /**
              * Render Complete Box Link HTML.
              *

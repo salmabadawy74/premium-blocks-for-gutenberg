@@ -4871,80 +4871,74 @@ var Meta = function (_React$Component) {
       return wp.element.createElement(
         __WEBPACK_IMPORTED_MODULE_0_react__["Fragment"],
         null,
+        attributes.displayPostAuthor && undefined !== post.uagb_author_info && wp.element.createElement(
+          "span",
+          { className: "premium-blog-post-author premium-blog-meta-data" },
+          wp.element.createElement("span", { className: "fa fa-user fa-fw" }),
+          wp.element.createElement(
+            "a",
+            {
+              target: "_blank",
+              href: post.uagb_author_info.author_link,
+              rel: "noopener noreferrer"
+            },
+            post.uagb_author_info.display_name
+          )
+        ),
         wp.element.createElement(
+          "span",
+          { className: "premium-blog-meta-separtor" },
+          "\u2022"
+        ),
+        attributes.displayPostDate && post.date_gmt && wp.element.createElement(
           "div",
-          { className: "uagb-post-grid-byline" },
-          attributes.displayPostAuthor && undefined !== post.uagb_author_info && wp.element.createElement(
-            "span",
-            { className: "premium-blog-post-author premium-blog-meta-data" },
-            wp.element.createElement("span", { className: "fa fa-user fa-fw" }),
-            wp.element.createElement(
-              "a",
-              {
-                target: "_blank",
-                href: post.uagb_author_info.author_link,
-                rel: "noopener noreferrer"
-              },
-              post.uagb_author_info.display_name
-            )
-          ),
+          { className: "premium-blog-post-time premium-blog-meta-data" },
           wp.element.createElement(
-            "span",
-            { className: "premium-blog-meta-separtor" },
-            "\u2022"
-          ),
-          attributes.displayPostDate && post.date_gmt && wp.element.createElement(
-            "div",
-            { className: "premium-blog-post-time premium-blog-meta-data" },
-            wp.element.createElement(
-              "time",
-              {
-                dateTime: format("c", post.date_gmt),
-                className: "uagb-post__date"
-              },
-              wp.element.createElement("span", { className: "fa fa-clock-o" }),
-              dateI18n(dateFormat, post.date_gmt)
-            )
-          ),
-          wp.element.createElement(
-            "span",
-            { className: "premium-blog-meta-separtor" },
-            "\u2022"
-          ),
-          attributes.displayPostComment && undefined !== post.uagb_comment_info && wp.element.createElement(
-            "div",
+            "time",
             {
-              className: "premium-blog-post-comments premium-blog-meta-data"
+              dateTime: format("c", post.date_gmt),
+              className: "uagb-post__date"
             },
-            wp.element.createElement(
-              "span",
-              { className: "premium-post__comment" },
-              wp.element.createElement("span", { className: "dashicons-admin-comments dashicons" }),
-              post.uagb_comment_info
-            )
-          ),
+            wp.element.createElement("span", { className: "fa fa-clock-o" }),
+            dateI18n(dateFormat, post.date_gmt)
+          )
+        ),
+        wp.element.createElement(
+          "span",
+          { className: "premium-blog-meta-separtor" },
+          "\u2022"
+        ),
+        attributes.displayPostComment && undefined !== post.uagb_comment_info && wp.element.createElement(
+          "div",
+          { className: "premium-blog-post-comments premium-blog-meta-data" },
           wp.element.createElement(
             "span",
-            { className: "premium-blog-meta-separtor" },
-            "\u2022"
-          ),
-          attributes.displayPostCategories && "" !== categoryObject && wp.element.createElement(
-            "div",
-            {
-              className: "premium-blog-post-categories premium-blog-meta-data"
-            },
-            wp.element.createElement(
-              "span",
-              { className: "premium-post__taxonomy" },
-              wp.element.createElement("span", { className: "fa fa-align-left fa-fw" }),
-              categoryObject.length === 0 ? "Uncategorized" : categoryObject.map(function (category) {
-                return wp.element.createElement(
-                  "span",
-                  null,
-                  category.name + " "
-                );
-              })
-            )
+            { className: "premium-post__comment" },
+            wp.element.createElement("span", { className: "dashicons-admin-comments dashicons" }),
+            post.uagb_comment_info
+          )
+        ),
+        wp.element.createElement(
+          "span",
+          { className: "premium-blog-meta-separtor" },
+          "\u2022"
+        ),
+        attributes.displayPostCategories && "" !== categoryObject && wp.element.createElement(
+          "div",
+          {
+            className: "premium-blog-post-categories premium-blog-meta-data"
+          },
+          wp.element.createElement(
+            "span",
+            { className: "premium-post__taxonomy" },
+            wp.element.createElement("span", { className: "fa fa-align-left fa-fw" }),
+            categoryObject.length === 0 ? "Uncategorized" : categoryObject.map(function (category) {
+              return wp.element.createElement(
+                "span",
+                null,
+                category.name + " "
+              );
+            })
           )
         )
       );
@@ -47157,13 +47151,13 @@ registerBlockType("premium/post-blog", {
   }), _defineProperty(_attributes, "classMigrate", {
     type: "boolean",
     default: false
-  }), _defineProperty(_attributes, "column", {
+  }), _defineProperty(_attributes, "columns", {
     type: "number",
     default: 3
-  }), _defineProperty(_attributes, "columnMobile", {
+  }), _defineProperty(_attributes, "mcolumns", {
     type: "number",
     default: 2
-  }), _defineProperty(_attributes, "columnTablet", {
+  }), _defineProperty(_attributes, "tcolumns", {
     type: "number",
     default: 1
   }), _defineProperty(_attributes, "thumbnail", {
@@ -47354,6 +47348,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var __ = wp.i18n.__;
+
+alert("borderWidths");
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -47500,9 +47496,9 @@ var edit = function (_Component) {
           marginBottomMobile = attributes.marginBottomMobile,
           marginBottomTablet = attributes.marginBottomTablet,
           marginBottom = attributes.marginBottom,
-          column = attributes.column,
-          columnMobile = attributes.columnMobile,
-          columnTablet = attributes.columnTablet,
+          columns = attributes.columns,
+          mcolumns = attributes.mcolumns,
+          tcolumns = attributes.tcolumns,
           containerShadowColor = attributes.containerShadowColor,
           containerShadowBlur = attributes.containerShadowBlur,
           containerShadowHorizontal = attributes.containerShadowHorizontal,
@@ -47559,7 +47555,10 @@ var edit = function (_Component) {
           PostmarginLeftType = attributes.PostmarginLeftType,
           PostmarginLeft = attributes.PostmarginLeft,
           PostmarginLeftMobile = attributes.PostmarginLeftMobile,
-          PostmarginLeftTablet = attributes.PostmarginLeftTablet;
+          PostmarginLeftTablet = attributes.PostmarginLeftTablet,
+          borderWidth = attributes.borderWidth,
+          borderColor = attributes.borderColor,
+          borderRadius = attributes.borderRadius;
 
       var categoryListOptions = [];
       if (categoriesList) {
@@ -47574,15 +47573,15 @@ var edit = function (_Component) {
       if (null != element) {
         element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_7__styling__["a" /* default */])(this.props);
       }
-      var hundleCarousel = function hundleCarousel(value) {
-        setAttributes({ layoutValue: "" });
-        setAttributes({ Carousel: value });
-        setAttributes({ gridCheck: false });
-      };
-      var hundleGrid = function hundleGrid() {
-        setAttributes({ gridCheck: !gridCheck });
-        setAttributes({ Carousel: false });
-      };
+      // const hundleCarousel = (value) => {
+      //   setAttributes({ layoutValue: "" });
+      //   setAttributes({ Carousel: value });
+      //   setAttributes({ gridCheck: false });
+      // };
+      // const hundleGrid = () => {
+      //   setAttributes({ gridCheck: !gridCheck });
+      //   setAttributes({ Carousel: false });
+      // };
       var Inspectors = isSelected && wp.element.createElement(
         InspectorControls,
         null,
@@ -47596,7 +47595,9 @@ var edit = function (_Component) {
           wp.element.createElement(ToggleControl, {
             label: __("Grid"),
             checked: gridCheck,
-            onChange: hundleGrid
+            onChange: function onChange() {
+              return setAttributes({ gridCheck: !gridCheck });
+            }
           }),
           gridCheck && [wp.element.createElement(SelectControl, {
             label: __("Layout"),
@@ -47629,25 +47630,25 @@ var edit = function (_Component) {
               if ("mobile" === tab.name) {
                 tabout = wp.element.createElement(RangeControl, {
                   label: __("Columns"),
-                  value: column,
+                  value: columns,
                   onChange: function onChange(value) {
-                    return setAttributes({ column: value });
+                    return setAttributes({ columns: value });
                   }
                 });
               } else if ("tablet" === tab.name) {
                 tabout = wp.element.createElement(RangeControl, {
                   label: __("Columns"),
-                  value: columnTablet,
+                  value: tcolumns,
                   onChange: function onChange(value) {
-                    return setAttributes({ columnTablet: value });
+                    return setAttributes({ tcolumns: value });
                   }
                 });
               } else {
                 tabout = wp.element.createElement(RangeControl, {
                   label: __("Columns"),
-                  value: columnMobile,
+                  value: mcolumns,
                   onChange: function onChange(value) {
-                    return setAttributes({ columnMobile: value });
+                    return setAttributes({ mcolumns: value });
                   }
                 });
               }
@@ -47911,7 +47912,7 @@ var edit = function (_Component) {
             onChange: function onChange(newExcerpt) {
               return setAttributes({ displayPostExcerpt: newExcerpt });
             }
-          }), displayPostExcerpt === "Post Excerpt" && [wp.element.createElement(RangeControl, {
+          }), "Post Excerpt" === displayPostExcerpt && [wp.element.createElement(RangeControl, {
             label: __("Excerpt Length"),
             value: excerptLength,
             onChange: function onChange(value) {
@@ -48653,30 +48654,6 @@ var edit = function (_Component) {
           Inspectors,
           wp.element.createElement(Spinner, null)
         );
-      }
-      if (Carousel) {
-        return wp.element.createElement(
-          Fragment,
-          null,
-          Inspectors,
-          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__Carousel__["a" /* default */], {
-            latestPosts: latestPosts,
-            categoriesList: categoriesList,
-            attributes: attributes
-          })
-        );
-      }
-      if (layoutValue === "Masonry") {
-        return wp.element.createElement(
-          Fragment,
-          null,
-          Inspectors,
-          wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__Masonry__["a" /* default */], {
-            latestPosts: latestPosts,
-            categoriesList: categoriesList,
-            attributes: attributes
-          })
-        );
       } else {
         return wp.element.createElement(
           Fragment,
@@ -48700,10 +48677,10 @@ var edit = function (_Component) {
       categories = _props$attributes.categories,
       order = _props$attributes.order,
       orderBy = _props$attributes.orderBy,
-      taxonomyType = _props$attributes.taxonomyType,
+      postFilter = _props$attributes.postFilter,
       paginationMarkup = _props$attributes.paginationMarkup,
       pagination = _props$attributes.pagination,
-      excludeCurrentPost = _props$attributes.excludeCurrentPost;
+      currentPost = _props$attributes.currentPost;
   var setAttributes = props.setAttributes;
 
   var _select = select("core"),
@@ -48714,32 +48691,32 @@ var edit = function (_Component) {
   var taxonomy = "";
   var categoriesList = [];
   var rest_base = "";
+  categoriesList = wp.data.select("core").getEntityRecords("taxonomy", "category");
 
   if (pagination) {
-    alert("pagintion");
     $.ajax({
-      url: PremiumBlocksSettings.ajaxurl,
+      url: uagb_blocks_info.ajaxurl,
       data: {
-        action: "uagb_post_pagination",
+        action: "premium_post_pagination",
         attributes: props.attributes,
-        nonce: PremiumBlocksSettings.nonce
+        nonce: uagb_blocks_info.nonce
       },
       dataType: "json",
       type: "POST",
       success: function success(data) {
-        setAttributes({ paginationMarkup: data.data });
+        console.log(data, 1000);
       }
     });
   }
 
   if ("undefined" != typeof currentTax) {
-    if ("undefined" != typeof currentTax["taxonomy"][taxonomyType]) {
-      rest_base = currentTax["taxonomy"][taxonomyType]["rest_base"] == false || currentTax["taxonomy"][taxonomyType]["rest_base"] == null ? currentTax["taxonomy"][taxonomyType]["name"] : currentTax["taxonomy"][taxonomyType]["rest_base"];
+    if ("undefined" != typeof currentTax["taxonomy"][postFilter]) {
+      rest_base = currentTax["taxonomy"][postFilter]["rest_base"] == false || currentTax["taxonomy"][postFilter]["rest_base"] == null ? currentTax["taxonomy"][postFilter]["name"] : currentTax["taxonomy"][postFilter]["rest_base"];
     }
 
-    if ("" != taxonomyType) {
-      if ("undefined" != typeof currentTax["terms"] && "undefined" != typeof currentTax["terms"][taxonomyType]) {
-        categoriesList = currentTax["terms"][taxonomyType];
+    if ("" != postFilter) {
+      if ("undefined" != typeof currentTax["terms"] && "undefined" != typeof currentTax["terms"][postFilter]) {
+        categoriesList = currentTax["terms"][postFilter];
       }
     }
   }
@@ -48749,7 +48726,7 @@ var edit = function (_Component) {
     orderby: orderBy
   };
 
-  if (excludeCurrentPost) {
+  if (currentPost) {
     latestPostsQuery["exclude"] = select("core/editor").getCurrentPostId();
   }
 
@@ -48910,9 +48887,9 @@ var Carousel = function (_React$Component) {
           centerMode = attributes.centerMode,
           slideSpacing = attributes.slideSpacing,
           navigationDots = attributes.navigationDots,
-          column = attributes.column,
-          columnMobile = attributes.columnMobile,
-          columnTablet = attributes.columnTablet,
+          columns = attributes.columns,
+          mcolumns = attributes.mcolumns,
+          tcolumns = attributes.tcolumns,
           navigationArrow = attributes.navigationArrow,
           arrowPosition = attributes.arrowPosition;
 
@@ -48928,22 +48905,10 @@ var Carousel = function (_React$Component) {
         infinite: true,
         autoplay: Autoplay,
         speed: autoplaySpeed
-      }, _defineProperty(_settings, "speed", autoplaySpeed), _defineProperty(_settings, "slidesToShow", column), _defineProperty(_settings, "nextArrow", wp.element.createElement(SampleNextArrow, null)), _defineProperty(_settings, "prevArrow", wp.element.createElement(SamplePrevArrow, null)), _defineProperty(_settings, "slidesToScroll", slideToScroll), _defineProperty(_settings, "responsive", [{
-        breakpoint: 1025,
-        settings: {
-          slidesToShow: columnTablet,
-          slidesToScroll: 1
-        }
-      }, {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: columnMobile,
-          slidesToScroll: 1
-        }
-      }]), _settings);
+      }, _defineProperty(_settings, "speed", autoplaySpeed), _defineProperty(_settings, "slidesToShow", columns), _defineProperty(_settings, "nextArrow", wp.element.createElement(SampleNextArrow, null)), _defineProperty(_settings, "prevArrow", wp.element.createElement(SamplePrevArrow, null)), _defineProperty(_settings, "slidesToScroll", slideToScroll), _settings);
 
       var lastDisplay = latestPosts.slice(offsetNum);
-      console.log(column, columnTablet, columnMobile);
+      console.log(columns, tcolumns, mcolumns);
       return wp.element.createElement(
         "div",
         { className: "premium-blog-" + blockID, id: "premium-blog-" + blockID },
@@ -48953,59 +48918,31 @@ var Carousel = function (_React$Component) {
           wp.element.createElement(
             __WEBPACK_IMPORTED_MODULE_0_react_slick___default.a,
             settings,
-            lastDisplay.map(function (post, i) {
-              return wp.element.createElement(
-                "div",
-                { className: "premium-blog-post-outer-container", key: i },
-                wp.element.createElement(
-                  "div",
-                  {
-                    className: "premium-blog-post-container premium-blog-skin-modern"
-                  },
-                  wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__Image__["a" /* default */], { post: post, attributes: attributes }),
-                  wp.element.createElement(
-                    "div",
-                    { className: "premium-blog-content-wrapper empty-thumb" },
-                    wp.element.createElement(
-                      "div",
-                      { className: "premium-blog-content-wrapper-inner" },
-                      wp.element.createElement(
-                        "div",
-                        { className: "premium-blog-inner-container" },
-                        wp.element.createElement(
-                          "div",
-                          { className: "premium-blog-entry-container" },
-                          wp.element.createElement(
-                            "div",
-                            { className: "premium-blog-entry-title" },
-                            wp.element.createElement(
-                              "h2",
-                              null,
-                              wp.element.createElement(
-                                "a",
-                                { href: post.link },
-                                undefined == post.title ? post.value : decodeEntities(post.title.rendered.trim()) || __("(Untitled)")
-                              )
-                            )
-                          ),
-                          wp.element.createElement(
-                            "div",
-                            { className: "premium-blog-entry-meta" },
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__meta__["a" /* default */], {
-                              post: post,
-                              categoriesList: categoriesList,
-                              attributes: attributes
-                            })
-                          )
-                        )
-                      ),
-                      wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__Excerpt__["a" /* default */], { attributes: attributes, post: post }),
-                      wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__Button__["a" /* default */], { attributes: attributes, post: post })
-                    )
-                  )
-                )
-              );
-            })
+            wp.element.createElement(
+              "div",
+              null,
+              "1"
+            ),
+            wp.element.createElement(
+              "div",
+              null,
+              "2"
+            ),
+            wp.element.createElement(
+              "div",
+              null,
+              "3"
+            ),
+            wp.element.createElement(
+              "div",
+              null,
+              "4"
+            ),
+            wp.element.createElement(
+              "div",
+              null,
+              "5"
+            )
           )
         )
       );
@@ -49015,7 +48952,7 @@ var Carousel = function (_React$Component) {
   return Carousel;
 }(React.Component);
 
-/* harmony default export */ __webpack_exports__["a"] = (Carousel);
+/* unused harmony default export */ var _unused_webpack_default_export = (Carousel);
 
 /***/ }),
 /* 283 */
@@ -53419,9 +53356,9 @@ function styling(props) {
       marginBottomMobile = _props$attributes.marginBottomMobile,
       marginBottomTablet = _props$attributes.marginBottomTablet,
       marginBottom = _props$attributes.marginBottom,
-      column = _props$attributes.column,
-      columnMobile = _props$attributes.columnMobile,
-      columnTablet = _props$attributes.columnTablet,
+      columns = _props$attributes.columns,
+      mcolumns = _props$attributes.mcolumns,
+      tcolumns = _props$attributes.tcolumns,
       thumbnail = _props$attributes.thumbnail,
       thumbnailMobile = _props$attributes.thumbnailMobile,
       thumbnailTablet = _props$attributes.thumbnailTablet,
@@ -53531,7 +53468,7 @@ function styling(props) {
       color: hoverColor + ";"
     },
     " .premium-blog-even": {
-      width: 100 / column + "%",
+      width: 100 / columns + "%",
       "margin-bottom": 20 + "px"
     },
     " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
@@ -53599,7 +53536,7 @@ function styling(props) {
   }), _defineProperty(_mobile_selectors, ".premium-blog-entry-title a:hover", {
     color: hoverColor + ";"
   }), _defineProperty(_mobile_selectors, " .premium-blog-even", {
-    width: 100 / columnMobile + "%"
+    width: 100 / mcolumns + "%"
   }), _defineProperty(_mobile_selectors, " .premium-blog-post-outer-container .premium-blog-content-wrapper-inner p", {
     "font-size": "" + postContentfontSizeMobile + postContentfontSizeType + " !important",
     "margin-bottom": PostmarginBottomMobile + " " + PostmarginBottomType,
@@ -53677,7 +53614,7 @@ function styling(props) {
       "box-shadow": containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
     },
     " .premium-blog-even": {
-      width: 100 / columnTablet + "%"
+      width: 100 / tcolumns + "%"
     },
     " .premium-blog-meta-data": {
       "font-size": "" + secondContentfontSizeTablet + secondContentfontSizeType + ";",
@@ -54054,7 +53991,7 @@ var MasonryClass = function (_React$Component) {
   return MasonryClass;
 }(React.Component);
 
-/* harmony default export */ __webpack_exports__["a"] = (MasonryClass);
+/* unused harmony default export */ var _unused_webpack_default_export = (MasonryClass);
 
 /***/ }),
 /* 304 */

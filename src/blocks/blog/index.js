@@ -94,7 +94,7 @@ registerBlockType("premium/post-blog", {
     numOfPosts: {
       type: "number",
       default: 4,
-    },  
+    },
     offsetNum: {
       type: "number",
       default: 0,
@@ -417,15 +417,15 @@ registerBlockType("premium/post-blog", {
       type: "boolean",
       default: false,
     },
-    column: {
+    columns: {
       type: "number",
       default: 3,
     },
-    columnMobile: {
+    mcolumns: {
       type: "number",
       default: 2,
     },
-    columnTablet: {
+    tcolumns: {
       type: "number",
       default: 1,
     },
