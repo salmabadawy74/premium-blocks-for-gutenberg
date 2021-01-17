@@ -11470,230 +11470,230 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var bannerAttrs = {
-  imageID: {
-    type: "number"
-  },
-  imageURL: {
-    type: "string",
-    source: "attribute",
-    attribute: "src",
-    selector: ".premium-banner__img"
-  },
-  title: {
-    type: "array",
-    source: "children",
-    selector: ".premium-banner__title",
-    default: __("Awesome Title")
-  },
-  titleTag: {
-    type: "string",
-    default: "H3"
-  },
-  desc: {
-    type: "array",
-    source: "children",
-    selector: ".premium-banner__desc",
-    default: __("Cool Description!!")
-  },
-  contentAlign: {
-    type: "string",
-    default: "left"
-  },
-  effect: {
-    type: "string",
-    default: "effect1"
-  },
-  hoverEffect: {
-    type: "string",
-    default: "none"
-  },
-  height: {
-    type: "string",
-    default: "default"
-  },
-  minHeight: {
-    type: "number"
-  },
-  verAlign: {
-    type: "string",
-    default: "top"
-  },
-  hovered: {
-    type: "boolean",
-    default: false
-  },
-  responsive: {
-    type: "boolean",
-    default: false
-  },
-  background: {
-    type: "string"
-  },
-  opacity: {
-    type: "number",
-    default: 50
-  },
-  borderType: {
-    type: "string",
-    default: "none"
-  },
-  borderWidth: {
-    type: "number",
-    default: "1"
-  },
-  borderRadius: {
-    type: "number",
-    default: "0"
-  },
-  borderColor: {
-    type: "string"
-  },
-  titleColor: {
-    type: "string"
-  },
-  titleSize: {
-    type: "number",
-    default: "20"
-  },
-  titleLine: {
-    type: "number"
-  },
-  titleWeight: {
-    type: "number"
-  },
-  titleBack: {
-    type: "string"
-  },
-  shadowColor: {
-    type: "string"
-  },
-  shadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  shadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  shadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  descColor: {
-    type: "string",
-    default: "#000"
-  },
-  descSize: {
-    type: "number",
-    default: "20"
-  },
-  descLine: {
-    type: "number"
-  },
-  descWeight: {
-    type: "number"
-  },
-  descShadowColor: {
-    type: "string"
-  },
-  descShadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  descShadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  descShadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  urlCheck: {
-    type: "boolean",
-    default: false
-  },
-  target: {
-    type: "boolean",
-    default: false
-  },
-  url: {
-    type: "string",
-    source: "attribute",
-    attribute: "href",
-    selector: ".premium-banner__link"
-  },
-  sepColor: {
-    type: "string"
-  },
-  id: {
-    type: "string"
-  },
-  blur: {
-    type: "number",
-    default: "0"
-  },
-  bright: {
-    type: "number",
-    default: "100"
-  },
-  contrast: {
-    type: "number",
-    default: "100"
-  },
-  saturation: {
-    type: "number",
-    default: "100"
-  },
-  hue: {
-    type: "number",
-    default: "0"
-  },
-  containerShadowColor: {
-    type: "string"
-  },
-  containerShadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  containerShadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  containerShadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  containerShadowPosition: {
-    type: "string",
-    default: ""
-  },
-  paddingT: {
-    type: "number"
-  },
-  paddingR: {
-    type: "number"
-  },
-  paddingB: {
-    type: "number"
-  },
-  paddingL: {
-    type: "number"
-  },
-  paddingU: {
-    type: "string"
-  }
+    imageID: {
+        type: "number"
+    },
+    imageURL: {
+        type: "string",
+        source: "attribute",
+        attribute: "src",
+        selector: ".premium-banner__img"
+    },
+    title: {
+        type: "array",
+        source: "children",
+        selector: ".premium-banner__title",
+        default: __("Awesome Title")
+    },
+    titleTag: {
+        type: "string",
+        default: "H3"
+    },
+    desc: {
+        type: "array",
+        source: "children",
+        selector: ".premium-banner__desc",
+        default: __("Cool Description!!")
+    },
+    contentAlign: {
+        type: "string",
+        default: "left"
+    },
+    effect: {
+        type: "string",
+        default: "effect1"
+    },
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    height: {
+        type: "string",
+        default: "default"
+    },
+    minHeight: {
+        type: "number"
+    },
+    verAlign: {
+        type: "string",
+        default: "top"
+    },
+    hovered: {
+        type: "boolean",
+        default: false
+    },
+    responsive: {
+        type: "boolean",
+        default: false
+    },
+    background: {
+        type: "string"
+    },
+    opacity: {
+        type: "number",
+        default: 50
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number",
+        default: "0"
+    },
+    borderColor: {
+        type: "string"
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleSize: {
+        type: "number",
+        default: "20"
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleWeight: {
+        type: "number"
+    },
+    titleBack: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    descColor: {
+        type: "string",
+        default: "#000"
+    },
+    descSize: {
+        type: "number",
+        default: "20"
+    },
+    descLine: {
+        type: "number"
+    },
+    descWeight: {
+        type: "number"
+    },
+    descShadowColor: {
+        type: "string"
+    },
+    descShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    descShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    descShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    urlCheck: {
+        type: "boolean",
+        default: false
+    },
+    target: {
+        type: "boolean",
+        default: false
+    },
+    url: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-banner__link"
+    },
+    sepColor: {
+        type: "string"
+    },
+    id: {
+        type: "string"
+    },
+    blur: {
+        type: "number",
+        default: "0"
+    },
+    bright: {
+        type: "number",
+        default: "100"
+    },
+    contrast: {
+        type: "number",
+        default: "100"
+    },
+    saturation: {
+        type: "number",
+        default: "100"
+    },
+    hue: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowColor: {
+        type: "string"
+    },
+    containerShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string"
+    }
 };
 registerBlockType("premium/banner", {
-  title: __("Banner"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "banner" }),
-  category: "premium-blocks",
-  attributes: bannerAttrs,
-  supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["c" /* banner */]
-  },
-  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
-  save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
-  deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
+    title: __("Banner"),
+    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "banner" }),
+    category: "premium-blocks",
+    attributes: bannerAttrs,
+    supports: {
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["c" /* banner */]
+    },
+    edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+    save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */],
+    deprecated: __WEBPACK_IMPORTED_MODULE_4__deprecated__["a" /* default */]
 });
 
 /***/ }),
@@ -57849,191 +57849,191 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var fancyTextAttrs = {
-  block_id: {
-    type: "string"
-  },
-  classMigrate: {
-    type: "boolean",
-    default: false
-  },
-  align: {
-    type: "string",
-    default: "center"
-  },
-  prefix: {
-    type: "string",
-    default: "This is"
-  },
-  suffix: {
-    type: "string",
-    default: "Text"
-  },
-  repeaterFancyText: {
-    type: "array",
-    default: [{
-      title: __("Designer"),
-      edit: false
-    }, {
-      title: __("Developer"),
-      edit: false
-    }, {
-      title: __("Awesome"),
-      edit: false
-    }]
-  },
-  effect: {
-    type: "string",
-    default: "typing"
-  },
-  fancyTextColor: {
-    type: "string",
-    default: "#6ec1e4"
-  },
-  cursorColor: {
-    type: "string",
-    default: "#6ec1e4"
-  },
-  fancyTextLetter: {
-    type: "number"
-  },
-  fancyTextStyle: {
-    type: "string"
-  },
-  fancyTextUpper: {
-    type: "boolean",
-    default: false
-  },
-  fancyTextWeight: {
-    type: "number",
-    default: 600
-  },
-  fancyTextfontSize: {
-    type: "number",
-    default: 40
-  },
-  fancyTextfontSizeType: {
-    type: "string",
-    default: "px"
-  },
-  fancyTextfontSizeMobile: {
-    type: "number",
-    default: 40
-  },
-  fancyTextfontSizeTablet: {
-    type: "number",
-    default: 40
-  },
-  fancyTextBGColor: {
-    type: "string"
-  },
-  shadowColor: {
-    type: "string"
-  },
-  shadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  shadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  shadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  textColor: {
-    type: "string",
-    default: "#54595f"
-  },
-  TextLetter: {
-    type: "number"
-  },
-  TextStyle: {
-    type: "string"
-  },
-  TextUpper: {
-    type: "boolean",
-    default: false
-  },
-  TextWeight: {
-    type: "number",
-    default: 600
-  },
-  TextfontSize: {
-    type: "number",
-    default: 40
-  },
-  TextfontSizeType: {
-    type: "string",
-    default: "px"
-  },
-  TextfontSizeMobile: {
-    type: "number",
-    default: 40
-  },
-  TextfontSizeTablet: {
-    type: "number",
-    default: 40
-  },
-  TextBGColor: {
-    type: "string"
-  },
-  loop: {
-    type: "boolean",
-    default: "true"
-  },
-  cursorShow: {
-    type: "boolean",
-    default: "true"
-  },
-  cursorMark: {
-    type: "string",
-    default: "|"
-  },
-  typeSpeed: {
-    type: "number",
-    default: 100
-  },
-  backdelay: {
-    type: "number",
-    default: 30
-  },
-  startdelay: {
-    type: "number",
-    default: 30
-  },
-  backSpeed: {
-    type: "number",
-    default: 30
-  },
-  animationSpeed: {
-    type: "number",
-    default: 200
-  },
-  pauseTime: {
-    type: "number",
-    default: 3000
-  },
-  hoverPause: {
-    type: "boolean",
-    default: false
-  },
-  fancyalign: {
-    type: "string",
-    default: "center"
-  }
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    prefix: {
+        type: "string",
+        default: "This is"
+    },
+    suffix: {
+        type: "string",
+        default: "Text"
+    },
+    repeaterFancyText: {
+        type: "array",
+        default: [{
+            title: __("Designer"),
+            edit: false
+        }, {
+            title: __("Developer"),
+            edit: false
+        }, {
+            title: __("Awesome"),
+            edit: false
+        }]
+    },
+    effect: {
+        type: "string",
+        default: "typing"
+    },
+    fancyTextColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    cursorColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    fancyTextLetter: {
+        type: "number"
+    },
+    fancyTextStyle: {
+        type: "string"
+    },
+    fancyTextUpper: {
+        type: "boolean",
+        default: false
+    },
+    fancyTextWeight: {
+        type: "number",
+        default: 600
+    },
+    fancyTextfontSize: {
+        type: "number",
+        default: 40
+    },
+    fancyTextfontSizeType: {
+        type: "string",
+        default: "px"
+    },
+    fancyTextfontSizeMobile: {
+        type: "number",
+        default: 40
+    },
+    fancyTextfontSizeTablet: {
+        type: "number",
+        default: 40
+    },
+    fancyTextBGColor: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    textColor: {
+        type: "string",
+        default: "#54595f"
+    },
+    TextLetter: {
+        type: "number"
+    },
+    TextStyle: {
+        type: "string"
+    },
+    TextUpper: {
+        type: "boolean",
+        default: false
+    },
+    TextWeight: {
+        type: "number",
+        default: 600
+    },
+    TextfontSize: {
+        type: "number",
+        default: 40
+    },
+    TextfontSizeType: {
+        type: "string",
+        default: "px"
+    },
+    TextfontSizeMobile: {
+        type: "number",
+        default: 40
+    },
+    TextfontSizeTablet: {
+        type: "number",
+        default: 40
+    },
+    TextBGColor: {
+        type: "string"
+    },
+    loop: {
+        type: "boolean",
+        default: "true"
+    },
+    cursorShow: {
+        type: "boolean",
+        default: "true"
+    },
+    cursorMark: {
+        type: "string",
+        default: "|"
+    },
+    typeSpeed: {
+        type: "number",
+        default: 100
+    },
+    backdelay: {
+        type: "number",
+        default: 30
+    },
+    startdelay: {
+        type: "number",
+        default: 30
+    },
+    backSpeed: {
+        type: "number",
+        default: 30
+    },
+    animationSpeed: {
+        type: "number",
+        default: 200
+    },
+    pauseTime: {
+        type: "number",
+        default: 3000
+    },
+    hoverPause: {
+        type: "boolean",
+        default: false
+    },
+    fancyalign: {
+        type: "string",
+        default: "center"
+    }
 };
 
 registerBlockType("premium/fancy-text", {
-  title: __("Fancy Text"),
-  icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__icons__["a" /* default */], { icon: "fancy-text" }),
-  category: "premium-blocks",
-  attributes: fancyTextAttrs,
-  supports: {
-    inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["i" /* fancyText */]
-  },
-  edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
-  save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */]
+    title: __("Fancy Text"),
+    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__icons__["a" /* default */], { icon: "fancy-text" }),
+    category: "premium-blocks",
+    attributes: fancyTextAttrs,
+    supports: {
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["i" /* fancyText */]
+    },
+    edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
+    save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */]
 });
 
 /***/ }),
@@ -58218,21 +58218,27 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__["b" /
             wp.element.createElement("span", { className: "premium-repeater-item__dragHandle" }),
             wp.element.createElement(
                 "div",
-                { className: "premium-repeater-item__content",
+                {
+                    className: "premium-repeater-item__content",
                     onClick: function onClick() {
                         return edit(newIndex);
-                    } },
+                    }
+                },
                 value.title,
                 " "
             ),
-            items.length != 1 ? wp.element.createElement("button", { className: "premium-repeater-item__trashicon fa fa-trash",
+            items.length != 1 ? wp.element.createElement("button", {
+                className: "premium-repeater-item__trashicon fa fa-trash",
                 onClick: function onClick() {
                     return removeItem(newIndex, value);
-                } }) : ""
+                }
+            }) : ""
         ),
         wp.element.createElement(
             "div",
-            { className: "premium-repeater-item-controls " + (value.edit ? "editable" : "") },
+            {
+                className: "premium-repeater-item-controls " + (value.edit ? "editable" : "")
+            },
             wp.element.createElement(TextControl, {
                 label: __("Fancy String"),
                 value: value.title,
@@ -58255,7 +58261,8 @@ var SortableList = Object(__WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__["a" /
         null,
         " ",
         items.map(function (value, index) {
-            return wp.element.createElement(SortableItem, { key: "item-" + value,
+            return wp.element.createElement(SortableItem, {
+                key: "item-" + value,
                 index: index,
                 newIndex: index,
                 value: value,
@@ -58299,7 +58306,7 @@ var edit = function (_Component) {
             var effect = this.props.attributes.effect;
 
 
-            if (effect == 'typing' && this.typed != undefined) {
+            if (effect == "typing" && this.typed != undefined) {
                 this.typed.destroy();
             }
             this.renderFancyText();
@@ -58323,7 +58330,7 @@ var edit = function (_Component) {
                 return item.title;
             });
 
-            if (effect === 'typing') {
+            if (effect === "typing") {
                 var options = {
                     strings: txt,
                     typeSpeed: typeSpeed,
@@ -58344,7 +58351,7 @@ var edit = function (_Component) {
             // Make sure to destroy Typed instance on unmounting
             // to prevent memory leaks
 
-            effect === 'typing' ? this.typed.destroy() : "";
+            effect === "typing" ? this.typed.destroy() : "";
         }
     }, {
         key: "render",
@@ -58413,6 +58420,7 @@ var edit = function (_Component) {
             if (null != element && "undefined" != typeof element) {
                 element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_1__styling__["a" /* default */])(this.props);
             }
+
             var onResetClickfancyTextTypo = function onResetClickfancyTextTypo() {
                 setAttributes({
                     fancyTextWeight: 600,
@@ -58425,6 +58433,7 @@ var edit = function (_Component) {
                     fancyTextUpper: false
                 });
             };
+
             var onResetClickTextTypo = function onResetClickTextTypo() {
                 setAttributes({
                     TextWeight: 600,
@@ -58437,6 +58446,7 @@ var edit = function (_Component) {
                     TextUpper: false
                 });
             };
+
             var onResetClickLabelTextShadow = function onResetClickLabelTextShadow() {
                 setAttributes({
                     shadowColor: "",
@@ -58451,6 +58461,7 @@ var edit = function (_Component) {
                     repeaterFancyText: onRepeaterChange("title", newText, newIndex)
                 });
             };
+
             var onSortEndSingle = function onSortEndSingle(_ref3) {
                 var oldIndex = _ref3.oldIndex,
                     newIndex = _ref3.newIndex;
@@ -58459,23 +58470,23 @@ var edit = function (_Component) {
                     return cont;
                 });
 
-                var array = Object(__WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__["c" /* arrayMove */])(arrayItem, oldIndex, newIndex);
-                setAttributes({
-                    repeaterFancyText: array
+                var sortedArray = Object(__WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__["c" /* arrayMove */])(arrayItem, oldIndex, newIndex);
 
+                setAttributes({
+                    repeaterFancyText: sortedArray
                 });
             };
 
             var shouldCancelStart = function shouldCancelStart(e) {
                 // Prevent sorting from being triggered if target is input or button
-                if (['button', 'div', 'input', 'textarea', 'i'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+                if (["button", "div", "input", "textarea", "i"].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                     return true; // Return true to cancel sorting
                 }
             };
 
             var onRepeaterChange = function onRepeaterChange(attr, value, index) {
-                var items = repeaterFancyText;
-                return items.map(function (item, currIndex) {
+
+                return repeaterFancyText.map(function (item, currIndex) {
                     if (index == currIndex) {
                         item[attr] = value;
                     }
@@ -58517,7 +58528,6 @@ var edit = function (_Component) {
                 });
             };
 
-            var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-fancy-text");
             return [isSelected && wp.element.createElement(
                 BlockControls,
                 null,
@@ -58556,7 +58566,9 @@ var edit = function (_Component) {
                                 wp.element.createElement(
                                     "span",
                                     { className: "premium-fancy-text-control-title" },
-                                    " Fancy Strings "
+                                    " ",
+                                    "Fancy Strings",
+                                    " "
                                 )
                             ),
                             wp.element.createElement(SortableList, {
@@ -58570,10 +58582,10 @@ var edit = function (_Component) {
                                 edit: function edit(value) {
                                     return _edit(value);
                                 },
-
                                 shouldCancelStart: shouldCancelStart,
                                 changeFancyValue: changeFancyValue,
-                                helperClass: "premium-fancy-text__sortableHelper" }),
+                                helperClass: "premium-fancy-text__sortableHelper"
+                            }),
                             wp.element.createElement(
                                 "div",
                                 { className: "premium-fancy-text-btn__wrap" },
@@ -58615,7 +58627,7 @@ var edit = function (_Component) {
                             return setAttributes({ effect: newValue });
                         }
                     }),
-                    effect == 'typing' ? wp.element.createElement(
+                    effect == "typing" ? wp.element.createElement(
                         Fragment,
                         null,
                         wp.element.createElement(TextControl, {
@@ -58623,36 +58635,44 @@ var edit = function (_Component) {
                             type: "Number",
                             value: typeSpeed,
                             onChange: function onChange(newValue) {
-                                return setAttributes({ typeSpeed: parseInt(newValue) });
+                                return setAttributes({
+                                    typeSpeed: parseInt(newValue)
+                                });
                             },
-                            help: "Set typing effect speed in milliseconds."
+                            help: __('Set typing effect speed in milliseconds.')
                         }),
                         wp.element.createElement(TextControl, {
                             label: __("Back Speed"),
                             type: "Number",
                             value: backSpeed,
                             onChange: function onChange(newValue) {
-                                return setAttributes({ backSpeed: parseInt(newValue) });
+                                return setAttributes({
+                                    backSpeed: parseInt(newValue)
+                                });
                             },
-                            help: "Set a speed for backspace effect in milliseconds."
+                            help: __('Set a speed for backspace effect in milliseconds.')
                         }),
                         wp.element.createElement(TextControl, {
                             label: __("Start Delay"),
                             type: "Number",
                             value: startdelay,
                             onChange: function onChange(newValue) {
-                                return setAttributes({ startdelay: parseInt(newValue) });
+                                return setAttributes({
+                                    startdelay: parseInt(newValue)
+                                });
                             },
-                            help: "If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds."
+                            help: __('If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.')
                         }),
                         wp.element.createElement(TextControl, {
                             label: __("Back Delay"),
                             type: "Number",
                             value: backdelay,
                             onChange: function onChange(newValue) {
-                                return setAttributes({ backdelay: parseInt(newValue) });
+                                return setAttributes({
+                                    backdelay: parseInt(newValue)
+                                });
                             },
-                            help: "If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect."
+                            help: __("If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect.")
                         }),
                         wp.element.createElement(ToggleControl, {
                             label: __("Loop"),
@@ -58672,7 +58692,9 @@ var edit = function (_Component) {
                             label: __("Cursor Mark"),
                             value: cursorMark,
                             onChange: function onChange(newCheck) {
-                                return setAttributes({ cursorMark: newCheck });
+                                return setAttributes({
+                                    cursorMark: newCheck
+                                });
                             }
                         })
                     ) : wp.element.createElement(
@@ -58688,18 +58710,22 @@ var edit = function (_Component) {
                             value: animationSpeed,
                             type: "Number",
                             onChange: function onChange(newValue) {
-                                return setAttributes({ animationSpeed: parseInt(newValue) });
+                                return setAttributes({
+                                    animationSpeed: parseInt(newValue)
+                                });
                             },
-                            help: "Set a duration value in milliseconds for slide effect."
+                            help: __("Set a duration value in milliseconds for slide effect.")
                         }),
                         wp.element.createElement(TextControl, {
                             label: __("Pause Time"),
                             value: pauseTime,
                             type: "Number",
                             onChange: function onChange(newValue) {
-                                return setAttributes({ pauseTime: parseInt(newValue) });
+                                return setAttributes({
+                                    pauseTime: parseInt(newValue)
+                                });
                             },
-                            help: "How long should the word/string stay visible? Set a value in milliseconds."
+                            help: __("How long should the word/string stay visible? Set a value in milliseconds.")
                         }),
                         wp.element.createElement(ToggleControl, {
                             label: __("Pause on Hover"),
@@ -58707,7 +58733,7 @@ var edit = function (_Component) {
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ hoverPause: newCheck });
                             },
-                            help: "If you enabled this option, the slide will be paused when mouseover."
+                            help: __("If you enabled this option, the slide will be paused when mouseover.")
                         }),
                         wp.element.createElement(
                             "p",
@@ -58720,7 +58746,9 @@ var edit = function (_Component) {
                                     icon: "editor-align" + contentAlign,
                                     isActive: contentAlign === fancyalign,
                                     onClick: function onClick() {
-                                        return setAttributes({ fancyalign: contentAlign });
+                                        return setAttributes({
+                                            fancyalign: contentAlign
+                                        });
                                     }
                                 };
                             })
@@ -58751,16 +58779,30 @@ var edit = function (_Component) {
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
                         setAttributes: setAttributes,
-                        fontSizeType: { value: fancyTextfontSizeType, label: __("fancyTextfontSizeType") },
-                        fontSize: { value: fancyTextfontSize, label: __("fancyTextfontSize") },
-                        fontSizeMobile: { value: fancyTextfontSizeMobile, label: __("fancyTextfontSizeMobile") },
-                        fontSizeTablet: { value: fancyTextfontSizeTablet, label: __("fancyTextfontSizeTablet") },
+                        fontSizeType: {
+                            value: fancyTextfontSizeType,
+                            label: __("fancyTextfontSizeType")
+                        },
+                        fontSize: {
+                            value: fancyTextfontSize,
+                            label: __("fancyTextfontSize")
+                        },
+                        fontSizeMobile: {
+                            value: fancyTextfontSizeMobile,
+                            label: __("fancyTextfontSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: fancyTextfontSizeTablet,
+                            label: __("fancyTextfontSizeTablet")
+                        },
                         weight: fancyTextWeight,
                         style: fancyTextStyle,
                         spacing: fancyTextLetter,
                         upper: fancyTextUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ fancyTextWeight: newWeight || 500 });
+                            return setAttributes({
+                                fancyTextWeight: newWeight || 500
+                            });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
                             return setAttributes({ fancyTextStyle: newStyle });
@@ -58806,7 +58848,7 @@ var edit = function (_Component) {
                         },
                         onResetClick: onResetClickLabelTextShadow
                     }),
-                    effect == 'typing' && cursorShow && wp.element.createElement(
+                    effect == "typing" && cursorShow && wp.element.createElement(
                         Fragment,
                         null,
                         wp.element.createElement(
@@ -58849,10 +58891,22 @@ var edit = function (_Component) {
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
                         setAttributes: setAttributes,
-                        fontSizeType: { value: TextfontSizeType, label: __("TextfontSizeType") },
-                        fontSize: { value: TextfontSize, label: __("TextfontSize") },
-                        fontSizeMobile: { value: TextfontSizeMobile, label: __("TextfontSizeMobile") },
-                        fontSizeTablet: { value: TextfontSizeTablet, label: __("TextfontSizeTablet") },
+                        fontSizeType: {
+                            value: TextfontSizeType,
+                            label: __("TextfontSizeType")
+                        },
+                        fontSize: {
+                            value: TextfontSize,
+                            label: __("TextfontSize")
+                        },
+                        fontSizeMobile: {
+                            value: TextfontSizeMobile,
+                            label: __("TextfontSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: TextfontSizeTablet,
+                            label: __("TextfontSizeTablet")
+                        },
                         weight: TextWeight,
                         style: TextStyle,
                         spacing: TextLetter,
@@ -58889,14 +58943,17 @@ var edit = function (_Component) {
             ), wp.element.createElement(
                 "div",
                 {
-                    className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId), style: {
+                    className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId),
+                    style: {
                         textAlign: align
-                    } },
-                effect == 'typing' ? wp.element.createElement(
+                    }
+                },
+                effect === "typing" ? wp.element.createElement(
                     "div",
                     {
                         id: "premium-fancy-text-" + this.props.clientId,
-                        className: "premium-fancy-text", style: {
+                        className: "premium-fancy-text",
+                        style: {
                             textAlign: align
                         },
                         "data-effect": "" + effect,
@@ -58919,9 +58976,12 @@ var edit = function (_Component) {
                     ),
                     wp.element.createElement(
                         "span",
-                        { className: "premium-fancy-text-title", ref: function ref(el) {
+                        {
+                            className: "premium-fancy-text-title",
+                            ref: function ref(el) {
                                 _this2.el = el;
-                            } },
+                            }
+                        },
                         " "
                     ),
                     wp.element.createElement(
@@ -58932,7 +58992,9 @@ var edit = function (_Component) {
                     )
                 ) : wp.element.createElement(
                     "div",
-                    { className: "premium-fancy-text premium-fancy-slide", style: {
+                    {
+                        className: "premium-fancy-text premium-fancy-slide",
+                        style: {
                             textAlign: align
                         },
                         "data-effect": "" + effect,
@@ -58951,12 +59013,17 @@ var edit = function (_Component) {
                     ),
                     wp.element.createElement(
                         "div",
-                        { className: "premium-fancy-text-title-slide", style: {
+                        {
+                            className: "premium-fancy-text-title-slide",
+                            style: {
                                 textAlign: fancyalign
-                            } },
+                            }
+                        },
                         wp.element.createElement(
                             "ul",
-                            { className: "premium-fancy-text-title-slide-list" },
+                            {
+                                className: "premium-fancy-text-title-slide-list"
+                            },
                             repeaterFancyText.map(function (item, index) {
                                 return wp.element.createElement(
                                     "li",
