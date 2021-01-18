@@ -38,7 +38,7 @@ class PBG_Blocks_Helper {
 	 * @since 0.0.1
 	 * @var instance
 	 */
-	public static $block_list;
+	public static $block_atts;
 
 	/**
 	 * PBG Block Flag
@@ -61,14 +61,10 @@ class PBG_Blocks_Helper {
 	 */
 	public function __construct() {
 
-		require PREMIUM_BLOCKS_PATH . 'classes/class-pbg-blocks-config.php';
-
-		self::$block_list = PBG_Config::get_block_attributes();
-
-		// Gets Active Blocks.
+		// Get Active Blocks.
 		self::$blocks = Premium_Guten_Admin::get_enabled_keys();
 
-		// Gets Plugin Admin Settings.
+		// Get Plugin Admin Settings.
 		self::$config = Premium_Guten_Maps::get_enabled_keys();
 
 		// Enqueue Editor Assets.
@@ -86,6 +82,11 @@ class PBG_Blocks_Helper {
 		// Register Premium Blocks category.
 		add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
 
+		require PREMIUM_BLOCKS_PATH . 'classes/class-pbg-blocks-config.php';
+
+		// Get Blocks Attributes.
+		self::$block_atts = PBG_Blocks_Config::get_block_attributes();
+
 	}
 
 	/**
@@ -93,6 +94,7 @@ class PBG_Blocks_Helper {
 	 *
 	 * @since 1.0.0
 	 * @access public
+	 *
 	 * @return void
 	 */
 	public function premium_gutenberg_editor() {
@@ -148,10 +150,13 @@ class PBG_Blocks_Helper {
 	}
 
 	/**
-	 * Enqueue Frontend CSS for Premium Blocks
+	 * Premium Gutenberg Frontend
+	 *
+	 * Enqueue Frontend Assets for Premium Blocks.
 	 *
 	 * @since 1.0.0
 	 * @access public
+	 *
 	 * @return void
 	 */
 	public function premium_gutenberg_frontend() {
@@ -316,6 +321,7 @@ class PBG_Blocks_Helper {
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION
 			);
+
 			wp_enqueue_script(
 				'pbg-typed-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/typed.js',
@@ -341,6 +347,7 @@ class PBG_Blocks_Helper {
 	 *
 	 * @since 1.0.0
 	 * @access public
+	 *
 	 * @return void
 	 */
 	public function register_premium_category( $categories ) {
@@ -488,20 +495,23 @@ class PBG_Blocks_Helper {
 
 		// self::file_write( self::$stylesheet, 'css' );
 
-		ob_start();
+        ob_start();
+        
 		?>
 			<style type="text/css" media="all" id="premium-style-frontend"><?php echo self::$stylesheet; ?></style>
-        <?php
-        ob_end_flush();
+		<?php
+		ob_end_flush();
 	}
 
 	/**
-     * Get Block CSS
-     * 
+	 * Get Block CSS
+	 *
 	 * Generates CSS recurrsively.
+     * 
+     * @since 1.8.3
+     * @access public
 	 *
 	 * @param object $block The block object.
-	 * @since 1.8.3
 	 */
 	public function get_block_css( $block ) {
 
@@ -573,7 +583,7 @@ class PBG_Blocks_Helper {
 
 	public static function get_fancy_text_css( $attr, $id ) {
 
-		$defaults = self::$block_list['premium/fancy-text']['attributes'];
+		$defaults = self::$block_atts['premium/fancy-text']['attributes'];
 
 		$attr = array_merge( $defaults, (array) $attr );
 
@@ -583,84 +593,82 @@ class PBG_Blocks_Helper {
 		$selectors = array(
 			// Desktop Icon Size CSS starts.
 			' .premium-fancy-text-title'       => array(
-				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeType'] ),
+				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit'] ),
 				'color'            => $attr['fancyTextColor'],
 				'background-color' => $attr['fancyTextBGColor'],
 				'letter-spacing'   => self::get_css_value( $attr['fancyTextLetter'], 'px' ),
 				'text-transform'   => $attr['fancyTextUpper'] ? 'uppercase' : 'none',
-				'font-style'       => self::get_css_value( $attr['fancyTextStyle'], ' !important' ),
-				'font-weight'      => self::get_css_value( $attr['fancyTextWeight'], ' !important' ),
+				'font-style'       => $attr['fancyTextStyle'],
+				'font-weight'      => $attr['fancyTextWeight'],
 				'text-shadow'      => self::get_css_value( $attr['shadowHorizontal'], 'px ' ) . self::get_css_value( $attr['shadowVertical'], 'px ' ) . self::get_css_value( $attr['shadowBlur'], 'px ' ) . $attr['shadowColor'],
 			),
 			' .premium-fancy-text-title-slide' => array(
-				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeType'] ),
+				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit'] ),
 				'color'            => $attr['fancyTextColor'],
 				'background-color' => $attr['fancyTextBGColor'],
 				'letter-spacing'   => self::get_css_value( $attr['fancyTextLetter'], 'px' ),
 				'text-transform'   => $attr['fancyTextUpper'] ? 'uppercase' : 'none',
-				'font-style'       => self::get_css_value( $attr['fancyTextStyle'], ' !important' ),
-				'font-weight'      => self::get_css_value( $attr['fancyTextWeight'], ' !important' ),
+				'font-style'       => $attr['fancyTextStyle'],
+				'font-weight'      => $attr['fancyTextWeight'],
 				'text-shadow'      => self::get_css_value( $attr['shadowHorizontal'], 'px ' ) . self::get_css_value( $attr['shadowVertical'], 'px ' ) . self::get_css_value( $attr['shadowBlur'], 'px ' ) . $attr['shadowColor'],
 			),
 			' .typed-cursor'                   => array(
 				'color' => $attr['cursorColor'],
 			),
 			' .premium-fancy-text-prefix-text' => array(
-				'font-size'        => self::get_css_value( $attr['TextfontSize'], $attr['TextfontSizeType'] ),
+				'font-size'        => self::get_css_value( $attr['textfontSize'], $attr['textfontSizeUnit'] ),
 				'color'            => $attr['textColor'],
-				'background-color' => $attr['TextBGColor'],
-				'letter-spacing'   => self::get_css_value( $attr['TextLetter'], 'px' ),
-				'text-transform'   => $attr['TextUpper'] ? 'uppercase' : 'none',
-				'font-style'       => self::get_css_value( $attr['TextStyle'], ' !important' ),
-				'font-weight'      => self::get_css_value( $attr['TextWeight'], ' !important' ),
+				'background-color' => $attr['textBGColor'],
+				'letter-spacing'   => self::get_css_value( $attr['textLetter'], 'px' ),
+				'text-transform'   => $attr['textUpper'] ? 'uppercase' : 'none',
+				'font-style'       => self::get_css_value( $attr['textStyle'], ' !important' ),
+				'font-weight'      => self::get_css_value( $attr['textWeight'], ' !important' ),
 			),
 			' .premium-fancy-text-suffix-text' => array(
-				'font-size'        => self::get_css_value( $attr['TextfontSize'], $attr['TextfontSizeType'] ),
+				'font-size'        => self::get_css_value( $attr['textfontSize'], $attr['textfontSizeUnit'] ),
 				'color'            => $attr['textColor'],
-				'background-color' => $attr['TextBGColor'],
-				'letter-spacing'   => self::get_css_value( $attr['TextLetter'], 'px' ),
-				'text-transform'   => $attr['TextUpper'] ? 'uppercase' : 'none',
-				'font-style'       => self::get_css_value( $attr['TextStyle'], ' !important' ),
-				'font-weight'      => self::get_css_value( $attr['TextWeight'], ' !important' ),
+				'background-color' => $attr['textBGColor'],
+				'letter-spacing'   => self::get_css_value( $attr['textLetter'], 'px' ),
+				'text-transform'   => $attr['textUpper'] ? 'uppercase' : 'none',
+				'font-style'       => self::get_css_value( $attr['textStyle'], ' !important' ),
+				'font-weight'      => self::get_css_value( $attr['textWeight'], ' !important' ),
 			),
 		);
 		// Desktop Icon Size CSS ends.
 
-		// Mobile Icon Size CSS starts.
-		$m_selectors = array(
-			' premium-fancy-text-title'        => array(
-				'font-size' => self::get_css_value( $attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeType'] ) . '!important',
-			),
-			' .premium-fancy-text-title-slide' => array(
-				'font-size' => self::get_css_value( $attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeType'] ) . '!important',
-			),
-			' .premium-fancy-text-prefix-text' => array(
-				'font-size' => self::get_css_value( $attr['TextfontSizeMobile'], $attr['TextfontSizeType'] ) . '!important',
-			),
-			' .premium-fancy-text-suffix-text' => array(
-				'font-size' => self::get_css_value( $attr['TextfontSizeMobile'], $attr['TextfontSizeType'] ) . '!important',
-			),
-		);
-		// Mobile Icon Size CSS ends.
-
-		// Tablet Icon Size CSS starts.
+		// Tablet CSS Start.
 		$t_selectors = array(
 			' .premium-fancy-text-title'       => array(
-				'font-size' => self::get_css_value( $attr['fancyTextfontSizeTablet'], $attr['fancyTextfontSizeType'] ) . '!important',
+				'font-size' => self::get_css_value( $attr['fancyTextfontSizeTablet'], $attr['fancyTextfontSizeUnit'] ),
 			),
 			' .premium-fancy-text-title-slide' => array(
-				'font-size' => self::get_css_value( $attr['fancyTextfontSizeTablet'], $attr['fancyTextfontSizeType'] ) . '!important',
+				'font-size' => self::get_css_value( $attr['fancyTextfontSizeTablet'], $attr['fancyTextfontSizeUnit'] ),
 			),
 			' .premium-fancy-text-prefix-text' => array(
-				'font-size' => self::get_css_value( $attr['TextfontSizeTablet'], $attr['TextfontSizeType'] ) . '!important',
+				'font-size' => self::get_css_value( $attr['textfontSizeTablet'], $attr['textfontSizeUnit'] ),
 			),
 			' .premium-fancy-text-suffix-text' => array(
-				'padding' => self::get_css_value( $attr['TextfontSizeTablet'], $attr['TextfontSizeType'] ),
+				'padding' => self::get_css_value( $attr['textfontSizeTablet'], $attr['textfontSizeUnit'] ),
 			),
 		);
-		// Tablet Icon Size CSS ends.
+		// Tablet CSS End.
 
-		// @codingStandardsIgnoreEnd
+		// Mobile CSS Start.
+		$m_selectors = array(
+			' .premium-fancy-text-title'        => array(
+				'font-size' => self::get_css_value( $attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeUnit'] ),
+			),
+			' .premium-fancy-text-title-slide' => array(
+				'font-size' => self::get_css_value( $attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeUnit'] ),
+			),
+			' .premium-fancy-text-prefix-text' => array(
+				'font-size' => self::get_css_value( $attr['textfontSizeMobile'], $attr['textfontSizeUnit'] ),
+			),
+			' .premium-fancy-text-suffix-text' => array(
+				'font-size' => self::get_css_value( $attr['textfontSizeMobile'], $attr['textfontSizeUnit'] ),
+			),
+		);
+		// Mobile CSS End.
 
 		$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-fancy-text-';
 
@@ -724,13 +732,15 @@ class PBG_Blocks_Helper {
 	/**
 	 * Get CSS value
 	 *
+     * @since 1.8.3
+     * @access public
+     * 
 	 * @param string $value  CSS value.
 	 * @param string $unit  CSS unit.
-	 * @since 1.13.4
 	 */
 	public static function get_css_value( $value = '', $unit = '' ) {
 
-		// Ignore PHPCS Comment
+		// Ignore PHPCS Comment For Strict Comparison.
 		if ( '' == $value ) {
 			return $value;
 		}
@@ -803,9 +813,9 @@ class PBG_Blocks_Helper {
 		}
 
 		return $desktop . $tab_styling_css . $mob_styling_css;
-    }
-    
-    /**
+	}
+
+	/**
 	 * Creates and returns an instance of the class
 	 *
 	 * @since 1.0.0
@@ -815,13 +825,13 @@ class PBG_Blocks_Helper {
 	 */
 	public static function get_instance() {
 
-		if ( self::$instance == null ) {
+		if ( ! isset( self::$instance ) ) {
 			self::$instance = new self();
 		}
 
 		return self::$instance;
-    }
-    
+	}
+
 }
 
 
@@ -834,7 +844,9 @@ if ( ! function_exists( 'pbg_blocks_helper' ) ) {
 	 * @return object
 	 */
 	function pbg_blocks_helper() {
-		return pbg_blocks_helper::get_instance();
+
+        return pbg_blocks_helper::get_instance();
+        
 	}
 }
 pbg_blocks_helper();

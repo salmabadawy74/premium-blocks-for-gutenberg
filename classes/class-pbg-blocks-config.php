@@ -1,6 +1,6 @@
 <?php
 /**
- * PBG_Config.
+ * PBG_Blocks_Config.
  *
  * @package PBG
  */
@@ -9,12 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if ( ! class_exists( 'PBG_Config' ) ) {
+if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 
 	/**
-	 * Class PBG_Config.
+	 * Class PBG_Blocks_Config.
 	 */
-	class PBG_Config {
+	class PBG_Blocks_Config {
 
 		/**
 		 * Block Attributes
@@ -40,6 +40,7 @@ if ( ! class_exists( 'PBG_Config' ) ) {
 		public static function get_block_attributes() {
 
 			if ( null === self::$block_attributes ) {
+
 				self::$block_attributes = array(
 					'premium/fancy-text' => array(
 						'slug'       => '',
@@ -49,10 +50,10 @@ if ( ! class_exists( 'PBG_Config' ) ) {
 							'align'                   => 'center',
 							'block_id'                => '',
 							'fancyTextColor'          => '#6ec1e4',
-							'fancyTextfontSize'       => '40',
-							'fancyTextfontSizeType'   => 'px',
-							'fancyTextfontSizeMobile' => '40',
-							'fancyTextfontSizeTablet' => '40',
+							'fancyTextfontSize'       => '20',
+							'fancyTextfontSizeMobile' => '20',
+							'fancyTextfontSizeTablet' => '20',
+							'fancyTextfontSizeUnit'   => 'px',
 							'fancyTextWeight'         => '600',
 							'fancyTextUpper'          => false,
 							'fancyTextStyle'          => '',
@@ -64,19 +65,21 @@ if ( ! class_exists( 'PBG_Config' ) ) {
 							'shadowVertical'          => '1',
 							'cursorColor'             => '#6ec1e4',
 							'textColor'               => '#54595f',
-							'TextfontSize'            => '40',
-							'TextfontSizeType'        => 'px',
-							'TextfontSizeMobile'      => '40',
-							'TextfontSizeTablet'      => '40',
-							'TextWeight'              => '600',
-							'TextLetter'              => '',
-							'TextUpper'               => false,
-							'TextStyle'               => '',
-							'TextBGColor'             => '',
+							'textfontSize'            => '20',
+							'textfontSizeMobile'      => '20',
+							'textfontSizeTablet'      => '20',
+							'textfontSizeUnit'        => 'px',
+							'textWeight'              => '600',
+							'textLetter'              => '',
+							'textUpper'               => false,
+							'textStyle'               => '',
+							'textBGColor'             => '',
 						),
 					),
 				);
+
 			}
+
 			return self::$block_attributes;
 		}
 	}

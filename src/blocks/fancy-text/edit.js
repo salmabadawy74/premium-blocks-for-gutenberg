@@ -86,21 +86,26 @@ const SortableList = SortableContainer(
 );
 
 class edit extends Component {
+
     constructor() {
         super(...arguments);
         this.renderFancyText = this.renderFancyText.bind(this);
     }
+
     componentDidMount() {
+
         // Assigning id in the attribute.
-        this.props.setAttributes({ block_id: this.props.clientId });
+        this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
         this.props.setAttributes({ classMigrate: true });
+
         // Pushing Style tag for this block css.
         const $style = document.createElement("style");
         $style.setAttribute(
             "id",
-            "premium-style-fancy-text-" + this.props.clientId
+            "premium-style-fancy-text-" + this.props.clientId.substr(0, 6)
         );
         document.head.appendChild($style);
+
         this.renderFancyText();
     }
 
@@ -125,7 +130,9 @@ class edit extends Component {
             backdelay,
             effect,
         } = this.props.attributes;
+
         if (!repeaterFancyText) return null;
+
         let txt = repeaterFancyText.map((item) => {
             return item.title;
         });
@@ -156,6 +163,7 @@ class edit extends Component {
         const { attributes, setAttributes, isSelected } = this.props;
 
         const {
+            block_id,
             align,
             className,
             prefix,
@@ -166,7 +174,7 @@ class edit extends Component {
             fancyTextfontSize,
             fancyTextfontSizeMobile,
             fancyTextfontSizeTablet,
-            fancyTextfontSizeType,
+            fancyTextfontSizeUnit,
             fancyTextWeight,
             fancyTextUpper,
             fancyTextStyle,
@@ -178,15 +186,15 @@ class edit extends Component {
             shadowVertical,
             cursorColor,
             textColor,
-            TextfontSize,
-            TextfontSizeMobile,
-            TextfontSizeTablet,
-            TextfontSizeType,
-            TextWeight,
-            TextLetter,
-            TextUpper,
-            TextStyle,
-            TextBGColor,
+            textfontSize,
+            textfontSizeMobile,
+            textfontSizeTablet,
+            textfontSizeUnit,
+            textWeight,
+            textLetter,
+            textUpper,
+            textStyle,
+            textBGColor,
             loop,
             cursorShow,
             cursorMark,
@@ -213,7 +221,7 @@ class edit extends Component {
         ];
 
         var element = document.getElementById(
-            "premium-style-fancy-text-" + this.props.clientId
+            "premium-style-fancy-text-" + block_id
         );
 
         if (null != element && "undefined" != typeof element) {
@@ -223,10 +231,10 @@ class edit extends Component {
         const onResetClickfancyTextTypo = () => {
             setAttributes({
                 fancyTextWeight: 600,
-                fancyTextfontSizeType: "px",
-                fancyTextfontSize: "40",
-                fancyTextfontSizeMobile: "40",
-                fancyTextfontSizeTablet: "40",
+                fancyTextfontSizeUnit: "px",
+                fancyTextfontSize: "20",
+                fancyTextfontSizeMobile: "20",
+                fancyTextfontSizeTablet: "20",
                 fancyTextStyle: "normal",
                 fancyTextLetter: "0",
                 fancyTextUpper: false,
@@ -235,14 +243,14 @@ class edit extends Component {
 
         const onResetClickTextTypo = () => {
             setAttributes({
-                TextWeight: 600,
-                TextfontSizeType: "px",
-                TextfontSize: "40",
-                TextfontSizeMobile: "40",
-                TextfontSizeTablet: "40",
-                TextStyle: "normal",
-                TextLetter: "0",
-                TextUpper: false,
+                textWeight: 600,
+                textfontSizeUnit: "px",
+                textfontSize: "20",
+                textfontSizeMobile: "20",
+                textfontSizeTablet: "20",
+                textStyle: "normal",
+                textLetter: "0",
+                textUpper: false,
             });
         };
 
@@ -337,9 +345,9 @@ class edit extends Component {
                 <BlockControls>
                     <AlignmentToolbar
                         value={align}
-                        onChange={(value) => {
-                            setAttributes({ align: value });
-                        }}
+                        onChange={value =>
+                            setAttributes({ align: value })
+                        }
                     />
                 </BlockControls>
             ),
@@ -367,20 +375,20 @@ class edit extends Component {
                                 </label>
                                 <SortableList
                                     items={repeaterFancyText}
-                                    onSortEnd={(o, n) => onSortEndSingle(o, n)}
+                                    onSortEnd={(oldIndex, newIndex) => onSortEndSingle(oldIndex, newIndex)}
                                     removeItem={(value) => removeItem(value)}
                                     edit={(value) => edit(value)}
                                     shouldCancelStart={shouldCancelStart}
                                     changeFancyValue={changeFancyValue}
                                     helperClass="premium-fancy-text__sortableHelper"
                                 />
-                                <div className="premium-fancy-text-btn__wrap">
+                                <div className="premium-repeater-btn__wrap">
                                     <button
-                                        className={"premium-fancy-text-btn"}
+                                        className={"premium-repeater-btn"}
                                         onClick={() => addNewFancyText()}
                                     >
-                                        <i className="dashicons dashicons-plus premium-fancy-text-icon" />
-                                        {__("Add New Item")}
+                                        <i className="dashicons dashicons-plus premium-repeater__icon" />
+                                        <span>{__('Add New Item')}</span>
                                     </button>
                                 </div>
                             </div>
@@ -407,7 +415,7 @@ class edit extends Component {
                                 setAttributes({ effect: newValue })
                             }
                         />
-                        {effect == "typing" ? (
+                        {"typing" === effect ? (
                             <Fragment>
                                 <TextControl
                                     label={__("Type Speed")}
@@ -562,8 +570,8 @@ class edit extends Component {
                             ]}
                             setAttributes={setAttributes}
                             fontSizeType={{
-                                value: fancyTextfontSizeType,
-                                label: __("fancyTextfontSizeType"),
+                                value: fancyTextfontSizeUnit,
+                                label: __("fancyTextfontSizeUnit"),
                             }}
                             fontSize={{
                                 value: fancyTextfontSize,
@@ -666,45 +674,45 @@ class edit extends Component {
                             ]}
                             setAttributes={setAttributes}
                             fontSizeType={{
-                                value: TextfontSizeType,
-                                label: __("TextfontSizeType"),
+                                value: textfontSizeUnit,
+                                label: __("textfontSizeUnit"),
                             }}
                             fontSize={{
-                                value: TextfontSize,
-                                label: __("TextfontSize"),
+                                value: textfontSize,
+                                label: __("textfontSize"),
                             }}
                             fontSizeMobile={{
-                                value: TextfontSizeMobile,
-                                label: __("TextfontSizeMobile"),
+                                value: textfontSizeMobile,
+                                label: __("textfontSizeMobile"),
                             }}
                             fontSizeTablet={{
-                                value: TextfontSizeTablet,
-                                label: __("TextfontSizeTablet"),
+                                value: textfontSizeTablet,
+                                label: __("textfontSizeTablet"),
                             }}
-                            weight={TextWeight}
-                            style={TextStyle}
-                            spacing={TextLetter}
-                            upper={TextUpper}
+                            weight={textWeight}
+                            style={textStyle}
+                            spacing={textLetter}
+                            upper={textUpper}
                             onChangeWeight={(newWeight) =>
-                                setAttributes({ TextWeight: newWeight || 500 })
+                                setAttributes({ textWeight: newWeight || 500 })
                             }
                             onChangeStyle={(newStyle) =>
-                                setAttributes({ TextStyle: newStyle })
+                                setAttributes({ textStyle: newStyle })
                             }
                             onChangeSpacing={(newValue) =>
-                                setAttributes({ TextLetter: newValue })
+                                setAttributes({ textLetter: newValue })
                             }
                             onChangeUpper={(check) =>
-                                setAttributes({ TextUpper: check })
+                                setAttributes({ textUpper: check })
                             }
                             onResetClick={onResetClickTextTypo}
                         />
                         <p>{__("Background Color")}</p>
                         <ColorPalette
-                            value={TextBGColor}
+                            value={textBGColor}
                             onChange={(newValue) =>
                                 setAttributes({
-                                    TextBGColor: newValue,
+                                    textBGColor: newValue,
                                 })
                             }
                             allowReset={true}
@@ -715,7 +723,7 @@ class edit extends Component {
             <div
                 className={classnames(
                     className,
-                    `premium-block-${this.props.clientId}`
+                    `premium-block-${block_id}`
                 )}
                 style={{
                     textAlign: align,
@@ -723,7 +731,7 @@ class edit extends Component {
             >
                 {effect === "typing" ? (
                     <div
-                        id={`premium-fancy-text-${this.props.clientId}`}
+                        id={`premium-fancy-text-${block_id}`}
                         className={`premium-fancy-text`}
                         style={{
                             textAlign: align,

@@ -78,19 +78,19 @@ const fancyTextAttrs = {
     },
     fancyTextfontSize: {
         type: "number",
-        default: 40
+        default: 20
     },
-    fancyTextfontSizeType: {
+    fancyTextfontSizeUnit: {
         type: "string",
         default: "px"
     },
     fancyTextfontSizeMobile: {
         type: "number",
-        default: 40
+        default: 20
     },
     fancyTextfontSizeTablet: {
         type: "number",
-        default: 40
+        default: 20
     },
     fancyTextBGColor: {
         type: "string"
@@ -114,37 +114,37 @@ const fancyTextAttrs = {
         type: "string",
         default: "#54595f"
     },
-    TextLetter: {
+    textLetter: {
         type: "number"
     },
-    TextStyle: {
+    textStyle: {
         type: "string"
     },
-    TextUpper: {
+    textUpper: {
         type: "boolean",
         default: false
     },
-    TextWeight: {
+    textWeight: {
         type: "number",
         default: 600
     },
-    TextfontSize: {
+    textfontSize: {
         type: "number",
-        default: 40
+        default: 20
     },
-    TextfontSizeType: {
+    textfontSizeUnit: {
         type: "string",
         default: "px"
     },
-    TextfontSizeMobile: {
+    textfontSizeMobile: {
         type: "number",
-        default: 40
+        default: 20
     },
-    TextfontSizeTablet: {
+    textfontSizeTablet: {
         type: "number",
-        default: 40
+        default: 20
     },
-    TextBGColor: {
+    textBGColor: {
         type: "string"
     },
     loop: {
@@ -201,6 +201,7 @@ registerBlockType("premium/fancy-text", {
     supports: {
         inserter: fancyText
     },
+    example: {},
     edit: edit,
     save: save
 });
