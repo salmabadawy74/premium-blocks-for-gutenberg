@@ -1,27 +1,24 @@
 const { __ } = wp.i18n;
 class Tags extends React.Component {
   render() {
-    const { post, attributes, taxonomyList, categoriesList } = this.props;
-    let tags = taxonomyList["post_tag"];
-    console.log(tags, taxonomyList);
-    let categoryObject = [];
-    if (categoriesList) {
-      categoriesList.map((item, thisIndex) => {
-        if (post.categories && item.id == post.categories[thisIndex]) {
-          categoryObject.push(item);
+    const { post, attributes, tagList } = this.props;
+    let tagObject = [];
+    if (tagList) {
+      tagList.map((tag, thisIndex) => {
+        if (post.tags && tag.id == post.tags[thisIndex]) {
+          tagObject.push(tag);
           //alert(item);
         }
       });
+      console.log(tagObject);
     }
-    if (taxonomyList && attributes.displayPostTags) {
+    if (tagObject.length > 0 && attributes.displayPostTags) {
       return (
         <div className={`premium-blog-post-tags-container`}>
           <i className={`fa fa-tags fa-fw`}></i>
-          {categoryObject.length === 0
-            ? "Uncategorized"
-            : categoryObject.map((category) => (
-                <span>{category.name + " "}</span>
-              ))}
+          {tagObject.map((tag) => (
+            <span>{tag.name + "   " + "  "}</span>
+          ))}
         </div>
       );
     } else {

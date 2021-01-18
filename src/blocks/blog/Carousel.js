@@ -25,7 +25,7 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block" }}
+      style={{ ...style, display: "block",left:$arr }}
       onClick={onClick}
     />
   );
@@ -129,6 +129,7 @@ class Carousel extends React.Component {
     const settings = {
       dots: navigationDots,
       centerMode: centerMode,
+      centerPadding: slideSpacing,
       infinite: true,
       autoplay: Autoplay,
       speed: autoplaySpeed,
@@ -140,56 +141,55 @@ class Carousel extends React.Component {
     };
 
     const lastDisplay = latestPosts.slice(offsetNum);
-    console.log(columns, tcolumns, mcolumns);
+
     return (
-      <div className={`premium-blog-${blockID}`} id={`premium-blog-${blockID}`}>
-        <div>
+      <div className={`premium-blog`} id={`premium-blog-${blockID}`}>
+    
           <Slider {...settings}>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-            {/* {lastDisplay.map((post, i) => (
+            {lastDisplay.map((post, i) => (
               <div className={`premium-blog-post-outer-container`} key={i}>
                 <div
                   className={`premium-blog-post-container premium-blog-skin-modern`}
                 >
                   <Image post={post} attributes={attributes} />
                   <div className={`premium-blog-content-wrapper empty-thumb`}>
-                    <div className={`premium-blog-content-wrapper-inner`}>
-                      <div className={`premium-blog-inner-container`}>
-                        <div className="premium-blog-entry-container">
-                          <div className="premium-blog-entry-title">
-                            <h2>
-                              <a href={post.link}>
-                                {undefined == post.title
-                                  ? post.value
-                                  : decodeEntities(
-                                      post.title.rendered.trim()
-                                    ) || __("(Untitled)")}
-                              </a>
-                            </h2>
-                          </div>
-                          <div className="premium-blog-entry-meta">
-                            <Meta
-                              post={post}
-                              categoriesList={categoriesList}
-                              attributes={attributes}
-                            />
+                    <div
+                      className={`premium-blog-content-wrapper empty-thumb equal-Height`}
+                    >
+                      <div className={`premium-blog-content-wrapper-inner`}>
+                        <div className={`premium-blog-inner-container`}>
+                          <div className="premium-blog-entry-container">
+                            <div className="premium-blog-entry-title">
+                              <h2>
+                                <a href={post.link}>
+                                  {undefined == post.title
+                                    ? post.value
+                                    : decodeEntities(
+                                        post.title.rendered.trim()
+                                      ) || __("(Untitled)")}
+                                </a>
+                              </h2>
+                            </div>
+                            <div className="premium-blog-entry-meta">
+                              <Meta
+                                post={post}
+                                categoriesList={categoriesList}
+                                attributes={attributes}
+                              />
+                            </div>
                           </div>
                         </div>
+                        <Excerpt attributes={attributes} post={post} />
+                        <Button attributes={attributes} post={post} />
                       </div>
-                      <Excerpt attributes={attributes} post={post} />
-                      <Button attributes={attributes} post={post} />
                     </div>
                   </div>
                 </div>
               </div>
-            ))} */}
+            ))}
           </Slider>
         </div>
-      </div>
+    
     );
   }
 }

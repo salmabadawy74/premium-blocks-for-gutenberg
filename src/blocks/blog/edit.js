@@ -81,6 +81,7 @@ class edit extends Component {
       latestPosts,
       isSelected,
       taxonomyList,
+      tagList,
     } = this.props;
     const {
       blockID,
@@ -241,6 +242,7 @@ class edit extends Component {
         });
       });
     }
+    console.log(tagList, latestPosts);
     let element = document.getElementById(
       "premium-post-style-" + this.props.clientId
     );
@@ -1338,6 +1340,7 @@ class edit extends Component {
             latestPosts={latestPosts}
             categoriesList={categoriesList}
             attributes={attributes}
+            tagList={tagList}
           />
         </Fragment>
       );
@@ -1352,6 +1355,7 @@ export default withSelect((select, props) => {
     orderBy,
     postFilter,
     paginationMarkup,
+
     pagination,
     currentPost,
   } = props.attributes;
@@ -1362,6 +1366,7 @@ export default withSelect((select, props) => {
   let currentTax = allTaxonomy["post"];
   let taxonomy = "";
   let categoriesList = [];
+  let tagList = [];
   let rest_base = "";
   categoriesList = wp.data
     .select("core")
@@ -1369,16 +1374,17 @@ export default withSelect((select, props) => {
 
   if (pagination) {
     $.ajax({
-      url: uagb_blocks_info.ajaxurl,
+      url: uagb_blocks_info.ajax_url,
       data: {
-        action: "premium_post_pagination",
+        action: "uagb_post_pagination",
         attributes: props.attributes,
-        nonce: uagb_blocks_info.nonce,
+        nonce: uagb_blocks_info.uagb_ajax_nonce,
       },
       dataType: "json",
       type: "POST",
       success: function (data) {
-        console.log(data, 1000);
+        console.log(data.data);
+        setAttributes({ paginationMarkup: data.data });
       },
     });
   }
@@ -1398,6 +1404,7 @@ export default withSelect((select, props) => {
         "undefined" != typeof currentTax["terms"][postFilter]
       ) {
         categoriesList = currentTax["terms"][postFilter];
+        tagList = currentTax["terms"]["post_tag"];
       }
     }
   }
@@ -1417,5 +1424,6 @@ export default withSelect((select, props) => {
     categoriesList: categoriesList,
     taxonomyList:
       "undefined" != typeof currentTax ? currentTax["taxonomy"] : [],
+    tagList: tagList,
   };
 })(edit);

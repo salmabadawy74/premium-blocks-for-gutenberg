@@ -35,8 +35,8 @@ if (!class_exists('PBG_Post')) {
             public function __construct()
             {
                   add_action('init', array($this, 'register_blocks'));
-                   add_action('wp_ajax_premium_post_pagination', array($this, 'render_pagination'));
-                  add_action('wp_ajax_nopriv_premium_post_pagination', array($this, 'render_pagination'));
+                   add_action('wp_ajax_premium_post_pagination', 'post_pagination');
+                  add_action('wp_ajax_nopriv_premium_post_pagination','post_pagination');
             }
 
             // Check if the register function exists.
@@ -510,7 +510,7 @@ if (!class_exists('PBG_Post')) {
                         ),
                         'offsetNum'    =>array (
                               'type' =>'number',
-                              'default' =>2
+                              'default' =>0
                         ),
                         'postFilter'  => array(
                               'type' => 'string' ,
@@ -527,7 +527,6 @@ if (!class_exists('PBG_Post')) {
              */
             public function post_callback($attributes)
             {
-
                   // Render query.
                   $query = PBG_Blocks_Helper::get_query_posts($attributes);
                   // Cache the settings.
@@ -554,16 +553,7 @@ if (!class_exists('PBG_Post')) {
                   $outerwrap = array(
                         'premium-blog-' . $attributes['blockID']
                   );
-                  switch ($attributes['layoutValue']) {
-                        case 'Masonary':
-                              break;
-                        case 'Even':
-                              array_push($wrap, 'premium-blog-equal-height');
-                              break;
-                        default:
-                              // Nothing to do here.
-                              break;
-                  }
+            
 ?>
 <div class="<?php echo esc_html(implode(' ', $outerwrap)); ?>">
     <div class="<?php echo esc_html(implode(' ', $wrap)); ?>">
@@ -870,11 +860,17 @@ if (!class_exists('PBG_Post')) {
                               $options[$tag->term_id] = $tag->name;
                         }
                   }
-
-
-
                   return $options;
             }
+            public function post_pagination() {
+			check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
+			if ( isset( $_POST['attributes'] ) ) {
+        //          $query = PBG_Blocks_Helper::get_query_posts($attributes);
+                  $pagination_markup = PBG_Blocks_Helper::render_pagination( $attributes );
+				wp_send_json_success( $pagination_markup );
+			}
+			wp_send_json_error( ' No attributes recieved' );
+		}
             /**
              * Render Post CTA button HTML.
              *
@@ -884,11 +880,9 @@ if (!class_exists('PBG_Post')) {
              */
             public static function get_post_excerpt_link($attributes)
             {
-
                   if (empty($attributes['readMore'])) {
                         return;
                   }
-
                   echo '<div class="premium-blog-excerpt-link-wrap">';
                   echo '<a href="' . esc_url(get_permalink()) . '" class="premium-blog-excerpt-link elementor-button">';
                   echo wp_kses_post($attributes['readMore']);
@@ -897,52 +891,36 @@ if (!class_exists('PBG_Post')) {
             }
             protected function render_editor_script()
             {
-
                   ?>
 <script type="text/javascript">
 jQuery(document).ready(function($) {
-
     $('.premium-blog-wrap').each(function() {
-
         var $node_id = '<?php echo esc_attr($this->get_id()); ?>',
             scope = $('[data-id="' + $node_id + '"]'),
             selector = $(this);
-
-
         if (selector.closest(scope).length < 1) {
             return;
         }
-
-
         var masonryArgs = {
             itemSelector: '.premium-blog-post-outer-container',
             percentPosition: true,
             layoutMode: 'masonry',
         };
-
         var $isotopeObj = {};
-
         selector.imagesLoaded(function() {
-
             $isotopeObj = selector.isotope(masonryArgs);
-
             $isotopeObj.imagesLoaded().progress(function() {
                 $isotopeObj.isotope("layout");
             });
-
             selector.find('.premium-blog-post-outer-container').resize(function() {
                 $isotopeObj.isotope('layout');
             });
         });
-
     });
 });
 </script>
 <?php
             }
-
-
-
             /**
              * Render Complete Box Link HTML.
              *
@@ -951,7 +929,6 @@ jQuery(document).ready(function($) {
              * @since 1.7.0
              */
       }
-
       /**
        *  Prepare if class 'PBG_Post' exist.
        *  Kicking this off by calling 'get_instance()' method

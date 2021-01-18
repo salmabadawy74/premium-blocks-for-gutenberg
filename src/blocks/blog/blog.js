@@ -6,6 +6,7 @@ import Image from "./Image";
 import { Fragment } from "react";
 import Button from "./Button";
 import Excerpt from "./Excerpt";
+import Tags from "./Tags";
 let $blogElement, $blogPost, layout;
 class Blog extends React.Component {
   constructor() {
@@ -19,6 +20,7 @@ class Blog extends React.Component {
       className,
       latestPosts,
       categoriesList,
+      tagList,
       setAttributes,
     } = this.props;
     const { __ } = wp.i18n;
@@ -207,6 +209,11 @@ class Blog extends React.Component {
                       <Excerpt post={post} attributes={attributes} />
 
                       <Button post={post} attributes={attributes} />
+                      <Tags
+                        tagList={tagList}
+                        attributes={attributes}
+                        post={post}
+                      />
                     </div>
                   </div>
                 </div>
@@ -220,21 +227,6 @@ class Blog extends React.Component {
             className="uagb-post-pagination-wrap"
           ></div>
         )}
-        {/* {pagination && (
-          <div className="Premium-blog-footer">
-            <ReactPaginate
-              previousLabel={"← Previous"}
-              nextLabel={"Next →"}
-              pageCount={pageCounts}
-              onPageChange={(selected) => console.log(selected.selected)}
-              containerClassName={"pagination"}
-              previousLinkClassName={"pagination__link"}
-              nextLinkClassName={"pagination__link"}
-              disabledClassName={"pagination__link--disabled"}
-              activeClassName={"pagination__link--active"}
-            />
-          </div>
-        )} */}
       </Fragment>
     );
   }

@@ -75,7 +75,8 @@ class PBG_Blocks_Helper {
         add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
         //Register Premium Blocks category
 		add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
-		add_action( 'wp_ajax_premium_post_pagination', array($this,'render_pagination') );
+        add_action( 'wp_ajax_premium_post_pagination', array($this,'render_pagination') );
+        add_action('wp_ajax_nopriv_premium_post_pagination', array($this, 'post_pagination'));
 	
     }
 
@@ -131,7 +132,7 @@ class PBG_Blocks_Helper {
                 'post_types'        => self::get_post_types(),
                 'all_taxonomy'      => self::get_related_taxonomy(),
                 'taxonomy_list'     => self::get_taxonomy_list(),
-                'ajaxurl'   => esc_url( admin_url( 'admin-ajax.php' ) ),
+                'ajaxurl'   =>  admin_url( 'admin-ajax.php' ) ,
                 'nonce'     => wp_create_nonce( 'pa-blog-block-nonce' ),
 
             )
@@ -1249,7 +1250,7 @@ class PBG_Blocks_Helper {
 			$post_args['post__not_in'] = array( get_the_ID() );
 		}
 
-		if ( isset( $attributes['categories'] ) && '' !== $attributes['categories'] ) {
+		if ( isset( $attributes['categories'] ) ) {
 			$post_args['tax_query'][] = array(
 				'taxonomy' => ( isset( $attributes['postFilter'] ) ) ? $attributes['postFilter'] : 'category',
 				'field'    => 'id',
@@ -1266,6 +1267,83 @@ class PBG_Blocks_Helper {
   
         return $post_args;
     }
+    
+    // public static function post_css( $attr, $id ){
+    //     $defaults = self::$block_list['premium/post-blog']['attributes'];
+
+    //     $attr = array_merge( $defaults, ( array ) $attr );
+
+    //     $m_selectors = array();
+    //     $t_selectors = array();
+    //     $selectors = array(  
+    //           " .premium-blog-post-outer-container"=>array(
+    //         "margin-bottom"=> self::get_css_value{rowGap + rowGapUnit};`,
+    //         "padding-right"=> `calc( ${columnGap}px/2 );`,
+    //         "padding-left"=> `calc( ${columnGap}px/2 );`,
+    //           ),
+    //       " .premium-blog-post-outer-container .premium-blog-post-container .premium-blog-content-wrapper "=>array(
+    //         "text-align"=> `${filterPosition}`,
+    //       ),
+    //       " .premium-blog-thumbnail-overlay"=>array(
+    //         background=> `${overlayColor}`,
+    //       ),
+    //       " .premium-blog-post-outer-container=hover img"=>array(
+    //         filter=> `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
+    //       ),
+    //       " .premium-blog-post-container .premium-blog-entry-title h2"=
+    //         "margin-bottom"=> generateCSSUnit(marginBottom, marginBottomType),
+    //         "font-size"=> `self::get_css_value{firstContentfontSize}${firstContentfontSizeType};`,
+    //         "font-weight"=> `${firstContentWeight};`,
+    //         "font-style"=> `${firstContentStyle};`,
+    //         "text-transform"=> `${firstContentUpper ? "uppercase" = null} ;`,
+    //         "letter-spacing"=> `${firstContentLetter}px ;`,
+    //         color=> `${typoColor};`,
+    //     ),
+    //       ".premium-blog-entry-title a=hover"=>array(
+    //         color=> `${hoverColor};`,
+    //       ),
+    //       " .premium-blog-even"=>
+    //         width= `${100 / columns}%`,
+    //         "margin-bottom"= `${20}px`,
+    //     ),
+    //       " .premium-blog-post-container .premium-blog-content-wrapper-inner p"=>array(
+    //         "font-size"=> self::get_css_value{postContentfontSize}${postContentfontSizeType} !important`,
+    //         "margin-bottom"=> self::get_css_value{PostmarginBottom} ${PostmarginBottomType} !important`,
+    //         "margin-top"=> generateCSSUnit(PostmarginTop, PostmarginTopType),
+    //         "margin-right"=> self::get_css_value{PostmarginRight} ${PostmarginRightType}`,
+    //         "margin-left"=> self::get_css_value{PostmarginLeft} ${PostmarginLeftType}`,
+    //         " padding"=> self::get_css_value`${postSpacing}${postSpacingType}`,
+    //         "font-weight"=> `${postContentWeight} !important;`,
+    //         "font-style"=> `${postContentStyle};`,
+    //         "text-transform"=> `${postContentUpper ? "uppercase" = null} ;`,
+    //         "letter-spacing"=> `${postContentLetter}px ;`,
+    //         " color"=> `${textColor};`,
+    //         "background-color"=> `${backgroundPostContent};`,
+    //         "box-shadow"=> `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
+    //       ),
+    //       " .premium-blog-meta-data"=>array(
+    //         "font-size"=> `$self::get_css_value{secondContentfontSize}${secondContentfontSizeType};`,
+    //         "font-weight"=> `${secondContentWeight};`,
+    //         "font-style"=> `${secondContentStyle};`,
+    //         "text-transform"=> `${secondContentUpper ? "uppercase" = null} ;`,
+    //         "letter-spacing"=> `${secondContentLetter}px ;`,
+    //         color=>`${metaColor};`,
+    //       ),
+    //       " .premium-blog-meta-data=hover"=>array(
+    //         color=> `${linkColor}`,
+    //       ),
+    //       " .premium-blog-meta-separtor"=>array(
+    //         color=> `${sepaColor};`,
+    //       ),
+    //       " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link" => array(
+    //         "font-size" => self::get_css_value{buttonfontSize}${buttonfontSizeType};`,
+    //         "font-weight"=> `${buttonWeight};`,
+    //         "font-style"=> `${buttonStyle};`,
+    //         "text-transform"=> `${buttonUpper ? "uppercase" = null} ;`,
+    //         "letter-spacing"=> `${buttonLetter}px ;`,
+    //       ),
+    //     )
+    // }
     /**
     * Set Pagination Limit
     *
@@ -1279,7 +1357,7 @@ class PBG_Blocks_Helper {
         self::$page_limit = $pages;
     }
 
-    public function render_pagination( $attributes ) {
+    public static function render_pagination( $attributes ) {
 
         $pages = self::$page_limit;
 
