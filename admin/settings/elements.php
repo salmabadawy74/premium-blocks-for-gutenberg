@@ -15,7 +15,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
 
         protected $slug = 'premium-gutenberg';
 
-        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox'];
+        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText'];
 
         private $pbg_default;
 
@@ -143,7 +143,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
             }
 
             $this->pbg_get_settings = get_option( 'pbg_settings', $this->pbg_default );
-      
+
         ?>
 
         <div class="wrap">
@@ -267,6 +267,18 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                     </td>
 
                                 </tr>
+
+                                <tr>
+
+                                    <th><?php echo __('Premium Fancy Text', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="fancyText" name="fancyText" <?php checked(1, $this->pbg_get_settings['fancyText'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+
+                                </tr>
                             </tbody>
                         </table>
                         <input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
@@ -328,6 +340,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                 'accordion'     => intval( $settings['accordion'] ? 1 : 0 ),
                 'iconBox'       => intval( $settings['iconBox'] ? 1 : 0 ),
                 'videoBox'      => intval( $settings['videoBox'] ? 1 : 0 ),
+                'fancyText'     => intval( $settings['fancyText'] ? 1 : 0 ),
             );
 
             update_option( 'pbg_settings', $this->pbg_settings );
@@ -337,7 +350,8 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
         }
         
         public static function get_instance() {
-            if( self::$instance == null ) {
+
+            if ( ! isset( self::$instance ) ) {
                 self::$instance = new self;
             }
             return self::$instance;
