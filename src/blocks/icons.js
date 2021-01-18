@@ -1,11 +1,11 @@
 export default class PbgIcon extends wp.element.Component {
-  shouldComponentUpdate(nextProps) {
-    return this.props.icon !== nextProps.icon;
-  }
+    shouldComponentUpdate(nextProps) {
+        return this.props.icon !== nextProps.icon;
+    }
 
-  render() {
-    const { icon } = this.props;
+    render() {
+        const { icon } = this.props;
 
-    return <i className={`pbg-${icon}-block`} aria-hidden="true" />;
-  }
+        return <i className={`pbg-${icon}-block`} aria-hidden="true" />;
+    }
 }

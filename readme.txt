@@ -59,6 +59,10 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 == Changelog ==
 
+= 1.8.3 =
+
+- New: Added Fancy Text block.
+
 = 1.8.2 =
 
 - Tweak: Container Box Shadow CSS selector changed in Banner block.

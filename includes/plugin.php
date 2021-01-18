@@ -1,18 +1,25 @@
 <?php
+/**
+ * Premium_Blocks_Gutenberg
+ */
 
-// Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Define class 'PBG_Plugin' if not Exists
-if ( ! class_exists( 'PBG_Plugin' ) ) {
+// Define class 'Premium_Blocks_Gutenberg' if not Exists.
+if ( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
 
 	/**
-	 * Define PBG_Plugin class
+	 * Define Premium_Blocks_Gutenberg class
 	 */
-	class PBG_Plugin {
+	class Premium_Blocks_Gutenberg {
 
+		/**
+		 * Class instance
+		 *
+		 * @var instance
+		 */
 		private static $instance = null;
 
 		/**
@@ -20,17 +27,21 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 		 */
 		public function __construct() {
 
-			// Enqueue the required files
-			$this->pbg_setup();
+			// Enqueue the required files.
+			$this->premium_gutenberg_setup();
 		}
 
-		/*
+		/**
+		 * Premium Gutenberg Setup
+		 *
 		 * Triggers initial functions
+		 *
 		 * @since 1.0.0
 		 * @access public
+		 *
 		 * @return void
 		 */
-		public function pbg_setup() {
+		public function premium_gutenberg_setup() {
 
 			$this->load_domain();
 
@@ -38,20 +49,28 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 
 		}
 
-		/*
+		/**
+		 * Load Domain
+		 *
 		 * Load Premium Block for Gutenberg text domain
+		 *
 		 * @since 1.0.0
 		 * @access public
+		 *
 		 * @return void
 		 */
 		public function load_domain() {
 			load_plugin_textdomain( 'premium-blocks-for-gutenberg', false, dirname( PREMIUM_BLOCKS_BASENAME ) . '/languages/' );
 		}
 
-		/*
+		/**
+		 * Init Files
+		 *
 		 * Load necessary files
+		 *
 		 * @since 1.0.0
 		 * @access public
+		 *
 		 * @return void
 		 */
 		public function init_files() {
@@ -76,12 +95,16 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 		 *
 		 * @since 1.0.0
 		 * @access public
-		 * return object
+		 *
+		 * @return object
 		 */
 		public static function get_instance() {
-			if ( self::$instance == null ) {
+
+			if ( ! isset( self::$instance ) ) {
+
 				self::$instance = new self();
 			}
+
 			return self::$instance;
 		}
 
