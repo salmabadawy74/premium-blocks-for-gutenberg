@@ -9,7 +9,7 @@ import styling from "./styling";
 import Masonry from "./Masonry";
 import PremiumMarginR from "../../components/premium-margin-responsive";
 import PremiumBoxShadow from "./../../components/premium-box-shadow";
-import TestCarousel from "./TestCarousel";
+
 const { __ } = wp.i18n;
 alert("borderWidths");
 const { Component, Fragment } = wp.element;
@@ -31,7 +31,7 @@ class edit extends Component {
     super(...arguments);
   }
   componentDidMount() {
-    this.props.setAttributes({ blockID: this.props.clientId });
+    this.props.setAttributes({ block_id: this.props.clientId });
     this.props.setAttributes({ classMigrate: true });
     const $style = document.createElement("style");
     $style.setAttribute("id", "premium-post-style-" + this.props.clientId);
@@ -85,7 +85,7 @@ class edit extends Component {
       tagList,
     } = this.props;
     const {
-      blockID,
+      block_id,
       categories,
       rowGap,
       imageSize,
@@ -250,15 +250,14 @@ class edit extends Component {
     if (null != element) {
       element.innerHTML = styling(this.props);
     }
-    // const hundleCarousel = (value) => {
-    //   setAttributes({ layoutValue: "" });
-    //   setAttributes({ Carousel: value });
-    //   setAttributes({ gridCheck: false });
-    // };
-    // const hundleGrid = () => {
-    //   setAttributes({ gridCheck: !gridCheck });
-    //   setAttributes({ Carousel: false });
-    // };
+    const hundleCarousel = () => {
+      setAttributes({ layoutValue: "" });
+      setAttributes({ Carousel: !Carousel });
+    };
+    const hundleGrid = () => {
+      setAttributes({ gridCheck: !gridCheck });
+      setAttributes({ Carousel: false });
+    };
     const Inspectors = isSelected && (
       <InspectorControls>
         <PanelBody
@@ -269,7 +268,7 @@ class edit extends Component {
           <ToggleControl
             label={__("Grid")}
             checked={gridCheck}
-            onChange={() => setAttributes({ gridCheck: !gridCheck })}
+            onChange={hundleGrid}
           />
           {gridCheck && [
             <SelectControl
@@ -677,7 +676,7 @@ class edit extends Component {
             <ToggleControl
               label={__("Enable Carousel")}
               checked={Carousel}
-              onChange={()=>setAttributes({Carousel:!Carousel})}
+              onChange={hundleCarousel}
             />
             {Carousel && (
               <Fragment>
@@ -1333,12 +1332,41 @@ class edit extends Component {
           <Spinner />
         </Fragment>
       );
+    }
+    if (Carousel) {
+      return (
+        <Fragment>
+          {Inspectors}
+          <CarouselComponent
+            attributes={attributes}
+            latestPosts={latestPosts}
+            categoriesList={categoriesList}
+            tagList={tagList}
+          />
+        </Fragment>
+      );
+    }
+    if (layoutValue === "Masonry") {
+      return (
+        <Fragment>
+          {Inspectors}
+          <Masonry
+            latestPosts={latestPosts}
+            attributes={attributes}
+            categoriesList={categoriesList}
+            tagList={tagList}
+          />
+        </Fragment>
+      );
     } else {
       return (
         <Fragment>
           {Inspectors}
-          <TestCarousel
-           
+          <Blog
+            latestPosts={latestPosts}
+            attributes={attributes}
+            categoriesList={categoriesList}
+            tagList={tagList}
           />
         </Fragment>
       );
@@ -1402,7 +1430,6 @@ export default withSelect((select, props) => {
         "undefined" != typeof currentTax["terms"][postFilter]
       ) {
         categoriesList = currentTax["terms"][postFilter];
-       
       }
     }
   }

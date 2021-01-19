@@ -10,61 +10,13 @@ registerBlockType("premium/post-blog", {
     blockID: {
       type: "string",
     },
-    DisplayTitle: {
-      type: "boolean",
-      default: true,
-    },
-    DisplayDate: {
-      type: "boolean",
-      default: true,
-    },
-    DisplayComment: {
-      type: "boolean",
-      default: true,
-    },
-    DisplayExcert: {
-      type: "boolean",
-      default: true,
-    },
-    DisplayAuthor: {
-      type: "boolean",
-      default: true,
-    },
-    DisplayImage: {
-      type: "boolean",
-      default: true,
-    },
-    DisplayTaxonomy: {
-      type: "boolean",
-      default: true,
-    },
-    DisplayPostLink: {
-      type: "boolean",
-      default: true,
-    },
-    newTab: {
-      type: "boolean",
-      default: false,
-    },
     borderWidth: {
       type: "number",
-    },
-    ctaText: {
-      type: "string",
     },
     borderRadius: {
       type: "number",
     },
     borderColor: {
-      type: "string",
-    },
-    vPadding: {
-      type: "number",
-    },
-    hPadding: {
-      type: "number",
-    },
-    categories: {
       type: "string",
     },
     rowGap: {
@@ -73,21 +25,9 @@ registerBlockType("premium/post-blog", {
     },
     columnGap: {
       type: "number",
-    },
-    bgColor: {
-      type: "string",
-    },
-    contentPadding: {
-      type: "number",
-    },
-    contentPaddingMobile: {
-      type: "string",
+      default:16
     },
     gridCheck: {
-      type: "boolean",
-      default: false,
-    },
-    equalHeight: {
       type: "boolean",
       default: false,
     },
@@ -105,6 +45,7 @@ registerBlockType("premium/post-blog", {
     },
     orderBy: {
       type: "string",
+      default:"date"
     },
     order: {
       type: "string",
@@ -116,11 +57,11 @@ registerBlockType("premium/post-blog", {
     },
     hoverEffect: {
       type: "string",
-      default: "None",
+      default: "zoomin",
     },
     height: {
       type: "number",
-      default: "default",
+      default: 300,
     },
     HeightU: {
       type: "string",
@@ -133,10 +74,6 @@ registerBlockType("premium/post-blog", {
     columnGap: {
       type: "number",
       default: 16,
-    },
-    postPosition: {
-      type: "string",
-      default: "center",
     },
     displayPostContent: {
       type: "boolean",
@@ -182,9 +119,7 @@ registerBlockType("premium/post-blog", {
       type: "boolean",
       default: true,
     },
-    filterPostion: {
-      type: "string",
-    },
+
     layoutValue: {
       type: "string",
       default: "Even",
@@ -203,7 +138,7 @@ registerBlockType("premium/post-blog", {
     },
     slideToScroll: {
       type: "number",
-      default: 0,
+      default: 1,
     },
     autoplaySpeed: {
       type: "number",
@@ -223,7 +158,7 @@ registerBlockType("premium/post-blog", {
     },
     navigationArrow: {
       type: "boolean",
-      default: false,
+      default: true,
     },
     arrowPosition: {
       type: "number",

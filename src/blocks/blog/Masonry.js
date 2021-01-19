@@ -22,8 +22,7 @@ class MasonryClass extends React.Component {
       attributes,
       className,
       latestPosts,
-      block_id,
-      taxonomyList,
+      TagList,
       categoriesList,
       setAttributes,
     } = this.props;
@@ -172,7 +171,6 @@ class MasonryClass extends React.Component {
             {lastDisplay.map((post, i) => (
               <div
                 className={` premium-blog-post-outer-container premium-blog-even`}
-                
                 key={i}
               >
                 <div
@@ -207,12 +205,12 @@ class MasonryClass extends React.Component {
                         <Excerpt post={post} attributes={attributes} />
                       )}
 
-                      {/* <Tags
+                      <Button post={post} attributes={attributes} />
+                      <Tags
                         post={post}
                         attributes={attributes}
-                        categoriesList={categoriesList}
-                      /> */}
-                      <Button post={post} attributes={attributes} />
+                        TagList={TagList}
+                      />
                     </div>
                   </div>
                 </div>

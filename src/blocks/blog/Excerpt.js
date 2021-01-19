@@ -15,7 +15,7 @@ class Excerpt extends React.Component {
       excerpt += " ...";
     }
     if (
-      attributes.displayPostExcerpt &&
+      attributes.displayPostContent &&
       attributes.displayPostExcerpt === "Post Excerpt"
     ) {
       return <p dangerouslySetInnerHTML={{ __html: excerpt }} />;

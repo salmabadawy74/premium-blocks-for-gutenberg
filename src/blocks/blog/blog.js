@@ -1,5 +1,3 @@
-const { decodeEntities } = wp.htmlEntities;
-const { dateI18n, format, __experimentalGetSettings } = wp.date;
 import ReactPaginate from "react-paginate";
 import Meta from "./meta";
 import Image from "./Image";
@@ -7,11 +5,17 @@ import { Fragment } from "react";
 import Button from "./Button";
 import Excerpt from "./Excerpt";
 import Tags from "./Tags";
+
+const { decodeEntities } = wp.htmlEntities;
+const { dateI18n, format, __experimentalGetSettings } = wp.date;
+
 let $blogElement, $blogPost, layout;
+
 class Blog extends React.Component {
   constructor() {
     super(...arguments);
   }
+
   componentDidMount() {}
 
   render() {
@@ -23,9 +27,11 @@ class Blog extends React.Component {
       tagList,
       setAttributes,
     } = this.props;
+
     const { __ } = wp.i18n;
+
     const {
-      blockID,
+      block_id,
       DisplayTitle,
       DisplayDate,
       DisplayComment,
@@ -157,14 +163,16 @@ class Blog extends React.Component {
       latestPosts.length > numOfPosts
         ? latestPosts.slice(0, numOfPosts)
         : latestPosts;
+
     lastDisplay = displayPosts.slice(offsetNum);
 
     const equalHeight = layoutValue === "Even" ? "equal-Height" : null;
+
     return (
       <Fragment>
         <div
-          className={`premium-blog-${blockID}`}
-          id={`premium-blog-${blockID}`}
+          className={`premium-blog-${block_id}`}
+          id={`premium-blog-${block_id}`}
         >
           <div
             className={`premium-blog-wrap`}
