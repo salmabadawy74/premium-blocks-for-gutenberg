@@ -43,7 +43,7 @@ class PBG_Blocks_Helper {
 	/**
 	 * PBG Block Flag
 	 *
-	 * @since 1.8.3
+	 * @since 1.8.2
 	 * @var premium_flag
 	 */
 	public static $premium_flag = false;
@@ -51,7 +51,7 @@ class PBG_Blocks_Helper {
 	/**
 	 * Current Block List
 	 *
-	 * @since 1.8.3
+	 * @since 1.8.2
 	 * @var current_block_list
 	 */
 	public static $current_block_list = array();
@@ -359,7 +359,7 @@ class PBG_Blocks_Helper {
 	 *
 	 * Generates stylesheet and appends in head tag.
 	 *
-	 * @since 1.8.3
+	 * @since 1.8.2
 	 */
 	public function generate_stylesheet() {
 
@@ -425,7 +425,7 @@ class PBG_Blocks_Helper {
 	 * Generates stylesheet in loop.
 	 *
 	 * @param object $this_post Current Post Object.
-	 * @since 1.8.3
+	 * @since 1.8.2
 	 */
 	public function _generate_post_stylesheet( $this_post ) {
 
@@ -471,7 +471,7 @@ class PBG_Blocks_Helper {
 	 *
 	 * Print the Stylesheet in header.
 	 *
-	 * @since 1.8.3
+	 * @since 1.8.2
 	 * @access public
 	 */
 	public function print_stylesheet() {
@@ -498,7 +498,7 @@ class PBG_Blocks_Helper {
 	 *
 	 * Generates CSS recurrsively.
      * 
-     * @since 1.8.3
+     * @since 1.8.2
      * @access public
 	 *
 	 * @param object $block The block object.
@@ -680,7 +680,7 @@ class PBG_Blocks_Helper {
 	/**
 	 * Generate CSS
 	 *
-	 * @since 1.8.3
+	 * @since 1.8.2
 	 * @access public
 	 *
 	 * @param array  $selectors CSS selectors.
@@ -722,7 +722,7 @@ class PBG_Blocks_Helper {
 	/**
 	 * Get CSS value
 	 *
-     * @since 1.8.3
+     * @since 1.8.2
      * @access public
      * 
 	 * @param string $value  CSS value.

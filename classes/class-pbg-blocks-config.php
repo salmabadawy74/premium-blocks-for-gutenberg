@@ -33,7 +33,7 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 		/**
 		 * Get Widget List.
 		 *
-		 * @since 1.8.3
+		 * @since 1.8.2
 		 *
 		 * @return array blocks attributes.
 		 */

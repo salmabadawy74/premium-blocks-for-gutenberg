@@ -5,7 +5,7 @@
 **Tags:** gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks
 **Requires at least:** 4.5
 **Requires PHP:** 5.4
-**Stable tag:** 1.8.3
+**Stable tag:** 1.8.2
 **Tested up to:** 5.6
 **License:** GPL v3.0
 **License URI:** https://opensource.org/licenses/GPL-3.0
@@ -63,12 +63,9 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 ## Changelog
 
-### 1.8.3
-
--   New: Added Fancy Text block.
-
 ### 1.8.2
 
+-   New: Added Fancy Text block.
 -   Tweak: Container Box Shadow CSS selector changed in Banner block.
 
 ### 1.8.1
