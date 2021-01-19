@@ -9,6 +9,7 @@ import styling from "./styling";
 import Masonry from "./Masonry";
 import PremiumMarginR from "../../components/premium-margin-responsive";
 import PremiumBoxShadow from "./../../components/premium-box-shadow";
+import TestCarousel from "./TestCarousel";
 const { __ } = wp.i18n;
 alert("borderWidths");
 const { Component, Fragment } = wp.element;
@@ -676,7 +677,7 @@ class edit extends Component {
             <ToggleControl
               label={__("Enable Carousel")}
               checked={Carousel}
-              onChange={(value) => hundleCarousel(value)}
+              onChange={()=>setAttributes({Carousel:!Carousel})}
             />
             {Carousel && (
               <Fragment>
@@ -1336,11 +1337,8 @@ class edit extends Component {
       return (
         <Fragment>
           {Inspectors}
-          <Blog
-            latestPosts={latestPosts}
-            categoriesList={categoriesList}
-            attributes={attributes}
-            tagList={tagList}
+          <TestCarousel
+           
           />
         </Fragment>
       );
@@ -1372,22 +1370,22 @@ export default withSelect((select, props) => {
     .select("core")
     .getEntityRecords("taxonomy", "category");
 
-  if (pagination) {
-    $.ajax({
-      url: uagb_blocks_info.ajax_url,
-      data: {
-        action: "uagb_post_pagination",
-        attributes: props.attributes,
-        nonce: uagb_blocks_info.uagb_ajax_nonce,
-      },
-      dataType: "json",
-      type: "POST",
-      success: function (data) {
-        console.log(data.data);
-        setAttributes({ paginationMarkup: data.data });
-      },
-    });
-  }
+  // if (pagination) {
+  //   $.ajax({
+  //     url: uagb_blocks_info.ajax_url,
+  //     data: {
+  //       action: "uagb_post_pagination",
+  //       attributes: props.attributes,
+  //       nonce: uagb_blocks_info.uagb_ajax_nonce,
+  //     },
+  //     dataType: "json",
+  //     type: "POST",
+  //     success: function (data) {
+  //       console.log(data.data);
+  //       setAttributes({ paginationMarkup: data.data });
+  //     },
+  //   });
+  // }
 
   if ("undefined" != typeof currentTax) {
     if ("undefined" != typeof currentTax["taxonomy"][postFilter]) {
@@ -1404,11 +1402,11 @@ export default withSelect((select, props) => {
         "undefined" != typeof currentTax["terms"][postFilter]
       ) {
         categoriesList = currentTax["terms"][postFilter];
-        tagList = currentTax["terms"]["post_tag"];
+       
       }
     }
   }
-
+  tagList = currentTax["terms"]["post_tag"];
   let latestPostsQuery = {
     order: order,
     orderby: orderBy,

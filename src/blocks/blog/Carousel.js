@@ -147,14 +147,14 @@ class Carousel extends React.Component {
     
           <Slider {...settings}>
             {lastDisplay.map((post, i) => (
-              <div className={`premium-blog-post-outer-container`} key={i}>
+              <div className={`premium-blog-post-outer-container premium-blog-even`} key={i}>
                 <div
-                  className={`premium-blog-post-container premium-blog-skin-modern`}
+                  className={`premium-blog-post-container`}
                 >
                   <Image post={post} attributes={attributes} />
                   <div className={`premium-blog-content-wrapper empty-thumb`}>
                     <div
-                      className={`premium-blog-content-wrapper empty-thumb equal-Height`}
+                      className={`premium-blog-content-wrapper empty-thumb `}
                     >
                       <div className={`premium-blog-content-wrapper-inner`}>
                         <div className={`premium-blog-inner-container`}>

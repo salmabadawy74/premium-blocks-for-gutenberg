@@ -171,7 +171,8 @@ class MasonryClass extends React.Component {
           <Masonry>
             {lastDisplay.map((post, i) => (
               <div
-                className={`premium-blog-post-outer-container${i} premium-blog-post-outer-container`}
+                className={` premium-blog-post-outer-container premium-blog-even`}
+                
                 key={i}
               >
                 <div

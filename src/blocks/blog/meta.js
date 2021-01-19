@@ -15,6 +15,7 @@ class Meta extends React.Component {
         }
       });
     }
+    console.log(categoryObject)
     return (
       <Fragment>
         {attributes.displayPostAuthor && undefined !== post.uagb_author_info && (
