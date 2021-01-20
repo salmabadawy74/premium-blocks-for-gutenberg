@@ -86,6 +86,22 @@ function styling(props) {
     firstContentfontSizeTablet,
     buttonfontSizeMobile,
     buttonfontSizeTablet,
+    buttonSpacingType,
+    buttonSpacing,
+    buttonSpacingMobile,
+    buttonSpacingTablet,
+    buttonColor,
+    buttonhover,
+    buttonBackground,
+    hoverBackground,
+    borderType,
+    borderWidth,
+    borderColor,
+    borderRadius,
+    buttonPaddingType,
+    buttonPadding,
+    buttonPaddingMobile,
+    buttonPaddingTablet,
   } = props.attributes;
   const { latestPosts } = props;
   var selectors = {};
@@ -151,12 +167,25 @@ function styling(props) {
     " .premium-blog-meta-separtor": {
       color: `${sepaColor};`,
     },
+    " .premium-blog-excerpt-link-wrap ": {
+      " padding": `${buttonSpacing}${buttonSpacingType}`,
+    },
     " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link": {
       "font-size": `${buttonfontSize}${buttonfontSizeType};`,
       "font-weight": `${buttonWeight};`,
       "font-style": `${buttonStyle};`,
       "text-transform": `${buttonUpper ? "uppercase" : null} ;`,
       "letter-spacing": `${buttonLetter}px ;`,
+      color: ` ${buttonColor}`,
+      background: `${buttonBackground}`,
+      "border-radius": `${borderRadius}`,
+      border: `${borderWidth}px ${borderType} ${borderColor}`,
+      padding: generateCSSUnit(`${buttonPadding}`, `${buttonPaddingType}`),
+    },
+
+    " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link:hover": {
+      color: `${buttonhover}`,
+      background: `${hoverBackground}`,
     },
   };
   mobile_selectors = {

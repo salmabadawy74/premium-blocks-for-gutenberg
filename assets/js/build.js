@@ -47345,8 +47345,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var __ = wp.i18n.__;
-
-alert("borderWidths");
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -47567,7 +47565,7 @@ var edit = function (_Component) {
           });
         });
       }
-      console.log(tagList, latestPosts);
+
       var element = document.getElementById("premium-post-style-" + this.props.clientId);
       if (null != element) {
         element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_7__styling__["a" /* default */])(this.props);
@@ -48715,22 +48713,24 @@ var edit = function (_Component) {
   var rest_base = "";
   categoriesList = wp.data.select("core").getEntityRecords("taxonomy", "category");
 
-  // if (pagination) {
-  //   $.ajax({
-  //     url: uagb_blocks_info.ajax_url,
-  //     data: {
-  //       action: "uagb_post_pagination",
-  //       attributes: props.attributes,
-  //       nonce: uagb_blocks_info.uagb_ajax_nonce,
-  //     },
-  //     dataType: "json",
-  //     type: "POST",
-  //     success: function (data) {
-  //       console.log(data.data);
-  //       setAttributes({ paginationMarkup: data.data });
-  //     },
-  //   });
-  // }
+  if (pagination) {
+    jQuery.ajax({
+      url: PremiumSettings.ajaxurl,
+      data: {
+        action: 'premium_pagination',
+        attributes: props.attributes,
+        nonce: PremiumBlocksSettings.nonce
+      },
+      dataType: "html",
+      type: "POST",
+      success: function success(data) {
+        console.log(data);
+      },
+      error: function error(err) {
+        console.log("error");
+      }
+    });
+  }
 
   if ("undefined" != typeof currentTax) {
     if ("undefined" != typeof currentTax["taxonomy"][postFilter]) {
@@ -48815,7 +48815,6 @@ function SampleNextArrow(props) {
     onClick: onClick
   });
 }
-
 function SamplePrevArrow(props) {
   var className = props.className,
       style = props.style,
@@ -48848,7 +48847,7 @@ var Carousel = function (_React$Component) {
           latestPosts = _props.latestPosts,
           TagList = _props.TagList,
           categoriesList = _props.categoriesList;
-      var blockID = attributes.blockID,
+      var block_id = attributes.block_id,
           Autoplay = attributes.Autoplay,
           slideToScroll = attributes.slideToScroll,
           autoplaySpeed = attributes.autoplaySpeed,
@@ -48858,6 +48857,7 @@ var Carousel = function (_React$Component) {
           columns = attributes.columns,
           mcolumns = attributes.mcolumns,
           tcolumns = attributes.tcolumns,
+          offsetNum = attributes.offsetNum,
           navigationArrow = attributes.navigationArrow,
           arrowPosition = attributes.arrowPosition;
 
@@ -48883,7 +48883,7 @@ var Carousel = function (_React$Component) {
       var lastDisplay = latestPosts.slice(offsetNum);
       return wp.element.createElement(
         "div",
-        { className: "premium-blog", id: "premium-blog-" + blockID },
+        { className: "premium-blog", id: "premium-blog-" + block_id },
         wp.element.createElement(
           __WEBPACK_IMPORTED_MODULE_0_react_slick___default.a,
           settings,
@@ -53082,17 +53082,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+
+
+
+
+
+
+
+
 var decodeEntities = wp.htmlEntities.decodeEntities;
 var _wp$date = wp.date,
     dateI18n = _wp$date.dateI18n,
     format = _wp$date.format,
     __experimentalGetSettings = _wp$date.__experimentalGetSettings;
-
-
-
-
-
-
 
 
 var $blogElement = void 0,
@@ -53123,136 +53125,21 @@ var Blog = function (_React$Component) {
           setAttributes = _props.setAttributes;
       var __ = wp.i18n.__;
       var block_id = attributes.block_id,
-          DisplayTitle = attributes.DisplayTitle,
-          DisplayDate = attributes.DisplayDate,
-          DisplayComment = attributes.DisplayComment,
-          DisplayExcert = attributes.DisplayExcert,
-          DisplayAuthor = attributes.DisplayAuthor,
-          DisplayImage = attributes.DisplayImage,
-          DisplayTaxonomy = attributes.DisplayTaxonomy,
-          DisplayPostLink = attributes.DisplayPostLink,
-          newTab = attributes.newTab,
-          borderWidth = attributes.borderWidth,
-          ctaText = attributes.ctaText,
-          borderRadius = attributes.borderRadius,
-          borderColor = attributes.borderColor,
-          vPadding = attributes.vPadding,
-          hPadding = attributes.hPadding,
-          categories = attributes.categories,
-          rowGap = attributes.rowGap,
-          imageSize = attributes.imageSize,
-          bgColor = attributes.bgColor,
-          contentPadding = attributes.contentPadding,
-          contentPaddingMobile = attributes.contentPaddingMobile,
           gridCheck = attributes.gridCheck,
           numOfPosts = attributes.numOfPosts,
-          numOfColumns = attributes.numOfColumns,
           offsetNum = attributes.offsetNum,
-          currentPost = attributes.currentPost,
-          orderBy = attributes.orderBy,
-          order = attributes.order,
-          featuredImage = attributes.featuredImage,
-          hoverEffect = attributes.hoverEffect,
-          height = attributes.height,
-          HeightU = attributes.HeightU,
-          rowGapUnit = attributes.rowGapUnit,
-          columnGap = attributes.columnGap,
-          postPosition = attributes.postPosition,
-          displayPostContent = attributes.displayPostContent,
-          displayPostExcerpt = attributes.displayPostExcerpt,
-          excerptType = attributes.excerptType,
-          fullWidth = attributes.fullWidth,
-          readMoreText = attributes.readMoreText,
-          displayPostAuthor = attributes.displayPostAuthor,
-          displayPostDate = attributes.displayPostDate,
-          displayPostCategories = attributes.displayPostCategories,
-          displayPostComment = attributes.displayPostComment,
-          displayPostTags = attributes.displayPostTags,
-          filterTabs = attributes.filterTabs,
-          getTabsFrom = attributes.getTabsFrom,
-          tabLabel = attributes.tabLabel,
-          filterPosition = attributes.filterPosition,
-          linkNewTab = attributes.linkNewTab,
           layoutValue = attributes.layoutValue,
-          postFilter = attributes.postFilter,
-          sizeType = attributes.sizeType,
-          size = attributes.size,
-          sizeMobile = attributes.sizeMobile,
-          sizeTablet = attributes.sizeTablet,
-          Carousel = attributes.Carousel,
-          Autoplay = attributes.Autoplay,
-          slideToScroll = attributes.slideToScroll,
-          autoplaySpeed = attributes.autoplaySpeed,
-          centerMode = attributes.centerMode,
-          slideSpacing = attributes.slideSpacing,
-          navigationDots = attributes.navigationDots,
-          navigationArrow = attributes.navigationArrow,
-          arrowPosition = attributes.arrowPosition,
           pagination = attributes.pagination,
-          pageLimit = attributes.pageLimit,
-          overlayColor = attributes.overlayColor,
-          paginationPosition = attributes.paginationPosition,
-          blur = attributes.blur,
-          bright = attributes.bright,
-          contrast = attributes.contrast,
-          saturation = attributes.saturation,
-          hue = attributes.hue,
-          firstContentLetter = attributes.firstContentLetter,
-          firstContentStyle = attributes.firstContentStyle,
-          firstContentUpper = attributes.firstContentUpper,
-          firstContentWeight = attributes.firstContentWeight,
-          firstContentfontSize = attributes.firstContentfontSize,
-          typoColor = attributes.typoColor,
-          hoverColor = attributes.hoverColor,
-          firstContentfontSizeType = attributes.firstContentfontSizeType,
-          firstContentfontSizeMobile = attributes.firstContentfontSizeMobile,
-          firstContentfontSizeTablet = attributes.firstContentfontSizeTablet,
-          secondContentLetter = attributes.secondContentLetter,
-          secondContentStyle = attributes.secondContentStyle,
-          secondContentUpper = attributes.secondContentUpper,
-          secondContentWeight = attributes.secondContentWeight,
-          secondContentfontSize = attributes.secondContentfontSize,
-          secondContentfontSizeType = attributes.secondContentfontSizeType,
-          secondContentfontSizeMobile = attributes.secondContentfontSizeMobile,
-          secondContentfontSizeTablet = attributes.secondContentfontSizeTablet,
-          metaColor = attributes.metaColor,
-          linkColor = attributes.linkColor,
-          sepaColor = attributes.sepaColor,
-          postContentLetter = attributes.postContentLetter,
-          postContentStyle = attributes.postContentStyle,
-          postContentUpper = attributes.postContentUpper,
-          postContentWeight = attributes.postContentWeight,
-          postContentfontSize = attributes.postContentfontSize,
-          postContentfontSizeType = attributes.postContentfontSizeType,
-          postContentfontSizeMobile = attributes.postContentfontSizeMobile,
-          postContentfontSizeTablet = attributes.postContentfontSizeTablet,
-          textColor = attributes.textColor,
-          pageCount = attributes.pageCount,
-          backgroundPostContent = attributes.backgroundPostContent,
-          containerShadowColor = attributes.containerShadowColor,
-          containerShadowBlur = attributes.containerShadowBlur,
-          containerShadowHorizontal = attributes.containerShadowHorizontal,
-          containerShadowVertical = attributes.containerShadowVertical,
-          containerShadowPosition = attributes.containerShadowPosition,
-          cols = attributes.cols,
-          colsMobile = attributes.colsMobile,
-          currentPage = attributes.currentPage,
-          colsTablet = attributes.colsTablet,
           paginationMarkup = attributes.paginationMarkup;
 
-      var lastDisplay = void 0,
-          pageCounts = void 0;
-      //currentPage = 0;
-
+      var lastDisplay = void 0;
       var gridClasses = gridCheck ? "premium-blog-even" : "premium-blog-list";
-      // function handlePageClick(selectedPage) {
-      //   currentPage = selectedPage.selected;
-      // }
-
       var displayPosts = latestPosts.length > numOfPosts ? latestPosts.slice(0, numOfPosts) : latestPosts;
+
       lastDisplay = displayPosts.slice(offsetNum);
 
       var equalHeight = layoutValue === "Even" ? "equal-Height" : null;
+
       return wp.element.createElement(
         __WEBPACK_IMPORTED_MODULE_3_react__["Fragment"],
         null,
@@ -53333,7 +53220,7 @@ var Blog = function (_React$Component) {
             })
           )
         ),
-        pagination == true && "empty" !== paginationMarkup && wp.element.createElement("div", {
+        pagination && wp.element.createElement("div", {
           dangerouslySetInnerHTML: { __html: paginationMarkup },
           className: "uagb-post-pagination-wrap"
         })
@@ -53444,7 +53331,23 @@ function styling(props) {
       buttonLetter = _props$attributes.buttonLetter,
       firstContentfontSizeTablet = _props$attributes.firstContentfontSizeTablet,
       buttonfontSizeMobile = _props$attributes.buttonfontSizeMobile,
-      buttonfontSizeTablet = _props$attributes.buttonfontSizeTablet;
+      buttonfontSizeTablet = _props$attributes.buttonfontSizeTablet,
+      buttonSpacingType = _props$attributes.buttonSpacingType,
+      buttonSpacing = _props$attributes.buttonSpacing,
+      buttonSpacingMobile = _props$attributes.buttonSpacingMobile,
+      buttonSpacingTablet = _props$attributes.buttonSpacingTablet,
+      buttonColor = _props$attributes.buttonColor,
+      buttonhover = _props$attributes.buttonhover,
+      buttonBackground = _props$attributes.buttonBackground,
+      hoverBackground = _props$attributes.hoverBackground,
+      borderType = _props$attributes.borderType,
+      borderWidth = _props$attributes.borderWidth,
+      borderColor = _props$attributes.borderColor,
+      borderRadius = _props$attributes.borderRadius,
+      buttonPaddingType = _props$attributes.buttonPaddingType,
+      buttonPadding = _props$attributes.buttonPadding,
+      buttonPaddingMobile = _props$attributes.buttonPaddingMobile,
+      buttonPaddingTablet = _props$attributes.buttonPaddingTablet;
   var latestPosts = props.latestPosts;
 
   var selectors = {};
@@ -53510,12 +53413,25 @@ function styling(props) {
     " .premium-blog-meta-separtor": {
       color: sepaColor + ";"
     },
+    " .premium-blog-excerpt-link-wrap ": {
+      " padding": "" + buttonSpacing + buttonSpacingType
+    },
     " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link": {
       "font-size": "" + buttonfontSize + buttonfontSizeType + ";",
       "font-weight": buttonWeight + ";",
       "font-style": buttonStyle + ";",
       "text-transform": (buttonUpper ? "uppercase" : null) + " ;",
-      "letter-spacing": buttonLetter + "px ;"
+      "letter-spacing": buttonLetter + "px ;",
+      color: " " + buttonColor,
+      background: "" + buttonBackground,
+      "border-radius": "" + borderRadius,
+      border: borderWidth + "px " + borderType + " " + borderColor,
+      padding: Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])("" + buttonPadding, "" + buttonPaddingType)
+    },
+
+    " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link:hover": {
+      color: "" + buttonhover,
+      background: "" + hoverBackground
     }
   };
   mobile_selectors = (_mobile_selectors = {
@@ -53773,7 +53689,6 @@ var _wp$date = wp.date,
 
 
 
-
 var MasonryClass = function (_React$Component) {
   _inherits(MasonryClass, _React$Component);
 
@@ -53786,7 +53701,6 @@ var MasonryClass = function (_React$Component) {
   _createClass(MasonryClass, [{
     key: "render",
     value: function render() {
-      console.log(latestPosts);
       var _props = this.props,
           attributes = _props.attributes,
           className = _props.className,
@@ -53795,142 +53709,28 @@ var MasonryClass = function (_React$Component) {
           categoriesList = _props.categoriesList,
           setAttributes = _props.setAttributes;
       var __ = wp.i18n.__;
-      var blockID = attributes.blockID,
-          DisplayTitle = attributes.DisplayTitle,
-          DisplayDate = attributes.DisplayDate,
-          DisplayComment = attributes.DisplayComment,
-          DisplayExcert = attributes.DisplayExcert,
-          DisplayAuthor = attributes.DisplayAuthor,
-          DisplayImage = attributes.DisplayImage,
-          DisplayTaxonomy = attributes.DisplayTaxonomy,
-          DisplayPostLink = attributes.DisplayPostLink,
-          newTab = attributes.newTab,
-          borderWidth = attributes.borderWidth,
-          ctaText = attributes.ctaText,
-          borderRadius = attributes.borderRadius,
-          borderColor = attributes.borderColor,
-          vPadding = attributes.vPadding,
-          hPadding = attributes.hPadding,
-          categories = attributes.categories,
-          rowGap = attributes.rowGap,
-          imageSize = attributes.imageSize,
-          bgColor = attributes.bgColor,
-          contentPadding = attributes.contentPadding,
-          contentPaddingMobile = attributes.contentPaddingMobile,
-          gridCheck = attributes.gridCheck,
-          equalHeight = attributes.equalHeight,
+      var block_id = attributes.block_id,
           numOfPosts = attributes.numOfPosts,
-          numOfColumns = attributes.numOfColumns,
           offsetNum = attributes.offsetNum,
-          currentPost = attributes.currentPost,
-          orderBy = attributes.orderBy,
-          order = attributes.order,
-          featuredImage = attributes.featuredImage,
-          hoverEffect = attributes.hoverEffect,
-          height = attributes.height,
-          HeightU = attributes.HeightU,
-          rowGapUnit = attributes.rowGapUnit,
-          columnGap = attributes.columnGap,
-          postPosition = attributes.postPosition,
           displayPostContent = attributes.displayPostContent,
-          displayPostExcerpt = attributes.displayPostExcerpt,
-          excerptType = attributes.excerptType,
-          fullWidth = attributes.fullWidth,
-          readMoreText = attributes.readMoreText,
-          displayPostAuthor = attributes.displayPostAuthor,
-          displayPostDate = attributes.displayPostDate,
-          displayPostCategories = attributes.displayPostCategories,
-          displayPostComment = attributes.displayPostComment,
-          displayPostTags = attributes.displayPostTags,
-          filterTabs = attributes.filterTabs,
-          getTabsFrom = attributes.getTabsFrom,
-          tabLabel = attributes.tabLabel,
-          filterPosition = attributes.filterPosition,
-          linkNewTab = attributes.linkNewTab,
-          layoutValue = attributes.layoutValue,
-          postFilter = attributes.postFilter,
-          sizeType = attributes.sizeType,
-          size = attributes.size,
-          sizeMobile = attributes.sizeMobile,
-          sizeTablet = attributes.sizeTablet,
-          Carousel = attributes.Carousel,
-          Autoplay = attributes.Autoplay,
-          slideToScroll = attributes.slideToScroll,
-          autoplaySpeed = attributes.autoplaySpeed,
-          centerMode = attributes.centerMode,
-          slideSpacing = attributes.slideSpacing,
-          navigationDots = attributes.navigationDots,
-          navigationArrow = attributes.navigationArrow,
-          arrowPosition = attributes.arrowPosition,
+          gridCheck = attributes.gridCheck,
           pagination = attributes.pagination,
-          pageLimit = attributes.pageLimit,
-          overlayColor = attributes.overlayColor,
-          paginationPosition = attributes.paginationPosition,
-          blur = attributes.blur,
-          bright = attributes.bright,
-          contrast = attributes.contrast,
-          saturation = attributes.saturation,
-          hue = attributes.hue,
-          firstContentLetter = attributes.firstContentLetter,
-          firstContentStyle = attributes.firstContentStyle,
-          firstContentUpper = attributes.firstContentUpper,
-          firstContentWeight = attributes.firstContentWeight,
-          firstContentfontSize = attributes.firstContentfontSize,
-          typoColor = attributes.typoColor,
-          hoverColor = attributes.hoverColor,
-          firstContentfontSizeType = attributes.firstContentfontSizeType,
-          firstContentfontSizeMobile = attributes.firstContentfontSizeMobile,
-          firstContentfontSizeTablet = attributes.firstContentfontSizeTablet,
-          secondContentLetter = attributes.secondContentLetter,
-          secondContentStyle = attributes.secondContentStyle,
-          secondContentUpper = attributes.secondContentUpper,
-          secondContentWeight = attributes.secondContentWeight,
-          secondContentfontSize = attributes.secondContentfontSize,
-          secondContentfontSizeType = attributes.secondContentfontSizeType,
-          secondContentfontSizeMobile = attributes.secondContentfontSizeMobile,
-          secondContentfontSizeTablet = attributes.secondContentfontSizeTablet,
-          metaColor = attributes.metaColor,
-          linkColor = attributes.linkColor,
-          sepaColor = attributes.sepaColor,
-          postContentLetter = attributes.postContentLetter,
-          postContentStyle = attributes.postContentStyle,
-          postContentUpper = attributes.postContentUpper,
-          postContentWeight = attributes.postContentWeight,
-          postContentfontSize = attributes.postContentfontSize,
-          postContentfontSizeType = attributes.postContentfontSizeType,
-          postContentfontSizeMobile = attributes.postContentfontSizeMobile,
-          postContentfontSizeTablet = attributes.postContentfontSizeTablet,
-          textColor = attributes.textColor,
-          currentPage = attributes.currentPage,
-          pageCount = attributes.pageCount;
+          paginationMarkup = attributes.paginationMarkup;
 
       var lastDisplay = void 0;
+      var gridClasses = gridCheck ? "premium-blog-even" : "premium-blog-list";
       // Removing posts from display should be instant.
       var displayPosts = latestPosts.length > numOfPosts ? latestPosts.slice(0, numOfPosts) : latestPosts;
       lastDisplay = displayPosts.slice(offsetNum);
-      var gridClasses = gridCheck ? "premium-blog-even" : "premium-blog-list";
-      function handlePageClick(selectedPage) {
-        setAttributes({ currentPage: selectedPage.selected });
-      }
 
-      if (pagination) {
-        var PER_PAGE = numOfPosts;
-        var offset = currentPage * PER_PAGE;
-        lastDisplay = latestPosts.slice(offset, offset + PER_PAGE);
-        console.log(lastDisplay, displayPosts, latestPosts);
-        console.log(offset);
-        var pageCounts = Math.ceil(latestPosts.length / PER_PAGE);
-        setAttributes({ pageCount: pageCounts });
-      }
-      console.log(lastDisplay);
       return wp.element.createElement(
         __WEBPACK_IMPORTED_MODULE_4_react__["Fragment"],
         null,
         wp.element.createElement(
           "div",
           {
-            className: "premium-blog-" + blockID,
-            id: "premium-blog-" + blockID
+            className: "premium-blog-" + block_id,
+            id: "premium-blog-" + block_id
           },
           wp.element.createElement(
             __WEBPACK_IMPORTED_MODULE_0_react_masonry_component___default.a,
@@ -53939,7 +53739,7 @@ var MasonryClass = function (_React$Component) {
               return wp.element.createElement(
                 "div",
                 {
-                  className: " premium-blog-post-outer-container premium-blog-even",
+                  className: " premium-blog-post-outer-container " + gridClasses,
                   key: i
                 },
                 wp.element.createElement(
@@ -53996,7 +53796,11 @@ var MasonryClass = function (_React$Component) {
                 )
               );
             })
-          )
+          ),
+          pagination && wp.element.createElement("div", {
+            dangerouslySetInnerHTML: { __html: paginationMarkup },
+            className: "uagb-post-pagination-wrap"
+          })
         )
       );
     }

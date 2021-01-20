@@ -1448,6 +1448,9 @@ a.premium-dheading-block__link:hover {
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
+.premium-blog-post-outer-container{
+  width: 50%;
+}
 
 .premium-blog-thumb-effect-wrapper .premium-blog-zoomout-effect img,
 .premium-blog-thumb-effect-wrapper .premium-blog-scale-effect img {

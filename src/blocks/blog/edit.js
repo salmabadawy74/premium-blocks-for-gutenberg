@@ -11,7 +11,6 @@ import PremiumMarginR from "../../components/premium-margin-responsive";
 import PremiumBoxShadow from "./../../components/premium-box-shadow";
 
 const { __ } = wp.i18n;
-alert("borderWidths");
 const { Component, Fragment } = wp.element;
 const {
   PanelBody,
@@ -243,7 +242,7 @@ class edit extends Component {
         });
       });
     }
-    console.log(tagList, latestPosts);
+
     let element = document.getElementById(
       "premium-post-style-" + this.props.clientId
     );
@@ -1398,22 +1397,25 @@ export default withSelect((select, props) => {
     .select("core")
     .getEntityRecords("taxonomy", "category");
 
-  // if (pagination) {
-  //   $.ajax({
-  //     url: uagb_blocks_info.ajax_url,
-  //     data: {
-  //       action: "uagb_post_pagination",
-  //       attributes: props.attributes,
-  //       nonce: uagb_blocks_info.uagb_ajax_nonce,
-  //     },
-  //     dataType: "json",
-  //     type: "POST",
-  //     success: function (data) {
-  //       console.log(data.data);
-  //       setAttributes({ paginationMarkup: data.data });
-  //     },
-  //   });
-  // }
+  if (pagination) {
+    jQuery.ajax({
+      url: PremiumSettings.ajaxurl,
+      data: {
+        action: 'premium_pagination',
+        attributes: props.attributes,
+        nonce: PremiumBlocksSettings.nonce,
+      },
+      dataType: "html",
+      type: "POST",
+      success: function (data) {
+        console.log(data);
+       
+      },
+      error: function(err) {
+        console.log("error")
+      }
+    });
+  }
 
   if ("undefined" != typeof currentTax) {
     if ("undefined" != typeof currentTax["taxonomy"][postFilter]) {

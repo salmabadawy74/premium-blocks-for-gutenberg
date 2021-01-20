@@ -149,152 +149,170 @@ if (!class_exists('Premium_Guten_Blocks')) {
 
 ?>
 
-            <div class="wrap">
-                <div class="response-wrap"></div>
-                <form action="" method="POST" id="pbg-settings" name="pbg-settings">
-                    <div class="pb-header-wrapper">
-                        <div class="pb-title-left">
-                            <h1 class="pb-title-main"><?php echo __('Premium Blocks for Gutenberg', 'premium-gutenberg'); ?></h1>
-                            <h3 class="pb-title-sub"><?php echo __('Thank you for using Premium Blocks for Gutenberg. This plugin has been developed by Leap13 and we hope you enjoy using it.', 'premium-gutenberg'); ?></h3>
-                        </div>
-
-                        <div class="pb-title-right">
-                            <img class="pb-logo" src="<?php echo PREMIUM_BLOCKS_URL . 'admin/images/premium-blocks-logo.png'; ?>">
-                        </div>
-
-                    </div>
-                    <div class="pb-settings-tabs">
-                        <div id="pb-modules" class="pb-settings-tab">
-                            <div>
-                                <br>
-                                <input type="checkbox" class="pb-checkbox" checked="checked">
-                                <label>Enable/Disable All</label>
-                            </div>
-                            <table class="pb-elements-table">
-                                <tbody>
-                                    <tr>
-                                        <th><?php echo __('Premium Accordion', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="accordion" name="accordion" <?php checked(1, $this->pbg_get_settings['accordion'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                        <th><?php echo __('Premium Banner', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="banner" name="banner" <?php checked(1, $this->pbg_get_settings['banner'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th><?php echo __('Premium Button', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="button" name="button" <?php checked(1, $this->pbg_get_settings['button'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                        <th><?php echo __('Premium Count Up', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="countUp" name="countUp" <?php checked(1, $this->pbg_get_settings['countUp'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th><?php echo __('Premium Dual Heading', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="dualheading" name="dualHeading" <?php checked(1, $this->pbg_get_settings['dualHeading'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                        <th><?php echo __('Premium Icon', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="icon" name="icon" <?php checked(1, $this->pbg_get_settings['icon'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th><?php echo __('Premium Icon Box', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="iconBox" name="iconBox" <?php checked(1, $this->pbg_get_settings['iconBox'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-
-                                        <th><?php echo __('Premium Maps', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="maps" name="maps" <?php checked(1, $this->pbg_get_settings['maps'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th><?php echo __('Premium Pricing Table', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="pricingTable" name="pricingTable" <?php checked(1, $this->pbg_get_settings['pricingTable'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                        <th><?php echo __('Premium Section', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="maps" name="container" <?php checked(1, $this->pbg_get_settings['container'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th><?php echo __('Premium Testimonials', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="testimonial" name="testimonial" <?php checked(1, $this->pbg_get_settings['testimonial'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                        <th><?php echo __('Premium Video Box', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="videoBox" name="videoBox" <?php checked(1, $this->pbg_get_settings['videoBox'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                        <th><?php echo __('Premium Image Scroll', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="scroll" name="scroll" <?php checked(1, $this->pbg_get_settings['scroll'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                        <th><?php echo __('Premium Blog', 'premium-gutenberg'); ?></th>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" id="blog" name="blog" <?php checked(1, $this->pbg_get_settings['blog'], true) ?>>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
-
-
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
-                        </div>
-                        <div>
-                            <p><?php echo __('Did you like Premium Blocks for Gutenberg Plugin? Please', 'premium-gutenberg') ?> <a href="https://wordpress.org/support/plugin/premium-blocks-for-gutenberg/reviews/?filter=5" target="_blank"><?php echo __('Click Here to Rate it ★★★★★', 'premium-gutenberg') ?></a></p>
-                        </div>
-                    </div>
-                </form>
+<div class="wrap">
+    <div class="response-wrap"></div>
+    <form action="" method="POST" id="pbg-settings" name="pbg-settings">
+        <div class="pb-header-wrapper">
+            <div class="pb-title-left">
+                <h1 class="pb-title-main"><?php echo __('Premium Blocks for Gutenberg', 'premium-gutenberg'); ?></h1>
+                <h3 class="pb-title-sub">
+                    <?php echo __('Thank you for using Premium Blocks for Gutenberg. This plugin has been developed by Leap13 and we hope you enjoy using it.', 'premium-gutenberg'); ?>
+                </h3>
             </div>
+
+            <div class="pb-title-right">
+                <img class="pb-logo" src="<?php echo PREMIUM_BLOCKS_URL . 'admin/images/premium-blocks-logo.png'; ?>">
+            </div>
+
+        </div>
+        <div class="pb-settings-tabs">
+            <div id="pb-modules" class="pb-settings-tab">
+                <div>
+                    <br>
+                    <input type="checkbox" class="pb-checkbox" checked="checked">
+                    <label>Enable/Disable All</label>
+                </div>
+                <table class="pb-elements-table">
+                    <tbody>
+                        <tr>
+                            <th><?php echo __('Premium Accordion', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="accordion" name="accordion"
+                                        <?php checked(1, $this->pbg_get_settings['accordion'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                            <th><?php echo __('Premium Banner', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="banner" name="banner"
+                                        <?php checked(1, $this->pbg_get_settings['banner'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><?php echo __('Premium Button', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="button" name="button"
+                                        <?php checked(1, $this->pbg_get_settings['button'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                            <th><?php echo __('Premium Count Up', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="countUp" name="countUp"
+                                        <?php checked(1, $this->pbg_get_settings['countUp'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><?php echo __('Premium Dual Heading', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="dualheading" name="dualHeading"
+                                        <?php checked(1, $this->pbg_get_settings['dualHeading'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                            <th><?php echo __('Premium Icon', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="icon" name="icon"
+                                        <?php checked(1, $this->pbg_get_settings['icon'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><?php echo __('Premium Icon Box', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="iconBox" name="iconBox"
+                                        <?php checked(1, $this->pbg_get_settings['iconBox'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+
+                            <th><?php echo __('Premium Maps', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="maps" name="maps"
+                                        <?php checked(1, $this->pbg_get_settings['maps'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><?php echo __('Premium Pricing Table', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="pricingTable" name="pricingTable"
+                                        <?php checked(1, $this->pbg_get_settings['pricingTable'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                            <th><?php echo __('Premium Section', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="maps" name="container"
+                                        <?php checked(1, $this->pbg_get_settings['container'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><?php echo __('Premium Testimonials', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="testimonial" name="testimonial"
+                                        <?php checked(1, $this->pbg_get_settings['testimonial'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                            <th><?php echo __('Premium Video Box', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="videoBox" name="videoBox"
+                                        <?php checked(1, $this->pbg_get_settings['videoBox'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                            <th><?php echo __('Premium Image Scroll', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="scroll" name="scroll"
+                                        <?php checked(1, $this->pbg_get_settings['scroll'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                            <th><?php echo __('Premium Blog', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="blog" name="blog"
+                                        <?php checked(1, $this->pbg_get_settings['blog'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+                <input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
+            </div>
+            <div>
+                <p><?php echo __('Did you like Premium Blocks for Gutenberg Plugin? Please', 'premium-gutenberg') ?> <a
+                        href="https://wordpress.org/support/plugin/premium-blocks-for-gutenberg/reviews/?filter=5"
+                        target="_blank"><?php echo __('Click Here to Rate it ★★★★★', 'premium-gutenberg') ?></a></p>
+            </div>
+        </div>
+    </form>
+</div>
 <?php
         }
 
@@ -347,9 +365,10 @@ if (!class_exists('Premium_Guten_Blocks')) {
                 'container'     => intval($settings['container'] ? 1 : 0),
                 'accordion'     => intval($settings['accordion'] ? 1 : 0),
                 'iconBox'       => intval($settings['iconBox'] ? 1 : 0),
+                'blog'      => intval($settings['blog'] ? 1 : 0),
                 'videoBox'      => intval($settings['videoBox'] ? 1 : 0),
                 'scroll'      => intval($settings['scroll'] ? 1 : 0),
-                'blog'      => intval($settings['blog'] ? 1 : 0),
+                'blog'      => intval($settings['blog'] ? 1 : 0) 
             );
 
             update_option('pbg_settings', $this->pbg_settings);

@@ -5,7 +5,6 @@ import ReactPaginate from "react-paginate";
 
 import Meta from "./meta";
 import Iamge from "./Image";
-
 import { Fragment } from "react";
 import Excerpt from "./Excerpt";
 import Button from "./Button";
@@ -17,7 +16,6 @@ class MasonryClass extends React.Component {
   }
 
   render() {
-    console.log(latestPosts);
     const {
       attributes,
       className,
@@ -28,149 +26,33 @@ class MasonryClass extends React.Component {
     } = this.props;
     const { __ } = wp.i18n;
     const {
-      blockID,
-      DisplayTitle,
-      DisplayDate,
-      DisplayComment,
-      DisplayExcert,
-      DisplayAuthor,
-      DisplayImage,
-      DisplayTaxonomy,
-      DisplayPostLink,
-      newTab,
-      borderWidth,
-      ctaText,
-      borderRadius,
-      borderColor,
-      vPadding,
-      hPadding,
-      categories,
-      rowGap,
-      imageSize,
-      bgColor,
-      contentPadding,
-      contentPaddingMobile,
-      gridCheck,
-      equalHeight,
-
+      block_id,
       numOfPosts,
-      numOfColumns,
       offsetNum,
-      currentPost,
-      orderBy,
-      order,
-      featuredImage,
-      hoverEffect,
-      height,
-      HeightU,
-      rowGapUnit,
-      columnGap,
-      postPosition,
       displayPostContent,
-      displayPostExcerpt,
-      excerptType,
-      fullWidth,
-      readMoreText,
-      displayPostAuthor,
-      displayPostDate,
-      displayPostCategories,
-      displayPostComment,
-      displayPostTags,
-      filterTabs,
-      getTabsFrom,
-      tabLabel,
-      filterPosition,
-
-      linkNewTab,
-      layoutValue,
-      postFilter,
-      sizeType,
-      size,
-      sizeMobile,
-      sizeTablet,
-      Carousel,
-      Autoplay,
-      slideToScroll,
-      autoplaySpeed,
-      centerMode,
-      slideSpacing,
-      navigationDots,
-      navigationArrow,
-      arrowPosition,
+      gridCheck,
       pagination,
-      pageLimit,
-      overlayColor,
-      paginationPosition,
-      blur,
-      bright,
-      contrast,
-      saturation,
-      hue,
-      firstContentLetter,
-      firstContentStyle,
-      firstContentUpper,
-      firstContentWeight,
-      firstContentfontSize,
-      typoColor,
-      hoverColor,
-      firstContentfontSizeType,
-      firstContentfontSizeMobile,
-      firstContentfontSizeTablet,
-      secondContentLetter,
-      secondContentStyle,
-      secondContentUpper,
-      secondContentWeight,
-      secondContentfontSize,
-      secondContentfontSizeType,
-      secondContentfontSizeMobile,
-      secondContentfontSizeTablet,
-      metaColor,
-      linkColor,
-      sepaColor,
-      postContentLetter,
-      postContentStyle,
-      postContentUpper,
-      postContentWeight,
-      postContentfontSize,
-      postContentfontSizeType,
-      postContentfontSizeMobile,
-      postContentfontSizeTablet,
-      textColor,
-      currentPage,
-      pageCount,
+      paginationMarkup,
     } = attributes;
     let lastDisplay;
+    const gridClasses = gridCheck ? "premium-blog-even" : "premium-blog-list";
     // Removing posts from display should be instant.
     const displayPosts =
       latestPosts.length > numOfPosts
         ? latestPosts.slice(0, numOfPosts)
         : latestPosts;
     lastDisplay = displayPosts.slice(offsetNum);
-    const gridClasses = gridCheck ? "premium-blog-even" : "premium-blog-list";
-    function handlePageClick(selectedPage) {
-      setAttributes({ currentPage: selectedPage.selected });
-    }
 
-    if (pagination) {
-      const PER_PAGE = numOfPosts;
-      const offset = currentPage * PER_PAGE;
-      lastDisplay = latestPosts.slice(offset, offset + PER_PAGE);
-      console.log(lastDisplay, displayPosts, latestPosts);
-      console.log(offset);
-      const pageCounts = Math.ceil(latestPosts.length / PER_PAGE);
-      setAttributes({ pageCount: pageCounts });
-    }
-    console.log(lastDisplay);
     return (
       <Fragment>
         <div
-          className={`premium-blog-${blockID}`}
-          id={`premium-blog-${blockID}`}
+          className={`premium-blog-${block_id}`}
+          id={`premium-blog-${block_id}`}
         >
           <Masonry>
             {lastDisplay.map((post, i) => (
               <div
-                className={` premium-blog-post-outer-container premium-blog-even`}
+                className={` premium-blog-post-outer-container ${gridClasses}`}
                 key={i}
               >
                 <div
@@ -204,7 +86,6 @@ class MasonryClass extends React.Component {
                       {displayPostContent && (
                         <Excerpt post={post} attributes={attributes} />
                       )}
-
                       <Button post={post} attributes={attributes} />
                       <Tags
                         post={post}
@@ -217,6 +98,12 @@ class MasonryClass extends React.Component {
               </div>
             ))}
           </Masonry>
+          {pagination && (
+            <div
+              dangerouslySetInnerHTML={{ __html: paginationMarkup }}
+              className="uagb-post-pagination-wrap"
+            ></div>
+          )}
         </div>
       </Fragment>
     );

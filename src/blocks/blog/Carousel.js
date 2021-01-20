@@ -20,7 +20,6 @@ function SampleNextArrow(props) {
     />
   );
 }
-
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -35,7 +34,6 @@ class Carousel extends React.Component {
   constructor() {
     super(...arguments);
   }
-
   render() {
     const {
       attributes,
@@ -47,7 +45,7 @@ class Carousel extends React.Component {
     } = this.props;
 
     const {
-      blockID,
+      block_id,
 
       Autoplay,
       slideToScroll,
@@ -58,6 +56,7 @@ class Carousel extends React.Component {
       columns,
       mcolumns,
       tcolumns,
+      offsetNum,
       navigationArrow,
       arrowPosition,
     } = attributes;
@@ -88,7 +87,7 @@ class Carousel extends React.Component {
     };
     const lastDisplay = latestPosts.slice(offsetNum);
     return (
-      <div className={`premium-blog`} id={`premium-blog-${blockID}`}>
+      <div className={`premium-blog`} id={`premium-blog-${block_id}`}>
         <Slider {...settings}>
           {lastDisplay.map((post, i) => (
             <div className={`premium-blog-post-outer-container`} key={i}>
