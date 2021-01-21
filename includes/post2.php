@@ -37,10 +37,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			
 			add_action( 'init', array( $this, 'register_blocks' ) );
 			
-			add_action( 'wp_ajax_premium_post_pagination', 'post_pagination' );
-			
-				add_action( 'wp_ajax_nopriv_premium_post_pagination', 'post_pagination' );
-				add_action( 'wp_footer', array($this,'add_post_dynamic_script'),1000 );
+			add_action( 'wp_footer', array($this,'add_post_dynamic_script'),1000 );
 		}
 
 		// Check if the register function exists.
@@ -175,7 +172,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				),
 				'layoutValue' => array(
 					'type' => 'string',
-					'default' =>'Even'
+					'default' =>'even'
 				),
 				'displayPostContent'          => array(
 					'type'    => 'boolean',
@@ -965,11 +962,11 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			// Render query.
 			$query = PBG_Blocks_Helper::get_query_posts( $attributes );
 			// Cache the settings.
-			 if ( $attributes['layoutValue']==="Even" ) {
+			 if ( $attributes['layoutValue']==="even" ) {
 			
 			self::$grid_settings['grid'][ $attributes['block_id'] ] = $attributes;
 			 }
-			 if($attributes['layoutValue']==="Masonry"){
+			 if($attributes['layoutValue']==="masonry"){
 				self::$grid_settings['masonry'][ $attributes['block_id'] ] = $attributes; 
 			 }
 			 if($attributes['Carousel']){
@@ -995,7 +992,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'premium-blog-wrap',
 				'post__columns-' . $attributes['columns'],
 				'post__columns-tablet-' . $attributes['tcolumns'],
-				'uagb-post__columns-mobile-' . $attributes['mcolumns'],
+				'post__columns-mobile-' . $attributes['mcolumns'],
 				);
 				$block_id  = 'premium-blog' . $attributes['block_id'];
 				$outerwrap = array(
@@ -1102,11 +1099,17 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 							'id' => get_post_thumbnail_id(),
 						);
 			?>
-			<div class='premium-blog-thumbnail-container'>
-				<a href="<?php echo esc_url( apply_filters( get_the_permalink(), get_the_ID(), $attributes ) ); ?>"
-					rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imageSize'] ); ?>
-				</a>
+
+			  <div className="premium-blog-thumb-effect-wrapper">
+			<div class='premium-blog-thumbnail-container premium-blog-$attributes["hoverEffect"]-effect'>
+				<?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imageSize'] ); ?>
+		
 			</div>
+			<div class="premium-blog-thumbnail-overlay">
+			<a href="<?php echo esc_url( apply_filters( get_the_permalink(), get_the_ID(), $attributes ) ); ?>" >
+					</a>
+          </div>
+					</div>
 			<?php
 		}
 		/**
@@ -1214,7 +1217,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			$meta_sequence = array( 'author', 'date', 'comment', 'taxonomy' );
 			// $meta_sequence = apply_filters("uagb_single_post_meta_sequence", $meta_sequence, get_the_ID(), $attributes);
 			?>
-				<div class="uagb-post-grid-byline">
+				<div class="premium-blog-entry-meta">
 					<?php
 							foreach ( $meta_sequence as $key => $sequence ) {
 								switch ( $sequence ) {
@@ -1334,7 +1337,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			return $options;
 		}
 		public function post_pagination() {
-			check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
+	
 			if ( isset( $_POST['attributes'] ) ) {
 				// $query = PBG_Blocks_Helper::get_query_posts($attributes);
 				$pagination_markup = PBG_Blocks_Helper::render_pagination( $attributes );
@@ -1352,77 +1355,85 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 
 		public function add_post_dynamic_script() {
 
-			if ( isset( self::$settings['masonry'] )   ) {
-				foreach ( self::$settings['masonry'] as $key => $value ) {
+			if ( isset( self::$grid_settings['masonry'] )   ) {
+				foreach ( self::$grid_settings['masonry'] as $key => $value ) {
 					?>
 					<script type="text/javascript" id="Post_Masnory">
 					jQuery( document ).ready( function( $ ) {
 
-$( '.premium-blog-wrap' ).each( function() {
+				$( '.premium-blog-wrap' ).each( function() {
 
 	
-		var selector 	= $(this);
+					var selector 	= $(this);
 
 
 	
 
 
-	var masonryArgs = {
-		itemSelector	: '.premium-blog-post-outer-container',
-		percentPosition : true,
-		layoutMode		: 'masonry',
-	};
+				var masonryArgs = {
+					itemSelector	: '.premium-blog-post-outer-container',
+					percentPosition : true,
+					layoutMode		: 'masonry',
+				};
 
-	var $isotopeObj = {};
+				var $isotopeObj = {};
 
-	selector.imagesLoaded( function() {
+				selector.imagesLoaded( function() {
 
-		$isotopeObj = selector.isotope( masonryArgs );
+					$isotopeObj = selector.isotope( masonryArgs );
 
-		$isotopeObj.imagesLoaded().progress(function() {
-			$isotopeObj.isotope("layout");
-		});
+					$isotopeObj.imagesLoaded().progress(function() {
+						$isotopeObj.isotope("layout");
+					});
 
-		selector.find('.premium-blog-post-outer-container').resize( function() {
-			$isotopeObj.isotope( 'layout' );
-		});
-	});
+					selector.find('.premium-blog-post-outer-container').resize( function() {
+						$isotopeObj.isotope( 'layout' );
+									});
+								});
 
-});
-});
+				});
+				});
 					</script>
 					<?php
 				}
 			}
 
-			if ( isset( self::$settings['carousel'] )  ) {
-				foreach ( self::$settings['carousel'] as $key => $value ) {
+			if ( isset( self::$grid_settings['carousel'] )  ) {
+				foreach ( self::$grid_settings['carousel'] as $key => $value ) {
 
 					$dots         = ( 'dots' === $value['navigationDots'] || 'arrows_dots' === $value['navigationDots'] ) ? true : false;
 					$arrows       = ( 'arrows' === $value['navigationArrow'] || 'arrows_dots' === $value['navigationArrow'] ) ? true : false;
 					$tcolumns     = ( isset( $value['tcolumns'] ) ) ? $value['tcolumns'] : 2;
 					$mcolumns     = ( isset( $value['mcolumns'] ) ) ? $value['mcolumns'] : 1;
+					$is_rtl       = is_rtl();
 				
 
-					?>
-					<script type="text/javascript" id="Post-Carousel">
-						document.addEventListener("DOMContentLoaded", function(){
-							( function( $ ) {
-								var cols = parseInt( '<?php echo esc_html( $value['columns'] ); ?>' );
-								var $scope = $( '.premium-blog-wrap');
+					// ?>
 
-								if ( cols >= $scope.children().length ) {
-									return;
-								}
-								var slider_options = {
-									'slidesToShow' : 2,
+
+
+
+
+								<script type="text/javascript" id="Post_Carousel">
+								
+
+								jQuery( document ).ready( function( $ ) {
+
+										var cols = parseInt( '<?php echo esc_html( $value['columns'] ); ?>' );
+									var $scope = $( '.premium-blog' ).find( '.premium-blog-wrap' );
+
+									if ( cols >= $scope.children().length ) {
+										return;
+									}
+									var setting = {
+									'slidesToShow' : cols,
 									'slidesToScroll' : 1,
-									'autoplaySpeed' : 5000,
-									'autoplay' : true,
-									
-									'arrows' : true,
-									'dots' : true,
-									
+									'autoplaySpeed' : <?php echo esc_html( $value['autoplaySpeed'] ); ?>,
+									'autoplay' : Boolean( '<?php echo esc_html( $value['Autoplay'] ); ?>' ),
+									'arrows' : Boolean( '<?php echo esc_html($value['navigationArrow'] ); ?>' ),
+									'dots' : Boolean( '<?php echo esc_html($value['navigationDots'] ); ?>' ),
+									'centerMode' :  Boolean( '<?php echo esc_html($value['centerMode'] ); ?>' ),
+								
 									'responsive' : [
 										{
 											'breakpoint' : 1024,
@@ -1439,24 +1450,17 @@ $( '.premium-blog-wrap' ).each( function() {
 											}
 										}
 									]
-								};
 
-								$scope.imagesLoaded( function() {
-									$scope.slick( slider_options );
-								});
+													};
+									$scope.imagesLoaded( function() {
+									$scope.slick(
+										setting
+									);
+									});
+								})
+								</script>
 
-							
-
-							
-
-									$scope.on( 'afterChange', function() {
-										UAGBPostCarousel._setHeight( $scope );
-									} );
-								}
-
-							} )( jQuery );
-						});
-					</script>
+				
 					<?php
 				}
 			}

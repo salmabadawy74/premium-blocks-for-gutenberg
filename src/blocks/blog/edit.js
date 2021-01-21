@@ -273,10 +273,10 @@ class edit extends Component {
             <SelectControl
               label={__("Layout")}
               options={[
-                { label: "Even", value: "Even" },
+                { label: "Even", value: "even" },
                 {
                   label: "Masonry",
-                  value: "Masonry",
+                  value: "masonry",
                 },
               ]}
               value={layoutValue}
@@ -1345,7 +1345,7 @@ class edit extends Component {
         </Fragment>
       );
     }
-    if (layoutValue === "Masonry") {
+    if (layoutValue === "masonry") {
       return (
         <Fragment>
           {Inspectors}
@@ -1380,7 +1380,7 @@ export default withSelect((select, props) => {
     orderBy,
     postFilter,
     paginationMarkup,
-
+numOfPosts,
     pagination,
     currentPost,
   } = props.attributes;
@@ -1397,7 +1397,9 @@ export default withSelect((select, props) => {
     .select("core")
     .getEntityRecords("taxonomy", "category");
 
-  if (pagination) {
+  if ( pagination )
+  {
+   
     jQuery.ajax({
       url: PremiumSettings.ajaxurl,
       data: {
@@ -1405,10 +1407,12 @@ export default withSelect((select, props) => {
         attributes: props.attributes,
         nonce: PremiumBlocksSettings.nonce,
       },
-      dataType: "html",
+ 
       type: "POST",
-      success: function (data) {
-        console.log(data);
+      success: function ( data )
+      {
+        console.log(typeof(data))
+      setAttributes({paginationMarkup:data})
        
       },
       error: function(err) {
@@ -1439,6 +1443,7 @@ export default withSelect((select, props) => {
   let latestPostsQuery = {
     order: order,
     orderby: orderBy,
+    posts_per_page : numOfPosts
   };
 
   if (currentPost) {

@@ -15,7 +15,7 @@ function SampleNextArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: props.navigationArrow ? "block" : "none" }}
+      style={{ ...style, display:"block"  }}
       onClick={onClick}
     />
   );
@@ -25,7 +25,7 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: props.navigationArrow ? "block" : "none" }}
+      style={{ ...style, display: "block" }}
       onClick={onClick}
     />
   );
@@ -62,6 +62,7 @@ class Carousel extends React.Component {
     } = attributes;
     const settings = {
       adaptiveHeight: true,
+      arrows:navigationArrow,
       dots: navigationDots,
       centerMode: centerMode,
       centerPadding: slideSpacing,

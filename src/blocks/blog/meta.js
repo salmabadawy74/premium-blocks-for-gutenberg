@@ -17,15 +17,15 @@ class Meta extends React.Component {
     console.log(categoryObject);
     return (
       <Fragment>
-        {attributes.displayPostAuthor && undefined !== post.uagb_author_info && (
+        {attributes.displayPostAuthor && undefined !== post.pbg_author_info && (
           <span className="premium-blog-post-author premium-blog-meta-data">
             <span className="fa fa-user fa-fw"></span>
             <a
               target="_blank"
-              href={post.uagb_author_info.author_link}
+              href={post.pbg_author_info.author_link}
               rel="noopener noreferrer"
             >
-              {post.uagb_author_info.display_name}
+              {post.pbg_author_info.display_name}
             </a>
             <span className={`premium-blog-meta-separtor`}>•</span>
           </span>
@@ -44,11 +44,11 @@ class Meta extends React.Component {
           </div>
         )}
 
-        {attributes.displayPostComment && undefined !== post.uagb_comment_info && (
+        {attributes.displayPostComment && undefined !== post.pbg_comment_info && (
           <div className={`premium-blog-post-comments premium-blog-meta-data`}>
             <span className="premium-post__comment">
               <span className="dashicons-admin-comments dashicons"></span>
-              {post.uagb_comment_info}
+              {post.pbg_comment_info}
             </span>
             <span className={`premium-blog-meta-separtor`}>•</span>
           </div>

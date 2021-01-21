@@ -122,7 +122,7 @@ registerBlockType("premium/post-blog", {
 
     layoutValue: {
       type: "string",
-      default: "Even",
+      default: "even",
     },
     postFilter: {
       type: "string",
@@ -267,24 +267,19 @@ registerBlockType("premium/post-blog", {
       default: 15,
     },
     typoColor: {
-      type: "string",
-      default: "default",
+      type: "string",   
     },
     metaColor: {
-      type: "string",
-      default: "default",
+      type: "string"   
     },
     linkColor: {
-      type: "string",
-      default: "default",
+      type: "string"
     },
     sepaColor: {
-      type: "string",
-      default: "default",
+      type: "string" 
     },
     hoverTag: {
-      type: "string",
-      default: "default",
+      type: "string"
     },
     postContentLetter: {
       type: "number",
@@ -318,31 +313,28 @@ registerBlockType("premium/post-blog", {
     },
     textColor: {
       type: "string",
-      default: "black",
+    
     },
     tagColor: {
-      type: "string",
-      default: "default",
+      type: "string"  
     },
     hoverColor: {
-      type: "string",
-      default: "default",
+      type: "string"
     },
     buttonColor: {
-      type: "string",
-      default: "default",
+      type: "string"     
     },
     buttonhover: {
       type: "string",
-      default: "default",
+
     },
     buttonBackground: {
       type: "string",
-      default: "default",
+
     },
     hoverBackground: {
       type: "string",
-      default: "default",
+
     },
     currentPage: {
       type: "number",

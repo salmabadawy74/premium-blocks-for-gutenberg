@@ -4871,7 +4871,7 @@ var Meta = function (_React$Component) {
       return wp.element.createElement(
         __WEBPACK_IMPORTED_MODULE_0_react__["Fragment"],
         null,
-        attributes.displayPostAuthor && undefined !== post.uagb_author_info && wp.element.createElement(
+        attributes.displayPostAuthor && undefined !== post.pbg_author_info && wp.element.createElement(
           "span",
           { className: "premium-blog-post-author premium-blog-meta-data" },
           wp.element.createElement("span", { className: "fa fa-user fa-fw" }),
@@ -4879,10 +4879,10 @@ var Meta = function (_React$Component) {
             "a",
             {
               target: "_blank",
-              href: post.uagb_author_info.author_link,
+              href: post.pbg_author_info.author_link,
               rel: "noopener noreferrer"
             },
-            post.uagb_author_info.display_name
+            post.pbg_author_info.display_name
           ),
           wp.element.createElement(
             "span",
@@ -4908,14 +4908,14 @@ var Meta = function (_React$Component) {
             "\u2022"
           )
         ),
-        attributes.displayPostComment && undefined !== post.uagb_comment_info && wp.element.createElement(
+        attributes.displayPostComment && undefined !== post.pbg_comment_info && wp.element.createElement(
           "div",
           { className: "premium-blog-post-comments premium-blog-meta-data" },
           wp.element.createElement(
             "span",
             { className: "premium-post__comment" },
             wp.element.createElement("span", { className: "dashicons-admin-comments dashicons" }),
-            post.uagb_comment_info
+            post.pbg_comment_info
           ),
           wp.element.createElement(
             "span",
@@ -4973,14 +4973,14 @@ var Excerpt = function (_React$Component) {
           post = _props.post,
           attributes = _props.attributes;
 
-      if (post.uagb_excerpt == undefined) {
+      if (post.pbg_excerpt == undefined) {
         return null;
       }
-      var words = post.uagb_excerpt.split(" ");
-      var excerpt = post.uagb_excerpt;
+      var words = post.pbg_excerpt.split(" ");
+      var excerpt = post.pbg_excerpt;
       var exLength = attributes.excerptLength ? attributes.excerptLength : 25;
       if (exLength >= words.length) {
-        excerpt = post.uagb_excerpt;
+        excerpt = post.pbg_excerpt;
       } else {
         var truncated = words.slice(0, exLength);
         excerpt = truncated.join(" ");
@@ -5095,8 +5095,8 @@ var Image = function (_React$Component) {
           attributes = _props.attributes;
 
       var target = attributes.newTab ? "_blank" : "_self";
-      if (attributes.featuredImage && undefined !== post.uagb_featured_image_src && attributes.imageSize && post.uagb_featured_image_src[attributes.imageSize]) {
-        var src = post.uagb_featured_image_src[attributes.imageSize];
+      if (attributes.featuredImage && undefined !== post.pbg_featured_image_src && attributes.imageSize && post.pbg_featured_image_src[attributes.imageSize]) {
+        var src = post.pbg_featured_image_src[attributes.imageSize];
         return wp.element.createElement(
           "div",
           { className: "premium-blog-thumb-effect-wrapper" },
@@ -5117,7 +5117,7 @@ var Image = function (_React$Component) {
           ),
           wp.element.createElement("style", {
             dangerouslySetInnerHTML: {
-              __html: [".premium-blog-thumb-effect-wrapper img{", "\n               height:" + attributes.height + attributes.HeightU + " !important; \n               ", "}"].join("\n")
+              __html: [".premium-blog-thumb-effect-wrapper "].join("\n")
             }
           })
         );
@@ -46977,7 +46977,7 @@ registerBlockType("premium/post-blog", {
     default: true
   }), _defineProperty(_attributes, "layoutValue", {
     type: "string",
-    default: "Even"
+    default: "even"
   }), _defineProperty(_attributes, "postFilter", {
     type: "string",
     default: "Default"
@@ -47084,20 +47084,15 @@ registerBlockType("premium/post-blog", {
     type: "number",
     default: 15
   }), _defineProperty(_attributes, "typoColor", {
-    type: "string",
-    default: "default"
+    type: "string"
   }), _defineProperty(_attributes, "metaColor", {
-    type: "string",
-    default: "default"
+    type: "string"
   }), _defineProperty(_attributes, "linkColor", {
-    type: "string",
-    default: "default"
+    type: "string"
   }), _defineProperty(_attributes, "sepaColor", {
-    type: "string",
-    default: "default"
+    type: "string"
   }), _defineProperty(_attributes, "hoverTag", {
-    type: "string",
-    default: "default"
+    type: "string"
   }), _defineProperty(_attributes, "postContentLetter", {
     type: "number"
   }), _defineProperty(_attributes, "postContentStyle", {
@@ -47121,26 +47116,23 @@ registerBlockType("premium/post-blog", {
     type: "number",
     default: 15
   }), _defineProperty(_attributes, "textColor", {
-    type: "string",
-    default: "black"
+    type: "string"
+
   }), _defineProperty(_attributes, "tagColor", {
-    type: "string",
-    default: "default"
+    type: "string"
   }), _defineProperty(_attributes, "hoverColor", {
-    type: "string",
-    default: "default"
+    type: "string"
   }), _defineProperty(_attributes, "buttonColor", {
-    type: "string",
-    default: "default"
+    type: "string"
   }), _defineProperty(_attributes, "buttonhover", {
-    type: "string",
-    default: "default"
+    type: "string"
+
   }), _defineProperty(_attributes, "buttonBackground", {
-    type: "string",
-    default: "default"
+    type: "string"
+
   }), _defineProperty(_attributes, "hoverBackground", {
-    type: "string",
-    default: "default"
+    type: "string"
+
   }), _defineProperty(_attributes, "currentPage", {
     type: "number",
     default: 0
@@ -47324,6 +47316,8 @@ registerBlockType("premium/post-blog", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Masonry__ = __webpack_require__(304);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_margin_responsive__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_box_shadow__ = __webpack_require__(10);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47595,9 +47589,9 @@ var edit = function (_Component) {
           }),
           gridCheck && [wp.element.createElement(SelectControl, {
             label: __("Layout"),
-            options: [{ label: "Even", value: "Even" }, {
+            options: [{ label: "Even", value: "even" }, {
               label: "Masonry",
-              value: "Masonry"
+              value: "masonry"
             }],
             value: layoutValue,
             onChange: function onChange(newLayout) {
@@ -48660,7 +48654,7 @@ var edit = function (_Component) {
           })
         );
       }
-      if (layoutValue === "Masonry") {
+      if (layoutValue === "masonry") {
         return wp.element.createElement(
           Fragment,
           null,
@@ -48698,6 +48692,7 @@ var edit = function (_Component) {
       orderBy = _props$attributes.orderBy,
       postFilter = _props$attributes.postFilter,
       paginationMarkup = _props$attributes.paginationMarkup,
+      numOfPosts = _props$attributes.numOfPosts,
       pagination = _props$attributes.pagination,
       currentPost = _props$attributes.currentPost;
   var setAttributes = props.setAttributes;
@@ -48714,6 +48709,7 @@ var edit = function (_Component) {
   categoriesList = wp.data.select("core").getEntityRecords("taxonomy", "category");
 
   if (pagination) {
+
     jQuery.ajax({
       url: PremiumSettings.ajaxurl,
       data: {
@@ -48721,10 +48717,11 @@ var edit = function (_Component) {
         attributes: props.attributes,
         nonce: PremiumBlocksSettings.nonce
       },
-      dataType: "html",
+
       type: "POST",
       success: function success(data) {
-        console.log(data);
+        console.log(typeof data === "undefined" ? "undefined" : _typeof(data));
+        setAttributes({ paginationMarkup: data });
       },
       error: function error(err) {
         console.log("error");
@@ -48746,7 +48743,8 @@ var edit = function (_Component) {
   tagList = currentTax["terms"]["post_tag"];
   var latestPostsQuery = {
     order: order,
-    orderby: orderBy
+    orderby: orderBy,
+    posts_per_page: numOfPosts
   };
 
   if (currentPost) {
@@ -48811,7 +48809,7 @@ function SampleNextArrow(props) {
 
   return wp.element.createElement("div", {
     className: className,
-    style: _extends({}, style, { display: props.navigationArrow ? "block" : "none" }),
+    style: _extends({}, style, { display: "block" }),
     onClick: onClick
   });
 }
@@ -48822,7 +48820,7 @@ function SamplePrevArrow(props) {
 
   return wp.element.createElement("div", {
     className: className,
-    style: _extends({}, style, { display: props.navigationArrow ? "block" : "none" }),
+    style: _extends({}, style, { display: "block" }),
     onClick: onClick
   });
 }
@@ -48863,6 +48861,7 @@ var Carousel = function (_React$Component) {
 
       var settings = (_settings = {
         adaptiveHeight: true,
+        arrows: navigationArrow,
         dots: navigationDots,
         centerMode: centerMode,
         centerPadding: slideSpacing,
@@ -53137,8 +53136,9 @@ var Blog = function (_React$Component) {
       var displayPosts = latestPosts.length > numOfPosts ? latestPosts.slice(0, numOfPosts) : latestPosts;
 
       lastDisplay = displayPosts.slice(offsetNum);
+      console.log(lastDisplay);
 
-      var equalHeight = layoutValue === "Even" ? "equal-Height" : null;
+      var equalHeight = layoutValue === "even" ? "equal-Height" : null;
 
       return wp.element.createElement(
         __WEBPACK_IMPORTED_MODULE_3_react__["Fragment"],
@@ -53222,7 +53222,7 @@ var Blog = function (_React$Component) {
         ),
         pagination && wp.element.createElement("div", {
           dangerouslySetInnerHTML: { __html: paginationMarkup },
-          className: "uagb-post-pagination-wrap"
+          className: "pbg-post-pagination-wrap"
         })
       );
     }
@@ -53240,13 +53240,9 @@ var Blog = function (_React$Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__GenerateCss__ = __webpack_require__(302);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__ = __webpack_require__(303);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 function styling(props) {
-  var _mobile_selectors;
-
   var _props$attributes = props.attributes,
       classMigrate = _props$attributes.classMigrate,
       marginBottomType = _props$attributes.marginBottomType,
@@ -53308,6 +53304,7 @@ function styling(props) {
       secondContentfontSizeMobile = _props$attributes.secondContentfontSizeMobile,
       secondContentfontSizeTablet = _props$attributes.secondContentfontSizeTablet,
       firstContentfontSizeType = _props$attributes.firstContentfontSizeType,
+      firstContentfontSizeMobile = _props$attributes.firstContentfontSizeMobile,
       firstContentWeight = _props$attributes.firstContentWeight,
       firstContentStyle = _props$attributes.firstContentStyle,
       firstContentUpper = _props$attributes.firstContentUpper,
@@ -53347,7 +53344,17 @@ function styling(props) {
       buttonPaddingType = _props$attributes.buttonPaddingType,
       buttonPadding = _props$attributes.buttonPadding,
       buttonPaddingMobile = _props$attributes.buttonPaddingMobile,
-      buttonPaddingTablet = _props$attributes.buttonPaddingTablet;
+      buttonPaddingTablet = _props$attributes.buttonPaddingTablet,
+      tagsfontSize = _props$attributes.tagsfontSize,
+      tagsfontSizeType = _props$attributes.tagsfontSizeType,
+      tagsWeight = _props$attributes.tagsWeight,
+      tagsStyle = _props$attributes.tagsStyle,
+      tagsUpper = _props$attributes.tagsUpper,
+      tagsLetter = _props$attributes.tagsLetter,
+      tagColor = _props$attributes.tagColor,
+      hoverTag = _props$attributes.hoverTag,
+      tagsfontSizeTablet = _props$attributes.tagsfontSizeTablet,
+      tagsfontSizeMobile = _props$attributes.tagsfontSizeMobile;
   var latestPosts = props.latestPosts;
 
   var selectors = {};
@@ -53363,21 +53370,24 @@ function styling(props) {
       "text-align": "" + filterPosition
     },
     " .premium-blog-thumbnail-overlay": {
-      background: "" + overlayColor
+      "background-color": "" + overlayColor
+    },
+    " .premium-blog-post-outer-container img": {
+      "object-fit": "" + thumbnail
     },
     " .premium-blog-post-outer-container:hover img": {
       filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
     },
-    " .premium-blog-post-container .premium-blog-entry-title h2": {
+    " .premium-blog-post-container .premium-blog-entry-title h2 a ": {
       "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(marginBottom, marginBottomType),
-      "font-size": "" + firstContentfontSize + firstContentfontSizeType + ";",
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(firstContentfontSize, firstContentfontSizeType),
       "font-weight": firstContentWeight + ";",
       "font-style": firstContentStyle + ";",
       "text-transform": (firstContentUpper ? "uppercase" : null) + " ;",
       "letter-spacing": firstContentLetter + "px ;",
-      color: typoColor + ";"
+      color: typoColor + " !important ;"
     },
-    ".premium-blog-entry-title a:hover": {
+    ".premium-blog-entry-title:hover a": {
       color: hoverColor + ";"
     },
     " .premium-blog-even": {
@@ -53385,12 +53395,12 @@ function styling(props) {
       "margin-bottom": 20 + "px"
     },
     " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
-      "font-size": "" + postContentfontSize + postContentfontSizeType + " !important",
-      "margin-bottom": PostmarginBottom + " " + PostmarginBottomType + " !important",
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(postContentfontSize, postContentfontSizeType),
+      "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(PostmarginBottom, PostmarginBottomType),
       "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(PostmarginTop, PostmarginTopType),
-      "margin-right": PostmarginRight + " " + PostmarginRightType,
-      "margin-left": PostmarginLeft + " " + PostmarginLeftType,
-      " padding": "" + postSpacing + postSpacingType,
+      "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(PostmarginRight, PostmarginRightType),
+      "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(PostmarginLeft, PostmarginLeftType),
+      " padding": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(postSpacing, postSpacingType),
       "font-weight": postContentWeight + " !important;",
       "font-style": postContentStyle + ";",
       "text-transform": (postContentUpper ? "uppercase" : null) + " ;",
@@ -53400,7 +53410,7 @@ function styling(props) {
       "box-shadow": containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
     },
     " .premium-blog-meta-data": {
-      "font-size": "" + secondContentfontSize + secondContentfontSizeType + ";",
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(secondContentfontSize, secondContentfontSizeType),
       "font-weight": secondContentWeight + ";",
       "font-style": secondContentStyle + ";",
       "text-transform": (secondContentUpper ? "uppercase" : null) + " ;",
@@ -53414,10 +53424,10 @@ function styling(props) {
       color: sepaColor + ";"
     },
     " .premium-blog-excerpt-link-wrap ": {
-      " padding": "" + buttonSpacing + buttonSpacingType
+      " padding": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(buttonSpacing, buttonSpacingType)
     },
     " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link": {
-      "font-size": "" + buttonfontSize + buttonfontSizeType + ";",
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(buttonfontSize, buttonfontSizeType),
       "font-weight": buttonWeight + ";",
       "font-style": buttonStyle + ";",
       "text-transform": (buttonUpper ? "uppercase" : null) + " ;",
@@ -53428,143 +53438,95 @@ function styling(props) {
       border: borderWidth + "px " + borderType + " " + borderColor,
       padding: Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])("" + buttonPadding, "" + buttonPaddingType)
     },
-
     " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link:hover": {
       color: "" + buttonhover,
       background: "" + hoverBackground
+    },
+    " .premium-blog-post-tags-container ": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(tagsfontSize, tagsfontSizeType),
+      "font-weight": tagsWeight + ";",
+      "font-style": tagsStyle + ";",
+      "text-transform": (tagsUpper ? "uppercase" : null) + " ;",
+      "letter-spacing": tagsLetter + "px ;",
+      "color": "" + tagColor
+
+    },
+    " .premium-blog-post-container .premium-blog-content-wrapper .premium-blog-post-tags-container:hover span": {
+      "color": "" + hoverTag
     }
   };
-  mobile_selectors = (_mobile_selectors = {
-    " .premium-blog-post-outer-container": {
-      "margin-bottom": rowGap + rowGapUnit + ";",
-      "padding-right": "calc( " + columnGap + "px/2 );",
-      "padding-left": "calc( " + columnGap + "px/2 );"
-    },
-    " .premium-blog-content-wrapper ": {
-      "text-align": "" + filterPosition
-    },
-    " .premium-blog-thumbnail-overlay": {
-      background: "" + overlayColor
-    },
-    " .premium-blog-post-outer-container:hover img": {
-      "object-fit": "" + thumbnail
-    }
-  }, _defineProperty(_mobile_selectors, " .premium-blog-post-outer-container:hover img", {
-    filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
-  }), _defineProperty(_mobile_selectors, " .premium-blog-post-container .premium-blog-entry-title h2", {
-    "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(marginBottomMobile, marginBottomType),
-    "font-size": "" + firstContentfontSizeTablet + firstContentfontSizeType + ";",
-    "font-weight": firstContentWeight + ";",
-    "font-style": firstContentStyle + ";",
-    "text-transform": (firstContentUpper ? "uppercase" : null) + " ;",
-    "letter-spacing": firstContentLetter + "px ;",
-    color: typoColor + ";"
-  }), _defineProperty(_mobile_selectors, ".premium-blog-entry-title a:hover", {
-    color: hoverColor + ";"
-  }), _defineProperty(_mobile_selectors, " .premium-blog-even", {
-    width: 100 / mcolumns + "%"
-  }), _defineProperty(_mobile_selectors, " .premium-blog-post-outer-container .premium-blog-content-wrapper-inner p", {
-    "font-size": "" + postContentfontSizeMobile + postContentfontSizeType + " !important",
-    "margin-bottom": PostmarginBottomMobile + " " + PostmarginBottomType,
-    "margin-top": "" + PostmarginTopMobile + PostmarginTopType,
-    "margin-right": PostmarginRightMobile + " " + PostmarginRightType,
-    "margin-left": PostmarginLeftMobile + " " + PostmarginLeftType,
-    padding: Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(postSpacingMobile, postSpacingType),
-    "font-weight": postContentWeight + " !important;",
-    "font-style": postContentStyle + ";",
-    "text-transform": (postContentUpper ? "uppercase" : null) + " ;",
-    "letter-spacing": postContentLetter + "px ;",
-    color: textColor + ";",
-    "background-color": backgroundPostContent + ";",
-    "box-shadow": containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
-  }), _defineProperty(_mobile_selectors, " .premium-blog-meta-data", {
-    "font-size": "" + secondContentfontSizeMobile + secondContentfontSizeType + ";",
-    "font-weight": secondContentWeight + ";",
-    "font-style": secondContentStyle + ";",
-    "text-transform": (secondContentUpper ? "uppercase" : null) + " ;",
-    "letter-spacing": secondContentLetter + "px ;",
-    color: metaColor + ";"
-  }), _defineProperty(_mobile_selectors, " .premium-blog-meta-data:hover", {
-    color: "" + linkColor
-  }), _defineProperty(_mobile_selectors, " .premium-blog-meta-separtor", {
-    color: sepaColor + ";"
-  }), _defineProperty(_mobile_selectors, " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link", {
-    "font-size": "" + buttonfontSizeMobile + buttonfontSizeType + ";",
-    "font-weight": buttonWeight + ";",
-    "font-style": buttonStyle + ";",
-    "text-transform": (buttonUpper ? "uppercase" : null) + " ;",
-    "letter-spacing": buttonLetter + "px ;"
-  }), _defineProperty(_mobile_selectors, " .premium-blog-post-outer-container:hover img", {
-    "object-fit": "" + thumbnailMobile
-  }), _mobile_selectors);
-  tablet_selectors = {
-    " .premium-blog-post-outer-container": {
-      "margin-bottom": rowGap + rowGapUnit + ";",
-      "padding-right": "calc( " + columnGap + "px/2 );",
-      "padding-left": "calc( " + columnGap + "px/2 );"
-    },
-    ".premium-blog-content-wrapper ": {
-      "text-align": "" + filterPosition
-    },
-    ".premium-blog-thumbnail-overlay": {
-      background: "" + overlayColor
-    },
-    ".premium-blog-post-outer-container:hover img": {
-      filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
-    },
+  mobile_selectors = {
     " .premium-blog-post-container .premium-blog-entry-title h2": {
-      "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(marginBottomTablet, marginBottomType),
-      "font-size": "" + firstContentfontSizeTablet + firstContentfontSizeType + ";",
-      "font-weight": firstContentWeight + ";",
-      "font-style": firstContentStyle + ";",
-      "text-transform": (firstContentUpper ? "uppercase" : null) + " ;",
-      "letter-spacing": firstContentLetter + "px ;",
-      color: typoColor + ";"
-    },
-    " .premium-blog-entry-title a:hover": {
-      color: hoverColor + ";"
-    },
-    " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
-      "font-size": "" + postContentfontSizeMobile + postContentfontSizeType + " !important;",
-      "margin-bottom": PostmarginBottomTablet + " " + PostmarginBottomType + ";",
-      "margin-top": "" + PostmarginTopTablet + PostmarginTopType + ";",
-      "margin-right": PostmarginRightTablet + " " + PostmarginRightType + ";",
-      "margin-left": PostmarginLeftTablet + " " + PostmarginLeftType + ";",
-      padding: Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(postSpacingTablet, postSpacingType),
-      "font-weight": postContentWeight + " !important;",
-      "font-style": postContentStyle + ";",
-      "text-transform": (postContentUpper ? "uppercase" : null) + " ;",
-      "letter-spacing": postContentLetter + "px ;",
-      color: textColor + ";",
-      "background-color": backgroundPostContent + ";",
-      "box-shadow": containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
+      "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(marginBottomMobile, marginBottomType),
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(firstContentfontSizeMobile, firstContentfontSizeType)
     },
     " .premium-blog-even": {
-      width: 100 / tcolumns + "%"
+      width: 100 / mcolumns + "%"
+
+    },
+    " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(postContentfontSizeMobile, postContentfontSizeType),
+      "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(PostmarginBottomMobile, PostmarginBottomType),
+      "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(PostmarginTopMobile, PostmarginTopType),
+      "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(PostmarginRightMobile, PostmarginRightType),
+      "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(PostmarginLeftMobile, PostmarginLeftType),
+      " padding": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(postSpacingMobile, postSpacingType)
+    },
+    " .premium-blog-post-outer-container img": {
+      "object-fit": "" + thumbnailMobile
     },
     " .premium-blog-meta-data": {
-      "font-size": "" + secondContentfontSizeTablet + secondContentfontSizeType + ";",
-      "font-weight": secondContentWeight + ";",
-      "font-style": secondContentStyle + ";",
-      "text-transform": (secondContentUpper ? "uppercase" : null) + " ;",
-      "letter-spacing": secondContentLetter + "px ;",
-      color: metaColor + ";"
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(secondContentfontSizeMobile, secondContentfontSizeType)
     },
     " .premium-blog-meta-data:hover": {
       color: "" + linkColor
     },
-    ".premium-blog-meta-separtor": {
-      color: sepaColor + ";"
+    " .premium-blog-excerpt-link-wrap ": {
+      " padding": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(buttonSpacingMobile, buttonSpacingType)
     },
     " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link": {
-      "font-size": "" + buttonfontSizeTablet + buttonfontSizeType + ";",
-      "font-weight": buttonWeight + ";",
-      "font-style": buttonStyle + ";",
-      "text-transform": (buttonUpper ? "uppercase" : null) + " ;",
-      "letter-spacing": buttonLetter + "px ;"
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(buttonfontSizeMobile, buttonfontSizeType),
+      padding: Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(buttonPaddingMobile, buttonPaddingType)
     },
-    " .premium-blog-post-outer-container:hover img": {
+    " .premium-blog-post-tags-container ": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(tagsfontSizeMobile, tagsfontSizeType)
+    }
+  };
+  tablet_selectors = {
+    " .premium-blog-post-container .premium-blog-entry-title h2": {
+      "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(marginBottomTablet, marginBottomType),
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(firstContentfontSizeTablet, firstContentfontSizeType)
+    },
+    " .premium-blog-even": {
+      width: 100 / tcolumns + "%",
+      "margin-bottom": 20 + "px"
+    },
+    " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(postContentfontSizeTablet, postContentfontSizeType),
+      "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(PostmarginBottomTablet, PostmarginBottomType),
+      "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(PostmarginTopTablet, PostmarginTopType),
+      "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(PostmarginRightTablet, PostmarginRightType),
+      "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(PostmarginLeftTablet, PostmarginLeftType),
+      " padding": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(postSpacingTablet, postSpacingType)
+
+    },
+    " .premium-blog-meta-data": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(secondContentfontSizeTablet, secondContentfontSizeType)
+    },
+
+    " .premium-blog-excerpt-link-wrap ": {
+      " padding": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(buttonSpacingTablet, buttonSpacingType)
+    },
+    " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(buttonfontSizeTablet, buttonfontSizeType),
+      padding: Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(buttonPaddingTablet, buttonPaddingType)
+    },
+    " .premium-blog-post-outer-container img": {
       "object-fit": "" + thumbnailTablet
+    },
+
+    " .premium-blog-post-tags-container ": {
+      "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(tagsfontSizeTablet, tagsfontSizeType)
     }
   };
 
@@ -53576,7 +53538,6 @@ function styling(props) {
   styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__GenerateCss__["a" /* default */])(selectors, id);
   styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__GenerateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
   styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__GenerateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
-
   return styling_css;
 }
 /* harmony default export */ __webpack_exports__["a"] = (styling);
@@ -53799,7 +53760,7 @@ var MasonryClass = function (_React$Component) {
           ),
           pagination && wp.element.createElement("div", {
             dangerouslySetInnerHTML: { __html: paginationMarkup },
-            className: "uagb-post-pagination-wrap"
+            className: "pbg-post-pagination-wrap"
           })
         )
       );

@@ -307,7 +307,7 @@ if (! class_exists('Config')) {
                             'saturation' =>  '',
                             'blur' =>  '',
                             'hue' =>  '',
-                            'firstContentfontSize' =>  '',
+                            'firstContentfontSize' =>  '40px',
                             'secondContentfontSizeMobile' =>  '',
                             'secondContentfontSizeTablet' =>  '',
                             'firstContentfontSizeType' =>  '',

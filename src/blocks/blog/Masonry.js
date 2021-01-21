@@ -101,7 +101,7 @@ class MasonryClass extends React.Component {
           {pagination && (
             <div
               dangerouslySetInnerHTML={{ __html: paginationMarkup }}
-              className="uagb-post-pagination-wrap"
+              className="pbg-post-pagination-wrap"
             ></div>
           )}
         </div>

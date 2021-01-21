@@ -410,7 +410,7 @@ class PBG_Blocks_Helper {
 			);
 		}
 
-		return apply_filters( 'uagb_loop_post_types', $options );
+		return apply_filters( 'pbg_loop_post_types', $options );
 	}
 
 	/**
@@ -456,7 +456,7 @@ class PBG_Blocks_Helper {
 			}
 		}
 
-		$image_sizes = apply_filters( 'uagb_post_featured_image_sizes', $image_sizes );
+		$image_sizes = apply_filters( 'pbg_post_featured_image_sizes', $image_sizes );
 
 		return $image_sizes;
 	}
@@ -616,7 +616,7 @@ class PBG_Blocks_Helper {
 			$return_array[ $post_type ]['taxonomy'] = $data;
 		}
 
-		return apply_filters( 'uagb_post_loop_taxonomies', $return_array );
+		return apply_filters( 'pbg_post_loop_taxonomies', $return_array );
 	}
 
 	/**
@@ -727,7 +727,7 @@ class PBG_Blocks_Helper {
 			$return_array[ $post_type ]['taxonomy'] = $data;
 		}
 
-		return apply_filters( 'uagb_taxonomies_list', $return_array );
+		return apply_filters( 'pbg_taxonomies_list', $return_array );
 	}
 
 	/**
@@ -747,16 +747,16 @@ class PBG_Blocks_Helper {
         $css  = array();
         $block_id = '';
 
-        if (!isset($name)) {
-            return;
-        }
+		if ( ! isset( $name ) ) {
+			return;
+		}
 
-        if (isset($block['attr']) && is_array($block['attr'])) {
-         $blockattr = $block['attr'];
-            if (isset($blockattr['block_id'])) {
-                $block_id = $blockattr['block_id'];
-            }
-        }
+		if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
+			$blockattr = $block['attrs'];
+			if ( isset( $blockattr['block_id'] ) ) {
+				$block_id = $blockattr['block_id'];
+			}
+		}
 
         self::$current_block_list[] = $name;
 
@@ -1376,8 +1376,8 @@ class PBG_Blocks_Helper {
 	public static function render_pagination( $attributes ) {
 		$pages = self::$page_limit;
 
-		if ( ! empty( $attributes['page Limit'] ) ) {
-			$pages = min( $attributes['page Limit'], $pages );
+		if ( ! empty( $attributes['pageLimit'] ) ) {
+			$pages = min( $attributes['pageLimit'], $pages );
 		}
 
 		$paged = self::get_paged();
@@ -1398,11 +1398,11 @@ class PBG_Blocks_Helper {
 		?>
 		<nav class='premium-blog-pagination-container' role='navigation'
 			aria-label="<?php echo esc_attr( __( 'Pagination' ) ); ?>">
-			<?php echo wp_kses_post( implode( PHP_EOL, $nav_links ) ); ?>
+			<?php echo wp_kses_post( implode(  $nav_links ) ); ?>
 		</nav>
 		<?php
 	}
-	public function fix_query_offset( &$query ) {
+	public function fix_query_offset( $query ) {
 		if ( ! empty( $query->query_vars['offset_to_fix'] ) ) {
 			if ( $query->is_paged ) {
 				$query->query_vars['offset'] = $query->query_vars['offset_to_fix'] + ( ( $query->query_vars['paged'] - 1 ) * $query->query_vars['posts_per_page'] );

@@ -7,11 +7,11 @@ class Image extends React.Component {
     let target = attributes.newTab ? "_blank" : "_self";
     if (
       attributes.featuredImage &&
-      undefined !== post.uagb_featured_image_src &&
+      undefined !== post.pbg_featured_image_src &&
       attributes.imageSize &&
-      post.uagb_featured_image_src[attributes.imageSize]
+      post.pbg_featured_image_src[attributes.imageSize]
     ) {
-      var src = post.uagb_featured_image_src[attributes.imageSize];
+      var src = post.pbg_featured_image_src[attributes.imageSize];
       return (
         <div className="premium-blog-thumb-effect-wrapper">
           <div
@@ -30,11 +30,7 @@ class Image extends React.Component {
           <style
             dangerouslySetInnerHTML={{
               __html: [
-                `.premium-blog-thumb-effect-wrapper img{`,
-                `
-               height:${attributes.height}${attributes.HeightU} !important; 
-               `,
-                "}",
+                `.premium-blog-thumb-effect-wrapper `,
               ].join("\n"),
             }}
           />

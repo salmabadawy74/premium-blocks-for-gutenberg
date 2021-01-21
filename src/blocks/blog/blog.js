@@ -46,9 +46,10 @@ class Blog extends React.Component {
         ? latestPosts.slice(0, numOfPosts)
         : latestPosts;
 
-    lastDisplay = displayPosts.slice(offsetNum);
+    lastDisplay = displayPosts.slice( offsetNum );
+    console.log( lastDisplay );
 
-    const equalHeight = layoutValue === "Even" ? "equal-Height" : null;
+    const equalHeight = layoutValue === "even" ? "equal-Height" : null;
 
     return (
       <Fragment>
@@ -114,7 +115,7 @@ class Blog extends React.Component {
         {pagination && (
           <div
             dangerouslySetInnerHTML={{ __html: paginationMarkup }}
-            className="uagb-post-pagination-wrap"
+            className="pbg-post-pagination-wrap"
           ></div>
         )}
       </Fragment>

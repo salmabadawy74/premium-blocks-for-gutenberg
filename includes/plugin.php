@@ -65,6 +65,7 @@ if (!class_exists('PBG_Plugin')) {
         {
 
             require_once PREMIUM_BLOCKS_PATH . 'includes/post2.php';
+            require_once PREMIUM_BLOCKS_PATH . 'includes/premium-rest-Api.php';
         }
         public function is_gutenberg_active()
         {
