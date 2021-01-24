@@ -74,10 +74,12 @@ class PBG_Blocks_Helper {
 		add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
 		// Enqueue Styles
 		add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
+		add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
 		// Register Premium Blocks category
 		add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
-		add_action( 'wp_ajax_premium_pagination', array( $this, 'render_pagination' ) );
 		add_action( 'wp_ajax_nopriv_premium_pagination', array( $this, 'render_pagination' ) );
+
+		add_action( 'wp_ajax_premium_pagination', array( $this, 'render_pagination' ) );
 	}
 
 	/**
@@ -436,7 +438,7 @@ class PBG_Blocks_Helper {
 
 		$image_sizes[] = array(
 			'value' => 'full',
-			'label' => esc_html__( 'Full', 'ultimate-addons-for-gutenberg' ),
+			'label' => esc_html__( 'Full' ),
 		);
 
 		foreach ( $sizes as $size ) {
@@ -738,6 +740,22 @@ class PBG_Blocks_Helper {
 	 * @param object $block The block object.
 	 * @since 0.0.1
 	 */
+	public function override_canonical( $redirect_url, $requested_url ) {
+
+		global $wp_query;
+
+		if ( is_array( $wp_query->query ) ) {
+
+			if ( true === $wp_query->is_singular
+				&& - 1 === $wp_query->current_post
+				&& true === $wp_query->is_paged
+			) {
+				$redirect_url = false;
+			}
+		}
+
+		return $redirect_url;
+	}
 
 	public function get_block_css( $block ) {
 
@@ -1376,33 +1394,40 @@ class PBG_Blocks_Helper {
 	}
 
 	public static function render_pagination( $attributes ) {
-		$pages = self::$page_limit;
+		
+        $pages = self::$page_limit;
 
-		if ( ! empty( $attributes['pageLimit'] ) ) {
-			$pages = min( $attributes['pageLimit'], $pages );
+        if ( !empty( $attributes['pageLimit'] ) ) {
+            $pages = min( $attributes['pageLimit'], $pages );
 		}
-
-		$paged = self::get_paged();
-
-		$current_page = $paged;
-		if ( ! $current_page ) {
-			$current_page = 1;
-		}
-
-		$nav_links = paginate_links(
-			array(
-				'current' => $current_page,
-				'total'   => $pages,
-
-				'type'    => 'array',
-			)
+		$permalink_structure = get_option( 'permalink_structure' );
+			$base                = untrailingslashit( wp_specialchars_decode( get_pagenum_link() ) );
+			$base                = self::build_base_url( $permalink_structure, $base );
+			$format              = self::paged_format( $permalink_structure, $base );
+        $paged = self::get_paged();
+        $current_page = $paged;
+        if ( !$current_page ) {
+            $current_page = 1;
+        }
+        $nav_links = paginate_links(
+            array(
+			
+				
+				
+                'current' => $current_page,
+                'total' => $pages,
+                'type' => 'array',
+            )
 		);
+
 		?>
-		<nav class='premium-blog-pagination-container' role='navigation'
-			aria-label="<?php echo esc_attr( __( 'Pagination' ) ); ?>">
-			<?php echo wp_kses_post( implode(  $nav_links ) ); ?>
-		</nav>
-		<?php
+		
+<nav class='premium-blog-pagination-container' role='navigation'
+    aria-label="<?php echo esc_attr(__('Pagination', 'premium-addons-for-elementor')); ?>">
+    <?php echo wp_kses_post( implode( PHP_EOL, $nav_links ) );
+        ?>
+</nav>
+<?php
 	}
 	public function fix_query_offset( $query ) {
 		if ( ! empty( $query->query_vars['offset_to_fix'] ) ) {
@@ -1455,35 +1480,76 @@ class PBG_Blocks_Helper {
 
 		return $query;
 	}
+	public static function build_base_url( $permalink_structure, $base ) {
+		// Check to see if we are using pretty permalinks.
+		if ( ! empty( $permalink_structure ) ) {
+
+			if ( strrpos( $base, 'paged-' ) ) {
+				$base = substr_replace( $base, '', strrpos( $base, 'paged-' ), strlen( $base ) );
+			}
+
+			// Remove query string from base URL since paginate_links() adds it automatically.
+			// This should also fix the WPML pagination issue that was added since 1.10.2.
+			if ( count( $_GET ) > 0 ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				$base = strtok( $base, '?' );
+			}
+
+			// Add trailing slash when necessary.
+			if ( '/' === substr( $permalink_structure, -1 ) ) {
+				$base = trailingslashit( $base );
+			} else {
+				$base = untrailingslashit( $base );
+			}
+		} else {
+			$url_params = wp_parse_url( $base, PHP_URL_QUERY );
+
+			if ( empty( $url_params ) ) {
+				$base = trailingslashit( $base );
+			}
+		}
+
+		return $base;
+	}
+	public static function paged_format( $permalink_structure, $base ) {
+
+		$page_prefix = empty( $permalink_structure ) ? 'paged' : 'page';
+
+		if ( ! empty( $permalink_structure ) ) {
+			$format  = substr( $base, -1 ) !== '/' ? '/' : '';
+			$format .= $page_prefix . '/';
+			$format .= '%#%';
+			$format .= substr( $permalink_structure, -1 ) === '/' ? '/' : '';
+		} elseif ( empty( $permalink_structure ) || is_search() ) {
+			$parse_url = wp_parse_url( $base, PHP_URL_QUERY );
+			$format    = empty( $parse_url ) ? '?' : '&';
+			$format   .= $page_prefix . '=%#%';
+		}
+
+		return $format;
+	}
 
 	public static function get_paged() {
 		global $wp_the_query, $paged;
-
 		if ( isset( $_POST['page_number'] ) && '' !== $_POST['page_number'] ) {
 			return $_POST['page_number'];
 		}
-
 		// Check the 'paged' query var.
 		$paged_qv = $wp_the_query->get( 'paged' );
-
 		if ( is_numeric( $paged_qv ) ) {
 			return $paged_qv;
 		}
-
 		// Check the 'page' query var.
 		$page_qv = $wp_the_query->get( 'page' );
-
 		if ( is_numeric( $page_qv ) ) {
 			return $page_qv;
 		}
-
 		// Check the $paged global?
 		if ( is_numeric( $paged ) ) {
 			return $paged;
 		}
-
 		return 0;
 	}
+
 
 	public static function generate_css( $selectors, $id ) {
 		$styling_css = '';
