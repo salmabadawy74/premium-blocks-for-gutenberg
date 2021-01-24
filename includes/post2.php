@@ -1,7 +1,4 @@
 <?php
-
-
-
 /**
  * PBG Post.
  *
@@ -28,8 +25,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				self::$instance = new self();
 			}
 			return self::$instance;
-		}
-		
+		}		
 		/**
 		 * Constructor
 		 */
@@ -37,6 +33,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			
 			add_action( 'init', array( $this, 'register_blocks' ) );
 			
+		
 			add_action( 'wp_footer', array($this,'add_post_dynamic_script'),1000 );
 		}
 
@@ -81,63 +78,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 								'type'    => 'number',
 								'default' => 10,
 							),
-							'paginationPosition'          => array(
-								'type' => 'string',
-							),
-							'paginationBgActiveColor'     => array(
-								'type'    => 'string',
-								'default' => '#e4e4e4',
-							),
-							'paginationActiveColor'       => array(
-								'type'    => 'string',
-								'default' => '#333333',
-							),
-							'paginationBgColor'           => array(
-								'type'    => 'string',
-								'default' => '#e4e4e4',
-							),
-							'paginationColor'             => array(
-								'type'    => 'string',
-								'default' => '#777777',
-							),
-							'paginationMarkup'            => array(
-								'type'    => 'string',
-								'default' => '',
-							),
-							'paginationLayout'            => array(
-								'type'    => 'string',
-								'default' => 'filled',
-							),
-							'paginationBorderActiveColor' => array(
-								'type' => 'string',
-							),
-							'paginationBorderColor'       => array(
-								'type'    => 'string',
-								'default' => '#888686',
-							),
-							'paginationBorderRadius'      => array(
-								'type' => 'number',
-							),
-							'paginationBorderSize'        => array(
-								'type'    => 'number',
-								'default' => 1,
-							),
-							'paginationSpacing'           => array(
-								'type'    => 'number',
-								'default' => 20,
-							),
-							'paginationAlignment'         => array(
-								'type'    => 'string',
-								'default' => 'left',
-							),
-							'paginationPrevText'          => array(
-								'type'    => 'string',
-								'default' => '« Previous',
-							),
-							'paginationNextText'          => array(
-								'type'    => 'string',
-								'default' => 'Next »',
-							),
 						)
 					),
 					'render_callback' => array( $this, 'post_callback' ),
@@ -158,10 +98,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'categories'                  => array(
 					'type' => 'string',
 				),
-				'postType'                    => array(
-					'type'    => 'string',
-					'default' => 'post',
-				),
+
 				'postFilter'                  => array(
 					'type'    => 'string',
 					'default' => 'category',
@@ -177,6 +114,10 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'displayPostContent'          => array(
 					'type'    => 'boolean',
 					'default' => true,
+				),
+				'filterPosition'=>array(
+					'type'=>'string',
+					'default'=>'left'
 				),
 				'displayPostDate'             => array(
 					'type'    => 'boolean',
@@ -230,25 +171,8 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'string',
 					'default' => 'large',
 				),
-				'linkBox'                     => array(
-					'type' => 'boolean',
-				),
-				'bgOverlayColor'              => array(
-					'type'    => 'string',
-					'default' => '#ffffff',
-				),
-				'overlayOpacity'              => array(
-					'type'    => 'number',
-					'default' => '50',
-				),
-				'displayPostLink'             => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'newTab'                      => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
+			
+
 				'readMoreText'                => array(
 					'type'    => 'string',
 					'default' => __( 'Read More' ),
@@ -256,14 +180,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'borderWidth'                 => array(
 					'type' => 'number',
 				),
-				'btnHPadding'                 => array(
-					'type'    => 'number',
-					'default' => 10,
-				),
-				'btnVPadding'                 => array(
-					'type'    => 'number',
-					'default' => 5,
-				),
+			
 				'borderStyle'                 => array(
 					'type'    => 'string',
 					'default' => 'none',
@@ -272,9 +189,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
-				'borderHColor'                => array(
-					'type' => 'string',
-				),
+
 				'borderRadius'                => array(
 					'type' => 'number',
 				),
@@ -290,14 +205,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'align'                       => array(
-					'type'    => 'string',
-					'default' => 'left',
-				),
-				'width'                       => array(
-					'type'    => 'string',
-					'default' => 'wide',
-				),
+	
 				'order'                       => array(
 					'type'    => 'string',
 					'default' => 'desc',
@@ -318,581 +226,217 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'bgColor'                     => array(
-					'type'    => 'string',
-					'default' => '#e4e4e4',
-				),
 				// Title Attributes.
-				'titleColor'                  => array(
-					'type'    => 'string',
-					'default' => '#3b3b3b',
-				),
-				'titleTag'                    => array(
-					'type'    => 'string',
-					'default' => 'h3',
-				),
-				'titleFontSize'               => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'titleFontSizeType'           => array(
+				' firstContentfontSizeType'                  => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'titleFontSizeMobile'         => array(
+				'firstContentfontSize'                    => array(
+					'type'    => 'number',
+					'default' => ''
+				
+				),
+				'firstContentfontSizeMobile'               => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'firstContentfontSizeTablet'           => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'firstContentWeight'         => array(
 					'type' => 'number',
 				),
-				'titleFontSizeTablet'         => array(
+				'firstContentStyle'         => array(
 					'type' => 'number',
 				),
-				'titleFontFamily'             => array(
+				'firstContentLetter'             => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'titleFontWeight'             => array(
+				'firstContentUpper'             => array(
+					'type' => 'boolean',
+				),
+				'typoColor'             => array(
 					'type' => 'string',
 				),
-				'titleFontSubset'             => array(
+				'hoverColor'         => array(
+					'type'    => 'string',					
+				),
+				'marginBottomType'             => array(
 					'type' => 'string',
+					'default' =>'px'
 				),
-				'titleLineHeightType'         => array(
-					'type'    => 'string',
-					'default' => 'em',
-				),
-				'titleLineHeight'             => array(
+				'marginBottom'       => array(
 					'type' => 'number',
 				),
-				'titleLineHeightTablet'       => array(
+				'marginBottomMobile'       => array(
 					'type' => 'number',
 				),
-				'titleLineHeightMobile'       => array(
-					'type' => 'number',
-				),
-				'titleLoadGoogleFonts'        => array(
-					'type'    => 'boolean',
-					'default' => false,
+				'marginBottomTablet'        => array(
+					'type'    => 'number',
+					
 				),
 				// Meta attributes.
-				'metaColor'                   => array(
-					'type'    => 'string',
-					'default' => '#777777',
-				),
-				'metaFontSize'                => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'metaFontSizeType'            => array(
+				'secondContentfontSizeType'                   => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'metaFontSizeMobile'          => array(
-					'type' => 'number',
+				'secondContentfontSize'                => array(
+					'type'    => 'number',
+					'default' => '30',
 				),
-				'metaFontSizeTablet'          => array(
-					'type' => 'number',
+				'secondContentfontSizeMobile'            => array(
+					'type'    => 'number',
+					'default' => '',
+					
 				),
-				'metaFontFamily'              => array(
+				'secondContentfontSizeTablet'          => array(
+					'type' => 'number',
+					'default' => '',
+				),
+				'secondContentWeight'          => array(
+					'type' => 'number',
+					'default' => '',
+				),
+				'secondContentStyle'              => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'metaFontWeight'              => array(
-					'type' => 'string',
+				'secondContentLetter'              => array(
+					'type' => 'number',
+					'default' => '',
 				),
-				'metaFontSubset'              => array(
-					'type' => 'string',
+				'secondContentUpper'              => array(
+					'type' => 'boolean',
 				),
-				'metaLineHeightType'          => array(
+				'metaColor'          => array(
 					'type'    => 'string',
-					'default' => 'em',
+					'default' => '',
+					
 				),
-				'metaLineHeight'              => array(
-					'type' => 'number',
+				'linkColor'              => array(
+					'type' => 'string',
+					'default' => '',
+
 				),
-				'metaLineHeightTablet'        => array(
-					'type' => 'number',
+				'sepaColor'        => array(
+					'type' => 'string',
+					'default' => '',
 				),
 				'metaLineHeightMobile'        => array(
 					'type' => 'number',
+					'default' => '',
 				),
-				'metaLoadGoogleFonts'         => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
+			
 				// Excerpt Attributes.
-				'excerptColor'                => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'excerptFontSize'             => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'excerptFontSizeType'         => array(
+				'PostmarginBottomType'                => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'excerptFontSizeMobile'       => array(
-					'type' => 'number',
-				),
-				'excerptFontSizeTablet'       => array(
-					'type' => 'number',
-				),
-				'excerptFontFamily'           => array(
-					'type'    => 'string',
+				'PostmarginBottom'             => array(
+					'type'    => 'number',
 					'default' => '',
 				),
-				'excerptFontWeight'           => array(
+				'PostmarginBottomMobile'         => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'PostmarginBottomTablet'       => array(
+					'type' => 'number',
+				),
+				'PostmarginTopType'       => array(
 					'type' => 'string',
+					'default' => 'px'
 				),
-				'excerptFontSubset'           => array(
-					'type' => 'string',
+				'PostmarginTop'           => array(
+					'type'    => 'number',
+					'default' => '',
 				),
-				'excerptLineHeightType'       => array(
+				'PostmarginTopMobile'           => array(
+					'type' => 'number',
+				),
+				'PostmarginTopTablet'           => array(
+					'type' => 'number',
+				),
+				'marginRightType'       => array(
+					'type'    => 'number',
+					'default' => 'px'
+					
+				),
+				'PostmarginRight'           => array(
+					'type' => 'number',
+					'default' => ''
+				),
+				'PostmarginRightMobile'     => array(
+					'type' => 'number',
+				),
+				'PostmarginRightTablet'     => array(
+					'type' => 'number',
+				),
+				'PostmarginLeftType'      => array(
 					'type'    => 'string',
-					'default' => 'em',
+					'default' => 'px',
 				),
-				'excerptLineHeight'           => array(
-					'type' => 'number',
+				'PostmarginLeft'     => array(
+					'type'    => 'number',
+					'default' => '',
 				),
-				'excerptLineHeightTablet'     => array(
-					'type' => 'number',
+				'PostmarginLeftMobile'     => array(
+					'type'    => 'number',
+					'default' => '',
 				),
-				'excerptLineHeightMobile'     => array(
-					'type' => 'number',
+				'PostmarginLeftTablet'     => array(
+					'type'    => 'number',
+					'default' => '',
 				),
-				'excerptLoadGoogleFonts'      => array(
-					'type'    => 'boolean',
-					'default' => false,
+				'backgroundPostContent' =>array(
+					'type'=>'string',
+					'default'=>''
 				),
-				'displayPostContentRadio'     => array(
-					'type'    => 'string',
-					'default' => 'excerpt',
+				'containerShadowColor' =>array(
+					'type'=>'string',
+					'default'=>''
 				),
+				'containerShadowBlur' =>array(
+					'type'=>'string',
+					'default'=>''
+				),
+				'containerShadowHorizontal' =>array(
+					'type'=>'string',
+					'default'=> ' '
+
+				),
+				'containerShadowVertical' =>array(
+					'type'=>'string',
+					'default'=> ' '
+
+				),
+				'containerShadowPosition' =>array(
+					'type'=>'string',
+					'default'=> ' '
+
+				),
+				'postSpacingType' =>array(
+					'type'=>'string',
+					'default'=> 'px'
+
+				),
+				'postSpacing' =>array(
+					'type'=>'number',
+					'default'=> ' '
+				),
+				'postSpacingMobile' =>array(
+					'type'=>'number',
+					'default'=> ' '
+
+				),
+				'postSpacingTablet' =>array(
+					'type'=>'number',
+					'default'=> ' '
+				),
+				
 				// CTA attributes.
-				'ctaColor'                    => array(
-					'type'    => 'string',
-					'default' => '#ffffff',
-				),
-				'ctaBgColor'                  => array(
-					'type'    => 'string',
-					'default' => '#333333',
-				),
-				'ctaHColor'                   => array(
-					'type' => 'string',
-				),
-				'ctaBgHColor'                 => array(
-					'type' => 'string',
-				),
-				'ctaFontSize'                 => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'ctaFontSizeType'             => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'ctaFontSizeMobile'           => array(
-					'type' => 'number',
-				),
-				'ctaFontSizeTablet'           => array(
-					'type' => 'number',
-				),
-				'ctaFontFamily'               => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'ctaFontWeight'               => array(
-					'type' => 'string',
-				),
-				'ctaFontSubset'               => array(
-					'type' => 'string',
-				),
-				'ctaLineHeightType'           => array(
-					'type'    => 'string',
-					'default' => 'em',
-				),
-				'ctaLineHeight'               => array(
-					'type' => 'number',
-				),
-				'ctaLineHeightTablet'         => array(
-					'type' => 'number',
-				),
-				'ctaLineHeightMobile'         => array(
-					'type' => 'number',
-				),
-				'ctaLoadGoogleFonts'          => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				// Spacing Attributes.
-				'contentPadding'              => array(
-					'type'    => 'number',
-					'default' => 20,
-				),
-				'contentPaddingMobile'        => array(
-					'type' => 'number',
-				),
-				'titleBottomSpace'            => array(
-					'type'    => 'number',
-					'default' => 15,
-				),
-				'metaBottomSpace'             => array(
-					'type'    => 'number',
-					'default' => 15,
-				),
-				'excerptType'                 => array(
-					'type'    => 'string',
-					'default' => 'Dots',
-				),
-				'excerptBottomSpace'          => array(
-					'type'    => 'number',
-					'default' => 25,
-				),
-				// Exclude Current Post.
-				'currentPost'                 => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'offsetNum'                   => array(
-					'type'    => 'number',
-					'default' => 0,
-				),
-				'postFilter'                  => array(
-					'type' => 'string',
-				),
-				'Carousel'                    => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'Autoplay'                    => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'slideToScroll'               => array(
-					'type'    => 'number',
-					'default' => 1,
-				),
-				'autoplaySpeed'               => array(
-					'type'    => 'number',
-					'default' => 5000,
-				),
-				'centerMode'                  => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'slideSpacing'                => array(
-					'type'    => 'number',
-					'default' => 15,
-				),
-				'navigationDots'              => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'navigationArrow'             => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'arrowPosition'               => array(
-					'type'    => 'number',
-					'default' => 0,
-				),
-				'saturation'                  => array(
-					'type'    => 'number',
-					'default' => '100',
-				),
-				'hue'                         => array(
-					'type'    => 'number',
-					'default' => '0',
-				),
-				'firstContentLetter'          => array(
-					'type' => 'number',
-				),
-				'firstContentStyle'           => array( 'type' => 'string' ),
-				'firstContentUpper'           => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'firstContentWeight'          => array(
-					'type'    => 'number',
-					'default' => 500,
-				),
-				'firstContentfontSize'        => array(
-					'type'    => 'number',
-					'default' => 15,
-				),
-				' firstContentfontSizeType'   => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'firstContentfontSizeMobile'  => array(
-					'type'    => 'number',
-					'default' => 15,
-				),
-				'firstContentfontSizeTablet'  => array(
-					'type'    => 'number',
-					'default' => 15,
-				),
-				'secondContentLetter'         => array(
-					'type' => 'number',
-				),
-				'secondContentStyle'          => array(
-					'type' => 'string',
-				),
-				'secondContentUpper'          => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'secondContentWeight'         => array(
-					'type'    => 'number',
-					'default' => 500,
-				),
-				'secondContentfontSize'       => array(
-					'type'    => 'number',
-					'default' => 15,
-				),
-				'secondContentfontSizeType'   => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'secondContentfontSizeMobile' => array(
-					'type'    => 'number',
-					'default' => 15,
-				),
-				'secondContentfontSizeTablet' => array(
-					'type'    => 'number',
-					'default' => 15,
-				),
-				'typoColor'                   => array(
-					'type' => 'string',
-				),
-				'metaColor'                   => array(
-					'type' => 'string',
-				),
-				'linkColor'                   => array(
-					'type' => 'string',
-				),
-				'sepaColor'                   => array(
-					'type' => 'string',
-				),
-				'hoverTag'                    => array(
-					'type' => 'string',
-				),
-				'postContentLetter'           => array(
-					'type' => 'number',
-				),
-				'postContentStyle'            => array(
-					'type' => 'string',
-				),
-				'postContentUpper'            => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'postContentWeight'           => array(
-					'type'    => 'number',
-					'default' => 500,
-				),
-				'postContentfontSize'         => array(
-					'type'    => 'number',
-					'default' => 15,
-				),
-				'postContentfontSizeType'     => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'postContentfontSizeMobile'   => array(
-					'type'    => 'number',
-					'default' => 15,
-				),
-				'postContentfontSizeTablet'   => array(
-					'type'    => 'number',
-					'default' => 15,
-				),
-				'textColor'                   => array(
-					'type'    => 'string',
-					'default' => 'black',
-				),
-				'tagColor'                    => array(
-					'type' => 'string',
-				),
-				'hoverColor'                  => array(
-					'type' => 'string',
-				),
-				'buttonColor'                 => array(
-					'type' => 'string',
-				),
-				'buttonhover'                 => array(
-					'type' => 'string',
-				),
-				'buttonBackground'            => array(
-					'type' => 'string'
-				),
-				'hoverBackground'             => array(
-					'type' => 'string',
-				),
-				'currentPage'                 => array(
-					'type'    => 'number',
-					'default' => 0,
-				),
-				'classMigrate'                => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'columns'                     => array(
-					'type'    => 'number',
-					'default' => 3,
-				),
-				'mcolumns'                    => array(
-					'type'    => 'number',
-					'default' => 2,
-				),
-				'tcolumns'                    => array(
-					'type'    => 'number',
-					'default' => 1,
-				),
-				'thumbnail'                   => array(
-					'type'    => 'string',
-					'default' => 'cover',
-				),
-				'thumbnailMobile'             => array(
-					'type'    => 'string',
-					'default' => 'cover',
-				),
-				'thumbnailTablet'             => array(
-					'type'    => 'string',
-					'default' => 'cover',
-				),
-				'marginBottom'                => array(
-					'type' => 'number',
-				),
-				'marginBottomTablet'          => array(
-					'type' => 'number',
-				),
-				'marginBottomMobile'          => array(
-					'type' => 'number',
-				),
-				'marginBottom'                => array(
-					'type' => 'number',
-				),
-				'PostmarginBottomType'        => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'PostmarginBottom'            => array(
-					'type' => 'number',
-				),
-				' PostmarginBottomMobile'     => array(
-					'type' => 'number',
-				),
-				'PostmarginBottomTablet'      => array(
-					'type' => 'number',
-				),
-				'PostmarginTopType'           => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				' PostmarginTop'              => array(
-					'type' => 'number',
-				),
-				'PostmarginTopMobile'         => array(
-					'type' => 'number',
-				),
-				'PostmarginTopTablet'         => array(
-					'type' => 'number',
-				),
-				'postSpacingType'             => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'postSpacing'                 => array(
-					'type' => 'number',
-				),
-				'postSpacingMobile'           => array(
-					'type' => 'number',
-				),
-				'postSpacingTablet'           => array(
-					'type' => 'number',
-				),
-				'postContentfontSizeType'     => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'postContentfontSize'         => array(
-					'type' => 'number',
-				),
-				'postContentfontSizeMobile'   => array(
-					'type' => 'number',
-				),
-				'postContentfontSizeTablet'   => array(
-					'type' => 'number',
-				),
-				'PostmarginRightType'         => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'PostmarginRight'             => array(
-					'type' => 'number',
-				),
-				'PostmarginRightMobile'       => array(
-					'type' => 'number',
-				),
-				'PostmarginRightTablet'       => array(
-					'type' => 'number',
-				),
-				'PostmarginLeftType'          => array(
-					'type' => 'string',
-				),
-				'PostmarginLeft'              => array(
-					'type' => 'number',
-				),
-				'PostmarginLeftMobile'        => array(
-					'type' => 'number',
-				),
-				'PostmarginLeftTablet'        => array(
-					'type' => 'number',
-				),
-				'backgroundPostContent'       => array(
-					'type' => 'string',
-				),
-				'containerShadowColor'        => array(
-					'type' => 'string',
-				),
-				'containerShadowBlur'         => array(
-					'type' => 'string',
-				),
-				'containerShadowHorizontal'   => array(
-					'type' => 'string',
-				),
-				'containerShadowVertical'     => array(
-					'type' => 'string',
-				),
-				'containerShadowPosition'     => array(
-					'type' => 'string',
-				),
-				'tagsfontSizeType'            => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'tagsfontSize'                => array(
-					'type' => 'number',
-				),
-				'tagsfontSizeMobile'          => array(
-					'type' => 'number',
-				),
-				'tagsfontSizeTablet'          => array(
-					'type' => 'number',
-				),
-				'tagsWeight'                  => array(
-					'type' => 'number',
-				),
-				'tagsStyle'                   => array(
-					'type' => 'string',
-				),
-				'tagsLetter'                  => array(
-					'type' => 'string',
-				),
-				'tagsUpper'                   => array(
-					'type' => 'string',
-				),
 				'buttonfontSizeType'          => array(
 					'type'    => 'string',
 					'default' => 'px',
@@ -949,6 +493,148 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'buttonPaddingTablet'         => array(
 					'type' => 'number',
 				),
+				//tags Style
+				'tagsfontSizeType'            => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
+				'tagsfontSize'                => array(
+					'type' => 'number',
+				),
+				'tagsfontSizeMobile'          => array(
+					'type' => 'number',
+				),
+				'tagsfontSizeTablet'          => array(
+					'type' => 'number',
+				),
+				'tagsWeight'                  => array(
+					'type' => 'number',
+				),
+				'tagsStyle'                   => array(
+					'type' => 'string',
+				),
+				'tagsLetter'                  => array(
+					'type' => 'string',
+				),
+				'tagsUpper'                   => array(
+					'type' => 'string',
+				),
+
+				// Spacing Attributes.
+			
+				'excerptType'                 => array(
+					'type'    => 'string',
+					'default' => 'Dots',
+				),
+				// Exclude Current Post.
+				'currentPost'                 => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'offsetNum'                   => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'postFilter'                  => array(
+					'type' => 'string',
+				),
+				//carousel
+				'Carousel'                    => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'Autoplay'                    => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'slideToScroll'               => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'autoplaySpeed'               => array(
+					'type'    => 'number',
+					'default' => 5000,
+				),
+				'centerMode'                  => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'slideSpacing'                => array(
+					'type'    => 'number',
+					'default' => 15,
+				),
+				'navigationDots'              => array(
+					'type'    => 'boolean',
+					'default' => true,
+				),
+				'navigationArrow'             => array(
+					'type'    => 'boolean',
+					'default' => true,
+				),
+				'arrowPosition'               => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				//image style
+				'overlayColor' =>array(
+					'type'=>'string',
+					'default' =>' '
+				),
+
+				'saturation'                  => array(
+					'type'    => 'number',
+					'default' => '100',
+				),
+				'hue'                         => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blur' =>array(
+					'type'=>'number',
+					'default'=> ''
+				),
+				'bright' =>array(
+					'type'=>'number',
+					'default'=> ''
+				),
+				'contrast' =>array(
+					'type'=>'number',
+					'default'=> ''
+				),
+			
+				
+				'currentPage'                 => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'classMigrate'                => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'columns'                     => array(
+					'type'    => 'number',
+					'default' => 3,
+				),
+				'mcolumns'                    => array(
+					'type'    => 'number',
+					'default' => 2,
+				),
+				'tcolumns'                    => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'thumbnail'                   => array(
+					'type'    => 'string',
+					'default' => 'cover',
+				),
+				'thumbnailMobile'             => array(
+					'type'    => 'string',
+					'default' => 'cover',
+				),
+				'thumbnailTablet'             => array(
+					'type'    => 'string',
+					'default' => 'cover',
+				),	
 			);
 		}
 		/**
@@ -1012,12 +698,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					<?php endif; ?>
 					
 			</div>
-			<?php
-			if ( ( isset( $attributes['pagination'] ) && true === $attributes['pagination'] ) ) {
-				?>
-			<?php
-					}
-					?>
+		
 			</div>
 			<?php
 		}
@@ -1056,10 +737,16 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				?>
 					<div class="premium-blog-post-outer-container">
 						<div class="premium-blog-post-container">
+						<?php $this->render_image( $attributes ); ?>
+
+						<div class="premium-blog-content-wrapper empty-thumb equal-Height">
+						<div class="premium-blog-content-wrapper-inner">
+						<div class="premium-blog-inner-container">
+						<div class="premium-blog-entry-container">						
 							<?php $this->render_post_title( $attributes ); ?>
-							<?php $this->render_image( $attributes ); ?>
-							<div class="pbg-post__text">
 								<?php $this->render_meta( $attributes ); ?>
+							</div>
+						</div>
 								<?php $this->get_post_content( $attributes ); ?>
 								<?php if ( $attributes['displayPostTags'] && has_tag() ) : ?>
 								<div class="premium-blog-post-tags-container">
@@ -1067,8 +754,11 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 									<?php the_tags( ' ', ', ' ); ?>
 								</div>
 								<?php endif; ?>
+						</div>
+						
+						</div>
 							
-							</div>
+							
 						</div>
 					</div>
 					<?php
@@ -1100,16 +790,14 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 						);
 			?>
 
-			  <div className="premium-blog-thumb-effect-wrapper">
+		<div className="premium-blog-thumb-effect-wrapper">
+	
 			<div class='premium-blog-thumbnail-container premium-blog-$attributes["hoverEffect"]-effect'>
 				<?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imageSize'] ); ?>
 		
 			</div>
-			<div class="premium-blog-thumbnail-overlay">
-			<a href="<?php echo esc_url( apply_filters( get_the_permalink(), get_the_ID(), $attributes ) ); ?>" >
-					</a>
-          </div>
-					</div>
+		
+		</div>
 			<?php
 		}
 		/**
@@ -1135,6 +823,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				<span class="dashicons-admin-users dashicons"></span>
 				<?php the_author_posts_link(); ?>
 			</span>
+			<span class="premium-blog-meta-separtor">.</span>
 			<?php
 		}
 		/**
@@ -1150,11 +839,16 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			}
 			global $post;
 			?>
-<time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>"
+			<div class="premium-blog-post-time premium-blog-meta-data">
+			<time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>"
     class="premium-blog-post-time premium-blog-meta-data">
     <span class="dashicons-calendar dashicons"></span>
     <?php echo esc_html( get_the_date( '', $post->ID ) ); ?>
 </time>
+<span class="premium-blog-meta-separtor">.</span>
+
+			</div>
+
 <?php
 		}
 		/**
@@ -1174,6 +868,8 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					<span class="dashicons-admin-comments dashicons"></span>
 					<?php comments_number(); ?>
 				</span>
+				<span class="premium-blog-meta-separtor">.</span>
+
 			</div>
 			<?php
 		}
@@ -1197,10 +893,10 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				return;
 			}
 			?>
-				<span class="premium-blog-meta-separator">•</span>
 				<div class="premium-blog-post-categories premium-blog-meta-data">
 					<i class="fa fa-align-left fa-fw"></i>
 					<?php the_category( ', ' ); ?>
+
 				</div>
 				<?php
 		}
@@ -1246,9 +942,15 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 
 		public function render_post_title( $attributes ) {
 					?>
+					<div class="premium-blog-entry-title">
+					<h2>
 					<a href="<?php the_permalink(); ?>">
 						<?php esc_html( the_title() ); ?>
 					</a>
+					</h2>
+					
+					</div>
+					
 					<?php
 		}
 
@@ -1337,6 +1039,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			return $options;
 		}
 		public function post_pagination() {
+			check_ajax_referer( 'pa-blog-block-nonce', 'nonce' );
 	
 			if ( isset( $_POST['attributes'] ) ) {
 				// $query = PBG_Blocks_Helper::get_query_posts($attributes);
@@ -1344,6 +1047,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				wp_send_json_success( $pagination_markup );
 			}
 			wp_send_json_error( ' No attributes recieved' );
+			wp_die(  );
 		}
 		/**
 		 * Render Post CTA button HTML.

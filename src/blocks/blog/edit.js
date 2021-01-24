@@ -9,6 +9,7 @@ import styling from "./styling";
 import Masonry from "./Masonry";
 import PremiumMarginR from "../../components/premium-margin-responsive";
 import PremiumBoxShadow from "./../../components/premium-box-shadow";
+import { EXITED } from "react-transition-group/Transition";
 
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -1380,6 +1381,7 @@ export default withSelect((select, props) => {
     orderBy,
     postFilter,
     paginationMarkup,
+    
 numOfPosts,
     pagination,
     currentPost,
@@ -1397,26 +1399,27 @@ numOfPosts,
     .select("core")
     .getEntityRecords("taxonomy", "category");
 
-  if ( pagination )
+  if ( pagination && paginationMarkup === 'empty' )
   {
    
     jQuery.ajax({
       url: PremiumSettings.ajaxurl,
       data: {
-        action: 'premium_pagination',
-        attributes: props.attributes,
-        nonce: PremiumBlocksSettings.nonce,
+        'action': 'premium_pagination',
+        'attributes': props.attributes,
+        'nonce': PremiumBlocksSettings.nonce,
       },
- 
       type: "POST",
       success: function ( data )
       {
-        console.log(typeof(data))
-      setAttributes({paginationMarkup:data})
-       
+        if (data != '0' && data != '-1') {
+          setAttributes({paginationMarkup:data})
+      } else {
+          console.log("error")
+      }
       },
       error: function(err) {
-        console.log("error")
+        console.log(err)
       }
     });
   }

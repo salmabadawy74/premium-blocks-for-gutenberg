@@ -1791,7 +1791,10 @@ box-decoration-break: unset;
 .premium-blog-even .slick-slide {
   height: inherit !important;
 }
-
+.premium-blog-footer{
+  position: absolute;
+  bottom: 0;
+}
 /**
 * Responsive Style
 */
