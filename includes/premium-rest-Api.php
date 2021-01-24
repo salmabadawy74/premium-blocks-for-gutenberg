@@ -40,8 +40,6 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 
 			// Activation hook.
 			add_action( 'rest_api_init', array( $this, 'blocks_register_rest_fields' ) );
-			add_action( 'init', array( $this, 'register_rest_orderby_fields' ) );
-			add_filter( 'register_post_type_args', array( $this, 'add_cpts_to_api' ), 10, 2 );
 		}
 
 		/**
@@ -50,6 +48,7 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 		 * @since 0.0.1
 		 */
 		public function blocks_register_rest_fields() {
+			
 			$post_type = PBG_Blocks_Helper::get_post_types();
 
 			foreach ( $post_type as $key => $value ) {
@@ -182,47 +181,12 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 			return $excerpt;
 		}
 
-		/**
-		 * Create API Order By Fields
-		 *
-		 * @since 1.12.0
-		 */
-		public function register_rest_orderby_fields() {
-			$post_type = PBG_Blocks_Helper::get_post_types();
 
-			foreach ( $post_type as $key => $type ) {
-				add_filter( "rest_{$type['value']}_collection_params", array( $this, 'add_orderby' ), 10, 1 );
-			}
-		}
+	
+	
+	
 
-		/**
-		 * Adds Order By values to Rest API
-		 *
-		 * @param object $params Parameters.
-		 * @since 1.12.0
-		 */
-		public function add_orderby( $params ) {
-
-			$params['orderby']['enum'][] = 'rand';
-			$params['orderby']['enum'][] = 'menu_order';
-
-			return $params;
-		}
-
-		/**
-		 * Adds the Contect Form 7 Custom Post Type to REST.
-		 *
-		 * @param array  $args Array of arguments.
-		 * @param string $post_type Post Type.
-		 * @since 1.10.0
-		 */
-		public function add_cpts_to_api( $args, $post_type ) {
-			if ( 'wpcf7_contact_form' === $post_type ) {
-				$args['show_in_rest'] = true;
-			}
-
-			return $args;
-		}
+		
 	}
 
 	/**

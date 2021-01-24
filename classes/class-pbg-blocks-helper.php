@@ -384,7 +384,9 @@ class PBG_Blocks_Helper {
 			)
 		);
 	}
+
 	public static function get_post_types() {
+		
 		$post_types = get_post_types(
 			array(
 				'public'       => true,
