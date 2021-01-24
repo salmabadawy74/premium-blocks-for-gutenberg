@@ -77,9 +77,8 @@ class PBG_Blocks_Helper {
 		add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
 		// Register Premium Blocks category
 		add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
-		add_action( 'wp_ajax_nopriv_premium_pagination', array( $this, 'render_pagination' ) );
-
-		add_action( 'wp_ajax_premium_pagination', array( $this, 'render_pagination' ) );
+		// add_action( 'render_pagination', array($this,'render_pagination'), 99,1);
+		
 	}
 
 	/**
@@ -388,7 +387,7 @@ class PBG_Blocks_Helper {
 	}
 
 	public static function get_post_types() {
-		
+	
 		$post_types = get_post_types(
 			array(
 				'public'       => true,
@@ -1273,15 +1272,15 @@ class PBG_Blocks_Helper {
 				"padding-right"=>$attr['columnGap']/2 . 'px',
 				"padding-left"=>$attr['columnGap']/2 . 'px',
 			),
-			'.premium-blog-wrap .premium-blog-post-outer-container .premium-blog-post-container .premium-blog-content-wrapper' => array(
+			' .premium-blog-wrap .premium-blog-post-outer-container .premium-blog-post-container .premium-blog-content-wrapper' => array(
 				 "text-align"=> $attr['filterPosition'],
 				
 			),
-			'.premium-blog-wrap .premium-blog-thumbnail-overlay' =>array(
-				'background'=> $attr['overlayColor']
+			' .premium-blog-thumbnail-overlay' =>array(
+				'background-color'=> $attr['overlayColor'],
 			),
 			" .premium-blog-post-outer-container:hover img" =>array(
-				// 'filter' => brightness( $attr['bright']% ) contrast( $attr['contrast']% ) saturate( $attr['saturation']% ) blur( $attr['blur']px ) hue-rotate( $attr['hue']}deg) 
+			//	 'filter' => brightness( $attr['bright']% ) contrast( $attr['contrast']% ) saturate( $attr['saturation']% ) blur( $attr['blur']px ) hue-rotate( $attr['hue']deg) );
 			),
 			" .premium-blog-post-container .premium-blog-entry-title h2" =>array(
 				"margin-bottom" =>self::get_css_value($attr['marginBottom'], $attr['marginBottomType']),
@@ -1290,15 +1289,16 @@ class PBG_Blocks_Helper {
 				"font-style" =>$attr['firstContentStyle'],
 				"text-transform" =>$attr['firstContentUpper'] ? "uppercase" : null ,
 				"letter-spacing" => $attr['firstContentLetter'] . 'px',
+				
+			),
+			' .premium-blog-post-container .premium-blog-entry-title h2 a' =>array(
 				"color" =>$attr['typoColor']
 			),
-			".premium-blog-entry-title a:hover" =>array(
+			" .premium-blog-entry-title:hover h2 a" =>array(
 				"color" => $attr['hoverColor']
 			),
-			".premium-blog-even"=>array(
-				"margin-bottom" =>"20px"
-			),
-			".premium-blog-post-container .premium-blog-content-wrapper-inner p" =>array(
+			
+			" .premium-blog-post-container .premium-blog-content-wrapper-inner p" =>array(
 				"font-size" =>self::get_css_value($attr['postContentfontSize'], $attr['postContentfontSizeType']),
 				"margin-bottom" =>self::get_css_value($attr['PostmarginBottom'], $attr['PostmarginBottomType']),
 				 "margin-top" =>self::get_css_value($attr['PostmarginTop'], $attr['PostmarginTopType']),
@@ -1315,7 +1315,7 @@ class PBG_Blocks_Helper {
 				 
 				
 			),
-		".premium-blog-meta-data" => array(
+		" .premium-blog-meta-data" => array(
 			"font-size" =>self::get_css_value($attr['secondContentfontSize'], $attr['secondContentfontSizeType']),
 			"font-weight" =>$attr['secondContentWeight'],
 			"font-style" =>$attr['secondContentStyle'],
@@ -1326,7 +1326,7 @@ class PBG_Blocks_Helper {
 		" .premium-blog-meta-data:hover" =>array(
 			"color" =>$attr['linkColor']
 		),
-		".premium-blog-meta-separtor" =>array(
+		" .premium-blog-meta-separtor" =>array(
 			"color" =>$attr['sepaColor']
 		),
 		" .premium-blog-excerpt-link-wrap " =>array(
@@ -1341,29 +1341,107 @@ class PBG_Blocks_Helper {
 			"padding" =>self::get_css_value($attr['buttonPadding'], $attr['buttonPaddingType']),
 			"color" =>$attr['buttonColor'],
 			"background" =>$attr['buttonBackground'],
-			"border-radius" =>$attr['borderRadius'],
-			"border" => $attr['borderWidth'] . $attr['borderType'] . $attr['borderColor'],
+			"border-radius" =>$attr['borderRadius'] . 'px',
+			"border" => $attr['borderWidth'].'px'  ." " . $attr['borderType'] . " ". $attr['borderColor'],
+			
+		),
+		" .premium-blog-post-outer-container img"=> array(
+			"object-fit"=> $attr['thumbnail'],
+			"height" => self::get_css_value($attr['height'],$attr['HeightU'])
 			
 		),
 		" .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link:hover" =>array(
 		"color" =>$attr['buttonhover'],
 		"background"=>$attr['hoverBackground'] 
-		)
+		),
+		" .premium-blog-post-tags-container " =>array(
+			"font-size"=> self::get_css_value( $attr['tagsfontSize'] , $attr['tagsfontSizeType'] ),
+			"font-weight"=> $attr['tagsWeight'],
+			"font-style"=> $attr['tagsStyle'],
+			"text-transform"=> $attr['tagsUpper'] ? "uppercase" : null,
+			"letter-spacing"=> $attr['tagsLetter'] . 'px',
+			"color"=> $attr['tagColor'],
+			
+		),
+		" .premium-blog-post-tags-container:hover a" =>array(
+			"color"=> $attr['hoverTag'],
+		),
+		" .premium-blog-pagination-container"=>array(
+			"text-align" =>$attr['paginationPosition']
+		) 
 		
 		);
 	
 		$m_selectors   = array(
-			' ..premium-blog-post-outer-wrap' => array(
-			
-				'background' => '#f5f5f5',
+			" .premium-blog-post-container .premium-blog-entry-title h2" =>array(
+				"margin-bottom"=> self::get_css_value($attr['marginBottomMobile'],$attr['marginBottomType']),
+				"font-size" => self::get_css_value($attr['firstContentfontSizeMobile'],$attr['firstContentfontSizeType'])
+			) 
+			,
+			" .premium-blog-post-container .premium-blog-content-wrapper-inner p "=> array(
+				"font-size"=> self::get_css_value($attr['postContentfontSizeMobile'] ,$attr['postContentfontSizeType']) ,
+				"margin-bottom"=>self::get_css_value($attr['PostmarginBottomMobile'] ,$attr['PostmarginBottomType']) ,
+				"margin-top"=> self::get_css_value($attr['PostmarginTopMobile'] , $attr['PostmarginTopType']),
+				"margin-right"=> self::get_css_value($attr['PostmarginRightMobile'] , $attr['PostmarginRightType']),
+				"margin-left"=> self::get_css_value($attr['PostmarginLeftMobile'] ,$attr['PostmarginLeftType']),
+				" padding"=> self::get_css_value($attr['postSpacingMobile'] ,$attr['postSpacingType']),
 			),
+			  " .premium-blog-post-outer-container img"=> array(
+				"object-fit"=> $attr['thumbnailMobile'],
+
+			),
+			  " .premium-blog-meta-data"=>  array(
+				"font-size"=>   self::get_css_value($attr['secondContentfontSizeMobile'] ,$attr['secondContentfontSizeType']),
+			),
+			  " .premium-blog-meta-data:hover"=> array(
+				'color' =>  $attr['linkColor'],
+			), 
+			  " .premium-blog-excerpt-link-wrap "=>  array(
+				" padding"=> self::get_css_value($attr['buttonSpacingMobile'] ,$attr['buttonSpacingType']),
+			),
+			  " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link"=> array(
+				"font-size" =>  self::get_css_value($attr['buttonfontSizeMobile'] ,$attr['buttonfontSizeType']),
+				'padding' => self::get_css_value($attr['buttonPaddingMobile'] , $attr['buttonPaddingType']),
+			),
+			  " .premium-blog-post-tags-container "=>  array(
+				"font-size"=>  self::get_css_value($attr['tagsfontSizeMobile'] , $attr['tagsfontSizeType']),
+				) 
 		);
 		$t_selectors   = array(
-			' ..premium-blog-post-outer-wrap' => array(
-				'width'     => `100%`,
-				'backround' => '#ff4422',
+			" .premium-blog-post-container .premium-blog-entry-title h2" =>array(
+				"margin-bottom"=> self::get_css_value($attr['marginBottomTablet'],$attr['marginBottomType']),
+				"font-size"=>self::get_css_value($attr['firstContentfontSizeTablet'],$attr['firstContentfontSizeType'])
+			) 
+			,
+			" .premium-blog-post-container .premium-blog-content-wrapper-inner p "=> array(
+				"font-size"=> self::get_css_value($attr['postContentfontSizeTablet'] ,$attr['postContentfontSizeType']) ,
+				"margin-bottom"=>self::get_css_value($attr['PostmarginBottomTablet'] ,$attr['PostmarginBottomType']) ,
+				"margin-top"=> self::get_css_value($attr['PostmarginTopTablet'] , $attr['PostmarginTopType']),
+				"margin-right"=> self::get_css_value($attr['PostmarginRightTablet'] , $attr['PostmarginRightType']),
+				"margin-left"=> self::get_css_value($attr['PostmarginLeftTablet'] ,$attr['PostmarginLeftType']),
+				" padding"=> self::get_css_value($attr['postSpacingTablet'] ,$attr['postSpacingType']),
 			),
+			  " .premium-blog-post-outer-container img"=> array(
+				"object-fit"=> $attr['thumbnailTablet'] ,
+			),
+			  " .premium-blog-meta-data"=>  array(
+				"font-size"=>   self::get_css_value($attr['secondContentfontSizeTablet'] ,$attr['secondContentfontSizeType']),
+			),
+			  " .premium-blog-meta-data:hover"=> array(
+				'color' =>  $attr['linkColor'],
+			), 
+			  " .premium-blog-excerpt-link-wrap "=>  array(
+				" padding"=> self::get_css_value($attr['buttonSpacingTablet'] ,$attr['buttonSpacingType']),
+			),
+			  " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link"=> array(
+				"font-size"=>  self::get_css_value($attr['buttonfontSizeTablet'] ,$attr['buttonfontSizeType']),
+				'padding' => self::get_css_value($attr['buttonPaddingTablet'] , $attr['buttonPaddingType']),
+			),
+			  " .premium-blog-post-tags-container "=>  array(
+				"font-size"=>  self::get_css_value($attr['tagsfontSizeTablet'] , $attr['tagsfontSizeType']),
+				) 
 		);
+		
 		$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-not_set' : '#premium-blog-';
 
 		$desktop = self::generate_css( $selectors, $base_selector . $id );
@@ -1400,20 +1478,17 @@ class PBG_Blocks_Helper {
         if ( !empty( $attributes['pageLimit'] ) ) {
             $pages = min( $attributes['pageLimit'], $pages );
 		}
-		$permalink_structure = get_option( 'permalink_structure' );
-			$base                = untrailingslashit( wp_specialchars_decode( get_pagenum_link() ) );
-			$base                = self::build_base_url( $permalink_structure, $base );
-			$format              = self::paged_format( $permalink_structure, $base );
-        $paged = self::get_paged();
-        $current_page = $paged;
+		
+		$paged = self::get_paged();
+		
+		$current_page = $paged;
+		
         if ( !$current_page ) {
             $current_page = 1;
-        }
+		}
+		
         $nav_links = paginate_links(
             array(
-			
-				
-				
                 'current' => $current_page,
                 'total' => $pages,
                 'type' => 'array',
@@ -1422,12 +1497,12 @@ class PBG_Blocks_Helper {
 
 		?>
 		
-<nav class='premium-blog-pagination-container' role='navigation'
-    aria-label="<?php echo esc_attr(__('Pagination', 'premium-addons-for-elementor')); ?>">
-    <?php echo wp_kses_post( implode( PHP_EOL, $nav_links ) );
-        ?>
-</nav>
-<?php
+			<nav class='premium-blog-pagination-container' role='navigation'aria-label="<?php echo esc_attr(__('Pagination', 'premium-addons-for-elementor')); ?>">
+				<?php echo wp_kses_post( implode( PHP_EOL, $nav_links ) ); ?>
+			</nav>
+
+		<?php
+
 	}
 	public function fix_query_offset( $query ) {
 		if ( ! empty( $query->query_vars['offset_to_fix'] ) ) {
@@ -1480,53 +1555,8 @@ class PBG_Blocks_Helper {
 
 		return $query;
 	}
-	public static function build_base_url( $permalink_structure, $base ) {
-		// Check to see if we are using pretty permalinks.
-		if ( ! empty( $permalink_structure ) ) {
 
-			if ( strrpos( $base, 'paged-' ) ) {
-				$base = substr_replace( $base, '', strrpos( $base, 'paged-' ), strlen( $base ) );
-			}
-
-			// Remove query string from base URL since paginate_links() adds it automatically.
-			// This should also fix the WPML pagination issue that was added since 1.10.2.
-			if ( count( $_GET ) > 0 ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-				$base = strtok( $base, '?' );
-			}
-
-			// Add trailing slash when necessary.
-			if ( '/' === substr( $permalink_structure, -1 ) ) {
-				$base = trailingslashit( $base );
-			} else {
-				$base = untrailingslashit( $base );
-			}
-		} else {
-			$url_params = wp_parse_url( $base, PHP_URL_QUERY );
-
-			if ( empty( $url_params ) ) {
-				$base = trailingslashit( $base );
-			}
-		}
-
-		return $base;
-	}
-	public static function paged_format( $permalink_structure, $base ) {
-
-		$page_prefix = empty( $permalink_structure ) ? 'paged' : 'page';
-
-		if ( ! empty( $permalink_structure ) ) {
-			$format  = substr( $base, -1 ) !== '/' ? '/' : '';
-			$format .= $page_prefix . '/';
-			$format .= '%#%';
-			$format .= substr( $permalink_structure, -1 ) === '/' ? '/' : '';
-		} elseif ( empty( $permalink_structure ) || is_search() ) {
-			$parse_url = wp_parse_url( $base, PHP_URL_QUERY );
-			$format    = empty( $parse_url ) ? '?' : '&';
-			$format   .= $page_prefix . '=%#%';
-		}
-
-		return $format;
-	}
+	
 
 	public static function get_paged() {
 		global $wp_the_query, $paged;

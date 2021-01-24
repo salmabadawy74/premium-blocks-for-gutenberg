@@ -151,10 +151,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'overlayColor'                => array(
-					'type'    => 'string',
-					'default' => 'transparent',
-				),
+				
 				'blur'                        => array(
 					'type'    => 'number',
 					'default' => 0,
@@ -227,16 +224,16 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'default' => false,
 				),
 				// Title Attributes.
-				' firstContentfontSizeType'                  => array(
+				'firstContentfontSizeType' => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'firstContentfontSize'                    => array(
+				'firstContentfontSize'   => array(
 					'type'    => 'number',
 					'default' => ''
 				
 				),
-				'firstContentfontSizeMobile'               => array(
+				'firstContentfontSizeMobile' => array(
 					'type'    => 'number',
 					'default' => '',
 				),
@@ -519,6 +516,14 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'tagsUpper'                   => array(
 					'type' => 'string',
 				),
+				'tagColor' => array(
+					'type'=>'string',
+
+				),
+				'hoverTag' =>array(
+					'type'=>'string',
+				),
+
 
 				// Spacing Attributes.
 			
@@ -578,7 +583,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				//image style
 				'overlayColor' =>array(
 					'type'=>'string',
-					'default' =>' '
+					'default' =>'transparent'
 				),
 
 				'saturation'                  => array(
@@ -674,12 +679,40 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function get_post_html( $attributes, $query ) {
-			$wrap      = array(
-				'premium-blog-wrap',
-				'post__columns-' . $attributes['columns'],
-				'post__columns-tablet-' . $attributes['tcolumns'],
-				'post__columns-mobile-' . $attributes['mcolumns'],
-				);
+			if(!$attributes['gridCheck']){
+				$attributes['columns']=$attributes['tcolumns']=$attributes['mcolumns'] = 1;
+			}
+			if ( isset( self::$grid_settings['masonry'] )   ){
+				$wrap      = array(
+					'premium-blog-wrap',
+					'post__columns-' . $attributes['columns'],
+					'post__columns-tablet-' . $attributes['tcolumns'],
+					'post__columns-mobile-' . $attributes['mcolumns'],
+					
+					);
+			}
+			if ( isset( self::$grid_settings['grid'] )   ){
+				$wrap      = array(
+					'premium-blog-wrap',
+					'post__columns-' . $attributes['columns'],
+					'post__columns-tablet-' . $attributes['tcolumns'],
+					'post__columns-mobile-' . $attributes['mcolumns'],
+					'equal-Height',
+					'premium-blog-even'
+					);
+			
+				}
+				if ( isset( self::$grid_settings['carousel'] )   ){
+					$wrap      = array(
+						'premium-blog-wrap',	'equal-Height','premium-blog-even'
+						
+						);
+				
+					}
+				
+			
+			
+			
 				$block_id  = 'premium-blog' . $attributes['block_id'];
 				$outerwrap = array(
 					'premium-blog',
@@ -690,14 +723,15 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					<?php
 										$this->posts_articles_markup( $query, $attributes );
 						?>
-					<?php if ( $attributes['pagination'] ) : ?>
+					
+					
+			</div>
+			<?php if ( $attributes['pagination'] ) : ?>
 					<div class="premium-blog-footer">
 						<?php PBG_Blocks_Helper::render_pagination( $attributes ); ?>
 					</div>
 					
 					<?php endif; ?>
-					
-			</div>
 		
 			</div>
 			<?php
@@ -788,13 +822,23 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 						= array(
 							'id' => get_post_thumbnail_id(),
 						);
+						$wrapImage = array(
+							'premium-blog-thumbnail-container',
+							'premium-blog-'.
+						 $attributes['hoverEffect'].
+						'-effect');
 			?>
 
-		<div className="premium-blog-thumb-effect-wrapper">
+		<div class="premium-blog-thumb-effect-wrapper">
 	
-			<div class='premium-blog-thumbnail-container premium-blog-$attributes["hoverEffect"]-effect'>
+			<div class="<?php echo esc_html( implode( ' ', $wrapImage ) ); ?>">
 				<?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imageSize'] ); ?>
 		
+			</div>
+			<div class='premium-blog-thumbnail-overlay'>
+			<a href="<?php the_permalink(); ?>">
+						
+					</a>
 			</div>
 		
 		</div>
@@ -1038,17 +1082,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			}
 			return $options;
 		}
-		public function post_pagination() {
-			check_ajax_referer( 'pa-blog-block-nonce', 'nonce' );
 	
-			if ( isset( $_POST['attributes'] ) ) {
-				// $query = PBG_Blocks_Helper::get_query_posts($attributes);
-				$pagination_markup = PBG_Blocks_Helper::render_pagination( $attributes );
-				wp_send_json_success( $pagination_markup );
-			}
-			wp_send_json_error( ' No attributes recieved' );
-			wp_die(  );
-		}
 		/**
 		 * Render Post CTA button HTML.
 		 *

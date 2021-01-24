@@ -40,6 +40,7 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 
 			// Activation hook.
 			add_action( 'rest_api_init', array( $this, 'blocks_register_rest_fields' ) );
+
 		}
 
 		/**
@@ -91,6 +92,15 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 					'pbg_excerpt',
 					array(
 						'get_callback'    => array( $this, 'get_excerpt' ),
+						'update_callback' => null,
+						'schema'          => null,
+					)
+				);
+				register_rest_field(
+					$value['value'],
+					'get_tag',
+					array(
+						'get_callback'    => array( $this, 'get_tag' ),
 						'update_callback' => null,
 						'schema'          => null,
 					)
@@ -180,13 +190,13 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 			}
 			return $excerpt;
 		}
-
-
-	
-	
-	
-
+		public function get_tag($object, $field_name, $request){
+			$tag = ( isset( $object['tag'] ) ) ? $object['tag'] : '';
+			return $tag;
+		}
 		
+
+
 	}
 
 	/**

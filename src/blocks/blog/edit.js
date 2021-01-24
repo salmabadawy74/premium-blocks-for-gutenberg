@@ -28,8 +28,29 @@ const { InspectorControls, ColorPalette } = wp.editor;
 const { withSelect, select } = wp.data;
 class edit extends Component {
   constructor() {
-    super(...arguments);
+    super( ...arguments );
+    this.onSelectPagination = this.onSelectPagination.bind( this )
+		this.onChangePostsPerPage = this.onChangePostsPerPage.bind( this )
+		this.onChangePageLimit = this.onChangePageLimit.bind( this )
   }
+  onSelectPagination( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { pagination: value } )
+		setAttributes( { paginationMarkup: "empty" } )
+	}
+	onChangePostsPerPage( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { numOfPosts: value } )
+		setAttributes( { paginationMarkup: "empty" } )
+	}
+	onChangePageLimit( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { pageLimit: value } )
+		setAttributes( { paginationMarkup: "empty" } )
+	}
   componentDidMount() {
     this.props.setAttributes({ block_id: this.props.clientId });
     this.props.setAttributes({ classMigrate: true });
@@ -39,11 +60,11 @@ class edit extends Component {
   }
   render() {
     const orderSelect = [
-      { label: "None", value: "None" },
+      { label: "None", value: "rand" },
       { label: "ID", value: "id" },
       { label: "Author", value: "author" },
       { label: "Title", value: "title" },
-      { label: "Name", value: "Name" },
+      { label: "Name", value: "slug" },
       { label: "Date", value: "date" },
       { label: "last Modified", value: "modified" },
       { label: "Random", value: "rand" },
@@ -286,20 +307,23 @@ class edit extends Component {
               }
             />,
             <TabPanel
-              className="uagb-size-type-field-tabs uagb-without-size-type"
+              className="premium-size-type-field-tabs"
               activeClass="active-tab"
               tabs={[
                 {
                   name: "mobile",
                   title: <Dashicon icon="desktop" />,
+                  className: "premium-desktop-tab premium-responsive-tabs",
                 },
                 {
                   name: "tablet",
                   title: <Dashicon icon="tablet" />,
+                  className: "premium-tablet-tab premium-responsive-tabs",
                 },
                 {
                   name: "desktop",
                   title: <Dashicon icon="smartphone" />,
+                  className: "premium-mobile-tab premium-responsive-tabs",
                 },
               ]}
             >
@@ -749,16 +773,14 @@ class edit extends Component {
             <ToggleControl
               label={__("Enable Pagination")}
               checked={pagination}
-              onChange={() => setAttributes({ pagination: !pagination })}
+              onChange={this.onSelectPagination }
             />
             {pagination && (
               <Fragment>
                 <RangeControl
                   label={__("Page Limit")}
                   value={pageLimit}
-                  onChange={(pageLimitValue) =>
-                    setAttributes({ pageLimit: pageLimitValue })
-                  }
+                  onChange={this.onChangePageLimit}
                 />
                 <h2> {__("Alignment")}</h2>
                 <IconButton
@@ -1019,28 +1041,9 @@ class edit extends Component {
             }
           />
           <PremiumMarginR
-            directions={["bottom", "top", "right", "left"]}
+            directions={["top", "bottom", "left", "right"]}
             setAttributes={setAttributes}
-            marginBottomType={{
-              value: PostmarginBottomType,
-              label: __("marginBottomType"),
-            }}
-            marginBottom={{
-              value: PostmarginBottom,
-              label: __("marginBottom"),
-            }}
-            marginBottomMobile={{
-              value: PostmarginBottomMobile,
-              label: __("marginBottomMobile"),
-            }}
-            marginBottomTablet={{
-              value: PostmarginBottomTablet,
-              label: __("marginBottomTablet"),
-            }}
-            marginTopType={{
-              value: PostmarginTopType,
-              label: __("marginTopType"),
-            }}
+            marginTopType={{ value: PostmarginTopType, label: __("marginTopType") }}
             marginTop={{ value: PostmarginTop, label: __("marginTop") }}
             marginTopMobile={{
               value: PostmarginTopMobile,
@@ -1050,30 +1053,24 @@ class edit extends Component {
               value: PostmarginTopTablet,
               label: __("marginTopTablet"),
             }}
-            marginRightType={{
-              value: PostmarginRightType,
-              label: __("marginRightType"),
+            marginBottomType={{
+              value: PostmarginBottomType,
+              label: __("marginBottomType"),
             }}
-            marginRight={{
-              value: PostmarginRight,
-              label: __("marginRight"),
+            marginBottom={{ value: PostmarginBottom, label: __("marginBottom") }}
+            marginBottomMobile={{
+              value: PostmarginBottomMobile,
+              label: __("marginBottomMobile"),
             }}
-            marginRightMobile={{
-              value: PostmarginRightMobile,
-              label: __("marginRightMobile"),
-            }}
-            marginRightTablet={{
-              value: PostmarginRightTablet,
-              label: __("marginRightTablet"),
+            marginBottomTablet={{
+              value: PostmarginBottomTablet,
+              label: __("marginBottomTablet"),
             }}
             marginLeftType={{
               value: PostmarginLeftType,
               label: __("marginLeftType"),
             }}
-            marginLeft={{
-              value: PostmarginLeft,
-              label: __("marginLeft"),
-            }}
+            marginLeft={{ value: PostmarginLeft, label: __("marginLeft") }}
             marginLeftMobile={{
               value: PostmarginLeftMobile,
               label: __("marginLeftMobile"),
@@ -1081,6 +1078,19 @@ class edit extends Component {
             marginLeftTablet={{
               value: PostmarginLeftTablet,
               label: __("marginLeftTablet"),
+            }}
+            marginRightType={{
+              value: PostmarginRightType,
+              label: __("marginRightType"),
+            }}
+            marginRight={{ value: PostmarginRight, label: __("marginRight") }}
+            marginRightMobile={{
+              value: PostmarginRightMobile,
+              label: __("marginRightMobile"),
+            }}
+            marginRightTablet={{
+              value: PostmarginRightTablet,
+              label: __("marginRightTablet"),
             }}
           />
           <ColorPalette
@@ -1399,30 +1409,28 @@ numOfPosts,
     .select("core")
     .getEntityRecords("taxonomy", "category");
 
-  if ( pagination && paginationMarkup === 'empty' )
-  {
+  // if (pagination && 'empty' === paginationMarkup )
+  // {
    
-    jQuery.ajax({
-      url: PremiumSettings.ajaxurl,
-      data: {
-        'action': 'premium_pagination',
-        'attributes': props.attributes,
-        'nonce': PremiumBlocksSettings.nonce,
-      },
-      type: "POST",
-      success: function ( data )
-      {
-        if (data != '0' && data != '-1') {
-          setAttributes({paginationMarkup:data})
-      } else {
-          console.log("error")
-      }
-      },
-      error: function(err) {
-        console.log(err)
-      }
-    });
-  }
+  //   jQuery.ajax({
+  //     url: PremiumBlocksSettings.ajaxurl,
+  //     data: {
+  //       action: 'uagb_post_pagination',
+  //       attributes: props.attributes,
+  //       nonce: PremiumBlocksSettings.nonce,
+  //     },
+  //    dataType:"json",
+  //     type: "POST",
+  //     success: function ( data )
+      
+  //     {  setAttributes({paginationMarkup:data})
+        
+  //     },
+  //     error: function(err) {
+  //       console.log(err)
+  //     }
+  //   });
+  // }
 
   if ("undefined" != typeof currentTax) {
     if ("undefined" != typeof currentTax["taxonomy"][postFilter]) {
@@ -1444,8 +1452,8 @@ numOfPosts,
   }
   tagList = currentTax["terms"]["post_tag"];
   let latestPostsQuery = {
-    order: order,
     orderby: orderBy,
+    order: order,
     posts_per_page : numOfPosts
   };
 

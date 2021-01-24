@@ -1085,6 +1085,22 @@ a.premium-dheading-block__link:hover {
 }
 /**************** Premium Blog *****************/
 /*******************************************************/
+.premium-blog-post-container  a{
+  color: inherit;
+  text-decoration: none;
+  
+}
+.premium-blog-post-container .premium-blog-post-author span a,
+.premium-blog-post-container .premium-blog-post-time span,
+.premium-blog-post-container .premium-blog-post-comments span,
+.premium-blog-post-container .premium-blog-post-categories span {
+  font-size: inherit;
+  line-height: inherit;
+  width: inherit;
+  height: inherit;
+  margin-right: 4px;
+
+}
 
 .premium-blog .post__columns-1  .premium-blog-post-outer-container{
   width: 100%;
@@ -1113,16 +1129,31 @@ a.premium-dheading-block__link:hover {
 }
 
 
-.equal-Height {
+.equal-Height .premium-blog-post-outer-container .premium-blog-content-wrapper {
   height: 100% !important;
+ 
 }
 .premium-blog-list {
   width: 100%;
 }
-.premium-blog a {
-text-decoration: none;
-box-shadow: none;
-box-decoration-break: unset;
+.premium-blog-post-container a,
+ a {
+  color: inherit !important;
+  box-shadow: none !important;
+  transition: 0.3s ease;
+  text-decoration: none;
+}
+.premium-blog-post-container a:hover,
+.premium-blog-post-container  a:hover {
+  text-decoration: none;
+}
+
+.premium-blog-post-container   a:hover {
+  text-decoration: none;
+}
+
+.premium-blog-post-container  a:hover {
+  text-decoration: none;
 }
 .premium-blog-thumb-effect-wrapper {
   position: relative;
@@ -1348,6 +1379,27 @@ box-decoration-break: unset;
   padding: 5px;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+}
+.premium-blog-pagination-container {
+  text-align: right;
+}
+.premium-blog-pagination-container .page-numbers {
+  display: inline-block;
+  color: #000;
+  line-height: 1;
+  font-size: 1em;
+  font-weight: 400;
+  text-decoration: none;
+  padding: .75em;
+  margin: 0 .4em .4em 0;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  background-color: rgb(29, 86, 110) !important;
+ 
+ 
+}
+.premium-blog-pagination-container:hover .page-numbers{
+  background-color: #2d4c5c;
 }
 
 /*
@@ -1791,10 +1843,7 @@ box-decoration-break: unset;
 .premium-blog-even .slick-slide {
   height: inherit !important;
 }
-.premium-blog-footer{
-  position: absolute;
-  bottom: 0;
-}
+
 /**
 * Responsive Style
 */

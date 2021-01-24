@@ -2,6 +2,8 @@ import generateCSS from "./GenerateCss";
 import generateCSSUnit from "./GenerateCssUnit";
 function styling(props) {
   const {
+    height,
+    HeightU,
     classMigrate,
     marginBottomType,
     marginBottomMobile,
@@ -112,7 +114,8 @@ function styling(props) {
     tagColor,
     hoverTag,
     tagsfontSizeTablet,
-    tagsfontSizeMobile
+    tagsfontSizeMobile,
+    paginationPosition
   } = props.attributes;
   const { latestPosts } = props;
   var selectors = {};
@@ -120,7 +123,7 @@ function styling(props) {
   var mobile_selectors = {};
   selectors = {
     " .premium-blog-post-outer-container": {
-      "margin-bottom": `${rowGap + rowGapUnit};`,
+      "margin-bottom": generateCSSUnit(rowGap , rowGapUnit),
       "padding-right": `calc( ${columnGap}px/2 );`,
       "padding-left": `calc( ${columnGap}px/2 );`,
     },
@@ -131,9 +134,11 @@ function styling(props) {
       "background-color": `${overlayColor}`,
     },
     " .premium-blog-post-outer-container img": {
-      "object-fit":`${thumbnail}`
+      "object-fit": `${ thumbnail }`,
+      "height": generateCSSUnit( height, HeightU )
     },
     " .premium-blog-post-outer-container:hover img": {
+
       filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
     },
     " .premium-blog-post-container .premium-blog-entry-title h2 a ": {
@@ -150,14 +155,14 @@ function styling(props) {
     },
     " .premium-blog-even": {
       width: `${100 / columns}%`,
-      "margin-bottom": `${20}px`,
+     
     },
     " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
       "font-size": generateCSSUnit(postContentfontSize,postContentfontSizeType) ,
       "margin-bottom":generateCSSUnit(PostmarginBottom,PostmarginBottomType)  ,
       "margin-top": generateCSSUnit(PostmarginTop, PostmarginTopType),
       "margin-right": generateCSSUnit (PostmarginRight, PostmarginRightType),
-      "margin-left": generateCSSUnit (PostmarginLeft ,PostmarginLeftType),
+      "margin-left": generateCSSUnit (PostmarginLeft,PostmarginLeftType),
       " padding": generateCSSUnit (postSpacing ,postSpacingType),
       "font-weight": `${postContentWeight} !important;`,
       "font-style": `${postContentStyle};`,
@@ -192,7 +197,7 @@ function styling(props) {
       "letter-spacing": `${buttonLetter}px ;`,
       color: ` ${buttonColor}`,
       background: `${buttonBackground}`,
-      "border-radius": `${borderRadius}`,
+      "border-radius": `${borderRadius}px`,
       border: `${borderWidth}px ${borderType} ${borderColor}`,
       padding: generateCSSUnit(`${buttonPadding}`, `${buttonPaddingType}`),
     },
@@ -212,6 +217,9 @@ function styling(props) {
     },
     " .premium-blog-post-container .premium-blog-content-wrapper .premium-blog-post-tags-container:hover span": {
       "color" : `${hoverTag}`,
+    },
+    " .premium-blog-pagination-container": {
+      "text-align" :`${paginationPosition}`
     }
   };
   mobile_selectors = {
@@ -258,7 +266,7 @@ function styling(props) {
     },
     " .premium-blog-even": {
       width: `${100 / tcolumns}%`,
-      "margin-bottom": `${20}px`,
+     
     },
     " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
       "font-size": generateCSSUnit(postContentfontSizeTablet,postContentfontSizeType) ,

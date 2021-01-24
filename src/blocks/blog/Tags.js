@@ -5,7 +5,7 @@ class Tags extends React.Component {
     let tagObject = [];
     if (tagList) {
       tagList.map((tag, thisIndex) => {
-        if (post.tags && tag.id == post.tags[thisIndex]) {
+        if (tag.id == post.tags[thisIndex]) {
           tagObject.push(tag);
           //alert(item);
         }
@@ -17,7 +17,7 @@ class Tags extends React.Component {
         <div className={`premium-blog-post-tags-container`}>
           <i className={`fa fa-tags fa-fw`}></i>
           {tagObject.map((tag) => (
-            <span>{tag.name + "   " + "  "}</span>
+            <span>{tag.name + "   " + " , "}</span>
           ))}
         </div>
       );

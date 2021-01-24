@@ -386,12 +386,15 @@ registerBlockType("premium/post-blog", {
     },
     PostmarginBottom: {
       type: "number",
+      default:'',
     },
     PostmarginBottomMobile: {
       type: "number",
+      default:''
     },
     PostmarginBottomTablet: {
       type: "number",
+      default:''
     },
     PostmarginTopType: {
       type: "string",

@@ -61,11 +61,11 @@ class Carousel extends React.Component {
       arrowPosition,
     } = attributes;
     const settings = {
-      adaptiveHeight: true,
+      
       arrows:navigationArrow,
       dots: navigationDots,
       centerMode: centerMode,
-      centerPadding: slideSpacing,
+      centerPadding: slideSpacing+'px',
       infinite: true,
       autoplay: Autoplay,
       speed: autoplaySpeed,
@@ -88,7 +88,8 @@ class Carousel extends React.Component {
     };
     const lastDisplay = latestPosts.slice(offsetNum);
     return (
-      <div className={`premium-blog`} id={`premium-blog-${block_id}`}>
+      <div className={ `premium-blog` } id={ `premium-blog-${ block_id }` }>
+      
         <Slider {...settings}>
           {lastDisplay.map((post, i) => (
             <div className={`premium-blog-post-outer-container`} key={i}>
@@ -132,7 +133,8 @@ class Carousel extends React.Component {
               </div>
             </div>
           ))}
-        </Slider>
+          </Slider>
+        
       </div>
     );
   }

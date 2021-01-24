@@ -58,7 +58,7 @@ class Blog extends React.Component {
           id={`premium-blog-${block_id}`}
         >
           <div
-            className={`premium-blog-wrap`}
+            className={`premium-blog-wrap ${equalHeight}`}
             data-layout={layoutValue}
             style={{ position: "relative" }}
           >
@@ -70,8 +70,8 @@ class Blog extends React.Component {
                 <div className={`premium-blog-post-container`}>
                   <Image post={post} attributes={attributes} />
                   <div
-                    className={`premium-blog-content-wrapper empty-thumb ${equalHeight}`}
-                    style={{ height: `${100}%` }}
+                    className={`premium-blog-content-wrapper empty-thumb `}
+                   
                   >
                     <div className={`premium-blog-content-wrapper-inner`}>
                       <div className={`premium-blog-inner-container`}>
