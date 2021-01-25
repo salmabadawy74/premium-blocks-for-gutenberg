@@ -113,10 +113,12 @@ class Blog extends React.Component {
           </div>
         </div>
         {pagination && (
+          <div className="premium-blog-footer" >
           <div
             dangerouslySetInnerHTML={{ __html: paginationMarkup }}
-            className="pbg-post-pagination-wrap"
+            className="premium-blog-pagination-container"
           ></div>
+          </div>
         )}
       </Fragment>
     );

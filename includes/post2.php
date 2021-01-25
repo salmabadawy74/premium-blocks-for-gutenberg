@@ -33,7 +33,8 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			
 			add_action( 'init', array( $this, 'register_blocks' ) );
 			
-		
+			add_action( 'wp_ajax_uagb_post_pagination', array( $this, 'post_pagination' ) );
+			add_action( 'wp_ajax_nopriv_uagb_post_pagination', array( $this, 'post_pagination' ) );
 			add_action( 'wp_footer', array($this,'add_post_dynamic_script'),1000 );
 		}
 
@@ -726,12 +727,13 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					
 					
 			</div>
-			<?php if ( $attributes['pagination'] ) : ?>
-					<div class="premium-blog-footer">
-						<?php PBG_Blocks_Helper::render_pagination( $attributes ); ?>
-					</div>
-					
-					<?php endif; ?>
+			
+			
+
+				
+				<div class="uagb-post-pagination-wrap">
+					<?php echo $this->render_pagination( $query, $attributes );  ?>
+				</div>
 		
 			</div>
 			<?php
@@ -843,6 +845,53 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 		
 		</div>
 			<?php
+		}
+
+		public function post_pagination() {
+
+
+			if ( isset( $_POST['attributes'] ) ) {
+
+				$query = PBG_Blocks_Helper::get_query_posts( $_POST['attributes'] );
+
+				$pagination_markup = $this->render_pagination( $query, $_POST['attributes'] );
+
+				wp_send_json_success( $pagination_markup );
+			}
+
+			wp_send_json_error( ' No attributes recieved' );
+		}
+		public function render_pagination( $query, $attributes ) {
+
+			// $permalink_structure = get_option( 'permalink_structure' );
+			// $base                = untrailingslashit( wp_specialchars_decode( get_pagenum_link() ) );
+			// $base                = UAGB_Helper::build_base_url( $permalink_structure, $base );
+			// $format              = UAGB_Helper::paged_format( $permalink_structure, $base );
+			$paged               = PBG_Blocks_Helper::get_paged( $query );
+			$page_limit          = min( $attributes['pageLimit'], $query->max_num_pages );
+			$page_limit          = isset( $page_limit ) ? $page_limit : $attributes['postsToShow'];
+			$attributes['postsToShow'];
+
+			$links = paginate_links(
+				array(
+					// 'base'      => $base . '%_%',
+					// 'format'    => $format,
+					'current'   => ( ! $paged ) ? 1 : $paged,
+					'total'     => $page_limit,
+					'type'      => 'array',
+					'mid_size'  => 4,
+					'end_size'  => 4,
+					// 'prev_text' => $attributes['paginationPrevText'],
+					// 'next_text' => $attributes['paginationNextText'],
+				)
+			);
+
+			if ( isset( $links ) ) {
+
+				return wp_kses_post( implode( PHP_EOL, $links ) );
+			}
+
+			return '';
 		}
 		/**
 		 * Render Post Title HTML.
