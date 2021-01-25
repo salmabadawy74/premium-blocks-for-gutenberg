@@ -17,7 +17,7 @@ class Tags extends React.Component {
         <div className={`premium-blog-post-tags-container`}>
           <i className={`fa fa-tags fa-fw`}></i>
           {tagObject.map((tag) => (
-            <span>{tag.name + "   " + " , "}</span>
+            <span>{tag.name + " ,  " }</span>
           ))}
         </div>
       );

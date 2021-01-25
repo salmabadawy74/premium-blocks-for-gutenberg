@@ -105,7 +105,7 @@ export default class PremiumMarginR extends Component {
                   sizeText={
                     (!this.props.marginRightLabel) ? __("Margin Right") : this.props.marginRightLabel
                   }
-                  steps={0.1}
+                  steps={1}
                   {...this.props}
                 />
               )}

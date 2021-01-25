@@ -24,7 +24,9 @@ class MasonryClass extends React.Component {
       categoriesList,
       setAttributes,
     } = this.props;
+    
     const { __ } = wp.i18n;
+
     const {
       block_id,
       numOfPosts,
@@ -99,11 +101,13 @@ class MasonryClass extends React.Component {
             ))}
           </Masonry>
           {pagination && (
-            <div
-              dangerouslySetInnerHTML={{ __html: paginationMarkup }}
-              className="pbg-post-pagination-wrap"
-            ></div>
-          )}
+          <div className="premium-blog-footer" >
+          <div
+            dangerouslySetInnerHTML={{ __html: paginationMarkup }}
+            className="premium-blog-pagination-container"
+          ></div>
+          </div>
+        )}
         </div>
       </Fragment>
     );

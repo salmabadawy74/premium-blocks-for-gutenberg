@@ -78,7 +78,6 @@ class PBG_Blocks_Helper {
 		// Register Premium Blocks category
 		add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
 		// add_action( 'render_pagination', array($this,'render_pagination'), 99,1);
-		
 	}
 
 	/**
@@ -180,11 +179,11 @@ class PBG_Blocks_Helper {
 
 		$is_icon_box_enabled = self::$blocks['iconBox'];
 
-	//	$is_person_enabled = self::$blocks['person'];
+		// $is_person_enabled = self::$blocks['person'];
 
-	//	$is_icon_list_enabled = self::$blocks['iconList'];
-		$is_scroll_enabled    = self::$blocks['scroll'];
-		$is_blog_enabled      = self::$blocks['blog'];
+		// $is_icon_list_enabled = self::$blocks['iconList'];
+		$is_scroll_enabled = self::$blocks['scroll'];
+		$is_blog_enabled   = self::$blocks['blog'];
 
 		$is_content_switcher_enabled = self::$blocks['contentSwitcher'];
 
@@ -299,21 +298,21 @@ class PBG_Blocks_Helper {
 		}
 
 		// if ( $is_person_enabled ) {
-		// 	wp_enqueue_script(
-		// 		'person-js',
-		// 		PREMIUM_BLOCKS_URL . 'assets/js/person.js',
-		// 		array( 'jquery' ),
-		// 		PREMIUM_BLOCKS_VERSION
-		// 	);
+		// wp_enqueue_script(
+		// 'person-js',
+		// PREMIUM_BLOCKS_URL . 'assets/js/person.js',
+		// array( 'jquery' ),
+		// PREMIUM_BLOCKS_VERSION
+		// );
 		// }
 
 		// if ( $is_icon_list_enabled ) {
-		// 	wp_enqueue_script(
-		// 		'icon-list-js',
-		// 		PREMIUM_BLOCKS_URL . 'assets/js/icon-list.js',
-		// 		array( 'jquery' ),
-		// 		PREMIUM_BLOCKS_VERSION
-		// 	);
+		// wp_enqueue_script(
+		// 'icon-list-js',
+		// PREMIUM_BLOCKS_URL . 'assets/js/icon-list.js',
+		// array( 'jquery' ),
+		// PREMIUM_BLOCKS_VERSION
+		// );
 		// }
 
 		if ( $is_content_switcher_enabled ) {
@@ -331,7 +330,7 @@ class PBG_Blocks_Helper {
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION
 			);
-		
+
 		}
 		if ( $is_blog_enabled ) {
 			wp_enqueue_script(
@@ -340,11 +339,14 @@ class PBG_Blocks_Helper {
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION
 			);
-			wp_enqueue_script( 'slick.min-js', PREMIUM_BLOCKS_URL . 'assets/js/slick.min.js', array( 'jquery' )
+			wp_enqueue_script(
+				'slick.min-js',
+				PREMIUM_BLOCKS_URL . 'assets/js/slick.min.js',
+				array( 'jquery' )
 			);
 			wp_enqueue_script( 'isotope.min-js', PREMIUM_BLOCKS_URL . 'assets/js/isotope.min.js', array( 'jquery' ) );
-			wp_enqueue_script( 'imagesloaded.min-js', PREMIUM_BLOCKS_URL . 'assets/js/imagesloaded.min.js',  array( 'jquery' ) );
-			wp_enqueue_style( 'slick', PREMIUM_BLOCKS_URL . 'assets/css/slick.css');
+			wp_enqueue_script( 'imagesloaded.min-js', PREMIUM_BLOCKS_URL . 'assets/js/imagesloaded.min.js', array( 'jquery' ) );
+			wp_enqueue_style( 'slick', PREMIUM_BLOCKS_URL . 'assets/css/slick.css' );
 		}
 
 		// Enqueue Google Maps API Script
@@ -387,7 +389,7 @@ class PBG_Blocks_Helper {
 	}
 
 	public static function get_post_types() {
-	
+
 		$post_types = get_post_types(
 			array(
 				'public'       => true,
@@ -575,11 +577,12 @@ class PBG_Blocks_Helper {
 
 		ob_start(); ?>
 <style type='text/css' media='all' id='premium-style-frontend'>
-<?php echo self::$stylesheet;
-?>
+		<?php
+		echo self::$stylesheet;
+		?>
 
 </style>
-<?php
+		<?php
 		ob_end_flush();
 	}
 	public static function get_related_taxonomy() {
@@ -729,10 +732,8 @@ class PBG_Blocks_Helper {
 			}
 			$return_array[ $post_type ]['taxonomy'] = $data;
 		}
-
 		return apply_filters( 'pbg_taxonomies_list', $return_array );
 	}
-
 	/**
 	 * Generates CSS recurrsively.
 	 *
@@ -740,11 +741,8 @@ class PBG_Blocks_Helper {
 	 * @since 0.0.1
 	 */
 	public function override_canonical( $redirect_url, $requested_url ) {
-
 		global $wp_query;
-
 		if ( is_array( $wp_query->query ) ) {
-
 			if ( true === $wp_query->is_singular
 				&& - 1 === $wp_query->current_post
 				&& true === $wp_query->is_paged
@@ -752,37 +750,27 @@ class PBG_Blocks_Helper {
 				$redirect_url = false;
 			}
 		}
-
 		return $redirect_url;
 	}
-
 	public function get_block_css( $block ) {
-
         // @codingStandardsIgnoreStart
-
         $block = ( array ) $block;
-
         $name = $block['blockName'];
         $css  = array();
         $block_id = '';
-
 		if ( ! isset( $name ) ) {
 			return;
 		}
-
 		if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
 			$blockattr = $block['attrs'];
 			if ( isset( $blockattr['block_id'] ) ) {
 				$block_id = $blockattr['block_id'];
 			}
 		}
-
         self::$current_block_list[] = $name;
-
         if (strpos($name, 'premium/') !== false) {
             self::$premium_flag = true;
         }
-
         switch ($name) {
             case 'premium/icon-list':
             $css += $this->get_icon_list_css($blockattr, $block_id);
@@ -797,27 +785,21 @@ class PBG_Blocks_Helper {
             // Nothing to do here.
             break;
         }
-
         if (isset($block['innerBlocks'])) {
             foreach ($block['innerBlocks'] as $j => $inner_block) {
                 if ('core/block' == $inner_block['blockName']) {
                     $id = (isset($inner_block['attrs']['ref'])) ? $inner_block['attrs']['ref'] : 0;
-
                     if ($id) {
                         $content = get_post_field('post_content', $id);
-
                         $reusable_blocks = $this->parse($content);
-
                         self::$stylesheet .= $this->get_stylesheet($reusable_blocks);
                     }
                 } else {
                     // Get CSS for the Block.
                     $inner_block_css = $this->get_block_css($inner_block);
-
                     $css_desktop = (isset($css['desktop']) ? $css['desktop'] : '');
                     $css_tablet = (isset($css['tablet']) ? $css['tablet'] : '');
                     $css_mobile = (isset($css['mobile']) ? $css['mobile'] : '');
-
                     if (isset($inner_block_css['desktop'])) {
                         $css['desktop'] = $css_desktop . $inner_block_css['desktop'];
                         $css['tablet'] = $css_tablet . $inner_block_css['tablet'];
@@ -826,24 +808,16 @@ class PBG_Blocks_Helper {
                 }
             }
         }
-
         self::$current_block_list = array_unique(self::$current_block_list);
-
         return $css;
-
         // @codingStandardsIgnoreEnd
 	}
-
 	public static function get_icon_list_css( $attr, $id ) {
         // @codingStandardsIgnoreStart
-
         $defaults = self::$block_list['premium/icon-list']['attributes'];
-
         $attr = array_merge($defaults, ( array ) $attr);
-
         $m_selectors = array();
         $t_selectors = array();
-
         $selectors = array(
             // Desktop Icon Size CSS starts.
             ' .premium-icon-list__icon-wrap img' => array(
@@ -871,7 +845,6 @@ class PBG_Blocks_Helper {
             )
         );
         // Desktop Icon Size CSS ends.
-
         // Mobile Icon Size CSS starts.
         $m_selectors = array(
             ' .premium-icon-list__icon-wrap img' => array(
@@ -899,7 +872,6 @@ class PBG_Blocks_Helper {
             ),
         );
         // Mobile Icon Size CSS ends.
-
         // Tablet Icon Size CSS starts.
         $t_selectors = array(
             ' .premium-icon-list__icon-wrap img' => array(
@@ -927,7 +899,6 @@ class PBG_Blocks_Helper {
             ),
         );
         // Tablet Icon Size CSS ends.
-
         foreach ($attr['icons'] as $key => $icon) {
             $icon['icon_color'] = (isset($icon['icon_color'])) ? $icon['icon_color'] : '';
             $icon['icon_hover_color'] = (isset($icon['icon_hover_color'])) ? $icon['icon_hover_color'] : '';
@@ -937,68 +908,52 @@ class PBG_Blocks_Helper {
             $icon['item_bg_hover_color'] = (isset($icon['item_bg_hover_color'])) ? $icon['item_bg_hover_color'] : '';
             $icon['label_color'] = (isset($icon['label_color'])) ? $icon['label_color'] : '';
             $icon['label_hover_color'] = (isset($icon['label_hover_color'])) ? $icon['label_hover_color'] : '';
-
             if ($attr['multiTitleCount'] <= $key) {
                 break;
             }
-
             $selectors[' .premium-icon-list-content' . $key . ' .premium-icon-list__content-icon'] = array(
                 'color' => $icon['icon_color']
             );
-
             $selectors[' .premium-icon-list-content' . $key . ' .premium-icon-list__content-icon i'] = array(
                 'fill' => $icon['icon_color']
             );
-
             $selectors[' .premium-icon-list-content' . $key . ':hover .premium-icon-list__content-icon'] = array(
                 'color' => $icon['icon_hover_color']
             );
-
             $selectors[' .premium-icon-list-content' . $key . ':hover .premium-icon-list__content-icon i'] = array(
                 'fill' => $icon['icon_hover_color']
             );
-
             $selectors[' .premium-icon-list-content' . $key . ' .premium-icon-list__label'] = array(
                 'color' => $icon['label_color'],
                 'font-size' => self::get_css_value($attr['fontSize'], $attr['fontSizeType']),
             );
-
             $selectors[' .premium-icon-list-content' . $key . ':hover .premium-icon-list__label'] = array(
                 'color' => $icon['label_hover_color'],
             );
-
             $selectors[' .premium-icon-list-content' . $key . ':hover .premium-icon-list__content-wrap'] = array(
                 'background' => $icon['item_bg_hover_color'],
             );
-
             $selectors[' .premium-icon-list-content' . $key . ' .premium-icon-list__icon-wrap'] = array(
                 'background' => $icon['icon_bg_color'],
             );
-
             $selectors[' .premium-icon-list-content' . $key . ':hover .premium-icon-list__icon-wrap'] = array(
                 'background' => $icon['icon_bg_hover_color']
             );
-
             $selectors[' .premium-icon-list-content' . $key] = array(
                 'padding' => self::get_css_value($attr['titlePadding'], $attr['titlePaddingType']),
             );
-
             $m_selectors[' .premium-icon-list-content' . $key] = array(
                 'padding' => self::get_css_value($attr['titlePaddingMobile'], $attr['titlePaddingType']),
             );
-
             $t_selectors[' .premium-icon-list-content' . $key] = array(
                 'padding' => self::get_css_value($attr['titlePaddingTablet'], $attr['titlePaddingType']),
             );
-
             $m_selectors[' .premium-icon-list-content' . $key . ' .premium-icon-list__label'] = array(
                 'font-size' => self::get_css_value($attr['fontSizeMobile'], $attr['fontSizeType']),
             );
-
             $t_selectors[' .premium-icon-list-content' . $key . ' .premium-icon-list__label'] = array(
                 'font-size' => self::get_css_value($attr['fontSizeTablet'], $attr['fontSizeType']),
             );
-
             $selectors[' .premium-icon-list-content' . $key . ' .premium-icon-list__content-wrap'] = array(
                 'background' => $icon['item_bg_color'],
                 'margin-top' => $attr['layoutPos'] == 'block' ? self::get_css_value($attr['marginTop'], $attr['marginTopType']) : '',
@@ -1012,7 +967,6 @@ class PBG_Blocks_Helper {
                 'margin-right' => $attr['layoutPos'] == 'block' ? '' : self::get_css_value($attr['marginRightMobile'], $attr['marginRightType']),
                 'margin-left' => $attr['layoutPos'] == 'block' ? '' : self::get_css_value($attr['marginLeftMobile'], $attr['marginLeftType']),
             );
-
             $t_selectors[' .premium-icon-list-content' . $key . ' .premium-icon-list__content-wrap'] = array(
                 'margin-top' => $attr['layoutPos'] == 'block' ? self::get_css_value($attr['marginTopTablet'], $attr['marginTopType']) : '',
                 'margin-bottom' => $attr['layoutPos'] == 'block' ? self::get_css_value($attr['marginBottomTablet'], $attr['marginBottomType']) : '',
@@ -1020,26 +974,18 @@ class PBG_Blocks_Helper {
                 'margin-left' => $attr['layoutPos'] == 'block' ? '' : self::get_css_value($attr['marginLeftTablet'], $attr['marginLeftType']),
             );
         }
-
         // @codingStandardsIgnoreEnd
-
 		$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-icon-list-';
-
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
-
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
-
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
-
+		$desktop       = self::generate_css( $selectors, $base_selector . $id );
+		$tablet        = self::generate_css( $t_selectors, $base_selector . $id );
+		$mobile        = self::generate_css( $m_selectors, $base_selector . $id );
 		$generated_css = array(
 			'desktop' => $desktop,
 			'tablet'  => $tablet,
 			'mobile'  => $mobile,
 		);
-
 		return $generated_css;
 	}
-
 	public static function get_content_switcher_css( $attr, $id ) {
         // @codingStandardsIgnoreStart
 
@@ -1222,27 +1168,22 @@ class PBG_Blocks_Helper {
 
 		return $generated_css;
 	}
-
 	public static function get_query_args( $attributes ) {
-		$paged     = self::get_paged();
-		$tax_count = 0;
-		$post_type = 'post';
-		$post_args = array(
-
+		$paged                = self::get_paged();
+		$tax_count            = 0;
+		$post_type            = 'post';
+		$post_args            = array(
 			'posts_per_page'   => empty( $attributes['numOfPosts'] ) ? 9999 : $attributes['numOfPosts'],
 			'paged'            => $paged,
 			'post_status'      => 'publish',
 			'suppress_filters' => false,
 		);
-
 		$post_args['orderby'] = $attributes['orderBy'];
 		$post_args['order']   = $attributes['order'];
-
 		// Get all the taxanomies associated with the post type.
 		if ( $attributes['currentPost'] ) {
 			$post_args['post__not_in'] = array( get_the_ID() );
 		}
-
 		if ( isset( $attributes['categories'] ) ) {
 			$post_args['tax_query'][] = array(
 				'taxonomy' => ( isset( $attributes['postFilter'] ) ) ? $attributes['postFilter'] : 'category',
@@ -1251,205 +1192,184 @@ class PBG_Blocks_Helper {
 				'operator' => 'IN',
 			);
 		}
-
 		if ( 0 < $attributes['offsetNum'] ) {
 			$post_args['offset_to_fix'] = $attributes['offsetNum'];
 		}
-
 		return $post_args;
 	}
-
 	public static function post_css( $attr, $id ) {
-		$defaults = self::$block_list['premium/post-blog']['attributes'];
-
-		$attr = array_merge( $defaults, (array) $attr );
-
+		$defaults    = self::$block_list['premium/post-blog']['attributes'];
+		$attr        = array_merge( $defaults, (array) $attr );
 		$m_selectors = array();
 		$t_selectors = array();
 		$selectors   = array(
 			' .premium-blog-wrap .premium-blog-post-outer-container' => array(
-				"margin-bottom"=> self::get_css_value($attr['rowGap'], $attr['rowGapUnit']),
-				"padding-right"=>$attr['columnGap']/2 . 'px',
-				"padding-left"=>$attr['columnGap']/2 . 'px',
+				'margin-bottom' => self::get_css_value( $attr['rowGap'], $attr['rowGapUnit'] ),
+				'padding-right' => $attr['columnGap'] / 2 . 'px',
+				'padding-left'  => $attr['columnGap'] / 2 . 'px',
 			),
-			' .premium-blog-wrap .premium-blog-post-outer-container .premium-blog-post-container .premium-blog-content-wrapper' => array(
-				 "text-align"=> $attr['filterPosition'],
-				
+			' .premium-blog-content-wrapper'             => array(
+				'text-align' => $attr['filterPosition'],
 			),
-			' .premium-blog-thumbnail-overlay' =>array(
-				'background-color'=> $attr['overlayColor'],
+			' .premium-blog-thumbnail-overlay'           => array(
+				'background-color' => $attr['overlayColor'],
 			),
-			" .premium-blog-post-outer-container:hover img" =>array(
-			//	 'filter' => brightness( $attr['bright']% ) contrast( $attr['contrast']% ) saturate( $attr['saturation']% ) blur( $attr['blur']px ) hue-rotate( $attr['hue']deg) );
-			),
-			" .premium-blog-post-container .premium-blog-entry-title h2" =>array(
-				"margin-bottom" =>self::get_css_value($attr['marginBottom'], $attr['marginBottomType']),
-				"font-size" =>self::get_css_value($attr['firstContentfontSize'], $attr['firstContentfontSizeType']),
-				"font-weight" =>$attr['firstContentWeight'],
-				"font-style" =>$attr['firstContentStyle'],
-				"text-transform" =>$attr['firstContentUpper'] ? "uppercase" : null ,
-				"letter-spacing" => $attr['firstContentLetter'] . 'px',
-				
-			),
-			' .premium-blog-post-container .premium-blog-entry-title h2 a' =>array(
-				"color" =>$attr['typoColor']
-			),
-			" .premium-blog-entry-title:hover h2 a" =>array(
-				"color" => $attr['hoverColor']
-			),
-			
-			" .premium-blog-post-container .premium-blog-content-wrapper-inner p" =>array(
-				"font-size" =>self::get_css_value($attr['postContentfontSize'], $attr['postContentfontSizeType']),
-				"margin-bottom" =>self::get_css_value($attr['PostmarginBottom'], $attr['PostmarginBottomType']),
-				 "margin-top" =>self::get_css_value($attr['PostmarginTop'], $attr['PostmarginTopType']),
-				 "margin-right"=> self::get_css_value($attr['PostmarginRight'], $attr['PostmarginRightType']),
-				 "margin-left" =>self::get_css_value($attr['PostmarginLeft'], $attr['PostmarginLeftType']),
-				 " padding" =>self::get_css_value($attr['postSpacing'], $attr['postSpacingType']),
-				 "font-weight"=>$attr['postContentWeight'],
-				 "font-style" =>$attr['postContentStyle'],
-				 "text-transform" =>$attr['postContentUpper'] ? "uppercase" : null ,
-				 "letter-spacing" =>$attr['postContentLetter'] . 'px',
-				 "color" =>$attr['textColor'],
-				 "background-color" => $attr['backgroundPostContent'] ,
-				 "box-shadow" => $attr['containerShadowHorizontal'] . 'px' .  $attr['containerShadowVertical'] . 'px' . $attr['containerShadowBlur'] .'px'  .  $attr['containerShadowColor'] .  $attr['containerShadowPosition'],
-				 
-				
-			),
-		" .premium-blog-meta-data" => array(
-			"font-size" =>self::get_css_value($attr['secondContentfontSize'], $attr['secondContentfontSizeType']),
-			"font-weight" =>$attr['secondContentWeight'],
-			"font-style" =>$attr['secondContentStyle'],
-			"text-transform" =>$attr['postContentUpper'] ? "uppercase" : null,
-			"letter-spacing" =>$attr['secondContentLetter'] . 'px',
-			"color" =>$attr['metaColor'],
-		),
-		" .premium-blog-meta-data:hover" =>array(
-			"color" =>$attr['linkColor']
-		),
-		" .premium-blog-meta-separtor" =>array(
-			"color" =>$attr['sepaColor']
-		),
-		" .premium-blog-excerpt-link-wrap " =>array(
-			"padding" =>self::get_css_value($attr['buttonSpacing'], $attr['buttonSpacingType'])
-		),
-		" .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link" =>array(
-			"font-size" =>self::get_css_value($attr['buttonfontSize'], $attr['buttonfontSizeType']),
-		"font-weight" =>$attr['buttonWeight'],
-			"font-style" =>$attr['buttonStyle'],
-			"text-transform" =>$attr['buttonUpper'] ? "uppercase" : null,
-			"letter-spacing" =>$attr['buttonLetter'] . 'px',
-			"padding" =>self::get_css_value($attr['buttonPadding'], $attr['buttonPaddingType']),
-			"color" =>$attr['buttonColor'],
-			"background" =>$attr['buttonBackground'],
-			"border-radius" =>$attr['borderRadius'] . 'px',
-			"border" => $attr['borderWidth'].'px'  ." " . $attr['borderType'] . " ". $attr['borderColor'],
-			
-		),
-		" .premium-blog-post-outer-container img"=> array(
-			"object-fit"=> $attr['thumbnail'],
-			"height" => self::get_css_value($attr['height'],$attr['HeightU'])
-			
-		),
-		" .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link:hover" =>array(
-		"color" =>$attr['buttonhover'],
-		"background"=>$attr['hoverBackground'] 
-		),
-		" .premium-blog-post-tags-container " =>array(
-			"font-size"=> self::get_css_value( $attr['tagsfontSize'] , $attr['tagsfontSizeType'] ),
-			"font-weight"=> $attr['tagsWeight'],
-			"font-style"=> $attr['tagsStyle'],
-			"text-transform"=> $attr['tagsUpper'] ? "uppercase" : null,
-			"letter-spacing"=> $attr['tagsLetter'] . 'px',
-			"color"=> $attr['tagColor'],
-			
-		),
-		" .premium-blog-post-tags-container:hover a" =>array(
-			"color"=> $attr['hoverTag'],
-		),
-		" .premium-blog-pagination-container"=>array(
-			"text-align" =>$attr['paginationPosition']
-		) 
-		
-		);
-	
-		$m_selectors   = array(
-			" .premium-blog-post-container .premium-blog-entry-title h2" =>array(
-				"margin-bottom"=> self::get_css_value($attr['marginBottomMobile'],$attr['marginBottomType']),
-				"font-size" => self::get_css_value($attr['firstContentfontSizeMobile'],$attr['firstContentfontSizeType'])
-			) 
-			,
-			" .premium-blog-post-container .premium-blog-content-wrapper-inner p "=> array(
-				"font-size"=> self::get_css_value($attr['postContentfontSizeMobile'] ,$attr['postContentfontSizeType']) ,
-				"margin-bottom"=>self::get_css_value($attr['PostmarginBottomMobile'] ,$attr['PostmarginBottomType']) ,
-				"margin-top"=> self::get_css_value($attr['PostmarginTopMobile'] , $attr['PostmarginTopType']),
-				"margin-right"=> self::get_css_value($attr['PostmarginRightMobile'] , $attr['PostmarginRightType']),
-				"margin-left"=> self::get_css_value($attr['PostmarginLeftMobile'] ,$attr['PostmarginLeftType']),
-				" padding"=> self::get_css_value($attr['postSpacingMobile'] ,$attr['postSpacingType']),
-			),
-			  " .premium-blog-post-outer-container img"=> array(
-				"object-fit"=> $attr['thumbnailMobile'],
 
+			' .premium-blog-post-container .premium-blog-entry-title h2' => array(
+				'margin-bottom'  => self::get_css_value( $attr['marginBottom'], $attr['marginBottomType'] ),
+				'font-weight'    => $attr['firstContentWeight'],
+				'font-style'     => $attr['firstContentStyle'],
+				'text-transform' => $attr['firstContentUpper'] ? 'uppercase' : null,
+				'letter-spacing' => $attr['firstContentLetter'] . 'px',
 			),
-			  " .premium-blog-meta-data"=>  array(
-				"font-size"=>   self::get_css_value($attr['secondContentfontSizeMobile'] ,$attr['secondContentfontSizeType']),
+			' .premium-blog-post-container .premium-blog-entry-title h2 a' => array(
+				'color'     => $attr['typoColor'],
+				'font-size' => self::get_css_value( $attr['firstContentfontSize'], $attr['firstContentfontSizeType'] ),
 			),
-			  " .premium-blog-meta-data:hover"=> array(
-				'color' =>  $attr['linkColor'],
-			), 
-			  " .premium-blog-excerpt-link-wrap "=>  array(
-				" padding"=> self::get_css_value($attr['buttonSpacingMobile'] ,$attr['buttonSpacingType']),
+			' .premium-blog-entry-title:hover h2 a'      => array(
+				'color' => $attr['hoverColor'],
 			),
-			  " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link"=> array(
-				"font-size" =>  self::get_css_value($attr['buttonfontSizeMobile'] ,$attr['buttonfontSizeType']),
-				'padding' => self::get_css_value($attr['buttonPaddingMobile'] , $attr['buttonPaddingType']),
+			' .premium-blog-post-container .premium-blog-content-wrapper-inner p' => array(
+				'font-size'        => self::get_css_value( $attr['postContentfontSize'], $attr['postContentfontSizeType'] ),
+				'margin-bottom'    => self::get_css_value( $attr['PostmarginBottom'], $attr['PostmarginBottomType'] ),
+				'margin-top'       => self::get_css_value( $attr['PostmarginTop'], $attr['PostmarginTopType'] ),
+				'margin-right'     => self::get_css_value( $attr['PostmarginRight'], $attr['PostmarginRightType'] ),
+				'margin-left'      => self::get_css_value( $attr['PostmarginLeft'], $attr['PostmarginLeftType'] ),
+				' padding'         => self::get_css_value( $attr['postSpacing'], $attr['postSpacingType'] ),
+				'font-weight'      => $attr['postContentWeight'],
+				'font-style'       => $attr['postContentStyle'],
+				'text-transform'   => $attr['postContentUpper'] ? 'uppercase' : null,
+				'letter-spacing'   => $attr['postContentLetter'] . 'px',
+				'color'            => $attr['textColor'],
+				'background-color' => $attr['backgroundPostContent'],
+				'box-shadow'       => $attr['containerShadowHorizontal'] . 'px' . ' ' . $attr['containerShadowVertical'] . 'px' . ' ' . $attr['containerShadowBlur'] . 'px' . ' ' . $attr['containerShadowColor'] . ' ' . $attr['containerShadowPosition'],
 			),
-			  " .premium-blog-post-tags-container "=>  array(
-				"font-size"=>  self::get_css_value($attr['tagsfontSizeMobile'] , $attr['tagsfontSizeType']),
-				) 
+			' .premium-blog-meta-data'                   => array(
+				'font-size'      => self::get_css_value( $attr['secondContentfontSize'], $attr['secondContentfontSizeType'] ),
+				'font-weight'    => $attr['secondContentWeight'],
+				'font-style'     => $attr['secondContentStyle'],
+				'text-transform' => $attr['postContentUpper'] ? 'uppercase' : null,
+				'letter-spacing' => $attr['secondContentLetter'] . 'px',
+				'color'          => $attr['metaColor'],
+			),
+			' .premium-blog-meta-data:hover'             => array(
+				'color' => $attr['linkColor'],
+			),
+			' .premium-blog-meta-separtor'               => array(
+				'color' => $attr['sepaColor'],
+			),
+			' .premium-blog-excerpt-link-wrap '          => array(
+				'padding' => self::get_css_value( $attr['buttonSpacing'], $attr['buttonSpacingType'] ),
+			),
+			' .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link' => array(
+				'font-size'      => self::get_css_value( $attr['buttonfontSize'], $attr['buttonfontSizeType'] ),
+				'font-weight'    => $attr['buttonWeight'],
+				'font-style'     => $attr['buttonStyle'],
+				'text-transform' => $attr['buttonUpper'] ? 'uppercase' : null,
+				'letter-spacing' => $attr['buttonLetter'] . 'px',
+				'padding'        => self::get_css_value( $attr['buttonPadding'], $attr['buttonPaddingType'] ),
+				'color'          => $attr['buttonColor'],
+				'background'     => $attr['buttonBackground'],
+				'border-radius'  => $attr['borderRadius'] . 'px',
+				'border'         => $attr['borderWidth'] . 'px' . ' ' . $attr['borderType'] . ' ' . $attr['borderColor'],
+			),
+			' .premium-blog-post-outer-container img'    => array(
+				'object-fit' => $attr['thumbnail'],
+				'height'     => self::get_css_value( $attr['height'], $attr['HeightU'] ),
+			),
+			' .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link:hover' => array(
+				'color'      => $attr['buttonhover'],
+				'background' => $attr['hoverBackground'],
+			),
+			' .premium-blog-post-tags-container '        => array(
+				'font-size'      => self::get_css_value( $attr['tagsfontSize'], $attr['tagsfontSizeType'] ),
+				'font-weight'    => $attr['tagsWeight'],
+				'font-style'     => $attr['tagsStyle'],
+				'text-transform' => $attr['tagsUpper'] ? 'uppercase' : null,
+				'letter-spacing' => $attr['tagsLetter'] . 'px',
+				'color'          => $attr['tagColor'],
+			),
+			' .premium-blog-post-tags-container:hover a' => array(
+				'color' => $attr['hoverTag'],
+			),
+			' .premium-blog-pagination-container'        => array(
+				'text-align' => $attr['paginationPosition'],
+			),
+		);
+		$m_selectors   = array(
+			' .premium-blog-post-container .premium-blog-entry-title h2' => array(
+				'margin-bottom' => self::get_css_value( $attr['marginBottomMobile'], $attr['marginBottomType'] ),
+			),
+			' .premium-blog-post-container .premium-blog-entry-title h2 a' => array(
+				'font-size' => self::get_css_value( $attr['firstContentfontSizeMobile'], $attr['firstContentfontSizeType'] ),
+			),
+			' .premium-blog-post-container .premium-blog-content-wrapper-inner p ' => array(
+				'font-size'     => self::get_css_value( $attr['postContentfontSizeMobile'], $attr['postContentfontSizeType'] ),
+				'margin-bottom' => self::get_css_value( $attr['PostmarginBottomMobile'], $attr['PostmarginBottomType'] ),
+				'margin-top'    => self::get_css_value( $attr['PostmarginTopMobile'], $attr['PostmarginTopType'] ),
+				'margin-right'  => self::get_css_value( $attr['PostmarginRightMobile'], $attr['PostmarginRightType'] ),
+				'margin-left'   => self::get_css_value( $attr['PostmarginLeftMobile'], $attr['PostmarginLeftType'] ),
+				' padding'      => self::get_css_value( $attr['postSpacingMobile'], $attr['postSpacingType'] ),
+			),
+			' .premium-blog-post-outer-container img' => array(
+				'object-fit' => $attr['thumbnailMobile'],
+			),
+			' .premium-blog-meta-data'                => array(
+				'font-size' => self::get_css_value( $attr['secondContentfontSizeMobile'], $attr['secondContentfontSizeType'] ),
+			),
+			' .premium-blog-meta-data:hover'          => array(
+				'color' => $attr['linkColor'],
+			),
+			' .premium-blog-excerpt-link-wrap '       => array(
+				' padding' => self::get_css_value( $attr['buttonSpacingMobile'], $attr['buttonSpacingType'] ),
+			),
+			' .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link' => array(
+				'font-size' => self::get_css_value( $attr['buttonfontSizeMobile'], $attr['buttonfontSizeType'] ),
+				'padding'   => self::get_css_value( $attr['buttonPaddingMobile'], $attr['buttonPaddingType'] ),
+			),
+			' .premium-blog-post-tags-container '     => array(
+				'font-size' => self::get_css_value( $attr['tagsfontSizeMobile'], $attr['tagsfontSizeType'] ),
+			),
 		);
 		$t_selectors   = array(
-			" .premium-blog-post-container .premium-blog-entry-title h2" =>array(
-				"margin-bottom"=> self::get_css_value($attr['marginBottomTablet'],$attr['marginBottomType']),
-				"font-size"=>self::get_css_value($attr['firstContentfontSizeTablet'],$attr['firstContentfontSizeType'])
-			) 
-			,
-			" .premium-blog-post-container .premium-blog-content-wrapper-inner p "=> array(
-				"font-size"=> self::get_css_value($attr['postContentfontSizeTablet'] ,$attr['postContentfontSizeType']) ,
-				"margin-bottom"=>self::get_css_value($attr['PostmarginBottomTablet'] ,$attr['PostmarginBottomType']) ,
-				"margin-top"=> self::get_css_value($attr['PostmarginTopTablet'] , $attr['PostmarginTopType']),
-				"margin-right"=> self::get_css_value($attr['PostmarginRightTablet'] , $attr['PostmarginRightType']),
-				"margin-left"=> self::get_css_value($attr['PostmarginLeftTablet'] ,$attr['PostmarginLeftType']),
-				" padding"=> self::get_css_value($attr['postSpacingTablet'] ,$attr['postSpacingType']),
+			' .premium-blog-post-container .premium-blog-entry-title h2' => array(
+				'margin-bottom' => self::get_css_value( $attr['marginBottomTablet'], $attr['marginBottomType'] ),
 			),
-			  " .premium-blog-post-outer-container img"=> array(
-				"object-fit"=> $attr['thumbnailTablet'] ,
+			' .premium-blog-post-container .premium-blog-entry-title h2 a' => array(
+				'font-size' => self::get_css_value( $attr['firstContentfontSizeTablet'], $attr['firstContentfontSizeType'] ),
 			),
-			  " .premium-blog-meta-data"=>  array(
-				"font-size"=>   self::get_css_value($attr['secondContentfontSizeTablet'] ,$attr['secondContentfontSizeType']),
+			' .premium-blog-post-container .premium-blog-content-wrapper-inner p ' => array(
+				'font-size'     => self::get_css_value( $attr['postContentfontSizeTablet'], $attr['postContentfontSizeType'] ),
+				'margin-bottom' => self::get_css_value( $attr['PostmarginBottomTablet'], $attr['PostmarginBottomType'] ),
+				'margin-top'    => self::get_css_value( $attr['PostmarginTopTablet'], $attr['PostmarginTopType'] ),
+				'margin-right'  => self::get_css_value( $attr['PostmarginRightTablet'], $attr['PostmarginRightType'] ),
+				'margin-left'   => self::get_css_value( $attr['PostmarginLeftTablet'], $attr['PostmarginLeftType'] ),
+				' padding'      => self::get_css_value( $attr['postSpacingTablet'], $attr['postSpacingType'] ),
 			),
-			  " .premium-blog-meta-data:hover"=> array(
-				'color' =>  $attr['linkColor'],
-			), 
-			  " .premium-blog-excerpt-link-wrap "=>  array(
-				" padding"=> self::get_css_value($attr['buttonSpacingTablet'] ,$attr['buttonSpacingType']),
+			' .premium-blog-post-outer-container img' => array(
+				'object-fit' => $attr['thumbnailTablet'],
 			),
-			  " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link"=> array(
-				"font-size"=>  self::get_css_value($attr['buttonfontSizeTablet'] ,$attr['buttonfontSizeType']),
-				'padding' => self::get_css_value($attr['buttonPaddingTablet'] , $attr['buttonPaddingType']),
+			' .premium-blog-meta-data'                => array(
+				'font-size' => self::get_css_value( $attr['secondContentfontSizeTablet'], $attr['secondContentfontSizeType'] ),
 			),
-			  " .premium-blog-post-tags-container "=>  array(
-				"font-size"=>  self::get_css_value($attr['tagsfontSizeTablet'] , $attr['tagsfontSizeType']),
-				) 
+			' .premium-blog-meta-data:hover'          => array(
+				'color' => $attr['linkColor'],
+			),
+			' .premium-blog-excerpt-link-wrap '       => array(
+				' padding' => self::get_css_value( $attr['buttonSpacingTablet'], $attr['buttonSpacingType'] ),
+			),
+			' .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link' => array(
+				'font-size' => self::get_css_value( $attr['buttonfontSizeTablet'], $attr['buttonfontSizeType'] ),
+				'padding'   => self::get_css_value( $attr['buttonPaddingTablet'], $attr['buttonPaddingType'] ),
+			),
+			' .premium-blog-post-tags-container '     => array(
+				'font-size' => self::get_css_value( $attr['tagsfontSizeTablet'], $attr['tagsfontSizeType'] ),
+			),
 		);
-		
 		$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-not_set' : '#premium-blog-';
-
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
-
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
-
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
-
+		$desktop       = self::generate_css( $selectors, $base_selector . $id );
+		$tablet        = self::generate_css( $t_selectors, $base_selector . $id );
+		$mobile        = self::generate_css( $m_selectors, $base_selector . $id );
 		$generated_css = array(
 			'desktop' => $desktop,
 			'tablet'  => $tablet,
@@ -1466,38 +1386,29 @@ class PBG_Blocks_Helper {
 	 *
 	 * @param integer $pages pages number.
 	 */
-
 	public static function set_pagination_limit( $pages ) {
 		self::$page_limit = $pages;
 	}
-
 	public static function render_pagination( $attributes ) {
-		
-        $pages = self::$page_limit;
-
-        if ( !empty( $attributes['pageLimit'] ) ) {
-            $pages = min( $attributes['pageLimit'], $pages );
+		$pages = self::$page_limit;
+		if ( ! empty( $attributes['pageLimit'] ) ) {
+			$pages = min( $attributes['pageLimit'], $pages );
 		}
-		
-		$paged = self::get_paged();
-		
+		$paged        = self::get_paged();
 		$current_page = $paged;
-		
-        if ( !$current_page ) {
-            $current_page = 1;
+		if ( ! $current_page ) {
+			$current_page = 1;
 		}
-		
-        $nav_links = paginate_links(
-            array(
-                'current' => $current_page,
-                'total' => $pages,
-                'type' => 'array',
-            )
+		$nav_links = paginate_links(
+			array(
+				'current' => $current_page,
+				'total'   => $pages,
+				'type'    => 'array',
+			)
 		);
-
 		?>
 		
-			<nav class='premium-blog-pagination-container' role='navigation'aria-label="<?php echo esc_attr(__('Pagination', 'premium-addons-for-elementor')); ?>">
+			<nav class='premium-blog-pagination-container' role='navigation'aria-label="<?php echo esc_attr( __( 'Pagination', 'premium-addons-for-elementor' ) ); ?>">
 				<?php echo wp_kses_post( implode( PHP_EOL, $nav_links ) ); ?>
 			</nav>
 
@@ -1515,30 +1426,24 @@ class PBG_Blocks_Helper {
 	}
 	public function fix_found_posts_query( $found_posts, $query ) {
 		$offset_to_fix = $query->get( 'offset_to_fix' );
-
 		if ( $offset_to_fix ) {
 			$found_posts -= $offset_to_fix;
 		}
-
 		return $found_posts;
 	}
 	public static function get_taxnomies( $type ) {
 		$taxonomies = get_object_taxonomies( 'post', 'objects' );
 		$data       = array();
-
 		foreach ( $taxonomies as $tax_slug => $tax ) {
 			if ( ! $tax->public || ! $tax->show_ui ) {
 				continue;
 			}
-
 			$data[ $tax_slug ] = $tax;
 		}
 	}
-
 	public static function get_query_posts( $attributes ) {
 		$post_args = self::get_query_args( $attributes );
-
-		$defaults = array(
+		$defaults  = array(
 			'author'         => '',
 			'category'       => '',
 			'orderBy'        => '',
@@ -1550,14 +1455,9 @@ class PBG_Blocks_Helper {
 		$query = new \WP_Query( $query_args );
 
 		$total_pages = $query->max_num_pages;
-
 		self::set_pagination_limit( $total_pages );
-
 		return $query;
 	}
-
-	
-
 	public static function get_paged() {
 		global $wp_the_query, $paged;
 		if ( isset( $_POST['page_number'] ) && '' !== $_POST['page_number'] ) {
@@ -1579,38 +1479,29 @@ class PBG_Blocks_Helper {
 		}
 		return 0;
 	}
-
-
 	public static function generate_css( $selectors, $id ) {
 		$styling_css = '';
-
 		if ( empty( $selectors ) ) {
 			return;
 		}
-
 		foreach ( $selectors as $key => $value ) {
 			$css = '';
-
 			foreach ( $value as $j => $val ) {
 				if ( 'font-family' === $j && 'Default' === $val ) {
 					continue;
 				}
-
 				if ( ! empty( $val ) || 0 === $val ) {
 					$css .= $j . ': ' . $val . ';';
 				}
 			}
-
 			if ( ! empty( $css ) ) {
 				$styling_css .= $id;
 				$styling_css .= $key . '{';
 				$styling_css .= $css . '}';
 			}
 		}
-
 		return $styling_css;
 	}
-
 	/**
 	 * Get CSS value
 	 *
@@ -1634,25 +1525,18 @@ class PBG_Blocks_Helper {
 	 * @param string $base Base.
 	 * @since 1.14.9
 	 */
-
 	public static function get_css_value( $value = '', $unit = '' ) {
-
         // @codingStandardsIgnoreStart
-
         if ('' == $value) {
             return $value;
         }
         // @codingStandardsIgnoreEnd
-
 		$css_val = '';
-
 		if ( ! empty( $value ) ) {
 			$css_val = esc_attr( $value ) . $unit;
 		}
-
 		return $css_val;
 	}
-
 	/**
 	 * Generates stylesheet for reusable blocks.
 	 *
@@ -1661,13 +1545,11 @@ class PBG_Blocks_Helper {
 	 */
 
 	public function get_stylesheet( $blocks ) {
-		$desktop = '';
-		$tablet  = '';
-		$mobile  = '';
-
+		$desktop         = '';
+		$tablet          = '';
+		$mobile          = '';
 		$tab_styling_css = '';
 		$mob_styling_css = '';
-
 		foreach ( $blocks as $i => $block ) {
 			if ( is_array( $block ) ) {
 				if ( '' === $block['blockName'] ) {
@@ -1677,16 +1559,13 @@ class PBG_Blocks_Helper {
 					$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
 					if ( $id ) {
-						$content = get_post_field( 'post_content', $id );
-
-						$reusable_blocks = $this->parse( $content );
-
+						$content           = get_post_field( 'post_content', $id );
+						$reusable_blocks   = $this->parse( $content );
 						self::$stylesheet .= $this->get_stylesheet( $reusable_blocks );
 					}
 				} else {
 					// Get CSS for the Block.
 					$css = $this->get_block_css( $block );
-
 					if ( isset( $css['desktop'] ) ) {
 						$desktop .= $css['desktop'];
 						$tablet  .= $css['tablet'];
@@ -1701,26 +1580,21 @@ class PBG_Blocks_Helper {
 			$tab_styling_css .= $tablet;
 			$tab_styling_css .= '}';
 		}
-
 		if ( ! empty( $mobile ) ) {
 			$mob_styling_css .= '@media only screen and (max-width: ' . PBG_MOBILE_BREAKPOINT . 'px) {';
 			$mob_styling_css .= $mobile;
 			$mob_styling_css .= '}';
 		}
-
 		return $desktop . $tab_styling_css . $mob_styling_css;
 	}
 }
-
 if ( ! function_exists( 'PBG_Blocks_Helper' ) ) {
-
 	/**
 	 * Returns an instance of the plugin class.
 	 *
 	 * @since  1.0.0
 	 * @return object
 	 */
-
 	function PBG_Blocks_Helper() {
 		return PBG_Blocks_Helper::get_instance();
 	}

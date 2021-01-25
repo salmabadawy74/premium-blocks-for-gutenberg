@@ -142,7 +142,7 @@ registerBlockType("premium/post-blog", {
     },
     autoplaySpeed: {
       type: "number",
-      default: 5000,
+      default: '500',
     },
     centerMode: {
       type: "boolean",
@@ -150,7 +150,7 @@ registerBlockType("premium/post-blog", {
     },
     slideSpacing: {
       type: "number",
-      default: 15,
+      default: 10,
     },
     navigationDots: {
       type: "boolean",
@@ -174,6 +174,7 @@ registerBlockType("premium/post-blog", {
     },
     paginationPosition: {
       type: "string",
+      default : "left"
     },
     imageSize: {
       type: "string",
@@ -370,15 +371,18 @@ registerBlockType("premium/post-blog", {
     },
     marginBottom: {
       type: "number",
+      default:0
     },
     marginBottomTablet: {
       type: "number",
+      default:0
     },
     marginBottomMobile: {
       type: "number",
     },
     marginBottom: {
       type: "number",
+      default:0
     },
     PostmarginBottomType: {
       type: "string",
@@ -386,15 +390,15 @@ registerBlockType("premium/post-blog", {
     },
     PostmarginBottom: {
       type: "number",
-      default:'',
+      default:0
     },
     PostmarginBottomMobile: {
       type: "number",
-      default:''
+      default:0
     },
     PostmarginBottomTablet: {
       type: "number",
-      default:''
+      default:0
     },
     PostmarginTopType: {
       type: "string",
@@ -402,12 +406,15 @@ registerBlockType("premium/post-blog", {
     },
     PostmarginTop: {
       type: "number",
+      default:0
     },
     PostmarginTopMobile: {
       type: "number",
+      default:0
     },
     PostmarginTopTablet: {
       type: "number",
+      default:0
     },
     postSpacingType: {
       type: "string",
@@ -441,12 +448,15 @@ registerBlockType("premium/post-blog", {
     },
     PostmarginRight: {
       type: "number",
+      default:30
     },
     PostmarginRightMobile: {
       type: "number",
+      default:30
     },
     PostmarginRightTablet: {
       type: "number",
+      default:30
     },
     PostmarginLeftType: {
       type: "string",
@@ -456,9 +466,11 @@ registerBlockType("premium/post-blog", {
     },
     PostmarginLeftMobile: {
       type: "number",
+      default:30
     },
     PostmarginLeftTablet: {
       type: "number",
+      default:30
     },
     backgroundPostContent: {
       type: "string",
@@ -565,6 +577,10 @@ registerBlockType("premium/post-blog", {
     buttonPaddingTablet: {
       type: "number",
     },
+    filterPosition: {
+      type: "string",
+      default : 'left'
+    }
   },
   example: {},
   edit: edit,

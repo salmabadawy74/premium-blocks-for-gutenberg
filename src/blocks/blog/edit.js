@@ -430,14 +430,6 @@ class edit extends Component {
               options={[
                 { label: "1536x1536", value: "1536x1536" },
                 { label: "2048x2048", value: "2048x2048" },
-                {
-                  label: "ab-block-post-grid-landscape",
-                  value: "ab-block-post-grid-landscape",
-                },
-                {
-                  label: "ab-block-post-grid-square",
-                  value: "ab-block-post-grid-square",
-                },
                 { label: "full", value: "full" },
                 { label: "large", value: "large" },
                 { label: "medium", value: "medium" },
@@ -698,6 +690,10 @@ class edit extends Component {
                   onChange={(newSpeed) =>
                     setAttributes({ autoplaySpeed: newSpeed })
                   }
+                  min={ 100 }
+                  max={2000}
+                  
+                  
                 />
                 <ToggleControl
                   label={__("Center Mode")}
@@ -1019,8 +1015,8 @@ class edit extends Component {
             }
           />
           <PremiumMarginR
-            directions={["bottom", "top", "right", "left"]}
-            setAttributes={setAttributes}
+            directions={[ "right", "left"]}
+             setAttributes={setAttributes}
             marginBottomType={{
               value: PostmarginBottomType,
               label: __("marginBottomType"),
@@ -1405,7 +1401,7 @@ numOfPosts,
     jQuery.ajax({
       url: PremiumSettings.ajaxurl,
       data: {
-        action: 'uagb_post_pagination',
+        action: 'premium_post_pagination',
         attributes: props.attributes,
         nonce: PremiumSettings.nonce,
       },

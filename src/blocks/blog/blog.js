@@ -39,7 +39,10 @@ class Blog extends React.Component {
       pagination,
       paginationMarkup,
     } = attributes;
+
+
     let lastDisplay;
+
     const gridClasses = gridCheck ? "premium-blog-even" : "premium-blog-list";
     const displayPosts =
       latestPosts.length > numOfPosts
@@ -87,7 +90,6 @@ class Blog extends React.Component {
                               </a>
                             </h2>
                           </div>
-
                           <div className="premium-blog-entry-meta">
                             <Meta
                               post={post}
@@ -98,7 +100,6 @@ class Blog extends React.Component {
                         </div>
                       </div>
                       <Excerpt post={post} attributes={attributes} />
-
                       <Button post={post} attributes={attributes} />
                       <Tags
                         tagList={tagList}
@@ -111,7 +112,6 @@ class Blog extends React.Component {
               </div>
             ))}
           </div>
-        </div>
         {pagination && (
           <div className="premium-blog-footer" >
           <div
@@ -119,7 +119,8 @@ class Blog extends React.Component {
             className="premium-blog-pagination-container"
           ></div>
           </div>
-        )}
+        ) }
+        </div>
       </Fragment>
     );
   }

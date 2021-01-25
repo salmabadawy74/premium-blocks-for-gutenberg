@@ -25,17 +25,17 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				self::$instance = new self();
 			}
 			return self::$instance;
-		}		
+		}
 		/**
 		 * Constructor
 		 */
 		public function __construct() {
-			
+
 			add_action( 'init', array( $this, 'register_blocks' ) );
-			
-			add_action( 'wp_ajax_uagb_post_pagination', array( $this, 'post_pagination' ) );
-			add_action( 'wp_ajax_nopriv_uagb_post_pagination', array( $this, 'post_pagination' ) );
-			add_action( 'wp_footer', array($this,'add_post_dynamic_script'),1000 );
+
+			add_action( 'wp_ajax_premium_post_pagination', array( $this, 'post_pagination' ) );
+			add_action( 'wp_ajax_nopriv_premium_post_pagination', array( $this, 'post_pagination' ) );
+			add_action( 'wp_footer', array( $this, 'add_post_dynamic_script' ), 1000 );
 		}
 
 		// Check if the register function exists.
@@ -51,31 +51,31 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
-							'featuredImage'               => array(
+							'featuredImage' => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'hoverEffect'                 => array(
+							'hoverEffect'   => array(
 								'type'    => 'string',
 								'default' => 'zoomin',
 							),
-							'height'                      => array(
+							'height'        => array(
 								'type'    => 'number',
 								'default' => 300,
 							),
-							'HeightU'                     => array(
+							'HeightU'       => array(
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							'rowGapUnit'                  => array(
+							'rowGapUnit'    => array(
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							'pagination'                  => array(
+							'pagination'    => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'pageLimit'                   => array(
+							'pageLimit'     => array(
 								'type'    => 'number',
 								'default' => 10,
 							),
@@ -108,18 +108,15 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'number',
 					'default' => 4,
 				),
-				'layoutValue' => array(
-					'type' => 'string',
-					'default' =>'even'
+				'layoutValue'                 => array(
+					'type'    => 'string',
+					'default' => 'even',
 				),
 				'displayPostContent'          => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'filterPosition'=>array(
-					'type'=>'string',
-					'default'=>'left'
-				),
+				
 				'displayPostDate'             => array(
 					'type'    => 'boolean',
 					'default' => true,
@@ -152,7 +149,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				
 				'blur'                        => array(
 					'type'    => 'number',
 					'default' => 0,
@@ -169,7 +165,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'string',
 					'default' => 'large',
 				),
-			
 
 				'readMoreText'                => array(
 					'type'    => 'string',
@@ -178,7 +173,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'borderWidth'                 => array(
 					'type' => 'number',
 				),
-			
+
 				'borderStyle'                 => array(
 					'type'    => 'string',
 					'default' => 'none',
@@ -187,7 +182,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
-
 				'borderRadius'                => array(
 					'type' => 'number',
 				),
@@ -203,7 +197,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'number',
 					'default' => 1,
 				),
-	
 				'order'                       => array(
 					'type'    => 'string',
 					'default' => 'desc',
@@ -225,215 +218,202 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'default' => false,
 				),
 				// Title Attributes.
-				'firstContentfontSizeType' => array(
+				'firstContentfontSizeType'    => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'firstContentfontSize'   => array(
-					'type'    => 'number',
-					'default' => ''
-				
-				),
-				'firstContentfontSizeMobile' => array(
+				'firstContentfontSize'        => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'firstContentfontSizeTablet'           => array(
+				'firstContentfontSizeMobile'  => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'firstContentWeight'         => array(
+				'firstContentfontSizeTablet'  => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'firstContentWeight'          => array(
 					'type' => 'number',
 				),
-				'firstContentStyle'         => array(
+				'firstContentStyle'           => array(
 					'type' => 'number',
 				),
-				'firstContentLetter'             => array(
+				'firstContentLetter'          => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'firstContentUpper'             => array(
+				'firstContentUpper'           => array(
 					'type' => 'boolean',
 				),
-				'typoColor'             => array(
+				'typoColor'                   => array(
 					'type' => 'string',
 				),
-				'hoverColor'         => array(
-					'type'    => 'string',					
-				),
-				'marginBottomType'             => array(
+				'hoverColor'                  => array(
 					'type' => 'string',
-					'default' =>'px'
 				),
-				'marginBottom'       => array(
-					'type' => 'number',
-				),
-				'marginBottomMobile'       => array(
-					'type' => 'number',
-				),
-				'marginBottomTablet'        => array(
-					'type'    => 'number',
-					
-				),
-				// Meta attributes.
-				'secondContentfontSizeType'                   => array(
+				'marginBottomType'            => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'secondContentfontSize'                => array(
+				'marginBottom'                => array(
+					'type' => 'number',
+				),
+				'marginBottomMobile'          => array(
+					'type' => 'number',
+				),
+				'marginBottomTablet'          => array(
+					'type' => 'number',
+				),
+				// Meta attributes.
+				'secondContentfontSizeType'   => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
+				'secondContentfontSize'       => array(
 					'type'    => 'number',
 					'default' => '30',
 				),
-				'secondContentfontSizeMobile'            => array(
+				'secondContentfontSizeMobile' => array(
 					'type'    => 'number',
 					'default' => '',
-					
 				),
-				'secondContentfontSizeTablet'          => array(
-					'type' => 'number',
+				'secondContentfontSizeTablet' => array(
+					'type'    => 'number',
 					'default' => '',
 				),
-				'secondContentWeight'          => array(
-					'type' => 'number',
+				'secondContentWeight'         => array(
+					'type'    => 'number',
 					'default' => '',
 				),
-				'secondContentStyle'              => array(
+				'secondContentStyle'          => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'secondContentLetter'              => array(
-					'type' => 'number',
+				'secondContentLetter'         => array(
+					'type'    => 'number',
 					'default' => '',
 				),
-				'secondContentUpper'              => array(
+				'secondContentUpper'          => array(
 					'type' => 'boolean',
 				),
-				'metaColor'          => array(
+				'metaColor'                   => array(
 					'type'    => 'string',
 					'default' => '',
-					
 				),
-				'linkColor'              => array(
-					'type' => 'string',
+				'linkColor'                   => array(
+					'type'    => 'string',
 					'default' => '',
-
 				),
-				'sepaColor'        => array(
-					'type' => 'string',
+				'sepaColor'                   => array(
+					'type'    => 'string',
 					'default' => '',
 				),
 				'metaLineHeightMobile'        => array(
-					'type' => 'number',
+					'type'    => 'number',
 					'default' => '',
 				),
-			
 				// Excerpt Attributes.
-				'PostmarginBottomType'                => array(
+				'PostmarginBottomType'        => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'PostmarginBottom'             => array(
+				'PostmarginBottom'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'PostmarginBottomMobile'         => array(
+				'PostmarginBottomMobile'      => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'PostmarginBottomTablet'       => array(
+				'PostmarginBottomTablet'      => array(
 					'type' => 'number',
 				),
-				'PostmarginTopType'       => array(
-					'type' => 'string',
-					'default' => 'px'
-				),
-				'PostmarginTop'           => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'PostmarginTopMobile'           => array(
-					'type' => 'number',
-				),
-				'PostmarginTopTablet'           => array(
-					'type' => 'number',
-				),
-				'marginRightType'       => array(
-					'type'    => 'number',
-					'default' => 'px'
-					
-				),
-				'PostmarginRight'           => array(
-					'type' => 'number',
-					'default' => ''
-				),
-				'PostmarginRightMobile'     => array(
-					'type' => 'number',
-				),
-				'PostmarginRightTablet'     => array(
-					'type' => 'number',
-				),
-				'PostmarginLeftType'      => array(
+				'PostmarginTopType'           => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'PostmarginLeft'     => array(
+				'PostmarginTop'               => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'PostmarginLeftMobile'     => array(
+				'PostmarginTopMobile'         => array(
+					'type' => 'number',
+				),
+				'PostmarginTopTablet'         => array(
+					'type' => 'number',
+				),
+				'marginRightType'             => array(
+					'type'    => 'number',
+					'default' => 'px',
+				),
+				'PostmarginRight'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'PostmarginLeftTablet'     => array(
+				'PostmarginRightMobile'       => array(
+					'type' => 'number',
+				),
+				'PostmarginRightTablet'       => array(
+					'type' => 'number',
+				),
+				'PostmarginLeftType'          => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
+				'PostmarginLeft'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'backgroundPostContent' =>array(
-					'type'=>'string',
-					'default'=>''
+				'PostmarginLeftMobile'        => array(
+					'type'    => 'number',
+					'default' => '',
 				),
-				'containerShadowColor' =>array(
-					'type'=>'string',
-					'default'=>''
+				'PostmarginLeftTablet'        => array(
+					'type'    => 'number',
+					'default' => '',
 				),
-				'containerShadowBlur' =>array(
-					'type'=>'string',
-					'default'=>''
+				'backgroundPostContent'       => array(
+					'type'    => 'string',
+					'default' => '',
 				),
-				'containerShadowHorizontal' =>array(
-					'type'=>'string',
-					'default'=> ' '
-
+				'containerShadowColor'        => array(
+					'type'    => 'string',
+					'default' => '',
 				),
-				'containerShadowVertical' =>array(
-					'type'=>'string',
-					'default'=> ' '
-
+				'containerShadowBlur'         => array(
+					'type'    => 'string',
+					'default' => '',
 				),
-				'containerShadowPosition' =>array(
-					'type'=>'string',
-					'default'=> ' '
-
+				'containerShadowHorizontal'   => array(
+					'type'    => 'string',
+					'default' => ' ',
 				),
-				'postSpacingType' =>array(
-					'type'=>'string',
-					'default'=> 'px'
-
+				'containerShadowVertical'     => array(
+					'type'    => 'string',
+					'default' => ' ',
 				),
-				'postSpacing' =>array(
-					'type'=>'number',
-					'default'=> ' '
+				'containerShadowPosition'     => array(
+					'type'    => 'string',
+					'default' => ' ',
 				),
-				'postSpacingMobile' =>array(
-					'type'=>'number',
-					'default'=> ' '
-
+				'postSpacingType'             => array(
+					'type'    => 'string',
+					'default' => 'px',
 				),
-				'postSpacingTablet' =>array(
-					'type'=>'number',
-					'default'=> ' '
+				'postSpacing'                 => array(
+					'type'    => 'number',
+					'default' => ' ',
 				),
-				
+				'postSpacingMobile'           => array(
+					'type'    => 'number',
+					'default' => ' ',
+				),
+				'postSpacingTablet'           => array(
+					'type'    => 'number',
+					'default' => ' ',
+				),
 				// CTA attributes.
 				'buttonfontSizeType'          => array(
 					'type'    => 'string',
@@ -491,7 +471,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'buttonPaddingTablet'         => array(
 					'type' => 'number',
 				),
-				//tags Style
+				// tags Style
 				'tagsfontSizeType'            => array(
 					'type'    => 'string',
 					'default' => 'px',
@@ -517,17 +497,13 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'tagsUpper'                   => array(
 					'type' => 'string',
 				),
-				'tagColor' => array(
-					'type'=>'string',
-
+				'tagColor'                    => array(
+					'type' => 'string',
 				),
-				'hoverTag' =>array(
-					'type'=>'string',
+				'hoverTag'                    => array(
+					'type' => 'string',
 				),
-
-
 				// Spacing Attributes.
-			
 				'excerptType'                 => array(
 					'type'    => 'string',
 					'default' => 'Dots',
@@ -544,7 +520,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'postFilter'                  => array(
 					'type' => 'string',
 				),
-				//carousel
+				// carousel
 				'Carousel'                    => array(
 					'type'    => 'boolean',
 					'default' => false,
@@ -581,12 +557,11 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'number',
 					'default' => 0,
 				),
-				//image style
-				'overlayColor' =>array(
-					'type'=>'string',
-					'default' =>'transparent'
+				// image style
+				'overlayColor'                => array(
+					'type'    => 'string',
+					'default' => 'transparent',
 				),
-
 				'saturation'                  => array(
 					'type'    => 'number',
 					'default' => '100',
@@ -595,20 +570,18 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blur' =>array(
-					'type'=>'number',
-					'default'=> ''
+				'blur'                        => array(
+					'type'    => 'number',
+					'default' => '',
 				),
-				'bright' =>array(
-					'type'=>'number',
-					'default'=> ''
+				'bright'                      => array(
+					'type'    => 'number',
+					'default' => '',
 				),
-				'contrast' =>array(
-					'type'=>'number',
-					'default'=> ''
+				'contrast'                    => array(
+					'type'    => 'number',
+					'default' => '',
 				),
-			
-				
 				'currentPage'                 => array(
 					'type'    => 'number',
 					'default' => 0,
@@ -640,7 +613,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'thumbnailTablet'             => array(
 					'type'    => 'string',
 					'default' => 'cover',
-				),	
+				),
 			);
 		}
 		/**
@@ -654,17 +627,15 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			// Render query.
 			$query = PBG_Blocks_Helper::get_query_posts( $attributes );
 			// Cache the settings.
-			 if ( $attributes['layoutValue']==="even" ) {
-			
-			self::$grid_settings['grid'][ $attributes['block_id'] ] = $attributes;
-			 }
-			 if($attributes['layoutValue']==="masonry"){
-				self::$grid_settings['masonry'][ $attributes['block_id'] ] = $attributes; 
-			 }
-			 if($attributes['Carousel']){
-				self::$grid_settings['carousel'][ $attributes['block_id'] ] = $attributes; 
-			 }
-	
+			if ( $attributes['layoutValue'] === 'even' ) {
+				self::$grid_settings['grid'][ $attributes['block_id'] ] = $attributes;
+			}
+			if ( $attributes['layoutValue'] === 'masonry' ) {
+				self::$grid_settings['masonry'][ $attributes['block_id'] ] = $attributes;
+			}
+			if ( $attributes['Carousel'] ) {
+				self::$grid_settings['carousel'][ $attributes['block_id'] ] = $attributes;
+			}
 			ob_start();
 			$this->get_post_html( $attributes, $query );
 			// Output the post markup.
@@ -676,88 +647,52 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 		 * @param array  $attributes Array of block attributes.
 		 *
 		 * @param object $query WP_Query object.
-
 		 * @since 0.0.1
 		 */
 		public function get_post_html( $attributes, $query ) {
-			if(!$attributes['gridCheck']){
-				$attributes['columns']=$attributes['tcolumns']=$attributes['mcolumns'] = 1;
+			if ( ! $attributes['gridCheck'] ) {
+				$attributes['columns'] = $attributes['tcolumns'] = $attributes['mcolumns'] = 1;
 			}
-			if ( isset( self::$grid_settings['masonry'] )   ){
 				$wrap      = array(
-					'premium-blog-wrap',
-					'post__columns-' . $attributes['columns'],
-					'post__columns-tablet-' . $attributes['tcolumns'],
-					'post__columns-mobile-' . $attributes['mcolumns'],
-					
-					);
-			}
-			if ( isset( self::$grid_settings['grid'] )   ){
-				$wrap      = array(
-					'premium-blog-wrap',
-					'post__columns-' . $attributes['columns'],
-					'post__columns-tablet-' . $attributes['tcolumns'],
-					'post__columns-mobile-' . $attributes['mcolumns'],
+				'premium-blog-wrap',
+				'post__columns-' . $attributes['columns'],
+				'post__columns-tablet-' . $attributes['tcolumns'],
+				'post__columns-mobile-' . $attributes['mcolumns'],
+				'equal-Height',
+				);
+		
+			
+
+			if ( isset( self::$grid_settings['carousel'] ) ) {
+				$wrap = array(
+					'premium-blog-wrap',	
+					'premium-blog-carousel',
 					'equal-Height',
-					'premium-blog-even'
-					);
-			
-				}
-				if ( isset( self::$grid_settings['carousel'] )   ){
-					$wrap      = array(
-						'premium-blog-wrap',	'equal-Height','premium-blog-even'
-						
-						);
-				
-					}
-				
-			
-			
-			
+				);
+			}
 				$block_id  = 'premium-blog' . $attributes['block_id'];
 				$outerwrap = array(
 					'premium-blog',
-				'premium-blog-' . $attributes['block_id'],
-				'premium-block-' . $attributes['block_id']); ?>
+					'premium-blog-' . $attributes['block_id'],
+					'premium-block-' . $attributes['block_id'],
+				); ?>
 			<div class="<?php echo esc_html( implode( ' ', $outerwrap ) ); ?>">
 				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
 					<?php
 										$this->posts_articles_markup( $query, $attributes );
-						?>
-					
-					
+					?>
 			</div>
-			
-			
-
-				
-				<div class="uagb-post-pagination-wrap">
-					<?php echo $this->render_pagination( $query, $attributes );  ?>
-				</div>
-		
+				<?php if ( $attributes['pagination'] ) : ?>
+					<div className="premium-blog-footer" >
+							<div class="premium-blog-pagination-container">
+								<?php echo $this->render_pagination( $query, $attributes ); ?>
+							</div>
+							</div>
+			<?php	endif; ?>
 			</div>
 			<?php
 		}
-		/**
-		 * Renders the post post pagination on server.
-		 *
-		 * @param object $query WP_Query object.
-		 * @param array  $attributes Array of block attributes.
-		 * @since 1.18.1
-		 */
-
-
-
-		/**
-		 * Sends the Post pagination markup to edit.js
-		 *
-		 * @since 1.14.9
-		 */
-		/*
-		   * Sends the Posts to Masonry AJAX.
-		   *
-		   * @since 1.18.1
-		   */
+		
 		/**
 		 * Render Posts HTML for Masonry Pagination.
 		 *
@@ -771,32 +706,28 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				// Filter to modify the attributes based on content requirement.
 				$attributes = apply_filters( 'premium_post_alter_attributes', $attributes, get_the_ID() );
 				?>
-					<div class="premium-blog-post-outer-container">
-						<div class="premium-blog-post-container">
+				<div class="premium-blog-post-outer-container">
+					<div class="premium-blog-post-container">
 						<?php $this->render_image( $attributes ); ?>
-
-						<div class="premium-blog-content-wrapper empty-thumb equal-Height">
-						<div class="premium-blog-content-wrapper-inner">
-						<div class="premium-blog-inner-container">
+				<div class="premium-blog-content-wrapper empty-thumb ">
+					<div class="premium-blog-content-wrapper-inner">
+					<div class="premium-blog-inner-container">
 						<div class="premium-blog-entry-container">						
-							<?php $this->render_post_title( $attributes ); ?>
+								<?php $this->render_post_title( $attributes ); ?>
 								<?php $this->render_meta( $attributes ); ?>
-							</div>
-						</div>
-								<?php $this->get_post_content( $attributes ); ?>
-								<?php if ( $attributes['displayPostTags'] && has_tag() ) : ?>
-								<div class="premium-blog-post-tags-container">
-									<i class="fa fa-tags fa-fw"></i>
-									<?php the_tags( ' ', ', ' ); ?>
-								</div>
-								<?php endif; ?>
-						</div>
-						
-						</div>
-							
-							
 						</div>
 					</div>
+							<?php $this->get_post_content( $attributes ); ?>
+							<?php if ( $attributes['displayPostTags'] && has_tag() ) : ?>
+					<div class="premium-blog-post-tags-container">
+								<i class="fa fa-tags fa-fw"></i>
+								<?php the_tags( ' ', ', ' ); ?>
+						</div>
+							<?php endif; ?>
+							</div>
+						</div>
+					</div>
+				</div>
 					<?php
 			}
 			wp_reset_postdata();
@@ -824,73 +755,51 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 						= array(
 							'id' => get_post_thumbnail_id(),
 						);
-						$wrapImage = array(
+						$wrapImage       = array(
 							'premium-blog-thumbnail-container',
-							'premium-blog-'.
-						 $attributes['hoverEffect'].
-						'-effect');
-			?>
-
-		<div class="premium-blog-thumb-effect-wrapper">
-	
-			<div class="<?php echo esc_html( implode( ' ', $wrapImage ) ); ?>">
-				<?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imageSize'] ); ?>
-		
-			</div>
-			<div class='premium-blog-thumbnail-overlay'>
-			<a href="<?php the_permalink(); ?>">
+							'premium-blog-' .
+							$attributes['hoverEffect'] .
+						   '-effect',
+						);
+						?>
+			<div class="premium-blog-thumb-effect-wrapper">
+				<div class="<?php echo esc_html( implode( ' ', $wrapImage ) ); ?>">
+					<?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imageSize'] ); ?>		
+				</div>
+				<div class='premium-blog-thumbnail-overlay'>
+					<a href="<?php the_permalink(); ?>">
 						
 					</a>
+				</div>
 			</div>
-		
-		</div>
 			<?php
 		}
-
+		/**
+		 * Function Render Pagination
+		 */
 		public function post_pagination() {
-
-
 			if ( isset( $_POST['attributes'] ) ) {
-
-				$query = PBG_Blocks_Helper::get_query_posts( $_POST['attributes'] );
-
+				$query             = PBG_Blocks_Helper::get_query_posts( $_POST['attributes'] );
 				$pagination_markup = $this->render_pagination( $query, $_POST['attributes'] );
-
 				wp_send_json_success( $pagination_markup );
 			}
-
 			wp_send_json_error( ' No attributes recieved' );
 		}
 		public function render_pagination( $query, $attributes ) {
-
-			// $permalink_structure = get_option( 'permalink_structure' );
-			// $base                = untrailingslashit( wp_specialchars_decode( get_pagenum_link() ) );
-			// $base                = UAGB_Helper::build_base_url( $permalink_structure, $base );
-			// $format              = UAGB_Helper::paged_format( $permalink_structure, $base );
-			$paged               = PBG_Blocks_Helper::get_paged( $query );
-			$page_limit          = min( $attributes['pageLimit'], $query->max_num_pages );
-			$page_limit          = isset( $page_limit ) ? $page_limit : $attributes['postsToShow'];
-			$attributes['postsToShow'];
-
+			$paged      = PBG_Blocks_Helper::get_paged( $query );
+			$page_limit = min( $attributes['pageLimit'], $query->max_num_pages );
+			$page_limit = isset( $page_limit ) ? $page_limit : $attributes['postsToShow'];
+			$attributes['numOfPosts'];
 			$links = paginate_links(
 				array(
-					// 'base'      => $base . '%_%',
-					// 'format'    => $format,
-					'current'   => ( ! $paged ) ? 1 : $paged,
-					'total'     => $page_limit,
-					'type'      => 'array',
-					'mid_size'  => 4,
-					'end_size'  => 4,
-					// 'prev_text' => $attributes['paginationPrevText'],
-					// 'next_text' => $attributes['paginationNextText'],
+					'current' => ( ! $paged ) ? 1 : $paged,
+					'total'   => $page_limit,
+					'type'    => 'array',
 				)
 			);
-
 			if ( isset( $links ) ) {
-
 				return wp_kses_post( implode( PHP_EOL, $links ) );
 			}
-
 			return '';
 		}
 		/**
@@ -934,15 +843,13 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			?>
 			<div class="premium-blog-post-time premium-blog-meta-data">
 			<time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>"
-    class="premium-blog-post-time premium-blog-meta-data">
-    <span class="dashicons-calendar dashicons"></span>
-    <?php echo esc_html( get_the_date( '', $post->ID ) ); ?>
-</time>
-<span class="premium-blog-meta-separtor">.</span>
-
+				class="premium-blog-post-time premium-blog-meta-data">
+				<span class="dashicons-calendar dashicons"></span>
+				<?php echo esc_html( get_the_date( '', $post->ID ) ); ?>
+			</time>
+			<span class="premium-blog-meta-separtor">.</span>
 			</div>
-
-<?php
+			<?php
 		}
 		/**
 		 * Render Post Meta - Comment HTML.
@@ -962,7 +869,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					<?php comments_number(); ?>
 				</span>
 				<span class="premium-blog-meta-separtor">.</span>
-
 			</div>
 			<?php
 		}
@@ -989,7 +895,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				<div class="premium-blog-post-categories premium-blog-meta-data">
 					<i class="fa fa-align-left fa-fw"></i>
 					<?php the_category( ', ' ); ?>
-
 				</div>
 				<?php
 		}
@@ -997,56 +902,53 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 		 * Render Post Meta HTML.
 		 *
 		 * @param array $attributes Array of block attributes.
-		 *
-		 * @since 0.0.1
 		 */
 		public function render_meta( $attributes ) {
 			global $post;
 			do_action( 'pbg_single_post_before_meta', get_the_ID(), $attributes );
 			$meta_sequence = array( 'author', 'date', 'comment', 'taxonomy' );
-			// $meta_sequence = apply_filters("uagb_single_post_meta_sequence", $meta_sequence, get_the_ID(), $attributes);
 			?>
 				<div class="premium-blog-entry-meta">
 					<?php
-							foreach ( $meta_sequence as $key => $sequence ) {
-								switch ( $sequence ) {
-									case 'author':
-												$this->render_meta_author( $attributes );
-										break;
-									case 'date':
-													$this->render_meta_date( $attributes );
-										break;
-									case 'comment':
-										$this->render_meta_comment( $attributes );
-										break;
-									case 'taxonomy':
-										$this->render_meta_taxonomy( $attributes );
-										break;
-									default:
-										break;
-								}
-							}
-							?>
+					foreach ( $meta_sequence as $key => $sequence ) {
+						switch ( $sequence ) {
+							case 'author':
+										$this->render_meta_author( $attributes );
+								break;
+							case 'date':
+											$this->render_meta_date( $attributes );
+								break;
+							case 'comment':
+								$this->render_meta_comment( $attributes );
+								break;
+							case 'taxonomy':
+								$this->render_meta_taxonomy( $attributes );
+								break;
+							default:
+								break;
+						}
+					}
+					?>
 				</div>
 				<?php
 				  do_action( 'pbg_single_post_after_meta', get_the_ID(), $attributes );
 		}
-
-
+			/****
+			 *
+			 *
+			 * Render The Post Title
+			 */
 		public function render_post_title( $attributes ) {
-					?>
-					<div class="premium-blog-entry-title">
+			?>
+					<div class="premium-blog-entry-title">			
 					<h2>
-					<a href="<?php the_permalink(); ?>">
-						<?php esc_html( the_title() ); ?>
-					</a>
-					</h2>
-					
-					</div>
-					
+						<a href="<?php the_permalink(); ?>">
+							<?php esc_html( the_title() ); ?>
+						</a>
+					</h2>					
+					</div>					
 					<?php
 		}
-
 		/**
 		 * Render Post Excerpt HTML.
 		 *
@@ -1054,19 +956,14 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 		 *
 		 * @since 0.0.1
 		 */
-
 		protected function get_post_content( $attributes ) {
 			if ( ! $attributes['displayPostContent'] ) {
 				return;
 			}
-
-			$src = $attributes['displayPostExcerpt'];
-
+			$src          = $attributes['displayPostExcerpt'];
 			$excerpt_type = $attributes['excerptType'];
 			$excerpt_text = $attributes['readMoreText'];
-
-			$length = $attributes['excerptLength'];
-
+			$length       = $attributes['excerptLength'];
 			// Get post content.
 			if ( 'Post Excerpt' === $src ) :
 						echo '<p class="premium-blog-post-content">';
@@ -1075,7 +972,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			if ( 'Post Excerpt' === $src ) :
 						echo '</p>';
 			endif;
-
 			// Get post excerpt.
 			if ( 'Link' === $excerpt_type ) :
 						$this->get_post_excerpt_link( $excerpt_text );
@@ -1083,16 +979,12 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 		}
 		public function render_post_content( $source, $excerpt_length, $cta_type, $read_more ) {
 			$excerpt = '';
-
 			if ( 'Post Full Content' === $source ) {
-
 						// Print post full content.
 				the_content();
 			} else {
 				$excerpt = trim( get_the_excerpt() );
-
-				$words = explode( ' ', $excerpt, $excerpt_length + 1 );
-
+				$words   = explode( ' ', $excerpt, $excerpt_length + 1 );
 				if ( count( $words ) > $excerpt_length ) {
 					if ( ! has_excerpt() ) {
 						array_pop( $words );
@@ -1101,18 +993,15 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 						}
 					}
 				}
-
 				$excerpt = implode( ' ', $words );
 			}
-
 			return $excerpt;
 		}
-
 		public static function get_post_excerpt_link( $read_more ) {
 			if ( empty( $read_more ) ) {
 				return;
 			}
-
+			
 			echo '<div class="premium-blog-excerpt-link-wrap">';
 			echo '<a href="' . esc_url( get_permalink() ) . '" class="premium-blog-excerpt-link elementor-button">';
 			echo wp_kses_post( $read_more );
@@ -1120,10 +1009,8 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			echo '</div>';
 		}
 		public static function get_tags() {
-			$tags = get_tags();
-
+			$tags    = get_tags();
 			$options = array();
-
 			if ( ! empty( $tags ) && ! is_wp_error( $tags ) ) {
 				foreach ( $tags as $tag ) {
 					$options[ $tag->term_id ] = $tag->name;
@@ -1131,7 +1018,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			}
 			return $options;
 		}
-	
 		/**
 		 * Render Post CTA button HTML.
 		 *
@@ -1139,76 +1025,48 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 		 *
 		 * @since 0.0.1
 		 */
-
 		public function add_post_dynamic_script() {
-
-			if ( isset( self::$grid_settings['masonry'] )   ) {
+			if ( isset( self::$grid_settings['masonry'] ) ) {
 				foreach ( self::$grid_settings['masonry'] as $key => $value ) {
 					?>
 					<script type="text/javascript" id="Post_Masnory">
 					jQuery( document ).ready( function( $ ) {
-
-				$( '.premium-blog-wrap' ).each( function() {
-
-	
+				$( '.premium-blog-wrap' ).each( function() {	
 					var selector 	= $(this);
-
-
-	
-
-
 				var masonryArgs = {
 					itemSelector	: '.premium-blog-post-outer-container',
 					percentPosition : true,
 					layoutMode		: 'masonry',
 				};
-
 				var $isotopeObj = {};
-
 				selector.imagesLoaded( function() {
-
 					$isotopeObj = selector.isotope( masonryArgs );
-
 					$isotopeObj.imagesLoaded().progress(function() {
 						$isotopeObj.isotope("layout");
 					});
-
 					selector.find('.premium-blog-post-outer-container').resize( function() {
 						$isotopeObj.isotope( 'layout' );
 									});
 								});
-
 				});
 				});
 					</script>
 					<?php
 				}
 			}
-
-			if ( isset( self::$grid_settings['carousel'] )  ) {
+			if ( isset( self::$grid_settings['carousel'] ) ) {
 				foreach ( self::$grid_settings['carousel'] as $key => $value ) {
-
-					$dots         = ( 'dots' === $value['navigationDots'] || 'arrows_dots' === $value['navigationDots'] ) ? true : false;
-					$arrows       = ( 'arrows' === $value['navigationArrow'] || 'arrows_dots' === $value['navigationArrow'] ) ? true : false;
-					$tcolumns     = ( isset( $value['tcolumns'] ) ) ? $value['tcolumns'] : 2;
-					$mcolumns     = ( isset( $value['mcolumns'] ) ) ? $value['mcolumns'] : 1;
-					$is_rtl       = is_rtl();
-				
-
-					// ?>
-
-
-
-
-
+					$dots     = ( 'dots' === $value['navigationDots'] || 'arrows_dots' === $value['navigationDots'] ) ? true : false;
+					$arrows   = ( 'arrows' === $value['navigationArrow'] || 'arrows_dots' === $value['navigationArrow'] ) ? true : false;
+					$tcolumns = ( isset( $value['tcolumns'] ) ) ? $value['tcolumns'] : 2;
+					$mcolumns = ( isset( $value['mcolumns'] ) ) ? $value['mcolumns'] : 1;
+					$is_rtl   = is_rtl();
+					?>
 								<script type="text/javascript" id="Post_Carousel">
 								
-
 								jQuery( document ).ready( function( $ ) {
-
 										var cols = parseInt( '<?php echo esc_html( $value['columns'] ); ?>' );
 									var $scope = $( '.premium-blog' ).find( '.premium-blog-wrap' );
-
 									if ( cols >= $scope.children().length ) {
 										return;
 									}
@@ -1217,9 +1075,9 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 									'slidesToScroll' : 1,
 									'autoplaySpeed' : <?php echo esc_html( $value['autoplaySpeed'] ); ?>,
 									'autoplay' : Boolean( '<?php echo esc_html( $value['Autoplay'] ); ?>' ),
-									'arrows' : Boolean( '<?php echo esc_html($value['navigationArrow'] ); ?>' ),
-									'dots' : Boolean( '<?php echo esc_html($value['navigationDots'] ); ?>' ),
-									'centerMode' :  Boolean( '<?php echo esc_html($value['centerMode'] ); ?>' ),
+									'arrows' : Boolean( '<?php echo esc_html( $value['navigationArrow'] ); ?>' ),
+									'dots' : Boolean( '<?php echo esc_html( $value['navigationDots'] ); ?>' ),
+									'centerMode' :  Boolean( '<?php echo esc_html( $value['centerMode'] ); ?>' ),
 								
 									'responsive' : [
 										{
@@ -1237,7 +1095,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 											}
 										}
 									]
-
 													};
 									$scope.imagesLoaded( function() {
 									$scope.slick(
@@ -1246,15 +1103,11 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 									});
 								})
 								</script>
-
 				
 					<?php
 				}
 			}
 		}
-
-			
-		
 		/**
 		 * Render Complete Box Link HTML.
 		 *

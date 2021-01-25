@@ -115,7 +115,8 @@ function styling(props) {
     hoverTag,
     tagsfontSizeTablet,
     tagsfontSizeMobile,
-    paginationPosition
+    paginationPosition,
+    slideSpacing
   } = props.attributes;
   const { latestPosts } = props;
   var selectors = {};
@@ -141,8 +142,11 @@ function styling(props) {
 
       filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
     },
-    " .premium-blog-post-container .premium-blog-entry-title h2 a ": {
+    " .premium-blog-post-container .premium-blog-entry-title h2": {
       "margin-bottom": generateCSSUnit(marginBottom, marginBottomType),
+   },
+    " .premium-blog-post-container .premium-blog-entry-title h2 a ": {
+     
       "font-size": generateCSSUnit(firstContentfontSize,firstContentfontSizeType),
       "font-weight": `${firstContentWeight};`,
       "font-style": `${firstContentStyle};`,
@@ -159,10 +163,10 @@ function styling(props) {
     },
     " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
       "font-size": generateCSSUnit(postContentfontSize,postContentfontSizeType) ,
-      "margin-bottom":generateCSSUnit(PostmarginBottom,PostmarginBottomType)  ,
-      "margin-top": generateCSSUnit(PostmarginTop, PostmarginTopType),
-      "margin-right": generateCSSUnit (PostmarginRight, PostmarginRightType),
-      "margin-left": generateCSSUnit (PostmarginLeft,PostmarginLeftType),
+      "padding-bottom":generateCSSUnit(PostmarginBottom,PostmarginBottomType)  ,
+      "padding-top": generateCSSUnit(PostmarginTop, PostmarginTopType),
+      "padding-right": generateCSSUnit (PostmarginRight, PostmarginRightType),
+      "padding-left": generateCSSUnit (PostmarginLeft,PostmarginLeftType),
       " padding": generateCSSUnit (postSpacing ,postSpacingType),
       "font-weight": `${postContentWeight} !important;`,
       "font-style": `${postContentStyle};`,
@@ -212,19 +216,25 @@ function styling(props) {
       "text-transform": `${tagsUpper ? "uppercase" : null} ;`,
       "letter-spacing": `${ tagsLetter }px ;`,
       "color": `${ tagColor }`,
-      
-      
     },
     " .premium-blog-post-container .premium-blog-content-wrapper .premium-blog-post-tags-container:hover span": {
       "color" : `${hoverTag}`,
     },
-    " .premium-blog-pagination-container": {
-      "text-align" :`${paginationPosition}`
-    }
+    " .premium-blog-footer .premium-blog-pagination-container": {
+      'text-align': `${ paginationPosition } !important`,
+  
+    },
+    " .premium-blog-footer .premium-blog-pagination-container a": {
+      "pointer-events": "none"
+},
+    
   };
   mobile_selectors = {
     " .premium-blog-post-container .premium-blog-entry-title h2": {
       "margin-bottom": generateCSSUnit(marginBottomMobile, marginBottomType),
+     
+    },
+    " .premium-blog-post-container .premium-blog-entry-title h2 a": {
       "font-size": generateCSSUnit(firstContentfontSizeMobile,firstContentfontSizeType),
     },
     " .premium-blog-even": {
@@ -262,6 +272,9 @@ function styling(props) {
   tablet_selectors = {
     " .premium-blog-post-container .premium-blog-entry-title h2": {
       "margin-bottom": generateCSSUnit(marginBottomTablet, marginBottomType),
+     
+    },
+    " .premium-blog-post-container .premium-blog-entry-title h2 a": {
       "font-size": generateCSSUnit(firstContentfontSizeTablet,firstContentfontSizeType),
     },
     " .premium-blog-even": {

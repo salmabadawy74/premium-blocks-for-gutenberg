@@ -65,12 +65,15 @@ class Carousel extends React.Component {
       arrows:navigationArrow,
       dots: navigationDots,
       centerMode: centerMode,
-      centerPadding: slideSpacing+'px',
+      centerPadding: slideSpacing,
       infinite: true,
       autoplay: Autoplay,
       speed: autoplaySpeed,
       speed: autoplaySpeed,
       slidesToShow: columns,
+      centerPadding: slideSpacing + 'px',
+      draggable: true,
+
       responsive: [
         {
           breakpoint: 976,
@@ -88,12 +91,11 @@ class Carousel extends React.Component {
     };
     const lastDisplay = latestPosts.slice(offsetNum);
     return (
-      <div className={ `premium-blog` } id={ `premium-blog-${ block_id }` }>
-      
+      <div className={ `premium-blog premium-blog-carousel` } id={ `premium-blog-${ block_id }` }>  
         <Slider {...settings}>
           {lastDisplay.map((post, i) => (
-            <div className={`premium-blog-post-outer-container`} key={i}>
-              <div className={`premium-blog-post-container`}>
+            <div className={`premium-blog-post-outer-container`} key={i} >
+              <div className={`premium-blog-post-container`} style={{marginRight:`${slideSpacing}px`,marginLeft:`${slideSpacing}px`}}>
                 <Image post={post} attributes={attributes} />
                 <div className={`premium-blog-content-wrapper empty-thumb`}>
                   <div className={`premium-blog-content-wrapper empty-thumb `}>

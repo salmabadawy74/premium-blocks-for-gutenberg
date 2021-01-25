@@ -1,5 +1,4 @@
 const { __ } = wp.i18n;
-
 class Button extends React.Component {
   render() {
     const { post, attributes } = this.props;
@@ -13,7 +12,7 @@ class Button extends React.Component {
       return (
         <div className={`premium-blog-excerpt-link-wrap`}>
           <a
-            className={`premium-blog-excerpt-link elementor-button`}
+            className={`premium-blog-excerpt-link-${attributes.fullWidth} `}
             href={post.link}
             target={`_blank`}
             rel="noopener noreferrer"

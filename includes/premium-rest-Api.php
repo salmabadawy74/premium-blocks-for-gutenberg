@@ -8,21 +8,17 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-
 if ( ! class_exists( 'PBG_Rest_API' ) ) {
-
 	/**
 	 * Class PBG_Rest_API.
 	 */
 	final class PBG_Rest_API {
-
 		/**
 		 * Member Variable
 		 *
 		 * @var instance
 		 */
 		private static $instance;
-
 		/**
 		 *  Initiator
 		 */
@@ -32,26 +28,20 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 			}
 			return self::$instance;
 		}
-
 		/**
 		 * Constructor
 		 */
 		public function __construct() {
-
 			// Activation hook.
 			add_action( 'rest_api_init', array( $this, 'blocks_register_rest_fields' ) );
-
 		}
-
 		/**
 		 * Create API fields for additional info
 		 *
 		 * @since 0.0.1
 		 */
 		public function blocks_register_rest_fields() {
-			
 			$post_type = PBG_Blocks_Helper::get_post_types();
-
 			foreach ( $post_type as $key => $value ) {
 				// Add featured image source.
 				register_rest_field(
@@ -63,7 +53,6 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 						'schema'          => null,
 					)
 				);
-
 				// Add author info.
 				register_rest_field(
 					$value['value'],
@@ -74,7 +63,6 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 						'schema'          => null,
 					)
 				);
-
 				// Add comment info.
 				register_rest_field(
 					$value['value'],
@@ -85,7 +73,6 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 						'schema'          => null,
 					)
 				);
-
 				// Add excerpt info.
 				register_rest_field(
 					$value['value'],
@@ -105,10 +92,8 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 						'schema'          => null,
 					)
 				);
-
 			}
 		}
-
 		/**
 		 * Get featured image source for the rest field as per size
 		 *
@@ -118,27 +103,21 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 		 * @since 0.0.1
 		 */
 		public function get_image_src( $object, $field_name, $request ) {
-			$image_sizes = PBG_Blocks_Helper::get_image_sizes();
-
+			$image_sizes     = PBG_Blocks_Helper::get_image_sizes();
 			$featured_images = array();
-
 			if ( ! isset( $object['featured_media'] ) ) {
 				return $featured_images;
 			}
-
 			foreach ( $image_sizes as $key => $value ) {
-				$size = $value['value'];
-
+				$size                     = $value['value'];
 				$featured_images[ $size ] = wp_get_attachment_image_src(
 					$object['featured_media'],
 					$size,
 					false
 				);
 			}
-
 			return $featured_images;
 		}
-
 		/**
 		 * Get author info for the rest field
 		 *
@@ -148,19 +127,14 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 		 * @since 0.0.1
 		 */
 		public function get_author_info( $object, $field_name, $request ) {
-
 			$author = ( isset( $object['author'] ) ) ? $object['author'] : '';
-
 			// Get the author name.
 			$author_data['display_name'] = get_the_author_meta( 'display_name', $author );
-
 			// Get the author link.
 			$author_data['author_link'] = get_author_posts_url( $author );
-
 			// Return the author data.
 			return $author_data;
 		}
-
 		/**
 		 * Get comment info for the rest field
 		 *
@@ -174,7 +148,6 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 			$comments_count = wp_count_comments( $object['id'] );
 			return $comments_count->total_comments;
 		}
-
 		/**
 		 * Get excerpt for the rest field
 		 *
@@ -190,15 +163,11 @@ if ( ! class_exists( 'PBG_Rest_API' ) ) {
 			}
 			return $excerpt;
 		}
-		public function get_tag($object, $field_name, $request){
+		public function get_tag( $object, $field_name, $request ) {
 			$tag = ( isset( $object['tag'] ) ) ? $object['tag'] : '';
 			return $tag;
 		}
-		
-
-
 	}
-
 	/**
 	 *  Prepare if class 'PBG_Rest_API' exist.
 	 *  Kicking this off by calling 'get_instance()' method
