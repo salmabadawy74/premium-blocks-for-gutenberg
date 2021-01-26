@@ -257,6 +257,9 @@ class edit extends Component {
     const hundleGrid = () => {
       setAttributes({ gridCheck: !gridCheck });
       setAttributes({ Carousel: false });
+      if(!gridCheck){
+        setAttributes({layoutValue:""})
+      }
     };
     const Inspectors = isSelected && (
       <InspectorControls>

@@ -42,7 +42,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 		public function register_blocks() {
 			// Check if the register function exists.
 			if ( ! function_exists( 'register_block_type' ) ) {
-				echo 'welcome world';
+				return ;
 			}
 			$common_attributes = $this->get_post_attributes();
 			register_block_type(
@@ -617,7 +617,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			);
 		}
 		/**
-		 * Renders the post grid block on server.
+		 * Renders the post  block on server.
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
@@ -658,7 +658,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'post__columns-' . $attributes['columns'],
 				'post__columns-tablet-' . $attributes['tcolumns'],
 				'post__columns-mobile-' . $attributes['mcolumns'],
-				'equal-Height',
+				'is-' . $attributes['layoutValue'],
 				);
 		
 			
@@ -694,7 +694,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 		}
 		
 		/**
-		 * Render Posts HTML for Masonry Pagination.
+		 * Render Posts HTML 
 		 *
 		 * @param object $query WP_Query object.
 		 * @param array  $attributes Array of block attributes.
@@ -732,11 +732,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			}
 			wp_reset_postdata();
 		}
-		/**
-		 * Renders the post masonry related script.
-		 *
-		 * @since 0.0.1
-		 */
+		
 		/**
 		 * Render Image HTML.
 		 *
@@ -775,7 +771,11 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			<?php
 		}
 		/**
-		 * Function Render Pagination
+		 * Render Post Pagination.
+		 *
+		 * 
+		 *
+		 * @since 0.0.1
 		 */
 		public function post_pagination() {
 			if ( isset( $_POST['attributes'] ) ) {
@@ -802,13 +802,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			}
 			return '';
 		}
-		/**
-		 * Render Post Title HTML.
-		 *
-		 * @param array $attributes Array of block attributes.
-		 *
-		 * @since 0.0.1
-		 */
+		
 		/**
 		 * Render Post Meta - Author HTML.
 		 *
@@ -937,6 +931,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			 *
 			 *
 			 * Render The Post Title
+			 * @param array $attributes Array of block attributes.
 			 */
 		public function render_post_title( $attributes ) {
 			?>
@@ -1019,9 +1014,9 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			return $options;
 		}
 		/**
-		 * Render Post CTA button HTML.
+		 * Render Script of the block.
 		 *
-		 * @param array $attributes Array of block attributes.
+		 * 
 		 *
 		 * @since 0.0.1
 		 */

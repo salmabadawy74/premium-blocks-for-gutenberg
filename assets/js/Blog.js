@@ -3,7 +3,7 @@ jQuery(document).ready(function ($) {
     
       var $blogElement = $( ".premium-blog-wrap" );
       var $blogPost = $blogElement.find( ".premium-blog-post-outer-container" );
-      var equalHeight = $( '.equal-Height' );
+      var equalHeight = $( '.is-even,.equal-Height' );
     
   
   

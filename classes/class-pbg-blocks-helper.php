@@ -1277,6 +1277,10 @@ class PBG_Blocks_Helper {
 				'object-fit' => $attr['thumbnail'],
 				'height'     => self::get_css_value( $attr['height'], $attr['HeightU'] ),
 			),
+			" .premium-blog-post-outer-container:hover img" => array (
+			
+		   "filter" => "brightness(" . $attr['bright'] . "%)" ."  ". "contrast(" . $attr['contrast'] . "%)" . " " . "saturate(" . $attr['saturate'] . "%)" . " " . "blur(" . $attr['blur'] . "px)" . " " . "hue-rotate (" . $attr['hue'] . "deg)",
+			),
 			' .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link:hover' => array(
 				'color'      => $attr['buttonhover'],
 				'background' => $attr['hoverBackground'],
