@@ -1,9 +1,11 @@
 class Excerpt extends React.Component {
   render() {
     const { post, attributes } = this.props;
+
     if (post.pbg_excerpt == undefined) {
       return null;
     }
+
     const words = post.pbg_excerpt.split(" ");
     let excerpt = post.pbg_excerpt;
     let exLength = attributes.excerptLength ? attributes.excerptLength : 25;
@@ -17,16 +19,21 @@ class Excerpt extends React.Component {
     if (
       attributes.displayPostContent &&
       attributes.displayPostExcerpt === "Post Excerpt"
-    ) {
+    )
+    {
       return <p dangerouslySetInnerHTML={{ __html: excerpt }} />;
-    } else if (
+    }
+    else if (
       attributes.displayPostExcerpt &&
       attributes.displayPostExcerpt === "Post Full Content"
-    ) {
+    )
+    {
       return (
         <p dangerouslySetInnerHTML={{ __html: post.content.raw.trim() }} />
       );
-    } else {
+    }
+    else
+    {
       return null;
     }
   }

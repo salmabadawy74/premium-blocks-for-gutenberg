@@ -42,7 +42,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 		public function register_blocks() {
 			// Check if the register function exists.
 			if ( ! function_exists( 'register_block_type' ) ) {
-				return ;
+				return;
 			}
 			$common_attributes = $this->get_post_attributes();
 			register_block_type(
@@ -116,7 +116,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				
+
 				'displayPostDate'             => array(
 					'type'    => 'boolean',
 					'default' => true,
@@ -266,6 +266,14 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'marginBottomTablet'          => array(
 					'type' => 'number',
 				),
+				'marginBottomMobileType'      => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
+				'marginBottomTabletType'      => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
 				// Meta attributes.
 				'secondContentfontSizeType'   => array(
 					'type'    => 'string',
@@ -344,7 +352,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'PostmarginTopTablet'         => array(
 					'type' => 'number',
 				),
-				'marginRightType'             => array(
+				'PostmarginRightType'         => array(
 					'type'    => 'number',
 					'default' => 'px',
 				),
@@ -652,30 +660,43 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 		public function get_post_html( $attributes, $query ) {
 			if ( ! $attributes['gridCheck'] ) {
 				$attributes['columns'] = $attributes['tcolumns'] = $attributes['mcolumns'] = 1;
-			}
-				$wrap      = array(
-				'premium-blog-wrap',
-				'post__columns-' . $attributes['columns'],
-				'post__columns-tablet-' . $attributes['tcolumns'],
-				'post__columns-mobile-' . $attributes['mcolumns'],
-				'is-' . $attributes['layoutValue'],
-				);
-		
-			
+				$wrap                  = array(
+					'premium-blog-wrap',
+					'post__columns-' . $attributes['columns'],
+					'post__columns-tablet-' . $attributes['tcolumns'],
+					'post__columns-mobile-' . $attributes['mcolumns'],
 
-			if ( isset( self::$grid_settings['carousel'] ) ) {
+				);
+			} elseif ( isset( self::$grid_settings['carousel'] ) ) {
 				$wrap = array(
-					'premium-blog-wrap',	
+					'premium-blog-wrap',
 					'premium-blog-carousel',
 					'equal-Height',
 				);
-			}
-				$block_id  = 'premium-blog' . $attributes['block_id'];
-				$outerwrap = array(
-					'premium-blog',
-					'premium-blog-' . $attributes['block_id'],
-					'premium-block-' . $attributes['block_id'],
-				); ?>
+			} elseif ( isset( self::$grid_settings['grid'] ) ) {
+
+					$wrap = array(
+						'premium-blog-wrap',
+						'post__columns-' . $attributes['columns'],
+						'post__columns-tablet-' . $attributes['tcolumns'],
+						'post__columns-mobile-' . $attributes['mcolumns'],
+						'equal-Height',
+					);} else {
+				$wrap = array(
+					'premium-blog-wrap',
+					'post__columns-' . $attributes['columns'],
+					'post__columns-tablet-' . $attributes['tcolumns'],
+					'post__columns-mobile-' . $attributes['mcolumns'],
+
+				);
+					}
+
+					$block_id  = 'premium-blog' . $attributes['block_id'];
+					$outerwrap = array(
+						'premium-blog',
+						'premium-blog-' . $attributes['block_id'],
+						'premium-block-' . $attributes['block_id'],
+					); ?>
 			<div class="<?php echo esc_html( implode( ' ', $outerwrap ) ); ?>">
 				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
 					<?php
@@ -692,9 +713,9 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			</div>
 			<?php
 		}
-		
+
 		/**
-		 * Render Posts HTML 
+		 * Render Posts HTML
 		 *
 		 * @param object $query WP_Query object.
 		 * @param array  $attributes Array of block attributes.
@@ -732,7 +753,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			}
 			wp_reset_postdata();
 		}
-		
+
 		/**
 		 * Render Image HTML.
 		 *
@@ -773,8 +794,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 		/**
 		 * Render Post Pagination.
 		 *
-		 * 
-		 *
 		 * @since 0.0.1
 		 */
 		public function post_pagination() {
@@ -802,7 +821,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			}
 			return '';
 		}
-		
+
 		/**
 		 * Render Post Meta - Author HTML.
 		 *
@@ -931,6 +950,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			 *
 			 *
 			 * Render The Post Title
+			 *
 			 * @param array $attributes Array of block attributes.
 			 */
 		public function render_post_title( $attributes ) {
@@ -969,7 +989,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			endif;
 			// Get post excerpt.
 			if ( 'Link' === $excerpt_type ) :
-						$this->get_post_excerpt_link( $excerpt_text );
+						$this->get_post_excerpt_link( $excerpt_text, $attributes );
 			endif;
 		}
 		public function render_post_content( $source, $excerpt_length, $cta_type, $read_more ) {
@@ -992,16 +1012,27 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 			}
 			return $excerpt;
 		}
-		public static function get_post_excerpt_link( $read_more ) {
+		/**
+		 * Function runder Button
+		 *
+		 * @param [type] $read_more
+		 * @param [type] $attributes
+		 * @return void
+		 */
+		public static function get_post_excerpt_link( $read_more, $attributes ) {
 			if ( empty( $read_more ) ) {
 				return;
 			}
+			$wrapbutton = array( 'premium-blog-excerpt-link-wrap', 'premium-blog-excerpt-link-' . $attributes['fullWidth'] );
+			?>
+			<div class="<?php echo esc_html( implode( ' ', $wrapbutton ) ); ?>">
+			<a  href="<?php the_permalink(); ?>" class="premium-blog-excerpt-link elementor-button">
+			<?php echo wp_kses_post( $read_more ); ?>
+			</a>
+			</div>
 			
-			echo '<div class="premium-blog-excerpt-link-wrap">';
-			echo '<a href="' . esc_url( get_permalink() ) . '" class="premium-blog-excerpt-link elementor-button">';
-			echo wp_kses_post( $read_more );
-			echo '</a>';
-			echo '</div>';
+			
+			<?php
 		}
 		public static function get_tags() {
 			$tags    = get_tags();
@@ -1015,8 +1046,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 		}
 		/**
 		 * Render Script of the block.
-		 *
-		 * 
 		 *
 		 * @since 0.0.1
 		 */

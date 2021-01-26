@@ -10,9 +10,9 @@ class Button extends React.Component {
         ? attributes.readMoreText
         : __("Read More");
       return (
-        <div className={`premium-blog-excerpt-link-wrap`}>
+        <div className={`premium-blog-excerpt-link-wrap premium-blog-excerpt-link-${attributes.fullWidth} `}>
           <a
-            className={`premium-blog-excerpt-link-${attributes.fullWidth} `}
+            className={`premium-blog-excerpt-link `}
             href={post.link}
             target={`_blank`}
             rel="noopener noreferrer"

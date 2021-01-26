@@ -74,6 +74,8 @@ class PBG_Blocks_Helper {
 		add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
 		// Enqueue Styles
 		add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
+		add_action( 'pre_get_posts', array( $this, 'fix_query_offset' ), 1 );
+		add_filter( 'found_posts', array( $this, 'fix_found_posts_query' ), 1, 2 );
 		add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
 		// Register Premium Blocks category
 		add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
@@ -179,10 +181,8 @@ class PBG_Blocks_Helper {
 
 		$is_icon_box_enabled = self::$blocks['iconBox'];
 
-		// $is_person_enabled = self::$blocks['person'];
-
-		// $is_icon_list_enabled = self::$blocks['iconList'];
 		$is_scroll_enabled = self::$blocks['scroll'];
+		
 		$is_blog_enabled   = self::$blocks['blog'];
 
 		$is_content_switcher_enabled = self::$blocks['contentSwitcher'];
@@ -296,24 +296,6 @@ class PBG_Blocks_Helper {
 				PREMIUM_BLOCKS_VERSION
 			);
 		}
-
-		// if ( $is_person_enabled ) {
-		// wp_enqueue_script(
-		// 'person-js',
-		// PREMIUM_BLOCKS_URL . 'assets/js/person.js',
-		// array( 'jquery' ),
-		// PREMIUM_BLOCKS_VERSION
-		// );
-		// }
-
-		// if ( $is_icon_list_enabled ) {
-		// wp_enqueue_script(
-		// 'icon-list-js',
-		// PREMIUM_BLOCKS_URL . 'assets/js/icon-list.js',
-		// array( 'jquery' ),
-		// PREMIUM_BLOCKS_VERSION
-		// );
-		// }
 
 		if ( $is_content_switcher_enabled ) {
 			wp_enqueue_script(
@@ -1169,14 +1151,14 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 	public static function get_query_args( $attributes ) {
-		$paged                = self::get_paged();
-		$tax_count            = 0;
-		$post_type            = 'post';
-		$post_args            = array(
-			'posts_per_page'   => empty( $attributes['numOfPosts'] ) ? 9999 : $attributes['numOfPosts'],
-			'paged'            => $paged,
-			'post_status'      => 'publish',
-			'suppress_filters' => false,
+		$paged     = self::get_paged();
+		$tax_count = 0;
+		$post_type = 'post';
+		$post_args = array(
+			'posts_per_page' => empty( $attributes['numOfPosts'] ) ? 9999 : $attributes['numOfPosts'],
+			'paged'          => $paged,
+			'post_status'    => 'publish',
+
 		);
 		$post_args['orderby'] = $attributes['orderBy'];
 		$post_args['order']   = $attributes['order'];
@@ -1214,7 +1196,6 @@ class PBG_Blocks_Helper {
 			' .premium-blog-thumbnail-overlay'           => array(
 				'background-color' => $attr['overlayColor'],
 			),
-
 			' .premium-blog-post-container .premium-blog-entry-title h2' => array(
 				'margin-bottom'  => self::get_css_value( $attr['marginBottom'], $attr['marginBottomType'] ),
 				'font-weight'    => $attr['firstContentWeight'],
@@ -1276,10 +1257,10 @@ class PBG_Blocks_Helper {
 			' .premium-blog-post-outer-container img'    => array(
 				'object-fit' => $attr['thumbnail'],
 				'height'     => self::get_css_value( $attr['height'], $attr['HeightU'] ),
+
 			),
-			" .premium-blog-post-outer-container:hover img" => array (
-			
-		   "filter" => "brightness(" . $attr['bright'] . "%)" ."  ". "contrast(" . $attr['contrast'] . "%)" . " " . "saturate(" . $attr['saturate'] . "%)" . " " . "blur(" . $attr['blur'] . "px)" . " " . "hue-rotate (" . $attr['hue'] . "deg)",
+			' .premium-blog-post-outer-container:hover img' => array(
+				'filter' => 'brightness(' . $attr['bright'] . '%)' . 'contrast(' . $attr['contrast'] . '%) ' . 'saturate(' . $attr['saturation'] . '%) ' . 'blur(' . $attr['blur'] . 'px) ' . 'hue-rotate(' . $attr['hue'] . 'deg)',
 			),
 			' .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link:hover' => array(
 				'color'      => $attr['buttonhover'],

@@ -9,7 +9,6 @@ import styling from "./styling";
 import Masonry from "./Masonry";
 import PremiumMarginR from "../../components/premium-margin-responsive";
 import PremiumBoxShadow from "./../../components/premium-box-shadow";
-import { EXITED } from "react-transition-group/Transition";
 
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -208,9 +207,9 @@ class edit extends Component {
       thumbnailTablet,
       PostmarginBottomType,
       PostmarginBottom,
-      PostmarginBottomMobile,
-      PostmarginBottomTablet,
-      PostmarginTopType,
+       PostmarginBottomMobile,
+       PostmarginBottomTablet,
+       PostmarginTopType,
       PostmarginTop,
       PostmarginTopMobile,
       PostmarginTopTablet,
@@ -256,10 +255,9 @@ class edit extends Component {
     };
     const hundleGrid = () => {
       setAttributes({ gridCheck: !gridCheck });
-      setAttributes({ Carousel: false });
-      if(!gridCheck){
-        setAttributes({layoutValue:""})
-      }
+      setAttributes( { Carousel: false } );
+   
+      
     };
     const Inspectors = isSelected && (
       <InspectorControls>
@@ -1018,68 +1016,68 @@ class edit extends Component {
             }
           />
           <PremiumMarginR
-            directions={[ "right", "left"]}
+            directions={[ "all"]}
              setAttributes={setAttributes}
-            marginBottomType={{
+             marginBottomType={{
               value: PostmarginBottomType,
-              label: __("marginBottomType"),
+              label: __("PostmarginBottomType"),
             }}
             marginBottom={{
               value: PostmarginBottom,
-              label: __("marginBottom"),
+              label: __("PostmarginBottom"),
             }}
             marginBottomMobile={{
               value: PostmarginBottomMobile,
-              label: __("marginBottomMobile"),
+              label: __("PostmarginBottomMobile"),
             }}
             marginBottomTablet={{
               value: PostmarginBottomTablet,
-              label: __("marginBottomTablet"),
+              label: __("PostmarginBottomTablet"),
             }}
             marginTopType={{
               value: PostmarginTopType,
-              label: __("marginTopType"),
+              label: __("PostmarginTopType"),
             }}
-            marginTop={{ value: PostmarginTop, label: __("marginTop") }}
+            marginTop={{ value: PostmarginTop, label: __("PostmarginTop") }}
             marginTopMobile={{
               value: PostmarginTopMobile,
-              label: __("marginTopMobile"),
+              label: __("PostmarginTopMobile"),
             }}
             marginTopTablet={{
               value: PostmarginTopTablet,
-              label: __("marginTopTablet"),
+              label: __("PostmarginTopTablet"),
             }}
             marginRightType={{
               value: PostmarginRightType,
-              label: __("marginRightType"),
+              label: __("PostmarginRightType"),
             }}
             marginRight={{
               value: PostmarginRight,
-              label: __("marginRight"),
+              label: __("PostmarginRight"),
             }}
             marginRightMobile={{
               value: PostmarginRightMobile,
-              label: __("marginRightMobile"),
+              label: __("PostmarginRightMobile"),
             }}
             marginRightTablet={{
               value: PostmarginRightTablet,
-              label: __("marginRightTablet"),
+              label: __("PostmarginRightTablet"),
             }}
             marginLeftType={{
               value: PostmarginLeftType,
-              label: __("marginLeftType"),
+              label: __("PostmarginLeftType"),
             }}
             marginLeft={{
               value: PostmarginLeft,
-              label: __("marginLeft"),
+              label: __("PostmarginLeft"),
             }}
             marginLeftMobile={{
               value: PostmarginLeftMobile,
-              label: __("marginLeftMobile"),
+              label: __("PostmarginLeftMobile"),
             }}
             marginLeftTablet={{
               value: PostmarginLeftTablet,
-              label: __("marginLeftTablet"),
+              label: __("PostmarginLeftTablet"),
             }}
           />
           <ColorPalette

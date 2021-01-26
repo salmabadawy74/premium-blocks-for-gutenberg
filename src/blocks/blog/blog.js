@@ -40,7 +40,6 @@ class Blog extends React.Component {
       paginationMarkup,
     } = attributes;
 
-
     let lastDisplay;
 
     const gridClasses = gridCheck ? "premium-blog-even" : "premium-blog-list";
@@ -73,8 +72,7 @@ class Blog extends React.Component {
                 <div className={`premium-blog-post-container`}>
                   <Image post={post} attributes={attributes} />
                   <div
-                    className={`premium-blog-content-wrapper empty-thumb `}
-                   
+                    className={`premium-blog-content-wrapper empty-thumb `}                  
                   >
                     <div className={`premium-blog-content-wrapper-inner`}>
                       <div className={`premium-blog-inner-container`}>

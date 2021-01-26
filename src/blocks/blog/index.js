@@ -219,11 +219,11 @@ registerBlockType("premium/post-blog", {
     },
     firstContentWeight: {
       type: "number",
-      default: 500,
+      default: 600,
     },
     firstContentfontSize: {
       type: "number",
-      default: 15,
+      default: 17,
     },
     firstContentfontSizeType: {
       type: "string",
@@ -373,6 +373,10 @@ registerBlockType("premium/post-blog", {
       type: "number",
       default:0
     },
+    marginBottomType: {
+      type: "string",
+      default: "px",
+    },
     marginBottomTablet: {
       type: "number",
       default:0
@@ -390,7 +394,7 @@ registerBlockType("premium/post-blog", {
     },
     PostmarginBottom: {
       type: "number",
-      default:0
+      default:17
     },
     PostmarginBottomMobile: {
       type: "number",
@@ -406,7 +410,7 @@ registerBlockType("premium/post-blog", {
     },
     PostmarginTop: {
       type: "number",
-      default:0
+      default:17
     },
     PostmarginTopMobile: {
       type: "number",
@@ -435,6 +439,7 @@ registerBlockType("premium/post-blog", {
     },
     postContentfontSize: {
       type: "number",
+      default: 15
     },
     postContentfontSizeMobile: {
       type: "number",
@@ -448,29 +453,28 @@ registerBlockType("premium/post-blog", {
     },
     PostmarginRight: {
       type: "number",
-      default:30
+      default:5
     },
     PostmarginRightMobile: {
       type: "number",
-      default:30
+      
     },
     PostmarginRightTablet: {
       type: "number",
-      default:30
     },
     PostmarginLeftType: {
       type: "string",
+      default:'px'
     },
     PostmarginLeft: {
       type: "number",
+      default : 5
     },
     PostmarginLeftMobile: {
       type: "number",
-      default:30
     },
     PostmarginLeftTablet: {
       type: "number",
-      default:30
     },
     backgroundPostContent: {
       type: "string",
@@ -520,7 +524,7 @@ registerBlockType("premium/post-blog", {
     },
     tagsUpper: {
       type: "string",
-      default: "default",
+      default: false,
     },
     buttonfontSizeType: {
       type: "string",

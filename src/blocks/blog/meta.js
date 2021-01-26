@@ -6,11 +6,11 @@ class Meta extends React.Component {
   render() {
     const { post, attributes, categoriesList } = this.props;
     const dateFormat = __experimentalGetSettings().formats.date;
-    let categoryObject = { id: " ", name: "Uncategorized" };
+    let categoryObject = [];
     if (categoriesList) {
       categoriesList.map((item, thisIndex) => {
         if (post.categories && item.id == post.categories[thisIndex]) {
-          categoryObject = item;
+          categoryObject.push(item);       
         }
       });
     }
@@ -43,7 +43,6 @@ class Meta extends React.Component {
             <span className={`premium-blog-meta-separtor`}>•</span>
           </div>
         )}
-
         {attributes.displayPostComment && undefined !== post.pbg_comment_info && (
           <div className={`premium-blog-post-comments premium-blog-meta-data`}>
             <span className="premium-post__comment">
@@ -60,7 +59,11 @@ class Meta extends React.Component {
           >
             <span className="premium-post__taxonomy">
               <span className="fa fa-align-left fa-fw"></span>
-              {categoryObject.name}
+              {categoryObject.length === 0
+                  ? "Uncategorized"
+                  : categoryObject.map((category) => (
+                      <span>{category.name + " "}</span>
+                    ))}
             </span>
           </div>
         )}

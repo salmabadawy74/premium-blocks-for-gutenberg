@@ -1,51 +1,90 @@
 import PremiumSizeUnits from "./premium-size-units";
-import PremiumResponsive from "./premium-responsive"
+
+import PremiumResponsive from "./premium-responsive";
 
 const { __ } = wp.i18n;
-const {
-  Fragment,
-  Component
-} = wp.element;
+
+const { Fragment, Component } = wp.element;
+
 const { RangeControl, Dropdown, Button } = wp.components;
 
 export default class PremiumMarginR extends Component {
-
   constructor() {
-    super(...arguments)
-    this.onAdvancedControlReset = this.onAdvancedControlReset.bind(this)
+    super(...arguments);
+    this.onAdvancedControlReset = this.onAdvancedControlReset.bind(this);
   }
 
   onAdvancedControlReset() {
-
-    const { setAttributes } = this.props
+    const {
+      setAttributes,
+      marginTop,
+      marginTopType,
+      marginTopMobile,
+      marginTopTablet,
+      marginRight,
+      marginRightType,
+      marginRightMobile,
+      marginRightTablet,
+      marginBottom,
+      marginBottomType,
+      marginBottomMobile,
+      marginBottomTablet,
+      marginLeft,
+      marginLeftType,
+      marginLeftMobile,
+      marginLeftTablet,
+    } = this.props;
     // Reset Margin to default.
-    setAttributes({ [this.props.marginTop.label]: "" })
-    setAttributes({ [this.props.marginTopType.label]: "px" })
-    setAttributes({ [this.props.marginTopMobile.label]: "" })
-    setAttributes({ [this.props.marginTopTablet.label]: "" })
 
-    setAttributes({ [this.props.marginRight.label]: "" })
-    setAttributes({ [this.props.marginRightType.label]: "px" })
-    setAttributes({ [this.props.marginRightMobile.label]: "" })
-    setAttributes({ [this.props.marginRightTablet.label]: "" })
+    setAttributes({
+      [marginTop.label]: "",
+      [marginTopType.label]: "px",
+      [marginTopMobile.label]: "",
+      [marginTopTablet.label]: "",
+      [marginRight.label]: "",
+      [marginRightType.label]: "px",
+      [marginRightMobile.label]: "",
+      [marginRightTablet.label]: "",
+      [marginBottom.label]: "",
 
-    setAttributes({ [this.props.marginBottom.label]: "" })
-    setAttributes({ [this.props.marginBottomType.label]: "px" })
-    setAttributes({ [this.props.marginBottomMobile.label]: "" })
-    setAttributes({ [this.props.marginBottomTablet.label]: "" })
+      [marginBottomType.label]: "px",
+      [marginBottomMobile.label]: "",
+      [marginBottomTablet.label]: "",
 
-    setAttributes({ [this.props.marginLeft.label]: "" })
-    setAttributes({ [this.props.marginLeftType.label]: "px" })
-    setAttributes({ [this.props.marginLeftMobile.label]: "" })
-    setAttributes({ [this.props.marginLeftTablet.label]: "" })
+      [marginLeft.label]: "",
+      [marginLeftType.label]: "px",
+      [marginLeftMobile.label]: "",
+      [marginLeftTablet.label]: "",
+    });
   }
 
   render() {
     const {
       directions,
       showUnits,
-      onChangeMarSizeUnit = () => { }
+      onChangeMarSizeUnit = () => {},
+      marginTopType,
+      marginTopMobile,
+      marginTopTablet,
+      marginTop,
+      marginRightType,
+      marginRightMobile,
+      marginRightTablet,
+      marginRight,
+      marginBottomType,
+      marginBottomMobile,
+      marginBottomTablet,
+      marginBottom,
+      marginLeftType,
+      marginLeftMobile,
+      marginLeftTablet,
+      marginLeft,
+      marginTopLabel,
+      marginRightLabel,
+      marginBottomLabel,
+      marginLeftLabel,
     } = this.props;
+
     return (
       <div className="premium-control-toggle">
         <strong>{__("Margin")}</strong>
@@ -65,22 +104,22 @@ export default class PremiumMarginR extends Component {
               )}
               {(directions.includes("all") || directions.includes("top")) && (
                 <PremiumResponsive
-                  type={this.props.marginTopType}
-                  typeLabel={this.props.marginTopType.label}
-                  sizeMobile={this.props.marginTopMobile}
-                  sizeMobileLabel={this.props.marginTopMobile.label}
-                  sizeTablet={this.props.marginTopTablet}
-                  sizeTabletLabel={this.props.marginTopTablet.label}
-                  size={this.props.marginTop}
-                  sizeLabel={this.props.marginTop.label}
+                  type={marginTopType}
+                  typeLabel={marginTopType.label}
+                  sizeMobile={marginTopMobile.value}
+                  sizeMobileLabel={marginTopMobile.label}
+                  sizeTablet={marginTopTablet.value}
+                  sizeTabletLabel={marginTopTablet.label}
+                  size={marginTop.value}
+                  sizeLabel={marginTop.label}
                   sizeMobileText={
-                    (!this.props.marginTopLabel) ? __("Margin Top") : this.props.marginTopLabel
+                    !marginTop.label ? __("Margin Top") : marginTop.label
                   }
                   sizeTabletText={
-                    (!this.props.marginTopLabel) ? __("Margin Top") : this.props.marginTopLabel
+                    !marginTop.label ? __("Margin Top") : marginTop.label
                   }
                   sizeText={
-                    (!this.props.marginTopLabel) ? __("Margin Top") : this.props.marginTopLabel
+                    !marginTop.label ? __("Margin Top") : marginTop.label
                   }
                   steps={0.1}
                   {...this.props}
@@ -88,45 +127,52 @@ export default class PremiumMarginR extends Component {
               )}
               {(directions.includes("all") || directions.includes("right")) && (
                 <PremiumResponsive
-                  type={this.props.marginRightType}
-                  typeLabel={this.props.marginRightType.label}
-                  sizeMobile={this.props.marginRightMobile}
-                  sizeMobileLabel={this.props.marginRightMobile.label}
-                  sizeTablet={this.props.marginRightTablet}
-                  sizeTabletLabel={this.props.marginRightTablet.label}
-                  size={this.props.marginRight}
-                  sizeLabel={this.props.marginRight.label}
+                  type={marginRightType}
+                  typeLabel={marginRightType.label}
+                  sizeMobile={marginRightMobile.value}
+                  sizeMobileLabel={marginRightMobile.value}
+                  sizeTablet={marginRightTablet.value}
+                  sizeTabletLabel={marginRightTablet.value}
+                  size={marginRight.value}
+                  sizeLabel={marginRight.label}
                   sizeMobileText={
-                    (!this.props.marginRightLabel) ? __("Margin Right") : this.props.marginTRightLabel
+                    !marginRight.label ? __("Margin Right") : marginRight.label
                   }
                   sizeTabletText={
-                    (!this.props.marginRightLabel) ? __("Margin Right") : this.props.marginRightLabel
+                    !marginRight.label ? __("Margin Right") : marginRight.label
                   }
                   sizeText={
-                    (!this.props.marginRightLabel) ? __("Margin Right") : this.props.marginRightLabel
+                    !marginRight.label ? __("Margin Right") : marginRight.label
                   }
-                  steps={1}
+                  steps={0.1}
                   {...this.props}
                 />
               )}
-              {(directions.includes("all") || directions.includes("bottom")) && (
+              {(directions.includes("all") ||
+                directions.includes("bottom")) && (
                 <PremiumResponsive
-                  type={this.props.marginBottomType}
-                  typeLabel={this.props.marginBottomType.label}
-                  sizeMobile={this.props.marginBottomMobile}
-                  sizeMobileLabel={this.props.marginBottomMobile.label}
-                  sizeTablet={this.props.marginBottomTablet}
-                  sizeTabletLabel={this.props.marginBottomTablet.label}
-                  size={this.props.marginBottom}
-                  sizeLabel={this.props.marginBottom.label}
+                  type={marginBottomType}
+                  typeLabel={marginBottomType.label}
+                  sizeMobile={marginBottomMobile.value}
+                  sizeMobileLabel={marginBottomMobile.value}
+                  sizeTablet={marginBottomTablet.value}
+                  sizeTabletLabel={marginBottomTablet.value}
+                  size={marginBottom.value}
+                  sizeLabel={marginBottom.label}
                   sizeMobileText={
-                    (!this.props.marginBottomLabel) ? __("Margin Bottom") : this.props.marginBottomLabel
+                    !marginBottom.label
+                      ? __("Margin Bottom")
+                      : marginBottom.label
                   }
                   sizeTabletText={
-                    (!this.props.marginBottomLabel) ? __("Margin Bottom") : this.props.marginBottomLabel
+                    !marginBottom.label
+                      ? __("Margin Bottom")
+                      : marginBottom.label
                   }
                   sizeText={
-                    (!this.props.marginBottomLabel) ? __("Margin Bottom") : this.props.marginBottomLabel
+                    !marginBottom.label
+                      ? __("Margin Bottom")
+                      : marginBottom.label
                   }
                   steps={0.1}
                   {...this.props}
@@ -134,22 +180,22 @@ export default class PremiumMarginR extends Component {
               )}
               {(directions.includes("all") || directions.includes("left")) && (
                 <PremiumResponsive
-                  type={this.props.marginLeftType}
-                  typeLabel={this.props.marginLeftType.label}
-                  sizeMobile={this.props.marginLeftMobile}
-                  sizeMobileLabel={this.props.marginLeftMobile.label}
-                  sizeTablet={this.props.marginLeftTablet}
-                  sizeTabletLabel={this.props.marginLeftTablet.label}
-                  size={this.props.marginLeft}
-                  sizeLabel={this.props.marginLeft.label}
+                  type={marginLeftType}
+                  typeLabel={marginLeftType.label}
+                  sizeMobile={marginLeftMobile.value}
+                  sizeMobileLabel={marginLeftMobile.value}
+                  sizeTablet={marginLeftTablet.value}
+                  sizeTabletLabel={marginLeftTablet.value}
+                  size={marginLeft.value}
+                  sizeLabel={marginLeft.label}
                   sizeMobileText={
-                    (!this.props.marginLeftLabel) ? __("Margin Left") : this.props.marginLeftLabel
+                    !marginLeft.label ? __("Margin Left") : marginLeft.label
                   }
                   sizeTabletText={
-                    (!this.props.marginLeftLabel) ? __("Margin Left") : this.props.marginLeftLabel
+                    !marginLeft.label ? __("Margin Left") : marginLeft.label
                   }
                   sizeText={
-                    (!this.props.marginLeftLabel) ? __("Margin Left") : this.props.marginLeftLabel
+                    !marginLeft.label ? __("Margin Left") : marginLeft.label
                   }
                   steps={0.1}
                   {...this.props}
