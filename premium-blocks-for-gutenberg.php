@@ -5,7 +5,7 @@
  * Plugin URI: https://premiumblocks.io/
  * Author: Leap13
  * Author URI: https://leap13.com/
- * Version: 1.8.0
+ * Version: 1.8.1
  * Text Domain: premium-blocks-for-gutenberg
  * Domain Path: /languages
  * License: GNU General Public License v3.0
