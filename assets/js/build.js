@@ -8254,6 +8254,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__blocks_content_switcher__ = __webpack_require__(273);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__blocks_image_scroll__ = __webpack_require__(278);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__blocks_blog__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__blocks_image_accordion__ = __webpack_require__(368);
+
 
 
 
@@ -60784,6 +60786,313 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
 
 module.exports = factory;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ }),
+/* 368 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icons__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(369);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(370);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__save__);
+var _query;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+var registerBlockType = wp.blocks.registerBlockType;
+var __ = wp.i18n.__;
+
+
+registerBlockType("premium/image-accodion", {
+  title: __("Image Accordion"),
+
+  category: "premium-blocks",
+  keywords: ['Image Accordion'],
+  attributes: {
+    block_id: {
+      type: "string"
+    },
+    locations: {
+      type: 'array',
+      default: [],
+      query: (_query = {
+        imageURl: {
+          source: "attribute",
+          selector: "img",
+          attribute: "src"
+        },
+        content: {
+          type: "string"
+        },
+        imageID: {
+          type: "number"
+        },
+        title: {
+          type: "string",
+          source: "html",
+          selector: "h2"
+        },
+        background: {
+          type: "string"
+        },
+        blur: {
+          type: "number",
+          default: "0"
+        },
+        bright: {
+          type: "number",
+          default: "100"
+        },
+        contrast: {
+          type: "number",
+          default: "100"
+        },
+        saturation: {
+          type: "number",
+          default: "100"
+        }
+      }, _defineProperty(_query, "imageID", {
+        type: "number"
+      }), _defineProperty(_query, "hue", {
+        type: "number",
+        default: "0"
+      }), _defineProperty(_query, "borderType", {
+        type: "string",
+        default: "none"
+      }), _defineProperty(_query, "borderWidth", {
+        type: "number",
+        default: "1"
+      }), _defineProperty(_query, "borderRadius", {
+        type: "number",
+        default: "0"
+      }), _defineProperty(_query, "borderColor", {
+        type: "string"
+      }), _defineProperty(_query, "containerShadowColor", {
+        type: "string"
+      }), _defineProperty(_query, "containerShadowBlur", {
+        type: "number",
+        default: "0"
+      }), _defineProperty(_query, "containerShadowHorizontal", {
+        type: "number",
+        default: "0"
+      }), _defineProperty(_query, "containerShadowVertical", {
+        type: "number",
+        default: "0"
+      }), _defineProperty(_query, "containerShadowPosition", {
+        type: "string",
+        default: ""
+      }), _defineProperty(_query, "urlCheck", {
+        type: "boolean",
+        default: false
+      }), _defineProperty(_query, "url", {
+        type: "string",
+        source: "attribute",
+        attribute: "href"
+      }), _defineProperty(_query, "target", {
+        type: "boolean",
+        default: false
+      }), _query)
+    }
+  },
+  example: {},
+  edit: __WEBPACK_IMPORTED_MODULE_1__edit__["a" /* default */],
+  save: function save() {}
+});
+
+/***/ }),
+/* 369 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_premium_border__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_box_shadow__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_filters__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_size_units__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_typo__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_margin_responsive__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__ = __webpack_require__(63);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    RangeControl = _wp$components.RangeControl,
+    SelectControl = _wp$components.SelectControl,
+    Spinner = _wp$components.Spinner,
+    ToggleControl = _wp$components.ToggleControl,
+    TabPanel = _wp$components.TabPanel,
+    Dashicon = _wp$components.Dashicon,
+    TextControl = _wp$components.TextControl,
+    IconButton = _wp$components.IconButton,
+    Button = _wp$components.Button;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    ColorPalette = _wp$editor.ColorPalette,
+    MediaUpload = _wp$editor.MediaUpload;
+var _wp$data = wp.data,
+    withSelect = _wp$data.withSelect,
+    select = _wp$data.select;
+
+var edit = function (_Component) {
+    _inherits(edit, _Component);
+
+    function edit() {
+        _classCallCheck(this, edit);
+
+        return _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+    }
+
+    _createClass(edit, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            this.props.setAttributes({ block_id: this.props.clientId });
+            this.props.setAttributes({ classMigrate: true });
+            var $style = document.createElement("style");
+            $style.setAttribute("id", "premium-post-style-" + this.props.clientId);
+            document.head.appendChild($style);
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                setAttributes = _props.setAttributes,
+                isSelected = _props.isSelected,
+                blockID = _props.clientId;
+            var _props$attributes = this.props.attributes,
+                locations = _props$attributes.locations,
+                block_id = _props$attributes.block_id;
+
+            var positionOptions = [{ label: 'Center Center', value: 'center center' }, { label: 'Center Left', value: 'center left' }, { label: 'Center Right', value: 'center right' }, { label: 'Top Center', value: 'top center' }, { label: 'Top Left', value: 'top left' }, { label: 'Top Right', value: 'top right' }, { label: 'Bottom Center', value: 'bottom center' }, { label: 'Bottom Left', value: 'bottom left' }, { label: 'Bottom Right', value: 'bottom right' }];
+            var sizeOptions = [{ label: 'Auto', value: 'auto' }, { label: 'Contain', value: 'contain' }, { label: 'Cover', value: 'cover' }, { label: 'Custom', value: 'custom' }];
+            var repeatOptions = [{ label: 'Repeat', value: 'repeat' }, { label: 'No-repeat', value: 'no-repeat' }, { label: 'Repeat-x', value: 'repeat-x' }, { label: 'Repeat-y', value: 'repeat-y' }];
+            var onFileSelect = function onFileSelect(img) {
+                setAttributes({
+                    imageURL: img.url,
+                    imageAlt: img.alt
+                });
+            };
+
+            var handleAddLocation = function handleAddLocation() {
+                var locations = [locations];
+                locations.push({
+                    address: ''
+                });
+                setAttributes({ locations: locations });
+            };
+
+            var handleRemoveLocation = function handleRemoveLocation(index) {
+                var locations = [locations];
+                locations.splice(index, 1);
+                setAttributes({ locations: locations });
+            };
+
+            var handleLocationChange = function handleLocationChange(address, index) {
+                var locations = [locations];
+                locations[index].address = address;
+                setAttributes({ locations: locations });
+            };
+
+            var locationFields = void 0,
+                locationDisplay = void 0;
+
+            if (this.props.attributes.locations.length) {
+                locationFields = locations.map(function (location, index) {
+                    return wp.element.createElement(
+                        Fragment,
+                        { key: index },
+                        wp.element.createElement(MediaUpload, {
+                            onSelect: onFileSelect,
+                            value: locations.imageID,
+                            render: function render(_ref) {
+                                var open = _ref.open;
+                                return wp.element.createElement(
+                                    IconButton,
+                                    {
+                                        className: "premium-media-uplpad-btn",
+                                        label: __("Change Image"),
+                                        icon: "edit",
+                                        onClick: open
+                                    },
+                                    __("Change Image")
+                                );
+                            }
+                        }),
+                        wp.element.createElement(IconButton, {
+                            className: "grf__remove-location-address",
+                            icon: "no-alt",
+                            label: "Delete location",
+                            onClick: function onClick() {
+                                return handleRemoveLocation(index);
+                            }
+                        })
+                    );
+                });
+
+                locationDisplay = locations.map(function (location, index) {
+                    return wp.element.createElement("img", {
+                        id: "premium-image-" + block_id,
+                        className: "premium-image-accordion",
+                        alt: locations.imageAlt,
+                        src: locations.imageURL
+                    });
+                });
+            }
+
+            return [wp.element.createElement(
+                InspectorControls,
+                { key: "1" },
+                wp.element.createElement(
+                    PanelBody,
+                    { title: __('images') },
+                    locationFields,
+                    wp.element.createElement(
+                        Button,
+                        {
+                            isDefault: true,
+                            onClick: handleAddLocation
+                        },
+                        __('Add Location')
+                    )
+                )
+            ), wp.element.createElement(
+                "div",
+                { key: "2" },
+                locationDisplay
+            )];
+        }
+    }]);
+
+    return edit;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (edit);
+
+/***/ }),
+/* 370 */
+/***/ (function(module, exports) {
+
+
 
 /***/ })
 /******/ ]);
