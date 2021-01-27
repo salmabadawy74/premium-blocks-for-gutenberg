@@ -16,7 +16,7 @@ if (!class_exists('Premium_Guten_Blocks')) {
 
         protected $slug = 'premium-gutenberg';
 
-        public static $pbg_blocks = ['dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'scroll', 'videoBox', 'blog', 'contentSwitcher'];
+        public static $pbg_blocks = ['dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'scroll', 'videoBox', 'blog', 'contentSwitcher','imageAccordion'];
 
         private $pbg_default;
 
@@ -298,6 +298,14 @@ if (!class_exists('Premium_Guten_Blocks')) {
                                     <span class="slider round"></span>
                                 </label>
                             </td>
+                            <th><?php echo __('Image Accordion', 'premium-gutenberg'); ?></th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="imageAccordion" name="imageAccordion"
+                                        <?php checked(1, $this->pbg_get_settings['imageAccordion'], true) ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
 
 
                         </tr>
@@ -368,7 +376,7 @@ if (!class_exists('Premium_Guten_Blocks')) {
                 'blog'      => intval($settings['blog'] ? 1 : 0),
                 'videoBox'      => intval($settings['videoBox'] ? 1 : 0),
                 'scroll'      => intval($settings['scroll'] ? 1 : 0),
-                'blog'      => intval($settings['blog'] ? 1 : 0) 
+             'imageAccordion'  => intval($settings['imageAccordion'] ? 1 : 0),
             );
 
             update_option('pbg_settings', $this->pbg_settings);
