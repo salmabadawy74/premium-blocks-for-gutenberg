@@ -14,8 +14,9 @@ export default class PremiumMarginR extends Component {
     this.onAdvancedControlReset = this.onAdvancedControlReset.bind(this);
   }
 
-  onAdvancedControlReset() {
-    const {
+  onAdvancedControlReset ()
+  {
+  const {
       setAttributes,
       marginTop,
       marginTopType,
@@ -79,10 +80,6 @@ export default class PremiumMarginR extends Component {
       marginLeftMobile,
       marginLeftTablet,
       marginLeft,
-      marginTopLabel,
-      marginRightLabel,
-      marginBottomLabel,
-      marginLeftLabel,
     } = this.props;
 
     return (

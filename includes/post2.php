@@ -99,7 +99,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				'categories'                  => array(
 					'type' => 'string',
 				),
-
 				'postFilter'                  => array(
 					'type'    => 'string',
 					'default' => 'category',
@@ -116,7 +115,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'boolean',
 					'default' => true,
 				),
-
 				'displayPostDate'             => array(
 					'type'    => 'boolean',
 					'default' => true,
@@ -165,7 +163,6 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'type'    => 'string',
 					'default' => 'large',
 				),
-
 				'readMoreText'                => array(
 					'type'    => 'string',
 					'default' => __( 'Read More' ),
@@ -667,30 +664,26 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 					'post__columns-mobile-' . $attributes['mcolumns'],
 
 				);
-			} elseif ( isset( self::$grid_settings['carousel'] ) ) {
+			} 
+			if ( isset( self::$grid_settings['carousel'] ) ) {
 				$wrap = array(
 					'premium-blog-wrap',
 					'premium-blog-carousel',
-					'equal-Height',
+					'post__columns-' . $attributes['columns'],
+					'post__columns-tablet-' . $attributes['tcolumns'],
+					'post__columns-mobile-' . $attributes['mcolumns'],
+					'is-' . $attributes['layoutValue'],
 				);
-			} elseif ( isset( self::$grid_settings['grid'] ) ) {
-
-					$wrap = array(
-						'premium-blog-wrap',
-						'post__columns-' . $attributes['columns'],
-						'post__columns-tablet-' . $attributes['tcolumns'],
-						'post__columns-mobile-' . $attributes['mcolumns'],
-						'equal-Height',
-					);} else {
+			} 
+			 else {
 				$wrap = array(
 					'premium-blog-wrap',
 					'post__columns-' . $attributes['columns'],
 					'post__columns-tablet-' . $attributes['tcolumns'],
 					'post__columns-mobile-' . $attributes['mcolumns'],
-
-				);
+					'is-' . $attributes['layoutValue'],
+					);
 					}
-
 					$block_id  = 'premium-blog' . $attributes['block_id'];
 					$outerwrap = array(
 						'premium-blog',
@@ -1050,7 +1043,7 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function add_post_dynamic_script() {
-			if ( isset( self::$grid_settings['masonry'] ) ) {
+			if ( isset( self::$grid_settings['masonry'] ) && ! isset(self::$grid_settings['carousel']) ) {
 				foreach ( self::$grid_settings['masonry'] as $key => $value ) {
 					?>
 					<script type="text/javascript" id="Post_Masnory">
@@ -1079,42 +1072,43 @@ if ( ! class_exists( 'PBG_Post' ) ) {
 				}
 			}
 			if ( isset( self::$grid_settings['carousel'] ) ) {
-				foreach ( self::$grid_settings['carousel'] as $key => $value ) {
+				
+				foreach ( self::$grid_settings['carousel'] as $key => $value ) { 
 					$dots     = ( 'dots' === $value['navigationDots'] || 'arrows_dots' === $value['navigationDots'] ) ? true : false;
 					$arrows   = ( 'arrows' === $value['navigationArrow'] || 'arrows_dots' === $value['navigationArrow'] ) ? true : false;
 					$tcolumns = ( isset( $value['tcolumns'] ) ) ? $value['tcolumns'] : 2;
 					$mcolumns = ( isset( $value['mcolumns'] ) ) ? $value['mcolumns'] : 1;
+					$slideToScroll = (isset($value['slideToScroll']));				
 					$is_rtl   = is_rtl();
 					?>
-								<script type="text/javascript" id="Post_Carousel">
+								<script type="text/javascript" id="Post_Carousel ">
 								
 								jQuery( document ).ready( function( $ ) {
-										var cols = parseInt( '<?php echo esc_html( $value['columns'] ); ?>' );
+									var cols = parseInt( '<?php  echo esc_html( $value['columns'] ); ?>' );
 									var $scope = $( '.premium-blog' ).find( '.premium-blog-wrap' );
 									if ( cols >= $scope.children().length ) {
 										return;
 									}
 									var setting = {
-									'slidesToShow' : cols,
-									'slidesToScroll' : 1,
+									'slidesToShow' :cols,
+									'slidesToScroll' :<?php echo esc_html( $value['slideToScroll'] ); ?> ,
 									'autoplaySpeed' : <?php echo esc_html( $value['autoplaySpeed'] ); ?>,
 									'autoplay' : Boolean( '<?php echo esc_html( $value['Autoplay'] ); ?>' ),
 									'arrows' : Boolean( '<?php echo esc_html( $value['navigationArrow'] ); ?>' ),
 									'dots' : Boolean( '<?php echo esc_html( $value['navigationDots'] ); ?>' ),
-									'centerMode' :  Boolean( '<?php echo esc_html( $value['centerMode'] ); ?>' ),
-								
+									'centerMode' :  Boolean( '<?php echo esc_html( $value['centerMode'] ); ?>' ),		
 									'responsive' : [
 										{
 											'breakpoint' : 1024,
 											'settings' : {
-												'slidesToShow' : <?php echo esc_html( $tcolumns ); ?>,
+												'slidesToShow' : <?php echo esc_html( $tcolumns ); ?> ,
 												'slidesToScroll' : 1,
 											}
 										},
 										{
 											'breakpoint' : 767,
 											'settings' : {
-												'slidesToShow' : <?php echo esc_html( $mcolumns ); ?>,
+												'slidesToShow' :<?php echo esc_html( $mcolumns ); ?>,
 												'slidesToScroll' : 1,
 											}
 										}

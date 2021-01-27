@@ -7,10 +7,8 @@ class Tags extends React.Component {
       tagList.map((tag, thisIndex) => {
         if (tag.id == post.tags[thisIndex]) {
           tagObject.push(tag);
-          //alert(item);
         }
       });
-      console.log(tagObject);
     }
     if (tagObject.length > 0 && attributes.displayPostTags) {
       return (

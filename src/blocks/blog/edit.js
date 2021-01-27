@@ -207,9 +207,9 @@ class edit extends Component {
       thumbnailTablet,
       PostmarginBottomType,
       PostmarginBottom,
-       PostmarginBottomMobile,
-       PostmarginBottomTablet,
-       PostmarginTopType,
+      PostmarginBottomMobile,
+      PostmarginBottomTablet,
+      PostmarginTopType,
       PostmarginTop,
       PostmarginTopMobile,
       PostmarginTopTablet,
@@ -255,9 +255,17 @@ class edit extends Component {
     };
     const hundleGrid = () => {
       setAttributes({ gridCheck: !gridCheck });
-      setAttributes( { Carousel: false } );
-   
-      
+      if (gridCheck) {
+        setAttributes({ columns: 1 });
+        setAttributes({ tcolumns: 1 });
+        setAttributes({ mcolumns: 1 });
+      }
+      else
+      {
+        setAttributes({ columns: 3 });
+        setAttributes({ tcolumns: 2 });
+        setAttributes({ mcolumns: 1 });
+      }
     };
     const Inspectors = isSelected && (
       <InspectorControls>
@@ -691,10 +699,8 @@ class edit extends Component {
                   onChange={(newSpeed) =>
                     setAttributes({ autoplaySpeed: newSpeed })
                   }
-                  min={ 100 }
+                  min={100}
                   max={2000}
-                  
-                  
                 />
                 <ToggleControl
                   label={__("Center Mode")}
@@ -1016,9 +1022,9 @@ class edit extends Component {
             }
           />
           <PremiumMarginR
-            directions={[ "all"]}
-             setAttributes={setAttributes}
-             marginBottomType={{
+            directions={["all"]}
+            setAttributes={setAttributes}
+            marginBottomType={{
               value: PostmarginBottomType,
               label: __("PostmarginBottomType"),
             }}
@@ -1378,8 +1384,8 @@ export default withSelect((select, props) => {
     orderBy,
     postFilter,
     paginationMarkup,
-    
-numOfPosts,
+
+    numOfPosts,
     pagination,
     currentPost,
   } = props.attributes;
@@ -1396,25 +1402,22 @@ numOfPosts,
     .select("core")
     .getEntityRecords("taxonomy", "category");
 
-  if ( pagination  )
-  {
-   
+  if (pagination) {
     jQuery.ajax({
       url: PremiumSettings.ajaxurl,
       data: {
-        action: 'premium_post_pagination',
+        action: "premium_post_pagination",
         attributes: props.attributes,
         nonce: PremiumSettings.nonce,
       },
-      
+
       type: "POST",
-      success: function ( data )
-      {
-        setAttributes({paginationMarkup:data.data})
+      success: function (data) {
+        setAttributes({ paginationMarkup: data.data });
       },
-      error: function(err) {
-        console.log(err)
-      }
+      error: function (err) {
+        console.log(err);
+      },
     });
   }
 
@@ -1440,7 +1443,7 @@ numOfPosts,
   let latestPostsQuery = {
     order: order,
     orderby: orderBy,
-    posts_per_page : numOfPosts
+    posts_per_page: numOfPosts,
   };
 
   if (currentPost) {

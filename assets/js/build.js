@@ -2759,123 +2759,125 @@ var _wp$element = wp.element,
 
 
 function PremiumResponsive(props) {
+  var sizeTypes = void 0;
 
-	var sizeTypes = void 0;
+  if ("sizeTypes" in props) {
+    sizeTypes = props.sizeTypes;
+  } else {
+    sizeTypes = [{ key: "px", name: __("px") }, { key: "em", name: __("em") }];
+  }
 
-	if ("sizeTypes" in props) {
-		sizeTypes = props.sizeTypes;
-	} else {
-		sizeTypes = [{ key: "px", name: __("px") }, { key: "em", name: __("em") }];
-	}
+  var sizeTypesControls = wp.element.createElement(
+    ButtonGroup,
+    {
+      className: "premium-size-type-field",
+      "aria-label": __("Size Type")
+    },
+    __WEBPACK_IMPORTED_MODULE_0_lodash_map___default()(sizeTypes, function (_ref) {
+      var name = _ref.name,
+          key = _ref.key;
+      return wp.element.createElement(
+        Button,
+        {
+          key: key,
+          className: "premium-size-btn",
+          isSmall: true,
+          isPrimary: props.type.value === key,
+          "aria-pressed": props.type.value === key,
+          onClick: function onClick() {
+            return props.setAttributes(_defineProperty({}, props.typeLabel, key));
+          }
+        },
+        name
+      );
+    })
+  );
 
-	var sizeTypesControls = wp.element.createElement(
-		ButtonGroup,
-		{ className: "premium-size-type-field", "aria-label": __("Size Type") },
-		__WEBPACK_IMPORTED_MODULE_0_lodash_map___default()(sizeTypes, function (_ref) {
-			var name = _ref.name,
-			    key = _ref.key;
-			return wp.element.createElement(
-				Button,
-				{
-					key: key,
-					className: "premium-size-btn",
-					isSmall: true,
-					isPrimary: props.type.value === key,
-					"aria-pressed": props.type.value === key,
-					onClick: function onClick() {
-						return props.setAttributes(_defineProperty({}, props.typeLabel, key));
-					}
-				},
-				name
-			);
-		})
-	);
+  return wp.element.createElement(
+    TabPanel,
+    {
+      className: "premium-size-type-field-tabs",
+      activeClass: "active-tab",
+      tabs: [{
+        name: "desktop",
+        title: wp.element.createElement(Dashicon, { icon: "desktop" }),
+        className: "premium-desktop-tab premium-responsive-tabs"
+      }, {
+        name: "tablet",
+        title: wp.element.createElement(Dashicon, { icon: "tablet" }),
+        className: "premium-tablet-tab premium-responsive-tabs"
+      }, {
+        name: "mobile",
+        title: wp.element.createElement(Dashicon, { icon: "smartphone" }),
+        className: "premium-mobile-tab premium-responsive-tabs"
+      }]
+    },
+    function (tab) {
+      var tabout = void 0;
 
-	return wp.element.createElement(
-		TabPanel,
-		{ className: "premium-size-type-field-tabs", activeClass: "active-tab",
-			tabs: [{
-				name: "desktop",
-				title: wp.element.createElement(Dashicon, { icon: "desktop" }),
-				className: "premium-desktop-tab premium-responsive-tabs"
-			}, {
-				name: "tablet",
-				title: wp.element.createElement(Dashicon, { icon: "tablet" }),
-				className: "premium-tablet-tab premium-responsive-tabs"
-			}, {
-				name: "mobile",
-				title: wp.element.createElement(Dashicon, { icon: "smartphone" }),
-				className: "premium-mobile-tab premium-responsive-tabs"
-			}] },
-		function (tab) {
-			var tabout = void 0;
+      if ("mobile" === tab.name) {
+        tabout = wp.element.createElement(
+          Fragment,
+          null,
+          sizeTypesControls,
+          wp.element.createElement(RangeControl, {
+            label: __(props.sizeMobileText),
+            value: props.sizeMobile.value,
+            onChange: function onChange(value) {
+              return props.setAttributes(_defineProperty({}, props.sizeMobileLabel, value));
+            },
+            min: 0,
+            max: 200,
+            step: props.steps,
+            beforeIcon: "editor-textcolor",
+            allowReset: true
+          })
+        );
+      } else if ("tablet" === tab.name) {
+        tabout = wp.element.createElement(
+          Fragment,
+          null,
+          sizeTypesControls,
+          wp.element.createElement(RangeControl, {
+            label: __(props.sizeTabletText),
+            value: props.sizeTablet.value,
+            onChange: function onChange(value) {
+              return props.setAttributes(_defineProperty({}, props.sizeTabletLabel, value));
+            },
+            min: 0,
+            max: 200,
+            step: props.steps,
+            beforeIcon: "editor-textcolor",
+            allowReset: true
+          })
+        );
+      } else {
+        tabout = wp.element.createElement(
+          Fragment,
+          null,
+          sizeTypesControls,
+          wp.element.createElement(RangeControl, {
+            label: __(props.sizeText),
+            value: props.size.value,
+            onChange: function onChange(value) {
+              return props.setAttributes(_defineProperty({}, props.sizeLabel, value));
+            },
+            min: 0,
+            max: 200,
+            step: props.steps,
+            beforeIcon: "editor-textcolor",
+            allowReset: true
+          })
+        );
+      }
 
-			if ("mobile" === tab.name) {
-				tabout = wp.element.createElement(
-					Fragment,
-					null,
-					sizeTypesControls,
-					wp.element.createElement(RangeControl, {
-						label: __(props.sizeMobileText),
-						value: props.sizeMobile.value,
-						onChange: function onChange(value) {
-							return props.setAttributes(_defineProperty({}, props.sizeMobileLabel, value));
-						},
-						min: 0,
-						max: 200,
-						step: props.steps,
-						beforeIcon: "editor-textcolor",
-						allowReset: true,
-						initialPosition: props.sizeMobile
-					})
-				);
-			} else if ("tablet" === tab.name) {
-				tabout = wp.element.createElement(
-					Fragment,
-					null,
-					sizeTypesControls,
-					wp.element.createElement(RangeControl, {
-						label: __(props.sizeTabletText),
-						value: props.sizeTablet.value,
-						onChange: function onChange(value) {
-							return props.setAttributes(_defineProperty({}, props.sizeTabletLabel, value));
-						},
-						min: 0,
-						max: 200,
-						step: props.steps,
-						beforeIcon: "editor-textcolor",
-						allowReset: true,
-						initialPosition: props.sizeTablet
-					})
-				);
-			} else {
-				tabout = wp.element.createElement(
-					Fragment,
-					null,
-					sizeTypesControls,
-					wp.element.createElement(RangeControl, {
-						label: __(props.sizeText),
-						value: props.size.value,
-						onChange: function onChange(value) {
-							return props.setAttributes(_defineProperty({}, props.sizeLabel, value));
-						},
-						min: 0,
-						max: 200,
-						step: props.steps,
-						beforeIcon: "editor-textcolor",
-						allowReset: true,
-						initialPosition: props.size
-					})
-				);
-			}
-
-			return wp.element.createElement(
-				"div",
-				null,
-				tabout
-			);
-		}
-	);
+      return wp.element.createElement(
+        "div",
+        null,
+        tabout
+      );
+    }
+  );
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (PremiumResponsive);
@@ -4867,7 +4869,6 @@ var Meta = function (_React$Component) {
           }
         });
       }
-      console.log(categoryObject);
       return wp.element.createElement(
         __WEBPACK_IMPORTED_MODULE_0_react__["Fragment"],
         null,
@@ -4979,9 +4980,11 @@ var Excerpt = function (_React$Component) {
           post = _props.post,
           attributes = _props.attributes;
 
+
       if (post.pbg_excerpt == undefined) {
         return null;
       }
+
       var words = post.pbg_excerpt.split(" ");
       var excerpt = post.pbg_excerpt;
       var exLength = attributes.excerptLength ? attributes.excerptLength : 25;
@@ -5175,10 +5178,8 @@ var Tags = function (_React$Component) {
         tagList.map(function (tag, thisIndex) {
           if (tag.id == post.tags[thisIndex]) {
             tagObject.push(tag);
-            //alert(item);
           }
         });
-        console.log(tagObject);
       }
       if (tagObject.length > 0 && attributes.displayPostTags) {
         return wp.element.createElement(
@@ -7561,11 +7562,7 @@ var PremiumMarginR = function (_Component) {
           marginLeftType = _props2.marginLeftType,
           marginLeftMobile = _props2.marginLeftMobile,
           marginLeftTablet = _props2.marginLeftTablet,
-          marginLeft = _props2.marginLeft,
-          marginTopLabel = _props2.marginTopLabel,
-          marginRightLabel = _props2.marginRightLabel,
-          marginBottomLabel = _props2.marginBottomLabel,
-          marginLeftLabel = _props2.marginLeftLabel;
+          marginLeft = _props2.marginLeft;
 
 
       return wp.element.createElement(
@@ -7589,7 +7586,6 @@ var PremiumMarginR = function (_Component) {
               wp.element.createElement("i", { className: "dashicons dashicons-edit" })
             );
           },
-
           renderContent: function renderContent() {
             return wp.element.createElement(
               Fragment,
@@ -47619,7 +47615,15 @@ var edit = function (_Component) {
       };
       var hundleGrid = function hundleGrid() {
         setAttributes({ gridCheck: !gridCheck });
-        setAttributes({ Carousel: false });
+        if (gridCheck) {
+          setAttributes({ columns: 1 });
+          setAttributes({ tcolumns: 1 });
+          setAttributes({ mcolumns: 1 });
+        } else {
+          setAttributes({ columns: 3 });
+          setAttributes({ tcolumns: 2 });
+          setAttributes({ mcolumns: 1 });
+        }
       };
       var Inspectors = isSelected && wp.element.createElement(
         InspectorControls,
@@ -48044,7 +48048,6 @@ var edit = function (_Component) {
               },
               min: 100,
               max: 2000
-
             }),
             wp.element.createElement(ToggleControl, {
               label: __("Center Mode"),
@@ -48755,11 +48758,10 @@ var edit = function (_Component) {
   categoriesList = wp.data.select("core").getEntityRecords("taxonomy", "category");
 
   if (pagination) {
-
     jQuery.ajax({
       url: PremiumSettings.ajaxurl,
       data: {
-        action: 'premium_post_pagination',
+        action: "premium_post_pagination",
         attributes: props.attributes,
         nonce: PremiumSettings.nonce
       },
@@ -48888,6 +48890,7 @@ var Carousel = function (_React$Component) {
           attributes = _props.attributes,
           className = _props.className,
           latestPosts = _props.latestPosts,
+          gridCheck = _props.gridCheck,
           TagList = _props.TagList,
           categoriesList = _props.categoriesList;
       var block_id = attributes.block_id,
@@ -48905,15 +48908,15 @@ var Carousel = function (_React$Component) {
           arrowPosition = attributes.arrowPosition;
 
       var settings = (_settings = {
-
         arrows: navigationArrow,
         dots: navigationDots,
         centerMode: centerMode,
         centerPadding: slideSpacing,
+        slideToScroll: slideToScroll,
         infinite: true,
         autoplay: Autoplay,
         speed: autoplaySpeed
-      }, _defineProperty(_settings, "speed", autoplaySpeed), _defineProperty(_settings, "slidesToShow", columns), _defineProperty(_settings, "centerPadding", slideSpacing + 'px'), _defineProperty(_settings, "draggable", true), _defineProperty(_settings, "responsive", [{
+      }, _defineProperty(_settings, "speed", autoplaySpeed), _defineProperty(_settings, "slidesToShow", columns), _defineProperty(_settings, "centerPadding", slideSpacing + "px"), _defineProperty(_settings, "draggable", true), _defineProperty(_settings, "responsive", [{
         breakpoint: 976,
         settings: {
           slidesToShow: tcolumns
@@ -48927,7 +48930,10 @@ var Carousel = function (_React$Component) {
       var lastDisplay = latestPosts.slice(offsetNum);
       return wp.element.createElement(
         "div",
-        { className: "premium-blog premium-blog-carousel", id: "premium-blog-" + block_id },
+        {
+          className: "premium-blog premium-blog-carousel",
+          id: "premium-blog-" + block_id
+        },
         wp.element.createElement(
           __WEBPACK_IMPORTED_MODULE_0_react_slick___default.a,
           settings,
@@ -48937,7 +48943,13 @@ var Carousel = function (_React$Component) {
               { className: "premium-blog-post-outer-container", key: i },
               wp.element.createElement(
                 "div",
-                { className: "premium-blog-post-container", style: { marginRight: slideSpacing + "px", marginLeft: slideSpacing + "px" } },
+                {
+                  className: "premium-blog-post-container",
+                  style: {
+                    marginRight: slideSpacing + "px",
+                    marginLeft: slideSpacing + "px"
+                  }
+                },
                 wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__Image__["a" /* default */], { post: post, attributes: attributes }),
                 wp.element.createElement(
                   "div",
@@ -53183,7 +53195,6 @@ var Blog = function (_React$Component) {
       var displayPosts = latestPosts.length > numOfPosts ? latestPosts.slice(0, numOfPosts) : latestPosts;
 
       lastDisplay = displayPosts.slice(offsetNum);
-      console.log(lastDisplay);
 
       var equalHeight = layoutValue === "even" ? "equal-Height" : null;
 
@@ -53218,7 +53229,6 @@ var Blog = function (_React$Component) {
                     "div",
                     {
                       className: "premium-blog-content-wrapper empty-thumb "
-
                     },
                     wp.element.createElement(
                       "div",
@@ -53411,9 +53421,11 @@ function styling(props) {
       paginationPosition = _props$attributes.paginationPosition;
   var latestPosts = props.latestPosts;
 
+
   var selectors = {};
   var tablet_selectors = {};
   var mobile_selectors = {};
+
   selectors = {
     " .premium-blog-post-outer-container": {
       "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(rowGap, rowGapUnit),
@@ -53421,8 +53433,8 @@ function styling(props) {
       "padding-left": "calc( " + columnGap + "px/2 );"
     },
     " .premium-blog-post-outer-container a ": {
-      'color': 'inherit ;',
-      'text-decoration': 'none ;'
+      color: "inherit ;",
+      "text-decoration": "none ;"
     },
     " .premium-blog-post-outer-container .premium-blog-post-container .premium-blog-content-wrapper ": {
       "text-align": "" + filterPosition
@@ -53432,17 +53444,15 @@ function styling(props) {
     },
     " .premium-blog-post-outer-container img": {
       "object-fit": "" + thumbnail,
-      "height": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(height, HeightU)
+      height: Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(height, HeightU)
     },
     " .premium-blog-post-outer-container:hover img": {
-
       filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
     },
     " .premium-blog-post-container .premium-blog-entry-title h2": {
       "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(marginBottom, marginBottomType)
     },
     " .premium-blog-post-container .premium-blog-entry-title h2 a ": {
-
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(firstContentfontSize, firstContentfontSizeType),
       "font-weight": firstContentWeight + ";",
       "font-style": firstContentStyle + ";",
@@ -53455,10 +53465,8 @@ function styling(props) {
     },
     " .premium-blog-even": {
       width: 100 / columns + "%"
-
     },
     " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
-
       "font-size": "" + postContentfontSize + postContentfontSizeType + " !important",
       "margin-bottom": "" + PostmarginBottom + PostmarginBottomType + " !important",
       "font-weight": postContentWeight + ";",
@@ -53469,8 +53477,8 @@ function styling(props) {
       "margin-right": "" + PostmarginRight + PostmarginRightType + " !important",
       "margin-left": "" + PostmarginLeft + PostmarginLeftType + " !important",
       "background-color": backgroundPostContent + ";",
-      "color": "" + textColor,
-      "padding": "" + postSpacing + postSpacingType,
+      color: "" + textColor,
+      padding: "" + postSpacing + postSpacingType,
       "box-shadow": containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition
     },
     " .premium-blog-meta-data": {
@@ -53512,31 +53520,30 @@ function styling(props) {
       "font-style": tagsStyle + ";",
       "text-transform": (tagsUpper ? "uppercase" : null) + " ;",
       "letter-spacing": tagsLetter + "px ;",
-      "color": "" + tagColor
+      color: "" + tagColor
     },
     " .premium-blog-post-container .premium-blog-content-wrapper .premium-blog-post-tags-container:hover span": {
-      "color": "" + hoverTag
+      color: "" + hoverTag
     },
     " .premium-blog-footer .premium-blog-pagination-container": {
-      'text-align': paginationPosition + " !important"
-
+      "text-align": paginationPosition + " !important"
     },
     " .premium-blog-footer .premium-blog-pagination-container a": {
       "pointer-events": "none"
+    },
+    " .premium-blog-carousel .slick-slider .slick-next": {
+      right: "10px !important;"
     }
-
   };
   mobile_selectors = {
     " .premium-blog-post-container .premium-blog-entry-title h2": {
       "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(marginBottomMobile, marginBottomType)
-
     },
     " .premium-blog-post-container .premium-blog-entry-title h2 a": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(firstContentfontSizeMobile, firstContentfontSizeType)
     },
     " .premium-blog-even": {
       width: 100 / mcolumns + "%"
-
     },
     " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(postContentfontSizeMobile, postContentfontSizeType),
@@ -53569,14 +53576,12 @@ function styling(props) {
   tablet_selectors = {
     " .premium-blog-post-container .premium-blog-entry-title h2": {
       "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(marginBottomTablet, marginBottomType)
-
     },
     " .premium-blog-post-container .premium-blog-entry-title h2 a": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(firstContentfontSizeTablet, firstContentfontSizeType)
     },
     " .premium-blog-even": {
       width: 100 / tcolumns + "%"
-
     },
     " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(postContentfontSizeTablet, postContentfontSizeType),
@@ -53585,7 +53590,6 @@ function styling(props) {
       "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(PostmarginRightTablet, PostmarginRightType),
       "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(PostmarginLeftTablet, PostmarginLeftType),
       " padding": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(postSpacingTablet, postSpacingType)
-
     },
     " .premium-blog-meta-data": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__GenerateCssUnit__["a" /* default */])(secondContentfontSizeTablet, secondContentfontSizeType)

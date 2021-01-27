@@ -1,8 +1,6 @@
 import generateCSS from "./GenerateCss";
 import generateCSSUnit from "./GenerateCssUnit";
-function styling ( props )
-{
-
+function styling(props) {
   const {
     height,
     HeightU,
@@ -128,119 +126,122 @@ function styling ( props )
 
   selectors = {
     " .premium-blog-post-outer-container": {
-      "margin-bottom": generateCSSUnit( rowGap, rowGapUnit ),
-      "padding-right": `calc( ${ columnGap }px/2 );`,
-      "padding-left": `calc( ${ columnGap }px/2 );`,
+      "margin-bottom": generateCSSUnit(rowGap, rowGapUnit),
+      "padding-right": `calc( ${columnGap}px/2 );`,
+      "padding-left": `calc( ${columnGap}px/2 );`,
     },
     " .premium-blog-post-outer-container a ": {
       color: "inherit ;",
       "text-decoration": "none ;",
     },
     " .premium-blog-post-outer-container .premium-blog-post-container .premium-blog-content-wrapper ": {
-      "text-align": `${ filterPosition }`,
+      "text-align": `${filterPosition}`,
     },
     " .premium-blog-thumbnail-overlay": {
-      "background-color": `${ overlayColor }`,
+      "background-color": `${overlayColor}`,
     },
     " .premium-blog-post-outer-container img": {
-      "object-fit": `${ thumbnail }`,
-      height: generateCSSUnit( height, HeightU ),
+      "object-fit": `${thumbnail}`,
+      height: generateCSSUnit(height, HeightU),
     },
     " .premium-blog-post-outer-container:hover img": {
-      filter: `brightness( ${ bright }% ) contrast( ${ contrast }% ) saturate( ${ saturation }% ) blur( ${ blur }px ) hue-rotate( ${ hue }deg )`,
+      filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
     },
     " .premium-blog-post-container .premium-blog-entry-title h2": {
-      "margin-bottom": generateCSSUnit( marginBottom, marginBottomType ),
+      "margin-bottom": generateCSSUnit(marginBottom, marginBottomType),
     },
     " .premium-blog-post-container .premium-blog-entry-title h2 a ": {
       "font-size": generateCSSUnit(
         firstContentfontSize,
         firstContentfontSizeType
       ),
-      "font-weight": `${ firstContentWeight };`,
-      "font-style": `${ firstContentStyle };`,
-      "text-transform": `${ firstContentUpper ? "uppercase" : null } ;`,
-      "letter-spacing": `${ firstContentLetter }px ;`,
-      color: `${ typoColor } !important ;`,
+      "font-weight": `${firstContentWeight};`,
+      "font-style": `${firstContentStyle};`,
+      "text-transform": `${firstContentUpper ? "uppercase" : null} ;`,
+      "letter-spacing": `${firstContentLetter}px ;`,
+      color: `${typoColor} !important ;`,
     },
     " .premium-blog-entry-title:hover h2 a ": {
-      color: `${ hoverColor } !important`,
+      color: `${hoverColor} !important`,
     },
     " .premium-blog-even": {
-      width: `${ 100 / columns }%`,
+      width: `${100 / columns}%`,
     },
     " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
-      "font-size": `${ postContentfontSize }${ postContentfontSizeType } !important`,
-      "margin-bottom": `${ PostmarginBottom }${ PostmarginBottomType } !important`,
-      "font-weight": `${ postContentWeight };`,
-      "font-style": `${ postContentStyle };`,
-      "text-transform": `${ postContentUpper ? "uppercase" : null } ;`,
-      "letter-spacing": `${ postContentLetter }px ;`,
-      "margin-top": `${ PostmarginTop }${ PostmarginTopType } !important`,
-      "margin-right": `${ PostmarginRight }${ PostmarginRightType } !important`,
-      "margin-left": `${ PostmarginLeft }${ PostmarginLeftType } !important`,
-      "background-color": `${ backgroundPostContent };`,
-      color: `${ textColor }`,
-      padding: `${ postSpacing }${ postSpacingType }`,
-      "box-shadow": `${ containerShadowHorizontal }px ${ containerShadowVertical }px ${ containerShadowBlur }px ${ containerShadowColor } ${ containerShadowPosition }`,
+      "font-size": `${postContentfontSize}${postContentfontSizeType} !important`,
+      "margin-bottom": `${PostmarginBottom}${PostmarginBottomType} !important`,
+      "font-weight": `${postContentWeight};`,
+      "font-style": `${postContentStyle};`,
+      "text-transform": `${postContentUpper ? "uppercase" : null} ;`,
+      "letter-spacing": `${postContentLetter}px ;`,
+      "margin-top": `${PostmarginTop}${PostmarginTopType} !important`,
+      "margin-right": `${PostmarginRight}${PostmarginRightType} !important`,
+      "margin-left": `${PostmarginLeft}${PostmarginLeftType} !important`,
+      "background-color": `${backgroundPostContent};`,
+      color: `${textColor}`,
+      padding: `${postSpacing}${postSpacingType}`,
+      "box-shadow": `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
     },
     " .premium-blog-meta-data": {
       "font-size": generateCSSUnit(
         secondContentfontSize,
         secondContentfontSizeType
       ),
-      "font-weight": `${ secondContentWeight };`,
-      "font-style": `${ secondContentStyle };`,
-      "text-transform": `${ secondContentUpper ? "uppercase" : null } ;`,
-      "letter-spacing": `${ secondContentLetter }px ;`,
-      color: `${ metaColor } !important;`,
+      "font-weight": `${secondContentWeight};`,
+      "font-style": `${secondContentStyle};`,
+      "text-transform": `${secondContentUpper ? "uppercase" : null} ;`,
+      "letter-spacing": `${secondContentLetter}px ;`,
+      color: `${metaColor} !important;`,
     },
     " .premium-blog-meta-data:hover": {
-      color: `${ linkColor } !important`,
+      color: `${linkColor} !important`,
     },
     " .premium-blog-meta-separtor": {
-      color: `${ sepaColor };`,
+      color: `${sepaColor};`,
     },
     " .premium-blog-excerpt-link-wrap ": {
-      " padding": generateCSSUnit( buttonSpacing, buttonSpacingType ),
+      " padding": generateCSSUnit(buttonSpacing, buttonSpacingType),
     },
     " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link": {
-      "font-size": generateCSSUnit( buttonfontSize, buttonfontSizeType ),
-      "font-weight": `${ buttonWeight };`,
-      "font-style": `${ buttonStyle };`,
-      "text-transform": `${ buttonUpper ? "uppercase" : null } ;`,
-      "letter-spacing": `${ buttonLetter }px ;`,
-      color: ` ${ buttonColor }`,
-      background: `${ buttonBackground }`,
-      "border-radius": `${ borderRadius }px`,
-      border: `${ borderWidth }px ${ borderType } ${ borderColor }`,
-      padding: generateCSSUnit( `${ buttonPadding }`, `${ buttonPaddingType }` ),
+      "font-size": generateCSSUnit(buttonfontSize, buttonfontSizeType),
+      "font-weight": `${buttonWeight};`,
+      "font-style": `${buttonStyle};`,
+      "text-transform": `${buttonUpper ? "uppercase" : null} ;`,
+      "letter-spacing": `${buttonLetter}px ;`,
+      color: ` ${buttonColor}`,
+      background: `${buttonBackground}`,
+      "border-radius": `${borderRadius}px`,
+      border: `${borderWidth}px ${borderType} ${borderColor}`,
+      padding: generateCSSUnit(`${buttonPadding}`, `${buttonPaddingType}`),
     },
     " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link:hover": {
-      color: `${ buttonhover }`,
-      background: `${ hoverBackground }`,
+      color: `${buttonhover}`,
+      background: `${hoverBackground}`,
     },
     " .premium-blog-post-tags-container ": {
-      "font-size": generateCSSUnit( tagsfontSize, tagsfontSizeType ),
-      "font-weight": `${ tagsWeight };`,
-      "font-style": `${ tagsStyle };`,
-      "text-transform": `${ tagsUpper ? "uppercase" : null } ;`,
-      "letter-spacing": `${ tagsLetter }px ;`,
-      color: `${ tagColor }`,
+      "font-size": generateCSSUnit(tagsfontSize, tagsfontSizeType),
+      "font-weight": `${tagsWeight};`,
+      "font-style": `${tagsStyle};`,
+      "text-transform": `${tagsUpper ? "uppercase" : null} ;`,
+      "letter-spacing": `${tagsLetter}px ;`,
+      color: `${tagColor}`,
     },
     " .premium-blog-post-container .premium-blog-content-wrapper .premium-blog-post-tags-container:hover span": {
-      color: `${ hoverTag }`,
+      color: `${hoverTag}`,
     },
     " .premium-blog-footer .premium-blog-pagination-container": {
-      "text-align": `${ paginationPosition } !important`,
+      "text-align": `${paginationPosition} !important`,
     },
     " .premium-blog-footer .premium-blog-pagination-container a": {
       "pointer-events": "none",
     },
+    " .premium-blog-carousel .slick-slider .slick-next": {
+      right: "10px !important;",
+    },
   };
   mobile_selectors = {
     " .premium-blog-post-container .premium-blog-entry-title h2": {
-      "margin-bottom": generateCSSUnit( marginBottomMobile, marginBottomType ),
+      "margin-bottom": generateCSSUnit(marginBottomMobile, marginBottomType),
     },
     " .premium-blog-post-container .premium-blog-entry-title h2 a": {
       "font-size": generateCSSUnit(
@@ -249,7 +250,7 @@ function styling ( props )
       ),
     },
     " .premium-blog-even": {
-      width: `${ 100 / mcolumns }%`,
+      width: `${100 / mcolumns}%`,
     },
     " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
       "font-size": generateCSSUnit(
@@ -260,16 +261,16 @@ function styling ( props )
         PostmarginBottomMobile,
         PostmarginBottomType
       ),
-      "margin-top": generateCSSUnit( PostmarginTopMobile, PostmarginTopType ),
+      "margin-top": generateCSSUnit(PostmarginTopMobile, PostmarginTopType),
       "margin-right": generateCSSUnit(
         PostmarginRightMobile,
         PostmarginRightType
       ),
-      "margin-left": generateCSSUnit( PostmarginLeftMobile, PostmarginLeftType ),
-      " padding": generateCSSUnit( postSpacingMobile, postSpacingType ),
+      "margin-left": generateCSSUnit(PostmarginLeftMobile, PostmarginLeftType),
+      " padding": generateCSSUnit(postSpacingMobile, postSpacingType),
     },
     " .premium-blog-post-outer-container img": {
-      "object-fit": `${ thumbnailMobile }`,
+      "object-fit": `${thumbnailMobile}`,
     },
     " .premium-blog-meta-data": {
       "font-size": generateCSSUnit(
@@ -278,22 +279,22 @@ function styling ( props )
       ),
     },
     " .premium-blog-meta-data:hover": {
-      color: `${ linkColor }`,
+      color: `${linkColor}`,
     },
     " .premium-blog-excerpt-link-wrap ": {
-      " padding": generateCSSUnit( buttonSpacingMobile, buttonSpacingType ),
+      " padding": generateCSSUnit(buttonSpacingMobile, buttonSpacingType),
     },
     " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link": {
-      "font-size": generateCSSUnit( buttonfontSizeMobile, buttonfontSizeType ),
-      padding: generateCSSUnit( buttonPaddingMobile, buttonPaddingType ),
+      "font-size": generateCSSUnit(buttonfontSizeMobile, buttonfontSizeType),
+      padding: generateCSSUnit(buttonPaddingMobile, buttonPaddingType),
     },
     " .premium-blog-post-tags-container ": {
-      "font-size": generateCSSUnit( tagsfontSizeMobile, tagsfontSizeType ),
+      "font-size": generateCSSUnit(tagsfontSizeMobile, tagsfontSizeType),
     },
   };
   tablet_selectors = {
     " .premium-blog-post-container .premium-blog-entry-title h2": {
-      "margin-bottom": generateCSSUnit( marginBottomTablet, marginBottomType ),
+      "margin-bottom": generateCSSUnit(marginBottomTablet, marginBottomType),
     },
     " .premium-blog-post-container .premium-blog-entry-title h2 a": {
       "font-size": generateCSSUnit(
@@ -302,7 +303,7 @@ function styling ( props )
       ),
     },
     " .premium-blog-even": {
-      width: `${ 100 / tcolumns }%`,
+      width: `${100 / tcolumns}%`,
     },
     " .premium-blog-post-container .premium-blog-content-wrapper-inner p": {
       "font-size": generateCSSUnit(
@@ -313,13 +314,13 @@ function styling ( props )
         PostmarginBottomTablet,
         PostmarginBottomType
       ),
-      "margin-top": generateCSSUnit( PostmarginTopTablet, PostmarginTopType ),
+      "margin-top": generateCSSUnit(PostmarginTopTablet, PostmarginTopType),
       "margin-right": generateCSSUnit(
         PostmarginRightTablet,
         PostmarginRightType
       ),
-      "margin-left": generateCSSUnit( PostmarginLeftTablet, PostmarginLeftType ),
-      " padding": generateCSSUnit( postSpacingTablet, postSpacingType ),
+      "margin-left": generateCSSUnit(PostmarginLeftTablet, PostmarginLeftType),
+      " padding": generateCSSUnit(postSpacingTablet, postSpacingType),
     },
     " .premium-blog-meta-data": {
       "font-size": generateCSSUnit(
@@ -329,30 +330,29 @@ function styling ( props )
     },
 
     " .premium-blog-excerpt-link-wrap ": {
-      " padding": generateCSSUnit( buttonSpacingTablet, buttonSpacingType ),
+      " padding": generateCSSUnit(buttonSpacingTablet, buttonSpacingType),
     },
     " .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link": {
-      "font-size": generateCSSUnit( buttonfontSizeTablet, buttonfontSizeType ),
-      padding: generateCSSUnit( buttonPaddingTablet, buttonPaddingType ),
+      "font-size": generateCSSUnit(buttonfontSizeTablet, buttonfontSizeType),
+      padding: generateCSSUnit(buttonPaddingTablet, buttonPaddingType),
     },
     " .premium-blog-post-outer-container img": {
-      "object-fit": `${ thumbnailTablet }`,
+      "object-fit": `${thumbnailTablet}`,
     },
 
     " .premium-blog-post-tags-container ": {
-      "font-size": generateCSSUnit( tagsfontSizeTablet, tagsfontSizeType ),
+      "font-size": generateCSSUnit(tagsfontSizeTablet, tagsfontSizeType),
     },
   };
 
   let styling_css = "";
-  let id = `#premium-blog-${ props.clientId }`;
-  if ( classMigrate )
-  {
-    id = `.premium-blog-${ props.clientId }`;
+  let id = `#premium-blog-${props.clientId}`;
+  if (classMigrate) {
+    id = `.premium-blog-${props.clientId}`;
   }
-  styling_css = generateCSS( selectors, id );
-  styling_css += generateCSS( tablet_selectors, id, true, "tablet" );
-  styling_css += generateCSS( mobile_selectors, id, true, "mobile" );
+  styling_css = generateCSS(selectors, id);
+  styling_css += generateCSS(tablet_selectors, id, true, "tablet");
+  styling_css += generateCSS(mobile_selectors, id, true, "mobile");
   return styling_css;
 }
 export default styling;

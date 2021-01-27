@@ -15,7 +15,7 @@ function SampleNextArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display:"block"  }}
+      style={{ ...style, display: "block" }}
       onClick={onClick}
     />
   );
@@ -39,14 +39,13 @@ class Carousel extends React.Component {
       attributes,
       className,
       latestPosts,
-
+      gridCheck,
       TagList,
       categoriesList,
     } = this.props;
 
     const {
       block_id,
-
       Autoplay,
       slideToScroll,
       autoplaySpeed,
@@ -61,41 +60,50 @@ class Carousel extends React.Component {
       arrowPosition,
     } = attributes;
     const settings = {
-      
-      arrows:navigationArrow,
+      arrows: navigationArrow,
       dots: navigationDots,
       centerMode: centerMode,
       centerPadding: slideSpacing,
+      slideToScroll: slideToScroll,
       infinite: true,
       autoplay: Autoplay,
       speed: autoplaySpeed,
       speed: autoplaySpeed,
       slidesToShow: columns,
-      centerPadding: slideSpacing + 'px',
+      centerPadding: slideSpacing + "px",
       draggable: true,
 
       responsive: [
         {
           breakpoint: 976,
           settings: {
-            slidesToShow: tcolumns,
+            slidesToShow:tcolumns ,
           },
         },
         {
           breakpoint: 767,
           settings: {
-            slidesToShow: mcolumns,
+            slidesToShow: mcolumns ,
           },
         },
       ],
     };
     const lastDisplay = latestPosts.slice(offsetNum);
     return (
-      <div className={ `premium-blog premium-blog-carousel` } id={ `premium-blog-${ block_id }` }>  
+      <div
+        className={`premium-blog premium-blog-carousel`}
+        id={`premium-blog-${block_id}`}
+      >
         <Slider {...settings}>
           {lastDisplay.map((post, i) => (
-            <div className={`premium-blog-post-outer-container`} key={i} >
-              <div className={`premium-blog-post-container`} style={{marginRight:`${slideSpacing}px`,marginLeft:`${slideSpacing}px`}}>
+            <div className={`premium-blog-post-outer-container`} key={i}>
+              <div
+                className={`premium-blog-post-container`}
+                style={{
+                  marginRight: `${slideSpacing}px`,
+                  marginLeft: `${slideSpacing}px`,
+                }}
+              >
                 <Image post={post} attributes={attributes} />
                 <div className={`premium-blog-content-wrapper empty-thumb`}>
                   <div className={`premium-blog-content-wrapper empty-thumb `}>
@@ -135,8 +143,7 @@ class Carousel extends React.Component {
               </div>
             </div>
           ))}
-          </Slider>
-        
+        </Slider>
       </div>
     );
   }

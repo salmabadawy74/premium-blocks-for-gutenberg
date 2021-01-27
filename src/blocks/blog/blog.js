@@ -49,7 +49,6 @@ class Blog extends React.Component {
         : latestPosts;
 
     lastDisplay = displayPosts.slice( offsetNum );
-    console.log( lastDisplay );
 
     const equalHeight = layoutValue === "even" ? "equal-Height" : null;
 
