@@ -15,5 +15,6 @@ import "./blocks/icon-list";
 import "./blocks/content-switcher";
 import "./blocks/image-scroll";
 import "./blocks/blog";
+import "./blocks/image-accordion";
 
 //import "./blocks/test";
