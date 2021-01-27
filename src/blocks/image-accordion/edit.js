@@ -90,21 +90,18 @@ class edit extends Component
                 const locations = [ locations ];
                 locations.splice( index, 1 );
                 setAttributes( { locations } );
-            };
-    
+            };   
             const handleLocationChange = ( address, index ) => {
                 const locations = [ locations ];
                 locations[ index ].address = address;
                 setAttributes( { locations } );
-            };
-           
+            };          
             let locationFields,
 			locationDisplay;
-
 		if ( this.props.attributes.locations.length ) {
 			locationFields = locations.map( ( location, index ) => {
 				return <Fragment key={ index }>
-                   <MediaUpload
+                <MediaUpload
                 onSelect={onFileSelect}
                 value={locations.imageID}
                 render={({ open }) => (

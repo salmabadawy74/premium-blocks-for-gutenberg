@@ -9,9 +9,8 @@ const {
 
 registerBlockType("premium/image-accodion", {
   title: __("Image Accordion"),
-  
-    category: "premium-blocks",
-    keywords:['Image Accordion'],
+  category: "premium-blocks",
+  keywords:['Image Accordion'],
   attributes: {
       block_id: {
           type: "string",
