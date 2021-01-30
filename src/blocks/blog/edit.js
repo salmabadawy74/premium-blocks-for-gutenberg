@@ -295,20 +295,25 @@ class edit extends Component {
               }
             />,
             <TabPanel
-              className="uagb-size-type-field-tabs uagb-without-size-type"
+              className="premium-size-type-field-tabs"
               activeClass="active-tab"
               tabs={[
                 {
                   name: "mobile",
                   title: <Dashicon icon="desktop" />,
+                  className: "premium-desktop-tab premium-responsive-tabs",
                 },
                 {
                   name: "tablet",
                   title: <Dashicon icon="tablet" />,
+                  className: "premium-tablet-tab premium-responsive-tabs",
+
                 },
                 {
                   name: "desktop",
                   title: <Dashicon icon="smartphone" />,
+                  className: "premium-mobile-tab premium-responsive-tabs",
+
                 },
               ]}
             >
@@ -463,20 +468,23 @@ class edit extends Component {
               max={HeightU === "em" ? 60 : 800}
             />,
             <TabPanel
-              className="uagb-size-type-field-tabs uagb-without-size-type"
+              className="premium-size-type-field-tabs"
               activeClass="active-tab"
               tabs={[
                 {
                   name: "desktop",
                   title: <Dashicon icon="desktop" />,
+                  className: "premium-desktop-tab premium-responsive-tabs",
                 },
                 {
                   name: "tablet",
                   title: <Dashicon icon="tablet" />,
+                  className: "premium-tablet-tab premium-responsive-tabs",
                 },
                 {
                   name: "mobile",
                   title: <Dashicon icon="smartphone" />,
+                  className: "premium-mobile-tab premium-responsive-tabs",
                 },
               ]}
             >
