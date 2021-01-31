@@ -18,118 +18,87 @@ const imageAccordionAttributes = {
     type: "string",
   },
   repeaterImageAccordion: {
-    source: "query",
-    default: [],
-    edit: false,
-    query: {
-      edit: {
-        type: "boolean",
-        default: false,
+    type: "array",
+    default: [
+      {
+        title: "Images",
+        imageID: "",
+        imageURL:
+          "http://localhost:8080/mywebsite/wp-content/plugins/elementor/assets/images/placeholder.png",
+        backgroundPosition: "center center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "auto",
+        fixed: false,
+        content: false,
+        desc: "",
+        custom:false,
+        icon: false,
+        horizontalU: 'px',
+        horizontal: 0,
+        verticalU: 'px',
+        vertical: 0,
+        whole: false,
+        link:false,
+        url: "",
+        urlTitle:"",
+        edit: false,
       },
-      imageID: {
-        type: "number",
+      {
+        title: "Images",
+        imageID: "",
+        imageURL:
+          "http://localhost:8080/mywebsite/wp-content/plugins/elementor/assets/images/placeholder.png",
+        backgroundPosition: "",
+        backgroundRepeat: "",
+        backgroundSize: "",
+        fixed: false,
+        content: false,
+        desc: "",
+        custom:false,
+        icon: false,
+        horizontalU: 'px',
+        horizontal: 0,
+        verticalU: 'px',
+        vertical: 0,
+        whole: false,
+        link:false,
+        url: "",
+        urlTitle:"",
+        edit: false,
       },
-      imageURL: {
-        type: "string",
-        source: "attribute",
-        attribute: "src",
-      },
-      size: {
-        type: "string",
-        default: "auto",
-      },
-      imageAlt: {
-        type: "string",
-      },
-      loop: {
-        type: "string",
-        default: false,
-      },
-      UrlCheck: {
-        type: "boolean",
-        default: false,
-      },
-      url: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-img-scroll-link",
-      },
-      target: {
-        type: "boolean",
-        default: false,
-      },
-      height: {
-        type: "number",
-        default: 300,
-      },
-      HeightU: {
-        type: "string",
-        default: "px",
-      },
-      effectDir: {
-        type: "string",
-        default: "vertical",
-      },
-      hoverEffect: {
-        type: "string",
-        default: "hover",
-      },
-      blur: {
-        type: "number",
-        default: "0",
-      },
-      bright: {
-        type: "number",
-        default: "100",
-      },
-      contrast: {
-        type: "number",
-        default: "100",
-      },
-      saturation: {
-        type: "number",
-        default: "100",
-      },
-      hue: {
-        type: "number",
-        default: "0",
-      },
-      borderType: {
-        type: "string",
-        default: "none",
-      },
-      borderWidth: {
-        type: "number",
-        default: "1",
-      },
-      borderRadius: {
-        type: "number",
-        default: "0",
-      },
-      borderColor: {
-        type: "string",
-      },
-      containerShadowColor: {
-        type: "string",
-      },
-      containerShadowBlur: {
-        type: "number",
-        default: "0",
-      },
-      containerShadowHorizontal: {
-        type: "number",
-        default: "0",
-      },
-      containerShadowVertical: {
-        type: "number",
-        default: "0",
-      },
-      containerShadowPosition: {
-        type: "string",
-        default: "",
-      },
-    },
+    ],
+  },
+  hoverIndex: {
+    type: "number",
+    value: 0,
+  },
+  direction: {
+    type: "string",
+    value: "horizontal",
+  },
+  skew: {
+    type: "boolean",
+    value: false,
+  },
+  height: {
+    type: "number",
+    value: 300,
+  },
+  heightU: {
+    type: "string",
+    value: "px",
+  },
+  contentPosition: {
+    type: "string",
+    value: "bottom",
+  },
+  alignPosition: {
+    type: "string",
+    value: "left",
+  },
+  hideDesc: {
+    type: "number",
+    value: 0,
   },
 };
 
