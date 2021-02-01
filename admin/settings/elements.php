@@ -15,7 +15,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
 
         protected $slug = 'premium-gutenberg';
 
-        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText'];
+        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText','imageAccordion'];
 
         private $pbg_default;
 
@@ -201,6 +201,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                         </label>
                                     </td>
                                 </tr>
+
                                 <tr>
                                     <th><?php echo __('Premium Dual Heading', 'premium-gutenberg'); ?></th>
                                     <td>
@@ -217,6 +218,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                         </label>
                                     </td>
                                 </tr>
+
                                 <tr>
                                     <th><?php echo __('Premium Icon Box', 'premium-gutenberg'); ?></th>
                                     <td>
@@ -225,7 +227,6 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-
                                     <th><?php echo __('Premium Maps', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -234,6 +235,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                         </label>
                                     </td>
                                 </tr>
+
                                 <tr>
                                     <th><?php echo __('Premium Pricing Table', 'premium-gutenberg'); ?></th>
                                     <td>
@@ -250,6 +252,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                         </label>
                                     </td>
                                 </tr>
+
                                 <tr>
                                     <th><?php echo __('Premium Testimonials', 'premium-gutenberg'); ?></th>
                                     <td>
@@ -265,11 +268,9 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-
                                 </tr>
 
                                 <tr>
-
                                     <th><?php echo __('Premium Fancy Text', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -277,7 +278,13 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-
+                                    <th><?php echo __('Premium Image Accordion', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="imageAccordion" name="imageAccordion" <?php checked(1, $this->pbg_get_settings['imageAccordion'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -341,6 +348,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                 'iconBox'       => intval( $settings['iconBox'] ? 1 : 0 ),
                 'videoBox'      => intval( $settings['videoBox'] ? 1 : 0 ),
                 'fancyText'     => intval( $settings['fancyText'] ? 1 : 0 ),
+                'imageAccordion'     => intval( $settings['imageAccordion'] ? 1 : 0 ),
             );
 
             update_option( 'pbg_settings', $this->pbg_settings );

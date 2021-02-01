@@ -186,6 +186,7 @@ class PBG_Blocks_Helper {
 		$is_icon_box_enabled = self::$blocks['iconBox'];
 
 		$is_fancy_text_enabled = self::$blocks['fancyText'];
+		$is_image_accordion_enabled = self::$blocks['imageAccordion'];
 
 		wp_enqueue_style(
 			'pbg-frontend',
@@ -223,6 +224,15 @@ class PBG_Blocks_Helper {
 			wp_enqueue_script(
 				'dual-heading-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/dual-heading.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION
+			);
+		}
+
+		if ( $is_image_accordion_enabled ) {
+			wp_enqueue_script(
+				'image-accordion-js',
+				PREMIUM_BLOCKS_URL . 'assets/js/image-accordion.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION
 			);
