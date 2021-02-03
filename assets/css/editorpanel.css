@@ -1,6 +1,21 @@
 .premium-panel-body p.premium-editor-paragraph {
     margin-bottom: 0;
 }
+.Premium-image-accordion-tab-panel .components-tab-panel__tabs{
+    border: 1px solid #777;
+box-sizing: border-box;
+align-items: center;
+border-radius: 2px;
+}
+.Premium-image-accordion-tab-panel .components-tab-panel__tabs .active-tab{
+ border: 1px solid #777;
+color: white;
+background-color: #777;
+margin: 0px 1px;
+padding: 5px 19px;
+border-radius: 5px;
+height: 40px !important;
+}
 /*
 * Dropdown Toggle Control
 */

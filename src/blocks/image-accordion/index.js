@@ -1,7 +1,7 @@
 import save from "./save";
 import edit from "./edit";
 import PbgIcon from "../icons";
-import {imageAccordion} from  "../../../assets/js/settings"
+import { imageAccordion } from "../../../assets/js/settings";
 
 const { __ } = wp.i18n;
 
@@ -22,51 +22,49 @@ const imageAccordionAttributes = {
     type: "array",
     default: [
       {
-        title: "Images",
-        imageID: "",
+        title: `image`,
         imageURL:
           "http://localhost:8080/mywebsite/wp-content/plugins/elementor/assets/images/placeholder.png",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "auto",
-        fixed: true,
-        content: false,
-        desc: "",
-        custom:false,
-        icon: false,
-        selectedIcon:"",
-        horizontalU: 'px',
-        horizontal: 0,
-        verticalU: 'px',
-        vertical: 0,
-        whole: false,
-        link:false,
-        url: "",
-        urlTitle:"",
-        edit: false,
-      },
-      {
-        title: "Images",
-        imageID: "",
-        imageURL:
-          "http://localhost:8080/mywebsite/wp-content/plugins/elementor/assets/images/placeholder.png",
-        backgroundPosition: "",
-        backgroundRepeat: "",
-        backgroundSize: "",
         fixed: false,
         content: false,
         desc: "",
-        custom:false,
+        custom: false,
         icon: false,
-        selectedIcon:"",
-        horizontalU: 'px',
+        selectedIcon: "",
+        horizontalU: "px",
         horizontal: 0,
-        verticalU: 'px',
+        verticalU: "px",
         vertical: 0,
         whole: false,
-        link:false,
+        link: false,
         url: "",
-        urlTitle:"",
+        urlTitle: "",
+        edit: false,
+      },
+      {
+        title: `image`,
+        imageURL:
+          "http://localhost:8080/mywebsite/wp-content/plugins/elementor/assets/images/placeholder.png",
+        backgroundPosition: "center center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "auto",
+        fixed: false,
+        content: false,
+        desc: "",
+        custom: false,
+        icon: false,
+        selectedIcon: "",
+        horizontalU: "px",
+        horizontal: 0,
+        verticalU: "px",
+        vertical: 0,
+        whole: false,
+        link: false,
+        url: "",
+        urlTitle: "",
         edit: false,
       },
     ],
@@ -85,7 +83,7 @@ const imageAccordionAttributes = {
   },
   skewDirection: {
     type: "string",
-    default:"right"
+    default: "right",
   },
   height: {
     type: "number",
@@ -111,7 +109,7 @@ const imageAccordionAttributes = {
     type: "string",
   },
   overlayHover: {
-    type:"string"
+    type: "string",
   },
   blur: {
     type: "number",
@@ -135,23 +133,23 @@ const imageAccordionAttributes = {
   },
   iconU: {
     type: "string",
-    default:"px"
+    default: "px",
   },
   iconSize: {
     type: "number",
-    default:10
+    default: 15,
   },
   iconColor: {
-    type:"string"
+    type: "string",
   },
   iconHoverColor: {
-    type:"string"
+    type: "string",
   },
-  backgroundColor: {
-    type:"string"
+  iconbackgroundColor: {
+    type: "string",
   },
   backgroundHover: {
-    type:"string"
+    type: "string",
   },
   iconborderType: {
     type: "string",
@@ -189,55 +187,57 @@ const imageAccordionAttributes = {
   },
   iconborderType: {
     type: "string",
-    default:'px'
+    default: "px",
   },
   iconborderWidth: {
-    type:"number"
+    type: "number",
   },
   iconborderColor: {
-    type:"string"
+    type: "string",
   },
   iconborderRadius: {
-    type:"number"
+    type: "number",
   },
   iconmarginTop: {
-    type:"number"
+    type: "number",
   },
   iconmarginRight: {
-    type:"number"
+    type: "number",
   },
   iconmarginBottom: {
-    type:'number'
+    type: "number",
   },
   iconmarginLeft: {
-    type:'number'
+    type: "number",
   },
   iconpaddingTop: {
-    type:"number"
+    type: "number",
   },
   iconpaddingRight: {
-    type:"number"
+    type: "number",
   },
   iconpaddingBottom: {
-    type:"number"
+    type: "number",
   },
   iconpaddingLeft: {
-    type:"number"
+    type: "number",
   },
   titleColor: {
-    type:"string"
+    type: "string",
   },
   titleSize: {
-    type:"number"
+    type: "number",
+    default:20
   },
   titleWeight: {
-    type:"number"
+    type: "number",
+    default:400
   },
   titleStyle: {
-    type:"string"
+    type: "string",
   },
   titleLetter: {
-    type:'number'
+    type: "number",
   },
   titleShadowColor: {
     type: "string",
@@ -259,31 +259,31 @@ const imageAccordionAttributes = {
     default: "",
   },
   titlemarginTop: {
-    type:"number"
+    type: "number",
   },
   titlemarginRight: {
-    type:"number"
+    type: "number",
   },
   titlemarginBottom: {
-    type:'number'
+    type: "number",
   },
   titlemarginLeft: {
-    type:'number'
+    type: "number",
   },
   titlepaddingTop: {
-    type:"number"
+    type: "number",
   },
   titlepaddingRight: {
-    type:"number"
+    type: "number",
   },
   titlepaddingBottom: {
-    type:"number"
+    type: "number",
   },
   titlepaddingLeft: {
-    type:"number"
+    type: "number",
   },
   descColor: {
-    type:"string"
+    type: "string",
   },
   descShadowColor: {
     type: "string",
@@ -305,50 +305,54 @@ const imageAccordionAttributes = {
     default: "",
   },
   descmarginTop: {
-    type:"number"
+    type: "number",
   },
   descmarginRight: {
-    type:"number"
+    type: "number",
   },
   descmarginBottom: {
-    type:'number'
+    type: "number",
   },
   descmarginLeft: {
-    type:'number'
+    type: "number",
   },
   descpaddingTop: {
-    type:"number"
+    type: "number",
   },
   descpaddingRight: {
-    type:"number"
+    type: "number",
   },
   descpaddingBottom: {
-    type:"number"
+    type: "number",
   },
   descpaddingLeft: {
-    type:"number"
+    type: "number",
   },
   linkColor: {
-    type:"string"
+    type: "string",
   },
   linkHover: {
-    type:"string"
+    type: "string",
   },
   linkSize: {
-    type:"number"
+    type: "number",
+    
   },
   linkWeight: {
-    type:"number"
+    type: "number",
+    default:300
   },
   linkStyle: {
-    type:"string"
+    type: "string",
+    default:'normal'
   },
   linkLetter: {
-    type:'number'
+    type: "number",
+    default:0
   },
   linkUpper: {
-    type: 'boolean',
-    default:false
+    type: "boolean",
+    default: false,
   },
   containerborderType: {
     type: "string",
@@ -385,18 +389,17 @@ const imageAccordionAttributes = {
     default: "",
   },
   containermarginTop: {
-    type:"number"
+    type: "number",
   },
   containermarginRight: {
-    type:"number"
+    type: "number",
   },
   containermarginBottom: {
-    type:'number'
+    type: "number",
   },
   containermarginLeft: {
-    type:'number'
+    type: "number",
   },
-
 };
 
 registerBlockType("premium/image-accordion", {
@@ -405,9 +408,9 @@ registerBlockType("premium/image-accordion", {
   category: "premium-blocks",
   attributes: imageAccordionAttributes,
   supports: {
-    inserter:imageAccordion
+    inserter: imageAccordion,
   },
   example: {},
   edit: edit,
-  save:save,
+  save: save,
 });

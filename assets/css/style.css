@@ -1331,6 +1331,7 @@ a.premium-dheading-block__link:hover {
   right: 0;
   z-index: 1;
   padding: 1em;
+  opacity: .5;
 }
 
 .elementor-editor-active
