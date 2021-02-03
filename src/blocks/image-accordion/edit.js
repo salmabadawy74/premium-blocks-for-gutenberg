@@ -1,7 +1,5 @@
-import classnames from "classnames";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackground from "../../components/premium-background";
-import PremiumIcon from "../../components/premium-icon";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconsList from "../../components/premium-icons-list";
 import PremiumSizeUnits from "../../components/premium-size-units";
@@ -38,6 +36,7 @@ const {
   RangeControl,
   TextareaControl,
   IconButton,
+  TabPanel,
 } = wp.components;
 
 const SortableItem = SortableElement(
@@ -47,26 +46,9 @@ const SortableItem = SortableElement(
     newIndex,
     value,
     changeImageValue,
-    changeFixed,
-    changePosition,
-    changeRepeat,
-    changeCustom,
-    changeSize,
-    changeContent,
-    changeIcon,
-    changeTitle,
-    changeDesc,
-    changeHUnit,
-    changeHorizontal,
-    changeVUnit,
-    changeVertical,
-    changeLink,
+    UpdateValues,
     items,
-    hundleLink,
-    hundleTitleLink,
-    hundleWhole,
     hundleRemove,
-    setIcon
   }) => (
     <div className="premium-repeater-item">
       <div className={`premium-repeater-item__container ${newIndex}`}>
@@ -77,7 +59,6 @@ const SortableItem = SortableElement(
         >
           {value.title}{" "}
         </div>
-
         {items.length != 1 ? (
           <button
             className="premium-repeater-item__trashicon fa fa-trash"
@@ -95,35 +76,42 @@ const SortableItem = SortableElement(
         <PremiumBackground
           imageID={value.imageID}
           imageURL={value.imageURL}
-          backgroundPosition={value.backgroundPosition}
-          backgroundRepeat={value.backgroundRepeat}
-          backgroundSize={value.backgroundSize}
           fixed={value.fixed}
           onSelectMedia={(newimage) => changeImageValue(newimage, newIndex)}
-          onRemoveImage={() => hundleRemove(newIndex)}
-          onChangeBackPos={(newPos) => changePosition(newPos, newIndex)}
-          onchangeBackRepeat={(newRepeat) => changeRepeat(newRepeat, newIndex)}
-          onChangeBackSize={(newSize) => changeSize(newSize, newIndex)}
-          onChangeFixed={() => changeFixed(newIndex)}
+          onRemoveImage={() => hundleRemove("", "imageURL", newIndex)}
+          onChangeBackPos={(newPos) =>
+            UpdateValues(newPos, "backgroundPosition", newIndex)
+          }
+          onchangeBackRepeat={(newRepeat) =>
+            UpdateValues(newRepeat, "backgroundRepeat", newIndex)
+          }
+          onChangeBackSize={(newSize) =>
+            UpdateValues(newSize, "backgroundSize", newIndex)
+          }
+          onChangeFixed={() => UpdateValues(null, "fixed", newIndex)}
         />
         <ToggleControl
           label={__("Content")}
           checked={value.content}
-          onChange={() => changeContent(newIndex)}
+          onChange={() => UpdateValues(null, "content", newIndex)}
         />
-        <ToggleControl
-          label={__("Icon")}
-          checked={value.icon}
-          onChange={() => changeIcon(newIndex)}
-        />
+        {value.content && (
+          <ToggleControl
+            label={__("Icon")}
+            checked={value.icon}
+            onChange={() => UpdateValues(null, "icon", newIndex)}
+          />
+        )}
         {value.icon && (
           <FontIconPicker
-          icons={iconsList}
-          onChange={(newIcon) =>setIcon(newIcon,newIndex)}
-          value={value.selectedicon}
-          isMulti={false}
-          appendTo="body"
-          noSelectedPlaceholder={__("Select Icon")}
+            icons={iconsList}
+            onChange={(newIcon) =>
+              UpdateValues(newIcon, "selectedIcon", newIndex)
+            }
+            value={value.selectedIcon}
+            isMulti={false}
+            appendTo="body"
+            noSelectedPlaceholder={__("Select Icon")}
           />
         )}
         {value.content && (
@@ -131,97 +119,86 @@ const SortableItem = SortableElement(
             <TextControl
               label={__("Image #1")}
               value={value.title}
-              onChange={(newTitle) => changeTitle(newTitle, newIndex)}
+              onChange={(newTitle) => UpdateValues(newTitle, "title", newIndex)}
             />
             <TextareaControl
               label="Text"
               help="Enter some text"
               value={value.desc}
-              onChange={(newDesc) => changeDesc(newDesc, newIndex)}
+              onChange={(newDesc) => UpdateValues(newDesc, "desc", newIndex)}
             />
             <ToggleControl
               label={__("Custom Position")}
               checked={value.custom}
-              onChange={(newcustom) => changeCustom(newcustom, newIndex)}
+              onChange={() => UpdateValues(null, "custom", newIndex)}
             />
           </Fragment>
         )}
-        <PremiumSizeUnits
-          units={["px", "em", "%"]}
-          value={value.horizontalU}
-          onChange={(newHUnit) => changeHUnit(newHUnit, newIndex)}
-        />
-        <RangeControl
-          label={__("Horizontal Offset")}
-          value={value.horizontal}
-          onChange={(newvalue) => changeHorizontal(newvalue, newIndex)}
-        />
-        <PremiumSizeUnits
-          units={["px", "em", "%"]}
-          value={value.verticalU}
-          onChange={(newvalue) => changeVUnit(newvalue, newIndex)}
-        />
-        <RangeControl
-          label={__("Vertical Offset")}
-          value={value.vertical}
-          onChange={(newvalue) => changeVertical(newvalue, newIndex)}
-        />
+        {value.custom && (
+          <Fragment>
+            <PremiumSizeUnits
+              units={["px", "em", "%"]}
+              value={value.horizontalU}
+              onChange={(newHUnit) =>
+                UpdateValues(newHUnit, "horizontalU", newIndex)
+              }
+            />
+            <RangeControl
+              label={__("Horizontal Offset")}
+              value={value.horizontal}
+              onChange={(newvalue) =>
+                UpdateValues(newvalue, "horizontal", newIndex)
+              }
+            />
+            <PremiumSizeUnits
+              units={["px", "em", "%"]}
+              value={value.verticalU}
+              onChange={(newvalue) =>
+                UpdateValues(newvalue, "verticalU", newIndex)
+              }
+            />
+            <RangeControl
+              label={__("Vertical Offset")}
+              value={value.vertical}
+              onChange={(newvalue) =>
+                UpdateValues(newvalue, "vertical", newIndex)
+              }
+            />
+          </Fragment>
+        )}
 
         <ToggleControl
           label={__("Link")}
           checked={value.link}
-          onChange={(newIndex) => changeLink(newIndex)}
+          onChange={() => UpdateValues(null, "link", newIndex)}
         />
         {value.link && (
           <Fragment>
             <TextControl
               label={__("link")}
               value={value.url}
-              onChange={(newvalue) => hundleLink(newvalue, newIndex)}
+              onChange={(newvalue) => UpdateValues(newvalue, "url", newIndex)}
             />
             <TextControl
               label={__("link Title")}
               value={value.urlTitle}
-              onChange={(newvalue) => hundleTitleLink(newvalue, newIndex)}
+              onChange={(newvalue) =>
+                UpdateValues(newvalue, "urlTitle", newIndex)
+              }
             />
           </Fragment>
         )}
-
         <ToggleControl
           label={__("Whole Image Link")}
-          value={value.whole}
-          onChange={() => hundleWhole(newIndex)}
+          checked={value.whole}
+          onChange={() => UpdateValues(null, "whole", newIndex)}
         />
       </div>
     </div>
   )
 );
 const SortableList = SortableContainer(
-  ({
-    items,
-    removeItem,
-    edit,
-    changeImageValue,
-    changePosition,
-    changeRepeat,
-    changeSize,
-    changeFixed,
-    changeContent,
-    changeIcon,
-    changeDesc,
-    changeTitle,
-    changeCustom,
-    changeHUnit,
-    changeHorizontal,
-    changeVUnit,
-    changeVertical,
-    changeLink,
-    hundleLink,
-    hundleTitleLink,
-    hundleWhole,
-    hundleRemove,
-    setIcon
-  }) => {
+  ({ items, removeItem, edit, changeImageValue, UpdateValues }) => {
     return (
       <div>
         {" "}
@@ -234,25 +211,7 @@ const SortableList = SortableContainer(
             removeItem={removeItem}
             edit={edit}
             changeImageValue={changeImageValue}
-            changePosition={changePosition}
-            changeRepeat={changeRepeat}
-            changeSize={changeSize}
-            changeFixed={changeFixed}
-            changeContent={changeContent}
-            changeIcon={changeIcon}
-            changeTitle={changeTitle}
-            changeDesc={changeDesc}
-            changeCustom={changeCustom}
-            changeHUnit={changeHUnit}
-            changeHorizontal={changeHorizontal}
-            changeVUnit={changeVUnit}
-            changeVertical={changeVertical}
-            changeLink={changeLink}
-            hundleLink={hundleLink}
-            hundleTitleLink={hundleTitleLink}
-            hundleWhole={hundleWhole}
-            hundleRemove={ hundleRemove }
-            setIcon={setIcon}
+            UpdateValues={UpdateValues}
             items={items}
           />
         ))}{" "}
@@ -264,20 +223,6 @@ const SortableList = SortableContainer(
 class edit extends Component {
   constructor() {
     super(...arguments);
-  }
-
-  componentDidMount() {
-    // Assigning id in the attribute.
-    this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
-    this.props.setAttributes({ classMigrate: true });
-
-    // Pushing Style tag for this block css.
-    const $style = document.createElement("style");
-    $style.setAttribute(
-      "id",
-      "premium-style-image-accrodion-" + this.props.clientId.substr(0, 6)
-    );
-    document.head.appendChild($style);
   }
 
   render() {
@@ -307,7 +252,7 @@ class edit extends Component {
       iconSize,
       iconColor,
       iconHoverColor,
-      backgroundColor,
+      iconbackgroundColor,
       backgroundHover,
       iconShadowColor,
       iconShadowBlur,
@@ -341,7 +286,6 @@ class edit extends Component {
       titlemarginRight,
       titlemarginBottom,
       titlemarginLeft,
-      titlemarginUnit,
       titlepaddingUnit,
       titlepaddingTop,
       titlepaddingRight,
@@ -386,7 +330,6 @@ class edit extends Component {
       containermarginRight,
       containermarginBottom,
       containermarginLeft,
-      containermarginUnit,
     } = attributes;
 
     const changeImageValue = (newimage, newIndex) => {
@@ -399,209 +342,26 @@ class edit extends Component {
       });
     };
 
-    const hundleRemove = (newIndex) => {
-      setAttributes({
-        repeaterImageAccordion: onRepeaterChange("imageURL", "", newIndex),
-      });
-    };
-    const changePosition = (newPos, newIndex) => {
-      setAttributes({
-        repeaterImageAccordion: onRepeaterChange(
-          "backgroundPosition",
-          newPos,
-          newIndex
-        ),
-      });
-    };
-
-    const changeRepeat = (newRepeat, newIndex) => {
-      setAttributes({
-        repeaterImageAccordion: onRepeaterChange(
-          "backgroundRepeat",
-          newRepeat,
-          newIndex
-        ),
-      });
-    };
-
-    const changeSize = (newSize, newIndex) => {
-      setAttributes({
-        repeaterImageAccordion: onRepeaterChange(
-          "backgroundSize",
-          newSize,
-          newIndex
-        ),
-      });
-    };
-
-    const changeFixed = (newIndex) => {
+    const UpdateValues = (newValue, attr, newIndex) => {
       return repeaterImageAccordion.map((item, i) => {
         if (newIndex == i) {
-          setAttributes({
-            repeaterImageAccordion: onRepeaterChange(
-              "fixed",
-              item.fixed ? false : true,
-              newIndex
-            ),
-          });
-        } else {
-          setAttributes({
-            repeaterImageAccordion: onRepeaterChange("fixed", false, i),
-          });
-        }
-      });
-    };
-
-    const changeContent = (newIndex) => {
-      return repeaterImageAccordion.map((item, i) => {
-        if (newIndex == i) {
-          setAttributes({
-            repeaterImageAccordion: onRepeaterChange(
-              "content",
-              item.content ? false : true,
-              newIndex
-            ),
-          });
-        } else {
-          setAttributes({
-            repeaterImageAccordion: onRepeaterChange("content", false, i),
-          });
-        }
-      });
-    };
-
-    const changeIcon = (newIndex) => {
-      return repeaterImageAccordion.map((item, i) => {
-        if (newIndex == i) {
-          setAttributes({
-            repeaterImageAccordion: onRepeaterChange(
-              "icon",
-              item.icon ? false : true,
-              newIndex
-            ),
-          });
-        } else {
-          setAttributes({
-            repeaterImageAccordion: onRepeaterChange("icon", false, i),
-          });
-        }
-      });
-    };
-
-    const changeTitle = (newTitle, newIndex) => {
-      setAttributes({
-        repeaterImageAccordion: onRepeaterChange("title", newTitle, newIndex),
-      });
-    };
-
-    const changeDesc = (newDesc, newIndex) => {
-      setAttributes({
-        repeaterImageAccordion: onRepeaterChange("desc", newDesc, newIndex),
-      });
-    };
-
-    const changeCustom = (newIndex) => {
-      return repeaterImageAccordion.map((item, i) => {
-        if (newIndex == i) {
-          setAttributes({
-            repeaterImageAccordion: onRepeaterChange(
-              "custom",
-              item.custom ? false : true,
-              newIndex
-            ),
-          });
-        } else {
-          setAttributes({
-            repeaterImageAccordion: onRepeaterChange("custom", false, i),
-          });
-        }
-      });
-    };
-
-    const changeHUnit = (newHUnit, newIndex) => {
-      setAttributes({
-        repeaterImageAccordion: onRepeaterChange("hunit", newHUnit, newIndex),
-      });
-    };
-
-    const changeHorizontal = (newvalue, newIndex) => {
-      setAttributes({
-        repeaterImageAccordion: onRepeaterChange(
-          "horizontal",
-          newvalue,
-          newIndex
-        ),
-      });
-    };
-
-    const changeVUnit = (newvalue, newIndex) => {
-      setAttributes({
-        repeaterImageAccordion: onRepeaterChange(
-          "verticalU",
-          newvalue,
-          newIndex
-        ),
-      });
-    };
-
-    const changeVertical = (newvalue, newIndex) => {
-      setAttributes({
-        repeaterImageAccordion: onRepeaterChange(
-          "vertical",
-          newvalue,
-          newIndex
-        ),
-      });
-    };
-
-    const changeLink = (newIndex) => {
-      return repeaterImageAccordion.map((item, i) => {
-        if (newIndex == i) {
-          setAttributes({
-            repeaterImageAccordion: onRepeaterChange(
-              "link",
-              item.link ? false : true,
-              newIndex
-            ),
-          });
-        } else {
-          setAttributes({
-            repeaterImageAccordion: onRepeaterChange("link", false, i),
-          });
-        }
-      });
-    };
-
-    const hundleLink = (newvalue, newIndex) => {
-      setAttributes({
-        repeaterImageAccordion: onRepeaterChange("url", newvalue, newIndex),
-      });
-    };
-
-    const hundleTitleLink = (newvalue, newIndex) => {
-      setAttributes({
-        repeaterImageAccordion: onRepeaterChange(
-          "urlTitle",
-          newvalue,
-          newIndex
-        ),
-      });
-    };
-
-    const hundleWhole = (newIndex) => {
-      return repeaterImageAccordion.map((item, i) => {
-        if (newIndex == i) {
-          setAttributes({
-            repeaterImageAccordion: onRepeaterChange(
-              "whole",
-              item.whole ? false : true,
-              newIndex
-            ),
-          });
-        } else {
-          setAttributes({
-            repeaterImageAccordion: onRepeaterChange("whole", false, i),
-          });
+          if (newValue === null) {
+            setAttributes({
+              repeaterImageAccordion: onRepeaterChange(
+                attr,
+                item[`${attr}`] ? false : true,
+                newIndex
+              ),
+            });
+          } else {
+            setAttributes({
+              repeaterImageAccordion: onRepeaterChange(
+                attr,
+                newValue,
+                newIndex
+              ),
+            });
+          }
         }
       });
     };
@@ -644,10 +404,6 @@ class edit extends Component {
               index
             ),
           });
-        } else {
-          setAttributes({
-            repeaterImageAccordion: onRepeaterChange("edit", false, i),
-          });
         }
       });
     };
@@ -663,23 +419,25 @@ class edit extends Component {
       });
     };
 
-    const setIcon = ( newvalue, newIndex ) =>
-    {
-      setAttributes( {
-        repeaterImageAccordion:onRepeaterChange('selectedIcon',newvalue,newIndex)
-      })
-    }
-
-    const addNewFancyText = () => {
+    const addNewItem = () => {
       setAttributes({
         repeaterImageAccordion: repeaterImageAccordion.concat([
           {
-            title: __("Image "),
+            title: __(`Image`),
             edit: true,
           },
         ]),
       });
     };
+
+    const skewClass = skew ? "premium-accordion-skew" : null;
+    const hundleHide=(newvalue)=>{
+      setAttributes( { hideDesc: newvalue } )
+      if ( hideDesc > window.outerWidth )
+      {
+        document.querySelector( '.premium-accordion-description' ).style.cssText = `display:none`;
+      }
+    }
 
     return [
       isSelected && (
@@ -698,7 +456,7 @@ class edit extends Component {
             initialOpen={false}
           >
             <Fragment>
-              <div className="premium-fancy-text-control-content">
+              <div className="premium-image-accordion-control-content">
                 <label></label>
                 <SortableList
                   items={repeaterImageAccordion}
@@ -709,30 +467,12 @@ class edit extends Component {
                   edit={(value) => edit(value)}
                   shouldCancelStart={shouldCancelStart}
                   changeImageValue={changeImageValue}
-                  changeRepeat={changeRepeat}
-                  changePosition={changePosition}
-                  changeSize={changeSize}
-                  changeFixed={changeFixed}
-                  changeContent={changeContent}
-                  changeIcon={changeIcon}
-                  changeTitle={changeTitle}
-                  changeDesc={changeDesc}
-                  changeCustom={changeCustom}
-                  changeHUnit={changeHUnit}
-                  changeHorizontal={changeHorizontal}
-                  changeVUnit={changeVUnit}
-                  changeVertical={changeVertical}
-                  changeLink={changeLink}
-                  hundleLink={hundleLink}
-                  hundleTitleLink={hundleTitleLink}
-                  hundleWhole={hundleWhole}
-                  hundleRemove={ hundleRemove }
-                  setIcon={setIcon}
+                  UpdateValues={UpdateValues}
                 />
                 <div className="premium-repeater-btn__wrap">
                   <button
                     className={"premium-repeater-btn"}
-                    onClick={() => addNewFancyText()}
+                    onClick={() => addNewItem()}
                   >
                     <i className="dashicons dashicons-plus premium-repeater__icon" />
                     <span>{__("Add New Item")}</span>
@@ -750,7 +490,7 @@ class edit extends Component {
             <RangeControl
               label={__("Hovered By Default Index")}
               value={hoverIndex}
-              onChange={() => console.log("HO")}
+              onChange={(value) => setAttributes({ hoverIndex: value })}
             />
             <SelectControl
               label={__("Direction")}
@@ -771,7 +511,7 @@ class edit extends Component {
               <Fragment>
                 <ToggleControl
                   label={__("Skew Images")}
-                  value={skew}
+                  checked={skew}
                   onChange={() => setAttributes({ skew: !skew })}
                 />
                 <SelectControl
@@ -804,8 +544,8 @@ class edit extends Component {
               <h2> {__("Content Vertical Position")}</h2>
               <IconButton
                 key={"start"}
-                icon="editor-alignleft"
-                label="Left"
+                icon="arrow-up"
+                label="Up"
                 onClick={() => setAttributes({ contentPosition: "start" })}
                 aria-pressed={"start" === contentPosition}
                 isPrimary={"start" === contentPosition}
@@ -820,8 +560,8 @@ class edit extends Component {
               />
               <IconButton
                 key={"end"}
-                icon="editor-alignright"
-                label="Right"
+                icon="arrow-down"
+                label="Down"
                 onClick={() => setAttributes({ contentPosition: "end" })}
                 aria-pressed={"end" === contentPosition}
                 isPrimary={"end" === contentPosition}
@@ -859,7 +599,7 @@ class edit extends Component {
               value={hideDesc}
               min={0}
               max={0}
-              onChange={() => console.log("hide")}
+              onChange={(newvalue)=>hundleHide(newvalue)}
             />
           </PanelBody>
           <PanelBody
@@ -870,7 +610,7 @@ class edit extends Component {
             <ColorPalette
               label={__("Overlay Color")}
               value={overlayColor}
-              onChange={(newColor) => setAttributes({ overlay: newColor })}
+              onChange={(newColor) => setAttributes({ overlayColor: newColor })}
             />
             <ColorPalette
               label={__("Overlay Hover Color")}
@@ -891,400 +631,450 @@ class edit extends Component {
             />
           </PanelBody>
           <PanelBody
-            title={__("content")}
+            title={__("Content")}
             className="premium-panel-body"
             initialOpen={false}
           >
-            <PremiumSizeUnits
-              units={["px", "em"]}
-              value={iconU}
-              onChange={(newvalue) => setAttributes({ iconU: newvalue })}
-            />
-            <RangeControl
-              label={__("Size")}
-              value={iconSize}
-              onChange={(newvalue) => setAttributes({ iconSize: newvalue })}
-            />
-            <ColorPalette
-              label={__("Color")}
-              value={iconColor}
-              onchange={(newvalue) => setAttributes({ iconColor: newvalue })}
-            />
-            <ColorPalette
-              label={__("Hover Color")}
-              value={iconHoverColor}
-              onchange={(newvalue) =>
-                setAttributes({ iconHoverColor: newvalue })
-              }
-            />
-            <ColorPalette
-              label={__("Background Color")}
-              value={backgroundColor}
-              onchange={(newvalue) =>
-                setAttributes({ backgroundColor: newvalue })
-              }
-            />
+            <TabPanel
+              className="Premium-image-accordion-tab-panel"
+              activeClass="active-tab"
+              tabs={[
+                {
+                  name: "icon",
+                  title: "Icon",
+                  className: "premium-tab",
+                },
+                {
+                  name: "title",
+                  title: "Title",
+                  className: "premium-tab",
+                },
+                {
+                  name: "description",
+                  title: "Description",
+                  className: "premium-tab",
+                },
+              ]}
+            >
+              {(tab) => {
+                let tabout;
 
-            <ColorPalette
-              label={__("Backgroud Hover Color")}
-              value={backgroundHover}
-              onChange={(newvalue) =>
-                setAttributes({ backgroundHover: newvalue })
-              }
-            />
-            <PremiumBoxShadow
-              inner={true}
-              color={iconShadowColor}
-              blur={iconShadowBlur}
-              horizontal={iconShadowHorizontal}
-              vertical={iconShadowVertical}
-              position={iconShadowPosition}
-              onChangeColor={(newColor) =>
-                setAttributes({
-                  iconShadowColor: newColor.hex,
-                })
-              }
-              onChangeBlur={(newBlur) =>
-                setAttributes({
-                  iconShadowBlur: newBlur,
-                })
-              }
-              onChangehHorizontal={(newValue) =>
-                setAttributes({
-                  iconShadowHorizontal: newValue,
-                })
-              }
-              onChangeVertical={(newValue) =>
-                setAttributes({
-                  iconShadowVertical: newValue,
-                })
-              }
-              onChangePosition={(newValue) =>
-                setAttributes({
-                  iconShadowPosition: newValue,
-                })
-              }
-            />
-            <PremiumBorder
-              borderType={iconborderType}
-              borderWidth={iconborderWidth}
-              borderColor={iconborderColor}
-              borderRadius={iconborderRadius}
-              onChangeType={(newType) =>
-                setAttributes({ iconborderType: newType })
-              }
-              onChangeWidth={(newWidth) =>
-                setAttributes({
-                  iconborderWidth: newWidth === undefined ? 0 : newWidth,
-                })
-              }
-              onChangeColor={(colorValue) =>
-                setAttributes({
-                  iconborderColor:
-                    colorValue === undefined ? "transparent" : colorValue.hex,
-                })
-              }
-              onChangeRadius={(newRadius) =>
-                setAttributes({
-                  iconborderRadius: newRadius === undefined ? 0 : newRadius,
-                })
-              }
-            />
-            <PremiumMargin
-              directions={["all"]}
-              marginTop={iconmarginTop}
-              marginRight={iconmarginRight}
-              marginBottom={iconmarginBottom}
-              marginLeft={iconmarginLeft}
-              onChangeMarTop={(value) =>
-                setAttributes({
-                  iconmarginTop: value === undefined ? 0 : value,
-                })
-              }
-              onChangeMarRight={(value) =>
-                setAttributes({
-                  iconmarginRight: value === undefined ? 0 : value,
-                })
-              }
-              onChangeMarBottom={(value) =>
-                setAttributes({
-                  iconmarginBottom: value === undefined ? 0 : value,
-                })
-              }
-              onChangeMarLeft={(value) =>
-                setAttributes({
-                  iconmarginLeft: value === undefined ? 0 : value,
-                })
-              }
-              showUnits={true}
-              onChangeMarSizeUnit={(newvalue) =>
-                setAttributes({ iconmarginUnit: newvalue })
-              }
-            />
-            <PremiumPadding
-              paddingTop={iconpaddingTop}
-              paddingRight={iconpaddingRight}
-              paddingBottom={iconpaddingBottom}
-              paddingLeft={iconpaddingLeft}
-              onChangePadTop={(value) =>
-                setAttributes({
-                  iconpaddingTop: value === undefined ? 0 : value,
-                })
-              }
-              onChangePadRight={(value) =>
-                setAttributes({
-                  iconpaddingRight: value === undefined ? 0 : value,
-                })
-              }
-              onChangePadBottom={(value) =>
-                setAttributes({
-                  iconpaddingBottom: value === undefined ? 0 : value,
-                })
-              }
-              onChangePadLeft={(value) =>
-                setAttributes({
-                  iconpaddingLeft: value === undefined ? 0 : value,
-                })
-              }
-              showUnits={true}
-              selectedUnit={iconpaddingUnit}
-              onChangePadSizeUnit={(newvalue) =>
-                setAttributes({ iconpaddingUnit: newvalue })
-              }
-            />
+                if ("icon" === tab.name) {
+                  tabout = (
+                    <Fragment>
+                      <PremiumSizeUnits
+                        units={["px", "em"]}
+                        value={iconU}
+                        onChange={(newvalue) =>
+                          setAttributes({ iconU: newvalue })
+                        }
+                      />
+                      <RangeControl
+                        label={__("Size")}
+                        value={iconSize}
+                        onChange={(newvalue) =>
+                          setAttributes({ iconSize: newvalue })
+                        }
+                      />
+                      <ColorPalette
+                        value={iconColor}
+                        onChange={(newvalue) =>
+                          setAttributes({ iconColor: newvalue })
+                        }
+                      />
+                      <ColorPalette
+                        value={iconHoverColor}
+                        onChange={(newvalue) =>
+                          setAttributes({ iconHoverColor: newvalue })
+                        }
+                      />
+                      <ColorPalette
+                        value={iconbackgroundColor}
+                        onChange={(newvalue) =>
+                          setAttributes({ iconbackgroundColor: newvalue })
+                        }
+                      />
+
+                      <ColorPalette
+                        value={backgroundHover}
+                        onChange={(newvalue) =>
+                          setAttributes({ backgroundHover: newvalue })
+                        }
+                      />
+                      <PremiumBoxShadow
+                        inner={true}
+                        color={iconShadowColor}
+                        blur={iconShadowBlur}
+                        horizontal={iconShadowHorizontal}
+                        vertical={iconShadowVertical}
+                        position={iconShadowPosition}
+                        onChangeColor={(newColor) =>
+                          setAttributes({
+                            iconShadowColor: newColor.hex,
+                          })
+                        }
+                        onChangeBlur={(newBlur) =>
+                          setAttributes({
+                            iconShadowBlur: newBlur,
+                          })
+                        }
+                        onChangehHorizontal={(newValue) =>
+                          setAttributes({
+                            iconShadowHorizontal: newValue,
+                          })
+                        }
+                        onChangeVertical={(newValue) =>
+                          setAttributes({
+                            iconShadowVertical: newValue,
+                          })
+                        }
+                        onChangePosition={(newValue) =>
+                          setAttributes({
+                            iconShadowPosition: newValue,
+                          })
+                        }
+                      />
+                      <PremiumBorder
+                        borderType={iconborderType}
+                        borderWidth={iconborderWidth}
+                        borderColor={iconborderColor}
+                        borderRadius={iconborderRadius}
+                        onChangeType={(newType) =>
+                          setAttributes({ iconborderType: newType })
+                        }
+                        onChangeWidth={(newWidth) =>
+                          setAttributes({
+                            iconborderWidth:
+                              newWidth === undefined ? 0 : newWidth,
+                          })
+                        }
+                        onChangeColor={(colorValue) =>
+                          setAttributes({
+                            iconborderColor:
+                              colorValue === undefined
+                                ? "transparent"
+                                : colorValue.hex,
+                          })
+                        }
+                        onChangeRadius={(newRadius) =>
+                          setAttributes({
+                            iconborderRadius:
+                              newRadius === undefined ? 0 : newRadius,
+                          })
+                        }
+                      />
+                      <PremiumMargin
+                        directions={["all"]}
+                        marginTop={iconmarginTop}
+                        marginRight={iconmarginRight}
+                        marginBottom={iconmarginBottom}
+                        marginLeft={iconmarginLeft}
+                        onChangeMarTop={(value) =>
+                          setAttributes({
+                            iconmarginTop: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangeMarRight={(value) =>
+                          setAttributes({
+                            iconmarginRight: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangeMarBottom={(value) =>
+                          setAttributes({
+                            iconmarginBottom: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangeMarLeft={(value) =>
+                          setAttributes({
+                            iconmarginLeft: value === undefined ? 0 : value,
+                          })
+                        }
+                        showUnits={false}
+                      />
+                      <PremiumPadding
+                        paddingTop={iconpaddingTop}
+                        paddingRight={iconpaddingRight}
+                        paddingBottom={iconpaddingBottom}
+                        paddingLeft={iconpaddingLeft}
+                        onChangePadTop={(value) =>
+                          setAttributes({
+                            iconpaddingTop: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangePadRight={(value) =>
+                          setAttributes({
+                            iconpaddingRight: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangePadBottom={(value) =>
+                          setAttributes({
+                            iconpaddingBottom: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangePadLeft={(value) =>
+                          setAttributes({
+                            iconpaddingLeft: value === undefined ? 0 : value,
+                          })
+                        }
+                        showUnits={true}
+                        selectedUnit={iconpaddingUnit}
+                        onChangePadSizeUnit={(newvalue) =>
+                          setAttributes({ iconpaddingUnit: newvalue })
+                        }
+                      />
+                    </Fragment>
+                  );
+                } else if ("title" === tab.name) {
+                  tabout = (
+                    <Fragment>
+                      <ColorPalette
+                        value={titleColor}
+                        onChange={(newvalue) =>
+                          setAttributes({ titleColor: newvalue })
+                        }
+                      />
+                      <PremiumTypo
+                        components={[
+                          "size",
+                          "weight",
+                          "style",
+                          "upper",
+                          "spacing",
+                        ]}
+                        size={titleSize}
+                        onChangeSize={(newSize) =>
+                          setAttributes({ titleSize: newSize })
+                        }
+                        weight={titleWeight}
+                        style={titleStyle}
+                        spacing={titleLetter}
+                        upper={titleUpper}
+                        onChangeWeight={(newWeight) =>
+                          setAttributes({ titleWeight: newWeight })
+                        }
+                        onChangeStyle={(newStyle) =>
+                          setAttributes({ titleStyle: newStyle })
+                        }
+                        onChangeSpacing={(newValue) =>
+                          setAttributes({ titleLetter: newValue })
+                        }
+                        onChangeUpper={(check) =>
+                          setAttributes({ titleUpper: check })
+                        }
+                      />
+                      <PremiumTextShadow
+                        color={titleShadowColor}
+                        blur={titleShadowBlur}
+                        horizontal={titleShadowHorizontal}
+                        vertical={titleShadowVertical}
+                        onChangeColor={(newColor) =>
+                          setAttributes({ titleShadowColor: newColor.hex })
+                        }
+                        onChangeBlur={(newBlur) =>
+                          setAttributes({ titleShadowBlur: newBlur })
+                        }
+                        onChangehHorizontal={(newValue) =>
+                          setAttributes({ titleShadowHorizontal: newValue })
+                        }
+                        onChangeVertical={(newValue) =>
+                          setAttributes({ titleShadowVertical: newValue })
+                        }
+                      />
+                      <PremiumMargin
+                        directions={["all"]}
+                        marginTop={titlemarginTop}
+                        marginRight={titlemarginRight}
+                        marginBottom={titlemarginBottom}
+                        marginLeft={titlemarginLeft}
+                        onChangeMarTop={(value) =>
+                          setAttributes({
+                            titlemarginTop: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangeMarRight={(value) =>
+                          setAttributes({
+                            titlemarginRight: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangeMarBottom={(value) =>
+                          setAttributes({
+                            titlemarginBottom: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangeMarLeft={(value) =>
+                          setAttributes({
+                            titlemarginLeft: value === undefined ? 0 : value,
+                          })
+                        }
+                        showUnits={false}
+                      />
+                      <PremiumPadding
+                        paddingTop={titlepaddingTop}
+                        paddingRight={titlepaddingRight}
+                        paddingBottom={titlepaddingBottom}
+                        paddingLeft={titlepaddingLeft}
+                        onChangePadTop={(value) =>
+                          setAttributes({
+                            titlepaddingTop: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangePadRight={(value) =>
+                          setAttributes({
+                            titlepaddingRight: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangePadBottom={(value) =>
+                          setAttributes({
+                            titlepaddingBottom: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangePadLeft={(value) =>
+                          setAttributes({
+                            titlepaddingLeft: value === undefined ? 0 : value,
+                          })
+                        }
+                        showUnits={true}
+                        selectedUnit={titlepaddingUnit}
+                        onChangePadSizeUnit={(newvalue) =>
+                          setAttributes({ titlepaddingUnit: newvalue })
+                        }
+                      />
+                    </Fragment>
+                  );
+                } else {
+                  tabout = (
+                    <Fragment>
+                      <ColorPalette
+                        value={descColor}
+                        onChange={(newvalue) =>
+                          setAttributes({ descColor: newvalue })
+                        }
+                      />
+                      <PremiumTypo
+                        components={[
+                          "size",
+                          "weight",
+                          "style",
+                          "upper",
+                          "spacing",
+                        ]}
+                        size={descSize}
+                        onChangeSize={(newSize) =>
+                          setAttributes({ descSize: newSize })
+                        }
+                        weight={descWeight}
+                        style={descStyle}
+                        spacing={descLetter}
+                        upper={descUpper}
+                        onChangeWeight={(newWeight) =>
+                          setAttributes({ descWeight: newWeight })
+                        }
+                        onChangeStyle={(newStyle) =>
+                          setAttributes({ descStyle: newStyle })
+                        }
+                        onChangeSpacing={(newValue) =>
+                          setAttributes({ descLetter: newValue })
+                        }
+                        onChangeUpper={(check) =>
+                          setAttributes({ descUpper: check })
+                        }
+                      />
+                      <PremiumTextShadow
+                        color={descShadowColor}
+                        blur={descShadowBlur}
+                        horizontal={descShadowHorizontal}
+                        vertical={descShadowVertical}
+                        onChangeColor={(newColor) =>
+                          setAttributes({ descShadowColor: newColor.hex })
+                        }
+                        onChangeBlur={(newBlur) =>
+                          setAttributes({ descShadowBlur: newBlur })
+                        }
+                        onChangehHorizontal={(newValue) =>
+                          setAttributes({ descShadowHorizontal: newValue })
+                        }
+                        onChangeVertical={(newValue) =>
+                          setAttributes({ descShadowVertical: newValue })
+                        }
+                      />
+                      <PremiumMargin
+                        directions={["all"]}
+                        marginTop={descmarginTop}
+                        marginRight={descmarginRight}
+                        marginBottom={descmarginBottom}
+                        marginLeft={descmarginLeft}
+                        onChangeMarTop={(value) =>
+                          setAttributes({
+                            descmarginTop: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangeMarRight={(value) =>
+                          setAttributes({
+                            descmarginRight: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangeMarBottom={(value) =>
+                          setAttributes({
+                            descmarginBottom: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangeMarLeft={(value) =>
+                          setAttributes({
+                            descmarginLeft: value === undefined ? 0 : value,
+                          })
+                        }
+                        showUnits={false}
+                      />
+                      <PremiumPadding
+                        paddingTop={descpaddingTop}
+                        paddingRight={descpaddingRight}
+                        paddingBottom={descpaddingBottom}
+                        paddingLeft={descpaddingLeft}
+                        onChangePadTop={(value) =>
+                          setAttributes({
+                            descpaddingTop: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangePadRight={(value) =>
+                          setAttributes({
+                            descpaddingRight: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangePadBottom={(value) =>
+                          setAttributes({
+                            descpaddingBottom: value === undefined ? 0 : value,
+                          })
+                        }
+                        onChangePadLeft={(value) =>
+                          setAttributes({
+                            descpaddingLeft: value === undefined ? 0 : value,
+                          })
+                        }
+                        showUnits={true}
+                        selectedUnit={descpaddingUnit}
+                        onChangePadSizeUnit={(newvalue) =>
+                          setAttributes({ descpaddingUnit: newvalue })
+                        }
+                      />
+                    </Fragment>
+                  );
+                }
+
+                return <div>{tabout}</div>;
+              }}
+            </TabPanel>
           </PanelBody>
-          <PanelBody
-            title={__("Title")}
-            className="premium-panel-body"
-            initialOpen={false}
-          >
-            <ColorPalette
-              label={__("Color")}
-              value={titleColor}
-              onChange={(newvalue) => setAttributes({ titleColor: newvalue })}
-            />
-            <PremiumTypo
-              components={["size", "weight", "style", "upper", "spacing"]}
-              size={titleSize}
-              onChangeSize={(newSize) => setAttributes({ titleSize: newSize })}
-              weight={titleWeight}
-              style={titleStyle}
-              spacing={titleLetter}
-              upper={titleUpper}
-              onChangeWeight={(newWeight) =>
-                setAttributes({ titleWeight: newWeight })
-              }
-              onChangeStyle={(newStyle) =>
-                setAttributes({ titleStyle: newStyle })
-              }
-              onChangeSpacing={(newValue) =>
-                setAttributes({ titleLetter: newValue })
-              }
-              onChangeUpper={(check) => setAttributes({ titleUpper: check })}
-            />
-            <PremiumTextShadow
-              color={titleShadowColor}
-              blur={titleShadowBlur}
-              horizontal={titleShadowHorizontal}
-              vertical={titleShadowVertical}
-              onChangeColor={(newColor) =>
-                setAttributes({ titleShadowColor: newColor.hex })
-              }
-              onChangeBlur={(newBlur) =>
-                setAttributes({ titleShadowBlur: newBlur })
-              }
-              onChangehHorizontal={(newValue) =>
-                setAttributes({ titleShadowHorizontal: newValue })
-              }
-              onChangeVertical={(newValue) =>
-                setAttributes({ titleShadowVertical: newValue })
-              }
-            />
-            <PremiumMargin
-              directions={["all"]}
-              marginTop={titlemarginTop}
-              marginRight={titlemarginRight}
-              marginBottom={titlemarginBottom}
-              marginLeft={titlemarginLeft}
-              onChangeMarTop={(value) =>
-                setAttributes({
-                  titlemarginTop: value === undefined ? 0 : value,
-                })
-              }
-              onChangeMarRight={(value) =>
-                setAttributes({
-                  titlemarginRight: value === undefined ? 0 : value,
-                })
-              }
-              onChangeMarBottom={(value) =>
-                setAttributes({
-                  titlemarginBottom: value === undefined ? 0 : value,
-                })
-              }
-              onChangeMarLeft={(value) =>
-                setAttributes({
-                  titlemarginLeft: value === undefined ? 0 : value,
-                })
-              }
-              showUnits={true}
-              onChangeMarSizeUnit={(newvalue) =>
-                setAttributes({ tiilemarginUnit: newvalue })
-              }
-            />
-            <PremiumPadding
-              paddingTop={titlepaddingTop}
-              paddingRight={titlepaddingRight}
-              paddingBottom={titlepaddingBottom}
-              paddingLeft={titlepaddingLeft}
-              onChangePadTop={(value) =>
-                setAttributes({
-                  titlepaddingTop: value === undefined ? 0 : value,
-                })
-              }
-              onChangePadRight={(value) =>
-                setAttributes({
-                  titlepaddingRight: value === undefined ? 0 : value,
-                })
-              }
-              onChangePadBottom={(value) =>
-                setAttributes({
-                  titlepaddingBottom: value === undefined ? 0 : value,
-                })
-              }
-              onChangePadLeft={(value) =>
-                setAttributes({
-                  titlepaddingLeft: value === undefined ? 0 : value,
-                })
-              }
-              showUnits={true}
-              selectedUnit={titlepaddingUnit}
-              onChangePadSizeUnit={(newvalue) =>
-                setAttributes({ titlepaddingUnit: newvalue })
-              }
-            />
-          </PanelBody>
-          <PanelBody
-            title={__("Description")}
-            className="premium-panel-body"
-            initialOpen={false}
-          >
-            <ColorPalette
-              label={__("Color")}
-              value={descColor}
-              onChange={(newvalue) => setAttributes({ descColor: newvalue })}
-            />
-            <PremiumTypo
-              components={["size", "weight", "style", "upper", "spacing"]}
-              size={descSize}
-              onChangeSize={(newSize) => setAttributes({ descSize: newSize })}
-              weight={descWeight}
-              style={descStyle}
-              spacing={descLetter}
-              upper={descUpper}
-              onChangeWeight={(newWeight) =>
-                setAttributes({ desceWeight: newWeight })
-              }
-              onChangeStyle={(newStyle) =>
-                setAttributes({ desceStyle: newStyle })
-              }
-              onChangeSpacing={(newValue) =>
-                setAttributes({ desceLetter: newValue })
-              }
-              onChangeUpper={(check) => setAttributes({ desceUpper: check })}
-            />
-            <PremiumTextShadow
-              color={descShadowColor}
-              blur={descShadowBlur}
-              horizontal={descShadowHorizontal}
-              vertical={descShadowVertical}
-              onChangeColor={(newColor) =>
-                setAttributes({ descShadowColor: newColor.hex })
-              }
-              onChangeBlur={(newBlur) =>
-                setAttributes({ descShadowBlur: newBlur })
-              }
-              onChangehHorizontal={(newValue) =>
-                setAttributes({ descShadowHorizontal: newValue })
-              }
-              onChangeVertical={(newValue) =>
-                setAttributes({ descShadowVertical: newValue })
-              }
-            />
-            <PremiumMargin
-              directions={["all"]}
-              marginTop={descmarginTop}
-              marginRight={descmarginRight}
-              marginBottom={descmarginBottom}
-              marginLeft={descmarginLeft}
-              onChangeMarTop={(value) =>
-                setAttributes({
-                  descmarginTop: value === undefined ? 0 : value,
-                })
-              }
-              onChangeMarRight={(value) =>
-                setAttributes({
-                  descmarginRight: value === undefined ? 0 : value,
-                })
-              }
-              onChangeMarBottom={(value) =>
-                setAttributes({
-                  descmarginBottom: value === undefined ? 0 : value,
-                })
-              }
-              onChangeMarLeft={(value) =>
-                setAttributes({
-                  descmarginLeft: value === undefined ? 0 : value,
-                })
-              }
-              showUnits={true}
-              onChangeMarSizeUnit={(newvalue) =>
-                setAttributes({ descmarginUnit: newvalue })
-              }
-            />
-            <PremiumPadding
-              paddingTop={descpaddingTop}
-              paddingRight={descpaddingRight}
-              paddingBottom={descpaddingBottom}
-              paddingLeft={descpaddingLeft}
-              onChangePadTop={(value) =>
-                setAttributes({
-                  descpaddingTop: value === undefined ? 0 : value,
-                })
-              }
-              onChangePadRight={(value) =>
-                setAttributes({
-                  descpaddingRight: value === undefined ? 0 : value,
-                })
-              }
-              onChangePadBottom={(value) =>
-                setAttributes({
-                  descpaddingBottom: value === undefined ? 0 : value,
-                })
-              }
-              onChangePadLeft={(value) =>
-                setAttributes({
-                  descpaddingLeft: value === undefined ? 0 : value,
-                })
-              }
-              showUnits={true}
-              selectedUnit={descpaddingUnit}
-              onChangePadSizeUnit={(newvalue) =>
-                setAttributes({ descpaddingUnit: newvalue })
-              }
-            />
-          </PanelBody>
+
           <PanelBody
             title={__("Link")}
             className="premium-panel-body"
             initialOpen={false}
           >
             <ColorPalette
-              label={__("Color")}
               value={linkColor}
               onChange={(newvalue) => setAttributes({ linkColor: newvalue })}
             />
             <ColorPalette
-              label={__("Hover Color")}
               value={linkHover}
               onChange={(newvalue) => setAttributes({ linkColor: newvalue })}
             />
@@ -1398,10 +1188,7 @@ class edit extends Component {
                   containermarginLeft: value === undefined ? 0 : value,
                 })
               }
-              showUnits={true}
-              onChangeMarSizeUnit={(newvalue) =>
-                setAttributes({ containermarginUnit: newvalue })
-              }
+              showUnits={false}
             />
           </PanelBody>
         </InspectorControls>
@@ -1409,25 +1196,32 @@ class edit extends Component {
       <div className="premium-accordion-container">
         <div
           id={`premium-accordion-section-${block_id}`}
-          className={`premium-accordion-section`}
+          className={`premium-accordion-section ${skewClass}`}
+          data-skew={skew ? skewDirection : null}
           style={{
             border: containerborderType,
             borderWidth: containerborderWidth + "px",
             borderRadius: containerborderRadius + "px",
             borderColor: containerborderColor,
             boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
-            marginTop: containermarginTop + containermarginUnit,
-            marginBottom: containermarginBottom + containermarginUnit,
-            marginRight: containermarginRight + containermarginUnit,
-            marginLeft: containermarginLeft + containermarginUnit,
+            marginTop: containermarginTop + "px",
+            marginBottom: containermarginBottom + "px",
+            marginRight: containermarginRight + "px",
+            marginLeft: containermarginLeft + "px",
           }}
         >
           <div className={`premium-accordion-${direction}`}>
-            <ul className={`premium-accordion-ul premium-accordion-center`}>
+            <ul
+              className={`premium-accordion-ul premium-accordion-${contentPosition}`}
+            >
               {repeaterImageAccordion.map((item, index) => {
                 return (
                   <li
-                    className={`premium-accordion-li`}
+                    className={`premium-accordion-li ${
+                      index === hoverIndex
+                        ? "premium-accordion-li-active"
+                        : null
+                    }`}
                     id={`premium-accordion-li-${index}`}
                     style={{
                       height: height + heightU,
@@ -1435,75 +1229,113 @@ class edit extends Component {
                     }}
                   >
                     <div className={`premium-accordion-background`}></div>
-                    <a
-                      className={`premium-accordion-item-link`}
-                      title={item.urlTitle}
-                      href={item.url}
-                      style={{
-                        color: linkColor,
-                        fontSize: linkSize + "px",
-                        fontWeight: linkWeight,
-                        fontStyle: linkStyle,
-                        letterSpacing: linkLetter,
-                      }}
-                    >
-                      {item.urlTitle}
-                    </a>
+
                     <div
                       className={`premium-accordion-overlay-wrap`}
                       style={{
                         alignItems: contentPosition,
                         justifyContent: alignPosition,
-                        backgroundColor: backgroundColor,
                       }}
                     >
-                      <div
-                        className={`accpremium-accordion-content premium-accordion-${contentPosition}`}
-                      >
-                        <h3
-                          className={`premium-accordion-title`}
-                          style={{
-                            font: titleSize + "px",
-                            color: titleColor,
-                            fontWeight: titleWeight,
-                            letterSpacing: titleLetter,
-                            fontStyle: titleStyle,
-                            marginTop: titlemarginTop + "px",
-                            marginBottom: titlemarginBottom + "px",
-                            marginRight: titlemarginRight + "px",
-                            marginLeft: titlemarginLeft + "px",
-                            paddingTop: titlepaddingTop + titlepaddingUnit,
-                            paddingBottom:
-                              titlepaddingBottom + titlepaddingUnit,
-                            paddingRight: titlepaddingRight + titlepaddingUnit,
-                            paddingLeft: titlepaddingLeft + titlepaddingUnit,
-                            textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-                          }}
-                        >
-                          {item.title}
-                        </h3>
+                      {item.content && (
                         <div
-                          className={`premium-accordion-description`}
-                          style={{
-                            font: descSize + "px",
-                            color: descColor,
-                            fontWeight: descWeight,
-                            letterSpacing: descLetter,
-                            fontStyle: descStyle,
-                            marginTop: descmarginTop + "px",
-                            marginBottom: descmarginBottom + "px",
-                            marginRight: descmarginRight + "px",
-                            marginLeft: descmarginLeft + "px",
-                            paddingTop: descpaddingTop + descpaddingUnit,
-                            paddingBottom: descpaddingBottom + descpaddingUnit,
-                            paddingRight: descpaddingRight + descpaddingUnit,
-                            paddingLeft: descpaddingLeft + descpaddingUnit,
-                            textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
-                          }}
+                          className={`premium-accordion-content premium-accordion-${alignPosition} ${
+                            item.custom ? "custom-content" : null
+                          }`}
                         >
-                          {item.desc}
+                          {item.icon && (
+                            <i
+                              className={`premium-accordion-icon ${item.selectedIcon}`}
+                              style={{
+                                fontStyle: "normal",
+                                fontSize: iconSize + iconU,
+                                boxShadow: `${iconShadowHorizontal}px ${iconShadowVertical}px ${iconShadowBlur}px ${iconShadowColor} ${iconShadowPosition}`,
+                                border: iconborderType,
+                                borderWidth: iconborderWidth + "px",
+                                borderRadius: iconborderRadius + "px",
+                                borderColor: iconborderColor,
+                                marginTop: iconmarginTop + "px",
+                                marginBottom: iconmarginBottom + "px",
+                                marginRight: iconmarginRight + "px",
+                                marginLeft: iconmarginLeft + "px",
+                                paddingTop: iconpaddingTop + iconpaddingUnit,
+                                paddingBottom:
+                                  iconpaddingBottom + iconpaddingUnit,
+                                paddingRight:
+                                  iconpaddingRight + iconpaddingUnit,
+                                paddingLeft: iconpaddingLeft + iconpaddingUnit,
+                              }}
+                            ></i>
+                          )}
+                          <h3
+                            className={`premium-accordion-title`}
+                            style={{
+                              fontSize: titleSize + "px",
+                              color: titleColor,
+                              fontWeight: titleWeight,
+                              letterSpacing: titleLetter,
+                              textTransform: titleUpper ? "uppercase" : null,
+                              fontStyle: titleStyle,
+                              marginTop: titlemarginTop + "px",
+                              marginBottom: titlemarginBottom + "px",
+                              marginRight: titlemarginRight + "px",
+                              marginLeft: titlemarginLeft + "px",
+                              paddingTop: titlepaddingTop + titlepaddingUnit,
+                              paddingBottom:
+                                titlepaddingBottom + titlepaddingUnit,
+                              paddingRight:
+                                titlepaddingRight + titlepaddingUnit,
+                              paddingLeft: titlepaddingLeft + titlepaddingUnit,
+                              textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
+                            }}
+                          >
+                            {item.title}
+                          </h3>
+                          <div
+                            className={`premium-accordion-description`}
+                            style={{
+                              fontSize: descSize + "px",
+                              color: descColor,
+                              fontWeight: descWeight,
+                              letterSpacing: descLetter,
+                              fontStyle: descStyle,
+                              textTransform: descUpper ? "uppercase" : null,
+                              marginTop: descmarginTop + "px",
+                              marginBottom: descmarginBottom + "px",
+                              marginRight: descmarginRight + "px",
+                              marginLeft: descmarginLeft + "px",
+                              paddingTop: descpaddingTop + descpaddingUnit,
+                              paddingBottom:
+                                descpaddingBottom + descpaddingUnit,
+                              paddingRight: descpaddingRight + descpaddingUnit,
+                              paddingLeft: descpaddingLeft + descpaddingUnit,
+                              textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
+                            }}
+                          >
+                            {item.desc}
+                          </div>
+                          {item.link && (
+                            <a
+                              className={`${
+                                item.whole
+                                  ? "premium-accordion-item-link"
+                                  : "premium-accordion-item-link-title"
+                              }`}
+                              title={item.urlTitle}
+                              href={item.url}
+                              style={{
+                                fontSize: linkSize + "px",
+                                fontWeight: linkWeight,
+                                fontStyle: linkStyle,
+                                letterSpacing: linkLetter,
+                                textTransform: linkUpper ? "uppercase" : null,
+                              }}
+                            >
+                              {item.whole ? " " : item.urlTitle}
+                            </a>
+                          )}
                         </div>
-                      </div>
+                      )}
                     </div>
                     <style
                       dangerouslySetInnerHTML={{
@@ -1513,6 +1345,31 @@ class edit extends Component {
                           `background-size : ${item.backgroundSize};`,
                           `background-position : ${item.backgroundPosition};`,
                           `background-repeat : ${item.backgroundRepeat};`,
+                          "}",
+                          `#premium-accordion-section-${block_id} #premium-accordion-li-${index} .custom-content{`,
+                          `position: absolute;`,
+                          `top:${item.horizontal}${item.horizontalU};`,
+                          `left:${item.vertical}${item.verticalU};`,
+                          "}",
+                          `.premium-accordion-section .premium-accordion-item-link {`,
+                          `color: ${linkColor};`,
+                          "}",
+                          `.premium-accordion-section:hover .premium-accordion-item-link {`,
+                          `color: ${linkHover};`,
+                          "}",
+                          ".premium-accordion-section .premium-accordion-overlay-wrap{",
+                          `background-color: ${overlayColor};`,
+                          "}",
+                          `.premium-accordion-section:hover .premium-accordion-overlay-wrap {`,
+                          `background-color: ${overlayHover};`,
+                          "}",
+                          ` .premium-accordion-section .premium-accordion-icon{`,
+                          `color:${iconColor};`,
+                          `background-color :${iconbackgroundColor};`,
+                          "}",
+                          ` .premium-accordion-section:hover .premium-accordion-icon{`,
+                          `color:${iconHoverColor};`,
+                          `background-color :${backgroundHover};`,
                           "}",
                         ].join("\n"),
                       }}
