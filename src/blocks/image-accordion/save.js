@@ -109,7 +109,6 @@ export default function save ( props )
   const skewClass = skew ? "premium-accordion-skew" : null;
   
   return (
-  
     <div className="premium-accordion-container">
     <div
       id={`premium-accordion-section-${block_id}`}
@@ -229,7 +228,7 @@ export default function save ( props )
                       >
                         {item.desc}
                       </div>
-                      {item.link && (
+                      {item.url && (
                         <a
                           className={`${
                             item.whole
@@ -282,7 +281,7 @@ export default function save ( props )
                       `color:${iconColor};`,
                       `background-color :${iconbackgroundColor};`,
                       "}",
-                      ` .premium-accordion-section:hover .premium-accordion-icon{`,
+                      ` .premium-accordion-section .premium-accordion-icon:hover{`,
                       `color:${iconHoverColor};`,
                       `background-color :${backgroundHover};`,
                       "}",

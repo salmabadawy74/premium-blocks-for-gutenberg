@@ -616,7 +616,7 @@ class edit extends Component {
               label={__("Hide Description Below Width (PX)")}
               value={hideDesc}
               min={0}
-              max={0}
+              max={10000}
               onChange={(newvalue) => hundleHide(newvalue)}
             />
           </PanelBody>
@@ -1324,7 +1324,7 @@ class edit extends Component {
                           >
                             {item.desc}
                           </div>
-                          {item.link && (
+                          {item.url && (
                             <a
                               className={`${
                                 item.whole
@@ -1377,7 +1377,7 @@ class edit extends Component {
                           `color:${iconColor};`,
                           `background-color :${iconbackgroundColor};`,
                           "}",
-                          ` .premium-accordion-section:hover .premium-accordion-icon{`,
+                          ` .premium-accordion-section .premium-accordion-icon:hover{`,
                           `color:${iconHoverColor};`,
                           `background-color :${backgroundHover};`,
                           "}",
