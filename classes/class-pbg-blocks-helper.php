@@ -186,6 +186,7 @@ class PBG_Blocks_Helper {
 		$is_icon_box_enabled = self::$blocks['iconBox'];
 
 		$is_fancy_text_enabled = self::$blocks['fancyText'];
+
 		$is_image_accordion_enabled = self::$blocks['imageAccordion'];
 
 		wp_enqueue_style(

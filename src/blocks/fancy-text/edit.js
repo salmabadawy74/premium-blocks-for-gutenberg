@@ -2,7 +2,7 @@ import classnames from "classnames";
 import styling from "./styling";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-import Typed from "typed.js";
+//import Typed from "typed.js";
 
 import {
     SortableContainer,

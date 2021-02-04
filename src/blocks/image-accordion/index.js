@@ -216,6 +216,10 @@ const imageAccordionAttributes = {
   iconpaddingRight: {
     type: "number",
   },
+  iconpaddingUnit: {
+    type: "string",
+    default:"px"
+  },
   iconpaddingBottom: {
     type: "number",
   },
@@ -282,6 +286,10 @@ const imageAccordionAttributes = {
   titlepaddingLeft: {
     type: "number",
   },
+  titlepaddingUnit: {
+    type: "string",
+    default:"px"
+  },
   descColor: {
     type: "string",
   },
@@ -327,6 +335,10 @@ const imageAccordionAttributes = {
   },
   descpaddingLeft: {
     type: "number",
+  },
+  descpaddingUnit: {
+    type: "string",
+    default:"px"
   },
   linkColor: {
     type: "string",

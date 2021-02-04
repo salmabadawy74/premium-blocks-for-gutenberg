@@ -47018,7 +47018,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-//import Typed from 'typed.js';
+//import Typed from "typed.js";
 
 
 
@@ -48695,6 +48695,9 @@ var imageAccordionAttributes = (_imageAccordionAttrib = {
   type: "number"
 }), _defineProperty(_imageAccordionAttrib, "iconpaddingRight", {
   type: "number"
+}), _defineProperty(_imageAccordionAttrib, "iconpaddingUnit", {
+  type: "string",
+  default: "px"
 }), _defineProperty(_imageAccordionAttrib, "iconpaddingBottom", {
   type: "number"
 }), _defineProperty(_imageAccordionAttrib, "iconpaddingLeft", {
@@ -48741,6 +48744,9 @@ var imageAccordionAttributes = (_imageAccordionAttrib = {
   type: "number"
 }), _defineProperty(_imageAccordionAttrib, "titlepaddingLeft", {
   type: "number"
+}), _defineProperty(_imageAccordionAttrib, "titlepaddingUnit", {
+  type: "string",
+  default: "px"
 }), _defineProperty(_imageAccordionAttrib, "descColor", {
   type: "string"
 }), _defineProperty(_imageAccordionAttrib, "descShadowColor", {
@@ -48773,6 +48779,9 @@ var imageAccordionAttributes = (_imageAccordionAttrib = {
   type: "number"
 }), _defineProperty(_imageAccordionAttrib, "descpaddingLeft", {
   type: "number"
+}), _defineProperty(_imageAccordionAttrib, "descpaddingUnit", {
+  type: "string",
+  default: "px"
 }), _defineProperty(_imageAccordionAttrib, "linkColor", {
   type: "string"
 }), _defineProperty(_imageAccordionAttrib, "linkHover", {
@@ -48857,6 +48866,7 @@ function save(props) {
       heightU = attributes.heightU,
       contentPosition = attributes.contentPosition,
       alignPosition = attributes.alignPosition,
+      hideDesc = attributes.hideDesc,
       hoverIndex = attributes.hoverIndex,
       overlayColor = attributes.overlayColor,
       overlayHover = attributes.overlayHover,
@@ -48960,16 +48970,17 @@ function save(props) {
         id: "premium-accordion-section-" + block_id,
         className: "premium-accordion-section " + skewClass,
         "data-skew": skew ? skewDirection : null,
+        "data-hide": hideDesc,
         style: {
           border: containerborderType,
           borderWidth: containerborderWidth + "px",
           borderRadius: containerborderRadius + "px",
           borderColor: containerborderColor,
           boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition,
-          marginTop: containermarginTop + "px",
-          marginBottom: containermarginBottom + "px",
-          marginRight: containermarginRight + "px",
-          marginLeft: containermarginLeft + "px"
+          marginTop: containermarginTop,
+          marginBottom: containermarginBottom,
+          marginRight: containermarginRight,
+          marginLeft: containermarginLeft
         }
       },
       wp.element.createElement(
@@ -49011,19 +49022,19 @@ function save(props) {
                     style: {
                       fontStyle: "normal",
                       fontSize: iconSize + iconU,
+                      paddingTop: iconpaddingTop + iconpaddingUnit,
+                      paddingRight: iconpaddingRight + iconpaddingUnit,
+                      paddingBottom: iconpaddingBottom + iconpaddingUnit,
+                      paddingLeft: iconpaddingLeft + iconpaddingUnit,
                       boxShadow: iconShadowHorizontal + "px " + iconShadowVertical + "px " + iconShadowBlur + "px " + iconShadowColor + " " + iconShadowPosition,
                       border: iconborderType,
                       borderWidth: iconborderWidth + "px",
                       borderRadius: iconborderRadius + "px",
                       borderColor: iconborderColor,
-                      marginTop: iconmarginTop + "px",
-                      marginBottom: iconmarginBottom + "px",
-                      marginRight: iconmarginRight + "px",
-                      marginLeft: iconmarginLeft + "px",
-                      paddingTop: iconpaddingTop + iconpaddingUnit,
-                      paddingBottom: iconpaddingBottom + iconpaddingUnit,
-                      paddingRight: iconpaddingRight + iconpaddingUnit,
-                      paddingLeft: iconpaddingLeft + iconpaddingUnit
+                      marginTop: iconmarginTop,
+                      marginBottom: iconmarginBottom,
+                      marginRight: iconmarginRight,
+                      marginLeft: iconmarginLeft
                     }
                   }),
                   wp.element.createElement(
@@ -49037,14 +49048,14 @@ function save(props) {
                         letterSpacing: titleLetter,
                         textTransform: titleUpper ? "uppercase" : null,
                         fontStyle: titleStyle,
-                        marginTop: titlemarginTop + "px",
-                        marginBottom: titlemarginBottom + "px",
-                        marginRight: titlemarginRight + "px",
-                        marginLeft: titlemarginLeft + "px",
                         paddingTop: titlepaddingTop + titlepaddingUnit,
-                        paddingBottom: titlepaddingBottom + titlepaddingUnit,
                         paddingRight: titlepaddingRight + titlepaddingUnit,
+                        paddingBottom: titlepaddingBottom + titlepaddingUnit,
                         paddingLeft: titlepaddingLeft + titlepaddingUnit,
+                        marginTop: titlemarginTop,
+                        marginBottom: titlemarginBottom,
+                        marginRight: titlemarginRight,
+                        marginLeft: titlemarginLeft,
                         textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor
                       }
                     },
@@ -49060,15 +49071,15 @@ function save(props) {
                         fontWeight: descWeight,
                         letterSpacing: descLetter,
                         fontStyle: descStyle,
-                        textTransform: descUpper ? "uppercase" : null,
-                        marginTop: descmarginTop + "px",
-                        marginBottom: descmarginBottom + "px",
-                        marginRight: descmarginRight + "px",
-                        marginLeft: descmarginLeft + "px",
                         paddingTop: descpaddingTop + descpaddingUnit,
-                        paddingBottom: descpaddingBottom + descpaddingUnit,
                         paddingRight: descpaddingRight + descpaddingUnit,
+                        paddingBottom: descpaddingBottom + descpaddingUnit,
                         paddingLeft: descpaddingLeft + descpaddingUnit,
+                        textTransform: descUpper ? "uppercase" : null,
+                        marginTop: descmarginTop,
+                        marginBottom: descmarginBottom,
+                        marginRight: descmarginRight,
+                        marginLeft: descmarginLeft,
                         textShadow: descShadowHorizontal + "px " + descShadowVertical + "px " + descShadowBlur + "px " + descShadowColor
                       }
                     },
@@ -49213,7 +49224,7 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_11_react_sortable_hoc__["b" 
           return changeImageValue(newimage, newIndex);
         },
         onRemoveImage: function onRemoveImage() {
-          return hundleRemove("", "imageURL", newIndex);
+          return hundleRemove(newIndex);
         },
         onChangeBackPos: function onChangeBackPos(newPos) {
           return UpdateValues(newPos, "backgroundPosition", newIndex);
@@ -49284,7 +49295,7 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_11_react_sortable_hoc__["b" 
         wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__["a" /* default */], {
           units: ["px", "em", "%"],
           value: value.horizontalU,
-          onChange: function onChange(newHUnit) {
+          onChangeSizeUnit: function onChangeSizeUnit(newHUnit) {
             return UpdateValues(newHUnit, "horizontalU", newIndex);
           }
         }),
@@ -49298,7 +49309,7 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_11_react_sortable_hoc__["b" 
         wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__["a" /* default */], {
           units: ["px", "em", "%"],
           value: value.verticalU,
-          onChange: function onChange(newvalue) {
+          onChangeSizeUnit: function onChangeSizeUnit(newvalue) {
             return UpdateValues(newvalue, "verticalU", newIndex);
           }
         }),
@@ -49350,7 +49361,8 @@ var SortableList = Object(__WEBPACK_IMPORTED_MODULE_11_react_sortable_hoc__["a" 
       removeItem = _ref2.removeItem,
       edit = _ref2.edit,
       changeImageValue = _ref2.changeImageValue,
-      UpdateValues = _ref2.UpdateValues;
+      UpdateValues = _ref2.UpdateValues,
+      hundleRemove = _ref2.hundleRemove;
 
   return wp.element.createElement(
     "div",
@@ -49366,6 +49378,7 @@ var SortableList = Object(__WEBPACK_IMPORTED_MODULE_11_react_sortable_hoc__["a" 
         edit: edit,
         changeImageValue: changeImageValue,
         UpdateValues: UpdateValues,
+        hundleRemove: hundleRemove,
         items: items
       });
     }),
@@ -49498,6 +49511,12 @@ var edit = function (_Component) {
         });
       };
 
+      var hundleRemove = function hundleRemove(newIndex) {
+        setAttributes({
+          repeaterImageAccordion: onRepeaterChange("imageURL", null, newIndex)
+        });
+      };
+
       var UpdateValues = function UpdateValues(newValue, attr, newIndex) {
         return repeaterImageAccordion.map(function (item, i) {
           if (newIndex == i) {
@@ -49577,7 +49596,7 @@ var edit = function (_Component) {
       var hundleHide = function hundleHide(newvalue) {
         setAttributes({ hideDesc: newvalue });
         if (hideDesc > window.outerWidth) {
-          document.querySelector('.premium-accordion-description').style.cssText = "display:none";
+          document.querySelector(".premium-accordion-description").style.cssText = "display:none";
         }
       };
 
@@ -49620,7 +49639,8 @@ var edit = function (_Component) {
                 },
                 shouldCancelStart: shouldCancelStart,
                 changeImageValue: changeImageValue,
-                UpdateValues: UpdateValues
+                UpdateValues: UpdateValues,
+                hundleRemove: hundleRemove
               }),
               wp.element.createElement(
                 "div",
@@ -49695,7 +49715,7 @@ var edit = function (_Component) {
           wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__["a" /* default */], {
             units: ["px", "em", "vh"],
             value: heightU,
-            onChange: function onChange(newvalue) {
+            onChangeSizeUnit: function onChangeSizeUnit(newvalue) {
               return setAttributes({ heightU: newvalue });
             }
           }),
@@ -49978,25 +49998,24 @@ var edit = function (_Component) {
                     marginLeft: iconmarginLeft,
                     onChangeMarTop: function onChangeMarTop(value) {
                       return setAttributes({
-                        iconmarginTop: value === undefined ? 0 : value
+                        iconmarginTop: value
                       });
                     },
                     onChangeMarRight: function onChangeMarRight(value) {
                       return setAttributes({
-                        iconmarginRight: value === undefined ? 0 : value
+                        iconmarginRight: value
                       });
                     },
                     onChangeMarBottom: function onChangeMarBottom(value) {
                       return setAttributes({
-                        iconmarginBottom: value === undefined ? 0 : value
+                        iconmarginBottom: value
                       });
                     },
                     onChangeMarLeft: function onChangeMarLeft(value) {
                       return setAttributes({
-                        iconmarginLeft: value === undefined ? 0 : value
+                        iconmarginLeft: value
                       });
-                    },
-                    showUnits: false
+                    }
                   }),
                   wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_padding__["a" /* default */], {
                     paddingTop: iconpaddingTop,
@@ -50005,22 +50024,22 @@ var edit = function (_Component) {
                     paddingLeft: iconpaddingLeft,
                     onChangePadTop: function onChangePadTop(value) {
                       return setAttributes({
-                        iconpaddingTop: value === undefined ? 0 : value
+                        iconpaddingTop: value
                       });
                     },
                     onChangePadRight: function onChangePadRight(value) {
                       return setAttributes({
-                        iconpaddingRight: value === undefined ? 0 : value
+                        iconpaddingRight: value
                       });
                     },
                     onChangePadBottom: function onChangePadBottom(value) {
                       return setAttributes({
-                        iconpaddingBottom: value === undefined ? 0 : value
+                        iconpaddingBottom: value
                       });
                     },
                     onChangePadLeft: function onChangePadLeft(value) {
                       return setAttributes({
-                        iconpaddingLeft: value === undefined ? 0 : value
+                        iconpaddingLeft: value
                       });
                     },
                     showUnits: true,
@@ -50089,25 +50108,24 @@ var edit = function (_Component) {
                     marginLeft: titlemarginLeft,
                     onChangeMarTop: function onChangeMarTop(value) {
                       return setAttributes({
-                        titlemarginTop: value === undefined ? 0 : value
+                        titlemarginTop: value
                       });
                     },
                     onChangeMarRight: function onChangeMarRight(value) {
                       return setAttributes({
-                        titlemarginRight: value === undefined ? 0 : value
+                        titlemarginRight: value
                       });
                     },
                     onChangeMarBottom: function onChangeMarBottom(value) {
                       return setAttributes({
-                        titlemarginBottom: value === undefined ? 0 : value
+                        titlemarginBottom: value
                       });
                     },
                     onChangeMarLeft: function onChangeMarLeft(value) {
                       return setAttributes({
-                        titlemarginLeft: value === undefined ? 0 : value
+                        titlemarginLeft: value
                       });
-                    },
-                    showUnits: false
+                    }
                   }),
                   wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_padding__["a" /* default */], {
                     paddingTop: titlepaddingTop,
@@ -50116,22 +50134,22 @@ var edit = function (_Component) {
                     paddingLeft: titlepaddingLeft,
                     onChangePadTop: function onChangePadTop(value) {
                       return setAttributes({
-                        titlepaddingTop: value === undefined ? 0 : value
+                        titlepaddingTop: value
                       });
                     },
                     onChangePadRight: function onChangePadRight(value) {
                       return setAttributes({
-                        titlepaddingRight: value === undefined ? 0 : value
+                        titlepaddingRight: value
                       });
                     },
                     onChangePadBottom: function onChangePadBottom(value) {
                       return setAttributes({
-                        titlepaddingBottom: value === undefined ? 0 : value
+                        titlepaddingBottom: value
                       });
                     },
                     onChangePadLeft: function onChangePadLeft(value) {
                       return setAttributes({
-                        titlepaddingLeft: value === undefined ? 0 : value
+                        titlepaddingLeft: value
                       });
                     },
                     showUnits: true,
@@ -50200,25 +50218,24 @@ var edit = function (_Component) {
                     marginLeft: descmarginLeft,
                     onChangeMarTop: function onChangeMarTop(value) {
                       return setAttributes({
-                        descmarginTop: value === undefined ? 0 : value
+                        descmarginTop: value
                       });
                     },
                     onChangeMarRight: function onChangeMarRight(value) {
                       return setAttributes({
-                        descmarginRight: value === undefined ? 0 : value
+                        descmarginRight: value
                       });
                     },
                     onChangeMarBottom: function onChangeMarBottom(value) {
                       return setAttributes({
-                        descmarginBottom: value === undefined ? 0 : value
+                        descmarginBottom: value
                       });
                     },
                     onChangeMarLeft: function onChangeMarLeft(value) {
                       return setAttributes({
-                        descmarginLeft: value === undefined ? 0 : value
+                        descmarginLeft: value
                       });
-                    },
-                    showUnits: false
+                    }
                   }),
                   wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_padding__["a" /* default */], {
                     paddingTop: descpaddingTop,
@@ -50227,22 +50244,22 @@ var edit = function (_Component) {
                     paddingLeft: descpaddingLeft,
                     onChangePadTop: function onChangePadTop(value) {
                       return setAttributes({
-                        descpaddingTop: value === undefined ? 0 : value
+                        descpaddingTop: colorValue
                       });
                     },
                     onChangePadRight: function onChangePadRight(value) {
                       return setAttributes({
-                        descpaddingRight: value === undefined ? 0 : value
+                        descpaddingRight: value
                       });
                     },
                     onChangePadBottom: function onChangePadBottom(value) {
                       return setAttributes({
-                        descpaddingBottom: value === undefined ? 0 : value
+                        descpaddingBottom: value
                       });
                     },
                     onChangePadLeft: function onChangePadLeft(value) {
                       return setAttributes({
-                        descpaddingLeft: value === undefined ? 0 : value
+                        descpaddingLeft: value
                       });
                     },
                     showUnits: true,
@@ -50253,7 +50270,6 @@ var edit = function (_Component) {
                   })
                 );
               }
-
               return wp.element.createElement(
                 "div",
                 null,
@@ -50377,25 +50393,24 @@ var edit = function (_Component) {
             marginLeft: containermarginLeft,
             onChangeMarTop: function onChangeMarTop(value) {
               return setAttributes({
-                containermarginTop: value === undefined ? 0 : value
+                containermarginTop: value
               });
             },
             onChangeMarRight: function onChangeMarRight(value) {
               return setAttributes({
-                containermarginRight: value === undefined ? 0 : value
+                containermarginRight: value
               });
             },
             onChangeMarBottom: function onChangeMarBottom(value) {
               return setAttributes({
-                containermarginBottom: value === undefined ? 0 : value
+                containermarginBottom: value
               });
             },
             onChangeMarLeft: function onChangeMarLeft(value) {
               return setAttributes({
-                containermarginLeft: value === undefined ? 0 : value
+                containermarginLeft: value
               });
-            },
-            showUnits: false
+            }
           })
         )
       ), wp.element.createElement(
@@ -50407,16 +50422,17 @@ var edit = function (_Component) {
             id: "premium-accordion-section-" + block_id,
             className: "premium-accordion-section " + skewClass,
             "data-skew": skew ? skewDirection : null,
+            "data-hide": hideDesc,
             style: {
               border: containerborderType,
               borderWidth: containerborderWidth + "px",
               borderRadius: containerborderRadius + "px",
               borderColor: containerborderColor,
               boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition,
-              marginTop: containermarginTop + "px",
-              marginBottom: containermarginBottom + "px",
-              marginRight: containermarginRight + "px",
-              marginLeft: containermarginLeft + "px"
+              marginTop: containermarginTop,
+              marginBottom: containermarginBottom,
+              marginRight: containermarginRight,
+              marginLeft: containermarginLeft
             }
           },
           wp.element.createElement(
@@ -50458,19 +50474,19 @@ var edit = function (_Component) {
                         style: {
                           fontStyle: "normal",
                           fontSize: iconSize + iconU,
+                          paddingTop: iconpaddingTop + iconpaddingUnit,
+                          paddingRight: iconpaddingRight + iconpaddingUnit,
+                          paddingBottom: iconpaddingBottom + iconpaddingUnit,
+                          paddingLeft: iconpaddingLeft + iconpaddingUnit,
                           boxShadow: iconShadowHorizontal + "px " + iconShadowVertical + "px " + iconShadowBlur + "px " + iconShadowColor + " " + iconShadowPosition,
                           border: iconborderType,
                           borderWidth: iconborderWidth + "px",
                           borderRadius: iconborderRadius + "px",
                           borderColor: iconborderColor,
-                          marginTop: iconmarginTop + "px",
-                          marginBottom: iconmarginBottom + "px",
-                          marginRight: iconmarginRight + "px",
-                          marginLeft: iconmarginLeft + "px",
-                          paddingTop: iconpaddingTop + iconpaddingUnit,
-                          paddingBottom: iconpaddingBottom + iconpaddingUnit,
-                          paddingRight: iconpaddingRight + iconpaddingUnit,
-                          paddingLeft: iconpaddingLeft + iconpaddingUnit
+                          marginTop: iconmarginTop,
+                          marginBottom: iconmarginBottom,
+                          marginRight: iconmarginRight,
+                          marginLeft: iconmarginLeft
                         }
                       }),
                       wp.element.createElement(
@@ -50484,14 +50500,14 @@ var edit = function (_Component) {
                             letterSpacing: titleLetter,
                             textTransform: titleUpper ? "uppercase" : null,
                             fontStyle: titleStyle,
-                            marginTop: titlemarginTop + "px",
-                            marginBottom: titlemarginBottom + "px",
-                            marginRight: titlemarginRight + "px",
-                            marginLeft: titlemarginLeft + "px",
                             paddingTop: titlepaddingTop + titlepaddingUnit,
-                            paddingBottom: titlepaddingBottom + titlepaddingUnit,
                             paddingRight: titlepaddingRight + titlepaddingUnit,
+                            paddingBottom: titlepaddingBottom + titlepaddingUnit,
                             paddingLeft: titlepaddingLeft + titlepaddingUnit,
+                            marginTop: titlemarginTop,
+                            marginBottom: titlemarginBottom,
+                            marginRight: titlemarginRight,
+                            marginLeft: titlemarginLeft,
                             textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor
                           }
                         },
@@ -50507,15 +50523,15 @@ var edit = function (_Component) {
                             fontWeight: descWeight,
                             letterSpacing: descLetter,
                             fontStyle: descStyle,
-                            textTransform: descUpper ? "uppercase" : null,
-                            marginTop: descmarginTop + "px",
-                            marginBottom: descmarginBottom + "px",
-                            marginRight: descmarginRight + "px",
-                            marginLeft: descmarginLeft + "px",
                             paddingTop: descpaddingTop + descpaddingUnit,
-                            paddingBottom: descpaddingBottom + descpaddingUnit,
                             paddingRight: descpaddingRight + descpaddingUnit,
+                            paddingBottom: descpaddingBottom + descpaddingUnit,
                             paddingLeft: descpaddingLeft + descpaddingUnit,
+                            textTransform: descUpper ? "uppercase" : null,
+                            marginTop: descmarginTop,
+                            marginBottom: descmarginBottom,
+                            marginRight: descmarginRight,
+                            marginLeft: descmarginLeft,
                             textShadow: descShadowHorizontal + "px " + descShadowVertical + "px " + descShadowBlur + "px " + descShadowColor
                           }
                         },

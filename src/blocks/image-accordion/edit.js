@@ -78,7 +78,7 @@ const SortableItem = SortableElement(
           imageURL={value.imageURL}
           fixed={value.fixed}
           onSelectMedia={(newimage) => changeImageValue(newimage, newIndex)}
-          onRemoveImage={() => hundleRemove("", "imageURL", newIndex)}
+          onRemoveImage={() => hundleRemove(newIndex)}
           onChangeBackPos={(newPos) =>
             UpdateValues(newPos, "backgroundPosition", newIndex)
           }
@@ -139,7 +139,7 @@ const SortableItem = SortableElement(
             <PremiumSizeUnits
               units={["px", "em", "%"]}
               value={value.horizontalU}
-              onChange={(newHUnit) =>
+              onChangeSizeUnit={(newHUnit) =>
                 UpdateValues(newHUnit, "horizontalU", newIndex)
               }
             />
@@ -153,7 +153,7 @@ const SortableItem = SortableElement(
             <PremiumSizeUnits
               units={["px", "em", "%"]}
               value={value.verticalU}
-              onChange={(newvalue) =>
+              onChangeSizeUnit={(newvalue) =>
                 UpdateValues(newvalue, "verticalU", newIndex)
               }
             />
@@ -198,7 +198,14 @@ const SortableItem = SortableElement(
   )
 );
 const SortableList = SortableContainer(
-  ({ items, removeItem, edit, changeImageValue, UpdateValues }) => {
+  ({
+    items,
+    removeItem,
+    edit,
+    changeImageValue,
+    UpdateValues,
+    hundleRemove,
+  }) => {
     return (
       <div>
         {" "}
@@ -212,6 +219,7 @@ const SortableList = SortableContainer(
             edit={edit}
             changeImageValue={changeImageValue}
             UpdateValues={UpdateValues}
+            hundleRemove={hundleRemove}
             items={items}
           />
         ))}{" "}
@@ -342,6 +350,12 @@ class edit extends Component {
       });
     };
 
+    const hundleRemove = (newIndex) => {
+      setAttributes({
+        repeaterImageAccordion: onRepeaterChange("imageURL", null, newIndex),
+      });
+    };
+
     const UpdateValues = (newValue, attr, newIndex) => {
       return repeaterImageAccordion.map((item, i) => {
         if (newIndex == i) {
@@ -431,13 +445,14 @@ class edit extends Component {
     };
 
     const skewClass = skew ? "premium-accordion-skew" : null;
-    const hundleHide=(newvalue)=>{
-      setAttributes( { hideDesc: newvalue } )
-      if ( hideDesc > window.outerWidth )
-      {
-        document.querySelector( '.premium-accordion-description' ).style.cssText = `display:none`;
+    const hundleHide = (newvalue) => {
+      setAttributes({ hideDesc: newvalue });
+      if (hideDesc > window.outerWidth) {
+        document.querySelector(
+          ".premium-accordion-description"
+        ).style.cssText = `display:none`;
       }
-    }
+    };
 
     return [
       isSelected && (
@@ -468,6 +483,7 @@ class edit extends Component {
                   shouldCancelStart={shouldCancelStart}
                   changeImageValue={changeImageValue}
                   UpdateValues={UpdateValues}
+                  hundleRemove={hundleRemove}
                 />
                 <div className="premium-repeater-btn__wrap">
                   <button
@@ -531,7 +547,9 @@ class edit extends Component {
             <PremiumSizeUnits
               units={["px", "em", "vh"]}
               value={heightU}
-              onChange={(newvalue) => setAttributes({ heightU: newvalue })}
+              onChangeSizeUnit={(newvalue) =>
+                setAttributes({ heightU: newvalue })
+              }
             />
             <RangeControl
               label={__("Image Height")}
@@ -599,7 +617,7 @@ class edit extends Component {
               value={hideDesc}
               min={0}
               max={0}
-              onChange={(newvalue)=>hundleHide(newvalue)}
+              onChange={(newvalue) => hundleHide(newvalue)}
             />
           </PanelBody>
           <PanelBody
@@ -771,25 +789,24 @@ class edit extends Component {
                         marginLeft={iconmarginLeft}
                         onChangeMarTop={(value) =>
                           setAttributes({
-                            iconmarginTop: value === undefined ? 0 : value,
+                            iconmarginTop: value,
                           })
                         }
                         onChangeMarRight={(value) =>
                           setAttributes({
-                            iconmarginRight: value === undefined ? 0 : value,
+                            iconmarginRight: value,
                           })
                         }
                         onChangeMarBottom={(value) =>
                           setAttributes({
-                            iconmarginBottom: value === undefined ? 0 : value,
+                            iconmarginBottom: value,
                           })
                         }
                         onChangeMarLeft={(value) =>
                           setAttributes({
-                            iconmarginLeft: value === undefined ? 0 : value,
+                            iconmarginLeft: value,
                           })
                         }
-                        showUnits={false}
                       />
                       <PremiumPadding
                         paddingTop={iconpaddingTop}
@@ -798,22 +815,22 @@ class edit extends Component {
                         paddingLeft={iconpaddingLeft}
                         onChangePadTop={(value) =>
                           setAttributes({
-                            iconpaddingTop: value === undefined ? 0 : value,
+                            iconpaddingTop: value,
                           })
                         }
                         onChangePadRight={(value) =>
                           setAttributes({
-                            iconpaddingRight: value === undefined ? 0 : value,
+                            iconpaddingRight: value,
                           })
                         }
                         onChangePadBottom={(value) =>
                           setAttributes({
-                            iconpaddingBottom: value === undefined ? 0 : value,
+                            iconpaddingBottom: value,
                           })
                         }
                         onChangePadLeft={(value) =>
                           setAttributes({
-                            iconpaddingLeft: value === undefined ? 0 : value,
+                            iconpaddingLeft: value,
                           })
                         }
                         showUnits={true}
@@ -888,25 +905,24 @@ class edit extends Component {
                         marginLeft={titlemarginLeft}
                         onChangeMarTop={(value) =>
                           setAttributes({
-                            titlemarginTop: value === undefined ? 0 : value,
+                            titlemarginTop: value,
                           })
                         }
                         onChangeMarRight={(value) =>
                           setAttributes({
-                            titlemarginRight: value === undefined ? 0 : value,
+                            titlemarginRight: value,
                           })
                         }
                         onChangeMarBottom={(value) =>
                           setAttributes({
-                            titlemarginBottom: value === undefined ? 0 : value,
+                            titlemarginBottom: value,
                           })
                         }
                         onChangeMarLeft={(value) =>
                           setAttributes({
-                            titlemarginLeft: value === undefined ? 0 : value,
+                            titlemarginLeft: value,
                           })
                         }
-                        showUnits={false}
                       />
                       <PremiumPadding
                         paddingTop={titlepaddingTop}
@@ -915,22 +931,22 @@ class edit extends Component {
                         paddingLeft={titlepaddingLeft}
                         onChangePadTop={(value) =>
                           setAttributes({
-                            titlepaddingTop: value === undefined ? 0 : value,
+                            titlepaddingTop: value,
                           })
                         }
                         onChangePadRight={(value) =>
                           setAttributes({
-                            titlepaddingRight: value === undefined ? 0 : value,
+                            titlepaddingRight: value,
                           })
                         }
                         onChangePadBottom={(value) =>
                           setAttributes({
-                            titlepaddingBottom: value === undefined ? 0 : value,
+                            titlepaddingBottom: value,
                           })
                         }
                         onChangePadLeft={(value) =>
                           setAttributes({
-                            titlepaddingLeft: value === undefined ? 0 : value,
+                            titlepaddingLeft: value,
                           })
                         }
                         showUnits={true}
@@ -1005,25 +1021,24 @@ class edit extends Component {
                         marginLeft={descmarginLeft}
                         onChangeMarTop={(value) =>
                           setAttributes({
-                            descmarginTop: value === undefined ? 0 : value,
+                            descmarginTop: value,
                           })
                         }
                         onChangeMarRight={(value) =>
                           setAttributes({
-                            descmarginRight: value === undefined ? 0 : value,
+                            descmarginRight: value,
                           })
                         }
                         onChangeMarBottom={(value) =>
                           setAttributes({
-                            descmarginBottom: value === undefined ? 0 : value,
+                            descmarginBottom: value,
                           })
                         }
                         onChangeMarLeft={(value) =>
                           setAttributes({
-                            descmarginLeft: value === undefined ? 0 : value,
+                            descmarginLeft: value,
                           })
                         }
-                        showUnits={false}
                       />
                       <PremiumPadding
                         paddingTop={descpaddingTop}
@@ -1032,22 +1047,22 @@ class edit extends Component {
                         paddingLeft={descpaddingLeft}
                         onChangePadTop={(value) =>
                           setAttributes({
-                            descpaddingTop: value === undefined ? 0 : value,
+                            descpaddingTop: colorValue
                           })
                         }
                         onChangePadRight={(value) =>
                           setAttributes({
-                            descpaddingRight: value === undefined ? 0 : value,
+                            descpaddingRight: value
                           })
                         }
                         onChangePadBottom={(value) =>
                           setAttributes({
-                            descpaddingBottom: value === undefined ? 0 : value,
+                            descpaddingBottom: value
                           })
                         }
                         onChangePadLeft={(value) =>
                           setAttributes({
-                            descpaddingLeft: value === undefined ? 0 : value,
+                            descpaddingLeft: value
                           })
                         }
                         showUnits={true}
@@ -1059,12 +1074,10 @@ class edit extends Component {
                     </Fragment>
                   );
                 }
-
                 return <div>{tabout}</div>;
               }}
             </TabPanel>
           </PanelBody>
-
           <PanelBody
             title={__("Link")}
             className="premium-panel-body"
@@ -1170,25 +1183,24 @@ class edit extends Component {
               marginLeft={containermarginLeft}
               onChangeMarTop={(value) =>
                 setAttributes({
-                  containermarginTop: value === undefined ? 0 : value,
+                  containermarginTop: value,
                 })
               }
               onChangeMarRight={(value) =>
                 setAttributes({
-                  containermarginRight: value === undefined ? 0 : value,
+                  containermarginRight: value,
                 })
               }
               onChangeMarBottom={(value) =>
                 setAttributes({
-                  containermarginBottom: value === undefined ? 0 : value,
+                  containermarginBottom: value,
                 })
               }
               onChangeMarLeft={(value) =>
                 setAttributes({
-                  containermarginLeft: value === undefined ? 0 : value,
+                  containermarginLeft: value,
                 })
               }
-              showUnits={false}
             />
           </PanelBody>
         </InspectorControls>
@@ -1198,16 +1210,17 @@ class edit extends Component {
           id={`premium-accordion-section-${block_id}`}
           className={`premium-accordion-section ${skewClass}`}
           data-skew={skew ? skewDirection : null}
+          data-hide={hideDesc}
           style={{
             border: containerborderType,
             borderWidth: containerborderWidth + "px",
             borderRadius: containerborderRadius + "px",
             borderColor: containerborderColor,
             boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
-            marginTop: containermarginTop + "px",
-            marginBottom: containermarginBottom + "px",
-            marginRight: containermarginRight + "px",
-            marginLeft: containermarginLeft + "px",
+            marginTop: containermarginTop,
+            marginBottom: containermarginBottom,
+            marginRight: containermarginRight,
+            marginLeft: containermarginLeft,
           }}
         >
           <div className={`premium-accordion-${direction}`}>
@@ -1249,21 +1262,21 @@ class edit extends Component {
                               style={{
                                 fontStyle: "normal",
                                 fontSize: iconSize + iconU,
+                                paddingTop: iconpaddingTop + iconpaddingUnit,
+                                paddingRight:
+                                  iconpaddingRight + iconpaddingUnit,
+                                paddingBottom:
+                                  iconpaddingBottom + iconpaddingUnit,
+                                paddingLeft: iconpaddingLeft + iconpaddingUnit,
                                 boxShadow: `${iconShadowHorizontal}px ${iconShadowVertical}px ${iconShadowBlur}px ${iconShadowColor} ${iconShadowPosition}`,
                                 border: iconborderType,
                                 borderWidth: iconborderWidth + "px",
                                 borderRadius: iconborderRadius + "px",
                                 borderColor: iconborderColor,
-                                marginTop: iconmarginTop + "px",
-                                marginBottom: iconmarginBottom + "px",
-                                marginRight: iconmarginRight + "px",
-                                marginLeft: iconmarginLeft + "px",
-                                paddingTop: iconpaddingTop + iconpaddingUnit,
-                                paddingBottom:
-                                  iconpaddingBottom + iconpaddingUnit,
-                                paddingRight:
-                                  iconpaddingRight + iconpaddingUnit,
-                                paddingLeft: iconpaddingLeft + iconpaddingUnit,
+                                marginTop: iconmarginTop,
+                                marginBottom: iconmarginBottom,
+                                marginRight: iconmarginRight,
+                                marginLeft: iconmarginLeft,
                               }}
                             ></i>
                           )}
@@ -1276,16 +1289,14 @@ class edit extends Component {
                               letterSpacing: titleLetter,
                               textTransform: titleUpper ? "uppercase" : null,
                               fontStyle: titleStyle,
-                              marginTop: titlemarginTop + "px",
-                              marginBottom: titlemarginBottom + "px",
-                              marginRight: titlemarginRight + "px",
-                              marginLeft: titlemarginLeft + "px",
                               paddingTop: titlepaddingTop + titlepaddingUnit,
-                              paddingBottom:
-                                titlepaddingBottom + titlepaddingUnit,
-                              paddingRight:
-                                titlepaddingRight + titlepaddingUnit,
+                              paddingRight: titlepaddingRight + titlepaddingUnit,
+                              paddingBottom: titlepaddingBottom + titlepaddingUnit,
                               paddingLeft: titlepaddingLeft + titlepaddingUnit,
+                              marginTop: titlemarginTop,
+                              marginBottom: titlemarginBottom,
+                              marginRight: titlemarginRight,
+                              marginLeft: titlemarginLeft,
                               textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                             }}
                           >
@@ -1299,16 +1310,15 @@ class edit extends Component {
                               fontWeight: descWeight,
                               letterSpacing: descLetter,
                               fontStyle: descStyle,
-                              textTransform: descUpper ? "uppercase" : null,
-                              marginTop: descmarginTop + "px",
-                              marginBottom: descmarginBottom + "px",
-                              marginRight: descmarginRight + "px",
-                              marginLeft: descmarginLeft + "px",
                               paddingTop: descpaddingTop + descpaddingUnit,
-                              paddingBottom:
-                                descpaddingBottom + descpaddingUnit,
                               paddingRight: descpaddingRight + descpaddingUnit,
+                              paddingBottom: descpaddingBottom + descpaddingUnit,
                               paddingLeft: descpaddingLeft + descpaddingUnit,
+                              textTransform: descUpper ? "uppercase" : null,
+                              marginTop: descmarginTop,
+                              marginBottom: descmarginBottom,
+                              marginRight: descmarginRight,
+                              marginLeft: descmarginLeft,
                               textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
                             }}
                           >

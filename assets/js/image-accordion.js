@@ -1,11 +1,11 @@
 jQuery(document).ready(function ($) {
   setTimeout(function () {
-    var $accordElem = $(".premium-accordion-section"),
-      settings = $accordElem.data("settings"),
-      $window = $(window);
+    let $accordElem = $( ".premium-accordion-section" );
+    let settings = $accordElem.data( "hide" );
+     let  $window = $(window);
 
     $window.resize(function () {
-      if (settings.hide_desc > $window.outerWidth()) {
+      if (settings > $window.outerWidth()) {
         $accordElem
           .find(".premium-accordion-description")
           .css("display", "none");
