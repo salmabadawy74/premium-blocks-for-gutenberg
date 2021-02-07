@@ -122,7 +122,7 @@ const SortableItem = SortableElement(
               onChange={(newTitle) => UpdateValues(newTitle, "title", newIndex)}
             />
             <TextareaControl
-              label="Text"
+              label="Description"
               help="Enter some text"
               value={value.desc}
               onChange={(newDesc) => UpdateValues(newDesc, "desc", newIndex)}
