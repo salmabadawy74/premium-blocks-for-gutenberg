@@ -67,7 +67,10 @@ function PremiumResponsive(props) {
       {(tab) => {
         let tabout;
 
-        if ("mobile" === tab.name) {
+        if ( "mobile" === tab.name )
+        {
+          document.querySelector( '.editor-styles-wrapper' ).style.width = '360px';
+          document.querySelector( '.editor-styles-wrapper' ).style.margin = '36px auto';
           tabout = (
             <Fragment>
               {sizeTypesControls}
@@ -86,6 +89,8 @@ function PremiumResponsive(props) {
             </Fragment>
           );
         } else if ("tablet" === tab.name) {
+          document.querySelector( '.editor-styles-wrapper' ).style.width = '780px';
+          document.querySelector( '.editor-styles-wrapper' ).style.margin = '36px auto';
           tabout = (
             <Fragment>
               {sizeTypesControls}
@@ -104,6 +109,7 @@ function PremiumResponsive(props) {
             </Fragment>
           );
         } else {
+          document.querySelector( '.editor-styles-wrapper' ).style.width = '1024px';
           tabout = (
             <Fragment>
               {sizeTypesControls}
