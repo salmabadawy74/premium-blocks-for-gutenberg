@@ -163,9 +163,7 @@ const imageAccordionAttributes = {
     type: "number",
     default: "0",
   },
-  iconborderColor: {
-    type: "string",
-  },
+
   iconShadowColor: {
     type: "string",
   },
@@ -189,14 +187,9 @@ const imageAccordionAttributes = {
     type: "string",
     default: "px",
   },
-  iconborderWidth: {
-    type: "number",
-  },
+ 
   iconborderColor: {
     type: "string",
-  },
-  iconborderRadius: {
-    type: "number",
   },
   iconmarginTop: {
     type: "number",
@@ -250,6 +243,10 @@ const imageAccordionAttributes = {
     type: "number",
     default: "0",
   },
+  titleUpper: {
+    type: "boolean",
+    default: false
+  },
   titleShadowHorizontal: {
     type: "number",
     default: "0",
@@ -293,12 +290,31 @@ const imageAccordionAttributes = {
   descColor: {
     type: "string",
   },
+  descSize: {
+    type: "number",
+    default:18
+  },
+  descWeight: {
+    type: "number",
+    default:300
+  },
+  descStyle: {
+    type:"string"
+  },
+  descLetter: {
+    type: "number",
+    default:0
+  },
   descShadowColor: {
     type: "string",
   },
   descShadowBlur: {
     type: "number",
     default: "0",
+  },
+  descUpper: {
+    type: "boolean",
+    default:false
   },
   descShadowHorizontal: {
     type: "number",
@@ -372,11 +388,11 @@ const imageAccordionAttributes = {
   },
   containerborderWidth: {
     type: "number",
-    default: "1",
+    default: 1,
   },
   containerborderRadius: {
     type: "number",
-    default: "0",
+    default:0,
   },
   containerborderColor: {
     type: "string",
@@ -386,7 +402,7 @@ const imageAccordionAttributes = {
   },
   containerShadowBlur: {
     type: "number",
-    default: "0",
+    default: 0,
   },
   containerShadowHorizontal: {
     type: "number",

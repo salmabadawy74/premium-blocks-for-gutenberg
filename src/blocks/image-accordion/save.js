@@ -191,7 +191,7 @@ export default function save ( props )
                           color: titleColor,
                           fontWeight: titleWeight,
                           letterSpacing: titleLetter,
-                          textTransform: titleUpper ? "uppercase" : null,
+                          textTransform: titleUpper ? "uppercase" : "none",
                           fontStyle: titleStyle,
                           paddingTop: titlepaddingTop + titlepaddingUnit,
                           paddingRight: titlepaddingRight + titlepaddingUnit,
@@ -218,7 +218,7 @@ export default function save ( props )
                           paddingRight: descpaddingRight + descpaddingUnit,
                           paddingBottom: descpaddingBottom + descpaddingUnit,
                           paddingLeft: descpaddingLeft + descpaddingUnit,
-                          textTransform: descUpper ? "uppercase" : null,
+                          textTransform: descUpper ? "uppercase" : "none",
                           marginTop: descmarginTop,
                           marginBottom: descmarginBottom,
                           marginRight: descmarginRight,
@@ -242,7 +242,7 @@ export default function save ( props )
                             fontWeight: linkWeight,
                             fontStyle: linkStyle,
                             letterSpacing: linkLetter,
-                            textTransform: linkUpper ? "uppercase" : null,
+                            textTransform: linkUpper ? "uppercase" : "none",
                           }}
                         >
                           {item.whole ? " " : item.urlTitle}

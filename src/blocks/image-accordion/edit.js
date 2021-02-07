@@ -1287,7 +1287,7 @@ class edit extends Component {
                               color: titleColor,
                               fontWeight: titleWeight,
                               letterSpacing: titleLetter,
-                              textTransform: titleUpper ? "uppercase" : null,
+                              textTransform: titleUpper ? "uppercase" : "none",
                               fontStyle: titleStyle,
                               paddingTop: titlepaddingTop + titlepaddingUnit,
                               paddingRight: titlepaddingRight + titlepaddingUnit,
@@ -1314,7 +1314,7 @@ class edit extends Component {
                               paddingRight: descpaddingRight + descpaddingUnit,
                               paddingBottom: descpaddingBottom + descpaddingUnit,
                               paddingLeft: descpaddingLeft + descpaddingUnit,
-                              textTransform: descUpper ? "uppercase" : null,
+                              textTransform: descUpper ? "uppercase" : "none",
                               marginTop: descmarginTop,
                               marginBottom: descmarginBottom,
                               marginRight: descmarginRight,
@@ -1338,7 +1338,7 @@ class edit extends Component {
                                 fontWeight: linkWeight,
                                 fontStyle: linkStyle,
                                 letterSpacing: linkLetter,
-                                textTransform: linkUpper ? "uppercase" : null,
+                                textTransform: linkUpper ? "uppercase" : "none",
                               }}
                             >
                               {item.whole ? " " : item.urlTitle}
