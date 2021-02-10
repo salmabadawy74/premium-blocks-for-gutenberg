@@ -1839,34 +1839,62 @@ a.premium-dheading-block__link:hover {
 .premium-blog-even .slick-slide {
   height: inherit !important;
 }
-
+/**
+* Responsive Style for Tablet 
+*/ 
+@media (max-width: 976px) {
+  .premium-blog .post__columns-tablet-1  .premium-blog-post-outer-container{
+    width: 100% !important;
+  } 
+  .premium-blog .post__columns-tablet-2  .premium-blog-post-outer-container{
+    width: 50% !important;
+  }
+  .premium-blog .post__columns-tablet-3 .premium-blog-post-outer-container{
+    width: 33.3333333% !important;
+  }
+  .premium-blog .post__columns-tablet-4 .premium-blog-post-outer-container{
+    width: 25% !important;
+  }
+  .premium-blog .post__columns-tablet-5  .premium-blog-post-outer-container{
+    width: 20% !important;
+  }
+  .premium-blog .post__columns-tablet-6  .premium-blog-post-outer-container{
+    width: 18% !important;
+  }
+  .premium-blog .post__columns-tablet-7  .premium-blog-post-outer-container{
+    width: 15% !important;
+  }
+  .premium-blog .post__columns-tablet-8  .premium-blog-post-outer-container{
+    width: 12.5% !important;
+  }
+}
 /**
 * Responsive Style
 */
 @media (max-width: 768px) {
-  .premium-blog .post__columns-mobile-2  .premium-blog-post-outer-container{
-    width: 10%;
+  .premium-blog .post__columns-mobile-1  .premium-blog-post-outer-container{
+    width: 100% !important;
   } 
   .premium-blog .post__columns-mobile-2  .premium-blog-post-outer-container{
-    width: 50%;
+    width: 50% !important;
   }
   .premium-blog .post__columns-mobile-3 .premium-blog-post-outer-container{
-    width: 33.3333333%;
+    width: 33.3333333% !important;
   }
   .premium-blog .post__columns-mobile-4 .premium-blog-post-outer-container{
-    width: 25%;
+    width: 25% !important;
   }
   .premium-blog .post__columns-mobile-5  .premium-blog-post-outer-container{
-    width: 20%;
+    width: 20% !important;
   }
   .premium-blog .post__columns-mobile-6  .premium-blog-post-outer-container{
-    width: 18%;
+    width: 18% !important;
   }
   .premium-blog .post__columns-mobile-7  .premium-blog-post-outer-container{
-    width: 15%;
+    width: 15% !important;
   }
   .premium-blog .post__columns-mobile-8  .premium-blog-post-outer-container{
-    width: 12.5%;
+    width: 12.5% !important;
   }
 }
 
