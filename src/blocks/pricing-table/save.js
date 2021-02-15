@@ -1,6 +1,6 @@
 import classnames from "classnames";
 
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 const save = props => {
     const { className } = props;

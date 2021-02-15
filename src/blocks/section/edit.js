@@ -18,7 +18,7 @@ const {
     InnerBlocks,
     InspectorControls,
     ColorPalette
-} = wp.editor;
+} = wp.blockEditor;
 
 const CONTENT = [
     ["core/paragraph", { content: __("Insert your text or select a block ") }]

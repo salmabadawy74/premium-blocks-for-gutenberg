@@ -19,7 +19,7 @@ const {
     AlignmentToolbar,
     InspectorControls,
     ColorPalette,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     PanelBody,
