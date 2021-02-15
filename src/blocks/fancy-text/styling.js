@@ -33,7 +33,6 @@ function styling(props) {
         textBGColor
     } = props.attributes
 
-    console.log(block_id);
     var selectors = {}
     var tablet_selectors = {}
     var mobile_selectors = {}

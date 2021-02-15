@@ -27,7 +27,7 @@ const {
     ColorPalette,
     RichText,
     MediaUpload
-} = wp.editor;
+} = wp.blockEditor;
 
 const edit = props => {
     const { isSelected, setAttributes, className, clientId: blockID } = props;
