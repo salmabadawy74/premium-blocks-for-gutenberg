@@ -210,7 +210,7 @@ button.premium-media-uplpad-btn {
     flex-direction: row;
 }
 
-.premium-control-group .premium-controls-container .premium-control-Wrapper {
+.premium-control-group .premium-controls-container .premium-control-wrapper {
     display: flex;
     flex-direction: column;
     width: "25%";
@@ -224,11 +224,16 @@ button.premium-media-uplpad-btn {
     justify-content: flex-end;
     align-items: center;
     margin-left: 0;
-    color: #551ef7;
+    color: #000;
     background-color: transparent;
 }
 
-.premium-control-group .premium-controls-container .premium-control-Wrapper input[type="number"] {
+.premium-control-group .premium-controls-container .linked-btn:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.premium-control-group .premium-controls-container .premium-control-wrapper input[type="number"] {
     margin: 0;
     padding: 0;
     text-align: center;
@@ -238,7 +243,7 @@ button.premium-media-uplpad-btn {
     width: 100%;
 }
 
-.premium-control-group .premium-controls-container .premium-control-Wrapper .premium-control-label {
+.premium-control-group .premium-controls-container .premium-control-wrapper .premium-control-label {
     text-align: center;
     font-size: 0.75em;
 }
