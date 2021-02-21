@@ -678,7 +678,7 @@ const edit = props => {
                 flexDirection: flexDir,
                 backgroundColor: containerBack,
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-                backgroundImage: `url('${backgroundImageURL}')`,
+                backgroundImage: backgroundImageURL ? `url('${backgroundImageURL}')` : 'none',
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,

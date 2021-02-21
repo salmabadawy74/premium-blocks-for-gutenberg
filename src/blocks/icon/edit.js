@@ -467,7 +467,7 @@ const edit = props => {
             style={{
                 textAlign: align,
                 backgroundColor: backgroundColor,
-                backgroundImage: `url('${imageURL}')`,
+                backgroundImage: imageURL ? `url('${imageURL}')` : 'none',
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,

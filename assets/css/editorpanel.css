@@ -2,34 +2,40 @@
     margin-bottom: 0;
 }
 /*
-* Dropdown Toggle Control
-*/
+  * Dropdown Toggle Control
+  */
 .premium-control-toggle {
     overflow: hidden;
     padding: 10px 0;
 }
+
 .premium-control-toggle .premium-control-toggle-btn {
     float: right;
 }
+
 .premium-control-toggle-content .components-popover__content {
     padding: 10px;
     border-radius: 3px;
     background-color: #f3f4f5;
 }
+
 .reset-btn {
     margin-right: 3%;
 }
+
 /*
-* Unit Group Button
-*/
+  * Unit Group Button
+  */
 .components-base-control .components-base-control__label {
     margin-right: 100px;
 }
+
 .premium-unit-control {
     margin: 0px 0px -20px 0px;
     text-align: right;
     display: block;
 }
+
 .premium-unit-control button.premium-unit-control-btn {
     text-shadow: none;
     text-decoration: none;
@@ -37,9 +43,11 @@
     border: none;
     outline: none;
 }
+
 .premium-unit-control button.premium-unit-control-btn:focus {
     background: #f3f4f5 !important;
 }
+
 .premium-unit-control button.premium-unit-control-active-btn {
     color: #0084bc !important;
     font-weight: bold;
@@ -47,9 +55,10 @@
 button.premium-media-uplpad-btn {
     margin: 5px auto;
 }
+
 /*
-* Responsive Controls
-*/
+  * Responsive Controls
+  */
 .premium-size-type-field-tabs .components-range-control .components-base-control__field {
     display: block;
     flex-wrap: unset;
@@ -71,9 +80,9 @@ button.premium-media-uplpad-btn {
 }
 
 /* .premium-size-type-field-tabs {
-    margin-bottom: 20px;
-    margin-top: 20px;
-} */
+      margin-bottom: 20px;
+      margin-top: 20px;
+  } */
 
 .premium-size-type-field-tabs .components-tab-panel__tabs {
     position: absolute;
@@ -172,9 +181,71 @@ button.premium-media-uplpad-btn {
     display: block;
     margin-bottom: -18px;
 }
+
 /*
-* Repeater Controls
-*/
+  * Margin-Padding-Controls
+  */
+
+.premium-control-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.premium-control-group .premium-control-label-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.3rem;
+}
+
+.premium-control-group .premium-control-label-container .premium-control-label {
+    height: 20px;
+    margin-bottom: 0 !important;
+    color: "#5f5f5f";
+}
+
+.premium-control-group .premium-controls-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.premium-control-group .premium-controls-container .premium-control-Wrapper {
+    display: flex;
+    flex-direction: column;
+    width: "25%";
+}
+
+.premium-control-group .premium-controls-container .linked-btn {
+    height: 30px !important;
+    width: 20px !important;
+    padding: 0 !important;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 0;
+    color: #551ef7;
+    background-color: transparent;
+}
+
+.premium-control-group .premium-controls-container .premium-control-Wrapper input[type="number"] {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    border-color: #8d96a0;
+    border-style: solid;
+    border-radius: 0;
+    width: 100%;
+}
+
+.premium-control-group .premium-controls-container .premium-control-Wrapper .premium-control-label {
+    text-align: center;
+    font-size: 0.75em;
+}
+
+/*
+  * Repeater Controls
+  */
 .premium-repeater-btn__wrap {
     text-align: center;
     padding-top: 10px;
@@ -201,13 +272,16 @@ button.premium-media-uplpad-btn {
     -o-transition-duration: 0.3s;
     transition-duration: 0.3s;
 }
+
 .premium-repeater__icon {
     margin-right: 10px;
     vertical-align: middle;
 }
+
 .premium-notice {
     margin-top: -15px !important;
 }
+
 .premium-repeater-item-controls {
     border-color: #64666a;
     border: 1px solid #d5dadf;
@@ -215,9 +289,11 @@ button.premium-media-uplpad-btn {
     padding: 0.5em;
     margin-bottom: 1em;
 }
+
 .premium-repeater-item-controls:not(.editable) {
     display: none;
 }
+
 .premium-repeater-item__container {
     display: flex;
     justify-content: space-between;
@@ -225,6 +301,7 @@ button.premium-media-uplpad-btn {
     border: 1px solid;
     line-height: 2.5em;
 }
+
 .premium-repeater-item__dragHandle {
     font: normal normal normal 14px/1 FontAwesome;
     font-size: inherit;
@@ -239,9 +316,11 @@ button.premium-media-uplpad-btn {
     display: flex !important;
     justify-content: center;
 }
+
 .premium-repeater-item__dragHandle::before {
     content: "\f142";
 }
+
 .premium-repeater-item__content {
     font-size: 14px;
     padding-right: 10px;
@@ -251,6 +330,7 @@ button.premium-media-uplpad-btn {
     flex: 12;
     line-height: 2.5em;
 }
+
 .premium-repeater-item__trashicon {
     font-size: 14px;
     border-left: 1px solid gray;
@@ -258,13 +338,14 @@ button.premium-media-uplpad-btn {
     flex: 2 1 0%;
     text-align: center;
 }
+
 .premium-repeater-item__trashicon:hover {
     cursor: pointer;
 }
 
 /*
-* FontIconPicker CSS
-*/
+  * FontIconPicker CSS
+  */
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done,
 .components-panel .rfipdropdown {
     left: 0 !important;
