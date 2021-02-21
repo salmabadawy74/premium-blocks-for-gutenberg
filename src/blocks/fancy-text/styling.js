@@ -117,8 +117,6 @@ function styling(props) {
         id = `.premium-block-${block_id}`
     }
 
-    console.log(block_id);
-
     styling_css = generateCSS(selectors, id)
     styling_css += generateCSS(tablet_selectors, id, true, "tablet")
 
