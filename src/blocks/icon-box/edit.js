@@ -999,7 +999,7 @@ const edit = props => {
                 paddingLeft: paddingL + paddingU,
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                 backgroundColor: backColor,
-                backgroundImage: `url('${imageURL}')`,
+                backgroundImage: imageURL ? `url('${imageURL}')` : 'none',
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,

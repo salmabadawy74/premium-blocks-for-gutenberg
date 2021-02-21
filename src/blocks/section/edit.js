@@ -362,7 +362,7 @@ const edit = props => {
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
-                backgroundImage: `url('${imageURL}')`,
+                backgroundImage: imageURL ? `url('${imageURL}')` : 'none',
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
