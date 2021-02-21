@@ -1,7 +1,7 @@
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { SelectControl, IconButton, ToggleControl } = wp.components;
-const { MediaUpload } = wp.editor;
+const { MediaUpload } = wp.blockEditor;
 
 export default function PremiumBackground(props) {
     const {
@@ -11,12 +11,12 @@ export default function PremiumBackground(props) {
         backgroundRepeat,
         backgroundSize,
         fixed,
-        onSelectMedia = () => {},
-        onRemoveImage = () => {},
-        onChangeBackPos = () => {},
-        onchangeBackRepeat = () => {},
-        onChangeBackSize = () => {},
-        onChangeFixed = () => {}
+        onSelectMedia = () => { },
+        onRemoveImage = () => { },
+        onChangeBackPos = () => { },
+        onchangeBackRepeat = () => { },
+        onChangeBackSize = () => { },
+        onChangeFixed = () => { }
     } = props;
 
     const POSITION = [

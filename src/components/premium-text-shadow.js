@@ -8,10 +8,11 @@ export default function PremiumTextShadow(props) {
         blur,
         horizontal,
         vertical,
-        onChangeColor = () => {},
-        onChangeBlur = () => {},
-        onChangehHorizontal = () => {},
-        onChangeVertical = () => {}
+        onChangeColor = () => { },
+        onChangeBlur = () => { },
+        onChangehHorizontal = () => { },
+        onChangeVertical = () => { },
+        onResetClick = () => { }
     } = props;
 
     return (
@@ -34,26 +35,36 @@ export default function PremiumTextShadow(props) {
                                 color={color}
                                 onChangeComplete={onChangeColor}
                                 disableAlpha
+                                onResetClick={onResetClick}
                             />
                         </Fragment>
                         <RangeControl
                             label={__("Blur")}
                             value={blur}
                             onChange={onChangeBlur}
+                            onResetClick={onResetClick}
                         />
                         <RangeControl
                             label={__("Horizontal")}
                             value={horizontal}
                             onChange={onChangehHorizontal}
+                            onResetClick={onResetClick}
                         />
                         <RangeControl
                             label={__("Vertical")}
                             value={vertical}
                             onChange={onChangeVertical}
+                            onResetClick={onResetClick}
                         />
                     </Fragment>
                 )}
             />
+            {/* <Button
+                className="premium-control-toggle-btn reset-btn"
+                contentClassName="premium-control-toggle-content"
+                isSmall
+                onClick={onResetClick}
+            ><i className="premium-control-reset dashicons dashicons-image-rotate" /></Button> */}
         </div>
     );
 }
