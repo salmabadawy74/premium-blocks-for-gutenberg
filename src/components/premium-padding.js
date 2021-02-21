@@ -69,7 +69,7 @@ class PremiumPadding extends Component {
                     </div>
                 </div>
                 <div className={`premium-controls-container`}>
-                    <div className={`premium-control-Wrapper`}>
+                    <div className={`premium-control-wrapper`}>
                         <input
                             type="number"
                             name="top"
@@ -78,7 +78,7 @@ class PremiumPadding extends Component {
                         />
                         <label className={`premium-control-label`}>Top</label>
                     </div>
-                    <div className={`premium-control-Wrapper`}>
+                    <div className={`premium-control-wrapper`}>
                         <input
                             type="number"
                             name="right"
@@ -87,7 +87,7 @@ class PremiumPadding extends Component {
                         />
                         <label className={`premium-control-label`}>Right</label>
                     </div>
-                    <div className={`premium-control-Wrapper`}>
+                    <div className={`premium-control-wrapper`}>
                         <input
                             type="number"
                             name="bottom"
@@ -96,7 +96,7 @@ class PremiumPadding extends Component {
                         />
                         <label className={`premium-control-label`}>Bottom</label>
                     </div>
-                    <div className={`premium-control-Wrapper`}>
+                    <div className={`premium-control-wrapper`}>
                         <input
                             type="number"
                             name="left"

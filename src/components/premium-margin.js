@@ -88,7 +88,7 @@ class PremiumMargin extends Component {
                 </div>
                 <div className={`premium-controls-container`}>
                     {(directions.includes("all") || directions.includes("top")) && (
-                        <div className={`premium-control-Wrapper`}>
+                        <div className={`premium-control-wrapper`}>
                             <input
                                 type="number"
                                 name="top"
@@ -99,7 +99,7 @@ class PremiumMargin extends Component {
                         </div>
                     )}
                     {(directions.includes("all") || directions.includes("right")) && (
-                        <div className={`premium-control-Wrapper`}>
+                        <div className={`premium-control-wrapper`}>
                             <input
                                 type="number"
                                 name="right"
@@ -110,7 +110,7 @@ class PremiumMargin extends Component {
                         </div>
                     )}
                     {(directions.includes("all") || directions.includes("bottom")) && (
-                        <div className={`premium-control-Wrapper`}>
+                        <div className={`premium-control-wrapper`}>
                             <input
                                 type="number"
                                 name="bottom"
@@ -121,7 +121,7 @@ class PremiumMargin extends Component {
                         </div>
                     )}
                     {(directions.includes("all") || directions.includes("left")) && (
-                        <div className={`premium-control-Wrapper`}>
+                        <div className={`premium-control-wrapper`}>
                             <input
                                 type="number"
                                 name="left"
