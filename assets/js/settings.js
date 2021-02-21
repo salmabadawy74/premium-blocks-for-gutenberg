@@ -3,18 +3,19 @@ wp.blocks.updateCategory("premium-blocks", { icon: premiumLogo });*/
 
 //Blocks Keys
 export const {
-  banner,
-  dualHeading,
-  pricingTable,
-  maps,
-  testimonial,
-  countUp,
-  icon,
-  button,
-  container,
-  accordion,
-  iconBox,
-  videoBox
+    banner,
+    dualHeading,
+    pricingTable,
+    maps,
+    testimonial,
+    countUp,
+    icon,
+    button,
+    container,
+    accordion,
+    iconBox,
+    videoBox,
+    fancyText
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys

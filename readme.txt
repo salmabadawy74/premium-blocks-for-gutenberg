@@ -3,9 +3,9 @@ Contributors: leap13
 Tags: gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks
 Donate link: http://leap13.com
 Requires at least: 4.5
-Tested up to: 5.6
+Tested up to: 5.6.1
 Requires PHP: 5.4
-Stable tag: 1.8.2
+Stable tag: 1.8.4
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -59,8 +59,19 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 == Changelog ==
 
+= 1.8.4 =
+
+- Tweak: Margin/Padding controls improved.
+- Fixed: console error on show blocks preview window.
+
+= 1.8.3 =
+
+- Fixed: Fancy Text block not working on frontend.
+- Fixed: Editor warning due to deprecated Gutenberg components.
+
 = 1.8.2 =
 
+- New: Added Fancy Text block.
 - Tweak: Container Box Shadow CSS selector changed in Banner block.
 
 = 1.8.1 =
