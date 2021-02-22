@@ -5,7 +5,7 @@ const {
   RangeControl,
   Dropdown,
   Button,
-  ColorPicker
+  ColorPicker,
 } = wp.components;
 
 export default function PremiumBorder(props) {
@@ -17,83 +17,121 @@ export default function PremiumBorder(props) {
     onChangeType = () => {},
     onChangeWidth = () => {},
     onChangeColor = () => {},
-    onChangeRadius = () => {}
+    onChangeRadius = () => {},
   } = props;
   const BORDER = [
     {
       value: "none",
-      label: "None"
+      label: "None",
     },
     {
       value: "solid",
-      label: "Solid"
+      label: "Solid",
     },
     {
       value: "double",
-      label: "Double"
+      label: "Double",
     },
     {
       value: "dotted",
-      label: "Dotted"
+      label: "Dotted",
     },
     {
       value: "dashed",
-      label: "Dashed"
+      label: "Dashed",
     },
     {
       value: "groove",
-      label: "Groove"
-    }
+      label: "Groove",
+    },
   ];
   return (
     <div className="premium-control-toggle">
       <strong>{__("Border")}</strong>
-      <Dropdown
-        className="premium-control-toggle-btn"
-        contentClassName="premium-control-toggle-content"
-        position="bottom right"
-        renderToggle={({ isOpen, onToggle }) => (
-          <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-            <i className="dashicons dashicons-edit" />
-          </Button>
-        )}
-        renderContent={() => (
-          <Fragment>
-            <SelectControl
-              label={__("Border Type")}
-              options={BORDER}
-              value={borderType}
-              onChange={onChangeType}
-            />
-            {"none" != borderType && (
-              <RangeControl
-                label={__("Border Width")}
-                value={borderWidth}
-                min="0"
-                max="50"
-                onChange={onChangeWidth}
-              />
-            )}
-            {"none" != borderType && (
-              <Fragment>
-                <p>{__("Border Color")}</p>
-                <ColorPicker
-                  color={borderColor}
-                  onChangeComplete={onChangeColor}
-                  disableAlpha
+
+      <Fragment>
+        <SelectControl
+          label={__("Border Type")}
+          options={BORDER}
+          value={borderType}
+          onChange={onChangeType}
+        />
+        {"none" != borderType && (
+          <div className={`premium-control-group`}>
+            <div className="premium-control-label-container">
+              <div className={`premium-control-label`}>
+                <strong>{__("Border Width ")}</strong>
+              </div>
+            </div>
+            <div className={`premium-controls-container`}>
+              <div className={`premium-control-wrapper`}>
+                <input
+                  type="number"
+                  name="top"
+                  value={borderWidth}
+                  onChange={onChangeWidth}
                 />
-              </Fragment>
-            )}
-            <RangeControl
-              label={__("Border Radius")}
-              value={borderRadius}
-              min="0"
-              max="150"
-              onChange={onChangeRadius}
+                <label className={`premium-control-label`}>Top</label>
+              </div>
+
+              <div className={`premium-control-wrapper`}>
+                <input
+                  type="number"
+                  name="right"
+                  value={borderWidth}
+                  onChange={onChangeWidth}
+                />
+                <label className={`premium-control-label`}>Right</label>
+              </div>
+
+              <div className={`premium-control-wrapper`}>
+                <input
+                  type="number"
+                  name="bottom"
+                  value={borderWidth}
+                  onChange={onChangeWidth}
+                />
+                <label className={`premium-control-label`}>Bottom</label>
+              </div>
+
+              <div className={`premium-control-wrapper`}>
+                <input
+                  type="number"
+                  name="left"
+                  value={borderWidth}
+                  onChange={onChangeWidth}
+                />
+                <label className={`premium-control-label`}>Left</label>
+              </div>
+
+              <div>
+                <button
+                  className={`linked-btn 
+                                  }`}
+                  onClick={onChangeWidth}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+        {"none" != borderType && (
+          <Fragment>
+            <p>{__("Border Color")}</p>
+            <ColorPicker
+              color={borderColor}
+              onChangeComplete={onChangeColor}
+              disableAlpha
             />
           </Fragment>
         )}
-      />
+        <RangeControl
+          label={__("Border Radius")}
+          value={borderRadius}
+          min="0"
+          max="150"
+          onChange={onChangeRadius}
+        />
+      </Fragment>
     </div>
   );
 }
