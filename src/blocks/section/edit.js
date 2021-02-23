@@ -45,6 +45,10 @@ const edit = props => {
         backgroundSize,
         borderType,
         borderWidth,
+        borderTop,
+        borderRight,
+        borderBottom,
+        borderLeft,
         borderColor,
         borderRadius,
         marginTop,
@@ -232,14 +236,23 @@ const edit = props => {
                 </PanelBody>
                 <PremiumBorder
                     borderType={borderType}
-                    borderWidth={borderWidth}
+                    borderWidth={ borderWidth }
+                    top={ borderTop }
+                        right={ borderRight }
+                        bottom={ borderBottom }
+                        left={borderLeft}
                     borderColor={borderColor}
                     borderRadius={borderRadius}
                     onChangeType={newType =>
                         setAttributes({ borderType: newType })
                     }
-                    onChangeWidth={newWidth =>
-                        setAttributes({ borderWidth: newWidth })
+                    onChangeWidth={({ top, right, bottom, left }) =>
+                    setAttributes({
+                        borderTop: top,
+                        borderRight: right,
+                        borderBottom: bottom,
+                        borderLeft: left
+                    })
                     }
                     onChangeColor={colorValue =>
                         setAttributes({ borderColor: colorValue.hex })
@@ -359,7 +372,7 @@ const edit = props => {
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 backgroundColor: color,
                 border: borderType,
-                borderWidth: borderWidth + "px",
+                borderWidth: borderTop? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
                 backgroundImage: imageURL ? `url('${imageURL}')` : 'none',

@@ -59,6 +59,10 @@ const save = props => {
     borderColor,
     borderRadius,
     borderWidth,
+    borderTop,
+        borderRight,
+        borderBottom,
+        borderLeft,
     titleFamily,
     counterFamily,
     prefixFamily,
@@ -82,7 +86,7 @@ const save = props => {
         backgroundSize: backgroundSize,
         backgroundAttachment: fixed ? "fixed" : "unset",
         border: borderType,
-        borderWidth: borderWidth + "px",
+        borderWidth: borderTop? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
         borderRadius: borderRadius + "px",
         borderColor: borderColor
       }}

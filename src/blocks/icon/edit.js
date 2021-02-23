@@ -29,6 +29,7 @@ const { Fragment } = wp.element;
 const edit = props => {
     const { isSelected, setAttributes, className } = props;
     const {
+        isUpdated,
         iconType,
         selectedIcon,
         align,
@@ -52,6 +53,10 @@ const edit = props => {
         marginL,
         borderType,
         borderWidth,
+        iconBorderTop,
+        iconBorderRight,
+        iconBorderBottom,
+        iconBorderLeft,
         borderRadius,
         borderColor,
         backgroundColor,
@@ -63,6 +68,10 @@ const edit = props => {
         backgroundSize,
         wrapBorderType,
         wrapBorderWidth,
+        wrapBorderTop,
+        wrapBorderRight,
+        wrapBorderBottom,
+        wrapBorderLeft,
         wrapBorderRadius,
         wrapBorderColor,
         wrapShadowBlur,
@@ -83,6 +92,8 @@ const edit = props => {
         target
     } = props.attributes;
 
+    console.log( `${ isUpdated } from edit` );
+    
     const EFFECTS = [
         {
             value: "none",
@@ -218,11 +229,22 @@ const edit = props => {
                     </div>
                     <PremiumBorder
                         borderType={borderType}
-                        borderWidth={borderWidth}
-                        borderColor={borderColor}
+                        borderWidth={ borderWidth }
+                        borderColor={ borderColor }
+                        top={ iconBorderTop }
+                        right={ iconBorderRight }
+                        bottom={ iconBorderBottom }
+                        left={iconBorderLeft}
                         borderRadius={borderRadius}
                         onChangeType={newType => setAttributes({ borderType: newType })}
-                        onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                        setAttributes({
+                            iconBorderTop: top,
+                            iconBorderRight: right,
+                            iconBorderBottom: bottom,
+                            iconBorderLeft: left,
+                            isUpdated: true
+                        })}
                         onChangeColor={colorValue =>
                             setAttributes({ borderColor: colorValue.hex })
                         }
@@ -356,13 +378,21 @@ const edit = props => {
 
                     <PremiumBorder
                         borderType={wrapBorderType}
-                        borderWidth={wrapBorderWidth}
+                        borderWidth={ wrapBorderWidth }
+                        top={ wrapBorderTop }
+                        right={ wrapBorderRight }
+                        bottom={ wrapBorderBottom }
+                        left={wrapBorderLeft}
                         borderColor={wrapBorderColor}
                         borderRadius={wrapBorderRadius}
                         onChangeType={newType => setAttributes({ wrapBorderType: newType })}
-                        onChangeWidth={newWidth =>
-                            setAttributes({ wrapBorderWidth: newWidth })
-                        }
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                        setAttributes({
+                            wrapBorderTop: top,
+                            wrapBorderRight: right,
+                            wrapBorderBottom: bottom,
+                            wrapBorderLeft: left,
+                        })}
                         onChangeColor={colorValue =>
                             setAttributes({ wrapBorderColor: colorValue.hex })
                         }
@@ -473,7 +503,7 @@ const edit = props => {
                 backgroundSize: backgroundSize,
                 backgroundAttachment: fixed ? "fixed" : "unset",
                 border: wrapBorderType,
-                borderWidth: wrapBorderWidth + "px",
+                borderWidth: wrapBorderTop?`${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`: wrapBorderWidth + "px",
                 borderRadius: wrapBorderRadius + "px",
                 borderColor: wrapBorderColor,
                 boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
@@ -510,7 +540,7 @@ const edit = props => {
                         marginBottom: marginB,
                         marginLeft: marginL,
                         border: borderType,
-                        borderWidth: borderWidth + "px",
+                        borderWidth: iconBorderTop||iconBorderRight||iconBorderBottom||iconBorderLeft ?`${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`:borderWidth + "px",
                         borderRadius: borderRadius || 100 + "px",
                         borderColor: borderColor,
                         textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||

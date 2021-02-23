@@ -43,6 +43,10 @@ const edit = props => {
         firstWeight,
         firstBorderType,
         firstBorderWidth,
+        firstBorderTop,
+        firstBorderRight,
+        firstBorderBottom,
+        firstBorderLeft,
         firstBorderRadius,
         firstBorderColor,
         firstPadding,
@@ -66,6 +70,10 @@ const edit = props => {
         secondStyle,
         secondBorderType,
         secondBorderWidth,
+        secondBorderTop,
+        secondBorderRight,
+        secondBorderBottom,
+        secondBorderLeft,
         secondBorderRadius,
         secondBorderColor,
         secondPadding,
@@ -91,6 +99,10 @@ const edit = props => {
         backgroundSize,
         containerBorderType,
         containerBorderWidth,
+        containerBorderTop,
+        containerBorderRight,
+        containerBorderBottom,
+        containerBorderLeft,
         containerBorderRadius,
         containerBorderColor
     } = props.attributes;
@@ -321,7 +333,11 @@ const edit = props => {
 
                     <PremiumBorder
                         borderType={firstBorderType}
-                        borderWidth={firstBorderWidth}
+                        borderWidth={ firstBorderWidth }
+                        top={ firstBorderTop }
+                        right={ firstBorderRight }
+                        bottom={ firstBorderBottom }
+                        left={firstBorderLeft}
                         borderColor={firstBorderColor}
                         borderRadius={firstBorderRadius}
                         onChangeType={newType =>
@@ -518,7 +534,11 @@ const edit = props => {
 
                     <PremiumBorder
                         borderType={secondBorderType}
-                        borderWidth={secondBorderWidth}
+                        borderWidth={ secondBorderWidth }
+                        top={ secondBorderTop }
+                        right={ secondBorderRight }
+                        bottom={ secondBorderBottom }
+                        left={secondBorderLeft}
                         borderColor={secondBorderColor}
                         borderRadius={secondBorderRadius}
                         onChangeType={newType =>
@@ -631,7 +651,11 @@ const edit = props => {
 
                     <PremiumBorder
                         borderType={containerBorderType}
-                        borderWidth={containerBorderWidth}
+                        borderWidth={ containerBorderWidth }
+                        top={containerBorderTop }
+                        right={containerBorderRight }
+                        bottom={containerBorderBottom }
+                        left={containerBorderLeft}
                         borderColor={containerBorderColor}
                         borderRadius={containerBorderRadius}
                         onChangeType={newType =>
@@ -664,7 +688,7 @@ const edit = props => {
                 backgroundSize: backgroundSize,
                 backgroundAttachment: fixed ? "fixed" : "unset",
                 border: containerBorderType,
-                borderWidth: containerBorderWidth + "px",
+                borderWidth:containerBorderTop?`${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`: containerBorderWidth + "px",
                 borderRadius: containerBorderRadius + "px",
                 borderColor: containerBorderColor
             }}
@@ -687,7 +711,7 @@ const edit = props => {
                             fontStyle: firstStyle,
                             fontWeight: firstWeight,
                             border: firstBorderType,
-                            borderWidth: firstBorderWidth + "px",
+                            borderWidth: firstBorderTop?`${firstBorderTop}px ${firstBorderRight}px ${firstBorderBottom}px ${firstBorderLeft}px`:firstBorderWidth + "px",
                             borderRadius: firstBorderRadius + "px",
                             borderColor: firstBorderColor,
                             padding: firstPadding + "px",
@@ -714,7 +738,7 @@ const edit = props => {
                             fontStyle: secondStyle,
                             fontWeight: secondWeight,
                             border: secondBorderType,
-                            borderWidth: secondBorderWidth + "px",
+                            borderWidth:secondBorderTop?`${secondBorderTop}px ${secondBorderRight}px ${secondBorderBottom}px ${secondBorderLeft}px`: secondBorderWidth + "px",
                             borderRadius: secondBorderRadius + "px",
                             borderColor: secondBorderColor,
                             padding: secondPadding + "px",

@@ -9,6 +9,10 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const iconAttrs = {
+    isUpdated: {
+        type: "boolean",
+        default: false
+    },
     iconType: {
         type: "string",
         default: "dash"
@@ -98,6 +102,22 @@ const iconAttrs = {
         type: "number",
         default: "1"
     },
+    iconBorderTop: {
+        type: "number",
+        default:false
+    },
+    iconBorderRight: {
+        type: "number",
+        default:false
+    },
+    iconBorderBottom: {
+        type: "number",
+        default:false
+    },
+    iconBorderLeft: {
+        type: "number",
+      default:false  
+    },
     borderRadius: {
         type: "number",
         default: 100
@@ -140,6 +160,22 @@ const iconAttrs = {
     wrapBorderWidth: {
         type: "number",
         default: "1"
+    },
+    wrapBorderTop: {
+        type: "number",
+      default:false  
+    },
+    wrapBorderRight: {
+        type: "number",
+      default:false  
+    },
+    wrapBorderBottom: {
+        type: "number",
+      default:false  
+    },
+    wrapBorderLeft: {
+        type: "number",
+      default:false  
     },
     wrapBorderRadius: {
         type: "number"

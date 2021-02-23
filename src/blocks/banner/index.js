@@ -81,6 +81,18 @@ const bannerAttrs = {
         type: "number",
         default: "1"
     },
+    borderTop: {
+        type:"number"
+    },
+    borderRight: {
+    type:"number"
+},
+    borderBottom: {
+    type:"number"
+},
+    borderLeft: {
+    type:"number"
+},
     borderRadius: {
         type: "number",
         default: "0"

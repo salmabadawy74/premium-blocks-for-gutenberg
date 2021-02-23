@@ -80,6 +80,10 @@ const edit = props => {
         borderColor,
         borderRadius,
         borderWidth,
+        borderTop,
+        borderRight,
+        borderBottom,
+        borderLeft,
         titleFamily,
         counterFamily,
         prefixFamily,
@@ -616,11 +620,21 @@ const edit = props => {
                     />
                     <PremiumBorder
                         borderType={borderType}
-                        borderWidth={borderWidth}
+                        borderWidth={ borderWidth }
+                        top={ borderTop }
+                        right={ borderRight }
+                        bottom={ borderBottom }
+                        left={borderLeft}
                         borderColor={borderColor}
                         borderRadius={borderRadius}
                         onChangeType={newType => setAttributes({ borderType: newType })}
-                        onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                        setAttributes({
+                            borderTop: top,
+                            borderRight: right,
+                            borderBottom: bottom,
+                            borderLeft: left
+                        })}
                         onChangeColor={colorValue =>
                             setAttributes({ borderColor: colorValue.hex })
                         }
@@ -684,7 +698,7 @@ const edit = props => {
                 backgroundSize: backgroundSize,
                 backgroundAttachment: fixed ? "fixed" : "unset",
                 border: borderType,
-                borderWidth: borderWidth + "px",
+                borderWidth: borderTop? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor
             }}

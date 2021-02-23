@@ -100,6 +100,10 @@ const edit = props => {
         btnHoverBorder,
         btnBorderColor,
         btnBorderWidth,
+        btnBorderTop ,
+btnBorderRight,
+btnBorderBottom,
+btnBorderLeft,
         btnBorderRadius,
         btnBorderType,
         btnPadding,
@@ -120,6 +124,10 @@ const edit = props => {
         backgroundSize,
         borderType,
         borderWidth,
+        borderTop,
+borderRight,
+borderBottom,
+borderLeft,
         borderRadius,
         borderColor,
         marginT,
@@ -715,14 +723,23 @@ const edit = props => {
 
                         <PremiumBorder
                             borderType={btnBorderType}
-                            borderWidth={btnBorderWidth}
+                            borderWidth={ btnBorderWidth }
+                            top={ btnBorderTop }
+                            right={ btnBorderRight }
+                            bottom={ btnBorderBottom }
+                            left={btnBorderLeft}
                             borderColor={btnBorderColor}
                             borderRadius={btnBorderRadius}
                             onChangeType={newType =>
                                 setAttributes({ btnBorderType: newType })
                             }
-                            onChangeWidth={newWidth =>
-                                setAttributes({ btnBorderWidth: newWidth })
+                            onChangeWidth={({ top, right, bottom, left }) =>
+                            setAttributes({
+                                btnBorderTop: top,
+                                btnBorderRight: right,
+                                btnBorderBottom: bottom,
+                                btnBorderLeft: left
+                            })
                             }
                             onChangeColor={colorValue =>
                                 setAttributes({ btnBorderColor: colorValue.hex })
@@ -840,11 +857,21 @@ const edit = props => {
                     />
                     <PremiumBorder
                         borderType={borderType}
-                        borderWidth={borderWidth}
+                        borderWidth={ borderWidth }
+                        top={ borderTop }
+                        right={ borderRight }
+                        bottom={ borderBottom }
+                        left={borderLeft}
                         borderColor={borderColor}
                         borderRadius={borderRadius}
                         onChangeType={newType => setAttributes({ borderType: newType })}
-                        onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                        setAttributes({
+                            borderTop: top,
+                            borderRight: right,
+                            borderBottom: bottom,
+                            borderLeft: left
+                        })}
                         onChangeColor={colorValue =>
                             setAttributes({ borderColor: colorValue.hex })
                         }
@@ -985,8 +1012,8 @@ const edit = props => {
             className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
             style={{
                 textAlign: align,
-                border: borderType,
-                borderWidth: borderWidth + "px",
+                borderStyle: borderType,
+                borderWidth: borderTop?`${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
                 marginTop: marginT,
@@ -1143,7 +1170,7 @@ const edit = props => {
                                 fontStyle: btnStyle,
                                 fontWeight: btnWeight,
                                 border: btnBorderType,
-                                borderWidth: btnBorderWidth + "px",
+                                borderWidth: btnBorderTop?`${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`:btnBorderWidth + "px",
                                 borderRadius: btnBorderRadius + "px",
                                 borderColor: btnBorderColor,
                                 padding: btnPadding + btnPaddingU,

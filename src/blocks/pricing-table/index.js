@@ -457,7 +457,32 @@ const pricingAttrs = {
     },
     id: {
         type: "string"
-    }
+    },
+    btnBorderTop: {
+        type:"number"
+    },
+    btnBorderRight: {
+        type:"number"
+    },
+    btnBorderBottom: {
+        type:"number"
+    },
+    btnBorderLeft: {
+        type:"number"
+    },
+            borderTop: {
+                type:"number"
+            },
+    borderRight: {
+        type:"number"
+    },
+    borderBottom: {
+        type:"number"
+    },
+    borderLeft: {
+        type:"number"
+    },
+
 };
 
 registerBlockType("premium/pricing-table", {

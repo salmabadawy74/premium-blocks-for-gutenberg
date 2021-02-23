@@ -50,6 +50,10 @@ const edit = props => {
         opacity,
         borderType,
         borderWidth,
+        borderTop,
+borderRight,
+borderBottom,
+borderLeft,
         borderRadius,
         borderColor,
         titleColor,
@@ -489,14 +493,21 @@ const edit = props => {
                 >
                     <PremiumBorder
                         borderType={borderType}
-                        borderWidth={borderWidth}
+                        borderWidth={ borderWidth }
+                        top={ borderTop }
+                        right={ borderRight }
+                        bottom={ borderBottom }
+                        left={borderLeft}
                         borderColor={borderColor}
                         borderRadius={borderRadius}
                         onChangeType={newType => setAttributes({ borderType: newType })}
-                        onChangeWidth={newWidth =>
-                            setAttributes({
-                                borderWidth: newWidth === undefined ? 0 : newWidth
-                            })
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                        setAttributes({
+                            borderTop: top,
+                            borderRight: right,
+                            borderBottom: bottom,
+                            borderLeft: left
+                        })
                         }
                         onChangeColor={colorValue =>
                             setAttributes({
@@ -608,7 +619,7 @@ const edit = props => {
                     style={{
                         boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
                         border: borderType,
-                        borderWidth: borderWidth + "px",
+                        borderWidth: borderTop? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
                         borderRadius: borderRadius + "px",
                         borderColor: borderColor
                     }}

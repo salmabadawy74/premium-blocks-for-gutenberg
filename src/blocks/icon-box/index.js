@@ -225,6 +225,30 @@ const iconBoxAttrs = {
         type: "number",
         default: "1"
     },
+    btnBorderTop: {
+        type:"number"
+    } ,
+    btnBorderRight: {
+        type:"number"
+    },
+    btnBorderBottom: {
+        type:"number"
+    },
+    btnBorderLeft: {
+        type:"number"
+    },
+    borderTop: {
+        type:"number"
+            },
+    borderRight: {
+        type:"number"
+    },
+    borderBottom: {
+        type:"number"
+    },
+    borderLeft: {
+        type:"number"
+    },
     btnBorderRadius: {
         type: "number"
     },

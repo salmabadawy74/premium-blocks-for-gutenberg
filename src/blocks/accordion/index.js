@@ -61,6 +61,22 @@ const accordionAttrs = {
         type: "number",
         default: "1"
     },
+    titleBorderTop: {
+        type: "number",
+   
+    },
+    titleBorderRight: {
+        type: "number",
+ 
+    },
+    titleBorderBottom: {
+        type: "number",
+     
+    },
+    titleBorderLeft: {
+        type: "number",
+ 
+    },
     titleBorderRadius: {
         type: "number",
         default: "0"
@@ -139,6 +155,27 @@ const accordionAttrs = {
     descBorderWidth: {
         type: "number",
         default: "1"
+    },
+    descBorderTop: {
+        type: "number",
+      
+    },
+    descBorderRight: {
+        type: "number",
+ 
+    },
+    descBorderBottom: {
+        type: "number",
+    },
+    descBorderLeft: {
+        type: "number",
+    
+    },
+    descEditBorder: {
+        type: "boolean",
+    },
+    titleEditBorder: {
+        type: "boolean",
     },
     descBorderRadius: {
         type: "number",

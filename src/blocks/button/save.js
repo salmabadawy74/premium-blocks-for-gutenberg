@@ -29,6 +29,10 @@ const save = props => {
         textUpper,
         borderType,
         borderWidth,
+        borderTop,
+        borderRight,
+        borderBottom,
+        borderLeft,
         borderRadius,
         borderColor,
         borderHoverColor,
@@ -92,7 +96,7 @@ const save = props => {
                     boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
                     padding: padding + paddingU,
                     border: borderType,
-                    borderWidth: borderWidth + "px",
+                    borderWidth: borderTop? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
                     borderRadius: borderRadius + "px",
                     borderColor: borderColor
                 }}
