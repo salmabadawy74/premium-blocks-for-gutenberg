@@ -86,8 +86,6 @@ export default class PremiumBorder extends Component{
       ];
       return (
         <div className="premium-control-toggle">
-          <strong>{ __( "Border" ) }</strong>
-
           <Fragment>
             <SelectControl
               label={ __( "Border Type" ) }
