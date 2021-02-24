@@ -9,9 +9,13 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const iconAttrs = {
-    isUpdated: {
+    iconBorder: {
         type: "boolean",
         default: false
+    },
+    wrapBorder: {
+        type: 'boolean',
+        default:false
     },
     iconType: {
         type: "string",

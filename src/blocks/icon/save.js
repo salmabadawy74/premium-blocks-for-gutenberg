@@ -5,6 +5,8 @@ const save = props => {
   const { className } = props;
     
   const {
+    wrapBorder,
+    iconBorder,
     selectedIcon,
     align,
     hoverEffect,
@@ -79,7 +81,7 @@ const save = props => {
         backgroundSize: backgroundSize,
         backgroundAttachment: fixed ? "fixed" : "unset",
         borderStyle: wrapBorderType,
-        borderWidth:`${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`,
+        borderWidth: wrapBorder?`${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`:wrapBorderWidth+'px',
         borderRadius: wrapBorderRadius + "px",
         borderColor: wrapBorderColor,
         boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
@@ -116,7 +118,7 @@ const save = props => {
             marginBottom: marginB,
             marginLeft: marginL,
             borderStyle: borderType,
-            borderWidth:` ${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`,
+            borderWidth:iconBorder?`${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`:borderWidth+"px",
             borderRadius: borderRadius || 100 + "px",
             borderColor: borderColor,
             textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
