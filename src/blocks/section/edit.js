@@ -28,6 +28,7 @@ const edit = props => {
     const { isSelected, className, setAttributes } = props;
 
     const {
+        isUpdated,
         stretchSection,
         horAlign,
         innerWidthType,
@@ -251,7 +252,8 @@ const edit = props => {
                         borderTop: top,
                         borderRight: right,
                         borderBottom: bottom,
-                        borderLeft: left
+                        borderLeft: left,
+                        isUpdated:true
                     })
                     }
                     onChangeColor={colorValue =>
@@ -372,7 +374,7 @@ const edit = props => {
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 backgroundColor: color,
                 border: borderType,
-                borderWidth: borderTop? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
+                borderWidth: isUpdated? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
                 backgroundImage: imageURL ? `url('${imageURL}')` : 'none',

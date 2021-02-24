@@ -7,6 +7,7 @@ const save = props => {
     const { className } = props;
 
     const {
+        borderBanner,
         id,
         imageURL,
         title,
@@ -100,8 +101,8 @@ const save = props => {
                 className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                 style={{
                     boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
-                    border: borderType,
-                    borderWidth: borderTop? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
+                    borderStyle: borderType,
+                    borderWidth: borderBanner? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
                     borderRadius: borderRadius + "px",
                     borderColor: borderColor
                 }}

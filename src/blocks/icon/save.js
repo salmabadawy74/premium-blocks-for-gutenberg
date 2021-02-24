@@ -5,7 +5,6 @@ const save = props => {
   const { className } = props;
     
   const {
-    isUpdated,
     selectedIcon,
     align,
     hoverEffect,
@@ -65,8 +64,6 @@ const save = props => {
     link,
     target
   } = props.attributes;
-  
-  console.log( `${ isUpdated } from save` );
 
   const mainClasses = classnames ( className, 'premium-icon' );
 
@@ -81,8 +78,8 @@ const save = props => {
         backgroundPosition: backgroundPosition,
         backgroundSize: backgroundSize,
         backgroundAttachment: fixed ? "fixed" : "unset",
-        border: wrapBorderType,
-        borderWidth: wrapBorderTop?`${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`: wrapBorderWidth + "px",
+        borderStyle: wrapBorderType,
+        borderWidth:`${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`,
         borderRadius: wrapBorderRadius + "px",
         borderColor: wrapBorderColor,
         boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
@@ -118,8 +115,8 @@ const save = props => {
             marginRight: marginR,
             marginBottom: marginB,
             marginLeft: marginL,
-            border: borderType,
-            borderWidth: iconBorderTop||iconBorderRight||iconBorderBottom||iconBorderLeft ?`${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`:borderWidth + "px",
+            borderStyle: borderType,
+            borderWidth:` ${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`,
             borderRadius: borderRadius || 100 + "px",
             borderColor: borderColor,
             textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||

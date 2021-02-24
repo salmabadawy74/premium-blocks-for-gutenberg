@@ -185,8 +185,8 @@ class PremiumAccordion extends Component {
                         className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
                         style={{
                             backgroundColor: titleBack,
-                            border: titleBorder,
-                            borderWidth:titleEditborder?`${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px` :titleBorderWidth + "px",
+                            borderStyle: titleBorder,
+                            borderWidth:`${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px` ,
                             borderRadius: titleBorderRadius + "px",
                             borderColor: titleBorderColor,
                             paddingTop: titlePaddingT,
@@ -247,8 +247,8 @@ class PremiumAccordion extends Component {
                         style={{
                             textAlign: descAlign,
                             backgroundColor: descBack,
-                            border: descBorder,
-                            borderWidth: descEditborder?`${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`:descBorderWidth + "px",
+                            borderStyle: descBorder,
+                            borderWidth: `${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`,
                             borderRadius: descBorderRadius + "px",
                             borderColor: descBorderColor,
                             paddingTop: descPaddingT,

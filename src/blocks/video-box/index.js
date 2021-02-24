@@ -9,6 +9,14 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const videoBoxAttrs = {
+  borderPlayUpdated: {
+    type: "boolean",
+    default:false
+  },
+  borderBoxUpdated: {
+    type: "boolean",
+    default:false
+  },
   videoBoxId: {
     type: "string",
   },

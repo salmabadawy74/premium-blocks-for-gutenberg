@@ -5,6 +5,7 @@ const save = props => {
   const { className } = props;
     
   const {
+    borderCount,
     increment,
     time,
     delay,
@@ -85,8 +86,8 @@ const save = props => {
         backgroundPosition: backgroundPosition,
         backgroundSize: backgroundSize,
         backgroundAttachment: fixed ? "fixed" : "unset",
-        border: borderType,
-        borderWidth: borderTop? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
+        borderStyle: borderType,
+        borderWidth: borderCount? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
         borderRadius: borderRadius + "px",
         borderColor: borderColor
       }}

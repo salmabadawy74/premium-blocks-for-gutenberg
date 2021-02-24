@@ -91,8 +91,6 @@ const edit = props => {
         link,
         target
     } = props.attributes;
-
-    console.log( `${ isUpdated } from edit` );
     
     const EFFECTS = [
         {
@@ -230,11 +228,11 @@ const edit = props => {
                     <PremiumBorder
                         borderType={borderType}
                         borderWidth={ borderWidth }
-                        borderColor={ borderColor }
                         top={ iconBorderTop }
                         right={ iconBorderRight }
                         bottom={ iconBorderBottom }
                         left={iconBorderLeft}
+                        borderColor={ borderColor }
                         borderRadius={borderRadius}
                         onChangeType={newType => setAttributes({ borderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
@@ -243,7 +241,6 @@ const edit = props => {
                             iconBorderRight: right,
                             iconBorderBottom: bottom,
                             iconBorderLeft: left,
-                            isUpdated: true
                         })}
                         onChangeColor={colorValue =>
                             setAttributes({ borderColor: colorValue.hex })
@@ -502,8 +499,8 @@ const edit = props => {
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
                 backgroundAttachment: fixed ? "fixed" : "unset",
-                border: wrapBorderType,
-                borderWidth: wrapBorderTop?`${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`: wrapBorderWidth + "px",
+                borderStyle: wrapBorderType,
+                borderWidth: `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`,
                 borderRadius: wrapBorderRadius + "px",
                 borderColor: wrapBorderColor,
                 boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
@@ -539,8 +536,8 @@ const edit = props => {
                         marginRight: marginR,
                         marginBottom: marginB,
                         marginLeft: marginL,
-                        border: borderType,
-                        borderWidth: iconBorderTop||iconBorderRight||iconBorderBottom||iconBorderLeft ?`${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`:borderWidth + "px",
+                        borderStyle: borderType,
+                        borderWidth:`${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`,
                         borderRadius: borderRadius || 100 + "px",
                         borderColor: borderColor,
                         textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||

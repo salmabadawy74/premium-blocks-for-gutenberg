@@ -15,10 +15,10 @@ export default class PremiumBorder extends Component{
     super( props );
     this.state = {
       isLinked: false,
-      top: this.props.top ||0,
-      right: this.props.right||0,
-      bottom: this.props.bottom||0,
-      left:  this.props.left||0,
+      top: this.props.top ||this.props.borderWidth ,
+      right: this.props.right||this.props.borderWidth,
+      bottom: this.props.bottom||this.props.borderWidth,
+      left:  this.props.left||this.props.borderWidth,
     };
     this.onChangeInput = this.onChangeInput.bind( this );
   }

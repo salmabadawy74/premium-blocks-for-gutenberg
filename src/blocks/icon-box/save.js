@@ -7,6 +7,8 @@ const save = props => {
     const { className } = props;
 
     const {
+        borderIconBox,
+        btnBorderIconBox,
         id,
         align,
         iconImage,
@@ -124,7 +126,7 @@ const save = props => {
             style={{
                 textAlign: align,
                 border: borderType,
-                borderWidth: borderTop?`${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
+                borderWidth: borderIconBox?`${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
                 marginTop: marginT,
@@ -266,7 +268,7 @@ const save = props => {
                                 fontStyle: btnStyle,
                                 fontWeight: btnWeight,
                                 border: btnBorderType,
-                                borderWidth: btnBorderTop?`${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`:btnBorderWidth + "px",
+                                borderWidth: btnBorderIconBox?`${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`:btnBorderWidth + "px",
                                 borderRadius: btnBorderRadius + "px",
                                 borderColor: btnBorderColor,
                                 padding: btnPadding + btnPaddingU,

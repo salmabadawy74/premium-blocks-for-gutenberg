@@ -104,19 +104,22 @@ const iconAttrs = {
     },
     iconBorderTop: {
         type: "number",
-        default:false
+        default:1
+
     },
     iconBorderRight: {
         type: "number",
-        default:false
+        default:1
+
     },
     iconBorderBottom: {
         type: "number",
-        default:false
+        default:1
+
     },
     iconBorderLeft: {
-        type: "number",
-      default:false  
+        type: "number", 
+        default:1
     },
     borderRadius: {
         type: "number",
@@ -163,19 +166,19 @@ const iconAttrs = {
     },
     wrapBorderTop: {
         type: "number",
-      default:false  
+        default:1
     },
     wrapBorderRight: {
         type: "number",
-      default:false  
+        default:1
     },
     wrapBorderBottom: {
         type: "number",
-      default:false  
+        default:1
     },
     wrapBorderLeft: {
         type: "number",
-      default:false  
+        default:1
     },
     wrapBorderRadius: {
         type: "number"

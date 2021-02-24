@@ -9,6 +9,14 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const iconBoxAttrs = {
+    borderIconBox: {
+        type: "boolean",
+        default:false
+    },
+    btnBorderIconBox: {
+        type: "boolean",
+      default:false  
+    },
     id: {
         type: "string"
     },

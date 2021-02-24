@@ -20,7 +20,6 @@ const save = props => {
         titleColor,
         titleBorder,
         titleBorderColor,
-        titleBorderWidth,
         titleBorderTop,
         titleBorderRight,
         titleBorderBottom,
@@ -59,8 +58,6 @@ const save = props => {
         descBorderRight,
         descBorderBottom,
         descBorderLeft,
-        descEditBorder,
-        titleEditBorder,
         textShadowBlur,
         textShadowColor,
         textShadowHorizontal,
@@ -83,8 +80,8 @@ const save = props => {
                     className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
                     style={{
                         backgroundColor: titleBack,
-                        border: titleBorder,
-                        borderWidth: titleBorderTop?`${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`:titleBorderWidth + "px",
+                        borderStyle: titleBorder,
+                        borderWidth: `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`,
                         borderRadius: titleBorderRadius + "px",
                         borderColor: titleBorderColor,
                         paddingTop: titlePaddingT,
@@ -135,8 +132,8 @@ const save = props => {
                     style={{
                         textAlign: descAlign,
                         backgroundColor: descBack,
-                        border: descBorder,
-                        borderWidth:titleBorderTop?`${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`:descBorderWidth + "px",
+                        borderStyle: descBorder,
+                        borderWidth:`${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`,
                         borderRadius: descBorderRadius + "px",
                         borderColor: descBorderColor,
                         paddingTop: descPaddingT,

@@ -9,6 +9,14 @@ const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
 
 const pricingAttrs = {
+    borderUpdated: {
+        type: "boolean",
+        default:false
+    },
+    btnBorderUpdated: {
+        type: "boolean",
+      default:false  
+    },
     contentAlign: {
         type: "string",
         default: "center"

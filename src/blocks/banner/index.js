@@ -10,6 +10,10 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const bannerAttrs = {
+    borderBanner: {
+        type: "boolean",
+        default:false
+    },
     imageID: {
         type: "number"
     },

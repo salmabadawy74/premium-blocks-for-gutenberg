@@ -7,6 +7,7 @@ const save = props => {
     const { className } = props;
 
     const {
+        isUpdated,
         stretchSection,
         horAlign,
         innerWidthType,
@@ -56,7 +57,7 @@ const save = props => {
                 minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 backgroundColor: color,
                 border: borderType,
-                borderWidth: borderTop? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
+                borderWidth: isUpdated? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
                 backgroundImage: `url('${imageURL}')`,

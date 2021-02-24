@@ -32,6 +32,7 @@ const {
 const edit = props => {
     const { isSelected, setAttributes, className, clientId: blockID } = props;
     const {
+        borderBanner,
         id,
         imageID,
         imageURL,
@@ -502,7 +503,8 @@ borderLeft,
                         borderRadius={borderRadius}
                         onChangeType={newType => setAttributes({ borderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
-                        setAttributes({
+                            setAttributes( {
+                            borderBanner:true,
                             borderTop: top,
                             borderRight: right,
                             borderBottom: bottom,
@@ -618,8 +620,8 @@ borderLeft,
                     className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                     style={{
                         boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
-                        border: borderType,
-                        borderWidth: borderTop? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
+                        borderStyle: borderType,
+                        borderWidth: borderBanner? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
                         borderRadius: borderRadius + "px",
                         borderColor: borderColor
                     }}

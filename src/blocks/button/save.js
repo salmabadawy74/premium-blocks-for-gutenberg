@@ -7,6 +7,7 @@ const save = props => {
     const { className } = props;
 
     const {
+        borderButton,
         id,
         btnText,
         btnSize,
@@ -95,8 +96,8 @@ const save = props => {
                     textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
                     boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
                     padding: padding + paddingU,
-                    border: borderType,
-                    borderWidth: borderTop? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
+                    borderStyle: borderType,
+                    borderWidth: borderButton? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
                     borderRadius: borderRadius + "px",
                     borderColor: borderColor
                 }}

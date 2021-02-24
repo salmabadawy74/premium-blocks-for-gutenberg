@@ -5,6 +5,8 @@ const save = (props) => {
   const { className } = props;
 
   const {
+  borderPlayUpdated,
+  borderBoxUpdated,
     videoBoxId,
     videoType,
     videoURL,
@@ -87,6 +89,7 @@ const save = (props) => {
   };
 
   const mainClasses = classnames(className, "premium-video-box");
+  console.log(`${borderPlayUpdated} ${borderBoxUpdated} from save`)
 
   return (
     <div
@@ -94,8 +97,8 @@ const save = (props) => {
       className={`${mainClasses} video-overlay-${overlay}`}
       data-type={videoType}
       style={{
-        border: boxBorderType,
-        borderWidth: boxBorderTop
+        borderStyle: boxBorderType,
+        borderWidth: borderBoxUpdated
           ? `${boxBorderTop}px ${boxBorderRight}px ${boxBorderBottom}px ${boxBorderLeft}px`
           : boxBorderWidth + "px",
         borderRadius: boxBorderRadius + "px",
@@ -156,8 +159,8 @@ const save = (props) => {
             left: playLeft + "%",
             color: playColor,
             backgroundColor: playBack,
-            border: playBorderType,
-            borderWidth: playBorderTop
+            borderStyle: playBorderType,
+            borderWidth: borderPlayUpdated
               ? `${playBorderTop}px ${playBorderRight}px ${playBorderBottom}px ${playBorderLeft}px`
               : playBorderWidth + "px",
             borderRadius: playBorderRadius + "px",

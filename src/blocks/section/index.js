@@ -18,6 +18,10 @@ const containerAttrs = {
         type: "string",
         default: "boxed"
     },
+    isUpdated: {
+        type: "boolean",
+        default:false
+    },
     horAlign: {
         type: "string",
         default: "center"

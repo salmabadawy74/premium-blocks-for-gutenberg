@@ -9,6 +9,10 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const counterAttrs = {
+    borderCount: {
+        type: "boolean",
+      default:false  
+    },
     increment: {
         type: "string",
         default: 500

@@ -80,6 +80,7 @@ const edit = props => {
         borderColor,
         borderRadius,
         borderWidth,
+        borderCount,
         borderTop,
         borderRight,
         borderBottom,
@@ -629,7 +630,8 @@ const edit = props => {
                         borderRadius={borderRadius}
                         onChangeType={newType => setAttributes({ borderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
-                        setAttributes({
+                            setAttributes( {
+                            borderCount:true,
                             borderTop: top,
                             borderRight: right,
                             borderBottom: bottom,
@@ -697,8 +699,8 @@ const edit = props => {
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
                 backgroundAttachment: fixed ? "fixed" : "unset",
-                border: borderType,
-                borderWidth: borderTop? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
+                borderStyle: borderType,
+                borderWidth: borderCount? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor
             }}
