@@ -1,6 +1,7 @@
 import { object } from "prop-types";
 
 const className = "premium-countup";
+
 const counterAttrs_1_7_4 = {
   increment: {
     type: "string",
@@ -224,6 +225,7 @@ const counterAttrs_1_7_4 = {
     type: "string",
   },
 };
+
 const newAttributes_1_7_5 = {
   borderCount: {
     type: "boolean",
@@ -242,6 +244,7 @@ const newAttributes_1_7_5 = {
     type: "number",
   },
 };
+
 const counterAttrs_1_7_5 = Object.assign(
   counterAttrs_1_7_4,
   newAttributes_1_7_5

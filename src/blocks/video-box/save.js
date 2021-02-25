@@ -5,8 +5,8 @@ const save = (props) => {
   const { className } = props;
 
   const {
-  borderPlayUpdated,
-  borderBoxUpdated,
+    borderPlayUpdated,
+    borderBoxUpdated,
     videoBoxId,
     videoType,
     videoURL,
@@ -71,6 +71,7 @@ const save = (props) => {
     shadowVertical,
     shadowPosition,
   } = props.attributes;
+
   const loopVideo = () => {
     if ("youtube" === videoType) {
       if (videoURL.startsWith("http")) {
@@ -88,8 +89,8 @@ const save = (props) => {
     }
   };
 
-  const mainClasses = classnames(className, "premium-video-box");
-  console.log(`${borderPlayUpdated} ${borderBoxUpdated} from save`)
+  const mainClasses = classnames( className, "premium-video-box" );
+
 
   return (
     <div

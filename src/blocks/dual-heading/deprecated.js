@@ -5,223 +5,223 @@ const className = "premium-dheading-block";
 const deprecated_attributes_1_3_0 = {
   contentAlign: {
     type: "string",
-    default: "center"
+    default: "center",
   },
   firstHeading: {
     type: "array",
     source: "children",
     default: "Premium ",
-    selector: ".premium-dheading-block__first"
+    selector: ".premium-dheading-block__first",
   },
   secondHeading: {
     type: "array",
     source: "children",
     default: "Blocks",
-    selector: ".premium-dheading-block__second"
+    selector: ".premium-dheading-block__second",
   },
   titleTag: {
     type: "string",
-    default: "h1"
+    default: "h1",
   },
   display: {
     type: "string",
-    default: "inline"
+    default: "inline",
   },
   firstColor: {
     type: "string",
-    default: "#6ec1e4"
+    default: "#6ec1e4",
   },
   firstSize: {
     type: "number",
-    default: "20"
+    default: "20",
   },
   firstLetter: {
-    type: "number"
+    type: "number",
   },
   firstStyle: {
-    type: "string"
+    type: "string",
   },
   firstUpper: {
-    type: "boolean"
+    type: "boolean",
   },
   firstWeight: {
     type: "number",
-    default: 500
+    default: 500,
   },
   firstBackground: {
-    type: "string"
+    type: "string",
   },
   firstBorderType: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   firstBorderWidth: {
     type: "number",
-    default: "1"
+    default: "1",
   },
   firstBorderRadius: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   firstBorderColor: {
-    type: "string"
+    type: "string",
   },
   firstMarginR: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   firstMarginL: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   firstPadding: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   firstClip: {
     type: "boolean",
-    default: false
+    default: false,
   },
   firstAnim: {
     type: "boolean",
-    default: false
+    default: false,
   },
   firstClipColor: {
     type: "string",
-    default: "#54595f"
+    default: "#54595f",
   },
   firstShadowColor: {
-    type: "string"
+    type: "string",
   },
   firstShadowBlur: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   firstShadowHorizontal: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   firstShadowVertical: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondColor: {
     type: "string",
-    default: "#54595f"
+    default: "#54595f",
   },
   secondSize: {
     type: "number",
-    default: "20"
+    default: "20",
   },
   secondLetter: {
-    type: "number"
+    type: "number",
   },
   secondStyle: {
-    type: "string"
+    type: "string",
   },
   secondUpper: {
-    type: "boolean"
+    type: "boolean",
   },
   secondWeight: {
     type: "number",
-    default: 500
+    default: 500,
   },
   secondBackground: {
-    type: "string"
+    type: "string",
   },
   secondBorderType: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   secondBorderWidth: {
     type: "number",
-    default: "1"
+    default: "1",
   },
   secondBorderRadius: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondBorderColor: {
-    type: "string"
+    type: "string",
   },
   secondMarginR: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondMarginL: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondPadding: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondClip: {
     type: "boolean",
-    default: false
+    default: false,
   },
   secondShadowColor: {
-    type: "string"
+    type: "string",
   },
   secondShadowBlur: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondShadowHorizontal: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondShadowVertical: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondAnim: {
     type: "boolean",
-    default: false
+    default: false,
   },
   secondClipColor: {
     type: "string",
-    default: "#6ec1e4"
+    default: "#6ec1e4",
   },
   link: {
     type: "boolean",
-    default: false
+    default: false,
   },
   target: {
     type: "boolean",
-    default: false
+    default: false,
   },
   headingURL: {
-    type: "string"
+    type: "string",
   },
   containerBack: {
-    type: "string"
-  }
+    type: "string",
+  },
 };
 
 const newAttributes_1_4_1 = {
   imageID: {
-    type: "string"
+    type: "string",
   },
   imageURL: {
-    type: "string"
+    type: "string",
   },
   backgroundRepeat: {
     type: "string",
-    default: "no-repeat"
+    default: "no-repeat",
   },
   backgroundPosition: {
     type: "string",
-    default: "top center"
+    default: "top center",
   },
   backgroundSize: {
     type: "string",
-    default: "auto"
+    default: "auto",
   },
   fixed: {
     type: "boolean",
-    default: false
-  }
+    default: false,
+  },
 };
 
 const deprecated_attributes_1_4_1 = Object.assign(
@@ -231,29 +231,29 @@ const deprecated_attributes_1_4_1 = Object.assign(
 
 const newAttributes_1_4_8 = {
   firstFamily: {
-    type: "string"
+    type: "string",
   },
   secondFamily: {
-    type: "string"
-  }
+    type: "string",
+  },
 };
 
 const newAttributes_1_7_2 = {
   containerBorderType: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   containerBorderWidth: {
     type: "number",
-    default: "1"
+    default: "1",
   },
   containerBorderRadius: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   containerBorderColor: {
-    type: "string"
-  }
+    type: "string",
+  },
 };
 
 const deprecated_attributes_1_4_8 = Object.assign(
@@ -269,290 +269,291 @@ const deprecated_attributes_1_7_2 = Object.assign(
 const deprecated_attributes_1_9_2 = {
   contentAlign: {
     type: "string",
-    default: "center"
+    default: "center",
   },
   firstHeading: {
     type: "array",
     source: "children",
     default: "Premium ",
-    selector: ".premium-dheading-block__first"
+    selector: ".premium-dheading-block__first",
   },
   secondHeading: {
     type: "array",
     source: "children",
     default: "Blocks",
-    selector: ".premium-dheading-block__second"
+    selector: ".premium-dheading-block__second",
   },
   titleTag: {
     type: "string",
-    default: "h1"
+    default: "h1",
   },
   display: {
     type: "string",
-    default: "inline"
+    default: "inline",
   },
   firstColor: {
     type: "string",
-    default: "#6ec1e4"
+    default: "#6ec1e4",
   },
   firstSize: {
     type: "number",
-    default: "20"
+    default: "20",
   },
   firstFamily: {
-    type: "string"
+    type: "string",
   },
   firstLetter: {
-    type: "number"
+    type: "number",
   },
   firstStyle: {
-    type: "string"
+    type: "string",
   },
   firstUpper: {
-    type: "boolean"
+    type: "boolean",
   },
   firstWeight: {
     type: "number",
-    default: 500
+    default: 500,
   },
   firstBackground: {
-    type: "string"
+    type: "string",
   },
   firstBorderType: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   firstBorderWidth: {
     type: "number",
-    default: "1"
+    default: "1",
   },
   firstBorderRadius: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   firstBorderColor: {
-    type: "string"
+    type: "string",
   },
   firstMarginR: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   firstMarginL: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   firstPadding: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   firstClip: {
     type: "boolean",
-    default: false
+    default: false,
   },
   firstAnim: {
     type: "boolean",
-    default: false
+    default: false,
   },
   firstStroke: {
     type: "boolean",
-    default: false
+    default: false,
   },
   firstClipColor: {
     type: "string",
-    default: "#54595f"
+    default: "#54595f",
   },
   firstShadowColor: {
-    type: "string"
+    type: "string",
   },
   firstShadowBlur: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   firstShadowHorizontal: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   firstShadowVertical: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondColor: {
     type: "string",
-    default: "#54595f"
+    default: "#54595f",
   },
   secondSize: {
     type: "number",
-    default: "20"
+    default: "20",
   },
   secondFamily: {
-    type: "string"
+    type: "string",
   },
   secondLetter: {
-    type: "number"
+    type: "number",
   },
   secondStyle: {
-    type: "string"
+    type: "string",
   },
   secondUpper: {
-    type: "boolean"
+    type: "boolean",
   },
   secondWeight: {
     type: "number",
-    default: 500
+    default: 500,
   },
   secondBackground: {
-    type: "string"
+    type: "string",
   },
   secondBorderType: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   secondBorderWidth: {
     type: "number",
-    default: "1"
+    default: "1",
   },
   secondBorderRadius: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondBorderColor: {
-    type: "string"
+    type: "string",
   },
   secondMarginR: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondMarginL: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondPadding: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondClip: {
     type: "boolean",
-    default: false
+    default: false,
   },
   secondStroke: {
     type: "boolean",
-    default: false
+    default: false,
   },
   secondShadowColor: {
-    type: "string"
+    type: "string",
   },
   secondShadowBlur: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondShadowHorizontal: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondShadowVertical: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   secondAnim: {
     type: "boolean",
-    default: false
+    default: false,
   },
   secondClipColor: {
     type: "string",
-    default: "#6ec1e4"
+    default: "#6ec1e4",
   },
   link: {
     type: "boolean",
-    default: false
+    default: false,
   },
   target: {
     type: "boolean",
-    default: false
+    default: false,
   },
   headingURL: {
-    type: "string"
+    type: "string",
   },
   containerBack: {
-    type: "string"
+    type: "string",
   },
   imageID: {
-    type: "string"
+    type: "string",
   },
   imageURL: {
-    type: "string"
+    type: "string",
   },
   backgroundRepeat: {
     type: "string",
-    default: "no-repeat"
+    default: "no-repeat",
   },
   backgroundPosition: {
     type: "string",
-    default: "top center"
+    default: "top center",
   },
   backgroundSize: {
     type: "string",
-    default: "auto"
+    default: "auto",
   },
   fixed: {
     type: "boolean",
-    default: false
+    default: false,
   },
   containerBorderType: {
     type: "string",
-    default: "none"
+    default: "none",
   },
   containerBorderWidth: {
     type: "number",
-    default: "1"
+    default: "1",
   },
   containerBorderRadius: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   containerBorderColor: {
-    type: "string"
-  }
+    type: "string",
+  },
 };
+
 const newAttributes_1_9_5 = {
   firstBorder: {
     type: "boolean",
-    default: false
+    default: false,
   },
   firstBorderTop: {
-    type: "number"
+    type: "number",
   },
   firstBorderRight: {
-    type: "number"
+    type: "number",
   },
   firstBorderBottom: {
-    type: "number"
+    type: "number",
   },
   firstBorderLeft: {
-    type: "number"
+    type: "number",
   },
   secondBorderTop: {
-    type: "number"
+    type: "number",
   },
   secondBorderRight: {
-    type: "number"
+    type: "number",
   },
   secondBorderBottom: {
-    type: "number"
+    type: "number",
   },
   secondBorderLeft: {
-    type: "number"
+    type: "number",
   },
   containerBorderTop: {
-    type: "number"
+    type: "number",
   },
   containerBorderRight: {
-    type: "number"
+    type: "number",
   },
   containerBorderBottom: {
-    type: "number"
+    type: "number",
   },
   containerBorderLeft: {
-    type: "number"
+    type: "number",
   },
   containerBorder: {
     type: "boolean",
@@ -564,34 +565,36 @@ const newAttributes_1_9_5 = {
     type: "boolean",
   },
 };
-const deprecated_attributes_1_9_5 = Object.assign( deprecated_attributes_1_9_2, newAttributes_1_9_5 );
+
+const deprecated_attributes_1_9_5 = Object.assign(
+  deprecated_attributes_1_9_2,
+  newAttributes_1_9_5
+);
 
 const deprecatedContent = [
   {
     attributes: deprecated_attributes_1_9_5,
-    migrate: ( attributes ) =>
-    {
+    migrate: (attributes) => {
       let newAttributes = {
         firstBorder: "",
-        secondBorder: '',
+        secondBorder: "",
         containerBorder: "",
-        containerBorderTop: '',
-        containerBorderRight: '',
-        containerBorderBottom: '',
-        containerBorderLeft: '',
-        firstBorderTop: '',
-        firstBorderRight: '',
-        firstBorderBottom: '',
-        firstBorderLeft: '',
-        secondBorderTop: '',
-        secondBorderRight: '',
-        secondBorderBottom: '',
-        secondBorderLeft: '',
+        containerBorderTop: "",
+        containerBorderRight: "",
+        containerBorderBottom: "",
+        containerBorderLeft: "",
+        firstBorderTop: "",
+        firstBorderRight: "",
+        firstBorderBottom: "",
+        firstBorderLeft: "",
+        secondBorderTop: "",
+        secondBorderRight: "",
+        secondBorderBottom: "",
+        secondBorderLeft: "",
       };
-      return Object.assign(attributes,newAttributes)
+      return Object.assign(attributes, newAttributes);
     },
-    save: ( props ) =>
-    {
+    save: (props) => {
       const { className } = props;
       const {
         contentAlign,
@@ -654,115 +657,110 @@ const deprecatedContent = [
         containerBorderType,
         containerBorderWidth,
         containerBorderRadius,
-        containerBorderColor
+        containerBorderColor,
       } = props.attributes;
-      
+
       const mainClasses = classnames(
         className,
         "premium-dheading-block__container"
-    );
+      );
 
-    return (
+      return (
         <div
-            className={`${mainClasses}`}
-            style={{
-                textAlign: contentAlign,
-                backgroundColor: containerBack,
-                backgroundImage: `url('${imageURL}')`,
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                border: containerBorderType,
-                borderWidth: containerBorderWidth + "px",
-                borderRadius: containerBorderRadius + "px",
-                borderColor: containerBorderColor
-            }}
+          className={`${mainClasses}`}
+          style={{
+            textAlign: contentAlign,
+            backgroundColor: containerBack,
+            backgroundImage: `url('${imageURL}')`,
+            backgroundRepeat: backgroundRepeat,
+            backgroundPosition: backgroundPosition,
+            backgroundSize: backgroundSize,
+            backgroundAttachment: fixed ? "fixed" : "unset",
+            border: containerBorderType,
+            borderWidth: containerBorderWidth + "px",
+            borderRadius: containerBorderRadius + "px",
+            borderColor: containerBorderColor,
+          }}
         >
-            <div className={`premium-dheading-block__wrap`}>
-                <h2 className={`premium-dheading-block__title`}>
-                    <span
-                        className={`premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim} premium-headings-${firstStroke}`}
-                        style={{
-                            display: display,
-                            color: firstColor,
-                            backgroundColor: firstClip
-                                ? "none"
-                                : firstBackground,
-                            backgroundImage: firstClip
-                                ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
-                                : "none",
-                            fontSize: firstSize + "px",
-                            fontFamily: firstFamily,
-                            letterSpacing: firstLetter + "px",
-                            textTransform: firstUpper ? "uppercase" : "none",
-                            fontStyle: firstStyle,
-                            fontWeight: firstWeight,
-                            border: firstBorderType,
-                            borderWidth: firstBorderWidth + "px",
-                            borderRadius: firstBorderRadius + "px",
-                            borderColor: firstBorderColor,
-                            padding: firstPadding + "px",
-                            margin: firstMargin + "px",
-                            textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
-                        }}
-                    >
-                        {firstHeading}
-                    </span>
-                    <span
-                        className={`premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim} premium-headings-${secondStroke}`}
-                        style={{
-                            display: display,
-                            color: secondColor,
-                            backgroundColor: secondClip
-                                ? "none"
-                                : secondBackground,
-                            backgroundImage: secondClip
-                                ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
-                                : "none",
-                            fontSize: secondSize + "px",
-                            fontFamily: secondFamily,
-                            letterSpacing: secondLetter + "px",
-                            textTransform: secondUpper ? "uppercase" : "none",
-                            fontStyle: secondStyle,
-                            fontWeight: secondWeight,
-                            border: secondBorderType,
-                            borderWidth: secondBorderWidth + "px",
-                            borderRadius: secondBorderRadius + "px",
-                            borderColor: secondBorderColor,
-                            padding: secondPadding + "px",
-                            margin: secondMargin + "px",
-                            textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
-                        }}
-                    >
-                        {secondHeading}
-                    </span>
-                </h2>
-                {link && headingURL && (
-                    <a
-                        className={`premium-dheading-block__link`}
-                        href={link && headingURL}
-                        target={target && "_blank"}
-                    />
-                )}
-            </div>
+          <div className={`premium-dheading-block__wrap`}>
+            <h2 className={`premium-dheading-block__title`}>
+              <span
+                className={`premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim} premium-headings-${firstStroke}`}
+                style={{
+                  display: display,
+                  color: firstColor,
+                  backgroundColor: firstClip ? "none" : firstBackground,
+                  backgroundImage: firstClip
+                    ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
+                    : "none",
+                  fontSize: firstSize + "px",
+                  fontFamily: firstFamily,
+                  letterSpacing: firstLetter + "px",
+                  textTransform: firstUpper ? "uppercase" : "none",
+                  fontStyle: firstStyle,
+                  fontWeight: firstWeight,
+                  border: firstBorderType,
+                  borderWidth: firstBorderWidth + "px",
+                  borderRadius: firstBorderRadius + "px",
+                  borderColor: firstBorderColor,
+                  padding: firstPadding + "px",
+                  margin: firstMargin + "px",
+                  textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
+                }}
+              >
+                {firstHeading}
+              </span>
+              <span
+                className={`premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim} premium-headings-${secondStroke}`}
+                style={{
+                  display: display,
+                  color: secondColor,
+                  backgroundColor: secondClip ? "none" : secondBackground,
+                  backgroundImage: secondClip
+                    ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
+                    : "none",
+                  fontSize: secondSize + "px",
+                  fontFamily: secondFamily,
+                  letterSpacing: secondLetter + "px",
+                  textTransform: secondUpper ? "uppercase" : "none",
+                  fontStyle: secondStyle,
+                  fontWeight: secondWeight,
+                  border: secondBorderType,
+                  borderWidth: secondBorderWidth + "px",
+                  borderRadius: secondBorderRadius + "px",
+                  borderColor: secondBorderColor,
+                  padding: secondPadding + "px",
+                  margin: secondMargin + "px",
+                  textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
+                }}
+              >
+                {secondHeading}
+              </span>
+            </h2>
+            {link && headingURL && (
+              <a
+                className={`premium-dheading-block__link`}
+                href={link && headingURL}
+                target={target && "_blank"}
+              />
+            )}
+          </div>
         </div>
-    );
-    }
+      );
+    },
   },
   {
     attributes: deprecated_attributes_1_7_2,
-    migrate: attributes => {
+    migrate: (attributes) => {
       let newAttributes = {
         firstStroke: false,
-        secondStroke: false
+        secondStroke: false,
       };
       return Object.assign(attributes, newAttributes);
     },
-    save: props => {
-    
+    save: (props) => {
       const { className } = props;
-      
+
       const {
         contentAlign,
         firstHeading,
@@ -822,11 +820,14 @@ const deprecatedContent = [
         containerBorderType,
         containerBorderWidth,
         containerBorderRadius,
-        containerBorderColor
+        containerBorderColor,
       } = props.attributes;
-      
-      const mainClasses = classnames ( className, 'premium-dheading-block__container' );
-    
+
+      const mainClasses = classnames(
+        className,
+        "premium-dheading-block__container"
+      );
+
       return (
         <div
           className={`${mainClasses}`}
@@ -841,7 +842,7 @@ const deprecatedContent = [
             border: containerBorderType,
             borderWidth: containerBorderWidth + "px",
             borderRadius: containerBorderRadius + "px",
-            borderColor: containerBorderColor
+            borderColor: containerBorderColor,
           }}
         >
           <div className={`premium-dheading-block__wrap`}>
@@ -867,7 +868,7 @@ const deprecatedContent = [
                   borderColor: firstBorderColor,
                   padding: firstPadding + "px",
                   margin: firstMargin + "px",
-                  textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
+                  textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
                 }}
               >
                 {firstHeading}
@@ -893,7 +894,7 @@ const deprecatedContent = [
                   borderColor: secondBorderColor,
                   padding: secondPadding + "px",
                   margin: secondMargin + "px",
-                  textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
+                  textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
                 }}
               >
                 {secondHeading}
@@ -909,20 +910,20 @@ const deprecatedContent = [
           </div>
         </div>
       );
-    }
+    },
   },
   {
     attributes: deprecated_attributes_1_4_8,
-    migrate: attributes => {
+    migrate: (attributes) => {
       let newAttributes = {
         containerBorderType: "none",
         containerBorderWidth: "1",
         containerBorderRadius: "0",
-        containerBorderColor: ""
+        containerBorderColor: "",
       };
       return Object.assign(attributes, newAttributes);
     },
-    save: props => {
+    save: (props) => {
       const {
         contentAlign,
         firstHeading,
@@ -978,7 +979,7 @@ const deprecatedContent = [
         fixed,
         backgroundRepeat,
         backgroundPosition,
-        backgroundSize
+        backgroundSize,
       } = props.attributes;
 
       return (
@@ -991,7 +992,7 @@ const deprecatedContent = [
             backgroundRepeat: backgroundRepeat,
             backgroundPosition: backgroundPosition,
             backgroundSize: backgroundSize,
-            backgroundAttachment: fixed ? "fixed" : "unset"
+            backgroundAttachment: fixed ? "fixed" : "unset",
           }}
         >
           <div className={`${className}__wrap`}>
@@ -1017,7 +1018,7 @@ const deprecatedContent = [
                   borderColor: firstBorderColor,
                   padding: firstPadding + "px",
                   margin: firstMargin + "px",
-                  textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
+                  textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
                 }}
               >
                 {firstHeading}
@@ -1043,7 +1044,7 @@ const deprecatedContent = [
                   borderColor: secondBorderColor,
                   padding: secondPadding + "px",
                   margin: secondMargin + "px",
-                  textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
+                  textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
                 }}
               >
                 {secondHeading}
@@ -1059,18 +1060,18 @@ const deprecatedContent = [
           </div>
         </div>
       );
-    }
+    },
   },
   {
     attributes: deprecated_attributes_1_4_1,
-    migrate: attributes => {
+    migrate: (attributes) => {
       let newAttributes = {
         firstFamily: "",
-        secondFamily: ""
+        secondFamily: "",
       };
       return Object.assign(attributes, newAttributes);
     },
-    save: props => {
+    save: (props) => {
       const {
         contentAlign,
         firstHeading,
@@ -1124,7 +1125,7 @@ const deprecatedContent = [
         fixed,
         backgroundRepeat,
         backgroundPosition,
-        backgroundSize
+        backgroundSize,
       } = props.attributes;
 
       return (
@@ -1137,7 +1138,7 @@ const deprecatedContent = [
             backgroundRepeat: backgroundRepeat,
             backgroundPosition: backgroundPosition,
             backgroundSize: backgroundSize,
-            backgroundAttachment: fixed ? "fixed" : "unset"
+            backgroundAttachment: fixed ? "fixed" : "unset",
           }}
         >
           <div className={`${className}__wrap`}>
@@ -1162,7 +1163,7 @@ const deprecatedContent = [
                   borderColor: firstBorderColor,
                   padding: firstPadding + "px",
                   margin: firstMargin + "px",
-                  textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
+                  textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
                 }}
               >
                 {firstHeading}
@@ -1187,7 +1188,7 @@ const deprecatedContent = [
                   borderColor: secondBorderColor,
                   padding: secondPadding + "px",
                   margin: secondMargin + "px",
-                  textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
+                  textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
                 }}
               >
                 {secondHeading}
@@ -1203,22 +1204,22 @@ const deprecatedContent = [
           </div>
         </div>
       );
-    }
+    },
   },
   {
     attributes: deprecated_attributes_1_3_0,
-    migrate: attributes => {
+    migrate: (attributes) => {
       let newAttributes = {
         imageID: "",
         imageURL: "",
         fixed: false,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "top center",
-        backgroundSize: "auto"
+        backgroundSize: "auto",
       };
       return Object.assign(attributes, newAttributes);
     },
-    save: props => {
+    save: (props) => {
       const {
         contentAlign,
         firstHeading,
@@ -1267,7 +1268,7 @@ const deprecatedContent = [
         link,
         target,
         headingURL,
-        containerBack
+        containerBack,
       } = props.attributes;
 
       return (
@@ -1275,7 +1276,7 @@ const deprecatedContent = [
           className={`${className}__container`}
           style={{
             textAlign: contentAlign,
-            backgroundColor: containerBack
+            backgroundColor: containerBack,
           }}
         >
           <div className={`${className}__wrap`}>
@@ -1300,7 +1301,7 @@ const deprecatedContent = [
                   borderColor: firstBorderColor,
                   padding: firstPadding + "px",
                   margin: firstMargin + "px",
-                  textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
+                  textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
                 }}
               >
                 {firstHeading}
@@ -1325,7 +1326,7 @@ const deprecatedContent = [
                   borderColor: secondBorderColor,
                   padding: secondPadding + "px",
                   margin: secondMargin + "px",
-                  textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
+                  textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
                 }}
               >
                 {secondHeading}
@@ -1341,11 +1342,11 @@ const deprecatedContent = [
           </div>
         </div>
       );
-    }
+    },
   },
   {
     attributes: deprecated_attributes_1_3_0,
-    save: props => {
+    save: (props) => {
       {
         const {
           contentAlign,
@@ -1395,7 +1396,7 @@ const deprecatedContent = [
           link,
           target,
           headingURL,
-          containerBack
+          containerBack,
         } = props.attributes;
 
         return (
@@ -1408,7 +1409,7 @@ const deprecatedContent = [
               className={`${className}__container`}
               style={{
                 textAlign: contentAlign,
-                backgroundColor: containerBack
+                backgroundColor: containerBack,
               }}
             >
               <h2 className={`${className}__title`}>
@@ -1432,7 +1433,7 @@ const deprecatedContent = [
                     borderColor: firstBorderColor,
                     padding: firstPadding + "px",
                     margin: firstMargin + "px",
-                    textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
+                    textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
                   }}
                 >
                   {firstHeading}
@@ -1457,7 +1458,7 @@ const deprecatedContent = [
                     borderColor: secondBorderColor,
                     padding: secondPadding + "px",
                     margin: secondMargin + "px",
-                    textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
+                    textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
                   }}
                 >
                   {secondHeading}
@@ -1467,7 +1468,8 @@ const deprecatedContent = [
           </a>
         );
       }
-    }
-  }
+    },
+  },
 ];
+
 export default deprecatedContent;

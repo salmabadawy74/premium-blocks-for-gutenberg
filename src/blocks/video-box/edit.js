@@ -148,7 +148,7 @@ class edit extends Component {
       shadowVertical,
       shadowPosition,
     } = this.props.attributes;
-console.log(`${borderPlayUpdated} ${borderBoxUpdated} from edit`)
+
     const TYPE = [
       {
         value: "youtube",
@@ -480,13 +480,12 @@ console.log(`${borderPlayUpdated} ${borderBoxUpdated} from edit`)
                         setAttributes({ playBorderType: newType })
                       }
                       onChangeWidth={({ top, right, bottom, left }) =>
-                        setAttributes( {
-                          borderPlayUpdated:true,
+                        setAttributes({
+                          borderPlayUpdated: true,
                           playBorderTop: top,
                           playBorderRight: right,
                           playBorderBottom: bottom,
                           playBorderLeft: left,
-                         
                         })
                       }
                       onChangeColor={(colorValue) =>
@@ -679,13 +678,12 @@ console.log(`${borderPlayUpdated} ${borderBoxUpdated} from edit`)
                 setAttributes({ boxBorderType: newType })
               }
               onChangeWidth={({ top, right, bottom, left }) =>
-                setAttributes( {
-                  borderBoxUpdated:true,
+                setAttributes({
+                  borderBoxUpdated: true,
                   boxBorderTop: top,
                   boxBorderRight: right,
                   boxBorderBottom: bottom,
                   boxBorderLeft: left,
-             
                 })
               }
               onChangeColor={(colorValue) =>
@@ -737,7 +735,7 @@ console.log(`${borderPlayUpdated} ${borderBoxUpdated} from edit`)
         className={`${mainClasses} video-overlay-${overlay}`}
         data-type={videoType}
         style={{
-         borderStyle: boxBorderType,
+          borderStyle: boxBorderType,
           borderWidth: borderBoxUpdated
             ? `${boxBorderTop}px ${boxBorderRight}px ${boxBorderBottom}px ${boxBorderLeft}px`
             : boxBorderWidth + "px",

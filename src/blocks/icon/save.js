@@ -1,9 +1,8 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 
-const save = props => {
-   
+const save = (props) => {
   const { className } = props;
-    
+
   const {
     wrapBorder,
     iconBorder,
@@ -30,9 +29,9 @@ const save = props => {
     borderType,
     borderWidth,
     iconBorderTop,
-        iconBorderRight,
-        iconBorderBottom,
-        iconBorderLeft,
+    iconBorderRight,
+    iconBorderBottom,
+    iconBorderLeft,
     borderRadius,
     borderColor,
     backgroundColor,
@@ -64,10 +63,10 @@ const save = props => {
     wrapMarginL,
     urlCheck,
     link,
-    target
+    target,
   } = props.attributes;
 
-  const mainClasses = classnames ( className, 'premium-icon' );
+  const mainClasses = classnames(className, "premium-icon");
 
   return (
     <div
@@ -81,12 +80,14 @@ const save = props => {
         backgroundSize: backgroundSize,
         backgroundAttachment: fixed ? "fixed" : "unset",
         borderStyle: wrapBorderType,
-        borderWidth: wrapBorder?`${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`:wrapBorderWidth+'px',
+        borderWidth: wrapBorder
+          ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
+          : wrapBorderWidth + "px",
         borderRadius: wrapBorderRadius + "px",
         borderColor: wrapBorderColor,
-        boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
-          0}px ${wrapShadowBlur ||
-          0}px ${wrapShadowColor} ${wrapShadowPosition}`,
+        boxShadow: `${wrapShadowHorizontal || 0}px ${
+          wrapShadowVertical || 0
+        }px ${wrapShadowBlur || 0}px ${wrapShadowColor} ${wrapShadowPosition}`,
         paddingTop: wrapPaddingT,
         paddingRight: wrapPaddingR,
         paddingBottom: wrapPaddingB,
@@ -94,7 +95,7 @@ const save = props => {
         marginTop: wrapMarginT,
         marginRight: wrapMarginR,
         marginBottom: wrapMarginB,
-        marginLeft: wrapMarginL
+        marginLeft: wrapMarginL,
       }}
     >
       <a
@@ -118,11 +119,14 @@ const save = props => {
             marginBottom: marginB,
             marginLeft: marginL,
             borderStyle: borderType,
-            borderWidth:iconBorder?`${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`:borderWidth+"px",
+            borderWidth: iconBorder
+              ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
+              : borderWidth + "px",
             borderRadius: borderRadius || 100 + "px",
             borderColor: borderColor,
-            textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
-              0}px ${shadowBlur || 0}px ${shadowColor}`
+            textShadow: `${shadowHorizontal || 0}px ${shadowVertical || 0}px ${
+              shadowBlur || 0
+            }px ${shadowColor}`,
           }}
         />
       </a>

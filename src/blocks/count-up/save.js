@@ -1,9 +1,8 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 
-const save = props => {
-   
+const save = (props) => {
   const { className } = props;
-    
+
   const {
     borderCount,
     increment,
@@ -61,18 +60,18 @@ const save = props => {
     borderRadius,
     borderWidth,
     borderTop,
-        borderRight,
-        borderBottom,
-        borderLeft,
+    borderRight,
+    borderBottom,
+    borderLeft,
     titleFamily,
     counterFamily,
     prefixFamily,
-    suffixFamily
+    suffixFamily,
   } = props.attributes;
   let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
-  
-  const mainClasses = classnames ( className, 'premium-countup' );
-  
+
+  const mainClasses = classnames(className, "premium-countup");
+
   return (
     <div
       className={`${mainClasses}__wrap`}
@@ -87,9 +86,11 @@ const save = props => {
         backgroundSize: backgroundSize,
         backgroundAttachment: fixed ? "fixed" : "unset",
         borderStyle: borderType,
-        borderWidth: borderCount? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`:borderWidth + "px",
+        borderWidth: borderCount
+          ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+          : borderWidth + "px",
         borderRadius: borderRadius + "px",
-        borderColor: borderColor
+        borderColor: borderColor,
       }}
     >
       {iconCheck && (
@@ -107,7 +108,7 @@ const save = props => {
             alignSelf:
               "row-reverse" === flexDir || "row" === flexDir
                 ? "center"
-                : selfAlign
+                : selfAlign,
           }}
         >
           {"icon" === icon && (
@@ -115,7 +116,7 @@ const save = props => {
               className={`premium-countup__icon ${iconClass}`}
               style={{
                 fontSize: iconSize + "px",
-                color: iconColor
+                color: iconColor,
               }}
             />
           )}
@@ -124,7 +125,7 @@ const save = props => {
               src={imageURL}
               style={{
                 width: iconSize + "px",
-                height: iconSize + "px"
+                height: iconSize + "px",
               }}
             />
           )}
@@ -137,7 +138,7 @@ const save = props => {
           alignSelf:
             "row-reverse" === flexDir || "row" === flexDir
               ? "center"
-              : selfAlign
+              : selfAlign,
         }}
       >
         <div className={`premium-countup__desc`}>
@@ -149,7 +150,7 @@ const save = props => {
                 fontFamily: prefixFamily,
                 color: prefixColor,
                 fontWeight: prefixWeight,
-                marginRight: prefixGap + "px"
+                marginRight: prefixGap + "px",
               }}
             >
               {prefixTxt}
@@ -163,7 +164,7 @@ const save = props => {
               fontSize: numberSize + "px",
               fontFamily: counterFamily,
               color: numberColor,
-              fontWeight: numberWeight
+              fontWeight: numberWeight,
             }}
           >
             {increment}
@@ -176,7 +177,7 @@ const save = props => {
                 fontFamily: suffixFamily,
                 color: suffixColor,
                 fontWeight: suffixWeight,
-                marginLeft: suffixGap + "px"
+                marginLeft: suffixGap + "px",
               }}
             >
               {suffixTxt}
@@ -195,7 +196,7 @@ const save = props => {
               letterSpacing: titleSpacing + "px",
               textTransform: titleUpper ? "uppercase" : "none",
               fontStyle: titleStyle,
-              fontWeight: titleWeight
+              fontWeight: titleWeight,
             }}
           >
             {titleTxt}
@@ -215,7 +216,7 @@ const save = props => {
             fontWeight: titleWeight,
             textTransform: titleUpper ? "uppercase" : "none",
             fontStyle: titleStyle,
-            alignSelf: selfAlign
+            alignSelf: selfAlign,
           }}
         >
           {titleTxt}

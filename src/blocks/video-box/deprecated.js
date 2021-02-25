@@ -370,6 +370,7 @@ const videoBoxAttrs_1_5_4 = {
     type: "number",
   },
 };
+
 const newAttributes_1_5_8 = {
   borderPlayUpdated: {
     type: "boolean",
@@ -404,6 +405,7 @@ const newAttributes_1_5_8 = {
     type: "number",
   },
 };
+
 const videoBoxAttrs_1_5_8 = Object.assign(
   newAttributes_1_5_8,
   videoBoxAttrs_1_5_4

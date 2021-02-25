@@ -14,15 +14,15 @@ export default class PremiumBorder extends Component {
       bottom: this.props.bottom || 0,
       left: this.props.left || 0,
     };
-    this.onChangeInput = this.onChangeInput.bind( this );
-    this.onButtonClick = this.onButtonClick.bind( this );
+    this.onChangeInput = this.onChangeInput.bind(this);
+    this.onButtonClick = this.onButtonClick.bind(this);
   }
 
   onChangeInput(event) {
     let { top, right, bottom, left, isLinked } = this.state;
     let { name, value } = event.target;
     if (isLinked) {
-      top = right = bottom = left   = parseInt(value) || 0;
+      top = right = bottom = left = parseInt(value) || 0;
       this.setState({ top, right, bottom, left }, () => {
         const { top, right, bottom, left } = this.state;
         this.props.onChangeWidth({ top, right, bottom, left });
@@ -45,7 +45,7 @@ export default class PremiumBorder extends Component {
       onChangeColor = () => {},
       onChangeRadius = () => {},
     } = this.props;
-    const { top, right, bottom, left ,isLinked} = this.state;
+    const { top, right, bottom, left, isLinked } = this.state;
     const BORDER = [
       {
         value: "none",
