@@ -146,9 +146,138 @@ const newAttributes_1_4_7 = {
     }
 };
 
-const buttonAttrs_1_4_7 = Object.assign(buttonAttrs_1_3_4, newAttributes_1_4_7);
+const buttonAttrs_1_4_7 = Object.assign( buttonAttrs_1_3_4, newAttributes_1_4_7 );
+const newAttributes_1_4_9 = {
+    borderButton: {
+        type: "boolean",
+        default: false
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+};
+const buttonAttrs_1_4_9 = Object.assign(
+    buttonAttrs_1_4_7,
+    newAttributes_1_4_9
+);
 
 const deprecatedContent = [
+    {
+        attributes: buttonAttrs_1_4_9,
+        migrate: attributes =>
+        {
+            let newAttributes = {
+                borderTop: "",
+                borderRight: "",
+                borderBottom: "",
+                borderLeft: "",
+                borderButton: "",
+              };
+            return Object.assign(attributes,newAttributes);
+        },
+        save: props => {
+            const {
+                id,
+                btnText,
+                btnSize,
+                btnAlign,
+                btnLink,
+                btnTarget,
+                effect,
+                effectDir,
+                textColor,
+                textHoverColor,
+                backColor,
+                backHoverColor,
+                slideColor,
+                textSize,
+                textFontFamily,
+                textWeight,
+                textLine,
+                textLetter,
+                textStyle,
+                textUpper,
+                borderType,
+                borderWidth,
+                borderRadius,
+                borderColor,
+                borderHoverColor,
+                padding,
+                paddingU,
+                shadowBlur,
+                shadowColor,
+                shadowHorizontal,
+                shadowVertical,
+                btnShadowBlur,
+                btnShadowColor,
+                btnShadowHorizontal,
+                btnShadowVertical,
+                btnShadowPosition
+            } = props.attributes;
+            return (
+                <div
+                id={`${className}-wrap-${id}`}
+                className={`${className}__wrap premium-button__${effect} premium-button__${effectDir}`}
+                style={{ textAlign: btnAlign }}
+            >
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: [
+                            `#premium-button-wrap-${id} .premium-button:hover {`,
+                            `color: ${textHoverColor} !important;`,
+                            `border-color: ${borderHoverColor} !important;`,
+                            "}",
+                            `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
+                            `background-color: ${backHoverColor} !important;`,
+                            "}",
+                            `#premium-button-wrap-${id}.premium-button__slide .premium-button::before,`,
+                            `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
+                            `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
+                            `background-color: ${slideColor}`,
+                            "}"
+                        ].join("\n")
+                    }}
+                />
+                <RichText.Content
+                    tagName="a"
+                    value={btnText}
+                    className={`premium-button premium-button__${btnSize}`}
+                    href={btnLink}
+                    rel="noopener noreferrer"
+                    target={btnTarget ? "_blank" : "_self"}
+                    style={{
+                        color: textColor,
+                        backgroundColor: backColor,
+                        fontSize: textSize + "px",
+                        fontFamily: textFontFamily,
+                        letterSpacing: textLetter + "px",
+                        textTransform: textUpper ? "uppercase" : "none",
+                        fontStyle: textStyle,
+                        lineHeight: textLine + "px",
+                        fontWeight: textWeight,
+                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+                        boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
+                        padding: padding + paddingU,
+                        border: borderType,
+                        borderWidth: borderWidth + "px",
+                        borderRadius: borderRadius + "px",
+                        borderColor: borderColor
+                    }}
+                />
+            </div>
+            );
+        }
+    },
+    
     {
         attributes: buttonAttrs_1_4_7,
         migrate: attributes => {

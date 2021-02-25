@@ -226,6 +226,12 @@ const newAttributes_1_6_3 = {
   wrapBorderLeft: {
     type: "number",
   },
+  iconBorder: {
+    type:"boolean",
+  },
+  wrapBorder: {
+    type:"boolean"
+  }
 };
 
 const deprecated_attributes_1_6_3 = Object.assign(
@@ -778,30 +784,16 @@ const deprecatedContent = [
     {  attributes: deprecated_attributes_1_6_3,
         migrate: (attributes) => {
           let newAttributes = {
-            iconBorderTop: {
-              type: "number",
-            },
-            iconBorderRight: {
-              type: "number",
-            },
-            iconBorderBottom: {
-              type: "number",
-            },
-            iconBorderLeft: {
-              type: "number",
-            },
-            wrapBorderTop: {
-              type: "number",
-            },
-            wrapBorderRight: {
-              type: "number",
-            },
-            wrapBorderBottom: {
-              type: "number",
-            },
-            wrapBorderLeft: {
-              type: "number",
-            },
+            iconBorderTop: "",
+            iconBorderRight: '',
+            iconBorderBottom: '',
+            iconBorderLeft: '',
+            wrapBorderTop: '',
+            wrapBorderRight: '',
+            wrapBorderBottom: '',
+            wrapBorderLeft: '',
+            iconBorder: '',
+            wrapBorder:''
           };
           return Object.assign(attributes, newAttributes);
         },
