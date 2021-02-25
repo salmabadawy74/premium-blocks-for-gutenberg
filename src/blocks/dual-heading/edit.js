@@ -104,7 +104,10 @@ const edit = props => {
         containerBorderBottom,
         containerBorderLeft,
         containerBorderRadius,
-        containerBorderColor
+        containerBorderColor,
+        containerBorder,
+        firstBorder,
+        secondBorder
     } = props.attributes;
     const DISPLAY = [
         {
@@ -343,8 +346,14 @@ const edit = props => {
                         onChangeType={newType =>
                             setAttributes({ firstBorderType: newType })
                         }
-                        onChangeWidth={newWidth =>
-                            setAttributes({ firstBorderWidth: newWidth || "0" })
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                        setAttributes( {
+                        firstBorder:true,
+                        firstBorderTop: top,
+                        firstBorderRight: right,
+                        firstBorderBottom: bottom,
+                        firstBorderLeft: left
+                    })
                         }
                         onChangeColor={colorValue =>
                             setAttributes({
@@ -544,8 +553,14 @@ const edit = props => {
                         onChangeType={newType =>
                             setAttributes({ secondBorderType: newType })
                         }
-                        onChangeWidth={newWidth =>
-                            setAttributes({ secondBorderWidth: newWidth })
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                        setAttributes( {
+                        secondBorder:true,
+                        secondBorderTop: top,
+                        secondBorderRight: right,
+                        secondBorderBottom: bottom,
+                        secondBorderLeft: left
+                    })
                         }
                         onChangeColor={colorValue =>
                             setAttributes({
@@ -661,8 +676,14 @@ const edit = props => {
                         onChangeType={newType =>
                             setAttributes({ containerBorderType: newType })
                         }
-                        onChangeWidth={newWidth =>
-                            setAttributes({ containerBorderWidth: newWidth })
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                        setAttributes( {
+                        containerBorder:true,
+                        containerBorderTop: top,
+                        containerBorderRight: right,
+                        containerBorderBottom: bottom,
+                        containerBorderLeft: left
+                    })
                         }
                         onChangeColor={colorValue =>
                             setAttributes({
@@ -687,8 +708,8 @@ const edit = props => {
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
                 backgroundAttachment: fixed ? "fixed" : "unset",
-                border: containerBorderType,
-                borderWidth:containerBorderTop?`${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`: containerBorderWidth + "px",
+                borderStyle: containerBorderType,
+                borderWidth:containerBorder?`${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`: containerBorderWidth + "px",
                 borderRadius: containerBorderRadius + "px",
                 borderColor: containerBorderColor
             }}
@@ -710,8 +731,8 @@ const edit = props => {
                             textTransform: firstUpper ? "uppercase" : "none",
                             fontStyle: firstStyle,
                             fontWeight: firstWeight,
-                            border: firstBorderType,
-                            borderWidth: firstBorderTop?`${firstBorderTop}px ${firstBorderRight}px ${firstBorderBottom}px ${firstBorderLeft}px`:firstBorderWidth + "px",
+                            borderStyle: firstBorderType,
+                            borderWidth: firstBorder?`${firstBorderTop}px ${firstBorderRight}px ${firstBorderBottom}px ${firstBorderLeft}px`:firstBorderWidth + "px",
                             borderRadius: firstBorderRadius + "px",
                             borderColor: firstBorderColor,
                             padding: firstPadding + "px",
@@ -737,8 +758,8 @@ const edit = props => {
                             textTransform: secondUpper ? "uppercase" : "none",
                             fontStyle: secondStyle,
                             fontWeight: secondWeight,
-                            border: secondBorderType,
-                            borderWidth:secondBorderTop?`${secondBorderTop}px ${secondBorderRight}px ${secondBorderBottom}px ${secondBorderLeft}px`: secondBorderWidth + "px",
+                            borderStyle: secondBorderType,
+                            borderWidth:secondBorder?`${secondBorderTop}px ${secondBorderRight}px ${secondBorderBottom}px ${secondBorderLeft}px`: secondBorderWidth + "px",
                             borderRadius: secondBorderRadius + "px",
                             borderColor: secondBorderColor,
                             padding: secondPadding + "px",

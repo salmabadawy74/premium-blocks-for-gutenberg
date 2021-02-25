@@ -77,6 +77,10 @@ const accordionAttrs = {
         type: "number",
  
     },
+    titleBorderUpdated: {
+        type: "boolean",
+        default:false
+    },
     titleBorderRadius: {
         type: "number",
         default: "0"
@@ -156,6 +160,10 @@ const accordionAttrs = {
         type: "number",
         default: "1"
     },
+    descBorderUpdated: {
+        type: "boolean",
+        default:false
+    },
     descBorderTop: {
         type: "number",
       
@@ -170,9 +178,6 @@ const accordionAttrs = {
     descBorderLeft: {
         type: "number",
     
-    },
-    descEditBorder: {
-        type: "boolean",
     },
     titleEditBorder: {
         type: "boolean",

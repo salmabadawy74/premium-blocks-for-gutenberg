@@ -19,6 +19,7 @@ const save = props => {
         titleWeight,
         titleColor,
         titleBorder,
+        titleBorderWidth,
         titleBorderColor,
         titleBorderTop,
         titleBorderRight,
@@ -65,7 +66,9 @@ const save = props => {
         descPaddingT,
         descPaddingR,
         descPaddingB,
-        descPaddingL
+        descPaddingL,
+        titleBorderUpdated,
+        descBorderUpdated
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-accordion');
@@ -81,7 +84,7 @@ const save = props => {
                     style={{
                         backgroundColor: titleBack,
                         borderStyle: titleBorder,
-                        borderWidth: `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`,
+                        borderWidth:titleBorderUpdated? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`:titleBorderWidth+'px',
                         borderRadius: titleBorderRadius + "px",
                         borderColor: titleBorderColor,
                         paddingTop: titlePaddingT,
@@ -133,7 +136,7 @@ const save = props => {
                         textAlign: descAlign,
                         backgroundColor: descBack,
                         borderStyle: descBorder,
-                        borderWidth:`${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`,
+                        borderWidth:descBorderUpdated?`${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`:descBorderWidth+'px',
                         borderRadius: descBorderRadius + "px",
                         borderColor: descBorderColor,
                         paddingTop: descPaddingT,

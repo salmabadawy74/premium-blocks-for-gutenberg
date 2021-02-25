@@ -108,8 +108,7 @@ class PremiumAccordion extends Component {
         descBorderRight,
         descBorderBottom,
             descBorderLeft,
-            descEditborder,
-        titleEditborder,
+            
             descSize,
             descLine,
             descLetter,
@@ -123,7 +122,10 @@ class PremiumAccordion extends Component {
             descPaddingT,
             descPaddingR,
             descPaddingB,
-            descPaddingL
+            descPaddingL,
+            titleBorderUpdated,
+            descBorderUpdated,
+
         } = this.props.attributes;
 
         const DIRECTION = [
@@ -186,7 +188,7 @@ class PremiumAccordion extends Component {
                         style={{
                             backgroundColor: titleBack,
                             borderStyle: titleBorder,
-                            borderWidth:`${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px` ,
+                            borderWidth:titleBorderUpdated?`${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`:titleBorderWidth+"px" ,
                             borderRadius: titleBorderRadius + "px",
                             borderColor: titleBorderColor,
                             paddingTop: titlePaddingT,
@@ -248,7 +250,7 @@ class PremiumAccordion extends Component {
                             textAlign: descAlign,
                             backgroundColor: descBack,
                             borderStyle: descBorder,
-                            borderWidth: `${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`,
+                            borderWidth: descBorderUpdated?`${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`:descBorderWidth+'px',
                             borderRadius: descBorderRadius + "px",
                             borderColor: descBorderColor,
                             paddingTop: descPaddingT,
@@ -384,7 +386,8 @@ class PremiumAccordion extends Component {
                             borderRadius={titleBorderRadius}
                             onChangeType={newType => setAttributes({ titleBorder: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
-                            setAttributes({
+                                setAttributes( {
+                                titleBorderUpdated:true,
                                 titleBorderTop: top,
                                 titleBorderRight: right,
                                 titleBorderBottom: bottom,
@@ -614,17 +617,17 @@ class PremiumAccordion extends Component {
                             right={ descBorderRight }
                             bottom={ descBorderBottom }
                             left={ descBorderLeft }
-                     
                             borderColor={descBorderColor}
                             borderRadius={descBorderRadius}
                             onChangeType={newType => setAttributes({ descBorder: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
-                            setAttributes({
+                                setAttributes( {
+                                descBorderUpdated:true ,
                                 descBorderTop: top,
                                 descBorderRight: right,
                                 descBorderBottom: bottom,
                                 descBorderLeft: left,
-                                descEditborder:true
+                           
                             })
                             }
                             onChangeColor={colorValue =>

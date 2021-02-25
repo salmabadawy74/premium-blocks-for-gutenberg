@@ -76,7 +76,11 @@ const save = props => {
         containerBorderBottom,
         containerBorderLeft,
         containerBorderRadius,
-        containerBorderColor
+        containerBorderColor,
+        firstBorder,
+        secondBorder,
+        containerBorder,
+
     } = props.attributes;
 
     const mainClasses = classnames(
@@ -95,8 +99,8 @@ const save = props => {
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
                 backgroundAttachment: fixed ? "fixed" : "unset",
-                border: containerBorderType,
-                borderWidth:containerBorderTop?`${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`: containerBorderWidth + "px",
+                borderStyle: containerBorderType,
+                borderWidth:containerBorder?`${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`: containerBorderWidth + "px",
                 borderRadius: containerBorderRadius + "px",
                 borderColor: containerBorderColor
             }}
@@ -120,8 +124,8 @@ const save = props => {
                             textTransform: firstUpper ? "uppercase" : "none",
                             fontStyle: firstStyle,
                             fontWeight: firstWeight,
-                            border: firstBorderType,
-                            borderWidth: firstBorderTop?`${firstBorderTop}px ${firstBorderRight}px ${firstBorderBottom}px ${firstBorderLeft}px`:firstBorderWidth + "px",
+                            borderStyle: firstBorderType,
+                            borderWidth: firstBorder?`${firstBorderTop}px ${firstBorderRight}px ${firstBorderBottom}px ${firstBorderLeft}px`:firstBorderWidth + "px",
                             borderRadius: firstBorderRadius + "px",
                             borderColor: firstBorderColor,
                             padding: firstPadding + "px",
@@ -148,8 +152,8 @@ const save = props => {
                             textTransform: secondUpper ? "uppercase" : "none",
                             fontStyle: secondStyle,
                             fontWeight: secondWeight,
-                            border: secondBorderType,
-                            borderWidth:secondBorderTop?`${secondBorderTop}px ${secondBorderRight}px ${secondBorderBottom}px ${secondBorderLeft}px`: secondBorderWidth + "px",
+                            borderStyle: secondBorderType,
+                            borderWidth:secondBorder?`${secondBorderTop}px ${secondBorderRight}px ${secondBorderBottom}px ${secondBorderLeft}px`: secondBorderWidth + "px",
                             borderRadius: secondBorderRadius + "px",
                             borderColor: secondBorderColor,
                             padding: secondPadding + "px",

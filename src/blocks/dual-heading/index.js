@@ -68,6 +68,10 @@ const dualHeadingAttrs = {
         type: "number",
         default: "1"
     },
+    firstBorder: {
+        type: "boolean",
+      default:false  
+    },
     firstBorderTop: {
         type:"number"
     },
@@ -164,6 +168,10 @@ const dualHeadingAttrs = {
     secondBorderWidth: {
         type: "number",
         default: "1"
+    },
+    secondBorder: {
+        type: "boolean",
+        default:false
     },
     secondBorderTop: {
         type:"number"
@@ -270,6 +278,10 @@ const dualHeadingAttrs = {
     containerBorderWidth: {
         type: "number",
         default: "1"
+    },
+    containerBorder: {
+        type: "boolean",
+      default:false  
     },
     containerBorderTop: {
         type:"number"
