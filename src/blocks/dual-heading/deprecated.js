@@ -265,8 +265,8 @@ const deprecated_attributes_1_7_2 = Object.assign(
   deprecated_attributes_1_4_8,
   newAttributes_1_7_2
 );
- 
-const deprecated_attributes_1_8_1 = {
+
+const deprecated_attributes_1_9_2 = {
   contentAlign: {
     type: "string",
     default: "center"
@@ -513,88 +513,86 @@ const deprecated_attributes_1_8_1 = {
     type: "string"
   }
 };
-const newAttributes_1_8_4 = {
-  containerBorderTop: {
-    type:"number"
-},
-containerBorderRight: {
-    type:"number"
-},
-containerBorderBottom: {
-    type:"number"
-},
-containerBorderLeft: {
-  type:"number"  
+const newAttributes_1_9_5 = {
+  firstBorder: {
+    type: "boolean",
+    default: false
   },
   firstBorderTop: {
-    type:"number"
-},
-firstBorderRight: {
-  type:"number"  
-},
-firstBorderBottom: {
-    type:"number"
-},
-firstBorderLeft: {
-    type:"number"
+    type: "number"
+  },
+  firstBorderRight: {
+    type: "number"
+  },
+  firstBorderBottom: {
+    type: "number"
+  },
+  firstBorderLeft: {
+    type: "number"
   },
   secondBorderTop: {
-    type:"number"
-},
-secondBorderRight: {
-    type:"number"
-},
-secondBorderBottom: {
-    type:"number"
-},
-secondBorderLeft: {
-    type:"number"
+    type: "number"
   },
-  firstBoder: {
-    type: "boolean",
-    default:false
+  secondBorderRight: {
+    type: "number"
   },
-  secondBorder: {
-    type: "boolean",
-    default:false
+  secondBorderBottom: {
+    type: "number"
+  },
+  secondBorderLeft: {
+    type: "number"
+  },
+  containerBorderTop: {
+    type: "number"
+  },
+  containerBorderRight: {
+    type: "number"
+  },
+  containerBorderBottom: {
+    type: "number"
+  },
+  containerBorderLeft: {
+    type: "number"
   },
   containerBorder: {
     type: "boolean",
-    default:false
-  }
-}
-const deprecated_attributes_1_8_4 = Object.assign(
-  deprecated_attributes_1_8_1,
-  newAttributes_1_8_4
-)
+  },
+  secondBorder: {
+    type: "boolean",
+  },
+  firstBorder: {
+    type: "boolean",
+  },
+};
+const deprecated_attributes_1_9_5 = Object.assign( deprecated_attributes_1_9_2, newAttributes_1_9_5 );
 
 const deprecatedContent = [
   {
-    attributes: deprecated_attributes_1_8_4,
-    migrate: attributes => {
+    attributes: deprecated_attributes_1_9_5,
+    migrate: ( attributes ) =>
+    {
       let newAttributes = {
-        containerBorder: "",
         firstBorder: "",
-        secondBorder: "",
-        firstBorderTop: "",
-        firstBorderRight: "",
-        firstBorderBottom: "",
-        firstBorderLeft: "",
-        secondBorderTop: "",
-        secondBorderRight: '',
-        secondBorderBottom: "",
-        secondBorderLeft: '',
+        secondBorder: '',
+        containerBorder: "",
         containerBorderTop: '',
         containerBorderRight: '',
         containerBorderBottom: '',
-        containerBorderLeft:''
+        containerBorderLeft: '',
+        firstBorderTop: '',
+        firstBorderRight: '',
+        firstBorderBottom: '',
+        firstBorderLeft: '',
+        secondBorderTop: '',
+        secondBorderRight: '',
+        secondBorderBottom: '',
+        secondBorderLeft: '',
       };
-      return Object.assign(attributes, newAttributes);
+      return Object.assign(attributes,newAttributes)
     },
-    save: props => {
-    
+    save: ( props ) =>
+    {
       const { className } = props;
-      
       const {
         contentAlign,
         firstHeading,
@@ -659,92 +657,97 @@ const deprecatedContent = [
         containerBorderColor
       } = props.attributes;
       
-      return (
+      const mainClasses = classnames(
+        className,
+        "premium-dheading-block__container"
+    );
+
+    return (
         <div
-        className={`${className}`}
-        style={{
-            textAlign: contentAlign,
-            backgroundColor: containerBack,
-            backgroundImage: `url('${imageURL}')`,
-            backgroundRepeat: backgroundRepeat,
-            backgroundPosition: backgroundPosition,
-            backgroundSize: backgroundSize,
-            backgroundAttachment: fixed ? "fixed" : "unset",
-            border: containerBorderType,
-            borderWidth: containerBorderWidth + "px",
-            borderRadius: containerBorderRadius + "px",
-            borderColor: containerBorderColor
-        }}
-    >
-        <div className={`premium-dheading-block__wrap`}>
-            <h2 className={`premium-dheading-block__title`}>
-                <span
-                    className={`premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim} premium-headings-${firstStroke}`}
-                    style={{
-                        display: display,
-                        color: firstColor,
-                        backgroundColor: firstClip
-                            ? "none"
-                            : firstBackground,
-                        backgroundImage: firstClip
-                            ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
-                            : "none",
-                        fontSize: firstSize + "px",
-                        fontFamily: firstFamily,
-                        letterSpacing: firstLetter + "px",
-                        textTransform: firstUpper ? "uppercase" : "none",
-                        fontStyle: firstStyle,
-                        fontWeight: firstWeight,
-                        border: firstBorderType,
-                        borderWidth: firstBorderWidth + "px",
-                        borderRadius: firstBorderRadius + "px",
-                        borderColor: firstBorderColor,
-                        padding: firstPadding + "px",
-                        margin: firstMargin + "px",
-                        textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
-                    }}
-                >
-                    {firstHeading}
-                </span>
-                <span
-                    className={`premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim} premium-headings-${secondStroke}`}
-                    style={{
-                        display: display,
-                        color: secondColor,
-                        backgroundColor: secondClip
-                            ? "none"
-                            : secondBackground,
-                        backgroundImage: secondClip
-                            ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
-                            : "none",
-                        fontSize: secondSize + "px",
-                        fontFamily: secondFamily,
-                        letterSpacing: secondLetter + "px",
-                        textTransform: secondUpper ? "uppercase" : "none",
-                        fontStyle: secondStyle,
-                        fontWeight: secondWeight,
-                        border: secondBorderType,
-                        borderWidth: secondBorderWidth + "px",
-                        borderRadius: secondBorderRadius + "px",
-                        borderColor: secondBorderColor,
-                        padding: secondPadding + "px",
-                        margin: secondMargin + "px",
-                        textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
-                    }}
-                >
-                    {secondHeading}
-                </span>
-            </h2>
-            {link && headingURL && (
-                <a
-                    className={`premium-dheading-block__link`}
-                    href={link && headingURL}
-                    target={target && "_blank"}
-                />
-            )}
+            className={`${mainClasses}`}
+            style={{
+                textAlign: contentAlign,
+                backgroundColor: containerBack,
+                backgroundImage: `url('${imageURL}')`,
+                backgroundRepeat: backgroundRepeat,
+                backgroundPosition: backgroundPosition,
+                backgroundSize: backgroundSize,
+                backgroundAttachment: fixed ? "fixed" : "unset",
+                border: containerBorderType,
+                borderWidth: containerBorderWidth + "px",
+                borderRadius: containerBorderRadius + "px",
+                borderColor: containerBorderColor
+            }}
+        >
+            <div className={`premium-dheading-block__wrap`}>
+                <h2 className={`premium-dheading-block__title`}>
+                    <span
+                        className={`premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim} premium-headings-${firstStroke}`}
+                        style={{
+                            display: display,
+                            color: firstColor,
+                            backgroundColor: firstClip
+                                ? "none"
+                                : firstBackground,
+                            backgroundImage: firstClip
+                                ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
+                                : "none",
+                            fontSize: firstSize + "px",
+                            fontFamily: firstFamily,
+                            letterSpacing: firstLetter + "px",
+                            textTransform: firstUpper ? "uppercase" : "none",
+                            fontStyle: firstStyle,
+                            fontWeight: firstWeight,
+                            border: firstBorderType,
+                            borderWidth: firstBorderWidth + "px",
+                            borderRadius: firstBorderRadius + "px",
+                            borderColor: firstBorderColor,
+                            padding: firstPadding + "px",
+                            margin: firstMargin + "px",
+                            textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
+                        }}
+                    >
+                        {firstHeading}
+                    </span>
+                    <span
+                        className={`premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim} premium-headings-${secondStroke}`}
+                        style={{
+                            display: display,
+                            color: secondColor,
+                            backgroundColor: secondClip
+                                ? "none"
+                                : secondBackground,
+                            backgroundImage: secondClip
+                                ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
+                                : "none",
+                            fontSize: secondSize + "px",
+                            fontFamily: secondFamily,
+                            letterSpacing: secondLetter + "px",
+                            textTransform: secondUpper ? "uppercase" : "none",
+                            fontStyle: secondStyle,
+                            fontWeight: secondWeight,
+                            border: secondBorderType,
+                            borderWidth: secondBorderWidth + "px",
+                            borderRadius: secondBorderRadius + "px",
+                            borderColor: secondBorderColor,
+                            padding: secondPadding + "px",
+                            margin: secondMargin + "px",
+                            textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
+                        }}
+                    >
+                        {secondHeading}
+                    </span>
+                </h2>
+                {link && headingURL && (
+                    <a
+                        className={`premium-dheading-block__link`}
+                        href={link && headingURL}
+                        target={target && "_blank"}
+                    />
+                )}
+            </div>
         </div>
-    </div>
-      );
+    );
     }
   },
   {
