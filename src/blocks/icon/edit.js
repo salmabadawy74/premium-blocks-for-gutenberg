@@ -324,7 +324,6 @@ const edit = props => {
                             }
                             allowReset={true}
                         />
-                        {imageURL && <img src={imageURL} width="100%" height="auto" />}
                         <PremiumBackgroud
                             imageID={imageID}
                             imageURL={imageURL}

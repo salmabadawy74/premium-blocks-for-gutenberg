@@ -16,13 +16,14 @@ const { __ } = wp.i18n;
 
 const {
     PanelBody,
-    IconButton,
     Toolbar,
     RangeControl,
     SelectControl,
     ToggleControl,
     Dropdown,
-    Button
+    Button,
+    Tooltip,
+    Dashicon,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -34,7 +35,7 @@ const {
     ColorPalette,
     AlignmentToolbar,
     MediaUpload,
-    URLInput
+    URLInput,
 } = wp.blockEditor;
 
 const edit = props => {
@@ -397,31 +398,67 @@ const edit = props => {
                         )}
                         {"image" === iconImage && (
                             <Fragment>
-                                {iconImgUrl && (
-                                    <img src={iconImgUrl} width="100%" height="auto" />
-                                )}
                                 <MediaUpload
                                     allowedTypes={["image"]}
-                                    onSelect={media => {
+                                    onSelect={(media) => {
                                         setAttributes({
                                             iconImgId: media.id,
                                             iconImgUrl:
                                                 "undefined" === typeof media.sizes.thumbnail
                                                     ? media.url
-                                                    : media.sizes.thumbnail.url
+                                                    : media.sizes.thumbnail.url,
                                         });
                                     }}
                                     type="image"
                                     value={iconImgId}
                                     render={({ open }) => (
-                                        <IconButton
-                                            className="premium-media-uplpad-btn"
-                                            label={__("Change Image")}
-                                            icon="edit"
-                                            onClick={open}
-                                        >
-                                            {__("Change Image")}
-                                        </IconButton>
+                                        <Fragment>
+                                            {iconImgUrl && (
+                                                <span className="premium-image-media">
+                                                    <img
+                                                        src={iconImgUrl}
+                                                        className="premium-image-upload"
+                                                    />
+                                                    <div className="premium-image-actions">
+                                                        <Tooltip text={__("Edit")}>
+                                                            <button
+                                                                className="premium-image-button"
+                                                                aria-label={__("Edit")}
+                                                                onClick={open}
+                                                                role="button"
+                                                            >
+                                                                <span
+                                                                    aria-label={__("Edit")}
+                                                                    className="fa fa-pencil"
+                                                                />
+                                                            </button>
+                                                        </Tooltip>
+                                                        <Tooltip text={__("Remove")}>
+                                                            <button
+                                                                className="premium-image-button"
+                                                                aria-label={__("Remove")}
+                                                                onClick={() => setAttributes({ iconImgUrl: "" })}
+                                                                role="button"
+                                                            >
+                                                                <span
+                                                                    aria-label={__("Close")}
+                                                                    className="fa fa-trash-o"
+                                                                />
+                                                            </button>
+                                                        </Tooltip>
+                                                    </div>
+                                                </span>
+                                            )}
+                                            {!iconImgUrl && (
+                                                <div
+                                                    onClick={open}
+                                                    className={"premium-placeholder-image"}
+                                                >
+                                                    <Dashicon icon="insert" />
+                                                    <span>{__("Insert Image ")}</span>
+                                                </div>
+                                            )}
+                                        </Fragment>
                                     )}
                                 />
                                 <RangeControl

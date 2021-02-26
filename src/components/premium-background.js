@@ -1,6 +1,11 @@
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { SelectControl, IconButton, ToggleControl } = wp.components;
+const {
+    SelectControl,
+    ToggleControl,
+    Tooltip,
+    Dashicon
+} = wp.components;
 const { MediaUpload } = wp.blockEditor;
 
 export default function PremiumBackground(props) {
@@ -98,25 +103,41 @@ export default function PremiumBackground(props) {
                 value={imageID}
                 render={({ open }) => (
                     <Fragment>
-                        {!imageURL && (
-                            <IconButton
-                                className="premium-media-uplpad-btn"
-                                label={__("Change Image")}
-                                icon="edit"
-                                onClick={open}
-                            >
-                                {__("Change Image")}
-                            </IconButton>
-                        )}
                         {imageURL && (
-                            <IconButton
-                                className="premium-media-uplpad-btn"
-                                label={__("Remove Image")}
-                                icon="no"
-                                onClick={onRemoveImage}
-                            >
-                                {__("Remove Image")}
-                            </IconButton>
+                            <span className="premium-image-media">
+                                <img src={imageURL} className="premium-image-upload" />
+                                <div className="premium-image-actions">
+                                    <Tooltip text={__("Edit")}>
+                                        <button
+                                            className="premium-image-button"
+                                            aria-label={__("Edit")}
+                                            onClick={open}
+                                            role="button"
+                                        >
+                                            <span aria-label={__("Edit")} className="fa fa-pencil" />
+                                        </button>
+                                    </Tooltip>
+                                    <Tooltip text={__("Remove")}>
+                                        <button
+                                            className="premium-image-button"
+                                            aria-label={__("Remove")}
+                                            onClick={onRemoveImage}
+                                            role="button"
+                                        >
+                                            <span
+                                                aria-label={__("Close")}
+                                                className="fa fa-trash-o"
+                                            />
+                                        </button>
+                                    </Tooltip>
+                                </div>
+                            </span>
+                        )}
+                        {!imageURL && (
+                            <div onClick={open} className={"premium-placeholder-image"}>
+                                <Dashicon icon="insert" />
+                                <span>{__("Insert Background ")}</span>
+                            </div>
                         )}
                     </Fragment>
                 )}
