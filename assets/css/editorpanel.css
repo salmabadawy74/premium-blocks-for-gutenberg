@@ -52,9 +52,6 @@
     color: #0084bc !important;
     font-weight: bold;
 }
-button.premium-media-uplpad-btn {
-    margin: 5px auto;
-}
 
 /*
   * Responsive Controls
@@ -80,8 +77,8 @@ button.premium-media-uplpad-btn {
 }
 
 /* .premium-size-type-field-tabs {
-      margin-bottom: 20px;
-      margin-top: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
   } */
 
 .premium-size-type-field-tabs .components-tab-panel__tabs {
@@ -210,7 +207,7 @@ button.premium-media-uplpad-btn {
     flex-direction: row;
 }
 
-.premium-control-group .premium-controls-container .premium-control-wrapper {
+.premium-control-group .premium-controls-container .premium-control-Wrapper {
     display: flex;
     flex-direction: column;
     width: "25%";
@@ -246,6 +243,60 @@ button.premium-media-uplpad-btn {
 .premium-control-group .premium-controls-container .premium-control-wrapper .premium-control-label {
     text-align: center;
     font-size: 0.75em;
+}
+/*
+  * Background Image Controls
+  */
+.premium-image-media {
+    position: relative;
+    display: block;
+}
+.premium-image-upload {
+    width: 100%;
+    height: auto;
+    margin-top: 6px;
+}
+.premium-image-actions {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+}
+.premium-image-actions button {
+    font-size: 16px;
+    padding: 2px;
+    cursor: pointer;
+}
+.premium-image-actions button span {
+    color: #8d96a0;
+}
+.premium-placeholder-image {
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 1px dashed #dddd;
+    padding: 20px 20px 25px;
+    text-align: center;
+    background: #ffffff;
+    cursor: copy;
+    border-radius: 5px;
+}
+.premium-placeholder-image span {
+    margin-top: 8px;
 }
 
 /*

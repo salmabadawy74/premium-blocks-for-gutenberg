@@ -16,7 +16,9 @@ const {
     TextareaControl,
     ToggleControl,
     Dropdown,
-    Button
+    Button,
+    Tooltip,
+    Dashicon,
 } = wp.components;
 
 const { Component, Fragment } = wp.element;
@@ -49,14 +51,21 @@ class edit extends Component {
     }
 
     initVideoBox() {
+
         const { videoBoxId } = this.props.attributes;
+
         if (!videoBoxId) return null;
-        let videoBox = document.getElementById(videoBoxId);
-        let video, src;
-        //videoBox.classList.remove("video-overlay-false");
+
+        let videoBox = document.getElementById(videoBoxId),
+            video, src;
+
+
         videoBox.addEventListener("click", () => {
+
             videoBox.classList.add("video-overlay-false");
+
             let type = videoBox.getAttribute("data-type");
+
             if ("self" !== type) {
                 video = videoBox.getElementsByTagName("iframe")[0];
                 src = video.getAttribute("src");
@@ -65,6 +74,7 @@ class edit extends Component {
             }
 
             setTimeout(() => {
+
                 if ("self" !== type) {
                     video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
                 } else {
@@ -73,12 +83,14 @@ class edit extends Component {
                         .remove();
                     video.play();
                 }
+
             }, 300);
         });
     }
 
     render() {
         const { isSelected, setAttributes, className } = this.props;
+
         const {
             videoBoxId,
             videoType,
@@ -157,6 +169,7 @@ class edit extends Component {
                 label: __("Self Hosted")
             }
         ];
+
         const loopVideo = () => {
             if ("youtube" === videoType) {
                 if (videoURL.startsWith("http")) {
@@ -214,6 +227,13 @@ class edit extends Component {
 
         const mainClasses = classnames(className, "premium-video-box");
 
+        const changeVideoType = (newvalue) => {
+            if (newvalue === "self") {
+                setAttributes({ videoURL: "" })
+            }
+            setAttributes({ videoType: newvalue })
+        }
+
         return [
             isSelected && (
                 <InspectorControls key={"inspector"}>
@@ -226,7 +246,7 @@ class edit extends Component {
                             label={__("Video Type")}
                             options={TYPE}
                             value={videoType}
-                            onChange={newValue => setAttributes({ videoType: newValue })}
+                            onChange={changeVideoType}
                         />
                         {"self" !== videoType && (
                             <TextControl
@@ -250,13 +270,53 @@ class edit extends Component {
                                 type="video"
                                 value={videoID}
                                 render={({ open }) => (
-                                    <IconButton
-                                        label={__("Change Video")}
-                                        icon="edit"
-                                        onClick={open}
-                                    >
-                                        {__("Change Video")}
-                                    </IconButton>
+                                    <Fragment>
+                                        {videoURL && (
+                                            <span className="premium-image-media">
+                                                <iframe
+                                                    src={videoURL}
+                                                    className="premium-image-upload"
+                                                />
+                                                <div className="premium-image-actions">
+                                                    <Tooltip text={__("Edit")}>
+                                                        <button
+                                                            className="premium-image-button"
+                                                            aria-label={__("Edit")}
+                                                            onClick={open}
+                                                            role="button"
+                                                        >
+                                                            <span
+                                                                aria-label={__("Edit")}
+                                                                className="fa fa-pencil"
+                                                            />
+                                                        </button>
+                                                    </Tooltip>
+                                                    <Tooltip text={__("Remove")}>
+                                                        <button
+                                                            className="premium-image-button"
+                                                            aria-label={__("Remove")}
+                                                            onClick={() => setAttributes({ videoURL: "" })}
+                                                            role="button"
+                                                        >
+                                                            <span
+                                                                aria-label={__("Close")}
+                                                                className="fa fa-trash-o"
+                                                            />
+                                                        </button>
+                                                    </Tooltip>
+                                                </div>
+                                            </span>
+                                        )}
+                                        {!videoURL && (
+                                            <div
+                                                onClick={open}
+                                                className={"premium-placeholder-image"}
+                                            >
+                                                <Dashicon icon="video-alt3" />
+                                                <span>{__("Insert Video ")}</span>
+                                            </div>
+                                        )}
+                                    </Fragment>
                                 )}
                             />
                         )}
@@ -308,28 +368,64 @@ class edit extends Component {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            {overlayImgURL && (
-                                <img src={overlayImgURL} width="100%" height="auto" />
-                            )}
                             <MediaUpload
                                 allowedTypes={["image"]}
-                                onSelect={media => {
+                                onSelect={(media) => {
                                     setAttributes({
                                         overlayImgID: media.id,
-                                        overlayImgURL: media.url
+                                        overlayImgURL: media.url,
                                     });
                                 }}
                                 type="image"
                                 value={overlayImgID}
                                 render={({ open }) => (
-                                    <IconButton
-                                        className="premium-media-uplpad-btn"
-                                        label={__("Change Image")}
-                                        icon="edit"
-                                        onClick={open}
-                                    >
-                                        {__("Change Image")}
-                                    </IconButton>
+                                    <Fragment>
+                                        {overlayImgURL && (
+                                            <span className="premium-image-media">
+                                                <img
+                                                    src={overlayImgURL}
+                                                    className="premium-image-upload"
+                                                />
+                                                <div className="premium-image-actions">
+                                                    <Tooltip text={__("Edit")}>
+                                                        <button
+                                                            className="premium-image-button"
+                                                            aria-label={__("Edit")}
+                                                            onClick={open}
+                                                            role="button"
+                                                        >
+                                                            <span
+                                                                aria-label={__("Edit")}
+                                                                className="fa fa-pencil"
+                                                            />
+                                                        </button>
+                                                    </Tooltip>
+                                                    <Tooltip text={__("Remove")}>
+                                                        <button
+                                                            className="premium-image-button"
+                                                            aria-label={__("Remove")}
+                                                            onClick={() => setAttributes({ overlayImgURL: "" })}
+                                                            role="button"
+                                                        >
+                                                            <span
+                                                                aria-label={__("Close")}
+                                                                className="fa fa-trash-o"
+                                                            />
+                                                        </button>
+                                                    </Tooltip>
+                                                </div>
+                                            </span>
+                                        )}
+                                        {!overlayImgURL && (
+                                            <div
+                                                onClick={open}
+                                                className={"premium-placeholder-image"}
+                                            >
+                                                <Dashicon icon="insert" />
+                                                <span>{__("Insert Image ")}</span>
+                                            </div>
+                                        )}
+                                    </Fragment>
                                 )}
                             />
                             <PremiumFilters

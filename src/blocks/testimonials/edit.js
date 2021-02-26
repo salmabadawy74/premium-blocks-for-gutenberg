@@ -10,7 +10,6 @@ import PremiumPadding from "../../components/premium-padding";
 const { __ } = wp.i18n;
 
 const {
-    IconButton,
     Toolbar,
     PanelBody,
     SelectControl,
@@ -18,7 +17,9 @@ const {
     TextControl,
     ToggleControl,
     Dropdown,
-    Button
+    Button,
+    Tooltip,
+    Dashicon,
 } = wp.components;
 
 const {
@@ -27,7 +28,7 @@ const {
     AlignmentToolbar,
     RichText,
     MediaUpload,
-    ColorPalette
+    ColorPalette,
 } = wp.blockEditor;
 
 const { Fragment } = wp.element;
@@ -125,31 +126,65 @@ const edit = props => {
                         initialOpen={false}
                     >
                         <p>{__("Author Image")}</p>
-                        {authorImgUrl && (
-                            <img src={authorImgUrl} width="100%" height="auto" />
-                        )}
                         {!authorImgUrl && <DefaultImage />}
                         <MediaUpload
                             allowedTypes={["image"]}
-                            onSelect={media => {
+                            onSelect={(media) => {
                                 setAttributes({
                                     authorImgId: media.id,
                                     authorImgUrl:
                                         "undefined" === typeof media.sizes.thumbnail
                                             ? media.url
-                                            : media.sizes.thumbnail.url
+                                            : media.sizes.thumbnail.url,
                                 });
                             }}
                             type="image"
                             value={authorImgId}
                             render={({ open }) => (
-                                <IconButton
-                                    label={__("Change Author Image")}
-                                    icon="edit"
-                                    onClick={open}
-                                >
-                                    {__("Change Author Image")}
-                                </IconButton>
+                                <Fragment>
+                                    {authorImgUrl && (
+                                        <span className="premium-image-media">
+                                            <img
+                                                src={authorImgUrl}
+                                                className="premium-image-upload"
+                                            />
+                                            <div className="premium-image-actions">
+                                                <Tooltip text={__("Edit")}>
+                                                    <button
+                                                        className="premium-image-button"
+                                                        aria-label={__("Edit")}
+                                                        onClick={open}
+                                                        role="button"
+                                                    >
+                                                        <span
+                                                            aria-label={__("Edit")}
+                                                            className="fa fa-pencil"
+                                                        />
+                                                    </button>
+                                                </Tooltip>
+                                                <Tooltip text={__("Remove")}>
+                                                    <button
+                                                        className="premium-image-button"
+                                                        aria-label={__("Remove")}
+                                                        onClick={() => setAttributes({ authorImgUrl: "" })}
+                                                        role="button"
+                                                    >
+                                                        <span
+                                                            aria-label={__("Close")}
+                                                            className="fa fa-trash-o"
+                                                        />
+                                                    </button>
+                                                </Tooltip>
+                                            </div>
+                                        </span>
+                                    )}
+                                    {!authorImgUrl && (
+                                        <div onClick={open} className={"premium-placeholder-image"}>
+                                            <Dashicon icon="insert" />
+                                            <span>{__("Insert Image ")}</span>
+                                        </div>
+                                    )}
+                                </Fragment>
                             )}
                         />
                         {authorImgUrl && (

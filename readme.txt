@@ -59,6 +59,10 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 == Changelog ==
 
+= 1.8.5 =
+
+- Tweak: Media upload controls improved for better UX.
+
 = 1.8.4 =
 
 - Tweak: Margin/Padding controls improved.

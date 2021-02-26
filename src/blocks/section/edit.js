@@ -199,9 +199,6 @@ const edit = props => {
                         }
                         allowReset={true}
                     />
-                    {imageURL && (
-                        <img src={imageURL} width="100%" height="auto" />
-                    )}
                     <PremiumBackgroud
                         imageID={imageID}
                         imageURL={imageURL}
@@ -230,125 +227,137 @@ const edit = props => {
                         onChangeFixed={check => setAttributes({ fixed: check })}
                     />
                 </PanelBody>
-                <PremiumBorder
-                    borderType={borderType}
-                    borderWidth={borderWidth}
-                    borderColor={borderColor}
-                    borderRadius={borderRadius}
-                    onChangeType={newType =>
-                        setAttributes({ borderType: newType })
-                    }
-                    onChangeWidth={newWidth =>
-                        setAttributes({ borderWidth: newWidth })
-                    }
-                    onChangeColor={colorValue =>
-                        setAttributes({ borderColor: colorValue.hex })
-                    }
-                    onChangeRadius={newrRadius =>
-                        setAttributes({ borderRadius: newrRadius })
-                    }
-                />
-                <PremiumBoxShadow
-                    inner={false}
-                    color={shadowColor}
-                    blur={shadowBlur}
-                    horizontal={shadowHorizontal}
-                    vertical={shadowVertical}
-                    position={shadowPosition}
-                    onChangeColor={newColor =>
-                        setAttributes({
-                            shadowColor:
-                                newColor === undefined
-                                    ? "transparent"
-                                    : newColor.hex
-                        })
-                    }
-                    onChangeBlur={newBlur =>
-                        setAttributes({
-                            shadowBlur: newBlur === undefined ? 0 : newBlur
-                        })
-                    }
-                    onChangehHorizontal={newValue =>
-                        setAttributes({
-                            shadowHorizontal:
-                                newValue === undefined ? 0 : newValue
-                        })
-                    }
-                    onChangeVertical={newValue =>
-                        setAttributes({
-                            shadowVertical:
-                                newValue === undefined ? 0 : newValue
-                        })
-                    }
-                    onChangePosition={newValue =>
-                        setAttributes({
-                            shadowPosition:
-                                newValue === undefined ? 0 : newValue
-                        })
-                    }
-                />
-                <PremiumMargin
-                    directions={["all"]}
-                    marginTop={marginTop}
-                    marginRight={marginRight}
-                    marginBottom={marginBottom}
-                    marginLeft={marginLeft}
-                    onChangeMarTop={value =>
-                        setAttributes({
-                            marginTop: value === undefined ? 0 : value
-                        })
-                    }
-                    onChangeMarRight={value =>
-                        setAttributes({
-                            marginRight: value === undefined ? 0 : value
-                        })
-                    }
-                    onChangeMarBottom={value =>
-                        setAttributes({
-                            marginBottom: value === undefined ? 0 : value
-                        })
-                    }
-                    onChangeMarLeft={value =>
-                        setAttributes({
-                            marginLeft: value === undefined ? 0 : value
-                        })
-                    }
-                    showUnits={true}
-                    onChangeMarSizeUnit={newvalue =>
-                        setAttributes({ marginUnit: newvalue })
-                    }
-                />
-                <PremiumPadding
-                    paddingTop={paddingTop}
-                    paddingRight={paddingRight}
-                    paddingBottom={paddingBottom}
-                    paddingLeft={paddingLeft}
-                    onChangePadTop={value =>
-                        setAttributes({
-                            paddingTop: value === undefined ? 0 : value
-                        })
-                    }
-                    onChangePadRight={value =>
-                        setAttributes({
-                            paddingRight: value === undefined ? 0 : value
-                        })
-                    }
-                    onChangePadBottom={value =>
-                        setAttributes({
-                            paddingBottom: value === undefined ? 0 : value
-                        })
-                    }
-                    onChangePadLeft={value =>
-                        setAttributes({
-                            paddingLeft: value === undefined ? 0 : value
-                        })
-                    }
-                    showUnits={true}
-                    selectedUnit={paddingUnit}
-                    onChangePadSizeUnit={newvalue =>
-                        setAttributes({ paddingUnit: newvalue })
-                    }
-                />
+                <PanelBody
+                    title={__("Border")}
+                    className="premium-panel-body"
+                    initialOpen={false}
+                >
+                    <PremiumBorder
+                        borderType={borderType}
+                        borderWidth={borderWidth}
+                        borderColor={borderColor}
+                        borderRadius={borderRadius}
+                        onChangeType={newType =>
+                            setAttributes({ borderType: newType })
+                        }
+                        onChangeWidth={newWidth =>
+                            setAttributes({ borderWidth: newWidth })
+                        }
+                        onChangeColor={colorValue =>
+                            setAttributes({ borderColor: colorValue.hex })
+                        }
+                        onChangeRadius={newrRadius =>
+                            setAttributes({ borderRadius: newrRadius })
+                        }
+                    />
+                    <PremiumBoxShadow
+                        inner={false}
+                        color={shadowColor}
+                        blur={shadowBlur}
+                        horizontal={shadowHorizontal}
+                        vertical={shadowVertical}
+                        position={shadowPosition}
+                        onChangeColor={newColor =>
+                            setAttributes({
+                                shadowColor:
+                                    newColor === undefined
+                                        ? "transparent"
+                                        : newColor.hex
+                            })
+                        }
+                        onChangeBlur={newBlur =>
+                            setAttributes({
+                                shadowBlur: newBlur === undefined ? 0 : newBlur
+                            })
+                        }
+                        onChangehHorizontal={newValue =>
+                            setAttributes({
+                                shadowHorizontal:
+                                    newValue === undefined ? 0 : newValue
+                            })
+                        }
+                        onChangeVertical={newValue =>
+                            setAttributes({
+                                shadowVertical:
+                                    newValue === undefined ? 0 : newValue
+                            })
+                        }
+                        onChangePosition={newValue =>
+                            setAttributes({
+                                shadowPosition:
+                                    newValue === undefined ? 0 : newValue
+                            })
+                        }
+                    />
+                </PanelBody>
+                <PanelBody
+                    title={__("Spacings")}
+                    className="premium-panel-body"
+                    initialOpen={false}
+                >
+                    <PremiumMargin
+                        directions={["all"]}
+                        marginTop={marginTop}
+                        marginRight={marginRight}
+                        marginBottom={marginBottom}
+                        marginLeft={marginLeft}
+                        onChangeMarTop={value =>
+                            setAttributes({
+                                marginTop: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangeMarRight={value =>
+                            setAttributes({
+                                marginRight: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangeMarBottom={value =>
+                            setAttributes({
+                                marginBottom: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangeMarLeft={value =>
+                            setAttributes({
+                                marginLeft: value === undefined ? 0 : value
+                            })
+                        }
+                        showUnits={true}
+                        onChangeMarSizeUnit={newvalue =>
+                            setAttributes({ marginUnit: newvalue })
+                        }
+                    />
+                    <PremiumPadding
+                        paddingTop={paddingTop}
+                        paddingRight={paddingRight}
+                        paddingBottom={paddingBottom}
+                        paddingLeft={paddingLeft}
+                        onChangePadTop={value =>
+                            setAttributes({
+                                paddingTop: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangePadRight={value =>
+                            setAttributes({
+                                paddingRight: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangePadBottom={value =>
+                            setAttributes({
+                                paddingBottom: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangePadLeft={value =>
+                            setAttributes({
+                                paddingLeft: value === undefined ? 0 : value
+                            })
+                        }
+                        showUnits={true}
+                        selectedUnit={paddingUnit}
+                        onChangePadSizeUnit={newvalue =>
+                            setAttributes({ paddingUnit: newvalue })
+                        }
+                    />
+                </PanelBody>
             </InspectorControls>
         ),
         <div

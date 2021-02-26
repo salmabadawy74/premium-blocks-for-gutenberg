@@ -8,17 +8,18 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const {
-    IconButton,
     Toolbar,
     PanelBody,
     SelectControl,
     RangeControl,
     TextControl,
     TextareaControl,
-    ToggleControl
+    ToggleControl,
+    Tooltip,
+    Dashicon
 } = wp.components;
 
-const { InspectorControls, MediaUpload, ColorPalette } = wp.blockEditor;
+const { InspectorControls, MediaUpload, ColorPalette } = wp.editor;
 
 const { Component, Fragment } = wp.element;
 
@@ -400,31 +401,68 @@ class PremiumMap extends Component {
                                     checked={markerCustom}
                                     onChange={check => setAttributes({ markerCustom: check })}
                                 />
-                                {markerCustom && markerIconUrl && (
-                                    <img src={markerIconUrl} width="100%" height="auto" />
-                                )}
                                 {markerCustom && (
                                     <MediaUpload
                                         allowedTypes={["image"]}
-                                        onSelect={media => {
+                                        onSelect={(media) => {
                                             setAttributes({
                                                 markerIconId: media.id,
                                                 markerIconUrl:
                                                     "undefined" === typeof media.sizes.thumbnail
                                                         ? media.url
-                                                        : media.sizes.thumbnail.url
+                                                        : media.sizes.thumbnail.url,
                                             });
                                         }}
                                         type="image"
                                         value={markerIconId}
                                         render={({ open }) => (
-                                            <IconButton
-                                                label={__("Change Marker Icon")}
-                                                icon="edit"
-                                                onClick={open}
-                                            >
-                                                {__("Change Marker Icon")}
-                                            </IconButton>
+                                            <Fragment>
+                                                {markerIconUrl && (
+                                                    <span className="premium-image-media">
+                                                        <img
+                                                            src={markerIconUrl}
+                                                            className="premium-image-upload"
+                                                        />
+                                                        <div className="premium-image-actions">
+                                                            <Tooltip text={__("Edit")}>
+                                                                <button
+                                                                    className="premium-image-button"
+                                                                    aria-label={__("Edit")}
+                                                                    onClick={open}
+                                                                    role="button"
+                                                                >
+                                                                    <span
+                                                                        aria-label={__("Edit")}
+                                                                        className="fa fa-pencil"
+                                                                    />
+                                                                </button>
+                                                            </Tooltip>
+                                                            <Tooltip text={__("Remove")}>
+                                                                <button
+                                                                    className="premium-image-button"
+                                                                    aria-label={__("Remove")}
+                                                                    onClick={() => setAttributes({ markerIconUrl: "" })}
+                                                                    role="button"
+                                                                >
+                                                                    <span
+                                                                        aria-label={__("Close")}
+                                                                        className="fa fa-trash-o"
+                                                                    />
+                                                                </button>
+                                                            </Tooltip>
+                                                        </div>
+                                                    </span>
+                                                )}
+                                                {!markerIconUrl && (
+                                                    <div
+                                                        onClick={open}
+                                                        className={"premium-placeholder-image"}
+                                                    >
+                                                        <Dashicon icon="insert" />
+                                                        <span>{__("Insert Image ")}</span>
+                                                    </div>
+                                                )}
+                                            </Fragment>
                                         )}
                                     />
                                 )}
