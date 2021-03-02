@@ -124,7 +124,6 @@ class PremiumAccordion extends Component {
       descPaddingB,
       descPaddingL,
     } = this.props.attributes;
-    console.log(titleBack, descBack, arrowBack);
     const DIRECTION = [
       {
         value: "ltr",
