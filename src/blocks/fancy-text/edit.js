@@ -3,7 +3,7 @@ import styling from "./styling";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import Typed from "typed.js";
-import PremiumBackground from '../../components/premium-background'
+import PremiumBackground from "../../components/premium-background";
 
 import {
   SortableContainer,
@@ -209,6 +209,8 @@ class edit extends Component {
       fancyalign,
       fancyTextBGOpacity,
       textBGOpacity,
+      fancyTextUpdated,
+      textBGUpdated,
     } = attributes;
 
     const ALIGNS = ["left", "center", "right"];
@@ -605,7 +607,7 @@ class edit extends Component {
               type="color"
               colorValue={fancyTextBGColor}
               onChangeColor={(newvalue) =>
-                setAttributes({ fancyTextBGColor: newvalue })
+                setAttributes({ fancyTextBGColor: newvalue,fancyTextUpdated:true })
               }
               opacityValue={fancyTextBGOpacity}
               onChangeOpacity={(value) =>
@@ -706,7 +708,7 @@ class edit extends Component {
               type="color"
               colorValue={textBGColor}
               onChangeColor={(newvalue) =>
-                setAttributes({ textBGColor: newvalue })
+                setAttributes({ textBGColor: newvalue ,textBGUpdated:true})
               }
               opacityValue={textBGOpacity}
               onChangeOpacity={(value) =>

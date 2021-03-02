@@ -76,6 +76,8 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 							'textBGColor'             => '',
 							'fancyTextBGOpacity'      =>'1',
 							'textBGOpacity'           =>'1',
+							'fancyTextUpdated'        =>false,
+                            'textBGUpdated'           =>false,
 						),
 					),
 				);

@@ -6,6 +6,8 @@ const save = (props) => {
   const { className } = props;
 
   const {
+    priceBackUpdated,
+    tableBackUpdated,
     priceOpacity,
     tableOpacity,
     contentAlign,
@@ -143,7 +145,9 @@ const save = (props) => {
       className={`${mainClasses}`}
       style={{
         textAlign: contentAlign,
-        backgroundColor: `rgba(${tableBack},${tableOpacity})`,
+        backgroundColor: tableBackUpdated
+          ? `rgba(${tableBack},${tableOpacity})`
+          : tableBack,
         border: borderType,
         borderWidth: borderWidth + "px",
         borderRadius: borderRadius + "px",
@@ -219,7 +223,9 @@ const save = (props) => {
         <div
           className={`premium-pricing-table__price_wrap`}
           style={{
-            backgroundColor: `rgba(${priceBack},${priceOpacity})`,
+            backgroundColor: priceBackUpdated
+              ? `rgba(${priceBack},${priceOpacity})`
+              : priceBack,
             marginTop: priceMarginT + "px",
             marginBottom: priceMarginB + "px",
             padding: pricePadding + "px",

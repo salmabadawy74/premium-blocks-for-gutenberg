@@ -32,6 +32,8 @@ function styling(props) {
     textBGColor,
     fancyTextBGOpacity,
     textBGOpacity,
+    fancyTextUpdated,
+    textBGUpdated,
   } = props.attributes;
 
   var selectors = {};
@@ -46,7 +48,9 @@ function styling(props) {
       "letter-spacing": fancyTextLetter + "px",
       "text-transform": fancyTextUpper ? "uppercase" : "none",
       "font-style": fancyTextStyle,
-      "background-color": `rgba(${fancyTextBGColor},${fancyTextBGOpacity})`,
+      "background-color": fancyTextUpdated
+        ? `rgba(${fancyTextBGColor},${fancyTextBGOpacity})`
+        : fancyTextBGColor,
       "text-shadow": `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
     },
     " .premium-fancy-text-title-slide": {
@@ -56,7 +60,9 @@ function styling(props) {
       "letter-spacing": fancyTextLetter + "px",
       "text-transform": fancyTextUpper ? "uppercase" : "none",
       "font-style": fancyTextStyle,
-      "background-color": `rgba(${fancyTextBGColor},${fancyTextBGOpacity})`,
+      "background-color": fancyTextUpdated
+        ? `rgba(${fancyTextBGColor},${fancyTextBGOpacity})`
+        : fancyTextBGColor,
       "text-shadow": `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
     },
     " .typed-cursor": {
@@ -69,7 +75,9 @@ function styling(props) {
       "letter-spacing": textLetter + "px",
       "text-transform": textUpper ? "uppercase" : "none",
       "font-style": textStyle,
-      "background-color": `rgba(${textBGColor},${textBGOpacity})`,
+      "background-color": textBGUpdated
+        ? `rgba(${textBGColor},${textBGOpacity})`
+        : textBGColor,
     },
     " .premium-fancy-text-suffix-text": {
       "font-size": generateCSSUnit(textfontSize, textfontSizeUnit),
@@ -78,7 +86,9 @@ function styling(props) {
       "letter-spacing": textLetter + "px",
       "text-transform": textUpper ? "uppercase" : "none",
       "font-style": textStyle,
-      "background-color": `rgba(${textBGColor},${textBGOpacity})`,
+      "background-color": textBGUpdated
+        ? `rgba(${textBGColor},${textBGOpacity})`
+        : textBGColor,
     },
   };
 

@@ -188,6 +188,14 @@ const newAtrributes_1_0_1 = {
     type: "number",
     default: "1",
   },
+  fancyTextUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  textBGUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 const fancyAttributes_1_0_1 = Object.assign(
   newAtrributes_1_0_1,
@@ -200,6 +208,8 @@ const deprecated = [
       let newAttributes = {
         fancyTextBGOpacity: "",
         textBGOpacity: "",
+        fancyTextUpdated: "",
+        textBGUpdated: "",
       };
       Object.assign(attributes, newAttributes);
     },

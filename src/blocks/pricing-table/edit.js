@@ -174,6 +174,8 @@ class PremiumPricingTable extends Component {
       id,
       priceOpacity,
       tableOpacity,
+      priceBackUpdated,
+      tableBackUpdated,
     } = this.props.attributes;
 
     const ALIGNS = [
@@ -697,7 +699,10 @@ class PremiumPricingTable extends Component {
                   type="color"
                   colorValue={priceBack}
                   onChangeColor={(newvalue) =>
-                    setAttributes({ priceBack: newvalue })
+                    setAttributes({
+                      priceBack: newvalue,
+                      priceBackUpdated: true,
+                    })
                   }
                   opacityValue={priceOpacity}
                   onChangeOpacity={(value) =>
@@ -1153,7 +1158,7 @@ class PremiumPricingTable extends Component {
                 type="color"
                 colorValue={tableBack}
                 onChangeColor={(newvalue) =>
-                  setAttributes({ tableBack: newvalue })
+                  setAttributes({ tableBack: newvalue, tableBackUpdated: true })
                 }
                 opacityValue={tableOpacity}
                 onChangeOpacity={(value) =>
@@ -1245,7 +1250,9 @@ class PremiumPricingTable extends Component {
         className={`${mainClasses}`}
         style={{
           textAlign: contentAlign,
-          backgroundColor: `rgba(${tableBack},${tableOpacity})`,
+          backgroundColor: tableBackUpdated
+            ? `rgba(${tableBack},${tableOpacity})`
+            : tableBack,
           border: borderType,
           borderWidth: borderWidth + "px",
           borderRadius: borderRadius + "px",
@@ -1323,7 +1330,9 @@ class PremiumPricingTable extends Component {
           <div
             className={`premium-pricing-table__price_wrap`}
             style={{
-              backgroundColor: `rgba(${priceBack},${priceOpacity})`,
+              backgroundColor: priceBackUpdated
+                ? `rgba(${priceBack},${priceOpacity})`
+                : priceBack,
               marginTop: priceMarginT + "px",
               marginBottom: priceMarginB + "px",
               padding: pricePadding + "px",

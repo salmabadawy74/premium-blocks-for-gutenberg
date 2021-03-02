@@ -913,6 +913,14 @@ const newAttributes_1_9_4 = {
     type: "number",
     default: "1",
   },
+  tableBackUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  priceBackUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 const pricingAttrs_1_9_4 = Object.assign(

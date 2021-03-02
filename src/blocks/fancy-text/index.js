@@ -195,6 +195,14 @@ const fancyTextAttrs = {
     type: "string",
     default: "center",
   },
+  fancyTextUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  textBGUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 registerBlockType("premium/fancy-text", {

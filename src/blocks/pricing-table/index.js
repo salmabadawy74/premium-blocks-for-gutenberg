@@ -466,6 +466,14 @@ const pricingAttrs = {
     type: "number",
     default: "1",
   },
+  priceBackUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  tableBackUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 registerBlockType("premium/pricing-table", {
