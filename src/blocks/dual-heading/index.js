@@ -279,6 +279,7 @@ const dualHeadingAttrs = {
     default: false,
   },
 };
+
 registerBlockType("premium/dheading-block", {
   title: __("Dual Heading"),
   icon: <PbgIcon icon="dual-heading" />,

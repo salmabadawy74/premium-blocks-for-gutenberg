@@ -3,6 +3,7 @@ const className = "premium-accordion";
 const { __ } = wp.i18n;
 
 const { RichText, InnerBlocks } = wp.editor;
+
 const deprecated_attributes_1_2_3 = {
   accordionId: {
     type: "string",
@@ -189,6 +190,7 @@ const deprecated_attributes_1_2_3 = {
     default: 10,
   },
 };
+
 const newAttributes_1_3_4 = {
   titleOpacity: {
     type: "number",
@@ -215,10 +217,12 @@ const newAttributes_1_3_4 = {
     default: false,
   },
 };
+
 const deprecated_attributes_1_3_4 = Object.assign(
   deprecated_attributes_1_2_3,
   newAttributes_1_3_4
 );
+
 const deprecated_attributes = {
   accordionId: {
     type: "string",

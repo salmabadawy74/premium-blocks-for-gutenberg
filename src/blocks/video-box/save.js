@@ -65,6 +65,7 @@ const save = (props) => {
     videoDescUpdated,
     playBackUpdated,
   } = props.attributes;
+  
   const loopVideo = () => {
     if ("youtube" === videoType) {
       if (videoURL.startsWith("http")) {

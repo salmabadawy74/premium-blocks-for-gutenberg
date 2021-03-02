@@ -265,6 +265,7 @@ const newAttributes_1_8_2 = {
     default: false,
   },
 };
+
 const deprecated_attributes_1_8_2 = Object.assign(
   deprecated_attributes_1_8_1,
   newAttributes_1_8_2

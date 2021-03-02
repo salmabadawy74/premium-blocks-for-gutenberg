@@ -18,6 +18,7 @@ const {
   Dropdown,
   Button,
 } = wp.components;
+
 const {
   BlockControls,
   InspectorControls,
@@ -28,6 +29,7 @@ const {
 
 const edit = (props) => {
   const { setAttributes, isSelected, className } = props;
+
   const {
     firstUpdated,
     secondUpdated,
@@ -100,6 +102,7 @@ const edit = (props) => {
     containerBorderRadius,
     containerBorderColor,
   } = props.attributes;
+
   const DISPLAY = [
     {
       value: "inline",

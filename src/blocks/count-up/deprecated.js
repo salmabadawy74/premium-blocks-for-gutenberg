@@ -480,6 +480,7 @@ const counterAttrs_1_7_5 = Object.assign(
   counterAttrs_1_7_4,
   newAttributes_1_7_5
 );
+
 const deprecatedContent = [
   {
     attributes: counterAttrs_1_7_5,

@@ -65,6 +65,7 @@ const save = (props) => {
     prefixFamily,
     suffixFamily,
   } = props.attributes;
+  
   let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
 
   const mainClasses = classnames(className, "premium-countup");

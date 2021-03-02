@@ -186,6 +186,7 @@ class edit extends Component {
         return loop ? "1" : "0";
       }
     };
+    
     const getHelp = (Type) => {
       switch (Type) {
         case "youtube":

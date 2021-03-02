@@ -136,6 +136,7 @@ const containerAttrs = {
     default: false,
   },
 };
+
 registerBlockType("premium/container", {
   title: __("Section"),
   icon: <PbgIcon icon="section" />,

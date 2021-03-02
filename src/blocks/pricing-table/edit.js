@@ -192,6 +192,7 @@ class PremiumPricingTable extends Component {
         label: __("Bottom"),
       },
     ];
+
     const PRICE = [
       {
         value: "slash",
@@ -214,6 +215,7 @@ class PremiumPricingTable extends Component {
         label: __("Duration"),
       },
     ];
+
     const TYPE = [
       {
         value: "none",
@@ -236,6 +238,7 @@ class PremiumPricingTable extends Component {
         label: __("Square"),
       },
     ];
+    
     const POSITION = [
       {
         value: "right",

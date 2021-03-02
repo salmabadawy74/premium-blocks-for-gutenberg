@@ -1,4 +1,5 @@
 const className = "premium-icon";
+
 const deprecated_attributes_1_6_1 = {
   iconType: {
     type: "string",
@@ -199,6 +200,7 @@ const deprecated_attributes_1_6_1 = {
     type: "boolean",
   },
 };
+
 const newAttributes_1_6_2 = {
   iconOpacity: {
     type: "number",
@@ -217,6 +219,7 @@ const newAttributes_1_6_2 = {
     default: false,
   },
 };
+
 const deprecated_attributes_1_6_2 = Object.assign(
   deprecated_attributes_1_6_1,
   newAttributes_1_6_2

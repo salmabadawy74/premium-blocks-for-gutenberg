@@ -167,7 +167,8 @@ const save = (props) => {
         </div>
       </div>
     );
-  });
+  } );
+  
   return (
     <div id={accordionId} className={`${mainClasses}`}>
       {accordionItems}

@@ -91,6 +91,7 @@ const edit = (props) => {
       label: __("Block"),
     },
   ];
+
   const DIRECTION = [
     {
       value: "top",
@@ -109,6 +110,7 @@ const edit = (props) => {
       label: __("Right to Left"),
     },
   ];
+
   const SHUTTER = [
     {
       value: "shutouthor",
@@ -135,6 +137,7 @@ const edit = (props) => {
       label: __("Tilted Right"),
     },
   ];
+
   const RADIAL = [
     {
       value: "radialin",
@@ -153,6 +156,7 @@ const edit = (props) => {
       label: __("Rectangle Out"),
     },
   ];
+
   const EFFECTS = [
     {
       value: "none",
@@ -171,6 +175,7 @@ const edit = (props) => {
       label: __("Radial"),
     },
   ];
+
   const onChangeHover = (newValue) => {
     props.setAttributes({ effect: newValue });
     switch (newValue) {
@@ -185,6 +190,7 @@ const edit = (props) => {
         break;
     }
   };
+
   setAttributes({ id: blockId });
 
   const addFontToHead = (fontFamily) => {

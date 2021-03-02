@@ -213,7 +213,8 @@ class edit extends Component {
       textBGUpdated,
     } = attributes;
 
-    const ALIGNS = ["left", "center", "right"];
+    const ALIGNS = [ "left", "center", "right" ];
+    
     const EFFECT = [
       {
         label: __("Typing"),
@@ -276,9 +277,7 @@ class edit extends Component {
 
     const onSortEndSingle = ({ oldIndex, newIndex }) => {
       let arrayItem = repeaterFancyText.map((cont) => cont);
-
       const sortedArray = arrayMove(arrayItem, oldIndex, newIndex);
-
       setAttributes({
         repeaterFancyText: sortedArray,
       });

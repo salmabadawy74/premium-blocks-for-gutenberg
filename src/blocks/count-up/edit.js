@@ -89,7 +89,9 @@ const edit = (props) => {
     prefixFamily,
     suffixFamily,
   } = props.attributes;
+
   let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
+
   const ICONS = [
     {
       value: "icon",
@@ -100,6 +102,7 @@ const edit = (props) => {
       label: __("Image"),
     },
   ];
+
   const DIRECTION = [
     {
       value: "row",
@@ -118,6 +121,7 @@ const edit = (props) => {
       label: __("Reversed Column"),
     },
   ];
+
   const TYPE = [
     {
       value: "fa",
@@ -128,8 +132,11 @@ const edit = (props) => {
       label: "Dashicon",
     },
   ];
+
   const ALIGNS = ["left", "center", "right"];
+
   const REVALIGNS = ["right", "center", "left"];
+
   switch (align) {
     case "left":
       setAttributes({ selfAlign: "flex-start" });
@@ -467,7 +474,6 @@ const edit = (props) => {
                 setAttributes({ prefixWeight: newWeight })
               }
             />
-
             <Fragment>
               <p>{__("Text Color")}</p>
               <ColorPalette

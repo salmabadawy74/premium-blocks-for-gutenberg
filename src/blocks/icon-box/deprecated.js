@@ -1054,6 +1054,7 @@ const deprecated_attributes_1_7_1 = {
     type: "string",
   },
 };
+
 const newAttributes_1_7_2 = {
   backOpacity: {
     type: "number",

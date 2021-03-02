@@ -1,5 +1,7 @@
 import classnames from "classnames";
+
 const { __ } = wp.i18n;
+
 const fancyAttributes = {
   block_id: {
     type: "string",
@@ -179,6 +181,7 @@ const fancyAttributes = {
     default: "center",
   },
 };
+
 const newAtrributes_1_0_1 = {
   fancyTextBGOpacity: {
     type: "number",
@@ -197,10 +200,12 @@ const newAtrributes_1_0_1 = {
     default: false,
   },
 };
+
 const fancyAttributes_1_0_1 = Object.assign(
   newAtrributes_1_0_1,
   fancyAttributes
 );
+
 const deprecated = [
   {
     attributes: fancyAttributes_1_0_1,

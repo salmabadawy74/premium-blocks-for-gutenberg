@@ -277,6 +277,7 @@ const buttonAttrs_1_5_7 = {
     type: "string",
   },
 };
+
 const newAttributes_1_5_8 = {
   backOpacity: {
     type: "number",
@@ -287,6 +288,7 @@ const newAttributes_1_5_8 = {
     default: false,
   },
 };
+
 const buttonAttrs_1_5_8 = Object.assign(buttonAttrs_1_5_7, newAttributes_1_5_8);
 
 const deprecatedContent = [

@@ -28,6 +28,7 @@ const { Fragment } = wp.element;
 
 const edit = (props) => {
   const { isSelected, setAttributes, className } = props;
+
   const {
     iconType,
     selectedIcon,
