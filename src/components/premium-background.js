@@ -1,5 +1,7 @@
 const { __ } = wp.i18n;
+
 const { Fragment } = wp.element;
+
 const {
   SelectControl,
   ToggleControl,
@@ -7,6 +9,7 @@ const {
   Dashicon,
   RangeControl,
 } = wp.components;
+
 const { MediaUpload, ColorPalette } = wp.blockEditor;
 
 export default function PremiumBackground(props) {
@@ -28,6 +31,7 @@ export default function PremiumBackground(props) {
     onChangeBackSize = () => {},
     onChangeFixed = () => {},
   } = props;
+
   const hexToRgb = (colorValue) => {
     if (/^#([0-9a-f]{3}|[0-9a-f]{6})$/gi.test(colorValue)) {
       var hex = colorValue.substr(1);
@@ -78,6 +82,7 @@ export default function PremiumBackground(props) {
       label: __("Bottom Right"),
     },
   ];
+
   const REPEAT = [
     {
       value: "no-repeat",
@@ -96,6 +101,7 @@ export default function PremiumBackground(props) {
       label: __("Repeat Vertically"),
     },
   ];
+
   const SIZE = [
     {
       value: "auto",
@@ -110,6 +116,7 @@ export default function PremiumBackground(props) {
       label: __("Contain"),
     },
   ];
+  
   return type === "color" ? (
     <Fragment>
       <ColorPalette value={colorValue} onChange={hexToRgb} allowReset={true} />
