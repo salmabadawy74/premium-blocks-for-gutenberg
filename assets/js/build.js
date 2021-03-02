@@ -17129,7 +17129,7 @@ var edit = function edit(props) {
           null,
           __("Background Color")
         ),
-        wp.element.createElement(PremiumBackground, {
+        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_background__["a" /* default */], {
           type: "color",
           colorValue: containerBack,
           onChangeColor: function onChangeColor(newValue) {
@@ -39844,6 +39844,14 @@ var pricingAttrs = {
   priceOpacity: {
     type: "number",
     default: "1"
+  },
+  priceBackUpdated: {
+    type: "boolean",
+    default: false
+  },
+  tableBackUpdated: {
+    type: "boolean",
+    default: false
   }
 };
 
@@ -40065,7 +40073,9 @@ var PremiumPricingTable = function (_Component) {
           featsAlign = _props$attributes.featsAlign,
           id = _props$attributes.id,
           priceOpacity = _props$attributes.priceOpacity,
-          tableOpacity = _props$attributes.tableOpacity;
+          tableOpacity = _props$attributes.tableOpacity,
+          priceBackUpdated = _props$attributes.priceBackUpdated,
+          tableBackUpdated = _props$attributes.tableBackUpdated;
 
 
       var ALIGNS = [{
@@ -40659,7 +40669,10 @@ var PremiumPricingTable = function (_Component) {
               type: "color",
               colorValue: priceBack,
               onChangeColor: function onChangeColor(newvalue) {
-                return setAttributes({ priceBack: newvalue });
+                return setAttributes({
+                  priceBack: newvalue,
+                  priceBackUpdated: true
+                });
               },
               opacityValue: priceOpacity,
               onChangeOpacity: function onChangeOpacity(value) {
@@ -41174,7 +41187,7 @@ var PremiumPricingTable = function (_Component) {
               type: "color",
               colorValue: tableBack,
               onChangeColor: function onChangeColor(newvalue) {
-                return setAttributes({ tableBack: newvalue });
+                return setAttributes({ tableBack: newvalue, tableBackUpdated: true });
               },
               opacityValue: tableOpacity,
               onChangeOpacity: function onChangeOpacity(value) {
@@ -41279,7 +41292,7 @@ var PremiumPricingTable = function (_Component) {
           className: "" + mainClasses,
           style: {
             textAlign: contentAlign,
-            backgroundColor: "rgba(" + tableBack + "," + tableOpacity + ")",
+            backgroundColor: tableBackUpdated ? "rgba(" + tableBack + "," + tableOpacity + ")" : tableBack,
             border: borderType,
             borderWidth: borderWidth + "px",
             borderRadius: borderRadius + "px",
@@ -41362,7 +41375,7 @@ var PremiumPricingTable = function (_Component) {
           {
             className: "premium-pricing-table__price_wrap",
             style: {
-              backgroundColor: "rgba(" + priceBack + "," + priceOpacity + ")",
+              backgroundColor: priceBackUpdated ? "rgba(" + priceBack + "," + priceOpacity + ")" : priceBack,
               marginTop: priceMarginT + "px",
               marginBottom: priceMarginB + "px",
               padding: pricePadding + "px",
@@ -41572,6 +41585,8 @@ var RichText = wp.blockEditor.RichText;
 var save = function save(props) {
   var className = props.className;
   var _props$attributes = props.attributes,
+      priceBackUpdated = _props$attributes.priceBackUpdated,
+      tableBackUpdated = _props$attributes.tableBackUpdated,
       priceOpacity = _props$attributes.priceOpacity,
       tableOpacity = _props$attributes.tableOpacity,
       contentAlign = _props$attributes.contentAlign,
@@ -41710,7 +41725,7 @@ var save = function save(props) {
       className: "" + mainClasses,
       style: {
         textAlign: contentAlign,
-        backgroundColor: "rgba(" + tableBack + "," + tableOpacity + ")",
+        backgroundColor: tableBackUpdated ? "rgba(" + tableBack + "," + tableOpacity + ")" : tableBack,
         border: borderType,
         borderWidth: borderWidth + "px",
         borderRadius: borderRadius + "px",
@@ -41790,7 +41805,7 @@ var save = function save(props) {
       {
         className: "premium-pricing-table__price_wrap",
         style: {
-          backgroundColor: "rgba(" + priceBack + "," + priceOpacity + ")",
+          backgroundColor: priceBackUpdated ? "rgba(" + priceBack + "," + priceOpacity + ")" : priceBack,
           marginTop: priceMarginT + "px",
           marginBottom: priceMarginB + "px",
           padding: pricePadding + "px",
@@ -42888,6 +42903,14 @@ var newAttributes_1_9_4 = {
   priceOpacity: {
     type: "number",
     default: "1"
+  },
+  tableBackUpdated: {
+    type: "boolean",
+    default: false
+  },
+  priceBackUpdated: {
+    type: "boolean",
+    default: false
   }
 };
 
@@ -50620,6 +50643,14 @@ var fancyTextAttrs = {
   fancyalign: {
     type: "string",
     default: "center"
+  },
+  fancyTextUpdated: {
+    type: "boolean",
+    default: false
+  },
+  textBGUpdated: {
+    type: "boolean",
+    default: false
   }
 };
 
@@ -51021,7 +51052,9 @@ var edit = function (_Component) {
           hoverPause = attributes.hoverPause,
           fancyalign = attributes.fancyalign,
           fancyTextBGOpacity = attributes.fancyTextBGOpacity,
-          textBGOpacity = attributes.textBGOpacity;
+          textBGOpacity = attributes.textBGOpacity,
+          fancyTextUpdated = attributes.fancyTextUpdated,
+          textBGUpdated = attributes.textBGUpdated;
 
 
       var ALIGNS = ["left", "center", "right"];
@@ -51445,7 +51478,7 @@ var edit = function (_Component) {
             type: "color",
             colorValue: fancyTextBGColor,
             onChangeColor: function onChangeColor(newvalue) {
-              return setAttributes({ fancyTextBGColor: newvalue });
+              return setAttributes({ fancyTextBGColor: newvalue, fancyTextUpdated: true });
             },
             opacityValue: fancyTextBGOpacity,
             onChangeOpacity: function onChangeOpacity(value) {
@@ -51557,7 +51590,7 @@ var edit = function (_Component) {
             type: "color",
             colorValue: textBGColor,
             onChangeColor: function onChangeColor(newvalue) {
-              return setAttributes({ textBGColor: newvalue });
+              return setAttributes({ textBGColor: newvalue, textBGUpdated: true });
             },
             opacityValue: textBGOpacity,
             onChangeOpacity: function onChangeOpacity(value) {
@@ -51712,7 +51745,9 @@ function styling(props) {
       textStyle = _props$attributes.textStyle,
       textBGColor = _props$attributes.textBGColor,
       fancyTextBGOpacity = _props$attributes.fancyTextBGOpacity,
-      textBGOpacity = _props$attributes.textBGOpacity;
+      textBGOpacity = _props$attributes.textBGOpacity,
+      fancyTextUpdated = _props$attributes.fancyTextUpdated,
+      textBGUpdated = _props$attributes.textBGUpdated;
 
 
   var selectors = {};
@@ -51727,7 +51762,7 @@ function styling(props) {
       "letter-spacing": fancyTextLetter + "px",
       "text-transform": fancyTextUpper ? "uppercase" : "none",
       "font-style": fancyTextStyle,
-      "background-color": "rgba(" + fancyTextBGColor + "," + fancyTextBGOpacity + ")",
+      "background-color": fancyTextUpdated ? "rgba(" + fancyTextBGColor + "," + fancyTextBGOpacity + ")" : fancyTextBGColor,
       "text-shadow": shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
     },
     " .premium-fancy-text-title-slide": {
@@ -51737,7 +51772,7 @@ function styling(props) {
       "letter-spacing": fancyTextLetter + "px",
       "text-transform": fancyTextUpper ? "uppercase" : "none",
       "font-style": fancyTextStyle,
-      "background-color": "rgba(" + fancyTextBGColor + "," + fancyTextBGOpacity + ")",
+      "background-color": fancyTextUpdated ? "rgba(" + fancyTextBGColor + "," + fancyTextBGOpacity + ")" : fancyTextBGColor,
       "text-shadow": shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
     },
     " .typed-cursor": {
@@ -51750,7 +51785,7 @@ function styling(props) {
       "letter-spacing": textLetter + "px",
       "text-transform": textUpper ? "uppercase" : "none",
       "font-style": textStyle,
-      "background-color": "rgba(" + textBGColor + "," + textBGOpacity + ")"
+      "background-color": textBGUpdated ? "rgba(" + textBGColor + "," + textBGOpacity + ")" : textBGColor
     },
     " .premium-fancy-text-suffix-text": {
       "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(textfontSize, textfontSizeUnit),
@@ -51759,7 +51794,7 @@ function styling(props) {
       "letter-spacing": textLetter + "px",
       "text-transform": textUpper ? "uppercase" : "none",
       "font-style": textStyle,
-      "background-color": "rgba(" + textBGColor + "," + textBGOpacity + ")"
+      "background-color": textBGUpdated ? "rgba(" + textBGColor + "," + textBGOpacity + ")" : textBGColor
     }
   };
 
@@ -55172,6 +55207,14 @@ var newAtrributes_1_0_1 = {
   textBGOpacity: {
     type: "number",
     default: "1"
+  },
+  fancyTextUpdated: {
+    type: "boolean",
+    default: false
+  },
+  textBGUpdated: {
+    type: "boolean",
+    default: false
   }
 };
 var fancyAttributes_1_0_1 = Object.assign(newAtrributes_1_0_1, fancyAttributes);
@@ -55180,7 +55223,9 @@ var deprecated = [{
   migrate: function migrate(attributes) {
     var newAttributes = {
       fancyTextBGOpacity: "",
-      textBGOpacity: ""
+      textBGOpacity: "",
+      fancyTextUpdated: "",
+      textBGUpdated: ""
     };
     Object.assign(attributes, newAttributes);
   },

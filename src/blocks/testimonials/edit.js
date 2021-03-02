@@ -4,7 +4,7 @@ import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumBackgroud from "../../components/premium-background";
+import PremiumBackground from "../../components/premium-background";
 import PremiumPadding from "../../components/premium-padding";
 
 const { __ } = wp.i18n;
@@ -418,7 +418,7 @@ const edit = (props) => {
         >
           <Fragment>
             <p>{__("Background Color")}</p>
-            <PremiumBackgroud
+            <PremiumBackground
               type="color"
               colorValue={backColor}
               onChangeColor={(newvalue) =>
@@ -427,7 +427,7 @@ const edit = (props) => {
               opacityValue={backOpacity}
               onChangeOpacity={(value) => setAttributes({ backOpacity: value })}
             />
-            <PremiumBackgroud
+            <PremiumBackground
               imageID={imageID}
               imageURL={imageURL}
               backgroundPosition={backgroundPosition}

@@ -3,7 +3,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumBackgroud from "../../components/premium-background";
+import PremiumBackground from "../../components/premium-background";
 import PremiumSizeUnits from "../../components/premium-size-units";
 
 const { __ } = wp.i18n;
@@ -184,7 +184,7 @@ const edit = (props) => {
           initialOpen={false}
         >
           <p>{__("Background Color")}</p>
-          <PremiumBackgroud
+          <PremiumBackground
             type="color"
             colorValue={color}
             onChangeColor={(newvalue) =>
@@ -193,7 +193,7 @@ const edit = (props) => {
             opacityValue={opacity}
             onChangeOpacity={(value) => setAttributes({ opacity: value })}
           />
-          <PremiumBackgroud
+          <PremiumBackground
             imageID={imageID}
             imageURL={imageURL}
             backgroundPosition={backgroundPosition}

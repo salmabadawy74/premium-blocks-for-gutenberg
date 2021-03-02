@@ -2,7 +2,7 @@ import classnames from "classnames";
 import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumBackgroud from "../../components/premium-background";
+import PremiumBackground from "../../components/premium-background";
 import PremiumBorder from "../../components/premium-border";
 import FONTS from "../../components/premium-fonts";
 
@@ -623,7 +623,7 @@ const edit = (props) => {
               }
             />
           </Fragment>
-          <PremiumBackgroud
+          <PremiumBackground
             imageID={backgroundImageID}
             imageURL={backgroundImageURL}
             backgroundPosition={backgroundPosition}

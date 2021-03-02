@@ -8,7 +8,7 @@ import PremiumMargin from "../../components/premium-margin";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumBackgroud from "../../components/premium-background";
+import PremiumBackground from "../../components/premium-background";
 
 const { __ } = wp.i18n;
 
@@ -207,7 +207,7 @@ const edit = (props) => {
                     allowReset={true}
                   />
                   <p>{__("Background Color")}</p>
-                  <PremiumBackgroud
+                  <PremiumBackground
                     type="color"
                     colorValue={iconBack}
                     onChangeColor={(value) =>
@@ -323,7 +323,7 @@ const edit = (props) => {
         >
           <Fragment>
             <p>{__("Background Color")}</p>
-            <PremiumBackgroud
+            <PremiumBackground
               type="color"
               colorValue={backgroundColor}
               onChangeColor={(value) =>
@@ -338,7 +338,7 @@ const edit = (props) => {
               }
             />
 
-            <PremiumBackgroud
+            <PremiumBackground
               imageID={imageID}
               imageURL={imageURL}
               backgroundPosition={backgroundPosition}

@@ -8,7 +8,7 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumBackgroud from "../../components/premium-background";
+import PremiumBackground from "../../components/premium-background";
 import PremiumSizeUnits from "../../components/premium-size-units";
 import FONTS from "../../components/premium-fonts";
 
@@ -392,7 +392,7 @@ const edit = (props) => {
                     allowReset={true}
                   />
                   <p>{__("Background Color")}</p>
-                  <PremiumBackgroud
+                  <PremiumBackground
                     type="color"
                     colorValue={iconBackColor}
                     onChangeColor={(newvalue) =>
@@ -739,7 +739,7 @@ const edit = (props) => {
                       allowReset={true}
                     />
                     <p>{__("Background Color")}</p>
-                    <PremiumBackgroud
+                    <PremiumBackground
                       type="color"
                       colorValue={btnBack}
                       onChangeColor={(newvalue) =>
@@ -865,7 +865,7 @@ const edit = (props) => {
         >
           <Fragment>
             <p>{__("Background Color")}</p>
-            <PremiumBackgroud
+            <PremiumBackground
               type="color"
               colorValue={backColor}
               onChangeColor={(newvalue) =>
@@ -875,7 +875,7 @@ const edit = (props) => {
               onChangeOpacity={(value) => setAttributes({ backOpacity: value })}
             />
           </Fragment>
-          <PremiumBackgroud
+          <PremiumBackground
             imageID={imageID}
             imageURL={imageURL}
             backgroundPosition={backgroundPosition}
