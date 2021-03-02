@@ -282,6 +282,10 @@ const newAttributes_1_5_8 = {
     type: "number",
     default: "1",
   },
+  buttonUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 const buttonAttrs_1_5_8 = Object.assign(buttonAttrs_1_5_7, newAttributes_1_5_8);
 
@@ -291,6 +295,7 @@ const deprecatedContent = [
     migrate: (attributes) => {
       let newAttributes = {
         backOpacity: "",
+        buttonUpdated: "",
       };
       return Object.assign(attributes, newAttributes);
     },

@@ -6,6 +6,7 @@ const save = (props) => {
   const { className } = props;
 
   const {
+    buttonUpdated,
     id,
     btnText,
     btnSize,
@@ -80,7 +81,9 @@ const save = (props) => {
         target={btnTarget ? "_blank" : "_self"}
         style={{
           color: textColor,
-          backgroundColor: `rgba(${backColor},${backOpacity})`,
+          backgroundColor: buttonUpdated
+            ? `rgba(${backColor},${backOpacity})`
+            : backColor,
           fontSize: textSize + "px",
           fontFamily: textFontFamily,
           letterSpacing: textLetter + "px",

@@ -265,6 +265,7 @@ const deprecated_attributes_1_7_2 = Object.assign(
   deprecated_attributes_1_4_8,
   newAttributes_1_7_2
 );
+
 const deprecated_attributes_1_8_1 = {
   contentAlign: {
     type: "string",
@@ -512,6 +513,7 @@ const deprecated_attributes_1_8_1 = {
     type: "string",
   },
 };
+
 const newAttributes_1_8_2 = {
   firstOpacity: {
     type: "number",
@@ -525,7 +527,20 @@ const newAttributes_1_8_2 = {
     type: "number",
     default: "1",
   },
+  containerBackUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  firstUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  secondUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
+
 const deprecated_attributes_1_8_2 = Object.assign(
   deprecated_attributes_1_8_1,
   newAttributes_1_8_2
@@ -539,6 +554,9 @@ const deprecatedContent = [
         firstOpacity: "",
         secondOpacity: "",
         containerOpacity: "",
+        containerBackUpdated: "",
+        firstUpdated: "",
+        secondUpdated: "",
       };
       return Object.assign(attributes, newAttributes);
     },

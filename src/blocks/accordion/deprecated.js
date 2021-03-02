@@ -202,6 +202,18 @@ const newAttributes_1_3_4 = {
     type: "number",
     default: "1",
   },
+  titleupdated: {
+    type: "boolean",
+    default: false,
+  },
+  arrowUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  descUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 const deprecated_attributes_1_3_4 = Object.assign(
   deprecated_attributes_1_2_3,
@@ -402,6 +414,9 @@ const deprecated = [
         titleOpacity: "",
         arrowOpacity: "",
         descOpacity: "",
+        titleupdated: "",
+        arrowUpdated: "",
+        descUpdated: "",
       };
       return Object.assign(attributes, newAttributes);
     },

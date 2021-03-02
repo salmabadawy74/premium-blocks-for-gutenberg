@@ -4,6 +4,7 @@ const save = (props) => {
   const { className } = props;
 
   const {
+    containerUpdated,
     increment,
     time,
     delay,
@@ -74,7 +75,9 @@ const save = (props) => {
       style={{
         justifyContent: align,
         flexDirection: flexDir,
-        backgroundColor: `rgba(${containerBack},${containerOpacity})`,
+        backgroundColor: containerUpdated
+          ? `rgba(${containerBack},${containerOpacity})`
+          : containerBack,
         boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
         backgroundImage: `url('${backgroundImageURL}')`,
         backgroundRepeat: backgroundRepeat,

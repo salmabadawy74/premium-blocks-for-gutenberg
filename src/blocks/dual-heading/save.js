@@ -4,6 +4,9 @@ const save = (props) => {
   const { className } = props;
 
   const {
+    firstUpdated,
+    secondUpdated,
+    containerBackUpdated,
     contentAlign,
     firstHeading,
     secondHeading,
@@ -80,7 +83,9 @@ const save = (props) => {
       className={`${mainClasses}`}
       style={{
         textAlign: contentAlign,
-        backgroundColor: `rgba(${containerBack},${containerOpacity})`,
+        backgroundColor: containerBackUpdated
+          ? `rgba(${containerBack},${containerOpacity})`
+          : containerBack,
         backgroundImage: `url('${imageURL}')`,
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
@@ -101,7 +106,9 @@ const save = (props) => {
               color: firstColor,
               backgroundColor: firstClip
                 ? "none"
-                : `rgba(${firstBackground},${firstOpacity})`,
+                : firstUpdated
+                ? `rgba(${firstBackground},${firstOpacity})`
+                : firstBackground,
               backgroundImage: firstClip
                 ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                 : "none",
@@ -129,7 +136,9 @@ const save = (props) => {
               color: secondColor,
               backgroundColor: secondClip
                 ? "none"
-                : `rgba(${secondBackground},${secondOpacity})`,
+                : secondUpdated
+                ? `rgba(${secondBackground},${secondOpacity})`
+                : secondBackground,
               backgroundImage: secondClip
                 ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                 : "none",

@@ -162,6 +162,10 @@ const counterAttrs = {
   containerBack: {
     type: "string",
   },
+  containerUpdated: {
+    type: "boolean",
+    default: false,
+  },
   containerOpacity: {
     type: "number",
     default: "1",

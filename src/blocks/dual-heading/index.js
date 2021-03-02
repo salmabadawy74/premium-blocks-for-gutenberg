@@ -266,6 +266,18 @@ const dualHeadingAttrs = {
   containerBorderColor: {
     type: "string",
   },
+  containerBackUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  firstUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  secondUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 registerBlockType("premium/dheading-block", {
   title: __("Dual Heading"),

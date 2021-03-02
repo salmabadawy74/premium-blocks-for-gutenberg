@@ -2,7 +2,6 @@ import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumBackgroud from "../../components/premium-background";
 import FONTS from "../../components/premium-fonts";
 import PremiumBackground from "../../components/premium-background";
 
@@ -30,6 +29,9 @@ const {
 const edit = (props) => {
   const { setAttributes, isSelected, className } = props;
   const {
+    firstUpdated,
+    secondUpdated,
+    containerBackUpdated,
     contentAlign,
     firstHeading,
     secondHeading,
@@ -272,11 +274,14 @@ const edit = (props) => {
                       allowReset={true}
                     />
                     <p>{__("Background Color")}</p>
-                    <PremiumBackgroud
+                    <PremiumBackground
                       type="color"
                       colorValue={firstBackground}
                       onChangeColor={(value) =>
-                        setAttributes({ firstBackground: value })
+                        setAttributes({
+                          firstBackground: value,
+                          firstUpdated: true,
+                        })
                       }
                       opacityValue={firstOpacity}
                       onChangeOpacity={(value) =>
@@ -476,11 +481,14 @@ const edit = (props) => {
                       allowReset={true}
                     />
                     <p>{__("Background Color")}</p>
-                    <PremiumBackgroud
+                    <PremiumBackground
                       type="color"
                       colorValue={secondBackground}
                       onChangeColor={(value) =>
-                        setAttributes({ secondBackground: value })
+                        setAttributes({
+                          secondBackground: value,
+                          secondUpdated: true,
+                        })
                       }
                       opacityValue={secondOpacity}
                       onChangeOpacity={(newvalue) =>
@@ -611,14 +619,17 @@ const edit = (props) => {
             type="color"
             colorValue={containerBack}
             onChangeColor={(newvalue) =>
-              setAttributes({ containerBack: newvalue })
+              setAttributes({
+                containerBack: newvalue,
+                containerBackUpdated: true,
+              })
             }
             opacityValue={containerOpacity}
             onChangeOpacity={(value) =>
               setAttributes({ containerOpacity: value })
             }
           />
-          <PremiumBackgroud
+          <PremiumBackground
             imageID={imageID}
             imageURL={imageURL}
             backgroundPosition={backgroundPosition}
@@ -674,7 +685,9 @@ const edit = (props) => {
       className={`${mainClasses}`}
       style={{
         textAlign: contentAlign,
-        backgroundColor: `rgba(${containerBack},${containerOpacity})`,
+        backgroundColor: containerBackUpdated
+          ? `rgba(${containerBack},${containerOpacity})`
+          : containerBack,
         backgroundImage: imageURL ? `url('${imageURL}')` : "none",
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
@@ -695,7 +708,9 @@ const edit = (props) => {
               color: firstColor,
               backgroundColor: firstClip
                 ? "none"
-                : `rgba(${firstBackground},${firstOpacity})`,
+                : firstUpdated
+                ? `rgba(${firstBackground},${firstOpacity})`
+                : firstBackground,
               backgroundImage: firstClip
                 ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                 : "none",
@@ -724,7 +739,9 @@ const edit = (props) => {
               color: secondColor,
               backgroundColor: secondClip
                 ? "none"
-                : `rgba(${secondBackground},${secondOpacity})`,
+                : secondUpdated
+                ? `rgba(${secondBackground},${secondOpacity})`
+                : secondBackground,
               backgroundImage: secondClip
                 ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                 : "none",

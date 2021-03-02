@@ -10,6 +10,10 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const buttonAttrs = {
+  buttonUpdated: {
+    type: "boolean",
+    default: false,
+  },
   btnText: {
     type: "string",
     default: __("Premium Button"),

@@ -68,6 +68,9 @@ class PremiumAccordion extends Component {
   render() {
     const { isSelected, setAttributes, clientId, className } = this.props;
     const {
+      titleupdated,
+      arrowUpdated,
+      descUpdated,
       accordionId,
       repeaterItems,
       direction,
@@ -182,7 +185,9 @@ class PremiumAccordion extends Component {
           <div
             className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
             style={{
-              backgroundColor: `rgba(${titleBack},${titleOpacity})`,
+              backgroundColor: titleupdated
+                ? `rgba(${titleBack},${titleOpacity})`
+                : titleBack,
               border: titleBorder,
               borderWidth: titleBorderWidth + "px",
               borderRadius: titleBorderRadius + "px",
@@ -231,7 +236,9 @@ class PremiumAccordion extends Component {
                 viewBox="0 0 20 20"
                 style={{
                   fill: arrowColor,
-                  backgroundColor: `rgba(${arrowBack},${arrowOpacity})`,
+                  backgroundColor: arrowUpdated
+                    ? `rgba(${arrowBack},${arrowOpacity})`
+                    : arrowBack,
                   padding: arrowPadding + "px",
                   borderRadius: arrowRadius + "px",
                 }}
@@ -244,7 +251,9 @@ class PremiumAccordion extends Component {
             className={`premium-accordion__desc_wrap`}
             style={{
               textAlign: descAlign,
-              backgroundColor: `rgba(${descBack},${descOpacity})`,
+              backgroundColor: descUpdated
+                ? `rgba(${descBack},${descOpacity})`
+                : descBack,
               border: descBorder,
               borderWidth: descBorderWidth + "px",
               borderRadius: descBorderRadius + "px",
@@ -368,7 +377,10 @@ class PremiumAccordion extends Component {
                       type="color"
                       colorValue={titleBack}
                       onChangeColor={(newvalue) =>
-                        setAttributes({ titleBack: newvalue })
+                        setAttributes({
+                          titleBack: newvalue,
+                          titleupdated: true,
+                        })
                       }
                       opacityValue={titleOpacity}
                       onChangeOpacity={(value) =>
@@ -496,7 +508,10 @@ class PremiumAccordion extends Component {
                       type="color"
                       colorValue={arrowBack}
                       onChangeColor={(newvalue) =>
-                        setAttributes({ arrowBack: newvalue })
+                        setAttributes({
+                          arrowBack: newvalue,
+                          arrowUpdated: true,
+                        })
                       }
                       opacityValue={arrowOpacity}
                       onChangeOpacity={(value) =>
@@ -607,7 +622,10 @@ class PremiumAccordion extends Component {
                           type="color"
                           colorValue={descBack}
                           onChangeColor={(newvalue) =>
-                            setAttributes({ descBack: newvalue })
+                            setAttributes({
+                              descBack: newvalue,
+                              descUpdated: true,
+                            })
                           }
                           opacityValue={descOpacity}
                           onChangeOpacity={(value) =>

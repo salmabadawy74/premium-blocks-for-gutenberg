@@ -240,6 +240,7 @@ const counterAttrs_1_6_4 = Object.assign(
   counterAttrs_1_4_1,
   newAttributes_1_6_4
 );
+
 const counterAttrs_1_7_4 = {
   increment: {
     type: "string",
@@ -463,12 +464,18 @@ const counterAttrs_1_7_4 = {
     type: "string",
   },
 };
+
 const newAttributes_1_7_5 = {
   containerOpacity: {
     type: "number",
     default: "1",
   },
+  containerUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
+
 const counterAttrs_1_7_5 = Object.assign(
   counterAttrs_1_7_4,
   newAttributes_1_7_5
@@ -479,6 +486,7 @@ const deprecatedContent = [
     migrate: (attributes) => {
       let newAttributes = {
         containerOpacity: "",
+        containerUpdated: "",
       };
       return Object.assign(attributes, newAttributes);
     },

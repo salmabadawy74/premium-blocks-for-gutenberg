@@ -206,6 +206,18 @@ const accordionAttrs = {
     type: "number",
     default: 10,
   },
+  titleupdated: {
+    type: "boolean",
+    default: false,
+  },
+  arrowUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  descUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 registerBlockType("premium/accordion", {

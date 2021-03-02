@@ -6,6 +6,9 @@ const save = (props) => {
   const { className } = props;
 
   const {
+    titleupdated,
+    arrowUpdated,
+    descUpdated,
     accordionId,
     repeaterItems,
     direction,
@@ -74,7 +77,9 @@ const save = (props) => {
         <div
           className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
           style={{
-            backgroundColor: `rgba(${titleBack},${titleOpacity})`,
+            backgroundColor: titleupdated
+              ? `rgba(${titleBack},${titleOpacity})`
+              : titleBack,
             border: titleBorder,
             borderWidth: titleBorderWidth + "px",
             borderRadius: titleBorderRadius + "px",
@@ -113,7 +118,9 @@ const save = (props) => {
               viewBox="0 0 20 20"
               style={{
                 fill: arrowColor,
-                backgroundColor: `rgba(${arrowBack},${arrowOpacity})`,
+                backgroundColor: arrowUpdated
+                  ? `rgba(${arrowBack},${arrowOpacity})`
+                  : arrowBack,
                 padding: arrowPadding + "px",
                 borderRadius: arrowRadius + "px",
               }}
@@ -126,7 +133,9 @@ const save = (props) => {
           className={`premium-accordion__desc_wrap premium-accordion__desc_close`}
           style={{
             textAlign: descAlign,
-            backgroundColor: `rgba(${descBack},${descOpacity})`,
+            backgroundColor: descUpdated
+              ? `rgba(${descBack},${descOpacity})`
+              : descBack,
             border: descBorder,
             borderWidth: descBorderWidth + "px",
             borderRadius: descBorderRadius + "px",

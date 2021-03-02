@@ -5,7 +5,6 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import PremiumBorder from "../../components/premium-border";
 import FONTS from "../../components/premium-fonts";
-import PremiumBackground from "../../components/premium-background";
 
 const { __ } = wp.i18n;
 
@@ -69,6 +68,7 @@ const edit = (props) => {
     faIcon,
     containerBack,
     containerOpacity,
+    containerUpdated,
     shadowBlur,
     shadowColor,
     shadowHorizontal,
@@ -612,7 +612,10 @@ const edit = (props) => {
               type="color"
               colorValue={containerBack}
               onChangeColor={(newValue) =>
-                setAttributes({ containerBack: newValue })
+                setAttributes({
+                  containerBack: newValue,
+                  containerUpdated: true,
+                })
               }
               opacityValue={containerOpacity}
               onChangeOpacity={(value) =>
@@ -714,7 +717,9 @@ const edit = (props) => {
       style={{
         justifyContent: align,
         flexDirection: flexDir,
-        backgroundColor: `rgba(${containerBack},${containerOpacity})`,
+        backgroundColor: containerUpdated
+          ? `rgba(${containerBack},${containerOpacity})`
+          : containerBack,
         boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
         backgroundImage: backgroundImageURL
           ? `url('${backgroundImageURL}')`

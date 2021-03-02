@@ -33,6 +33,7 @@ const edit = (props) => {
   const { isSelected, setAttributes, className, clientId: blockId } = props;
 
   const {
+    buttonUpdated,
     id,
     btnText,
     btnSize,
@@ -380,7 +381,10 @@ const edit = (props) => {
                     type="color"
                     colorValue={backColor}
                     onChangeColor={(newvalue) =>
-                      setAttributes({ backColor: newvalue })
+                      setAttributes({
+                        backColor: newvalue,
+                        buttonUpdated: true,
+                      })
                     }
                     opacityValue={backOpacity}
                     onChangeOpacity={(value) =>
@@ -512,7 +516,9 @@ const edit = (props) => {
         onChange={(value) => setAttributes({ btnText: value })}
         style={{
           color: textColor,
-          backgroundColor: `rgba(${backColor},${backOpacity})`,
+          backgroundColor: buttonUpdated
+            ? `rgba(${backColor},${backOpacity})`
+            : backColor,
           fontSize: textSize + "px",
           fontFamily: textFontFamily,
           letterSpacing: textLetter + "px",
